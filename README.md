@@ -17,6 +17,8 @@ npm start
 ```
 
 The development developer portal should appear in your browser under http://localhost:3000
+
+> 🚧 Internationalization has been disabled for now. TODO
 To preview a specific locale in the context of an internationalization contribution, start the docs with the following command:
 ```bash
 npm start -- --locale <locale>
