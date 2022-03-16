@@ -33,11 +33,11 @@ const config = {
           includeCurrentVersion: isDeployPreview || isDev,
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          versions: {
+          versions: isDev || isDeployPreview ? {
             current: {
               label: "Work in progress"
             }
-          },
+          } : {},
 
           sidebarPath: require.resolve('./sidebars.js'),
           // TODO: Please change this to your repo.

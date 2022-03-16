@@ -11,7 +11,7 @@
 
 .heroBanner {
   position: relative;
-  padding: 230px 0 230px;
+  padding: 200px 0 200px;
 }
 
 .videoHero {
@@ -38,4 +38,6 @@
   position: relative;
   z-index: 9;
   text-align: center;
+  margin: 0 auto;
+  max-width: 1178px;
 }
