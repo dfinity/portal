@@ -8,6 +8,20 @@ The developer portal uses [Docusaurus](https://docusaurus.io/docs).
 Versionning has been set up so that the release process is simplified and automated. 
 This repository therefore follows the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) model. 
 
+### Local development
+While modifying the docs in the repository, you can preview the changes locally by executing the following commands.
+```bash
+cd portal/
+npm install 
+npm start
+```
+
+The development developer portal should appear in your browser under http://localhost:3000
+To preview a specific locale in the context of an internationalization contribution, start the docs with the following command:
+```bash
+npm start -- --locale <locale>
+```
+
 ### Contribution workflow
 Here is a description of how a contribution should be made to the developer portal. 
 1. The contributor creates a fork/branch where the changes are made. 
