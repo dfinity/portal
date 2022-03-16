@@ -56,13 +56,14 @@ const config = {
     ],
   ],
 
-  i18n: {
-    defaultLocale: 'en',
-    locales: isDeployPreview
-    ? // Deploy preview: keep it fast!
-      ['en']
-    : ['en', 'fr'],
-  },
+  // TODO: Remove when ready to integrate internationalization
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   locales: isDeployPreview
+  //   ? // Deploy preview: keep it fast!
+  //     ['en']
+  //   : ['en', 'fr'],
+  // },
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -87,10 +88,11 @@ const config = {
             position: 'right',
             dropdownActiveClassDisabled: true,
           },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          // TODO: remove when integrating i18n
+          // {
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
           {
             type: 'search',
             position: 'right',
