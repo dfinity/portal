@@ -26,6 +26,23 @@ To preview a specific locale in the context of an internationalization contribut
 npm start -- --locale <locale>
 ```
 
+### Adding a document
+Docusaurus is quite easy to use and facilitates the creation of documents. 
+The developer portal uses Markdown as its default format. 
+
+To create a document, go into the `/docs` folder and create a markdown file in the root directory or a folder.
+
+At the very top of the document, Docusaurus allows you to specify some parameters. 
+Here is an example of a Docusaurus header:
+```md
+---
+id: greeting
+title: Hello
+---
+```
+
+More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc). 
+
 ### Contribution workflow
 Here is a description of how a contribution should be made to the developer portal. 
 1. The contributor creates a fork/branch where the changes are made. 
