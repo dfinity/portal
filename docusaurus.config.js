@@ -35,7 +35,7 @@ const config = {
           showLastUpdateTime: true,
           versions: isDev || isDeployPreview ? {
             current: {
-              label: "Work in progress"
+              label: "Current 🚧"
             }
           } : {},
 
