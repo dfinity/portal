@@ -1,41 +1,17 @@
-# Website
+# Internet Computer Developer Portal
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+The developer portal bring together all the information needed for developers to start building on the Internet Computer.
 
-### Installation
+## Contributing
+The developer portal uses [Docusaurus](https://docusaurus.io/docs). 
 
-```
-$ yarn
-```
+Versionning has been set up so that the release process is simplified and automated. 
+This repository therefore follows the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) model. 
 
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+### Contribution workflow
+Here is a description of how a contribution should be made to the developer portal. 
+1. The contributor creates a fork/branch where the changes are made. 
+2. a Pull Request is created from this branch to `develop`. the preview is generated and the reviewers can directly check the preview website.
+3. the Pull Request is merged in `develop` and sits here until the next release. 
+4. once current `develop` changes have been approved they get merged in `master`.
+5. a tag is created which triggers a build pipeline uploading the new version and setting it as the latest one.
