@@ -3,21 +3,42 @@
  * and scoped locally.
  */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-}
-
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.heroBanner {
+  position: relative;
+  padding: 170px 0 170px;
+}
+
+.videoHero {
+  width: 100%;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.backgroundVideo {
+  position: absolute; 
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto; 
+  z-index: -100;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.videoContainer {
+  color: white;
+  position: relative;
+  z-index: 9;
+  text-align: center;
 }
