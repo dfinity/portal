@@ -30,7 +30,6 @@ const config = {
       ({
         docs: {
           lastVersion: versions[0],
-          includeCurrentVersion: isDeployPreview || isDev,
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           versions: isDev || isDeployPreview ? {
@@ -99,6 +98,15 @@ const config = {
           },
         ],
       },
+
+      announcementBar: isDev || isDeployPreview ? {
+        id: 'local_dev',
+        content:
+          'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+        textColor: '#091E42',
+        isCloseable: false,
+      } : {},
+
       footer: {
         style: 'dark',
         links: [

@@ -36,3 +36,9 @@
 [data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+div[class^='announcementBarContent'] {
+  background: linear-gradient(90.1deg, #FBB03B 1.35%, #F57C2D 15.43%, #F15A24 26.38%, #ED1E79 45.16%, #BE217D 54.55%, #5C2684 76.97%, #29ABE2 99.92%);
+  color: white;
+  font-weight: bold;
+}
