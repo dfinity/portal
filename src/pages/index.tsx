@@ -19,16 +19,42 @@ function HomepageHeader() {
 
       <div className={styles.videoContainer}>
         <h1 className="hero__title">{siteConfig.title}</h1>
+
         <p className="hero__subtitle">
           <Translate>
             If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!
           </Translate>
         </p>
+
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            <Translate>Docusaurus Tutorial - 5min ⏱️</Translate>
+            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
+            to="/docs/developer-docs/ic-overview">
+            <Translate>🔧 Developer Docs</Translate>
+          </Link>
+
+          <Link
+            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
+            to="/docs/concepts">
+            <Translate>✅ Concepts</Translate>
+          </Link>
+
+          <Link
+            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
+            to="/docs/references">
+            <Translate>📚 References</Translate>
+          </Link>
+
+          <Link
+            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
+            to="/docs/user-guides">
+            <Translate>👥 User guides</Translate>
+          </Link>
+
+          <Link
+            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
+            to="/docs/showcase">
+            <Translate>▶️ Showcase</Translate>
           </Link>
         </div>
       </div>

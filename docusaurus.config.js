@@ -32,21 +32,15 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          versions: isDev || isDeployPreview ? {
+          versions: {
             current: {
               label: "Current 🚧"
             }
-          } : {},
+          },
 
           sidebarPath: require.resolve('./sidebars.js'),
           // TODO: Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // TODO: Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/dfinity/portal/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -75,12 +69,35 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            type: 'docSidebar',
             position: 'left',
-            label: 'Tutorial',
+            sidebarId: 'developer-docs',
+            label: 'Developer Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'concepts',
+            label: 'Concepts',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'references',
+            label: 'References',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'user-guides',
+            label: 'User guides',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'showcase',
+            label: 'Showcase',
+          },
 
           {
             type: 'docsVersionDropdown',
@@ -111,16 +128,71 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Developers',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'FAQ',
+                href: 'https://dfinity.org/faq',
+              },
+              {
+                label: 'Data Centers',
+                href: 'https://internetcomputer.org/',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Ecosystem',
+            items: [
+              {
+                label: 'Beacon Fund',
+                href: 'https://dfinity.org/ecosystem/fund'
+              },
+              {
+                label: 'Fellowship',
+                href: 'https://dfinity.org/ecosystem/fellowship'
+              },
+              {
+                label: 'Enterprise',
+                href: 'https://smartcontracts.org/#'
+              },
+            ]
+          },
+          {
+            title: 'Team',
+            items: [
+              {
+                label: 'Foundation',
+                href: 'https://dfinity.org/foundation'
+              },
+              {
+                label: 'Events',
+                href: 'https://dfinity.org/foundation#events'
+              },
+              {
+                label: 'Careers',
+                href: 'https://dfinity.org/careers'
+              },
+            ]
+          },
+          {
+            title: 'Media',
+            items: [
+              {
+                label: 'Featured Videos',
+                href: 'https://dfinity.org/media'
+              },
+              {
+                label: 'Featured Stories',
+                href: 'https://dfinity.org/media#featured-stories'
+              },
+              {
+                label: 'Newsletter',
+                href: 'https://dfinity.org/newsletter'
+              },
+            ]
+          },
+          {
+            title: 'Media',
             items: [
               {
                 label: 'Stack Overflow',
@@ -137,16 +209,55 @@ const config = {
             ],
           },
           {
-            title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'GitHub',
+                to: 'https://github.com/dfinity',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Medium',
+                href: 'https://medium.com/dfinity-network-blog',
               },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/dfinity',
+              },
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/dfinity',
+              },
+            ],
+          },
+          {
+            items: [
+              {
+                label: 'Telegram',
+                href: 'https://t.me/dfinity/',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/dfinity',
+              },
+              {
+                label: 'Reddit',
+                href: 'https://www.reddit.com/r/dfinity/',
+              },
+              {
+                label: 'Forum',
+                href: 'https://forum.dfinity.org/',
+              },
+            ],
+          },
+          {
+            items: [
+              {
+                label: 'Facebook',
+                href: 'https://www.facebook.com/dfinity.org',
+              },
+              {
+                label: 'The Reboot',
+                href: 'https://thereboot.com/',
+              }
             ],
           },
         ],

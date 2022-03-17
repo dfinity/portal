@@ -30,15 +30,32 @@ npm start -- --locale <locale>
 Docusaurus is quite easy to use and facilitates the creation of documents. 
 The developer portal uses Markdown as its default format. 
 
-To create a document, go into the `/docs` folder and create a markdown file in the root directory or a folder.
+To create a document, go into the `/docs` folder and create a Markdown file in the directory of your choice.
+
+In order to place the document correctly in the sidebar as well as having the correctly capitalized title, you have to respect a naming convention. 
+The convention consists of having the position specified at the start of the name: `00-Name.md`.
+
+Here are a few examples:
+
+```
+developer-docs/
+    01-IC Overview.md
+    02-Quick start.md
+    03-Guides/
+        ...
+```
 
 At the very top of the document, Docusaurus allows you to specify some parameters. 
-Here is an example of a Docusaurus header:
+
+The `slug` parameter is the only one **mandatory** for the developer portal. 
+Here is an example for the file `01-IC Overview.md`.
+
 ```md
 ---
-id: greeting
-title: Hello
+slug: ic-overview
 ---
+
+Here is the content of the article
 ```
 
 More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc). 
