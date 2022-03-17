@@ -32,11 +32,11 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          versions: isDev || isDeployPreview ? {
+          versions: {
             current: {
               label: "Current 🚧"
             }
-          } : {},
+          },
 
           sidebarPath: require.resolve('./sidebars.js'),
           // TODO: Please change this to your repo.
