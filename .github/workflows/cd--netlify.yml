@@ -5,9 +5,14 @@ on:
     branches: [master]
   
 jobs:
-  build:
+  deployment:
+    name: "Deployment"
     runs-on: ubuntu-latest
-    environment: "Pre-release Netlify"
+    
+    environment: 
+      name: "Pre-release Netlify"
+      url: https://icdevportal.netlify.app
+      
     steps:
       - uses: actions/checkout@v2
 
