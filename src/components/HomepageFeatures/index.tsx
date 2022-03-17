@@ -11,34 +11,19 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: translate({ message: 'Easy to Use' }),
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <Translate>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </Translate>
-    ),
+    title: translate({ message: 'For Svelte Developers' }),
+    Svg: require('@site/static/img/svelte.svg').default,
+    description: (<></>),
   },
   {
-    title: translate({ message: 'Focus on What Matters' }),
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <Translate>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the docs directory.
-      </Translate>
-    ),
+    title: translate({ message: 'For Angular Developers' }),
+    Svg: require('@site/static/img/angular.svg').default,
+    description: (<></>),
   },
   {
-    title: translate({ message: 'Powered by React' }),
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <Translate>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </Translate>
-    ),
+    title: translate({ message: 'For Ethereum Developers' }),
+    Svg: require('@site/static/img/ethereum.svg').default,
+    description: (<></>),
   },
 ];
 
