@@ -105,7 +105,7 @@ const config = {
           'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
         textColor: '#091E42',
         isCloseable: false,
-      } : {},
+      } : undefined,
 
       footer: {
         style: 'dark',
