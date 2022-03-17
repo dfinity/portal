@@ -229,7 +229,7 @@ export default function Navbar() {
       })}>
       <div className="navbar__inner" style={{
         margin: '0 auto',
-        maxWidth: '1178px',
+        maxWidth: '1378px',
       }}>
         <div className="navbar__items">
           {(items?.length > 0 || activeDocPlugin) && (
