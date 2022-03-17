@@ -27,6 +27,6 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          netlify deploy --dir=build --context deploy-preview > logs.txt
+          netlify deploy --dir=build --build --context deploy-preview > logs.txt
           PREVIEW_URL="$(grep "Website Draft URL" | awk -F'Website Draft URL: ' '{print $2}')"
           echo "::set-output name=url::\"$PREVIEW_URL\""
