@@ -43,6 +43,18 @@ title: Hello
 
 More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc). 
 
+### Deployed Previews
+Whenever you create a Pull Request on the repository, the [`CD Preview to Netlify`](https://github.com/dfinity/portal/actions/workflows/cd--preview-netlify.yml) job will appear. 
+This job will build your branch and deploy it to Netlify in a temporary URL. 
+
+At the very bottom of your pull request, you will see the list of deployments. 
+Once the job is finished, you should see as active the "Preview Netlify" deployment. 
+
+<img width="800" alt="Screenshot 2022-03-17 at 11 45 25" src="https://user-images.githubusercontent.com/15371828/158793201-bb41f003-3d8d-4f95-9f91-8798613bc695.png">
+
+Then simply press the "View deployment" button to in your fresh Netlify preview.
+
+
 ### Contribution workflow
 Here is a description of how a contribution should be made to the developer portal. 
 1. The contributor creates a fork/branch where the changes are made. 
