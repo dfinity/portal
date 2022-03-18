@@ -25,6 +25,26 @@ const FeatureList: FeatureItem[] = [
     title: translate({ message: 'less CO₂' }),
     description: (<>The environment is protected by efficiency approaching legacy tech</>),
   },
+  {
+    title: translate({ message: 'internet identity' }),
+    description: (<>Secure authentication w/o friction via user devices (applies WebAuthn)</>),
+  },
+  {
+    title: translate({ message: 'reverse gas' }),
+    description: (<>Contracts pay for their own computation; users don’t need tokens</>),
+  },
+  {
+    title: translate({ message: 'orthogonal persistence' }),
+    description: (<>Data persists automatically in variables and data types as memory persists</>),
+  },
+  {
+    title: translate({ message: 'less gas' }),
+    description: (<>Science drives gas costs millions of times lower, and keeps them stable</>),
+  },
+  {
+    title: translate({ message: 'actor model' }),
+    description: (<>Parallelism enables scaling. Contracts are asynchronous</>),
+  },
 ];
 
 function Feature({title, description}: FeatureItem) {
