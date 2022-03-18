@@ -2,12 +2,6 @@
 slug: ic-protocol-spec
 ---
 
-# The Internet Computer Interface Specification
-
-DFINITY Foundation ∞ :example: example$ :partial: partial$
-
-You are looking at the `master` version of the document! If you are looking for implementation specification or documentation, look at one of the versions at <https://docs.dfinity.systems/public/v/>.
-
 ## Introduction
 
 Welcome to *the Internet Computer*! We speak of “the” Internet Computer, because although under the hood a large number of physical computers are working together in a blockchain protocol, in the end we have the appearance of a single, shared, secure and world-wide accessible computer. Developers who want to build decentralized applications (or *dapps* for short) that run on the Internet Computer blockchain and end-users who want to use those dapps need to know very little, if anything, about the underlying protocol. However, knowing some details about the interfaces that the Internet Computer exposes can allow interested developers and architects to take fuller advantages of the unique features that the Internet Computer provides.
