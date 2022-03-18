@@ -5,36 +5,33 @@ import Translate, { translate } from '@docusaurus/Translate';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: translate({ message: 'For Svelte Developers' }),
-    Svg: require('@site/static/img/svelte.svg').default,
-    description: (<></>),
+    title: translate({ message: 'real web 3.0' }),
+    description: (<>Blockchain is end-to-end, now contracts can serve interactive web content</>),
   },
   {
-    title: translate({ message: 'For Angular Developers' }),
-    Svg: require('@site/static/img/angular.svg').default,
-    description: (<></>),
+    title: translate({ message: 'internet speed' }),
+    description: (<>TX finalized in 2 secs. State-preserving calls processed in milliseconds</>),
   },
   {
-    title: translate({ message: 'For Ethereum Developers' }),
-    Svg: require('@site/static/img/ethereum.svg').default,
-    description: (<></>),
+    title: translate({ message: 'internet scale' }),
+    description: (<>Blockchain capacity scales at constant cost and dapps can have infinite scale</>),
+  },
+  {
+    title: translate({ message: 'less CO₂' }),
+    description: (<>The environment is protected by efficiency approaching legacy tech</>),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
+    <div className={clsx('col col--3')}>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <h3>{title.split(' ')[0]} <span className={styles.thin}>{title.split(' ').splice(1, title.length)}</span></h3>
         <p>{description}</p>
       </div>
     </div>

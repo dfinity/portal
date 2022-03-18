@@ -20,6 +20,9 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          CONTEXT: deploy-preview
+          NETLIFY: true
 
       - name: Deploy Site
         id: deploy
