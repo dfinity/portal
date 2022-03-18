@@ -36,7 +36,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: releases/${{ steps.get-tag.outputs.TAG }}
+          branch: master
           title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
           labels: |
             kind:release
