@@ -52,7 +52,9 @@ function Feature({title, description}: FeatureItem) {
     <div className={clsx('col col--3')}>
       <div className="text--center padding-horiz--md">
         <h3>{title.split(' ')[0]} <span className={styles.thin}>{title.split(' ').splice(1, title.length)}</span></h3>
-        <p>{description}</p>
+        <p style={{
+          color: 'gray'
+        }}>{description}</p>
       </div>
     </div>
   );
