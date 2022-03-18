@@ -1,5 +1,7 @@
 # Internet Computer Developer Portal
 
+<img src="https://user-images.githubusercontent.com/15371828/158857061-8fa8d079-d33f-4ed2-88aa-56d452d238d8.svg" align="right" alt="Monetae logo" width="270">
+
 The developer portal bring together all the information needed for developers to start building on the Internet Computer.
 
 ## Contributing
