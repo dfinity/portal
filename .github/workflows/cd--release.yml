@@ -30,7 +30,7 @@ jobs:
           git checkout -b releases/${{ steps.get-tag.outputs.TAG }}
           git add -A
           git commit -m "Create version ${{ steps.get-tag.outputs.TAG }}"
-          git push
+          git push origin releases/${{ steps.get-tag.outputs.TAG }}
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
