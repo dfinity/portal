@@ -27,16 +27,14 @@ jobs:
         run: |
           git config user.name DFINITY bot
           git config user.email 58022693+dfinity-bot@users.noreply.github.com
-          git checkout -b releases/${{ steps.get-tag.outputs.TAG }}
           git add -A
           git commit -m "Create version ${{ steps.get-tag.outputs.TAG }}"
-          git push origin releases/${{ steps.get-tag.outputs.TAG }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          branch: releases/${{ steps.get-tag.outputs.TAG }}
           title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
           labels: |
             kind:release
