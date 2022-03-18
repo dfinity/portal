@@ -14,6 +14,11 @@ jobs:
         with:
           submodules: true
 
+      - name: Upgrade
+        run: |
+          sudo apt-get upgrade
+          sudo apt-get update
+
       - name: Install asciidoctor
         run: sudo apt-get install asciidoctor
 
