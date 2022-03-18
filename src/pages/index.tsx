@@ -41,7 +41,7 @@ function HomepageHeader() {
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/references">
+            to="/docs/references/motoko-ref">
             <Translate>📚 References</Translate>
           </Link>
 
