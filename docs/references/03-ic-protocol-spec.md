@@ -1,5 +1,5 @@
 ---
-slug: ic-protocol-spec
+title: Internet Computer Protocol Specification
 ---
 
 ## Introduction
@@ -784,7 +784,7 @@ A typical request would be (written in [CBOR diagnostic notation](https://tools.
 
 ### CDDL description of requests and responses
 
-The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This section summarizes the format of the CBOR data passed to and from the entry points described above. You can also [download the file]({attachmentsdir}/requests.cddl).
+The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This section summarizes the format of the CBOR data passed to and from the entry points described above. You can also [download the file](_attachments/requests.cddl).
 
     Unresolved directive in internet.adoc - include::{example}requests.cddl[]
 
@@ -1459,7 +1459,7 @@ It is possible to use the management canister via external requests (a.k.a. ingr
 
 ### Interface overview
 
-The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality. You can also [download the file]({attachmentsdir}/ic.did).
+The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality. You can also [download the file](_attachments/ic.did).
 
     Unresolved directive in internet.adoc - include::{example}ic.did[]
 
@@ -1798,7 +1798,7 @@ Delegations are *scoped*, i.e., they indicate which set of canister principals t
 
 ### Encoding of certificates
 
-The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file]({attachmentsdir}/certificates.cddl).
+The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file](_attachments/certificates.cddl).
 
     Unresolved directive in internet.adoc - include::{example}certificates.cddl[]
 

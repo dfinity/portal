@@ -34,27 +34,27 @@ The developer portal uses Markdown as its default format.
 
 To create a document, go into the `/docs` folder and create a Markdown file in the directory of your choice.
 
-In order to place the document correctly in the sidebar as well as having the correctly capitalized title, you have to respect a naming convention. 
-The convention consists of having the position specified at the start of the name: `00-Name.md`.
+In order to place the document correctly in the sidebar you have to respect a naming convention. 
+The convention consists of having the position specified at the start of the name: `00-name.md`.
 
 Here are a few examples:
 
 ```
 developer-docs/
-    01-IC Overview.md
-    02-Quick start.md
-    03-Guides/
+    01-ic-overview.md
+    02-quick-start.md
+    03-guides/
         ...
 ```
 
 At the very top of the document, Docusaurus allows you to specify some parameters. 
 
-The `slug` parameter is the only one **mandatory** for the developer portal. 
-Here is an example for the file `01-IC Overview.md`.
+The `title` parameter is the only one **mandatory** for the developer portal. 
+Here is an example for the file `01-ic-overview.md`.
 
 ```md
 ---
-slug: ic-overview
+title: Internet Computer Overview
 ---
 
 Here is the content of the article
