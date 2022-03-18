@@ -32,6 +32,7 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          breadcrumbs: true,
           versions: {
             current: {
               label: "Current 🚧"
