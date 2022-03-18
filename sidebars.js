@@ -21,7 +21,7 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Canister SDK references',
+      label: 'Canister DK references',
       href: 'https://docs.rs/ic-cdk/',
     }
   ],
