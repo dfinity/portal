@@ -1,0 +1,25 @@
+name: Fetch references
+
+on:
+  push:
+    branches: [master]
+  
+jobs:
+  sdk:
+    name: "SDK Refs"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install asciidoctor
+        run: sudo apt-get install asciidoctor
+
+      - name: Install pandoc
+        run: sudo apt-get install pandoc
+
+      - name: Convert documents
+        run: sh "$GITHUB_WORKSPACE/.github/workflows/tools/convert-asciidoc.sh" "$GITHUB_WORKSPACE/raw-refs/sdk/docs"
+
+      - name: Move references
+        run: mv "$GITHUB_WORKSPACE/raw-refs/sdk/docs/*" "$GITHUB_WORKSPACE/docs/references/sdk/*"
