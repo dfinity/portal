@@ -25,17 +25,18 @@ jobs:
 
       - name: Push release code
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name DFINITY bot
+          git config user.email 58022693+dfinity-bot@users.noreply.github.com
           git checkout -b releases/${{ steps.get-tag.outputs.TAG }}
           git add -A
           git commit -m "Create version ${{ steps.get-tag.outputs.TAG }}"
           git push origin releases/${{ steps.get-tag.outputs.TAG }}
 
       - name: Create Pull Request
-        uses: repo-sync/pull-request@v2
+        uses: peter-evans/create-pull-request@v3
         with:
-          destination_branch: "master"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_label: "kind:release"
-          pr_title: "[release] ${{ steps.get-tag.outputs.TAG }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: releases/${{ steps.get-tag.outputs.TAG }}
+          title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
+          labels: |
+            kind:release
