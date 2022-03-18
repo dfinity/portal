@@ -23,10 +23,18 @@ jobs:
       - name: Create version
         run: npm run docusaurus docs:version ${{ steps.get-tag.outputs.TAG }}
 
-      - name: pull-request
+      - name: Push release code
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b releases/${{ steps.get-tag.outputs.TAG }}
+          git add -A
+          git commit -m "Create version ${{ steps.get-tag.outputs.TAG }}"
+          git push
+
+      - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: "releases/${{ steps.get-tag.outputs.TAG }}"
           destination_branch: "master"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_label: "kind:release"
