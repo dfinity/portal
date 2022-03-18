@@ -23,17 +23,13 @@ jobs:
       - name: Create version
         run: npm run docusaurus docs:version ${{ steps.get-tag.outputs.TAG }}
 
-      - name: Push release code
-        run: |
-          git config user.name DFINITY bot
-          git config user.email 58022693+dfinity-bot@users.noreply.github.com
-          git add -A
-          git commit -m "Create version ${{ steps.get-tag.outputs.TAG }}"
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Create new version ${{ steps.get-tag.outputs.TAG }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: releases/${{ steps.get-tag.outputs.TAG }}
           title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
           labels: |
