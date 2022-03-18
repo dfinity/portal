@@ -29,31 +29,31 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/developer-docs/ic-overview">
+            to="/docs/current/developer-docs/ic-overview">
             <Translate>🔧 Developer Docs</Translate>
           </Link>
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/concepts">
+            to="/docs/current/concepts">
             <Translate>✅ Concepts</Translate>
           </Link>
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/references/motoko-ref">
+            to="/docs/current/references/motoko-ref">
             <Translate>📚 References</Translate>
           </Link>
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/user-guides">
+            to="/docs/current/user-guides">
             <Translate>👥 User guides</Translate>
           </Link>
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/showcase">
+            to="/docs/current/showcase">
             <Translate>▶️ Showcase</Translate>
           </Link>
         </div>
