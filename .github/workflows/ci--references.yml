@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true
+          submodules: recursive
 
       - name: Upgrade
         run: |
@@ -29,4 +29,4 @@ jobs:
         run: sh "$GITHUB_WORKSPACE/.github/workflows/tools/convert-asciidoc.sh" "$GITHUB_WORKSPACE/raw-refs/sdk/docs"
 
       - name: Move references
-        run: mv "$GITHUB_WORKSPACE/raw-refs/sdk/docs/*" "$GITHUB_WORKSPACE/docs/references/sdk/*"
+        run: mv "$GITHUB_WORKSPACE/raw-refs/sdk/docs" "$GITHUB_WORKSPACE/docs/references/sdk"
