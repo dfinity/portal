@@ -35,7 +35,8 @@ const config = {
           breadcrumbs: true,
           versions: {
             current: {
-              label: "Current 🚧"
+              label: "Current 🚧",
+              path: 'current'
             }
           },
 
