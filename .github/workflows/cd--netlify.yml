@@ -11,7 +11,7 @@ jobs:
     
     environment: 
       name: "Pre-release Netlify"
-      url: https://icdevportal.netlify.app
+      url: https://icportal-pre-release.netlify.app
       
     steps:
       - uses: actions/checkout@v2
