@@ -13,21 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      - name: Get the tag
+        id: get-tag
+        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
 
       - name: Install Dependencies
         run: npm install
 
       - name: Create version
-        run: npm run docusaurus docs:version ${{ steps.get_version.outputs.VERSION }}
+        run: npm run docusaurus docs:version ${{ steps.get-tag.outputs.TAG }}
 
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: "releases/"
+          source_branch: "releases/${{ steps.get-tag.outputs.TAG }}"
           destination_branch: "master"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_label: "kind:release"
-          pr_title: "[release] ${{ steps.get_version.outputs.VERSION }}"
+          pr_title: "[release] ${{ steps.get-tag.outputs.TAG }}"
