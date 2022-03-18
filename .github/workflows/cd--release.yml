@@ -31,6 +31,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: releases/${{ steps.get-tag.outputs.TAG }}
+          base: ${{ github.head_ref }}
           title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
           labels: |
             kind:release
