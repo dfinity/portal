@@ -60,6 +60,8 @@ slug: ic-overview
 Here is the content of the article
 ```
 
+⚠️ Please make sure that the **[`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is filled with the new documents** so that we can ensure the right reviews are requested on PRs.
+
 More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc). 
 
 ### Deployed Previews
