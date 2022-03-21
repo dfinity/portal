@@ -1,3 +1,5 @@
+# Continuous Deployment job to deploy the portal to the Internet Computer as an asset canister.
+
 name: IC Deployment
 
 on:
