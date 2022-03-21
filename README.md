@@ -34,23 +34,20 @@ The developer portal uses Markdown as its default format.
 
 To create a document, go into the `/docs` folder and create a Markdown file in the directory of your choice.
 
-In order to place the document correctly in the sidebar you have to respect a naming convention. 
-The convention consists of having the position specified at the start of the name: `00-name.md`.
-
-Here are a few examples:
+Here is an example of a docs sub-directory:
 
 ```
 developer-docs/
-    01-ic-overview.md
-    02-quick-start.md
-    03-guides/
+    ic-overview.md
+    quick-start.md
+    guides/
         ...
 ```
 
 At the very top of the document, Docusaurus allows you to specify some parameters. 
 
 The `title` parameter is the only one **mandatory** for the developer portal. 
-Here is an example for the file `01-ic-overview.md`.
+Here is an example for the file `ic-overview.md`.
 
 ```md
 ---
@@ -61,6 +58,8 @@ Here is the content of the article
 ```
 
 ⚠️ Please make sure that the **[`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is filled with the new documents** so that we can ensure the right reviews are requested on PRs.
+
+⚠️ Also make sure your document has been added to [`/sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js) so that it will be listed on the website.
 
 More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc). 
 
