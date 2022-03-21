@@ -1,5 +1,5 @@
 ---
-title: Quickstart
+title: Index
 ---
 # Getting Started
 
