@@ -1,4 +1,4 @@
-name: CD Preview to Netlify
+name: Deployment Preview
 
 on:
   pull_request:

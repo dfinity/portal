@@ -87,7 +87,7 @@ To verify it is properly installed:
 
 Terminal should look like this (at least version 0.9.2):
 
-![dfx version](../img/quickstart/dfx-version.png)
+![dfx version](_attachments/dfx-version.png)
 
 # 2. Create a default project (2 min)
 
@@ -116,9 +116,9 @@ The `dfx new hello` command creates a new project directory named
 `hello`, template files, and a new `hello` Git repository for your
 project. Your terminal should look like this:
 
-![dfx new](../img/quickstart/dfx-new-hello-1.png)
+![dfx new](_attachments/dfx-new-hello-1.png)
 
-![dfx new](../img/quickstart/dfx-new-hello-2.png)
+![dfx new](_attachments/dfx-new-hello-2.png)
 
 2.3 Move to your project directory by running the following command:
 
@@ -126,7 +126,7 @@ project. Your terminal should look like this:
 
 Your directory should look like this:
 
-![cd new](../img/quickstart/cd-hello.png)
+![cd new](_attachments/cd-hello.png)
 
 # 3. Deploying dapp to local machine (3 min)
 
@@ -154,11 +154,11 @@ scheme:
 
 **Terminal A**
 
-![dfx new](../img/quickstart/dfx-new-hello-2.png)
+![dfx new](_attachments/dfx-new-hello-2.png)
 
 **Terminal B**
 
-![terminal b ls](../img/quickstart/terminal-b-ls.png)
+![terminal b ls](_attachments/terminal-b-ls.png)
 
 ## 3.1 Start the local version of the IC (Terminal A)
 
@@ -175,7 +175,7 @@ scheme:
 
     $ dfx start
 
-![dfx start](../img/quickstart/terminal-a-dfx-start.png)
+![dfx start](_attachments/terminal-a-dfx-start.png)
 
 Note: Depending on your platform and local security settings, you might
 see a warning displayed. If you are prompted to allow or deny incoming
@@ -202,7 +202,7 @@ many times):
 
     $ npm install
 
-![npm install](../img/quickstart/terminal-b-npm-install.png)
+![npm install](_attachments/terminal-b-npm-install.png)
 
 1.  Register, build and deploy dapp:
 
@@ -210,7 +210,7 @@ many times):
 
     $ dfx deploy
 
-![dfx deploy](../img/quickstart/terminal-b-dfx-deploy.png)
+![dfx deploy](_attachments/terminal-b-dfx-deploy.png)
 
 ## 3.3 Testing the dapp locally via command line (Terminal B)
 
@@ -246,13 +246,13 @@ the front-end using your web browser.
 Navigating to this URL displays a simple HTML page with a sample asset
 image file, an input field, and a button. For example:
 
-\+ ![Sample HTML page](../img/quickstart/front-end-prompt.png)
+\+ ![Sample HTML page](_attachments/front-end-prompt.png)
 
 1.  Type a greeting, then click **Click Me** to return the greeting.
 
     For example:
 
-    ![Hello](../img/quickstart/front-end-prompt.png)
+    ![Hello](_attachments/front-end-prompt.png)
 front-end-result.png)
 
 # 3.5 Stop the local canister execution environment

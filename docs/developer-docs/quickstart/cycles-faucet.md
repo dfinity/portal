@@ -18,7 +18,7 @@ or following the instructions at <https://smartcontracts.org>.
 First, you will need to navigate to <https://faucet.dfinity.org>. You
 will need to connect an active GitHub account to continue.
 
-![Connecting to GitHub](../img/cycles-faucet/faucet_step_1.png)
+![Connecting to GitHub](_attachments/faucet_step_1.png)
 
 ## Step 2: Principal ID
 
@@ -29,7 +29,7 @@ and will be used to give you access to your Cycles Wallet and any
 canister smart contracts you deploy with it. Your Principal will look
 like a long series of numbers and letters separated by hyphens.
 
-![Enter a Principal ID](../img/cycles-faucet/faucet_step_2.png)
+![Enter a Principal ID](_attachments/faucet_step_2.png)
 
 ## Step 3: Deposit method
 
@@ -41,14 +41,14 @@ canister $20 worth of cycles.
 For any first time user, select **Generate New Cycles Wallet** and then
 press **Continue​​**.
 
-![Generate New Cycles Wallet](../img/cycles-faucet/faucet_step_4.png)
+![Generate New Cycles Wallet](_attachments/faucet_step_4.png)
 
 # Configure your wallet in DFX
 
 Now that you have claimed your wallet, you should see a screen like the
 one below:
 
-![Configure DFX Wallet](../img/cycles-faucet/faucet_step_6.png)
+![Configure DFX Wallet](_attachments/faucet_step_6.png)
 
 Now you are ready to host a website on the IC or follow one of our dapp
 tutorials.
