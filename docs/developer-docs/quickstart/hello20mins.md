@@ -294,7 +294,7 @@ often "go get tokens."
 
 For the purposes of this tutorial, you can acquire free cycles for your
 "hello world" dapp from the cycles faucet. Follow the instructions here:
-[Claim your free cycles](cycles-faucet.xml).
+[Claim your free cycles](cycles-faucet.md).
 
 Few notes about cycles:
 
@@ -306,7 +306,7 @@ Few notes about cycles:
 
 -   You can see a table of compute and storage costs here: [Computation
     and storage
-    costs](../developers-guide/computation-and-storage-costs.xml).
+    costs](../linking/computation-and-storage-costs.md).
 
 ## 4.3 Check the connection to the Internet Computer blockchain mainnet (Terminal B)
 
