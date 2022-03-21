@@ -1,12 +1,14 @@
 on:
   pull_request:
     branches:
-      - releases/*
+      - master
     types: [closed]
 
 jobs:
   deploy:
     name: Deploy to IC
+    runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
+    
     steps: 
       - run: echo "Triggered"
