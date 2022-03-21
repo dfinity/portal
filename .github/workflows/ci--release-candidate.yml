@@ -30,9 +30,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_AUTH_TOKEN }}
           commit-message: Create new version ${{ steps.get-tag.outputs.TAG }}
-          committer: GitHub <noreply@github.com>
+          committer: DFINITY Bot <infra+dfinity-bot@dfinity.org>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: releases/${{ steps.get-tag.outputs.TAG }}
           base: master
