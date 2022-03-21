@@ -1,3 +1,7 @@
+# Create a release candidate Pull Request by creating a version in docusaurus
+# on a releases/* branch. 
+# Tag must be of format 0.0.0
+
 name: Tag versioning
 
 on:
