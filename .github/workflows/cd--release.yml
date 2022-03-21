@@ -37,5 +37,8 @@ jobs:
           branch: releases/${{ steps.get-tag.outputs.TAG }}
           base: master
           title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
+          body: |
+            Auto-generated PR by CI for release candidate ${{ steps.get-tag.outputs.TAG }}.
+          assignees: ${{ github.actor }}
           labels: |
             kind:release
