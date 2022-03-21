@@ -16,7 +16,10 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Code samples',
+      label: 'Sample Code',
+      link: {
+        type: 'doc', id: 'developer-docs/samples/index'
+      },
       items: [
         'developer-docs/samples/dao',
         'developer-docs/samples/dex',
