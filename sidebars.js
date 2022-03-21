@@ -13,6 +13,20 @@ const sidebars = {
         'developer-docs/quickstart/local-quickstart',
         'developer-docs/quickstart/network-quickstart'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Code samples',
+      items: [
+        'developer-docs/samples/dao',
+        'developer-docs/samples/dex',
+        'developer-docs/samples/encrypted-notes',
+        'developer-docs/samples/hackathon-projects',
+        'developer-docs/samples/hello',
+        'developer-docs/samples/host-a-website',
+        'developer-docs/samples/nft',
+        'developer-docs/samples/tokentransfer',
+      ]
     }
   ],
   'concepts': [
