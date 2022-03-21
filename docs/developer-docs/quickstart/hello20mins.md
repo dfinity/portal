@@ -9,7 +9,7 @@ smart contract or dapp to the IC in 20 minutes or less. All that is
 necessary to run this tutorial is basic knowledge of using a terminal
 (no editing of code).
 
-# Introduction
+## Introduction
 
 In this tutorial, we will deploy a simple `Hello` canister smart
 contract that has just one function—called `greet`. The `greet` function
@@ -27,15 +27,15 @@ back-end code written in Motoko, a programming language specifically
 designed for interacting with the Internet Computer (IC), and a simple
 webpack-based front-end.
 
-## Concepts necessary for this tutorial
+### Concepts necessary for this tutorial
 
-### Canister smart contract/dapp
+#### Canister smart contract/dapp
 
 A **canister smart contract/dapp** is a type of smart contract that
 bundles code and state. A canister can be deployed as a smart contract
 on the Internet Computer and accessed over the Internet.
 
-### Cycles
+#### Cycles
 
 On the Internet Computer, a **cycle** is the unit of measurement for
 resources consumed in the form of processing, memory, storage, and
@@ -48,7 +48,7 @@ correspond to one SDR.
 
 In this tutorial, you will get free cycles from the cycles faucet.
 
-# Platforms and operating systems supported
+## Platforms and operating systems supported
 
 -   Linux
 
@@ -56,11 +56,11 @@ In this tutorial, you will get free cycles from the cycles faucet.
 
 -   Windows
 
-# 1. Installing tools (5 min)
+## Installing tools (5 min)
 
 To build a dapp, users need to install the following:
 
-## 1.1 Node.js
+### Node.js
 
 This tutorial works best with node.js version higher than `16.*.*`.
 
@@ -71,7 +71,7 @@ Besides installing node.js, users need to also install: \* Node Package
 Manager (NPM). \* Node Version Manager (NVM), see [installing
 NVM](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-## 1.2 The Canister SDK (AKA "dfx")
+### The Canister SDK (AKA "dfx")
 
 The Canister SDK used in this article is called `dfx` and it is
 maintained by the DFINITY foundation. There are many SDK’s so this is
@@ -89,9 +89,9 @@ Terminal should look like this (at least version 0.9.2):
 
 ![dfx version](_attachments/dfx-version.png)
 
-# 2. Create a default project (2 min)
+## Create a default project (2 min)
 
-## 2.1 Create a new project
+### Create a new project
 
 Dapps on the Internet Computer start as projects. You create projects
 using the `dfx` parent command and its subcommands.
@@ -128,9 +128,9 @@ Your directory should look like this:
 
 ![cd new](_attachments/cd-hello.png)
 
-# 3. Deploying dapp to local machine (3 min)
+## Deploying dapp to local machine (3 min)
 
-## Using two terminal windows/tabs
+### Using two terminal windows/tabs
 
 Now that the code is there, the next step is to spin up a local version
 of the IC on local machine. For this, developers should keep two
@@ -160,7 +160,7 @@ scheme:
 
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
-## 3.1 Start the local version of the IC (Terminal A)
+### Start the local version of the IC (Terminal A)
 
 1.  Use the Terminal window or tab on your local computer.
 
@@ -186,7 +186,7 @@ machine. Leave this window/tab open and running while you continue.** If
 the window/tab is closed, the local version of the IC will not be
 running and the rest of the tutorial will fail.
 
-## 3.2 Deploy the "hello" dapp to the local version of the IC (Terminal B)
+### Deploy the "hello" dapp to the local version of the IC (Terminal B)
 
 Note: since this is a local version of the IC, this has fewer steps than
 deploying to mainnet (which requires cycles).
@@ -212,7 +212,7 @@ many times):
 
 ![dfx deploy](_attachments/terminal-b-dfx-deploy.png)
 
-## 3.3 Testing the dapp locally via command line (Terminal B)
+### Testing the dapp locally via command line (Terminal B)
 
 Now that the canister is deployed to local replica, you can send it a
 message. Since the canister has a method called `greet` (which accepts a
@@ -231,7 +231,7 @@ string as a parameter), we will send it a message.
 -   `+everyone+` is the text data type argument that you want to pass to
     the `+greet+` function.
 
-## 3.4 Testing the dapp locally via the browser
+### Testing the dapp locally via the browser
 
 Now that you have verified that your dapp has been deployed and tested
 its operation using the command line, let’s verify that you can access
@@ -255,7 +255,7 @@ image file, an input field, and a button. For example:
     ![Hello](_attachments/front-end-prompt.png)
 front-end-result.png)
 
-# 3.5 Stop the local canister execution environment
+## Stop the local canister execution environment
 
 After testing the application in the browser, you can stop the local
 canister execution environment so that it does not continue running in
@@ -274,9 +274,9 @@ To stop the local deployment:
 
         dfx stop
 
-# 4. Deploying on-chain (10 min)
+## Deploying on-chain (10 min)
 
-## Important note about cycles
+### Important note about cycles
 
 In order to run on-chain, IC dapps require cycles to pay for compute and
 storage. This means that the developer needs to acquire cycles and fill
@@ -290,7 +290,7 @@ The next steps will likely be familiar to those in crypto, but new
 entrants may be confused as to why first step of deploying a dapp is
 often "go get tokens."
 
-## 4.2 Acquiring cycles and adding them to your canister (Terminal B)
+### Acquiring cycles and adding them to your canister (Terminal B)
 
 For the purposes of this tutorial, you can acquire free cycles for your
 "hello world" dapp from the cycles faucet. Follow the instructions here:
@@ -308,7 +308,7 @@ Few notes about cycles:
     and storage
     costs](../linking/computation-and-storage-costs.md).
 
-## 4.3 Check the connection to the Internet Computer blockchain mainnet (Terminal B)
+### Check the connection to the Internet Computer blockchain mainnet (Terminal B)
 
 As sanity check, it is good practice to check your connection to the IC
 is stable:
@@ -325,7 +325,7 @@ If successful you should see output similar to the following:
       "ic_api_version": "0.18.0"  "impl_hash": "d639545e0f38e075ad240fd4ec45d4eeeb11e1f67a52cdd449cd664d825e7fec"  "impl_version": "8dc1a28b4fb9605558c03121811c9af9701a6142"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
     }
 
-## 4.4 Deploying on-chain (Terminal B)
+### Deploying on-chain (Terminal B)
 
 You are now ready to deploy your dapp on-chain.
 
@@ -371,7 +371,7 @@ Note, a common error one may get in section 4.4:
 This error means that the canister does not have enough cycles to
 deploy.
 
-## 4.4 Testing the on-chain dapp via command line (Terminal B)
+### Testing the on-chain dapp via command line (Terminal B)
 
 Now that the canister is deployed on-chain, you can send it a message.
 Since the canister has a method called `greet` (which accepts a string
@@ -386,9 +386,9 @@ IC \* `hello greet` means we are sending a message to a canister named
 parameter we are sending to `greet` (which accepts `Text` as its only
 input).
 
-# 5. Troubleshooting
+## Troubleshooting
 
-## Resources
+### Resources
 
 -   Developers who hit any blockers are encouraged to search or post in
     [IC developer forum](https://forum.dfinity.org).

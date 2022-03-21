@@ -1,3 +1,7 @@
+---
+title: Network Quick start
+---
+
 # Network deployment
 
 This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and deploying the default project on the Internet Computer blockchain mainnet.

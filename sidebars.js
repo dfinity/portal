@@ -6,10 +6,12 @@ const sidebars = {
     'developer-docs/ic-overview',
     {
       type: 'category',
-      label: 'Quickstart',
+      label: 'Quick start',
       items: [
         'developer-docs/quickstart/hello20mins',
         'developer-docs/quickstart/cycles-faucet',
+        'developer-docs/quickstart/local-quickstart',
+        'developer-docs/quickstart/network-quickstart'
       ]
     }
   ],

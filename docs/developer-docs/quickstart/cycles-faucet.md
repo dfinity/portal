@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+title: Cycles Faucet
 ---
 
 # Cycles Faucet
@@ -11,16 +11,16 @@ cycles in just a few minutes.
 
 or following the instructions at <https://smartcontracts.org>.
 
-# Claim your Cycles Wallet
+## Claim your Cycles Wallet
 
-## Step 1: Authenticate
+### Step 1: Authenticate
 
 First, you will need to navigate to <https://faucet.dfinity.org>. You
 will need to connect an active GitHub account to continue.
 
 ![Connecting to GitHub](_attachments/faucet_step_1.png)
 
-## Step 2: Principal ID
+### Step 2: Principal ID
 
 Once you have logged in, open up a terminal window and run the command
 `dfx identity get-principal`. Paste the output into the text input on
@@ -31,7 +31,7 @@ like a long series of numbers and letters separated by hyphens.
 
 ![Enter a Principal ID](_attachments/faucet_step_2.png)
 
-## Step 3: Deposit method
+### Step 3: Deposit method
 
 On the third screen, you have a choice to use an existing Cycles Wallet,
 or to Generate a New Cycles Wallet. If you already have created one, you
@@ -43,7 +43,7 @@ press **Continue​​**.
 
 ![Generate New Cycles Wallet](_attachments/faucet_step_4.png)
 
-# Configure your wallet in DFX
+## Configure your wallet in DFX
 
 Now that you have claimed your wallet, you should see a screen like the
 one below:
@@ -53,7 +53,7 @@ one below:
 Now you are ready to host a website on the IC or follow one of our dapp
 tutorials.
 
-## Next, people often look at these guides:
+### Next, people often look at these guides:
 
 -   [Local Development](./local-quickstart.html)
 
