@@ -1,0 +1,37 @@
+name: Tag versioning
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  
+jobs:
+  versioning:
+    name: "Versioning"
+    runs-on: ubuntu-latest
+      
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get the tag
+        id: get-tag
+        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create version
+        run: npm run docusaurus docs:version ${{ steps.get-tag.outputs.TAG }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Create new version ${{ steps.get-tag.outputs.TAG }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: releases/${{ steps.get-tag.outputs.TAG }}
+          base: ${{ github.head_ref }}
+          title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
+          labels: |
+            kind:release

@@ -4,12 +4,12 @@
 const sidebars = {
   'developer-docs': [
     'developer-docs/ic-overview',
-    'developer-docs/quick-start',
     {
       type: 'category',
-      label: 'Guides',
+      label: 'Quickstart',
       items: [
-        'developer-docs/guides/environment-setup'
+        'developer-docs/quickstart/hello20mins',
+        'developer-docs/quickstart/cycles-faucet',
       ]
     }
   ],
