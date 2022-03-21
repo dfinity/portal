@@ -44,19 +44,6 @@ developer-docs/
         ...
 ```
 
-At the very top of the document, Docusaurus allows you to specify some parameters. 
-
-The `title` parameter is the only one **mandatory** for the developer portal. 
-Here is an example for the file `ic-overview.md`.
-
-```md
----
-title: Internet Computer Overview
----
-
-Here is the content of the article
-```
-
 ⚠️ Please make sure that the **[`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is filled with the new documents** so that we can ensure the right reviews are requested on PRs.
 
 ⚠️ Also make sure your document has been added to [`/sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js) so that it will be listed on the website.
