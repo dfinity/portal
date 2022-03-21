@@ -1,7 +1,3 @@
----
-title: Local Quick start
----
-
 # Local development
 
 This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.

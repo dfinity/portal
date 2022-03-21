@@ -1,6 +1,3 @@
----
-title: Index
----
 # Getting Started
 
 To keep the instructions simple and focused on the task at hand, the

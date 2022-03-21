@@ -141,7 +141,7 @@ Take that canister ID and visit https://&lt;canister-id&gt;.ic0.app, inserting y
 
 You should see your live, multi-page website, looking like this!
 
-![Static Website](images/static-website.png)
+![Static Website](_attachments/static-website.png)
 
 ### Next steps
 

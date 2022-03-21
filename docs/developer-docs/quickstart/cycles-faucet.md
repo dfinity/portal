@@ -1,7 +1,3 @@
----
-title: Cycles Faucet
----
-
 # Cycles Faucet
 Ready to deploy your first smart contract on the Internet Computer
 blockchain? You can use our Cycles Faucet to get set up with $20 in free
