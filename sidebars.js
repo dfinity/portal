@@ -7,6 +7,9 @@ const sidebars = {
     {
       type: 'category',
       label: 'Quick start',
+      link: {
+        type: 'doc', id: 'developer-docs/quickstart/index'
+      },
       items: [
         'developer-docs/quickstart/hello20mins',
         'developer-docs/quickstart/cycles-faucet',

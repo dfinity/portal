@@ -57,22 +57,22 @@ const LinkList: LinkItem[] = [
   {
     title: translate({ message: 'Sample Code' }),
     description: (<>Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO.</>),
-    href: ''
+    href: '/docs/current/developer-docs/samples/'
   },
   {
     title: translate({ message: 'Quick Start' }),
     description: (<>Get your first dapp launched on the IC in 20 minutes.</>),
-    href: ''
+    href: '/docs/current/developer-docs/quickstart/'
   },
   {
     title: translate({ message: 'Community Forum' }),
     description: (<>Engage with the IC community to shape future features, propose new ideas, and ask questions..</>),
-    href: ''
+    href: 'https://forum.dfinity.org/'
   },
   {
     title: translate({ message: 'Wiki' }),
     description: (<>Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens.</>),
-    href: ''
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki'
   }
 ]
 
@@ -91,15 +91,20 @@ function Feature({title, description}: FeatureItem) {
 function Link({title, description, href}: LinkItem) {
   return (
     <div className={clsx(styles.link)}>
-      <h3 style={{
-        fontWeight: 'normal',
-        borderBottom: '1px solid #ABB1B3',
-        width: 'max-content',
-      }}>{title}</h3>
-      <p style={{
-        color: 'gray',
-        fontSize: '1em'
-      }}>{description}</p>
+      <a href={href} style={{
+        textDecoration: 'none',
+        color: 'black'
+      }}>
+        <h3 style={{
+          fontWeight: 'normal',
+          borderBottom: '1px solid #ABB1B3',
+          width: 'max-content',
+        }}>{title}</h3>
+        <p style={{
+          color: 'gray',
+          fontSize: '1em'
+        }}>{description}</p>
+      </a>
     </div>
   )
 }
