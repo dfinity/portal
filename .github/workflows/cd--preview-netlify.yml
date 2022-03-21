@@ -25,7 +25,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           CONTEXT: deploy-preview
           NETLIFY: true
-          PR_URL: ${{ github.event.pull_request.url }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
           netlify deploy --dir=build --build --context deploy-preview | tee logs.txt
           PREVIEW_URL="$(cat logs.txt | grep "Website Draft URL" | awk -F'Website Draft URL: ' '{print $2}')"
