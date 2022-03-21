@@ -1,44 +1,20 @@
-# Create a release candidate Pull Request by creating a version in docusaurus
-# on a releases/* branch. 
-# Tag must be of format v0.0.0
+# Deploy to the Internet Computer in the context of the deployment environment
+# of the same name. 
+# Runs when a pull request gets merged from 'releases/*' to 'master'
 
-name: Tag versioning
+name: Release Deployment
 
 on:
-  push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-  
+  pull_request:
+    types: [closed]
+
 jobs:
-  versioning:
-    name: "Versioning"
+  deploy:
+    name: Deploy to IC
+    
     runs-on: ubuntu-latest
-      
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Get the tag
-        id: get-tag
-        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Create version
-        run: npm run docusaurus docs:version ${{ steps.get-tag.outputs.TAG }}
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Create new version ${{ steps.get-tag.outputs.TAG }}
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: releases/${{ steps.get-tag.outputs.TAG }}
-          base: master
-          title: "[Release] ${{ steps.get-tag.outputs.TAG }}"
-          body: |
-            Auto-generated PR by CI for release candidate ${{ steps.get-tag.outputs.TAG }}.
-          assignees: ${{ github.actor }}
-          labels: |
-            kind:release
+    # Only when a pull request is merged from releases/* to master
+    if: github.event.pull_request.merged == true && github.base_ref == "master" && startsWith(github.head_ref, "releases/")
+    
+    steps: 
+      - run: echo "Triggered"

@@ -1,4 +1,4 @@
-name: CD to Netlify
+name: Pre-release Deployment
 
 on:
   push:
