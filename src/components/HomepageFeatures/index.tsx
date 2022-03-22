@@ -6,6 +6,7 @@ import Translate, { translate } from '@docusaurus/Translate';
 type FeatureItem = {
   title: string;
   description: JSX.Element;
+  href: string;
 };
 
 type LinkItem = {
@@ -17,39 +18,33 @@ type LinkItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: translate({ message: 'real web 3.0' }),
-    description: (<>Blockchain is end-to-end, now contracts can serve interactive web content</>),
+    description: (<>Dapps fully hosted on chain, serving content directly to your browser</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain'
   },
   {
-    title: translate({ message: 'internet speed' }),
+    title: translate({ message: 'web speed' }),
     description: (<>TX finalized in 2 secs. State-preserving calls processed in milliseconds</>),
-  },
-  {
-    title: translate({ message: 'internet scale' }),
-    description: (<>Blockchain capacity scales at constant cost and dapps can have infinite scale</>),
-  },
-  {
-    title: translate({ message: 'less CO₂' }),
-    description: (<>The environment is protected by efficiency approaching legacy tech</>),
-  },
-  {
-    title: translate({ message: 'internet identity' }),
-    description: (<>Secure authentication w/o friction via user devices (applies WebAuthn)</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed'
   },
   {
     title: translate({ message: 'reverse gas' }),
     description: (<>Contracts pay for their own computation; users don’t need tokens</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29'
   },
   {
-    title: translate({ message: 'orthogonal persistence' }),
-    description: (<>Data persists automatically in variables and data types as memory persists</>),
+    title: translate({ message: 'less CO₂' }),
+    description: (<>The environment is protected by efficiency approaching legacy tech</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost'
   },
   {
-    title: translate({ message: 'less gas' }),
-    description: (<>Science drives gas costs millions of times lower, and keeps them stable</>),
+    title: translate({ message: 'internet scale' }),
+    description: (<>Blockchain capacity scales at constant cost and dapps can have infinite scale</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit'
   },
   {
     title: translate({ message: 'actor model' }),
     description: (<>Parallelism enables scaling. Contracts are asynchronous</>),
+    href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Novel_.E2.80.9Ccanister.E2.80.9D_smart_contract_framework'
   },
 ];
 
@@ -121,7 +116,7 @@ export default function HomepageFeatures(): JSX.Element {
           </div>
         </div>
 
-        <h1 style={{
+        {/* <h1 style={{
           width: '50vw',
           fontWeight: 'normal',
           marginTop: '8rem',
@@ -130,7 +125,7 @@ export default function HomepageFeatures(): JSX.Element {
           <Translate>
           After years of R&D, the Internet Computer blockchain is removing the limitations from smart contract software using advanced new cryptography. It scales its capacity with demand and can support unbounded volumes of smart contract computation, so that finally, dapps can scale. New “canister” smart contracts run super-fast and can even securely serve interactive web content directly to end users. On-chain costs have been crushed and are stable. Now code your contracts in any language that compiles to WebAssembly and create dapps and tokenized services for everything to chase the blockchain singularity.
           </Translate>
-        </h1>
+        </h1> */}
       </section>
 
       <section className={styles.features}>
