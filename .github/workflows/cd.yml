@@ -1,12 +1,36 @@
-# Continuous Deployment job to deploy the portal to the Internet Computer as an asset canister.
+# Continuous Deployment job to deploy the portal to the Internet Computer as an asset canister
+# as well as to the Netlify beta.smartcontracts.org
 
-name: IC Deployment
+name: CD
 
 on:
   push:
     branches: [master]
 
 jobs:
+  deploy-netlify:
+    name: "Deploy to Netlify"
+    runs-on: ubuntu-latest
+
+    environment:
+      name: "Beta Netlify"
+      url: https://beta.smartcontracts.org
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy Site
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: netlify deploy --dir=build --prod
+
   deploy-ic:
     name: "Deploy to IC"
     runs-on: ubuntu-latest
