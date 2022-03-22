@@ -103,8 +103,8 @@ const config = {
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'showcase',
-            label: 'Showcase',
+            sidebarId: 'samples',
+            label: 'Samples',
           },
 
           {
