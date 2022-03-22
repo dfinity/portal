@@ -134,18 +134,17 @@ const config = {
       } : undefined,
 
       footer: {
-        style: 'dark',
         links: [
           {
             title: 'Developers',
             items: [
               {
                 label: 'FAQ',
-                href: 'https://dfinity.org/faq',
+                to: 'https://dfinity.org/faq',
               },
               {
                 label: 'Data Centers',
-                href: 'https://internetcomputer.org/',
+                to: 'https://internetcomputer.org/',
               },
             ],
           },
@@ -154,15 +153,15 @@ const config = {
             items: [
               {
                 label: 'Beacon Fund',
-                href: 'https://dfinity.org/ecosystem/fund'
+                to: 'https://dfinity.org/ecosystem/fund'
               },
               {
                 label: 'Fellowship',
-                href: 'https://dfinity.org/ecosystem/fellowship'
+                to: 'https://dfinity.org/ecosystem/fellowship'
               },
               {
                 label: 'Enterprise',
-                href: 'https://smartcontracts.org/#'
+                to: 'https://smartcontracts.org/#'
               },
             ]
           },
@@ -171,15 +170,15 @@ const config = {
             items: [
               {
                 label: 'Foundation',
-                href: 'https://dfinity.org/foundation'
+                to: 'https://dfinity.org/foundation'
               },
               {
                 label: 'Events',
-                href: 'https://dfinity.org/foundation#events'
+                to: 'https://dfinity.org/foundation#events'
               },
               {
                 label: 'Careers',
-                href: 'https://dfinity.org/careers'
+                to: 'https://dfinity.org/careers'
               },
             ]
           },
@@ -188,15 +187,15 @@ const config = {
             items: [
               {
                 label: 'Featured Videos',
-                href: 'https://dfinity.org/media'
+                to: 'https://dfinity.org/media'
               },
               {
                 label: 'Featured Stories',
-                href: 'https://dfinity.org/media#featured-stories'
+                to: 'https://dfinity.org/media#featured-stories'
               },
               {
                 label: 'Newsletter',
-                href: 'https://dfinity.org/newsletter'
+                to: 'https://dfinity.org/newsletter'
               },
             ]
           },
@@ -205,15 +204,15 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                to: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                to: 'https://discordapp.com/invite/docusaurus',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                to: 'https://twitter.com/docusaurus',
               },
             ],
           },
@@ -225,15 +224,15 @@ const config = {
               },
               {
                 label: 'Medium',
-                href: 'https://medium.com/dfinity-network-blog',
+                to: 'https://medium.com/dfinity-network-blog',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/dfinity',
+                to: 'https://twitter.com/dfinity',
               },
               {
                 label: 'Youtube',
-                href: 'https://www.youtube.com/dfinity',
+                to: 'https://www.youtube.com/dfinity',
               },
             ],
           },
@@ -241,19 +240,19 @@ const config = {
             items: [
               {
                 label: 'Telegram',
-                href: 'https://t.me/dfinity/',
+                to: 'https://t.me/dfinity/',
               },
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/dfinity',
+                to: 'https://www.linkedin.com/company/dfinity',
               },
               {
                 label: 'Reddit',
-                href: 'https://www.reddit.com/r/dfinity/',
+                to: 'https://www.reddit.com/r/dfinity/',
               },
               {
                 label: 'Forum',
-                href: 'https://forum.dfinity.org/',
+                to: 'https://forum.dfinity.org/',
               },
             ],
           },
@@ -261,11 +260,11 @@ const config = {
             items: [
               {
                 label: 'Facebook',
-                href: 'https://www.facebook.com/dfinity.org',
+                to: 'https://www.facebook.com/dfinity.org',
               },
               {
                 label: 'The Reboot',
-                href: 'https://thereboot.com/',
+                to: 'https://thereboot.com/',
               }
             ],
           },
