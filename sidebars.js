@@ -53,8 +53,8 @@ const sidebars = {
     },
     'references/ic-protocol-spec'
   ],
-  'showcase': [
-    'showcase/index'
+  'samples': [
+    'samples/index'
   ],
   'user-guides': [
     'user-guides/index'

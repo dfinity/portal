@@ -98,7 +98,7 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'user-guides',
-            label: 'User guides',
+            label: 'User Guides',
           },
           {
             type: 'docSidebar',
