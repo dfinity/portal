@@ -12,9 +12,9 @@ const sidebars = {
       },
       items: [
         'developer-docs/quickstart/hello20mins',
-        'developer-docs/quickstart/cycles-faucet',
-        'developer-docs/quickstart/local-quickstart',
-        'developer-docs/quickstart/network-quickstart'
+        'developer-docs/quickstart/cycles-faucet'
+        // 'developer-docs/quickstart/local-quickstart',
+        // 'developer-docs/quickstart/network-quickstart'
       ]
     },
     {
@@ -33,7 +33,41 @@ const sidebars = {
         'developer-docs/samples/nft',
         'developer-docs/samples/tokentransfer',
       ]
-    }
+    },
+    {
+      type: 'category',
+      label: 'Building on the IC',
+      link: {
+        type: 'doc', id: 'developer-docs/build/index'
+      },
+      items: [
+        'developer-docs/build/design-dapps',
+        'developer-docs/build/manage-projects',
+        'developer-docs/build/manage-canisters',
+        'developer-docs/build/default-wallet',
+        {
+          type: 'category',
+          label: 'Tutorials',
+          link: {
+            type: 'doc', id: 'developer-docs/build/tutorials/index'
+          },
+          items: [
+            'developer-docs/build/tutorials/explore-templates',
+          ]
+          },
+        'developer-docs/build/troubleshooting',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Integrate Functionality',
+      link: {
+        type: 'doc', id: 'developer-docs/functionality/index'
+      },
+      items: [
+        'developer-docs/functionality/index',
+      ]
+      }
   ],
   'concepts': [
     'concepts/index'
