@@ -53,8 +53,8 @@ function HomepageHeader() {
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/showcase">
-            <Translate>▶️ Showcase</Translate>
+            to="/docs/current/samples">
+            <Translate>▶️ Samples</Translate>
           </Link>
         </div>
       </div>

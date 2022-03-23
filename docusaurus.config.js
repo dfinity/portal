@@ -98,13 +98,13 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'user-guides',
-            label: 'User guides',
+            label: 'User Guides',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'showcase',
-            label: 'Showcase',
+            sidebarId: 'samples',
+            label: 'Samples',
           },
 
           {
