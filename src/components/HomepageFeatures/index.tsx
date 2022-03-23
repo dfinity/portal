@@ -71,14 +71,19 @@ const LinkList: LinkItem[] = [
   }
 ]
 
-function Feature({title, description}: FeatureItem) {
+function Feature({title, description, href}: FeatureItem) {
   return (
     <div className={clsx(styles.feature)}>
-      <h3>{title.split(' ')[0]} <span className={styles.thin}>{title.split(' ').splice(1, title.length)}</span></h3>
-      <p style={{
-        color: 'gray',
-        fontSize: '1em'
-      }}>{description}</p>
+      <a href={href} style={{
+        textDecoration: 'none',
+        color: 'black'
+      }}>
+        <h3>{title.split(' ')[0]} <span className={styles.thin}>{title.split(' ').splice(1, title.length)}</span></h3>
+        <p style={{
+          color: 'gray',
+          fontSize: '1em'
+        }}>{description}</p>
+      </a>
     </div>
   );
 }
