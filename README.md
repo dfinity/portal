@@ -59,4 +59,5 @@ Then simply press the "View deployment" button to in your fresh Netlify preview.
 Here is a description of how a contribution should be made to the developer portal. 
 1. The contributor creates a fork/branch where the changes are made. 
 2. a Pull Request is created from this branch to `master`. the preview is generated and the reviewers can directly check the preview website.
-3. the Pull Request is merged in `master`, deployed to the IC and sits in the "current" version until the next tag.
+3. After the Pull Request is merged into master, CI/CD will deploy the contents to the IC. The changes made will appear on the webpage under the version in the dropdown named "Current".
+4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to the IC. The webpage will default to the new "$TAG" version, visible in the versions dropdown, and allow users to view the contents pinned at that tag.
