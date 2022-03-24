@@ -1,15 +1,14 @@
-= Neurons and governance
-:keywords: Internet Computer,blockchain,proposals,voting,Neuron Nervous System,NNS,platform management,configuration management,network management,smart contract,canister
-:proglang: Motoko
-:IC: Internet Computer
-:company-id: DFINITY
+# Neurons and governance
 
 As a decentralized blockchain, all changes to the configuration and behavior of the Internet Computer are controlled by a governance body called the Network Nervous System (NNS). The NNS controls many aspects of the Internet Computer blockchain including the following:
 
-- which data center providers participate in the network
-- the number, location, and ownership of the nodes accepted from a data center provider
-- assignment of nodes to subnet blockchains
-- whether upgrades to canister smart contracts or to a new protocol version are allowed or not
+-   which data center providers participate in the network
+
+-   the number, location, and ownership of the nodes accepted from a data center provider
+
+-   assignment of nodes to subnet blockchains
+
+-   whether upgrades to canister smart contracts or to a new protocol version are allowed or not
 
 In addition, only members of the governance body can vote to adopt or reject requests to upgrade Internet Computer replicas or modify the Internet Computer protocol.
 
@@ -20,13 +19,3 @@ Because tokens on the Internet Computer are generally liquid, they do not repres
 When a person or organization has some number of ICP tokens locked up in a neuron, the neuron holder has the right to vote on proposals, and to be paid for voting in proportion to the number of ICP locked up, the length of the lock-up period and the relative number of votes cast.
 
 The Internet Computer blockchain tracks the number of ICP tokens that are locked up in neurons and provides the logic necessary for voting in conjunction with managing ICP token account balances.
-
-////
-== Want to learn more?
-
-If you are looking for more information about staking, voting, and autonomous governance, check out the following related resources:
-
-* link:https://www.youtube.com/watch?v=LKpGuBOXxtQ[Introducing Canisters — An Evolution of Smart Contracts (video)]
-* link:https://www.youtube.com/watch?v=xVNSxFFAYUo&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=1[Community Conversations | Staking & Neurons]
-
-////

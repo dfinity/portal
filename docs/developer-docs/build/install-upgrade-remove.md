@@ -8,7 +8,7 @@ As described in the [Quick start](../quickstart/quickstart-intro.xml), you can d
 
 The {sdk-short-name} installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 55%" />
@@ -48,7 +48,7 @@ The {sdk-short-name} installation script installs several components in default 
 <td style="text-align: left;"><p><code>~/.cache/dfinity/versions</code></p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Core components in a versioned directory
 

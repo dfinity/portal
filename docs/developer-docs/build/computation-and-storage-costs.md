@@ -12,7 +12,7 @@ Canister smart contract computations running on the Internet Computer blockchain
 
 See below for details on the cost of compute and storage transactions on the Internet Computer as of July 26, 2021.
 
-<table>
+<!-- <table>
 <caption>Cycles Cost per Transaction (as of July 26, 2021)</caption>
 <colgroup>
 <col style="width: 33%" />
@@ -73,7 +73,7 @@ See below for details on the cost of compute and storage transactions on the Int
 <td style="text-align: right;"><p>127,000</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 Cycles Cost per Transaction (as of July 26, 2021)
 
@@ -81,7 +81,7 @@ The $USD cost for transactions below is based on the above cycle costs. 1 XDR is
 
 To derive the estimated GB Storage per month, we assume a 30 day month.
 
-<table>
+<!-- <table>
 <caption>Cost per Transaction in $USD (as of July 26, 2021)</caption>
 <colgroup>
 <col style="width: 33%" />
@@ -142,13 +142,13 @@ To derive the estimated GB Storage per month, we assume a 30 day month.
 <td style="text-align: right;"><p>$0.00000018034</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 Cost per Transaction in $USD (as of July 26, 2021)
 
 Assuming a 30 day month — 
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -161,4 +161,4 @@ Assuming a 30 day month — 
 <td style="text-align: right;"><p>$0.467</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->

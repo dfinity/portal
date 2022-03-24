@@ -30,7 +30,7 @@ Note that you can only run this command from within a project directory. For exa
 
 You can use the following optional flags with the `dfx _language-service` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -55,13 +55,13 @@ You can use the following optional flags with the `dfx _language-service` comman
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following arguments for the `dfx _language-service` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -78,7 +78,7 @@ You can specify the following arguments for the `dfx _language-service` command.
 <td style="text-align: left;"><p>Specifies the name of the canister that the compiler should monitor. If you specify a canister name, the name should match a canister name you have configured in the <code>dfx.json</code> configuration file for your project. If you don’t specify a canister name, the first canister specified in the <code>dfx.json</code> configuration file is used as the target.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
