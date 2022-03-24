@@ -177,7 +177,7 @@ You can use the following options with the `dfx canister call` command.
 
 You can specify the following arguments for the `dfx canister call` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -202,7 +202,7 @@ You can specify the following arguments for the `dfx canister call` command.
 <td style="text-align: left;"><p>Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the <code>--type</code> option if you pass an argument to the canister. By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes to a canister.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
