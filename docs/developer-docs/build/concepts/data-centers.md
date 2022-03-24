@@ -12,7 +12,7 @@ To provide a truly decentralized blockchain that can withstand potential service
 
 The following diagram provides a simplified view of a subnet with nodes in four data centers.
 
-![data center simplified](data-center-simplified.svg)
+![data center simplified](../_attachments/data-center-simplified.svg)
 
 In this simplified scenario:
 

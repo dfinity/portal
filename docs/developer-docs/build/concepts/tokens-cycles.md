@@ -18,7 +18,7 @@ There are a few different ways you might acquire ICP tokens. For example, you mi
 
 If you have ICP tokens, but aren’t sure how to use them, the following diagram provides a simplified overview to illustrate the three most common scenarios.
 
-![icp tokens how to use](icp-tokens-how-to-use.svg)
+![icp tokens how to use](../_attachments/icp-tokens-how-to-use.svg)
 
 As this diagram suggests, how you use ICP tokens depends primarily on your goals in acquiring them. For example, if you are a developer or entrepreneur, ICP tokens can be converted to **cycles**. Cycles can then be used to pay for running canister smart contracts that deliver products and services to the market. If you are a member of the community interested in participating in governance and influencing the direction of the Internet Computer, you can lock up ICP tokens in a stake—called a neuron—so that you can submit and vote on proposals.
 
