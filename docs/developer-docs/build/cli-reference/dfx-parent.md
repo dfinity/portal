@@ -12,7 +12,7 @@ Use the `dfx` parent command with flags and subcommands to specify the operation
 
 You can use the following optional flags with the `dfx` parent command or with any of the `dfx` subcommands.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -41,13 +41,13 @@ You can use the following optional flags with the `dfx` parent command or with a
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can use the following options with the `dfx` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -76,7 +76,7 @@ You can use the following options with the `dfx` command.
 <p>The default logging mode is <code>stderr</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Subcommands
 
@@ -84,7 +84,7 @@ Use the following subcommands to specify the operation you want to perform or to
 
 For reference information and examples, select an appropriate subcommand.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -157,7 +157,7 @@ For reference information and examples, select an appropriate subcommand.
 <td style="text-align: left;"><p>Enables you to manage cycles, controllers, custodians, and addresses for the default cycles wallet associated with the currently-selected identity.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

@@ -16,7 +16,7 @@ The `dfx generate` command looks for the configuration under the `declarations` 
 
 You can use the following optional flags with the `dfx generate` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -37,13 +37,13 @@ You can use the following optional flags with the `dfx generate` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Arguments
 
 You can specify the following arguments for the `dfx generate` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -60,13 +60,13 @@ You can specify the following arguments for the `dfx generate` command.
 <td style="text-align: left;"><p>Specifies the name of the canister for which to generate type declarations. The canister name must match at least one name that you have configured in the <code>canisters</code> section of the <code>dfx.json</code> configuration file for your project. If you don’t specify this argument, <code>dfx generate</code> will generate type declarations for all canisters declared in <code>dfx.json</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Configuration
 
 The behavior of `dfx generate` is controlled by the `dfx.json` configuration file. Under `dfx.json` → `canisters` → `<canister_name>`, you can add a `declarations` section. In this section, you can specify the following fields:
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -91,11 +91,11 @@ The behavior of `dfx generate` is controlled by the `dfx.json` configuration fil
 <td style="text-align: left;"><p>String that will replace <code>process.env.{canister_name_uppercase}_CANISTER_ID</code> in the <code>src/dfx/assets/language_bindings/canister.js</code> template.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 Outputs from `dfx generate`:
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -124,7 +124,7 @@ Outputs from `dfx generate`:
 <td style="text-align: left;"><p><code>&lt;canister_name&gt;.mo</code></p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

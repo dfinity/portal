@@ -8,7 +8,7 @@ The basic syntax for running `dfx cache` commands is:
 
 Depending on the `dfx cache` subcommand you specify, additional arguments, options, and flags might apply. For reference information and examples that illustrate using `dfx cache` commands, select an appropriate command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -41,7 +41,7 @@ Depending on the `dfx cache` subcommand you specify, additional arguments, optio
 <td style="text-align: left;"><p>Show the path of the cache used by this version of the <code>dfx</code> executable.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 To view usage information for a specific subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx cache delete`, you can run the following command:
 
@@ -59,7 +59,7 @@ Use the `dfx cache delete` command to delete a specified version of `dfx` from t
 
 You can use the following optional flags with the `dfx cache delete` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -80,13 +80,13 @@ You can use the following optional flags with the `dfx cache delete` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx cache delete` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -103,7 +103,7 @@ You can specify the following argument for the `dfx cache delete` command.
 <td style="text-align: left;"><p>Specifies the version of <code>dfx</code> you to delete from the local cache.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -123,7 +123,7 @@ Use the `dfx cache install` command to install `dfx` using the version currently
 
 You can use the following optional flags with the `dfx cache install` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -144,7 +144,7 @@ You can use the following optional flags with the `dfx cache install` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -166,7 +166,7 @@ If you have multiple versions of `dfx` installed, the cache list displays an ast
 
 You can use the following optional flags with the `dfx cache list` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -187,7 +187,7 @@ You can use the following optional flags with the `dfx cache list` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -213,7 +213,7 @@ Use the `dfx cache show` command to display the full path to the cache used by t
 
 You can use the following optional flags with the `dfx cache show` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -234,7 +234,7 @@ You can use the following optional flags with the `dfx cache show` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 

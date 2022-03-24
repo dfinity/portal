@@ -12,7 +12,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx ping` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -33,13 +33,13 @@ You can use the following optional flags with the `dfx ping` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Arguments
 
 You can specify the following argument for the `dfx ping` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -56,7 +56,7 @@ You can specify the following argument for the `dfx ping` command.
 <td style="text-align: left;"><p>Specifies the {platform} or testnet URL that you want to use.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

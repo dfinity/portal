@@ -12,7 +12,7 @@ Depending on the `dfx identity` subcommand you specify, additional arguments, op
 
 For reference information and examples that illustrate using `dfx identity` commands, select an appropriate command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -69,7 +69,7 @@ For reference information and examples that illustrate using `dfx identity` comm
 <td style="text-align: left;"><p>Displays the name of the current identity user context.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Creating a default identity
 
@@ -95,7 +95,7 @@ If you haven’t created any user identities, you can use this command to displa
 
 You can use the following optional flags with the `dfx identity get-principal` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -116,7 +116,7 @@ You can use the following optional flags with the `dfx identity get-principal` c
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Example
 
@@ -141,7 +141,7 @@ Note that you must be connected to the {platform} or the local canister executio
 
 You can use the following optional flags with the `dfx identity get-wallet` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -162,7 +162,7 @@ You can use the following optional flags with the `dfx identity get-wallet` comm
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Example
 
@@ -186,7 +186,7 @@ Use the `dfx identity import` command to create a user identity by importing the
 
 You can use the following optional flags with the `dfx identity import` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -207,7 +207,7 @@ You can use the following optional flags with the `dfx identity import` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -229,7 +229,7 @@ Use the `dfx identity list` command to display the list of user identities avail
 
 You can use the following optional flags with the `dfx identity list` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -250,7 +250,7 @@ You can use the following optional flags with the `dfx identity list` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -280,7 +280,7 @@ Use the `dfx identity new` command to add new user identities. You should note t
 
 You can use the following optional flags with the `dfx identity new` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -301,13 +301,13 @@ You can use the following optional flags with the `dfx identity new` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity new` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -324,7 +324,7 @@ You must specify the following argument for the `dfx identity new` command.
 <td style="text-align: left;"><p>Specifies the name of the identity to create. This argument is required.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -351,7 +351,7 @@ Use the `dfx identity remove` command to remove an existing user identity. You s
 
 You can use the following optional flags with the `dfx identity remove` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -372,13 +372,13 @@ You can use the following optional flags with the `dfx identity remove` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity remove` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -395,7 +395,7 @@ You must specify the following argument for the `dfx identity remove` command.
 <td style="text-align: left;"><p>Specifies the name of the identity to remove. This argument is required.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -425,7 +425,7 @@ Use the `dfx identity rename` command to rename an existing user identity. You s
 
 You can use the following optional flags with the `dfx identity rename` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -446,13 +446,13 @@ You can use the following optional flags with the `dfx identity rename` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You must specify the following arguments for the `dfx identity rename` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -473,7 +473,7 @@ You must specify the following arguments for the `dfx identity rename` command.
 <td style="text-align: left;"><p>Specifies the new name of the identity you want to rename. This argument is required.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Example
 
@@ -493,7 +493,7 @@ Use the `dfx identity set-wallet` command to specify the wallet canister identif
 
 You can use the following optional flags with the `dfx identity set-wallet` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -518,7 +518,7 @@ You can use the following optional flags with the `dfx identity set-wallet` comm
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Example
 
@@ -541,7 +541,7 @@ Use the `dfx identity use` command to specify the user identity you want to acti
 
 You can use the following optional flags with the `dfx identity use` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -562,13 +562,13 @@ You can use the following optional flags with the `dfx identity use` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity use` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -585,7 +585,7 @@ You must specify the following argument for the `dfx identity use` command.
 <td style="text-align: left;"><p>Specifies the name of the identity you want to make active for subsequent commands. This argument is required.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -607,7 +607,7 @@ Use the `dfx identity whoami` command to display the name of the currently-activ
 
 You can use the following optional flags with the `dfx identity whoami` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -628,7 +628,7 @@ You can use the following optional flags with the `dfx identity whoami` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Example
 

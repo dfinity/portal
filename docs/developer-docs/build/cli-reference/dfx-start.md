@@ -12,7 +12,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx start` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -41,13 +41,13 @@ You can use the following optional flags with the `dfx start` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can use the following option with the `dfx start` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -64,7 +64,7 @@ You can use the following option with the `dfx start` command.
 <td style="text-align: left;"><p>Specifies the host interface IP address and port number to bind the frontend to. The default is <code>127.0.0.1:8000</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

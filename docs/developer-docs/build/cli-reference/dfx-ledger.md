@@ -10,7 +10,7 @@ The basic syntax for running `dfx ledger` commands is:
 
 Depending on the `dfx ledger` subcommand you specify, additional arguments, options, and flags might apply. For reference information and examples that illustrate using `dfx ledger` commands, select an appropriate command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -51,7 +51,7 @@ Depending on the `dfx ledger` subcommand you specify, additional arguments, opti
 <td style="text-align: left;"><p>Transfers ICP from the user to the destination Account Identifier.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 To view usage information for a specific subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx ledger transfer`, you can run the following command:
 
@@ -69,7 +69,7 @@ Use the `dfx ledger account-id` command to display the account identifier associ
 
 You can use the following optional flags with the `dfx ledger account-id` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -90,7 +90,7 @@ You can use the following optional flags with the `dfx ledger account-id` comman
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -114,7 +114,7 @@ Use the `dfx ledger balance` command to print your account balance or that of an
 
 You can use the following optional flags with the `dfx ledger balance` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -135,13 +135,13 @@ You can use the following optional flags with the `dfx ledger balance` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx ledger balance` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -158,7 +158,7 @@ You can specify the following argument for the `dfx ledger balance` command.
 <td style="text-align: left;"><p>Specify an Account Identifier to get the balance. If this command is not specified, the command returns the balance of ICP tokens for the currently-selected user identity.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -182,7 +182,7 @@ Use the `dfx ledger create-canister` command to convert ICP tokens to cycles and
 
 You can use the following optional flags with the `dfx ledger create-canister` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -203,13 +203,13 @@ You can use the following optional flags with the `dfx ledger create-canister` c
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx ledger create-canister` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -226,13 +226,13 @@ You can specify the following argument for the `dfx ledger create-canister` comm
 <td style="text-align: left;"><p>Specifies the principal identifier to set as the controller of the new canister.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can specify the following argument for the `dfx ledger create-canister` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -265,7 +265,7 @@ You can specify the following argument for the `dfx ledger create-canister` comm
 <td style="text-align: left;"><p>Specify a maximum transaction fee. The default is 10000 e8s.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -298,7 +298,7 @@ Use the `dfx ledger notify` command to notify the ledger about a send transactio
 
 You can use the following optional flags with the `dfx ledger notify` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -319,13 +319,13 @@ You can use the following optional flags with the `dfx ledger notify` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx ledger notify` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -346,7 +346,7 @@ You can specify the following argument for the `dfx ledger notify` command.
 <td style="text-align: left;"><p>Specifies the principal of the destination, either a canister identifier or the textual representation of a user principal. If the send transaction was for the <code>create-canister</code> command, specify the <code>controller</code> principal. If the send transaction was for the <code>top-up</code> command, specify the <code>canister ID</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -366,7 +366,7 @@ Use the `dfx ledger top-up` command to top up a canister with cycles minted from
 
 You can use the following optional flags with the `dfx ledger top-up` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -387,13 +387,13 @@ You can use the following optional flags with the `dfx ledger top-up` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx ledger top-up` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -410,13 +410,13 @@ You can specify the following argument for the `dfx ledger top-up` command.
 <td style="text-align: left;"><p>Specifies the canister identifier that you would like to top up.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can specify the following options for the `dfx ledger top-up` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -449,7 +449,7 @@ You can specify the following options for the `dfx ledger top-up` command.
 <td style="text-align: left;"><p>Specifies a maximum transaction fee. The default is 10000 e8s.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -476,7 +476,7 @@ Use the `dfx ledger transfer` command to transfer ICP tokens from your account a
 
 You can use the following optional flags with the `dfx ledger transfer` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -497,13 +497,13 @@ You can use the following optional flags with the `dfx ledger transfer` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx ledger transfer` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -520,13 +520,13 @@ You can specify the following argument for the `dfx ledger transfer` command.
 <td style="text-align: left;"><p>Specify the Account Identifier or address to which you want to transfer ICP tokens.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can specify the following argument for the `dfx ledger transfer` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -559,7 +559,7 @@ You can specify the following argument for the `dfx ledger transfer` command.
 <td style="text-align: left;"><p>Specifies a numeric memo for this transaction.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 

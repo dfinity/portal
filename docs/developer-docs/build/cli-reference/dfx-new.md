@@ -12,7 +12,7 @@ You can use the `--dry-run` option to preview the directories and files to be cr
 
 You can use the following optional flags with the `dfx new` command:
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -41,13 +41,13 @@ You can use the following optional flags with the `dfx new` command:
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Arguments
 
 You must specify the following argument for the `dfx new` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -64,7 +64,7 @@ You must specify the following argument for the `dfx new` command.
 <td style="text-align: left;"><p>Specifies the name of the project to create. This argument is required.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

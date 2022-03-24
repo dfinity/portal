@@ -10,7 +10,7 @@ Use this command to view usage information for the `dfx` parent command or for a
 
 You can specify any `dfx` subcommand as an argument to view usage information for that subcommand using the `dfx help` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -27,7 +27,7 @@ You can specify any `dfx` subcommand as an argument to view usage information fo
 <td style="text-align: left;"><p>Specifies the subcommand usage information you want to display.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

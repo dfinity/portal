@@ -12,7 +12,7 @@ Depending on the `dfx canister` subcommand you specify, additional arguments, op
 
 For reference information and examples that illustrate using `dfx canister` commands, select an appropriate command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -77,7 +77,7 @@ For reference information and examples that illustrate using `dfx canister` comm
 <td style="text-align: left;"><p>Stops a currently running canister.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Overriding the default deployment environment
 
@@ -111,7 +111,7 @@ Use the `dfx canister call` command to call a specified method on a deployed can
 
 You can use the following optional flags with the `dfx canister call` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -144,13 +144,13 @@ You can use the following optional flags with the `dfx canister call` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can use the following options with the `dfx canister call` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -171,7 +171,7 @@ You can use the following options with the `dfx canister call` command.
 <td style="text-align: left;"><p>Specifies the data format for the argument when making the call using an argument. The valid values are <code>idl</code> and <code>raw</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
@@ -255,7 +255,7 @@ The first time you run the `dfx canister create` command to register an identifi
 
 You can use the following optional flags with the `dfx canister create` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -276,13 +276,13 @@ You can use the following optional flags with the `dfx canister create` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can use the following options with the `dfx canister create` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -299,13 +299,13 @@ You can use the following options with the `dfx canister create` command.
 <td style="text-align: left;"><p>Enables you to specify the initial number of cycles in a canister when it is created by your wallet.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following argument with the `dfx canister create` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -326,7 +326,7 @@ You can use the following argument with the `dfx canister create` command.
 <td style="text-align: left;"><p>Specifies the name of the canister for which you want to register an identifier. If you are not using the <code>--all</code> option, the canister name is a required argument and must match at least one name that you have configured in the <code>canisters</code> section of the <code>dfx.json</code> configuration file for your project.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -352,7 +352,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx canister delete` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -400,7 +400,7 @@ You can use the following arguments with the `dfx canister delete` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to delete. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -428,7 +428,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx canister id` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -449,13 +449,13 @@ You can use the following optional flags with the `dfx canister id` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following argument with the `dfx canister id` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -472,7 +472,7 @@ You can use the following argument with the `dfx canister id` command.
 <td style="text-align: left;"><p>Specifies the name of the canister for which you want to display an identifier.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -498,7 +498,7 @@ Use the `dfx canister install` command to install compiled code as a canister on
 
 You can use the following optional flags with the `dfx canister install` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -523,13 +523,13 @@ You can use the following optional flags with the `dfx canister install` command
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can use the following options with the `dfx canister install` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -562,13 +562,13 @@ You can use the following options with the `dfx canister install` command.
 <td style="text-align: left;"><p>Specifies whether you want to <code>install</code>, <code>reinstall</code>, or <code>upgrade</code> canisters. For more information about installation modes and canister management, see <a href="../working-with-canisters.xml">Managing canisters</a>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister install` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -589,7 +589,7 @@ You can use the following arguments with the `dfx canister install` command.
 <td style="text-align: left;"><p>Specifies the name of the canister to deploy. If you are not using the <code>--all</code> option, the canister name is a required argument and should match the name you have configured for a project in the <code>canisters</code> section of the <code>dfx.json</code> configuration file.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -649,7 +649,7 @@ Use the `dfx canister request-status` command to request the status of a specifi
 
 You can use the following optional flags with the `dfx canister request-status` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -670,13 +670,13 @@ You can use the following optional flags with the `dfx canister request-status` 
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx canister request-status` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -693,7 +693,7 @@ You can specify the following argument for the `dfx canister request-status` com
 <td style="text-align: left;"><p>Specifies the hexadecimal string returned in response to a <code>dfx canister call</code> or <code>dfx canister install</code> command. This identifier is an hexadecimal string starting with 0x.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -717,7 +717,7 @@ Note that you can specify either a user identity or a canister as a controller. 
 
 You can use the following optional flags with the `dfx canister set-controller` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -738,13 +738,13 @@ You can use the following optional flags with the `dfx canister set-controller` 
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You must use the following arguments with the `dfx canister set-controller` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -765,7 +765,7 @@ You must use the following arguments with the `dfx canister set-controller` comm
 <td style="text-align: left;"><p>Specifies the identity name or principal of the controller.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -831,7 +831,7 @@ For example, when creating your neuron stake, you might want to use the `dfx can
 
 You can use the following optional flags with the `dfx canister request-status` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -852,13 +852,13 @@ You can use the following optional flags with the `dfx canister request-status` 
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following argument for the `dfx canister send` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -875,7 +875,7 @@ You can specify the following argument for the `dfx canister send` command.
 <td style="text-align: left;"><p>Specifies the file name of the message.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -895,7 +895,7 @@ Use the `dfx canister sign` command before sending a message with the `dfx canis
 
 You can use the following optional flags with the `dfx canister sign` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -924,13 +924,13 @@ You can use the following optional flags with the `dfx canister sign` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Options
 
 You can specify the following options for the `dfx canister sign` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -960,13 +960,13 @@ You can specify the following options for the `dfx canister sign` command.
 <p>By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following arguments for the `dfx canister sign` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -991,7 +991,7 @@ You can specify the following arguments for the `dfx canister sign` command.
 <td style="text-align: left;"><p>Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the <code>--type</code> option if you pass an argument to the canister. By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -1027,7 +1027,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx canister start` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1048,13 +1048,13 @@ You can use the following optional flags with the `dfx canister start` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister start` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1075,7 +1075,7 @@ You can use the following arguments with the `dfx canister start` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to start. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -1103,7 +1103,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx canister status` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1124,13 +1124,13 @@ You can use the following optional flags with the `dfx canister status` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister status` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1151,7 +1151,7 @@ You can use the following arguments with the `dfx canister status` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to return information for. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 
@@ -1181,7 +1181,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx canister stop` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1202,13 +1202,13 @@ You can use the following optional flags with the `dfx canister stop` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister stop` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -1229,7 +1229,7 @@ You can use the following arguments with the `dfx canister stop` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to stop. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Examples
 

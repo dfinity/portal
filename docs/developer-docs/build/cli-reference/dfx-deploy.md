@@ -18,7 +18,7 @@ Note that you can only run this command from within the project directory struct
 
 You can use the following optional flags with the `dfx deploy` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -39,13 +39,13 @@ You can use the following optional flags with the `dfx deploy` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can use the following options with the `dfx deploy` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -70,13 +70,13 @@ You can use the following options with the `dfx deploy` command.
 <td style="text-align: left;"><p>Enables you to specify the initial number of cycles for a canister in a project.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
 You can specify the following arguments for the `dfx deploy` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -93,7 +93,7 @@ You can specify the following arguments for the `dfx deploy` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to register, build, and deploy. Note that the canister name you specify must match at least one name in the <code>canisters</code> section of the <code>dfx.json</code> configuration file for the project. If you don’t specify a canister name, <code>dfx deploy</code> will deploy all canisters defined in the <code>dfx.json</code> file.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

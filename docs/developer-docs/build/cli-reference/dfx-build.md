@@ -14,7 +14,7 @@ The `dfx build` command looks for the source code to compile using the informati
 
 You can use the following optional flags with the `dfx build` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -39,13 +39,13 @@ You can use the following optional flags with the `dfx build` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can specify the following option for the `dfx build` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -62,13 +62,13 @@ You can specify the following option for the `dfx build` command.
 <td style="text-align: left;"><p>Specifies the network alias or URL you want to connect to. You can use this option to override the network specified in the <code>dfx.json</code> configuration file.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Arguments
 
 You can specify the following arguments for the `dfx build` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -89,7 +89,7 @@ You can specify the following arguments for the `dfx build` command.
 <td style="text-align: left;"><p>Specifies the name of the canister you want to build. If you are not using the <code>--all</code> option, you can continue to use <code>dfx build</code> or provide a canister name as an argument (the canister name must match at least one name that you have configured in the <code>canisters</code> section of the <code>dfx.json</code> configuration file for your project.)</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

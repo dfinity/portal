@@ -10,7 +10,7 @@ Use the `dfx config` command to view or configure settings in the configuration 
 
 You can use the following optional flags with the `dfx config` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -31,13 +31,13 @@ You can use the following optional flags with the `dfx config` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can use the following option with the `dfx config` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -54,13 +54,13 @@ You can use the following option with the `dfx config` command.
 <td style="text-align: left;"><p>Specifies the format of the configuration file output. By default, the file is displayed using JSON format. The valid values are <code>json</code> and <code>text</code>.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Arguments
 
 You can specify the following arguments for the `dfx config` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -81,7 +81,7 @@ You can specify the following arguments for the `dfx config` command.
 <td style="text-align: left;"><p>Specifies the new value for the option you are changing. If you don’t specify a value, the command returns the current value for the option from the configuration file.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 

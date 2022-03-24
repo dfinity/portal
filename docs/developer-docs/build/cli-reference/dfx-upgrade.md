@@ -10,7 +10,7 @@ Use the `dfx upgrade` command to upgrade the {sdk-short-name} components running
 
 You can use the following optional flags with the `dfx upgrade` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -31,13 +31,13 @@ You can use the following optional flags with the `dfx upgrade` command.
 <td style="text-align: left;"><p>Displays version information.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Options
 
 You can use the following option with the `dfx upgrade` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -54,7 +54,7 @@ You can use the following option with the `dfx upgrade` command.
 <td style="text-align: left;"><p>Specifies the version you want to identify as the current version. This option enables you to override the version of the software currently identified as the latest version with the version you pass on the command-line.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ## Examples
 
