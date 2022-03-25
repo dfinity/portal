@@ -9,11 +9,11 @@ Depending on your preferred development workflow, you can obtain a unique identi
 
 To obtain a unique identifier for a canister:
 
-1.  Open a new terminal window or tab on your local computer.
+1.  Open a new terminal window or tab on your computer.
 
 2.  Create a new project for the canister you plan to create by running a command similar to the following:
 
-        dfx new YOUR-PROJECT-NAME
+        `dfx new YOUR-PROJECT-NAME`
 
     Note that the name you use for the project is also used as the canister name by default.
 
