@@ -86,11 +86,11 @@ This specification may refer to certain constants and limits without specifying 
 
 -   `MAX_CYCLES_PER_MESSAGE`
 
-    Amount of cycles that a canister has to have before a message is attempted to be executed, which is deducted from the canister balance before message execution. See [Message execution](#rule-message-execution).
+    Amount of cycles that a canister has to have before a message is attempted to be executed, which is deducted from the canister balance before message execution. See [Message execution](#message-execution).
 
 -   `MAX_CYCLES_PER_RESPONSE`
 
-    Amount of cycles that the IC sets aside when a canister performs a call. This is used to pay for processing the response message, and unused cycles after the execution of the response are refunded. See [Message execution](#rule-message-execution).
+    Amount of cycles that the IC sets aside when a canister performs a call. This is used to pay for processing the response message, and unused cycles after the execution of the response are refunded. See [Message execution](#message-execution).
 
 -   `DEFAULT_PROVISIONAL_CYCLES_BALANCE`
 
@@ -2392,7 +2392,7 @@ State after
 
 Before invoking a heartbeat or a message to a public entry point, a call context is created for bookkeeping purposes. For these invocations the canister must be running (so not stopped, or stopping). Additionally, these invocations only happen for "real" canisters, not the IC management canister.
 
-This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#rule-message-execution).
+This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#message-execution).
 
 -   Call context creation: Public entry points
 
@@ -3228,7 +3228,7 @@ State after
 
 When an inter-canister call has been responded to, we can queue the call to the callback.
 
-This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#rule-message-execution).
+This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#message-execution).
 
 Conditions  
 
