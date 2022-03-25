@@ -36,7 +36,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Recommendation
 
--   By design, for every canister call the caller can be identified. The calling [principal](../../references/ic-protocol-spec#principal) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../references/ic-protocol-spec#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
+-   By design, for every canister call the caller can be identified. The calling [principal](../../../references/ic-protocol-spec#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../../references/ic-protocol-spec#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
 
 <!-- -->
 
@@ -54,7 +54,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 -   In Rust, the `ic_cdk` crate can be used to authenticate the caller using `ic_cdk::api::caller`. Make sure the returned principal is of type `Principal::self_authenticating` and identify the user’s account using the public key of that principal, see the example code above.
 
--   Do authentication as early as possible in the call to avoid unauthenticated actions and potentially expensive operations before authentication. It is also a good idea to [deny service to anonymous users](#disallow-the-anonymous-principal).
+-   Do authentication as early as possible in the call to avoid unauthenticated actions and potentially expensive operations before authentication. It is also a good idea to [deny service to anonymous users](#disallow-the-anonymous-principal-in-authenticated-calls).
 
 ### Disallow the anonymous principal in authenticated calls
 
@@ -206,7 +206,7 @@ This may e.g. lead to the following issues:
 
 -   See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
--   For context: [IC interface spec on message execution](../../references/ic-protocol-spec#rule-message-execution)
+-   For context: [IC interface spec on message execution](../../../references/ic-protocol-spec#message-execution)
 
 ### Be aware that state may change during inter-canister calls
 
@@ -364,7 +364,7 @@ It should be possible to verify that a canister does what it claims to do. The I
 
 #### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../build/tutorials/reproducible-builds).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../../build/tutorials/reproducible-builds).
 
 ### Expose metrics from your canister
 
@@ -404,7 +404,7 @@ The best practices in this section are very general and not specific to the Inte
 
 #### Security Concern
 
-The data sent in [query and update calls](../../references/ic-protocol-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
+The data sent in [query and update calls](../../../references/ic-protocol-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
 
 -   If unvalidated data is rendered in web UIs or displayed in other systems, this can lead to injection attacks (e.g. XSS).
 

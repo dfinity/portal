@@ -68,7 +68,7 @@ Note that also loading other assets such as CSS from untrusted domains is a secu
 
 -   Make sure all the content delivered to the browser is served and certified by the canister using asset certification. This holds in particular for any JavaScript, but also for fonts, CSS, etc.
 
--   Use a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to prevent scripts and other content from other origins to be loaded at all. See also [Define security headers including a Content Security Policy (CSP)](#define-security-headers).
+-   Use a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to prevent scripts and other content from other origins to be loaded at all. See also [Define security headers including a Content Security Policy (CSP)](#define-security-headers-including-a-content-security-policy-csp).
 
 ### Define security headers including a Content Security Policy (CSP)
 
@@ -92,7 +92,7 @@ Security headers can be used to cover many security concerns, e.g. disallow [cli
 
 #### Security Concern
 
-Storing key material in browser storage (such as [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) or [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)) is considered unsafe because these keys can be accessed by JavaScript code. This could happen through an XSS attack or when loading untrusted scripts from other domains (see also [Don’t load JavaScript from untrusted domains](#dont-load-untrusted-content).
+Storing key material in browser storage (such as [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) or [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)) is considered unsafe because these keys can be accessed by JavaScript code. This could happen through an XSS attack or when loading untrusted scripts from other domains (see also [Don’t load JavaScript from untrusted domains](#dont-load-javascript-and-other-assets-from-untrusted-domains).
 
 #### Recommendation
 
