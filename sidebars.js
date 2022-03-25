@@ -54,7 +54,7 @@ const sidebars = {
           items: [
             'developer-docs/build/tutorials/explore-templates',
           ]
-          },
+        },
         'developer-docs/build/troubleshooting',
       ]
     },
@@ -67,7 +67,29 @@ const sidebars = {
       items: [
         'developer-docs/functionality/index',
       ]
-      }
+    },
+    {
+      type: 'category',
+      label: 'Good to know',
+      link: {
+        type: 'doc', id: 'developer-docs/good-to-know/security/introduction'
+      },
+      items: [
+        {
+          type: 'category',
+          label: 'Security',
+          link: {
+            type: 'doc', id: 'developer-docs/good-to-know/security/introduction'
+          },
+          items: [
+            'developer-docs/good-to-know/security/introduction',
+            'developer-docs/good-to-know/security/general-security-best-practices',
+            'developer-docs/good-to-know/security/web-app-development-security-best-practices',
+            'developer-docs/good-to-know/security/rust-canister-development-security-best-practices',
+          ]
+        },
+      ]
+    }
   ],
   'concepts': [
     'concepts/index'
