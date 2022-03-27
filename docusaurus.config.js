@@ -11,7 +11,7 @@ const isDeployPreview =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Internet Computer',
+  title: 'Internet Computer Developer Centre',
   tagline: 'If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!',
   url: 'https://smartcontracts.org',
   baseUrl: '/',
