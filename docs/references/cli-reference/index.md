@@ -12,36 +12,36 @@ Depending on the subcommand, the options and flags you specify might apply to th
 
 When you have the {sdk-short-name} installed, you can use the following commands to specify the operation you want to perform. For reference information and examples that illustrate using these commands, select an appropriate command.
 
--   [dfx](cli-reference/dfx-parent.xml)
+-   [dfx](dfx-parent.md)
 
--   [dfx bootstrap](cli-reference/dfx-bootstrap.xml)
+-   [dfx bootstrap](dfx-bootstrap.md)
 
--   [dfx build](cli-reference/dfx-build.xml)
+-   [dfx build](dfx-build.md)
 
--   [dfx cache](cli-reference/dfx-cache.xml)
+-   [dfx cache](dfx-cache.md)
 
--   [dfx canister](cli-reference/dfx-canister.xml)
+-   [dfx canister](dfx-canister.md)
 
--   [dfx config](cli-reference/dfx-config.xml)
+-   [dfx config](dfx-config.md)
 
--   [dfx deploy](cli-reference/dfx-deploy.xml)
+-   [dfx deploy](dfx-deploy.md)
 
--   [dfx help](cli-reference/dfx-help.xml)
+-   [dfx help](dfx-help.md)
 
--   [dfx identity](cli-reference/dfx-identity.xml)
+-   [dfx identity](dfx-identity.md)
 
--   [dfx ledger](cli-reference/dfx-ledger.xml)
+-   [dfx ledger](dfx-ledger.md)
 
--   [dfx new](cli-reference/dfx-new.xml)
+-   [dfx new](dfx-new.md)
 
--   [dfx ping](cli-reference/dfx-ping.xml)
+-   [dfx ping](dfx-ping.md)
 
--   [dfx replica](cli-reference/dfx-replica.xml)
+-   [dfx replica](dfx-replica.md)
 
--   [dfx start](cli-reference/dfx-start.xml)
+-   [dfx start](dfx-start.mdl)
 
--   [dfx stop](cli-reference/dfx-stop.xml)
+-   [dfx stop](dfx-stop.md)
 
--   [dfx upgrade](cli-reference/dfx-upgrade.xml)
+-   [dfx upgrade](dfx-upgrade.md)
 
--   [dfx wallet](cli-reference/dfx-wallet.xml)
+-   [dfx wallet](dfx-wallet.md)
