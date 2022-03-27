@@ -92,7 +92,15 @@ const sidebars = {
     }
   ],
   'concepts': [
-    'concepts/index'
+    'concepts/index',
+    'concepts/what-is-IC',
+    'concepts/nodes-subnets',
+    'concepts/data-centers',
+    'concepts/canisters-code',
+    'concepts/trust-in-canisters',
+    'concepts/tokens-cycles',
+    'concepts/governance',
+    'concepts/bitcoin-integration',
   ],
   'references': [
     {
