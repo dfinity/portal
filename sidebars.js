@@ -103,6 +103,7 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'references': [
+    'references/index',
     {
       type: 'category',
       label: 'Motoko References',
@@ -112,10 +113,36 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Canister DK references',
+      label: 'Rust CDK references',
       href: 'https://docs.rs/ic-cdk/',
     },
-    'references/ic-protocol-spec'
+    {
+      type: 'category',
+      label: 'CLI References',
+      link: {
+        type: 'doc', id: 'references/cli-reference/index'
+      },
+      items: [
+        'references/cli-reference/dfx-parent',
+        'references/cli-reference/dfx-build',
+        'references/cli-reference/dfx-cache',
+        'references/cli-reference/dfx-canister',
+        'references/cli-reference/dfx-config',
+        'references/cli-reference/dfx-deploy',
+        'references/cli-reference/dfx-envars',
+        'references/cli-reference/dfx-generate',
+        'references/cli-reference/dfx-help',
+        'references/cli-reference/dfx-identity',
+        'references/cli-reference/dfx-ledger',
+        'references/cli-reference/dfx-new',
+        'references/cli-reference/dfx-ping',
+        'references/cli-reference/dfx-replica',
+        'references/cli-reference/dfx-start',
+        'references/cli-reference/dfx-upgrade',
+        'references/cli-reference/dfx-wallet',
+      ]
+    },
+    'references/ic-interface-spec'
   ],
   'samples': [
     'samples/index'

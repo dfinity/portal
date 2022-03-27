@@ -1,4 +1,4 @@
-# Command-line reference
+# Command-line Reference
 
 The DFINITY command-line execution environment (`dfx`) is the primary tool for creating, deploying, and managing the dapps for the Internet Computer platform.
 
