@@ -1,4 +1,4 @@
-# Manage Projects
+# Managing Projects
 
 You can modify some key settings for individual projects by modifying each project’s `dfx.json` configuration file. You can use the `dfx config` command to change these settings programmatically or manually edit the `dfx.json` file directly.
 

@@ -1,4 +1,4 @@
-# Design Dapps
+# Designing Dapps
 
 As you come up with ideas for dapps, you are going to make many design decisions about how to structure and organize your project. On the Internet Computer, there are a few design decisions that you should pay particular attention to as you plan the implementation for your app.
 

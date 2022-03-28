@@ -1,6 +1,4 @@
----
-title: Internet Computer Protocol Specification
----
+# IC Interface Specification
 
 ## Introduction
 

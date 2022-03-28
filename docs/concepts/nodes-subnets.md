@@ -1,4 +1,4 @@
-# Nodes and subnet blockchains
+# Nodes and Subnet Blockchains
 
 Internet Computer blockchain **subnet blockchains** provide physical hardware and resources—like CPU and memory—for performing software operations. Each subnet is a blockchain that consists of some number of decentralized, independently owned and controlled machines—connected peer computers called **nodes**—that run the software components of the Internet Computer blockchain protocol.
 
@@ -16,6 +16,6 @@ The core components of a replica are organized into the following logical layers
 
 The following diagram provides a simplified overview of the Internet Computer blockchain protocol components deployed as a local canister execution environment in a development environment.
 
-![Internet Computer components in a developer’s environment](../_attachments/SDK-protocol-local-overview.svg)
+![Internet Computer components in a developer’s environment](_attachments/SDK-protocol-local-overview.svg)
 
 As a developer, it isn’t necessary to know the details about how your dapps and user interactions with your dapps are routed through the Internet Computer blockchain architecture or replicated on the blockchain network. However, a general understanding of the key components can be useful because the development environment includes the replica components to provide a {EE} for deployment and a realistic sense of the workflow for a production deployment.

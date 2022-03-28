@@ -22,24 +22,25 @@ function HomepageHeader() {
 
         <p className="hero__subtitle">
           <Translate>
-            If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!
+            If you’ve landed here, you’re interested in learning more about the Internet Computer.
+            You’re in the right place — take a look below for where to get started!
           </Translate>
         </p>
 
         <div className={styles.buttons}>
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/developer-docs/ic-overview">
-            <Translate>🔧 Developer Docs</Translate>
+            to="/docs/current/developer-docs/quickstart">
+            <Translate>🔧 Get Started</Translate>
           </Link>
 
           <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/concepts">
-            <Translate>✅ Concepts</Translate>
+            to="/docs/current/developer-docs/samples">
+            <Translate>✅ Sample Code</Translate>
           </Link>
 
-          <Link
+          {/* <Link
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
             to="/docs/current/references/motoko-ref">
             <Translate>📚 References</Translate>
@@ -55,7 +56,7 @@ function HomepageHeader() {
             className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
             to="/docs/current/samples">
             <Translate>▶️ Samples</Translate>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>

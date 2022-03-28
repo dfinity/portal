@@ -1,4 +1,4 @@
-# What is the {IC}?
+# What is the Internet Computer?
 
 The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **canisters**, an evolution of **smart contracts**.
 
@@ -10,13 +10,13 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 
 -   A **network of blockchains** connected using Chain Key cryptography that can scale out its capacity as required.
 
-## An open blockchain
+## An Open Blockchain
 
 The Internet Computer is a blockchain hosted on node machines operated by independent parties and located in geographically distributed datacenters. The nodes run the Internet Computer Protocol, an advanced cryptographic fault-tolerant protocol which ensures that smart contracts running on the blockchain cannot be tampered with or stopped. The Internet Computer is composed of individual subnet blockchains running in parallel and connected using chain key cryptography. This means that canisters running on a subnet can seamlessly call canisters hosted in any other subnet of the Internet Computer blockchain.
 
 Another important feature of the Internet Computer is that it runs under the control of a decentralized permissionless governance system, called **Network Nervous System** (NNS), which runs completely on-chain. The NNS can make decisions on several topics, including scaling out the Internet Computer by creating new subnet blockchains, updating the node machines, and configuring parameters used in the Internet Computer protocol. Anyone can participate in the governance and submit new proposals to the NNS or vote on open proposals. To do so, users have to stake ICP, the Internet Computer utility tokens, and create a **neuron** with the NNS.
 
-## Building the next generation of software and services
+## Building the Next Generation of Software and Services
 
 The Internet Computer protocol reduces platform-based risks and paves the way for innovation by re-imagining how software is built, deployed, and accessed.
 
