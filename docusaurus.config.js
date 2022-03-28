@@ -1,6 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+// @ts-ignore
 const versions = require('./versions.json');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
@@ -19,14 +20,24 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon-32x32.png',
   organizationName: 'dfinity',
-  projectName: 'portal', 
+  projectName: 'portal',
 
   plugins: [
     require.resolve('docusaurus-lunr-search'),
     [
       "docusaurus2-dotenv",
       { systemvars: true },
-    ]
+    ],
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
   ],
 
   presets: [
@@ -127,7 +138,7 @@ const config = {
       announcementBar: isDev || isDeployPreview ? {
         id: 'local_dev',
         content:
-          isDeployPreview ? `You are currently viewing a preview of this <a href="${process.env.PR_URL || 'https://github.com/dfinity/portal'}">Pull Request</a>.`: 
+          isDeployPreview ? `You are currently viewing a preview of this <a href="${process.env.PR_URL || 'https://github.com/dfinity/portal'}">Pull Request</a>.`:
             'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
         textColor: '#091E42',
         isCloseable: false,
