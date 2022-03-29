@@ -92,6 +92,7 @@ const config = {
             position: 'left',
             sidebarId: 'developer-docs',
             label: 'Developer Docs',
+            icon: 'img/logo.svg',
           },
           {
             type: 'docSidebar',
