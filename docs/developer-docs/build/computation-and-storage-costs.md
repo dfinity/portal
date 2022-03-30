@@ -17,7 +17,7 @@ See below for details on the cost of compute and storage transactions on the Int
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%" />npm s
 </colgroup>
 <thead>
 <tr class="header">

@@ -1,4 +1,4 @@
-# Manage Canisters
+# Managing Canisters
 <!-- March 2020 (Alpha) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY -->
 
 If you have experimented with using the SDK by following the tutorials in the [Tutorials](tutorials-intro.xml) section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canister smart contracts**. This section provides additional information about the canister lifecycle and how to manage canisters.

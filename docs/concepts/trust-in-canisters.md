@@ -1,4 +1,4 @@
-# Trust in canisters
+# Trust in Canisters
 
 ## Background
 
@@ -10,17 +10,17 @@ The answer to this question has two separate dimensions:
 
 2.  confidence that the canister behavior will not unexpectedly change.
 
-## The canister does what it is supposed to do
+## The Canister does what it is Supposed to do
 
 The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [Reproducible canisters](https://smartcontracts.org/docs/developers-guide/tutorials/reproducible-builds.html).
 
-## The behavior of the canister cannot unexpectedly change
+## The Behavior of the Canister cannot Unexpectedly Change
 
 Canister smart contracts are deployed and managed by controllers. Among other capabilities, controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. This feature brings canister smart contracts closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
 
 For critical applications like those used in DeFI, mutability can be dangerous; the controller could change a benign canister into a canister that steals ICP. Below we outline some options available to developers on how to verifiably restrict mutability.
 
-### Complete immutability
+### Complete Immutability
 
 The simplest option is to make the canister immutable by removing its controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
@@ -36,7 +36,7 @@ Immutability can also be achieved by setting the controller of a canister to be 
 
 Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister is itself immutable (it has only itself as controller) but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://ic.rocks/principal/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole).
 
-### Governed mutability
+### Governed Mutability
 
 A more complex but powerful approach is to control the canister via a distributed governance mechanism. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the (upcoming) [SNS feature](https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c) which allows developers to set the controller of their canister to some governing canister.
 

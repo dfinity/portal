@@ -1,4 +1,4 @@
-# Bitcoin integration
+# Bitcoin Integration
 
 The Internet Computer’s distributed ECDSA suite of protocols allows canisters to obtain ECDSA public keys and to securely sign messages under that public key using chain key cryptography. Thus canisters can have a Bitcoin public key, i.e., a Bitcoin address, and sign Bitcoin transactions.
 

@@ -12,7 +12,7 @@ const isDeployPreview =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Internet Computer',
+  title: 'Internet Computer Developer Centre',
   tagline: 'If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!',
   url: 'https://smartcontracts.org',
   baseUrl: '/',
@@ -92,31 +92,30 @@ const config = {
             position: 'left',
             sidebarId: 'developer-docs',
             label: 'Developer Docs',
-            icon: 'img/logo.svg',
-          },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'concepts',
-            label: 'Concepts',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'references',
-            label: 'References',
+            label: '📖 References',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'user-guides',
-            label: 'User Guides',
+            sidebarId: 'concepts',
+            label: '💡 Concepts',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'samples',
-            label: 'Samples',
+            sidebarId: 'governance',
+            label: '🗳️ Governance',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'showcases',
+            label: '🎭 Showcases',
           },
 
           {
