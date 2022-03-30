@@ -15,7 +15,6 @@ import {translate} from '@docusaurus/Translate';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
 import NavbarItem from '@theme/NavbarItem';
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 function useShowAnnouncementBar() {
     const {isActive} = useAnnouncementBar();
@@ -126,7 +125,7 @@ function DocSideBarNav() {
 }
 
 
-function DocSidebarDesktop({path, sidebar, onCollapse, isHidden, ...props}) {
+function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
     const showAnnouncementBar = useShowAnnouncementBar();
     const {
         navbar: {hideOnScroll}, hideableSidebar,
