@@ -91,7 +91,7 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'developer-docs',
-            label: '⚒️ Developer Docs',
+            label: 'Developer Docs',
           },
           {
             type: 'docSidebar',
