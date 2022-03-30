@@ -91,31 +91,31 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'developer-docs',
-            label: 'Developer Docs',
-          },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'concepts',
-            label: 'Concepts',
+            label: '⚒️ Developer Docs',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'references',
-            label: 'References',
+            label: '📖 References',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'user-guides',
-            label: 'User Guides',
+            sidebarId: 'concepts',
+            label: '💡 Concepts',
           },
           {
             type: 'docSidebar',
             position: 'left',
-            sidebarId: 'samples',
-            label: 'Samples',
+            sidebarId: 'governance',
+            label: '🗳️ Governance',
+          },
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'showcases',
+            label: '🎭 Showcases',
           },
 
           {

@@ -91,17 +91,6 @@ const sidebars = {
       ]
     }
   ],
-  'concepts': [
-    'concepts/index',
-    'concepts/what-is-IC',
-    'concepts/nodes-subnets',
-    'concepts/data-centers',
-    'concepts/canisters-code',
-    'concepts/trust-in-canisters',
-    'concepts/tokens-cycles',
-    'concepts/governance',
-    'concepts/bitcoin-integration',
-  ],
   'references': [
     'references/index',
     {
@@ -144,11 +133,22 @@ const sidebars = {
     },
     'references/ic-interface-spec'
   ],
-  'samples': [
-    'samples/index'
+  'concepts': [
+    'concepts/index',
+    'concepts/what-is-IC',
+    'concepts/nodes-subnets',
+    'concepts/data-centers',
+    'concepts/canisters-code',
+    'concepts/trust-in-canisters',
+    'concepts/tokens-cycles',
+    'concepts/governance',
+    'concepts/bitcoin-integration',
   ],
-  'user-guides': [
-    'user-guides/index'
+  'governance': [
+    'governance/index'
+  ],
+  'showcases': [
+    'showcases/index'
   ]
 };
 
