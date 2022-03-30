@@ -105,3 +105,7 @@
   line-height: 0.9;
   width: 24px;
 }
+
+.sideBarNavItem {
+  background-color: var(--ifm-color-primary);
+}
