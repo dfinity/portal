@@ -6,7 +6,7 @@ This section lists the environment variables that are currently supported with e
 
     export DFX_NETWORK=ic
 
-## CANISTER\_CANDID\_PATH\_{canister.name}
+## CANISTER_CANDID_PATH\_{canister.name}
 
 Use environment variables with the `CANISTER_CANDID_PATH` prefix to reference the path to the Candid description file for the canisters that are listed as dependencies in the `dfx.json` file for your project.
 
@@ -14,13 +14,13 @@ For example, if you have a `whoami_assets` canister that lists `whoami` under th
 
     $PROJECT_ROOT/.dfx/local/canisters/whoami/whoami.did
 
-## CANISTER\_ID\_{canister.name}
+## CANISTER_ID\_{canister.name}
 
 Use environment variables with the `CANISTER_ID` prefix to reference the canister identifier for each canister in the `dfx.json` file for your project.
 
 For example, if you have a `linkedup` project that consists of the `linkedup` and `connectd` canisters, you could use the `CANISTER_ID_linkedup` and `CANISTER_ID_connectd` environment variables to refer to the canister identifiers—for example `ryjl3-tyaaa-aaaaa-aaaba-cai` and `rrkah-fqaaa-aaaaa-aaaaq-cai`—created for your project.
 
-## DFX\_CONFIG\_ROOT
+## DFX_CONFIG_ROOT
 
 Use the `DFX_CONFIG_ROOT` environment variable to specify a different location for storing the `.cache` and `.config` subdirectories for `dfx`.
 
@@ -28,13 +28,13 @@ By default, the `.cache` and `.config` directories are located in the home direc
 
     DFX_CONFIG_ROOT=~/ic-root
 
-## DFX\_INSTALLATION\_ROOT
+## DFX_INSTALLATION_ROOT
 
 Use the `DFX_INSTALLATION_ROOT` environment variable to specify a different location for the `dfx` binary if you are not using the default location for your operating system.
 
 The `.cache/dfinity/uninstall.sh` script uses this environment variable to identify the root directory for your {sdk-short-name} installation.
 
-## DFX\_VERSION
+## DFX_VERSION
 
 Use the `DFX_VERSION` environment variable to identify a specific version of the {sdk-short-name} that you want to install.
 

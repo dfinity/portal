@@ -4,72 +4,31 @@ Use the `dfx identity` command with subcommands and flags to manage the identiti
 
 The basic syntax for running `dfx identity` commands is:
 
-    dfx identity [subcommand] [flag]
+``` bash
+dfx identity [subcommand] [flag]
+```
 
 Depending on the `dfx identity` subcommand you specify, additional arguments, options, and flags might apply or be required. To view usage information for a specific `dfx identity` subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx identity new`, you can run the following command:
 
-    dfx identity new --help
+``` bash
+dfx identity new --help
+```
 
 For reference information and examples that illustrate using `dfx identity` commands, select an appropriate command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_identity_get_principal"><code>get-principal</code></a></p></td>
-<td style="text-align: left;"><p>Shows the textual representation of the principal associated with the current identity.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_identity_get_wallet"><code>get-wallet</code></a></p></td>
-<td style="text-align: left;"><p>Shows the canister identifier for the wallet associated with your current identity principal.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>help</code></p></td>
-<td style="text-align: left;"><p>Displays this usage message or the help of the given subcommand(s).</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_identity_import"><code>import</code></a></p></td>
-<td style="text-align: left;"><p>Creates a new identity by importing a PEM file that contains the key information or security certificate for a principal.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_identity_list"><code>list</code></a></p></td>
-<td style="text-align: left;"><p>Lists existing identities.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_identity_new"><code>new</code></a></p></td>
-<td style="text-align: left;"><p>Creates a new identity.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_identity_remove"><code>remove</code></a></p></td>
-<td style="text-align: left;"><p>Removes an existing identity.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_identity_rename"><code>rename</code></a></p></td>
-<td style="text-align: left;"><p>Renames an existing identity.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_identity_set_wallet"><code>set-wallet</code></a></p></td>
-<td style="text-align: left;"><p>Sets the wallet canister identifier to use for your current identity principal.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_identity_use"><code>use</code></a></p></td>
-<td style="text-align: left;"><p>Specifies the identity to use.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_identity_whoami"><code>whoami</code></a></p></td>
-<td style="text-align: left;"><p>Displays the name of the current identity user context.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Command                                         | Description                                                                                                               |
+|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| [`get-principal`](#_dfx_identity_get_principal) | Shows the textual representation of the principal associated with the current identity.                                   |
+| [`get-wallet`](#_dfx_identity_get_wallet)       | Shows the canister identifier for the wallet associated with your current identity principal.                             |
+| `help`                                          | Displays this usage message or the help of the given subcommand(s).                                                       |
+| [`import`](#_dfx_identity_import)               | Creates a new identity by importing a PEM file that contains the key information or security certificate for a principal. |
+| [`list`](#_dfx_identity_list)                   | Lists existing identities.                                                                                                |
+| [`new`](#_dfx_identity_new)                     | Creates a new identity.                                                                                                   |
+| [`remove`](#_dfx_identity_remove)               | Removes an existing identity.                                                                                             |
+| [`rename`](#_dfx_identity_rename)               | Renames an existing identity.                                                                                             |
+| [`set-wallet`](#_dfx_identity_set_wallet)       | Sets the wallet canister identifier to use for your current identity principal.                                           |
+| [`use`](#_dfx_identity_use)                     | Specifies the identity to use.                                                                                            |
+| [`whoami`](#_dfx_identity_whoami)               | Displays the name of the current identity user context.                                                                   |
 
 ## Creating a default identity
 
@@ -89,41 +48,27 @@ If you haven’t created any user identities, you can use this command to displa
 
 ### Basic usage
 
-    dfx identity get-principal [flag]
+``` bash
+dfx identity get-principal [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity get-principal` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Example
 
 If you want to display the textual representation of a principal associated with a specific user identity context, you can run commands similar to the following:
 
-    dfx identity use ic_admin
-    dfx identity get-principal
+``` bash
+dfx identity use ic_admin
+dfx identity get-principal
+```
 
 In this example, the first command sets the user context to use the `ic_admin` identity. The second command then returns the principal associated with the `ic_admin` identity.
 
@@ -135,44 +80,32 @@ Note that you must be connected to the {platform} or the local canister executio
 
 ### Basic usage
 
-    dfx identity get-wallet [flag]
+``` bash
+dfx identity get-wallet [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity get-wallet` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Example
 
 If you want to display the canister identifier for the wallet canister associated with your identity, you can run the following command:
 
-    dfx identity get-wallet
+``` bash
+dfx identity get-wallet
+```
 
 To display the canister identifier for the wallet canister associated with your identity on a specific testnet, you might run a command similar to the following:
 
-    dfx identity --network=https://192.168.74.4 get-wallet
+``` bash
+dfx identity --network=https://192.168.74.4 get-wallet
+```
 
 ## dfx identity import
 
@@ -180,40 +113,26 @@ Use the `dfx identity import` command to create a user identity by importing the
 
 ### Basic usage
 
-    dfx identity import [flag] identity-name pem_file-name
+``` bash
+dfx identity import [flag] identity-name pem_file-name
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity import` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Examples
 
 You can use the `dfx identity import` command to import a PEM file that contains the security certificate to use for an identity. For example, you can run the following command to import the `generated-id.pem` file to create the user identity `alice`:
 
-    dfx identity import alice generated-id.pem
+``` bash
+dfx identity import alice generated-id.pem
+```
 
 The command adds the `generated-id.pem` file to the `~/.config/dfx/identity/alice` directory.
 
@@ -223,48 +142,36 @@ Use the `dfx identity list` command to display the list of user identities avail
 
 ### Basic usage
 
-    dfx identity list [flag]
+``` bash
+dfx identity list [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity list` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Examples
 
 You can use the `dfx identity list` command to list all of the identities you have currently available and to determine which identity is being used as the currently-active user context for running `dfx` commands. For example, you can run the following command to list the identities available:
 
-    dfx identity list
+``` bash
+dfx identity list
+```
 
 This command displays the list of identities found similar to the following:
 
-    alice_auth
-    anonymous
-    bob_standard *
-    default
-    ic_admin
+``` bash
+alice_auth
+anonymous
+bob_standard *
+default
+ic_admin
+```
 
 In this example, the `bob_standard` identity is the currently-active user context. After you run this command to determine the active user, you know that any additional `dfx` commands you run are executed using the principal associated with the `bob_standard` identity.
 
@@ -274,57 +181,26 @@ Use the `dfx identity new` command to add new user identities. You should note t
 
 ### Basic usage
 
-    dfx identity new [flag] _identity-name_
+``` bash
+dfx identity new [flag] _identity-name_
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity new` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity new` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>&lt;identity_name&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the identity to create. This argument is required.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument          | Description                                                              |
+|-------------------|--------------------------------------------------------------------------|
+| `<identity_name>` | Specifies the name of the identity to create. This argument is required. |
 
 ### Examples
 
@@ -345,57 +221,26 @@ Use the `dfx identity remove` command to remove an existing user identity. You s
 
 ### Basic usage
 
-    dfx identity remove [flag] _identity-name_
+``` bash
+dfx identity remove [flag] _identity-name_
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity remove` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity remove` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>&lt;identity_name&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the identity to remove. This argument is required.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument          | Description                                                              |
+|-------------------|--------------------------------------------------------------------------|
+| `<identity_name>` | Specifies the name of the identity to remove. This argument is required. |
 
 ### Examples
 
@@ -419,61 +264,27 @@ Use the `dfx identity rename` command to rename an existing user identity. You s
 
 ### Basic usage
 
-    dfx identity rename [flag] _from_identity-name_ _to_identity-name_
+``` bash
+dfx identity rename [flag] _from_identity-name_ _to_identity-name_
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity rename` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You must specify the following arguments for the `dfx identity rename` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>&lt;from_identity_name&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the current name of the identity you want to rename. This argument is required.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>&lt;to_identity_name&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the new name of the identity you want to rename. This argument is required.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument               | Description                                                                               |
+|------------------------|-------------------------------------------------------------------------------------------|
+| `<from_identity_name>` | Specifies the current name of the identity you want to rename. This argument is required. |
+| `<to_identity_name>`   | Specifies the new name of the identity you want to rename. This argument is required.     |
 
 ### Example
 
@@ -487,38 +298,19 @@ Use the `dfx identity set-wallet` command to specify the wallet canister identif
 
 ### Basic usage
 
-    dfx identity set-wallet [flag] [--canister-name canister-name]
+``` bash
+dfx identity set-wallet [flag] [--canister-name canister-name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity set-wallet` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>force</code></p></td>
-<td style="text-align: left;"><p>Skips verification that the canister you specify is a valid wallet canister. This option is only useful if you are connecting to the {IC} running locally.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                                                                                                                                                |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `force`           | Skips verification that the canister you specify is a valid wallet canister. This option is only useful if you are connecting to the {IC} running locally. |
+| `-h`, `--help`    | Displays usage information.                                                                                                                                |
+| `-V`, `--version` | Displays version information.                                                                                                                              |
 
 ### Example
 
@@ -535,57 +327,26 @@ Use the `dfx identity use` command to specify the user identity you want to acti
 
 ### Basic usage
 
-    dfx identity use [flag] _identity-name_
+``` bash
+dfx identity use [flag] _identity-name_
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity use` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You must specify the following argument for the `dfx identity use` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>&lt;identity_name&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the identity you want to make active for subsequent commands. This argument is required.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument          | Description                                                                                                    |
+|-------------------|----------------------------------------------------------------------------------------------------------------|
+| `<identity_name>` | Specifies the name of the identity you want to make active for subsequent commands. This argument is required. |
 
 ### Examples
 
@@ -601,40 +362,26 @@ Use the `dfx identity whoami` command to display the name of the currently-activ
 
 ### Basic usage
 
-    dfx identity whoami [flag]
+``` bash
+dfx identity whoami [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx identity whoami` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Example
 
 If you want to display the name of the currently-active user identity, you can run the following command:
 
-    dfx identity whoami
+``` bash
+dfx identity whoami
+```
 
 The command displays the name of the user identity. For example, you had previously run the command `dfx identity use bob_standard`, the command would display:
 

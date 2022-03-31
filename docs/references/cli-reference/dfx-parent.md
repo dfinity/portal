@@ -6,48 +6,26 @@ Use the `dfx` parent command with flags and subcommands to specify the operation
 
 ## Basic usage
 
-    dfx [option] [subcommand] [flag]
+``` bash
+dfx [option] [subcommand] [flag]
+```
 
 ## Flags
 
 You can use the following optional flags with the `dfx` parent command or with any of the `dfx` subcommands.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-q`</code>, <code>--quiet</code></p></td>
-<td style="text-align: left;"><p>Suppresses informational messages.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-v</code>, <code>--verbose</code></p></td>
-<td style="text-align: left;"><p>Displays detailed information about operations.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag                 | Description                                     |
+|----------------------|-------------------------------------------------|
+| `-h`, `--help`       | Displays usage information.                     |
+| `` -q` ``, `--quiet` | Suppresses informational messages.              |
+| `-v`, `--verbose`    | Displays detailed information about operations. |
+| `-V`, `--version`    | Displays version information.                   |
 
 ## Options
 
 You can use the following options with the `dfx` command.
 
-<!-- <table>
+<table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -76,7 +54,7 @@ You can use the following options with the `dfx` command.
 <p>The default logging mode is <code>stderr</code>.</p></td>
 </tr>
 </tbody>
-</table> -->
+</table>
 
 ## Subcommands
 
@@ -84,90 +62,37 @@ Use the following subcommands to specify the operation you want to perform or to
 
 For reference information and examples, select an appropriate subcommand.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-build.xml"><code>build</code></a></p></td>
-<td style="text-align: left;"><p>Builds canister output from the source code in your project.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-cache.xml"><code>cache</code></a></p></td>
-<td style="text-align: left;"><p>Manages the <code>dfx</code> cache on the local computer.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-canister.xml"><code>canister</code></a></p></td>
-<td style="text-align: left;"><p>Manages deployed canisters .</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-config.xml"><code>config</code></a></p></td>
-<td style="text-align: left;"><p>Sets or changes configuration options for your current project.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-deploy.xml"><code>deploy</code></a></p></td>
-<td style="text-align: left;"><p>Deploys all or a specific canister from the code in your project. By default, all canisters are deployed.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-help.xml"><code>help</code></a></p></td>
-<td style="text-align: left;"><p>Displays usage information for a specified subcommand.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-identity.xml"><code>identity</code></a></p></td>
-<td style="text-align: left;"><p>Enables you to create and manage the identities used to communicate with the {platform}.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-ledger.xml"><code>ledger</code></a></p></td>
-<td style="text-align: left;"><p>Enables you to interact with accounts in the ledger canister running on the Internet Computer.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-new.xml"><code>new</code></a></p></td>
-<td style="text-align: left;"><p>Creates a new project.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-ping.xml"><code>ping</code></a></p></td>
-<td style="text-align: left;"><p>Sends a response request to the {platform} or the local canister execution environment to determine network connectivity. If the connection is successful, a status reply is returned.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-replica.xml"><code>replica</code></a></p></td>
-<td style="text-align: left;"><p>Starts a local canister execution environment.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-start.xml"><code>start</code></a></p></td>
-<td style="text-align: left;"><p>Starts the local canister execution environment a web server for the current project.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-stop.xml"><code>stop</code></a></p></td>
-<td style="text-align: left;"><p>Stops the local canister execution environment.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="dfx-upgrade.xml"><code>upgrade</code></a></p></td>
-<td style="text-align: left;"><p>Upgrades the version of <code>dfx</code> installed on the local computer to the latest version available.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="dfx-wallet.xml"><code>dfx wallet</code></a></p></td>
-<td style="text-align: left;"><p>Enables you to manage cycles, controllers, custodians, and addresses for the default cycles wallet associated with the currently-selected identity.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Command                        | Description                                                                                                                                                                            |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`build`](dfx-build.xml)       | Builds canister output from the source code in your project.                                                                                                                           |
+| [`cache`](dfx-cache.xml)       | Manages the `dfx` cache on the local computer.                                                                                                                                         |
+| [`canister`](dfx-canister.xml) | Manages deployed canisters .                                                                                                                                                           |
+| [`config`](dfx-config.xml)     | Sets or changes configuration options for your current project.                                                                                                                        |
+| [`deploy`](dfx-deploy.xml)     | Deploys all or a specific canister from the code in your project. By default, all canisters are deployed.                                                                              |
+| [`help`](dfx-help.xml)         | Displays usage information for a specified subcommand.                                                                                                                                 |
+| [`identity`](dfx-identity.xml) | Enables you to create and manage the identities used to communicate with the {platform}.                                                                                               |
+| [`ledger`](dfx-ledger.xml)     | Enables you to interact with accounts in the ledger canister running on the Internet Computer.                                                                                         |
+| [`new`](dfx-new.xml)           | Creates a new project.                                                                                                                                                                 |
+| [`ping`](dfx-ping.xml)         | Sends a response request to the {platform} or the local canister execution environment to determine network connectivity. If the connection is successful, a status reply is returned. |
+| [`replica`](dfx-replica.xml)   | Starts a local canister execution environment.                                                                                                                                         |
+| [`start`](dfx-start.xml)       | Starts the local canister execution environment a web server for the current project.                                                                                                  |
+| [`stop`](dfx-stop.xml)         | Stops the local canister execution environment.                                                                                                                                        |
+| [`upgrade`](dfx-upgrade.xml)   | Upgrades the version of `dfx` installed on the local computer to the latest version available.                                                                                         |
+| [`dfx wallet`](dfx-wallet.xml) | Enables you to manage cycles, controllers, custodians, and addresses for the default cycles wallet associated with the currently-selected identity.                                    |
 
 ## Examples
 
 You can use the `dfx` parent command to display usage information or version information. For example, to display information about the version of `dfx` you currently have installed, you can run the following command:
 
-    dfx --version
+``` bash
+dfx --version
+```
 
 To view usage information for a specific subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx build`, you can run the following command:
 
-    dfx build --help
+``` bash
+dfx build --help
+```
 
 ### Using logging options
 
@@ -175,13 +100,17 @@ You can use the `--verbose` and `--quiet` flags to increment or decrement the lo
 
 Adding a `--quiet` flag decreases the logging level. For example, to remove all messages, you can run a command similar the following:
 
-    dfx -qqqq build
+``` bash
+dfx -qqqq build
+```
 
 Keep in mind that using TRACE level logging (`--vv`) generates a lot of log messages that can affect performance and should only be used when required for troubleshooting or analysis.
 
 To output log messages to a file named `newlog.txt` and display the messages on your terminal when creating a new project, you can run a command similar to the following:
 
-    dfx --log tee --logfile newlog.txt new hello_world
+``` bash
+dfx --log tee --logfile newlog.txt new hello_world
+```
 
 ### Specifying a user identity
 

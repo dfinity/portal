@@ -91,19 +91,19 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'developer-docs',
-            label: '⚒️ Developer Docs',
+            label: 'Developer Docs',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'references',
-            label: '📖 References',
+            label: 'References',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'concepts',
-            label: '💡 Concepts',
+            label: 'Concepts',
           },
           {
             type: 'docSidebar',
@@ -111,13 +111,6 @@ const config = {
             sidebarId: 'governance',
             label: '🗳️ Governance',
           },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'showcases',
-            label: '🎭 Showcases',
-          },
-
           {
             type: 'docsVersionDropdown',
             position: 'right',
