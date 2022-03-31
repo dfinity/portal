@@ -265,16 +265,17 @@ export default function Navbar() {
                         className="navbar__brand"
                         imageClassName="navbar__logo"
                         titleClassName="navbar__title"
-                    /><SearchMock/>
+                    />
+                    <Search/>
                     {/*{leftItems.map((item, i) => (
             <NavbarItem {...item} key={i} />
           ))}*/}
                 </div>
 
                 <div className="navbar__items navbar__items--right">
-                    {/*{rightItems.map((item, i) => (
-            <NavbarItem {...item} key={i} />
-          ))}*/}
+                    {rightItems.map((item, i) => (
+                        <NavbarItem {...item} key={i}/>
+                    ))}
                     {!colorModeToggle.disabled && (
                         <ColorModeToggle
                             className={styles.toggle}
