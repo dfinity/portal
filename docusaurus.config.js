@@ -97,41 +97,36 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'references',
-            label: '📖 References',
+            label: 'References',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'concepts',
-            label: '💡 Concepts',
+            label: 'Concepts',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'governance',
-            label: '🗳️ Governance',
+            label: 'Governance',
           },
           {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'showcases',
-            label: '🎭 Showcases',
+            label: 'Showcases',
           },
-
-          {
+          /*{
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
-          },
+          },*/
           // TODO: remove when integrating i18n
           // {
           //   type: 'localeDropdown',
           //   position: 'right',
           // },
-          {
-            type: 'search',
-            position: 'right',
-          },
         ],
       },
 
