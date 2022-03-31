@@ -55,9 +55,9 @@ function getThemeColor(section) {
             return "#522785"
         case 'references':
             return "#29ABE2"
-        case 'user-guides':
+        case 'governance':
             return "#FBB03B"
-        case 'samples':
+        case 'showcases':
             return "#F15A24"
         default:
             return "#29ABE2"
@@ -90,12 +90,12 @@ function DocItem(sidebarId) {
                 <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/>
             </svg>
 
-        case 'user-guides':
+        case 'governance':
             return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path
                     d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
             </svg>
-        case 'samples':
+        case 'showcases':
             return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd"
                       d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
@@ -113,7 +113,7 @@ function DocSideBarNav() {
     return (
         <div>
             {items.map((item, i) =>
-                (item.type === 'docSidebar' &&
+                (item.type === 'docSidebar' && item.position === 'left' &&
                     <div key={i} className="flex pl-3" onClick={() => changeThemeColor(item.sidebarId)}>
                         <div className={`my-auto rounded-md p-0.5 text-white ${clsx(styles.sideBarNavItem)}`}>
                             {DocItem(item.sidebarId)}
@@ -142,11 +142,13 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
             })}>
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
                 <DocSideBarNav/>
+                <div className="py-4 px-2">
+                    <div className="w-full border-t border-gray-300" />
+                </div>
                 <DocSidebarItems items={sidebar} activePath={path} level={1}/>
             </ul>
         </nav>
         {hideableSidebar && <HideableSidebarButton onClick={onCollapse}/>}
-
     </div>);
 } // eslint-disable-next-line react/function-component-definition
 

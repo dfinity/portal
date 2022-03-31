@@ -81,7 +81,7 @@ const Search = props => {
   }
 
   return (
-    <div className="navbar__search" key="search-box">
+    <div className="w-96 absolute  m-auto left-0 right-0" key="search-box">
       <span
         aria-label="expand searchbar"
         role="button"
@@ -98,7 +98,7 @@ const Search = props => {
         placeholder={indexReady ? 'Search' : 'Loading...'}
         aria-label="Search"
         className={classnames(
-          "navbar__search-input",
+          "navbar__search-input w-96 rounded-md",
           { "search-bar-expanded": props.isSearchBarExpanded },
           { "search-bar": !props.isSearchBarExpanded }
         )}
