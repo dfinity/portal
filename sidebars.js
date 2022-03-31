@@ -146,9 +146,6 @@ const sidebars = {
   ],
   'governance': [
     'governance/index'
-  ],
-  'showcases': [
-    'showcases/index'
   ]
 };
 
