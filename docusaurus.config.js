@@ -109,7 +109,7 @@ const config = {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'governance',
-            label: '🗳️ Governance',
+            label: 'Governance',
           },
           {
             type: 'docsVersionDropdown',
@@ -121,10 +121,6 @@ const config = {
           //   type: 'localeDropdown',
           //   position: 'right',
           // },
-          {
-            type: 'search',
-            position: 'right',
-          },
         ],
       },
 
