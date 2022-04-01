@@ -114,11 +114,14 @@ function DocSideBarNav() {
         <div>
             {items.map((item, i) =>
                 (item.type === 'docSidebar' && item.position === 'left' &&
-                    <div key={i} className="flex pl-3" onClick={() => changeThemeColor(item.sidebarId)}>
-                        <div className={`my-auto rounded-md p-0.5 text-white ${clsx(styles.sideBarNavItem)}`}>
+                    <div key={i} className={clsx(styles.sideBarNavItem)}
+                    >
+                        <div className={clsx(styles.sideBarNavIcon)}>
                             {DocItem(item.sidebarId)}
                         </div>
-                        <NavbarItem {...item}/>
+                        <div onClick={() => changeThemeColor(item.sidebarId)} >
+                            <NavbarItem {...item}/>
+                        </div>
                     </div>))}
         </div>
     );
@@ -142,9 +145,7 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
             })}>
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
                 <DocSideBarNav/>
-                <div className="py-4 px-2">
-                    <div className="w-full border-t border-gray-300" />
-                </div>
+                <div className={clsx(styles.sideBarDivider)}/>
                 <DocSidebarItems items={sidebar} activePath={path} level={1}/>
             </ul>
         </nav>

@@ -81,35 +81,35 @@ const Search = props => {
   }
 
   return (
-    <div className="w-96 absolute  m-auto left-0 right-0" key="search-box">
+      <div className="navbar__search" key="search-box">
       <span
-        aria-label="expand searchbar"
-        role="button"
-        className={classnames("search-icon", {
-          "search-icon-hidden": props.isSearchBarExpanded
-        })}
-        onClick={toggleSearchIconClick}
-        onKeyDown={toggleSearchIconClick}
-        tabIndex={0}
+          aria-label="expand searchbar"
+          role="button"
+          className={classnames("search-icon", {
+            "search-icon-hidden": props.isSearchBarExpanded
+          })}
+          onClick={toggleSearchIconClick}
+          onKeyDown={toggleSearchIconClick}
+          tabIndex={0}
       />
-      <input
-        id="search_input_react"
-        type="search"
-        placeholder={indexReady ? 'Search' : 'Loading...'}
-        aria-label="Search"
-        className={classnames(
-          "navbar__search-input w-96 rounded-md",
-          { "search-bar-expanded": props.isSearchBarExpanded },
-          { "search-bar": !props.isSearchBarExpanded }
-        )}
-        onClick={loadAlgolia}
-        onMouseOver={loadAlgolia}
-        onFocus={toggleSearchIconClick}
-        onBlur={toggleSearchIconClick}
-        ref={searchBarRef}
-        disabled={!indexReady}
-      />
-    </div>
+        <input
+            id="search_input_react"
+            type="search"
+            placeholder={indexReady ? 'Search' : 'Loading...'}
+            aria-label="Search"
+            className={classnames(
+                "navbar__search-input",
+                { "search-bar-expanded": props.isSearchBarExpanded },
+                { "search-bar": !props.isSearchBarExpanded }
+            )}
+            onClick={loadAlgolia}
+            onMouseOver={loadAlgolia}
+            onFocus={toggleSearchIconClick}
+            onBlur={toggleSearchIconClick}
+            ref={searchBarRef}
+            disabled={!indexReady}
+        />
+      </div>
   );
 };
 

@@ -26,7 +26,7 @@
 .videoHero {
   width: 100%;
   height: 100%;
-  right: 0; 
+  right: 0;
   left: 0;
   top: 0;
   bottom: 0;
@@ -52,4 +52,20 @@
   text-align: center;
   margin: 0 auto;
   max-width: 1178px;
+}
+
+.statsContainer {
+  margin: 0.5rem auto;
+}
+
+.statsValue {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  text-align: center;
+}
+.statsTitle {
+  color: #4B5563;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
 }

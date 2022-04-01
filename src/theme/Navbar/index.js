@@ -207,26 +207,6 @@ function NavbarMobileSidebar({sidebarShown, toggleSidebar}) {
     );
 }
 
-function SearchMock() {
-    const colorModeToggle = useColorModeToggle();
-    return (
-        <div className="relative w-[32rem] mx-auto">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-        <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
-          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-               viewBox="0 0 24 24" className="w-6 h-6"><path
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </button>
-      </span>
-            <input type="search"
-                   className={`py-2 text-sm min-w-full ${colorModeToggle.isDarkTheme ? "text-white bg-neutral-700" : "text-black shadow-sm shadow-neutral-300"} rounded-md pl-10 focus:outline-none`}
-                   placeholder="Search the docs" autoComplete="off"/>
-        </div>
-
-
-    );
-}
-
 export default function Navbar() {
     const {
         navbar: {hideOnScroll, style},
@@ -266,7 +246,6 @@ export default function Navbar() {
                         imageClassName="navbar__logo"
                         titleClassName="navbar__title"
                     />
-                    <Search/>
                     {/*{leftItems.map((item, i) => (
             <NavbarItem {...item} key={i} />
           ))}*/}

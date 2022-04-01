@@ -1,3 +1,4 @@
+<!---
 # dfx canister
 
 Use the `dfx canister` command with flags and subcommands to manage canister operations and interaction with the {platform} or the local canister execution environment. In most cases, you use `dfx canister` subcommands after you compile a program to manage the canister lifecycle and to perform key tasks such as calling program functions.
@@ -766,3 +767,4 @@ To stop all of the canisters you have deployed on the `ic` {platform}, you can r
 ``` bash
 dfx canister --network=ic stop --all
 ```
+-->
