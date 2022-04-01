@@ -94,9 +94,9 @@ export default function Home(): JSX.Element {
             description="Description will go into a meta tag in <head />">
             <HomepageHeader/>
             <main>
-                <div className="mx-auto my-2">
-                    <p className="text-3xl text-center">{blocks}</p>
-                    <p className="text-2xl text-center text-gray-600">Blocks Mined</p>
+                <div className={clsx(styles.statsContainer)}>
+                    <p className={clsx(styles.statsValue)}>{blocks}</p>
+                    <p className={clsx(styles.statsTitle)}>Blocks Mined</p>
                 </div>
                 <HomepageFeatures/>
             </main>

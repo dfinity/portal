@@ -28,16 +28,6 @@ const config = {
       "docusaurus2-dotenv",
       { systemvars: true },
     ],
-    async function myPlugin(context, options) {
-      return {
-        name: "docusaurus-tailwindcss",
-        configurePostCss(postcssOptions) {
-          postcssOptions.plugins.push(require("tailwindcss"));
-          postcssOptions.plugins.push(require("autoprefixer"));
-          return postcssOptions;
-        },
-      };
-    },
   ],
 
   presets: [
@@ -110,6 +100,10 @@ const config = {
             position: 'left',
             sidebarId: 'governance',
             label: 'Governance',
+          },
+          {
+            type: 'search',
+            position: 'right',
           },
           {
             type: 'docsVersionDropdown',

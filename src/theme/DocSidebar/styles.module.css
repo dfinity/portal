@@ -107,5 +107,23 @@
 }
 
 .sideBarNavItem {
+  padding-left: 0.75rem;
+  display: flex;
+}
+
+.sideBarNavIcon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  margin-bottom: auto;
+  margin-top: auto;
   background-color: var(--ifm-color-primary);
+  padding: 0.125rem;
+  color: #ffffff;
+  border-radius: 0.375rem;
+}
+
+.sideBarDivider {
+  border-top: 1px solid #D1D5DB;
+  margin: 0.5rem 0.2rem;
 }
