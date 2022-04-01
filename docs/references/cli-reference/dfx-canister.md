@@ -4,80 +4,33 @@ Use the `dfx canister` command with flags and subcommands to manage canister ope
 
 The basic syntax for running `dfx canister` commands is:
 
-    dfx canister [subcommand] [flag]
+``` bash
+dfx canister [subcommand] [flag]
+```
 
 Depending on the `dfx canister` subcommand you specify, additional arguments, options, and flags might apply or be required. To view usage information for a specific `dfx canister` subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx canister call`, you can run the following command:
 
-    dfx canister call --help
+``` bash
+dfx canister call --help
+```
 
 For reference information and examples that illustrate using `dfx canister` commands, select an appropriate command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_call"><code>call</code></a></p></td>
-<td style="text-align: left;"><p>Calls a specified method on a deployed canister.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_canister_create"><code>create</code></a></p></td>
-<td style="text-align: left;"><p>Creates a new "empty" canister by registering a canister identifier on the {platform} or the local canister execution environment.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_delete"><code>delete</code></a></p></td>
-<td style="text-align: left;"><p>Deletes a currently stopped canister.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information message for a specified subcommand.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_id"><code>id</code></a></p></td>
-<td style="text-align: left;"><p>Displays the identifier for a canister.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_canister_install"><code>install</code></a></p></td>
-<td style="text-align: left;"><p>Installs compiled code as a canister on the {platform} or the local canister execution environment.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_request_status"><code>request-status</code></a></p></td>
-<td style="text-align: left;"><p>Requests the status of a call to a canister.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_canister_set_controller"><code>set-controller</code></a></p></td>
-<td style="text-align: left;"><p>Specifies the identity name or principal to use as the new controller for a specified canister on the {platform}.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_send"><code>send</code></a></p></td>
-<td style="text-align: left;"><p>Send a previously-signed <code>message.json</code> to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_canister_send"><code>sign</code></a></p></td>
-<td style="text-align: left;"><p>Create a signed <code>message.json</code> file before making a call to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_start"><code>start</code></a></p></td>
-<td style="text-align: left;"><p>Restarts a stopped canister.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><a href="#_dfx_canister_status"><code>status</code></a></p></td>
-<td style="text-align: left;"><p>Requests the running status of a canister.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><a href="#_dfx_canister_stop"><code>stop</code></a></p></td>
-<td style="text-align: left;"><p>Stops a currently running canister.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Command                                           | Description                                                                                                                                                                                                                                                                                                       |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`call`](#_dfx_canister_call)                     | Calls a specified method on a deployed canister.                                                                                                                                                                                                                                                                  |
+| [`create`](#_dfx_canister_create)                 | Creates a new "empty" canister by registering a canister identifier on the {platform} or the local canister execution environment.                                                                                                                                                                                |
+| [`delete`](#_dfx_canister_delete)                 | Deletes a currently stopped canister.                                                                                                                                                                                                                                                                             |
+| `help`                                            | Displays usage information message for a specified subcommand.                                                                                                                                                                                                                                                    |
+| [`id`](#_dfx_canister_id)                         | Displays the identifier for a canister.                                                                                                                                                                                                                                                                           |
+| [`install`](#_dfx_canister_install)               | Installs compiled code as a canister on the {platform} or the local canister execution environment.                                                                                                                                                                                                               |
+| [`request-status`](#_dfx_canister_request_status) | Requests the status of a call to a canister.                                                                                                                                                                                                                                                                      |
+| [`set-controller`](#_dfx_canister_set_controller) | Specifies the identity name or principal to use as the new controller for a specified canister on the {platform}.                                                                                                                                                                                                 |
+| [`send`](#_dfx_canister_send)                     | Send a previously-signed `message.json` to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.                  |
+| [`sign`](#_dfx_canister_send)                     | Create a signed `message.json` file before making a call to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons. |
+| [`start`](#_dfx_canister_start)                   | Restarts a stopped canister.                                                                                                                                                                                                                                                                                      |
+| [`status`](#_dfx_canister_status)                 | Requests the running status of a canister.                                                                                                                                                                                                                                                                        |
+| [`stop`](#_dfx_canister_stop)                     | Stops a currently running canister.                                                                                                                                                                                                                                                                               |
 
 ## Overriding the default deployment environment
 
@@ -85,17 +38,23 @@ By default, `dfx canister` commands run on the local canister execution environm
 
 For example, to register unique canister identifiers for a project on the local canister execution environment, you can run the following command:
 
-    dfx canister create --all
+``` bash
+dfx canister create --all
+```
 
 If you want to register unique canister identifiers for the same project on the {platform}, you can run the following command:
 
-    dfx canister --network ic create --all
+``` bash
+dfx canister --network ic create --all
+```
 
 The {sdk-short-name} comes with an alias of `ic`, which is configured to point to the {platform}. You can also pass a URL as a network option, or you can configure additional aliases in `dfx.json` under the `networks` configuration.
 
 To illustrate, you can call a canister and function running on a testnet using a command similar to the following:
 
-    dfx canister --network \http://192.168.3.1:5678 call counter get
+``` bash
+dfx canister --network \http://192.168.3.1:5678 call counter get
+```
 
 Note that you must specify the `--network` parameter before the canister operation (`create` or `call`) and any additional arguments such as the canister name (`counter`), and function (`get`).
 
@@ -105,110 +64,48 @@ Use the `dfx canister call` command to call a specified method on a deployed can
 
 ### Basic usage
 
-    dfx canister call [option] canister_name method_name [argument] [flag]
+``` bash
+dfx canister call [option] canister_name method_name [argument] [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister call` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--async</code></p></td>
-<td style="text-align: left;"><p>Enables you to continue without waiting for the result of the call to be returned by polling the local canister execution environment or the {platform}.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--query</code></p></td>
-<td style="text-align: left;"><p>Enables you to send a query request to a deployed canister. For best performance, you should use this flag when you explicitly want to use the query method to retrieve information. For information about the difference between query and update calls, see <a href="../concepts/canisters-code.xml#canister-state">Canisters include both program and state</a>.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>--update</code></p></td>
-<td style="text-align: left;"><p>Enables you to send an update request to a deployed canister. By default, canister calls use the update method.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                                                                                                                                                                                                                                                                                                                                              |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--async`         | Enables you to continue without waiting for the result of the call to be returned by polling the local canister execution environment or the {platform}.                                                                                                                                                                                                 |
+| `-h`, `--help`    | Displays usage information.                                                                                                                                                                                                                                                                                                                              |
+| `--query`         | Enables you to send a query request to a deployed canister. For best performance, you should use this flag when you explicitly want to use the query method to retrieve information. For information about the difference between query and update calls, see [Canisters include both program and state](../concepts/canisters-code.xml#canister-state). |
+| `--update`        | Enables you to send an update request to a deployed canister. By default, canister calls use the update method.                                                                                                                                                                                                                                          |
+| `-V`, `--version` | Displays version information.                                                                                                                                                                                                                                                                                                                            |
 
 ### Options
 
 You can use the following options with the `dfx canister call` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Option</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--output &lt;output&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the output format to use when displaying a method’s return result. The valid values are <code>idl</code> and <code>raw</code>.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>--type &lt;type&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the data format for the argument when making the call using an argument. The valid values are <code>idl</code> and <code>raw</code>.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Option              | Description                                                                                                              |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------|
+| `--output <output>` | Specifies the output format to use when displaying a method’s return result. The valid values are `idl` and `raw`.       |
+| `--type <type>`     | Specifies the data format for the argument when making the call using an argument. The valid values are `idl` and `raw`. |
 
 ### Arguments
 
 You can specify the following arguments for the `dfx canister call` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the <code>canisters</code> section of the <code>dfx.json</code> configuration file.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>method_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the method name to call on the canister. The canister method is a required argument.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>argument</code></p></td>
-<td style="text-align: left;"><p>Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the <code>--type</code> option if you pass an argument to the canister. By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes to a canister.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `canister_name` | Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the `canisters` section of the `dfx.json` configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `method_name`   | Specifies the method name to call on the canister. The canister method is a required argument.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
 
 ### Examples
 
 You can use the `dfx canister call` command to invoke specific methods—with or without arguments—after you have deployed the canister using the `dfx canister install` command. For example, to invoke the `get` method for a canister with a `canister_name` of `counter`, you can run the following command:
 
-    dfx canister call counter get --async
+``` bash
+dfx canister call counter get --async
+```
 
 In this example, the command includes the `--async` option to indicate that you want to make a separate `request-status` call rather than waiting to poll the local canister execution environment or the {platform} for the result. The `--async` option is useful when processing an operation might take some time to complete. The option enables you to continue performing other operations then check for the result using a separate `dfx canister request-status` command. The returned result will be displayed as the IDL textual format.
 
@@ -216,26 +113,34 @@ In this example, the command includes the `--async` option to indicate that you 
 
 You can explicitly specify that you are passing arguments using the IDL syntax by running commands similar to the following for a Text data type:
 
-    dfx canister call hello greet --type idl '("Lisa")'
-    ("Hello, Lisa!")
+``` bash
+dfx canister call hello greet --type idl '("Lisa")'
+("Hello, Lisa!")
 
-    dfx canister call hello greet '("Lisa")' --type idl
-    ("Hello, Lisa!")
+dfx canister call hello greet '("Lisa")' --type idl
+("Hello, Lisa!")
+```
 
 You can also implicitly use the IDL by running a command similar to the following:
 
-    dfx canister call hello greet '("Lisa")'
-    ("Hello, Lisa!")
+``` bash
+dfx canister call hello greet '("Lisa")'
+("Hello, Lisa!")
+```
 
 To specify multiple arguments using the IDL syntax, use commas between the arguments. For example:
 
-    dfx canister call contacts insert '("Amy Lu","01 916-335-2042")'
+``` bash
+dfx canister call contacts insert '("Amy Lu","01 916-335-2042")'
 
-    dfx canister call hotel guestroom '("Deluxe Suite",42,true)'
+dfx canister call hotel guestroom '("Deluxe Suite",42,true)'
+```
 
 You can pass raw data in bytes by running a command similar to the following:
 
-    dfx canister call hello greet --type raw '4449444c00017103e29883'
+``` bash
+dfx canister call hello greet --type raw '4449444c00017103e29883'
+```
 
 This example uses the raw data type to pass a hexadecimal to the `greet` function of the `hello` canister.
 
@@ -249,94 +154,49 @@ The first time you run the `dfx canister create` command to register an identifi
 
 ### Basic usage
 
-    dfx canister create [option] [flag] [--all | canister_name]
+``` bash
+dfx canister create [option] [flag] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister create` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Options
 
 You can use the following options with the `dfx canister create` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Option</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--with-cycles &lt;number-of-cycles&gt;</code></p></td>
-<td style="text-align: left;"><p>Enables you to specify the initial number of cycles in a canister when it is created by your wallet.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Option                             | Description                                                                                          |
+|------------------------------------|------------------------------------------------------------------------------------------------------|
+| `--with-cycles <number-of-cycles>` | Enables you to specify the initial number of cycles in a canister when it is created by your wallet. |
 
 ### Arguments
 
 You can use the following argument with the `dfx canister create` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Enables you to create multiple canister identifiers at once if you have a project <code>dfx.json</code> file that defines multiple canisters. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister for which you want to register an identifier. If you are not using the <code>--all</code> option, the canister name is a required argument and must match at least one name that you have configured in the <code>canisters</code> section of the <code>dfx.json</code> configuration file for your project.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                                                                                                                                                                                    |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Enables you to create multiple canister identifiers at once if you have a project `dfx.json` file that defines multiple canisters. Note that you must specify `--all` or an individual canister name.                                                                                                          |
+| `canister_name` | Specifies the name of the canister for which you want to register an identifier. If you are not using the `--all` option, the canister name is a required argument and must match at least one name that you have configured in the `canisters` section of the `dfx.json` configuration file for your project. |
 
 ### Examples
 
 You can use the `dfx canister create` command to register canister identifiers without first compiling any code. For example, if you want to create the canister identifier for the project `my_counter` before writing the program, you can run the following command:
 
-    dfx canister create my_counter
+``` bash
+dfx canister create my_counter
+```
 
 You can use the `dfx canister create` command with the `--with-cycles` option to specify the initial balance upon the creation of one canister or all canisters in a project. For example, to specify an initial balance of 8000000000000 cycles for all canisters, run the following command:
 
-    dfx canister create --with-cycles 8000000000000 --all
+``` bash
+dfx canister create --with-cycles 8000000000000 --all
+```
 
 ## dfx canister delete
 
@@ -346,61 +206,27 @@ Note that you can only run this command from within the project directory struct
 
 ### Basic usage
 
-    dfx canister delete [flag] [--all | canister_name]
+``` bash
+dfx canister delete [flag] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister delete` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table>
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister delete` command.
 
-<table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Deletes all of the canisters configured in the <code>dfx.json</code> file. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister you want to delete. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                        |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Deletes all of the canisters configured in the `dfx.json` file. Note that you must specify `--all` or an individual canister name. |
+| `canister_name` | Specifies the name of the canister you want to delete. Note that you must specify either a canister name or the `--all` option.    |
 
 ### Examples
 
@@ -408,11 +234,15 @@ You can use the `dfx canister delete` command to delete a specific canister or a
 
 To delete the `hello_world` canister, you can run the following command:
 
-    dfx canister delete hello_world
+``` bash
+dfx canister delete hello_world
+```
 
 To delete all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
-    dfx canister --network=ic delete --all
+``` bash
+dfx canister --network=ic delete --all
+```
 
 ## dfx canister id
 
@@ -422,57 +252,26 @@ Note that you can only run this command from within the project directory struct
 
 ### Basic usage
 
-    dfx canister id [flag] canister_name
+``` bash
+dfx canister id [flag] canister_name
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister id` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can use the following argument with the `dfx canister id` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister for which you want to display an identifier.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                     |
+|-----------------|---------------------------------------------------------------------------------|
+| `canister_name` | Specifies the name of the canister for which you want to display an identifier. |
 
 ### Examples
 
@@ -480,11 +279,15 @@ You can use the `dfx canister id` command to display the canister identifier for
 
 To display the canister identifier for the `hello_world` canister, you can run the following command:
 
-    dfx canister id hello_world
+``` bash
+dfx canister id hello_world
+```
 
 The command displays output similar to the following:
 
-    75hes-oqbaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
+``` bash
+75hes-oqbaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
+```
 
 ## dfx canister install
 
@@ -492,126 +295,70 @@ Use the `dfx canister install` command to install compiled code as a canister on
 
 ### Basic usage
 
-    dfx canister install [flag] [option] [--all | canister_name]
+``` bash
+dfx canister install [flag] [option] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister install` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--async</code></p></td>
-<td style="text-align: left;"><p>Enables you to continue without waiting for the result of the installation to be returned by polling the {platform} or the local canister execution environment.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                                                                                                                                                      |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--async`         | Enables you to continue without waiting for the result of the installation to be returned by polling the {platform} or the local canister execution environment. |
+| `-h`, `--help`    | Displays usage information.                                                                                                                                      |
+| `-V`, `--version` | Displays version information.                                                                                                                                    |
 
 ### Options
 
 You can use the following options with the `dfx canister install` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Option</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--argument &lt;argument&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies an argument to pass to the canister during installation.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>--argument-type &lt;argument-type&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the data format for the argument when you install using the <code>--argument</code> option. The valid values are <code>idl</code> and <code>raw</code>. By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes to a canister.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-c</code>, <code>--compute-allocation &lt;compute-allocation&gt;</code></p></td>
-<td style="text-align: left;"><p>Defines a compute allocation—essentially the equivalent of setting a CPU allocation—for canister execution. You can set this value as a percentage in the range of 0 to 100.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>--memory-allocation &lt;memory-allocation&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies how much memory the canister is allowed to use in total. You can set this value in the range of 0 to 8MB.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-m</code>, <code>--mode &lt;mode&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies whether you want to <code>install</code>, <code>reinstall</code>, or <code>upgrade</code> canisters. For more information about installation modes and canister management, see <a href="../working-with-canisters.xml">Managing canisters</a>.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Option                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--argument <argument>`                           | Specifies an argument to pass to the canister during installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `--argument-type <argument-type>`                 | Specifies the data format for the argument when you install using the `--argument` option. The valid values are `idl` and `raw`. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
+| `-c`, `--compute-allocation <compute-allocation>` | Defines a compute allocation—essentially the equivalent of setting a CPU allocation—for canister execution. You can set this value as a percentage in the range of 0 to 100.                                                                                                                                                                                                                                                                                                                                                                                           |
+| `--memory-allocation <memory-allocation>`         | Specifies how much memory the canister is allowed to use in total. You can set this value in the range of 0 to 8MB.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `-m`, `--mode <mode>`                             | Specifies whether you want to `install`, `reinstall`, or `upgrade` canisters. For more information about installation modes and canister management, see [Managing canisters](../working-with-canisters.xml).                                                                                                                                                                                                                                                                                                                                                          |
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister install` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Enables you to install multiple canisters at once if you have a project <code>dfx.json</code> file that includes multiple canisters. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister to deploy. If you are not using the <code>--all</code> option, the canister name is a required argument and should match the name you have configured for a project in the <code>canisters</code> section of the <code>dfx.json</code> configuration file.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                                                                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Enables you to install multiple canisters at once if you have a project `dfx.json` file that includes multiple canisters. Note that you must specify `--all` or an individual canister name.                                                                 |
+| `canister_name` | Specifies the name of the canister to deploy. If you are not using the `--all` option, the canister name is a required argument and should match the name you have configured for a project in the `canisters` section of the `dfx.json` configuration file. |
 
 ### Examples
 
 You can use the `dfx canister install` command to deploy WebAssembly you have compiled using the `dfx build` command as a canister on the {platform} or on the local canister execution environment. The most common use case is to install all of the canisters by running the following command:
 
-    dfx canister install --all
+``` bash
+dfx canister install --all
+```
 
 #### Installing a specific canister
 
 You can also use the `dfx canister install` command to deploy a specific canister instead of all of the canisters in your project. For example, if you have a project with a `hello_world` canister and a `hello_world_assets` canister but only want to deploy the `hello_world` canister, you can deploy just that the canister by running the following command:
 
-    dfx canister install hello_world
+``` bash
+dfx canister install hello_world
+```
 
 #### Sending an asynchronous request
 
 If you want to submit a request to install the canister and return a request identifier to check on the status of your request later instead of waiting for the command to complete, you can run a command similar to the following:
 
-    dfx canister install hello_world --async
+``` bash
+dfx canister install hello_world --async
+```
 
 This command submits a request to install the canister and returns a request identifier similar to the following:
 
-    0x58d08e785445dcab4ff090463b9e8b12565a67bf436251d13e308b32b5058608
+``` bash
+0x58d08e785445dcab4ff090463b9e8b12565a67bf436251d13e308b32b5058608
+```
 
 You can then use the request identifier to check the status of the request at a later time, much like a tracking number if you were shipping a package.
 
@@ -621,7 +368,9 @@ If you want to deploy a canister on a testnet without changing the settings in y
 
 For example, you can specify a testnet URL by running a command similar to the following:
 
-    dfx canister --network \http://192.168.3.1:5678 install --all
+``` bash
+dfx canister --network \http://192.168.3.1:5678 install --all
+```
 
 Note that you must specify the network parameter before the canister operation (`install`) and before the canister name or `--all` flag.
 
@@ -631,7 +380,9 @@ The `--compute-allocation` options allows you to allocate computing resources as
 
 For example, assume you run the following command:
 
-    dfx canister install --all --compute-allocation 50
+``` bash
+dfx canister install --all --compute-allocation 50
+```
 
 With this setting, all of the canisters in the current projects are assigned a 50% allocation. When canisters in the project receive input messages to process, the messages are scheduled for execution. Over 100 execution cycles, each canister’s messages will be scheduled for processing at least 50 times.
 
@@ -643,63 +394,34 @@ Use the `dfx canister request-status` command to request the status of a specifi
 
 ### Basic usage
 
-    dfx canister request-status request_id
+``` bash
+dfx canister request-status request_id
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister request-status` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can specify the following argument for the `dfx canister request-status` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>request_id</code></p></td>
-<td style="text-align: left;"><p>Specifies the hexadecimal string returned in response to a <code>dfx canister call</code> or <code>dfx canister install</code> command. This identifier is an hexadecimal string starting with 0x.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument     | Description                                                                                                                                                                  |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `request_id` | Specifies the hexadecimal string returned in response to a `dfx canister call` or `dfx canister install` command. This identifier is an hexadecimal string starting with 0x. |
 
 ### Examples
 
 You can use the `dfx canister request-status` command to check on the status of a canister state change or to verify that a call was not rejected by running a command similar to the following:
 
-    dfx canister request-status 0x58d08e785445dcab4ff090463b9e8b12565a67bf436251d13e308b32b5058608
+``` bash
+dfx canister request-status 0x58d08e785445dcab4ff090463b9e8b12565a67bf436251d13e308b32b5058608
+```
 
 This command displays an error message if the request identifier is invalid or refused by the canister.
 
@@ -711,61 +433,27 @@ Note that you can specify either a user identity or a canister as a controller. 
 
 ### Basic usage
 
-    dfx canister set-controller [flag] canister new-controller
+``` bash
+dfx canister set-controller [flag] canister new-controller
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister set-controller` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You must use the following arguments with the `dfx canister set-controller` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>&lt;canister&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the canister name or canister identifier to be controlled by the identity you specify using the <em>new_controller</em> argument.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>&lt;new_controller&gt;</code></p></td>
-<td style="text-align: left;"><p>Specifies the identity name or principal of the controller.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument           | Description                                                                                                                          |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `<canister>`       | Specifies the canister name or canister identifier to be controlled by the identity you specify using the *new_controller* argument. |
+| `<new_controller>` | Specifies the identity name or principal of the controller.                                                                          |
 
 ### Examples
 
@@ -825,57 +513,26 @@ For example, when creating your neuron stake, you might want to use the `dfx can
 
 ### Basic usage
 
-    dfx canister send file_name
+``` bash
+dfx canister send file_name
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister request-status` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can specify the following argument for the `dfx canister send` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>file_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the file name of the message.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument    | Description                             |
+|-------------|-----------------------------------------|
+| `file_name` | Specifies the file name of the message. |
 
 ### Examples
 
@@ -889,48 +546,26 @@ Use the `dfx canister sign` command before sending a message with the `dfx canis
 
 ### Basic usage
 
-    dfx canister sign [flag] [option] canister-name method-name [argument]
+``` bash
+dfx canister sign [flag] [option] canister-name method-name [argument]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister sign` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>--query</code></p></td>
-<td style="text-align: left;"><p>Sends a query request to a canister.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--update</code></p></td>
-<td style="text-align: left;"><p>Sends an update request to the canister. This is the default method if the <code>--query</code> method is not used.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                                                                                              |
+|-------------------|----------------------------------------------------------------------------------------------------------|
+| `-h`, `--help`    | Displays usage information.                                                                              |
+| `--query`         | Sends a query request to a canister.                                                                     |
+| `--update`        | Sends an update request to the canister. This is the default method if the `--query` method is not used. |
+| `-V`, `--version` | Displays version information.                                                                            |
 
 ### Options
 
 You can specify the following options for the `dfx canister sign` command.
 
-<!-- <table>
+<table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -960,38 +595,17 @@ You can specify the following options for the `dfx canister sign` command.
 <p>By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
 </tr>
 </tbody>
-</table> -->
+</table>
 
 ### Arguments
 
 You can specify the following arguments for the `dfx canister sign` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the <code>canisters</code> section of the <code>dfx.json</code> configuration file.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>method_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the method name to call on the canister. The canister method is a required argument.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>argument</code></p></td>
-<td style="text-align: left;"><p>Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the <code>--type</code> option if you pass an argument to the canister. By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `canister_name` | Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the `canisters` section of the `dfx.json` configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `method_name`   | Specifies the method name to call on the canister. The canister method is a required argument.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes. |
 
 ### Examples
 
@@ -1021,61 +635,27 @@ Note that you can only run this command from within the project directory struct
 
 ### Basic usage
 
-    dfx canister start [flag] [--all | canister_name]
+``` bash
+dfx canister start [flag] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister start` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister start` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Starts all of the canisters configured in the <code>dfx.json</code> file. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister you want to start. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                       |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Starts all of the canisters configured in the `dfx.json` file. Note that you must specify `--all` or an individual canister name. |
+| `canister_name` | Specifies the name of the canister you want to start. Note that you must specify either a canister name or the `--all` option.    |
 
 ### Examples
 
@@ -1083,11 +663,15 @@ You can use the `dfx canister start` command to start a specific canister or all
 
 To start the `hello_world` canister, you can run the following command:
 
-    dfx canister start hello_world
+``` bash
+dfx canister start hello_world
+```
 
 To start all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
-    dfx canister --network=ic start --all
+``` bash
+dfx canister --network=ic start --all
+```
 
 ## dfx canister status
 
@@ -1097,61 +681,27 @@ Note that you can only run this command from within the project directory struct
 
 ### Basic usage
 
-    dfx canister status [flag] [--all | canister_name]
+``` bash
+dfx canister status [flag] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister status` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister status` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Returns status information for all of the canisters configured in the <code>dfx.json</code> file. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister you want to return information for. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                               |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Returns status information for all of the canisters configured in the `dfx.json` file. Note that you must specify `--all` or an individual canister name. |
+| `canister_name` | Specifies the name of the canister you want to return information for. Note that you must specify either a canister name or the `--all` option.           |
 
 ### Examples
 
@@ -1159,11 +709,15 @@ You can use the `dfx canister status` command to check the status of a specific 
 
 To check the status of the `hello_world` canister, you can run the following command:
 
-    dfx canister status hello_world
+``` bash
+dfx canister status hello_world
+```
 
 To check the status for all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
-    dfx canister --network=ic status --all
+``` bash
+dfx canister --network=ic status --all
+```
 
 ## dfx canister stop
 
@@ -1175,61 +729,27 @@ Note that you can only run this command from within the project directory struct
 
 ### Basic usage
 
-    dfx canister stop [flag] [--all | canister_name]
+``` bash
+dfx canister stop [flag] [--all | canister_name]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx canister stop` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                   |
+|-------------------|-------------------------------|
+| `-h`, `--help`    | Displays usage information.   |
+| `-V`, `--version` | Displays version information. |
 
 ### Arguments
 
 You can use the following arguments with the `dfx canister stop` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--all</code></p></td>
-<td style="text-align: left;"><p>Stops all of the canisters configured in the <code>dfx.json</code> file. Note that you must specify <code>--all</code> or an individual canister name.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister you want to stop. Note that you must specify either a canister name or the <code>--all</code> option.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                      |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------|
+| `--all`         | Stops all of the canisters configured in the `dfx.json` file. Note that you must specify `--all` or an individual canister name. |
+| `canister_name` | Specifies the name of the canister you want to stop. Note that you must specify either a canister name or the `--all` option.    |
 
 ### Examples
 
@@ -1237,8 +757,12 @@ You can use the `dfx canister stop` command to start a specific canister or all 
 
 To stop the `hello_world` canister, you can run the following command:
 
-    dfx canister stop hello_world
+``` bash
+dfx canister stop hello_world
+```
 
 To stop all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
-    dfx canister --network=ic stop --all
+``` bash
+dfx canister --network=ic stop --all
+```

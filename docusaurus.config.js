@@ -112,16 +112,10 @@ const config = {
             label: 'Governance',
           },
           {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'showcases',
-            label: 'Showcases',
-          },
-          /*{
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
-          },*/
+          },
           // TODO: remove when integrating i18n
           // {
           //   type: 'localeDropdown',
