@@ -66,26 +66,50 @@ const sidebars = {
       },
       items: [
         'developer-docs/functionality/index',
+        {
+          type: 'category',
+          label: 'Ledger',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/ledger/index'
+          },
+          items: [
+            'developer-docs/functionality/ledger/ledger-local-setup',
+            'developer-docs/functionality/ledger/deploy-new-token',
+          ]
+        },
       ]
     },
     {
       type: 'category',
       label: 'Good to know',
       link: {
-        type: 'doc', id: 'developer-docs/good-to-know/security/introduction'
+        type: 'doc', id: 'developer-docs/good-to-know/index'
       },
       items: [
+        'developer-docs/good-to-know/computation-and-storage-costs',
         {
           type: 'category',
-          label: 'Security',
+          label: 'Security Best Practices',
           link: {
-            type: 'doc', id: 'developer-docs/good-to-know/security/introduction'
+            type: 'doc', id: 'developer-docs/good-to-know/security/index'
           },
           items: [
-            'developer-docs/good-to-know/security/introduction',
             'developer-docs/good-to-know/security/general-security-best-practices',
             'developer-docs/good-to-know/security/web-app-development-security-best-practices',
             'developer-docs/good-to-know/security/rust-canister-development-security-best-practices',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Token Holders',
+          link: {
+            type: 'doc', id: 'developer-docs/good-to-know/token-holders/index'
+          },
+          items: [
+            'developer-docs/good-to-know/token-holders/custody-options-intro',
+            'developer-docs/good-to-know/token-holders/self-custody-quickstart',
+            'developer-docs/good-to-know/token-holders/nns-app-quickstart',
+            // 'developer-docs/good-to-know/token-holders/seed-donations',
           ]
         },
       ]
@@ -131,7 +155,8 @@ const sidebars = {
         'references/cli-reference/dfx-wallet',
       ]
     },
-    'references/ic-interface-spec'
+    'references/ic-interface-spec',
+    'references/ledger'
   ],
   'concepts': [
     'concepts/index',
