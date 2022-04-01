@@ -77,6 +77,19 @@ const sidebars = {
             'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
+        {
+          type: 'category',
+          label: 'Rosetta',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
+          },
+          items: [
+            'developer-docs/functionality/rosetta/transfers',
+            'developer-docs/functionality/rosetta/neuron-lifecycle',
+            'developer-docs/functionality/rosetta/staking-support',
+            'developer-docs/functionality/rosetta/staking-tutorial',
+          ]
+        },
       ]
     },
     {
