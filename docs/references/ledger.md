@@ -1,26 +1,26 @@
-# The ledger canister
+# The Ledger Canister
 
 This document is a specification of the public interface of the Ledger Canister. It provides an overview of the functionality, details some internal aspects, and documents publicly available methods. We also provide an abstract mathematical model which makes precise the expected behavior of the methods implemented by the canister, albeit at a somewhat high level of abstraction.
 
-<div class="note">
+:::note
 
 Parts of the canister interface are for internal consumption only, and therefore not part of this specification. However, whenever relevant, we do provide some insights into those aspects as well.
 
-</div>
+:::
 
-## Overview & terminology
+## Overview & Terminology
 
-In brief, the Ledger canister maintains a set of accounts owned by IC principals; each account has associated a Tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the Ledger canister also allows minting and burning of tokens, which are additional transactions which are recorded on the transaction ledger.
+In brief, the Ledger canister maintains a set of accounts owned byICprincipals; each account has associated a Tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the Ledger canister also allows minting and burning of tokens, which are additional transactions which are recorded on the transaction ledger.
 
 ### Tokens
 
-There can be multiple utility Tokens in the IC at once. The utility Tokens used by the IC Governance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of Tokens are "e8"s: one e8 is 10<sup>-8</sup> Tokens.
+There can be multiple utility Tokens in theICat once. The utility Tokens used by theICGovernance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of Tokens are "e8"s: one e8 is 10<sup>-8</sup> Tokens.
 
 ### Accounts
 
 The Ledger canister keeps track of accounts:
 
--   Every account belongs to (and is controlled by) an IC principal
+-   Every account belongs to (and is controlled by) anICprincipal
 
 -   Each account has precisely one owner (i.e. no “joint accounts”)
 
@@ -128,7 +128,7 @@ The owner of an account can transfer Tokens from that account to any other accou
 
 -   `memo`: this is a 64-bit number chosen by the sender; it can be used in various ways, e.g. to identify specific transfers.
 
--   `created_at_time`: a timestamp indicating when the transaction was created by the caller — if it is not specified by the caller then this is set to the current IC time.
+-   `created_at_time`: a timestamp indicating when the transaction was created by the caller — if it is not specified by the caller then this is set to the currentICtime.
 
 The Ledger canister executes a `transfer` call as follows:
 
@@ -362,7 +362,7 @@ The function is defined, recursively, as follows:
     otherwise
       balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
 
-We describe the semantics of ledger methods as a function which takes as input a ledger state, the call arguments and returns a (potentially) new state and a reply. In the description of the function we use some additional functions which reflect system provided information. These include `caller()` which returns the principal who invoked the method, `now()` which return the IC time and `drift` a constant indicating permissible time drift between IC and external time. We also write `well_formed(.)` for a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
+We describe the semantics of ledger methods as a function which takes as input a ledger state, the call arguments and returns a (potentially) new state and a reply. In the description of the function we use some additional functions which reflect system provided information. These include `caller()` which returns the principal who invoked the method, `now()` which return theICtime and `drift` a constant indicating permissible time drift betweenICand external time. We also write `well_formed(.)` for a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
 
 ### Ledger Method: `transfer`
 

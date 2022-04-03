@@ -2,17 +2,17 @@
 
 This document specifies extensions of the Rosetta API enabling staking funds and managing governance "neurons" on the Internet Computer.
 
-<div class="note">
+:::note
 
 Operations within a transaction are applied in order, so the order of operations is significant. Transactions that contain idempotent operations provided by this API can be re-tried within the 24-hour window.
 
-</div>
+:::
 
-<div class="note">
+:::note
 
 Due to limitations of the governance canister smart contract, neuron management operations are not reflected on the chain. If you lookup transactions by identifier returned from the `/construction/submit` endpoint, these transactions might not exist or miss neuron management operations. Instead, `/construction/submit` returns the statuses of all the operations in the `metadata` field using the same format as `/block/transaction` would return.
 
-</div>
+:::
 
 ## Deriving neuron address
 
@@ -41,11 +41,11 @@ Call the `/construction/derive` endpoint with metadata field `account_type` set 
 }
 ```
 
-<div class="note">
+:::note
 
 Since version 1.3.0, you can control many neurons using the same key. You can differentiate between neurons by specifying different values of the `neuron_index` metadata field. The rosetta node supports `neuron_index` in all neuron management operations. `neuron_index` is an arbitrary integer between `0` and `264 - 1` (`18446744073709551615`). It is equal to zero if not specified. If you use JavaScript to construct requests to the Rosetta node, consider using the [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) type to represent the `neuron_index`. The `Number` type can precisely represent only values below `253 - 1` (`9007199254740991`).
 
-</div>
+:::
 
 ### Response
 
@@ -410,13 +410,13 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
 }
 ```
 
-<div class="note">
+:::note
 
 -   `controller` metadata field is optional and equal to the existing neuron controller by default.
 
 -   `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
 
-</div>
+:::
 
 ### Merge neuron maturity
 
@@ -456,11 +456,11 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 }
 ```
 
-<div class="note">
+:::note
 
 `percentage_to_merge` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
 
-</div>
+:::
 
 ## Accessing neuron attributes
 
@@ -475,13 +475,13 @@ Call the `/account/balance` endpoint to access the staked amount and publicly av
 
 -   `public_key` contains the public key of a neuron’s controller.
 
-<div class="note">
+:::note
 
 -   This operation is available only in online mode.
 
 -   The request should not specify any block identifier because the endpoint always returns the latest state of the neuron.
 
-</div>
+:::
 
 #### Request
 
@@ -584,11 +584,11 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 }
 ```
 
-<div class="note">
+:::note
 
 Since Rosetta API identifies neurons by the controller’s public key and neuron index, the caller has to specify the public key when executing the operation using a hotkey.
 
-</div>
+:::
 
 The Rosetta API returns the state of the neuron as operation metadata in the `/construction/submit` endpoint.
 

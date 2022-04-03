@@ -12,7 +12,7 @@ With the {sdk-short-name}, you can add a language server for {proglang} to your 
 
 For example, if you use Visual Studio Code (VSCode) or Emacs as your development environment, you can install a plugin extension that enables those editors to automatically invoke the {proglang} language server.
 
-Only the Visual Studio Code (VSCode) plugin extension is currently available for {proglang}. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart.xml#install-vscode).
+Only the Visual Studio Code (VSCode) plugin extension is currently available for {proglang}. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart#install-vscode).
 
 ## Invoking the language service manually
 

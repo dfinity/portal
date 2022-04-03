@@ -8,7 +8,7 @@ This tutorial illustrates how to pass arguments on the command-line in a termina
 
 Before you start this tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped any canister execution environments running on the local computer.
 
@@ -32,7 +32,7 @@ To create a new project for this tutorial:
 
 ## Modify the default configuration
 
-In the [Explore the default project](explore-templates.xml) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. You should always review the default settings in the file to verify the information accurately reflects the project settings you want to use. For this tutorial, you’ll modify the default configuration to remove settings that aren’t used.
+In the [Explore the default project](explore-templates) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. You should always review the default settings in the file to verify the information accurately reflects the project settings you want to use. For this tutorial, you’ll modify the default configuration to remove settings that aren’t used.
 
 To modify settings in the `dfx.json` configuration file:
 
@@ -48,7 +48,7 @@ To modify settings in the `dfx.json` configuration file:
 
 ## Modify the default program
 
-In the [Explore the default project](explore-templates.xml) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file.
+In the [Explore the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file.
 
 To modify the default template source code:
 
@@ -184,7 +184,7 @@ To experiment with modifying the source code for this tutorial:
 
         dfx canister call favorite_cities location '(vec {"San Francisco";"Paris";"Rome"})'
 
-    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../../candid-guide/candid-intro.xml) language guide.
+    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../../candid-guide/candid-intro) language guide.
 
     This command displays output similar to the following:
 

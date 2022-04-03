@@ -1,12 +1,12 @@
 # Query using an actor
 
-In the [Quick start](../../quickstart/quickstart-intro.xml), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
+In the [Quick start](../../quickstart/quickstart-intro), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
 
 ## Before you begin
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped any local canister execution environment processes
 
@@ -30,7 +30,7 @@ To create a new project for this tutorial:
 
 ## Modify the default configuration
 
-In the [Exploring the default project](explore-templates.xml) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. In this tutorial, you need to modify a few of the default settings to reflect your project.
+In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. In this tutorial, you need to modify a few of the default settings to reflect your project.
 
 To modify the `dfx.json` configuration file:
 
@@ -56,7 +56,7 @@ To modify the `dfx.json` configuration file:
 
 ## Modify the default canister
 
-In the [Exploring the default project](explore-templates.xml) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this tutorial, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an Internet Computer canister is representeded as a Motoko actor.
+In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this tutorial, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an Internet Computer canister is representeded as a Motoko actor.
 
 To modify the default template source code:
 
@@ -78,7 +78,7 @@ To modify the default template source code:
 
     -   The actor uses the `public query func` declaration to define an Internet Computer *query* method. Our method doesn’t need to make any permanent changes to the state of the actor. Declaring it as a query means that any changes it does make are transient and discarded after the query completes.
 
-    For more information about using a query call, see [query calls](../concepts/canisters-code.xml#query-update) in [Canisters include both program and state](../concepts/canisters-code.xml#canister-state).
+    For more information about using a query call, see [query calls](../concepts/canisters-code#query-update) in [Canisters include both program and state](../concepts/canisters-code#canister-state).
 
 4.  Save your changes and close the `main.mo` file.
 

@@ -10,7 +10,7 @@ The dapp equivalent of *hello world*, with a separate backend and frontend canis
 ## Static website
 
 This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to the IC.  
-[Technical docs](host-a-website.xml) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
+[Technical docs](host-a-website) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
 ## Basic DEX
 
@@ -24,7 +24,7 @@ This NFT minting dapp showcases how easy it can be to create a user generated NF
 
 ## Basic DAO
 
-Decentralised governance is higlight of the IC and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can sumit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
+Decentralised governance is higlight of theICand is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can sumit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
 [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao) • [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao) • [Technical docs](dao)
 
 ## Encrypted note-taking
@@ -43,9 +43,9 @@ This is a collection of repo-links to additional code samples written in Motoko.
 
 ### Basic
 
-This is collection of basic getting-started Motoko samples, which demonstrate basic concepts of the IC and the Motoko language.
+This is collection of basic getting-started Motoko samples, which demonstrate basic concepts of theICand the Motoko language.
 
--   [Actor\_reference](https://github.com/dfinity/examples/tree/master/motoko/actor_reference) shows the IC management canister as an actor (reference).
+-   [Actor\_reference](https://github.com/dfinity/examples/tree/master/motoko/actor_reference) shows theICmanagement canister as an actor (reference).
 
 -   [Counter](https://github.com/dfinity/examples/tree/master/motoko/counter) shows a basic (stable) variable demo.
 

@@ -34,11 +34,11 @@ Call the `/construction/derive` endpoint to get the default ledger account contr
 
 ## Compute the source ledger account
 
-<div class="note">
+:::note
 
 replace `hex_bytes` in the request below with bytes of your public key.
 
-</div>
+:::
 
 ``` sh
 curl -0 -X POST http://localhost:8080/construction/derive \
@@ -66,11 +66,11 @@ The expected response should look like the following:
 
 ## Compute the ledger account for staking
 
-<div class="note">
+:::note
 
 replace `hex_bytes` in the request below with bytes of your public key.
 
-</div>
+:::
 
 ``` sh
 curl -0 -X POST http://localhost:8080/construction/derive \
@@ -89,11 +89,11 @@ curl -0 -X POST http://localhost:8080/construction/derive \
 }
 ```
 
-<div class="note">
+:::note
 
 We set `account_type` to `neuron` in the request metadata to tell the Rosetta node that we want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
 
-</div>
+:::
 
 The response should look like the following:
 
@@ -265,27 +265,27 @@ The response should look like the following:
 }
 ```
 
-<div class="note">
+:::note
 
 The `payloads` field of the response contains the list of payloads that need to be signed before the transaction can be submitted.
 
-</div>
+:::
 
-<div class="note">
+:::note
 
 According to the Rosetta API specification ([Flow of Operations](https://www.rosetta-api.org/docs/construction_api_introduction.html#flow-of-operations)), the client should call `/construction/preprocess` and `/construction/metadata` before calling `/construction/payloads` because there might be some metadata that needs to be attached to the payloads request. Currently, there is no need to do it for the ICP Rosetta node implementation, so we skipped these unnecessary steps.
 
-</div>
+:::
 
 ## Check the contents of the transaction you’re about to sign
 
 Call `/construction/parse` endpoint to decode the contents of a transaction.
 
-<div class="note">
+:::note
 
 Replace the value of the `transaction` field below with the value of the `unsigned_transaction` field that you got from the previous step. Note that the `signed` field is set to `false`.
 
-</div>
+:::
 
 ``` sh
 curl -0 -X POST http://localhost:8080/construction/parse \
@@ -528,11 +528,11 @@ The response should look like the following:
 
 Call `/construction/parse` endpoint to decode the contents of a transaction.
 
-<div class="note">
+:::note
 
 Replace the value of the `transaction` field below with the value of the `signed_transaction` field that you got from the previous step. Note that the `signed` field is set to `true`.
 
-</div>
+:::
 
 ``` sh
 curl -0 -X POST http://localhost:8080/construction/parse \
@@ -730,25 +730,25 @@ The response should look like the following:
 }
 ```
 
-<div class="note">
+:::note
 
 -   Neuron management operations don’t strictly adhere to the Rosetta specification. If you look up the transaction above by hash using the `/block/transaction` endpoint, it will only contain the ledger transfer. Furthermore, if the transaction only contains the neuron management operations, the returned transaction hash won’t be on the ledger chain at all. That’s why the response `metadata` field includes statuses of all the operations in the same format `/block/transaction` would return them.
 
 -   The `STAKE` operation returns the unique identifier of the neuron that the Governance smart contract created. You can use this identifier to find the neuron in the NNS dapp or on <https://ic.rocks>.
 
-</div>
+:::
 
 ## Check the status of the neuron
 
 Let us now check the status of the newly created neuron.
 
-<div class="note">
+:::note
 
 -   Replace `address` fields below with addresses of the neuron that you got at step [Compute the ledger account for staking](#_compute_the_ledger_account_for_staking).
 
 -   Replace `public_key.hex_bytes` with the hex of your public key.
 
-</div>
+:::
 
 ``` sh
 curl -0 -X POST http://localhost:8080/account/balance \

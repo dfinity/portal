@@ -16,7 +16,7 @@ Internet Computer does not allow you to access the Wasm code of an arbitrary can
 
 To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [`dfx`](https://dfinity.org/developers/) tool from the terminal. Open your terminal, and run:
 
-    $ dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
+    $ dfx canister --networkicinfo rdmx6-jaaaa-aaaaa-aaadq-cai
     Controller: r7inp-6aaaa-aaaaa-aaabq-cai
     Module hash: 0xda8d1bdd93fbf1edddeb2a423fa3c528c2e4877d39beed2277a12e60227e44d4
 
@@ -227,6 +227,6 @@ Summarizing our recommendations for canister authors:
 
 Finally, if your build is reproducible, you can compare the hash of the resulting Wasm code to the hash of the code that is running in a canister, which you retrieve as follows:
 
-    $ dfx canister --network ic info <canister-id>
+    $ dfx canister --networkicinfo <canister-id>
 
 Beware that this hash might change if the controllers upgrade the canister code.

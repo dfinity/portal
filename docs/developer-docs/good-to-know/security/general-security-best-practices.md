@@ -8,7 +8,7 @@ The responses to [query calls](../../../references/ic-protocol-spec#https-interf
 
 ### Recommendation
 
--   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by the IC using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/src/ic-certified-map). The data certification must be validated in the front-end.
+-   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by theICusing certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/src/ic-certified-map). The data certification must be validated in the front-end.
 
 -   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance: it takes a few seconds. Note that every query can also be issued as an update by the caller.
 

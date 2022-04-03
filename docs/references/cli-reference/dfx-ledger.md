@@ -64,7 +64,7 @@ Use the `dfx ledger balance` command to print your account balance or that of an
 ### Basic usage
 
 ``` bash
-dfx ledger --network ic balance [of] [flag]
+dfx ledger --networkicbalance [of] [flag]
 ```
 
 ### Flags
@@ -89,7 +89,7 @@ You can specify the following argument for the `dfx ledger balance` command.
 You can use the `dfx ledger balance` command to check the balance of another user. For example, you can run the following command to see the ICP utlity tokens associated with a known Account Identifier:
 
 ``` bash
-dfx ledger --network ic balance 03e3d86f29a069c6f2c5c48e01bc084e4ea18ad02b0eec8fccadf4487183c223
+dfx ledger --networkicbalance 03e3d86f29a069c6f2c5c48e01bc084e4ea18ad02b0eec8fccadf4487183c223
 ```
 
 This command displays an ICP amount similar to the following:
@@ -103,7 +103,7 @@ Use the `dfx ledger create-canister` command to convert ICP tokens to cycles and
 ### Basic usage
 
 ``` bash
-dfx ledger --network ic create-canister controller [options]  [flag]
+dfx ledger --networkiccreate-canister controller [options]  [flag]
 ```
 
 ### Flags
@@ -140,7 +140,7 @@ You can specify the following argument for the `dfx ledger create-canister` comm
 To create a new canister with cycles, transfer ICP tokens from your ledger account by running a command similar to the following:
 
 ``` bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 1.25
+dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 1.25
 ```
 
 This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
@@ -155,7 +155,7 @@ If the transaction is successful, the ledger records the event and you should se
 You can create a new canister by specifying separate values for ICP tokens and e8s by running a command similar to the following:
 
 ``` bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --icp 3 --e8s 5000
+dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --icp 3 --e8s 5000
 ```
 
 ## dfx ledger notify
@@ -191,7 +191,7 @@ You can specify the following argument for the `dfx ledger notify` command.
 The following example illustrates sending a `notify` message to the ledger in response to a `_send+` transaction that was recorded at the block height `75948`.
 
 ``` bash
-dfx ledger --network ic notify 75948 tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
+dfx ledger --networkicnotify 75948 tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
 ```
 
 ## dfx ledger top-up
@@ -201,7 +201,7 @@ Use the `dfx ledger top-up` command to top up a canister with cycles minted from
 ### Basic usage
 
 ``` bash
-dfx ledger --network ic top-up [options] canister [flag]
+dfx ledger --networkictop-up [options] canister [flag]
 ```
 
 ### Flags
@@ -235,12 +235,12 @@ You can specify the following options for the `dfx ledger top-up` command.
 
 ### Examples
 
-You can use the `dfx ledger top-up` command to top up the cycles of a specific canister from the balance of ICP tokens you control. The canister identifier must be associated with a cycles wallet canister that is able to receive cycles. Alternatively, you can modify a non-cycles wallet canister to implement a method to receive cycles using system APIs described in the [Internet Computer Interface Specification](../../interface-spec/index.xml).
+You can use the `dfx ledger top-up` command to top up the cycles of a specific canister from the balance of ICP tokens you control. The canister identifier must be associated with a cycles wallet canister that is able to receive cycles. Alternatively, you can modify a non-cycles wallet canister to implement a method to receive cycles using system APIs described in the [Internet Computer Interface Specification](../../interface-spec/index).
 
 For example, you can run the following command to top-up a cycles wallet canister deployed on the Internet Computer with 1 ICP worth of cycles:
 
 ``` bash
-dfx ledger --network ic top-up --icp 1 5a46r-jqaaa-aaaaa-qaadq-cai
+dfx ledger --networkictop-up --icp 1 5a46r-jqaaa-aaaaa-qaadq-cai
 ```
 
 This command displays output similar to the following:
@@ -304,7 +304,7 @@ This command displays output similar to the following:
 You can check the balance of this account by running the following command:
 
 ``` bash
-dfx ledger --network ic balance
+dfx ledger --networkicbalance
 ```
 
 This command displays output similar to the following:
@@ -314,11 +314,11 @@ This command displays output similar to the following:
 Use the `dfx ledger transfer` command to send some of your ICP balance to another known destination using the following command:
 
 ``` bash
-dfx ledger --network ic transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
+dfx ledger --networkictransfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
 ```
 
 This command displays output similar to the following:
 
     Transfer sent at BlockHeight: 59513
 
-You can then use the `dfx ledger --network ic balance` command to check that your account balance reflects the transaction you just made.
+You can then use the `dfx ledger --networkicbalance` command to check that your account balance reflects the transaction you just made.

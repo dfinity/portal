@@ -84,7 +84,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 #### Security Concern
 
-dApps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+dApps on theICcan use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
 If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary may trick users (phishing) into using the insecure raw.ic0.app.
 
@@ -360,7 +360,7 @@ Since canisters interact with the system API, it is harder to test the code beca
 
 #### Security Concern
 
-It should be possible to verify that a canister does what it claims to do. The IC provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
+It should be possible to verify that a canister does what it claims to do. TheICprovides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
 
 #### Recommendation
 

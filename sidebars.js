@@ -47,6 +47,49 @@ const sidebars = {
         'developer-docs/build/default-wallet',
         {
           type: 'category',
+          label: 'Languages',
+          link: {
+            type: 'doc', id: 'developer-docs/build/languages/index'
+          },
+          items: [
+            // 'developer-docs/build/tutorials/explore-templates',
+            {
+              type: 'category',
+              label: 'Motoko',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+              },
+              items: [
+                'developer-docs/build/languages/motoko/about-this-guide',
+                'developer-docs/build/languages/motoko/motoko-introduction',
+                'developer-docs/build/languages/motoko/basic-concepts',
+                'developer-docs/build/languages/motoko/mutable-state',
+                'developer-docs/build/languages/motoko/local-objects-classes',
+                'developer-docs/build/languages/motoko/actors-async',
+                'developer-docs/build/languages/motoko/errors',
+                'developer-docs/build/languages/motoko/pattern-matching',
+                'developer-docs/build/languages/motoko/sharing',
+                'developer-docs/build/languages/motoko/modules-and-imports',
+                'developer-docs/build/languages/motoko/control-flow',
+                'developer-docs/build/languages/motoko/structural-equality',
+                'developer-docs/build/languages/motoko/actor-classes',
+                'developer-docs/build/languages/motoko/caller-id',
+                'developer-docs/build/languages/motoko/cycles',
+                'developer-docs/build/languages/motoko/upgrades',
+                'developer-docs/build/languages/motoko/compatibility',
+                'developer-docs/build/languages/motoko/stablememory',
+                'developer-docs/build/languages/motoko/heartbeats',
+                'developer-docs/build/languages/motoko/language-manual',
+                'developer-docs/build/languages/motoko/compiler-ref',
+                'developer-docs/build/languages/motoko/motoko-grammar',
+                'developer-docs/build/languages/motoko/overview',
+                'developer-docs/build/languages/motoko/style',
+              ]
+            },
+          ]
+        },
+        {
+          type: 'category',
           label: 'Tutorials',
           link: {
             type: 'doc', id: 'developer-docs/build/tutorials/index'
@@ -65,18 +108,7 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/functionality/index'
       },
       items: [
-        'developer-docs/functionality/index',
-        {
-          type: 'category',
-          label: 'Ledger',
-          link: {
-            type: 'doc', id: 'developer-docs/functionality/ledger/index'
-          },
-          items: [
-            'developer-docs/functionality/ledger/ledger-local-setup',
-            'developer-docs/functionality/ledger/deploy-new-token',
-          ]
-        },
+        // 'developer-docs/functionality/index',
         {
           type: 'category',
           label: 'Rosetta',
@@ -88,6 +120,17 @@ const sidebars = {
             'developer-docs/functionality/rosetta/neuron-lifecycle',
             'developer-docs/functionality/rosetta/staking-support',
             'developer-docs/functionality/rosetta/staking-tutorial',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Ledger',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/ledger/index'
+          },
+          items: [
+            'developer-docs/functionality/ledger/ledger-local-setup',
+            'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
       ]

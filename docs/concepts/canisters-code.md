@@ -74,7 +74,7 @@ As a modern, high-level programming language, Motoko provides some key features 
 
 -   Support for function abstractions, user-defined type definitions, and user-defined actors.
 
-For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](../../language-guide/motoko.xml).
+For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](../../language-guide/motoko).
 
 The following diagram provides a simplified drill-down view of the development environment as part of the Internet Computer ecosystem.
 
@@ -90,13 +90,13 @@ In general, each canister smart contract includes the compiled code for one acto
 
 ## Why your Code is Compiled into WebAssembly
 
-When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the {platform}.
+When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the IC.
 
 With Motoko, developers can compile to portable WebAssembly while still delivering secure dapps using a simple and high-level language.
 
-The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the {platform} and is easy to learn whether you are a new or experienced programmer.
+The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the IC and is easy to learn whether you are a new or experienced programmer.
 
-This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../../language-guide/motoko.xml).
+This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../../language-guide/motoko).
 
 ## Identities and Authentication
 

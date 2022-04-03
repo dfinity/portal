@@ -26,7 +26,7 @@ For example, if you have a project that was created with `dfx` version `0.8.0`, 
 
 In some cases, starting the local canister execution environment fails due to stale state. If you encounter issues when running `dfx start` to start the local canister execution environment:
 
-1.  In the terminal that displays the IC emulation the execution environment uses, press Control-C to interrupt the local canister execution environment process.
+1.  In the terminal that displays theICemulation the execution environment uses, press Control-C to interrupt the local canister execution environment process.
 
 2.  Stop the local canister execution environment by running the following command:
 

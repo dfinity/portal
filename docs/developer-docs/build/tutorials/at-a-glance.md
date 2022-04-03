@@ -1,6 +1,6 @@
 # At a glance
 
-The [Quick start](../../quickstart/quickstart-intro.xml) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual [tutorials](../tutorials-intro.xml) walk through specific scenarios, pointing out details about what you’re doing in each step.
+The [Quick start](../../quickstart/quickstart-intro) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual [tutorials](../tutorials-intro) walk through specific scenarios, pointing out details about what you’re doing in each step.
 
 If the quick start and tutorials aren’t quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 

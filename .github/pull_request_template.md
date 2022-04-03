@@ -1,4 +1,4 @@
-Thank you for your contribution to the IC Developer Portal.
+Thank you for your contribution to theICDeveloper Portal.
 Before submitting your Pull Request, please make sure that:
 
 - [ ] You have updated the [`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file according to your changes.

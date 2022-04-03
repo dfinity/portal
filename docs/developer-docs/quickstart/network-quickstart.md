@@ -2,7 +2,7 @@
 
 This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and deploying the default project on the Internet Computer blockchain mainnet.
 
-If you are only deploying projects in a local development environment, see the [Local development](local-quickstart.xml) scenario.
+If you are only deploying projects in a local development environment, see the [Local development](local-quickstart) scenario.
 
 To get started, let’s build and deploy a simple Hello dapp that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the dapp using the command-line or in an HTML page if you access the dapp in a browser.
 
@@ -20,9 +20,9 @@ Before you download and install this release of the {sdk-short-name}, verify the
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles.xml#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../token-holders/nns-app-quickstart.xml). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developers-guide/default-wallet.xml).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developers-guide/default-wallet).
 
-This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell or how to install software packages like `node.js`, see [Preliminary steps for newcomers](newcomers.xml). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#net-download-sdk).
+This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell or how to install software packages like `node.js`, see [Preliminary steps for newcomers](newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#net-download-sdk).
 
 ## Download and install
 
@@ -46,7 +46,7 @@ To download and install:
 
 ## Verify the SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on the {platform} will be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on theicwill be available on your local computer.
 
 To verify the SDK is ready to use:
 
@@ -70,7 +70,7 @@ To verify the SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/tutorials/explore-templates.xml) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/tutorials/explore-templates) tutorial.
 
 To create a new project for your first dapp:
 
@@ -88,19 +88,19 @@ To create a new project for your first dapp:
 
         cd hello
 
-## Check the connection to the {platform} mainnet
+## Check the connection to theicmainnet
 
 There is a reserved network alias that you can use to access the Internet Computer blockchain mainnet. The network alias is a system setting that’s defined internally, so there’s nothing you need to configure in your projects by default.
 
-To check your connection to the {platform}:
+To check your connection to the ic:
 
 1.  Check that you are in the root directory for your project, if needed.
 
-2.  Check the current status of the {platform} and your ability to connect to it by running the following command for the network alias `ic`:
+2.  Check the current status of theicand your ability to connect to it by running the following command for the network alias `ic`:
 
         dfx ping ic
 
-3.  Verify that the `dfx ping ic` command returns information about the {platform}.
+3.  Verify that the `dfx ping ic` command returns information about the ic.
 
     For example, you should see output similar to the following:
 
@@ -110,7 +110,7 @@ To check your connection to the {platform}:
 
 ## Confirm your developer identity and ledger account
 
-All ICP token transactions are recorded in a [ledger canister](../developers-guide/glossary.xml#g-ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
+All ICP token transactions are recorded in a [ledger canister](../developers-guide/glossary#g-ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
@@ -154,7 +154,7 @@ To look up your account in the ledger:
 
 4.  Check your account balance by running the following command:
 
-        dfx ledger --network ic balance
+        dfx ledger --networkicbalance
 
     This command displays the ICP token balance from the ledger account. For example, you should see output similar to the following:
 
@@ -168,13 +168,13 @@ To transfer ICP tokens to create a cycles wallet:
 
 1.  Create a new canister with cycles by transferring ICP tokens from your ledger account by running a command similar to the following:
 
-        dfx ledger --network ic create-canister <principal-identifier> --amount <icp-tokens>
+        dfx ledger --networkiccreate-canister <principal-identifier> --amount <icp-tokens>
 
     This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
 
     For example, the following command converts .25 ICP tokens into cycles and specifies the principal identifier for the default identity as the controller of the new canister:
 
-        dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
+        dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
 
     If the transaction is successful, the ledger records the event and you should see output similar to the following:
 
@@ -183,15 +183,15 @@ To transfer ICP tokens to create a cycles wallet:
 
 2.  Install the cycles wallet code in the newly-created canister placeholder by running a command similar to the following:
 
-        dfx identity --network ic deploy-wallet <canister-identifer>
+        dfx identity --networkicdeploy-wallet <canister-identifer>
 
     For example:
 
-        dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+        dfx identity --networkicdeploy-wallet gastn-uqaaa-aaaae-aaafq-cai
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on the ic network.
+        Creating a wallet canister on theicnetwork.
         The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 
 ## Validate your cycles wallet
@@ -202,7 +202,7 @@ To validate your cycles wallet:
 
 1.  Verify the canister identifier for the cycles wallet you deployed by running the following command:
 
-        dfx identity --network ic get-wallet
+        dfx identity --networkicget-wallet
 
     The command displays the canister identifier for your cycles wallet with output similar to the following:
 
@@ -210,7 +210,7 @@ To validate your cycles wallet:
 
 2.  Check that your cycles wallet canister is properly configured and holds a balance of cycles by running a command similar to the following:
 
-        dfx wallet --network ic balance
+        dfx wallet --networkicbalance
 
     The command returns the balance for the your cycles wallet. For example:
 
@@ -226,7 +226,7 @@ To validate your cycles wallet:
 
 4.  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
 
-    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../ic-identity-guide/auth-how-to.xml).
+    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../ic-identity-guide/auth-how-to).
 
 5.  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -236,9 +236,9 @@ To validate your cycles wallet:
 
     For example, call the `authorize` method for the cycles wallet canister with a command similar to the following:
 
-        dfx canister --network ic call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
+        dfx canister --networkiccall "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
 
-    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the {platform}, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
+    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the ic, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
     When the browser refreshes after running the `authorize` command, the cycles wallet for your principal account is displayed.
 
@@ -248,7 +248,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../developers-guide/default-wallet.xml).
+    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../developers-guide/default-wallet).
 
 ## Register, build, and deploy the application
 
@@ -262,7 +262,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](../developers-guide/webpack-config.xml#troubleshoot-node).
+    For more information about this step, see [Ensuring node is available in a project](../developers-guide/webpack-config#troubleshoot-node).
 
 3.  Register, build, and deploy your first application by running the following command:
 
@@ -303,7 +303,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your cycles wallet by running a command similar to the following:
 
-        dfx ledger --network ic top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
+        dfx ledger --networkictop-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
 
     This command converts an additional `1.005` ICP tokens to cycles for the `gastn-uqaaa-aaaae-aaafq-cai` cycles wallet identifier. The command returns output similar to the following:
 
@@ -312,7 +312,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
 4.  Call the `hello` canister and the predefined `greet` function by running the following command:
 
-        dfx canister --network ic call hello greet '("everyone": text)'
+        dfx canister --networkiccall hello greet '("everyone": text)'
 
     Let’s take a closer look at this example:
 
@@ -346,7 +346,7 @@ To access the dapp front-end:
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
-        dfx canister --network ic id hello_assets
+        dfx canister --networkicid hello_assets
 
     For example, the full URL should look similar to the following:
 
@@ -366,8 +366,8 @@ You can find more detailed examples and tutorials to help you learn about how to
 
 Here are some suggestions for where to go next:
 
--   [Tutorials](../developers-guide/tutorials-intro.xml) to explore building front-end and back-end dapps in a local development environment.
+-   [Tutorials](../developers-guide/tutorials-intro) to explore building front-end and back-end dapps in a local development environment.
 
--   [What is Candid?](../candid-guide/candid-concepts.xml) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../candid-guide/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../languages/motoko-at-a-glance.xml) to learn about the features and syntax for using Motoko.
+-   [Motoko at-a-glance](../languages/motoko-at-a-glance) to learn about the features and syntax for using Motoko.

@@ -10,9 +10,9 @@ Before starting the tutorial, verify the following:
 
 -   You have `node.js` installed for front-end development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart.xml#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment processes running on the local computer.
 
@@ -223,7 +223,7 @@ To deploy the dapp:
 
     Keep in mind that because you are running the canister execution environment locally, the identifiers displayed when you run the `dfx deploy` command are only valid on your machine.
 
-    To deploy canisters on the {platform}, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
+    To deploy canisters on the ic, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
 
         dfx deploy --network=ic
 

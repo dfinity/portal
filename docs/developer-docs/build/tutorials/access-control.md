@@ -22,11 +22,11 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart.xml#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment processes running on your computer.
 
@@ -92,7 +92,7 @@ To start the local canister execution environment:
 
 ## Register, build, and deploy the dapp
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](../cli-reference/dfx-deploy.xml) command. You can also perform each of these steps independently using separate [`dfx canister create`](../cli-reference/dfx-canister.xml#dfx_canister_create), [`dfx build`](../cli-reference/dfx-build.xml), and [`dfx canister install`](../cli-reference/dfx-canister.xml#dfx_canister_install) commands.
+After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](../cli-reference/dfx-deploy) command. You can also perform each of these steps independently using separate [`dfx canister create`](../cli-reference/dfx-canister#dfx_canister_create), [`dfx build`](../cli-reference/dfx-build), and [`dfx canister install`](../cli-reference/dfx-canister#dfx_canister_install) commands.
 
 To deploy the dapp locally:
 
@@ -374,6 +374,6 @@ To stop the local canister execution environment:
 
 If you are looking for more information about identity and authentication, check out the following related resources:
 
--   [dfx identity (command reference)](../cli-reference/dfx-identity.xml)
+-   [dfx identity (command reference)](../cli-reference/dfx-identity)
 
--   [Set an identity to own a canister smart contract (how-to)](../working-with-canisters.xml#set-owner)
+-   [Set an identity to own a canister smart contract (how-to)](../working-with-canisters#set-owner)

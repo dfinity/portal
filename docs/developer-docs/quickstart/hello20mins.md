@@ -5,7 +5,7 @@ title: Hello World
 # How to Deploy Hello, World! Smart Contract in 20 Minutes
 
 This is a fast and minimalist tutorial for deploying a "hello world"
-smart contract or dapp to the IC in 20 minutes or less. All that is
+smart contract or dapp to theICin 20 minutes or less. All that is
 necessary to run this tutorial is basic knowledge of using a terminal
 (no editing of code).
 
@@ -133,11 +133,11 @@ Your directory should look like this:
 ### Using two terminal windows/tabs
 
 Now that the code is there, the next step is to spin up a local version
-of the IC on local machine. For this, developers should keep two
+of theICon local machine. For this, developers should keep two
 terminals open:
 
 -   **Terminal window/tab A:** This will show the local version of the
-    IC running
+   ICrunning
 
     -   This is analogous to how developers often start local servers in
         web2 projects (e.g. node.js’s Express, python’s Django, Ruby’s
@@ -160,7 +160,7 @@ scheme:
 
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
-### Start the local version of the IC (Terminal A)
+### Start the local version of theIC(Terminal A)
 
 1.  Use the Terminal window or tab on your local computer.
 
@@ -181,12 +181,12 @@ Note: Depending on your platform and local security settings, you might
 see a warning displayed. If you are prompted to allow or deny incoming
 network connections, click Allow.
 
-**That is it, there is now a local version of the IC running on your
+**That is it, there is now a local version of theICrunning on your
 machine. Leave this window/tab open and running while you continue.** If
-the window/tab is closed, the local version of the IC will not be
+the window/tab is closed, the local version of theICwill not be
 running and the rest of the tutorial will fail.
 
-### Deploy the "hello" dapp to the local version of the IC (Terminal B)
+### Deploy the "hello" dapp to the local version of theIC(Terminal B)
 
 Note: since this is a local version of the IC, this has fewer steps than
 deploying to mainnet (which requires cycles).
@@ -278,7 +278,7 @@ To stop the local deployment:
 
 ### Important note about cycles
 
-In order to run on-chain, IC dapps require cycles to pay for compute and
+In order to run on-chain,ICdapps require cycles to pay for compute and
 storage. This means that the developer needs to acquire cycles and fill
 their canister with them. Cycles can be converted from ICP token.
 
@@ -377,10 +377,10 @@ Now that the canister is deployed on-chain, you can send it a message.
 Since the canister has a method called `greet` (which accepts a string
 as a parameter), we will send it a message.
 
-    $ dfx canister --network ic call hello greet '("everyone": text)'
+    $ dfx canister --networkiccall hello greet '("everyone": text)'
 
 Note the way the message is constructed: \*
-`dfx canister --network ic call` is setup for calling a canister on the
+`dfx canister --networkiccall` is setup for calling a canister on the
 IC \* `hello greet` means we are sending a message to a canister named
 `hello` and evoking its `greet` method \* `'("everyone": text)'` is the
 parameter we are sending to `greet` (which accepts `Text` as its only

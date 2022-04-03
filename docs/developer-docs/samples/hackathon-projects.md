@@ -14,7 +14,7 @@ Sidekick is a dapp running on the Internet Computer that can build canister smar
 
 -   [Live Canister](https://ffgig-jyaaa-aaaae-aaaoa-cai.raw.ic0.app)
 
-### IC Vault
+###ICVault
 
 IC Vault ensures the secure synchronization of data between devices via the Internet Computer via end-to-end encryption (i.e., the Internet Computer cannot see any cleartext).
 
@@ -38,15 +38,15 @@ DeFind is a staking-based search engine. With the internet today, search engines
 
 -   [Live Canister](https://jbioa-siaaa-aaaai-qanfq-cai.ic0.app)
 
-### IC Notary
+###ICNotary
 
-IC Notary is a timestamped notarization service that allows users to prove that they held a document (or an arbitrary file) at a certain point in time. The user can upload the file to IC Notary, and also search and download previously uploaded files.
+IC Notary is a timestamped notarization service that allows users to prove that they held a document (or an arbitrary file) at a certain point in time. The user can upload the file toICNotary, and also search and download previously uploaded files.
 
 -   [See code on GitHub](https://github.com/jplevyak/dfnhack7)
 
 -   [Live Canister](https://jbxh5-eqaaa-aaaae-qaaoq-cai.ic0.app)
 
-### IC Netboot
+###ICNetboot
 
 IC Netboot allows developers to boot a virtual machine (VM) directly from a canister, making the boot infrastructure decentralized and unstoppable. Furthermore, it can be a failover for VM data for applications like zookeeper. Lastly, this is a proof of concept for talking to the Internet computer over legal protocols like TFTP/DHCP/iPXE.
 

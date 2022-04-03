@@ -12,9 +12,9 @@ Before starting the tutorial, verify the following:
 
 -   You have `node.js` installed for front-end development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart.xml#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any {sdk-short-name} processes running on the local computer.
 
@@ -105,7 +105,7 @@ To review the default `dfx.json` configuration file:
 
     -   The `source` settings specify the path to your `src` and `dist` directories. The `src` setting specifies the directory to use for static assets that will be included in your assets canister when you build your project. If you have custom cascading stylesheet (CSS) or JavaScript files, you would include them in the folder specified by this path. After building the project, the project assets are served from the directory specified by the `dist` setting.
 
-    -   The `type` setting specifies that the `custom_greeting_assets` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the {platform}.
+    -   The `type` setting specifies that the `custom_greeting_assets` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the ic.
 
     For this tutorial, we are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
@@ -123,7 +123,7 @@ To review the default front-end files:
 
     This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_assets/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
-    This is the same default front-end you saw in [Viewing the default front-end](explore-templates.xml#default-frontend).
+    This is the same default front-end you saw in [Viewing the default front-end](explore-templates#default-frontend).
 
 2.  Open the `src/custom_greeting_assets/src/index.js` file in a text editor.
 
@@ -207,7 +207,7 @@ To prepare the front-end files:
 
 ## Start the local canister execution environment
 
-Before you can build the `custom_greeting` project, you need to connect to either the live {platform}, or a canister execution environment running locally in your development environment.
+Before you can build the `custom_greeting` project, you need to connect to either the live ic, or a canister execution environment running locally in your development environment.
 
 To start the environment locally:
 
