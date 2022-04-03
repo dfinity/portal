@@ -12,76 +12,50 @@ With the {sdk-short-name}, you can add a language server for {proglang} to your 
 
 For example, if you use Visual Studio Code (VSCode) or Emacs as your development environment, you can install a plugin extension that enables those editors to automatically invoke the {proglang} language server.
 
-Only the Visual Studio Code (VSCode) plugin extension is currently available for {proglang}. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart#install-vscode).
+<div class="note">
+
+Only the Visual Studio Code (VSCode) plugin extension is currently available for {proglang}. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart.xml#install-vscode).
+
+</div>
 
 ## Invoking the language service manually
 
 Although it is extremely rare that you would start the {proglang} language server directly in a terminal shell. it is possible to do so by running the following command:
 
-    dfx _language-service --force-tty
+``` bash
+dfx _language-service --force-tty
+```
 
 Note that you can only run this command from within a project directory. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
 ### Basic usage
 
-    dfx _language-service [canister_name] [flag]
+``` bash
+dfx _language-service [canister_name] [flag]
+```
 
 ### Flags
 
 You can use the following optional flags with the `dfx _language-service` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>--force-tty</code></p></td>
-<td style="text-align: left;"><p>Starts the the {proglang} language server directly in a terminal shell.</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p><code>-h</code>, <code>--help</code></p></td>
-<td style="text-align: left;"><p>Displays usage information.</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p><code>-V</code>, <code>--version</code></p></td>
-<td style="text-align: left;"><p>Displays version information.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Flag              | Description                                                             |
+|-------------------|-------------------------------------------------------------------------|
+| `--force-tty`     | Starts the the {proglang} language server directly in a terminal shell. |
+| `-h`, `--help`    | Displays usage information.                                             |
+| `-V`, `--version` | Displays version information.                                           |
 
 ### Arguments
 
 You can specify the following arguments for the `dfx _language-service` command.
 
-<!-- <table>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Argument</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p><code>canister_name</code></p></td>
-<td style="text-align: left;"><p>Specifies the name of the canister that the compiler should monitor. If you specify a canister name, the name should match a canister name you have configured in the <code>dfx.json</code> configuration file for your project. If you don’t specify a canister name, the first canister specified in the <code>dfx.json</code> configuration file is used as the target.</p></td>
-</tr>
-</tbody>
-</table> -->
+| Argument        | Description                                                                                                                                                                                                                                                                                                                                          |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `canister_name` | Specifies the name of the canister that the compiler should monitor. If you specify a canister name, the name should match a canister name you have configured in the `dfx.json` configuration file for your project. If you don’t specify a canister name, the first canister specified in the `dfx.json` configuration file is used as the target. |
 
 ### Examples
 
 If you want to use an integrated development environment to develop code for the canister `my-canister` you should have the development environment invoke the language service using the following `dfx _language-service` command:
 
-    dfx _language-service my-canister
+``` bash
+dfx _language-service my-canister
+```

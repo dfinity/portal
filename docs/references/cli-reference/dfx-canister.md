@@ -1,7 +1,6 @@
-<!---
 # dfx canister
 
-Use the `dfx canister` command with flags and subcommands to manage canister operations and interaction with theicor the local canister execution environment. In most cases, you use `dfx canister` subcommands after you compile a program to manage the canister lifecycle and to perform key tasks such as calling program functions.
+Use the `dfx canister` command with flags and subcommands to manage canister operations and interaction with the {platform} or the local canister execution environment. In most cases, you use `dfx canister` subcommands after you compile a program to manage the canister lifecycle and to perform key tasks such as calling program functions.
 
 The basic syntax for running `dfx canister` commands is:
 
@@ -20,13 +19,13 @@ For reference information and examples that illustrate using `dfx canister` comm
 | Command                                           | Description                                                                                                                                                                                                                                                                                                       |
 |---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`call`](#_dfx_canister_call)                     | Calls a specified method on a deployed canister.                                                                                                                                                                                                                                                                  |
-| [`create`](#_dfx_canister_create)                 | Creates a new "empty" canister by registering a canister identifier on theicor the local canister execution environment.                                                                                                                                                                                |
+| [`create`](#_dfx_canister_create)                 | Creates a new "empty" canister by registering a canister identifier on the {platform} or the local canister execution environment.                                                                                                                                                                                |
 | [`delete`](#_dfx_canister_delete)                 | Deletes a currently stopped canister.                                                                                                                                                                                                                                                                             |
 | `help`                                            | Displays usage information message for a specified subcommand.                                                                                                                                                                                                                                                    |
 | [`id`](#_dfx_canister_id)                         | Displays the identifier for a canister.                                                                                                                                                                                                                                                                           |
-| [`install`](#_dfx_canister_install)               | Installs compiled code as a canister on theicor the local canister execution environment.                                                                                                                                                                                                               |
+| [`install`](#_dfx_canister_install)               | Installs compiled code as a canister on the {platform} or the local canister execution environment.                                                                                                                                                                                                               |
 | [`request-status`](#_dfx_canister_request_status) | Requests the status of a call to a canister.                                                                                                                                                                                                                                                                      |
-| [`set-controller`](#_dfx_canister_set_controller) | Specifies the identity name or principal to use as the new controller for a specified canister on the ic.                                                                                                                                                                                                 |
+| [`set-controller`](#_dfx_canister_set_controller) | Specifies the identity name or principal to use as the new controller for a specified canister on the {platform}.                                                                                                                                                                                                 |
 | [`send`](#_dfx_canister_send)                     | Send a previously-signed `message.json` to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.                  |
 | [`sign`](#_dfx_canister_send)                     | Create a signed `message.json` file before making a call to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons. |
 | [`start`](#_dfx_canister_start)                   | Restarts a stopped canister.                                                                                                                                                                                                                                                                                      |
@@ -35,7 +34,7 @@ For reference information and examples that illustrate using `dfx canister` comm
 
 ## Overriding the default deployment environment
 
-By default, `dfx canister` commands run on the local canister execution environment specified in the `dfx.json` file. If you want to send a `dfx canister` subcommand to theicor a testnet without changing the settings in your `dfx.json` configuration file, you can explicitly specify the URL to connect to using the `--network` option.
+By default, `dfx canister` commands run on the local canister execution environment specified in the `dfx.json` file. If you want to send a `dfx canister` subcommand to the {platform} or a testnet without changing the settings in your `dfx.json` configuration file, you can explicitly specify the URL to connect to using the `--network` option.
 
 For example, to register unique canister identifiers for a project on the local canister execution environment, you can run the following command:
 
@@ -43,13 +42,13 @@ For example, to register unique canister identifiers for a project on the local 
 dfx canister create --all
 ```
 
-If you want to register unique canister identifiers for the same project on the ic, you can run the following command:
+If you want to register unique canister identifiers for the same project on the {platform}, you can run the following command:
 
 ``` bash
-dfx canister --networkiccreate --all
+dfx canister --network ic create --all
 ```
 
-The {sdk-short-name} comes with an alias of `ic`, which is configured to point to the ic. You can also pass a URL as a network option, or you can configure additional aliases in `dfx.json` under the `networks` configuration.
+The {sdk-short-name} comes with an alias of `ic`, which is configured to point to the {platform}. You can also pass a URL as a network option, or you can configure additional aliases in `dfx.json` under the `networks` configuration.
 
 To illustrate, you can call a canister and function running on a testnet using a command similar to the following:
 
@@ -75,9 +74,9 @@ You can use the following optional flags with the `dfx canister call` command.
 
 | Flag              | Description                                                                                                                                                                                                                                                                                                                                              |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--async`         | Enables you to continue without waiting for the result of the call to be returned by polling the local canister execution environment or the ic.                                                                                                                                                                                                 |
+| `--async`         | Enables you to continue without waiting for the result of the call to be returned by polling the local canister execution environment or the {platform}.                                                                                                                                                                                                 |
 | `-h`, `--help`    | Displays usage information.                                                                                                                                                                                                                                                                                                                              |
-| `--query`         | Enables you to send a query request to a deployed canister. For best performance, you should use this flag when you explicitly want to use the query method to retrieve information. For information about the difference between query and update calls, see [Canisters include both program and state](../concepts/canisters-code#canister-state). |
+| `--query`         | Enables you to send a query request to a deployed canister. For best performance, you should use this flag when you explicitly want to use the query method to retrieve information. For information about the difference between query and update calls, see [Canisters include both program and state](../concepts/canisters-code.xml#canister-state). |
 | `--update`        | Enables you to send an update request to a deployed canister. By default, canister calls use the update method.                                                                                                                                                                                                                                          |
 | `-V`, `--version` | Displays version information.                                                                                                                                                                                                                                                                                                                            |
 
@@ -98,7 +97,7 @@ You can specify the following arguments for the `dfx canister call` command.
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `canister_name` | Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the `canisters` section of the `dfx.json` configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `method_name`   | Specifies the method name to call on the canister. The canister method is a required argument.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto#idl-syntax) and [Supported types](../../candid-guide/candid-types). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
+| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
 
 ### Examples
 
@@ -108,7 +107,7 @@ You can use the `dfx canister call` command to invoke specific methods—with or
 dfx canister call counter get --async
 ```
 
-In this example, the command includes the `--async` option to indicate that you want to make a separate `request-status` call rather than waiting to poll the local canister execution environment or theicfor the result. The `--async` option is useful when processing an operation might take some time to complete. The option enables you to continue performing other operations then check for the result using a separate `dfx canister request-status` command. The returned result will be displayed as the IDL textual format.
+In this example, the command includes the `--async` option to indicate that you want to make a separate `request-status` call rather than waiting to poll the local canister execution environment or the {platform} for the result. The `--async` option is useful when processing an operation might take some time to complete. The option enables you to continue performing other operations then check for the result using a separate `dfx canister request-status` command. The returned result will be displayed as the IDL textual format.
 
 #### Using the IDL syntax
 
@@ -147,7 +146,7 @@ This example uses the raw data type to pass a hexadecimal to the `greet` functio
 
 ## dfx canister create
 
-Use the `dfx canister create` command to register one or more canister identifiers without compiled code. You must be connected to the local canister execution environment or theicto run this command.
+Use the `dfx canister create` command to register one or more canister identifiers without compiled code. You must be connected to the local canister execution environment or the {platform} to run this command.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
@@ -201,7 +200,7 @@ dfx canister create --with-cycles 8000000000000 --all
 
 ## dfx canister delete
 
-Use the `dfx canister delete` command to delete a stopped canister from the local canister execution environment or on the ic.
+Use the `dfx canister delete` command to delete a stopped canister from the local canister execution environment or on the {platform}.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
@@ -239,7 +238,7 @@ To delete the `hello_world` canister, you can run the following command:
 dfx canister delete hello_world
 ```
 
-To delete all of the canisters you have deployed on the `ic` ic, you can run the following command:
+To delete all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
 ``` bash
 dfx canister --network=ic delete --all
@@ -292,7 +291,7 @@ The command displays output similar to the following:
 
 ## dfx canister install
 
-Use the `dfx canister install` command to install compiled code as a canister on theicor on the local canister execution environment.
+Use the `dfx canister install` command to install compiled code as a canister on the {platform} or on the local canister execution environment.
 
 ### Basic usage
 
@@ -306,7 +305,7 @@ You can use the following optional flags with the `dfx canister install` command
 
 | Flag              | Description                                                                                                                                                      |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--async`         | Enables you to continue without waiting for the result of the installation to be returned by polling theicor the local canister execution environment. |
+| `--async`         | Enables you to continue without waiting for the result of the installation to be returned by polling the {platform} or the local canister execution environment. |
 | `-h`, `--help`    | Displays usage information.                                                                                                                                      |
 | `-V`, `--version` | Displays version information.                                                                                                                                    |
 
@@ -317,10 +316,10 @@ You can use the following options with the `dfx canister install` command.
 | Option                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `--argument <argument>`                           | Specifies an argument to pass to the canister during installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `--argument-type <argument-type>`                 | Specifies the data format for the argument when you install using the `--argument` option. The valid values are `idl` and `raw`. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto#idl-syntax) and [Supported types](../../candid-guide/candid-types). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
+| `--argument-type <argument-type>`                 | Specifies the data format for the argument when you install using the `--argument` option. The valid values are `idl` and `raw`. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes to a canister. |
 | `-c`, `--compute-allocation <compute-allocation>` | Defines a compute allocation—essentially the equivalent of setting a CPU allocation—for canister execution. You can set this value as a percentage in the range of 0 to 100.                                                                                                                                                                                                                                                                                                                                                                                           |
 | `--memory-allocation <memory-allocation>`         | Specifies how much memory the canister is allowed to use in total. You can set this value in the range of 0 to 8MB.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `-m`, `--mode <mode>`                             | Specifies whether you want to `install`, `reinstall`, or `upgrade` canisters. For more information about installation modes and canister management, see [Managing canisters](../working-with-canisters).                                                                                                                                                                                                                                                                                                                                                          |
+| `-m`, `--mode <mode>`                             | Specifies whether you want to `install`, `reinstall`, or `upgrade` canisters. For more information about installation modes and canister management, see [Managing canisters](../working-with-canisters.xml).                                                                                                                                                                                                                                                                                                                                                          |
 
 ### Arguments
 
@@ -333,7 +332,7 @@ You can use the following arguments with the `dfx canister install` command.
 
 ### Examples
 
-You can use the `dfx canister install` command to deploy WebAssembly you have compiled using the `dfx build` command as a canister on theicor on the local canister execution environment. The most common use case is to install all of the canisters by running the following command:
+You can use the `dfx canister install` command to deploy WebAssembly you have compiled using the `dfx build` command as a canister on the {platform} or on the local canister execution environment. The most common use case is to install all of the canisters by running the following command:
 
 ``` bash
 dfx canister install --all
@@ -428,7 +427,7 @@ This command displays an error message if the request identifier is invalid or r
 
 ## dfx canister set-controller
 
-Use the `dfx canister set-controller` command to specify the identity name or principal to use as the new **controller** for a specified canister on the ic. A controller identity has special rights to manage the canister it controls. For example, only a controlling identity can be used to install, upgrade, or delete the canister under its control.
+Use the `dfx canister set-controller` command to specify the identity name or principal to use as the new **controller** for a specified canister on the {platform}. A controller identity has special rights to manage the canister it controls. For example, only a controlling identity can be used to install, upgrade, or delete the canister under its control.
 
 Note that you can specify either a user identity or a canister as a controller. You can also specify the controller identity by using its name or its principal.
 
@@ -543,7 +542,7 @@ Use the `dfx canister send` command to send a signed message created using the `
 
 ## dfx canister sign
 
-Use the `dfx canister sign` command before sending a message with the `dfx canister send` command when you want to separate these steps, rather than using the single `dfx canister call` command. Using separate calls can add security to the transaction. For example, when creating your neuron stake, you might want to use the `dfx canister sign` command to create a signed `message.json` file using an air-gapped computer, then use the `dfx canister send` command to deliver the signed message from a computer connected to the ic.
+Use the `dfx canister sign` command before sending a message with the `dfx canister send` command when you want to separate these steps, rather than using the single `dfx canister call` command. Using separate calls can add security to the transaction. For example, when creating your neuron stake, you might want to use the `dfx canister sign` command to create a signed `message.json` file using an air-gapped computer, then use the `dfx canister send` command to deliver the signed message from a computer connected to the {platform}.
 
 ### Basic usage
 
@@ -593,7 +592,7 @@ You can specify the following options for the `dfx canister sign` command.
 <tr class="even">
 <td style="text-align: left;"><p><code>--type &lt;type&gt;</code></p></td>
 <td style="text-align: left;"><p>Specifies the data type for the argument when making a call using an argument.</p>
-<p>By default, you can specify arguments using the <a href="../../candid-guide/candid-intro">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
+<p>By default, you can specify arguments using the <a href="../../candid-guide/candid-intro.xml">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto.xml#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types.xml">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
 </tr>
 </tbody>
 </table>
@@ -606,7 +605,7 @@ You can specify the following arguments for the `dfx canister sign` command.
 |-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `canister_name` | Specifies the name of the canister to call. The canister name is a required argument and should match the name you have configured for a project in the `canisters` section of the `dfx.json` configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `method_name`   | Specifies the method name to call on the canister. The canister method is a required argument.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto#idl-syntax) and [Supported types](../../candid-guide/candid-types). You can use `raw` as the argument type if you want to pass raw bytes. |
+| `argument`      | Specifies the argument to pass to the method. Depending on your program logic, the argument can be a required or optional argument. You can specify a data format type using the `--type` option if you pass an argument to the canister. By default, you can specify arguments using the [Candid](../../candid-guide/candid-intro.xml) (`idl`) syntax for data values. For information about using Candid and its supported types, see [Interact with a service in a terminal](../../candid-guide/candid-howto.xml#idl-syntax) and [Supported types](../../candid-guide/candid-types.xml). You can use `raw` as the argument type if you want to pass raw bytes. |
 
 ### Examples
 
@@ -614,7 +613,7 @@ Use the `dfx canister sign` command to create a signed `message.json` file using
 
 `dfx canister --network=ic sign --expire-after=1h rno2w-sqaaa-aaaaa-aaacq-cai create_neurons ‘(“PUBLIC_KEY”)’`
 
-This command illustrates how to creates a `message.json` file to create neurons on theicspecified by the `ic` alias, that is signed using your principal identifier as the message sender and with an expiration window that ends in one hour.
+This command illustrates how to creates a `message.json` file to create neurons on the {platform} specified by the `ic` alias, that is signed using your principal identifier as the message sender and with an expiration window that ends in one hour.
 
 Note that the time allotted to send a signed message is a fixed 5-minute window. The `--expire-after` option enables you to specify the point in time when the 5-minute window for sending the signed message should end. For example, if you set the `--expire-after` option to one hour (`1h`), you must wait at least 55 minutes before you send the generated message and the signature for the message is only valid during the 5-minute window ending in the 60th minute.
 
@@ -628,7 +627,7 @@ Send the signed message to the genesis token canister (GTC) to create a neuron o
 
 ## dfx canister start
 
-Use the `dfx canister start` command to restart a stopped canister on theicor the local canister execution environment.
+Use the `dfx canister start` command to restart a stopped canister on the {platform} or the local canister execution environment.
 
 In most cases, you run this command after you have stopped a canister to properly terminate any pending requests as a prerequisite to upgrading the canister.
 
@@ -668,7 +667,7 @@ To start the `hello_world` canister, you can run the following command:
 dfx canister start hello_world
 ```
 
-To start all of the canisters you have deployed on the `ic` ic, you can run the following command:
+To start all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
 ``` bash
 dfx canister --network=ic start --all
@@ -676,7 +675,7 @@ dfx canister --network=ic start --all
 
 ## dfx canister status
 
-Use the `dfx canister status` command to check whether a canister is currently running, in the process of stopping, or currently stopped on theicor on the local canister execution environment.
+Use the `dfx canister status` command to check whether a canister is currently running, in the process of stopping, or currently stopped on the {platform} or on the local canister execution environment.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
@@ -714,7 +713,7 @@ To check the status of the `hello_world` canister, you can run the following com
 dfx canister status hello_world
 ```
 
-To check the status for all of the canisters you have deployed on the `ic` ic, you can run the following command:
+To check the status for all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
 ``` bash
 dfx canister --network=ic status --all
@@ -722,7 +721,7 @@ dfx canister --network=ic status --all
 
 ## dfx canister stop
 
-Use the `dfx canister stop` command to stop a canister that is currently running on theicor on the local canister execution environment.
+Use the `dfx canister stop` command to stop a canister that is currently running on the {platform} or on the local canister execution environment.
 
 In most cases, you run this command to properly terminate any pending requests as a prerequisite to upgrading the canister.
 
@@ -762,9 +761,8 @@ To stop the `hello_world` canister, you can run the following command:
 dfx canister stop hello_world
 ```
 
-To stop all of the canisters you have deployed on the `ic` ic, you can run the following command:
+To stop all of the canisters you have deployed on the `ic` {platform}, you can run the following command:
 
 ``` bash
 dfx canister --network=ic stop --all
 ```
--->

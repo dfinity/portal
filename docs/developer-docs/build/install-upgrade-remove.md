@@ -1,6 +1,6 @@
 # Install, upgrade, or remove software
 
-As described in the [Quick start](../quickstart/quickstart-intro), you can download and install the latest version of the DFINITY Canister smart contract SDK package by running a command in a terminal shell. The topics in this section provide additional information about installing, upgrading, and removing the {sdk-short-name}.
+As described in the [Quick start](../quickstart/quickstart-intro.xml), you can download and install the latest version of the DFINITY Canister smart contract SDK package by running a command in a terminal shell. The topics in this section provide additional information about installing, upgrading, and removing the {sdk-short-name}.
 
 [ROOT:page$download.adoc](ROOT:page$download.adoc)
 
@@ -8,47 +8,13 @@ As described in the [Quick start](../quickstart/quickstart-intro), you can downl
 
 The {sdk-short-name} installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
 
-<!-- <table>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 55%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Component</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Default location</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><p>dfx</p></td>
-<td style="text-align: left;"><p>DFINITY execution command-line interface (CLI)</p></td>
-<td style="text-align: left;"><p><code>/usr/local/bin/dfx</code></p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p>moc</p></td>
-<td style="text-align: left;"><p>Motoko runtime compiler</p></td>
-<td style="text-align: left;"><p><code>~/.cache/dfinity/versions/&lt;VERSION&gt;/moc</code></p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p>replica</p></td>
-<td style="text-align: left;"><p>Internet Computer local network binary</p></td>
-<td style="text-align: left;"><p><code>~/.cache/dfinity/versions/&lt;VERSION&gt;/replica</code></p></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><p>uninstall.sh</p></td>
-<td style="text-align: left;"><p>Script to remove the {sdk-short-name} and all of its components</p></td>
-<td style="text-align: left;"><p><code>~/.cache/dfinity/uninstall.sh</code></p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><p>versions</p></td>
-<td style="text-align: left;"><p>Cache directory that contains a subdirectory for each version of the {sdk-short-name} you install.</p></td>
-<td style="text-align: left;"><p><code>~/.cache/dfinity/versions</code></p></td>
-</tr>
-</tbody>
-</table> -->
+| Component    | Description                                                                                        | Default location                              |
+|--------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| dfx          | DFINITY execution command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
+| moc          | Motoko runtime compiler                                                                            | `~/.cache/dfinity/versions/<VERSION>/moc`     |
+| replica      | Internet Computer local network binary                                                             | `~/.cache/dfinity/versions/<VERSION>/replica` |
+| uninstall.sh | Script to remove the {sdk-short-name} and all of its components                                    | `~/.cache/dfinity/uninstall.sh`               |
+| versions     | Cache directory that contains a subdirectory for each version of the {sdk-short-name} you install. | `~/.cache/dfinity/versions`                   |
 
 ### Core components in a versioned directory
 
@@ -87,7 +53,7 @@ If a new version of the {sdk-short-name} is available for download after your in
 
 Note that you don’t need to uninstall the software before installing the new version. However, if you want to perform a clean installation rather than an upgrade, you can first uninstall the software as described in [Removing the software](#remove), then re-run the download and installation command.
 
-For information about the features and fixes in the latest release, see the [Release notes](release-notes:sdk-release-notes).
+For information about the features and fixes in the latest release, see the [Release notes](release-notes:sdk-release-notes.xml).
 
 ## Removing the software
 
@@ -95,8 +61,12 @@ When you install the {sdk-short-name}, the installation script puts the required
 
 For example:
 
-    ~/.cache/dfinity/uninstall.sh
+``` bash
+~/.cache/dfinity/uninstall.sh
+```
 
 If you are uninstalling because you want to immediately reinstall a clean version of `dfx`, you can run the following command:
 
-    ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://sdk.dfinity.org/install.sh)"
+``` bash
+~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://sdk.dfinity.org/install.sh)"
+```

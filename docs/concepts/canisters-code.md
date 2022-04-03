@@ -1,4 +1,4 @@
-# Canisters and Code
+# Canisters and code
 
 One of the most important principles to keep in mind is that the Internet Computer is a blockchain that allows running software in a distributed, replicated way.
 
@@ -6,7 +6,7 @@ When you write source code for a dapp that runs on the Internet Computer, you co
 
 Once deployed, end-users can interact with the canister smart contract by accessing the entry point functions you have defined for that canister through a front-end client such as a browser.
 
-## Canisters Include both Program and State
+## Canisters include both program and state
 
 A canister smart contract is similar to a container in that both are deployed as a software unit that contains compiled code and dependencies for an application or service.
 
@@ -14,11 +14,11 @@ Containerization allows for applications to be decoupled from the environment, a
 
 While a containerized application might include information about the state of the environment in which the application runs, a canister is able to persist a record of state changes that resulted from its functions being called.
 
-## Query and Update Methods
+## Query and update methods
 
 This concept of a canister consisting of both program and state is an important one. In particular it relates to the behavior one should expect when calling an end-point of the canister. There are only two types of calls: non-committing **query calls** (any state change is discarded) and committing **update calls** (state changes are persisted).
 
-<!-- <table>
+<table>
 <colgroup>
 <col style="width: 15%" />
 <col style="width: 84%" />
@@ -50,11 +50,11 @@ This concept of a canister consisting of both program and state is an important 
 </ul></td>
 </tr>
 </tbody>
-</table> -->
+</table>
 
 As a developer, it is important to recognize this relationship between the calls that query the canister and the calls that change the canister state. In particular, you should keep in mind the inherent tradeoff between security and performance.
 
-## How to Develop Dapps for the Internet Computer
+## How to develop dapps for the Internet Computer
 
 For programmers and software developers, the Internet Computer blockchain provides unique capabilities and opportunities within a framework that simplifies how you can design, build, and deploy dapps. A key part of this framework is a new, general purpose programming language, Motoko. Motoko is a programming language that has been specifically designed to take full advantage of the unique features that the Internet Computer blockchain provides, including:
 
@@ -78,9 +78,9 @@ For more detailed information about the Motoko programming language itself, incl
 
 The following diagram provides a simplified drill-down view of the development environment as part of the Internet Computer ecosystem.
 
-![Your development environment as part of the Internet Computer ecosystem](_attachments/SDK-protocol-network.svg)
+![Your development environment as part of the Internet Computer ecosystem](../concepts/_attachments/SDK-protocol-network.svg)
 
-## Canisters, Actors, and the Code you Produce
+## Canisters, actors, and the code you produce
 
 One of the most important principles to keep in mind when preparing to write programs using the Motoko programming language is that Motoko uses an *actor-based* programming model.
 
@@ -88,17 +88,17 @@ An *actor* is a special kind of object that processes messages in an isolated st
 
 In general, each canister smart contract includes the compiled code for one actor object. Each canister may also include some additional information such as interface descriptions or front-end assets. You can create projects that include multiple canisters, but each canister can only include one actor.
 
-## Why your Code is Compiled into WebAssembly
+## Why your code is compiled into WebAssembly
 
-When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the IC.
+When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the {platform}.
 
 With Motoko, developers can compile to portable WebAssembly while still delivering secure dapps using a simple and high-level language.
 
-The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the IC and is easy to learn whether you are a new or experienced programmer.
+The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the {platform} and is easy to learn whether you are a new or experienced programmer.
 
-This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../../language-guide/motoko).
+This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../../language-guide/motoko.xml).
 
-## Identities and Authentication
+## Identities and authentication
 
 One of the main differences between a user-initiated canister operation and a canister-to-canister operation is that canisters have an explicitly registered identity on the Internet Computer.
 
@@ -108,7 +108,7 @@ At a high level, first-time users generate an unsigned key pair and derive their
 
 A single user can have multiple public-private key pairs for accessing canisters from different devices—such as browsers running on different computers, mobile phones, or tablets—but these derived keys all map to a primary identifier.
 
-## Resource Consumption and Cycles
+## Resource consumption and cycles
 
 All canisters consume resources, being CPU cycles for execution, bandwidth for routing messages, and storage for persisted data. These resources are paid for using a unit of cost called **cycles**. Cycles can be obtained by converting ICP tokens and are stored by each canister in a local balance.
 
@@ -118,7 +118,7 @@ All canisters consume resources, being CPU cycles for execution, bandwidth for r
 
 -   Cycles are intended to reflect the real cost of operations in a stable or deflationary way so that the cost of program execution remains the same or decreases with operational efficiency. As such, the conversion rate of ICP to cycles is adjusted accordingly, based on the current ICP market value. The relative stability of operational costs makes it easier to predict the cycles required to process, for example, a million messages.
 
-## Want to Learn More?
+## Want to learn more?
 
 If you are looking for more information about canisters, check out the following related resources:
 
