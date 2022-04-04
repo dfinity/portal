@@ -1,6 +1,6 @@
 # dfx ping
 
-Use the `dfx ping` command to check connectivity to theicor a testnet. This command enables you to verify that you can connect to the environment where you want to deploy to.
+Use the `dfx ping` command to check connectivity to the IC or a testnet. This command enables you to verify that you can connect to the environment where you want to deploy to.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
@@ -25,7 +25,7 @@ You can specify the following argument for the `dfx ping` command.
 
 | Argument | Description                                                   |
 |----------|---------------------------------------------------------------|
-| provider | Specifies theicor testnet URL that you want to use. |
+| provider | Specifies the IC or testnet URL that you want to use. |
 
 ## Examples
 

@@ -6,7 +6,7 @@ The sample exchange is implemented in [Motoko](https://github.com/dfinity/exampl
 
 ## Architecture
 
-The design of theICallows for more complex on-chain computation. In combination with cheap storage, it is possible to have on-chain order books. This sample code takes advantage of these features and stores user balances and orders inside the exchange canister. The sample exchange functionality can be condensed into the following steps:
+The design of the IC allows for more complex on-chain computation. In combination with cheap storage, it is possible to have on-chain order books. This sample code takes advantage of these features and stores user balances and orders inside the exchange canister. The sample exchange functionality can be condensed into the following steps:
 
 -   Exchange takes custody of funds (different mechanism for tokens and ICP, see below).
 

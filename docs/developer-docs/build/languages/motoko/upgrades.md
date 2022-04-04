@@ -212,7 +212,7 @@ You can check valid Candid subtyping between two services described in `.did` fi
 
 The Motoko compiler embeds the Candid interface and stable signature of a canister as canister metadata, recorded in additional Wasm custom sections of a compiled binary.
 
-This metadata can be selectively exposed by theICand used by tools such as `dfx` to verify upgrade compatibility.
+This metadata can be selectively exposed by the IC and used by tools such as `dfx` to verify upgrade compatibility.
 
 ## Upgrading a deployed actor or canister smart contract
 

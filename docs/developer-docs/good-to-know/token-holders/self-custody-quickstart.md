@@ -157,7 +157,7 @@ To convert ICP tokens to cycles:
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on theicnetwork.
+        Creating a wallet canister on the IC network.
         The wallet canister on the "ic" network for user "default" is "53zcu-tiaaa-aaaaa-qaaba-cai"
 
 ## Transfer ICP tokens to another account

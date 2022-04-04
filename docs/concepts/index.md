@@ -2,7 +2,7 @@
 
 You don’t need to know much about the inner workings of the Internet Computer to write programs that run successfully on it. However, learning a few key concepts will help you get the most out of the unique features that the Internet Computer provides.
 
-Knowing a little about the design and architecture of theICcan make it easier for you to realize the benefits that align with your goals and inform the types of applications you develop.
+Knowing a little about the design and architecture of the IC can make it easier for you to realize the benefits that align with your goals and inform the types of applications you develop.
 
 The topics in this section introduce key components and terminology to help you understand the architecture and operation of the IC.
 

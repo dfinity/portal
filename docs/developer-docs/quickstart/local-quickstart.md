@@ -38,7 +38,7 @@ To download and install:
 
 ## Verify the SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on theicwill be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
 
 To verify the SDK is ready to use:
 

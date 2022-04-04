@@ -5,7 +5,7 @@ title: Hello World
 # How to Deploy Hello, World! Smart Contract in 20 Minutes
 
 This is a fast and minimalist tutorial for deploying a "hello world"
-smart contract or dapp to theICin 20 minutes or less. All that is
+smart contract or dapp to the IC in 20 minutes or less. All that is
 necessary to run this tutorial is basic knowledge of using a terminal
 (no editing of code).
 
@@ -133,7 +133,7 @@ Your directory should look like this:
 ### Using two terminal windows/tabs
 
 Now that the code is there, the next step is to spin up a local version
-of theICon local machine. For this, developers should keep two
+of the IC on local machine. For this, developers should keep two
 terminals open:
 
 -   **Terminal window/tab A:** This will show the local version of the
@@ -160,7 +160,7 @@ scheme:
 
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
-### Start the local version of theIC(Terminal A)
+### Start the local version of the IC (Terminal A)
 
 1.  Use the Terminal window or tab on your local computer.
 
@@ -181,12 +181,12 @@ Note: Depending on your platform and local security settings, you might
 see a warning displayed. If you are prompted to allow or deny incoming
 network connections, click Allow.
 
-**That is it, there is now a local version of theICrunning on your
+**That is it, there is now a local version of the IC running on your
 machine. Leave this window/tab open and running while you continue.** If
-the window/tab is closed, the local version of theICwill not be
+the window/tab is closed, the local version of the IC will not be
 running and the rest of the tutorial will fail.
 
-### Deploy the "hello" dapp to the local version of theIC(Terminal B)
+### Deploy the "hello" dapp to the local version of the IC (Terminal B)
 
 Note: since this is a local version of the IC, this has fewer steps than
 deploying to mainnet (which requires cycles).

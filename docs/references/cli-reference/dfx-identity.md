@@ -1,6 +1,6 @@
 # dfx identity
 
-Use the `dfx identity` command with subcommands and flags to manage the identities used to execute commands and communicate with theicor the local canister execution environment. Creating multiple user identities enables you to test user-based access controls.
+Use the `dfx identity` command with subcommands and flags to manage the identities used to execute commands and communicate with the IC or the local canister execution environment. Creating multiple user identities enables you to test user-based access controls.
 
 The basic syntax for running `dfx identity` commands is:
 
@@ -76,7 +76,7 @@ In this example, the first command sets the user context to use the `ic_admin` i
 
 Use the `dfx identity get-wallet` command to display the canister identifier for the wallet associated with your current identity principal.
 
-Note that you must be connected to theicor the local canister execution environment to run this command. In addition, you must be in a project directory to run the command. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories to run the `dfx identity get-wallet` command.
+Note that you must be connected to the IC or the local canister execution environment to run this command. In addition, you must be in a project directory to run the command. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories to run the `dfx identity get-wallet` command.
 
 ### Basic usage
 

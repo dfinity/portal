@@ -14,7 +14,7 @@ In brief, the Ledger canister maintains a set of accounts owned byICprincipals; 
 
 ### Tokens
 
-There can be multiple utility Tokens in theICat once. The utility Tokens used by theICGovernance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of Tokens are "e8"s: one e8 is 10<sup>-8</sup> Tokens.
+There can be multiple utility Tokens in the IC at once. The utility Tokens used by the IC Governance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of Tokens are "e8"s: one e8 is 10<sup>-8</sup> Tokens.
 
 ### Accounts
 
@@ -362,7 +362,7 @@ The function is defined, recursively, as follows:
     otherwise
       balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
 
-We describe the semantics of ledger methods as a function which takes as input a ledger state, the call arguments and returns a (potentially) new state and a reply. In the description of the function we use some additional functions which reflect system provided information. These include `caller()` which returns the principal who invoked the method, `now()` which return theICtime and `drift` a constant indicating permissible time drift betweenICand external time. We also write `well_formed(.)` for a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
+We describe the semantics of ledger methods as a function which takes as input a ledger state, the call arguments and returns a (potentially) new state and a reply. In the description of the function we use some additional functions which reflect system provided information. These include `caller()` which returns the principal who invoked the method, `now()` which return the IC time and `drift` a constant indicating permissible time drift betweenICand external time. We also write `well_formed(.)` for a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
 
 ### Ledger Method: `transfer`
 

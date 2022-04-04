@@ -233,7 +233,7 @@ Motoko embeds `.did` and `.most` files as wasm *custom sections*, for use by oth
 
 In future, `dfx canister upgrade` will, by default:
 
-1.  query theICfor a canister’s dual interfaces,
+1.  query the IC for a canister’s dual interfaces,
 
 2.  check compatibility of the installed and new binary,
 

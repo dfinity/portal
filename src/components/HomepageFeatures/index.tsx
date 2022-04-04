@@ -51,17 +51,17 @@ const FeatureList: FeatureItem[] = [
 const LinkList: LinkItem[] = [
   {
     title: translate({ message: 'Sample Code' }),
-    description: (<>Learn how to build on theICby exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO.</>),
+    description: (<>Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO.</>),
     href: '/docs/current/developer-docs/samples/'
   },
   {
     title: translate({ message: 'Quick Start' }),
-    description: (<>Get your first dapp launched on theICin 20 minutes.</>),
+    description: (<>Get your first dapp launched on the IC in 20 minutes.</>),
     href: '/docs/current/developer-docs/quickstart/'
   },
   {
     title: translate({ message: 'Community Forum' }),
-    description: (<>Engage with theICcommunity to shape future features, propose new ideas, and ask questions..</>),
+    description: (<>Engage with the IC community to shape future features, propose new ideas, and ask questions..</>),
     href: 'https://forum.dfinity.org/'
   },
   {

@@ -1,6 +1,6 @@
 # Front-end Overview
 
-Theicallows you to host Web 3.0 front-ends for your dapps, using our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). By using the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC, you will be able to run your entire application on decentralized technology. This section takes a closer look at the default front-end template that is provided by `dfx new`, front-end configuration options, and using other frameworks to build the user interface for your projects.
+the IC allows you to host Web 3.0 front-ends for your dapps, using our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). By using the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC, you will be able to run your entire application on decentralized technology. This section takes a closer look at the default front-end template that is provided by `dfx new`, front-end configuration options, and using other frameworks to build the user interface for your projects.
 
 Here are some quick links to tutorials with example code for various stages of developing your front-end dapp:
 

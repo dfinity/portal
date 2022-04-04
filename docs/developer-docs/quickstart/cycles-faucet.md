@@ -46,7 +46,7 @@ one below:
 
 ![Configure DFX Wallet](_attachments/faucet_step_6.png)
 
-Now you are ready to host a website on theICor follow one of our dapp
+Now you are ready to host a website on the IC or follow one of our dapp
 tutorials.
 
 ### Next, people often look at these guides:

@@ -1,6 +1,6 @@
 # dfx deploy
 
-Use the `dfx deploy` command to register, build, and deploy a dapp on the local canister execution environment, on theicor on a specified testnet. By default, all canisters defined in the project `dfx.json` configuration file are deployed.
+Use the `dfx deploy` command to register, build, and deploy a dapp on the local canister execution environment, on the IC or on a specified testnet. By default, all canisters defined in the project `dfx.json` configuration file are deployed.
 
 This command simplifies the developer workflow by enabling you to run one command instead of running the following commands as separate steps:
 
@@ -45,7 +45,7 @@ You can specify the following arguments for the `dfx deploy` command.
 
 ## Examples
 
-You can use the `dfx deploy` command to deploy all or specific canisters on the local canister execution environment, on theicor on a specified testnet.
+You can use the `dfx deploy` command to deploy all or specific canisters on the local canister execution environment, on the IC or on a specified testnet.
 
 For example, to deploy the `hello` project on the hypothetical `ic-pubs` testnet configured in the `dfx.json` configuration file, you can run the following command:
 

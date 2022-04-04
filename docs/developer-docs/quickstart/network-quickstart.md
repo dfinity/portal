@@ -46,7 +46,7 @@ To download and install:
 
 ## Verify the SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on theicwill be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
 
 To verify the SDK is ready to use:
 
@@ -88,7 +88,7 @@ To create a new project for your first dapp:
 
         cd hello
 
-## Check the connection to theicmainnet
+## Check the connection to the IC mainnet
 
 There is a reserved network alias that you can use to access the Internet Computer blockchain mainnet. The network alias is a system setting that’s defined internally, so there’s nothing you need to configure in your projects by default.
 
@@ -96,7 +96,7 @@ To check your connection to the ic:
 
 1.  Check that you are in the root directory for your project, if needed.
 
-2.  Check the current status of theicand your ability to connect to it by running the following command for the network alias `ic`:
+2.  Check the current status of the IC and your ability to connect to it by running the following command for the network alias `ic`:
 
         dfx ping ic
 
@@ -191,7 +191,7 @@ To transfer ICP tokens to create a cycles wallet:
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on theicnetwork.
+        Creating a wallet canister on the IC network.
         The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 
 ## Validate your cycles wallet
