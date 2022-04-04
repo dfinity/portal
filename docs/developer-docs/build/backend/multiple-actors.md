@@ -1,6 +1,6 @@
 # Use multiple actors
 
-In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister smart contract. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
+In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
 
 For this tutorial, you are going to create separate program files for three actors in the same project. This project defines the following unrelated actors:
 

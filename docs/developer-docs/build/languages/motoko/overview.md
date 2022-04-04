@@ -12,7 +12,7 @@ A simple, useful language for the Internet Computer (IC)
 
 -   Safe by default
 
--   Incorporating **actor** model for canister smart contracts
+-   Incorporating **actor** model for canisters
 
 -   Seamless integration ofICfeatures
 

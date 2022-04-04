@@ -1,4 +1,19 @@
-# Supported types
+# Reference
+
+This section provides detailed reference information about Candid supported types and links to the Candid specification and documentation for the Candid Rust crate.
+
+-   [Supported types](candid-types)
+
+-   [Candid specification](https://github.com/dfinity/candid)
+
+-   [Candid Rust crate](https://docs.rs/candid)
+
+If you are looking for more information before you start working with Candid, check out the following related resources:
+
+-   [How Candid provides a common language for application interfaces (video)](https://www.youtube.com/watch?v=O2KaWRtsqHg)
+
+
+## Supported types
 
 This section lists all the types supported by Candid. For each type, the reference includes the following information:
 
@@ -542,7 +557,7 @@ The supported annotations are:
 
 -   `oneway` indicates that this function returns no response, intended for fire-and-forget scenarios.
 
-For more information about parameter naming, see [Naming arguments and results](candid-concepts.xml#service-naming).
+For more information about parameter naming, see [Naming arguments and results](candid-concepts#service-naming).
 
 Type syntax  
 ``` candid
@@ -563,7 +578,7 @@ func "aaaaa-aa".create_canister
 ```
 
 Subtypes  
-The following modifications to a function type change it to a subtype as discussed in the rules for [Service upgrades](candid-concepts.xml#upgrades):
+The following modifications to a function type change it to a subtype as discussed in the rules for [Service upgrades](candid-concepts#upgrades):
 
 -   The result type list may be extended.
 
@@ -619,7 +634,7 @@ Corresponding JavaScript values
 
 Services may want to pass around references to not just individual functions (using the [`func` type](#type-func)), but references to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
 
-See [Candid service descriptions](candid-concepts.xml#candid-service-descriptions) for more details on the syntax of a service type.
+See [Candid service descriptions](candid-concepts#candid-service-descriptions) for more details on the syntax of a service type.
 
 Type syntax  
 ``` candid
@@ -641,7 +656,7 @@ service "aaaaa-aa"
 Subtypes  
 The subtypes of a service type are those service types that possibly have additional methods, and where the type of an existing method is changed to a subtype.
 
-This is exactly the same principle as discussed for upgrade rules in [Service upgrades](candid-concepts.xml#upgrades).
+This is exactly the same principle as discussed for upgrade rules in [Service upgrades](candid-concepts#upgrades).
 
 Supertypes  
 The supertypes of a service type are those service types that may have some methods removed, and the type of existing methods are changed to a supertype.

@@ -223,7 +223,7 @@ To deploy the dapp:
 
     Keep in mind that because you are running the canister execution environment locally, the identifiers displayed when you run the `dfx deploy` command are only valid on your machine.
 
-    To deploy canisters on the ic, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
+    To deploy canisters on the IC, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
 
         dfx deploy --network=ic
 

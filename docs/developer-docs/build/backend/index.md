@@ -2,11 +2,11 @@
 
 The [Quick start](../quickstart/quickstart-intro) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
-Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the ic.
+Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 
 Most of these tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the {company-id} [examples](https://github.com/dfinity/examples) repository.
 
-The following tutorials introduce the basics for writing dapps that run on the ic:
+The following tutorials introduce the basics for writing dapps that run on the IC:
 
 -   [Explore the default project](tutorials/explore-templates) takes a closer look at the work flow for creating projects by exploring the default files and folders that are added to your workspace when you create a new project.
 

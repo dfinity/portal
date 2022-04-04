@@ -1,6 +1,6 @@
 # Reproducible Canister Builds
 
-Thanks to its consensus protocol, the Internet Computer always runs canisters' code correctly. But this doesn’t mean that it’s running the *correct* code for a canister. If you are using a canister somebody else developed, you may want to verify that the canister is indeed running some intended code before giving it control to make important decision for you, e.g., sending your ICP to a canister smart contract. Verifying this requires answering two questions:
+Thanks to its consensus protocol, the Internet Computer always runs canisters' code correctly. But this doesn’t mean that it’s running the *correct* code for a canister. If you are using a canister somebody else developed, you may want to verify that the canister is indeed running some intended code before giving it control to make important decision for you, e.g., sending your ICP to a canister. Verifying this requires answering two questions:
 
 1.  Which WebAssembly (Wasm) code is being executed for a canister?
 

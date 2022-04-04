@@ -1,6 +1,6 @@
 # Pass text arguments
 
-This tutorial provides a simple variation on the default program that lets you pass a single text argument to a single actor, compile the code to create a canister smart contract, then retrieve the argument. Throughout this document, the terms canister smart contract and canister are considered synonymous.
+This tutorial provides a simple variation on the default program that lets you pass a single text argument to a single actor, compile the code to create a canister, then retrieve the argument. Throughout this document, the terms canister and canister are considered synonymous.
 
 This tutorial illustrates how to pass arguments on the command-line in a terminal using the Candid interface description language (IDL) and how to modify the program to allow it to accept more than one value for the text argument.
 
@@ -102,7 +102,7 @@ To deploy the dapp locally:
 
 ## Pass a text argument
 
-You now have a program deployed as a **canister smart contract** in your local canister execution environment and can test your program by using `dfx canister call` commands.
+You now have a program deployed as a **canister** in your local canister execution environment and can test your program by using `dfx canister call` commands.
 
 To test the program you have deployed locally:
 
@@ -146,7 +146,7 @@ To experiment with modifying the source code for this tutorial:
 
 1.  Open the `dfx.json` configuration file in a text editor and change the default `location_hello` settings to `favorite_cities`.
 
-    For this step, you should modify both the canister name and the path to the main program for the canister smart contract to use `favorite_cities`.
+    For this step, you should modify both the canister name and the path to the main program for the canister to use `favorite_cities`.
 
 2.  Save your changes and close the `dfx.json` file to continue.
 

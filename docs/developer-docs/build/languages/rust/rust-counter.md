@@ -10,7 +10,7 @@ For this tutorial, the dapp declares a `COUNTER` as a mutable variable to contai
 
 -   The `set` function updates the current value to the numeric value you specify as an argument.
 
-This tutorial provides a simple example of how you can increment a counter by calling functions on a deployed canister smart contract. By calling the function to increment a value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
+This tutorial provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the function to increment a value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
 
 Like the other sample dapps, this tutorial demonstrates a simple, but realistic, workflow in which you perform the following steps:
 
@@ -20,7 +20,7 @@ Like the other sample dapps, this tutorial demonstrates a simple, but realistic,
 
 -   Deploy the canister on the local canister execution environment.
 
--   Invoke the canister smart contract methods to increment then read the value of a counter.
+-   Invoke the canister methods to increment then read the value of a counter.
 
 ## Before you begin
 
@@ -36,7 +36,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../quickstart/local-quickstart.xml#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../quickstart/local-quickstart#download-and-install).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -48,7 +48,7 @@ Before you start your project, verify the following:
 
 -   You have stopped any local canister execution environment processes running on your computer.
 
-If you aren’t sure how to open a new terminal shell on your local computer, run commands in a terminal, or how to check for and install packages, see [Preliminary steps for newcomers](../quickstart/newcomers.xml). If you are comfortable meeting the prerequisites without instructions, continue to [Create a new project](#_create_a_new_project).
+If you aren’t sure how to open a new terminal shell on your local computer, run commands in a terminal, or how to check for and install packages, see [Preliminary steps for newcomers](../quickstart/newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Create a new project](#_create_a_new_project).
 
 This tutorial takes approximately 20 minutes to complete.
 
@@ -72,7 +72,7 @@ To create a new project directory for this tutorial:
 
 ## Modify the default project
 
-In the [Hello, World! Rust CDK Quick Start](rust-quickstart.xml), you went through the files in a default project with Rust type canister.
+In the [Hello, World! Rust CDK Quick Start](rust-quickstart), you went through the files in a default project with Rust type canister.
 
 To complete this tutorial, you’ll need to complete the following steps:
 
@@ -106,7 +106,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid-guide/candid-intro.xml) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid-guide/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update the Candid file for this tutorial:
 

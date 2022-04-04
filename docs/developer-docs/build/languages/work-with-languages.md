@@ -6,7 +6,7 @@ Most of the example dapps in this guide use Motoko—the programming language sp
 
 You can create Rust projects to run on the IC by using Cargo and compiling your dapp to use WebAssembly as the target output.
 
-This section provides a summary of the key steps involved in deploying a Rust program as a canister smart contract on the IC. You should note, however, that the steps described here only illustrate one approach. Other implementation approaches are also possible.
+This section provides a summary of the key steps involved in deploying a Rust program as a canister on the IC. You should note, however, that the steps described here only illustrate one approach. Other implementation approaches are also possible.
 
 Note that the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs) provides some shortcuts to make it easier to write functions as query and update calls and includes several [examples](https://github.com/dfinity/cdk-rs/tree/next/examples) to get you started building Rust-based projects, but you can also develop dapps for the IC without using the Rust CDK.
 

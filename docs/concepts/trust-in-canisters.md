@@ -2,7 +2,7 @@
 
 ## Background
 
-A key aspect of DeFi and related applications in canister smart contracts is the ability to transfer value, e.g. ICP or Bitcoin. Such functionality makes trust in canister smart contracts essential. How can one ensure that it is safe to entrust ICPs to a canister?
+A key aspect of DeFi and related applications in canisters is the ability to transfer value, e.g. ICP or Bitcoin. Such functionality makes trust in canisters essential. How can one ensure that it is safe to entrust ICPs to a canister?
 
 The answer to this question has two separate dimensions:
 
@@ -16,7 +16,7 @@ The correct behavior of a canister can be checked in two steps. First, inspect t
 
 ## The Behavior of the Canister cannot Unexpectedly Change
 
-Canister smart contracts are deployed and managed by controllers. Among other capabilities, controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. This feature brings canister smart contracts closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
+Canister smart contracts are deployed and managed by controllers. Among other capabilities, controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
 
 For critical applications like those used in DeFI, mutability can be dangerous; the controller could change a benign canister into a canister that steals ICP. Below we outline some options available to developers on how to verifiably restrict mutability.
 

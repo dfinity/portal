@@ -92,21 +92,21 @@ To deploy the dapp locally:
 
         dfx deploy phonebook
 
-    The `dfx.json` file provides default settings for creating a dapp front-end entry point and `assets` canister smart contract.
+    The `dfx.json` file provides default settings for creating a dapp front-end entry point and `assets` canister.
 
-    In previous tutorials, we deleted the entries for the asset canister because we were not adding a front-end for the sample dapp. That change kept our project workspace tidy by eliminating files that would go unused. There is no requirement to do this, however, and there is no harm in leaving the asset canister smart contract description in the `dfx.json` file. For example, you might want to use it as a placeholder if you intend to add front-end assets later.
+    In previous tutorials, we deleted the entries for the asset canister because we were not adding a front-end for the sample dapp. That change kept our project workspace tidy by eliminating files that would go unused. There is no requirement to do this, however, and there is no harm in leaving the asset canister description in the `dfx.json` file. For example, you might want to use it as a placeholder if you intend to add front-end assets later.
 
-    For this tutorial, you can deploy just the phonebook back-end canister smart contract using the `dfx deploy phonebook` command because the project doesn’t include any front-end assets and you will interact with it via the terminal.
+    For this tutorial, you can deploy just the phonebook back-end canister using the `dfx deploy phonebook` command because the project doesn’t include any front-end assets and you will interact with it via the terminal.
 
     Although this tutorial illustrates how to skip compiling a front-end canister, you can add a simple user interface to this dapp later by exploring the [phone-book](https://github.com/dfinity/examples/tree/master/motoko/phone-book) project in the [examples](https://github.com/dfinity/examples) repository.
 
 ## Add names and numbers using the insert function
 
-You now have a dapp deployed as a **canister smart contract** on your local canister execution environment and can test your dapp by using `dfx canister call` commands.
+You now have a dapp deployed as a **canister** on your local canister execution environment and can test your dapp by using `dfx canister call` commands.
 
 To test the dapp you have deployed:
 
-1.  Use the `dfx canister call` command to call the canister smart contract `phonebook` using the `insert` function and pass it a name and phone number by running the following command:
+1.  Use the `dfx canister call` command to call the canister `phonebook` using the `insert` function and pass it a name and phone number by running the following command:
 
         dfx canister call phonebook insert '("Chris Lynn", "01 415 792 1333")'
 

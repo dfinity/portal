@@ -92,7 +92,7 @@ To create a new project for your first dapp:
 
 There is a reserved network alias that you can use to access the Internet Computer blockchain mainnet. The network alias is a system setting that’s defined internally, so there’s nothing you need to configure in your projects by default.
 
-To check your connection to the ic:
+To check your connection to the IC:
 
 1.  Check that you are in the root directory for your project, if needed.
 
@@ -100,7 +100,7 @@ To check your connection to the ic:
 
         dfx ping ic
 
-3.  Verify that the `dfx ping ic` command returns information about the ic.
+3.  Verify that the `dfx ping ic` command returns information about the IC.
 
     For example, you should see output similar to the following:
 
@@ -238,7 +238,7 @@ To validate your cycles wallet:
 
         dfx canister --networkiccall "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
 
-    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the ic, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
+    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the IC, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
     When the browser refreshes after running the `authorize` command, the cycles wallet for your principal account is displayed.
 

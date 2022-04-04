@@ -1,6 +1,6 @@
 # Rosetta staking tutorial
 
-This document will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). We will transfer funds to the Governance canister smart contract, create a neuron, and configure the newly created neuron.
+This document will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). We will transfer funds to the Governance canister, create a neuron, and configure the newly created neuron.
 
 ## Prerequisites
 
@@ -18,9 +18,9 @@ You’ll need the following to complete the tutorial:
 
 From the Internet Computer point of view, creating a neuron is a multi-step operation:
 
-1.  Make a call to the Ledger canister smart contract to transfer tokens to the Governance canister for staking purposes.
+1.  Make a call to the Ledger canister to transfer tokens to the Governance canister for staking purposes.
 
-2.  Notify the Governance about the transfer. At this step, the Governance canister smart contract allocates a new neuron.
+2.  Notify the Governance about the transfer. At this step, the Governance canister allocates a new neuron.
 
 3.  Configure the newly created neuron: set a dissolve delay and start dissolving.
 
@@ -28,7 +28,7 @@ Rosetta API represents these steps as [operations](https://www.rosetta-api.org/d
 
 ## Deriving account identifiers
 
-Staking requires transferring tokens to a sub-account of the Governance canister smart contract. To complete the transfer, you need to know both your ledger account identifier (source of the transfer) and the account identifier of the Governance sub-account (destination of the transfer).
+Staking requires transferring tokens to a sub-account of the Governance canister. To complete the transfer, you need to know both your ledger account identifier (source of the transfer) and the account identifier of the Governance sub-account (destination of the transfer).
 
 Call the `/construction/derive` endpoint to get the default ledger account controlled by your public key and the account of the neuron controlled by that key.
 

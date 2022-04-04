@@ -4,7 +4,7 @@ Now that you have a basic understanding of how to create, build, and deploy a si
 
 This tutorial illustrates using the React framework to create a new front-end for the default sample dapp and guides you through some basic modifications to customize the interface displayed. Later tutorials expand on the techniques introduced here, but if you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
 
-This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your canister smart contract. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the front-end code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
+This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your canister. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the front-end code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
 
 ## Before you begin
 
@@ -105,7 +105,7 @@ To review the default `dfx.json` configuration file:
 
     -   The `source` settings specify the path to your `src` and `dist` directories. The `src` setting specifies the directory to use for static assets that will be included in your assets canister when you build your project. If you have custom cascading stylesheet (CSS) or JavaScript files, you would include them in the folder specified by this path. After building the project, the project assets are served from the directory specified by the `dist` setting.
 
-    -   The `type` setting specifies that the `custom_greeting_assets` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the ic.
+    -   The `type` setting specifies that the `custom_greeting_assets` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
 
     For this tutorial, we are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
@@ -207,7 +207,7 @@ To prepare the front-end files:
 
 ## Start the local canister execution environment
 
-Before you can build the `custom_greeting` project, you need to connect to either the live ic, or a canister execution environment running locally in your development environment.
+Before you can build the `custom_greeting` project, you need to connect to either the live IC, or a canister execution environment running locally in your development environment.
 
 To start the environment locally:
 

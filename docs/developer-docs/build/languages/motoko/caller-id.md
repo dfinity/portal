@@ -1,6 +1,6 @@
 # Principals and caller identification
 
-Motoko’s shared functions support a simple form of caller identification that allows you to inspect the Internet Computer **principal** associated with the caller of a function. The principal associated with a call is a value that identifies a unique user or canister smart contract.
+Motoko’s shared functions support a simple form of caller identification that allows you to inspect the Internet Computer **principal** associated with the caller of a function. The principal associated with a call is a value that identifies a unique user or canister.
 
 You can use the **principal** associated with the caller of a function to implement a basic form of *access-control* in your program.
 

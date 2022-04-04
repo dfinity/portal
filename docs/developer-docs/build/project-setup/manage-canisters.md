@@ -1,11 +1,11 @@
 # Managing Canisters
 <!-- March 2020 (Alpha) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY -->
 
-If you have experimented with using the SDK by following the tutorials in the [Tutorials](tutorials-intro) section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canister smart contracts**. This section provides additional information about the canister lifecycle and how to manage canisters.
+If you have experimented with using the SDK by following the tutorials in the [Tutorials](tutorials-intro) section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
 
 ## Obtaining a Canister Identifier
 
-Depending on your preferred development workflow, you can obtain a unique identifier for your canister smart contract, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister smart contract on a subnet before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
+Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a subnet before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
 
 To obtain a unique identifier for a canister:
 
@@ -61,7 +61,7 @@ To generate a locally-defined identifier:
 
 ## Deploy Canisters
 
-After you have compiled a program, you can install the compiled code in a canister smart contract running either on a local canister execution environment or on the IC blockchain.
+After you have compiled a program, you can install the compiled code in a canister running either on a local canister execution environment or on the IC blockchain.
 
 The canister identifier that was created in advance or during the build process determines where your code is installed during deployment.
 

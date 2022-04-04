@@ -8,7 +8,7 @@ Hackathons are a great way to learn, and that’s why we, in addition to externa
 
 ### Sidekick
 
-Sidekick is a dapp running on the Internet Computer that can build canister smart contracts from a few lines of code.
+Sidekick is a dapp running on the Internet Computer that can build canisters from a few lines of code.
 
 -   [See code on GitHub](https://github.com/blynn/sidekick)
 

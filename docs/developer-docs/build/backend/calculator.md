@@ -126,7 +126,7 @@ To deploy the dapp locally:
 
 ## Verify calculator functions on the canister
 
-You now have a program deployed as a **canister smart contract** on your local canister execution environment. You can test the program by using `dfx canister call` commands.
+You now have a program deployed as a **canister** on your local canister execution environment. You can test the program by using `dfx canister call` commands.
 
 To test the program you have deployed:
 

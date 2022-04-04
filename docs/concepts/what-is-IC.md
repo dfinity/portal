@@ -20,7 +20,7 @@ Another important feature of the Internet Computer is that it runs under the con
 
 The Internet Computer protocol reduces platform-based risks and paves the way for innovation by re-imagining how software is built, deployed, and accessed.
 
-For example, with the Internet Computer, developers can focus on writing code using canister smart contracts without environment-related distractions such as:
+For example, with the Internet Computer, developers can focus on writing code using canisters without environment-related distractions such as:
 
 -   physical or virtual network configuration requirements
 
