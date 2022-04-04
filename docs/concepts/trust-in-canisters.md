@@ -24,7 +24,7 @@ For critical applications like those used in DeFI, mutability can be dangerous; 
 
 The simplest option is to make the canister immutable by removing its controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
-    dfx canister --networkicinfo ryjl3-tyaaa-aaaaa-aaaba-cai
+    dfx canister --network ic info ryjl3-tyaaa-aaaaa-aaaba-cai
 
 will return the list of controllers for the canister with principal `ryjl3-tyaaa-aaaaa-aaaba-cai` (in this example, the ledger canister).
 
