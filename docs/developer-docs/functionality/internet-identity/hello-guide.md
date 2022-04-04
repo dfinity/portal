@@ -50,7 +50,7 @@ A verification code will be displayed
 
 Switch back to your phone and enter the verification code
 
-![enter verifiction code](../_attachments/enter-verifiction-code.png)
+![enter verification code](../_attachments/enter-verification-code.png)
 
 After verifying the Windows computer on your phone you should be able to authenticate on your Windows machine using Windows Hello
 
