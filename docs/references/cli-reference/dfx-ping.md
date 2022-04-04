@@ -29,13 +29,13 @@ You can specify the following argument for the `dfx ping` command.
 
 ## Examples
 
-You can use the `dfx ping` command to check whether the {IC} is currently available at a specific network address by running a command similar to the following:
+You can use the `dfx ping` command to check whether the IC is currently available at a specific network address by running a command similar to the following:
 
 ``` bash
 dfx ping https://testgw.dfinity.network
 ```
 
-If the {IC} is running on the specified network provider address, the command returns output similar to the following:
+If the IC is running on the specified network provider address, the command returns output similar to the following:
 
     {
       "ic_api_version": "0.8"

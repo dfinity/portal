@@ -1,14 +1,14 @@
 # Develop using different languages
 
-Most of the example dapps in this guide use Motoko—the programming language specifically designed to work with the {IC}. Potentially, however, you can write dapps in any language that compiles to WebAssembly to deploy applications that run on the {IC}. This section provides some high-level guidance for writing dapps in different languages and how to deploy them on the {IC}.
+Most of the example dapps in this guide use Motoko—the programming language specifically designed to work with the IC. Potentially, however, you can write dapps in any language that compiles to WebAssembly to deploy applications that run on the IC. This section provides some high-level guidance for writing dapps in different languages and how to deploy them on the IC.
 
 ## Using Rust
 
-You can create Rust projects to run on the {IC} by using Cargo and compiling your dapp to use WebAssembly as the target output.
+You can create Rust projects to run on the IC by using Cargo and compiling your dapp to use WebAssembly as the target output.
 
-This section provides a summary of the key steps involved in deploying a Rust program as a canister smart contract on the {IC}. You should note, however, that the steps described here only illustrate one approach. Other implementation approaches are also possible.
+This section provides a summary of the key steps involved in deploying a Rust program as a canister smart contract on the IC. You should note, however, that the steps described here only illustrate one approach. Other implementation approaches are also possible.
 
-Note that the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs) provides some shortcuts to make it easier to write functions as query and update calls and includes several [examples](https://github.com/dfinity/cdk-rs/tree/next/examples) to get you started building Rust-based projects, but you can also develop dapps for the {IC} without using the Rust CDK.
+Note that the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs) provides some shortcuts to make it easier to write functions as query and update calls and includes several [examples](https://github.com/dfinity/cdk-rs/tree/next/examples) to get you started building Rust-based projects, but you can also develop dapps for the IC without using the Rust CDK.
 
 ### Create a project
 
@@ -24,7 +24,7 @@ To create a new Rust project:
 
         cargo --version
 
-3.  Change to the folder you are using for your {IC} or Rust sample projects.
+3.  Change to the folder you are using for your IC or Rust sample projects.
 
 4.  Create a new project by running a command similar to the following:
 
@@ -36,11 +36,11 @@ To create a new Rust project:
 
         cd my_rust_dapp
 
-    If you list the contents of this directory, you’ll see that it only contains the `Cargo.toml` file and `src` directory. To compile this project to run on the {IC}, you’ll need some additional files.
+    If you list the contents of this directory, you’ll see that it only contains the `Cargo.toml` file and `src` directory. To compile this project to run on the IC, you’ll need some additional files.
 
 ### Modify the Cargo configuration file
 
-The `Cargo.toml` file provides a **manifest** for each Rust package. The manifest contains sections that specify configuration details for the package. To prepare the Rust project to run on the {IC}, we’ll copy the default `Cargo.toml` file then modify some of the configuration details for the project.
+The `Cargo.toml` file provides a **manifest** for each Rust package. The manifest contains sections that specify configuration details for the package. To prepare the Rust project to run on the IC, we’ll copy the default `Cargo.toml` file then modify some of the configuration details for the project.
 
 To modify the `Cargo.toml` file:
 
@@ -50,7 +50,7 @@ To modify the `Cargo.toml` file:
 
         cp Cargo.toml src/Cargo.toml
 
-    Projects that run on the {IC} typically use one project-level `Cargo.toml` file to set up a workspace for the canister members of the project and a second `Cargo.toml` file in the source code directory to configure settings for each canister.
+    Projects that run on the IC typically use one project-level `Cargo.toml` file to set up a workspace for the canister members of the project and a second `Cargo.toml` file in the source code directory to configure settings for each canister.
 
 3.  Open the `Cargo.toml` file that is the root directory of your project in a text editor.
 
@@ -154,7 +154,7 @@ To modify the template source code:
 
 1.  Open the template `src/main.rs` file in a text editor and delete the existing content.
 
-2.  Write the program you want to deploy on the {IC}.
+2.  Write the program you want to deploy on the IC.
 
     As you write your program, keep in mind that there are two types of calls—update calls and query calls—and that update functions use asynchronous messaging.
 
@@ -164,7 +164,7 @@ To modify the template source code:
 
 Before you can deploy and test your dapp, you need to do the following:
 
--   Connect to either the local canister execution environment, or to the {IC} blockchain mainnet.
+-   Connect to either the local canister execution environment, or to the IC blockchain mainnet.
 
 -   Register a network-specific identifier for the application.
 
@@ -210,9 +210,9 @@ To build and deploy the dapp locally:
 
 ## Using C
 
-Because the {IC} supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ programming languages and the `Clang` compiler.
+Because the IC supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ programming languages and the `Clang` compiler.
 
-To illustrate how to migrate dapps written in C to run on the {IC}, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
+To illustrate how to migrate dapps written in C to run on the IC, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
 
 ### Set up the development environment
 
@@ -251,7 +251,7 @@ To compile to WebAssembly on macOS:
 
 ### Create a minimal configuration file
 
-Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on the {IC} and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
+Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on the IC and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
 
 To prepare a configuration file and build directory:
 
@@ -297,7 +297,7 @@ To create a Candid interface description file for this program:
 
 Before you can deploy and test your dapp, you need to do the following:
 
--   Connect to either the local canister execution environment, or to the {IC} blockchain mainnet.
+-   Connect to either the local canister execution environment, or to the IC blockchain mainnet.
 
 -   Register a network-specific identifier for the application.
 

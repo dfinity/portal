@@ -1,6 +1,6 @@
 # dfx build
 
-Use the `dfx build` command to compile your program into a WebAssembly module that can be deployed on the {IC}. You can use this command to compile all of the programs that are defined for a project in the project’s `dfx.json` configuration file or a specific canister.
+Use the `dfx build` command to compile your program into a WebAssembly module that can be deployed on the IC. You can use this command to compile all of the programs that are defined for a project in the project’s `dfx.json` configuration file or a specific canister.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 

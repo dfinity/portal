@@ -19,7 +19,7 @@ To obtain a unique identifier for a canister:
 
 3.  Change to your new project directory.
 
-4.  Open the `dfx.json` configuration file and set the host and port for the canister execution environment you want to use (e.g. the {IC} blockchain).
+4.  Open the `dfx.json` configuration file and set the host and port for the canister execution environment you want to use (e.g. the IC blockchain).
 
     If you are using a local deployment, you can skip this step.
 
@@ -31,7 +31,7 @@ To obtain a unique identifier for a canister:
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
-    If you were registering canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 6.  Register unique identifiers for the canisters defined in the `dfx.json` by running the following command:
 
@@ -51,17 +51,17 @@ To generate a locally-defined identifier:
 
 2.  Start the local canister execution environment, if necessary.
 
-    If you were compiling canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were compiling canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 3.  Generate hard-coded local identifiers for the canisters defined in the `dfx.json` by running the following command:
 
         dfx build --check
 
-    Note that you must register unique canister identifiers to replace your locally-defined identifier before you can deploy the project on the {IC} blockchain.
+    Note that you must register unique canister identifiers to replace your locally-defined identifier before you can deploy the project on the IC blockchain.
 
 ## Deploy Canisters
 
-After you have compiled a program, you can install the compiled code in a canister smart contract running either on a local canister execution environment or on the {IC} blockchain.
+After you have compiled a program, you can install the compiled code in a canister smart contract running either on a local canister execution environment or on the IC blockchain.
 
 The canister identifier that was created in advance or during the build process determines where your code is installed during deployment.
 
@@ -73,7 +73,7 @@ To deploy the code for the first time:
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
-    If you were registering canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 3.  Verify you have canister identifiers for all of the canisters you want to deploy.
 
@@ -127,7 +127,7 @@ To reinstall a canister:
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
-    If you were registering canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 3.  Verify you have canister identifiers for all of the canisters you want to re-deploy.
 
@@ -228,7 +228,7 @@ To upgrade a canister:
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
-    If you were registering canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 3.  Verify you have canister identifiers for all of the canisters you want to upgrade.
 
@@ -254,7 +254,7 @@ To delete all canisters for a project:
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
-    If you were deleting canisters to run on a remote execution environment, e.g. the {IC} blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
+    If you were deleting canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
 3.  Check the status of the project canisters running on the local canister execution environment by running the following command:
 

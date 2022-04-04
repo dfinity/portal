@@ -48,7 +48,7 @@ After running `dfx start --clean`, recreate your canisters by running the follow
 
 ## Removing the canisters directory
 
-If you run into problems building or deploying canisters after successfully connecting to the {IC} and registering canister identifiers, you should remove the `canisters` directory before attempting to rebuild or redeploy the canisters.
+If you run into problems building or deploying canisters after successfully connecting to the IC and registering canister identifiers, you should remove the `canisters` directory before attempting to rebuild or redeploy the canisters.
 
 You can remove the `canisters` directory for a project by running the following command in the project’s root directory:
 

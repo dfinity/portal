@@ -12,15 +12,15 @@ The most significant new features and capabilities include updates in the follow
 
 === DFX
 
-* With this release, you must have a **wallet canister** with **cycles** to deploy or manage applications on the {IC}.
+* With this release, you must have a **wallet canister** with **cycles** to deploy or manage applications on the IC.
 +
 For local development, `+dfx+` automatically creates a wallet for you when you run `+dfx canister create+` or `+dfx deploy+` commands within each project.
 +
-Wallets are also created automatically if you deploy to the {IC} using the `+ic+` network alias before the network is upgraded to require a cycle balance.
+Wallets are also created automatically if you deploy to the IC using the `+ic+` network alias before the network is upgraded to require a cycle balance.
 +
-To deploy and manage applications on the main {IC} network, you must provide the {company-id} Foundation with a principal associated with your user identity and receive a **wallet canister identifier** in return.
+To deploy and manage applications on the main IC network, you must provide the {company-id} Foundation with a principal associated with your user identity and receive a **wallet canister identifier** in return.
 +
-To deploy applications on the {IC} network:
+To deploy applications on the IC network:
 +
 --
 . Download and install the SDK.
@@ -57,7 +57,7 @@ https://<WALLET-CANISTER-ID>.ic0.app
 The `+dfx canister create+` and `+dfx deploy+` commands now support a new `+--with-cycles <number-of-cycles>+` option.
 This option allows you to specify the initial cycle balance of a canister created by your wallet.
 +
-You can use this option when running the {IC} network locally or connected to the current `+ic+` network (Sodium) for testing purposes. However, because wallets and cycle balances are not currently used for canisters you create while connected to the current `+ic+` network (Sodium), the `+--with-cycles+` option does not affect any canister operations.
+You can use this option when running the IC network locally or connected to the current `+ic+` network (Sodium) for testing purposes. However, because wallets and cycle balances are not currently used for canisters you create while connected to the current `+ic+` network (Sodium), the `+--with-cycles+` option does not affect any canister operations.
 +
 For example, you might run the following `+dfx canister create+` command to initialize `+8000000000+` cycles for all of the canisters in a project:
 +
@@ -95,7 +95,7 @@ dfx identity deploy-wallet <canister-identifier>
 ....
 +
 NOTE: The `+deploy-wallet+` feature is intended for a future use case. The command is only applicable if you received the wallet canister identifier as part of a transfer operation that converted ICP tokens to cycles.
-In addition, the `+deploy-wallet+` subcommand is **not intended for use** with the current version of {IC} running locally or on the remote network.
+In addition, the `+deploy-wallet+` subcommand is **not intended for use** with the current version of IC running locally or on the remote network.
 
 === Candid
 

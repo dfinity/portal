@@ -12,7 +12,7 @@ This section provides a preliminary look at some sample code for applications an
 
 ## C
 
-For examples of projects written in the C programming language for the {IC}, see [C++ sample projects](https://github.com/dfinity/examples/tree/master/c).
+For examples of projects written in the C programming language for the IC, see [C++ sample projects](https://github.com/dfinity/examples/tree/master/c).
 
 -   [Adventure game](https://github.com/dfinity/examples/tree/master/c/adventure)
 

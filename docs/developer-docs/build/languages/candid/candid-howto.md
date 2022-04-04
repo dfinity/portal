@@ -1,6 +1,6 @@
 # How to
 
-As discussed in [What is Candid?](candid-concepts.xml), Candid provides a language-agnostic way to interact with canister smart contracts. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the {IC} from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, {proglang}, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
+As discussed in [What is Candid?](candid-concepts.xml), Candid provides a language-agnostic way to interact with canister smart contracts. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, {proglang}, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 
@@ -14,9 +14,9 @@ Now, let’s explore how to interact with this canister in different scenarios w
 
 ## Interact with a service in a terminal
 
-One of the most common ways you interact with canister smart contracts and the {IC} is by using the {company-id} Canister SDK `dfx` command-line interface.
+One of the most common ways you interact with canister smart contracts and the IC is by using the {company-id} Canister SDK `dfx` command-line interface.
 
-The `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the {IC}—and, if applicable, a method of the service provided by the smart contract.
+The `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the IC—and, if applicable, a method of the service provided by the smart contract.
 
 When you run the `dfx canister call` command, you can pass arguments to a method by specifying them as [Candid textual values](candid-concepts.xml#textual-values).
 

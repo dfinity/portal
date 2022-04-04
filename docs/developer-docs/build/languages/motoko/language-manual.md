@@ -10,7 +10,7 @@ This section serves as a technical reference for the previous chapters and has s
 
 The language quick reference is intended to provide complete reference information about Motoko, but this section does *not* provide explanatory text or usage information. Therefore, this section is typically not suitable for readers who are new to programming languages or who are looking for a general introduction to using Motoko.
 
-Throughout, we use the term canister to refer to an {IC} canister smart contract.
+Throughout, we use the term canister to refer to an IC canister smart contract.
 
 ## Basic language syntax
 

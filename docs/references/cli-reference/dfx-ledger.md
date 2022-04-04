@@ -98,7 +98,7 @@ This command displays an ICP amount similar to the following:
 
 ## dfx ledger create-canister
 
-Use the `dfx ledger create-canister` command to convert ICP tokens to cycles and to register a new canister identifier on the {IC}.
+Use the `dfx ledger create-canister` command to convert ICP tokens to cycles and to register a new canister identifier on the IC.
 
 ### Basic usage
 

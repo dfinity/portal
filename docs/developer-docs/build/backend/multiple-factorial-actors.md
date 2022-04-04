@@ -32,7 +32,7 @@ To create a new project for this tutorial:
 
 1.  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Change to the folder you are using for your {IC} projects, if you are using one.
+2.  Change to the folder you are using for your IC projects, if you are using one.
 
 3.  Create a new project by running the following command:
 
@@ -137,7 +137,7 @@ You now have three separate compiled programs—one for each actor—ready for d
 
 To deploy the canisters:
 
-1.  Start the {IC} network on your local computer by running the following command:
+1.  Start the IC network on your local computer by running the following command:
 
         dfx start
 
@@ -187,6 +187,6 @@ To test the programs you have deployed on the local replica network:
 
         (""The daemon process is running"")
 
-6.  Stop the {IC} processes running on your local computer by running the following command:
+6.  Stop the IC processes running on your local computer by running the following command:
 
         dfx stop

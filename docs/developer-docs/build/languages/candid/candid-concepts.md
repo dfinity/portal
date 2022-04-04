@@ -142,7 +142,7 @@ service address_book : {
 }
 ```
 
-This annotation indicates that the `get_address` method can be invoked as an {IC} **query call**. As discussed in [Query and update methods](developers-guide:concepts/canisters-code.xml#query-update), a query provides an efficient way to retrieve information from a canister smart contract without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the {IC}.
+This annotation indicates that the `get_address` method can be invoked as an IC **query call**. As discussed in [Query and update methods](developers-guide:concepts/canisters-code.xml#query-update), a query provides an efficient way to retrieve information from a canister smart contract without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the IC.
 
 ## Encoding and decoding
 
@@ -208,7 +208,7 @@ service counter : {
 
 ## Candid textual values
 
-The main purpose of Candid is to connect programs written in some host language—Motoko, Rust, or JavaScript, for example—with the {IC}. In most cases, therefore, you do not have to deal with your program data as Candid values. Instead, you work with a host language like JavaScript using familiar JavaScript values then rely on Candid to transparently transport those values to a canister smart contract written in Rust or Motoko. The canister receiving the values treats them as native Rust or Motoko values.
+The main purpose of Candid is to connect programs written in some host language—Motoko, Rust, or JavaScript, for example—with the IC. In most cases, therefore, you do not have to deal with your program data as Candid values. Instead, you work with a host language like JavaScript using familiar JavaScript values then rely on Candid to transparently transport those values to a canister smart contract written in Rust or Motoko. The canister receiving the values treats them as native Rust or Motoko values.
 
 However, there are some cases—for example, when logging, debugging, or interacting with a service on the command-line—where it is useful to see the Candid values directly in a human-readable form. In these scenarios, you can use the *textual presentation* for Candid values.
 

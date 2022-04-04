@@ -118,13 +118,33 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Tutorials',
+          label: 'Backend Tutorials',
           link: {
-            type: 'doc', id: 'developer-docs/build/tutorials/index'
+            type: 'doc', id: 'developer-docs/build/backend/index'
           },
           items: [
-            'developer-docs/build/tutorials/explore-templates',
+            'developer-docs/build/backend/explore-templates',
+            'developer-docs/build/backend/define-an-actor',
+            'developer-docs/build/backend/hello-location',
+            'developer-docs/build/backend/counter-tutorial',
+            'developer-docs/build/backend/calculator',
+            'developer-docs/build/backend/phonebook',
+            'developer-docs/build/backend/multiple-actors',
+            'developer-docs/build/backend/intercanister-calls',
+            'developer-docs/build/backend/access-control',
+            'developer-docs/build/backend/simple-cycles',
+            'developer-docs/build/backend/reproducible-builds',
           ]
+        },
+        {
+          type: 'category',
+          label: 'Frontend Tutorials',
+          link: {
+            type: 'doc', id: 'developer-docs/build/frontend/index',
+          },
+          items: [
+            'developer-docs/build/frontend/webpack-config',
+          ],
         },
         'developer-docs/build/troubleshooting',
       ]
