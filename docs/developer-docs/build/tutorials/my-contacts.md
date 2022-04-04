@@ -10,13 +10,13 @@ Before starting the tutorial, verify the following:
 
 -   You have `node.js` installed for front-end development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment processes running on the local computer.
 
-This tutorial requires you to use the {sdk-short-name} version `0.8.0` or later.
+This tutorial requires you to use the SDK version `0.8.0` or later.
 
 ## Create a new project
 

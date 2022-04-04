@@ -4,7 +4,7 @@ September 2021 (Beta) :proglang: Motoko :IC: Internet Computer :company-id: DFIN
 
 This section provides information to help you troubleshoot and resolve or work around common issues that are related to the following tasks:
 
--   downloading and installing the {sdk-short-name}
+-   downloading and installing the SDK
 
 -   creating, building, or deploying canisters
 
@@ -68,7 +68,7 @@ If you have modified the location of the `dfx` binary, you might want run the fo
 
 ## Xcode prerequisite
 
-Some versions of the {sdk-short-name} prompted you to install Xcode when creating a new project on a macOS computer. The prompt has been removed and the `dfx new` command does not require you to install any macOS developer tools. However, you should have Developer Command Line Tools installed if you want to create a Git repository for your project.
+Some versions of the SDK prompted you to install Xcode when creating a new project on a macOS computer. The prompt has been removed and the `dfx new` command does not require you to install any macOS developer tools. However, you should have Developer Command Line Tools installed if you want to create a Git repository for your project.
 
 You can check whether you have the developer tools installed by running `xcode-select -p`. You can install the developer tools by running `xcode-select --install`.
 

@@ -1,6 +1,6 @@
 # Develop using different languages
 
-Most of the example dapps in this guide use {proglang}—the programming language specifically designed to work with the {IC}. Potentially, however, you can write dapps in any language that compiles to WebAssembly to deploy applications that run on the {IC}. This section provides some high-level guidance for writing dapps in different languages and how to deploy them on the {IC}.
+Most of the example dapps in this guide use Motoko—the programming language specifically designed to work with the {IC}. Potentially, however, you can write dapps in any language that compiles to WebAssembly to deploy applications that run on the {IC}. This section provides some high-level guidance for writing dapps in different languages and how to deploy them on the {IC}.
 
 ## Using Rust
 
@@ -82,7 +82,7 @@ To modify the `Cargo.toml` file:
 
 ### Add a canister configuration file
 
-When you create a new project using the {sdk-short-name}, the `dfx new` command automatically adds a default `dfx.json` configuration file to the project directory. Because we created the Rust project using Cargo, you need to manually create this file in your project directory.
+When you create a new project using the SDK, the `dfx new` command automatically adds a default `dfx.json` configuration file to the project directory. Because we created the Rust project using Cargo, you need to manually create this file in your project directory.
 
 To add the `dfx.json` configuration file:
 

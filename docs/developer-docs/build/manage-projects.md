@@ -2,7 +2,7 @@
 
 You can modify some key settings for individual projects by modifying each project’s `dfx.json` configuration file. You can use the `dfx config` command to change these settings programmatically or manually edit the `dfx.json` file directly.
 
-## How to Change the Source Directory
+## How to change the source directory
 
 Before you compile source code for your project using the `dfx build` command, you might want to check the default location for storing the source code for your dapp. By default, the name you use to create a new project is the name used for one canister smart contract (`canister_name`) and one assets canister (`canister_name_assets`), and dapp source code is expected to be in the `src/canister_name` directory. Similarly, the default location for front-end source code is in the `src/canister_name_assets/src` directory and front-end output is located in the `dist/canister_name_assets` directory.
 
@@ -28,7 +28,7 @@ For more complex dapps, you might want to use a multi-tiered directory structure
 
 If you modify the default settings for a source code directory, be sure that the settings in the `dfx.json` configuration file match the directory location on the file system.
 
-## How to Change the Main Dapp File Name
+## How to change the main dapp filename
 
 Before you compile source code for your project using the `dfx build` command, you should verify the location and file name used for your dapp’s source code.
 
@@ -40,7 +40,7 @@ For example:
 
 Keep in mind that changing the configuration setting for the dapp file name only affects where the `dfx build` command looks for the source code to compile. Making changes in the configuration file does not rename any files or directories on the file system. If you change the path to the main dapp file or the name of the file itself, be sure to change the name and location within your project directory.
 
-## How to Change the Location for Serving the Dapp Front-end
+## How to change the location for serving the dapp front-end
 
 You can change the default host name and port number for serving the dapp front-end by modifying the local network settings in the `dfx.json` configuration file.
 

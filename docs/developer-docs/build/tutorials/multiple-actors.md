@@ -20,7 +20,7 @@ For this tutorial, you are going to create separate program files for three acto
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped any local canister execution environment running on your computer.
 

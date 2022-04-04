@@ -4,7 +4,7 @@ The [Quick start](../quickstart/quickstart-intro) provided a simplified introduc
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the ic.
 
-Most of these tutorials illustrate how to write dapps using the {proglang} programming language. For additional examples of dapps written in other languages, see the {company-id} [examples](https://github.com/dfinity/examples) repository.
+Most of these tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the {company-id} [examples](https://github.com/dfinity/examples) repository.
 
 The following tutorials introduce the basics for writing dapps that run on the ic:
 
@@ -16,9 +16,9 @@ The following tutorials introduce the basics for writing dapps that run on the i
 
 -   [Increment a natural number](tutorials/counter-tutorial) guides you through the process of writing a dapp that creates an actor with functions to increment and return the value of a counter.
 
--   [Use integers in calculator functions](tutorials/calculator) shows you how to write a simple calculator dapp for more practice working with {proglang} and to learn more about how you can customize your project environment.
+-   [Use integers in calculator functions](tutorials/calculator) shows you how to write a simple calculator dapp for more practice working with Motoko and to learn more about how you can customize your project environment.
 
--   [Import library modules](tutorials/phonebook) illustrates how to import and use a few basic {proglang} base library functions for working with key-value pairs in a list.
+-   [Import library modules](tutorials/phonebook) illustrates how to import and use a few basic Motoko base library functions for working with key-value pairs in a list.
 
 -   [Use multiple actors](tutorials/multiple-actors) describes how to include multiple unrelated actors in a single project to illustrate how you can compile multiple canisters for the same project.
 
@@ -34,4 +34,4 @@ The following tutorials introduce the basics for writing dapps that run on the i
 
 -   [Accept cycles from a wallet](tutorials/simple-cycles) illustrates how to accept cycles sent from the default wallet canister.
 
-Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*{proglang} Programming Language Guide*](../language-guide/motoko).
+Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*Motoko Programming Language Guide*](../language-guide/motoko).

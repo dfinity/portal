@@ -16,7 +16,7 @@ This tutorial provides a simple example of how you can increment a counter by ca
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped any local canister execution environments running on the computer.
 

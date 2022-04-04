@@ -6,21 +6,21 @@ The [Language Server Protocol (LSP)](https://microsoft.github.io/language-server
 
 Because the Language Server Protocol (LSP) standardizes the protocol for how language-specific servers and development tools communicate, a single language server can be re-used in multiple development tools with minimal effort.
 
-## Adding a language server for {proglang}
+## Adding a language server for Motoko
 
-With the {sdk-short-name}, you can add a language server for {proglang} to your editor or development environment client by invoking the `dfx _language-service` programmatically when you open {proglang} programs in an editor or development environment configured to recognize the language server. You can use any editor or integrated development environment that supports the Language Server Protocol to invoke the `dfx _language-service` programmatically. Once invoked, the language server ensures that your development environment reports {proglang} compiler errors and provides code completion and refactoring tools.
+With the SDK, you can add a language server for Motoko to your editor or development environment client by invoking the `dfx _language-service` programmatically when you open Motoko programs in an editor or development environment configured to recognize the language server. You can use any editor or integrated development environment that supports the Language Server Protocol to invoke the `dfx _language-service` programmatically. Once invoked, the language server ensures that your development environment reports Motoko compiler errors and provides code completion and refactoring tools.
 
-For example, if you use Visual Studio Code (VSCode) or Emacs as your development environment, you can install a plugin extension that enables those editors to automatically invoke the {proglang} language server.
+For example, if you use Visual Studio Code (VSCode) or Emacs as your development environment, you can install a plugin extension that enables those editors to automatically invoke the Motoko language server.
 
 <div class="note">
 
-Only the Visual Studio Code (VSCode) plugin extension is currently available for {proglang}. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart.xml#install-vscode).
+Only the Visual Studio Code (VSCode) plugin extension is currently available for Motoko. For information about installing the plugin, see [Install the language editor plug-in](../quickstart/local-quickstart#install-vscode).
 
 </div>
 
 ## Invoking the language service manually
 
-Although it is extremely rare that you would start the {proglang} language server directly in a terminal shell. it is possible to do so by running the following command:
+Although it is extremely rare that you would start the Motoko language server directly in a terminal shell. it is possible to do so by running the following command:
 
 ``` bash
 dfx _language-service --force-tty
@@ -40,7 +40,7 @@ You can use the following optional flags with the `dfx _language-service` comman
 
 | Flag              | Description                                                             |
 |-------------------|-------------------------------------------------------------------------|
-| `--force-tty`     | Starts the the {proglang} language server directly in a terminal shell. |
+| `--force-tty`     | Starts the the Motoko language server directly in a terminal shell. |
 | `-h`, `--help`    | Displays usage information.                                             |
 | `-V`, `--version` | Displays version information.                                           |
 

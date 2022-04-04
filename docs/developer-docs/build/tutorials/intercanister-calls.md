@@ -20,7 +20,7 @@ The LinkedUp sample dapp is implemented using the following canister smart contr
 
 Before building the sample dapp, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped the local canister execution environment provided by `dfx`.
 

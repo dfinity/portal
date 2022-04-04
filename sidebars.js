@@ -41,6 +41,7 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/build/index'
       },
       items: [
+        'developer-docs/build/install-upgrade-remove',
         'developer-docs/build/design-dapps',
         'developer-docs/build/manage-projects',
         'developer-docs/build/manage-canisters',
@@ -168,6 +169,35 @@ const sidebars = {
             // 'developer-docs/good-to-know/token-holders/seed-donations',
           ]
         },
+        {
+          type: 'category',
+          label: 'Release Notes',
+          link: {
+            type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
+          },
+          items: [
+            'developer-docs/good-to-know/release-notes/0.9.3-rn',
+            'developer-docs/good-to-know/release-notes/0.9.2-rn',
+            'developer-docs/good-to-know/release-notes/0.9.0-rn',
+            'developer-docs/good-to-know/release-notes/0.8.4-rn',
+            'developer-docs/good-to-know/release-notes/0.8.2-rn',
+            'developer-docs/good-to-know/release-notes/0.8.1-rn',
+            'developer-docs/good-to-know/release-notes/0.8.0-rn',
+            'developer-docs/good-to-know/release-notes/0.7.7-rn',
+            'developer-docs/good-to-know/release-notes/0.7.2-rn',
+            'developer-docs/good-to-know/release-notes/0.7.1-rn',
+            'developer-docs/good-to-know/release-notes/0.7.0-rn',
+            'developer-docs/good-to-know/release-notes/0.6.26-rn',
+            'developer-docs/good-to-know/release-notes/0.6.25-rn',
+            'developer-docs/good-to-know/release-notes/0.6.24-rn',
+            'developer-docs/good-to-know/release-notes/0.6.23-rn',
+            'developer-docs/good-to-know/release-notes/0.6.22-rn',
+            'developer-docs/good-to-know/release-notes/0.6.21-rn',
+            'developer-docs/good-to-know/release-notes/0.6.20-rn',
+            'developer-docs/good-to-know/release-notes/0.6.20-rn',
+            'developer-docs/good-to-know/release-notes/0.6.20-rn',
+          ]
+        },
       ]
     }
   ],
@@ -182,12 +212,12 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Rust CDK references',
+      label: 'Rust CDK References',
       href: 'https://docs.rs/ic-cdk/',
     },
     {
       type: 'category',
-      label: 'CLI References',
+      label: 'DFX Commands & Envars',
       link: {
         type: 'doc', id: 'references/cli-reference/index'
       },
@@ -198,7 +228,6 @@ const sidebars = {
         'references/cli-reference/dfx-canister',
         'references/cli-reference/dfx-config',
         'references/cli-reference/dfx-deploy',
-        'references/cli-reference/dfx-envars',
         'references/cli-reference/dfx-generate',
         'references/cli-reference/dfx-help',
         'references/cli-reference/dfx-identity',
@@ -209,6 +238,7 @@ const sidebars = {
         'references/cli-reference/dfx-start',
         'references/cli-reference/dfx-upgrade',
         'references/cli-reference/dfx-wallet',
+        'references/cli-reference/dfx-envars',
       ]
     },
     'references/ic-interface-spec',

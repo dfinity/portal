@@ -4,7 +4,7 @@ The [Quick start](../../quickstart/quickstart-intro) provides a fast path to dep
 
 If the quick start and tutorials aren’t quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
-After you install the {sdk-short-name}, here’s all you need to know:
+After you install the SDK, here’s all you need to know:
 
 1.  Create a new project and change to the project directory.
 

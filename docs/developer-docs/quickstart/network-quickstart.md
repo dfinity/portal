@@ -1,6 +1,6 @@
 # Network deployment
 
-This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and deploying the default project on the Internet Computer blockchain mainnet.
+This *Quick Start* scenario assumes that you are installing the SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
 
 If you are only deploying projects in a local development environment, see the [Local development](local-quickstart) scenario.
 
@@ -8,11 +8,11 @@ To get started, let’s build and deploy a simple Hello dapp that has just one f
 
 ## Before you begin
 
-Before you download and install this release of the {sdk-short-name}, verify the following:
+Before you download and install this release of the SDK, verify the following:
 
 -   You have an internet connection and access to a shell terminal on your local **macOS** or **Linux** computer.
 
-    Currently, the {sdk-short-name} only runs on computers with a macOS or Linux operating system.
+    Currently, the SDK only runs on computers with a macOS or Linux operating system.
 
 -   You have `node.js` installed if you want to access the default front-end for the default project.
 
@@ -26,7 +26,7 @@ This tutorial assumes you know how to perform common tasks—like opening a term
 
 ## Download and install
 
-You can download the latest version of the {sdk-long-name} directly from within a terminal shell on your local computer. If you have previously installed the {sdk-short-name}, you can skip this section and start with [Create a new project](#net-new-project).
+You can download the latest version of the {sdk-long-name} directly from within a terminal shell on your local computer. If you have previously installed the SDK, you can skip this section and start with [Create a new project](#net-new-project).
 
 To download and install:
 
@@ -34,7 +34,7 @@ To download and install:
 
     For example, open Applications, Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
 
-2.  Download and install the {sdk-short-name} package by running the following command:
+2.  Download and install the SDK package by running the following command:
 
         sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 
@@ -114,11 +114,11 @@ All ICP token transactions are recorded in a [ledger canister](../developers-gui
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
-Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) front-end application, or using the {sdk-short-name} `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
+Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) front-end application, or using the SDK `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
 
 ### About your developer identity
 
-The first time you use the {sdk-short-name}, the `dfx` command-line tool creates a `default` developer identity for you. This identity is represented by a **principal** data type and a textual representation of the principal often referred to as your **principal identifier**. This representation of your identity is similar to a Bitcoin or Ethereum address.
+The first time you use the SDK, the `dfx` command-line tool creates a `default` developer identity for you. This identity is represented by a **principal** data type and a textual representation of the principal often referred to as your **principal identifier**. This representation of your identity is similar to a Bitcoin or Ethereum address.
 
 However, the principal associated with your developer identity is typically not the same as your **account identifier** in the ledger. The principal identifier and the account identifier are related—both provide a textual representation of your identity—but they use different formats.
 

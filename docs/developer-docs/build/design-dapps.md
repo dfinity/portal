@@ -4,7 +4,7 @@ As you come up with ideas for dapps, you are going to make many design decisions
 
 This section is work-in-progress and incomplete. As best practices and design patterns evolve for building dapps that run on the Internet Computer, the information included here will also evolve and change accordingly.
 
-## Single or Multiple Canister Architecture
+## Single or multiple canister architecture
 
 One of the first decisions you might want to consider when designing your dapp is whether it should be encapsulated in a single canister smart contract or consist of multiple canister smart contracts.
 
@@ -12,7 +12,7 @@ For example, if you are writing a simple service with no front-end, you might wa
 
 In planning, you might also consider placing some common reusable services in their own canister so that they can be imported and called from other more-specialized canisters or made available for other developers to use. The [LinkedUp](https://github.com/dfinity/linkedup) sample dapp illustrates this approach by splitting the professional service dapp into two canisters. In the LinkedUp example, the functions that establish social connections are defined in the `connectd` canister and separate from the functions used to set up professional profiles that are defined in the `linkedup` canister. It is easy to imagine extending the dapp with a third canister, for example to schedule events based on profile attributes or shared connections.
 
-## Segregating Actors from Types and Utilities
+## Segregating actors from types and utilities
 
 In planning the architecture for your project, one common practice is to place the code for the main actor in one file with separate additional files for defining the types you program uses and utility functions that don’t require an actor.
 
@@ -24,7 +24,7 @@ For example, you might set up the back-end logic for your dapp to consist of the
 
 -   `Types.mo` or `types.rs` with all of the data type definitions for your dapp.
 
-## Using Query Calls
+## Using query calls
 
 As discussed in [Query and update methods](../developers-guide/concepts/canisters-code#query-update), queries return results faster than update calls. Therefore,explicitly marking a function as a `query` is an effective strategy for improving application performance. In the planning and design phase, you should consider how best to use query calls instead of functions that can perform queries or updates.
 
@@ -32,6 +32,6 @@ That is a good general rule to follow and can be applied broadly to most categor
 
 As an alternative to basic queries, the Internet Computer also supports **certified queries**. Certified queries enable you to receive **authenticated responses** that end users can trust. Using certified queries is an advanced technique that is not covered in the tutorials or other developer-focused documentation, but you can learn about how the authentication works and what you need to do to configure your program to return certified data in response to queries in the [Interface specification](../interface-spec/index).
 
-## Data Storage and Retrieval
+## Data storage and retrieval
 
 The Internet Computer enables you to use **stable memory** to handle long-term data storage—often referred to as orthogonal persistence—and to use **query calls** to retrieve your data. Efficiently retrieving data using one or more keys can typically be achieved by using data structures like hash tables. It is also possible to implement a more traditional database inside a canister.

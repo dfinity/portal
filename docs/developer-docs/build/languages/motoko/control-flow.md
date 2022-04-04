@@ -16,7 +16,7 @@ When a function has unit result type, the shorthand `return` may be used instead
 
 ## Loops and labels
 
-{proglang} provides several kinds of repetition constructs, including:
+Motoko provides several kinds of repetition constructs, including:
 
 -   `for` expressions for iterating over members of structured data.
 

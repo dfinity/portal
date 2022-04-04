@@ -14,7 +14,7 @@ Before you start this tutorial, verify the following:
 
 -   You have `node.js` installed if you want to include the default template files for front-end development in your project.
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 

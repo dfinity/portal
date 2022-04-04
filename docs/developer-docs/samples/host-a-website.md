@@ -1,6 +1,6 @@
 # Hosting a Static Website on the Internet Computer
 
-Before you begin, make sure you are set up with our {sdk-short-name} (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](cycles-faucet) or by purchasing ICP and following our [Network Deployment](./quickstart/network-quickstart) guide.
+Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](cycles-faucet) or by purchasing ICP and following our [Network Deployment](./quickstart/network-quickstart) guide.
 
 ## Set up your project
 

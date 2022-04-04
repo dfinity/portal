@@ -6,7 +6,7 @@ In the [Quick start](../../quickstart/quickstart-intro), you had your first look
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the {sdk-short-name} package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
 -   You have stopped any local canister execution environment processes
 

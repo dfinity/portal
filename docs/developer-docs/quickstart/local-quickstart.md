@@ -1,16 +1,16 @@
 # Local development
 
-This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
+This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
 To get started, let’s build and deploy a simple Hello canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 
 ## Before you begin
 
-Before you download and install this release of the {sdk-short-name}, verify the following:
+Before you download and install this release of the SDK, verify the following:
 
 -   You have an internet connection and access to a shell terminal on your local **macOS** or **Linux** computer.
 
-    Currently, the {sdk-short-name} only runs on computers with a macOS or Linux operating system.
+    Currently, the SDK only runs on computers with a macOS or Linux operating system.
 
 -   You have `node.js` installed if you want to include the default template files for front-end development in your project.
 
@@ -26,7 +26,7 @@ To download and install:
 
     For example, open Applications, Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
 
-2.  Download and install the {sdk-short-name} package by running the following command:
+2.  Download and install the SDK package by running the following command:
 
         sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 

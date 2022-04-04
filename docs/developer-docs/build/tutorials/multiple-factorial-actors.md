@@ -2,7 +2,7 @@
 
 February 2020 (Alpha) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY
 
-In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a {proglang} file and a single actor is always compiled to a single canister. In addition, you cannot yet call functions defined in an actor in one canister from an actor defined in another canister or define an actor class to support multiple actor instances in your {proglang} programs. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
+In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister. In addition, you cannot yet call functions defined in an actor in one canister from an actor defined in another canister or define an actor class to support multiple actor instances in your Motoko programs. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
 
 For this tutorial, you are going to create separate program files for three actors in the same project. This project defines the following unrelated actors:
 

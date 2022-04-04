@@ -68,7 +68,7 @@ To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
 
 ## Add an account
 
-Logging on using an Internet Identity creates a Main account for you in the Internet Computer ledger. If your ICP utility tokens are associated with your developer identity; that is, the identity created by the {sdk-short-name} `dfx` command-line interface. Your Main account displays 0.00 for your ICP utility token balance. For example:
+Logging on using an Internet Identity creates a Main account for you in the Internet Computer ledger. If your ICP utility tokens are associated with your developer identity; that is, the identity created by the SDK `dfx` command-line interface. Your Main account displays 0.00 for your ICP utility token balance. For example:
 
 ![nns app main](../_attachments/nns-app-main.png)
 
@@ -386,7 +386,7 @@ To manually vote on proposals:
 
 ## Submit a proposal
 
-Currently, you can only submit proposals to the network nervous system by using the {sdk-short-name} command-line interface (`dfx`) using calls to the `governance` canister.
+Currently, you can only submit proposals to the network nervous system by using the SDK command-line interface (`dfx`) using calls to the `governance` canister.
 
 A separate command-line tool (`icx-nns`) for working with the `governance` canister is in development and this functionality will also be available in the [Network Nervous System (NNS)](https://nns.ic0.app) dapp soon.
 
