@@ -12,7 +12,7 @@ This section provides a preliminary look at some sample code for applications an
 
 ## C
 
-For examples of projects written in the C programming language for the {IC}, see [C++ sample projects](https://github.com/dfinity/examples/tree/master/c).
+For examples of projects written in the C programming language for the IC, see [C++ sample projects](https://github.com/dfinity/examples/tree/master/c).
 
 -   [Adventure game](https://github.com/dfinity/examples/tree/master/c/adventure)
 
@@ -22,7 +22,7 @@ For examples of projects written in the C programming language for the {IC}, see
 
 ## Motoko
 
-For projects that use the {proglang} programming language, see [Motoko sample projects](https://github.com/dfinity/examples/tree/master/motoko).
+For projects that use the Motoko programming language, see [Motoko sample projects](https://github.com/dfinity/examples/tree/master/motoko).
 
 -   [Calculator - simple functions](https://github.com/dfinity/examples/tree/master/motoko/calc)
 
@@ -58,7 +58,7 @@ This section includes sample code from projects that are not currently available
 
 ### Hex encoding and decoding
 
-The `mo-hex` project implements hexadecimal encoding and decoding routines for the {proglang} programming language.
+The `mo-hex` project implements hexadecimal encoding and decoding routines for the Motoko programming language.
 
 #### Source code
 
@@ -74,7 +74,7 @@ This program performs polynomial long division for a Galois field GF(256) elemen
 
 #### Source code
 
-In addition to standard libraries, this project uses two main {proglang} source code files.
+In addition to standard libraries, this project uses two main Motoko source code files.
 
 -   The [Galois.mo](#galois) file contains the core programming logic.
 

@@ -12,7 +12,7 @@ dfx [option] [subcommand] [flag]
 
 Depending on the subcommand, the options and flags you specify might apply to the parent command or to a specific subcommand. For example, the flags for enabling or suppressing verbose logging are specified for the `dfx` parent command, then applied to any subcommands.
 
-When you have the {sdk-short-name} installed, you can use the following commands to specify the operation you want to perform. For reference information and examples that illustrate using these commands, select an appropriate command.
+When you have the SDK installed, you can use the following commands to specify the operation you want to perform. For reference information and examples that illustrate using these commands, select an appropriate command.
 
 -   [dfx](dfx-parent)
 

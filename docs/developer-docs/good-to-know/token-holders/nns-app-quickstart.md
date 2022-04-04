@@ -54,13 +54,13 @@ To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
 
     If you haven’t previously registered, you can click **Register with Internet Identity** to register.
 
-    <div class="note">
+    :::note
 
     We strongly recommend you add multiple devices and authentication methods to your Internet Identity. For example, register multiple physical devices like your computer and phone with a security key and using the authentication options that those devices—and browsers running on them—support.
 
-    </div>
+    :::
 
-    For more information about creating an Internet Identity, see [How to use Internet Identity](../ic-identity-guide/auth-how-to.xml).
+    For more information about creating an Internet Identity, see [How to use Internet Identity](../ic-identity-guide/auth-how-to).
 
     After you have registered, you can click **Login** to authenticate using your anchor and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -68,7 +68,7 @@ To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
 
 ## Add an account
 
-Logging on using an Internet Identity creates a Main account for you in the Internet Computer ledger. If your ICP utility tokens are associated with your developer identity; that is, the identity created by the {sdk-short-name} `dfx` command-line interface. Your Main account displays 0.00 for your ICP utility token balance. For example:
+Logging on using an Internet Identity creates a Main account for you in the Internet Computer ledger. If your ICP utility tokens are associated with your developer identity; that is, the identity created by the SDK `dfx` command-line interface. Your Main account displays 0.00 for your ICP utility token balance. For example:
 
 ![nns app main](../_attachments/nns-app-main.png)
 
@@ -133,7 +133,7 @@ To transfer ICP utility tokens controlled by your developer identity:
 5.  Transfer ICP utility tokens to your Main account or a linked subaccount you create by running a command similar to the following:
 
     ``` bash
-    dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --memo <numeric-memo>
+    dfx ledger --networkictransfer <destination-account-id> --icp <ICP-amount> --memo <numeric-memo>
     ```
 
     For example, assume you have the following accounts:
@@ -142,11 +142,11 @@ To transfer ICP utility tokens controlled by your developer identity:
 
     If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
 
-        dfx ledger --network ic transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
+        dfx ledger --networkictransfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
 
     If you also want to transfer one ICP utility token to the `pubs` account, you can run the following command:
 
-        dfx ledger --network ic transfer 183a04888eb20e73766f082bae01587830bd3cd912544f63fda515e9d77a96dc --icp 1 --memo 12346
+        dfx ledger --networkictransfer 183a04888eb20e73766f082bae01587830bd3cd912544f63fda515e9d77a96dc --icp 1 --memo 12346
 
     This example illustrates how to transfer ICP utility tokens to using a whole number with the `--icp` command-line option.
 
@@ -158,7 +158,7 @@ To transfer ICP utility tokens controlled by your developer identity:
 
     If you transfer the ICP utility tokens to an account in the [Network Nervous System dapp](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../developers-guide/cli-reference/dfx-ledger.xml).
+    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../developers-guide/cli-reference/dfx-ledger).
 
 ## Stake ICP utility tokens in a neuron
 
@@ -386,7 +386,7 @@ To manually vote on proposals:
 
 ## Submit a proposal
 
-Currently, you can only submit proposals to the network nervous system by using the {sdk-short-name} command-line interface (`dfx`) using calls to the `governance` canister.
+Currently, you can only submit proposals to the network nervous system by using the SDK command-line interface (`dfx`) using calls to the `governance` canister.
 
 A separate command-line tool (`icx-nns`) for working with the `governance` canister is in development and this functionality will also be available in the [Network Nervous System (NNS)](https://nns.ic0.app) dapp soon.
 
@@ -394,7 +394,7 @@ If you want to start submitting proposals right away, however, you can access a 
 
 ## Deploy a canister with cycles
 
-You must have **cycles** available to create and manage [canisters](../developers-guide/glossary.xml#g-canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
+You must have **cycles** available to create and manage [canisters](../developers-guide/glossary#g-canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
 
 To create a new canister:
 

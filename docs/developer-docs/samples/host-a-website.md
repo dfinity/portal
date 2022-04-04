@@ -1,6 +1,6 @@
 # Hosting a Static Website on the Internet Computer
 
-Before you begin, make sure you are set up with our {sdk-short-name} (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](cycles-faucet.xml) or by purchasing ICP and following our [Network Deployment](./quickstart/network-quickstart.xml) guide.
+Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](cycles-faucet) or by purchasing ICP and following our [Network Deployment](./quickstart/network-quickstart) guide.
 
 ## Set up your project
 
@@ -32,11 +32,11 @@ Let’s start with index.html. Paste the following code into your file:
        <meta charset="UTF-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Static IC Website</title>
+       <title>StaticICWebsite</title>
        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-       <h1>My First IC Website</h1>
+       <h1>My FirstICWebsite</h1>
        <p>Styles are loaded from a stylesheet</p>
        <p id="dynamic-content"></p>
        <a href="page-2.html">Page 2</a>
@@ -85,7 +85,7 @@ And then add some styles to style.css.
 
 ## Configure DFX to deploy
 
-To host and run this website live on the {platform}, you will need to configure DFX to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
+To host and run this website live on the ic, you will need to configure DFX to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
 
 **dfx.json**
 
@@ -135,7 +135,7 @@ You should see some output in your console, and a success message looking someth
 
 Find your new canister’s ID by running
 
-    dfx canister --network ic id website
+    dfx canister --networkicid website
 
 Take that canister ID and visit https://&lt;canister-id&gt;.ic0.app, inserting your own canister ID as the subdomain in the URL.
 

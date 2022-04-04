@@ -11,7 +11,7 @@ Canister smart contracts, sometimes also simply called canisters, are an extende
 <!-- -->
 
 principal  
-A principal is an entity that can be authenticated by the Internet Computer blockchain. Principals that interact with the Internet Computer blockchain often do so via an identity. For example, the first time you use the {sdk-short-name}, the `dfx` command-line tool creates a `default` developer identity for you with a public/private key pair in a PEM file. This developer identity determines a **principal**. There is a textual representation of the principal which is often referred to as your **principal identifier**. Note that the developer identity can also be used to derive an **account identifier**—similar to a Bitcoin or Ethereum address—to hold ICP tokens on the identity’s behalf in the ledger canister.
+A principal is an entity that can be authenticated by the Internet Computer blockchain. Principals that interact with the Internet Computer blockchain often do so via an identity. For example, the first time you use the SDK, the `dfx` command-line tool creates a `default` developer identity for you with a public/private key pair in a PEM file. This developer identity determines a **principal**. There is a textual representation of the principal which is often referred to as your **principal identifier**. Note that the developer identity can also be used to derive an **account identifier**—similar to a Bitcoin or Ethereum address—to hold ICP tokens on the identity’s behalf in the ledger canister.
 
 <!-- -->
 

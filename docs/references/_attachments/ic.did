@@ -16,7 +16,7 @@ type definite_canister_settings = record {
   freezing_threshold : nat;
 };
 
-service ic : {
+serviceic: {
   create_canister : (record {
     settings : opt canister_settings
   }) -> (record {canister_id : canister_id});

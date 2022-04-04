@@ -1,4 +1,4 @@
-# IC Orientation
+#ICOrientation
 
 ## SDK and Development Tools
 

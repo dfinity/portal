@@ -18,7 +18,7 @@ The Internet Computer Protocol (ICP) implements management of its utility token 
 
 ### Accounts
 
-An account belongs to and is controlled by the account owner who must be an IC principal. No account can be owned by two or more IC principals (no "joint accounts").
+An account belongs to and is controlled by the account owner who must be anICprincipal. No account can be owned by two or moreICprincipals (no "joint accounts").
 
 An account owner may control more than one account. In this case, each account corresponds to a pair (account_owner, sub_account). The sub-account is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
@@ -120,11 +120,11 @@ To set up a Rosetta node (which connects to a testnet):
        --canister 2xh5f-viaaa-aaaab-aae3q-cai
     ```
 
-    <div class="note">
+    :::note
 
     The first time you run the command it might take some time for the node to catch up to the current link of the chain. When the node is caught up, you should see output similar to the following:
 
-    </div>
+    :::
 
         You are all caught up to block height 109
 

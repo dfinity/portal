@@ -4,7 +4,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
 ## Deploy your Ledger
 
-1.  Ensure you have the ledger image, the private ledger interface, and the public ledger interface. If you do not have them, follow the steps in [Setup Ledger locally](ledger-local-setup.xml).
+1.  Ensure you have the ledger image, the private ledger interface, and the public ledger interface. If you do not have them, follow the steps in [Setup Ledger locally](ledger-local-setup).
 
 2.  Ensure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on <https://smartcontracts.org/> to install it.
 
@@ -54,13 +54,13 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     where
 
-    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. use ic for the mainnet)
+    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. useicfor the mainnet)
 
     -   the `TOKEN_NAME` is the human-readable name of your new token
 
     -   the `TOKEN_SYMBOL` is the symbol of your new token
 
-    -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](ledger.xml))
+    -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](ledger))
 
     -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/default-wallet.html#_controller_and_custodian_roles) of the archive canisters
 
@@ -138,4 +138,4 @@ Let us now connect the rosetta-api to an existing Ledger canister.
 
     The `<x>` above stands for the last block index in the ledger blockchain.
 
-`rosetta-api` is connected to your Ledger instance and ready to be used. Read [Transfers tokens](transfers.xml) article to learn about Rosetta token transfer operations.
+`rosetta-api` is connected to your Ledger instance and ready to be used. Read [Transfers tokens](transfers) article to learn about Rosetta token transfer operations.

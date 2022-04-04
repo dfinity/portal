@@ -1,4 +1,4 @@
-# IC Interface Specification
+#ICInterface Specification
 
 ## Introduction
 
@@ -40,17 +40,17 @@ The user can also use the HTTPS interface to issue read-only queries, which are 
     actor User
     participant "Internet Computer" as IC
     participant "Canister 1" as Can1
-    Developer -> IC : /submit create canister
+    Developer ->IC: /submit create canister
     create Can1
-    IC -> Can1 : create
-    Developer <-- IC : canister-id=1
-    Developer -> IC : /submit install module
-    IC -> Can1 : initialize
+   IC-> Can1 : create
+    Developer <--IC: canister-id=1
+    Developer ->IC: /submit install module
+   IC-> Can1 : initialize
     |||
-    User -> IC : /submit call “hello”
-    IC -> Can1 : hello
+    User ->IC: /submit call “hello”
+   IC-> Can1 : hello
     return "Hello world!"
-    User <-- IC : "Hello World!"
+    User <--IC: "Hello World!"
 
 Sections “[HTTPS Interface](#http-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
 
@@ -196,7 +196,7 @@ If an empty canister receives a response, that response is dropped, as if the ca
 
 #### Canister cycles
 
-The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle\_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2^128-1, then the balance will be capped at 2^128-1 and any additional cycles will be lost.
+the IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle\_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2^128-1, then the balance will be capped at 2^128-1 and any additional cycles will be lost.
 
 When the cycle balance of a canister falls to zero, the canister is *deallocated*. This has the same effect as
 
@@ -228,7 +228,7 @@ NOTE: This status is orthogonal to the question of whether a canister is empty o
 
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
 
-The IC supports multiple signature schemes, with details given in the following subsections. For each scheme, we specify the data encoded in the public key (which is always DER-encoded, and indicates the scheme to use) as well as the form of the signatures (which are opaque blobs for the purposes of the rest of this specification).
+the IC supports multiple signature schemes, with details given in the following subsections. For each scheme, we specify the data encoded in the public key (which is always DER-encoded, and indicates the scheme to use) as well as the form of the signatures (which are opaque blobs for the purposes of the rest of this specification).
 
 In all cases, the signed *payload* is the concatenation of the domain separator and the message. All uses of signatures in this specification indicate a domain separator, to uniquely identify the purpose of the signature. The domain separators are prefix-free by construction, as their first byte indicates their length.
 
@@ -288,7 +288,7 @@ The signature is checked by verifying that the `challenge` field contains the [b
 
 #### Canister signatures
 
-The IC also supports a scheme where a canister can sign a payload by declaring a special “certified variable”.
+the IC also supports a scheme where a canister can sign a payload by declaring a special “certified variable”.
 
 This section makes forward references to other concepts in this document, in particular the section [Certification](#certification).
 
@@ -429,13 +429,13 @@ Users interact with the Internet Computer by calling canisters. By the very natu
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
-3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
+3.  the IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [the IC management canister](#ic-management-canister) apply.
 
 4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
 
 5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
 
-6.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+6.  the IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
 
 7.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
 
@@ -500,7 +500,7 @@ The HTTP response to this request has an empty body and HTTP status 202, or a HT
 
 This request type can *also* be used to call a query method. A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response.
 
-The functionality exposed via the [The IC management canister](#ic-management-canister) can be used this way.
+The functionality exposed via the [the IC management canister](#ic-management-canister) can be used this way.
 
 ### Request: Read state
 
@@ -596,7 +596,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. This applies to synchronous and asynchronous requests alike (and could have been called `request_expiry`).
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: the IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. the IC may refuse to accept requests with an ingress expiry date too far in the future. This applies to synchronous and asynchronous requests alike (and could have been called `request_expiry`).
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
@@ -725,7 +725,7 @@ Additionally, the Internet Computer provides an API endpoint to obtain various s
 
     /api/v2/status
 
-For this endpoint, the user performs a GET request, and receives a CBOR value with the following fields. The IC may include additional implementation-specific fields.
+For this endpoint, the user performs a GET request, and receives a CBOR value with the following fields. the IC may include additional implementation-specific fields.
 
 -   `ic_api_version` (string, mandatory): Identifies the interface version supported, i.e. the version of the present document that the internet computer aims to support, e.g. `0.8.1`. The implementation may also return `unversioned` to indicate that it does *not* comply to a particular version, e.g. in between releases.
 
@@ -850,7 +850,7 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 
 -   It may not have other custom sections the names of which start with the prefix `icp:` besides the \`icp:public \` and \`icp:private \`.
 
--   The IC may reject WebAssembly modules that + declare more than 6000 functions, or + declare more than 200 globals, or + declare more than 16 exported custom sections (the custom section names with prefix `icp:`), or + the total size of the exported custom sections exceeds 1MiB
+-   the IC may reject WebAssembly modules that + declare more than 6000 functions, or + declare more than 200 globals, or + declare more than 16 exported custom sections (the custom section names with prefix `icp:`), or + the total size of the exported custom sections exceeds 1MiB
 
 ### Interpretation of numbers
 
@@ -882,7 +882,7 @@ If the execution of any of these entry points traps for any reason, then all cha
 
 If `canister_init` is present, then this is the first exported WebAssembly function invoked by the IC. The argument that was passed along with the canister initialization call (see [IC method ](#ic-install_code)) is available to the canister via `ic0.msg_arg_data_size/copy`.
 
-The IC assumes the canister to be fully instantiated if the `canister_init` method entry point returns. If the `canister_init` method entry point traps, then canister installation has failed, and the canister is reverted to its previous state (i.e. empty with `install`, or whatever it was for a `reinstall`).
+the IC assumes the canister to be fully instantiated if the `canister_init` method entry point returns. If the `canister_init` method entry point traps, then canister installation has failed, and the canister is reverted to its previous state (i.e. empty with `install`, or whatever it was for a `reinstall`).
 
 #### Canister upgrades
 
@@ -1140,7 +1140,7 @@ When handling an update call (or a callback), a canister can do further calls to
 
     Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
 
-    The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
+    the IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
 
     The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
 
@@ -1360,7 +1360,7 @@ The canister can query the IC for the current time.
 
 `ic0.time : () -> i64`
 
-The time is given as nanoseconds since 1970-01-01. The IC guarantees that
+The time is given as nanoseconds since 1970-01-01. the IC guarantees that
 
 -   the time, as observed by the canister, is monotonically increasing, even across canister upgrades.
 
@@ -1445,13 +1445,13 @@ The Internet Computer aims to make the most of the WebAssembly platform, and emb
 
 A canister may only use the old *or* the new interface; the IC detects which interface the canister intends to use based on the names and types of its function imports and exports.
 
-## The IC management canister
+## the IC management canister
 
 The interfaces above provide the fundamental ability for external users and canisters to contact other canisters. But the Internet Computer provides additional functionality, such as canister and user management. This functionality is exposed to external users and canisters via the *IC management canister*.
 
 The *IC management canister* is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.).
 
-The IC management canister address is `aaaaa-aa` (i.e. the empty blob).
+the IC management canister address is `aaaaa-aa` (i.e. the empty blob).
 
 It is possible to use the management canister via external requests (a.k.a. ingress messages). The cost of processing that request is charged to the canister that is being managed. Most methods only permit the controllers to call them. Calls to `raw_rand` and `deposit_cycles` are never accepted as ingress messages.
 
@@ -1463,7 +1463,7 @@ The following interface description, in [Candid syntax](https://github.com/dfini
 
 The binary encoding of arguments and results are as per Candid specification.
 
-### IC method `create_canister`
+###ICmethod `create_canister`
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
@@ -1499,13 +1499,13 @@ Until code is installed, the canister is `Empty` and behaves like a canister tha
 
     Default value: 2592000 (approximately 30 days).
 
-### IC method `update_settings`
+###ICmethod `update_settings`
 
-Only *controllers* of the canister can update settings. See [IC method ](#ic-create_canister) for a description of settings.
+Only *controllers* of the canister can update settings. See [IC method](#ic-create_canister) for a description of settings.
 
 Not including a setting in the `settings` record means not changing that field. The defaults described above are only relevant during canister creation.
 
-### IC method `install_code`
+###ICmethod `install_code`
 
 This method installs code into a canister.
 
@@ -1529,7 +1529,7 @@ The `wasm_module` field specifies the canister module to be installed. The syste
 
 -   If the `wasm_module` starts with byte sequence `[0x1f, 0x8b, 0x08]`, the system decompresses the contents of `wasm_module` as a gzip stream according to [RFC-1952](https://datatracker.ietf.org/doc/html/rfc1952.html) and then parses the output as a WebAssembly binary.
 
-### IC method `uninstall_code`
+###ICmethod `uninstall_code`
 
 This method removes a canister’s code and state, making the canister *empty* again.
 
@@ -1541,7 +1541,7 @@ The canister is now [empty](#canister-lifecycle). In particular, any incoming or
 
 A canister after *uninstalling* retains its *cycles* balance, *controllers*, status, and allocations.
 
-### IC method `canister_status`
+###ICmethod `canister_status`
 
 Indicates various information about the canister. It contains:
 
@@ -1557,13 +1557,13 @@ Indicates various information about the canister. It contains:
 
 Only the controllers of the canister can request its status.
 
-### IC method `stop_canister`
+###ICmethod `stop_canister`
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
-Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
+Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). the IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
 
-### IC method `start_canister`
+###ICmethod `start_canister`
 
 A canister may be started by its controllers.
 
@@ -1571,23 +1571,23 @@ If the canister status was `stopped` or `stopping` then the canister status is s
 
 If the canister was already `running` then the status stays unchanged.
 
-### IC method `delete_canister`
+###ICmethod `delete_canister`
 
 This method deletes a canister from the IC.
 
 Only controllers of the canister can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
 
-### IC method `deposit_cycles`
+###ICmethod `deposit_cycles`
 
 This method deposits the cycles included in this call into the specified canister.
 
 There is no restriction on who can invoke this method.
 
-### IC method `raw_rand`
+###ICmethod `raw_rand`
 
 This method takes no input and returns 32 pseudo-random bytes to the caller. The return value is unknown to any part of the IC at time of the submission of this call. A new return value is generated for each call to this method.
 
-### IC method `http_request`
+###ICmethod `http_request`
 
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
@@ -1599,7 +1599,7 @@ For this reason, the calling canister can supply a transformation function, whic
 
 Currently, only the `GET` method is supported for HTTP requests.
 
-For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
+For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). the IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
 The maximal size of a request URL is 2048 bytes.
 
@@ -1625,7 +1625,7 @@ The returned response (and the response provided to the `transform` function, if
 
 The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller’s identity is the principal of the management canister.
 
-### IC method `provisional_create_canister_with_cycles`
+###ICmethod `provisional_create_canister_with_cycles`
 
 As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister’s balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`).
 
@@ -1633,7 +1633,7 @@ Cycles added to this call via `ic0.call_cycles_add128` are returned to the calle
 
 This method is only available in local development instances.
 
-### IC method `provisional_top_up_canister`
+###ICmethod `provisional_top_up_canister`
 
 As a provisional method on development instances, the `provisional_top_up_canister` method is provided. It adds `amount` cycles to the balance of canister identified by `amount`.
 
@@ -1669,7 +1669,7 @@ A certificate consists of
 
 -   an optional *delegation* that links that public key to *root public key*.
 
-The IC will certify states by issuing certificates where the tree is a partial state tree. The state tree can be pruned by replacing subtrees with their root hashes (yielding a new and potentially smaller but still valid certificate) to only include paths pertaining to relevant data but still preserving enough information to recover the *tree root hash*.
+the IC will certify states by issuing certificates where the tree is a partial state tree. The state tree can be pruned by replacing subtrees with their root hashes (yielding a new and potentially smaller but still valid certificate) to only include paths pertaining to relevant data but still preserving enough information to recover the *tree root hash*.
 
 More formally, a certificate is described by the following data structure:
 
@@ -1758,7 +1758,7 @@ The following algorithm looks up a `path` in a certificate, and returns either
     find_label(l, [])                                                = Absent
     find_label(l, _)                                                 = Unknown
 
-The IC will only produce well-formed state trees, and the above algorithm assumes well-formed trees. These have the property that labeled subtrees appear in strictly increasing order of labels, and are not mixed with leaves. More formally:
+the IC will only produce well-formed state trees, and the above algorithm assumes well-formed trees. These have the property that labeled subtrees appear in strictly increasing order of labels, and are not mixed with leaves. More formally:
 
     well_formed(tree) =
       (tree = Leaf _) ∨ (well_formed_forest(flatten_forks(tree)))
@@ -2224,7 +2224,7 @@ Based on this abstract notion of the state, we can describe the behavior of the 
 
 The state transitions are not complete with regard to error handling. For example, the behavior of sending a request to a non-existent canister is not specified here. For now, we trust implementors to make sensible decisions there.
 
-We model the [The IC management canister](#ic-management-canister) with one state transition per method. There, we assume a function
+We model the [the IC management canister](#ic-management-canister) with one state transition per method. There, we assume a function
 
     candid : Value -> Blob
 
@@ -2312,7 +2312,7 @@ This is not instantaneous (the IC takes some time to agree it accepts the reques
 
 #### Request rejection
 
-The IC may reject a received message for internal reasons (high load, low resources) or expiry. The precise conditions are not specified here, but the reject code must indicate this to be a system error.
+the IC may reject a received message for internal reasons (high load, low resources) or expiry. The precise conditions are not specified here, but the reject code must indicate this to be a system error.
 
 Conditions  
 
@@ -2334,7 +2334,7 @@ A first step in processing a canister update call is to create a `CallMessage` i
 
 The `request` field of the `FromUser` origin establishes the connection to the API message. One could use the corresponding `hash_of_map` for this purpose, but this formulation is more abstract.
 
-The IC does not make any guarantees about the order of incoming messages.
+the IC does not make any guarantees about the order of incoming messages.
 
 Conditions  
 
@@ -2454,7 +2454,7 @@ This “bookkeeping transition” must be immediately followed by the correspond
             }
             balances[C] = balances[C] - MAX_CYCLES_PER_MESSAGE
 
-The IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and — if the function returns a response — record this response. The new call and response messages are enqueued at the end.
+the IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and — if the function returns a response — record this response. The new call and response messages are enqueued at the end.
 
 Note that new messages are executed only if the canister is Running and is not frozen.
 
@@ -2653,9 +2653,9 @@ State after
     S with
         call_contexts[Ctxt_id] = (deleted)
 
-#### IC Management Canister: Canister creation
+####ICManagement Canister: Canister creation
 
-The IC chooses an appropriate canister id and instantiates a new (empty) canister identified by this id. The *controllers* are set such that the sender of this request is the only controller, unless the `settings` say otherwise. All cycles on this call are now the canister’s initial cycles.
+the IC chooses an appropriate canister id and instantiates a new (empty) canister identified by this id. The *controllers* are set such that the sender of this request is the only controller, unless the `settings` say otherwise. All cycles on this call are now the canister’s initial cycles.
 
 This is also when the System Time of the new canister starts ticking.
 
@@ -2708,7 +2708,7 @@ To avoid clashes with potential user ids or is derived from users or canisters, 
 
 -   `is_system_assigned p = false` for `|p| > 29`.
 
-#### IC Management Canister: Changing settings
+####ICManagement Canister: Changing settings
 
 Only the controllers of the given canister can update the canister settings.
 
@@ -2741,7 +2741,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Canister status
+####ICManagement Canister: Canister status
 
 The controllers of a canister can obtain information about the canister.
 
@@ -2779,7 +2779,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Code installation
+####ICManagement Canister: Code installation
 
 Only the controllers of the given canister can install code. This transition installs new code over a canister. This involves invoking the `canister_init` method (see [Canister initialization](#system-api-init)), which must succeed.
 
@@ -2823,7 +2823,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Code upgrade
+####ICManagement Canister: Code upgrade
 
 Only the controllers of the given canister can install new code. This changes the code of an *existing* canister, preserving the state in the stable memory. This involves invoking the `canister_pre_upgrade` method on the old and `canister_post_upgrade` method on the new canister, which must succeed and must not invoke other methods.
 
@@ -2870,7 +2870,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Code uninstallation
+####ICManagement Canister: Code uninstallation
 
 Upon uninstallation, the canister is reverted to an empty canister, and all outstanding call contexts are rejected and marked as deleted.
 
@@ -2915,7 +2915,7 @@ State after
               call_contexts[Ctxt_id].needs_to_respond := false
               call_contexts[Ctxt_id].available_cycles := 0
 
-#### IC Management Canister: Stopping a canister
+####ICManagement Canister: Stopping a canister
 
 The controllers of a canister can stop a canister. Stopping a canister goes through two steps. First, the status of the canister is set to `Stopping`; as explained above, a stopping canister rejects all incoming requests and continues processing outstanding responses. When a stopping canister has no more open call contexts, its status is changed to `Stopped` and a response is generated. Note that when processing responses, a stopping canister can make calls to other canisters and thus create new call contexts. In addition, a canister which is stopped, or stopping will accept (and respond) to further `stop_canister` requests.
 
@@ -3018,7 +3018,7 @@ State after
               response = Accepted (candid())
             }
 
-#### IC Management Canister: Starting a canister
+####ICManagement Canister: Starting a canister
 
 The controllers of a canister can start a `stopped` canister. If the canister is already running, the command has no effect on the canister.
 
@@ -3081,7 +3081,7 @@ State after
             | (O, C) ∈ Origins
             ]
 
-#### IC Management Canister: Canister deletion
+####ICManagement Canister: Canister deletion
 
 Conditions  
 
@@ -3112,7 +3112,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Depositing cycles
+####ICManagement Canister: Depositing cycles
 
 Conditions  
 
@@ -3139,7 +3139,7 @@ State after
             refunded_cycles = 0
           }
 
-#### IC Management Canister: Random numbers
+####ICManagement Canister: Random numbers
 
 The management canister can produce pseudo-random bytes. It always returns a 32-byte `blob`:
 
@@ -3168,7 +3168,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-#### IC Management Canister: Canister creation with cycles
+####ICManagement Canister: Canister creation with cycles
 
 This is a variant of `create_canister`, which sets the initial cycle balance based on the `amount` argument.
 
@@ -3202,7 +3202,7 @@ State after
           }
         canister_status[CanisterId] = Running
 
-#### IC Management Canister: Top up canister
+####ICManagement Canister: Top up canister
 
 Conditions  
 
@@ -3304,7 +3304,7 @@ NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
 #### Request clean up
 
-The IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
+the IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
 
 Conditions  
 

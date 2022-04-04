@@ -1,6 +1,6 @@
 # dfx
 
-The DFINITY command-line execution environment (`dfx`) is the primary tool for creating, deploying, and managing the dapps you develop for the {platform}.
+The DFINITY command-line execution environment (`dfx`) is the primary tool for creating, deploying, and managing the dapps you develop for the IC.
 
 Use the `dfx` parent command with flags and subcommands to specify the operations you want to perform with or without optional arguments.
 
@@ -46,10 +46,10 @@ For reference information and examples, select an appropriate subcommand.
 | [`config`](dfx-config)     | Sets or changes configuration options for your current project.                                                                                                                        |
 | [`deploy`](dfx-deploy)     | Deploys all or a specific canister from the code in your project. By default, all canisters are deployed.                                                                              |
 | [`help`](dfx-help)         | Displays usage information for a specified subcommand.                                                                                                                                 |
-| [`identity`](dfx-identity) | Enables you to create and manage the identities used to communicate with the {platform}.                                                                                               |
+| [`identity`](dfx-identity) | Enables you to create and manage the identities used to communicate with the ic.                                                                                               |
 | [`ledger`](dfx-ledger)     | Enables you to interact with accounts in the ledger canister running on the Internet Computer.                                                                                         |
 | [`new`](dfx-new)           | Creates a new project.                                                                                                                                                                 |
-| [`ping`](dfx-ping)         | Sends a response request to the {platform} or the local canister execution environment to determine network connectivity. If the connection is successful, a status reply is returned. |
+| [`ping`](dfx-ping)         | Sends a response request to the IC or the local canister execution environment to determine network connectivity. If the connection is successful, a status reply is returned. |
 | [`replica`](dfx-replica)   | Starts a local canister execution environment.                                                                                                                                         |
 | [`start`](dfx-start)       | Starts the local canister execution environment a web server for the current project.                                                                                                  |
 | [`stop`](dfx-stop)         | Stops the local canister execution environment.                                                                                                                                        |

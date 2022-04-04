@@ -1,6 +1,6 @@
 # Environment variables
 
-You can configure certain properties for your {sdk-short-name} execution environment using environment variables.
+You can configure certain properties for your SDK execution environment using environment variables.
 
 This section lists the environment variables that are currently supported with examples of how to use them. In most cases, you can set environment variables for a session by executing an command in the terminal or by adding a line similar to the following to your `.profile` file:
 
@@ -32,10 +32,10 @@ By default, the `.cache` and `.config` directories are located in the home direc
 
 Use the `DFX_INSTALLATION_ROOT` environment variable to specify a different location for the `dfx` binary if you are not using the default location for your operating system.
 
-The `.cache/dfinity/uninstall.sh` script uses this environment variable to identify the root directory for your {sdk-short-name} installation.
+The `.cache/dfinity/uninstall.sh` script uses this environment variable to identify the root directory for your SDK installation.
 
 ## DFX_VERSION
 
-Use the `DFX_VERSION` environment variable to identify a specific version of the {sdk-short-name} that you want to install.
+Use the `DFX_VERSION` environment variable to identify a specific version of the SDK that you want to install.
 
     DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
