@@ -360,7 +360,7 @@ Since canisters interact with the system API, it is harder to test the code beca
 
 #### Security Concern
 
-It should be possible to verify that a canister does what it claims to do. The IC provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
+It should be possible to verify that a canister does what it claims to do. the IC provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
 
 #### Recommendation
 

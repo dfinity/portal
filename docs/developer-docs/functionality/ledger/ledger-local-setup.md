@@ -12,11 +12,11 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     curl -o ledger.public.did https://raw.githubusercontent.com/dfinity/ic/${IC_VERSION}/rs/rosetta-api/ledger_canister/ledger.did
     ```
 
-    <div class="note">
+    :::note
 
     The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository.
 
-    </div>
+    :::
 
 2.  Make sure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on <https://smartcontracts.org/> to install it.
 

@@ -1,20 +1,20 @@
 # Local development
 
-This *Quick Start* scenario assumes that you are installing the {sdk-short-name} for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
+This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
 To get started, let’s build and deploy a simple Hello canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 
 ## Before you begin
 
-Before you download and install this release of the {sdk-short-name}, verify the following:
+Before you download and install this release of the SDK, verify the following:
 
 -   You have an internet connection and access to a shell terminal on your local **macOS** or **Linux** computer.
 
-    Currently, the {sdk-short-name} only runs on computers with a macOS or Linux operating system.
+    Currently, the SDK only runs on computers with a macOS or Linux operating system.
 
 -   You have `node.js` installed if you want to include the default template files for front-end development in your project.
 
-This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell on your local computer or how to install `node.js`, see [Preliminary steps for newcomers](newcomers.xml). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#download-and-install).
+This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell on your local computer or how to install `node.js`, see [Preliminary steps for newcomers](newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#download-and-install).
 
 ## Download and install
 
@@ -26,7 +26,7 @@ To download and install:
 
     For example, open Applications, Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
 
-2.  Download and install the {sdk-short-name} package by running the following command:
+2.  Download and install the SDK package by running the following command:
 
         sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 
@@ -38,7 +38,7 @@ To download and install:
 
 ## Verify the SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on the {platform} will be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
 
 To verify the SDK is ready to use:
 
@@ -62,7 +62,7 @@ To verify the SDK is ready to use:
 
 Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/tutorials/explore-templates.xml) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/tutorials/explore-templates) tutorial.
 
 To create a new project for your first application:
 
@@ -114,7 +114,7 @@ To deploy your first dapp locally:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](../developers-guide/webpack-config.xml#troubleshoot-node).
+    For more information about this step, see [Ensuring node is available in a project](../developers-guide/webpack-config#troubleshoot-node).
 
 3.  Register, build, and deploy your first dapp by running the following command:
 
@@ -153,7 +153,7 @@ To deploy your first dapp locally:
 
     If you created a project with a different name, however, your canister names will match your project name instead of `hello` and `hello_assets`.
 
-    You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](../developers-guide/concepts/tokens-cycles.xml) to other canisters.
+    You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](../developers-guide/concepts/tokens-cycles) to other canisters.
 
     **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later, but for now, just note that these are created for you automatically.
 
@@ -219,12 +219,12 @@ This *Quick Start* touched on only a few key steps to introduce the basic workfl
 
 Here are some suggestions for where to go next:
 
--   [Tutorials](../developers-guide/tutorials-intro.xml) to explore building simple dapps using a local canister execution environment.
+-   [Tutorials](../developers-guide/tutorials-intro) to explore building simple dapps using a local canister execution environment.
 
--   [Convert ICP tokens to cycles](network-quickstart.xml#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
+-   [Convert ICP tokens to cycles](network-quickstart#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
--   [On-chain deployment](network-quickstart.xml) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
+-   [On-chain deployment](network-quickstart) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
--   [What is Candid?](../candid-guide/candid-concepts.xml) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../candid-guide/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../languages/motoko-at-a-glance.xml) to learn about the features and syntax for using Motoko.
+-   [Motoko at-a-glance](../languages/motoko-at-a-glance) to learn about the features and syntax for using Motoko.

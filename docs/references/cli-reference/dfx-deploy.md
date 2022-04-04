@@ -1,6 +1,6 @@
 # dfx deploy
 
-Use the `dfx deploy` command to register, build, and deploy a dapp on the local canister execution environment, on the {platform} or on a specified testnet. By default, all canisters defined in the project `dfx.json` configuration file are deployed.
+Use the `dfx deploy` command to register, build, and deploy a dapp on the local canister execution environment, on the IC or on a specified testnet. By default, all canisters defined in the project `dfx.json` configuration file are deployed.
 
 This command simplifies the developer workflow by enabling you to run one command instead of running the following commands as separate steps:
 
@@ -32,7 +32,7 @@ You can use the following options with the `dfx deploy` command.
 | Option                             | Description                                                                                                                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `--network <network>`              | Overrides the environment to connect to. By default, the local canister execution environment is used.                                                                      |
-| `--argument <argument>`            | Specifies an argument using Candid syntax to pass to the canister during deployment. Note that this option requires you to define an actor class in the {proglang} program. |
+| `--argument <argument>`            | Specifies an argument using Candid syntax to pass to the canister during deployment. Note that this option requires you to define an actor class in the Motoko program. |
 | `--with-cycles <number-of-cycles>` | Enables you to specify the initial number of cycles for a canister in a project.                                                                                            |
 
 ### Arguments
@@ -45,7 +45,7 @@ You can specify the following arguments for the `dfx deploy` command.
 
 ## Examples
 
-You can use the `dfx deploy` command to deploy all or specific canisters on the local canister execution environment, on the {platform} or on a specified testnet.
+You can use the `dfx deploy` command to deploy all or specific canisters on the local canister execution environment, on the IC or on a specified testnet.
 
 For example, to deploy the `hello` project on the hypothetical `ic-pubs` testnet configured in the `dfx.json` configuration file, you can run the following command:
 
@@ -59,7 +59,7 @@ To deploy a project on the local canister execution environment and pass a singl
 dfx deploy hello_actor_class --argument '("from DFINITY")'
 ```
 
-Note that currently you must use an actor class in your {proglang} dapp. In this example, the `dfx deploy` command specifies an argument to pass to the `hello_actor_class` canister. The main program for the `hello_actor_class` canister looks like this:
+Note that currently you must use an actor class in your Motoko dapp. In this example, the `dfx deploy` command specifies an argument to pass to the `hello_actor_class` canister. The main program for the `hello_actor_class` canister looks like this:
 
     actor class Greet(name: Text) {
         public query func greet() : async Text {

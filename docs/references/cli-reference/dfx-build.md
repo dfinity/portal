@@ -1,6 +1,6 @@
 # dfx build
 
-Use the `dfx build` command to compile your program into a WebAssembly module that can be deployed on the {IC}. You can use this command to compile all of the programs that are defined for a project in the project’s `dfx.json` configuration file or a specific canister.
+Use the `dfx build` command to compile your program into a WebAssembly module that can be deployed on the IC. You can use this command to compile all of the programs that are defined for a project in the project’s `dfx.json` configuration file or a specific canister.
 
 Note that you can only run this command from within the project directory structure. For example, if your project name is `hello_world`, your current working directory must be the `hello_world` top-level project directory or one of its subdirectories.
 
@@ -18,7 +18,7 @@ You can use the following optional flags with the `dfx build` command.
 
 | Flag              | Description                                                                                                                                                      |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--check`         | Builds canisters using a temporary, hard-coded, locally-defined canister identifier for testing that your program compiles without connecting to the {platform}. |
+| `--check`         | Builds canisters using a temporary, hard-coded, locally-defined canister identifier for testing that your program compiles without connecting to the ic. |
 | `-h`, `--help`    | Displays usage information.                                                                                                                                      |
 | `-V`, `--version` | Displays version information.                                                                                                                                    |
 
@@ -57,7 +57,7 @@ dfx build hello_world
 
 Building a specific canister is useful when you have multiple canisters defined in the dfx.json file, but want to test and debug operations for canisters independently.
 
-To test whether a canister compiles without connecting to the {platform} or the local canister execution environment, you would run the following command:
+To test whether a canister compiles without connecting to the IC or the local canister execution environment, you would run the following command:
 
 ``` bash
 dfx build --check

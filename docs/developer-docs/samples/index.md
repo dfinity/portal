@@ -10,7 +10,7 @@ The dapp equivalent of *hello world*, with a separate backend and frontend canis
 ## Static website
 
 This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to the IC.  
-[Technical docs](host-a-website.xml) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
+[Technical docs](host-a-website) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
 ## Basic DEX
 

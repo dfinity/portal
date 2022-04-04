@@ -5,12 +5,12 @@ To keep the instructions simple and focused on the task at hand, the
 first smart contract or dapp in 20 minutes or less.
 
 See [How to deploy hello world smart contract in 20
-minutes](how-to-deploy-hello-world-smart-contract.xml).
+minutes](how-to-deploy-hello-world-smart-contract).
 
 # More Sample Code
 
 Once you finish your first dap, you can see more robust examples (e.g.
-DAOs, NFTs, etc…) in [Sample code and dapps](../examples/index.xml).
+DAOs, NFTs, etc…) in [Sample code and dapps](../examples/index).
 
 # Want to learn more?
 
@@ -19,7 +19,7 @@ to view a demonstration of how to deploy before you try it for yourself,
 check out the following related resources:
 
 -   [How you can use ICP tokens
-    (overview)](../developers-guide/concepts/tokens-cycles.xml#using-tokens)
+    (overview)](../developers-guide/concepts/tokens-cycles#using-tokens)
 
 -   [Building on the Internet Computer: Fundamentals
     (video)](https://www.youtube.com/watch?v=jduSMHxdYD8)

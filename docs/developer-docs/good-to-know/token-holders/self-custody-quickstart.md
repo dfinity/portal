@@ -8,13 +8,13 @@ This *Self-Custody Quick Start* scenario assumes:
 
 -   You want to understand what you can do with your ICP tokens.
 
--   You want to know how to convert, transfer, or lock your ICP tokens using the {sdk-short-name} command-line interface DFX.
+-   You want to know how to convert, transfer, or lock your ICP tokens using the SDK command-line interface DFX.
 
-If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an exchange or receive a token grant before you can take custody. For an overview of how to get ICP tokens and custody options, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles.xml#get-cycles) and [Choosing self-custody for digital assets](custody-options-intro.xml).
+If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an exchange or receive a token grant before you can take custody. For an overview of how to get ICP tokens and custody options, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles#get-cycles) and [Choosing self-custody for digital assets](custody-options-intro).
 
 If you are using another application—such as the [Network Nervous System (NNS) application](https://nns.ic0.app) or the user interface provided by a hardware wallet—to interact with your ICP tokens, you should refer to the documentation for that application.
 
-This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens using the {sdk-short-name} command-line interface DFX.
+This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens using the SDK command-line interface DFX.
 
 ## How you can use ICP tokens
 
@@ -157,7 +157,7 @@ To convert ICP tokens to cycles:
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on the ic network.
+        Creating a wallet canister on the IC network.
         The wallet canister on the "ic" network for user "default" is "53zcu-tiaaa-aaaaa-qaaba-cai"
 
 ## Transfer ICP tokens to another account
@@ -181,12 +181,12 @@ To transfer ICP tokens to another account:
 3.  Transfer ICP tokens to another account by running a command similar to the following:
 
     ``` bash
-    dfx ledger --network ic transfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
+    dfx ledger --networkictransfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
     ```
 
     For example:
 
-        dfx ledger --network ic transfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
+        dfx ledger --networkictransfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
 
     This example illustrates how to transfer ICP tokens to the specified account using a whole number with the `--icp` command-line option.
 
@@ -198,13 +198,13 @@ To transfer ICP tokens to another account:
 
     If you transfer the ICP tokens to an account in the [Network Nervous System application](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../developers-guide/cli-reference/dfx-ledger.xml).
+    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../developers-guide/cli-reference/dfx-ledger).
 
 ## Lock ICP tokens by staking them in a neuron
 
 If you want to lock up ICP tokens to participate in governance and earn rewards, you must use the [Network Nervous System (NNS) application](https://nns.ic0.app) or `dfx canister call` commands.
 
-Because locking up ICP tokens to create staked neurons is a more complex process when using the {sdk-short-name} command-line interface than it is when using the [Network Nervous System (NNS) application](https://nns.ic0.app), the steps aren’t included in this guide.
+Because locking up ICP tokens to create staked neurons is a more complex process when using the SDK command-line interface than it is when using the [Network Nervous System (NNS) application](https://nns.ic0.app), the steps aren’t included in this guide.
 
 For information about the Network Nervous System, see [Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8).
 
