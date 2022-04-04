@@ -50,7 +50,7 @@ const sidebars = {
           type: 'category',
           label: 'Languages',
           link: {
-            type: 'doc', id: 'developer-docs/build/languages/index'
+            type: 'doc', id: 'developer-docs/build/languages/work-with-languages'
           },
           items: [
             // 'developer-docs/build/tutorials/explore-templates',
@@ -86,6 +86,33 @@ const sidebars = {
                 'developer-docs/build/languages/motoko/overview',
                 'developer-docs/build/languages/motoko/style',
               ]
+            },
+            {
+              type: 'category',
+              label: 'Rust',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/rust/rust-intro',
+              }, 
+              items: [
+                'developer-docs/build/languages/rust/rust-quickstart',
+                'developer-docs/build/languages/rust/rust-counter',
+                'developer-docs/build/languages/rust/multiply-dependency',
+                'developer-docs/build/languages/rust/rust-profile',
+                'developer-docs/build/languages/rust/rust-optimize',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Candid',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/candid/candid-intro',
+              }, 
+              items: [
+                'developer-docs/build/languages/candid/candid-concepts',
+                'developer-docs/build/languages/candid/candid-howto',
+                'developer-docs/build/languages/candid/candid-ref',
+                'developer-docs/build/languages/candid/candid-types',
+              ],
             },
           ]
         },
@@ -225,7 +252,7 @@ const sidebars = {
         'references/cli-reference/dfx-parent',
         'references/cli-reference/dfx-build',
         'references/cli-reference/dfx-cache',
-        'references/cli-reference/dfx-canister',
+        // 'references/cli-reference/dfx-canister',
         'references/cli-reference/dfx-config',
         'references/cli-reference/dfx-deploy',
         'references/cli-reference/dfx-generate',
@@ -249,7 +276,7 @@ const sidebars = {
     'concepts/what-is-IC',
     'concepts/nodes-subnets',
     'concepts/data-centers',
-    'concepts/canisters-code',
+    // 'concepts/canisters-code',
     'concepts/trust-in-canisters',
     'concepts/tokens-cycles',
     'concepts/governance',
