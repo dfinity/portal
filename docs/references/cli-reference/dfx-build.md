@@ -18,7 +18,7 @@ You can use the following optional flags with the `dfx build` command.
 
 | Flag              | Description                                                                                                                                                      |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--check`         | Builds canisters using a temporary, hard-coded, locally-defined canister identifier for testing that your program compiles without connecting to the ic. |
+| `--check`         | Builds canisters using a temporary, hard-coded, locally-defined canister identifier for testing that your program compiles without connecting to the IC. |
 | `-h`, `--help`    | Displays usage information.                                                                                                                                      |
 | `-V`, `--version` | Displays version information.                                                                                                                                    |
 

@@ -296,7 +296,7 @@ To deploy to the local canister execution environment:
 
     This command specifies:
 
-    -   `explore_hello` as the name of the *canister smart contract* or dapp you want to call.
+    -   `explore_hello` as the name of the *canister* or dapp you want to call.
 
     -   `greet` as the specific *method* or function you want to call.
 

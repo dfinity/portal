@@ -1,20 +1,20 @@
 # Make inter-canister calls
 
-One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister smart contract from another canister smart contract. This capability to make calls between canisters—also sometimes referred to as **inter-canister calls**—enables you to reuse and share functionality in multiple dapps.
+One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister from another canister. This capability to make calls between canisters—also sometimes referred to as **inter-canister calls**—enables you to reuse and share functionality in multiple dapps.
 
 For example, you might want to create a dapp for professional networking, organizing community events, or hosting fundraising activities. Each of these dapps might have a social component that enables users to identify social relationships based on some criteria or shared interest, such as friends and family or current and former colleagues.
 
-To address this social component, you might want to create a single canister smart contract for storing user relationships then write your professional networking, community organizing, or fundraising application to import and call functions that are defined in the canister for social connections. You could then build additional applications to use the social connections canister smart contract or extend the features provided by the social connections canister to make it useful to an even broader community of other developers.
+To address this social component, you might want to create a single canister for storing user relationships then write your professional networking, community organizing, or fundraising application to import and call functions that are defined in the canister for social connections. You could then build additional applications to use the social connections canister or extend the features provided by the social connections canister to make it useful to an even broader community of other developers.
 
 The Motoko-based LinkedUp sample dapp provides a simple implementation of an open professional network that demonstrates how to use inter-canister calls within a project.
 
-The LinkedUp sample dapp is implemented using the following canister smart contracts:
+The LinkedUp sample dapp is implemented using the following canisters:
 
--   The `linkedup` canister smart contract creates and stores basic profile information for a user, including work experience and educational background.
+-   The `linkedup` canister creates and stores basic profile information for a user, including work experience and educational background.
 
--   The `connectd` canister smart contract creates and stores a user’s connections.
+-   The `connectd` canister creates and stores a user’s connections.
 
--   The `linkedup_assets` canister smart contract stores the front-end assets—including the JavaScript, HTML, and CSS files—that define the user interface
+-   The `linkedup_assets` canister stores the front-end assets—including the JavaScript, HTML, and CSS files—that define the user interface
 
 ## Before you begin
 
@@ -90,7 +90,7 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
 1.  Check that you are still in your project directory by running the `pwd` command, if necessary.
 
-2.  Build the LinkedUp canister smart contracts by running the following command:
+2.  Build the LinkedUp canisters by running the following command:
 
         dfx build
 
@@ -98,7 +98,7 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
         dfx canister install --all
 
-    You should see canister identifiers for the `connectd`, `linkedup` and `linkedup_assets` canister smart contracts with a message similar to the following:
+    You should see canister identifiers for the `connectd`, `linkedup` and `linkedup_assets` canisters with a message similar to the following:
 
         Installing code for canister connectd, with canister_id 75hes-oqbaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
         Installing code for canister linkedup, with canister_id cxeji-wacaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
@@ -106,9 +106,9 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
 4.  Copy the `linkedup_assets` canister identifier returned by the `dfx canister install` command.
 
-    In this sample dapp, only the `linkedup_assets` canister smart contract includes the front-end assets used to access the dapp’s user interface. To open the dapp in a browser, therefore, you need to specify the `linkedup_assets` canister identifier.
+    In this sample dapp, only the `linkedup_assets` canister includes the front-end assets used to access the dapp’s user interface. To open the dapp in a browser, therefore, you need to specify the `linkedup_assets` canister identifier.
 
-5.  Open the `linkedup_assets` canister smart contract in your web browser.
+5.  Open the `linkedup_assets` canister in your web browser.
 
     For example, if the local canister execution environment binds to the default localhost address and port number, the URL looks similar to this:
 
@@ -126,7 +126,7 @@ To run through a demonstration of the LinkedUp sample dapp, take the following s
 
     The browser displays an introductory page.
 
-    A public-private key pair will be automatically generated to establish your identity for accessing the canister smart contract, so there’s no need to provide a user name and password or register an account to store your identity before using the service.
+    A public-private key pair will be automatically generated to establish your identity for accessing the canister, so there’s no need to provide a user name and password or register an account to store your identity before using the service.
 
 3.  Click **Login**.
 
@@ -206,15 +206,15 @@ To explore the configuration file:
 
 1.  Change to the `linkedup` directory, then open the project’s `dfx.json` file.
 
-2.  Note that there are two main canister smart contracts defined—`connectd` and `linkedup`—each with a `main.mo` source file.
+2.  Note that there are two main canisters defined—`connectd` and `linkedup`—each with a `main.mo` source file.
 
-3.  Note that the `linkedup_assets` canister smart contract specifies a frontend entry point of `main.js` and assets in the form of CSS and HTML files.
+3.  Note that the `linkedup_assets` canister specifies a frontend entry point of `main.js` and assets in the form of CSS and HTML files.
 
 4.  Note that the dapp is configured to use the default IP address and port number for deployment on the local canister execution environment.
 
 ## Explore the connectd source code
 
-The source code for the social connections canister smart contract, `connectd`, is organized into the following files:
+The source code for the social connections canister, `connectd`, is organized into the following files:
 
 -   The `digraph.mo` file provides the functions to create a directed graph of vertices and edges to describe a user’s connections.
 
@@ -228,7 +228,7 @@ The source code for the professional profile with work history and educational b
 
 -   The `main.mo` file contains the actor and key functions for the LinkedUp sample dapp.
 
--   The `types.mo` file defines the custom types that describe the user identity and profile fields that are imported and used in the `main` program file for the `linkedup` canister smart contract.
+-   The `types.mo` file defines the custom types that describe the user identity and profile fields that are imported and used in the `main` program file for the `linkedup` canister.
 
 -   The `utils.mo` file provides helper functions.
 
@@ -236,9 +236,9 @@ The source code for the professional profile with work history and educational b
 
 In working with the LinkedUp sample dapp, you might notice that some operations—such as viewing a profile or performing a search—returned results almost immediately. Other operations—such as creating a profile or adding a connection—took a little longer.
 
-These differences in performance illustrate the difference between using query and update calls in the `linkedup` canister smart contract.
+These differences in performance illustrate the difference between using query and update calls in the `linkedup` canister.
 
-For example, in the `src/linkedup/main.mo` file, the `create` and `update` functions are update calls that change the state of the canister smart contract and therefore need to go through consensus, but the program uses query calls for the `get` and `search` functions to view or search for a profile:
+For example, in the `src/linkedup/main.mo` file, the `create` and `update` functions are update calls that change the state of the canister and therefore need to go through consensus, but the program uses query calls for the `get` and `search` functions to view or search for a profile:
 
       // Profiles
 
@@ -260,26 +260,26 @@ For example, in the `src/linkedup/main.mo` file, the `create` and `update` funct
         directory.findBy(term)
       };
 
-### Interaction between the canister smart contracts
+### Interaction between the canisters
 
-In this sample dapp, the `linkedup` canister smart contract leverages functions defined in the `connectd` canister. This separation simplifies the code in each canister smart contract and, more importantly, illustrates how you can extend a project by calling common functions defined in one canister smart contract from one or more other canisters.
+In this sample dapp, the `linkedup` canister leverages functions defined in the `connectd` canister. This separation simplifies the code in each canister and, more importantly, illustrates how you can extend a project by calling common functions defined in one canister from one or more other canisters.
 
-To make the public functions defined in one canister smart contract available in the another canister smart contract:
+To make the public functions defined in one canister available in the another canister:
 
 1.  Add an `import` statement in the calling canister.
 
-    In this example, the public functions are defined in the `connectd` canister smart contract and are called by the `linkedup` canister smart contract.
+    In this example, the public functions are defined in the `connectd` canister and are called by the `linkedup` canister.
 
     Therefore, the `src/linkedup/main.mo` includes the following code:
 
         // Make the Connectd app's public methods available locally
         import Connectd "canister:connectd";
 
-2.  Use the `canister.function` syntax to call public methods in the imported canister smart contract.
+2.  Use the `canister.function` syntax to call public methods in the imported canister.
 
-    In this example, the `linkedup` canister smart contract calls the `connect` and `getConnections` function in the imported `connectd` canister smart contract.
+    In this example, the `linkedup` canister calls the `connect` and `getConnections` function in the imported `connectd` canister.
 
-You can see the code that enables interaction between the `linkedup` canister smart contract and the `connectd` canister smart contract in the `main.mo` source files.
+You can see the code that enables interaction between the `linkedup` canister and the `connectd` canister in the `main.mo` source files.
 
 For example, the `src/connectd/main.mo` defines the following functions:
 
@@ -300,7 +300,7 @@ For example, the `src/connectd/main.mo` defines the following functions:
 
     };
 
-Because of the `Import` statement, the `connectd` functions are available to the `linkedup` canister smart contract and the `src/linkedup/main.mo` includes the following code:
+Because of the `Import` statement, the `connectd` functions are available to the `linkedup` canister and the `src/linkedup/main.mo` includes the following code:
 
       // Connections
 

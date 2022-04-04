@@ -1,6 +1,6 @@
 # Optimize a Rust program
 
-Compiling Rust to WebAssembly often increases the file size significantly. The DFINITY Rust CDK includes a helper library—`ic-cdk-optimizer`—that you can use to reduce the size of Rust-based canister smart contracts before deploying them on the Internet Computer blockchain mainnet.
+Compiling Rust to WebAssembly often increases the file size significantly. The DFINITY Rust CDK includes a helper library—`ic-cdk-optimizer`—that you can use to reduce the size of Rust-based canisters before deploying them on the Internet Computer blockchain mainnet.
 
 ## Before you begin
 
@@ -16,7 +16,7 @@ Before you optimize your program, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../quickstart/quickstart.xml#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../quickstart/quickstart#download-and-install).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 

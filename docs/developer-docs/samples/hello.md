@@ -1,6 +1,6 @@
 # Hello, World!
 
-This sample demonstrates a dead simple dapp consisting of two canister smart contracts:
+This sample demonstrates a dead simple dapp consisting of two canisters:
 
 -   a simple backend canister, `hello`, implementing the logic of the application, and
 

@@ -10,7 +10,7 @@ Operations within a transaction are applied in order, so the order of operations
 
 :::note
 
-Due to limitations of the governance canister smart contract, neuron management operations are not reflected on the chain. If you lookup transactions by identifier returned from the `/construction/submit` endpoint, these transactions might not exist or miss neuron management operations. Instead, `/construction/submit` returns the statuses of all the operations in the `metadata` field using the same format as `/block/transaction` would return.
+Due to limitations of the governance canister, neuron management operations are not reflected on the chain. If you lookup transactions by identifier returned from the `/construction/submit` endpoint, these transactions might not exist or miss neuron management operations. Instead, `/construction/submit` returns the statuses of all the operations in the `metadata` field using the same format as `/block/transaction` would return.
 
 :::
 
@@ -291,7 +291,7 @@ The `STOP_DISSOLVNG` operation changes the state of the neuron to `NOT_DISSOLVIN
 | Idempotent?          | yes        |
 | Minimal access level | controller |
 
-The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister smart contract allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
+The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
 
 -   `account.address` is a ledger address of a neuron controller.
 
@@ -542,7 +542,7 @@ Call the `/account/balance` endpoint to access the staked amount and publicly av
 | Idempotent?          | yes    |
 | Minimal access level | hotkey |
 
-The `NEURON_INFO` operation retrieves the state of the neuron from the governance canister smart contract, including protected fields such as maturity. This operation does not change the state of the neuron. Either the neuron controller or a hotkey can execute this operation.
+The `NEURON_INFO` operation retrieves the state of the neuron from the governance canister, including protected fields such as maturity. This operation does not change the state of the neuron. Either the neuron controller or a hotkey can execute this operation.
 
 -   `account.address` is the ledger address of the neuron controller or hotkey.
 

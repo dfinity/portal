@@ -6,7 +6,7 @@ An actor is a special kind of object in modern programming languages that proces
 <!-- -->
 
 Canister smart contract  
-Canister smart contracts, sometimes also simply called canisters, are an extended form of smart contracts. They are revolutionary because they can be run in parallel deterministically. This is enabled by relying on the actor model and deterministic message passing. A canister smart contract has a universally-unique identifier and an owner that defines the boundaries of a specific dapp. A canister encapsulates all of the programming logic, public entry methods, the interface description for the provided message types, and state information for the dapp it describes.
+Canister smart contracts, sometimes also simply called canisters, are an extended form of smart contracts. They are revolutionary because they can be run in parallel deterministically. This is enabled by relying on the actor model and deterministic message passing. A canister has a universally-unique identifier and an owner that defines the boundaries of a specific dapp. A canister encapsulates all of the programming logic, public entry methods, the interface description for the provided message types, and state information for the dapp it describes.
 
 <!-- -->
 
@@ -16,12 +16,12 @@ A principal is an entity that can be authenticated by the Internet Computer bloc
 <!-- -->
 
 controller  
-A controller is a principal that has special rights to manage the canister smart contract it controls. For example, only a controlling principal can be used to install, upgrade, or delete the canister under its control. You can specify the controller principal using the textual representation of a principal—often referred to as the principal identifier—associated with a user or with a canister.
+A controller is a principal that has special rights to manage the canister it controls. For example, only a controlling principal can be used to install, upgrade, or delete the canister under its control. You can specify the controller principal using the textual representation of a principal—often referred to as the principal identifier—associated with a user or with a canister.
 
 <!-- -->
 
 ledger  
-The Internet Computer blockchain records all transactions involving ICP tokens in a specialized management canister smart contract, called the **ledger canister**. The ledger canister implements a smart contract that maintains **accounts** and **balances** and keeps a history of the **transactions** that affect accounts and balances. The transactions are recorded to track the following specific events:
+The Internet Computer blockchain records all transactions involving ICP tokens in a specialized management canister, called the **ledger canister**. The ledger canister implements a smart contract that maintains **accounts** and **balances** and keeps a history of the **transactions** that affect accounts and balances. The transactions are recorded to track the following specific events:
 
 -   **Mint ICP tokens** for accounts.
 
@@ -32,7 +32,7 @@ The Internet Computer blockchain records all transactions involving ICP tokens i
 <!-- -->
 
 wallet  
-A wallet is a specialized dapp (implemented as a canister smart contract) that allows to store and manage cycles. Cycles are used to pay for computation and resource consumption on the Internet Computer blockchain. Cycles can be obtained by conversion from the Internet Computer blockchain’s native utility token ICP.
+A wallet is a specialized dapp (implemented as a canister) that allows to store and manage cycles. Cycles are used to pay for computation and resource consumption on the Internet Computer blockchain. Cycles can be obtained by conversion from the Internet Computer blockchain’s native utility token ICP.
 
 <!-- -->
 

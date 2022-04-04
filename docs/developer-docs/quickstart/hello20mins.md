@@ -31,7 +31,7 @@ webpack-based front-end.
 
 #### Canister smart contract/dapp
 
-A **canister smart contract/dapp** is a type of smart contract that
+A **canister/dapp** is a type of smart contract that
 bundles code and state. A canister can be deployed as a smart contract
 on the Internet Computer and accessed over the Internet.
 

@@ -1,6 +1,6 @@
 # Managing cycles
 
-Usage of the IC is measured, and paid for, in *cycles*. The IC maintains a balance of cycles per canister smart contract. In addition, cycles can be transferred between canisters.
+Usage of the IC is measured, and paid for, in *cycles*. The IC maintains a balance of cycles per canister. In addition, cycles can be transferred between canisters.
 
 In Motoko programs targeting the IC, each actor represents an IC canister, and has an associated balance of cycles. The ownership of cycles can be transferred between actors. Cycles are selectively sent and received through messages, that is, shared function calls. A caller can choose to transfer cycles with a call, and a callee can choose to accept cycles that are made available by the caller. Unless explicitly instructed, no cycles are transferred by callers or accepted by callees.
 

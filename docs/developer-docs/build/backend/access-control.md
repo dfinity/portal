@@ -12,9 +12,9 @@ In this example, there are three named roles—`owner`, `admin`, and `authorized
 
 -   Users who are not assigned one of these roles see a greeting that displays `Nice to meet you!`.
 
-In addition, only the user identity that initialized the canister smart contract is assigned the `owner` role and only the `owner` and `admin` roles can assign roles to other users.
+In addition, only the user identity that initialized the canister is assigned the `owner` role and only the `owner` and `admin` roles can assign roles to other users.
 
-At a high-level, each user has a public/private key pair. The public key combined with the canister smart contract identifier the user accesses forms a security principal that can then be used as a message caller to authenticate function calls made to the canister smart contract running on the Internet Computer blockchain. The following diagram provides a simplified view of how user identities authenticate message callers.
+At a high-level, each user has a public/private key pair. The public key combined with the canister identifier the user accesses forms a security principal that can then be used as a message caller to authenticate function calls made to the canister running on the Internet Computer blockchain. The following diagram provides a simplified view of how user identities authenticate message callers.
 
 ![principal identities](../_attachments/principal-identities.svg)
 
@@ -115,7 +115,7 @@ To deploy the dapp locally:
 
 ## Check the current identity context
 
-Before we create any additional identities, let’s review the principal identifiers associated with your `default` identity and the cycles wallet for your `default` identity. On the Internet Computer blockchain, a principal is the internal representative for a user, canister smart contract, node, or subnet. The textual representation for a principal is the external identifier you see displayed with working with the principal data type.
+Before we create any additional identities, let’s review the principal identifiers associated with your `default` identity and the cycles wallet for your `default` identity. On the Internet Computer blockchain, a principal is the internal representative for a user, canister, node, or subnet. The textual representation for a principal is the external identifier you see displayed with working with the principal data type.
 
 To review your current identity and principle:
 
@@ -179,7 +179,7 @@ To create a new user identity:
         Using identity: "ic_admin".
         c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae
 
-5.  Check the principal used to call the `access_hello` canister smart contract by running the following command:
+5.  Check the principal used to call the `access_hello` canister by running the following command:
 
         dfx canister call access_hello callerPrincipal
 
@@ -187,11 +187,11 @@ To create a new user identity:
 
         (principal "ryjl3-tyaaa-aaaaa-aaaba-cai")
 
-    By default, the cycles wallet identifier is the principal used to call the methods in the `access_hello` canister smart contract. To illustrate access control, however, we want to use the principal associated with the user context, not the cycles wallet. Before we get to that step, though, let’s assign a role to the `ic_admin` user. To do that, we need to switch to the `default` user identity that has the `owner` role.
+    By default, the cycles wallet identifier is the principal used to call the methods in the `access_hello` canister. To illustrate access control, however, we want to use the principal associated with the user context, not the cycles wallet. Before we get to that step, though, let’s assign a role to the `ic_admin` user. To do that, we need to switch to the `default` user identity that has the `owner` role.
 
 ## Assign a role to an identity
 
-To assign the admin role to the ic\_admin identity:
+To assign the admin role to the IC\_admin identity:
 
 1.  Switch your currently-active identity context to use the `default` user identity by running the following command:
 
@@ -376,4 +376,4 @@ If you are looking for more information about identity and authentication, check
 
 -   [dfx identity (command reference)](../cli-reference/dfx-identity)
 
--   [Set an identity to own a canister smart contract (how-to)](../working-with-canisters#set-owner)
+-   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner)

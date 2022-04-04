@@ -1,6 +1,6 @@
 # Accept cycles from a wallet
 
-When you are doing local development, you can use the default wallet in your project to send cycles and check your cycle balance. But what about the canister smart contracts that need to receive and use those cycles, e.g. to execute their functions and provide services to users? This tutorial provides a simple example to illustrate how you might add the functions to receive cycles and check your cycle balance to the default template program.
+When you are doing local development, you can use the default wallet in your project to send cycles and check your cycle balance. But what about the canisters that need to receive and use those cycles, e.g. to execute their functions and provide services to users? This tutorial provides a simple example to illustrate how you might add the functions to receive cycles and check your cycle balance to the default template program.
 
 This example consists of the following:
 

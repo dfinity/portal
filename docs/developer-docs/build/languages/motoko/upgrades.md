@@ -1,6 +1,6 @@
 # Stable variables and upgrade methods
 
-One key feature of the IC is its ability to persist canister smart contract state using WebAssembly memory and globals rather than a traditional database. This means that that the entire state of a canister is magically restored before, and saved after, each message, without explicit user instruction. This automatic and user-transparent preservation of state is called *orthogonal persistence*.
+One key feature of the IC is its ability to persist canister state using WebAssembly memory and globals rather than a traditional database. This means that that the entire state of a canister is magically restored before, and saved after, each message, without explicit user instruction. This automatic and user-transparent preservation of state is called *orthogonal persistence*.
 
 Though convenient, orthogonal persistence poses a challenge when it comes to upgrading the code of a canister. Without an explicit representation of the canister’s state, how does one tranfer any application data from the retired canister to its replacement?
 
@@ -214,8 +214,8 @@ The Motoko compiler embeds the Candid interface and stable signature of a canist
 
 This metadata can be selectively exposed by the IC and used by tools such as `dfx` to verify upgrade compatibility.
 
-## Upgrading a deployed actor or canister smart contract
+## Upgrading a deployed actor or canister
 
-After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister smart contract](../developers-guide/working-with-canisters#upgrade-canister).
+After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister](../developers-guide/working-with-canisters#upgrade-canister).
 
 An upcoming version of `dfx` will, if appropriate, check the safety of an upgrade by comparing the Candid and (for Motoko canisters only) the stable signatures embedded in the deployed binary and upgrade binary, and abort the upgrade request when unsafe.

@@ -40,7 +40,7 @@ To modify the `dfx.json` configuration file:
 
 3.  Notice that the names and paths to source and output files all use the `actor_hello` project name.
 
-    For example, the default canister smart contract name is `actor_hello` and the default path to the main code file is `src/actor_hello/main.mo`.
+    For example, the default canister name is `actor_hello` and the default path to the main code file is `src/actor_hello/main.mo`.
 
     You can rename any of these files or directories. If you make any changes, however, be sure that the names you use for your files and directories on the file system match the names you specify in the `dfx.json` configuration file. If you plan to use the default directory and file names, no changes are necessary.
 
