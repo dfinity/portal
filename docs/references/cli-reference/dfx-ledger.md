@@ -103,7 +103,7 @@ Use the `dfx ledger create-canister` command to convert ICP tokens to cycles and
 ### Basic usage
 
 ``` bash
-dfx ledger --networkiccreate-canister controller [options]  [flag]
+dfx ledger --network ic create-canister controller [options]  [flag]
 ```
 
 ### Flags
@@ -140,7 +140,7 @@ You can specify the following argument for the `dfx ledger create-canister` comm
 To create a new canister with cycles, transfer ICP tokens from your ledger account by running a command similar to the following:
 
 ``` bash
-dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 1.25
+dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 1.25
 ```
 
 This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
@@ -155,7 +155,7 @@ If the transaction is successful, the ledger records the event and you should se
 You can create a new canister by specifying separate values for ICP tokens and e8s by running a command similar to the following:
 
 ``` bash
-dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --icp 3 --e8s 5000
+dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --icp 3 --e8s 5000
 ```
 
 ## dfx ledger notify

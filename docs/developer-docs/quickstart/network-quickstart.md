@@ -168,13 +168,13 @@ To transfer ICP tokens to create a cycles wallet:
 
 1.  Create a new canister with cycles by transferring ICP tokens from your ledger account by running a command similar to the following:
 
-        dfx ledger --networkiccreate-canister <principal-identifier> --amount <icp-tokens>
+        dfx ledger --network ic create-canister <principal-identifier> --amount <icp-tokens>
 
     This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
 
     For example, the following command converts .25 ICP tokens into cycles and specifies the principal identifier for the default identity as the controller of the new canister:
 
-        dfx ledger --networkiccreate-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
+        dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
 
     If the transaction is successful, the ledger records the event and you should see output similar to the following:
 
@@ -183,11 +183,11 @@ To transfer ICP tokens to create a cycles wallet:
 
 2.  Install the cycles wallet code in the newly-created canister placeholder by running a command similar to the following:
 
-        dfx identity --networkicdeploy-wallet <canister-identifer>
+        dfx identity --network ic deploy-wallet <canister-identifer>
 
     For example:
 
-        dfx identity --networkicdeploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+        dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
 
     This command displays output similar to the following:
 
