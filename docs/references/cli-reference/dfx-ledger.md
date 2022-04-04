@@ -64,7 +64,7 @@ Use the `dfx ledger balance` command to print your account balance or that of an
 ### Basic usage
 
 ``` bash
-dfx ledger --networkicbalance [of] [flag]
+dfx ledger --network ic balance [of] [flag]
 ```
 
 ### Flags
@@ -89,7 +89,7 @@ You can specify the following argument for the `dfx ledger balance` command.
 You can use the `dfx ledger balance` command to check the balance of another user. For example, you can run the following command to see the ICP utlity tokens associated with a known Account Identifier:
 
 ``` bash
-dfx ledger --networkicbalance 03e3d86f29a069c6f2c5c48e01bc084e4ea18ad02b0eec8fccadf4487183c223
+dfx ledger --network ic balance 03e3d86f29a069c6f2c5c48e01bc084e4ea18ad02b0eec8fccadf4487183c223
 ```
 
 This command displays an ICP amount similar to the following:
@@ -304,7 +304,7 @@ This command displays output similar to the following:
 You can check the balance of this account by running the following command:
 
 ``` bash
-dfx ledger --networkicbalance
+dfx ledger --network ic balance
 ```
 
 This command displays output similar to the following:
@@ -321,4 +321,4 @@ This command displays output similar to the following:
 
     Transfer sent at BlockHeight: 59513
 
-You can then use the `dfx ledger --networkicbalance` command to check that your account balance reflects the transaction you just made.
+You can then use the `dfx ledger --network ic balance` command to check that your account balance reflects the transaction you just made.

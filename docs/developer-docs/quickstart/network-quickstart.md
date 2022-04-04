@@ -154,7 +154,7 @@ To look up your account in the ledger:
 
 4.  Check your account balance by running the following command:
 
-        dfx ledger --networkicbalance
+        dfx ledger --network ic balance
 
     This command displays the ICP token balance from the ledger account. For example, you should see output similar to the following:
 
@@ -210,7 +210,7 @@ To validate your cycles wallet:
 
 2.  Check that your cycles wallet canister is properly configured and holds a balance of cycles by running a command similar to the following:
 
-        dfx wallet --networkicbalance
+        dfx wallet --network ic balance
 
     The command returns the balance for the your cycles wallet. For example:
 

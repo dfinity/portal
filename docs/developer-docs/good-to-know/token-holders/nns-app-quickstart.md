@@ -127,7 +127,7 @@ To transfer ICP utility tokens controlled by your developer identity:
 4.  Check the current balance in the ledger account associated with your identity by running the following command:
 
     ``` bash
-    dfx ledger --networkicbalance
+    dfx ledger --network ic balance
     ```
 
 5.  Transfer ICP utility tokens to your Main account or a linked subaccount you create by running a command similar to the following:

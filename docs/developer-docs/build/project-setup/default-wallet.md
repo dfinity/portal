@@ -94,7 +94,7 @@ To check the cycles balance on the Internet Computer:
 
 3.  Display the cycle balance from the cycles wallet associated with the currently-selected identity by running the following command:
 
-        dfx wallet --networkicbalance
+        dfx wallet --network ic balance
 
     The command displays output similar to the following:
 
@@ -274,7 +274,7 @@ To send cycles to another canister running on the Internet Computer:
 
 5.  Check the cycles wallet balance to see the updated number of cycles available by running the following command:
 
-        dfx wallet --networkicbalance
+        dfx wallet --network ic balance
 
     For example:
 

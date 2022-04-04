@@ -115,7 +115,7 @@ To connect to the ledger and get account information:
 6.  Check your account balance by running the following command:
 
     ``` bash
-    dfx ledger --networkicbalance
+    dfx ledger --network ic balance
     ```
 
     This command displays the ICP token balance from the ledger account. For example, you should see output similar to the following:
@@ -175,7 +175,7 @@ To transfer ICP tokens to another account:
 2.  Check the current balance in the ledger account associated with your identity by running the following command:
 
     ``` bash
-    dfx ledger --networkicbalance
+    dfx ledger --network ic balance
     ```
 
 3.  Transfer ICP tokens to another account by running a command similar to the following:

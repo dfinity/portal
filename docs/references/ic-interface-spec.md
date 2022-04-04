@@ -1501,7 +1501,7 @@ Until code is installed, the canister is `Empty` and behaves like a canister tha
 
 ###ICmethod `update_settings`
 
-Only *controllers* of the canister can update settings. See [IC method ](#ic-create_canister) for a description of settings.
+Only *controllers* of the canister can update settings. See [IC method](#ic-create_canister) for a description of settings.
 
 Not including a setting in the `settings` record means not changing that field. The defaults described above are only relevant during canister creation.
 
