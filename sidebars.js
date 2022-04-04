@@ -65,6 +65,20 @@ const sidebars = {
             // 'developer-docs/build/tutorials/explore-templates',
             {
               type: 'category',
+              label: 'Rust',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/rust/rust-intro',
+              }, 
+              items: [
+                'developer-docs/build/languages/rust/rust-quickstart',
+                'developer-docs/build/languages/rust/rust-counter',
+                'developer-docs/build/languages/rust/multiply-dependency',
+                'developer-docs/build/languages/rust/rust-profile',
+                'developer-docs/build/languages/rust/rust-optimize',
+              ],
+            },
+            {
+              type: 'category',
               label: 'Motoko',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/motoko/index',
@@ -98,20 +112,6 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: 'Rust',
-              link: {
-                type: 'doc', id: 'developer-docs/build/languages/rust/rust-intro',
-              }, 
-              items: [
-                'developer-docs/build/languages/rust/rust-quickstart',
-                'developer-docs/build/languages/rust/rust-counter',
-                'developer-docs/build/languages/rust/multiply-dependency',
-                'developer-docs/build/languages/rust/rust-profile',
-                'developer-docs/build/languages/rust/rust-optimize',
-              ],
-            },
-            {
-              type: 'category',
               label: 'Candid',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/candid/candid-intro',
@@ -119,8 +119,6 @@ const sidebars = {
               items: [
                 'developer-docs/build/languages/candid/candid-concepts',
                 'developer-docs/build/languages/candid/candid-howto',
-                'developer-docs/build/languages/candid/candid-ref',
-                'developer-docs/build/languages/candid/candid-types',
               ],
             },
           ]
@@ -260,17 +258,18 @@ const sidebars = {
   'references': [
     'references/index',
     {
+      type: 'link',
+      label: 'Rust CDK References',
+      href: 'https://docs.rs/ic-cdk/',
+    },
+    {
       type: 'category',
       label: 'Motoko References',
       items: [
         'references/motoko-ref/index'
       ]
     },
-    {
-      type: 'link',
-      label: 'Rust CDK References',
-      href: 'https://docs.rs/ic-cdk/',
-    },
+    'references/candid-ref',
     {
       type: 'category',
       label: 'DFX Commands & Envars',

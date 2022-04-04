@@ -10,7 +10,7 @@ For this tutorial, the actor is named `Counter`. The program uses the `currentVa
 
 -   The `set` function call updates the current value to an arbitrary numeric value you specify as an argument.
 
-This tutorial provides a simple example of how you can increment a counter by calling functions on a deployed canister smart contract. By calling the functions to increment and query the counter value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
+This tutorial provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the functions to increment and query the counter value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
 
 ## Before you begin
 
@@ -54,7 +54,7 @@ To modify the `dfx.json` configuration file:
 
     For this tutorial, changing the name of the source file from `main.mo` to `increment_counter.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
 
-    In a more complex dapp, you might have multiple source files with dependencies that you need to manage using settings in the `dfx.json` configuration file. In a scenario like that—with multiple canister smart contracts and programs defined in your `dfx.json` file—having multiple files all named `main.mo` might be confusing.
+    In a more complex dapp, you might have multiple source files with dependencies that you need to manage using settings in the `dfx.json` configuration file. In a scenario like that—with multiple canisters and programs defined in your `dfx.json` file—having multiple files all named `main.mo` might be confusing.
 
     You can leave the rest of the default settings as they are.
 
@@ -132,11 +132,11 @@ To deploy the dapp locally:
 
     The `dfx deploy` command output displays information about the operations it performs.
 
-## Invoke methods on the deployed canister smart contract
+## Invoke methods on the deployed canister
 
-After successfully deploying the canister smart contract, you can simulate an end-user invoking the methods provided by the canister. For this tutorial, you invoke the `get` method to query the value of a counter, the `increment` method that increments the counter each time it is called, and the `set` method to pass an argument to update the counter to an arbitrary value you specify.
+After successfully deploying the canister, you can simulate an end-user invoking the methods provided by the canister. For this tutorial, you invoke the `get` method to query the value of a counter, the `increment` method that increments the counter each time it is called, and the `set` method to pass an argument to update the counter to an arbitrary value you specify.
 
-To test invoking methods on the deployed canister smart contract:
+To test invoking methods on the deployed canister:
 
 1.  Run the following command to invoke the `get` function, which reads the current value of the `currentValue` variable on the deployed canister:
 

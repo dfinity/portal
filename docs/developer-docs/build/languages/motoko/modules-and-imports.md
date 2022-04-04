@@ -123,13 +123,13 @@ The call to `Counters.Counter(1)` installs a fresh counter on the network. Insta
 
 The type annotation `: Counters.Counter` is redundant here. It’s included only to illustrate that the type of the actor class is available when required.
 
-## Importing from another canister smart contract
+## Importing from another canister
 
 In addition to the examples above that import Motoko modules, you can also import actors (and their shared functions) from canister smart constracts by using the `canister:` prefix in place of the `mo:` prefix.
 
 :::note
 
-Unlike a Motoko library, an imported canister can be implemented in any other IC language that emits Candid interfaces for its canister smart contracts (for instance Rust). It could even be an older or newer version of Motoko.
+Unlike a Motoko library, an imported canister can be implemented in any other IC language that emits Candid interfaces for its canisters (for instance Rust). It could even be an older or newer version of Motoko.
 
 :::
 

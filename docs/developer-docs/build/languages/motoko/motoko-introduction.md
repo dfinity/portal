@@ -1,6 +1,6 @@
 # Introduction
 
-Motoko is a modern, general-purpose programming language you can use specifically to author [Internet Computer](../developers-guide/concepts/what-is-ic#ic-overview) canister smart contracts. Although aimed squarely at the IC, its design is general enough to support future compilation to other targets.
+Motoko is a modern, general-purpose programming language you can use specifically to author [Internet Computer](../developers-guide/concepts/what-is-ic#ic-overview) canisters. Although aimed squarely at the IC, its design is general enough to support future compilation to other targets.
 
 ## Approachability
 
@@ -14,9 +14,9 @@ Specifically, Motoko programs are *type sound* since Motoko includes a practical
 
 To execute, Motoko statically compiles to [WebAssembly](about-this-guide#wasm), a portable binary format that abstracts cleanly over modern computer hardware, and thus permits its execution broadly on the Internet, and the [IC](../developers-guide/concepts/what-is-ic#ic-overview).
 
-## Each canister smart contract as an *actor*
+## Each canister as an *actor*
 
-Motoko provides an **actor-based** programming model to developers to express *services*, including those of canister smart contracts on the [IC](../developers-guide/concepts/what-is-ic#ic-overview).
+Motoko provides an **actor-based** programming model to developers to express *services*, including those of canisters on the [IC](../developers-guide/concepts/what-is-ic#ic-overview).
 
 An actor is similar to an object, but is special in that its state is completely isolated, and all its interactions with the world are by *asynchronous* messaging.
 
@@ -40,7 +40,7 @@ finalStep(await result1, await result2)
 
 We can summarize the program’s behavior with three steps:
 
-1.  The program makes two requests (lines 1 and 2) to two distinct services, each implemented as a Motoko actor or canister smart contract implemented in some other language.
+1.  The program makes two requests (lines 1 and 2) to two distinct services, each implemented as a Motoko actor or canister implemented in some other language.
 
 2.  The program waits for each result to be ready (line 3) using the keyword `await` on each result value.
 

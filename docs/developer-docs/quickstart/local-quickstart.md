@@ -1,6 +1,6 @@
 # Local development
 
-This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister smart contract in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
+This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
 To get started, let’s build and deploy a simple Hello canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 

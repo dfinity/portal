@@ -10,9 +10,9 @@ The controller of a canister can change / update the canister whenever they like
 
 #### Recommendation
 
--   To implement an immutable canister smart contract, you cannot be the controller of the canister. Control must be passed to the service nervous system (SNS) or a decentralized governance system.
+-   To implement an immutable canister, you cannot be the controller of the canister. Control must be passed to the service nervous system (SNS) or a decentralized governance system.
 
--   Another option to create an immutable canister smart contract is to remove the canister controller completely. But note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug would be found.
+-   Another option to create an immutable canister is to remove the canister controller completely. But note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug would be found.
 
 -   Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
 
@@ -20,7 +20,7 @@ The controller of a canister can change / update the canister whenever they like
 
 #### Security Concern
 
-If a canister depends on a canister smart contract (i.e. makes inter-canister calls to it), it is essential that the canister smart contract is immutable. Otherwise, i.e. if it has a controller, they could modify the smart contract whenever they like, e.g. to steal assets held by the canister.
+If a canister depends on a canister (i.e. makes inter-canister calls to it), it is essential that the canister is immutable. Otherwise, i.e. if it has a controller, they could modify the smart contract whenever they like, e.g. to steal assets held by the canister.
 
 #### Recommendation
 

@@ -28,9 +28,9 @@ This document tries to be implementation agnostic: It would apply just as well t
 
 ### Overview of the Internet Computer
 
-Dapps on the Internet Computer, or *IC* for short, are implemented as *canister smart contracts*, or *canisters* for short. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
+Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*, or *canisters* for short. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
 
-Once your dapp is running on the Internet Computer, it is a canister smart contract, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
+Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 

@@ -6,7 +6,7 @@ This section is work-in-progress and incomplete. As best practices and design pa
 
 ## Single or multiple canister architecture
 
-One of the first decisions you might want to consider when designing your dapp is whether it should be encapsulated in a single canister smart contract or consist of multiple canister smart contracts.
+One of the first decisions you might want to consider when designing your dapp is whether it should be encapsulated in a single canister or consist of multiple canisters.
 
 For example, if you are writing a simple service with no front-end, you might want to use a single canister to simplify project management and maintenance and focus on adding features. If your dapp has both front-end assets and back-end business logic, your project is likely to consist of at least two canisters, with one canister for managing user interface components and another canister for the backend services the application provides.
 

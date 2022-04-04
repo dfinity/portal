@@ -2,13 +2,13 @@
 
 One of the most important principles to keep in mind is that the Internet Computer is a blockchain that allows running software in a distributed, replicated way.
 
-When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister smart contract**, or **canister** in short.
+When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**, or **canister** in short.
 
-Once deployed, end-users can interact with the canister smart contract by accessing the entry point functions you have defined for that canister through a front-end client such as a browser.
+Once deployed, end-users can interact with the canister by accessing the entry point functions you have defined for that canister through a front-end client such as a browser.
 
 ## Canisters include both program and state
 
-A canister smart contract is similar to a container in that both are deployed as a software unit that contains compiled code and dependencies for an application or service.
+A canister is similar to a container in that both are deployed as a software unit that contains compiled code and dependencies for an application or service.
 
 Containerization allows for applications to be decoupled from the environment, allowing for easy and reliable deployment. The canister differs from a container, however, in that it also stores information about the current software **state**.
 
@@ -86,7 +86,7 @@ One of the most important principles to keep in mind when preparing to write pro
 
 An *actor* is a special kind of object that processes messages in an isolated state, enabling messages to be handled remotely and asynchronously.
 
-In general, each canister smart contract includes the compiled code for one actor object. Each canister may also include some additional information such as interface descriptions or front-end assets. You can create projects that include multiple canisters, but each canister can only include one actor.
+In general, each canister includes the compiled code for one actor object. Each canister may also include some additional information such as interface descriptions or front-end assets. You can create projects that include multiple canisters, but each canister can only include one actor.
 
 ## Why your code is compiled into WebAssembly
 

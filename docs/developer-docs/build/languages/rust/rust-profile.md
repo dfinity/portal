@@ -30,7 +30,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../quickstart/quickstart.xml#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../quickstart/quickstart#download-and-install).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -42,7 +42,7 @@ Before you start your project, verify the following:
 
 -   You have stopped any local execution environment processes running on your computer.
 
-If you aren’t sure how to open a new terminal shell on your local computer, run commands in a terminal, or how to check for and install packages, see [Preliminary steps for newcomers](../quickstart/newcomers.xml). If you are comfortable meeting the prerequisites without instructions, continue to [Create a new project](#_create_a_new_project).
+If you aren’t sure how to open a new terminal shell on your local computer, run commands in a terminal, or how to check for and install packages, see [Preliminary steps for newcomers](../quickstart/newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Create a new project](#_create_a_new_project).
 
 This tutorial takes approximately 20 minutes to complete.
 
@@ -66,7 +66,7 @@ To create a new project directory for this tutorial:
 
 ## Modify the default project
 
-In the [Hello, World! Rust CDK Quick Start](rust-quickstart.xml), you went through the files in a default project with Rust type canister.
+In the [Hello, World! Rust CDK Quick Start](rust-quickstart), you went through the files in a default project with Rust type canister.
 
 To complete this tutorial, you’ll need to complete the following steps:
 
@@ -105,11 +105,11 @@ To replace the default program:
 
 ## Update interface description file
 
-Candid is an interface description language (IDL) for interacting with canister smart contracts running on the Internet Computer. Candid files provide a language-independent description of a canister smart contract’s interfaces including the names, parameters, and result formats and data types for each function a canister defines.
+Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of a canister’s interfaces including the names, parameters, and result formats and data types for each function a canister defines.
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid-guide/candid-intro.xml) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid-guide/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update Candid file for this tutorial:
 

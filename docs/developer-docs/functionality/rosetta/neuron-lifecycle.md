@@ -1,18 +1,18 @@
 # Neuron lifecycle
 
-A neuron is a type of asset managed by the Internet Computer governance canister smart contract. Neurons allow their controllers to participate in the governance of the network by submitting and voting on proposals.
+A neuron is a type of asset managed by the Internet Computer governance canister. Neurons allow their controllers to participate in the governance of the network by submitting and voting on proposals.
 
 ## Creating a neuron
 
 Creating a neuron involves 2 steps:
 
--   Transfer some **amount** of ICPs from any ledger account to the neuron’s address. Neuron address on the ledger that belongs to the Governance canister smart contract. The caller computes the neuron address from two parts:
+-   Transfer some **amount** of ICPs from any ledger account to the neuron’s address. Neuron address on the ledger that belongs to the Governance canister. The caller computes the neuron address from two parts:
 
     -   the principal of the Governance canister
 
     -   the **subaccount** that is itself a hash of the controller’s principal with an integer nonce. One principal can control multiple neurons by picking different integer nonces for the subaccount computation.
 
--   Call the `claim_or_refresh_neuron_from_account` method of the governance canister smart contract. If the call is successful, the payload contains the **neuron ID**, a numeric identifier of the newly created neuron. The governance canister maintains a mapping between neuron IDs and subaccounts. Most management operations can be performed using either the neuron ID or the subaccount address.
+-   Call the `claim_or_refresh_neuron_from_account` method of the governance canister. If the call is successful, the payload contains the **neuron ID**, a numeric identifier of the newly created neuron. The governance canister maintains a mapping between neuron IDs and subaccounts. Most management operations can be performed using either the neuron ID or the subaccount address.
 
 ## Neuron attributes
 
@@ -46,7 +46,7 @@ is proportional to the **amount** of staked ICPs. Age and dissolve delay multipl
 
 ## Rewards
 
-Once a proposal is accepted, all the neurons that voted on that proposal receive rewards in form of a maturity increase. The governance canister smart contract distributes rewards daily. The rewards are proportional to the voting power.
+Once a proposal is accepted, all the neurons that voted on that proposal receive rewards in form of a maturity increase. The governance canister distributes rewards daily. The rewards are proportional to the voting power.
 
 For more information on neuron state transitions and rewards, see [Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8).
 

@@ -8,7 +8,7 @@ As a decentralized blockchain, all changes to the configuration and behavior of 
 
 -   assignment of nodes to subnet blockchains
 
--   whether upgrades to canister smart contracts or to a new protocol version are allowed or not
+-   whether upgrades to canisters or to a new protocol version are allowed or not
 
 In addition, only members of the governance body can vote to adopt or reject requests to upgrade Internet Computer replicas or modify the Internet Computer protocol.
 

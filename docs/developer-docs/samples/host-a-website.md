@@ -85,7 +85,7 @@ And then add some styles to style.css.
 
 ## Configure DFX to deploy
 
-To host and run this website live on the ic, you will need to configure DFX to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
+To host and run this website live on the IC, you will need to configure DFX to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
 
 **dfx.json**
 
