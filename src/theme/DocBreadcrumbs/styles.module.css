@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.breadcrumbsContainer {
+    margin-bottom: 0.4rem;
+}
+
+.breadcrumbsHomeIconContainer {
+    vertical-align: middle;
+    display: inline-block;
+    color: var(--ifm-color-primary);
+}
+
+.breadcrumbsItemLink {
+    --ifm-breadcrumb-size-multiplier: 0.7 !important;
+    margin-bottom: 0.4rem;
+}
+
+html[data-theme='dark'] .breadcrumbsItemLink {
+    background-color: var(--ifm-color-gray-900);
+}
+
+@media (min-width: 997px) {
+    .breadcrumbsItemLink {
+        --ifm-breadcrumb-size-multiplier: 0.8;
+    }
+}

@@ -25,3 +25,19 @@ Hide toggle in small viewports
 .navbarSidebarToggle {
   margin-right: 1rem;
 }
+.forumIconContainer {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 4px 12px;
+  margin-top: 8px;
+  color: var(--ifm-color-primary);
+}
+.navBarDivider {
+  border-right: 1px solid var(--ifm-color-emphasis-300);
+  height: 70%;
+  margin: 0 1rem;
+}
+
+.svgIconLinks {
+  padding: 4px 12px;
+}

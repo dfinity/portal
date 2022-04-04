@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import {
     useThemeConfig, useAnnouncementBar, MobileSecondaryMenuFiller, ThemeClassNames, useScrollPosition, useWindowSize,
@@ -15,6 +15,7 @@ import {translate} from '@docusaurus/Translate';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
 import NavbarItem from '@theme/NavbarItem';
+import {act} from "react-dom/test-utils";
 
 function useShowAnnouncementBar() {
     const {isActive} = useAnnouncementBar();
@@ -47,56 +48,61 @@ function HideableSidebarButton({onClick}) {
 }
 
 
-function getThemeColor(section) {
+function getPrimaryColor(section) {
     switch (section) {
         case 'developer-docs':
             return "#ED1E79"
         case 'concepts':
-            return "#522785"
+            return "#F15A24"
         case 'references':
             return "#29ABE2"
         case 'governance':
             return "#FBB03B"
         case 'showcases':
-            return "#F15A24"
+            return "#522785"
         default:
             return "#29ABE2"
     }
 }
 
-function changeThemeColor(section) {
-    document.documentElement.style.setProperty('--ifm-color-primary', getThemeColor(section));
+function changePrimaryColor(section) {
+    document.documentElement.style.setProperty('--ifm-color-primary', getPrimaryColor(section));
 }
 
-function DocItem(sidebarId) {
+function DocItem(sidebarId, activePath) {
     switch (sidebarId) {
         case 'developer-docs':
-            return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd"
-                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                      clipRule="evenodd"/>
-            </svg>
-        case 'concepts':
-            return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                      clipRule="evenodd"/>
+            return <svg xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        stroke={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
         case 'references':
-            return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd"
-                      d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                      clipRule="evenodd"/>
-                <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/>
+            return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'}
+                        strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"/>
             </svg>
-
+        case 'concepts':
+            return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'} strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
         case 'governance':
-            return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            return <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        stroke={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'} viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
         case 'showcases':
-            return <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'}>
                 <path fillRule="evenodd"
                       d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
                       clipRule="evenodd"/>
@@ -108,7 +114,7 @@ function DocItem(sidebarId) {
 }
 
 
-function DocSideBarNav() {
+function DocSideBarNav({activePath}) {
     const items = useThemeConfig().navbar.items;
     return (
         <div>
@@ -117,9 +123,9 @@ function DocSideBarNav() {
                     <div key={i} className={clsx(styles.sideBarNavItem)}
                     >
                         <div className={clsx(styles.sideBarNavIcon)}>
-                            {DocItem(item.sidebarId)}
+                            {DocItem(item.sidebarId, activePath)}
                         </div>
-                        <div onClick={() => changeThemeColor(item.sidebarId)} >
+                        <div>
                             <NavbarItem {...item}/>
                         </div>
                     </div>))}
@@ -134,6 +140,11 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
         navbar: {hideOnScroll}, hideableSidebar,
     } = useThemeConfig();
 
+    useEffect(() => {
+        // changing primary color based on current section
+        changePrimaryColor(path.split('/')[3]);
+    }, [path]);
+
     return (<div
         className={clsx(styles.sidebar, {
             [styles.sidebarWithHideableNavbar]: hideOnScroll, [styles.sidebarHidden]: isHidden,
@@ -144,7 +155,7 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
                 [styles.menuWithAnnouncementBar]: showAnnouncementBar,
             })}>
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
-                <DocSideBarNav/>
+                <DocSideBarNav activePath={path.split('/')[3]}/>
                 <div className={clsx(styles.sideBarDivider)}/>
                 <DocSidebarItems items={sidebar} activePath={path} level={1}/>
             </ul>

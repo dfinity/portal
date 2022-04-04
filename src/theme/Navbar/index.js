@@ -217,7 +217,7 @@ export default function Navbar() {
     const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
     const items = useNavbarItems();
     const hasSearchNavbarItem = items.some((item) => item.type === 'search');
-    const {leftItems, rightItems} = splitNavItemsByPosition(items);
+    const {rightItems} = splitNavItemsByPosition(items);
     return (
         <nav
             ref={navbarRef}
@@ -246,15 +246,26 @@ export default function Navbar() {
                         imageClassName="navbar__logo"
                         titleClassName="navbar__title"
                     />
-                    {/*{leftItems.map((item, i) => (
-            <NavbarItem {...item} key={i} />
-          ))}*/}
                 </div>
 
                 <div className="navbar__items navbar__items--right">
                     {rightItems.map((item, i) => (
                         <NavbarItem {...item} key={i}/>
                     ))}
+                    <div className={clsx(styles.navBarDivider)}/>
+                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2" className="header-discord-link"/></div>
+                    <div className={styles.svgIconLinks}><a href="https://github.com/dfinity" className="header-github-link"/></div>
+                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2" className="header-twitter-link"/></div>
+                    <a href="https://forum.dfinity.org/" className={styles.forumIconContainer}>
+                        <svg className={"header-forum-link"} width="21" height="21" viewBox="0 0 21 21"
+                             fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.37963 19.1264L0.0886343 20.3024L1.26463 15.0114C0.490166 13.5628 0.0861612 11.945 0.0886343 10.3024C0.0886343 4.77937 4.56563 0.302368 10.0886 0.302368C15.6116 0.302368 20.0886 4.77937 20.0886 10.3024C20.0886 15.8254 15.6116 20.3024 10.0886 20.3024C8.44599 20.3048 6.82825 19.9008 5.37963 19.1264V19.1264ZM5.08863 10.3024C5.08863 11.6285 5.61542 12.9002 6.5531 13.8379C7.49078 14.7756 8.76255 15.3024 10.0886 15.3024C11.4147 15.3024 12.6865 14.7756 13.6242 13.8379C14.5619 12.9002 15.0886 11.6285 15.0886 10.3024H13.0886C13.0886 11.098 12.7726 11.8611 12.21 12.4237C11.6473 12.9863 10.8843 13.3024 10.0886 13.3024C9.29299 13.3024 8.52992 12.9863 7.96731 12.4237C7.4047 11.8611 7.08863 11.098 7.08863 10.3024H5.08863Z"
+                            />
+                        </svg>
+                    </a>
+                    <div className={clsx(styles.navBarDivider)}/>
                     {!colorModeToggle.disabled && (
                         <ColorModeToggle
                             className={styles.toggle}
