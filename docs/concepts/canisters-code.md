@@ -18,7 +18,7 @@ While a containerized application might include information about the state of t
 
 This concept of a canister consisting of both program and state is an important one. In particular it relates to the behavior one should expect when calling an end-point of the canister. There are only two types of calls: non-committing **query calls** (any state change is discarded) and committing **update calls** (state changes are persisted).
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 15%" />
 <col style="width: 84%" />
@@ -50,7 +50,7 @@ This concept of a canister consisting of both program and state is an important 
 </ul></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 As a developer, it is important to recognize this relationship between the calls that query the canister and the calls that change the canister state. In particular, you should keep in mind the inherent tradeoff between security and performance.
 

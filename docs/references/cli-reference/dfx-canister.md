@@ -565,7 +565,7 @@ You can use the following optional flags with the `dfx canister sign` command.
 
 You can specify the following options for the `dfx canister sign` command.
 
-<table>
+<!-- <table>
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 68%" />
@@ -595,7 +595,7 @@ You can specify the following options for the `dfx canister sign` command.
 <p>By default, you can specify arguments using the <a href="../../candid-guide/candid-intro">Candid</a> (<code>idl</code>) syntax for data values. For information about using Candid and its supported types, see <a href="../../candid-guide/candid-howto#idl-syntax">Interact with a service in a terminal</a> and <a href="../../candid-guide/candid-types">Supported types</a>. You can use <code>raw</code> as the argument type if you want to pass raw bytes.</p></td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 ### Arguments
 
