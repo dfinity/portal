@@ -38,14 +38,23 @@ const sidebars = {
       type: 'category',
       label: 'Building on the IC',
       link: {
-        type: 'doc', id: 'developer-docs/build/index'
+        type: 'doc', id: 'developer-docs/build/index',
       },
       items: [
         'developer-docs/build/install-upgrade-remove',
-        'developer-docs/build/design-dapps',
-        'developer-docs/build/manage-projects',
-        'developer-docs/build/manage-canisters',
-        'developer-docs/build/default-wallet',
+        {
+          type: 'category',
+          label: 'Project Setup',
+          link: {
+            type: 'doc', id: 'developer-docs/build/project-setup/index',
+          },
+          items: [
+            'developer-docs/build/project-setup/design-dapps',
+            'developer-docs/build/project-setup/manage-projects',
+            'developer-docs/build/project-setup/manage-canisters',
+            'developer-docs/build/project-setup/default-wallet',
+          ],
+        },
         {
           type: 'category',
           label: 'Languages',
