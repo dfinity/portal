@@ -212,19 +212,6 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Token Holders',
-          link: {
-            type: 'doc', id: 'developer-docs/good-to-know/token-holders/index'
-          },
-          items: [
-            'developer-docs/good-to-know/token-holders/custody-options-intro',
-            'developer-docs/good-to-know/token-holders/self-custody-quickstart',
-            'developer-docs/good-to-know/token-holders/nns-app-quickstart',
-            // 'developer-docs/good-to-know/token-holders/seed-donations',
-          ]
-        },
-        {
-          type: 'category',
           label: 'Release Notes',
           link: {
             type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
@@ -311,7 +298,20 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'governance': [
-    'governance/index'
+    'governance/index',
+    {
+      type: 'category',
+      label: 'Token Holders',
+      link: {
+        type: 'doc', id: 'governance/token-holders/index'
+      },
+      items: [
+        'governance/token-holders/custody-options-intro',
+        'governance/token-holders/self-custody-quickstart',
+        'governance/token-holders/nns-app-quickstart',
+        // 'governance/token-holders/seed-donations',
+      ]
+    },
   ]
 };
 
