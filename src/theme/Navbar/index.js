@@ -253,9 +253,12 @@ export default function Navbar() {
                         <NavbarItem {...item} key={i}/>
                     ))}
                     <div className={clsx(styles.navBarDivider)}/>
-                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2" className="header-discord-link"/></div>
-                    <div className={styles.svgIconLinks}><a href="https://github.com/dfinity" className="header-github-link"/></div>
-                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2" className="header-twitter-link"/></div>
+                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2"
+                                                            className="header-discord-link"/></div>
+                    <div className={styles.svgIconLinks}><a href="https://github.com/dfinity"
+                                                            className="header-github-link"/></div>
+                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2"
+                                                            className="header-twitter-link"/></div>
                     <a href="https://forum.dfinity.org/" className={styles.forumIconContainer}>
                         <svg className={"header-forum-link"} width="21" height="21" viewBox="0 0 21 21"
                              fill="currentColor"
@@ -265,13 +268,15 @@ export default function Navbar() {
                             />
                         </svg>
                     </a>
-                    <div className={clsx(styles.navBarDivider)}/>
-                    {!colorModeToggle.disabled && (
-                        <ColorModeToggle
-                            className={styles.toggle}
-                            checked={colorModeToggle.isDarkTheme}
-                            onChange={colorModeToggle.toggle}
-                        />
+                    {!colorModeToggle.disabled && activeDocPlugin &&  (
+                        <>
+                            <div className={clsx(styles.navBarDivider)}/>
+                            <ColorModeToggle
+                                className={styles.toggle}
+                                checked={colorModeToggle.isDarkTheme}
+                                onChange={colorModeToggle.toggle}
+                            />
+                        </>
                     )}
                 </div>
             </div>
