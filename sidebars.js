@@ -245,19 +245,6 @@ const sidebars = {
   'references': [
     'references/index',
     {
-      type: 'link',
-      label: 'Rust CDK References',
-      href: 'https://docs.rs/ic-cdk/',
-    },
-    {
-      type: 'category',
-      label: 'Motoko References',
-      items: [
-        'references/motoko-ref/index'
-      ]
-    },
-    'references/candid-ref',
-    {
       type: 'category',
       label: 'DFX Commands & Envars',
       link: {
@@ -283,6 +270,19 @@ const sidebars = {
         'references/cli-reference/dfx-envars',
       ]
     },
+    {
+      type: 'category',
+      label: 'Motoko References',
+      items: [
+        'references/motoko-ref/index'
+      ]
+    },
+    {
+      type: 'link',
+      label: 'Rust CDK References',
+      href: 'https://docs.rs/ic-cdk/',
+    },
+    'references/candid-ref',
     'references/ic-interface-spec',
     'references/ledger'
   ],
