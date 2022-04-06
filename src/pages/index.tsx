@@ -1,104 +1,91 @@
 import React, {useEffect, useState} from 'react';
-import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Translate from '@docusaurus/Translate';
+import Dashboard from "@site/src/components/Dashboard";
+import backgroundGif from '@site/static/img/background.gif';
+import {AnimatePresence, motion} from "framer-motion"
 
-function HomepageHeader() {
-    const {siteConfig} = useDocusaurusContext();
-    return (
-        <header className={styles.heroBanner}>
-            <div className={styles.videoHero}>
-                <video className={styles.backgroundVideo} autoPlay muted loop playsInline id="background-video">
-                    <source src="https://smartcontracts.org/video/internetComputer_small.mp4" type="video/mp4"/>
-                </video>
-            </div>
+const variants = {
+    enter: direction => {
+        return {
+            y: -300,
+            opacity: 1
+        };
+    },
+    center: {
+        y: 0,
+        opacity: 1
+    },
+    exit: direction => {
+        return {
+            y: 150,
+            opacity: 0
+        };
+    }
+};
+const texts = ["infinite", "لانهائي", "無限的"];
 
-            <div className={styles.videoContainer}>
-                <h1 className="hero__title">{siteConfig.title}</h1>
-
-                <p className="hero__subtitle">
-                    <Translate>
-                        If you’ve landed here, you’re interested in learning more about the Internet Computer.
-                        You’re in the right place — take a look below for where to get started!
-                    </Translate>
-                </p>
-
-                <div className={styles.buttons}>
-                    <Link
-                        className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-                        to="/docs/current/developer-docs/quickstart">
-                        <Translate>🔧 Get Started</Translate>
-                    </Link>
-
-                    <Link
-                        className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-                        to="/docs/current/developer-docs/samples">
-                        <Translate>✅ Sample Code</Translate>
-                    </Link>
-
-                    {/* <Link
-            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/references/motoko-ref">
-            <Translate>📚 References</Translate>
-          </Link>
-
-          <Link
-            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/user-guides">
-            <Translate>👥 User guides</Translate>
-          </Link>
-
-          <Link
-            className={clsx('button', 'button--secondary', 'button--lg', styles.rounded)}
-            to="/docs/current/samples">
-            <Translate>▶️ Samples</Translate>
-          </Link> */}
-                </div>
-            </div>
-        </header>
-    );
+function HomePageHero() {
+    const [index, setIndex] = useState(0);
+    useEffect(() => {
+        setTimeout(() => {
+            let next = index + 1;
+            if (next === texts.length) {
+                next = 0;
+            }
+            setIndex(next);
+        }, 4 * 1000);
+    }, [index, setIndex]);
+    return <div className={styles.heroPage}>
+        <div className={styles.heroPageTitle}>hello,
+            <AnimatePresence>
+                <motion.span
+                    className={styles.InfiniteWord}
+                    style={{position: "absolute"}}
+                    variants={variants}
+                    key={index}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                        y: {type: "spring", stiffness: 600, damping: 200},
+                        opacity: {duration: 0.5}
+                    }}
+                >
+                    {texts[index]}
+                </motion.span>
+            </AnimatePresence>
+            <span className={styles.heroPageTitleSecond}>world!</span>
+        </div>
+        <div className={styles.heroPageText}>
+            <p>Welcome to the Internet Computer! The only blockchain where <br/> dapps can be 100% on
+                chain
+                — real web3.</p>
+        </div>
+        <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart">
+            START BUILDING
+        </Link>
+    </div>;
 }
 
 export default function Home(): JSX.Element {
-    const [blocks, setBlocks] = useState(687713068);
     const {siteConfig} = useDocusaurusContext();
-
-    const fetchBlocks = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/block").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            setBlocks(data.block[0][1]);
-        })
-    }
     useEffect(() => {
-        fetchBlocks();
-        const interval = setInterval(() => {
-            fetchBlocks()
-        }, 1000);
-        return () => {
-            clearInterval(interval)
-        };
-
-    }, [])
+        document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
+    }, []);
     return (
         <Layout
             title={siteConfig.title}
             // TODO: change the desc
             description="Description will go into a meta tag in <head />">
-            <HomepageHeader/>
             <main>
-                <div className={clsx(styles.statsContainer)}>
-                    <p className={clsx(styles.statsValue)}>{blocks}</p>
-                    <p className={clsx(styles.statsTitle)}>Blocks Mined</p>
+                <div className={styles.heroSection}>
+                    <img src={backgroundGif} alt=""/>
+                    <HomePageHero/>
+                    <Dashboard/>
                 </div>
-                <HomepageFeatures/>
             </main>
         </Layout>
     );
