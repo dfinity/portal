@@ -11,7 +11,6 @@
     align-items: center;
     justify-content: center;
 }
-
 .rounded {
     border-radius: 100px;
     font-size: 1em;
@@ -56,7 +55,7 @@
 
 
 .heroSection img {
-    width: 140vw;
+    width: 100vw;
     height: 140vh;
     top: 0;
     left: 40%;
@@ -66,6 +65,7 @@
 }
 
 .heroSection {
+    position: relative;
     overflow: hidden;
 }
 
@@ -77,7 +77,7 @@
     display: flex;
     margin-left: 10vw;
     margin-top: 20vh;
-    align-items: end;
+    align-items: flex-end;
     font-weight: bold;
     font-size: 150px;
     width: 100vw;
@@ -117,7 +117,31 @@
     color: #3B00B9;
 }
 
-.myComponent {
-    height: 2rem;
-    color: #3a33d1;
+.homeNavBar {
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    margin: 0 30% 20px 30%;
+    width: 40%;
+    background-color: rgba(41, 37, 36, 0.9);
+    border-radius: 25px;
+    color: white;
+}
+
+.homeNavBarGrid {
+    padding: 0.8rem 1.2rem;
+    justify-content: space-around;
+}
+.homeNavBarGrid span, .homeNavBarGrid svg {
+    margin: 0 0.9rem;
+}
+
+.homeNavBarGrid a {
+    color: white;
+    text-decoration: none;
+}
+
+.homeNavBarGrid a:hover {
+    color: #8b5cf6;
+    text-decoration: none;
 }

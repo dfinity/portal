@@ -64,7 +64,7 @@ function Dashboard() {
         })
     }
     const fetchCpuCores = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/registered-canisters").then((response) => {
+        fetch("https://ic-api.internetcomputer.org/api/metrics/ic-cpu-cores").then((response) => {
             if (response.ok) {
                 return response.json();
             }
@@ -80,7 +80,7 @@ function Dashboard() {
             }
             throw response;
         }).then(data => {
-            setOperational(data.ic_nodees_count[0][1] >= 100);
+            setOperational(data.ic_nodes_count[0][1] >= 100);
         })
     }
 
