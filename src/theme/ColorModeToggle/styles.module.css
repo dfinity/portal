@@ -1,0 +1,69 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.toggle {
+  position: relative;
+  width: 64px;
+  height: 32px;
+}
+
+.toggleScreenReader {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.toggleDisabled {
+  cursor: not-allowed;
+}
+
+.toggleButton {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background-color: #e7e5e4;
+}
+
+.toggleButton:hover {
+  background-color: #d6d3d1;
+}
+
+.toggleButtonColorIndicator {
+  background-color: #4338ca;
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: flex;
+}
+[data-theme='dark'] .toggleButtonColorIndicator {
+  background-color: #FBB03B;
+}
+
+[data-theme='dark'] .toggleButton:hover {
+  background-color: #78716c;
+}
+
+[data-theme='dark'] .toggleButton {
+  background-color: #57534e;
+}
+
+[data-theme='dark'] .darkToggleIcon,
+[data-theme='light'] .lightToggleIcon {
+  display: none;
+}

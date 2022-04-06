@@ -15,7 +15,6 @@ import {translate} from '@docusaurus/Translate';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
 import NavbarItem from '@theme/NavbarItem';
-import {act} from "react-dom/test-utils";
 
 function useShowAnnouncementBar() {
     const {isActive} = useAnnouncementBar();
