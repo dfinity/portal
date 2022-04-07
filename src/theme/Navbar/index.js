@@ -218,6 +218,12 @@ export default function Navbar() {
     const items = useNavbarItems();
     const hasSearchNavbarItem = items.some((item) => item.type === 'search');
     const {rightItems} = splitNavItemsByPosition(items);
+    const {setLightTheme} = useColorMode();
+    useEffect(() => {
+        if (!activeDocPlugin) {
+            setLightTheme();
+        }
+    }, []);
     return (
         <nav
             ref={navbarRef}
@@ -268,7 +274,7 @@ export default function Navbar() {
                             />
                         </svg>
                     </a>
-                    {!colorModeToggle.disabled && activeDocPlugin &&  (
+                    {!colorModeToggle.disabled && activeDocPlugin && (
                         <>
                             <div className={clsx(styles.navBarDivider)}/>
                             <ColorModeToggle
