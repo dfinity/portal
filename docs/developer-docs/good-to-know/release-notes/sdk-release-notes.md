@@ -1,6 +1,6 @@
 # Developer Release Notes
 
-The {sdk-long-name} enables developers to develop applications to run on the Internet Computer. The Motoko new programming language is bundled with the {sdk-long-name} to provide native support for creating tamper-proof software and open internet services.
+The SDK enables developers to develop applications to run on the Internet Computer. The Motoko new programming language is bundled with the SDK to provide native support for creating tamper-proof software and open internet services.
 
 The SDK provides everything you need to perform the following key tasks:
 
@@ -14,7 +14,7 @@ The SDK provides everything you need to perform the following key tasks:
 
 <div class="note">
 
-The current release of the {sdk-long-name} is intended to introduce you to building applications that run on the Internet Computer and to provide access to the Internet Computer network for application testing, demonstration, and exploration.. The {sdk-long-name} should not be used for developing *production applications* at this time.
+The current release of the SDK is intended to introduce you to building applications that run on the Internet Computer and to provide access to the Internet Computer network for application testing, demonstration, and exploration.. The SDK should not be used for developing *production applications* at this time.
 
 </div>
 
