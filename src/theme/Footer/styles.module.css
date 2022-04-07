@@ -14,3 +14,13 @@
 .footerLogoLink:hover {
   opacity: 1;
 }
+
+.footerText{
+  display: flex;
+  text-align: center;
+  color: #3a33d1;
+}
+
+.footerPadding {
+  margin-bottom: 5vh;
+}

@@ -142,6 +142,65 @@
 }
 
 .homeNavBarGrid a:hover {
-    color: #8b5cf6;
+    color: #a57efc;
+    text-decoration: none;
+}
+
+.whatsIC {
+    width: 100vw;
+    height: 120vh;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.whatsICBG {
+    width: 120vw;
+    margin: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    object-fit: cover;
+    z-index: -100;
+    background-color: #3B00B9;
+}
+
+.whatsICTitle{
+    display: flex;
+    margin: 22rem auto 3rem 14rem;
+    align-items: flex-end;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 90px;
+}
+.whatsICBody {
+    display: flex;
+    margin-left: 14rem;
+    width: 38rem;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.whatsICButtonContainer{
+    margin-left: 14rem;
+    margin-top: 3rem;
+}
+
+.whatsICButton {
+    text-align: center;
+    width: 13rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.whatsICButton:hover {
+    border: 2px solid #a57efc;
+    color: #a57efc;
     text-decoration: none;
 }
