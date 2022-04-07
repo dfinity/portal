@@ -20,7 +20,7 @@ This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens us
 
 The following diagram provides a simplified overview of the three most common ways you can use tokens.
 
-![developers guide:icp tokens how to use](developers-guide:icp-tokens-how-to-use.svg)
+![developers guide:icp tokens how to use](../_attachments/icp-tokens-how-to-use.svg)
 
 As this diagram suggests, how you use ICP tokens depends primarily on your goals in acquiring them.
 
