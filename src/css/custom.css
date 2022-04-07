@@ -3,9 +3,10 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 /* You can override the default Infima variables here. */
 :root {
+    font-family: 'Lato', sans-serif;
     --ifm-color-primary: #e11f7a;
     --ifm-color-primary-dark: #cb1b6e;
     --ifm-color-primary-darker: #c01a68;
@@ -16,6 +17,7 @@
     --ifm-menu-link-sublist-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M18 12H6' /%3E%3C/svg%3E");
     --ifm-menu-link-sublist-iconPlus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 15l7-7 7 7' /%3E%3C/svg%3E");
 }
+
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
