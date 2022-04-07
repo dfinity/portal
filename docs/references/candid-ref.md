@@ -1,8 +1,8 @@
-# Reference
+# Candid Reference
 
-This section provides detailed reference information about Candid supported types and links to the Candid specification and documentation for the Candid Rust crate.
+This document provides detailed reference information about Candid supported types and links to the Candid specification and documentation for the Candid Rust crate.
 
--   [Supported types](candid-types)
+-   [Supported types](#supported-types)
 
 -   [Candid specification](https://github.com/dfinity/candid)
 

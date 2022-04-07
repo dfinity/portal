@@ -1,4 +1,4 @@
-#ICInterface Specification
+# IC Interface Specification
 
 ## Introduction
 
