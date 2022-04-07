@@ -14,7 +14,7 @@ Note that the [Rust canister development kit (Rust CDK)](https://github.com/dfin
 
 Because most Rust programmers use Cargo to handle build and package management tasks, such as downloading and compiling the libraries your dapp depends on, your first step is to create a new Rust project using the Cargo command-line interface.
 
-Alternatively, you could create a new project using {sdk-long-name} instead of Cargo, but creating a project using Cargo represents the typical workflow for creating Rust projects.
+Alternatively, you could create a new project using SDK instead of Cargo, but creating a project using Cargo represents the typical workflow for creating Rust projects.
 
 To create a new Rust project:
 

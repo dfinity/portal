@@ -46,7 +46,8 @@ const sidebars = {
           type: 'category',
           label: 'Project Setup',
           link: {
-            type: 'doc', id: 'developer-docs/build/project-setup/index',
+            // type: 'doc', id: 'developer-docs/build/project-setup/index',
+            type: 'doc', id: 'developer-docs/build/project-setup/design-dapps',
           },
           items: [
             'developer-docs/build/project-setup/design-dapps',
@@ -81,7 +82,8 @@ const sidebars = {
               type: 'category',
               label: 'Motoko',
               link: {
-                type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/about-this-guide',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
@@ -147,7 +149,8 @@ const sidebars = {
           type: 'category',
           label: 'Frontend Tutorials',
           link: {
-            type: 'doc', id: 'developer-docs/build/frontend/index',
+            // type: 'doc', id: 'developer-docs/build/frontend/index',
+            type: 'doc', id: 'developer-docs/build/frontend/webpack-config',
           },
           items: [
             'developer-docs/build/frontend/webpack-config',
@@ -160,7 +163,8 @@ const sidebars = {
       type: 'category',
       label: 'Integrate Functionality',
       link: {
-        type: 'doc', id: 'developer-docs/functionality/index'
+        // type: 'doc', id: 'developer-docs/functionality/index'
+        type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
       },
       items: [
         // 'developer-docs/functionality/index',
@@ -168,7 +172,8 @@ const sidebars = {
           type: 'category',
           label: 'Rosetta',
           link: {
-            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
+            // type: 'doc', id: 'developer-docs/functionality/rosetta/index'
+            type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
           },
           items: [
             'developer-docs/functionality/rosetta/transfers',
@@ -194,7 +199,8 @@ const sidebars = {
       type: 'category',
       label: 'Good to know',
       link: {
-        type: 'doc', id: 'developer-docs/good-to-know/index'
+        // type: 'doc', id: 'developer-docs/good-to-know/index'
+        type: 'doc', id: 'developer-docs/good-to-know/computation-and-storage-costs'
       },
       items: [
         'developer-docs/good-to-know/computation-and-storage-costs',
@@ -212,7 +218,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Release Notes',
+          label: 'SDK Release Notes',
           link: {
             type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
           },
@@ -243,7 +249,8 @@ const sidebars = {
     }
   ],
   'references': [
-    'references/index',
+    // 'references/index',
+    'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -273,8 +280,11 @@ const sidebars = {
     {
       type: 'category',
       label: 'Motoko References',
+      link: {
+        type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
+      },
       items: [
-        'references/motoko-ref/index'
+        'developer-docs/build/languages/motoko/language-manual',
       ]
     },
     {
@@ -298,12 +308,13 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'governance': [
-    'governance/index',
+    // 'governance/index',
     {
       type: 'category',
       label: 'Token Holders',
       link: {
-        type: 'doc', id: 'governance/token-holders/index'
+        // type: 'doc', id: 'governance/token-holders/index'
+        type: 'doc', id: 'governance/token-holders/custody-options-intro'
       },
       items: [
         'governance/token-holders/custody-options-intro',
