@@ -7,6 +7,7 @@ import Dashboard from "@site/src/components/Dashboard";
 import backgroundGif from '@site/static/img/background.gif';
 import WhatsTheIcBG from '@site/static/img/whats_the_ic_bg.svg';
 import {AnimatePresence, motion} from "framer-motion"
+import GenerativeBackground from "@site/src/components/GenerativeBackground";
 
 const variants = {
     enter: direction => {
@@ -155,6 +156,7 @@ export default function Home(): JSX.Element {
                     <Dashboard/>
                 </div>
                 <WhatsIC/>
+                <GenerativeBackground />
             </main>
         </Layout>
     );
