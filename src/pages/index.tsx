@@ -7,25 +7,20 @@ import Dashboard from "@site/src/components/Dashboard";
 import backgroundGif from '@site/static/img/background.gif';
 import WhatsTheIcBG from '@site/static/img/whats_the_ic_bg.svg';
 import {AnimatePresence, motion} from "framer-motion"
-import GenerativeBackground from "@site/src/components/GenerativeBackground";
 
 const variants = {
-    enter: direction => {
-        return {
-            y: -300,
-            opacity: 1
-        };
+    enter: {
+        y: -300,
+        opacity: 1
     },
     center: {
         y: 0,
         opacity: 1
     },
-    exit: direction => {
-        return {
-            y: 150,
-            opacity: 0
-        };
-    }
+    exit: {
+        y: 150,
+        opacity: 0
+    },
 };
 const texts = ["infinite", "لانهائي", "無限的"];
 
@@ -156,7 +151,6 @@ export default function Home(): JSX.Element {
                     <Dashboard/>
                 </div>
                 <WhatsIC/>
-                <GenerativeBackground />
             </main>
         </Layout>
     );

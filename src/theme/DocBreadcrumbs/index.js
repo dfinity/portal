@@ -32,12 +32,11 @@ function HomeBreadcrumbItem() {
     const homeHref = useBaseUrl('/');
     return (<BreadcrumbsItem>
         <BreadcrumbsItemLink href={homeHref}>
-            <div className={styles.breadcrumbsHomeIconContainer}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor" strokeWidth={2} width="2em" height="2em">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            <div className={styles.breadcrumbsHomeIconContainer}>
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 17H16V7.978L9 2.534L2 7.978V17H8V11H10V17ZM18 18C18 18.2652 17.8946 18.5196 17.7071 18.7071C17.5196 18.8946 17.2652 19 17 19H1C0.734784 19 0.48043 18.8946 0.292893 18.7071C0.105357 18.5196 2.4071e-07 18.2652 2.4071e-07 18V7.49C-0.000105484 7.33761 0.0346172 7.18721 0.101516 7.0503C0.168415 6.91338 0.26572 6.79356 0.386 6.7L8.386 0.477997C8.56154 0.341443 8.7776 0.267303 9 0.267303C9.2224 0.267303 9.43846 0.341443 9.614 0.477997L17.614 6.7C17.7343 6.79356 17.8316 6.91338 17.8985 7.0503C17.9654 7.18721 18.0001 7.33761 18 7.49V18V18Z"
+                    />
                 </svg>
             </div>
         </BreadcrumbsItemLink>

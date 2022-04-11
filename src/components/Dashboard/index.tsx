@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styles from "@site/src/components/Dashboard/styles.module.css";
 import ReactTooltip from 'react-tooltip';
 
@@ -31,80 +31,6 @@ function Dashboard() {
     const [operational, setOperational] = useState(true);
     const [cost, setCost] = useState(0.46);
 
-    const fetchBlockCount = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/block").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            setBlockCount(Math.round(data.block[0][1]));
-        })
-    }
-    const fetchBlockPerSecond = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/block-rate").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            const m = Number((Math.abs(data.block_rate[0][1]) * 100).toPrecision(15));
-            const roundedBlocks = Math.round(m) / 100 * Math.sign(data.block_rate[0][1]);
-            setBlocksPerSecond(roundedBlocks);
-        })
-    }
-    const fetchRunningCanisters = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/registered-canisters").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            setRunningCanisters(Math.round(data.running_canisters[0][1]));
-        })
-    }
-    const fetchCpuCores = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/ic-cpu-cores").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            setCpuCores(data.ic_cpu_cores[0][1]);
-        })
-    }
-    const fetchOperational = () => {
-        fetch("https://ic-api.internetcomputer.org/api/metrics/ic-nodes-count").then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw response;
-        }).then(data => {
-            setOperational(data.ic_nodes_count[0][1] >= 100);
-        })
-    }
-
-    const fetchData = useCallback(
-        () => {
-            fetchBlockCount();
-            fetchBlockPerSecond();
-            fetchRunningCanisters();
-            fetchCpuCores();
-            fetchOperational();
-        },
-        [],
-    );
-
-    useEffect(() => {
-        fetchData();
-        const interval = setInterval(() => {
-            fetchData();
-        }, 5000);
-        return () => {
-            clearInterval(interval)
-        };
-
-    }, [])
     return (
         <>
             <div className={styles.dashboardContainer}>
