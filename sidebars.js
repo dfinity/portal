@@ -46,7 +46,8 @@ const sidebars = {
           type: 'category',
           label: 'Project Setup',
           link: {
-            type: 'doc', id: 'developer-docs/build/project-setup/index',
+            // type: 'doc', id: 'developer-docs/build/project-setup/index',
+            type: 'doc', id: 'developer-docs/build/project-setup/design-dapps',
           },
           items: [
             'developer-docs/build/project-setup/design-dapps',
@@ -81,7 +82,8 @@ const sidebars = {
               type: 'category',
               label: 'Motoko',
               link: {
-                type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/about-this-guide',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
@@ -147,7 +149,8 @@ const sidebars = {
           type: 'category',
           label: 'Frontend Tutorials',
           link: {
-            type: 'doc', id: 'developer-docs/build/frontend/index',
+            // type: 'doc', id: 'developer-docs/build/frontend/index',
+            type: 'doc', id: 'developer-docs/build/frontend/webpack-config',
           },
           items: [
             'developer-docs/build/frontend/webpack-config',
@@ -160,7 +163,8 @@ const sidebars = {
       type: 'category',
       label: 'Integrate Functionality',
       link: {
-        type: 'doc', id: 'developer-docs/functionality/index'
+        // type: 'doc', id: 'developer-docs/functionality/index'
+        type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
       },
       items: [
         // 'developer-docs/functionality/index',
@@ -168,7 +172,8 @@ const sidebars = {
           type: 'category',
           label: 'Rosetta',
           link: {
-            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
+            // type: 'doc', id: 'developer-docs/functionality/rosetta/index'
+            type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
           },
           items: [
             'developer-docs/functionality/rosetta/transfers',
@@ -194,7 +199,8 @@ const sidebars = {
       type: 'category',
       label: 'Good to know',
       link: {
-        type: 'doc', id: 'developer-docs/good-to-know/index'
+        // type: 'doc', id: 'developer-docs/good-to-know/index'
+        type: 'doc', id: 'developer-docs/good-to-know/computation-and-storage-costs'
       },
       items: [
         'developer-docs/good-to-know/computation-and-storage-costs',
@@ -212,20 +218,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Token Holders',
-          link: {
-            type: 'doc', id: 'developer-docs/good-to-know/token-holders/index'
-          },
-          items: [
-            'developer-docs/good-to-know/token-holders/custody-options-intro',
-            'developer-docs/good-to-know/token-holders/self-custody-quickstart',
-            'developer-docs/good-to-know/token-holders/nns-app-quickstart',
-            // 'developer-docs/good-to-know/token-holders/seed-donations',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Release Notes',
+          label: 'SDK Release Notes',
           link: {
             type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
           },
@@ -256,20 +249,8 @@ const sidebars = {
     }
   ],
   'references': [
-    'references/index',
-    {
-      type: 'link',
-      label: 'Rust CDK References',
-      href: 'https://docs.rs/ic-cdk/',
-    },
-    {
-      type: 'category',
-      label: 'Motoko References',
-      items: [
-        'references/motoko-ref/index'
-      ]
-    },
-    'references/candid-ref',
+    // 'references/index',
+    'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -296,6 +277,22 @@ const sidebars = {
         'references/cli-reference/dfx-envars',
       ]
     },
+    {
+      type: 'category',
+      label: 'Motoko References',
+      link: {
+        type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
+      },
+      items: [
+        'developer-docs/build/languages/motoko/language-manual',
+      ]
+    },
+    {
+      type: 'link',
+      label: 'Rust CDK References',
+      href: 'https://docs.rs/ic-cdk/',
+    },
+    'references/candid-ref',
     'references/ic-interface-spec',
     'references/ledger'
   ],
@@ -311,7 +308,21 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'governance': [
-    'governance/index'
+    // 'governance/index',
+    {
+      type: 'category',
+      label: 'Token Holders',
+      link: {
+        // type: 'doc', id: 'governance/token-holders/index'
+        type: 'doc', id: 'governance/token-holders/custody-options-intro'
+      },
+      items: [
+        'governance/token-holders/custody-options-intro',
+        'governance/token-holders/self-custody-quickstart',
+        'governance/token-holders/nns-app-quickstart',
+        // 'governance/token-holders/seed-donations',
+      ]
+    },
   ]
 };
 
