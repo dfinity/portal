@@ -149,6 +149,7 @@ function Footer() {
             </div>
           ) : (
             <div className="footer__links text--center">
+                <div>Hey</div>
               <SimpleLinks links={links} />
             </div>
           ))}
@@ -187,6 +188,7 @@ function Footer() {
           </div>
         )}
       </div>
+        <div className={styles.footerPadding} />
     </footer>
   );
 }

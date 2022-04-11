@@ -34,10 +34,10 @@ function ColorModeToggle({className, checked: defaultChecked, onChange}) {
                 tabIndex={-1}
                 onClick={() => inputRef.current?.click()}>
                 <div className={clsx(styles.toggleButtonColorIndicator)} />
-                <IconLightMode
+                <IconLightMode width={15} height={15}
                     className={clsx(styles.toggleIcon, styles.lightToggleIcon)}
                 />
-                <IconDarkMode
+                <IconDarkMode width={15} height={15}
                     className={clsx(styles.toggleIcon, styles.darkToggleIcon)}
                 />
             </div>

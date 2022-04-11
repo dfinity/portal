@@ -208,7 +208,7 @@ const config = {
                             },
                         ]
                     },
-                    {
+                    /*{
                         title: 'Media',
                         items: [
                             {
@@ -276,7 +276,7 @@ const config = {
                                 to: 'https://thereboot.com/',
                             }
                         ],
-                    },
+                    },*/
                 ],
                 copyright: `Copyright © ${new Date().getFullYear()} DFINITY Foundation.`,
             },
