@@ -1,6 +1,6 @@
 # Explore the default project
 
-If you started your tour of the {sdk-long-name} with the [Quick start](../../quickstart/quickstart-intro), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+If you started your tour of the SDK with the [Quick start](../../quickstart/quickstart-intro), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
