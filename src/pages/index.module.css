@@ -100,6 +100,10 @@
     text-decoration: none;
 }
 
+.dfinityIconNav:hover {
+    fill:#a57efc ;
+}
+
 .whatsIC {
     width: 100vw;
     height: 100vh;
