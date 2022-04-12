@@ -111,7 +111,7 @@ const config = {
                         position: 'right',
                     },
                     {
-                        to: 'https://github.com/dfinity/examples',
+                        to: '/docs/current/developer-docs/samples',
                         label: 'Sample Code',
                         position: 'right',
                     },
