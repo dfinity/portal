@@ -294,7 +294,8 @@ const sidebars = {
     },
     'references/candid-ref',
     'references/ic-interface-spec',
-    'references/ledger'
+    'references/ledger',
+    'references/ii-spec'
   ],
   'concepts': [
     'concepts/index',
