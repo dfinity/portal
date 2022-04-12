@@ -14,8 +14,8 @@ import KeyIcon from '@site/static/img/keyIcon.svg';
 import NftIcon from '@site/static/img/nftIcon.svg';
 import PlayIcon from '@site/static/img/playIcon.svg';
 import WorldwideIcon from '@site/static/img/worldwideIcon.svg';
-
 import {AnimatePresence, motion} from "framer-motion"
+import Features from "@site/src/components/Features";
 
 const variants = {
     enter: {
@@ -90,12 +90,12 @@ function HomeNavBar() {
                       d="M10.0132 4.74058C9.57169 4.32027 7.41013 2.60405 5.34154 2.54566C1.65521 2.45507 0.571579 5.07811 0.478149 5.41641C1.18425 2.47502 3.81627 0.280685 6.94526 0.269043C9.49615 0.269043 12.0738 2.7171 13.9784 4.92645C13.9816 4.92274 13.9845 4.91912 13.9875 4.91565C13.9875 4.91565 14.8473 5.88467 15.7887 6.92375C15.7887 6.92375 16.8578 8.16133 17.9967 9.24707C18.4383 9.66739 20.5881 11.3603 22.6567 11.4187C26.4454 11.5238 27.4912 8.75674 27.5492 8.54658C26.8522 11.5004 24.2141 13.7069 21.0762 13.7186C18.5247 13.7186 15.9459 11.2689 14.0334 9.05897C14.0296 9.06346 14.026 9.06787 14.0226 9.07206C14.0226 9.07206 13.1626 8.10299 12.2212 7.06392C12.2212 7.06392 11.1521 5.82634 10.0132 4.74058Z"
                       fill="white"/>
             </svg>
-            <Link to={"/"}><span>Metrics</span></Link>
+            <Link to={"/"}><span>Start Coding</span></Link>
             <Link to={"/"}><span>Internet Computer</span></Link>
             <Link to={"/"}><span>Features</span></Link>
             <Link to={"/"}><span>Showcase</span></Link>
             <Link to={"/"}><span>Ecosystem</span></Link>
-            <Link to={"/"}><span>Join IC Forum</span></Link>
+            <Link to={"/"}><span>Join Dev Forum</span></Link>
         </div>
     </div>
 }
@@ -106,7 +106,7 @@ function WhatsIC() {
         <GamingIcon className={styles.gamingIcon}/>
         <WorldwideIcon className={styles.worldwideIcon}/>
         <DatabaseIcon className={styles.databaseIcon}/>
-        <GrowthIcon  className={styles.growthIcon}/>
+        <GrowthIcon className={styles.growthIcon}/>
         <p className={styles.whatsICTitle}>What's the <br/> Internet Computer</p>
         <p className={styles.whatsICBody}>Imagine building scalable Dapps, DeFi, websites, enterprise systems and
             open
@@ -202,7 +202,7 @@ export default function Home(): JSX.Element {
                             </motion.div>}
                     </AnimatePresence>
                 </div>
-                <div className={styles.placeholderSection} />
+                <Features />
             </main>
         </Layout>
     );

@@ -69,22 +69,25 @@
 
 .homeNavBar {
     position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width:50rem;
     z-index: 900;
     bottom: 0;
-    margin: 0 30% 20px 30%;
-    width: 40%;
+    margin: 0 auto 20px auto;
     background-color: rgba(41, 37, 36, 0.9);
     border-radius: 25px;
     color: white;
 }
 
 .homeNavBarGrid {
-    padding: 0.8rem 1.2rem;
-    justify-content: space-around;
+    display: flex;
+    padding: 0.8rem 0.5rem;
+    justify-content: space-between;
 }
 
 .homeNavBarGrid span, .homeNavBarGrid svg {
-    margin: 0 0.9rem;
+    margin: auto 0.9rem;
 }
 
 .homeNavBarGrid a {
@@ -178,11 +181,6 @@
     bottom: 150px;
     width: 500px;
     filter: blur(400px);
-}
-
-.placeholderSection {
-    height: 120vh;
-    position: relative;
 }
 
 .dfinityIcon {

@@ -4,9 +4,14 @@
  * work well for content-centric websites.
  */
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@font-face {
+    font-family: 'Circular Std';
+    src: url('@site/static/fonts/circular/woff/CircularXXWeb-Regular.woff') format('woff'),
+    url('@site/static/fonts/circular/woff2/CircularXXWeb-Regular.woff2') format('woff2');
+}
 /* You can override the default Infima variables here. */
 :root {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Circular Std', 'Lato', sans-serif;
     --ifm-color-primary: #e11f7a;
     --ifm-color-primary-dark: #cb1b6e;
     --ifm-color-primary-darker: #c01a68;
