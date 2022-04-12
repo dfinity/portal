@@ -10,7 +10,7 @@ This *Self-Custody Quick Start* scenario assumes:
 
 -   You want to know how to convert, transfer, or lock your ICP tokens using the SDK command-line interface DFX.
 
-If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an exchange or receive a token grant before you can take custody. For an overview of how to get ICP tokens and custody options, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles#get-cycles) and [Choosing self-custody for digital assets](custody-options-intro).
+If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an exchange or receive a token grant before you can take custody. For an overview of how to get ICP tokens and custody options, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles) and [Choosing self-custody for digital assets](custody-options-intro).
 
 If you are using another application—such as the [Network Nervous System (NNS) application](https://nns.ic0.app) or the user interface provided by a hardware wallet—to interact with your ICP tokens, you should refer to the documentation for that application.
 
@@ -198,7 +198,7 @@ To transfer ICP tokens to another account:
 
     If you transfer the ICP tokens to an account in the [Network Nervous System application](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../developers-guide/cli-reference/dfx-ledger).
+    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../refernces/cli-reference/dfx-ledger).
 
 ## Lock ICP tokens by staking them in a neuron
 
