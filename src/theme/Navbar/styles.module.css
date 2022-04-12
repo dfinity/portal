@@ -28,7 +28,7 @@ Hide toggle in small viewports
 .forumIconContainer {
   vertical-align: middle;
   display: inline-block;
-  padding: 4px 12px;
+  padding: 0.4rem;
   margin-top: 8px;
   color: var(--ifm-color-primary);
 }
@@ -39,5 +39,5 @@ Hide toggle in small viewports
 }
 
 .svgIconLinks {
-  padding: 4px 12px;
+  padding: 0.4rem;
 }

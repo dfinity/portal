@@ -71,7 +71,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             navbar: {
-                title: 'Internet Computer',
+                title: 'INTERNET COMPUTER',
                 logo: {
                     alt: 'DFINITY Logo',
                     src: 'img/logo.svg',

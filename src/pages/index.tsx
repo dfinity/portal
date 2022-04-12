@@ -181,7 +181,17 @@ export default function Home(): JSX.Element {
             // TODO: change the desc
             description="Description will go into a meta tag in <head />">
             <main>
-                {displayHomeNav && <HomeNavBar/>}
+                <AnimatePresence>
+                    {displayHomeNav &&
+                        <motion.div
+                            key="modal"
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                        >
+                            <HomeNavBar/>
+                        </motion.div>}
+                </AnimatePresence>
                 <div ref={heroSection} className={styles.heroSection}>
                     <img className={styles.heroSectionBG} src={backgroundGif} alt=""/>
                     <HomePageHero/>
