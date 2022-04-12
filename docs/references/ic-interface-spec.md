@@ -1,4 +1,4 @@
-#ICInterface Specification
+# IC Interface Specification
 
 ## Introduction
 
@@ -1458,8 +1458,6 @@ It is possible to use the management canister via external requests (a.k.a. ingr
 ### Interface overview
 
 The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality. You can also [download the file](_attachments/ic.did).
-
-    Unresolved directive in internet.adoc - include::{example}ic.did[]
 
 The binary encoding of arguments and results are as per Candid specification.
 

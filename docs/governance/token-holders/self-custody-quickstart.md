@@ -20,7 +20,7 @@ This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens us
 
 The following diagram provides a simplified overview of the three most common ways you can use tokens.
 
-![developers guide:icp tokens how to use](developers-guide:icp-tokens-how-to-use.svg)
+![developers guide:icp tokens how to use](../_attachments/icp-tokens-how-to-use.svg)
 
 As this diagram suggests, how you use ICP tokens depends primarily on your goals in acquiring them.
 
@@ -38,7 +38,7 @@ To get started, verify the following:
 
 -   You hold ICP tokens in a self-custody wallet.
 
--   You have downloaded and installed the {sdk-long-name} by running the following command in a terminal on your local computer:
+-   You have downloaded and installed the SDK by running the following command in a terminal on your local computer:
 
     ``` bash
     sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
@@ -46,7 +46,7 @@ To get started, verify the following:
 
 -   You have created a backup copy of the public/private key for the identity you are using for self-custody.
 
-    For example, if you are using the default developer identity created using the {sdk-long-name} `dfx` command-line interface, you should have a backup of the `~/.config/dfx/identity/default/identity.pem` file stored in a secure location.
+    For example, if you are using the default developer identity created using the SDK `dfx` command-line interface, you should have a backup of the `~/.config/dfx/identity/default/identity.pem` file stored in a secure location.
 
 -   You have a secure environment in which to perform operations involving ICP tokens.
 
