@@ -18,7 +18,7 @@ This tutorial assumes you know how to perform common tasks—like opening a term
 
 ## Download and install
 
-You can download the latest version of the {sdk-long-name} directly from within a terminal shell on your local computer.
+You can download the latest version of the SDK directly from within a terminal shell on your local computer.
 
 To download and install:
 
