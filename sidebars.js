@@ -17,23 +17,23 @@ const sidebars = {
         // 'developer-docs/quickstart/network-quickstart'
       ]
     },
-    {
-      type: 'category',
-      label: 'Sample Code',
-      link: {
-        type: 'doc', id: 'developer-docs/samples/index'
-      },
-      items: [
-        'developer-docs/samples/dao',
-        'developer-docs/samples/dex',
-        'developer-docs/samples/encrypted-notes',
-        'developer-docs/samples/hackathon-projects',
-        'developer-docs/samples/hello',
-        'developer-docs/samples/host-a-website',
-        'developer-docs/samples/nft',
-        'developer-docs/samples/tokentransfer',
-      ]
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Sample Code',
+    //   link: {
+    //     type: 'doc', id: 'developer-docs/samples/index'
+    //   },
+    //   items: [
+    //     'developer-docs/samples/dao',
+    //     'developer-docs/samples/dex',
+    //     'developer-docs/samples/encrypted-notes',
+    //     'developer-docs/samples/hackathon-projects',
+    //     'developer-docs/samples/hello',
+    //     'developer-docs/samples/host-a-website',
+    //     'developer-docs/samples/nft',
+    //     'developer-docs/samples/tokentransfer',
+    //   ]
+    // },
     {
       type: 'category',
       label: 'Building on the IC',
