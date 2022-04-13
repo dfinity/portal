@@ -71,10 +71,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             navbar: {
-                title: 'INTERNET COMPUTER',
+                hideOnScroll: true,
                 logo: {
                     alt: 'DFINITY Logo',
-                    src: 'img/logo.svg',
+                    src: 'img/IC_logo_horizontal.svg',
                 },
                 items: [
                     {

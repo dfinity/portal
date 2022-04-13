@@ -220,6 +220,7 @@ export default function Navbar() {
     const {rightItems} = splitNavItemsByPosition(items);
     const {setLightTheme} = useColorMode();
     useEffect(() => {
+        // check if it's on homepage
         if (!activeDocPlugin) {
             setLightTheme();
         }
@@ -263,7 +264,7 @@ export default function Navbar() {
                                                             className="header-discord-link"/></div>
                     <div className={styles.svgIconLinks}><a href="https://github.com/dfinity"
                                                             className="header-github-link"/></div>
-                    <div className={styles.svgIconLinks}><a href="https://discord.com/invite/cA7y6ezyE2"
+                    <div className={styles.svgIconLinks}><a href="https://twitter.com/dfinity"
                                                             className="header-twitter-link"/></div>
                     <a href="https://forum.dfinity.org/" className={styles.forumIconContainer}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
