@@ -3,7 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 4px;
     grid-row-gap: 4px;
-    margin: 4%;
+    margin: 4% 4% 8% 4%;
     height: 60vh;
 }
 
@@ -22,17 +22,20 @@
 
 .container:hover,
 .container:hover .informationTitle,
-.container:hover .informationIcon {
+.container:hover .informationIcon,
+.container:hover .informationBody {
     background: var(--ifm-color-primary);
     color: white;
     text-decoration: none;
 }
 
-.container:hover .informationBody {
-    padding-bottom: 1.5rem;
+.container:hover .bodyContainer {
+    margin-top: -15px;
+    margin-bottom: 15px;
 }
 
 .bodyContainer {
+    margin: 0;
     flex-grow: 1;
 }
 
@@ -48,6 +51,7 @@
     font-size: 1rem;
     line-height: 1.5rem;
     width: 386px;
+    color:black;
 }
 
 .informationIcon {
