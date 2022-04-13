@@ -23,7 +23,7 @@ function Features() {
                 <Card title={"internetscale"} body={"Dapps can grow without limits as the IC transparently adds more nodes"} />
                 <Card title={"actormodel"} body={"Parallelism enables scaling. Contracts are asynchronous"} />
             </div>
-            <Link className={styles.actionButton} to="/docs/current/developer-docs/quickstart">
+            <Link className={styles.actionButton} to="https://dfinity.org/roadmap">
                 LEARN MORE
             </Link>
         </div>

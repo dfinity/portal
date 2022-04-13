@@ -9,9 +9,16 @@
     src: url('@site/static/fonts/circular/woff/CircularXXWeb-Regular.woff') format('woff'),
     url('@site/static/fonts/circular/woff2/CircularXXWeb-Regular.woff2') format('woff2');
 }
+@font-face {
+    font-family: 'CircularXXTT';
+    src: url('@site/static/fonts/circularXXTT/CircularXXTT-Regular.woff2') format('woff2'),
+    url('@site/static/fonts/circularXXTT/CircularXXTT-Medium.woff2') format('woff2'),
+    url('@site/static/fonts/circularXXTT/CircularXXTT-Bold.woff2') format('woff2');
+
+}
 /* You can override the default Infima variables here. */
 :root {
-    font-family: 'Circular Std', 'Lato', sans-serif;
+    font-family: 'CircularXXTT', 'Lato', sans-serif;
     --ifm-color-primary: #e11f7a;
     --ifm-color-primary-dark: #cb1b6e;
     --ifm-color-primary-darker: #c01a68;
@@ -132,4 +139,24 @@ div[class^='announcementBarContent'] {
     border-radius: .25rem;
     transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
-
+.navbar__link {
+    font-weight: var(--ifm-font-weight-bold)
+}
+.navbar__logo {
+    flex: 0 0 auto;
+    height: 1.5rem;
+    margin-right: .5rem
+}
+.navbar__search-input {
+    appearance: none;
+    background: var(--ifm-navbar-search-input-background-color) var(--ifm-navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem;
+    border: none;
+    border-radius: 12px;
+    color: var(--ifm-navbar-search-input-color);
+    cursor: text;
+    display: inline-block;
+    font-size: 0.9rem;
+    height: 2rem;
+    padding: 0 0.5rem 0 2.25rem;
+    width: 12.5rem;
+}
