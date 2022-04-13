@@ -10,11 +10,13 @@
     z-index: -100;
     position: absolute;
     object-fit: cover;
+    mix-blend-mode: multiply;
 }
 
 .heroSection {
     position: relative;
     overflow: hidden;
+    background-color: #F1EEF599;
 }
 
 .heroPage {
@@ -74,10 +76,10 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 50rem;
-    z-index: 900;
+    z-index: 1900;
     bottom: 0;
     margin: 0 auto 20px auto;
-    background-color: rgba(52, 66, 62, 0.9);
+    background-color: rgba(100,98,108, 0.9);
     border-radius: 25px;
     color: white;
 }
@@ -98,7 +100,7 @@
 }
 
 .homeNavBarGrid a:hover {
-    color: #a57efc;
+    color: rgba(182,182,182, 1);
     text-decoration: none;
 }
 
@@ -180,6 +182,7 @@
     height: 100vh;
     z-index: 1000;
     position: relative;
+    background-color: #F1EEF5CC;
 }
 
 .whatsICBGColor {

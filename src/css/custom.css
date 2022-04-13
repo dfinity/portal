@@ -160,3 +160,7 @@ div[class^='announcementBarContent'] {
     padding: 0 0.5rem 0 2.25rem;
     width: 12.5rem;
 }
+
+.navbar{
+    z-index: 1900;
+}
