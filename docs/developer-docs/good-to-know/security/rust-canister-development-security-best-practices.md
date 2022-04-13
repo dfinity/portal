@@ -430,7 +430,7 @@ Unsafe Rust code is risky because it may introduce memory corruption issues.
 
 -   Avoid unsafe code whenever possible.
 
--   See the [Rust security guidelines](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code)
+-   See the [Rust security guidelines](https://anssi-fr.github.io/rust/04_language.html#unsafe-code)
 
 -   Consider the [Dfinity Rust Guidelines](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_avoid_unsafe_code).
 
@@ -446,7 +446,7 @@ Integers in Rust may overflow. While such overflows lead to panics in the debug 
 
 -   Use the `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
 
--   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust-guide/04_language.html#integer-overflows).
+-   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust/04_language.html#integer-overflows).
 
 ### For expensive calls, consider using captchas or proof of work
 
