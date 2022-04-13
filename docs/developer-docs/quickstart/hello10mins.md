@@ -1,6 +1,7 @@
-# Deploy a "Hello World" Dapp in 10 Minutes
+# Deploy a "Hello, World!" Dapp in 10 Minutes
 
-This is a quick tutorial for deploying a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp requires basic knowledge of using a terminal. Code editing knowledge is not necessary.
+This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
+<!-- Code editing knowledge is not necessary. -->
 
 Before starting, take a look at a version of this dapp running on-chain: <https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/>
 
@@ -16,38 +17,37 @@ In this tutorial, you will learn how to:
 
 5.  Deploy a dapp on-chain
 
-This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Glossary#C) (one for backend and one for frontend). The dapp’s functionality works as such: it accepts a text argument as input and returns a greeting. For example, if you call the `greet` method with the text argument `Everyone` on the command-line via the canister SDK (see instructions below on how to install the canister SDK), the dapp will return `Hello, Everyone!` in your terminal:
+This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Glossary#C) (one for backend and one for frontend). The dapp’s functionality works as such: it accepts a text argument as input and returns a greeting. For example, if you call the `greet` method with the text argument `Everyone` on the command-line via the canister SDK (see instructions below on how to install the canister SDK), the dapp will return `Hello, Everyone!` either in your terminal:
 
 ``` bash
 $ dfx canister call hello greet Everyone
 $ "Hello, Everyone"
 ```
 
--   via the dapp in a browser, a pop-up window will appear with the message: `Hello, Everyone!`\*\*
+Or via the dapp in a browser, a pop-up window will appear with the message: `Hello, Everyone!`
 
 ![Hello](_attachments/front-end-result.png)
 
-Note that the "Hello World" dapp consists of back-end code written in [Motoko](language-guide/motoko), a programming language specifically designed for interacting with the (IC), and a simple webpack-based front-end.
+Note that the "Hello World" dapp consists of back-end code written in [Motoko](language-guide/motoko), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
 
 ## Topics Covered in this Tutorial
 
 -   **Canisters** are the smart contracts installed on the IC. They contain the code to be ran and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
 
--   **[Cycles](developers-guide/concepts/tokens-cycles)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The Internet Computer’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
+-   **[Cycles](../../concepts/tokens-cycles)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The Internet Computer’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
 
--   A **[cycles wallet](developers-guide/default-wallet)** is a canister that holds cycles and powers up dapps.
+-   A **[cycles wallet](../build/project-setup/default-wallet)** is a canister that holds cycles and powers up dapps.
 
-## 1. [Install tools](1-quickstart.xml)
-
-# 1. Installing Tools
+## 1. Installing Tools
 
 To complete the Hello, World! tutorial you need to install the canister SDK, Node.js and the Node package manager.
 
-## 1.1 The Canister SDK (AKA "**dfx**")
+### 1.1 The Canister SDK (AKA **`dfx`**)
 
-The Canister SDK used to develop on the IC is called `dfx` and it is maintained by the DFINITY foundation and is written in Motoko. There are other SDKs.
+The Canister SDK used to develop on the IC is called `dfx`. It is maintained by the DFINITY foundation and is written in Motoko. 
+<!-- There are other SDKs. -->
 
-To install, one needs to run:
+To install `dfx`, one needs to run:
 
 ``` bash
 sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
@@ -63,7 +63,7 @@ The terminal should look like this (at least version 0.9.2):
 
 ![dfx version](_attachments/dfx-version.png)
 
-## 1.2 Node.js
+### 1.2 Node.js
 
 Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js in not needed for canister development in general.
 
@@ -71,81 +71,66 @@ We support all stable versions of Node.js starting with 12. You can install 12, 
 
 There are many ways of installing node.js, including from [nodejs.org website](https://nodejs.org/en/download).
 
-Besides installing node.js, users need to also install: \* Node Package Manager (NPM). (This comes packaged with Node, but you may want to upgrade with `npm i -g npm`) \* Node Version Manager (NVM), see [installing NVM](https://github.com/nvm-sh/nvm#installing-and-updating). \* Once you have NVM, install the latest stable build with `nvm install --lts`
+Besides installing node.js, users need to also install: 
+* Node Package Manager (NPM). (This comes packaged with Node, but you may want to upgrade with `npm i -g npm`) 
+* Node Version Manager (NVM), see [installing NVM](https://github.com/nvm-sh/nvm#installing-and-updating).
+* Once you have NVM, install the latest stable build with `nvm install --lts`
 
-You are now ready to continue.
-
-## Conclusion
-
-You now have the SDK properly installed.
-
-Continue with the main tutorial: [quickstart intro](quickstart-intro.xml).
-
-    Required tools: Canister SDK and node.js.
-
-## 2. [Create default project](2-quickstart.xml) (1 min)
+## 2. Create default project (1 min)
 
 After the SDK is installed, create the default "Hello, World!" project with two canisters (backend and frontend).
 
-# 1. Installing Tools
+The SDK comes with a starter default project that has a backend in Motoko and frontend code in HTML, CSS, and JS. Developers can use this default project to start their own dapps. In this tutorial, we will build and deploy this bundled project, so there is no need to download any other dapp code.
 
-To complete the Hello, World! tutorial you need to install the canister SDK, Node.js and the Node package manager.
+The `dfx new hello` command uses the template code to create a new project directory named `hello`, template files, and a new `hello` Git repository for your project. You can create many projects with many names.
 
-## 1.1 The Canister SDK (AKA "**dfx**")
+This is roughly analogus in Web2 to Rail’s `rails new`, React.js’s `create-react-app`, or Rust’s `cargo new`.
 
-The Canister SDK used to develop on the IC is called `dfx` and it is maintained by the DFINITY foundation and is written in Motoko. There are other SDKs.
+To create a new project for your first application:
 
-To install, one needs to run:
-
-``` bash
-sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
-```
-
-To verify that it has properly installed:
+### 2.1 Open a Terminal and Create a new project named "hello"
 
 ``` bash
-dfx --version
+dfx new hello
 ```
 
-The terminal should look like this (at least version 0.9.2):
+### 2.2 Move to your project directory
 
-![dfx version](_attachments/dfx-version.png)
+``` bash
+cd hello
+```
 
-## 1.2 Node.js
+Your directory should look like this:
 
-Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js in not needed for canister development in general.
+![cd new](_attachments/cd-hello.png)
 
-We support all stable versions of Node.js starting with 12. You can install 12, 14, or 16. Please note that Node 17 does not support Webpack’s api proxy tool, so `npm start` may not work correctly.
+### 2.3 Understanding your dapp project
 
-There are many ways of installing node.js, including from [nodejs.org website](https://nodejs.org/en/download).
+Your `Hello` dapp project is composed of two canisters
 
-Besides installing node.js, users need to also install: \* Node Package Manager (NPM). (This comes packaged with Node, but you may want to upgrade with `npm i -g npm`) \* Node Version Manager (NVM), see [installing NVM](https://github.com/nvm-sh/nvm#installing-and-updating). \* Once you have NVM, install the latest stable build with `nvm install --lts`
+-   `hello` canister which contains the template backend logic
 
-You are now ready to continue.
+-   `hello_assets` canister which contains the dapp assets (images, html files, etc)
 
-## Conclusion
+![hello Dapp](_attachments/2-canisters-hello-dapp.png)
 
-You now have the SDK properly installed.
+You may wonder "why two canisters?" Two canisters are created to help you organize your project. It could be that assets and backend logic live in one canister, but IC developers have found that it's useful to create two canisters (one for backend and one for frontend).
 
-Continue with the main tutorial: [quickstart intro](quickstart-intro.xml).
-
-## 3. [Deploy dapp locally](3-quickstart.xml) (3 min)
+## 3. Deploy dapp locally (3 min)
 
 Test project by deploying it on your local machine.
-
-# 3. Deploying the Hello Dapp on Local Machine (3 min)
 
 Now that your `hello` project is created, the next step is to deploy it locally. To deploy locally, `dfx` can start a local instance of the execution environment. This environment is not a full IC replica, nor does it download any of the state of an IC replica. It is a lightweight environment designed exlcusively for deploying dapps.
 
 For this, developers should keep two terminals open:
 
--   **Terminal window/tab A:**
+-   Terminal window/tab A:
 
     -   Shows the local instance of the execution environment running
 
     -   Is analogous to how developers often start local servers in web2 projects (e.g. Node.js’s Express, Python’s Django, Ruby’s Rails, etc…​)
 
--   **Terminal window/tab B:**
+-   Terminal window/tab B:
 
     -   Used to send **messages** to the local instance of the execution environment
 
@@ -153,15 +138,15 @@ For this, developers should keep two terminals open:
 
 For ease, this tutorial will distinguish between both windows by color scheme:
 
-## Terminal A
+### Terminal A
 
 ![dfx new](_attachments/dfx-new-hello-2.png)
 
-## Terminal B
+### Terminal B
 
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
-## 3.1 Start the Local Instance of the Execution Environment (Terminal A)
+### 3.1 Start the Local Instance of the Execution Environment (Terminal A)
 
 Navigate to the root directory for your project, if necessary. In this tutorial, you should be in the folder `hello` because that is the name of the project created in section 2 above.
 
@@ -171,23 +156,26 @@ Start the local canister execution environment in Terminal A:
 dfx start
 ```
 
-![dfx start](_attachments/terminal-a-dfx-start.png)
+<!-- ![dfx start](_attachments/terminal-a-dfx-start.png)  -->
 
-Notes:
+:::note
 
 -   Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click "Allow."
-
 -   Check no other network process is running that would create a port conflict on 8000.
 
-**Congratulations - there is now a local Instance of the execution environmentof the IC running on your machine. Leave this window/tab open and running while you continue.** If the window/tab is closed, the local instance of the execution environment of the IC will not be running and the rest of the tutorial will fail.
+:::
 
-## 3.2 Deploy the "hello" Dapp to the Locally (Terminal B)
+**Congratulations - there is now a local Instance of the execution environment of the IC running on your machine! Leave this window/tab open and running while you continue.** If the window/tab is closed, the local instance of the execution environment of the IC will not be running and the rest of the tutorial will fail.
 
-Note: since this is a local deployment, this section has fewer steps than deploying to mainnet (which requires [cycles](developers-guide/concepts/tokens-cycles)).
+### 3.2 Deploy the "hello" Dapp to the Locally (Terminal B)
+
+:::note
+Since this is a local deployment, this section has fewer steps than deploying to mainnet (which requires [cycles](../../concepts/tokens-cycles)).
+:::
 
 To deploy your first dapp locally:
 
-### 3.2.1 Check that you are still in the root directory for your project, if needed.
+#### 3.2.1 Check that you are still in the root directory for your project, if needed.
 
 Ensure that node modules are available in your project directory, if needed, by running the following command (it does not hurt to run this many times):
 
@@ -203,7 +191,7 @@ npm install
 dfx deploy
 ```
 
-![dfx deploy](_attachments/terminal-b-dfx-deploy.png)
+<!-- ![dfx deploy](_attachments/terminal-b-dfx-deploy.png)  -->
 
 Your dapp is now composed of two canisters as you can see in the copy below (from terminal B):
 
@@ -216,7 +204,7 @@ Installing code for canister hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aa
 
 2.  `hello_assets` canister `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
-## 3.3 Testing the Dapp Locally via the Command Line (Terminal B)
+## 3.3 Testing the dapp locally via the command line (terminal B)
 
 Now that the canister is deployed to local replica, you can send it a message. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message.
 
@@ -232,7 +220,7 @@ dfx canister call hello greet everyone
 
 -   `everyone` is the text data type argument that you want to pass to the `greet` function.
 
-## 3.4 Testing the Dapp Locally via the Browser
+## 3.4 Testing the dapp locally via the browser
 
 Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the front-end using your web browser.
 
@@ -254,7 +242,7 @@ To see your dapp running locally in the browser on http://localhost:8080.
 
     ![Hello](_attachments/front-end-result.png)
 
-## 3.5 Stop the local canister execution environment
+### Stop the local canister execution environment
 
 After testing the application in the browser, you can stop the local canister execution environment so that it does not continue running in the background. We will not need it running to deploy on-chain.
 
@@ -270,55 +258,43 @@ To stop the local deployment:
     dfx stop
     ```
 
-## Conclusion
-
-You have now tested the dapp by deploing it locally. You are ready to acquire cycles to deploy on-chain.
-
-Continue with the main tutorial: [quickstart intro](quickstart-intro.xml).
-
 ## Troubleshooting
 
 ### Node.js is not properly installed
 
 If your dapp does not show in the browser, it is possible that Node.js is not installed. Confirm it is installed by running:
 
-## Prior installations of dfx
-
-If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove.xml).
-
 ``` bash
 node --version
 ```
 
-## 4. [Acquiring cycles](4-quickstart.xml) (5 min)
+## Prior installations of dfx
+
+If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove).
+
+## 4. Acquiring cycles to deploy on-chain (5 min)
 
 Add cycles to your account to deploy dapp on-chain.
 
-# 4. Acquiring Cycles to Deploy On-chain (5 min)
-
-## 4.1 Cycles: an Introduction
+### 4.1 Cycles: an Introduction
 
 In order to run on-chain, IC dapps require cycles to pay for compute and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
-This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, but new entrants may be confused as to why first step of deploying a dapp is often "go get tokens."
+This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, who grow used to the first step of deploying a dapp being "go get tokens."
 
-You may wonder why dapps do not just run on ICP tokens. Why create a new construct of cycles? The reason is that the cost of ICP tokens fluctuate wildly with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one SDR, regardless of the price of ICP.
+You may further wonder why dapps run on cycles rather than ICP tokens. The reason is that the cost of ICP tokens fluctuate with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one SDR, regardless of the price of ICP.
 
 Practical notes about cycles:
 
--   There is a free [free cycles faucet](cycles-faucet.xml) that grants new developers 15 trillion cycles
-
+-   There is a [free cycles faucet](cycles-faucet) that grants new developers 15 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
-
--   You can see a table of compute and storage costs here: [Computation and storage costs](../developers-guide/computation-and-storage-costs.xml).
-
+-   You can see a table of compute and storage costs here: [Computation and storage costs](../good-to-know/computation-and-storage-costs).
 -   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Managing_ICP_holdings).
 
 In this tutorial, we present two ways of acquiring cycles:
 
--   **Option 1:** Section **4.3** shows one how to get cycles via the cycles faucet (most common for new developers)
-
--   **Option 2:** Section **4.4** shows one how to get cycles via ICP token (most common for developers who want more cycles)
+-   **Option 1:** [Section 4.3](#43-option-1-acquiring-cycles-via-the-free-cycles-faucet-2-min) shows one how to get cycles via the cycles faucet (most common for new developers).
+-   **Option 2:** [Section 4.4](#44-option-2-converting-icp-token-into-cycles-5-min) shows one how to get cycles via ICP tokens (most common for developers who want more cycles).
 
 By the end of this section, you will now have three canisters:
 
@@ -330,7 +306,7 @@ By the end of this section, you will now have three canisters:
 
 ![hello dapp and cycles wallet](_attachments/3-canisters-hello-dapp.png)
 
-## 4.2 Check the Connection to the Internet Computer Blockchain (Terminal B)
+### 4.2 Check the connection to the Internet Computer (terminal B)
 
 As a sanity check, it is good practice to check if your connection to the IC is stable:
 
@@ -348,13 +324,13 @@ $ {
 }
 ```
 
-## 4.3 Option 1: Acquiring Cycles via the Free Cycles Faucet (2 min)
+### 4.3 Option 1: Acquiring cycles via the free cycles faucet (2 min)
 
 This is option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet.xml).
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet).
 
-### 4.3.1 Check your cycles balance (Terminal B)
+#### 4.3.1 Check your cycles balance (Terminal B)
 
 Now that you have used the cycles faucet, you can check your cycles balance:
 
@@ -366,25 +342,17 @@ You should see around 15 trillion cycles if you run this after using the cycles 
 
 If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. You should try **4.4 Option 2: Converting ICP token into cycles**.
 
-## 4.4 Option 2: Converting ICP Token into Cycles (5 min)
+### 4.4 Option 2: Converting ICP tokens into cycles (5 min)
 
 This is option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-[Convert ICP into cycles](4-2-convert-ICP-to-cycles.xml).
+[Convert ICP into cycles](4-2-convert-ICP-to-cycles).
 
-## Conclusion
-
-You have now acquired cycles and stored them in your cycles wallet. You are ready to deploy the dapp on-chain.
-
-Continue with the main tutorial: [quickstart intro](quickstart-intro.xml).
-
-## 5.[Deploy on-chain](5-quickstart.xml) (1 min)
+## 5.Deploy on-chain (1 min)
 
 Use cycles to deploy the "Hello, World!" dapp on-chain.
 
-# 5. Deploying On-chain (1 min)
-
-## 5.1 Deploy the Dapp On-chain via dfx (Terminal B)
+### 5.1 Deploy the Dapp On-chain via dfx (Terminal B)
 
 Now that you have your [cycles](developers-guide/concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain.
 
@@ -442,7 +410,7 @@ In the example above, we created a `Hello` dapp that is composed of two canister
 
 2.  `hello_assets` canister `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
-## 5.2 See your Dapp Live On-chain via a Browser
+### 5.2 See your Dapp Live On-chain via a Browser
 
 Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
 
@@ -454,7 +422,7 @@ After loading the service worker, your dapp will load:
 
 ![Hello](_attachments/front-end-result.png)
 
-## 5.3 Testing the On-chain Dapp via the Command Line (Terminal B)
+### 5.3 Testing the On-chain Dapp via the Command Line (Terminal B)
 
 Since the canister has a method called `greet` (which accepts a string as a parameter), we can send it a message via `dfx`.
 
@@ -470,31 +438,25 @@ Note the way the message is constructed:
 
 -   `'("everyone": text)'` is the parameter we are sending to `greet` (which accepts `Text` as its only input).
 
-## Conclusion
+### Troubleshooting
 
-You have now deployed the dapp on-chain! You can read the conclusion of the tutorial.
-
-Continue with the main tutorial: [quickstart intro](quickstart-intro.xml).
-
-## Troubleshooting
-
-### 403 Error
+#### 403 Error
 
 If you receive a 403 error, it is possible the identity you are using does not have enough cycles. You should try the following to debug:
 
-## 1. Confirm you are using the identity you assume are using
+#### 1. Confirm you are using the identity you assume are using
 
 ``` bash
 dfx identity whoami
 ```
 
-## 2. Confirm the identity you are using has enough cycles on-chain
+#### 2. Confirm the identity you are using has enough cycles on-chain
 
 ``` bash
 dfx wallet --network ic balance
 ```
 
-## 3. Try proxying through your wallet
+#### 3. Try proxying through your wallet
 
 Sometimes (especially when you created the canisters with `dfx` versions before 0.9.0) your wallet is set as your canister’s controller. To have your wallet be the source of the deployment instruction, add the flag `--wallet <insert-your-wallet-id-here>` to the deploy or call command.
 
@@ -509,36 +471,31 @@ dfx canister --wallet "$(dfx identity get-wallet)" update-settings --all --add-c
 Congratulations! You have built a dapp fully on-chain (both backend and frontend) within 10 minutes.
 
 Tutorial takeaways:
-
 -   Dapps can be composed of multiple canisters
-
 -   Dapps can be deployed locally and on-chain
-
 -   Cycles are needed power dapps
-
 -   Get free cycles from the cycles wallet
-
 -   Free cycles can be used to power additional dapps
-
-## Troubleshooting
-
--   If you get stuck or run into problems search for solutions or post questions in the [Developer forum](https://forum.dfinity.org) or [DISCORD](https://discord.com/invite/cA7y6ezyE2).
 
 ## Starting from scratch
 
-If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove.xml).
+If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
 
 **Be sure to save any identities linked to dapps or ICP.**
 
+## Getting Stuck?
+
+If you get stuck or run into problems search for solutions or post questions in the [Developer forum](https://forum.dfinity.org) or [DISCORD](https://discord.com/invite/cA7y6ezyE2).
+
 ## Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](../samples/index.xml).
+Build DAOs, NFTs and more [here](../samples).
 
 ## Want to learn more?
 
 If you are looking for more information before getting started or want to view a demonstration of how to deploy before you try it for yourself, check out the following related resources:
 
--   [How you can use ICP tokens (overview)](../developers-guide/concepts/tokens-cycles.xml#using-tokens)
+-   [How you can use ICP tokens (overview)](../../concepts/tokens-cycles#using-tokens)
 
 -   [Building on the Internet Computer: Fundamentals (video)](https://www.youtube.com/watch?v=jduSMHxdYD8)
 

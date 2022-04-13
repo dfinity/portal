@@ -8,7 +8,7 @@ const sidebars = {
       type: 'category',
       label: 'Quick start',
       link: {
-        type: 'doc', id: 'developer-docs/quickstart/index'
+        type: 'doc', id: 'developer-docs/quickstart/hello10mins'
       },
       items: [
         'developer-docs/quickstart/hello10mins',
