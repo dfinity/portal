@@ -2,25 +2,22 @@
 title: Hello World
 ---
 
-# How to Deploy Hello, World! Smart Contract in 20 Minutes
+# How to Deploy a "Hello World" Smart Contract in 20 Minutes
 
 This is a fast and minimalist tutorial for deploying a "hello world"
-smart contract or dapp to the IC in 20 minutes or less. All that is
-necessary to run this tutorial is basic knowledge of using a terminal
-(no editing of code).
+canister smart contract to the IC in 20 minutes or less. All that is
+necessary to run this tutorial is basic knowledge of using a terminal. No code editing is required.
 
 ## Introduction
 
 In this tutorial, we will deploy a simple `Hello` canister smart
-contract that has just one function—called `greet`. The `greet` function
+contract that has just one function called `greet`. The `greet` function
 accepts one text argument and returns the result with a greeting. For
 example, if you call the `greet` method with the text argument `Alice`.
 
-1.  If you call it via the command-line, dapp will return
-    `Hello, Alice!` in a terminal
+* If you call it via the command-line, dapp will return `Hello, Alice!` in a terminal
 
-2.  If you access the dapp in a browser, it will alert pop-up window
-    reading `Hello, Alice!`
+* If you access the dapp in a browser, it will alert pop-up window reading `Hello, Alice!`
 
 While the code comes ready out of the box for you, this dapp consists of
 back-end code written in Motoko, a programming language specifically
@@ -29,18 +26,12 @@ webpack-based front-end.
 
 ### Concepts necessary for this tutorial
 
-#### Canister smart contract/dapp
+* **Canister smart contract:** A *canister smart contract*, or *canister* for short, is a type of smart contract that bundles code and state. A canister is deployed to the IC, where it gets executed and can be accessed over the Internet. A *dapp* is a distributed application, composed of one or more canisters.
 
-A **canister/dapp** is a type of smart contract that
-bundles code and state. A canister can be deployed as a smart contract
-on the Internet Computer and accessed over the Internet.
-
-#### Cycles
-
-On the Internet Computer, a **cycle** is the unit of measurement for
-resources consumed in the form of processing, memory, storage, and
+* **Cycles:** A *cycle* is the unit of measurement for
+resources consumed on the IC in the form of processing, memory, storage, and
 network bandwidth. Every canister has a cycles account to which
-resources consumed by the canister are charged. The Internet Computer’s
+resources consumed by the canister are charged. The IC’s
 utility token (ICP) can be converted to cycles and transferred to a
 canister. ICP can always be converted to cycles using the current price
 of ICP measured in \[SDR\] using the convention that one trillion cycles
@@ -48,130 +39,80 @@ correspond to one SDR.
 
 In this tutorial, you will get free cycles from the cycles faucet.
 
-## Platforms and operating systems supported
+## Supported operating systems
 
+This tutorial, requires one of the following operating systems
 -   Linux
-
 -   macOS (12.\* Monterey)
 
--   Windows
+Instructions for Windows, using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install), follow soon.
+
 
 ## Installing tools (5 min)
 
-To build a dapp, users need to install the following:
+To build and deploy a canister, users need to install the following:
 
 ### Node.js
 
-This tutorial works best with node.js version higher than `16.*.*`.
+There are many ways of installing node.js. On Linux, we recommend using your system's package manager. On macOS, we recommend [Homebrew](https://brew.sh). Alternatively, you find instructions on the [nodejs.org website](https://nodejs.org/en/download).
 
-There are many ways of installing node.js, including from [nodejs.org
-website](https://nodejs.org/en/download).
+This tutorial works best with a node.js version higher than `16.*.*`.
 
-Besides installing node.js, users need to also install: \* Node Package
-Manager (NPM). \* Node Version Manager (NVM), see [installing
-NVM](https://github.com/nvm-sh/nvm#installing-and-updating).
+### DFX
 
-### The Canister SDK (AKA "dfx")
-
-The Canister SDK used in this article is called `dfx` and it is
-maintained by the DFINITY foundation. There are many SDK’s so this is
+In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. There are many other SDK’s so this is
 just one.
 
-To install, one needs to run:
+To install, run:
 
     $ sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 
-To verify it is properly installed:
+To verify that `dfx` is properly installed, run:
 
     $ dfx --version
 
-Terminal should look like this (at least version 0.9.2):
+The terminal should look like this (at least version 0.9.2):
 
 ![dfx version](_attachments/dfx-version.png)
 
-## Create a default project (2 min)
+## Create a project (2 min)
 
-### Create a new project
-
-Dapps on the Internet Computer start as projects. You create projects
-using the `dfx` parent command and its subcommands.
-
-For this tutorial, we’ll start with the default sample dapp to
-illustrate creating dapp using the starter files in a project. When you
-create a new project, the `dfx` command-line interface adds a default
-project directory structure to your workspace. We cover the template
-files that make up a project directory in the Explore the default
-project tutorial.
-
-To create a new project for your first application:
-
-2.1 Open a terminal shell on your local computer, if you don’t already
-have one open.
-
-2.2 Create a new project named hello by running the following command:
+A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister. By running 
 
     $ dfx new hello
 
-The `dfx new hello` command creates a new project directory named
-`hello`, template files, and a new `hello` Git repository for your
-project. Your terminal should look like this:
+`dfx` creates a new project directory called `hello`. The terminal output should look like this:
 
 ![dfx new](_attachments/dfx-new-hello-1.png)
 
 ![dfx new](_attachments/dfx-new-hello-2.png)
 
-2.3 Move to your project directory by running the following command:
 
-    $ cd hello
-
-Your directory should look like this:
+The `hello` project directory includes the artifacts required for a "hello world" canister and a new `hello` Git repository. Your directory should look like this:
 
 ![cd new](_attachments/cd-hello.png)
 
-## Deploying dapp to local machine (3 min)
 
-### Using two terminal windows/tabs
+## Run your canister locally (3 min)
 
-Now that the code is there, the next step is to spin up a local version
-of the IC on local machine. For this, developers should keep two
-terminals open:
+Now that the code is there, the next step is to spin up a local execution environment that allows you to run your canister locally. For this, we recommend using two terminals:
 
--   **Terminal window/tab A:** This will show the local version of the
-   ICrunning
+-   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
 
-    -   This is analogous to how developers often start local servers in
-        web2 projects (e.g. node.js’s Express, python’s Django, Ruby’s
-        Rails, etc…)
+-   **Terminal B** is used to interact with the canister running in the execution environment. This is analogous to sending HTTP API messages to
+        servers running locally, e.g. Postman or Panic.
 
--   **Terminal window/tab B:** This will be used to send **messages** to
-    the local version of the IC
-
-    -   This is analogous to how developers send HTTP API messages to
-        servers running locally (e.g. Postman, Panic).
-
-For ease, this tutorial will distinguish between both windows by color
-scheme:
-
-**Terminal A**
+To distinguish the two terminals in this tutorial, terminal A has a dark blue background... 
 
 ![dfx new](_attachments/dfx-new-hello-2.png)
 
-**Terminal B**
+... and terminal B has a black background. 
 
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
-### Start the local version of the IC (Terminal A)
+### Start the execution environment
 
-1.  Use the Terminal window or tab on your local computer.
-
-2.  Navigate to the root directory for your project, if necessary. In
-    this tutorial, you should be in the folder `hello` because that is
-    the name of the project created in section 2 above.
-
-3.  Start the local canister execution environment on your computer in
-    your second terminal by running the following command:
-
-<!-- -->
+In terminal A, navigate to the root directory `hello` of our project and run
 
     $ dfx start
 
@@ -181,79 +122,61 @@ Note: Depending on your platform and local security settings, you might
 see a warning displayed. If you are prompted to allow or deny incoming
 network connections, click Allow.
 
-**That is it, there is now a local version of the IC running on your
-machine. Leave this window/tab open and running while you continue.** If
-the window/tab is closed, the local version of the IC will not be
-running and the rest of the tutorial will fail.
+That's it, there is now a local canister execution environment running on your
+machine. Leave terminal A open and running while you continue. If you
+close the terminal, the execution environment will stop the rest of the tutorial will fail.
 
-### Deploy the "hello" dapp to the local version of the IC (Terminal B)
+### Deploy the canister locally
 
-Note: since this is a local version of the IC, this has fewer steps than
-deploying to mainnet (which requires cycles).
+Note: since this is only a canister execution environment, this deployment has fewer steps than a deployment to mainnet, which requires cycles.
 
-To deploy your first dapp locally:
-
-1.  Check that you are still in the root directory for your project, if
-    needed.
-
-Ensure that node modules are available in your project directory, if
-needed, by running the following command (it does not hurt to run this
-many times):
+In terminal B, navigate to the root directory `hello` of our project. Install all the necessary node modules by running
 
     $ npm install
 
 ![npm install](_attachments/terminal-b-npm-install.png)
 
-1.  Register, build and deploy dapp:
-
-<!-- -->
+Register, build, and deploy the `hello` canister to the local execution environment by running
 
     $ dfx deploy
 
 ![dfx deploy](_attachments/terminal-b-dfx-deploy.png)
 
-### Testing the dapp locally via command line (Terminal B)
+### Test the canister locally via the command line
 
-Now that the canister is deployed to local replica, you can send it a
-message. Since the canister has a method called `greet` (which accepts a
-string as a parameter), we will send it a message.
+Now that the canister is deployed to the local execution environment, you can interact with the canister by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. In terminal B, run
 
     $ dfx canister call hello greet everyone
 
--   The `+dfx canister call+` command requires you to specify a canister
-    name and a method—or function—to call.
+-   The `dfx canister call` command requires you to specify a canister
+    name and a function to call.
 
--   `+hello+` specifies the name of the **canister** you want to call.
+-   `hello` specifies the name of the canister you call.
 
--   `+greet+` specifies the name of the **function** you want to call in
-    the `+hello+` canister.
+-   `greet` specifies the function name.
 
--   `+everyone+` is the text data type argument that you want to pass to
-    the `+greet+` function.
+-   `everyone` is the argument that you pass to the `greet` function.
 
-### Testing the dapp locally via the browser
+### Test the canister locally via the browser
 
 Now that you have verified that your dapp has been deployed and tested
 its operation using the command line, let’s verify that you can access
 the front-end using your web browser.
 
-3.4.1 On terminal B, start the development server with:
+In terminal B, start the development server by running
 
     $ npm start
 
-3.4.2 Open a browser. 3.4.2 Navigate to <http://localhost:8080/>
+Open a browser and navigate to <http://localhost:8080/>.
 
-Navigating to this URL displays a simple HTML page with a sample asset
-image file, an input field, and a button. For example:
+You should see a simple HTML page with a sample asset
+image file, an input field, and a button.
 
-\+ ![Sample HTML page](_attachments/front-end-prompt.png)
+![Sample HTML page](_attachments/front-end-prompt.png)
 
-1.  Type a greeting, then click **Click Me** to return the greeting.
+Type a greeting, then click **Click Me** to return the greeting.
 
-    For example:
-
-    ![Hello](_attachments/front-end-prompt.png)
-front-end-result.png)
+![Hello](_attachments/front-end-result.png)
 
 ## Stop the local canister execution environment
 
