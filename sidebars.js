@@ -11,7 +11,7 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/quickstart/index'
       },
       items: [
-        'developer-docs/quickstart/hello20mins',
+        'developer-docs/quickstart/hello10mins',
         'developer-docs/quickstart/cycles-faucet'
         // 'developer-docs/quickstart/local-quickstart',
         // 'developer-docs/quickstart/network-quickstart'
