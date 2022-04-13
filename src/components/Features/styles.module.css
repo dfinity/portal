@@ -1,7 +1,7 @@
 .container {
     height: 70vh;
     position: relative;
-    margin: 5% 15%;
+    margin: 0 15% 5% 15%;
 }
 .title {
     font-weight: 700;
@@ -60,6 +60,7 @@
 
 .actionButton:hover {
     border: 2px solid #3B00B9;
-    color: #3B00B9;
+    background-color: #3B00B9;
+    color: white;
     text-decoration: none;
 }
