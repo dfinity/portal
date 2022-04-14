@@ -23,7 +23,17 @@
     top: 0;
     z-index: -1000;
     position: absolute;
-    background-color: #F1EEF5CC;
+    background-color: rgb(243,241,247);
+}
+
+.infinityBackground {
+    transform: rotate(-45deg);
+    width: 100vw;
+    height: 200vh;
+    top: 10%;
+    left:25%;
+    z-index: -1000;
+    position: absolute;
 }
 
 .heroPage {

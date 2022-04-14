@@ -16,6 +16,7 @@ import PlayIcon from '@site/static/img/playIcon.svg';
 import WorldwideIcon from '@site/static/img/worldwideIcon.svg';
 import {AnimatePresence, motion} from "framer-motion"
 import Features from "@site/src/components/Features";
+import InfinityBackground from "@site/src/components/InfinityBackground";
 
 const variants = {
     enter: {
@@ -189,32 +190,32 @@ export default function Home(): JSX.Element {
 
                 <div ref={heroSection} className={styles.heroSection}>
                     <div className={styles.backgroundColor}/>
+                    {/*<div className={styles.infinityBackground}>
+                        <InfinityBackground/>
+                    </div>*/}
                     <img className={styles.heroSectionBG} src={backgroundGif} alt=""/>
                     <HomePageHero/>
-                    <a id="startCoding">
-                        <QuickInformation/>
-                    </a>
+                    <a id="startCoding"/>
+                    <QuickInformation/>
                 </div>
-                <a id="internetComputer">
-                    <div className={styles.whatsICContainer}>
-                        <AnimatePresence>
-                            {displayWhatsIC &&
-                                <motion.div
-                                    key="modal"
-                                    initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    transition={{duration: 0.5}}
-                                >
-                                    <WhatsIC/>
-                                    <div className={styles.whatsICBGColor}/>
-                                </motion.div>}
-                        </AnimatePresence>
-                    </div>
-                </a>
-                <a id="features">
-                    <Features/>
-                </a>
+                <a id="internetComputer"/>
+                <div className={styles.whatsICContainer}>
+                    <AnimatePresence>
+                        {displayWhatsIC &&
+                            <motion.div
+                                key="modal"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 0.5}}
+                            >
+                                <WhatsIC/>
+                                <div className={styles.whatsICBGColor}/>
+                            </motion.div>}
+                    </AnimatePresence>
+                </div>
+                <a id="features"/>
+                <Features/>
             </main>
         </Layout>
     );
