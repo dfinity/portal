@@ -167,6 +167,7 @@ export default function Home(): JSX.Element {
     }, [])
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
+        document.documentElement.style.setProperty('--ifm-navbar-background-color:', "#F1EEF5CC");
     }, []);
     return (
         <Layout

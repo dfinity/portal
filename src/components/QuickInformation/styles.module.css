@@ -11,7 +11,7 @@
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid #FFFFFF;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(5px);
     box-sizing: border-box;
     border-radius: 12px;
     display: flex;
