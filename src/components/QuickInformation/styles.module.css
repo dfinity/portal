@@ -26,8 +26,9 @@
 .container:hover .informationIcon,
 .container:hover .informationBody {
     background: var(--ifm-color-primary);
-    color: white;
+    color:white;
     text-decoration: none;
+    border: 1px solid var(--ifm-color-primary);
 }
 
 .container:hover .bodyContainer {

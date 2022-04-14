@@ -86,7 +86,8 @@
     z-index: 1900;
     bottom: 0;
     margin: 0 auto 20px auto;
-    background-color: rgba(100,98,108, 0.9);
+    background-color: rgba(0,0,0,.5);
+    backdrop-filter: blur(20px);
     border-radius: 25px;
     color: white;
 }
