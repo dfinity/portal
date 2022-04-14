@@ -123,11 +123,10 @@ The `hello` project directory includes the artifacts required for a "hello world
 
 <!-- ### 2.3 Understanding your dapp project -->
 
-Your `Hello` dapp project is composed of two canisters
+The `hello` project is composed of two canisters:
 
--   `hello` canister which contains the template backend logic
-
--   `hello_assets` canister which contains the dapp assets (images, html files, etc)
+-   `hello` canister, which contains the template backend logic
+-   `hello_assets` canister, which contains the dapp assets (images, html files, etc)
 
 ![hello Dapp](_attachments/2-canisters-hello-dapp.png)
 
@@ -139,13 +138,9 @@ Now that your `hello` project is created, the next step is to deploy it locally.
 
 For this, we recommend using two terminals:
 
--   Terminal A:
-    -   Shows the local instance of the execution environment running
-    -   Is analogous to how developers often start local servers in web2 projects (e.g. Node.js’s Express, Python’s Django, Ruby’s Rails, etc…​)
+-   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
 
--   Terminal B:
-    -   Used to send **messages** to the local instance of the execution environment
-    -   Is analogous to how developers send HTTP API messages to servers running locally (e.g. Postman, Panic).
+-   **Terminal B** is used to interact with the canister running in the execution environment. This is analogous to sending HTTP API messages to servers running locally, e.g. Postman or Panic.
 
 To distinguish the two terminals in this tutorial, terminal A has a dark blue background...
 
@@ -178,7 +173,7 @@ dfx start
 
 **Congratulations - there is now a local Instance of the execution environment of the IC running on your machine! Leave this window/tab open and running while you continue.** If the window/tab is closed, the local instance of the execution environment of the IC will not be running and the rest of the tutorial will fail.
 
-### 3.2 Deploy the dapp locally (Terminal B)
+### Deploy the dapp locally
 
 :::note
 Since this is only a canister execution environment, this deployment has fewer steps than a deployment to mainnet, which requires [cycles](../../concepts/tokens-cycles)).
@@ -217,7 +212,7 @@ Installing code for canister hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aa
 
 2.  `hello_assets` canister `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
-## 3.3 Test the dapp locally via the command line
+### Test the dapp locally via the command line
 
 Now that the canister is deployed to the local execution environment, you can interact with the canister by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. In terminal B, run
 
@@ -226,18 +221,15 @@ dfx canister call hello greet everyone
 ```
 
 -   The `dfx canister call` command requires you to specify a canister name and function to call.
-
 -   `hello` specifies the name of the canister you call.
-
 -   `greet` specifies the specifies the function name.
-
 -   `everyone` is the argument that you pass to the `greet` function.
 
-## 3.4 Test the dapp locally via the browser
+### Test the dapp locally via the browser
 
 Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the front-end using your web browser.
 
-### In terminal B, start the development server by running:
+In terminal B, start the development server by running:
 
 ``` bash
 npm start
@@ -254,11 +246,9 @@ image file, an input field, and a button.
 
 ![Sample HTML page](_attachments/front-end-prompt.png)
 
-1.  Type a name, then click **Click Me** to return a greeting.
+Type a greeting, then click **Click Me** to return the greeting.
 
-    For example:
-
-    ![Hello](_attachments/front-end-result.png)
+![Hello](_attachments/front-end-result.png)
 
 ### Stop the local canister execution environment
 
@@ -267,16 +257,14 @@ After testing the application in the browser, you can stop the local canister ex
 To stop the local deployment:
 
 1.  In the terminal A, press Control-C to interrupt the local network process.
-
 2.  In the terminal B, press Control-C to interrupt the development server process.
-
 3.  Stop the local canister execution environment running on your local computer:
 
     ``` bash
     dfx stop
     ```
 
-## Troubleshooting
+### Troubleshooting
 
 ### Node.js is not properly installed
 
@@ -286,17 +274,13 @@ If your dapp does not show in the browser, it is possible that Node.js is not in
 node --version
 ```
 
-## Prior installations of dfx
+### Prior installations of dfx
 
 If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove).
 
 ## 4. Acquiring cycles to deploy on-chain (5 min)
 
-Add cycles to your account to deploy dapp on-chain.
-
-### 4.1 Cycles: an Introduction
-
-In order to run on-chain, IC dapps require cycles to pay for compute and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
+In order to run on-chain, IC dapps require cycles to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
 This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, who grow used to the first step of deploying a dapp being "go get tokens."
 
@@ -311,24 +295,20 @@ Practical notes about cycles:
 
 In this tutorial, we present two ways of acquiring cycles:
 
--   **Option 1:** [Section 4.3](#43-option-1-acquiring-cycles-via-the-free-cycles-faucet-2-min) shows one how to get cycles via the cycles faucet (most common for new developers).
--   **Option 2:** [Section 4.4](#44-option-2-converting-icp-token-into-cycles-5-min) shows one how to get cycles via ICP tokens (most common for developers who want more cycles).
+-   **Option 1:** [Acquiring cycles via the free cycles faucet](#option-1-acquiring-cycles-via-the-free-cycles-faucet-2-min) shows one how to get cycles via the cycles faucet (most common for new developers).
+-   **Option 2:** [Converting ICP tokens into cycles](#option-2-converting-icp-tokens-into-cycles-5-min) shows one how to get cycles via ICP tokens (most common for developers who want more cycles).
 
 By the end of this section, you will now have three canisters:
 
 -   `hello` canister (not yet deployed to the IC)
-
 -   `hello_assets` canister in your project (not yet deployed to the IC)
-
 -   Your cycles wallet canister that holds your cycles (deployed on the IC)
 
 ![hello dapp and cycles wallet](_attachments/3-canisters-hello-dapp.png)
 
-### 4.2 Check the connection to the Internet Computer (terminal B)
+<!-- ### 4.2 Check the connection to the Internet Computer (terminal B) -->
 
-As a sanity check, it is good practice to check if your connection to the IC is stable:
-
-Verify the current status of the Internet Computer blockchain and your ability to connect to it:
+As a sanity check, it is good practice to check if your connection to the IC is stable by verifying the current status of the Internet Computer blockchain and your ability to connect to it:
 
 ``` bash
 dfx ping ic
@@ -342,25 +322,25 @@ $ {
 }
 ```
 
-### 4.3 Option 1: Acquiring cycles via the free cycles faucet (2 min)
+### Option 1: Acquiring cycles via the free cycles faucet (2 min)
 
 This is option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
 For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet).
 
-#### 4.3.1 Check your cycles balance (Terminal B)
+#### Check your cycles balance
 
-Now that you have used the cycles faucet, you can check your cycles balance:
+Now that you have used the cycles faucet, in terminal B you can check your cycles balance:
 
 ``` bash
 dfx wallet --network ic balance
 ```
 
-You should see around 15 trillion cycles if you run this after using the cycles wallet. If so, skip to section **5. Deploying on-chain**.
+You should see around 15 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min).
 
-If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. You should try **4.4 Option 2: Converting ICP token into cycles**.
+If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. You should try [Option 2: Converting ICP token into cycles](#option-2-converting-icp-tokens-into-cycles-5-min).
 
-### 4.4 Option 2: Converting ICP tokens into cycles (5 min)
+### Option 2: Converting ICP tokens into cycles (5 min)
 
 This is option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
@@ -368,11 +348,7 @@ This is option is best for people who have already exhausted the cycles wallet o
 
 ## 5.Deploy on-chain (1 min)
 
-Use cycles to deploy the "Hello, World!" dapp on-chain.
-
-### 5.1 Deploy the Dapp On-chain via dfx (Terminal B)
-
-Now that you have your [cycles](developers-guide/concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain.
+Now that you have your [cycles](developers-guide/concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
@@ -422,13 +398,13 @@ URLs:
 
 Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
 
-In the example above, we created a `Hello` dapp that is composed of two canisters:
+In the example above, we created a `hello` dapp that is composed of:
 
 1.  `hello` canister `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
 
 2.  `hello_assets` canister `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
-### 5.2 See your Dapp Live On-chain via a Browser
+### See your dapp live on-chain via a browser
 
 Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
 
@@ -440,7 +416,7 @@ After loading the service worker, your dapp will load:
 
 ![Hello](_attachments/front-end-result.png)
 
-### 5.3 Testing the On-chain Dapp via the Command Line (Terminal B)
+### Testing the on-chain dapp via the command line
 
 Since the canister has a method called `greet` (which accepts a string as a parameter), we can send it a message via `dfx`.
 
@@ -495,21 +471,21 @@ Tutorial takeaways:
 -   Get free cycles from the cycles wallet
 -   Free cycles can be used to power additional dapps
 
-## Starting from scratch
+### Starting from scratch
 
 If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
 
 **Be sure to save any identities linked to dapps or ICP.**
 
-## Getting Stuck?
+### Getting Stuck?
 
 If you get stuck or run into problems search for solutions or post questions in the [Developer forum](https://forum.dfinity.org) or [DISCORD](https://discord.com/invite/cA7y6ezyE2).
 
-## Ready for the next challenge?
+### Ready for the next challenge?
 
 Build DAOs, NFTs and more [here](../samples).
 
-## Want to learn more?
+### Want to learn more?
 
 If you are looking for more information before getting started or want to view a demonstration of how to deploy before you try it for yourself, check out the following related resources:
 
