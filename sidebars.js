@@ -250,8 +250,8 @@ const sidebars = {
     }
   ],
   'references': [
-    // 'references/index',
-    'references/cli-reference/index',
+    'references/index',
+    // 'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
