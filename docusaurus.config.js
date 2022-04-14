@@ -98,8 +98,8 @@ const config = {
                     {
                         type: 'docSidebar',
                         position: 'left',
-                        sidebarId: 'governance',
-                        label: 'Governance',
+                        sidebarId: 'tokenomics',
+                        label: 'Tokenomics',
                     },
                     {
                         type: 'search',

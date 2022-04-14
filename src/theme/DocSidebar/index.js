@@ -55,7 +55,7 @@ function getPrimaryColor(section) {
             return "#F15A24"
         case 'references':
             return "#29ABE2"
-        case 'governance':
+        case 'tokenomics':
             return "#FBB03B"
         case 'showcases':
             return "#522785"
@@ -97,7 +97,7 @@ function DocItem(sidebarId, activePath) {
                     strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
 
-        case 'governance':
+        case 'tokenomics':
             return <svg viewBox="0 0 24 24"
                         fill={sidebarId === activePath ? getPrimaryColor(activePath) : 'currentColor'}
                         xmlns="http://www.w3.org/2000/svg">
