@@ -12,6 +12,7 @@
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
+    color: black;
 }
 
 .cards {
@@ -42,6 +43,7 @@
     background: var(--ifm-color-primary);
     color:white;
     text-decoration: none;
+    border: 1px solid var(--ifm-color-primary);
 }
 
 .cardTitle {

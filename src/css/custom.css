@@ -147,9 +147,10 @@ div[class^='announcementBarContent'] {
 }
 .navbar__logo {
     flex: 0 0 auto;
-    height: 1.5rem;
+    height: 1.925rem;
     margin-right: .5rem
 }
+
 .navbar__search-input {
     appearance: none;
     background: rgba(255, 255, 255, 0.5) var(--ifm-navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem;
