@@ -164,10 +164,11 @@ const sidebars = {
       label: 'Integrate Functionality',
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
-        type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+        type: 'doc', id: 'developer-docs/functionality/internet-identity/integrate-identity'
       },
       items: [
         // 'developer-docs/functionality/index',
+        'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
           label: 'Rosetta',
