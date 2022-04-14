@@ -325,9 +325,9 @@ const sidebars = {
       href: 'https://docs.rs/ic-cdk/',
     },
     'references/candid-ref',
-    'references/ic-interface-spec',
     'references/ledger',
-    'references/ii-spec'
+    'references/ii-spec',
+    'references/ic-interface-spec'
   ],
   'concepts': [
     'concepts/index',
@@ -341,13 +341,13 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'tokenomics': [
-    // 'tokenomics/index',
+    'tokenomics/index',
     {
       type: 'category',
       label: 'Identity & Authentication',
       link: {
-        // type: 'doc', id: 'tokenomics/token-holders/index'
-        type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+        type: 'doc', id: 'tokenomics/token-holders/index'
+        // type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
       },
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
