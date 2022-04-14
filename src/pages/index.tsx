@@ -72,7 +72,7 @@ function HomePageHero() {
                     chain
                     — real web3.</p>
             </div>
-            <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart">
+            <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart/hello10mins">
                 START BUILDING
             </Link>
         </div>
@@ -167,6 +167,7 @@ export default function Home(): JSX.Element {
     }, [])
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
+        document.documentElement.style.setProperty('--ifm-navbar-background-color:', "#F1EEF5CC");
     }, []);
     return (
         <Layout
@@ -185,11 +186,14 @@ export default function Home(): JSX.Element {
                             <HomeNavBar/>
                         </motion.div>}
                 </AnimatePresence>
+
                 <div ref={heroSection} className={styles.heroSection}>
+                    <div className={styles.backgroundColor}/>
                     <img className={styles.heroSectionBG} src={backgroundGif} alt=""/>
                     <HomePageHero/>
                     <QuickInformation/>
                 </div>
+
                 <div className={styles.whatsICContainer}>
                     <AnimatePresence>
                         {displayWhatsIC &&

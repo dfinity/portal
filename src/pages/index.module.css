@@ -6,7 +6,7 @@
 .heroSectionBG {
     height: 160vh;
     top: 0;
-    left: 40%;
+    left: 30%;
     z-index: -100;
     position: absolute;
     object-fit: cover;
@@ -16,7 +16,14 @@
 .heroSection {
     position: relative;
     overflow: hidden;
-    background-color: #F1EEF599;
+}
+.backgroundColor {
+    width: 100vw;
+    height: 200vh;
+    top: 0;
+    z-index: -1000;
+    position: absolute;
+    background-color: #F1EEF5CC;
 }
 
 .heroPage {
