@@ -72,7 +72,7 @@ function HomePageHero() {
                     chain
                     — real web3.</p>
             </div>
-            <Link className={styles.heroPageButton} to="/docs/developer-docs/quickstart/hello10mins">
+            <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart/hello10mins">
                 START BUILDING
             </Link>
         </div>
