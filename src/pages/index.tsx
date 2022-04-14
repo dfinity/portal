@@ -186,11 +186,14 @@ export default function Home(): JSX.Element {
                             <HomeNavBar/>
                         </motion.div>}
                 </AnimatePresence>
+
                 <div ref={heroSection} className={styles.heroSection}>
+                    <div className={styles.backgroundColor}/>
                     <img className={styles.heroSectionBG} src={backgroundGif} alt=""/>
                     <HomePageHero/>
                     <QuickInformation/>
                 </div>
+
                 <div className={styles.whatsICContainer}>
                     <AnimatePresence>
                         {displayWhatsIC &&
