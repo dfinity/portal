@@ -8,10 +8,10 @@ const sidebars = {
       type: 'category',
       label: 'Quick start',
       link: {
-        type: 'doc', id: 'developer-docs/quickstart/index'
+        type: 'doc', id: 'developer-docs/quickstart/hello10mins'
       },
       items: [
-        'developer-docs/quickstart/hello20mins',
+        'developer-docs/quickstart/hello10mins',
         'developer-docs/quickstart/cycles-faucet'
         // 'developer-docs/quickstart/local-quickstart',
         // 'developer-docs/quickstart/network-quickstart'
@@ -308,20 +308,33 @@ const sidebars = {
     'concepts/governance',
     'concepts/bitcoin-integration',
   ],
-  'governance': [
-    // 'governance/index',
+  'tokenomics': [
+    // 'tokenomics/index',
+    {
+      type: 'category',
+      label: 'Identity & Authentication',
+      link: {
+        // type: 'doc', id: 'tokenomics/token-holders/index'
+        type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+      },
+      items: [
+        'tokenomics/identity-auth/what-is-ic-identity',
+        'tokenomics/identity-auth/auth-how-to',
+        'tokenomics/identity-auth/hello-guide'
+      ]
+    },
     {
       type: 'category',
       label: 'Token Holders',
       link: {
-        // type: 'doc', id: 'governance/token-holders/index'
-        type: 'doc', id: 'governance/token-holders/custody-options-intro'
+        // type: 'doc', id: 'tokenomics/token-holders/index'
+        type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
       },
       items: [
-        'governance/token-holders/custody-options-intro',
-        'governance/token-holders/self-custody-quickstart',
-        'governance/token-holders/nns-app-quickstart',
-        // 'governance/token-holders/seed-donations',
+        'tokenomics/token-holders/custody-options-intro',
+        'tokenomics/token-holders/self-custody-quickstart',
+        'tokenomics/token-holders/nns-app-quickstart',
+        // 'tokenomics/token-holders/seed-donations',
       ]
     },
   ]
