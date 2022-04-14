@@ -72,9 +72,11 @@ const config = {
         ({
             navbar: {
                 hideOnScroll: true,
+
                 logo: {
                     alt: 'DFINITY Logo',
                     src: 'img/IC_logo_horizontal.svg',
+                    srcDark: 'img/IC_logo_horizontal_white.svg',
                 },
                 items: [
                     {
