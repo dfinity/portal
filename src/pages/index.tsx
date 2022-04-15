@@ -72,7 +72,7 @@ function HomePageHero() {
                     chain
                     — real web3.</p>
             </div>
-            <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart">
+            <Link className={styles.heroPageButton} to="/docs/current/developer-docs/quickstart/hello10mins">
                 START BUILDING
             </Link>
         </div>
@@ -83,9 +83,9 @@ function HomeNavBar() {
     return <div className={styles.homeNavBar}>
         <div className={styles.homeNavBarGrid}>
             <div className={styles.dfinityIconNav}><a href="/" className={styles.navbarDfinityLink}/></div>
-            <Link to={"/"}><span>Start Coding</span></Link>
-            <Link to={"/"}><span>Internet Computer</span></Link>
-            <Link to={"/"}><span>Features</span></Link>
+            <Link to={"#startCoding"}><span>Start Coding</span></Link>
+            <Link to={"#internetComputer"}><span>Internet Computer</span></Link>
+            <Link to={"#features"}><span>Features</span></Link>
             <Link to={"/"}><span>Showcase</span></Link>
             <Link to={"/"}><span>Ecosystem</span></Link>
             <Link to={"/"}><span>Dev Forum</span></Link>
@@ -167,6 +167,7 @@ export default function Home(): JSX.Element {
     }, [])
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
+        document.documentElement.style.setProperty('--ifm-navbar-background-color:', "#F1EEF5CC");
     }, []);
     return (
         <Layout
@@ -185,27 +186,35 @@ export default function Home(): JSX.Element {
                             <HomeNavBar/>
                         </motion.div>}
                 </AnimatePresence>
+
                 <div ref={heroSection} className={styles.heroSection}>
+                    <div className={styles.backgroundColor}/>
                     <img className={styles.heroSectionBG} src={backgroundGif} alt=""/>
                     <HomePageHero/>
-                    <QuickInformation/>
+                    <a id="startCoding">
+                        <QuickInformation/>
+                    </a>
                 </div>
-                <div className={styles.whatsICContainer}>
-                    <AnimatePresence>
-                        {displayWhatsIC &&
-                            <motion.div
-                                key="modal"
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                exit={{opacity: 0}}
-                                transition={{duration: 0.5}}
-                            >
-                                <WhatsIC/>
-                                <div className={styles.whatsICBGColor}/>
-                            </motion.div>}
-                    </AnimatePresence>
-                </div>
-                <Features/>
+                <a id="internetComputer">
+                    <div className={styles.whatsICContainer}>
+                        <AnimatePresence>
+                            {displayWhatsIC &&
+                                <motion.div
+                                    key="modal"
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    exit={{opacity: 0}}
+                                    transition={{duration: 0.5}}
+                                >
+                                    <WhatsIC/>
+                                    <div className={styles.whatsICBGColor}/>
+                                </motion.div>}
+                        </AnimatePresence>
+                    </div>
+                </a>
+                <a id="features">
+                    <Features/>
+                </a>
             </main>
         </Layout>
     );

@@ -9,8 +9,9 @@
 
 .container {
     width: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #FFFFFF;
+    backdrop-filter: blur(5px);
     box-sizing: border-box;
     border-radius: 12px;
     display: flex;
@@ -25,8 +26,9 @@
 .container:hover .informationIcon,
 .container:hover .informationBody {
     background: var(--ifm-color-primary);
-    color: white;
+    color:white;
     text-decoration: none;
+    border: 1px solid var(--ifm-color-primary);
 }
 
 .container:hover .bodyContainer {
