@@ -39,12 +39,12 @@ For example `Ubuntu.exe` is the command to start the `Ubuntu` distribution from 
 
 ## Installing DFX
 
-Once you have WSL installed, please follow [Installing tools](hello20mins.md#installing-tools-5-min) to install `dfx`.
+Once you have WSL installed, please follow [Installing tools](hello10mins#1-installing-tools) to install `dfx`.
 
 ## Troubleshooting
 
 ### Node.js is not properly installed
-WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](hello20mins.md#nodejs) for more information.
+WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](hello10mins#12-nodejs) for more information.
 
 ### Permission Denied when running `dfx start`
 Projects created from `dfx` need to be on the Linux Filesystem instead of the Windows Filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
