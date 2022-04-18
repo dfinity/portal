@@ -1,0 +1,146 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    color: white;
+    top: 0;
+    z-index: 1100;
+}
+
+.BG {
+    width: 120vw;
+    margin: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    object-fit: cover;
+    z-index: -100;
+}
+
+.Title {
+    display: flex;
+    margin: auto auto 3rem 14rem;
+    align-items: flex-end;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 90px;
+}
+
+.Body {
+    display: flex;
+    margin-left: 14rem;
+    width: 38rem;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.ButtonContainer {
+    margin-left: 14rem;
+    margin-top: 3rem;
+}
+
+.Button {
+    text-align: center;
+    width: 13rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.Button:hover {
+    border: 2px solid white;
+    background-color: white;
+    color: #3B00B9;
+    text-decoration: none;
+}
+
+.Container {
+    height: 100vh;
+    z-index: 1000;
+    position: relative;
+    background-color: #F1EEF5CC;
+}
+
+.BGColor {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+    background-color: #3B00B9;
+}
+
+.BGCircle {
+    position: absolute;
+    right: -150px;
+    bottom: 150px;
+    width: 500px;
+    filter: blur(400px);
+}
+
+.dfinityIcon {
+    position: absolute;
+    top: -11rem;
+    left: 2rem;
+}
+
+.gamingIcon {
+    position: absolute;
+    top: -15rem;
+    left: 26rem;
+}
+
+.worldwideIcon {
+    position: absolute;
+    top: -8rem;
+    left: 55rem;
+}
+
+.databaseIcon {
+    position: absolute;
+    top: -18rem;
+    left: 85rem;
+}
+
+.growthIcon {
+    position: absolute;
+    top: -3rem;
+    left: 105rem;
+}
+
+.buildingIcon {
+    position: absolute;
+    left: 2rem;
+    bottom: 4rem;
+}
+
+.playIcon {
+    position: absolute;
+    left: 30rem;
+    bottom: 7rem;
+}
+
+.dfinityIcon2 {
+    position: absolute;
+    left: 55rem;
+    bottom: 20rem;
+}
+
+.nftIcon {
+    position: absolute;
+    left: 78rem;
+    bottom: 35rem;
+}
+
+.keyIcon {
+    position: absolute;
+    left: 100rem;
+    bottom: 18rem;
+}
+
+

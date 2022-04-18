@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.module.css';
+import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 
 function Card({title, body, link}) {
