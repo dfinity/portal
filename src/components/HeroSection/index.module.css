@@ -1,0 +1,97 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.sectionBG {
+    height: 160vh;
+    top: 0;
+    left: 30%;
+    z-index: -100;
+    position: absolute;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.section {
+    position: relative;
+    overflow: hidden;
+}
+.backgroundColor {
+    width: 100vw;
+    height: 200vh;
+    top: 0;
+    z-index: -1000;
+    position: absolute;
+    background-color: rgb(243,238,242);
+}
+
+.infinityBackground {
+    transform: rotate(-45deg);
+    width: 100vw;
+    height: 200vh;
+    top: 10%;
+    left:25%;
+    z-index: -1000;
+    position: absolute;
+}
+.particleBackground {
+    width: 100vw;
+    height: 200vh;
+    z-index: -1000;
+    position: absolute;
+}
+
+.main {
+    height: 80vh;
+}
+
+.Title {
+    display: flex;
+    align-items: flex-end;
+    font-weight: 700;
+    font-size: 8.5vw;
+    overflow: hidden;
+}
+
+.container {
+    margin: 20vh auto 0 auto;
+    width: 80vw;
+}
+.TitleSecond {
+    margin-left: 27vw;
+}
+
+.Text {
+    margin: 6vw auto 4rem auto;
+    display: block;
+    font-weight: 400;
+    font-size: 1.25vw;
+}
+
+.Button {
+    margin: 3rem auto 0 auto;
+    text-align: center;
+    width: 13rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.Button:hover {
+    border: 2px solid #3B00B9;
+    background-color: #3B00B9;
+    color: white;
+    text-decoration: none;
+}
+
+.InfiniteWord {
+    margin-left: 20.5vw;
+    color: #3B00B9;
+}
+
+

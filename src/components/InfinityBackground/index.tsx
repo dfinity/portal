@@ -21,7 +21,7 @@ export default () => {
     };
 
     const draw = (p5) => {
-        p5.background(243,241,247);
+        p5.background(243,238,242);
         p5.strokeWeight(4);
         for (let x = 0; x < numDots; x++) {
             p5.stroke(
