@@ -23,7 +23,7 @@ Hide toggle in small viewports
 }
 
 .navbarSidebarToggle {
-  margin-right: 1rem;
+  margin-right: 0;
 }
 .forumIconContainer {
   vertical-align: middle;
@@ -40,4 +40,26 @@ Hide toggle in small viewports
 
 .svgIconLinks {
   padding: 0.4rem;
+}
+
+.navbarMobileItems {
+  margin:auto 1rem;
+  display:flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+.navbarMobileItems {
+  margin:auto 1rem;
+  display:flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+.navbarMobilePages {
+  display: block;
+  margin-bottom: 0.2rem;
+  background: var(--ifm-menu-color-background-hover)
 }

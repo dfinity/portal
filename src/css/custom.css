@@ -3,32 +3,94 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 @font-face {
-    font-family: 'CircularXX';
-    src: url('@site/static/fonts/Circular/CircularXXWeb-Regular.woff2') format('woff2'),
-    url('@site/static/fonts/Circular/CircularXXWeb-Medium.woff2') format('woff2'),
-    url('@site/static/fonts/Circular/CircularXXWeb-Bold.woff2') format('woff2'),
-    url('@site/static/fonts/Circular/CircularXX-Regular.otf') format('otf'),
-    url('@site/static/fonts/Circular/CircularXX-Medium.otf') format('otf'),
-    url('@site/static/fonts/Circular/CircularXX-Bold.otf') format('otf');
-    font-weight: normal;
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Black.woff") format("woff");
+    font-weight: 900;
     font-style: normal;
-    font-display: swap;
+    font-display: swap
 }
 @font-face {
-    font-family: 'CircularXX-Regular';
-    src: url('@site/static/fonts/Circular/CircularXXWeb-Regular.woff2'),
-    url('@site/static/fonts/Circular/CircularXX-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-BlackItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap
 }
-
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-BoldItalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Italic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-LightItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap
+}@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-MediumItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-ThinItalic.woff") format("woff");
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap
+}
 /* You can override the default Infima variables here. */
 :root {
-    font-family: 'CircularXX', 'Lato', sans-serif;
+    font-family: 'CircularXX', sans-serif;
+    --ifm-font-family-base: "CircularXX", sans-serif;
     --ifm-color-primary: #e11f7a;
     --ifm-color-primary-dark: #cb1b6e;
     --ifm-color-primary-darker: #c01a68;

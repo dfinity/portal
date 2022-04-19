@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './index.module.css';
 import ParticleBackground from "@site/src/components/ParticleBackground";
-import QuickInformation from "@site/src/components/QuickInformation";
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
 import BrowserOnly from '@docusaurus/BrowserOnly';
@@ -39,9 +38,9 @@ function Index({heroSectionRef}) {
             <BrowserOnly>
                 {() =>
                     <div className={styles.particleBackground}>
-                        <ParticleBackground width={screen.width} height={screen.width} particleCount={150}
-                                            frameRate={30} centerX={screen.width *0.8}
-                                            centerY={screen.height * 0.4} particleRadius={8}
+                        <ParticleBackground width={screen.width} height={screen.height} particleCount={100}
+                                            frameRate={30} centerX={screen.width * 0.5}
+                                            centerY={screen.height * 0.5} particleRadius={6}
                                             duration={12500}/>
                     </div>
                 }
@@ -67,11 +66,10 @@ function Index({heroSectionRef}) {
                                 {texts[index]}
                             </motion.span>
                         </AnimatePresence>
-                        <span className={styles.InfiniteWordFiller}>infinite</span>
-                        <span>world!</span>
+                        <span><br/>world!</span>
                     </div>
                     <div className={styles.Text}>
-                        <p>Welcome to the Internet Computer! The only blockchain where <br/> dapps can be 100% on
+                        <p>Welcome to the Internet Computer! The only blockchain where dapps can be 100% on
                             chain
                             — real web3.</p>
                     </div>
@@ -80,8 +78,6 @@ function Index({heroSectionRef}) {
                     </Link>
                 </div>
             </div>
-            <a id="startCoding"/>
-            <QuickInformation/>
         </div>
     );
 }

@@ -7,57 +7,45 @@
     position: relative;
     overflow: hidden;
 }
-.backgroundColor {
-    width: 100vw;
-    height: 200vh;
-    top: 0;
-    z-index: -1000;
-    position: absolute;
-    background-color: rgb(243,238,242);
-}
 .particleBackground {
     width: 100vw;
     height: 200vh;
     z-index: -1000;
     position: absolute;
 }
-
 .main {
     height: 80vh;
 }
-
 .Title {
     font-weight: 700;
-    font-size: 8.5vw;
+    font-size: 15vw;
+    line-height: 1.4;
     overflow: hidden;
 }
 
 .container {
-    margin: 20vh auto 0 auto;
+    margin: 15vh auto 0 auto;
     width: 80vw;
+}
+.TitleSecond {
+    margin-left: 0;
 }
 
 .Text {
-    margin: 6vw auto 4rem auto;
+    margin: 15vh auto 4rem auto;
     display: block;
     font-weight: 400;
-    font-size: 1.25vw;
+    font-size: 5vw;
 }
 
 .Button {
-    margin: 3rem auto 0 auto;
+    margin: 5vh auto 0 auto;
     text-align: center;
     width: 13rem;
     padding: 1rem 2rem;
     font-weight: bold;
-    font-size: 1vw;
-    border: 2px solid black;
+    font-size: 2.5vw;
     border-radius: 10px;
-    color: black;
-    text-decoration: none;
-}
-
-.Button:hover {
     border: 2px solid #3B00B9;
     background-color: #3B00B9;
     color: white;
@@ -65,12 +53,8 @@
 }
 
 .InfiniteWord {
-    margin: 0.5rem auto;
+    margin-left: 0;
     color: #3B00B9;
-}
-.InfiniteWordFiller {
-    opacity: 0;
-    margin-right: 0.5rem;
 }
 
 
