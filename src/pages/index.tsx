@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Features from "@site/src/components/Features";
@@ -9,7 +9,14 @@ import HeroSection from "@site/src/components/HeroSection";
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
     const heroSection = useRef(null);
-
+    const [background, setBackground] = useState(0);
+    const changeBackground = () => {
+        if (background + 1 >= 3) {
+            setBackground(0);
+        } else {
+            setBackground(background + 1);
+        }
+    };
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
         document.documentElement.style.setProperty('--ifm-navbar-background-color:', "rgb(243,238,242)");
@@ -19,9 +26,9 @@ export default function Home(): JSX.Element {
             title={siteConfig.title}
             description={siteConfig.tagline}>
             <main>
-                <SectionsBar/>
+                <SectionsBar changeBackground={changeBackground}/>
                 <a id="home"/>
-                <HeroSection heroSectionRef={heroSection}/>
+                <HeroSection heroSectionRef={heroSection} backgroundIndex={background}/>
                 <a id="internetComputer"/>
                 <InternetComputer heroSectionRef={heroSection}/>
                 <a id="features"/>

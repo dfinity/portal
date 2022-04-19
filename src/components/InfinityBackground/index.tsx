@@ -1,9 +1,9 @@
 import React from "react";
-import Sketch from "react-p5";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 const numDots = 500;
 const speed = 6500;
-const baseColor = { r: 59, g: 0, b: 185, a: 255 };
+const baseColor = {r: 59, g: 0, b: 185, a: 255};
 const radiusDelta = [];
 const weightDelta = [];
 const colorDelta = [];
@@ -12,16 +12,16 @@ export default () => {
         const cnv = p5.createCanvas(screen.width, screen.height).parent(canvasParentRef);
         for (let x = 0; x < numDots; x++) {
             radiusDelta.push(p5.random(-200, 200));
-            weightDelta.push(p5.random(15,45));
+            weightDelta.push(p5.random(15, 45));
             colorDelta.push(p5.random(-30, 30));
         }
-       /* cnv.mousePressed((event) => {
-            console.log("Clicked on the canvas. Event:", event)
-        });*/
+        /* cnv.mousePressed((event) => {
+             console.log("Clicked on the canvas. Event:", event)
+         });*/
     };
 
     const draw = (p5) => {
-        p5.background(243,238,242);
+        p5.background(243, 238, 242);
         p5.strokeWeight(4);
         for (let x = 0; x < numDots; x++) {
             p5.stroke(
@@ -38,6 +38,11 @@ export default () => {
             );
         }
     };
-
-    return <Sketch setup={setup} draw={draw} />;
+    return (
+        <BrowserOnly fallback={null}>
+            {() => {
+                const Sketch = require('react-p5');
+                return <Sketch setup={setup} draw={draw}/>;
+            }}
+        </BrowserOnly>)
 };
