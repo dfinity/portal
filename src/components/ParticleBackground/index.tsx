@@ -2,7 +2,8 @@ import React from "react";
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 let particles = [];
-export default ({width, height, particleCount, particleRadius, frameRate}) => {
+let timer = 0;
+export default ({width, height, particleCount, particleRadius, frameRate, centerX, centerY, duration}) => {
     const {Vector} = require('p5');
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(width, height).parent(canvasParentRef);
@@ -13,19 +14,36 @@ export default ({width, height, particleCount, particleRadius, frameRate}) => {
 
     const draw = (p5) => {
         p5.background(243, 241, 247, 50);
+        if (p5.millis() >= duration + timer) {
+            timer = p5.millis();
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].strength = 100;
+                particles[i].maxVelocity = 100;
+                particles[i].radius = 1000;
+            }
+            setTimeout(() => {
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].strength = -5;
+                    particles[i].maxVelocity = 10;
+                    particles[i].radius = Math.max(width,height)/10;
+                }
+            }, 2000);
+        }
         for (let i = 0; i < particles.length; i++) {
             particles[i].repelNodes(particles);
             particles[i].update();
             particles[i].show();
         }
+
+
     };
 
     const createNodes = (p5) => {
         particles = [];
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle(p5,
-                p5.width - (p5.width / 4) + p5.random(-10, 10),
-                p5.height / 4 + p5.random(-10, 10),
+                centerX + p5.random(-10, 10),
+                centerY + p5.random(-10, 10),
             ));
         }
 
@@ -34,10 +52,10 @@ export default ({width, height, particleCount, particleRadius, frameRate}) => {
     function Particle(p5, x, y) {
         this.pos = p5.createVector(x, y);
         this.vel = p5.createVector();
-        this.radius = 200; // Radius of impact
+        this.radius = Math.max(width,height)/10; // Radius of impact
         this.ramp = 1; // Influences the shape of the function
         this.strength = -5; // Strength: positive value attracts, negative value repels
-        this.damping = 0.9;
+        this.damping = 0.99;
         this.maxVelocity = 10;
         this.minX = particleRadius;
         this.minY = particleRadius;
@@ -93,6 +111,7 @@ export default ({width, height, particleCount, particleRadius, frameRate}) => {
             }
         };
     }
+
     return (
         <BrowserOnly fallback={null}>
             {() => {

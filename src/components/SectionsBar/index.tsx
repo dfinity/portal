@@ -3,7 +3,7 @@ import Link from "@docusaurus/Link";
 import React, {useEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 
-export default function SectionsBar({changeBackground}) {
+export default function SectionsBar() {
     const [display, SetDisplay] = useState(false);
     const heightToHideFrom = 100;
     const shouldDisplay = () => {
@@ -39,7 +39,7 @@ export default function SectionsBar({changeBackground}) {
                         <Link to={"#features"}><span>Features</span></Link>
                         <Link to={"/"}><span>Showcase</span></Link>
                         <Link to={"/"}><span>Ecosystem</span></Link>
-                        <Link><span onClick={changeBackground}>Dev Forum</span></Link>
+                        <Link to={"/"}><span>Dev Forum</span></Link>
                     </div>
                 </div>
             </motion.div>}
