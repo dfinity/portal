@@ -164,10 +164,11 @@ const sidebars = {
       label: 'Integrate Functionality',
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
-        type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+        type: 'doc', id: 'developer-docs/functionality/internet-identity/integrate-identity'
       },
       items: [
         // 'developer-docs/functionality/index',
+        'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
           label: 'Rosetta',
@@ -249,8 +250,8 @@ const sidebars = {
     }
   ],
   'references': [
-    // 'references/index',
-    'references/cli-reference/index',
+    'references/index',
+    // 'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -284,7 +285,38 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
       },
       items: [
-        'developer-docs/build/languages/motoko/language-manual',
+        'references/motoko-ref/Array',
+        'references/motoko-ref/AssocList',
+        'references/motoko-ref/Blob',
+        'references/motoko-ref/Bool',
+        'references/motoko-ref/Buffer',
+        'references/motoko-ref/CertifiedData',
+        'references/motoko-ref/Char',
+        'references/motoko-ref/Debug',
+        'references/motoko-ref/Deque',
+        'references/motoko-ref/Error',
+        'references/motoko-ref/Float',
+        'references/motoko-ref/Func',
+        'references/motoko-ref/Hash',
+        'references/motoko-ref/HashMap',
+        'references/motoko-ref/Heap',
+        'references/motoko-ref/Int',
+        'references/motoko-ref/Int8',
+        'references/motoko-ref/Int16',
+        'references/motoko-ref/Int32',
+        'references/motoko-ref/Int64',
+        'references/motoko-ref/Iter',
+        'references/motoko-ref/IterType',
+        'references/motoko-ref/List',
+        'references/motoko-ref/Nat8',
+        'references/motoko-ref/Nat16',
+        'references/motoko-ref/Nat32',
+        'references/motoko-ref/Nat64',
+        'references/motoko-ref/Option',
+        'references/motoko-ref/Prelude',
+        'references/motoko-ref/Principal',
+        'references/motoko-ref/Random',
+        'references/motoko-ref/RBTree',
       ]
     },
     {
@@ -293,9 +325,9 @@ const sidebars = {
       href: 'https://docs.rs/ic-cdk/',
     },
     'references/candid-ref',
-    'references/ic-interface-spec',
     'references/ledger',
-    'references/ii-spec'
+    'references/ii-spec',
+    'references/ic-interface-spec'
   ],
   'concepts': [
     'concepts/index',
@@ -309,13 +341,13 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'tokenomics': [
-    // 'tokenomics/index',
+    'tokenomics/index',
     {
       type: 'category',
       label: 'Identity & Authentication',
       link: {
-        // type: 'doc', id: 'tokenomics/token-holders/index'
-        type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+        type: 'doc', id: 'tokenomics/token-holders/index'
+        // type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
       },
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
