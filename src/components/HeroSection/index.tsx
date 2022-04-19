@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import ParticleBackground from "@site/src/components/ParticleBackground";
+import backgroundGif from "@site/static/img/background.gif";
+import InfinityBackground from "@site/src/components/InfinityBackground";
 import QuickInformation from "@site/src/components/QuickInformation";
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const variants = {
     enter: {
@@ -21,7 +24,7 @@ const variants = {
 };
 const texts = ["infinite", "لانهائي", "無限的"];
 
-function Index({heroSectionRef}) {
+function Index({heroSectionRef,backgroundIndex}) {
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
@@ -35,14 +38,26 @@ function Index({heroSectionRef}) {
     return (
         <div ref={heroSectionRef} className={styles.section}>
             <div className={styles.backgroundColor}/>
-            {/* <div className={styles.infinityBackground}>
-                        <InfinityBackground/>
-                    </div>*/}
-            <div className={styles.particleBackground}>
-                <ParticleBackground width={screen.width} height={screen.width} particleCount={200}
-                                    particleRadius={8} frameRate={60}/>
-            </div>
-            {/*  <img className={styles.sectionBG} src={backgroundGif} alt=""/>*/}
+            <BrowserOnly>
+                {() =>
+                    <div>
+                        {backgroundIndex === 0 &&
+                            <div className={styles.particleBackground}>
+                                <ParticleBackground width={screen.width} height={screen.width} particleCount={150}
+                                                    particleRadius={8} frameRate={30}/>
+                            </div>
+                        }
+                        {backgroundIndex === 1 &&
+                            <div className={styles.infinityBackground}>
+                                <InfinityBackground/>
+                            </div>
+                        }
+                        {backgroundIndex === 2 &&
+                            <img className={styles.sectionBG} src={backgroundGif} alt=""/>
+                        }
+                    </div>
+                }
+            </BrowserOnly>
             <div className={styles.main}>
                 <div className={styles.container}>
                     <div className={styles.Title}>

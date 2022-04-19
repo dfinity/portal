@@ -14,7 +14,7 @@ import {AnimatePresence, motion} from "framer-motion";
 
 function Index({heroSectionRef}) {
     const [display, SetDisplay] = useState(false);
-    const evaluateDisplay = () => {
+    const shouldDisplay = () => {
         const heroSectionHeight = heroSectionRef.current?.clientHeight;
         const screenHeight = screen.height;
         const totalHeight = window.scrollY + screenHeight;
@@ -25,10 +25,13 @@ function Index({heroSectionRef}) {
         }
     };
     useEffect(() => {
-        evaluateDisplay();
-        window.addEventListener("scroll", evaluateDisplay);
-        return () =>
-            window.removeEventListener("scroll", evaluateDisplay);
+        if (typeof window !== "undefined") {
+            // Client-side-only code
+            shouldDisplay();
+            window.addEventListener("scroll", shouldDisplay);
+            return () =>
+                window.removeEventListener("scroll", shouldDisplay);
+        }
     }, [])
     return (
         <div className={styles.Container}>

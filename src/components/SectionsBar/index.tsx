@@ -3,7 +3,7 @@ import Link from "@docusaurus/Link";
 import React, {useEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 
-export default function SectionsBar() {
+export default function SectionsBar({changeBackground}) {
     const [display, SetDisplay] = useState(false);
     const heightToHideFrom = 100;
     const shouldDisplay = () => {
@@ -15,10 +15,12 @@ export default function SectionsBar() {
         }
     };
     useEffect(() => {
-        shouldDisplay();
-        window.addEventListener("scroll", shouldDisplay);
-        return () =>
-            window.removeEventListener("scroll", shouldDisplay);
+        if (typeof window !== "undefined") {
+            shouldDisplay();
+            window.addEventListener("scroll", shouldDisplay);
+            return () =>
+                window.removeEventListener("scroll", shouldDisplay);
+        }
     }, [])
     return(
     <AnimatePresence>
@@ -37,7 +39,7 @@ export default function SectionsBar() {
                         <Link to={"#features"}><span>Features</span></Link>
                         <Link to={"/"}><span>Showcase</span></Link>
                         <Link to={"/"}><span>Ecosystem</span></Link>
-                        <Link to={"/"}><span>Dev Forum</span></Link>
+                        <Link><span onClick={changeBackground}>Dev Forum</span></Link>
                     </div>
                 </div>
             </motion.div>}
