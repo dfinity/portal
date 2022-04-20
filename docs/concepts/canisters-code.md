@@ -74,7 +74,7 @@ As a modern, high-level programming language, Motoko provides some key features 
 
 -   Support for function abstractions, user-defined type definitions, and user-defined actors.
 
-For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](../../language-guide/motoko).
+For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](../developer-docs/build/languages/motoko/about-this-guide.md).
 
 The following diagram provides a simplified drill-down view of the development environment as part of the Internet Computer ecosystem.
 

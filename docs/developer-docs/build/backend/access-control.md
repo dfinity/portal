@@ -92,7 +92,7 @@ To start the local canister execution environment:
 
 ## Register, build, and deploy the dapp
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](../cli-reference/dfx-deploy) command. You can also perform each of these steps independently using separate [`dfx canister create`](../cli-reference/dfx-canister#dfx_canister_create), [`dfx build`](../cli-reference/dfx-build), and [`dfx canister install`](../cli-reference/dfx-canister#dfx_canister_install) commands.
+After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](../../../references/cli-reference/dfx-deploy) command. You can also perform each of these steps independently using separate [`dfx canister create`](../../../references/cli-reference/dfx-canister#dfx_canister_create), [`dfx build`](../../../references/cli-reference/dfx-build), and [`dfx canister install`](../../../references/cli-reference/dfx-canister#dfx_canister_install) commands.
 
 To deploy the dapp locally:
 
@@ -374,6 +374,6 @@ To stop the local canister execution environment:
 
 If you are looking for more information about identity and authentication, check out the following related resources:
 
--   [dfx identity (command reference)](../cli-reference/dfx-identity)
+-   [dfx identity (command reference)](../../../references/cli-reference/dfx-identity)
 
--   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner)
+<!-- -   [Set an identity to own a canister (how-to)](../../working-with-canisters#set-owner) -->

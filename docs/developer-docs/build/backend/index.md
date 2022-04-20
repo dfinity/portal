@@ -1,6 +1,6 @@
 # Tutorials
 
-The [Quick start](../quickstart/quickstart-intro) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Quick start](../../quickstart/hello10mins.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 
@@ -22,9 +22,9 @@ The following tutorials introduce the basics for writing dapps that run on the I
 
 -   [Use multiple actors](multiple-actors) describes how to include multiple unrelated actors in a single project to illustrate how you can compile multiple canisters for the same project.
 
--   [Customize the front-end](custom-frontend) illustrates using a simple React framework to create a new front-end for the default sample canister and guides you through some basic modifications to customize the interface displayed. If you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
+-   [Customize the front-end](../frontend/custom-frontend) illustrates using a simple React framework to create a new front-end for the default sample canister and guides you through some basic modifications to customize the interface displayed. If you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
 
--   [Add a stylesheet](my-contacts) illustrates how to add a stylesheet when you use React to create a new front-end for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
+-   [Add a stylesheet](../frontend/my-contacts) illustrates how to add a stylesheet when you use React to create a new front-end for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
 
 -   [Make inter-canister calls](intercanister-calls) illustrates how to make simple calls to functions defined in one canister from another canister in the same project.
 
@@ -34,4 +34,4 @@ The following tutorials introduce the basics for writing dapps that run on the I
 
 -   [Accept cycles from a wallet](simple-cycles) illustrates how to accept cycles sent from the default wallet canister.
 
-Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*Motoko Programming Language Guide*](../language-guide/motoko).
+Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*Motoko Programming Language Guide*](../languages/motoko/about-this-guide.md).

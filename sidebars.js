@@ -155,6 +155,8 @@ const sidebars = {
           },
           items: [
             'developer-docs/build/frontend/webpack-config',
+            'developer-docs/build/frontend/custom-frontend',
+
           ],
         },
         'developer-docs/build/troubleshooting',
@@ -247,6 +249,7 @@ const sidebars = {
             'developer-docs/good-to-know/release-notes/0.6.20-rn',
           ]
         },
+        'developer-docs/good-to-know/glossary',
       ]
     }
   ],
