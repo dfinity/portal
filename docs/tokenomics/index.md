@@ -10,5 +10,5 @@ Starting to work with decentalized applications involves opening our minds to ne
 - [Custody Options](token-holders/custody-options-intro.md)
 - [Self Custody](token-holders/self-custody-quickstart.md)
 
-## Governanace
+## Governance
 - [NNS Intro](token-holders/nns-app-quickstart.md)
