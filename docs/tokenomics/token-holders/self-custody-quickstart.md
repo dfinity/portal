@@ -198,7 +198,7 @@ To transfer ICP tokens to another account:
 
     If you transfer the ICP tokens to an account in the [Network Nervous System application](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../../refernces/cli-reference/dfx-ledger).
+    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../../references/cli-reference/dfx-ledger).
 
 ## Lock ICP tokens by staking them in a neuron
 
