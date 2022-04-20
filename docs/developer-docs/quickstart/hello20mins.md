@@ -44,9 +44,7 @@ In this tutorial, you will get free cycles from the cycles faucet.
 This tutorial, requires one of the following operating systems
 -   Linux
 -   macOS (12.\* Monterey)
-
-Instructions for Windows, using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install), follow soon.
-
+-   Windows (With [WSL installed](windows-wsl))
 
 ## Installing tools (5 min)
 
