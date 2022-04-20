@@ -148,8 +148,11 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
                 [styles.menuWithAnnouncementBar]: showAnnouncementBar,
             })}>
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
-                <DocSideBarNav activePath={path.split('/')[3]}/>
-                <div className={clsx(styles.sideBarDivider)}/>
+                {path.split('/')[1] === 'docs' &&
+                    <>
+                        <DocSideBarNav activePath={path.split('/')[3]}/>
+                        <div className={clsx(styles.sideBarDivider)}/>
+                    </>}
                 <DocSidebarItems items={sidebar} activePath={path} level={1}/>
             </ul>
         </nav>
