@@ -187,12 +187,12 @@ To stop the local canister execution environment:
 
 If you are looking for more information about working with cycles, check out the following related resources:
 
--   [Tokens and cycles (overview)](../concepts/tokens-cycles)
+-   [Tokens and cycles (overview)](../../../concepts/tokens-cycles)
 
--   [dfx identity (command reference)](../cli-reference/dfx-identity)
+-   [dfx identity (command reference)](../../../references/cli-reference/dfx-identity)
 
--   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner)
+<!-- -   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner) -->
 
--   [Managing cycles (language reference)](../../language-guide/cycles)
+-   [Managing cycles (language reference)](../languages/motoko/cycles)
 
--   [ExperimentalCycles (base module)](../../base-libraries/ExperimentalCycles)
+-   [ExperimentalCycles (base module)](../../../references/motoko-ref/experimentalcycles.md)
