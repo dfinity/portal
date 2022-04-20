@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Features from "@site/src/components/Features";
@@ -30,12 +30,13 @@ function LandingPageMobile() {
         </main>)
 }
 
-
+const LandingPageDesktopMemo = React.memo(LandingPageDesktop);
+const LandingPageMobileMemo = React.memo(LandingPageMobile);
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
     const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
-    const shouldRenderSidebarDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
-    const shouldRenderSidebarMobile = windowSize === 'mobile';
+    const shouldRenderLandingPageDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
+    const shouldRenderLandingPageMobile = windowSize === 'mobile';
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
         document.documentElement.style.setProperty('--ifm-navbar-background-color:', "rgb(243,238,242)");
@@ -45,8 +46,8 @@ export default function Home(): JSX.Element {
             title={siteConfig.title}
             description={siteConfig.tagline}>
             <>
-                {shouldRenderSidebarDesktop && <LandingPageDesktop/>}
-                {shouldRenderSidebarMobile && <LandingPageMobile/>}
+                {shouldRenderLandingPageDesktop && <LandingPageDesktopMemo/>}
+                {shouldRenderLandingPageMobile && <LandingPageMobileMemo/>}
             </>
         </Layout>
     );

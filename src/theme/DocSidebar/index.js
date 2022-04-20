@@ -138,11 +138,6 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
         navbar: {hideOnScroll}, hideableSidebar,
     } = useThemeConfig();
 
-    useEffect(() => {
-        // changing primary color based on current section
-        changePrimaryColor(path.split('/')[3]);
-    }, [path]);
-
     return (<div
         className={clsx(styles.sidebar, {
             [styles.sidebarWithHideableNavbar]: hideOnScroll, [styles.sidebarHidden]: isHidden,
@@ -153,8 +148,11 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
                 [styles.menuWithAnnouncementBar]: showAnnouncementBar,
             })}>
             <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
-                <DocSideBarNav activePath={path.split('/')[3]}/>
-                <div className={clsx(styles.sideBarDivider)}/>
+                {path.split('/')[1] === 'docs' &&
+                    <>
+                        <DocSideBarNav activePath={path.split('/')[3]}/>
+                        <div className={clsx(styles.sideBarDivider)}/>
+                    </>}
                 <DocSidebarItems items={sidebar} activePath={path} level={1}/>
             </ul>
         </nav>
@@ -191,6 +189,10 @@ function DocSidebarMobile(props) {
 const DocSidebarDesktopMemo = React.memo(DocSidebarDesktop);
 const DocSidebarMobileMemo = React.memo(DocSidebarMobile);
 export default function DocSidebar(props) {
+    useEffect(() => {
+        // changing primary color based on current section
+        changePrimaryColor(props.path.split('/')[3]);
+    }, [props.path]);
     const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
 
     const shouldRenderSidebarDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering

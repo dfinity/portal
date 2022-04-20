@@ -28,6 +28,15 @@ const config = {
             "docusaurus2-dotenv",
             {systemvars: true},
         ],
+        [
+            '@docusaurus/plugin-content-docs',
+            ({
+                id: 'samples',
+                path: 'samples',
+                routeBasePath: 'samples',
+                sidebarPath: require.resolve('./sidebarsSample.js'),
+            }),
+        ],
     ],
 
     presets: [
@@ -113,7 +122,7 @@ const config = {
                         position: 'right',
                     },
                     {
-                        to: '/docs/current/developer-docs/samples',
+                        to: '/samples',
                         label: 'Sample Code',
                         position: 'right',
                     },

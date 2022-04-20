@@ -180,7 +180,7 @@ function NavbarMobileSidebar({sidebarShown, toggleSidebar, isHomepage}) {
             <div className="navbar-sidebar__brand">
                 <Logo
                     className="navbar__brand"
-                    imageClassName="navbar__logo"
+                    imageClassName="navbar__mobile__logo"
                     titleClassName="navbar__title"
                 />
                 <button
