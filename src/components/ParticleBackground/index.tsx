@@ -34,8 +34,6 @@ export default ({width, height, particleCount, particleRadius, frameRate, center
             particles[i].update();
             particles[i].show();
         }
-
-
     };
 
     const createNodes = (p5) => {

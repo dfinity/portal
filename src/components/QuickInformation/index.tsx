@@ -23,7 +23,7 @@ function Event({title, dateRange,link}) {
             <div className={styles.bodyContainer}>
                 <p className={styles.eventDate}>{dateRange}</p>
                 <p className={styles.eventTitle}>{title}</p>
-                <p className={styles.eventDescription}>Internet Computer Global Hackaton <br/>$6 Million In Prizes + Grants</p>
+                <p className={styles.eventDescription}>Internet Computer Global Hackathon <br/>$6 Million In Prizes + Grants</p>
                 <p className={styles.eventAction}>REGISTER NOW</p>
             </div>
             <img className={styles.eventBackground} src={eventBG} alt=""/>

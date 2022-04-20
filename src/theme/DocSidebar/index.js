@@ -138,11 +138,6 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
         navbar: {hideOnScroll}, hideableSidebar,
     } = useThemeConfig();
 
-    useEffect(() => {
-        // changing primary color based on current section
-        changePrimaryColor(path.split('/')[3]);
-    }, [path]);
-
     return (<div
         className={clsx(styles.sidebar, {
             [styles.sidebarWithHideableNavbar]: hideOnScroll, [styles.sidebarHidden]: isHidden,
@@ -191,6 +186,10 @@ function DocSidebarMobile(props) {
 const DocSidebarDesktopMemo = React.memo(DocSidebarDesktop);
 const DocSidebarMobileMemo = React.memo(DocSidebarMobile);
 export default function DocSidebar(props) {
+    useEffect(() => {
+        // changing primary color based on current section
+        changePrimaryColor(props.path.split('/')[3]);
+    }, [props.path]);
     const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
 
     const shouldRenderSidebarDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
