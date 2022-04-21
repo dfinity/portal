@@ -20,7 +20,7 @@ For this tutorial, you are going to create separate program files for three acto
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK as described in [Getting started](../getting-started).
+-   You have downloaded and installed the SDK as described in [the Quick Start](../../quickstart/hello10mins.md).
 
 -   You have stopped any network replica processes running on the local computer.
 

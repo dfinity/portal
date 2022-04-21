@@ -1,6 +1,6 @@
 # Query using an actor
 
-In the [Quick start](../../quickstart/quickstart-intro), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
+In the [Quick start](../../quickstart/hello10mins.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
 
 ## Before you begin
 
@@ -78,7 +78,7 @@ To modify the default template source code:
 
     -   The actor uses the `public query func` declaration to define an Internet Computer *query* method. Our method doesn’t need to make any permanent changes to the state of the actor. Declaring it as a query means that any changes it does make are transient and discarded after the query completes.
 
-    For more information about using a query call, see [query calls](../concepts/canisters-code#query-update) in [Canisters include both program and state](../concepts/canisters-code#canister-state).
+    For more information about using a query call, see [query calls](../../../concepts/canisters-code#query-update) in [Canisters include both program and state](../../../concepts/canisters-code#canister-state).
 
 4.  Save your changes and close the `main.mo` file.
 

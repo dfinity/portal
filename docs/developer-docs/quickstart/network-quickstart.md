@@ -20,7 +20,7 @@ Before you download and install this release of the SDK, verify the following:
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../developers-guide/concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developers-guide/default-wallet).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/default-wallet).
 
 This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell or how to install software packages like `node.js`, see [Preliminary steps for newcomers](newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#net-download-sdk).
 
@@ -70,7 +70,7 @@ To verify the SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/tutorials/explore-templates) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/explore-templates) tutorial.
 
 To create a new project for your first dapp:
 

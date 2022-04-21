@@ -1,7 +1,5 @@
 # Troubleshoot issues
 
-September 2021 (Beta) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY
-
 This section provides information to help you troubleshoot and resolve or work around common issues that are related to the following tasks:
 
 -   downloading and installing the SDK

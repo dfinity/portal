@@ -16,7 +16,7 @@ Before you optimize your program, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../quickstart/quickstart#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/hello10mins.md).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -26,7 +26,7 @@ Before you optimize your program, verify the following:
 
     For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
 
--   You have successfully compiled your dapp to a WebAssembly module (WASM) and deployed it on the local canister excecution environment.
+-   You have successfully compiled your dapp to a WebAssembly module (WASM) and deployed it on the local canister execution environment.
 
 ## Install and run the optimizer
 
