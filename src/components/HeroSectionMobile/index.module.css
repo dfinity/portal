@@ -7,18 +7,22 @@
     position: relative;
     overflow: hidden;
 }
+
 .particleBackground {
     width: 100vw;
     height: 200vh;
     z-index: -1000;
     position: absolute;
 }
+
 .main {
     height: 80vh;
 }
+
 .Title {
+    display: inline-block;
     font-weight: 700;
-    font-size: 15vw;
+    font-size: 3em;
     line-height: 1.4;
     overflow: hidden;
 }
@@ -26,16 +30,14 @@
 .container {
     margin: 15vh auto 0 auto;
     width: 80vw;
-}
-.TitleSecond {
-    margin-left: 0;
+    font-size: 16px;
 }
 
 .Text {
-    margin: 15vh auto 4rem auto;
-    display: block;
+    margin: 15vh auto 4rem 0;
     font-weight: 400;
-    font-size: 5vw;
+    font-size: 1.25em;
+    width: 70vw;
 }
 
 .Button {
@@ -44,7 +46,7 @@
     width: 13rem;
     padding: 1rem 2rem;
     font-weight: bold;
-    font-size: 2.5vw;
+    font-size: 1em;
     border-radius: 10px;
     border: 2px solid #3B00B9;
     background-color: #3B00B9;
@@ -57,4 +59,8 @@
     color: #3B00B9;
 }
 
+.InfiniteWordFiller {
+    opacity: 0;
+    display: inline-flex;
+}
 

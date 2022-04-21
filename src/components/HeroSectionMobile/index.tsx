@@ -66,7 +66,8 @@ function Index({heroSectionRef}) {
                                 {texts[index]}
                             </motion.span>
                         </AnimatePresence>
-                        <span><br/>world!</span>
+                        <span className={styles.InfiniteWordFiller}>infinite</span>
+                        <span>world!</span>
                     </div>
                     <div className={styles.Text}>
                         <p>Welcome to the Internet Computer! The only blockchain where dapps can be 100% on
