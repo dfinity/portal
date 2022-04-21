@@ -39,7 +39,7 @@ Create/access/modify confidential notes from multiple devices using [Internet Id
 ## Token transfer
 
 This sample code demonstrates how a dapp can transfer tokens to its most active users.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](./tokentransfer)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](./token-transfer)
 
 ## Explore further Samples in Motoko
 
