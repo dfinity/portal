@@ -275,7 +275,7 @@ To prepare a configuration file and build directory:
 
 In a standard development workflow, running the `dfx build` command creates several files in the `canisters` output directory, including one or more Candid interface description (`.did`) files that handle type matching for the data types associated with a program’s functions.
 
-For details about the syntax to use for different data types, see the [*Candid Guide*](../candid-guide/candid-intro) and [Candid specification](https://github.com/dfinity/candid/tree/master/spec).
+For details about the syntax to use for different data types, see the [*Candid Guide*](./candid/candid-intro) and [Candid specification](https://github.com/dfinity/candid/tree/master/spec).
 
 To create a Candid interface description file for this program:
 
