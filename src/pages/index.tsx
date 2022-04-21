@@ -13,17 +13,17 @@ function LandingPage() {
     const heroSection = useRef(null);
     return (
         <main>
-            <a id="home"/>
-            <HeroSection heroSectionRef={heroSection}/>
-            {shouldRenderLandingPageDesktop &&
-                <>
-                    <a id="internetComputer"/>
-                    <InternetComputer heroSectionRef={heroSection}/>
-                    <a id="features"/>
-                    <Features/>
-                    <SectionsBar/>
-                </>
-            }
+                <a id="home"/>
+                <HeroSection heroSectionRef={heroSection}/>
+                {shouldRenderLandingPageDesktop &&
+                    <>
+                        <a id="internetComputer"/>
+                        <InternetComputer heroSectionRef={heroSection}/>
+                        <a id="features"/>
+                        <Features/>
+                        <SectionsBar/>
+                    </>
+                }
         </main>)
 }
 

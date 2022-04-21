@@ -8,19 +8,10 @@
     overflow: hidden;
 }
 
-.backgroundColor {
-    width: 100vw;
-    height: 200vh;
-    top: 0;
-    z-index: -1000;
-    position: absolute;
-    background-color: rgb(243, 238, 242);
-}
-
 .particleBackground {
     width: 100vw;
     height: 200vh;
-    z-index: -1000;
+    z-index: -10;
     position: absolute;
 }
 
