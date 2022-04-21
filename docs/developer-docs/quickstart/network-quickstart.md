@@ -22,8 +22,6 @@ Before you download and install this release of the SDK, verify the following:
 
     For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/default-wallet).
 
-This tutorial assumes you know how to perform common tasks—like opening a terminal and running commands—on your computer. If you aren’t sure how to open a new terminal shell or how to install software packages like `node.js`, see [Preliminary steps for newcomers](newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Download and install](#net-download-sdk).
-
 ## Download and install
 
 You can download the latest version of the SDK directly from within a terminal shell on your local computer. If you have previously installed the SDK, you can skip this section and start with [Create a new project](#net-new-project).
@@ -70,7 +68,7 @@ To verify the SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developers-guide/explore-templates) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../build/backend/explore-templates) tutorial.
 
 To create a new project for your first dapp:
 
@@ -110,7 +108,7 @@ To check your connection to the IC:
 
 ## Confirm your developer identity and ledger account
 
-All ICP token transactions are recorded in a [ledger canister](../developers-guide/glossary#g-ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
+All ICP token transactions are recorded in a [ledger canister](../good-to-know/glossary#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
@@ -226,7 +224,7 @@ To validate your cycles wallet:
 
 4.  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
 
-    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../ic-identity-guide/auth-how-to).
+    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../../tokenomics/identity-auth/auth-how-to).
 
 5.  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -248,7 +246,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../developers-guide/default-wallet).
+    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/default-wallet).
 
 ## Register, build, and deploy the application
 
@@ -262,7 +260,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](../developers-guide/webpack-config#troubleshoot-node).
+    For more information about this step, see [Ensuring node is available in a project](../build/frontend/webpack-config#troubleshoot-node).
 
 3.  Register, build, and deploy your first application by running the following command:
 
@@ -366,8 +364,8 @@ You can find more detailed examples and tutorials to help you learn about how to
 
 Here are some suggestions for where to go next:
 
--   [Tutorials](../developers-guide/tutorials-intro) to explore building front-end and back-end dapps in a local development environment.
+-   [Build on the IC](../build/) to explore building front-end and back-end dapps in a local development environment.
 
--   [What is Candid?](../candid-guide/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../languages/motoko-at-a-glance) to learn about the features and syntax for using Motoko.
+-   [Motoko at-a-glance](../build/languages/motoko/motoko-at-a-glance) to learn about the features and syntax for using Motoko.

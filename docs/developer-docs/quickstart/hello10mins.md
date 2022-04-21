@@ -28,7 +28,7 @@ Or via the dapp in a browser, a pop-up window will appear with the message: `Hel
 
 ![Hello](_attachments/front-end-result.png)
 
-Note that the "Hello World" dapp consists of back-end code written in [Motoko](language-guide/motoko), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
+Note that the "Hello World" dapp consists of back-end code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
 
 ## Topics Covered in this Tutorial
 
@@ -276,7 +276,7 @@ node --version
 
 ### Prior installations of dfx
 
-If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove).
+If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
 
 ## 4. Acquiring cycles to deploy on-chain (5 min)
 
@@ -344,11 +344,9 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This is option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-[Convert ICP into cycles](4-2-convert-ICP-to-cycles).
-
 ## 5.Deploy on-chain (1 min)
 
-Now that you have your [cycles](developers-guide/concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
+Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
@@ -483,7 +481,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](../samples).
+Build DAOs, NFTs and more [here](../../../samples).
 
 ### Want to learn more?
 
