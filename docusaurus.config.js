@@ -126,11 +126,6 @@ const config = {
                         label: 'Sample Code',
                         position: 'right',
                     },
-                    {
-                        to: 'https://forum.dfinity.org/',
-                        label: 'Community',
-                        position: 'right',
-                    },
                     //{
                     //  type: 'docsVersionDropdown',
                     //  position: 'right',
