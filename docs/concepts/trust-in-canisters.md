@@ -12,7 +12,7 @@ The answer to this question has two separate dimensions:
 
 ## The Canister does what it is Supposed to do
 
-The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [Reproducible canisters](https://smartcontracts.org/docs/developers-guide/tutorials/reproducible-builds.html).
+The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [Reproducible canisters](https://smartcontracts.org/docs/developers-guide/reproducible-builds.html).
 
 ## The Behavior of the Canister cannot Unexpectedly Change
 

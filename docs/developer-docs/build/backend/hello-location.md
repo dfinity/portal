@@ -184,7 +184,7 @@ To experiment with modifying the source code for this tutorial:
 
         dfx canister call favorite_cities location '(vec {"San Francisco";"Paris";"Rome"})'
 
-    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../../candid-guide/candid-intro) language guide.
+    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../languages/candid/candid-intro.md) language guide.
 
     This command displays output similar to the following:
 

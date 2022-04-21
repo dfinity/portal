@@ -1,6 +1,6 @@
 # Installing the SDK
 
-As described in the [Quick start](../quickstart/quickstart-intro), you can download and install the latest version of the DFINITY Canister smart contract SDK package by running the command below in a terminal shell. The topics in this section provide additional information about installing, upgrading, and removing the SDK.
+As described in the [Quick start](../quickstart/hello10mins.md), you can download and install the latest version of the DFINITY Canister smart contract SDK package by running the command below in a terminal shell. The topics in this section provide additional information about installing, upgrading, and removing the SDK.
 
 Command to install the SDK:
 
@@ -55,7 +55,7 @@ If a new version of the SDK is available for download after your initial install
 
 Note that you don’t need to uninstall the software before installing the new version. However, if you want to perform a clean installation rather than an upgrade, you can first uninstall the software as described in [Removing the software](#remove), then re-run the download and installation command.
 
-For information about the features and fixes in the latest release, see the [Release notes](release-notes:sdk-release-notes).
+For information about the features and fixes in the latest release, see the [Release notes](../good-to-know/release-notes/sdk-release-notes.md).
 
 ## Removing the software
 

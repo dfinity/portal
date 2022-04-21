@@ -12,6 +12,7 @@ const sidebars = {
       },
       items: [
         'developer-docs/quickstart/hello10mins',
+        'developer-docs/quickstart/windows-wsl',
         'developer-docs/quickstart/cycles-faucet'
         // 'developer-docs/quickstart/local-quickstart',
         // 'developer-docs/quickstart/network-quickstart'
@@ -63,7 +64,7 @@ const sidebars = {
             type: 'doc', id: 'developer-docs/build/languages/work-with-languages'
           },
           items: [
-            // 'developer-docs/build/tutorials/explore-templates',
+            // 'developer-docs/build/explore-templates',
             {
               type: 'category',
               label: 'Rust',
@@ -154,6 +155,8 @@ const sidebars = {
           },
           items: [
             'developer-docs/build/frontend/webpack-config',
+            'developer-docs/build/frontend/custom-frontend',
+
           ],
         },
         'developer-docs/build/troubleshooting',
@@ -164,10 +167,11 @@ const sidebars = {
       label: 'Integrate Functionality',
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
-        type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+        type: 'doc', id: 'developer-docs/functionality/internet-identity/integrate-identity'
       },
       items: [
         // 'developer-docs/functionality/index',
+        'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
           label: 'Rosetta',
@@ -245,12 +249,13 @@ const sidebars = {
             'developer-docs/good-to-know/release-notes/0.6.20-rn',
           ]
         },
+        'developer-docs/good-to-know/glossary',
       ]
     }
   ],
   'references': [
-    // 'references/index',
-    'references/cli-reference/index',
+    'references/index',
+    // 'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -284,7 +289,46 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
       },
       items: [
-        'developer-docs/build/languages/motoko/language-manual',
+        'references/motoko-ref/array',
+        'references/motoko-ref/assoclist',
+        'references/motoko-ref/blob',
+        'references/motoko-ref/bool',
+        'references/motoko-ref/buffer',
+        'references/motoko-ref/certifieddata',
+        'references/motoko-ref/char',
+        'references/motoko-ref/debug',
+        'references/motoko-ref/deque',
+        'references/motoko-ref/error',
+        'references/motoko-ref/float',
+        'references/motoko-ref/func',
+        'references/motoko-ref/hash',
+        'references/motoko-ref/hashmap',
+        'references/motoko-ref/heap',
+        'references/motoko-ref/int',
+        'references/motoko-ref/int8',
+        'references/motoko-ref/int16',
+        'references/motoko-ref/int32',
+        'references/motoko-ref/int64',
+        'references/motoko-ref/iter',
+        'references/motoko-ref/itertype',
+        'references/motoko-ref/list',
+        'references/motoko-ref/nat8',
+        'references/motoko-ref/nat16',
+        'references/motoko-ref/nat32',
+        'references/motoko-ref/nat64',
+        'references/motoko-ref/option',
+        'references/motoko-ref/prelude',
+        'references/motoko-ref/principal',
+        'references/motoko-ref/random',
+        'references/motoko-ref/rbtree',
+        'references/motoko-ref/result',
+        'references/motoko-ref/stack',
+        'references/motoko-ref/stdlib-intro',
+        'references/motoko-ref/text',
+        'references/motoko-ref/time',
+        'references/motoko-ref/trie',
+        'references/motoko-ref/triemap',
+        'references/motoko-ref/trieset',
       ]
     },
     {
@@ -293,9 +337,9 @@ const sidebars = {
       href: 'https://docs.rs/ic-cdk/',
     },
     'references/candid-ref',
-    'references/ic-interface-spec',
     'references/ledger',
-    'references/ii-spec'
+    'references/ii-spec',
+    'references/ic-interface-spec'
   ],
   'concepts': [
     'concepts/index',
@@ -309,13 +353,13 @@ const sidebars = {
     'concepts/bitcoin-integration',
   ],
   'tokenomics': [
-    // 'tokenomics/index',
+    'tokenomics/index',
     {
       type: 'category',
       label: 'Identity & Authentication',
       link: {
-        // type: 'doc', id: 'tokenomics/token-holders/index'
-        type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+        type: 'doc', id: 'tokenomics/token-holders/index'
+        // type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
       },
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
