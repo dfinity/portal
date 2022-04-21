@@ -48,11 +48,6 @@ const sidebars = {
             id: 'hackathon-projects',
             label: 'Hackathon Projects',
         },
-        {
-            type: 'doc',
-            id: 'test',
-            label: 'MDX Test',
-        },
     ],
 };
 module.exports = sidebars;
