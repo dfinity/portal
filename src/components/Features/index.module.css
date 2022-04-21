@@ -1,7 +1,7 @@
 .container {
     height: 90vh;
     position: relative;
-    margin: 0 15% 5% 15%;
+    padding: 0 15% 5% 15%;
 }
 
 .background {

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import ParticleBackground from "@site/src/components/ParticleBackground";
 import QuickInformation from "@site/src/components/QuickInformation";
@@ -38,6 +38,7 @@ function Index({heroSectionRef}) {
     }, [index, setIndex]);
     return (
         <div ref={heroSectionRef} className={styles.section}>
+            <a id="startCoding"/>
             <div className={styles.backgroundColor}/>
             <BrowserOnly>
                 {() =>
@@ -84,7 +85,6 @@ function Index({heroSectionRef}) {
             </div>
             {shouldRenderLandingPageDesktop &&
                 <>
-                    <a id="startCoding"/>
                     <QuickInformation/>
                 </>
             }
