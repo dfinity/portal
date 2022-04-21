@@ -4,15 +4,15 @@ the IC allows you to host Web 3.0 front-ends for your dapps, using our [JavaScri
 
 Here are some quick links to tutorials with example code for various stages of developing your front-end dapp:
 
--   A tutorial on building a React dapp [Customize the front-end](tutorials/custom-frontend)
+-   A tutorial on building a React dapp [Customize the front-end](custom-frontend)
 
--   Using [Candid](tutorials/hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
+-   Using [Candid](../backend/hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
--   Using [raw HTML and JavaScript](tutorials/explore-templates#default-frontend) to display a simple HTML entry page.
+-   Using [raw HTML and JavaScript](../backend/explore-templates#default-frontend) to display a simple HTML entry page.
 
--   Using [React and compiled JavaScript](tutorials/custom-frontend) to embed HTML attributes and elements directly in a page.
+-   Using [React and compiled JavaScript](custom-frontend) to embed HTML attributes and elements directly in a page.
 
--   Using [React and TypeScript](tutorials/my-contacts) to import CSS properties from an external file.
+-   Using [React and TypeScript](my-contacts) to import CSS properties from an external file.
 
 ## How the default templates are used
 
@@ -109,7 +109,7 @@ You can see these steps in the following code block:
 
 In many cases, you can use the default `webpack.config.js` file as-is, without any modification, or you can add plug-ins, modules, and other custom configuration to suit your needs. The specific changes you make to the `webpack.config.js` configuration largely depend on the other tools and frameworks you want to use.
 
-For example, if you have experimented with the [Customize the front-end](tutorials/custom-frontend) or [Add a stylesheet](tutorials/my-contacts) front-end tutorials, you might have modified the following section to work with React JavaScript:
+For example, if you have experimented with the [Customize the front-end](custom-frontend) or [Add a stylesheet](my-contacts) front-end tutorials, you might have modified the following section to work with React JavaScript:
 
         module: {
           rules: [
