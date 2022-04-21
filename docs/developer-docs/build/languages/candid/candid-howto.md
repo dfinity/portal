@@ -39,7 +39,7 @@ Unspecified argument, sending the following random argument:
 (1_543_454_454)
 ```
 
-For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../developers-guide/cli-reference) and [dfx canister](../developers-guide/cli-reference/dfx-canister) documentation.
+For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../../../../references/cli-reference) and [dfx canister](../../../../references/cli-reference/dfx-canister) documentation.
 
 ## Interact with a service from a browser
 
@@ -108,7 +108,7 @@ actor {
 }
 ```
 
-In this example, when the import dependency on the `counter` canister— the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [Supported types](candid-types) reference section.
+In this example, when the import dependency on the `counter` canister— the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [Supported types](../../../../references/candid-ref.md) reference section.
 
 The Motoko compiler and `dfx build` command also auto-generate the Candid description for the `hello` canister to allow other canisters or tools to interact with the `hello` canister seamlessly. The generated Candid description is located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
 

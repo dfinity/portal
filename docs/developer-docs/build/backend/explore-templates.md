@@ -24,7 +24,7 @@ This tutorial takes approximately 20 minutes to complete.
 
 ## Create a new project
 
-As discussed in the [Quick start](../../quickstart/quickstart-intro), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
+As discussed in the [Quick start](../../quickstart/hello10mins.md), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
 
 To take a closer look at the files and folders that are included in a project by default, let’s create a new project to work with.
 

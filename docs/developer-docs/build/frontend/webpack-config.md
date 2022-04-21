@@ -6,9 +6,9 @@ Here are some quick links to tutorials with example code for various stages of d
 
 -   A tutorial on building a React dapp [Customize the front-end](custom-frontend)
 
--   Using [Candid](hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
+-   Using [Candid](../backend/hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
--   Using [raw HTML and JavaScript](explore-templates#default-frontend) to display a simple HTML entry page.
+-   Using [raw HTML and JavaScript](../backend/explore-templates#default-frontend) to display a simple HTML entry page.
 
 -   Using [React and compiled JavaScript](custom-frontend) to embed HTML attributes and elements directly in a page.
 

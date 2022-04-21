@@ -12,7 +12,7 @@ Motoko permits modern programming idioms, including special programming abstract
 
 Specifically, Motoko programs are *type sound* since Motoko includes a practical, modern type system that checks each one before it executes. The Motoko type system statically checks that each Motoko program will execute safely, without dynamic type errors, on all possible inputs. Consequently, entire classes of common programming pitfalls that are common in other languages, and web programming languages in particular, are ruled out. This includes null reference errors, mis-matched argument or result types, missing field errors and many others.
 
-To execute, Motoko statically compiles to [WebAssembly](about-this-guide#wasm), a portable binary format that abstracts cleanly over modern computer hardware, and thus permits its execution broadly on the Internet, and the [IC](../developers-guide/concepts/what-is-ic#ic-overview).
+To execute, Motoko statically compiles to [WebAssembly](about-this-guide#wasm), a portable binary format that abstracts cleanly over modern computer hardware, and thus permits its execution broadly on the Internet, and the [IC](../../../../concepts/what-is-ic#ic-overview).
 
 ## Each canister as an *actor*
 
