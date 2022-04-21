@@ -24,7 +24,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/local-quickstart#download-and-install).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -35,8 +35,6 @@ Before you start your project, verify the following:
     For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
 
 -   You have stopped any local canister execution environment processes running on your computer.
-
-If you aren’t sure how to open a new terminal shell on your local computer, run commands in a terminal, or how to check for and install packages, see [Preliminary steps for newcomers](../quickstart/newcomers). If you are comfortable meeting the prerequisites without instructions, continue to [Create a new project](#_create_a_new_project).
 
 This tutorial takes approximately 20 minutes to complete.
 
@@ -168,7 +166,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid-guide/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update the Candid file for this tutorial:
 

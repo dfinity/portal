@@ -290,7 +290,7 @@ const sidebars = {
       },
       items: [
         'references/motoko-ref/array',
-        'references/motoko-ref/assocList',
+        'references/motoko-ref/assoclist',
         'references/motoko-ref/blob',
         'references/motoko-ref/bool',
         'references/motoko-ref/buffer',

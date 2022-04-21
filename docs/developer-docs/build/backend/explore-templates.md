@@ -181,7 +181,7 @@ To start the local canister execution environment:
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [Quick start](../../quickstart/quickstart-intro) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
+In the [Quick start](../../quickstart/hello10mins.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network:
 

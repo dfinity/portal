@@ -62,7 +62,7 @@ When you first compile and deploy a canister, all flexible and stable variables 
 
 Declaring a variable to be `stable` requires its type to be stable too. Since not all types are stable, some variables cannot be declared `stable`.
 
-As a simple example, consider the Registry\` actor from the discussion of [orthogonal persistence](motoko#orthogonal_persistence).
+As a simple example, consider the Registry\` actor from the discussion of [orthogonal persistence](./motoko.md#orthogonal-persistence).
 
 ``` motoko
 import Text "mo:base/Text";
@@ -216,6 +216,6 @@ This metadata can be selectively exposed by the IC and used by tools such as `df
 
 ## Upgrading a deployed actor or canister
 
-After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister](../developers-guide/working-with-canisters#upgrade-canister).
+After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister](../../project-setup/manage-canisters.md#upgrade-a-canister).
 
 An upcoming version of `dfx` will, if appropriate, check the safety of an upgrade by comparing the Candid and (for Motoko canisters only) the stable signatures embedded in the deployed binary and upgrade binary, and abort the upgrade request when unsafe.
