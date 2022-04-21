@@ -1,7 +1,6 @@
 # Managing Canisters
-<!-- March 2020 (Alpha) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY -->
 
-If you have experimented with using the SDK by following the tutorials in the [Tutorials](tutorials-intro) section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
+If you have experimented with using the SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
 
 ## Obtaining a Canister Identifier
 
@@ -218,7 +217,7 @@ Unlike a canister reinstall that preserves the canister identifier but no state,
 
 For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously-stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
 
-To preserve state when you are upgrading a canister written in Motoko, be sure to use the `stable` keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [Stable variables and upgrade methods](../language-guide/upgrades). If you are upgrading a canister written in Rust, you should use `pre_upgrade` and `post_upgrade` functions as illustrated in the [Rust CDK asset storage](https://github.com/dfinity/cdk-rs/blob/master/examples/asset_storage/src/asset_storage_rs/lib.rs) example to ensure data is properly preserved after a canister upgrade.
+To preserve state when you are upgrading a canister written in Motoko, be sure to use the `stable` keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [Stable variables and upgrade methods](../languages/motoko/upgrades). If you are upgrading a canister written in Rust, you should use `pre_upgrade` and `post_upgrade` functions as illustrated in the [Rust CDK asset storage](https://github.com/dfinity/cdk-rs/blob/master/examples/asset_storage/src/asset_storage_rs/lib.rs) example to ensure data is properly preserved after a canister upgrade.
 
 To upgrade a canister:
 
