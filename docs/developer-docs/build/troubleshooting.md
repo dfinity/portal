@@ -1,7 +1,5 @@
 # Troubleshoot issues
 
-September 2021 (Beta) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY
-
 This section provides information to help you troubleshoot and resolve or work around common issues that are related to the following tasks:
 
 -   downloading and installing the SDK
@@ -11,8 +9,6 @@ This section provides information to help you troubleshoot and resolve or work a
 -   using the `dfx` command-line interface
 
 -   running the local canister execution environment
-
-[developers-guide:page$webpack-config.adoc](developers-guide:page$webpack-config.adoc)
 
 ## Migrating an existing project
 

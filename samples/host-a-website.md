@@ -1,6 +1,6 @@
 # Hosting a Static Website on the Internet Computer
 
-Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](../quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](./quickstart/network-quickstart) guide.
+Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](../docs/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](../docs/developer-docs/quickstart/network-quickstart.md) guide.
 
 ## Set up your project
 
@@ -145,6 +145,6 @@ You should see your live, multi-page website, looking like this!
 
 ### Next steps
 
-Looking to build a full-stack dapp? Check out the [Full-stack React Tutorial](../build/frontend/custom-frontend.html)!
+Looking to build a full-stack dapp? Check out the [Full-stack React Tutorial](../docs/developer-docs/build/frontend/custom-frontend)!
 
 Visit our [Developer Forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.

@@ -123,7 +123,7 @@ To review the default front-end files:
 
     This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_assets/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
-    This is the same default front-end you saw in [Viewing the default front-end](explore-templates#default-frontend).
+    This is the same default front-end you saw in [Viewing the default front-end](../backend/explore-templates#default-frontend).
 
 2.  Open the `src/custom_greeting_assets/src/index.js` file in a text editor.
 

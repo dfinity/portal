@@ -6,21 +6,107 @@
  */
 
 .footerLogoLink {
-  opacity: 0.5;
-  transition: opacity var(--ifm-transition-fast)
-    var(--ifm-transition-timing-default);
+    opacity: 0.5;
+    transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .footerLogoLink:hover {
-  opacity: 1;
-}
-
-.footerText{
-  display: flex;
-  text-align: center;
-  color: #3a33d1;
+    opacity: 1;
 }
 
 .footerPadding {
-  margin-bottom: 5vh;
+    margin-bottom: 10vh;
+}
+
+.footerLinksContainer {
+    display: flex;
+    width: 80vw;
+    margin: auto auto 3rem auto;
+    align-items: center;
+}
+
+.footerLinkCol {
+    width: 33.3%;
+}
+
+.footerLink {
+    margin-bottom: 0.5rem;
+}
+
+.footerBottom {
+    display: flex;
+    flex-grow: 1;
+    width: 80vw;
+    margin: auto;
+    align-items: center;
+}
+
+.legalContainer {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+.legalLink{
+    margin: auto 1rem;
+}
+
+.mediaLinksContainer {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+.mediaLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0.5rem;
+    color: white;
+}
+.mediaLinks img {
+    display: flex;
+}
+.container {
+    position: relative;
+    overflow: hidden;
+}
+.BGCircle{
+    position: absolute;
+    z-index: -1000;
+    height: 100vh;
+    top:-10%;
+    right:-30%;
+    filter: blur(20vh);
+}
+@media screen and (max-width: 996px) {
+    .footerLinksContainer {
+        display: block;
+    }
+    .footerLinkCol {
+        width: 100%;
+    }
+    .footerBottom{
+        display: block;
+    }
+    .legalContainer{
+        display: block;
+    }
+    .mediaLinksContainer {
+        margin-top: 3rem;
+        justify-content: flex-start;
+    }
+    .legalCopyright{
+        margin-bottom: 0.5rem;
+    }
+    .legalLink{
+        display: block;
+        margin: 0.5rem 0;
+    }
+    .BGCircle{
+        z-index: -1000;
+        width: 120vw;
+        margin-top: 40%;
+        right:0;
+        filter: blur(30vw);
+    }
 }

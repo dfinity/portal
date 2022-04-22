@@ -225,6 +225,14 @@ div[class^='announcementBarContent'] {
     height: 1.925rem;
     margin-right: .5rem
 }
+.navbar__mobile__logo{
+    display: flex;
+}
+.navbar__mobile__logo img{
+    flex: 0 0 auto;
+    width: 15rem;
+    margin: auto 0.5rem;
+}
 
 .navbar__search-input {
     appearance: none;
@@ -244,3 +252,4 @@ div[class^='announcementBarContent'] {
 .navbar {
     z-index: 1900;
 }
+

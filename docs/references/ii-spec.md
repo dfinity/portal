@@ -734,13 +734,13 @@ ic-admin \
 If you know the proposal number, you can observe all open proposals by running, in `…/dfinity/rs/nns`:
 
 ``` bash
-dfx --identity default canister --no-wallet --network=mercury call governance list_proposals --type=idl '(record {limit=25; include_reward_status=vec{}; exclude_topic=vec{}; include_status=vec{1}})'
+dfx --identity default canister --network=mercury call governance list_proposals --type=idl '(record {limit=25; include_reward_status=vec{}; exclude_topic=vec{}; include_status=vec{1}})'
 ```
 
 You can check that deployment went through running
 
 ``` bash
-dfx canister --network mainnet --no-wallet info internet_identity
+dfx canister --network mainnet info internet_identity
 ```
 
 Once the deployment went through, tag the commit with `mainnet-<date-from-proposal-url>`.

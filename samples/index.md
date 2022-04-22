@@ -1,6 +1,10 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Sample Code
 
-Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [Samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [Awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](./hackathon-projects.html)!
+Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [Samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [Awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](./hackathon-projects.md)!
 
 ## Hello world
 
@@ -30,12 +34,12 @@ Decentralised governance is higlight of the IC and is illustrated by the basic D
 ## Encrypted note-taking
 
 Create/access/modify confidential notes from multiple devices using [Internet Identity](https://smartcontracts.org/docs/ic-identity-guide/what-is-ic-identity.html) service and end-to-end encryption. The sample code relies upon the *web-serving* and *storage capabilities* of the IC, and highlights two key functionalities: (1) client-side, end-to-end encryption and (2) multi-user and multi-device support.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko) • [Rust](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust) • [See running](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/) • [Technical docs](samples/encrypted-notes)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko) • [Rust](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust) • [See running](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/) • [Technical docs](encrypted-notes)
 
 ## Token transfer
 
 This sample code demonstrates how a dapp can transfer tokens to its most active users.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](samples/tokentransfer)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](./token-transfer)
 
 ## Explore further Samples in Motoko
 

@@ -1,6 +1,6 @@
 # Explore the default project
 
-If you started your tour of the SDK with the [Quick start](../../quickstart/quickstart-intro), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+If you started your tour of the SDK with the [Quick start](../../quickstart/hello10mins.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
@@ -24,7 +24,7 @@ This tutorial takes approximately 20 minutes to complete.
 
 ## Create a new project
 
-As discussed in the [Quick start](../../quickstart/quickstart-intro), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
+As discussed in the [Quick start](../../quickstart/hello10mins.md), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
 
 To take a closer look at the files and folders that are included in a project by default, let’s create a new project to work with.
 
@@ -181,7 +181,7 @@ To start the local canister execution environment:
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [Quick start](../../quickstart/quickstart-intro) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
+In the [Quick start](../../quickstart/hello10mins.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network:
 

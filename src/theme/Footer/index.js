@@ -11,186 +11,110 @@ import {useThemeConfig} from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import styles from './styles.module.css';
-import ThemedImage from '@theme/ThemedImage';
 import IconExternalLink from '@theme/IconExternalLink';
 
 function FooterLink({to, href, label, prependBaseUrlToHref, ...props}) {
-  const toUrl = useBaseUrl(to);
-  const normalizedHref = useBaseUrl(href, {
-    forcePrependBaseUrl: true,
-  });
-  return (
-    <Link
-      className="footer__link-item"
-      style={{
-        color: 'black'
-      }}
-      {...(href
-        ? {
-            href: prependBaseUrlToHref ? normalizedHref : href,
-          }
-        : {
-            to: toUrl,
-          })}
-      {...props}>
-      {href && !isInternalUrl(href) ? (
-        <span>
+    const toUrl = useBaseUrl(to);
+    const normalizedHref = useBaseUrl(href, {
+        forcePrependBaseUrl: true,
+    });
+    return (
+        <Link
+            className="footer__link-item"
+            style={{
+                color: '#3B00B9',
+                fontWeight: 'bold',
+            }}
+            {...(href
+                ? {
+                    href: prependBaseUrlToHref ? normalizedHref : href,
+                }
+                : {
+                    to: toUrl,
+                })}
+            {...props}>
+            {href && !isInternalUrl(href) ? (
+                <span>
           {label}
-          <IconExternalLink />
+                    <IconExternalLink/>
         </span>
-      ) : (
-        label
-      )}
-    </Link>
-  );
-}
-
-function FooterLogo({sources, alt, width, height}) {
-  return (
-    <ThemedImage
-      className="footer__logo"
-      alt={alt}
-      sources={sources}
-      width={width}
-      height={height}
-    />
-  );
-}
-
-function MultiColumnLinks({links}) {
-  return (
-    <>
-      {links.map((linkItem, i) => (
-        <div key={i} className="col footer__col">
-          <div className="footer__title" style={{
-            color: 'gray',
-            fontWeight: 'normal'
-          }}>{linkItem.title}</div>
-          <ul className="footer__items">
-            {linkItem.items.map((item, key) =>
-              item.html ? (
-                <li
-                  key={key}
-                  className="footer__item" // Developer provided the HTML, so assume it's safe.
-                  // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{
-                    __html: item.html,
-                  }}
-                />
-              ) : (
-                <li key={item.href || item.to} className="footer__item">
-                  <FooterLink {...item} />
-                </li>
-              ),
+            ) : (
+                label
             )}
-          </ul>
-        </div>
-      ))}
-    </>
-  );
-}
-
-function SimpleLinks({links}) {
-  return (
-    <div className="footer__links">
-      {links.map((item, key) => (
-        <React.Fragment key={key}>
-          {item.html ? (
-            <span
-              className="footer__link-item" // Developer provided the HTML, so assume it's safe.
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: item.html,
-              }}
-            />
-          ) : (
-            <FooterLink {...item} />
-          )}
-          {links.length !== key + 1 && (
-            <span className="footer__link-separator">·</span>
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-function isMultiColumnFooterLinks(links) {
-  return 'title' in links[0];
+        </Link>
+    );
 }
 
 function Footer() {
-  const {footer} = useThemeConfig();
-  const {copyright, links = [], logo = {}} = footer || {};
-  const sources = {
-    light: useBaseUrl(logo.src),
-    dark: useBaseUrl(logo.srcDark || logo.src),
-  };
+    const {footer} = useThemeConfig();
+    const {copyright, links = []} = footer || {};
 
-  if (!footer) {
-    return null;
-  }
+    if (!footer) {
+        return null;
+    }
 
-  return (
-    <footer
-      className={clsx('footer', {
-        'footer--dark': footer.style === 'dark',
-      })}
-      style={{
-        backgroundColor: 'transparent'
-      }}
-      >
-      <div className="container container-fluid">
-        {links &&
-          links.length > 0 &&
-          (isMultiColumnFooterLinks(links) ? (
-            <div className="row footer__links">
-              <MultiColumnLinks links={links} />
-            </div>
-          ) : (
-            <div className="footer__links text--center">
-                <div>Hey</div>
-              <SimpleLinks links={links} />
-            </div>
-          ))}
-        {(logo || copyright) && (
-          <div className="footer__bottom text--center">
-            {logo && (logo.src || logo.srcDark) && (
-              <div className="margin-bottom--sm">
-                {logo.href ? (
-                  <Link href={logo.href} className={styles.footerLogoLink}>
-                    <FooterLogo
-                      alt={logo.alt}
-                      sources={sources}
-                      width={logo.width}
-                      height={logo.height}
-                    />
-                  </Link>
-                ) : (
-                  <FooterLogo
-                    alt={logo.alt}
-                    sources={sources}
-                    width={logo.width}
-                    height={logo.height}
-                  />
-                )}
-              </div>
-            )}
-            {copyright ? (
-              <div
-                className="footer__copyright" // Developer provided the HTML, so assume it's safe.
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: copyright,
-                }}
-              />
-            ) : null}
-          </div>
-        )}
-      </div>
-        <div className={styles.footerPadding} />
-    </footer>
-  );
+    const mediaLinks = links.filter(link => link.title === 'SocialMedia').map(link => link.items)[0];
+    const nonMediaLinks = links.filter(link => link.title !== 'SocialMedia');
+    console.log(mediaLinks);
+    return (<div className={styles.container}>
+            <footer
+                className={clsx('footer', {'footer--dark': footer.style === 'dark',})}
+                style={{backgroundColor: 'transparent'}}
+            >
+
+                <svg className={styles.BGCircle} viewBox="0 0 10 10"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="#3B00B9" cx="5" cy="5" r="5"/>
+                </svg>
+
+
+                <div className={styles.footerLinksContainer}>
+                    {nonMediaLinks.map((linkItem, i) => (
+                        <div key={i} className={styles.footerLinkCol}>
+                            {linkItem.items.map((item) =>
+                                <p key={item.href || item.to} className={styles.footerLink}>
+                                    <FooterLink {...item} />
+                                </p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+                <div className={styles.footerBottom}>
+                    <div className={styles.legalContainer}>
+                        {copyright ? (
+                            <div className={styles.legalCopyright}
+                                // Developer provided the HTML, so assume it's safe.
+                                // eslint-disable-next-line react/no-danger
+                                 dangerouslySetInnerHTML={{
+                                     __html: copyright,
+                                 }}
+                            />
+                        ) : null}
+                        <div className={styles.legalLink}>
+                            <Link style={{color: '#3B00B9', fontWeight: 'bold'}} to={"/"}>
+                                Terms & Conditions
+                            </Link>
+                        </div>
+                        <div className={styles.legalLink}>
+                            <Link style={{color: '#3B00B9', fontWeight: 'bold',}} to={"/"}>
+                                Cookies Policies
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={styles.mediaLinksContainer}>
+                        {mediaLinks.map((item) =>
+                            <div key={item.href || item.to} className={styles.mediaLinks}>
+                                <Link to={item.to}><img src={item.icon} alt=""/></Link>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className={styles.footerPadding}/>
+
+            </footer>
+        </div>
+    )
+        ;
 }
 
 export default React.memo(Footer);

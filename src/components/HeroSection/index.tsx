@@ -5,6 +5,7 @@ import QuickInformation from "@site/src/components/QuickInformation";
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import {useWindowSize} from "@docusaurus/theme-common";
 
 const variants = {
     enter: {
@@ -23,6 +24,8 @@ const variants = {
 const texts = ["infinite", "لانهائي", "無限的"];
 
 function Index({heroSectionRef}) {
+    const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
+    const shouldRenderLandingPageDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
@@ -35,12 +38,13 @@ function Index({heroSectionRef}) {
     }, [index, setIndex]);
     return (
         <div ref={heroSectionRef} className={styles.section}>
+            <a id="startCoding"/>
             <div className={styles.backgroundColor}/>
             <BrowserOnly>
                 {() =>
                     <div className={styles.particleBackground}>
-                        <ParticleBackground width={screen.width} height={screen.width} particleCount={150}
-                                            frameRate={30} centerX={screen.width *0.8}
+                        <ParticleBackground width={screen.width} height={screen.height * 2} particleCount={150}
+                                            frameRate={30} centerX={screen.width * 0.8}
                                             centerY={screen.height * 0.4} particleRadius={8}
                                             duration={12500}/>
                     </div>
@@ -53,7 +57,6 @@ function Index({heroSectionRef}) {
                         <AnimatePresence>
                             <motion.span
                                 className={styles.InfiniteWord}
-                                style={{position: "absolute"}}
                                 variants={variants}
                                 key={index}
                                 initial="enter"
@@ -80,8 +83,11 @@ function Index({heroSectionRef}) {
                     </Link>
                 </div>
             </div>
-            <a id="startCoding"/>
-            <QuickInformation/>
+            {shouldRenderLandingPageDesktop &&
+                <>
+                    <QuickInformation/>
+                </>
+            }
         </div>
     );
 }
