@@ -181,14 +181,18 @@ You can use the following optional flags with the `dfx ledger fabricate-cycles` 
 ### Options
 
 You can specify the following options for the `dfx ledger fabricate-cycles` command.
+If no amount is specified, 10T cycles are used by default.
 
 
 |Option |Description|
 |-------|-----------|
 |`--all` |Deposit cycles to all of the canisters configured in the dfx.json file. |
-|`--amount <cycles>` |Specifies the amount of cycles to fabricate. Defaults to 10000000000000 (10T) cycles. |
+|`--amount <icp>` |ICP to mint into cycles and deposit into destination canister Can be specified as a Decimal with the fractional portion up to 8 decimal places i.e. 100.012 |
 |`--canister <canister name/id>` |Specifies the name or id of the canister to receive the cycles deposit. You must specify either a canister name/id or the --all option. |
-|`--t <trillion cycles>` |Specifies the amount of cycles to fabricate in trillion cycles. Defaults to 10T cycles. |
+|`--cycles <cycles>` | Specifies the amount of cycles to fabricate. |
+|`--e8s <e8s>` | Specify e8s as a whole number, helpful for use in conjunction with `--icp`|
+|`--icp`|  Specify ICP as a whole number, helpful for use in conjunction with `--e8s`|
+|`--t <trillion cycles>` |Specifies the amount of cycles to fabricate in trillion cycles. Only accepts whole numbers.|
 
 ### Examples
 
