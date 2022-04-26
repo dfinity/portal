@@ -1,6 +1,6 @@
 # Introduction
 
-Motoko is a modern, general-purpose programming language you can use specifically to author [Internet Computer](../developers-guide/concepts/what-is-ic#ic-overview) canisters. Although aimed squarely at the IC, its design is general enough to support future compilation to other targets.
+Motoko is a modern, general-purpose programming language you can use specifically to author [Internet Computer](../../../../concepts/what-is-ic) canisters. Although aimed squarely at the IC, its design is general enough to support future compilation to other targets.
 
 ## Approachability
 
@@ -16,7 +16,7 @@ To execute, Motoko statically compiles to [WebAssembly](about-this-guide#wasm), 
 
 ## Each canister as an *actor*
 
-Motoko provides an **actor-based** programming model to developers to express *services*, including those of canisters on the [IC](../developers-guide/concepts/what-is-ic#ic-overview).
+Motoko provides an **actor-based** programming model to developers to express *services*, including those of canisters on the [IC](../../../../concepts/what-is-IC).
 
 An actor is similar to an object, but is special in that its state is completely isolated, and all its interactions with the world are by *asynchronous* messaging.
 

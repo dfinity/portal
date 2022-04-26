@@ -1,6 +1,6 @@
 # Default Cycles Wallet
 
-As discussed in [Tokens and cycles](concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [Tokens and cycles](../../../concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not user or developer principals. Because only canisters require and consume cycles—to perform operations and to pay for the resources they use—users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. Because the cycles wallet holds the cycles required to perform operations such as creating new canisters, these operations are executed using the canister principal for the cycles wallet instead of your user principal.
 
@@ -54,7 +54,7 @@ If you are doing local development, your cycles wallet is created when you regis
 
 If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM).
 
-There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
+There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
 ## Check the Cycle Balance
 
