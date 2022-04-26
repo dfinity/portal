@@ -24,8 +24,6 @@ const variants = {
 const texts = ["infinite", "لانهائي", "無限的"];
 
 function Index({heroSectionRef}) {
-    const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
-    const shouldRenderLandingPageDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
@@ -74,20 +72,14 @@ function Index({heroSectionRef}) {
                         <span>world!</span>
                     </div>
                     <div className={styles.Text}>
-                        <p>Welcome to the Internet Computer! The only blockchain where <br/> dapps can be 100% on
-                            chain
-                            — real web3.</p>
+                        <p>Build smart contracts and dapps 100% on chain on the world’s fastest and most powerful open source blockchain network. </p>
                     </div>
                     <Link className={styles.Button} to="/docs/current/developer-docs/quickstart/hello10mins">
                         START BUILDING
                     </Link>
                 </div>
             </div>
-            {shouldRenderLandingPageDesktop &&
-                <>
-                    <QuickInformation/>
-                </>
-            }
+            <QuickInformation/>
         </div>
     );
 }
