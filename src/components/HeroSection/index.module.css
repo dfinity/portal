@@ -6,6 +6,8 @@
 .section {
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .particleBackground {
@@ -16,23 +18,24 @@
 }
 
 .main {
-    height: 80vh;
+    height: 100vh;
 }
 
 .Title {
     display: inline-block;
     font-weight: 700;
-    font-size: 9rem;
+    font-size: 8.5rem;
     overflow: hidden;
 }
 
 .container {
-    margin: 20vh auto 0 auto;
-    width: 80vw;
+    margin: 20vh auto 10vh auto;
+    width: 1250px;
 }
 
 .Text {
-    margin: 6vh auto 4rem auto;
+    margin: 6vh auto 4rem 0;
+    width: 700px;
     display: block;
     font-weight: 400;
     font-size: 1.5rem;
@@ -70,13 +73,17 @@
 }
 
 @media screen and (max-width: 996px) {
+    .container {
+        width: 90%;
+    }
     .Title {
-        font-size: 3rem;
+        font-size: 5rem;
         line-height: 1.4;
+        display: block;
     }
 
     .Text {
-        margin: 15vh auto 4rem 0;
+        width: 90%;
         font-size: 1.25rem;
     }
 

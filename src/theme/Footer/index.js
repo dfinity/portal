@@ -55,19 +55,15 @@ function Footer() {
 
     const mediaLinks = links.filter(link => link.title === 'SocialMedia').map(link => link.items)[0];
     const nonMediaLinks = links.filter(link => link.title !== 'SocialMedia');
-    console.log(mediaLinks);
     return (<div className={styles.container}>
             <footer
                 className={clsx('footer', {'footer--dark': footer.style === 'dark',})}
                 style={{backgroundColor: 'transparent'}}
             >
-
                 <svg className={styles.BGCircle} viewBox="0 0 10 10"
                      xmlns="http://www.w3.org/2000/svg">
                     <circle fill="#3B00B9" cx="5" cy="5" r="5"/>
                 </svg>
-
-
                 <div className={styles.footerLinksContainer}>
                     {nonMediaLinks.map((linkItem, i) => (
                         <div key={i} className={styles.footerLinkCol}>

@@ -55,3 +55,8 @@ Hide toggle in small viewports
   font-weight: bold;
   background: var(--ifm-menu-color-background-hover)
 }
+
+.navbarMobileSearch {
+  width: 90%;
+  margin: auto 1rem 0.5rem auto;
+}
