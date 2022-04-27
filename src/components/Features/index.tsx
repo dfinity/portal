@@ -5,9 +5,14 @@ import Link from "@docusaurus/Link";
 function Card({title, body, link}) {
     return (
         <a href={link} className={styles.card}>
-            <p className={styles.cardTitle}>{title}</p>
-            <p className={styles.cardBody}>{body}</p>
-
+            <div className={styles.cardContainer}>
+                <p className={styles.cardTitle}>{title}</p>
+                <p className={styles.cardBody}>{body}</p>
+            </div>
+            <svg className={styles.informationIcon} viewBox="0 0 24 24" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5006 12L6.50031 4.99969L8.5 3L17.5 12L8.5 21L6.50031 19.0003L13.5006 12Z"/>
+            </svg>
         </a>
     )
 }
@@ -15,7 +20,7 @@ function Card({title, body, link}) {
 function Features() {
     return (
         <div className={styles.background}>
-            <div className={styles.container} id={"Features"}>
+            <div className={styles.container}>
                 <p className={styles.title}>What's cool about the <br/> Internet Computer</p>
                 <div className={styles.cards}>
                     <Card title={"realweb 3.0"}

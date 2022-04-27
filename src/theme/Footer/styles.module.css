@@ -22,7 +22,7 @@
     display: flex;
     width: 80vw;
     margin: auto auto 3rem auto;
-    align-items: center;
+    align-items: end;
 }
 
 .footerLinkCol {
@@ -43,8 +43,15 @@
 
 .legalContainer {
     display: flex;
+    flex-direction: row-reverse;
     flex-grow: 1;
-    justify-content: flex-start;
+    justify-content: flex-end;
+}
+.legalLinkContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: auto 1rem;
 }
 .legalLink{
     margin: auto 1rem;
@@ -76,7 +83,7 @@
     height: 100vh;
     top:-10%;
     right:-30%;
-    filter: blur(20vh);
+    filter: blur(150px);
 }
 @media screen and (max-width: 996px) {
     .footerLinksContainer {
@@ -99,14 +106,15 @@
         margin-bottom: 0.5rem;
     }
     .legalLink{
-        display: block;
-        margin: 0.5rem 0;
+        margin-left: 0;
+    }
+    .legalLinkContainer{
+        margin-left: 0;
     }
     .BGCircle{
         z-index: -1000;
         width: 120vw;
         margin-top: 40%;
         right:0;
-        filter: blur(30vw);
     }
 }

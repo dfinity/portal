@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from './index.module.css';
 import DfinityIcon from "@site/static/img/dfinityIcon.svg";
 import GamingIcon from "@site/static/img/gamingIcon.svg";
@@ -49,7 +49,7 @@ function Index() {
                                 d="M2 13.6667H14V15H2V13.6667ZM8.66667 9.78134L12.714 5.73334L13.6567 6.67601L8 12.3333L2.34333 6.67668L3.286 5.73334L7.33333 9.78001V2.33334H8.66667V9.78134Z"
                                 fill="currentColor"/>
                         </svg>
-                        <Link className={styles.CallToActionLink} to="https://dfinity.org/howitworks/">
+                        <Link className={styles.CallToActionLink} to="https://dfinity.org/whitepaper.pdf">
                             Get the Whitepaper
                         </Link>
                     </div>

@@ -1,12 +1,14 @@
 .container {
-    height: 90vh;
+    width: Min(1250px, 90%);
+    margin: auto;
     position: relative;
-    padding: 0 15% 5% 15%;
+    padding: 100px 0;
 }
 
 .background {
     background-color: #F1EEF5CC;
     position: relative;
+    overflow: hidden;
 }
 
 .title {
@@ -19,6 +21,7 @@
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
     grid-column-gap: 4px;
     grid-row-gap: 4px;
     margin: 3rem auto;
@@ -26,8 +29,8 @@
 
 .card {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     padding: 3rem;
     width: 100%;
     height: 200px;
@@ -40,11 +43,20 @@
 
 .card:hover,
 .card:hover .cardTitle,
-.card:hover .cardBody {
+.card:hover .cardBody,
+.card:hover .informationIcon {
     background: var(--ifm-color-primary);
-    color:white;
+    color: white;
     text-decoration: none;
     border: 1px solid var(--ifm-color-primary);
+}
+
+.card:hover {
+    padding-top: 2rem;
+}
+
+.cardContainer {
+    width: 90%;
 }
 
 .cardTitle {
@@ -59,7 +71,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    color:black;
+    color: black;
 }
 
 .actionButton {
@@ -80,4 +92,26 @@
     background-color: #3B00B9;
     color: white;
     text-decoration: none;
+}
+
+.informationIcon {
+    color: var(--ifm-color-primary);
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 996px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 0.5fr;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+    .informationIcon {
+        width: 16px;
+        height: 16px;
+    }
 }

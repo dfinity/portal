@@ -126,6 +126,11 @@ const config = {
                         label: 'Sample Code',
                         position: 'right',
                     },
+                    {
+                        to: 'https://www.ic.community/',
+                        label: 'ic.community',
+                        position: 'right',
+                    },
                     //{
                     //  type: 'docsVersionDropdown',
                     //  position: 'right',
@@ -154,7 +159,7 @@ const config = {
                         items: [
                             {
                                 label: 'DFINITY Foundation',
-                                to: 'https://dfinity.org/faq',
+                                to: 'https://dfinity.org/',
                             },
                             {
                                 label: 'Internet Computer Association',
@@ -166,11 +171,11 @@ const config = {
                         items: [
                             {
                                 label: '"Powered by Crypto" Assets',
-                                to: 'https://dfinity.org/ecosystem/fund'
+                                to: 'https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges'
                             },
                             {
                                 label: 'Support & Feedback',
-                                to: 'https://dfinity.org/ecosystem/fellowship'
+                                to: 'https://support.dfinity.org/hc/en-us'
                             },
                         ]
                     },
@@ -214,75 +219,6 @@ const config = {
                             },
                         ]
                     },
-                    /*{
-                        title: 'Media',
-                        items: [
-                            {
-                                label: 'Stack Overflow',
-                                to: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                            },
-                            {
-                                label: 'Discord',
-                                to: 'https://discordapp.com/invite/docusaurus',
-                            },
-                            {
-                                label: 'Twitter',
-                                to: 'https://twitter.com/docusaurus',
-                            },
-                        ],
-                    },
-                    {
-                        items: [
-                            {
-                                label: 'GitHub',
-                                to: 'https://github.com/dfinity',
-                            },
-                            {
-                                label: 'Medium',
-                                to: 'https://medium.com/dfinity-network-blog',
-                            },
-                            {
-                                label: 'Twitter',
-                                to: 'https://twitter.com/dfinity',
-                            },
-                            {
-                                label: 'Youtube',
-                                to: 'https://www.youtube.com/dfinity',
-                            },
-                        ],
-                    },
-                    {
-                        items: [
-                            {
-                                label: 'Telegram',
-                                to: 'https://t.me/dfinity/',
-                            },
-                            {
-                                label: 'LinkedIn',
-                                to: 'https://www.linkedin.com/company/dfinity',
-                            },
-                            {
-                                label: 'Reddit',
-                                to: 'https://www.reddit.com/r/dfinity/',
-                            },
-                            {
-                                label: 'Forum',
-                                to: 'https://forum.dfinity.org/',
-                            },
-                        ],
-                    },
-                    {
-                        items: [
-                            {
-                                label: 'Facebook',
-                                to: 'https://www.facebook.com/dfinity.org',
-                            },
-                            {
-                                label: 'The Reboot',
-                                to: 'https://thereboot.com/',
-                            }
-                        ],
-                    },*/
                 ],
                 copyright: `© ${new Date().getFullYear()} Internet Computer`,
             },
