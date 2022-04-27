@@ -1,37 +1,35 @@
 # Installing DFX on Windows
 
-There is no native Windows version of `dfx`, you need Windows Subsystem for Linux (AKA “WSL”) as the prerequisite.
+There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run `dfx` also on a Windows system as described below.
 
-## Installing WSL on Windows
+## Installing WSL
 
-Please follow the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to  install WSL, make sure you’re running Windows 10 version 2004 and higher or Windows 11.
+Follow Microsoft's instructions for installing the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.
 
-## WSL Supported Version
+### Supported WSL Versions
 
-Theoretically, WSL 1 and WSL 2 should be both fine to run `dfx`. But we highly recommend you to upgrade to WSL 2, please check the [Difference between WSL 1 and WSL 2](https://docs.microsoft.com/en-us/windows/wsl/compare-versions).
+Theoretically, WSL 1 and WSL 2 should both allow you to run `dfx`. However, we recommend WSL 2. [WSL Comparison](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) explains the differences between WSL1 and WSL 2.
 
-### Check WSL version
+### Check your WSL version
 
-You can run the command `wsl –list –verbose (wsl -l -v)` to check the Linux distributions installed on your Windows. Below is an example of the result after running the command.
+Run the command `wsl –list –verbose (wsl -l -v)` to check the Linux distributions installed on your Windows machine. Below is an example output.
 
 ```
   NAME      STATE           VERSION
 * Ubuntu    Running         2
 ```
 
-To learn more about `wsl` command, please check the [Command reference for WSL](https://docs.microsoft.com/en-us/windows/wsl/basic-commands).
+To learn more about the `wsl` command, check the [command reference for WSL](https://docs.microsoft.com/en-us/windows/wsl/basic-commands).
 
 
 ### Upgrade to WSL 2
 
-If you have WSL 1 installed, please follow the [Upgrade instructions](https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2) to upgrade to WSL 2. Basically you need to: 
-
+If you have WSL 1 installed, follow the [upgrade instructions](https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2) to upgrade to WSL 2. Basically you need to: 
 * Install the [WSL 2 Linux kernel update package](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package).
-
 * Run the following command to set your Linux distributions to version 2.  
   `wsl --set-version <distribution name> 2`
 
-## Running Linux Distributions
+## Running Linux
 
 After you have WSL installed, you can launch the Linux distributions by name.
 
@@ -39,12 +37,12 @@ For example `Ubuntu.exe` is the command to start the `Ubuntu` distribution from 
 
 ## Installing DFX
 
-Once you have WSL installed, please follow [Installing tools](hello10mins#1-installing-tools) to install `dfx`.
+Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](../build/install-upgrade-remove).
 
 ## Troubleshooting
 
 ### Node.js is not properly installed
-WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](hello10mins#12-nodejs) for more information.
+WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](hello10mins#nodejs) for more information.
 
 ### Permission Denied when running `dfx start`
-Projects created from `dfx` need to be on the Linux Filesystem instead of the Windows Filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
+Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
