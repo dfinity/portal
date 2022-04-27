@@ -10,8 +10,6 @@ This section provides information to help you troubleshoot and resolve or work a
 
 -   running the local canister execution environment
 
-[developers-guide:page$webpack-config.adoc](developers-guide:page$webpack-config.adoc)
-
 ## Migrating an existing project
 
 Currently, there is no automatic migration or backward compatibility for any projects that you might have created using previous versions of the `dfx` command-line interface. After upgrading to the latest version, you might see error or failure messages if you attempt to build or install a project created with a previous version of the `dfx` command-line interface.

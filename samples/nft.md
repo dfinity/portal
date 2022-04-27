@@ -3,7 +3,7 @@
 This example demonstrates implementing an NFT canister. NFTs (non-fungible tokens) are unique tokens with arbitrary
 metadata - usually an image of some kind - to form the digital equivalent of trading cards. There are a few different
 NFT standards for the Internet Computer, but the most cycles-efficient and feature-complete one is the [DIP-721](https://github.com/Psychedelic/DIP721) standard, so
-that is the standard that this canister uses.
+that is the standard that this canister uses. You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
 
 The canister is a basic implementation of the standard, with support for the minting, burning, and notification interface extensions.
 
