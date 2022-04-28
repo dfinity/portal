@@ -6,9 +6,12 @@ import SectionsBar from "@site/src/components/SectionsBar";
 import InternetComputer from "@site/src/components/InternetComputer";
 import HeroSection from "@site/src/components/HeroSection";
 import QuickInformation from "@site/src/components/QuickInformation";
+import Resources from "@site/src/components/Resources";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
+import Voting from "@site/src/components/Voting";
+import Showcase from "@site/src/components/Showcase";
 
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
@@ -37,6 +40,12 @@ export default function Home(): JSX.Element {
                 <InternetComputer/>
                 <a id="features"/>
                 <Features/>
+                <a id="showcase"/>
+                <Showcase />
+                <a id="ecosystem"/>
+                <Voting/>
+                <a id="ICWorld"/>
+                <Resources/>
                 <SectionsBar/>
             </main>
         </Layout>
