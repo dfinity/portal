@@ -2,7 +2,7 @@
 
 [Encrypted Notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) is an experimental dapp for authoring and storing confidential information in the form of short pieces of text. The user can access their notes via any number of automatically synchronized devices authenticated via [Internet Identity](https://smartcontracts.org/docs/ic-identity-guide/what-is-ic-identity.html). Thanks to the end-to-end encryption performed by the dapp’s frontend, the user does not need to trust the dapp’s backend.
 
-You can play around with the [dapp deployed on the IC](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/).
+You can play around with the [dapp deployed on the IC](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/) and see a quick introduction on [YouTube](https://youtu.be/DZQmtPSxvbs).
 
 ## Idea
 

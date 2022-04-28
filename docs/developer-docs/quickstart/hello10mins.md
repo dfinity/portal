@@ -8,13 +8,9 @@ Before starting, take a look at a version of this dapp running on-chain: <https:
 In this tutorial, you will learn how to:
 
 1.  Install the Canister SDK
-
 2.  Build and deployed a dapp locally
-
 3.  Collect free cycles to power your dapp
-
 4.  Create a "cycles wallet" from which you can transfer cycles to any other dapps you want to power
-
 5.  Deploy a dapp on-chain
 
 This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Glossary#C) (one for backend and one for frontend). The dapp accepts a text argument as input and returns a greeting. For example, if you call the `greet` method with the text argument `Everyone` on the command-line via the canister SDK (see instructions below on how to install the canister SDK), the dapp will return `Hello, Everyone!` either in your terminal:
@@ -28,7 +24,9 @@ Or via the dapp in a browser, a pop-up window will appear with the message: `Hel
 
 ![Hello](_attachments/front-end-result.png)
 
-Note that the "Hello World" dapp consists of back-end code written in [Motoko](language-guide/motoko), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
+Note that the "Hello World" dapp consists of back-end code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
+
+This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl) installation.
 
 ## Topics Covered in this Tutorial
 
@@ -38,19 +36,13 @@ Note that the "Hello World" dapp consists of back-end code written in [Motoko](l
 
 -   A **[cycles wallet](../build/project-setup/default-wallet)** is a canister that holds cycles and powers up dapps.
 
-## Supported operating systems
-This tutorial requires one of the following operating systems
-- Linux
-- macOS (12.\* Monterey)
-- Windows (With [WSL installed](windows-wsl))
-
 ## 1. Installing Tools
 
-To complete the Hello World tutorial and generally to build and deploy canisters, users need to install the canister SDK, Node.js and the Node package manager.
+To build and deploy the `Hello` dapp, you need to install the following tools.
 
-### 1.1 DFX
+### DFX
 
-In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. There are other SDKs and this is just one which is written in Motoko.
+In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
 To install `dfx`, run:
 
@@ -68,7 +60,9 @@ The terminal should look like this (at least version 0.9.2):
 
 ![dfx version](_attachments/dfx-version.png)
 
-### 1.2 Node.js
+More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove).
+
+### Node.js
 
 Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js in not needed for canister development in general.
 
@@ -276,7 +270,7 @@ node --version
 
 ### Prior installations of dfx
 
-If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../developers-guide/install-upgrade-remove).
+If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
 
 ## 4. Acquiring cycles to deploy on-chain (5 min)
 
@@ -344,11 +338,9 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This is option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-[Convert ICP into cycles](4-2-convert-ICP-to-cycles).
-
 ## 5.Deploy on-chain (1 min)
 
-Now that you have your [cycles](developers-guide/concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
+Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
@@ -483,7 +475,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](../samples).
+Build DAOs, NFTs and more [here](../../../samples).
 
 ### Want to learn more?
 
