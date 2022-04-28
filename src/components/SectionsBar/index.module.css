@@ -2,7 +2,8 @@
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 50rem;
+    display: flex;
+    min-width: 750px;
     z-index: 1900;
     bottom: 0;
     margin: 0 auto 20px auto;
@@ -15,7 +16,7 @@
 .grid {
     display: flex;
     padding: 0.8rem 0.5rem;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .grid span, .grid div {

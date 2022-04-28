@@ -10,13 +10,6 @@
     flex-direction: column;
 }
 
-.particleBackground {
-    width: 100vw;
-    height: 200vh;
-    z-index: -10;
-    position: absolute;
-}
-
 .main {
     height: 100vh;
 }
@@ -26,11 +19,15 @@
     font-weight: 700;
     font-size: 8.5rem;
     overflow: hidden;
+    line-height: 1.2;
 }
 
+.Title p {
+    display: inline-block;
+}
 .container {
-    margin: 20vh auto 10vh auto;
-    width: 1250px;
+    margin: 200px auto 100px auto;
+    width: Min(1250px,90%);
 }
 
 .Text {
@@ -75,15 +72,19 @@
 @media screen and (max-width: 996px) {
     .container {
         width: 90%;
+        margin-top: 100px;
     }
     .Title {
-        font-size: 5rem;
-        line-height: 1.4;
+        font-size: 6rem;
+        line-height: 1;
+    }
+
+    .Title p {
         display: block;
     }
 
     .Text {
-        width: 90%;
+        width: 95%;
         font-size: 1.25rem;
     }
 

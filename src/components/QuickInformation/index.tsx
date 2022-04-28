@@ -33,21 +33,22 @@ function Event({title, dateRange, link}) {
 }
 
 function QuickInformation() {
-
     return (
-        <div className={styles.grid}>
-            <Information title="Sample Code"
-                         body="Ready to code? Have some fun building DeFi, NFT minting dapps and more on the Internet Computer."
-                         link={"https://beta.smartcontracts.org/samples"}/>
-            <Information title="Wiki"
-                         body="Get to know the Internet Computer — its concepts, architecture and technical breakthroughs."
-                         link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki"}/>
-            <Information title="Community Forum"
-                         body="Join the Internet Computer Community Forum to ask questions and share your ideas on how to improve and shape its future."
-                         link={"https://forum.dfinity.org/"}/>
-            <Event title="Supernova" dateRange="May 10 - June 20, 2022" link={"https://supernova.devpost.com/"}/>
+        <div className={styles.main}>
+            <div className={styles.backgroundColor}/>
+            <div className={styles.grid}>
+                <Information title="Sample Code"
+                             body="Ready to code? Have some fun building DeFi, NFT minting dapps and more on the Internet Computer."
+                             link={"https://beta.smartcontracts.org/samples"}/>
+                <Information title="Wiki"
+                             body="Get to know the Internet Computer — its concepts, architecture and technical breakthroughs."
+                             link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki"}/>
+                <Information title="Community Forum"
+                             body="Join the Internet Computer Community Forum to ask questions and share your ideas on how to improve and shape its future."
+                             link={"https://forum.dfinity.org/"}/>
+                <Event title="Supernova" dateRange="May 10 - June 20, 2022" link={"https://supernova.devpost.com/"}/>
+            </div>
         </div>
-
     );
 }
 

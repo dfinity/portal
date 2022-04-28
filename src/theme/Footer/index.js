@@ -77,6 +77,20 @@ function Footer() {
                 </div>
                 <div className={styles.footerBottom}>
                     <div className={styles.legalContainer}>
+                        <div className={styles.legalLinkContainer}>
+                            <div className={styles.legalLink}>
+                                <Link style={{color: '#3B00B9', fontWeight: 'bold',}}
+                                      to={"https://dfinity.org/privacy-policy"}>
+                                    Privacy Policy
+                                </Link>
+                            </div>
+                            <div className={styles.legalLink}>
+                                <Link style={{color: '#3B00B9', fontWeight: 'bold'}}
+                                      to={"https://dfinity.org/terms-of-use"}>
+                                    Terms of Use
+                                </Link>
+                            </div>
+                        </div>
                         {copyright ? (
                             <div className={styles.legalCopyright}
                                 // Developer provided the HTML, so assume it's safe.
@@ -86,16 +100,6 @@ function Footer() {
                                  }}
                             />
                         ) : null}
-                        <div className={styles.legalLink}>
-                            <Link style={{color: '#3B00B9', fontWeight: 'bold'}} to={"/"}>
-                                Terms & Conditions
-                            </Link>
-                        </div>
-                        <div className={styles.legalLink}>
-                            <Link style={{color: '#3B00B9', fontWeight: 'bold',}} to={"/"}>
-                                Cookies Policies
-                            </Link>
-                        </div>
                     </div>
                     <div className={styles.mediaLinksContainer}>
                         {mediaLinks.map((item) =>

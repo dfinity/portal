@@ -3,10 +3,13 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 
 let particles = [];
 let timer = 0;
-export default ({width, height, particleCount, particleRadius, frameRate, centerX, centerY, duration}) => {
+
+export default ({width, height, particleCount, frameRate, centerX, centerY, duration}) => {
+    let pRadius = width <= 900 ? 4 : 8;
+    let cWidth = width<= 900 ? width*2 : width;
     const {Vector} = require('p5');
     const setup = (p5, canvasParentRef) => {
-        p5.createCanvas(width, height).parent(canvasParentRef);
+        p5.createCanvas(cWidth, height).parent(canvasParentRef);
         p5.noStroke();
         createNodes(p5);
         p5.frameRate(frameRate);
@@ -25,7 +28,7 @@ export default ({width, height, particleCount, particleRadius, frameRate, center
                 for (let i = 0; i < particles.length; i++) {
                     particles[i].strength = -5;
                     particles[i].maxVelocity = 10;
-                    particles[i].radius = Math.max(width,height)/10;
+                    particles[i].radius = Math.max(width, height) / 10;
                 }
             }, 2000);
         }
@@ -50,15 +53,15 @@ export default ({width, height, particleCount, particleRadius, frameRate, center
     function Particle(p5, x, y) {
         this.pos = p5.createVector(x, y);
         this.vel = p5.createVector();
-        this.radius = Math.max(width,height)/10; // Radius of impact
+        this.radius = Math.max(width, height) / 10; // Radius of impact
         this.ramp = 1; // Influences the shape of the function
         this.strength = -5; // Strength: positive value attracts, negative value repels
         this.damping = 0.99;
         this.maxVelocity = 10;
-        this.minX = particleRadius;
-        this.minY = particleRadius;
-        this.maxX = p5.width - particleRadius;
-        this.maxY = p5.height - particleRadius;
+        this.minX = pRadius;
+        this.minY = pRadius;
+        this.maxX = p5.width - pRadius;
+        this.maxY = p5.height - pRadius;
         this.update = function () {
             this.vel.add(this.acc);
             this.vel.limit(this.maxVelocity);
@@ -94,7 +97,7 @@ export default ({width, height, particleCount, particleRadius, frameRate, center
 
         this.show = function () {
             p5.fill(59, 0, 189);
-            p5.ellipse(this.pos.x, this.pos.y, particleRadius * 2, particleRadius * 2);
+            p5.ellipse(this.pos.x, this.pos.y, pRadius * 2, pRadius * 2);
         };
 
         this.repel = function (target) {
