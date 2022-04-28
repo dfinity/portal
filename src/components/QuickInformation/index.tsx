@@ -35,7 +35,6 @@ function Event({title, dateRange, link}) {
 function QuickInformation() {
     return (
         <div className={styles.main}>
-            <div className={styles.backgroundColor}/>
             <div className={styles.grid}>
                 <Information title="Sample Code"
                              body="Ready to code? Have some fun building DeFi, NFT minting dapps and more on the Internet Computer."

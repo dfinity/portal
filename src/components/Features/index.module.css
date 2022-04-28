@@ -5,12 +5,6 @@
     padding: 100px 0;
 }
 
-.background {
-    background-color: #F1EEF5CC;
-    position: relative;
-    overflow: hidden;
-}
-
 .title {
     font-weight: 700;
     font-size: 40px;

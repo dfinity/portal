@@ -16,7 +16,7 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
     };
 
     const draw = (p5) => {
-        p5.background(243, 241, 247, 50);
+        p5.background(241, 238, 245, 50);
         if (p5.millis() >= duration + timer) {
             timer = p5.millis();
             for (let i = 0; i < particles.length; i++) {
