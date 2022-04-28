@@ -83,9 +83,9 @@
 }
 .BGCircle{
     position: absolute;
-    height: 100vh;
-    top:-10%;
-    right:-30%;
+    height: 1000px;
+    top:-50px;
+    right:-300px;
     filter: blur(150px);
 }
 @media screen and (max-width: 996px) {
@@ -102,6 +102,7 @@
         display: block;
     }
     .mediaLinksContainer {
+        z-index: 10;
         margin-top: 3rem;
         justify-content: flex-start;
     }
@@ -115,9 +116,7 @@
         margin-left: 0;
     }
     .BGCircle{
-        z-index: -1000;
-        width: 120vw;
-        margin-top: 40%;
-        right:0;
+        top: 350px;
+        right:-300px;
     }
 }
