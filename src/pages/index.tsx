@@ -14,7 +14,6 @@ export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
     useEffect(() => {
         document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
-        document.documentElement.style.setProperty('--ifm-navbar-background-color:', "rgb(243,238,242)");
     }, []);
     return (
         <Layout
