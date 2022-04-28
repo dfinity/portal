@@ -23,6 +23,7 @@
     width: 80vw;
     margin: auto auto 3rem auto;
     align-items: end;
+    z-index: 10;
 }
 
 .footerLinkCol {
@@ -39,6 +40,7 @@
     width: 80vw;
     margin: auto;
     align-items: center;
+    z-index: 10;
 }
 
 .legalContainer {
@@ -62,6 +64,7 @@
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
+    z-index: 10;
 }
 .mediaLinks {
     display: flex;
@@ -74,12 +77,12 @@
     display: flex;
 }
 .container {
+    background-color: white;
     position: relative;
     overflow: hidden;
 }
 .BGCircle{
     position: absolute;
-    z-index: -1000;
     height: 100vh;
     top:-10%;
     right:-30%;

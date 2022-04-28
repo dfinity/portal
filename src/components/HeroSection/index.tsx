@@ -19,7 +19,7 @@ const variants = {
 };
 const texts = ["infinite", "لانهائي", "無限的"];
 
-function Index({heroSectionRef}) {
+function Index() {
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
@@ -31,7 +31,7 @@ function Index({heroSectionRef}) {
         }, 2500);
     }, [index, setIndex]);
     return (
-        <div ref={heroSectionRef} className={styles.section}>
+        <div className={styles.section}>
             <div className={styles.main}>
                 <div className={styles.container}>
                     <div className={styles.Title}>
