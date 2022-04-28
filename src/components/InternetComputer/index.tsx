@@ -1,94 +1,65 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from './index.module.css';
 import DfinityIcon from "@site/static/img/dfinityIcon.svg";
 import GamingIcon from "@site/static/img/gamingIcon.svg";
-import WorldwideIcon from "@site/static/img/worldwideIcon.svg";
+import SocialFiIcon from "@site/static/img/socialFiIcon.svg";
 import DatabaseIcon from "@site/static/img/databaseIcon.svg";
 import GrowthIcon from "@site/static/img/growthIcon.svg";
 import Link from "@docusaurus/Link";
 import BuildingIcon from "@site/static/img/buildingIcon.svg";
 import PlayIcon from "@site/static/img/playIcon.svg";
 import NftIcon from "@site/static/img/nftIcon.svg";
-import KeyIcon from "@site/static/img/keyIcon.svg";
-import {AnimatePresence, motion} from "framer-motion";
+import SecurityIcon from "@site/static/img/securityIcon.svg";
 
-function Index({heroSectionRef}) {
-    const [display, SetDisplay] = useState(false);
-    const shouldDisplay = () => {
-        const heroSectionHeight = heroSectionRef.current?.clientHeight;
-        const screenHeight = screen.height;
-        const totalHeight = window.scrollY + screenHeight;
-        if (totalHeight > heroSectionHeight + (screenHeight / 2) && totalHeight < heroSectionHeight + screenHeight + (screenHeight / 2)) {
-            SetDisplay(true);
-        } else {
-            SetDisplay(false);
-        }
-    };
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            // Client-side-only code
-            shouldDisplay();
-            window.addEventListener("scroll", shouldDisplay);
-            return () =>
-                window.removeEventListener("scroll", shouldDisplay);
-        }
-    }, [])
+function Index() {
     return (
         <div className={styles.Container}>
-            <AnimatePresence>
-                {display &&
-                    <motion.div
-                        key="modal"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
-                        transition={{duration: 0.5}}
-                    >
-                        <div className={styles.main}>
-                            <DfinityIcon className={styles.dfinityIcon}/>
-                            <GamingIcon className={styles.gamingIcon}/>
-                            <WorldwideIcon className={styles.worldwideIcon}/>
-                            <DatabaseIcon className={styles.databaseIcon}/>
-                            <GrowthIcon className={styles.growthIcon}/>
-                            <p className={styles.Title}>What's the <br/> Internet Computer</p>
-                            <p className={styles.Body}>Imagine building scalable Dapps, DeFi, websites,
-                                enterprise systems and
-                                open
-                                internet services that are 100%
-                                on chain and can be tokenized by a simply click. Guess what…it’s all possible on the
-                                Internet Computer.
-                            </p>
-                            <p className={styles.Body}>The Internet Computer is blockchain reimagined, a world
-                                computer built by
-                                a
-                                team of more than 200
-                                world-renowned scientists and engineers. Powered by groundbreaking chain key
-                                cryptography, the Internet
-                                Computer is the world's fastest, most scalable blockchain. It unleashes the full
-                                capacity of smart
-                                contracts
-                                enabling infinite data and computation capacity hosted entirely on chain. Developers,
-                                the world is at
-                                your
-                                fingertips!</p>
-                            <div className={styles.ButtonContainer}>
-                                <Link className={styles.Button} to="https://dfinity.org/howitworks/">
-                                    GO EXPLORE
-                                </Link>
-                            </div>
-                            <svg className={styles.BGCircle} viewBox="0 0 100 100"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <circle fill="white" cx="50" cy="50" r="50"/>
-                            </svg>
-                            <BuildingIcon className={styles.buildingIcon}/>
-                            <PlayIcon className={styles.playIcon}/>
-                            <DfinityIcon className={styles.dfinityIcon2}/>
-                            <NftIcon className={styles.nftIcon}/>
-                            <KeyIcon className={styles.keyIcon}/>
-                        </div>
-                        <div className={styles.BGColor}/>
-                    </motion.div>}
-            </AnimatePresence>
+            <div className={styles.main}>
+                <div className={styles.iconsContainer}>
+                    <DfinityIcon className={styles.dfinityIcon}/>
+                    <GamingIcon className={styles.gamingIcon}/>
+                    <SocialFiIcon className={styles.socialFiIcon}/>
+                    <DatabaseIcon className={styles.databaseIcon}/>
+                    <GrowthIcon className={styles.growthIcon}/>
+                    <p className={styles.Title}>What's the <br/> Internet Computer</p>
+                    <p className={styles.Body}>Imagine building scalable Dapps, DeFi, websites,
+                        enterprise systems and
+                        open
+                        internet services that are 100%
+                        on chain and can be tokenized by a simply click. Guess what…it’s all possible on the
+                        Internet Computer.
+                    </p>
+                    <p className={styles.Body}>The Internet Computer is blockchain reimagined, a world
+                        computer built by
+                        a
+                        team of more than 200
+                        world-renowned scientists and engineers. Powered by groundbreaking chain key
+                        cryptography, the Internet
+                        Computer is the world's fastest, most scalable blockchain. It unleashes the full
+                        capacity of smart
+                        contracts
+                        enabling infinite data and computation capacity hosted entirely on chain. Developers,
+                        the world is at
+                        your
+                        fingertips!</p>
+                    <div className={styles.CallToAction}>
+                        <svg className={styles.CallToActionIcon} viewBox="0 0 16 16" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M2 13.6667H14V15H2V13.6667ZM8.66667 9.78134L12.714 5.73334L13.6567 6.67601L8 12.3333L2.34333 6.67668L3.286 5.73334L7.33333 9.78001V2.33334H8.66667V9.78134Z"
+                                fill="currentColor"/>
+                        </svg>
+                        <Link className={styles.CallToActionLink} to="https://dfinity.org/whitepaper.pdf">
+                            Get the Whitepaper
+                        </Link>
+                    </div>
+                    <BuildingIcon className={styles.buildingIcon}/>
+                    <PlayIcon className={styles.playIcon}/>
+                    <DfinityIcon className={styles.dfinityIcon2}/>
+                    <NftIcon className={styles.nftIcon}/>
+                    <SecurityIcon className={styles.securityIcon}/>
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,10 +1,15 @@
 # Installing the SDK
 
-As described in the [Quick start](../quickstart/hello10mins.md), you can download and install the latest version of the DFINITY Canister smart contract SDK package by running the command below in a terminal shell. The topics in this section provide additional information about installing, upgrading, and removing the SDK.
+As described in the [Quick start](../quickstart/hello10mins.md), you can download and install the latest version of the DFINITY Canister smart contract SDK, called `dfx`, by running the command below in your terminal. The topics in this section provide additional information about installing, upgrading, and removing the SDK.
 
-Command to install the SDK:
+`dfx` is supported on Linux or macOS 12.\* Monterey or later. To install `dfx`, run
 
-    $ sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+``` bash
+sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+
+You can also run `dfx` on Windows using [Windows Subsystem for Linux (WSL)](../quickstart/windows-wsl).
+
 
 ## What gets installed
 

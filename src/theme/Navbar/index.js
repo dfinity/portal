@@ -193,7 +193,11 @@ function NavbarMobileSidebar({sidebarShown, toggleSidebar, isHomepage}) {
                     />
                 </button>
             </div>
+            <div className={styles.navbarMobileSearch}>
+                <Search/>
+            </div>
             <div className={styles.navbarMobileItems}>
+
                 <NavbarMediaLinks/>
                 {!colorModeToggle.disabled && !isHomepage && (
                     <ColorModeToggle
@@ -205,9 +209,9 @@ function NavbarMobileSidebar({sidebarShown, toggleSidebar, isHomepage}) {
             </div>
             <div className={styles.navbarMobilePages}>
                 <ul className="menu__list">
-                {rightItems.map((item, i) => (
-                    <NavbarItem mobile {...item} onClick={toggleSidebar} key={i}/>
-                ))}
+                    {rightItems.map((item, i) => (
+                        <NavbarItem mobile {...item} onClick={toggleSidebar} key={i}/>
+                    ))}
                 </ul>
             </div>
             <div

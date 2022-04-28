@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
-import ParticleBackground from "@site/src/components/ParticleBackground";
-import QuickInformation from "@site/src/components/QuickInformation";
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import {useWindowSize} from "@docusaurus/theme-common";
 
 const variants = {
     enter: {
@@ -24,8 +20,6 @@ const variants = {
 const texts = ["infinite", "لانهائي", "無限的"];
 
 function Index({heroSectionRef}) {
-    const windowSize = useWindowSize(); // Desktop sidebar visible on hydration: need SSR rendering
-    const shouldRenderLandingPageDesktop = windowSize === 'desktop' || windowSize === 'ssr'; // Mobile sidebar not visible on hydration: can avoid SSR rendering
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
@@ -38,24 +32,12 @@ function Index({heroSectionRef}) {
     }, [index, setIndex]);
     return (
         <div ref={heroSectionRef} className={styles.section}>
-            <a id="startCoding"/>
-            <div className={styles.backgroundColor}/>
-            <BrowserOnly>
-                {() =>
-                    <div className={styles.particleBackground}>
-                        <ParticleBackground width={screen.width} height={screen.height * 2} particleCount={150}
-                                            frameRate={30} centerX={screen.width * 0.8}
-                                            centerY={screen.height * 0.4} particleRadius={8}
-                                            duration={12500}/>
-                    </div>
-                }
-            </BrowserOnly>
             <div className={styles.main}>
                 <div className={styles.container}>
                     <div className={styles.Title}>
-                        <span>hello,</span>
+                        <p>hello,</p>
                         <AnimatePresence>
-                            <motion.span
+                            <motion.p
                                 className={styles.InfiniteWord}
                                 variants={variants}
                                 key={index}
@@ -68,26 +50,20 @@ function Index({heroSectionRef}) {
                                 }}
                             >
                                 {texts[index]}
-                            </motion.span>
+                            </motion.p>
                         </AnimatePresence>
-                        <span className={styles.InfiniteWordFiller}>infinite</span>
-                        <span>world!</span>
+                        <p className={styles.InfiniteWordFiller}>infinite</p>
+                        <p>world!</p>
                     </div>
                     <div className={styles.Text}>
-                        <p>Welcome to the Internet Computer! The only blockchain where <br/> dapps can be 100% on
-                            chain
-                            — real web3.</p>
+                        <p>Build smart contracts and dapps 100% on chain on the world’s fastest and most powerful open
+                            source blockchain network. </p>
                     </div>
                     <Link className={styles.Button} to="/docs/current/developer-docs/quickstart/hello10mins">
                         START BUILDING
                     </Link>
                 </div>
             </div>
-            {shouldRenderLandingPageDesktop &&
-                <>
-                    <QuickInformation/>
-                </>
-            }
         </div>
     );
 }

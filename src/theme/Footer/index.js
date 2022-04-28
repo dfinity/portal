@@ -55,19 +55,15 @@ function Footer() {
 
     const mediaLinks = links.filter(link => link.title === 'SocialMedia').map(link => link.items)[0];
     const nonMediaLinks = links.filter(link => link.title !== 'SocialMedia');
-    console.log(mediaLinks);
     return (<div className={styles.container}>
             <footer
                 className={clsx('footer', {'footer--dark': footer.style === 'dark',})}
                 style={{backgroundColor: 'transparent'}}
             >
-
                 <svg className={styles.BGCircle} viewBox="0 0 10 10"
                      xmlns="http://www.w3.org/2000/svg">
                     <circle fill="#3B00B9" cx="5" cy="5" r="5"/>
                 </svg>
-
-
                 <div className={styles.footerLinksContainer}>
                     {nonMediaLinks.map((linkItem, i) => (
                         <div key={i} className={styles.footerLinkCol}>
@@ -81,6 +77,20 @@ function Footer() {
                 </div>
                 <div className={styles.footerBottom}>
                     <div className={styles.legalContainer}>
+                        <div className={styles.legalLinkContainer}>
+                            <div className={styles.legalLink}>
+                                <Link style={{color: '#3B00B9', fontWeight: 'bold',}}
+                                      to={"https://dfinity.org/privacy-policy"}>
+                                    Privacy Policy
+                                </Link>
+                            </div>
+                            <div className={styles.legalLink}>
+                                <Link style={{color: '#3B00B9', fontWeight: 'bold'}}
+                                      to={"https://dfinity.org/terms-of-use"}>
+                                    Terms of Use
+                                </Link>
+                            </div>
+                        </div>
                         {copyright ? (
                             <div className={styles.legalCopyright}
                                 // Developer provided the HTML, so assume it's safe.
@@ -90,16 +100,6 @@ function Footer() {
                                  }}
                             />
                         ) : null}
-                        <div className={styles.legalLink}>
-                            <Link style={{color: '#3B00B9', fontWeight: 'bold'}} to={"/"}>
-                                Terms & Conditions
-                            </Link>
-                        </div>
-                        <div className={styles.legalLink}>
-                            <Link style={{color: '#3B00B9', fontWeight: 'bold',}} to={"/"}>
-                                Cookies Policies
-                            </Link>
-                        </div>
                     </div>
                     <div className={styles.mediaLinksContainer}>
                         {mediaLinks.map((item) =>

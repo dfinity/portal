@@ -37,9 +37,9 @@ export default function SectionsBar() {
                         <Link to={"#startCoding"}><span>Start Coding</span></Link>
                         <Link to={"#internetComputer"}><span>Internet Computer</span></Link>
                         <Link to={"#features"}><span>Features</span></Link>
-                        <Link to={"/"}><span>Showcase</span></Link>
-                        <Link to={"/"}><span>Ecosystem</span></Link>
-                        <Link to={"/"}><span>Community</span></Link>
+                        <Link to={"#showcase"}><span>Showcase</span></Link>
+                        <Link to={"#Ecosystem"}><span>Ecosystem</span></Link>
+                        <Link to={"#ICWorld"}><span>IC World</span></Link>
                     </div>
                 </div>
             </motion.div>}
