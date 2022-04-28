@@ -24,7 +24,7 @@ See below for details on the cost of compute and storage transactions on the Int
 | Ingress Byte Reception               | For every byte received in an ingress message                                                                  | 2,000                   |
 | GB Storage Per Second                | For storing a GB of data per second                                                                            | 127,000                 |
 
-Note: System API calls are just like normal function call from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
+Note: System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
 
 Cycles Cost per Transaction (as of July 26, 2021)
 
