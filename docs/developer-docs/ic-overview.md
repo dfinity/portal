@@ -4,11 +4,14 @@ Hello there!
 
 If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!
 
-To download the Internet Computer SDK, run the following command in your terminal.
+To download the Internet Computer SDK, run the following command in your Linux or macOS terminal:
 
 ``` bash
 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
+
+[Installing the SDK](build/install-upgrade-remove) provides more detailed installation instructions, including how to run the SDK on Windows using the Windows Subsystem for Linux (WSL).
+
 
 <div class="note">
 
