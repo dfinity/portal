@@ -1,23 +1,57 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 # Installing the SDK
 
 As described in the [Quick start](../quickstart/hello10mins.md), you can download and install the latest version of the DFINITY Canister smart contract SDK, called `dfx`, by running the command below in your terminal. The topics in this section provide additional information about installing, upgrading, and removing the SDK.
 
-`dfx` is supported on Linux or macOS 12.\* Monterey or later. To install `dfx`, run
+`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
 
 <Tabs>
-    <TabItem value="apple" label="Install on Mac/Linux" default>
-    To install `dfx`, run
-        ``` bash
-        sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
-        ```
-    </TabItem>
+<TabItem value="apple" label="Install on Mac/Linux" default> 
+To install <code>dfx</code>, run
+
+```bash
+    sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+
+</TabItem>
     <TabItem value="windows" label="Install on Windows">
-        You can also run `dfx` on Windows using [Windows Subsystem for Linux (WSL)](../quickstart/windows-wsl).
-    </TabItem>
+<p>There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run <code>dfx</code> also on a Windows system as described below.</p>
+<h2 id="installing-wsl">Installing WSL</h2>
+<p>Follow Microsoft&#39;s instructions for installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.</p>
+<h3 id="supported-wsl-versions">Supported WSL Versions</h3>
+<p>Theoretically, WSL 1 and WSL 2 should both allow you to run <code>dfx</code>. However, we recommend WSL 2. <a href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">WSL Comparison</a> explains the differences between WSL1 and WSL 2.</p>
+<h3 id="check-your-wsl-version">Check your WSL version</h3>
+<p>Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Linux distributions installed on your Windows machine. Below is an example output.</p>
+
+```
+    NAME        STATE      VERSION
+    * Ubuntu    Running     2
+```
+
+<p>To learn more about the <code>wsl</code> command, check the <a href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands">command reference for WSL</a>.</p>
+<h3 id="upgrade-to-wsl-2">Upgrade to WSL 2</h3>
+<p>If you have WSL 1 installed, follow the <a href="https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">upgrade instructions</a> to upgrade to WSL 2. Basically you need to: </p>
+<ul>
+<li>Install the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">WSL 2 Linux kernel update package</a>.</li>
+<li>Run the following command to set your Linux distributions to version 2. <code>wsl --set-version &lt;distribution name&gt; 2</code></li>
+</ul>
+<h2 id="running-linux">Running Linux</h2>
+<p>After you have WSL installed, you can launch the Linux distributions by name.</p>
+<p>For example <code>Ubuntu.exe</code> is the command to start the <code>Ubuntu</code> distribution from the command line.</p>
+<h2 id="installing-dfx">Installing DFX</h2>
+<p>Once you have WSL installed, you can install <code>dfx</code> within your WSL Linux terminal as described in <a href="../build/install-upgrade-remove">Installing the SDK</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="node-js-is-not-properly-installed">Node.js is not properly installed</h3>
+<p>WSL 2 has node.js <code>10.x.x</code> installed by default. But the latest <code>dfx</code> requires node.js <code>16.0.0</code> or higher, please check <a href="hello10mins#nodejs">Node.js</a> for more information.</p>
+<h3 id="permission-denied-when-running-dfx-start-">Permission Denied when running <code>dfx start</code></h3>
+<p>Projects created from <code>dfx</code> need to be on the Linux filesystem instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd $HOME</code> in the WSL terminal will bring you to the home directory, and creating projects in there should work.</p>
+
+</TabItem>
 </Tabs>
+
 
 
 ## What gets installed
