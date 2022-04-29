@@ -1,23 +1,57 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # IC Orientation
 
-Hello there!
+gm!
 
-If you’ve landed here, you’re interested in learning more about the Internet Computer. You’re in the right place — take a look below for where to get started!
+If you’ve landed here, it's likely that you're interested in learning more about the Internet Computer and the process to develop decentralized applications therein. 
 
 To download the Internet Computer SDK, run the following command in your Linux or macOS terminal:
 
 ``` bash
-sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+  sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
 [Installing the SDK](build/install-upgrade-remove) provides more detailed installation instructions, including how to run the SDK on Windows using the Windows Subsystem for Linux (WSL).
 
 
-<div class="note">
+:::note
 
 Qualified developers can access $20 worth of free cycles to begin deploying canister smart contracts to the Internet Computer blockchain. [Claim your free cycles](https://faucet.dfinity.org/auth)
 
-</div>
+:::
+
+<Tabs
+  defaultValue="docs"
+  values={[
+    {label: 'Developer Docs', value: 'docs'},
+    {label: 'References', value: 'refs'},
+    {label: 'Concepts', value: 'concepts'},
+    {label: 'Tokenomics', value: 'tokens'},
+  ]}>
+  <TabItem value="docs">
+    <h3> A tour through the docs </h3>
+
+  Put my text 
+  <code class="language-shell"> sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)" </code>
+
+  And some more 
+
+  And then I will see about links in html
+
+  </TabItem>
+  <TabItem value="refs">
+    # References
+  </TabItem>
+  <TabItem value="concepts">Concepts</TabItem>
+  <TabItem value="tokens">Tokenomics</TabItem>
+</Tabs>
+
+`sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"`
+
+# This is the end
+
 
 ## For: First-Timers
 
