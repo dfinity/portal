@@ -51,6 +51,6 @@ tutorials.
 
 ### Next, people often look at these guides:
 
--   [Local Development](./local-quickstart.html)
+-   [Local Development](./local-quickstart)
 
--   [Network Deployment](./network-quickstart.html)
+-   [Network Deployment](./network-quickstart)

@@ -12,29 +12,12 @@ const sidebars = {
       },
       items: [
         'developer-docs/quickstart/hello10mins',
-        'developer-docs/quickstart/windows-wsl',
+        // 'developer-docs/quickstart/windows-wsl',
         'developer-docs/quickstart/cycles-faucet'
         // 'developer-docs/quickstart/local-quickstart',
         // 'developer-docs/quickstart/network-quickstart'
       ]
     },
-    // {
-    //   type: 'category',
-    //   label: 'Sample Code',
-    //   link: {
-    //     type: 'doc', id: 'developer-docs/samples/index'
-    //   },
-    //   items: [
-    //     'developer-docs/samples/dao',
-    //     'developer-docs/samples/dex',
-    //     'developer-docs/samples/encrypted-notes',
-    //     'developer-docs/samples/hackathon-projects',
-    //     'developer-docs/samples/hello',
-    //     'developer-docs/samples/host-a-website',
-    //     'developer-docs/samples/nft',
-    //     'developer-docs/samples/tokentransfer',
-    //   ]
-    // },
     {
       type: 'category',
       label: 'Building on the IC',
@@ -159,6 +142,17 @@ const sidebars = {
 
           ],
         },
+        // {
+        //   type: 'category',
+        //   label: 'Deployment & Scaling',
+        //   link: {
+        //     type: 'doc', id: 'developer-docs/build/deployment-scaling/index',
+        //   },
+        //   items: [
+        //     'developer-docs/build/deployment-scaling/deploy',
+        //     'developer-docs/build/deployment-scaling/scale'
+        //   ],
+        // },
         'developer-docs/build/troubleshooting',
       ]
     },
