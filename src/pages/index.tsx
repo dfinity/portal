@@ -26,9 +26,9 @@ export default function Home(): JSX.Element {
                 <BrowserOnly>
                     {() =>
                         <div className={styles.particleBackground}>
-                            <ParticleBackground width={screen.width} height={screen.height * 2} particleCount={150}
-                                                frameRate={30} centerX={screen.width * 0.8}
-                                                centerY={screen.height * 0.4} duration={12500}/>
+                            <ParticleBackground width={window.innerWidth} height={window.innerHeight * 2} particleCount={150}
+                                                frameRate={30} centerX={window.innerWidth * 0.8}
+                                                centerY={window.innerHeight * 0.4} duration={12500}/>
                         </div>
                     }
                 </BrowserOnly>

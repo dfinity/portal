@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 import {useAnimation, motion} from "framer-motion";
 import {useInView} from "react-intersection-observer";
+import {useWindowSize} from "@docusaurus/theme-common";
 
 
 const variants = {
-    visible: {opacity: 1, transition: {duration: 1}},
-    hidden: {opacity: 0}
+    visible: {opacity: 1, transition: {duration: 1}, zIndex: 1000},
+    hidden: {opacity: 0, zIndex: -10000}
 };
 
 function Card({title, body, link}) {
@@ -25,9 +26,41 @@ function Card({title, body, link}) {
     )
 }
 
+function ShowcaseContent() {
+    return <div className={styles.showcaseContainer}>
+        <div className={styles.header}>
+            <p className={styles.title}>Dapp Showcase</p>
+            <div className={styles.headerBody}>
+                <p className={styles.body}>The Internet Computer ecosystem continues to skyrocket with new
+                    developer and entrepreneurial activity. Get inspired by the existing dapps.</p>
+                <Link className={styles.callToAction} to={"https://dfinity.org/showcase/"}>Explore the Internet
+                    Computer ecosystem</Link>
+            </div>
+        </div>
+        <div className={styles.cards}>
+            <Card title={"realweb 3.0"}
+                  body={"Dapps fully hosted on chain, serving content directly to your browser"}
+                  link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain"}/>
+            <Card title={"webspeed"}
+                  body={"TX finalized in 2 secs. State-preserving calls processed in milliseconds"}
+                  link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed"}/>
+            <Card title={"reversegas"} body={"Users do not need to jump through hoops to use your dapp"}
+                  link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29"}/>
+            <Card title={"lessCO₂"}
+                  body={"Chain key cryptography enables environmentally friendly decentralization and keeps gas cost stable"}
+                  link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost"}/>
+        </div>
+        <div className={styles.actionButtonContainer}>
+            <Link className={styles.actionButton} to="https://beta.smartcontracts.org/samples/">
+                BUILD YOUR OWN
+            </Link>
+        </div>
+    </div>
+}
+
 function Showcase() {
     const controls = useAnimation();
-    const [ref, inView] = useInView();
+    const {ref, inView} = useInView({threshold: 0.35});
     useEffect(() => {
         if (inView) {
             controls.start("visible");
@@ -36,47 +69,18 @@ function Showcase() {
         }
     }, [controls, inView]);
     return (
-        <motion.div
-            ref={ref}
-            animate={controls}
-            initial="hidden"
-            variants={variants}
-            className={styles.container}
-        >
-            <div className={styles.background}/>
-            <div className={styles.header}>
-                <p className={styles.title}>Dapp Showcase</p>
-                <div className={styles.headerBody}>
-                    <p className={styles.body}>The Internet Computer ecosystem continues to skyrocket with new
-                        developer and entrepreneurial activity. Get inspired by the existing dapps.</p>
-                    <Link className={styles.callToAction} to={"https://dfinity.org/showcase/"}>Explore the Internet
-                        Computer ecosystem</Link>
-                </div>
-            </div>
-            {/*<div className={styles.cards}>
-                <Card title={"realweb 3.0"}
-                      body={"Dapps fully hosted on chain, serving content directly to your browser"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain"}/>
-                <Card title={"webspeed"}
-                      body={"TX finalized in 2 secs. State-preserving calls processed in milliseconds"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed"}/>
-                <Card title={"reversegas"} body={"Users do not need to jump through hoops to use your dapp"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29"}/>
-                <Card title={"lessCO₂"}
-                      body={"Chain key cryptography enables environmentally friendly decentralization and keeps gas cost stable"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost"}/>
-                <Card title={"internetscale"}
-                      body={"Dapps can grow without limits as the IC transparently adds more nodes"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit"}/>
-                <Card title={"actormodel"} body={"Parallelism enables scaling. Contracts are asynchronous"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Novel_.E2.80.9Ccanister.E2.80.9D_smart_contract_framework"}/>
-            </div>*/}
-            <div className={styles.actionButtonContainer}>
-                <Link className={styles.actionButton} to="https://beta.smartcontracts.org/samples/">
-                    BUILD YOUR OWN
-                </Link>
-            </div>
-        </motion.div>
+        <div className={styles.container}>
+            <motion.div
+                ref={ref}
+                animate={controls}
+                initial="hidden"
+                variants={variants}
+            >
+                <div className={styles.background}/>
+                <ShowcaseContent/>
+            </motion.div>
+
+        </div>
     );
 }
 
