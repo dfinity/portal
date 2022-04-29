@@ -1,1 +1,1 @@
-# Deploying Canisters
+# Deploying & Upgrading Canisters

@@ -4,32 +4,32 @@ hide_table_of_contents: true
 
 # Sample Code
 
-Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [Samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [Awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](./hackathon-projects.md)!
+Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [Samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [Awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
 
 ## Hello world
 
 The dapp equivalent of *hello world*, with a separate backend and frontend canister serving a web page.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello) • [Rust](https://github.com/dfinity/examples/tree/master/rust/hello) • [See running](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/) • [Technical docs](samples/hello)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello) • [Rust](https://github.com/dfinity/examples/tree/master/rust/hello) • [See running](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/) • [Technical docs](hello)
 
 ## Static website
 
 This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to the IC.  
-[Technical docs](samples/host-a-website) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
+[Technical docs](host-a-website) • [Video guide](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
 ## Basic DEX
 
 To enable DEFI applications on the IC, canisters need to interact with token canisters and the ledger canister. This example dapp illustrates these interactions by showing how to enable an Exchange to take custody of funds, update an internal balance book as users trade, and give custody back to the user as funds are withdrawn.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi) • [Rust](https://github.com/dfinity/examples/tree/master/rust/defi) • [See running](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/) • [Technical docs](samples/dex) • [YouTube](https://youtu.be/fLbaOmH24Gs)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi) • [Rust](https://github.com/dfinity/examples/tree/master/rust/defi) • [See running](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/) • [Technical docs](dex) • [YouTube](https://youtu.be/fLbaOmH24Gs)
 
 ## NFT minting
 
 This NFT minting dapp showcases how easy it can be to create a user generated NFT and share it. This dapp uses the [DIP721](https://github.com/Psychedelic/DIP721) NFT standard.  
-[Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container) • [Technical docs](samples/nft) • [YouTube](https://youtu.be/1po3udDADp4)
+[Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container) • [Technical docs](nft) • [YouTube](https://youtu.be/1po3udDADp4)
 
 ## Basic DAO
 
 Decentralised governance is higlight of the IC and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can sumit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao) • [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao) • [Technical docs](samples/dao) • [YouTube](https://youtu.be/3IcYlieA-EE)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao) • [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao) • [Technical docs](dao) • [YouTube](https://youtu.be/3IcYlieA-EE)
 
 ## Encrypted note-taking
 
@@ -39,7 +39,7 @@ Create/access/modify confidential notes from multiple devices using [Internet Id
 ## Token transfer
 
 This sample code demonstrates how a dapp can transfer tokens to its most active users.  
-[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](./token-transfer)
+[Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](token-transfer)
 
 ## Explore further Samples in Motoko
 
