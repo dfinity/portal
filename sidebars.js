@@ -67,7 +67,7 @@ const sidebars = {
               label: 'Motoko',
               link: {
                 // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
-                type: 'doc', id: 'developer-docs/build/languages/motoko/about-this-guide',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/motoko',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
@@ -157,7 +157,7 @@ const sidebars = {
           type: 'category',
           label: 'Security Best Practices',
           link: {
-            type: 'doc', id: 'developer-docs/updates/security/index'
+            type: 'doc', id: 'developer-docs/build/security/index'
           },
           items: [
             'developer-docs/build/security/general-security-best-practices',

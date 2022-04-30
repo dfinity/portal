@@ -394,7 +394,7 @@ If you want to start submitting proposals right away, however, you can access a 
 
 ## Deploy a canister with cycles
 
-You must have **cycles** available to create and manage [canisters](../../developer-docs/updates/glossary.md#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
+You must have **cycles** available to create and manage [canisters](../../developer-docs/glossary.md#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
 
 To create a new canister:
 
