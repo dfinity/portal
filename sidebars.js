@@ -153,6 +153,18 @@ const sidebars = {
         //     'developer-docs/build/deployment-scaling/scale'
         //   ],
         // },
+        {
+          type: 'category',
+          label: 'Security Best Practices',
+          link: {
+            type: 'doc', id: 'developer-docs/updates/security/index'
+          },
+          items: [
+            'developer-docs/build/security/general-security-best-practices',
+            'developer-docs/build/security/web-app-development-security-best-practices',
+            'developer-docs/build/security/rust-canister-development-security-best-practices',
+          ]
+        },
         'developer-docs/build/troubleshooting',
       ]
     },
@@ -232,18 +244,6 @@ const sidebars = {
           ]
         },
         'developer-docs/updates/computation-and-storage-costs',
-        {
-          type: 'category',
-          label: 'Security Best Practices',
-          link: {
-            type: 'doc', id: 'developer-docs/updates/security/index'
-          },
-          items: [
-            'developer-docs/updates/security/general-security-best-practices',
-            'developer-docs/updates/security/web-app-development-security-best-practices',
-            'developer-docs/updates/security/rust-canister-development-security-best-practices',
-          ]
-        },
       ]
     },
   'developer-docs/glossary',
