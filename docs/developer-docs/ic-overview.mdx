@@ -1,13 +1,18 @@
+--- 
+hide_table_of_contents: true
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import styles from './styles.module.css';
 
 # IC Orientation
 
 gm!
 
-If you’ve landed here, it's likely that you're interested in learning more about the Internet Computer and the process to develop decentralized applications therein. 
+You find yourself in the home of documentation and developer resources for the Internet Computer.
 
-To download the Internet Computer SDK, run the following command in your Linux or macOS terminal:
+To download the Internet Computer SDK, run the following command in a Linux or macOS terminal:
 
 ``` bash
   sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
@@ -15,43 +20,33 @@ To download the Internet Computer SDK, run the following command in your Linux o
 
 [Installing the SDK](build/install-upgrade-remove) provides more detailed installation instructions, including how to run the SDK on Windows using the Windows Subsystem for Linux (WSL).
 
-
-:::note
+<!-- :::note
 
 Qualified developers can access $20 worth of free cycles to begin deploying canister smart contracts to the Internet Computer blockchain. [Claim your free cycles](https://faucet.dfinity.org/auth)
 
-:::
+::: -->
+Throughout this site, we have made an effort to organise information in a way that addresses different needs at different times. 
+In the left navigation, you will see four different categories of documents, styled in different colors when active.
+Click through the tabs below to find an overview of each category. 
 
-<!-- </TabItem>
-</Tabs>
-
-<Tabs
-  defaultValue="docs"
-  values={[
-    {label: 'Developer Docs', value: 'docs'},
-    {label: 'References', value: 'refs'},
-    {label: 'Concepts', value: 'concepts'},
-    {label: 'Tokenomics', value: 'tokens'},
-  ]}>
-  <TabItem value="docs">
+<Tabs>
+  <TabItem value="docs" label='Developer Docs' attributes={{className: styles.docs}}>
     <h3> A tour through the docs </h3>
-
-  Put my text 
-  <code class="language-shell"> sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)" </code>
-
-  And some more 
-
-  And then I will see about links in html
-
+    The Developer Docs category contains all the information you will need get started and advance in building applications on the the IC.
+    <br></br>
+    <a href="quickstart/hello10mins"> Quick Start</a> &rarr; <a href="build/index">Buidling on the IC </a> &rarr; <a href="functionality/index">Integrating Functionality</a> &rarr; <a href="updates/index">Updates </a>
   </TabItem>
-  <TabItem value="refs">
-    # References
+  <TabItem value="refs" label='References' attributes={{className: styles.refs}}>
+    The Reference category contains reference documentation for various IC components and languages.
   </TabItem>
-  <TabItem value="concepts">Concepts</TabItem>
-  <TabItem value="tokens">Tokenomics</TabItem>
+  <TabItem value="concepts" label='Concepts' attributes={{className: styles.concepts}}>
+    The Concepts category will guide you through the more foundational story underlying core parts of the IC.
+  </TabItem>
+  <TabItem value="tokens" label='Tokenomics' attributes={{className: styles.tokens}}>
+    Finally, the tokenomics category gives a tour of governance and tokenomics topics that can be used in development, or simply when engaging with the IC ecosystem.
+  </TabItem>
 </Tabs>
 
-`sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"` -->
 
 
 ## For: First-Timers

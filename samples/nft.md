@@ -26,7 +26,7 @@ When upgrading canister code, however, it is necessary to explicitly handle cani
 ### Certified Data
 Generally, when a function only reads data (instead of modifying the state of the canister), it is
 beneficial to use a [query call instead of an update call](../docs/concepts/canisters-code.md#query-and-update-methods).
-But, since query calls do not go through consensus, [certified responses](../docs/developer-docs/good-to-know/security/general-security-best-practices.md#certify-query-responses-if-they-are-relevant-for-security)
+But, since query calls do not go through consensus, [certified responses](../docs/developer-docs/updates/security/general-security-best-practices.md#certify-query-responses-if-they-are-relevant-for-security)
 should be used wherever possible. The HTTP interface of the Rust implementation shows how certified data can be handled.
 
 ### Delegating Control over Assets

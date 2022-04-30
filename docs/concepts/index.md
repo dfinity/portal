@@ -6,7 +6,7 @@ Knowing a little about the design and architecture of the IC can make it easier 
 
 The topics in this section introduce key components and terminology to help you understand the architecture and operation of the IC.
 
-If you want to get right to developing code, though, you can skip this introductory material—key concepts and terminology—and look them up later when you need them either in this section or in the [glossary](../developer-docs/good-to-know/glossary).
+If you want to get right to developing code, though, you can skip this introductory material—key concepts and terminology—and look them up later when you need them either in this section or in the [glossary](../developer-docs/updates/glossary).
 
 If you are looking for more introductory information, check out the following related resources:
 

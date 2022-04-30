@@ -195,57 +195,57 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Good to know',
+      label: 'Updates & Releases',
       link: {
-        // type: 'doc', id: 'developer-docs/good-to-know/index'
-        type: 'doc', id: 'developer-docs/good-to-know/computation-and-storage-costs'
+        // type: 'doc', id: 'developer-docs/updates/index'
+        type: 'doc', id: 'developer-docs/updates/computation-and-storage-costs'
       },
       items: [
-        'developer-docs/good-to-know/computation-and-storage-costs',
+        'developer-docs/updates/computation-and-storage-costs',
         {
           type: 'category',
           label: 'Security Best Practices',
           link: {
-            type: 'doc', id: 'developer-docs/good-to-know/security/index'
+            type: 'doc', id: 'developer-docs/updates/security/index'
           },
           items: [
-            'developer-docs/good-to-know/security/general-security-best-practices',
-            'developer-docs/good-to-know/security/web-app-development-security-best-practices',
-            'developer-docs/good-to-know/security/rust-canister-development-security-best-practices',
+            'developer-docs/updates/security/general-security-best-practices',
+            'developer-docs/updates/security/web-app-development-security-best-practices',
+            'developer-docs/updates/security/rust-canister-development-security-best-practices',
           ]
         },
         {
           type: 'category',
           label: 'SDK Release Notes',
           link: {
-            type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
+            type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes',
           },
           items: [
-            'developer-docs/good-to-know/release-notes/0.9.3-rn',
-            'developer-docs/good-to-know/release-notes/0.9.2-rn',
-            'developer-docs/good-to-know/release-notes/0.9.0-rn',
-            'developer-docs/good-to-know/release-notes/0.8.4-rn',
-            'developer-docs/good-to-know/release-notes/0.8.2-rn',
-            'developer-docs/good-to-know/release-notes/0.8.1-rn',
-            'developer-docs/good-to-know/release-notes/0.8.0-rn',
-            'developer-docs/good-to-know/release-notes/0.7.7-rn',
-            'developer-docs/good-to-know/release-notes/0.7.2-rn',
-            'developer-docs/good-to-know/release-notes/0.7.1-rn',
-            'developer-docs/good-to-know/release-notes/0.7.0-rn',
-            'developer-docs/good-to-know/release-notes/0.6.26-rn',
-            'developer-docs/good-to-know/release-notes/0.6.25-rn',
-            'developer-docs/good-to-know/release-notes/0.6.24-rn',
-            'developer-docs/good-to-know/release-notes/0.6.23-rn',
-            'developer-docs/good-to-know/release-notes/0.6.22-rn',
-            'developer-docs/good-to-know/release-notes/0.6.21-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/0.9.3-rn',
+            'developer-docs/updates/release-notes/0.9.2-rn',
+            'developer-docs/updates/release-notes/0.9.0-rn',
+            'developer-docs/updates/release-notes/0.8.4-rn',
+            'developer-docs/updates/release-notes/0.8.2-rn',
+            'developer-docs/updates/release-notes/0.8.1-rn',
+            'developer-docs/updates/release-notes/0.8.0-rn',
+            'developer-docs/updates/release-notes/0.7.7-rn',
+            'developer-docs/updates/release-notes/0.7.2-rn',
+            'developer-docs/updates/release-notes/0.7.1-rn',
+            'developer-docs/updates/release-notes/0.7.0-rn',
+            'developer-docs/updates/release-notes/0.6.26-rn',
+            'developer-docs/updates/release-notes/0.6.25-rn',
+            'developer-docs/updates/release-notes/0.6.24-rn',
+            'developer-docs/updates/release-notes/0.6.23-rn',
+            'developer-docs/updates/release-notes/0.6.22-rn',
+            'developer-docs/updates/release-notes/0.6.21-rn',
+            'developer-docs/updates/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/0.6.20-rn',
           ]
-        },
-        'developer-docs/good-to-know/glossary',
+        }
       ]
-    }
+    },
+  'developer-docs/glossary',
   ],
   'references': [
     'references/index',
