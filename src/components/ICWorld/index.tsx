@@ -16,7 +16,7 @@ function Card({title, body, link}) {
     )
 }
 
-function Resources() {
+function ICWorld() {
     return (
         <div className={styles.container}>
             <p className={styles.title}>Delve into the IC World</p>
@@ -48,4 +48,4 @@ function Resources() {
     );
 }
 
-export default Resources;
+export default ICWorld;

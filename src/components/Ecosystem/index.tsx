@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 
 
-function Voting() {
+function Ecosystem() {
     return (
         <div className={styles.container}>
             <svg className={styles.BGShape} viewBox="0 0 773 643" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,4 +18,4 @@ function Voting() {
     );
 }
 
-export default Voting;
+export default Ecosystem;

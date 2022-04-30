@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "@site/src/components/QuickInformation/styles.module.css";
+import styles from "@site/src/components/StartCoding/styles.module.css";
 import eventBG from "@site/static/img/event_background_image.png"
 
 function Information({title, body, link}) {
@@ -32,7 +32,7 @@ function Event({title, dateRange, link}) {
     )
 }
 
-function QuickInformation() {
+function StartCoding() {
     return (
         <div className={styles.main}>
             <div className={styles.grid}>
@@ -51,4 +51,4 @@ function QuickInformation() {
     );
 }
 
-export default QuickInformation;
+export default StartCoding;
