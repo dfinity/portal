@@ -198,22 +198,9 @@ const sidebars = {
       label: 'Updates & Releases',
       link: {
         // type: 'doc', id: 'developer-docs/updates/index'
-        type: 'doc', id: 'developer-docs/updates/computation-and-storage-costs'
+        type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes'
       },
       items: [
-        'developer-docs/updates/computation-and-storage-costs',
-        {
-          type: 'category',
-          label: 'Security Best Practices',
-          link: {
-            type: 'doc', id: 'developer-docs/updates/security/index'
-          },
-          items: [
-            'developer-docs/updates/security/general-security-best-practices',
-            'developer-docs/updates/security/web-app-development-security-best-practices',
-            'developer-docs/updates/security/rust-canister-development-security-best-practices',
-          ]
-        },
         {
           type: 'category',
           label: 'SDK Release Notes',
@@ -243,7 +230,20 @@ const sidebars = {
             // 'developer-docs/updates/release-notes/0.6.20-rn',
             // 'developer-docs/updates/release-notes/0.6.20-rn',
           ]
-        }
+        },
+        'developer-docs/updates/computation-and-storage-costs',
+        {
+          type: 'category',
+          label: 'Security Best Practices',
+          link: {
+            type: 'doc', id: 'developer-docs/updates/security/index'
+          },
+          items: [
+            'developer-docs/updates/security/general-security-best-practices',
+            'developer-docs/updates/security/web-app-development-security-best-practices',
+            'developer-docs/updates/security/rust-canister-development-security-best-practices',
+          ]
+        },
       ]
     },
   'developer-docs/glossary',

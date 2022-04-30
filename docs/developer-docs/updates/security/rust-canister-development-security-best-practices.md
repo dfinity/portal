@@ -84,7 +84,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 #### Security Concern
 
-dApps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
 If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary may trick users (phishing) into using the insecure raw.ic0.app.
 
