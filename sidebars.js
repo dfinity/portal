@@ -250,7 +250,6 @@ const sidebars = {
   ],
   'references': [
     'references/index',
-    // 'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -281,7 +280,7 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
+        type: 'doc', id: 'references/motoko-ref/array',
       },
       items: [
         'references/motoko-ref/array',

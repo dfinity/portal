@@ -1,4 +1,4 @@
-# {proglang} at-a-glance
+# Motoko at-a-glance
 
 This summary provides a simple but comprehensive overview of Motoko with examples of key features to help you identify operations and patterns that you might know in other languages and what they look like in Motoko.
 
@@ -482,9 +482,9 @@ type definitions do not create types, but name existing types
 
     throw …
 
-## Class declaration example
+<!-- ## Class declaration example
 
-The following table compares class declarations in Motoko with class declarations in JavaScript and TypeScript.
+The following table compares class declarations in Motoko with class declarations in JavaScript and TypeScript. -->
 
 <!-- <table>
 <colgroup>
