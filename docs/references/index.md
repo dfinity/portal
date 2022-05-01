@@ -9,6 +9,7 @@ In this category you will find reference documentation for various components of
 ## SDK References
 
 - [DFX Commands and Envars](cli-reference/index.md)
+  
 ## Language References
 
 - [Motoko](motoko-ref/index.md)
@@ -16,6 +17,7 @@ In this category you will find reference documentation for various components of
 - [Candid](candid-ref.md)
 
 ## Functionality References
+
 - [Ledger Canister](ledger.md)
 - [Internet Identity](ii-spec.md)
 
