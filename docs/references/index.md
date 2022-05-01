@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Reference Documentation
 
 In this category you will find reference documentation for various components of the Internet Computer. This is the place to come if you wanted to know the signature for a particular method, or which functions are offered in an SDK, or, if you are so inclined, simply to browse and get a better picture of the components that make up the Internet Computer.

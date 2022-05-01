@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Concepts
 
 You don’t need to know much about the inner workings of the Internet Computer to write programs that run successfully on it. However, learning a few key concepts will help you get the most out of the unique features that the Internet Computer provides.
@@ -6,14 +10,14 @@ Knowing a little about the design and architecture of the IC can make it easier 
 
 The topics in this section introduce key components and terminology to help you understand the architecture and operation of the IC.
 
-If you want to get right to developing code, though, you can skip this introductory material—key concepts and terminology—and look them up later when you need them either in this section or in the [glossary](../developer-docs/glossary).
+If you want to get right to developing code, though, you can skip this introductory material—key concepts and terminology—and look them up later when you need them either in this category or in the [glossary](../developer-docs/glossary).
+
+
 
 If you are looking for more introductory information, check out the following related resources:
 
 -   [Overview of the Internet Computer (video)](https://www.youtube.com/watch?v=XgsOKP224Zw)
 
--   [Building on the Internet Computer: Fundamentals (video)](https://www.youtube.com/watch?v=jduSMHxdYD8)
-
 -   [Introducing Canisters — An Evolution of Smart Contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ)
 
--   [Frequently Asked Questions (video and short articles)](https://dfinity.org/faq/)
+<!-- -   [Frequently Asked Questions (video and short articles)](https://dfinity.org/faq/) -->

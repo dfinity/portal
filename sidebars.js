@@ -359,6 +359,7 @@ const sidebars = {
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
         'tokenomics/identity-auth/auth-how-to',
+        'tokenomics/identity-auth/plug-ids',
         'tokenomics/identity-auth/hello-guide'
       ]
     },
