@@ -2,7 +2,7 @@
 
 This document provides security best practices for developing Rust canisters and web apps served by canisters on the Internet Computer. These best practices are mostly inspired by issues found in security reviews.
 
-We would like to advertise these best practices to developers so that potential issues can be addressed early during the development of new dApps, and not only in the end when (if at all) a security review is done. Ideally, this will make the development of secure dApps more efficient.
+We would like to advertise these best practices to developers so that potential issues can be addressed early during the development of new dapps, and not only in the end when (if at all) a security review is done. Ideally, this will make the development of secure dapps more efficient.
 
 Some excellent canister best practices linked here are from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html) and [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). The relevant sections are linked in the individual best practices.
 
@@ -22,6 +22,6 @@ This document was initially intended for internal use at DFINITY. However, we no
 
 ## Disclaimers and Limitations
 
-We provide a collection of best practices that may grow over time. While we think this is useful to improve security of dApps on the Internet Computer, we’d like to point out that such a list will never be complete and will never cover all potential security concerns. For example, there will always be attack vectors very specific to a dApps use cases that cannot be covered by general best practices. Thus, following the best practices can complement, but not replace security reviews. Especially for security critical dApps we recommend performing security reviews/audits. Furthermore, please not that the best practices are currently not ordered according to risk or priority.
+We provide a collection of best practices that may grow over time. While we think this is useful to improve security of dapps on the Internet Computer, we’d like to point out that such a list will never be complete and will never cover all potential security concerns. For example, there will always be attack vectors very specific to a dapps use cases that cannot be covered by general best practices. Thus, following the best practices can complement, but not replace security reviews. Especially for security critical dapps we recommend performing security reviews/audits. Furthermore, please not that the best practices are currently not ordered according to risk or priority.
 
 Currently, the canister best practices focus on Rust. We will work towards including best practices specific to Motoko as well.

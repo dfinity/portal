@@ -1,13 +1,20 @@
+--- 
+hide_table_of_contents: true
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import styles from './styles.module.css';
 
 # IC Orientation
 
 gm!
 
-If you’ve landed here, it's likely that you're interested in learning more about the Internet Computer and the process to develop decentralized applications therein. 
+You find yourself in the home of documentation and developer resources for the Internet Computer (IC). 
+The IC hosts special smart contracts, called [canisters](https://medium.com/dfinity/software-canisters-an-evolution-of-smart-contracts-internet-computer-f1f92f1bfffb) which are bundles of [WebAssembly](https://webassembly.org/) bytecode logic and memory pages.
+Dapps on the IC are created from one or more canisters. 
 
-To download the Internet Computer SDK, run the following command in your Linux or macOS terminal:
+To download the Internet Computer SDK, run the following command in a Linux or macOS terminal:
 
 ``` bash
   sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
@@ -15,54 +22,88 @@ To download the Internet Computer SDK, run the following command in your Linux o
 
 [Installing the SDK](build/install-upgrade-remove) provides more detailed installation instructions, including how to run the SDK on Windows using the Windows Subsystem for Linux (WSL).
 
-
-:::note
+<!-- :::note
 
 Qualified developers can access $20 worth of free cycles to begin deploying canister smart contracts to the Internet Computer blockchain. [Claim your free cycles](https://faucet.dfinity.org/auth)
 
-:::
+::: -->
+Throughout this site, we have made an effort to organise information in a way that addresses different needs at different times. 
+In the left navigation, you will see four different categories of documents, styled in different colors when active.
+Click through the tabs below to find an overview of each category. 
 
-<!-- </TabItem>
+<Tabs>
+  <TabItem value="docs" label='Developer Docs' attributes={{className: styles.docs}}>
+    <h2> A tour through the docs </h2>
+    <p>The Developer Docs category contains all the information you will need get started and advance in building applications on the the IC. 
+      It is styled in pink, so whenever you see pink active links, you'll know you're in the Docs category.
+      The structure is intended to guide you from getting started with canisters, to deploying and managing full projects on the IC. 
+    <br></br>
+    <a href="quickstart/hello10mins"> Quick Start</a> &rarr; <a href="build/">Buidling on the IC </a> &rarr; <a href="functionality/">Integrating Functionality</a> &rarr; <a href="updates/">Updates & Releases</a>
+    </p>
+    <h2> Quickstart </h2>
+    <p>The quickstart gives a brief overview of a default dapp running on the IC. There, you will learn the basics about canisters, how to fuel them with cycles, and how to deploy to the IC.</p>
+    <h2> Building on the IC </h2>
+    <p> Moving on from the quickstart you may want to start building your own dapps. In doing that, there are a number of considerations that need to be made, all of which are described in the 'building' section. Here, you will learn about the SDK, considerations that need to be made during the project setup, and how to choose a language to develop in. 
+      When these preliminaries are decided, then you'll see tutorials that help structure and build the backend of your project, how to think about frontend and hosting on chain.</p>
+    <h2> Integrate Functionality </h2>
+    <p> Knowing how to set up a project, having picked your programming language of choice, and establishing a front and backend, you may want to add some extra functionality. 
+      This section outlines how to use the Rosetta API, how to integrate a ledger, and how to add authentication via Internet Identity.</p>
+    <h2> Updates & Releases </h2>
+    <p> This section contains release notes for new versions of the SDK, as well as some other news to stay up to date. </p>
+    <h2> Glossary </h2>
+    <p> Finally, the Glossary is, well, a glossary. It's ever-growing and we encourage you to add to it (either via the edit button on the page, or by cloning the github repo) and keep it growing. </p>
+  </TabItem>
+  <TabItem value="refs" label='References' attributes={{className: styles.refs}}>
+    <h2> References and Resources </h2>
+    <p>The Reference category contains reference documentation for various IC components and languages. 
+    It is styled in blue, so whenever you see blue active links, you'll know you're in the References category.</p>
+    <p><a href='../references/cli-reference'> <code>dfx</code> References </a> &rarr; 
+    <a href='../references/motoko-ref'> Motoko Base Library </a> &rarr; 
+    <a href='https://docs.rs/ic-cdk/latest/ic_cdk/'> Rust CDK Reference </a> &rarr;  
+    <a href='../references/candid-ref'> Candid Reference </a> &rarr;
+    <a href='../references/ledger'> Ledger Canister </a> &rarr; 
+    <a href='../references/ii-spec'> Internet Identity </a> &rarr;
+    <a href='../references/ic-interface-spec'> IC Interface Specification </a> &rarr;
+    <a href='../references/security'> Security Best Practices </a></p>
+    <p> This is the place to come if you wanted to know the signature for a particular method, or which functions are offered in an SDK, or, if you are so inclined, simply to browse and get a better picture of the components that make up the Internet Computer.
+      It is likely a place that you will come often once you are confident that you can code canisters, but just need to quickly check a reference. </p>
+  </TabItem>
+  <TabItem value="concepts" label='Concepts' attributes={{className: styles.concepts}}>
+    <h2> Foundational ideas underlying the IC </h2>
+    <p> The Concepts category will guide you through the more foundational story underlying core parts of the IC.
+      It is styled in orange, so whenever you see orange active links, you'll know you're in the Concepts category </p>
+      <p><a href='../concepts/what-is-IC'> What is the IC </a> &rarr; 
+      <a href='../concepts/nodes-subnets'> Nodes & Subnets </a> &rarr; 
+      <a href='../concepts/data-centers'> Data Centres </a> &rarr; 
+      <a href='../concepts/canisters-code'> Canisters & Code </a> &rarr; 
+      <a href='../concepts/trust-in-canisters'> Trust in Caninsters </a> &rarr; 
+      <a href='../concepts/tokens-cycles'> Token & Cycles </a> &rarr; 
+      <a href='../concepts/governance'> Neurons & Governance </a> &rarr; 
+      <a href='../concepts/bitcoin-integration'> Bitcoin Integration </a> </p>
+      <p>The topics in this section introduce key components and terminology to help you understand the architecture and operation of the IC. The concepts here are not necessarily needed for dapp development, but rather knowledge development.
+        Read an <a href='../concepts/what-is-IC'>overview of the IC</a> and the <a href='../concepts/nodes-subnets'>nodes</a> and <a href='../concepts/data-centers'>data centers</a> that power it. 
+        You can learn more about <a href='../concepts/canisters-code'>canisters</a>, how and why they allow to build decentralized apps hosted fully on chain, and why we should place our <a href='../concepts/trust-in-canisters'>trust</a> in them. 
+        We can see more about how canisters are powered by <a href='../concepts/tokens-cycles'>tokens and cycles</a> and how the Internet Computer is <a href='../concepts/governance'>governed</a> and developed in a decentralized manner. </p>
+  </TabItem>
+  <TabItem value="tokens" label='Tokenomics' attributes={{className: styles.tokens}}>
+    <h2> Tokenomics & Governance </h2>
+    <p>Finally, the tokenomics category gives a tour of governance and tokenomics topics that can be used in development, or simply when engaging with the IC ecosystem. 
+    It is styled in yellow, so whenever you see yellow active links, you'll know you're in the tokenomics section. </p>
+    <p><a href='../tokenomics/identity-auth/what-is-ic-identity'> Identity & Authentication </a> &rarr;
+    <a href='../tokenomics/token-holders'> Token Holders </a> &rarr; 
+    <a href='../tokenomics/token-holders/nns-app-quickstart'> NNS Quickstart</a></p>
+    <p> The <a href='../tokenomics/identity-auth/what-is-ic-identity'> Identity & Authentication </a> section is the best place to understand how to interact with the IC without the need for holding tokens. 
+    The <a href='../tokenomics/token-holders'> Token Holders </a> section gives advice on how to manage tokens if you do obtain them.
+    The <a href='../tokenomics/token-holders/nns-app-quickstart'> NNS Quickstart</a>  gives a quick introduction to decentralised governance on the IC, and some of the benefits you may gain by being a token holder.</p>
+  </TabItem>
 </Tabs>
 
-<Tabs
-  defaultValue="docs"
-  values={[
-    {label: 'Developer Docs', value: 'docs'},
-    {label: 'References', value: 'refs'},
-    {label: 'Concepts', value: 'concepts'},
-    {label: 'Tokenomics', value: 'tokens'},
-  ]}>
-  <TabItem value="docs">
-    <h3> A tour through the docs </h3>
 
-  Put my text 
-  <code class="language-shell"> sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)" </code>
+## Dive further down the rabbithole
+We hope that you find most of the information you need here, but if not, or if you simply want more,  there are many other resources for learning about the IC outside of this developer portal. 
 
-  And some more 
-
-  And then I will see about links in html
-
-  </TabItem>
-  <TabItem value="refs">
-    # References
-  </TabItem>
-  <TabItem value="concepts">Concepts</TabItem>
-  <TabItem value="tokens">Tokenomics</TabItem>
-</Tabs>
-
-`sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"` -->
-
-
-## For: First-Timers
-
-The Internet Computer is a blockchain that runs at web speed with unbounded capacity.
-
-As a crash course in blockchain history, Bitcoin created digital gold. Then, in the next step of the evolution, Ethereum developed smart contracts and pioneered DeFi and NFT use cases.
-
-The Internet Computer is the third major blockchain innovation — a blockchain that scales smart contract computation, runs them at web speed, processes and stores data efficiently, and provides powerful software frameworks to developers. By making this possible, the Internet Computer enables the complete reimagination of how systems and apps operate.
-
-Interested in learning more? Check out the following resources:
+### To get a first view
+If you are new to the IC and want to get a first overview, these are some of the best places to start: 
 
 -   [Primer to the Internet Computer](https://www.youtube.com/watch?v=YWHTNr8RZHg&list=PLuhDt1vhGcrf4DgKZecU3ar_RA1cB0vUT&index=17&ab_channel=DFINITY), a high-level overview of the Internet Computer in under 10 minutes
 
@@ -72,19 +113,9 @@ Interested in learning more? Check out the following resources:
 
 Follow us on the official [DFINITY Twitter](https://twitter.com/dfinity) for the latest updates.
 
-## For: Developers
+### To engage with the developer community
 
-The Internet Computer hosts special smart contracts, called [canisters](https://medium.com/dfinity/software-canisters-an-evolution-of-smart-contracts-internet-computer-f1f92f1bfffb). A canister smart contract is a bundle of [WebAssembly](https://webassembly.org/) bytecode logic and memory pages. Dapps on the Internet Computer are created from one or more canisters.
-
-Canister smart contracts can serve web content directly to end-users, e.g., in their browsers, and users can interact with blockchain services without holding tokens.
-
-The Internet Computer blockchain can eventually host any number of canister smart contracts (i.e., code & state). Moreover, it can run them concurrently with unbounded on-chain capacity. This means you can create dapps that scale.
-
-Canister smart contracts are unstoppable and tamperproof. Imagine building without having to worry about databases, caches, firewalls, CDNs, cloud providers, VPNs, DNS, and even usernames & passwords — all because the Internet Computer abstracts these needs away.
-
-Excited to take the leap? Check out our [Quick Start](quickstart:quickstart-intro) to get started with a simple hello world dapp.
-
-Interested in getting plugged into our developer community? Check out the following:
+If you are a developer and you want to engage more with the community, the following are the best places to join:
 
 -   [Developer Discord](https://discord.gg/cA7y6ezyE2), our official Discord for the developer community
 
@@ -92,11 +123,9 @@ Interested in getting plugged into our developer community? Check out the follow
 
 You can follow us on the [DFINITY Developer Twitter](https://twitter.com/dfinitydev) for the latest developer-specific updates.
 
-## For: Protocol Enthusiasts
+### To go deep
 
 The Internet Computer is created by the Internet Computer Protocol (“ICP”), which has formed the world’s first web-speed, web-serving public blockchain. The Internet Computer is self-governing and can grow its capacity as required. It combines special node machines run en masse by independent data centers all around the world. Like all blockchains, it is unstoppable, and the code it hosts is tamperproof.
-
-Get started by checking out our “Concepts” section to the left, starting with [What is the Internet Computer?](../concepts/what-is-IC)
 
 To learn more about the Internet Computer Protocol, check out the following resources:
 

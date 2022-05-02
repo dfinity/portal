@@ -1,4 +1,4 @@
-# Using {proglang} base modules
+# Using Motoko base modules
 
 The design of Motoko strives to minimize built-in types and operations. Instead of built-in types, Motoko provides a base library of modules to handle many kinds of common operations and make the language feel complete. This base library is still evolving with modules that support core features and all of the base library APIs are subject to change over time to varying degrees. You should note, in particular, that the size and number of modules and functions included in the base library is likely to increase dramatically and updates to the base library modules might introduce breaking changes that require you to update your programs to remain compatible.
 

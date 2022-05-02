@@ -254,7 +254,7 @@ Exits device registration mode immediately. Any non verified tentative devices a
 
 Tentatively adds a new device to the supplied identity anchor and returns a verification code. This code has to be used with the `verify_tentative_device` method to verify this device. If the flow is aborted or not completed within 15 minutes, the tentative device is discarded.
 
-Tentatively added devices cannot be used to login into the management view or authorize authentications for other dApps.
+Tentatively added devices cannot be used to login into the management view or authorize authentications for other dapps.
 
 **Authorization**: Anyone can call this
 
