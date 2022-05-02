@@ -72,6 +72,7 @@
     justify-content: center;
     margin: auto 0.5rem;
     color: white;
+    position: relative;
 }
 .mediaLinks img {
     display: flex;
@@ -86,7 +87,11 @@
     height: 1000px;
     top:-50px;
     right:-300px;
-    filter: blur(150px);
+    -webkit-filter: blur(150px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
 }
 @media screen and (max-width: 996px) {
     .footerLinksContainer {
@@ -116,7 +121,7 @@
         margin-left: 0;
     }
     .BGCircle{
-        top: 350px;
+        top: 300px;
         right:-300px;
     }
 }

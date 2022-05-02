@@ -9,7 +9,7 @@
     grid-auto-rows: 1fr;
     grid-column-gap: 4px;
     grid-row-gap: 4px;
-    margin: auto ;
+    margin: auto;
     width: Min(1350px, 90%);
     height: 600px;
 }
@@ -71,6 +71,7 @@
     font-size: 2.5rem;
     line-height: 2.75rem;
     color: white;
+    display: flex;
 }
 
 .eventDate {
@@ -78,7 +79,7 @@
     font-size: 1rem;
     line-height: 1.5rem;
     color: white;
-
+    display: flex;
 }
 
 .eventContainer {
@@ -88,7 +89,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10% 0 10% 10%;
+    padding: 10%;
+    position: relative;
     background: url("@site/static/img/event_background_stars.png") no-repeat center center;
     overflow: hidden;
 }
@@ -108,6 +110,8 @@
 .eventBackground {
     width: 50%;
     margin-top: 15%;
+    position: absolute;
+    right: -50px;
 }
 
 .eventDescription {
@@ -123,7 +127,7 @@
 @media screen and (max-width: 996px) {
     .grid {
         grid-template-columns: repeat(1, 1fr);
-        height: 1200px;
+        height: 100%;
     }
 
     .container {
@@ -135,7 +139,12 @@
     }
 
     .eventContainer {
-        padding: 20%;
+        width: 100%;
+        margin: auto;
+    }
+
+    .eventBackground {
+        display: none;
     }
 
     .eventAction, .eventDescription {
