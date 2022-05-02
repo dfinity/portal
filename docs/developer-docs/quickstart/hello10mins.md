@@ -250,8 +250,8 @@ After testing the application in the browser, you can stop the local canister ex
 
 To stop the local deployment:
 
-1.  In the terminal A, press Control-C to interrupt the local network process.
-2.  In the terminal B, press Control-C to interrupt the development server process.
+1.  In terminal A, press Control-C to interrupt the local network process.
+2.  In terminal B, press Control-C to interrupt the development server process.
 3.  Stop the local canister execution environment running on your local computer:
 
     ``` bash
@@ -270,7 +270,7 @@ node --version
 
 ### Prior installations of dfx
 
-If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
+If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
 
 ## 4. Acquiring cycles to deploy on-chain (5 min)
 
@@ -318,7 +318,7 @@ $ {
 
 ### Option 1: Acquiring cycles via the free cycles faucet (2 min)
 
-This is option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
+This option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
 For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet).
 
@@ -336,7 +336,7 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 ### Option 2: Converting ICP tokens into cycles (5 min)
 
-This is option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
+This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
 ## 5.Deploy on-chain (1 min)
 
@@ -418,7 +418,7 @@ dfx canister --network ic call hello greet '("everyone": text)'
 
 Note the way the message is constructed:
 
--   `dfx canister --network ic call` is setup for calling a canister on the IC.
+-   `dfx canister --network ic call` is the setup for calling a canister on the IC.
 
 -   `hello greet` means we are sending a message to a canister named `hello` and evoking its `greet` method. `dfx` knows which `hello` canister (out of the many in the IC), one refers to because a mapping of `hello` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
 
