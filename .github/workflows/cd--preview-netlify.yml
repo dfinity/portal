@@ -1,32 +1,32 @@
-name: Deployment Preview
+#name: Deployment Preview
 
-on:
-  pull_request:
+#on:
+#  pull_request:
   
-jobs:
-  deployment:
-    name: "Preview deployment"
-    runs-on: ubuntu-latest
-    
-    environment: 
-      name: "Preview Netlify"
-      url: ${{ fromJson(steps.deploy.outputs.url) }}
-    
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Deploy Site
-        id: deploy
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          CONTEXT: deploy-preview
-          NETLIFY: true
-          PR_URL: ${{ github.event.pull_request.html_url }}
-        run: |
-          netlify deploy --dir=build --build --context deploy-preview | tee logs.txt
-          PREVIEW_URL="$(cat logs.txt | grep "Website Draft URL" | awk -F'Website Draft URL: ' '{print $2}')"
-          echo "::set-output name=url::\"$PREVIEW_URL\""
+#jobs:
+#  deployment:
+#    name: "Preview deployment"
+#    runs-on: ubuntu-latest
+#    
+#    environment: 
+#      name: "Preview Netlify"
+#      url: ${{ fromJson(steps.deploy.outputs.url) }}
+#    
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Install Dependencies
+#        run: npm install
+#
+#      - name: Deploy Site
+#        id: deploy
+#        env:
+#          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+#          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#          CONTEXT: deploy-preview
+#         NETLIFY: true
+#          PR_URL: ${{ github.event.pull_request.html_url }}
+#        run: |
+#          netlify deploy --dir=build --build --context deploy-preview | tee logs.txt
+#          PREVIEW_URL="$(cat logs.txt | grep "Website Draft URL" | awk -F'Website Draft URL: ' '{print $2}')"
+#          echo "::set-output name=url::\"$PREVIEW_URL\""
