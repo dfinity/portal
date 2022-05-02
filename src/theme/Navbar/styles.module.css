@@ -42,7 +42,7 @@ Hide toggle in small viewports
 }
 
 .navbarMobileItems {
-  margin:auto 1rem 0.5rem auto;
+  margin:auto 2rem 0.5rem 2rem;
   display:flex;
   justify-content: space-around;
   justify-items: center;
@@ -57,6 +57,6 @@ Hide toggle in small viewports
 }
 
 .navbarMobileSearch {
-  width: 90%;
-  margin: auto 1rem 0.5rem auto;
+  width: Min(400px,90%);
+  margin: auto auto 0.5rem auto
 }
