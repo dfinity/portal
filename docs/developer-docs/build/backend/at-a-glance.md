@@ -10,9 +10,9 @@ After you install the SDK, here’s all you need to know:
 
         dfx new <project_name> && cd <project_name>>
 
-2.  Edit the back-end that defines your service or application.
+2.  Edit the backend that defines your service or application.
 
-3.  Edit the HTML, JavaScript, and CSS that provides the front-end for your service or application.
+3.  Edit the HTML, JavaScript, and CSS that provides the frontend for your service or application.
 
 4.  Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment.
 

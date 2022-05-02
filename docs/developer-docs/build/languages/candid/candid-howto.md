@@ -43,7 +43,7 @@ For more information about using `dfx` and the `dfx canister call` command, see 
 
 ## Interact with a service from a browser
 
-The Candid interface description language provides a common language for specifying the signature of a canister. Based on the type signature of the service offered by the smart contract, Candid provides a web interface—the Candid UI—that allows you to call canister functions for testing and debugging from a web browser without writing any front-end code.
+The Candid interface description language provides a common language for specifying the signature of a canister. Based on the type signature of the service offered by the smart contract, Candid provides a web interface—the Candid UI—that allows you to call canister functions for testing and debugging from a web browser without writing any frontend code.
 
 To use the Candid web interface to test the \`counter \`canister:
 

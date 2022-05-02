@@ -4,11 +4,11 @@ The CanCan sample application is a simplified video-sharing service that demonst
 
 -   How to build a scalable application by splitting content into fragments for upload and storage then using queries to retrieve and reassemble the fragments for efficient streaming.
 
--   How to configure interoperability for an application that uses canisters written in different back-end languages.
+-   How to configure interoperability for an application that uses canisters written in different backend languages.
 
 -   How to implement a basic authentication model for storing videos uploaded by different users.
 
--   How to build a front-end that implements more sophisticated user interface features for desktop or mobile apps.
+-   How to build a frontend that implements more sophisticated user interface features for desktop or mobile apps.
 
 ## Splitting uploaded content into multiple canisters
 
@@ -18,17 +18,17 @@ For a video-sharing sample applications like CanCan, these limitations mean that
 
 ### Implementing a distributed hash table
 
-The initial attempt to build a scalable video-sharing service for the Internet Computer used a distributed hash table (DHT) as a back-end service with simple get and put functions that distributed data—chunks of the video to be uploaded or streamed—into a predefined set of canisters. In the early phases of the project, this approach was sufficient for a proof-of-concept and verifying that the video data could be properly transcoded for storage and retrieval.
+The initial attempt to build a scalable video-sharing service for the Internet Computer used a distributed hash table (DHT) as a backend service with simple get and put functions that distributed data—chunks of the video to be uploaded or streamed—into a predefined set of canisters. In the early phases of the project, this approach was sufficient for a proof-of-concept and verifying that the video data could be properly transcoded for storage and retrieval.
 
-However, the scalability of the application was limited because the distributed hash table relied on a specific number of canisters that it could populate with data for storage and retrieve data from for viewing. In addition, the original implementation of the distributed hash table back-end service included code to accommodate common network connectivity issues that could cause nodes to be unavailable or lose data.
+However, the scalability of the application was limited because the distributed hash table relied on a specific number of canisters that it could populate with data for storage and retrieve data from for viewing. In addition, the original implementation of the distributed hash table backend service included code to accommodate common network connectivity issues that could cause nodes to be unavailable or lose data.
 
 ### Simplifying scalability
 
 Because the Internet Computer protocol relies on replicated state across nodes in a subnet, it provides certain guarantees about fault tolerance and failover natively that are not generally available to applications running on other platforms or protocols.
 
-With the realization that the Internet Computer could ensure that canisters were available to receive and respond to requests,the original distributed hash table back-end service was replaced with a simpler but more scalable back-end service called BigMap.
+With the realization that the Internet Computer could ensure that canisters were available to receive and respond to requests,the original distributed hash table backend service was replaced with a simpler but more scalable backend service called BigMap.
 
-BigMap provides a simple, plug-in library for building scalable applications using key-value storage on the Internet Computer. By using the BigMap library as a back-end service, the CanCan sample application can dynamically chunk, serialize, and distribute data to multiple canisters.
+BigMap provides a simple, plug-in library for building scalable applications using key-value storage on the Internet Computer. By using the BigMap library as a backend service, the CanCan sample application can dynamically chunk, serialize, and distribute data to multiple canisters.
 
 The library offers building blocks for application-specific, in-memory data abstractions that scale using any number of canisters. Each canister still has limited capacity, but the application instantiates the canisters it needs and keeps track of the fragments that make up the full video content for each user’s videos in an index file called the `manifest`.
 
@@ -46,7 +46,7 @@ Although the `BigMap` service you see in the CanCan repository is written in Rus
 
 -   You can run both Motoko code and Rust code deployed as canisters on the Internet Computer.
 
--   You can switch between back-end languages without affecting the operation of the CanCan sample application.
+-   You can switch between backend languages without affecting the operation of the CanCan sample application.
 
 -   Both language implementation work seamlessly because the Candid language provides a common language for describing the BigMap API, independent of JavaScript, Rust, or Motoko.
 
@@ -54,9 +54,9 @@ Although the `BigMap` service you see in the CanCan repository is written in Rus
 
 Much like the LinkedUp sample application, the CanCan sample application uses the public-private key pair, browser-based local storage, and the `Principal` data type to authenticate users.
 
-## Implementing front-end features
+## Implementing frontend features
 
-The CanCan sample application uses the React library in combination with TypeScript to implement front-end user interface.
+The CanCan sample application uses the React library in combination with TypeScript to implement frontend user interface.
 
 ## Data model overview
 

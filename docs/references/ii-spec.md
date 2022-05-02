@@ -612,7 +612,7 @@ This flow is the boring default
 
 5.  The `event.origin` is used as the Application Frontend’s hostname
 
-6.  The front end calls `get_principal()` to obtain the user- and front-end-specific principal.
+6.  The front end calls `get_principal()` to obtain the user- and frontend-specific principal.
 
 7.  The user is asked if they want to log into the client application, showing the client application frontend’s hostname and the used principal.
 

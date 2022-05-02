@@ -1,10 +1,10 @@
-# Front-end Overview
+# Frontend Overview
 
-the IC allows you to host Web 3.0 front-ends for your dapps, using our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). By using the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC, you will be able to run your entire application on decentralized technology. This section takes a closer look at the default front-end template that is provided by `dfx new`, front-end configuration options, and using other frameworks to build the user interface for your projects.
+the IC allows you to host Web 3.0 frontends for your dapps, using our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). By using the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC, you will be able to run your entire application on decentralized technology. This section takes a closer look at the default frontend template that is provided by `dfx new`, frontend configuration options, and using other frameworks to build the user interface for your projects.
 
-Here are some quick links to tutorials with example code for various stages of developing your front-end dapp:
+Here are some quick links to tutorials with example code for various stages of developing your frontend dapp:
 
--   A tutorial on building a React dapp [Customize the front-end](custom-frontend)
+-   A tutorial on building a React dapp [Customize the frontend](custom-frontend)
 
 -   Using [Candid](../backend/hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
@@ -109,7 +109,7 @@ You can see these steps in the following code block:
 
 In many cases, you can use the default `webpack.config.js` file as-is, without any modification, or you can add plug-ins, modules, and other custom configuration to suit your needs. The specific changes you make to the `webpack.config.js` configuration largely depend on the other tools and frameworks you want to use.
 
-For example, if you have experimented with the [Customize the front-end](custom-frontend) or [Add a stylesheet](my-contacts) front-end tutorials, you might have modified the following section to work with React JavaScript:
+For example, if you have experimented with the [Customize the frontend](custom-frontend) or [Add a stylesheet](my-contacts) frontend tutorials, you might have modified the following section to work with React JavaScript:
 
         module: {
           rules: [
@@ -126,9 +126,9 @@ If your application does not use `dfx` to run your build script, you can provide
 
 ### Ensuring node is available in a project
 
-Because projects rely on webpack to provide the framework for the default front-end, you must have `node.js` installed in your development environment and accessible in the project directory.
+Because projects rely on webpack to provide the framework for the default frontend, you must have `node.js` installed in your development environment and accessible in the project directory.
 
--   If you want to develop your project without using the default webpack configuration and canister aliases, you can remove the `assets` canister from the `dfx.json` file or build your project using a specific canister name. For example, you can choose to build only the hello program without front-end assets by running the following command:
+-   If you want to develop your project without using the default webpack configuration and canister aliases, you can remove the `assets` canister from the `dfx.json` file or build your project using a specific canister name. For example, you can choose to build only the hello program without frontend assets by running the following command:
 
         dfx build hello
 
@@ -214,7 +214,7 @@ To take advantage of the `webpack-dev-server`:
 
 8.  Refresh the browser or wait for it to refresh on its own to see your change.
 
-    When you are done working on the front-end for your project, you can stop the webpack development server by pressing Control-C.
+    When you are done working on the frontend for your project, you can stop the webpack development server by pressing Control-C.
 
 ## Using other frameworks
 

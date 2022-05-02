@@ -8,7 +8,7 @@ This section is work-in-progress and incomplete. As best practices and design pa
 
 One of the first decisions you might want to consider when designing your dapp is whether it should be encapsulated in a single canister or consist of multiple canisters.
 
-For example, if you are writing a simple service with no front-end, you might want to use a single canister to simplify project management and maintenance and focus on adding features. If your dapp has both front-end assets and back-end business logic, your project is likely to consist of at least two canisters, with one canister for managing user interface components and another canister for the backend services the application provides.
+For example, if you are writing a simple service with no frontend, you might want to use a single canister to simplify project management and maintenance and focus on adding features. If your dapp has both frontend assets and backend business logic, your project is likely to consist of at least two canisters, with one canister for managing user interface components and another canister for the backend services the application provides.
 
 In planning, you might also consider placing some common reusable services in their own canister so that they can be imported and called from other more-specialized canisters or made available for other developers to use. The [LinkedUp](https://github.com/dfinity/linkedup) sample dapp illustrates this approach by splitting the professional service dapp into two canisters. In the LinkedUp example, the functions that establish social connections are defined in the `connectd` canister and separate from the functions used to set up professional profiles that are defined in the `linkedup` canister. It is easy to imagine extending the dapp with a third canister, for example to schedule events based on profile attributes or shared connections.
 
@@ -16,7 +16,7 @@ In planning, you might also consider placing some common reusable services in th
 
 In planning the architecture for your project, one common practice is to place the code for the main actor in one file with separate additional files for defining the types you program uses and utility functions that don’t require an actor.
 
-For example, you might set up the back-end logic for your dapp to consist of the following files:
+For example, you might set up the backend logic for your dapp to consist of the following files:
 
 -   `Main.mo` or `main.rs` with the functions that require an actor to send query and update calls.
 

@@ -8,7 +8,7 @@ Before starting, take a look at a version of this dapp running on-chain: <https:
 In this tutorial, you will learn how to:
 
 1.  Install the Canister SDK
-2.  Build and deployed a dapp locally
+2.  Build and deploy a dapp locally
 3.  Collect free cycles to power your dapp
 4.  Create a "cycles wallet" from which you can transfer cycles to any other dapps you want to power
 5.  Deploy a dapp on-chain
@@ -22,15 +22,15 @@ $ "Hello, Everyone"
 
 Or via the dapp in a browser, a pop-up window will appear with the message: `Hello, Everyone!`
 
-![Hello](_attachments/front-end-result.png)
+![Hello](_attachments/frontend-result.png)
 
-Note that the "Hello World" dapp consists of back-end code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based front-end.
+Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
 
 This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl) installation.
 
 ## Topics Covered in this Tutorial
 
--   **Canisters** are the smart contracts installed on the IC. They contain the code to be ran and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
+-   **Canisters** are the smart contracts installed on the IC. They contain the code to be run and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
 
 -   **[Cycles](../../concepts/tokens-cycles)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth consumed on the IC. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The IC’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
 
@@ -64,7 +64,7 @@ More installation options and instructions for uninstalling `dfx` are covered in
 
 ### Node.js
 
-Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js in not needed for canister development in general.
+Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js is not needed for canister development in general.
 
 We support all stable versions of Node.js starting with 12. You can install 12, 14, or 16. Please note that Node 17 does not support Webpack’s api proxy tool, so `npm start` may not work correctly.
 
@@ -216,12 +216,12 @@ dfx canister call hello greet everyone
 
 -   The `dfx canister call` command requires you to specify a canister name and function to call.
 -   `hello` specifies the name of the canister you call.
--   `greet` specifies the specifies the function name.
+-   `greet` specifies the function name.
 -   `everyone` is the argument that you pass to the `greet` function.
 
 ### Test the dapp locally via the browser
 
-Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the front-end using your web browser.
+Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
 In terminal B, start the development server by running:
 
@@ -238,11 +238,11 @@ Open a browser and navigate to <http://localhost:8080/>.
 You should see a simple HTML page with a sample asset
 image file, an input field, and a button.
 
-![Sample HTML page](_attachments/front-end-prompt.png)
+![Sample HTML page](_attachments/frontend-prompt.png)
 
 Type a greeting, then click **Click Me** to return the greeting.
 
-![Hello](_attachments/front-end-result.png)
+![Hello](_attachments/frontend-result.png)
 
 ### Stop the local canister execution environment
 
@@ -406,7 +406,7 @@ Before your dapp loads, your browser will quickly show a message that reads: Ins
 
 After loading the service worker, your dapp will load:
 
-![Hello](_attachments/front-end-result.png)
+![Hello](_attachments/frontend-result.png)
 
 ### Testing the on-chain dapp via the command line
 

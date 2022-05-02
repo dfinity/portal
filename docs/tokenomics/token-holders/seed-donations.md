@@ -1,6 +1,6 @@
 # How-To: Claim neurons for seed participants
 
-*A guide for seed contributors to claim their ICP utility tokens as NNS neurons. For controlling the neurons after claiming see this \[<https://medium.com/dfinity/integrating-ledger-nano-with-the-nns-front-end-dapp-user-manual-9c5600925e16> tutorial\] instead.*
+*A guide for seed contributors to claim their ICP utility tokens as NNS neurons. For controlling the neurons after claiming see this \[<https://medium.com/dfinity/integrating-ledger-nano-with-the-nns-frontend-dapp-user-manual-9c5600925e16> tutorial\] instead.*
 
 ## Introduction
 
@@ -22,7 +22,7 @@ To control your neurons, you must use the same secret key that you generated whe
 
 After claiming, there are two ways to control your neurons:
 
--   The NNS dapp (GUI) as described in this [tutorial](https://medium.com/dfinity/integrating-ledger-nano-with-the-nns-front-end-dapp-user-manual-9c5600925e16)
+-   The NNS dapp (GUI) as described in this [tutorial](https://medium.com/dfinity/integrating-ledger-nano-with-the-nns-frontend-dapp-user-manual-9c5600925e16)
 
 -   A command line tool ic-hardware-wallet-cli available on [github](https://github.com/dfinity/nns-dapp/tree/main/ic-hardware-wallet-cli)
 

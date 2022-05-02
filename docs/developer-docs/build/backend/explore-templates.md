@@ -12,7 +12,7 @@ Before you start this tutorial, verify the following:
 
 -   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   You have `node.js` installed if you want to include the default template files for front-end development in your project.
+-   You have `node.js` installed if you want to include the default template files for frontend development in your project.
 
 -   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
@@ -38,7 +38,7 @@ To create a new project:
 
         dfx new explore_hello
 
-    The `dfx new explore_hello` command creates a new `explore_hello` project, including a default project directory structure under the new project name and a new Git repository for your project. If you have `node.js` installed locally, creating a new project also adds some template front-end code and dependencies.
+    The `dfx new explore_hello` command creates a new `explore_hello` project, including a default project directory structure under the new project name and a new Git repository for your project. If you have `node.js` installed locally, creating a new project also adds some template frontend code and dependencies.
 
     To ensure that project names are valid when used in JavaScript, Motoko, and other contexts, you should only use alphanumeric characters and underscores. You cannot include dashes or any special characters.
 
@@ -53,7 +53,7 @@ To create a new project:
         explore_hello/
         ├── README.md      # default project documentation
         ├── dfx.json       # project configuration file
-        ├── node_modules   # libraries for front-end development
+        ├── node_modules   # libraries for frontend development
         ├── package-lock.json
         ├── package.json
         ├── src            # source files directory
@@ -79,7 +79,7 @@ To create a new project:
 
     The default `src` directory includes a template `main.mo` file that you can modify or replace to include your core programming logic.
 
-    Because this tutorial focuses on the basics of getting started, you are only going to use the `main.mo` file. If you have `node.js` installed, your project directory includes additional files and directories that you can use to define the front-end interface for your dapp. Front-end development and the template files in the `assets` folder are discussed a little later.
+    Because this tutorial focuses on the basics of getting started, you are only going to use the `main.mo` file. If you have `node.js` installed, your project directory includes additional files and directories that you can use to define the frontend interface for your dapp. Frontend development and the template files in the `assets` folder are discussed a little later.
 
 ## Review the default configuration
 
@@ -105,7 +105,7 @@ To review the default configuration file for your project:
 
     -   The `canisters.explore_hello` key specifies that the main program to be compiled is located in the path specified by the `main` setting, in this case, `src/explore_hello/main.mo` and the `type` setting indicates that this is a `motoko` program.
 
-    -   The `canisters.explore_hello_assets` key specifies configuration details about front-end assets for this project. Let’s skip those for now.
+    -   The `canisters.explore_hello_assets` key specifies configuration details about frontend assets for this project. Let’s skip those for now.
 
     -   The `dfx` setting is used to identify the version of the software used to create the project.
 
@@ -256,7 +256,7 @@ To build the program executable:
 
     -   The `explore_hello.wasm` file contains the compiled WebAssembly for the assets used in your project.
 
-    The `canisters/explore_hello_assets` directory contains similar files to describe the front-end assets associated with your project.
+    The `canisters/explore_hello_assets` directory contains similar files to describe the frontend assets associated with your project.
 
     In addition to the files in the `canisters/explore_hello` and the `canisters/explore_hello_assets` directories, the `dfx build` command creates an `idl` directory.
 
@@ -308,11 +308,11 @@ To deploy to the local canister execution environment:
 
         ("Hello, everyone!")
 
-## View the default front-end
+## View the default frontend
 
-If you have `node.js` installed in your development environment, your project includes a simple front-end example that uses a template `index.js` JavaScript file for accessing the `explore_hello` dapp in a browser.
+If you have `node.js` installed in your development environment, your project includes a simple frontend example that uses a template `index.js` JavaScript file for accessing the `explore_hello` dapp in a browser.
 
-To explore the default front-end template:
+To explore the default frontend template:
 
 1.  Open a terminal shell on your local computer, if you don’t already have one open, and navigate to your `explore_hello` project directory.
 
@@ -334,7 +334,7 @@ To explore the default front-end template:
 
 3.  Close the `index.js` file to continue.
 
-4.  View the front-end assets created for the project by running following command:
+4.  View the frontend assets created for the project by running following command:
 
         ls -l .dfx/local/canisters/explore_hello_assets/
 
