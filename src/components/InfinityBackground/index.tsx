@@ -15,9 +15,6 @@ export default () => {
             weightDelta.push(p5.random(15, 45));
             colorDelta.push(p5.random(-30, 30));
         }
-        /* cnv.mousePressed((event) => {
-             console.log("Clicked on the canvas. Event:", event)
-         });*/
     };
 
     const draw = (p5) => {

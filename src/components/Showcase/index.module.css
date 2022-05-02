@@ -1,12 +1,12 @@
 .container {
     background-color: transparent;
-    padding: 100px 0;
+    padding: 0;
     position: relative;
 }
 
 .showcaseContainer {
     width: Min(1100px, 90%);
-    padding: 500px 0;
+    padding: 150px 0;
     margin: auto;
     position: relative;
 }
@@ -95,6 +95,7 @@
     backdrop-filter: blur(5px);
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
 }
 
 .card:hover,
@@ -214,7 +215,7 @@
 
     .showcaseContainer {
         margin: auto;
-        padding: 0;
+        padding: 100px 0;
     }
 
     .cards {
@@ -229,8 +230,8 @@
     }
     .cardBody {
         font-weight: 500;
-        font-size: 24px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 18px;
     }
 
     .backgroundImage {
@@ -243,7 +244,7 @@
 
     .header {
         display: block;
-        width: Min(500px, 90%);
+        width: Min(100%, 500px);
     }
 
     .title, .body {
@@ -253,9 +254,13 @@
     .tooltipContainer{
         display: flex;
     }
+
+    .tooltip{
+        font-size: 14px;
+    }
     .actionButtonContainer{
         margin: 3rem auto;
         display: block;
-        width: Min(500px, 90%);
+        width: Min(100%, 500px);
     }
 }

@@ -11,7 +11,7 @@
 }
 
 .main {
-    height: 100vh;
+    height: 100%;
 }
 
 .Title {
@@ -37,11 +37,13 @@
     font-weight: 400;
     font-size: 1.5rem;
 }
+.buttonContainer {
+    margin:auto
+}
 
 .Button {
-    margin: 3rem auto 0 auto;
+    display: inline-flex;
     text-align: center;
-    width: 13rem;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.5rem;

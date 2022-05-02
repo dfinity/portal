@@ -10,8 +10,10 @@ import HexGLBG from "@site/static/img/hexGL.png";
 
 
 const variants = {
-    visible: {opacity: 1, transition: {duration: 1}, backgroundColor: "#3b00b9"},
-    hidden: {opacity: 0, transition: {duration: 0.2}, backgroundColor: "transparent"}
+    visible: {
+        opacity: 1, transition: {duration: 0.5}, backgroundColor: "#3b009b"
+    },
+    hidden: {opacity: 0, transition: {duration: 0.2}}
 };
 
 function Distrikt() {
@@ -112,7 +114,7 @@ function Fleek() {
 
 function Showcase() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({delay: 250, threshold: 0.4});
+    const {ref, inView} = useInView({delay: 250, threshold: 0.15});
     useEffect(() => {
         if (inView) {
             controls.start("visible");

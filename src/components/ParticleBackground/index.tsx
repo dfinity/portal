@@ -9,6 +9,7 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
     let cWidth = width<= 900 ? width*2 : width;
     const {Vector} = require('p5');
     const setup = (p5, canvasParentRef) => {
+        p5.disableFriendlyErrors = true; // disables FES
         p5.createCanvas(cWidth, height).parent(canvasParentRef);
         p5.noStroke();
         createNodes(p5);
@@ -43,8 +44,8 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
         particles = [];
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle(p5,
-                centerX + p5.random(-10, 10),
-                centerY + p5.random(-10, 10),
+                centerX + Math.random() * (10 - (-10)) + (-10),
+                centerY + Math.random() * (10 - (-10)) + (-10),
             ));
         }
 

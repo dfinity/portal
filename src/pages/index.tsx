@@ -16,7 +16,7 @@ import Showcase from "@site/src/components/Showcase";
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
     useEffect(() => {
-        document.documentElement.style.setProperty('--ifm-color-primary', "#3B00B9");
+        document.documentElement.style.setProperty('--ifm-color-primary', "#3b00b9");
     }, []);
     return (
         <Layout
@@ -26,9 +26,9 @@ export default function Home(): JSX.Element {
                 <BrowserOnly>
                     {() =>
                         <div className={styles.particleBackground}>
-                            <ParticleBackground width={window.innerWidth} height={window.innerHeight * 2} particleCount={150}
-                                                frameRate={30} centerX={window.innerWidth * 0.8}
-                                                centerY={window.innerHeight * 0.4} duration={12500}/>
+                            <ParticleBackground width={document.body.clientWidth} height={document.body.clientHeight * 2} particleCount={100}
+                                                frameRate={60} centerX={document.body.clientWidth * 0.8}
+                                                centerY={document.body.clientHeight * 0.4} duration={12500}/>
                         </div>
                     }
                 </BrowserOnly>

@@ -1,3 +1,11 @@
+.main {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 800px;
+    display: inline-flex;
+}
+
 .container {
     width: Min(500px, 90%);
     margin: auto;
@@ -37,21 +45,28 @@
     color: #3B00B9;
     text-decoration: none;
 }
-.BGShape{
+
+.BGShape {
     position: absolute;
     height: 500px;
-    top:-50px;
-    left:-50px;
-    filter: blur(150px);
+    top: -50px;
+    left: -50px;
     z-index: -1000;
+    -webkit-filter: blur(150px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
 }
+
 @media screen and (max-width: 996px) {
 
     .title {
         font-size: 28px;
         line-height: 32px;
     }
-    .actionButton{
+
+    .actionButton {
         font-size: 18px;
         line-height: 22px;
     }
