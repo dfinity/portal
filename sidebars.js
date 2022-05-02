@@ -153,18 +153,6 @@ const sidebars = {
         //     'developer-docs/build/deployment-scaling/scale'
         //   ],
         // },
-        {
-          type: 'category',
-          label: 'Security Best Practices',
-          link: {
-            type: 'doc', id: 'developer-docs/build/security/index'
-          },
-          items: [
-            'developer-docs/build/security/general-security-best-practices',
-            'developer-docs/build/security/web-app-development-security-best-practices',
-            'developer-docs/build/security/rust-canister-development-security-best-practices',
-          ]
-        },
         'developer-docs/build/troubleshooting',
       ]
     },
@@ -333,7 +321,19 @@ const sidebars = {
     'references/candid-ref',
     'references/ledger',
     'references/ii-spec',
-    'references/ic-interface-spec'
+    'references/ic-interface-spec',
+    {
+      type: 'category',
+      label: 'Security Best Practices',
+      link: {
+        type: 'doc', id: 'references/security/index'
+      },
+      items: [
+        'references/security/general-security-best-practices',
+        'references/security/web-app-development-security-best-practices',
+        'references/security/rust-canister-development-security-best-practices',
+      ]
+    },
   ],
   'concepts': [
     'concepts/index',

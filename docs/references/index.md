@@ -18,7 +18,10 @@ A major ingredient in allowing data exchange across the IC is a language indepen
 Now that more dapps are being built on the IC, it becomes apparent that several functionalities will be required by many or most apps. As such, several functionalities have been designed and developed. To learn more about financial integration explore the [Ledger Canister](ledger.md). To reference authentication and identity services see the [Internet Identity specification](ii-spec.md). 
 
 ### Internet Computer References
-Finally, for those who want to understand the intricacies of the Internet Computer’s behavior in detail, we refer you to the [Internet Computer Interface Specification](ic-interface-spec.md).
+For those who want to understand the intricacies of the Internet Computer’s behavior in detail, we refer you to the [Internet Computer Interface Specification](ic-interface-spec.md).
+
+### Security Best Practices
+We also include here various suggestions for Security Best Practices. There is information useful for developing with a security mindset when building on the IC, but also more generally.
 
 ### External Resources
 For other references, feel free to check out [the Internet Computer for Geeks](https://eprint.iacr.org/2022/087.pdf) paper which gives an overview of the entire system, the [How it Works](https://dfinity.org/howitworks/) videos to take a deeper dive into various topics, and also [Roman's Blog](https://mmapped.blog/posts.html) and [Kyle's blog](https://kyle-peacock.com/blog/). 
