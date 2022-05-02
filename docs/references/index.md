@@ -20,4 +20,5 @@ Now that more dapps are being built on the IC, it becomes apparent that several 
 ### Internet Computer References
 Finally, for those who want to understand the intricacies of the Internet Computer’s behavior in detail, we refer you to the [Internet Computer Interface Specification](ic-interface-spec.md).
 
-For other references, feel free to check out [Roman's Blog](https://mmapped.blog/posts.html), [Kyle's blog](https://kyle-peacock.com/blog/), and [the Internet Computer for Geeks](https://eprint.iacr.org/2022/087.pdf) paper which gives an overview of the entire system. 
+### External Resources
+For other references, feel free to check out [the Internet Computer for Geeks](https://eprint.iacr.org/2022/087.pdf) paper which gives an overview of the entire system, the [How it Works](https://dfinity.org/howitworks/) videos to take a deeper dive into various topics, and also [Roman's Blog](https://mmapped.blog/posts.html) and [Kyle's blog](https://kyle-peacock.com/blog/). 

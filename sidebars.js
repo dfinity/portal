@@ -352,8 +352,7 @@ const sidebars = {
       type: 'category',
       label: 'Identity & Authentication',
       link: {
-        type: 'doc', id: 'tokenomics/token-holders/index'
-        // type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+        type: 'doc', id: 'tokenomics/identity-auth/what-is-ic-identity'
       },
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
