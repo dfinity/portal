@@ -8,7 +8,7 @@
 
 .desktopContainer {
     display: flex;
-    width: 750px;
+    width: 760px;
     z-index: 1900;
     bottom: 0;
     margin: 0 auto 20px auto;
