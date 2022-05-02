@@ -9,6 +9,7 @@ on:
 
 jobs:
   deploy-netlify:
+    if: ${{ false }} # Disabled, see https://github.com/dfinity/portal/pull/94
     name: "Deploy to Netlify"
     runs-on: ubuntu-latest
 
