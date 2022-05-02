@@ -10,7 +10,7 @@ import ICWorld from "@site/src/components/ICWorld";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
-import Ecosystem from "@site/src/components/Ecosystem";
+import Governance from "@site/src/components/Governance";
 import Showcase from "@site/src/components/Showcase";
 
 export default function Home(): JSX.Element {
@@ -27,8 +27,8 @@ export default function Home(): JSX.Element {
                     {() =>
                         <div className={styles.particleBackground}>
                             <ParticleBackground width={document.body.clientWidth} height={document.body.clientHeight * 2} particleCount={100}
-                                                frameRate={60} centerX={document.body.clientWidth * 0.8}
-                                                centerY={document.body.clientHeight * 0.4} duration={12500}/>
+                                                frameRate={30} centerX={document.body.clientWidth * 0.8}
+                                                centerY={document.body.clientHeight * 0.4} duration={12500} pixelDensity={1} />
                         </div>
                     }
                 </BrowserOnly>
@@ -41,8 +41,8 @@ export default function Home(): JSX.Element {
                 <a id="features"/>
                 <Features/>
                 <Showcase />
-                <a id="ecosystem"/>
-                <Ecosystem/>
+                <a id="governance"/>
+                <Governance/>
                 <a id="ICWorld"/>
                 <ICWorld/>
                 <SectionsBar/>

@@ -10,7 +10,7 @@ const SectionsLinks = [
     {text: "Internet Computer", to: "#internetComputer"},
     {text: "Features", to: "#features"},
     {text: "Showcase", to: "#showcase"},
-    {text: "Ecosystem", to: "#ecosystem"},
+    {text: "Governance", to: "#governance"},
     {text: "IC World", to: "#ICWorld"}]
 
 export default function SectionsBar() {

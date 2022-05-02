@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 
 
-function Ecosystem() {
+function Governance() {
     return (
         <div className={styles.main}>
             <div className={styles.container}>
@@ -22,4 +22,4 @@ function Ecosystem() {
     );
 }
 
-export default Ecosystem;
+export default Governance;

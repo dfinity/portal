@@ -4,9 +4,9 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 let particles = [];
 let timer = 0;
 
-export default ({width, height, particleCount, frameRate, centerX, centerY, duration}) => {
+export default ({width, height, particleCount, frameRate, centerX, centerY, duration, pixelDensity}) => {
     let pRadius = width <= 900 ? 4 : 8;
-    let cWidth = width<= 900 ? width*2 : width;
+    let cWidth = width <= 900 ? width * 2 : width;
     const {Vector} = require('p5');
     const setup = (p5, canvasParentRef) => {
         p5.disableFriendlyErrors = true; // disables FES
@@ -14,6 +14,8 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
         p5.noStroke();
         createNodes(p5);
         p5.frameRate(frameRate);
+
+        p5.pixelDensity(pixelDensity)
     };
 
     const draw = (p5) => {
