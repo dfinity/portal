@@ -1,0 +1,48 @@
+{
+  "languages": [
+    {
+      "language": "English",
+      "text": "infinite"
+    },
+    {
+      "language": "Arabic",
+      "text": "لانهائي"
+    },
+    {
+      "language": "Chinese(Simplified)",
+      "text": "无限的"
+    },
+    {
+      "language": "Portuguese, Italian, Spanish, Galician",
+      "text": "infinito"
+    },
+    {
+      "language": "Swedish",
+      "text": "oändlig"
+    },
+    {
+      "language": "Japanese",
+      "text": "無限"
+    },
+    {
+      "language": "French",
+      "text": "infini"
+    },
+    {
+      "language": "Korean",
+      "text": "무한한"
+    },
+    {
+      "language": "Finnish",
+      "text": "ääretön"
+    },
+    {
+      "language": "Turkish",
+      "text": "sonsuz"
+    },
+    {
+      "language": "Hindi",
+      "text": "अनंत"
+    }
+  ]
+}

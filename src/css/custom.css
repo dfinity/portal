@@ -11,6 +11,7 @@
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-BlackItalic.woff") format("woff");
@@ -18,6 +19,7 @@
     font-style: italic;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Bold.woff") format("woff");
@@ -25,6 +27,7 @@
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-BoldItalic.woff") format("woff");
@@ -32,6 +35,7 @@
     font-style: italic;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Italic.woff") format("woff");
@@ -39,6 +43,7 @@
     font-style: italic;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Regular.woff") format("woff");
@@ -46,6 +51,7 @@
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Light.woff") format("woff");
@@ -53,19 +59,23 @@
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-LightItalic.woff") format("woff");
     font-weight: 300;
     font-style: italic;
     font-display: swap
-}@font-face {
+}
+
+@font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Medium.woff") format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-MediumItalic.woff") format("woff");
@@ -73,6 +83,7 @@
     font-style: italic;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Thin.woff") format("woff");
@@ -80,6 +91,7 @@
     font-style: normal;
     font-display: swap
 }
+
 @font-face {
     font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-ThinItalic.woff") format("woff");
@@ -87,6 +99,7 @@
     font-style: italic;
     font-display: swap
 }
+
 /* You can override the default Infima variables here. */
 :root {
     font-family: 'CircularXX', sans-serif;
@@ -226,10 +239,12 @@ div[class^='announcementBarContent'] {
     height: 1.925rem;
     margin-right: .5rem
 }
-.navbar__mobile__logo{
+
+.navbar__mobile__logo {
     display: flex;
 }
-.navbar__mobile__logo img{
+
+.navbar__mobile__logo img {
     flex: 0 0 auto;
     width: 15rem;
     margin: auto 0.5rem;
@@ -254,3 +269,6 @@ div[class^='announcementBarContent'] {
     z-index: 1900;
 }
 
+.navbar__search-input{
+    width: 100%;
+}

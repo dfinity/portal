@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
+import {languages} from "@site/static/Infinite.json"
 
 const variants = {
     enter: {
@@ -17,14 +18,13 @@ const variants = {
         opacity: 0,
     },
 };
-const texts = ["infinite", "لانهائي", "無限的"];
 
 function Index() {
     const [index, setIndex] = useState(0);
     useEffect(() => {
         setTimeout(() => {
             let next = index + 1;
-            if (next === texts.length) {
+            if (next === languages.length) {
                 next = 0;
             }
             setIndex(next);
@@ -49,7 +49,7 @@ function Index() {
                                     opacity: {duration: 0.1},
                                 }}
                             >
-                                {texts[index]}
+                                {languages[index].text}
                             </motion.p>
                         </AnimatePresence>
                         <p className={styles.InfiniteWordFiller}>infinite</p>
