@@ -36,7 +36,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Recommendation
 
--   By design, for every canister call the caller can be identified. The calling [principal](../../../references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../../references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](../../../references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
+-   By design, for every canister call the caller can be identified. The calling [principal](../ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](../ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
 
 <!-- -->
 
@@ -84,7 +84,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 #### Security Concern
 
-dApps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
 If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary may trick users (phishing) into using the insecure raw.ic0.app.
 
@@ -206,7 +206,7 @@ This may e.g. lead to the following issues:
 
 -   See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
--   For context: [IC interface spec on message execution](../../../references/ic-interface-spec#message-execution)
+-   For context: [IC interface spec on message execution](../ic-interface-spec#message-execution)
 
 ### Be aware that state may change during inter-canister calls
 
@@ -364,7 +364,7 @@ It should be possible to verify that a canister does what it claims to do. the I
 
 #### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../../build/backend/reproducible-builds).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../../developer-docs/build/backend/reproducible-builds).
 
 ### Expose metrics from your canister
 
@@ -404,7 +404,7 @@ The best practices in this section are very general and not specific to the Inte
 
 #### Security Concern
 
-The data sent in [query and update calls](../../../references/ic-interface-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
+The data sent in [query and update calls](../ic-interface-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
 
 -   If unvalidated data is rendered in web UIs or displayed in other systems, this can lead to injection attacks (e.g. XSS).
 

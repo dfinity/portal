@@ -108,7 +108,7 @@ To check your connection to the IC:
 
 ## Confirm your developer identity and ledger account
 
-All ICP token transactions are recorded in a [ledger canister](../good-to-know/glossary#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
+All ICP token transactions are recorded in a [ledger canister](../glossary#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 

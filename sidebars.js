@@ -67,7 +67,7 @@ const sidebars = {
               label: 'Motoko',
               link: {
                 // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
-                type: 'doc', id: 'developer-docs/build/languages/motoko/about-this-guide',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/motoko',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
@@ -195,61 +195,49 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Good to know',
+      label: 'Updates & Releases',
       link: {
-        // type: 'doc', id: 'developer-docs/good-to-know/index'
-        type: 'doc', id: 'developer-docs/good-to-know/computation-and-storage-costs'
+        // type: 'doc', id: 'developer-docs/updates/index'
+        type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes'
       },
       items: [
-        'developer-docs/good-to-know/computation-and-storage-costs',
-        {
-          type: 'category',
-          label: 'Security Best Practices',
-          link: {
-            type: 'doc', id: 'developer-docs/good-to-know/security/index'
-          },
-          items: [
-            'developer-docs/good-to-know/security/general-security-best-practices',
-            'developer-docs/good-to-know/security/web-app-development-security-best-practices',
-            'developer-docs/good-to-know/security/rust-canister-development-security-best-practices',
-          ]
-        },
         {
           type: 'category',
           label: 'SDK Release Notes',
           link: {
-            type: 'doc', id: 'developer-docs/good-to-know/release-notes/sdk-release-notes',
+            type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes',
           },
           items: [
-            'developer-docs/good-to-know/release-notes/0.9.3-rn',
-            'developer-docs/good-to-know/release-notes/0.9.2-rn',
-            'developer-docs/good-to-know/release-notes/0.9.0-rn',
-            'developer-docs/good-to-know/release-notes/0.8.4-rn',
-            'developer-docs/good-to-know/release-notes/0.8.2-rn',
-            'developer-docs/good-to-know/release-notes/0.8.1-rn',
-            'developer-docs/good-to-know/release-notes/0.8.0-rn',
-            'developer-docs/good-to-know/release-notes/0.7.7-rn',
-            'developer-docs/good-to-know/release-notes/0.7.2-rn',
-            'developer-docs/good-to-know/release-notes/0.7.1-rn',
-            'developer-docs/good-to-know/release-notes/0.7.0-rn',
-            'developer-docs/good-to-know/release-notes/0.6.26-rn',
-            'developer-docs/good-to-know/release-notes/0.6.25-rn',
-            'developer-docs/good-to-know/release-notes/0.6.24-rn',
-            'developer-docs/good-to-know/release-notes/0.6.23-rn',
-            'developer-docs/good-to-know/release-notes/0.6.22-rn',
-            'developer-docs/good-to-know/release-notes/0.6.21-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
-            'developer-docs/good-to-know/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/release-notes',
+            // 'developer-docs/updates/release-notes/0.9.3-rn',
+            // 'developer-docs/updates/release-notes/0.9.2-rn',
+            // 'developer-docs/updates/release-notes/0.9.0-rn',
+            // 'developer-docs/updates/release-notes/0.8.4-rn',
+            // 'developer-docs/updates/release-notes/0.8.2-rn',
+            // 'developer-docs/updates/release-notes/0.8.1-rn',
+            // 'developer-docs/updates/release-notes/0.8.0-rn',
+            // 'developer-docs/updates/release-notes/0.7.7-rn',
+            // 'developer-docs/updates/release-notes/0.7.2-rn',
+            // 'developer-docs/updates/release-notes/0.7.1-rn',
+            // 'developer-docs/updates/release-notes/0.7.0-rn',
+            // 'developer-docs/updates/release-notes/0.6.26-rn',
+            // 'developer-docs/updates/release-notes/0.6.25-rn',
+            // 'developer-docs/updates/release-notes/0.6.24-rn',
+            // 'developer-docs/updates/release-notes/0.6.23-rn',
+            // 'developer-docs/updates/release-notes/0.6.22-rn',
+            // 'developer-docs/updates/release-notes/0.6.21-rn',
+            // 'developer-docs/updates/release-notes/0.6.20-rn',
+            // 'developer-docs/updates/release-notes/0.6.20-rn',
+            // 'developer-docs/updates/release-notes/0.6.20-rn',
           ]
         },
-        'developer-docs/good-to-know/glossary',
+        'developer-docs/updates/computation-and-storage-costs',
       ]
-    }
+    },
+  'developer-docs/glossary',
   ],
   'references': [
     'references/index',
-    // 'references/cli-reference/index',
     {
       type: 'category',
       label: 'DFX Commands & Envars',
@@ -280,7 +268,7 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'developer-docs/build/languages/motoko/language-manual',
+        type: 'doc', id: 'references/motoko-ref/array',
       },
       items: [
         'references/motoko-ref/array',
@@ -333,7 +321,19 @@ const sidebars = {
     'references/candid-ref',
     'references/ledger',
     'references/ii-spec',
-    'references/ic-interface-spec'
+    'references/ic-interface-spec',
+    {
+      type: 'category',
+      label: 'Security Best Practices',
+      link: {
+        type: 'doc', id: 'references/security/index'
+      },
+      items: [
+        'references/security/general-security-best-practices',
+        'references/security/web-app-development-security-best-practices',
+        'references/security/rust-canister-development-security-best-practices',
+      ]
+    },
   ],
   'concepts': [
     'concepts/index',
@@ -352,12 +352,12 @@ const sidebars = {
       type: 'category',
       label: 'Identity & Authentication',
       link: {
-        type: 'doc', id: 'tokenomics/token-holders/index'
-        // type: 'doc', id: 'tokenomics/token-holders/custody-options-intro'
+        type: 'doc', id: 'tokenomics/identity-auth/what-is-ic-identity'
       },
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
         'tokenomics/identity-auth/auth-how-to',
+        'tokenomics/identity-auth/plug-ids',
         'tokenomics/identity-auth/hello-guide'
       ]
     },

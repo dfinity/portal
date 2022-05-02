@@ -284,7 +284,7 @@ Practical notes about cycles:
 
 -   There is a [free cycles faucet](cycles-faucet) that grants new developers 15 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
--   You can see a table of compute and storage costs here: [Computation and storage costs](../good-to-know/computation-and-storage-costs).
+-   You can see a table of compute and storage costs here: [Computation and storage costs](../updates/computation-and-storage-costs).
 -   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Managing_ICP_holdings).
 
 In this tutorial, we present two ways of acquiring cycles:
@@ -475,7 +475,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](../../../samples).
+Build DAOs, NFTs and more [here](https://beta.smartcontracts.org/samples).
 
 ### Want to learn more?
 

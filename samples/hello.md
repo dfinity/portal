@@ -8,7 +8,7 @@ This sample demonstrates a dead simple dapp consisting of two canisters:
 
 It is the dapp equivalent of the ubiquitous *hello world* and can be seen running [here on the IC](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
 
-This sample is based on the default project created by running `dfx new` as described in the [Motoko](../docs/developer-docs/quickstart/local-quickstart.md) and [Rust](../docs/developer-docs/build/languages/rust/rust-quickstart) quickstart documents.
+This sample is based on the default project created by running `dfx new` as described in the quickstart documents.
 
 The sample code is available from the [samples](https://github.com/dfinity/examples) repository in both [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello) and [Rust](https://github.com/dfinity/examples/tree/master/rust/hello).
 

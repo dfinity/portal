@@ -1,0 +1,27 @@
+.docs {
+    color: #ED1E79;
+  }
+  .docs[aria-selected='true'] {
+    border-bottom-color: #ED1E79;
+  }
+  
+  .refs {
+    color: #29ABE2;
+  }
+  .refs[aria-selected='true'] {
+    border-bottom-color: #29ABE2;
+  }
+  
+  .concepts {
+    color: #F15A24;
+  }
+  .concepts[aria-selected='true'] {
+    border-bottom-color: #F15A24;
+  }
+
+  .tokens {
+    color: #FBB03B;
+  }
+  .tokens[aria-selected='true'] {
+    border-bottom-color: #FBB03B;
+  }
