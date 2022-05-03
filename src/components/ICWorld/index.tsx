@@ -22,13 +22,13 @@ function ICWorld() {
             <p className={styles.title}>Delve into the IC World</p>
             <div className={styles.cards}>
                 <Card title={"IC Fellowship"}
-                      body={"Become and IC Master"}
+                      body={"Become an IC Master"}
                       link={"https://dfinity.org/ecosystem/fellowship/"}/>
                 <Card title={"Developer Grants"}
                       body={"Apply now"}
                       link={"https://dfinity.org/grants"}/>
-                <Card title={"Achievement Unblocked"} body={"Fund your dream game"}
-                      link={"https://dfinity.org/achievementunblocked/"}/>
+                <Card title={"Vulnerability Disclosures"} body={"Report security bugs"}
+                      link={"https://dfinity.org/vulnerability-disclosure-program/"}/>
                 <Card title={"IC Bootcamp"}
                       body={"Apply now"}
                       link={"https://dfinity.org/bootcamp"}/>
