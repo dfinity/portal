@@ -46,7 +46,7 @@ To modify the `dfx.json` configuration file:
 
 4.  Remove all of the `actor_hello_assets` configuration settings from the file.
 
-    The sample canister for this tutorial doesn’t use any front-end assets, so you can remove those settings from the configuration file.
+    The sample canister for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
     For example, the configuration file looks like this after you remove the `actor_hello_assets` section:
 

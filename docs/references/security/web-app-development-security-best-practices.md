@@ -40,7 +40,7 @@ Never use `agent.fetchRootKey()` in production builds, only in test builds. Not 
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
 
-### Validate input in the front-end
+### Validate input in the frontend
 
 #### Security Concern
 

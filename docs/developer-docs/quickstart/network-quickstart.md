@@ -14,7 +14,7 @@ Before you download and install this release of the SDK, verify the following:
 
     Currently, the SDK only runs on computers with a macOS or Linux operating system.
 
--   You have `node.js` installed if you want to access the default front-end for the default project.
+-   You have `node.js` installed if you want to access the default frontend for the default project.
 
 -   You have ICP tokens or cycles available for you to use.
 
@@ -112,7 +112,7 @@ All ICP token transactions are recorded in a [ledger canister](../glossary#ledge
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
-Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) front-end application, or using the SDK `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
+Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) frontend application, or using the SDK `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
 
 ### About your developer identity
 
@@ -270,7 +270,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     The `dfx deploy` command output displays information about the operations it performs.
 
-    For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` front-end user interface—and installation information similar to the following:
+    For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` frontend user interface—and installation information similar to the following:
 
         Deploying all canisters.
         Creating canisters...
@@ -332,15 +332,15 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
 6.  Rerun the `dfx wallet balance` command or refresh the browser to see your new cycle balance and recent activity.
 
-## Test the dapp front-end
+## Test the dapp frontend
 
-Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the front-end using your web browser.
+Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
-To access the dapp front-end:
+To access the dapp frontend:
 
 1.  Open a browser.
 
-2.  Navigate to the front-end for the dapp using a URL that consists of the `hello_assets` identifier and the `boundary.ic0.app` suffix.
+2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_assets` identifier and the `boundary.ic0.app` suffix.
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
@@ -352,7 +352,7 @@ To access the dapp front-end:
 
     Navigating to this URL displays the HTML entry page for the template application. For example:
 
-    ![HTML page with prompt](_attachments/net-front-end-prompt.png)
+    ![HTML page with prompt](_attachments/net-frontend-prompt.png)
 
 3.  Type a greeting, then click **Click Me** to return the greeting.
 
@@ -364,7 +364,7 @@ You can find more detailed examples and tutorials to help you learn about how to
 
 Here are some suggestions for where to go next:
 
--   [Build on the IC](../build/) to explore building front-end and back-end dapps in a local development environment.
+-   [Build on the IC](../build/) to explore building frontend and backend dapps in a local development environment.
 
 -   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 

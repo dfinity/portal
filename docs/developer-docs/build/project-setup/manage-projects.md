@@ -4,9 +4,9 @@ You can modify some key settings for individual projects by modifying each proje
 
 ## How to change the source directory
 
-Before you compile source code for your project using the `dfx build` command, you might want to check the default location for storing the source code for your dapp. By default, the name you use to create a new project is the name used for one canister (`canister_name`) and one assets canister (`canister_name_assets`), and dapp source code is expected to be in the `src/canister_name` directory. Similarly, the default location for front-end source code is in the `src/canister_name_assets/src` directory and front-end output is located in the `dist/canister_name_assets` directory.
+Before you compile source code for your project using the `dfx build` command, you might want to check the default location for storing the source code for your dapp. By default, the name you use to create a new project is the name used for one canister (`canister_name`) and one assets canister (`canister_name_assets`), and dapp source code is expected to be in the `src/canister_name` directory. Similarly, the default location for frontend source code is in the `src/canister_name_assets/src` directory and frontend output is located in the `dist/canister_name_assets` directory.
 
-Depending on your dapp’s complexity and architecture, however, you might want to modify the default location for the dapp source code, the front-end source code, or front-end output.
+Depending on your dapp’s complexity and architecture, however, you might want to modify the default location for the dapp source code, the frontend source code, or frontend output.
 
 For example, for a simple dapp, you might want to eliminate one directory level and place the source code in the `src` directory:
 
@@ -40,9 +40,9 @@ For example:
 
 Keep in mind that changing the configuration setting for the dapp file name only affects where the `dfx build` command looks for the source code to compile. Making changes in the configuration file does not rename any files or directories on the file system. If you change the path to the main dapp file or the name of the file itself, be sure to change the name and location within your project directory.
 
-## How to change the location for serving the dapp front-end
+## How to change the location for serving the dapp frontend
 
-You can change the default host name and port number for serving the dapp front-end by modifying the local network settings in the `dfx.json` configuration file.
+You can change the default host name and port number for serving the dapp frontend by modifying the local network settings in the `dfx.json` configuration file.
 
 For example, you can change the IP address for the local network by modifying the `bind` setting:
 
