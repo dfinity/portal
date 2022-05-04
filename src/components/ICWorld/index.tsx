@@ -40,7 +40,7 @@ function ICWorld() {
                 <Card title={"IC Dashboard"} body={"Get the stats"}
                       link={"https://dashboard.internetcomputer.org/"}/>
                 <Card title={"Blog"} body={"Get informed"}
-                      link={"https://medium.com/@dfinity"}/>
+                      link={"https://medium.com/dfinity"}/>
                 <Card title={"Community Awards"} body={"Create an event"}
                       link={"https://dfinity.org/community"}/>
             </div>
