@@ -4,7 +4,7 @@
 
 The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
 
-https://beta.smartcontracts.org
+https://smartcontracts.org
 
 ## Contributing
 The Developer Portal uses [Docusaurus](https://docusaurus.io/docs). 
@@ -33,9 +33,11 @@ To create a document, head to the `/docs` folder and create a Markdown file in t
 Here is an example of a docs sub-directory:
 ```
 developer-docs/
-    ic-overview.md
-    quick-start.md
-    guides/
+    developer-docs/
+        ic-overview.md
+        quickstart/
+            ...
+    references/
         ...
 ```
 
