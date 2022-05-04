@@ -114,7 +114,7 @@ Use the `dfx identity import` command to create a user identity by importing the
 ### Basic usage
 
 ``` bash
-dfx identity import [flag] identity-name pem_file-name
+dfx identity import [options] identity-name pem_file-name
 ```
 
 ### Flags
@@ -125,6 +125,15 @@ You can use the following optional flags with the `dfx identity import` command.
 |-------------------|-------------------------------|
 | `-h`, `--help`    | Displays usage information.   |
 | `-V`, `--version` | Displays version information. |
+
+### Options
+
+You can specify the following options for the `dfx identity import` command.
+
+|Argument|Description|
+|--------|-----------|
+|`--disable-encryption` |DANGEROUS: By default, PEM files are encrypted with a password when writing them to disk. I you want the convenience of not having to type your password (but at the risk of having your PEM file compromised), you can disable the encryption with this flag.|
+|`--force` |If the identity already exists, remove and re-import it.|
 
 ### Examples
 
@@ -182,7 +191,7 @@ Use the `dfx identity new` command to add new user identities. You should note t
 ### Basic usage
 
 ``` bash
-dfx identity new [flag] _identity-name_
+dfx identity new [options] _identity-name_
 ```
 
 ### Flags
@@ -201,6 +210,17 @@ You must specify the following argument for the `dfx identity new` command.
 | Argument          | Description                                                              |
 |-------------------|--------------------------------------------------------------------------|
 | `<identity_name>` | Specifies the name of the identity to create. This argument is required. |
+
+### Options
+
+You can specify the following options for the `+dfx identity new+` command.
+
+|Argument|Description|
+|--------|-----------|
+|`--disable-encryption` |DANGEROUS: By default, PEM files are encrypted with a password when writing them to disk. I you want the convenience of not having to type your password (but at the risk of having your PEM file compromised), you can disable the encryption with this flag.|
+|`--force` |If the identity already exists, remove and re-import it.|
+|`--hsm-key-id <hsm key id>` |A sequence of pairs of hex digits.|
+|`--hsm-pkcs11-lib-path <hsm pkcs11 lib path>` |The file path to the opensc-pkcs11 library e.g. "/usr/local/lib/opensc-pkcs11.so"|
 
 ### Examples
 
