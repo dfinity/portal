@@ -1,4 +1,5 @@
 import Dfx from '../_attachments/multiple-actors-dfx.json'
+import Assistant from '../_attachments/multiple-actors-assistant-main.mo'
 
 # Use multiple actors
 
@@ -95,7 +96,7 @@ To modify the default source code:
 
 2.  Copy and paste the following sample code into the file:
 
-        Unresolved directive in multiple-actors.adoc - include::example$multiple-actors/assistant/main.mo[]
+        <Assistant />
 
 3.  Save your changes and close the `main.mo` file to continue.
 

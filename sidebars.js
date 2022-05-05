@@ -119,7 +119,7 @@ const sidebars = {
             'developer-docs/build/backend/explore-templates',
             'developer-docs/build/backend/define-an-actor.mdx',
             'developer-docs/build/backend/hello-location',
-            'developer-docs/build/backend/counter-tutorial.mdx',
+            'developer-docs/build/backend/counter-tutorial',
             'developer-docs/build/backend/calculator.mdx',
             'developer-docs/build/backend/phonebook',
             'developer-docs/build/backend/multiple-actors',
