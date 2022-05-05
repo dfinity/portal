@@ -22,7 +22,7 @@ function Index() {
                     <DatabaseIcon className={styles.databaseIcon}/>
                     <GrowthIcon className={styles.growthIcon}/>
                     <p className={styles.Title}>What's the <br/> Internet Computer</p>
-                    <p className={styles.Body}>Imagine building scalable Dapps, DeFi, websites,
+                    <p className={styles.Body}>Imagine building scalable dapps, DeFi, websites,
                         enterprise systems and
                         open
                         internet services that are 100%

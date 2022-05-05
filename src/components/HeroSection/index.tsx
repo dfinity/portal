@@ -56,7 +56,7 @@ function Index() {
                         <p>world!</p>
                     </div>
                     <div className={styles.Text}>
-                        <p>Build smart contracts and dapps 100% on chain on the world’s fastest and most powerful open
+                        <p>Build smart contracts and dapps 100% on-chain on the world’s fastest and most powerful open-
                             source blockchain network. </p>
                     </div>
                     <Link className={styles.Button} to="/docs/current/developer-docs/quickstart/hello10mins">
