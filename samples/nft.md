@@ -20,13 +20,13 @@ The NFT canister is not very complicated since the [DIP-721](https://github.com/
 but we can still use it to explain three important concepts concerning dapp development for the Internet Computer:
 
 ### Stable Memory for Canister Upgrades
-The Internet Computer employs [Orthogonal Persistence](https://beta.smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
+The Internet Computer employs [Orthogonal Persistence](https://smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
 When upgrading canister code, however, it is necessary to explicitly handle canister data. The NFT canister example shows how stable memory can be handled using `pre_upgrade` and `post_upgrade`.
 
 ### Certified Data
 Generally, when a function only reads data (instead of modifying the state of the canister), it is
-beneficial to use a [query call instead of an update call](https://beta.smartcontracts.org/docs/current/concepts/canisters-code#query-and-update-methods).
-But, since query calls do not go through consensus, [certified responses](https://beta.smartcontracts.org/docs/current/developer-docs/build/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security)
+beneficial to use a [query call instead of an update call](https://smartcontracts.org/docs/current/concepts/canisters-code#query-and-update-methods).
+But, since query calls do not go through consensus, [certified responses](https://smartcontracts.org/docs/current/developer-docs/build/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security)
 should be used wherever possible. The HTTP interface of the Rust implementation shows how certified data can be handled.
 
 ### Delegating Control over Assets
@@ -79,6 +79,6 @@ Those three levels are then manually checked every single time someone attempts 
 If a user is not authorised to call a certain function an error is returned.
 
 Burning an NFT is a special case. To burn an NFT means to either delete the NFT (not intended in DIP-721) or to set ownership to `null` (or a similar value).
-On the Internet Computer, this non-existing principal is called the [Management Canister](https://beta.smartcontracts.org/docs/current/references/ic-interface-spec#the-ic-management-canister).
+On the Internet Computer, this non-existing principal is called the [Management Canister](https://smartcontracts.org/docs/current/references/ic-interface-spec#the-ic-management-canister).
 Quote from the link: "The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.)." and its address is `aaaaa-aa`.
 Using this management canister address, we can construct its principal and set the management canister as the owner of a burned NFT.
