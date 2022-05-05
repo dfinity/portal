@@ -1,5 +1,5 @@
 # Continuous Deployment job to deploy the portal to the Internet Computer as an asset canister
-# as well as to the Netlify beta.smartcontracts.org
+# as well as to the Netlify smartcontracts.org
 
 name: CD
 
@@ -15,7 +15,7 @@ jobs:
 
     environment:
       name: "Beta Netlify"
-      url: https://beta.smartcontracts.org
+      url: https://smartcontracts.org
 
     steps:
       - uses: actions/checkout@v2

@@ -295,6 +295,7 @@ const sidebars = {
         'references/motoko-ref/iter',
         'references/motoko-ref/itertype',
         'references/motoko-ref/list',
+        'references/motoko-ref/nat',
         'references/motoko-ref/nat8',
         'references/motoko-ref/nat16',
         'references/motoko-ref/nat32',
