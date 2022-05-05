@@ -41,11 +41,7 @@ You can specify the following arguments for the `dfx build` command.
 
 ## Examples
 
-You can use the `dfx build` command to build one or more WebAssembly modules from the programs specified in the `dfx.json` configuration file under the `canisters` key. For example, if your `dfx.json` configuration file defines one `hello_world` canister and one `hello_world_assets` canister, then running `dfx build` compiles two WebAssembly modules:
-
-``` json
-Unresolved directive in dfx-build.adoc - include::example$sample-dfx.json[]
-```
+You can use the `dfx build` command to build one or more WebAssembly modules from the programs specified in the `dfx.json` configuration file under the `canisters` key. For example, if your `dfx.json` configuration file defines one `hello_world` canister and one `hello_world_assets` canister [like this](../_attachments/sample-dfx.json), then running `dfx build` compiles two WebAssembly modules.
 
 Note that the file name and path to the programs on your file system must match the information specified in the `dfx.json` configuration file.
 

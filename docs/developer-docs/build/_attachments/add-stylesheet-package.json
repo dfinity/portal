@@ -1,0 +1,32 @@
+{
+  "name": "contacts_assets",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "assert": "2.0.0",
+    "buffer": "6.0.3",
+    "css-loader": "^5.2.1",
+    "events": "3.3.0",
+    "html-webpack-plugin": "5.3.1",
+    "process": "0.11.10",
+    "stream-browserify": "3.0.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "5.1.1",
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.4",
+    "util": "0.12.3",
+    "webpack-cli": "4.5.0",
+    "webpack": "5.24.4"
+  },
+  "dependencies": {
+    "@dfinity/agent": "0.10.0",
+    "@dfinity/candid": "0.10.0",
+    "@dfinity/principal": "0.10.0",
+    "react-dom": "^17.0.2",
+    "react": "^17.0.2"
+  }
+}

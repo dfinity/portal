@@ -52,9 +52,7 @@ Outputs from `dfx generate`:
 
 ## Examples
 
-``` json
-Unresolved directive in dfx-generate.adoc - include::example$sample-generate-dfx.json[]
-```
+[This](../_attachments/sample-generate-dfx.json) is a sample output of `dfx generate`.
 
 Note that the file name and path to the programs on your file system must match the information specified in the `dfx.json` configuration file.
 
