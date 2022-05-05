@@ -62,7 +62,7 @@ The `mo-hex` project implements hexadecimal encoding and decoding routines for t
 
 #### Source code
 
-The project includes the [hex.mo](../_attachments/hex.mo) source code.
+The project includes the [hex.mo](./_attachments/hex.mo) source code.
 
 ### Polynomial long-division in GF(256)
 
@@ -72,9 +72,9 @@ This program performs polynomial long division for a Galois field GF(256) elemen
 
 In addition to standard libraries, this project uses two main Motoko source code files.
 
--   The [Galois.mo](../_attachments/Galois.mo) file contains the core programming logic.
+- The [Galois.mo](./_attachments/Galois.mo) file contains the core programming logic.
 
--   The [Nat.mo](../_attachments/Nat.mo) file contains additional functions that are imported for use in the `Galois.mo` file.
+- The [Nat.mo](./_attachments/Nat.mo) file contains additional functions that are imported for use in the `Galois.mo` file.
 
 ##### Galois.mo
 

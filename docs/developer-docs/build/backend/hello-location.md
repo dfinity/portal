@@ -56,7 +56,7 @@ To modify the default template source code:
 
 2.  Modify the default source code to replace the `greet` function with a `location` function and the `name` argument with a `city` argument.
 
-    For example like [this](../_attachments/location-hello.mo).
+    For example like [this](../_attachments/location_hello.mo).
 
 3.  Save your changes and close the file to continue.
 
