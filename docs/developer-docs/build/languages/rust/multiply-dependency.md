@@ -110,9 +110,7 @@ To modify the `dfx.json` configuration file:
 
     You can also remove the `defaults` and `dfx` version settings.
 
-    For example, your configuration file might look like this after you modify the settings:
-
-        Unresolved directive in multiply-dependency.adoc - include::example$mul-deps/mul-deps-dfx.json[]
+    For example, your configuration file might look like [this](../../_attachments/mul-deps-dfx.json) after you modify the settings.
 
 6.  Save your change and close the `dfx.json` file to continue.
 
@@ -132,11 +130,7 @@ To write the Motoko source code:
 
 3.  Create and open the `src/multiply_deps/main.mo` file in a text editor.
 
-4.  Copy and paste the following sample code into the `main.mo` file:
-
-    ``` motoko
-    Unresolved directive in multiply-dependency.adoc - include::example$mul-deps/mul-deps.mo[]
-    ```
+4.  Copy and paste [this code](../../_attachments/mul-deps.mo) into the `main.mo` file.
 
 5.  Save your changes and close the file to continue.
 
@@ -152,11 +146,7 @@ To replace the default Rust canister:
 
     The next step is to write a Rust program that imports the Motoko canister and implements the `read` function.
 
-3.  Copy and paste the following sample code into the `lib.rs` file:
-
-    ``` bash
-    Unresolved directive in multiply-dependency.adoc - include::example$mul-deps/deps-main.rs[]
-    ```
+3.  Copy and paste [this code](../../_attachments/mul-deps-main.rs) into the `lib.rs` file.
 
 4.  Save your changes and close the `src/rust_deps/lib.rs` file to continue.
 

@@ -95,9 +95,7 @@ To review the default configuration file for your project:
 
 3.  Open the `dfx.json` configuration file in a text editor to review the default settings.
 
-    For example:
-
-        Unresolved directive in explore-templates.adoc - include::example$sample-explore-dfx.json[]
+    It may look like [this](../_attachments/sample-explore-dfx.json).
 
     Let’s take a look at a few of the default settings.
 

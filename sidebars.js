@@ -53,7 +53,7 @@ const sidebars = {
               label: 'Rust',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/rust/rust-intro',
-              }, 
+              },
               items: [
                 'developer-docs/build/languages/rust/rust-quickstart',
                 'developer-docs/build/languages/rust/rust-counter',
@@ -101,7 +101,7 @@ const sidebars = {
               label: 'Candid',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/candid/candid-intro',
-              }, 
+              },
               items: [
                 'developer-docs/build/languages/candid/candid-concepts',
                 'developer-docs/build/languages/candid/candid-howto',
@@ -127,6 +127,7 @@ const sidebars = {
             'developer-docs/build/backend/access-control',
             'developer-docs/build/backend/simple-cycles',
             'developer-docs/build/backend/reproducible-builds',
+            'developer-docs/build/backend/candid-ui',
           ]
         },
         {
@@ -235,7 +236,7 @@ const sidebars = {
         'developer-docs/updates/computation-and-storage-costs',
       ]
     },
-  'developer-docs/glossary',
+    'developer-docs/glossary',
   ],
   'references': [
     'references/index',

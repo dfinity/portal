@@ -61,9 +61,7 @@ To install required framework modules:
 
         npm install --save-dev typescript ts-loader
 
-    As an alternative to installing these modules, you can edit the default `package.json` file to add dependencies for your project.
-
-        Unresolved directive in custom-frontend.adoc - include::example$custom-frontend-package.json[]
+    As an alternative to installing these modules, you can edit the default `package.json` file to add dependencies for your project like [this](../_attachments/custom-frontend-package.json).
 
 ## Review the default configuration
 
@@ -171,17 +169,13 @@ To prepare the frontend files:
 
 4.  Create a new file named `tsconfig.json` in the root directory for your project.
 
-5.  Open the `tsconfig.json` file in a text editor, then copy and paste the following into the file:
-
-        Unresolved directive in custom-frontend.adoc - include::example$sample-tsconfig.json[]
+5.  Open the `tsconfig.json` file in a text editor, then copy and paste [this code](../_attachments/sample-tsconfig.json) into the file.
 
 6.  Save your changes and close the `tsconfig.json` file to continue.
 
 7.  Open the default `src/custom_greeting_assets/src/index.js` file in a text editor and delete lines 2 to 9.
 
-8.  Copy and paste the following sample code into the `index.js` file:
-
-        Unresolved directive in custom-frontend.adoc - include::example$react-index.jsx[]
+8.  Copy and paste [this code](../_attachments/react-index.jsx) into the `index.js` file.
 
 9.  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
@@ -265,9 +259,7 @@ After viewing the frontend, you might want to make some changes.
 
 To modify the frontend:
 
-1.  Open the `index.jsx` file in a text editor and modify its style settings. For example, you might want to change the font family and use a placeholder for the input field by making changes similar to the following:
-
-        Unresolved directive in custom-frontend.adoc - include::example$react-revised-index.jsx[]
+1.  Open the `index.jsx` file in a text editor and modify its style settings. For example, you might want to change the font family and use a placeholder for the input field by making changes similar to [this](../_attachments/react-revised-index.jsx).
 
 2.  Save the file and view the updated page in your browser.
 

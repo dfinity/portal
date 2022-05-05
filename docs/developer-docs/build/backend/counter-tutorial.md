@@ -74,11 +74,9 @@ To modify the default template source code:
 
 2.  Open the `src/my_counter/increment_counter.mo` file in a text editor and delete the existing content.
 
-3.  Copy and paste the following sample code into the `increment_counter.mo` file:
+3.  Copy and paste [this code](../_attachments/counter.mo) into the `increment_counter.mo` file.
 
-        Unresolved directive in counter-tutorial.adoc - include::example$counter.mo[]
-
-    Let’s take a closer look at this sample program:
+    Let's take a closer look at this sample program:
 
     -   You can see that the `currentValue` variable declaration in this example includes the `stable` keyword to indicate the state—the value that can be set, incremented, and retrieved—persists.
 
@@ -174,9 +172,9 @@ To test invoking methods on the deployed canister:
 
     returns the incremented `currentValue` of 988.
 
-Unresolved directive in counter-tutorial.adoc - include::example$candid-ui.adoc\[\]
+5.  Test your code using the candid ui.
 
-\+ ![Counter functions](../_attachments/candid-counter.png)
+    To test your code, follow the instructions [here](candid-ui.md).
 
 ## Stop the local canister execution environment
 

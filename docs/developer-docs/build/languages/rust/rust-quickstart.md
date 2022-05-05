@@ -60,9 +60,7 @@ The project is ready to be compiled and deployed to the Internet Computer blockc
 
 One of the template files included in your project directory is a default `dfx.json` configuration file. This file contains settings required to build a project for the Internet Computer blockchain much like the `Cargo.toml` file provides build and package management configuration details for Rust programs.
 
-The configuration file should look like this:
-
-    Unresolved directive in rust-quickstart.adoc - include::example$hello-dfx.json[]
+The configuration file should look like [this](../../_attachments/rust-quickstart-dfx.json).
 
 Notice that under the `canisters` key, you have some default settings for the `rust_hello` canister.
 
