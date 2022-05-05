@@ -101,9 +101,7 @@ To modify the default source code:
 
 7.  Open the `src/daemon/main.mo` file in a text editor and delete the existing content.
 
-8.  Copy and paste the following sample code into the file:
-
-        Unresolved directive in multiple-actors.adoc - include::example$multiple-actors/daemon/main.mo[]
+8.  Copy and paste [this code](../_attachments/multiple-actors-daemon-main.mo) into the file.
 
 9.  Save your changes and close the `main.mo` file to continue.
 
