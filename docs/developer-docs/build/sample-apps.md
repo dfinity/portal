@@ -75,11 +75,3 @@ In addition to standard libraries, this project uses two main Motoko source code
 - The [Galois.mo](./_attachments/Galois.mo) file contains the core programming logic.
 
 - The [Nat.mo](./_attachments/Nat.mo) file contains additional functions that are imported for use in the `Galois.mo` file.
-
-##### Galois.mo
-
-    <Galois />
-
-##### Nat.mo
-
-    <Nat />
