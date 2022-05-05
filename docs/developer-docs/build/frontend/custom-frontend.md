@@ -1,16 +1,16 @@
-# Customize the front-end
+# Customize the frontend
 
-Now that you have a basic understanding of how to create, build, and deploy a simple dapp and are familiar with the default project files and sample front-end, you might want to start experimenting with different ways to customize the front-end user experience for your project.
+Now that you have a basic understanding of how to create, build, and deploy a simple dapp and are familiar with the default project files and sample frontend, you might want to start experimenting with different ways to customize the frontend user experience for your project.
 
-This tutorial illustrates using the React framework to create a new front-end for the default sample dapp and guides you through some basic modifications to customize the interface displayed. Later tutorials expand on the techniques introduced here, but if you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
+This tutorial illustrates using the React framework to create a new frontend for the default sample dapp and guides you through some basic modifications to customize the interface displayed. Later tutorials expand on the techniques introduced here, but if you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
 
-This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your canister. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the front-end code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
+This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your canister. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the frontend code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
 
 ## Before you begin
 
 Before starting the tutorial, verify the following:
 
--   You have `node.js` installed for front-end development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
+-   You have `node.js` installed for frontend development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
 -   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
@@ -24,7 +24,7 @@ This tutorial takes approximately 30 minutes to complete.
 
 ## Create a new project
 
-To create a new project directory for your custom front-end dapp:
+To create a new project directory for your custom frontend dapp:
 
 1.  Open a terminal shell on your local computer, if you don’t already have one open.
 
@@ -49,7 +49,7 @@ To create a new project directory for your custom front-end dapp:
 
 ## Install the React framework
 
-If you’ve never used React before, you might want to explore the [Intro to React](https://reactjs.org/tutorial/tutorial.html) tutorial or the [React website](https://reactjs.org/) before editing the front-end code.
+If you’ve never used React before, you might want to explore the [Intro to React](https://reactjs.org/tutorial/tutorial.html) tutorial or the [React website](https://reactjs.org/) before editing the frontend code.
 
 To install required framework modules:
 
@@ -67,7 +67,7 @@ To install required framework modules:
 
 ## Review the default configuration
 
-Before we make any changes to use React for this tutorial, let’s review the default front-end settings in the `dfx.json` configuration file for your project.
+Before we make any changes to use React for this tutorial, let’s review the default frontend settings in the `dfx.json` configuration file for your project.
 
 To review the default `dfx.json` configuration file:
 
@@ -97,7 +97,7 @@ To review the default `dfx.json` configuration file:
 
     Let’s take a look at the settings in this section.
 
-    -   Front-end assets for your project are compiled into their own canister, in this case, a canister named `custom_greeting_assets`.
+    -   Frontend assets for your project are compiled into their own canister, in this case, a canister named `custom_greeting_assets`.
 
     -   The assets canister has a default dependency on the main canister for the project.
 
@@ -111,19 +111,19 @@ To review the default `dfx.json` configuration file:
 
 3.  Close the `dfx.json` file to continue.
 
-## Review the default front-end files
+## Review the default frontend files
 
-For this tutorial, you are going to make calls to the default `main.mo` canister through a custom front-end. Before you make any changes, though, let’s take a look at what’s in the default front-end files for a project.
+For this tutorial, you are going to make calls to the default `main.mo` canister through a custom frontend. Before you make any changes, though, let’s take a look at what’s in the default frontend files for a project.
 
-To review the default front-end files:
+To review the default frontend files:
 
 1.  Open the `src/custom_greeting_assets/src/index.html` file in a text editor.
 
-    This template file is the default front-end entry point for the dapp as specified by the `frontend.entrypoint` setting in the `dfx.json` file.
+    This template file is the default frontend entry point for the dapp as specified by the `frontend.entrypoint` setting in the `dfx.json` file.
 
     This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_assets/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
-    This is the same default front-end you saw in [Viewing the default front-end](../backend/explore-templates#default-frontend).
+    This is the same default frontend you saw in [Viewing the default frontend](../backend/explore-templates#default-frontend).
 
 2.  Open the `src/custom_greeting_assets/src/index.js` file in a text editor.
 
@@ -143,15 +143,15 @@ To review the default front-end files:
 
 3.  Close the `index.js` file to continue.
 
-## Modify the front-end files
+## Modify the frontend files
 
-You are now ready to create a new front-end for the default dapp.
+You are now ready to create a new frontend for the default dapp.
 
-To prepare the front-end files:
+To prepare the frontend files:
 
 1.  Open the webpack configuration file (`webpack.config.js`) in a text editor.
 
-2.  Modify the front-end entry to replace the default `index.html` with `index.jsx`.
+2.  Modify the frontend entry to replace the default `index.html` with `index.jsx`.
 
         entry: {
           // The frontend.entrypoint points to the HTML file for this build, so we need
@@ -235,11 +235,11 @@ To deploy the dapp locally:
 
     The `dfx deploy` command output displays information about the operations it performs.
 
-## View the new front-end
+## View the new frontend
 
-You can now access the new front-end for the default dapp by entering the canister identifier for the assets canister in a browser.
+You can now access the new frontend for the default dapp by entering the canister identifier for the assets canister in a browser.
 
-To view the custom front-end:
+To view the custom frontend:
 
 1.  Open a new tab or window of your terminal and run
 
@@ -251,7 +251,7 @@ To view the custom front-end:
 
     For example:
 
-    ![Sample front-end](../_attachments/react-greeting.png)
+    ![Sample frontend](../_attachments/react-greeting.png)
 
 4.  Replace **Name** in the input field with the text you want to display, then click **Get Greeting** to see the result.
 
@@ -259,11 +259,11 @@ To view the custom front-end:
 
     ![Greeting result](../_attachments/greeting-response.png)
 
-## Revise the front-end and test your changes
+## Revise the frontend and test your changes
 
-After viewing the front-end, you might want to make some changes.
+After viewing the frontend, you might want to make some changes.
 
-To modify the front-end:
+To modify the frontend:
 
 1.  Open the `index.jsx` file in a text editor and modify its style settings. For example, you might want to change the font family and use a placeholder for the input field by making changes similar to the following:
 
@@ -281,7 +281,7 @@ To modify the front-end:
 
 ## Stop the local canister execution environment
 
-After you finish experimenting with the front-end for your dapp, you can stop the local canister execution environment so that it doesn’t continue running in the background.
+After you finish experimenting with the frontend for your dapp, you can stop the local canister execution environment so that it doesn’t continue running in the background.
 
 To stop the local network:
 

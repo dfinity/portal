@@ -42,7 +42,7 @@ To modify settings in the `dfx.json` configuration file:
 
 3.  Remove all of the unnecessary configuration settings.
 
-    Because this tutorial does not involve creating any front-end assets, you can remove all of the `location_hello_assets` configuration settings from the file.
+    Because this tutorial does not involve creating any frontend assets, you can remove all of the `location_hello_assets` configuration settings from the file.
 
 4.  Save your changes and close the file to continue.
 

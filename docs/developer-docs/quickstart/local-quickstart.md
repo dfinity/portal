@@ -12,7 +12,7 @@ Before you download and install this release of the SDK, verify the following:
 
     Currently, the SDK only runs on computers with a macOS or Linux operating system.
 
--   You have `node.js` installed if you want to include the default template files for front-end development in your project.
+-   You have `node.js` installed if you want to include the default template files for frontend development in your project.
 
 ## Download and install
 
@@ -118,7 +118,7 @@ To deploy your first dapp locally:
 
         dfx deploy
 
-    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` front-end user interface—and installation information similar to the following:
+    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` frontend user interface—and installation information similar to the following:
 
         Creating a wallet canister on the local network.
         The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
@@ -177,9 +177,9 @@ To deploy your first dapp locally:
 
         ("Hello, everyone!")
 
-## Test the dapp front-end
+## Test the dapp frontend
 
-Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the front-end using your web browser.
+Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
 1.  Start the development server with `npm start`
 
@@ -189,13 +189,13 @@ Now that you have verified that your dapp has been deployed and tested its opera
 
 Navigating to this URL displays a simple HTML page with a sample asset image file, an input field, and a button. For example:
 
-\+ ![Sample HTML page](_attachments/front-end-prompt.png)
+\+ ![Sample HTML page](_attachments/frontend-prompt.png)
 
 1.  Type a greeting, then click **Click Me** to return the greeting.
 
     For example:
 
-    ![Hello](_attachments/front-end-result.png)
+    ![Hello](_attachments/frontend-result.png)
 
 ## Stop the local canister execution environment
 

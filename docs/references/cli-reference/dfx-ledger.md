@@ -17,6 +17,7 @@ Depending on the `dfx ledger` subcommand you specify, additional arguments, opti
 | [`account-id`](#account-id)           | Prints the selected identity’s Account Identifier.                                   |
 | [`balance`](#balance)                 | Prints the account balance of the user.                                              |
 | [`create-canister`](#create-canister) | Creates a canister from ICP.                                                         |
+| [`fabricate-cycles`](#fabricate-cycles) | Local development only: Fabricate cycles out of thin air and deposit them into the specified canister(s) |
 | `help`                                | Displays usage information message for a specified subcommand.                       |
 | [`notify`](#notify)                   | Notifies the ledger when there is a send transaction to the cycles minting canister. |
 | [`top-up`](#top-up)                   | Tops up a canister with cycles minted from ICP.                                      |
@@ -157,6 +158,72 @@ You can create a new canister by specifying separate values for ICP tokens and e
 ``` bash
 dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --icp 3 --e8s 5000
 ```
+
+## dfx ledger fabricate-cycles
+
+Use the `dfx ledger fabricate-cycles` add cycles to a canister while developing locally. The cycles are created out of thin air and are not deducted from anywhere.
+
+### Basic usage
+
+```
+dfx ledger fabricate-cycles [options]
+```
+
+### Flags
+
+You can use the following optional flags with the `dfx ledger fabricate-cycles` command.
+
+| Flag | Description |
+|------|-------------|
+|`+-h+`, `+--help+` |Displays usage information. |
+|`+-V+`, `+--version+` |Displays version information. |
+
+### Options
+
+You can specify the following options for the `dfx ledger fabricate-cycles` command.
+If no amount is specified, 10T cycles are used by default.
+
+
+|Option |Description|
+|-------|-----------|
+|`--all` |Deposit cycles to all of the canisters configured in the dfx.json file. |
+|`--amount <icp>` |ICP to mint into cycles and deposit into destination canister Can be specified as a Decimal with the fractional portion up to 8 decimal places i.e. 100.012 |
+|`--canister <canister name/id>` |Specifies the name or id of the canister to receive the cycles deposit. You must specify either a canister name/id or the --all option. |
+|`--cycles <cycles>` | Specifies the amount of cycles to fabricate. |
+|`--e8s <e8s>` | Specify e8s as a whole number, helpful for use in conjunction with `--icp`|
+|`--icp`|  Specify ICP as a whole number, helpful for use in conjunction with `--e8s`|
+|`--t <trillion cycles>` |Specifies the amount of cycles to fabricate in trillion cycles. Only accepts whole numbers.|
+
+### Examples
+
+If you are developing locally and want to add 8T cycles to all your canisters in your procject, you can do so like this:
+
+```
+dfx ledger fabricate-cycles --all --amount 8000000000000
+```
+
+The command displays output similar to the following:
+
+```
+Fabricating 8000000000000 cycles onto hello
+Fabricated 8000000000000 cycles, updated balance: 11_899_662_119_932 cycles
+Fabricating 8000000000000 cycles onto hello_assets
+Fabricated 8000000000000 cycles, updated balance: 11_899_075_504_924 cycles
+```
+
+If you would rather only add the cycles to the canister called 'hello' and don't want to type all the zeros, you can do it like this:
+
+```
+dfx ledger fabricate-cycles --canister hello --t 8
+```
+
+The command displays output similar to the following:
+
+```
+Fabricating 8000000000000 cycles onto hello
+Fabricated 8000000000000 cycles, updated balance: 11_899_662_119_932 cycles
+```
+
 
 ## dfx ledger notify
 

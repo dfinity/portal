@@ -1141,9 +1141,9 @@ If you use existing tools—like the DFINITY Canister SDK or Canister Developmen
 
 If you are interested in expanding the Internet Computer ecosystem, you’ll also find information in the *Internet Computer Interface Specification* to help you in developing the following types of projects:
 
--   Building **front-end agents** for user-facing interaction in any programming language, including popular languages such as Python, Golang, or C.
+-   Building **frontend agents** for user-facing interaction in any programming language, including popular languages such as Python, Golang, or C.
 
--   Building **back-end Canister Development Kits** (CDKs) in any language that can compile down to WebAssembly bytecode.
+-   Building **backend Canister Development Kits** (CDKs) in any language that can compile down to WebAssembly bytecode.
 
 -   Building **local development tools** such as command line interfaces or Internet Computer emulators and debuggers.
 
@@ -1185,7 +1185,7 @@ The most significant new features and capabilities include the following updates
 
 -   This release introduces environment variables for specifying canister identifiers.
 
-    You can now use the `CANISTER_ID_{canister.name}` and `CANISTER_CANDID_PATH_{canister.name}` environment variables to reference canister identifiers and the path to the canister Candid description (`.did` file) during the build process. These environment variables enable you to construct the JavaScript for front-end assets using the correct canister identifiers.
+    You can now use the `CANISTER_ID_{canister.name}` and `CANISTER_CANDID_PATH_{canister.name}` environment variables to reference canister identifiers and the path to the canister Candid description (`.did` file) during the build process. These environment variables enable you to construct the JavaScript for frontend assets using the correct canister identifiers.
 
     The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](../../build/frontend/webpack-config) which is being deprecated and will be removed in a future release.
 

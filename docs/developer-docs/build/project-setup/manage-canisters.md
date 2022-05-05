@@ -82,7 +82,7 @@ To deploy the code for the first time:
 
 ## Look up a Canister ID
 
-All canisters have unique identifiers. You often need to use these identifiers to interact with the canister. For example, if you want to access the front-end canister for a dapp or interact with a service using the Candid web interface, you must specify the appropriate canister identifier.
+All canisters have unique identifiers. You often need to use these identifiers to interact with the canister. For example, if you want to access the frontend canister for a dapp or interact with a service using the Candid web interface, you must specify the appropriate canister identifier.
 
 Because the identifiers are specific to the environment where the canisters are deployed, the files used to store the information are in different directories. For example, identifiers for a canister deployed locally are located in the project’s `.dfx/local/canister_ids.json` file.
 

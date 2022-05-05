@@ -14,7 +14,7 @@ The LinkedUp sample dapp is implemented using the following canisters:
 
 -   The `connectd` canister creates and stores a user’s connections.
 
--   The `linkedup_assets` canister stores the front-end assets—including the JavaScript, HTML, and CSS files—that define the user interface
+-   The `linkedup_assets` canister stores the frontend assets—including the JavaScript, HTML, and CSS files—that define the user interface
 
 ## Before you begin
 
@@ -106,7 +106,7 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
 4.  Copy the `linkedup_assets` canister identifier returned by the `dfx canister install` command.
 
-    In this sample dapp, only the `linkedup_assets` canister includes the front-end assets used to access the dapp’s user interface. To open the dapp in a browser, therefore, you need to specify the `linkedup_assets` canister identifier.
+    In this sample dapp, only the `linkedup_assets` canister includes the frontend assets used to access the dapp’s user interface. To open the dapp in a browser, therefore, you need to specify the `linkedup_assets` canister identifier.
 
 5.  Open the `linkedup_assets` canister in your web browser.
 

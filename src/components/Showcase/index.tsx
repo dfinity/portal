@@ -71,7 +71,7 @@ function HexGL() {
             <div className={styles.cardHeader}>
                 <p className={styles.cardBody}>
                                 <span>
-                                    <span style={{color: "#B748DE"}}>HexGL</span> is a futuristic racing hame using HTML5, JS, WebGL and hosted on the Internet Computer blockchain.
+                                    <span style={{color: "#B748DE"}}>HexGL</span> is a futuristic racing game using HTML5, JS, WebGL and hosted on the Internet Computer blockchain.
                                 </span>
                 </p>
             </div>

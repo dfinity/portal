@@ -20,9 +20,9 @@ example, if you call the `greet` method with the text argument `Alice`.
 * If you access the dapp in a browser, it will alert pop-up window reading `Hello, Alice!`
 
 While the code comes ready out of the box for you, this dapp consists of
-back-end code written in Motoko, a programming language specifically
+backend code written in Motoko, a programming language specifically
 designed for interacting with the Internet Computer (IC), and a simple
-webpack-based front-end.
+webpack-based frontend.
 
 ### Concepts necessary for this tutorial
 
@@ -159,7 +159,7 @@ Now that the canister is deployed to the local execution environment, you can in
 
 Now that you have verified that your dapp has been deployed and tested
 its operation using the command line, let’s verify that you can access
-the front-end using your web browser.
+the frontend using your web browser.
 
 In terminal B, start the development server by running
 
@@ -170,11 +170,11 @@ Open a browser and navigate to <http://localhost:8080/>.
 You should see a simple HTML page with a sample asset
 image file, an input field, and a button.
 
-![Sample HTML page](_attachments/front-end-prompt.png)
+![Sample HTML page](_attachments/frontend-prompt.png)
 
 Type a greeting, then click **Click Me** to return the greeting.
 
-![Hello](_attachments/front-end-result.png)
+![Hello](_attachments/frontend-result.png)
 
 ## Stop the local canister execution environment
 

@@ -24,6 +24,8 @@ See below for details on the cost of compute and storage transactions on the Int
 | Ingress Byte Reception               | For every byte received in an ingress message                                                                  | 2,000                   |
 | GB Storage Per Second                | For storing a GB of data per second                                                                            | 127,000                 |
 
+Note: System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
+
 Cycles Cost per Transaction (as of July 26, 2021)
 
 The $USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of July 26, 2021, the exchange rate for 1 XDR = $1.42. The exchange rate for USD \<\> XDR may vary and it will impact the conversion rate. For XDR exchange rates please visit: <https://www.imf.org/external/np/fin/data/rms_sdrv.aspx>
