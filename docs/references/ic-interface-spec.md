@@ -1443,7 +1443,7 @@ The Internet Computer aims to make the most of the WebAssembly platform, and emb
 
 A canister may only use the old *or* the new interface; the IC detects which interface the canister intends to use based on the names and types of its function imports and exports.
 
-## the IC management canister
+## The IC management canister
 
 The interfaces above provide the fundamental ability for external users and canisters to contact other canisters. But the Internet Computer provides additional functionality, such as canister and user management. This functionality is exposed to external users and canisters via the *IC management canister*.
 
@@ -1495,13 +1495,13 @@ Until code is installed, the canister is `Empty` and behaves like a canister tha
 
     Default value: 2592000 (approximately 30 days).
 
-###ICmethod `update_settings`
+### ICmethod `update_settings`
 
 Only *controllers* of the canister can update settings. See [IC method](#ic-create_canister) for a description of settings.
 
 Not including a setting in the `settings` record means not changing that field. The defaults described above are only relevant during canister creation.
 
-###ICmethod `install_code`
+### ICmethod `install_code`
 
 This method installs code into a canister.
 
@@ -1525,7 +1525,7 @@ The `wasm_module` field specifies the canister module to be installed. The syste
 
 -   If the `wasm_module` starts with byte sequence `[0x1f, 0x8b, 0x08]`, the system decompresses the contents of `wasm_module` as a gzip stream according to [RFC-1952](https://datatracker.ietf.org/doc/html/rfc1952.html) and then parses the output as a WebAssembly binary.
 
-###ICmethod `uninstall_code`
+### ICmethod `uninstall_code`
 
 This method removes a canister’s code and state, making the canister *empty* again.
 
@@ -1537,7 +1537,7 @@ The canister is now [empty](#canister-lifecycle). In particular, any incoming or
 
 A canister after *uninstalling* retains its *cycles* balance, *controllers*, status, and allocations.
 
-###ICmethod `canister_status`
+### ICmethod `canister_status`
 
 Indicates various information about the canister. It contains:
 
@@ -1553,13 +1553,13 @@ Indicates various information about the canister. It contains:
 
 Only the controllers of the canister can request its status.
 
-###ICmethod `stop_canister`
+### ICmethod `stop_canister`
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
 Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). the IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
 
-###ICmethod `start_canister`
+### ICmethod `start_canister`
 
 A canister may be started by its controllers.
 
@@ -1567,23 +1567,23 @@ If the canister status was `stopped` or `stopping` then the canister status is s
 
 If the canister was already `running` then the status stays unchanged.
 
-###ICmethod `delete_canister`
+### ICmethod `delete_canister`
 
 This method deletes a canister from the IC.
 
 Only controllers of the canister can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
 
-###ICmethod `deposit_cycles`
+### ICmethod `deposit_cycles`
 
 This method deposits the cycles included in this call into the specified canister.
 
 There is no restriction on who can invoke this method.
 
-###ICmethod `raw_rand`
+### ICmethod `raw_rand`
 
 This method takes no input and returns 32 pseudo-random bytes to the caller. The return value is unknown to any part of the IC at time of the submission of this call. A new return value is generated for each call to this method.
 
-###ICmethod `http_request`
+### ICmethod `http_request`
 
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
@@ -1621,7 +1621,7 @@ The returned response (and the response provided to the `transform` function, if
 
 The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller’s identity is the principal of the management canister.
 
-###ICmethod `provisional_create_canister_with_cycles`
+### ICmethod `provisional_create_canister_with_cycles`
 
 As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister’s balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`).
 
@@ -1629,7 +1629,7 @@ Cycles added to this call via `ic0.call_cycles_add128` are returned to the calle
 
 This method is only available in local development instances.
 
-###ICmethod `provisional_top_up_canister`
+### ICmethod `provisional_top_up_canister`
 
 As a provisional method on development instances, the `provisional_top_up_canister` method is provided. It adds `amount` cycles to the balance of canister identified by `amount`.
 
@@ -2218,7 +2218,7 @@ Based on this abstract notion of the state, we can describe the behavior of the 
 
 The state transitions are not complete with regard to error handling. For example, the behavior of sending a request to a non-existent canister is not specified here. For now, we trust implementors to make sensible decisions there.
 
-We model the [the IC management canister](#ic-management-canister) with one state transition per method. There, we assume a function
+We model the [the IC management canister](#the-ic-management-canister) with one state transition per method. There, we assume a function
 
     candid : Value -> Blob
 
@@ -2647,7 +2647,7 @@ State after
     S with
         call_contexts[Ctxt_id] = (deleted)
 
-####ICManagement Canister: Canister creation
+#### ICManagement Canister: Canister creation
 
 the IC chooses an appropriate canister id and instantiates a new (empty) canister identified by this id. The *controllers* are set such that the sender of this request is the only controller, unless the `settings` say otherwise. All cycles on this call are now the canister’s initial cycles.
 
@@ -2702,7 +2702,7 @@ To avoid clashes with potential user ids or is derived from users or canisters, 
 
 -   `is_system_assigned p = false` for `|p| > 29`.
 
-####ICManagement Canister: Changing settings
+#### ICManagement Canister: Changing settings
 
 Only the controllers of the given canister can update the canister settings.
 
@@ -2735,7 +2735,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Canister status
+#### ICManagement Canister: Canister status
 
 The controllers of a canister can obtain information about the canister.
 
@@ -2773,7 +2773,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Code installation
+#### ICManagement Canister: Code installation
 
 Only the controllers of the given canister can install code. This transition installs new code over a canister. This involves invoking the `canister_init` method (see [Canister initialization](#system-api-init)), which must succeed.
 
@@ -2817,7 +2817,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Code upgrade
+#### ICManagement Canister: Code upgrade
 
 Only the controllers of the given canister can install new code. This changes the code of an *existing* canister, preserving the state in the stable memory. This involves invoking the `canister_pre_upgrade` method on the old and `canister_post_upgrade` method on the new canister, which must succeed and must not invoke other methods.
 
@@ -2864,7 +2864,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Code uninstallation
+#### ICManagement Canister: Code uninstallation
 
 Upon uninstallation, the canister is reverted to an empty canister, and all outstanding call contexts are rejected and marked as deleted.
 
@@ -2909,7 +2909,7 @@ State after
               call_contexts[Ctxt_id].needs_to_respond := false
               call_contexts[Ctxt_id].available_cycles := 0
 
-####ICManagement Canister: Stopping a canister
+#### ICManagement Canister: Stopping a canister
 
 The controllers of a canister can stop a canister. Stopping a canister goes through two steps. First, the status of the canister is set to `Stopping`; as explained above, a stopping canister rejects all incoming requests and continues processing outstanding responses. When a stopping canister has no more open call contexts, its status is changed to `Stopped` and a response is generated. Note that when processing responses, a stopping canister can make calls to other canisters and thus create new call contexts. In addition, a canister which is stopped, or stopping will accept (and respond) to further `stop_canister` requests.
 
@@ -3012,7 +3012,7 @@ State after
               response = Accepted (candid())
             }
 
-####ICManagement Canister: Starting a canister
+#### ICManagement Canister: Starting a canister
 
 The controllers of a canister can start a `stopped` canister. If the canister is already running, the command has no effect on the canister.
 
@@ -3075,7 +3075,7 @@ State after
             | (O, C) ∈ Origins
             ]
 
-####ICManagement Canister: Canister deletion
+#### ICManagement Canister: Canister deletion
 
 Conditions  
 
@@ -3106,7 +3106,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Depositing cycles
+#### ICManagement Canister: Depositing cycles
 
 Conditions  
 
@@ -3133,7 +3133,7 @@ State after
             refunded_cycles = 0
           }
 
-####ICManagement Canister: Random numbers
+#### ICManagement Canister: Random numbers
 
 The management canister can produce pseudo-random bytes. It always returns a 32-byte `blob`:
 
@@ -3162,7 +3162,7 @@ State after
             refunded_cycles = M.transferred_cycles
           }
 
-####ICManagement Canister: Canister creation with cycles
+#### ICManagement Canister: Canister creation with cycles
 
 This is a variant of `create_canister`, which sets the initial cycle balance based on the `amount` argument.
 
@@ -3196,7 +3196,7 @@ State after
           }
         canister_status[CanisterId] = Running
 
-####ICManagement Canister: Top up canister
+#### ICManagement Canister: Top up canister
 
 Conditions  
 
