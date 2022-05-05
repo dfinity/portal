@@ -1,3 +1,5 @@
+import Dfx from '../_attachments/multiple-actors-dfx.json'
+
 # Use multiple actors
 
 In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
@@ -65,7 +67,7 @@ To modify the default `dfx.json` configuration file:
 
     After making the changes, the `canisters` section of the `dfx.json` file should look similar to this:
 
-        Unresolved directive in multiple-actors.adoc - include::example$multiple-actors/dfx.json[]
+        <Dfx />
 
     You can leave the other sections as-is.
 
