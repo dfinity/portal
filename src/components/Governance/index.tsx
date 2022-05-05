@@ -14,7 +14,7 @@ function Governance() {
                 </svg>
 
                 <p className={styles.title}>Your opinions matter </p>
-                <Link className={styles.actionButton} to="https://beta.smartcontracts.org/docs/current/tokenomics/">
+                <Link className={styles.actionButton} to="https://smartcontracts.org/docs/current/tokenomics/">
                     LEARN HOW TO STAKE AND VOTE
                 </Link>
             </div>

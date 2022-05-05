@@ -150,7 +150,7 @@ function Showcase() {
                         <Distrikt/>
                     </div>
                     <div className={styles.actionButtonContainer}>
-                        <Link className={styles.actionButton} to="https://beta.smartcontracts.org/samples/">
+                        <Link className={styles.actionButton} to="https://smartcontracts.org/samples/">
                             BUILD YOUR OWN
                         </Link>
                     </div>
