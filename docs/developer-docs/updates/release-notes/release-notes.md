@@ -29,7 +29,7 @@ Note in particular that this does not try to match `opt` arguments for heterogen
 
 This check was previously performed on local networks, but not on mainnet.
 
-#### New feature: dfx canister call --candid <path to candid file> ...
+#### New feature: `dfx canister call --candid <path to candid file>`
 
 Allows one to provide the .did file for calls to an arbitrary canister.
 
