@@ -48,9 +48,7 @@ To modify the `dfx.json` configuration file:
 
     The sample canister for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
-    For example, the configuration file looks like this after you remove the `actor_hello_assets` section:
-
-        Unresolved directive in define-an-actor.adoc - include::example$define-actor-dfx.json[]
+    For example, the configuration file looks like [this](../_attachments/define-actor-dfx.json) after you remove the `actor_hello_assets` section.
 
 5.  Save your changes and close the file to continue.
 
@@ -68,9 +66,7 @@ To modify the default template source code:
 
     The next step is to write a canister that prints a statement like the traditional "Hello, World!" sample canister. To compile the canister for the Internet Computer, however, your Motoko code must define an `actor`.
 
-3.  Copy and paste the following sample code into the `main.mo` file:
-
-        Unresolved directive in define-an-actor.adoc - include::example$actor_hello.mo[]
+3.  Copy and paste [this code](../_attachments/actor_hello.mo) into the `main.mo` file.
 
     Let’s take a closer look at this Motoko actor defining our canister:
 

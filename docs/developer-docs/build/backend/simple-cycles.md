@@ -46,9 +46,7 @@ To modify the default program:
 
 1.  Open the `src/cycles_hello/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste the following sample code into the file:
-
-        Unresolved directive in simple-cycles.adoc - include::example$cycles-main.mo[]
+2.  Copy and paste [this code](../_attachments/cycles-main.mo) into the file.
 
     Let’s take a look at a few key elements of this program:
 

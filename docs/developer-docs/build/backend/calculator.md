@@ -78,9 +78,7 @@ To replace the default program:
 
 3.  Open the `src/calc/calc_main.mo` file in a text editor and delete the existing content.
 
-4.  Copy and paste the following sample code into the `calc_main.mo` file:
-
-        Unresolved directive in calculator.adoc - include::example$calc_main.mo[]
+4.  Copy and paste [this code](../_attachments/calc_main.mo) into the `calc_main.mo` file.
 
     You might notice that this sample code uses integer (`Int`) data types, enabling you to use positive or negative numbers. If you wanted to restrict the functions in this calculator code to only use positive numbers, you could change the data type to only allow natural (`Nat`) data.
 
@@ -182,9 +180,6 @@ To test the program you have deployed:
 
         (0)
 
-Unresolved directive in calculator.adoc - include::example$candid-ui.adoc\[\]
-
-\+ ![Calculator functions](../_attachments/candid-calc.png)
 
 ## Stop the local canister execution environment
 

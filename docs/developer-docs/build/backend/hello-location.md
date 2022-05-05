@@ -56,9 +56,7 @@ To modify the default template source code:
 
 2.  Modify the default source code to replace the `greet` function with a `location` function and the `name` argument with a `city` argument.
 
-    For example:
-
-        Unresolved directive in hello-location.adoc - include::example$location_hello.mo[]
+    For example like [this](../_attachments/location_hello.mo).
 
 3.  Save your changes and close the file to continue.
 
@@ -158,9 +156,7 @@ To experiment with modifying the source code for this tutorial:
 
 5.  Copy and paste the following code sample to replace the `location` function with two new functions.
 
-    For example:
-
-        Unresolved directive in hello-location.adoc - include::example$favorite_cities.mo[]
+    For example like [this](../_attachments/favorite_cities.mo).
 
     You might notice that `Text` in this code example is enclosed by square (`[ ]`) brackets. By itself, `Text` represents a collection of UTF-8 characters. The square brackets around a type indicate that it is an **array** of that type. In this context, therefore, `[Text]` indicates an array of a collection of UTF-8 characters, enabling the program to accept and return multiple text strings.
 
@@ -169,7 +165,7 @@ To experiment with modifying the source code for this tutorial:
         public func apply<A, B>(fs : [A -> B], xs : [A]) : [B] {
             var ys : [B] = [];
             for (f in fs.vals()) {
-              ys := append<B>(ys, map<A, B>(f, xs));
+                ys := append<B>(ys, map<A, B>(f, xs));
             };
             ys;
         };
@@ -198,11 +194,12 @@ To experiment with modifying the source code for this tutorial:
 
         ("Hello from San Francisco, Paris, Rome, bon voyage!")
 
-Unresolved directive in hello-location.adoc - include::example$candid-ui.adoc\[\]
+9.  Test your code using the candid ui.
 
-\+ In this example, each function accepts an array of text strings. Therefore, you first select the length of the array, then set values for each item before clicking **Call**.
+    To test your code, follow the instructions [here](candid-ui.md).
+    In this example, each function accepts an array of text strings. Therefore, you first select the length of the array, then set values for each item before clicking **Call**.
 
-\+ ![Specifying an array](../_attachments/candid-favorite-cities-result.png)
+    ![Specifying an array](../_attachments/candid-favorite-cities-result.png)
 
 ## Stop the local canister execution environment
 
