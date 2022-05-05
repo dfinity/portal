@@ -1,3 +1,23 @@
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/install.sh https://download.dfinity.systems/sdk/install.sh 302
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/manifest.json https://download.dfinity.systems/sdk/manifest.json 302
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/sdk-license-agreement.txt https://download.dfinity.systems/sdk/sdk-license-agreement.txt 302
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/tungsten-license-agreement.txt https://download.dfinity.systems/sdk/tungsten-license-agreement.txt 302
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/sodium-license-agreement.txt https://download.dfinity.systems/sdk/sodium-license-agreement.txt 302
+
+# Rewrite to download.dfinity.systems for fetchings artifacts
+/downloads/* https://download.dfinity.systems/sdk/:splat 302
+
+
 /docs/base-libraries/* /docs/current/references/motoko-ref/:splat 301
 /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat 301
 /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat 301

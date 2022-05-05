@@ -98,7 +98,7 @@ To deploy the dapp locally:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Register, build, and deploy the `access_hello` back-end dapp by running the following command:
+2.  Register, build, and deploy the `access_hello` backend dapp by running the following command:
 
         dfx deploy access_hello
 

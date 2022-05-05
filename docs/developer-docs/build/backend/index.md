@@ -22,9 +22,9 @@ The following tutorials introduce the basics for writing dapps that run on the I
 
 -   [Use multiple actors](multiple-actors) describes how to include multiple unrelated actors in a single project to illustrate how you can compile multiple canisters for the same project.
 
--   [Customize the front-end](../frontend/custom-frontend) illustrates using a simple React framework to create a new front-end for the default sample canister and guides you through some basic modifications to customize the interface displayed. If you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
+-   [Customize the frontend](../frontend/custom-frontend) illustrates using a simple React framework to create a new frontend for the default sample canister and guides you through some basic modifications to customize the interface displayed. If you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
 
--   [Add a stylesheet](../frontend/my-contacts) illustrates how to add a stylesheet when you use React to create a new front-end for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
+-   [Add a stylesheet](../frontend/my-contacts) illustrates how to add a stylesheet when you use React to create a new frontend for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
 
 -   [Make inter-canister calls](intercanister-calls) illustrates how to make simple calls to functions defined in one canister from another canister in the same project.
 

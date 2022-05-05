@@ -49,7 +49,7 @@ Unresolved directive in dfx-build.adoc - include::example$sample-dfx.json[]
 
 Note that the file name and path to the programs on your file system must match the information specified in the `dfx.json` configuration file.
 
-In this example, the `hello_world` canister contains the main program code and the `hello_world_assets` canister store front-end code and assets. If you want to keep the `hello_world_assets` canister defined in the `dfx.json` file, but only build the back-end program, you could run the following command:
+In this example, the `hello_world` canister contains the main program code and the `hello_world_assets` canister store frontend code and assets. If you want to keep the `hello_world_assets` canister defined in the `dfx.json` file, but only build the backend program, you could run the following command:
 
 ``` bash
 dfx build hello_world

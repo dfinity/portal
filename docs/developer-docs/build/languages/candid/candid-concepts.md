@@ -1,6 +1,6 @@
 # What is Candid?
 
-Candid is an *interface description language*. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a **canister** that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic, and allows inter-operation between services and front-ends written in different programming languages, including Motoko, Rust, and JavaScript.
+Candid is an *interface description language*. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a **canister** that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic, and allows inter-operation between services and frontends written in different programming languages, including Motoko, Rust, and JavaScript.
 
 A typical interface description in Candid might look like this:
 
@@ -17,7 +17,7 @@ In this example, the described service—`counter`—consists of the following p
 
 As this example illustrates, every method has a sequence of argument and result types. A method can also include annotations—like the `query` notation shown in this example—that are specific to the Internet Computer.
 
-Given this simple interface description, it is possible for you to interact with this `counter` service directly from the command line or through a web-based front-end or programmatically from a Rust program or through another programming or scripting language.
+Given this simple interface description, it is possible for you to interact with this `counter` service directly from the command line or through a web-based frontend or programmatically from a Rust program or through another programming or scripting language.
 
 In addition to interoperability, Candid supports the evolution of service interfaces by precisely specifying the changes that can be made without breaking existing clients. For example, you can safely add new optional parameters to a service without losing compatibility for existing clients.
 

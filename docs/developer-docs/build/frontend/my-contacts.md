@@ -1,14 +1,14 @@
 # Add a stylesheet
 
-Cascading stylesheets are an important part of any front-end user interface. The default starter is configured to import a `main.css` file that you can edit, but you may prefer to import your stylesheet into a JavaScript file, or to use an alternate format such as Syntactically Awesome Style Sheets, aka SCSS. This tutorial illustrates how to configure webpack to import a stylesheet by walking through building a contact dapp. If you already know how to add cascading stylesheets (CSS) to a webpack-based project, you can skip this tutorial.
+Cascading stylesheets are an important part of any frontend user interface. The default starter is configured to import a `main.css` file that you can edit, but you may prefer to import your stylesheet into a JavaScript file, or to use an alternate format such as Syntactically Awesome Style Sheets, aka SCSS. This tutorial illustrates how to configure webpack to import a stylesheet by walking through building a contact dapp. If you already know how to add cascading stylesheets (CSS) to a webpack-based project, you can skip this tutorial.
 
-This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your front-end. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the front-end code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
+This tutorial illustrates using the React framework to manage the Document Object Model (DOM) for your frontend. Because React has its own custom DOM syntax, you need to modify the webpack configuration to compile the frontend code, which is written in JSX. For more information about learning to use React and JSX, see [Getting started](https://reactjs.org/docs/getting-started.html) on the [React website](https://reactjs.org/).
 
 ## Before you begin
 
 Before starting the tutorial, verify the following:
 
--   You have `node.js` installed for front-end development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
+-   You have `node.js` installed for frontend development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
 -   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
@@ -20,7 +20,7 @@ This tutorial requires you to use the SDK version `0.8.0` or later.
 
 ## Create a new project
 
-To create a new project directory for your custom front-end dapp:
+To create a new project directory for your custom frontend dapp:
 
 1.  Open a terminal shell on your local computer, if you don’t already have one open.
 
@@ -38,7 +38,7 @@ To create a new project directory for your custom front-end dapp:
 
 ## Install the React framework
 
-if you’ve never used React before, you might want to explore the [Intro to React](https://reactjs.org/tutorial/tutorial.html) tutorial or the [React website](https://reactjs.org/) before editing the front-end code.
+if you’ve never used React before, you might want to explore the [Intro to React](https://reactjs.org/tutorial/tutorial.html) tutorial or the [React website](https://reactjs.org/) before editing the frontend code.
 
 To install required framework modules:
 
@@ -76,13 +76,13 @@ To modify the default program:
 
 3.  Save your changes and close the `main.mo` file to continue.
 
-## Modify the front-end files
+## Modify the frontend files
 
-You are now ready to create a new front-end for your program.
+You are now ready to create a new frontend for your program.
 
 1.  Open the webpack configuration file (`webpack.config.js`) in a text editor.
 
-2.  Modify the front-end entry to replace the default index.html with index.jsx.
+2.  Modify the frontend entry to replace the default index.html with index.jsx.
 
         entry: {
           // The frontend.entrypoint points to the HTML file for this build, so we need
@@ -146,7 +146,7 @@ To add a stylesheet:
 
 2.  Open the `main.css` file in a text editor and delete the existing content.
 
-3.  Define some style properties for the front-end.
+3.  Define some style properties for the frontend.
 
     For example, copy and paste the following sample styles into the file:
 
@@ -231,11 +231,11 @@ To deploy the dapp:
 
         npm start
 
-## View the front-end
+## View the frontend
 
-You can now access the front-end for the `contacts` dapp.
+You can now access the frontend for the `contacts` dapp.
 
-To view the front-end:
+To view the frontend:
 
 1.  Open a browser and navigate to the `http://localhost:8080`.
 
@@ -243,7 +243,7 @@ To view the front-end:
 
     For example:
 
-    ![Sample front-end](../_attachments/mycontacts-form.png)
+    ![Sample frontend](../_attachments/mycontacts-form.png)
 
 3.  Create one or more test records by entering text in the Name, Address, and Email input fields and a number in the Phone input field, then clicking **Add Contact**.
 
@@ -263,11 +263,11 @@ To change stylesheet properties:
 
     You should see the changes update immediately in your open browser window.
 
-## Modify the front-end or back-end code
+## Modify the frontend or backend code
 
-If you want to explore further, you might want to experiment with modifying the front-end or back-end code for this tutorial. For example, you might want try modifying the tutorial to do the following:
+If you want to explore further, you might want to experiment with modifying the frontend or backend code for this tutorial. For example, you might want try modifying the tutorial to do the following:
 
--   Change the front-end code to clear the input fields after adding a new contact, for example, as part of an `onClick` event.
+-   Change the frontend code to clear the input fields after adding a new contact, for example, as part of an `onClick` event.
 
 -   Change the Motoko program functions to do partial instead of exact string matching on the `Name` field. (You will need to run `dfx deploy` to test your changes on the local environment)
 

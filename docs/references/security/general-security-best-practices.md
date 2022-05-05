@@ -8,7 +8,7 @@ The responses to [query calls](../ic-interface-spec#https-interface) (as opposed
 
 ### Recommendation
 
--   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by the IC using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/src/ic-certified-map). The data certification must be validated in the front-end.
+-   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by the IC using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/src/ic-certified-map). The data certification must be validated in the frontend.
 
 -   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance: it takes a few seconds. Note that every query can also be issued as an update by the caller.
 
@@ -72,7 +72,7 @@ Having small test coverage is risky, as code changes become difficult and may vi
 
 #### Recommendation
 
-Write tests for canister implementations and front-end code, especially for security relevant properties and invariants.
+Write tests for canister implementations and frontend code, especially for security relevant properties and invariants.
 
 -   In [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html): [test upgrades](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades), [make code target-independent](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent)
 
