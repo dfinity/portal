@@ -1,6 +1,3 @@
-import Dfx from '../_attachments/multiple-actors-dfx.json'
-import Assistant from '../_attachments/multiple-actors-assistant-main.mo'
-
 # Use multiple actors
 
 In this tutorial, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.
@@ -66,9 +63,7 @@ To modify the default `dfx.json` configuration file:
 
 3.  Add a new canister name, source code location, and canister type for the `rock_paper_scissors` canister and a new canister name, source code location, and canister type for the `daemon` program files below the `assistant` canister definition.
 
-    After making the changes, the `canisters` section of the `dfx.json` file should look similar to this:
-
-        <Dfx />
+    After making the changes, the `canisters` section of the `dfx.json` file should look similar to [this](../_attachments/multiple-actors-dfx.json).
 
     You can leave the other sections as-is.
 
@@ -94,17 +89,13 @@ To modify the default source code:
 
 1.  Open the `src/assistant/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste the following sample code into the file:
-
-        <Assistant />
+2.  Copy and paste [this code](../_attachments/multiple-actors-assistant-main.mo) into the file.
 
 3.  Save your changes and close the `main.mo` file to continue.
 
 4.  Open the `src/rock_paper_scissors/main.mo` file in a text editor and delete the existing content.
 
-5.  Copy and paste the following sample code into the file:
-
-        Unresolved directive in multiple-actors.adoc - include::example$multiple-actors/rock_paper_scissors/main.mo[]
+5.  Copy and paste [this code](../_attachments/multiple-actors-rock-main.mo) into the file.
 
 6.  Save your changes and close the `main.mo` file to continue.
 
