@@ -1041,13 +1041,13 @@ which copies, at the time of function invocation, the data referred to by `src`/
 
 The canister can access an argument. For `canister_init`, `canister_post_upgrade` and method entry points, the argument is the argument of the call; in a reply callback, it refers to the received reply. So the lifetime of the argument data is a single WebAssembly function execution, not the whole method call tree.
 
--   ic0.msg_arg_data_size : () -> i32
-        ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()
+-   `ic0.msg_arg_data_size : () -> i32`,
+        `ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()`
 
     The message argument data.
 
--   ic0.msg_caller_size : () -> i32
-        ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()
+-   `ic0.msg_caller_size : () -> i32`,
+        `ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()`
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
 
@@ -1057,8 +1057,8 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     It returns the special “no error” code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
--   ic0.msg_reject_msg_size : () -> i32
-        ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()
+-   `ic0.msg_reject_msg_size : () -> i32`
+        `ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()`
 
     The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
@@ -1461,7 +1461,7 @@ The following interface description, in [Candid syntax](https://github.com/dfini
 
 The binary encoding of arguments and results are as per Candid specification.
 
-###ICmethod `create_canister`
+### ICmethod `create_canister`
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
