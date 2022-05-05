@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "assistant": {
+      "main": "src/assistant/main.mo",
+      "type": "motoko"
+    },
+    "rock_paper_scissors": {
+      "main": "src/rock_paper_scissors/main.mo",
+      "type": "motoko"
+    },
+    "daemon": {
+      "main": "src/daemon/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.3",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

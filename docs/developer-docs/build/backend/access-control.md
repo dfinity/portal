@@ -54,11 +54,9 @@ To modify the default dapp:
 
 1.  Open the `src/access_hello/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste the following sample code into the file:
+2.  Copy and paste [this code](../_attachments/access-control-main.mo) into the file.
 
-        Unresolved directive in access-control.adoc - include::example$access-hello/main.mo[]
-
-    Let’s take a look at a few key elements of this dapp:
+    Let's take a look at a few key elements of this dapp:
 
     -   You might notice that the `greet` function is a variation on the `greet` function you have seen in previous tutorials.
 

@@ -90,11 +90,7 @@ To replace the default dapp:
 
     The next step is to write a Rust dapp that declares the `COUNTER` variable and implements the `increment`, `get`, and `set` functions.
 
-3.  Copy and paste the following sample code into the `lib.rs` file:
-
-    ``` motoko
-    Unresolved directive in rust-counter.adoc - include::example$counter-tutorial/counter.rs[]
-    ```
+3.  Copy and paste [this code](../../_attachments/counter.rs) into the `lib.rs` file.
 
 4.  Save your changes and close the `lib.rs` file to continue.
 

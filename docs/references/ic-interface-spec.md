@@ -782,9 +782,7 @@ A typical request would be (written in [CBOR diagnostic notation](https://tools.
 
 ### CDDL description of requests and responses
 
-The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This section summarizes the format of the CBOR data passed to and from the entry points described above. You can also [download the file](_attachments/requests.cddl).
-
-    Unresolved directive in internet.adoc - include::{example}requests.cddl[]
+The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This [file](_attachments/requests.cddl) summarizes the format of the CBOR data passed to and from the entry points described above.
 
 ### Ordering guarantees
 
@@ -1041,13 +1039,13 @@ which copies, at the time of function invocation, the data referred to by `src`/
 
 The canister can access an argument. For `canister_init`, `canister_post_upgrade` and method entry points, the argument is the argument of the call; in a reply callback, it refers to the received reply. So the lifetime of the argument data is a single WebAssembly function execution, not the whole method call tree.
 
--   ic0.msg_arg_data_size : () -> i32
-        ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()
+-   `ic0.msg_arg_data_size : () -> i32`,
+        `ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()`
 
     The message argument data.
 
--   ic0.msg_caller_size : () -> i32
-        ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()
+-   `ic0.msg_caller_size : () -> i32`,
+        `ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()`
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
 
@@ -1057,8 +1055,8 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     It returns the special “no error” code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
--   ic0.msg_reject_msg_size : () -> i32
-        ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()
+-   `ic0.msg_reject_msg_size : () -> i32`
+        `ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()`
 
     The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
@@ -1457,7 +1455,7 @@ It is possible to use the management canister via external requests (a.k.a. ingr
 
 ### Interface overview
 
-The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality. You can also [download the file](_attachments/ic.did).
+The [interface description](_attachments/ic.did), in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality.
 
 The binary encoding of arguments and results are as per Candid specification.
 
@@ -1795,8 +1793,6 @@ Delegations are *scoped*, i.e., they indicate which set of canister principals t
 ### Encoding of certificates
 
 The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file](_attachments/certificates.cddl).
-
-    Unresolved directive in internet.adoc - include::{example}certificates.cddl[]
 
 The values in the [The system state tree](#state-tree) are encoded to blobs as follows:
 
@@ -4107,5 +4103,3 @@ The pseudo-code below does *not* explicitly enforce the restrictions of which im
 
     ic0.trap<es>(src : i32, size : i32) =
       Trap
-
-Unresolved directive in internet.adoc - include::{partial}changelog.adoc\[\]
