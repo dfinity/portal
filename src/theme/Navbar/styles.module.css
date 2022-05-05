@@ -9,54 +9,63 @@
 Hide toggle in small viewports
  */
 @media (max-width: 996px) {
-  .toggle {
-    display: none;
-  }
+    .toggle {
+        display: none;
+    }
 }
 
 .navbarHideable {
-  transition: transform var(--ifm-transition-fast) ease;
+    transition: transform var(--ifm-transition-fast) ease;
 }
 
 .navbarHidden {
-  transform: translate3d(0, calc(-100% - 2px), 0);
+    transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
 .navbarSidebarToggle {
-  margin-right: 0;
+    margin-right: 0;
 }
+
 .forumIconContainer {
-  vertical-align: middle;
-  display: flex;
-  padding: 0.4rem;
-  color: var(--ifm-color-primary);
+    vertical-align: middle;
+    display: flex;
+    padding: 0.4rem;
+    color: var(--ifm-color-primary);
 }
+
+.forumIconContainer:hover {
+    color: black;
+}
+[data-theme='dark'] .forumIconContainer:hover{
+    color: white;
+}
+
 .navBarDivider {
-  border-right: 1px solid var(--ifm-color-emphasis-300);
-  height: 70%;
-  margin: 0 1rem;
+    border-right: 1px solid var(--ifm-color-emphasis-300);
+    height: 70%;
+    margin: 0 1rem;
 }
 
 .svgIconLinks {
-  padding: 0.4rem;
+    padding: 0.4rem;
 }
 
 .navbarMobileItems {
-  margin:auto 2rem 0.5rem 2rem;
-  display:flex;
-  justify-content: space-around;
-  justify-items: center;
-  align-items: center;
+    margin: auto 2rem 0.5rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
 }
 
 .navbarMobilePages {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-weight: bold;
-  background: var(--ifm-menu-color-background-hover)
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: bold;
+    background: var(--ifm-menu-color-background-hover)
 }
 
 .navbarMobileSearch {
-  width: Min(400px,90%);
-  margin: auto auto 0.5rem auto
+    width: Min(400px, 90%);
+    margin: auto auto 0.5rem auto
 }

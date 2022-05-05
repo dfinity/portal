@@ -20,6 +20,7 @@ function Card({title, body, link}) {
 function Features() {
     return (
         <div className={styles.container}>
+            <a id="features"/>
             <p className={styles.title}>What's cool about the <br/> Internet Computer</p>
             <div className={styles.cards}>
                 <Card title={"realweb 3.0"}
