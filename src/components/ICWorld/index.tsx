@@ -19,6 +19,7 @@ function Card({title, body, link}) {
 function ICWorld() {
     return (
         <div className={styles.container}>
+            <a id="ICWorld"/>
             <p className={styles.title}>Delve into the IC World</p>
             <div className={styles.cards}>
                 <Card title={"IC Fellowship"}

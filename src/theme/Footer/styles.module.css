@@ -77,6 +77,9 @@
 .mediaLinks img {
     display: flex;
 }
+.mediaLinks img:hover {
+    filter: brightness(0);
+}
 .container {
     background-color: white;
     position: relative;
@@ -123,5 +126,6 @@
     .BGCircle{
         top: 300px;
         right:-300px;
+        -webkit-filter: blur(100px);
     }
 }

@@ -14,6 +14,7 @@ import SecurityIcon from "@site/static/img/securityIcon.svg";
 function Index() {
     return (
         <div className={styles.Container}>
+            <a id="internetComputer"/>
             <div className={styles.main}>
                 <div className={styles.iconsContainer}>
                     <DfinityIcon className={styles.dfinityIcon}/>
@@ -26,7 +27,7 @@ function Index() {
                         enterprise systems and
                         open
                         internet services that are 100%
-                        on chain and can be tokenized. Guess what…it’s all possible on the
+                        on-chain and can be tokenized. Guess what...it’s all possible on the
                         Internet Computer.
                     </p>
                     <p className={styles.Body}>The Internet Computer is blockchain reimagined, a world
