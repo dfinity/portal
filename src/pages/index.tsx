@@ -32,18 +32,12 @@ export default function Home(): JSX.Element {
                         </div>
                     }
                 </BrowserOnly>
-                <a id="home"/>
                 <HeroSection/>
-                <a id="startCoding"/>
                 <StartCoding/>
-                <a id="internetComputer"/>
                 <InternetComputer/>
-                <a id="features"/>
                 <Features/>
                 <Showcase />
-                <a id="governance"/>
                 <Governance/>
-                <a id="ICWorld"/>
                 <ICWorld/>
                 <SectionsBar/>
             </main>

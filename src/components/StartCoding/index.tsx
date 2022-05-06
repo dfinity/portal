@@ -35,6 +35,7 @@ function Event({title, dateRange, link}) {
 function StartCoding() {
     return (
         <div className={styles.main}>
+            <a id="startCoding"/>
             <div className={styles.grid}>
                 <Information title="Sample Code"
                              body="Ready to code? Have some fun building DeFi, NFT-minting dapps and more on the Internet Computer."

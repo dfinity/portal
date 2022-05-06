@@ -14,6 +14,7 @@ import SecurityIcon from "@site/static/img/securityIcon.svg";
 function Index() {
     return (
         <div className={styles.Container}>
+            <a id="internetComputer"/>
             <div className={styles.main}>
                 <div className={styles.iconsContainer}>
                     <DfinityIcon className={styles.dfinityIcon}/>
