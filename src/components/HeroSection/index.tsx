@@ -32,6 +32,7 @@ function Index() {
     }, [index, setIndex]);
     return (
         <div className={styles.section}>
+            <a id="home"/>
             <div className={styles.main}>
                 <div className={styles.container}>
                     <div className={styles.Title}>
