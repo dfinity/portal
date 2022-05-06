@@ -13,7 +13,7 @@ const isDeployPreview =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Internet Computer Developer Portal',
-    tagline: 'Deploy smart contracts and build scalable dapps on the Internet Computer - the world's fastest and most powerful open-source blockchain network',
+    tagline: 'Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network',
     url: 'https://smartcontracts.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
