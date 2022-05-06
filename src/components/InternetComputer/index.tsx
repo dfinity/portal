@@ -26,7 +26,7 @@ function Index() {
                         enterprise systems and
                         open
                         internet services that are 100%
-                        on chain and can be tokenized. Guess what…it’s all possible on the
+                        on-chain and can be tokenized. Guess what...it’s all possible on the
                         Internet Computer.
                     </p>
                     <p className={styles.Body}>The Internet Computer is blockchain reimagined, a world
