@@ -12,11 +12,11 @@ function Governance() {
             <a id="governance"/>
             <div className={styles.header}>
                 <p className={styles.headerTitle}>Help Shape the Internet Computer</p>
-                <p className={styles.headerBody}>Calling developers and blockchain enthusiasts! The Internet Computer is
+                <p className={styles.headerBody}>Calling all developers and blockchain enthusiasts! The Internet Computer is
                     a fully decentralized
                     platform, which means that its ownership is in the hands of the people vested in it. While the
                     Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it is
-                    built is governed by a communal voting system. Not only do stakeholders get to have a say in the
+                    built is governed by a communal voting system. Not only do stakeholders have a say in 
                     what happens next, they also receive voting rewards for participating in governance.</p>
                 <Link className={styles.headerCallToAction} to={"https://forum.dfinity.org/"}>
                     Share your thoughts in the Developer Forum
