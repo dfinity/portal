@@ -10,7 +10,7 @@ Parts of the canister interface are for internal consumption only, and therefore
 
 ## Overview & Terminology
 
-In brief, the Ledger canister maintains a set of accounts owned byICprincipals; each account has associated a Tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the Ledger canister also allows minting and burning of tokens, which are additional transactions which are recorded on the transaction ledger.
+In brief, the Ledger canister maintains a set of accounts owned by IC principals; each account has associated a Tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the Ledger canister also allows minting and burning of tokens, which are additional transactions which are recorded on the transaction ledger.
 
 ### Tokens
 
@@ -20,7 +20,7 @@ There can be multiple utility Tokens in the IC at once. The utility Tokens used 
 
 The Ledger canister keeps track of accounts:
 
--   Every account belongs to (and is controlled by) anICprincipal
+-   Every account belongs to (and is controlled by) an IC principal
 
 -   Each account has precisely one owner (i.e. no “joint accounts”)
 

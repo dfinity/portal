@@ -18,7 +18,7 @@ The Internet Computer Protocol (ICP) implements management of its utility token 
 
 ### Accounts
 
-An account belongs to and is controlled by the account owner who must be anICprincipal. No account can be owned by two or moreICprincipals (no "joint accounts").
+An account belongs to and is controlled by the account owner who must be an IC principal. No account can be owned by two or more IC principals (no "joint accounts").
 
 An account owner may control more than one account. In this case, each account corresponds to a pair (account_owner, sub_account). The sub-account is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
