@@ -298,10 +298,10 @@ Now that the canister is deployed on-chain, you can send it a message.
 Since the canister has a method called `greet` (which accepts a string
 as a parameter), we will send it a message.
 
-    $ dfx canister --networkiccall hello greet '("everyone": text)'
+    $ dfx canister --network ic call hello greet '("everyone": text)'
 
 Note the way the message is constructed: \*
-`dfx canister --networkiccall` is setup for calling a canister on the
+`dfx canister --network ic call` is setup for calling a canister on the
 IC \* `hello greet` means we are sending a message to a canister named
 `hello` and evoking its `greet` method \* `'("everyone": text)'` is the
 parameter we are sending to `greet` (which accepts `Text` as its only
