@@ -10,6 +10,7 @@ const SectionsLinks = [
     {text: "Internet Computer", to: "#internetComputer"},
     {text: "Features", to: "#features"},
     {text: "Showcase", to: "#showcase"},
+    {text: "Testimonials", to: "#testimonials"},
     {text: "Governance", to: "#governance"},
     {text: "IC World", to: "#ICWorld"}]
 
