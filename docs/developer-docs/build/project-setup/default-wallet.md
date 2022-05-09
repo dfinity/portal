@@ -104,7 +104,7 @@ To check the cycles balance on the Internet Computer:
 
 You can also check the cycles balance by calling the `wallet_balance` method in the cycles wallet canister directly. For example, if your principal is a controller for the `h5aet-waaaa-aaaab-qaamq-cai` cycles wallet, you can check the current cycle balance by running the following command:
 
-    dfx canister --networkiccall h5aet-waaaa-aaaab-qaamq-cai wallet_balance
+    dfx canister --network ic call h5aet-waaaa-aaaab-qaamq-cai wallet_balance
 
 The command returns the balance using Candid format as a record with an amount field (represented by the hash 3\_573\_748\_184) and a balance of 6,895,656,625,450 cycles like this:
 
@@ -254,7 +254,7 @@ To send cycles to another canister running on the Internet Computer:
 
     For example, run the following command to display the cycles wallet principal associated with the current user identity on the Internet Computer:
 
-        dfx identity --networkicget-wallet
+        dfx identity --network ic get-wallet
 
     The command displays the cycles wallet principal with output similar to the following:
 
@@ -262,11 +262,11 @@ To send cycles to another canister running on the Internet Computer:
 
 4.  Send cycles to the canister by running a command similar to the following:
 
-        dfx wallet --networkicsend <destination> <amount>
+        dfx wallet --network ic send <destination> <amount>
 
     For example:
 
-        dfx wallet --networkicsend gastn-uqaaa-aaaae-aaafq-cai 10000000000
+        dfx wallet --network ic send gastn-uqaaa-aaaae-aaafq-cai 10000000000
 
     If the transfer is successful, the command does not displays any output.
 
@@ -294,7 +294,7 @@ To view address book entries for a cycles wallet running on the Internet Compute
 
 3.  Get the address book entries for the cycles wallet by running the following command :
 
-        dfx wallet --networkicaddresses
+        dfx wallet --network ic addresses
 
     The command displays the controllers and custodians for the cycles wallet with output similar to the following:
 
@@ -360,7 +360,7 @@ For example, you can use the `get_events` method to return `canister_create` and
 
 If the cycles wallet (`gastn-uqaaa-aaaae-aaafq-cai`) is deployed on the Internet Computer main network, you could run a command that looks like this to return events:
 
-    dfx canister --networkiccall gastn-uqaaa-aaaae-aaafq-cai get_events '(record {from = null; to = null})'
+    dfx canister --network ic call gastn-uqaaa-aaaae-aaafq-cai get_events '(record {from = null; to = null})'
 
 The output from the command is in Candid format similar to the following:
 
