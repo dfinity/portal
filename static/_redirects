@@ -22,7 +22,7 @@
 /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat 301
 /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat 301
 
-
+/docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
 /docs/candid-guide/candid-concepts.html /docs/current/developer-docs/build/languages/candid/candid-concepts.html
 /docs/candid-guide/candid-howto.html /docs/current/developer-docs/build/languages/candid/candid-howto.html
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
