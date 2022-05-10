@@ -78,7 +78,7 @@ To check the cycles balance in a local project:
 
     The command displays output similar to the following:
 
-        78000000000000 cycles.
+        78.000 TC (trillion cycles).
 
 ### Check the cycles balance on the Internet Computer
 
@@ -98,7 +98,7 @@ To check the cycles balance on the Internet Computer:
 
     The command displays output similar to the following:
 
-        67991783875995 cycles.
+        67.992 TC (trillion cycles).
 
 ### Call the cycles wallet\_balance method
 
@@ -278,7 +278,7 @@ To send cycles to another canister running on the Internet Computer:
 
     For example:
 
-        67991699387090 cycles.
+        67.992 TC (trillion cycles).
 
 ## List Address Book Entries
 
