@@ -258,7 +258,7 @@ You can specify the following argument for the `dfx ledger notify` command.
 The following example illustrates sending a `notify` message to the ledger in response to a `_send+` transaction that was recorded at the block height `75948`.
 
 ``` bash
-dfx ledger --networkicnotify 75948 tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
+dfx ledger --network ic notify 75948 tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
 ```
 
 ## dfx ledger top-up
@@ -268,7 +268,7 @@ Use the `dfx ledger top-up` command to top up a canister with cycles minted from
 ### Basic usage
 
 ``` bash
-dfx ledger --networkictop-up [options] canister [flag]
+dfx ledger --network ic top-up [options] canister [flag]
 ```
 
 ### Flags
@@ -307,7 +307,7 @@ You can use the `dfx ledger top-up` command to top up the cycles of a specific c
 For example, you can run the following command to top-up a cycles wallet canister deployed on the Internet Computer with 1 ICP worth of cycles:
 
 ``` bash
-dfx ledger --networkictop-up --icp 1 5a46r-jqaaa-aaaaa-qaadq-cai
+dfx ledger --network ic top-up --icp 1 5a46r-jqaaa-aaaaa-qaadq-cai
 ```
 
 This command displays output similar to the following:
@@ -381,7 +381,7 @@ This command displays output similar to the following:
 Use the `dfx ledger transfer` command to send some of your ICP balance to another known destination using the following command:
 
 ``` bash
-dfx ledger --networkictransfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
+dfx ledger --network ic transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
 ```
 
 This command displays output similar to the following:

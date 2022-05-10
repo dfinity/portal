@@ -181,12 +181,12 @@ To transfer ICP tokens to another account:
 3.  Transfer ICP tokens to another account by running a command similar to the following:
 
     ``` bash
-    dfx ledger --networkictransfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
+    dfx ledger --network ic transfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
     ```
 
     For example:
 
-        dfx ledger --networkictransfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
+        dfx ledger --network ic transfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
 
     This example illustrates how to transfer ICP tokens to the specified account using a whole number with the `--icp` command-line option.
 

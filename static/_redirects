@@ -22,7 +22,7 @@
 /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat 301
 /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat 301
 
-
+/docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
 /docs/candid-guide/candid-concepts.html /docs/current/developer-docs/build/languages/candid/candid-concepts.html
 /docs/candid-guide/candid-howto.html /docs/current/developer-docs/build/languages/candid/candid-howto.html
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
@@ -71,14 +71,14 @@
 /docs/developers-guide/work-with-languages.html /docs/current/developer-docs/build/languages/work-with-languages
 /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/build/project-setup/manage-canisters
 /docs/download.html /docs/current/developer-docs/build/install-upgrade-remove
-/docs/http-middleware.html /docs/current/developer-docs/
+/docs/http-middleware.html /docs/current/developer-docs/ic-overview
 /docs/ic-identity-guide/auth-how-to.html /docs/current/tokenomics/identity-auth/auth-how-to
 /docs/ic-identity-guide/hello-guide.html /docs/current/tokenomics/identity-auth/hello-guide
 /docs/ic-identity-guide/what-is-ic-identity.html /docs/current/tokenomics/identity-auth/what-is-ic-identity
-/docs/index.html /docs/current/developer-docs/
+/docs/index.html /docs/current/developer-docs/ic-overview
 /docs/integration/ledger-quick-start.html /docs/current/developer-docs/functionality/ledger/
 /docs/interface-spec/index.html /docs/current/references/ic-interface-spec
-/docs/introduction/welcome.html /docs/current/developer-docs/
+/docs/introduction/welcome.html /docs/current/developer-docs/ic-overview
 /docs/language-guide/about-this-guide.html /docs/current/developer-docs/build/languages/motoko/about-this-guide
 /docs/language-guide/actor-classes.html /docs/current/developer-docs/build/languages/motoko/actor-classes
 /docs/language-guide/actors-async.html /docs/current/developer-docs/build/languages/motoko/actors-async
@@ -97,7 +97,7 @@
 /docs/language-guide/modules-and-imports.html /docs/current/developer-docs/build/languages/motoko/modules-and-imports
 /docs/language-guide/motoko-grammar.html /docs/current/developer-docs/build/languages/motoko/motoko-grammar
 /docs/language-guide/motoko-introduction.html /docs/current/developer-docs/build/languages/motoko/motoko-introduction
-/docs/language-guide/motoko.html /docs/current/developer-docs/build/languages/motoko/motoko
+/docs/language-guide/motoko.html /docs/current/developer-docs/build/languages/motoko/index
 /docs/language-guide/mutable-state.html /docs/current/developer-docs/build/languages/motoko/mutable-state
 /docs/language-guide/overview.html /docs/current/developer-docs/build/languages/motoko/overview
 /docs/language-guide/pattern-matching.html /docs/current/developer-docs/build/languages/motoko/pattern-matching
@@ -108,18 +108,18 @@
 /docs/language-guide/upgrades.html /docs/current/developer-docs/build/languages/motoko/upgrades
 /docs/languages/languages-overview.html /docs/current/developer-docs/build/languages/
 /docs/languages/motoko-at-a-glance.html /docs/current/developer-docs/build/languages/motoko/motoko-at-a-glance
-/docs/operators-guide/ops-guide.html /docs/current/developer-docs
-/docs/quickstart/1-quickstart.html /docs/current/developer-docs/quickstart/hello10minutes
-/docs/quickstart/2-quickstart.html /docs/current/developer-docs/quickstart/hello10minutes
-/docs/quickstart/3-quickstart.html /docs/current/developer-docs/quickstart/hello10minutes
-/docs/quickstart/4-2-convert-icp-to-cycles.html /docs/current/developer-docs/quickstart/hello10minutes
-/docs/quickstart/4-quickstart.html /docs/current/developer-docs/quickstart/hello10minutes
-/docs/quickstart/5-quickstart.html /docs/current/developer-docs/quickstart/hello10minutes
+/docs/operators-guide/ops-guide.html /docs/current/developer-docs/ic-overview
+/docs/quickstart/1-quickstart.html /docs/current/developer-docs/quickstart/hello10mins
+/docs/quickstart/2-quickstart.html /docs/current/developer-docs/quickstart/hello10mins
+/docs/quickstart/3-quickstart.html /docs/current/developer-docs/quickstart/hello10mins
+/docs/quickstart/4-2-convert-icp-to-cycles.html /docs/current/developer-docs/quickstart/hello10mins
+/docs/quickstart/4-quickstart.html /docs/current/developer-docs/quickstart/hello10mins
+/docs/quickstart/5-quickstart.html /docs/current/developer-docs/quickstart/hello10mins
 /docs/quickstart/cycles-faucet.html /docs/current/developer-docs/quickstart/cycles-faucet
 /docs/quickstart/local-quickstart.html /docs/current/developer-docs/quickstart/local-quickstart
 /docs/quickstart/network-quickstart.html /docs/current/developer-docs/quickstart/network-quickstart
-/docs/quickstart/newcomers.html /docs/current/developer-docs/
-/docs/quickstart/quickstart-intro.html /docs/current/developer-docs/quickstart/hello10minutes
+/docs/quickstart/newcomers.html /docs/current/developer-docs/ic-overview
+/docs/quickstart/quickstart-intro.html /docs/current/developer-docs/quickstart/hello10mins
 /docs/rosetta-api/deploy-new-token.html /docs/current/developer-docs/functionality/ledger/deploy-new-token
 /docs/rosetta-api/ledger-local-setup.html /docs/current/developer-docs/functionality/ledger/ledger-local-setup
 /docs/rosetta-api/ledger.html /docs/current/developer-docs/functionality/ledger/
@@ -153,7 +153,7 @@
 /docs/security-best-practices/introduction.html /docs/current/references/security/
 /docs/security-best-practices/rust-canister-development-security-best-practices.html /docs/current/references/security/rust-canister-development-security-best-practices
 /docs/security-best-practices/web-app-development-security-best-practices.html /docs/current/references/security/web-app-development-security-best-practices
-/docs/support.html /docs/current/developer-docs/
+/docs/support.html /docs/current/developer-docs/ic-overview
 /docs/token-holders/custody-options-intro.html /docs/current/tokenomics/token-holders/custody-options-intro
 /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
 /docs/token-holders/seed-donations.html /docs/current/tokenomics/token-holders/seed-donations
