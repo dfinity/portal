@@ -202,7 +202,7 @@ You can use the following optional flags with the `dfx wallet balance` command.
 
 |Flag |Description
 -------|---------
-|`--precise` |Displays usage information.
+|`--precise` |Displays the exact balance, without scaling to trillions of cycles. 
 |`-h`, `--help` |Displays usage information.
 |`-V`, `--version` |Displays version information.
 
