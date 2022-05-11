@@ -24,9 +24,9 @@ function ICWorld() {
             <a id="ICWorld"/>
             <p className={styles.title}>Delve into the IC World</p>
             <div className={styles.cards}>
-                <Card title={"IC Fellowship"}
-                      body={"Become an IC Master"}
-                      link={"https://dfinity.org/ecosystem/fellowship/"}/>
+                <Card title={"Motoko Playground"}
+                      body={"Learn the IC Language"}
+                      link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}/>
                 <Card title={"Developer Grants"}
                       body={"Apply now"}
                       link={"https://dfinity.org/grants"}/>
