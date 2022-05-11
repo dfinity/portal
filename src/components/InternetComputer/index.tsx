@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './index.module.css';
 import DfinityIcon from "@site/static/img/dfinityIcon.svg";
 import GamingIcon from "@site/static/img/gamingIcon.svg";
@@ -10,27 +10,58 @@ import BuildingIcon from "@site/static/img/buildingIcon.svg";
 import PlayIcon from "@site/static/img/playIcon.svg";
 import NftIcon from "@site/static/img/nftIcon.svg";
 import SecurityIcon from "@site/static/img/securityIcon.svg";
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
+
+const container = {
+    hidden: {opacity: 0, transition: {duration: 0.2}},
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+        }
+    }
+}
+const item = {
+    hidden: {opacity: 0, y: -30},
+    show: {opacity: 1, y: 0}
+}
 
 function Index() {
+    const controls = useAnimation();
+    const {ref, inView} = useInView({threshold: 0.1});
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        } else {
+            controls.start("hidden");
+        }
+    }, [controls, inView]);
     return (
         <div className={styles.Container}>
             <a id="internetComputer"/>
             <div className={styles.main}>
-                <div className={styles.iconsContainer}>
+                <motion.div
+                    ref={ref}
+                    animate={controls}
+                    initial="hidden"
+                    variants={container}
+                    className={styles.iconsContainer}>
                     <DfinityIcon className={styles.dfinityIcon}/>
                     <GamingIcon className={styles.gamingIcon}/>
                     <SocialFiIcon className={styles.socialFiIcon}/>
                     <DatabaseIcon className={styles.databaseIcon}/>
                     <GrowthIcon className={styles.growthIcon}/>
-                    <p className={styles.Title}>What's the <br/> Internet Computer</p>
-                    <p className={styles.Body}>Imagine building scalable dapps, DeFi, websites,
+                    <motion.p variants={item} className={styles.Title}>What's the <br/> Internet Computer</motion.p>
+                    <motion.p variants={item} className={styles.Body}>Imagine building scalable dapps, DeFi, websites,
                         enterprise systems and
                         open
                         internet services that are 100%
                         on-chain and can be tokenized. Guess what...it’s all possible on the
                         Internet Computer.
-                    </p>
-                    <p className={styles.Body}>The Internet Computer is blockchain reimagined, a world
+                    </motion.p>
+                    <motion.p variants={item} className={styles.Body}>The Internet Computer is blockchain reimagined, a
+                        world
                         computer built by
                         a
                         team of more than 200
@@ -42,8 +73,9 @@ function Index() {
                         enabling infinite data and computation capacity hosted entirely on chain. Developers,
                         the world is at
                         your
-                        fingertips!</p>
-                    <div className={styles.CallToAction}>
+                        fingertips!
+                    </motion.p>
+                    <motion.div variants={item} className={styles.CallToAction}>
                         <svg className={styles.CallToActionIcon} viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -53,13 +85,13 @@ function Index() {
                         <Link className={styles.CallToActionLink} to="https://dfinity.org/whitepaper.pdf">
                             Get the Whitepaper
                         </Link>
-                    </div>
+                    </motion.div>
                     <BuildingIcon className={styles.buildingIcon}/>
                     <PlayIcon className={styles.playIcon}/>
                     <DfinityIcon className={styles.dfinityIcon2}/>
                     <NftIcon className={styles.nftIcon}/>
                     <SecurityIcon className={styles.securityIcon}/>
-                </div>
+                </motion.div>
             </div>
         </div>
     )
