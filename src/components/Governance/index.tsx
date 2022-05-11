@@ -26,7 +26,7 @@ function Governance() {
                 <div className={styles.card}>
                     <p className={styles.cardTitle}>The community-led governance of the Internet Computer</p>
                     <Link className={styles.cardCallToAction}
-                          to={"https://wiki.internetcomputer.org/wiki/Staking,_voting_and_rewards#Why_Staking_Matters"}>
+                          to={"https://dashboard.internetcomputer.org/governance"}>
                         Learn more
                     </Link>
                     <img className={styles.graphDesktop} src={governanceGraph01}
