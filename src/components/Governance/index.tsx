@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
 import Link from "@docusaurus/Link";
-import governanceGraph02 from "@site/static/img/governanceGraph02.png"
 import governanceGraphMobile01 from "@site/static/img/governanceGraphMobile01.png"
 import governanceGraphMobile02 from "@site/static/img/governanceGraphMobile02.png"
 import {
@@ -48,10 +47,18 @@ function OwnershipChart() {
                 aspectRatio: 1.5,
                 cutout: "90%",
                 rotation: 130,
+                hover: {mode: null},
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: {font: {size: 16}, color: "black", padding: 30},
+                        labels: {
+                            font: {size: 16},
+                            color: "black",
+                            padding: 30,
+                            usePointStyle: true,
+                            pointStyle: "circle",
+                            boxWidth: 12
+                        },
                         onClick: function (e) {
                             e.stopPropagation();
                         }
@@ -91,9 +98,13 @@ export const votingRewardsData = {
             data: [11.1, 11.7, 13.0, 14.3, 15.6, 16.9, 18.2, 19.5, 20.8],
             fill: true,
             borderColor: 'rgba(62,9,185,1)',
-            backgroundColor: 'rgba(62,9,185,1)',
+            backgroundColor: 'rgba(118,85,200,1)',
             tension: 0.4,
-            pointRadius: 5,
+            pointRadius: 3,
+            borderWidth: 2,
+            hoverBackgroundColor: 'rgba(255,255,255,1)',
+            hoverBorderWidth: 2,
+            hoverPointRadius: 6,
         },
     ],
 };
@@ -118,7 +129,6 @@ function VotingRewardsChart() {
                             color: 'black',
                             font: {
                                 size: 14,
-                                weight: 'bold',
                             },
                         },
                         beginAtZero: true,
