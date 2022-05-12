@@ -9,12 +9,8 @@ import OrigynBG from "@site/static/img/origyn.png";
 import HexGLBG from "@site/static/img/hexGL.png";
 
 
-
 const container = {
-    show: {
-        opacity: 1,
-        transition: {staggerChildren: 0.1,},
-    },
+    show: {opacity: 1, transition: {staggerChildren: 0.1,},},
     hidden: {opacity: 0, transition: {duration: 1}}
 };
 const item = {
@@ -22,20 +18,20 @@ const item = {
     show: {opacity: 1, y: 0, transition: {duration: 0.5}}
 }
 
-const background = {
-    show: {
-        display: "block",
-        opacity: 1,
-        transition: {duration: 0.5}
-    },
-    hidden: {display: "none", opacity: 0, transition: {duration: 0.5}}
+const backgroundDisplay = {
+    show: {display: "block", transition: {duration: 0.5}},
+    hidden: {display: "none", transition: {delay: 0.65}}
+}
+const backgroundOpacity = {
+    show: {opacity: 1, transition: {duration: 0.5}},
+    hidden: {opacity: 0, transition: {duration: 0.65}}
 }
 
 function Distrikt() {
     return (
         <div className={styles.cardWrapper}>
-            <motion.a variants={item} href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
-               style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
+            <a href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
+                      style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
@@ -54,15 +50,15 @@ function Distrikt() {
                     <span className={styles.tooltip}>az5sd-cqaaa-aaaae-aaarq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={DistriktBG} alt=""/>
-            </motion.a>
+            </a>
         </div>);
 }
 
 function Origyn() {
     return (
         <div className={styles.cardWrapper}>
-            <motion.a variants={item} href={"https://origyn.ch"}
-               style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
+            <a href={"https://origyn.ch"}
+                      style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
@@ -81,15 +77,15 @@ function Origyn() {
                     <span className={styles.tooltip}>origyn.ch</span>
                 </div>
                 <img className={styles.backgroundImage} src={OrigynBG} alt=""/>
-            </motion.a>
+            </a>
         </div>);
 }
 
 function HexGL() {
     return (
         <div className={styles.cardWrapper}>
-            <motion.a variants={item} href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
-               style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
+            <a href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
+                      style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
@@ -108,15 +104,15 @@ function HexGL() {
                     <span className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={HexGLBG} alt=""/>
-            </motion.a>
+            </a>
         </div>);
 }
 
 function Fleek() {
     return (
         <div className={styles.cardWrapper}>
-            <motion.a variants={item} href={"https://fleek.co/"}
-               style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
+            <a href={"https://fleek.co/"}
+                      style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
@@ -135,13 +131,13 @@ function Fleek() {
                     <span className={styles.tooltip}>fleek.co</span>
                 </div>
                 <img className={styles.backgroundImage} src={FleekBG} alt=""/>
-            </motion.a>
+            </a>
         </div>);
 }
 
 function Showcase() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({threshold: 0.15});
+    const {ref, inView} = useInView({threshold: 0.35});
     useEffect(() => {
         if (inView) {
             controls.start("show");
@@ -153,11 +149,15 @@ function Showcase() {
         <div className={styles.container}>
             <motion.div animate={controls}
                         initial="hidden"
-                        variants={background}>
-                <svg className={styles.BGShape} viewBox="0 0 100 100" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100" height="100" fill="#3b00b9"/>
-                </svg>
+                        variants={backgroundDisplay}>
+                <motion.div animate={controls}
+                            initial="hidden"
+                            variants={backgroundOpacity}>
+                    <svg className={styles.BGShape} viewBox="0 0 100 100" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" fill="#3b00b9"/>
+                    </svg>
+                </motion.div>
             </motion.div>
             <motion.div
                 ref={ref}
@@ -177,12 +177,12 @@ function Showcase() {
                                 Computer ecosystem</Link>
                         </motion.div>
                     </div>
-                    <div className={styles.cards}>
+                    <motion.div variants={item} className={styles.cards}>
                         <Fleek/>
                         <HexGL/>
                         <Origyn/>
                         <Distrikt/>
-                    </div>
+                    </motion.div>
                     <motion.div variants={item} className={styles.actionButtonContainer}>
                         <Link className={styles.actionButton} to="https://smartcontracts.org/samples/">
                             BUILD YOUR OWN

@@ -1,7 +1,6 @@
 .main {
     width: 100%;
     position: relative;
-    overflow: hidden;
     height: 100%;
     display: inline-flex;
     flex-direction: column;
@@ -11,11 +10,10 @@
     width: Min(500px, 90%);
     margin: auto;
     position: relative;
-    padding: 300px 0;
+    padding: 100px 0;
     display: flex;
     flex-direction: column;
 }
-
 .votingTitle {
     font-weight: 700;
     font-size: 40px;
@@ -50,7 +48,7 @@
 .BGShape {
     position: absolute;
     height: 500px;
-    top: 50px;
+    top: -50px;
     left: -50px;
     z-index: -1000;
     -webkit-filter: blur(150px);
@@ -215,7 +213,7 @@
     }
 
     .votingContainer {
-        padding: 150px 0;
+        padding: 50px 0;
     }
 
     .votingTitle {
@@ -225,5 +223,7 @@
 
     .BGShape {
         -webkit-filter: blur(100px);
+        height: 250px;
+        left: 0;
     }
 }

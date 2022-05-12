@@ -50,6 +50,10 @@ function OwnershipChart() {
                 cutout: "90%",
                 rotation: 130,
                 hover: {mode: null},
+                animation: {
+                    duration: 500,
+                    delay: 3000,
+                },
                 plugins: {
                     legend: {
                         position: 'bottom',
@@ -122,6 +126,13 @@ function VotingRewardsChart() {
                     intersect: false,
                     mode: 'nearest',
                 },
+                animation: {
+                    duration: 2500,
+                    easing: 'easeInOutQuart',
+                },
+                layout: {
+                    padding: 30
+                },
                 scales: {
                     xAxis: {
                         display: true,
@@ -159,7 +170,16 @@ function VotingRewardsChart() {
                         align: 'start',
                     },
                     datalabels: {
-                        display: false,
+                        formatter: (value, context) => {
+                            if (context.dataIndex === 0 || context.dataIndex === context.dataset.data.length - 1) {
+                                return value + '%'
+                            }
+                            return "";
+                        },
+                        anchor: 'end',
+                        align: 'end',
+                        color: 'black',
+                        font: {size: 14, weight: 'bold',},
                     },
                     tooltip: {
                         titleFont: {size: 16, weight: 'bold'},
@@ -186,14 +206,13 @@ function VotingRewardsChart() {
 
 const container = {
     hidden: {opacity: 0, transition: {duration: 1}},
-    show: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-        }
-    }
+    show: {opacity: 1, transition: {staggerChildren: 0.1,}}
 }
 const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
+const chart = {
     hidden: {opacity: 0, y: 30},
     show: {opacity: 1, y: 0, transition: {duration: 0.5}}
 }
@@ -215,11 +234,12 @@ function Governance() {
             <a id="governance"/>
             <div className={styles.header}>
                 <motion.p variants={item} className={styles.headerTitle}>Help Shape the Internet Computer</motion.p>
-                <motion.p variants={item} className={styles.headerBody}>Calling all developers and blockchain enthusiasts! The Internet Computer is
+                <motion.p variants={item} className={styles.headerBody}>Calling all developers and blockchain
+                    enthusiasts! The Internet Computer is
                     a fully decentralized
                     platform, which means that its ownership is in the hands of the people vested in it. While the
                     Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it is
-                    built is governed by a communal voting system. Not only do stakeholders have a say in 
+                    built is governed by a communal voting system. Not only do stakeholders have a say in
                     what happens next, they also receive voting rewards for participating in governance.
                 </motion.p>
                 <motion.div variants={item} style={{display: "inline-flex"}}>
@@ -229,7 +249,7 @@ function Governance() {
                 </motion.div>
             </div>
             <div className={styles.graphsContainer}>
-                <motion.div variants={item} className={styles.card}>
+                <motion.div variants={chart} className={styles.card}>
                     <p className={styles.cardTitle}>The community-led governance of the Internet Computer</p>
                     <Link className={styles.cardCallToAction}
                           to={"https://dashboard.internetcomputer.org/governance"}>
@@ -239,7 +259,7 @@ function Governance() {
                     <img className={styles.graphMobile} src={governanceGraphMobile01}
                          alt="governanceGraphMobile01"/>
                 </motion.div>
-                <motion.div variants={item} className={styles.card}>
+                <motion.div variants={chart} className={styles.card}>
                     <p className={styles.cardTitle}>Earn substantial voting rewards by staking in the Network
                         Nervous
                         System (NNS)</p>
@@ -253,8 +273,7 @@ function Governance() {
                 </motion.div>
             </div>
             <motion.div variants={item} className={styles.votingContainer}>
-                <svg className={styles.BGShape} viewBox="0 0 773 643" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
+                <svg className={styles.BGShape} viewBox="0 0 773 643" fill="none">
                     <path
                         d="M3.65046e-05 225.435C5.20259e-05 47.8928 273.206 0.0612357 450.748 0.0612512C628.291 0.0612667 772.218 143.988 772.218 321.531C772.218 499.073 628.291 643 450.748 643C273.206 643 2.09834e-05 402.978 3.65046e-05 225.435Z"
                         fill="#3C01BA"/>
@@ -264,6 +283,7 @@ function Governance() {
 
                     LEARN HOW TO STAKE AND VOTE
                 </Link>
+
             </motion.div>
         </motion.div>
     );
