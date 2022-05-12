@@ -21,13 +21,13 @@ const testimonials = [
         twitterHandle: "@BenPerszyk",
         portrait: benPerszyk
     },
-    {
+/*    {
         testimonial: "The #icp just created the subnet that will host then first service nervous systems (SNS) which are an essential ingredient to defi on the #icp",
         name: "Jan Camenisch",
         position: "CTO DFINITY Foundation, Cryptographer",
         twitterHandle: "@JanCamenisch",
         portrait: janCamenisch
-    }
+    }*/
 ]
 
 function Testimonials() {
