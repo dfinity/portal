@@ -108,7 +108,7 @@ function HexGL() {
                     <span className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={HexGLBG} alt=""/>
-            </a>
+            </motion.a>
         </div>);
 }
 

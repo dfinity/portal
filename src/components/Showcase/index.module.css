@@ -79,6 +79,8 @@
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
     scrollbar-color: white #3b00b9;
+    position: relative;
+    z-index: 1000;
 }
 
 .cards::-webkit-scrollbar {
