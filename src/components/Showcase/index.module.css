@@ -6,7 +6,7 @@
 
 .showcaseContainer {
     width: Min(1100px, 90%);
-    padding: 150px 0;
+    padding: 50px 0;
     margin: auto;
     position: relative;
 }
@@ -106,9 +106,11 @@
 .card:hover .backgroundImage {
     bottom: -10px;
 }
+
 .card:hover .tooltipContainer {
     display: flex;
 }
+
 .cardHeader {
     width: 90%;
 }
@@ -139,15 +141,16 @@
     width: Min(300px, 100%);
     height: 96px;
 }
-.tooltipContainer{
+
+.tooltipContainer {
     position: absolute;
     display: none;
     flex-grow: 1;
     justify-content: center;
     z-index: 10;
     bottom: 0;
-    left:0;
-    margin:1rem;
+    left: 0;
+    margin: 1rem;
     border-radius: 2rem;
     font-size: 18px;
     font-weight: 600;
@@ -156,6 +159,7 @@
 .tooltip {
     padding: 1rem 1.5rem;
 }
+
 .actionButtonContainer {
     width: Min(1100px, 90%);
     margin: 3rem auto;
@@ -207,12 +211,22 @@
     bottom: -50px;
 }
 
+.BGShape {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 @media screen and (max-width: 996px) {
 
     .container {
         background-color: #3b00b9;
     }
-
+    .BGShape{
+        display: none;
+    }
     .showcaseContainer {
         margin: auto;
         padding: 100px 0;
@@ -228,6 +242,7 @@
     .cardContainer {
         padding: 2rem;
     }
+
     .cardBody {
         font-weight: 500;
         font-size: 18px;
@@ -251,14 +266,15 @@
         width: Min(434px, 90%);
     }
 
-    .tooltipContainer{
+    .tooltipContainer {
         display: flex;
     }
 
-    .tooltip{
+    .tooltip {
         font-size: 14px;
     }
-    .actionButtonContainer{
+
+    .actionButtonContainer {
         margin: 3rem auto;
         display: block;
         width: Min(100%, 500px);

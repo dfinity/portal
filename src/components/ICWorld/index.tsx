@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './index.module.css';
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
+
+const container = {
+    hidden: {opacity: 0, transition: {duration: 1}},
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        }
+    }
+}
+const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
 
 function Card({title, body, link}) {
     return (
-        <a href={link} className={styles.card}>
+        <motion.a variants={item} href={link} className={styles.card}>
             <div className={styles.cardContainer}>
                 <p className={styles.cardTitle}>{title}</p>
                 <p className={styles.cardBody}>{body}</p>
@@ -12,15 +28,26 @@ function Card({title, body, link}) {
                  xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5006 12L6.50031 4.99969L8.5 3L17.5 12L8.5 21L6.50031 19.0003L13.5006 12Z"/>
             </svg>
-        </a>
+        </motion.a>
     )
 }
 
 function ICWorld() {
+    const controls = useAnimation();
+    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
     return (
-        <div className={styles.container}>
+        <motion.div ref={ref}
+                    animate={controls}
+                    initial="hidden"
+                    variants={container}
+                    className={styles.container}>
             <a id="ICWorld"/>
-            <p className={styles.title}>Delve into the IC World</p>
+            <motion.p variants={item} className={styles.title}>Delve into the IC World</motion.p>
             <div className={styles.cards}>
                 <Card title={"IC Fellowship"}
                       body={"Become an IC Master"}
@@ -45,7 +72,7 @@ function ICWorld() {
                 <Card title={"Community Awards"} body={"Create an event"}
                       link={"https://dfinity.org/community"}/>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

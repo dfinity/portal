@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './index.module.css';
 import Link from "@docusaurus/Link";
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 import governanceGraphMobile01 from "@site/static/img/governanceGraphMobile01.png"
 import governanceGraphMobile02 from "@site/static/img/governanceGraphMobile02.png"
 import {
@@ -182,27 +184,55 @@ function VotingRewardsChart() {
     );
 }
 
-function Governance() {
+const container = {
+    hidden: {opacity: 0, transition: {duration: 1}},
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        }
+    }
+}
+const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
 
+function Governance() {
+    const controls = useAnimation();
+    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
     return (
-        <div className={styles.main}>
+        <motion.div ref={ref}
+                    animate={controls}
+                    initial="hidden"
+                    variants={container}
+                    className={styles.main}>
             <a id="governance"/>
             <div className={styles.header}>
-                <p className={styles.headerTitle}>Help Shape the Internet Computer</p>
-                <p className={styles.headerBody}>Calling developers and blockchain enthusiasts! The Internet
+                <motion.p variants={item} className={styles.headerTitle}>Help Shape the Internet Computer</motion.p>
+                <motion.p variants={item} className={styles.headerBody}>Calling developers and blockchain enthusiasts!
+                    The Internet
                     Computer is
                     a fully decentralized
                     platform, which means that its ownership is in the hands of the people vested in it. While the
                     Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it
                     is
                     built is governed by a communal voting system. Not only do stakeholders get to have a say in the
-                    what happens next, they also receive voting rewards for participating in governance.</p>
-                <Link className={styles.headerCallToAction} to={"https://forum.dfinity.org/"}>
-                    Share your thoughts in the Developer Forum
-                </Link>
+                    what happens next, they also receive voting rewards for participating in governance.
+                </motion.p>
+                <motion.div variants={item} style={{display: "inline-flex"}}>
+                    <Link className={styles.headerCallToAction} to={"https://forum.dfinity.org/"}>
+                        Share your thoughts in the Developer Forum
+                    </Link>
+                </motion.div>
             </div>
             <div className={styles.graphsContainer}>
-                <div className={styles.card}>
+                <motion.div variants={item} className={styles.card}>
                     <p className={styles.cardTitle}>The community-led governance of the Internet Computer</p>
                     <Link className={styles.cardCallToAction}
                           to={"https://wiki.internetcomputer.org/wiki/Staking,_voting_and_rewards#Why_Staking_Matters"}>
@@ -211,8 +241,8 @@ function Governance() {
                     <OwnershipChart/>
                     <img className={styles.graphMobile} src={governanceGraphMobile01}
                          alt="governanceGraphMobile01"/>
-                </div>
-                <div className={styles.card}>
+                </motion.div>
+                <motion.div variants={item} className={styles.card}>
                     <p className={styles.cardTitle}>Earn substantial voting rewards by staking in the Network
                         Nervous
                         System (NNS)</p>
@@ -223,9 +253,9 @@ function Governance() {
                     <VotingRewardsChart/>
                     <img className={styles.graphMobile} src={governanceGraphMobile02}
                          alt="governanceGraphMobile02"/>
-                </div>
+                </motion.div>
             </div>
-            <div className={styles.votingContainer}>
+            <motion.div variants={item} className={styles.votingContainer}>
                 <svg className={styles.BGShape} viewBox="0 0 773 643" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -237,8 +267,8 @@ function Governance() {
 
                     LEARN HOW TO STAKE AND VOTE
                 </Link>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
 
