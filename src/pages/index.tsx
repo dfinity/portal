@@ -23,7 +23,7 @@ export default function Home(): JSX.Element {
         <Layout
             title={siteConfig.title}
             description={siteConfig.tagline}>
-            <main>
+            <main className={styles.main}>
                 <BrowserOnly>
                     {() =>
                         <div className={styles.particleBackground}>
