@@ -200,7 +200,7 @@ To validate your cycles wallet:
 
 1.  Verify the canister identifier for the cycles wallet you deployed by running the following command:
 
-        dfx identity --networkicget-wallet
+        dfx identity --network ic get-wallet
 
     The command displays the canister identifier for your cycles wallet with output similar to the following:
 
@@ -234,7 +234,7 @@ To validate your cycles wallet:
 
     For example, call the `authorize` method for the cycles wallet canister with a command similar to the following:
 
-        dfx canister --networkiccall "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
+        dfx canister --network ic call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
 
     Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the IC, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
@@ -301,7 +301,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your cycles wallet by running a command similar to the following:
 
-        dfx ledger --networkictop-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
+        dfx ledger --network ic top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
 
     This command converts an additional `1.005` ICP tokens to cycles for the `gastn-uqaaa-aaaae-aaafq-cai` cycles wallet identifier. The command returns output similar to the following:
 
@@ -310,7 +310,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
 4.  Call the `hello` canister and the predefined `greet` function by running the following command:
 
-        dfx canister --networkiccall hello greet '("everyone": text)'
+        dfx canister --network ic call hello greet '("everyone": text)'
 
     Let’s take a closer look at this example:
 
@@ -344,7 +344,7 @@ To access the dapp frontend:
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
-        dfx canister --networkicid hello_assets
+        dfx canister --network ic id hello_assets
 
     For example, the full URL should look similar to the following:
 

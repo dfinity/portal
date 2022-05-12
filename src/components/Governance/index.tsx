@@ -215,14 +215,11 @@ function Governance() {
             <a id="governance"/>
             <div className={styles.header}>
                 <motion.p variants={item} className={styles.headerTitle}>Help Shape the Internet Computer</motion.p>
-                <motion.p variants={item} className={styles.headerBody}>Calling developers and blockchain enthusiasts!
-                    The Internet
-                    Computer is
+                <motion.p variants={item} className={styles.headerBody}>Calling all developers and blockchain enthusiasts! The Internet Computer is
                     a fully decentralized
                     platform, which means that its ownership is in the hands of the people vested in it. While the
-                    Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it
-                    is
-                    built is governed by a communal voting system. Not only do stakeholders get to have a say in the
+                    Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it is
+                    built is governed by a communal voting system. Not only do stakeholders have a say in 
                     what happens next, they also receive voting rewards for participating in governance.
                 </motion.p>
                 <motion.div variants={item} style={{display: "inline-flex"}}>
@@ -235,7 +232,7 @@ function Governance() {
                 <motion.div variants={item} className={styles.card}>
                     <p className={styles.cardTitle}>The community-led governance of the Internet Computer</p>
                     <Link className={styles.cardCallToAction}
-                          to={"https://wiki.internetcomputer.org/wiki/Staking,_voting_and_rewards#Why_Staking_Matters"}>
+                          to={"https://dashboard.internetcomputer.org/governance"}>
                         Learn more
                     </Link>
                     <OwnershipChart/>

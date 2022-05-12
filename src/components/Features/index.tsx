@@ -21,7 +21,8 @@ const item = {
 
 function Card({title, body, link}) {
     return (
-        <motion.a variants={item} href={link} className={styles.card}>
+        <div className={styles.cardWrapper}>
+            <motion.a variants={item} href={link} className={styles.card}>
             <div className={styles.cardContainer}>
                 <p className={styles.cardTitle}>{title}</p>
                 <p className={styles.cardBody}>{body}</p>
@@ -31,6 +32,7 @@ function Card({title, body, link}) {
                 <path d="M13.5006 12L6.50031 4.99969L8.5 3L17.5 12L8.5 21L6.50031 19.0003L13.5006 12Z"/>
             </svg>
         </motion.a>
+        </div>
     )
 }
 

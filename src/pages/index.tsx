@@ -12,6 +12,7 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
 import Governance from "@site/src/components/Governance";
 import Showcase from "@site/src/components/Showcase";
+import Testimonials from "@site/src/components/Testimonials";
 
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
@@ -37,6 +38,7 @@ export default function Home(): JSX.Element {
                 <InternetComputer/>
                 <Features/>
                 <Showcase />
+                <Testimonials />
                 <Governance/>
                 <ICWorld/>
                 <SectionsBar/>

@@ -73,23 +73,43 @@
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-    grid-column-gap: 8px;
-    grid-row-gap: 8px;
-    width: Min(1100px, 90%);
-    margin: auto;
-    position: relative;
-    z-index: 1000;
+    display: flex;
+    overflow-x: scroll;
+    scroll-padding: 50% 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: white #3b00b9;
+}
+
+.cards::-webkit-scrollbar {
+    width: 12px;
+}
+
+.cards::-webkit-scrollbar-track {
+    background: #3b00b9;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid #3b00b9;
+}
+.cardWrapper {
+    scroll-snap-align: start;
+    display: inline-block;
+    margin: 0 1rem 1rem 0;
+}
+
+.cardWrapper:last-child {
+    margin-right: 0;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: Min(100%, 500px);
-    height: Min(100vw, 500px);
+    width: 540px;
+    height: 540px;
     background: rgba(255, 255, 255, 0.5);
     box-sizing: border-box;
     backdrop-filter: blur(5px);
@@ -232,11 +252,9 @@
         padding: 100px 0;
     }
 
-    .cards {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 1fr;
-        margin: auto;
-        width: Min(100%, 500px);
+    .card {
+        width: Min(80vw,540px);
+        height: 400px;
     }
 
     .cardContainer {

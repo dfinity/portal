@@ -6,7 +6,7 @@ Unlike most authentication methods, Internet Identity does not require you to se
 
 ## How Internet Identity works
 
-Internet Identity builds on Web Authentication (WebAuthn) API supported by modern web browsers and operating systems, and the "chain key cryptography" framework that powers the Internet Computer. Esssentially, the Internet Computer signs the list of public keys inside the devices assigned to each anchor using its master chain key, which client side code, for example running in the web browser, is aware of.
+Internet Identity builds on Web Authentication (WebAuthn) API supported by modern web browsers and operating systems, and the "chain key cryptography" framework that powers the Internet Computer. Essentially, the Internet Computer signs the list of public keys inside the devices assigned to each anchor using its master chain key, which client side code, for example running in the web browser, is aware of.
 
 Dapps that integrate with Internet Identity prompt you to authenticate using an identity anchor. If you don’t have an identity anchor yet, it is easy to create one and add authentication methods to it. For more details, see [How to use Internet Identity](https://sdk.dfinity.org/docs/ic-identity-guide/auth-how-to.html). For each device you add, a pair of cryptographic keys (private and public key) is generated. The public key is stored on the Internet Computer blockchain, while the private key remains locked inside the authentication device together with any biometric data that governs access to it. Adding multiple authentication devices to an identity anchor allows you to access dapps across all of your devices.
 
