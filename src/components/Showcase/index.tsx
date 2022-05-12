@@ -9,17 +9,32 @@ import OrigynBG from "@site/static/img/origyn.png";
 import HexGLBG from "@site/static/img/hexGL.png";
 
 
-const variants = {
-    visible: {
-        opacity: 1, transition: {duration: 0.5}, backgroundColor: "#3b00b9"
+
+const container = {
+    show: {
+        opacity: 1,
+        transition: {staggerChildren: 0.1,},
     },
-    hidden: {opacity: 0, transition: {duration: 0.2}}
+    hidden: {opacity: 0, transition: {duration: 1}}
 };
+const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
+
+const background = {
+    show: {
+        display: "block",
+        opacity: 1,
+        transition: {duration: 0.5}
+    },
+    hidden: {display: "none", opacity: 0, transition: {duration: 0.5}}
+}
 
 function Distrikt() {
     return (
         <div className={styles.cardWrapper}>
-            <a href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
+            <motion.a variants={item} href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
                style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
@@ -39,14 +54,14 @@ function Distrikt() {
                     <span className={styles.tooltip}>az5sd-cqaaa-aaaae-aaarq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={DistriktBG} alt=""/>
-            </a>
+            </motion.a>
         </div>);
 }
 
 function Origyn() {
     return (
         <div className={styles.cardWrapper}>
-            <a href={"https://origyn.ch"}
+            <motion.a variants={item} href={"https://origyn.ch"}
                style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
@@ -66,14 +81,14 @@ function Origyn() {
                     <span className={styles.tooltip}>origyn.ch</span>
                 </div>
                 <img className={styles.backgroundImage} src={OrigynBG} alt=""/>
-            </a>
+            </motion.a>
         </div>);
 }
 
 function HexGL() {
     return (
         <div className={styles.cardWrapper}>
-            <a href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
+            <motion.a variants={item} href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
                style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
@@ -93,14 +108,14 @@ function HexGL() {
                     <span className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={HexGLBG} alt=""/>
-            </a>
+            </motion.a>
         </div>);
 }
 
 function Fleek() {
     return (
         <div className={styles.cardWrapper}>
-            <a href={"https://fleek.co/"}
+            <motion.a variants={item} href={"https://fleek.co/"}
                style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
@@ -120,40 +135,47 @@ function Fleek() {
                     <span className={styles.tooltip}>fleek.co</span>
                 </div>
                 <img className={styles.backgroundImage} src={FleekBG} alt=""/>
-            </a>
+            </motion.a>
         </div>);
 }
 
 function Showcase() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({delay: 250, threshold: 0.15});
+    const {ref, inView} = useInView({threshold: 0.15});
     useEffect(() => {
         if (inView) {
-            controls.start("visible");
+            controls.start("show");
         } else {
             controls.start("hidden");
         }
     }, [controls, inView]);
     return (
         <div className={styles.container}>
+            <motion.div animate={controls}
+                        initial="hidden"
+                        variants={background}>
+                <svg className={styles.BGShape} viewBox="0 0 100 100" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="#3b00b9"/>
+                </svg>
+            </motion.div>
             <motion.div
                 ref={ref}
                 animate={controls}
                 initial="hidden"
-                variants={variants}
+                variants={container}
             >
-
                 <div className={styles.showcaseContainer}>
                     <a id="showcase"/>
                     <div className={styles.header}>
-                        <p className={styles.title}>Dapp Showcase</p>
-                        <div className={styles.headerBody}>
+                        <motion.p variants={item} className={styles.title}>Dapp Showcase</motion.p>
+                        <motion.div variants={item} className={styles.headerBody}>
                             <p className={styles.body}>The Internet Computer ecosystem continues to skyrocket with new
                                 developer and entrepreneurial activity. Get inspired by the existing dapps.</p>
                             <Link className={styles.callToAction} to={"https://dfinity.org/showcase/"}>Explore the
                                 Internet
                                 Computer ecosystem</Link>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className={styles.cards}>
                         <Fleek/>
@@ -161,11 +183,11 @@ function Showcase() {
                         <Origyn/>
                         <Distrikt/>
                     </div>
-                    <div className={styles.actionButtonContainer}>
+                    <motion.div variants={item} className={styles.actionButtonContainer}>
                         <Link className={styles.actionButton} to="https://smartcontracts.org/samples/">
                             BUILD YOUR OWN
                         </Link>
-                    </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </div>

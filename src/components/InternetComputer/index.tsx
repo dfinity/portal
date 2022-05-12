@@ -14,27 +14,25 @@ import {motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 
 const container = {
-    hidden: {opacity: 0, transition: {duration: 0.2}},
+    hidden: {opacity: 0, transition: {duration: 1}},
     show: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2,
+            staggerChildren: 0.1,
         }
     }
 }
 const item = {
-    hidden: {opacity: 0, y: -30},
-    show: {opacity: 1, y: 0}
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
 }
 
 function Index() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({threshold: 0.1});
+    const {ref, inView} = useInView({delay:500,threshold: 0.2});
     useEffect(() => {
         if (inView) {
             controls.start("show");
-        } else {
-            controls.start("hidden");
         }
     }, [controls, inView]);
     return (
