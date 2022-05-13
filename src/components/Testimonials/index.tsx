@@ -3,6 +3,7 @@ import styles from "@site/src/components/Testimonials/index.module.css";
 import chrisDixon from "@site/static/img/chrisDixon.png"
 import benPerszyk from "@site/static/img/benPerszyk.png"
 import janCamenisch from "@site/static/img/janCamenisch.png"
+import an3ekah from "@site/static/img/An3ekah.jpeg"
 import {useSwipeable} from "react-swipeable";
 import config from "@generated/docusaurus.config";
 
@@ -21,13 +22,20 @@ const testimonials = [
         twitterHandle: "@BenPerszyk",
         portrait: benPerszyk
     },
-/*    {
-        testimonial: "The #icp just created the subnet that will host then first service nervous systems (SNS) which are an essential ingredient to defi on the #icp",
-        name: "Jan Camenisch",
-        position: "CTO DFINITY Foundation, Cryptographer",
-        twitterHandle: "@JanCamenisch",
-        portrait: janCamenisch
-    }*/
+    /*    {
+            testimonial: "The #icp just created the subnet that will host then first service nervous systems (SNS) which are an essential ingredient to defi on the #icp",
+            name: "Jan Camenisch",
+            position: "CTO DFINITY Foundation, Cryptographer",
+            twitterHandle: "@JanCamenisch",
+            portrait: janCamenisch
+        },*/
+    {
+        testimonial: "The IC is one of the main reasons I chose to launch my web 3.0 career. The community and technology are forward thinking, and the blockchain platform has all I need to expand my music career, including my fave — Canistore. Most importantly, I am able to participate in governance, which allows all to have a say in the future direction of platform. In my opinion, the IC is going to play a pivotal role in the evolution of blockchain technology.",
+        name: "An3ekah",
+        position: "Singer, Songwriter",
+        twitterHandle: "@An3ekah",
+        portrait: an3ekah
+    }
 ]
 
 function Testimonials() {
@@ -51,13 +59,17 @@ function Testimonials() {
     });
     return (
         <div className={styles.main}>
-            <div {...handlers} style={{ touchAction: 'pan-y' }} className={styles.container}>
+            <div {...handlers} style={{touchAction: 'pan-y'}} className={styles.container}>
                 <a id="testimonials"/>
                 <svg className={styles.BGShape1} viewBox="0 0 773 643" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.65046e-05 225.435C5.20259e-05 47.8928 273.206 0.0612357 450.748 0.0612512C628.291 0.0612667 772.218 143.988 772.218 321.531C772.218 499.073 628.291 643 450.748 643C273.206 643 2.09834e-05 402.978 3.65046e-05 225.435Z" fill="#3C01BA"/>
+                    <path
+                        d="M3.65046e-05 225.435C5.20259e-05 47.8928 273.206 0.0612357 450.748 0.0612512C628.291 0.0612667 772.218 143.988 772.218 321.531C772.218 499.073 628.291 643 450.748 643C273.206 643 2.09834e-05 402.978 3.65046e-05 225.435Z"
+                        fill="#3C01BA"/>
                 </svg>
                 <svg className={styles.BGShape2} viewBox="0 0 1291 1058" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M37.4457 778.892C-113.369 526.863 233.828 226.888 485.857 76.0737C737.886 -74.7407 1064.46 7.31003 1215.27 259.339C1366.08 511.369 1284.03 837.938 1032 988.752C779.975 1139.57 188.26 1030.92 37.4457 778.892Z" fill="white"/>
+                    <path
+                        d="M37.4457 778.892C-113.369 526.863 233.828 226.888 485.857 76.0737C737.886 -74.7407 1064.46 7.31003 1215.27 259.339C1366.08 511.369 1284.03 837.938 1032 988.752C779.975 1139.57 188.26 1030.92 37.4457 778.892Z"
+                        fill="white"/>
                 </svg>
 
                 <p className={styles.title}>Who's talking about the Internet Computer</p>
@@ -87,7 +99,7 @@ function Testimonials() {
                     return (
                         index === testimonialIndex ?
                             <div className={styles.currentTestimonial}/> :
-                            <div className={styles.notCurrentTestimonial} />)
+                            <div className={styles.notCurrentTestimonial}/>)
                 })}</div>
 
             </div>

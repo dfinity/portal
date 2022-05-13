@@ -3,7 +3,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
     'samples': [
-        'index',
+        'overview',
         'hello',
         'host-a-website',
         'dex',
