@@ -76,7 +76,7 @@ Canisters and users are identified by a *principal*, sometimes also called an *i
 
 ## Pervasive concepts
 
-Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#state-tree)), this section introduces some concepts that transcend multiple interfaces.
+Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#the-system-state-tree)), this section introduces some concepts that transcend multiple interfaces.
 
 ### Unspecified constants and limits
 
@@ -92,7 +92,7 @@ This specification may refer to certain constants and limits without specifying 
 
 -   `DEFAULT_PROVISIONAL_CYCLES_BALANCE`
 
-    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#ic-provisional_create_canister_with_cycles).
+    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#icmethod-provisional_create_canister_with_cycles).
 
 ### Principals
 
@@ -504,7 +504,7 @@ The functionality exposed via the [the IC management canister](#ic-management-ca
 
 ### Request: Read state
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#the-system-state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -536,7 +536,7 @@ All requested paths must have one of the following paths as prefix:
 
 Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canister themselves via the System API (see [Certified data](#system-api-certified-data)).
 
-See [The system state tree](#state-tree) for details on the state tree.
+See [The system state tree](#the-system-state-tree) for details on the state tree.
 
 ### Request: Query call
 
@@ -1407,7 +1407,7 @@ When executing a query method via a query call (i.e. in non-replicated state), t
 
     Copies the certificate for the current value of the certified data to the canister.
 
-    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#state-tree).
+    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#the-system-state-tree).
 
     If this `certificate` includes subnet delegations (possibly nested), then the id of the current canister will be included in each delegation’s canister id range.
 
@@ -1794,7 +1794,7 @@ Delegations are *scoped*, i.e., they indicate which set of canister principals t
 
 The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file](_attachments/certificates.cddl).
 
-The values in the [The system state tree](#state-tree) are encoded to blobs as follows:
+The values in the [The system state tree](#the-system-state-tree) are encoded to blobs as follows:
 
 -   natural numbers are leb128-encoded.
 
@@ -3502,11 +3502,11 @@ The predicate `may_read_path` is defined as follows, implementing the access con
       else False
     may_read_path(S, _, _) = False
 
-The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
+The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#the-system-state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
 
     lookup(path, cert) = lookup_in_tree(path, state_tree(S))
 
-where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#state-tree)
+where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#the-system-state-tree)
 
     state_tree(S) = {
       "time": S.system_time;
