@@ -28,9 +28,9 @@ This document tries to be implementation agnostic: It would apply just as well t
 
 ### Overview of the Internet Computer
 
-Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
+Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#https-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
 
-Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
+Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#https-interface) to interact with the canister according to the [System API](#system-api).
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 
@@ -52,7 +52,7 @@ The user can also use the HTTPS interface to issue read-only queries, which are 
     return "Hello world!"
     User <--IC: "Hello World!"
 
-Sections “[HTTPS Interface](#http-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
+Sections “[HTTPS Interface](#https-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
 
 ### Nomenclature
 
@@ -76,7 +76,7 @@ Canisters and users are identified by a *principal*, sometimes also called an *i
 
 ## Pervasive concepts
 
-Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#http-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#state-tree)), this section introduces some concepts that transcend multiple interfaces.
+Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#state-tree)), this section introduces some concepts that transcend multiple interfaces.
 
 ### Unspecified constants and limits
 
@@ -425,7 +425,7 @@ This document does not yet explain how to find the location and port of the Inte
 
 Users interact with the Internet Computer by calling canisters. By the very nature of a blockchain protocol, they cannot be acted upon immediately, but only with a delay. Moreover, the actual node that the user talks to may not be honest or, for other reasons, may fail to get the request on the way. This implies the following high-level workflow:
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#https-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
