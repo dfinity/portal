@@ -42,13 +42,13 @@ The user can also use the HTTPS interface to issue read-only queries, which are 
     participant "Canister 1" as Can1
     Developer ->IC: /submit create canister
     create Can1
-   IC-> Can1 : create
+    IC-> Can1 : create
     Developer <--IC: canister-id=1
     Developer ->IC: /submit install module
-   IC-> Can1 : initialize
+    IC-> Can1 : initialize
     |||
     User ->IC: /submit call “hello”
-   IC-> Can1 : hello
+    IC-> Can1 : hello
     return "Hello world!"
     User <--IC: "Hello World!"
 
