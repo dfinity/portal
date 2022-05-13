@@ -76,7 +76,7 @@ Canisters and users are identified by a *principal*, sometimes also called an *i
 
 ## Pervasive concepts
 
-Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#the-system-state-tree)), this section introduces some concepts that transcend multiple interfaces.
+Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#the-ic-management-canister) and the [System State Tree](#the-system-state-tree)), this section introduces some concepts that transcend multiple interfaces.
 
 ### Unspecified constants and limits
 
@@ -218,7 +218,7 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `stopped`, calls to the canister are rejected by the IC, and there are no outstanding responses.
 
-In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
+In all cases, calls to the [management canister](#the-ic-management-canister) are processed, regardless of the state of the managed canister.
 
 The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
@@ -429,7 +429,7 @@ Users interact with the Internet Computer by calling canisters. By the very natu
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
-3.  the IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [the IC management canister](#ic-management-canister) apply.
+3.  the IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [the IC management canister](#the-ic-management-canister) apply.
 
 4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
 
@@ -500,7 +500,7 @@ The HTTP response to this request has an empty body and HTTP status 202, or a HT
 
 This request type can *also* be used to call a query method. A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response.
 
-The functionality exposed via the [the IC management canister](#ic-management-canister) can be used this way.
+The functionality exposed via the [the IC management canister](#the-ic-management-canister) can be used this way.
 
 ### Request: Read state
 
