@@ -2,7 +2,7 @@
 hide_table_of_contents: true
 ---
 
-# Sample Code
+# Overview
 
 Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [Samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [Awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
 

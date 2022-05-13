@@ -475,7 +475,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](https://smartcontracts.org/samples).
+Build DAOs, NFTs and more [here](https://smartcontracts.org/samples/overview).
 
 ### Want to learn more?
 
