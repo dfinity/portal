@@ -248,6 +248,7 @@ const sidebars = {
       },
       items: [
         'references/cli-reference/dfx-parent',
+        'references/cli-reference/dfx-bootstrap',
         'references/cli-reference/dfx-build',
         'references/cli-reference/dfx-cache',
         'references/cli-reference/dfx-canister',
