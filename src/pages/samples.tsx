@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import styles from "@site/src/pages/samples.module.css";
-import Header from "@site/src/components/samplesPage/Header";
+import Header from "@site/src/components/SamplesPage/Header";
 
 function Samples(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
