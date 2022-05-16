@@ -1,6 +1,6 @@
 # How to use Internet Identity
 
-If you would like to learn what Internet Identity is, see [What is Internet Identity?](https://sdk.dfinity.org/docs/ic-identity-guide/what-is-ic-identity.html)
+If you would like to learn what Internet Identity is, see [What is Internet Identity?](https://smartcontracts.org/docs/ic-identity-guide/what-is-ic-identity.html)
 
 If you would like to create an Internet Identity anchor, or manage your devices, go to the [Internet Identity Page](https://identity.ic0.app).
 
