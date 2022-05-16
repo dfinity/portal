@@ -34,7 +34,7 @@ To download and install:
 
 2.  Download and install the SDK package by running the following command:
 
-        sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+        sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 

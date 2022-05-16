@@ -63,7 +63,7 @@ just one.
 
 To install, run:
 
-    $ sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    $ sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
 To verify that `dfx` is properly installed, run:
 

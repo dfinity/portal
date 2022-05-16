@@ -220,7 +220,7 @@ Start `dfinity/rosetta-api` with `--help`, you can see some additional CLI argum
 
 -   The secret key is used for signing transactions.
 
--   The public key is used for generating a self-authenticating Principal ID. For more information, see: <https://sdk.dfinity.org/docs/interface-spec/index.html#_principals>.
+-   The public key is used for generating a self-authenticating Principal ID. For more information, see: <https://smartcontracts.org/docs/interface-spec/index.html#_principals>.
 
 -   The Principal ID is hashed to generate the account address.
 
