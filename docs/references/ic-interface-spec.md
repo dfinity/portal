@@ -2512,7 +2512,7 @@ Ingress message inspection is applied, and messages that are not accepted by the
 
 Submitted request
 
-:   `E : Envelope`
+`E : Envelope`
 
 Conditions
 
@@ -3745,7 +3745,7 @@ During the execution of a query call, a certificate is provided to the canister 
 
 Submitted request
 
-:   `E`
+`E`
 
 Conditions
 
@@ -3777,7 +3777,7 @@ Env = {
 
 Read response
 
-:   -   If `F(Arg, Env) = Trap` then
+    -   If `F(Arg, Env) = Trap` then
 
             {status: failed; error: "Query execution trapped"}
 
@@ -3795,7 +3795,7 @@ The user can read elements of the *state tree*, using a `read_state` request to 
 
 Submitted request
 
-:   `E`
+`E`
 
 Conditions
 
