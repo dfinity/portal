@@ -38,9 +38,9 @@ This document tries to be implementation agnostic: It would apply just as well t
 
 ### Overview of the Internet Computer {#_overview_of_the_internet_computer}
 
-Dapps on the Internet Computer, or *IC* for short, are implemented as *canister smart contracts*, or *canisters* for short. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
+Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#https-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
 
-Once your dapp is running on the Internet Computer, it is a canister smart contract, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
+Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#https-interface) to interact with the canister according to the [System API](#system-api).
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 
@@ -65,7 +65,7 @@ The user can also use the HTTPS interface to issue read-only queries, which are 
     User <-- IC : "Hello World!"
 ```
 
-Sections "[HTTPS Interface](#http-interface)" and "[Canister interface (System API)](#system-api)" describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
+Sections “[HTTPS Interface](#https-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
 
 ### Nomenclature {#_nomenclature}
 
@@ -89,7 +89,7 @@ Canisters and users are identified by a *principal*, sometimes also called an *i
 
 ## Pervasive concepts {#_pervasive_concepts}
 
-Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#http-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#state-tree)), this section introduces some concepts that transcend multiple interfaces.
+Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#the-ic-management-canister) and the [System State Tree](#the-system-state-tree)), this section introduces some concepts that transcend multiple interfaces.
 
 ### Unspecified constants and limits {#_unspecified_constants_and_limits}
 
@@ -105,7 +105,7 @@ This specification may refer to certain constants and limits without specifying 
 
 -   `DEFAULT_PROVISIONAL_CYCLES_BALANCE`
 
-    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#ic-provisional_create_canister_with_cycles).
+    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#icmethod-provisional_create_canister_with_cycles).
 
 ### Principals {#principal}
 
@@ -241,7 +241,7 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `stopped`, calls to the canister are rejected by the IC, and there are no outstanding responses.
 
-In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
+In all cases, calls to the [management canister](#the-ic-management-canister) are processed, regardless of the state of the managed canister.
 
 The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
@@ -458,7 +458,7 @@ This document does not yet explain how to find the location and port of the Inte
 
 Users interact with the Internet Computer by calling canisters. By the very nature of a blockchain protocol, they cannot be acted upon immediately, but only with a delay. Moreover, the actual node that the user talks to may not be honest or, for other reasons, may fail to get the request on the way. This implies the following high-level workflow:
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#https-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
@@ -540,7 +540,7 @@ The functionality exposed via the [The IC management canister](#ic-management-ca
 
 ### Request: Read state {#http-read-state}
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#the-system-state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -572,7 +572,7 @@ All requested paths must have one of the following paths as prefix:
 
 Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canister themselves via the System API (see [Certified data](#system-api-certified-data)).
 
-See [The system state tree](#state-tree) for details on the state tree.
+See [The system state tree](#the-system-state-tree) for details on the state tree.
 
 ### Request: Query call {#http-query}
 
@@ -1479,7 +1479,7 @@ When executing a query method via a query call (i.e. in non-replicated state), t
 
     Copies the certificate for the current value of the certified data to the canister.
 
-    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#state-tree).
+    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#the-system-state-tree).
 
     If this `certificate` includes subnet delegations (possibly nested), then the id of the current canister will be included in each delegation's canister id range.
 
@@ -1891,7 +1891,7 @@ Delegations are *scoped*, i.e., they indicate which set of canister principals t
 
 The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file](_attachments/certificates.cddl).
 
-The values in the [The system state tree](#state-tree) are encoded to blobs as follows:
+The values in the [The system state tree](#the-system-state-tree) are encoded to blobs as follows:
 
 -   natural numbers are leb128-encoded.
 
@@ -3831,11 +3831,11 @@ The predicate `may_read_path` is defined as follows, implementing the access con
       else False
     may_read_path(S, _, _) = False
 
-The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
+The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#the-system-state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
 
     lookup(path, cert) = lookup_in_tree(path, state_tree(S))
 
-where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#state-tree)
+where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#the-system-state-tree)
 
     state_tree(S) = {
       "time": S.system_time;
