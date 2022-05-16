@@ -654,17 +654,17 @@ You will need the `ic-admin` tool. You have various options
 
 -   You can build it from source. In a checkout of `dfinity`, run:
 
-    ~~~ bash
+    ``` bash
     cd rs
     nix-shell
     cargo build --bin ic-admin
-    ~~~
+    ```
 
 -   You can install it into your nix environment. In a checkout of `dfinity`, run:
 
-    ~~~ bash
+    ``` bash
     nix-env -iA dfinity.rs.ic-admin-unwrapped -f .
-    ~~~
+    ```
 
 ### Canister id reservation during NNS bootstrap {#_canister_id_reservation_during_nns_bootstrap}
 
@@ -676,17 +676,17 @@ For installation or upgrade, you should build it the "official" way.
 
 In a checkout of this repository, run the following to build the official image:
 
-~~~ bash
+``` bash
 ./scripts/docker-build
-~~~
+```
 
 The resulting `internet_identity.wasm` is ready for deployment on `mainnet`.
 
 Make note of the hash of wasm module:
 
-~~~ bash
+``` bash
 shasum -a 256 internet_identity.wasm
-~~~
+```
 
 Double-check that this is the same SHA256 that is observed on CI. Go to the corresponding commit, find the CI job "docker build" and look at the output of step "Run sha256sum out/internet_identity.wasm".
 
@@ -696,9 +696,9 @@ Next, you will need `didc` to be able to produce the binary encoded Candid argum
 
 The canister accepts a range of user ids that it's responsible for in `canister_init`. Currently, we only use one canister, so we don't really need to set a range. However, we still need to pass in some value to satisfy the interface. Run the following to get a file with the binary encoded value needed:
 
-~~~ bash
+``` bash
 didc encode '(null)' | xxd -r -p > arg.in
-~~~
+```
 
 #### Submitting proposal for installation and voting on mainnet {#_submitting_proposal_for_installation_and_voting_on_mainnet}
 
@@ -710,7 +710,7 @@ Write a proposal description like those in <https://github.com/dfinity/nns-propo
 
 You will need to get someone with authorization to submit the proposal and get enough votes for it (ping \@trusted-neurons on slack). The command will look like:
 
-~~~ bash
+``` bash
 ic-admin \
     --use-hsm
     --key-id "${KEY_ID}"
@@ -723,19 +723,19 @@ ic-admin \
     --wasm-module-path internet_identity.wasm
     --summary "${SUMMARY_TO_INCLUDE_IN_PROPOSAL}"
     --proposal-url "${URL_FOR_PROPOSAL_DOCUMENTATION}"
-~~~
+```
 
 If you know the proposal number, you can observe all open proposals by running, in `…/dfinity/rs/nns`:
 
-~~~ bash
+``` bash
 dfx --identity default canister --no-wallet --network=mercury call governance list_proposals --type=idl '(record {limit=25; include_reward_status=vec{}; exclude_topic=vec{}; include_status=vec{1}})'
-~~~
+```
 
 You can check that deployment went through running
 
-~~~ bash
+``` bash
 dfx canister --network mainnet --no-wallet info internet_identity
-~~~
+```
 
 Once the deployment went through, tag the commit with `mainnet-<date-from-proposal-url>`.
 
@@ -745,10 +745,10 @@ Once the deployment went through, tag the commit with `mainnet-<date-from-propos
 
 Because we need to fetch the root key for all networks that are not mainnet, we need to build with `II_FETCH_ROOT_KEY=1`:
 
-~~~ bash
+``` bash
 didc encode '(null)' | xxd -r -p > arg.in
 II_FETCH_ROOT_KEY=1 ./scripts/docker-build
-~~~
+```
 
 This will create the Wasm file you want to use for the following deployment steps at `./internet_identity.wasm`.
 
@@ -756,9 +756,9 @@ This will create the Wasm file you want to use for the following deployment step
 
 Submit the proposal to install the canister on our `identity` testnet (replace for other testnets as appropriate):
 
-~~~ bash
+``` bash
 ic-admin --nns-url "http://[2a00:fb01:400:42:5000:60ff:fed5:8464]:8080/" propose-to-change-nns-canister --test-neuron-proposer --canister-id rdmx6-jaaaa-aaaaa-aaadq-cai --mode reinstall --wasm-module-path internet_identity.wasm --arg arg.in
-~~~
+```
 
 You can check http://\[2a00:fb01:400:42:5000:60ff:fed5:8464\]:8080/\_/dashboard\[our testnet's dashboard\] to confirm the hash of the wasm installed on the canister matches the one you took note of in the previous steps.
 
@@ -766,9 +766,9 @@ You can check http://\[2a00:fb01:400:42:5000:60ff:fed5:8464\]:8080/\_/dashboard\
 
 Similar to the steps during initial installation. The main difference is that you need to pass in a different mode to `ic-admin` and we don't need any arguments in this case.
 
-~~~ bash
+``` bash
 ic-admin --nns-url "http://[2a00:fb01:400:42:5000:60ff:fed5:8464]:8080/" propose-to-change-nns-canister --test-neuron-proposer --canister-id rdmx6-jaaaa-aaaaa-aaadq-cai --mode upgrade --wasm-module-path internet_identity.wasm
-~~~
+```
 
 ### Disaster recovery {#_disaster_recovery}
 
