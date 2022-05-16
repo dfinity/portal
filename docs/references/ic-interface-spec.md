@@ -14,7 +14,7 @@ Welcome to *the Internet Computer*! We speak of "the" Internet Computer, because
 
 This document describes this *external* view of the Internet Computer, i.e. the low-level interfaces it provides to dapp developers and users, and what will happen when they use these interfaces.
 
-:::note
+:::caution
 While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see <https://sdk.dfinity.org/> for suitable documentation.
 :::
 
@@ -44,9 +44,6 @@ Once your dapp is running on the Internet Computer, it is a canister, and users 
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 
-
-**A typical use of the Internet Computer. (This is a simplified view; some of the arrows represent multiple interaction steps or polling.)**
-
 ```plantuml
     actor Developer
     actor User
@@ -64,6 +61,7 @@ The user can also use the HTTPS interface to issue read-only queries, which are 
     return "Hello world!"
     User <-- IC : "Hello World!"
 ```
+**A typical use of the Internet Computer. (This is a simplified view; some of the arrows represent multiple interaction steps or polling.)**
 
 Sections “[HTTPS Interface](#https-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
 
@@ -757,7 +755,7 @@ Rejection codes are member of the following enumeration:
 
 -   `CANISTER_REJECT` (4): Explicit reject by the canister.
 
--   []{#CANISTER_ERROR}`CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
+-   `CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
 
 The symbolic names of this enumeration are used throughout this specification, but on all interfaces (HTTPS API, System API), they are represented as positive numbers as given in the list above.
 
@@ -1095,26 +1093,34 @@ which copies, at the time of function invocation, the data referred to by `src`/
 
 The canister can access an argument. For `canister_init`, `canister_post_upgrade` and method entry points, the argument is the argument of the call; in a reply callback, it refers to the received reply. So the lifetime of the argument data is a single WebAssembly function execution, not the whole method call tree.
 
--   ic0.msg_arg_data_size : () -> i32
-        ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()
+- ```
+ic0.msg_arg_data_size : () -> i32
+ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()
+  ```
 
-    The message argument data.
+The message argument data.
 
--   ic0.msg_caller_size : () -> i32
-        ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()
+- ```
+ic0.msg_caller_size : () -> i32
+ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()
+  ```
 
-    The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
+The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
 
--   `ic0.msg_reject_code : () -> i32`
+- `ic0.msg_reject_code : () -> i32`
 
-    Returns the reject code, if the current function is invoked as a reject callback.
+Returns the reject code, if the current function is invoked as a reject callback.
 
-    It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
+It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
--   ic0.msg_reject_msg_size : () -> i32
-        ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()
 
-    The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
+- ```
+ic0.msg_reject_msg_size : () -> i32
+ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()
+  ```
+
+
+The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
 ### Responding
 
@@ -1164,10 +1170,12 @@ The `canister_inspect_message` is *not* invoked for query calls, inter-canister 
 
 A canister can learn about its own identity:
 
--   ic0.canister_self_size : () -> i32
-        ic0.canister_self_copy: (dst : i32, offset : i32, size : i32) -> ()
-
-    These functions allow the canister to query its own canister id (as a blob).
+- ```
+  ic0.canister_self_size : () -> i32
+  ic0.canister_self_copy: (dst : i32, offset : i32, size : i32) -> ()
+ ```
+ 
+These functions allow the canister to query its own canister id (as a blob).
 
 ### Canister status {#system-api-canister-status}
 
@@ -1184,39 +1192,42 @@ This function allows a canister to find out if it is running, stopping or stoppe
 ### Inter-canister method calls {#system-api-call}
 
 When handling an update call (or a callback), a canister can do further calls to another canister. Calls are assembled in a builder-like fashion, starting with `ic0.call_new`, adding more attributes using the `ic0.call_*` functions, and eventually performing the call with `ic0.call_perform`.
+  
+- ```
+  ic0.call_new :
+        ( callee_src : i32,
+          callee_size : i32,
+          name_src : i32,
+          name_size : i32,
+          reply_fun : i32,
+          reply_env : i32,
+          reject_fun : i32,
+          reject_env : i32,
+        ) -> ()
+ ```
 
--   ic0.call_new :
-          ( callee_src : i32,
-            callee_size : i32,
-            name_src : i32,
-            name_size : i32,
-            reply_fun : i32,
-            reply_env : i32,
-            reject_fun : i32,
-            reject_env : i32,
-          ) -> ()
+  Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
 
-    Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
+  The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
 
-    The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
+  The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
 
-    The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
+  The reject callback is executed if the method call fails asynchronously or the other canister explicitly rejects the call. The reject code and message can be queried using `ic0.msg_reject_code` and `ic0.msg_reject_msg_*`.
 
-    The reject callback is executed if the method call fails asynchronously or the other canister explicitly rejects the call. The reject code and message can be queried using `ic0.msg_reject_code` and `ic0.msg_reject_msg_*`.
+  This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing. This will trap if not sufficient cycles are available.
 
-    This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing. This will trap if not sufficient cycles are available.
+  Subsequent calls to the following functions set further attributes of that call, until the call is concluded (with `ic0.call_perform`) or discarded (by returning without calling `ic0.call_perform` or by starting a new call with `ic0.call_new`.)
 
-    Subsequent calls to the following functions set further attributes of that call, until the call is concluded (with `ic0.call_perform`) or discarded (by returning without calling `ic0.call_perform` or by starting a new call with `ic0.call_new`.)
+- `ic0.call_on_cleanup : (fun : i32, env : i32) -> ()`
 
--   ic0.call_on_cleanup : (fun : i32, env : i32) -> ()
+  If a cleanup callback (of type `(env : i32) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
 
-    If a cleanup callback (of type `(env : i32) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
+  During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
 
-    During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
+  If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
 
-    If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
+  There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
-    There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
 -   `ic0.call_data_append : (src : i32, size : i32) -> ()`
 
@@ -2639,33 +2650,37 @@ This "bookkeeping transition" must be immediately followed by the corresponding 
     The position of the message in the queue is unchanged.
 
     Conditions
-
-    :       S.messages = Older_messages · CallMessage CM · Younger_messages
-                S.canisters[CM.callee] ≠ EmptyCanister
-                S.canister_status[CM.callee] = Running
-                balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
-                Ctxt_id ∉ dom S.call_contexts
+    ```
+      S.messages = Older_messages · CallMessage CM · Younger_messages
+      S.canisters[CM.callee] ≠ EmptyCanister
+      S.canister_status[CM.callee] = Running
+      balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
+      Ctxt_id ∉ dom S.call_contexts
+    ```
 
     State after
 
-    :   S with
-                messages =
-                  Older_messages ·
-                  FuncMessage {
-                    call_context = Ctxt_id;
-                    receiver = CM.callee;
-                    entry_point = PublicMethod CM.method_name CM.caller CM.data
-                    queue = CM.queue;
-                  } ·
-                  Younger_messages
-                call_contexts[Ctxt_id] = {
-                  canister = CM.callee;
-                  origin = CM.origin;
-                  needs_to_respond = true;
-                  deleted = false;
-                  available_cycles = CM.transferred_cycles;
-                }
-                balances[CM.callee] = balances[CM.callee] - MAX_CYCLES_PER_MESSAGE
+  
+    ```
+    S with
+      messages =
+        Older_messages ·
+        FuncMessage {
+          call_context = Ctxt_id;
+          receiver = CM.callee;
+          entry_point = PublicMethod CM.method_name CM.caller CM.data
+          queue = CM.queue;
+        } ·
+        Younger_messages
+      call_contexts[Ctxt_id] = {
+        canister = CM.callee;
+        origin = CM.origin;
+        needs_to_respond = true;
+        deleted = false;
+        available_cycles = CM.transferred_cycles;
+      }
+      balances[CM.callee] = balances[CM.callee] - MAX_CYCLES_PER_MESSAGE
+      ```
 
 -   Call context creation: Heartbeat
 
@@ -2673,30 +2688,34 @@ This "bookkeeping transition" must be immediately followed by the corresponding 
 
     Conditions
 
-    :       S.canisters[C] ≠ EmptyCanister
-                S.canister_status[C] = Running
-                balances[C] ≥ freezing_limit(S, C) + MAX_CYCLES_PER_MESSAGE
-                Ctxt_id ∉ dom S.call_contexts
+    ```       
+    S.canisters[C] ≠ EmptyCanister
+    S.canister_status[C] = Running
+    balances[C] ≥ freezing_limit(S, C) + MAX_CYCLES_PER_MESSAGE
+    Ctxt_id ∉ dom S.call_contexts
+    ```
 
     State after
 
-    :   S with
-                messages =
-                  FuncMessage {
-                    call_context = Ctxt_id;
-                    receiver = C;
-                    entry_point = Heartbeat;
-                    queue = Queue { from = System; to = C };
-                  }
-                  · S.messages
-                call_contexts[Ctxt_id] = {
-                  canister = C;
-                  origin = FromHeartbeat;
-                  needs_to_respond = false;
-                  deleted = false;
-                  available_cycles = 0;
-                }
-                balances[C] = balances[C] - MAX_CYCLES_PER_MESSAGE
+    ```   
+    S with
+      messages =
+        FuncMessage {
+          call_context = Ctxt_id;
+          receiver = C;
+          entry_point = Heartbeat;
+          queue = Queue { from = System; to = C };
+        }
+        · S.messages
+      call_contexts[Ctxt_id] = {
+        canister = C;
+        origin = FromHeartbeat;
+        needs_to_respond = false;
+        deleted = false;
+        available_cycles = 0;
+      }
+      balances[C] = balances[C] - MAX_CYCLES_PER_MESSAGE
+  ```
 
 The IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and --- if the function returns a response --- record this response. The new call and response messages are enqueued at the end.
 
@@ -3200,11 +3219,9 @@ We encode this behavior via three (types of) transitions:
 
 3.  Finally, each pending `stop_canister` call (which are encoded in the status) is responded to, to indicate that that the canister is stopped.
 
-    Conditions
+Conditions
 
-    :   
-
-```html
+```
 S.messages = Older_messages · CallMessage M · Younger_messages
 (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
 M.callee = ic_principal
@@ -3214,15 +3231,13 @@ S.canister_status[A.canister_id] = Running
 M.caller ∈ S.controllers[A.canister_id]
 ```
 
-
 State after
 
-```html
+```
 S with
     messages = Older_messages · Younger_messages
     S.status[A.canister_id] = Stopping [(M.origin, M.transferred_cycles)]
 ```
-
 
 The next two transitions record any additional \'stop_canister\' requests that arrive at a stopping (or stopped) canister in its status.
 
@@ -3238,7 +3253,6 @@ S.canister_status[A.canister_id] = Stopping Origins
 M.caller ∈ S.controllers[A.canister_id]
 ```
 
-
 State after
 
 ```html
@@ -3246,7 +3260,6 @@ S with
     messages = Older_messages · Younger_messages
     S.status[A.canister_id] = Stopping (Origins · (M.origin, M.transferred_cycles))
 ```
-
 
 The status of a stopping canister which has no open call contexts is set to `Stopped`, and all pending `stop_canister` calls are replied to.
 
@@ -3334,7 +3347,7 @@ S with
 ```
 
 
-If the status of the canister was \'stopping\', then the canister status is set to `running`. The pending `stop_canister` request(s) are rejected.
+If the status of the canister was 'stopping', then the canister status is set to `running`. The pending `stop_canister` request(s) are rejected.
 
 Conditions
 
@@ -3777,17 +3790,17 @@ Env = {
 
 Read response
 
-    -   If `F(Arg, Env) = Trap` then
+-   If `F(Arg, Env) = Trap` then
 
-            {status: failed; error: "Query execution trapped"}
+        {status: failed; error: "Query execution trapped"}
 
-    -   Else if `F(Arg, Env) = Return (Reject (code, msg))` then
+-   Else if `F(Arg, Env) = Return (Reject (code, msg))` then
 
-            {status: rejected; reject_code: <code>: reject_message: <msg>}
+        {status: rejected; reject_code: <code>: reject_message: <msg>}
 
-    -   Else if `F(Arg, Env) = Return (Reply R)` then
+-   Else if `F(Arg, Env) = Return (Reply R)` then
 
-            {status: success; reply: { arg :  <R> } }
+        {status: success; reply: { arg :  <R> } }
 
 #### Certified state reads {#_certified_state_reads}
 
@@ -3810,9 +3823,8 @@ S.system_time <= RS.ingress_expiry
 
 Read response
 
-:   A record with
-
-    -   `{certificate: C}`
+  A record with
+  -   `{certificate: C}`
 
 The predicate `may_read_path` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 
