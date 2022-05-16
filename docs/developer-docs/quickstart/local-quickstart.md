@@ -46,10 +46,8 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable similar to the following:
-
-        dfx 0.9.2
-
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../updates/release-notes/release-notes.md).
+    
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
         dfx --help
