@@ -15,7 +15,7 @@ Motoko and Rust are two of the better supported languages for building on the IC
 A major ingredient in allowing data exchange across the IC is a language independent description of the canister interfaces called Candid. You can see the functional description by exploring the [Candid references](candid-ref.md)
 
 ### Functionality References
-Now that more dapps are being built on the IC, it becomes apparent that several functionalities will be required by many or most apps. As such, several functionalities have been designed and developed. To learn more about financial integration explore the [Ledger Canister](ledger.md). To reference authentication and identity services see the [Internet Identity specification](ii-spec.mdx). 
+Now that more dapps are being built on the IC, it becomes apparent that several functionalities will be required by many or most apps. As such, several functionalities have been designed and developed. To learn more about financial integration explore the [Ledger Canister](ledger.md). To reference authentication and identity services see the [Internet Identity specification](ii-spec.md). 
 
 ### Internet Computer References
 For those who want to understand the intricacies of the Internet Computer’s behavior in detail, we refer you to the [Internet Computer Interface Specification](ic-interface-spec.md).
