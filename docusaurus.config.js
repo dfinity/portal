@@ -5,6 +5,7 @@
 const versions = require('./versions.json');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 
 const isDev = process.env.NODE_ENV === 'development';
 const isDeployPreview =
@@ -57,6 +58,7 @@ const config = {
                     },
 
                     sidebarPath: require.resolve('./sidebars.js'),
+                    remarkPlugins: [simplePlantUML],
                     // TODO: Please change this to your repo.
                     editUrl: 'https://github.com/dfinity/portal/edit/master/',
                 },
