@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "@docusaurus/Link";
-import {languages} from "@site/static/Infinite.json"
+import languagesJson from "@site/static/Infinite.json"
 
 const variants = {
     enter: {
@@ -24,7 +24,7 @@ function Index() {
     useEffect(() => {
         setTimeout(() => {
             let next = index + 1;
-            if (next === languages.length) {
+            if (next === languagesJson.languages.length) {
                 next = 0;
             }
             setIndex(next);
@@ -50,7 +50,7 @@ function Index() {
                                     opacity: {duration: 0.1},
                                 }}
                             >
-                                {languages[index].text}
+                                {languagesJson.languages[index].text}
                             </motion.p>
                         </AnimatePresence>
                         <p className={styles.InfiniteWordFiller}>infinite</p>

@@ -338,7 +338,7 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-## 5.Deploy on-chain (1 min)
+## 5. Deploy on-chain (1 min)
 
 Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 
@@ -475,7 +475,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](https://smartcontracts.org/samples).
+Build DAOs, NFTs and more [here](https://smartcontracts.org/samples/overview).
 
 ### Want to learn more?
 

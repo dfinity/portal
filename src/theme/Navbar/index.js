@@ -253,7 +253,7 @@ export default function Navbar() {
     const mobileSidebar = useMobileSidebar();
     const colorModeToggle = useColorModeToggle();
     const activeDocPlugin = useActivePlugin();
-    const isHomepage = !activeDocPlugin;
+    const isHomepage = !activeDocPlugin || activeDocPlugin.pluginId !== 'default';
     const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
     const items = useNavbarItems();
     const {rightItems} = splitNavItemsByPosition(items);
@@ -300,7 +300,7 @@ export default function Navbar() {
                         }
                         <div className={clsx(styles.navBarDivider)}/>
                         <NavbarMediaLinks/>
-                        {!colorModeToggle.disabled && activeDocPlugin && (
+                        {!colorModeToggle.disabled && !isHomepage && (
                             <>
                                 <div className={clsx(styles.navBarDivider)}/>
                                 <ColorModeToggle
