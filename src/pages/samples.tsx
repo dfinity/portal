@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
+import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import nft from "@site/static/img/samples/nft.png";
 
 function Samples(): JSX.Element {
@@ -20,6 +21,7 @@ function Samples(): JSX.Element {
                     <circle fill="#3C01BA" cx="5" cy="5" r="5"/>
                 </svg>
                 <Header/>
+                <FilterBar />
                 <div className={styles.cards}>
                     <Card image={nft} title={"NFT Minting"} domains={["Gaming", "Beginner", "NFT", "Motoko", "Rust"]}
                           body={"Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus tellus ac cursus commodo tortor mauris condimentum."}

@@ -7,7 +7,7 @@
 }
 .title , .body {
     display: inline-flex;
-    width: min(660px, 100%);
+    width: min(550px, 100%);
 }
 .title {
     font-weight: 700;

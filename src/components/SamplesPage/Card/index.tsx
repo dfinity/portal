@@ -7,39 +7,43 @@ import YoutubeIcon from "@site/static/img/samples/youtube.svg";
 import DocsIcon from "@site/static/img/samples/docs.svg";
 
 function MotokoLink() {
-    return <div className={styles.content}>
-        <div className={styles.iconLinkTooltipContainer}>
-            <span className={styles.iconLinkTooltip}>Motoko</span>
-        </div>
-        <Link className={styles.iconLink} to={"/"}><MotokoIcon/></Link>
-    </div>;
+    return (
+        <div className={styles.content}>
+            <div className={styles.iconLinkTooltipContainer}>
+                <span className={styles.iconLinkTooltip}>Motoko</span>
+            </div>
+            <Link className={styles.iconLink} to={"/"}><MotokoIcon/></Link>
+        </div>);
 }
 
 function RustLink() {
-    return <div className={styles.content}>
-        <div className={styles.iconLinkTooltipContainer}>
-            <span className={styles.iconLinkTooltip}>Rust</span>
-        </div>
-        <Link className={styles.iconLink} to={"/"}><RustIcon/></Link>
-    </div>;
+    return (
+        <div className={styles.content}>
+            <div className={styles.iconLinkTooltipContainer}>
+                <span className={styles.iconLinkTooltip}>Rust</span>
+            </div>
+            <Link className={styles.iconLink} to={"/"}><RustIcon/></Link>
+        </div>);
 }
 
 function DocsLink() {
-    return <div className={styles.content}>
-        <div className={styles.iconLinkTooltipContainer}>
-            <span className={styles.iconLinkTooltip}>Developer Docs</span>
-        </div>
-        <Link className={styles.iconLink} to={"/"}><DocsIcon/></Link>
-    </div>;
+    return (
+        <div className={styles.content}>
+            <div className={styles.iconLinkTooltipContainer}>
+                <span className={styles.iconLinkTooltip}>Developer Docs</span>
+            </div>
+            <Link className={styles.iconLink} to={"/"}><DocsIcon/></Link>
+        </div>);
 }
 
 function YoutubeLink() {
-    return <div className={styles.content}>
-        <div className={styles.iconLinkTooltipContainer}>
-            <span className={styles.iconLinkTooltip}>Watch Tutorials</span>
-        </div>
-        <Link className={styles.iconLink} to={"/"}><YoutubeIcon/></Link>
-    </div>;
+    return (
+        <div className={styles.content}>
+            <div className={styles.iconLinkTooltipContainer}>
+                <span className={styles.iconLinkTooltip}>Watch Tutorials</span>
+            </div>
+            <Link className={styles.iconLink} to={"/"}><YoutubeIcon/></Link>
+        </div>);
 }
 
 function Index({image, title, domains, body, links}) {

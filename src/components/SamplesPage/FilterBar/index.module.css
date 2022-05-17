@@ -1,0 +1,120 @@
+.container {
+    width: Min(1100px, 90%);
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+}
+
+.selectBox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    margin: 0 8px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #FFFFFF;
+    backdrop-filter: blur(40px);
+    border-radius: 12px;
+    position: relative;
+}
+
+.selectOptionsContainer {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color:black;
+}
+
+.selectOptions {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 4px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;
+    padding: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    z-index: 10000;
+    position: relative;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.numberOfItems {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    height: 26px;
+    background-color: #FFFFFF;
+    border-radius: 13px;
+    padding: 2px 8px;
+    margin: 0 12px 0 8px;
+}
+
+.selectTitle {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 0;
+}
+
+.selectionArrow {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.selectOptions input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #3B00B9;
+    border-radius: 4px;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+.selectOptions input[type="checkbox"]:hover {
+    border: 2px solid #3B00B9;
+}
+.selectOptions input[type="checkbox"]::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+    box-shadow: inset 1em 1em var(--ifm-color-primary);
+    border-radius: 2px;
+}
+.selectOptions input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+.selectOptions .selectOption {
+    display: grid;
+    grid-template-columns: 24px auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.selectOptions .selectOption + .selectOption {
+    margin-top: 1em;
+}
