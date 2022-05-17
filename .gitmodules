@@ -1,0 +1,3 @@
+[submodule "docs/developer-docs/build/languages/motoko"]
+	path = docs/developer-docs/build/languages/motoko
+	url = https://github.com/dfinity/motoko.git
