@@ -38,6 +38,7 @@ const config = {
                 sidebarPath: require.resolve('./sidebarsSample.js'),
             }),
         ],
+        './symlink-plugin'
     ],
 
     presets: [
