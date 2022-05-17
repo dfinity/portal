@@ -6,27 +6,10 @@ const versions = require('./versions.json');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-const fs = require(`fs`);
 
 const isDev = process.env.NODE_ENV === 'development';
 const isDeployPreview =
     !!process.env.NETLIFY && process.env.CONTEXT === 'deploy-preview';
-
-//fs.symlinkSync('submodules/motoko/doc/md', 'docs/developer-docs/build/languages/motoko');
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const customDocusaurusPlugin = (context, options) => {
-  return {
-    name: `portal-docusaurus-plugin`,
-    configureWebpack(config, isServer, utils) {
-      return {
-        resolve: {
-          symlinks: false,
-        },
-      };
-    },
-  };
-};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
