@@ -129,11 +129,11 @@ const config = {
                         label: 'Sample Code',
                         position: 'right',
                     },
-                    {
-                        to: 'https://www.ic.community/',
-                        label: 'ic.community',
-                        position: 'right',
-                    },
+                    //{
+                    //    to: 'https://www.ic.community/',
+                    //    label: 'ic.community',
+                    //    position: 'right',
+                    //},
                     //{
                     //  type: 'docsVersionDropdown',
                     //  position: 'right',
