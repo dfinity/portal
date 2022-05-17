@@ -262,6 +262,7 @@ const sidebars = {
         'references/cli-reference/dfx-ping',
         'references/cli-reference/dfx-replica',
         'references/cli-reference/dfx-start',
+        'references/cli-reference/dfx-stop',
         'references/cli-reference/dfx-upgrade',
         'references/cli-reference/dfx-wallet',
         'references/cli-reference/dfx-envars',
