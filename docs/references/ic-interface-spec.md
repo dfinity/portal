@@ -1,4 +1,5 @@
-import Changelog from './_attachments/interface-spec-changelog.md'
+import Changelog from './_attachments/interface-spec-changelog.md';
+
 
 # The Internet Computer Interface Specification {#_the_internet_computer_interface_specification}
 
