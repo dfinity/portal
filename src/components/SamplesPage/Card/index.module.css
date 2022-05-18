@@ -1,176 +1,177 @@
 .container {
-    width: 320px;
-    height: 436px;
-    overflow: hidden;
-    border-radius: 12px;
-    background-color: #FFFFFF;
-    margin: auto;
-    position: relative;
+  width: 320px;
+  height: 436px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #ffffff;
+  margin: auto;
+  position: relative;
 }
 
 .information {
-    height: 236px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  height: 236px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .title {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px;
-    margin-bottom: 0;
-    width: 180px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  margin-bottom: 0;
+  width: 180px;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .body {
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 400;
-    margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 450;
+  color: rgba(24, 24, 24, 0.6);
 }
 
 .mainDomain {
-    position: absolute;
-    display: flex;
-    top: -15px;
-    color: black;
-    height: 30px;
-    padding: 4px 12px;
-    border-radius: 15px;
-    justify-items: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(40px);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 22px;
+  position: absolute;
+  display: flex;
+  top: -15px;
+  color: black;
+  height: 30px;
+  padding: 4px 12px;
+  border-radius: 15px;
+  justify-items: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
 }
 
 .mainDomain:hover .domainsContainer {
-    display: flex;
+  display: flex;
 }
 
 .domainDivider {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .domainsContainer {
-    width: 100%;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    display: none;
+  width: 100%;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  display: none;
 }
 
 .domains {
-    color: black;
-    margin: 0 auto 8px auto;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(40px);
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 12px 4px 12px;
-    border-radius: 12px;
-    display: flex;
+  color: black;
+  margin: 0 auto 8px auto;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px);
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 12px 4px 12px;
+  border-radius: 12px;
+  display: flex;
 }
 
 .domains p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px 0 0 0;
 }
 
 .footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto 0 0 0;
 }
 
 .image {
-    height: 200px;
-    object-fit: cover;
-    display: block;
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 .actionButton {
-    text-align: center;
-    display: inline-flex;
-    padding: 8px 12px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 22px;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: black;
-    text-decoration: none;
-    margin: auto 0 auto auto;
+  text-align: center;
+  display: inline-flex;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: black;
+  text-decoration: none;
+  margin: auto 0 auto auto;
 }
 
 .actionButton:hover {
-    border: 2px solid #3B00B9;
-    background-color: #3B00B9;
-    color: white;
-    text-decoration: none;
+  border: 2px solid #3b00b9;
+  background-color: #3b00b9;
+  color: white;
+  text-decoration: none;
 }
 
 .iconLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-radius: 50%;
-    border: 1px solid #DFDFDF;
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
-    color: #3B00B9;
-    fill: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%;
+  border: 1px solid #dfdfdf;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  color: #3b00b9;
+  fill: currentColor;
 }
 
 .iconLink:hover {
-    border: 2px solid #3B00B9;
-    background-color: #3B00B9;
-    color: white;
-    text-decoration: none;
+  border: 2px solid #3b00b9;
+  background-color: #3b00b9;
+  color: white;
+  text-decoration: none;
 }
 
 .content {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 }
 
 .iconLinkTooltipContainer {
-    display: flex;
-    justify-content: center;
-    width: 150px;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(calc(-50% - 4px));
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(calc(-50% - 4px));
 }
 
 .iconLinkTooltip {
-    display: none;
-    margin-bottom: 4px;
-    color: white;
-    padding: 4px 12px;
-    height: 30px;
-    border-radius: 15px;
-    background: rgba(24, 24, 24, 0.6);
-    backdrop-filter: blur(40px);
-    align-items: center;
+  display: none;
+  margin-bottom: 4px;
+  color: white;
+  padding: 4px 12px;
+  height: 30px;
+  border-radius: 15px;
+  background: rgba(24, 24, 24, 0.6);
+  backdrop-filter: blur(40px);
+  align-items: center;
 }
 
 .content:hover .iconLinkTooltip {
-    display: inline-flex;
+  display: inline-flex;
 }

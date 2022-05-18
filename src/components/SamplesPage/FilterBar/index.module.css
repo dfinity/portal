@@ -1,120 +1,160 @@
 .container {
-    width: Min(1100px, 90%);
-    margin: 0 auto;
-    padding: 50px 0;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    overflow: visible;
+  width: Min(1227px, 100%);
+  margin: 0 0 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.selectBoxContainer {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  position: relative;
 }
 
 .selectBox {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 16px;
-    margin: 0 8px;
-    height: 42px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #FFFFFF;
-    backdrop-filter: blur(40px);
-    border-radius: 12px;
-    position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  margin: 0 8px;
+  background: rgba(248, 247, 255, 1);
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(40px);
+  border-radius: 12px;
 }
 
 .selectOptionsContainer {
-    display: flex;
-    justify-content: center;
-    width: 250px;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    color:black;
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
 }
 
 .selectOptions {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 4px auto;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #FFFFFF;
-    border-radius: 12px;
-    padding: 16px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 22px;
-    z-index: 10000;
-    position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 6px auto;
+  background: rgba(248, 247, 255, 1);
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .title {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 28px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 .numberOfItems {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 22px;
-    height: 26px;
-    background-color: #FFFFFF;
-    border-radius: 13px;
-    padding: 2px 8px;
-    margin: 0 12px 0 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  height: 26px;
+  background-color: #ffffff;
+  border-radius: 13px;
+  padding: 2px 8px;
+  margin: 0 12px 0 8px;
+}
+
+.clearFilters {
+  margin: 0 4px;
+}
+
+.clearFilters,
+.sortBy {
+  display: inline-flex;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(24, 24, 24, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+.sortBy {
+  margin: 0 0 0 auto;
+}
+
+.sortBy p {
+  margin-bottom: 0;
+}
+.sortByArrow {
+  display: inline-block;
+  margin-left: 4px;
+  height: 22px;
 }
 
 .selectTitle {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 0;
 }
 
 .selectionArrow {
-    display: inline-block;
-    margin-left: 10px;
+  display: inline-block;
+  margin-left: 10px;
+  height: 22px;
 }
 
 .selectOptions input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    margin: 0;
-    font: inherit;
-    color: currentColor;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #3B00B9;
-    border-radius: 4px;
-    transform: translateY(-0.075em);
-    display: grid;
-    place-content: center;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #3b00b9;
+  border-radius: 4px;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
 }
+
 .selectOptions input[type="checkbox"]:hover {
-    border: 2px solid #3B00B9;
+  border: 2px solid #3b00b9;
 }
+
 .selectOptions input[type="checkbox"]::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    transform: scale(0);
-    box-shadow: inset 1em 1em var(--ifm-color-primary);
-    border-radius: 2px;
+  content: "";
+  width: 12px;
+  height: 12px;
+  transform: scale(0);
+  box-shadow: inset 1em 1em var(--ifm-color-primary);
+  border-radius: 2px;
 }
+
 .selectOptions input[type="checkbox"]:checked::before {
-    transform: scale(1);
+  transform: scale(1);
 }
+
 .selectOptions .selectOption {
-    display: grid;
-    grid-template-columns: 24px auto;
-    gap: 12px;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 24px auto;
+  gap: 12px;
+  align-items: center;
 }
 
 .selectOptions .selectOption + .selectOption {
-    margin-top: 1em;
+  margin-top: 1em;
 }
