@@ -15,6 +15,7 @@ import basicDAO from "@site/static/img/samples/basicDAO.png";
 import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
+import PlusIcon from "@site/static/img/samples/plus.svg";
 
 const sampleItems = [
   {
