@@ -2,19 +2,13 @@ import React from "react";
 import styles from "./index.module.css";
 import ArrowDown from "@site/static/img/samples/arrowDown.svg";
 import ArrowUp from "@site/static/img/samples/arrowUp.svg";
+import Delete from "@site/static/img/samples/delete.svg";
 
 const languageOptions = ["Motoko", "Rust", "Javascript"];
-const domainOptions = [
-  "Global",
-  "Gaming",
-  "DeFi",
-  "Basic",
-  "Website",
-  "NFT",
-  "IoT",
-];
+const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT", "IoT"];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
 const contentTypeOptions = ["Code Samples", "Videos", "Documentation"];
+const sortByOptions = ["Relevance", "A to Z", "Z to A"];
 
 function Index({
   numberOfItems,
@@ -26,12 +20,15 @@ function Index({
   setSelectedLevels,
   selectedContentTypes,
   setSelectedContentTypes,
+  selectedSortBy,
+  setSelectedSortBy,
 }) {
   const [isSelectingLanguage, setIsSelectingLanguage] = React.useState(false);
   const [isSelectingDomain, setIsSelectingDomain] = React.useState(false);
   const [isSelectingLevel, setIsSelectingLevel] = React.useState(false);
   const [isSelectingContentType, setIsSelectingContentType] =
     React.useState(false);
+  const [isSelectingSortBy, setIsSelectingSortBy] = React.useState(false);
 
   const updateCurrentSelection = (selection) => {
     if (selection === "language") {
@@ -39,21 +36,31 @@ function Index({
       setIsSelectingDomain(false);
       setIsSelectingLevel(false);
       setIsSelectingContentType(false);
+      setIsSelectingSortBy(false);
     } else if (selection === "domain") {
       setIsSelectingDomain(!isSelectingDomain);
       setIsSelectingLanguage(false);
       setIsSelectingLevel(false);
       setIsSelectingContentType(false);
+      setIsSelectingSortBy(false);
     } else if (selection === "level") {
       setIsSelectingLevel(!isSelectingLevel);
       setIsSelectingDomain(false);
       setIsSelectingLanguage(false);
       setIsSelectingContentType(false);
+      setIsSelectingSortBy(false);
     } else if (selection === "contentType") {
       setIsSelectingContentType(!isSelectingContentType);
       setIsSelectingDomain(false);
       setIsSelectingLevel(false);
       setIsSelectingLanguage(false);
+      setIsSelectingSortBy(false);
+    } else if (selection === "sortBy") {
+      setIsSelectingSortBy(!isSelectingSortBy);
+      setIsSelectingLanguage(false);
+      setIsSelectingDomain(false);
+      setIsSelectingLevel(false);
+      setIsSelectingContentType(false);
     }
   };
 
@@ -66,6 +73,7 @@ function Index({
     setIsSelectingDomain(false);
     setIsSelectingLevel(false);
     setIsSelectingContentType(false);
+    setIsSelectingSortBy(false);
   };
   const updateSelectedLanguages = (language) => {
     if (selectedLanguages.includes(language)) {
@@ -98,6 +106,10 @@ function Index({
     } else {
       setSelectedContentTypes([...selectedContentTypes, contentType]);
     }
+  };
+  const updateSelectedSortBy = (contentType) => {
+    setSelectedSortBy(contentType);
+    setIsSelectingSortBy(false);
   };
   return (
     <div className={styles.container}>
@@ -230,25 +242,40 @@ function Index({
         selectedLevels.length > 0 ||
         selectedContentTypes.length > 0) && (
         <div onClick={() => clearFilters()} className={styles.clearFilters}>
-          Delete all filters
-          <svg
-            style={{ marginLeft: "6px" }}
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 12C2.6862 12 0 9.3138 0 6C0 2.6862 2.6862 0 6 0C9.3138 0 12 2.6862 12 6C12 9.3138 9.3138 12 6 12ZM6 10.8C7.27304 10.8 8.49394 10.2943 9.39411 9.39411C10.2943 8.49394 10.8 7.27304 10.8 6C10.8 4.72696 10.2943 3.50606 9.39411 2.60589C8.49394 1.70571 7.27304 1.2 6 1.2C4.72696 1.2 3.50606 1.70571 2.60589 2.60589C1.70571 3.50606 1.2 4.72696 1.2 6C1.2 7.27304 1.70571 8.49394 2.60589 9.39411C3.50606 10.2943 4.72696 10.8 6 10.8ZM6 5.1516L7.6968 3.4542L8.5458 4.3032L6.8484 6L8.5458 7.6968L7.6968 8.5458L6 6.8484L4.3032 8.5458L3.4542 7.6968L5.1516 6L3.4542 4.3032L4.3032 3.4542L6 5.1516Z"
-              fill="currentColor"
-            />
-          </svg>
+          <p style={{ marginBottom: 0, marginRight: "6px" }}>
+            Delete all filters
+          </p>
+          <Delete />
         </div>
       )}
-      <div className={styles.sortBy}>
-        <p>Sort By</p>
-        <div className={styles.sortByArrow}>{<ArrowDown />}</div>
+      <div className={styles.sortByContainer}>
+        <div
+          className={styles.sortBy}
+          onClick={() => updateCurrentSelection("sortBy")}
+        >
+          <p>Sort By</p>
+          <div className={styles.selectionArrow}>
+            {isSelectingSortBy ? <ArrowUp /> : <ArrowDown />}
+          </div>
+        </div>
+        {isSelectingSortBy && (
+          <div className={styles.sortByOptionsContainer}>
+            <div className={styles.selectOptions}>
+              {sortByOptions.map((sortOption) => (
+                <label className={styles.selectOption}>
+                  <input
+                    type="checkbox"
+                    key={sortOption}
+                    value={sortOption}
+                    checked={selectedSortBy.includes(sortOption)}
+                    onChange={(e) => updateSelectedSortBy(e.target.value)}
+                  />
+                  {sortOption}
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

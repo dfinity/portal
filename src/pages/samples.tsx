@@ -14,6 +14,7 @@ import basicDAO from "@site/static/img/samples/basicDAO.png";
 import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
+import PlusIcon from "@site/static/img/samples/plus.svg";
 
 const sampleItems = [
   {
@@ -121,6 +122,7 @@ function Samples(): JSX.Element {
   const [selectedDomains, setSelectedDomains] = React.useState([]);
   const [selectedLevels, setSelectedLevels] = React.useState([]);
   const [selectedContentTypes, setSelectedContentTypes] = React.useState([]);
+  const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--ifm-color-primary",
@@ -150,6 +152,8 @@ function Samples(): JSX.Element {
             setSelectedLevels={setSelectedLevels}
             selectedContentTypes={selectedContentTypes}
             setSelectedContentTypes={setSelectedContentTypes}
+            selectedSortBy={selectedSortBy}
+            setSelectedSortBy={setSelectedSortBy}
           />
           <div className={styles.cards}>
             {sampleItems.map((sample) => (
@@ -161,6 +165,12 @@ function Samples(): JSX.Element {
                 links={sample.links}
               />
             ))}
+          </div>
+          <div className={styles.loadMore}>
+            <div className={styles.plusIcon}>
+              <PlusIcon />
+            </div>
+            <p className={styles.selectTitle}>Load more</p>
           </div>
         </div>
       </main>
