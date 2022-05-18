@@ -2,3 +2,6 @@
 	path = submodules/motoko
 	url = https://github.com/dfinity/motoko.git
 	branch = claudio/markdown-docs
+[submodule "submodules/sdk"]
+	path = submodules/sdk
+	url = git@github.com:dfinity/sdk.git
