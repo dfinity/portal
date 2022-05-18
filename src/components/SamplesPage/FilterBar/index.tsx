@@ -69,6 +69,7 @@ function Index({
     setSelectedDomains([]);
     setSelectedLevels([]);
     setSelectedContentTypes([]);
+    setSelectedSortBy("Relevance");
     setIsSelectingLanguage(false);
     setIsSelectingDomain(false);
     setIsSelectingLevel(false);

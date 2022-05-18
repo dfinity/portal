@@ -6,6 +6,7 @@ import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import BGCircle from "@site/static/img/samples/bgcircle.svg";
+import PlusIcon from "@site/static/img/samples/plus.svg";
 import nftMinting from "@site/static/img/samples/nftMinting.png";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
 import staticWebsite from "@site/static/img/samples/staticWebsite.png";
@@ -14,13 +15,12 @@ import basicDAO from "@site/static/img/samples/basicDAO.png";
 import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
-import PlusIcon from "@site/static/img/samples/plus.svg";
 
 const sampleItems = [
   {
     title: "NFT Minting",
     image: nftMinting,
-    domains: ["Gaming", "Beginner", "NFT", "Motoko", "Rust"],
+    domains: ["Gaming", "NFT", "Motoko", "Rust"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
       action: { text: "Get code", to: "/" },
@@ -33,7 +33,7 @@ const sampleItems = [
   {
     title: "Hello World",
     image: helloWorld,
-    domains: ["Basic", "Motoko", "Rust"],
+    domains: ["Motoko", "Rust"],
     body: "Deploy a dead simple dapp using two canisters serving a web page.",
     links: {
       action: { text: "Get code", to: "/" },
@@ -46,7 +46,7 @@ const sampleItems = [
   {
     title: "Static Website",
     image: staticWebsite,
-    domains: ["Global", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["Global", "Website", "Motoko", "Rust"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
       action: { text: "Docs", to: "/" },
@@ -58,7 +58,7 @@ const sampleItems = [
   {
     title: "Basic Dex",
     image: basicDex,
-    domains: ["DeFi", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["DeFi", "Website", "Motoko", "Rust"],
     body: "Build dapp to enable DeFi applications on the IC.",
     links: {
       action: { text: "Get Code", to: "/" },
@@ -69,7 +69,7 @@ const sampleItems = [
   {
     title: "Basic DAO",
     image: basicDAO,
-    domains: ["Gaming", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["Gaming", "Website", "Motoko", "Rust"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
       action: { text: "Get Code", to: "/" },
@@ -81,7 +81,7 @@ const sampleItems = [
   {
     title: "Encrypted note-taking",
     image: encryptedNoteTaking,
-    domains: ["DeFi", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["DeFi", "Website", "Motoko", "Rust"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
       action: { text: "Get Code", to: "/" },
@@ -92,7 +92,7 @@ const sampleItems = [
   {
     title: "Token transfer",
     image: tokenTransfer,
-    domains: ["Global", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["Global", "Website", "Motoko", "Rust"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
       action: { text: "Get Code", to: "/" },
@@ -105,7 +105,7 @@ const sampleItems = [
   {
     title: "Actor reference",
     image: actorReference,
-    domains: ["Basic", "Website", "Basic", "Motoko", "Rust"],
+    domains: ["Website", "Motoko", "Rust"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
       action: { text: "Get Code", to: "/" },
