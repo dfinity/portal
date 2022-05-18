@@ -66,7 +66,7 @@ const sidebars = {
               type: 'category',
               label: 'Motoko',
               link: {
-                // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                // type: 'doc', id: 'developer-docs/build/languages/motoko/index', 
                 type: 'doc', id: 'developer-docs/build/languages/motoko/motoko',
               },
               items: [
