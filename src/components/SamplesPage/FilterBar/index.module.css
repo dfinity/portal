@@ -34,7 +34,8 @@
   border-radius: 12px;
 }
 
-.selectOptionsContainer {
+.selectOptionsContainer,
+.sortByOptionsContainer {
   display: flex;
   justify-content: center;
   width: 250px;
@@ -43,6 +44,9 @@
   left: 50%;
   transform: translateX(-50%);
   color: black;
+}
+.sortByOptionsContainer {
+  top: 65%;
 }
 
 .selectOptions {
@@ -89,7 +93,12 @@
   align-items: center;
   justify-content: center;
 }
-.sortBy {
+.sortByContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  position: relative;
   margin: 0 0 0 auto;
 }
 

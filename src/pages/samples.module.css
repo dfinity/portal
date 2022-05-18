@@ -6,7 +6,7 @@
 }
 .container {
   width: Min(1340px, 90%);
-    margin: 120px auto;
+  margin: 120px auto;
 }
 .BGShape {
   z-index: -1000;
@@ -32,6 +32,24 @@
   position: relative;
 }
 
+.loadMore {
+  display: flex;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: rgba(59, 0, 185, 1);
+  align-items: center;
+  justify-content: center;
+  margin-top: 82px;
+}
+.loadMore p {
+  margin-bottom: 0;
+}
+.plusIcon {
+  display: inline-block;
+  margin-right: 8px;
+  height: 24px;
+}
 @media screen and (max-width: 996px) {
   .cards {
     grid-template-columns: repeat(1, 1fr);
