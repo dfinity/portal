@@ -45,6 +45,9 @@
 .loadMore p {
   margin-bottom: 0;
 }
+.loadMore:hover {
+  color: rgba(24, 24, 24, 0.6);
+}
 .plusIcon {
   display: inline-block;
   margin-right: 8px;

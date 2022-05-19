@@ -1,7 +1,6 @@
 .container {
   width: 320px;
   height: 436px;
-  overflow: hidden;
   border-radius: 12px;
   background-color: #ffffff;
   margin: auto;
@@ -37,7 +36,7 @@
   color: rgba(24, 24, 24, 0.6);
 }
 
-.mainDomain {
+.mainHighlight {
   position: absolute;
   display: flex;
   top: -15px;
@@ -54,15 +53,15 @@
   line-height: 22px;
 }
 
-.mainDomain:hover .domainsContainer {
+.mainHighlight:hover .highlightsContainer {
   display: flex;
 }
 
-.domainDivider {
+.highlightDivider {
   margin: 0 10px;
 }
 
-.domainsContainer {
+.highlightsContainer {
   width: 100%;
   position: absolute;
   bottom: 100%;
@@ -70,10 +69,10 @@
   display: none;
 }
 
-.domains {
+.highlights {
   color: black;
   margin: 0 auto 8px auto;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(40px);
   justify-content: center;
   flex-direction: column;
@@ -82,7 +81,7 @@
   display: flex;
 }
 
-.domains p {
+.highlights p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,6 +100,8 @@
   height: 200px;
   object-fit: cover;
   display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .actionButton {

@@ -7,7 +7,7 @@ import Delete from "@site/static/img/samples/delete.svg";
 const languageOptions = ["Motoko", "Rust", "Javascript"];
 const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT", "IoT"];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
-const contentTypeOptions = ["Code Samples", "Videos", "Documentation"];
+const contentTypeOptions = ["Code Samples", "Videos", "Documentation", "Live Demos"];
 const sortByOptions = ["Relevance", "A to Z", "Z to A"];
 
 function Index({
