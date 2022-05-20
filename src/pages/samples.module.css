@@ -54,7 +54,15 @@
   height: 24px;
 }
 @media screen and (max-width: 996px) {
+  .container {
+    margin: 42px auto;
+  }
   .cards {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .BGShape{
+    right: -100px;
+    top: 300px;
+    width: 300px;
   }
 }

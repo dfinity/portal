@@ -28,11 +28,14 @@ const sampleItems = [
     highlights: ["Beginner", "Motoko", "Rust", "Beginner"],
     body: "Deploy a dead simple dapp using two canisters serving a web page.",
     links: {
-      action: { text: "Get code", to: "/" },
-      motoko: "/",
-      rust: "/",
-      livePreview: "/",
-      docs: "/",
+      action: {
+        text: "Get code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/hello",
+      },
+      motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
+      livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
+      docs: "hello",
     },
   },
   {
@@ -46,9 +49,9 @@ const sampleItems = [
     highlights: ["Global", "Website", "Motoko", "Rust", "Beginner"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
-      action: { text: "Docs", to: "/" },
-      docs: "/",
-      youtube: "/",
+      action: { text: "Docs", to: "host-a-website" },
+      docs: "host-a-website",
+      youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
     },
   },
   {
@@ -62,12 +65,15 @@ const sampleItems = [
     highlights: ["DeFi", "Website", "Motoko", "Rust", "Intermediate"],
     body: "Build dapp to enable DeFi applications on the IC.",
     links: {
-      action: { text: "Get Code", to: "/" },
-      motoko: "/",
-      rust: "/",
-      livePreview: "/",
-      docs: "/",
-      youtube: "/",
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/defi",
+      },
+      motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
+      livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
+      docs: "dex",
+      youtube: "https://youtu.be/fLbaOmH24Gs",
     },
   },
   {
@@ -81,10 +87,13 @@ const sampleItems = [
     highlights: ["NFT", "Gaming", "Motoko", "Rust", "Intermediate"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
-      action: { text: "Get code", to: "/" },
-      rust: "/",
-      docs: "/",
-      youtube: "/",
+      action: {
+        text: "Get code",
+        to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
+      },
+      rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
+      docs: "nft",
+      youtube: "https://youtu.be/1po3udDADp4",
     },
   },
   {
@@ -98,11 +107,15 @@ const sampleItems = [
     highlights: ["Global", "DeFi", "Motoko", "Rust", "Intermediate"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
-      action: { text: "Get Code", to: "/" },
-      motoko: "/",
-      rust: "/",
-      docs: "/",
-      youtube: "/",
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
+      },
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
+      docs: "dao",
+      youtube: "https://youtu.be/3IcYlieA-EE",
     },
   },
   {
@@ -116,12 +129,16 @@ const sampleItems = [
     highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
-      action: { text: "Get Code", to: "/" },
-      motoko: "/",
-      rust: "/",
-      livePreview: "/",
-      docs: "/",
-      youtube: "/",
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
+      },
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
+      rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
+      livePreview: "https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/",
+      docs: "encrypted-notes",
+      youtube: "https://youtu.be/DZQmtPSxvbs",
     },
   },
   {
@@ -135,10 +152,14 @@ const sampleItems = [
     highlights: ["Global", "Motoko", "Rust", "Advanced"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
-      action: { text: "Get Code", to: "/" },
-      motoko: "/",
-      rust: "/",
-      docs: "/",
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
+      },
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
+      docs: "token-transfer",
     },
   },
   {
@@ -152,9 +173,12 @@ const sampleItems = [
     highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
-      action: { text: "Get Code", to: "/" },
-      motoko: "/",
-      docs: "/",
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
+      },
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
     },
   },
 ];

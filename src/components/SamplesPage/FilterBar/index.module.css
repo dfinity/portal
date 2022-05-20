@@ -13,7 +13,14 @@
   -ms-user-select: none;
   user-select: none;
 }
-
+.selectBoxes {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
 .selectBoxContainer {
   display: inline-flex;
   justify-content: center;
@@ -110,7 +117,11 @@
   margin-left: 4px;
   height: 22px;
 }
-
+.filterIcon {
+  display: inline-block;
+  margin-right: 10px;
+  height: 20px;
+}
 .selectTitle {
   font-size: 16px;
   font-weight: 500;
@@ -124,10 +135,9 @@
   height: 22px;
 }
 
-.selectOptions input[type="checkbox"] {
+input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fff;
   margin: 0;
   font: inherit;
   color: currentColor;
@@ -140,11 +150,11 @@
   place-content: center;
 }
 
-.selectOptions input[type="checkbox"]:hover {
+input[type="checkbox"]:hover {
   border: 2px solid #3b00b9;
 }
 
-.selectOptions input[type="checkbox"]::before {
+input[type="checkbox"]::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -153,17 +163,135 @@
   border-radius: 2px;
 }
 
-.selectOptions input[type="checkbox"]:checked::before {
+input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-.selectOptions .selectOption {
+.selectOption {
   display: grid;
   grid-template-columns: 24px auto;
   gap: 12px;
   align-items: center;
 }
 
-.selectOptions .selectOption + .selectOption {
+.selectOption + .selectOption {
   margin-top: 1em;
+}
+.closeIcon {
+  display: flex;
+  justify-content: flex-end;
+  height: 18px;
+}
+.mobileFilterTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 32px 0;
+}
+.mobileFilterBar {
+  display: none;
+  position: fixed;
+  background: var(--ifm-background-color);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 2100;
+  padding: 50px 5vw;
+  overflow: scroll;
+}
+.mobileSelectContainer {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}
+.mobileSelectContainer p {
+  margin-bottom: 24px;
+}
+.mobileFilterOptions {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 32px;
+}
+.mobileFilterButton,
+.mobileFilterClearButton {
+  display: flex;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.mobileFilterButton {
+  border: 2px solid #3b00b9;
+  border-radius: 12px;
+  background: #3b00b9;
+  color: white;
+  margin: 16px 0;
+}
+.mobileFilterClearButton {
+  color: black;
+  text-decoration: none;
+}
+.mobileFilterBarButtonContainer {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
+}
+.mobileFilterBarButton {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  width: 204px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  color: white;
+  -webkit-backface-visibility: hidden;
+}
+.mobileFilterBarButton .numberOfItems {
+  color: black;
+  margin: 0 0 0 8px;
+}
+.filterBarHeader,
+.mobileFilterBarHeader {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+.mobileFilterBarHeader {
+  display: none;
+}
+@media screen and (max-width: 996px) {
+  .mobileFilterBarButtonContainer,
+  .mobileFilterBarHeader {
+    display: flex;
+  }
+  .mobileFilterBar {
+    display: block;
+  }
+  .selectBoxes,
+  .filterBarHeader {
+    display: none;
+  }
+  .sortByContainer {
+    margin: 0 20px 0 auto;
+  }
 }
