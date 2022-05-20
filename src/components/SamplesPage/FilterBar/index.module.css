@@ -271,10 +271,12 @@ input[type="checkbox"]:checked::before {
 }
 .filterBarHeader,
 .mobileFilterBarHeader {
-  display: flex;
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
+}
+.filterBarHeader{
+  display: flex;
 }
 .mobileFilterBarHeader {
   display: none;
