@@ -5,9 +5,8 @@ function Index() {
     return (
         <div className={styles.container}>
             <p className={styles.title}>Sample Code</p>
-            <p className={styles.body}>Take a look at some sample dapps below and see the possibilities of building on
-                the IC. All samples and
-                further projects can be found in the Samples repo.</p>
+            <p className={styles.body}>Get inspired! The possibilities of what to build on the IC are infinite. All
+                samples and further projects can be found in the examples repo.</p>
         </div>
     );
 }
