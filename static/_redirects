@@ -159,3 +159,8 @@
 /docs/token-holders/seed-donations.html /docs/current/tokenomics/token-holders/seed-donations
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
+
+
+# ICA webiste redirects
+/eula https://association.internetcomputer.org/eula 301!
+/eula-storage https://association.internetcomputer.org/eula-storage 301!
