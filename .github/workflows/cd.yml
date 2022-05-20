@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: "Beta Netlify"
-      url: https://smartcontracts.org
+      name: "Netlify"
+      url: https://internetcomputer.org
 
     steps:
       - uses: actions/checkout@v2
