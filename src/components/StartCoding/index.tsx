@@ -39,7 +39,7 @@ function StartCoding() {
             <div className={styles.grid}>
                 <Information title="Sample Code"
                              body="Ready to code? Have some fun building DeFi, NFT-minting dapps and more on the Internet Computer."
-                             link={"https://smartcontracts.org/samples/overview"}/>
+                             link={"/samples"}/>
                 <Information title="Wiki"
                              body="Get to know the Internet Computer — its concepts, architecture and technical breakthroughs."
                              link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki"}/>
