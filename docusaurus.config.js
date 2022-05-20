@@ -166,7 +166,7 @@ const config = {
                             },
                             {
                                 label: 'Internet Computer Association',
-                                to: 'https://internetcomputer.org/',
+                                to: 'https://association.internetcomputer.org/',
                             },
                         ],
                     },
