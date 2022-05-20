@@ -163,3 +163,4 @@
 
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!
+/eula-storage https://association.internetcomputer.org/eula-storage 301!
