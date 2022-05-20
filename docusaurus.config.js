@@ -125,7 +125,7 @@ const config = {
                         position: 'right',
                     },
                     {
-                        to: '/samples/overview',
+                        to: '/samples',
                         label: 'Sample Code',
                         position: 'right',
                     },
