@@ -63,15 +63,13 @@ just one.
 
 To install, run:
 
-    $ sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    $ sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
 To verify that `dfx` is properly installed, run:
 
     $ dfx --version
 
-The terminal should look like this (at least version 0.9.2):
-
-![dfx version](_attachments/dfx-version.png)
+The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
 ## Create a project (2 min)
 

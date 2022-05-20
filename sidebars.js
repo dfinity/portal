@@ -248,6 +248,7 @@ const sidebars = {
       },
       items: [
         'references/cli-reference/dfx-parent',
+        'references/cli-reference/dfx-bootstrap',
         'references/cli-reference/dfx-build',
         'references/cli-reference/dfx-cache',
         'references/cli-reference/dfx-canister',
@@ -261,6 +262,7 @@ const sidebars = {
         'references/cli-reference/dfx-ping',
         'references/cli-reference/dfx-replica',
         'references/cli-reference/dfx-start',
+        'references/cli-reference/dfx-stop',
         'references/cli-reference/dfx-upgrade',
         'references/cli-reference/dfx-wallet',
         'references/cli-reference/dfx-envars',
@@ -363,7 +365,6 @@ const sidebars = {
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
         'tokenomics/identity-auth/auth-how-to',
-        'tokenomics/identity-auth/plug-ids',
         'tokenomics/identity-auth/hello-guide'
       ]
     },

@@ -14,14 +14,14 @@ Depending on the `dfx ledger` subcommand you specify, additional arguments, opti
 
 | Command                               | Description                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------|
-| [`account-id`](#account-id)           | Prints the selected identity’s Account Identifier.                                   |
-| [`balance`](#balance)                 | Prints the account balance of the user.                                              |
-| [`create-canister`](#create-canister) | Creates a canister from ICP.                                                         |
-| [`fabricate-cycles`](#fabricate-cycles) | Local development only: Fabricate cycles out of thin air and deposit them into the specified canister(s) |
+| [`account-id`](#dfx-ledger-account-id)           | Prints the selected identity’s Account Identifier.                                   |
+| [`balance`](#dfx-ledger-balance)                 | Prints the account balance of the user.                                              |
+| [`create-canister`](#dfx-ledger-create-canister) | Creates a canister from ICP.                                                         |
+| [`fabricate-cycles`](#dfx-ledger-fabricate-cycles) | Local development only: Fabricate cycles out of thin air and deposit them into the specified canister(s) |
 | `help`                                | Displays usage information message for a specified subcommand.                       |
-| [`notify`](#notify)                   | Notifies the ledger when there is a send transaction to the cycles minting canister. |
-| [`top-up`](#top-up)                   | Tops up a canister with cycles minted from ICP.                                      |
-| [`transfer`](#transfer)               | Transfers ICP from the user to the destination Account Identifier.                   |
+| [`notify`](#dfx-ledger-notify)                   | Notifies the ledger when there is a send transaction to the cycles minting canister. |
+| [`top-up`](#dfx-ledger-top-up)                   | Tops up a canister with cycles minted from ICP.                                      |
+| [`transfer`](#dfx-ledger-transfer)               | Transfers ICP from the user to the destination Account Identifier.                   |
 
 To view usage information for a specific subcommand, specify the subcommand and the `--help` flag. For example, to see usage information for `dfx ledger transfer`, you can run the following command:
 

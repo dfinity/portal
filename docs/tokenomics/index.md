@@ -13,8 +13,7 @@ One of the advantages of building apps on the Internet Computer is that users ca
 - [What is Internet Identity](identity-auth/what-is-ic-identity.md)
 - [How to get started with Internet Identity](identity-auth/auth-how-to.md)
 
-There are many ways to interact with the IC; as a user, as a developer, as a token holder and communicating with these different entities required different forms of identification. The folks at Plug wrote a useful guide to give an overview of the different IDs you may encounter on the IC. 
-- [Plug's IC IDs 101](identity-auth/plug-ids.md)
+<!-- There are many ways to interact with the IC; as a user, as a developer, as a token holder and communicating with these different entities required different forms of identification. -->
 
 ## Token Holders
 There are multiple ways to obtain token; purchasing via an exchange, earning as a node provider, receiving from a friend, or otherwise. Learn about some options for how to hold tokens, and how you can set up self-custody. Follow the quickstart to take control of your tokens. 

@@ -10,11 +10,11 @@ As you start to explore the Motoko programming language, you should keep in mind
 
 An actor is a special kind of object that passes its messages in an isolated state. When you define an actor, its messages are processed in sequence but in isolation from on each other. As an example of using actors, consider the following program:
 
-~~~ bash
+``` bash
 let result1 = await service1.computeAnswer(params);
 let result2 = await service2.computeAnswer(params);
 finalStep(result1, result2)
-~~~
+```
 
 In this example, the program makes two requests to two distinct services. Each service is implemented internally as an actor (object). The program waits using the `await` keyword to wait for each result value in sequence. The program then uses the result from each request them in the final step, calling the function `finalStep`.
 
@@ -30,9 +30,9 @@ Like other languages, Motoko includes many common functions in predefined prelud
 
 For example, you might include a line similar to the following to import list functions from the standard library:
 
-~~~ bash
+``` bash
 import List "../../motoko/base/list";
-~~~
+```
 
 # Basic language features {#_basic_language_features}
 
@@ -46,10 +46,10 @@ You can use single-line, multi-line, or nested multi-line comments to include de
 
 Single-line comments begin with two forward-slashes (//) and consist of the characters following `//` to the end of the same line. For example, you can have single-line comments above, below, or on the same line as the code to which the comment applies.
 
-~~~ bash
+``` bash
 // This is a single-line comment on its own line above relevant code
 import List = "ListLib";
-~~~
+```
 
 ### Multi-line and nested comments {#_multi_line_and_nested_comments}
 

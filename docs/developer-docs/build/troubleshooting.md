@@ -56,11 +56,11 @@ Many of the bugs you might encounter can be addressed by uninstalling and reinst
 
 If you only have one version of `dfx` installed in your development environment, you can usually run the following command to uninstall and reinstall the latest version of `dfx`:
 
-    ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://sdk.dfinity.org/install.sh)"
+    ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
 
 If you have modified the location of the `dfx` binary, you might want run the following command to uninstall the version of `dfx` that is in your PATH, then reinstall the latest version of `dfx`:
 
-    rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://sdk.dfinity.org/install.sh)"
+    rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
 
 ## Xcode prerequisite
 
@@ -118,4 +118,4 @@ Fixing memory leaks is an ongoing process. If you encounter any error messages r
 
 Alternatively, you can remove the `.cache/dfinity` directory and re-install the latest `dfx` binary. For example:
 
-    rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://sdk.dfinity.org/install.sh)"
+    rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"

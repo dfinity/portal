@@ -56,9 +56,7 @@ To verify that `dfx` properly installed, run:
 dfx --version
 ```
 
-The terminal should look like this (at least version 0.9.2):
-
-![dfx version](_attachments/dfx-version.png)
+The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
 More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove).
 
@@ -338,7 +336,7 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-## 5.Deploy on-chain (1 min)
+## 5. Deploy on-chain (1 min)
 
 Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 

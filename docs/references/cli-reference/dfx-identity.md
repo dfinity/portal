@@ -18,17 +18,17 @@ For reference information and examples that illustrate using `dfx identity` comm
 
 | Command                                         | Description                                                                                                               |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| [`get-principal`](#_dfx_identity_get_principal) | Shows the textual representation of the principal associated with the current identity.                                   |
-| [`get-wallet`](#_dfx_identity_get_wallet)       | Shows the canister identifier for the wallet associated with your current identity principal.                             |
+| [`get-principal`](#dfx-identity-get-principal) | Shows the textual representation of the principal associated with the current identity.                                   |
+| [`get-wallet`](#dfx-identity-get-wallet)       | Shows the canister identifier for the wallet associated with your current identity principal.                             |
 | `help`                                          | Displays this usage message or the help of the given subcommand(s).                                                       |
-| [`import`](#_dfx_identity_import)               | Creates a new identity by importing a PEM file that contains the key information or security certificate for a principal. |
-| [`list`](#_dfx_identity_list)                   | Lists existing identities.                                                                                                |
-| [`new`](#_dfx_identity_new)                     | Creates a new identity.                                                                                                   |
-| [`remove`](#_dfx_identity_remove)               | Removes an existing identity.                                                                                             |
-| [`rename`](#_dfx_identity_rename)               | Renames an existing identity.                                                                                             |
-| [`set-wallet`](#_dfx_identity_set_wallet)       | Sets the wallet canister identifier to use for your current identity principal.                                           |
-| [`use`](#_dfx_identity_use)                     | Specifies the identity to use.                                                                                            |
-| [`whoami`](#_dfx_identity_whoami)               | Displays the name of the current identity user context.                                                                   |
+| [`import`](#dfx-identity-import)               | Creates a new identity by importing a PEM file that contains the key information or security certificate for a principal. |
+| [`list`](#dfx-identity-list)                   | Lists existing identities.                                                                                                |
+| [`new`](#dfx-identity-new)                     | Creates a new identity.                                                                                                   |
+| [`remove`](#dfx-identity-remove)               | Removes an existing identity.                                                                                             |
+| [`rename`](#dfx-identity-rename)               | Renames an existing identity.                                                                                             |
+| [`set-wallet`](#dfx-identity-set-wallet)       | Sets the wallet canister identifier to use for your current identity principal.                                           |
+| [`use`](#dfx-identity-use)                     | Specifies the identity to use.                                                                                            |
+| [`whoami`](#dfx-identity-whoami)               | Displays the name of the current identity user context.                                                                   |
 
 ## Creating a default identity
 

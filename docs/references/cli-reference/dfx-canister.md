@@ -16,21 +16,21 @@ dfx canister call --help
 
 For reference information and examples that illustrate using `dfx canister` commands, select an appropriate command.
 
-| Command                                           | Description                                                                                                                                                                                                                                                                                                       |
-|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`call`](#_dfx_canister_call)                     | Calls a specified method on a deployed canister.                                                                                                                                                                                                                                                                  |
-| [`create`](#_dfx_canister_create)                 | Creates a new "empty" canister by registering a canister identifier on the {platform} or the local canister execution environment.                                                                                                                                                                                |
-| [`delete`](#_dfx_canister_delete)                 | Deletes a currently stopped canister.                                                                                                                                                                                                                                                                             |
-| `help`                                            | Displays usage information message for a specified subcommand.                                                                                                                                                                                                                                                    |
-| [`id`](#_dfx_canister_id)                         | Displays the identifier for a canister.                                                                                                                                                                                                                                                                           |
-| [`install`](#_dfx_canister_install)               | Installs compiled code as a canister on the {platform} or the local canister execution environment.                                                                                                                                                                                                               |
-| [`request-status`](#_dfx_canister_request_status) | Requests the status of a call to a canister.                                                                                                                                                                                                                                                                      |
-| [`set-controller`](#_dfx_canister_set_controller) | Specifies the identity name or principal to use as the new controller for a specified canister on the {platform}.                                                                                                                                                                                                 |
-| [`send`](#_dfx_canister_send)                     | Send a previously-signed `message.json` to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.                  |
-| [`sign`](#_dfx_canister_send)                     | Create a signed `message.json` file before making a call to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons. |
-| [`start`](#_dfx_canister_start)                   | Restarts a stopped canister.                                                                                                                                                                                                                                                                                      |
-| [`status`](#_dfx_canister_status)                 | Requests the running status of a canister.                                                                                                                                                                                                                                                                        |
-| [`stop`](#_dfx_canister_stop)                     | Stops a currently running canister.                                                                                                                                                                                                                                                                               |
+| Command                               | Description               |
+|---------------------------------------|---------------------------|
+| [`call`](#dfx-canister-call)         | Calls a specified method on a deployed |
+| [`create`](#dfx-canister-create)     | Creates a new "empty" canister by registering a canister identifier on the {platform} or the local canister execution environment.|
+| [`delete`](#dfx-canister-delete)     | Deletes a currently stopped canister.                                                                                          |
+| `help`  | Displays usage information message for a specified subcommand.       |
+| [`id`](#dfx-canister-id)                         | Displays the identifier for a canister.   |
+| [`install`](#dfx-canister-install)               | Installs compiled code as a canister on the {platform} or the local canister execution environment. |
+| [`request-status`](#dfx-canister-request-status) | Requests the status of a call to a canister. |
+| [`set-controller`](#dfx-canister-set-controller) | Specifies the identity name or principal to use as the new controller for a specified canister on the {platform}.|
+| [`send`](#dfx-canister-send)                     | Send a previously-signed `message.json` to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons.|
+| [`sign`](#dfx-canister-send)                     | Create a signed `message.json` file before making a call to a specified canister identifier. For example, if you want to send a message that calls the network nervous system (NNS) governance canister to manage neurons, you might want to separate message signing from message delivery for security reasons. |
+| [`start`](#dfx-canister-start)                   | Restarts a stopped canister. |
+| [`status`](#dfx-canister-status)                 | Requests the running status of a canister.|
+| [`stop`](#dfx-canister-stop)                     | Stops a currently running canister.|
 
 ## Overriding the default deployment environment
 
@@ -58,7 +58,7 @@ dfx canister --network \http://192.168.3.1:5678 call counter get
 
 Note that you must specify the `--network` parameter before the canister operation (`create` or `call`) and any additional arguments such as the canister name (`counter`), and function (`get`).
 
-## dfx canister call
+## dfx canister call 
 
 Use the `dfx canister call` command to call a specified method on a deployed canister.
 
@@ -179,7 +179,7 @@ You can use the following options with the `dfx canister create` command.
 
 You can use the following argument with the `dfx canister create` command.
 
-| Argument        | Description                                                                                                                                                                                                                                                                                                    |
+| Argument        | Description|
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `--all`         | Enables you to create multiple canister identifiers at once if you have a project `dfx.json` file that defines multiple canisters. Note that you must specify `--all` or an individual canister name.                                                                                                          |
 | `canister_name` | Specifies the name of the canister for which you want to register an identifier. If you are not using the `--all` option, the canister name is a required argument and must match at least one name that you have configured in the `canisters` section of the `dfx.json` configuration file for your project. |
