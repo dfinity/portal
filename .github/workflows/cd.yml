@@ -57,7 +57,7 @@ jobs:
           DFX_IDENTITY: ${{ secrets.DFX_IDENTITY }}
 
       - name: Install DFX
-        run: sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+        run: sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
       - name: Start deamon
         run: dfx start --background

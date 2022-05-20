@@ -6,7 +6,7 @@
 
 .showcaseContainer {
     width: Min(1100px, 90%);
-    padding: 150px 0;
+    padding: 50px 0;
     margin: auto;
     position: relative;
 }
@@ -79,6 +79,8 @@
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
     scrollbar-color: white #3b00b9;
+    position: relative;
+    z-index: 1000;
 }
 
 .cards::-webkit-scrollbar {
@@ -231,12 +233,22 @@
     bottom: -50px;
 }
 
+.BGShape {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 @media screen and (max-width: 996px) {
 
     .container {
         background-color: #3b00b9;
     }
-
+    .BGShape{
+        display: none;
+    }
     .showcaseContainer {
         margin: auto;
         padding: 100px 0;

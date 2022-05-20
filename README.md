@@ -1,10 +1,12 @@
 <img src="https://user-images.githubusercontent.com/15371828/158857061-8fa8d079-d33f-4ed2-88aa-56d452d238d8.svg" align="right" alt="Monetae logo" width="270">
 
-# Internet Computer Developer Portal
+# Internet Computer Developer Portal 
 
 The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
 
 https://smartcontracts.org
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0ef9e793-aa30-446a-ae7a-a18ac304db58/deploy-status)](https://app.netlify.com/sites/icportal/deploys) [![CD](https://github.com/dfinity/portal/actions/workflows/cd.yml/badge.svg)](https://github.com/dfinity/portal/actions/workflows/cd.yml)
 
 ## Contributing
 The Developer Portal uses [Docusaurus](https://docusaurus.io/docs). 

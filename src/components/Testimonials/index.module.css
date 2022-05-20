@@ -1,7 +1,6 @@
 .main {
     width: 100%;
     position: relative;
-    overflow: hidden;
     height: 100%;
     display: inline-flex;
     flex-direction: column;
@@ -18,14 +17,15 @@
     font-size: 32px;
     font-weight: 400;
     line-height: 42px;
-    margin: auto auto 30px auto;
+    margin: auto;
     position: relative;
 }
 
 .bodyContainer {
     position: relative;
     display: flex;
-    height: 320px;
+    height: 380px;
+    margin: auto 0;
 }
 
 .container {
@@ -229,6 +229,7 @@
 
     .bodyContainer {
         height: 100%;
+        margin: 50px 0;
     }
 
     .quotes {

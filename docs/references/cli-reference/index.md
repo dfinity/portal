@@ -16,7 +16,7 @@ When you have the SDK installed, you can use the following commands to specify t
 
 -   [dfx](dfx-parent)
 
-<!-- -   [dfx bootstrap](dfx-bootstrap) -->
+-   [dfx bootstrap](dfx-bootstrap)
 
 -   [dfx build](dfx-build)
 

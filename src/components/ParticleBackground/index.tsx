@@ -61,10 +61,10 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
         this.strength = -5; // Strength: positive value attracts, negative value repels
         this.damping = 0.99;
         this.maxVelocity = 10;
-        this.minX = pRadius;
-        this.minY = pRadius;
-        this.maxX = p5.width - pRadius;
-        this.maxY = p5.height - pRadius;
+        this.minX = pRadius - 50;
+        this.minY = pRadius - 50;
+        this.maxX = p5.width - pRadius + 50;
+        this.maxY = p5.height - pRadius + 50;
         this.update = function () {
             this.vel.add(this.acc);
             this.vel.limit(this.maxVelocity);

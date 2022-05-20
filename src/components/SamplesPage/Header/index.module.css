@@ -1,0 +1,20 @@
+.container {
+    width: Min(1100px, 90%);
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.title , .body {
+    display: inline-flex;
+    width: min(660px, 100%);
+}
+.title {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 90px;
+}
+.body {
+    font-size: 18px;
+    line-height: 28px;
+}

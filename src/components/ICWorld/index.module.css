@@ -82,6 +82,7 @@
     .cards {
         display: flex;
         overflow-x: scroll;
+        overflow-y: hidden;
         scroll-padding: 50% 0;
         scroll-snap-type: x mandatory;
         scrollbar-width: thin;

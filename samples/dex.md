@@ -62,7 +62,7 @@ The ledger canister provides a unique interface so that interactions with ICP ne
 
 ### Depositing Tokens
 
-Depositing tokens is more straightforward because DIP20 provides a richer interface to interact with.
+There are a number of token standards in development (e.g. IS20, DFT, and DRC20); This sample uses DIP20.
 
 -   The user calls the `approve` function of the token canister. This gives the exchange the ability to transfer funds to itself on behalf of the user.
 
