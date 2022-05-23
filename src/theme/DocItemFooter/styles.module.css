@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+.feedbackContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.feedback {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 0 0 1em;
+}
+.feedbackIcon {
+  display: flex;
+  justify-content: flex-end;
+  height: 20px;
+  margin-right: 0.3em;
+  vertical-align: sub;
+}
+.lastUpdated {
+  margin-top: 0.2rem;
+  font-style: italic;
+  font-size: smaller;
+}
+
+@media screen and (max-width: 996px) {
+  .feedbackContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .feedback {
+    margin: 1em 0;
+  }
+}
+@media (min-width: 997px) {
+  .lastUpdated {
+    text-align: right;
+  }
+}
