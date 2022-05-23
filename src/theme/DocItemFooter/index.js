@@ -42,7 +42,7 @@ function EditMetaRow({
           {editUrl && <EditThisPage editUrl={editUrl} />}
           <Link
             className={styles.feedback}
-            to={"https://github.com/dfinity/portal/issues/new"}
+            to={"https://github.com/dfinity/portal/issues/new?labels=feedback"}
           >
             <FeedbackIcon className={styles.feedbackIcon} />
             <span>Give feedback</span>
