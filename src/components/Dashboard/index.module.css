@@ -1,0 +1,121 @@
+.main {
+  position: relative;
+  padding: 32px 0;
+  width: Min(1340px, 90%);
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+  margin: auto;
+}
+
+.container,
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+}
+.container {
+  padding: 32px 32px 64px 32px;
+  height: 178px;
+}
+.actionButton {
+  margin: 4px auto;
+  height: 88px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  flex-direction: row;
+  color: black;
+}
+.actionButton:hover {
+  color: #3b00b9;
+  text-decoration: none;
+}
+.dashboardIcon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+.informationIcon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+.titleContainer {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.value {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+}
+.informationContainer {
+  position: relative;
+}
+.tooltipContainer {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(calc(-50% - 4px));
+}
+
+.tooltip {
+  display: none;
+  margin-bottom: 4px;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  background: rgba(24, 24, 24, 0.6);
+  backdrop-filter: blur(40px);
+  align-items: center;
+}
+.informationContainer:hover .tooltip {
+  display: inline-flex;
+}
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .container {
+    padding: 24px 24px 15px 24px;
+    height: 112px;
+  }
+
+  .value {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .actionButton {
+    height: 48px;
+  }
+}

@@ -5,7 +5,7 @@ import Features from "@site/src/components/Features";
 import SectionsBar from "@site/src/components/SectionsBar";
 import InternetComputer from "@site/src/components/InternetComputer";
 import HeroSection from "@site/src/components/HeroSection";
-import StartCoding from "@site/src/components/StartCoding";
+import Dashboard from "@site/src/components/Dashboard";
 import ICWorld from "@site/src/components/ICWorld";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
                     }
                 </BrowserOnly>
                 <HeroSection/>
-                <StartCoding/>
+                <Dashboard/>
                 <InternetComputer/>
                 <Features/>
                 <Showcase />
