@@ -11,6 +11,20 @@ const isDev = process.env.NODE_ENV === 'development';
 const isDeployPreview =
     !!process.env.NETLIFY && process.env.CONTEXT === 'deploy-preview';
 
+/** @type {import('@docusaurus/types').PluginModule} */
+const customDocusaurusPlugin = (context, options) => {
+  return {
+    name: `portal-docusaurus-plugin`,
+    configureWebpack(config, isServer, utils) {
+      return {
+        resolve: {
+          symlinks: false,
+        },
+      };
+    },
+  };
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Internet Computer Developer Portal',
@@ -22,7 +36,6 @@ const config = {
     favicon: 'img/favicon-32x32.png',
     organizationName: 'dfinity',
     projectName: 'portal',
-    trailingSlash: false,
 
     plugins: [
         require.resolve('docusaurus-lunr-search'),
@@ -39,6 +52,7 @@ const config = {
                 sidebarPath: require.resolve('./sidebarsSample.js'),
             }),
         ],
+        customDocusaurusPlugin
     ],
 
     presets: [
