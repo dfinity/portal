@@ -1,0 +1,3 @@
+[submodule "submodules/sdk"]
+	path = submodules/sdk
+	url = git@github.com:dfinity/sdk.git
