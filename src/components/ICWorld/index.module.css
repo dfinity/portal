@@ -80,6 +80,7 @@
 
 @media screen and (max-width: 996px) {
     .cards {
+        -webkit-overflow-scrolling: touch;
         display: flex;
         overflow-x: scroll;
         overflow-y: hidden;
