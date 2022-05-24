@@ -36,6 +36,7 @@ const config = {
     favicon: 'img/favicon-32x32.png',
     organizationName: 'dfinity',
     projectName: 'portal',
+    trailingSlash: false,
 
     plugins: [
         require.resolve('docusaurus-lunr-search'),
@@ -140,15 +141,15 @@ const config = {
                         position: 'right',
                     },
                     {
-                        to: '/samples/overview',
+                        to: '/samples',
                         label: 'Sample Code',
                         position: 'right',
                     },
-                    //{
-                    //    to: 'https://www.ic.community/',
-                    //    label: 'ic.community',
-                    //    position: 'right',
-                    //},
+                    {
+                       to: 'https://association.internetcomputer.org/',
+                       label: 'ICA',
+                       position: 'right',
+                    },
                     //{
                     //  type: 'docsVersionDropdown',
                     //  position: 'right',
@@ -181,7 +182,7 @@ const config = {
                             },
                             {
                                 label: 'Internet Computer Association',
-                                to: 'https://internetcomputer.org/',
+                                to: 'https://association.internetcomputer.org/',
                             },
                         ],
                     },

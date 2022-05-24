@@ -1,7 +1,7 @@
 import Changelog from './_attachments/interface-spec-changelog.md';
 
-
 # The Internet Computer Interface Specification {#_the_internet_computer_interface_specification}
+
 
 :::note
 You are looking at the `master` version of the document! If you are looking for implementation specification or documentation, look at one of the versions at <https://docs.dfinity.systems/public/v/>.
