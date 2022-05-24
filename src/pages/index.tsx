@@ -3,7 +3,6 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Features from "@site/src/components/Features";
 import SectionsBar from "@site/src/components/SectionsBar";
-import InternetComputer from "@site/src/components/InternetComputer";
 import HeroSection from "@site/src/components/HeroSection";
 import Dashboard from "@site/src/components/Dashboard";
 import ICWorld from "@site/src/components/ICWorld";
@@ -12,7 +11,6 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
 import Governance from "@site/src/components/Governance";
 import Showcase from "@site/src/components/Showcase";
-import Testimonials from "@site/src/components/Testimonials";
 
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
@@ -35,10 +33,10 @@ export default function Home(): JSX.Element {
                 </BrowserOnly>
                 <HeroSection/>
                 <Dashboard/>
-                <InternetComputer/>
+                {/*<InternetComputer/>*/}
                 <Features/>
                 <Showcase />
-                <Testimonials />
+                {/*<Testimonials />*/}
                 <Governance/>
                 <ICWorld/>
                 <SectionsBar/>

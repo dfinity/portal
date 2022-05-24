@@ -91,11 +91,14 @@
   display: none;
   margin-bottom: 4px;
   color: white;
-  padding: 4px 12px;
+  padding: 24px;
   border-radius: 15px;
   background: rgba(24, 24, 24, 0.6);
   backdrop-filter: blur(40px);
   align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 .informationContainer:hover .tooltip {
   display: inline-flex;
