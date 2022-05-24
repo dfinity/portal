@@ -36,7 +36,6 @@ const config = {
     favicon: 'img/favicon-32x32.png',
     organizationName: 'dfinity',
     projectName: 'portal',
-    trailingSlash: false,
 
     plugins: [
         require.resolve('docusaurus-lunr-search'),
