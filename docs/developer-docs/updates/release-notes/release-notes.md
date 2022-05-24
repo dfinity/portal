@@ -226,7 +226,7 @@ Updated Motoko from 0.6.21 to 0.6.25.
 
 An overview of the 0.9.2 release:
 
-Be sure to see the [0.9.0 Release Notes](#090) and follow the instructions due to breaking changes since dfx 0.8.4.
+Be sure to see the [0.9.0 Release Notes](0.9.0-rn) and follow the instructions due to breaking changes since dfx 0.8.4.
 
 ### Changes to DFX
 
@@ -1005,7 +1005,7 @@ The most significant new features and capabilities are updates to the following:
 
 -   Addition of ledger subcommands
 
-    `dfx` now supports a dedicated `dfx ledger` subcommand. This allows you to interact with the ledger canister installed on the Internet Computer. Example commands include `dfx ledger account-id` which prints the Account Identifier associated with your selected identity, `dfx ledger transfer` which allows you to transfer ICP from your ledger account to another, and `dfx ledger create-canister` which allows you to create a canister from ICP. For more information on `dfx ledger` subcommands, see [dfx ledger](../../references/cli-reference/dfx-ledger).
+    `dfx` now supports a dedicated `dfx ledger` subcommand. This allows you to interact with the ledger canister installed on the Internet Computer. Example commands include `dfx ledger account-id` which prints the Account Identifier associated with your selected identity, `dfx ledger transfer` which allows you to transfer ICP from your ledger account to another, and `dfx ledger create-canister` which allows you to create a canister from ICP. For more information on `dfx ledger` subcommands, see [dfx ledger](../../../references/cli-reference/dfx-ledger).
 
 -   Addition of wallet subcommands
 
@@ -1019,7 +1019,7 @@ The most significant new features and capabilities are updates to the following:
 
         You can use `dfx wallet send <destination> <amount>` to send cycles to another wallet.
 
-        For more information on `dfx wallet` see [dfx wallet](../../references/cli-reference/dfx-wallet).
+        For more information on `dfx wallet` see [dfx wallet](../../../references/cli-reference/dfx-wallet).
 
 -   Add an output type to the `request-status` subcommand.
 
@@ -1167,7 +1167,7 @@ This section covers any known issues or limitations that might affect how you wo
 
 The introduction of the cycles wallet canister changes the default principal used to perform key canister management tasks, such as registering a new canister identifier and deploying a new canister on the Internet Computer. This change introduces some inconsistencies in the identity used to perform certain tasks and can result in potential access control issues.
 
-You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](../build/backend/access-control) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](../build/backend/) tutorial, you should install the SDK version 0.6.23 (or older).
+You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](../../build/backend/access-control) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](../../build/backend/) tutorial, you should install the SDK version 0.6.23 (or older).
 
 #### Incompatibility when using the JavaScript agent directly in a project
 
@@ -1187,7 +1187,7 @@ The most significant new features and capabilities include the following updates
 
     You can now use the `CANISTER_ID_{canister.name}` and `CANISTER_CANDID_PATH_{canister.name}` environment variables to reference canister identifiers and the path to the canister Candid description (`.did` file) during the build process. These environment variables enable you to construct the JavaScript for frontend assets using the correct canister identifiers.
 
-    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](../build/frontend/webpack-config) which is being deprecated and will be removed in a future release.
+    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](../../build/frontend/webpack-config) which is being deprecated and will be removed in a future release.
 
 -   A new `dfx identity import` subcommand enables you to import a security certificate to create an identity.
 
@@ -1333,7 +1333,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
+-   New [Candid documentation](../../build/languages/candid/candid-intro) for
     developers provides type mapping information for Rust and
     JavaScript.
 
@@ -1368,7 +1368,7 @@ The command is only applicable if you received the wallet canister identifier as
     the `WordN` types. Therefore, the wrapping arithmetic operations on
     `WordN` are deprecated and their use will print a warning. For
     information about replacing Word types, see [Word
-    types](../build/languages/motoko/language-manual#word-types).
+    types](../../build/languages/motoko/language-manual#word-types).
 
 -   For values `x` of type `Blob`, an iterator over the elements of the
     blob `x.vals()` is introduced. It works like `x.bytes()`, but
