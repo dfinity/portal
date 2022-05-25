@@ -1,6 +1,6 @@
-# Hosting a Unity WebGL build on the Internet Computer
+# Hosting a Unity WebGL game on the Internet Computer
 
-This sample project demonstrates how to deploy a simple [Unity](https://unity.com/) WebGL build on the [Internet Computer](https://github.com/dfinity/ic). A simple sample code is available at the [examples](https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template) repository.
+This sample project demonstrates how to deploy a simple [Unity](https://unity.com/) WebGL game on the [Internet Computer](https://github.com/dfinity/ic). The sample code is available at the [examples](https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template) repository.
 
 ## Deploy a Unity WebGL build to IC
 

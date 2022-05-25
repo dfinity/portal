@@ -186,14 +186,17 @@ const sampleItems = [
     index: 8,
     title: "WebGL",
     image: webgl,
-    domains: ["Website", "Gaming", "Global"],
+    domains: ["Gaming", "Website", "Global"],
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Documentation"],
     highlights: ["Gaming", "Website", "Global", "Beginner"],
-    body: "Demonstrates how to deploy a simple WebGL build on the IC via Unity.",
+    body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      action: { text: "Docs", to: "samples/host-unity-webgl" },
+      action: { 
+        text: "Get Code", 
+        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template"
+      },
       docs: "samples/host-unity-webgl",
     },
   },
