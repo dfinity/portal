@@ -181,6 +181,20 @@ const sampleItems = [
         "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
     },
   },
+  {
+    index: 8,
+    title: "Unity WebGL",
+    domains: ["Website", "Gaming", "Global"],
+    languages: ["Motoko", "Rust", "Javascript"],
+    level: ["Beginner"],
+    contentType: ["Documentation"],
+    highlights: ["Global", "Gaming", "Beginner"],
+    body: "Shows how to deploy a simple Unity WebGL build on the IC.",
+    links: {
+      action: { text: "Docs", to: "samples/host-unity-webgl" },
+      docs: "samples/host-unity-webgl",
+    },
+  },
 ];
 
 function Samples(): JSX.Element {
