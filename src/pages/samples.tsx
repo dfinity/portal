@@ -15,6 +15,7 @@ import basicDAO from "@site/static/img/samples/basicDAO.png";
 import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
+import webgl from "@site/static/img/samples/webgl.png";
 
 const sampleItems = [
   {
@@ -179,6 +180,24 @@ const sampleItems = [
       },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
+    },
+  },
+  {
+    index: 8,
+    title: "WebGL",
+    image: webgl,
+    domains: ["Gaming", "Website", "Global"],
+    languages: ["Motoko", "Rust", "Javascript"],
+    level: ["Beginner"],
+    contentType: ["Documentation"],
+    highlights: ["Gaming", "Website", "Global", "Beginner"],
+    body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
+    links: {
+      action: { 
+        text: "Get Code", 
+        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template"
+      },
+      docs: "samples/host-unity-webgl",
     },
   },
 ];
