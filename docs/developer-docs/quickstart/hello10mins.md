@@ -457,7 +457,7 @@ Congratulations! You have built a dapp fully on-chain (both backend and frontend
 Tutorial takeaways:
 -   Dapps can be composed of multiple canisters
 -   Dapps can be deployed locally and on-chain
--   Cycles are needed power dapps
+-   Cycles are needed to power dapps
 -   Get free cycles from the cycles wallet
 -   Free cycles can be used to power additional dapps
 
