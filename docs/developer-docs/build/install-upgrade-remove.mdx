@@ -42,7 +42,13 @@ To install <code>dfx</code>, run
 <p>After you have WSL installed, you can launch the Linux distributions by name.</p>
 <p>For example <code>Ubuntu.exe</code> is the command to start the <code>Ubuntu</code> distribution from the command line.</p>
 <h2 id="installing-dfx">Installing DFX</h2>
-<p>Once you have WSL installed, you can install <code>dfx</code> within your WSL Linux terminal as described in <a href="../build/install-upgrade-remove">Installing the SDK</a>.</p>
+<p>Once you have WSL installed, you can install <code>dfx</code> by running
+
+```bash
+    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+```
+
+</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="node-js-is-not-properly-installed">Node.js is not properly installed</h3>
 <p>WSL 2 has node.js <code>10.x.x</code> installed by default. But the latest <code>dfx</code> requires node.js <code>16.0.0</code> or higher.</p>
