@@ -25,7 +25,7 @@ function AnimatedValue({to, precision}) {
     const [currentValue, setCurrentValue] = useState(to);
     useEffect(() => {
         const controls = animate(valueRef.current, to, {
-            duration: 0.5,
+            duration: 2,
             onUpdate(value) {
                 setCurrentValue(value);
             }
@@ -85,7 +85,7 @@ function Dashboard() {
     const [operational, setOperational] = useState(true);
     const cost = 0.46;
     const controls = useAnimation();
-    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    const {ref, inView} = useInView({threshold: 0.2});
     useEffect(() => {
         if (inView) {
             controls.start("show");
@@ -161,7 +161,7 @@ function Dashboard() {
         fetchData();
         const interval = setInterval(() => {
             fetchData();
-        }, 5000);
+        }, 2000);
         return () => {
             clearInterval(interval)
         };

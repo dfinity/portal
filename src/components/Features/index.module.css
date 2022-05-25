@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 3rem;
+    padding: 54px 48px;
     width: 100%;
     height: 200px;
     background: rgba(255, 255, 255, 0.5);
@@ -33,20 +33,22 @@
     box-sizing: border-box;
     backdrop-filter: blur(5px);
     border-radius: 12px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.card:hover {
+    padding-top: 32px;
+    background: var(--ifm-color-primary);
+    border: 1px solid var(--ifm-color-primary);
 }
 
 .card:hover,
 .card:hover .cardTitle,
 .card:hover .cardBody,
 .card:hover .informationIcon {
-    background: var(--ifm-color-primary);
     color: white;
     text-decoration: none;
-    border: 1px solid var(--ifm-color-primary);
-}
-
-.card:hover {
-    padding-top: 2rem;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .cardContainer {
@@ -79,6 +81,7 @@
     border-radius: 10px;
     color: black;
     text-decoration: none;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -103,7 +106,7 @@
         scroll-padding: 50% 0;
         scroll-snap-type: x mandatory;
         scrollbar-width: thin;
-        scrollbar-color: #3b00b9 var(--ifm-background-color);
+        scrollbar-color: var(--ifm-color-primary) var(--ifm-background-color);
     }
 
     .cards::-webkit-scrollbar {
@@ -115,7 +118,7 @@
     }
 
     .cards::-webkit-scrollbar-thumb {
-        background-color: #3b00b9;
+        background-color: var(--ifm-color-primary);
         border-radius: 20px;
         border: 3px solid var(--ifm-background-color);
     }

@@ -21,6 +21,8 @@
     --ifm-menu-link-sublist-iconPlus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 15l7-7 7 7' /%3E%3C/svg%3E");
     --ifm-navbar-background-color: rgb(241, 238, 245);
     --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
+    --ifm-transition-custom-speed: 300ms;
+    --ifm-transition-custom-curve: cubic-bezier(0, 0, 0.19, 1);
 }
 
 

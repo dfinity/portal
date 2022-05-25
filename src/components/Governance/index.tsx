@@ -219,7 +219,7 @@ const chart = {
 
 function Governance() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    const {ref, inView} = useInView({threshold: 0.2});
     useEffect(() => {
         if (inView) {
             controls.start("show");
