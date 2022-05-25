@@ -14,7 +14,7 @@ Let’s create a Unity WebGL build, and set it up to deploy with dfx. Before you
   - Choose the `Minimal` WebGL template to reduce the number of files generated
 - Build to WebGL in the `Build Settings` window
 
-### Create an DFX project
+### Create a DFX project
 Since there is no backend in this sample, there is not any benefit of using the `dfx new project_name` command to set up a template. The `dfx.json` file is all that is needed.
 - Create a folder named `unity-webgl-sample`
 - Create a `dfx.json` under `unity-webgl-sample` folder

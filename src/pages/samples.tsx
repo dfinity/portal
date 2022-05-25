@@ -15,6 +15,7 @@ import basicDAO from "@site/static/img/samples/basicDAO.png";
 import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
+import webgl from "@site/static/img/samples/webgl.png";
 
 const sampleItems = [
   {
@@ -183,13 +184,14 @@ const sampleItems = [
   },
   {
     index: 8,
-    title: "Unity WebGL",
+    title: "WebGL",
+    image: webgl,
     domains: ["Website", "Gaming", "Global"],
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Documentation"],
-    highlights: ["Global", "Gaming", "Beginner"],
-    body: "Shows how to deploy a simple Unity WebGL build on the IC.",
+    highlights: ["Gaming", "Website", "Global", "Beginner"],
+    body: "Demonstrates how to deploy a simple WebGL build on the IC via Unity.",
     links: {
       action: { text: "Docs", to: "samples/host-unity-webgl" },
       docs: "samples/host-unity-webgl",
