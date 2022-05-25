@@ -3,7 +3,22 @@ import styles from "@site/src/components/Dashboard/index.module.css";
 import DashboardIcon from "@site/static/img/dashboardIcon.svg";
 import InformationIcon from "@site/static/img/informationIcon.svg";
 import Link from "@docusaurus/Link";
-import {animate} from "framer-motion";
+import {animate, motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
+
+const container = {
+    hidden: {opacity: 0, transition: {duration: 1}},
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        }
+    }
+}
+const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
 
 function AnimatedValue({to, precision}) {
     const valueRef = useRef(to);
@@ -30,7 +45,7 @@ function AnimatedValue({to, precision}) {
 
 function AnimatedStatistic({title, currentValue, tooltip, precision}) {
     return (
-        <div className={styles.container}>
+        <motion.div variants={item} className={styles.container}>
             <div className={styles.titleContainer}>
                 <span className={styles.title}>{title}</span>
                 <div className={styles.informationContainer}>
@@ -41,13 +56,13 @@ function AnimatedStatistic({title, currentValue, tooltip, precision}) {
                 </div>
             </div>
             <AnimatedValue to={currentValue} precision={precision}/>
-        </div>
+        </motion.div>
     );
 }
 
 function Statistic({title, currentValue, tooltip}) {
     return (
-        <div className={styles.container}>
+        <motion.div variants={item} className={styles.container}>
             <div className={styles.titleContainer}>
                 <span className={styles.title}>{title}</span>
                 <div className={styles.informationContainer}>
@@ -58,7 +73,7 @@ function Statistic({title, currentValue, tooltip}) {
                 </div>
             </div>
             <span className={styles.value}>{currentValue}</span>
-        </div>
+        </motion.div>
     );
 }
 
@@ -69,6 +84,13 @@ function Dashboard() {
     const [cpuCores, setCpuCores] = useState(29650);
     const [operational, setOperational] = useState(true);
     const cost = 0.46;
+    const controls = useAnimation();
+    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    useEffect(() => {
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
     const fetchBlockCount = () => {
         fetch("https://ic-api.internetcomputer.org/api/metrics/block").then((response) => {
             if (response.ok) {
@@ -146,7 +168,8 @@ function Dashboard() {
 
     }, [])
     return (
-        <div className={styles.main}>
+        <motion.div ref={ref} animate={controls} initial="hidden"
+                    variants={container} className={styles.main}>
             <a id="dashboard"/>
             <div className={styles.grid}>
                 <AnimatedStatistic
@@ -184,12 +207,14 @@ function Dashboard() {
                     tooltip={"The current estimated cost of storage on the Internet Computer."}
                 />
             </div>
-            <Link to={"https://dashboard.internetcomputer.org/"}
-                  className={styles.actionButton}>
-                <DashboardIcon className={styles.dashboardIcon}/>
-                <span>Go to Dashboard</span>
-            </Link>
-        </div>
+            <motion.div variants={item}>
+                <Link to={"https://dashboard.internetcomputer.org/"}
+                      className={styles.actionButton}>
+                    <DashboardIcon className={styles.dashboardIcon}/>
+                    <span>Go to Dashboard</span>
+                </Link>
+            </motion.div>
+        </motion.div>
     );
 }
 

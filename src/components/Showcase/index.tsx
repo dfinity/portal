@@ -184,7 +184,7 @@ function Showcase() {
                         <Distrikt/>
                     </motion.div>
                     <motion.div variants={item} className={styles.actionButtonContainer}>
-                        <Link className={styles.actionButton} to="https://smartcontracts.org/samples/">
+                        <Link className={styles.actionButton} to="/samples">
                             BUILD YOUR OWN
                         </Link>
                     </motion.div>

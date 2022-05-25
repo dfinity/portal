@@ -8,14 +8,10 @@
 
 .desktopContainer {
     display: flex;
-    width: 875px;
     z-index: 1900;
     bottom: 0;
-    margin: 0 auto 20px auto;
-    background-color: rgba(0, 0, 0, .5);
-    backdrop-filter: blur(20px);
-    border-radius: 25px;
-    color: white;
+    margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
+    justify-content: center;
 }
 
 .mobileContainer {
@@ -49,15 +45,20 @@
 
 .grid {
     display: flex;
-    padding: 0.8rem 0.5rem;
+    padding: 16px 12px;
     justify-content: space-around;
-}
-
-.grid span, .grid div {
-    margin: auto 0.9rem;
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    color:white;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 .grid a {
+    margin: 0 12px;
     color: white;
     text-decoration: none;
 }

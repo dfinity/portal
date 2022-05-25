@@ -25,7 +25,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Code Samples", "Documentation", "Live Demos"],
-    highlights: ["Beginner", "Motoko", "Rust", "Beginner"],
     body: "Deploy a dead simple dapp using two canisters serving a web page.",
     links: {
       action: {
@@ -46,7 +45,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Documentation", "Videos"],
-    highlights: ["Global", "Website", "Motoko", "Rust", "Beginner"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
       action: { text: "Docs", to: "samples/host-a-website" },
@@ -62,7 +60,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    highlights: ["DeFi", "Website", "Motoko", "Rust", "Intermediate"],
     body: "Build dapp to enable DeFi applications on the IC.",
     links: {
       action: {
@@ -84,7 +81,6 @@ const sampleItems = [
     languages: ["Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos"],
-    highlights: ["NFT", "Gaming", "Motoko", "Rust", "Intermediate"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
       action: {
@@ -104,7 +100,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos"],
-    highlights: ["Global", "DeFi", "Motoko", "Rust", "Intermediate"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
       action: {
@@ -126,7 +121,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
       action: {
@@ -149,7 +143,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation"],
-    highlights: ["Global", "Motoko", "Rust", "Advanced"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
       action: {
@@ -170,7 +163,6 @@ const sampleItems = [
     languages: ["Motoko"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation"],
-    highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
       action: {
@@ -265,7 +257,7 @@ function Samples(): JSX.Element {
                 key={sample.index}
                 image={sample.image}
                 title={sample.title}
-                highlights={sample.highlights}
+                domain={sample.domains[0]}
                 body={sample.body}
                 links={sample.links}
               />

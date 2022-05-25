@@ -46,6 +46,7 @@ function YoutubeLink({to}) {
             <Link className={styles.iconLink} to={to}><YoutubeIcon/></Link>
         </div>);
 }
+
 function LivePreviewLink({to}) {
     return (
         <div className={styles.content}>
@@ -56,36 +57,23 @@ function LivePreviewLink({to}) {
         </div>);
 }
 
-function Index({image, title, highlights, body, links}) {
+function Index({image, title, domain, body, links}) {
     return (
         <div className={styles.container}>
             <img src={image} className={styles.image} alt=""/>
             <div className={styles.information}>
-                <div className={styles.mainHighlight}>
-                    <span>{highlights[0]}</span>
-                    <svg className={styles.highlightDivider} width="1" height="12" viewBox="0 0 1 12" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <line x1="0.5" y1="12" x2="0.5" stroke="#181818" strokeOpacity="0.6"/>
-                    </svg>
-                    <span>{`+${highlights.length - 1}`}</span>
-                    <div className={styles.highlightsContainer}>
-                        <div className={styles.highlights}>
-                            {highlights.slice(1).map((highlight) => <p key={highlight}>{highlight}</p>)}
-                        </div>
-                    </div>
+                <div className={styles.domain}>
+                    <span>{domain}</span>
                 </div>
 
-                <div className={styles.header}>
-                    <p className={styles.title}>{title}</p>
-                    <Link className={styles.actionButton} to={links.action.to}>
-                        {links.action.text}
-                    </Link>
-                </div>
+                <p className={styles.title}>{title}</p>
+
                 <p className={styles.body}>{body}</p>
                 <div className={styles.footer}>
                     {links.motoko && <MotokoLink to={links.motoko}/>}
                     {links.rust && <RustLink to={links.rust}/>}
-                    {links.livePreview && <LivePreviewLink to={links.livePreview}/>}
+                    {links.livePreview &&
+                        <LivePreviewLink to={links.livePreview}/>}
                     {links.docs && <DocsLink to={links.docs}/>}
                     {links.youtube && <YoutubeLink to={links.youtube}/>}
                 </div>

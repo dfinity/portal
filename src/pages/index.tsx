@@ -33,10 +33,8 @@ export default function Home(): JSX.Element {
                 </BrowserOnly>
                 <HeroSection/>
                 <Dashboard/>
-                {/*<InternetComputer/>*/}
                 <Features/>
                 <Showcase />
-                {/*<Testimonials />*/}
                 <Governance/>
                 <ICWorld/>
                 <SectionsBar/>

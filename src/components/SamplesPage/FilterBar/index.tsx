@@ -8,7 +8,7 @@ import Close from "@site/static/img/samples/close.svg";
 import Link from "@docusaurus/Link";
 
 const languageOptions = ["Motoko", "Rust", "Javascript"];
-const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT", "IoT"];
+const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT"];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
 const contentTypeOptions = [
   "Code Samples",
@@ -125,7 +125,7 @@ function Index({
       <a id="start" />
       <div className={styles.container}>
         <div className={styles.filterBarHeader}>
-          <span className={styles.title}>Filter Items</span>
+          <span className={styles.title}>Sample codes</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
         <div
@@ -135,7 +135,7 @@ function Index({
           <div className={styles.filterIcon}>
             <Filter />
           </div>
-          <span className={styles.title}>Filter Items</span>
+          <span className={styles.title}>Sample codes</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
         <div className={styles.selectBoxes}>
@@ -281,7 +281,7 @@ function Index({
             </div>
           )}
         </div>
-        <div className={styles.sortByContainer}>
+        {/*<div className={styles.sortByContainer}>
           <div
             className={styles.sortBy}
             onClick={() => updateCurrentSelection("sortBy")}
@@ -309,7 +309,7 @@ function Index({
               </div>
             </div>
           )}
-        </div>
+        </div>*/}
       </div>
       <div className={styles.mobileFilterBarButtonContainer}>
         <div
@@ -319,7 +319,7 @@ function Index({
           <div className={styles.filterIcon}>
             <Filter />
           </div>
-          <span className={styles.title}>Filter Items</span>
+          <span className={styles.title}>Sample codes</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
       </div>
@@ -331,7 +331,7 @@ function Index({
           >
             <Close />
           </div>
-          <p className={styles.mobileFilterTitle}>Filter Items</p>
+          <p className={styles.mobileFilterTitle}>Sample codes</p>
           <div className={styles.mobileSelectContainer}>
             <p>Language</p>
             <div className={styles.mobileFilterOptions}>
