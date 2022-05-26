@@ -14,8 +14,8 @@
 .header {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
+    align-items: flex-start;
+    flex-direction: column;
     width: Min(1100px, 90%);
     margin: auto auto 50px auto;
 }
@@ -25,9 +25,17 @@
     font-size: 60px;
     line-height: 70px;
     color: white;
-    width: 434px;
     z-index: 1000;
     position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.textCycling {
+    position: absolute;
+    margin-left: 15px;
 }
 
 .headerBody {
@@ -96,6 +104,7 @@
     border-radius: 20px;
     border: 3px solid #3b00b9;
 }
+
 .cardWrapper {
     scroll-snap-align: start;
     display: inline-block;
@@ -246,16 +255,18 @@
     .container {
         background-color: #3b00b9;
     }
-    .BGShape{
+
+    .BGShape {
         display: none;
     }
+
     .showcaseContainer {
         margin: auto;
         padding: 100px 0;
     }
 
     .card {
-        width: Min(80vw,540px);
+        width: Min(80vw, 540px);
         height: 400px;
     }
 
@@ -284,6 +295,16 @@
 
     .title, .body {
         width: Min(434px, 90%);
+    }
+
+    .title {
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+
+    .textCycling {
+        margin: 0;
+        width: 90vw;
     }
 
     .tooltipContainer {

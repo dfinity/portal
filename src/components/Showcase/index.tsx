@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './index.module.css';
 import Link from "@docusaurus/Link";
-import {useAnimation, motion} from "framer-motion";
+import {useAnimation, motion, useCycle, AnimatePresence} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 import FleekBG from "@site/static/img/fleek.png";
 import DistriktBG from "@site/static/img/distrikt.png";
@@ -26,17 +26,23 @@ const backgroundOpacity = {
     show: {opacity: 1, transition: {duration: 0.5}},
     hidden: {opacity: 0, transition: {duration: 0.65}}
 }
+const textCycling = {
+    enter: {y: 30, opacity: 0,},
+    center: {y: 0, opacity: 1,},
+    exit: {y: -30, opacity: 0,},
+};
 
 function Distrikt() {
     return (
         <div className={styles.cardWrapper}>
             <a href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
-                      style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
+               style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
                                 <span>
-                                    <span style={{color: "#331CDF"}}>Distrikt</span> is a completely decentralized, community-owned professional network.
+                                    <span
+                                        style={{color: "#331CDF"}}>Distrikt</span> is a completely decentralized, community-owned professional network.
                                 </span>
                         </p>
                     </div>
@@ -46,10 +52,13 @@ function Distrikt() {
                              alt=""/>
                     </div>
                 </div>
-                <div className={styles.tooltipContainer} style={{backgroundColor: "#BBB3E6", color: "#331CDF"}}>
-                    <span className={styles.tooltip}>az5sd-cqaaa-aaaae-aaarq-cai</span>
+                <div className={styles.tooltipContainer}
+                     style={{backgroundColor: "#BBB3E6", color: "#331CDF"}}>
+                    <span
+                        className={styles.tooltip}>az5sd-cqaaa-aaaae-aaarq-cai</span>
                 </div>
-                <img className={styles.backgroundImage} src={DistriktBG} alt=""/>
+                <img className={styles.backgroundImage} src={DistriktBG}
+                     alt=""/>
             </a>
         </div>);
 }
@@ -58,12 +67,13 @@ function Origyn() {
     return (
         <div className={styles.cardWrapper}>
             <a href={"https://origyn.ch"}
-                      style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
+               style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
                                 <span>
-                                    The <span style={{color: "#0089C2"}}>Origyn</span> Foundation is blending luxury goods, with NFTs by providing digital verifications for physical objects.
+                                    The <span
+                                    style={{color: "#0089C2"}}>Origyn</span> Foundation is blending luxury goods, with NFTs by providing digital verifications for physical objects.
                                 </span>
                         </p>
                     </div>
@@ -73,7 +83,8 @@ function Origyn() {
                              alt=""/>
                     </div>
                 </div>
-                <div className={styles.tooltipContainer} style={{backgroundColor: "#A8E1F0", color: "#0089C2"}}>
+                <div className={styles.tooltipContainer}
+                     style={{backgroundColor: "#A8E1F0", color: "#0089C2"}}>
                     <span className={styles.tooltip}>origyn.ch</span>
                 </div>
                 <img className={styles.backgroundImage} src={OrigynBG} alt=""/>
@@ -85,12 +96,13 @@ function HexGL() {
     return (
         <div className={styles.cardWrapper}>
             <a href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
-                      style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
+               style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
                                 <span>
-                                    <span style={{color: "#B748DE"}}>HexGL</span> is a futuristic racing game using HTML5, JS, WebGL and hosted on the Internet Computer blockchain.
+                                    <span
+                                        style={{color: "#B748DE"}}>HexGL</span> is a futuristic racing game using HTML5, JS, WebGL and hosted on the Internet Computer blockchain.
                                 </span>
                         </p>
                     </div>
@@ -100,8 +112,10 @@ function HexGL() {
                              alt=""/>
                     </div>
                 </div>
-                <div className={styles.tooltipContainer} style={{backgroundColor: "#F5D8FF", color: "#B748DE"}}>
-                    <span className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
+                <div className={styles.tooltipContainer}
+                     style={{backgroundColor: "#F5D8FF", color: "#B748DE"}}>
+                    <span
+                        className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
                 </div>
                 <img className={styles.backgroundImage} src={HexGLBG} alt=""/>
             </a>
@@ -112,12 +126,13 @@ function Fleek() {
     return (
         <div className={styles.cardWrapper}>
             <a href={"https://fleek.co/"}
-                      style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
+               style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
                     <div className={styles.cardHeader}>
                         <p className={styles.cardBody}>
                                 <span>
-                                    <span style={{color: "#00C648"}}>Fleek</span> brings decentralized web-hosting to the Internet Computer.
+                                    <span
+                                        style={{color: "#00C648"}}>Fleek</span> brings decentralized web-hosting to the Internet Computer.
                                 </span>
                         </p>
                     </div>
@@ -127,7 +142,8 @@ function Fleek() {
                              alt=""/>
                     </div>
                 </div>
-                <div className={styles.tooltipContainer} style={{backgroundColor: "#D8FFE6", color: "#00C648"}}>
+                <div className={styles.tooltipContainer}
+                     style={{backgroundColor: "#D8FFE6", color: "#00C648"}}>
                     <span className={styles.tooltip}>fleek.co</span>
                 </div>
                 <img className={styles.backgroundImage} src={FleekBG} alt=""/>
@@ -145,6 +161,12 @@ function Showcase() {
             controls.start("hidden");
         }
     }, [controls, inView]);
+    useEffect(() => {
+        setInterval(() => {
+            cycleTitle();
+        }, 2500);
+    }, []);
+    const [title, cycleTitle] = useCycle("DeFi", "NFT", "Gaming");
     return (
         <div className={styles.container}>
             <motion.div animate={controls}
@@ -153,7 +175,8 @@ function Showcase() {
                 <motion.div animate={controls}
                             initial="hidden"
                             variants={backgroundOpacity}>
-                    <svg className={styles.BGShape} viewBox="0 0 100 100" fill="none"
+                    <svg className={styles.BGShape} viewBox="0 0 100 100"
+                         fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <rect width="100" height="100" fill="#3b00b9"/>
                     </svg>
@@ -168,11 +191,41 @@ function Showcase() {
                 <div className={styles.showcaseContainer}>
                     <a id="showcase"/>
                     <div className={styles.header}>
-                        <motion.p variants={item} className={styles.title}>Dapp Showcase</motion.p>
-                        <motion.div variants={item} className={styles.headerBody}>
-                            <p className={styles.body}>The Internet Computer ecosystem continues to skyrocket with new
-                                developer and entrepreneurial activity. Get inspired by the existing dapps.</p>
-                            <Link className={styles.callToAction} to={"https://dfinity.org/showcase/"}>Explore the
+                        <motion.div variants={item} className={styles.title}>
+                            <span>Build for </span>
+                            <div>
+                                <AnimatePresence>
+                                    <motion.span
+                                        className={styles.textCycling}
+                                        variants={textCycling}
+                                        key={title}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
+                                        transition={{
+                                            y: {
+                                                type: "spring",
+                                                stiffness: 100,
+                                                damping: 20,
+                                                duration: 0.2
+                                            },
+                                            opacity: {duration: 0.1},
+                                        }}
+                                    >
+                                        {title}
+                                    </motion.span>
+                                </AnimatePresence>
+                            </div>
+                        </motion.div>
+                        <motion.div variants={item}
+                                    className={styles.headerBody}>
+                            <p className={styles.body}>The Internet Computer
+                                ecosystem continues to skyrocket with new
+                                developer and entrepreneurial activity. Get
+                                inspired by the existing dapps.</p>
+                            <Link className={styles.callToAction}
+                                  to={"https://dfinity.org/showcase/"}>Explore
+                                the
                                 Internet
                                 Computer ecosystem</Link>
                         </motion.div>
@@ -183,7 +236,8 @@ function Showcase() {
                         <Origyn/>
                         <Distrikt/>
                     </motion.div>
-                    <motion.div variants={item} className={styles.actionButtonContainer}>
+                    <motion.div variants={item}
+                                className={styles.actionButtonContainer}>
                         <Link className={styles.actionButton} to="/samples">
                             BUILD YOUR OWN
                         </Link>
