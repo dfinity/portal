@@ -18,6 +18,8 @@ To check the identity you are currently using, run the following command:
 
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
+Side note: The **controller** role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a wallet-internal role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+
 A **controller** is the most privileged role and a principal assigned to the controller role can perform privileged tasks including the following:
 
 -   Add and remove other principals as controllers.
