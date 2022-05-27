@@ -92,14 +92,13 @@ function Features() {
             </motion.p>
             <motion.div className={styles.mobileSwiper} variants={item}>
                 <Swiper
-                    slidesPerView={1.2}
                     spaceBetween={4}
                     centeredSlides={true}
-                    loop={true}
                     pagination={{
                         clickable: true,
                     }}
                     modules={[Pagination]}
+                    breakpoints={{320: {slidesPerView: 1.2},768: {slidesPerView: 2}}}
                 >
                     {cardsContent.map((card) =>
                         <SwiperSlide>
@@ -112,13 +111,14 @@ function Features() {
                         </SwiperSlide>
                     )}
                 </Swiper>
-                <motion.div className={styles.actionButtonContainerMobile}
-                            variants={item}>
-                    <Link className={styles.actionButton}
-                          to="https://dfinity.org/roadmap">
-                        LEARN MORE
-                    </Link>
-                </motion.div>
+            </motion.div>
+            <motion.div className={styles.actionButtonContainerMobile}
+                        variants={item}>
+                <Link className={styles.actionButton}
+                      to="https://dfinity.org/roadmap">
+                    LEARN MORE
+                </Link>
+
             </motion.div>
             <div className={styles.cards}>
                 {cardsContent.map((card) =>

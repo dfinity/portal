@@ -7,6 +7,10 @@ import FleekBG from "@site/static/img/fleek.png";
 import DistriktBG from "@site/static/img/distrikt.png";
 import OrigynBG from "@site/static/img/origyn.png";
 import HexGLBG from "@site/static/img/hexGL.png";
+import {Pagination} from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 const container = {
     show: {opacity: 1, transition: {staggerChildren: 0.1,},},
@@ -33,7 +37,7 @@ const textCycling = {
 
 function Distrikt() {
     return (
-        <div className={styles.cardWrapper}>
+        <SwiperSlide>
             <a href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
                style={{backgroundColor: "#BBB3E6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
@@ -59,12 +63,12 @@ function Distrikt() {
                 <img className={styles.backgroundImage} src={DistriktBG}
                      alt=""/>
             </a>
-        </div>);
+        </SwiperSlide>);
 }
 
 function Origyn() {
     return (
-        <div className={styles.cardWrapper}>
+        <SwiperSlide>
             <a href={"https://origyn.ch"}
                style={{backgroundColor: "#A8E1F0"}} className={styles.card}>
                 <div className={styles.cardContainer}>
@@ -88,12 +92,12 @@ function Origyn() {
                 </div>
                 <img className={styles.backgroundImage} src={OrigynBG} alt=""/>
             </a>
-        </div>);
+        </SwiperSlide>);
 }
 
 function HexGL() {
     return (
-        <div className={styles.cardWrapper}>
+        <SwiperSlide>
             <a href={"https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app"}
                style={{backgroundColor: "#F5D8FF"}} className={styles.card}>
                 <div className={styles.cardContainer}>
@@ -118,12 +122,12 @@ function HexGL() {
                 </div>
                 <img className={styles.backgroundImage} src={HexGLBG} alt=""/>
             </a>
-        </div>);
+        </SwiperSlide>);
 }
 
 function Fleek() {
     return (
-        <div className={styles.cardWrapper}>
+        <SwiperSlide>
             <a href={"https://fleek.co/"}
                style={{backgroundColor: "#D8FFE6"}} className={styles.card}>
                 <div className={styles.cardContainer}>
@@ -147,12 +151,12 @@ function Fleek() {
                 </div>
                 <img className={styles.backgroundImage} src={FleekBG} alt=""/>
             </a>
-        </div>);
+        </SwiperSlide>);
 }
 
 function Showcase() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({threshold: 0.35});
+    const {ref, inView} = useInView({threshold: 0});
     useEffect(() => {
         if (inView) {
             controls.start("show");
@@ -174,10 +178,10 @@ function Showcase() {
                 <motion.div animate={controls}
                             initial="hidden"
                             variants={backgroundOpacity}>
-                    <svg className={styles.BGShape} viewBox="0 0 100 100"
+                    <svg className={styles.BGShape} viewBox="0 0 100 200"
                          fill="none"
                          xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100" height="100" fill="#3b00b9"/>
+                        <rect width="100" height="200" fill="#3b00b9"/>
                     </svg>
                 </motion.div>
             </motion.div>
@@ -229,11 +233,39 @@ function Showcase() {
                                 Computer ecosystem</Link>
                         </motion.div>
                     </div>
-                    <motion.div variants={item} className={styles.cards}>
-                        <Fleek/>
-                        <HexGL/>
-                        <Origyn/>
-                        <Distrikt/>
+                    <motion.div variants={item}
+                                className={styles.swiperContainer}
+                    >
+                        <Swiper
+                            spaceBetween={4}
+                            centeredSlides={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            modules={[Pagination]}
+                            breakpoints={{
+                                320: {slidesPerView: 1.2},
+                                768: {slidesPerView: 1.5},
+                                1024: {slidesPerView: 2},
+                                1440: {slidesPerView: 2.5},
+                                1920: {slidesPerView: 3.5},
+                                2560: {slidesPerView: 4.5},
+                                3440: {slidesPerView: 6},
+                            }}
+                        >
+                            <SwiperSlide>
+                                <Fleek/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <HexGL/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Origyn/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Distrikt/>
+                            </SwiperSlide>
+                        </Swiper>
                     </motion.div>
                     <motion.div variants={item}
                                 className={styles.actionButtonContainer}>

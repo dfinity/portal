@@ -50,31 +50,33 @@ export default function SectionsBar() {
     return (
         <div className={styles.container}>
             {display && isMobile ? (
-                <div className={styles.mobileContainer}>
-                    {displayMobileMenu ? (
-                        <>
-                            <div
-                                className={styles.mobileMenuClose}
-                                onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
-                            />
-                            {SectionsLinks.map(({text, to}) => (
-                                <Link
+                <div className={styles.desktopContainer}>
+                    <div className={styles.mobileMenu}>
+                        {displayMobileMenu ? (
+                            <>
+                                <div
+                                    className={styles.mobileMenuClose}
                                     onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
-                                    key={to}
-                                    to={to}
-                                >
-                                    <span>{text}</span>
-                                </Link>
-                            ))}
-                        </>
-                    ) : (
-                        <div
-                            onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
-                            className={styles.mobileMenuOpen}
-                        >
-                            Scroll To Section
-                        </div>
-                    )}
+                                />
+                                {SectionsLinks.map(({text, to}) => (
+                                    <Link
+                                        onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
+                                        key={to}
+                                        to={to}
+                                    >
+                                        <span>{text}</span>
+                                    </Link>
+                                ))}
+                            </>
+                        ) : (
+                            <div
+                                onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
+                                className={styles.mobileMenuOpen}
+                            >
+                                Scroll To Section
+                            </div>
+                        )}
+                    </div>
                 </div>
             ) : (
                 <AnimatePresence>

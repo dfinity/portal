@@ -3,6 +3,7 @@
     margin: auto;
     position: relative;
     padding: 100px 0;
+    --swiper-theme-color: var(--ifm-color-primary);
 }
 
 .title {
@@ -15,6 +16,7 @@
 }
 
 .cards {
+    width: Min(1250px, 90%);;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
@@ -123,9 +125,11 @@
     .cards, .actionButtonContainer {
         display: none;
     }
+
     .actionButtonContainerMobile {
         display: flex;
     }
+
     .mobileSwiper {
         display: block;
     }
