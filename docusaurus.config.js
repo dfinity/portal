@@ -27,9 +27,9 @@ const customDocusaurusPlugin = (context, options) => {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'Internet Computer Developer Portal',
+    title: 'Internet Computer Home',
     tagline: 'Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network',
-    url: 'https://smartcontracts.org',
+    url: 'https://internetcomputer.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'throw',
