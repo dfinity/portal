@@ -8,7 +8,6 @@ import DistriktBG from "@site/static/img/distrikt.png";
 import OrigynBG from "@site/static/img/origyn.png";
 import HexGLBG from "@site/static/img/hexGL.png";
 
-
 const container = {
     show: {opacity: 1, transition: {staggerChildren: 0.1,},},
     hidden: {opacity: 0, transition: {duration: 1}}
@@ -192,7 +191,7 @@ function Showcase() {
                     <a id="showcase"/>
                     <div className={styles.header}>
                         <motion.div variants={item} className={styles.title}>
-                            <span>Build for </span>
+                            <span>Build for</span>
                             <div>
                                 <AnimatePresence>
                                     <motion.span

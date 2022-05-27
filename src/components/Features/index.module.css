@@ -1,11 +1,13 @@
 .container {
-    width: Min(1250px, 90%);
+    width: Min(1250px, 100%);
     margin: auto;
     position: relative;
     padding: 100px 0;
 }
 
 .title {
+    width: Min(1250px, 90%);
+    margin: auto;
     font-weight: 700;
     font-size: 40px;
     line-height: 50px;
@@ -70,11 +72,24 @@
     color: black;
 }
 
+.actionButtonContainer, .actionButtonContainerMobile {
+    width: Min(1250px, 90%);
+    margin: auto;
+    justify-content: flex-start;
+}
+
+.actionButtonContainer {
+    display: flex;
+}
+
+.actionButtonContainerMobile {
+    display: none;
+}
+
 .actionButton {
-    margin: 3rem auto auto;
+    margin: 0;
     text-align: center;
-    width: 13rem;
-    padding: 1rem 2rem;
+    padding: 14px 20px;
     font-weight: bold;
     font-size: 20px;
     border: 2px solid black;
@@ -98,52 +113,35 @@
     height: 24px;
 }
 
+.mobileSwiper {
+    display: none;
+    width: 100vw;
+    margin: 32px 0 12px 0;
+}
+
 @media screen and (max-width: 996px) {
-    .cards {
+    .cards, .actionButtonContainer {
+        display: none;
+    }
+    .actionButtonContainerMobile {
         display: flex;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-padding: 50% 0;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        scrollbar-color: var(--ifm-color-primary) var(--ifm-background-color);
     }
-
-    .cards::-webkit-scrollbar {
-        width: 12px;
-    }
-
-    .cards::-webkit-scrollbar-track {
-        background: var(--ifm-background-color);
-    }
-
-    .cards::-webkit-scrollbar-thumb {
-        background-color: var(--ifm-color-primary);
-        border-radius: 20px;
-        border: 3px solid var(--ifm-background-color);
-    }
-
-    .cardWrapper {
-        scroll-snap-align: start;
-        display: inline-block;
-        margin: 0 1rem 1rem 0;
-    }
-
-    .cardWrapper:last-child {
-        margin-right: 0;
-    }
-
-    .card {
-        width: 279px;
-        height: 180px;
+    .mobileSwiper {
+        display: block;
     }
 
     .title {
         font-size: 32px;
     }
 
+    .card {
+        margin: 0 0 40px 0;
+    }
+
     .informationIcon {
         width: 16px;
         height: 16px;
     }
+
+
 }
