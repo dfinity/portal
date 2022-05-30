@@ -7,7 +7,7 @@
 import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import {
-    useThemeConfig, useAnnouncementBar, MobileSecondaryMenuFiller, ThemeClassNames, useScrollPosition, useWindowSize,
+    useThemeConfig, useAnnouncementBar, NavbarSecondaryMenuFiller, ThemeClassNames, useScrollPosition, useWindowSize,
 } from '@docusaurus/theme-common';
 import Logo from '@theme/Logo';
 import IconArrow from '@theme/IconArrow';
@@ -180,11 +180,13 @@ const DocSidebarMobileSecondaryMenu = ({toggleSidebar, sidebar, path}) => (
     </ul>);
 
 function DocSidebarMobile(props) {
-    return (<MobileSecondaryMenuFiller
+    return (
+      <NavbarSecondaryMenuFiller
         component={DocSidebarMobileSecondaryMenu}
         props={props}
-    />);
-}
+      />
+    );
+  }
 
 const DocSidebarDesktopMemo = React.memo(DocSidebarDesktop);
 const DocSidebarMobileMemo = React.memo(DocSidebarMobile);
