@@ -6,10 +6,17 @@
 
 .navbar__search-input {
   height: 46px;
-  width: 100%;
   border-radius: 12px;
 }
 
+@media (max-width: 996px) {
+  .navbar__search-input {
+    width: 100%;
+  }
+  .algolia-autocomplete {
+    display: block !important;
+  }
+}
 @media (min-width: 997px) {
   .navbar__search {
     order: 100;

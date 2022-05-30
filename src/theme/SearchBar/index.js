@@ -25,7 +25,7 @@ const Search = (props) => {
     new DocSearch({
       searchDocs,
       searchIndex,
-      inputSelector: '#search_input_react',
+      inputSelector: props.mobile ? '.navbar__search-input-mobile' : '.navbar__search-input-desktop',
       // Override algolia's default selection event, allowing us to do client-side
       // navigation and avoiding a full page refresh.
       handleSelected: (_input, _event, suggestion) => {
@@ -111,7 +111,9 @@ const Search = (props) => {
         className={classnames(
           'navbar__search-input',
           { 'search-bar-expanded': props.isSearchBarExpanded },
-          { 'search-bar': !props.isSearchBarExpanded }
+          { 'search-bar': !props.isSearchBarExpanded },
+          { 'navbar__search-input-mobile': props.mobile },
+          { 'navbar__search-input-desktop': !props.mobile },
         )}
         onClick={loadAlgolia}
         onMouseOver={loadAlgolia}
