@@ -1345,7 +1345,7 @@ Let `T = <sort> { [var0] id0 : T0, …​ , [varn] idn : T0 }` denote the type o
 
     -   for all `i in 0 <= i <= n`, `[vari] Ti == T(idi)`.
 
-3.  If `<sort>` is `module`, then the declarations in `<dec>;*` must be *static* (see [Static declarations](#decl-static)).
+3.  If `<sort>` is `module`, then the declarations in `<dec>;*` must be *static* (see [Static declarations](#static-declarations)).
 
 Note that requirement 1. imposes further constraints on the field types of `T`. In particular, if the sort is `actor` then:
 
