@@ -13,9 +13,9 @@ const sidebars = {
       items: [
         'developer-docs/quickstart/hello10mins',
         // 'developer-docs/quickstart/windows-wsl',
-        'developer-docs/quickstart/cycles-faucet'
-        // 'developer-docs/quickstart/local-quickstart',
-        // 'developer-docs/quickstart/network-quickstart'
+        'developer-docs/quickstart/cycles-faucet',
+        'developer-docs/quickstart/local-quickstart',
+        'developer-docs/quickstart/network-quickstart'
       ]
     },
     {

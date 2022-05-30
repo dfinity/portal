@@ -11,6 +11,7 @@ const sidebars = {
         'dao',
         'encrypted-notes',
         'token-transfer',
+        'host-unity-webgl',
         'hackathon-projects',
     ],
 };
