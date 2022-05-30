@@ -153,15 +153,18 @@ const config = {
             position: 'right',
             label: 'Develop',
             items: [
-              { label: 'Developers home', href: '#' },
+              { label: 'Developers Home', href: '#' },
               {
                 type: 'docSidebar',
                 sidebarId: 'developer-docs',
                 label: 'Developer Docs',
               },
-              { label: 'Sample Code', href: '#' },
-              { label: 'Motoko Playground', href: '#' },
-              { label: 'Dev Forum ', href: '#' },
+              { label: 'Sample Code', to: '/samples' },
+              {
+                label: 'Motoko Playground',
+                href: 'https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/',
+              },
+              { label: 'Dev Forum ', href: 'https://forum.dfinity.org/' },
             ],
           },
           {
@@ -170,11 +173,14 @@ const config = {
             label: 'Participate',
             items: [
               { label: 'Token Holders ', href: '#' },
-              { label: 'Roadmap', href: '#' },
+              { label: 'Roadmap', href: 'https://dfinity.org/roadmap' },
               { label: 'Staking & Governance', href: '#' },
-              { label: 'NNS Frontend dapp', href: '#' },
+              { label: 'NNS Frontend dapp', href: 'https://nns.ic0.app/v2/' },
               { label: 'Node Providers', href: '#' },
-              { label: 'ICA', href: '#' },
+              {
+                label: 'ICA',
+                href: 'https://association.internetcomputer.org/',
+              },
             ],
           },
 
