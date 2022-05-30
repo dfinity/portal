@@ -8,7 +8,7 @@ const SectionsLinks = [
     {text: "Dashboard", to: "#dashboard"},
     {text: "Features", to: "#features"},
     {text: "Showcase", to: "#showcase"},
-    {text: "Governance", to: "#governance"},
+    {text: "IC Token", to: "#ICToken"},
     {text: "IC World", to: "#ICWorld"},
 ];
 const container = {

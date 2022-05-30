@@ -9,7 +9,7 @@ import ICWorld from "@site/src/components/ICWorld";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
-import Governance from "@site/src/components/Governance";
+import ICToken from "@site/src/components/ICToken";
 import Showcase from "@site/src/components/Showcase";
 
 export default function Home(): JSX.Element {
@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
                 <Dashboard/>
                 <Features/>
                 <Showcase />
-                <Governance/>
+                <ICToken/>
                 <ICWorld/>
                 <SectionsBar/>
             </main>

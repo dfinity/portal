@@ -15,14 +15,14 @@
     justify-content: center;
 }
 
-.mobileMenu span, .mobileMenu div {
-    margin: 0.5rem auto;
+.mobileMenu span {
+    margin: 12px auto;
 }
 
 .mobileMenu a {
     color: white;
     text-decoration: none;
-    margin: 0.5rem auto
+    margin: 12px auto
 }
 
 .grid {
@@ -37,6 +37,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .grid a {
@@ -67,10 +68,13 @@
     justify-content: center;
     justify-items: center;
     flex-direction: column-reverse;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
     z-index: 5000;
     bottom: 0;
     display: flex;
-    padding: 12px 60px ;
+    padding: 0 60px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(20px);
@@ -79,17 +83,21 @@
     -webkit-backface-visibility: hidden;
 }
 
-.mobileMenuOpen, .mobileMenuClose {
+.mobileMenuOpen {
     display: flex;
+    padding: 12px 0;
 }
-
+.mobileMenuClose {
+    display: flex;
+    padding: 12px 24px;
+}
 .mobileMenuOpen::after {
     content: '';
     width: 16px;
     height: 16px;
     display: flex;
     align-self: center;
-    margin: auto 0.5rem;
+    margin-left: 8px;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10.6669L12.6669 6.00001L14 7.33313L8 13.3331L2 7.33313L3.33312 6.00001L8 10.6669Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
 }
 
@@ -99,7 +107,7 @@
     height: 22px;
     display: flex;
     align-self: center;
-    margin: auto 0.5rem 0.5rem 0.5rem;
+    margin: auto;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 6.66688L12.6669 2L14 3.33312L9.33312 8L14 12.6669L12.6669 14L8 9.33312L3.33312 14L2 12.6669L6.66688 8L2 3.33312L3.33312 2L8 6.66688Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
 }
 

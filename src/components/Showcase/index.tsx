@@ -237,7 +237,7 @@ function Showcase() {
                                 className={styles.swiperContainer}
                     >
                         <Swiper
-                            spaceBetween={4}
+                            spaceBetween={20}
                             centeredSlides={true}
                             pagination={{
                                 clickable: true,

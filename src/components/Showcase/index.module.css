@@ -62,6 +62,7 @@
     font-size: 18px;
     line-height: 26px;
     z-index: 1000;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .callToAction:hover {
@@ -114,10 +115,12 @@
 
 .card:hover .backgroundImage {
     bottom: -10px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .card:hover .tooltipContainer {
     display: flex;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .cardHeader {
@@ -177,15 +180,17 @@
 .actionButton {
     text-align: center;
     display: inline-flex;
-    padding: 1rem 2rem;
+    padding: 16px 24px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 22px;
     border: 2px solid white;
     border-radius: 10px;
     color: white;
     text-decoration: none;
     position: relative;
     z-index: 1000;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -292,5 +297,10 @@
         margin: 3rem auto;
         display: block;
         width: Min(90%, 500px);
+    }
+    .actionButton {
+        padding: 14px 24px;
+        font-size: 14px;
+        line-height: 22px;
     }
 }

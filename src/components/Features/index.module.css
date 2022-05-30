@@ -92,7 +92,7 @@
     margin: 0;
     text-align: center;
     padding: 14px 20px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
@@ -147,5 +147,8 @@
         height: 16px;
     }
 
+    .actionButton {
+        font-size: 14px;
+    }
 
 }
