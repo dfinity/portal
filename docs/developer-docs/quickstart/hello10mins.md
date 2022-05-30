@@ -58,7 +58,7 @@ dfx --version
 
 The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
-More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove).
+More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove.mdx).
 
 ### Node.js
 
