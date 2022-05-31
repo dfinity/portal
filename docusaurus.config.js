@@ -100,6 +100,14 @@ const config = {
         defaultMode: 'light',
         respectPrefersColorScheme: false,
       },
+      metadata: [
+        {
+          // ios safari zooms in when an input field is focused
+          // maximum-scale=1 solves the issue
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, maximum-scale=1',
+        },
+      ],
       navbar: {
         hideOnScroll: true,
 
