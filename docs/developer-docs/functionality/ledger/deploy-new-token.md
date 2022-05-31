@@ -101,11 +101,11 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
 Your new token is deployed and ready to be used.
 
-## Connect rosetta-api
+## Connect Rosetta
 
-The rosetta-api is an application that connects to a Ledger canister and exposes the [Rosetta API](https://www.rosetta-api.org). Its main purpose is to facilitate integration with exchanges. The application is available as a [docker image](#https://hub.docker.com/r/dfinity/rosetta-api).
+Rosetta is an application that connects to a Ledger canister and exposes the [Rosetta API](https://www.rosetta-api.org). Its main purpose is to facilitate integration with exchanges. You can learn more about Rosetta in the [next section](../rosetta/index.md).
 
-Let us now connect the rosetta-api to an existing Ledger canister.
+Let us now connect Rosetta to an existing Ledger canister.
 
 1.  Get the Ledger token symbol
 
