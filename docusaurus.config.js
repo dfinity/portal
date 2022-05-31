@@ -128,7 +128,7 @@ const config = {
             items: [
               {
                 label: 'Basics',
-                href: '#',
+                href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Introduction_to_the_Internet_Computer',
               },
               {
                 label: 'Internet Identity dapp',
@@ -161,11 +161,15 @@ const config = {
             position: 'right',
             label: 'Develop',
             items: [
-              { label: 'Developers Home', href: '#' },
+              // {
+              //   label: 'Developers Home',
+              //   type: 'doc',
+              //   docId: 'developer-docs/ic-overview',
+              // },
               {
-                type: 'docSidebar',
-                sidebarId: 'developer-docs',
-                label: 'Developer Docs',
+                label: 'Developers Docs',
+                type: 'doc',
+                docId: 'developer-docs/quickstart/hello10mins',
               },
               { label: 'Sample Code', to: '/samples' },
               {
@@ -180,11 +184,20 @@ const config = {
             position: 'right',
             label: 'Participate',
             items: [
-              { label: 'Token Holders ', href: '#' },
+              {
+                label: 'Token Holders ',
+                href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders',
+              },
               { label: 'Roadmap', href: 'https://dfinity.org/roadmap' },
-              { label: 'Staking & Governance', href: '#' },
+              {
+                label: 'Staking & Governance',
+                href: 'https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/',
+              },
               { label: 'NNS Frontend dapp', href: 'https://nns.ic0.app/v2/' },
-              { label: 'Node Providers', href: '#' },
+              {
+                label: 'Node Providers',
+                href: 'https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers',
+              },
               {
                 label: 'ICA',
                 href: 'https://association.internetcomputer.org/',
