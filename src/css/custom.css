@@ -118,6 +118,11 @@ div[class^='announcementBarContent'] {
   display: none;
 }
 
+/* First dropdown menu is too easy to hide accidentally */
+.navbar__inner .navbar__items--right > .dropdown:nth-child(2) {
+  padding-left: 4rem;
+}
+
 /* on mobile hide the search bar in the top navbar */
 @media (max-width: 996px) {
   .navbar__inner .navbar__search {
@@ -148,4 +153,9 @@ div[class^='announcementBarContent'] {
 /* make X icon on mobile sidebar black */
 .navbar-sidebar__close {
   --ifm-color-emphasis-600: #181818;
+}
+
+/* dropdown is positioned too low in the original styles making it easy to hide by accident */
+.dropdown__menu {
+  top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
 }
