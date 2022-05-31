@@ -270,6 +270,7 @@ function ICToken() {
                     </Link>
                 </motion.div>
             </div>
+
             <div className={styles.graphsContainer}>
                 <motion.div variants={chart} className={styles.card}>
                     <p className={styles.cardTitle}>The community-led

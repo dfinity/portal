@@ -5,12 +5,12 @@ import Features from "@site/src/components/Features";
 import SectionsBar from "@site/src/components/SectionsBar";
 import HeroSection from "@site/src/components/HeroSection";
 import Dashboard from "@site/src/components/Dashboard";
-import ICWorld from "@site/src/components/ICWorld";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
 import ICToken from "@site/src/components/ICToken";
 import Showcase from "@site/src/components/Showcase";
+import StartBuilding from "@site/src/components/StartBuilding";
 
 export default function Home(): JSX.Element {
     const {siteConfig} = useDocusaurusContext();
@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
                 <Features/>
                 <Showcase />
                 <ICToken/>
-                <ICWorld/>
+                <StartBuilding />
                 <SectionsBar/>
             </main>
         </Layout>
