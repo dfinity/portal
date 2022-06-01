@@ -3,8 +3,14 @@ import styles from "@site/src/components/StartBuilding/index.module.css";
 import eventBG from "@site/static/img/startBuilding/event_background_image.png"
 import motokoBG from "@site/static/img/startBuilding/motokoPlayground.png"
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg"
-import BackgroundGradientSVG
-    from "@site/static/img/svgIcons/startBuildingBackgroundGradient.svg"
+import BackgroundSVG from "@site/static/img/startBuilding/bgGradient.svg"
+import GamingIcon from "@site/static/img/startBuilding/gaming.svg";
+import IotIcon from "@site/static/img/startBuilding/iot.svg";
+import SocialIcon from "@site/static/img/startBuilding/social.svg";
+import GrowthIcon from "@site/static/img/startBuilding/growth.svg";
+import DatabaseIcon from "@site/static/img/startBuilding/database.svg";
+import MotokoIcon from "@site/static/img/startBuilding/motoko.svg";
+import DfinityIcon from "@site/static/img/startBuilding/dfinity.svg";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 
@@ -55,18 +61,35 @@ function StartBuilding() {
     return (
         <div className={styles.main}>
             <a id="startBuilding"/>
-            <div className={styles.callToActionContainer}>
-                <BackgroundGradientSVG className={styles.BGShape}/>
-                <p className={styles.callToActionTitle}>Start building real
-                    Web3</p>
-                <p className={styles.callToActionBody}>Start a DAO, create a
-                    token,
-                    build dapps and host assets with the full stack entirely on
-                    chain.</p>
-                <Link className={styles.actionButton}
-                      to="/">
-                    BUILD REAL WEB3
-                </Link>
+            <div className={styles.headerContainer}>
+                <BackgroundSVG className={styles.BGGradient}/>
+                <div className={styles.callToActionContainer}>
+                    <MotokoIcon
+                        className={clsx(styles.backgroundIcon, styles.motokoIcon)}/>
+                    <DfinityIcon
+                        className={clsx(styles.backgroundIcon, styles.dfinityIcon)}/>
+                    <GamingIcon
+                        className={clsx(styles.backgroundIcon, styles.gamingIcon)}/>
+                    <IotIcon
+                        className={clsx(styles.backgroundIcon, styles.iotIcon)}/>
+                    <DatabaseIcon
+                        className={clsx(styles.backgroundIcon, styles.databaseIcon)}/>
+                    <SocialIcon
+                        className={clsx(styles.backgroundIcon, styles.socialIcon)}/>
+                    <GrowthIcon
+                        className={clsx(styles.backgroundIcon, styles.growthIcon)}/>
+                    <p className={styles.callToActionTitle}>Start building real
+                        Web3</p>
+                    <p className={styles.callToActionBody}>Start a DAO, create a
+                        token,
+                        build dapps and host assets with the full stack entirely
+                        on
+                        chain.</p>
+                    <Link className={styles.actionButton}
+                          to="/">
+                        BUILD REAL WEB3
+                    </Link>
+                </div>
             </div>
             <div className={styles.cards}>
                 <Information title="Developer’s Home"
@@ -84,6 +107,7 @@ function StartBuilding() {
                                   body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
                                   link={"/"}/>
             </div>
+
         </div>
     );
 }
