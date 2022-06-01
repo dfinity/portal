@@ -1,6 +1,6 @@
 # Deploy New Token
 
-This tutorial will guide you step-by-step to deploy your own token to the IC and to connect rosetta-api to it.
+This tutorial will guide you step-by-step to deploy your own token to the IC and to connect Rosetta to it.
 
 ## Deploy your Ledger
 

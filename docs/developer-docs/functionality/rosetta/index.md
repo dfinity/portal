@@ -115,12 +115,6 @@ Not yet. Before launch, when we push to the `dfinity/rosetta-api:latest` image, 
 
 We’ll soon implement nightly builds of the image, and CI will ensure it works before pushing. Other than `latest`, those images will also be tagged with the build date, so for more reproducibility, it’s possible to use the image of a specific date tag rather than `latest`. We’ll announce when nightly builds become available.
 
-#### How do I connect to the main net instead of the test net?
-
-Start `dfinity/rosetta-api` with `--help`, you can see some additional CLI arguments that can be passed. Among those there are `--canister-id` and `--ic-url` which can be used to configure the ledger destination. At the moment, they default to the test net.
-
-**Note**: The main net is not live yet; it will be live some time before the publicly announced date, and we’ll push the updated image to point to the main net to ensure you can perform testing on the main net beforehand.
-
 ### ICP-specific Rosetta API details
 
 #### How are accounts generated and verified?
