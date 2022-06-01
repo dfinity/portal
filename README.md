@@ -4,7 +4,7 @@
 
 The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
 
-https://smartcontracts.org
+https://internetcomputer.org
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0ef9e793-aa30-446a-ae7a-a18ac304db58/deploy-status)](https://app.netlify.com/sites/icportal/deploys) [![CD](https://github.com/dfinity/portal/actions/workflows/cd.yml/badge.svg)](https://github.com/dfinity/portal/actions/workflows/cd.yml)
 
@@ -15,6 +15,7 @@ The Developer Portal uses [Docusaurus](https://docusaurus.io/docs).
 While modifying documentation in the repository, you can preview the changes locally by executing the following commands - considering that you have nodejs installed -.
 ```bash
 cd portal/
+git submodule update --init --remote
 npm install 
 npm start
 ```

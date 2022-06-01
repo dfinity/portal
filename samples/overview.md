@@ -41,6 +41,11 @@ Create/access/modify confidential notes from multiple devices using [Internet Id
 This sample code demonstrates how a dapp can transfer tokens to its most active users.  
 [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](token-transfer)
 
+## Unity WebGL
+
+The example shows how to deploy a simple Unity WebGL build on the IC, sample code can be found at [Samples repo](https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template).   
+[Technical docs](host-unity-webgl)
+
 ## Explore further Samples in Motoko
 
 This is a collection of repo-links to additional code samples written in Motoko. Most are also available in the [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/). The playground provides the simplest environment for trying out pure Motoko samples without having to download and learn to use the SDK, but does not support dapps with frontends.
