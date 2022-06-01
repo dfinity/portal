@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './index.module.css'
 import Link from "@docusaurus/Link";
-import MotokoIcon from "@site/static/img/samples/motoko.svg";
-import RustIcon from "@site/static/img/samples/rust.svg";
-import YoutubeIcon from "@site/static/img/samples/youtube.svg";
-import DocsIcon from "@site/static/img/samples/docs.svg";
-import IC0Icon from "@site/static/img/samples/ic0.svg";
+import MotokoIcon from "@site/static/img/svgIcons/motoko.svg";
+import RustIcon from "@site/static/img/svgIcons/rust.svg";
+import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
+import DocsIcon from "@site/static/img/svgIcons/docs.svg";
+import IC0Icon from "@site/static/img/svgIcons/ic0.svg";
 
 function MotokoLink({to}) {
     return (

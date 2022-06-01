@@ -5,8 +5,8 @@ import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/samples/bgcircle.svg";
-import PlusIcon from "@site/static/img/samples/plus.svg";
+import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import nftMinting from "@site/static/img/samples/nftMinting.png";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
 import staticWebsite from "@site/static/img/samples/staticWebsite.png";
@@ -185,8 +185,8 @@ const sampleItems = [
     highlights: ["Gaming", "Website", "Global", "Beginner"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      action: { 
-        text: "Get Code", 
+      action: {
+        text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template"
       },
       docs: "samples/host-unity-webgl",

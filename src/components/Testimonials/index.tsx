@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from "@site/src/components/Testimonials/index.module.css";
-import chrisDixon from "@site/static/img/chrisDixon.png"
-import benPerszyk from "@site/static/img/benPerszyk.png"
-import janCamenisch from "@site/static/img/janCamenisch.png"
-import an3ekah from "@site/static/img/An3ekah.jpeg"
+import chrisDixon from "@site/static/img/testimonials/chrisDixon.png"
+import benPerszyk from "@site/static/img/testimonials/benPerszyk.png"
+import janCamenisch from "@site/static/img/testimonials/janCamenisch.png"
+import an3ekah from "@site/static/img/testimonials/An3ekah.jpeg"
 import {useSwipeable} from "react-swipeable";
 import config from "@generated/docusaurus.config";
 

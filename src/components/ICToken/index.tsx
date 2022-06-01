@@ -3,8 +3,8 @@ import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 import {motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
-import ICTokenGraphMobile01 from "@site/static/img/ICTokenGraphMobile01.png"
-import ICTokenGraphMobile02 from "@site/static/img/ICTokenGraphMobile02.png"
+import ICTokenGraphMobile01 from "@site/static/img/ICToken/ICTokenGraphMobile01.png"
+import ICTokenGraphMobile02 from "@site/static/img/ICToken/ICTokenGraphMobile02.png"
 import {
     Chart as ChartJS,
     ArcElement,
@@ -77,7 +77,6 @@ function OwnershipChart() {
                         labels: {
                             font: {size: 16},
                             color: "black",
-                            padding: 30,
                             usePointStyle: true,
                             pointStyle: "circle",
                             boxWidth: 12
@@ -184,10 +183,11 @@ function VotingRewardsChart() {
                     },
                     title: {
                         display: true,
-                        text: 'Latest Annualized Voting Reward Percentage',
+                        text: ['Latest Annualized Voting', 'Reward Percentage'],
                         font: {size: 14},
                         color: 'black',
                         align: 'start',
+
 
                     },
                     datalabels: {
@@ -280,8 +280,9 @@ function ICToken() {
                           to={"https://dashboard.internetcomputer.org/governance"}>
                         Learn more
                     </Link>
-                    {displayCharts &&
-                        <OwnershipChart/>
+                    {displayCharts ?
+                        <OwnershipChart/> :
+                        <div className={styles.placeholder}/>
                     }
                     <img className={styles.graphMobile}
                          src={ICTokenGraphMobile01}
@@ -296,8 +297,9 @@ function ICToken() {
                           to={"https://wiki.internetcomputer.org/wiki/ICP_staking_with_NNS_frontend_dapp"}>
                         Stake ICP on NNS dapp
                     </Link>
-                    {displayCharts &&
-                        <VotingRewardsChart/>
+                    {displayCharts ?
+                        <VotingRewardsChart/> :
+                        <div className={styles.placeholder}/>
                     }
                     <img className={styles.graphMobile}
                          src={ICTokenGraphMobile02}

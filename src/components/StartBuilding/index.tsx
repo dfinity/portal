@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from "@site/src/components/StartBuilding/index.module.css";
-import eventBG from "@site/static/img/event_background_image.png"
-import motokoBG from "@site/static/img/motokoPlayground.png"
+import eventBG from "@site/static/img/startBuilding/event_background_image.png"
+import motokoBG from "@site/static/img/startBuilding/motokoPlayground.png"
+import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg"
+import BackgroundGradientSVG
+    from "@site/static/img/svgIcons/startBuildingBackgroundGradient.svg"
 import clsx from "clsx";
+import Link from "@docusaurus/Link";
 
 function Information({title, body, link}) {
     return (
@@ -12,12 +16,7 @@ function Information({title, body, link}) {
                 <p className={styles.informationTitle}>{title}</p>
                 <p className={styles.informationBody}>{body}</p>
             </div>
-            <svg className={styles.informationIcon} viewBox="0 0 24 24"
-                 fill="currentColor"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M13.5006 12L6.50031 4.99969L8.5 3L17.5 12L8.5 21L6.50031 19.0003L13.5006 12Z"/>
-            </svg>
+            <RightArrowSVG className={styles.informationIcon}/>
         </a>
     )
 }
@@ -47,12 +46,7 @@ function MotokoPlayground({title, body, link}) {
                 <p className={styles.informationBody}>{body}</p>
             </div>
             <img className={styles.motokoBackground} src={motokoBG} alt=""/>
-            <svg className={styles.informationIcon}
-                 viewBox="0 0 24 24" fill="currentColor"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M13.5006 12L6.50031 4.99969L8.5 3L17.5 12L8.5 21L6.50031 19.0003L13.5006 12Z"/>
-            </svg>
+            <RightArrowSVG className={styles.informationIcon}/>
         </a>
     )
 }
@@ -61,6 +55,19 @@ function StartBuilding() {
     return (
         <div className={styles.main}>
             <a id="startBuilding"/>
+            <div className={styles.callToActionContainer}>
+                <BackgroundGradientSVG className={styles.BGShape}/>
+                <p className={styles.callToActionTitle}>Start building real
+                    Web3</p>
+                <p className={styles.callToActionBody}>Start a DAO, create a
+                    token,
+                    build dapps and host assets with the full stack entirely on
+                    chain.</p>
+                <Link className={styles.actionButton}
+                      to="/">
+                    BUILD REAL WEB3
+                </Link>
+            </div>
             <div className={styles.cards}>
                 <Information title="Developer’s Home"
                              body="Engage with the IC community to shape future features, propose new ideas, and ask questions."

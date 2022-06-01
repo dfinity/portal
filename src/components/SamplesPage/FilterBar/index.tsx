@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./index.module.css";
-import ArrowDown from "@site/static/img/samples/arrowDown.svg";
-import ArrowUp from "@site/static/img/samples/arrowUp.svg";
-import Delete from "@site/static/img/samples/delete.svg";
-import Filter from "@site/static/img/samples/filter.svg";
-import Close from "@site/static/img/samples/close.svg";
+import ArrowDown from "@site/static/img/svgIcons/arrowDown.svg";
+import ArrowUp from "@site/static/img/svgIcons/arrowUp.svg";
+import Delete from "@site/static/img/svgIcons/delete.svg";
+import Filter from "@site/static/img/svgIcons/filter.svg";
+import Close from "@site/static/img/svgIcons/close.svg";
 import Link from "@docusaurus/Link";
 
 const languageOptions = ["Motoko", "Rust", "Javascript"];

@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import styles from "@site/src/components/Dashboard/index.module.css";
-import DashboardIcon from "@site/static/img/dashboardIcon.svg";
-import InformationIcon from "@site/static/img/informationIcon.svg";
+import DashboardIcon from "@site/static/img/svgIcons/dashboardIcon.svg";
+import InformationIcon from "@site/static/img/svgIcons/informationIcon.svg";
 import Link from "@docusaurus/Link";
 import {animate, motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
