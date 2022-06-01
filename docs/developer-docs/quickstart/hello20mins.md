@@ -225,7 +225,7 @@ Few notes about cycles:
 
 -   You can see a table of compute and storage costs here: [Computation
     and storage
-    costs](../updates/computation-and-storage-costs.md).
+    costs](../deploy/computation-and-storage-costs).
 
 ### Check the connection to the Internet Computer blockchain mainnet (Terminal B)
 
