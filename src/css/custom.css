@@ -89,9 +89,6 @@ div[class^='announcementBarContent'] {
 }
 
 .ic0-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .ic0-item span {
@@ -104,7 +101,7 @@ div[class^='announcementBarContent'] {
     margin-right: 8px;
   }
   .ic0-item {
-    margin-top: 3rem;
+    margin-top: 2rem;
     color: var(--ic0-color);
     font-weight: 500;
   }
@@ -137,6 +134,12 @@ div[class^='announcementBarContent'] {
   font-weight: 500;
 }
 
+/* top menu hover color */
+.navbar__inner .navbar__item:hover.dropdown .navbar__link {
+  color: #da3979;
+}
+
+/* update top menu chevron icon */
 .navbar__inner .navbar__item.dropdown .navbar__link:after {
   border: none;
   width: 1rem;
@@ -145,11 +148,14 @@ div[class^='announcementBarContent'] {
   background-position: center;
   background-size: 100%;
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 10.6669L13.1669 6.00001L14.5 7.33313L8.5 13.3331L2.5 7.33313L3.83312 6.00001L8.5 10.6669Z' fill='currentColor' fill-opacity='0.3'/%3E%3C/svg%3E%0A");
-  transform: scaleY(1);
-  transition: transform 300ms ease;
+  transform: none;
 }
+
+/* colorize the chevron icon on hover */
 .navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
-  transform: scaleY(-1);
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
+    brightness(90%) contrast(89%);
 }
 
 /* Swap the order of the IC logo and the hamburger icon */
@@ -167,6 +173,14 @@ div[class^='announcementBarContent'] {
 .navbar-sidebar {
   --ifm-navbar-sidebar-width: 100vw;
   --ifm-navbar-background-color: white;
+}
+
+/* larger mobile menu items */
+.navbar-sidebar .navbar-sidebar__back {
+  line-height: 2.25;
+}
+.navbar-sidebar .menu__list-item a {
+  line-height: 2.25;
 }
 
 /* make X icon on mobile sidebar black */
