@@ -36,7 +36,7 @@ const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "samples/hello",
+      docs: "./hello",
     },
   },
   {
