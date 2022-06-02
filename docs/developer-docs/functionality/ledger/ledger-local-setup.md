@@ -37,6 +37,7 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
         }
       }
     }
+    ```
     
 6. Configure your replica to run a `System` subnet. Modify `dfx.json` to include:
      ```json
@@ -79,19 +80,6 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     ```
 
     If you want to setup the ledger in a way that matches the production deployment, you should deploy it with archiving enabled. In this setup, the ledger canister dynamically creates new canisters to store old blocks. We recommend using this setup if you are planning to exercise the interface for fetching blocks.
-
-    :::note
-    
-    In recent versions of dfx (>= 0.10.0) you might encounter the issue that the wasm size is too large. This is because the [default subnet type](../../updates/release-notes/#new-feature-configure-subnet-type-of-local-replica) for the local replica changed to `application` instead of `system`, which has stricter limits. In this case change the subnet type to `system` in `dfx.json`.
-
-    ```javascript
-    "defaults": {
-      "replica": {
-        "subnet_type": "system"
-      }
-    }
-    ```
-    :::
 
     Obtain the principal of the identity you use for development. This principal will be the controller of archive canisters.
 
