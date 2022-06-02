@@ -37,7 +37,17 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
         }
       }
     }
-    ```
+    
+6. Configure your replica to run a `System` subnet. Modify `dfx.json` to include:
+     ```json
+     {
+       "defaults":{
+         "replica": {
+           "subnet_type":"system"
+         }
+       }
+     }
+     ```
 
 6.  Start a local replica.
 
