@@ -170,27 +170,27 @@ const sidebars = {
         'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
+          label: 'ICP Ledger',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/ledger/index'
+          },
+          items: [
+            // 'developer-docs/functionality/ledger/interact-with-ledger',
+            'developer-docs/functionality/ledger/ledger-local-setup',
+            'developer-docs/functionality/ledger/deploy-new-token',
+          ]
+        },
+        {
+          type: 'category',
           label: 'Rosetta',
           link: {
-            // type: 'doc', id: 'developer-docs/functionality/rosetta/index'
-            type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
           },
           items: [
             'developer-docs/functionality/rosetta/transfers',
             'developer-docs/functionality/rosetta/neuron-lifecycle',
             'developer-docs/functionality/rosetta/staking-support',
             'developer-docs/functionality/rosetta/staking-tutorial',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Ledger',
-          link: {
-            type: 'doc', id: 'developer-docs/functionality/ledger/index'
-          },
-          items: [
-            'developer-docs/functionality/ledger/ledger-local-setup',
-            'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
       ]
