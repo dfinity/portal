@@ -1,0 +1,171 @@
+.main {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 85px;
+}
+
+.statsContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin: 64px auto;
+    width: 100%;
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 8px;
+    margin: 80px auto 180px auto;
+    width: Min(1350px, 90%);
+}
+
+.statsDivider{
+    border-right: 1px solid rgb(196,196,196);
+}
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+.statTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #888888;
+}
+.statValue {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    color: #222121;
+}
+.body {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    margin: auto;
+    position: relative;
+}
+
+.bodyContainer {
+    position: relative;
+    display: flex;
+    height: 380px;
+    margin: auto 0;
+}
+
+.container {
+    width: Min(900px, 90%);
+    margin: auto;
+    position: relative;
+    padding: 100px 42px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.actionButton {
+    margin: 32px auto 0 auto;
+    text-align: center;
+    padding: 16px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+.actionButton:hover {
+    border: 2px solid #3B00B9;
+    background-color: #3B00B9;
+    color: white;
+    text-decoration: none;
+}
+.informationIcon {
+    color: var(--ifm-color-primary);
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+
+.card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #FFFFFF;
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 64px;
+    height: 258px;
+    width: calc(33.3% - 8px);
+    text-align: start;
+}
+
+.cardHover:hover {
+    color: white;
+    text-decoration: none;
+    background: var(--ifm-color-primary);
+    border: 1px solid var(--ifm-color-primary);
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.cardHover:hover .informationTitle,
+.cardHover:hover .informationIcon,
+.cardHover:hover .informationBody {
+    color: white;
+    text-decoration: none;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.cardHover:hover .cardBodyContainer,
+.cardHover:hover .informationIcon {
+    margin-top: -15px;
+    margin-bottom: 15px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.cardBodyContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex-grow: 1;
+    width: 95%;
+}
+
+.informationTitle {
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+    color: var(--ifm-color-primary);
+}
+
+.informationBody {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: black;
+    width: 80%;
+}
+
+.informationIcon {
+    color: var(--ifm-color-primary);
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
