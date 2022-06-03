@@ -47,7 +47,7 @@ In order to simplify working with ICP from JavaScript applications, you can use 
 
 ## Interact with ICP from a canister
 
-The ICP transfer example provides a good starting point for interacting with ICP from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
+The [ICP transfer example](/samples/token-transfer) provides a good starting point for interacting with ICP from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
 
 ### Receiving ICP
 
