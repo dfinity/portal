@@ -156,6 +156,7 @@ const sidebars = {
         // 'developer-docs/deploy/deploy',
         // 'developer-docs/deploy/scale',
         'developer-docs/deploy/computation-and-storage-costs',
+        // 'developer-docs/deploy/advanced-deployment'
       ],
     },
     {
@@ -180,6 +181,21 @@ const sidebars = {
             'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
+        // {
+        //   type: 'category',
+        //   label: 'Bitcoin Integration',
+        //   items: [
+        //     'developer-docs/functionality/bitcoin/bitcoin',
+        //     'developer-docs/functionality/bitcoin/t-ecdsa'
+        //   ]
+        // },        
+        // {
+        //   type: 'category',
+        //   label: 'Using the SNS',
+        //   items: [
+        //     'developer-docs/functionality/sns',
+        //   ]
+        // },
         {
           type: 'category',
           label: 'Rosetta',
@@ -306,6 +322,11 @@ const sidebars = {
       label: 'Rust CDK References',
       href: 'https://docs.rs/ic-cdk/',
     },
+    // {
+    //   type: 'link',
+    //   label: 'SNS References',
+    //   href: 'https://docs.rs/ic-sns/',
+    // },
     'references/candid-ref',
     'references/ledger',
     'references/ii-spec',
