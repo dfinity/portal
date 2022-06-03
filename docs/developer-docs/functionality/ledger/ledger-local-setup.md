@@ -6,7 +6,7 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
 1.  Get a pre-built Ledger canister module and Candid interface files.
 
     ``` sh
-    export IC_VERSION=a7058d009494bea7e1d898a3dd7b525922979039
+    export IC_VERSION=dd3a710b03bd3ae10368a91b255571d012d1ec2f
     curl -o ledger.wasm.gz https://download.dfinity.systems/ic/${IC_VERSION}/canisters/ledger-canister_notify-method.wasm.gz
     gunzip ledger.wasm.gz
     curl -o ledger.private.did https://raw.githubusercontent.com/dfinity/ic/${IC_VERSION}/rs/rosetta-api/ledger.did
@@ -38,6 +38,17 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
       }
     }
     ```
+    
+6. Configure your replica to run a `System` subnet. Modify `dfx.json` to include:
+     ```json
+     {
+       "defaults":{
+         "replica": {
+           "subnet_type":"system"
+         }
+       }
+     }
+     ```
 
 6.  Start a local replica.
 
@@ -69,19 +80,6 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     ```
 
     If you want to setup the ledger in a way that matches the production deployment, you should deploy it with archiving enabled. In this setup, the ledger canister dynamically creates new canisters to store old blocks. We recommend using this setup if you are planning to exercise the interface for fetching blocks.
-
-    :::note
-    
-    In recent versions of dfx (>= 0.10.0) you might encounter the issue that the wasm size is too large. This is because the [default subnet type](../../updates/release-notes/#new-feature-configure-subnet-type-of-local-replica) for the local replica changed to `application` instead of `system`, which has stricter limits. In this case change the subnet type to `system` in `dfx.json`.
-
-    ```javascript
-    "defaults": {
-      "replica": {
-        "subnet_type": "system"
-      }
-    }
-    ```
-    :::
 
     Obtain the principal of the identity you use for development. This principal will be the controller of archive canisters.
 
