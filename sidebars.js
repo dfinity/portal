@@ -286,6 +286,7 @@ const sidebars = {
         'references/motoko-ref/nat32',
         'references/motoko-ref/nat64',
         'references/motoko-ref/option',
+        'references/motoko-ref/order',
         'references/motoko-ref/prelude',
         'references/motoko-ref/principal',
         'references/motoko-ref/random',
