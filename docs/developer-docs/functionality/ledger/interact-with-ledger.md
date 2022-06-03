@@ -2,7 +2,6 @@
 
 
 
-
 ## Interact with ICP from the command line
 
 Dfx provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger/) or just enter the following command into your console:
@@ -44,7 +43,54 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 
 ## Interact with ICP from your web application
 
+In order to simplify working with ICP from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
+
 ## Interact with ICP from a canister
 
-The ICP transfer example provides a good starting point for interacting with ICP from a canister.
+The ICP transfer example provides a good starting point for interacting with ICP from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
+
+### Receiving ICP
+
+If you want a canister to receive payment in ICP you need to make sure that the canister knows about the payment, because a transfer only involves the sender and the ledger canister.
+
+There are currently three patterns to achieve this. Furthermore, there is a [chartered working group](https://forum.dfinity.org/t/announcing-technical-working-groups/11781) on Ledger & Tokenization which is focused on defining a standard ledger/token interface as well payment flows.
+
+#### Direct notification by sender
+
+In this pattern the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/current/references/ledger#_getting_ledger_blocks) of the ledger.
+The following diagram shows a rough sequence of this pattern:
+
+```plantuml
+    participant Sender
+    participant "ICP Ledger"
+    participant Receiver
+    
+    Sender -> "ICP Ledger": transfer()
+    "ICP Ledger" --> Sender: blockNumber
+    Sender -> Receiver: notify(blockNumber)
+    Receiver -> "ICP Ledger": query_blocks(blockNumber)
+    "ICP Ledger" --> Receiver: block
+    Receiver -> Receiver: verify payment
+```
+
+
+#### Notification by ICP ledger (Currently disabled)
+
+In this pattern the ledger iteself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, This flow is currently disabled because the call to the receiver is not yet implemented as a one-way call. 
+
+```plantuml
+    participant Sender
+    participant "ICP Ledger"
+    participant Receiver
+    
+    Sender -> "ICP Ledger": transfer()
+    "ICP Ledger" --> Sender: blockNumber
+    Sender -> "ICP Ledger": notify(blockNumber, receiver)
+    "ICP Ledger" -> "Receiver": transaction_notification(details)
+```
+
+#### Invoice / payment flow
+
+A third flow introduces an invoice canister. You can read more about it in this [forum thread](https://forum.dfinity.org/t/payments-invoice-canister-design-review/9843/10).
+
 
