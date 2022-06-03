@@ -28,8 +28,6 @@ In many cases you want to check the main account balance of a specific principal
 dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principal-id>)
 ```
 
-The balance command 
-
 #### Transfer
 
 The transfer function can be used to transfer ICP from your account to another. 
