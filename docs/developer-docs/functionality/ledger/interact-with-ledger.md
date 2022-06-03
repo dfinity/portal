@@ -56,7 +56,7 @@ There are currently two main patterns to achieve this. Furthermore, there is a [
 #### Direct notification by sender
 
 In this pattern the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/current/references/ledger#_getting_ledger_blocks) of the ledger.
-The following diagram shows a rough sequence of this pattern:
+The following diagram shows a simplified illustration of this pattern:
 
 ```plantuml
     participant Sender
