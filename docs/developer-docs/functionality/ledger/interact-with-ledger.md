@@ -53,7 +53,7 @@ The [ICP transfer example](/samples/token-transfer) provides a good starting poi
 
 If you want a canister to receive payment in ICP you need to make sure that the canister knows about the payment, because a transfer only involves the sender and the ledger canister.
 
-There are currently three patterns to achieve this. Furthermore, there is a [chartered working group](https://forum.dfinity.org/t/announcing-technical-working-groups/11781) on Ledger & Tokenization which is focused on defining a standard ledger/token interface as well payment flows.
+There are currently two main patterns to achieve this. Furthermore, there is a [chartered working group](https://forum.dfinity.org/t/announcing-technical-working-groups/11781) on Ledger & Tokenization which is focused on defining a standard ledger/token interface as well payment flows.
 
 #### Direct notification by sender
 
@@ -88,9 +88,3 @@ In this pattern the ledger iteself notifies the receiver. Thereby, the receiver 
     Sender -> "ICP Ledger": notify(blockNumber, receiver)
     "ICP Ledger" -> "Receiver": transaction_notification(details)
 ```
-
-#### Invoice / payment flow
-
-A third flow introduces an invoice canister. You can read more about it in this [forum thread](https://forum.dfinity.org/t/payments-invoice-canister-design-review/9843/10).
-
-
