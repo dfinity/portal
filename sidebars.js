@@ -175,7 +175,7 @@ const sidebars = {
             type: 'doc', id: 'developer-docs/functionality/ledger/index'
           },
           items: [
-            // 'developer-docs/functionality/ledger/interact-with-ledger',
+            'developer-docs/functionality/ledger/interact-with-ledger',
             'developer-docs/functionality/ledger/ledger-local-setup',
             'developer-docs/functionality/ledger/deploy-new-token',
           ]
