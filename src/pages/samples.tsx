@@ -144,14 +144,14 @@ const sampleItems = [
   },
   {
     index: 6,
-    title: "Token transfer",
+    title: "ICP transfer",
     image: tokenTransfer,
     domains: ["Global", "DeFi"],
     languages: ["Motoko", "Rust"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation"],
     highlights: ["Global", "Motoko", "Rust", "Advanced"],
-    body: "Create a dapp that can transfer tokens to its most active users.",
+    body: "Create a dapp that can transfer ICP to its most active users.",
     links: {
       action: {
         text: "Get Code",
