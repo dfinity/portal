@@ -5,6 +5,7 @@
     --swiper-theme-color: white;
     --swiper-pagination-bullet-inactive-color: white;
     --swiper-pagination-bullet-inactive-opacity: 0.30;
+    z-index: 2;
 }
 
 .showcaseContainer {

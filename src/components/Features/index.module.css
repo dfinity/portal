@@ -4,6 +4,7 @@
     position: relative;
     padding: 100px 0;
     --swiper-theme-color: var(--ifm-color-primary);
+    z-index: 1;
 }
 
 .title {

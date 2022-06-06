@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
         <Dashboard />
         <Features />
         <Showcase />
-        {/*<Foundation/>*/}
+        <Foundation />
         <ICToken />
         <StartBuilding />
         <SectionsBar />
