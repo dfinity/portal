@@ -4,15 +4,10 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import DownloadSVG from "@site/static/img/svgIcons/download.svg";
-import DomPhoto from "@site/static/img/Foundation/TeamPhotos/Dom.jpeg";
-import EvaPhoto from "@site/static/img/Foundation/TeamPhotos/Eva.jpeg";
-import GianPhoto from "@site/static/img/Foundation/TeamPhotos/Gian.jpeg";
-import JanPhoto from "@site/static/img/Foundation/TeamPhotos/Jan.jpeg";
-import SamuelPhoto from "@site/static/img/Foundation/TeamPhotos/Samuel.jpeg";
-import LeePhoto from "@site/static/img/Foundation/TeamPhotos/Lee.jpeg";
-import AislingPhoto from "@site/static/img/Foundation/TeamPhotos/Aisling.jpeg";
-import ArtemPhoto from "@site/static/img/Foundation/TeamPhotos/Artem.jpeg";
-import DiegoPhoto from "@site/static/img/Foundation/TeamPhotos/Diego.jpeg";
+import TeamPhotoFront from "@site/static/img/Foundation/teamPhotoFront.png";
+import TeamPhotoBack from "@site/static/img/Foundation/teamPhotoBack.png";
+import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
+import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -114,8 +109,26 @@ function Foundation() {
       className={styles.main}
     >
       <a id="foundation" />
+      <motion.img
+        src={TeamPhotoFront}
+        style={{ y: currentYScroll * 0.2 }}
+        className={styles.mainPhoto}
+        alt=""
+      />
+      <motion.img
+        src={TeamPhotoBack}
+        style={{ y: currentYScroll * 0.4 }}
+        className={styles.mainPhoto}
+        alt=""
+      />
       <div ref={divRef} className={styles.container}>
-        <div className={clsx(styles.teamPhotos, styles.teamPhotosBase)}>
+        <img
+          src={TeamPhotoMobile1}
+          alt=""
+          className={styles.teamPhotoMobile1}
+        />
+
+        {/*<div className={clsx(styles.teamPhotos, styles.teamPhotosBase)}>
           <motion.img
             src={DomPhoto}
             style={{ y: currentYScroll * 0.3 }}
@@ -176,7 +189,7 @@ function Foundation() {
             className={clsx(styles.teamPhoto, styles.photo9)}
             alt=""
           />
-        </div>
+        </div>*/}
         <div className={styles.title}>Blockchain’s largest R&D operation</div>
         <div className={styles.statsContainer}>
           {stats.map((stat) => (
@@ -246,6 +259,7 @@ function Foundation() {
           />
         ))}
       </div>
+      <img src={TeamPhotoMobile2} alt="" className={styles.teamPhotoMobile2} />
     </motion.div>
   );
 }

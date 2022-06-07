@@ -4,6 +4,7 @@
     height: 100%;
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
     --swiper-theme-color: var(--ifm-color-primary);
     z-index: 1;
 }
@@ -27,7 +28,7 @@
     width: Min(850px, 90%);
     margin: 0 auto;
     position: relative;
-    padding: 500px 0 100px 0;
+    padding: 400px 0 100px 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -48,6 +49,17 @@
     border-radius: 12px;
     object-fit: cover;
     position: absolute;
+}
+
+.mainPhoto {
+    width: 1440px;
+    z-index: -10;
+    position: absolute;
+    top: 0;
+}
+
+.teamPhotoMobile1, .teamPhotoMobile2 {
+    display: none;
 }
 
 .photo1 {
@@ -281,7 +293,7 @@
 
 @media screen and (max-width: 996px) {
     .container {
-        padding: 320px 0 48px 0;
+        padding: 48px 0;
     }
 
     .title {
@@ -347,5 +359,14 @@
 
     .mainCard .cardTitle, .mainCard .cardIcon {
         color: var(--ifm-color-primary);
+    }
+
+    .mainPhoto {
+        display: none;
+    }
+
+    .teamPhotoMobile1, .teamPhotoMobile2 {
+        display: flex;
+        margin: 32px 0;
     }
 }
