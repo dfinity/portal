@@ -63,7 +63,7 @@ function Features() {
                       link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29"}/>
                 <Card title={"lessCO₂"}
                       body={"Chain key cryptography enables environmentally friendly decentralization and keeps gas cost stable"}
-                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost"}/>
+                      link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"}/>
                 <Card title={"internetscale"}
                       body={"Dapps can grow without limits as the IC transparently adds more nodes"}
                       link={"https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit"}/>

@@ -13,9 +13,9 @@ const sidebars = {
       items: [
         'developer-docs/quickstart/hello10mins',
         // 'developer-docs/quickstart/windows-wsl',
-        'developer-docs/quickstart/cycles-faucet'
-        // 'developer-docs/quickstart/local-quickstart',
-        // 'developer-docs/quickstart/network-quickstart'
+        'developer-docs/quickstart/cycles-faucet',
+        'developer-docs/quickstart/local-quickstart',
+        'developer-docs/quickstart/network-quickstart'
       ]
     },
     {
@@ -143,19 +143,20 @@ const sidebars = {
 
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Deployment & Scaling',
-        //   link: {
-        //     type: 'doc', id: 'developer-docs/build/deployment-scaling/index',
-        //   },
-        //   items: [
-        //     'developer-docs/build/deployment-scaling/deploy',
-        //     'developer-docs/build/deployment-scaling/scale'
-        //   ],
-        // },
         'developer-docs/build/troubleshooting',
       ]
+    },
+    {
+      type: 'category',
+      label: 'Deployment & Scaling',
+      link: {
+        type: 'doc', id: 'developer-docs/deploy/computation-and-storage-costs',
+      },
+      items: [
+        // 'developer-docs/deploy/deploy',
+        // 'developer-docs/deploy/scale',
+        'developer-docs/deploy/computation-and-storage-costs',
+      ],
     },
     {
       type: 'category',
@@ -169,27 +170,27 @@ const sidebars = {
         'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
+          label: 'ICP Ledger',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/ledger/index'
+          },
+          items: [
+            // 'developer-docs/functionality/ledger/interact-with-ledger',
+            'developer-docs/functionality/ledger/ledger-local-setup',
+            'developer-docs/functionality/ledger/deploy-new-token',
+          ]
+        },
+        {
+          type: 'category',
           label: 'Rosetta',
           link: {
-            // type: 'doc', id: 'developer-docs/functionality/rosetta/index'
-            type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
           },
           items: [
             'developer-docs/functionality/rosetta/transfers',
             'developer-docs/functionality/rosetta/neuron-lifecycle',
             'developer-docs/functionality/rosetta/staking-support',
             'developer-docs/functionality/rosetta/staking-tutorial',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Ledger',
-          link: {
-            type: 'doc', id: 'developer-docs/functionality/ledger/index'
-          },
-          items: [
-            'developer-docs/functionality/ledger/ledger-local-setup',
-            'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
       ]
@@ -209,31 +210,9 @@ const sidebars = {
             type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes',
           },
           items: [
-            'developer-docs/updates/release-notes/release-notes',
-            // 'developer-docs/updates/release-notes/0.10.0-rn',
-            // 'developer-docs/updates/release-notes/0.9.3-rn',
-            // 'developer-docs/updates/release-notes/0.9.2-rn',
-            // 'developer-docs/updates/release-notes/0.9.0-rn',
-            // 'developer-docs/updates/release-notes/0.8.4-rn',
-            // 'developer-docs/updates/release-notes/0.8.2-rn',
-            // 'developer-docs/updates/release-notes/0.8.1-rn',
-            // 'developer-docs/updates/release-notes/0.8.0-rn',
-            // 'developer-docs/updates/release-notes/0.7.7-rn',
-            // 'developer-docs/updates/release-notes/0.7.2-rn',
-            // 'developer-docs/updates/release-notes/0.7.1-rn',
-            // 'developer-docs/updates/release-notes/0.7.0-rn',
-            // 'developer-docs/updates/release-notes/0.6.26-rn',
-            // 'developer-docs/updates/release-notes/0.6.25-rn',
-            // 'developer-docs/updates/release-notes/0.6.24-rn',
-            // 'developer-docs/updates/release-notes/0.6.23-rn',
-            // 'developer-docs/updates/release-notes/0.6.22-rn',
-            // 'developer-docs/updates/release-notes/0.6.21-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/release-notes'
           ]
-        },
-        'developer-docs/updates/computation-and-storage-costs',
+        }
       ]
     },
     'developer-docs/glossary',
@@ -248,6 +227,7 @@ const sidebars = {
       },
       items: [
         'references/cli-reference/dfx-parent',
+        'references/cli-reference/dfx-bootstrap',
         'references/cli-reference/dfx-build',
         'references/cli-reference/dfx-cache',
         'references/cli-reference/dfx-canister',
@@ -261,6 +241,7 @@ const sidebars = {
         'references/cli-reference/dfx-ping',
         'references/cli-reference/dfx-replica',
         'references/cli-reference/dfx-start',
+        'references/cli-reference/dfx-stop',
         'references/cli-reference/dfx-upgrade',
         'references/cli-reference/dfx-wallet',
         'references/cli-reference/dfx-envars',
@@ -363,7 +344,6 @@ const sidebars = {
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
         'tokenomics/identity-auth/auth-how-to',
-        'tokenomics/identity-auth/plug-ids',
         'tokenomics/identity-auth/hello-guide'
       ]
     },

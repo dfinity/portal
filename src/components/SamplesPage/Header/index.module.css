@@ -1,0 +1,35 @@
+.container {
+  width: Min(1100px, 100%);
+  margin: 64px auto 64px 112px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.title,
+.body {
+  display: inline-flex;
+  width: min(550px, 100%);
+}
+.title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 90px;
+}
+.body {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+}
+@media screen and (max-width: 996px) {
+  .title {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .body {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .container {
+      margin: 48px auto;
+  }
+}
