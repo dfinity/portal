@@ -1,70 +1,99 @@
-import React, {useEffect, useState} from 'react';
-import styles from './index.module.css';
-import {AnimatePresence, motion} from "framer-motion";
+import React, {useEffect} from "react";
+import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import languagesJson from "@site/static/Infinite.json"
+import {AnimatePresence, motion, useAnimation, useCycle} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 
-const variants = {
-    enter: {
-        y: 30,
-        opacity: 0,
-    },
-    center: {
-        y: 0,
+const container = {
+    hidden: {opacity: 0, transition: {duration: 1}},
+    show: {
         opacity: 1,
-    },
-    exit: {
-        y: -30,
-        opacity: 0,
-    },
+        transition: {
+            staggerChildren: 0.1,
+        }
+    }
+}
+const item = {
+    hidden: {opacity: 0, y: 30},
+    show: {opacity: 1, y: 0, transition: {duration: 0.5}}
+}
+const textCycling = {
+    enter: {y: 30, opacity: 0,},
+    center: {y: 0, opacity: 1,},
+    exit: {y: -30, opacity: 0,},
 };
 
 function Index() {
-    const [index, setIndex] = useState(0);
+    const controls = useAnimation();
+    const {ref, inView} = useInView({threshold: 0.2});
     useEffect(() => {
-        setTimeout(() => {
-            let next = index + 1;
-            if (next === languagesJson.languages.length) {
-                next = 0;
-            }
-            setIndex(next);
+        if (inView) {
+            controls.start("show");
+        }
+    }, [controls, inView]);
+    useEffect(() => {
+        setInterval(() => {
+            cycleTitle();
         }, 2500);
-    }, [index, setIndex]);
+    }, []);
+    const [title, cycleTitle] = useCycle("build", "explore", "invest", "decentralize", "tokenize", "scale", "transact");
     return (
         <div className={styles.section}>
             <a id="home"/>
-            <div className={styles.main}>
-                <div className={styles.container}>
-                    <div className={styles.Title}>
-                        <p>hello,</p>
+            <motion.div ref={ref} animate={controls} initial="hidden"
+                        variants={container} className={styles.container}>
+                <motion.div variants={item} className={styles.Title}>
+                    <p style={{
+                        marginRight: "25px",
+                        marginBottom: "0.25em"
+                    }}>Freedom to</p>
+                    <div>
                         <AnimatePresence>
                             <motion.p
-                                className={styles.InfiniteWord}
-                                variants={variants}
-                                key={index}
+                                className={styles.wordCycle}
+                                variants={textCycling}
+                                key={title}
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
                                 transition={{
-                                    y: {type: "spring", stiffness: 100, damping: 20, duration: 0.2},
+                                    y: {
+                                        type: "spring",
+                                        stiffness: 100,
+                                        damping: 20,
+                                        duration: 0.2
+                                    },
                                     opacity: {duration: 0.1},
                                 }}
                             >
-                                {languagesJson.languages[index].text}
+                                {title}
                             </motion.p>
                         </AnimatePresence>
-                        <p className={styles.InfiniteWordFiller}>infinite</p>
-                        <p>world!</p>
+                        <p className={styles.wordFiller}>decentralize</p>
                     </div>
-                    <div className={styles.Text}>
-                        <p>Build smart contracts and dapps 100% on-chain on the world’s fastest and most powerful open-
-                           source blockchain network. </p>
-                    </div>
-                    <Link className={styles.Button} to="/docs/current/developer-docs/quickstart/hello10mins">
-                        START BUILDING
+                </motion.div>
+                {/*<motion.p variants={item} className={styles.Title}>
+                    Blockchain's future
+                </motion.p>*/}
+                <motion.p variants={item} className={styles.Text}>
+                    The Web of the Next Generation – Blockchain Innovation
+                    without Compromise
+                </motion.p>
+                <motion.div variants={item} className={styles.actionContainer}>
+                    <Link
+                        className={styles.actionButton}
+                        to="/docs/current/developer-docs/quickstart/hello10mins"
+                    >
+                        BUILD REAL WEB3
                     </Link>
-                </div>
-            </div>
+                    <Link
+                        className={styles.callToAction}
+                        to={"https://dfinity.org/showcase/"}
+                    >
+                        Explore the Internet Computer
+                    </Link>
+                </motion.div>
+            </motion.div>
         </div>
     );
 }

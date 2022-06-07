@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.css';
 import Link from "@docusaurus/Link";
 import {motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
-import governanceGraphMobile01 from "@site/static/img/governanceGraphMobile01.png"
-import governanceGraphMobile02 from "@site/static/img/governanceGraphMobile02.png"
+import ICTokenGraphMobile01 from "@site/static/img/ICToken/ICTokenGraphMobile01.png"
+import ICTokenGraphMobile02 from "@site/static/img/ICToken/ICTokenGraphMobile02.png"
 import {
     Chart as ChartJS,
     ArcElement,
@@ -50,17 +50,33 @@ function OwnershipChart() {
                 cutout: "90%",
                 rotation: 130,
                 hover: {mode: null},
+                layout: {
+                    padding: {
+                        top: 0,
+                        right: 20,
+                        bottom: 0,
+                        left: 20
+                    }
+                },
                 animation: {
-                    duration: 500,
-                    delay: 3000,
+                    duration: 2000,
+                    easing: 'easeInOutQuart',
                 },
                 plugins: {
+                    title: {
+                        display: true,
+                        text: '* consists of investors, node providers, developers and the IC Association',
+                        font: {size: 14, weight: "normal"},
+                        color: 'black',
+                        position: "bottom",
+                        align: 'center',
+
+                    },
                     legend: {
                         position: 'bottom',
                         labels: {
                             font: {size: 16},
                             color: "black",
-                            padding: 30,
                             usePointStyle: true,
                             pointStyle: "circle",
                             boxWidth: 12
@@ -81,17 +97,15 @@ function OwnershipChart() {
                                 color: (ctx) => {
                                     return ctx.dataset.backgroundColor[ctx.dataIndex]
                                 },
-                                offset: 20,
+                                offset: 5,
                                 formatter: function (value) {
                                     return Math.round(value * 1000) / 1000 + '%';
                                 },
-                                padding: 4,
                             }
                         },
                     }
                 },
             }}/>
-            <p style={{marginBottom: 0}}>* consists of investors, node providers, developers and the IC Association</p>
         </div>
     );
 }
@@ -119,19 +133,24 @@ function VotingRewardsChart() {
     return (
         <div className={styles.votingRewardsChart}>
             <Line data={votingRewardsData} options={{
-                responsive: true,
                 maintainAspectRatio: true,
                 aspectRatio: 1.5,
+                responsive: true,
                 interaction: {
                     intersect: false,
                     mode: 'nearest',
                 },
                 animation: {
-                    duration: 2500,
+                    duration: 2000,
                     easing: 'easeInOutQuart',
                 },
                 layout: {
-                    padding: 30
+                    padding: {
+                        top: 0,
+                        right: 20,
+                        bottom: 0,
+                        left: 20
+                    }
                 },
                 scales: {
                     xAxis: {
@@ -164,10 +183,12 @@ function VotingRewardsChart() {
                     },
                     title: {
                         display: true,
-                        text: 'Latest Annualized Voting Reward Percentage',
-                        font: {size: 16, weight: 'bold'},
+                        text: ['Latest Annualized Voting', 'Reward Percentage'],
+                        font: {size: 14},
                         color: 'black',
                         align: 'start',
+
+
                     },
                     datalabels: {
                         formatter: (value, context) => {
@@ -217,12 +238,13 @@ const chart = {
     show: {opacity: 1, y: 0, transition: {duration: 0.5}}
 }
 
-function Governance() {
+function ICToken() {
     const controls = useAnimation();
-    const {ref, inView} = useInView({delay: 500, threshold: 0.2});
+    const [displayCharts, setDisplayCharts] = useState(false);
+    const {ref, inView} = useInView({threshold: 0.2});
     useEffect(() => {
         if (inView) {
-            controls.start("show");
+            controls.start("show").then(() => setDisplayCharts(true));
         }
     }, [controls, inView]);
     return (
@@ -231,62 +253,61 @@ function Governance() {
                     initial="hidden"
                     variants={container}
                     className={styles.main}>
-            <a id="governance"/>
+            <a id="ICToken"/>
             <div className={styles.header}>
-                <motion.p variants={item} className={styles.headerTitle}>Help Shape the Internet Computer</motion.p>
-                <motion.p variants={item} className={styles.headerBody}>Calling all developers and blockchain
-                    enthusiasts! The Internet Computer is
-                    a fully decentralized
-                    platform, which means that its ownership is in the hands of the people vested in it. While the
-                    Dfinity Foundation is a main contributor building the Internet Computer, the evolution of how it is
-                    built is governed by a communal voting system. Not only do stakeholders have a say in
-                    what happens next, they also receive voting rewards for participating in governance.
+                <motion.p variants={item}
+                          className={styles.headerTitle}>Internet Computer
+                    utility token
+                </motion.p>
+                <motion.p variants={item} className={styles.headerBody}>ICP
+                    tokens allow users to participate in and govern the Internet
+                    Computer blockchain network.
                 </motion.p>
                 <motion.div variants={item} style={{display: "inline-flex"}}>
-                    <Link className={styles.headerCallToAction} to={"https://forum.dfinity.org/"}>
-                        Share your thoughts in the Developer Forum
+                    <Link className={styles.headerCallToAction}
+                          to={"https://forum.dfinity.org/"}>
+                        LEARN MORE
                     </Link>
                 </motion.div>
             </div>
+
             <div className={styles.graphsContainer}>
                 <motion.div variants={chart} className={styles.card}>
-                    <p className={styles.cardTitle}>The community-led governance of the Internet Computer</p>
+                    <p className={styles.cardTitle}>The community-led
+                        governance
+                        of the Internet Computer</p>
                     <Link className={styles.cardCallToAction}
                           to={"https://dashboard.internetcomputer.org/governance"}>
                         Learn more
                     </Link>
-                    <OwnershipChart/>
-                    <img className={styles.graphMobile} src={governanceGraphMobile01}
-                         alt="governanceGraphMobile01"/>
+                    {displayCharts ?
+                        <OwnershipChart/> :
+                        <div className={styles.placeholder}/>
+                    }
+                    <img className={styles.graphMobile}
+                         src={ICTokenGraphMobile01}
+                         alt="ICTokenGraphMobile01"/>
                 </motion.div>
                 <motion.div variants={chart} className={styles.card}>
-                    <p className={styles.cardTitle}>Earn substantial voting rewards by staking in the Network
+                    <p className={styles.cardTitle}>Earn substantial voting
+                        rewards by staking in the Network
                         Nervous
                         System (NNS)</p>
                     <Link className={styles.cardCallToAction}
                           to={"https://wiki.internetcomputer.org/wiki/ICP_staking_with_NNS_frontend_dapp"}>
                         Stake ICP on NNS dapp
                     </Link>
-                    <VotingRewardsChart/>
-                    <img className={styles.graphMobile} src={governanceGraphMobile02}
-                         alt="governanceGraphMobile02"/>
+                    {displayCharts ?
+                        <VotingRewardsChart/> :
+                        <div className={styles.placeholder}/>
+                    }
+                    <img className={styles.graphMobile}
+                         src={ICTokenGraphMobile02}
+                         alt="ICTokenGraphMobile02"/>
                 </motion.div>
             </div>
-            <motion.div variants={item} className={styles.votingContainer}>
-                <svg className={styles.BGShape} viewBox="0 0 773 643" fill="none">
-                    <path
-                        d="M3.65046e-05 225.435C5.20259e-05 47.8928 273.206 0.0612357 450.748 0.0612512C628.291 0.0612667 772.218 143.988 772.218 321.531C772.218 499.073 628.291 643 450.748 643C273.206 643 2.09834e-05 402.978 3.65046e-05 225.435Z"
-                        fill="#3C01BA"/>
-                </svg>
-                <p className={styles.votingTitle}>Your opinions matter </p>
-                <Link className={styles.actionButton} to="https://smartcontracts.org/docs/current/tokenomics/">
-
-                    LEARN HOW TO STAKE AND VOTE
-                </Link>
-
-            </motion.div>
         </motion.div>
     );
 }
 
-export default Governance;
+export default ICToken;
