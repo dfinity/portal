@@ -23,6 +23,77 @@
     width: 100%;
 }
 
+.container {
+    width: Min(850px, 90%);
+    margin: 0 auto;
+    position: relative;
+    padding: 500px 0 100px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.teamPhotos {
+    position: absolute;
+    width: 100%;
+    top: 200px;
+    height: 500px;
+}
+
+.teamPhoto {
+    width: 100px;
+    height: 100px;
+    z-index: -10;
+    border-radius: 12px;
+    object-fit: cover;
+    position: absolute;
+}
+
+.photo1 {
+    left: -100px;
+    top: 100px;
+}
+
+.photo2 {
+    left: 500px;
+    top: -50px;
+}
+
+.photo3 {
+    right: -150px;
+    top: 70px;
+}
+
+.photo4 {
+    left: 150px;
+    top: -50px;
+}
+
+.photo5 {
+    left: 0;
+    top: 0;
+}
+
+.photo6 {
+    right: -120px;
+    top: -100px;
+}
+
+.photo7 {
+    right: 500px;
+    top: 120px;
+}
+
+.photo8 {
+    left: -100px;
+    top: -120px;
+}
+
+.photo9 {
+    right: 150px;
+    top: -120px;
+}
 
 .stat {
     display: flex;
@@ -63,17 +134,6 @@
     display: flex;
     height: 380px;
     margin: auto 0;
-}
-
-.container {
-    width: Min(850px, 90%);
-    margin: auto;
-    position: relative;
-    padding: 100px 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
 }
 
 .actionButton {

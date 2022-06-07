@@ -1,9 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "@site/src/components/Foundation/index.module.css";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import DownloadSVG from "@site/static/img/svgIcons/download.svg";
+import DomPhoto from "@site/static/img/Foundation/TeamPhotos/Dom.jpeg";
+import EvaPhoto from "@site/static/img/Foundation/TeamPhotos/Eva.jpeg";
+import GianPhoto from "@site/static/img/Foundation/TeamPhotos/Gian.jpeg";
+import JanPhoto from "@site/static/img/Foundation/TeamPhotos/Jan.jpeg";
+import SamuelPhoto from "@site/static/img/Foundation/TeamPhotos/Samuel.jpeg";
+import LeePhoto from "@site/static/img/Foundation/TeamPhotos/Lee.jpeg";
+import AislingPhoto from "@site/static/img/Foundation/TeamPhotos/Aisling.jpeg";
+import ArtemPhoto from "@site/static/img/Foundation/TeamPhotos/Artem.jpeg";
+import DiegoPhoto from "@site/static/img/Foundation/TeamPhotos/Diego.jpeg";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -75,12 +84,27 @@ function Card({ isMain, title, body, link }) {
 
 function Foundation() {
   const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.2 });
+  const divRef = useRef(null);
+  const [currentYScroll, setCurrentYScroll] = useState(400);
+
+  const { ref, inView } = useInView({ threshold: 0 });
   useEffect(() => {
     if (inView) {
       controls.start("show");
     }
   }, [controls, inView]);
+  const scrollHandler = () => {
+    const { y, height } = divRef.current.getBoundingClientRect();
+    if (y <= 400 && -y <= height) {
+      setCurrentYScroll(y);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler, true);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler, true);
+    };
+  }, []);
   return (
     <motion.div
       ref={ref}
@@ -90,7 +114,69 @@ function Foundation() {
       className={styles.main}
     >
       <a id="foundation" />
-      <div className={styles.container}>
+      <div ref={divRef} className={styles.container}>
+        <div className={clsx(styles.teamPhotos, styles.teamPhotosBase)}>
+          <motion.img
+            src={DomPhoto}
+            style={{ y: currentYScroll * 0.3 }}
+            className={clsx(styles.teamPhoto, styles.photo1)}
+            alt=""
+          />
+          <motion.img
+            src={EvaPhoto}
+            style={{ y: currentYScroll * 0.3 }}
+            className={clsx(styles.teamPhoto, styles.photo2)}
+            alt=""
+          />
+          <motion.img
+            src={JanPhoto}
+            style={{ y: currentYScroll * 0.3 }}
+            className={clsx(styles.teamPhoto, styles.photo3)}
+            alt=""
+          />
+        </div>
+
+        <div className={clsx(styles.teamPhotos, styles.teamPhotosBack)}>
+          <motion.img
+            src={GianPhoto}
+            style={{ y: currentYScroll * 0.25, scale: 0.8 }}
+            className={clsx(styles.teamPhoto, styles.photo4)}
+            alt=""
+          />
+          <motion.img
+            src={SamuelPhoto}
+            style={{ y: currentYScroll * 0.25, scale: 0.8 }}
+            className={clsx(styles.teamPhoto, styles.photo5)}
+            alt=""
+          />
+          <motion.img
+            src={LeePhoto}
+            style={{ y: currentYScroll * 0.25, scale: 0.8 }}
+            className={clsx(styles.teamPhoto, styles.photo6)}
+            alt=""
+          />
+        </div>
+
+        <div className={clsx(styles.teamPhotos, styles.teamPhotosDeep)}>
+          <motion.img
+            src={AislingPhoto}
+            style={{ y: currentYScroll * 0.2, scale: 0.6 }}
+            className={clsx(styles.teamPhoto, styles.photo7)}
+            alt=""
+          />
+          <motion.img
+            src={ArtemPhoto}
+            style={{ y: currentYScroll * 0.2, scale: 0.6 }}
+            className={clsx(styles.teamPhoto, styles.photo8)}
+            alt=""
+          />
+          <motion.img
+            src={DiegoPhoto}
+            style={{ y: currentYScroll * 0.2, scale: 0.6 }}
+            className={clsx(styles.teamPhoto, styles.photo9)}
+            alt=""
+          />
+        </div>
         <div className={styles.title}>Blockchain’s largest R&D operation</div>
         <div className={styles.statsContainer}>
           {stats.map((stat) => (

@@ -12,6 +12,7 @@ import ICToken from "@site/src/components/ICToken";
 import Showcase from "@site/src/components/Showcase";
 import StartBuilding from "@site/src/components/StartBuilding";
 import Foundation from "@site/src/components/Foundation";
+import Parallax from "@site/src/components/Parallax";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -47,6 +48,7 @@ export default function Home(): JSX.Element {
         <Foundation />
         <ICToken />
         <StartBuilding />
+        <Parallax />
         <SectionsBar />
       </main>
     </Layout>
