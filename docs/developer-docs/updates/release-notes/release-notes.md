@@ -1,5 +1,83 @@
 # Release Notes
 
+# What’s new in 0.10.1
+
+## Changes to DFX
+
+### Fixed: Webpack config no longer uses CopyPlugin
+
+Dfx already points to the asset canister's assets directory, and copying to disk could sometimes
+lead to an annoying "too many open files" error.
+
+### Fixed: HSMs are once again supported on Linux
+
+On Linux, dfx 0.10.0 failed any operation with an HSM with the following error:
+Error: IO: Dynamic loading not supported
+
+The fix was to once again dynamically-link the Linux build.
+
+### New feature: error explanation and fixing instructions engine
+
+Dfx is now capable of providing explanations and remediation suggestions for entire categories of errors at a time.
+Explanations and suggestions will slowly be added over time.
+To see an example of an already existing suggestion, run `dfx deploy --network ic` while using an identity that has no wallet configured.
+
+### Improvement: add context to errors
+
+Most errors that happen within dfx are now reported in much more detail. No more plain `File not found` without explanation what even was attempted.
+
+### Fixed: identities with configured wallets are not broken anymore and removed only when using the --drop-wallets flag
+
+When an identity has a configured wallet, dfx no longer breaks the identity without actually removing it.
+Instead, if the --drop-wallets flag is specified, it properly removes everything and logs what wallets were linked,
+and when the flag is not specified, it does not remove anything.
+
+The behavior for identities without any configured wallets is unchanged.
+
+### New Feature: print wallet balance in a human readable form
+
+Default behaviour changed for `+dfx wallet balance+`, it will now print cycles amount upscaled to trillions.
+
+New flag `+--precise+` added to `+dfx wallet balance+`. Allows to get exact amount of cycles in wallet (without upscaling).
+
+### Fixed: specifying ic provider with a trailing slash is recognised correctly
+
+Specifying the network provider as `https://ic0.app/` instead of `https://ic0.app` is now recognised as the real IC network.
+
+### Binary cache
+
+Added ic-canister-http-adapter to the binary cache.
+
+## Dependencies
+
+### Updated agent-rs to 0.17.0
+
+### Motoko
+
+Updated Motoko from 0.6.26 to 0.6.28.
+
+### Replica
+
+Updated replica to elected commit b90edb9897718730f65e92eb4ff6057b1b25f766.
+This incorporates the following executed proposals:
+
+* https://dashboard.internetcomputer.org/proposal/61004[61004]
+* https://dashboard.internetcomputer.org/proposal/60222[60222]
+* https://dashboard.internetcomputer.org/proposal/59187[59187]
+* https://dashboard.internetcomputer.org/proposal/58479[58479]
+* https://dashboard.internetcomputer.org/proposal/58376[58376]
+* https://dashboard.internetcomputer.org/proposal/57843[57843]
+* https://dashboard.internetcomputer.org/proposal/57395[57395]
+
+### icx-proxy
+
+Updated icx-proxy to commit c312760a62b20931431ba45e5b0168ee79ea5cda
+
+* Added gzip and deflate body decoding before certification validation.
+* Fixed unzip and streaming bugs
+* Added Prometheus metrics endpoint
+* Added root and invalid ssl and dns mapping
+
 ## Highlights of what’s new in 0.10.0
 
 An overview of the 0.10.0 release:
