@@ -36,7 +36,7 @@ const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "samples/hello",
+      docs: "/samples/hello",
     },
   },
   {
@@ -50,8 +50,8 @@ const sampleItems = [
     highlights: ["Global", "Website", "Motoko", "Rust", "Beginner"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
-      action: { text: "Docs", to: "samples/host-a-website" },
-      docs: "samples/host-a-website",
+      action: { text: "Docs", to: "/samples/host-a-website" },
+      docs: "/samples/host-a-website",
       youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
     },
   },
@@ -73,7 +73,7 @@ const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
       rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
       livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
-      docs: "samples/dex",
+      docs: "/samples/dex",
       youtube: "https://youtu.be/fLbaOmH24Gs",
     },
   },
@@ -93,7 +93,7 @@ const sampleItems = [
         to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       },
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      docs: "samples/nft",
+      docs: "/samples/nft",
       youtube: "https://youtu.be/1po3udDADp4",
     },
   },
@@ -115,7 +115,7 @@ const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
       rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
-      docs: "samples/dao",
+      docs: "/samples/dao",
       youtube: "https://youtu.be/3IcYlieA-EE",
     },
   },
@@ -138,7 +138,7 @@ const sampleItems = [
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
       rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
       livePreview: "https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/",
-      docs: "samples/encrypted-notes",
+      docs: "/samples/encrypted-notes",
       youtube: "https://youtu.be/DZQmtPSxvbs",
     },
   },
@@ -160,7 +160,7 @@ const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
-      docs: "samples/token-transfer",
+      docs: "/samples/token-transfer",
     },
   },
   {
@@ -193,11 +193,11 @@ const sampleItems = [
     highlights: ["Gaming", "Website", "Global", "Beginner"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      action: { 
-        text: "Get Code", 
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template"
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
       },
-      docs: "samples/host-unity-webgl",
+      docs: "/samples/host-unity-webgl",
     },
   },
 ];
