@@ -7,7 +7,7 @@
 }
 .title,
 .body {
-  display: inline-flex;
+  display: inline-block;
   width: min(550px, 100%);
 }
 .title {
@@ -30,6 +30,6 @@
     line-height: 26px;
   }
   .container {
-      margin: 48px auto;
+    margin: 48px auto;
   }
 }

@@ -1,14 +1,18 @@
-import React from 'react';
-import styles from './index.module.css';
+import React from "react";
+import styles from "./index.module.css";
+import Link from "@docusaurus/Link";
 
 function Index() {
-    return (
-        <div className={styles.container}>
-            <p className={styles.title}>Sample Code</p>
-            <p className={styles.body}>Get inspired! The possibilities of what to build on the IC are infinite. All
-                samples and further projects can be found in the examples repo.</p>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <p className={styles.title}>Sample Code</p>
+      <span className={styles.body}>
+        Get inspired! The possibilities of what to build on the IC are infinite.
+        All samples and further projects can be found in the
+        <Link to={"https://github.com/dfinity/examples"}> examples repo</Link>.
+      </span>
+    </div>
+  );
 }
 
 export default Index;
