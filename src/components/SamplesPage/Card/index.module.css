@@ -1,9 +1,9 @@
 .container {
-  width: 320px;
+  flex: 1 1 300px;
+  max-width: 380px;
   height: 436px;
   border-radius: 12px;
   background-color: #ffffff;
-  margin: auto;
   position: relative;
 }
 
@@ -18,9 +18,8 @@
 .title {
   font-size: 18px;
   font-weight: 700;
-  line-height: 28px;
-  margin-bottom: 0;
-  width: 180px;
+  line-height: 32px;
+  margin: 8px 0 10px 0;
 }
 
 .header {
@@ -36,7 +35,7 @@
   color: rgba(24, 24, 24, 0.6);
 }
 
-.mainHighlight {
+.domain {
   position: absolute;
   display: flex;
   top: -15px;
@@ -53,40 +52,6 @@
   line-height: 22px;
 }
 
-.mainHighlight:hover .highlightsContainer {
-  display: flex;
-}
-
-.highlightDivider {
-  margin: 0 10px;
-}
-
-.highlightsContainer {
-  width: 100%;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  display: none;
-}
-
-.highlights {
-  color: black;
-  margin: 0 auto 8px auto;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(40px);
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 12px 4px 12px;
-  border-radius: 12px;
-  display: flex;
-}
-
-.highlights p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4px 0 0 0;
-}
 
 .footer {
   display: flex;
@@ -175,9 +140,4 @@
 
 .content:hover .iconLinkTooltip {
   display: inline-flex;
-}
-@media screen and (max-width: 996px) {
-  .container{
-    width:100%;
-  }
 }
