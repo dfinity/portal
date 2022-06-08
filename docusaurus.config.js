@@ -161,11 +161,10 @@ const config = {
             position: "right",
             label: "Develop",
             items: [
-              // {
-              //   label: 'Developers Home',
-              //   type: 'doc',
-              //   docId: 'developer-docs/ic-overview',
-              // },
+              {
+                label: "Developers Home",
+                to: "/developers",
+              },
               {
                 label: "Developers Docs",
                 type: "doc",
@@ -176,7 +175,10 @@ const config = {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
               },
-              { label: "Dev Forum ", href: "https://forum.dfinity.org/" },
+              {
+                label: "Dev Forum ",
+                href: "https://forum.dfinity.org/",
+              },
             ],
           },
           {
@@ -188,12 +190,18 @@ const config = {
                 label: "Token Holders ",
                 href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
               },
-              { label: "Roadmap", href: "https://dfinity.org/roadmap" },
+              {
+                label: "Roadmap",
+                href: "https://dfinity.org/roadmap",
+              },
               {
                 label: "Staking & Governance",
                 href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
               },
-              { label: "NNS Frontend dapp", href: "https://nns.ic0.app/v2/" },
+              {
+                label: "NNS Frontend dapp",
+                href: "https://nns.ic0.app/v2/",
+              },
               {
                 label: "Node Providers",
                 href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers",
@@ -231,7 +239,7 @@ const config = {
           },
 
           {
-            html: '<img src="/img/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
+            html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
             position: "right",
 
             href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
@@ -248,7 +256,7 @@ const config = {
                 ? `You are currently viewing a preview of this <a href="${
                     process.env.PR_URL || "https://github.com/dfinity/portal"
                   }">Pull Request</a>.`
-                : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+                : 'You are currently locally editing the Developer Developers. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
               textColor: "#091E42",
               isCloseable: false,
             }

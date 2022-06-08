@@ -14,20 +14,8 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 
-const container = {
-  hidden: { opacity: 0, transition: { duration: 1 } },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 const stats = [
   { title: "Team Members", value: "260+" },
   { title: "Publications", value: "1564" },
@@ -105,7 +93,7 @@ function Foundation() {
       ref={ref}
       animate={controls}
       initial="hidden"
-      variants={container}
+      variants={transitions.container}
       className={styles.main}
     >
       <a id="foundation" />
@@ -121,13 +109,17 @@ function Foundation() {
         className={styles.mainPhoto}
         alt=""
       />
-      <motion.div variants={item} ref={divRef} className={styles.container}>
+      <motion.div
+        variants={transitions.item}
+        ref={divRef}
+        className={styles.container}
+      >
         <img
           src={TeamPhotoMobile1}
           alt=""
           className={styles.teamPhotoMobile1}
         />
-        <motion.div variants={item} className={styles.title}>
+        <motion.div variants={transitions.item} className={styles.title}>
           Blockchain’s largest R&D operation
         </motion.div>
         <motion.div className={styles.statsContainer}>
@@ -138,7 +130,10 @@ function Foundation() {
             </div>
           ))}
         </motion.div>
-        <motion.div variants={item} className={styles.mobileStatsContainer}>
+        <motion.div
+          variants={transitions.item}
+          className={styles.mobileStatsContainer}
+        >
           {stats.map((stat, index) => (
             <>
               {index % 2 === 1 && (
@@ -154,7 +149,7 @@ function Foundation() {
             </>
           ))}
         </motion.div>
-        <motion.div variants={item} className={styles.body}>
+        <motion.div variants={transitions.item} className={styles.body}>
           The DFINITY Foundation is committed to realizing the most disruptive
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
@@ -163,7 +158,7 @@ function Foundation() {
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
-      <motion.div className={styles.mobileSwiper} variants={item}>
+      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
         <Swiper
           spaceBetween={8}
           centeredSlides={true}
@@ -188,7 +183,7 @@ function Foundation() {
           ))}
         </Swiper>
       </motion.div>
-      <motion.div variants={item} className={styles.cards}>
+      <motion.div variants={transitions.item} className={styles.cards}>
         {cards.map((card) => (
           <Card
             isMain={card.isMain}

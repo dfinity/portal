@@ -1,15 +1,15 @@
 <img src="https://user-images.githubusercontent.com/15371828/158857061-8fa8d079-d33f-4ed2-88aa-56d452d238d8.svg" align="right" alt="Monetae logo" width="270">
 
-# Internet Computer Developer Portal 
+# Internet Computer Developer Developers 
 
-The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
+The Developer Developers brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
 
 https://internetcomputer.org
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0ef9e793-aa30-446a-ae7a-a18ac304db58/deploy-status)](https://app.netlify.com/sites/icportal/deploys) [![CD](https://github.com/dfinity/portal/actions/workflows/cd.yml/badge.svg)](https://github.com/dfinity/portal/actions/workflows/cd.yml)
 
 ## Contributing
-The Developer Portal uses [Docusaurus](https://docusaurus.io/docs). 
+The Developer Developers uses [Docusaurus](https://docusaurus.io/docs). 
 
 ### Local development
 While modifying documentation in the repository, you can preview the changes locally by executing the following commands - considering that you have nodejs installed -.
@@ -20,7 +20,7 @@ npm install
 npm start
 ```
 
-The Developer Portal frontend should appear in your browser under http://localhost:3000.
+The Developer Developers frontend should appear in your browser under http://localhost:3000.
 
 To preview a specific locale in the context of an internationalization contribution, start the docs with the following command:
 ```bash
