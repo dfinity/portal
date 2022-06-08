@@ -4,6 +4,8 @@ import Layout from "@theme/Layout";
 import styles from "@site/src/pages/developers.module.css";
 import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
+import Canisters from "@site/src/components/DevelopersHome/Canisters";
+import DappStart from "@site/src/components/DevelopersHome/DappStart";
 
 function Developers(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -18,6 +20,8 @@ function Developers(): JSX.Element {
       <main className={styles.main}>
         <Header />
         <SampleCode />
+        <Canisters />
+        <DappStart />
       </main>
     </Layout>
   );

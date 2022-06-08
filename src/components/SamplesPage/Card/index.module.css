@@ -1,5 +1,6 @@
 .container {
-    width: 320px;
+    flex: 1 1 300px;
+    max-width: 380px;
     height: 436px;
     border-radius: 12px;
     background-color: #ffffff;
