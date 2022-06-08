@@ -187,7 +187,7 @@ const sampleItems = [
     links: {
       action: {
         text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template"
+        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
       },
       docs: "samples/host-unity-webgl",
     },
