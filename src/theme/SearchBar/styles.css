@@ -1,40 +1,32 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-.search-icon {
-  background-image: var(--ifm-navbar-search-input-icon);
-  height: auto;
-  width: 24px;
-  cursor: pointer;
-  padding: 8px;
-  line-height: 32px;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: none;
+.navbar-sidebar .navbar__search {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.search-icon-hidden {
-  visibility: hidden;
+.navbar__search-input {
+  height: 46px;
+  border-radius: 12px;
 }
 
-@media (max-width: 360px) {
-  .search-bar {
-    width: 0 !important;
-    background: none !important;
-    padding: 0 !important;
-    transition: none !important;
+@media (max-width: 996px) {
+  .navbar__search-input {
+    width: 100%;
   }
-
-  .search-bar-expanded {
-    width: 9rem !important;
+  .algolia-autocomplete {
+    display: block !important;
   }
-
-  .search-icon {
-    display: inline;
-    vertical-align: sub;
+}
+@media (min-width: 997px) {
+  .navbar__search {
+    order: 100;
+    margin-left: 24px;
+    margin-right: 12px;
+  }
+  .ic0-item {
+    order: 101;
+  }
+  .navbar__search-input {
+    --ifm-navbar-search-input-background-color: white;
   }
 }

@@ -16,6 +16,7 @@
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  color: #3B00B9;
   top: 50px;
   right: -150px;
   width: 500px;
