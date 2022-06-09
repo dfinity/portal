@@ -92,6 +92,8 @@ div[class^='announcementBarContent'] {
 }
 
 .ic0-item {
+    display: flex;
+    align-items: center;
 }
 
 .ic0-item span {

@@ -264,11 +264,11 @@ const config = {
               },
               {
                 label: "Wiki",
-                to: "https://dfinity.org/",
+                to: "https://wiki.internetcomputer.org/",
               },
               {
                 label: "Dashboard",
-                to: "https://dfinity.org/",
+                to: "https://dashboard.internetcomputer.org/",
               },
             ],
           },

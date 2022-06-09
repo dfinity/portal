@@ -181,7 +181,7 @@ function Dashboard() {
                 <Statistic
                     title="Network Status"
                     currentValue={operational ? "Operational" : "Maintenance"}
-                    tooltip={"The current network status of the Internet Computer. As of now, this status has never changed!"}
+                    tooltip={"The current network status of the Internet Computer."}
                 />
                 <AnimatedStatistic
                     title="Blocks/s"

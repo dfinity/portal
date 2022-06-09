@@ -80,8 +80,11 @@
 }
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-wrap: wrap; */
     box-sizing: border-box;
     gap: 8px;
     margin: auto;
@@ -100,15 +103,15 @@
     align-items: center;
     overflow: hidden;
     padding: 64px;
-    height: 258px;
+    height: 300px;
 }
 
 .cardContainer, .eventContainer {
-    width: calc(50% - 4px);
+    /* width: calc(50% - 4px); */
 }
 
 .motokoContainer {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .cardHover:hover {
@@ -215,7 +218,7 @@
 
 .motokoContainer .informationTitle,
 .motokoContainer .informationBody {
-    width: Min(480px, 90%);
+    /* width: Min(480px, 90%); */
 }
 
 .motokoContainer:hover .motokoBackground {
@@ -275,6 +278,11 @@
 }
 
 @media screen and (max-width: 996px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
     .cardContainer, .eventContainer {
         width: 100%;
     }

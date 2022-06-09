@@ -109,9 +109,9 @@ function Features() {
         >
           {cardsContent.map((card) => (
             <SwiperSlide>
-              <a href={card.link} className={styles.card}>
+              <Link to={card.link} className={styles.card}>
                 <Card key={card.title} title={card.title} body={card.body} />
-              </a>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

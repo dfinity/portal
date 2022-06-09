@@ -124,10 +124,10 @@
     height: 350px;
 }
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    /* flex-wrap: wrap; */
     padding: 64px;
     width: calc(50% - 10px);
     background: rgba(255, 255, 255, 0.5);
@@ -142,7 +142,7 @@
     font-weight: bold;
     line-height: 30px;
     width: Min(369px, 100%);
-    margin: 0 auto auto 0;
+    /* margin: 0 auto auto 0; */
 }
 
 .cardCallToAction {
