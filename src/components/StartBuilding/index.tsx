@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styles from "@site/src/components/StartBuilding/index.module.css";
-import eventBG from "@site/static/img/startBuilding/event_background_image.png"
-import motokoBG from "@site/static/img/startBuilding/motokoPlayground.png"
-import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg"
-import BackgroundSVG from "@site/static/img/startBuilding/bgGradient.svg"
+import eventBG from "@site/static/img/startBuilding/event_background_image.png";
+import motokoBG from "@site/static/img/motokoPlayground.png";
+import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
+import BackgroundSVG from "@site/static/img/startBuilding/bgGradient.svg";
 import GamingIcon from "@site/static/img/startBuilding/gaming.svg";
 import IotIcon from "@site/static/img/startBuilding/iot.svg";
 import SocialIcon from "@site/static/img/startBuilding/social.svg";
@@ -13,6 +13,9 @@ import MotokoIcon from "@site/static/img/startBuilding/motoko.svg";
 import DfinityIcon from "@site/static/img/startBuilding/dfinity.svg";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 
 function Information({title, body, link}) {
     return (

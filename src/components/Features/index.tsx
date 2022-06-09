@@ -7,20 +7,7 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-const container = {
-  hidden: { opacity: 0, transition: { duration: 1 } },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
@@ -87,14 +74,14 @@ function Features() {
       ref={ref}
       animate={controls}
       initial="hidden"
-      variants={container}
+      variants={transitions.container}
       className={styles.container}
     >
       <a id="features" />
-      <motion.p variants={item} className={styles.title}>
+      <motion.p variants={transitions.item} className={styles.title}>
         What's cool about the <br /> Internet Computer
       </motion.p>
-      <motion.div className={styles.mobileSwiper} variants={item}>
+      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
         <Swiper
           spaceBetween={4}
           centeredSlides={true}
@@ -118,7 +105,7 @@ function Features() {
       </motion.div>
       <motion.div
         className={styles.actionButtonContainerMobile}
-        variants={item}
+        variants={transitions.item}
       >
         <Link className={styles.actionButton} to="https://dfinity.org/roadmap">
           LEARN MORE
@@ -126,12 +113,20 @@ function Features() {
       </motion.div>
       <div className={styles.cards}>
         {cardsContent.map((card) => (
-          <motion.a variants={item} href={card.link} className={styles.card} key={card.link}>
+          <motion.a
+            variants={transitions.item}
+            href={card.link}
+            className={styles.card}
+            key={card.link}
+          >
             <Card key={card.title} title={card.title} body={card.body} />
           </motion.a>
         ))}
       </div>
-      <motion.div className={styles.actionButtonContainer} variants={item}>
+      <motion.div
+        className={styles.actionButtonContainer}
+        variants={transitions.item}
+      >
         <Link className={styles.actionButton} to="https://dfinity.org/roadmap">
           LEARN MORE
         </Link>

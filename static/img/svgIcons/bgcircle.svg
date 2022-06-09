@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-<circle fill="#3C01BA" cx="5" cy="5" r="5" />
+<circle fill="currentColor" cx="5" cy="5" r="5" />
 </svg>
 

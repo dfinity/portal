@@ -11,15 +11,7 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-const container = {
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  hidden: { opacity: 0, transition: { duration: 1 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import transitions from "@site/static/transitions.json";
 
 const backgroundDisplay = {
   show: { display: "block", transition: { duration: 0.5 } },
@@ -235,12 +227,12 @@ function Showcase() {
         ref={ref}
         animate={controls}
         initial="hidden"
-        variants={container}
+        variants={transitions.container}
       >
         <div className={styles.showcaseContainer}>
           <a id="showcase" />
           <div className={styles.header}>
-            <motion.div variants={item} className={styles.title}>
+            <motion.div variants={transitions.item} className={styles.title}>
               <span>Build for</span>
               <div>
                 <AnimatePresence>
@@ -266,7 +258,10 @@ function Showcase() {
                 </AnimatePresence>
               </div>
             </motion.div>
-            <motion.div variants={item} className={styles.headerBody}>
+            <motion.div
+              variants={transitions.item}
+              className={styles.headerBody}
+            >
               <p className={styles.body}>
                 The Internet Computer ecosystem continues to skyrocket with new
                 developer and entrepreneurial activity. Get inspired by the
@@ -280,7 +275,10 @@ function Showcase() {
               </Link>
             </motion.div>
           </div>
-          <motion.div variants={item} className={styles.swiperContainer}>
+          <motion.div
+            variants={transitions.item}
+            className={styles.swiperContainer}
+          >
             <Swiper
               spaceBetween={20}
               centeredSlides={true}
