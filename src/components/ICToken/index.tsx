@@ -265,7 +265,7 @@ function ICToken() {
                 </motion.p>
                 <motion.div variants={item} style={{display: "inline-flex"}}>
                     <Link className={styles.headerCallToAction}
-                          to={"https://forum.dfinity.org/"}>
+                          to={"https://wiki.internetcomputer.org/wiki/ICP_token"}>
                         LEARN MORE
                     </Link>
                 </motion.div>
