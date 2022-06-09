@@ -42,9 +42,9 @@ function Index() {
             <div className={styles.bodyContainer}>
               <p className={styles.informationTitle}>Developer grants</p>
               <p className={styles.informationBody}>
-                Learn how to build on the IC by exploring samples ranging from a
-                simple DEX, to on-chain encrypted storage, NFT minting, and a
-                basic DAO.
+                The DFINITY Developer Grant Program aims to catalyze the growth
+                of the Internet Computer ecosystem and make the Internet
+                Computer accessible and approachable to more developers
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
@@ -61,9 +61,9 @@ function Index() {
             <div className={styles.bodyContainer}>
               <p className={styles.informationTitle}>Beacon fund</p>
               <p className={styles.informationBody}>
-                Explore concepts, the architecture and technical breakthroughs
-                that enable the IC. Find step-by-step guides such as how to
-                stake your tokens.
+                Beacon invests early in strong teams who can launch and grow the
+                open internet services and decentralized financial systems of
+                the future.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
@@ -80,9 +80,8 @@ function Index() {
             <div className={styles.bodyContainer}>
               <p className={styles.informationTitle}>Cycles faucet</p>
               <p className={styles.informationBody}>
-                Learn how to build on the IC by exploring samples ranging from a
-                simple DEX, to on-chain encrypted storage, NFT minting, and a
-                basic DAO.
+                Get free cycles to use for testing and deployment of your
+                project on the Internet Computer
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
