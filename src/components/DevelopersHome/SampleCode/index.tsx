@@ -232,9 +232,7 @@ function Index() {
             centeredSlides={true}
             modules={[Pagination]}
             breakpoints={{
-              320: { slidesPerView: 1.1 },
-              450: { slidesPerView: 1.5 },
-              600: { slidesPerView: 1.8 },
+              320: { slidesPerView: 1.2 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
               1440: { slidesPerView: 4 },
