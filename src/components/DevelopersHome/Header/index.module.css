@@ -1,8 +1,10 @@
 .section {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
+    width: Min(100vw,1440px);
+    margin: auto;
 }
 
 .container {
@@ -85,7 +87,19 @@
     margin: auto 0.5rem auto 0;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7813 7.33336L7.20529 3.75736L8.14796 2.8147L13.3333 8.00003L8.14796 13.1854L7.20529 12.2427L10.7813 8.6667H2.66663V7.33336H10.7813Z' fill='%233b00b9'/%3E%3C/svg%3E%0A") no-repeat;
 }
-
+.BGShape {
+    z-index: -1000;
+    position: absolute;
+    -webkit-filter: blur(150px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    color: #3B00B9;
+    bottom: -200px;
+    right: -250px;
+    width: 600px;
+}
 @media screen and (max-width: 996px) {
     .container {
         margin: 40px auto;
@@ -118,5 +132,11 @@
         font-size: 16px;
         font-weight: 500;
         line-height: 22px;
+    }
+    .BGShape {
+        width: 200px;
+        -webkit-filter: blur(100px);
+        right: -50px;
+        top: 150px;
     }
 }

@@ -359,12 +359,10 @@
     .BGGradient {
         left: -250px;
     }
-
 }
 
 @media screen and (max-width: 450px) {
     .BGGradient {
         width: 850px;
     }
-
 }

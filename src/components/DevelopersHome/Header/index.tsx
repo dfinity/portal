@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
 
 function Index() {
   const controls = useAnimation();
@@ -22,6 +23,7 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
+        <BGCircle className={styles.BGShape} />
         <motion.p variants={transitions.item} className={styles.Title}>
           Developer resources
         </motion.p>

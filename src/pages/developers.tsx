@@ -6,6 +6,7 @@ import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import Canisters from "@site/src/components/DevelopersHome/Canisters";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
+import Contribute from "@site/src/components/DevelopersHome/Contribute";
 
 function Developers(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -22,6 +23,7 @@ function Developers(): JSX.Element {
         <SampleCode />
         <Canisters />
         <DappStart />
+        <Contribute />
       </main>
     </Layout>
   );

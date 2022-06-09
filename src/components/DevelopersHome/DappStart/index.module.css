@@ -1,12 +1,12 @@
 .section {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
 }
 
 .container {
-    width: 100vw;
+    width: Min(100vw,1440px);
     padding: 40px 0;
     margin: auto;
     position: relative;
@@ -159,11 +159,32 @@
     right: -4%;
 }
 
+.BGShape {
+    z-index: -1000;
+    position: absolute;
+    -webkit-filter: blur(150px);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    color: #3B00B9;
+    top: 250px;
+    left: -150px;
+    width: 500px;
+}
+
 @media screen and (max-width: 996px) {
     .card {
         width: 100%;
         height: 168px;
         padding: 24px 32px;
+    }
+
+    .title {
+        font-size: 38px;
+        line-height: 42px;
+        text-align: start;
+        margin-bottom: 32px;
     }
 
     .bodyContainer {
@@ -193,7 +214,11 @@
         width: 95%;
     }
 
-    .motokoBackground {
+    .cyclesContainer .informationBody {
+        width: 95%;
+    }
+
+    .motokoBackground, .BGShape {
         display: none;
     }
 
