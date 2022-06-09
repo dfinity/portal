@@ -16,20 +16,20 @@ import Link from "@docusaurus/Link";
 
 function Information({title, body, link}) {
     return (
-        <a href={link}
+        <Link to={link}
            className={clsx(styles.card, styles.cardContainer, styles.cardHover)}>
             <div className={styles.bodyContainer}>
                 <p className={styles.informationTitle}>{title}</p>
                 <p className={styles.informationBody}>{body}</p>
             </div>
             <RightArrowSVG className={styles.informationIcon}/>
-        </a>
+        </Link>
     )
 }
 
 function Event({title, dateRange, link}) {
     return (
-        <a href={link} className={clsx(styles.card, styles.eventContainer)}>
+        <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
             <div className={styles.bodyContainer}>
                 <p className={styles.eventDate}>{dateRange}</p>
                 <p className={styles.eventTitle}>{title}</p>
@@ -39,13 +39,13 @@ function Event({title, dateRange, link}) {
                 <p className={styles.eventAction}>REGISTER NOW</p>
             </div>
             <img className={styles.eventBackground} src={eventBG} alt=""/>
-        </a>
+        </Link>
     )
 }
 
 function MotokoPlayground({title, body, link}) {
     return (
-        <a href={link}
+        <Link to={link}
            className={clsx(styles.card, styles.motokoContainer, styles.cardHover)}>
             <div className={styles.bodyContainer}>
                 <p className={styles.informationTitle}>{title}</p>
@@ -53,7 +53,7 @@ function MotokoPlayground({title, body, link}) {
             </div>
             <img className={styles.motokoBackground} src={motokoBG} alt=""/>
             <RightArrowSVG className={styles.informationIcon}/>
-        </a>
+        </Link>
     )
 }
 
@@ -86,7 +86,7 @@ function StartBuilding() {
                         on
                         chain.</p>
                     <Link className={styles.actionButton}
-                          to="/">
+                         to="/developers">
                         BUILD REAL WEB3
                     </Link>
                 </div>
@@ -94,7 +94,7 @@ function StartBuilding() {
             <div className={styles.cards}>
                 <Information title="Developer’s Home"
                              body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
-                             link={"/"}/>
+                             link={"/developers"}/>
                 <Information title="Documentation"
                              body="Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens."
                              link={"/docs/current/developer-docs/ic-overview"}/>
@@ -105,7 +105,7 @@ function StartBuilding() {
                        link={"https://supernova.devpost.com/"}/>
                 <MotokoPlayground title="Motoko Playground"
                                   body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
-                                  link={"/"}/>
+                                  link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}/>
             </div>
 
         </div>

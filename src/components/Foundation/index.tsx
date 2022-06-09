@@ -40,31 +40,31 @@ const cards = [
     isMain: true,
     title: ["Roadmap"],
     body: "The DFINITY Foundation’s contributions to the IC roadmap are subject to community discussion and voting",
-    link: "/",
+    link: "https://dfinity.org/roadmap",
   },
   {
     isMain: false,
     title: ["Internet Computer Infographic"],
     body: "A beautiful dream emerged in 2014. One team set itself to realizing that dream.",
-    link: "/",
+    link: "https://dfinity.org/icig.pdf",
   },
   {
     isMain: false,
     title: ["IC for Geek", "White Paper"],
-    body: "v1.2 February 14, 2022",
-    link: "/",
+    body: "v1.3 April 19, 2022",
+    link: "https://dfinity.org/whitepaper.pdf",
   },
 ];
 
 function Card({ isMain, title, body, link }) {
   return (
-    <a
-      href={link}
+    <Link
+      to={link}
       className={clsx(styles.card, styles.cardHover, isMain && styles.mainCard)}
     >
       <div className={styles.cardBodyContainer}>
         {title.map((titleLine) => (
-          <p className={styles.cardTitle}>{titleLine}</p>
+          <p className={styles.cardTitle} key={titleLine}>{titleLine}</p>
         ))}
         <p className={styles.cardBody}>{body}</p>
       </div>
@@ -73,7 +73,7 @@ function Card({ isMain, title, body, link }) {
       ) : (
         <DownloadSVG className={styles.cardIcon} />
       )}
-    </a>
+    </Link>
   );
 }
 
@@ -132,7 +132,7 @@ function Foundation() {
         </motion.div>
         <motion.div className={styles.statsContainer}>
           {stats.map((stat) => (
-            <div className={styles.stat}>
+            <div className={styles.stat} key={stat.title}>
               <span className={styles.statTitle}>{stat.title}</span>
               <span className={styles.statValue}>{stat.value}</span>
             </div>
@@ -140,7 +140,7 @@ function Foundation() {
         </motion.div>
         <motion.div variants={item} className={styles.mobileStatsContainer}>
           {stats.map((stat, index) => (
-            <>
+            <React.Fragment key={stat.title}>
               {index % 2 === 1 && (
                 <div className={styles.mobileStatsHorDivider} />
               )}
@@ -151,7 +151,7 @@ function Foundation() {
               {index % 2 === 1 && index !== stats.length - 1 && (
                 <div className={styles.mobileStatsVerDivider} />
               )}
-            </>
+            </React.Fragment>
           ))}
         </motion.div>
         <motion.div variants={item} className={styles.body}>
@@ -159,7 +159,7 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link className={styles.actionButton} to="/">
+        <Link className={styles.actionButton} to="https://dfinity.org/foundation">
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
@@ -177,7 +177,7 @@ function Foundation() {
           }}
         >
           {cards.map((card) => (
-            <SwiperSlide>
+            <SwiperSlide key={card.link}>
               <Card
                 isMain={card.isMain}
                 title={card.title}
@@ -191,6 +191,7 @@ function Foundation() {
       <motion.div variants={item} className={styles.cards}>
         {cards.map((card) => (
           <Card
+            key={card.link}
             isMain={card.isMain}
             title={card.title}
             body={card.body}

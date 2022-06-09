@@ -43,11 +43,8 @@ function Index() {
             <motion.div ref={ref} animate={controls} initial="hidden"
                         variants={container} className={styles.container}>
                 <motion.div variants={item} className={styles.Title}>
-                    <p style={{
-                        marginRight: "25px",
-                        marginBottom: "0.25em"
-                    }}>Freedom to</p>
-                    <div>
+                    <h1>The future of Web3</h1>
+                    {/* <div>
                         <AnimatePresence>
                             <motion.p
                                 className={styles.wordCycle}
@@ -70,19 +67,18 @@ function Index() {
                             </motion.p>
                         </AnimatePresence>
                         <p className={styles.wordFiller}>decentralize</p>
-                    </div>
+                    </div> */}
                 </motion.div>
                 {/*<motion.p variants={item} className={styles.Title}>
                     Blockchain's future
                 </motion.p>*/}
                 <motion.p variants={item} className={styles.Text}>
-                    The Web of the Next Generation – Blockchain Innovation
-                    without Compromise
+                Web speed. Serves web. 100,000X more efficient... simply better tech
                 </motion.p>
                 <motion.div variants={item} className={styles.actionContainer}>
                     <Link
                         className={styles.actionButton}
-                        to="/docs/current/developer-docs/quickstart/hello10mins"
+                        to="/developers"
                     >
                         BUILD REAL WEB3
                     </Link>
