@@ -86,7 +86,7 @@ function StartBuilding() {
                         on
                         chain.</p>
                     <Link className={styles.actionButton}
-                         to="/docs/current/developer-docs/quickstart/hello10mins">
+                         to="/developers">
                         BUILD REAL WEB3
                     </Link>
                 </div>

@@ -78,7 +78,7 @@ function Index() {
                 <motion.div variants={item} className={styles.actionContainer}>
                     <Link
                         className={styles.actionButton}
-                        to="/docs/current/developer-docs/quickstart/hello10mins"
+                        to="/developers"
                     >
                         BUILD REAL WEB3
                     </Link>
