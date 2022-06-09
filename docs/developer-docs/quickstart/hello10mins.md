@@ -56,11 +56,9 @@ To verify that `dfx` properly installed, run:
 dfx --version
 ```
 
-The terminal should look like this (at least version 0.9.2):
+The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
-![dfx version](_attachments/dfx-version.png)
-
-More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove).
+More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove.mdx).
 
 ### Node.js
 
@@ -284,8 +282,8 @@ Practical notes about cycles:
 
 -   There is a [free cycles faucet](cycles-faucet) that grants new developers 15 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
--   You can see a table of compute and storage costs here: [Computation and storage costs](../updates/computation-and-storage-costs).
--   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Managing_ICP_holdings).
+-   You can see a table of compute and storage costs here: [Computation and storage costs](../deploy/computation-and-storage-costs).
+-   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Tutorials_for_acquiring,_managing,_and_staking_ICP).
 
 In this tutorial, we present two ways of acquiring cycles:
 
@@ -338,7 +336,7 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-## 5.Deploy on-chain (1 min)
+## 5. Deploy on-chain (1 min)
 
 Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 

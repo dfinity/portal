@@ -1,11 +1,12 @@
 # Ledger Local Setup
 
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
 1.  Get a pre-built Ledger canister module and Candid interface files.
 
     ``` sh
-    export IC_VERSION=a7058d009494bea7e1d898a3dd7b525922979039
+    export IC_VERSION=dd3a710b03bd3ae10368a91b255571d012d1ec2f
     curl -o ledger.wasm.gz https://download.dfinity.systems/ic/${IC_VERSION}/canisters/ledger-canister_notify-method.wasm.gz
     gunzip ledger.wasm.gz
     curl -o ledger.private.did https://raw.githubusercontent.com/dfinity/ic/${IC_VERSION}/rs/rosetta-api/ledger.did
@@ -37,6 +38,17 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
       }
     }
     ```
+    
+6. Configure your replica to run a `System` subnet. Modify `dfx.json` to include:
+     ```json
+     {
+       "defaults":{
+         "replica": {
+           "subnet_type":"system"
+         }
+       }
+     }
+     ```
 
 6.  Start a local replica.
 

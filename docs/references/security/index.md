@@ -10,11 +10,11 @@ Some excellent canister best practices linked here are from [Effective Rust Cani
 
 We provide the following security best practices in the subsequent pages:
 
--   [General Security Best Practices](general-security-best-practices)
+-   [General Security Best Practices](./general-security-best-practices.md)
 
--   [Web App Specific Security Best Practices](web-app-development-security-best-practices),
+-   [Web App Specific Security Best Practices](./web-app-development-security-best-practices.md),
 
--   [Rust Canister Development Security Best Practices](rust-canister-development-security-best-practices)
+-   [Rust Canister Development Security Best Practices](./rust-canister-development-security-best-practices.md)
 
 ## Target Audience
 

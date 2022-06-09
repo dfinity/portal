@@ -20,14 +20,16 @@
 
 .footerLinksContainer {
     display: flex;
-    width: 80vw;
-    margin: auto auto 3rem auto;
-    align-items: end;
+    width: Min(1350px, 90%);
+    margin: 54px auto 48px auto;
+    align-items: start;
     z-index: 10;
 }
 
 .footerLinkCol {
-    width: 33.3%;
+    width: auto;
+    margin-right: 110px;
+    color: white;
 }
 
 .footerLink {
@@ -37,7 +39,7 @@
 .footerBottom {
     display: flex;
     flex-grow: 1;
-    width: 80vw;
+    width: Min(1350px, 90%);
     margin: auto;
     align-items: center;
     z-index: 10;
@@ -49,13 +51,15 @@
     flex-grow: 1;
     justify-content: flex-end;
 }
+
 .legalLinkContainer {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
     margin: auto 1rem;
 }
-.legalLink{
+
+.legalLink {
     margin: auto 1rem;
 }
 
@@ -66,6 +70,7 @@
     align-items: center;
     z-index: 10;
 }
+
 .mediaLinks {
     display: flex;
     align-items: center;
@@ -74,58 +79,53 @@
     color: white;
     position: relative;
 }
+
 .mediaLinks img {
     display: flex;
 }
+
 .mediaLinks img:hover {
     filter: brightness(0);
 }
+
 .container {
     background-color: white;
     position: relative;
     overflow: hidden;
 }
-.BGCircle{
-    position: absolute;
-    height: 1000px;
-    top:-50px;
-    right:-300px;
-    -webkit-filter: blur(150px);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-}
+
 @media screen and (max-width: 996px) {
     .footerLinksContainer {
         display: block;
     }
+
     .footerLinkCol {
         width: 100%;
     }
-    .footerBottom{
+
+    .footerBottom {
         display: block;
     }
-    .legalContainer{
+
+    .legalContainer {
         display: block;
     }
+
     .mediaLinksContainer {
         z-index: 10;
         margin-top: 3rem;
         justify-content: flex-start;
     }
-    .legalCopyright{
+
+    .legalCopyright {
         margin-bottom: 0.5rem;
     }
-    .legalLink{
+
+    .legalLink {
         margin-left: 0;
     }
-    .legalLinkContainer{
+
+    .legalLinkContainer {
         margin-left: 0;
-    }
-    .BGCircle{
-        top: 300px;
-        right:-300px;
-        -webkit-filter: blur(100px);
     }
 }

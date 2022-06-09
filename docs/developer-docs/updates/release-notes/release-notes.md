@@ -304,7 +304,7 @@ Updated Motoko from 0.6.21 to 0.6.25.
 
 An overview of the 0.9.2 release:
 
-Be sure to see the [0.9.0 Release Notes](0.9.0-rn) and follow the instructions due to breaking changes since dfx 0.8.4.
+Be sure to see the [0.9.0 Release Notes](#090) and follow the instructions due to breaking changes since dfx 0.8.4.
 
 ### Changes to DFX
 
@@ -1411,7 +1411,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro) for
+-   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 

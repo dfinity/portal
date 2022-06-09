@@ -4,8 +4,17 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 let particles = [];
 let timer = 0;
 
-export default ({width, height, particleCount, frameRate, centerX, centerY, duration, pixelDensity}) => {
-    let pRadius = width <= 900 ? 4 : 8;
+export default ({
+                    width,
+                    height,
+                    particleCount,
+                    frameRate,
+                    centerX,
+                    centerY,
+                    duration,
+                    pixelDensity
+                }) => {
+    let pRadius = width <= 900 ? 3 : 6;
     let cWidth = width <= 900 ? width * 2 : width;
     const {Vector} = require('p5');
     const setup = (p5, canvasParentRef) => {
@@ -46,8 +55,8 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
         particles = [];
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle(p5,
-                centerX + Math.random() * (10 - (-10)) + (-10),
-                centerY + Math.random() * (10 - (-10)) + (-10),
+                centerX + (Math.random() * (5 - (1)) + (1) * Math.cos(i * 2 * Math.PI / particleCount)),
+                centerY + (Math.random() * (5 - (1)) + (1) * Math.sin(i * 2 * Math.PI / particleCount)),
             ));
         }
 
@@ -61,10 +70,10 @@ export default ({width, height, particleCount, frameRate, centerX, centerY, dura
         this.strength = -5; // Strength: positive value attracts, negative value repels
         this.damping = 0.99;
         this.maxVelocity = 10;
-        this.minX = pRadius;
-        this.minY = pRadius;
-        this.maxX = p5.width - pRadius;
-        this.maxY = p5.height - pRadius;
+        this.minX = pRadius - 50;
+        this.minY = pRadius - 50;
+        this.maxX = p5.width - pRadius + 50;
+        this.maxY = p5.height - pRadius + 50;
         this.update = function () {
             this.vel.add(this.acc);
             this.vel.limit(this.maxVelocity);

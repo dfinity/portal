@@ -7,7 +7,7 @@
 import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import {
-    useThemeConfig, useAnnouncementBar, MobileSecondaryMenuFiller, ThemeClassNames, useScrollPosition, useWindowSize,
+    useThemeConfig, useAnnouncementBar, NavbarSecondaryMenuFiller, ThemeClassNames, useScrollPosition, useWindowSize,useNavbarMobileSidebar
 } from '@docusaurus/theme-common';
 import Logo from '@theme/Logo';
 import IconArrow from '@theme/IconArrow';
@@ -160,31 +160,37 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
     </div>);
 } // eslint-disable-next-line react/function-component-definition
 
-const DocSidebarMobileSecondaryMenu = ({toggleSidebar, sidebar, path}) => (
-    <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
+const DocSidebarMobileSecondaryMenu = ({sidebar, path}) => {
+    const mobileSidebar = useNavbarMobileSidebar();
+    return (
+      <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems
-            items={sidebar}
-            activePath={path}
-            onItemClick={(item) => {
-                // Mobile sidebar should only be closed if the category has a link
-                if (item.type === 'category' && item.href) {
-                    toggleSidebar();
-                }
-
-                if (item.type === 'link') {
-                    toggleSidebar();
-                }
-            }}
-            level={1}
+          items={sidebar}
+          activePath={path}
+          onItemClick={(item) => {
+            // Mobile sidebar should only be closed if the category has a link
+            if (item.type === 'category' && item.href) {
+              mobileSidebar.toggle();
+            }
+  
+            if (item.type === 'link') {
+              mobileSidebar.toggle();
+            }
+          }}
+          level={1}
         />
-    </ul>);
+      </ul>
+    );
+  };
 
 function DocSidebarMobile(props) {
-    return (<MobileSecondaryMenuFiller
+    return (
+      <NavbarSecondaryMenuFiller
         component={DocSidebarMobileSecondaryMenu}
         props={props}
-    />);
-}
+      />
+    );
+  }
 
 const DocSidebarDesktopMemo = React.memo(DocSidebarDesktop);
 const DocSidebarMobileMemo = React.memo(DocSidebarMobile);
