@@ -17,149 +17,102 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 
-function Information({ title, body, link }) {
-  return (
-    <motion.a
-      variants={transitions.item}
-      href={link}
-      className={clsx(styles.card, styles.cardContainer, styles.cardHover)}
-    >
-      <div className={styles.bodyContainer}>
-        <p className={styles.informationTitle}>{title}</p>
-        <p className={styles.informationBody}>{body}</p>
-      </div>
-      <RightArrowSVG className={styles.informationIcon} />
-    </motion.a>
-  );
+function Information({title, body, link}) {
+    return (
+        <Link to={link}
+           className={clsx(styles.card, styles.cardContainer, styles.cardHover)}>
+            <div className={styles.bodyContainer}>
+                <p className={styles.informationTitle}>{title}</p>
+                <p className={styles.informationBody}>{body}</p>
+            </div>
+            <RightArrowSVG className={styles.informationIcon}/>
+        </Link>
+    )
 }
 
-function Event({ title, dateRange, link }) {
-  return (
-    <motion.a
-      variants={transitions.item}
-      href={link}
-      className={clsx(styles.card, styles.eventContainer)}
-    >
-      <div className={styles.bodyContainer}>
-        <p className={styles.eventDate}>{dateRange}</p>
-        <p className={styles.eventTitle}>{title}</p>
-        <p className={styles.eventDescription}>
-          Internet Computer Global Hackathon <br />
-          $6 Million In Prizes + Grants
-        </p>
-        <p className={styles.eventAction}>REGISTER NOW</p>
-      </div>
-      <img className={styles.eventBackground} src={eventBG} alt="" />
-    </motion.a>
-  );
+function Event({title, dateRange, link}) {
+    return (
+        <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
+            <div className={styles.bodyContainer}>
+                <p className={styles.eventDate}>{dateRange}</p>
+                <p className={styles.eventTitle}>{title}</p>
+                <p className={styles.eventDescription}>Internet Computer Global
+                    Hackathon <br/>$6 Million In Prizes +
+                    Grants</p>
+                <p className={styles.eventAction}>REGISTER NOW</p>
+            </div>
+            <img className={styles.eventBackground} src={eventBG} alt=""/>
+        </Link>
+    )
 }
 
-function MotokoPlayground({ title, body, link }) {
-  return (
-    <motion.a
-      variants={transitions.item}
-      href={link}
-      className={clsx(styles.card, styles.motokoContainer, styles.cardHover)}
-    >
-      <div className={styles.bodyContainer}>
-        <p className={styles.informationTitle}>{title}</p>
-        <p className={styles.informationBody}>{body}</p>
-      </div>
-      <img className={styles.motokoBackground} src={motokoBG} alt="" />
-      <RightArrowSVG className={styles.informationIcon} />
-    </motion.a>
-  );
+function MotokoPlayground({title, body, link}) {
+    return (
+        <Link to={link}
+           className={clsx(styles.card, styles.motokoContainer, styles.cardHover)}>
+            <div className={styles.bodyContainer}>
+                <p className={styles.informationTitle}>{title}</p>
+                <p className={styles.informationBody}>{body}</p>
+            </div>
+            <img className={styles.motokoBackground} src={motokoBG} alt=""/>
+            <RightArrowSVG className={styles.informationIcon}/>
+        </Link>
+    )
 }
 
 function StartBuilding() {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.35 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
-  return (
-    <div className={styles.main}>
-      <a id="startBuilding" />
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={transitions.container}
-        className={styles.headerContainer}
-      >
-        <BackgroundSVG className={styles.BGGradient} />
-        <motion.div
-          variants={transitions.item}
-          className={styles.callToActionContainer}
-        >
-          <MotokoIcon
-            className={clsx(styles.backgroundIcon, styles.motokoIcon)}
-          />
-          <DfinityIcon
-            className={clsx(styles.backgroundIcon, styles.dfinityIcon)}
-          />
-          <GamingIcon
-            className={clsx(styles.backgroundIcon, styles.gamingIcon)}
-          />
-          <IotIcon className={clsx(styles.backgroundIcon, styles.iotIcon)} />
-          <DatabaseIcon
-            className={clsx(styles.backgroundIcon, styles.databaseIcon)}
-          />
-          <SocialIcon
-            className={clsx(styles.backgroundIcon, styles.socialIcon)}
-          />
-          <GrowthIcon
-            className={clsx(styles.backgroundIcon, styles.growthIcon)}
-          />
-          <p className={styles.callToActionTitle}>Start building real Web3</p>
-          <p className={styles.callToActionBody}>
-            Start a DAO, create a token, build dapps and host assets with the
-            full stack entirely on chain.
-          </p>
-          <Link className={styles.actionButton} to="/">
-            BUILD REAL WEB3
-          </Link>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={transitions.container}
-        className={styles.cards}
-      >
-        <Information
-          title="Developer’s Home"
-          body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
-          link={"/"}
-        />
-        <Information
-          title="Documentation"
-          body="Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens."
-          link={"/docs/current/developer-docs/ic-overview"}
-        />
-        <Information
-          title="Sample Code"
-          body="Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO."
-          link={"/samples"}
-        />
-        <Event
-          title="Supernova"
-          dateRange="May 10 - June 20, 2022"
-          link={"https://supernova.devpost.com/"}
-        />
-        <MotokoPlayground
-          title="Motoko Playground"
-          body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
-          link={"/"}
-        />
-      </motion.div>
-    </div>
-  );
+    return (
+        <div className={styles.main}>
+            <a id="startBuilding"/>
+            <div className={styles.headerContainer}>
+                <BackgroundSVG className={styles.BGGradient}/>
+                <div className={styles.callToActionContainer}>
+                    <MotokoIcon
+                        className={clsx(styles.backgroundIcon, styles.motokoIcon)}/>
+                    <DfinityIcon
+                        className={clsx(styles.backgroundIcon, styles.dfinityIcon)}/>
+                    <GamingIcon
+                        className={clsx(styles.backgroundIcon, styles.gamingIcon)}/>
+                    <IotIcon
+                        className={clsx(styles.backgroundIcon, styles.iotIcon)}/>
+                    <DatabaseIcon
+                        className={clsx(styles.backgroundIcon, styles.databaseIcon)}/>
+                    <SocialIcon
+                        className={clsx(styles.backgroundIcon, styles.socialIcon)}/>
+                    <GrowthIcon
+                        className={clsx(styles.backgroundIcon, styles.growthIcon)}/>
+                    <p className={styles.callToActionTitle}>Start building real
+                        Web3</p>
+                    <p className={styles.callToActionBody}>Start a DAO, create a
+                        token,
+                        build dapps and host assets with the full stack entirely
+                        on
+                        chain.</p>
+                    <Link className={styles.actionButton}
+                         to="/developers">
+                        BUILD REAL WEB3
+                    </Link>
+                </div>
+            </div>
+            <div className={styles.cards}>
+                <Information title="Developer’s Home"
+                             body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
+                             link={"/developers"}/>
+                <Information title="Documentation"
+                             body="Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens."
+                             link={"/docs/current/developer-docs/ic-overview"}/>
+                <Information title="Sample Code"
+                             body="Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO."
+                             link={"/samples"}/>
+                <Event title="Supernova" dateRange="May 10 - June 20, 2022"
+                       link={"https://supernova.devpost.com/"}/>
+                <MotokoPlayground title="Motoko Playground"
+                                  body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
+                                  link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}/>
+            </div>
+
+        </div>
+    );
 }
 
 export default StartBuilding;

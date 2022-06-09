@@ -247,44 +247,37 @@ const chart = {
 };
 
 function ICToken() {
-  const controls = useAnimation();
-  const [displayCharts, setDisplayCharts] = useState(false);
-  const { ref, inView } = useInView({ threshold: 0.2 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show").then(() => setDisplayCharts(true));
-    }
-  }, [controls, inView]);
-  return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={transitions.container}
-      className={styles.main}
-    >
-      <a id="ICToken" />
-      <div className={styles.header}>
-        <motion.p variants={transitions.item} className={styles.headerTitle}>
-          Internet Computer utility token
-        </motion.p>
-        <motion.p variants={transitions.item} className={styles.headerBody}>
-          ICP tokens allow users to participate in and govern the Internet
-          Computer blockchain network.
-        </motion.p>
-        <motion.div
-          variants={transitions.item}
-          style={{ display: "inline-flex" }}
-        >
-          <Link
-            className={styles.headerCallToAction}
-            to={"https://forum.dfinity.org/"}
-          >
-            LEARN MORE
-          </Link>
-        </motion.div>
-      </div>
-
+    const controls = useAnimation();
+    const [displayCharts, setDisplayCharts] = useState(false);
+    const {ref, inView} = useInView({threshold: 0.2});
+    useEffect(() => {
+        if (inView) {
+            controls.start("show").then(() => setDisplayCharts(true));
+        }
+    }, [controls, inView]);
+    return (
+        <motion.div ref={ref}
+                    animate={controls}
+                    initial="hidden"
+                    variants={container}
+                    className={styles.main}>
+            <a id="ICToken"/>
+            <div className={styles.header}>
+                <motion.p variants={item}
+                          className={styles.headerTitle}>Internet Computer
+                    utility token
+                </motion.p>
+                <motion.p variants={item} className={styles.headerBody}>ICP
+                    tokens allow users to participate in and govern the Internet
+                    Computer blockchain network.
+                </motion.p>
+                <motion.div variants={item} style={{display: "inline-flex"}}>
+                    <Link className={styles.headerCallToAction}
+                          to={"https://wiki.internetcomputer.org/wiki/ICP_token"}>
+                        LEARN MORE
+                    </Link>
+                </motion.div>
+            </div>
       <div className={styles.graphsContainer}>
         <motion.div variants={chart} className={styles.card}>
           <p className={styles.cardTitle}>

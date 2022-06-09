@@ -274,6 +274,8 @@
 }
 
 @media screen and (max-width: 996px) {
+
+
     .cardContainer, .eventContainer {
         width: 100%;
     }

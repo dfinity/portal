@@ -13,10 +13,14 @@
 .Title {
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.Title h1 {
     font-weight: 700;
     font-size: 110px;
-    overflow: hidden;
-    line-height: 90px;
+    line-height: 130px;
+    margin-bottom: 0;
 }
 
 .wordCycle {
@@ -31,7 +35,7 @@
 
 
 .Text {
-    margin: 48px auto 32px 0;
+    margin: 24px auto 32px 0;
     width: Min(1000px, 90%);
     display: block;
     font-weight: 400;
@@ -103,10 +107,10 @@
         margin: 160px auto 132px auto;
     }
 
-    .Title {
+    .Title h1 {
         font-size: 48px;
-        line-height: 40px;
-        margin-bottom: 12px;
+        line-height: 54px;
+        margin-bottom: 24px;
     }
 
     .Text {

@@ -249,6 +249,10 @@
         padding: 100px 0;
     }
 
+    .card {
+        height: 400px;
+    }
+
     .cardContainer {
         padding: 2rem;
     }
@@ -261,6 +265,7 @@
 
     .backgroundImage {
         bottom: -10px;
+        width: Min(400px,100%);
     }
 
     .background {
