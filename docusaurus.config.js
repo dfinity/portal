@@ -166,7 +166,7 @@ const config = {
                 to: "/developers",
               },
               {
-                label: "Developers Docs",
+                label: "Developer Docs",
                 type: "doc",
                 docId: "developer-docs/quickstart/hello10mins",
               },
@@ -256,7 +256,7 @@ const config = {
                 ? `You are currently viewing a preview of this <a href="${
                     process.env.PR_URL || "https://github.com/dfinity/portal"
                   }">Pull Request</a>.`
-                : 'You are currently locally editing the Developer Developers. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+                : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
               textColor: "#091E42",
               isCloseable: false,
             }

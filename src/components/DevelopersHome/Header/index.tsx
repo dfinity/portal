@@ -35,10 +35,18 @@ function Index() {
           variants={transitions.item}
           className={styles.actionContainer}
         >
-          <Link className={styles.actionButton} to="/">
+          <Link
+            className={styles.actionButton}
+            to="https://internetcomputer.org/docs/current/developer-docs/ic-overview"
+          >
             READ DOCS
           </Link>
-          <Link className={styles.callToAction} to={"/"}>
+          <Link
+            className={styles.callToAction}
+            to={
+              "https://internetcomputer.org/docs/current/developer-docs/quickstart/hello10mins"
+            }
+          >
             Start coding
           </Link>
         </motion.div>

@@ -219,7 +219,7 @@ function Index() {
       >
         <motion.div variants={transitions.item} className={styles.header}>
           <p>Sample code</p>
-          <Link className={styles.callToAction} to={"/"}>
+          <Link className={styles.callToAction} to={"/samples"}>
             Explore all sample code
           </Link>
         </motion.div>
@@ -267,7 +267,9 @@ function Index() {
         <div className={styles.cards}>
           <motion.a
             variants={transitions.item}
-            href={"/"}
+            href={
+              "https://internetcomputer.org/docs/current/developer-docs/quickstart/local-quickstart"
+            }
             className={clsx(styles.card, styles.cardHover)}
           >
             <div className={styles.bodyContainer}>
@@ -281,7 +283,7 @@ function Index() {
           </motion.a>
           <motion.a
             variants={transitions.item}
-            href={"/"}
+            href={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}
             className={clsx(styles.card, styles.cardHover)}
           >
             <div className={styles.bodyContainer}>

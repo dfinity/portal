@@ -36,7 +36,10 @@ function Index() {
             variants={transitions.item}
             className={styles.actionContainer}
           >
-            <Link className={styles.actionButton} to="/">
+            <Link
+              className={styles.actionButton}
+              to="https://internetcomputer.org/docs/current/concepts/canisters-code"
+            >
               CONCEPTS
             </Link>
           </motion.div>

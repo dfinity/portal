@@ -32,7 +32,7 @@ function Index() {
         <div className={styles.cards}>
           <motion.a
             variants={transitions.item}
-            href={"/"}
+            href={"https://dfinity.org/grants/"}
             className={clsx(
               styles.card,
               styles.cardContainer,
@@ -51,7 +51,7 @@ function Index() {
           </motion.a>
           <motion.a
             variants={transitions.item}
-            href={"/"}
+            href={"https://dfinity.org/ecosystem/fund"}
             className={clsx(
               styles.card,
               styles.cardContainer,
@@ -70,7 +70,7 @@ function Index() {
           </motion.a>
           <motion.a
             variants={transitions.item}
-            href={"/"}
+            href={"https://faucet.dfinity.org/"}
             className={clsx(
               styles.card,
               styles.cyclesContainer,

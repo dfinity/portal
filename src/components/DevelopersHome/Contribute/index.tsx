@@ -15,17 +15,17 @@ const cardsContent = [
   {
     title: "Community conversations",
     body: "Join the tech talks",
-    link: "/",
+    link: "https://dfinity.org/conversations",
   },
   {
     title: "Technical working groups",
     body: "Help shape IC development ",
-    link: "/",
+    link: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   {
     title: "Join the developer forum",
     body: "Discuss with the community",
-    link: "/",
+    link: "https://forum.dfinity.org/",
   },
 ];
 
@@ -116,7 +116,10 @@ function Index() {
             variants={transitions.item}
             className={styles.actionContainer}
           >
-            <Link className={styles.actionButton} to="/">
+            <Link
+              className={styles.actionButton}
+              to="https://github.com/dfinity/portal"
+            >
               CONTRIBUTE
             </Link>
           </motion.div>
