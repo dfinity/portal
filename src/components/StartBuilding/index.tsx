@@ -51,7 +51,7 @@ function MotokoPlayground({title, body, link}) {
                 <p className={styles.informationTitle}>{title}</p>
                 <p className={styles.informationBody}>{body}</p>
             </div>
-            {/* <img className={styles.motokoBackground} src={motokoBG} alt=""/> */}
+            <img className={styles.motokoBackground} src={motokoBG} alt=""/>
             <RightArrowSVG className={styles.informationIcon}/>
         </Link>
     )
@@ -92,9 +92,9 @@ function StartBuilding() {
                 </div>
             </div>
             <div className={styles.cards}>
-                {/* <Information title="Developer’s Home"
+                <Information title="Developer’s Home"
                              body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
-                             link={"/"}/> */}
+                             link={"/developers"}/>
                 <Information title="Documentation"
                              body="Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens."
                              link={"/docs/current/developer-docs/ic-overview"}/>
