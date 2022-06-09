@@ -43,10 +43,7 @@ function Index() {
             <motion.div ref={ref} animate={controls} initial="hidden"
                         variants={container} className={styles.container}>
                 <motion.div variants={item} className={styles.Title}>
-                    <p style={{
-                        marginRight: "25px",
-                        marginBottom: "0.25em"
-                    }}>The future of Web3</p>
+                    <h1>The future of Web3</h1>
                     {/* <div>
                         <AnimatePresence>
                             <motion.p
