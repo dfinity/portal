@@ -113,7 +113,12 @@ function Features() {
       </motion.div>
       <div className={styles.cards}>
         {cardsContent.map((card) => (
-          <motion.a variants={item} href={card.link} className={styles.card} key={card.link}>
+          <motion.a
+            variants={transitions.item}
+            href={card.link}
+            className={styles.card}
+            key={card.link}
+          >
             <Card key={card.title} title={card.title} body={card.body} />
           </motion.a>
         ))}

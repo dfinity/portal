@@ -12,27 +12,40 @@ const textCycling = {
 };
 
 function Index() {
-    const controls = useAnimation();
-    const {ref, inView} = useInView({threshold: 0.2});
-    useEffect(() => {
-        if (inView) {
-            controls.start("show");
-        }
-    }, [controls, inView]);
-    useEffect(() => {
-        setInterval(() => {
-            cycleTitle();
-        }, 2500);
-    }, []);
-    const [title, cycleTitle] = useCycle("build", "explore", "invest", "decentralize", "tokenize", "scale", "transact");
-    return (
-        <div className={styles.section}>
-            <a id="home"/>
-            <motion.div ref={ref} animate={controls} initial="hidden"
-                        variants={container} className={styles.container}>
-                <motion.div variants={item} className={styles.Title}>
-                    <h1>The future of Web3</h1>
-                    {/* <div>
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0.2 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
+  useEffect(() => {
+    setInterval(() => {
+      cycleTitle();
+    }, 2500);
+  }, []);
+  const [title, cycleTitle] = useCycle(
+    "build",
+    "explore",
+    "invest",
+    "decentralize",
+    "tokenize",
+    "scale",
+    "transact"
+  );
+  return (
+    <div className={styles.section}>
+      <a id="home" />
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={transitions.container}
+        className={styles.container}
+      >
+        <motion.div variants={transitions.item} className={styles.Title}>
+          <h1>The future of Web3</h1>
+          {/* <div>
                         <AnimatePresence>
                             <motion.p
                                 className={styles.wordCycle}
@@ -56,30 +69,30 @@ function Index() {
                         </AnimatePresence>
                         <p className={styles.wordFiller}>decentralize</p>
                     </div> */}
-                </motion.div>
-                {/*<motion.p variants={item} className={styles.Title}>
+        </motion.div>
+        {/*<motion.p variants={transitions.item} className={styles.Title}>
                     Blockchain's future
                 </motion.p>*/}
-                <motion.p variants={item} className={styles.Text}>
-                Web speed. Serves web. 100,000X more efficient... simply better tech
-                </motion.p>
-                <motion.div variants={item} className={styles.actionContainer}>
-                    <Link
-                        className={styles.actionButton}
-                        to="/developers"
-                    >
-                        BUILD REAL WEB3
-                    </Link>
-                    <Link
-                        className={styles.callToAction}
-                        to={"https://dfinity.org/showcase/"}
-                    >
-                        Explore the Internet Computer
-                    </Link>
-                </motion.div>
-            </motion.div>
-        </div>
-    );
+        <motion.p variants={transitions.item} className={styles.Text}>
+          Web speed. Serves web. 100,000X more efficient... simply better tech
+        </motion.p>
+        <motion.div
+          variants={transitions.item}
+          className={styles.actionContainer}
+        >
+          <Link className={styles.actionButton} to="/developers">
+            BUILD REAL WEB3
+          </Link>
+          <Link
+            className={styles.callToAction}
+            to={"https://dfinity.org/showcase/"}
+          >
+            Explore the Internet Computer
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 }
 
 export default Index;
