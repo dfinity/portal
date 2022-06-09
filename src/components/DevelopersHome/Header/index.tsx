@@ -37,15 +37,13 @@ function Index() {
         >
           <Link
             className={styles.actionButton}
-            to="https://internetcomputer.org/docs/current/developer-docs/ic-overview"
+            to="/docs/current/developer-docs/ic-overview"
           >
             READ DOCS
           </Link>
           <Link
             className={styles.callToAction}
-            to={
-              "https://internetcomputer.org/docs/current/developer-docs/quickstart/hello10mins"
-            }
+            to={"/docs/current/developer-docs/quickstart/hello10mins"}
           >
             Start coding
           </Link>

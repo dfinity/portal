@@ -38,7 +38,7 @@ function Index() {
           >
             <Link
               className={styles.actionButton}
-              to="https://internetcomputer.org/docs/current/concepts/canisters-code"
+              to="/docs/current/concepts/canisters-code"
             >
               CONCEPTS
             </Link>
