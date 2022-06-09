@@ -31,7 +31,7 @@
 }
 
 /* For bigger screens, when displaying results in two columns */
-@media (min-width: 768px) {
+@media (min-width: 996px) {
   /* Bottom border of each suggestion */
   .algolia-docsearch-suggestion {
     border-bottom-color: #7671df;

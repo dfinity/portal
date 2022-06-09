@@ -5,8 +5,8 @@ import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/samples/bgcircle.svg";
-import PlusIcon from "@site/static/img/samples/plus.svg";
+import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import nftMinting from "@site/static/img/samples/nftMinting.png";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
 import staticWebsite from "@site/static/img/samples/staticWebsite.png";
@@ -26,7 +26,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Code Samples", "Documentation", "Live Demos"],
-    highlights: ["Beginner", "Motoko", "Rust", "Beginner"],
     body: "Deploy a dead simple dapp using two canisters serving a web page.",
     links: {
       action: {
@@ -36,7 +35,7 @@ const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "/samples/hello",
+      docs: "samples/hello",
     },
   },
   {
@@ -47,11 +46,10 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Beginner"],
     contentType: ["Documentation", "Videos"],
-    highlights: ["Global", "Website", "Motoko", "Rust", "Beginner"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
-      action: { text: "Docs", to: "/samples/host-a-website" },
-      docs: "/samples/host-a-website",
+      action: { text: "Docs", to: "samples/host-a-website" },
+      docs: "samples/host-a-website",
       youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
     },
   },
@@ -63,7 +61,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    highlights: ["DeFi", "Website", "Motoko", "Rust", "Intermediate"],
     body: "Build dapp to enable DeFi applications on the IC.",
     links: {
       action: {
@@ -73,7 +70,7 @@ const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
       rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
       livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
-      docs: "/samples/dex",
+      docs: "samples/dex",
       youtube: "https://youtu.be/fLbaOmH24Gs",
     },
   },
@@ -85,7 +82,6 @@ const sampleItems = [
     languages: ["Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos"],
-    highlights: ["NFT", "Gaming", "Motoko", "Rust", "Intermediate"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
       action: {
@@ -93,7 +89,7 @@ const sampleItems = [
         to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       },
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      docs: "/samples/nft",
+      docs: "samples/nft",
       youtube: "https://youtu.be/1po3udDADp4",
     },
   },
@@ -105,7 +101,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation", "Videos"],
-    highlights: ["Global", "DeFi", "Motoko", "Rust", "Intermediate"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
       action: {
@@ -115,7 +110,7 @@ const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
       rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
-      docs: "/samples/dao",
+      docs: "samples/dao",
       youtube: "https://youtu.be/3IcYlieA-EE",
     },
   },
@@ -127,7 +122,6 @@ const sampleItems = [
     languages: ["Motoko", "Rust", "Javascript"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
       action: {
@@ -138,20 +132,19 @@ const sampleItems = [
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
       rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
       livePreview: "https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/",
-      docs: "/samples/encrypted-notes",
+      docs: "samples/encrypted-notes",
       youtube: "https://youtu.be/DZQmtPSxvbs",
     },
   },
   {
     index: 6,
-    title: "ICP transfer",
+    title: "Token transfer",
     image: tokenTransfer,
     domains: ["Global", "DeFi"],
     languages: ["Motoko", "Rust"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation"],
-    highlights: ["Global", "Motoko", "Rust", "Advanced"],
-    body: "Create a dapp that can transfer ICP to its most active users.",
+    body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
       action: {
         text: "Get Code",
@@ -160,7 +153,7 @@ const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
-      docs: "/samples/token-transfer",
+      docs: "samples/token-transfer",
     },
   },
   {
@@ -171,7 +164,6 @@ const sampleItems = [
     languages: ["Motoko"],
     level: ["Advanced"],
     contentType: ["Code Samples", "Documentation"],
-    highlights: ["Website", "Motoko", "Rust", "Advanced"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
       action: {
@@ -197,7 +189,7 @@ const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
       },
-      docs: "/samples/host-unity-webgl",
+      docs: "samples/host-unity-webgl",
     },
   },
 ];
@@ -284,7 +276,7 @@ function Samples(): JSX.Element {
                 key={sample.index}
                 image={sample.image}
                 title={sample.title}
-                highlights={sample.highlights}
+                domain={sample.domains[0]}
                 body={sample.body}
                 links={sample.links}
               />
