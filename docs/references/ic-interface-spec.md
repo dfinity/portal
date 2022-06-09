@@ -1,14 +1,24 @@
-# IC Interface Specification
+import Changelog from './_attachments/interface-spec-changelog.md';
 
-## Introduction
+# The Internet Computer Interface Specification {#_the_internet_computer_interface_specification}
 
-Welcome to *the Internet Computer*! We speak of “the” Internet Computer, because although under the hood a large number of physical computers are working together in a blockchain protocol, in the end we have the appearance of a single, shared, secure and world-wide accessible computer. Developers who want to build decentralized applications (or *dapps* for short) that run on the Internet Computer blockchain and end-users who want to use those dapps need to know very little, if anything, about the underlying protocol. However, knowing some details about the interfaces that the Internet Computer exposes can allow interested developers and architects to take fuller advantages of the unique features that the Internet Computer provides.
 
-### Target audience
+:::note
+You are looking at the `master` version of the document! If you are looking for implementation specification or documentation, look at one of the versions at <https://docs.dfinity.systems/public/v/>.
+:::
+
+## Introduction {#_introduction}
+
+Welcome to *the Internet Computer*! We speak of "the" Internet Computer, because although under the hood a large number of physical computers are working together in a blockchain protocol, in the end we have the appearance of a single, shared, secure and world-wide accessible computer. Developers who want to build decentralized applications (or *dapps* for short) that run on the Internet Computer blockchain and end-users who want to use those dapps need to know very little, if anything, about the underlying protocol. However, knowing some details about the interfaces that the Internet Computer exposes can allow interested developers and architects to take fuller advantages of the unique features that the Internet Computer provides.
+
+### Target audience {#_target_audience}
 
 This document describes this *external* view of the Internet Computer, i.e. the low-level interfaces it provides to dapp developers and users, and what will happen when they use these interfaces.
 
-While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see <https://sdk.dfinity.org/> for suitable documentation.
+:::caution
+While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see <https://smartcontracts.org/> for suitable documentation.
+
+:::
 
 The target audience of this document are
 
@@ -16,91 +26,94 @@ The target audience of this document are
 
 -   those who implement these low-level interfaces (e.g. developers of the Internet Computer implementation)
 
--   those who want to understand the intricacies of the Internet Computer’s behavior in great detail (e.g. to do a security analysis)
+-   those who want to understand the intricacies of the Internet Computer's behavior in great detail (e.g. to do a security analysis)
 
+:::note
 This document is a rigorous, technically dense reference. It is not an introduction to the Internet Computer, and as such most useful to those who understand the high-level concepts. Please see more high-level documentation first.
+:::
 
-### Scope of this document
+### Scope of this document {#_scope_of_this_document}
 
 If you think of the Internet Computer as a distributed engine that executes WebAssembly-based dapps, then this document describes exclusively the aspect of executing those dapps. To the extent possible, this document will *not* talk about consensus protocols, nodes, subnets, orthogonal persistence or governance.
 
 This document tries to be implementation agnostic: It would apply just as well to a (hypothetical) compatible reimplementation of the Internet Computer. This implies that this document does not cover interfaces towards those running the Internet Computer (e.g. data center operators, protocol developers, governance users), as topics like node update, monitoring, logging are inherently tied to the actual *implementation* and its architecture.
 
-### Overview of the Internet Computer
+### Overview of the Internet Computer {#_overview_of_the_internet_computer}
 
-Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*, or *canisters* for short. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
+Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#https-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
 
-Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
+Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#https-interface) to interact with the canister according to the [System API](#system-api).
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 
-**A typical use of the Internet Computer. (This is a simplified view; some of the arrows represent multiple interaction steps or polling.)**
-
+```plantuml
     actor Developer
     actor User
     participant "Internet Computer" as IC
     participant "Canister 1" as Can1
-    Developer ->IC: /submit create canister
+    Developer -> IC : /submit create canister
     create Can1
-   IC-> Can1 : create
-    Developer <--IC: canister-id=1
-    Developer ->IC: /submit install module
-   IC-> Can1 : initialize
+    IC -> Can1 : create
+    Developer <-- IC : canister-id=1
+    Developer -> IC : /submit install module
+    IC -> Can1 : initialize
     |||
-    User ->IC: /submit call “hello”
-   IC-> Can1 : hello
+    User -> IC : /submit call “hello”
+    IC -> Can1 : hello
     return "Hello world!"
-    User <--IC: "Hello World!"
+    User <-- IC : "Hello World!"
+```
+**A typical use of the Internet Computer. (This is a simplified view; some of the arrows represent multiple interaction steps or polling.)**
 
-Sections “[HTTPS Interface](#http-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
+Sections “[HTTPS Interface](#https-interface)” and “[Canister interface (System API)](#system-api)” describe these interfaces, together with a brief description of what they do. Afterwards, you will find a [more formal description](#abstract-behavior) of the Internet Computer that describes its abstract behavior with more rigor.
 
-### Nomenclature
+### Nomenclature {#_nomenclature}
 
 To get some consistency in this document, we try to use the following terms with precision:
 
-We avoid the term “client”, as it could be the client of the Internet Computer or the client inside the distributed network that makes up the Internet Computer. Instead, we use the term *user* to denote the external entity interacting with the Internet Computer, even if in most cases it will be some code (sometimes called “agent”) acting on behalf of a (human) user.
+We avoid the term "client", as it could be the client of the Internet Computer or the client inside the distributed network that makes up the Internet Computer. Instead, we use the term *user* to denote the external entity interacting with the Internet Computer, even if in most cases it will be some code (sometimes called "agent") acting on behalf of a (human) user.
 
 The public entry points of canisters are called *methods*. Methods can be declared to be either *update methods* (state mutation is preserved) or *query methods* (state mutation is discarded, no further calls can be made).
 
 Methods can be *called*, from *caller* to *callee*, and will eventually incur a *response* which is either a *reply* or a *reject*. A method may have *parameters*, which are provided with concrete *arguments* in a method call.
 
-External calls can be update calls, which can call both kinds of methods, and query calls, which can *only* call query methods. Inter-canister calls can also call both kinds of methods. Note that calls from a canister to itself also count as "inter-canister".
+External calls can be update calls, which can call both kinds of methods, and query calls, which can *only* call query methods. Inter-canister calls can also call both kinds of methods. Note that calls from a canister to itself also count as \"inter-canister\".
 
 Internally, a call or a response is transmitted as a *message* from a *sender* to a *receiver*. Messages do not have a response.
 
-<span id="define-wasm-fn"></span>WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. Functions, too, have parameters and take arguments.
+WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. Functions, too, have parameters and take arguments.
 
 External *users* interact with the Internet Computer by issuing *requests* on the HTTPS interface. Requests have responses which can either be replies or rejects. Some requests cause internal messages to be created.
 
 Canisters and users are identified by a *principal*, sometimes also called an *id*.
 
-## Pervasive concepts
+## Pervasive concepts {#_pervasive_concepts}
 
-Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#http-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#ic-management-canister) and the [System State Tree](#state-tree)), this section introduces some concepts that transcend multiple interfaces.
+Before going into the details of the four public interfaces described in this document (namely the agent-facing [HTTPS interface](#https-interface), the canister-facing [System API](#system-api), the [virtual Management canister](#the-ic-management-canister) and the [System State Tree](#the-system-state-tree)), this section introduces some concepts that transcend multiple interfaces.
 
-### Unspecified constants and limits
+### Unspecified constants and limits {#_unspecified_constants_and_limits}
 
 This specification may refer to certain constants and limits without specifying their concrete value (yet), i.e. they are implementation defined. Many are resource limits which are relevant only to specify the error-handling behavior of the IC (which, as mentioned above, is also not yet precisely described in this document). This list is not complete.
 
 -   `MAX_CYCLES_PER_MESSAGE`
 
-    Amount of cycles that a canister has to have before a message is attempted to be executed, which is deducted from the canister balance before message execution. See [Message execution](#message-execution).
+    Amount of cycles that a canister has to have before a message is attempted to be executed, which is deducted from the canister balance before message execution. See [Message execution](#rule-message-execution).
 
 -   `MAX_CYCLES_PER_RESPONSE`
 
-    Amount of cycles that the IC sets aside when a canister performs a call. This is used to pay for processing the response message, and unused cycles after the execution of the response are refunded. See [Message execution](#message-execution).
+    Amount of cycles that the IC sets aside when a canister performs a call. This is used to pay for processing the response message, and unused cycles after the execution of the response are refunded. See [Message execution](#rule-message-execution).
 
 -   `DEFAULT_PROVISIONAL_CYCLES_BALANCE`
 
-    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#ic-provisional_create_canister_with_cycles).
+    Amount of cycles allocated to a new canister by default, if not explicitly specified. See [IC method ](#icmethod-provisional_create_canister_with_cycles).
 
-### Principals
+### Principals {#principal}
 
 Principals are generic identifiers for canisters, users and possibly other concepts in the future. As far as most uses of the IC are concerned they are *opaque* binary blobs with a length between 0 and 29 bytes, and there is intentionally no mechanism to tell canister ids and user ids apart.
 
 There is, however, some structure to them to encode specific authentication and authorization behavior.
 
-#### Special forms of Principals
+#### Special forms of Principals {#id-classes}
 
 In this section, `H` denotes SHA-224, `·` denotes blob concatenation and `|p|` denotes the length of `p` in bytes, encoded as a single byte.
 
@@ -110,7 +123,9 @@ There are several classes of ids:
 
     These are always generated by the IC and have no structure of interest outside of it.
 
+    :::note
     Typically, these end with the byte `0x01`, but users of the IC should not need to care about that.
+    :::
 
 2.  *Self-authenticating ids*.
 
@@ -124,7 +139,9 @@ There are several classes of ids:
 
     These ids are treated specially when an id needs to be registered. In such a request, whoever requests an id can provide a `derivation_nonce`. By hashing that together with the principal of the caller, every principal has a space of ids that only they can register ids from.
 
+    :::note
     Derived IDs are currently not explicitly used in this document, but they may be used internally or in the future.
+    :::
 
 4.  *Anonymous id*
 
@@ -132,9 +149,11 @@ There are several classes of ids:
 
 When the IC creates a *fresh* id, it never creates a self-authenticating id, an anonymous id or an id derived from what could be a canister or user.
 
-#### Textual representation of principals
+#### Textual representation of principals {#textual-ids}
 
+:::note
 This textual representation does not actually show up in the interface (which always deals with blobs), so it is merely a recommended convention.
+:::
 
 We specify a *canonical textual format* that is recommended whenever principals need to be printed or read in textual format, e.g. in log messages, transactions browser, command line tools, source code.
 
@@ -152,6 +171,7 @@ The textual representation is conventionally printed with *lower case letters*, 
 
 Because the maximum size of a principal is 29 bytes, the textual representation will be no longer than 63 characters (10 times 5 plus 3 characters with 10 separators in between them).
 
+:::tip
 The canister with id `0xABCD01` has check sequence `0x233FF206` ([online calculator](https://crccalc.com/?crc=ABCD01&method=crc32&datatype=hex&outtype=hex)); the final id is thus `em77e-bvlzu-aq`.
 
 Example encoding from hex, and decoding to hex, in bash (the following can be pasted into a terminal as is):
@@ -167,6 +187,7 @@ Example encoding from hex, and decoding to hex, in bash (the following can be pa
       fold -w 8 | xargs -n1 printf '%-8s' | tr ' ' = |
       base32 -d | xxd -p | tr -d '\n' | cut -b9- | tr a-z A-Z
     }
+:::
 
 ### Canister lifecycle
 
@@ -192,11 +213,11 @@ A canister can be *empty* (e.g. directly after creation) or *non-empty*. A non-e
 
 Canisters are empty after creation and uninstallation, and become non-empty through [code installation](#ic-install_code).
 
-If an empty canister receives a response, that response is dropped, as if the canister trapped when processing the response. The cycles set aside for its processing and the cycles carried on the responses are added to the canister’s *cycles* balance.
+If an empty canister receives a response, that response is dropped, as if the canister trapped when processing the response. The cycles set aside for its processing and the cycles carried on the responses are added to the canister's *cycles* balance.
 
 #### Canister cycles
 
-the IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle\_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2^128-1, then the balance will be capped at 2^128-1 and any additional cycles will be lost.
+The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2\^128-1, then the balance will be capped at 2\^128-1 and any additional cycles will be lost.
 
 When the cycle balance of a canister falls to zero, the canister is *deallocated*. This has the same effect as
 
@@ -206,7 +227,9 @@ When the cycle balance of a canister falls to zero, the canister is *deallocated
 
 Afterwards the canister is empty. It can be reinstalled after topping up its balance.
 
+:::note
 Once the IC frees the resources of a canister, its id, *cycles* balance, and *controllers* are preserved on the IC for a minimum of 10 years. What happens to the canister after this period is currently unspecified.
+:::
 
 #### Canister status
 
@@ -218,7 +241,7 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `stopped`, calls to the canister are rejected by the IC, and there are no outstanding responses.
 
-In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
+In all cases, calls to the [management canister](#the-ic-management-canister) are processed, regardless of the state of the managed canister.
 
 The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
@@ -228,11 +251,11 @@ NOTE: This status is orthogonal to the question of whether a canister is empty o
 
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
 
-the IC supports multiple signature schemes, with details given in the following subsections. For each scheme, we specify the data encoded in the public key (which is always DER-encoded, and indicates the scheme to use) as well as the form of the signatures (which are opaque blobs for the purposes of the rest of this specification).
+The IC supports multiple signature schemes, with details given in the following subsections. For each scheme, we specify the data encoded in the public key (which is always DER-encoded, and indicates the scheme to use) as well as the form of the signatures (which are opaque blobs for the purposes of the rest of this specification).
 
 In all cases, the signed *payload* is the concatenation of the domain separator and the message. All uses of signatures in this specification indicate a domain separator, to uniquely identify the purpose of the signature. The domain separators are prefix-free by construction, as their first byte indicates their length.
 
-#### Ed25519 and ECDSA signatures
+#### Ed25519 and ECDSA signatures {#ecdsa}
 
 Plain signatures are supported for the schemes
 
@@ -248,13 +271,13 @@ Plain signatures are supported for the schemes
 
 -   The signatures are encoded as the concatenation of the 32-byte big endian encodings of the two values *r* and *s*.
 
-#### Web Authentication
+#### Web Authentication {#webauthn}
 
 The allowed signature schemes for web authentication are
 
 -   [**ECDSA**](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) on curve P-256 (also known as `secp256r1`), using SHA-256 as hash function.
 
--   [**RSA PKCS#1v1.5 (RSASSA-PKCS1-v1\_5)**](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2), using SHA-256 as hash function.
+-   [**RSA PKCS#1v1.5 (RSASSA-PKCS1-v1_5)**](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2), using SHA-256 as hash function.
 
 The signature is calculated by using the payload as the challenge in the web authentication assertion.
 
@@ -264,6 +287,7 @@ The signature is checked by verifying that the `challenge` field contains the [b
 
     It uses the `SubjectPublicKeyInfo` type used for other types of public keys (see, e.g., [RFC 8410, Section 4](https://tools.ietf.org/html/rfc8410#section-4)), with OID 1.3.6.1.4.1.56387.1.1 (iso.org.dod.internet.private.enterprise.dfinity.mechanisms.der-wrapped-cose). The `BIT STRING` field `subjectPublicKey` contains the COSE encoding. See [WebAuthn w3c recommendation](https://www.w3.org/TR/webauthn/#sctn-encoded-credPubKey-examples) or [RFC 8152](https://tools.ietf.org/html/rfc8152#section-13.1) for details on the COSE encoding.
 
+    :::tip
     A DER wrapping of a COSE key is shown below. It can be parsed via the command `sed "s/#.*//" | xxd -r -p | openssl asn1parse -inform der`.
 
         30 5E                                       # SEQUENCE of length 94 bytes
@@ -277,8 +301,9 @@ The signature is checked by verifying that the `challenge` field contains the [b
             4E52 5A6A 368C 2363 063D 04E6 ED
 
     You can also view the wrapping in [an online ASN.1 JavaScript decoder](https://lapo.it/asn1js/#MF4wDAYKKwYBBAGDuEMBAQNOAKUBAgMmIAEhWCB__YNjIHL9G_6vP7qkMUbg75XD9V45lKQbvytRdNdx2iJYIDJJfu0Kf28ACSh2W4MYFiz9gKlOUlpqNowjYwY9BObt).
+    :::
 
--   The signature is a CBOR value consisting of a data item with major type 6 (“Semantic tag”) and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a map with three mandatory fields:
+-   The signature is a CBOR value consisting of a data item with major type 6 ("Semantic tag") and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a map with three mandatory fields:
 
     -   `authenticator_data` (`blob`): WebAuthn authenticator data.
 
@@ -288,7 +313,7 @@ The signature is checked by verifying that the `challenge` field contains the [b
 
 #### Canister signatures
 
-the IC also supports a scheme where a canister can sign a payload by declaring a special “certified variable”.
+The IC also supports a scheme where a canister can sign a payload by declaring a special "certified variable".
 
 This section makes forward references to other concepts in this document, in particular the section [Certification](#certification).
 
@@ -298,7 +323,7 @@ This section makes forward references to other concepts in this document, in par
 
     The `BIT STRING` field `subjectPublicKey` is the blob `|signing_canister_id| · signing_canister_id · seed`, where `|signing_canister_id|` is the one-byte encoding of the the length of the `signing_canister_id` and `·` denotes blob concatenation.
 
--   The signature is a CBOR value consisting of a data item with major type 6 (“Semantic tag”) and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a map with two mandatory fields:
+-   The signature is a CBOR value consisting of a data item with major type 6 ("Semantic tag") and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a map with two mandatory fields:
 
     -   `certificate` (`blob`): A CBOR-encoded certificate as per [Encoding of certificates](#certification-encoding).
 
@@ -312,7 +337,7 @@ This section makes forward references to other concepts in this document, in par
 
     where `signing_canister_id` is the id of the signing canister and `reconstruct` is a function that computes a root-hash for the tree.
 
-    -   If the `certificate` includes subnet delegations (possibly nested), then the `signing_canister_id` must be included in each delegation’s canister id range (see [Delegation](#certification-delegation)).
+    -   If the `certificate` includes subnet delegations (possibly nested), then the `signing_canister_id` must be included in each delegation's canister id range (see [Delegation](#certification-delegation)).
 
     -   The `tree` must be a `well_formed` tree with
 
@@ -320,7 +345,7 @@ This section makes forward references to other concepts in this document, in par
 
     where `s` is the SHA-256 hash of the `seed` used in the public key and `m` is the SHA-256 hash of the payload.
 
-## The system state tree
+## The system state tree {#state-tree}
 
 Parts of the IC state are publicly exposed (e.g. via [Request: Read state](#http-read-state) or [Certified data](#system-api-certified-data)) in a verified way (see [Certification](#certification) for the machinery for certifying). This section describes the content of this system state abstractly.
 
@@ -330,13 +355,13 @@ Labels are always blobs (but often with a human readable representation). In thi
 
 This section specifies the publicly relevant paths in the tree.
 
-### Time
+### Time {#state-tree-time}
 
 -   `/time` (natural):
 
     All partial state trees include a timestamp, indicating the time at which the state is current.
 
-### Subnet information
+### Subnet information {#state-tree-subnet}
 
 The state tree contains information about the topology of the Internet Computer.
 
@@ -353,9 +378,11 @@ The state tree contains information about the topology of the Internet Computer.
         principal = bytes .size (0..29)
         tagged<t> = #6.55799(t) ; the CBOR tag
 
+    :::note
     Because this uses the lexicographic ordering of princpials, and the byte distinguishing the various classes of ids is at the *end*, this range by construction conceptually includes principals of various classes. This specification needs to take care that the fact that principals that are not canisters may appear in these ranges does not cause confusion.
+    :::
 
-### Request status
+### Request status {#state-tree-request-status}
 
 For each asynchronous request known to the Internet Computer, its status is in a subtree at `/request_status/<request_id>`. Please see [Overview of canister calling](#http-call-overview) for more details on how asynchronous requests work.
 
@@ -375,19 +402,23 @@ For each asynchronous request known to the Internet Computer, its status is in a
 
     If the status is `rejected`, then this path contains a textual diagnostic message, else it is not present.
 
+:::note
 Immediately after submitting a request, the request may not show up yet as the Internet Computer is still working on accepting the request as pending.
+:::
 
-Request statuses will not actually be kept around indefinitely, and eventually the Internet Computer forgets about the request. This will happen no sooner than the request’s expiry time, so that replay attacks are prevented.
+:::note
+Request statuses will not actually be kept around indefinitely, and eventually the Internet Computer forgets about the request. This will happen no sooner than the request's expiry time, so that replay attacks are prevented.
+:::
 
-### Certified data
+### Certified data {#state-tree-certified-data}
 
 -   `/canister/<canister_id>/certified_data` (blob):
 
     The certified data of the canister with the given id, see [Certified data](#system-api-certified-data).
 
-### Canister information
+### Canister information {#state-tree-canister-information}
 
-Users have the ability to learn about the hash of the canister’s module, its current controllers, and metadata in a certified way.
+Users have the ability to learn about the hash of the canister's module, its current controllers, and metadata in a certified way.
 
 -   `/canister/<canister_id>/module_hash` (blob):
 
@@ -395,15 +426,15 @@ Users have the ability to learn about the hash of the canister’s module, its c
 
 -   `/canister/<canister_id>/controllers` (blob):
 
-    The current controllers of the canister. The value consists of a CBOR data item with major type 6 (“Semantic tag”) and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by an array of principals in their binary form (CDDL `#6.55799([* bytes .size (0..29)])`).
+    The current controllers of the canister. The value consists of a CBOR data item with major type 6 ("Semantic tag") and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by an array of principals in their binary form (CDDL `#6.55799([* bytes .size (0..29)])`).
 
 -   `/canister/<canister_id>/metadata/<name>` (blob):
 
     If the canister has a [custom section](https://webassembly.github.io/spec/core/binary/modules.html#custom-section) called `icp:public <name>` or `icp:private <name>`, this path contains the content of the custom section. Otherwise, this path does not exist.
 
-    It is recommended for the canister to have a custom section called "icp:public candid:service", which contains the UTF-8 encoding of [the Candid interface](https://github.com/dfinity/candid/blob/master/spec/Candid.md#core-grammar) for the canister.
+    It is recommended for the canister to have a custom section called \"icp:public candid:service\", which contains the UTF-8 encoding of [the Candid interface](https://github.com/dfinity/candid/blob/master/spec/Candid.md#core-grammar) for the canister.
 
-## HTTPS Interface
+## HTTPS Interface {#http-interface}
 
 The concrete mechanism that users use to send requests to the Internet Computer is via an HTTPS API, which exposes three endpoints to handle interactions, plus one for diagnostics:
 
@@ -419,23 +450,25 @@ In these paths, the `<effective_canister_id>` is the [textual representation](#t
 
 Requests to `/api/v2/canister/<effective_canister_id>/call`, `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/canister/<effective_canister_id>/query` are POST requests with a CBOR-encoded request body, which consists of a authentication envelope (as per [Authentication](#authentication)) and request-specific content as described below.
 
+:::note
 This document does not yet explain how to find the location and port of the Internet Computer.
+:::
 
-### Overview of canister calling
+### Overview of canister calling {#http-call-overview}
 
 Users interact with the Internet Computer by calling canisters. By the very nature of a blockchain protocol, they cannot be acted upon immediately, but only with a delay. Moreover, the actual node that the user talks to may not be honest or, for other reasons, may fail to get the request on the way. This implies the following high-level workflow:
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#https-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
-3.  the IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [the IC management canister](#ic-management-canister) apply.
+3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
 
 4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
 
 5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
 
-6.  the IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+6.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
 
 7.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
 
@@ -444,7 +477,7 @@ Users interact with the Internet Computer by calling canisters. By the very natu
 9.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
 
 This yields the following interaction diagram:
-
+```plantuml
     (*) --> "User creates call" #DDDDDD
        --> "Submitted to node\n(with 202 response)" as submit #DDDDDD
        --> "received"
@@ -465,10 +498,11 @@ This yields the following interaction diagram:
       "done" --> "pruned" #DDDDDD
 
     endif
+```
 
 State transitions may be instantaneous and not always externally visible. For example, the state of a request may move from `received` via `processing` to `replied` in one go. Similarly, the IC may not implement the `done` state at all, and keep calls in state `replied`/`rejected` until they are pruned.
 
-All gray states are *not* explicitly represented in the state of the IC, and are indistinguishable from “call does not exist”.
+All gray states are *not* explicitly represented in the state of the IC, and are indistinguishable from "call does not exist".
 
 The characteristic property of the `received` state is that the call has made it past the (potentially malicious) endpoint *into the state of the IC*. It is now pointless (but harmless) to submit the (identical) call again. Before reaching that state, submitting the identical call to further nodes might be a useful safeguard against a malicious or misbehaving node.
 
@@ -476,13 +510,13 @@ The characteristic property of the `processing` state is that *the initial effec
 
 A call may be rejected by the IC or the canister. In either case, there is no guarantee about how much processing of the call has happened.
 
-To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call’s `ingress_expiry` field.
+To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
 
 Calls must stay in `replied` or `rejected` long enough for polling users to catch the response.
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
-### Request: Call
+### Request: Call {#http-call}
 
 In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
@@ -500,11 +534,13 @@ The HTTP response to this request has an empty body and HTTP status 202, or a HT
 
 This request type can *also* be used to call a query method. A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response.
 
-The functionality exposed via the [the IC management canister](#ic-management-canister) can be used this way.
+:::note
+The functionality exposed via the [The IC management canister](#ic-management-canister) can be used this way.
+:::
 
-### Request: Read state
+### Request: Read state {#http-read-state}
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#the-system-state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -516,7 +552,7 @@ The HTTP response to this request consists of a CBOR map with the following fiel
 
 -   `certificate` (`blob`): A certificate (see [Certification](#certification)).
 
-    If this `certificate` includes subnet delegations (possibly nested), then the `effective_canister_id` must be included in each delegation’s canister id range (see [Delegation](#certification-delegation)).
+    If this `certificate` includes subnet delegations (possibly nested), then the `effective_canister_id` must be included in each delegation's canister id range (see [Delegation](#certification-delegation)).
 
 The returned certificate reveals all values whose path is a suffix of the list of requested paths. It also always reveals `/time`, even if not explicitly requested.
 
@@ -526,7 +562,7 @@ All requested paths must have one of the following paths as prefix:
 
 -   `/subnet`. Can be requested by anyone.
 
--   `/request_status/<request_id>`. Can only be read if `/request_id/<request_id>` is not present in the state tree, or if this `read_state` request was signed by same sender as the original request referenced by `<request_id>`, and the effective canister id of the original request matches the `<effective_canister_id>` (see [Effective canister id](#http-effective-canister-id)) in this HTTP request’s path.
+-   `/request_status/<request_id>`. Can only be read if `/request_id/<request_id>` is not present in the state tree, or if this `read_state` request was signed by same sender as the original request referenced by `<request_id>`, and the effective canister id of the original request matches the `<effective_canister_id>` (see [Effective canister id](#http-effective-canister-id)) in this HTTP request's path.
 
 -   `/canisters/<canister_id>/module_hash`. Can be requested by anyone, if `<canister_id>` matches `<effective_canister_id>`.
 
@@ -536,11 +572,11 @@ All requested paths must have one of the following paths as prefix:
 
 Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canister themselves via the System API (see [Certified data](#system-api-certified-data)).
 
-See [The system state tree](#state-tree) for details on the state tree.
+See [The system state tree](#the-system-state-tree) for details on the state tree.
 
-### Request: Query call
+### Request: Query call {#http-query}
 
-A query call is a fast, but less secure way to call a canister. Only methods that are explicitly marked as “query methods” by the canister can be called this way.
+A query call is a fast, but less secure way to call a canister. Only methods that are explicitly marked as "query methods" by the canister can be called this way.
 
 In order to make a query call to canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
@@ -568,9 +604,9 @@ If the call resulted in a reject, the response is a CBOR map with the following 
 
 -   `reject_message` (`text`): a textual diagnostic message.
 
-Canister methods that do not change the canister state can be executed more efficiently. This method provides that ability, and returns the canister’s response directly within the HTTP response.
+Canister methods that do not change the canister state can be executed more efficiently. This method provides that ability, and returns the canister's response directly within the HTTP response.
 
-### Effective canister id
+### Effective canister id {#http-effective-canister-id}
 
 The `<effective_canister_id>` in the URL paths of requests is the *effective* destination of the request.
 
@@ -580,15 +616,19 @@ The `<effective_canister_id>` in the URL paths of requests is the *effective* de
 
 -   If the call is to the `provisional_create_canister_with_cycles` method of the Management Canister (`aaaaa-aa`), any principal is a valid effective canister id for this call.
 
-    The Internet Computer blockchain mainnet does not support `provisional_create_canister_with_cycles`. This means that using an effective canister id that could be an existing canister would lead to the request being routed to a node on the corresponding subnet and produce an error response there, while using an effective canister id that cannot be an existing canister id would cause an error response from the node receiving the request — either is fine.
+    :::note
+    The Internet Computer blockchain mainnet does not support `provisional_create_canister_with_cycles`. This means that using an effective canister id that could be an existing canister would lead to the request being routed to a node on the corresponding subnet and produce an error response there, while using an effective canister id that cannot be an existing canister id would cause an error response from the node receiving the request --- either is fine.
 
     In multi-subnet development instances of the Internet Computer Protocol (e.g. testnets), users with privileged access to `provisional_create_canister_with_cycles` (or possibly similar, internal methods) and knowledge of the mapping from canisters to subnets can use their choice of the effective canister id in the URL to steer the request to a specific subnet.
 
     In a local canister execution environment, the effective canister id is ignored, and thus `aaaaa-aa` can be used.
+    :::
 
 -   Else, the effective canister id must be the `canister_id` in the request.
 
+:::note
 The expectation is that user-side agent code shields users and developers from this concept, in analogy to how the System API interface shields canister developers from worrying about routing.
+:::
 
 ### Authentication
 
@@ -596,7 +636,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: the IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. the IC may refuse to accept requests with an ingress expiry date too far in the future. This applies to synchronous and asynchronous requests alike (and could have been called `request_expiry`).
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. This applies to synchronous and asynchronous requests alike (and could have been called `request_expiry`).
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
@@ -640,13 +680,13 @@ The `sender_sig` field is calculated by signing the concatenation of the 11 byte
 
 The delegation field, if present, must not contain more than four delegations.
 
-### Representation-independent hashing of structured data
+### Representation-independent hashing of structured data {#hash-of-map}
 
 Structured data, such as (recursive) maps, are authenticated by signing a representation-independent hash of the data. This hash is computed as follows (using SHA256 in the steps below):
 
 1.  For each field that is present in the map (i.e. omitted optional fields are indeed omitted):
 
-    -   concatenate the hash of the field’s name (in ascii-encoding, without terminal `\x00`) and the hash of the value (with the encoding specified below).
+    -   concatenate the hash of the field's name (in ascii-encoding, without terminal `\x00`) and the hash of the value (with the encoding specified below).
 
 2.  Sort these concatenations from low to high
 
@@ -666,14 +706,19 @@ The following encodings of field values as blobs are used
 
 -   Maps (`sender_delegation`) are encoded by recursively computing the representation-independent hash.
 
-### Request ids
+### Request ids {#request-id}
 
 When signing requests or querying the status of a request (see [Request status](#state-tree-request-status)) in the state tree, the user identifies the request using a *request id*, which is the [representation-independent hash](#hash-of-map) of the `content` map of the original request.
 
+:::note
 The request id is independent of the representation of the request (currently only CBOR), and does not change if the specification adds further optional fields to a request type.
+:::
 
-The recommended textual representation of a request id is a hexadecimal string with lower-case letters prefixed with '0x'. E.g., request id consisting of bytes `[00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 0A, 0B, 0C, 0D, 0E, 0F, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1A, 1B, 1C, 1D, 1E, 1F]` should be displayed as `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`.
+:::note
+The recommended textual representation of a request id is a hexadecimal string with lower-case letters prefixed with \'0x\'. E.g., request id consisting of bytes `[00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 0A, 0B, 0C, 0D, 0E, 0F, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1A, 1B, 1C, 1D, 1E, 1F]` should be displayed as `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`.
+:::
 
+:::tip
 Example calculation (where `H` denotes SHA-256 and `·` denotes blob concatenation):
 
     hash_of_map({ request_type: "call", canister_id: 0x00000000000004D2, method_name: "hello", arg: "DIDL\x00\xFD*"})
@@ -696,6 +741,7 @@ Example calculation (where `H` denotes SHA-256 and `·` denotes blob concatenati
        , b25f03dedd69be07f356a06fe35c1b0ddc0de77dcd9066c4be0c6bbde14b23ff · 6c0b2ae49718f6995c02ac5700c9c789d7b7862a0d53e6d40a73f1fcd2f70189
        ])
      = 8781291c347db32a9d8c10eb62b710fce5a93be676474c42babc74c51858f94b
+:::
 
 ### Reject codes
 
@@ -711,7 +757,7 @@ Rejection codes are member of the following enumeration:
 
 -   `CANISTER_REJECT` (4): Explicit reject by the canister.
 
--   <span id="CANISTER_ERROR"></span>`CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
+-   `CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
 
 The symbolic names of this enumeration are used throughout this specification, but on all interfaces (HTTPS API, System API), they are represented as positive numbers as given in the list above.
 
@@ -719,13 +765,13 @@ The error message is guaranteed to be a string, i.e. not arbitrary binary data.
 
 When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: If the IC responds with a `SYS_FATAL` reject, then it really was the IC issuing this reject.
 
-### Status endpoint
+### Status endpoint {#api-status}
 
 Additionally, the Internet Computer provides an API endpoint to obtain various status fields at
 
     /api/v2/status
 
-For this endpoint, the user performs a GET request, and receives a CBOR value with the following fields. the IC may include additional implementation-specific fields.
+For this endpoint, the user performs a GET request, and receives a CBOR value with the following fields. The IC may include additional implementation-specific fields.
 
 -   `ic_api_version` (string, mandatory): Identifies the interface version supported, i.e. the version of the present document that the internet computer aims to support, e.g. `0.8.1`. The implementation may also return `unversioned` to indicate that it does *not* comply to a particular version, e.g. in between releases.
 
@@ -739,34 +785,37 @@ For this endpoint, the user performs a GET request, and receives a CBOR value wi
 
 See [CBOR encoding of requests and responses](#api-cbor) for details on the precise CBOR encoding of this object.
 
+:::note
 Future additions may include local time, geographic location, and other useful implementation-specific information such as blockheight. This data may possibly be signed by the node.
+:::
 
-### CBOR encoding of requests and responses
+### CBOR encoding of requests and responses {#api-cbor}
 
 Requests and responses are specified here as records with named fields and using suggestive human readable syntax. The actual format in the body of the HTTP request or response, however, is [CBOR](https://en.wikipedia.org/wiki/CBOR).
 
-Concretely, it consists of a data item with major type 6 (“Semantic tag”) and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a record.
+Concretely, it consists of a data item with major type 6 ("Semantic tag") and tag value `55799` (see [Self-Describe CBOR](https://tools.ietf.org/html/rfc7049#section-2.4.5)), followed by a record.
 
 Requests consist of an envelope record with keys `sender_sig` (a blob), `sender_pubkey` (a blob) and `content` (a record). The first two are metadata that are used for request authentication, while the last one is the actual content of the request.
 
 The following encodings are used:
 
--   Strings: Major type 3 (“Text string”).
+-   Strings: Major type 3 ("Text string").
 
--   Blobs: Major type 2 (“Byte string”).
+-   Blobs: Major type 2 ("Byte string").
 
--   Nats: Major type 0 (“Unsigned integer”) if small enough to fit that type, else the [Bignum](https://tools.ietf.org/html/rfc7049#section-2.4.2) format is used.
+-   Nats: Major type 0 ("Unsigned integer") if small enough to fit that type, else the [Bignum](https://tools.ietf.org/html/rfc7049#section-2.4.2) format is used.
 
--   Records: Major type 5 (“Map of pairs of data items”), followed by the fields, where keys are encoded with major type 3 (“Text string”).
+-   Records: Major type 5 ("Map of pairs of data items"), followed by the fields, where keys are encoded with major type 3 ("Text string").
 
--   Arrays: Major type 4 ("Array of data items").
+-   Arrays: Major type 4 (\"Array of data items\").
 
-As advised by [section “Creating CBOR-Based Protocols”](https://tools.ietf.org/html/rfc7049#section-3) of the CBOR spec, we clarify that:
+As advised by [section "Creating CBOR-Based Protocols"](https://tools.ietf.org/html/rfc7049#section-3) of the CBOR spec, we clarify that:
 
 -   Floating-point numbers may not be used to encode integers.
 
 -   Duplicate keys are prohibited in CBOR maps.
 
+:::tip
 A typical request would be (written in [CBOR diagnostic notation](https://tools.ietf.org/html/rfc7049#section-6), which can be checked and converted on [cbor.me](http://cbor.me/)):
 
     55799({
@@ -779,12 +828,13 @@ A typical request would be (written in [CBOR diagnostic notation](https://tools.
       "sender_sig": h'DEADBEEF',
       "sender_pubkey": h'b7a3c12dc0c8c748ab07525b701122b88bd78f600c76342d27f25e5f92444cde'
     })
+:::
 
-### CDDL description of requests and responses
+### CDDL description of requests and responses {#api-cddl}
 
-The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This [file](_attachments/requests.cddl) summarizes the format of the CBOR data passed to and from the entry points described above.
+The [Concise Data Definition Language (CDDL)](https://tools.ietf.org/html/rfc8610) is a data description language for CBOR. This section summarizes the format of the CBOR data passed to and from the entry points described above. This [file](_attachments/requests.cddl) summarizes the format of the CBOR data passed to and from the entry points described above.
 
-### Ordering guarantees
+### Ordering guarantees {#_ordering_guarantees}
 
 The order in which the various messages between canisters are delivered and executed is not fully specified. The guarantee provided by the IC is that function calls between two canisters are executed in order, so that a canister that requires in-order execution need not wait for the response from an earlier message to a canister before sending a later message to that same canister.
 
@@ -798,35 +848,37 @@ More precisely:
 
 -   There is no particular order guarantee for ingress messages submitted via the HTTPS interface.
 
-### Synchronicity across nodes
+### Synchronicity across nodes {#_synchronicity_across_nodes}
 
 This document describes the Internet Computer as having a single global state that can be modified and queried. In reality, it consists of many nodes, which may not be perfectly in sync.
 
-As long as you talk to one (honest) node only, the observed behavior is nicely sequential. If you issue an update (i.e. state-mutating) call to a canister (e.g. bump a counter), and node A indicates that the call has been executed, and you then issue a query call to node A, then A’s response is guaranteed to include the effect of the update call (and you will receive the updated counter value).
+As long as you talk to one (honest) node only, the observed behavior is nicely sequential. If you issue an update (i.e. state-mutating) call to a canister (e.g. bump a counter), and node A indicates that the call has been executed, and you then issue a query call to node A, then A's response is guaranteed to include the effect of the update call (and you will receive the updated counter value).
 
 If you then (quickly) issue a read request to node B, it may be that B responds to your read query based on the old state of the canister (and you might receive the old counter value).
 
 A related problem is that query calls are not certified, and nodes may be dishonest in their response. In that case, the user might want to get more assurance by querying multiple nodes and comparing the result. However, it is (currently) not possible to query a *specific* state.
 
+:::note
 Applications can work around these problems. For the first problem, the query result could be such that the user can tell if the update has been received or not. For the second problem, even if using [certified data](#system-api-certified-data) is not possible, if replies are monotonic in some sense the user can get assurance in their intersection (e.g. if the query returns a list of events that grows over time, then even if different nodes return different lists, the user can get assurance in those events that are reported by many nodes).
+:::
 
 ## Canister module format
 
 A canister module is simply a [WebAssembly module](https://webassembly.github.io/spec/core/index.html) in binary format (typically `.wasm`).
 
-## Canister interface (System API)
+## Canister interface (System API) {#system-api}
 
 The System API is the interface between the running canister and the Internet Computer. It allows the WebAssembly module of a canister to expose functionality to the users (method entry points) and the IC (e.g. initialization), and exposes functionality of the IC to the canister (e.g. calling other canisters). Because WebAssembly is rather low-level, it also explains how to express higher level concepts (e.g. binary blobs).
 
 We want to leverage advanced WebAssembly features, such as WebAssembly host references. But as they are not yet supported by all tools involved, this section describes an initial System API that does not rely on host references. In section [Outlook: Using Host References](#host-references), we outline some of the proposed uses of WebAssembly host references.
 
-### WebAssembly module requirements
+### WebAssembly module requirements {#system-api-module}
 
 In order for a WebAssembly module to be usable as the code for the canister, it needs to conform to the following requirements:
 
--   If it imports a memory, it must import it from `env.memory`. In the following, “the Wasm memory” refers to this memory.
+-   If it imports a memory, it must import it from `env.memory`. In the following, "the Wasm memory" refers to this memory.
 
--   If it imports a table, it must import it from `env.table`. In the following, “the Wasm table” refers to this table.
+-   If it imports a table, it must import it from `env.table`. In the following, "the Wasm table" refers to this table.
 
 -   It may only import a function if it is listed in [Overview of imports](#system-api-imports).
 
@@ -848,9 +900,9 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 
 -   It may not have other custom sections the names of which start with the prefix `icp:` besides the \`icp:public \` and \`icp:private \`.
 
--   the IC may reject WebAssembly modules that + declare more than 6000 functions, or + declare more than 200 globals, or + declare more than 16 exported custom sections (the custom section names with prefix `icp:`), or + the total size of the exported custom sections exceeds 1MiB
+-   The IC may reject WebAssembly modules that + declare more than 6000 functions, or + declare more than 200 globals, or + declare more than 16 exported custom sections (the custom section names with prefix `icp:`), or + the total size of the exported custom sections exceeds 1MiB
 
-### Interpretation of numbers
+### Interpretation of numbers {#_interpretation_of_numbers}
 
 WebAssembly number types (`i32`, `i64`) do not indicate if the numbers are to be interpreted as signed or unsigned. Unless noted otherwise, whenever the System API interprets them as numbers (e.g. memory pointers, buffer offsets, array sizes), they are to be interpreted as unsigned.
 
@@ -876,13 +928,13 @@ The canister provides entry points which are invoked by the IC under various cir
 
 If the execution of any of these entry points traps for any reason, then all changes to the WebAssembly state, as well as the effect of any externally visible system call (like `ic0.msg_reply`, `ic0.msg_reject`, `ic0.call_perform`), are discarded. For upgrades, this transactional behavior applies to the `canister_pre_upgrade`/`canister_post_upgrade` sequence as a whole.
 
-#### Canister initialization
+#### Canister initialization {#system-api-init}
 
 If `canister_init` is present, then this is the first exported WebAssembly function invoked by the IC. The argument that was passed along with the canister initialization call (see [IC method ](#ic-install_code)) is available to the canister via `ic0.msg_arg_data_size/copy`.
 
-the IC assumes the canister to be fully instantiated if the `canister_init` method entry point returns. If the `canister_init` method entry point traps, then canister installation has failed, and the canister is reverted to its previous state (i.e. empty with `install`, or whatever it was for a `reinstall`).
+The IC assumes the canister to be fully instantiated if the `canister_init` method entry point returns. If the `canister_init` method entry point traps, then canister installation has failed, and the canister is reverted to its previous state (i.e. empty with `install`, or whatever it was for a `reinstall`).
 
-#### Canister upgrades
+#### Canister upgrades {#system-api-upgrades}
 
 When a canister is upgraded to a new WebAssembly module, the IC:
 
@@ -898,31 +950,36 @@ During these steps, no other entry point of the old or new canister is invoked. 
 
 These steps are atomic: If `canister_pre_upgrade` or `canister_post_upgrade` trap, the upgrade has failed, and the canister is reverted to the previous state. Otherwise, the upgrade has succeeded, and the old instance is discarded.
 
-#### Public methods
+#### Public methods {#system-api-requests}
 
 To define a public method of name `name`, a WebAssembly module exports a function with name `canister_update <name>` or `canister_query <name>` and type `() -> ()`. We call this the *method entry point*. The name of the exported function distinguishes update and query methods.
 
+:::note
 The space in `canister_update <name>` resp. `canister_query <name>` is intentional. There is exactly one space between `canister_update/canister_query` and the `<name>`.
+:::
 
 The argument of the call (e.g. the content of the `arg` field in the [API request to call a canister method](#http-call)) is copied into the canister on demand using the System API functions shown below.
 
 Eventually, a method will want to send a response, using `ic0.reply` or `ic0.reject`
 
-#### Heartbeat
+#### Heartbeat {#_heartbeat}
 
 For periodic or time-based execution, the WebAssembly module can export a function with name `canister_heartbeat`. The heartbeats scheduling algorithm is implementation-defined.
 
 `canister_heartbeat` is triggered by the IC, and therefore has no arguments, no caller, and cannot reply or reject.
 
+:::note
 While an implementation will likely try to keep the interval between `canister_heartbeat` invocations to within a few seconds, this is not formally part of this specification.
+:::
 
-#### Callbacks
+#### Callbacks {#_callbacks}
 
 Callbacks are addressed by their table index (as a proxy for a Wasm `funcref`).
 
 In the reply callback of a [inter-canister method call](#system-api-call), the argument refers to the response to that call. In reject callbacks, no argument is available.
 
-### Overview of imports
+### Overview of imports {#system-api-imports}
+
 
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
 
@@ -1018,7 +1075,7 @@ The comment after each function lists from where these functions may be invoked:
 
 If the canister invokes a system call from somewhere else, it will trap.
 
-### Blob-typed arguments and results
+### Blob-typed arguments and results {#_blob_typed_arguments_and_results}
 
 WebAssembly functions parameter and result types can only be primitive number types. To model functions that accept or return blobs or text values, the following idiom is used:
 
@@ -1035,30 +1092,38 @@ Dually, a System API function that conceptually takes a blob or string as a para
 
 which copies, at the time of function invocation, the data referred to by `src`/`size` out of the canister. Unless otherwise noted, this traps if `src+size` exceeds the size of the WebAssembly memory.
 
-### Method arguments
+### Method arguments {#_method_arguments}
 
 The canister can access an argument. For `canister_init`, `canister_post_upgrade` and method entry points, the argument is the argument of the call; in a reply callback, it refers to the received reply. So the lifetime of the argument data is a single WebAssembly function execution, not the whole method call tree.
 
--   `ic0.msg_arg_data_size : () -> i32`,
-        `ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()`
+- ```
+ic0.msg_arg_data_size : () -> i32
+ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ()
+  ```
 
-    The message argument data.
+The message argument data.
 
--   `ic0.msg_caller_size : () -> i32`,
-        `ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()`
+- ```
+ic0.msg_caller_size : () -> i32
+ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ()
+  ```
 
-    The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
+The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade.
 
--   `ic0.msg_reject_code : () -> i32`
+- `ic0.msg_reject_code : () -> i32`
 
-    Returns the reject code, if the current function is invoked as a reject callback.
+Returns the reject code, if the current function is invoked as a reject callback.
 
-    It returns the special “no error” code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
+It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
--   `ic0.msg_reject_msg_size : () -> i32`
-        `ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()`
 
-    The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
+- ```
+ic0.msg_reject_msg_size : () -> i32
+ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ()
+  ```
+
+
+The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
 ### Responding
 
@@ -1068,7 +1133,9 @@ Eventually, the canister will want to respond to the original call, either by re
 
     Appends data it to the (initially empty) data reply.
 
+    :::note
     This can be invoked multiple times to build up the argument with data from various places on the Wasm heap. This way, the canister does not have to first copy all the pieces from various places into one location.
+    :::
 
     This traps if the current call already has been or does not need to be responded to.
 
@@ -1092,24 +1159,28 @@ Eventually, the canister will want to respond to the original call, either by re
 
     See [Cycles](#system-api-cycles) for how this interacts with cycles available on this call.
 
-### Ingress message inspection
+### Ingress message inspection {#system-api-inspect-message}
 
 A canister can inspect ingress messages before executing them. When the IC receives an update call from a user, the IC will use the canister method `canister_inspect_message` to determine whether the message shall be accepted. If the canister is empty (i.e. does not have a Wasm module), then the ingress message will be rejected. If the canister is not empty and does not implement `canister_inspect_message`, then the ingress message will be accepted.
 
 In `canister_inspect_message`, the canister can accept the message by invoking `ic0.accept_message : () → ()`. This function traps if invoked twice. If the canister traps in `canister_inspect_message` or does not call `ic0.accept_message`, then the access is denied.
 
+:::note
 The `canister_inspect_message` is *not* invoked for query calls, inter-canister calls or calls to the management canister.
+:::
 
-### Self-identification
+### Self-identification {#system-api-canister-self}
 
 A canister can learn about its own identity:
 
--   ic0.canister_self_size : () -> i32
-        ic0.canister_self_copy: (dst : i32, offset : i32, size : i32) -> ()
+- ```
+  ic0.canister_self_size : () -> i32
+  ic0.canister_self_copy: (dst : i32, offset : i32, size : i32) -> ()
+ ```
+ 
+These functions allow the canister to query its own canister id (as a blob).
 
-    These functions allow the canister to query its own canister id (as a blob).
-
-### Canister status
+### Canister status {#system-api-canister-status}
 
 This function allows a canister to find out if it is running, stopping or stopped (see [IC method ](#ic-canister_status) and [IC method ](#ic-stop_canister) for context).
 
@@ -1121,42 +1192,45 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
     Status `3` (stopped) can be observed, for example, in `canister_pre_upgrade` and can be used to prevent accidentally upgrading a canister that is not fully stopped.
 
-### Inter-canister method calls
+### Inter-canister method calls {#system-api-call}
 
 When handling an update call (or a callback), a canister can do further calls to another canister. Calls are assembled in a builder-like fashion, starting with `ic0.call_new`, adding more attributes using the `ic0.call_*` functions, and eventually performing the call with `ic0.call_perform`.
+  
+- ```
+  ic0.call_new :
+        ( callee_src : i32,
+          callee_size : i32,
+          name_src : i32,
+          name_size : i32,
+          reply_fun : i32,
+          reply_env : i32,
+          reject_fun : i32,
+          reject_env : i32,
+        ) -> ()
+ ```
 
--   ic0.call_new :
-          ( callee_src : i32,
-            callee_size : i32,
-            name_src : i32,
-            name_size : i32,
-            reply_fun : i32,
-            reply_env : i32,
-            reject_fun : i32,
-            reject_env : i32,
-          ) -> ()
+  Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
 
-    Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
+  The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
 
-    the IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
+  The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
 
-    The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
+  The reject callback is executed if the method call fails asynchronously or the other canister explicitly rejects the call. The reject code and message can be queried using `ic0.msg_reject_code` and `ic0.msg_reject_msg_*`.
 
-    The reject callback is executed if the method call fails asynchronously or the other canister explicitly rejects the call. The reject code and message can be queried using `ic0.msg_reject_code` and `ic0.msg_reject_msg_*`.
+  This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing. This will trap if not sufficient cycles are available.
 
-    This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing. This will trap if not sufficient cycles are available.
+  Subsequent calls to the following functions set further attributes of that call, until the call is concluded (with `ic0.call_perform`) or discarded (by returning without calling `ic0.call_perform` or by starting a new call with `ic0.call_new`.)
 
-    Subsequent calls to the following functions set further attributes of that call, until the call is concluded (with `ic0.call_perform`) or discarded (by returning without calling `ic0.call_perform` or by starting a new call with `ic0.call_new`.)
+- `ic0.call_on_cleanup : (fun : i32, env : i32) -> ()`
 
--   ic0.call_on_cleanup : (fun : i32, env : i32) -> ()
+  If a cleanup callback (of type `(env : i32) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
 
-    If a cleanup callback (of type `(env : i32) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
+  During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
 
-    During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
+  If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
 
-    If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
+  There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
-    There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
 -   `ic0.call_data_append : (src : i32, size : i32) -> ()`
 
@@ -1176,7 +1250,7 @@ When handling an update call (or a callback), a canister can do further calls to
 
     This may be called multiple times between `ic0.call_new` and `ic0.call_perform`.
 
--   `ic0.call_perform  : () -> ( err_code : i32 )`
+-   `ic0.call_perform : () -> ( err_code : i32 )`
 
     This concludes assembling the call. It queues the call message to the given destination, but does not actually act on it until the current WebAssembly function returns without trapping.
 
@@ -1186,17 +1260,21 @@ When handling an update call (or a callback), a canister can do further calls to
 
     After `ic0.call_perform` and before the next call to `ic0.call_new`, all other `ic0.call_*` function calls trap.
 
-### Cycles
+### Cycles {#system-api-cycles}
 
 Each canister maintains a balance of *cycles*, which are used to pay for platform usage. Cycles are represented by 128-bit values.
 
-This specification currently does not go into details about which actions cost how many cycles and/or when. In general, you must assume that the canister’s cycle balance can change arbitrarily between method executions, and during each System API function call, unless explicitly mentioned otherwise.
+:::note
+This specification currently does not go into details about which actions cost how many cycles and/or when. In general, you must assume that the canister's cycle balance can change arbitrarily between method executions, and during each System API function call, unless explicitly mentioned otherwise.
+:::
 
 -   `ic0.canister_cycle_balance : () → i64`
 
     Indicates the current cycle balance of the canister. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
 
+    :::note
     This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycles_balance128` instead.
+    :::
 
 -   `ic0.canister_cycle_balance128 : (dst : i32) → ()`
 
@@ -1210,7 +1288,9 @@ This specification currently does not go into details about which actions cost h
 
     Initially, in the update method entry point, this is the amount that the caller passed to the canister. When cycles are accepted (`ic0.msg_cycles_accept`), this reports fewer cycles accordingly. When the call is responded to (reply or reject), all available cycles are refunded to the caller, and this will return 0.
 
+    :::note
     This call traps if the amount of cycles available does not fit into a 64-bit value. Please use `ic0.msg_cycles_available128` instead.
+    :::
 
 -   `ic0.msg_cycles_available128 : (dst : i32) → ()`
 
@@ -1234,7 +1314,9 @@ This specification currently does not go into details about which actions cost h
 
     This system call does not trap.
 
+    :::tip
     Example: To accept all cycles provided in a call, invoke `ic0.msg_cycles_accept(ic0.msg_cycles_available())` in the method handler or a callback handler, *before* calling reply or reject.
+    :::
 
 -   `ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low : i64, dst : i32) → ()`
 
@@ -1276,7 +1358,9 @@ This specification currently does not go into details about which actions cost h
 
     This function can only be used in a callback handler (reply or reject), and indicates the amount of cycles that came back with the response as a refund. The refund has already been added to the canister balance automatically.
 
+:::note
 This call traps if the amount of cycles refunded does not fit into a 64-bit value. In general, it is recommended to use `ic0.msg_cycles_refunded128` instead.
+:::
 
 -   `ic0.msg_cycles_refunded128 : (dst : i32) → ()`
 
@@ -1284,7 +1368,7 @@ This call traps if the amount of cycles refunded does not fit into a 64-bit valu
 
     This system call is experimental. It may be changed or removed in the future. Canisters using it may stop working.
 
-### Stable memory
+### Stable memory {#system-api-stable-memory}
 
 Canisters have the ability to store and retrieve data from a secondary memory. The purpose of this *stable memory* is to provide space to store data beyond upgrades. The interface mirrors roughly the memory-related instructions of WebAssembly, and tries to be forward compatible with exposing this feature as an additional memory.
 
@@ -1294,15 +1378,15 @@ The stable memory is initially empty.
 
     returns the current size of the stable memory in WebAssembly pages. (One WebAssembly page is 64KiB)
 
-    This system call traps if the size of the stable memory exceeds 2^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
 
 -   `ic0.stable_grow : (new_pages : i32) → (old_page_count : i32)`
 
     tries to grow the memory by `new_pages` many pages containing zeroes.
 
-    This system call traps if the *previous* size of the memory exceeds 2^32 bytes.
+    This system call traps if the *previous* size of the memory exceeds 2\^32 bytes.
 
-    If the *new* size of the memory exceeds 2^32 bytes or growing is unsuccessful, then it returns `-1`.
+    If the *new* size of the memory exceeds 2\^32 bytes or growing is unsuccessful, then it returns `-1`.
 
     Otherwise, it grows the memory and returns the *previous* size of the memory in pages.
 
@@ -1310,7 +1394,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `src`/`size` out of the canister and replaces the corresponding segment starting at `offset` in the stable memory.
 
-    This system call traps if the size of the stable memory exceeds 2^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
 
     It also traps if `src+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
 
@@ -1318,7 +1402,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `offset`/`size` out of the stable memory and replaces the corresponding bytes starting at `dest` in the canister memory.
 
-    This system call traps if the size of the stable memory exceeds 2^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
 
     It also traps if `dst+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory
 
@@ -1352,25 +1436,27 @@ The stable memory is initially empty.
 
     This system call is experimental. It may be changed or removed in the future. Canisters using it may stop working.
 
-### System time
+### System time {#system-api-time}
 
 The canister can query the IC for the current time.
 
 `ic0.time : () -> i64`
 
-The time is given as nanoseconds since 1970-01-01. the IC guarantees that
+The time is given as nanoseconds since 1970-01-01. The IC guarantees that
 
 -   the time, as observed by the canister, is monotonically increasing, even across canister upgrades.
 
 -   within an invocation of one entry point, the time is constant.
 
-The times observed by different canisters are unrelated, and calls from one canister to another may appear to travel “backwards in time”.
+The times observed by different canisters are unrelated, and calls from one canister to another may appear to travel "backwards in time".
 
+:::note
 While an implementation will likely try to keep the time returned by `ic0.time` close to the real time, this is not formally part of this specification.
+:::
 
-### Performance counter
+### Performance counter {#system-api-performance-counter}
 
-The canister can query the "performance counter", which is a deterministic monotonically increasing integer approximating the amount of work the canister has done since the beginning of the current execution.
+The canister can query the \"performance counter\", which is a deterministic monotonically increasing integer approximating the amount of work the canister has done since the beginning of the current execution.
 
 `ic0.performance_counter : (type : i32) -> i64`
 
@@ -1384,9 +1470,9 @@ The system resets the counter at the beginning of each [Entry points](#entry-poi
 
 The main purpose of this counter is to facilitate in-canister performance profiling.
 
-### Certified data
+### Certified data {#system-api-certified-data}
 
-For each canister, the IC keeps track of “certified data”, a canister-defined blob. For fresh canisters, this blob is the empty blob (`""`).
+For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters, this blob is the empty blob (`""`).
 
 -   `ic0.certified_data_set : (src: i32, size : i32) -> ()`
 
@@ -1407,15 +1493,15 @@ When executing a query method via a query call (i.e. in non-replicated state), t
 
     Copies the certificate for the current value of the certified data to the canister.
 
-    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#state-tree).
+    The certificate is a blob as described in [Certification](#certification) that contains the values at path `/canister/<canister_id>/certified_data` and at path `/time` of [The system state tree](#the-system-state-tree).
 
-    If this `certificate` includes subnet delegations (possibly nested), then the id of the current canister will be included in each delegation’s canister id range.
+    If this `certificate` includes subnet delegations (possibly nested), then the id of the current canister will be included in each delegation's canister id range.
 
     This traps if `ic0.data_certificate_present()` returns `0`.
 
-### Debugging aids
+### Debugging aids {#_debugging_aids}
 
-In a local canister execution environment, the canister needs a way to emit textual trace messages. On the “real” network, these do not do anything.
+In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
 
 -   `ic0.debug_print : (src : i32, size : i32) -> ()`
 
@@ -1431,7 +1517,7 @@ Similarly, the System API allows the canister to effectively trap, but give some
 
     The environment may copy out the data specified by `src` and `size`, and log, print or store it in an environment-appropriate way, or include it in system-generated reject messages where appropriate. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form or substituting invalid characters).
 
-### Outlook: Using Host References
+### Outlook: Using Host References {#host-references}
 
 The Internet Computer aims to make the most of the WebAssembly platform, and embraces WebAssembly features. With WebAssembly host references, we can make the platform more secure, the interfaces more abstract and more compositional. The above `ic0` System API does not yet use WebAssembly host references. Once they become available on our platform, a new version of the System API using host references will be available via the `ic` module. The changes will be, at least
 
@@ -1443,23 +1529,25 @@ The Internet Computer aims to make the most of the WebAssembly platform, and emb
 
 A canister may only use the old *or* the new interface; the IC detects which interface the canister intends to use based on the names and types of its function imports and exports.
 
-## The IC management canister
+## The IC management canister {#ic-management-canister}
 
 The interfaces above provide the fundamental ability for external users and canisters to contact other canisters. But the Internet Computer provides additional functionality, such as canister and user management. This functionality is exposed to external users and canisters via the *IC management canister*.
 
+:::note
 The *IC management canister* is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.).
+:::
 
-the IC management canister address is `aaaaa-aa` (i.e. the empty blob).
+The IC management canister address is `aaaaa-aa` (i.e. the empty blob).
 
 It is possible to use the management canister via external requests (a.k.a. ingress messages). The cost of processing that request is charged to the canister that is being managed. Most methods only permit the controllers to call them. Calls to `raw_rand` and `deposit_cycles` are never accepted as ingress messages.
 
-### Interface overview
+### Interface overview {#ic-candid}
 
 The [interface description](_attachments/ic.did), in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality.
 
 The binary encoding of arguments and results are as per Candid specification.
 
-### ICmethod `create_canister`
+### IC method `create_canister` {#ic-create_canister}
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
@@ -1479,7 +1567,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `memory_allocation` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup> (i.e 256TB), inclusively. It indicates how much memory the canister is allowed to use in total. Any attempt to grow memory usage beyond this allocation will fail. If the IC cannot provide the requested allocation, for example because it is oversubscribed, the call will be rejected. If set to 0, then memory growth of the canister will be best-effort and subject to the available memory on the IC.
+    Must be a number between 0 and 2^48^ (i.e 256TB), inclusively. It indicates how much memory the canister is allowed to use in total. Any attempt to grow memory usage beyond this allocation will fail. If the IC cannot provide the requested allocation, for example because it is oversubscribed, the call will be rejected. If set to 0, then memory growth of the canister will be best-effort and subject to the available memory on the IC.
 
     Default value: 0
 
@@ -1487,27 +1575,27 @@ Until code is installed, the canister is `Empty` and behaves like a canister tha
 
 -   `freezing_threshold` (`nat`)
 
-    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
+    Must be a number between 0 and 2^64^-1, inclusively, and indicates a length of time in seconds.
 
-    A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister’s current size and the IC’s current cost for storage.
+    A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister's current size and the IC's current cost for storage.
 
     Calls to a frozen canister will be rejected (like for a stopping canister). Additionally, a canister cannot perform calls if that would, due the cost of the call and transferred cycles, would push the balance into frozen territory; these calls fail with `ic0.call_perform` returning a non-zero error code.
 
     Default value: 2592000 (approximately 30 days).
 
-### ICmethod `update_settings`
+### IC method `update_settings` {#ic-update_settings}
 
-Only *controllers* of the canister can update settings. See [IC method](#ic-create_canister) for a description of settings.
+Only *controllers* of the canister can update settings. See [IC method ](#ic-create_canister) for a description of settings.
 
 Not including a setting in the `settings` record means not changing that field. The defaults described above are only relevant during canister creation.
 
-### ICmethod `install_code`
+### IC method `install_code` {#ic-install_code}
 
 This method installs code into a canister.
 
 Only controllers of the canister can install code.
 
--   If `mode = install`, the canister must be empty before. This will instantiate the canister module and invoke its `canister_init` method (if present), as explained in Section “[Canister initialization](#system-api-init)”, passing the `arg` to the canister.
+-   If `mode = install`, the canister must be empty before. This will instantiate the canister module and invoke its `canister_init` method (if present), as explained in Section "[Canister initialization](#system-api-init)", passing the `arg` to the canister.
 
 -   If `mode = reinstall`, if the canister was not empty, its existing code and state is removed before proceeding as for `mode = install`.
 
@@ -1517,7 +1605,9 @@ Only controllers of the canister can install code.
 
 This is atomic: If the response to this request is a `reject`, then this call had no effect.
 
+:::note
 Some canisters may not be able to make sense of callbacks after upgrades; these should be stopped first, to wait for all outstanding callbacks, or be uninstalled first, to prevent outstanding callbacks from being invoked. It is expected that the canister admin (or their tooling) does that separately.
+:::
 
 The `wasm_module` field specifies the canister module to be installed. The system supports multiple encodings of the `wasm_module` field:
 
@@ -1525,19 +1615,19 @@ The `wasm_module` field specifies the canister module to be installed. The syste
 
 -   If the `wasm_module` starts with byte sequence `[0x1f, 0x8b, 0x08]`, the system decompresses the contents of `wasm_module` as a gzip stream according to [RFC-1952](https://datatracker.ietf.org/doc/html/rfc1952.html) and then parses the output as a WebAssembly binary.
 
-### ICmethod `uninstall_code`
+### IC method `uninstall_code` {#ic-uninstall_code}
 
-This method removes a canister’s code and state, making the canister *empty* again.
+This method removes a canister's code and state, making the canister *empty* again.
 
 Only controllers of the canister can uninstall code.
 
-Uninstalling a canister’s code will reject all calls that the canister has not yet responded to, and drop the canister’s code and state. Outstanding responses to the canister will not be processed, even if they arrive after code has been installed again.
+Uninstalling a canister's code will reject all calls that the canister has not yet responded to, and drop the canister's code and state. Outstanding responses to the canister will not be processed, even if they arrive after code has been installed again.
 
 The canister is now [empty](#canister-lifecycle). In particular, any incoming or queued calls will be rejected.
 
 A canister after *uninstalling* retains its *cycles* balance, *controllers*, status, and allocations.
 
-### ICmethod `canister_status`
+### IC method `canister_status` {#ic-canister_status}
 
 Indicates various information about the canister. It contains:
 
@@ -1553,13 +1643,13 @@ Indicates various information about the canister. It contains:
 
 Only the controllers of the canister can request its status.
 
-### ICmethod `stop_canister`
+### IC method `stop_canister` {#ic-stop_canister}
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
-Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). the IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
+Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
 
-### ICmethod `start_canister`
+### IC method `start_canister` {#ic-start_canister}
 
 A canister may be started by its controllers.
 
@@ -1567,23 +1657,41 @@ If the canister status was `stopped` or `stopping` then the canister status is s
 
 If the canister was already `running` then the status stays unchanged.
 
-### ICmethod `delete_canister`
+### IC method `delete_canister` {#ic-delete_canister}
 
 This method deletes a canister from the IC.
 
 Only controllers of the canister can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
 
-### ICmethod `deposit_cycles`
+### IC method `deposit_cycles` {#ic-deposit_cycles}
 
 This method deposits the cycles included in this call into the specified canister.
 
 There is no restriction on who can invoke this method.
 
-### ICmethod `raw_rand`
+### IC method `raw_rand` {#ic-raw_rand}
 
 This method takes no input and returns 32 pseudo-random bytes to the caller. The return value is unknown to any part of the IC at time of the submission of this call. A new return value is generated for each call to this method.
 
-### ICmethod `http_request`
+### IC method `ecdsa_public_key` {#ic-ecdsa_public_key}
+
+This method returns a [SEC1](https://www.secg.org/sec1-v2.pdf) encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.
+
+For curve `secp256k1`, the public key is derived using a generalization of BIP32 (see [ia.cr/2021/1330, Appendix D](https://ia.cr/2021/1330)). To derive (non-hardened) [BIP-0032](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)-compatible public keys, each byte string (`blob`) in the `derivation_path` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31^.
+
+The return result is an extended public key consisting of an ECDSA `public_key`, encoded in [SEC1](https://www.secg.org/sec2-v2.pdf) compressed form, and a `chain_code`, which can be used to deterministically derive child keys of the `public_key`.
+
+This call requires that the ECDSA feature is enabled, and the `canister_id` meets the requirement of a canister id. Otherwise it will be rejected.
+
+### IC method `sign_with_ecdsa` {#ic-sign_with_ecdsa}
+
+This method returns a new [ECDSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.
+
+The signatures are encoded as the concatenation of the [SEC1](https://www.secg.org/sec2-v2.pdf) encodings of the two values r and s. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.
+
+This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
+
+### IC method `http_request` {#ic-http_request}
 
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
@@ -1595,7 +1703,7 @@ For this reason, the calling canister can supply a transformation function, whic
 
 Currently, only the `GET` method is supported for HTTP requests.
 
-For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). the IC uses industry-standard root CA lists to validate certificates of remote web servers.
+For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
 The maximal size of a request URL is 2048 bytes.
 
@@ -1617,19 +1725,19 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `headers` - list of HTTP response headers and their corresponding values
 
--   `body` - the response’s body
+-   `body` - the response's body
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller’s identity is the principal of the management canister.
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller's identity is the principal of the management canister.
 
-### ICmethod `provisional_create_canister_with_cycles`
+### IC method `provisional_create_canister_with_cycles` {#ic-provisional_create_canister_with_cycles}
 
-As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister’s balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`).
+As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister's balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`).
 
 Cycles added to this call via `ic0.call_cycles_add128` are returned to the caller.
 
 This method is only available in local development instances.
 
-### ICmethod `provisional_top_up_canister`
+### IC method `provisional_top_up_canister` {#ic-provisional_top_up_canister}
 
 As a provisional method on development instances, the `provisional_top_up_canister` method is provided. It adds `amount` cycles to the balance of canister identified by `amount`.
 
@@ -1647,15 +1755,15 @@ To validate a value using a certificate, the user conceptually
 
 1.  checks the validity of the partial tree using `verify_cert`,
 
-2.  looks up the value in the certificate using `lookup` at a given path, which uses the subroutine `lookup_path` on the certificate’s tree
+2.  looks up the value in the certificate using `lookup` at a given path, which uses the subroutine `lookup_path` on the certificate's tree
 
 This mechanism is used in the `read_state` request type, and eventually also for other purposes.
 
-### Root of trust
+### Root of trust {#_root_of_trust}
 
 The root of trust is the *root public key*, which must be known to the user a priori. In a local canister execution environment, the key can be fetched via the [`/api/v2/status`](#api-status) endpoint.
 
-### Certificate
+### Certificate {#_certificate}
 
 A certificate consists of
 
@@ -1665,7 +1773,7 @@ A certificate consists of
 
 -   an optional *delegation* that links that public key to *root public key*.
 
-the IC will certify states by issuing certificates where the tree is a partial state tree. The state tree can be pruned by replacing subtrees with their root hashes (yielding a new and potentially smaller but still valid certificate) to only include paths pertaining to relevant data but still preserving enough information to recover the *tree root hash*.
+The IC will certify states by issuing certificates where the tree is a partial state tree. The state tree can be pruned by replacing subtrees with their root hashes (yielding a new and potentially smaller but still valid certificate) to only include paths pertaining to relevant data but still preserving enough information to recover the *tree root hash*.
 
 More formally, a certificate is described by the following data structure:
 
@@ -1704,7 +1812,7 @@ where `H` is the SHA-256 hash function,
 
     verify_bls_signature : PublicKey -> Signature -> Blob -> Bool
 
-is the [BLS signature verification function](https://tools.ietf.org/html/draft-irtf-cfrg-bls-signature-04#section-4), ciphersuite BLS\_SIG\_BLS12381G1\_XMD:SHA-256\_SSWU\_RO\_NUL\_. See that document also for details on the encoding of BLS public keys and signatures, and
+is the [BLS signature verification function](https://tools.ietf.org/html/draft-irtf-cfrg-bls-signature-04#section-4), ciphersuite BLS_SIG_BLS12381G1_XMD:SHA-256_SSWU_RO_NUL\_. See that document also for details on the encoding of BLS public keys and signatures, and
 
     extract_der : Blob -> Blob
 
@@ -1712,7 +1820,7 @@ implements DER decoding of the public key, following [RFC4580](https://tools.iet
 
 All state trees include the time at path `/time` (see [Time](#state-tree-time)). Users that get a certificate with a state tree can look up the timestamp to guard against working on obsolete data.
 
-### Lookup
+### Lookup {#_lookup}
 
 Given a (verified) tree, the user can fetch the value at a given path, which is a sequence of labels (blobs). In this document, we write paths suggestively with slashes as separators; the actual encoding is not actually using slashes as delimiters.
 
@@ -1726,35 +1834,36 @@ The following algorithm looks up a `path` in a certificate, and returns either
 
 -   `Error`, if the path does not make sense for this certificate:
 
-<!-- -->
+```html
+lookup(path, cert) = lookup_path(path, cert.tree)
 
-    lookup(path, cert) = lookup_path(path, cert.tree)
+lookup_path([], Empty) = Absent
+lookup_path([], Leaf v) = v
+lookup_path([], Pruned _) = Unknown
+lookup_path([], Labeled _ _) = Error
+lookup_path([], Fork _ _) = Error
 
-    lookup_path([], Empty) = Absent
-    lookup_path([], Leaf v) = v
-    lookup_path([], Pruned _) = Unknown
-    lookup_path([], Labeled _ _) = Error
-    lookup_path([], Fork _ _) = Error
+lookup_path(l::ls, tree) =
+  match find_label(l, flatten_forks(tree)) with
+  | Absent -> Absent
+  | Unknown -> Unknown
+  | Error -> Error
+  | Found subtree -> lookup_path ls subtree
 
-    lookup_path(l::ls, tree) =
-      match find_label(l, flatten_forks(tree)) with
-      | Absent -> Absent
-      | Unknown -> Unknown
-      | Error -> Error
-      | Found subtree -> lookup_path ls subtree
+flatten_forks(Empty) = []
+flatten_forks(Fork t1 t2) = flatten_forks(t1) · flatten_forks(t2)
+flatten_forks(t) = [t]
 
-    flatten_forks(Empty) = []
-    flatten_forks(Fork t1 t2) = flatten_forks(t1) · flatten_forks(t2)
-    flatten_forks(t) = [t]
+find_label(l, _ · Labeled l1 t · _)                | l == l1     = Found t
+find_label(l, _ · Labeled l1 _ · Labeled l2 _ · _) | l1 < l < l2 = Absent
+find_label(l,                    Labeled l2 _ · _) |      l < l2 = Absent
+find_label(l, _ · Labeled l1 _ )                   | l1 < l      = Absent
+find_label(l, [])                                                = Absent
+find_label(l, _)                                                 = Unknown
+```
 
-    find_label(l, _ · Labeled l1 t · _)                | l == l1     = Found t
-    find_label(l, _ · Labeled l1 _ · Labeled l2 _ · _) | l1 < l < l2 = Absent
-    find_label(l,                    Labeled l2 _ · _) |      l < l2 = Absent
-    find_label(l, _ · Labeled l1 _ )                   | l1 < l      = Absent
-    find_label(l, [])                                                = Absent
-    find_label(l, _)                                                 = Unknown
 
-the IC will only produce well-formed state trees, and the above algorithm assumes well-formed trees. These have the property that labeled subtrees appear in strictly increasing order of labels, and are not mixed with leaves. More formally:
+The IC will only produce well-formed state trees, and the above algorithm assumes well-formed trees. These have the property that labeled subtrees appear in strictly increasing order of labels, and are not mixed with leaves. More formally:
 
     well_formed(tree) =
       (tree = Leaf _) ∨ (well_formed_forest(flatten_forks(tree)))
@@ -1764,13 +1873,15 @@ the IC will only produce well-formed state trees, and the above algorithm assume
       ∀ Label _ t ∈ trees. well_formed(t) ∧
       ∀ t ∈ trees ≠ Leaf _
 
-### Delegation
+### Delegation {#certification-delegation}
 
 The root key can delegate certification authority to other keys.
 
-A certificate by the root subnet does not have a delegation field. A certificate by other subnets include a delegation, which is itself a certificate that proves that the subnet is listed in the root subnet’s state tree (see [Subnet information](#state-tree-subnet)), and reveals its public key.
+A certificate by the root subnet does not have a delegation field. A certificate by other subnets include a delegation, which is itself a certificate that proves that the subnet is listed in the root subnet's state tree (see [Subnet information](#state-tree-subnet)), and reveals its public key.
 
+:::note
 The nested certificate *typically* does not itself again contain a delegation, although there is no reason why agents should enforce that property.
+:::
 
     Delegation =
      Delegation {
@@ -1780,9 +1891,9 @@ The nested certificate *typically* does not itself again contain a delegation, a
 
 A chain of delegations is verified using the following algorithm, which also returns the delegated key (a DER-encoded BLS key):
 
-    check_delegations(NoDelegation) : public_bls_key =
+    check_delegation(NoDelegation) : public_bls_key =
       return root_public_key
-    check_delegations(Delegation d) : public_bls_key =
+    check_delegation(Delegation d) : public_bls_key =
       verify_cert(d.certificate)
       return lookup(["subnet",d.subnet_id,"public_key"],d.certificate)
 
@@ -1790,11 +1901,11 @@ where `root_public_key` is the a priori known root key.
 
 Delegations are *scoped*, i.e., they indicate which set of canister principals the delegatee subnet may certify for. This set can be obtained from a delegation `d` using `lookup(["subnet",d.subnet_id,"canister_ranges"],d.certificate)`, which must be present, and is encoded as described in [Subnet information](#state-tree-subnet). The various applications of certificates describe if and how the subnet scope comes into play.
 
-### Encoding of certificates
+### Encoding of certificates {#certification-encoding}
 
 The binary encoding of a certificate is a CBOR value according to the following CDDL. You can also [download the file](_attachments/certificates.cddl).
 
-The values in the [The system state tree](#state-tree) are encoded to blobs as follows:
+The values in the [The system state tree](#the-system-state-tree) are encoded to blobs as follows:
 
 -   natural numbers are leb128-encoded.
 
@@ -1802,7 +1913,7 @@ The values in the [The system state tree](#state-tree) are encoded to blobs as f
 
 -   blob values are encoded as is
 
-### Example
+### Example {#_example}
 
 Consider the following tree-shaped data (all single character strings denote labels, all other denote values)
 
@@ -1862,6 +1973,147 @@ In the pruned tree, the `lookup_path` function behaves as follows:
     lookup_path(["d"],      pruned_tree) = Found "morning"
     lookup_path(["e"],      pruned_tree) = Absent
 
+## The HTTP Gateway protocol {#http-gateway}
+
+This section specifies the *HTTP Gateway protocol*, which allows canisters to handle conventional HTTP requests.
+
+This feature involves the help of a *HTTP Gateway* that translates between HTTP requests and the IC protocol. Such a gateway could be a stand-alone proxy, it could be implemented in a web browsers (natively, via plugin or via a service worker) or in other ways. This document describes the interface and semantics of this protocol independent of a concrete Gateway, so that all Gateway implementations can be compatible.
+
+Conceptually, this protocol builds on top of the interface specified in the remainder of this document, and therefore is an "application-level" interface, not a feature of the core Internet Computer system described in the other sections, and could be a separate document. We nevertheless include this protocol in the Internet Computer Interface Specification because of its important role in the ecosystem and due to the importance of keeping multiple Gateway implementations in sync.
+
+### Overview {#_overview}
+
+A HTTP request by an HTTP client is handled by these steps:
+
+1.  The Gateway resolves the Host of the request to a canister id.
+
+2.  The Gateway Candid-encodes the HTTP request data.
+
+3.  The Gateway invokes the canister via a query call to `http_request`.
+
+4.  The canister handles the request and returns a HTTP response, encoded in Candid, together with additional metadata.
+
+5.  If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
+
+6.  If applicable, the Gateway fetches further body data via streaming query calls.
+
+7.  If applicable, the Gateway validates the certificate of the response.
+
+8.  The Gateway sends the response to the HTTP client.
+
+### Candid interface {#http-gateway-interface}
+
+The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the expected Canister interface. You can also [download the file](_attachments/http-gateway.did).
+
+Only canisters that use the "Upgrade to update calls" feature need to provide the `http_request_update` method.
+
+:::note
+Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
+:::
+
+### Canister resolution {#http-gateway-name-resolution}
+
+The Gateway needs to know the canister id of the canister to talk to, and obtains that information from the hostname as follows:
+
+1.  Check that the hostname, taken from the `Host` field of the HTTP request, is of the form `<name>.raw.ic0.app` or `<name>.ic0.app`, or fail.
+
+2.  If the `<name>` is in the following table, use the given canister ids:
+
+| Hostname                          | Canister id                     |
+------------------------------------|---------------------------------|
+| `identity`                        | `rdmx6-jaaaa-aaaaa-aaadq-cai`   |
+| `nns`                             | `qoctq-giaaa-aaaaa-aaaea-cai`   |
+| `dscvr`                           | `h5aet-waaaa-aaaab-qaamq-cai`   |
+| `personhood`                      | `g3wsl-eqaaa-aaaan-aaaaa-cai`   |
+
+1.  Else, if `<name>` is a valid textual encoding of a principal, use that principal as the canister id.
+
+2.  Else fail.
+
+If the hostname was of the form `<name>.ic0.app`, it is a *safe* hostname; if it was of the form `<name>.raw.ic0.app` it is a *raw* hostname.
+
+### Request encoding {#_request_encoding}
+
+The HTTP request is encoded into the `HttpRequest` Candid structure.
+
+-   The `method` field contains the HTTP method (e.g. `HTTP`), in upper case.
+
+-   The `url` field contains the URL from the HTTP request line, i.e. without protocol or hostname, and including query parameters.
+
+-   The `headers` field contains the headers of the HTTP request.
+
+-   The `body` field contains the body of the HTTP request (without any content encodings processed by the Gateway).
+
+### Upgrade to update calls {#_upgrade_to_update_calls}
+
+If the canister sets `update = opt true` in the `HttpResponse` reply from `http_request`, then the Gateway ignores all other fields of the reply. The Gateway performs an *update* call to `http_request_update`, passing the same `HttpRequest` record as the argument, and uses that response instead.
+
+The value of the `update` field returned from `http_request_update` is ignored.
+
+### Response decoding {#_response_decoding}
+
+The Gateway assembles the HTTP response from the given `HttpResponse` record:
+
+-   The HTTP response status code is taken from the `status_code` field.
+
+-   The HTTP response headers are taken from the `headers` field.
+
+    :::note
+    Not all Gateway implementations may be able to pass on all forms of headers. In particular, Service Workers are unable to pass on the `Set-Cookie` header.
+    :::
+
+    :::note
+    HTTP Gateways may add additional headers. In particular, the following headers may be set:
+
+        access-control-allow-origin: *
+        access-control-allow-methods: GET, POST, HEAD, OPTIONS
+        access-control-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Cookie
+        access-control-expose-headers: Content-Length,Content-Range
+        x-cache-status: MISS
+    :::
+
+-   The HTTP response body is initialized with the value of the `body` field, and further assembled as per the [streaming protocol](#http-gateway-streaming).
+
+### Response body streaming {#http-gateway-streaming}
+
+The HTTP Gateway protocol has provisions to transfer further chunks of the body data from the canister to the HTTP Gateway, to overcome the message limit of the Internet Computer. This streaming protocol is independent of any possible streaming of data between the HTTP Gateway and the HTTP client. The gateway may assemble the response in whole before passing it on, or pass the chunks on directly, on the TCP or HTTP level, as it sees fit. When the Gateway is [certifying the response](#http-gateway-certification), it must not pass on uncertified chunks.
+
+If the `streaming_strategy` field of the `HttpResponse` is set, the HTTP Gateway then uses further query calls to obtain further chunks to append to the body:
+
+1.  If the function reference in the `callback` field of the `streaming_strategy` is not a method of the given canister, the Gateway fails the request.
+
+2.  Else, it makes a query call to the given method, passing the `token` value given in the `streaming_strategy` as the argument.
+
+3.  That query method returns a `StreamingCallbackHttpResponse`. The `body` therein is appended to the body of the HTTP response. This is repeated as long as the method returns some token in the `token` field, until that field is `null`.
+
+:::note
+The type of the `token` value is chosen by the canister; the HTTP Gateway obtains the Candid type of the encoded message from the canister, and uses it when passing the token back to the canister. This generic use of Candid is not covered by the Candid specification, and may not be possible in some cases (e.g. when using "future types"). Canister authors may have to use "simple" types.
+:::
+
+### Response certification {#http-gateway-certification}
+
+If the hostname was safe, the HTTP Gateway performs *certificate validation*:
+
+1.  It searches for a response header called `Ic-Certificate` (case-insensitive).
+
+2.  The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
+
+3.  The `certificate` must be a valid certificate as per [Certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister's [certified data](#state-tree-certified-data).
+
+4.  The `tree` must be a hash tree as per [Encoding of certificates](#certification-encoding).
+
+5.  The root hash of that `tree` must match the canister's certified data.
+
+6.  The path `["http_assets",<url>]`, where `url` is the utf8-encoded `url` from the `HttpRequest` must exist and be a leaf. Else, if it does not exist, `["http_assets","/index.html"]` must exist and be a leaf.
+
+7.  That leaf must contain the SHA-256 hash of the *decoded* body.
+
+    The decoded body is the body of the HTTP response (in particular, after assembling streaming chunks), decoded according to the `Content-Encoding` header, if present. Supported encodings for `Content-Encoding` are `gzip` and `deflate.`
+
+:::note
+The certification protocol only covers the mapping from request URL to response body. It completely ignores the request method and headers, and does not cover the response headers and status code.
+:::
+
 ## Abstract behavior
 
 The previous sections describe the interfaces, i.e. outer edges of the Internet Computer, but give only intuitive and vague information in prose about what these interfaces actually do.
@@ -1870,7 +2122,7 @@ The present section aims to address that question with great precision, by descr
 
 The design of this abstract specification (e.g. how and where pending messages are stored) are *not* to be understood to in any way prescribe a concrete implementation or software architecture. The goals here are formal precision and clarity, but not implementability, so this can lead to different ways of phrasing.
 
-### Notation
+### Notation {#_notation}
 
 We specify the behavior of the Internet Computer using ad-hoc pseudocode.
 
@@ -1880,21 +2132,23 @@ We use a concatenation operator `·` with various types: to extend sets and maps
 
 The shape of values is described using a hand-wavy type system. We use `Foo = Nat` to define type aliases; now `Foo` can be used instead of `Nat`. Often, the right-hand side is a more complex type here, e.g. a record, or multiple possible types separated by a vertical bar (`|`). Partial maps are written as `Key ↦ Value` and the function type as `Argument → Result`.
 
+:::note
 All values are immutable! State change is specified by describing the new state, not by changing the existing state.
+:::
 
 Record fields are accessed using dot-notation (e.g. `S.request_id > 0`). To create a new record from an existing record `R` with some fields changed, the syntax `R where field = new_value` is used. This syntax can also be used to create new records with some deeply nested field changed: `R where some_map[key].field = new_value`.
 
 In the state transitions, upper-case variables (`S`, `C`, `Req_id`) are free variables: The state transition may be taken for any possible value of these variables. `S` always refers to the previous state. A state transition often comes with a list of *conditions*, which may restrict the values of these free variables. The *state after* is usually described using the record update syntax by starting with `S where`.
 
-For example, the condition `S.messages = Older_messages · M · Younger_messages` says that `M` is some message in field `messages` of the record `S`, and that `Younger_messages` and `Older_messages` are the other messages in the state. If the “state after” specifies `S with messages = Older_messages · Younger_messages`, then the message `M` is removed from the state.
+For example, the condition `S.messages = Older_messages · M · Younger_messages` says that `M` is some message in field `messages` of the record `S`, and that `Younger_messages` and `Older_messages` are the other messages in the state. If the "state after" specifies `S with messages = Older_messages · Younger_messages`, then the message `M` is removed from the state.
 
-### Abstract state
+### Abstract state {#_abstract_state}
 
 In this specification, we describe the Internet Computer as a state machine. In particular, there is a single piece of data that describes the complete state of the IC, called `S`.
 
-Of course, this is a huge simplification: The real Internet Computer is distributed and has a multi-component architecture, and the state is spread over many different components, some physically separated. But this simplification allows us to have a concise description of the behavior, and to easily make global decisions (such as, “is there any pending message”), without having to specify the bookkeeping that allows such global decisions.
+Of course, this is a huge simplification: The real Internet Computer is distributed and has a multi-component architecture, and the state is spread over many different components, some physically separated. But this simplification allows us to have a concise description of the behavior, and to easily make global decisions (such as, "is there any pending message"), without having to specify the bookkeeping that allows such global decisions.
 
-#### Identifiers
+#### Identifiers {#_identifiers}
 
 Principals (canister ids and user ids) are blobs, but some of them have special form, as explained in [Special forms of Principals](#id-classes).
 
@@ -1983,7 +2237,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
           post_upgrade : (CanisterId, StableMemory, Arg, Env) -> Trap | Return WasmState
           update_methods : MethodName ↦ ((Arg, Env, AvailableCycles) -> UpdateFunc)
           query_methods : MethodName ↦ ((Arg, Env) -> QueryFunc)
-          heartbeat : (Env) -> Trap | Return NoResponse
+          heartbeat : (Env) -> WasmState -> Trap | Return WasmState
           callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
           inspect_message : (MethodName, WasmState, Arg, Env) -> Trap | Return (Accept | Reject)
         }
@@ -2000,7 +2254,7 @@ The parsing of a blob to a canister module is modelled via the (possibly implici
 
 The concrete mapping of this abstract `CanisterModule` to actual WebAssembly concepts and the System API is described separately in section [Abstract Canisters to System API](#concrete-canisters).
 
-#### Call contexts
+#### Call contexts {#_call_contexts}
 
 The Internet Computer provides certain messaging guarantees: If a user or a canister calls another canister, it will eventually get a single response (a reply or a rejection), even if some canister code along the way fails.
 
@@ -2024,7 +2278,7 @@ To ensure that only one response is generated, and also to detect when no respon
         }
       | FromHeartbeat
 
-#### Calls and Messages
+#### Calls and Messages {#_calls_and_messages}
 
 Calls into and within the IC are implemented as messages passed between canisters. During their lifetime, messages change shape: they begin as a call to a public method, which is resolved to a WebAssembly function that is then executed, potentially generating a response which is then delivered.
 
@@ -2062,7 +2316,7 @@ The `queue` field is used to describe the message ordering behavior. Its concret
 
 A reference implementation would likely maintain a separate list of `messages` for each such queue to efficiently find eligible messages; this document uses a single global list for a simpler and more concise system state.
 
-#### API requests
+#### API requests {#_api_requests}
 
 We distinguish between the *asynchronous* API requests passed to `/api/v2/…/call`, which may be present in the IC state, and the *synchronous* API requests passed to `/api/v2/…/read_state` and `/api/v2/…/query`, which are only ephemeral.
 
@@ -2134,7 +2388,7 @@ Signed delegations contain the (unsigned) delegation data in a nested record, ne
       signature : Signature
     }
 
-#### The system state
+#### The system state {#_the_system_state}
 
 Finally, we can describe the state of the IC as a record having the following fields:
 
@@ -2165,7 +2419,7 @@ Finally, we can describe the state of the IC as a record having the following fi
       | Stopping (List (CallOrigin, Nat))
       | Stopped
 
-#### Initial state
+#### Initial state {#_initial_state}
 
 The initial state of the IC is
 
@@ -2184,7 +2438,7 @@ The initial state of the IC is
 
 for some time stamp `T`, some DER-encoded BLS public key `PublicKey`, and using `()` to denote the empty map or bag.
 
-### Invariants
+### Invariants {#_invariants}
 
 The following is an incomplete list of invariants that should hold for the abstract state `S`, and are not already covered by the type annotations in this section.
 
@@ -2193,7 +2447,7 @@ The following is an incomplete list of invariants that should hold for the abstr
         ∀ Ctxt_id ↦ Ctxt ∈ S.call_contexts:
           if Ctxt.deleted then Ctxt.needs_to_respond = false
 
--   Responded call contexts have no available\_cycles left:
+-   Responded call contexts have no available_cycles left:
 
         ∀ Ctxt_id ↦ Ctxt ∈ S.call_contexts:
           if Ctxt.needs_to_respond = false then Ctxt.available_cycles = 0
@@ -2206,7 +2460,7 @@ The following is an incomplete list of invariants that should hold for the abstr
           if Ctx.needs_to_respond:
              Ctxt.origin.calling_context ∈ S.call_contexts
 
-### State transitions
+### State transitions {#_state_transitions}
 
 Based on this abstract notion of the state, we can describe the behavior of the IC. There are three classes of behaviors:
 
@@ -2218,13 +2472,13 @@ Based on this abstract notion of the state, we can describe the behavior of the 
 
 The state transitions are not complete with regard to error handling. For example, the behavior of sending a request to a non-existent canister is not specified here. For now, we trust implementors to make sensible decisions there.
 
-We model the [the IC management canister](#the-ic-management-canister) with one state transition per method. There, we assume a function
+We model the [The IC management canister](#ic-management-canister) with one state transition per method. There, we assume a function
 
     candid : Value -> Blob
 
-that represents Candid encoding; this is implicitly taking the method types, as declared in [Interface overview](#ic-candid), into account. We model the parsing of Candid values in the “Conditions” section using `candid` as well, by treating it as a non-deterministic function.
+that represents Candid encoding; this is implicitly taking the method types, as declared in [Interface overview](#ic-candid), into account. We model the parsing of Candid values in the "Conditions" section using `candid` as well, by treating it as a non-deterministic function.
 
-#### Envelope Authentication
+#### Envelope Authentication {#_envelope_authentication}
 
 The following predicate describes when an envelope `E` correctly signs the enclosed request with a key belonging to a user `U`, at time `T`: It returns which canister ids this envelope may be used at (as a set of principals).
 
@@ -2252,7 +2506,7 @@ The following predicate describes when an envelope `E` correctly signs the enclo
         then { p : p is Principal }
         else D.senders
 
-#### Effective canister ids
+#### Effective canister ids {#_effective_canister_ids}
 
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 
@@ -2260,7 +2514,7 @@ A `Request` has an effective canister id according to the rules in [Effective ca
     is_effective_canister_id(CanisterUpdateCall {canister_id = ic_principal, method = provisional_create_canister_with_cycles, p)
     is_effective_canister_id(CanisterUpdateCall {canister_id = p, …}, p), if p ≠ ic_principal
 
-#### API Request submission
+#### API Request submission {#_api_request_submission}
 
 After a node accepts a request via `/api/v2/canister/<ECID>/call`, the request gets added to the IC state as `Received`.
 
@@ -2270,121 +2524,127 @@ Requests that have expired are dropped here.
 
 Ingress message inspection is applied, and messages that are not accepted by the canister are dropped.
 
-Submitted request  
+Submitted request
+
 `E : Envelope`
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
+E.content ∉ requests
+S.system_time <= E.content.ingress_expiry
+is_effective_canister_id(E.content, ECID)
+( E.content.canister_id = ic_principal
+  E.content.arg = candid({canister_id = CanisterId, …})
+  E.content.sender ∈ S.controllers[CanisterId]
+  E.content.method_name ∈
+    { "install_code", "set_controller", "start_canister", "stop_canister",
+      "canister_status", "delete_canister" }
+) ∨ (
+  E.content.canister_id ≠ ic_principal
+  S.canisters[E.content.canister_id] ≠ EmptyCanister
+  Arg = { data = E.content.arg; caller = E.content.sender; method = E.content.method_name; time = S.time[E.content.canister_id] }
+  S.canisters[E.content.canister_id].module.inspect_message
+    (E.content.method_name, C.wasm_state, Arg, S.balance[E.content.canister_id]) = Return Accept
+)
+```
 
-        E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
-        E.content ∉ requests
-        S.system_time <= E.content.ingress_expiry
-        is_effective_canister_id(E.content, ECID)
-        ( E.content.canister_id = ic_principal
-          E.content.arg = candid({canister_id = CanisterId, …})
-          E.content.sender ∈ S.controllers[CanisterId]
-          E.content.method_name ∈
-            { "install_code", "set_controller", "start_canister", "stop_canister",
-              "canister_status", "delete_canister" }
-        ) ∨ (
-          E.content.canister_id ≠ ic_principal
-          S.canisters[E.content.canister_id] ≠ EmptyCanister
-          Arg = { data = E.content.arg; caller = E.content.sender; method = E.content.method_name; time = S.time[E.content.canister_id] }
-          S.canisters[E.content.canister_id].module.inspect_message
-            (E.content.method_name, C.wasm_state, Arg, S.balance[E.content.canister_id]) = Return Accept
-       )
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+  requests[E.content] = Received
+```
 
-    S with
-        requests[E.content] = Received
-
+:::note
 This is not instantaneous (the IC takes some time to agree it accepts the request) nor guaranteed (a node could just drop the request, or maybe it did not pass validation). But once the request has entered the IC state like this, it will be acted upon.
+:::
 
-#### Request rejection
+#### Request rejection {#_request_rejection}
 
-the IC may reject a received message for internal reasons (high load, low resources) or expiry. The precise conditions are not specified here, but the reject code must indicate this to be a system error.
+The IC may reject a received message for internal reasons (high load, low resources) or expiry. The precise conditions are not specified here, but the reject code must indicate this to be a system error.
 
-Conditions  
+Conditions: 
 
-<!-- -->
-
-        S.requests[R] = Received
-        Code = SYS_FATAL or Code = SYS_TRANSIENT
+```html
+S.requests[R] = Received
+Code = SYS_FATAL or Code = SYS_TRANSIENT
+```
+        
 
 State after  
 
-<!-- -->
+```html
+S with
+  requests[R] = Rejected (Code, Msg)
+```
+    
 
-    S with
-        requests[R] = Rejected (Code, Msg)
-
-#### Initiating canister calls
+#### Initiating canister calls {#_initiating_canister_calls}
 
 A first step in processing a canister update call is to create a `CallMessage` in the message queue.
 
 The `request` field of the `FromUser` origin establishes the connection to the API message. One could use the corresponding `hash_of_map` for this purpose, but this formulation is more abstract.
 
-the IC does not make any guarantees about the order of incoming messages.
+The IC does not make any guarantees about the order of incoming messages.
 
-Conditions  
+Conditions
+```html
+S.requests[CanisterUpdateCall R] = Received
+S.system_time <= R.ingress_expiry
+C = S.canisters[R.canister_id]
+```
 
-<!-- -->
 
-        S.requests[CanisterUpdateCall R] = Received
-        S.system_time <= R.ingress_expiry
-        C = S.canisters[R.canister_id]
-
-State after  
-
-<!-- -->
-
-    S with
-        requests[CanisterUpdateCall R] = Processing
-        messages =
-          CallMessage {
-            origin = FromUser { request = CanisterUpdateCall R };
-            caller = R.sender;
-            callee = R.canister_id;
-            method_name = R.method_name;
-            arg = R.arg;
-            transferred_cycles = 0;
-            queue = Unordered;
-          } · S.messages
-
-#### Calls to stopped/stopping/frozen canisters are rejected
+State after
+```html
+S with
+    requests[CanisterUpdateCall R] = Processing
+    messages =
+      CallMessage {
+        origin = FromUser { request = CanisterUpdateCall R };
+        caller = R.sender;
+        callee = R.canister_id;
+        method_name = R.method_name;
+        arg = R.arg;
+        transferred_cycles = 0;
+        queue = Unordered;
+      } · S.messages
+```
+#### Calls to stopped/stopping/frozen canisters are rejected {#_calls_to_stoppedstoppingfrozen_canisters_are_rejected}
 
 A call to a canister which is stopping, stopped, or frozen is automatically rejected.
 
 The (unspecified) function `freezing_limit(S, cid)` determines the freezing threshold in cycles of the canister with id `cid`, given its current memory footprint, storage cost, memory and compute allocation, and current `freezing_threshold` setting.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage CM · Younger_messages
+(CM.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ CM.queue)
+S.canister_status[CM.callee] = Stopped or S.canister_status[CM.callee] = Stopping or balances[CM.callee] < freezing_limit(S, CM.callee)
+```
 
-        S.messages = Older_messages · CallMessage CM · Younger_messages
-        (CM.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ CM.queue)
-        S.canister_status[CM.callee] = Stopped or S.canister_status[CM.callee] = Stopping or balances[CM.callee] < freezing_limit(S, CM.callee)
 
-State after  
+State after
 
-<!-- -->
+```html
+S.messages = Older_messages · Younger_messages  ·
+  ResponseMessage {
+      origin = S.call_contexts[CM.call_context].origin
+      response = Reject (CANISTER_ERROR, "canister not running");
+      refunded_cycles = CM.transferred_cycles;
+  }
+```
 
-        S.messages = Older_messages · Younger_messages  ·
-          ResponseMessage {
-              origin = S.call_contexts[CM.call_context].origin
-              response = Reject (CANISTER_ERROR, "canister not running");
-              refunded_cycles = CM.transferred_cycles;
-          }
 
-#### Call context creation
+#### Call context creation {#_call_context_creation}
 
-Before invoking a heartbeat or a message to a public entry point, a call context is created for bookkeeping purposes. For these invocations the canister must be running (so not stopped, or stopping). Additionally, these invocations only happen for "real" canisters, not the IC management canister.
+Before invoking a heartbeat or a message to a public entry point, a call context is created for bookkeeping purposes. For these invocations the canister must be running (so not stopped, or stopping). Additionally, these invocations only happen for \"real\" canisters, not the IC management canister.
 
-This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#message-execution).
+This "bookkeeping transition" must be immediately followed by the corresponding ["Message execution" transition](#rule-message-execution).
 
 -   Call context creation: Public entry points
 
@@ -2392,166 +2652,177 @@ This “bookkeeping transition” must be immediately followed by the correspond
 
     The position of the message in the queue is unchanged.
 
-    Conditions  
-            S.messages = Older_messages · CallMessage CM · Younger_messages
-            S.canisters[CM.callee] ≠ EmptyCanister
-            S.canister_status[CM.callee] = Running
-            balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
-            Ctxt_id ∉ dom S.call_contexts
+    Conditions
+    ```
+      S.messages = Older_messages · CallMessage CM · Younger_messages
+      S.canisters[CM.callee] ≠ EmptyCanister
+      S.canister_status[CM.callee] = Running
+      balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
+      Ctxt_id ∉ dom S.call_contexts
+    ```
 
-    State after  
-        S with
-            messages =
-              Older_messages ·
-              FuncMessage {
-                call_context = Ctxt_id;
-                receiver = CM.callee;
-                entry_point = PublicMethod CM.method_name CM.caller CM.data
-                queue = CM.queue;
-              } ·
-              Younger_messages
-            call_contexts[Ctxt_id] = {
-              canister = CM.callee;
-              origin = CM.origin;
-              needs_to_respond = true;
-              deleted = false;
-              available_cycles = CM.transferred_cycles;
-            }
-            balances[CM.callee] = balances[CM.callee] - MAX_CYCLES_PER_MESSAGE
+    State after
+
+  
+    ```
+    S with
+      messages =
+        Older_messages ·
+        FuncMessage {
+          call_context = Ctxt_id;
+          receiver = CM.callee;
+          entry_point = PublicMethod CM.method_name CM.caller CM.data
+          queue = CM.queue;
+        } ·
+        Younger_messages
+      call_contexts[Ctxt_id] = {
+        canister = CM.callee;
+        origin = CM.origin;
+        needs_to_respond = true;
+        deleted = false;
+        available_cycles = CM.transferred_cycles;
+      }
+      balances[CM.callee] = balances[CM.callee] - MAX_CYCLES_PER_MESSAGE
+      ```
 
 -   Call context creation: Heartbeat
 
     If canister `C` exports a method with name `canister_heartbeat`, the IC will create the corresponding call context.
 
-    Conditions  
-            S.canisters[C] ≠ EmptyCanister
-            S.canister_status[C] = Running
-            balances[C] ≥ freezing_limit(S, C) + MAX_CYCLES_PER_MESSAGE
-            Ctxt_id ∉ dom S.call_contexts
+    Conditions
 
-    State after  
-        S with
-            messages =
-              FuncMessage {
-                call_context = Ctxt_id;
-                receiver = C;
-                entry_point = Heartbeat;
-                queue = Queue { from = System; to = C };
-              }
-              · S.messages
-            call_contexts[Ctxt_id] = {
-              canister = C;
-              origin = FromHeartbeat;
-              needs_to_respond = false;
-              deleted = false;
-              available_cycles = 0;
-            }
-            balances[C] = balances[C] - MAX_CYCLES_PER_MESSAGE
+    ```       
+    S.canisters[C] ≠ EmptyCanister
+    S.canister_status[C] = Running
+    balances[C] ≥ freezing_limit(S, C) + MAX_CYCLES_PER_MESSAGE
+    Ctxt_id ∉ dom S.call_contexts
+    ```
 
-the IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and — if the function returns a response — record this response. The new call and response messages are enqueued at the end.
+    State after
+
+    ```   
+    S with
+      messages =
+        FuncMessage {
+          call_context = Ctxt_id;
+          receiver = C;
+          entry_point = Heartbeat;
+          queue = Queue { from = System; to = C };
+        }
+        · S.messages
+      call_contexts[Ctxt_id] = {
+        canister = C;
+        origin = FromHeartbeat;
+        needs_to_respond = false;
+        deleted = false;
+        available_cycles = 0;
+      }
+      balances[C] = balances[C] - MAX_CYCLES_PER_MESSAGE
+  ```
+
+The IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and --- if the function returns a response --- record this response. The new call and response messages are enqueued at the end.
 
 Note that new messages are executed only if the canister is Running and is not frozen.
 
-#### Message execution
+#### Message execution {#rule-message-execution}
 
-The transition models the actual execution of a message, whether it is an initial call to a public method or a response. In either case, a call context already exists (see transition “Call context creation”).
+The transition models the actual execution of a message, whether it is an initial call to a public method or a response. In either case, a call context already exists (see transition "Call context creation").
 
-Conditions  
+Conditions
+```html
+S.messages = Older_messages · FuncMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+S.canisters[M.receiver] ≠ EmptyCanister
+Mod = S.canisters[M.receiver].module
 
-<!-- -->
+Is_response = M.entry_point == Callback _ _ _
 
-        S.messages = Older_messages · FuncMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        S.canisters[M.receiver] ≠ EmptyCanister
-        Mod = S.canisters[M.receiver].module
+Env = {
+  time = S.time[M.receiver];
+  balance = S.balances[M.receiver]
+  freezing_limit = freezing_limit(S, M.receiver);
+  certificate = NoCertificate;
+  status = S.status[M.receiver];
+}
 
-        Is_response = M.entry_point == Callback _ _
+Available = S.call_contexts[M.call_contexts].available_cycles
+( M.entry_point = PublicMethod Name Caller Data
+  Arg = { data = Data; caller = Caller }
+  (F = Mod.update_methods[Name](Arg, Env, Available)
+  or
+  (F = query_as_update(Mod.query_methods[Name], Arg, Env))
+)
+or
+( M.entry_point = Callback Callback Response RefundedCycles
+  F = Mod.callbacks(Callback, Response, RefundedCycles, Env, Available)
+)
+or
+( M.entry_point = Heartbeat
+  F = heartbeat_as_update(Mod.heartbeat, Env)
+)
 
-        Env = {
-          time = S.time[M.receiver];
-          balance = S.balances[M.receiver]
-          freezing_limit = freezing_limit(S, M.receiver);
-          certificate = NoCertificate;
-          status = S.status[M.receiver];
+R = F(S.canisters[M.receiver].wasm_state)
+```
+
+
+State after
+```html
+if
+  R = Return res
+  Cycles_used ≤ (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
+  res.cycles_accepted ≤ Available
+  New_balance =
+      S.balances[M.receiver]
+      + res.cycles_accepted
+      + (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
+      - Cycles_used
+      - ∑ [ MAX_CYCLES_PER_RESPONSE + call.transferred_cycles | call ∈ res.new_calls ]
+  New_balance > if Is_response then 0 else freezing_limit(S, CM.callee);
+  (res.response = NoResponse) or S.call_contexts[M.call_context].needs_to_respond
+then
+  S with
+    canisters[M.receiver].wasm_state = res.new_state;
+    messages =
+      Older_messages ·
+      Younger_messages ·
+      [ CallMessage {
+          origin = FromCanister {
+            call_context = M.call_context;
+            callback = call.callback
+          };
+          caller = M.receiver;
+          callee = call.callee;
+          method_name = call.method_name;
+          arg = call.arg;
+          transferred_cycles = call.transferred_cycles
+          queue = Queue { from = M.receiver; to = call.callee };
         }
+      | call ∈ res.new_calls ] ·
+      [ ResponseMessage {
+          origin = S.call_contexts[M.call_context].origin
+          response = res.response;
+          refunded_cycles = Available - res.cycles_accepted;
+        }
+      | res.response ≠ NoResponse ]
 
-        Available = S.call_contexts[M.call_contexts].available_cycles
-        ( M.entry_point = PublicMethod Name Caller Data
-          Arg = { data = Data; caller = Caller }
-          (F = M.update_methods[M.method_name](Arg, Env, Available)
-          or
-          (F = as_update(Mod.query_methods[M.method_name], Arg, Env))
-        )
-        or
-        ( M.entry_point = Callback Callback Response
-          F = Mod.callbacks(Callback, Response, Env, Available)
-        )
-        or
-        ( M.entry_point = Heartbeat
-          F = Mod.heartbeat(Env)
-        )
-
-        R = F(S.canisters[M.receiver].wasm_state)
-
-State after  
-
-<!-- -->
-
-    if
-      R = Return res
-      Cycles_used ≤ (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
-      res.cycles_accepted ≤ Available
-      New_balance =
-          S.balances[M.receiver]
-          + res.cycles_accepted
-          + (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
-          - Cycles_used
-          - ∑ [ MAX_CYCLES_PER_RESPONSE + call.transferred_cycles | call ∈ res.new_calls ]
-      New_balance > if Is_response then 0 else freezing_limit(S, CM.callee);
-      (res.response = NoResponse) or S.call_contexts[M.call_context].needs_to_respond
-    then
-      S with
-        canisters[M.receiver].wasm_state = res.new_state;
-        messages =
-          Older_messages ·
-          Younger_messages ·
-          [ CallMessage {
-              origin = FromCanister {
-                call_context = M.call_context;
-                callback = call.callback
-              };
-              caller = C.callee;
-              callee = call.callee;
-              method_name = call.method_name;
-              arg = call.arg;
-              transferred_cycles = call.transferred_cycles
-              queue = Queue { from = M.receiver; to = call.callee };
-            }
-          | call ∈ res.new_calls ] ·
-          [ ResponseMessage {
-              origin = S.call_contexts[M.call_context].origin
-              response = res.response;
-              refunded_cycles = Available - res.cycles_accepted;
-            }
-          | res.response ≠ NoResponse ]
-
-        if res.response = NoResponse:
-           call_contexts[M.call_context].available_cycles = Available - res.cycles_accepted
-        else
-           call_contexts[M.call_context].needs_to_respond = false
-           call_contexts[M.call_context].available_cycles = 0
-
-        if res.new_certified_data ≠ NoCertifiedData:
-          certified_data[M.receiver] = res.new_certified_data
-
-        balances[M.receiver] = New_balance
+    if res.response = NoResponse:
+        call_contexts[M.call_context].available_cycles = Available - res.cycles_accepted
     else
-      S with
-        messages = Older_messages · Younger_messages
-        balances[M.receiver] =
-          S.balances[M.receiver]
-          + (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
-          - Cycles_used
+        call_contexts[M.call_context].needs_to_respond = false
+        call_contexts[M.call_context].available_cycles = 0
+
+    if res.new_certified_data ≠ NoCertifiedData:
+      certified_data[M.receiver] = res.new_certified_data
+
+    balances[M.receiver] = New_balance
+else
+  S with
+    messages = Older_messages · Younger_messages
+    balances[M.receiver] =
+      S.balances[M.receiver]
+      + (if Is_response then MAX_CYCLES_PER_RESPONSE else MAX_CYCLES_PER_MESSAGE)
+      - Cycles_used
+```          
 
 The cycle consumption of executing this message is modeled via the unspecified `Cycles_used` variable.
 
@@ -2571,11 +2842,11 @@ If message execution [*traps* (in the sense of a Wasm function)](#define-wasm-fn
 
 If message execution [*returns* (in the sense of a Wasm function)](#define-wasm-fn), the state is updated and possible outbound calls and responses are enqueued.
 
-Note that returning does *not* imply that the call associated with this message now *succeeds* in the sense defined in [section responding](#responding); that would require a (unique) call to `ic0.reply`. Note also that the state changes are persisted even when the IC is set to synthesize a [CANISTER\_ERROR](#CANISTER_ERROR) reject immediately afterward (which happens when this returns without calling `ic0.reply` or `ic0.reject`, the corresponding call has not been responded to and there are no outstanding callbacks, see [Call context starvation](#rule-starvation)).
+Note that returning does *not* imply that the call associated with this message now *succeeds* in the sense defined in [section responding](#responding); that would require a (unique) call to `ic0.reply`. Note also that the state changes are persisted even when the IC is set to synthesize a [CANISTER_ERROR](#CANISTER_ERROR) reject immediately afterward (which happens when this returns without calling `ic0.reply` or `ic0.reject`, the corresponding call has not been responded to and there are no outstanding callbacks, see [Call context starvation](#rule-starvation)).
 
-The function `as_update` turns a query function into an update function, this is merely a notational trick to simplify the rule
+The functions `query_as_update` and `heartbeat_as_update` turns a query function resp the heartbeat into an update function; this is merely a notational trick to simplify the rule:
 
-    as_update(f, arg, env) = λ wasm_state →
+    query_as_update(f, arg, env) = λ wasm_state →
       match f(arg, env)(wasm_state) with
         Trap → Trap
         Return res → Return {
@@ -2586,107 +2857,123 @@ The function `as_update` turns a query function into an update function, this is
           new_certified_data = NoCertifiedData;
         }
 
+    heartbeat_as_update(f, env) = λ wasm_state →
+      match f(env)(wasm_state) with
+        Trap → Trap
+        Return wasm_state → Return {
+          new_state = wasm_state;
+          new_calls = [];
+          response = NoResponse;
+          cycles_accepted = 0;
+          new_certified_data = NoCertifiedData;
+        }
+
 Note that by construction, a query function will either trap or return with a response; it will never send calls, and it will never change the state of the canister.
 
-#### Call context starvation
+#### Call context starvation {#rule-starvation}
 
 If the call context is not for heartbeat and there is no call, downstream calling context or response that could possibly fulfill a calling context, then a reject is synthesized. The error message below is *not* indicative. In particular, if the IC has an idea about *why* this starved, it can put that in there (e.g. the initial message handler trapped with an out-of-memory access).
 
-Conditions  
+Conditions
+```html
+S.call_contexts[Ctxt_id].needs_to_respond = true
+S.call_contexts[Ctxt_id].origin ≠ FromHeartbeat
+∀ CallMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
+∀ ResponseMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
+∀ ctxt_ids.
+    S.call_contexts[ctxt_ids].needs_to_respond
+    ==> S.call_contexts[ctxt_ids].origin.calling_context ≠ Ctxt_id
+```
 
-<!-- -->
 
-        S.call_contexts[Ctxt_id].needs_to_respond = true
-        S.call_contexts[Ctxt_id].origin ≠ FromHeartbeat
-        ∀ CallMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
-        ∀ ResponseMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
-        ∀ ctxt_ids.
-            S.call_contexts[ctxt_ids].needs_to_respond
-            ==> S.call_contexts[ctxt_ids].origin.calling_context ≠ Ctxt_id
+State after
 
-State after  
+``` html
+S with
+    call_contexts[Ctxt_id].needs_to_respond = false
+    call_contexts[Ctxt_id].available_cycles = 0
+    messages =
+      S.messages ·
+      ResponseMessage {
+        origin = S.call_contexts[Ctxt_id].origin;
+        response = Reject (CANISTER_ERROR, "starvation");
+        refunded_cycles = S.call_contexts[Ctxt_id].available_cycles
+      }
+```
 
-<!-- -->
 
-    S with
-        call_contexts[Ctxt_id].needs_to_respond = false
-        call_contexts[Ctxt_id].available_cycles = 0
-        messages =
-          S.messages ·
-          ResponseMessage {
-            origin = S.call_contexts[Ctxt_id].origin;
-            response = Reject (CANISTER_ERROR, "starvation");
-            refunded_cycles = S.call_contexts[Ctxt_id].available_cycles
-          }
-
-#### Call context removal
+#### Call context removal {#_call_context_removal}
 
 If there is no call, downstream calling context, or response that references a call context, and the call context has been replied to or the call context corresponds to a heartbeat that had already been executed, then the call context can be removed.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+(
+  S.call_contexts[Ctxt_id].needs_to_respond = false
+) or
+(
+  S.call_contexts[Ctxt_id].origin = FromHeartbeat
+  ∀ FuncMessage M ∈ S.messages. M.call_context ≠ Ctxt_id
+)
+∀ CallMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
+∀ ResponseMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
+∀ ctxt_ids.
+    S.call_contexts[ctxt_ids].needs_to_respond = true
+    ==> S.call_contexts[ctxt_ids].origin.calling_context ≠ Ctxt_id
+```
 
-        (
-          S.call_contexts[Ctxt_id].needs_to_respond = false
-        ) or
-        (
-          S.call_contexts[Ctxt_id].origin = FromHeartbeat
-          ∀ FuncMessage M ∈ S.messages. M.call_context ≠ Ctxt_id
-        )
-        ∀ CallMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
-        ∀ ResponseMessage M ∈ S.messages. M.origin.calling_context ≠ Ctxt_id
-        ∀ ctxt_ids.
-            S.call_contexts[ctxt_ids].needs_to_respond = true
-            ==> S.call_contexts[ctxt_ids].origin.calling_context ≠ Ctxt_id
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    call_contexts[Ctxt_id] = (deleted)
+```
 
-    S with
-        call_contexts[Ctxt_id] = (deleted)
 
-#### ICManagement Canister: Canister creation
+#### IC Management Canister: Canister creation {#_ic_management_canister_canister_creation}
 
-the IC chooses an appropriate canister id and instantiates a new (empty) canister identified by this id. The *controllers* are set such that the sender of this request is the only controller, unless the `settings` say otherwise. All cycles on this call are now the canister’s initial cycles.
+The IC chooses an appropriate canister id and instantiates a new (empty) canister identified by this id. The *controllers* are set such that the sender of this request is the only controller, unless the `settings` say otherwise. All cycles on this call are now the canister's initial cycles.
 
 This is also when the System Time of the new canister starts ticking.
 
 The `compute_allocation` and `memory_allocation` settings are ignored in this abstract model of the Internet Computer, as it does not address questions of performance or scheduling.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'create_canister'
+M.arg = candid()
+is_system_assigned CanisterId
+CanisterId ∉ dom S.canisters
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'create_canister'
-        M.arg = candid()
-        is_system_assigned CanisterId
-        CanisterId ∉ dom S.canisters
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[CanisterId] = EmptyCanister
+    time[CanisterId] = CurrentTime
+    if A.settings.controllers is not null:
+      controllers[CanisterId] = A.settings.controllers
+    else:
+      controllers[CanisterId] = [M.caller]
+    balances[CanisterId] = M.transferred_cycles
+    certified_data[CanisterId] = ""
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid({canister_id = CanisterId}))
+        refunded_cycles = 0
+      }
+    canister_status[CanisterId] = Running
+```
 
-    S with
-        canisters[CanisterId] = EmptyCanister
-        time[CanisterId] = CurrentTime
-        if A.settings.controllers is not null:
-          controllers[CanisterId] = A.settings.controllers
-        else:
-          controllers[CanisterId] = [M.caller]
-        balances[CanisterId] = M.transferred_cycles
-        certified_data[CanisterId] = ""
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid({canister_id = CanisterId}))
-            refunded_cycles = 0
-          }
-        canister_status[CanisterId] = Running
 
 This uses the predicate
 
@@ -2702,214 +2989,228 @@ To avoid clashes with potential user ids or is derived from users or canisters, 
 
 -   `is_system_assigned p = false` for `|p| > 29`.
 
-#### ICManagement Canister: Changing settings
+#### IC Management Canister: Changing settings {#_ic_management_canister_changing_settings}
 
 Only the controllers of the given canister can update the canister settings.
 
 The `compute_allocation` and `memory_allocation` settings are ignored in this abstract model of the Internet Computer, as it does not address questions of performance or scheduling.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'update_settings'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'update_settings'
-        M.arg = candid(A)
-        M.caller ∈ S.controllers[A.canister_id]
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    if A.settings.controllers is not null:
+      controllers[A.canister_id] = A.settings.controllers
+    if A.settings.freezing_threshold exists:
+      freezing_threshold[A.canister_id] = A.settings.freezing_threshold
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = M.transferred_cycles
+      }
+```
 
-    S with
-        if A.settings.controllers is not null:
-          controllers[A.canister_id] = A.settings.controllers
-        if A.settings.freezing_threshold exists:
-          freezing_threshold[A.canister_id] = A.settings.freezing_threshold
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid())
-            refunded_cycles = M.transferred_cycles
-          }
 
-#### ICManagement Canister: Canister status
+#### IC Management Canister: Canister status {#_ic_management_canister_canister_status}
 
 The controllers of a canister can obtain information about the canister.
 
 The `Memory_size` is the (in this specification underspecified) total size of storage in bytes.
 
-Conditions  
+The `idle_cycles_burned_per_second` is the idle consumption of resources in cycles per second. Therefore, the freezing threshold in cycles can be obtained using the following formula: `freezing_threshold` (in seconds) \* `idle_cycles_burned_per_second`.
 
-<!-- -->
+Conditions
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'canister_status'
-        M.arg = candid(A)
-        M.caller ∈ S.controllers[A.canister_id]
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'canister_status'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-State after  
 
-<!-- -->
+State after
 
-    S with
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = candid({
-              status = S.canister_status[A.canister_id];
-              module_hash =
-                if S.canisters[A.canister_id] = EmptyCanister
-                then null
-                else opt (SHA-265(S.canisters[A.canister_id].raw_module));
-              controllers = S.controllers[A.canister_id];
-              memory_size = Memory_size;
-              cycles = S.balance[A.canister_id];
-            })
-            refunded_cycles = M.transferred_cycles
-          }
+```html
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = candid({
+          status = S.canister_status[A.canister_id];
+          module_hash =
+            if S.canisters[A.canister_id] = EmptyCanister
+            then null
+            else opt (SHA-265(S.canisters[A.canister_id].raw_module));
+          controllers = S.controllers[A.canister_id];
+          memory_size = Memory_size;
+          cycles = S.balance[A.canister_id];
+          freezing_threshold = S.freezing_threshold[A.canister_id];
+          idle_cycles_burned_per_second = freezing_limit(S, A.canister_id) / freezing_threshold;
+        })
+        refunded_cycles = M.transferred_cycles
+      }
+```
 
-#### ICManagement Canister: Code installation
+
+#### IC Management Canister: Code installation {#_ic_management_canister_code_installation}
 
 Only the controllers of the given canister can install code. This transition installs new code over a canister. This involves invoking the `canister_init` method (see [Canister initialization](#system-api-init)), which must succeed.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'install_code'
+M.arg = candid(A)
+Mod = parse_wasm_mod(A.wasm_module)
+  (A.mode = install && S.canisters[A.canister_id] = EmptyCanister)
+or A.mode = reinstall
+M.caller ∈ S.controllers[A.canister_id]
+Arg = {
+  data = A.arg;
+  caller = M.caller;
+}
+Env = {
+  time = S.time[M.receiver];
+  balance = S.balances[M.receiver];
+  freezing_limit = freezing_limit(S, M.receiver);
+  certificate = NoCertificate;
+  status = S.status[M.receiver];
+}
+Mod.init(A.canister_id, Arg, Env) = Return New_state
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'install_code'
-        M.arg = candid(A)
-        Mod = parse_wasm_mod(A.wasm_module)
-          (A.mode = install && S.canisters[A.canister_id] = EmptyCanister)
-        or A.mode = reinstall
-        M.caller ∈ S.controllers[A.canister_id]
-        Arg = {
-          data = A.arg;
-          caller = M.caller;
-        }
-        Env = {
-          time = S.time[M.receiver];
-          balance = S.balances[M.receiver];
-          freezing_limit = freezing_limit(S, M.receiver);
-          certificate = NoCertificate;
-          status = S.status[M.receiver];
-        }
-        Mod.init(A.canister_id, Arg, Env) = Return New_state
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[A.canister_id] =
+      { wasm_state = New_state; module = Mod; raw_module = A.wasm_module }
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = M.transferred_cycles
+      }
+```
 
-    S with
-        canisters[A.canister_id] =
-          { wasm_state = New_state; module = Mod; raw_module = A.wasm_module }
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid())
-            refunded_cycles = M.transferred_cycles
-          }
 
-#### ICManagement Canister: Code upgrade
+#### IC Management Canister: Code upgrade {#_ic_management_canister_code_upgrade}
 
 Only the controllers of the given canister can install new code. This changes the code of an *existing* canister, preserving the state in the stable memory. This involves invoking the `canister_pre_upgrade` method on the old and `canister_post_upgrade` method on the new canister, which must succeed and must not invoke other methods.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'install_code'
+M.arg = candid(A)
+Mod = parse_wasm_mod(A.wasm_module)
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'install_code'
-        M.arg = candid(A)
-        Mod = parse_wasm_mod(A.wasm_module)
+A.mode = upgrade
+S.canisters[A.canister_id] ≠ EmptyCanister
+M.caller ∈ S.controllers[A.canister_id]
+S.canisters[A.canister_id] = { wasm_state = Old_state; module = Old_module }
+Env = {
+  time = S.time[M.receiver];
+  balance = S.balances[M.receiver];
+  freezing_limit = freezing_limit(S, M.receiver);
+  certificate = NoCertificate;
+  status = S.status[M.receiver];
+}
+Old_module.pre_upgrade(Old_State, M.caller, Env) = Return Stable_memory
+Arg = {
+  data = A.arg;
+  caller = M.caller;
+}
+Mod.post_upgrade(A.canister_id, Stable_memory, Arg, Env) = Return New_state
+```
 
-        A.mode = upgrade
-        S.canisters[A.canister_id] ≠ EmptyCanister
-        M.caller ∈ S.controllers[A.canister_id]
-        S.canisters[A.canister_id] = { wasm_state = Old_state; module = Old_module }
-        Env = {
-          time = S.time[M.receiver];
-          balance = S.balances[M.receiver];
-          freezing_limit = freezing_limit(S, M.receiver);
-          certificate = NoCertificate;
-          status = S.status[M.receiver];
-        }
-        Old_module.pre_upgrade(Old_State, M.caller, Env) = Return Stable_memory
-        Arg = {
-          data = A.arg;
-          caller = M.caller;
-        }
-        Mod.post_upgrade(A.canister_id, Stable_memory, Arg, Env) = Return New_state
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[A.canister_id] =
+      { wasm_state = New_state; module = Mod; raw_module = A.wasm_module }
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = M.transferred_cycles
+      }
+```
 
-    S with
-        canisters[A.canister_id] =
-          { wasm_state = New_state; module = Mod; raw_module = A.wasm_module }
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid())
-            refunded_cycles = M.transferred_cycles
-          }
 
-#### ICManagement Canister: Code uninstallation
+#### IC Management Canister: Code uninstallation {#rule-uninstall}
 
 Upon uninstallation, the canister is reverted to an empty canister, and all outstanding call contexts are rejected and marked as deleted.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'uninstall_code'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'uninstall_code'
-        M.arg = candid(A)
-        M.caller ∈ S.controllers[A.canister_id]
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[A.canister_id] = EmptyCanister
+    certified_data[A.canister_id] = ""
 
-    S with
-        canisters[A.canister_id] = EmptyCanister
-        certified_data[A.canister_id] = ""
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = M.transferred_cycles
+      } ·
+      [ ResponseMessage {
+          origin = Ctxt.origin
+          response = Reject (CANISTER_REJECT, 'Canister has been uninstalled')
+          refunded_cycles = Ctxt.available_cycles
+        }
+      | Ctxt_id ↦ Ctxt ∈ S.call_contexts
+      , Ctxt.canister = A.canister_id
+      , Ctxt.needs_to_respond = true
+      ]
 
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid())
-            refunded_cycles = M.transferred_cycles
-          } ·
-          [ ResponseMessage {
-              origin = Ctxt.origin
-              response = Reject (CANISTER_REJECT, 'Canister has been uninstalled')
-              refunded_cycles = Ctxt.available_cycles
-            }
-          | Ctxt_id ↦ Ctxt ∈ S.call_contexts
-          , Ctxt.canister = A.canister_id
-          , Ctxt.needs_to_respond = true
-          ]
+      for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
+        if Ctxt.canister = A.canister_id:
+          call_contexts[Ctxt_id].deleted := true
+          call_contexts[Ctxt_id].needs_to_respond := false
+          call_contexts[Ctxt_id].available_cycles := 0
+```
 
-          for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
-            if Ctxt.canister = A.canister_id:
-              call_contexts[Ctxt_id].deleted := true
-              call_contexts[Ctxt_id].needs_to_respond := false
-              call_contexts[Ctxt_id].available_cycles := 0
 
-#### ICManagement Canister: Stopping a canister
+#### IC Management Canister: Stopping a canister {#_ic_management_canister_stopping_a_canister}
 
 The controllers of a canister can stop a canister. Stopping a canister goes through two steps. First, the status of the canister is set to `Stopping`; as explained above, a stopping canister rejects all incoming requests and continues processing outstanding responses. When a stopping canister has no more open call contexts, its status is changed to `Stopped` and a response is generated. Note that when processing responses, a stopping canister can make calls to other canisters and thus create new call contexts. In addition, a canister which is stopped, or stopping will accept (and respond) to further `stop_canister` requests.
 
@@ -2921,105 +3222,112 @@ We encode this behavior via three (types of) transitions:
 
 3.  Finally, each pending `stop_canister` call (which are encoded in the status) is responded to, to indicate that that the canister is stopped.
 
-    Conditions  
+Conditions
 
-<!-- -->
+```
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'stop_canister'
+M.arg = candid(A)
+S.canister_status[A.canister_id] = Running
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'stop_canister'
-        M.arg = candid(A)
-        S.canister_status[A.canister_id] = Running
-        M.caller ∈ S.controllers[A.canister_id]
+State after
 
-State after  
+```
+S with
+    messages = Older_messages · Younger_messages
+    S.status[A.canister_id] = Stopping [(M.origin, M.transferred_cycles)]
+```
 
-<!-- -->
+The next two transitions record any additional \'stop_canister\' requests that arrive at a stopping (or stopped) canister in its status.
 
-    S with
-        messages = Older_messages · Younger_messages
-        S.status[A.canister_id] = Stopping [(M.origin, M.transferred_cycles)]
+Conditions
 
-The next two transitions record any additional 'stop\_canister' requests that arrive at a stopping (or stopped) canister in its status.
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'stop_canister'
+M.arg = candid(A)
+S.canister_status[A.canister_id] = Stopping Origins
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-Conditions  
+State after
 
-<!-- -->
-
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'stop_canister'
-        M.arg = candid(A)
-        S.canister_status[A.canister_id] = Stopping Origins
-        M.caller ∈ S.controllers[A.canister_id]
-
-State after  
-
-<!-- -->
-
-    S with
-        messages = Older_messages · Younger_messages
-        S.status[A.canister_id] = Stopping (Origins · (M.origin, M.transferred_cycles))
+```html
+S with
+    messages = Older_messages · Younger_messages
+    S.status[A.canister_id] = Stopping (Origins · (M.origin, M.transferred_cycles))
+```
 
 The status of a stopping canister which has no open call contexts is set to `Stopped`, and all pending `stop_canister` calls are replied to.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.canister_status[A.canister_id] = Stopping Origins
+∀ Ctxt_id. S.call_contexts[Ctxt_id].canister ≠ A.canister_id
+```
 
-        S.canister_status[A.canister_id] = Stopping Origins
-        ∀ Ctxt_id. S.call_contexts[Ctxt_id].canister ≠ A.canister_id
 
-State after  
+State after
 
-<!-- -->
+```html
+S.canister_status[CanisterId] = Stopped
+S.messages = Messages ·
+    [ ResponseMessage {
+        origin = O
+        response = Accepted (candid())
+        refunded_cycles = C
+      }
+    | (O, C) ∈ Origins
+    ]
+```
 
-        S.canister_status[CanisterId] = Stopped
-        S.messages = Messages ·
-            [ ResponseMessage {
-                origin = O
-                response = Accepted (candid())
-                refunded_cycles = C
-              }
-            | (O, C) ∈ Origins
-            ]
 
+:::note
 Sending a `stop_canister` message to an already stopped canister is acknowledged (i.e. responded with success), but is otherwise a no-op:
+:::
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'stop_canister'
+M.arg = candid(A)
+S.canister_status[A.canister_id] = Stopped
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'stop_canister'
-        M.arg = candid(A)
-        S.canister_status[A.canister_id] = Stopped
-        M.caller ∈ S.controllers[A.canister_id]
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    messages = Older_messages · Younger_messages
+    S.messages = Messages ·
+        ResponseMessage {
+          origin = M.origin
+          response = Accepted (candid())
+        }
+```
 
-    S with
-        messages = Older_messages · Younger_messages
-        S.messages = Messages ·
-            ResponseMessage {
-              origin = M.origin
-              response = Accepted (candid())
-            }
 
-#### ICManagement Canister: Starting a canister
+#### IC Management Canister: Starting a canister {#_ic_management_canister_starting_a_canister}
 
 The controllers of a canister can start a `stopped` canister. If the canister is already running, the command has no effect on the canister.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
 
+```
         S.messages = Older_messages · CallMessage M · Younger_messages
         (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
         M.callee = ic_principal
@@ -3028,429 +3336,463 @@ Conditions
         S.status[A.canister_id] = Running or S.status[A.canister_id] = Stopped
         M.caller ∈ S.controllers[A.canister_id]
 
-State after  
+State after
 
-<!-- -->
-
-    S with
-        S.status[A.canister_id] = Running
-        messages = Older_messages · Younger_messages ·
-            ResponseMessage{
-                origin = M.origin
-                response = Accepted (candid())
-                refunded_cycles = M.transferred_cycles
-            }
-
-If the status of the canister was 'stopping', then the canister status is set to `running`. The pending `stop_canister` request(s) are rejected.
-
-Conditions  
-
-<!-- -->
-
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'start_canister'
-        M.arg = candid(A)
-        S.status[A.canister_id] = Stopping Origins
-        M.caller ∈ S.controllers[A.canister_id]
-
-State after  
-
-<!-- -->
-
-    S with
-        S.status[A.canister_id] = Running
-        messages = Older_messages · Younger_messages ·
-            ResponseMessage{
-                origin = M.origin
-                response = Accepted (candid())
-                refunded_cycles = M.transferred_cycles
-            } ·
-            [ ResponseMessage {
-                origin = O
-                response = Reject (CANISTER_REJECT, 'Canister has been restarted')
-                refunded_cycles = C
-              }
-            | (O, C) ∈ Origins
-            ]
-
-#### ICManagement Canister: Canister deletion
-
-Conditions  
-
-<!-- -->
-
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'delete_canister'
-        M.arg = candid(A)
-        S.canister_status[A.canister_id] = stopped
-        M.caller ∈ S.controllers[A.canister_id]
-
-State after  
-
-<!-- -->
-
-    S with
-        canisters[CanisterId] = (deleted)
-        controllers[CanisterId] = (deleted)
-        canister_status[CanisterId] = (deleted)
-        time[CanisterId] = (deleted)
-        balances[CanisterId] = (deleted)
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
+```html
+S with
+    S.status[A.canister_id] = Running
+    messages = Older_messages · Younger_messages ·
+        ResponseMessage{
             origin = M.origin
             response = Accepted (candid())
             refunded_cycles = M.transferred_cycles
-          }
+        }
+```
 
-#### ICManagement Canister: Depositing cycles
 
-Conditions  
+If the status of the canister was 'stopping', then the canister status is set to `running`. The pending `stop_canister` request(s) are rejected.
 
-<!-- -->
+Conditions
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'deposit_cycles'
-        M.arg = candid(A)
-        Cycle_cost ≤ S.balances[A.canister_id] + M.transferred_cycles
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'start_canister'
+M.arg = candid(A)
+S.status[A.canister_id] = Stopping Origins
+M.caller ∈ S.controllers[A.canister_id]
+```
 
-State after  
 
-<!-- -->
+State after
 
-    S with
-        balances[CanisterId] =
-          S.balances[A.canister_id] + M.transferred_cycles
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
+```html
+S with
+    S.status[A.canister_id] = Running
+    messages = Older_messages · Younger_messages ·
+        ResponseMessage{
             origin = M.origin
             response = Accepted (candid())
-            refunded_cycles = 0
+            refunded_cycles = M.transferred_cycles
+        } ·
+        [ ResponseMessage {
+            origin = O
+            response = Reject (CANISTER_REJECT, 'Canister has been restarted')
+            refunded_cycles = C
           }
+        | (O, C) ∈ Origins
+        ]
+```
 
-#### ICManagement Canister: Random numbers
+
+#### IC Management Canister: Canister deletion {#_ic_management_canister_canister_deletion}
+
+Conditions
+
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'delete_canister'
+M.arg = candid(A)
+S.canister_status[A.canister_id] = stopped
+M.caller ∈ S.controllers[A.canister_id]
+```
+
+
+State after
+
+```html
+S with
+    canisters[CanisterId] = (deleted)
+    controllers[CanisterId] = (deleted)
+    canister_status[CanisterId] = (deleted)
+    time[CanisterId] = (deleted)
+    balances[CanisterId] = (deleted)
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = M.transferred_cycles
+      }
+```
+
+
+#### IC Management Canister: Depositing cycles {#_ic_management_canister_depositing_cycles}
+
+Conditions
+
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'deposit_cycles'
+M.arg = candid(A)
+Cycle_cost ≤ S.balances[A.canister_id] + M.transferred_cycles
+```
+
+
+State after
+
+```html
+S with
+    balances[CanisterId] =
+      S.balances[A.canister_id] + M.transferred_cycles
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid())
+        refunded_cycles = 0
+      }
+```
+
+
+#### IC Management Canister: Random numbers {#_ic_management_canister_random_numbers}
 
 The management canister can produce pseudo-random bytes. It always returns a 32-byte `blob`:
 
 The precise guarantees around the randomness, e.g. unpredictability, are not captured in this formal semantics.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'raw_rand'
+M.arg = candid()
+|B| = 32
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'raw_rand'
-        M.arg = candid()
-        |B| = 32
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid(B))
+        refunded_cycles = M.transferred_cycles
+      }
+```
 
-    S with
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid(B))
-            refunded_cycles = M.transferred_cycles
-          }
 
-#### ICManagement Canister: Canister creation with cycles
+#### IC Management Canister: Canister creation with cycles {#_ic_management_canister_canister_creation_with_cycles}
 
 This is a variant of `create_canister`, which sets the initial cycle balance based on the `amount` argument.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'provisional_create_canister_with_cycles'
+M.arg = candid(A)
+is_system_assigned CanisterId
+CanisterId ∉ dom S.canisters
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'provisional_create_canister_with_cycles'
-        M.arg = candid(A)
-        is_system_assigned CanisterId
-        CanisterId ∉ dom S.canisters
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[CanisterId] = EmptyCanister
+    time[CanisterId] = CurrentTime
+    controllers[CanisterId] = [M.caller]
+    balances[CanisterId] = A.amount
+    certified_data[CanisterId] = ""
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Accepted (candid({canister_id = CanisterId}))
+        transferred_cycles = M.transferred_cycles
+      }
+    canister_status[CanisterId] = Running
+```
 
-    S with
-        canisters[CanisterId] = EmptyCanister
-        time[CanisterId] = CurrentTime
-        controllers[CanisterId] = [M.caller]
-        balances[CanisterId] = A.amount
-        certified_data[CanisterId] = ""
-        messages = Older_messages · Younger_messages ·
-          ResponseMessage {
-            origin = M.origin
-            response = Accepted (candid({canister_id = CanisterId}))
-            transferred_cycles = M.transferred_cycles
-          }
-        canister_status[CanisterId] = Running
 
-#### ICManagement Canister: Top up canister
+#### IC Management Canister: Top up canister {#_ic_management_canister_top_up_canister}
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'provisional_top_up_canister'
+M.arg = candid(A)
+A.canister_id ∈ dom S.canisters
+```
 
-        S.messages = Older_messages · CallMessage M · Younger_messages
-        (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
-        M.callee = ic_principal
-        M.method_name = 'provisional_top_up_canister'
-        M.arg = candid(A)
-        A.canister_id ∈ dom S.canisters
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    balances[CanisterId] = balances[CanisterId] + A.amount
+```
 
-    S with
-        balances[CanisterId] = balances[CanisterId] + A.amount
 
-#### Callback invocation
+#### Callback invocation {#_callback_invocation}
 
 When an inter-canister call has been responded to, we can queue the call to the callback.
 
-This “bookkeeping transition” must be immediately followed by the corresponding [“Message execution” transition](#message-execution).
+This "bookkeeping transition" must be immediately followed by the corresponding ["Message execution" transition](#rule-message-execution).
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · ResponseMessage RM · Younger_messages
+RM.origin = FromCanister {
+    call_context = Ctxt_id
+    callback = Callback
+  }
+not S.call_contexts[Ctxt_id].deleted
+```
 
-        S.messages = Older_messages · ResponseMessage RM · Younger_messages
-        RM.origin = FromCanister {
-            call_context = Ctxt_id
-            callback = Callback
-          }
-        not S.call_contexts[Ctxt_id].deleted
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    balances[S.call_contexts[Ctxt_id].canister] =
+      balances[S.call_contexts[Ctxt_id].canister] + RM.refunded_cycles
+    messages =
+      Older_messages ·
+      FuncMessage {
+        call_context = Ctxt_id
+        receiver = C
+        entry_point = Callback Callback FM.response RM.refunded_cycles
+        queue = Unordered
+      } ·
+      Younger_messages
+```
 
-    S with
-        balances[S.call_contexts[Ctxt_id].canister] =
-          balances[S.call_contexts[Ctxt_id].canister] + RM.refunded_cycles
-        messages =
-          Older_messages ·
-          FuncMessage {
-            call_context = Ctxt_id2
-            receiver = C
-            entry_point = Callback Callback FM.response RM.refunded_cycles
-            queue = Unordered
-          } ·
-          Younger_messages
 
 If the responded call context does not exist anymore, because the canister has been uninstalled since, the refundend cycles are still added to the canister balance, but no function invocation is enqueued:
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.messages = Older_messages · ResponseMessage RM · Younger_messages
+RM.origin = FromCanister {
+    call_context = Ctxt_id
+    callback = Callback
+  }
+S.call_contexts[Ctxt_id].deleted
+```
 
-        S.messages = Older_messages · ResponseMessage RM · Younger_messages
-        RM.origin = FromCanister {
-            call_context = Ctxt_id
-            callback = Callback
-          }
-        S.call_contexts[Ctxt_id].deleted
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    balances[S.call_contexts[Ctxt_id].canister] =
+      balances[S.call_contexts[Ctxt_id].canister] + RM.refunded_cycles + MAX_CYCLES_PER_RESPONSE
+    messages = Older_messages · Younger_messages
+```
 
-    S with
-        balances[S.call_contexts[Ctxt_id].canister] =
-          balances[S.call_contexts[Ctxt_id].canister] + RM.refunded_cycles + MAX_CYCLES_PER_RESPONSE
-        messages = Older_messages · Younger_messages
 
-#### Respond to user request
+#### Respond to user request {#_respond_to_user_request}
 
 When an ingress method call has been responded to, we can record the response in the list of queries.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.requests[M] = Processing
+S.messages = Older_messages · ResponseMessage RM · Younger_messages
+RM.origin = FromUser { request = M }
+```
 
-        S.requests[M] = Processing
-        S.messages = Older_messages · ResponseMessage RM · Younger_messages
-        RM.origin = FromUser { request = M }
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    messages = Older_messages · Younger_messages
+    requests[M] =
+      | Replied R   if response = Reply R
+      | Rejected R  if response = Reject R
+```
 
-    S with
-        messages = Older_messages · Younger_messages
-        requests[M] =
-          | Replied R   if response = Reply R
-          | Rejected R  if response = Reject R
 
 NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
-#### Request clean up
+#### Request clean up {#_request_clean_up}
 
-the IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
+The IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+(S.requests[M] = Replied _) or (S.requests[M] = Rejected _)
+```
 
-        (S.requests[M] = Replied _) or (S.requests[M] = Rejected _)
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    requests[M] = Done
+```
 
-    S with
-        requests[M] = Done
 
 At the same or some later point, the request will be removed from the state of the IC. This must happen no earlier than the ingress expiry time set in the request.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+(S.requests[M] = Replied _) or (S.requests[M] = Rejected _) or (S.requests[M] = Done)
+M.ingress_expiry < S.system_time
+```
 
-        (S.requests[M] = Replied _) or (S.requests[M] = Rejected _) or (S.requests[M] = Done)
-        M.ingress_expiry < S.system_time
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    requests[M] = (deleted)
+```
 
-    S with
-        requests[M] = (deleted)
 
-#### Canister out of cycles
+#### Canister out of cycles {#_canister_out_of_cycles}
 
 Once a canister runs out of cycles, its code is uninstalled (cf. [IC Management Canister: Code uninstallation](#rule-uninstall)) and the allocations are set to zero (NB: allocations are currently not modeled in the formal model):
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+S.balances[CanisterId] = 0
+```
 
-        S.balances[CanisterId] = 0
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    canisters[CanisterId] = EmptyCanister
+    certified_data[A.canister_id] = ""
 
-    S with
-        canisters[CanisterId] = EmptyCanister
-        certified_data[A.canister_id] = ""
+    messages = Older_messages · Younger_messages ·
+      [ ResponseMessage {
+          origin = Ctxt.origin
+          response = Reject (CANISTER_REJECT, 'Canister has been uninstalled')
+          refunded_cycles = Ctxt.available_cycles
+        }
+      | Ctxt_id ↦ Ctxt ∈ S.call_contexts
+      , Ctxt.canister = A.canister_id
+      , Ctxt.needs_to_respond = true
+      ]
 
-        messages = Older_messages · Younger_messages ·
-          [ ResponseMessage {
-              origin = Ctxt.origin
-              response = Reject (CANISTER_REJECT, 'Canister has been uninstalled')
-              refunded_cycles = Ctxt.available_cycles
-            }
-          | Ctxt_id ↦ Ctxt ∈ S.call_contexts
-          , Ctxt.canister = A.canister_id
-          , Ctxt.needs_to_respond = true
-          ]
+    for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
+      if Ctxt.canister = A.canister_id:
+        call_contexts[Ctxt_id].deleted := true
+        call_contexts[Ctxt_id].needs_to_respond := false
+        call_contexts[Ctxt_id].available_cycles := 0
+```
 
-        for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
-          if Ctxt.canister = A.canister_id:
-            call_contexts[Ctxt_id].deleted := true
-            call_contexts[Ctxt_id].needs_to_respond := false
-            call_contexts[Ctxt_id].available_cycles := 0
 
-#### Time progressing and cycle consumption
+#### Time progressing and cycle consumption {#_time_progressing_and_cycle_consumption}
 
 Time progresses. Abstractly, it does so independently for each canister, and in unspecified intervals.
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+T0 = S.time[CanisterId]
+T1 > T0
+```
 
-        T0 = S.time[CanisterId]
-        T1 > T0
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    time[CanisterId] = T1
+```
 
-    S with
-        time[CanisterId] = T1
 
 The canister cycle balance similarly depletes at an unspecified rate, but stays non-negative:
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+B0 = S.balances[CanisterId]
+0 ≤ B1 < B0
+```
 
-        B0 = S.balances[CanisterId]
-        0 ≤ B1 < B0
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    balances[CanisterId] = B1
+```
 
-    S with
-        balances[CanisterId] = B1
 
 Similarly, the system time, used to expire requests, progresses:
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+T0 = S.system_time
+T1 > T0
+```
 
-        T0 = S.system_time
-        T1 > T0
 
-State after  
+State after
 
-<!-- -->
+```html
+S with
+    system_time = T1
+```
 
-    S with
-        system_time = T1
 
-#### Query call
+#### Query call {#_query_call}
 
 Canister query calls to `/api/v2/canister/<ECID>/query` can be executed directly. They can only be executed against canisters which are `Running`.
 
-During the execution of a query call, a certificate is provided to the canister that is valid, contains a current state tree (or “recent enough”; the specification is currently vague about how old the certificate may be) and reveals the canister’s [Certified Data](#system-api-certified-data).
+During the execution of a query call, a certificate is provided to the canister that is valid, contains a current state tree (or "recent enough"; the specification is currently vague about how old the certificate may be) and reveals the canister's [Certified Data](#system-api-certified-data).
 
-Submitted request  
+Submitted request
+
 `E`
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+E.content = CanisterQuery Q
+Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry
+S.canisters[Q.canister_id] ≠ EmptyCanister
+S.canister_status[Q.canister_id] = Running
+C = S.canisters[Q.canister_id]
+F = C.module.query_methods[Q.method_name]
+Arg = {
+  data = Q.arg;
+  caller = Q.sender;
+}
+verify_cert(Cert)
+lookup(["canister",Q.canister_id,"certified_data"], Cert) = Found S.certified_data[Q.canister_id]
+lookup(["time"], Cert) = Found S.system_time // or “recent enough”
+Env = {
+  time = S.time[Q.receiver];
+  balance = S.balances[Q.canister_id];
+  freezing_limit = freezing_limit(S, Q.canister_id);
+  certificate = Cert;
+  status = S.status[Q.receiver];
+}
+```
 
-      E.content = CanisterQuery Q
-      Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-      is_effective_canister_id(E.content, ECID)
-      S.system_time <= Q.ingress_expiry
-      S.canisters[Q.canister_id] ≠ EmptyCanister
-      S.canister_status[Q.canister_id] = Running
-      C = S.canisters[Q.canister_id]
-      F = C.module.query_methods[Q.method_name]
-      Arg = {
-        data = Q.arg;
-        caller = Q.sender;
-      }
-      verify_cert(Cert)
-      lookup(["canister",Q.canister_id,"certified_data"], Cert) = Found S.certified_data[Q.canister_id]
-      lookup(["time"], Cert) = Found S.system_time // or “recent enough”
-      Env = {
-        time = S.time[Q.receiver];
-        balance = S.balances[Q.canister_id];
-        freezing_limit = freezing_limit(S, Q.canister_id);
-        certificate = Cert;
-        status = S.status[Q.receiver];
-      }
 
-Read response  
+Read response
+
 -   If `F(Arg, Env) = Trap` then
 
         {status: failed; error: "Query execution trapped"}
@@ -3463,27 +3805,29 @@ Read response
 
         {status: success; reply: { arg :  <R> } }
 
-#### Certified state reads
+#### Certified state reads {#_certified_state_reads}
 
 The user can read elements of the *state tree*, using a `read_state` request to `/api/v2/canister/<ECID>/read_state`.
 
-Submitted request  
+Submitted request
+
 `E`
 
-Conditions  
+Conditions
 
-<!-- -->
+```html
+E.content = ReadState RS
+TS = verify_envelope(E, RS.sender, S.system_time)
+S.system_time <= RS.ingress_expiry
+∀ path ∈ RS.paths. may_read_path(S, R.sender, path)
+∀ ["request_status", Rid] · _ ∈ RS.paths.  ∃ R ∈ S.requests ∧ hash_of_map(R) = Rid ∧ R.canister_id ∈ TS
+```
 
-      E.content = ReadState RS
-      TS = verify_envelope(E, RS.sender, S.system_time)
-      S.system_time <= RS.ingress_expiry
-      ∀ path ∈ RS.paths. may_read_path(S, R.sender, path)
-      ∀ ["request_status", Rid] · _ ∈ RS.paths.  ∃ R ∈ S.requests ∧ hash_of_map(R) = Rid ∧ R.canister_id ∈ TS
 
-Read response  
-A record with
+Read response
 
--   `{certificate: C}`
+  A record with
+  -   `{certificate: C}`
 
 The predicate `may_read_path` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 
@@ -3502,11 +3846,11 @@ The predicate `may_read_path` is defined as follows, implementing the access con
       else False
     may_read_path(S, _, _) = False
 
-The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
+The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#the-system-state-tree) that is a suffix of a path in `RS.paths` or of `["time"]`, we have
 
     lookup(path, cert) = lookup_in_tree(path, state_tree(S))
 
-where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#state-tree)
+where `state_tree` constructs the a labeled tree from the IC state `S` and the (so far underspecified) set of subnets `subnets`, as per [The system state tree](#the-system-state-tree)
 
     state_tree(S) = {
       "time": S.system_time;
@@ -3533,11 +3877,11 @@ where `state_tree` constructs the a labeled tree from the IC state `S` and the (
 
 and where `lookup_in_tree` is a function that returns the value or `Absent` as appropriately.
 
-### Abstract Canisters to System API
+### Abstract Canisters to System API {#concrete-canisters}
 
 In Section [Abstract canisters](#abstract-canisters) we introduced an abstraction over the interface to a canister, to avoid cluttering the abstract specification of the Internet Computer from WebAssembly details. In this section, we will fill the gap and explain how the abstract canister interface maps to the [concrete System API](#system-api) and the WebAssembly concepts as defined in the [WebAssembly specification](https://webassembly.github.io/spec/core/index.html).
 
-#### The concrete `WasmState`
+#### The concrete `WasmState` {#_the_concrete_wasmstate}
 
 The abstract `WasmState` above models the WebAssembly *store* `S`, which encompasses the functions, tables, memories and globals of the WebAssembly program, plus additional data maintained by the IC, such as the stable memory:
 
@@ -3547,7 +3891,7 @@ The abstract `WasmState` above models the WebAssembly *store* `S`, which encompa
       stable_mem : Blob
     }
 
-As explained in Section “[WebAssembly module requirements](#system-api-module)”, the WebAssembly module imports at most *one* memory and at most *one* table; in the following, *the* memory (resp. table) and the fields `mem` and `table` of `S` refer to that. Any system call that accesses the memory (resp. table) will trap if the module does not import the memory (resp. table).
+As explained in Section "[WebAssembly module requirements](#system-api-module)", the WebAssembly module imports at most *one* memory and at most *one* table; in the following, *the* memory (resp. table) and the fields `mem` and `table` of `S` refer to that. Any system call that accesses the memory (resp. table) will trap if the module does not import the memory (resp. table).
 
 We model `mem` as an array of bytes, and `table` as an array of execution functions.
 
@@ -3564,7 +3908,7 @@ The abstract `Callback` type above models an entry point for responses:
       on_cleanup : Closure | NoClosure;
     }
 
-#### The execution state
+#### The execution state {#_the_execution_state}
 
 We can model the execution of WebAssembly functions as stateful functions that have access to the WebAssembly store. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
 
@@ -3574,7 +3918,7 @@ We can model the execution of WebAssembly functions as stateful functions that h
       reject_code : 0 | SYS_FATAL | SYS_TRANSIENT | …;
       reject_message : Text;
       sysenv : Env;
-      cycles_refundend : Nat;
+      cycles_refunded : Nat;
       method_name : Text;
     }
     ExecutionState = {
@@ -3593,9 +3937,11 @@ We can model the execution of WebAssembly functions as stateful functions that h
 
 This allows us to model WebAssembly functions, including host-provided imports, as functions with implicit mutable access to an `ExecutionState`, dubbed *execution functions*. Syntactically, we express this using an implicit argument of type `ref ExecutionState` in angle brackets (e.g. `func<es>(x)` for the invocation of a WebAssembly function with type `(x : i32) -> ()`). The lifetime of the `ExecutionState` data structure is that of one such function invocation.
 
+:::note
 It is nonsensical to pass to an execution function a WebAssembly store `S` that comes from a different WebAssembly module than one defining the function.
+:::
 
-#### The concrete `CanisterModule`
+#### The concrete `CanisterModule` {#_the_concrete_canistermodule}
 
 Finally we can specify the abstract `CanisterModule` that models a concrete WebAssembly module.
 
@@ -3608,7 +3954,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
           caller = NoCaller;
           reject_code = 0;
           reject_message = "";
-          cycles_refundend = 0;
+          cycles_refunded = 0;
         }
 
         empty_execution_state = {
@@ -3727,7 +4073,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
 
     By construction, the (possibly modified) `es.wasm_state` is discarded.
 
--   The partial map `heartbeat` of the `CanisterModule` is defined if the WebAssembly program exports a function `func` named `canister_heartbeat`, and has value
+-   The function `heartbeat` of the `CanisterModule` is defined if the WebAssembly program exports a function `func` named `canister_heartbeat`, and has value
 
         heartbeat = λ (sysenv) → λ wasm_state →
           let es = ref {empty_execution_state with
@@ -3739,14 +4085,21 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
           if es.cycles_accepted ≠ 0 then Trap
           if es.ingress_filter ≠ Reject then Trap
           if es.response ≠ NoResponse then Trap
-          Return NoResponse;
+          Return es.wasm_state;
+
+    otherwise it is
+
+```html
+heartbeat = λ (sysenv) → λ wasm_state → Trap
+```
+
 
 -   The function `callbacks` of the `CanisterModule` is defined as follows
 
-        callbacks = λ(callbacks, response, sysenv, available) → λ wasm_state →
+        callbacks = λ(callbacks, response, refunded_cycles, sysenv, available) → λ wasm_state →
           let params0 = { empty_params with
             sysenv
-            cycles_received = refund;
+            cycles_refunded = refund_cycles;
           }
           let (fun, env, params) = match response with
             Reply data ->
@@ -3819,7 +4172,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
            if es.response ≠ NoResponse then Trap
            Return es.ingress_filter;
 
-#### Helper functions
+#### Helper functions {#_helper_functions}
 
 In the following section, we use the these helper functions
 
@@ -3832,14 +4185,14 @@ In the following section, we use the these helper functions
       if src+size > |es.wasm_state.store.mem| then Trap
       return es.wasm_state.store.mem[src..src+size]
 
-    Cycles are represented by 128-bit values so they require 16 bytes of memory.
+Cycles are represented by 128-bit values so they require 16 bytes of memory.
 
     copy_cycles_to_canister<es>(dst : i32, data : blob) =
      let size = 16;
      if dst+size > |es.wasm_state.store.mem| then Trap
       es.wasm_state.store.mem[dst..dst+size] := data[0..size]
 
-#### System imports
+#### System imports {#_system_imports}
 
 Upon *instantiation* of the WebAssembly module, we can provide the following functions as imports.
 
@@ -4103,3 +4456,5 @@ The pseudo-code below does *not* explicitly enforce the restrictions of which im
 
     ic0.trap<es>(src : i32, size : i32) =
       Trap
+
+<Changelog/>

@@ -40,6 +40,8 @@ As an example, imagine you have a house where propane is used for a water heater
 
 -   Cycles are not a currency; in particular cycles cannot be converted back to value in the form of Internet Computer Protocol tokens, but can be transferred between canisters to enable canisters to pay for operations.
 
+For exact costs see the tables in [Computation and Storage costs](../developer-docs/deploy/computation-and-storage-costs.md)
+
 ## Token Value and Volatility
 
 -   Tokens reflect the value of the Internet Computer blockchain and can fluctuate. To prevent the token value from affecting the number of messages a canister can process, tokens are not used to pay for resources directly.

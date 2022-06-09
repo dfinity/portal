@@ -2,7 +2,7 @@
 
 ## Authentication
 
-### Use a well-audited authentication service and client sideIClibraries
+### Use a well-audited authentication service and client side IC libraries
 
 #### Security Concern
 
