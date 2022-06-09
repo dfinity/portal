@@ -267,9 +267,7 @@ function Index() {
         <div className={styles.cards}>
           <motion.a
             variants={transitions.item}
-            href={
-              "https://internetcomputer.org/docs/current/developer-docs/quickstart/local-quickstart"
-            }
+            href={"/docs/current/developer-docs/quickstart/local-quickstart"}
             className={clsx(styles.card, styles.cardHover)}
           >
             <div className={styles.bodyContainer}>
