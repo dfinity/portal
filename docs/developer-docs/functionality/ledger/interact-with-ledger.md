@@ -2,7 +2,7 @@
 
 
 
-## Interact with ICP from the command line
+## Interact with ICP ledger from the command line
 
 Dfx provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger/) or just enter the following command into your console:
 
@@ -39,13 +39,13 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 
 <!-- ## Interact with ICP using Candid UI -->
 
-## Interact with ICP from your web application
+## Interact with ICP ledger from your web application
 
-In order to simplify working with ICP from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
+In order to simplify working with ICP ledger from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
 
 ## Interact with ICP from a canister
 
-The [ICP transfer example](/samples/token-transfer) provides a good starting point for interacting with ICP from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
+The [ICP transfer example](/samples/token-transfer) provides a good starting point for interacting with ICP  ledger from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
 
 ### Receiving ICP
 
@@ -74,7 +74,7 @@ The following diagram shows a simplified illustration of this pattern:
 
 #### Notification by ICP ledger (Currently disabled)
 
-In this pattern the ledger iteself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, This flow is currently disabled because the call to the receiver is not yet implemented as a one-way call. 
+In this pattern the ledger iteself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, this flow is currently disabled because the call to the receiver is not yet implemented as a one-way call. 
 
 ```plantuml
     participant Sender

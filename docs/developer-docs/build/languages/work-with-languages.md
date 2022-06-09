@@ -1,4 +1,4 @@
-# Developers using different languages
+# Develop using different languages
 
 Most of the example dapps in this guide use Motoko—the programming language specifically designed to work with the IC. Potentially, however, you can write dapps in any language that compiles to WebAssembly to deploy applications that run on the IC. This section provides some high-level guidance for writing dapps in different languages and how to deploy them on the IC.
 
