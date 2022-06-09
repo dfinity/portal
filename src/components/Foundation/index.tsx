@@ -64,7 +64,7 @@ function Card({ isMain, title, body, link }) {
     >
       <div className={styles.cardBodyContainer}>
         {title.map((titleLine) => (
-          <p className={styles.cardTitle}>{titleLine}</p>
+          <p className={styles.cardTitle} key={titleLine}>{titleLine}</p>
         ))}
         <p className={styles.cardBody}>{body}</p>
       </div>
@@ -132,7 +132,7 @@ function Foundation() {
         </motion.div>
         <motion.div className={styles.statsContainer}>
           {stats.map((stat) => (
-            <div className={styles.stat}>
+            <div className={styles.stat} key={stat.title}>
               <span className={styles.statTitle}>{stat.title}</span>
               <span className={styles.statValue}>{stat.value}</span>
             </div>
@@ -140,7 +140,7 @@ function Foundation() {
         </motion.div>
         <motion.div variants={item} className={styles.mobileStatsContainer}>
           {stats.map((stat, index) => (
-            <>
+            <React.Fragment key={stat.title}>
               {index % 2 === 1 && (
                 <div className={styles.mobileStatsHorDivider} />
               )}
@@ -151,7 +151,7 @@ function Foundation() {
               {index % 2 === 1 && index !== stats.length - 1 && (
                 <div className={styles.mobileStatsVerDivider} />
               )}
-            </>
+            </React.Fragment>
           ))}
         </motion.div>
         <motion.div variants={item} className={styles.body}>
@@ -177,7 +177,7 @@ function Foundation() {
           }}
         >
           {cards.map((card) => (
-            <SwiperSlide>
+            <SwiperSlide key={card.link}>
               <Card
                 isMain={card.isMain}
                 title={card.title}
@@ -191,6 +191,7 @@ function Foundation() {
       <motion.div variants={item} className={styles.cards}>
         {cards.map((card) => (
           <Card
+            key={card.link}
             isMain={card.isMain}
             title={card.title}
             body={card.body}

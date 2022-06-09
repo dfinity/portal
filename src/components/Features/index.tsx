@@ -108,7 +108,7 @@ function Features() {
           }}
         >
           {cardsContent.map((card) => (
-            <SwiperSlide>
+            <SwiperSlide key={card.title}>
               <Link to={card.link} className={styles.card}>
                 <Card key={card.title} title={card.title} body={card.body} />
               </Link>
@@ -126,7 +126,7 @@ function Features() {
       </motion.div>
       <div className={styles.cards}>
         {cardsContent.map((card) => (
-          <motion.a variants={item} href={card.link} className={styles.card}>
+          <motion.a variants={item} href={card.link} className={styles.card} key={card.link}>
             <Card key={card.title} title={card.title} body={card.body} />
           </motion.a>
         ))}
