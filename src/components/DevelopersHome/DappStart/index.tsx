@@ -43,8 +43,7 @@ function Index() {
               <p className={styles.informationTitle}>Developer grants</p>
               <p className={styles.informationBody}>
                 The DFINITY Developer Grant Program aims to catalyze the growth
-                of the Internet Computer ecosystem and make the Internet
-                Computer accessible and approachable to more developers
+                of the Internet Computer ecosystem.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
