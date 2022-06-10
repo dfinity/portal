@@ -18,6 +18,7 @@
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
     "@docusaurus/core": "2.0.0-beta.17",
     "@docusaurus/preset-classic": "2.0.0-beta.17",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.17",
     "@mdx-js/react": "^1.6.22",
     "chartjs-plugin-datalabels": "^2.0.0",
     "clsx": "^1.1.1",

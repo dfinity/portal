@@ -21,6 +21,8 @@ import styles from "./styles.module.css";
 import { extractConfig, handleRun } from "./hljs_run.js";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
+import copyIcon from "@site/static/img/copyIcon.png";
+import runIcon from "@site/static/img/runIcon.png";
 
 function RunButton(props) {
   // buttons with class "run" will be run in load_moc.js when moc is loaded.
@@ -31,29 +33,30 @@ function RunButton(props) {
       className={className}
       aria-label="Run"
       onClick={() => handleRun(props)}
+      title="Run Code"
     >
-      <svg
-        viewBox="0 0 24 24"
-        preserveAspectRatio="xMidYMid meet"
-        style={{ width: "35px", height: "35px" }}
-      >
-        <g>
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
-        </g>
-      </svg>
+      <img src={runIcon} style={{ width: "20px", height: "20px" }} />
     </button>
   );
 }
 
-function ImmutableCodeBlock({ id, code, language }) {
+function ImmutableCodeBlock({ id, code, language, className, style }) {
   const ref = React.createRef();
   useEffect(() => {
     hljs.highlightElement(ref.current);
   }, []);
   return (
     <>
-      <pre id={id} className={language} ref={ref}>
-        <code>{code}</code>
+      <pre
+        tabIndex={0}
+        id={id}
+        className={
+          (clsx(className, styles.codeBlock, "thin-scrollbar"), language)
+        }
+        style={style}
+        ref={ref}
+      >
+        <code className={styles.codeBlockLines}>{code}</code>
       </pre>
     </>
   );
@@ -65,6 +68,7 @@ export default function CodeBlock(props) {
   const metastring = props.metastring;
   const title = props.title;
   const languageProp = props.language;
+  // const defaultCopyButton = true;
   const { prism } = useThemeConfig();
   const [showCopied, setShowCopied] = useState(false);
   const [mounted, setMounted] = useState(false); // The Prism theme on SSR is always the default theme but the site theme
@@ -87,35 +91,9 @@ export default function CodeBlock(props) {
   // <pre> tags in markdown map to CodeBlocks and they may contain JSX children.
   // When the children is not a simple string, we just return a styled block
   // without actually highlighting.
-  if (React.Children.toArray(children).some((el) => isValidElement(el))) {
-    return (
-      <Highlight
-        {...defaultProps}
-        key={String(mounted)}
-        theme={prismTheme}
-        code=""
-        language={"text"}
-      >
-        {({ className, style }) => (
-          <pre
-            /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
-            tabIndex={0}
-            className={clsx(
-              className,
-              styles.codeBlockStandalone,
-              "thin-scrollbar",
-              styles.codeBlockContainer,
-              blockClassName,
-              ThemeClassNames.common.codeBlock
-            )}
-            style={style}
-          >
-            <code className={styles.codeBlockLines}>{children}</code>
-          </pre>
-        )}
-      </Highlight>
-    );
-  } // The children is now guaranteed to be one/more plain strings
+
+  // The children is now guaranteed to be one/more plain strings
+
   const content = Array.isArray(children) ? children.join("") : children;
   const language =
     languageProp ?? parseLanguage(blockClassName) ?? prism.defaultLanguage;
@@ -125,6 +103,48 @@ export default function CodeBlock(props) {
     copy(code);
     setShowCopied(true);
     setTimeout(() => setShowCopied(false), 2000);
+  };
+
+  const CopyButton = ({ input }) => {
+    let buttonClassNames;
+    if (input) {
+      buttonClassNames = clsx(
+        styles.copyButton,
+        "clean-btn",
+        styles.defaultCopyButton
+      );
+    } else {
+      buttonClassNames = clsx(styles.copyButton, "clean-btn");
+    }
+
+    return (
+      <button
+        type="button"
+        aria-label={translate({
+          id: "theme.CodeBlock.copyButtonAriaLabel",
+          message: "Copy code to clipboard",
+          description: "The ARIA label for copy code blocks button",
+        })}
+        className={buttonClassNames}
+        onClick={handleCopyCode}
+      >
+        {showCopied ? (
+          <Translate
+            id="theme.CodeBlock.copied"
+            description="The copied button label on code blocks"
+          >
+            Copied
+          </Translate>
+        ) : (
+          <Translate
+            id="theme.CodeBlock.copy"
+            description="The copy button label on code blocks"
+          >
+            Copy
+          </Translate>
+        )}
+      </button>
+    );
   };
 
   if (language === "motoko") {
@@ -138,11 +158,6 @@ export default function CodeBlock(props) {
       );
     }
   }
-  // if (language === "candid") {
-  //   return (
-  //     <ImmutableCodeBlock code={props.children} language="language-candid" />
-  //   );
-  // }
 
   const [dfinity_code, setCode] = useState(children);
   const [output, setOutput] = useState("");
@@ -185,12 +200,23 @@ export default function CodeBlock(props) {
               </div>
             )}
             <div className={clsx(styles.codeBlockContent, language)}>
-              {language === "candid" ? (
+              {language === "candid" && (
                 <ImmutableCodeBlock
                   code={props.children}
                   language="language-candid"
+                  // added to enhance same
+                  className={className}
                 />
-              ) : (
+              )}
+              {language === "motoko" && (
+                <>
+                  <ImmutableCodeBlock
+                    code={dfinity_code}
+                    language="language-motoko"
+                  />
+                </>
+              )}
+              {language !== "motoko" && language !== "candid" && (
                 <pre
                   /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
                   tabIndex={0}
@@ -206,17 +232,14 @@ export default function CodeBlock(props) {
                       if (line.length === 1 && line[0].content === "\n") {
                         line[0].content = "";
                       }
-
                       const lineProps = getLineProps({
                         line,
                         key: i,
                       });
-
                       if (highlightLines.includes(i)) {
                         lineProps.className +=
                           " docusaurus-highlight-code-line";
                       }
-
                       return (
                         <span key={i} {...lineProps}>
                           {line.map((token, key) => (
@@ -235,42 +258,30 @@ export default function CodeBlock(props) {
                   </code>
                 </pre>
               )}
-              <div className={styles.buttonGroup}>
-                <button
-                  type="button"
-                  aria-label={translate({
-                    id: "theme.CodeBlock.copyButtonAriaLabel",
-                    message: "Copy code to clipboard",
-                    description: "The ARIA label for copy code blocks button",
-                  })}
-                  className={clsx(styles.copyButton, "clean-btn")}
-                  onClick={handleCopyCode}
-                >
-                  {showCopied ? (
-                    <Translate
-                      id="theme.CodeBlock.copied"
-                      description="The copied button label on code blocks"
-                    >
-                      Copied
-                    </Translate>
-                  ) : (
-                    <Translate
-                      id="theme.CodeBlock.copy"
-                      description="The copy button label on code blocks"
-                    >
-                      Copy
-                    </Translate>
-                  )}
-                </button>
-                {language === "motoko" && (
+              {language !== "motoko" ? (
+                <CopyButton input={true} />
+              ) : (
+                <div className={styles.buttonGroup}>
+                  <button
+                    type="button"
+                    aria-label={translate({
+                      id: "theme.CodeBlock.copyButtonAriaLabel",
+                      message: "Copy code to clipboard",
+                      description: "The ARIA label for copy code blocks button",
+                    })}
+                    onClick={handleCopyCode}
+                    title="Copy Code"
+                  >
+                    <img src={copyIcon} className={styles.copyIcon} />
+                  </button>
                   <RunButton
-                    code={code}
+                    code={dfinity_code}
                     setOutput={setOutput}
                     setError={setError}
                     config={extractConfig(props)}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -279,7 +290,7 @@ export default function CodeBlock(props) {
         <div>
           {error && <pre style={{ color: "red" }}>{error}</pre>}
           {output && (
-            <pre style={{ color: "green" }} class="language-motoko">
+            <pre style={{ color: "green" }} className="language-motoko">
               <code>{output}</code>
             </pre>
           )}

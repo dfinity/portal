@@ -49,9 +49,14 @@
   opacity: 0;
   user-select: none;
   padding: 0.4rem 0.5rem;
+  /* position: absolute; */
   right: calc(var(--ifm-pre-padding) / 2);
   top: calc(var(--ifm-pre-padding) / 2);
   transition: opacity 200ms ease-in-out;
+}
+
+.defaultCopyButton {
+  position: absolute;
 }
 
 .copyButton:focus,
@@ -77,19 +82,22 @@
 .buttonGroup {
   display: flex;
   column-gap: 0.2rem;
+  align-items: center;
   position: absolute;
   right: calc(var(--ifm-pre-padding) / 2);
   top: calc(var(--ifm-pre-padding) / 2);
+  padding: 0.3rem;
+  background-color: var(--ifm-color-secondary-light);
+  border-radius: var(--ifm-global-radius);
 }
 
 .buttonGroup button {
   display: flex;
   align-items: center;
   background: inherit;
-  width: inherit;
-  height: inherit;
+  /* width: inherit;
+  height: inherit; */
   color: var(--prism-color);
-  padding: 0.4rem;
   border: 0;
   line-height: 0;
   transition: opacity 200ms ease-in-out;
@@ -99,4 +107,22 @@
 .buttonGroup button:focus-visible,
 .buttonGroup button:hover {
   opacity: 1 !important;
+}
+
+.run-button {
+  width: 40px;
+  height: 40px;
+}
+
+.copyIcon {
+  width: 20px;
+  height: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+pre {
+  margin: 0;
 }

@@ -47,7 +47,7 @@ export function handleRun({ code, setOutput, setError, config }) {
   }
 }
 
-function registerMotoko() {
+export function registerMotoko() {
   var string = {
     className: "string",
     variants: [
