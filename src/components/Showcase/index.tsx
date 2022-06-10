@@ -28,6 +28,8 @@ function Distrikt() {
     <SwiperSlide>
       <a
         href={"https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{ backgroundColor: "#BBB3E6" }}
         className={styles.card}
       >
@@ -71,6 +73,8 @@ function Origyn() {
     <SwiperSlide>
       <a
         href={"https://origyn.ch"}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{ backgroundColor: "#A8E1F0" }}
         className={styles.card}
       >
@@ -115,6 +119,8 @@ function DSCVR() {
     <SwiperSlide>
       <a
         href={"http://dscvr.one/"}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{ backgroundColor: "#ADC2EC" }}
         className={styles.card}
       >
@@ -139,9 +145,9 @@ function DSCVR() {
         </div>
         <div
           className={styles.tooltipContainer}
-          style={{ backgroundColor: "#F5D8FF", color: "#B748DE" }}
+          style={{ backgroundColor: "#ADC2EC", color: "#D21672" }}
         >
-          <span className={styles.tooltip}>neqb2-dyaaa-aaaad-qameq-cai</span>
+          <span className={styles.tooltip}>dscvr.one</span>
         </div>
         <img
           className={styles.backgroundImage}
