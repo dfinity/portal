@@ -233,7 +233,7 @@ function Showcase() {
           <a id="showcase" />
           <div className={styles.header}>
             <motion.div variants={transitions.item} className={styles.title}>
-              <span>Build for</span>
+              <span>Dapps for</span>
               <div>
                 <AnimatePresence>
                   <motion.span
