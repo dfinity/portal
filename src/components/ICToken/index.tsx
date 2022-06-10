@@ -73,7 +73,7 @@ function OwnershipChart() {
           plugins: {
             title: {
               display: true,
-              text: "* consists of investors, node providers, developers and the IC Association",
+              text: "* Community, node providers, developers and the IC Association",
               font: { size: 14, weight: "normal" },
               color: "black",
               position: "bottom",
