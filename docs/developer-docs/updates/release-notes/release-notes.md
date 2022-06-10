@@ -36,9 +36,9 @@ The behavior for identities without any configured wallets is unchanged.
 
 ### New Feature: print wallet balance in a human readable form
 
-Default behaviour changed for `+dfx wallet balance+`, it will now print cycles amount upscaled to trillions.
+Default behaviour changed for `dfx wallet balance`, it will now print cycles amount upscaled to trillions.
 
-New flag `+--precise+` added to `+dfx wallet balance+`. Allows to get exact amount of cycles in wallet (without upscaling).
+New flag `--precise` added to `dfx wallet balance`. Allows to get exact amount of cycles in wallet (without upscaling).
 
 ### Fixed: specifying ic provider with a trailing slash is recognised correctly
 
