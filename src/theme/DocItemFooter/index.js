@@ -11,7 +11,7 @@ import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import styles from "./styles.module.css";
 import Link from "@docusaurus/Link";
-import FeedbackIcon from "@site/static/img/feedbackIcon.svg";
+import FeedbackIcon from "@site/static/img/svgIcons/feedbackIcon.svg";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 
 function TagsRow(props) {

@@ -95,6 +95,19 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: "/img/share.jpg",
+      colorMode: {
+        disableSwitch: true,
+        defaultMode: "light",
+        respectPrefersColorScheme: false,
+      },
+      metadata: [
+        {
+          // ios safari zooms in when an input field is focused
+          // maximum-scale=1 solves the issue
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, maximum-scale=1",
+        },
+      ],
       navbar: {
         hideOnScroll: true,
 
@@ -104,6 +117,102 @@ const config = {
           srcDark: "img/IC_logo_horizontal_white.svg",
         },
         items: [
+          {
+            type: "search",
+            position: "right",
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Explore",
+            items: [
+              {
+                label: "Basics",
+                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Introduction_to_the_Internet_Computer",
+              },
+              {
+                label: "Internet Identity dapp",
+                href: "https://identity.ic0.app/",
+              },
+              {
+                label: "Showcase",
+                href: "https://dfinity.org/showcase",
+              },
+              {
+                label: "Dashboard",
+                href: "https://dashboard.internetcomputer.org",
+              },
+              {
+                label: "Wiki",
+                href: "https://wiki.internetcomputer.org",
+              },
+              {
+                label: "How it works",
+                href: "https://dfinity.org/howitworks",
+              },
+              {
+                label: "DFINITY Foundation",
+                href: "https://dfinity.org/foundation",
+              },
+            ],
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Develop",
+            items: [
+              {
+                label: "Developers Home",
+                to: "/developers",
+              },
+              {
+                label: "Developer Docs",
+                type: "doc",
+                docId: "developer-docs/quickstart/hello10mins",
+              },
+              { label: "Sample Code", to: "/samples" },
+              {
+                label: "Motoko Playground",
+                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              },
+              {
+                label: "Dev Forum ",
+                href: "https://forum.dfinity.org/",
+              },
+            ],
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Participate",
+            items: [
+              {
+                label: "Token Holders ",
+                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
+              },
+              {
+                label: "Roadmap",
+                href: "https://dfinity.org/roadmap",
+              },
+              {
+                label: "Staking & Governance",
+                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
+              },
+              {
+                label: "NNS Frontend dapp",
+                href: "https://nns.ic0.app/v2/",
+              },
+              {
+                label: "Node Providers",
+                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers",
+              },
+              {
+                label: "ICA",
+                href: "https://association.internetcomputer.org/",
+              },
+            ],
+          },
+
           {
             type: "docSidebar",
             position: "left",
@@ -128,35 +237,14 @@ const config = {
             sidebarId: "tokenomics",
             label: "Tokenomics",
           },
+
           {
-            type: "search",
+            html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
             position: "right",
+
+            href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
+            className: "ic0-item",
           },
-          {
-            to: "/docs/current/developer-docs/ic-overview",
-            label: "Docs",
-            position: "right",
-          },
-          {
-            to: "/samples",
-            label: "Sample Code",
-            position: "right",
-          },
-          {
-            to: "https://association.internetcomputer.org/",
-            label: "ICA",
-            position: "right",
-          },
-          //{
-          //  type: 'docsVersionDropdown',
-          //  position: 'right',
-          //  dropdownActiveClassDisabled: true,
-          //},
-          // TODO: remove when integrating i18n
-          // {
-          //   type: 'localeDropdown',
-          //   position: 'right',
-          // },
         ],
       },
 
@@ -179,19 +267,23 @@ const config = {
           {
             items: [
               {
-                label: "DFINITY Foundation",
-                to: "https://dfinity.org/",
-              },
-              {
                 label: "Internet Computer Association",
                 to: "https://association.internetcomputer.org/",
+              },
+              {
+                label: "Wiki",
+                to: "https://wiki.internetcomputer.org/",
+              },
+              {
+                label: "Dashboard",
+                to: "https://dashboard.internetcomputer.org/",
               },
             ],
           },
           {
             items: [
               {
-                label: '"Powered by Crypto" Assets',
+                label: "Brand Materials",
                 to: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",
               },
               {
