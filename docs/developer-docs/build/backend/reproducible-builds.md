@@ -96,7 +96,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
         rustup target add wasm32-unknown-unknown
 
     # Install dfx; the version is picked up from the DFX_VERSION environment variable
-    ENV DFX_VERSION=0.10.0
+    ENV DFX_VERSION=0.10.1
     RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     COPY . /canister
@@ -166,7 +166,7 @@ If reproducibility is vital for your code, you should test your builds to increa
         rustup target add wasm32-unknown-unknown
 
     # Install dfx; the version is picked up the DFX_VERSION environment variable
-    ENV DFX_VERSION=0.10.0
+    ENV DFX_VERSION=0.10.1
     RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime sudo wabt
