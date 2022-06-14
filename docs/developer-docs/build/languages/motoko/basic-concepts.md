@@ -61,11 +61,13 @@ First, this program’s type is `Nat` (natural number), and when run, it evaluat
 Introducing a block with enclosing braces (`do {` and `}`) and another variable (`z`), we can amend our original program as follows:
 
 ``` motoko
-let z = do {
+let z = x + (do {
   let x = 1;
   let y = x + 1;
   x * y + x
-};
+});
+
+
 ```
 
 ## Declarations and expressions
