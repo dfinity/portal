@@ -54,7 +54,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     where
 
-    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. useicfor the mainnet)
+    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. use ic for the mainnet)
 
     -   the `TOKEN_NAME` is the human-readable name of your new token
 
