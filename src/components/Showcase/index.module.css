@@ -85,93 +85,6 @@
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7813 7.33336L7.20529 3.75736L8.14796 2.8147L13.3333 8.00003L8.14796 13.1854L7.20529 12.2427L10.7813 8.6667H2.66663V7.33336H10.7813Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
 }
 
-.swiperContainer {
-    position: relative;
-    z-index: 1000;
-    width: 100vw;
-    margin: 32px 0 12px 0;
-    flex-direction: row;
-    display: block;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: 550px;
-    background: rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
-    backdrop-filter: blur(5px);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.card:hover,
-.card:hover .cardBody {
-    text-decoration: none;
-}
-
-.card:hover .backgroundImage {
-    bottom: -10px;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-}
-
-.card:hover .tooltipContainer {
-    display: flex;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-}
-
-.cardHeader {
-    width: 90%;
-}
-
-.cardContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: row;
-    flex-grow: 1;
-    width: 100%;
-    padding: 3rem;
-}
-
-.cardTitle {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    color: var(--ifm-color-primary);
-    margin-bottom: 0.7rem;
-}
-
-.cardBody {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    color: black;
-    width: Min(300px, 100%);
-    height: 96px;
-}
-
-.tooltipContainer {
-    position: absolute;
-    display: none;
-    flex-grow: 1;
-    justify-content: center;
-    z-index: 10;
-    bottom: 0;
-    left: 0;
-    margin: 1rem;
-    border-radius: 2rem;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.tooltip {
-    padding: 1rem 1.5rem;
-}
 
 .actionButtonContainer {
     width: Min(1100px, 90%);
@@ -201,37 +114,115 @@
     text-decoration: none;
 }
 
-.iconContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: relative;
-    padding: 10px;
-    border-radius: 50%;
-    background: white;
-    width: 50px;
-    height: 50px;
-}
-
-.dappIcon {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
-
-.backgroundImage {
-    width: Min(550px,100%);
-    position: absolute;
-    right: 0;
-    bottom: -50px;
-}
-
 .BGShape {
     position: fixed;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 1000;
+}
+
+.swiperContainer {
+    position: relative;
+    z-index: 1000;
+    width: 100vw;
+    margin: 32px 0 12px 0;
+    flex-direction: row;
+    display: block;
+}
+
+.dappContainer {
+    background: white;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.dappHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 20px 16px;
+}
+
+.dappIcon {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 16px;
+}
+
+.dappInformation {
+    height: 95px;
+}
+
+.dappName {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.dappStats {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.15px;
+    margin: 4px 0 8px 0;
+    color: #888888;
+}
+
+.dappWebsite {
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #262626;
+    padding: 2px 6px;
+    background: #F2F2F2;
+    border-radius: 5px;
+    transition: color var(--ifm-transition-custom-speed);
+}
+
+.dappWebsite:hover {
+    color: #c2c6c7;
+    text-decoration: none;
+}
+
+.dappMedia {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 218px;
+    padding: 5% 10% 0 10%;
+}
+
+.dappVideo, .dappScreenshot {
+    object-fit: contain;
+    object-position: bottom;
+    width: 100%;
+    height: 100%;
+}
+
+.dappBody {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.15px;
+    color: #888888;
+    margin: 20px;
+}
+
+.swiperSlide {
+    width: 440px;
+    height: 560px;
+    margin-bottom: 80px;
+    padding-left: 50px;
+}
+
+.swiperSlide + .swiperSlide {
+    width: 390px;
+    padding: 0;
 }
 
 @media screen and (max-width: 996px) {
@@ -265,7 +256,7 @@
 
     .backgroundImage {
         bottom: -10px;
-        width: Min(400px,100%);
+        width: Min(400px, 100%);
     }
 
     .background {
@@ -304,9 +295,15 @@
         display: block;
         width: Min(90%, 500px);
     }
+
     .actionButton {
         padding: 14px 24px;
         font-size: 14px;
         line-height: 22px;
+    }
+
+    .swiperSlide {
+        width: 338px;
+        height: 580px;
     }
 }

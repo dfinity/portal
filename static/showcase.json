@@ -1,0 +1,238 @@
+[
+  {
+    "name": "Plug",
+    "oneLiner": "Decentralized Wallet for the Internet Computer",
+    "website": "https://plugwallet.ooo/",
+    "tags": [
+      "Wallet",
+      "Infrastructure",
+      "NFT",
+      "Authentication"
+    ],
+    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens – as well as log into Internet Computer dapps with one click. Download it here. ",
+    "github": "https://github.com/Psychedelic/plug",
+    "stats": "100 000 users",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7BTWiQcZ89JuUjkkCcs8TR/d0ead18ea484af2ef39b3fe4d2e930a0/image_89.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/4qaKHyxkej0E3tcLBG0NOf/5a8c3efd06affa8aa5048396f9b09050/plug.mp4",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3U3Eenk3oI5ZrC8V02mzPY/8386f39b97e97718c130b715dd9db615/screenshot-plug.png"
+    ]
+  },
+  {
+    "name": "Fleek",
+    "oneLiner": "Blockchain Version of Netlify",
+    "website": "https://fleek.co/",
+    "tags": [
+      "Infrastructure",
+      "Tools"
+    ],
+    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
+    "usesInternetIdentity": false,
+    "stats": "1 000+ websites",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5O8OfpiGvkacspgYva3RMx/5273789d46839aae640b84d7527fa416/Fleek.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/27ZRs9i8MlmpyK0z4K9MDX/97fb59d5051d9cce4964a8b6048a1915/Fleek.png"
+    ]
+  },
+  {
+    "name": "DSCVR",
+    "oneLiner": "Decentralized Reddit Built On-Chain",
+    "website": "http://dscvr.one/",
+    "tags": [
+      "Social",
+      "Dapp"
+    ],
+    "description": "DSCVR is a decentralized version of Reddit, where users are the owners. Decentralized end-to-end, built on the Internet Computer, and accessible from any browser. Try it out yourself. ",
+    "usesInternetIdentity": true,
+    "stats": "40 000 users",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2WFkTXDZ5KaRO31o1HAj5D/0ebdc87e8364872dc111673159272262/DSCVR.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/7fFZd9aAT2tuVO4ZWcVfQZ/f8c5750d19bbb8e2a403708465ae05cb/Screen_Recording_2021-09-21_at_2.41.02_PM.mp4",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/eZGswNexYr2FN5SvEdJrF/002c5fd40a7ab9461398aac8145ca53d/DSCVR.png"
+    ]
+  },
+  {
+    "name": "Distrikt",
+    "oneLiner": "User Governed On-Chain LinkedIn",
+    "website": "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/",
+    "tags": [
+      "Social",
+      "Dapp"
+    ],
+    "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
+    "usesInternetIdentity": true,
+    "stats": "70 000 users",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7nY1TwB3EaNkqo6ssNOkXm/4bebb500bca2b7aed2a22df3e7d15ce7/Distrikt_white.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4Z6RssUCObIFVdhWseh85V/2896741c447612c006ef9bd08983225a/Distrikt.png"
+    ]
+  },
+  {
+    "name": "Origyn",
+    "oneLiner": "NFT-Based Authentication for Luxury Goods ",
+    "website": "https://www.origyn.ch/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "The Origyn Foundation is blending luxury goods, with NFTs by providing digital verifications for physical objects. Only possible on the Internet Computer. ",
+    "github": "https://github.com/origyn-sa",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/mSJj7rnpVVOFpEdfJNIZL/013809c610bcc743ba2d8da372afbec1/image_88.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3c1JA9YYtMbe9Q2KlxK6yU/878f6acbf2f0f94eb91d25b10fb63a7e/screenshot-origyn.png"
+    ]
+  },
+  {
+    "name": "OpenChat",
+    "oneLiner": "Tokenized Version of WhatsApp",
+    "website": "https://oc.app/",
+    "tags": [
+      "Social",
+      "Dapp"
+    ],
+    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
+    "usesInternetIdentity": true,
+    "stats": "50 000 users",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3KuQZUmqSVHyzutuUZ1GQF/e413176ff2262c3f704c2835da25db56/oc-logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2Qzh1HfdgA0DLDpYnJbp4F/5f0e212c55cb59259af0309b68041d1b/screenshot-openchat.png"
+    ]
+  },
+  {
+    "name": "Internet Identity",
+    "oneLiner": "Decentralized Anonymous Blockchain Authentication",
+    "website": "https://identity.ic0.app/",
+    "tags": [
+      "Authentication",
+      "Dapp",
+      "Infrastructure"
+    ],
+    "description": "Internet Identity guarantees that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
+    "github": "https://github.com/dfinity/internet-identity",
+    "usesInternetIdentity": true,
+    "stats": "1 000 000+ ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/65ZprSZjb5AEpZMOkuwdoI/6dbfba54d96d5e567ea834016c12ac5c/loader.webp",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3MnxKJHc9WAF6JOdrzJVmV/295d12ed68f4c6a47ba9e4bf91b7250a/final_6114388c822e3700f9b2160a_833666.gif"
+    ]
+  },
+  {
+    "name": "Motoko Playground",
+    "oneLiner": "Free IDE to Learn Motoko",
+    "website": "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+    "tags": [
+      "Dapp",
+      "Infrastructure",
+      "Tools"
+    ],
+    "description": "The Motoko Playground is an IDE for developers to learn Motoko – the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
+    "github": "https://github.com/dfinity/motoko-playground",
+    "usesInternetIdentity": false,
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3x4p9sedfWCi7biyKr0fi9/0356607dc002b981517cf632e20c945a/motoko-lab-logo.5b9112fe.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/4QsasiCyPiRQXi63LRAC5U/ee27b6ea073382d42bf108a8ac159203/motoko__1_.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "IC Rocks",
+    "oneLiner": "Internet Computer Explorer",
+    "website": "https://ic.rocks/",
+    "tags": [
+      "Infrastructure",
+      "Explorer"
+    ],
+    "description": "IC.Rocks is a complete \"block explorer\" for the Internet Computer – built by the community. Tracking everything from transactions, to network upgrades, to cycles, IC.Rocks enables anyone to explore the inner-workings of the Internet Computer. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2DgRnidLLXptLP79dVjjxr/f23bf220d5efa474db8c8da444864e01/icrocks-logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3bTxCg5DZESlvx11VX9Z8G/b855b93229e6e22fcc1fbe31534e4a08/Screen_Shot_2021-09-24_at_9.17.29_AM.png"
+    ]
+  },
+  {
+    "name": "NNS Front-End Dapp",
+    "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
+    "website": "https://nns.ic0.app",
+    "tags": [
+      "NNS",
+      "Dapp",
+      "Infrastructure",
+      "Wallet"
+    ],
+    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn rewards.",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/33PyTRY7QwfSTvNlRKFRvT/8e368a0828ef0fa211aebb46d29b24bd/ICP-logo-mark.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7ehsgFS8bakDIUfNDbncp0/375dc915bfcaf07375818f3c48f5c19d/Screen_Shot_2021-09-24_at_9.19.38_AM.png"
+    ]
+  },
+  {
+    "name": "Dank",
+    "oneLiner": "Decentralized Cycles Bank",
+    "website": "https://dank.ooo/",
+    "tags": [
+      "Infrastructure",
+      "DeFi"
+    ],
+    "description": "Dank is the first Decentralized Bank built on the Internet Computer, developed by Fleek. Through a collection of Open Internet Services for users and developers, Dank makes cycles management seamless.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2kbYMG6wDDQC551MkaZTm8/af7bfa55ab29cfe608a504e06819e728/image_90.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/5Ad0AG83vclB3QBdYup8kp/cc0457fde6085c810e3017edd298f581/Screen_Shot_2021-09-24_at_10.24.39_AM.png"
+    ]
+  },
+  {
+    "name": "Toniq Labs",
+    "oneLiner": "Internet Computer Development Shop",
+    "website": "https://igpeu-waaaa-aaaad-qaava-cai.raw.ic0.app/",
+    "tags": [
+      "Infrastructure",
+      "Dapp"
+    ],
+    "description": "Toniq Labs is the creator of Entrepot NFT marketplace, Stoic Wallet, Exponent, and Rise of the Magni, Cronic NFTs and more. Try out their projects that range from NFTs to wrapped cycles to games built on, and for, the Internet Computer blockchain.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6OacueTFZu0dxsZeb8ht7j/7566ad71e5e8f20c21e11f5f726bf0cb/Toniq.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/6VaPZ3YEQcx7pa1IcB9xy9/fd7a15bb05dcf10c3babe253cbce135e/Screen_Shot_2021-09-24_at_10.29.14_AM.png"
+    ]
+  },
+  {
+    "name": "Canlista",
+    "oneLiner": "Internet Computer Canister Registry",
+    "website": "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/",
+    "tags": [
+      "Infrastructure",
+      "Dapp"
+    ],
+    "description": "The Internet Computer community canister registry. Find, publish and extend applications and services built on the Internet Computer. Log in with Internet Identity. ",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6EhWKc8ZsdqcsUCvDIAy72/85f132d319abbc0f93da70ab7ba7091a/Screen_Shot_2021-06-28_at_2.05_1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7GINKtZW8YK03dIxHVDX2r/cb3be801abedd7e85d755e7939ac6d05/Screen_Shot_2021-09-24_at_10.30.51_AM.png"
+    ]
+  },
+  {
+    "name": "Agryo",
+    "website": "https://www.agryo.com/",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Agryo is the global risk intelligence provider that enables financial institutions to assess and manage financial risks in the crop field level for underwriting agriculture insurance, loans, and trade finance globally; as well as meet sustainability goals.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6Tmfke6DkchW1impD1XXDS/bb2649585e3c89703578dfe64b6f899c/Agryo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7GCDSE6jCBAKTwzsGWYxxF/737f0290324e4c9d76245703201f5579/Screen_Shot_2021-09-24_at_10.32.49_AM.png"
+    ]
+  },
+  {
+    "name": "Sudograph",
+    "website": "https://i67uk-hiaaa-aaaae-qaaka-cai.raw.ic0.app/",
+    "tags": [
+      "Infrastructure",
+      "Dapp",
+      "Tools"
+    ],
+    "description": "Sudograph is a GraphQL database for the Internet Computer. Its goal is to become the simplest way to develop applications for the IC by providing flexibility and out-of-the-box data management.",
+    "github": "https://github.com/sudograph/sudograph",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6XF59gUeMJvtQm93f93m3M/b75a00a2fa3a99b38ed51625a82e616c/Sudograph.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/23OrIKWEWpNgFtlGIXmJPy/002fdf0ce1c353cdb84e9c6077506f29/Sudograph.png"
+    ]
+  }
+]
