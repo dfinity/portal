@@ -303,7 +303,12 @@
     }
 
     .swiperSlide {
+        padding-left: 0;
         width: 338px;
         height: 580px;
+    }
+    .swiperSlide + .swiperSlide {
+        width: 338px;
+        padding: 0;
     }
 }
