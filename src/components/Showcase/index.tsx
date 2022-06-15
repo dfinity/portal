@@ -110,6 +110,7 @@ function getDominantColorOnLoad(img) {
     console.error(e);
   }
 }
+
 const rgbToHex = (r, g, b) =>
   "#" +
   [r, g, b]
@@ -118,13 +119,14 @@ const rgbToHex = (r, g, b) =>
       return hex.length === 1 ? "0" + hex : hex;
     })
     .join("");
+
 function Dapp({ dappInfo }) {
   function cleanWebsiteURL(url) {
     let tempURL = url.endsWith("/") ? url.slice(0, -1) : url;
     return tempURL.replace(/^https?:\/\//, "");
   }
 
-  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
+  const [backgroundColor, setBackgroundColor] = useState("#BCAAEB");
 
   function handleImageLoaded({ target }) {
     let [r, g, b] = getDominantColorOnLoad(target);
@@ -136,7 +138,7 @@ function Dapp({ dappInfo }) {
       <div className={styles.dappHeader}>
         <div className={styles.dappIcon}>
           <img
-            onLoad={handleImageLoaded}
+            /*onLoad={handleImageLoaded}*/
             crossOrigin={"anonymous"}
             style={{ maxHeight: "49px", maxWidth: "70px" }}
             src={dappInfo.logo + "?w=340&q=50&fm=png"}
@@ -179,6 +181,7 @@ function Dapp({ dappInfo }) {
 }
 
 function Showcase() {
+  const firstDapps = dapps.slice(0, 15);
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.35 });
   useEffect(() => {
@@ -272,23 +275,11 @@ function Showcase() {
             variants={transitions.item}
             className={styles.swiperContainer}
           >
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={"auto"}
-              scrollbar={{
-                hide: false,
-                dragSize: 150,
-                draggable: true,
-              }}
-              mousewheel={true}
-              modules={[Scrollbar, Mousewheel]}
-            >
-              {dapps.map((dapp) => (
-                <SwiperSlide className={styles.swiperSlide} key={dapp.name}>
-                  <Dapp dappInfo={dapp} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {firstDapps.map((dapp) => (
+              <div className={styles.cardWrapper}>
+                <Dapp key={dapp.name} dappInfo={dapp} />
+              </div>
+            ))}
           </motion.div>
           <div className={styles.actionButtonContainer}>
             <Link className={styles.actionButton} to="/samples">

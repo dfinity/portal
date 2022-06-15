@@ -234,5 +234,916 @@
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/23OrIKWEWpNgFtlGIXmJPy/002fdf0ce1c353cdb84e9c6077506f29/Sudograph.png"
     ]
+  },
+  {
+    "name": "ICMoji Origins",
+    "oneLiner": "NFT Based Multiplayer Game On-Chain",
+    "website": "https://icmojis.com/",
+    "tags": [
+      "Games",
+      "NFT",
+      "Dapp"
+    ],
+    "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis. These NFTs can be won in weekly challenges, purchased, or traded via marketplace and brought into the decentralized game with their unique attributes. Play now for free!",
+    "usesInternetIdentity": true,
+    "stats": "Winner DSCVR Hackathon",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2mckPYo0K5UGKk2KsyH2A9/eb0ca462c9bb273f74acf73ddd9f7f1b/ICmoji-Logo.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/4qeqaHg2gLecqmtD2cvnE9/6091164b1a8a45f253d7dd4b22cf4b26/ICMoji_Origins.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "Texas Hold'em",
+    "website": "https://lm5fh-ayaaa-aaaah-aafua-cai.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "IC Texas Hold'em is a dapp hosted completely on-chain on the Internet Computer. 2nd place winner of the DSCVR Hackathon Season 2 – play against real people across the globe live and challenge them to the classic game of Texas Holdem Poker. Mint GFT (a game token built on the Internet Computer) and use it to play cards instantly from any browser, also send messages and authenticate with Internet Identity or Stoic Wallet. ",
+    "github": "https://github.com/NnsDao/ICTexas-UI",
+    "usesInternetIdentity": true,
+    "stats": "2nd Place DSCVR Hackathon",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/18FjcwcJ5EJQbTCJYWEefU/df83d9d8d57d5e93d52871246161cf9f/ICTexas.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2WOde6PuOlIoGrSbORBfL/e07034620b6a61c022f2fd385d32a0f9/Screen_Shot_2021-10-14_at_2.54.04_PM.png"
+    ]
+  },
+  {
+    "name": "Mission Is Possible",
+    "website": "https://to3ja-iyaaa-aaaai-qapsq-cai.raw.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "Mission is Possible – 3rd place winner of the DSCVR Hackathon Season 2 – is a PVP third person shooter hosted on the Internet Computer blockchain. The John Wick inspired game is built using the Unity 3D Game Engine, and hosted on the IC enabling decentralized login with Internet Identity. ",
+    "usesInternetIdentity": true,
+    "stats": "3rd Place DSCVR Hackathon",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1ESXXvsVeAS1wthZMwPxa5/1fa04d68da27a5706da9ab3f1280fd0b/Screen_Shot_2021-10-14_at_2.59.13_PM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3nTStruez7Fi7bll2zXVux/224612c37c679af1f56982c6e70ed064/Screen_Shot_2021-10-14_at_3.20.18_PM.png"
+    ]
+  },
+  {
+    "name": "Reversi",
+    "website": "https://ivg37-qiaaa-aaaab-aaaga-cai.ic0.app/#!/play",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "Reversi is one of the first canister smart contracts deployed to the Internet Computer and is a completely decentralized multiplayer game. Play against a friend (or foe) in real-time, from any browser, anywhere in the world. ",
+    "github": "https://github.com/ninegua/reversi",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4BVKI2TWzuutACosmBq83E/456b24a51f31ff5ff647cbf0ee28ecd4/download.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/16QDTAxVTH5nYmHLCrR61M/2cd85336fa3898082b5b6d55ded03a67/Screen_Shot_2021-09-24_at_9.22.34_AM.png"
+    ]
+  },
+  {
+    "name": "ICP Explorer",
+    "website": "https://www.icpexplorer.org/#/datacenters",
+    "tags": [
+      "Infrastructure",
+      "Explorer"
+    ],
+    "description": "ICP Explorer, a project started in 2018, is an open-source, community-built dashboard and explorer for the Internet Computer, providing live information and statistics about the network, governance, and the ICP utility token, including account and transaction information.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2OuoV2HCAa2pNoLjaL5Bez/b37c0344338173b5e51c65ddb334f760/dfinity-explorer-logo.fedaf93e.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/5Z4G2c5dqwv5CSB7Rmprq/fb351047867b09129f53657a96476dc5/ICPExplorer_Screerecord.mp4",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3iP0vuO3FBkXJpSyeH5IVq/0e61e7177f36f7208ba8ea583692aa99/Screen_Shot_2021-09-24_at_9.23.49_AM.png"
+    ]
+  },
+  {
+    "name": "NNS Calculator",
+    "website": "https://networknervoussystem.com/",
+    "tags": [
+      "NNS",
+      "Infrastructure"
+    ],
+    "description": "The Network Nervous System Calculator is a calculator that allows anyone to edit variables and estimate voting rewards based on number of proposals voted on, length of stake, accumulated maturity, and more. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6AiSNSjxIhGrSA9lZ2uSkU/28718395b652fad5f9f3fe2924bd31fa/ICP_Neuron_Calculator_1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7HkqQU5WpeKqae8BQhXkWO/6e3f577fadc206036af13a722372293e/Screen_Shot_2021-09-24_at_10.35.30_AM.png"
+    ]
+  },
+  {
+    "name": "Stoic Wallet",
+    "website": "https://www.stoicwallet.com/",
+    "tags": [
+      "Wallet",
+      "Authentication"
+    ],
+    "description": "Stoic Wallet by Toniq Labs allows anyone to create a digital wallet, authenticating users through a variety of methods, one of those being Internet Identity. Create accounts, keep an address book, and more. ",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4ohBdGsSTPTW8Bxh2YPBQ/11cdbb0746c2b9406ee1a6ef4adb045b/logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/51sbDd7scF5rSaSMWZrLgS/e31de2425a70c51a5f8b1dcd7e46b430/Screen_Shot_2021-09-24_at_10.40.53_AM.png"
+    ]
+  },
+  {
+    "name": "ICME",
+    "website": "https://sygsn-caaaa-aaaaf-qaahq-cai.raw.ic0.app/",
+    "tags": [
+      "Infrastructure"
+    ],
+    "description": "ICME is a no-code tool that makes it easy for anyone to build and deploy beautiful websites on the Internet Computer. Launch your blog or business's website on the Internet Computer today.",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/32KwYZhGKNCp56hjmtkFj4/76b199bd1116073209dd12056a84ae9e/Screen_Shot_2021-07-16_at_11.56_1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3gskFdsarDZgaWbk2jwuUJ/d534fbc576fc2d78fc86952b3f7c499e/Screen_Shot_2021-09-10_at_9.09.41_AM.png",
+      "//images.ctfassets.net/ywqk17d3hsnp/20RutCUPGh4zDQhAMXZFov/6450dee216916fbd1052cc4b5bffd5d0/Screen_Shot_2021-09-10_at_9.13.52_AM.png"
+    ]
+  },
+  {
+    "name": "Saga Tarot",
+    "website": "https://5nl7c-zqaaa-aaaah-qaa7a-cai.raw.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "Have your fortune told on the Internet Computer. Saga Tarot gives you a tarot reading in one click. The user-friendly dapp is built completely on the Internet Computer, accessible from any browser. What will the future hold for you?",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7GKN9mcf5R4foPzoR3aIWM/be95244f86fad3edd5a16931dfb3ab31/Screen_Shot_2021-07-16_at_1.49.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/50sQP0NPvVBe98RN89Bovg/da96775d57fa121b5337361e647811c3/Saga_Tarot.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "IC Drive",
+    "website": "http://icdrive.co",
+    "tags": [
+      "Dapp",
+      "Work"
+    ],
+    "description": "A decentralized private file storage dapp built on the Internet Computer. Store and securely share any type from anywhere in the world with this decentralized version of Box, or Google Drive. ",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1oSsthZrA715ISQCYa40uo/986750df2fa3b3aebad04dc1e5222a4a/IC_Drive.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/6upWtrpRvT2XGOFQfoKZC8/7a5cc3dee28ef9c6383019aa591faee7/Screen_Shot_2021-09-24_at_9.34.57_AM.png",
+      "//images.ctfassets.net/ywqk17d3hsnp/4lVnKUpRrjHrcqUV3oBgiY/489338b18cca8e3aec8f3e1b4f972037/Screen_Shot_2021-09-24_at_9.36.08_AM.png"
+    ]
+  },
+  {
+    "name": "DeckDeckGo",
+    "website": "https://deckdeckgo.com",
+    "tags": [
+      "Dapp",
+      "Work"
+    ],
+    "description": "An open source web editor for presentations built completely on-chain. This dapp is like a decentralized version of Google Slides built on the Internet Computer. ",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4mCGISHjbn0HMza9qpUYKM/0650998b5f3c9556c92dfc351174f105/deckdeckgo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/13nxFKTL1r2XQSwDZj5Yov/8f3f9d08a54e76ccd23fd0b3626e4694/Screen_Shot_2021-09-24_at_9.39.57_AM.png",
+      "//images.ctfassets.net/ywqk17d3hsnp/5jLVfNd7x5A6mhNy99a9nc/f9a5ee0530bc6e76916e642ba8cd06a7/Screen_Shot_2021-09-24_at_9.38.04_AM.png"
+    ]
+  },
+  {
+    "name": "Aedile",
+    "website": "https://eemeo-taaaa-aaaad-qakjq-cai.ic.fleek.co/",
+    "tags": [
+      "Dapp",
+      "Work"
+    ],
+    "description": "Aedile brings your team’s work together in one shared space, completely built on-chain. Manage your boards, columns & cards to transform your projects, serving web experiences directly from the Internet Computer blockchain. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2mfVIRk3Zka2q1g1jwEAjV/f198ee00580a18232abd1fb46f813fd2/Group.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3bxAJ1FHWGkaOlOWVgnMfU/327e8a42394405531ba63a25fc51c04b/Screen_Shot_2021-09-24_at_10.45.17_AM.png"
+    ]
+  },
+  {
+    "name": "Rise of the Magni",
+    "website": "https://riseofthemagni.com/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "Rise of the Magni, built by Toniq Labs, winner of the DSCVR hackathon for games on the Internet Computer. Buy, earn, and trade collectibles, compete in tactical battles online to earn in-game tokens, and venture through story mode to experience one of the first games built on the Internet Computer.",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/IvWWDbCQNSgd9T9e6UR1N/d76572125a2ae636d25b9527bfb843e3/Logo_V.3__1_.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7epZcAiorhuqKtsnBoxPi3/7dd3c61d38b1969ef2c637b13729b6c8/Screen_Shot_2021-09-24_at_9.43.43_AM.png"
+    ]
+  },
+  {
+    "name": "Welcome Into the Metaverse",
+    "website": "https://lc7ip-3iaaa-aaaah-aafva-cai.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "Prize winner of the DSCVR hackathon for the Internet Computer – this game brings digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5A7UGkEOjFS5o6yyY6b1Fl/9aabe1b1ee90a1afa59843b8f0e555ca/Alex_alone_48x48.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/5NyILcsQYsNRgbN2i9hXBU/f5ad38fa0ef0ec03e8af3af9e5312a90/Screen_Shot_2021-09-24_at_10.47.39_AM.png"
+    ]
+  },
+  {
+    "name": "HexGL",
+    "website": "https://neqb2-dyaaa-aaaad-qameq-cai.raw.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "HexGL is a futuristic racing game using HTML5, Javascript, WebGL and hosted on the Internet Computer blockchain in order to run instantly on your browser from anywhere in the world.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1lZuRQ876Lkt2mtJgy1sFu/f6ebe0c132989c16644bde41a31bd56a/HexGL.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/6Gby0DNgjoiVnUuKPLZQHE/7151526c1758a488e4ae53fbc831971c/Screen_Shot_2021-09-24_at_10.48.44_AM.png"
+    ]
+  },
+  {
+    "name": "ICPunks",
+    "website": "https://icpunks.com/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "ICPunks has developed 10,000 randomly generated, unique collectible clowns, with proof of ownership stored on the Internet Computer blockchain. Created as a reference to a meme comparing the Internet Computer token (ICP) to the American hip hop duo Insane Clown Posse.",
+    "github": "https://github.com/stopak/ICPunks",
+    "usesInternetIdentity": true,
+    "stats": "Highest Volume NFT on ICP",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3HMTU9IVj5QIotJTRgL8Ei/146b53f93c389f2801f6b9b819aa389c/Clown1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7jnedgjB79YHSihGfZfJxY/8e64bf59ed723dc99ab3b5776688ac3b/Screen_Shot_2021-09-24_at_10.01.14_AM.png"
+    ]
+  },
+  {
+    "name": "Entrepot",
+    "website": "https://entrepot.app/",
+    "tags": [
+      "NFT",
+      "DeFi"
+    ],
+    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot (through Exponent) provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
+    "usesInternetIdentity": true,
+    "stats": "$3M+ in Volume",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1WQuOFrpDWO0OIY2ZzCk09/611027edce39d99e9414a9eecd6452f5/Entrepot_2.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/Nc7FFRNKiDElPyQ6epON2/20caf9b5dc6c4c3265330640d6116553/Entrepot_App_2.mp4",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4rs2N4Ovum2CKscJ56t9kK/44256c1b485cc94e6210bea5c664dab0/Entrepot.png"
+    ]
+  },
+  {
+    "name": "Departure Labs",
+    "website": "https://github.com/DepartureLabsIC/non-fungible-token",
+    "tags": [
+      "Infrastructure",
+      "NFT"
+    ],
+    "description": "Departure Labs is exploring on-chain media, web native NFTs, and developing productized open internet services for developers and consumers. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.\n",
+    "github": "https://github.com/DepartureLabsIC/non-fungible-token",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6XMNjEZyIypaq3zDtextjK/90cc77de64b64f9d595bf47c17f14417/DepartureOne.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/27iMaUiRh1Cgsv8I5iFPHE/8092a35229283d4c425505d3c7663e58/Screen_Shot_2021-09-24_at_9.53.32_AM.png"
+    ]
+  },
+  {
+    "name": "Content Fly",
+    "website": "https://contentfly.app/",
+    "tags": [
+      "Dapp",
+      "DeFi",
+      "Social",
+      "Work"
+    ],
+    "description": "Content Fly is a Web3 Job Management Tool & Marketplace. It allows content buyers & creators to work together with the security of an escrow payment and DAO based dispute resolution. IP is protected and transferred as an NFT.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7fpdJT3JyDahLNuKjdSfJu/f9ac0c4d2746d6c5f44c6c0a2b23f29d/Content_Fly_Logo_200x200_-_Transparent.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4zPzqPt8kmVrwbKwSHJmzx/1925a596291769ca707d1482455cc01d/Content_Fly_Showcase__1_.png"
+    ]
+  },
+  {
+    "name": "Axon",
+    "website": "https://axon.ooo/",
+    "tags": [
+      "Infrastructure",
+      "NNS"
+    ],
+    "description": "A community-built neuron management solution for the Internet Computer. Multiple users can own an Axon that manages multiple neurons within the Network Nervous System, as well as delegate votes to other neurons to vote on proposals. Axon is a multi-user, multi-neuron management canister smart contract.",
+    "github": "https://github.com/FloorLamp/axon",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1kgzyHz995RtXRbrHgUqo0/2c6fb7f1a5c20f8f2649fc3645e33c27/axon-full-logo-bg.svg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2XM0FEwJXltfmgj7J4VkRt/00e7866b5c921ef599614d4aaf38bcfa/Screen_Shot_2021-09-24_at_9.54.39_AM.png"
+    ]
+  },
+  {
+    "name": "Earth Wallet",
+    "website": "https://www.earthwallet.io/",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Authentication"
+    ],
+    "description": "Earth Wallet is the self-proclaimed “Key to Web3.0.\" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
+    "github": "https://github.com/earth-association",
+    "usesInternetIdentity": false,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2rO9RZmsGaG4rvFdECnKA7/beaaa4857a9caa7e31b6a239e297d98e/60afae48b3db5d4a806e8974_earth__1_.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4xd7nbArBSPa0NqqjfFY4f/e4715d3ba09782b23df49b058fee2a66/Screen_Shot_2021-09-24_at_9.57.37_AM.png"
+    ]
+  },
+  {
+    "name": "Nuance",
+    "website": "http://nuance.xyz/",
+    "tags": [
+      "Dapp",
+      "Work",
+      "NFT"
+    ],
+    "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world’s first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/16Sevl8ZPGDzkVJGt1Ps2l/bad690f013454629b03b41d140c292ad/nu_logo-full_trans_1500.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7MHQFDOwrMa4eRLv6zEXyy/cb3db7a58d8805323e3832fb4265a820/Screen_Shot_2021-09-24_at_10.02.19_AM.png"
+    ]
+  },
+  {
+    "name": "The Wall",
+    "website": "https://rivyl-6aaaa-aaaaf-qaapq-cai.raw.ic0.app/",
+    "tags": [
+      "Dapp",
+      "ETH"
+    ],
+    "description": "The Wall is a dapp built on the Internet Computer blockchain, which blends Ethereum's MetaMask authentication with the Internet Computer's native Internet Identity blockchain authentication system. This first example of ETH x ICP allows users to leave any message on the wall for all eternity.",
+    "github": "https://github.com/kristoferlund/ic-wall",
+    "usesInternetIdentity": true,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/EvPZAWsAhDRJP36hNPsMj/89ce75570f9003d99c18a5a10be7b736/Screen_Shot_2021-08-25_at_9.38.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2zFFQdunSyNoHQoN2EIjCu/0bdfcc437f65988e7b46a28bffa88670/Screen_Shot_2021-09-24_at_10.03.02_AM.png"
+    ]
+  },
+  {
+    "name": "Uniswap Front End on the IC",
+    "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
+    "tags": [
+      "DeFi",
+      "Dapp",
+      "ETH",
+      "Swap"
+    ],
+    "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
+    "stats": "Front-End On-Chain",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7vsbZwaF2LJVGHjd93IMLx/94c29bf3932e7e5369c4fe4cf9bb5f73/1200px-Uniswap_Logo.svg.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/7CqcnzP6Ww4xRGxozCDjkF/8842a781bf5f008e3333f28f09db0f19/Uniswap_Front_End_on_the_IC.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "NFT Village",
+    "website": "http://nftvillage.ai/",
+    "tags": [
+      "NFT",
+      "Dapp"
+    ],
+    "description": "Look up the attributes, NRI %, rarity, and other information about Internet Computer NFTs. Simply input the URL of your ICPunks and Cronics NFTs or any other NFT minted on the Internet Computer blockchain and learn all of the details that make the NFT unique.",
+    "usesInternetIdentity": false,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/31tuetCDWU6wWMBsBYIMRf/679442e78c0ce7904b68b6aa1fab5f3f/nft_village_logo__1__1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2HIMhrKpMRY8qf3D6C3epk/b7701d821e13f65452948f8afd658ebc/Screen_Shot_2021-09-24_at_10.10.12_AM.png"
+    ]
+  },
+  {
+    "name": "Internet Astronauts",
+    "website": "https://interastrosc.com/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "Internet Astronauts are a set of 10,000 limited edition, uniquely minted astronaut-themed NFTs. These end-to-end on-chain NFTs will be up for grabs to the community through the Entrepot.app marketplace. They are only possible through the Internet Computer blockchain.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3VrLVOSxrWQKRR9lDWGOKU/0a8039ddff31271a8b6ef49ff7ea8da6/Internet_AstronautsIcy.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4Nxg0QXL97M7649kfRNCiK/855566330b540a2f5980fc9414e0172b/Interastro.jpeg"
+    ]
+  },
+  {
+    "name": "ICPuppies",
+    "website": "https://icpuppies.io/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "ICPuppies is an NFT project hosted completely on the Internet Computer. In October, 10,000 randomly generated NFTs will be available for members of the Internet Computer community to claim through the Entrepot.app marketplace. A portion of the proceeds will be donated to organizations that support puppies.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3hiLXWqhEJ30R35uAElI4Q/6a0d758172c3a25467b07799e7b084a8/icpuppies-logo.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/6ohyB6mkPdoD0ivLGe1DOh/83939d89f65038eaec979bc85ffbaf46/Screen_Shot_2021-09-24_at_10.52.50_AM.png"
+    ]
+  },
+  {
+    "name": "ModClub",
+    "website": "https://ljyte-qiaaa-aaaah-qaiva-cai.raw.ic0.app/",
+    "tags": [
+      "Dapp"
+    ],
+    "description": "ModClub is a decentralized moderation rewarding tool based completely on-chain. Built on the Internet Computer, ModClub rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/gFs8jUaWREnU89CKy4Fkp/7544907480491298d658af5462ab1da3/ModClub.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2epzYxQVwyFTwD5fWc4pZE/0772050bd7d728a1a5f113c4bc0515a7/Screen_Shot_2021-09-24_at_10.12.11_AM.png"
+    ]
+  },
+  {
+    "name": "AstroX",
+    "oneLiner": "Web3.0 developer tools",
+    "website": "https://github.com/AstroxNetwork",
+    "tags": [
+      "Tools",
+      "Infrastructure"
+    ],
+    "description": "AstroX is a blockchain development group focused on building tools for the Web3.0 ecosystem. AstroX has developed a Dart agent and other tools to help support mobile application development on the Internet Computer blockchain.",
+    "github": "https://github.com/AstroxNetwork",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3aEwYNEvpUlTJjYHQAQV2p/dc3069b52e429090d56e86ec21b4bcd3/AstroX.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/YYgSnAzLeXcD3wFK5dH7S/ad1be5fb7c0c494fd2d256742378bde7/Screen_Shot_2021-09-24_at_10.13.09_AM.png"
+    ]
+  },
+  {
+    "name": "crowdEats",
+    "oneLiner": "Open version of Yelp",
+    "website": "https://www.crowdeats.io/",
+    "tags": [
+      "Dapp"
+    ],
+    "description": "crowdEats is a decentralized version of Yelp, where users are paid for giving their reviews, have verifiable reviews (certified by the Internet Computer blockchain), and allow early adopters to share in the financial success of the crowdEats platform as it continues to grow. Join the waitlist to be the first to review your favorite restaurants.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5nBp0fyJaT610FWGPRiJ66/2e80124b7e2f03ad243b3a88336d06e3/61255475afadab0fbb9487b2_crowdeats.svg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/lpTjqxCt4Tgaal82HRcMD/2c01c6be2cb75a3f02ce69309d640841/Screen_Shot_2021-09-24_at_10.15.42_AM.png"
+    ]
+  },
+  {
+    "name": "Lo-Fi Player",
+    "website": "https://hl2zz-gyaaa-aaaad-qas3a-cai.raw.ic0.app/",
+    "tags": [
+      "Dapp",
+      "Games"
+    ],
+    "description": "Lo-Fi Player is a dapp hosted on the Internet Computer that lets users listen to relaxing beats delivered by blockchain. The back-end is using machine learning to build and develop the AI produced tunes, and users can interact within the player to change the sound to their liking. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6TkvQAqmPAeKNMDcKA2qV4/25964a3447970d7a3ae94e25bd08b169/Screen_Shot_2021-09-24_at_10.19.10_AM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/41u3MOIHq0EyS5qFX0WEnm/987910fe89eef82bbcccacc039627cf3/Lo-Fi_Player.png"
+    ]
+  },
+  {
+    "name": "Cube Run",
+    "website": "https://7qx3n-ziaaa-aaaad-qaqca-cai.raw.ic0.app/",
+    "tags": [
+      "Games",
+      "Dapp"
+    ],
+    "description": "The classic game, \"Cube Run\" gets an update by having a new graphic interface and being hosted completely on-chain. The decentralized version of this game lets you keep your high-score running in your browser through persistent memory. ",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/9RQM4nhtgukbGDOe7YA99/aec27a16225deb122008746240ab5701/cuberun-logo.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/anJkcwAZmWzVDM6XpklzB/623a55f3206f8f3675f90845187621b0/CubeRun.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "ICPSwap",
+    "website": "https://icpswap.com",
+    "tags": [
+      "DeFi",
+      "ETH",
+      "Wallet",
+      "Dapp",
+      "Swap"
+    ],
+    "description": "ICPSwap is decentralized exchange (DEX) built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6EMh76PrVja8lqrGF9XEp6/c673e58d561ac6b1804ce63ad164f38b/ICPSwaplogo.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/6YO9rO89g6dj1ioUyJNxrE/e744ce464b7b7584e27caeef063d7140/Screen_Shot_2021-10-14_at_3.39.11_PM.png"
+    ]
+  },
+  {
+    "name": "Terabethia",
+    "website": "https://terabethia.ooo/",
+    "tags": [
+      "ETH",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Terabethia is a bridge and communication protocol that contracts across chains (starting with Ethereum & the Internet Computer) can use to send messages to each other, as well as automatically mirror & use Ethereum assets (ERC20, ERC721, ERC1155) on the Internet Computer",
+    "github": "https://github.com/psychedelic/terabethia",
+    "stats": "ETH x ICP Bridge",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6NKnWMjDBnqaXthw2BAEX1/ef068cbb86d39bf7627abd52874688ac/Screen_Shot_2021-12-23_at_8.01.56_AM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/5oK5Qsf3kg95vxYl1t1Gm9/d041b437fccd5fc70d06f506fe74ac8b/Screen_Shot_2021-12-23_at_8.00.37_AM.png"
+    ]
+  },
+  {
+    "name": "SushiSwap Front-End",
+    "website": "https://aufz7-4qaaa-aaaaf-qae3a-cai.raw.ic0.app/swap",
+    "tags": [
+      "ETH",
+      "DeFi",
+      "Dapp",
+      "Swap"
+    ],
+    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more. This is a front-end for Sushi Swap hosted 100% on-chain, completely decentralized, using the Internet Computer in order to have a complete Web3 stack. This was a result of a community bounty -- inspect the code below. ",
+    "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
+    "stats": "Front-End Hosted On-Chain",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5DutrYe0BlGf0N4WV0LNDB/e2c8dfbe264d32de145623b7de19c277/Sushiswap_logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3og77mBuru6zjsrvo7IU6F/e3a97de5c7c354c1c29641cbb277e93e/Screen_Shot_2021-12-23_at_7.46.02_AM.png"
+    ]
+  },
+  {
+    "name": "Infinity Swap",
+    "website": "https://infinityswap.one/",
+    "tags": [
+      "DeFi",
+      "ETH",
+      "Wallet",
+      "Swap"
+    ],
+    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) –– InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
+    "stats": "$1.5M Invested PolyChain Capital + a16z",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6cuL0E5FyxdqF7DLzjMXnu/4e5898a86ecf8b05c35e623538c2ad14/InfinitySwap.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4E84Z3x0oUurs4JBNFW2RK/15d1d2c4e2feb8a0fcf5203afad6c5ed/Screen_Shot_2021-12-22_at_12.26.46_PM.png"
+    ]
+  },
+  {
+    "name": "EVM on ICP",
+    "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
+    "tags": [
+      "ETH",
+      "Dapp",
+      "Games"
+    ],
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/TDmepIycaof00Se2Cr0wb/d9ad25913a1c2e19af9d5f7e8041fafd/Screen_Shot_2021-12-22_at_12.10.18_PM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2LkrUgxpR9v1JjrT9DjUWk/d23cc2a7cb5ef153ccf4b4722d86f669/Screen_Shot_2021-12-22_at_12.17.19_PM.png"
+    ]
+  },
+  {
+    "name": "Sonic",
+    "website": "https://sonic.ooo/",
+    "tags": [
+      "DeFi",
+      "ETH",
+      "Dapp",
+      "Wallet",
+      "Swap"
+    ],
+    "description": "Sonic is a \"swap\" built end-to-end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer’s AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem. ",
+    "github": "https://github.com/psychedelic",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/41j2Cj6Y0wVjWtywzE6myv/88283538f9d86599e4b85427368d1964/Sonic_Logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3HMRCpjU3GkVQwmgbmZFhi/31b6804f5900ecadd8ffb1925ffbfb3e/Screen_Shot_2021-12-22_at_12.33.07_PM.png"
+    ]
+  },
+  {
+    "name": "IC Gallery",
+    "website": "https://ic.gallery/ ",
+    "tags": [
+      "Metaverse",
+      "NFT",
+      "Dapp"
+    ],
+    "description": "The IC Gallery is an interoperable 3D metaverse blending GameFi and DeFi, where users can play, mint, and trade all their existing NFTs through various immersive 3D experiences on the Internet Computer and Ethereum. Hosted completely on-chain, the IC Gallery is the ultimate 3D NFT metaverse experience.",
+    "stats": "On-Chain NFT Metaverse Art Gallery",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6kmAQ4Pl2Y8Y9xU8CU4mNs/c493724b146ad27691c1399113bb9e11/IC_Gallery_Logo.jpg_medium",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/2PIrdT2PLMpwkXKvqUYp6m/7fcaf0972c6065b8c82f1e6c03e4b3f9/IC_Gallery_Video.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "NFT Studio",
+    "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
+    "tags": [
+      "Metaverse",
+      "NFT",
+      "Tools"
+    ],
+    "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1UgSbYhl4H8tdfsiaNYKOY/2f3ae21a59f972e1bbf3d37c6f7a4008/NFT_Studio_Logo.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/4k4LSN6FnQzq9TqLs8GdLG/04fced9f5da46832a406cdfeffed9299/NFT_Studio_Poland_MPR.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "MetaSports Basketball",
+    "website": "https://metasportsbball.xyz/",
+    "tags": [
+      "Metaverse",
+      "ETH",
+      "Games",
+      "NFT",
+      "Dapp"
+    ],
+    "description": "MetaSports Basketball is an open basketball metaverse, built on the Ethereum & Internet Computer blockchains, where NFT players of all shapes, species, and origin can compete to become basketball superstars on teams owned and managed by the players. Developed by Psychedelic, and Featured in Yahoo and many major media publications, the game allows users to create and mint characters, as well as bring in NFTs from their collection to play on their MBA team. ",
+    "stats": "ETH NFT Game Built on ICP",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6bGeYiojpIQLeiRYpt12OQ/9ee831d3b45ed411edea0672fd7d6695/Screen_Shot_2021-12-23_at_11.37.15_AM.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/2cqS3C9hvwXuexbS8tIsar/5d8be761c0c3248a548eee994c7c8439/MetaSports_Basketball_mp4.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "Wild and West",
+    "website": "https://entrepot.app/marketplace/wildwest",
+    "tags": [
+      "NFT"
+    ],
+    "description": "Wild and West NFTs were featured at the 2021 NFT NYC event, as well as showcased at the ICONIC NFT Art Gallery hosted by the DFINITY Foundation and Toniq Labs. Wild and West NFTs are the backbone of a few different cross-blockchain projects being led by the creative studio. Bridging native components of the Ethereum and Internet Computer blockchains to make an immersive experience for NFT holders. ",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4W9Av5BAxv0jEamBnEECcg/01172baec5e685f901aaff9e4f09aefd/Wild_and_West_Logo.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3ccdPzNg6xZU3vLVPwPQO1/63a0d8a6638317793b8b871ee29e54e6/Screen_Shot_2021-12-23_at_11.52.22_AM.png"
+    ]
+  },
+  {
+    "name": "Blockchain Heroes",
+    "website": "https://entrepot.app/marketplace/blockchain-heroes",
+    "tags": [
+      "NFT"
+    ],
+    "description": "The best-selling Blockchain Heroes series has been brought to the Internet Computer! Originally presented on the WAX blockchain in Summer of 2020 (selling out in minutes), Blockchain Heroes is a set of 50 super heroes inspired by real-world blockchain and crypto personalities. Now the original 50 heroes are being issued on ICP with all NEW variations. Booster packs with $0 gas fees. ",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6zhTTvIVSHYYUcpQIcYYCw/ddb0fa8233f46f8082e9d9c2c1e586f5/Blockchain_Heroes.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/6nDsCcJUDqgDkE86dl3w7H/0082a9707ad46b7cdce6745567b38146/Blockchain_Heroes_Booster_Pack.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "Klever.io",
+    "website": "https://klever.io/",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "NNS",
+      "Swap"
+    ],
+    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer’s Network Nervous System in order to support staking with voting rewards. ",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7L08jbmQNA8y4NnBgMc5CD/132d3f10b44ed550f5ccdd66756f927a/Klever.io_Logo_2.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/1NkXeBfGsS8I9pqpJtpPff/bee46822179059f6e66595c9c39476b7/Screen_Shot_2021-12-23_at_2.32.52_PM.png"
+    ]
+  },
+  {
+    "name": "Portal",
+    "website": "https://portal.one/",
+    "tags": [
+      "Work",
+      "Dapp",
+      "Social",
+      "Infrastructure"
+    ],
+    "description": "Portal is the world’s first end-to-end decentralized streaming service. Built and hosted on-chain on the Internet Computer, Portal aims to reinvent streaming to benefit creators. Similar to Twitch but on the Internet Computer, Portal boasts the ability for content creators to be rewarded for streaming directly through the dapp, supporting sustainable financial independence for streamers.",
+    "stats": "On-Chain Streaming",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3AMfnGvWE7tTWKumJmz2kD/b3ad5098e3ee0010417ccec654b269ac/Portal.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3PYj67vr3tsRsaH0ZIBwFu/356df3084d6ce262f9152e5cff94627b/Portal_Screenshot.jpeg"
+    ]
+  },
+  {
+    "name": "Osmosis",
+    "website": "https://ate7l-riaaa-aaaaf-qae3q-cai.raw.ic0.app/",
+    "tags": [
+      "DeFi",
+      "Dapp",
+      "ETH",
+      "Swap"
+    ],
+    "description": "Osmosis is an \"Interchain Automated Market Maker (AMM)\". As a Web3 solution, now by having the front-end of their swap solution hosted on the Internet Computer blockchain, the full-stack is truly decentralized. This minimizes risks of centralization which include wrongful takedowns, censorship, and more. ",
+    "stats": "AMM Decentralized Front-End",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/CSsdoO1NOgKa6547KJwgE/b545457006b87b3a9e897bfd931f9034/Osmosis_Logo.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/4QUgqQ1oMtSb10EVScYpQm/960573304a7375d97bd4757538b49c86/Screen_Shot_2021-12-28_at_10.47.49_AM.png"
+    ]
+  },
+  {
+    "name": "Dstar",
+    "website": "https://yunqk-aqaaa-aaaai-qawva-cai.ic0.app/",
+    "tags": [
+      "DeFi",
+      "NFT"
+    ],
+    "description": "Dstar is an Internet Identity (II) trading marketplace. Since each II is unique, the ICP blockchain treats them as NFTs. Users can trade, purchase, or sell their anonymous blockchain-based authentication accounts on this community-built marketplace. Integrated with Plug wallet, users can search for and purchase any coveted Internet Identity numbers which may be up for auction.",
+    "stats": "Internet Identity Marketplace",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4rDRCErt2Js621TzWQeSn9/1c4b12f1cfac28e9934dc888f571605f/Screen_Shot_2021-12-23_at_2.51.19_PM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7EdhVmKPqavCMIuMQQHInF/0986efda0f9974a24e026b5f83539d42/Screen_Shot_2021-12-23_at_2.50.30_PM.png"
+    ]
+  },
+  {
+    "name": "Dmail",
+    "oneLiner": "Web3 Decentralized Email Client",
+    "website": "https://dmail.ai/",
+    "tags": [
+      "Work",
+      "Dapp",
+      "NFT",
+      "Social"
+    ],
+    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets – there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
+    "github": "https://github.com/dmailofficial",
+    "stats": "Hackathon Winner - $10M Valuation",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/7EV0k2g2addySo81U0i2QV/294891c669a076c48ebdd34e40cf903b/Dmail_Logo.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/3JkmQyE4wiPO0MgS3U5lPz/6100cbe27b390e5c89e2547370db5f2f/Dmail_screenshot_2.jpeg"
+    ]
+  },
+  {
+    "name": "DSocial",
+    "website": "https://DSocial.app ",
+    "tags": [
+      "Work",
+      "Social",
+      "Dapp"
+    ],
+    "description": "DSocial is a decentralized version of YouTube -- enabling content creators to be fairly rewarded for their work, and engagement. This Web3 media platform is hosted end-to-end on the Internet Computer interoperating with Arweave for decentralized video content.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6Of2yHgFhvs3rV6YaU81Sv/cbc482893f280894a6fab7c42c84734e/DSocial_Logo.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/5eyPLhbfiHuOTEwWu5vFd5/ed3998a3a3b0458b6deb93a6c8b12930/DSocial_Screenrecord.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "iCircle NFT",
+    "website": "https://entrepot.app/marketplace/icircle",
+    "tags": [
+      "NFT"
+    ],
+    "description": "The first generative NFT project hosted on the Internet Computer blockchain – iCircle had their inaugural collection sell out in under 6 minutes. The iCircle project consists of generative art NFTs, hosted on the Internet Computer, as well as NFT holders having governance rights in the newly announced iCircle DAO. More releases and minting tools for generative artists are on the way. ",
+    "stats": "1st Generative Art NFT",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/ARI2FrhxT5MBttQLEscSQ/a1485a99b7cafbe11aaad17bf1a3cb1a/iCircle_NFT_Logo.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/6NHUgZRFGhjMO1kKcjxeUo/0c98776079544b842dfeeb5c865ee9de/iCircle_NFT.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "ICNaming",
+    "website": "https://app-testnet.icnaming.com/",
+    "tags": [
+      "Tools",
+      "Infrastructure",
+      "DeFi"
+    ],
+    "description": "ICNaming is a testnet that is enabling the Internet Computer ecosystem to register domain names on the Internet Computer Name Service. Similar to the Ethereum Name Servce (ENS), ICNaming aims to offer a decentralized name service for users to pseudonomize their wallet addresses on ICP, as well as domain names, and canister smart contract IDs. ",
+    "github": "https://github.com/IC-Naming",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5QxV6yuQAma1aJg6hd2M16/c057dc7fbba54fc89890d0da8c2b3e9c/ICNaming.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/6nTnFqglKTiQ0jPberPPAa/0077e25c74c42be836fbce443295cbf4/ICNaming.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "Java Agent ",
+    "website": "https://github.com/ic4j/ic4j-agent",
+    "tags": [
+      "Tools",
+      "Infrastructure"
+    ],
+    "description": "Java Agent for the Internet Computer is an open source library. This developer tool enables Java applications to connect remotely to any Canister smart contract on the Internet Computer and execute query and update calls.",
+    "github": "https://github.com/ic4j/ic4j-agent",
+    "usesInternetIdentity": false,
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6SPb5EDR5WKrozBkcjhdfo/ceddbf335157044e578914d7539861a2/java-logo-1.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/51AWtCDsuhHBgbId2RRc1g/a145a75069600650cb538cbf94f30ae3/Screen_Shot_2021-12-28_at_2.30.14_PM.png"
+    ]
+  },
+  {
+    "name": "Python Agent",
+    "website": "https://github.com/rocklabs-io/ic-py",
+    "tags": [
+      "Tools",
+      "Infrastructure"
+    ],
+    "description": "This Python Agent built for the Internet Computer opens the door for Python developers to more easily become Web3 builders. Featuring basic modules to interact with canisters on the Internet Computer, this Agent, still under development, was a prize winner at the Warpspeed Internet Computer ecosystem hackathon in China.",
+    "github": "https://github.com/rocklabs-io/ic-py",
+    "stats": "Warp Speed Hackathon Award",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4gUK7xhT2gRWdhornZFTm0/492e669a6ed641662e45750dc772d4bc/Python-Symbol.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7lbJDVm0XzTNuGzpy7XtWF/725009fd7f6470ea92597fd12da0c802/Screen_Shot_2021-12-28_at_2.35.31_PM.png"
+    ]
+  },
+  {
+    "name": "SLY",
+    "oneLiner": "Seamless CLI for the Internet Computer",
+    "website": "https://sly.ooo/",
+    "tags": [
+      "Tools",
+      "Infrastructure"
+    ],
+    "description": "SLY, developed by PsychedelicDAO, is a seamless Command Line Interface (CLI) for the Internet Computer. SLY is an open-source, and collaborative CLI – providing abstractions, templates, and tools to kick-start and speed-up Internet Computer development.",
+    "github": "https://github.com/psychedelic/sly",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/11La7PAkMJbEHd0NcbCqFJ/de0793c5eb4dfc5f004ac2da75a618c3/sly_Logo.svg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/nnheaoammDDdrj5nihMAB/c216d4c130b3d45af56dd581949e31e9/Screen_Shot_2021-12-28_at_2.40.10_PM.png"
+    ]
+  },
+  {
+    "name": "NFT Studio Marketplace",
+    "website": "https://marketplacebuild-nftstudio.vercel.app/",
+    "tags": [
+      "NFT",
+      "Games",
+      "DeFi",
+      "Metaverse"
+    ],
+    "description": "NFT Studio launches their first marketplace featuring 3D NFTs (not .GIF recordings, but actual 3D code as the NFT), purchasable with ICP. Additional innovations include interactive NFTs, as well as entire games as NFTs playable from the marketplace or from within your wallet. These NFTs are all made possible due to the Internet Computer blockchain's scalability, low-costs, and innovations in smart contract technology. ",
+    "stats": "1st 3D NFTs + Games",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1UgSbYhl4H8tdfsiaNYKOY/2f3ae21a59f972e1bbf3d37c6f7a4008/NFT_Studio_Logo.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/3fB60Xn6IXrQgPcXE0ZsNP/3bd910ff71cf4aa1df2afd4e001eeb3c/NFT_Studio_Marketplace.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "NFT Studio Minting Engine",
+    "website": "https://iiibs-tqaaa-aaaak-aab6q-cai.ic0.app/",
+    "tags": [
+      "Tools",
+      "NFT",
+      "Dapp",
+      "Games"
+    ],
+    "description": "NFT Studio launches their public minting engine for 3D NFTs, hosted completely on the Internet Computer. Connect your Plug wallet to automatically mint your NFT without any need for coding – all for less than .05 ICP. NFT Studio enables the previously impossible, possible, using the unique scalability, storage, and \"code as smart contracts\" capabilities of the Internet Computer blockchain. ",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/1UgSbYhl4H8tdfsiaNYKOY/2f3ae21a59f972e1bbf3d37c6f7a4008/NFT_Studio_Logo.jpeg",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/7elr5mfr61Zh3oBJqWpmux/d1c1cbe13a67c7bc487322d9e74c7119/Screen_Shot_2021-12-29_at_11.41.02_AM.png"
+    ]
+  },
+  {
+    "name": "ICA Dashboard",
+    "website": "https://dashboard.internetcomputer.org/",
+    "tags": [
+      "NNS",
+      "Explorer",
+      "Infrastructure"
+    ],
+    "description": "The Internet Computer Association maintains a public dashboard where anyone can track the latest statistics for the Internet Computer blockchain. Tracking everything from blocks per second, to NNS proposals and their information and voting record, as well the latest state of the network, and transaction data. ",
+    "stats": "ICA Official Dashboard",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/5vCa47BuEWIc9LbSvyjdKx/016ea72b60fefc073bd0a1d80d9bf127/Screen_Shot_2021-12-29_at_1.17.43_PM.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/2dQeooSHjiyy1RoVDssgm2/1dec5ece7b08057252d5472540ea265d/ICA_Dashboard.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "ICP Squad NFT",
+    "oneLiner": "The First Engage 2 Earn NFT ",
+    "website": "https://p3z4x-vaaaa-aaaaj-qaixq-cai.raw.ic0.app/#/",
+    "tags": [
+      "NFT",
+      "Metaverse",
+      "Social",
+      "Dapp",
+      "Games"
+    ],
+    "description": "ICP Squad NFT is the world's first Engage 2 Earn NFT. ICP Squad is a community-focused group that wanted to reward the Internet Computer ecosystem for using different dapps. Using the Internet Computer blockchain to create the build-your-own minting engine for avatars, as well as the storage of the assets. In addition, users can add accessories and much more to their avatars. By using different dapps across the ICP ecosystem such as Distrikt and DSCVR, users are issued rewards on their NFT. ",
+    "stats": "1st Engage2Earn NFT",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2tw8w2KBbdE4mYyAVvmQhm/21b9ea0d855ba6811bd0013f4abbd463/Screen_Shot_2021-12-29_at_2.40.20_PM.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/3AK4foedQz4kq2Y1BKWEOi/4f0b1888991d3d4da534014dba769890/ICP_Squad_NFT.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "ICKitties",
+    "website": "https://ickitties.com/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "The ICKitties NFTs are a set of 10,000 unique NFTs, minted and hosted completely on-chain on the Internet Computer. The NFTs feature unique items that help define their rarity, in addition to identifying their \"Kingdom\". There is not only a lore behind the the NFT, but also future applications such as GameFi, and collaborations with other NFT kingdoms such as ICPuppies. ",
+    "stats": "Sold Out In Under 6 minutes",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/NLc28yAjA68kdD34aFRWn/305a6e9cf8ab4c722add28d1939fe38a/Screen_Shot_2021-12-29_at_3.17.49_PM.png",
+    "screenshots": [
+      "//images.ctfassets.net/ywqk17d3hsnp/2lXVAimljsgxL6WzWMRKFE/65b4b6d18f4e1ca72addea246eb931ad/Screen_Shot_2021-12-29_at_3.21.57_PM.png"
+    ]
+  },
+  {
+    "name": "PokedStudio Bots",
+    "website": "https://entrepot.app/marketplace/poked",
+    "tags": [
+      "Metaverse",
+      "NFT"
+    ],
+    "description": "PokedStudio Bots are a collection of 10,000 unique bots designed by acclaimed digital artist, Jonathan Ball. The Ultimate Master” Bot which sold for 3,000 ICP (~$172,140), marks the largest single NFT purchase on the Internet Computer, and is one of the largest across all blockchain projects to date. The Bots collection generated nearly $1M in NFT marketplace trading volume in less than 36 hours from public launch. The NFT Bots are all unique and possess differing rarities and attributes that will transfer into a future metaverse gaming experience in beautiful technicolor.",
+    "stats": "Record Highest Selling NFT",
+    "display": "Large",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/66DQGH3PYHfmoWJ7DvFH3l/eea03d1fa41516c34b1e71f9229d250a/pokedstudio-logo.png",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/5OHiBy0R29XeKOqOORsMxe/5ee7b175cb4517d6a49503426fd714e1/My_Movie.mp4",
+    "screenshots": []
+  },
+  {
+    "name": "ICSnakes",
+    "website": "https://💎🐍.ws",
+    "tags": [
+      "NFT",
+      "Games",
+      "Dapp"
+    ],
+    "description": "ICSnakes is the first playable NFT. That means it is an NFT, that is also a game, playable within your wallet of choice. In addition to hosting the game logic inside of the smart contract, the game also brings in your freshly minted NFT character as your hero. Simply collect your own ICSnake, and then click on the \"fruit\" to get started. ",
+    "stats": "World's 1st NFT Game",
+    "display": "Normal",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/3CBnKQQm25vaCXUfXvf57J/c3298579b82aef59ab49dae50ee020bc/ICSnake_Logo.jpeg",
+    "video": "//videos.ctfassets.net/ywqk17d3hsnp/PTTllhp4uJ7FmxBdrllbV/186df0a862ea637f9fcf22e5b220a4a0/ICSnakes_2.mp4",
+    "screenshots": []
   }
 ]
