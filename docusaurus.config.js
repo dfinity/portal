@@ -51,6 +51,7 @@ const config = {
       },
     ],
     customDocusaurusPlugin,
+    // "@docusaurus/theme-live-codeblock",
   ],
 
   presets: [
@@ -92,8 +93,9 @@ const config = {
   // },
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    //NOTE: liveCodeBLock is enabled for possible future feature, but to do that type preset-classic had to be disabled below
+    // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    {
       image: "/img/share.jpg",
       colorMode: {
         disableSwitch: true,
@@ -339,8 +341,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }),
-  // scripts: ["/load_moc.js"],
+      liveCodeBlock: {
+        playgroundPosition: "bottom",
+      },
+    },
+  themes: ["@docusaurus/theme-live-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 

@@ -30,6 +30,7 @@
   margin: 0;
   padding: 0;
   border-radius: var(--ifm-global-radius);
+  --ifm-pre-background: var(--prism-background-color);
 }
 
 .codeBlockTitle + .codeBlockContent .codeBlock {
@@ -86,9 +87,11 @@
   position: absolute;
   right: calc(var(--ifm-pre-padding) / 2);
   top: calc(var(--ifm-pre-padding) / 2);
-  padding: 0.3rem;
+  padding: 0.2rem 0.3rem;
   background-color: var(--ifm-color-secondary-light);
   border-radius: var(--ifm-global-radius);
+  transition: opacity 200ms ease-in-out;
+  opacity: 0;
 }
 
 .buttonGroup button {
@@ -101,7 +104,7 @@
   border: 0;
   line-height: 0;
   transition: opacity 200ms ease-in-out;
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .buttonGroup button:focus-visible,
@@ -114,10 +117,10 @@
   height: 40px;
 }
 
-.copyIcon {
+/* .copyIcon {
   width: 20px;
   height: 20px;
-}
+} */
 
 button {
   cursor: pointer;
@@ -125,4 +128,16 @@ button {
 
 pre {
   margin: 0;
+}
+
+:global(.theme-code-block:hover) .buttonGroup button {
+  opacity: 0.4;
+}
+
+:global(.theme-code-block:hover) .buttonGroup {
+  opacity: 1 !important;
+}
+
+.immutableCodeBlock {
+  position: relative;
 }
