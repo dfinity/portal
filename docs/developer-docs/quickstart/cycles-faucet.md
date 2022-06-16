@@ -29,7 +29,7 @@ Once your eligibility has been confirmed, open up a terminal window.
 If you already have created a project, go to the root of the project in the terminal, where the `dfx.json` file is located. If you haven't created a project yet, run these commands in the terminal:
 
     mkdir my_project && cd my_project
-    echo '{ "dfx": "0.9.3" }' > dfx.json
+    echo '{}' > dfx.json
 
 ![Setup SDK](_attachments/faucet_step_4.png)
 
