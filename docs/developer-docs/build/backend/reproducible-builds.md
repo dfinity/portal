@@ -94,6 +94,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
             | sh -s -- -y --default-toolchain ${rust_version}-x86_64-unknown-linux-gnu --no-modify-path && \
         rustup default ${rust_version}-x86_64-unknown-linux-gnu && \
         rustup target add wasm32-unknown-unknown
+    RUN cargo install ic-cdk-optimizer
 
     # Install dfx; the version is picked up from the DFX_VERSION environment variable
     ENV DFX_VERSION=0.10.0
@@ -102,7 +103,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
     COPY . /canister
     WORKDIR /canister
 
-    RUN npm ci # if `package.json` is available in your canister directory
+    RUN npm ci # if `package.json` and `package-lock.json` is available in your canister directory
 
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -158,9 +159,9 @@ Now, from the root directory of your canister project, you can test the reproduc
     $ docker build -t mycanister .
     ...
     $ docker run --rm --privileged -it mycanister
-    root@6fe19d89f8f5:/canister# reprotest -vv --variations '+all,-build_path,-time' "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
+    root@6fe19d89f8f5:/canister# reprotest -vv --variations '+all,-time' "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
 
-The first command builds the Docker container using the above `Dockerfile`. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We exclude the `build_path` and `time` variation for Rust builds (we observed that Rust builds produced different Wasm files upon the `build_path` variation and crashed upon the `time` variation). Using [ic-cdk-optimizer](https://internetcomputer.org/docs/current/developer-docs/build/languages/rust/rust-optimize) should help with avoiding the dependency on the build path. The `reprotest` docs say that "the `time` variation uses faketime which sometimes causes weird and hard-to-diagnose problems" so it might not be straightforward to enable the `time` variations for Rust builds. For Motoko builds, you could omit `--variations '+all,-build_path,-time'` and thereby trying out all supported variations. The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
+The first command builds the Docker container using the above `Dockerfile`. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We exclude the `time` variation for Rust builds (we observed that Rust builds crashed upon the `time` variation). The `reprotest` docs say that "the `time` variation uses faketime which sometimes causes weird and hard-to-diagnose problems" so it might not be straightforward to enable the `time` variations for Rust builds. For Motoko builds, you could omit `--variations '+all,-time'` and thereby trying out all supported variations. The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
 
 If the comparison doesn’t find any differences, you will see an output similar to this one:
 
