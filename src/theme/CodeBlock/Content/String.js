@@ -9,6 +9,8 @@ import { extractConfig, handleRun } from "../hljs_run.js";
 import CopyButton from "@theme/CodeBlock/CopyButton";
 import runIcon from "@site/static/img/runIcon.png";
 
+// NOTE: String component of CodeBlock is being swizzled as a wrapped component.
+
 function RunButton(props) {
   // buttons with class "run" will be run in load_moc.js when moc is loaded.
   const className = props.config.isRun ? "run-button run" : "run-button";
@@ -35,6 +37,7 @@ function ImmutableCodeBlock({ id, code, language, defaultCopy }) {
       <pre id={id} class={language} ref={ref}>
         <code>{code}</code>
       </pre>
+      {/* defaultCopy is a flag for code (candid) with only copy button */}
       {defaultCopy && (
         <div className={styles.buttonGroup}>
           <CopyButton className={styles.copyButton} code={code} />
@@ -60,6 +63,8 @@ export default function StringWrapper(props) {
     const [error, setError] = useState("");
     const codejar = require("react-codejar");
     const lineNumbers = props.children.split("\n").length > 3;
+
+    // syntax highlighting is done by CodeJar, creating new React components
     const editorRef = codejar.useCodeJar({
       code,
       onUpdate: (e) => {
@@ -105,6 +110,7 @@ export default function StringWrapper(props) {
     );
   }
   if (props.className === "language-candid" && ExecutionEnvironment.canUseDOM) {
+    // for candid code no run button is given
     return (
       <>
         <ImmutableCodeBlock
@@ -116,6 +122,7 @@ export default function StringWrapper(props) {
       </>
     );
   }
+  // default Docusaurus built-in String wrapper, leave as is
   return (
     <>
       <String {...props} />
