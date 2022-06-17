@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import String from "@theme-original/CodeBlock/Content/String";
 import Container from "@theme/CodeBlock/Container";
 import styles from "./styles.module.css";
@@ -44,7 +45,7 @@ function ImmutableCodeBlock({ id, code, language, defaultCopy }) {
 }
 
 export default function StringWrapper(props) {
-  if (props.className === "language-motoko") {
+  if (props.className === "language-motoko" && ExecutionEnvironment.canUseDOM) {
     if (props.hasOwnProperty("no-repl")) {
       return (
         <ImmutableCodeBlock
@@ -65,7 +66,7 @@ export default function StringWrapper(props) {
         setCode(e);
       },
       highlight: hljs.highlightElement,
-      lineNumbers,
+      // lineNumbers,
     });
     return (
       <>
@@ -103,7 +104,7 @@ export default function StringWrapper(props) {
       </>
     );
   }
-  if (props.className === "language-candid") {
+  if (props.className === "language-candid" && ExecutionEnvironment.canUseDOM) {
     return (
       <>
         <ImmutableCodeBlock

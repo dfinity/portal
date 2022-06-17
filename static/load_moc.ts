@@ -46,7 +46,10 @@ function attachOnRunButton() {
   }
 }
 
-if (ExecutionEnvironment.canUseDOM) {
+if (
+  ExecutionEnvironment.canUseDOM &&
+  ExecutionEnvironment.canUseEventListeners
+) {
   // As soon as the site loads in the browser, register a global event listener
   window.addEventListener("load", () => {
     attachOnRunButton();
