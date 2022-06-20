@@ -1,6 +1,6 @@
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-const MOC_VERSION = "0.6.27";
+const MOC_VERSION = "0.6.29";
 
 async function addPackage(name, repo, version, dir) {
   const meta_url = `https://data.jsdelivr.com/v1/package/gh/${repo}@${version}/flat`;
