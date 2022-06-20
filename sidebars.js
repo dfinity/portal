@@ -79,6 +79,7 @@ const sidebars = {
                 'developer-docs/build/languages/motoko/errors',
                 'developer-docs/build/languages/motoko/pattern-matching',
                 'developer-docs/build/languages/motoko/sharing',
+                'developer-docs/build/languages/motoko/message-inspection',
                 'developer-docs/build/languages/motoko/modules-and-imports',
                 'developer-docs/build/languages/motoko/control-flow',
                 'developer-docs/build/languages/motoko/structural-equality',
