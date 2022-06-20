@@ -268,7 +268,7 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'references/motoko-ref/array',
+        type: 'doc', id: 'references/motoko-ref/stdlib-intro',
       },
       items: [
         'references/motoko-ref/array',
