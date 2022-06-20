@@ -67,7 +67,7 @@ const sidebars = {
               label: 'Motoko',
               link: {
                 // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
-                type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/motoko',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
