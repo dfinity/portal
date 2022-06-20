@@ -1,6 +1,5 @@
 # Motoko Programming Language
 
-
 :::tip
 
 The Motoko programming language continues to evolve with each release of the DFINITY Canister SDK and with ongoing updates to the Motoko compiler. Check back regularly to try new features and see what’s changed.
