@@ -1,6 +1,6 @@
 # Principals and caller identification
 
-Motoko’s shared functions support a simple form of caller identification that allows you to inspect the Internet Computer **principal** associated with the caller of a function. The principal associated with a call is a value that identifies a unique user or canister.
+Motoko’s shared functions support a simple form of caller identification that allows you to inspect the Internet Computer **principal** associated with the caller of a function. The principal associated with a call is a value that identifies a unique user or canister smart contract.
 
 You can use the **principal** associated with the caller of a function to implement a basic form of *access-control* in your program.
 
@@ -76,4 +76,4 @@ Simple actor declarations do not let you access their installer. If you need acc
 
 :::
 
-Principals support equality, ordering, and hashing, so you can efficiently store principals in containers, for example, to maintain an allow or deny list. More operations on principals are available in [Principal](../../../../references/motoko-ref/principal) base library.
+Principals support equality, ordering, and hashing, so you can efficiently store principals in containers, for example, to maintain an allow or deny list. More operations on principals are available in [Principal](../../../../references/motoko-ref/principal.md) base library.

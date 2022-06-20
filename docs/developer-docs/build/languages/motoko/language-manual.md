@@ -10,7 +10,7 @@ This section serves as a technical reference for the previous chapters and has s
 
 The language quick reference is intended to provide complete reference information about Motoko, but this section does *not* provide explanatory text or usage information. Therefore, this section is typically not suitable for readers who are new to programming languages or who are looking for a general introduction to using Motoko.
 
-Throughout, we use the term canister to refer to an IC canister.
+Throughout, we use the term canister to refer to an Internet Computer canister smart contract.
 
 ## Basic language syntax
 
@@ -56,12 +56,10 @@ All comments are treated as whitespace.
 The following keywords are reserved and may not be used as identifiers:
 
 ``` bnf
-actor and assert await break case
-catch class continue debug debug_show do else flexible
-false for func if ignore in import not null object or
-label let loop private public query return
-shared stable system switch true try
-type var while
+actor and assert async await break case catch class continue debug
+debug_show do else flexible false for from_candid func if ignore import
+in module not null object or label let loop private public query return
+shared stable switch system throw to_candid true try type var while
 ```
 
 ### Identifiers
@@ -476,6 +474,8 @@ The syntax of an *expression* is as follows:
   <exp> !                                        null break
   debug <block-or-exp>                           debug expression
   actor <exp>                                    actor reference
+  to_candid ( <exp>,* )                          Candid serialization
+  from_candid <exp>                              Candid deserialization
   ( <exp> )                                      parentheses
 
 <block-or-exp> ::=
@@ -548,27 +548,27 @@ Motoko provides the following primitive type identifiers, including support for 
 
 The category of a type determines the operators (unary, binary, relational and in-place update via assignment) applicable to values of that type.
 
-| Identifier                                          | Category | Description                                                            |
-|-----------------------------------------------------|----------|------------------------------------------------------------------------|
+| Identifier                                                     | Category | Description                                                            |
+|----------------------------------------------------------------|----------|------------------------------------------------------------------------|
 | [`Bool`](../../../../references/motoko-ref/bool.md)           | L        | Boolean values `true` and `false` and logical operators                |
-| [`Char`](../../../../references/motoko-ref/char)           | O        | Unicode characters                                                     |
-| [`Text`](../../../../references/motoko-ref/text)           | T, O     | Unicode strings of characters with concatenation `_ # _` and iteration |
-| [`Float`](../../../../references/motoko-ref/float)         | A, O     | 64-bit floating point values                                           |
-| [`Int`](../../../../references/motoko-ref/int)             | A, O     | signed integer values with arithmetic (unbounded)                      |
-| [`Int8`](../../../../references/motoko-ref/int8)           | A, O     | signed 8-bit integer values with checked arithmetic                    |
-| [`Int16`](../../../../references/motoko-ref/int16)         | A, O     | signed 16-bit integer values with checked arithmetic                   |
-| [`Int32`](../../../../references/motoko-ref/int32)         | A, O     | signed 32-bit integer values with checked arithmetic                   |
-| [`Int64`](../../../../references/motoko-ref/int64)         | A, O     | signed 64-bit integer values with checked arithmetic                   |
-| [`Nat`](../../../../references/motoko-ref/nat)             | A, O     | non-negative integer values with arithmetic (unbounded)                |
-| [`Nat8`](../../../../references/motoko-ref/nat8)           | A, O     | non-negative 8-bit integer values with checked arithmetic              |
-| [`Nat16`](../../../../references/motoko-ref/nat16)         | A, O     | non-negative 16-bit integer values with checked arithmetic             |
-| [`Nat32`](../../../../references/motoko-ref/nat32)         | A, O     | non-negative 32-bit integer values with checked arithmetic             |
-| [`Nat64`](../../../../references/motoko-ref/nat64)         | A, O     | non-negative 64-bit integer values with checked arithmetic             |
-| [`Blob`](../../../../references/motoko-ref/blob)           | O        | binary blobs with iterators                                            |
-| [`Principal`](../../../../references/motoko-ref/principal) | O        | principals                                                             |
-| [`Error`](../../../../references/motoko-ref/error)         |          | (opaque) error values                                                  |
+| [`Char`](../../../../references/motoko-ref/char.md)           | O        | Unicode characters                                                     |
+| [`Text`](../../../../references/motoko-ref/text.md)           | T, O     | Unicode strings of characters with concatenation `_ # _` and iteration |
+| [`Float`](../../../../references/motoko-ref/float.md)         | A, O     | 64-bit floating point values                                           |
+| [`Int`](../../../../references/motoko-ref/int.md)             | A, O     | signed integer values with arithmetic (unbounded)                      |
+| [`Int8`](../../../../references/motoko-ref/int8.md)           | A, O     | signed 8-bit integer values with checked arithmetic                    |
+| [`Int16`](../../../../references/motoko-ref/int16.md)         | A, O     | signed 16-bit integer values with checked arithmetic                   |
+| [`Int32`](../../../../references/motoko-ref/int32.md)         | A, O     | signed 32-bit integer values with checked arithmetic                   |
+| [`Int64`](../../../../references/motoko-ref/int64.md)         | A, O     | signed 64-bit integer values with checked arithmetic                   |
+| [`Nat`](../../../../references/motoko-ref/nat.md)             | A, O     | non-negative integer values with arithmetic (unbounded)                |
+| [`Nat8`](../../../../references/motoko-ref/nat8.md)           | A, O     | non-negative 8-bit integer values with checked arithmetic              |
+| [`Nat16`](../../../../references/motoko-ref/nat16.md)         | A, O     | non-negative 16-bit integer values with checked arithmetic             |
+| [`Nat32`](../../../../references/motoko-ref/nat32.md)         | A, O     | non-negative 32-bit integer values with checked arithmetic             |
+| [`Nat64`](../../../../references/motoko-ref/nat64.md)         | A, O     | non-negative 64-bit integer values with checked arithmetic             |
+| [`Blob`](../../../../references/motoko-ref/blob.md)           | O        | binary blobs with iterators                                            |
+| [`Principal`](../../../../references/motoko-ref/principal.md) | O        | principals                                                             |
+| [`Error`](../../../../references/motoko-ref/error.md)         |          | (opaque) error values                                                  |
 
-Although many of these types have linguistic support for literals and operators, each primitive type also has an eponymous base library providing related functions and values (see [Motoko Base Library](../../../../references/motoko-ref/stdlib-intro)). For example, the [`Text`](../../../../references/motoko-ref/text) library provides common functions on `Text` values.
+Although many of these types have linguistic support for literals and operators, each primitive type also has an eponymous base library providing related functions and values (see [Motoko Base Library](../../../../references/motoko-ref/stdlib-intro.md)). For example, the [`Text`](../../../../references/motoko-ref/text.md) library provides common functions on `Text` values.
 
 ### Type `Bool`
 
@@ -588,7 +588,7 @@ The type `Text` of categories T and O (Text, Ordered) represents sequences of Un
 
 The type `Float` represents 64-bit floating point values of categories A (Arithmetic) and O (Ordered).
 
-The semantics of `Float` and its operations is in accordance with standard [IEEE 754-2019](https://ieeexplore.ieee.org/document/8766229) (See [\[IEEE754\]](#IEEE754)).
+The semantics of `Float` and its operations is in accordance with standard [IEEE 754-2019](https://ieeexplore.ieee.org/document/8766229) (See [References](#references)).
 
 Common functions and values are defined in base library "base/Float".
 
@@ -638,7 +638,7 @@ The type `Principal` of category O (Ordered) represents opaque principals such a
 
 Assuming base library import,
 
-``` motoko
+``` motoko no-repl
 import E "mo:base/Error";
 ```
 
@@ -652,7 +652,7 @@ Errors are opaque values constructed and examined with operations:
 
 Type `E.ErrorCode` is equivalent to variant type:
 
-``` motoko
+``` motoko no-repl
 type ErrorCode = {
   // Fatal error.
   #system_fatal;
@@ -671,7 +671,7 @@ type ErrorCode = {
 
 A constructed error `e = E.reject(t)` has `E.code(e) = #canister_reject` and `E.message(e) = t`.
 
-`Error` values can be thrown and caught within an `async` expression or `shared` function (only). See [Throw](#exp-throw) and [Try](#exp-try).
+`Error` values can be thrown and caught within an `async` expression or `shared` function (only). See [Throw](#throw) and [Try](#try).
 
 Errors with codes other than `#canister_reject` (i.e. *system* errors) may be caught and thrown, but not user-constructed.
 
@@ -683,7 +683,7 @@ Exiting an async block or shared function with a non-`#canister-reject` system e
 
 ### Constructed types
 
-`<path> <typ-args>?` is the application of a type identifier or path, either built-in (i.e. `Int`) or user defined, to zero or more type **arguments**. The type arguments must satisfy the bounds, if any, expected by the type constructor’s type parameters (see [Well-formed types](#wf-types)).
+`<path> <typ-args>?` is the application of a type identifier or path, either built-in (i.e. `Int`) or user defined, to zero or more type **arguments**. The type arguments must satisfy the bounds, if any, expected by the type constructor’s type parameters (see [Well-formed types](#well-formed-types)).
 
 Though typically a type identifier, more generally, `<path>` may be a `.`-separated sequence of actor, object or module identifiers ending in an identifier accessing a type component of a value (for example, `Acme.Collections.List`).
 
@@ -699,7 +699,7 @@ When `<sort>?` is `actor`, all fields have `shared` function type (specifying me
 
 ### Variant types
 
-`{ <typ-tag>;* }` specifies a variant type by listing its variant type fields as a sequence of `<typ-tag>` s.
+`{ <typ-tag>;* }` specifies a variant type by listing its variant type fields as a sequence of `<typ-tag>`s.
 
 Within a variant type, the tags of its variants must be distinct (both by name and hash value).
 
@@ -977,7 +977,7 @@ The (current) value of such a field is preserved upon *upgrade*, whereas the val
 
 Below, we give a detailed account of the semantics of Motoko programs.
 
-For each [expression form](#syntax-expressions) and each [declaration form](#syntax-decls), we summarize its semantics, both in static terms (based on typing) and dynamic terms (based on program evaluation).
+For each [expression form](#expression-syntax) and each [declaration form](#declaration-syntax), we summarize its semantics, both in static terms (based on typing) and dynamic terms (based on program evaluation).
 
 ### Programs
 
@@ -1032,7 +1032,7 @@ module {
 }
 ```
 
-On the Internet Computer, if this library is imported as identifier `Lib`, then calling `await Lib.<id>(<exp1>, …​, <expn>)`, installs a fresh instance of the actor class as an isolatedICcanister, passing the values of `<exp1>`, …​, `<expn>` as installation arguments, and returns a reference to a (remote) actor of *type* `Lib.<id>`, that is, `T`. Installation is (necessarily) asynchronous.
+On the Internet Computer, if this library is imported as identifier `Lib`, then calling `await Lib.<id>(<exp1>, …​, <expn>)`, installs a fresh instance of the actor class as an isolated IC canister, passing the values of `<exp1>`, …​, `<expn>` as installation arguments, and returns a reference to a (remote) actor of *type* `Lib.<id>`, that is, `T`. Installation is (necessarily) asynchronous.
 
 ### Imports and Urls
 
@@ -1090,13 +1090,16 @@ This condition ensures that every stable variable is either fresh, requiring ini
 
 The declaration `<dec>` of a `system` field must be a manifest `func` declaration with one of the following names and types:
 
-| name          | type             | description         |
-|---------------|------------------|---------------------|
-| `heartbeat`   | `() -> async ()` | heartbeat action    |
-| `preupgrade`  | `() -> ()`       | pre upgrade action  |
-| `postupgrade` | `() -> ()`       | post upgrade action |
+| name          | type                                                          | description         |
+|---------------|---------------------------------------------------------------|---------------------|
+| `heartbeat`   | `() -> async ()`                                              | heartbeat action    |
+| `inspect`     | `{ caller : Principal; msg : <Variant>; arg : Blob } -> Bool` | message predicate   |
+| `preupgrade`  | `() -> ()`                                                    | pre upgrade action  |
+| `postupgrade` | `() -> ()`                                                    | post upgrade action |
 
 -   `heartbeat`, when declared, is called on every Internet Computer subnet **heartbeat**, scheduling an asynchronous call to the `heartbeat` function. Due to its `async` return type, a heartbeat function may send messages and await results. The result of a heartbeat call, including any trap or thrown error, is ignored. The implicit context switch means that the time the heartbeat body is executed may be later than the time the heartbeat was issued by the subnet.
+
+-   `inspect`, when declared, is called as a predicate on every Internet Computer ingress message (with the exception of HTTP query calls). The return value, a `Bool`, indicates whether to accept or decline the given message. The argument type depends on the interface of the enclosing actor (see [???](#inspect-message)).
 
 -   `preupgrade`, when declared, is called during an upgrade, immediately *before* the (current) values of the (retired) actor’s stable variables are transferred to the replacement actor.
 
@@ -1104,7 +1107,29 @@ The declaration `<dec>` of a `system` field must be a manifest `func` declaratio
 
 These `preupgrade` and `postupgrade` system methods provide the opportunity to save and restore in-flight data structures (e.g. caches) that are better represented using non-stable types.
 
-During an upgrade, a trap occuring in the implicit call to `preupgrade()` or `postupgrade()` causes the entire upgrade to trap, preserving the pre-upgrade actor.
+During an upgrade, a trap occurring in the implicit call to `preupgrade()` or `postupgrade()` causes the entire upgrade to trap, preserving the pre-upgrade actor.
+
+##### `inspect`
+
+Given a record of message attributes, this function produces a `Bool` that indicates whether to accept or decline the message by returning `true` or `false`. The function is invoked (by the system) on each ingress message (excluding non-replicated queries). Similar to a query, any side-effects of an invocation are transient and discarded. A call that traps due to some fault has the same result as returning `false` (message denial).
+
+The argument type of `inspect` depends on the interface of the enclosing actor. In particular, the formal argument of `inspect` is a record of fields of the following types:
+
+-   `caller : Principal`: the principal, possibly anonymous, of the caller of the message;
+
+-   `arg : Blob`: the raw, binary content of the message argument;
+
+-   `msg : <variant>`: a variant of *decoding* functions, where `<variant> == {…​; #<id>: () → T; …​}` contains one variant per shared function, `<id>`, of the actor. The variant’s tag identifies the function to be called; The variant’s argument is a function that, when applied, returns the (decoded) argument of the call as a value of type `T`.
+
+Using a variant, tagged with `#<id>`, allows the return type, `T`, of the decoding function to vary with the argument type (also `T`) of the shared function `<id>`.
+
+The variant’s argument is a function so that one can avoid the expense of message decoding (when appropriate).
+
+:::danger
+
+An actor that fails to declare system field `inspect` will simply accept all ingress messages.
+
+:::
 
 ### Sequence of declarations
 
@@ -1206,7 +1231,7 @@ The result of matching `<pat1> or <pat2>` against a value is the result of match
 
 The declaration `<exp>` has type `T` provided the expression `<exp>` has type `T` . It declares no bindings.
 
-The declaration `<exp>` evaluates to the result of evaluating `<exp>` (typically for `<exp>`s side-effect).
+The declaration `<exp>` evaluates to the result of evaluating `<exp>` (typically for `<exp>`'s side-effect).
 
 Note that if `<exp>` appears within a sequence of declarations, but not as the last declaration of that sequence, then `T` must be `()`.
 
@@ -1232,7 +1257,7 @@ The declaration `var <id>` has type `()` provided:
 
 -   If the annotation `(:<typ>)?` is present, then `T` == `<typ>`.
 
-Within the scope of the declaration, `<id>` has type `var T` (see [Assignment](#exp-assn)).
+Within the scope of the declaration, `<id>` has type `var T` (see [Assignment](#assignment)).
 
 Evaluation of `var <id> (: <typ>)? = <exp>` proceeds by evaluating `<exp>` to a result `r`. If `r` is `trap`, the declaration evaluates to `trap`. Otherwise, the `r` is some value `v` that determines the initial value of mutable variable `<id>`. The result of the declaration is `()` and `<id>` is bound to a fresh location that contains `v`.
 
@@ -1264,7 +1289,7 @@ Motoko requires all type declarations to be productive.
 
 For example, the type definitions:
 
-``` motoko
+``` motoko no-repl
   type Person = { first : Text; last : Text };
 
   type List<T> = ?(T, List<T>);
@@ -1278,7 +1303,7 @@ are all productive and legal.
 
 But the type definitions,
 
-``` motoko
+``` motoko no-repl
   type C = C;
 
   type D<T, U> = D<U, T>;
@@ -1311,13 +1336,13 @@ The graph is expansive if, and only if, it contains a cycle with at least one ex
 
 For example, the type definition:
 
-``` motoko
+``` motoko no-repl
   type List<T> = ?(T, List<T>),
 ```
 
 that recursively instantiates `List` at the same parameter `T`, is non-expansive and accepted, but the similar looking definition:
 
-``` motoko
+``` motoko no-repl
   type Seq<T> = ?(T, Seq<[T]>),
 ```
 
@@ -1353,7 +1378,7 @@ Note that requirement 1. imposes further constraints on the field types of `T`. 
 
 Because actor construction is asynchronous, an actor declaration can only occur in an asynchronous context (i.e. in the body of a (non-`query`) `shared` function or `async` expression).
 
-Evaluation of `<sort>? <id>? =? { <dec-field>;* }` proceeds by by binding `<id>` (if present), to the eventual value `v`, and evaluating the declarations in `<dec>;*`. If the evaluation of `<dec>;*` traps, so does the object declaration. Otherwise, `<dec>;*` produces a set of bindings for identifiers in `Id`. let `v0`, …​, `vn` be the values or locations bound to identifiers `<id0>`, …​, `<idn>`. The result of the object declaration is the object `v == sort { <id0> = v1, …​, <idn> = vn}`.
+Evaluation of `<sort>? <id>? =? { <dec-field>;* }` proceeds by binding `<id>` (if present), to the eventual value `v`, and evaluating the declarations in `<dec>;*`. If the evaluation of `<dec>;*` traps, so does the object declaration. Otherwise, `<dec>;*` produces a set of bindings for identifiers in `Id`. let `v0`, …​, `vn` be the values or locations bound to identifiers `<id0>`, …​, `<idn>`. The result of the object declaration is the object `v == sort { <id0> = v1, …​, <idn> = vn}`.
 
 If `<id>?` is present, the declaration binds `<id>` to `v`. Otherwise, it produces the empty set of bindings.
 
@@ -1530,9 +1555,9 @@ The relational expression `<exp1> <relop> <exp2>` has type `Bool` provided:
 
 -   `<relop>` is equality `==` or inequality `!=`, `T` is *shared*, and `T` is the least type such that `<exp1>` and `<exp2>` have type `T`;
 
--   the category O (Ordered) is a category of `T` and `<relop>` or
+-   the category O (Ordered) is a category of `T` and `<relop>`; or
 
-The binary operator expression `<exp1> <relop> <exp2>` evaluates `exp1` to a result `r1`. If `r1` is `trap`, the expression results in `trap`.
+The binary operator expression `<exp1> <relop> <exp2>` evaluates `<exp1>` to a result `r1`. If `r1` is `trap`, the expression results in `trap`.
 
 Otherwise, `exp2` is evaluated to a result `r2`. If `r2` is `trap`, the expression results in `trap`.
 
@@ -1560,13 +1585,15 @@ The literal `null` has type `Null`. Since `Null <: ? T` for any `T`, literal `nu
 
 ### Variant injection
 
-The variant injection `# <id> <exp>` has variant type `{# id T}` provided: \* `<exp>` has type `T`.
+The variant injection `# <id> <exp>` has variant type `{# id T}` provided:
+
+-   `<exp>` has type `T`.
 
 The variant injection `# <id>` is just syntactic sugar for `# <id> ()`.
 
 The variant injection `# <id> <exp>` evaluates `<exp>` to a result `r`. If `r` is `trap`, then the result is `trap`. Otherwise, `r` must be a value `v` and the result of the injection is the tagged value `# <id> v`.
 
-The tag and contents of a variant value can be tested and accessed using a [variant pattern](#pat-variant).
+The tag and contents of a variant value can be tested and accessed using a [variant pattern](#variant-pattern).
 
 ### Objects
 
@@ -1600,7 +1627,7 @@ The iterator access `<exp> . <id>` has type `T` provided `<exp>` has type `U`, a
 
 |            |         |                         |                                              |
 |------------|---------|-------------------------|----------------------------------------------|
-| U          |` <id>`  | T                       | Description                                  |
+| U          | `<id>`  | T                       | Description                                  |
 | `Text`     | `size`  | `Nat`                   | size (or length) in characters               |
 | `Text`     | `chars` | `{ next: () -> Char? }` | character iterator, first to last            |
 |            |         |                         |                                              |
@@ -1617,7 +1644,7 @@ The projection `<exp> . <id>` evaluates `<exp>` to a result `r`. If `r` is `trap
 
 :::note
 
-the `chars`, `vals`, `keys` and `vals` members produce stateful **iterator objects** than can be consumed by `for` expressions (see [For](#exp-for)).
+the `chars`, `vals`, `keys` and `vals` members produce stateful **iterator objects** than can be consumed by `for` expressions (see [For](#for)).
 
 :::
 
@@ -1641,7 +1668,7 @@ The unary compound assignment `<unop>= <exp>` has type `()` provided:
 
 -   `<exp>` has type `var T`, and
 
--   `` `<unop>’s category is a category of `T ``.
+-   `<unop>`'s category is a category of `T`.
 
 The unary compound assignment `<unop>= <exp>` evaluates `<exp>` to a result `r`. If `r` is `trap` the evaluation traps, otherwise `r` is a location storing value `v` and `r` is updated to contain the value `<unop> v`.
 
@@ -1709,7 +1736,7 @@ Otherwise, `r1` is a function value, `<shared-pat>? func <X0 <: V0, …​, n <:
 
 :::note
 
-The exhaustiveness side condition on `shared` function expressions ensures that argument pattern matching cannot fail (see [Functions](#exp-func)).
+The exhaustiveness side condition on `shared` function expressions ensures that argument pattern matching cannot fail (see [Functions](#functions)).
 
 :::
 
@@ -1753,7 +1780,7 @@ The bindings of identifiers declared in `{ dec;* }` are local to the block.
 
 The type system ensures that a value identifier cannot be evaluated before its declaration has been evaluated, precluding run-time errors at the cost of rejection some well-behaved programs.
 
-Identifiers whose types cannot be inferred from their declaration, but are used in a forward reference, may require an additional type annotation (see [Annotated pattern](#pat-anno)) to satisfy the type checker.
+Identifiers whose types cannot be inferred from their declaration, but are used in a forward reference, may require an additional type annotation (see [Annotated pattern](#annotated-pattern)) to satisfy the type checker.
 
 The block expression `{ <dec>;* }` evaluates each declaration in `<dec>;*` in sequence (program order). The first declaration in `<dec>;*` that results in a trap causes the block to result in `trap`, without evaluating subsequent declarations.
 
@@ -1773,7 +1800,7 @@ The expression `do ? <bock>` has type `?T` provided `<block>` has type `T`.
 
 The `do ? <block>` expression evaluates `<block>` and returns its result as an optional value.
 
-Within `<block>` the null break expression `<exp1> !` exits the nearest enclosing `do ?` block with value `null` whenever `<exp1>` has value `null`, or continues evaluation with the contents of `<exp1>`'s option value. (See [Null break](#exp-null-break).)
+Within `<block>` the null break expression `<exp1> !` exits the nearest enclosing `do ?` block with value `null` whenever `<exp1>` has value `null`, or continues evaluation with the contents of `<exp1>`'s option value. (See [Null break](#null-break).)
 
 Option blocks nest with the target of a null break determined by the nearest enclosing option block.
 
@@ -1783,7 +1810,7 @@ The null break expression `<exp> !` invokes scoped handling of null values and r
 
 It has type `T` provided:
 
--   the expression appears in the body, `<block>`, of an enclosing option block of the form `do ? <block>` (see [Option block](#exp-do-opt)).
+-   the expression appears in the body, `<block>`, of an enclosing option block of the form `do ? <block>` (see [Option block](#do-opt)).
 
 -   `<exp>` has option type `? T`.
 
@@ -1892,7 +1919,7 @@ In particular, the `for` loop will trap if evaluation of `<exp1>` traps; as soon
 
 :::note
 
-Although general purpose, `for` loops are commonly used to consume iterators produced by [Special member access](#exp-dot) to, for example, loop over the indices (`a.keys()`) or values (`a.vals()`) of some array (here `a`).
+Although general purpose, `for` loops are commonly used to consume iterators produced by [Special member access](#special-member-access) to, for example, loop over the indices (`a.keys()`) or values (`a.vals()`) of some array (here `a`).
 
 :::
 
@@ -1934,7 +1961,7 @@ The evaluation of `break <id> <exp>` evaluates exp to some result `r`. If `r` is
 
 ### Continue
 
-The expression `continue <id>` is equivalent to `break <id_continue>`, where `<id_continue>` is implicitly declared around the bodies of `<id>`-labelled looping constructs (see [Labeled loops](#exp-labeled-loops)).
+The expression `continue <id>` is equivalent to `break <id_continue>`, where `<id_continue>` is implicitly declared around the bodies of `<id>`-labelled looping constructs (see [Labeled loops](#labeled-loops)).
 
 ### Return
 
@@ -2012,7 +2039,7 @@ Because the `Error` type is opaque, the pattern match cannot fail (typing ensure
 
 :::
 
-See [Error type](#type-Error).
+See [Error type](#error-type).
 
 ### Assert
 
@@ -2039,6 +2066,44 @@ The result of evaluating `<exp> : <typ>` is the result of evaluating `<exp>`.
 :::note
 
 Type annotations have no-runtime cost and cannot be used to perform the (checked or unchecked) `down-casts` available in other object-oriented languages.
+
+:::
+
+### Candid Serialization
+
+The *Candid serialization* expression `to_candid ( <exp>,*)` has type `Blob` provided:
+
+-   `(<exp>,*)` has type `(T1,…​,Tn)`, and each `Ti` is *shared*.
+
+Expression `to_candid ( <exp>,* )` evaluates the expression sequence `( <exp>,* )` to a result `r`. If `r` is `trap`, evaluation returns `trap`. Otherwise, `r` is a sequence of Motoko values `vs`. The result of evaluating `to_candid ( <exp>,* )` is some Candid blob `b = encode((T1,...,Tn))(vs)`, encoding `vs`.
+
+The Candid *deserialization* expression `from_candid <exp>` has type `?(T1,…​,Tn)` provided:
+
+-   `?(T1,…​,Tn)` is the expected type from the context;
+
+-   `<exp>` has type `Blob`; and
+
+-   `?(T1,…​,Tn)` is *shared*.
+
+Expression `from_candid <exp>` evaluates `<exp>` to a result `r`. If `r` is `trap`, evaluation returns `trap`. Otherwise `r` is a binary blob `b`. If `b` Candid-decodes to Candid value sequence `Vs` of type `ea((T1,...,Tn))` then the result of `from_candid` is `?v` where `v = decode((T1,...,Tn))(Vs)`. If `b` Candid-decodes to a Candid value sequence `Vs` that is not of Candid type `ea((T1,...,Tn))` (but well-formed at some other type) then the result is `null`. If `b` is not the encoding of any well-typed Candid value, but some arbitrary binary blob, then the result of `from_candid` is a trap.
+
+(Informally, here `ea(_)` is the Motoko-to-Candid type sequence translation and `encode/decode((T1,...,Tn))(_)` are type-directed Motoko-Candid value translations.)
+
+:::note
+
+`from_candid` returns `null` when the argument is a valid Candid encoding of the wrong type. It traps if the blob is not a valid Candid encoding at all.
+
+:::
+
+:::note
+
+`to_candid` and `from_candid` are syntactic operators, not first-class functions, and must be fully applied in the syntax.
+
+:::
+
+:::danger
+
+the Candid encoding of a value as a blob is not unique and the same value may have many different Candid representations as a blob. For this reason, blobs should never be used to, for instance, compute hashes of values or determine equality, whether across compiler versions or even just different programs.
 
 :::
 
@@ -2076,7 +2141,7 @@ The actor reference `actor <exp>` has expected type `T` provided:
 
 -   `<exp>` has type `Text`.
 
-The argument `<exp>` must be, or evaluate to, the textual format of anICcanister identifier (specified elsewhere), otherwise the expression traps. The result of the expression is an actor value representing that canister.
+The argument `<exp>` must be, or evaluate to, the textual format of an IC canister identifier (specified elsewhere), otherwise the expression traps. The result of the expression is an actor value representing that canister.
 
 The validity of the canister identifier and its asserted type `T` are promises and taken on trust.
 
@@ -2107,3 +2172,5 @@ Whenever `<exp>` has type `T` and `T <: U` (`T` subtypes `U`) then by virtue of 
 In general, this means that an expression of a more specific type may appear wherever an expression of a more general type is expected, provided the specific and general types are related by subtyping. This static change of type has no runtime cost.
 
 ## References
+
+-   *IEEE Standard for Floating-Point Arithmetic*, in IEEE Std 754-2019 (Revision of IEEE 754-2008), vol., no., pp.1-84, 22 July 2019, doi: 10.1109/IEEESTD.2019.8766229.
