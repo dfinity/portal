@@ -1,299 +1,329 @@
 .container {
-  width: Min(1227px, 100%);
-  margin: 0 0 0 auto;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  z-index: 10;
-  overflow: visible;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    width: Min(1227px, 100%);
+    margin: 0 0 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
 .selectBoxes {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    z-index: 10;
 }
+
 .selectBoxContainer {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 42px;
-  position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    position: relative;
 }
 
 .selectBox {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 16px;
-  margin: 0 8px;
-  background: rgba(248, 247, 255, 1);
-  border: 1px solid #ffffff;
-  backdrop-filter: blur(40px);
-  border-radius: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    margin: 0 8px;
+    background: rgba(248, 247, 255, 1);
+    border: 1px solid #ffffff;
+    backdrop-filter: blur(40px);
+    border-radius: 12px;
 }
 
 .selectOptionsContainer,
 .sortByOptionsContainer {
-  display: flex;
-  justify-content: center;
-  width: 250px;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: black;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
 }
+
 .sortByOptionsContainer {
-  top: 65%;
+    top: 65%;
 }
 
 .selectOptions {
-  display: inline-flex;
-  flex-direction: column;
-  margin: 6px auto;
-  background: rgba(248, 247, 255, 1);
-  border: 1px solid #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 6px auto;
+    background: rgba(248, 247, 255, 1);
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 28px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
 }
 
 .numberOfItems {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  height: 26px;
-  background-color: #ffffff;
-  border-radius: 13px;
-  padding: 2px 8px;
-  margin: 0 12px 0 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    height: 26px;
+    background-color: #ffffff;
+    border-radius: 13px;
+    padding: 2px 8px;
+    margin: 0 12px 0 8px;
 }
 
 .clearFilters {
-  margin: 0 4px;
+    margin: 0 4px;
 }
 
 .clearFilters,
 .sortBy {
-  display: inline-flex;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  color: rgba(24, 24, 24, 0.6);
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(24, 24, 24, 0.6);
+    align-items: center;
+    justify-content: center;
 }
+
 .sortByContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 42px;
-  position: relative;
-  margin: 0 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    position: relative;
+    margin: 0 0 0 auto;
 }
 
 .sortBy p {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 .sortByArrow {
-  display: inline-block;
-  margin-left: 4px;
-  height: 22px;
+    display: inline-block;
+    margin-left: 4px;
+    height: 22px;
 }
+
 .filterIcon {
-  display: inline-block;
-  margin-right: 10px;
-  height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    height: 20px;
 }
+
 .selectTitle {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 22px;
-  margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 0;
 }
 
 .selectionArrow {
-  display: inline-block;
-  margin-left: 10px;
-  height: 22px;
+    display: inline-block;
+    margin-left: 10px;
+    height: 22px;
 }
 
 input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #3b00b9;
-  border-radius: 4px;
-  transform: translateY(-0.075em);
-  display: grid;
-  place-content: center;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #3b00b9;
+    border-radius: 4px;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
 }
 
 input[type="checkbox"]:hover {
-  border: 2px solid #3b00b9;
+    border: 2px solid #3b00b9;
 }
 
 input[type="checkbox"]::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  transform: scale(0);
-  box-shadow: inset 1em 1em var(--ifm-color-primary);
-  border-radius: 2px;
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+    box-shadow: inset 1em 1em var(--ifm-color-primary);
+    border-radius: 2px;
 }
 
 input[type="checkbox"]:checked::before {
-  transform: scale(1);
+    transform: scale(1);
 }
 
 .selectOption {
-  display: grid;
-  grid-template-columns: 24px auto;
-  gap: 12px;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 24px auto;
+    gap: 12px;
+    align-items: center;
 }
 
 .selectOption + .selectOption {
-  margin-top: 1em;
+    margin-top: 1em;
 }
+
 .closeIcon {
-  display: flex;
-  justify-content: flex-end;
-  height: 18px;
+    display: flex;
+    justify-content: flex-end;
+    height: 18px;
 }
+
 .mobileFilterTitle {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-  margin: 32px 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 32px 0;
 }
+
 .mobileFilterBar {
-  display: none;
-  position: fixed;
-  background: var(--ifm-background-color);
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  z-index: 2100;
-  padding: 50px 5vw;
-  overflow: scroll;
+    display: none;
+    position: fixed;
+    background: var(--ifm-background-color);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 2100;
+    padding: 50px 5vw;
+    overflow: scroll;
 }
+
 .mobileSelectContainer {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 28px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
 }
+
 .mobileSelectContainer p {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
 }
+
 .mobileFilterOptions {
-  display: inline-flex;
-  flex-direction: column;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
-  margin-bottom: 32px;
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 32px;
 }
+
 .mobileFilterButton,
 .mobileFilterClearButton {
-  display: flex;
-  width: 90vw;
-  justify-content: center;
-  align-items: center;
-  height: 38px;
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
 }
+
 .mobileFilterButton {
-  border: 2px solid #3b00b9;
-  border-radius: 12px;
-  background: #3b00b9;
-  color: white;
-  margin: 16px 0;
+    border: 2px solid #3b00b9;
+    border-radius: 12px;
+    background: #3b00b9;
+    color: white;
+    margin: 16px 0;
 }
+
 .mobileFilterClearButton {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
+
 .mobileFilterBarButtonContainer {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  width: 100vw;
-  bottom: 0;
-  left: 0;
-  margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 100vw;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
 }
+
 .mobileFilterBarButton {
-  justify-content: center;
-  display: flex;
-  margin: auto;
-  align-items: center;
-  width: 204px;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  color: white;
-  -webkit-backface-visibility: hidden;
+    justify-content: space-evenly;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 215px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    color: white;
+    -webkit-backface-visibility: hidden;
+    padding: 0 10px;
 }
+
 .mobileFilterBarButton .numberOfItems {
-  color: black;
-  margin: 0 0 0 8px;
+    color: black;
 }
+
+.mobileFilterBarButton .numberOfItems, .mobileFilterBarButton .filterIcon {
+    margin: 0;
+}
+
 .filterBarHeader,
 .mobileFilterBarHeader {
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
 }
-.filterBarHeader{
-  display: flex;
-}
-.mobileFilterBarHeader {
-  display: none;
-}
-@media screen and (max-width: 996px) {
-  .mobileFilterBarButtonContainer,
-  .mobileFilterBarHeader {
+
+.filterBarHeader {
     display: flex;
-  }
-  .mobileFilterBar {
-    display: block;
-  }
-  .selectBoxes,
-  .filterBarHeader {
+}
+
+.mobileFilterBarHeader {
     display: none;
-  }
-  .sortByContainer {
-    margin: 0 20px 0 auto;
-  }
+}
+
+@media screen and (max-width: 996px) {
+    .mobileFilterBarButtonContainer,
+    .mobileFilterBarHeader {
+        display: flex;
+    }
+
+    .mobileFilterBar {
+        display: block;
+    }
+
+    .selectBoxes,
+    .filterBarHeader {
+        display: none;
+    }
+
+    .sortByContainer {
+        margin: 0 20px 0 auto;
+    }
 }

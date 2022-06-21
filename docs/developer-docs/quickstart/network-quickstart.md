@@ -210,7 +210,7 @@ To validate your cycles wallet:
 
     The command returns the balance for the your cycles wallet. For example:
 
-        15430122328028812 cycles.
+        15430.122 TC (trillion cycles).
 
     You can also access your default cycles wallet in a web browser by using a URL similar to the following:
 

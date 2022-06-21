@@ -17,20 +17,24 @@
 # Rewrite to download.dfinity.systems for fetchings artifacts
 /downloads/* https://download.dfinity.systems/sdk/:splat 302
 
+/developers-guide/quickstart.html /docs/current/developer-docs/quickstart/hello10mins
 
 /docs/base-libraries/* /docs/current/references/motoko-ref/:splat 301
 /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat 301
 /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat 301
 
-/docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
 /docs/candid-guide/candid-concepts.html /docs/current/developer-docs/build/languages/candid/candid-concepts.html
 /docs/candid-guide/candid-howto.html /docs/current/developer-docs/build/languages/candid/candid-howto.html
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
 /docs/candid-guide/candid-ref.html /docs/current/references/candid-ref.html
 /docs/candid-guide/candid-types.html /docs/current/references/candid-ref.html
+/docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
+/docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
+/docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
 /docs/developers-guide/about-this-guide.html /docs/current/developer-docs/build/language/motoko/about-this-guide.html
 /docs/developers-guide/basic-syntax-rules.html /docs/current/developer-docs/build/language/motoko/basic-syntax-rules.html
-/docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/updates/computation-and-storage-costs.html
+/docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
+/docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/deploy/computation-and-storage-costs.html
 /docs/developers-guide/concepts/bitcoin-integration.html /docs/current/concepts/bitcoin-integration.html
 /docs/developers-guide/concepts/canisters-code.html /docs/current/concepts/canisters-code.html
 /docs/developers-guide/concepts/concepts-intro.html /docs/current/concepts/concepts-intro.html

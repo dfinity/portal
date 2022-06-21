@@ -217,7 +217,7 @@ If an empty canister receives a response, that response is dropped, as if the ca
 
 #### Canister cycles
 
-The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2\^128-1, then the balance will be capped at 2\^128-1 and any additional cycles will be lost.
+The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2^128-1, then the balance will be capped at 2^128-1 and any additional cycles will be lost.
 
 When the cycle balance of a canister falls to zero, the canister is *deallocated*. This has the same effect as
 
@@ -1378,15 +1378,15 @@ The stable memory is initially empty.
 
     returns the current size of the stable memory in WebAssembly pages. (One WebAssembly page is 64KiB)
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
 -   `ic0.stable_grow : (new_pages : i32) → (old_page_count : i32)`
 
     tries to grow the memory by `new_pages` many pages containing zeroes.
 
-    This system call traps if the *previous* size of the memory exceeds 2\^32 bytes.
+    This system call traps if the *previous* size of the memory exceeds 2^32 bytes.
 
-    If the *new* size of the memory exceeds 2\^32 bytes or growing is unsuccessful, then it returns `-1`.
+    If the *new* size of the memory exceeds 2^32 bytes or growing is unsuccessful, then it returns `-1`.
 
     Otherwise, it grows the memory and returns the *previous* size of the memory in pages.
 
@@ -1394,7 +1394,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `src`/`size` out of the canister and replaces the corresponding segment starting at `offset` in the stable memory.
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
     It also traps if `src+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
 
@@ -1402,7 +1402,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `offset`/`size` out of the stable memory and replaces the corresponding bytes starting at `dest` in the canister memory.
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
     It also traps if `dst+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory
 

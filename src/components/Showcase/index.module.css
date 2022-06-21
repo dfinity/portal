@@ -2,10 +2,14 @@
     background-color: transparent;
     padding: 0;
     position: relative;
+    --swiper-theme-color: white;
+    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 0.30;
+    z-index: 2;
 }
 
 .showcaseContainer {
-    width: Min(1100px, 90%);
+    width: 100vw;
     padding: 50px 0;
     margin: auto;
     position: relative;
@@ -14,8 +18,8 @@
 .header {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
+    align-items: flex-start;
+    flex-direction: column;
     width: Min(1100px, 90%);
     margin: auto auto 50px auto;
 }
@@ -25,9 +29,17 @@
     font-size: 60px;
     line-height: 70px;
     color: white;
-    width: 434px;
     z-index: 1000;
     position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.textCycling {
+    position: absolute;
+    margin-left: 15px;
 }
 
 .headerBody {
@@ -51,6 +63,7 @@
     font-size: 18px;
     line-height: 26px;
     z-index: 1000;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .callToAction:hover {
@@ -72,52 +85,28 @@
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7813 7.33336L7.20529 3.75736L8.14796 2.8147L13.3333 8.00003L8.14796 13.1854L7.20529 12.2427L10.7813 8.6667H2.66663V7.33336H10.7813Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
 }
 
-.cards {
-    display: flex;
-    overflow-x: scroll;
-    scroll-padding: 50% 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: white #3b00b9;
+.swiperContainer {
     position: relative;
     z-index: 1000;
-}
-
-.cards::-webkit-scrollbar {
-    width: 12px;
-}
-
-.cards::-webkit-scrollbar-track {
-    background: #3b00b9;
-}
-
-.cards::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 20px;
-    border: 3px solid #3b00b9;
-}
-.cardWrapper {
-    scroll-snap-align: start;
-    display: inline-block;
-    margin: 0 1rem 1rem 0;
-}
-
-.cardWrapper:last-child {
-    margin-right: 0;
+    width: 100vw;
+    margin: 32px 0 12px 0;
+    flex-direction: row;
+    display: block;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 540px;
-    height: 540px;
+    width: 100%;
+    height: 550px;
     background: rgba(255, 255, 255, 0.5);
     box-sizing: border-box;
     backdrop-filter: blur(5px);
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+    margin-bottom: 50px;
 }
 
 .card:hover,
@@ -127,10 +116,12 @@
 
 .card:hover .backgroundImage {
     bottom: -10px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .card:hover .tooltipContainer {
     display: flex;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .cardHeader {
@@ -190,15 +181,17 @@
 .actionButton {
     text-align: center;
     display: inline-flex;
-    padding: 1rem 2rem;
+    padding: 16px 24px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 22px;
     border: 2px solid white;
     border-radius: 10px;
     color: white;
     text-decoration: none;
     position: relative;
     z-index: 1000;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -227,7 +220,7 @@
 }
 
 .backgroundImage {
-    width: 100%;
+    width: Min(550px,100%);
     position: absolute;
     right: 0;
     bottom: -50px;
@@ -246,16 +239,17 @@
     .container {
         background-color: #3b00b9;
     }
-    .BGShape{
+
+    .BGShape {
         display: none;
     }
+
     .showcaseContainer {
         margin: auto;
         padding: 100px 0;
     }
 
     .card {
-        width: Min(80vw,540px);
         height: 400px;
     }
 
@@ -271,6 +265,7 @@
 
     .backgroundImage {
         bottom: -10px;
+        width: Min(400px,100%);
     }
 
     .background {
@@ -279,11 +274,21 @@
 
     .header {
         display: block;
-        width: Min(100%, 500px);
+        width: Min(90%, 500px);
     }
 
     .title, .body {
         width: Min(434px, 90%);
+    }
+
+    .title {
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+
+    .textCycling {
+        margin: 0;
+        width: 90vw;
     }
 
     .tooltipContainer {
@@ -297,6 +302,11 @@
     .actionButtonContainer {
         margin: 3rem auto;
         display: block;
-        width: Min(100%, 500px);
+        width: Min(90%, 500px);
+    }
+    .actionButton {
+        padding: 14px 24px;
+        font-size: 14px;
+        line-height: 22px;
     }
 }
