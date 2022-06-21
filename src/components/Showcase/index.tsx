@@ -4,10 +4,6 @@ import Link from "@docusaurus/Link";
 import { useAnimation, motion, useCycle, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ColorThief from "colorthief";
-import { Mousewheel, Scrollbar } from "swiper";
-import "swiper/css";
-import "@site/src/css/customScrollbar.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import transitions from "@site/static/transitions.json";
 import dapps from "@site/static/showcase.json";
 
@@ -134,7 +130,11 @@ function Dapp({ dappInfo }) {
   }
 
   return (
-    <div className={styles.dappContainer}>
+    <a
+      target={"_blank"}
+      href={dappInfo.website}
+      className={styles.dappContainer}
+    >
       <div className={styles.dappHeader}>
         <div className={styles.dappIcon}>
           <img
@@ -176,12 +176,12 @@ function Dapp({ dappInfo }) {
         )}
       </div>
       <div className={styles.dappBody}>{dappInfo.description}</div>
-    </div>
+    </a>
   );
 }
 
 function Showcase() {
-  const firstDapps = dapps.slice(0, 15);
+  const firstDapps = dapps.slice(0, 14);
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.35 });
   useEffect(() => {
@@ -273,7 +273,7 @@ function Showcase() {
           </div>
           <motion.div
             variants={transitions.item}
-            className={styles.swiperContainer}
+            className={styles.cardContainer}
           >
             {firstDapps.map((dapp) => (
               <div className={styles.cardWrapper}>

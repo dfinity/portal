@@ -122,7 +122,7 @@
     z-index: 1000;
 }
 
-.swiperContainer {
+.cardContainer {
     position: relative;
     z-index: 1000;
     display: flex;
@@ -132,46 +132,54 @@
     scrollbar-width: thin;
     scrollbar-color: white #3b00b9;
 }
-.swiperContainer::-webkit-scrollbar {
+
+.cardContainer::-webkit-scrollbar {
     width: 12px;
 }
 
-.swiperContainer::-webkit-scrollbar-track {
+.cardContainer::-webkit-scrollbar-track {
     background: #3b00b9;
     margin-right: 50px;
-    margin-left: 50px;
+    margin-left: calc((100vw - Min(1100px, 90vw)) / 2);
     border-radius: 20px;
 }
 
-.swiperContainer::-webkit-scrollbar-thumb {
-    background-color: white;
+.cardContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 24, 60%);
     border-radius: 20px;
     border: 3px solid #3B00B9;
 }
+
 .cardWrapper {
     display: inline-block;
     margin: 0 20px 20px 0;
 }
+
 .cardWrapper:first-child {
-    padding-left: 50px;
+    padding-left: calc((100vw - Min(1100px, 90vw)) / 2);
 }
+
 .cardWrapper:last-child {
     margin-right: 0;
     padding-right: 50px;
 }
+
 .dappContainer {
     background: white;
     display: inline-block;
-    height: 560px;
+    height: 100%;
     width: 440px;
+    border-radius: 12px;
 }
-
+.dappContainer:hover {
+    text-decoration: none;
+}
 .dappHeader {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 20px 16px;
+    margin: 24px 24px 16px;
 }
 
 .dappIcon {
@@ -238,7 +246,7 @@
     line-height: 24px;
     letter-spacing: -0.15px;
     color: #888888;
-    margin: 20px;
+    margin: 24px;
 }
 
 .swiperSlide {
@@ -272,11 +280,6 @@
         display: none;
     }
 
-    .header {
-        display: block;
-        width: Min(90%, 500px);
-    }
-
     .title, .body {
         width: Min(434px, 90%);
     }
@@ -293,8 +296,6 @@
 
     .actionButtonContainer {
         margin: 3rem auto;
-        display: block;
-        width: Min(90%, 500px);
     }
 
     .actionButton {
@@ -308,6 +309,7 @@
         width: 338px;
         height: 580px;
     }
+
     .swiperSlide + .swiperSlide {
         width: 338px;
         padding: 0;

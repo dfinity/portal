@@ -135,20 +135,6 @@
     "screenshots": []
   },
   {
-    "name": "IC Rocks",
-    "oneLiner": "Internet Computer Explorer",
-    "website": "https://ic.rocks/",
-    "tags": [
-      "Infrastructure",
-      "Explorer"
-    ],
-    "description": "IC.Rocks is a complete \"block explorer\" for the Internet Computer – built by the community. Tracking everything from transactions, to network upgrades, to cycles, IC.Rocks enables anyone to explore the inner-workings of the Internet Computer. ",
-    "logo": "//images.ctfassets.net/ywqk17d3hsnp/2DgRnidLLXptLP79dVjjxr/f23bf220d5efa474db8c8da444864e01/icrocks-logo.png",
-    "screenshots": [
-      "//images.ctfassets.net/ywqk17d3hsnp/3bTxCg5DZESlvx11VX9Z8G/b855b93229e6e22fcc1fbe31534e4a08/Screen_Shot_2021-09-24_at_9.17.29_AM.png"
-    ]
-  },
-  {
     "name": "NNS Front-End Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
     "website": "https://nns.ic0.app",
