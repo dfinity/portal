@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import ColorThief from "colorthief";
 import transitions from "@site/static/transitions.json";
 import dapps from "@site/static/showcase.json";
+import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 
 const backgroundDisplay = {
   show: { display: "block", transition: { duration: 0.5 } },
@@ -267,7 +268,8 @@ function Showcase() {
                 className={styles.callToAction}
                 to={"https://dfinity.org/showcase/"}
               >
-                Explore the Internet Computer ecosystem
+                <RightPointer />
+                <p> Explore the Internet Computer ecosystem</p>
               </Link>
             </motion.div>
           </div>
