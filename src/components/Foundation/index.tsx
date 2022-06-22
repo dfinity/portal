@@ -38,7 +38,7 @@ const cards = [
   },
   {
     isMain: false,
-    title: ["IC for Geek", "White Paper"],
+    title: ["IC for Geeks", "White Paper"],
     body: "v1.3 April 19, 2022",
     link: "https://dfinity.org/whitepaper.pdf",
   },
