@@ -12,6 +12,7 @@ import ICToken from "@site/src/components/ICToken";
 import Showcase from "@site/src/components/Showcase";
 import StartBuilding from "@site/src/components/StartBuilding";
 import Foundation from "@site/src/components/Foundation";
+import BackgroundGradient from "@site/static/img/bgGradient.png";
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   useEffect(() => {
@@ -26,6 +27,11 @@ export default function Home(): JSX.Element {
         <BrowserOnly>
           {() => (
             <div className={styles.particleBackground}>
+              <img
+                src={BackgroundGradient}
+                className={styles.BGGradient}
+                alt=""
+              />
               <ParticleBackground
                 width={document.body.clientWidth}
                 height={document.body.clientHeight * 2}

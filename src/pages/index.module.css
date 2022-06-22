@@ -5,9 +5,31 @@
     position: absolute;
     overflow: hidden;
 }
+
 .main {
     width: 100%;
     position: relative;
     overflow: hidden;
     height: 100%;
+}
+
+.BGGradient {
+    display: flex;
+    position: absolute;
+    max-width: 100vw;
+    height: 100vh;
+    right: -20vw;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+}
+
+@media screen and (max-width: 996px) {
+    .BGGradient {
+        top: -100px
+    }
 }

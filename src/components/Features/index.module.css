@@ -2,7 +2,7 @@
     width: Min(1250px, 100%);
     margin: auto;
     position: relative;
-    padding: 100px 0;
+    padding: 150px 0 200px 0;
     --swiper-theme-color: var(--ifm-color-primary);
     z-index: 1;
 }
@@ -92,9 +92,11 @@
 .actionButton {
     margin: 0;
     text-align: center;
-    padding: 14px 20px;
+    padding: 16px 24px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 1px;
     border: 2px solid black;
     border-radius: 10px;
     color: black;
@@ -137,7 +139,7 @@
 
     .title {
         font-size: 32px;
-        font-size: 42px;
+        line-height: 42px;
     }
 
     .card {
@@ -151,6 +153,8 @@
 
     .actionButton {
         font-size: 14px;
+        line-height: 22px;
+        padding: 14px 20px;
     }
 
 }

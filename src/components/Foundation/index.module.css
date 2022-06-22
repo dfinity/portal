@@ -28,7 +28,7 @@
     width: Min(850px, 90%);
     margin: 0 auto;
     position: relative;
-    padding: 400px 0 100px 0;
+    padding: 500px 0 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -155,6 +155,7 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
+    letter-spacing: 1px;
     border: 2px solid black;
     border-radius: 10px;
     color: black;

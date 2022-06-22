@@ -52,7 +52,9 @@ function Card({ isMain, title, body, link }) {
     >
       <div className={styles.cardBodyContainer}>
         {title.map((titleLine) => (
-          <p className={styles.cardTitle} key={titleLine}>{titleLine}</p>
+          <p className={styles.cardTitle} key={titleLine}>
+            {titleLine}
+          </p>
         ))}
         <p className={styles.cardBody}>{body}</p>
       </div>
@@ -99,13 +101,13 @@ function Foundation() {
       <a id="foundation" />
       <motion.img
         src={TeamPhotoFront}
-        style={{ y: currentYScroll * 0.2 }}
+        style={{ y: currentYScroll * 0.4 }}
         className={styles.mainPhoto}
         alt=""
       />
       <motion.img
         src={TeamPhotoBack}
-        style={{ y: currentYScroll * 0.4 }}
+        style={{ y: currentYScroll * 0.2 }}
         className={styles.mainPhoto}
         alt=""
       />
@@ -154,7 +156,10 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link className={styles.actionButton} to="https://dfinity.org/foundation">
+        <Link
+          className={styles.actionButton}
+          to="https://dfinity.org/foundation"
+        >
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>

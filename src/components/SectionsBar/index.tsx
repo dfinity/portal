@@ -3,6 +3,7 @@ import Link from "@docusaurus/Link";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "@docusaurus/theme-common";
+import clsx from "clsx";
 
 const SectionsLinks = [
   { text: "Dashboard", to: "#dashboard" },
@@ -54,7 +55,12 @@ export default function SectionsBar() {
     <div className={styles.container}>
       {display && isMobile ? (
         <div className={styles.desktopContainer}>
-          <div className={styles.mobileMenu}>
+          <div
+            className={clsx(
+              styles.mobileMenu,
+              displayMobileMenu ? styles.borderRadius12 : styles.borderRadius50
+            )}
+          >
             {displayMobileMenu ? (
               <>
                 <div

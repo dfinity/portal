@@ -39,8 +39,8 @@ export const ownershipData = {
     {
       label: "Percentage of Ownership",
       data: [77.8, 22.2],
-      backgroundColor: ["rgba(62,9,185,1)", "rgba(205,78,131,1)"],
-      borderColor: ["rgba(62,9,185,1)", "rgba(205,78,131,1)"],
+      backgroundColor: ["rgba(62,9,185,1)", "rgb(218, 57, 121)"],
+      borderColor: ["rgba(62,9,185,1)", "rgb(218, 57, 121)"],
       borderWidth: 1,
     },
   ],
@@ -84,6 +84,7 @@ function OwnershipChart() {
               labels: {
                 font: { size: 16 },
                 color: "black",
+                padding: 20,
                 usePointStyle: true,
                 pointStyle: "circle",
                 boxWidth: 12,
@@ -194,7 +195,7 @@ function VotingRewardsChart() {
             title: {
               display: true,
               text: ["Latest Annualized Voting", "Reward Percentage"],
-              font: { size: 14 },
+              font: { size: 14, weight: "light" },
               color: "black",
               align: "start",
             },
