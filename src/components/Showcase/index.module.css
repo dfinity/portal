@@ -143,8 +143,12 @@
     border-radius: 20px;
 }
 
-.cardContainer::-webkit-scrollbar-thumb {
+.cardContainer:hover::-webkit-scrollbar-thumb {
     background-color: rgba(24, 24, 24, 60%);
+}
+
+.cardContainer::-webkit-scrollbar-thumb {
+    background-color: #3b00b9;
     border-radius: 20px;
     border: 3px solid #3B00B9;
 }
