@@ -1,3 +1,87 @@
+# 暗号化されたノート（Encrypted Notes）
+
+[ Encrypted Notes ](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp)は、短いテキスト形式で秘密の情報を作成・保存する試験的なアプリケーションです。ユーザーは [ Internet Identity ](https://smartcontracts.org/docs/ic-identity-guide/what-is-ic-identity.html)で認証された、自動的に同期される複数のデバイスから自分のノートにアクセスすることができます。アプリのフロントエンドがエンドツーエンドで暗号化するため、ユーザーはアプリのバックエンドを信頼する必要がありません。
+
+こちらの [ IC 上にデプロイされている Dapp ](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/)から試すことが出来ます。
+
+## アイディア
+
+純粋に IC 上で動作する簡素な（しかし簡素すぎない）アプリケーションの例を示したいと思います。この例は IC の _ウェブ配信機能_ と _ストレージ機能_ に依存しています。このアプリの例で次の 2 つの主要な機能に焦点を当てます。(1)クライアントサイドでの _エンドツーエンドの暗号化_ 、(2) _マルチユーザー_ 、 _マルチデバイス_ のサポート。
+
+このようなアプリの開発プラットフォームとしての IC の可能性を示すために、2 種類の Canister Development Kits ( CDKs )を用いて実装を行いました。Motoko CDK は[ Motoko ](https://smartcontracts.org/docs/language-guide/motoko.html) 言語を使って Actor ベースの Dapp を実装するためのものです。Rust CDK は[ Rust ](https://smartcontracts.org/docs/rust-guide/rust-intro.html) 言語で実装されたアプリを提供します。いずれも Canister を WebAssembly ファイルにコンパイルし、 IC 上にデプロイします。
+
+## アプローチ
+
+Encrypted Notes の基本機能は 2 つの主要コンポーネントで構成されています。
+
+第一に、[ IC-Notes ](https://github.com/pattad/ic_notes)という Dapp のコード（非暗号化） を再利用しました。特に IC-Notes はユーザー認証のために[ Internet Identity ](https://smartcontracts.org/docs/ic-identity-guide/auth-how-to.html) ( II ) Canister に依存しており、このアプローチは Encrypted Notes にも継承されています。開発目的では II Canister のローカルインスタンス（ Encrypted Notes のローカルインスタンスと共に)をデプロイします。Encrypted Notes をメインネットにデプロイする場合、現実世界の II インスタンスが認証に使用されます。
+
+第二に、クライアントサイドでノートの内容のエンドツーエンドの暗号化を可能にしました。これは、[ IC-Vault ](https://github.com/timohanke/icvault)という別の既存のアプリからソリューションを借用したものです。私たちの Encrypted Notes アプリは IC-Vault のアプローチを踏襲し、複数のデバイスの管理をサポートしています。
+
+このドキュメントで論じる Canister の文脈では、デバイスは必ずしも独立した物理デバイスではなく論理的なインスタンスデバイスです。つまり、独自のローカルデータストレージを持つ Web ブラウザなどです。例えば、同じノートパソコン上で動作する 2 つの Web ブラウザを独立した 2 つのデバイスと見なし、これらのブラウザは独自の暗号鍵を生成します。これに対し、II Canister はハードウェアが生成する暗号鍵に依存し、ハードウェアデバイスのみを識別します。
+
+ユーザーごとに複数のデバイスをサポートするために、IC-Vault はデバイスマネージャーとユーザーに結びついたすべてのデバイス間でデバイス固有の鍵を安全に同期させる Canister を採用しています。このドキュメントの残りの部分では、メイン Canister の一部として同様の方法でデバイスマネージャーを実装している Encrypted Notes Canister に焦点を当てます。
+
+詳細やユーザーストーリーは [ README ファイル](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/README.md) を参照して下さい。
+
+![High-level architecture overview diagram of the Encrypted Notes dapp](_attachments/encrypted-notes-arch.png)
+
+## ノートマネージメント
+
+- ユーザーはフロントエンドで II にリンクされ、API クエリやアップデートを呼び出すために使用できる Principal を取得します。
+
+- 内部的には、`Principal → [Notes]` という形式のマップと、`counter` を格納しています。
+
+- `counter` には、Canister が作成した（すべての Principal にわたる）ノートの数が格納されます。
+
+- `create` メソッドは、Principal のエントリがすでに存在する場合にはそのエントリに、そうでなければ Principal を新たにマップに追加し、`note_id == counter` であるノートを追加した後に、`counter` をインクリメントします。
+
+- `update` メソッドは、呼び出し元の Principal と指定された `note_id` に対応するノートを取り出し、与えられた `text` で置き換えます （この `text` はフロントエンドによって暗号化されていると仮定します）。
+
+- `delete` メソッドは、指定された `note_id` を持つノートをマップから探し出し削除します。ノート ID が常にグローバルに一意であることを保証するために、 `counter` を減少させないようにします。
+
+## 暗号化
+
+- ノートの暗号化は完全にクライアントサイドで行われます。しかし、このサンプルアプリは、悪意のあるノードプロバイダによるデータ漏洩攻撃の可能性からはまだ保護されていません。例えば、攻撃者は特定のユーザーが何冊のノートを持っているかや、ユーザーの活動統計などを推論することができます。したがって、このアプリのコードやパターンを使用する前に、[免責条項](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/README.md#disclaimer-please-read-carefully)をよく読んでください。
+
+- このアプリの定義では、デバイスは必ずしも独立した物理デバイスではなく、単に独立したローカルストレージを持つ web ブラウザのインスタンスであることを思い出してください。
+
+- Dapp は３種類の違う鍵を利用します。
+
+  - 対称型 AES-GCM _秘密鍵_ ： 指定された Principal のノートを暗号化するために使用されます。Principal のノートはこの秘密鍵で暗号化されて Encrypted notes Canister に保存されます。したがって、アプリのフロントエンドはこのユーザーのノートを復号したり、 Encrypted Notes Canister に暗号化したノートを格納するためにこの秘密鍵を知っている必要があります。
+
+  - デバイス RSA-OAEP _公開鍵_ ： Principal の対称型 AES _秘密鍵_ を暗号化するために使用されます。暗号化された秘密鍵は Principal に登録されたデバイスそれぞれに対して Canister に格納されます。そのデバイスを使用する Principal が異なると同じ鍵が使用されます。
+
+  - デバイス RSA-OAEP _秘密鍵_ ：Encrypted notes Canister に格納されている、指定された Principal の対称型 AES _秘密鍵_ を復号するために使用されます。フロントエンドが秘密鍵を復号すると、 Encrypted Notes Canister に保存されているノートを復号するためにこの鍵を使用することができます。
+
+- フォームのマップを保存します。
+
+      Principal → (DeviceAlias → PublicKey,
+                   DeviceAlias → CipherText)
+
+- このマップは次に説明するように、ユーザーデバイスを管理するために使用されます。
+
+- デバイスを登録するために、フロントエンドはデバイス・エイリアス、公開鍵、秘密鍵（ローカルストレージに保持）を生成します。
+
+- デバイスを追加すると、以下が行われます。
+
+  - **デバイスの登録：** この ID がすでに登録されていると、このデバイスの `alias` と `publickey` だけが Encrypted Notes Canister に追加されます。
+
+  - **デバイスの同期：** 同期していないデバイスがこの II のすべての同期していないデバイスのリストを取得すると、同期していないデバイスのそれぞれの公開鍵で対称型 AES _秘密鍵_ を暗号化します。その後、同期していないデバイスは暗号化された対称型 AES _秘密鍵_ を取得して復号し、それを使って Encrypted Notes Canister に保存されている既存のノートを復号します。
+
+- 一度 II で認証すると、以下が行われます。
+
+  - この ID が未登録の場合、フロントエンドは対称型 AES _秘密鍵_ を生成し、それを自身の公開鍵で暗号化します。そして `seed(publickey, ciphertext)` を呼び出し、その暗号文とそれに関連する `publickey` をマップに追加します。
+
+  - ユーザーが後続のデバイスを登録したい場合、フロントエンドは `register_device` を呼び出して、そのデバイスの `alias` と `publickey` を渡します。次に、フロントエンドは登録する必要があるすべてのデバイスに対して `submit_ciphertexts([publickey, ciphertext])` を呼び出します。これにより、登録されたデバイスはユーザーノートを暗号・復号化するための AES 鍵を復号し引き出すことができるようになります。
+
+## シーケンスダイヤグラム
+
+### 新しいデバイスの追加
+
+![UML sequence diagram showing device registration and synchronization](_attachments/encrypted-notes-seq.png)
+
+<!--
 # Encrypted Note-taking Dapp
 
 [Encrypted Notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) is an experimental dapp for authoring and storing confidential information in the form of short pieces of text. The user can access their notes via any number of automatically synchronized devices authenticated via [Internet Identity](https://smartcontracts.org/docs/ic-identity-guide/what-is-ic-identity.html). Thanks to the end-to-end encryption performed by the dapp’s frontend, the user does not need to trust the dapp’s backend.
@@ -80,3 +164,5 @@ For further details and user stories, please refer to the [README file](https://
 ### Adding New Device
 
 ![UML sequence diagram showing device registration and synchronization](_attachments/encrypted-notes-seq.png)
+
+-->
