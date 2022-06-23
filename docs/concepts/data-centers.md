@@ -12,7 +12,7 @@ Internet Computer ブロックチェーンを構成する世界各地のデー�
 
 下図は、4 つのデータセンターにノードがあるサブネットの簡略図です。
 
-![data center simplified](data-center-simplified.svg)
+![data center simplified](_attachments/data-center-simplified.svg)
 
 シンプルなシナリオを下記に示します。
 
