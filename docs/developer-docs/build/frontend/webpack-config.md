@@ -1,3 +1,238 @@
+# フロントエンドの概要
+
+IC では、[JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) を使うことで dapps のために Web 3.0 のフロントエンドをホストすることができます。また、`dfx` が提供する [asset canister](https://github.com/dfinity/certified-assets) を使って静的ファイルを IC にアップロードすることで、アプリケーション全体を分散型技術で実行することができます。このセクションでは、`dfx new` で提供されるデフォルトのフロントエンドテンプレート、フロントエンドの設定オプション、プロジェクトのユーザーインターフェイスを構築するための他のフレームワークの使用について詳しく説明します。
+
+ここではフロントエンド Dapps の開発の様々な段階でのサンプルコードを含むチュートリアルへのクイックリンクをご紹介します。
+
+- React dapp 構築のチュートリアル [Customize the frontend](custom-frontend)
+
+- [Candid](../backend/hello-location#candid-ui) を、Canister 内の機能を公開してテストするための最低限のインターフェースとして使用する。
+
+- [生の HTML と JavaScript](../backend/explore-templates#default-frontend) を使って、シンプルな HTML エントリーページを表示する。
+
+- [React とコンパイルされた JavaScript](custom-frontend) を使って、HTML の属性や要素を直接ページに埋め込む。
+
+- [React と TypeScript](my-contacts) を使って、外部ファイルから CSS プロパティをインポートする。
+
+## デフォルトテンプレートの使用方法
+
+チュートリアルでお気づきのように、プロジェクトにはテンプレートの `index.js` と `webpack.config.js` ファイルが含まれています。
+
+デフォルトでは、`index.js` ファイルは、`src/declarations` フォルダにあるエージェントをインポートします。このディレクトリは、`dfx deploy` を実行しローカルまたは Internet Computer にデプロイするときに、`dfx` によって生成されます。
+
+その生成されたコードは以下のようになります。
+
+    import { Actor, HttpAgent } from "@dfinity/agent";
+
+    // candid interfaceをimport
+    import { idlFactory } from './hello.did.js';
+    // CANISTER_ID は、ノード環境に応じて webpack で置き換え
+    export const canisterId = process.env.HELLO_CANISTER_ID;
+
+    /**
+     *
+     * @param {string | Principal} canisterId Canister ID of Agent
+     * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
+     * @return {import("@dfinity/agent").ActorSubclass<import("./hello.did.js")._SERVICE>}
+     */
+    export const createActor = (canisterId, options) => {
+      const agent = new HttpAgent({ ...options?.agentOptions });
+
+      // 開発中の証明書検証のためのルートキーをfetch
+      if(process.env.NODE_ENV !== "production") agent.fetchRootKey();
+
+      // actor をcandid インターフェースとHttpAgentを利用して生成
+      return Actor.createActor(idlFactory, {
+        agent,
+        canisterId,
+        ...options?.actorOptions,
+      });
+    };
+
+    /**
+     * A ready-to-use agent for the hello canister
+     * @type {import("@dfinity/agent").ActorSubclass<import("./hello.did.js")._SERVICE>}
+     */
+    export const hello = createActor(canisterId);
+
+そして、`index.js` に戻ると、生成されたアクターを受け取り、それを使って `hello` Canister の `greet` メソッドを呼び出しているのがわかります。
+
+    import { hello } from "../../declarations/hello";
+
+    document.getElementById("clickMeBtn").addEventListener("click", async () => {
+      const name = document.getElementById("name").value.toString();
+      // Interact with hello actor, greet methodをコール
+      const greeting = await hello.greet(name);
+
+      document.getElementById("greeting").innerText = greeting;
+    });
+
+多くのプロジェクトでは、`declarations` にあるコードをそのまま使うことができ、`hello_assets/src` に変更を加えることができます。しかし、あなたのプロジェクトに追加の要件がある場合は、以下を読み進めてください。
+
+### webpack の設定を変更する
+
+webpack は、JavaScript ベースのアプリケーション用のモジュールバンドラーとして人気があり、高度な設定が可能であるため、新しいプロジェクトでは、デフォルトの `webpack.config.js` ファイルが作成され、使用したい特定のモジュール（`react` や `markdown` など）を簡単に追加できるようになっています。
+
+テンプレートの `webpack.config.js` ファイルのコードを確認すると、ローカル開発の場合は `.dfx/local/canister_ids.json` から、その他の環境を設定した場合は `./canister_ids.json` から Canister ID を推定しています。どのネットワークを使用するかは、プロセス変数の `DFX_NETWORK` や、`NODE_ENV` が `"production"` に設定されているかどうかに基づいて決定されます。
+
+これらの手順は以下のコードブロックで見ることができます。
+
+    let localCanisters, prodCanisters, canisters;
+
+    try {
+      localCanisters = require(path.resolve(".dfx", "local", "canister_ids.json"));
+    } catch (error) {
+      console.log("No local canister_ids.json found. Continuing production");
+    }
+
+    function initCanisterIds() {
+      try {
+        prodCanisters = require(path.resolve("canister_ids.json"));
+      } catch (error) {
+        console.log("No production canister_ids.json found. Continuing with local");
+      }
+
+      const network =
+        process.env.DFX_NETWORK ||
+        (process.env.NODE_ENV === "production" ? "ic" : "local");
+
+      canisters = network === "local" ? localCanisters : prodCanisters;
+
+      for (const canister in canisters) {
+        process.env[canister.toUpperCase() + "_CANISTER_ID"] =
+          canisters[canister][network];
+      }
+    }
+    initCanisterIds();
+
+### エントリーとアウトプットの設定
+
+多くの場合、デフォルトの `webpack.config.js` ファイルをそのまま、何も変更せずに使用することもできますし、プラグインやモジュール、その他のカスタム構成を追加して、ニーズに合わせて使用することもできます。 具体的に `webpack.config.js` の設定をどのように変更するかは、使用したい他のツールやフレームワークに大きく依存します。
+
+例えば、フロントエンドのチュートリアルである [フロントエンドのカスタマイズ](https://nifty-beaver-611cb8.netlify.app/docs/developers-guide/tutorials/custom-frontend.html) や [スタイルシートの追加](https://nifty-beaver-611cb8.netlify.app/docs/developers-guide/tutorials/my-contacts.html) を試したことがある方は、React JavaScript で動作するように以下の部分を変更しているかもしれません。
+
+        module: {
+          rules: [
+            { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+            { test: /\.css$/, use: ['style-loader','css-loader'] }
+          ]
+        }
+      };
+    }
+
+ビルドスクリプトの実行に `dfx` を使用しないアプリケーションの場合は、自分で変数を用意することができます。例えば、以下のようになります。
+
+    DFX_NETWORK=staging NODE_ENV=production HELLO_CANISTER_ID=rrkah... npm run build
+
+### ノードがプロジェクトで利用可能であることを確認する
+
+プロジェクトは、デフォルトのフロントエンドのフレームワークを提供するために webpack に依存しているので、開発環境に `node.js` がインストールされ、プロジェクトディレクトリにアクセスできる必要があります。
+
+- デフォルトの webpack 設定と Canister のエイリアスを使用せずにプロジェクトを開発したい場合は、`dfx.json` ファイルから `assets` Canister を削除するか、特定の Canister 名を使用してプロジェクトをビルドすることができます。例えば、以下のコマンドを実行すると、フロントエンドのアセットを使わずに hello プログラムだけをビルドすることができます。
+
+      dfx build hello
+
+- デフォルトの webpack 構成を使用していて、`dfx build` の実行に失敗する場合は、プロジェクトディレクトリで `npm install` を実行してから、`dfx build` を再実行してください。
+
+- プロジェクトディレクトリで `npm install` を実行しても問題が解決しない場合は、`webpack.config.js` ファイルの設定にシンタックスエラーがないか確認してください。
+
+## 他のモジュールを React フレームワークで使用する
+
+[リポジトリにあるいくつかのチュートリアルやサンプルプロジェクト](https://github.com/dfinity/examples)では、`npm install` コマンドを使って React モジュールを追加する方法が説明されています。 これらのモジュールを使って、プロジェクトで使用したいユーザーインターフェースコンポーネントを構築することができます。 例えば、以下のコマンドを実行して、`react-router` モジュールをインストールすることができます。
+
+    npm install --save react react-router-dom
+
+このモジュールを使って、以下のようなナビゲーションコンポーネントを作ることができます。
+
+    import React from 'react';
+    import { NavLink } from 'react-router-dom';
+
+    const Navigation = () => {
+      return (
+        <nav className="main-nav">
+          <ul>
+            <li><NavLink to="/myphotos">Remember</NavLink></li>
+            <li><NavLink to="/myvids">Watch</NavLink></li>
+            <li><NavLink to="/audio">Listen</NavLink></li>
+            <li><NavLink to="/articles">Read</NavLink></li>
+            <li><NavLink to="/contribute">Write</NavLink></li>
+          </ul>
+        </nav>
+      );
+    }
+
+    export default Navigation;
+
+## webpack-dev-server を使用した反復処理の高速化
+
+dfx 0.7.7 から、`dfx new` スターターに webpack dev-server が搭載されました。
+
+webpack 開発サーバ `webpack-dev-server` は、webpack アセットへのインメモリアクセスを提供し、ライブリロードを使って変更を行い、すぐにブラウザに反映させることができます。
+
+`webpack-dev-server` を利用するには、次のようにします。
+
+1.  新しいプロジェクトを作成し、プロジェクトディレクトリに変更します。
+
+2.  必要に応じて{IC}をローカルで起動し、`dfx deploy` コマンドを実行するなど、通常の操作でデプロイします。
+
+3.  以下のコマンドを実行して、webpack 開発サーバーを起動します。
+
+        npm start
+
+4.  Web ブラウザーを開き、8080 ポートを使用して、アプリケーションのアセット Canister にナビゲートします。
+
+    例:
+
+        http://localhost:8080
+
+5.  新しいターミナルウィンドウまたはタブを開き、プロジェクトのディレクトリに移動します。
+
+6.  プロジェクトの `index.js` ファイルをテキストエディターで開き、内容を変更します。
+
+    例えば、JavaScript を使ってページに要素を追加するような場合です。
+
+    document.body.onload = addElement;
+
+        document.body.onload = addElement;
+
+        function addElement () {
+          // div要素を新規に生成
+          const newDiv = document.createElement("div");
+
+          // それに乗せるコンテント
+          const newContent = document.createTextNode("Test live page reloading!");
+
+          // 新しく作成された div 要素に テキストノードである newContent を追加
+          newDiv.appendChild(newContent);
+
+          // 新しく作成したnewDiv要素とnewContentをDOMに追加
+          const currentDiv = document.getElementById("div1");
+          document.body.insertBefore(newDiv, currentDiv);
+        }
+
+7.  `index.js` ファイルへの変更を保存しますが、エディタを開いたままにしておき、変更を続けます。
+
+8.  ブラウザを更新するか、またはブラウザが自動的に更新されるのを待つと、変更内容が表示されます。
+
+    プロジェクトのフロントエンドの作業が終わったら、Control-C を押して webpack 開発サーバーを停止することができます。
+
+## 他のフレームワークを使うと
+
+webpack 以外のバンドラーを使いたい場合もあるでしょう。バンドラーごとの説明はまだ準備できていませんが、お使いのバンドラーに精通していれば、以下の手順で作業を進めることができます。
+
+1.  `package.json` から `copy:types`, `prestart`, `prebuild` のスクリプトを削除します。
+
+2.  `dfx deploy` を実行して、Canister 用のローカルバインディングを生成します。
+
+3.  生成されたバインディングを保存したいディレクトリにコピーします。
+
+4.  `declarations/<canister_name>/index.js` を修正し、`process.env.<CANISTER_NAME>_CANISTER_ID` をバンドラーの環境変数に相当するパターンに置き換えます。
+
+    - 望ましいワークフローであれば、CanisterID をハードコードすることもできます。
+
+5.  宣言をコミットして、コードベースに import します。
+
+<!--
 # Frontend Overview
 
 the IC allows you to host Web 3.0 frontends for your dapps, using our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). By using the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC, you will be able to run your entire application on decentralized technology. This section takes a closer look at the default frontend template that is provided by `dfx new`, frontend configuration options, and using other frameworks to build the user interface for your projects.
@@ -34,7 +269,7 @@ That generated code will look like this:
      * @param {string | Principal} canisterId Canister ID of Agent
      * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
      * @return {import("@dfinity/agent").ActorSubclass<import("./hello.did.js")._SERVICE>}
-     */
+     *
     export const createActor = (canisterId, options) => {
       const agent = new HttpAgent({ ...options?.agentOptions });
 
@@ -48,11 +283,10 @@ That generated code will look like this:
         ...options?.actorOptions,
       });
     };
-
     /**
      * A ready-to-use agent for the hello canister
      * @type {import("@dfinity/agent").ActorSubclass<import("./hello.did.js")._SERVICE>}
-     */
+     *
     export const hello = createActor(canisterId);
 
 Then, if you return to `index.js`, you can see that it takes the generated actor, and uses it to make a call to the `hello` canister’s `greet` method:
@@ -231,3 +465,5 @@ You may want to use a bundler other than webpack. Per-bundler instructions are n
     -   Alternately hardcode the canister ID if that is your preferred workflow
 
 5.  Commit the declarations and import them in your codebase
+
+-->
