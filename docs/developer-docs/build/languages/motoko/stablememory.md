@@ -6,21 +6,21 @@ The `ExperimentalStableMemory` library is experimental, subject to change and ma
 
 :::
 
-Motoko stable variables, while convenient to use, require serialization and deserialization of all stable variables on upgrade (see [Stable variables and upgrade methods](upgrades)). During an upgrade, the current values of stable variables are first saved toICstable memory, then restored from stable memory after the new code is installed. Unfortunately, this mechanism does not scale to canisters that maintain *large* amounts of data in stable variables: there may not be enough cycle budget to store then restore all stable variables within an upgrade, resulting in failed upgrades.
+Motoko stable variables, while convenient to use, require serialization and deserialization of all stable variables on upgrade (see [Stable variables and upgrade methods](upgrades.md)). During an upgrade, the current values of stable variables are first saved to IC stable memory, then restored from stable memory after the new code is installed. Unfortunately, this mechanism does not scale to canisters that maintain *large* amounts of data in stable variables: there may not be enough cycle budget to store then restore all stable variables within an upgrade, resulting in failed upgrades.
 
-To avoid this upgrade hazard, actors can elect to use a lower-level `ExperimentalStableMemory` library. The library allows the programmer to incrementally allocate pages of (64-bit)ICstable memory and use those pages to incrementally read and write data in a user-defined binary format.
+To avoid this upgrade hazard, actors can elect to use a lower-level `ExperimentalStableMemory` library. The library allows the programmer to incrementally allocate pages of (64-bit) IC stable memory and use those pages to incrementally read and write data in a user-defined binary format.
 
-The Motoko runtime system ensures there is no interference between the abstraction presented by the `ExperimentalStableMemory` library and an actor’s stable variables, even though the two abstractions ultimately use the same underlying (concrete) stable memory facilities available to allICcanisters. This runtime support means that is safe for a Motoko program to exploit both stable variables and `ExperimentalStableMemory`, within the same application.
+The Motoko runtime system ensures there is no interference between the abstraction presented by the `ExperimentalStableMemory` library and an actor’s stable variables, even though the two abstractions ultimately use the same underlying (concrete) stable memory facilities available to all IC canisters. This runtime support means that is safe for a Motoko program to exploit both stable variables and `ExperimentalStableMemory`, within the same application.
 
 ## The Library
 
-Support for stable memory is provided by the [ExperimentalStableMemory](../../../../references/motoko-ref/experimentalstablememory) library in package `base`.
+Support for stable memory is provided by the [ExperimentalStableMemory](../../../../references/motoko-ref/experimentalstablememory.md) library in package `base`.
 
 The interface to the `ExperimentalStableMemory` library consists of functions for querying and growing the currently allocated set of stable memory pages, plus matching pairs of `load`, `store` operations for most of Motoko’s fixed-size scalar types.
 
 More general `loadBlob` and `storeBlob` operations are also available for reading/writing binary blobs and other types that can be encoded as `Blob`s (e.g. `Text` values) of arbitrary sizes, using Motoko supplied or user-provided encoders and decoders.
 
-``` motoko
+``` motoko no-repl
 module {
 
   // Current size of the stable memory, in pages.
@@ -51,6 +51,10 @@ module {
   // Traps on out-of-bounds access.
   storeBlob : (offset : Nat64, value : Blob) -> ()
 
+  // Returns a query that, when called, returns the number of bytes of
+  // (real) IC stable memory that would be occupied by persisting its
+  // current stable variables before an upgrade.
+  stableVarQuery : () -> (shared query () -> async {size : Nat64})
 }
 ```
 
@@ -60,7 +64,7 @@ To demonstrate the `ExperimentalStableMemory` library, we present a dead simple 
 
 The example illustrates the simultaneous use of stable variables and stable memory. It uses a single stable variable to keep track of the next available offset, but stores the contents of the log directly in stable memory.
 
-``` motoko
+``` motoko no-repl
 import Nat32 "mo:base/Nat32";
 import Nat64 "mo:base/Nat64";
 import Text "mo:base/Text";

@@ -1,18 +1,14 @@
 # Actor classes
 
-Actor classes enable you to create networks of actors (canisters) *programmatically*. Currently, actor classes have to be defined in a separate source file. To illustrate how to define and import actor classes, the following example implements a distributed map of keys of type `Nat` to values of type `Text`. It provides simple insert and lookup functions, `put(k, v)` and `get(k)`, for working with these keys and values.
+Actor classes enable you to create networks of actors (canister smart contracts) *programmatically*. Currently, actor classes have to be defined in a separate source file. To illustrate how to define and import actor classes, the following example implements a distributed map of keys of type `Nat` to values of type `Text`. It provides simple insert and lookup functions, `put(k, v)` and `get(k)`, for working with these keys and values.
 
 To distribute the data for this example, the set of keys is partitioned into `n` buckets. For now, we just fix `n = 8`. The bucket, `i`, of a key, `k`, is determined by the remainder of `k` divided by `n`, that is, `i = k % n`. The `i`th bucket (`i` in `[0..n)`) receives a dedicated actor to store text values assigned to keys in that bucket.
 
 The actor responsible for bucket `i` is obtained as an instance of the actor class `Bucket(i)`, defined in the sample `Buckets.mo` file, as follows:
 
-<div class="formalpara-title">
+`Buckets.mo`:
 
-**Buckets.mo**
-
-</div>
-
-``` motoko
+``` motoko name=Buckets
 import Nat "mo:base/Nat";
 import Map "mo:base/RBTree";
 
@@ -46,7 +42,7 @@ Both functions use the class parameters `n` and `i` to verify that the key is ap
 
 Clients of the map can then communicate with a coordinating `Map` actor, implemented as follows:
 
-``` motoko
+``` motoko include=Buckets
 import Array "mo:base/Array";
 import Buckets "Buckets";
 
@@ -106,7 +102,7 @@ On `put(k, v)`, the `Map` actor:
 
 While this example sets the number of buckets to `8`, you can easily generalize the example by making the `Map` actor an actor *class*, adding a parameter `(n : Nat)` and omitting the declaration `let n = 8;`. For example:
 
-``` motoko
+``` motoko no-repl
 actor class Map(n : Nat) {
 
   type Key = Nat

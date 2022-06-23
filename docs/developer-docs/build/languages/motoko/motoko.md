@@ -1,22 +1,22 @@
 # Motoko Programming Language
 
-<div class="important">
+:::tip
 
 The Motoko programming language continues to evolve with each release of the DFINITY Canister SDK and with ongoing updates to the Motoko compiler. Check back regularly to try new features and see what’s changed.
 
-</div>
+:::
 
 The Motoko programming language is a new, modern and type safe language for developers who want to build the next generation of distributed applications to run on the Internet Computer blockchain network. Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment. As a new language, Motoko is constantly evolving with support for new features and other improvements.
 
 The Motoko compiler, documentation and other tooling is [open source](https://github.com/dfinity/motoko) and released under the Apache 2.0 license. Contributions are welcome.
 
-## Native canister support
+## Native canister smart contract support
 
-Motoko has native support for Internet Computer canisters.
+Motoko has native support for Internet Computer canister smart contracts.
 
-A canister (or canister for short) is expressed as a Motoko actor. An actor is an autonomous object that fully encapsulates its state and communicates with other actors only through asynchronous messages.
+A canister smart contract (or canister for short) is expressed as a Motoko actor. An actor is an autonomous object that fully encapsulates its state and communicates with other actors only through asynchronous messages.
 
-``` motoko
+``` motoko name=counter
 actor Counter {
 
   var value = 0;
@@ -34,7 +34,7 @@ On the Internet Computer, canisters can communicate with other canisters by send
 
 Asynchronous programming is hard, so Motoko enables you to author asynchronous code in much simpler, sequential style. Asynchronous messages are function calls that return a *future*, and the `await` construct allows you to suspend execution until a future has completed. This simple feature avoids the "callback hell" of explicit asynchronous programming in other languages.
 
-``` motoko
+``` motoko include=counter
 actor Factorial {
 
   var last = 1;
@@ -171,6 +171,6 @@ For scenarios that can’t be solved using stable variables alone, Motoko provid
 
 Motoko provides many other developer productivity features, including subtyping, arbitrary precision arithmetic and garbage collection.
 
-Motoko is not, and is not intended to be, the only language for implementing canisters. If it doesn’t suit your needs, there is a canister development kit (CDK) for the Rust programming language. Our goal is to enable any language (with a compiler that targets WebAssembly) to be able to produce canisters that run on the Internet Computer and interoperate with other, perhaps foreign, canisters through language neutral Candid interfaces.
+Motoko is not, and is not intended to be, the only language for implementing canister smart contracts. If it doesn’t suit your needs, there is a canister development kit (CDK) for the Rust programming language. Our goal is to enable any language (with a compiler that targets WebAssembly) to be able to produce canister smart contracts that run on the Internet Computer and interoperate with other, perhaps foreign, canister smart contracts through language neutral Candid interfaces.
 
 Its tailored design means Motoko should be the easiest and safest language for coding on the Internet Computer, at least for the forseeable future.

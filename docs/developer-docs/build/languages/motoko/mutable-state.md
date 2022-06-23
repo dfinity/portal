@@ -2,17 +2,17 @@
 
 Each actor in Motoko may use, but may *never directly share*, internal mutable state.
 
-Later, we discuss [sharing among actors](sharing), where actors send and receive *immutable* data, and also handles to each others external entry points, which serve as *shareable functions*. Unlike those cases of shareable data, a key Motoko design invariant is that ***mutable data** is kept internal (private) to the actor that allocates it, and **is never shared remotely***.
+Later, we discuss [sharing among actors](sharing.md), where actors send and receive *immutable* data, and also handles to each others external entry points, which serve as *shareable functions*. Unlike those cases of shareable data, a key Motoko design invariant is that ***mutable data** is kept internal (private) to the actor that allocates it, and **is never shared remotely***.
 
 In this chapter, we continue using minimal examples to show how to introduce (private) actor state, and use mutation operations to change it over time.
 
-In [local objects and classes](local-objects-classes), we introduce the syntax for local objects, and a minimal `counter` actor with a single mutable variable. In the [following chapter](actors-async), we show an actor with the same behavior, exposing the counter variable indirectly behind an associated service interface for using it remotely.
+In [local objects and classes](local-objects-classes.md), we introduce the syntax for local objects, and a minimal `counter` actor with a single mutable variable. In the [following chapter](actors-async.md), we show an actor with the same behavior, exposing the counter variable indirectly behind an associated service interface for using it remotely.
 
 ## Immutable versus mutable variables
 
 The `var` syntax declares mutable variables in a declaration block:
 
-``` motoko
+``` motoko name=init
 let text  : Text = "abc";
 let num  : Nat = 30;
 
@@ -30,7 +30,7 @@ If we try to assign new values to either `text` or `num` above, we will get stat
 
 However, we may freely update the value of mutable variables `pair` and `text2` using the syntax for assignment, written as `:=`, as follows:
 
-``` motoko
+``` motoko include=init
 text2 := text2 # "xyz";
 pair := (text2, pair.1);
 pair
@@ -56,14 +56,14 @@ After the second line, the variable `num2` holds `42`, as one would expect.
 
 Motoko includes other combinations as well. For example, we can rewrite the line above that updates `text2` more concisely as:
 
-``` motoko
+``` motoko include=init
 text2 #= "xyz";
 text2
 ```
 
 As with `+=`, this combined form avoids repeating the assigned variable’s name on the right hand side of the (special) assignment operator `#=`.
 
-The [full list of assignment operations](language-manual#syntax-ops-assignment) lists numerical, logical, and textual operations over appropriate types (number, boolean and text values, respectively).
+The full table [assignment operators](language-manual.md#assignment-operators) lists numerical, logical, and textual operations over appropriate types (number, boolean and text values, respectively).
 
 ## Reading from mutable memory
 
@@ -122,7 +122,7 @@ Before discussing [mutable arrays](#mutable-arrays), we introduce immutable arra
 
 ### Allocate an immutable array of constants
 
-``` motoko
+``` motoko name=array
 let a : [Nat] = [1, 2, 3] ;
 ```
 
@@ -132,17 +132,17 @@ The array `a` above holds three natural numbers, and has type `[Nat]`. In genera
 
 We can project from (*read from*) an array using the usual bracket syntax (`[` and `]`) around the index we want to access:
 
-``` motoko
+``` motoko include=array
 let x : Nat = a[2] + a[0] ;
 ```
 
-Every array access in Motoko is safe. Accesses that are out of bounds will not access memory unsafely, but instead will cause the program to trap, as with an [assertion failure](basic-concepts#overview-traps).
+Every array access in Motoko is safe. Accesses that are out of bounds will not access memory unsafely, but instead will cause the program to trap, as with an [assertion](basic-concepts.md#assertions) failure.
 
 ## The Array module
 
 The Motoko standard library provides basic operations for immutable and mutable arrays. It can be imported as follows,
 
-``` motoko
+``` motoko name=import
 import Array "mo:base/Array";
 ```
 
@@ -156,7 +156,7 @@ In general, each new array allocated by a program will contain a varying number 
 
 To accommodate this need, the Motoko language provides *the higher-order* array-allocation function `Array.tabulate`, which allocates a new array by consulting a user-provided "generation function" `gen` for each element.
 
-``` motoko
+``` motoko no-repl
 func tabulate<T>(size : Nat,  gen : Nat -> T) : [T]
 ```
 
@@ -166,7 +166,7 @@ The function `gen` actually *functions* as the array during its initialization: 
 
 For instance, we can first allocate `array1` consisting of some initial constants, and then functionally-update *some* of the indices by "changing" them (in a pure, functional way), to produce `array2`, a second array that does not destroy the first.
 
-``` motoko
+``` motoko include=import
 let array1 : [Nat] = [1, 2, 3, 4, 6, 7, 8] ;
 
 let array2 : [Nat] = Array.tabulate<Nat>(7, func(i:Nat) : Nat {
@@ -185,7 +185,7 @@ Above, we introduced *immutable* arrays, which share the same projection syntax 
 
 Because Motoko’s type system enforces that remote actors do not share their mutable state, the Motoko type system introduces a firm distinction between mutable and immutable arrays that impacts typing, subtyping and the language abstractions for asynchronous communication.
 
-Locally, the mutable arrays can not be used in places that expect immutable ones, since Motoko’s definition of [subtyping](language-manual#subtyping) for arrays (correctly) distinguishes those cases for the purposes of type soundness. Additionally, in terms of actor communication, immutable arrays are safe to send and share, while mutable arrays can not be shared or otherwise sent in messages. Unlike immutable arrays, mutable arrays have *non-shareable types*.
+Locally, the mutable arrays can not be used in places that expect immutable ones, since Motoko’s definition of [subtyping](language-manual.md#subtyping) for arrays (correctly) distinguishes those cases for the purposes of type soundness. Additionally, in terms of actor communication, immutable arrays are safe to send and share, while mutable arrays can not be shared or otherwise sent in messages. Unlike immutable arrays, mutable arrays have *non-shareable types*.
 
 ### Allocate a mutable array of constants
 
@@ -201,13 +201,13 @@ As above, the array `a` above holds three natural numbers, but has type `[var Na
 
 To allocate mutable arrays of non-constant size, use the `Array_init` primitive, and supply an initial value:
 
-``` motoko
+``` motoko no-repl
 func init<T>(size : Nat,  x : T) : [var T]
 ```
 
 For example:
 
-``` motoko
+``` motoko include=import
 var size : Nat = 42 ;
 let x : [var Nat] = Array.init<Nat>(size, 3);
 ```
@@ -228,4 +228,4 @@ a
 
 Subtyping in Motoko does not permit us to use a mutable array of type `[var Nat]` in places that expect an immutable one of type `[Nat]`.
 
-There are two reasons for this. First, as with all mutable state, mutable arrays require different rules for sound subtyping. In particular, mutable arrays have a less flexible subtyping definition, necessarily. Second, Motoko forbids uses of mutable arrays across [asynchronous communication](actors-async), where mutable state is never shared.
+There are two reasons for this. First, as with all mutable state, mutable arrays require different rules for sound subtyping. In particular, mutable arrays have a less flexible subtyping definition, necessarily. Second, Motoko forbids uses of mutable arrays across [asynchronous communication](actors-async.md), where mutable state is never shared.
