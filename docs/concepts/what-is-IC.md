@@ -1,3 +1,46 @@
+# Internet Computer とは？
+
+**Internet Computer** は、開発者・組織・起業家が、安全で、自律的で、改ざん不可能な **Canister** を構築し、展開することを可能にするブロックチェーンであり、**スマートコントラクト** の進化形です。
+
+Dapp の開発者としては、Internet Computer が以下のような重要な特徴を有すると考えるとよいでしょう。
+
+- スマートコントラクトをウェブスピードで実行するための、**グローバルにアクセス可能なパブリックブロックチェーン** で、ユーザーにインタラクティブなウェブコンテンツを提供することができます。
+
+- 世界中の独立したデータセンターで、独立したノードプロバイダーが運営するノードマシンが実行する安全な暗号プロトコル（**Internet Computer Protocol**）です。これにより、スマートコントラクトの安全な実行が保証されます。
+
+- Chain Key 暗号を用いて接続された **ブロックチェーンのネットワーク** で、必要に応じて容量をスケールアウトできます。
+
+## オープンなブロックチェーン
+
+Internet Computer は、地理的に分散したデータセンターに設置された、独立した関係者が運営するノードマシンでホストされるブロックチェーンです。ノードは、ブロックチェーン上で実行されているスマートコントラクトが改ざんされたり停止されたりしないことを保証する、高度な暗号化障害耐性を有する Internet Computer プロトコルを実行します。 Internet Computer は、並列に稼働する個々のサブネットブロックチェーンで構成され、Chain Key 暗号を用いて接続されています。つまり、あるサブネット上で稼働している Canister は、Internet Computer ブロックチェーンの他のサブネットでホストされている Canister をシームレスに呼び出すことができます。
+
+Internet Computer のもう一つの重要な特徴は、完全にオンチェーンで動作する **Network Nervous System**（NNS）と呼ばれる非中央集権のパーミッションレスなガバナンスシステムの管理下で動作することです。NNS は、新しいサブネットブロックチェーンの作成による Internet Computer のスケールアウト、ノードマシンの更新、Internet Computer プロトコルで使用されるパラメータの設定など、いくつかのトピックについて決定を下すことができます。誰もがガバナンスに参加し、NNS に新しい提案を提出したり、オープンプロポーザルに投票することができます。そのためには、ユーザーは ICP (Internet Computer のユーティリティトークン) をステークし、NNS に **neuron** を作成する必要があります。
+
+## 次世代のソフトウェアとサービスの構築
+
+Internet Computer プロトコルは、ソフトウェアの構築・展開・アクセスの方法を再構築することで、プラットフォームに起因するリスクを軽減し、イノベーションへの道を開きます。
+
+例えば、Internet Computer プロトコルでは、開発者は以下のような環境設定に煩わされることなく、Canister スマートコントラクトを使ったコードを書くことに集中できます:
+
+- 物理的または仮想的なネットワーク構成の要件
+
+- ロードバランシングサービス
+
+- ファイアウォール・ネットワークトポロジー・ポート管理
+
+- データベースの構成とメンテナンス
+
+- ストレージボリュームとデバイス
+
+開発者がアプリケーションの構築と価値の提供に集中できるようにすることで、Internet Computer は開発プロセスを簡素化し、市場投入までの時間を短縮し、イノベーションを促進します。
+
+エンドユーザーにとっては、Internet Computer はより少ないリスクで Dapps にアクセスできる安全な環境を提供します。 ブロックチェーンには固有のセキュリティがあるため、Internet Computer 上で動作するプログラムは悪意のあるコードに乗っ取られることはなく、アプリケーションのエンドユーザーと運営者の両方にとって、所有コストの削減にもつながります。
+
+また、Dapps は "自律的"でパブリックであるため、開発者は相互に通信するサービスを書き、サービス間で機能を共有することで、生産性と効率を向上させながら、自信を持ってプロジェクトを革新し、改善する余裕を持つことができます。
+
+また、Internet Computer は、開発者が暗号的に安全な ID を使用してアクセス制御を行うことを可能にし、ユーザー名とパスワードや外部の ID 管理プラグインに頼る必要性を減らします。
+
+<!--
 # What is the Internet Computer?
 
 The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **canisters**, an evolution of **smart contracts**.
@@ -39,3 +82,5 @@ For end-users, the Internet Computer provides a secure environment for accessing
 In addition, because dapps can be "autonomous" and public, developers can write services that communicate with each other and share functions in ways that increase productivity and efficiency while leaving room to innovate and improve projects with confidence.
 
 The Internet Computer also enables developers to use cryptographically-secure identities to enforce access controls, reducing the need to rely on usernames and passwords or external identity management plug-ins.
+
+-->
