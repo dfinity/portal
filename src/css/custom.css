@@ -108,6 +108,11 @@ div[class^='announcementBarContent'] {
     display: flex;
     align-items: center;
     fill: white;
+    filter: invert(16%) sepia(55%) saturate(7035%) hue-rotate(260deg) brightness(67%) contrast(131%);
+}
+
+.ic0-item:hover {
+    filter: none;
 }
 
 .ic0-item span {

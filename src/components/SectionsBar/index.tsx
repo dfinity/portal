@@ -63,10 +63,6 @@ export default function SectionsBar() {
           >
             {displayMobileMenu ? (
               <>
-                <div
-                  className={styles.mobileMenuClose}
-                  onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
-                />
                 {SectionsLinks.map(({ text, to }) => (
                   <Link
                     onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
@@ -76,6 +72,10 @@ export default function SectionsBar() {
                     <span>{text}</span>
                   </Link>
                 ))}
+                <div
+                  className={styles.mobileMenuClose}
+                  onClick={() => SetDisplayMobileMenu(!displayMobileMenu)}
+                />
               </>
             ) : (
               <div

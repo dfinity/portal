@@ -55,6 +55,7 @@
     color: white;
     text-decoration: none;
     position: relative;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -111,7 +112,9 @@
 .motokoContainer {
     width: 100%;
 }
-
+.cardHover {
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
 .cardHover:hover {
     color: white;
     text-decoration: none;

@@ -125,6 +125,9 @@
 }
 
 @media screen and (max-width: 996px) {
+    .container {
+        padding: 48px 0 80px 0;
+    }
     .cards, .actionButtonContainer {
         display: none;
     }

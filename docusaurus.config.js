@@ -241,7 +241,7 @@ const config = {
           },
 
           {
-            html: '<img src="/img/svgIcons/ic0Purple.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
+            html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
             position: "right",
 
             href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,

@@ -24,14 +24,10 @@ export default function Home(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
+        <img src={BackgroundGradient} className={styles.BGGradient} alt="" />
         <BrowserOnly>
           {() => (
             <div className={styles.particleBackground}>
-              <img
-                src={BackgroundGradient}
-                className={styles.BGGradient}
-                alt=""
-              />
               <ParticleBackground
                 width={document.body.clientWidth}
                 height={document.body.clientHeight * 2}
