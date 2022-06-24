@@ -104,8 +104,8 @@ function StartBuilding() {
                 <Information title="Sample Code"
                              body="Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO."
                              link={"/samples"}/>
-                <Event title="Supernova" dateRange="May 10 - June 20, 2022"
-                       link={"https://supernova.devpost.com/"}/>
+                <Event title="Supernova Demo Day" dateRange="June 30 2022"
+                       link={"https://events.zoom.us/e/view/0DN6AGHCRLGUphMgOJp1mw?id=0DN6AGHCRLGUphMgOJp1mw"}/>
                 <MotokoPlayground title="Motoko Playground"
                                   body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
                                   link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}/>
