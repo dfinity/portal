@@ -14,7 +14,7 @@ Now, let’s explore how to interact with this canister in different scenarios w
 
 # The .did file
 
-Candid types can be used to describe a service via a Candid service description file (.`.did` file), which can either be manually written or generated from a service implementation. 
+Candid types can be used to describe a service via a Candid service description file (`.did` file), which can either be manually written or generated from a service implementation. 
 
 If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use the SDK, You will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are are auto-generated, it is recommended they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next dfx build.
 
