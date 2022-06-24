@@ -1,3 +1,110 @@
+# Motoko プログラミング言語ガイド
+
+## このガイドについて
+
+この _プログラミング言語 Motoko のガイド_ では、汎用プログラミング言語 Motoko の主な機能を紹介し、言語のニュアンスや適用方法を実践的に学ぶための例や参考情報を提供しています。
+
+プログラミング言語 Motoko は、DFINITY Canister Software Development Kit (SDK) を用いて Internet Computer ブロックチェーンネットワーク 上で動作するプログラムを開発するために最適化されています。
+原理的には、Motoko を使ったプログラムをよりトラディショナルなプラットフォームや Internet Computer 以外の文脈で動作するように書くこともできますが、現在のところサポートはベストエフォートであり、完全ではありません。
+このガイドでは、Internet Computer で動作させるための特徴的な機能と、全般的な目的に対して汎用的に適用可能な機能をバランスよく紹介するように努めています。
+
+## 想定される読者
+
+このガイドでは、プログラミング言語 Motoko の使用を予定していたり詳しく知りたいと考えているプログラマー向けに、参照情報といくつかの例を提供します。 このガイドに記載されているほとんどの情報は、読者がすでに Internet Computer 上で動作するプログラムを開発していたり、DFINITY Canister SDK を使用しているかどうかにかかわらず有効です。
+
+このガイドでは、読者が基本的なプログラミングの原理や用語に慣れており、C++ や Rust などの高級プログラミング言語でプログラムを書いた経験か、JavaScript や TypeScript などのスクリプト言語を実践的に使った経験があることを前提としています。 また、Motoko は関数型プログラミングの一部を取り入れているため、関数型プログラミングの設計原則に関する知識があれば、Motoko を学ぶのに役立つでしょう。
+
+このガイドは、多様なバックグラウンドを持つ読者が Motoko の基本的な設計原理やセマンティクスを理解できるように努めていますが、言語の実装やドキュメントは継続的に進化していることを頭に入れておいてください。
+
+## このガイドの使い方
+
+Motoko を学ぶためのフレームワークとして、まず [エンジニアリングの価値観と目標](#engineering-values-and-goals) を確認することから始めるとよいでしょう。 [エンジニアリングの価値観と目標](#engineering-values-and-goals) は、Motoko プログラミング言語の開発と進化のための、設計上考慮すべき重要な事柄を説明しています。
+
+考慮すべきことを頭に入れた上で、簡単なコードの例や小さなプログラムを使って、型や型アノテーションの役割などの基本的な概念を学んでいきましょう。
+
+基本的な概念や用語に慣れてきたら、以降の章では、関数の抽象化、ユーザー定義の型定義、ユーザー定義の Actor、非同期通信など、より興味深い方法で計算を行うプログラムを紹介します。
+
+Motoko を使って自分のプログラムを書き始めたら、このガイドに戻って参考情報や例を確認するとよいでしょう。
+
+このガイドに掲載されているコードの例のほとんどはインタラクティブなものです。例をその場で編集し、ブラウザ上のインタープリタでコードを解釈し、その結果を見ることができます。インタープリタは教育目的で提供されています。インタープリタはほとんどの言語機能をサポートしていますが、実際のコンパイラと全く同じではありません。例えば、中程度のサイズの入力に対してスタックオーバーフローが発生することがありますが、実際のコンパイラはその入力を問題なく処理します。システム機能の中には、Cycle、Canister のインポート、ステートを変更するクエリコールなど、完全にはサポートされていないものもあります。
+
+## ドキュメンテーションの表記ルール
+
+このガイドは、以下のような表記ルールに従っています：
+
+- `固定幅フォント` は、サンプルコード、プログラム名、プログラム出力、ファイル名、コマンドラインで入力するコマンドなどに使用されます。
+
+- **太字** のテキストは、コマンドやボタン、ユーザーインターフェースのテキストを強調したり、新しい用語を紹介したりするのに使用されます。
+
+- _イタリック体_ は、書籍のタイトルや、特定の単語や用語を強調するために使用します。
+
+- CAUTION スタイルは、コンテンツが不足していたり、不完全であることを示すために使用されます。
+
+- WARNING スタイルは、コンテンツが古い、または不正確である可能性を示すために使用されます。
+
+- NOTE スタイルは、まだサポートされていないものの、将来のリリースで予定されている機能を説明するコンテンツを示すために使用されます。
+
+## エンジニアリングの価値観と目標
+
+Motoko の設計と実装の背後にあるエンジニアリングの努力は、価値観と目標のコアセットによってドライブされています。 DFINITY のエンジニアリング組織は、これらの価値観と目標のもとに、_継続的な_ 言語開発の一環として、追加・改良する言語機能や拡張機能を定義し、優先順位をつけています。
+
+プログラミング言語 Motoko の方向性を導く原理原則を見える化するために、エンジニアリング組織は以下のようなコアバリューとセカンダリバリューを定義しました。
+
+### コアバリュー
+
+以下の指針は、エンジニアリング組織の基本的な価値観を示すものであり、優先順位は以下の通りです：
+
+1.  [Internet Computer ブロックチェーンネットワーク](../../../../concepts/what-is-ic#ic-overview) とのシームレスな統合：Motoko が Actor ベースモデル、非同期メッセージング、データの永続性、インターフェース記述言語の相互運用性などの機能を完全にサポートすることを保証します。
+
+2.  人間工学：Motoko が親しみやすさ、シンプルさ、明快さ、明示性、その他の特徴を取り入れていることを保証します。
+
+3.  形式的な正しさ：Motoko がステートの分離、健全な型システムと型安全性、精度、パターンマッチ、適切なデフォルトの挙動、コーディングのベストプラクティスを維持することを保証します。
+
+### セカンダリバリュー
+
+以下の原則は、エンジニアリング組織の二次的な価値観であり、重要ではあるが主要な推進要因ではないと考えるものです：
+
+1.  表現力：Motoko は第一級関数、ポリモーフィズム、パターンマッチなどを、言語の進化に合わせて提供しています。
+
+2.  パフォーマンス: Motoko は、初期段階でそれなりに高速な動作を提供し、言語の進化に伴って改善を続けています。
+
+3.  すぐに使い始められること：Motoko は、ライブラリやサンプル、DFINITY Canister SDK との統合など、「バッテリーを含む」形で提供されます。
+
+### 非目標
+
+コアバリューと目標に対抗するものとして、エンジニアリング組織は以下のものをエンジニアリング活動の範囲外である「非目標」としました：
+
+1.  最先端の機能を備えた、より高度な型システムを持つこと。
+
+2.  設計や実装において、機能性よりも単純性を重視すること（"Worse is Better" アプローチ）。
+
+3.  Internet Computer 以外のブロックチェーン上で Motoko プログラムを実行するための相互運用性またはサポート。
+
+## 詳細情報を見つける
+
+Motoko を DFINITY Canister SDK で使用する方法については、[SDK 開発者ツール](../../index.md) を参照してください。
+
+Motoko サービスの設計、使用、デプロイ、あるいは言語設計そのものなどのさまざまなトピックの背景情報については、以下のリソースを参考にしてください。
+
+### WebAssembly
+
+- [WebAssembly home page](https://webassembly.org/).
+
+- [WebAssembly overview video (youtube)](https://www.youtube.com/watch?v=fvkIQfRZ-Y0).
+
+### モダン型システム
+
+- [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/) by Robert Harper. Cambridge University Press, 2016.
+
+- [Types and Programming Languages](https://www.cis.upenn.edu/~bcpierce/tapl/) by Benjamin C. Pierce. The MIT Press.
+
+## さらなるサポートを受ける
+
+より詳しい情報や技術的なサポートが必要な場合、DFINITY のウェブサイトでは、よくある質問、技術的な記事、開発者の最新情報などに素早くアクセスできます。 ウェブサイトでは、ナレッジベース記事の検索、サポートケースの作成と閲覧、ニュースレターへの登録、最新のブログ記事の閲覧、How To ビデオの閲覧、ソフトウェアアップデートのダウンロード、コミュニティのメンバーとの意見交換などを行うことができます。
+
+ウェブサイトで利用できるリソースに加えて、ソーシャルメディアを利用して DFINITY や他の開発者とつながることができます。また、DFINITY のコミュニティフォーラムにアクセスして会話に参加することもできます。Discourse のコミュニティフォーラムにアクセスして会話に参加することもできます。
+
+<!--
 # Motoko Programming Language Guide
 
 ## About this guide
@@ -101,3 +208,5 @@ For background information on various topics relevant to the design, use, or dep
 If you are looking for more information or technical support, the DFINITY website provides quick access to frequently-asked questions, technical articles, developer updates, and other resources. From the website, you can search knowledge base articles, open and view support cases, sign up for the newsletter, read the latest blog posts, view how-to videos, download software updates, or exchange ideas with members of the community.
 
 In addition to the resources available on the website, you can connect with DFINITY or other developers using social media or by visiting the DFINITY Community Forum on Discourse and joining the conversation.
+
+-->
