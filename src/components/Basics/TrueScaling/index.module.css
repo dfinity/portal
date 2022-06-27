@@ -106,17 +106,17 @@
   .status {
     width: auto;
     padding-top: 70px;
+    max-width: 500px;
   }
   .status h4 {
     font-size: 12px;
   }
 
   .status img {
-    width: 800px;
+    width: 950px;
     max-width: none;
-    /* max-width: 1200px; */
-    top: calc(50% + 150px);
-    left: calc(50% + 150px);
+    top: calc(50% + 170px);
+    left: calc(50% + 270px);
     transform: translate(-50%, -50%);
   }
 }

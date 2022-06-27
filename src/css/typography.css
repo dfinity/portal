@@ -87,6 +87,12 @@
   text-decoration: none;
 }
 
+@media (max-width: 996px) {
+  .cta-link {
+    align-items: flex-start;
+  }
+}
+
 .button {
   display: inline-flex;
   text-align: center;

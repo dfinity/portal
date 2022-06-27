@@ -6,6 +6,8 @@ import {
 } from "@site/src/utils/network-stats";
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
+// import graphic from "!../../../../static/img/basics/true-scaling.svg";
+// import graphicMobile from "../../../../static/img/basics/true-scaling.svg";
 
 const TrueScaling = () => {
   const [stats, setStats] = useState<{
@@ -52,7 +54,23 @@ const TrueScaling = () => {
         </Link>
       </div>
       <div className={styles.status}>
-        <img src="/img/basics/true-scaling.svg" alt="" />
+        <picture>
+          <source
+            media="(max-width: 996px)"
+            srcSet={
+              require("!!file-loader!../../../../static/img/basics/true-scaling-mobile.svg")
+                .default
+            }
+          />
+
+          <img
+            src={
+              require("!!file-loader!../../../../static/img/basics/true-scaling.svg")
+                .default
+            }
+            alt=""
+          />
+        </picture>
         <h4>Current status</h4>
         <div className={styles.statusCard}>
           <ul>

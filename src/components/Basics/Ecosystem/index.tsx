@@ -1,5 +1,5 @@
 import Link from "@docusaurus/Link";
-import useMediaQuery from "@site/src/utils/use-media-query";
+import clsx from "clsx";
 import React from "react";
 import styles from "./index.module.css";
 
@@ -39,11 +39,9 @@ const cards = [
   },
 ];
 
+const mobileProjects = [...cards].reverse();
+
 const Ecosystem = () => {
-  const isMobile = useMediaQuery("(max-width: 996px)");
-
-  const projects = isMobile ? [...cards].reverse() : cards;
-
   return (
     <section className={styles.outerContainer}>
       <div className={styles.container}>
@@ -68,9 +66,19 @@ const Ecosystem = () => {
           </Link>
         </div>
         <div className={styles.cards}>
-          {projects.map((card) => (
+          {cards.map((card) => (
             <div className={styles.card} key={card.title}>
-              <img src={card.logo} alt="" />
+              <img src={card.logo} alt="" key={card.title} />
+              <h3 className="">{card.title}</h3>
+              <p className="">{card.oneLiner}</p>
+              <span className={styles.stats}>{card.stats}</span>
+            </div>
+          ))}
+        </div>
+        <div className={clsx(styles.cards, styles.cardsMobile)}>
+          {mobileProjects.map((card) => (
+            <div className={styles.card} key={card.title}>
+              <img src={card.logo} alt="" key={card.title} />
               <h3 className="">{card.title}</h3>
               <p className="">{card.oneLiner}</p>
               <span className={styles.stats}>{card.stats}</span>

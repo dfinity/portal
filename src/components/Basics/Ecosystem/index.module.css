@@ -57,6 +57,9 @@
   transform: translateX(-100%);
   /* left: -100%; */
 }
+.cardsMobile {
+  display: none;
+}
 
 .stats {
   background: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
@@ -108,11 +111,15 @@
     position: static;
     transform: none;
     overflow: auto;
-    /* flex-direction: row-reverse; */
     margin-top: 24px;
     margin-right: -24px;
     padding-bottom: 20px;
+    display: none;
   }
+  .cardsMobile {
+    display: flex;
+  }
+
   .card {
     min-width: 207px;
   }

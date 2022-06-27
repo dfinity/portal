@@ -1,24 +1,17 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import React, { useEffect } from "react";
-// import Breadcrumbs from "../components/Common/Breadcrumbs";
-// import DocBreadcrumbs from "../theme/DocBreadcrumbs";
-import styles from "./basics.module.css";
+import Ecosystem from "../components/Basics/Ecosystem";
+import Ecosystem2 from "../components/Basics/Ecosystem2";
 import Hero from "../components/Basics/Hero";
 import HostWeb from "../components/Basics/HostWeb";
-import Ecosystem from "../components/Basics/Ecosystem";
-import TrueScaling from "../components/Basics/TrueScaling";
 import InternetIdentity from "../components/Basics/InternetIdentity";
-import { useViewportScroll } from "framer-motion";
-import Ecosystem2 from "../components/Basics/Ecosystem2";
 import ItsGreen from "../components/Basics/ItsGreen";
+import TrueScaling from "../components/Basics/TrueScaling";
+import styles from "./basics.module.css";
 
 const BasicsPage: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
-
-  const { scrollYProgress } = useViewportScroll();
-
-  console.log(scrollYProgress);
 
   useEffect(() => {
     document.documentElement.style.setProperty(
