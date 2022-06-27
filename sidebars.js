@@ -67,7 +67,7 @@ const sidebars = {
               label: 'Motoko',
               link: {
                 // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
-                type: 'doc', id: 'developer-docs/build/languages/motoko/index',
+                type: 'doc', id: 'developer-docs/build/languages/motoko/motoko',
               },
               items: [
                 'developer-docs/build/languages/motoko/about-this-guide',
@@ -79,6 +79,7 @@ const sidebars = {
                 'developer-docs/build/languages/motoko/errors',
                 'developer-docs/build/languages/motoko/pattern-matching',
                 'developer-docs/build/languages/motoko/sharing',
+                'developer-docs/build/languages/motoko/message-inspection',
                 'developer-docs/build/languages/motoko/modules-and-imports',
                 'developer-docs/build/languages/motoko/control-flow',
                 'developer-docs/build/languages/motoko/structural-equality',
@@ -155,6 +156,7 @@ const sidebars = {
       items: [
         // 'developer-docs/deploy/deploy',
         // 'developer-docs/deploy/scale',
+        'developer-docs/deploy/larger-wasm',
         'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
       ],
@@ -267,7 +269,7 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'references/motoko-ref/array',
+        type: 'doc', id: 'references/motoko-ref/stdlib-intro',
       },
       items: [
         'references/motoko-ref/array',

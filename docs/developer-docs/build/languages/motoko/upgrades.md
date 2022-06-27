@@ -1,20 +1,20 @@
 # Stable variables and upgrade methods
 
-One key feature of the IC is its ability to persist canister state using WebAssembly memory and globals rather than a traditional database. This means that that the entire state of a canister is magically restored before, and saved after, each message, without explicit user instruction. This automatic and user-transparent preservation of state is called *orthogonal persistence*.
+One key feature of the Internet Computer is its ability to persist canister smart contract state using WebAssembly memory and globals rather than a traditional database. This means that that the entire state of a canister is magically restored before, and saved after, each message, without explicit user instruction. This automatic and user-transparent preservation of state is called *orthogonal persistence*.
 
 Though convenient, orthogonal persistence poses a challenge when it comes to upgrading the code of a canister. Without an explicit representation of the canister’s state, how does one tranfer any application data from the retired canister to its replacement?
 
 Accommodating upgrades without data loss requires some new facility to *migrate* a canister’s crucial data to the upgraded canister. For example, if you want to deploy a new version of a user-registration canister to fix an issue or add functionality, you need to ensure that existing registrations survive the upgrade process.
 
-The IC's persistence model allows a canister to save and restore such data to dedicated *stable memory* that, unlike ordinary canister memory, is retained across an upgrade, allowing a canister to transfer data in bulk to its replacement canister.
+The Internet Computer’s persistence model allows a canister to save and restore such data to dedicated *stable memory* that, unlike ordinary canister memory, is retained across an upgrade, allowing a canister to transfer data in bulk to its replacement canister.
 
-For applications written in Motoko, the language provides high-level support for preserving state that leverages IC stable memory. This higher-level feature, called *stable storage*, is designed to accommodate changes to both the application data and to the Motoko compiler used to produce the application code.
+For applications written in Motoko, the language provides high-level support for preserving state that leverages Internet Computer stable memory. This higher-level feature, called *stable storage*, is designed to accommodate changes to both the application data and to the Motoko compiler used to produce the application code.
 
 Utilizing stable storage depends on you — as the application programmer — anticipating and indicating the data you want to retain after an upgrade. Depending on the application, the data you decide to persist might be some, all, or none of a given actor’s state.
 
 ## Declaring stable variables
 
-In an actor, you can nominate a variable for stable storage (in IC stable memory) by using the `stable` keyword as a modifier in the variable’s declaration.
+In an actor, you can nominate a variable for stable storage (in Internet Computer stable memory) by using the `stable` keyword as a modifier in the variable’s declaration.
 
 More precisely, every `let` and `var` variable declaration in an actor can specify whether the variable is `stable` or `flexible`. If you don’t provide a modifier, the variable is declared as `flexible` by default.
 
@@ -62,7 +62,7 @@ When you first compile and deploy a canister, all flexible and stable variables 
 
 Declaring a variable to be `stable` requires its type to be stable too. Since not all types are stable, some variables cannot be declared `stable`.
 
-As a simple example, consider the Registry\` actor from the discussion of [orthogonal persistence](./index.md#orthogonal-persistence).
+As a simple example, consider the `Registry` actor from the discussion of [orthogonal persistence](motoko.md#orthogonal-persistence).
 
 ``` motoko
 import Text "mo:base/Text";
@@ -98,7 +98,7 @@ Unfortunately, its state, `map`, has a proper object type that contains member f
 
 For scenarios like this that can’t be solved using stable variables alone, Motoko supports user-defined upgrade hooks that, when provided, run immediately before and after upgrade. These upgrade hooks allow you to migrate state between unrestricted flexible variables to more restricted stable variables. These hooks are declared as `system` functions with special names, `preugrade` and `postupgrade`. Both functions must have type `: () → ()`.
 
-The `preupgrade` method lets you make a final update to stable variables, before the runtime commits their values to IC stable memory, and performs an upgrade. The `postupgrade` method is run after an upgrade has initialized the replacement actor, including its stable variables, but before executing any shared function call (or message) on that actor.
+The `preupgrade` method lets you make a final update to stable variables, before the runtime commits their values to Internet Computer stable memory, and performs an upgrade. The `postupgrade` method is run after an upgrade has initialized the replacement actor, including its stable variables, but before executing any shared function call (or message) on that actor.
 
 Here, we introduce a new stable variable, `entries`, to save and restore the entries of the unstable hash table.
 
@@ -148,7 +148,7 @@ The collection of stable variable declarations in an actor can be summarized in 
 
 The textual representation of an actor’s stable signature resembles the internals of a Motoko actor type:
 
-``` motoko
+``` motoko no-repl
 actor {
   stable x : Nat;
   stable var y : Int;
@@ -214,8 +214,8 @@ The Motoko compiler embeds the Candid interface and stable signature of a canist
 
 This metadata can be selectively exposed by the IC and used by tools such as `dfx` to verify upgrade compatibility.
 
-## Upgrading a deployed actor or canister
+## Upgrading a deployed actor or canister smart contract
 
-After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister](../../project-setup/manage-canisters.md#upgrade-a-canister).
+After you have deployed a Motoko actor with the appropriate `stable` variables or `preupgrade` and `postupgrade` system methods, you can use the `dfx canister install` command with the `--mode=upgrade` option to upgrade an already deployed version. For information about upgrading a deployed canister, see [Upgrade a canister smart contract](../../project-setup/manage-canisters.md#upgrade-a-canister).
 
 An upcoming version of `dfx` will, if appropriate, check the safety of an upgrade by comparing the Candid and (for Motoko canisters only) the stable signatures embedded in the deployed binary and upgrade binary, and abort the upgrade request when unsafe.

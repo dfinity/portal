@@ -16,7 +16,7 @@ Although this guide is intended to help readers from different backgrounds under
 
 ## Using this guide
 
-To provide a framework for learning Motoko, you might want to start by reviewing [Engineering values and goals](#_engineering_values_and_goals). The [Engineering values and goals](#_engineering_values_and_goals) describe the core design considerations for the development and evolution of the Motoko programming language.
+To provide a framework for learning Motoko, you might want to start by reviewing [Engineering values and goals](#engineering-values-and-goals). The [Engineering values and goals](#engineering-values-and-goals) describe the core design considerations for the development and evolution of the Motoko programming language.
 
 With those considerations in mind, you can start to explore fundamental concepts, including the role of types and type annotations, in simple code examples and small programs.
 
@@ -52,7 +52,7 @@ For transparency into the principles that guide the engineering effort, the engi
 
 The following guiding principles represent the core values of the engineering organization in prioritized order:
 
-1.  Seamless integration with the [Internet Computer blockchain network](../../../../concepts/what-is-ic#ic-overview) to ensure that Motoko provides full language support for the actor-based model, asynchronous messaging, data persistence, interface description language interoperability, and other features.
+1.  Seamless integration with the [Internet Computer blockchain network](../../../../concepts/what-is-IC.md#what-is-the-internet-computer) to ensure that Motoko provides full language support for the actor-based model, asynchronous messaging, data persistence, interface description language interoperability, and other features.
 
 2.  Ergonomics to ensure that Motoko embraces familiarity, simplicity, clarity, explicitness, and other human factors.
 
