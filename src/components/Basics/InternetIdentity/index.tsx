@@ -1,10 +1,27 @@
 import React from "react";
+import { useInView } from "react-intersection-observer";
 import styles from "./index.module.css";
 
 const InternetIdentity = () => {
+  const [ref, inView] = useInView({ threshold: 0.35 });
+
   return (
     <>
-      <section className={styles.outerContainer}>
+      <div
+        className={styles.backdrop}
+        style={{
+          opacity: inView ? 1 : 0,
+          pointerEvents: inView ? "all" : "none",
+        }}
+      ></div>
+      <section
+        className={styles.outerContainer}
+        ref={ref}
+        style={{
+          opacity: inView ? 1 : 0,
+          pointerEvents: inView ? "all" : "none",
+        }}
+      >
         <div className={styles.container}>
           <h2 className="heading-2">Internet Identity</h2>
           <p className="paragraph">
@@ -73,7 +90,7 @@ const InternetIdentity = () => {
             <h3 className="heading-3">No tracking</h3>
             <p className="paragraph">
               Using Internet Identity authentication system, users will not able
-              being tracked across dapps and services. 
+              being tracked across dapps and services.
             </p>
           </div>
           <div className={styles.card}>

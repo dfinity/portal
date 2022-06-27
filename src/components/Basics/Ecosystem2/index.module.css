@@ -1,12 +1,13 @@
 .outerContainer {
   position: relative;
   overflow: hidden;
+  z-index: 0;
 }
 
 .container {
   max-width: 1114px;
   margin: 0 auto;
-  padding: 240px 12px 160px;
+  padding: 120px 12px 160px;
 }
 
 .headingContainer {
@@ -74,7 +75,6 @@
   object-position: center;
   position: absolute;
   top: 0;
-  transition: opacity 200ms ease;
 }
 .link {
   position: absolute;

@@ -14,7 +14,7 @@
 
 .outerContainer {
   position: relative;
-  padding: 240px 12px;
+  padding: 240px 12px 160px;
 }
 
 .outerContainer > svg {

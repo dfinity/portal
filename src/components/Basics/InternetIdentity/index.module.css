@@ -1,7 +1,7 @@
 .container {
   max-width: 1114px;
   margin: 0 auto;
-  padding: 240px 12px 80px;
+  padding: 120px 12px 80px;
   color: white;
 }
 
@@ -14,7 +14,8 @@
 }
 
 .outerContainer {
-  background-color: var(--ifm-color-primary);
+  position: relative;
+  z-index: 2;
 }
 
 .cards {
@@ -23,7 +24,7 @@
   max-width: 1340px;
   margin: 0 auto;
   gap: 20px;
-  padding: 0 12px 240px;
+  padding: 0 12px 140px;
 }
 
 .card {
@@ -46,6 +47,15 @@
 
 .card p {
   min-height: 112px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--ifm-color-primary);
+  z-index: 1;
+  transition: opacity 500ms ease;
+  /* transition-delay: 650ms; */
 }
 
 @media (max-width: 996px) {
