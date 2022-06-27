@@ -1,0 +1,50 @@
+.container {
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+  color: white;
+}
+
+.heading {
+  font-size: 60px;
+  line-height: 70px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.outerContainer {
+  position: relative;
+  padding: 240px 12px;
+}
+
+.outerContainer > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 180vw;
+  pointer-events: none;
+}
+
+.container > svg {
+  width: 162px;
+  position: absolute;
+}
+
+/* plant icon */
+.container > svg:nth-of-type(1) {
+  top: -160px;
+  right: 20px;
+}
+
+/* iot icon */
+.container > svg:nth-of-type(2) {
+  top: -240px;
+  right: -240px;
+}
+
+/* db icon */
+.container > svg:nth-of-type(3) {
+  top: 70px;
+  right: -180px;
+}

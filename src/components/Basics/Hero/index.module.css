@@ -1,0 +1,43 @@
+.hero {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 240px 0 160px;
+  position: relative;
+  max-width: 1340px;
+
+  --button-color-hover: var(--ifm-color-primary);
+}
+
+.hero p {
+  max-width: 890px;
+  margin: 24px 0;
+}
+
+.hero h1 {
+  margin: 0;
+}
+
+.heroContainer {
+  background-color: var(--ifm-color-primary);
+  overflow: hidden;
+  padding: 0 12px;
+}
+
+.decoration {
+  position: absolute;
+  bottom: -680px;
+  right: -750px;
+  width: 1500px;
+}
+
+@media (max-width: 996px) {
+  .hero p {
+    margin: 8px 0 32px;
+  }
+  .decoration {
+    bottom: -70vw;
+    right: -25vw;
+    width: 150vw;
+  }
+}

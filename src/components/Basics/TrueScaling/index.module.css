@@ -1,0 +1,100 @@
+.container {
+  max-width: 1114px;
+  margin: 0 auto;
+  padding: 240px 12px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  /* flex: 5; */
+  width: 50%;
+  /* margin-left: auto; */
+}
+.content h3 {
+  margin-bottom: 8px;
+}
+
+.content p {
+  margin-bottom: 32px;
+  color: rgba(24, 24, 24, 0.6);
+}
+
+.content a {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3b00b9;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status {
+  /* flex: 3; */
+  /* margin-left: 20%; */
+  padding-top: 150px;
+  width: 30%;
+}
+.status h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #181818;
+  margin-bottom: 12px;
+}
+
+.status img {
+  position: absolute;
+  width: 100%;
+  top: calc(50% + 40px);
+  left: calc(50% + 360px);
+  transform: translate(-50%, -50%);
+}
+
+.statusCard {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(40px);
+  border-radius: 12px;
+
+  padding: 24px;
+}
+.statusCard ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.statusCard * {
+  margin: 0;
+  padding: 0;
+}
+.statusCard ul {
+  list-style-type: none;
+  padding: 0;
+}
+.statusCard h5 {
+  color: var(--ifm-color-primary);
+}
+.statusCard p {
+  font-weight: 500;
+  color: rgba(24, 24, 24, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 5%;
+  }
+  100% {
+    opacity: 10%;
+  }
+}
+
+.skeleton {
+  display: block;
+  background-color: black;
+  border-radius: 4px;
+  animation: pulse 1s infinite alternate;
+}
