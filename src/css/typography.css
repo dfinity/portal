@@ -89,6 +89,20 @@
     var(--ifm-transition-custom-curve);
 }
 
+.cta-link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--ifm-color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cta-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .button:hover {
   background-color: var(--button-color);
   color: var(--button-color-hover);

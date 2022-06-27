@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import React, { useState } from "react";
 import styles from "./index.module.css";
@@ -122,7 +123,7 @@ const Ecosystem2 = () => {
       <section className={styles.container}>
         <div className={styles.headingContainer}>
           <h2 className="heading-2">Ecosystem</h2>
-          <a href="">
+          <Link href="https://dfinity.org/showcase" className="cta-link">
             Go to Ecosystem showcase
             <svg
               width="24"
@@ -134,7 +135,7 @@ const Ecosystem2 = () => {
               <g clipPath="url(#clip0_1926_30447)">
                 <path
                   d="M11.2429 8.34285L3.65709 8.34285L3.65709 6.34315H14.6568V17.3429L12.6571 17.3429L12.6571 9.75706L4.05024 18.364L2.63603 16.9498L11.2429 8.34285Z"
-                  fill="#3B00B9"
+                  fill="currentColor"
                 />
               </g>
               <defs>
@@ -143,7 +144,7 @@ const Ecosystem2 = () => {
                 </clipPath>
               </defs>
             </svg>
-          </a>
+          </Link>
         </div>
         <div className={styles.categoriesContainer}>
           <div className={styles.categories}>

@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import styles from "./index.module.css";
 
 const InternetIdentity = () => {
-  const [ref, inView] = useInView({ threshold: 0.35 });
+  const [ref, inView] = useInView({ threshold: 0.5 });
 
   return (
     <>

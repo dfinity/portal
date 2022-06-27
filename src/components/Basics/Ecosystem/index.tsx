@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import React from "react";
 import styles from "./index.module.css";
 
@@ -11,7 +12,7 @@ const Ecosystem = () => {
             The reverse gas model enables free-to-use, truly user-friendly
             dapps, ready for mass adoption.
           </p>
-          <a href="https://dfinity.org/showcase">
+          <Link href="https://dfinity.org/showcase" className="cta-link">
             <svg
               width="24"
               viewBox="0 0 24 24"
@@ -19,11 +20,11 @@ const Ecosystem = () => {
             >
               <path
                 d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
-                fill="#3B00B9"
+                fill="currentColor"
               />
             </svg>
             Explore Internet Computer Ecosystem
-          </a>
+          </Link>
         </div>
         <div className={styles.cards}>
           <div className={styles.card}></div>

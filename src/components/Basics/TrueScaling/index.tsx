@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import {
   getNodeCount,
   getNodeProviders,
@@ -36,7 +37,7 @@ const TrueScaling = () => {
           By adding new subnets regularly, the IC scales to an unbounded number
           of dapps and allows storage of unlimited data.
         </p>
-        <a href="https://dfinity.org/showcase">
+        <Link href="https://dfinity.org/showcase" className="cta-link">
           <svg
             width="24"
             viewBox="0 0 24 24"
@@ -44,11 +45,11 @@ const TrueScaling = () => {
           >
             <path
               d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
-              fill="#3B00B9"
+              fill="currentColor"
             />
           </svg>
           Become a node provider
-        </a>
+        </Link>
       </div>
       <div className={styles.status}>
         <img src="/img/basics/true-scaling.svg" alt="" />
