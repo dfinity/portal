@@ -48,14 +48,15 @@
 }
 
 .cards {
-  display: flex;
   align-items: stretch;
   gap: 20px;
   position: absolute;
   top: 360px;
   left: 50%;
   transform: translateX(-100%);
-  /* left: -100%; */
+}
+.cardsDesktop {
+  display: flex;
 }
 .cardsMobile {
   display: none;
@@ -114,6 +115,8 @@
     margin-top: 24px;
     margin-right: -24px;
     padding-bottom: 20px;
+  }
+  .cardsDesktop {
     display: none;
   }
   .cardsMobile {

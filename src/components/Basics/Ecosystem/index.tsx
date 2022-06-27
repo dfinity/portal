@@ -65,10 +65,10 @@ const Ecosystem = () => {
             Explore Internet Computer Ecosystem
           </Link>
         </div>
-        <div className={styles.cards}>
+        <div className={clsx(styles.cards, styles.cardsDesktop)}>
           {cards.map((card) => (
             <div className={styles.card} key={card.title}>
-              <img src={card.logo} alt="" key={card.title} />
+              <img src={card.logo} alt="" />
               <h3 className="">{card.title}</h3>
               <p className="">{card.oneLiner}</p>
               <span className={styles.stats}>{card.stats}</span>
@@ -78,7 +78,7 @@ const Ecosystem = () => {
         <div className={clsx(styles.cards, styles.cardsMobile)}>
           {mobileProjects.map((card) => (
             <div className={styles.card} key={card.title}>
-              <img src={card.logo} alt="" key={card.title} />
+              <img src={card.logo} alt="" />
               <h3 className="">{card.title}</h3>
               <p className="">{card.oneLiner}</p>
               <span className={styles.stats}>{card.stats}</span>
