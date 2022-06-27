@@ -21,7 +21,7 @@
 .heroContainer {
   background-color: var(--ifm-color-primary);
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 24px;
 }
 
 .decoration {
@@ -32,12 +32,15 @@
 }
 
 @media (max-width: 996px) {
+  .hero {
+    padding: 140px 0 160px;
+  }
   .hero p {
     margin: 8px 0 32px;
   }
   .decoration {
-    bottom: -70vw;
-    right: -25vw;
-    width: 150vw;
+    bottom: -80vw;
+    right: -40vw;
+    width: 180vw;
   }
 }

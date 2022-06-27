@@ -1,7 +1,7 @@
 .container {
   max-width: 1114px;
   margin: 0 auto;
-  padding: 120px 12px 80px;
+  padding: 120px 24px 80px;
   color: white;
 }
 
@@ -24,7 +24,7 @@
   max-width: 1340px;
   margin: 0 auto;
   gap: 20px;
-  padding: 0 12px 140px;
+  padding: 0 24px 140px;
 }
 
 .card {
@@ -47,6 +47,7 @@
 
 .card p {
   min-height: 112px;
+  opacity: 0.6;
 }
 
 .backdrop {
@@ -64,5 +65,27 @@
   }
   .card p {
     min-height: 0;
+  }
+  .card svg {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 16px;
+  }
+  .backdrop {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .outerContainer {
+    opacity: 1 !important;
+    pointer-events: all !important;
+  }
+  .outerContainer {
+    background-color: var(--ifm-color-primary);
+  }
+  .container {
+    padding-bottom: 48px;
+  }
+  .container p {
+    margin-bottom: 32px;
   }
 }

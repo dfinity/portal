@@ -1,8 +1,49 @@
 import Link from "@docusaurus/Link";
+import useMediaQuery from "@site/src/utils/use-media-query";
 import React from "react";
 import styles from "./index.module.css";
 
+const cards = [
+  {
+    logo: require("../../../../static/img/basics/ii-logo.png").default,
+    title: "Internet Identity",
+    oneLiner: "Blockchain authentication system",
+    stats: "1,000,000+ users",
+  },
+
+  {
+    logo: require("../../../../static/img/basics/sonic-logo.png").default,
+    title: "Sonic",
+    oneLiner: "Swap built end-to-end DeFi platform",
+    stats: "30,000+ users</s",
+  },
+
+  {
+    logo: require("../../../../static/img/basics/openchat-logo.png").default,
+    title: "OpenChat",
+    oneLiner: "Decentralized alternative to WhatsApp",
+    stats: "50,000+ users</s",
+  },
+  {
+    logo: require("../../../../static/img/basics/distrikt-logo.png").default,
+    title: "Distrikt",
+    oneLiner: "Professional social media platform",
+    stats: "70,000+ users</s",
+  },
+
+  {
+    logo: require("../../../../static/img/basics/dscvr-logo.png").default,
+    title: "DSCVR",
+    oneLiner: "Decentralized social news aggregator",
+    stats: "40,000+ users</s",
+  },
+];
+
 const Ecosystem = () => {
+  const isMobile = useMediaQuery("(max-width: 996px)");
+
+  const projects = isMobile ? [...cards].reverse() : cards;
+
   return (
     <section className={styles.outerContainer}>
       <div className={styles.container}>
@@ -27,53 +68,14 @@ const Ecosystem = () => {
           </Link>
         </div>
         <div className={styles.cards}>
-          <div className={styles.card}></div>
-          <div className={styles.card}>
-            <img
-              src={
-                require("../../../../static/img/basics/sonic-logo.png").default
-              }
-              alt=""
-            />
-            <h3 className="">OpenChat</h3>
-            <p className="">Swap built end-to-end DeFi platform</p>
-            <span className={styles.stats}>30,000+ users</span>
-          </div>
-          <div className={styles.card}>
-            <img
-              src={
-                require("../../../../static/img/basics/openchat-logo.png")
-                  .default
-              }
-              alt=""
-            />
-            <h3 className="">OpenChat</h3>
-            <p className="">Decentralized alternative to WhatsApp</p>
-            <span className={styles.stats}>50,000+ users</span>
-          </div>
-          <div className={styles.card}>
-            <img
-              src={
-                require("../../../../static/img/basics/distrikt-logo.png")
-                  .default
-              }
-              alt=""
-            />
-            <h3 className="">Distrikt</h3>
-            <p className="">Professional social media platform</p>
-            <span className={styles.stats}>70,000+ users</span>
-          </div>
-          <div className={styles.card}>
-            <img
-              src={
-                require("../../../../static/img/basics/dscvr-logo.png").default
-              }
-              alt=""
-            />
-            <h3 className="">DSCVR</h3>
-            <p className="">Decentralized social news aggregator</p>
-            <span className={styles.stats}>40,000+ users</span>
-          </div>
+          {projects.map((card) => (
+            <div className={styles.card} key={card.title}>
+              <img src={card.logo} alt="" />
+              <h3 className="">{card.title}</h3>
+              <p className="">{card.oneLiner}</p>
+              <span className={styles.stats}>{card.stats}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

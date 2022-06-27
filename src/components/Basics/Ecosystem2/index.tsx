@@ -14,7 +14,7 @@ const OutgoingLink = () => (
     <g clipPath="url(#clip0_1926_6016)">
       <path
         d="M11.2429 8.34309L3.65709 8.34309L3.65709 6.34339H14.6568V17.3431L12.6571 17.3431L12.6571 9.75731L4.05024 18.3642L2.63603 16.95L11.2429 8.34309Z"
-        fill="#3B00B9"
+        fill="currentColor"
       />
     </g>
     <defs>
@@ -35,7 +35,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-nft.png").default,
     link: (
       <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
-        Explore more SocialFi projects <OutgoingLink></OutgoingLink>
+        Explore more NFT projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
@@ -54,7 +54,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-social.png").default,
     link: (
       <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
-        Explore more DeFi projects <OutgoingLink></OutgoingLink>
+        Explore more SocialFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
@@ -76,7 +76,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-defi.png").default,
     link: (
       <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
-        Explore more Metaverse projects <OutgoingLink></OutgoingLink>
+        Explore more DeFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
@@ -99,7 +99,7 @@ const categories = [
       .default,
     link: (
       <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
-        Explore more NFT projects <OutgoingLink></OutgoingLink>
+        Explore more Metaverse projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
@@ -172,6 +172,15 @@ const Ecosystem2 = () => {
             {selectedCategory.link}
             {selectedCategory.credit}
           </div>
+        </div>
+        <div className={styles.mobileCategoriesContainer}>
+          {categories.map((category, index) => (
+            <div key={index} className={styles.mobileCategoryCard}>
+              <h3>{category.title}</h3>
+              <img src={category.image} alt="" />
+              {category.link}
+            </div>
+          ))}
         </div>
       </section>
     </div>

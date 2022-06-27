@@ -39,7 +39,7 @@
 .container {
   max-width: 1340px;
   margin: 0 auto;
-  padding: 0 12px;
+  padding: 0 24px;
   position: relative;
 }
 
@@ -64,6 +64,12 @@
   .illustration {
     width: 120vw;
     right: -30%;
-    bottom: -55vw;
+    bottom: -60vw;
+  }
+
+  .heading {
+    margin: 80px auto 100px;
+    font-size: 32px;
+    line-height: 42px;
   }
 }

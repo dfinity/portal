@@ -14,15 +14,15 @@
 
 .outerContainer {
   position: relative;
-  padding: 240px 12px 160px;
+  padding: 240px 24px 160px;
 }
 
 .outerContainer > svg {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: calc(50% + 200px);
   transform: translate(-50%, -50%);
-  width: 180vw;
+  width: 160vw;
   pointer-events: none;
 }
 
@@ -47,4 +47,45 @@
 .container > svg:nth-of-type(3) {
   top: 70px;
   right: -180px;
+}
+
+@media (max-width: 996px) {
+  .outerContainer {
+    padding: 240px 24px 200px;
+  }
+
+  .outerContainer > svg {
+    left: 50%;
+    top: calc(50% + 200px);
+    transform: translate(-50%, -50%);
+    width: 2000px;
+    pointer-events: none;
+  }
+
+  .heading {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .container > svg {
+    width: 120px;
+  }
+
+  /* plant icon */
+  .container > svg:nth-of-type(1) {
+    top: -120px;
+    right: 130px;
+  }
+
+  /* iot icon */
+  .container > svg:nth-of-type(2) {
+    top: -220px;
+    right: 0px;
+  }
+
+  /* db icon */
+  .container > svg:nth-of-type(3) {
+    top: -90px;
+    right: -30px;
+  }
 }

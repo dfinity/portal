@@ -1,7 +1,7 @@
 .container {
   max-width: 1114px;
   margin: 0 auto;
-  padding: 240px 12px;
+  padding: 240px 24px;
   position: relative;
 }
 .outerContainer {
@@ -57,10 +57,6 @@
   transform: translateX(-100%);
   /* left: -100%; */
 }
-@media (min-width: 1440px) {
-  .cards {
-  }
-}
 
 .stats {
   background: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
@@ -71,4 +67,30 @@
   display: inline-block;
   color: white;
   padding: 0 16px;
+}
+@media (max-width: 996px) {
+  .content {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .cards {
+    position: static;
+    transform: none;
+    overflow: auto;
+    /* flex-direction: row-reverse; */
+    margin-top: 24px;
+    margin-right: -24px;
+    padding-bottom: 20px;
+  }
+  .card {
+    min-width: 207px;
+  }
+
+  .container {
+    max-width: 1114px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    position: relative;
+  }
 }

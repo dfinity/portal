@@ -44,7 +44,10 @@ const Hero = () => {
           purus sit amet luctus venenatis, lectus magna fringilla urna,
           porttitor
         </p>
-        <Link className="button" to="/docs/current/developer-docs/ic-overview">
+        <Link
+          className="button button-white"
+          to="/docs/current/developer-docs/ic-overview"
+        >
           Build real web3
         </Link>
 

@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import styles from "./index.module.css";
 
 const InternetIdentity = () => {
-  const [ref, inView] = useInView({ threshold: 0.5 });
+  const [ref, inView, x] = useInView({ threshold: 0.5 });
 
   return (
     <>
@@ -29,7 +29,7 @@ const InternetIdentity = () => {
             numerous scientific breakthroughs and countless advances in
             cryptoengineering.
           </p>
-          <button className="button">Create Your Internet Indentity </button>
+          <button className="button">Create Your Internet Indentity</button>
         </div>
         <div className={styles.cards}>
           <div className={styles.card}>
