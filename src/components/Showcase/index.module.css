@@ -138,8 +138,7 @@
 
 .cardContainer::-webkit-scrollbar-track {
     background: #3b00b9;
-    margin-right: 50px;
-    margin-left: calc((100vw - Min(1100px, 90vw)) / 2);
+    margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
     border-radius: 20px;
 }
 
@@ -165,7 +164,7 @@
 
 .cardWrapper:last-child {
     margin-right: 0;
-    padding-right: 50px;
+    padding-right: calc((100vw - Min(1100px, 90vw)) / 2);
 }
 
 .dappContainer {

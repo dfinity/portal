@@ -12,12 +12,17 @@
     overflow: hidden;
     height: 100%;
 }
-
 .BGGradient {
+    position: absolute;
+    width: Min(100%,1440px);
+    height: 100vh;
+    margin: 0 calc((100vw - Min(100vw,1440px)) / 2);
+}
+.BGGradient img {
     display: flex;
     position: absolute;
-    max-width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    top: -10vh;
     right: -20vw;
     margin-left: auto;
     margin-right: auto;
@@ -27,8 +32,8 @@
     -moz-transform: translate3d(0, 0, 0);
 }
 
-@media screen and (max-width: 996px) {
-    .BGGradient {
-        top: -100px
+@media screen and (max-width: 426px) {
+    .BGGradient img {
+        top: 200px
     }
 }

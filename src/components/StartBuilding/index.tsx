@@ -11,7 +11,6 @@ import GrowthIcon from "@site/static/img/startBuilding/growth.svg";
 import DatabaseIcon from "@site/static/img/startBuilding/database.svg";
 import MotokoIcon from "@site/static/img/startBuilding/motoko.svg";
 import DfinityIcon from "@site/static/img/startBuilding/dfinity.svg";
-import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
@@ -38,15 +37,13 @@ function Event({ title, dateRange, link }) {
     <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
       <div className={styles.bodyContainer}>
         <p className={styles.eventDate}>{dateRange}</p>
-        <p className={styles.eventTitle}>{title}</p>
+        {title.map((titleLine) => (
+          <p className={styles.eventTitle}>{titleLine}</p>
+        ))}
         <p className={styles.eventDescription}>
           Internet Computer Global Hackathon <br />
           $6 Million In Prizes + Grants
         </p>
-
-        <div className={styles.eventAction}>
-          <RightPointer /> <p> Register now</p>
-        </div>
       </div>
       <img className={styles.eventBackground} src={eventBG} alt="" />
     </Link>
@@ -122,9 +119,11 @@ function StartBuilding() {
           link={"/samples"}
         />
         <Event
-          title="Supernova"
-          dateRange="May 10 - June 20, 2022"
-          link={"https://supernova.devpost.com/"}
+          title={["Supernova", "Demo Day"]}
+          dateRange="June 30, 2022"
+          link={
+            "https://events.zoom.us/e/view/0DN6AGHCRLGUphMgOJp1mw?id=0DN6AGHCRLGUphMgOJp1mw"
+          }
         />
         <MotokoPlayground
           title="Motoko Playground"

@@ -8,10 +8,6 @@ import TeamPhotoFront from "@site/static/img/Foundation/teamPhotoFront.png";
 import TeamPhotoBack from "@site/static/img/Foundation/teamPhotoBack.png";
 import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
 import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
-import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
@@ -163,30 +159,22 @@ function Foundation() {
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
-      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
-        <Swiper
-          spaceBetween={8}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          breakpoints={{
-            320: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-          }}
-        >
+      <motion.div
+        className={styles.scrollContainer}
+        variants={transitions.item}
+      >
+        <div className={styles.mobileCardsContainer}>
           {cards.map((card) => (
-            <SwiperSlide key={card.link}>
+            <div className={styles.cardWrapper} key={card.link}>
               <Card
                 isMain={card.isMain}
                 title={card.title}
                 body={card.body}
                 link={card.link}
               />
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </motion.div>
       <motion.div variants={transitions.item} className={styles.cards}>
         {cards.map((card) => (

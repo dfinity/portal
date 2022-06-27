@@ -208,7 +208,7 @@
 }
 
 .eventBackground {
-    width: 50%;
+    width: 45%;
     position: absolute;
     top: 30px;
     right: 0;
@@ -250,7 +250,6 @@
     position: absolute;
     bottom: -10px;
     right: 15%;
-
 }
 
 .backgroundIcon {
