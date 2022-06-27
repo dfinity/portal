@@ -36,9 +36,10 @@
 
 .status img {
   position: absolute;
-  width: 100%;
-  top: calc(50% + 40px);
-  left: calc(50% + 360px);
+  width: 1900px;
+  max-width: none;
+  top: calc(50% + 0px);
+  left: calc(50% + 650px);
   transform: translate(-50%, -50%);
 }
 
@@ -87,6 +88,13 @@
   animation: pulse 1s infinite alternate;
 }
 
+@media (min-width: 1920px) {
+  .status img {
+    width: 2600px;
+    top: calc(50% + 50px);
+    left: calc(50% + 800px);
+  }
+}
 @media (max-width: 996px) {
   .container {
     padding: 80px 24px 160px;

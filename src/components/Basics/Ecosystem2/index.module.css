@@ -96,6 +96,10 @@
   padding: 16px 24px;
   gap: 8px;
 }
+.link:hover {
+  color: black;
+  text-decoration: none;
+}
 .credit {
   position: absolute;
   right: 34px;
@@ -105,6 +109,10 @@
   font-size: 12px;
   line-height: 16px;
   color: white;
+}
+.credit:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
 }
 
 .creditToneDown {
@@ -120,6 +128,36 @@
   margin-bottom: -12px;
 }
 
+@media (min-width: 1600px) {
+  /* .categoriesContainer {
+  display: flex;
+  width: 40%;
+  margin-top: 120px;
+} */
+  .container {
+    position: relative;
+  }
+  .credit {
+    right: 10px;
+  }
+  .example {
+    position: absolute;
+    right: -184px;
+    font-size: 0;
+
+    flex: 1;
+    width: 597px;
+    height: 597px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .example img {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+  }
+}
 @media (max-width: 996px) {
   .categoriesContainer {
     display: none;
@@ -173,5 +211,8 @@
   }
   .link svg {
     width: 20px;
+  }
+  .credit {
+    display: none;
   }
 }

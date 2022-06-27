@@ -15,27 +15,27 @@ const cards = [
     logo: require("../../../../static/img/basics/sonic-logo.png").default,
     title: "Sonic",
     oneLiner: "Swap built end-to-end DeFi platform",
-    stats: "30,000+ users</s",
+    stats: "30,000+ users",
   },
 
   {
     logo: require("../../../../static/img/basics/openchat-logo.png").default,
     title: "OpenChat",
     oneLiner: "Decentralized alternative to WhatsApp",
-    stats: "50,000+ users</s",
+    stats: "50,000+ users",
   },
   {
     logo: require("../../../../static/img/basics/distrikt-logo.png").default,
     title: "Distrikt",
     oneLiner: "Professional social media platform",
-    stats: "70,000+ users</s",
+    stats: "70,000+ users",
   },
 
   {
     logo: require("../../../../static/img/basics/dscvr-logo.png").default,
     title: "DSCVR",
     oneLiner: "Decentralized social news aggregator",
-    stats: "40,000+ users</s",
+    stats: "40,000+ users",
   },
 ];
 
