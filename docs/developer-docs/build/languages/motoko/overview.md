@@ -605,15 +605,15 @@ IC canister with Candid interface ≈ Motoko actor
 ## A complete actor
 
 ``` motoko
-import Array "mo:base/Array";
+import Buffer "mo:base/Buffer";
 
 actor Broadcast {
   type Receiver = actor {recv : query Text -> async Nat};
 
-  var r : [Receiver] = [];
+  var r : Buffer.Buffer<Receiver> = Buffer.Buffer<Receiver>(4);
 
   public func register(a : Receiver) {
-    r := Array.append(r, [a]);
+    r.add(a);
   };
 
   public func send(t : Text) : async Nat {
