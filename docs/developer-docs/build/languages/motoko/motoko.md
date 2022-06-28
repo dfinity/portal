@@ -58,9 +58,14 @@ actor Counter {
 ```js file=./Counter.mo
 ```
 
-## Six
+## Seven
 
 ```js file={require('./Counter.mo').default}
+```
+
+## Eight
+
+```js file={require('./developer-docs/build/languages/motoko/Counter.mo').default}
 ```
 
 
