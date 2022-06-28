@@ -34,16 +34,16 @@ For simplicity, assume that the `notify` function accepts relevant notification 
 
 ### Publisher actor
 
-The publisher side of the code stores an array of subscribers. For simplicity, assume that each subscriber only subscribes itself once using a `subscribe` function.
+The publisher side of the code stores a buffer of subscribers (with an initial buffer size of 4). For simplicity, assume that each subscriber only subscribes itself once using a `subscribe` function.
 
 ``` motoko name=pub include=tsub
-import Array "mo:base/Array";
+import Buffer "mo:base/Buffer";
 
 actor Publisher {
-    var subs: [Subscriber] = [];
+    var subs = Buffer.Buffer<Subscriber>(4);
 
     public func subscribe(sub: Subscriber) {
-        subs := Array.append<Subscriber>(subs, [sub]);
+        subs.add(sub);
     };
 
     public func publish() {
@@ -143,11 +143,11 @@ Compared to the original version, the only lines that change are those that rena
 Likewise, we can update the publisher to have a matching interface:
 
 ``` motoko name=newpub include=submessage
-import Array "mo:base/Array";
+import Buffer "mo:base/Buffer";
 actor Publisher {
-  var subs: [SubscribeMessage] = [];
+  var subs = Buffer.Buffer<SubscribeMessage>(4);
   public func subscribe(sub: SubscribeMessage) {
-    subs := Array.append<SubscribeMessage>(subs, [sub]);
+    subs.add(sub);
   };
   public func publish() {
     for (sub in subs.vals()) {

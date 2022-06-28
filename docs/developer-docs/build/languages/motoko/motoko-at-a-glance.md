@@ -390,15 +390,16 @@ The following are **not sharable:**
 
 typical canister main file
 
-    import Array "mo:base/Array";
+    import Buffer "mo:base/Buffer";
     actor {
-      var r : [Receiver] = [];
+      type Receiver = actor { recv : Text -> async Nat };
+      var r : Buffer.Buffer<Receiver> = Buffer.Buffer<Receiver>(4);
       public func register(a : Receiver) {
-        r := Array.append(r, [a]);
+        r.add(a);
       };
       public func send(t : Text) : async Nat {
-        var sum := 0;
-        for (a in r.values()) {
+        var sum = 0;
+        for (a in r.vals()) {
           sum += await a.recv(t);
         };
         return sum;
