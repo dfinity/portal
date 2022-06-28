@@ -46,6 +46,17 @@ actor Counter {
 ## Four
 
 ```motoko name=counter file=./Counter.mo
+```
+
+## Five
+
+```motoko file=./Counter.mo
+```
+
+## Six
+
+```js file=./Counter.mo
+```
 
 ## Code sequentially in direct style
 
