@@ -58,6 +58,12 @@ actor Counter {
 ```js file=./Counter.mo
 ```
 
+## Six
+
+```js file={require('./Counter.mo').default}
+```
+
+
 ## Code sequentially in direct style
 
 On the Internet Computer, canisters can communicate with other canisters by sending asynchronous messages.

@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-import { codeImport } from 'remark-code-import';
+
 // @ts-ignore
 const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
@@ -48,7 +48,7 @@ const config = {
         path: "samples",
         routeBasePath: "samples",
         sidebarPath: require.resolve("./sidebarsSample.js"),
-        remarkPlugins: [codeImport],
+        remarkPlugins: [import("remark-code-import")],
       },
     ],
     customDocusaurusPlugin,
@@ -70,9 +70,9 @@ const config = {
               path: "current",
             },
           },
-//          beforeDefaultRemarkPlugins: [import("remark-code-import")],
+          beforeDefaultRemarkPlugins: [import("remark-code-import")],
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, codeImport],
+          remarkPlugins: [simplePlantUML,import("remark-code-import")],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
