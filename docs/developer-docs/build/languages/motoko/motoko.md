@@ -35,7 +35,7 @@ actor Counter {
 
 ## Two
 
-``` motoko file =./Counter.mo
+``` motoko file=./Counter.mo
 ```
 
 ## Three
