@@ -28,7 +28,7 @@ actor Counter {
 }
 ```
 
-``` motoko name=counter file =./Counter.mo
+``` motoko name=counter file=./Counter.mo
 ```
 
 ## Code sequentially in direct style
