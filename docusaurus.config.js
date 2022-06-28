@@ -70,9 +70,9 @@ const config = {
               path: "current",
             },
           },
-
+          beforeDefaultRemarkPlugins: [import("remark-code-import")],
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, import("remark-code-import")],
+          remarkPlugins: [simplePlantUML],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
