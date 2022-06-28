@@ -9,25 +9,25 @@ const ItsGreen = () => {
   return (
     <section className={styles.outerContainer}>
       <svg
-        width="2364"
-        height="2135"
-        viewBox="0 0 2364 2135"
+        width="3705"
+        height="3252"
+        viewBox="0 0 3705 3252"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g filter="url(#filter0_f_1335_33702)">
+        <g filter="url(#filter0_f_1950_36644)">
           <path
-            d="M500 897.86C500 584.439 982.575 500 1296.18 500C1609.78 500 1864 754.078 1864 1067.5C1864 1380.92 1609.78 1635 1296.18 1635C982.575 1635 500 1211.28 500 897.86Z"
-            fill="url(#paint0_linear_1335_33702)"
+            d="M500 1289.41C500 667.538 1457.01 500 2078.93 500C2700.84 500 3205 1004.13 3205 1626C3205 2247.87 2700.84 2752 2078.93 2752C1457.01 2752 500 1911.28 500 1289.41Z"
+            fill="url(#paint0_linear_1950_36644)"
           />
         </g>
         <defs>
           <filter
-            id="filter0_f_1335_33702"
+            id="filter0_f_1950_36644"
             x="0"
             y="0"
-            width="2364"
-            height="2135"
+            width="3705"
+            height="3252"
             filterUnits="userSpaceOnUse"
             colorInterpolationFilters="sRGB"
           >
@@ -40,15 +40,15 @@ const ItsGreen = () => {
             />
             <feGaussianBlur
               stdDeviation="250"
-              result="effect1_foregroundBlur_1335_33702"
+              result="effect1_foregroundBlur_1950_36644"
             />
           </filter>
           <linearGradient
-            id="paint0_linear_1335_33702"
-            x1="1924.45"
-            y1="1451.51"
-            x2="343.482"
-            y2="533.45"
+            id="paint0_linear_1950_36644"
+            x1="3324.88"
+            y1="2387.93"
+            x2="188.804"
+            y2="567.747"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#4DEDD3" />

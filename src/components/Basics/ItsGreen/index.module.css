@@ -22,7 +22,7 @@
   left: 50%;
   top: calc(50% + 200px);
   transform: translate(-50%, -50%);
-  width: 160vw;
+  width: 2000px;
   pointer-events: none;
 }
 

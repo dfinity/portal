@@ -50,6 +50,7 @@
   /* filter: saturate(-100) grayscale(100); */
   transition: color 200ms ease;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .categories button span {
