@@ -28,6 +28,9 @@ actor Counter {
 }
 ```
 
+``` motoko name=counter file =./Counter.mo
+```
+
 ## Code sequentially in direct style
 
 On the Internet Computer, canisters can communicate with other canisters by sending asynchronous messages.
