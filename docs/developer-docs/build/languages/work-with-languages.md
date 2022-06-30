@@ -18,7 +18,7 @@ Internet Computer considerations:
 | Actor Paradigm support (Canister = Actor) | Native | Error-prone, conflicts with deep-rooted language features (e.g. the borrow checker). |
 | IC-specific Static Analysis | Enforces various safety checks. | No static checking. Canisters may trap when violating restrictions. |
 
-WebAssembnly considerations:
+WebAssembly considerations:
 
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|
