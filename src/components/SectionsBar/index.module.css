@@ -67,7 +67,7 @@
 .mobileMenu {
     justify-content: center;
     justify-items: center;
-    flex-direction: column-reverse;
+    flex-direction: column;
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
@@ -78,11 +78,16 @@
     margin: 0 auto;
     background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(20px);
-    border-radius: 50px;
+
     color: white;
     -webkit-backface-visibility: hidden;
 }
-
+.borderRadius50 {
+    border-radius: 50px;
+}
+.borderRadius12 {
+    border-radius: 12px;
+}
 .mobileMenuOpen {
     display: flex;
     padding: 12px 0;

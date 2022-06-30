@@ -55,6 +55,7 @@
     color: white;
     text-decoration: none;
     position: relative;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -65,8 +66,10 @@
 }
 
 .BGGradient {
+    display: flex;
     position: absolute;
-    width: 1440px;
+    max-width: 1440px;
+    height: 100%;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -109,7 +112,9 @@
 .motokoContainer {
     width: 100%;
 }
-
+.cardHover {
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
 .cardHover:hover {
     color: white;
     text-decoration: none;
@@ -169,14 +174,16 @@
     line-height: 2.75rem;
     color: white;
     display: flex;
+    margin-bottom: 0;
 }
 
 .eventDate {
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 16px;
+    line-height: 24px;
     color: white;
     display: flex;
+    margin-bottom: 0;
 }
 
 .eventContainer {
@@ -201,15 +208,31 @@
 }
 
 .eventBackground {
-    width: 50%;
+    width: 45%;
     position: absolute;
     top: 30px;
     right: 0;
 }
 
-.eventDescription, .eventAction {
+.eventDescription {
     display: none;
     color: white;
+    margin: 8px 0;
+}
+.eventAction {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    display: none;
+    color: white;
+    margin: 4px 0 0 0;
+}
+.eventAction svg {
+    min-width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-self: center;
+    margin: 0 8px auto 0;
 }
 
 .motokoContainer .informationTitle,
@@ -227,7 +250,6 @@
     position: absolute;
     bottom: -10px;
     right: 15%;
-
 }
 
 .backgroundIcon {
@@ -349,15 +371,13 @@
 
     .actionButton {
         font-size: 14px;
-        line-height: 24px;
+        line-height: 22px;
+        padding: 14px 20px;
     }
 
-    .BGGradient {
-        left: -250px;
-    }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1150px) {
     .BGGradient {
         left: -250px;
     }

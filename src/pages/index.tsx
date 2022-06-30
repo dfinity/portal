@@ -12,6 +12,8 @@ import ICToken from "@site/src/components/ICToken";
 import Showcase from "@site/src/components/Showcase";
 import StartBuilding from "@site/src/components/StartBuilding";
 import Foundation from "@site/src/components/Foundation";
+import BackgroundGradient from "@site/static/img/bgGradient.png";
+
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   useEffect(() => {
@@ -23,6 +25,9 @@ export default function Home(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
+        <div className={styles.BGGradient}>
+          <img src={BackgroundGradient} alt="" />
+        </div>
         <BrowserOnly>
           {() => (
             <div className={styles.particleBackground}>
