@@ -19,7 +19,7 @@
 .Title h1 {
     font-weight: 700;
     font-size: 110px;
-    line-height: 130px;
+    line-height: 121px;
     margin-bottom: 0;
 }
 
@@ -50,16 +50,18 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 22px;
-    border: 2px solid black;
+    letter-spacing: 1px;
+    border: 2px solid #3b00b9;
+    background-color: #3b00b9;
+    color: white;
     border-radius: 10px;
-    color: black;
     text-decoration: none;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
-    border: 2px solid #3b00b9;
-    background-color: #3b00b9;
+    border: 2px solid black;
+    background-color: black;
     color: white;
     text-decoration: none;
 }
@@ -104,7 +106,7 @@
 
 @media screen and (max-width: 996px) {
     .container {
-        margin: 160px auto 132px auto;
+        margin: 100px auto 80px auto;
     }
 
     .Title h1 {
@@ -122,6 +124,7 @@
     .actionButton {
         font-size: 14px;
         line-height: 22px;
+        padding: 14px 20px;
         border: 2px solid #3b00b9;
         background-color: #3b00b9;
         color: white;

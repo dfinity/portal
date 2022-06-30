@@ -8,10 +8,6 @@ import TeamPhotoFront from "@site/static/img/Foundation/teamPhotoFront.png";
 import TeamPhotoBack from "@site/static/img/Foundation/teamPhotoBack.png";
 import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
 import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
-import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
@@ -38,7 +34,7 @@ const cards = [
   },
   {
     isMain: false,
-    title: ["IC for Geek", "White Paper"],
+    title: ["IC for Geeks", "White Paper"],
     body: "v1.3 April 19, 2022",
     link: "https://dfinity.org/whitepaper.pdf",
   },
@@ -52,7 +48,9 @@ function Card({ isMain, title, body, link }) {
     >
       <div className={styles.cardBodyContainer}>
         {title.map((titleLine) => (
-          <p className={styles.cardTitle} key={titleLine}>{titleLine}</p>
+          <p className={styles.cardTitle} key={titleLine}>
+            {titleLine}
+          </p>
         ))}
         <p className={styles.cardBody}>{body}</p>
       </div>
@@ -99,13 +97,13 @@ function Foundation() {
       <a id="foundation" />
       <motion.img
         src={TeamPhotoFront}
-        style={{ y: currentYScroll * 0.2 }}
+        style={{ y: currentYScroll * 0.4 }}
         className={styles.mainPhoto}
         alt=""
       />
       <motion.img
         src={TeamPhotoBack}
-        style={{ y: currentYScroll * 0.4 }}
+        style={{ y: currentYScroll * 0.2 }}
         className={styles.mainPhoto}
         alt=""
       />
@@ -154,34 +152,29 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link className={styles.actionButton} to="https://dfinity.org/foundation">
+        <Link
+          className={styles.actionButton}
+          to="https://dfinity.org/foundation"
+        >
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
-      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
-        <Swiper
-          spaceBetween={8}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          breakpoints={{
-            320: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-          }}
-        >
+      <motion.div
+        className={styles.scrollContainer}
+        variants={transitions.item}
+      >
+        <div className={styles.mobileCardsContainer}>
           {cards.map((card) => (
-            <SwiperSlide key={card.link}>
+            <div className={styles.cardWrapper} key={card.link}>
               <Card
                 isMain={card.isMain}
                 title={card.title}
                 body={card.body}
                 link={card.link}
               />
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </motion.div>
       <motion.div variants={transitions.item} className={styles.cards}>
         {cards.map((card) => (

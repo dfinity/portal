@@ -17,6 +17,7 @@
     --ifm-color-primary-lighter: #4400d5;
     --ifm-color-primary-lightest: #4d00f1;
     --ifm-background-color: #f1eef5;
+    --ifm-navbar-height: 110px;
     --ifm-navbar-background-color: rgb(241, 238, 245);
     --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
     --ifm-navbar-search-input-color: rgba(24, 24, 24, 0.6);
@@ -27,6 +28,7 @@
     --ifm-transition-custom-speed: 300ms;
     --ifm-transition-custom-curve: cubic-bezier(0, 0, 0.19, 1);
     --ic0-color: #3b00b9;
+    scroll-behavior: smooth;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -74,6 +76,7 @@ div[class^='announcementBarContent'] {
 .navbar__logo {
     flex: 0 0 auto;
     height: 1.925rem;
+    width: 100%;
     margin-right: 0.5rem;
 }
 
@@ -89,11 +92,27 @@ div[class^='announcementBarContent'] {
 
 .navbar {
     z-index: 1901;
+    padding: 44px Max(calc((100vw - 1320px) / 2), 50px) 20px Max(calc((100vw - 1320px) / 2), 50px);
+    height: var(--ifm-navbar-height);
+    margin: 0 0;
+}
+
+@media (max-width: 996px) {
+    .navbar {
+        height: 72px;
+        padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
+    }
 }
 
 .ic0-item {
     display: flex;
     align-items: center;
+    fill: white;
+    filter: invert(16%) sepia(55%) saturate(7035%) hue-rotate(260deg) brightness(67%) contrast(131%);
+}
+
+.ic0-item:hover {
+    filter: none;
 }
 
 .ic0-item span {
@@ -181,6 +200,7 @@ div[class^='announcementBarContent'] {
 .navbar-sidebar {
     --ifm-navbar-sidebar-width: 100vw;
     --ifm-navbar-background-color: white;
+    transform: translate3d(100%, 0, 0);
 }
 
 /* larger mobile menu items */

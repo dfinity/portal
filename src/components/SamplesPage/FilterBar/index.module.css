@@ -188,7 +188,8 @@ input[type="checkbox"]:checked::before {
 .closeIcon {
     display: flex;
     justify-content: flex-end;
-    height: 18px;
+    height: 21px;
+    min-width: 21px;
 }
 
 .mobileFilterTitle {
@@ -207,10 +208,14 @@ input[type="checkbox"]:checked::before {
     top: 0;
     left: 0;
     z-index: 2100;
-    padding: 50px 5vw;
+    padding: 42px 16px calc(30px + env(safe-area-inset-bottom)) 16px;
     overflow: scroll;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+    transform: translate3d(100%, 0, 0);
 }
-
+.mobileFilterBar__show {
+    transform: translate3d(0, 0, 0);
+}
 .mobileSelectContainer {
     display: inline-flex;
     flex-direction: column;
@@ -219,6 +224,7 @@ input[type="checkbox"]:checked::before {
     font-size: 18px;
     font-weight: 700;
     line-height: 28px;
+    width: 100%;
 }
 
 .mobileSelectContainer p {
@@ -237,7 +243,7 @@ input[type="checkbox"]:checked::before {
 .mobileFilterButton,
 .mobileFilterClearButton {
     display: flex;
-    width: 90vw;
+    width: 100%;
     justify-content: center;
     align-items: center;
     height: 38px;
@@ -263,7 +269,7 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBarButtonContainer {
     display: none;
     position: fixed;
-    z-index: 2000;
+    z-index: 1000;
     width: 100vw;
     bottom: 0;
     left: 0;
