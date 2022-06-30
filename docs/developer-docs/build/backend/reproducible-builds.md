@@ -64,7 +64,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using x86 chips with OS X, we recommend installing Docker using [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [colima](https://github.com/abiosoft/colima); for developers running Apple M1 chips, we currently recommend using a different platform to run Docker, as all exiting solutions use QEMU which has known issues on M1. After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [colima](https://github.com/abiosoft/colima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids a [QEMU bug](https://gitlab.com/qemu-project/qemu/-/issues/989) on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
 
     FROM ubuntu:22.04
 
