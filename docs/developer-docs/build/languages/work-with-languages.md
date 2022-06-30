@@ -33,4 +33,4 @@ Other considerations:
 | Build Time | Faster than Rust. | Slower than Motoko. |
 | Difficulty of Learning | Not very hard. | Quite complex, lots of details to consider. |
 | Memory Management | Automatic GC (garbage collection). | Application-specific, strong support by the compiler. |
-| Foreign Function Interface support | None | Typical C FFI compatibility. |
+| Foreign Function Interface support | None yet. | Typical C FFI compatibility. |
