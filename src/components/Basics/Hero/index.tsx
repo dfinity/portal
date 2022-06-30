@@ -40,9 +40,7 @@ const Hero = () => {
 
         <h1 className="heading-1">Internet Computer Basics</h1>
         <p className="paragraph-large">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-          purus sit amet luctus venenatis, lectus magna fringilla urna,
-          porttitor
+          Take a dive down the rabbit hole and see how to engage with the ecosystem, how you can share the success of the apps that you use, and how to own your data.
         </p>
         <Link
           className="button button-white"
