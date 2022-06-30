@@ -1,7 +1,10 @@
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 
 const OutgoingLink = () => (
   <svg
@@ -117,11 +120,26 @@ const Ecosystem2 = () => {
   const [selectedCategory, setSelectedCategory] = useState<
     typeof categories[0]
   >(categories[0]);
-
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
   return (
     <div className={styles.outerContainer}>
-      <section className={styles.container}>
-        <div className={styles.headingContainer}>
+      <motion.section
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={transitions.container}
+        className={styles.container}
+      >
+        <motion.div
+          variants={transitions.item}
+          className={styles.headingContainer}
+        >
           <h2 className="heading-2">Ecosystem</h2>
           <Link href="https://dfinity.org/showcase" className="cta-link">
             Go to Ecosystem showcase
@@ -145,11 +163,12 @@ const Ecosystem2 = () => {
               </defs>
             </svg>
           </Link>
-        </div>
+        </motion.div>
         <div className={styles.categoriesContainer}>
           <div className={styles.categories}>
             {categories.map((category, index) => (
-              <button
+              <motion.button
+                variants={transitions.item}
                 key={index}
                 onClick={() => setSelectedCategory(category)}
                 className={clsx({
@@ -157,10 +176,10 @@ const Ecosystem2 = () => {
                 })}
               >
                 {category.title}
-              </button>
+              </motion.button>
             ))}
           </div>
-          <div className={styles.example}>
+          <motion.div variants={transitions.item} className={styles.example}>
             {categories.map((category, index) => (
               <img
                 src={category.image}
@@ -171,9 +190,12 @@ const Ecosystem2 = () => {
             ))}
             {selectedCategory.link}
             {selectedCategory.credit}
-          </div>
+          </motion.div>
         </div>
-        <div className={styles.mobileCategoriesContainer}>
+        <motion.div
+          variants={transitions.item}
+          className={styles.mobileCategoriesContainer}
+        >
           {categories.map((category, index) => (
             <div key={index} className={styles.mobileCategoryCard}>
               <h3>{category.title}</h3>
@@ -181,8 +203,8 @@ const Ecosystem2 = () => {
               {category.link}
             </div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </div>
   );
 };

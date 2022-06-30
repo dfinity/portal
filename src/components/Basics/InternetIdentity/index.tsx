@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import styles from "./index.module.css";
+import { motion, useAnimation } from "framer-motion";
+import transitions from "@site/static/transitions.json";
 
 const InternetIdentity = () => {
   const [ref, inView, x] = useInView({ threshold: 0.5 });
-
+  const controls = useAnimation();
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
   return (
     <>
       <div
@@ -14,25 +21,34 @@ const InternetIdentity = () => {
           pointerEvents: inView ? "all" : "none",
         }}
       ></div>
-      <section
+      <motion.section
         className={styles.outerContainer}
+        animate={controls}
+        initial="hidden"
         ref={ref}
         style={{
           opacity: inView ? 1 : 0,
           pointerEvents: inView ? "all" : "none",
         }}
       >
-        <div className={styles.container}>
-          <h2 className="heading-2">Internet Identity</h2>
-          <p className="paragraph">
+        <motion.div
+          variants={transitions.container}
+          className={styles.container}
+        >
+          <motion.h2 variants={transitions.item} className="heading-2">
+            Internet Identity
+          </motion.h2>
+          <motion.p variants={transitions.item} className="paragraph">
             The main innovation behind the Internet Computer, which includes
             numerous scientific breakthroughs and countless advances in
             cryptoengineering.
-          </p>
-          <button className="button">Create Your Internet Indentity</button>
-        </div>
-        <div className={styles.cards}>
-          <div className={styles.card}>
+          </motion.p>
+          <motion.button variants={transitions.item} className="button">
+            Create Your Internet Indentity
+          </motion.button>
+        </motion.div>
+        <motion.div variants={transitions.container} className={styles.cards}>
+          <motion.div variants={transitions.item} className={styles.card}>
             <svg
               width="72"
               height="72"
@@ -62,8 +78,8 @@ const InternetIdentity = () => {
               YubiKey or Ledger wallet, to keep the anonymity without being
               tracked across.
             </p>
-          </div>
-          <div className={styles.card}>
+          </motion.div>
+          <motion.div variants={transitions.item} className={styles.card}>
             <svg
               width="73"
               height="72"
@@ -92,8 +108,8 @@ const InternetIdentity = () => {
               Using Internet Identity authentication system, users will not able
               being tracked across dapps and services.
             </p>
-          </div>
-          <div className={styles.card}>
+          </motion.div>
+          <motion.div variants={transitions.item} className={styles.card}>
             <svg
               width="73"
               height="72"
@@ -126,9 +142,9 @@ const InternetIdentity = () => {
               Giving access to open, decentralized network without compromising
               on speed, security, sovereignty.
             </p>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
     </>
   );
 };

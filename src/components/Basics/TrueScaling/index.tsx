@@ -6,6 +6,9 @@ import {
 } from "@site/src/utils/network-stats";
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 // import graphic from "!../../../../static/img/basics/true-scaling.svg";
 // import graphicMobile from "../../../../static/img/basics/true-scaling.svg";
 
@@ -15,7 +18,13 @@ const TrueScaling = () => {
     subnets: number;
     nodeProviders: number;
   } | null>(null);
-
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
   useEffect(() => {
     (async () => {
       const [nodeMachines, subnets, nodeProviders] = await Promise.all([
@@ -32,8 +41,14 @@ const TrueScaling = () => {
   });
 
   return (
-    <section className={styles.container}>
-      <div className={styles.content}>
+    <motion.section
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      variants={transitions.container}
+      className={styles.container}
+    >
+      <motion.div variants={transitions.item} className={styles.content}>
         <h3 className="heading-3">True Scaling</h3>
         <p className="paragraph-large">
           By adding new subnets regularly, the IC scales to an unbounded number
@@ -52,7 +67,7 @@ const TrueScaling = () => {
           </svg>
           Become a node provider
         </Link>
-      </div>
+      </motion.div>
       <div className={styles.status}>
         <picture>
           <source
@@ -71,8 +86,8 @@ const TrueScaling = () => {
             alt=""
           />
         </picture>
-        <h4>Current status</h4>
-        <div className={styles.statusCard}>
+        <motion.h4 variants={transitions.item}>Current status</motion.h4>
+        <motion.div variants={transitions.item} className={styles.statusCard}>
           <ul>
             <li>
               <h5 className="heading-5">
@@ -107,9 +122,9 @@ const TrueScaling = () => {
               <p className="paragraph-small">combined into 1 platform</p>
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

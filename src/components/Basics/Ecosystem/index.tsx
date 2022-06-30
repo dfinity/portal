@@ -1,7 +1,10 @@
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.css";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 
 const cards = [
   {
@@ -42,10 +45,23 @@ const cards = [
 const mobileProjects = [...cards].reverse();
 
 const Ecosystem = () => {
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
   return (
     <section className={styles.outerContainer}>
-      <div className={styles.container}>
-        <div className={styles.content}>
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={transitions.container}
+        className={styles.container}
+      >
+        <motion.div variants={transitions.item} className={styles.content}>
           <h3 className="heading-3">Users don’t need tokens and wallets</h3>
           <p className="paragraph-large">
             The reverse gas model enables free-to-use, truly user-friendly
@@ -64,7 +80,7 @@ const Ecosystem = () => {
             </svg>
             Explore Internet Computer Ecosystem
           </Link>
-        </div>
+        </motion.div>
         <div className={clsx(styles.cards, styles.cardsDesktop)}>
           {cards.map((card) => (
             <div className={styles.card} key={card.title}>
@@ -85,7 +101,7 @@ const Ecosystem = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
