@@ -32,4 +32,5 @@ Other considerations:
 | Language Maturity | Not mature yet, lots of work left to do. | Mature (enough). Solid library support. |
 | Build Time | Faster than Rust. | Slower than Motoko. |
 | Difficulty of Learning | Not very hard. | Quite complex, lots of details to consider. |
-|  Memory Management | Automatic GC (garbage collection). | Application-specific, strong support by the compiler. |
+| Memory Management | Automatic GC (garbage collection). | Application-specific, strong support by the compiler. |
+| Foreign Function Interface support | None | Typical C FFI compatibility. |
