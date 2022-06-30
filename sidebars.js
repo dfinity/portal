@@ -108,6 +108,16 @@ const sidebars = {
                 'developer-docs/build/languages/candid/candid-howto',
               ],
             },
+            {
+              type: 'category',
+              label: 'Other Languages',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/other-languages/other-languages-intro',
+              },
+              items: [
+                'developer-docs/build/languages/other-languages/clang-supported-languages',
+              ],
+            },
           ]
         },
         {
