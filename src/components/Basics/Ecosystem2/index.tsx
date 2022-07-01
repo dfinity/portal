@@ -37,12 +37,20 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-nft.png").default,
     link: (
-      <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
+      <a
+        href="https://dfinity.org/showcase?tag=nft"
+        target={"_blank"}
+        className={styles.link}
+      >
         Explore more NFT projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
-      <a href="https://twitter.com/icpsquad" className={styles.credit}>
+      <a
+        href="https://twitter.com/icpsquad"
+        target={"_blank"}
+        className={styles.credit}
+      >
         @ICPSquadNFT
       </a>
     ),
@@ -56,13 +64,18 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-social.png").default,
     link: (
-      <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
+      <a
+        href="https://dfinity.org/showcase?tag=nft"
+        target={"_blank"}
+        className={styles.link}
+      >
         Explore more SocialFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
       <a
         href="https://dscvr.one"
+        target={"_blank"}
         className={clsx(styles.credit, styles.creditToneDown)}
       >
         © dscvr.one
@@ -78,13 +91,18 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-defi.png").default,
     link: (
-      <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
+      <a
+        href="https://dfinity.org/showcase?tag=nft"
+        target={"_blank"}
+        className={styles.link}
+      >
         Explore more DeFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
       <a
         href="https://infinityswap.one"
+        target={"_blank"}
         className={clsx(styles.credit, styles.creditWithPanel)}
       >
         © infinityswap.one
@@ -101,13 +119,18 @@ const categories = [
     image: require("../../../../static/img/basics/export-metaverse.png")
       .default,
     link: (
-      <a href="https://dfinity.org/showcase?tag=nft" className={styles.link}>
+      <a
+        href="https://dfinity.org/showcase?tag=nft"
+        target={"_blank"}
+        className={styles.link}
+      >
         Explore more Metaverse projects <OutgoingLink></OutgoingLink>
       </a>
     ),
     credit: (
       <a
         href="https://dfinitycommunity.com"
+        target={"_blank"}
         className={clsx(styles.credit, styles.creditToneDown)}
       >
         © dfinitycommunity.com

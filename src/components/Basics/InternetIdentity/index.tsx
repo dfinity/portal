@@ -43,9 +43,14 @@ const InternetIdentity = () => {
             numerous scientific breakthroughs and countless advances in
             cryptoengineering.
           </motion.p>
-          <motion.button variants={transitions.item} className="button">
-            Create Your Internet Indentity
-          </motion.button>
+          <motion.a
+            className="button"
+            target={"_blank"}
+            variants={transitions.item}
+            href="https://identity.ic0.app/"
+          >
+            Create Your Internet Identity
+          </motion.a>
         </motion.div>
         <motion.div variants={transitions.container} className={styles.cards}>
           <motion.div variants={transitions.item} className={styles.card}>

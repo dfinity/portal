@@ -1,4 +1,3 @@
-import Link from "@docusaurus/Link";
 import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import { motion, useAnimation } from "framer-motion";
@@ -67,14 +66,15 @@ const Hero = () => {
           ecosystem, how you can share the success of the apps that you use, and
           how to own your data.
         </motion.p>
-        <motion.div variants={transitions.item}>
-          <Link
-            className="button button-white"
-            to="/docs/current/developer-docs/ic-overview"
-          >
-            Build real web3
-          </Link>
-        </motion.div>
+
+        <motion.a
+          variants={transitions.item}
+          className="button button-white"
+          href="/docs/current/developer-docs/ic-overview"
+          target={"_blank"}
+        >
+          Build real web3
+        </motion.a>
         <svg
           viewBox="0 0 917 830"
           fill="none"
