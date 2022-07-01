@@ -39,7 +39,7 @@ In this scenario, you might place all three files in the same directory and use 
 
 For example, the `main.mo` contains the following lines to reference the modules in the same directory:
 
-``` motoko
+``` motoko no-repl
 import Types "types";
 import Utils "utils";
 ```
@@ -54,7 +54,7 @@ You can also import modules from other packages or from directories other than t
 
 For example, the following lines import modules from a `redraw` package that is defined as a dependency:
 
-``` motoko
+``` motoko no-repl
 import Render "mo:redraw/Render";
 import Mono5x5 "mo:redraw/glyph/Mono5x5";
 ```
@@ -73,15 +73,11 @@ This module has two components, both named after the actor class:
 
 -   an asynchronous function, that takes the class parameters as arguments an asynchronously returns a fresh instance of the class.
 
-For example, a Motoko actor can import and instantiate the `Counter` class described in [Actors and async data](actors-async#actor_class) as follows:
+For example, a Motoko actor can import and instantiate the `Counter` class described in [Actors and async data](actors-async.md#actor-classes-generalize-actors) as follows:
 
-<div class="formalpara-title">
+`Counters.mo`:
 
-**Counters.mo**
-
-</div>
-
-``` motoko
+``` motoko name=Counters
 actor class Counter(init : Nat) {
   var count = init;
 
@@ -96,13 +92,9 @@ actor class Counter(init : Nat) {
 };
 ```
 
-<div class="formalpara-title">
+`CountToTen.mo`:
 
-**CountToTen.mo**
-
-</div>
-
-``` motoko
+``` motoko include=Counters
 import Counters "Counters";
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
@@ -123,13 +115,13 @@ The call to `Counters.Counter(1)` installs a fresh counter on the network. Insta
 
 The type annotation `: Counters.Counter` is redundant here. It’s included only to illustrate that the type of the actor class is available when required.
 
-## Importing from another canister
+## Importing from another canister smart contract
 
 In addition to the examples above that import Motoko modules, you can also import actors (and their shared functions) from canister smart constracts by using the `canister:` prefix in place of the `mo:` prefix.
 
 :::note
 
-Unlike a Motoko library, an imported canister can be implemented in any other IC language that emits Candid interfaces for its canisters (for instance Rust). It could even be an older or newer version of Motoko.
+Unlike a Motoko library, an imported canister can be implemented in any other Internet Computer language that emits Candid interfaces for its canister smart contracts (for instance Rust). It could even be an older or newer version of Motoko.
 
 :::
 
@@ -145,7 +137,7 @@ These three canisters are declared in the project’s `dfx.json` configuration f
 
 You can then use the following lines to import the `BigMap` and `Connectd` canisters as actors in the Motoko LinkedUp actor:
 
-``` motoko
+``` motoko no-repl
 import BigMap "canister:BigMap";
 import Connectd "canister:connectd";
 ```
@@ -164,7 +156,7 @@ Although the most common convention is to identify imported modules by the modul
 
 The following examples illustrate different names you might use when importing the `List` base library module, avoiding a clash with another `List` library from a fictional `collections` package.
 
-``` motoko
+``` motoko no-repl
 import List "mo:base/List:";
 import Sequence "mo:collections/List";
 import L "mo:base/List";

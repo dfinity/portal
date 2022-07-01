@@ -23,6 +23,11 @@ const cardsContent = [
     body: "Discuss with the community",
     link: "https://forum.dfinity.org/",
   },
+  {
+    title: "Bug bounty program",
+    body: "Report potential security vulnerabilities and get rewards",
+    link: "https://dfinity.org/bug-bounty/",
+  },
 ];
 
 function Card({ title, body }) {
@@ -80,8 +85,9 @@ function Index() {
             variants={transitions.item}
             href={card.link}
             className={styles.card}
+            key={card.title}
           >
-            <Card key={card.title} title={card.title} body={card.body} />
+            <Card title={card.title} body={card.body} />
           </motion.a>
         ))}
       </div>

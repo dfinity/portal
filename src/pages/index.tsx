@@ -8,7 +8,7 @@ import Dashboard from "@site/src/components/Dashboard";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
-import ICToken from "@site/src/components/ICToken";
+import ICPToken from "@site/src/components/ICPToken";
 import Showcase from "@site/src/components/Showcase";
 import StartBuilding from "@site/src/components/StartBuilding";
 import Foundation from "@site/src/components/Foundation";
@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
         <Features />
         <Showcase />
         <Foundation />
-        <ICToken />
+        <ICPToken />
         <StartBuilding />
         <SectionsBar />
       </main>

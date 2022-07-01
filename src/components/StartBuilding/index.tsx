@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@site/src/components/StartBuilding/index.module.css";
 import eventBG from "@site/static/img/startBuilding/event_background_image.png";
 import motokoBG from "@site/static/img/motokoPlayground.png";
@@ -37,8 +37,10 @@ function Event({ title, dateRange, link }) {
     <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
       <div className={styles.bodyContainer}>
         <p className={styles.eventDate}>{dateRange}</p>
-        {title.map((titleLine) => (
-          <p className={styles.eventTitle}>{titleLine}</p>
+        {title.map((titleLine, index) => (
+          <p key={index} className={styles.eventTitle}>
+            {titleLine}
+          </p>
         ))}
         <p className={styles.eventDescription}>
           Internet Computer Global Hackathon <br />
@@ -67,12 +69,29 @@ function MotokoPlayground({ title, body, link }) {
 }
 
 function StartBuilding() {
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
+
   return (
-    <div className={styles.main}>
+    <motion.div
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      variants={transitions.container}
+      className={styles.main}
+    >
       <a id="startBuilding" />
       <div className={styles.headerContainer}>
         <img src={BackgroundGradient} className={styles.BGGradient} alt="" />
-        <div className={styles.callToActionContainer}>
+        <motion.div
+          variants={transitions.item}
+          className={styles.callToActionContainer}
+        >
           <MotokoIcon
             className={clsx(styles.backgroundIcon, styles.motokoIcon)}
           />
@@ -100,9 +119,9 @@ function StartBuilding() {
           <Link className={styles.actionButton} to="/developers">
             BUILD REAL WEB3
           </Link>
-        </div>
+        </motion.div>
       </div>
-      <div className={styles.cards}>
+      <motion.div variants={transitions.item} className={styles.cards}>
         <Information
           title="Developer’s Home"
           body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
@@ -130,8 +149,8 @@ function StartBuilding() {
           body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
           link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

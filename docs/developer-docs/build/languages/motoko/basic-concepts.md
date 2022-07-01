@@ -2,7 +2,7 @@
 
 Motoko is designed for distributed programming with actors.
 
-When programming on the Internet Computer in Motoko, each **actor** represents an **IC canister** with a Candid interface, whether written in Motoko, Rust, Wasm or some other language that compiles to Wasm. Within Motoko, we use the term **actor** to refer to any canister, authored in any language that deploys to the IC. The role of Motoko is to make these actors easy to author, and easy to use programmatically, once deployed.
+When programming on the Internet Computer in Motoko, each **actor** represents an **Internet Computer canister smart contract** with a Candid interface, whether written in Motoko, Rust, Wasm or some other language that compiles to Wasm. Within Motoko, we use the term **actor** to refer to any canister, authored in any language that deploys to the Internet Computer. The role of Motoko is to make these actors easy to author, and easy to use programmatically, once deployed.
 
 Before you begin writing distributed applications using actors, you should be familiar with a few of the basic building blocks of any programming language and with Motoko in particular. To get you started, this section introduces the following key concepts and terms that are used throughout the remainder of the documentation and that are essential to learning to program in Motoko:
 
@@ -22,29 +22,31 @@ If you have experience programming in other languages or are familiar with moder
 
 The following topics are covered in the section:
 
--   [Motoko program syntax](#intro-progs)
+-   [Motoko program syntax](#motoko-program-syntax)
 
--   [Printing numbers and text](#intro-printing), and [using the base library](#intro-stdlib)
+-   [Printing values](#printing-values)
 
--   [Declarations versus expressions](#intro-decls-vs-exps)
+-   [Using the base library](#the-motoko-base-library)
 
--   [Lexical scoping of variables](#intro-lexical-scoping)
+-   [Declarations versus expressions](#declarations-versus-expressions)
 
--   [Values and evaluation](#intro-values)
+-   [Lexical scoping of variables](#declarations-follow-lexical-scoping)
 
--   [Type annotations variables](#intro-type-anno)
+-   [Values and evaluation](#values-and-evaluation)
 
--   [Type soundness and type-safe evaluation](#intro-type-soundness)
+-   [Type annotations and variables](#type-annotations-and-variables)
+
+-   [Type soundness and type-safe evaluation](#type-soundness)
 
 ## Motoko program syntax
 
-Each Motoko *program* is a free mix of declarations and expressions, whose syntactic classes are distinct, but related (see the [language quick reference guide](language-manual) for precise program syntax).
+Each Motoko *program* is a free mix of declarations and expressions, whose syntactic classes are distinct, but related (see the [language quick reference](language-manual.md) for precise program syntax).
 
-For programs that we deploy on the Internet Computer, a valid program consists of an *actor expression*, introduced with specific syntax (keyword `actor`) that we discuss in [Actors and async data](actors-async).
+For programs that we deploy on the Internet Computer, a valid program consists of an *actor expression*, introduced with specific syntax (keyword `actor`) that we discuss in [Actors and async data](actors-async.md).
 
-In preparing for that discussion, we discuss programs in this chapter and in [Mutable state](mutable-state) that are not meant to be Internet Computer services. Rather, these tiny programs illustrate snippets of Motoko for writing those services, and each can (usually) be run on its own as a (non-service) Motoko program, possibly with some printed terminal output.
+In preparing for that discussion, this section and Section [Mutable state](mutable-state.md) begin by discussing programs that are not meant to be Internet Computer services. Rather, these tiny programs illustrate snippets of Motoko for writing those services, and each can (usually) be run on its own as a (non-service) Motoko program, possibly with some printed terminal output.
 
-The examples in this section illustrate basic principles using simple expressions, such as arithmetic. For an overview of the full expression syntax of Motoko, see the [Language quick reference](language-manual).
+The examples in this section illustrate basic principles using simple expressions, such as arithmetic. For an overview of the full expression syntax of Motoko, see the [Language quick reference](language-manual.md).
 
 As a starting point, the following code snippet consists of two declarations — for the variables `x` and `y` — followed by an expression to form a single program:
 
@@ -76,7 +78,7 @@ For now, we use example programs that declare immutable variables, and compute s
 
 ### Declarations versus expressions
 
-[Recall](#intro-progs) that each Motoko *program* is a free mix of declarations and expressions, whose syntactic classes are distinct, but related. In this section, we use examples to illustrate their distinctions and accommodate their intermixing.
+[Recall](#motoko-program-syntax) that each Motoko *program* is a free mix of declarations and expressions, whose syntactic classes are distinct, but related. In this section, we use examples to illustrate their distinctions and accommodate their intermixing.
 
 Recall our example program, first introduced above:
 
@@ -162,6 +164,17 @@ This is also program, but one where the declared variables `x` and `y` are priva
 
 This block form preserves the autonomy of the declaration list and its *choice of variable names*.
 
+A block expression produces a value and, when enclosed in parentheses, can occur within some larger, compound expression. For example:
+
+``` motoko
+100 +
+  (do {
+     let x = 1;
+     let y = x + 1;
+     x * y + x
+   })
+```
+
 ### Declarations follow **lexical scoping**
 
 Above, we saw that nesting blocks preserves the autonomy of each separate declaration list and its *choice of variable names*. Language theorists call this idea *lexical scoping*. It means that variables' scopes may nest, but they may not interfere as they nest.
@@ -206,31 +219,35 @@ Motoko permits the following primitive value forms:
 
 By default, **integers** and **natural numbers** are *unbounded* and do not overflow. Instead, they use representations that grow to accommodate any finite number.
 
-For practical reasons, Motoko also includes *bounded* types for integers and natural numbers, distinct from the default versions. Each bounded variant has a fixed width (one of `8`, `16`, `32`, `64`) and each carries the potential for “overflow”. If and when this event occurs, it is an error and causes the [program to trap](#overview-traps). There are no unchecked, uncaught overflows in Motoko, except in well-defined situations, for explicitly *wrapping* operations (indicated by a `%` character in the operator). The language provides primitive built-ins to convert between these various number representations.
+For practical reasons, Motoko also includes *bounded* types for integers and natural numbers, distinct from the default versions. Each bounded variant has a fixed bit-width (one of `8`, `16`, `32`, `64`) that determines the range of representable values and each carries the potential for *overflow*. Exceeding a bound is a run-time fault that causes the program to [trap](#traps-due-to-faults).
 
-The [language quick reference](language-manual) contains a complete list of [primitive types](language-manual#primitive-types).
+There are no unchecked, uncaught overflows in Motoko, except in well-defined situations, for explicitly *wrapping* operations (indicated by a conventional `%` character in the operator). The language provides primitive built-ins to convert between these various number representations.
+
+The [language quick reference](language-manual.md) contains a complete list of [primitive types](language-manual.md#primitive-types).
 
 ### Non-primitive values
 
 Building on the primitive values and types above, the language permits user-defined types, and each of the following non-primitive value forms and associated types:
 
--   [Tuples](language-manual#exp-tuple), including the unit value (the "empty tuple")
+-   [Tuples](language-manual.md#tuples), including the unit value (the "empty tuple");
 
--   [Arrays](language-manual#exp-arrays), with both *immutable* and *mutable* variants.
+-   [Arrays](language-manual.md#arrays), with both *immutable* and *mutable* variants;
 
--   [Objects](language-manual#exp-object), with named, unordered fields and methods
+-   [Objects](language-manual.md#objects), with named, unordered fields and methods;
 
--   [Variants](language-manual#variant-types), with named constructors and optional payload values
+-   [Variants](language-manual.md#variant-types), with named constructors and optional payload values;
 
--   [Function values](language-manual#exp-func), including [shareable functions](sharing).
+-   [Function values](language-manual.md#functions), including [shareable functions](sharing.md);
 
--   [Async values](language-manual#exp-async), also known as *promises* or *futures*.
+-   [Async values](language-manual.md#async), also known as *promises* or *futures*;
 
--   [Error values](language-manual#type-Error) carry the payload of exceptions and system failures
+-   [Error values](language-manual.md#error-type) carry the payload of exceptions and system failures.
 
-We discuss the use of these forms in the succeeding chapters. For precise language definitions of primitive and non-primitive values, see the [language quick reference](language-manual#exp-error).
+We discuss the use of these forms in the next sections.
 
-### The **unit type** versus the `void` type
+For precise language definitions of primitive and non-primitive values, see the [language quick reference](language-manual.md).
+
+### The *unit* type `()`
 
 Motoko has no type named `void`. In many cases where readers may think of return types being “void” from using languages like Java or C++, we encourage them to think instead of the *unit type*, written `()`.
 
@@ -302,7 +319,7 @@ If we were to try to do something *inconsistent* with our annotation type, howev
 
 Consider this program, which is not well-typed:
 
-``` motoko
+``` motoko run
 let x : Text = 1 + 1
 ```
 
@@ -318,13 +335,13 @@ The error messages of the *type checker* attempt to help the developer when they
 
 These error messages will evolve over time, and for this reason, we will not include particular error messages in this text. Instead, we will attempt to explain each code example in its surrounding prose.
 
-### Using the Motoko base library
+### The Motoko base library
 
 For various practical language engineering reasons, the design of Motoko strives to minimize builtin types and operations.
 
 Instead, whenever possible, the Motoko base library provides the types and operations that make the language feel complete. ***However**, this base library is still under development, and is still incomplete*.
 
-The [Motoko Base Library](../../../../references/motoko-ref/stdlib-intro) lists a *selection* of modules from the Motoko base library, focusing on core features used in the examples that are unlikely to change radically. However, all of these base library APIs will certainly change over time (to varying degrees), and in particular, they will grow in size and number.
+The [Motoko Base Library](../../../../references/motoko-ref/stdlib-intro.md) lists a *selection* of modules from the Motoko base library, focusing on core features used in the examples that are unlikely to change radically. However, all of these base library APIs will certainly change over time (to varying degrees), and in particular, they will grow in size and number.
 
 To import from the base library, use the `import` keyword. Give a local module name to introduce, in this example `D` for “**D**ebug”, and a URL where the `import` declaration may locate the imported module:
 
@@ -335,17 +352,17 @@ D.print("hello world");
 
 In this case, we import Motoko code (not some other module form) with the `mo:` prefix. We specify the `base/` path, followed by the module’s file name `Debug.mo` minus its extension.
 
-### Printing using `Debug.print` and `debug_show`
+### Printing values
 
 Above, we print the text string using the function `print` in library `Debug.mo`:
 
-``` motoko
+``` motoko no-repl
 print: Text -> ()
 ```
 
 The function `print` accepts a text string (of type `Text`) as input, and produces the *unit value* (of *unit type*, or `()`) as its output.
 
-Because unit values carry no information, all values of type unit are identical, so the `print` function doesn’t actually produce an interesting result. Instead of a result, it has a *side effect*. The function `print` has the effect of emitting the text string in a human-readable form to the output terminal. Functions that have side effects, such as emitting output, or modifying state, are often called *impure*. Functions that just return values, without further side-effects, are called *pure*. We discuss the return value (the unit value) [in detail below](#intro-unit-type), and relate it to the `void` type for readers more familiar with that concept.
+Because unit values carry no information, all values of type unit are identical, so the `print` function doesn’t actually produce an interesting result. Instead of a result, it has a *side effect*. The function `print` has the effect of emitting the text string in a human-readable form to the output terminal. Functions that have side effects, such as emitting output, or modifying state, are often called *impure*. Functions that just return values, without further side-effects, are called *pure*. We discuss the return value (the unit value) [in detail below](#the-unit-type), and relate it to the `void` type for readers more familiar with that concept.
 
 Finally, we can transform most Motoko values into human-readable text strings for debugging purposes, *without* having to write those transformations by hand.
 
@@ -364,7 +381,7 @@ Using these text transformations, we can print most Motoko data as we experiment
 
 Sometimes, in the midst of writing a program, we want to run an incomplete version, or a version where one or more execution paths are either missing or simply invalid.
 
-To accommodate these situations, we use the `xxx`, `nyi` and `unreachable` functions from the base `Prelude` library, explained below. Each wraps a [general trap mechanism](#overview-traps), explained further below.
+To accommodate these situations, we use the `xxx`, `nyi` and `unreachable` functions from the base `Prelude` library, explained below. Each is a simple wrapper around a more general trap mechanism [general trap mechanism](#explicit-traps), explained further below.
 
 ### Use short-term holes
 
@@ -372,13 +389,13 @@ Short-term holes are never committed to a source repository, and only ever exist
 
 Assuming that earlier, one has imported the prelude as follows:
 
-``` motoko
+``` motoko name=prelude
 import P "mo:base/Prelude";
 ```
 
 The developer can fill *any missing expression* with the following one:
 
-``` motoko
+``` motoko include=prelude
 P.xxx()
 ```
 
@@ -388,7 +405,7 @@ The result will *always* type check at compile time, and *will always* trap at r
 
 By convention, longer-term holes can be considered "not yet implemented" (`nyi`) features, and marked as such with a similar function from the Prelude module:
 
-``` motoko
+``` motoko include=prelude
 P.nyi()
 ```
 
@@ -398,15 +415,15 @@ In contrast to the situations above, sometimes code will *never* be filled, sinc
 
 To document a code path as logically impossible, or *unreachable*, use the base library function `unreachable`:
 
-``` motoko
+``` motoko include=prelude
 P.unreachable()
 ```
 
 As in the situations above, this function type-checks in all contexts, and when evaluated, traps in all contexts.
 
-### Traps due to execution failure
+### Traps due to faults
 
-Some errors, such as division by zero, out-of-bounds array indexing, and pattern match failure are not prevented by the type system, but can cause dynamic failures called *traps*.
+Some errors, such as division by zero, out-of-bounds array indexing, and pattern match failure are (by design) not prevented by the type system, but instead cause dynamic faults called *traps*.
 
 ``` motoko
 1/0; // traps due to division by 0
@@ -423,7 +440,7 @@ let true = false; // pattern match failure
 
 We say that code *traps* when its exection causes a *trap*.
 
-Execution of code is aborted at the first trap and makes no further progress.
+Because the meaning of execution is ill-defined after a faulting trap, execution of the code ends by aborting at the trap.
 
 :::note
 

@@ -12,13 +12,11 @@ There are three primary ways to represent and handle errors values in Motoko:
 
 Let’s assume we’re building an API for a Todo application and want to expose a function that lets a user mark one of their Todo’s as **Done**. To keep it simple we’ll accept a `TodoId` and return an `Int` that represents how many seconds the Todo has been open. We’re also assuming we’re running in our own actor so we return an async value. If nothing would ever go wrong that would leave us with the following API:
 
-``` motoko
+``` motoko no-repl
 func markDone(id : TodoId) : async Int
 ```
 
 The full definition of all types and helpers we’ll use in this document is included for reference:
-
-<div class="informalexample">
 
 ``` motoko
 import Int "mo:base/Int";
@@ -58,8 +56,6 @@ public shared func newTodo(txt : Text) : async TodoId {
   id
 };
 ```
-
-</div>
 
 ## When things go wrong
 
@@ -210,7 +206,7 @@ And as we can see we can now give the user a useful error message.
 
 ### Pattern matching
 
-The first and most common way of working with `Option` and `Result` is to use 'pattern matching'. If we have a value of type `?Text` we can use the 'switch' keyword to access the potential `Text` contents:
+The first and most common way of working with `Option` and `Result` is to use 'pattern matching'. If we have a value of type `?Text` we can use the `switch` keyword to access the potential `Text` contents:
 
 ``` motoko
 func greetOptional(optionalName : ?Text) : Text {
