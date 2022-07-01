@@ -1,75 +1,101 @@
 .heading {
-  text-align: center;
-  background: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  max-width: 660px;
-  margin: 160px auto 200px;
+    text-align: center;
+    background: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    max-width: 660px;
+    margin: 160px auto 200px;
 }
 
 .content h3 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .content p {
-  color: rgba(24, 24, 24, 0.6);
-  margin: 0;
+    color: rgba(24, 24, 24, 0.6);
+    margin: 0;
 }
 
 .copy {
-  width: 25%;
-  margin-left: calc(1 / 12 * 100%);
-  margin-bottom: 80px;
+    width: 25%;
+    margin-left: calc(1 / 12 * 100%);
+    margin-bottom: 64px;
 }
 
 .illustration {
-  position: absolute;
-  right: -400px;
-  bottom: -500px;
-  width: 1100px;
+    position: absolute;
+    left: 567px;
+    bottom: Max(-39vw, -756px);
+    width: Min(76vw, 1476px);
+}
+
+.illustrationCTA {
+    position: absolute;
+    z-index: 100;
+    left: 3.5%;
+    top: 23%;
+    padding: 8px 24px;
+    background: linear-gradient(108.55deg, #3B00B9 0%, #18D0B5 149.76%);
+    backdrop-filter: blur(40px);
+    border-radius: 100px;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.illustrationCTA:hover {
+    color: white;
 }
 
 .outerWrapper {
-  overflow: hidden;
-  background-color: white;
+    overflow: hidden;
+    background-color: white;
 }
 
 .container {
-  max-width: 1340px;
-  margin: 0 auto;
-  padding: 0 24px;
-  position: relative;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
 }
 
 @media (max-width: 1300px) {
-  .illustration {
-    right: -200px;
-    bottom: -350px;
-    width: 800px;
-  }
-  .copy {
-    margin-left: 0;
-    width: 40%;
-  }
+    .illustration {
+        bottom: -420px;
+        width: 800px;
+    }
+
+    .copy {
+        margin-left: 0;
+        width: 40%;
+    }
 }
 
 @media (max-width: 996px) {
-  .copy {
-    margin-left: 0;
-    width: auto;
-    padding-bottom: 30vw;
-  }
-  .illustration {
-    width: 120vw;
-    right: -30%;
-    bottom: -60vw;
-  }
+    .copy {
+        margin-left: 0;
+        width: auto;
+        padding-bottom: 30vw;
+    }
 
-  .heading {
-    margin: 80px auto 100px;
-    font-size: 32px;
-    line-height: 42px;
-  }
+    .illustration {
+        width: 120vw;
+        left: 10%;
+        bottom: -63vw;
+    }
+
+    .illustrationCTA {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .heading {
+        margin: 80px auto 100px;
+        font-size: 32px;
+        line-height: 42px;
+    }
+
 }

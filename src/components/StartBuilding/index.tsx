@@ -37,8 +37,10 @@ function Event({ title, dateRange, link }) {
     <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
       <div className={styles.bodyContainer}>
         <p className={styles.eventDate}>{dateRange}</p>
-        {title.map((titleLine) => (
-          <p className={styles.eventTitle}>{titleLine}</p>
+        {title.map((titleLine, index) => (
+          <p key={index} className={styles.eventTitle}>
+            {titleLine}
+          </p>
         ))}
         <p className={styles.eventDescription}>
           Internet Computer Global Hackathon <br />

@@ -149,13 +149,9 @@ function Dapp({ dappInfo }) {
         <div className={styles.dappInformation}>
           <div className={styles.dappName}>{dappInfo.name}</div>
           <div className={styles.dappStats}>{dappInfo.stats}</div>
-          <a
-            className={styles.dappWebsite}
-            target={"_blank"}
-            href={dappInfo.website}
-          >
+          <p className={styles.dappWebsite}>
             {cleanWebsiteURL(dappInfo.website)}
-          </a>
+          </p>
         </div>
       </div>
       <div className={styles.dappMedia} style={{ background: backgroundColor }}>
@@ -278,8 +274,8 @@ function Showcase() {
             className={styles.cardContainer}
           >
             {firstDapps.map((dapp) => (
-              <div className={styles.cardWrapper}>
-                <Dapp key={dapp.name} dappInfo={dapp} />
+              <div key={dapp.name} className={styles.cardWrapper}>
+                <Dapp dappInfo={dapp} />
               </div>
             ))}
           </motion.div>
