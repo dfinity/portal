@@ -64,7 +64,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. You can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
 
     FROM ubuntu:22.04
 
