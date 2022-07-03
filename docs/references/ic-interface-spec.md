@@ -2,11 +2,6 @@ import Changelog from './_attachments/interface-spec-changelog.md';
 
 # The Internet Computer Interface Specification {#_the_internet_computer_interface_specification}
 
-
-:::note
-You are looking at the `master` version of the document! If you are looking for implementation specification or documentation, look at one of the versions at <https://docs.dfinity.systems/public/v/>.
-:::
-
 ## Introduction {#_introduction}
 
 Welcome to *the Internet Computer*! We speak of "the" Internet Computer, because although under the hood a large number of physical computers are working together in a blockchain protocol, in the end we have the appearance of a single, shared, secure and world-wide accessible computer. Developers who want to build decentralized applications (or *dapps* for short) that run on the Internet Computer blockchain and end-users who want to use those dapps need to know very little, if anything, about the underlying protocol. However, knowing some details about the interfaces that the Internet Computer exposes can allow interested developers and architects to take fuller advantages of the unique features that the Internet Computer provides.
@@ -40,9 +35,9 @@ This document tries to be implementation agnostic: It would apply just as well t
 
 ### Overview of the Internet Computer {#_overview_of_the_internet_computer}
 
-Dapps on the Internet Computer, or *IC* for short, are implemented as *canisters*. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#https-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
+Dapps on the Internet Computer, or *IC* for short, are implemented as *canister smart contracts*, or *canisters* for short. If you want to build on the Internet Computer as a dapp developer, you first create a *canister module* that contains the WebAssembly code and configuration for your dapp, and deploy it using the [HTTPS interface](#http-interface). You can create canister modules using the Motoko language and the SDK, which is more convenient. If you want to use your own tooling, however, then this document describes [what a canister module looks like](#canister-module-format) and how the [WebAssembly code can interact with the IC](#system-api).
 
-Once your dapp is running on the Internet Computer, it is a canister, and users can interact with it. They can use the [HTTPS interface](#https-interface) to interact with the canister according to the [System API](#system-api).
+Once your dapp is running on the Internet Computer, it is a canister smart contract, and users can interact with it. They can use the [HTTPS interface](#http-interface) to interact with the canister according to the [System API](#system-api).
 
 The user can also use the HTTPS interface to issue read-only queries, which are faster, but cannot change the state of a canister.
 
@@ -217,7 +212,7 @@ If an empty canister receives a response, that response is dropped, as if the ca
 
 #### Canister cycles
 
-The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2\^128-1, then the balance will be capped at 2\^128-1 and any additional cycles will be lost.
+The IC relies on *cycles*, a utility token, to manage its resources. A canister pays for the resources it uses from its *cycle balance*. The *cycle_balance* is stored as 128-bit unsigned integers and operations on them are saturating. In particular, if *cycles* are added to a canister that would bring its total balance beyond 2^128-1, then the balance will be capped at 2^128-1 and any additional cycles will be lost.
 
 When the cycle balance of a canister falls to zero, the canister is *deallocated*. This has the same effect as
 
@@ -669,8 +664,6 @@ Signing transactions can be delegated from one key to another one. If delegation
     -   `expiration` (`nat`): Expiration of the delegation, in nanoseconds since 1970-01-01, analogously to the `ingress_expiry` field above.
 
     -   `targets` (`array` of `CanisterId`, optional): If this field is set, the delegation only applies for requests sent to the canisters in the list.
-
-    -   `senders` (`array` of `Principal`, optional): If this field is set, the delegation only applies for requests originating from the principals in the list.
 
 -   `signature` (`blob`): Signature on the 32-byte [representation-independent hash](#hash-of-map) of the map contained in the `delegation` field as described in [Signatures](#signatures), using the 27 bytes `\x1Aic-request-auth-delegation` as the domain separator.
 
@@ -1378,15 +1371,15 @@ The stable memory is initially empty.
 
     returns the current size of the stable memory in WebAssembly pages. (One WebAssembly page is 64KiB)
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
 -   `ic0.stable_grow : (new_pages : i32) → (old_page_count : i32)`
 
     tries to grow the memory by `new_pages` many pages containing zeroes.
 
-    This system call traps if the *previous* size of the memory exceeds 2\^32 bytes.
+    This system call traps if the *previous* size of the memory exceeds 2^32 bytes.
 
-    If the *new* size of the memory exceeds 2\^32 bytes or growing is unsuccessful, then it returns `-1`.
+    If the *new* size of the memory exceeds 2^32 bytes or growing is unsuccessful, then it returns `-1`.
 
     Otherwise, it grows the memory and returns the *previous* size of the memory in pages.
 
@@ -1394,7 +1387,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `src`/`size` out of the canister and replaces the corresponding segment starting at `offset` in the stable memory.
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
     It also traps if `src+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
 
@@ -1402,7 +1395,7 @@ The stable memory is initially empty.
 
     copies the data referred to by `offset`/`size` out of the stable memory and replaces the corresponding bytes starting at `dest` in the canister memory.
 
-    This system call traps if the size of the stable memory exceeds 2\^32 bytes.
+    This system call traps if the size of the stable memory exceeds 2^32 bytes.
 
     It also traps if `dst+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory
 
@@ -1453,22 +1446,6 @@ The times observed by different canisters are unrelated, and calls from one cani
 :::note
 While an implementation will likely try to keep the time returned by `ic0.time` close to the real time, this is not formally part of this specification.
 :::
-
-### Performance counter {#system-api-performance-counter}
-
-The canister can query the \"performance counter\", which is a deterministic monotonically increasing integer approximating the amount of work the canister has done since the beginning of the current execution.
-
-`ic0.performance_counter : (type : i32) -> i64`
-
-The argument `type` decides which performance counter to return:
-
--   0 : instruction counter. The number of WebAssembly instructions the system has determined that the canister has executed.
-
-In the future, we might expose more performance counters.
-
-The system resets the counter at the beginning of each [Entry points](#entry-points) invocation.
-
-The main purpose of this counter is to facilitate in-canister performance profiling.
 
 ### Certified data {#system-api-certified-data}
 
@@ -1675,6 +1652,10 @@ This method takes no input and returns 32 pseudo-random bytes to the caller. The
 
 ### IC method `ecdsa_public_key` {#ic-ecdsa_public_key}
 
+:::note
+The ECDSA API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+:::
+
 This method returns a [SEC1](https://www.secg.org/sec1-v2.pdf) encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.
 
 For curve `secp256k1`, the public key is derived using a generalization of BIP32 (see [ia.cr/2021/1330, Appendix D](https://ia.cr/2021/1330)). To derive (non-hardened) [BIP-0032](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)-compatible public keys, each byte string (`blob`) in the `derivation_path` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31^.
@@ -1685,49 +1666,16 @@ This call requires that the ECDSA feature is enabled, and the `canister_id` meet
 
 ### IC method `sign_with_ecdsa` {#ic-sign_with_ecdsa}
 
+:::note
+The ECDSA API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+:::
+
 This method returns a new [ECDSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.
 
 The signatures are encoded as the concatenation of the [SEC1](https://www.secg.org/sec2-v2.pdf) encodings of the two values r and s. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.
 
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
-### IC method `http_request` {#ic-http_request}
-
-This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
-
-The canister should aim to issue *idempotent* requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
-
-The responses for all identical requests must match too. However, a web service could return slightly different responses for identical idempotent requests. For example, it may include some unique identification or a timestamp that would vary across responses.
-
-For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
-
-Currently, only the `GET` method is supported for HTTP requests.
-
-For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
-
-The maximal size of a request URL is 2048 bytes.
-
-The maximal size of a response is `2MiB`. Therefore, only the first `2MiB` will be returned if a response is larger than this size. This size limit also applies to the value returned by the `transform` function.
-
-The following parameters should be supplied for the call:
-
--   `url` - the requested URL
-
--   `method` - currently, only GET is supported
-
--   `headers` - list of HTTP request headers and their corresponding values
-
--   `transform` - an optional function that transforms raw responses to sanitized responses. If provided, the calling canister itself must export this function.
-
-The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
-
--   `status` - the response status (e.g., 200, 404)
-
--   `headers` - list of HTTP response headers and their corresponding values
-
--   `body` - the response's body
-
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller's identity is the principal of the management canister.
 
 ### IC method `provisional_create_canister_with_cycles` {#ic-provisional_create_canister_with_cycles}
 
@@ -1746,6 +1694,78 @@ Cycles added to this call via `ic0.call_cycles_add128` are returned to the calle
 Any user can top-up any canister this way.
 
 This method is only available in local development instances.
+
+## The IC Bitcoin API {#ic-bitcoin-api}
+
+:::note
+The IC Bitcoin API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+:::
+
+The Bitcoin functionality is exposed via the management canister. Information about Bitcoin can be found in the [Bitcoin developer guides](https://developer.bitcoin.org/devguide/). Invoking the functions of the Bitcoin API will cost cycles. The concrete costs for each function are yet to be determined.
+
+### IC method `bitcoin_get_utxos` {#ic-bitcoin_get_utxos}
+
+Given a `get_utxos_request`, which must specify a Bitcoin address and a Bitcoin network (`mainnet` or `testnet`), the function returns all unspent transaction outputs (UTXOs) associated with the provided address in the specified Bitcoin network based on the current view of the Bitcoin blockchain available to the Bitcoin component. The UTXOs are returned sorted by block height in descending order.
+
+The following address formats are supported:
+
+-   Pay to public key hash (P2PKH)
+
+-   Pay to script hash (P2SH)
+
+-   Pay to witness public key hash (P2WPKH)
+
+-   Pay to witness script hash (P2WSH)
+
+-   Pay to taproot (P2TR)
+
+If the address is malformed, the call is rejected.
+
+The optional `filter` parameter can be used to restrict the set of returned UTXOs, either providing a minimum number of confirmations or a page reference when pagination is used for addresses with many UTXOs. In the first case, only UTXOs with at least the provided number of confirmations are returned, i.e., transactions with fewer than this number of confirmations are not considered. In other words, if the number of confirmations is `c`, an output is returned if it occurred in a transaction with at least `c` confirmations and there is no transaction that spends the same output with at least `c` confirmations.
+
+There is an upper bound of 144 on the minimum number of confirmations. If a larger minimum number of confirmations is specified, the call is rejected. Note that this is not a severe restriction as the minimum number of confirmations is typically set to a value around 6 in practice.
+
+It is important to note that the validity of transactions is not verified in the Bitcoin component. The Bitcoin component relies on the proof of work that goes into the blocks and the verification of the blocks in the Bitcoin network. For a newly discovered block, a regular Bitcoin (full) node therefore provides a higher level of security than the Bitcoin component, which implies that it is advisable to set the number of confirmations to a reasonably large value, such as 6, to gain confidence in the correctness of the returned UTXOs.
+
+There is an upper bound of 100,000 UTXOs that can be returned in a single request. For addresses that contain sufficiently large UTXOs, the partial set of the address\' UTXOs are returned along with a page reference.
+
+In the second case, a page reference (a series of bytes) must be provided, which instructs the Bitcoin component to collect UTXOs starting from the corresponding \"page\".
+
+A `get_utxos_request` without the optional `filter` results in a request that considers the full blockchain, which is equivalent to setting `min_confirmations` to 0.
+
+The recommended workflow is to issue a request with the desired number of confirmations. If the `next_page` field in the response is not empty, there are more UTXOs than in the returned vector. In that case, the `page` field should be set to the `next_page` bytes in the subsequent request to obtain the next batch of UTXOs.
+
+### IC method `bitcoin_get_balance` {#ic-bitcoin_get_balance}
+
+Given a `get_balance_request`, which must specify a Bitcoin address and a Bitcoin network (`mainnet` or `testnet`), the function returns the current balance of this address in `Satoshi` (10\^8 Satoshi = 1 Bitcoin) in the specified Bitcoin network. The same address formats as for [`bitcoin_get_utxos`](#ic-bitcoin_get_utxos) are supported.
+
+If the address is malformed, the call is rejected.
+
+The optional `min_confirmations` parameter can be used to limit the set of considered UTXOs for the calculation of the balance to those with at least the provided number of confirmations in the same manner as for the [`bitcoin_get_utxos`](#ic-bitcoin_get_utxos) call.
+
+Given an address and the optional `min_confirmations` parameter, `bitcoin_get_balance` iterates over all UTXOs, i.e., the same balance is returned as when calling [`bitcoin_get_utxos`](#ic-bitcoin_get_utxos) for the same address and the same number of confirmations and, if necessary, using pagination to get all UTXOs for the same tip hash.
+
+### IC method `bitcoin_send_transaction` {#ic-bitcoin_send_transaction}
+
+Given a `send_transaction_request`, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (`mainnet` or `testnet`), several checks are performed:
+
+-   The transaction is well formed.
+
+-   The transaction only consumes unspent outputs with respect to the current (longest) blockchain, i.e., there is no block on the (longest) chain that consumes any of these outputs.
+
+-   There is a positive transaction fee.
+
+If at least one of these checks fails, the call is rejected.
+
+If the transaction passes these tests, the transaction is forwarded to the specified Bitcoin network.
+
+The Bitcoin component periodically forwards the transaction until the transaction appears in a block appended to the blockchain or the transaction times out after 24 hours. As soon as it appears in a block or expires, the Bitcoin component drops the transaction. It follows that the function does not provide any guarantees that a submitted transaction will ever appear in a block.
+
+### IC method `bitcoin_get_current_fee_percentiles` {#ic-bitcoin_get_current_fee_percentiles}
+
+The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.
+
+This function returns the 100 fee percentiles, measured in millisatoshi/byte (10\^3 millisatoshi = 1 satoshi), over the last 10,000 transactions in the specified network, i.e., over the transactions in the last approximately 4-10 blocks.
 
 ## Certification
 
@@ -1973,146 +1993,6 @@ In the pruned tree, the `lookup_path` function behaves as follows:
     lookup_path(["d"],      pruned_tree) = Found "morning"
     lookup_path(["e"],      pruned_tree) = Absent
 
-## The HTTP Gateway protocol {#http-gateway}
-
-This section specifies the *HTTP Gateway protocol*, which allows canisters to handle conventional HTTP requests.
-
-This feature involves the help of a *HTTP Gateway* that translates between HTTP requests and the IC protocol. Such a gateway could be a stand-alone proxy, it could be implemented in a web browsers (natively, via plugin or via a service worker) or in other ways. This document describes the interface and semantics of this protocol independent of a concrete Gateway, so that all Gateway implementations can be compatible.
-
-Conceptually, this protocol builds on top of the interface specified in the remainder of this document, and therefore is an "application-level" interface, not a feature of the core Internet Computer system described in the other sections, and could be a separate document. We nevertheless include this protocol in the Internet Computer Interface Specification because of its important role in the ecosystem and due to the importance of keeping multiple Gateway implementations in sync.
-
-### Overview {#_overview}
-
-A HTTP request by an HTTP client is handled by these steps:
-
-1.  The Gateway resolves the Host of the request to a canister id.
-
-2.  The Gateway Candid-encodes the HTTP request data.
-
-3.  The Gateway invokes the canister via a query call to `http_request`.
-
-4.  The canister handles the request and returns a HTTP response, encoded in Candid, together with additional metadata.
-
-5.  If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
-
-6.  If applicable, the Gateway fetches further body data via streaming query calls.
-
-7.  If applicable, the Gateway validates the certificate of the response.
-
-8.  The Gateway sends the response to the HTTP client.
-
-### Candid interface {#http-gateway-interface}
-
-The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the expected Canister interface. You can also [download the file](_attachments/http-gateway.did).
-
-Only canisters that use the "Upgrade to update calls" feature need to provide the `http_request_update` method.
-
-:::note
-Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
-:::
-
-### Canister resolution {#http-gateway-name-resolution}
-
-The Gateway needs to know the canister id of the canister to talk to, and obtains that information from the hostname as follows:
-
-1.  Check that the hostname, taken from the `Host` field of the HTTP request, is of the form `<name>.raw.ic0.app` or `<name>.ic0.app`, or fail.
-
-2.  If the `<name>` is in the following table, use the given canister ids:
-
-| Hostname                          | Canister id                     |
-------------------------------------|---------------------------------|
-| `identity`                        | `rdmx6-jaaaa-aaaaa-aaadq-cai`   |
-| `nns`                             | `qoctq-giaaa-aaaaa-aaaea-cai`   |
-| `dscvr`                           | `h5aet-waaaa-aaaab-qaamq-cai`   |
-| `personhood`                      | `g3wsl-eqaaa-aaaan-aaaaa-cai`   |
-
-1.  Else, if `<name>` is a valid textual encoding of a principal, use that principal as the canister id.
-
-2.  Else fail.
-
-If the hostname was of the form `<name>.ic0.app`, it is a *safe* hostname; if it was of the form `<name>.raw.ic0.app` it is a *raw* hostname.
-
-### Request encoding {#_request_encoding}
-
-The HTTP request is encoded into the `HttpRequest` Candid structure.
-
--   The `method` field contains the HTTP method (e.g. `HTTP`), in upper case.
-
--   The `url` field contains the URL from the HTTP request line, i.e. without protocol or hostname, and including query parameters.
-
--   The `headers` field contains the headers of the HTTP request.
-
--   The `body` field contains the body of the HTTP request (without any content encodings processed by the Gateway).
-
-### Upgrade to update calls {#_upgrade_to_update_calls}
-
-If the canister sets `update = opt true` in the `HttpResponse` reply from `http_request`, then the Gateway ignores all other fields of the reply. The Gateway performs an *update* call to `http_request_update`, passing the same `HttpRequest` record as the argument, and uses that response instead.
-
-The value of the `update` field returned from `http_request_update` is ignored.
-
-### Response decoding {#_response_decoding}
-
-The Gateway assembles the HTTP response from the given `HttpResponse` record:
-
--   The HTTP response status code is taken from the `status_code` field.
-
--   The HTTP response headers are taken from the `headers` field.
-
-    :::note
-    Not all Gateway implementations may be able to pass on all forms of headers. In particular, Service Workers are unable to pass on the `Set-Cookie` header.
-    :::
-
-    :::note
-    HTTP Gateways may add additional headers. In particular, the following headers may be set:
-
-        access-control-allow-origin: *
-        access-control-allow-methods: GET, POST, HEAD, OPTIONS
-        access-control-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Cookie
-        access-control-expose-headers: Content-Length,Content-Range
-        x-cache-status: MISS
-    :::
-
--   The HTTP response body is initialized with the value of the `body` field, and further assembled as per the [streaming protocol](#http-gateway-streaming).
-
-### Response body streaming {#http-gateway-streaming}
-
-The HTTP Gateway protocol has provisions to transfer further chunks of the body data from the canister to the HTTP Gateway, to overcome the message limit of the Internet Computer. This streaming protocol is independent of any possible streaming of data between the HTTP Gateway and the HTTP client. The gateway may assemble the response in whole before passing it on, or pass the chunks on directly, on the TCP or HTTP level, as it sees fit. When the Gateway is [certifying the response](#http-gateway-certification), it must not pass on uncertified chunks.
-
-If the `streaming_strategy` field of the `HttpResponse` is set, the HTTP Gateway then uses further query calls to obtain further chunks to append to the body:
-
-1.  If the function reference in the `callback` field of the `streaming_strategy` is not a method of the given canister, the Gateway fails the request.
-
-2.  Else, it makes a query call to the given method, passing the `token` value given in the `streaming_strategy` as the argument.
-
-3.  That query method returns a `StreamingCallbackHttpResponse`. The `body` therein is appended to the body of the HTTP response. This is repeated as long as the method returns some token in the `token` field, until that field is `null`.
-
-:::note
-The type of the `token` value is chosen by the canister; the HTTP Gateway obtains the Candid type of the encoded message from the canister, and uses it when passing the token back to the canister. This generic use of Candid is not covered by the Candid specification, and may not be possible in some cases (e.g. when using "future types"). Canister authors may have to use "simple" types.
-:::
-
-### Response certification {#http-gateway-certification}
-
-If the hostname was safe, the HTTP Gateway performs *certificate validation*:
-
-1.  It searches for a response header called `Ic-Certificate` (case-insensitive).
-
-2.  The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
-
-3.  The `certificate` must be a valid certificate as per [Certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister's [certified data](#state-tree-certified-data).
-
-4.  The `tree` must be a hash tree as per [Encoding of certificates](#certification-encoding).
-
-5.  The root hash of that `tree` must match the canister's certified data.
-
-6.  The path `["http_assets",<url>]`, where `url` is the utf8-encoded `url` from the `HttpRequest` must exist and be a leaf. Else, if it does not exist, `["http_assets","/index.html"]` must exist and be a leaf.
-
-7.  That leaf must contain the SHA-256 hash of the *decoded* body.
-
-    The decoded body is the body of the HTTP response (in particular, after assembling streaming chunks), decoded according to the `Content-Encoding` header, if present. Supported encodings for `Content-Encoding` are `gzip` and `deflate.`
-
-:::note
-The certification protocol only covers the mapping from request URL to response body. It completely ignores the request method and headers, and does not cover the response headers and status code.
-:::
 
 ## Abstract behavior
 
@@ -2382,7 +2262,6 @@ Signed delegations contain the (unsigned) delegation data in a nested record, ne
       delegation : {
         pubkey : PublicKey;
         targets : [CanisterId] | Unrestricted;
-        senders : [Principal] | Unrestricted;
         expiration : Timestamp
       };
       signature : Signature
@@ -2483,28 +2362,22 @@ that represents Candid encoding; this is implicitly taking the method types, as 
 The following predicate describes when an envelope `E` correctly signs the enclosed request with a key belonging to a user `U`, at time `T`: It returns which canister ids this envelope may be used at (as a set of principals).
 
     verify_envelope({ content = C }, U, T)
-      = { p : p is CanisterID } if U = anonymous_id
+      = { p : p is PrincipalId } if U = anonymous_id
     verify_envelope({ content = C, sender_pubkey = PK, sender_sig = Sig, sender_delegation = DS}, U, T)
       = TS if U = mk_self_authenticating_id E.sender_pubkey
-      ∧ (PK', TS) = verify_delegations(DS, PK, T, { p : p is CanisterId }, U)
-      ∧ verify_signature PK' Sig ("\x0Aic-request" · hash_of_map(C))
+      ∧ (PK', TS) = verify_delegations(DS, PK, T, { p : p is PrincipalId })
+      ∧ verify_signature ("\x0Aic-request" · hash_of_map(C), PK')
 
-    verify_delegations([], PK, T, TS, U) = (PK, TS)
-    verify_delegations([D] · DS, PK, T, TS, U)
-      = verify_delegations(DS, D.pubkey, T, TS ∩ delegation_targets(D), U)
+    verify_delegations([], PK, T, TS) = (PK, TS)
+    verify_delegations([D] · DS, PK, T, TS)
+      = verify_delegations(C, DS, D.pubkey, T, TS ∩ delegation_targets(DS))
       if verify_signature PK D.signature ("\x1Aic-request-auth-delegation" · hash_of_map(D.delegation))
        ∧ D.delegation.expiration ≥ T
-       ∧ U ∈ delegated_senders(D)
 
-    delegation_targets(D)
+    delegation_targets(DS)
       = if D.targets = Unrestricted
-        then { p : p is CanisterId }
+        then { p : p is PrincipalId }
         else D.targets
-
-    delegated_senders(D)
-      = if D.senders = Unrestricted
-        then { p : p is Principal }
-        else D.senders
 
 #### Effective canister ids {#_effective_canister_ids}
 
@@ -2844,26 +2717,15 @@ If message execution [*returns* (in the sense of a Wasm function)](#define-wasm-
 
 Note that returning does *not* imply that the call associated with this message now *succeeds* in the sense defined in [section responding](#responding); that would require a (unique) call to `ic0.reply`. Note also that the state changes are persisted even when the IC is set to synthesize a [CANISTER_ERROR](#CANISTER_ERROR) reject immediately afterward (which happens when this returns without calling `ic0.reply` or `ic0.reject`, the corresponding call has not been responded to and there are no outstanding callbacks, see [Call context starvation](#rule-starvation)).
 
-The functions `query_as_update` and `heartbeat_as_update` turns a query function resp the heartbeat into an update function; this is merely a notational trick to simplify the rule:
+The function `as_update` turns a query function into an update function, this is merely a notational trick to simplify the rule
 
-    query_as_update(f, arg, env) = λ wasm_state →
+    as_update(f, arg, env) = λ wasm_state →
       match f(arg, env)(wasm_state) with
         Trap → Trap
         Return res → Return {
           new_state = wasm_state;
           new_calls = [];
           response = res;
-          cycles_accepted = 0;
-          new_certified_data = NoCertifiedData;
-        }
-
-    heartbeat_as_update(f, env) = λ wasm_state →
-      match f(env)(wasm_state) with
-        Trap → Trap
-        Return wasm_state → Return {
-          new_state = wasm_state;
-          new_calls = [];
-          response = NoResponse;
           cycles_accepted = 0;
           new_certified_data = NoCertifiedData;
         }
@@ -3029,8 +2891,6 @@ S with
 The controllers of a canister can obtain information about the canister.
 
 The `Memory_size` is the (in this specification underspecified) total size of storage in bytes.
-
-The `idle_cycles_burned_per_second` is the idle consumption of resources in cycles per second. Therefore, the freezing threshold in cycles can be obtained using the following formula: `freezing_threshold` (in seconds) \* `idle_cycles_burned_per_second`.
 
 Conditions
 

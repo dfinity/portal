@@ -210,7 +210,7 @@ To validate your cycles wallet:
 
     The command returns the balance for the your cycles wallet. For example:
 
-        15430122328028812 cycles.
+        15430.122 TC (trillion cycles).
 
     You can also access your default cycles wallet in a web browser by using a URL similar to the following:
 
@@ -366,4 +366,4 @@ Here are some suggestions for where to go next:
 
 -   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../build/languages/motoko/motoko-at-a-glance) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.

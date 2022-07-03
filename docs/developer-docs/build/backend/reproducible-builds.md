@@ -97,7 +97,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
     RUN cargo install ic-cdk-optimizer
 
     # Install dfx; the version is picked up from the DFX_VERSION environment variable
-    ENV DFX_VERSION=0.10.0
+    ENV DFX_VERSION=0.10.1
     RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     COPY . /canister
