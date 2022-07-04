@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import { AnimatePresence, motion, useAnimation, useCycle } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import BackgroundGradient from "@site/static/img/bgGradient.png";
 
 const textCycling = {
   enter: { y: 30, opacity: 0 },

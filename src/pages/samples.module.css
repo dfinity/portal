@@ -6,22 +6,18 @@
 }
 
 .container {
-    width: Min(1340px, 95%);
+    width: Min(1340px, 90%);
     margin: 120px auto;
+    position: relative;
 }
 
 .BGShape {
     z-index: -1000;
     position: absolute;
-    -webkit-filter: blur(150px);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
     color: #3B00B9;
-    top: 50px;
-    right: -150px;
-    width: 500px;
+    top: -350px;
+    right: -800px;
+    width: 1500px;
 }
 
 .cards {
@@ -63,8 +59,8 @@
     }
 
     .BGShape {
-        right: -100px;
-        top: 300px;
-        width: 300px;
+        right: -300px;
+        top: 0;
+        min-width: 500px;
     }
 }

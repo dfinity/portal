@@ -8,10 +8,6 @@ import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import motokoBG from "@site/static/img/motokoPlayground.png";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
 import staticWebsite from "@site/static/img/samples/staticWebsite.png";
 import basicDex from "@site/static/img/samples/basicDex.png";
@@ -223,44 +219,23 @@ function Index() {
             Explore all sample code
           </Link>
         </motion.div>
-        <motion.div className={styles.sampleSwiper} variants={transitions.item}>
-          <Swiper
-            spaceBetween={20}
-            pagination={{
-              clickable: true,
-            }}
-            centeredSlides={true}
-            modules={[Pagination]}
-            breakpoints={{
-              320: { slidesPerView: 1.2 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1440: { slidesPerView: 4 },
-              1920: { slidesPerView: 6 },
-              2560: { slidesPerView: 8 },
-              3440: { slidesPerView: 10 },
-            }}
-          >
-            {sampleItems.map((sample, index) => (
-              <SwiperSlide>
-                <div
-                  className={clsx(
-                    styles.sampleContainer,
-                    index === 0 && styles.firstSampleContainer
-                  )}
-                >
-                  <Card
-                    key={sample.index}
-                    image={sample.image}
-                    title={sample.title}
-                    domain={sample.domains[0]}
-                    body={sample.body}
-                    links={sample.links}
-                  />
-                </div>
-              </SwiperSlide>
+        <motion.div
+          className={styles.scrollContainer}
+          variants={transitions.item}
+        >
+          <div className={styles.samplesContainer}>
+            {sampleItems.map((sample) => (
+              <div className={styles.cardWrapper} key={sample.title}>
+                <Card
+                  image={sample.image}
+                  title={sample.title}
+                  domain={sample.domains[0]}
+                  body={sample.body}
+                  links={sample.links}
+                />
+              </div>
             ))}
-          </Swiper>
+          </div>
         </motion.div>
         <div className={styles.cards}>
           <motion.a
