@@ -4,7 +4,7 @@ The [Quick start](../../quickstart/hello10mins.md) provided a simplified introdu
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 
-Most of these tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the {company-id} [examples](https://github.com/dfinity/examples) repository.
+Most of these tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the DFINITY [examples](https://github.com/dfinity/examples) repository.
 
 The following tutorials introduce the basics for writing dapps that run on the IC:
 

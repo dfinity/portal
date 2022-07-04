@@ -52,7 +52,7 @@ To get started, verify the following:
 
     As a security best practice, any operations that involve the transfer of ICP tokens would require both an air-gapped computer with minimal hardware and software and a computer connected to the network. In practice, this requires moving files between two computers and taking other precautions to minimize risks.
 
-    For simplicity, this *{doctitle}* describes how to complete key tasks using a single computer connected to the network.
+    For simplicity, this page describes how to complete key tasks using a single computer connected to the network.
 
 ## Connect to the ledger and get your account identifier
 
