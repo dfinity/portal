@@ -325,100 +325,99 @@ function Index({
         </div>
       </div>
 
-      <div
-        className={clsx(
-          styles.mobileFilterBar,
-          displayMobileFilters && styles.mobileFilterBar__show
-        )}
-      >
+      {displayMobileFilters && (
         <div
-          onClick={() => setDisplayMobileFilters(false)}
-          className={styles.closeIcon}
+          className={clsx(styles.mobileFilterBar, styles.mobileFilterBar__show)}
         >
-          <Close />
-        </div>
-        <p className={styles.mobileFilterTitle}>Sample codes</p>
-        <div className={styles.mobileSelectContainer}>
-          <p>Language</p>
-          <div className={styles.mobileFilterOptions}>
-            {languageOptions.map((language) => (
-              <label key={language} className={styles.selectOption}>
-                <input
-                  type="checkbox"
-                  key={language}
-                  value={language}
-                  checked={selectedLanguages.includes(language)}
-                  onChange={(e) => updateSelectedLanguages(e.target.value)}
-                />
-                {language}
-              </label>
-            ))}
-          </div>
-          <p>Domain</p>
-          <div className={styles.mobileFilterOptions}>
-            {domainOptions.map((domain) => (
-              <label key={domain} className={styles.selectOption}>
-                <input
-                  type="checkbox"
-                  key={domain}
-                  value={domain}
-                  checked={selectedDomains.includes(domain)}
-                  onChange={(e) => updateSelectedDomains(e.target.value)}
-                />
-                {domain}
-              </label>
-            ))}
-          </div>
-          <p>Level</p>
-          <div className={styles.mobileFilterOptions}>
-            {levelOptions.map((level) => (
-              <label key={level} className={styles.selectOption}>
-                <input
-                  type="checkbox"
-                  key={level}
-                  value={level}
-                  checked={selectedLevels.includes(level)}
-                  onChange={(e) => updateSelectedLevels(e.target.value)}
-                />
-                {level}
-              </label>
-            ))}
-          </div>
-          <p>Content Type</p>
-          <div className={styles.mobileFilterOptions}>
-            {contentTypeOptions.map((contentType) => (
-              <label key={contentType} className={styles.selectOption}>
-                <input
-                  type="checkbox"
-                  key={contentType}
-                  value={contentType}
-                  checked={selectedContentTypes.includes(contentType)}
-                  onChange={(e) => updateSelectedContentTypes(e.target.value)}
-                />
-                {contentType}
-              </label>
-            ))}
-          </div>
-
-          <Link
-            to={"#start"}
-            className={styles.mobileFilterButton}
+          <div
             onClick={() => setDisplayMobileFilters(false)}
+            className={styles.closeIcon}
           >
-            <span>Apply Filters</span>
-          </Link>
-          <Link
-            to={"#start"}
-            className={styles.mobileFilterClearButton}
-            onClick={() => {
-              clearFilters();
-              setDisplayMobileFilters(false);
-            }}
-          >
-            <span>Clear Filters</span>
-          </Link>
+            <Close />
+          </div>
+          <p className={styles.mobileFilterTitle}>Sample codes</p>
+          <div className={styles.mobileSelectContainer}>
+            <p>Language</p>
+            <div className={styles.mobileFilterOptions}>
+              {languageOptions.map((language) => (
+                <label key={language} className={styles.selectOption}>
+                  <input
+                    type="checkbox"
+                    key={language}
+                    value={language}
+                    checked={selectedLanguages.includes(language)}
+                    onChange={(e) => updateSelectedLanguages(e.target.value)}
+                  />
+                  {language}
+                </label>
+              ))}
+            </div>
+            <p>Domain</p>
+            <div className={styles.mobileFilterOptions}>
+              {domainOptions.map((domain) => (
+                <label key={domain} className={styles.selectOption}>
+                  <input
+                    type="checkbox"
+                    key={domain}
+                    value={domain}
+                    checked={selectedDomains.includes(domain)}
+                    onChange={(e) => updateSelectedDomains(e.target.value)}
+                  />
+                  {domain}
+                </label>
+              ))}
+            </div>
+            <p>Level</p>
+            <div className={styles.mobileFilterOptions}>
+              {levelOptions.map((level) => (
+                <label key={level} className={styles.selectOption}>
+                  <input
+                    type="checkbox"
+                    key={level}
+                    value={level}
+                    checked={selectedLevels.includes(level)}
+                    onChange={(e) => updateSelectedLevels(e.target.value)}
+                  />
+                  {level}
+                </label>
+              ))}
+            </div>
+            <p>Content Type</p>
+            <div className={styles.mobileFilterOptions}>
+              {contentTypeOptions.map((contentType) => (
+                <label key={contentType} className={styles.selectOption}>
+                  <input
+                    type="checkbox"
+                    key={contentType}
+                    value={contentType}
+                    checked={selectedContentTypes.includes(contentType)}
+                    onChange={(e) => updateSelectedContentTypes(e.target.value)}
+                  />
+                  {contentType}
+                </label>
+              ))}
+            </div>
+
+            <Link
+              to={"#start"}
+              className={styles.mobileFilterButton}
+              onClick={() => setDisplayMobileFilters(false)}
+            >
+              <span>Apply Filters</span>
+            </Link>
+            <Link
+              to={"#start"}
+              className={styles.mobileFilterClearButton}
+              onClick={() => {
+                clearFilters();
+                setDisplayMobileFilters(false);
+              }}
+            >
+              <span>Clear Filters</span>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

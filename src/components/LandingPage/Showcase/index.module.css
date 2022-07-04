@@ -7,7 +7,13 @@
     --swiper-pagination-bullet-inactive-opacity: 0.30;
     z-index: 2;
 }
-
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -120px;
+    padding-bottom: 120px;
+    visibility: hidden;
+}
 .showcaseContainer {
     width: 100vw;
     padding: 50px 0;

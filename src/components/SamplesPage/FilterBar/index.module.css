@@ -34,7 +34,7 @@
 .selectBox {
     display: inline-flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     padding: 10px 16px;
     margin: 0 8px;
     background: rgba(248, 247, 255, 1);
@@ -139,7 +139,7 @@
 .selectionArrow {
     display: inline-block;
     margin-left: 10px;
-    height: 22px;
+    width: 12px;
 }
 
 input[type="checkbox"] {
@@ -210,11 +210,8 @@ input[type="checkbox"]:checked::before {
     z-index: 2100;
     padding: 42px 16px calc(30px + env(safe-area-inset-bottom)) 16px;
     overflow: scroll;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-    transform: translate3d(100%, 0, 0);
 }
 .mobileFilterBar__show {
-    transform: translate3d(0, 0, 0);
 }
 .mobileSelectContainer {
     display: inline-flex;

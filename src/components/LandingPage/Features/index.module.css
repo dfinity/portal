@@ -6,7 +6,13 @@
     --swiper-theme-color: var(--ifm-color-primary);
     z-index: 1;
 }
-
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -120px;
+    padding-bottom: 120px;
+    visibility: hidden;
+}
 .title {
     width: Min(1250px, 90%);
     margin: auto;

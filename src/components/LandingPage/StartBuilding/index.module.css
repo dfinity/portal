@@ -2,7 +2,13 @@
     position: relative;
     padding: 100px 0;
 }
-
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -80px;
+    padding-bottom: 80px;
+    visibility: hidden;
+}
 .headerContainer {
     width: 100%;
     display: flex;
@@ -101,7 +107,8 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 64px;
+    padding: 0 64px;
+    margin: auto 0;
     height: 258px;
 }
 
@@ -116,6 +123,7 @@
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 .cardHover:hover {
+    padding-bottom: 32px;
     color: white;
     text-decoration: none;
     background: var(--ifm-color-primary);
@@ -128,13 +136,6 @@
 .cardHover:hover .informationBody {
     color: white;
     text-decoration: none;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-}
-
-.cardHover:hover .bodyContainer,
-.cardHover:hover .informationIcon {
-    margin-top: -15px;
-    margin-bottom: 15px;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 

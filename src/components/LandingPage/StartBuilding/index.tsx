@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "@site/src/components/StartBuilding/index.module.css";
+import styles from "@site/src/components/LandingPage/StartBuilding/index.module.css";
 import eventBG from "@site/static/img/startBuilding/event_background_image.png";
 import motokoBG from "@site/static/img/motokoPlayground.png";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
@@ -85,7 +85,7 @@ function StartBuilding() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a id="startBuilding" />
+      <a className={styles.anchor} id="startBuilding" />
       <div className={styles.headerContainer}>
         <img src={BackgroundGradient} className={styles.BGGradient} alt="" />
         <motion.div
