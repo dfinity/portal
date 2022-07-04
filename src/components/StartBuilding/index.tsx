@@ -43,8 +43,8 @@ function Event({ title, dateRange, link }) {
           </p>
         ))}
         <p className={styles.eventDescription}>
-          Internet Computer Global Hackathon <br />
-          $6 Million In Prizes + Grants
+          Voting is now OPEN!<br />
+          Deadline: July 10 @ 11:59pm PT
         </p>
       </div>
       <img className={styles.eventBackground} src={eventBG} alt="" />
@@ -138,10 +138,10 @@ function StartBuilding() {
           link={"/samples"}
         />
         <Event
-          title={["Supernova", "Demo Day"]}
-          dateRange="June 30, 2022"
+          title={["Community", "Choice Award"]}
+          dateRange="Supernova Hackathon"
           link={
-            "https://events.zoom.us/e/view/0DN6AGHCRLGUphMgOJp1mw?id=0DN6AGHCRLGUphMgOJp1mw"
+            "https://dfinity.org/supernova"
           }
         />
         <MotokoPlayground

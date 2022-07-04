@@ -22,9 +22,9 @@ function Developers(): JSX.Element {
       <main className={styles.main}>
         <div className={styles.announcementBar}>
           <AnnouncementBar
-            text={"Demo Day for Supernova Hackathon"}
+            text={"Voting for Supernova Community Choice Award"}
             link={
-              "https://events.zoom.us/e/view/0DN6AGHCRLGUphMgOJp1mw?id=0DN6AGHCRLGUphMgOJp1mw"
+              "https://dfinity.org/supernova"
             }
           />
         </div>
