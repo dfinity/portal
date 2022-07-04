@@ -95,7 +95,7 @@ const config = {
     // NOTE: liveCodeBLock is enabled for possible future feature,
     // but to do that type preset- classic had to be disabled below
     // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       image: "/img/share.jpg",
       colorMode: {
         disableSwitch: true,
@@ -130,7 +130,7 @@ const config = {
             items: [
               {
                 label: "Basics",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Introduction_to_the_Internet_Computer",
+                href: "/basics",
               },
               {
                 label: "Internet Identity",
@@ -253,14 +253,15 @@ const config = {
       announcementBar:
         isDev || isDeployPreview
           ? {
-            id: "local_dev",
-            content: isDeployPreview
-              ? `You are currently viewing a preview of this <a href="${process.env.PR_URL || "https://github.com/dfinity/portal"
-              }">Pull Request</a>.`
-              : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
-            textColor: "#091E42",
-            isCloseable: false,
-          }
+              id: "local_dev",
+              content: isDeployPreview
+                ? `You are currently viewing a preview of this <a href="${
+                    process.env.PR_URL || "https://github.com/dfinity/portal"
+                  }">Pull Request</a>.`
+                : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+              textColor: "#091E42",
+              isCloseable: false,
+            }
           : undefined,
 
       footer: {
@@ -343,9 +344,9 @@ const config = {
       liveCodeBlock: {
         playgroundPosition: "bottom",
       },
-    }),
-    themes: ["@docusaurus/theme-live-codeblock"],
-    clientModules: [require.resolve("./static/load_moc.ts")],
+    },
+  themes: ["@docusaurus/theme-live-codeblock"],
+  clientModules: [require.resolve("./static/load_moc.ts")],
 };
 
 module.exports = config;

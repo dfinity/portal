@@ -3,10 +3,6 @@ import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
@@ -81,27 +77,19 @@ function Features() {
       <motion.p variants={transitions.item} className={styles.title}>
         What's cool about the <br /> Internet Computer
       </motion.p>
-      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
-        <Swiper
-          spaceBetween={4}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          breakpoints={{
-            320: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-          }}
-        >
+      <motion.div
+        className={styles.scrollContainer}
+        variants={transitions.item}
+      >
+        <div className={styles.mobileCardsContainer}>
           {cardsContent.map((card) => (
-            <SwiperSlide key={card.title}>
+            <div className={styles.cardWrapper} key={card.title}>
               <Link to={card.link} className={styles.card}>
                 <Card key={card.title} title={card.title} body={card.body} />
               </Link>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </motion.div>
       <motion.div
         className={styles.actionButtonContainerMobile}

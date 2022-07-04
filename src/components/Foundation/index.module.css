@@ -28,7 +28,7 @@
     width: Min(850px, 90%);
     margin: 0 auto;
     position: relative;
-    padding: 400px 0 100px 0;
+    padding: 500px 0 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -155,11 +155,13 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
+    letter-spacing: 1px;
     border: 2px solid black;
     border-radius: 10px;
     color: black;
     text-decoration: none;
     position: relative;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
@@ -203,6 +205,10 @@
 .mainCard .cardBody,
 .mainCard .cardIcon {
     color: white;
+}
+
+.cardHover {
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .cardHover:hover {
@@ -258,9 +264,57 @@
     height: 24px;
 }
 
-.mobileSwiper {
+.scrollContainer {
     display: none;
     width: 100vw;
+    margin: 32px 0 12px 0;
+}
+
+.mobileCardsContainer {
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    overflow-x: scroll;
+    scroll-padding: 50% 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.mobileCardsContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.mobileCardsContainer::-webkit-scrollbar-track {
+    background: rgba(24, 24, 24, 0%);
+    margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
+    border-radius: 20px;
+}
+
+.mobileCardsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 24, 20%);
+    border-radius: 20px;
+    border: 4px solid var(--ifm-background-color);
+}
+
+.cardWrapper .card {
+    width: 300px;
+    padding: 0 32px;
+    height: 220px;
+}
+
+.cardWrapper {
+    scroll-snap-align: none;
+    display: inline-block;
+    margin: 0 4px 10px 0;
+}
+
+.cardWrapper:first-child {
+    padding-left: calc((100vw - Min(1100px, 90vw)) / 2);
+}
+
+.cardWrapper:last-child {
+    margin-right: 0;
+    padding-right: calc((100vw - Min(1100px, 90vw)) / 2);
 }
 
 .mobileStatsContainer {
@@ -324,19 +378,12 @@
         line-height: 42px;
     }
 
-    .mobileSwiper {
+    .scrollContainer {
         display: block;
     }
 
     .cards {
         display: none;
-    }
-
-    .card {
-        width: 100%;
-        height: 220px;
-        margin: 0 0 40px 0;
-
     }
 
     .cardTitle {

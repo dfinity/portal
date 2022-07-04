@@ -7,6 +7,7 @@ import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import Canisters from "@site/src/components/DevelopersHome/Canisters";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
 import Contribute from "@site/src/components/DevelopersHome/Contribute";
+import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
 
 function Developers(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -19,6 +20,14 @@ function Developers(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
+        <div className={styles.announcementBar}>
+          <AnnouncementBar
+            text={"Voting for Supernova Community Choice Award"}
+            link={
+              "https://dfinity.org/supernova"
+            }
+          />
+        </div>
         <Header />
         <SampleCode />
         <Canisters />

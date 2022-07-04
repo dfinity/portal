@@ -4,3 +4,13 @@
     overflow: hidden;
     height: 100%;
 }
+
+.announcementBar {
+    width: Min(1110px, 90%);
+    margin: 104px auto 24px auto;
+}
+@media screen and (max-width: 996px) {
+    .announcementBar {
+        margin: 32px auto 0 auto;
+    }
+}

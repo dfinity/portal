@@ -3,10 +3,6 @@ import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import contribute from "@site/static/img/developers/contribute.png";
@@ -26,6 +22,11 @@ const cardsContent = [
     title: "Join the developer forum",
     body: "Discuss with the community",
     link: "https://forum.dfinity.org/",
+  },
+  {
+    title: "Bug bounty program",
+    body: "Report potential security vulnerabilities and get rewards",
+    link: "https://dfinity.org/bug-bounty/",
   },
 ];
 
@@ -64,27 +65,19 @@ function Index() {
       <motion.p variants={transitions.item} className={styles.subtitle}>
         Take a deeper dive into further resources in the developer ecosystem.
       </motion.p>
-      <motion.div className={styles.mobileSwiper} variants={transitions.item}>
-        <Swiper
-          spaceBetween={4}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          breakpoints={{
-            320: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-          }}
-        >
+      <motion.div
+        className={styles.scrollContainer}
+        variants={transitions.item}
+      >
+        <div className={styles.mobileCardsContainer}>
           {cardsContent.map((card) => (
-            <SwiperSlide>
+            <div className={styles.cardWrapper} key={card.title}>
               <a href={card.link} className={styles.card}>
                 <Card key={card.title} title={card.title} body={card.body} />
               </a>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </motion.div>
       <div className={styles.cards}>
         {cardsContent.map((card) => (
@@ -92,8 +85,9 @@ function Index() {
             variants={transitions.item}
             href={card.link}
             className={styles.card}
+            key={card.title}
           >
-            <Card key={card.title} title={card.title} body={card.body} />
+            <Card title={card.title} body={card.body} />
           </motion.a>
         ))}
       </div>

@@ -1,0 +1,138 @@
+:root {
+  --button-color: white;
+  --button-color-hover: var(--ifm-color-primary);
+}
+
+.heading-1 {
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 85px;
+  margin: 0;
+}
+
+.heading-2 {
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 85px;
+  margin: 0;
+}
+.heading-3 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  margin: 0;
+}
+.heading-4 {
+  margin: 0;
+}
+.heading-5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.paragraph-large {
+  font-size: 24px;
+  line-height: 34px;
+  margin: 0;
+}
+.paragraph {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0;
+}
+.paragraph-small {
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+}
+
+@media (max-width: 996px) {
+  .heading-1 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .heading-2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .heading-3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .paragraph-large {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .paragraph {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .paragraph-small {
+  }
+}
+
+.cta-link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--ifm-color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cta-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
+@media (max-width: 996px) {
+  .cta-link {
+    align-items: flex-start;
+  }
+}
+
+.button {
+  display: inline-flex;
+  text-align: center;
+  padding: 16px 24px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  border: 2px solid var(--button-color);
+  border-radius: 10px;
+  color: var(--button-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
+}
+
+.button:hover {
+  background-color: var(--button-color);
+  color: var(--button-color-hover);
+}
+
+.button-dark {
+  --button-color: black;
+}
+
+.button-white {
+  --button-color: var(--ifm-color-primary);
+  --button-color-hover: var(--ifm-color-primary);
+  border: 2px solid white;
+  background-color: white;
+}
+.button-white:hover {
+  --button-color: var(--ifm-color-primary);
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 996px) {
+  .button {
+    font-size: 14px;
+    padding: 14px 20px;
+  }
+}

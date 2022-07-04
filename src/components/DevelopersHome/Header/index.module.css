@@ -8,8 +8,9 @@
 }
 
 .container {
-    margin: 130px auto 80px auto;
+    margin: 24px auto 80px auto;
     width: Min(1110px, 90%);
+    position: relative;
 }
 
 .Title {
@@ -33,19 +34,21 @@
     display: inline-flex;
     text-align: center;
     padding: 16px 24px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     line-height: 22px;
-    border: 2px solid black;
+    letter-spacing: 1px;
+    border: 2px solid #3b00b9;
+    background-color: #3b00b9;
     border-radius: 10px;
-    color: black;
+    color: white;
     text-decoration: none;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
-    border: 2px solid #3b00b9;
-    background-color: #3b00b9;
+    border: 2px solid black;
+    background-color: black;
     color: white;
     text-decoration: none;
 }
@@ -90,15 +93,11 @@
 .BGShape {
     z-index: -1000;
     position: absolute;
-    -webkit-filter: blur(150px);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
     color: #3B00B9;
-    bottom: -200px;
-    right: -250px;
-    width: 600px;
+    top: -350px;
+    right: -720px;
+    width: 1440px;
+    max-width: 1440px;
 }
 @media screen and (max-width: 996px) {
     .container {
@@ -122,6 +121,7 @@
     .actionButton {
         font-size: 14px;
         line-height: 22px;
+        padding: 14px 20px;
         border: 2px solid #3b00b9;
         background-color: #3b00b9;
         color: white;
@@ -134,9 +134,8 @@
         line-height: 22px;
     }
     .BGShape {
-        width: 200px;
-        -webkit-filter: blur(100px);
-        right: -50px;
-        top: 150px;
+        width: 800px;
+        right: -550px;
+        top: -150px;
     }
 }

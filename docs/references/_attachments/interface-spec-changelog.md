@@ -1,22 +1,17 @@
 ## Changelog {#changelog}
 
+## 0.18.4 (2022-06-20) {#0_18_4}
 
-### ∞ (unreleased) {#unreleased}
-
-* Spec: Canister access to performance metrics
-* Spec: Expose Wasm custom sections in the state tree
-* Spec: User delegations include a principal scope
-* Spec: Include the HTTP Gateway Protocol in this spec
 * Canister cycle balances are represented by 128 bits, and no system-defined upper limit exists anymore
 * Canister modules can be gzip-encoded
-* Canisters can make HTTP requests via the `http_request` method of the management canister
-
+* Expose Wasm custom sections in the state tree
+* EXPERIMENTAL: Canister API for accessing Bitcoin transactions
+* EXPERIMENTAL: Canister API for threshold ECDSA signatures
 
 ### 0.18.3 (2022-01-10) {#0_18_3}
 
 * New System API which uses 128-bit values to represent the amount of cycles
 * Subnet delegations include a canister id scope
-
 
 ### 0.18.2 (2021-09-29) {#0_18_2}
 
@@ -44,16 +39,12 @@
 * Canister settings in `create_canister` and `update_settings`. `install_code` no longer takes allocation settings.
 * A freezing threshold can be configured via the canister settings
 
-
 ### 0.16.1 (2021-04-14) {#0_16_1}
-
 * The cleanup callback is introduced
-
 
 ### 0.16.0 (2021-03-25) {#0_16_0}
 
 * New http v2 API that allows for stateless boundary nodes
-
 
 ### 0.15.6 (2021-03-25) {#0_15_6}
 
