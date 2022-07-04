@@ -25,27 +25,6 @@
     position: relative;
 }
 
-.actionButton {
-    margin: auto auto;
-    text-align: center;
-    padding: 1rem 1.5rem;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    border: 2px solid white;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    position: relative;
-}
-
-.actionButton:hover {
-    border: 2px solid white;
-    background-color: white;
-    color: #3B00B9;
-    text-decoration: none;
-}
-
 .BGShape {
     position: absolute;
     height: 500px;
@@ -60,7 +39,7 @@
 }
 
 .header {
-    width: Min(1100px, 90%);
+    width: Min(1150px, 90%);
     margin: 50px auto;
 }
 
@@ -87,6 +66,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 22px;
+    letter-spacing: 1px;
     border: 2px solid black;
     border-radius: 10px;
     color: black;
@@ -124,10 +104,10 @@
     height: 350px;
 }
 .card {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: flex-end; */
-    /* flex-wrap: wrap; */
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     flex-wrap: wrap;
     padding: 64px;
     width: calc(50% - 10px);
     background: rgba(255, 255, 255, 0.5);
@@ -142,14 +122,15 @@
     font-weight: bold;
     line-height: 30px;
     width: Min(369px, 100%);
-    /* margin: 0 auto auto 0; */
+     margin: 0 auto 0 0;
 }
 
 .cardCallToAction {
     font-size: 18px;
     font-weight: bold;
     line-height: 26px;
-    padding-bottom: 70px;
+    margin: 0 0 auto 0;
+    padding: 10px 0 20px 0;
     display: inline-flex;
 }
 
@@ -216,6 +197,7 @@
     .actionButton {
         font-size: 14px;
         line-height: 22px;
+        padding: 14px 20px;
     }
 
     .card {

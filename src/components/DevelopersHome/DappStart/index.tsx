@@ -5,7 +5,7 @@ import transitions from "@site/static/transitions.json";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 
 function Index() {
   const controls = useAnimation();
@@ -28,7 +28,7 @@ function Index() {
         <motion.p variants={transitions.item} className={styles.title}>
           Get your dapp off the ground
         </motion.p>
-        <BGCircle className={styles.BGShape} />
+        <img src={BGCircle} className={styles.BGShape} alt="" />
         <div className={styles.cards}>
           <motion.a
             variants={transitions.item}

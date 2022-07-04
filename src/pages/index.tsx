@@ -8,10 +8,12 @@ import Dashboard from "@site/src/components/Dashboard";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ParticleBackground from "@site/src/components/ParticleBackground";
-import ICToken from "@site/src/components/ICToken";
+import ICPToken from "@site/src/components/ICPToken";
 import Showcase from "@site/src/components/Showcase";
 import StartBuilding from "@site/src/components/StartBuilding";
 import Foundation from "@site/src/components/Foundation";
+import BackgroundGradient from "@site/static/img/bgGradient.png";
+
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   useEffect(() => {
@@ -23,6 +25,9 @@ export default function Home(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
+        <div className={styles.BGGradient}>
+          <img src={BackgroundGradient} alt="" />
+        </div>
         <BrowserOnly>
           {() => (
             <div className={styles.particleBackground}>
@@ -44,7 +49,7 @@ export default function Home(): JSX.Element {
         <Features />
         <Showcase />
         <Foundation />
-        <ICToken />
+        <ICPToken />
         <StartBuilding />
         <SectionsBar />
       </main>

@@ -162,15 +162,11 @@
 .BGShape {
     z-index: -1000;
     position: absolute;
-    -webkit-filter: blur(150px);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
     color: #3B00B9;
-    top: 250px;
-    left: -150px;
-    width: 500px;
+    top: -100px;
+    left: -600px;
+    width: 1500px;
+    max-width: 1500px;
 }
 
 @media screen and (max-width: 996px) {
@@ -181,7 +177,7 @@
     }
 
     .title {
-        font-size: 38px;
+        font-size: 32px;
         line-height: 42px;
         text-align: start;
         margin-bottom: 32px;
@@ -236,5 +232,8 @@
 
     .callToAction {
         margin-left: 0;
+    }
+    .BGShape {
+        display: none;
     }
 }

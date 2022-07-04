@@ -3,8 +3,8 @@ import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ICTokenGraphMobile01 from "@site/static/img/ICToken/ICTokenGraphMobile01.png";
-import ICTokenGraphMobile02 from "@site/static/img/ICToken/ICTokenGraphMobile02.png";
+import ICPTokenGraphMobile01 from "@site/static/img/ICPToken/ICPTokenGraphMobile01.png";
+import ICPTokenGraphMobile02 from "@site/static/img/ICPToken/ICPTokenGraphMobile02.png";
 import transitions from "@site/static/transitions.json";
 
 import {
@@ -39,8 +39,8 @@ export const ownershipData = {
     {
       label: "Percentage of Ownership",
       data: [77.8, 22.2],
-      backgroundColor: ["rgba(62,9,185,1)", "rgba(205,78,131,1)"],
-      borderColor: ["rgba(62,9,185,1)", "rgba(205,78,131,1)"],
+      backgroundColor: ["rgba(62,9,185,1)", "rgb(218, 57, 121)"],
+      borderColor: ["rgba(62,9,185,1)", "rgb(218, 57, 121)"],
       borderWidth: 1,
     },
   ],
@@ -84,6 +84,7 @@ function OwnershipChart() {
               labels: {
                 font: { size: 16 },
                 color: "black",
+                padding: 20,
                 usePointStyle: true,
                 pointStyle: "circle",
                 boxWidth: 12,
@@ -194,7 +195,7 @@ function VotingRewardsChart() {
             title: {
               display: true,
               text: ["Latest Annualized Voting", "Reward Percentage"],
-              font: { size: 14 },
+              font: { size: 14, weight: "light" },
               color: "black",
               align: "start",
             },
@@ -246,7 +247,7 @@ const chart = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-function ICToken() {
+function ICPToken() {
   const controls = useAnimation();
   const [displayCharts, setDisplayCharts] = useState(false);
   const { ref, inView } = useInView({ threshold: 0.2 });
@@ -263,7 +264,7 @@ function ICToken() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a id="ICToken" />
+      <a id="ICPToken" />
       <div className={styles.header}>
         <motion.p variants={transitions.item} className={styles.headerTitle}>
           Internet Computer utility token
@@ -302,8 +303,8 @@ function ICToken() {
           )}
           <img
             className={styles.graphMobile}
-            src={ICTokenGraphMobile01}
-            alt="ICTokenGraphMobile01"
+            src={ICPTokenGraphMobile01}
+            alt="ICPTokenGraphMobile01"
           />
         </motion.div>
         <motion.div variants={chart} className={styles.card}>
@@ -326,8 +327,8 @@ function ICToken() {
           )}
           <img
             className={styles.graphMobile}
-            src={ICTokenGraphMobile02}
-            alt="ICTokenGraphMobile02"
+            src={ICPTokenGraphMobile02}
+            alt="ICPTokenGraphMobile02"
           />
         </motion.div>
       </div>
@@ -335,4 +336,4 @@ function ICToken() {
   );
 }
 
-export default ICToken;
+export default ICPToken;

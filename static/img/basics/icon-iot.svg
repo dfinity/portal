@@ -1,0 +1,23 @@
+<svg  viewBox="0 0 162 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="81" cy="81" r="19.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="47" cy="80" r="4.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="115" cy="80" r="4.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="81" cy="115" r="4.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="81" cy="47" r="4.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="51" cy="111" r="8.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle r="8.9" transform="matrix(1 0 0 -1 51 51)" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="111" cy="111" r="8.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle r="8.9" transform="matrix(1 0 0 -1 111 51)" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="57.2222" y1="104.222" x2="66.2222" y2="95.2222" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line y1="-1.1" x2="12.7279" y2="-1.1" transform="matrix(0.707107 0.707107 0.707107 -0.707107 58 57)" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="104.222" y1="104.778" x2="95.2222" y2="95.7778" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line y1="-1.1" x2="12.7279" y2="-1.1" transform="matrix(-0.707107 0.707107 0.707107 0.707107 105 58)" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="80.9" y1="61" x2="80.9" y2="52" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="51" y1="80.9" x2="60" y2="80.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="101" y1="80.9" x2="110" y2="80.9" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<line x1="80.9" y1="110" x2="80.9" y2="101" stroke="white" stroke-opacity="0.7" stroke-width="2.2"/>
+<circle cx="81" cy="89" r="2" stroke="white" stroke-width="2"/>
+<path d="M76 85C76.9472 83.2181 78.8596 82 81.0646 82C83.1735 82 85.0148 83.1143 86 84.7705" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M72 81C73.705 78.6241 77.1473 77 81.1163 77C84.9123 77 88.2267 78.4857 90 80.694" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M68 77C70.4628 73.4361 75.4351 71 81.1679 71C86.6512 71 91.4386 73.2286 94 76.541" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -5,7 +5,7 @@ import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import nftMinting from "@site/static/img/samples/nftMinting.png";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
@@ -255,7 +255,7 @@ function Samples(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
         <div className={styles.container}>
-          <BGCircle className={styles.BGShape} />
+          <img className={styles.BGShape} src={BGCircle} alt="" />
           <Header />
           <FilterBar
             numberOfItems={filteredSamples.length}

@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
-import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 
 function Index() {
   const controls = useAnimation();
@@ -23,9 +23,9 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
-        <BGCircle className={styles.BGShape} />
+        <img className={styles.BGShape} src={BGCircle} alt="" />
         <motion.p variants={transitions.item} className={styles.Title}>
-          Developer resources
+          Developer Resources
         </motion.p>
         <motion.p variants={transitions.item} className={styles.Text}>
           As the IC ecosystem grows so do our resources. This is the home of
