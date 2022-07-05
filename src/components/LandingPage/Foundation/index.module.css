@@ -8,7 +8,13 @@
     --swiper-theme-color: var(--ifm-color-primary);
     z-index: 1;
 }
-
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -120px;
+    padding-bottom: 120px;
+    visibility: hidden;
+}
 .title {
     font-weight: 700;
     font-size: 75px;
@@ -191,8 +197,9 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 40px 32px 40px 48px;
-    height: auto;
+    padding: 0 48px;
+    margin: auto 0;
+    height: 200px;
     width: calc(33.3% - 8px);
     text-align: start;
 }
@@ -214,6 +221,7 @@
 .cardHover:hover {
     color: white;
     text-decoration: none;
+    padding-bottom: 32px;
     background: var(--ifm-color-primary);
     border: 1px solid var(--ifm-color-primary);
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
@@ -224,13 +232,6 @@
 .cardHover:hover .cardBody {
     color: white;
     text-decoration: none;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-}
-
-.cardHover:hover .cardBodyContainer,
-.cardHover:hover .cardIcon {
-    margin-top: -10px;
-    margin-bottom: 10px;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
@@ -415,5 +416,9 @@
     .teamPhotoMobile1, .teamPhotoMobile2 {
         display: flex;
         margin: 32px 0;
+    }
+    .anchor {
+        margin-top: -50px;
+        padding-bottom: 50px;
     }
 }

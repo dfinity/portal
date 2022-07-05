@@ -81,6 +81,14 @@
     height: auto;
 }
 
+.whiteBlur {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 900px;
+    top: -100px;
+}
+
 @media screen and (max-width: 996px) {
     .container {
         margin: 40px auto;
@@ -105,14 +113,15 @@
         font-size: 14px;
         line-height: 22px;
         padding: 14px 20px;
-        border: 2px solid #3b00b9;
-        background-color: #3b00b9;
-        color: white;
         margin: 0;
     }
 
     .canisterGraphic {
         max-width: 245px;
+    }
+
+    .whiteBlur {
+        display: none;
     }
 
     .rightContainer {

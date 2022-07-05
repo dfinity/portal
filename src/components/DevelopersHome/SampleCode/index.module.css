@@ -79,16 +79,19 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 40px 64px;
-    height: auto;
+    padding: 0 64px;
+    margin: auto 0;
+    height: 258px;
     overflow: hidden;
     width: calc(50% - 4px);
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .cardHover:hover {
     color: white;
     text-decoration: none;
     background: var(--ifm-color-primary);
+    padding-bottom: 32px;
     border: 1px solid var(--ifm-color-primary);
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
@@ -100,14 +103,6 @@
     text-decoration: none;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
-
-.cardHover:hover .bodyContainer,
-.cardHover:hover .informationIcon {
-    margin-top: -15px;
-    margin-bottom: 15px;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-}
-
 .cardHover:hover .motokoBackground {
     bottom: 0;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
@@ -181,11 +176,13 @@
 }
 
 .samplesContainer::-webkit-scrollbar-thumb {
-    background-color: rgba(24, 24, 24, 20%);
+    background-color: rgba(24, 24, 24, 0);
     border-radius: 20px;
     border: 4px solid var(--ifm-background-color);
 }
-
+.samplesContainer:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 24, 20%);
+}
 .cardWrapper > div {
     margin-bottom: 20px;
     width: 320px;
