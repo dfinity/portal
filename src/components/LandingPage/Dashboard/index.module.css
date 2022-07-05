@@ -140,4 +140,8 @@
     .actionButton {
         height: 48px;
     }
+    .anchor {
+        margin-top: -100px;
+        padding-bottom: 100px;
+    }
 }

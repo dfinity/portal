@@ -417,4 +417,8 @@
         display: flex;
         margin: 32px 0;
     }
+    .anchor {
+        margin-top: -50px;
+        padding-bottom: 50px;
+    }
 }

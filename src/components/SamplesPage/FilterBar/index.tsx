@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import ArrowDown from "@site/static/img/svgIcons/arrowDown.svg";
 import ArrowUp from "@site/static/img/svgIcons/arrowUp.svg";
@@ -7,7 +7,13 @@ import Filter from "@site/static/img/svgIcons/filter.svg";
 import Close from "@site/static/img/svgIcons/close.svg";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 
+const variants = {
+  initial: { x: "100%", duration: 0.25 },
+  animate: { x: 0, duration: 0.25 },
+  exit: { x: "100%", duration: 0.25 },
+};
 const languageOptions = ["Motoko", "Rust", "Javascript"];
 const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT"];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
@@ -32,45 +38,13 @@ function Index({
   selectedSortBy,
   setSelectedSortBy,
 }) {
-  const [isSelectingLanguage, setIsSelectingLanguage] = React.useState(false);
-  const [isSelectingDomain, setIsSelectingDomain] = React.useState(false);
-  const [isSelectingLevel, setIsSelectingLevel] = React.useState(false);
-  const [isSelectingContentType, setIsSelectingContentType] =
-    React.useState(false);
-  const [isSelectingSortBy, setIsSelectingSortBy] = React.useState(false);
+  const [currentSelection, setCurrentSelection] = React.useState(null);
   const [displayMobileFilters, setDisplayMobileFilters] = React.useState(false);
+  const selectBoxesRef = React.useRef(null);
   const updateCurrentSelection = (selection) => {
-    if (selection === "language") {
-      setIsSelectingLanguage(!isSelectingLanguage);
-      setIsSelectingDomain(false);
-      setIsSelectingLevel(false);
-      setIsSelectingContentType(false);
-      setIsSelectingSortBy(false);
-    } else if (selection === "domain") {
-      setIsSelectingDomain(!isSelectingDomain);
-      setIsSelectingLanguage(false);
-      setIsSelectingLevel(false);
-      setIsSelectingContentType(false);
-      setIsSelectingSortBy(false);
-    } else if (selection === "level") {
-      setIsSelectingLevel(!isSelectingLevel);
-      setIsSelectingDomain(false);
-      setIsSelectingLanguage(false);
-      setIsSelectingContentType(false);
-      setIsSelectingSortBy(false);
-    } else if (selection === "contentType") {
-      setIsSelectingContentType(!isSelectingContentType);
-      setIsSelectingDomain(false);
-      setIsSelectingLevel(false);
-      setIsSelectingLanguage(false);
-      setIsSelectingSortBy(false);
-    } else if (selection === "sortBy") {
-      setIsSelectingSortBy(!isSelectingSortBy);
-      setIsSelectingLanguage(false);
-      setIsSelectingDomain(false);
-      setIsSelectingLevel(false);
-      setIsSelectingContentType(false);
-    }
+    if (selection === currentSelection) {
+      setCurrentSelection(null);
+    } else setCurrentSelection(selection);
   };
 
   const clearFilters = () => {
@@ -79,11 +53,7 @@ function Index({
     setSelectedLevels([]);
     setSelectedContentTypes([]);
     setSelectedSortBy("Relevance");
-    setIsSelectingLanguage(false);
-    setIsSelectingDomain(false);
-    setIsSelectingLevel(false);
-    setIsSelectingContentType(false);
-    setIsSelectingSortBy(false);
+    setCurrentSelection(null);
   };
   const updateSelectedLanguages = (language) => {
     if (selectedLanguages.includes(language)) {
@@ -117,10 +87,26 @@ function Index({
       setSelectedContentTypes([...selectedContentTypes, contentType]);
     }
   };
+
   const updateSelectedSortBy = (contentType) => {
     setSelectedSortBy(contentType);
-    setIsSelectingSortBy(false);
+    setCurrentSelection(null);
   };
+  const handleClick = (event) => {
+    if (
+      selectBoxesRef.current !== event.target &&
+      !selectBoxesRef.current.contains(event.target)
+    ) {
+      setCurrentSelection(null);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
+
   return (
     <>
       <a id="start" />
@@ -139,7 +125,7 @@ function Index({
           <span className={styles.title}>Sample codes</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
-        <div className={styles.selectBoxes}>
+        <div ref={selectBoxesRef} className={styles.selectBoxes}>
           <div className={styles.selectBoxContainer}>
             <div
               className={styles.selectBox}
@@ -150,10 +136,10 @@ function Index({
             >
               <p className={styles.selectTitle}>Language</p>
               <div className={styles.selectionArrow}>
-                {isSelectingLanguage ? <ArrowUp /> : <ArrowDown />}
+                {currentSelection === "language" ? <ArrowUp /> : <ArrowDown />}
               </div>
             </div>
-            {isSelectingLanguage && (
+            {currentSelection === "language" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
                   {languageOptions.map((language) => (
@@ -184,10 +170,10 @@ function Index({
             >
               <p className={styles.selectTitle}>Domain</p>
               <div className={styles.selectionArrow}>
-                {isSelectingDomain ? <ArrowUp /> : <ArrowDown />}
+                {currentSelection === "domain" ? <ArrowUp /> : <ArrowDown />}
               </div>
             </div>
-            {isSelectingDomain && (
+            {currentSelection === "domain" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
                   {domainOptions.map((domain) => (
@@ -214,10 +200,10 @@ function Index({
             >
               <p className={styles.selectTitle}>Level</p>
               <div className={styles.selectionArrow}>
-                {isSelectingLevel ? <ArrowUp /> : <ArrowDown />}
+                {currentSelection === "level" ? <ArrowUp /> : <ArrowDown />}
               </div>
             </div>
-            {isSelectingLevel && (
+            {currentSelection === "level" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
                   {levelOptions.map((level) => (
@@ -246,10 +232,14 @@ function Index({
             >
               <p className={styles.selectTitle}>Content Type</p>
               <div className={styles.selectionArrow}>
-                {isSelectingContentType ? <ArrowUp /> : <ArrowDown />}
+                {currentSelection === "contentType" ? (
+                  <ArrowUp />
+                ) : (
+                  <ArrowDown />
+                )}
               </div>
             </div>
-            {isSelectingContentType && (
+            {currentSelection === "contentType" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
                   {contentTypeOptions.map((contentType) => (
@@ -324,100 +314,112 @@ function Index({
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
       </div>
-
-      {displayMobileFilters && (
-        <div
-          className={clsx(styles.mobileFilterBar, styles.mobileFilterBar__show)}
-        >
-          <div
-            onClick={() => setDisplayMobileFilters(false)}
-            className={styles.closeIcon}
+      <AnimatePresence exitBeforeEnter initial={false}>
+        {displayMobileFilters && (
+          <motion.div
+            key="mobileFilterBar"
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.2, ease: "linear" }}
+            className={clsx(styles.mobileFilterBar)}
           >
-            <Close />
-          </div>
-          <p className={styles.mobileFilterTitle}>Sample codes</p>
-          <div className={styles.mobileSelectContainer}>
-            <p>Language</p>
-            <div className={styles.mobileFilterOptions}>
-              {languageOptions.map((language) => (
-                <label key={language} className={styles.selectOption}>
-                  <input
-                    type="checkbox"
-                    key={language}
-                    value={language}
-                    checked={selectedLanguages.includes(language)}
-                    onChange={(e) => updateSelectedLanguages(e.target.value)}
-                  />
-                  {language}
-                </label>
-              ))}
-            </div>
-            <p>Domain</p>
-            <div className={styles.mobileFilterOptions}>
-              {domainOptions.map((domain) => (
-                <label key={domain} className={styles.selectOption}>
-                  <input
-                    type="checkbox"
-                    key={domain}
-                    value={domain}
-                    checked={selectedDomains.includes(domain)}
-                    onChange={(e) => updateSelectedDomains(e.target.value)}
-                  />
-                  {domain}
-                </label>
-              ))}
-            </div>
-            <p>Level</p>
-            <div className={styles.mobileFilterOptions}>
-              {levelOptions.map((level) => (
-                <label key={level} className={styles.selectOption}>
-                  <input
-                    type="checkbox"
-                    key={level}
-                    value={level}
-                    checked={selectedLevels.includes(level)}
-                    onChange={(e) => updateSelectedLevels(e.target.value)}
-                  />
-                  {level}
-                </label>
-              ))}
-            </div>
-            <p>Content Type</p>
-            <div className={styles.mobileFilterOptions}>
-              {contentTypeOptions.map((contentType) => (
-                <label key={contentType} className={styles.selectOption}>
-                  <input
-                    type="checkbox"
-                    key={contentType}
-                    value={contentType}
-                    checked={selectedContentTypes.includes(contentType)}
-                    onChange={(e) => updateSelectedContentTypes(e.target.value)}
-                  />
-                  {contentType}
-                </label>
-              ))}
-            </div>
+            <div className={styles.mobileFilterContainer}>
+              <div
+                onClick={() => setDisplayMobileFilters(false)}
+                className={styles.closeIcon}
+              >
+                <Close />
+              </div>
+              <p className={styles.mobileFilterTitle}>Sample codes</p>
+              <div className={styles.mobileSelectContainer}>
+                <p>Language</p>
+                <div className={styles.mobileFilterOptions}>
+                  {languageOptions.map((language) => (
+                    <label key={language} className={styles.selectOption}>
+                      <input
+                        type="checkbox"
+                        key={language}
+                        value={language}
+                        checked={selectedLanguages.includes(language)}
+                        onChange={(e) =>
+                          updateSelectedLanguages(e.target.value)
+                        }
+                      />
+                      {language}
+                    </label>
+                  ))}
+                </div>
+                <p>Domain</p>
+                <div className={styles.mobileFilterOptions}>
+                  {domainOptions.map((domain) => (
+                    <label key={domain} className={styles.selectOption}>
+                      <input
+                        type="checkbox"
+                        key={domain}
+                        value={domain}
+                        checked={selectedDomains.includes(domain)}
+                        onChange={(e) => updateSelectedDomains(e.target.value)}
+                      />
+                      {domain}
+                    </label>
+                  ))}
+                </div>
+                <p>Level</p>
+                <div className={styles.mobileFilterOptions}>
+                  {levelOptions.map((level) => (
+                    <label key={level} className={styles.selectOption}>
+                      <input
+                        type="checkbox"
+                        key={level}
+                        value={level}
+                        checked={selectedLevels.includes(level)}
+                        onChange={(e) => updateSelectedLevels(e.target.value)}
+                      />
+                      {level}
+                    </label>
+                  ))}
+                </div>
+                <p>Content Type</p>
+                <div className={styles.mobileFilterOptions}>
+                  {contentTypeOptions.map((contentType) => (
+                    <label key={contentType} className={styles.selectOption}>
+                      <input
+                        type="checkbox"
+                        key={contentType}
+                        value={contentType}
+                        checked={selectedContentTypes.includes(contentType)}
+                        onChange={(e) =>
+                          updateSelectedContentTypes(e.target.value)
+                        }
+                      />
+                      {contentType}
+                    </label>
+                  ))}
+                </div>
 
-            <Link
-              to={"#start"}
-              className={styles.mobileFilterButton}
-              onClick={() => setDisplayMobileFilters(false)}
-            >
-              <span>Apply Filters</span>
-            </Link>
-            <Link
-              to={"#start"}
-              className={styles.mobileFilterClearButton}
-              onClick={() => {
-                clearFilters();
-                setDisplayMobileFilters(false);
-              }}
-            >
-              <span>Clear Filters</span>
-            </Link>
-          </div>
-        </div>
-      )}
+                <Link
+                  to={"#start"}
+                  className={styles.mobileFilterButton}
+                  onClick={() => setDisplayMobileFilters(false)}
+                >
+                  <span>Apply Filters</span>
+                </Link>
+                <Link
+                  to={"#start"}
+                  className={styles.mobileFilterClearButton}
+                  onClick={() => {
+                    clearFilters();
+                    setDisplayMobileFilters(false);
+                  }}
+                >
+                  <span>Clear Filters</span>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

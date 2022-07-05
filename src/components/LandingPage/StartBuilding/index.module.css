@@ -375,7 +375,10 @@
         line-height: 22px;
         padding: 14px 20px;
     }
-
+    .anchor {
+        margin-top: -80px;
+        padding-bottom: 80px;
+    }
 }
 
 @media screen and (max-width: 1150px) {

@@ -240,4 +240,8 @@
         height: 250px;
         left: 0;
     }
+    .anchor {
+        margin-top: -20px;
+        padding-bottom: 20px;
+    }
 }

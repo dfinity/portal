@@ -326,4 +326,8 @@
         font-size: 16px;
         line-height: 20px;
     }
+    .anchor {
+        margin-top: -100px;
+        padding-bottom: 100px;
+    }
 }
