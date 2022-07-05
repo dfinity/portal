@@ -22,7 +22,7 @@ In other languages, like Rust, you will have to write the Candid interface descr
 
 ## Interact with a service in a terminal
 
-One of the most common ways you interact with canisters and the IC is by using the {company-id} Canister SDK `dfx` command-line interface.
+One of the most common ways you interact with canisters and the IC is by using the DFINITY Canister SDK `dfx` command-line interface.
 
 The `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the IC—and, if applicable, a method of the service provided by the smart contract.
 
