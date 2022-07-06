@@ -48,7 +48,7 @@ const config = {
         path: "samples",
         routeBasePath: "samples",
         sidebarPath: require.resolve("./sidebarsSample.js"),
-        remarkPlugins: [import("remark-code-import")],
+        remarkPlugins: [require('remark-code-import')],
       },
     ],
     customDocusaurusPlugin,
@@ -72,7 +72,7 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, import("remark-code-import")],
+          remarkPlugins: [simplePlantUML, require('remark-code-import')],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
