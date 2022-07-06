@@ -71,7 +71,7 @@ const config = {
             },
           },
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML,require('remark-code-import')],
+          remarkPlugins: [simplePlantUML, require('remark-code-import')],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
