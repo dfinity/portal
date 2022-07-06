@@ -70,6 +70,7 @@ const config = {
               path: "current",
             },
           },
+
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [simplePlantUML, require('remark-code-import')],
           // TODO: Please change this to your repo.
