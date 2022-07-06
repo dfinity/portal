@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Features from "@site/src/components/Features";
-import SectionsBar from "@site/src/components/SectionsBar";
-import HeroSection from "@site/src/components/HeroSection";
-import Dashboard from "@site/src/components/Dashboard";
+import Features from "@site/src/components/LandingPage/Features";
+import SectionsBar from "@site/src/components/LandingPage/SectionsBar";
+import HeroSection from "@site/src/components/LandingPage/HeroSection";
+import Dashboard from "@site/src/components/LandingPage/Dashboard";
 import styles from "./index.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import ParticleBackground from "@site/src/components/ParticleBackground";
-import ICPToken from "@site/src/components/ICPToken";
-import Showcase from "@site/src/components/Showcase";
-import StartBuilding from "@site/src/components/StartBuilding";
-import Foundation from "@site/src/components/Foundation";
+import ParticleBackground from "@site/src/components/LandingPage/ParticleBackground";
+import ICPToken from "@site/src/components/LandingPage/ICPToken";
+import Showcase from "@site/src/components/LandingPage/Showcase";
+import StartBuilding from "@site/src/components/LandingPage/StartBuilding";
+import Foundation from "@site/src/components/LandingPage/Foundation";
 import BackgroundGradient from "@site/static/img/bgGradient.png";
 
 export default function Home(): JSX.Element {

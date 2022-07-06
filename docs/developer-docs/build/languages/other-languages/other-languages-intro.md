@@ -17,6 +17,7 @@ To create canisters, it is typical to use a so-called CDK, a Canister Developmen
 To send requests to canisters from outside of the Internet Computer, so-called agents are used. They are most commonly integrated into frontends, e.g. when serving a web page. Another popular use case is for writing scripts that talk to canisters. Here is a non-exhaustive list of different agents: (Agent developers, feel free to add your own using the 'Edit this page' button at the bottom!)
 
 - .NET: [ICP.NET](https://github.com/Gekctek/ICP.NET)
+- Go: [IC-Go](https://github.com/mix-labs/IC-Go)
+- Javascript: [agent-js](https://github.com/dfinity/agent-js)
 - Python: [ic-py](https://github.com/rocklabs-io/ic-py)
 - Rust: [agent-rs](https://github.com/dfinity/agent-rs)
-- Javascript: [agent-js](https://github.com/dfinity/agent-js)

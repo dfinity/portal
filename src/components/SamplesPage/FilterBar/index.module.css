@@ -34,7 +34,7 @@
 .selectBox {
     display: inline-flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     padding: 10px 16px;
     margin: 0 8px;
     background: rgba(248, 247, 255, 1);
@@ -47,7 +47,7 @@
 .sortByOptionsContainer {
     display: flex;
     justify-content: center;
-    width: 250px;
+    width: 100%;
     position: absolute;
     top: 100%;
     left: 50%;
@@ -139,7 +139,7 @@
 .selectionArrow {
     display: inline-block;
     margin-left: 10px;
-    height: 22px;
+    width: 12px;
 }
 
 input[type="checkbox"] {
@@ -202,19 +202,26 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBar {
     display: none;
     position: fixed;
-    background: var(--ifm-background-color);
-    height: 100vh;
+    flex-direction: column;
+    background: var(--ifm-navbar-background-color);
     width: 100vw;
+    height: auto;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 2100;
     padding: 42px 16px calc(30px + env(safe-area-inset-bottom)) 16px;
+    overscroll-behavior: contain;
+    transition-property: opacity, visibility, transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
     overflow: scroll;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
-    transform: translate3d(100%, 0, 0);
 }
 .mobileFilterBar__show {
-    transform: translate3d(0, 0, 0);
+}
+.mobileFilterContainer {
+    display: block;
 }
 .mobileSelectContainer {
     display: inline-flex;
@@ -313,7 +320,6 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBarHeader {
     display: none;
 }
-
 @media screen and (max-width: 996px) {
     .mobileFilterBarButtonContainer,
     .mobileFilterBarHeader {
@@ -321,7 +327,7 @@ input[type="checkbox"]:checked::before {
     }
 
     .mobileFilterBar {
-        display: block;
+        display: flex;
     }
 
     .selectBoxes,
