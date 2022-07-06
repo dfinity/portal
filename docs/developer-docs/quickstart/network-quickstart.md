@@ -156,7 +156,7 @@ To look up your account in the ledger:
 
         10.00000000 ICP
 
-## Convert ICP tokens to cycles
+## Creating a Cycles Wallet
 
 Now that you have confirmed your account information and current ICP token balance, you can convert some of those ICP tokens to cycles and move them into a cycles wallet.
 

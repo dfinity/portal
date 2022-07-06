@@ -18,7 +18,9 @@ To check the identity you are currently using, run the following command:
 
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
-Side note: The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a wallet-internal role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+:::note
+The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a wallet-internal role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+:::
 
 A **controller** is the most privileged role and a principal assigned to the controller role can perform privileged tasks including the following:
 
@@ -54,7 +56,7 @@ Authorizing a principal as a custodian does not automatically grant the principa
 
 If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
 
-If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM).
+If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](../../quickstart/network-quickstart.md#creating-a-cycles-wallet) shows how to do this.
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
@@ -112,197 +114,9 @@ The command returns the balance using Candid format as a record with an amount f
 
     (record { 3_573_748_184 = 6_895_656_625_450 })
 
-## Add a Controller
+## Other dfx-supported Wallet Functions
 
-If you are the controller of a cycles wallet, you can add other user principals or canister principals to the controller role. Adding a principal to the controller role also automatically adds the principal to the custodian role.
-
-To add a controller to a cycles wallet in a the local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  Display the cycles balance from the cycles wallet associated with the currently-selected identity by running a command similar to the following:
-
-        dfx wallet add-controller <controller-principal>
-
-    For example, you would run the following command to add the user represented by the principal b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe as a controller of the local cycles wallet:
-
-        dfx wallet add-controller b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-    The command displays output similar to the following:
-
-        Added b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe as a controller.
-
-## List the Current Controllers
-
-You can use the `dfx wallet controllers` command or the `get_controllers` method to list the principals that have full control over a specified cycles wallet canister.
-
-To list the controllers for a cycles wallet in a local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  List the principals that have full control over the cycles wallet in the current project by running the following command:
-
-        dfx wallet controllers
-
-    The command displays the textual representation of the principals that have control over the cycles wallet with output similar to the following:
-
-        tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
-        b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-## Remove a Controller
-
-You can use the `dfx wallet remove-controller` command or the `remove_controller` method to remove a principal as a controller.
-
-To remove a controller for a cycles wallet in a local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  Specify the principal to remove from the controller role in the current project by running a command similar to the following:
-
-        dfx wallet remove-controller b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-    The command output similar to the following:
-
-        Removed b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe as a controller.
-
-## Authorize a Custodian
-
-You can use the `dfx wallet authorize` command or the `authorize` method to authorize a principal as a custodian of a cycles wallet.
-
-To authorize a principal as a custodian for the cycles wallet in a local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  Specify the principal to authorize as a custodian in the current project and for the current identity by running a command similar to the following:
-
-        dfx wallet authorize b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-    The command output similar to the following:
-
-        Authorized b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe as a custodian.
-
-## List Current Custodians
-
-You can use the `dfx wallet custodians` command or the `get_custodians` method to return the list of principals that are currently defined as custodians for the cycles wallet.
-
-To list the custodians for a cycles wallet in a local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  List the principals that have the custodian role for the cycles wallet in the current project by running the following command:
-
-        dfx wallet custodians
-
-    The command displays output similar to the following:
-
-        tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
-        b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-## Remove Authorization for a Custodian
-
-You can use the `dfx wallet deauthorize` command or the `deauthorize` method to remove a principal as a custodian for a cycles wallet. De-authorizing a principal that was previously added as a controller also automatically removes the principal from the controller role.
-
-To remove a custodian for a cycles wallet in a local project:
-
-1.  Open a terminal and navigate to the root directory of the project.
-
-2.  Start the local canister execution environment by running the following command:
-
-        dfx start --background
-
-3.  Specify the principal to remove from the custodian role in the current project by running a command similar to the following:
-
-        dfx wallet deauthorize b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
-
-    The command output similar to the following:
-
-        Deauthorized b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe as a custodian.
-
-## Send Cycles to a Canister
-
-You can use `dfx wallet send` command of the `wallet_send` method to send a specific number of cycles to a specific canister. Keep in mind that the canister you specify must be a cycles wallet or have a `wallet_receive` method to accept the cycles.
-
-If you have deployed a cycles wallet on the Internet Computer, you can use the `dfx wallet send` command to send cycles between canisters.
-
-To send cycles to another canister running on the Internet Computer:
-
-1.  Open a terminal and navigate to a directory that contains a `dfx.json` configuration file.
-
-2.  Check your connection to the Internet Computer by running the following command:
-
-        dfx ping ic
-
-3.  Get the principal for the canister that you want to receive the cycles.
-
-    For example, run the following command to display the cycles wallet principal associated with the current user identity on the Internet Computer:
-
-        dfx identity --network ic get-wallet
-
-    The command displays the cycles wallet principal with output similar to the following:
-
-        gastn-uqaaa-aaaae-aaafq-cai
-
-4.  Send cycles to the canister by running a command similar to the following:
-
-        dfx wallet --network ic send <destination> <amount>
-
-    For example:
-
-        dfx wallet --network ic send gastn-uqaaa-aaaae-aaafq-cai 10000000000
-
-    If the transfer is successful, the command does not displays any output.
-
-    The maximum number of cycles that can be stored in a cycles wallet is 2<sup>128</sup>.
-
-5.  Check the cycles wallet balance to see the updated number of cycles available by running the following command:
-
-        dfx wallet --network ic balance
-
-    For example:
-
-        67.992 TC (trillion cycles).
-
-## List Address Book Entries
-
-You can use the `dfx wallet addresses` command or the `list_addresses` method to list the principals and roles that have been configured for the cycles wallet.
-
-To view address book entries for a cycles wallet running on the Internet Computer:
-
-1.  Open a terminal and navigate to a directory that contains a `dfx.json` configuration file.
-
-2.  Check your connection to the Internet Computer by running the following command:
-
-        dfx ping ic
-
-3.  Get the address book entries for the cycles wallet by running the following command :
-
-        dfx wallet --network ic addresses
-
-    The command displays the controllers and custodians for the cycles wallet with output similar to the following:
-
-        Id: tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe, Kind: Unknown, Role: Controller, Name: No name set.
-        Id: ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe, Kind: Unknown, Role: Custodian, Name: No name set.
-        Id: b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe, Kind: Unknown, Role: Controller, Name: No name set.
+The cycles wallet supports a lot more functions through dfx. For a full list of supported operations, see the [dfx wallet reference](../../../references/cli-reference/dfx-wallet.md).
 
 ## Additional Methods in the Default Cycles Wallet
 
