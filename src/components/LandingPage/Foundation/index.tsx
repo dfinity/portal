@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "@site/src/components/Foundation/index.module.css";
+import styles from "@site/src/components/LandingPage/Foundation/index.module.css";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
@@ -94,7 +94,7 @@ function Foundation() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a id="foundation" />
+      <a className={styles.anchor} id="foundation" />
       <motion.img
         src={TeamPhotoFront}
         style={{ y: currentYScroll * 0.4 }}
