@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import canisters from "@site/static/img/developers/canisters.png";
+import whiteBlur from "@site/static/img/developers/whiteBlur.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
@@ -49,6 +50,7 @@ function Index() {
           className={styles.rightContainer}
         >
           <img className={styles.canisterGraphic} src={canisters} alt="" />
+          <img className={styles.whiteBlur} src={whiteBlur} alt="" />
         </motion.div>
       </motion.div>
     </div>
