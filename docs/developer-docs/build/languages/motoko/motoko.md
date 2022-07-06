@@ -16,56 +16,17 @@ Motoko has native support for Internet Computer canister smart contracts.
 
 A canister smart contract (or canister for short) is expressed as a Motoko actor. An actor is an autonomous object that fully encapsulates its state and communicates with other actors only through asynchronous messages.
 
-``` motoko name=counter
-actor Counter {
-
-  var value = 0;
-
-  public func inc() : async Nat {
-    value += 1;
-    return value;
-  };
-}
-```
-
-## One
-
 ``` motoko name=counter file=./Counter.mo
 ```
 
-## Two
+This section of code defines the private state of the actor.
 
-``` motoko file=./Counter.mo
+``` motoko name=counter file=./Counter.mo#L3
 ```
 
-## Three
+While, this section of code defines its shared, public functions:
 
-```motoko name=counter file=./Counter.mo
-```
-
-## Four
-
-```motoko name=counter file=./Counter.mo
-```
-
-## Five
-
-```motoko file=./Counter.mo
-```
-
-## Six
-
-```js file=./Counter.mo
-```
-
-## Seven
-
-```js file={require('./Counter.mo').default}
-```
-
-## Eight
-
-```js file={require('./developer-docs/build/languages/motoko/Counter.mo').default}
+``` motoko name=counter file=./Counter.mo#L5-L8
 ```
 
 
