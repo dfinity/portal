@@ -27,6 +27,7 @@
 
 .container:hover {
     color: white;
+    text-decoration: none;
 }
 
 .container:hover .arrow {
