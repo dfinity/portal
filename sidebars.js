@@ -37,7 +37,7 @@ const sidebars = {
             'developer-docs/build/project-setup/design-dapps',
             'developer-docs/build/project-setup/manage-projects',
             'developer-docs/build/project-setup/manage-canisters',
-            'developer-docs/build/project-setup/default-wallet',
+            'developer-docs/build/project-setup/cycles-wallet',
           ],
         },
         {

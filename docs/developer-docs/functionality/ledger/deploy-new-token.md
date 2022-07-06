@@ -62,7 +62,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](./index.md))
 
-    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/default-wallet.html#_controller_and_custodian_roles) of the archive canisters
+    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/cycles-wallet.html#_controller_and_custodian_roles) of the archive canisters
 
     <div class="important">
 
