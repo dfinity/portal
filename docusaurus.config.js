@@ -25,6 +25,18 @@ const customDocusaurusPlugin = (context, options) => {
   };
 };
 
+/** @type {import('@docusaurus/types').PluginModule} */
+const tailwindPlugin = async function (context, options) {
+  return {
+    name: "docusaurus-tailwindcss",
+    configurePostCss(postCssOptions) {
+      postCssOptions.plugins.push(require("tailwindcss"));
+      postCssOptions.plugins.push(require("autoprefixer"));
+      return postCssOptions;
+    },
+  };
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",
@@ -51,6 +63,7 @@ const config = {
       },
     ],
     customDocusaurusPlugin,
+    tailwindPlugin,
   ],
 
   presets: [
@@ -190,7 +203,7 @@ const config = {
             items: [
               {
                 label: "Token Holders ",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
+                href: "/token-holders",
               },
               {
                 label: "Roadmap",
