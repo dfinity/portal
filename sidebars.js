@@ -142,17 +142,17 @@ const sidebars = {
 
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Deployment & Scaling',
-        //   link: {
-        //     type: 'doc', id: 'developer-docs/build/deployment-scaling/index',
-        //   },
-        //   items: [
-        //     'developer-docs/build/deployment-scaling/deploy',
-        //     'developer-docs/build/deployment-scaling/scale'
-        //   ],
-        // },
+        {
+          type: 'category',
+          label: 'Deployment & Scaling',
+          link: {
+            type: 'doc', id: 'developer-docs/build/deployment-scaling/index',
+          },
+          items: [
+            'developer-docs/build/deployment-scaling/deploy',
+            'developer-docs/build/deployment-scaling/scale'
+          ],
+        },
         'developer-docs/build/troubleshooting',
       ]
     },
