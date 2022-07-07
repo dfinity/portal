@@ -34,7 +34,7 @@ This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [
 
 -   **[Cycles](../../concepts/tokens-cycles.md)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth consumed on the IC. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The IC’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
 
--   A **[cycles wallet](../build/project-setup/default-wallet.md)** is a canister that holds cycles and powers up dapps.
+-   A **[cycles wallet](../build/project-setup/cycles-wallet.md)** is a canister that holds cycles and powers up dapps.
 
 ## 1. Installing Tools
 
