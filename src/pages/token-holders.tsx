@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import ChevronRight from "../../static/img/token-holders/chevron-right.svg";
-import HeroBg from "../../static/img/token-holders/hero-bg.svg";
+import BlobBlue from "../../static/img/token-holders/blob-blue.svg";
+import BlobWhite from "../../static/img/token-holders/blob-white.svg";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import { VotingRewardsChart } from "../components/ICPToken";
 import useGlobalData from "@docusaurus/useGlobalData";
@@ -148,6 +149,7 @@ function TokenHolders(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
+      <BlobBlue className="absolute w-[800px] -right-[270px] top-[-350px] md:w-auto  md:right-[-600px] 2xl:left-1/2 translate-x-[200px] md:top-[-100px] z-[2000]"></BlobBlue>
       <main className="text-black relative overflow-hidden">
         <section className="max-w-page relative px-6 pt-12 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
           <div className=" md:w-7/10 lg:w-6/10 md:ml-1/12">
@@ -209,8 +211,7 @@ function TokenHolders(): JSX.Element {
             </a>
           </div>
         </section>
-        <HeroBg className="absolute w-[800px] -right-[300px] top-[-350px] md:w-auto  md:right-[-650px] xl:left-1/2 translate-x-[200px] md:top-[-200px]"></HeroBg>
-        <section className="max-w-page md:mx-auto px-6  md:px-12.5 pt-12">
+        <section className="max-w-page md:mx-auto px-6  md:px-12.5 pt-12 relative">
           <div className="md:mx-auto md:w-8/12 text-center mb-24 md:mb-40">
             <h2
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8 text-transparent bg-clip-text px-3 "
@@ -290,10 +291,13 @@ function TokenHolders(): JSX.Element {
               </div>
             </div>
           </div>
+        </section>
+        <section className="max-w-page md:mx-auto px-6 md:px-12.5 relative">
+          <BlobBlue className="absolute w-[800px] -left-[570px] top-[-300px] md:w-auto  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"></BlobBlue>
           {/* 
           ---
           */}
-          <div className="md:mx-auto md:w-10/12 mt-24 md:mt-40">
+          <div className="md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10">
             <h3 className="md:w-4/10 ml-auto tw-heading-4 md:tw-heading-3 mb-2">
               Earn staking rewards
             </h3>
@@ -335,6 +339,7 @@ function TokenHolders(): JSX.Element {
               </div>
             </div>
           </div>
+
           {/* 
           ---
            */}
@@ -399,6 +404,7 @@ function TokenHolders(): JSX.Element {
                 </a>
               </p>
             </div>
+            <BlobWhite className="absolute w-[800px] right-[-300px] top-[-450px] md:w-auto  md:right-[-550px] translate-x-[200px] md:top-[-400px]"></BlobWhite>
           </div>
         </section>
         <section className="max-w-page md:mx-auto px-6 md:px-12.5 mt-20 md:mt-40">
