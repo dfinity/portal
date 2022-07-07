@@ -348,7 +348,7 @@ This will display your account number on the ICP ledger. It looks similar to thi
 e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 ```
 
-Once you have transferred some ICP tokens into this account, you can see the balance using this command:
+Once you have transferred some ICP tokens into this account (5-10$ worth should be plenty to get going), you can see the balance using this command:
 
 ``` bash
 dfx ledger --network ic balance
