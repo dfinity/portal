@@ -131,7 +131,7 @@ const config = {
             items: [
               {
                 label: "Basics",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Introduction_to_the_Internet_Computer",
+                href: "/basics",
               },
               {
                 label: "Internet Identity",

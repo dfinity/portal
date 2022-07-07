@@ -5,7 +5,7 @@ import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/svgIcons/bgcircle.svg";
+import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import nftMinting from "@site/static/img/samples/nftMinting.png";
 import helloWorld from "@site/static/img/samples/helloWorld.png";
@@ -16,6 +16,9 @@ import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.pn
 import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
 import actorReference from "@site/static/img/samples/actorReference.png";
 import webgl from "@site/static/img/samples/webgl.png";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import transitions from "@site/static/transitions.json";
 
 const sampleItems = [
   {
@@ -203,6 +206,13 @@ function Samples(): JSX.Element {
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
   const [numberOfItems, setNumberOfItems] = React.useState(16);
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [controls, inView]);
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--ifm-color-primary",
@@ -254,23 +264,31 @@ function Samples(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
-        <div className={styles.container}>
-          <BGCircle className={styles.BGShape} />
+        <motion.div
+          ref={ref}
+          animate={controls}
+          initial="hidden"
+          variants={transitions.container}
+          className={styles.container}
+        >
+          <img className={styles.BGShape} src={BGCircle} alt="" />
           <Header />
-          <FilterBar
-            numberOfItems={filteredSamples.length}
-            selectedLanguages={selectedLanguages}
-            setSelectedLanguages={setSelectedLanguages}
-            selectedDomains={selectedDomains}
-            setSelectedDomains={setSelectedDomains}
-            selectedLevels={selectedLevels}
-            setSelectedLevels={setSelectedLevels}
-            selectedContentTypes={selectedContentTypes}
-            setSelectedContentTypes={setSelectedContentTypes}
-            selectedSortBy={selectedSortBy}
-            setSelectedSortBy={setSelectedSortBy}
-          />
-          <div className={styles.cards}>
+          <motion.div variants={transitions.item}>
+            <FilterBar
+              numberOfItems={filteredSamples.length}
+              selectedLanguages={selectedLanguages}
+              setSelectedLanguages={setSelectedLanguages}
+              selectedDomains={selectedDomains}
+              setSelectedDomains={setSelectedDomains}
+              selectedLevels={selectedLevels}
+              setSelectedLevels={setSelectedLevels}
+              selectedContentTypes={selectedContentTypes}
+              setSelectedContentTypes={setSelectedContentTypes}
+              selectedSortBy={selectedSortBy}
+              setSelectedSortBy={setSelectedSortBy}
+            />
+          </motion.div>
+          <motion.div variants={transitions.item} className={styles.cards}>
             {filteredSamples.slice(0, numberOfItems).map((sample) => (
               <Card
                 key={sample.index}
@@ -281,7 +299,7 @@ function Samples(): JSX.Element {
                 links={sample.links}
               />
             ))}
-          </div>
+          </motion.div>
           {filteredSamples.length > numberOfItems && (
             <div
               className={styles.loadMore}
@@ -293,7 +311,7 @@ function Samples(): JSX.Element {
               <p className={styles.selectTitle}>Load more</p>
             </div>
           )}
-        </div>
+        </motion.div>
       </main>
     </Layout>
   );

@@ -37,7 +37,7 @@ const sidebars = {
             'developer-docs/build/project-setup/design-dapps',
             'developer-docs/build/project-setup/manage-projects',
             'developer-docs/build/project-setup/manage-canisters',
-            'developer-docs/build/project-setup/default-wallet',
+            'developer-docs/build/project-setup/cycles-wallet',
           ],
         },
         {
@@ -106,6 +106,16 @@ const sidebars = {
               items: [
                 'developer-docs/build/languages/candid/candid-concepts',
                 'developer-docs/build/languages/candid/candid-howto',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Other Languages',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/other-languages/other-languages-intro',
+              },
+              items: [
+                'developer-docs/build/languages/other-languages/clang-supported-languages',
               ],
             },
           ]

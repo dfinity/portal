@@ -16,9 +16,15 @@ The correct behavior of a canister can be checked in two steps. First, inspect t
 
 ## The Behavior of the Canister cannot Unexpectedly Change
 
-Canister smart contracts are deployed and managed by controllers. Among other capabilities, controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
+Canister smart contracts are deployed and managed by controllers. Among other capabilities, the controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains and the controllers have complete control over the assets like ICP tokens or Bitcoins held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
 
-For critical applications like those used in DeFI, mutability can be dangerous; the controller could change a benign canister into a canister that steals ICP. Below we outline some options available to developers on how to verifiably restrict mutability.
+For critical applications like those used in DeFI, mutability can be dangerous; the controller could change a benign canister into a canister that steals assets. Below we outline some options available to developers on how to verifiably restrict mutability.
+
+:::caution
+
+The canisters, if not voluntarily made immutable, have complete control over the user assets held by them, for example, any ICP Tokens or Bitcoin held by the canister on the user's behalf. The canister, if malicious, can steal all the assets. In other words, as a user, if you interact with a canister that deals with your assets, inspect the canister to know how it handles them. If you determine that the canister is storing the assets in its subaccounts, ensure that the canister is immutable or has decentralized governance.
+
+:::
 
 ### Complete Immutability
 

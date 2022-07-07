@@ -34,7 +34,7 @@
 .selectBox {
     display: inline-flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     padding: 10px 16px;
     margin: 0 8px;
     background: rgba(248, 247, 255, 1);
@@ -47,7 +47,7 @@
 .sortByOptionsContainer {
     display: flex;
     justify-content: center;
-    width: 250px;
+    width: 100%;
     position: absolute;
     top: 100%;
     left: 50%;
@@ -139,7 +139,7 @@
 .selectionArrow {
     display: inline-block;
     margin-left: 10px;
-    height: 22px;
+    width: 12px;
 }
 
 input[type="checkbox"] {
@@ -188,7 +188,8 @@ input[type="checkbox"]:checked::before {
 .closeIcon {
     display: flex;
     justify-content: flex-end;
-    height: 18px;
+    height: 21px;
+    min-width: 21px;
 }
 
 .mobileFilterTitle {
@@ -201,16 +202,27 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBar {
     display: none;
     position: fixed;
-    background: var(--ifm-background-color);
-    height: 100vh;
+    flex-direction: column;
+    background: var(--ifm-navbar-background-color);
     width: 100vw;
+    height: auto;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 2100;
-    padding: 50px 5vw;
+    padding: 42px 16px calc(30px + env(safe-area-inset-bottom)) 16px;
+    overscroll-behavior: contain;
+    transition-property: opacity, visibility, transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
     overflow: scroll;
 }
-
+.mobileFilterBar__show {
+}
+.mobileFilterContainer {
+    display: block;
+}
 .mobileSelectContainer {
     display: inline-flex;
     flex-direction: column;
@@ -219,6 +231,7 @@ input[type="checkbox"]:checked::before {
     font-size: 18px;
     font-weight: 700;
     line-height: 28px;
+    width: 100%;
 }
 
 .mobileSelectContainer p {
@@ -237,7 +250,7 @@ input[type="checkbox"]:checked::before {
 .mobileFilterButton,
 .mobileFilterClearButton {
     display: flex;
-    width: 90vw;
+    width: 100%;
     justify-content: center;
     align-items: center;
     height: 38px;
@@ -263,7 +276,7 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBarButtonContainer {
     display: none;
     position: fixed;
-    z-index: 2000;
+    z-index: 1000;
     width: 100vw;
     bottom: 0;
     left: 0;
@@ -307,7 +320,6 @@ input[type="checkbox"]:checked::before {
 .mobileFilterBarHeader {
     display: none;
 }
-
 @media screen and (max-width: 996px) {
     .mobileFilterBarButtonContainer,
     .mobileFilterBarHeader {
@@ -315,7 +327,7 @@ input[type="checkbox"]:checked::before {
     }
 
     .mobileFilterBar {
-        display: block;
+        display: flex;
     }
 
     .selectBoxes,

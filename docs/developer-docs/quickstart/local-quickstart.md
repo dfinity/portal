@@ -223,4 +223,4 @@ Here are some suggestions for where to go next:
 
 -   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../build/languages/motoko/motoko-at-a-glance) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.

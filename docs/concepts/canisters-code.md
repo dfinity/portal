@@ -90,11 +90,11 @@ In general, each canister includes the compiled code for one actor object. Each 
 
 ## Why your code is compiled into WebAssembly
 
-When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the {platform}.
+When you compile Motoko code, the result is a WebAssembly module. WebAssembly is a low-level computer instruction format that is portable and abstracts program execution cleanly over most modern computer hardware. It is broadly supported for programs that run on the internet and a natural fit for deploying dapps that are intended to run on the Internet Computer.
 
 With Motoko, developers can compile to portable WebAssembly while still delivering secure dapps using a simple and high-level language.
 
-The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the {platform} and is easy to learn whether you are a new or experienced programmer.
+The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the Internet Computer and is easy to learn whether you are a new or experienced programmer.
 
 This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../developer-docs/build/languages/motoko/about-this-guide.md).
 
