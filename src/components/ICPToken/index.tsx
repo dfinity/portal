@@ -138,7 +138,7 @@ export const votingRewardsData = {
   ],
 };
 
-function VotingRewardsChart() {
+export function VotingRewardsChart() {
   return (
     <div className={styles.votingRewardsChart}>
       <Line
