@@ -3,8 +3,8 @@ import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ICPTokenGraphMobile01 from "@site/static/img/ICPToken/ICPTokenGraphMobile01.png";
-import ICPTokenGraphMobile02 from "@site/static/img/ICPToken/ICPTokenGraphMobile02.png";
+import ICPTokenGraphMobile01 from "@site/static/img/ICPToken/ICPTokenGraphMobile01.svg";
+import ICPTokenGraphMobile02 from "@site/static/img/ICPToken/ICPTokenGraphMobile02.svg";
 import transitions from "@site/static/transitions.json";
 
 import {
@@ -158,9 +158,9 @@ function VotingRewardsChart() {
           layout: {
             padding: {
               top: 0,
-              right: 20,
+              right: 30,
               bottom: 0,
-              left: 20,
+              left: 0,
             },
           },
           scales: {
@@ -195,7 +195,8 @@ function VotingRewardsChart() {
             title: {
               display: true,
               text: ["Latest Annualized Voting", "Reward Percentage"],
-              font: { size: 14, weight: "light" },
+              font: { size: 14, weight: "normal" },
+              padding: 0,
               color: "black",
               align: "start",
             },
@@ -210,7 +211,7 @@ function VotingRewardsChart() {
                 return "";
               },
               anchor: "end",
-              align: "end",
+              align: -70,
               color: "black",
               font: { size: 14, weight: "bold" },
             },
@@ -242,6 +243,7 @@ function VotingRewardsChart() {
     </div>
   );
 }
+
 const chart = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -264,7 +266,7 @@ function ICPToken() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a id="ICPToken" />
+      <a className={styles.anchor} id="ICPToken" />
       <div className={styles.header}>
         <motion.p variants={transitions.item} className={styles.headerTitle}>
           Internet Computer utility token
@@ -301,11 +303,7 @@ function ICPToken() {
           ) : (
             <div className={styles.placeholder} />
           )}
-          <img
-            className={styles.graphMobile}
-            src={ICPTokenGraphMobile01}
-            alt="ICPTokenGraphMobile01"
-          />
+          <ICPTokenGraphMobile01 className={styles.graphMobile} />
         </motion.div>
         <motion.div variants={chart} className={styles.card}>
           <p className={styles.cardTitle}>
@@ -325,11 +323,7 @@ function ICPToken() {
           ) : (
             <div className={styles.placeholder} />
           )}
-          <img
-            className={styles.graphMobile}
-            src={ICPTokenGraphMobile02}
-            alt="ICPTokenGraphMobile02"
-          />
+          <ICPTokenGraphMobile02 className={styles.graphMobile} />
         </motion.div>
       </div>
     </motion.div>

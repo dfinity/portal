@@ -41,6 +41,7 @@
   top: calc(50% + 0px);
   left: calc(50% + 650px);
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .statusCard {

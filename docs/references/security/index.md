@@ -18,7 +18,7 @@ We provide the following security best practices in the subsequent pages:
 
 ## Target Audience
 
-This document was initially intended for internal use at DFINITY. However, we now publish this to the community so every developer can benefit. The target audience are any developers working on canisters or web apps for the Internet Computer. This is also of interest anyone doing reviews of such code.
+This document was initially intended for internal use at DFINITY. However, we now publish this to the community so every developer can benefit. The target audience are any developers working on canisters or web apps for the Internet Computer. This is also of interest to anyone doing reviews of such code.
 
 ## Disclaimers and Limitations
 
