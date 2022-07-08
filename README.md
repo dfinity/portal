@@ -1,8 +1,8 @@
 <img src="https://user-images.githubusercontent.com/15371828/158857061-8fa8d079-d33f-4ed2-88aa-56d452d238d8.svg" align="right" alt="Monetae logo" width="270">
 
-# Internet Computer Developer Portal 
+# Internet Computer Developer Portal
 
-The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
+The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer.
 
 https://internetcomputer.org
 
