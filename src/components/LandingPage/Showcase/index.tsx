@@ -260,13 +260,13 @@ function Showcase() {
                 developer and entrepreneurial activity. Get inspired by the
                 existing dapps.
               </p>
-              <Link
+              {/* <Link
                 className={styles.callToAction}
-                to={"https://dfinity.org/showcase/"}
+                to={"???"}
               >
                 <RightPointer />
                 <p> Explore the Internet Computer ecosystem</p>
-              </Link>
+              </Link> */}
             </motion.div>
           </div>
           <motion.div
