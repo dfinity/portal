@@ -54,7 +54,10 @@ const TrueScaling = () => {
           By adding new subnets regularly, the IC scales to an unbounded number
           of dapps and allows storage of unlimited data.
         </p>
-        <Link href="https://dfinity.org/showcase" className="cta-link">
+        <Link
+          href="https://internet-computer.typeform.com/to/IWl3iClx"
+          className="cta-link"
+        >
           <svg
             width="24"
             viewBox="0 0 24 24"

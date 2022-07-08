@@ -67,7 +67,7 @@ const Ecosystem = () => {
             The reverse gas model enables free-to-use, truly user-friendly
             dapps, ready for mass adoption.
           </p>
-          <Link href="https://dfinity.org/showcase" className="cta-link">
+          <Link href="/#showcase" className="cta-link">
             <svg
               width="24"
               viewBox="0 0 24 24"
