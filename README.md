@@ -16,7 +16,7 @@ While modifying documentation in the repository, you can preview the changes loc
 ```bash
 cd portal/
 git submodule update --init --remote
-npm install 
+npm install
 npm start
 ```
 
