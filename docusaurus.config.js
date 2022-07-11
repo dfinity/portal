@@ -6,7 +6,7 @@ const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-
+const fetch = require("node-fetch").default;
 const isDev = process.env.NODE_ENV === "development";
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
@@ -21,6 +21,36 @@ const customDocusaurusPlugin = (context, options) => {
           symlinks: false,
         },
       };
+    },
+  };
+};
+
+/** @type {import('@docusaurus/types').PluginModule} */
+const tailwindPlugin = async function (context, options) {
+  return {
+    name: "tailwindcss",
+    configurePostCss(postCssOptions) {
+      postCssOptions.plugins.push(require("tailwindcss"));
+      postCssOptions.plugins.push(require("autoprefixer"));
+      return postCssOptions;
+    },
+  };
+};
+
+/** @type {import('@docusaurus/types').PluginModule} */
+const icpPricePlugin = async function (context, options) {
+  return {
+    name: "icp-price",
+    async loadContent() {
+      const ticker = await fetch(
+        "https://api.binance.com/api/v3/ticker/24hr?symbol=ICPUSDT"
+      ).then((res) => res.json());
+
+      return +ticker.lastPrice;
+    },
+    async contentLoaded({ content, actions }) {
+      const { setGlobalData } = actions;
+      setGlobalData(content);
     },
   };
 };
@@ -52,6 +82,8 @@ const config = {
       },
     ],
     customDocusaurusPlugin,
+    tailwindPlugin,
+    icpPricePlugin,
   ],
 
   presets: [
@@ -190,8 +222,8 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "Token Holders ",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
+                label: "ICP tokens",
+                href: "/icp-tokens",
               },
               {
                 label: "Roadmap",

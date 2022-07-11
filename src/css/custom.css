@@ -228,3 +228,7 @@ div[class^="announcementBarContent"] {
 }
 
 @import "typography.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
