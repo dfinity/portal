@@ -442,7 +442,7 @@ function TokenHolders(): JSX.Element {
                   <div className="tw-paragraph md:mb-0">
                     <p className="mb-0">
                       The fee of an ICP ledger transaction is fixed at 0.0001
-                      ICP. It allows effcient transfers and dapp payments. Use
+                      ICP. It allows efficient transfers and dapp payments. Use
                       the NNS dapp or the available wallets to send
                       transacitons:
                     </p>
