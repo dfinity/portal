@@ -20,6 +20,7 @@ import {
 } from "chart.js";
 import { Doughnut, Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+
 import clsx from "clsx";
 
 ChartJS.register(
@@ -90,6 +91,7 @@ function OwnershipChart() {
                 pointStyle: "circle",
                 boxWidth: 12,
               },
+
               onClick: function (e: any) {
                 // ChartEvent doesn't have stopPropagation
                 e.stopPropagation();
@@ -246,6 +248,7 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
       />
     </div>
   );
+
 };
 
 const chart = {

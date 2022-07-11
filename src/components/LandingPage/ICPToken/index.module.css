@@ -101,6 +101,7 @@
     width: Min(500px,100%);
 }
 
+
 .ownershipChart, .votingRewardsChart canvas {
     max-width: 100%;
 }
