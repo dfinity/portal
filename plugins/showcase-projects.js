@@ -43,6 +43,7 @@ const showcaseProjectsPlugin = async function () {
             display: project.fields.display,
             logo: project.fields.logo?.fields.file?.url,
             video: project.fields.video?.fields.file?.url,
+            videoContentType: project.fields.video?.fields.file?.contentType,
             screenshots:
               project.fields.screenshots
                 ?.map((ss) => ss.fields.file?.url)

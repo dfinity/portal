@@ -81,6 +81,8 @@ module.exports = {
       "lead-sm": ["18px", "28px"],
       paragraph: ["16px", "24px"],
       "paragraph-sm": ["14px", "22px"],
+
+      caption: ["12px", "16px"],
     },
   },
   plugins: [
@@ -106,6 +108,7 @@ module.exports = {
         ".tw-lead-sm": "@apply text-lead-sm font-book",
         ".tw-paragraph": "@apply text-paragraph font-book",
         ".tw-paragraph-sm": "@apply text-paragraph-sm font-book",
+        ".tw-caption": "@apply text-caption font-book",
       };
 
       addComponents(
