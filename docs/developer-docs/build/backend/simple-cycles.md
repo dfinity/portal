@@ -193,4 +193,4 @@ If you are looking for more information about working with cycles, check out the
 
 -   [Managing cycles (language reference)](../languages/motoko/cycles)
 
--   [ExperimentalCycles (base module)](../../../references/motoko-ref/experimentalcycles.md)
+-   [ExperimentalCycles (base module)](../../../references/motoko-ref/ExperimentalCycles.md)
