@@ -223,7 +223,7 @@ function Showcase() {
         variants={transitions.container}
       >
         <div className={styles.showcaseContainer}>
-          <a id="showcase" />
+          <a className={styles.anchor} id="showcase" />
           <div className={styles.header}>
             <motion.div variants={transitions.item} className={styles.title}>
               <span>Dapps for</span>
@@ -260,13 +260,13 @@ function Showcase() {
                 developer and entrepreneurial activity. Get inspired by the
                 existing dapps.
               </p>
-              <Link
+              {/* <Link
                 className={styles.callToAction}
-                to={"https://dfinity.org/showcase/"}
+                to={"???"}
               >
                 <RightPointer />
                 <p> Explore the Internet Computer ecosystem</p>
-              </Link>
+              </Link> */}
             </motion.div>
           </div>
           <motion.div
