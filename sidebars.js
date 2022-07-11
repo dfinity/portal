@@ -73,6 +73,7 @@ const sidebars = {
                 'developer-docs/build/languages/motoko/about-this-guide',
                 'developer-docs/build/languages/motoko/motoko-introduction',
                 'developer-docs/build/languages/motoko/basic-concepts',
+                'developer-docs/build/languages/motoko/base-intro',
                 'developer-docs/build/languages/motoko/mutable-state',
                 'developer-docs/build/languages/motoko/local-objects-classes',
                 'developer-docs/build/languages/motoko/actors-async',
@@ -280,7 +281,7 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'developer-docs/build/languages/motoko/base-intro',
+        type: 'doc', id: 'references/motoko-ref/index',
       },
       items: [
         'references/motoko-ref/Array',
