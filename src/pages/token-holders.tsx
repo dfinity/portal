@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import ChevronRight from "../../static/img/token-holders/chevron-right.svg";
-import BlobBlue from "../../static/img/token-holders/blob-blue.svg";
-import BlobWhite from "../../static/img/token-holders/blob-white.svg";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import { VotingRewardsChart } from "../components/ICPToken";
 import useGlobalData from "@docusaurus/useGlobalData";
 import DfinityLogo from "../../static/img/dfinity_logo.svg";
-import KeyIcon from "../../static/img/token-holders/key.svg";
 import CustodyGraphic from "../../static/img/token-holders/custody.svg";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
+
+import transitions from "@site/static/transitions.json";
 
 import YoutubeIcon from "../../static/img/token-holders/social/youtube.svg";
 import ForumIcon from "../../static/img/token-holders/social/forum.svg";
@@ -18,6 +20,7 @@ import DiscordIcon from "../../static/img/token-holders/social/discord.svg";
 import TwitterIcon from "../../static/img/token-holders/social/twitter.svg";
 import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
+import AnimateSpawn from "../components/Common/AnimateSpawn";
 
 const images = [
   {
@@ -148,43 +151,76 @@ function TokenHolders(): JSX.Element {
   const icpPrice = globalData["icp-price"]["default"] as number;
 
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <BlobBlue className="absolute w-[800px] -right-[270px] top-[-350px] md:w-auto  md:right-[-600px] 2xl:left-1/2 translate-x-[200px] md:top-[-100px] z-[2000]"></BlobBlue>
+    <Layout
+      title={siteConfig.title}
+      description={siteConfig.tagline}
+      wrapperClassName="overflow-hidden relative"
+    >
+      <img
+        src={BlobBlue}
+        alt=""
+        className="absolute pointer-events-none max-w-none w-[800px] -right-[270px] top-[-50px] md:w-[1500px]  md:right-[-600px] 2xl:left-1/2 translate-x-[200px] md:top-[-100px] z-[2000]"
+      />
       <main className="text-black relative overflow-hidden">
         <section className="max-w-page relative px-6 pt-12 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
-          <div className=" md:w-7/10 lg:w-6/10 md:ml-1/12">
-            <h1 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8">
+          <AnimateSpawn
+            className="md:w-7/10 lg:w-6/10 md:ml-1/12"
+            variants={transitions.container}
+          >
+            <motion.h1
+              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8"
+              variants={transitions.item}
+            >
               The ICP Token
-            </h1>
-            <p className="tw-lead-sm md:tw-lead mb-0">
+            </motion.h1>
+            <motion.p
+              className="tw-lead-sm md:tw-lead mb-0"
+              variants={transitions.item}
+            >
               Learn about the ICP token, how to stake and get involved in the
               governance of the Internet Computer. See how ICP can be converted
               to the cycles which are used for computation.
-            </p>
-          </div>
+            </motion.p>
+          </AnimateSpawn>
         </section>
 
-        <section className="max-w-page pt-[354px] md:pt-[467px] px-6 relative md:mx-auto">
-          {images.map((img) => (
-            <img
-              src={img.url}
-              className={`absolute z-0 ${img.class}`}
-              alt=""
-              key={img.url}
-            />
-          ))}
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.container}
+          className="max-w-page pt-[354px] md:pt-[467px] px-6 relative md:mx-auto"
+        >
+          <AnimateSpawn variants={transitions.container}>
+            {images.map((img) => (
+              <motion.img
+                src={img.url}
+                className={`absolute z-0 ${img.class}`}
+                alt=""
+                key={img.url}
+                variants={transitions.item}
+              />
+            ))}
+          </AnimateSpawn>
           <div className="md:w-6/12 mx-auto text-center mb-12 md:mb-20 relative z-10">
-            <h2 className="tw-heading-4 md:tw-title-lg mb-2 md:mb-8">
+            <motion.h2
+              className="tw-heading-4 md:tw-title-lg mb-2 md:mb-8"
+              variants={transitions.item}
+            >
               Get &amp; Store tokens
-            </h2>
-            <p className="tw-lead-sm md:tw-lead mb-0">
+            </motion.h2>
+            <motion.p
+              className="tw-lead-sm md:tw-lead mb-0"
+              variants={transitions.item}
+            >
               Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus
               commodo, tortor mauris condimentum nibh, ut fermentum massa justo
               sit amet risus. Vivamus sagittis lacus vel augue laoreet auctor.
-            </p>
+            </motion.p>
           </div>
           <div className="md:w-10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 gap-2 pb-44 md:pb-80 relative z-10">
-            <a className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-green border-solid hover:bg-infinite hover:border-infinite transition-all group">
+            <motion.a
+              className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-green border-solid hover:bg-infinite hover:border-infinite transition-all group"
+              variants={transitions.item}
+            >
               <div className="flex-1 group-hover:-translate-y-3 transition-transform">
                 <h3 className="tw-heading-5 text-infinite group-hover:text-white">
                   Centralized exchanges
@@ -196,8 +232,11 @@ function TokenHolders(): JSX.Element {
                 </p>
               </div>
               <ChevronRight className="text-infinite group-hover:text-white transition-colors"></ChevronRight>
-            </a>
-            <a className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-infinite border-solid hover:bg-infinite hover:border-infinite transition-all group">
+            </motion.a>
+            <motion.a
+              className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-infinite border-solid hover:bg-infinite hover:border-infinite transition-all group"
+              variants={transitions.item}
+            >
               <div className="flex-1 group-hover:-translate-y-3 transition-transform">
                 <h3 className="tw-heading-5 text-infinite group-hover:text-white">
                   Wallets
@@ -208,12 +247,16 @@ function TokenHolders(): JSX.Element {
                 </p>
               </div>
               <ChevronRight className="text-infinite group-hover:text-white transition-colors"></ChevronRight>
-            </a>
+            </motion.a>
           </div>
-        </section>
+        </AnimateSpawn>
         <section className="max-w-page md:mx-auto px-6  md:px-12.5 pt-12 relative">
-          <div className="md:mx-auto md:w-8/12 text-center mb-24 md:mb-40">
-            <h2
+          <AnimateSpawn
+            className="md:mx-auto md:w-8/12 text-center mb-24 md:mb-40"
+            variants={transitions.container}
+          >
+            <motion.h2
+              variants={transitions.item}
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8 text-transparent bg-clip-text px-3 "
               style={{
                 backgroundImage:
@@ -221,15 +264,24 @@ function TokenHolders(): JSX.Element {
               }}
             >
               What can you do with the ICP token?
-            </h2>
-            <p className="tw-lead-sm md:tw-lead mb-0 max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p
+              className="tw-lead-sm md:tw-lead mb-0 max-w-2xl mx-auto"
+              variants={transitions.item}
+            >
               Internet Computer (ICP) is a utility token that allows users to
               participate in and govern the Internet Computer blockchain
               network.
-            </p>
-          </div>
-          <div className="md:mx-auto md:w-10/12 md:mt-40 flex gap-1/10 flex-col md:flex-row">
-            <div className="md:w-4/10 md:pr-5">
+            </motion.p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="md:mx-auto md:w-10/12 md:mt-40 flex gap-1/10 flex-col md:flex-row"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="md:w-4/10 md:pr-5"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-4 md:tw-heading-3 mb-2">
                 Convert ICP into cycles to pay for computation
               </h3>
@@ -266,8 +318,11 @@ function TokenHolders(): JSX.Element {
                   </a>
                 </p>
               </div>
-            </div>
-            <div className="flex-1 self-center mt-15 md:mt-0">
+            </motion.div>
+            <motion.div
+              className="flex-1 self-center mt-15 md:mt-0"
+              variants={transitions.item}
+            >
               <h4 className="tw-lead text-black-60 sm:text-center mb-12">
                 What 10$ worth of cycles can cover?
               </h4>
@@ -289,23 +344,38 @@ function TokenHolders(): JSX.Element {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimateSpawn>
         </section>
         <section className="max-w-page md:mx-auto px-6 md:px-12.5 relative">
-          <BlobBlue className="absolute w-[800px] -left-[570px] top-[-300px] md:w-auto  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"></BlobBlue>
+          <img
+            src={BlobBlue}
+            className="absolute pointer-events-none max-w-none w-[800px] -left-[570px] top-0 md:w-[1500px]  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"
+          />
           {/* 
           ---
           */}
-          <div className="md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10">
-            <h3 className="md:w-4/10 ml-auto tw-heading-4 md:tw-heading-3 mb-2">
+          <AnimateSpawn
+            className="md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10"
+            variants={transitions.container}
+          >
+            <motion.h3
+              className="md:w-4/10 ml-auto tw-heading-4 md:tw-heading-3 mb-2"
+              variants={transitions.item}
+            >
               Earn staking rewards
-            </h3>
+            </motion.h3>
             <div className="flex gap-1/10 flex-col md:flex-row">
-              <div className="h-60 md:h-auto md:w-1/2 bg-white-50 rounded-lg p-8 order-2 md:order-1 mt-12 md:mt-0">
-                <VotingRewardsChart />
-              </div>
-              <div className="md:flex-1 order-1 md:order-2">
+              <motion.div
+                className="h-60 md:h-auto md:w-1/2 bg-white-50 rounded-lg p-8 order-2 md:order-1 mt-12 md:mt-0"
+                variants={transitions.item}
+              >
+                <VotingRewardsChart className="!block" />
+              </motion.div>
+              <motion.div
+                className="md:flex-1 order-1 md:order-2"
+                variants={transitions.item}
+              >
                 <div className="tw-paragraph md:mb-0">
                   <p className="mb-8">
                     Using the official NNS dapp you can stake your ICP and
@@ -336,19 +406,28 @@ function TokenHolders(): JSX.Element {
                     </a>
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </AnimateSpawn>
 
           {/* 
           ---
            */}
-          <div className="md:mx-auto md:w-10/12 md:mt-40 mt-24 md:mb-40 mb-24">
-            <h3 className="tw-heading-4 md:tw-heading-3 mb-2 md:w-4/10 md:pr-10">
+          <AnimateSpawn
+            className="md:mx-auto md:w-10/12 md:mt-40 mt-24 md:mb-40 mb-24"
+            variants={transitions.container}
+          >
+            <motion.h3
+              className="tw-heading-4 md:tw-heading-3 mb-2 md:w-4/10 md:pr-10"
+              variants={transitions.item}
+            >
               Efficient and cheap ICP transfers
-            </h3>
+            </motion.h3>
             <div className=" flex gap-2/10 flex-col md:flex-row">
-              <div className="flex-[4] md:pr-10">
+              <motion.div
+                className="flex-[4] md:pr-10"
+                variants={transitions.item}
+              >
                 <div className="tw-paragraph md:mb-0">
                   <p className="mb-0">
                     The fee of an ICP ledger transaction is fixed at 0.0001 ICP.
@@ -356,8 +435,11 @@ function TokenHolders(): JSX.Element {
                     dapp or the available wallets to send transactions.
                   </p>
                 </div>
-              </div>
-              <div className="md:w-4/10 self-center p-8 bg-white rounded-xl mt-12 md:mt-0">
+              </motion.div>
+              <motion.div
+                className="md:w-4/10 self-center p-8 bg-white rounded-xl mt-12 md:mt-0"
+                variants={transitions.item}
+              >
                 <h4 className="text-center tw-title-navigation mb-3">
                   Fixed transaction fee
                 </h4>
@@ -368,20 +450,26 @@ function TokenHolders(): JSX.Element {
                 <p className="text-center tw-title-navigation">
                   ~${(0.0001 * icpPrice).toFixed(5)}
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </AnimateSpawn>
         </section>
         <section className=" bg-infinite text-white overflow-hidden">
-          <div className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20 pt-[391px] md:py-24 relative">
+          <AnimateSpawn
+            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20 pt-[391px] md:py-24 relative"
+            variants={transitions.container}
+          >
             <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic>
             <div className="md:mx-auto md:w-10/12 ">
-              <KeyIcon></KeyIcon>
-              <h2 className="tw-heading-4 md:tw-heading-3 md:w-5/10 my-6 md:my-8">
+              <motion.img src="/img/token-holders/key.svg" alt="" />
+              <motion.h2
+                className="tw-heading-4 md:tw-heading-3 md:w-5/10 my-6 md:my-8"
+                variants={transitions.item}
+              >
                 Secure self custody options. Support for holding your private
                 key in an airgapped machine or ledger device.
-              </h2>
-              <p className="tw-heading-6">
+              </motion.h2>
+              <motion.p className="tw-heading-6" variants={transitions.item}>
                 <a
                   href="https://faucet.dfinity.org"
                   target="_blank"
@@ -391,8 +479,11 @@ function TokenHolders(): JSX.Element {
                   Introducing the Ledger ICP
                   <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                 </a>
-              </p>
-              <p className="mb-0 tw-heading-6">
+              </motion.p>
+              <motion.p
+                className="mb-0 tw-heading-6"
+                variants={transitions.item}
+              >
                 <a
                   href="https://nns.ic0.app"
                   target="_blank"
@@ -402,27 +493,41 @@ function TokenHolders(): JSX.Element {
                   Learn more about self custody
                   <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                 </a>
-              </p>
+              </motion.p>
             </div>
-            <BlobWhite className="absolute w-[800px] right-[-300px] top-[-450px] md:w-auto  md:right-[-550px] translate-x-[200px] md:top-[-400px]"></BlobWhite>
-          </div>
+            <motion.img
+              src={BlobWhite}
+              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-400px]"
+              alt=""
+            />
+          </AnimateSpawn>
         </section>
         <section className="max-w-page md:mx-auto px-6 md:px-12.5 mt-20 md:mt-40">
-          <div className="md:w-8/12 md:mx-auto text-center">
-            <h2 className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-12">
+          <AnimateSpawn
+            className="md:w-8/12 md:mx-auto text-center"
+            variants={transitions.container}
+          >
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-12"
+              variants={transitions.item}
+            >
               Strong team &amp; community
-            </h2>
-            <p className="tw-paragraph md:tw-lead mb-8 md:mb-16">
+            </motion.h2>
+            <motion.p
+              className="tw-paragraph md:tw-lead mb-8 md:mb-16"
+              variants={transitions.item}
+            >
               We have many famous cryptographers, great econ researchers, so the
               tokens/system will be secure..8 year gang..Lorem ipsum dolor donec
               ullamcorper nulla non metus auctor fringilla. Donec sed odio dui.
-            </p>
+            </motion.p>
             <div className="flex justify-center flex-wrap gap-3 md:gap-3">
               {icons.map((icon) => {
                 const Icon = icon.img;
 
                 return (
-                  <a
+                  <motion.a
+                    variants={transitions.item}
                     target="_blank"
                     rel="noopener noreferrer"
                     href={icon.url}
@@ -432,14 +537,20 @@ function TokenHolders(): JSX.Element {
                       {icon.tooltip}
                     </span>
                     <Icon></Icon>
-                  </a>
+                  </motion.a>
                 );
               })}
             </div>
-          </div>
+          </AnimateSpawn>
           <div className="mt-12 md:mt-20 mb-20 md:mb-40">
-            <div className="flex gap-5 items-start flex-col md:flex-row">
-              <div className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12">
+            <AnimateSpawn
+              className="flex gap-5 items-start flex-col md:flex-row"
+              variants={transitions.container}
+            >
+              <motion.div
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
+                variants={transitions.item}
+              >
                 <h1 className="tw-title-sm mb-3">
                   Blockchain’s largest R&amp;D operation
                 </h1>
@@ -459,8 +570,11 @@ function TokenHolders(): JSX.Element {
                     <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                   </a>
                 </p>
-              </div>
-              <div className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-30">
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-30"
+                variants={transitions.item}
+              >
                 <TwitterIcon className="text-[#1D9BF0] w-12 h-12 mb-3"></TwitterIcon>
                 <h1 className="tw-title-sm">#8YearGang</h1>
                 <p className="tw-paragraph-sm text-black-60">
@@ -468,8 +582,11 @@ function TokenHolders(): JSX.Element {
                   project. 50% of tokens staked, nearly 25% of all tokens are
                   staked for over 8 years.
                 </p>
-              </div>
-              <div className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-10">
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-10"
+                variants={transitions.item}
+              >
                 <h1 className="tw-title-sm">Join The Conversation</h1>
                 <p className="tw-paragraph-sm text-black-60">
                   Start discussing your ideas for what the DFINITY Foundation
@@ -487,8 +604,8 @@ function TokenHolders(): JSX.Element {
                     <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                   </a>
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </AnimateSpawn>
           </div>
         </section>
       </main>

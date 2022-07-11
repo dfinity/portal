@@ -20,6 +20,7 @@ import {
 } from "chart.js";
 import { Doughnut, Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import clsx from "clsx";
 
 ChartJS.register(
   ArcElement,
@@ -89,7 +90,8 @@ function OwnershipChart() {
                 pointStyle: "circle",
                 boxWidth: 12,
               },
-              onClick: function (e) {
+              onClick: function (e: any) {
+                // ChartEvent doesn't have stopPropagation
                 e.stopPropagation();
               },
             },
@@ -138,9 +140,11 @@ export const votingRewardsData = {
   ],
 };
 
-export function VotingRewardsChart() {
+export const VotingRewardsChart: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   return (
-    <div className={styles.votingRewardsChart}>
+    <div className={clsx(styles.votingRewardsChart, className)}>
       <Line
         data={votingRewardsData}
         options={{
@@ -241,7 +245,7 @@ export function VotingRewardsChart() {
       />
     </div>
   );
-}
+};
 const chart = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
