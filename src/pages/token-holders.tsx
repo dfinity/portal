@@ -150,7 +150,7 @@ function TokenHolders(): JSX.Element {
 
   return (
     <Layout
-      title="Token Holders | Internet Computer"
+      title="Token Holders"
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
     >
       <main className="text-black relative overflow-hidden">
