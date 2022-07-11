@@ -1,16 +1,28 @@
 import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
-import { motion, Variants } from "framer-motion";
+import { ForwardRefComponent, motion, Variants } from "framer-motion";
 import React from "react";
 
-const AnimateSpawn: React.FC<{
-  el?: React.ElementType;
-  children: React.ReactNode;
+type Props<A, B> = {
+  el?: ForwardRefComponent<A, B>;
+  children?: React.ReactNode;
   variants: Variants;
   className?: string;
-}> = ({ el = motion.div, children, variants, className }) => {
+
+  // todo: fix this hack
+  src?: string;
+  alt?: string;
+};
+
+function AnimateSpawn<A, B>({
+  el = motion.div as any, // todo: fix this hack
+  children,
+  variants,
+  className,
+  ...rest
+}: Props<A, B>) {
   const { controls, ref } = useSpawnAnimation();
 
-  const El = el;
+  const El = el as any; // todo: fix this hack
 
   return (
     <El
@@ -19,10 +31,11 @@ const AnimateSpawn: React.FC<{
       initial="hidden"
       variants={variants}
       className={className}
+      {...rest}
     >
       {children}
     </El>
   );
-};
+}
 
 export default AnimateSpawn;
