@@ -45,7 +45,8 @@
 /docs/developers-guide/concepts/trust-in-canisters.html /docs/current/concepts/trust-in-canisters.html
 /docs/developers-guide/concepts/what-is-ic.html /docs/current/concepts/what-is-ic.html
 /docs/developers-guide/customize-projects.html /docs/current/developer-docs/build/project-setup/manage-projects
-/docs/developers-guide/default-wallet.html /docs/current/developer-docs/build/project-setup/default-wallet
+/docs/developers-guide/default-wallet.html /docs/current/developer-docs/build/project-setup/cycles-wallet
+/docs/current/developer-docs/build/project-setup/default-wallet.html /docs/current/developer-docs/build/project-setup/cycles-wallet
 /docs/developers-guide/design-apps.html /docs/current/developer-docs/build/project-setup/design-dapps
 /docs/developers-guide/glossary.html /docs/current/developer-docs/glossary
 /docs/developers-guide/install-upgrade-remove.html /docs/current/developer-docs/build/install-upgrade-remove

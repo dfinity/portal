@@ -73,7 +73,7 @@ function Features() {
       variants={transitions.container}
       className={styles.container}
     >
-      <a id="features" />
+      <a className={styles.anchor} id="features" />
       <motion.p variants={transitions.item} className={styles.title}>
         What's cool about the <br /> Internet Computer
       </motion.p>

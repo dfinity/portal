@@ -78,6 +78,7 @@ const config = {
         path: "samples",
         routeBasePath: "samples",
         sidebarPath: require.resolve("./sidebarsSample.js"),
+        remarkPlugins: [require("remark-code-import")],
       },
     ],
     customDocusaurusPlugin,
@@ -103,7 +104,7 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML],
+          remarkPlugins: [simplePlantUML, require("remark-code-import")],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
@@ -168,10 +169,10 @@ const config = {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
-              {
-                label: "Showcase",
-                href: "https://dfinity.org/showcase",
-              },
+              // {
+              //   label: "Showcase",
+              //   href: "/showcase",
+              // },
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",

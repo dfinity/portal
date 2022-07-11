@@ -37,7 +37,7 @@ const sidebars = {
             'developer-docs/build/project-setup/design-dapps',
             'developer-docs/build/project-setup/manage-projects',
             'developer-docs/build/project-setup/manage-canisters',
-            'developer-docs/build/project-setup/default-wallet',
+            'developer-docs/build/project-setup/cycles-wallet',
           ],
         },
         {
@@ -167,6 +167,7 @@ const sidebars = {
         // 'developer-docs/deploy/deploy',
         // 'developer-docs/deploy/scale',
         'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/custom-domain',
         'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
       ],

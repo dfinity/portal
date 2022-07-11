@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Layout from "@theme/Layout";
 import ChevronRight from "../../static/img/token-holders/chevron-right.svg";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
-import { VotingRewardsChart } from "../components/ICPToken";
+import { VotingRewardsChart } from "../components/LandingPage/ICPToken";
 import useGlobalData from "@docusaurus/useGlobalData";
 import DfinityLogo from "../../static/img/dfinity_logo.svg";
 import CustodyGraphic from "../../static/img/token-holders/custody.svg";

@@ -5,7 +5,13 @@
     display: inline-flex;
     flex-direction: column;
 }
-
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -80px;
+    padding-bottom: 80px;
+    visibility: hidden;
+}
 .votingContainer {
     width: Min(500px, 90%);
     margin: auto;
@@ -237,5 +243,9 @@
         -webkit-filter: blur(100px);
         height: 250px;
         left: 0;
+    }
+    .anchor {
+        margin-top: -20px;
+        padding-bottom: 20px;
     }
 }
