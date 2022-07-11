@@ -6,7 +6,7 @@ const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-
+const teamInformationPlugin = require("./plugins/team-information");
 const isDev = process.env.NODE_ENV === "development";
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
@@ -51,6 +51,7 @@ const config = {
       },
     ],
     customDocusaurusPlugin,
+    teamInformationPlugin,
   ],
 
   presets: [

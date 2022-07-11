@@ -1,16 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "@site/src/components/LandingPage/Foundation/index.module.css";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import DownloadSVG from "@site/static/img/svgIcons/download.svg";
-import TeamPhotoFront from "@site/static/img/Foundation/teamPhotoFront.png";
-import TeamPhotoBack from "@site/static/img/Foundation/teamPhotoBack.png";
 import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
 import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
-import { motion, useAnimation } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useSpring,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import useGlobalData from "@docusaurus/useGlobalData";
 
 const stats = [
   { title: "Team Members", value: "260+" },
@@ -40,6 +45,17 @@ const cards = [
   },
 ];
 
+function shuffle(sourceArray) {
+  for (let i = 0; i < sourceArray.length - 1; i++) {
+    let j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+    let temp = sourceArray[j];
+    sourceArray[j] = sourceArray[i];
+    sourceArray[i] = temp;
+  }
+  return sourceArray;
+}
+
 function Card({ isMain, title, body, link }) {
   return (
     <Link
@@ -64,28 +80,63 @@ function Card({ isMain, title, body, link }) {
 }
 
 function Foundation() {
+  const globalData = useGlobalData();
+  const teamInformation = globalData["team-information"]["default"] as any;
+  const RDMembers = shuffle(
+    teamInformation.find((t) => t.title === "R&D").members
+  );
+  const OperationMembers = shuffle(
+    teamInformation.find((t) => t.title === "Operations").members
+  );
+  const LeadershipMembers = shuffle(
+    teamInformation.find((t) => t.title === "Leadership").members
+  );
   const controls = useAnimation();
   const divRef = useRef(null);
-  const [currentYScroll, setCurrentYScroll] = useState(400);
-
+  const { scrollY } = useViewportScroll();
+  const [elementTop, setElementTop] = useState(0);
+  const [clientHeight, setClientHeight] = useState(0);
+  const offset = 150;
+  const initial = elementTop - clientHeight;
+  const final = elementTop + offset;
+  const yFrontRange = useTransform(
+    scrollY,
+    [initial, final],
+    [offset, -offset]
+  );
+  const yMiddleRange = useTransform(
+    scrollY,
+    [initial, final],
+    [offset * 2, -offset * 2]
+  );
+  const yBackRange = useTransform(
+    scrollY,
+    [initial, final],
+    [offset * 3, -offset * 3]
+  );
+  const yFront = useSpring(yFrontRange, { stiffness: 400, damping: 90 });
+  const yMiddle = useSpring(yMiddleRange, { stiffness: 400, damping: 90 });
+  const yBack = useSpring(yBackRange, { stiffness: 400, damping: 90 });
   const { ref, inView } = useInView({ threshold: 0 });
   useEffect(() => {
     if (inView) {
       controls.start("show");
     }
   }, [controls, inView]);
-  const scrollHandler = () => {
-    const { y, height } = divRef.current.getBoundingClientRect();
-    if (y <= 400 && -y <= height) {
-      setCurrentYScroll(y);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler, true);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler, true);
+
+  useLayoutEffect(() => {
+    const element = divRef.current;
+    const onResize = () => {
+      setElementTop(
+        element.getBoundingClientRect().top + window.scrollY ||
+          window.pageYOffset
+      );
+      setClientHeight(window.innerHeight);
     };
-  }, []);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [divRef]);
   return (
     <motion.div
       ref={ref}
@@ -95,23 +146,74 @@ function Foundation() {
       className={styles.main}
     >
       <a className={styles.anchor} id="foundation" />
-      <motion.img
-        src={TeamPhotoFront}
-        style={{ y: currentYScroll * 0.4 }}
-        className={styles.mainPhoto}
-        alt=""
-      />
-      <motion.img
-        src={TeamPhotoBack}
-        style={{ y: currentYScroll * 0.2 }}
-        className={styles.mainPhoto}
-        alt=""
-      />
       <motion.div
         variants={transitions.item}
         ref={divRef}
         className={styles.container}
       >
+        {LeadershipMembers.slice(0, 2).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yFront }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {OperationMembers.slice(0, 2).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yFront }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {RDMembers.slice(0, 1).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yFront }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {OperationMembers.slice(2, 4).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yMiddle }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {RDMembers.slice(1, 4).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yMiddle }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {OperationMembers.slice(4, 6).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yBack }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {RDMembers.slice(4, 8).map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: yBack }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
         <img
           src={TeamPhotoMobile1}
           alt=""
