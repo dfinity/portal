@@ -2,7 +2,7 @@
 
 # Internet Computer Developer Portal
 
-The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer. 
+The Developer Portal brings together all the resources needed for experienced as well as beginning developers on the Internet Computer.
 
 https://internetcomputer.org
 
