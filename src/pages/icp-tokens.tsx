@@ -150,7 +150,7 @@ function TokenHolders(): JSX.Element {
 
   return (
     <Layout
-      title="Token Holders"
+      title="ICP Tokens"
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
     >
       <main className="text-black relative overflow-hidden">
@@ -170,7 +170,7 @@ function TokenHolders(): JSX.Element {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8"
               variants={transitions.item}
             >
-              The ICP Token
+              ICP Tokens
             </motion.h1>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -365,61 +365,59 @@ function TokenHolders(): JSX.Element {
           ---
           */}
           <AnimateSpawn
-            className="md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10"
+            className="grid grid-cols-1 md:grid-cols-[1fr_40%] gap-x-1/10 md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10"
             variants={transitions.container}
           >
             <motion.h3
-              className="md:w-4/10 ml-auto tw-heading-4 md:tw-heading-3 mb-2"
+              className="md:col-start-2 tw-heading-4 md:tw-heading-3 mb-2 text-left"
               variants={transitions.item}
             >
               Earn staking rewards
             </motion.h3>
-            <div className="flex gap-1/10 flex-col md:flex-row">
-              <motion.div
-                className="max-w-[500px] mx-auto md:w-1/2 bg-white-50 rounded-lg p-8 order-2 md:order-1 mt-12 md:mt-0"
-                variants={transitions.item}
-              >
-                <VotingRewardsChart className="!block" />
-              </motion.div>
-              <motion.div
-                className="md:flex-1 order-1 md:order-2"
-                variants={transitions.item}
-              >
-                <div className="tw-paragraph md:mb-0">
-                  <p className="">
-                    Tokens can be ‘locked’ in neurons allowing users to stake
-                    tokens and vote on network proposals. Staking and voting are
-                    easily to do in the official NNS dapp.
-                  </p>
-                  <p className="mb-8">
-                    Staking rewards start from 11.2% APY and get as high as
-                    21.0% APY if you stake for 8 years.
-                  </p>
-                  <p className="mb-3 mt-8 tw-heading-6">
-                    <a
-                      href="https://internetcomputer.org/docs/current/concepts/governance/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-black hover:no-underline"
-                    >
-                      Learn more about network governance
-                      <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                    </a>
-                  </p>
-                  <p className="mb-0 tw-heading-6">
-                    <a
-                      href="https://nns.ic0.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-black hover:no-underline"
-                    >
-                      Start Staking
-                      <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                    </a>
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              className="max-w-[500px] bg-white-50 rounded-lg p-8 order-2 md:order-1 mt-12 md:mt-0"
+              variants={transitions.item}
+            >
+              <VotingRewardsChart className="!block" />
+            </motion.div>
+            <motion.div
+              className="md:flex-1 order-1 md:order-2"
+              variants={transitions.item}
+            >
+              <div className="tw-paragraph md:mb-0">
+                <p className="">
+                  Tokens can be ‘locked’ in neurons allowing users to stake
+                  tokens and vote on network proposals. Staking and voting are
+                  easily to do in the official NNS dapp.
+                </p>
+                <p className="mb-8">
+                  Staking rewards start from 11.2% APY and get as high as 21.0%
+                  APY if you stake for 8 years.
+                </p>
+                <p className="mb-3 mt-8 tw-heading-6">
+                  <a
+                    href="https://internetcomputer.org/docs/current/concepts/governance/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black hover:no-underline"
+                  >
+                    Learn more about network governance
+                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
+                  </a>
+                </p>
+                <p className="mb-0 tw-heading-6">
+                  <a
+                    href="https://nns.ic0.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black hover:no-underline"
+                  >
+                    Start Staking
+                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
+                  </a>
+                </p>
+              </div>
+            </motion.div>
           </AnimateSpawn>
 
           {/* 
@@ -444,7 +442,7 @@ function TokenHolders(): JSX.Element {
                   <p className="mb-0">
                     The fee of an ICP ledger transaction is fixed at 0.0001 ICP.
                     It allows efficient transfers and dapp payments. Use the NNS
-                    dapp or the available wallets to send transacitons:
+                    dapp or the available wallets to send transactions.
                   </p>
                 </div>
               </motion.div>

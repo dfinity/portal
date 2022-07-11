@@ -222,8 +222,8 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "Token Holders ",
-                href: "/token-holders",
+                label: "ICP tokens",
+                href: "/icp-tokens",
               },
               {
                 label: "Roadmap",
