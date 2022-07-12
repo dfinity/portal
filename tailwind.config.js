@@ -36,7 +36,10 @@ module.exports = {
       "2xl": "1921px",
     },
     colors: {
-      infinite: "#3B00B9",
+      infinite: {
+        DEFAULT: "#3B00B9",
+        60: "#6E52AA",
+      },
       transparent: "transparent",
       black: {
         DEFAULT: "#181818",
@@ -52,6 +55,9 @@ module.exports = {
     },
     leading: {
       tight: 1.13,
+    },
+    fontFamily: {
+      circular: ["CircularXX", "sans-serif"],
     },
     fontSize: {
       // bold
@@ -75,6 +81,8 @@ module.exports = {
       "lead-sm": ["18px", "28px"],
       paragraph: ["16px", "24px"],
       "paragraph-sm": ["14px", "22px"],
+
+      caption: ["12px", "16px"],
     },
   },
   plugins: [
@@ -100,6 +108,7 @@ module.exports = {
         ".tw-lead-sm": "@apply text-lead-sm font-book",
         ".tw-paragraph": "@apply text-paragraph font-book",
         ".tw-paragraph-sm": "@apply text-paragraph-sm font-book",
+        ".tw-caption": "@apply text-caption font-book",
       };
 
       addComponents(
