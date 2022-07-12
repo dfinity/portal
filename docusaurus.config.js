@@ -14,6 +14,7 @@ const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
+const liveSessionsPlugin = require("./plugins/live-sessions");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const isDeployPreview =
@@ -49,6 +50,7 @@ const config = {
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
+    liveSessionsPlugin,
     howItWorksArticlesPlugin,
   ],
 
@@ -190,6 +192,10 @@ const config = {
               {
                 label: "ICP tokens",
                 href: "/icp-tokens",
+              },
+              {
+                label: "Live sessions",
+                href: "/live-sessions",
               },
               {
                 label: "Roadmap",

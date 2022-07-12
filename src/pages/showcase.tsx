@@ -97,7 +97,7 @@ function ShowcasePage(): JSX.Element {
             </div>
           </section>
 
-          <section className="max-w-page px-6 mb-12 md:mb-36 md:px-12.5 md:mx-auto">
+          <section className="max-w-page px-6 mb-12 md:mb-20 md:px-12.5 md:mx-auto">
             <motion.div
               className="flex gap-10 md:gap-20 flex-col md:flex-row"
               variants={transitions.item}
@@ -105,8 +105,10 @@ function ShowcasePage(): JSX.Element {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "capitalize text-black bg-transparent font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
-                    !queryTag ? "text-white bg-infinite-60" : ""
+                    "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                    !queryTag
+                      ? "text-white bg-infinite-60"
+                      : "text-black bg-transparent"
                   )}
                   onClick={() => setQueryTag(undefined)}
                 >
@@ -115,10 +117,10 @@ function ShowcasePage(): JSX.Element {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "capitalize text-black bg-transparent font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                      "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
                       tag.toLowerCase() === queryTag?.toLowerCase()
                         ? "text-white bg-infinite-60"
-                        : ""
+                        : "text-black bg-transparent"
                     )}
                     key={tag}
                     onClick={() => setQueryTag(tag)}
@@ -137,7 +139,7 @@ function ShowcasePage(): JSX.Element {
           </section>
         </AnimateSpawn>
 
-        <section className="max-w-page px-6 md:px-12.5 md:mx-auto mb-12 md:mb-20">
+        <section className="max-w-page px-6 md:px-12.5 md:mx-auto">
           <AnimateSpawn
             el={motion.span}
             className="tw-heading-4 mb-4 block"
@@ -167,7 +169,7 @@ function ShowcasePage(): JSX.Element {
             ))}
           </div>
         </section>
-        <section className="max-w-page relative px-6 pt-12 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+        <section className="max-w-page relative px-6 pt-12 md:px-12.5 md:mx-auto py-20 md:py-40 overflow-hidden">
           <motion.h2
             className="tw-heading-3 md:tw-heading-2 md:w-8/12 mb-10"
             variants={transitions.item}
@@ -175,16 +177,10 @@ function ShowcasePage(): JSX.Element {
             Start Building On The Internet Computer?
           </motion.h2>
           <div className="flex gap-3 sm:gap-8 flex-col sm:flex-row items-start">
-            <Link
-              to="/developers"
-              className="bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors"
-            >
+            <Link to="/developers" className="button-primary">
               Start Coding
             </Link>
-            <Link
-              href="https://dfinity.org/grants"
-              className="bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors"
-            >
+            <Link href="https://dfinity.org/grants" className="button-outline">
               Developer Grants
             </Link>
           </div>
