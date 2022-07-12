@@ -12,11 +12,6 @@ export type ShowcaseProject = {
   videoContentType?: string;
   website: string;
   usesInternetIdentity: boolean;
-} & {
-  desktopGridRow?: number;
-  desktopGridColumn?: string;
-  mobileGridRow?: number;
-  mobileGridColumn?: string;
 };
 
 export const colorRegistry: Record<string, string> = {

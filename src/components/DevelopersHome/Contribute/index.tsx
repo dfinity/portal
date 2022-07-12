@@ -9,9 +9,9 @@ import contribute from "@site/static/img/developers/contribute.png";
 
 const cardsContent = [
   {
-    title: "Community conversations",
+    title: "Live sessions",
     body: "Join the tech talks",
-    link: "https://dfinity.org/conversations",
+    link: "/live-sessions",
   },
   {
     title: "Technical working groups",

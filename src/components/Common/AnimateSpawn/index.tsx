@@ -7,6 +7,7 @@ type Props<A, B> = {
   children?: React.ReactNode;
   variants: Variants;
   className?: string;
+  id?: string;
 
   // todo: fix this hack
   src?: string;
@@ -18,6 +19,7 @@ function AnimateSpawn<A, B>({
   children,
   variants,
   className,
+  id,
   ...rest
 }: Props<A, B>) {
   const { controls, ref } = useSpawnAnimation();
@@ -31,6 +33,7 @@ function AnimateSpawn<A, B>({
       initial="hidden"
       variants={variants}
       className={className}
+      id={id}
       {...rest}
     >
       {children}

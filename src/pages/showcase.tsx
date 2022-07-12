@@ -175,16 +175,10 @@ function ShowcasePage(): JSX.Element {
             Start Building On The Internet Computer?
           </motion.h2>
           <div className="flex gap-3 sm:gap-8 flex-col sm:flex-row items-start">
-            <Link
-              to="/developers"
-              className="bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors"
-            >
+            <Link to="/developers" className="button-primary">
               Start Coding
             </Link>
-            <Link
-              href="https://dfinity.org/grants"
-              className="bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors"
-            >
+            <Link href="https://dfinity.org/grants" className="button-outline">
               Developer Grants
             </Link>
           </div>
