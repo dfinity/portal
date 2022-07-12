@@ -151,7 +151,7 @@ const config = {
               },
               {
                 label: "How it works",
-                href: "https://dfinity.org/howitworks",
+                href: "/howitworks",
               },
               {
                 label: "DFINITY Foundation",
