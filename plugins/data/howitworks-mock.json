@@ -1,0 +1,139 @@
+{
+  "metaTitle": "How It Works | Internet Computer",
+  "metaDescription": "Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives.",
+  "heroTitle": "How the Internet Computer Works",
+  "heroBody": "The Internet Computer is the fastest and most scalable general-purpose blockchain. It extends the Internet with computation: dapps (smart contracts) can run 100% on the Internet Computer as it can serve web contents directly into browsers. Moreover, end-users can seamlessly and securely interact with dapps on the Internet Computer. In particular, users in general do not need any tokens to use a dapp nor is it necessary for anyone to download blockchain state to verify correctness of transactions because of the Internet Computer’s groundbreaking chain key cryptography. Users can securely authenticate to dapps using Internet Identity, the Internet Computer’s anonymous blockchain authentication framework.\n\nWe invite you to explore the Internet Computer’s cutting-edge technology developed by the industry’s largest R&D operation, a team of more than 200 world-renowned researchers and engineers.",
+  "otherSessionsTitle": "More academy sessions",
+  "featured": {
+    "title": "Direct Integration with Bitcoin",
+    "description": "The Internet Computer protocol will be extended to add smart contracts to Bitcoin. An application of Chain Key cryptography will give each canister their own Bitcoin public key, thus directly integrating the Internet Computer blockchain with the Bitcoin network. In particular, smart contracts on the Internet Computer will be able to hold, send and receive their own Bitcoin.",
+    "youtubeVideo": "TtVo3krjARI",
+    "listOfLinks": "- [Internet Computer Direct Integration with Bitcoin - Proposal and Discussion](https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147)\n- [BTC <> ICP Direct Integration – Twitter Spaces Recording](https://www.youtube.com/watch?v=BIf4SYl3pxo)\n- [Community Conversations | Chain Key Bitcoin Ledger on the Internet Computer](https://www.youtube.com/watch?v=l8koeVGZe_Y)\n- [Bitcoin Integration Developer Preview – internetcomputer.org](https://internetcomputer.org/docs/developers-guide/concepts/bitcoin-integration.html)\n- [Bitcoin Developer Preview – Medium](https://medium.com/dfinity/the-internet-computers-bitcoin-developer-preview-is-now-available-85ce1df6b17d)\n- [GitHub Repo - Bitcoin Developer Preview](https://github.com/dfinity/bitcoin-developer-preview)\n- [Bitcoin Smart Contracts Are Coming to Internet Computer DeFi Projects – Medium](https://medium.com/dfinity/bitcoin-smart-contracts-are-coming-to-internet-computer-defi-projects-dd6786078853)\n- [Titanium Milestone | Bitcoin Integration Developer Preview Video](https://www.youtube.com/watch?v=qwRQ7Wy9y7g&list=PLuhDt1vhGcrfCVx1CVFrRcFomKtm9wnYe&index=3)\n",
+    "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/5zr25Xzkm4GD572mDHM54d/dfdc9d97402398e09ca455fa9731f228/AvantForm_0816093139211108_4UA1HAH9NICL_Web_S.jpg",
+    "slug": "direct-integration-with-bitcoin"
+  },
+  "articles": [
+    {
+      "title": "Internet Computer Blockchain Overview",
+      "description": "The last original Layer 1 blockchain project has launched a revolutionary public network that provides a limitless environment for smart contracts that run at web speed, serve web, scale, and reduce compute costs by a million times or more. Build everything from DeFi, to mass market tokenized social media services that run on-chain, or extend Ethereum dapps.\n\nThe Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation. ",
+      "youtubeVideo": "YWHTNr8RZHg",
+      "listOfLinks": "- [Internet Computer Source Code](https://github.com/dfinity/ic \"Internet Computer Source Code\")\n- [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort= \"Public Repositories for the Internet Computer\")\n- [The Internet Computer's Source Code is Public](https://medium.com/dfinity/the-internet-computers-source-code-is-public-603a558cb6cc \"The Internet Computer's Source Code is Public\")\n- [A Technical Overview of the Internet Computer](https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f \"Medium - A Technical Overview of the Internet Computer \")\n- [Internet Computer Interface Specification](https://medium.com/dfinity/introducing-the-internet-computer-interface-specification-850a113a66d9 \"Medium - Internet Computer Interface Specification\")\n- [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/interface-spec/index.html \"Internet Computer Interface Specification - Docs\")\n- [Internet Computer Rust Docs](https://docs.dfinity.org/ic/rustdocs/ \"Internet Computer Rust Docs - List of Crates\")\n- [Internet Computer Haskell Utility Code](https://github.com/dfinity/ic-hs \"Internet Computer Haskelly Utility Code\") \n- [Internet Computer Primer - Deck](https://dfinity.org/deck/ \"Internet Computer Primer - Deck\")\n- [Internet Computer Canister SDK](https://github.com/dfinity/sdk \"Internet Computer Canister SDK\")\n- [Internet Computer Open Source Rosetta API](https://github.com/dfinity/rosetta-node \"Internet Computer Open Source Rosetta API\")\n- [Internet Computer for Geeks – White Paper](https://dfinity.org/whitepaper.pdf \"Internet Computer for Geeks – Whitepaper\")",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/5ofMWb9d3lBG3hIzYhfCXA/4d1a8adffa6728238abcdd9464669146/Coinlist_E.png",
+      "slug": "overview-of-the-internet-computer"
+    },
+    {
+      "title": "Chain Key Cryptography",
+      "description": "Chain Key cryptography is one of the fundamental breakthroughs enabling the Internet Computer to scale to millions of nodes. The most notable innovation of Chain Key cryptography is that the Internet Computer has a single public key, which enables any device to verify the authenticity of artifacts generated by the Internet Computer, even smart watches and mobile phones.",
+      "youtubeVideo": "vUcDRFC09J0",
+      "listOfLinks": "- [Chain Key Cryptography: The Scientific Breakthrough Behind the Internet Computer](https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28)\n- [Integrating The Internet Computer and Bitcoin Networks](https://www.youtube.com/watch?v=TtVo3krjARI) ",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/FxzQjdcoQssbPElUhWvbJ/955ab43bba1c58197387d7710b4353df/Chainkey_01.jpg",
+      "slug": "chain-key-technology"
+    },
+    {
+      "title": "Motoko Smart Contract Language",
+      "description": "Motoko is a new programming language for smart contracts. It is designed to seamlessly support the programming model of the Internet Computer and makes it easier to take advantage of the unique features of the blockchain. Motoko is strongly typed, actor-based, and has built-in support for orthogonal persistence and asynchronous message passing. Productivity and safety features include automatic memory management, generics, type inference, pattern matching, and both arbitrary- and fixed-precision arithmetic. Messaging transparently employs the Internet Computer’s Candid interface definition language and wire format for typed, high-level, and cross-language interoperability.",
+      "youtubeVideo": "4eSceDOS-Ms",
+      "listOfLinks": "- [Motoko – Open Source](https://github.com/dfinity/motoko \"Motoko Open Source\")\n- [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/ \"Motoko Playground\")\n- [Motoko, a Programming Language Designed for the Internet Computer, Is Now Open Source](https://medium.com/dfinity/motoko-a-programming-language-designed-for-the-internet-computer-is-now-open-source-8d85da4db735 \"Motoko, a Programming Language Designed for the Internet Computer, Is Now Open Source\")\n- [Motoko Programming Language](https://internetcomputer.org/docs/language-guide/motoko.html \"Motoko Programming Language\")\n- [Learn the basics of Motoko](https://internetcomputer.org/docs/developers-guide/basic-syntax-rules.html \"Learn the basics of Motoko\")\n- [Motoko style guidelines](https://internetcomputer.org/docs/language-guide/style.html \"Motoko style guidelines\")\n- [Motoko grammar](https://internetcomputer.org/docs/language-guide/motoko-grammar.html \"Motoko grammar\")\n- [Motoko base library](https://internetcomputer.org/docs/base-libraries/stdlib-intro.html \"Motoko base library\")\n",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/5i37uj1xBJF58dUvwTTRZV/f55b6a41a970402d2ec4b07ca4a9d16d/Motoko_Open_Source_01__1_.png",
+      "slug": "motoko"
+    },
+    {
+      "title": "Network Nervous System: Internet Computer Blockchain Governance",
+      "description": "The Network Nervous System (NNS) is the open algorithmic system governing the Internet Computer blockchain. Its most notable innovations include its ability to upgrade the Internet Computer protocol and software running on node machines, onboard new node providers, add node machines into the blockchain network, and create new subnet blockchains to increase capacity. Anyone can participate in the NNS by staking ICP tokens into one or more neurons. Neurons can submit proposals and decide to adopt or reject them. The NNS implements liquid democracy: neurons can follow other neurons a delegate voting power. \n",
+      "youtubeVideo": "hWnsluxmRqc",
+      "listOfLinks": "- [Network Nervous System front-end dapp](https://nns.ic0.app/ \"NNS dapp \")\n- [NNS GitHub Repo](https://github.com/dfinity/ic/tree/master/rs/nns \"NNS GitHub Repo\")\n- [NNS front-end dapp open source](https://github.com/dfinity/nns-dapp \"NNS front-end dapp open source - GitHub\")\n- [The Network Nervous System: Governing the Internet Computer](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a \"The Network Nervous System: Governing the Internet Computer\")\n- [Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8 \"Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens\")\n- [Getting Started on the Internet Computer’s Network Nervous System dapp & Wallet](https://medium.com/dfinity/getting-started-on-the-internet-computers-network-nervous-system-app-wallet-61ecf111ea11 \"Getting Started on the Internet Computer’s Network Nervous System dapp & Wallet\")\n- [Community Led Governance of the Internet Computer](https://medium.com/dfinity/the-community-led-governance-of-the-internet-computer-b863cd2975ba \"Community Led Governance of the Internet Computer\")\n- [Earn Substantial Voting Rewards by Staking in the Network Nervous System](https://medium.com/dfinity/earn-substantial-voting-rewards-by-staking-in-the-network-nervous-system-7eb5cf988182 \"Earn Substantial Voting Rewards by Staking in the Network Nervous System\")\n- [NNS Staking Guide [Beta]](https://dfinity.github.io/ic-staking-documentation/ \"NNS Staking Guide – Self-custody\")\n",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/35wMJaG8qJ7VoYf1MAbzKR/a90bf14b125e0ef76e435a24e5ae8dbc/Deep_Dive_NNS_01.png",
+      "slug": "network-nervous-system-nns"
+    },
+    {
+      "title": "Noninteractive Distributed Key Generation",
+      "description": "NIDKG is a cryptographic protocol to distributedly generate key shares for each of the nodes participating in a subnet blockchain. It applies advanced cryptography, including encryption with forward secrecy and noninteractive zero-knowledge proofs of correct key sharing.",
+      "youtubeVideo": "gKUi-2T7tdc",
+      "listOfLinks": "- [Applied Crypto: Introducing Noninteractive Distributed Key Generation](https://medium.com/dfinity/applied-crypto-one-public-key-for-the-internet-computer-ni-dkg-4af800db869d)\n- [NIDKG White Paper](https://eprint.iacr.org/2021/339)",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/5cEpCHlWtZ2Hc4w6tg5d0F/a44008537d4fcf8149919ce228cf8515/NI-DKG.png",
+      "slug": "noninteractive-distributed-key-generation-nidkg"
+    },
+    {
+      "title": "Internet Identity: Anonymizing Blockchain Authentication System",
+      "description": "Today, the main means of identity and authentication prevalently used online are usernames and passwords. The Internet Computer blockchain has replaced this model with a more advanced and much more secure method of cryptographic authentication that is more convenient, works across all of a user's devices, and helps to protect user privacy. ",
+      "youtubeVideo": "9eUTcCP_ELM",
+      "listOfLinks": "- [Internet Identity App](https://identity.ic0.app/ \"Internet Identity App\")\n- [Open Source - Internet Identity](https://github.com/dfinity/internet-identity \"Internet Identity Open Source\")\n- [Web Authentication and Identity on the Internet Computer](https://medium.com/dfinity/web-authentication-and-identity-on-the-internet-computer-a9bd5754c547 \"Web Authentication and Identity on the Internet Computer\")\n- [Internet Identity: The End of Usernames and Passwords](https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7 \"Internet Identity: The End of Usernames and Passwords\")\n- [Verifying the Internet Identity Code: A Walkthrough](https://medium.com/dfinity/verifying-the-internet-identity-code-a-walkthrough-c1dd7a53f883 \"Verifying the Internet Identity Code: A Walkthrough\")\n",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/3x6gnCpo9C7dpH1J81wi0e/3cd8ba2f563566cc3f5451349cf388ea/Web_Authen_01.jpg",
+      "slug": "web-authentication-identity"
+    },
+    {
+      "title": "Internet Computer Consensus",
+      "description": "The Internet Computer blockchain runs on a network of nodes in independent data centers located around the world. In each of its subnet blockchains, the participating nodes must process the same messages in the same order to ensure that they achieve the same state. To this end, the Internet Computer relies on a novel consensus protocol, as described in this presentation.",
+      "youtubeVideo": "vVLRRYh3JYo",
+      "listOfLinks": "- [Achieving Consensus on the Internet Computer](https://medium.com/dfinity/achieving-consensus-on-the-internet-computer-ee9fbfbafcbc \"Achieving Consensus on the Internet Computer\")\n- [Consensus White Paper](https://eprint.iacr.org/2021/632.pdf \"Consensus White Paper\")\n- [Extended Abstract published at PODC'22](//assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf)\n",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/2E7sxGl5OQitp52Lnf1CTF/3258eddf745d8d25c88701f3f588e26a/Consensus_01.jpg",
+      "slug": "consensus"
+    },
+    {
+      "title": "Peer-to-Peer Layer",
+      "description": "The Internet Computer blockchain is designed to be secure, reliable, and scalable. Scalability is provided through subnet blockchains that run Canister smart contracts on a selection of nodes. The peer-to-peer layer (\"P2P\") enables reliable and secure communication between nodes participating in the same subnet. P2P collects and advertises messages from users, as well as from other nodes, so that they will eventually be replicated across all nodes in the same subnet blockchain.",
+      "youtubeVideo": "HOQb0lKIy9I",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/6T1e3sCF9y9rmoY4JiKBdY/d74bd8d2cf7b43dc4dd0fee9c9a6e132/P2P___Yotam.png",
+      "slug": "peer-to-peer-p2p"
+    },
+    {
+      "title": "Resumption",
+      "description": "The Internet Computer blockchain is powered by nodes located in numerous independent data centers around the world. These nodes are running the Internet Computer Protocol (ICP) that ensures security and reliability for canister smart contracts through sufficient replication of canister state and computation. In this talk, the parts of the protocol are explained that enable nodes to catch up to the lasted replicated state and to resume participation in the blockchain after they have been disconnected from the network. The same mechanism is also key when a new node gets added to one of the Internet Computer's subnet blockchains.",
+      "youtubeVideo": "H7HCqonSMFU",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/28lnw29LCRd1S8XZUQ6sEl/997559859fc8de37f551cbbb25b94f44/Resumption___Manu.png",
+      "slug": "resumption"
+    },
+    {
+      "title": "Blockchain Protocol Upgrade",
+      "description": "The Internet Computer blockchain is governed by the Network Nervous System (NNS), its algorithmic governance system. One of the many duties of the NNS is to orchestrate upgrades to the Internet Computer to a new protocol version, when the community has adopted a upgrade proposal. Making upgrades to any blockchain requires solutions to several challenging problems posed by the nature of a decentralized system including how to allow arbitrary changes to the protocol, preserve state of all canister smart contracts, minimize downtime, and roll out upgrades autonomously.",
+      "youtubeVideo": "mPjiO2bk2lI",
+      "listOfLinks": "[Upgrading the Internet Computer Protocol](https://medium.com/dfinity/upgrading-the-internet-computer-protocol-45bf6424b268 \"Upgrading the Internet Computer Protocol\")",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/6OToiBs0qIBvCnJ3T072lR/4fd7ba29db86f07a35a79bfd3065fa69/Upgrades___Stefan.png",
+      "slug": "upgrades"
+    },
+    {
+      "title": "Message Routing",
+      "description": "The Internet Computer blockchain enables users to send messages to canister smart contracts and canisters to send messages between themselves. For scalability, the Internet Computer is composed of many subnet blockchains and the Internet Computer's Network Nervous System can add new subnets as required. The message routing component routes messages to and from canisters across all of the Internet Computer's subnet blockchains and ensures that new subnets can be added seamlessly.",
+      "youtubeVideo": "YexfeByBXlo",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/1TpDSzYC84g9aDQSpBqB2M/e6653f0cf78c9528812f872a27d8406f/AvantForm_142107652216153_4UBPTJG8CHV2_All_Media_S.jpg",
+      "slug": "message-routing"
+    },
+    {
+      "title": "Canister smart contract lifecycle",
+      "description": "This talk covers how to create canister smart contracts on the Internet Computer, how to install and upgrade their software, and how to top up canisters with cycles. ",
+      "youtubeVideo": "c5nv6vIG3OQ",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/3TuldlAkWWcrRfPqzlyfB3/3403200091686b37a269de7a78ba20d9/AvantForm_142107652216153_4U96M4G158C0_All_Media_S.jpg",
+      "slug": "canister-lifecycle"
+    },
+    {
+      "title": "Certified Variables",
+      "description": "Canister smart contracts can declare variables as certified.  Whenever set, these variables will automatically get a Merkle tree certificate, signed by the Internet Computer blockchain. This allows anyone to verify the authenticity of this type of data using the Internet Computer's public key.",
+      "youtubeVideo": "3mZHEfICi_U",
+      "listOfLinks": "- [How Internet Computer Responses Are Certified as Authentic](https://medium.com/dfinity/how-internet-computer-responses-are-certified-as-authentic-2ff1bb1ea659? \"How Internet Computer Responses Are Certified as Authentic\")\n- [Certified Variables & Assets](https://assets.ctfassets.net/ywqk17d3hsnp/7AaD21HKM8kV3GguC8qWB4/5023bc305edb6fa3bd4aa593e72335c2/2021-06-10_Certified_variables_and_assets__1_.pdf)",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/4TzU2wY4heEmRfzJOhZZE3/258f4e46b5db79afbdfd5972c092aad4/AvantForm_142107652216153_4UE3WWBYE8DW_All_Media_L.jpg",
+      "slug": "response-certification"
+    },
+    {
+      "title": "Threshold ECDSA Signing",
+      "description": "ECDSA signatures are widely used in the blockchain industry. This feature will enable canister smart contracts to have an ECDSA public key and to sign with regard to it. The corresponding secret key is threshold-shared among the nodes of the subnet holding the canister smart contract. This is a prerequisite for the direct integration between the Internet Computer and Bitcoin and Ethereum.",
+      "youtubeVideo": "MulbKPwv6_s",
+      "listOfLinks": "- [ECSDSA White Paper](https://eprint.iacr.org/2021/1330 \"ECDSA White Paper | Cryptology ePrint Archive: Report 2021/1330 On the security of ECDSA with additive key derivation and presignatures\")\n- [ECDSA GitHub](https://github.com/ic-association/nns-proposals/blob/main/proposals/governance/20210920T1500Z.md \"ECDSA GitHub\")\n- [Motion Proposal 21340](https://dashboard.internetcomputer.org/proposal/21340 \"Motion Proposal 21340\")\n- [The Internet Computer Community Adopts Threshold ECDSA Signatures Motion Proposal](https://medium.com/dfinity/the-internet-computer-community-approves-threshold-ecdsa-signatures-motion-proposal-65a0a3463492?source=friends_link&sk=db265995e31dac5ea751cd91e7b0a3b0 \"The Internet Computer Community Adopts Threshold ECDSA Signatures Motion Proposal\")\n",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/2P4chRENwRmSUGvJcm0WL1/cef7508e89c523a2822083c8d1a9c71a/ECDSA_Avant_Form.jpg",
+      "slug": "threshold-ecdsa-signing"
+    },
+    {
+      "title": "Ingress Message Lifecycle",
+      "description": "When a user sends an update call to a canister smart contract on the Internet Computer, it traverses several components before it is actually executed. \nIn a first step, P2P ensures that it is broadcast to a sufficiently large set of other nodes. At some point, consensus forms a block that contains the message and passes it in a batch to message routing, which in turn inserts it into its destination canister’s queue, where it waits for the scheduler to select the next message to be executed.\nA message is subject to several checks, and a number of conditions must be satisfied for it to make it into the Induction Pool for execution to ensure that the right parties are charged and rewarded for its processing.",
+      "youtubeVideo": "FJE1s8ZkUyg",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/qY3NmPG5lwHk7OjHr8nuh/4ad746b1b3015a84929867f181f7bd0d/AvantForm_1016125459212562_4UBUGG3BE32X_Web_S.jpg",
+      "slug": "ingress-message-lifecycle"
+    },
+    {
+      "title": "State Synchronization",
+      "description": "The Internet Computer Protocol has been designed to provide a reliable service despite some of the nodes failing or misbehaving. More precisely, even if a node has been offline for a while or is being added to a subnet, efficient mechanisms are in place to ensure that such a node is able to process messages quickly. This involves learning which other nodes to connect to, gathering the necessary key material and information to participate in the consensus algorithm, and obtaining a recent checkpoint of the state and the queues of the canister smart contracts hosted on the subnet. The latter is particularly challenging, since it can require several GiB of data to be transmitted to the node that is catching up.",
+      "youtubeVideo": "WaNJINjGleg",
+      "coverImage": "//images.ctfassets.net/ywqk17d3hsnp/5my4qHhqeLKvOGGtVCncGX/341a55be7d606d0b2dcc786192061407/AvantForm_0816124325214344_4U954OMXJ7B8_Web_S.jpg",
+      "slug": "state-synchronization"
+    }
+  ]
+}

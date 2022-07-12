@@ -14,6 +14,7 @@ const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
+const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
@@ -48,6 +49,7 @@ const config = {
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
+    howItWorksArticlesPlugin,
   ],
 
   presets: [
