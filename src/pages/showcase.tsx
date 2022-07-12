@@ -75,8 +75,8 @@ function ShowcasePage(): JSX.Element {
 
   return (
     <Layout
-      title="ICP Tokens"
-      description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
+      title="Showcase"
+      description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
     >
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
