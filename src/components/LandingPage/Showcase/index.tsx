@@ -260,13 +260,10 @@ function Showcase() {
                 developer and entrepreneurial activity. Get inspired by the
                 existing dapps.
               </p>
-              {/* <Link
-                className={styles.callToAction}
-                to={"???"}
-              >
+              <Link className={styles.callToAction} to={"/showcase"}>
                 <RightPointer />
                 <p> Explore the Internet Computer ecosystem</p>
-              </Link> */}
+              </Link>
             </motion.div>
           </div>
           <motion.div

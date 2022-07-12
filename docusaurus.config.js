@@ -133,10 +133,10 @@ const config = {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
-              // {
-              //   label: "Showcase",
-              //   href: "/showcase",
-              // },
+              {
+                label: "Showcase",
+                href: "/showcase",
+              },
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
