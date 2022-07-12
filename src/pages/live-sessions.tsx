@@ -12,8 +12,9 @@ import { format } from "date-fns-tz";
 import { getMinutes, parse, getYear } from "date-fns";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
-
 import slugify from "slugify";
+
+const MotionLink = motion(Link);
 
 function LiveSessionsPage(): JSX.Element {
   const liveSessions = useGlobalData()["conversations"]
@@ -75,7 +76,7 @@ function LiveSessionsPage(): JSX.Element {
             className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[00px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
             variants={transitions.item}
           />
-          <section className="max-w-page relative px-6 pt-12 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+          <section className="max-w-page relative px-6 pt-12 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-48 ">
             <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
@@ -90,7 +91,7 @@ function LiveSessionsPage(): JSX.Element {
                 Join live sessions with the DFINITY Foundation to discuss
                 upcoming contributions to the Internet Computer roadmap.
               </motion.p>
-              <motion.div className="">
+              <motion.div className="" variants={transitions.item}>
                 <Link
                   className="button-primary text-center"
                   href="#subscription-form"
@@ -104,9 +105,13 @@ function LiveSessionsPage(): JSX.Element {
 
         <section className="max-w-page relative px-6 md:px-12.5 md:mx-auto ||| mb-20 md:mb-40">
           <div className="md:w-10/12 md:mx-auto">
-            <h2 className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-12">
+            <AnimateSpawn
+              el={motion.h2}
+              className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-12"
+              variants={transitions.item}
+            >
               Schedule
-            </h2>
+            </AnimateSpawn>
             <div className="space-y-16 md:space-y-10">
               {upcoming.length === 0 && upcomingTbd.length === 0 && (
                 <div className="tw-lead-lg text-black-60">
@@ -118,12 +123,16 @@ function LiveSessionsPage(): JSX.Element {
                 const timeFormat =
                   getMinutes(session.startTimeUtc) !== 0 ? "h:mm aa" : "h aa";
                 return (
-                  <article
+                  <AnimateSpawn
+                    variants={transitions.container}
                     key={session.title + session.startTimeUtc}
                     className="flex flex-col md:flex-row"
                     id={slugify(session.title)}
                   >
-                    <div className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2">
+                    <motion.div
+                      variants={transitions.item}
+                      className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2"
+                    >
                       <span className="tw-paragraph-sm text-black-60">
                         {format(session.startTimePt, "EEEE")}
                       </span>
@@ -134,8 +143,11 @@ function LiveSessionsPage(): JSX.Element {
                         {format(session.startTimePt, timeFormat)} PT /{" "}
                         {format(session.startTimeEu, timeFormat)} CET
                       </span>
-                    </div>
-                    <div className="flex-1 flex flex-col gap-2 md:gap-4">
+                    </motion.div>
+                    <AnimateSpawn
+                      variants={transitions.item}
+                      className="flex-1 flex flex-col gap-2 md:gap-4"
+                    >
                       <h3 className="relative tw-heading-4 md:tw-heading-3 mb-0 group">
                         {session.title}
                         <a
@@ -178,17 +190,21 @@ function LiveSessionsPage(): JSX.Element {
                           </Link>
                         </div>
                       )}
-                    </div>
-                  </article>
+                    </AnimateSpawn>
+                  </AnimateSpawn>
                 );
               })}
               {upcomingTbd.map((list) => {
                 return (
-                  <div
+                  <AnimateSpawn
+                    variants={transitions.container}
                     key={list.tbdMonth}
                     className="flex flex-col md:flex-row"
                   >
-                    <div className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2">
+                    <AnimateSpawn
+                      variants={transitions.item}
+                      className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2"
+                    >
                       <span className="tw-paragraph-sm text-black-60">
                         Coming in
                       </span>
@@ -198,8 +214,11 @@ function LiveSessionsPage(): JSX.Element {
                           "MMMM"
                         )}
                       </span>
-                    </div>
-                    <div className="flex-1 flex flex-col gap-8 md:gap-10">
+                    </AnimateSpawn>
+                    <AnimateSpawn
+                      variants={transitions.item}
+                      className="flex-1 flex flex-col gap-8 md:gap-10"
+                    >
                       {list.liveSessions.map((session) => (
                         <article
                           className="flex-1 flex flex-col gap-4"
@@ -231,14 +250,18 @@ function LiveSessionsPage(): JSX.Element {
                           ></div>
                         </article>
                       ))}
-                    </div>
-                  </div>
+                    </AnimateSpawn>
+                  </AnimateSpawn>
                 );
               })}
             </div>
           </div>
         </section>
-        <section className="bg-infinite mb-20 md:mb-40">
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.item}
+          className="bg-infinite mb-20 md:mb-40"
+        >
           <div className="max-w-page relative px-6 md:px-12.5 md:mx-auto py-16">
             <div className="md:w-10/12 md:mx-auto text-white text-center">
               <h3 className="tw-lead  mb-6">
@@ -255,19 +278,27 @@ function LiveSessionsPage(): JSX.Element {
               variants={transitions.item}
             />
           </div>
-        </section>
-        <section className="max-w-page relative px-6 md:px-12.5 md:mx-auto ||| mb-20 md:mb-40">
+        </AnimateSpawn>
+        <AnimateSpawn
+          variants={transitions.container}
+          el={motion.section}
+          className="max-w-page relative px-6 md:px-12.5 md:mx-auto ||| mb-20 md:mb-40"
+        >
           <div className="md:w-10/12 md:mx-auto ">
-            <Link
+            <MotionLink
+              variants={transitions.item}
               className="button-fancy mb-10"
               href="https://www.youtube.com/playlist?list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng"
             >
               Watch past live sessions on YouTube
               <ChevronRightIcon></ChevronRightIcon>
-            </Link>
-            <h2 className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-12">
+            </MotionLink>
+            <motion.h2
+              variants={transitions.item}
+              className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-12"
+            >
               Past Live Sessions
-            </h2>
+            </motion.h2>
             <div className="space-y-16 md:space-y-10">
               {(showAllPast ? past : past.slice(0, 5)).map((session) => {
                 const timeFormat =
@@ -276,12 +307,16 @@ function LiveSessionsPage(): JSX.Element {
                 const sameYear =
                   getYear(session.startTimeUtc) === getYear(new Date());
                 return (
-                  <article
+                  <AnimateSpawn
+                    variants={transitions.container}
                     key={session.title + session.startTimeUtc}
                     className="flex flex-col md:flex-row"
                     id={slugify(session.title)}
                   >
-                    <div className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2">
+                    <motion.div
+                      className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2"
+                      variants={transitions.item}
+                    >
                       {!sameYear && (
                         <span className="tw-paragraph-sm text-black-60">
                           {format(session.startTimePt, "yyyy")}
@@ -294,8 +329,11 @@ function LiveSessionsPage(): JSX.Element {
                         {format(session.startTimePt, timeFormat)} PT /{" "}
                         {format(session.startTimeEu, timeFormat)} CET
                       </span>
-                    </div>
-                    <div className="flex-1 flex flex-col gap-4">
+                    </motion.div>
+                    <motion.div
+                      className="flex-1 flex flex-col gap-4"
+                      variants={transitions.item}
+                    >
                       <h3 className="relative tw-heading-4 md:tw-heading-3 mb-0 group">
                         {session.title}
                         <a
@@ -348,8 +386,8 @@ function LiveSessionsPage(): JSX.Element {
                           </Link>
                         </div>
                       )}
-                    </div>
-                  </article>
+                    </motion.div>
+                  </AnimateSpawn>
                 );
               })}
 
@@ -365,12 +403,17 @@ function LiveSessionsPage(): JSX.Element {
               )}
             </div>
           </div>
-        </section>
-        <section
+        </AnimateSpawn>
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.container}
           className="bg-infinite border-0 border-b border-white border-solid"
           id="subscription-form"
         >
-          <div className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative">
+          <motion.div
+            className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative"
+            variants={transitions.item}
+          >
             <motion.img
               src={BlobWhite}
               className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
@@ -378,32 +421,42 @@ function LiveSessionsPage(): JSX.Element {
               variants={transitions.item}
             />
             <div className="md:w-10/12 md:mx-auto ">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
+              <motion.h2
+                className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8"
+                variants={transitions.item}
+              >
                 Register to stay up to date on live community discussions
-              </h2>
+              </motion.h2>
               <form
                 method="POST"
                 action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
                 className="md:w-4/10 space-y-6"
               >
-                <input
+                <motion.input
+                  variants={transitions.item}
                   type="email"
                   name="EMAIL"
                   placeholder="Email"
                   required
                   className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
                 />
-                <input
+                <motion.input
+                  variants={transitions.item}
                   type="text"
                   name="FNAME"
                   placeholder="First Name"
                   className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
                 />
-                <button className="button-outline-white">Register</button>
+                <motion.button
+                  className="button-outline-white"
+                  variants={transitions.item}
+                >
+                  Register
+                </motion.button>
               </form>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </AnimateSpawn>
       </main>
     </Layout>
   );
