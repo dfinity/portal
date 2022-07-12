@@ -2,7 +2,7 @@ import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import useGlobalData from "@docusaurus/useGlobalData";
@@ -17,6 +17,8 @@ import slugify from "slugify";
 const MotionLink = motion(Link);
 
 function LiveSessionsPage(): JSX.Element {
+  const formRef = useRef<HTMLDivElement>();
+
   const liveSessions = useGlobalData()["conversations"]
     .default as LiveSession[];
 
@@ -92,12 +94,17 @@ function LiveSessionsPage(): JSX.Element {
                 upcoming contributions to the Internet Computer roadmap.
               </motion.p>
               <motion.div className="" variants={transitions.item}>
-                <Link
+                <button
                   className="button-primary text-center"
-                  href="#subscription-form"
+                  onClick={() =>
+                    window.scroll({
+                      top: formRef.current.offsetTop,
+                      behavior: "smooth",
+                    })
+                  }
                 >
                   Alerts for New Session Registrations
-                </Link>
+                </button>
               </motion.div>
             </div>
           </section>
@@ -267,9 +274,17 @@ function LiveSessionsPage(): JSX.Element {
               <h3 className="tw-lead  mb-6">
                 Be the first to get notified as new sessions become available.
               </h3>
-              <Link className="button-outline-white" href="#subscription-form">
+              <button
+                className="button-outline-white"
+                onClick={() =>
+                  window.scroll({
+                    top: formRef.current.offsetTop,
+                    behavior: "smooth",
+                  })
+                }
+              >
                 Alerts for New Session Registrations
-              </Link>
+              </button>
             </div>
             <motion.img
               src={BlobWhite}
@@ -411,6 +426,7 @@ function LiveSessionsPage(): JSX.Element {
           id="subscription-form"
         >
           <motion.div
+            ref={formRef}
             className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative"
             variants={transitions.item}
           >
