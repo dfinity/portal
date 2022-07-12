@@ -1,59 +1,22 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const dotenv = require("dotenv");
+const isDev = process.env.NODE_ENV === "development";
+dotenv.config({ path: ".env.local" });
+
 // @ts-ignore
 const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-const fetch = require("node-fetch").default;
-const isDev = process.env.NODE_ENV === "development";
+const showcaseProjectsPlugin = require("./plugins/showcase-projects");
+const icpPricePlugin = require("./plugins/icp-price");
+const tailwindPlugin = require("./plugins/tailwind");
+const keepSymlinks = require("./plugins/keep-symlinks");
+
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const customDocusaurusPlugin = (context, options) => {
-  return {
-    name: `portal-docusaurus-plugin`,
-    configureWebpack(config, isServer, utils) {
-      return {
-        resolve: {
-          symlinks: false,
-        },
-      };
-    },
-  };
-};
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const tailwindPlugin = async function (context, options) {
-  return {
-    name: "tailwindcss",
-    configurePostCss(postCssOptions) {
-      postCssOptions.plugins.push(require("tailwindcss"));
-      postCssOptions.plugins.push(require("autoprefixer"));
-      return postCssOptions;
-    },
-  };
-};
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const icpPricePlugin = async function (context, options) {
-  return {
-    name: "icp-price",
-    async loadContent() {
-      const ticker = await fetch(
-        "https://api.binance.com/api/v3/ticker/24hr?symbol=ICPUSDT"
-      ).then((res) => res.json());
-
-      return +ticker.lastPrice;
-    },
-    async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
-    },
-  };
-};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -81,9 +44,10 @@ const config = {
         remarkPlugins: [require("remark-code-import")],
       },
     ],
-    customDocusaurusPlugin,
+    keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
+    showcaseProjectsPlugin,
   ],
 
   presets: [
@@ -169,10 +133,10 @@ const config = {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
-              // {
-              //   label: "Showcase",
-              //   href: "/showcase",
-              // },
+              {
+                label: "Showcase",
+                href: "/showcase",
+              },
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
