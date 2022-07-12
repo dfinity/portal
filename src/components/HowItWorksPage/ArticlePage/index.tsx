@@ -18,10 +18,10 @@ function Index() {
   const articleSlug = location.pathname.replace("/howitworks/", "");
   const article = data.articles.find((a) => a.slug === articleSlug);
   const links = article.listOfLinks
-    .split("\n")
+    ?.split("\n")
     .filter((link) => !!link)
-    .map((link) => {
-      let [text, href] = link.split("](");
+    ?.map((link) => {
+      let [text, href] = link?.split("](");
       return { text: text?.replace("- [", ""), href: href?.replace(")", "") };
     });
   return (
@@ -70,14 +70,14 @@ function Index() {
           <section className="max-w-page relative px-6 mb-5 md:mb-14 md:px-12.5 md:mx-auto overflow-hidden">
             <div className="md:w-8/10 lg:w-7/10 md:ml-1/12">
               <motion.div variants={transitions.item}>
-                {article.description.split("\n").map((item) => (
+                {article.description?.split("\n")?.map((item) => (
                   <span className="tw-paragraph" key={item}>
                     {item}
                     <br />
                   </span>
                 ))}
                 <div className="mt-8">
-                  {links.map((link) => (
+                  {links?.map((link) => (
                     <Link
                       className="flex mb-6 tw-heading-6 align-middle hover:no-underline hover:text-black items-center"
                       to={link.href}
@@ -95,7 +95,7 @@ function Index() {
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-x-5 gap-y-12 lg:grid-cols-4 transition-opacity">
               {data.articles
                 .filter((a) => a.slug !== articleSlug)
-                .map((article) => (
+                ?.map((article) => (
                   <ArticlePreview
                     title={article.title}
                     coverImage={article.coverImage}
