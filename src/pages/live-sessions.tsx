@@ -8,7 +8,7 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import useGlobalData from "@docusaurus/useGlobalData";
 import Link from "@docusaurus/Link";
 import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
-import { format } from "date-fns-tz";
+import { format, utcToZonedTime } from "date-fns-tz";
 import { getMinutes, parse, getYear } from "date-fns";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
@@ -48,10 +48,21 @@ function LiveSessionsPage(): JSX.Element {
             liveSessions: [liveSession],
           });
         }
-      } else if (liveSession.startTimeUtc < Date.now() - 2 * 3600 * 1000) {
-        past.push(liveSession);
-      } else {
-        upcoming.push(liveSession);
+      } else if (liveSession.startTimeUtc) {
+        liveSession.startTimePt = utcToZonedTime(
+          liveSession.startTimeUtc,
+          "America/Los_Angeles"
+        ).getTime();
+        liveSession.startTimeEu = utcToZonedTime(
+          liveSession.startTimeUtc,
+          "Europe/Zurich"
+        ).getTime();
+
+        if (liveSession.startTimeUtc < Date.now() - 2 * 3600 * 1000) {
+          past.push(liveSession);
+        } else {
+          upcoming.push(liveSession);
+        }
       }
     }
 
@@ -421,57 +432,45 @@ function LiveSessionsPage(): JSX.Element {
         </AnimateSpawn>
         <AnimateSpawn
           el={motion.section}
-          variants={transitions.container}
+          variants={transitions.item}
           className="bg-infinite border-0 border-b border-white border-solid"
           id="subscription-form"
         >
-          <motion.div
+          <div
             ref={formRef}
             className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative"
-            variants={transitions.item}
           >
-            <motion.img
+            <img
               src={BlobWhite}
               className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
               alt=""
-              variants={transitions.item}
             />
             <div className="md:w-10/12 md:mx-auto ">
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8"
-                variants={transitions.item}
-              >
+              <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
                 Register to stay up to date on live community discussions
-              </motion.h2>
+              </h2>
               <form
                 method="POST"
                 action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
                 className="md:w-4/10 space-y-6"
               >
-                <motion.input
-                  variants={transitions.item}
+                <input
                   type="email"
                   name="EMAIL"
                   placeholder="Email"
                   required
                   className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
                 />
-                <motion.input
-                  variants={transitions.item}
+                <input
                   type="text"
                   name="FNAME"
                   placeholder="First Name"
                   className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
                 />
-                <motion.button
-                  className="button-outline-white"
-                  variants={transitions.item}
-                >
-                  Register
-                </motion.button>
+                <button className="button-outline-white">Register</button>
               </form>
             </div>
-          </motion.div>
+          </div>
         </AnimateSpawn>
       </main>
     </Layout>

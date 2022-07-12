@@ -48,12 +48,6 @@ const liveSessionsPlugin = async function () {
             startTimeUtc: isValid(parsedEventTime)
               ? parsedEventTime.getTime()
               : null,
-            startTimePt: isValid(parsedEventTime)
-              ? utcToZonedTime(parsedEventTime, "America/Los_Angeles").getTime()
-              : null,
-            startTimeEu: isValid(parsedEventTime)
-              ? utcToZonedTime(parsedEventTime, "Europe/Zurich").getTime()
-              : null,
             tbdMonth: conv.fields.tbdMonth,
             zoomLink: conv.fields.zoomLink,
             youtubeLink: conv.fields.youtubeLink,
