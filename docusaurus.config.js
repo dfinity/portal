@@ -15,6 +15,7 @@ const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
@@ -50,6 +51,7 @@ const config = {
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
+    howItWorksArticlesPlugin,
   ],
 
   presets: [
@@ -149,7 +151,7 @@ const config = {
               },
               {
                 label: "How it works",
-                href: "https://dfinity.org/howitworks",
+                href: "/howitworks",
               },
               {
                 label: "DFINITY Foundation",
