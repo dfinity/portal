@@ -434,16 +434,15 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
+
+        {/* This must not be invisible */}
+        <div ref={formRef}></div>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
           className="bg-infinite border-0 border-b border-white border-solid"
-          id="subscription-form"
         >
-          <div
-            ref={formRef}
-            className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative"
-          >
+          <div className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative">
             <img
               src={BlobWhite}
               className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
