@@ -22,6 +22,7 @@ function LiveSessionsPage(): JSX.Element {
   const liveSessions = useGlobalData()["conversations"]
     .default as LiveSession[];
 
+  const [initalized, setInitalized] = useState(false);
   const [upcoming, setUpcoming] = useState<LiveSession[]>([]);
   const [upcomingTbd, setUpcomingTbd] = useState<
     { tbdMonth: string; liveSessions: LiveSession[] }[]
@@ -74,6 +75,7 @@ function LiveSessionsPage(): JSX.Element {
     upcomingTbd.sort((a, b) => a.tbdMonth.localeCompare(b.tbdMonth));
 
     setUpcomingTbd(upcomingTbd);
+    setInitalized(true);
   }, [liveSessions, setPast, setUpcoming]);
 
   return (
@@ -131,11 +133,13 @@ function LiveSessionsPage(): JSX.Element {
               Schedule
             </AnimateSpawn>
             <div className="space-y-16 md:space-y-10">
-              {upcoming.length === 0 && upcomingTbd.length === 0 && (
-                <div className="tw-lead-lg text-black-60">
-                  No upcoming live sessions at the moment.
-                </div>
-              )}
+              {initalized &&
+                upcoming.length === 0 &&
+                upcomingTbd.length === 0 && (
+                  <div className="tw-lead-lg text-black-60">
+                    No upcoming live sessions at the moment.
+                  </div>
+                )}
 
               {upcoming.map((session) => {
                 const timeFormat =
