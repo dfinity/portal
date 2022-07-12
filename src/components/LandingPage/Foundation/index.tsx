@@ -30,13 +30,13 @@ const cards = [
     isMain: false,
     title: ["Internet Computer Infographic"],
     body: "A beautiful dream emerged in 2014. One team set itself to realizing that dream.",
-    link: "https://dfinity.org/icig.pdf",
+    link: "https://internetcomputer.org/icig.pdf",
   },
   {
     isMain: false,
     title: ["IC for Geeks", "White Paper"],
     body: "v1.3 April 19, 2022",
-    link: "https://dfinity.org/whitepaper.pdf",
+    link: "https://internetcomputer.org/whitepaper.pdf",
   },
 ];
 

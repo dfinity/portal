@@ -65,7 +65,7 @@ For the response to be verified, it has to be checked that a) the served content
 The function `witness` is responsible for creating a tree with minimal content that still can be verified to fulfill a) and b).
 Once this minimal tree is constructed, certificate and minimal hash tree are sent as part of the `IC-Certificate` header.
 
-For a much more detailed explanation how certification works, see [this explanation video](https://dfinity.org/howitworks/response-certification).
+For a much more detailed explanation how certification works, see [this explanation video](https://internetcomputer.org/howitworks/response-certification).
 
 ### Managing Control over Assets
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
