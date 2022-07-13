@@ -16,13 +16,13 @@ function Index() {
   const location = useLocation();
   const data = useGlobalData()["howitworks-articles"].default as HowItWorksData;
   const articleSlug = location.pathname.replace("/howitworks/", "");
-  const article = data.articles.find((a) => a.slug === articleSlug);
+  const article = data.articles?.find((a) => a.slug === articleSlug);
   const links = article.listOfLinks
     ?.split("\n")
-    .filter((link) => !!link)
+    ?.filter((link) => !!link)
     ?.map((link) => {
       let [text, href] = link?.split("](");
-      return { text: text?.replace("- [", ""), href: href?.replace(")", "") };
+      return { text: text?.replace("- [", ""), href: href?.split(" ")[0] };
     });
   return (
     <Layout
@@ -38,11 +38,17 @@ function Index() {
             variants={transitions.item}
           />
           <section className="max-w-page relative px-6 pt-10 mb-8 md:mb-20 md:px-12.5 md:mx-auto md:pt-6 overflow-hidden">
-            <motion.div className="md:w-7/10 lg:w-6/10 md:ml-1/12">
+            <motion.div
+              variants={transitions.item}
+              className="md:w-7/10 lg:w-6/10 md:ml-1/12"
+            >
               <Breadcrumbs
                 links={[
                   { text: "How it works", href: "/howitworks" },
-                  { text: article.title, href: location.pathname },
+                  {
+                    text: article.title,
+                    href: location.pathname,
+                  },
                 ]}
               />
             </motion.div>
@@ -76,14 +82,15 @@ function Index() {
                     <br />
                   </span>
                 ))}
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col">
                   {links?.map((link) => (
                     <Link
-                      className="flex mb-6 tw-heading-6 align-middle hover:no-underline hover:text-black items-center"
+                      className="mb-6 tw-heading-6 hover:no-underline hover:text-black"
                       to={link.href}
+                      key={link.text}
                     >
-                      {link.text}
-                      <ExternalLinkIcon className="ml-1 h-6 w-6" />
+                      <span className="mr-2">{link.text}</span>
+                      <ExternalLinkIcon className="h-3 w-3" />
                     </Link>
                   ))}
                 </div>
@@ -94,12 +101,13 @@ function Index() {
             <p className="tw-heading-4 mb-6">{data.otherSessionsTitle}</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-x-5 gap-y-12 lg:grid-cols-4 transition-opacity">
               {data.articles
-                .filter((a) => a.slug !== articleSlug)
+                ?.filter((a) => a.slug !== articleSlug)
                 ?.map((article) => (
                   <ArticlePreview
                     title={article.title}
                     coverImage={article.coverImage}
                     slug={article.slug}
+                    key={article.slug}
                   />
                 ))}
             </div>
