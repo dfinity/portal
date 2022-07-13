@@ -6,6 +6,7 @@ const sidebars = {
         // 'overview',
         'hello',
         'host-a-website',
+        'http-requests-exchange-rates',
         'dex',
         'nft',
         'dao',
