@@ -17,5 +17,3 @@ If you are looking for more introductory information, check out the following re
 - [Overview of the Internet Computer (video)](https://www.youtube.com/watch?v=XgsOKP224Zw)
 
 - [Introducing Canisters — An Evolution of Smart Contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ)
-
-<!-- -   [Frequently Asked Questions (video and short articles)](https://dfinity.org/faq/) -->
