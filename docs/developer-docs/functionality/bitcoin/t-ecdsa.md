@@ -7,23 +7,16 @@ Each canister on any subnet of the Internet Computer has control over a unique E
 A threshold ECDSA implementation on a blockchain can be viewed as the on-chain pendant to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those.
 
 The availability of threshold ECDSA allows for a multitude of important use cases, as for example:
-
 -   Canisters natively holding Bitcoin;
-
 -   Integration with Ethereum, e.g., getting the ERC-20 tokens of Ethereum into the IC or signing Ethereum transactions;
-
 -   Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA (this requires a different elliptic curve to the currently implemented curve `secp256k1`, namely `secp256r1`, for use cases such as integration with Bitcoin and Ethereum).
-
 -   FIX: More use cases
 
 ## Technology Overview -- How It Works
 
-We next give a high-level outline of threshold ECDSA on the IC. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. The IC implements the threshold ECDSA protocol by Groth and Shoup as described in ??. The threshold ECDSA implementation on the IC features multiple protocols:
-
+We next give a high-level outline of threshold ECDSA on the IC. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. The IC implements the threshold ECDSA protocol by Groth and Shoup as described in their Eurocrypt 2022 paper (??). The threshold ECDSA implementation on the IC features multiple protocols:
 -   Key generation: This protocol is executed on a specified subnet; it generates a threshold ECDSA key such that the private key is secret shared over the replicas of this subnet.
-
 -   Key re-sharing: This protocol re-shares an ECDSA key from a source subnet to a target subnet. It results in the same key being secret shared over the replicas of the target subnet using a different random secret sharing (potentially over a different number of replicas than the sharing in the source subnet uses).
-
 -   Signing: This protocol computes a signature with the secret-shared private key. Signing is done by precomputing the vast majority of the steps of the signing protocol and storing the precomputation result as a set of quadruples. Upon a signing request, one of the precomputed quadruples is consumed to efficiently compute a signature.
 
 It is crucial to note that the private key never exists in reconstructed, but only in secret-shared form during its whole lifetime, be it during its generation, the re-sharing of the key from one subnet to another, and computing signatures.
@@ -32,7 +25,7 @@ Various NNS proposals have been implemented to perform key management, i.e., ini
 
 ## ECDSA Keys
 
-ECDSA-enabled subnets hold what we call threshold ECDSA *master keys*, generated with the key generation process on selected subnets of the IC. A master ECDSA key is a key from which canister ECDSA keys can be derived. I.e., a single master key for a given elliptic curve suffices to allow for the derivation of an ECDSA key for each canister on the IC (*canister root key*) using the canister\'s principal and a BIP-32-like key derivation mechanism that is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in Figure ?? for the derivation of canister root keys from a master key.
+ECDSA-enabled subnets hold what we call threshold ECDSA *master keys*, generated with the key generation process on selected subnets of the IC. A master ECDSA key is a key from which canister ECDSA keys can be derived. I.e., a single master key for a given elliptic curve suffices to allow for the derivation of an ECDSA key for each canister on the IC (*canister root key*) using the canister\'s principal and a BIP-32-like key derivation mechanism that is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in the below Figure for the derivation of canister root keys from a master key.
 
 From a canister root key, an unlimited number of further ECDSA keys can be derived for the canister using a backward-compatible extension of the BIP-32 key derivation mechanism. The extension allows not only 32-bit integers, but arbitrary-length byte arrays, to be used as input for each level of the key derivation function. See the levels 1 and greater in the below figure illustrating the derivation of further canister keys based on the canister root key.
 
@@ -48,7 +41,7 @@ We next outline the deployment for the Chromium (Beta) release available now and
 
 ### Chromium Release
 
-Currently, as part of the Chromium release, only a test key for curve \`secp256k1\` is deployed on one subnet with a replication factor of 13. This key may be deleted with an according NNS proposal some time after the GA release and therefore should not be used for anything that has value, but only for development and testing purposes. More concretely, it is, for example, strongly advised against holding real bitcoin with the test key. The test key is rather intended to facilitate development of Bitcoin smart contracts and hold Testnet bitcoin as preparation for the GA release. The test key has the id \`(secp256k1, test_key_1)\` (FIX key name) for referring to it in API calls.
+Currently, as part of the Chromium release, only a test key for curve \`secp256k1\` is deployed on one subnet with a replication factor of 13. This key may be deleted with an according NNS proposal some time after the GA release and therefore should not be used for anything that has value, but only for development and testing purposes. More concretely, it is, for example, strongly advised against holding real bitcoin with the test key. The test key is rather intended to facilitate development of Bitcoin smart contracts and hold Testnet bitcoin as preparation for the GA release. The test key has the id `(secp256k1, test_key_1)` for referring to it in API calls.
 
 ### General Availability Release (Coming Later in 2022)
 
@@ -66,14 +59,13 @@ We next give an overview of the API for threshold ECDSA. For a detailed specific
 
 Each API call refers to a threshold ECDSA master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister\'s root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
--   \`ecdsa_public_key\`: This method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the \`canister_id\` is unspecified, it will default to the canister id of the caller. The \`derivation_path\` is a vector of variable length byte strings. The \`key_id\` is a struct specifying both a curve and a name. The availability of a particular \`key_id\` depends on implementation.\
-For \`curve secp256k1\`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the \`derivation_path\` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31^.\
+-   \`ecdsa_public_key\`: This method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the \`canister_id\` is unspecified, it will default to the canister id of the caller. The \`derivation_path\` is a vector of variable length byte strings. The \`key_id\` is a struct specifying both a curve and a name. The availability of a particular \`key_id\` depends on implementation.<br/>
+For \`curve secp256k1\`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the \`derivation_path\` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31.<br/>
 The return result is an extended public key consisting of an ECDSA \`public_key\`, encoded in SEC1 compressed form, and a \`chain_code\`, which can be used to deterministically derive child keys of the \`public_key\`.\
 This call requires that the ECDSA feature is enabled, and the \`canister_id\` meets the requirement of a canister id. Otherwise it will be rejected.
-
--   \`sign_with_ecdsa\`: This method returns a new ECDSA signature of the given message_hash that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling \`ecdsa_public_key\` with the caller\'s \`canister_id\`, and the same \`derivation_path\` and \`key_id\` used here.\
-The signatures are encoded as the concatenation of the SEC1 encodings of the two values r and s. For curve \`secp256k1\`, this corresponds to 32-byte big-endian encoding.\
-This call requires that the ECDSA feature is enabled, the caller is a canister, and \`message_hash\` is 32 bytes long. Otherwise it will be rejected.
+-   \`sign_with_ecdsa\`: This method returns a new ECDSA signature of the given message_hash that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling \`ecdsa_public_key\` with the caller\'s \`canister_id\`, and the same \`derivation_path\` and \`key_id\` used here.<br/>
+The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
+This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
 ## Environments
 
