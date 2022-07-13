@@ -15,7 +15,8 @@ import Breadcrumbs from "@site/src/components/HowItWorksPage/Breadcrumbs";
 function Index() {
   const location = useLocation();
   const data = useGlobalData()["howitworks-articles"].default as HowItWorksData;
-  const articleSlug = location.pathname.replace("/howitworks/", "");
+  const articleSlug = location.pathname.split("/").filter((s) => !!s)[1];
+
   const article = data.articles?.find((a) => a.slug === articleSlug);
   const links = article.listOfLinks
     ?.split("\n")
