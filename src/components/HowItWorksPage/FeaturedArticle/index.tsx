@@ -23,7 +23,8 @@ function Index({ title, description, coverImage, slug }) {
       <div className="w-full sm:w-1/2">
         <img
           className="object-cover w-full h-full rounded-t-xl sm:rounded-r-xl sm:rounded-tl-none"
-          src={coverImage + "?w=1200&q=80&fm=jpg"}
+          src={coverImage + "?w=670&q=80&fm=jpg"}
+          srcSet={`${coverImage}?w=670&q=80&fm=jpg, ${coverImage}?w=1340&q=80&fm=jpg 2x`}
           alt=""
         />
       </div>
