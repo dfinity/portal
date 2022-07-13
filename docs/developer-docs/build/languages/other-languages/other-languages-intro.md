@@ -8,9 +8,13 @@ There are two main ways to working with canisters: It is possible to develop can
 
 To create canisters, it is typical to use a so-called CDK, a Canister Development Kit. The CDK's main tasks are to expose the public interface of a canister, manage memory, allowing other canisters to be called, and to interface with the system API. Here is a non-exhaustive list of different CDKs and/or language guides: (CDK developers, feel free to add your own using the 'Edit this page' button at the bottom!)
 
+- AssemblyScript: [cdk-as](https://github.com/rckprtr/cdk-as)
 - C-like languages: [Clang guide](./clang-supported-languages.md)
 - Motoko: support built into [dfx](../../install-upgrade-remove.mdx) using the Motoko compiler [moc](https://github.com/dfinity/motoko)
-- Rust: [cdk-rs](https://github.com/dfinity/cdk-rs)
+- Rust:
+  - [cdk-rs](https://github.com/dfinity/cdk-rs)
+  - [canister-sdk](https://github.com/infinity-swap/canister-sdk)
+- Typescript: [azle](https://github.com/demergent-labs/azle)
 
 ## Interfacing with Canisters (Agents)
 
