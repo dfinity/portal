@@ -78,20 +78,19 @@ Threshold ECDSA requests will equally be answered by a single active subnet, ano
 
 The Bitcoin integration makes the following management canister APIs available to canisters (the threshold ECDSA API is explained in [its documentation page](./t-ecdsa.md) and the [interface specification](../../../references/ic-interface-spec.md)). Each Bitcoin-related method needs to specify whether it uses Bitcoin `mainnet` or `testnet`.
 
--   `bitcoin_get_utxos`: Given a `get_utxos_request`, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns all unspent transaction outputs (UTXOs) associated with the provided address in the specified Bitcoin network based on the current view of the Bitcoin blockchain available to the Bitcoin component. The UTXOs are returned sorted by block height in descending order.
-The optional filter parameter can be used to restrict the set of returned UTXOs, either providing a minimum number of confirmations or a page reference when pagination is used for addresses with many UTXOs. In the first case, only UTXOs with at least the provided number of confirmations are returned, i.e. transactions with fewer than this number of confirmations are not considered. In other words, if the number of confirmations is c, an output is returned if it occurred in a transaction with at least c confirmations and there is no transaction that spends the same output with at least c confirmations.\
+-   `bitcoin_get_utxos`: Given a `get_utxos_request`, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns all unspent transaction outputs (UTXOs) associated with the provided address in the specified Bitcoin network based on the current view of the Bitcoin blockchain available to the Bitcoin component. The UTXOs are returned sorted by block height in descending order.<br/>
+The optional filter parameter can be used to restrict the set of returned UTXOs, either providing a minimum number of confirmations or a page reference when pagination is used for addresses with many UTXOs. In the first case, only UTXOs with at least the provided number of confirmations are returned, i.e. transactions with fewer than this number of confirmations are not considered. In other words, if the number of confirmations is c, an output is returned if it occurred in a transaction with at least c confirmations and there is no transaction that spends the same output with at least c confirmations.<br/>
 A `get_utxos_request` without the optional filter results in a request that considers the full blockchain, which is equivalent to setting `min_confirmations` to 0.
--   `bitcoin_get_balance`: Given a `get_balance_request`, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns the current balance of this address in Satoshi (10\^8 Satoshi = 1 Bitcoin) in the specified Bitcoin network. The same address formats as for `bitcoin_get_utxos` are supported.
+-   `bitcoin_get_balance`: Given a `get_balance_request`, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns the current balance of this address in Satoshi (10<sup>8</sup> Satoshi = 1 Bitcoin) in the specified Bitcoin network. The same address formats as for `bitcoin_get_utxos` are supported.
 -   `bitcoin_send_transaction`: Given a `send_transaction_request`, which must specify a blob of a Bitcoin transaction and a Bitcoin network (mainnet or testnet), several checks are performed, and, if successful, the transaction is forwarded to the Bitcoin network.
--   `bitcoin_get_current_fee_percentiles`: The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.
-This function returns the 100 fee percentiles, measured in millisatoshi/byte (10\^3 millisatoshi = 1 satoshi), over the last 10,000 transactions, i.e., over the transactions in the last approximately 4-10 blocks.
+-   `bitcoin_get_current_fee_percentiles`: The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.<br/>
+This function returns the 100 fee percentiles, measured in millisatoshi/byte (10<sup>3</sup> millisatoshi = 1 satoshi), over the last 10,000 transactions, i.e., over the transactions in the last approximately 4-10 blocks.
 
 We refer to the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md) for the details of the Bitcoin integration API.
 
 ## Development, Pre-Production, and Production Stage
 
 The Bitcoin functionality including threshold ECDSA is available in all stages required for the development life cycle on the IC:
-
 -   The *SDK* for local development of canisters;
 -   IC mainnet support as the pre-production environment for final testing on *Bitcoin testnet*;
 -   IC mainnet support as the production environment for the release using *Bitcoin mainnet*.
