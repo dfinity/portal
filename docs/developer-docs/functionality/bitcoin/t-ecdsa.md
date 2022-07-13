@@ -38,7 +38,7 @@ From a canister root key, an unlimited number of further ECDSA keys can be deriv
 
 The derivation of further ECDSA keys from a canister root key can be done without involvement of the IC to facilitate certain use cases.
 
-![](media/image1.png){width="6.5in" height="3.625in"}
+![Threshold ECDSA Key derivation](media/key_derivation.png)
 
 Threshold ECDSA master keys are always referred to through *key identifiers* in the threshold ECDSA API (as well as in the NNS proposals for managing the rollout). The key identifiers comprise an elliptic curve name and an identifier, e.g., an example key identifier is the 2-tuple `(secp256k1, key_1)`. Those key identifiers are used by the system to refer to the correct key, e.g., for selecting the key share when computing a signature or in the implementation of the XNet routing of API calls and responses to/from the ECDSA-enabled subnet holding the key with the corresponding identifier.
 
