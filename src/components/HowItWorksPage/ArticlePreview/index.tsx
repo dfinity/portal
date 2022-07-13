@@ -9,7 +9,8 @@ function Index({ title, coverImage, slug }) {
       <div>
         <img
           className="h-44 w-full object-cover block rounded-xl"
-          src={coverImage + "?w=750&q=80&fm=jpg"}
+          src={coverImage + "?w=380&q=80&fm=jpg"}
+          srcSet={`${coverImage}?w=380&q=80&fm=jpg, ${coverImage}?w=760&q=80&fm=jpg 2x`}
           alt={title}
         />
         <p className="tw-heading-6 mt-5 md:tw-heading-5">{title}</p>
