@@ -31,15 +31,15 @@ Through the protocol-level integration of the IC with the Bitcoin network, the I
 
 **Novel threshold ECDSA protocol**
 
-Canisters themselves can have ECDSA keys using a novel threshold ECDSA protocol, and so can receive and hold Bitcoin. Canisters can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the threshold ECDSA functionality to request threshold signatures on transactions to be submitted to the Bitcoin network. Threshold ECDSA is an extension of the IC\'s chain-key technology toolbox of protocols. Details regarding the IC\'s threshold ECDSA protocol can be found on the threshold ECDSA documentation page (link??).
+Canisters themselves can have ECDSA keys using a novel threshold ECDSA protocol, and so can receive and hold Bitcoin. Canisters can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the threshold ECDSA functionality to request threshold signatures on transactions to be submitted to the Bitcoin network. Threshold ECDSA is an extension of the IC\'s chain-key technology toolbox of protocols. Details regarding the IC\'s threshold ECDSA protocol can be found on the threshold ECDSA documentation page [here](./t-ecdsa.md).
 
 The protocol-level Bitcoin integration and threshold ECDSA protocol each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on the IC.
 
-We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the Bitcoin page on the Internet Computer Wiki (link??) as well as the threshold ECDSA documentation page (link??).
+We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the Bitcoin page on the Internet Computer Wiki (link??) as well as the threshold ECDSA documentation page [here](./t-ecdsa.md).
 
 ### Protocol-level integration of the IC with the Bitcoin network
 
-We integrated the Internet Computer Protocol with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated per subnet of the Internet Computer. The integration serves two key purposes:
+We integrated the Internet Computer Protocol with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. At the beginning, there will only be one dedicated Bitcoin-activated subnet. The integration serves two key purposes:
 
 -   Obtaining the Bitcoin UTXO set and keeping it on chain in the replicated state of the Internet Computer to be able to answer queries for UTXO sets and balances of Bitcoin accounts issued by canisters.
 
@@ -71,17 +71,17 @@ The threshold ECDSA protocol implemented as part of the Internet Computer\'s cha
 
 Threshold ECDSA on the Internet Computer will be rolled out to one signing subnet initially that will answer signing requests of canisters. The subnet enforces that only the canister that controls a key may request signatures with this key. All API calls go through Xnet traffic and thus incur some extra latency.
 
-Canisters can query their own or other canisters\' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private key. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API.
+Canisters can query their own or other canisters\' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private key. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API. You can find more details on threshold ECDSA [here](./t-ecdsa.md).
 
 ## Deployment Architecture
 
-The Bitcoin functionality will be activated on a single subnet of the IC and API calls from canisters to the Bitcoin API are routed via Xnet communication, thus extra latency is incurred. The feature may, if needed, in the future be additionally activated on (some) app subnets to avoid the additional Xnet latency and to scale out to be able to respond to more requests per time unit.
+The Bitcoin functionality will be activated on a single subnet of the IC and API calls from canisters to the Bitcoin API are routed via Xnet communication, thus extra latency is incurred. The feature may, if needed, in the future be additionally activated on (some) application subnets to avoid the additional Xnet latency and to be able to respond to more requests per time unit.
 
 Threshold ECDSA requests will equally be answered by a single active subnet, another subnet will back up the private key in secret-shared form for disaster recovery.
 
 ## API
 
-The Bitcoin integration makes the following management canister APIs available to canisters (the threshold ECDSA API is explained in its documentation page and the interface specification). Each Bitcoin-related method needs to specify whether it uses Bitcoin \`mainnet\` or \`testnet\`.
+The Bitcoin integration makes the following management canister APIs available to canisters (the threshold ECDSA API is explained in [its documentation page](./t-ecdsa.md) and the [interface specification](../../../references/ic-interface-spec.md)). Each Bitcoin-related method needs to specify whether it uses Bitcoin \`mainnet\` or \`testnet\`.
 
 -   bitcoin_get_utxos: Given a get_utxos_request, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns all unspent transaction outputs (UTXOs) associated with the provided address in the specified Bitcoin network based on the current view of the Bitcoin blockchain available to the Bitcoin component. The UTXOs are returned sorted by block height in descending order.\
     > The optional filter parameter can be used to restrict the set of returned UTXOs, either providing a minimum number of confirmations or a page reference when pagination is used for addresses with many UTXOs. In the first case, only UTXOs with at least the provided number of confirmations are returned, i.e., transactions with fewer than this number of confirmations are not considered. In other words, if the number of confirmations is c, an output is returned if it occurred in a transaction with at least c confirmations and there is no transaction that spends the same output with at least c confirmations.\
@@ -94,7 +94,7 @@ The Bitcoin integration makes the following management canister APIs available t
 -   bitcoin_get_current_fee_percentiles: The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.\
     > This function returns the 100 fee percentiles, measured in millisatoshi/byte (10\^3 millisatoshi = 1 satoshi), over the last 10,000 transactions, i.e., over the transactions in the last approximately 4-10 blocks.
 
-We refer to the \[Internet Computer Interface Specification\](https://internetcomputer.org/docs/current/references/ic-interface-spec) for the details of the Bitcoin integration API.
+We refer to the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md) for the details of the Bitcoin integration API.
 
 ## Development, Pre-Production, and Production Stage
 
@@ -112,7 +112,7 @@ In the typical canister development workflow, canisters on the IC are compiled a
 
 In contrast to the mainnet deployments of the feature, which integrate with Bitcoin testnet and Bitcoin mainnet, respectively, the SDK integrates with a locally-running bitcoind node in regression testing (regtest) mode. Using bitcoind in regtest mode is the preferred way of Bitcoin development. To facilitate our developers as best as possible, we integrated the SDK with bitcoind in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment.
 
-The Bitcoin adapter of the single replica running the local SDK environment connects to the local bitcoind node instead of multiple nodes of Bitcoin testnet or mainnet.
+The Bitcoin adapter of the single replica running the local SDK environment connects to the local bitcoind node instead of multiple nodes of Bitcoin testnet or mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
 
 ### Bitcoin testnet on IC mainnet
 
@@ -142,7 +142,7 @@ Note that the focus here is on simplicity and therefore we will not go into all 
 
 ### Getting Started
 
--   Download the latest SDK (minimum version ??)
+-   Download the latest SDK (minimum version 0.10.1)
 
 -   Create new project
 
