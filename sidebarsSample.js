@@ -4,8 +4,11 @@
 const sidebars = {
     'samples': [
         // 'overview',
+        'bitcoin-integration',
+        't-ecdsa-sample',
         'hello',
         'host-a-website',
+        // 'http-requests-exchange-rates',
         'dex',
         'nft',
         'dao',
