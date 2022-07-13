@@ -122,6 +122,10 @@ Once a smart contract is ready for acceptance testing, it is deployed on IC main
 
 The final stage of development of a Bitcoin smart contract is its deployment on IC mainnet with the Bitcoin API set to use Bitcoin mainnet. This is the final production environment for the smart contract. This is not yet available, but will be activated with the GA release.
 
+[Local Development](./local-development.md)
+
+[Walkthrough](./walkthrough.md)
+
 ## A Simple Example Canister -- Walkthrough
 
 We will next show how to implement a simple example smart contract using the Bitcoin integration feature. Everything relevant will be explained, from installing the SDK, local development, to deploying the canister on IC mainnet and using the Bitcoin testnet integration.

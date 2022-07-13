@@ -67,13 +67,13 @@ We next give an overview of the API for threshold ECDSA. For a detailed specific
 Each API call refers to a threshold ECDSA master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister\'s root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
 -   \`ecdsa_public_key\`: This method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the \`canister_id\` is unspecified, it will default to the canister id of the caller. The \`derivation_path\` is a vector of variable length byte strings. The \`key_id\` is a struct specifying both a curve and a name. The availability of a particular \`key_id\` depends on implementation.\
-    > For \`curve secp256k1\`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the \`derivation_path\` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31^.\
-    > The return result is an extended public key consisting of an ECDSA \`public_key\`, encoded in SEC1 compressed form, and a \`chain_code\`, which can be used to deterministically derive child keys of the \`public_key\`.\
-    > This call requires that the ECDSA feature is enabled, and the \`canister_id\` meets the requirement of a canister id. Otherwise it will be rejected.
+For \`curve secp256k1\`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the \`derivation_path\` must be a 4-byte big-endian encoding of an unsigned integer less than 2^31^.\
+The return result is an extended public key consisting of an ECDSA \`public_key\`, encoded in SEC1 compressed form, and a \`chain_code\`, which can be used to deterministically derive child keys of the \`public_key\`.\
+This call requires that the ECDSA feature is enabled, and the \`canister_id\` meets the requirement of a canister id. Otherwise it will be rejected.
 
 -   \`sign_with_ecdsa\`: This method returns a new ECDSA signature of the given message_hash that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling \`ecdsa_public_key\` with the caller\'s \`canister_id\`, and the same \`derivation_path\` and \`key_id\` used here.\
-    > The signatures are encoded as the concatenation of the SEC1 encodings of the two values r and s. For curve \`secp256k1\`, this corresponds to 32-byte big-endian encoding.\
-    > This call requires that the ECDSA feature is enabled, the caller is a canister, and \`message_hash\` is 32 bytes long. Otherwise it will be rejected.
+The signatures are encoded as the concatenation of the SEC1 encodings of the two values r and s. For curve \`secp256k1\`, this corresponds to 32-byte big-endian encoding.\
+This call requires that the ECDSA feature is enabled, the caller is a canister, and \`message_hash\` is 32 bytes long. Otherwise it will be rejected.
 
 ## Environments
 
