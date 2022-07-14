@@ -17,6 +17,7 @@ const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
+const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
@@ -36,22 +37,13 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "samples",
-        path: "samples",
-        routeBasePath: "samples",
-        sidebarPath: require.resolve("./sidebarsSample.js"),
-        remarkPlugins: [require("remark-code-import")],
-      },
-    ],
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    teamInformationPlugin,
   ],
 
   presets: [
@@ -243,6 +235,12 @@ const config = {
             position: "left",
             sidebarId: "tokenomics",
             label: "Tokenomics",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "samples",
+            label: "Samples",
           },
 
           {

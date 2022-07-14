@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Features from "@site/src/components/LandingPage/Features";
@@ -13,15 +13,12 @@ import Showcase from "@site/src/components/LandingPage/Showcase";
 import StartBuilding from "@site/src/components/LandingPage/StartBuilding";
 import Foundation from "@site/src/components/LandingPage/Foundation";
 import BackgroundGradient from "@site/static/img/bgGradient.png";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--ifm-color-primary",
-      "#3b00b9"
-    );
-  }, []);
+  resetNavBarStyle();
+
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>

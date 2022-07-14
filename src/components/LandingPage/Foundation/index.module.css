@@ -8,6 +8,7 @@
     --swiper-theme-color: var(--ifm-color-primary);
     z-index: 1;
 }
+
 .anchor {
     display: block;
     position: absolute;
@@ -15,6 +16,7 @@
     padding-bottom: 120px;
     visibility: hidden;
 }
+
 .title {
     font-weight: 700;
     font-size: 75px;
@@ -34,28 +36,13 @@
     width: Min(850px, 90%);
     margin: 0 auto;
     position: relative;
-    padding: 500px 0 0 0;
+    padding: 400px 0 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
 }
 
-.teamPhotos {
-    position: absolute;
-    width: 100%;
-    top: 200px;
-    height: 500px;
-}
-
-.teamPhoto {
-    width: 100px;
-    height: 100px;
-    z-index: -10;
-    border-radius: 12px;
-    object-fit: cover;
-    position: absolute;
-}
 
 .mainPhoto {
     width: 1440px;
@@ -346,6 +333,136 @@
     margin: 16px;
 }
 
+.teamPhotoContainer {
+    position: absolute;
+    z-index: -10;
+    object-fit: cover;
+}
+
+.teamPhotoContainer img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.teamPhotoContainer:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    left: 20%;
+    top: 20%;
+}
+
+.teamPhotoContainer:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    right: 0;
+    top: 10%;
+}
+
+.teamPhotoContainer:nth-child(3) {
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    left: -37%;
+    top: 50%;
+}
+
+.teamPhotoContainer:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    right: -37%;
+    top: 80%;
+}
+.teamPhotoContainer:nth-child(5) {
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    right: -25%;
+    top: 0;
+}
+.teamPhotoContainer:nth-child(6) {
+    width: 81px;
+    height: 81px;
+    z-index: -1;
+    right: 30%;
+    top: 5%;
+}
+.teamPhotoContainer:nth-child(7) {
+    width: 81px;
+    height: 81px;
+    z-index: -1;
+    left: 40%;
+    top: 10%;
+}
+.teamPhotoContainer:nth-child(8) {
+    width: 81px;
+    height: 81px;
+    z-index: -1;
+    right: 35%;
+    top: 35%;
+}
+.teamPhotoContainer:nth-child(9) {
+    width: 81px;
+    height: 81px;
+    z-index: -1;
+    right: -15%;
+    top: 45%;
+}
+.teamPhotoContainer:nth-child(10) {
+    width: 81px;
+    height: 81px;
+    z-index: -1;
+    left: -10%;
+    top: 30%;
+}
+.teamPhotoContainer:nth-child(11) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    left: -10%;
+    top: 10%;
+}
+.teamPhotoContainer:nth-child(12) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    left: -30%;
+    top: 25%;
+}
+.teamPhotoContainer:nth-child(13) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    left: -15%;
+    top: 55%;
+}
+.teamPhotoContainer:nth-child(14) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    left: -25%;
+    top: 85%;
+}
+.teamPhotoContainer:nth-child(15) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    right: -25%;
+    top: 75%;
+}
+.teamPhotoContainer:nth-child(16) {
+    width: 61px;
+    height: 61px;
+    z-index: -2;
+    right: -35%;
+    top: 25%;
+}
+
+
 @media screen and (max-width: 996px) {
     .container {
         padding: 48px 0;
@@ -417,6 +534,11 @@
         display: flex;
         margin: 32px 0;
     }
+
+    .teamPhotoContainer {
+        display: none;
+    }
+
     .anchor {
         margin-top: -50px;
         padding-bottom: 50px;
