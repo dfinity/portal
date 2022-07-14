@@ -165,8 +165,7 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/deploy/computation-and-storage-costs',
       },
       items: [
-        // 'developer-docs/deploy/deploy',
-        // 'developer-docs/deploy/scale',
+        'developer-docs/deploy/deploy',
         'developer-docs/deploy/larger-wasm',
         'developer-docs/deploy/custom-domain',
         'developer-docs/deploy/computation-and-storage-costs',
