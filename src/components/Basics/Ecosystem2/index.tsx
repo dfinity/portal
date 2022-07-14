@@ -37,11 +37,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-nft.png").default,
     link: (
-      <a
-        href="https://dfinity.org/showcase?tag=nft"
-        target={"_blank"}
-        className={styles.link}
-      >
+      <a href="/showcase?tag=nft" className={styles.link}>
         Explore more NFT projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -64,11 +60,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-social.png").default,
     link: (
-      <a
-        href="https://dfinity.org/showcase?tag=nft"
-        target={"_blank"}
-        className={styles.link}
-      >
+      <a href="/showcase?tag=social" className={styles.link}>
         Explore more SocialFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -91,11 +83,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-defi.png").default,
     link: (
-      <a
-        href="https://dfinity.org/showcase?tag=nft"
-        target={"_blank"}
-        className={styles.link}
-      >
+      <a href="/showcase?tag=defi" className={styles.link}>
         Explore more DeFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -119,11 +107,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-metaverse.png")
       .default,
     link: (
-      <a
-        href="https://dfinity.org/showcase?tag=nft"
-        target={"_blank"}
-        className={styles.link}
-      >
+      <a href="/showcase?tag=metaverse" className={styles.link}>
         Explore more Metaverse projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -164,7 +148,7 @@ const Ecosystem2 = () => {
           className={styles.headingContainer}
         >
           <h2 className="heading-2">Ecosystem</h2>
-          <Link href="https://dfinity.org/showcase" className="cta-link">
+          <Link href="/showcase" className="cta-link">
             Go to Ecosystem showcase
             <svg
               width="24"

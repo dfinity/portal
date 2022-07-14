@@ -1,29 +1,26 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const dotenv = require("dotenv");
+const isDev = process.env.NODE_ENV === "development";
+dotenv.config({ path: ".env.local" });
+
 // @ts-ignore
 const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
+const showcaseProjectsPlugin = require("./plugins/showcase-projects");
+const icpPricePlugin = require("./plugins/icp-price");
+const tailwindPlugin = require("./plugins/tailwind");
+const keepSymlinks = require("./plugins/keep-symlinks");
+const liveSessionsPlugin = require("./plugins/live-sessions");
+const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+
 const teamInformationPlugin = require("./plugins/team-information");
 const isDev = process.env.NODE_ENV === "development";
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const customDocusaurusPlugin = (context, options) => {
-  return {
-    name: `portal-docusaurus-plugin`,
-    configureWebpack(config, isServer, utils) {
-      return {
-        resolve: {
-          symlinks: false,
-        },
-      };
-    },
-  };
-};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -48,9 +45,15 @@ const config = {
         path: "samples",
         routeBasePath: "samples",
         sidebarPath: require.resolve("./sidebarsSample.js"),
+        remarkPlugins: [require("remark-code-import")],
       },
     ],
-    customDocusaurusPlugin,
+    keepSymlinks,
+    tailwindPlugin,
+    icpPricePlugin,
+    showcaseProjectsPlugin,
+    liveSessionsPlugin,
+    howItWorksArticlesPlugin,
     teamInformationPlugin,
   ],
 
@@ -72,7 +75,7 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML],
+          remarkPlugins: [simplePlantUML, require("remark-code-import")],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
@@ -139,7 +142,7 @@ const config = {
               },
               {
                 label: "Showcase",
-                href: "https://dfinity.org/showcase",
+                href: "/showcase",
               },
               {
                 label: "Dashboard",
@@ -151,7 +154,7 @@ const config = {
               },
               {
                 label: "How it works",
-                href: "https://dfinity.org/howitworks",
+                href: "/howitworks",
               },
               {
                 label: "DFINITY Foundation",
@@ -190,8 +193,12 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "Token Holders ",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
+                label: "ICP tokens",
+                href: "/icp-tokens",
+              },
+              {
+                label: "Live sessions",
+                href: "/live-sessions",
               },
               {
                 label: "Roadmap",

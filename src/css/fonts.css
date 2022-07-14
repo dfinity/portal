@@ -33,6 +33,14 @@
 
 @font-face {
     font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXTT-Book.woff") format("woff");
+    font-weight: 450;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: CircularXX;
     src: url("/static/fonts/Circular/CircularXXWeb-Italic.woff") format("woff");
     font-weight: 400;
     font-style: italic;

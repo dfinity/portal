@@ -14,7 +14,7 @@ The impatient reader who is familiar with the topic of reproducible builds can s
 
 Internet Computer does not allow you to access the Wasm code of an arbitrary canister. This is a design decision, as developers might want to keep some code private. However, the Internet Computer does allow you to access the SHA-256 of the Wasm code of a canister.
 
-To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [`dfx`](https://dfinity.org/developers/) tool from the terminal. Open your terminal, and run:
+To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [`dfx`](https://internetcomputer.org/developers/) tool from the terminal. Open your terminal, and run:
 
     $ dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
     Controller: r7inp-6aaaa-aaaaa-aaabq-cai

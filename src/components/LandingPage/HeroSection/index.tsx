@@ -36,10 +36,7 @@ function Index() {
           <Link className={styles.actionButton} to="/developers">
             BUILD REAL WEB3
           </Link>
-          <Link
-            className={styles.callToAction}
-            to={"https://dfinity.org/showcase/"}
-          >
+          <Link className={styles.callToAction} to={"/showcase"}>
             Explore the Internet Computer
           </Link>
         </motion.div>

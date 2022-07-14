@@ -20,7 +20,7 @@ Before you download and install this release of the SDK, verify the following:
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/default-wallet).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
 
 ## Download and install
 
@@ -156,7 +156,7 @@ To look up your account in the ledger:
 
         10.00000000 ICP
 
-## Convert ICP tokens to cycles
+## Creating a Cycles Wallet
 
 Now that you have confirmed your account information and current ICP token balance, you can convert some of those ICP tokens to cycles and move them into a cycles wallet.
 
@@ -244,7 +244,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/default-wallet).
+    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
 
 ## Register, build, and deploy the application
 
