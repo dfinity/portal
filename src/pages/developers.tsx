@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import styles from "@site/src/pages/developers.module.css";
@@ -8,24 +8,19 @@ import Canisters from "@site/src/components/DevelopersHome/Canisters";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
 import Contribute from "@site/src/components/DevelopersHome/Contribute";
 import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 function Developers(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--ifm-color-primary",
-      "#3b00b9"
-    );
-  }, []);
+  resetNavBarStyle();
+
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
         <div className={styles.announcementBar}>
           <AnnouncementBar
             text={"Voting for Supernova Community Choice Award"}
-            link={
-              "https://dfinity.org/supernova"
-            }
+            link={"https://dfinity.org/supernova"}
           />
         </div>
         <Header />

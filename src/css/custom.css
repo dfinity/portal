@@ -18,6 +18,7 @@
     --ifm-color-primary-lightest: #4d00f1;
     --ifm-background-color: #f1eef5;
     --ifm-navbar-height: 110px;
+    --ifm-navbar-x-padding: Max(calc((100vw - 1320px) / 2), 50px);
     --ifm-navbar-background-color: rgb(241, 238, 245);
     --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
     --ifm-navbar-search-input-color: rgba(24, 24, 24, 0.6);
@@ -92,7 +93,7 @@ div[class^="announcementBarContent"] {
 
 .navbar {
     z-index: 1901;
-    padding: 44px Max(calc((100vw - 1320px) / 2), 50px) 20px Max(calc((100vw - 1320px) / 2), 50px);
+    padding: 44px var(--ifm-navbar-x-padding) 20px var(--ifm-navbar-x-padding);
     height: var(--ifm-navbar-height);
     margin: 0 0;
 }
@@ -104,14 +105,14 @@ div[class^="announcementBarContent"] {
     }
 }
 
-.ic0-item {
+.ic0-item img {
     display: flex;
     align-items: center;
     fill: white;
     filter: invert(16%) sepia(55%) saturate(7035%) hue-rotate(260deg) brightness(67%) contrast(131%);
 }
 
-.ic0-item:hover {
+.ic0-item:hover img {
     filter: none;
 }
 
@@ -136,7 +137,6 @@ div[class^="announcementBarContent"] {
   }
 }
 .navbar__inner {
-  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
