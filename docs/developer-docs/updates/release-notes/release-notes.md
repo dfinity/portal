@@ -1,5 +1,236 @@
 # Release Notes
 
+# What's new in DFX 0.11.0
+
+## Changes to DFX
+
+### New feature: renamed canisters in new projects to <project>_frontend and <project>_backend
+
+The names of canisters created for new projects have changed.
+After `dfx new <project>`, the canister names are:
+
+- `<project>_backend` (previously `<project>`)
+- `<project>_frontend` (previously `<project>_assets`)
+
+### New feature: Enable threshold ecdsa signature
+
+ECDSA signature signing is now enabled by default in new projects, or by running `dfx start --clean`.
+A test key id "Secp256k1:dfx_test_key" is ready to be used by locally created canisters.
+
+### Refactor: optimize from ic-wasm
+
+Optimize Rust canister WASM module via ic-wasm library instead of ic-cdk-optimizer.
+
+The actual optimization was kept the same.
+
+### New feature: Read dfx canister call argument from a file or stdin
+
+Enables passing large arguments that cannot be passed directly in the command line using the `--argument-file` flag. For example:
+* Named file: `dfx canister call --argument-file ./my/argument/file.txt my_canister_name greet`
+* Stdin: `echo '( null )' | dfx canister call --argument-file - my_canister_name greet`
+
+### Fixed: Use default setting for BTC adapter idle seconds
+
+A lower threshold was no longer necessary.
+
+### New feature: Allow users to configure logging level of bitcoin adapter
+
+The bitcoin adapter's logging can be very verbose if debug logging is enabled, making it difficult to make sense of what's going on. On the other hand, these logs are useful for triaging problems.
+
+To get the best of both worlds, this release adds support for an additional configuration option in dfx.json:
+
+    "bitcoin": {
+      "enabled": true,
+      "nodes": ["127.0.0.1:18444"],
+      "log_level": "info" <------- users can now configure the log level
+    }
+
+By default, a log level of "info" is used, which is relatively quiet. Users can change it to "debug" for more verbose logging.
+
+### Chore: update Candid UI canister with commit bffa0ae3c416e8aa3c92c33722a6b1cb31d0f1c3
+
+This includes the following changes:
+
+* Fetch did file from canister metadata
+* Better flamegraph support
+* Fix bigint error for vec nat8 type
+
+### New feature: dfx will look up the port of the running webserver from .dfx/webserver-port, if present
+
+After `dfx start --host 127.0.0.1:0`, the dfx webserver will listen on an ephemeral port.  It stores the port value in .dfx/webserver-port.  dfx will now look for this file, and if a port is contained within, use that port to connect to the dfx webserver.
+
+### Fixed: dfx commands once again work from any subdirectory of a dfx project
+
+Running `dfx deploy`, `dfx canister id`, `dfx canister call` and so forth work as expected
+if run from within any subdirectory of a dfx project.  Previously, this would create
+canister_ids.json or .dfx/local/canister_ids.json within the subdirectory.
+
+### New feature: Post-installation tasks
+
+You can now add your own custom post-installation/post-deployment tasks to any canister type. The new `post-install` key for canister objects in `dfx.json` can be a command or list of commands, similar to the `build` key of `custom` canisters, and receives all the same environment variables. For example, to replicate the upload task performed with `assets` canisters, you might set `"post-install": "icx-asset sync $CANISTER_ID dist"`.
+
+### New feature: assets are no longer copied from source directories before being uploaded to asset canister
+
+Assets are now uploaded directly from their source directories, rather than first being copied
+to an output directory.
+
+If you're using `dfx deploy`, you won't see any change in functionality.  If you're running
+`dfx canister install --mode=upgrade`, changed files in asset source directories will
+be detected and uploaded even without an intervening `dfx build`.
+
+### Fixed: Added src/declarations to .gitignore for new projects
+
+### Fixed: remove deprecated candid path environment variable
+
+The environment variable format `CANISTER_CANDID_{name}`, used in Rust projects, was deprecated in 0.9.2, to be unified with the variables `CANISTER_CANDID_PATH_{name}` which are used in other project types. It has now been removed. Note that you will need to update `ic-cdk-macros` if you use the `#[import]` macro.
+
+### New feature: deprecate `dfx config` for removal
+
+The `dfx config` command has several issues and is ultimately a poor replacement for [jq](https://stedolan.github.io/jq/). The command is being deprecated, and will be removed in a later release; we recommend switching to `jq` or similar tools (e.g. `ConvertTo-Json` in PowerShell, `to json` in nushell, etc.)
+
+### New feature: Better build scripts for type:custom
+
+Build scripts now always receive a CWD of the DFX project root, instead of wherever `dfx` was invoked from, and a bare script `script.sh` can be specified without needing to prefix with `./`.
+
+### New feature: rust, custom, and asset canisters now include candid:service metadata
+
+Motoko canisters already included this metadata.
+
+Also added this metadata to the asset canister wasm, which will cause the next deploy to
+install this new version.
+
+### New feature: Add safeguard to freezing threshold
+
+Some developers mistakenly think that the freezing threshold is measured in cycles, but it is actually measured in seconds. To stop them from accidentally freezing their canisters, setting a freezing threshold above 50M seconds (~1.5 years) now requires a confirmation.
+
+### Fixed: restores assets to webpack devserver
+
+### Chore: updates webpack dependencies for dfx new project
+
+Resolves an issue where `webpack-cli` was was breaking when users tried to run `npm start` in a fresh project. For affected users of 0.10.1, you can resolve this issue manually by running `npm install webpack@latest webpack-cli@latest terser-webpack-plugin@latest`.
+
+### New feature: Support for new ledger notify function
+
+Ledger 7424ea8 deprecates the existing `notify` function with a switch parameter between creating and topping up a canister, and introduces two
+functions for doing the same. This should *mostly* be invisible to users, except that previously, if `dfx ledger create-canister` or `dfx ledger top-up`
+failed, you would call `dfx ledger notify` after correcting the issue. In order to support the change, this command has been changed to two subcommands:
+`dfx ledger notify create-canister` and `dfx ledger notify top-up`.
+
+### New feature: `--from-subaccount`
+
+Previously, the ledger commands assumed all transfers were made from the default subaccount for the identity principal. This feature adds a `--from-subaccount` flag to `dfx ledger transfer`, `dfx ledger create-canister`, and `dfx ledger top-up`, to enable making transfers from a selected subaccount. A `--subaccount` flag is also added to `dfx ledger balance` for convenience. Subaccounts are expected as 64-character hex-strings (i.e. 32 bytes).
+
+### New feature: cargo audit when building rust canisters
+
+When a canister with type `rust` is built and `cargo-audit` is installed, dfx will now check for vulnerabilities in the dependencies. If a vulnerability is found, dfx will recommend that the user update to a version without known vulnerabilities.
+
+### Fixed: Freezing Threshold now documented
+
+Calls made to retrieve the help output for `canister update-settings` was missing the `freezing-threshold` parameter.
+
+### Chore: warnings and errors are more visible
+
+`WARN` and `ERROR` messages are now clearly labelled as such, and the labels are colored accordingly.
+This is now included when running `dfx canister update-settings -h`.
+
+### Fixed: canister call uses candid file if canister type cannot be determined
+
+The candid file specified in the field `canisters.<canister name>.candid` of dfx.json, or if that not exists `canisters.<canister name>.remote.candid`, is now used when running `dfx canister call`, even when dfx fails to determine the canister type.
+
+### Fixed: btc/canister http adapter socket not found by replica after restart
+
+After running `dfx start --enable-bitcoin` twice in a row (stopping dfx in between), the second
+launched replica would fail to connect to the btc adapter.  This is because ic-starter
+does not write a new configuration file if one already exists, so the configuration file
+used by the replica referred to one socket path, while dfx passed a different socket path
+to the btc adapter.
+
+Now dfx reuses the previously-used unix domain socket path, for both the btc adapter
+and for the canister http adapter.
+
+### Fixed: dfx stop now waits until dfx and any child processes exit
+
+Previously, `dfx stop` would send the TERM signal to the running dfx and its child processes,
+and then exit immediately.
+
+This avoids interference between a dfx process performing cleanup at shutdown and
+a dfx process that is starting.
+
+### Fixed: dfx ping no longer creates a default identity
+
+dfx ping now uses the anonymous identity, and no longer requires dfx.json to be present.
+
+### Fixed: Initialize replica with bitcoin regtest flag
+
+When the bitcoin feature is enabled, dfx was launching the replica with the "bitcoin_testnet" feature.
+The correct feature to use is "bitcoin_regtest".
+
+### New feature: dfx bootstrap now looks up the port of the local replica
+
+`dfx replica` writes the port of the running replica to one of these locations:
+
+- .dfx/replica-configuration/replica-1.port
+- .dfx/ic-ref.port
+
+`dfx bootstrap` will now use this port value, so it's no longer necessary to edit dfx.json after running `dfx replica`.
+
+### New feature: dfx.json local network settings can be set on the local network, rather than defaults
+
+In `dfx.json`, the `bootstrap`, `bitcoin`, `canister_http`, and `replica` settings can
+now be specified on the local network, rather than in the `defaults` field.
+If one of these four fields is set for the local network, the corresponding field
+in `defaults` will be ignored.
+
+Example:
+
+    {
+        "networks": {
+            "local": {
+                "bind": "127.0.0.1:8000",
+                "canister_http": {
+                    "enabled": true
+                }
+            }
+        }
+    }
+
+## Dependencies
+
+### Rust Agent
+
+Updated agent-rs to 0.18.0
+
+### Motoko
+
+Updated Motoko from 0.6.28 to 0.6.29.
+
+### Replica
+
+Updated replica to elected commit 8993849de5fab76e796d67750facee55a0bf6649.
+This incorporates the following executed proposals:
+
+* [69804](https://dashboard.internetcomputer.org/proposal/69804)
+* [69116](https://dashboard.internetcomputer.org/proposal/69116)
+* [67990](https://dashboard.internetcomputer.org/proposal/67990)
+* [67483](https://dashboard.internetcomputer.org/proposal/67483)
+* [66895](https://dashboard.internetcomputer.org/proposal/66895)
+* [66888](https://dashboard.internetcomputer.org/proposal/66888)
+* [65530](https://dashboard.internetcomputer.org/proposal/65530)
+* [65327](https://dashboard.internetcomputer.org/proposal/65327)
+* [65043](https://dashboard.internetcomputer.org/proposal/65043)
+* [64355](https://dashboard.internetcomputer.org/proposal/64355)
+* [63228](https://dashboard.internetcomputer.org/proposal/63228)
+* [62143](https://dashboard.internetcomputer.org/proposal/62143)
+
+### ic-ref
+
+Updated ic-ref to 0.0.1-173cbe84
+- add ic0.performance_counter system interface
+- add system API for ECDSA signing
+- allow optional "error_code" field in responses
+- support gzip-compressed canister modules
+- enable canisters to send HTTP requests
+
 # What’s new in 0.10.1
 
 ## Changes to DFX
