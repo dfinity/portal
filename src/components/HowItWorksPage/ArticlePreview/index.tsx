@@ -1,13 +1,16 @@
 import React from "react";
 import Link from "@docusaurus/Link";
+import { motion } from "framer-motion";
+import transitions from "@site/static/transitions.json";
 
 function Index({ title, coverImage, slug }) {
   return (
-    <div className="flex flex-col justify-between">
+    <motion.div variants={transitions.item} className="flex flex-col">
       <div>
         <img
           className="h-44 w-full object-cover block rounded-xl"
-          src={coverImage}
+          src={coverImage + "?w=380&q=80&fm=jpg"}
+          srcSet={`${coverImage}?w=380&q=80&fm=jpg, ${coverImage}?w=760&q=80&fm=jpg 2x`}
           alt={title}
         />
         <p className="tw-heading-6 mt-5 md:tw-heading-5">{title}</p>
@@ -18,7 +21,7 @@ function Index({ title, coverImage, slug }) {
       >
         Learn more
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
