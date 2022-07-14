@@ -2,6 +2,27 @@
 
 # What's new in DFX 0.11.0
 
+## Breaking changes
+
+### Duplicate asset keys are now reported as errors
+
+The webpack.config.js included in new projects created by previous versions of dfx copied all files from `src/<project>/assets` into `dist/<project>`.  Since the default asset canister defines both of these as a `source`, these assets will show up as duplicates.
+
+For existing projects, you will need to remove the following from webpack.config.js and delete the dist/ directory, or else `dfx deploy` will fail:
+
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, "src", frontendDirectory, "assets"),
+          to: path.join(__dirname, "dist", frontendDirectory),
+        },
+      ],
+    }),
+
+### Removed deprecated candid path environment variable
+
+Any reference to environment variables of the form `CANISTER_CANDID_{name}` (formerly used in Rust projects) must be replace with `CANISTER_CANDID_PATH_{name}`.
+
 ## Changes to DFX
 
 ### New feature: renamed canisters in new projects to `<project>_frontend` and `<project>_backend`
