@@ -4,7 +4,7 @@
 
 ## Changes to DFX
 
-### New feature: renamed canisters in new projects to <project>_frontend and <project>_backend
+### New feature: renamed canisters in new projects to `<project>_frontend` and `<project>_backend`
 
 The names of canisters created for new projects have changed.
 After `dfx new <project>`, the canister names are:
