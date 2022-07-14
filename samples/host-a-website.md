@@ -1,6 +1,6 @@
 # Hosting a Static Website on the Internet Computer
 
-Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](https://beta.smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](https://beta.smartcontracts.org/docs/current/developer-docs/quickstart/network-quickstart) guide.
+Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](https://smartcontracts.org/docs/current/developer-docs/quickstart/network-quickstart) guide.
 
 ## Set up your project
 
@@ -135,7 +135,7 @@ You should see some output in your console, and a success message looking someth
 
 Find your new canister’s ID by running
 
-    dfx canister --networkicid website
+    dfx canister --network ic id website
 
 Take that canister ID and visit https://&lt;canister-id&gt;.ic0.app, inserting your own canister ID as the subdomain in the URL.
 
@@ -145,6 +145,6 @@ You should see your live, multi-page website, looking like this!
 
 ### Next steps
 
-Looking to build a full-stack dapp? Check out the [Full-stack React Tutorial](https://beta.smartcontracts.org/docs/current/developer-docs/build/frontend/custom-frontend)!
+Looking to build a full-stack dapp? Check out the [Full-stack React Tutorial](https://smartcontracts.org/docs/current/developer-docs/build/frontend/custom-frontend)!
 
 Visit our [Developer Forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.

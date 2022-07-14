@@ -26,15 +26,15 @@ Or via the dapp in a browser, a pop-up window will appear with the message: `Hel
 
 Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
 
-This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl) installation.
+This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl.md) installation.
 
 ## Topics Covered in this Tutorial
 
 -   **Canisters** are the smart contracts installed on the IC. They contain the code to be run and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
 
--   **[Cycles](../../concepts/tokens-cycles)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth consumed on the IC. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The IC’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
+-   **[Cycles](../../concepts/tokens-cycles.md)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth consumed on the IC. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The IC’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
 
--   A **[cycles wallet](../build/project-setup/default-wallet)** is a canister that holds cycles and powers up dapps.
+-   A **[cycles wallet](../build/project-setup/cycles-wallet.md)** is a canister that holds cycles and powers up dapps.
 
 ## 1. Installing Tools
 
@@ -56,11 +56,9 @@ To verify that `dfx` properly installed, run:
 dfx --version
 ```
 
-The terminal should look like this (at least version 0.9.2):
+The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
-![dfx version](_attachments/dfx-version.png)
-
-More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove).
+More installation options and instructions for uninstalling `dfx` are covered in [Installing the SDK](../build/install-upgrade-remove.mdx).
 
 ### Node.js
 
@@ -170,7 +168,7 @@ dfx start
 ### Deploy the dapp locally
 
 :::note
-Since this is only a canister execution environment, this deployment has fewer steps than a deployment to mainnet, which requires [cycles](../../concepts/tokens-cycles)).
+Since this is only a canister execution environment, this deployment has fewer steps than a deployment to mainnet, which requires [cycles](../../concepts/tokens-cycles.md)).
 :::
 
 <!-- To deploy your first dapp locally:
@@ -270,7 +268,7 @@ node --version
 
 ### Prior installations of dfx
 
-If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
+If you have previously created IC dapps before February 2022, you may need to do a clean install. You can delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove.mdx).
 
 ## 4. Acquiring cycles to deploy on-chain (5 min)
 
@@ -282,10 +280,10 @@ You may further wonder why dapps run on cycles rather than ICP tokens. The reaso
 
 Practical notes about cycles:
 
--   There is a [free cycles faucet](cycles-faucet) that grants new developers 15 trillion cycles
+-   There is a [free cycles faucet](cycles-faucet.md) that grants new developers 15 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
--   You can see a table of compute and storage costs here: [Computation and storage costs](../updates/computation-and-storage-costs).
--   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Managing_ICP_holdings).
+-   You can see a table of compute and storage costs here: [Computation and storage costs](../deploy/computation-and-storage-costs.md).
+-   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Tutorials_for_acquiring,_managing,_and_staking_ICP).
 
 In this tutorial, we present two ways of acquiring cycles:
 
@@ -320,7 +318,7 @@ $ {
 
 This option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet).
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](cycles-faucet.md).
 
 #### Check your cycles balance
 
@@ -338,9 +336,94 @@ If you do not see any cycles, deploying on-chain in the rest of the tutorial wil
 
 This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
 
-## 5.Deploy on-chain (1 min)
+To convert ICP tokens into cycles, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
 
-Now that you have your [cycles](../../concepts/tokens-cycles) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
+``` bash
+dfx ledger account-id
+```
+
+This will display your account number on the ICP ledger. It looks similar to this:
+
+```
+e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
+```
+
+Once you have transferred some ICP tokens into this account (5-10$ worth should be plenty to get going), you can see the balance using this command:
+
+``` bash
+dfx ledger --network ic balance
+```
+
+This will output something like this:
+
+```
+12.49840000 ICP
+```
+
+With those ICP tokens ready, you can start creating your cycles wallet. To start, you have to create a canister which will become your wallet. The base command for this is as follows:
+
+``` bash
+dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
+```
+
+The two values you have to substitute are your own principal and the amount of tokens you want to convert. To figure out your own principal, use the output of `dfx identity get-principal`. If my principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and I want to convert 2.3 ICP into cycles, the command looks like this:
+
+``` bash
+dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3
+```
+
+This command will take some time and output something similar to the following:
+
+```
+Transfer sent at BlockHeight: 351220
+Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
+```
+
+The id in this output is the address of the canister where your wallet will live. In this example, it would be `gastn-uqaaa-aaaae-aaafq-cai`.
+
+Now that the canister is created, you can install the wallet code using this command:
+
+``` bash
+dfx identity --network ic deploy-wallet <canister-identifer>
+```
+
+Here, you have to substitute the canister identifier using the id you received in the output of the previous command. So, in the example this would look like this:
+
+``` bash
+dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+```
+
+And the output should look like this:
+
+```
+Creating a wallet canister on the IC network.
+The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
+```
+
+Now your wallet should be configured and ready to go. To check if everything went right, run this to see the identifier of your configured wallet:
+
+``` bash
+dfx identity --network ic get-wallet
+```
+
+This should print the canister id you used in the commands earlier.
+
+You can also check the balance of your new cycles wallet:
+
+``` bash
+dfx wallet --network ic balance
+```
+
+This should print something looking like this:
+
+```
+6.951 TC (trillion cycles).
+```
+
+
+## 5. Deploy on-chain (1 min)
+
+Now that you have your [cycles](../../concepts/tokens-cycles.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
@@ -465,7 +548,7 @@ Tutorial takeaways:
 
 ### Starting from scratch
 
-If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove).
+If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](../build/install-upgrade-remove.mdx).
 
 **Be sure to save any identities linked to dapps or ICP.**
 
@@ -475,7 +558,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](https://beta.smartcontracts.org/samples).
+Build DAOs, NFTs and more [here](https://smartcontracts.org/samples).
 
 ### Want to learn more?
 

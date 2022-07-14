@@ -1,0 +1,302 @@
+.container {
+    width: Min(1250px, 100%);
+    margin: auto;
+    position: relative;
+    padding: 120px 0 200px 0;
+    --swiper-theme-color: var(--ifm-color-primary);
+    z-index: 1;
+}
+
+.title {
+    width: Min(1250px, 90%);
+    margin: auto;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    color: black;
+}
+
+.subtitle {
+    width: Min(1250px, 90%);
+    margin: 24px auto auto auto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: black;
+}
+
+.cards {
+    width: Min(1250px, 90%);
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 8px;
+    margin: 48px auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 54px 48px;
+    flex: 1 1 30%;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.card:hover {
+    padding-top: 32px;
+    background: var(--ifm-color-primary);
+    border: 1px solid var(--ifm-color-primary);
+}
+
+.card:hover,
+.card:hover .cardTitle,
+.card:hover .cardBody,
+.card:hover .informationIcon {
+    color: white;
+    text-decoration: none;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.cardContainer {
+    width: 90%;
+}
+
+.cardTitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--ifm-color-primary);
+    margin-bottom: 8px;
+}
+
+.cardBody {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: black;
+}
+
+.actionButton:hover {
+    border: 2px solid #3B00B9;
+    background-color: #3B00B9;
+    color: white;
+    text-decoration: none;
+}
+
+.informationIcon {
+    color: var(--ifm-color-primary);
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+.contributionContainer {
+    width: Min(1250px, 90%);
+    margin: 152px auto auto auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin: 0 auto auto auto;
+}
+
+.callToActionTitle {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 0;
+}
+
+.callToActionText {
+    margin: 24px 0 32px 0;
+    width: Min(100%,660px);
+    display: block;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.actionButton {
+    display: inline-flex;
+    text-align: center;
+    padding: 16px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.actionButton:hover {
+    border: 2px solid #3b00b9;
+    background-color: #3b00b9;
+    color: white;
+    text-decoration: none;
+}
+
+.actionContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+    flex-direction: row;
+}
+
+.contributeGraphic {
+    width: 1100px;
+    bottom: -250px;
+    left: 660px;
+    position: absolute;
+}
+.mobileContributeGraphic {
+    display: none;
+}
+.scrollContainer {
+    display: none;
+    width: 100vw;
+    margin: 32px 0 80px 0;
+}
+
+.mobileCardsContainer {
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    overflow-x: scroll;
+    scroll-padding: 50% 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.mobileCardsContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.mobileCardsContainer::-webkit-scrollbar-track {
+    background: rgba(24, 24, 24, 0%);
+    margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
+    border-radius: 20px;
+}
+
+.mobileCardsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 24, 20%);
+    border-radius: 20px;
+    border: 4px solid var(--ifm-background-color);
+}
+
+.cardWrapper .card {
+    width: 279px;
+    padding: 0 32px;
+    margin-bottom: 12px;
+    height: 180px;
+}
+
+.cardWrapper {
+    scroll-snap-align: none;
+    display: inline-block;
+    margin: 0 4px 10px 0;
+}
+
+.cardWrapper:first-child {
+    padding-left: calc((100vw - Min(1100px, 90vw)) / 2);
+}
+
+.cardWrapper:last-child {
+    margin-right: 0;
+    padding-right: calc((100vw - Min(1100px, 90vw)) / 2);
+}
+@media screen and (max-width: 996px) {
+    .container {
+        padding-top: 40px;
+    }
+    .cards {
+        display: none;
+    }
+
+    .scrollContainer {
+        display: block;
+    }
+
+    .title {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .informationIcon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .actionButton {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 14px 20px;
+        margin: 0;
+    }
+    .contributionContainer {
+        margin-top: 40px;
+        flex-direction: column;
+    }
+    .callToActionTitle {
+        font-size: 32px;
+        line-height: 42px;
+        margin-bottom: 0;
+    }
+
+    .cardTitle {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .cardBody {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .contributeGraphic {
+       display: none;
+    }
+    .mobileGraphic {
+        display: block;
+        width: 1000px;
+        height: 250px;
+        position: relative;
+    }
+    .mobileContributeGraphic {
+        display: block;
+        object-fit: cover;
+        z-index: -100;
+        top: -100px;
+        width: 1000px;
+        position: absolute;
+    }
+}
+@media screen and (max-width: 640px) {
+    .mobileContributeGraphic {
+        left: -100px;
+    }
+
+}

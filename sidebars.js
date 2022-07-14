@@ -13,9 +13,9 @@ const sidebars = {
       items: [
         'developer-docs/quickstart/hello10mins',
         // 'developer-docs/quickstart/windows-wsl',
-        'developer-docs/quickstart/cycles-faucet'
-        // 'developer-docs/quickstart/local-quickstart',
-        // 'developer-docs/quickstart/network-quickstart'
+        'developer-docs/quickstart/cycles-faucet',
+        'developer-docs/quickstart/local-quickstart',
+        'developer-docs/quickstart/network-quickstart'
       ]
     },
     {
@@ -37,7 +37,7 @@ const sidebars = {
             'developer-docs/build/project-setup/design-dapps',
             'developer-docs/build/project-setup/manage-projects',
             'developer-docs/build/project-setup/manage-canisters',
-            'developer-docs/build/project-setup/default-wallet',
+            'developer-docs/build/project-setup/cycles-wallet',
           ],
         },
         {
@@ -53,7 +53,7 @@ const sidebars = {
               label: 'Rust',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/rust/rust-intro',
-              }, 
+              },
               items: [
                 'developer-docs/build/languages/rust/rust-quickstart',
                 'developer-docs/build/languages/rust/rust-counter',
@@ -73,12 +73,14 @@ const sidebars = {
                 'developer-docs/build/languages/motoko/about-this-guide',
                 'developer-docs/build/languages/motoko/motoko-introduction',
                 'developer-docs/build/languages/motoko/basic-concepts',
+                'developer-docs/build/languages/motoko/base-intro',
                 'developer-docs/build/languages/motoko/mutable-state',
                 'developer-docs/build/languages/motoko/local-objects-classes',
                 'developer-docs/build/languages/motoko/actors-async',
                 'developer-docs/build/languages/motoko/errors',
                 'developer-docs/build/languages/motoko/pattern-matching',
                 'developer-docs/build/languages/motoko/sharing',
+                'developer-docs/build/languages/motoko/message-inspection',
                 'developer-docs/build/languages/motoko/modules-and-imports',
                 'developer-docs/build/languages/motoko/control-flow',
                 'developer-docs/build/languages/motoko/structural-equality',
@@ -101,10 +103,20 @@ const sidebars = {
               label: 'Candid',
               link: {
                 type: 'doc', id: 'developer-docs/build/languages/candid/candid-intro',
-              }, 
+              },
               items: [
                 'developer-docs/build/languages/candid/candid-concepts',
                 'developer-docs/build/languages/candid/candid-howto',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Other Languages',
+              link: {
+                type: 'doc', id: 'developer-docs/build/languages/other-languages/other-languages-intro',
+              },
+              items: [
+                'developer-docs/build/languages/other-languages/clang-supported-languages',
               ],
             },
           ]
@@ -127,6 +139,7 @@ const sidebars = {
             'developer-docs/build/backend/access-control',
             'developer-docs/build/backend/simple-cycles',
             'developer-docs/build/backend/reproducible-builds',
+            'developer-docs/build/backend/candid-ui',
           ]
         },
         {
@@ -142,19 +155,22 @@ const sidebars = {
 
           ],
         },
-        {
-          type: 'category',
-          label: 'Deployment & Scaling',
-          link: {
-            type: 'doc', id: 'developer-docs/build/deployment-scaling/index',
-          },
-          items: [
-            'developer-docs/build/deployment-scaling/deploy',
-            'developer-docs/build/deployment-scaling/scale'
-          ],
-        },
         'developer-docs/build/troubleshooting',
       ]
+    },
+    {
+      type: 'category',
+      label: 'Deployment & Scaling',
+      link: {
+        type: 'doc', id: 'developer-docs/deploy/computation-and-storage-costs',
+      },
+      items: [
+        'developer-docs/deploy/deploy',
+        'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/custom-domain',
+        'developer-docs/deploy/computation-and-storage-costs',
+        // 'developer-docs/deploy/advanced-deployment'
+      ],
     },
     {
       type: 'category',
@@ -168,27 +184,42 @@ const sidebars = {
         'developer-docs/functionality/internet-identity/integrate-identity',
         {
           type: 'category',
+          label: 'ICP Ledger',
+          link: {
+            type: 'doc', id: 'developer-docs/functionality/ledger/index'
+          },
+          items: [
+            'developer-docs/functionality/ledger/interact-with-ledger',
+            'developer-docs/functionality/ledger/ledger-local-setup',
+            'developer-docs/functionality/ledger/deploy-new-token',
+          ]
+        },
+        // {
+        //   type: 'category',
+        //   label: 'Bitcoin Integration',
+        //   items: [
+        //     'developer-docs/functionality/bitcoin/bitcoin',
+        //     'developer-docs/functionality/bitcoin/t-ecdsa'
+        //   ]
+        // },        
+        // {
+        //   type: 'category',
+        //   label: 'Using the SNS',
+        //   items: [
+        //     'developer-docs/functionality/sns',
+        //   ]
+        // },
+        {
+          type: 'category',
           label: 'Rosetta',
           link: {
-            // type: 'doc', id: 'developer-docs/functionality/rosetta/index'
-            type: 'doc', id: 'developer-docs/functionality/rosetta/transfers'
+            type: 'doc', id: 'developer-docs/functionality/rosetta/index'
           },
           items: [
             'developer-docs/functionality/rosetta/transfers',
             'developer-docs/functionality/rosetta/neuron-lifecycle',
             'developer-docs/functionality/rosetta/staking-support',
             'developer-docs/functionality/rosetta/staking-tutorial',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Ledger',
-          link: {
-            type: 'doc', id: 'developer-docs/functionality/ledger/index'
-          },
-          items: [
-            'developer-docs/functionality/ledger/ledger-local-setup',
-            'developer-docs/functionality/ledger/deploy-new-token',
           ]
         },
       ]
@@ -208,33 +239,12 @@ const sidebars = {
             type: 'doc', id: 'developer-docs/updates/release-notes/sdk-release-notes',
           },
           items: [
-            'developer-docs/updates/release-notes/release-notes',
-            // 'developer-docs/updates/release-notes/0.9.3-rn',
-            // 'developer-docs/updates/release-notes/0.9.2-rn',
-            // 'developer-docs/updates/release-notes/0.9.0-rn',
-            // 'developer-docs/updates/release-notes/0.8.4-rn',
-            // 'developer-docs/updates/release-notes/0.8.2-rn',
-            // 'developer-docs/updates/release-notes/0.8.1-rn',
-            // 'developer-docs/updates/release-notes/0.8.0-rn',
-            // 'developer-docs/updates/release-notes/0.7.7-rn',
-            // 'developer-docs/updates/release-notes/0.7.2-rn',
-            // 'developer-docs/updates/release-notes/0.7.1-rn',
-            // 'developer-docs/updates/release-notes/0.7.0-rn',
-            // 'developer-docs/updates/release-notes/0.6.26-rn',
-            // 'developer-docs/updates/release-notes/0.6.25-rn',
-            // 'developer-docs/updates/release-notes/0.6.24-rn',
-            // 'developer-docs/updates/release-notes/0.6.23-rn',
-            // 'developer-docs/updates/release-notes/0.6.22-rn',
-            // 'developer-docs/updates/release-notes/0.6.21-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
-            // 'developer-docs/updates/release-notes/0.6.20-rn',
+            'developer-docs/updates/release-notes/release-notes'
           ]
-        },
-        'developer-docs/updates/computation-and-storage-costs',
+        }
       ]
     },
-  'developer-docs/glossary',
+    'developer-docs/glossary',
   ],
   'references': [
     'references/index',
@@ -246,6 +256,7 @@ const sidebars = {
       },
       items: [
         'references/cli-reference/dfx-parent',
+        'references/cli-reference/dfx-bootstrap',
         'references/cli-reference/dfx-build',
         'references/cli-reference/dfx-cache',
         'references/cli-reference/dfx-canister',
@@ -259,6 +270,7 @@ const sidebars = {
         'references/cli-reference/dfx-ping',
         'references/cli-reference/dfx-replica',
         'references/cli-reference/dfx-start',
+        'references/cli-reference/dfx-stop',
         'references/cli-reference/dfx-upgrade',
         'references/cli-reference/dfx-wallet',
         'references/cli-reference/dfx-envars',
@@ -268,49 +280,53 @@ const sidebars = {
       type: 'category',
       label: 'Motoko References',
       link: {
-        type: 'doc', id: 'references/motoko-ref/array',
+        type: 'doc', id: 'references/motoko-ref/index',
       },
       items: [
-        'references/motoko-ref/array',
-        'references/motoko-ref/assoclist',
-        'references/motoko-ref/blob',
-        'references/motoko-ref/bool',
-        'references/motoko-ref/buffer',
-        'references/motoko-ref/certifieddata',
-        'references/motoko-ref/char',
-        'references/motoko-ref/debug',
-        'references/motoko-ref/deque',
-        'references/motoko-ref/error',
-        'references/motoko-ref/float',
-        'references/motoko-ref/func',
-        'references/motoko-ref/hash',
-        'references/motoko-ref/hashmap',
-        'references/motoko-ref/heap',
-        'references/motoko-ref/int',
-        'references/motoko-ref/int8',
-        'references/motoko-ref/int16',
-        'references/motoko-ref/int32',
-        'references/motoko-ref/int64',
-        'references/motoko-ref/iter',
-        'references/motoko-ref/itertype',
-        'references/motoko-ref/list',
-        'references/motoko-ref/nat8',
-        'references/motoko-ref/nat16',
-        'references/motoko-ref/nat32',
-        'references/motoko-ref/nat64',
-        'references/motoko-ref/option',
-        'references/motoko-ref/prelude',
-        'references/motoko-ref/principal',
-        'references/motoko-ref/random',
-        'references/motoko-ref/rbtree',
-        'references/motoko-ref/result',
-        'references/motoko-ref/stack',
-        'references/motoko-ref/stdlib-intro',
-        'references/motoko-ref/text',
-        'references/motoko-ref/time',
-        'references/motoko-ref/trie',
-        'references/motoko-ref/triemap',
-        'references/motoko-ref/trieset',
+        'references/motoko-ref/Array',
+        'references/motoko-ref/AssocList',
+        'references/motoko-ref/Blob',
+        'references/motoko-ref/Bool',
+        'references/motoko-ref/Buffer',
+        'references/motoko-ref/CertifiedData',
+        'references/motoko-ref/Char',
+        'references/motoko-ref/Debug',
+        'references/motoko-ref/Deque',
+        'references/motoko-ref/Error',
+        'references/motoko-ref/ExperimentalCycles',
+        'references/motoko-ref/ExperimentalInternetComputer',
+        'references/motoko-ref/ExperimentalStableMemory',
+        'references/motoko-ref/Float',
+        'references/motoko-ref/Func',
+        'references/motoko-ref/Hash',
+        'references/motoko-ref/HashMap',
+        'references/motoko-ref/Heap',
+        'references/motoko-ref/Int',
+        'references/motoko-ref/Int8',
+        'references/motoko-ref/Int16',
+        'references/motoko-ref/Int32',
+        'references/motoko-ref/Int64',
+        'references/motoko-ref/Iter',
+        'references/motoko-ref/IterType',
+        'references/motoko-ref/List',
+        'references/motoko-ref/Nat',
+        'references/motoko-ref/Nat8',
+        'references/motoko-ref/Nat16',
+        'references/motoko-ref/Nat32',
+        'references/motoko-ref/Nat64',
+        'references/motoko-ref/Option',
+        'references/motoko-ref/Order',
+        'references/motoko-ref/Prelude',
+        'references/motoko-ref/Principal',
+        'references/motoko-ref/Random',
+        'references/motoko-ref/RBTree',
+        'references/motoko-ref/Result',
+        'references/motoko-ref/Stack',
+        'references/motoko-ref/Text',
+        'references/motoko-ref/Time',
+        'references/motoko-ref/Trie',
+        'references/motoko-ref/TrieMap',
+        'references/motoko-ref/TrieSet',
       ]
     },
     {
@@ -318,6 +334,11 @@ const sidebars = {
       label: 'Rust CDK References',
       href: 'https://docs.rs/ic-cdk/',
     },
+    // {
+    //   type: 'link',
+    //   label: 'SNS References',
+    //   href: 'https://docs.rs/ic-sns/',
+    // },
     'references/candid-ref',
     'references/ledger',
     'references/ii-spec',
@@ -357,7 +378,6 @@ const sidebars = {
       items: [
         'tokenomics/identity-auth/what-is-ic-identity',
         'tokenomics/identity-auth/auth-how-to',
-        'tokenomics/identity-auth/plug-ids',
         'tokenomics/identity-auth/hello-guide'
       ]
     },

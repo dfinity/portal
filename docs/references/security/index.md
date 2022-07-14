@@ -10,15 +10,15 @@ Some excellent canister best practices linked here are from [Effective Rust Cani
 
 We provide the following security best practices in the subsequent pages:
 
--   [General Security Best Practices](general-security-best-practices)
+-   [General Security Best Practices](./general-security-best-practices.md)
 
--   [Web App Specific Security Best Practices](web-app-development-security-best-practices),
+-   [Web App Specific Security Best Practices](./web-app-development-security-best-practices.md),
 
--   [Rust Canister Development Security Best Practices](rust-canister-development-security-best-practices)
+-   [Rust Canister Development Security Best Practices](./rust-canister-development-security-best-practices.md)
 
 ## Target Audience
 
-This document was initially intended for internal use at DFINITY. However, we now publish this to the community so every developer can benefit. The target audience are any developers working on canisters or web apps for the Internet Computer. This is also of interest anyone doing reviews of such code.
+This document was initially intended for internal use at DFINITY. However, we now publish this to the community so every developer can benefit. The target audience are any developers working on canisters or web apps for the Internet Computer. This is also of interest to anyone doing reviews of such code.
 
 ## Disclaimers and Limitations
 

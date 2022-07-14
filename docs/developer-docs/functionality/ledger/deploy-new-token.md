@@ -1,6 +1,6 @@
 # Deploy New Token
 
-This tutorial will guide you step-by-step to deploy your own token to the IC and to connect rosetta-api to it.
+This tutorial will guide you step-by-step to deploy your own token to the IC and to connect Rosetta to it.
 
 ## Deploy your Ledger
 
@@ -54,7 +54,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     where
 
-    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. useicfor the mainnet)
+    -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. use ic for the mainnet)
 
     -   the `TOKEN_NAME` is the human-readable name of your new token
 
@@ -62,7 +62,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](./index.md))
 
-    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/default-wallet.html#_controller_and_custodian_roles) of the archive canisters
+    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/cycles-wallet.html#_controller_and_custodian_roles) of the archive canisters
 
     <div class="important">
 
@@ -101,11 +101,11 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
 Your new token is deployed and ready to be used.
 
-## Connect rosetta-api
+## Connect Rosetta
 
-The rosetta-api is an application that connects to a Ledger canister and exposes the [Rosetta API](https://www.rosetta-api.org). Its main purpose is to facilitate integration with exchanges. The application is available as a [docker image](#https://hub.docker.com/r/dfinity/rosetta-api).
+Rosetta is an application that connects to a Ledger canister and exposes the [Rosetta API](https://www.rosetta-api.org). Its main purpose is to facilitate integration with exchanges. You can learn more about Rosetta in the [next section](../rosetta/index.md).
 
-Let us now connect the rosetta-api to an existing Ledger canister.
+Let us now connect Rosetta to an existing Ledger canister.
 
 1.  Get the Ledger token symbol
 

@@ -63,15 +63,13 @@ just one.
 
 To install, run:
 
-    $ sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    $ sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
 To verify that `dfx` is properly installed, run:
 
     $ dfx --version
 
-The terminal should look like this (at least version 0.9.2):
-
-![dfx version](_attachments/dfx-version.png)
+The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
 
 ## Create a project (2 min)
 
@@ -227,7 +225,7 @@ Few notes about cycles:
 
 -   You can see a table of compute and storage costs here: [Computation
     and storage
-    costs](../updates/computation-and-storage-costs.md).
+    costs](../deploy/computation-and-storage-costs).
 
 ### Check the connection to the Internet Computer blockchain mainnet (Terminal B)
 
@@ -298,10 +296,10 @@ Now that the canister is deployed on-chain, you can send it a message.
 Since the canister has a method called `greet` (which accepts a string
 as a parameter), we will send it a message.
 
-    $ dfx canister --networkiccall hello greet '("everyone": text)'
+    $ dfx canister --network ic call hello greet '("everyone": text)'
 
 Note the way the message is constructed: \*
-`dfx canister --networkiccall` is setup for calling a canister on the
+`dfx canister --network ic call` is setup for calling a canister on the
 IC \* `hello greet` means we are sending a message to a canister named
 `hello` and evoking its `greet` method \* `'("everyone": text)'` is the
 parameter we are sending to `greet` (which accepts `Text` as its only

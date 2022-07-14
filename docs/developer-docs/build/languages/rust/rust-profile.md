@@ -93,11 +93,7 @@ To replace the default program:
 
     The next step is to add a Rust program that implements the `getSelf`, `update`, `get`, and `search` functions.
 
-4.  Copy and paste the following sample code into the `profile.rs` file:
-
-    ``` motoko
-    Unresolved directive in rust-profile.adoc - include::example$profile-tutorial/profile.rs[]
-    ```
+4.  Copy and paste [this code](../../_attachments/profile.rs) into the `profile.rs` file.
 
 5.  Save your changes and close the file to continue.
 
@@ -115,11 +111,7 @@ To update Candid file for this tutorial:
 
 2.  Open the \`src/rust_profile/rust_profile.did\`file in a text editor.
 
-3.  Copy and paste the following `type` declaration and `service` definition for the `getSelf`, `update`, `get`, and `search` functions:
-
-    ``` did
-    Unresolved directive in rust-profile.adoc - include::example$profile-tutorial/profile.did[]
-    ```
+3.  Copy and paste [these](../../_attachments/profile.did) `type` declaration and `service` definition for the `getSelf`, `update`, `get`, and `search` functions.
 
 4.  Save your changes and close the file to continue.
 

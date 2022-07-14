@@ -3,107 +3,12 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Black.woff") format("woff");
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-BlackItalic.woff") format("woff");
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-BoldItalic.woff") format("woff");
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Italic.woff") format("woff");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Light.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-LightItalic.woff") format("woff");
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-MediumItalic.woff") format("woff");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-Thin.woff") format("woff");
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap
-}
-
-@font-face {
-    font-family: CircularXX;
-    src: url("/static/fonts/Circular/CircularXXWeb-ThinItalic.woff") format("woff");
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap
-}
+@import "fonts.css";
 
 /* You can override the default Infima variables here. */
 :root {
     font-family: 'CircularXX', sans-serif;
-    --ifm-font-family-base: "CircularXX", sans-serif;
+    --ifm-font-family-base: 'CircularXX', sans-serif;
     --ifm-color-primary: #3b00b9;
     --ifm-color-primary-dark: #3500a7;
     --ifm-color-primary-darker: #32009d;
@@ -112,163 +17,218 @@
     --ifm-color-primary-lighter: #4400d5;
     --ifm-color-primary-lightest: #4d00f1;
     --ifm-background-color: #f1eef5;
-    --ifm-menu-link-sublist-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M18 12H6' /%3E%3C/svg%3E");
-    --ifm-menu-link-sublist-iconPlus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 15l7-7 7 7' /%3E%3C/svg%3E");
+    --ifm-navbar-height: 110px;
     --ifm-navbar-background-color: rgb(241, 238, 245);
     --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
+    --ifm-navbar-search-input-color: rgba(24, 24, 24, 0.6);
+    --ifm-navbar-search-input-background-color: #f8f3f1;
+    --ifm-navbar-search-input-placeholder-color: rgba(24, 24, 24, 0.6);
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16px" height="16px"><path d="M11.7668 11.0239L14.6221 13.8786L13.6788 14.8219L10.8241 11.9666C9.76196 12.818 8.4408 13.2812 7.07947 13.2792C3.76747 13.2792 1.07947 10.5912 1.07947 7.27924C1.07947 3.96724 3.76747 1.27924 7.07947 1.27924C10.3915 1.27924 13.0795 3.96724 13.0795 7.27924C13.0814 8.64057 12.6183 9.96173 11.7668 11.0239ZM10.4295 10.5292C11.2755 9.65916 11.748 8.49286 11.7461 7.27924C11.7461 4.70057 9.65747 2.61257 7.07947 2.61257C4.5008 2.61257 2.4128 4.70057 2.4128 7.27924C2.4128 9.85723 4.5008 11.9459 7.07947 11.9459C8.29309 11.9478 9.45939 11.4753 10.3295 10.6292L10.4295 10.5292Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/></svg>');
+    --ifm-footer-background-color: #3b00b9;
+    --ifm-transition-custom-speed: 300ms;
+    --ifm-transition-custom-curve: cubic-bezier(0, 0, 0.19, 1);
+    --ic0-color: #3b00b9;
+    scroll-behavior: smooth;
 }
 
-
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-    --ifm-color-primary: #e11f7a;
-    --ifm-color-primary-dark: #cb1b6e;
-    --ifm-color-primary-darker: #c01a68;
-    --ifm-color-primary-darkest: #9e1555;
-    --ifm-color-primary-light: #e43687;
-    --ifm-color-primary-lighter: #e6418e;
-    --ifm-color-primary-lightest: #ea65a4;
-    --ifm-navbar-background-color: #242526;
+[data-theme="dark"] {
+  --ifm-color-primary: #e11f7a;
+  --ifm-color-primary-dark: #cb1b6e;
+  --ifm-color-primary-darker: #c01a68;
+  --ifm-color-primary-darkest: #9e1555;
+  --ifm-color-primary-light: #e43687;
+  --ifm-color-primary-lighter: #e6418e;
+  --ifm-color-primary-lightest: #ea65a4;
+  --ifm-navbar-background-color: #242526;
 }
 
 .docusaurus-highlight-code-line {
-    background-color: rgba(0, 0, 0, 0.1);
-    display: block;
-    margin: 0 calc(-1 * var(--ifm-pre-padding));
-    padding: 0 var(--ifm-pre-padding);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
 }
 
-[data-theme='dark'] .docusaurus-highlight-code-line {
-    background-color: rgba(0, 0, 0, 0.3);
+[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-div[class^='announcementBarContent'] {
-    background: linear-gradient(90.1deg, #FBB03B 1.35%, #F57C2D 15.43%, #F15A24 26.38%, #ED1E79 45.16%, #BE217D 54.55%, #5C2684 76.97%, #29ABE2 99.92%);
-    color: white;
-    font-weight: bold;
-}
-
-.header-github-link:hover, .header-discord-link:hover, .header-twitter-link:hover, .header-forum-link:hover {
-    opacity: 0.6;
-}
-
-.header-github-link::before {
-    content: '';
-    width: 24px;
-    height: 24px;
-    display: flex;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
-}
-
-.header-discord-link::before {
-    content: '';
-    width: 24px;
-    height: 18px;
-    display: flex;
-    background: url("data:image/svg+xml,%3Csvg width='24' height='18' viewBox='0 0 24 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.7158 17.2639C22.2578 17.12 24.0047 14.14 24.0047 14.14C24.0047 7.52221 21.0453 2.15813 21.0453 2.15813C18.0858 -0.0614848 15.2701 0.000170789 15.2701 0.000170789L14.9824 0.329003C18.4763 1.39771 20.0999 2.93911 20.0999 2.93911C17.9625 1.76764 15.8662 1.19219 13.9137 0.966116C12.434 0.801699 11.0159 0.842803 9.7622 1.00722L9.41282 1.04832C8.6935 1.10998 6.94658 1.37716 4.74751 2.3431C3.98709 2.69248 3.53495 2.93911 3.53495 2.93911C3.53495 2.93911 5.24076 1.3155 8.94013 0.246795L8.7346 0.000170789C8.7346 0.000170789 5.91898 -0.0614848 2.95949 2.15813C2.95949 2.15813 0 7.52221 0 14.14C0 14.14 1.72637 17.12 6.26836 17.2639C6.26836 17.2639 7.02879 16.339 7.64535 15.558C5.03524 14.7771 4.04875 13.1329 4.04875 13.1329L4.6242 13.4823L4.70641 13.5439L4.78691 13.5902L4.81088 13.6005L4.89138 13.6467C5.40518 13.9344 5.91898 14.1605 6.39167 14.3455C7.23431 14.6743 8.24136 15.0031 9.41282 15.2292C10.9542 15.5169 12.7628 15.6197 14.7358 15.2498C15.7017 15.0853 16.6882 14.7976 17.7158 14.366C18.4352 14.0989 19.2367 13.7084 20.0793 13.1535C20.0793 13.1535 19.0517 14.8387 16.3594 15.5991C16.976 16.3801 17.7158 17.2639 17.7158 17.2639ZM8.15915 7.66607C6.98768 7.66607 6.06284 8.69367 6.06284 9.94734C6.06284 11.201 7.00824 12.2286 8.15915 12.2286C9.33061 12.2286 10.2555 11.201 10.2555 9.94734C10.276 8.69367 9.33061 7.66607 8.15915 7.66607ZM15.6606 7.66607C14.4892 7.66607 13.5643 8.69367 13.5643 9.94734C13.5643 11.201 14.5097 12.2286 15.6606 12.2286C16.8321 12.2286 17.7569 11.201 17.7569 9.94734C17.7569 8.69367 16.8321 7.66607 15.6606 7.66607Z' fill='%23181818'/%3E%3C/svg%3E%0A") no-repeat
-}
-
-.header-twitter-link::before {
-    content: '';
-    width: 24px;
-    height: 20px;
-    display: flex;
-    background: url("data:image/svg+xml,%3Csvg width='24' height='20' viewBox='0 0 24 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 2.55699C23.117 2.94899 22.168 3.21299 21.172 3.33199C22.189 2.72299 22.97 1.75799 23.337 0.607986C22.386 1.17199 21.332 1.58199 20.21 1.80299C19.313 0.845986 18.032 0.247986 16.616 0.247986C13.437 0.247986 11.101 3.21399 11.819 6.29299C7.728 6.08799 4.1 4.12799 1.671 1.14899C0.381 3.36199 1.002 6.25699 3.194 7.72299C2.388 7.69699 1.628 7.47599 0.965 7.10699C0.911 9.38799 2.546 11.522 4.914 11.997C4.221 12.185 3.462 12.229 2.69 12.081C3.316 14.037 5.134 15.46 7.29 15.5C5.22 17.123 2.612 17.848 0 17.54C2.179 18.937 4.768 19.752 7.548 19.752C16.69 19.752 21.855 12.031 21.543 5.10599C22.505 4.41099 23.34 3.54399 24 2.55699Z' fill='%23181818'/%3E%3C/svg%3E%0A") no-repeat
-}
-
-[data-theme='dark'] .header-github-link::before {
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
-}
-
-[data-theme='dark'] .header-discord-link::before {
-    background: url("data:image/svg+xml,%3Csvg width='24' height='18' viewBox='0 0 24 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.7158 17.2639C22.2578 17.12 24.0047 14.14 24.0047 14.14C24.0047 7.52221 21.0453 2.15813 21.0453 2.15813C18.0858 -0.0614848 15.2701 0.000170789 15.2701 0.000170789L14.9824 0.329003C18.4763 1.39771 20.0999 2.93911 20.0999 2.93911C17.9625 1.76764 15.8662 1.19219 13.9137 0.966116C12.434 0.801699 11.0159 0.842803 9.7622 1.00722L9.41282 1.04832C8.6935 1.10998 6.94658 1.37716 4.74751 2.3431C3.98709 2.69248 3.53495 2.93911 3.53495 2.93911C3.53495 2.93911 5.24076 1.3155 8.94013 0.246795L8.7346 0.000170789C8.7346 0.000170789 5.91898 -0.0614848 2.95949 2.15813C2.95949 2.15813 0 7.52221 0 14.14C0 14.14 1.72637 17.12 6.26836 17.2639C6.26836 17.2639 7.02879 16.339 7.64535 15.558C5.03524 14.7771 4.04875 13.1329 4.04875 13.1329L4.6242 13.4823L4.70641 13.5439L4.78691 13.5902L4.81088 13.6005L4.89138 13.6467C5.40518 13.9344 5.91898 14.1605 6.39167 14.3455C7.23431 14.6743 8.24136 15.0031 9.41282 15.2292C10.9542 15.5169 12.7628 15.6197 14.7358 15.2498C15.7017 15.0853 16.6882 14.7976 17.7158 14.366C18.4352 14.0989 19.2367 13.7084 20.0793 13.1535C20.0793 13.1535 19.0517 14.8387 16.3594 15.5991C16.976 16.3801 17.7158 17.2639 17.7158 17.2639ZM8.15915 7.66607C6.98768 7.66607 6.06284 8.69367 6.06284 9.94734C6.06284 11.201 7.00824 12.2286 8.15915 12.2286C9.33061 12.2286 10.2555 11.201 10.2555 9.94734C10.276 8.69367 9.33061 7.66607 8.15915 7.66607ZM15.6606 7.66607C14.4892 7.66607 13.5643 8.69367 13.5643 9.94734C13.5643 11.201 14.5097 12.2286 15.6606 12.2286C16.8321 12.2286 17.7569 11.201 17.7569 9.94734C17.7569 8.69367 16.8321 7.66607 15.6606 7.66607Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
-}
-
-[data-theme='dark'] .header-twitter-link::before {
-    background: url("data:image/svg+xml,%3Csvg width='24' height='20' viewBox='0 0 24 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 2.55699C23.117 2.94899 22.168 3.21299 21.172 3.33199C22.189 2.72299 22.97 1.75799 23.337 0.607986C22.386 1.17199 21.332 1.58199 20.21 1.80299C19.313 0.845986 18.032 0.247986 16.616 0.247986C13.437 0.247986 11.101 3.21399 11.819 6.29299C7.728 6.08799 4.1 4.12799 1.671 1.14899C0.381 3.36199 1.002 6.25699 3.194 7.72299C2.388 7.69699 1.628 7.47599 0.965 7.10699C0.911 9.38799 2.546 11.522 4.914 11.997C4.221 12.185 3.462 12.229 2.69 12.081C3.316 14.037 5.134 15.46 7.29 15.5C5.22 17.123 2.612 17.848 0 17.54C2.179 18.937 4.768 19.752 7.548 19.752C16.69 19.752 21.855 12.031 21.543 5.10599C22.505 4.41099 23.34 3.54399 24 2.55699Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat
-
-}
-
-.menu__caret:after {
-    position: relative;
-    background: var(--ifm-menu-link-sublist-icon) 50%/1.5rem 1.5rem;
-}
-
-.menu__link--sublist:after {
-    position: relative;
-    background: var(--ifm-menu-link-sublist-iconPlus) 50%/1.25rem 1.25rem
-}
-
-.menu__caret:before {
-    background: var(--ifm-menu-link-sublist-icon) 50%/1.5rem 1.5rem
-}
-
-.menu__caret:before {
-    position: relative;
-    left: 1rem;
-    top: 0.25rem;
-    height: 1rem;
-    transform: rotate(180deg);
-    transition: transform var(--ifm-transition-fast) linear;
-    width: 1rem;
-    content: "";
-    filter: var(--ifm-menu-link-sublist-icon-filter)
-}
-
-.menu__caret:after, .menu__link--sublist:after {
-    height: 1rem;
-    top: 0.25rem;
-    transform: rotate(180deg);
-    transition: transform var(--ifm-transition-fast) linear;
-    width: 1rem;
-    content: "";
-    filter: var(--ifm-menu-link-sublist-icon-filter);
-}
-
-.menu__caret, .menu__link, .menu__list-item-collapsible {
-    border-radius: .25rem;
-    transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+div[class^="announcementBarContent"] {
+  background: linear-gradient(
+    90.1deg,
+    #fbb03b 1.35%,
+    #f57c2d 15.43%,
+    #f15a24 26.38%,
+    #ed1e79 45.16%,
+    #be217d 54.55%,
+    #5c2684 76.97%,
+    #29abe2 99.92%
+  );
+  color: white;
+  font-weight: bold;
 }
 
 .navbar__link {
-    font-weight: var(--ifm-font-weight-bold)
+  font-weight: var(--ifm-font-weight-bold);
 }
 
 .navbar__logo {
     flex: 0 0 auto;
     height: 1.925rem;
-    margin-right: .5rem
+    width: 100%;
+    margin-right: 0.5rem;
 }
 
 .navbar__mobile__logo {
-    display: flex;
+  display: flex;
 }
 
 .navbar__mobile__logo img {
-    flex: 0 0 auto;
-    width: 15rem;
-    margin: auto 0.5rem;
-}
-
-.navbar__search-input {
-    appearance: none;
-    background: rgba(255, 255, 255, 0.5) var(--ifm-navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem;
-    border: 1px solid #FFFFFF;
-    border-radius: 12px;
-    color: var(--ifm-navbar-search-input-color);
-    cursor: text;
-    display: inline-block;
-    font-size: 0.9rem;
-    height: 2rem;
-    padding: 0 0.5rem 0 2.25rem;
-    width: 12.5rem;
-    backdrop-filter: blur(40px);
+  flex: 0 0 auto;
+  width: 15rem;
+  margin: auto 0.5rem;
 }
 
 .navbar {
-    z-index: 1900;
+    z-index: 1901;
+    padding: 44px Max(calc((100vw - 1320px) / 2), 50px) 20px Max(calc((100vw - 1320px) / 2), 50px);
+    height: var(--ifm-navbar-height);
+    margin: 0 0;
 }
 
-.navbar__search-input{
-    width: 100%;
+@media (max-width: 996px) {
+    .navbar {
+        height: 72px;
+        padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
+    }
 }
+
+.ic0-item {
+    display: flex;
+    align-items: center;
+    fill: white;
+    filter: invert(16%) sepia(55%) saturate(7035%) hue-rotate(260deg) brightness(67%) contrast(131%);
+}
+
+.ic0-item:hover {
+    filter: none;
+}
+
+.ic0-item span {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .ic0-item img {
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .ic0-item {
+    margin-top: 2rem;
+    color: var(--ic0-color);
+    font-weight: 500;
+  }
+
+  .ic0-item span {
+    display: inline;
+  }
+}
+.navbar__inner {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Don't display docSidebar items in the top navbar */
+.navbar__inner .navbar__items:first-child .navbar__item.navbar__link {
+  display: none;
+}
+
+/* First dropdown menu is too easy to hide accidentally */
+.navbar__inner .navbar__items--right > .dropdown:nth-child(2) {
+  padding-left: 4rem;
+}
+
+/* on mobile hide the search bar in the top navbar */
+@media (max-width: 996px) {
+  .navbar__inner .navbar__search {
+    display: none;
+  }
+
+  .navbar__inner .ic0-item {
+    display: none;
+  }
+}
+
+.navbar__inner .navbar__item.dropdown .navbar__link {
+  font-weight: 500;
+}
+
+/* top menu hover color */
+.navbar__inner .navbar__item:hover.dropdown .navbar__link {
+  color: #da3979;
+}
+
+/* update top menu chevron icon */
+.navbar__inner .navbar__item.dropdown .navbar__link:after {
+  border: none;
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 10.6669L13.1669 6.00001L14.5 7.33313L8.5 13.3331L2.5 7.33313L3.83312 6.00001L8.5 10.6669Z' fill='currentColor' fill-opacity='0.3'/%3E%3C/svg%3E%0A");
+  transform: none;
+}
+
+/* colorize the chevron icon on hover */
+.navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
+    brightness(90%) contrast(89%);
+}
+
+/* Swap the order of the IC logo and the hamburger icon */
+@media (max-width: 996px) {
+  .navbar__inner .navbar__items:first-child .navbar__toggle {
+    order: 2;
+  }
+
+  .navbar__inner .navbar__items:first-child .navbar__brand {
+    flex: 1;
+    order: 1;
+  }
+}
+
+/* full width sidebar */
+.navbar-sidebar {
+    --ifm-navbar-sidebar-width: 100vw;
+    --ifm-navbar-background-color: white;
+    transform: translate3d(100%, 0, 0);
+}
+
+/* larger mobile menu items */
+.navbar-sidebar .navbar-sidebar__back {
+  line-height: 2.25;
+}
+
+.navbar-sidebar .menu__list-item a {
+  line-height: 2.25;
+}
+
+/* make X icon on mobile sidebar black */
+.navbar-sidebar__close {
+  --ifm-color-emphasis-600: #181818;
+}
+
+/* dropdown is positioned too low in the original styles making it easy to hide by accident */
+.dropdown__menu {
+  top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
+}
+
+@import "typography.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

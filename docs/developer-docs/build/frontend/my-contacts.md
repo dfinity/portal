@@ -56,9 +56,7 @@ To install required framework modules:
 
     If the `npm install` command reports a vulnerability, you might also want to run the `npm audit fix` command to attempt to fix the vulnerability reported before continuing.
 
-    As an alternative to installing these modules, you can edit the default `package.json` file to add dependencies for your project.
-
-        Unresolved directive in my-contacts.adoc - include::example$add-stylesheet-package.json[]
+    As an alternative to installing these modules, you can edit the default `package.json` file to add dependencies for your project like [this](../_attachments/add-stylesheet-package.json).
 
     The version of the JavaScript agent in this example `package.json` file is `0.10.0`. In most cases, however, you would want to use the latest version of the agent available. When you create a new project, the `dfx new` command automatically retrieves the latest version of the JavaScript agent for you. You can also manually retrieve the latest version after creating a project by running the `npm install --save @dfinity/agent` command.
 
@@ -70,9 +68,7 @@ To modify the default program:
 
 1.  Open the `src/contacts/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste the following sample code into the file:
-
-        Unresolved directive in my-contacts.adoc - include::example$mycontacts/contacts.mo[]
+2.  Copy and paste [this code](../_attachments/contacts.mo) into the file.
 
 3.  Save your changes and close the `main.mo` file to continue.
 
@@ -128,9 +124,7 @@ You are now ready to create a new frontend for your program.
 
 6.  Create a new file named `tsconfig.json` in the root directory for your project.
 
-7.  Open the `tsconfig.json` file in a text editor, then copy and paste the following into the file:
-
-        Unresolved directive in my-contacts.adoc - include::example$sample-tsconfig.json[]
+7.  Open the `tsconfig.json` file in a text editor, then copy and paste [this code](../_attachments/sample-tsconfig.json) into the file.
 
 8.  Save your changes and close the `tsconfig.json` file to continue.
 
@@ -148,9 +142,7 @@ To add a stylesheet:
 
 3.  Define some style properties for the frontend.
 
-    For example, copy and paste the following sample styles into the file:
-
-        Unresolved directive in my-contacts.adoc - include::example$mycontacts/mycontacts.css[]
+    For example, copy and paste [these styles](../_attachments/mycontacts.css) into the file.
 
 4.  Save your changes and close the `main.css` file to continue.
 
@@ -160,9 +152,7 @@ To add a stylesheet:
 
 6.  Open the default `index.js` file in a text editor and delete the existing content.
 
-7.  Copy and paste the following sample code into the `index.js` file:
-
-        Unresolved directive in my-contacts.adoc - include::example$mycontacts/mod-index.jsx[]
+7.  Copy and paste [this code](../_attachments/mod-index.jsx) into the `index.js` file.
 
 8.  Rename the modified `index.js` file as `index.jsx` by running the following command:
 

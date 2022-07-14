@@ -1,6 +1,6 @@
 # Cycles Faucet
 Ready to deploy your first smart contract on the Internet Computer
-blockchain? You can use our Cycles Faucet to get set up with $20 in free
+blockchain? You can use our Cycles Faucet to get set up with 20T free
 cycles in just a few minutes.
 
     sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
@@ -12,42 +12,62 @@ or following the instructions at <https://smartcontracts.org>.
 ### Step 1: Authenticate
 
 First, you will need to navigate to <https://faucet.dfinity.org>. You
-will need to connect an active GitHub account to continue.
+will need to connect an active Twitter account to continue.
 
-![Connecting to GitHub](_attachments/faucet_step_1.png)
+![Connecting to Twitter](_attachments/faucet_step_1.png)
 
-### Step 2: Principal ID
+If the Twitter account has not been used before, you are eligible to claim the 20T cycles.
 
-Once you have logged in, open up a terminal window and run the command
-`dfx identity get-principal`. Paste the output into the text input on
-the Step 2 screen. This Principal will uniquely identify your computer,
-and will be used to give you access to your Cycles Wallet and any
-canisters you deploy with it. Your Principal will look
-like a long series of numbers and letters separated by hyphens.
+![Eligible account](_attachments/faucet_step_2.png)
 
-![Enter a Principal ID](_attachments/faucet_step_2.png)
+Click NEXT to continue.
 
-### Step 3: Deposit method
+### Step 2: Setup SDK
 
-On the third screen, you have a choice to use an existing Cycles Wallet,
-or to Generate a New Cycles Wallet. If you already have created one, you
-can select the first option and the faucet will send your existing
-canister $20 worth of cycles.
+Once your eligibility has been confirmed, open up a terminal window.
 
-For any first time user, select **Generate New Cycles Wallet** and then
-press **Continue​​**.
+If you already have created a project, go to the root of the project in the terminal, where the `dfx.json` file is located. If you haven't created a project yet, run these commands in the terminal:
 
-![Generate New Cycles Wallet](_attachments/faucet_step_4.png)
+    mkdir my_project && cd my_project
+    echo '{}' > dfx.json
 
-## Configure your wallet in DFX
+![Setup SDK](_attachments/faucet_step_4.png)
 
-Now that you have claimed your wallet, you should see a screen like the
-one below:
+Click NEXT to continue.
 
-![Configure DFX Wallet](_attachments/faucet_step_6.png)
+### Step 3: Create Canister and Claim Cycles
 
-Now you are ready to host a website on the IC or follow one of our dapp
-tutorials.
+The `redeem` command shown on the screen contains a unique coupon code, which with this command will be used to create a canister and load it with 20T cycles. 
+
+![Create Canister and Claim Cycles](_attachments/faucet_step_5.png)
+
+After a successfully running the `redeem` command, the created canister's ID is returned. 
+
+After runninng the `redeem` command, the created canister and it's balance can be checked using the status command. Use the canister ID returned by the `redeem` command:
+
+    dfx canister --network=ic status <canister id>
+
+Please note the canister ID is used in the next step, so write down the canister ID. 
+
+Click NEXT to continue.
+
+### Step 4: Set Wallet
+
+The canister can now be linked to your principal ID as your wallet canister. The wallet is linked by calling a `dfx identity` command:
+
+![Set Wallet](_attachments/faucet_step_6.png)
+
+Click NEXT to continue.
+
+### Step 5: Verify Wallet Canister
+
+The last step is to verify the wallet is setup correctly, by checking its balance using the `dfx wallet` command:
+
+![Verify Wallet Canister](_attachments/faucet_step_7.png)
+
+## Setup Completed
+
+Now you are ready to host a website on the IC or follow one of our dapp tutorials.
 
 ### Next, people often look at these guides:
 

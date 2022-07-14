@@ -41,7 +41,7 @@ To get started, verify the following:
 -   You have downloaded and installed the SDK by running the following command in a terminal on your local computer:
 
     ``` bash
-    sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
     ```
 
 -   You have created a backup copy of the public/private key for the identity you are using for self-custody.
@@ -52,7 +52,7 @@ To get started, verify the following:
 
     As a security best practice, any operations that involve the transfer of ICP tokens would require both an air-gapped computer with minimal hardware and software and a computer connected to the network. In practice, this requires moving files between two computers and taking other precautions to minimize risks.
 
-    For simplicity, this *{doctitle}* describes how to complete key tasks using a single computer connected to the network.
+    For simplicity, this page describes how to complete key tasks using a single computer connected to the network.
 
 ## Connect to the ledger and get your account identifier
 
@@ -181,12 +181,12 @@ To transfer ICP tokens to another account:
 3.  Transfer ICP tokens to another account by running a command similar to the following:
 
     ``` bash
-    dfx ledger --networkictransfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
+    dfx ledger --network ic transfer <destination-ledger-account-id> --icp <ICP-amount> --memo <numeric-memo>
     ```
 
     For example:
 
-        dfx ledger --networkictransfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
+        dfx ledger --network ic transfer ae6e1a76da5725bbbf0c5c035aaf0525b791e0f0f7cce27d8e27826389871406 --icp 5 --memo 12345
 
     This example illustrates how to transfer ICP tokens to the specified account using a whole number with the `--icp` command-line option.
 

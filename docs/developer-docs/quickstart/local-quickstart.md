@@ -26,7 +26,7 @@ To download and install:
 
 2.  Download and install the SDK package by running the following command:
 
-        sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+        sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
@@ -46,10 +46,8 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable similar to the following:
-
-        dfx 0.9.2
-
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../updates/release-notes/release-notes.md).
+    
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
         dfx --help
@@ -225,4 +223,4 @@ Here are some suggestions for where to go next:
 
 -   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../build/languages/motoko/motoko-at-a-glance) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.

@@ -2,8 +2,7 @@
 
 This example demonstrates implementing an NFT canister. NFTs (non-fungible tokens) are unique tokens with arbitrary
 metadata - usually an image of some kind - to form the digital equivalent of trading cards. There are a few different
-NFT standards for the Internet Computer, but the most cycles-efficient and feature-complete one is the [DIP-721](https://github.com/Psychedelic/DIP721) standard, so
-that is the standard that this canister uses. You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
+NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this tutorial we use [DIP-721](https://github.com/Psychedelic/DIP721). You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
 
 The canister is a basic implementation of the standard, with support for the minting, burning, and notification interface extensions.
 
@@ -20,13 +19,13 @@ The NFT canister is not very complicated since the [DIP-721](https://github.com/
 but we can still use it to explain three important concepts concerning dapp development for the Internet Computer:
 
 ### Stable Memory for Canister Upgrades
-The Internet Computer employs [Orthogonal Persistence](https://beta.smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
+The Internet Computer employs [Orthogonal Persistence](https://smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
 When upgrading canister code, however, it is necessary to explicitly handle canister data. The NFT canister example shows how stable memory can be handled using `pre_upgrade` and `post_upgrade`.
 
 ### Certified Data
 Generally, when a function only reads data (instead of modifying the state of the canister), it is
-beneficial to use a [query call instead of an update call](https://beta.smartcontracts.org/docs/current/concepts/canisters-code#query-and-update-methods).
-But, since query calls do not go through consensus, [certified responses](https://beta.smartcontracts.org/docs/current/developer-docs/build/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security)
+beneficial to use a [query call instead of an update call](https://smartcontracts.org/docs/current/concepts/canisters-code#query-and-update-methods).
+But, since query calls do not go through consensus, [certified responses](https://smartcontracts.org/docs/current/developer-docs/build/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security)
 should be used wherever possible. The HTTP interface of the Rust implementation shows how certified data can be handled.
 
 ### Delegating Control over Assets
@@ -66,7 +65,7 @@ For the response to be verified, it has to be checked that a) the served content
 The function `witness` is responsible for creating a tree with minimal content that still can be verified to fulfill a) and b).
 Once this minimal tree is constructed, certificate and minimal hash tree are sent as part of the `IC-Certificate` header.
 
-For a much more detailed explanation how certification works, see [this explanation video](https://dfinity.org/howitworks/response-certification).
+For a much more detailed explanation how certification works, see [this explanation video](https://internetcomputer.org/howitworks/response-certification).
 
 ### Managing Control over Assets
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
@@ -79,6 +78,6 @@ Those three levels are then manually checked every single time someone attempts 
 If a user is not authorised to call a certain function an error is returned.
 
 Burning an NFT is a special case. To burn an NFT means to either delete the NFT (not intended in DIP-721) or to set ownership to `null` (or a similar value).
-On the Internet Computer, this non-existing principal is called the [Management Canister](https://beta.smartcontracts.org/docs/current/references/ic-interface-spec#the-ic-management-canister).
+On the Internet Computer, this non-existing principal is called the [Management Canister](https://smartcontracts.org/docs/current/references/ic-interface-spec#the-ic-management-canister).
 Quote from the link: "The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.)." and its address is `aaaaa-aa`.
 Using this management canister address, we can construct its principal and set the management canister as the owner of a burned NFT.

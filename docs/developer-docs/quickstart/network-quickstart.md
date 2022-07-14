@@ -20,7 +20,7 @@ Before you download and install this release of the SDK, verify the following:
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/default-wallet).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
 
 ## Download and install
 
@@ -34,7 +34,7 @@ To download and install:
 
 2.  Download and install the SDK package by running the following command:
 
-        sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+        sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
@@ -54,9 +54,7 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable similar to the following:
-
-        dfx 0.9.2
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../updates/release-notes/release-notes.md).
 
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
@@ -158,7 +156,7 @@ To look up your account in the ledger:
 
         10.00000000 ICP
 
-## Convert ICP tokens to cycles
+## Creating a Cycles Wallet
 
 Now that you have confirmed your account information and current ICP token balance, you can convert some of those ICP tokens to cycles and move them into a cycles wallet.
 
@@ -200,7 +198,7 @@ To validate your cycles wallet:
 
 1.  Verify the canister identifier for the cycles wallet you deployed by running the following command:
 
-        dfx identity --networkicget-wallet
+        dfx identity --network ic get-wallet
 
     The command displays the canister identifier for your cycles wallet with output similar to the following:
 
@@ -212,7 +210,7 @@ To validate your cycles wallet:
 
     The command returns the balance for the your cycles wallet. For example:
 
-        15430122328028812 cycles.
+        15430.122 TC (trillion cycles).
 
     You can also access your default cycles wallet in a web browser by using a URL similar to the following:
 
@@ -234,7 +232,7 @@ To validate your cycles wallet:
 
     For example, call the `authorize` method for the cycles wallet canister with a command similar to the following:
 
-        dfx canister --networkiccall "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
+        dfx canister --network ic call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
 
     Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the IC, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
@@ -246,7 +244,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/default-wallet).
+    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
 
 ## Register, build, and deploy the application
 
@@ -301,7 +299,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your cycles wallet by running a command similar to the following:
 
-        dfx ledger --networkictop-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
+        dfx ledger --network ic top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
 
     This command converts an additional `1.005` ICP tokens to cycles for the `gastn-uqaaa-aaaae-aaafq-cai` cycles wallet identifier. The command returns output similar to the following:
 
@@ -310,7 +308,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
 4.  Call the `hello` canister and the predefined `greet` function by running the following command:
 
-        dfx canister --networkiccall hello greet '("everyone": text)'
+        dfx canister --network ic call hello greet '("everyone": text)'
 
     Let’s take a closer look at this example:
 
@@ -344,7 +342,7 @@ To access the dapp frontend:
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
-        dfx canister --networkicid hello_assets
+        dfx canister --network ic id hello_assets
 
     For example, the full URL should look similar to the following:
 
@@ -368,4 +366,4 @@ Here are some suggestions for where to go next:
 
 -   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko at-a-glance](../build/languages/motoko/motoko-at-a-glance) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.

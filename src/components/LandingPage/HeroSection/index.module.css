@@ -1,0 +1,154 @@
+.section {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.anchor {
+    display: block;
+    position: absolute;
+    margin-top: -110px;
+    padding-bottom: 110px;
+    visibility: hidden;
+}
+
+.container {
+    margin: 130px auto 100px auto;
+    width: Min(1110px, 90%);
+}
+
+.Title {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.Title h1 {
+    font-weight: 700;
+    font-size: 110px;
+    line-height: 121px;
+    margin-bottom: 0;
+}
+
+.wordCycle {
+    position: absolute;
+    color: #3B00B9;
+}
+
+.wordFiller {
+    opacity: 0;
+    display: inline-flex;
+}
+
+
+.Text {
+    margin: 24px auto 32px 0;
+    width: Min(1000px, 90%);
+    display: block;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.actionButton {
+    display: inline-flex;
+    text-align: center;
+    padding: 16px 24px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    border: 2px solid #3b00b9;
+    background-color: #3b00b9;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.actionButton:hover {
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+.actionContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-direction: row;
+}
+
+.callToAction {
+    display: inline-flex;
+    color: #3b00b9;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    z-index: 1000;
+    margin-left: 32px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.callToAction:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.callToAction:hover::before {
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7813 7.33336L7.20529 3.75736L8.14796 2.8147L13.3333 8.00003L8.14796 13.1854L7.20529 12.2427L10.7813 8.6667H2.66663V7.33336H10.7813Z' fill='black'/%3E%3C/svg%3E%0A") no-repeat;
+}
+
+.callToAction::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-self: center;
+    margin: auto 0.5rem auto 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7813 7.33336L7.20529 3.75736L8.14796 2.8147L13.3333 8.00003L8.14796 13.1854L7.20529 12.2427L10.7813 8.6667H2.66663V7.33336H10.7813Z' fill='%233b00b9'/%3E%3C/svg%3E%0A") no-repeat;
+}
+
+@media screen and (max-width: 996px) {
+    .container {
+        margin: 100px auto 80px auto;
+    }
+
+    .Title h1 {
+        font-size: 48px;
+        line-height: 54px;
+        margin-bottom: 24px;
+    }
+
+    .Text {
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0 auto 0 0;
+    }
+
+    .actionButton {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 14px 20px;
+        border: 2px solid #3b00b9;
+        background-color: #3b00b9;
+        color: white;
+        margin: 32px 0;
+    }
+
+    .actionContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .callToAction {
+        margin-left: 0;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+    }
+}

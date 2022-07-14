@@ -44,9 +44,7 @@ To modify the default template:
 
 1.  Open the `src/phonebook/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste the following sample code into the `main.mo` file:
-
-        Unresolved directive in phonebook.adoc - include::example$phonebook.mo[]
+2.  Copy and paste [this code](../_attachments/phonebook.mo) into the `main.mo` file.
 
     In looking at this sample dapp, you might notice the following key elements:
 
@@ -134,9 +132,10 @@ To test the dapp you have deployed:
 
     Because the dapp is written to return one value for one key, the command only returns information associated with the first key, in this example the phone number for `Maya Garcia`.
 
-Unresolved directive in phonebook.adoc - include::example$candid-ui.adoc\[\]
+6.  Test your code using the candid ui.
 
-\+ ![Phonebook functions](../_attachments/candid-phonebook.png)
+    To test your code, follow the instructions [here](candid-ui.md).
+![Phonebook functions](../_attachments/candid-phonebook.png)
 
 ## Revise the source code in your dapp
 

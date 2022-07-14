@@ -1,0 +1,104 @@
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-BlackItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-BoldItalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXTT-Book.woff") format("woff");
+    font-weight: 450;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Italic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-LightItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-MediumItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: CircularXX;
+    src: url("/static/fonts/Circular/CircularXXWeb-ThinItalic.woff") format("woff");
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap
+}
