@@ -174,7 +174,23 @@ Computing threshold ECDSA signatures is the core functionality of this feature. 
 
 ### Signature Verification
 
-For completeness of the example, we show that the created signatures can be verified with the public key corresponding to the respective private ECDSA key.
+For completeness of the example, we show that the created signatures can be verified with the public key corresponding to the same canister and derivation path.
+
+The following shows how this verification can be done in Javascript, with the [secp256k1](https://www.npmjs.com/package/secp256k1) npm package:
+
+```javascript
+let { signatureNormalize, ecdsaVerify } = require("secp256k1")
+
+let public_key = ... // Uint8Array type, the result of calling the above "public_key" function.
+let hash = ... // 32-byte Uint8Array representing a binary hash, e.g. the result of running sha256 over input message.
+let signature = ... // Uint8Array type, the result of calling the above "sign" function.
+
+let verified = ecdsaVerify(signatureNormalize(signature), hash, public_key)
+```
+
+The call to `ecdsaVerify` function should always return `true`.
+
+Similar verifications can be done in many other languages with the help of cryptographic libraries support the secp56k1 curve.
 
 FIX Links to detailed documentation on the Wiki and academic papers.
 
