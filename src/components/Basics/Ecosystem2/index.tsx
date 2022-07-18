@@ -43,11 +43,11 @@ const categories = [
     ),
     credit: (
       <a
-        href="https://twitter.com/icpsquad"
+        href="https://twitter.com/dSquadNFT"
         target={"_blank"}
         className={styles.credit}
       >
-        @ICPSquadNFT
+        @dSquadNFT
       </a>
     ),
   },
@@ -100,8 +100,8 @@ const categories = [
   {
     title: (
       <>
-        Build the next Metaverse on the{" "}
-        <span style={{ color: "#791E94" }}>Internet Computer</span>
+        Build the next <span style={{ color: "#3B00B9" }}>Metaverse</span> on
+        the Internet Computer
       </>
     ),
     image: require("../../../../static/img/basics/export-metaverse.png")

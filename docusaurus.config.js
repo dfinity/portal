@@ -126,13 +126,18 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Internet Identity",
-                href: "https://identity.ic0.app/",
-              },
-              {
                 label: "Showcase",
                 href: "/showcase",
               },
+              {
+                label: "How it works",
+                href: "/howitworks",
+              },
+              {
+                label: "Internet Identity",
+                href: "https://identity.ic0.app/",
+              },
+
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
@@ -141,10 +146,7 @@ const config = {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-              {
-                label: "How it works",
-                href: "/howitworks",
-              },
+
               {
                 label: "DFINITY Foundation",
                 href: "https://dfinity.org/foundation",
