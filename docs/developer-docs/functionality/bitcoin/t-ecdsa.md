@@ -181,9 +181,9 @@ The following shows how this verification can be done in Javascript, with the [s
 ```javascript
 let { signatureNormalize, ecdsaVerify } = require("secp256k1")
 
-let public_key = ... // Uint8Array type, the result of calling the above "public_key" function.
-let hash = ... // 32-byte Uint8Array representing a binary hash, e.g. the result of running sha256 over input message.
-let signature = ... // Uint8Array type, the result of calling the above "sign" function.
+let public_key = ... // Uint8Array type, the result of calling the above canister "public_key" function.
+let hash = ... // 32-byte Uint8Array representing a binary hash (e.g. sha256).
+let signature = ... // Uint8Array type, the result of calling the above canister "sign" function on `hash`.
 
 let verified = ecdsaVerify(signatureNormalize(signature), hash, public_key)
 ```
