@@ -361,6 +361,33 @@ const sidebars = {
     "references/ic-interface-spec",
     {
       type: "category",
+      label: "quill Commands",
+      link: {
+        type: "doc",
+        id: "references/quill-cli-reference/index",
+      },
+      items: [
+        "references/quill-cli-reference/quill-parent",
+        "references/quill-cli-reference/quill-account-balance",
+        "references/quill-cli-reference/quill-claim-neurons",
+        "references/quill-cli-reference/quill-generate",
+        "references/quill-cli-reference/quill-get-neuron-info",
+        "references/quill-cli-reference/quill-get-proposal-info",
+        "references/quill-cli-reference/quill-list-neurons",
+        "references/quill-cli-reference/quill-list-proposals",
+        "references/quill-cli-reference/quill-neuron-manage",
+        "references/quill-cli-reference/quill-neuron-stake",
+        "references/quill-cli-reference/quill-public-ids",
+        "references/quill-cli-reference/quill-qr-code",
+        "references/quill-cli-reference/quill-replace-node-provider-id",
+        "references/quill-cli-reference/quill-scanner-qr-code",
+        "references/quill-cli-reference/quill-send",
+        "references/quill-cli-reference/quill-transfer",
+        "references/quill-cli-reference/quill-update-node-provider",
+      ],
+    },
+    {
+      type: "category",
       label: "Security Best Practices",
       link: {
         type: "doc",
