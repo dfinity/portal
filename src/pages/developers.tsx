@@ -1,7 +1,6 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import styles from "@site/src/pages/developers.module.css";
 import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import Canisters from "@site/src/components/DevelopersHome/Canisters";
@@ -16,8 +15,8 @@ function Developers(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className={styles.main}>
-        <div className={styles.announcementBar}>
+      <main className="w-full overflow-hidden">
+        <div className="mt-8 mx-auto mb-0 w-9/10 lg:w-[1110px] lg:mt-[104px] lg:mb-6">
           <AnnouncementBar
             text={"Voting for Supernova Community Choice Award"}
             link={"https://dfinity.org/supernova"}
