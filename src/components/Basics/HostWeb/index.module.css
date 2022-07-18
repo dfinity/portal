@@ -48,6 +48,8 @@
 
 .illustrationCTA:hover {
     color: white;
+    text-decoration: none;
+    background: #181818;
 }
 
 .outerWrapper {
@@ -83,7 +85,7 @@
 
     .illustration {
         width: 120vw;
-        left: 10%;
+        left: 24px;
         bottom: -63vw;
     }
 

@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 
 const InternetIdentity = () => {
-  const [ref, inView, x] = useInView({ threshold: 0.5 });
+  const [ref, inView, x] = useInView({ threshold: 0.35 });
   const controls = useAnimation();
   useEffect(() => {
     if (inView) {

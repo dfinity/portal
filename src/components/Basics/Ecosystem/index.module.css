@@ -132,10 +132,27 @@
   .cards {
     position: static;
     transform: none;
-    overflow: auto;
-    margin-top: 24px;
-    margin-right: -24px;
+    overflow-x: scroll;
+    scroll-padding: 50% 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    margin: 24px -24px 0 -24px;
     padding-bottom: 20px;
+    gap:12px;
+  }
+  .cards::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .cards::-webkit-scrollbar-track {
+    margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
+    border-radius: 20px;
+  }
+
+  .cards::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 24, 30%);
+    border-radius: 20px;
+    border: 3px solid var(--ifm-background-color);
   }
   .cardsDesktop {
     display: none;
@@ -147,11 +164,19 @@
   .card {
     min-width: 207px;
   }
-
+.card:nth-child(1) {
+  margin-left: 24px;
+}
+.card:last-child{
+  margin-right: 24px;
+}
+  .cards::-webkit-scrollbar-track {
+    margin: 0 24px;
+  }
   .container {
     max-width: 1114px;
     margin: 0 auto;
-    padding-bottom: 80px;
+    padding: 100px 24px;
     position: relative;
   }
 }
