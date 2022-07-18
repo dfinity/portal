@@ -162,7 +162,7 @@ const sidebars = {
       type: 'category',
       label: 'Deployment & Scaling',
       link: {
-        type: 'doc', id: 'developer-docs/deploy/computation-and-storage-costs',
+        type: 'doc', id: 'developer-docs/deploy/index',
       },
       items: [
         'developer-docs/deploy/deploy',
