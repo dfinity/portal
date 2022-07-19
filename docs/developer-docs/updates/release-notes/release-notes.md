@@ -40,7 +40,7 @@ A test key id "Secp256k1:dfx_test_key" is ready to be used by locally created ca
 
 ### Refactor: optimize from ic-wasm
 
-Optimize Rust canister WASM module via ic-wasm library instead of ic-cdk-optimizer.
+Optimize Rust canister WASM module via ic-wasm library instead of ic-cdk-optimizer. A separate installation of ic-cdk-optimizer is no longer needed.
 
 The actual optimization was kept the same.
 
