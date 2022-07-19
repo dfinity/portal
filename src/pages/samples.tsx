@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import { sampleItems } from "@site/src/components/Common/sampleItems";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 
 function Samples(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -22,13 +21,6 @@ function Samples(): JSX.Element {
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
   const [numberOfItems, setNumberOfItems] = React.useState(16);
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
   resetNavBarStyle();
 
   const sortSamples = (samples) => {
@@ -75,55 +67,58 @@ function Samples(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className={styles.main}>
-        <motion.div
-          ref={ref}
-          animate={controls}
-          initial="hidden"
-          variants={transitions.container}
-          className={styles.container}
-        >
-          <img className={styles.BGShape} src={BGCircle} alt="" />
-          <Header />
-          <motion.div variants={transitions.item}>
-            <FilterBar
-              numberOfItems={filteredSamples.length}
-              selectedLanguages={selectedLanguages}
-              setSelectedLanguages={setSelectedLanguages}
-              selectedDomains={selectedDomains}
-              setSelectedDomains={setSelectedDomains}
-              selectedLevels={selectedLevels}
-              setSelectedLevels={setSelectedLevels}
-              selectedContentTypes={selectedContentTypes}
-              setSelectedContentTypes={setSelectedContentTypes}
-              selectedSortBy={selectedSortBy}
-              setSelectedSortBy={setSelectedSortBy}
+      <main className="w-full overflow-hidden">
+        <AnimateSpawn variants={transitions.container}>
+          <section className="w-9/10 mx-auto relative lg:my-30">
+            <img
+              className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
+              src={BGCircle}
+              alt=""
             />
-          </motion.div>
-          <motion.div variants={transitions.item} className={styles.cards}>
-            {filteredSamples.slice(0, numberOfItems).map((sample) => (
-              <Card
-                key={sample.index}
-                image={sample.image}
-                title={sample.title}
-                domain={sample.domains[0]}
-                body={sample.body}
-                links={sample.links}
+            <Header />
+            <motion.div variants={transitions.item}>
+              <FilterBar
+                numberOfItems={filteredSamples.length}
+                selectedLanguages={selectedLanguages}
+                setSelectedLanguages={setSelectedLanguages}
+                selectedDomains={selectedDomains}
+                setSelectedDomains={setSelectedDomains}
+                selectedLevels={selectedLevels}
+                setSelectedLevels={setSelectedLevels}
+                selectedContentTypes={selectedContentTypes}
+                setSelectedContentTypes={setSelectedContentTypes}
+                selectedSortBy={selectedSortBy}
+                setSelectedSortBy={setSelectedSortBy}
               />
-            ))}
-          </motion.div>
-          {filteredSamples.length > numberOfItems && (
-            <div
-              className={styles.loadMore}
-              onClick={() => setNumberOfItems(numberOfItems + 16)}
+            </motion.div>
+            <motion.div
+              variants={transitions.item}
+              className="relative my-11 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
             >
-              <div className={styles.plusIcon}>
-                <PlusIcon />
+              {filteredSamples.slice(0, numberOfItems).map((sample) => (
+                <Card
+                  key={sample.index}
+                  image={sample.image}
+                  title={sample.title}
+                  domain={sample.domains[0]}
+                  body={sample.body}
+                  links={sample.links}
+                />
+              ))}
+            </motion.div>
+            {filteredSamples.length > numberOfItems && (
+              <div
+                className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
+                onClick={() => setNumberOfItems(numberOfItems + 16)}
+              >
+                <div className="inline-block mr-2 h-6">
+                  <PlusIcon />
+                </div>
+                <p className="mb-0">Load more</p>
               </div>
-              <p className={styles.selectTitle}>Load more</p>
-            </div>
-          )}
-        </motion.div>
+            )}
+          </section>
+        </AnimateSpawn>
       </main>
     </Layout>
   );
