@@ -275,7 +275,6 @@ const sidebars = {
         "references/cli-reference/dfx-build",
         "references/cli-reference/dfx-cache",
         "references/cli-reference/dfx-canister",
-        "references/cli-reference/dfx-config",
         "references/cli-reference/dfx-deploy",
         "references/cli-reference/dfx-generate",
         "references/cli-reference/dfx-help",
