@@ -11,11 +11,11 @@ import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "../../../../static/transitions.json";
 import { motion } from "framer-motion";
 
-const colotThief = new ColorThief();
+const colorThief = new ColorThief();
 
 function getDominantColorOnLoad(img): [number, number, number] | false {
   try {
-    let rgb = colotThief.getPalette(
+    let rgb = colorThief.getPalette(
       img,
       2,
       Math.min(10, Math.ceil(img.width / 10))
