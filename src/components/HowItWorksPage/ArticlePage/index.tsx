@@ -67,20 +67,24 @@ function Index() {
           </section>
           <section className="max-w-page relative px-6 mb-5 md:mb-14 md:px-12.5 md:mx-auto overflow-hidden">
             <div className="md:w-8/10 lg:w-7/10 md:ml-1/12">
-              <motion.div
-                className="tw-paragraph"
-                variants={transitions.item}
-                dangerouslySetInnerHTML={{
-                  __html: marked.parse(article.description),
-                }}
-              ></motion.div>
-              <motion.div
-                className="mt-8 [&>ul]:list-none [&>ul]:p-0 [&>ul>li]:mb-6 [&>ul>li>a]:link-external"
-                variants={transitions.item}
-                dangerouslySetInnerHTML={{
-                  __html: marked.parse(article.listOfLinks),
-                }}
-              ></motion.div>
+              {article.description && (
+                <motion.div
+                  className="tw-paragraph"
+                  variants={transitions.item}
+                  dangerouslySetInnerHTML={{
+                    __html: marked.parse(article.description),
+                  }}
+                ></motion.div>
+              )}
+              {article.listOfLinks && (
+                <motion.div
+                  className="mt-8 [&>ul]:list-none [&>ul]:p-0 [&>ul>li]:mb-6 [&>ul>li>a]:link-external"
+                  variants={transitions.item}
+                  dangerouslySetInnerHTML={{
+                    __html: marked.parse(article.listOfLinks),
+                  }}
+                ></motion.div>
+              )}
             </div>
           </section>
           <section className="max-w-page relative px-6 mb-40 md:px-12.5 md:mx-auto overflow-hidden">
