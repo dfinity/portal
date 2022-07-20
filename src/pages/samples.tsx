@@ -1,202 +1,16 @@
 import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import styles from "@site/src/pages/samples.module.css";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
-import nftMinting from "@site/static/img/samples/nftMinting.png";
-import helloWorld from "@site/static/img/samples/helloWorld.png";
-import staticWebsite from "@site/static/img/samples/staticWebsite.png";
-import basicDex from "@site/static/img/samples/basicDex.png";
-import basicDAO from "@site/static/img/samples/basicDAO.png";
-import encryptedNoteTaking from "@site/static/img/samples/encryptedNoteTaking.png";
-import tokenTransfer from "@site/static/img/samples/tokenTransfer.png";
-import actorReference from "@site/static/img/samples/actorReference.png";
-import webgl from "@site/static/img/samples/webgl.png";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { sampleItems } from "@site/src/components/Common/sampleItems";
+import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-
-const sampleItems = [
-  {
-    index: 0,
-    title: "Hello World",
-    image: helloWorld,
-    domains: ["Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
-    body: "Deploy a dead simple dapp using two canisters serving a web page.",
-    links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/hello",
-      },
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
-      livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "docs/current/samples/hello",
-    },
-  },
-  {
-    index: 1,
-    title: "Static Website",
-    image: staticWebsite,
-    domains: ["Website", "Global"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Documentation", "Videos"],
-    body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
-    links: {
-      action: { text: "Docs", to: "/samples/host-a-website" },
-      docs: "docs/current/samples/host-a-website",
-      youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
-    },
-  },
-  {
-    index: 2,
-    title: "Basic Dex",
-    image: basicDex,
-    domains: ["DeFi", "Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    body: "Build dapp to enable DeFi applications on the IC.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/defi",
-      },
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
-      livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
-      docs: "docs/current/samples/dex",
-      youtube: "https://youtu.be/fLbaOmH24Gs",
-    },
-  },
-  {
-    index: 3,
-    title: "NFT Minting",
-    image: nftMinting,
-    domains: ["NFT", "Gaming"],
-    languages: ["Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos"],
-    body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
-    links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      },
-      rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      docs: "docs/current/samples/nft",
-      youtube: "https://youtu.be/1po3udDADp4",
-    },
-  },
-  {
-    index: 4,
-    title: "Basic DAO",
-    image: basicDAO,
-    domains: ["Global", "DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos"],
-    body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
-      },
-      motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
-      docs: "docs/current/samples/dao",
-      youtube: "https://youtu.be/3IcYlieA-EE",
-    },
-  },
-  {
-    index: 5,
-    title: "Encrypted note-taking",
-    image: encryptedNoteTaking,
-    domains: ["Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
-      },
-      motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
-      rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
-      livePreview: "https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/",
-      docs: "docs/current/samples/encrypted-notes",
-      youtube: "https://youtu.be/DZQmtPSxvbs",
-    },
-  },
-  {
-    index: 6,
-    title: "Token transfer",
-    image: tokenTransfer,
-    domains: ["Global", "DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation"],
-    body: "Create a dapp that can transfer tokens to its most active users.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      },
-      motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
-      docs: "docs/current/samples/token-transfer",
-    },
-  },
-  {
-    index: 7,
-    title: "Actor reference",
-    image: actorReference,
-    domains: ["Website"],
-    languages: ["Motoko"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation"],
-    body: "Learn how the IC management canister functions as an actor (reference).",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
-      },
-      motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
-    },
-  },
-  {
-    index: 8,
-    title: "WebGL",
-    image: webgl,
-    domains: ["Gaming", "Website", "Global"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Documentation"],
-    highlights: ["Gaming", "Website", "Global", "Beginner"],
-    body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
-      },
-      docs: "docs/current/samples/host-unity-webgl",
-    },
-  },
-];
+import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 
 function Samples(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -207,13 +21,6 @@ function Samples(): JSX.Element {
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
   const [numberOfItems, setNumberOfItems] = React.useState(16);
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
   resetNavBarStyle();
 
   const sortSamples = (samples) => {
@@ -260,55 +67,58 @@ function Samples(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className={styles.main}>
-        <motion.div
-          ref={ref}
-          animate={controls}
-          initial="hidden"
-          variants={transitions.container}
-          className={styles.container}
-        >
-          <img className={styles.BGShape} src={BGCircle} alt="" />
-          <Header />
-          <motion.div variants={transitions.item}>
-            <FilterBar
-              numberOfItems={filteredSamples.length}
-              selectedLanguages={selectedLanguages}
-              setSelectedLanguages={setSelectedLanguages}
-              selectedDomains={selectedDomains}
-              setSelectedDomains={setSelectedDomains}
-              selectedLevels={selectedLevels}
-              setSelectedLevels={setSelectedLevels}
-              selectedContentTypes={selectedContentTypes}
-              setSelectedContentTypes={setSelectedContentTypes}
-              selectedSortBy={selectedSortBy}
-              setSelectedSortBy={setSelectedSortBy}
+      <main className="w-full overflow-hidden">
+        <AnimateSpawn variants={transitions.container}>
+          <section className="w-9/10 mx-auto relative lg:my-30">
+            <img
+              className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
+              src={BGCircle}
+              alt=""
             />
-          </motion.div>
-          <motion.div variants={transitions.item} className={styles.cards}>
-            {filteredSamples.slice(0, numberOfItems).map((sample) => (
-              <Card
-                key={sample.index}
-                image={sample.image}
-                title={sample.title}
-                domain={sample.domains[0]}
-                body={sample.body}
-                links={sample.links}
+            <Header />
+            <motion.div variants={transitions.item}>
+              <FilterBar
+                numberOfItems={filteredSamples.length}
+                selectedLanguages={selectedLanguages}
+                setSelectedLanguages={setSelectedLanguages}
+                selectedDomains={selectedDomains}
+                setSelectedDomains={setSelectedDomains}
+                selectedLevels={selectedLevels}
+                setSelectedLevels={setSelectedLevels}
+                selectedContentTypes={selectedContentTypes}
+                setSelectedContentTypes={setSelectedContentTypes}
+                selectedSortBy={selectedSortBy}
+                setSelectedSortBy={setSelectedSortBy}
               />
-            ))}
-          </motion.div>
-          {filteredSamples.length > numberOfItems && (
-            <div
-              className={styles.loadMore}
-              onClick={() => setNumberOfItems(numberOfItems + 16)}
+            </motion.div>
+            <motion.div
+              variants={transitions.item}
+              className="relative my-11 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
             >
-              <div className={styles.plusIcon}>
-                <PlusIcon />
+              {filteredSamples.slice(0, numberOfItems).map((sample) => (
+                <Card
+                  key={sample.index}
+                  image={sample.image}
+                  title={sample.title}
+                  domain={sample.domains[0]}
+                  body={sample.body}
+                  links={sample.links}
+                />
+              ))}
+            </motion.div>
+            {filteredSamples.length > numberOfItems && (
+              <div
+                className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
+                onClick={() => setNumberOfItems(numberOfItems + 16)}
+              >
+                <div className="inline-block mr-2 h-6">
+                  <PlusIcon />
+                </div>
+                <p className="mb-0">Load more</p>
               </div>
-              <p className={styles.selectTitle}>Load more</p>
-            </div>
-          )}
-        </motion.div>
+            )}
+          </section>
+        </AnimateSpawn>
       </main>
     </Layout>
   );
