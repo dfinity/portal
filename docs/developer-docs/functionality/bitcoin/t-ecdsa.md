@@ -87,27 +87,13 @@ Later in 2022, as part of the General Availability (GA) release of the feature, 
 
 ## Code Walkthrough
 
-**Note:** This section is a placeholder and will be replaced with Paul's contribution.
-
-Overall idea
-
--   Explain all it needs for the *complete real-world development workflow*
-
-    -   Local development
-
-    -   Deploying on IC mainnet
-
--   1 simple example, everything shown
-
--   Standalone, not using Bitcoin example here
-
 We next present a minimal example canister for showcasing the threshold ECDSA API. The canister is a signing oracle that creates signatures with keys derived from an input string. That is, a request provides a message and a key derivation string and the canister hashes the message and requests a signature from the threshold ECDSA subnet using the key derivation string for the derivation path. We attempt to give a complete overview of the development, starting with downloading of the SDK, up to the deployment and trying out of the code on mainnet.
 
 ### Getting Started
 
 Sample project called `threshold-ecdsa` is provided in the [examples repository](??), under either `motoko` or `rust` sub-directories. It requires at least dfx version ?? for local development.
 
--   Download and install SDK if not already have.
+-   Download and install the SDK if you do not already have it.
 -   Check out the examples repistory.
 -   Change directory to `motoko/threshold_ecdsa` subdirectory.
 -   Run `dfx deploy`.
@@ -116,7 +102,7 @@ Sample project called `threshold-ecdsa` is provided in the [examples repository]
 
 The same code used in the SDK environment for local testing works IC on mainnet. Keep in mind that the master key in the SDK environment is different to the master test key on mainnet and the future master production key.
 
-Before deploying to mainnet, you should modify the code to use right name of the `key_id` to use.
+Before deploying to mainnet, you should modify the code to use the right name of the `key_id` for the key on mainnet.
 
 ### Obtaining Public Keys
 
