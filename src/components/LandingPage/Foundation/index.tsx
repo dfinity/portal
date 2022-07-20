@@ -1,21 +1,14 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "@site/src/components/LandingPage/Foundation/index.module.css";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import DownloadSVG from "@site/static/img/svgIcons/download.svg";
-import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
-import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
-import {
-  motion,
-  useAnimation,
-  useSpring,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import useGlobalData from "@docusaurus/useGlobalData";
+import { useParallax } from "@site/src/utils/use-parallax-animation";
+import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
 
 const stats = [
   { title: "Team Members", value: "260+" },
@@ -82,61 +75,40 @@ function Card({ isMain, title, body, link }) {
 function Foundation() {
   const globalData = useGlobalData();
   const teamInformation = globalData["team-information"]["default"] as any;
-  const RDMembers = shuffle(
-    teamInformation.find((t) => t.title === "R&D").members
-  );
-  const OperationMembers = shuffle(
-    teamInformation.find((t) => t.title === "Operations").members
-  );
-  const LeadershipMembers = shuffle(
-    teamInformation.find((t) => t.title === "Leadership").members
-  );
-  const controls = useAnimation();
+  const [RDMembers, setRDMembers] = useState([]);
+  const [OperationMembers, setOperationMembers] = useState([]);
+  const [LeadershipMembers, setLeadershipMembers] = useState([]);
   const divRef = useRef(null);
-  const { scrollY } = useViewportScroll();
-  const [elementTop, setElementTop] = useState(0);
-  const [clientHeight, setClientHeight] = useState(0);
-  const offset = 150;
-  const initial = elementTop - clientHeight;
-  const final = elementTop + offset;
-  const yFrontRange = useTransform(
-    scrollY,
-    [initial, final],
-    [offset, -offset]
+  const { ref, controls } = useSpawnAnimation();
+  const { frontLayerOffset, middleLayerOffset, backLayerOffset } = useParallax(
+    divRef,
+    150
   );
-  const yMiddleRange = useTransform(
-    scrollY,
-    [initial, final],
-    [offset * 2, -offset * 2]
-  );
-  const yBackRange = useTransform(
-    scrollY,
-    [initial, final],
-    [offset * 3, -offset * 3]
-  );
-  const yFront = useSpring(yFrontRange, { stiffness: 400, damping: 90 });
-  const yMiddle = useSpring(yMiddleRange, { stiffness: 400, damping: 90 });
-  const yBack = useSpring(yBackRange, { stiffness: 400, damping: 90 });
-  const { ref, inView } = useInView({ threshold: 0 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
 
-  useLayoutEffect(() => {
-    const element = divRef.current;
-    const onResize = () => {
-      setElementTop(
-        element.getBoundingClientRect().top + window.scrollY ||
-          window.pageYOffset
-      );
-      setClientHeight(window.innerHeight);
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [divRef]);
+  const frontLayerMembers = [
+    ...LeadershipMembers.slice(0, 2),
+    ...OperationMembers.slice(0, 2),
+    ...RDMembers.slice(0, 1),
+  ];
+  const middleLayerMembers = [
+    ...OperationMembers.slice(2, 4),
+    ...RDMembers.slice(1, 4),
+  ];
+  const backLayerMembers = [
+    ...OperationMembers.slice(4, 6),
+    ...RDMembers.slice(4, 8),
+  ];
+  useEffect(() => {
+    setRDMembers(
+      shuffle(teamInformation.find((t) => t.title === "R&D").members)
+    );
+    setOperationMembers(
+      shuffle(teamInformation.find((t) => t.title === "Operations").members)
+    );
+    setLeadershipMembers(
+      shuffle(teamInformation.find((t) => t.title === "Leadership").members)
+    );
+  }, []);
   return (
     <motion.div
       ref={ref}
@@ -151,71 +123,38 @@ function Foundation() {
         ref={divRef}
         className={styles.container}
       >
-        {LeadershipMembers.slice(0, 2).map((member) => (
+        {frontLayerMembers.map((member) => (
           <motion.div
             className={styles.teamPhotoContainer}
             key={member.name}
-            style={{ y: yFront }}
+            style={{ y: frontLayerOffset }}
           >
             <img src={member.photo + "?w=120"} alt={member.name} />
           </motion.div>
         ))}
-        {OperationMembers.slice(0, 2).map((member) => (
+        {middleLayerMembers.map((member) => (
           <motion.div
             className={styles.teamPhotoContainer}
             key={member.name}
-            style={{ y: yFront }}
+            style={{ y: middleLayerOffset }}
           >
             <img src={member.photo + "?w=120"} alt={member.name} />
           </motion.div>
         ))}
-        {RDMembers.slice(0, 1).map((member) => (
+        {backLayerMembers.map((member) => (
           <motion.div
             className={styles.teamPhotoContainer}
             key={member.name}
-            style={{ y: yFront }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {OperationMembers.slice(2, 4).map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: yMiddle }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {RDMembers.slice(1, 4).map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: yMiddle }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {OperationMembers.slice(4, 6).map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: yBack }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {RDMembers.slice(4, 8).map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: yBack }}
+            style={{ y: backLayerOffset }}
           >
             <img src={member.photo + "?w=120"} alt={member.name} />
           </motion.div>
         ))}
         <img
-          src={TeamPhotoMobile1}
+          src={
+            require("../../../../static/img/Foundation/teamPhotoMobile1.png")
+              .default
+          }
           alt=""
           className={styles.teamPhotoMobile1}
         />
@@ -289,7 +228,14 @@ function Foundation() {
           />
         ))}
       </motion.div>
-      <img src={TeamPhotoMobile2} alt="" className={styles.teamPhotoMobile2} />
+      <img
+        src={
+          require("../../../../static/img/Foundation/teamPhotoMobile2.png")
+            .default
+        }
+        alt=""
+        className={styles.teamPhotoMobile2}
+      />
     </motion.div>
   );
 }
