@@ -153,37 +153,37 @@ function Dashboard() {
         <AnimatedStatistic
           title="Block Count"
           currentValue={stats.blockCount}
-          tooltip={"The count of blocks created since genesis."}
+          tooltip={"The total number of blocks finalized since genesis."}
           precision={0}
         />
         <Statistic
           title="Network Status"
           currentValue={stats.operational ? "Operational" : "Maintenance"}
-          tooltip={"The current network status of the Internet Computer."}
+          tooltip={"The current status of the Internet Computer network."}
         />
         <AnimatedStatistic
           title="Blocks/s"
           currentValue={stats.blockRate}
-          tooltip={"The count of blocks finalized per second."}
+          tooltip={"The number of blocks being finalized each second."}
           precision={2}
         />
         <AnimatedStatistic
           title="Chain CPUs"
           currentValue={stats.cpuCores}
-          tooltip={"The current count of CPUs powering the Internet Computer."}
+          tooltip={"The current number of CPUs in node machines hosting the blockchain."}
           precision={0}
         />
         <AnimatedStatistic
           title="Canisters"
           currentValue={stats.canisterCount}
-          tooltip={"The count of live canisters on the Internet Computer."}
+          tooltip={"The number of active canister smart contracts on the Internet Computer."}
           precision={0}
         />
         <Statistic
           title="Data storage cost"
           currentValue={`$${stats.cost} GB/month`}
           tooltip={
-            "The current estimated cost of storage on the Internet Computer."
+            "The cost of storing 1GB of data in a canister smart contract."
           }
         />
       </div>
