@@ -29,7 +29,7 @@ const cards = [
     isMain: true,
     title: ["Roadmap"],
     body: "The DFINITY Foundation’s contributions to the IC roadmap are subject to community discussion and voting",
-    link: "https://dfinity.org/roadmap",
+    link: "https://forum.dfinity.org/c/roadmap/29",
   },
   {
     isMain: false,
@@ -254,10 +254,7 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link
-          className={styles.actionButton}
-          to="https://dfinity.org/foundation"
-        >
+        <Link className={styles.actionButton} to="https://dfinity.org/about">
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
