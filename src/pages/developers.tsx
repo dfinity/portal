@@ -1,7 +1,6 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import styles from "@site/src/pages/developers.module.css";
 import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import Canisters from "@site/src/components/DevelopersHome/Canisters";
@@ -16,7 +15,7 @@ function Developers(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className={styles.main}>
+      <main className="w-full overflow-hidden">
         <Header />
         <SampleCode />
         <Canisters />

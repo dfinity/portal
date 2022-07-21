@@ -135,7 +135,19 @@ export default ({
     <BrowserOnly fallback={null}>
       {() => {
         const Sketch = require("react-p5");
-        return <Sketch setup={setup} draw={draw} />;
+        return (
+          <div
+            style={{
+              width: "calc(100vw - (100vw - 100%))",
+              height: "200vh",
+              position: "absolute",
+              overflow: "hidden",
+              mixBlendMode: "multiply",
+            }}
+          >
+            <Sketch setup={setup} draw={draw} />
+          </div>
+        );
       }}
     </BrowserOnly>
   );
