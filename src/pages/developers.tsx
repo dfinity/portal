@@ -17,12 +17,6 @@ function Developers(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className={styles.main}>
-        <div className={styles.announcementBar}>
-          <AnnouncementBar
-            text={"Voting for Supernova Community Choice Award"}
-            link={"https://dfinity.org/supernova"}
-          />
-        </div>
         <Header />
         <SampleCode />
         <Canisters />
