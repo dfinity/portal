@@ -152,7 +152,7 @@ function StartBuilding() {
           link={"/samples"}
         />
         <Event
-          title={["Meet", "The Winners"]}
+          title={["Check out", "the Winners"]}
           dateRange="Supernova Hackathon"
           link={"https://dfinity.org/supernova"}
         />
