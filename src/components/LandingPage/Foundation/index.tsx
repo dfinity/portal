@@ -193,7 +193,7 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link className={styles.actionButton} to="https://dfinity.org/about">
+        <Link className={styles.actionButton} to="https://dfinity.org">
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
