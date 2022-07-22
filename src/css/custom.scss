@@ -48,15 +48,46 @@
   --ifm-navbar-background-color: #242526;
 }
 
+/* fix `react-codejar` line numbers */
+.codejar-linenumbers {
+  background: none !important;
+  color: var(--ifm-secondary) !important;
+
+  &>div {
+    text-align: right;
+    transform: translateX(-5px);
+
+    [data-theme='dark'] & {
+      opacity: .5;
+    }
+  }
+}
+
+.motoko-code-output {
+  color: darkgreen;
+
+  [data-theme="dark"] & {
+    color: lightgreen;
+  }
+}
+
+.motoko-code-error {
+  color: darkred;
+
+  [data-theme="dark"] & {
+    color: pink;
+  }
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
-}
 
-[data-theme="dark"] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+  [data-theme="dark"] & {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 div[class^="announcementBarContent"] {
