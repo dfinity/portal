@@ -92,7 +92,7 @@ const config = {
     {
       image: "/img/share.jpg",
       colorMode: {
-        // disableSwitch: true,
+        disableSwitch: true,
         defaultMode: "light",
         respectPrefersColorScheme: false,
       },
