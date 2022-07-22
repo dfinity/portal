@@ -21,7 +21,12 @@ function Information({ title, body, link }) {
   return (
     <Link
       to={link}
-      className={clsx(styles.card, styles.cardContainer, styles.cardHover)}
+      className={clsx(
+        styles.card,
+        styles.cardContainer,
+        styles.cardHover,
+        styles.darkHover
+      )}
     >
       <div className={styles.bodyContainer}>
         <p className={styles.informationTitle}>{title}</p>
@@ -34,7 +39,10 @@ function Information({ title, body, link }) {
 
 function Event({ title, dateRange, link }) {
   return (
-    <Link to={link} className={clsx(styles.card, styles.eventContainer)}>
+    <Link
+      to={link}
+      className={clsx(styles.card, styles.eventContainer, styles.cardHover)}
+    >
       <div className={styles.bodyContainer}>
         <p className={styles.eventDate}>{dateRange}</p>
         {title.map((titleLine, index) => (
@@ -42,10 +50,11 @@ function Event({ title, dateRange, link }) {
             {titleLine}
           </p>
         ))}
-        <p className={styles.eventDescription}>
-          Voting is now OPEN!<br />
-          Deadline: July 10 @ 11:59pm PT
-        </p>
+        {/* <p className={styles.eventDescription}>
+          Check out the grand champions
+          <br />
+          and the commnunity vote winner!
+        </p> */}
       </div>
       <img className={styles.eventBackground} src={eventBG} alt="" />
     </Link>
@@ -56,7 +65,12 @@ function MotokoPlayground({ title, body, link }) {
   return (
     <Link
       to={link}
-      className={clsx(styles.card, styles.motokoContainer, styles.cardHover)}
+      className={clsx(
+        styles.card,
+        styles.motokoContainer,
+        styles.cardHover,
+        styles.darkHover
+      )}
     >
       <div className={styles.bodyContainer}>
         <p className={styles.informationTitle}>{title}</p>
@@ -138,11 +152,9 @@ function StartBuilding() {
           link={"/samples"}
         />
         <Event
-          title={["Community", "Choice Award"]}
+          title={["Check out", "the Winners"]}
           dateRange="Supernova Hackathon"
-          link={
-            "https://dfinity.org/supernova"
-          }
+          link={"https://dfinity.org/supernova"}
         />
         <MotokoPlayground
           title="Motoko Playground"

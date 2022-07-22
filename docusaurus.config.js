@@ -150,7 +150,7 @@ const config = {
 
               {
                 label: "DFINITY Foundation",
-                href: "https://dfinity.org/foundation",
+                href: "https://dfinity.org",
               },
             ],
           },
@@ -194,7 +194,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://dfinity.org/roadmap",
+                href: "https://forum.dfinity.org/c/roadmap/29",
               },
               {
                 label: "Staking & Governance",
