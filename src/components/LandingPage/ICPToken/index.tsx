@@ -22,6 +22,8 @@ import { Doughnut, Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import clsx from "clsx";
+import { VotingRewardsPluginData } from "./VotingRewardsPluginData";
+import useGlobalData from "@docusaurus/useGlobalData";
 
 ChartJS.register(
   ArcElement,
@@ -123,12 +125,12 @@ function OwnershipChart() {
   );
 }
 
-export const votingRewardsData = {
-  labels: ["0.5", "1", "2", "3", "4", "5", "6", "7", "8"],
+export const votingRewardsData = (data: VotingRewardsPluginData) => ({
+  labels: data.map((d) => d.dissolveDelay.toString()),
   datasets: [
     {
       label: "Reward",
-      data: [11.1, 11.7, 13.0, 14.3, 15.6, 16.9, 18.2, 19.5, 20.8],
+      data: data.map((d) => d.reward.toFixed(1)),
       fill: true,
       borderColor: "rgba(62,9,185,1)",
       backgroundColor: "rgba(118,85,200,1)",
@@ -140,15 +142,20 @@ export const votingRewardsData = {
       hoverPointRadius: 6,
     },
   ],
-};
+});
 
 export const VotingRewardsChart: React.FC<{ className?: string }> = ({
   className,
 }) => {
+  const globalData = useGlobalData();
+  const votingRewards = globalData["voting-rewards"][
+    "default"
+  ] as VotingRewardsPluginData;
+
   return (
     <div className={clsx(styles.votingRewardsChart, className)}>
       <Line
-        data={votingRewardsData}
+        data={votingRewardsData(votingRewards)}
         options={{
           maintainAspectRatio: true,
           aspectRatio: 1.5,
