@@ -7,6 +7,10 @@ cycles in just a few minutes.
 
 or following the instructions at <https://smartcontracts.org>.
 
+:::warning
+The cycles faucet is currently getting reworked. Some parts of this page are outated. Please go to <https://faucet.dfinity.org> for the current instructions. Once the rework is completed, this page will be updated.
+:::
+
 ## Claim your Cycles Wallet
 
 ### Step 1: Authenticate

@@ -16,12 +16,6 @@ function Developers(): JSX.Element {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className="w-full overflow-hidden">
-        <div className="mt-8 mx-auto mb-0 w-9/10 lg:w-[1110px] lg:mt-[104px] lg:mb-6">
-          <AnnouncementBar
-            text={"Voting for Supernova Community Choice Award"}
-            link={"https://dfinity.org/supernova"}
-          />
-        </div>
         <Header />
         <SampleCode />
         <Canisters />
