@@ -59,9 +59,7 @@ triggering remote HTTP calls again.
 
 ## Building and deploy sample dapp locally
 
-- `cd rust/exchange_rate`
-- `cargo build --target wasm32-unknown-unknown --release --p exchange_rate` to build the backend
 - `dfx start --enable-canister-http` to start a local IC instance with Canister HTTP feature enabled
 - `dfx deploy --with-cycles 100000000000` to deploy the `exchange_rate` and `exchange_rate_assets`
   canisters to local IC
-- `dfx canister status {canister_id}` to check the status of the canister
+- `dfx canister status exchange_rate` to check the status of the canister
