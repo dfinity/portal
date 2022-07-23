@@ -37,6 +37,7 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
+    'docusaurus-plugin-sass',
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
@@ -69,7 +70,7 @@ const config = {
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
@@ -126,13 +127,18 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Internet Identity",
-                href: "https://identity.ic0.app/",
-              },
-              {
                 label: "Showcase",
                 href: "/showcase",
               },
+              {
+                label: "How it works",
+                href: "/howitworks",
+              },
+              {
+                label: "Internet Identity",
+                href: "https://identity.ic0.app/",
+              },
+
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
@@ -141,13 +147,10 @@ const config = {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-              {
-                label: "How it works",
-                href: "/howitworks",
-              },
+
               {
                 label: "DFINITY Foundation",
-                href: "https://dfinity.org/foundation",
+                href: "https://dfinity.org",
               },
             ],
           },
@@ -191,7 +194,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://dfinity.org/roadmap",
+                href: "https://forum.dfinity.org/c/roadmap/29",
               },
               {
                 label: "Staking & Governance",
