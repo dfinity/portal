@@ -447,7 +447,7 @@ const sidebars = {
     //"samples/t-ecdsa-sample",
     "samples/hello",
     "samples/host-a-website",
-    // 'samples/http-requests-exchange-rates',
+    'samples/http-requests-exchange-rates',
     "samples/dex",
     "samples/nft",
     "samples/dao",
