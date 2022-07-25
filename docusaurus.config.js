@@ -37,6 +37,7 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
+    'docusaurus-plugin-sass',
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
@@ -69,7 +70,7 @@ const config = {
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
