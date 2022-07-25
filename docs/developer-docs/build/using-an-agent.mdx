@@ -37,11 +37,13 @@ Calls to the Internet Computer always need to have a cryptographic identity atta
 
 #### Accepted Identities
 
-The IC accepts calls using the following types of identities:
+The IC accepts calls using the following types of signatures in identities:
 
-* Ed25519
-* Secp256k1
-* ECDSA with a P-256 curve
+* Ed25519 and ECDSA signatures
+  * Plain signatures are supported for the schemes
+* Ed25519 or ECDSA on curve P-256 (also known as secp256r1)
+  * using SHA-256 as a hash function
+  * using the Koblitz curve in secp256k1.
 
 When encoding these identities as a Principal, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous. 
 
