@@ -64,46 +64,56 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain. Make sure to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
 
     FROM ubuntu:22.04
 
+    ENV NVM_DIR=/root/.nvm
+    ENV NVM_VERSION=v0.39.1
+    ENV NODE_VERSION=18.1.0
+
+    ENV RUSTUP_HOME=/opt/rustup
+    ENV CARGO_HOME=/opt/cargo
+    ENV RUST_VERSION=1.62.0
+    ENV IC_CDK_OPTIMIZER_VERSION=0.3.4
+
+    ENV DFX_VERSION=0.11.0
+
     # Install a basic environment needed for our build tools
-    RUN \
-        apt -yq update && \
+    RUN apt -yq update && \
         apt -yqq install --no-install-recommends curl ca-certificates \
             build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake
 
     # Install Node.js using nvm
-    # Specify the Node version
-    ENV NODE_VERSION=18.1.0
-    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
-    ENV NVM_DIR=/root/.nvm
-    RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-    RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-    RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
+    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
+    RUN . "${NVM_DIR}/nvm.sh" && nvm install ${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm use v${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm alias default v${NODE_VERSION}
 
-    # Install Rust and Cargo in /opt
-    # Specify the Rust toolchain version
-    ARG rust_version=1.60.0
-    ENV RUSTUP_HOME=/opt/rustup \
-        CARGO_HOME=/opt/cargo \
-        PATH=/opt/cargo/bin:$PATH
+    # Install Rust and Cargo
+    ENV PATH=/opt/cargo/bin:${PATH}
     RUN curl --fail https://sh.rustup.rs -sSf \
-            | sh -s -- -y --default-toolchain ${rust_version}-x86_64-unknown-linux-gnu --no-modify-path && \
-        rustup default ${rust_version}-x86_64-unknown-linux-gnu && \
+            | sh -s -- -y --default-toolchain ${RUST_VERSION}-x86_64-unknown-linux-gnu --no-modify-path && \
+        rustup default ${RUST_VERSION}-x86_64-unknown-linux-gnu && \
         rustup target add wasm32-unknown-unknown
-    RUN cargo install --version 0.3.4 ic-cdk-optimizer
+    RUN cargo install --version ${IC_CDK_OPTIMIZER_VERSION} ic-cdk-optimizer
 
-    # Install dfx; the version is picked up from the DFX_VERSION environment variable
-    ENV DFX_VERSION=0.11.0
+    # Install dfx
     RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     COPY . /canister
     WORKDIR /canister
 
-    RUN npm ci # if `package.json` and `package-lock.json` is available in your canister directory
+    RUN ./build_script.sh
+
+An example `build_script.sh` for a Rust project looks as follows:
+
+    # additional setup, e.g., build frontend assets:
+    # ...
+    # Rust build:
+    export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
+    cargo build --locked --target wasm32-unknown-unknown --release
 
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -119,7 +129,7 @@ This creates a Docker container image called `mycanister`, with Node.js, Rust an
 
     docker run -it --rm mycanister
 
-From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile`, to allow the user to automatically reproduce your build when creating the canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
+From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh`), to allow the user to automatically reproduce your build when creating the canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
 
 ### Ensuring the determinism of the build process
 
@@ -139,29 +149,67 @@ For the build process to be deterministic:
 
 ### Testing reproducibility
 
-If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To use it, you can add the following line to the `Dockerfile` in the root directory of your canister project:
+If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, use the following `Dockerfile` (note that it can take up to an hour to build this `Dockerfile`):
 
-    RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt webpack
+    FROM ubuntu:22.04
 
-Next, create a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer, and put it in your project directory. An example `canister_ids.json` file looks as follows:
+    ENV NVM_DIR=/root/.nvm
+    ENV NVM_VERSION=v0.39.1
+    ENV NODE_VERSION=18.1.0
 
-    {
-      "greet": {
-        "ic": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-      },
-      "greet_assets": {
-        "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-      }
-    }
+    ENV OPENSSL_DIR=/opt/openssl
+    ENV OPENSSL_VERSION=OpenSSL_1_1_1q
+
+    ENV CARGO_HOME=/opt/cargo
+    ENV RUST_VERSION=1.62.0
+    ENV IC_CDK_OPTIMIZER_VERSION=0.3.4
+
+    ENV DFX_VERSION=0.11.0
+
+    # Install a basic environment needed for our build tools
+    RUN apt -yq update && \
+        apt -yqq install --no-install-recommends curl ca-certificates \
+            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake git \
+            python-is-python3 ninja-build \
+            reprotest disorderfs faketime rsync sudo wabt webpack
+
+    # Install Node.js using nvm
+    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
+    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
+    RUN . "${NVM_DIR}/nvm.sh" && nvm install ${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm use v${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm alias default v${NODE_VERSION}
+
+    # Install OpenSSL (needed for Rust compiler build)
+    RUN git clone https://github.com/openssl/openssl.git --branch ${OPENSSL_VERSION}
+    RUN cd openssl && ./config --prefix=${OPENSSL_DIR} && make && make install
+
+    # Install Rust and Cargo
+    ENV PATH=/opt/cargo/bin:${PATH}
+    RUN git clone https://github.com/rust-lang/rust.git --branch ${RUST_VERSION}
+    RUN cp rust/config.toml.example rust/config.toml
+    RUN sed -i "s;^#tools = .*;tools = [\"cargo\"];" rust/config.toml
+    RUN sed -i "s;^#prefix = .*;prefix = ${CARGO_HOME};" rust/config.toml
+    RUN sed -i "s;^#lld = .*;lld = true;" rust/config.toml
+    RUN sed -i "s;^#deny-warnings = .*;deny-warnings = false;" rust/config.toml
+    RUN sed -i "s;^#jemalloc = .*;jemalloc = false;" rust/config.toml
+    RUN ./rust/x.py install --host x86_64-unknown-linux-gnu --target x86_64-unknown-linux-gnu --target wasm32-unknown-unknown
+    RUN cargo install --version ${IC_CDK_OPTIMIZER_VERSION} ic-cdk-optimizer
+
+    # Install dfx
+    RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+
+    COPY . /canister
+    WORKDIR /canister
 
 Now, from the root directory of your canister project, you can test the reproducibility of your `dfx` builds as follows:
 
     $ docker build -t mycanister .
     ...
     $ docker run --rm --privileged -it mycanister
-    root@6fe19d89f8f5:/canister# reprotest -vv --variations '+all,-time' "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
+    root@6fe19d89f8f5:/canister# reprotest -vv "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
 
-The first command builds the Docker container using the `Dockerfile` provided earlier. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We exclude the `time` variation for Rust builds (we observed that Rust builds crashed upon the `time` variation and filed an [issue](https://github.com/wolfcw/libfaketime/issues/402) with `faketime`). For Motoko builds, you could omit `--variations '+all,-time'` and thereby trying out all supported variations. The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
+The first command builds the Docker container using the `Dockerfile` provided earlier. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We use a custom build of the Rust compiler for the sake of `time` variation (the Rust compiler must not use `jemalloc`). The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
 
 If the comparison doesn’t find any differences, you will see an output similar to this one:
 
