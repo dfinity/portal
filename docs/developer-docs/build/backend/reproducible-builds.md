@@ -94,7 +94,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
             | sh -s -- -y --default-toolchain ${rust_version}-x86_64-unknown-linux-gnu --no-modify-path && \
         rustup default ${rust_version}-x86_64-unknown-linux-gnu && \
         rustup target add wasm32-unknown-unknown
-    RUN cargo install ic-cdk-optimizer
+    RUN cargo install --version 0.3.4 ic-cdk-optimizer
 
     # Install dfx; the version is picked up from the DFX_VERSION environment variable
     ENV DFX_VERSION=0.11.0
