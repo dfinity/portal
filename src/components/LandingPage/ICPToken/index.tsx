@@ -21,6 +21,8 @@ import {
 import { Doughnut, Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
+import clsx from "clsx";
+
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -89,7 +91,9 @@ function OwnershipChart() {
                 pointStyle: "circle",
                 boxWidth: 12,
               },
-              onClick: function (e) {
+
+              onClick: function (e: any) {
+                // ChartEvent doesn't have stopPropagation
                 e.stopPropagation();
               },
             },
@@ -138,9 +142,11 @@ export const votingRewardsData = {
   ],
 };
 
-function VotingRewardsChart() {
+export const VotingRewardsChart: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   return (
-    <div className={styles.votingRewardsChart}>
+    <div className={clsx(styles.votingRewardsChart, className)}>
       <Line
         data={votingRewardsData}
         options={{
@@ -242,7 +248,7 @@ function VotingRewardsChart() {
       />
     </div>
   );
-}
+};
 
 const chart = {
   hidden: { opacity: 0, y: 30 },
@@ -279,10 +285,7 @@ function ICPToken() {
           variants={transitions.item}
           style={{ display: "inline-flex" }}
         >
-          <Link
-            className={styles.headerCallToAction}
-            to={"https://wiki.internetcomputer.org/wiki/ICP_token"}
-          >
+          <Link className={styles.headerCallToAction} to={"/icp-tokens"}>
             LEARN MORE
           </Link>
         </motion.div>

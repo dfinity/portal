@@ -24,4 +24,4 @@ For those who want to understand the intricacies of the Internet Computer’s be
 We also include here various suggestions for Security Best Practices. There is information useful for developing with a security mindset when building on the IC, but also more generally.
 
 ### External Resources
-For other references, feel free to check out [the Internet Computer for Geeks](https://eprint.iacr.org/2022/087.pdf) paper which gives an overview of the entire system, the [How it Works](https://dfinity.org/howitworks/) videos to take a deeper dive into various topics, and also [Roman's Blog](https://mmapped.blog/posts.html) and [Kyle's blog](https://kyle-peacock.com/blog/). 
+For other references, feel free to check out [the Internet Computer for Geeks](https://eprint.iacr.org/2022/087.pdf) paper which gives an overview of the entire system, the [How it Works](https://internetcomputer.org/howitworks/) videos to take a deeper dive into various topics, and also [Roman's Blog](https://mmapped.blog/posts.html) and [Kyle's blog](https://kyle-peacock.com/blog/). 

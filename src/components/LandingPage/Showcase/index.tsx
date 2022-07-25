@@ -7,6 +7,8 @@ import ColorThief from "colorthief";
 import transitions from "@site/static/transitions.json";
 import dapps from "@site/static/showcase.json";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
+import { hslToRgb, rgbToHsl } from "@site/src/utils/colors";
+import { colorRegistry } from "@site/src/components/ShowcasePage/ShowcaseProject";
 
 const backgroundDisplay = {
   show: { display: "block", transition: { duration: 0.5 } },
@@ -22,100 +24,32 @@ const textCycling = {
   exit: { y: -30, opacity: 0 },
 };
 
-function rgbToHsl(r, g, b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  let max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  let h,
-    s,
-    l = (max + min) / 2;
-
-  if (max == min) {
-    h = s = 0; // achromatic
-  } else {
-    let d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-    h /= 6;
-  }
-
-  return [h, s, l];
-}
-
-function hslToRgb(h, s, l) {
-  let r, g, b;
-
-  if (s == 0) {
-    r = g = b = l; // achromatic
-  } else {
-    let hue2rgb = function hue2rgb(p, q, t) {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    };
-
-    let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    let p = 2 * l - q;
-    r = hue2rgb(p, q, h + 1 / 3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1 / 3);
-  }
-
-  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-}
-
-function getDominantColorOnLoad(img) {
-  const colorThief = new ColorThief();
+const colorThief = new ColorThief();
+function getDominantColorOnLoad(img): [number, number, number] | false {
   try {
     let rgb = colorThief.getPalette(
       img,
       2,
       Math.min(10, Math.ceil(img.width / 10))
-    )[0];
-    // @ts-ignore
+    )[0] as [number, number, number];
     let hsl = rgbToHsl(...rgb);
     if (hsl[2] < 0.5) {
       // dark dominant color
       hsl[2] = 0.8;
       hsl[1] = Math.max(hsl[1], 0.7);
-      // @ts-ignore
       rgb = hslToRgb(...hsl);
     } else {
       // light dominant color
       hsl[2] = Math.max(hsl[1], 0.8);
       hsl[1] = 0.5;
-      // @ts-ignore
       rgb = hslToRgb(...hsl);
     }
     return rgb;
   } catch (e) {
     console.error(e);
+    return false;
   }
 }
-
-const rgbToHex = (r, g, b) =>
-  "#" +
-  [r, g, b]
-    .map((x) => {
-      const hex = x.toString(16);
-      return hex.length === 1 ? "0" + hex : hex;
-    })
-    .join("");
 
 function Dapp({ dappInfo }) {
   function cleanWebsiteURL(url) {
@@ -123,12 +57,9 @@ function Dapp({ dappInfo }) {
     return tempURL.replace(/^https?:\/\//, "");
   }
 
-  const [backgroundColor, setBackgroundColor] = useState("#BCAAEB");
-
-  function handleImageLoaded({ target }) {
-    let [r, g, b] = getDominantColorOnLoad(target);
-    setBackgroundColor(rgbToHex(r, g, b));
-  }
+  const [backgroundColor, setBackgroundColor] = useState(
+    colorRegistry[dappInfo.logo]
+  );
 
   return (
     <a
@@ -139,7 +70,22 @@ function Dapp({ dappInfo }) {
       <div className={styles.dappHeader}>
         <div className={styles.dappIcon}>
           <img
-            /*onLoad={handleImageLoaded}*/
+            onLoad={(e) => {
+              if (!(dappInfo.logo in colorRegistry)) {
+                const rgb = getDominantColorOnLoad(e.target);
+
+                if (rgb === false) {
+                  colorRegistry[dappInfo.logo] = colorRegistry.default;
+                  setBackgroundColor(colorRegistry.default);
+                } else {
+                  const color = `rgb(${rgb.join(",")})`;
+                  colorRegistry[dappInfo.logo] = color;
+                  setBackgroundColor(color);
+                }
+              } else {
+                setBackgroundColor(colorRegistry[dappInfo.logo]);
+              }
+            }}
             crossOrigin={"anonymous"}
             style={{ maxHeight: "49px", maxWidth: "70px" }}
             src={dappInfo.logo + "?w=340&q=50&fm=png"}
@@ -260,13 +206,10 @@ function Showcase() {
                 developer and entrepreneurial activity. Get inspired by the
                 existing dapps.
               </p>
-              {/* <Link
-                className={styles.callToAction}
-                to={"???"}
-              >
+              <Link className={styles.callToAction} to={"/showcase"}>
                 <RightPointer />
                 <p> Explore the Internet Computer ecosystem</p>
-              </Link> */}
+              </Link>
             </motion.div>
           </div>
           <motion.div

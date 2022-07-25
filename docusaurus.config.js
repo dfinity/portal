@@ -1,29 +1,25 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const dotenv = require("dotenv");
+const isDev = process.env.NODE_ENV === "development";
+dotenv.config({ path: ".env.local" });
+
 // @ts-ignore
 const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
+const showcaseProjectsPlugin = require("./plugins/showcase-projects");
+const icpPricePlugin = require("./plugins/icp-price");
+const tailwindPlugin = require("./plugins/tailwind");
+const keepSymlinks = require("./plugins/keep-symlinks");
+const liveSessionsPlugin = require("./plugins/live-sessions");
+const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
-const isDev = process.env.NODE_ENV === "development";
+const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
-
-/** @type {import('@docusaurus/types').PluginModule} */
-const customDocusaurusPlugin = (context, options) => {
-  return {
-    name: `portal-docusaurus-plugin`,
-    configureWebpack(config, isServer, utils) {
-      return {
-        resolve: {
-          symlinks: false,
-        },
-      };
-    },
-  };
-};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -41,17 +37,14 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "samples",
-        path: "samples",
-        routeBasePath: "samples",
-        sidebarPath: require.resolve("./sidebarsSample.js"),
-        remarkPlugins: [require("remark-code-import")],
-      },
-    ],
-    customDocusaurusPlugin,
+    'docusaurus-plugin-sass',
+    keepSymlinks,
+    tailwindPlugin,
+    icpPricePlugin,
+    showcaseProjectsPlugin,
+    liveSessionsPlugin,
+    howItWorksArticlesPlugin,
+    teamInformationPlugin,
   ],
 
   presets: [
@@ -77,7 +70,7 @@ const config = {
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
@@ -134,13 +127,18 @@ const config = {
                 href: "/basics",
               },
               {
+                label: "Showcase",
+                href: "/showcase",
+              },
+              {
+                label: "How it works",
+                href: "/howitworks",
+              },
+              {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
-              // {
-              //   label: "Showcase",
-              //   href: "/showcase",
-              // },
+
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
@@ -149,13 +147,10 @@ const config = {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-              {
-                label: "How it works",
-                href: "https://dfinity.org/howitworks",
-              },
+
               {
                 label: "DFINITY Foundation",
-                href: "https://dfinity.org/foundation",
+                href: "https://dfinity.org",
               },
             ],
           },
@@ -190,12 +185,16 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "Token Holders ",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#IC_for_ICP_Token-holders.2C_Stakers.2C_and_Neuron_Holders",
+                label: "ICP tokens",
+                href: "/icp-tokens",
+              },
+              {
+                label: "Live sessions",
+                href: "/live-sessions",
               },
               {
                 label: "Roadmap",
-                href: "https://dfinity.org/roadmap",
+                href: "https://forum.dfinity.org/c/roadmap/29",
               },
               {
                 label: "Staking & Governance",
@@ -239,6 +238,12 @@ const config = {
             position: "left",
             sidebarId: "tokenomics",
             label: "Tokenomics",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "samples",
+            label: "Samples",
           },
 
           {

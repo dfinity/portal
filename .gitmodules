@@ -4,8 +4,6 @@
 [submodule "submodules/motoko"]
 	path = submodules/motoko
 	url = https://github.com/dfinity/motoko.git
-	branch = claudio/markdown-docs
-[submodule "submodules/motoko"]
-	path = submodules/motoko
-	url = https://github.com/dfinity/motoko.git
-	branch = claudio/markdown-docs
+[submodule "submodules/quill"]
+	path = submodules/quill
+	url = https://github.com/dfinity/quill.git

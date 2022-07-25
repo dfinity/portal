@@ -7,34 +7,34 @@ import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
-    title: "realweb 3.0",
+    title: "100% on-chain",
     body: "Dapps fully hosted on chain, serving content directly to your browser",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
   },
   {
-    title: "webspeed",
-    body: "TX finalized in 2 secs. State-preserving calls processed in milliseconds",
+    title: "web speed",
+    body: "Update TX finalized in 2 secs, query TXs in milliseconds",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
   },
   {
-    title: "reversegas",
-    body: "Users do not need to jump through hoops to use your dapp",
+    title: "reverse gas",
+    body: "smart contracts pay for computation, not their users",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
   },
   {
-    title: "lessCO₂",
-    body: "Chain key cryptography enables environmentally friendly decentralization and keeps gas cost stable",
+    title: "less CO₂",
+    body: "A blockchain platform that can be more efficient than traditional IT",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
   },
   {
-    title: "internetscale",
-    body: "Dapps can grow without limits as the IC transparently adds more nodes",
+    title: "scalable dapps",
+    body: "Build mass market social media using smart contracts (and nothing else)",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
   },
   {
-    title: "actormodel",
-    body: "Parallelism enables scaling. Contracts are asynchronous",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Novel_.E2.80.9Ccanister.E2.80.9D_smart_contract_framework",
+    title: "Internet Identity",
+    body: "Anonymizing crypto authentication using WebAuthn (e.g. fingerprint sensor)",
+    link: "https://wiki.internetcomputer.org/wiki/What_is_Internet_Identity",
   },
 ];
 
@@ -95,7 +95,10 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="https://dfinity.org/roadmap">
+        <Link
+          className={styles.actionButton}
+          to="https://forum.dfinity.org/c/roadmap/29"
+        >
           LEARN MORE
         </Link>
       </motion.div>
@@ -115,7 +118,10 @@ function Features() {
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="https://dfinity.org/roadmap">
+        <Link
+          className={styles.actionButton}
+          to="https://forum.dfinity.org/c/roadmap/29"
+        >
           LEARN MORE
         </Link>
       </motion.div>

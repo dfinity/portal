@@ -8,7 +8,7 @@ import clsx from "clsx";
 const SectionsLinks = [
   { text: "Dashboard", to: "#dashboard" },
   { text: "Features", to: "#features" },
-  { text: "Showcase", to: "#showcase" },
+  { text: "Showcase", to: "/showcase" },
   { text: "Foundation", to: "#foundation" },
   { text: "ICP Token", to: "#ICPToken" },
   { text: "Start Building", to: "#startBuilding" },

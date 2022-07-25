@@ -40,7 +40,7 @@ const HostWeb = () => {
               just like regular websites.
             </p>
             <Link
-              href="https://dfinity.org/howitworks/canister-lifecycle"
+              href="https://internetcomputer.org/howitworks/canister-lifecycle"
               className="cta-link"
               style={{ marginTop: "32px" }}
             >

@@ -101,6 +101,11 @@
     width: Min(500px,100%);
 }
 
+
+.ownershipChart, .votingRewardsChart canvas {
+    max-width: 100%;
+}
+
 .graphMobile {
     margin: auto auto 0 auto;
     display: none;

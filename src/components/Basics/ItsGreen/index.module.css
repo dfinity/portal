@@ -48,7 +48,20 @@
   top: 70px;
   right: -180px;
 }
-
+.BGGradient {
+  display: flex;
+  position: absolute;
+  width:3000px;
+  max-width: 3000px;
+  left: calc((100vw - 3000px)/2);
+  right: calc((100vw - 3000px)/2);
+  top:-600px;
+  z-index: -1000;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+}
 @media (max-width: 996px) {
   .outerContainer {
     padding: 240px 24px 200px;
@@ -73,7 +86,7 @@
 
   /* plant icon */
   .container > svg:nth-of-type(1) {
-    top: -120px;
+    top: -150px;
     right: 130px;
   }
 
@@ -85,7 +98,7 @@
 
   /* db icon */
   .container > svg:nth-of-type(3) {
-    top: -90px;
+    top: -120px;
     right: -30px;
   }
 }
