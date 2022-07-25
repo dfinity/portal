@@ -113,7 +113,7 @@ You can now deploy your canister and configure it to connect to your local `Regt
 
 2. Deploy the example canister:
 
-    dfx deploy basic_bitcoin --argument '(variant { Regtest })'
+        dfx deploy basic_bitcoin --argument '(variant { Regtest })'
 
     If successful, you should see an output that looks like this:
 
@@ -189,7 +189,7 @@ Now, check your BTC balance:
 
 Or, via the command line:
 
-    dfx canister call basic_bitcoin get_balance '("<your-canister-id>")'
+    dfx canister call basic_bitcoin get_balance '("<your-canister-btc-address>")'
 
 If everything worked well, you should see a balance of 5,000,000,000 Satoshi, which is 50 BTC.
 This is the reward you received for mining one block.
