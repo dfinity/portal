@@ -23,8 +23,8 @@ const cardsContent = [
   },
   {
     title: "Web3 orchestration",
-    body: "Magic crypto: smart contracts can sign TX you can directly run on other chains",
-    link: "https://wiki.internetcomputer.org/wiki/Web3:_The_bull_case_for_the_Internet_Computer",
+    body: "Chain key: smart contracts can sign TX you can directly run on other chains",
+    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
   },
   {
     title: "Bitcoin liquidity",
@@ -34,7 +34,7 @@ const cardsContent = [
   {
     title: "HTTPS outcalls",
     body: "Nodes call URL for contract, contract pre-processes, consensus agrees result",
-    link: "https://forum.dfinity.org/t/enable-canisters-to-make-http-s-requests/9670",
+    link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
   },
 ];
 
