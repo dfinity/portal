@@ -105,9 +105,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
     COPY . /canister
     WORKDIR /canister
 
-    RUN ./build_script.sh
-
-An example `build_script.sh` for a Rust project looks as follows:
+An example script to build a Rust project looks as follows:
 
     # additional setup, e.g., build frontend assets:
     # ...
@@ -129,7 +127,7 @@ This creates a Docker container image called `mycanister`, with Node.js, Rust an
 
     docker run -it --rm mycanister
 
-From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh`), to allow the user to automatically reproduce your build when creating the canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
+From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh` for a build script `./build_script.sh`), to allow the user to automatically reproduce your build when creating the canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
 
 ### Ensuring the determinism of the build process
 
