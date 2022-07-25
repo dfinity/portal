@@ -20,11 +20,12 @@ A `call` to the Internet Computer can take two common forms - an `update` or a `
     * `sender`, `nonce`, and `ingress_expiry`
 * `canister_id`
 * `method_name`
+* `request_id` - required for `update` request type calls
 * `arg` - the rest of the payload
 
-By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` by `cbor`-encoding the data from the client application, and ensuring it matches the Candid interface for the method it will be calling. That encoded data will be turned into a buffer.
+By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a cbor-encoded buffer.
 
-The `agent` takes all of that information, bundles it up into a certificate, and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the `agent` can begin polling with `read_state` requests, until the canister response is ready.
+The `agent` takes the cbor-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the `agent` can begin polling with `read_state` requests, until the canister response is ready.
 
 ### 2. Decoding Data
 
