@@ -24,7 +24,7 @@ const cardsContent = [
   {
     title: "Web3 orchestration",
     body: "Magic crypto: smart contracts can sign TX you can directly run on other chains",
-    link: "https://wiki.internetcomputer.org/wiki/Web3:_The_bull_case_for_the_Internet_Computer",
+    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
   },
   {
     title: "Bitcoin liquidity",
