@@ -3,8 +3,7 @@
 In the [Deploy Your First Bitcoin Dapp](./deploying-your-first-bitcoin-dapp.md) tutorial,
 we explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
 Bitcoin. In this tutorial, we'll explore how we can develop and test a Bitcoin dapp
-locally. Testing locally allows you to test your dapp more quickly and to be able to write
-regression tests.
+locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) and
 the [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api)
@@ -206,7 +205,7 @@ One caveat of these block rewards is that they are subject to the [coinbase matu
 which states that, in order for you to spend them, you will first need to mine 100
 additional blocks.
 
-Let's mine 100 additional blocks. Run the following:
+Let's mine 100 additional blocks by running the following command:
 
     ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 100 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
 
