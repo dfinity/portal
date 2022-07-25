@@ -44,7 +44,9 @@ The IC accepts calls using the following types of identities:
 
 When encoding these identities as a Principal, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous. 
 
-A self-authenticating identity using one of the above curves will have a suffix of 2, while anonymous identities receive a suffix of 4. The default anonymous identity is derived from an empty byte array, apart from the suffix 4. It resolves to `"2vxsx-fae"`, in its textual encoding.
+A self-authenticating identity using one of the above curves will have a suffix of 2.
+
+While the anonymous identity is a single byte 4. It resolves to `"2vxsx-fae"`, in its textual encoding.
 
 
 ## Canister HTTP Interface
