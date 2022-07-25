@@ -97,10 +97,7 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link
-          className={styles.actionButton}
-          to="https://forum.dfinity.org/c/roadmap/29"
-        >
+        <Link className={styles.actionButton} to="/howitworks">
           LEARN MORE
         </Link>
       </motion.div>
@@ -120,10 +117,7 @@ function Features() {
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link
-          className={styles.actionButton}
-          to="https://forum.dfinity.org/c/roadmap/29"
-        >
+        <Link className={styles.actionButton} to="/howitworks">
           LEARN MORE
         </Link>
       </motion.div>
