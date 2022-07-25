@@ -56,9 +56,6 @@ jobs:
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
         env:
           DFX_IDENTITY: ${{ secrets.DFX_IDENTITY }}
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
 
       - name: Install DFX
         run: sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
@@ -74,6 +71,10 @@ jobs:
 
       - name: Build canister
         run: dfx build portal
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
 
       - name: Deploy to Mainnet
         run: dfx deploy --network=ic --no-wallet portal
