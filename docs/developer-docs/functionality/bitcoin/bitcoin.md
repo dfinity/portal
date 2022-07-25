@@ -115,10 +115,6 @@ The final stage of development of a Bitcoin smart contract is its deployment on 
 
 **Note:** possibly inline the following sections or make some visually appealing links (e.g., tiles); t.b.d.
 
-### Local Development
+[Deploying Your First Bitcoin Dapp](./deploying-your-first-bitcoin-dapp.md)
 
 [Local Development](./local-development.md)
-
-### Walkthrough
-
-[Walkthrough](./walkthrough.md)

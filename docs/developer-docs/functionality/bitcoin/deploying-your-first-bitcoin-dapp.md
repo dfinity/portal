@@ -13,7 +13,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
 
         git clone https://github.com/dfinity/examples
 
-2. Go to the `basic_bitcoin` example
+2. Go to the `basic_bitcoin` example in the language of your choice
 
         # For motoko
         cd examples/motoko/basic_bitcoin
@@ -21,7 +21,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         # For rust
         cd examples/rust/basic_bitcoin
 
-3. Deploy the example to the Internet Computer. We're initializing our canister with `variant { Testnet }`, so that our canister connects to the Bitcoin testnet.
+3. Deploy the example to the Internet Computer. We're initializing the canister with `variant { Testnet }`, so that the canister connects to the Bitcoin testnet.
 
         dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
 
@@ -41,7 +41,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
 
    Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
 
-## Generating a Bitcoin address
+## Generating a Bitcoin Address
 
 Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these
 addresses can be generated from an ECDSA public key. The example code
@@ -50,7 +50,7 @@ showcases how your canister can generate a P2PKH address using the [ecdsa_public
 On the Candid UI of your canister, click the "Call" button under `get_p2pkh_address` to
 generate a P2PKH Bitcoin address:
 
-![](../_attachments/generate-ecdsa-key.png)
+![Generating a P2PKH Bitcoin Address](../_attachments/generate-ecdsa-key.png)
 
 Or, if you prefer the command line:
 
@@ -74,7 +74,7 @@ to receive some bitcoin.
 Enter your address and click on "Send testnet bitcoins". In the example below, the
 canister will be receiving 0.0001 test BTC.
 
-![](../_attachments/bitcoin-testnet-faucet.png)
+![Bitcoin Testnet Faucet](../_attachments/bitcoin-testnet-faucet.png)
 
 Once the transaction has at least one confirmation, which can take a few minutes,
 you'll be able to see it in your canister's balance.
@@ -85,7 +85,7 @@ You can check a Bitcoin address's balance by using the `get_balance` endpoint on
 
 In the Candid UI, paste in your canister's address, and click on "Call":
 
-![](../_attachments/bitcoin-received-funds.png)
+![Checking Bitcoin Balance](../_attachments/bitcoin-received-funds.png)
 
 Alternatively, make the call using the command line:
 
@@ -100,7 +100,7 @@ You can send Bitcoin using the `send` endpoint on your canister.
 In the Candid UI, add a destination address and an amount to send. In the example
 below, we're sending 4,321 Satoshi (0.00004321 BTC) back to the testnet faucet.
 
-![](../_attachments/bitcoin-send-transaction.png)
+![Sending Bitcoin](../_attachments/bitcoin-send-transaction.png)
 
 Via command line, the same call would look like this:
 
@@ -119,28 +119,3 @@ The `send` endpoint returns the ID of the transaction it sent to the network.
 You can track the status of this transaction using a block explorer. Once the
 transaction has at least one confirmation, you should be able to see it
 reflected in your current balance.
-
-<!--
-## Local Development
-
-We just showed how to deploy and test a dapp that works with Bitcoin testnet,
-but it's beneficial to be able to develop locally before deploying. TODO: talk about
-the advantages of regtest vs mainnet.
-
-### Setting up a local Bitcoin network
-
-TODO: material from the local development guide.
-
-### Configuring `dfx.json`
-
-Look at `dfx.json`. You'll see we've added the following to the config:
-
-    "bitcoin": {
-      "enabled": true,
-      "nodes": ["127.0.0.1:18444"],
-      "log_level": "info"
-    },
-
-Note that we've configured the SDK to connect to bitcoin at port 18444. Make sure
-this is set it to the IP that is reported in bitcoind.
--->
