@@ -102,7 +102,7 @@ You can now deploy your canister and configure it to connect to your local `Regt
 1. Run `dfx start`.
 
     :::tip
-    If when running `dfx start` and you see errors like
+    If when running `dfx start` you see errors like
 
         Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 
