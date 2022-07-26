@@ -82,7 +82,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
     # Install a basic environment needed for our build tools
     RUN apt -yq update && \
         apt -yqq install --no-install-recommends curl ca-certificates \
-            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake
+            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake rsync
 
     # Install Node.js using nvm
     ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
@@ -112,6 +112,7 @@ An example script to build a Rust project looks as follows:
     # Rust build:
     export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
     cargo build --locked --target wasm32-unknown-unknown --release
+    ic-cdk-optimizer target/wasm32-unknown-unknown/release/example.wasm -o example.wasm
 
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -147,7 +148,7 @@ For the build process to be deterministic:
 
 ### Testing reproducibility
 
-If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, use the following `Dockerfile` (note that it can take up to an hour to build this `Dockerfile`):
+If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, use the following `Dockerfile` (note that it can take up to 90 minutes to build this `Dockerfile`):
 
     FROM ubuntu:22.04
 
@@ -183,11 +184,13 @@ If reproducibility is vital for your code, you should test your builds to increa
     RUN cd openssl && ./config --prefix=${OPENSSL_DIR} && make && make install
 
     # Install Rust and Cargo
+    ENV LD_LIBRARY_PATH=/opt/openssl/lib
     ENV PATH=/opt/cargo/bin:${PATH}
     RUN git clone https://github.com/rust-lang/rust.git --branch ${RUST_VERSION}
     RUN cp rust/config.toml.example rust/config.toml
+    RUN sed -i "s;^#extended = .*;extended = true;" rust/config.toml
     RUN sed -i "s;^#tools = .*;tools = [\"cargo\"];" rust/config.toml
-    RUN sed -i "s;^#prefix = .*;prefix = ${CARGO_HOME};" rust/config.toml
+    RUN sed -i "s;^#prefix = .*;prefix = \"${CARGO_HOME}\";" rust/config.toml
     RUN sed -i "s;^#lld = .*;lld = true;" rust/config.toml
     RUN sed -i "s;^#deny-warnings = .*;deny-warnings = false;" rust/config.toml
     RUN sed -i "s;^#jemalloc = .*;jemalloc = false;" rust/config.toml
@@ -206,6 +209,17 @@ Now, from the root directory of your canister project, you can test the reproduc
     ...
     $ docker run --rm --privileged -it mycanister
     root@6fe19d89f8f5:/canister# reprotest -vv "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
+
+When using `dfx build --network ic`, you need to prebuild your frontend dependencies (e.g., by running `npm ci` before `dfx build --network ic`) and your project directory should contain a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer. An example `canister_ids.json` file looks as follows:
+
+    {
+      "example_backend": {
+        "ic": "rrkah-fqaaa-aaaaa-aaaaq-cai"
+      },
+      "example_frontend": {
+        "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+      }
+    }
 
 The first command builds the Docker container using the `Dockerfile` provided earlier. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We use a custom build of the Rust compiler for the sake of `time` variation (the Rust compiler must not use `jemalloc`). The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
 
