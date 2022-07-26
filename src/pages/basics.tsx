@@ -13,7 +13,6 @@ import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 const BasicsPage: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
   resetNavBarStyle();
-
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className="w-full overflow-hidden">
