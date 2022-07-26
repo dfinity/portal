@@ -7,8 +7,8 @@ import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
-    title: "100% on-chain",
-    body: "Dapps fully hosted on chain, serving content directly to your browser",
+    title: "Web serving",
+    body: "Smart contracts process HTTP and serve web directly to users",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
   },
   {
