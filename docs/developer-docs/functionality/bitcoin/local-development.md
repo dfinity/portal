@@ -165,7 +165,7 @@ For example, let's mine a block and have the block reward be given to your canis
 
     ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 <your-canister-btc-address>
 
-where `<your-canister-btc-address>` is the address you obtained from calling the `get_p2p_address`
+where `<your-canister-btc-address>` is the address you obtained from calling the `get_p2pkh_address`
 endpoint on your canister.
 
 If successful, you'll see an output that looks similar, but not identical, to this:
@@ -284,6 +284,11 @@ scratch. To do so:
 
         dfx stop
         rm -rf .dfx
+
+   :::warning
+   Running `rm -rf .dfx` will permanently delete _all_ the canisters you have
+   installed locally.
+   :::
 
 2. In the folder where you're running `bitcoind`, stop the `bitcoind` process if it's running,
 and then run the following to delete the chain you created.
