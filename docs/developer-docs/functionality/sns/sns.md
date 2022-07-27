@@ -160,70 +160,94 @@ Options 2 and 3 are unbounded, we focus here on explaining the SNS in Option 1 i
 more detail.
 
     * I AM HERE
-    
+
+## SNS overview
+
+### SNS canisters
+The SNS consists of a governance canister, a ledger canister, 
+a root canister, and a decentralization sale canister that is explained in the next
+section.
+
+The _ledger canister_ implements the 
+[ICRC-1 standard](https://github.com/dfinity/ICRC-1)
+and contains SNS tokens, which are unique tokens for each SNS.
+It stores which accounts own how many SNS tokens and the history of transactions 
+between the principals.
+The _governance canister_ enables decentralized decision making. 
+It stores _proposals_ that are suggestions on how to
+evolve the dapp that the SNS governs and _neurons_ that define who are the governance
+participants. Neurons facilitate stake-based voting as they contain staked SNS tokens.
+Everyone can become a government participant by staking SNS tokens in a neuron.
+The root canister is responsible for upgrading the other SNS canisters
+and the dapp canisters that the SNS controls.
+
+### SNS lifecycle 
+
+As already described above, SNS canisters are maintained and blessed by the IC community.
+In more detail, the blessed SNS versions and upgrade paths are stored on an NNS canister
+called the _SNS wasm modules canister_.
+Anyone can deploy an SNS. To do so, they can make a call to the SNS wasm modules
+canister, who takes the latest versions of the SNS canisters, initializes them with
+the parameters given by the user, and deploys them on the SNS subnet.
+This call is not permissioned and anyone can deploy an SNS in this way if they
+provide sufficient cycles for the SNS canisters.
+
+A crucial part of launching an SNS is how it can be decentralized. 
+That is, the newly created tokens must be distributed to a large community to ensure
+proper decentralization of voting power. There are of course many ways to do so.
+The first SNS version provides one simple way to achieve this:
+a developer can hand over the control of the dapp to a newly deployed SNS, that has
+at that stage limited capabilities as it may not be fully decentralized yet, and
+asks the Internet Compute to start a decentralization sale for this SNS.
+In this the decentralization sale, initial tokens are sold for ICP tokens.
+In the end of a successful decentralization sale, SNS tokens are owned by a large
+community and therefore the SNS governance control is decentralized.
+Moreover, the ICP that were collected in the decentralization sale provide initial
+funding for the SNS project.
+It is conceivable that alternative ways to decentralize a dapp are added in
+later SNS versions.
+
+We next describe the decentralization sale and the SNS launch including this 
+decentralization sale in more detail.
 
 
+#### Decentralisation sale
+For each SNS, the decentralization sale is realized in a separate _decentralization
+sale canister_ that exists during the SNS's launch and is owned by the IC who will
+run the sale. In more details, it is controlled by the NNS root canister.
 
+* The swap canister is set up at start with a defined amount of SNS tokens to be 
+  distributed publicly.
 
-
-## SNS canister overview
-We propose that in this initial design an SNS consists of three canisters:
-
-the governance canister which enables decentralized decision making,
-the ledger canister which determines for a SNS-specific governance token the balances and transactions, and
-the root canister which is responsible for upgrading the other SNS canisters and the dapp that the SNS controls.
-==
-A SNS consists of a set of canisters, including the governance canister and the ledger
-canister. The ledger canister contains SNS tokens, which are unique tokens for each SNS.
-It stores which accounts own how many SNS tokens and the history of transactions between
-the principals. The governance canister stores proposals that are suggestions on how to
-evolve the dapp that the SNS governs and of neurons that define who are the governance
-participants. Neurons contain staked SNS tokens and everyone can become a participant
-of the open governance process by staking SNS tokens in a neuron.
-==
-Goernance
-reuse the concepts of
-* neurons, which facilitate stake-based voting that guarantees that voters are invested
-  in the respective governance token and therefore incentivized to vote in the best
-  interest of the system.
-* proposals as the SNS should allow users to make suggestions, e.g., how to evolve the
-  associated dapp, and for others to vote on these decisions.
-  As with the NNS governance, it is expected that the governance canister is deployed
-  with an associated ledger canister
-  , where it is determined how much stake each neuron has.
-
-## SNS launch / lifecycle 
-Out of box: call to SNS-W giving inputs
-
-Many ways to decentralize. 
-Propose with an decentralisation sale (+CF). as everything, might evolve.
-===
-Each SNS will have a separate swap canister that only exists for the duration of the SNS’s launch.
-
-The swap canister is set up at start with a defined amount of SNS tokens to be 
-distributed publicly.
-
-During the swap, participants can send ICP to the swap canister to contribute to the 
-dapp’s funding.
-
-At the swap’s end the collected ICP are “swapped” for the SNS tokens: the swap 
-participants get SNS tokens and the SNS gets the collected ICP. Each user will 
-receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
-number of ICP contributed. For example, if the swap canister initially held 1000 SNS 
-tokens and 500 ICP tokens were collected during the swap, then the exchange rate would 
-be 2:1 and each swap participant would get 2 SNS tokens for each ICP token they 
-contributed.
-The exchange rate is thus set similarly to decentralized exchanges (DEXs) based on
-automated market makers (AMM), where the assumption is that two pools of tokens are
-of equal value.
-
-The swap achieves that a) a market price for the SNS token is set and b) every swap 
+* During the decentralization sale, participants can send ICP to the sale canister
+  to contribute to the dapp’s funding.
+  
+* At the sale’s end the collected ICP are “swapped” for the SNS tokens: the 
+  participants get SNS tokens and the SNS gets the collected ICP. Each user will
+  receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
+  number of ICP contributed. For example, if the swap canister initially held 1000 SNS
+  tokens and 500 ICP tokens were collected during the swap, then the exchange rate would
+  be 2:1 and each swap participant would get 2 SNS tokens for each ICP token they 
+  contributed.
+  
+Apart from distributing the tokens to many participants, the decentralization sale
+achieves that a) a market price for the SNS token is set and b) every sale 
 participant receives SNS tokens at that price.
 
+#### SNS Launch
+On a high level, an SNS with an initial decentralization sale is launched 
+in the following stages. 
+These stages will be described in more detail [on this page](todo)
 
-SNS launch goes through the following stages.
-
-**Initializing the SNS**: When developers initialize a SNS to which they want to hand over the control of their dapp, they choose a portion of tokens that are allocated to the developers, to the initial token swap, and to a treasury, which is an account that will be owned by the SNS governance canister and can be spent by the SNS community according to their needs. Possibly they can also specify a portion of tokens that are allocated to other predefined parties, for example to “airdrop” some tokens to known dapp users. The developers can also define the conditions for the swap, for example how many ICP tokens should at least and at most be collected (see details above).
+**Initializing the SNS**: When developers initialize a SNS to which they want to
+hand over the control of their dapp, they choose a portion of tokens that are 
+allocated to the developers, to the initial token swap, and to a treasury, which 
+is an account that will be owned by the SNS governance canister and can be spent 
+by the SNS community according to their needs. Possibly they can also specify a 
+portion of tokens that are allocated to other predefined parties, for example to 
+“airdrop” some tokens to known dapp users. The developers can also define the 
+conditions for the swap, for example how many ICP tokens should at least and at 
+most be collected (see details above).
 As the SNS is not yet decentralized, the swap canister is controlled by the NNS.
 There are only two ledger accounts with liquid tokens during the SNS launch, the treasury that is owned by the governance canister and preallocated tokens owned by the swap canister. To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all initial tokens from developers or ‘airdrop participants’ are locked in neurons. Moreover, to ensure that these initial neurons cannot modify the SNS before or during the swap and cannot transfer the treasury tokens, the SNS is deployed in a pre-genesis mode with limited functionality.
 **Similarly to most canisters on the IC, but unlike the NNS canisters,
@@ -241,3 +265,6 @@ If the swap was successful, the exchange rate is determined as explained above a
 If the swap was not successful, the decentralization attempt failed. Thus, everything will be reverted to the state before the SNS launch, including that the dapp’s control is handed back to the developers and all collected ICP are refunded to the swap participants.
 
 
+### SNS lifecycle
+Canisters need cycles, need to be maintained.
+Maybe describe how upgrades work
