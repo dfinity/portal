@@ -37,7 +37,7 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    'docusaurus-plugin-sass',
+    "docusaurus-plugin-sass",
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
@@ -133,6 +133,10 @@ const config = {
               {
                 label: "How it works",
                 href: "/howitworks",
+              },
+              {
+                label: "Bitcoin Integration",
+                href: "/bitcoin-integration",
               },
               {
                 label: "Internet Identity",

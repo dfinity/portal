@@ -23,6 +23,7 @@ module.exports = {
       },
       margin: {
         "1/12": "8.333333%",
+        "2/12": "16.666666666%",
       },
       fontWeight: {
         book: 450,
@@ -48,6 +49,7 @@ module.exports = {
       transparent: "transparent",
       black: {
         DEFAULT: "#181818",
+        30: "rgba(24, 24, 24, 0.3)",
         60: "rgba(24, 24, 24, 0.6)",
       },
       white: {

@@ -38,7 +38,7 @@ const cardsContent = [
   },
 ];
 
-const MotionLink = motion(Link);
+export const MotionLink = motion(Link);
 
 function Card({ title, body }) {
   return (
