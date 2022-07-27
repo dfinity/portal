@@ -37,7 +37,7 @@ function Index() {
             BUILD REAL WEB3
           </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
-            Explore the Internet Computer
+            Explore the Internet Computer ecosystem
           </Link>
         </motion.div>
       </motion.div>
