@@ -30,7 +30,7 @@ The latter kind of decentralization is what the SNS helps with: it allows
 to decentralize the control of a dapp.
 
 
-## Motivation: why getting an SNS? 
+## Motivation: why a DAO? 
 We next discuss the main motivations for DAOs from the point of view of two
 main actors on the IC: the dapp developers, who build dapps on the IC, and
 the end-users, who interact with and invest in dapps.
@@ -159,8 +159,6 @@ that have full flexibility of how they can evolve. Because the possibilities for
 Options 2 and 3 are unbounded, we focus here on explaining the SNS in Option 1 in
 more detail.
 
-    * I AM HERE
-
 ## SNS overview
 
 ### SNS canisters
@@ -207,8 +205,10 @@ funding for the SNS project.
 It is conceivable that alternative ways to decentralize a dapp are added in
 later SNS versions.
 
-We next describe the decentralization sale and the SNS launch including this 
-decentralization sale in more detail.
+The decentralization sale and the steps to conclude a SNS launch including this
+decentralization sale are described in more detail [here](todo).
+
+   * **TODO: upgrade, cycles.**
 
 
 #### Decentralisation sale
@@ -234,37 +234,11 @@ Apart from distributing the tokens to many participants, the decentralization sa
 achieves that a) a market price for the SNS token is set and b) every sale 
 participant receives SNS tokens at that price.
 
-#### SNS Launch
-On a high level, an SNS with an initial decentralization sale is launched 
-in the following stages. 
-These stages will be described in more detail [on this page](todo)
-
-**Initializing the SNS**: When developers initialize a SNS to which they want to
-hand over the control of their dapp, they choose a portion of tokens that are 
-allocated to the developers, to the initial token swap, and to a treasury, which 
-is an account that will be owned by the SNS governance canister and can be spent 
-by the SNS community according to their needs. Possibly they can also specify a 
-portion of tokens that are allocated to other predefined parties, for example to 
-“airdrop” some tokens to known dapp users. The developers can also define the 
-conditions for the swap, for example how many ICP tokens should at least and at 
-most be collected (see details above).
-As the SNS is not yet decentralized, the swap canister is controlled by the NNS.
-There are only two ledger accounts with liquid tokens during the SNS launch, the treasury that is owned by the governance canister and preallocated tokens owned by the swap canister. To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all initial tokens from developers or ‘airdrop participants’ are locked in neurons. Moreover, to ensure that these initial neurons cannot modify the SNS before or during the swap and cannot transfer the treasury tokens, the SNS is deployed in a pre-genesis mode with limited functionality.
-**Similarly to most canisters on the IC, but unlike the NNS canisters,
-SNS canisters burn cycles. => need cycles management**
-
-**Dapp control handover**: Between the SNS initialization and the start of the swap, the developers hand over the control of their dapp to the SNS. As there are already initial neurons (from Step 1), the dapp can now be upgraded via SNS proposals. The initial neurons can not do other things, such as changing the SNS parameters, as the SNS governance canister is still in pre-genesis mode. As the developers were already controlling the dapp before the SNS initialization, they effectively do not have any additional privileges compared to the state before the SNS initialization.
-
-**Starting the swap**: The swap is started by an NNS proposal. This means that during the launch, the developers that originally controlled the dapp hand over the control of their dapp to the NNS that then initializes the swap for them. When voting on a NNS proposal to start a swap, the NNS neurons should consider whether the swap parameters make sense and, most importantly, whether the dapp’s control has been handed over to the SNS already (that is Step 2 was completed successfully). The NNS proposal thus also serves as a safeguard where the wisdom of the crowd can detect potentially malicious SNSs before they trick users into investing in them.
-If the NNS proposal is adopted, the swap is started by the NNS. If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed back to the developers.
-
-**Initial swap**: When the swap starts, the swap canister holds the number of SNS tokens that were specified at initialization (see Step 1). End users can participate in the initial token swap by transferring ICP tokens to the swap canister.
-
-**SNS genesis**: When the swap ends, it is first established whether the swap was successful, e.g., enough ICP have been collected.
-If the swap was successful, the exchange rate is determined as explained above and all tokens will be given to the swap participants in neurons staked for three months. Once all neurons are created, the SNS is under decentralized control and the governance canister is set to be fully functional.
-If the swap was not successful, the decentralization attempt failed. Thus, everything will be reverted to the state before the SNS launch, including that the dapp’s control is handed back to the developers and all collected ICP are refunded to the swap participants.
 
 
 ### SNS lifecycle
 Canisters need cycles, need to be maintained.
 Maybe describe how upgrades work
+
+**Similarly to most canisters on the IC, but unlike the NNS canisters,
+SNS canisters burn cycles. => need cycles management**
