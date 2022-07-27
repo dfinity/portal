@@ -1,9 +1,39 @@
-# SNS Deployment Runbook
+# SNS Launch
+We first describe how an SNS with a decentralization sale is launched on a high level.
+Then, we explain the detailed actions in this process that are required from
+a developer who would like to adopt an SNS for their dapp.
 
 ## How to launch an SNS
-On a high level, an SNS with a decentralization sale is launched in the following stages.
-We first describe the stages on a high level and describe in the next section
-the detailed actions that a developer is required to do in each of the stages.
+To understand how an SNS with a decentralization sale is launched, let's first look at how 
+the decentralization sale works.
+As described [here](./sns.md), the decentralization sale is one way how to decentralize an SNS,
+but it will be the 
+
+#### Decentralisation sale
+For each SNS, the decentralization sale is realized in a separate _decentralization
+sale canister_ that exists during the SNS's launch and is owned by the IC who will
+run the sale. In more details, it is controlled by the NNS root canister.
+
+* The swap canister is set up at start with a defined amount of SNS tokens to be
+  distributed publicly.
+
+* During the decentralization sale, participants can send ICP to the sale canister
+  to contribute to the dapp’s funding.
+
+* At the sale’s end the collected ICP are “swapped” for the SNS tokens: the
+  participants get SNS tokens and the SNS gets the collected ICP. Each user will
+  receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
+  number of ICP contributed. For example, if the swap canister initially held 1000 SNS
+  tokens and 500 ICP tokens were collected during the swap, then the exchange rate would
+  be 2:1 and each swap participant would get 2 SNS tokens for each ICP token they
+  contributed.
+
+Apart from distributing the tokens to many participants, the decentralization sale
+achieves that a) a market price for the SNS token is set and b) every sale
+participant receives SNS tokens at that price.
+
+
+An SNS is launched in the following stages.
 
 1) **Choose initial parameters**: When developers initialize a SNS to which they want to 
    hand over the control of their dapp, they need to choose the initial parmeters of the SNS.
@@ -66,3 +96,4 @@ the detailed actions that a developer is required to do in each of the stages.
    participants.
 
 ## Detailed SNS Launch Runbook
+Now 

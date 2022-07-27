@@ -159,9 +159,7 @@ that have full flexibility of how they can evolve. Because the possibilities for
 Options 2 and 3 are unbounded, we focus here on explaining the SNS in Option 1 in
 more detail.
 
-## SNS overview
-
-### SNS canisters
+## SNS canisters
 The SNS consists of a governance canister, a ledger canister, 
 a root canister, and a decentralization sale canister that is explained in the next
 section.
@@ -179,8 +177,9 @@ Everyone can become a government participant by staking SNS tokens in a neuron.
 The root canister is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS controls.
 
-### SNS lifecycle 
+## SNS lifecycle 
 
+### SNS launch
 As already described above, SNS canisters are maintained and blessed by the IC community.
 In more detail, the blessed SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister_.
@@ -206,39 +205,22 @@ It is conceivable that alternative ways to decentralize a dapp are added in
 later SNS versions.
 
 The decentralization sale and the steps to conclude a SNS launch including this
-decentralization sale are described in more detail [here](todo).
+decentralization sale are described in more detail [here](./deployment.md).
 
-   * **TODO: upgrade, cycles.**
+### SNS maintanance
+As mentioned, this SNS option is provided as a system function and the SNS canister
+versions are maintained by the IC.
+This eliminates much of the maintenance burden from the SNS community.
+However, there are still some maintenance tasks that have to be performed by an SNS community,
+such as deciding and voting on when an SNS should be upgraded to a new blessed version, 
+adjusting the SNS parameters when needed, and making sure that the SNS cansiters do not run out
+of cycles. Regarding the last point, we emphasise that **currently, the SNS
+communities are responsible for individually topping up the cycles of all SNS canisters as
+well as all dapp cansiters that are controlled by the SNS. This includes archive canisters
+that are spawn by the ledger canister to archive all blocks.**
+In the future, this will be simplified in a new feature that allows cansiter groups, where
+cycles can be managed across different canisters.
 
-
-#### Decentralisation sale
-For each SNS, the decentralization sale is realized in a separate _decentralization
-sale canister_ that exists during the SNS's launch and is owned by the IC who will
-run the sale. In more details, it is controlled by the NNS root canister.
-
-* The swap canister is set up at start with a defined amount of SNS tokens to be 
-  distributed publicly.
-
-* During the decentralization sale, participants can send ICP to the sale canister
-  to contribute to the dapp’s funding.
-  
-* At the sale’s end the collected ICP are “swapped” for the SNS tokens: the 
-  participants get SNS tokens and the SNS gets the collected ICP. Each user will
-  receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
-  number of ICP contributed. For example, if the swap canister initially held 1000 SNS
-  tokens and 500 ICP tokens were collected during the swap, then the exchange rate would
-  be 2:1 and each swap participant would get 2 SNS tokens for each ICP token they 
-  contributed.
-  
-Apart from distributing the tokens to many participants, the decentralization sale
-achieves that a) a market price for the SNS token is set and b) every sale 
-participant receives SNS tokens at that price.
-
-
-
-### SNS lifecycle
-Canisters need cycles, need to be maintained.
-Maybe describe how upgrades work
-
-**Similarly to most canisters on the IC, but unlike the NNS canisters,
-SNS canisters burn cycles. => need cycles management**
+For more details regarding how to upgrade SNS canister, choose SNS parameters, and manage
+cycles, we respectively refer to [here](./upgradeSNS.md),
+[here](./nervous-system-parameters.md), and [here](./cycles-usage.md).
