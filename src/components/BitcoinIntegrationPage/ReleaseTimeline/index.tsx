@@ -122,14 +122,14 @@ function Index() {
             alt=""
             className=" sm:hidden absolute right-6 h-20 top-[-40px]"
           />
-          <p className="tw-heading-4 mb-12">Beta Release </p>
+          <p className="tw-heading-5 md:tw-heading-4 mb-12">Beta Release </p>
           <div className="flex flex-col gap-6">
             {betaReleaseInformation.map((info) => (
               <div>
                 <p className="mb-1 tw-heading-7-caps uppercase text-black-30">
                   {info.title}
                 </p>
-                <p className="mb-0 tw-lead">{info.body}</p>
+                <p className="mb-0 tw-lead-sm md:tw-lead">{info.body}</p>
               </div>
             ))}
           </div>
@@ -164,10 +164,12 @@ function Index() {
           </svg>
           <motion.div
             variants={transitions.item}
-            className="flex flex-col bg-black-60 rounded-xl items-center  opacity-60 backdrop-blur-md p-6 text-white tw-navigation"
+            className="flex flex-col bg-black-60 rounded-xl items-center opacity-60 backdrop-blur-md py-3 px-6 text-white tw-navigation"
           >
             {timelineTasks.map((task) => (
-              <p className="mb-3 last:mb-0 tw-title-navigation">{task}</p>
+              <p className="mb-3 last:mb-0 tw-title-navigation-on-page">
+                {task}
+              </p>
             ))}
           </motion.div>
         </div>
@@ -181,14 +183,14 @@ function Index() {
             alt=""
             className=" sm:hidden absolute right-6 h-28 top-[-56px]"
           />
-          <p className="tw-heading-4 mb-12">GA Release </p>
+          <p className="tw-heading-5 md:tw-heading-4 mb-12">GA Release </p>
           <div className="flex flex-col gap-6">
             {gaReleaseInformation.map((info) => (
               <div>
                 <p className="mb-1 tw-heading-7-caps uppercase text-white-50">
                   {info.title}
                 </p>
-                <p className="mb-0 tw-lead">{info.body}</p>
+                <p className="mb-0 tw-lead-sm md:tw-lead">{info.body}</p>
               </div>
             ))}
           </div>
