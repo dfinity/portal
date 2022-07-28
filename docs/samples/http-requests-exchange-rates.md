@@ -6,7 +6,6 @@ remote HTTP calls. Currently, the feature is limited to access secure (HTTPS) re
 nodes with IPv6 addresses. Trying to access non-secure HTTP services or services with only IPv4 addresses will 
 trigger Internet Computer errors.
 
-
 ## How to use the sample dapp
 There are two parts to the sample dapp: (1) the frontend UI cansiter `exchange_rate_assets`; (2) the
 backend provider canister `exchange_rate`. Users should be able to interact with only the frontend

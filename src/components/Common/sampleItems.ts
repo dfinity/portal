@@ -174,4 +174,22 @@ export const sampleItems = [
       docs: "docs/current/samples/host-unity-webgl",
     },
   },
+  {
+    index: 9,
+    title: "Exchange rate",
+    image: require("../../../static/img/samples/exchange_rate.png").default,
+    domains: ["HTTP", "Exchange", "Global", "Website"],
+    languages: ["Rust", "Javascript"],
+    level: ["Intermediate"],
+    contentType: ["Documentation"],
+    highlights: ["HTTP", "Exchange", "Website", "Global", "Intermediate"],
+    body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
+    links: {
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+      },
+      docs: "docs/current/samples/exchange_rate",
+    },
+  },
 ];
