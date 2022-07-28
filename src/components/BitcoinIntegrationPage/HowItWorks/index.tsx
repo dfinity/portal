@@ -11,17 +11,17 @@ function Index() {
       variants={transitions.container}
       className="max-w-page relative mx-auto mt-20 lg:mt-40 mb-20 px-6 md:mb-60 md:px-15"
     >
-      <motion.div className="bg-infinite" variants={transitions.item}>
+      <div className="bg-infinite">
         <img
           src={HowItWorks}
           alt=""
-          className="absolute pointer-events-none h-[600px] right-0 left-0 mx-auto top-[-250px] md:h-auto md:right-0 md:mr-1/12 md:w-4/12 md:top-[-150px] lg:top-[-280px] z-[1000]"
+          className="absolute pointer-events-none h-[600px] right-0 left-0 mx-auto top-[-180px]  md:top-[-250px] md:h-auto md:right-0 md:mr-1/12 md:w-4/12 md:top-[-150px] lg:top-[-280px] z-[1000]"
         />
-      </motion.div>
+      </div>
       <section className="md:ml-1/12 md:w-5/12 lg:w-4/12">
         <motion.h1
           variants={transitions.item}
-          className="tw-heading-5 mb-2 w-4/6 md:w-full pt-[380px] md:pt-0 md:tw-heading-3 md:mb-6"
+          className="tw-heading-5 mb-2 w-4/6 md:w-full pt-[450px] md:pt-0 md:tw-heading-3 md:mb-6"
         >
           How It Works
         </motion.h1>

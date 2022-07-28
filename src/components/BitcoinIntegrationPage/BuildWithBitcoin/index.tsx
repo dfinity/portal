@@ -37,7 +37,7 @@ function Index() {
     >
       <motion.p
         variants={transitions.item}
-        className="tw-heading-4 md:tw-heading-3 text-center mb-2 w-5/6 mx-auto md:tw-heading-2 md:mb-6 md:w-6/12"
+        className="tw-heading-4 md:tw-heading-60 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 md:w-8/12"
       >
         Build with Bitcoin Integration
       </motion.p>

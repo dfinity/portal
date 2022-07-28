@@ -57,7 +57,7 @@ function Index() {
     >
       <motion.p
         variants={transitions.item}
-        className="tw-heading-4 md:tw-heading-2 mb-12 text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#18D0B5] text-center"
+        className="tw-heading-4 md:tw-heading-2 mb-12 text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE] text-center"
       >
         Release Timeline
       </motion.p>

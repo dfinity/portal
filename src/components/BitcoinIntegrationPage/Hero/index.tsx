@@ -51,7 +51,7 @@ const Hero = () => {
       `}</style>
       <AnimateSpawn
         variants={transitions.container}
-        className="max-w-page relative text-white mx-auto pt-16 md:pt-60 pb-40"
+        className="max-w-page relative text-white mx-auto pt-20 md:pt-40 pb-40"
       >
         <motion.h1
           variants={transitions.item}
