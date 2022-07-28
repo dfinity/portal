@@ -29,7 +29,7 @@ const cardsContent = [
   {
     title: "Bitcoin liquidity",
     body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
-    link: "/howitworks/direct-integration-with-bitcoin/",
+    link: "/how-it-works/direct-integration-with-bitcoin/",
   },
   {
     title: "HTTPS outcalls",
@@ -117,7 +117,7 @@ function Features() {
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>
