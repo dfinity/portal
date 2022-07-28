@@ -1,10 +1,9 @@
 # Making HTTP Requests to Fetch Exchange Rates
 
 This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to 
-demonstrate usage of Internet Computer's newest feature: HTTP Requests for Canisters, where canister can make 
-remote HTTP calls. Currently, the feature is limited to access secure (HTTPS) remote services that are served by
-nodes with IPv6 addresses. Trying to access non-secure HTTP services or services with only IPv4 addresses will 
-trigger Internet Computer errors.
+demonstrate usage of Internet Computer's newest feature: HTTP Requests for Canisters, where canister can make direct
+remote HTTP calls, without a middleman infratrure which pushes data points to smart contract. Currently, the feature 
+is limited to access secure (HTTPS) remote services that are served by nodes with IPv6 addresses. Trying to access non-secure HTTP services or services with only IPv4 addresses will trigger Internet Computer errors.
 
 ## How to use the sample dapp
 There are two parts to the sample dapp: (1) the frontend UI cansiter `exchange_rate_assets`; (2) the
@@ -33,6 +32,9 @@ If the user interested time range is longer than a couple of years, the data poi
 by backend canister could potentially be out of canister response upper limit (2MB). As a result,
 we cap number of data points to be returned by backend canister to frontend, and increase the
 sample interval in order to cover the full spectrum of interested range.
+
+## Exchange Rate architecture
+![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
 ## Charging of the canister
 
