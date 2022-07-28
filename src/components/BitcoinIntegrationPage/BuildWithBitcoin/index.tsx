@@ -9,26 +9,24 @@ function Index() {
     {
       title: "BTC Integration Documentation",
       description:
-        "Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus.",
+        "Start building and testing Bitcoin functionality on the testnet.",
       href: "/",
     },
     {
       title: "Threshold ECDSA Documentation",
-      description:
-        "Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus.",
+      description: "Learn about threshold ECDSA keys and how to deploy them.",
       href: "/",
     },
     {
-      title: "Video Tutorials",
-      description:
-        "Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus.",
+      title: "Sample Code",
+      description: "Deploy your first Bitcoin dapp.",
       href: "/",
     },
     {
-      title: "Blogs",
+      title: "IC Wiki",
       description:
-        "Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus.",
-      href: "/",
+        "Get a high-level overview of how Bitcoin integration works on the Internet Computer.",
+      href: "https://wiki.internetcomputer.org/wiki/Bitcoin_integration",
     },
   ];
   return (

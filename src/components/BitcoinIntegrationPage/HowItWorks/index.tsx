@@ -55,13 +55,13 @@ function Index() {
           className="mb-3 mt-6 tw-heading-6"
         >
           <a
-            href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+            href="docs/current/developer-docs/functionality/bitcoin"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-black hover:no-underline tw-heading-6"
           >
             <RightPointer className="inline-block align-bottom w-6 h-6 mr-2"></RightPointer>
-            Learn more
+            Start building
           </a>
         </motion.p>
       </section>

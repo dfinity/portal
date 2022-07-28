@@ -1,5 +1,5 @@
 export const sampleItems = [
-  /* {
+  {
     index: 0,
     title: "Bitcoin Integration",
     image: require("../../../static/img/samples/bitcoin.png").default,
@@ -7,11 +7,11 @@ export const sampleItems = [
     languages: ["Motoko", "Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation"],
-    body: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+    body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
     links: {
       motoko: "/",
       rust: "/",
-      docs: "/",
+      docs: "docs/current/developer-docs/functionality/bitcoin/deploying-your-first-bitcoin-dapp",
     },
   },
   {
@@ -26,9 +26,9 @@ export const sampleItems = [
     links: {
       motoko: "/",
       rust: "/",
-      docs: "/",
+      docs: "docs/current/developer-docs/functionality/bitcoin/t-ecdsa#code-walkthrough",
     },
-  },*/
+  },
   {
     index: 2,
     title: "NFT Minting",
