@@ -9,7 +9,7 @@ import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import FeaturedArticle from "@site/src/components/HowItWorksPage/FeaturedArticle";
 import ArticlePreview from "@site/src/components/HowItWorksPage/ArticlePreview";
 
-function Howitworks() {
+function HowItWorks() {
   const data = useGlobalData()["howitworks-articles"].default as HowItWorksData;
   const articles = data.articles;
   return (
@@ -74,4 +74,4 @@ function Howitworks() {
   );
 }
 
-export default Howitworks;
+export default HowItWorks;

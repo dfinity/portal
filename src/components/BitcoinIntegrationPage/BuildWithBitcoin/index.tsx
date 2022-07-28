@@ -19,8 +19,9 @@ function Index() {
     },
     {
       title: "Sample Code",
-      description: "Deploy your first Bitcoin dapp.",
-      href: "/",
+      description:
+        "Deploy your first Bitcoin dapp and set up threshold ECDSA signatures.",
+      href: "/samples",
     },
     {
       title: "IC Wiki",
