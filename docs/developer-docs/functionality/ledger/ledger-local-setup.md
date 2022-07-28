@@ -33,7 +33,8 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
         "ledger": {
           "type": "custom",
           "wasm": "ledger.wasm",
-          "candid": "ledger.private.did"
+          "candid": "ledger.private.did",
+          "build": []
         }
       }
     }
