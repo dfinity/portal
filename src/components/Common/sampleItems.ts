@@ -23,7 +23,7 @@ export const sampleItems = [
     languages: ["Motoko", "Rust"],
     level: ["Intermediate"],
     contentType: ["Code Samples", "Documentation"],
-    body: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.",
+    body: "Build a threshold ECDSA test key on a subnet.",
     links: {
       motoko: "/",
       rust: "/",
