@@ -97,7 +97,7 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>
