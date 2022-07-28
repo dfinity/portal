@@ -11,7 +11,8 @@ export const sampleItems = [
     links: {
       motoko: "/",
       rust: "/",
-      docs: "docs/current/developer-docs/functionality/bitcoin/deploying-your-first-bitcoin-dapp",
+      docs: "/",
+      //docs: "docs/current/developer-docs/functionality/bitcoin/deploying-your-first-bitcoin-dapp",
     },
   },
   {
@@ -26,7 +27,8 @@ export const sampleItems = [
     links: {
       motoko: "/",
       rust: "/",
-      docs: "docs/current/developer-docs/functionality/bitcoin/t-ecdsa#code-walkthrough",
+      docs: "/",
+      //docs: "docs/current/developer-docs/functionality/bitcoin/t-ecdsa#code-walkthrough",
     },
   },
   {

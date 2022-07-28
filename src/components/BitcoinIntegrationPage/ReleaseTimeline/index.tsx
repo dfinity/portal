@@ -101,7 +101,9 @@ function Index() {
           className="flex flex-col bg-black-60 rounded-xl  opacity-60 backdrop-blur-md p-6 text-white tw-navigation"
         >
           {timelineTasks.map((task) => (
-            <p className="mb-3 last:mb-0 tw-title-navigation">{task}</p>
+            <p key={task} className="mb-3 last:mb-0 tw-title-navigation">
+              {task}
+            </p>
           ))}
         </motion.div>
         <motion.img
@@ -125,7 +127,7 @@ function Index() {
           <p className="tw-heading-5 md:tw-heading-4 mb-12">Beta Release </p>
           <div className="flex flex-col gap-6">
             {betaReleaseInformation.map((info) => (
-              <div>
+              <div key={info.title}>
                 <p className="mb-1 tw-heading-7-caps uppercase text-black-30">
                   {info.title}
                 </p>
@@ -167,7 +169,10 @@ function Index() {
             className="flex flex-col bg-black-60 rounded-xl items-center opacity-60 backdrop-blur-md py-3 px-6 text-white tw-navigation"
           >
             {timelineTasks.map((task) => (
-              <p className="mb-3 last:mb-0 tw-title-navigation-on-page">
+              <p
+                key={task}
+                className="mb-3 last:mb-0 tw-title-navigation-on-page"
+              >
                 {task}
               </p>
             ))}
@@ -186,7 +191,7 @@ function Index() {
           <p className="tw-heading-5 md:tw-heading-4 mb-12">GA Release </p>
           <div className="flex flex-col gap-6">
             {gaReleaseInformation.map((info) => (
-              <div>
+              <div key={info.title}>
                 <p className="mb-1 tw-heading-7-caps uppercase text-white-50">
                   {info.title}
                 </p>
