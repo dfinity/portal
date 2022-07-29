@@ -1,23 +1,4 @@
-
-# Bitcoin Integration
-
-The Internet Computer integrates directly with the Bitcoin network. This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network. All of this is made possible by (1) the Internet Computer integrating with Bitcoin at the protocol level and (2) canisters being able to securely hold (and use) ECDSA keys by means of a novel threshold ECDSA protocol. The Internet Computer is among the first blockchain networks performing such direct integration with other blockchains and has built a novel technology foundation for this purpose.
-
-This integration allows for a plethora of novel use cases:
-
--   *Bitcoin smart contracts:* A canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions with social dApps.
--   *Trading Bitcoin* on decentralized exchanges on the Internet Computer.
--   Using Bitcoin to buy tokens in a *decentralization sale* when an SNS-powered DAO decentralizes a service on the IC.
--   *Chain-key Bitcoin (ckBTC)*, an advanced variant of wrapped Bitcoin, that will be available on the IC with the Bitcoin mainnet release of the Bitcoin feature. ckBTC will be the easiest way to handle Bitcoin on the IC and might be the right choice for many people interested in Bitcoin on the IC. Note that ckBTC will only be available with the general availability (GA) release of Bitcoin in the upcoming months together with Bitcoin mainnet launch on IC mainnet.
-
-These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use the feature to implement your own dApps using Bitcoin.
-
-As part of the upcoming Bitcoin mainnet release (general availability release) of the Bitcoin integration feature, a Chain-Key Bitcoin (ckBTC) Canister will be made available. The ckBTC canister will provide on-chain Bitcoin on the IC, which looks and feels like wrapped Bitcoin, but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. We envision that many people will revert to using ckBTC instead of our native integration for their projects because of some distinct advantages:
-
--   Easier to integrate: Instead of using the low-level Bitcoin integration API, one can simply access the ckBTC ledger.
--   Faster and cheaper transfers: ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers could be done with lightning speed and low cost directly on the IC.
-
-## How it Works -- Technology Background
+# How Bitcoin Integration Works -- Technology Background
 
 Bitcoin-enabling the IC has required us to solve two advanced engineering challenges: (1) A protocol-level integration of the IC with the Bitcoin network and (2) a novel threshold ECDSA protocol.
 
@@ -33,7 +14,7 @@ The protocol-level Bitcoin integration and threshold ECDSA protocol each expose 
 
 We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the [Bitcoin page on the Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](./t-ecdsa.md).
 
-### Protocol-level Integration of the IC with the Bitcoin Network
+## Protocol-level Integration of the IC with the Bitcoin Network
 
 We integrated the Internet Computer Protocol with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. At the beginning, there will only be one dedicated Bitcoin-activated subnet. The integration serves two key purposes:
 
@@ -58,7 +39,7 @@ Significant complexity of the implementation is in the area of securely resolvin
 
 Canisters can submit Bitcoin transactions to the Bitcoin canister using the corresponding management canister API. Doing so queues the transactions for being submitted to the Bitcoin network. In every subnet round, Adapters obtain the pending transactions from the Bitcoin canister and queue them for being submitted asynchronously to the Bitcoin network. This leads to an efficient and quick distribution of transactions in the Bitcoin network as every replica of the subnet submits transactions via multiple connected nodes of the Bitcoin network.
 
-### Novel Threshold ECDSA Protocol
+## Novel Threshold ECDSA Protocol
 
 Threshold ECDSA refers to the implementation of the ECDSA signature protocol using threshold cryptography. In a threshold ECDSA protocol, the private ECDSA key is secret shared between multiple parties and only an eligible quorum of the parties can generate a signature using their respective private key shares. The private key never exists in reconstructed form, but only in its secret-shared form. Key generation generates private key shares for the parties.
 
@@ -113,8 +94,8 @@ The final stage of development of a Bitcoin smart contract is its deployment on 
 
 ## Working with the Feature
 
-**Note:** possibly inline the following sections or make some visually appealing links (e.g., tiles); t.b.d.
+To start building your own apps with Bitcoin see the following tutorials:
 
-[Deploying Your First Bitcoin Dapp](./deploying-your-first-bitcoin-dapp.md)
+[Deploying Your First Bitcoin Dapp](../../../samples/deploying-your-first-bitcoin-dapp.md)
 
 [Local Development](./local-development.md)
