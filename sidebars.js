@@ -210,9 +210,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'Bitcoin Integration',
+          link: { 
+            type: "doc",
+            id: "developer-docs/functionality/bitcoin/index"
+          },
           items: [
             'developer-docs/functionality/bitcoin/bitcoin',
-            'developer-docs/functionality/bitcoin/quickstart',
             'developer-docs/functionality/bitcoin/local-development',
           ]
         },

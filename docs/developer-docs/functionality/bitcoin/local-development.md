@@ -1,6 +1,6 @@
 # Developing Bitcoin Dapps Locally
 
-In the [Deploy Your First Bitcoin Dapp](./deploying-your-first-bitcoin-dapp.md) tutorial,
+In the [Deploy Your First Bitcoin Dapp](../../../samples/deploying-your-first-bitcoin-dapp.md) tutorial,
 we explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
 Bitcoin. In this tutorial, we'll explore how we can develop and test a Bitcoin dapp
 locally. Testing locally allows you to iterate and improve your dapp more quickly.
