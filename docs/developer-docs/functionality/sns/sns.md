@@ -10,7 +10,8 @@ This means, each dapp that would like to be under decentalized control will have
 separate SNS.
 
 ## What is a DAO?
-DAO stands for _decentralized autonomoous organization_.
+DAO stands for _decentralized autonomous organization_.
+
 Let's first clarify what we mean by _decentralized_ in this
 context.
 First, an application can run on a _decentralized platform_. This means that
@@ -31,7 +32,6 @@ _decentralized control_. This means that no single party can decide how the
 dapp is evolved. Instead, the dapp can only be changed according to decisions
 that many parties jointly make. 
 This decentralized control of a dapp is what a DAO achieves.
-
 
 ## Motivation: why a DAO? 
 We next discuss the main motivations for DAOs from the point of view of two
