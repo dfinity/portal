@@ -6,12 +6,13 @@ Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that
 the Internet Computer blockchain (IC), service nervous systems 
 (SNSs) are algorithmic DAOs that allow developers to create decentralized, 
 token-based governance systems for their dapps.
-Thsi means, each dapp that would like to be under decentalized control will have a 
+This means, each dapp that would like to be under decentalized control will have a 
 separate SNS.
 
-### Decentralization notions
-Before further motivating SNSs, let's first clarify what we mean by
-_decentralized_ in this context.
+## What is a DAO?
+DAO stands for _decentralized autonomoous organization_.
+Let's first clarify what we mean by _decentralized_ in this
+context.
 First, an application can run on a _decentralized platform_. This means that
 the platform itself is controlled by many different parties and, in particular,
 that even if some of these parties fail or turn malicious, the application
@@ -19,15 +20,17 @@ will still keep running successfully. The IC is such a platform as it is
 run by many nodes that are owned by independent node providers. Therefore,
 we call applications that run on the IC
 _decentralized applications_ or _dapps_.
-A second kind of decentralized denotes who is in control of changing a dapp.
-That is, dapps running on the IC can still be controlled by a single, central
-entity. 
+
+A second kind of decentralized denotes who is in control of changing a dapp,
+or a smart contrat more generally.
+That is, in general dapps running on the IC or smart contracts on other
+decentralized platforms can still be controlled by a single, central entity
+and thus still be under centralized control. 
 As we will motivate below, it is often beneficial if a dapp is also under
 _decentralized control_. This means that no single party can decide how the 
 dapp is evolved. Instead, the dapp can only be changed according to decisions
-that many parties jointly make in a DAO.
-The latter kind of decentralization is what the SNS helps with: it allows 
-to decentralize the control of a dapp.
+that many parties jointly make. 
+This decentralized control of a dapp is what a DAO achieves.
 
 
 ## Motivation: why a DAO? 
@@ -195,7 +198,7 @@ proper decentralization of voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
 a developer can hand over the control of the dapp to a newly deployed SNS, that has
 at that stage limited capabilities as it may not be fully decentralized yet, and
-asks the Internet Compute to start a decentralization sale for this SNS.
+ask the Internet Computer to start a decentralization sale for this SNS.
 In this the decentralization sale, initial tokens are sold for ICP tokens.
 In the end of a successful decentralization sale, SNS tokens are owned by a large
 community and therefore the SNS governance control is decentralized.
