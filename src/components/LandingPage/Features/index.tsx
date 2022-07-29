@@ -7,6 +7,36 @@ import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
+    title: "Web serving",
+    body: "Smart contracts process HTTP and serve web directly to users",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
+  },
+  {
+    title: "Web speed",
+    body: "Update TX finalized in 2 secs, query TXs in milliseconds",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
+  },
+  {
+    title: "Reverse gas",
+    body: "smart contracts pay for computation, not their users",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
+  },
+  {
+    title: "Less CO₂",
+    body: "A blockchain platform that can be more efficient than traditional IT",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
+  },
+  {
+    title: "Scalable dapps",
+    body: "Build mass market social media using smart contracts (and nothing else)",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
+  },
+  {
+    title: "Internet Identity",
+    body: "Anonymizing crypto authentication using WebAuthn (e.g. fingerprint sensor)",
+    link: "https://wiki.internetcomputer.org/wiki/What_is_Internet_Identity",
+  },
+  {
     title: "Liquid democracy",
     body: "Permissionless NNS DAO directly upgrades nodes, and governs network",
     link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
@@ -23,8 +53,8 @@ const cardsContent = [
   },
   {
     title: "Web3 orchestration",
-    body: "Magic crypto: smart contracts can sign TX you can directly run on other chains",
-    link: "https://wiki.internetcomputer.org/wiki/Web3:_The_bull_case_for_the_Internet_Computer",
+    body: "Chain key: smart contracts can sign TX you can directly run on other chains",
+    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
   },
   {
     title: "Bitcoin liquidity",
@@ -34,7 +64,7 @@ const cardsContent = [
   {
     title: "HTTPS outcalls",
     body: "Nodes call URL for contract, contract pre-processes, consensus agrees result",
-    link: "https://forum.dfinity.org/t/enable-canisters-to-make-http-s-requests/9670",
+    link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
   },
 ];
 
