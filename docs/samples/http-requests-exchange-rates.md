@@ -3,7 +3,7 @@
 ## Exchange Rate sample dapp overview
 
 The [Canister HTTP](https://internetcomputer.org/docs/current/developer-docs/build/using-an-agent#canister-http-interface) feature provides a way for canisters to directly interact with
-applications and data exist outside of Internet Computer. This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage the new Canister HTTP feature.
+applications and data exist outside of Internet Computer. This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage of the new Canister HTTP feature.
 
 ## How to use the sample dapp
 There are two parts to the sample dapp:
