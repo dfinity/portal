@@ -1,14 +1,17 @@
-# Making HTTP Requests to Fetch Exchange Rates
+# Making HTTP Request to Fetch Exchange Rates
 
-This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to 
-demonstrate usage of Internet Computer's newest feature: HTTP Requests for Canisters, where canister can make direct
-remote HTTP calls, without a middleman infratrure which pushes data points to smart contract. Currently, the feature 
-is limited to access secure (HTTPS) remote services that are served by nodes with IPv6 addresses. Trying to access non-secure HTTP services or services with only IPv4 addresses will trigger Internet Computer errors.
+## Exchange Rate sample dapp overview
+
+The [Canister HTTP](https://internetcomputer.org/docs/current/developer-docs/build/using-an-agent#canister-http-interface) feature provides a way for canisters to directly interact with
+applications and data exist outside of Internet Computer. This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage the new Canister HTTP feature.
 
 ## How to use the sample dapp
-There are two parts to the sample dapp: (1) the frontend UI cansiter `exchange_rate_assets`; (2) the
-backend provider canister `exchange_rate`. Users should be able to interact with only the frontend
-UI canister, by selecting the start time and the end time with the datetime pickers.
+There are two parts to the sample dapp:
+1. the frontend UI cansiter `exchange_rate_assets`
+2. the backend provider canister `exchange_rate`
+
+Users should be able to interact with only the frontend UI canister, by selecting the start time 
+and the end time with the datetime pickers.
 
 The returned rates may not exactly match the users time selection. (There could be gaps in between
 data points, or there could be smaller range being returned, or if lucky enough, the returned
@@ -37,7 +40,6 @@ sample interval in order to cover the full spectrum of interested range.
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
 ## Charging of the canister
-
 This canister is designed to be as cost effective as possible. There are 2 major factors affect
 cycles usage when it comes to Canister HTTP Request feature:
 - The number of requests being made
