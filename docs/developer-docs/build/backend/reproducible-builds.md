@@ -107,12 +107,26 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 An example script to build a Rust project looks as follows:
 
+    #!/bin/bash
+    #
     # additional setup, e.g., build frontend assets:
     # ...
     # Rust build:
     export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
     cargo build --locked --target wasm32-unknown-unknown --release
-    ic-cdk-optimizer target/wasm32-unknown-unknown/release/example.wasm -o example.wasm
+    ic-cdk-optimizer target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm
+
+Such a build script can also be set as a custom build script in `dfx.json` as follows:
+
+    "canisters": {
+      "example_backend": {
+        "candid": "src/example_backend/example_backend.did",
+        "package": "example_backend",
+        "type": "custom",
+        "wasm": "./example_backend.wasm",
+        "build": "./build_script.sh"
+      }
+    }
 
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -152,7 +166,7 @@ If reproducibility is vital for your code, you should test your builds to increa
 
     RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt
 
-When using `dfx build --network ic`, you need to prebuild your frontend dependencies (e.g., by running `npm ci` before `dfx build --network ic`) and your project directory should contain a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer. An example `canister_ids.json` file looks as follows:
+When using `dfx build --network ic`, you need to prebuild your frontend dependencies (e.g., by running `npm ci` before `dfx build --network ic` or by setting the custom build type in `dfx.json` and running `npm ci` in your build script) and your project directory should contain a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer. An example `canister_ids.json` file looks as follows:
 
     {
       "example_backend": {
