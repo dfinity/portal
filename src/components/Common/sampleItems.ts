@@ -16,7 +16,7 @@ export const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "docs/current/samples/hello",
+      docs: "/docs/current/samples/hello",
     },
   },
   {
@@ -30,7 +30,7 @@ export const sampleItems = [
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
       action: { text: "Docs", to: "/samples/host-a-website" },
-      docs: "docs/current/samples/host-a-website",
+      docs: "/docs/current/samples/host-a-website",
       youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
     },
   },
@@ -51,7 +51,7 @@ export const sampleItems = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
       rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
       livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
-      docs: "docs/current/samples/dex",
+      docs: "/docs/current/samples/dex",
       youtube: "https://youtu.be/fLbaOmH24Gs",
     },
   },
@@ -70,7 +70,7 @@ export const sampleItems = [
         to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       },
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      docs: "docs/current/samples/nft",
+      docs: "/docs/current/samples/nft",
       youtube: "https://youtu.be/1po3udDADp4",
     },
   },
@@ -91,7 +91,7 @@ export const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
       rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
-      docs: "docs/current/samples/dao",
+      docs: "/docs/current/samples/dao",
       youtube: "https://youtu.be/3IcYlieA-EE",
     },
   },
@@ -114,7 +114,7 @@ export const sampleItems = [
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
       rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
       livePreview: "https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/",
-      docs: "docs/current/samples/encrypted-notes",
+      docs: "/docs/current/samples/encrypted-notes",
       youtube: "https://youtu.be/DZQmtPSxvbs",
     },
   },
@@ -135,7 +135,7 @@ export const sampleItems = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
-      docs: "docs/current/samples/token-transfer",
+      docs: "/docs/current/samples/token-transfer",
     },
   },
   {
@@ -171,7 +171,7 @@ export const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
       },
-      docs: "docs/current/samples/host-unity-webgl",
+      docs: "/docs/current/samples/host-unity-webgl",
     },
   },
   {
