@@ -5,10 +5,29 @@
 The [Canister HTTP](https://internetcomputer.org/docs/current/developer-docs/build/using-an-agent#canister-http-interface) feature provides a way for canisters to directly interact with
 applications and data exist outside of Internet Computer. This [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage of the new Canister HTTP feature.
 
-## How to use the sample dapp
+It pulls ICP <-> USDC exchange rate from a single resource currently - the [Coinbase Pro API](https://api.pro.coinbase.com/products/ICP-USD/candles). The number of data sources can be easily extended as the needed for 
+decentralization purpose. But for the sample purpose, we are only using one data source.
+
+## What does the sample dapp do
 There are two parts to the sample dapp:
-1. the frontend UI cansiter `exchange_rate_assets`
-2. the backend provider canister `exchange_rate`
+1. the frontend UI cansiter `exchange_rate_assets`, which includes a time range picker and a rate chart
+2. the backend provider canister `exchange_rate`, which does the real HTTP request calls, queues jobs, as well
+as process data slightly.
+
+Upon receiving a request from UI, the request is then passed from the frontend to the backend for queueing. 
+There is asynchronous process triggered at every few Internet Computer heartbeats, to make a Coinbase API HTTP
+request call. To save the overall number of remote HTTP calls needed, each HTTP request pulls exactly 200 data 
+points from Coinbase, which sits in the Coinbase maximum number of data points range, intervaled at 1 minute each.
+As a result, each HTTP request to Coinbase covers 200 minutes of data. The fetched data points are then put into
+a timestamp to rate hashmap, ready for future user requests to directly read from.
+
+If the user interested time range is longer than a couple of years, the data points to be returned
+by backend `exchange_rate` canister could potentially be out of canister response upper limit (2MB).
+As a result, we cap number number of data points to be returned by the backend `exchange_rate` canister to
+the frontend `exchange_rate_assets` canister, and increase the sample interval to cover the full spectrum of 
+interested range.
+
+## How to use the sample dapp
 
 Users should be able to interact with only the frontend UI canister, by selecting the start time 
 and the end time with the datetime pickers.
@@ -23,25 +42,12 @@ available from previous pulls will be returned, while the ones that are not yet 
 pulled in parallel. If the user spots gaps between requested rates and returned rates, the user
 simply wait for some time and retry the request, and likely the full rates will be available then.
 
-## Canister behaviors
-This canister uses the example of pulling ICP<->USDC exchange rates from
-[Coinbase Candles API](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles).
-User requested rates will be put into a request pipe. And the remote HTTP request will be
-attempted every 5 IC heartbeats. HTTP request pulls 200 data points, with each data point cover
-1 minute window of sample rate of Coinbase. As a result, each HTTP request to Coinbase covers
-200 minutes of data. 
-
-If the user interested time range is longer than a couple of years, the data points to be returned
-by backend canister could potentially be out of canister response upper limit (2MB). As a result,
-we cap number of data points to be returned by backend canister to frontend, and increase the
-sample interval in order to cover the full spectrum of interested range.
-
 ## Exchange Rate architecture
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
-## Charging of the canister
-This canister is designed to be as cost effective as possible. There are 2 major factors affect
-cycles usage when it comes to Canister HTTP Request feature:
+## Cost analysis of the `exchange_rate` canister
+This `exchange_rate` canister is designed to be as cost effective as possible. There are 2 major factors
+affect cycles usage when it comes to Canister HTTP Request feature:
 - The number of requests being made
 - The size of each request and response
 

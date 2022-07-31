@@ -176,7 +176,7 @@ export const sampleItems = [
   },
   {
     index: 9,
-    title: "Exchange rate",
+    title: "Exchange Rate",
     image: require("../../../static/img/samples/webgl.png").default,
     domains: ["HTTP", "Exchange", "Global", "Website"],
     languages: ["Rust", "Javascript"],
