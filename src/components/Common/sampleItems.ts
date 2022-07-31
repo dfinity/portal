@@ -190,6 +190,8 @@ export const sampleItems = [
         to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
       },
       docs: "docs/current/samples/http-requests-exchange-rates",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+      livePreview: "https://mfwph-oqaaa-aaaam-qafsq-cai.ic0.app/",
     },
   },
 ];
