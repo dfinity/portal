@@ -189,7 +189,7 @@ export const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
       },
-      docs: "docs/current/samples/exchange_rate",
+      docs: "docs/current/samples/http-requests-exchange-rates",
     },
   },
 ];
