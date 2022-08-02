@@ -10,7 +10,7 @@ necessary to run this tutorial is basic knowledge of using a terminal. No code e
 
 ## Introduction
 
-In this tutorial, we will deploy a simple `Hello` canister smart
+In this tutorial, we will deploy a simple `hello` canister smart
 contract that has just one function called `greet`. The `greet` function
 accepts one text argument and returns the result with a greeting. For
 example, if you call the `greet` method with the text argument `Alice`.
@@ -142,12 +142,12 @@ Register, build, and deploy the `hello` canister to the local execution environm
 
 Now that the canister is deployed to the local execution environment, you can interact with the canister by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. In terminal B, run
 
-    $ dfx canister call hello greet everyone
+    $ dfx canister call hello_backend greet everyone
 
 -   The `dfx canister call` command requires you to specify a canister
     name and a function to call.
 
--   `hello` specifies the name of the canister you call.
+-   `hello_backend` specifies the name of the canister you call.
 
 -   `greet` specifies the function name.
 
@@ -219,7 +219,7 @@ Few notes about cycles:
 
 -   Cycles pay for computation and storage
 
--   Cycles faucet will grant developers 15 trillion cycles
+-   Cycles faucet will grant developers 20 trillion cycles
 
 -   It takes 4 trillion cycles to deploy a canister.
 
@@ -260,15 +260,15 @@ If succesful, your terminal should look like this:
 
     Deploying all canisters.
     Creating canisters...
-    Creating canister "hello"...
-    "hello" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
-    Creating canister "hello_assets"...
-    "hello_assets" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
+    Creating canister "hello_backend"...
+    "hello_backend" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
+    Creating canister "hello_frontend"...
+    "hello_frontend" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
     Building canisters...
     Building frontend...
     Installing canisters...
-    Installing code for canister hello, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-    Installing code for canister hello_assets, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
+    Installing code for canister hello_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
+    Installing code for canister hello_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
     Authorizing our identity (default) to the asset canister...
     Uploading assets to asset canister...
       /index.html 1/1 (472 bytes)
@@ -296,12 +296,12 @@ Now that the canister is deployed on-chain, you can send it a message.
 Since the canister has a method called `greet` (which accepts a string
 as a parameter), we will send it a message.
 
-    $ dfx canister --network ic call hello greet '("everyone": text)'
+    $ dfx canister --network ic call hello_backend greet '("everyone": text)'
 
 Note the way the message is constructed: \*
 `dfx canister --network ic call` is setup for calling a canister on the
-IC \* `hello greet` means we are sending a message to a canister named
-`hello` and evoking its `greet` method \* `'("everyone": text)'` is the
+IC \* `hello_backend greet` means we are sending a message to a canister named
+`hello_backend` and evoking its `greet` method \* `'("everyone": text)'` is the
 parameter we are sending to `greet` (which accepts `Text` as its only
 input).
 
