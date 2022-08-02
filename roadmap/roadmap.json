@@ -1,0 +1,186 @@
+[
+  {
+    "name": "Core Protocol",
+    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "image": {
+      "card": "/img/roadmap/core-protocol.card.jpg",
+      "overlay": "/img/roadmap/core-protocol.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": "https://forum.dfinity.org",
+          "proposal": "https://forum.dfinity.org",
+          "is_community": true,
+          "eta": "Expected Q1 2023"
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ],
+      "inProgress": [
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ],
+      "deployed": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Boundary Nodes",
+    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper.",
+    "image": {
+      "card": "/img/roadmap/boundary-nodes.card.jpg",
+      "overlay": "/img/roadmap/boundary-nodes.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "System util/dapps",
+    "image": {
+      "card": "/img/roadmap/system-utility.card.jpg",
+      "overlay": "/img/roadmap/system-utility.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Governance/NNS",
+    "image": {
+      "card": "/img/roadmap/governance.card.jpg",
+      "overlay": "/img/roadmap/governance.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Developer Experience",
+    "image": {
+      "card": "/img/roadmap/dx.card.jpg",
+      "overlay": "/img/roadmap/dx.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "Infrastructure & Operations",
+    "image": {
+      "card": "/img/roadmap/infrastructure.card.jpg",
+      "overlay": "/img/roadmap/infrastructure.overlay.jpg"
+    },
+    "groups": {
+      "pending": [
+        {
+          "name": "ECDSA",
+          "description": "In cryptography, the Elliptic Curve Digital Signature Algorithm (ECDSA) offers a variant of the Digital Signature Algorithm (DSA) which uses elliptic curve.",
+          "forum": null,
+          "proposal": null,
+          "is_community": false,
+          "eta": null
+        },
+        {
+          "name": "BTC",
+          "description": null,
+          "forum": null,
+          "proposal": null,
+          "is_community": null,
+          "eta": null
+        }
+      ]
+    }
+  }
+]
