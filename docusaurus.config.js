@@ -37,7 +37,7 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    'docusaurus-plugin-sass',
+    "docusaurus-plugin-sass",
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
@@ -194,7 +194,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://forum.dfinity.org/c/roadmap/29",
+                href: "/roadmap",
               },
               {
                 label: "Staking & Governance",
