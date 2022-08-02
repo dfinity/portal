@@ -34,6 +34,7 @@ When upgrading existing canisters, there are a few more things that one should k
 
 ### Example deployment
 
+Let's have a look at what happens during deployment with `dfx`. 
 - dfx canister create
 - dfx build
 - dfx canister install
