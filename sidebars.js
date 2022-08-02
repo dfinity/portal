@@ -455,7 +455,7 @@ const sidebars = {
   ],
   samples: [
     // 'samples/overview',
-    "deploying-your-first-bitcoin-dapp",
+    "samples/deploying-your-first-bitcoin-dapp",
     //"samples/t-ecdsa-sample",
     "samples/hello",
     "samples/host-a-website",
