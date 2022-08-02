@@ -43,6 +43,7 @@ const sidebars = {
             "developer-docs/build/project-setup/cycles-wallet",
           ],
         },
+        "developer-docs/build/using-an-agent",
         {
           type: "category",
           label: "Languages",

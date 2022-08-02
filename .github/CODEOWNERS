@@ -2,5 +2,6 @@
 * @dfinity/editorial
 
 docs/developer-docs/updates/release-notes/ @dfinity/dx
+docs/developer-docs/build/using-an-agent @dfinity/dx
 
 # Each piece of documentation must be owned by the respective teams
