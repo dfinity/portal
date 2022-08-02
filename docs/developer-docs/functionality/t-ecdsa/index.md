@@ -13,5 +13,7 @@ The availability of threshold ECDSA allows for a multitude of important use case
 -   FIX: More use cases
 
 ## Learn more
+If you want to learn more about threshold-ECDSA check the [how it works](./t-ecdsa-how-it-works.md) page to see more. If you want to take an even deeper dive see the Groth and Shoup's [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
 
 ## Build more
+Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. You can find the corresponding code-walkthrough in the [samples documentation](../../../samples/t-ecdsa-sample.md)
