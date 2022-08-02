@@ -50,7 +50,7 @@ showcases how your canister can generate a P2PKH address using the [ecdsa_public
 On the Candid UI of your canister, click the "Call" button under `get_p2pkh_address` to
 generate a P2PKH Bitcoin address:
 
-![Generating a P2PKH Bitcoin Address](../_attachments/generate-ecdsa-key.png)
+![Generating a P2PKH Bitcoin Address](_attachments/generate-ecdsa-key.png)
 
 Or, if you prefer the command line:
 
