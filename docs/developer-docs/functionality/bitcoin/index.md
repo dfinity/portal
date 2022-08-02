@@ -17,7 +17,7 @@ As part of the upcoming Bitcoin mainnet release (general availability release) o
 -   Faster and cheaper transfers: ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers could be done with lightning speed and low cost directly on the IC.
 
 ## Learn more
-If you want to take a deep dive into how Bitcoin integration works, see [How it Works](bitcoin.md) page to get an overview of our novel threshold ECDSA implementation, the API, and more. 
+If you want to take a deep dive into how Bitcoin integration works, see [How it Works](bitcoin-how-it-works.md) page to get an overview of our novel threshold ECDSA implementation, the API, and more. 
 
 ## Build more
 If you're interested to experiment with Bitcoin integration locally, see the [local development guide](local-development.md). 
