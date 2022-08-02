@@ -216,7 +216,7 @@ const sidebars = {
             id: "developer-docs/functionality/bitcoin/index"
           },
           items: [
-            'developer-docs/functionality/bitcoin/bitcoin',
+            'developer-docs/functionality/bitcoin/bitcoin-how-it-works',
             'developer-docs/functionality/bitcoin/local-development',
           ]
         },
@@ -228,7 +228,7 @@ const sidebars = {
             id: "developer-docs/functionality/t-ecdsa/index"
           },
           items: [
-            'developer-docs/functionality/t-ecdsa/t-ecdsa'
+            'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
           ]
         },
         // {
