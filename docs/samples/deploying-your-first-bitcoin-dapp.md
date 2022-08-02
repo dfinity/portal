@@ -74,7 +74,7 @@ to receive some bitcoin.
 Enter your address and click on "Send testnet bitcoins". In the example below, the
 canister will be receiving 0.0001 test BTC.
 
-![Bitcoin Testnet Faucet](../_attachments/bitcoin-testnet-faucet.png)
+![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet.png)
 
 Once the transaction has at least one confirmation, which can take a few minutes,
 you'll be able to see it in your canister's balance.
@@ -85,7 +85,7 @@ You can check a Bitcoin address's balance by using the `get_balance` endpoint on
 
 In the Candid UI, paste in your canister's address, and click on "Call":
 
-![Checking Bitcoin Balance](../_attachments/bitcoin-received-funds.png)
+![Checking Bitcoin Balance](_attachments/bitcoin-received-funds.png)
 
 Alternatively, make the call using the command line:
 
@@ -100,7 +100,7 @@ You can send Bitcoin using the `send` endpoint on your canister.
 In the Candid UI, add a destination address and an amount to send. In the example
 below, we're sending 4,321 Satoshi (0.00004321 BTC) back to the testnet faucet.
 
-![Sending Bitcoin](../_attachments/bitcoin-send-transaction.png)
+![Sending Bitcoin](_attachments/bitcoin-send-transaction.png)
 
 Via command line, the same call would look like this:
 
