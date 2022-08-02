@@ -14,7 +14,7 @@ export const sampleItems = [
         to: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
       },
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
       docs: "/docs/current/samples/deploying-your-first-bitcoin-dapp",
     },
   },
