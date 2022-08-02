@@ -7,7 +7,3 @@
 [submodule "submodules/quill"]
 	path = submodules/quill
 	url = https://github.com/dfinity/quill.git
-[submodule "submodules/internetidentity"]
-	path = submodules/internetidentity
-	url = https://github.com/dfinity/internet-identity.git
-	branch = nm-markdown-spec
