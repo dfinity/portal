@@ -223,6 +223,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Threshold ECDSA',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/t-ecdsa/index"
+          },
           items: [
             'developer-docs/functionality/t-ecdsa/t-ecdsa'
           ]
@@ -456,7 +460,7 @@ const sidebars = {
   samples: [
     // 'samples/overview',
     "samples/deploying-your-first-bitcoin-dapp",
-    //"samples/t-ecdsa-sample",
+    "samples/t-ecdsa-sample",
     "samples/hello",
     "samples/host-a-website",
     // 'samples/http-requests-exchange-rates',
