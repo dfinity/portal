@@ -1,42 +1,6 @@
 export const sampleItems = [
   {
     index: 0,
-    title: "Bitcoin",
-    image: require("../../../static/img/samples/bitcoin.png").default,
-    domains: ["Website"],
-    languages: ["Motoko", "Rust"],
-    level: ["Beginner"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
-    body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
-    links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
-      },
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
-      docs: "/docs/current/samples/deploying-your-first-bitcoin-dapp",
-    },
-    {
-    index: 1,
-    title: "Threshold ECDSA",
-    image: require("../../../static/img/samples/t-ecdsa.png").default,
-    domains: ["Website"],
-    languages: ["Motoko", "Rust"],
-    level: ["Beginner"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
-    body: "Build a threshold ECDSA test key on a subnet. ",
-    links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
-      },
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
-      docs: "/docs/current/samples/t-ecdsa",
-    },
-  {
-    index: 2,
     title: "Hello World",
     image: require("../../../static/img/samples/helloWorld.png").default,
     domains: ["Website"],
@@ -56,7 +20,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 3,
+    index: 1,
     title: "Static Website",
     image: require("../../../static/img/samples/staticWebsite.png").default,
     domains: ["Website", "Global"],
@@ -71,7 +35,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 4,
+    index: 2,
     title: "Basic Dex",
     image: require("../../../static/img/samples/basicDex.png").default,
     domains: ["DeFi", "Website"],
@@ -92,7 +56,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 5,
+    index: 3,
     title: "NFT Minting",
     image: require("../../../static/img/samples/nftMinting.png").default,
     domains: ["NFT", "Gaming"],
@@ -111,7 +75,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 6,
+    index: 4,
     title: "Basic DAO",
     image: require("../../../static/img/samples/basicDAO.png").default,
     domains: ["Global", "DeFi"],
@@ -132,7 +96,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 7,
+    index: 5,
     title: "Encrypted note-taking",
     image: require("../../../static/img/samples/encryptedNoteTaking.png")
       .default,
@@ -155,7 +119,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 8,
+    index: 6,
     title: "Token transfer",
     image: require("../../../static/img/samples/tokenTransfer.png").default,
     domains: ["Global", "DeFi"],
@@ -175,7 +139,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 9,
+    index: 7,
     title: "Actor reference",
     image: require("../../../static/img/samples/actorReference.png").default,
     domains: ["Website"],
@@ -193,7 +157,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 10,
+    index: 8,
     title: "WebGL",
     image: require("../../../static/img/samples/webgl.png").default,
     domains: ["Gaming", "Website", "Global"],
