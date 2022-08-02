@@ -4,7 +4,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 # Using an Agent
 
-If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract. You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's http interface.
+If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract. You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's HTTP interface.
 
 ## Calling a Canister
 
@@ -23,15 +23,15 @@ A `call` to the Internet Computer can take two common forms - an `update` or a `
 * `request_id` - required for `update` request type calls
 * `arg` - the rest of the payload
 
-By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a cbor-encoded buffer.
+By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a CBOR-encoded buffer.
 
 For update requests, the agent also hashes the rest of the fields, and passes it in as a unique `request_id`. That `request_id` is used for polling while the IC reaches consensus on the update.
 
-The `agent` takes the cbor-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the `agent` can begin polling with `read_state` requests, until the canister response is ready.
+The `agent` takes the CBOR-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the `agent` can begin polling with `read_state` requests, until the canister response is ready.
 
 ### 2. Decoding Data
 
-Once the data has been returned from the IC, the `agent` takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a `cbor`-encoded buffer, which the `agent` can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
+Once the data has been returned from the IC, the `agent` takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a CBOR-encoded buffer, which the `agent` can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
 
 ### 3. Managing Authentication
 
@@ -47,7 +47,7 @@ The IC accepts calls using the following types of signatures in identities:
   * using SHA-256 as a hash function
   * using the Koblitz curve in secp256k1.
 
-When encoding these identities as a Principal, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous. 
+When encoding these identities as a `principal`, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous. 
 
 A self-authenticating identity using one of the above curves will have a suffix of 2.
 
@@ -56,8 +56,8 @@ While the anonymous identity is a single byte 4. It resolves to `"2vxsx-fae"`, i
 
 ## Canister HTTP Interface
 
-In addition to the Candid interface, if a canister has a `http_request` method, the boundary nodes will forward HTTP and HTTPS calls to the `http_request` method. Using this, approach, the canister can deliver assets or custom data via the http interface.
+In addition to the Candid interface, if a canister has a `http_request` method, the boundary nodes will forward HTTP and HTTPS calls to the `http_request` method. Using this, approach, the canister can deliver assets or custom data via the HTTP interface.
 
-If you are delivering certified responses, the http endpoint can be accessed by a serviceworker at `https://<canister-id>.ic0.app`. If you are not delivering certified responses, you can use the `raw` subdomain at `https://<canister-id>.raw.ic0.app`. 
+If you are delivering certified responses, the HTTP endpoint can be accessed by a serviceworker at `https://<canister-id>.ic0.app`. If you are not delivering certified responses, you can use the `raw` subdomain at `https://<canister-id>.raw.ic0.app`. 
 
 > Note: the raw subdomain uses queries to a single replica. Accessing critical data over `raw.ic0.app` should not be considered safe
