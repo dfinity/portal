@@ -292,9 +292,9 @@ const sidebars = {
       ],
     },
     {
-      type: "doc",
+      type: "link",
       label: "dfx.json schema",
-      id: "references/dfx-json-schema.json"
+      href: "internetcomputer.org/docs/current/references/dfx-json-schema.json"
     },
     {
       type: "category",
