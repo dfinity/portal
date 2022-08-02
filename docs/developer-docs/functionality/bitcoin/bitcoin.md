@@ -47,7 +47,7 @@ The threshold ECDSA protocol implemented as part of the Internet Computer's chai
 
 Threshold ECDSA on the Internet Computer will be rolled out to one signing subnet initially that will answer signing requests of canisters. The subnet enforces that only the canister that controls a key may request signatures with this key. All API calls go through Xnet traffic and thus incur some extra latency.
 
-Canisters can query their own or other canisters' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private key. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API. You can find more details on threshold ECDSA [here](./t-ecdsa.md).
+Canisters can query their own or other canisters' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private key. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API. You can find more details on threshold ECDSA [here](../t-ecdsa/t-ecdsa.md).
 
 ## Deployment Architecture
 
