@@ -12,7 +12,7 @@ Canisters themselves can have ECDSA keys using a novel threshold ECDSA protocol,
 
 The protocol-level Bitcoin integration and threshold ECDSA protocol each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on the IC.
 
-We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the [Bitcoin page on the Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](../t-ecdsa/t-ecdsa.md).
+We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the [Bitcoin page on the Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](../t-ecdsa/t-ecdsa-how-it-works.md).
 
 ## Protocol-level Integration of the IC with the Bitcoin Network
 
