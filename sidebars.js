@@ -220,13 +220,13 @@ const sidebars = {
             'developer-docs/functionality/bitcoin/local-development',
           ]
         },
-        // {
-        //   type: 'category',
-        //   label: 'Threshold ECDSA',
-        //   items: [
-        //     'developer-docs/functionality/bitcoin/t-ecdsa'
-        //   ]
-        // },
+        {
+          type: 'category',
+          label: 'Threshold ECDSA',
+          items: [
+            'developer-docs/functionality/t-ecdsa/t-ecdsa'
+          ]
+        },
         // {
         //   type: 'category',
         //   label: 'Using the SNS',
