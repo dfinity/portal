@@ -21,7 +21,7 @@ We integrated the Internet Computer Protocol with the Bitcoin protocol to obtain
 -   Obtaining the Bitcoin UTXO set and keeping it on chain in the replicated state of the Internet Computer to be able to answer queries for UTXO sets and balances of Bitcoin accounts issued by canisters.
 -   Accepting signed Bitcoin transactions of canisters and submitting them to the Bitcoin network.
 
-![Bitcoin Integration](./media/bitcoin_integration.png)
+![Bitcoin Integration](../_attachments/bitcoin_integration.png)
 
 **Components**
 
