@@ -77,7 +77,7 @@ function Index() {
           className="mb-3 mt-6 tw-heading-6"
         >
           <a
-            href="docs/current/developer-docs/functionality/bitcoin"
+            href="https://internetcomputer.org/docs/current/developer-docs/functionality/bitcoin/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-black hover:no-underline tw-heading-6"
