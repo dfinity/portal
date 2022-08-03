@@ -17,7 +17,7 @@ function Index() {
     { title: "Bitcoin integration", body: "Bitcoin Testnet" },
     {
       title: "Threshold ECDSA",
-      body: "ECDSA Testkey, deployed on one Production ECDSA key, deployed on medium-replication-factor subnet",
+      body: "ECDSA test key, deployed on a medium-replication-factor subnet",
     },
     {
       title: "Example code & doc",
