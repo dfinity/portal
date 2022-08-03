@@ -307,6 +307,11 @@ const sidebars = {
       ],
     },
     {
+      type: "doc",
+      label: "dfx.json schema",
+      id: "references/dfx-json-reference"
+    },
+    {
       type: "category",
       label: "Motoko References",
       link: {
