@@ -366,7 +366,7 @@ const sidebars = {
     "references/ic-interface-spec",
     {
       type: "category",
-      label: "quill Commands",
+      label: "Quill Commands",
       link: {
         type: "doc",
         id: "references/quill-cli-reference/index",
