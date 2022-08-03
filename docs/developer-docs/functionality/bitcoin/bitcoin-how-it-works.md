@@ -1,4 +1,4 @@
-# How Bitcoin Integration Works &mdash; Technology Background
+# How Bitcoin Integration Works — Technology Background
 
 Bitcoin-enabling the IC has required us to solve two advanced engineering challenges: (1) A protocol-level integration of the IC with the Bitcoin network and (2) a novel threshold ECDSA protocol.
 
