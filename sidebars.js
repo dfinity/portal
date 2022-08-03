@@ -197,7 +197,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Bitcoin Integration',
-          link: { 
+          link: {
             type: "doc",
             id: "developer-docs/functionality/bitcoin/index"
           },
@@ -466,6 +466,7 @@ const sidebars = {
     // 'samples/overview',
     "samples/deploying-your-first-bitcoin-dapp",
     "samples/t-ecdsa-sample",
+    "samples/http-requests-exchange-rates",
     "samples/hello",
     "samples/host-a-website",
     'samples/http-requests-exchange-rates',
