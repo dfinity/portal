@@ -185,15 +185,7 @@ export const sampleItems = [
     highlights: ["Gaming", "Website", "Global", "Beginner"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-<<<<<<< HEAD
       docs: "docs/current/samples/host-unity-webgl",
-=======
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
-      },
-      docs: "/docs/current/samples/host-unity-webgl",
->>>>>>> master
     },
   },
 ];
