@@ -95,7 +95,6 @@ export const sampleItems = [
   },
   {
     index: 5,
->>>>>>> master
     title: "NFT Minting",
     image: require("../../../static/img/samples/nftMinting.png").default,
     domains: ["NFT", "Gaming"],
@@ -110,56 +109,6 @@ export const sampleItems = [
     },
   },
   {
-<<<<<<< HEAD
-    index: 3,
-    title: "Hello World",
-    image: require("../../../static/img/samples/helloWorld.png").default,
-    domains: ["Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
-    body: "Deploy a dead simple dapp using two canisters serving a web page.",
-    links: {
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
-      livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "docs/current/samples/hello",
-    },
-  },
-  {
-    index: 4,
-    title: "Static Website",
-    image: require("../../../static/img/samples/staticWebsite.png").default,
-    domains: ["Website", "Global"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Documentation", "Videos"],
-    body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
-    links: {
-      docs: "docs/current/samples/host-a-website",
-      youtube: "https://www.youtube.com/watch?v=JAQ1dkFvfPI",
-    },
-  },
-  {
-    index: 5,
-    title: "Basic Dex",
-    image: require("../../../static/img/samples/basicDex.png").default,
-    domains: ["DeFi", "Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
-    body: "Build dapp to enable DeFi applications on the IC.",
-    links: {
-      motoko: "https://github.com/dfinity/examples/tree/master/motoko/defi",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/defi",
-      livePreview: "https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/",
-      docs: "docs/current/samples/dex",
-      youtube: "https://youtu.be/fLbaOmH24Gs",
-    },
-  },
-  {
-=======
->>>>>>> master
     index: 6,
     title: "Basic DAO",
     image: require("../../../static/img/samples/basicDAO.png").default,
