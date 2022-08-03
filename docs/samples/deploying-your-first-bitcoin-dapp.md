@@ -67,7 +67,7 @@ used for sending/receiving Bitcoin on the Bitcoin testnet.
 
 ## Receiving Bitcoin
 
-Now that the canister is deployed and you have a Bitcoin address. It's time to receive
+Now that the canister is deployed and you have a Bitcoin address, it's time to receive
 some testnet Bitcoin. You can use one of the Bitcoin faucets, such as [this one](https://bitcoinfaucet.uo1.net/),
 to receive some bitcoin.
 

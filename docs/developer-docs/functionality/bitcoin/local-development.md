@@ -194,7 +194,7 @@ If everything worked well, you should see a balance of 5,000,000,000 Satoshi, wh
 This is the reward you received for mining one block.
 
 :::note
-The BTC we mine is only in your local bitcoin network and cannot be spent or used elsewhere.
+The BTC we mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
 :::
 
 ### Coinbase Maturity
@@ -290,7 +290,7 @@ scratch. To do so:
    installed locally.
    :::
 
-2. In the folder where you're running `bitcoind`, stop the `bitcoind` process if it's running,
+2. In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running,
 and then run the following to delete the chain you created.
 
     rm -r data
