@@ -103,10 +103,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      },
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       docs: "/docs/current/samples/nft",
       youtube: "https://youtu.be/1po3udDADp4",
@@ -122,10 +118,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
       rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
@@ -144,10 +136,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
       rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
@@ -166,10 +154,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
@@ -186,10 +170,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
     },
@@ -205,11 +185,7 @@ export const sampleItems = [
     highlights: ["Gaming", "Website", "Global", "Beginner"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
-      },
-      docs: "/docs/current/samples/host-unity-webgl",
+      docs: "docs/current/samples/host-unity-webgl",
     },
   },
 ];
