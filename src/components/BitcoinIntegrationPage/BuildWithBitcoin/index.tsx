@@ -9,24 +9,24 @@ function Index() {
     {
       title: "BTC Integration Documentation",
       description:
-        "Start building and testing Bitcoin functionality on the testnet.",
+        "Start building and testing Bitcoin functionality.",
       href: "/",
     },
     {
       title: "Threshold ECDSA Documentation",
-      description: "Learn about threshold ECDSA keys and how to deploy them.",
+      description: "Learn about threshold ECDSA signing and its functions.",
       href: "/",
     },
     {
       title: "Sample Code",
       description:
-        "Deploy your first Bitcoin dapp and set up threshold ECDSA signatures.",
+        "Deploy your first Bitcoin dapp and use threshold ECDSA signatures.",
       href: "/samples",
     },
     {
       title: "IC Wiki",
       description:
-        "Get a high-level overview of how Bitcoin integration works on the Internet Computer.",
+        "Take a deep dive into how Bitcoin integration works on the Internet Computer.",
       href: "https://wiki.internetcomputer.org/wiki/Bitcoin_integration",
     },
   ];
