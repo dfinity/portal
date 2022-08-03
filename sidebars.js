@@ -294,7 +294,7 @@ const sidebars = {
     {
       type: "doc",
       label: "dfx.json schema",
-      href: "references/dfx-json-reference"
+      id: "references/dfx-json-reference"
     },
     {
       type: "category",
