@@ -208,14 +208,29 @@ const sidebars = {
             "developer-docs/functionality/ledger/deploy-new-token",
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Bitcoin Integration',
-        //   items: [
-        //     'developer-docs/functionality/bitcoin/bitcoin',
-        //     'developer-docs/functionality/bitcoin/t-ecdsa'
-        //   ]
-        // },
+        {
+          type: 'category',
+          label: 'Bitcoin Integration',
+          link: { 
+            type: "doc",
+            id: "developer-docs/functionality/bitcoin/index"
+          },
+          items: [
+            'developer-docs/functionality/bitcoin/bitcoin-how-it-works',
+            'developer-docs/functionality/bitcoin/local-development',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Threshold ECDSA',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/t-ecdsa/index"
+          },
+          items: [
+            'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
+          ]
+        },
         // {
         //   type: 'category',
         //   label: 'Using the SNS',
@@ -449,8 +464,8 @@ const sidebars = {
   ],
   samples: [
     // 'samples/overview',
-    //"samples/bitcoin-integration",
-    //"samples/t-ecdsa-sample",
+    "samples/deploying-your-first-bitcoin-dapp",
+    "samples/t-ecdsa-sample",
     "samples/hello",
     "samples/host-a-website",
     // 'samples/http-requests-exchange-rates',
