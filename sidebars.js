@@ -292,6 +292,11 @@ const sidebars = {
       ],
     },
     {
+      type: "doc",
+      label: "dfx.json schema",
+      id: "references/dfx-json-reference"
+    },
+    {
       type: "category",
       label: "Motoko References",
       link: {
@@ -361,7 +366,7 @@ const sidebars = {
     "references/ic-interface-spec",
     {
       type: "category",
-      label: "quill Commands",
+      label: "Quill Commands",
       link: {
         type: "doc",
         id: "references/quill-cli-reference/index",
