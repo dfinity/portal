@@ -190,24 +190,10 @@ const sidebars = {
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
         type: "doc",
-        id: "developer-docs/functionality/internet-identity/integrate-identity",
+        id: "developer-docs/functionality/bitcoin/index",
       },
       items: [
         // 'developer-docs/functionality/index',
-        "developer-docs/functionality/internet-identity/integrate-identity",
-        {
-          type: "category",
-          label: "ICP Ledger",
-          link: {
-            type: "doc",
-            id: "developer-docs/functionality/ledger/index",
-          },
-          items: [
-            "developer-docs/functionality/ledger/interact-with-ledger",
-            "developer-docs/functionality/ledger/ledger-local-setup",
-            "developer-docs/functionality/ledger/deploy-new-token",
-          ],
-        },
         {
           type: 'category',
           label: 'Bitcoin Integration',
@@ -230,6 +216,20 @@ const sidebars = {
           items: [
             'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
           ]
+        },
+        "developer-docs/functionality/internet-identity/integrate-identity",
+        {
+          type: "category",
+          label: "ICP Ledger",
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/ledger/index",
+          },
+          items: [
+            "developer-docs/functionality/ledger/interact-with-ledger",
+            "developer-docs/functionality/ledger/ledger-local-setup",
+            "developer-docs/functionality/ledger/deploy-new-token",
+          ],
         },
         // {
         //   type: 'category',
