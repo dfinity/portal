@@ -63,10 +63,11 @@ const Hero = () => {
           variants={transitions.item}
           className="tw-lead-sm md:tw-lead md:ml-1/12 md:w-7/12"
         >
-          The Internet Computer is one of the first blockchains in history to
-          enable direct integration with the Bitcoin network. By way of advanced
-          chain-key technology and a novel smart contract protocol, this new
-          feature is more secure and efficient than based-bridge approaches.
+          The Internet Computer enables direct integration with the Bitcoin network. 
+          By way of bridge-less communication with the Bitcoin network and a novel
+          threshold ECDSA protocol, canisters on the Internet Computer can now 
+          securely receive, hold, and send bitcoins.
+
         </motion.p>
         <svg
           viewBox="0 0 917 830"
