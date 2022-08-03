@@ -9,11 +9,13 @@ A threshold ECDSA implementation on a blockchain can be viewed as the on-chain p
 The availability of threshold ECDSA allows for a multitude of important use cases, as for example:
 -   Canisters natively holding Bitcoin;
 -   Integration with Ethereum, e.g., getting the ERC-20 tokens of Ethereum into the IC or signing Ethereum transactions;
--   Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA (this requires a different elliptic curve to the currently implemented curve `secp256k1`, namely `secp256r1`, for use cases such as integration with Bitcoin and Ethereum).
--   FIX: More use cases
+-   Integrations with other blockchains that use ECDSA as signature scheme for signing transactions.
+-   Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA (this requires a different elliptic curve to the currently implemented curve `secp256k1`, namely `secp256r1`).
 
-## Learn more
-If you want to learn more about threshold-ECDSA check the [how it works](./t-ecdsa-how-it-works.md) page to see more. If you want to take an even deeper dive see the Groth and Shoup's [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
+Those are only a few examples for use cases of our threshold ECDSA protocol. Creative engineers and entrepreneurs will likely come up with a large number of further exciting use cases.
 
-## Build more
+## Learn More
+If you want to learn more about threshold ECDSA, check the [how it works](./t-ecdsa-how-it-works.md) page to see more. If you want to take an even deeper dive see Groth and Shoup's [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
+
+## Build More
 Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. You can find the corresponding code-walkthrough in the [samples documentation](../../../samples/t-ecdsa-sample.md)
