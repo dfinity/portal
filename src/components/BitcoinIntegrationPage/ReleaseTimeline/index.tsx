@@ -116,7 +116,7 @@ function Index() {
       <div className="flex flex-col sm:flex-row gap-5 md:w-10/12 mx-auto">
         <div className="sm:w-1/2 relative bg-white  rounded-xl pt-10 pb-8 px-6 lg:py-12 lg:pl-12 lg:pr-24">
           <div className="tw-lead-sm absolute top-[-18px] h-9 bg-infinite text-white rounded-full py-1 px-3">
-            July 6, 2022
+            Summer 2022
           </div>
           <motion.img
             variants={transitions.item}
