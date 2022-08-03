@@ -7,27 +7,27 @@ import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
-    title: "100% on-chain",
-    body: "Dapps fully hosted on chain, serving content directly to your browser",
+    title: "Web serving",
+    body: "Smart contracts process HTTP and serve web directly to users",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
   },
   {
-    title: "web speed",
+    title: "Web speed",
     body: "Update TX finalized in 2 secs, query TXs in milliseconds",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
   },
   {
-    title: "reverse gas",
+    title: "Reverse gas",
     body: "smart contracts pay for computation, not their users",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
   },
   {
-    title: "less CO₂",
+    title: "Less CO₂",
     body: "A blockchain platform that can be more efficient than traditional IT",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
   },
   {
-    title: "scalable dapps",
+    title: "Scalable dapps",
     body: "Build mass market social media using smart contracts (and nothing else)",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
   },
@@ -36,7 +36,39 @@ const cardsContent = [
     body: "Anonymizing crypto authentication using WebAuthn (e.g. fingerprint sensor)",
     link: "https://wiki.internetcomputer.org/wiki/What_is_Internet_Identity",
   },
+  {
+    title: "Liquid democracy",
+    body: "Permissionless NNS DAO directly upgrades nodes, and governs network",
+    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
+  },
+  {
+    title: "Actor model",
+    body: "WebAssembly smart contracts run in parallel without reentrancy problems",
+    link: "https://wiki.internetcomputer.org/wiki/Canisters_(dapps/smart_contracts)#Canisters_as_actors",
+  },
+  {
+    title: "Motoko",
+    body: "Sophisticated blockchain language has unlimited precision numbers for DeFi",
+    link: "/docs/current/developer-docs/build/languages/motoko/",
+  },
+  {
+    title: "Web3 orchestration",
+    body: "Chain key: smart contracts can sign TX you can directly run on other chains",
+    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
+  },
+  {
+    title: "Bitcoin liquidity",
+    body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
+    link: "/howitworks/direct-integration-with-bitcoin/",
+  },
+  {
+    title: "HTTPS outcalls",
+    body: "Nodes call URL for contract, contract pre-processes, consensus agrees result",
+    link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
+  },
 ];
+
+const MotionLink = motion(Link);
 
 function Card({ title, body }) {
   return (
@@ -95,27 +127,27 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/roadmap">
+        <Link className={styles.actionButton} to="/howitworks">
           LEARN MORE
         </Link>
       </motion.div>
       <div className={styles.cards}>
         {cardsContent.map((card) => (
-          <motion.a
+          <MotionLink
             variants={transitions.item}
             href={card.link}
             className={styles.card}
             key={card.link}
           >
             <Card key={card.title} title={card.title} body={card.body} />
-          </motion.a>
+          </MotionLink>
         ))}
       </div>
       <motion.div
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/roadmap">
+        <Link className={styles.actionButton} to="/howitworks">
           LEARN MORE
         </Link>
       </motion.div>
