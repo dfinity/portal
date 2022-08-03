@@ -128,7 +128,7 @@ There are at least the following options how to get and maintain a DAO for your 
    to upgrade the SNS according to the blessed upgrade path. This will automatically
    fetch the right canister versions that have previously been "blessed" and
    upgrade the SNS canisters to them. 
-   SNS communities can nevertheless customize their SNS by setting choosing a variety
+   SNS communities can nevertheless customize their SNS by choosing a variety
    of parameters.
    Such SNSs are hosted on an _SNS subnet_ that exclusively hosts blessed SNSs.
    This simplifies the verification for end users who can simply verify that an SNS
