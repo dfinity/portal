@@ -14,7 +14,7 @@ To create canisters, it is typical to use a so-called CDK, a Canister Developmen
   - InfinitySwap's [canister-sdk](https://github.com/infinity-swap/canister-sdk)
 - AssemblyScript: Rick Porter's [cdk-as](https://github.com/rckprtr/cdk-as)
 - C-like languages: [Clang guide](./clang-supported-languages.md)
-- Typescript: Demergent Labs' [azle](https://github.com/demergent-labs/azle)
+- TypeScript: Demergent Labs' [Azle](https://github.com/demergent-labs/azle)
 
 ## Interfacing with Canisters (Agents)
 
