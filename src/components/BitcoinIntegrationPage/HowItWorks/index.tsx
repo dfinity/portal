@@ -26,29 +26,32 @@ function Index() {
           How It Works
         </motion.h1>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Bitcoin integration is possible via two key elements: smart contracts
-          and a threshold ECDSA protocol.
+         Two key developments make Bitcoin integration possible: 
+         direct integration with the Bitcoin network and a novel threshold ECDSA protocol.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Smart Contracts
+          Direct Integration with Bitcoin
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Bringing smart contracts to Bitcoin unlocks a plethora of novel
-          applications including Bitcoin transfers in social apps,
-          decentralization sales through the NNS where tokens of a dApp can be
-          acquired with Bitcoin, or chain-key-Bitcoin, an advanced form of
-          wrapped Bitcoin without the usual drawbacks of token wrapping.
+          Direct integration means that nodes of the Internet Computer communicate 
+          directly with the nodes of the Bitcoin network without relying on fragile bridges.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Threshold ECDSA is an innovative chain-key design whereby the BTC
-          ledger holds its own private key that is not available to anyone or
-          any code. Fragments of the private key are then distributed or hidden
-          among replicas of the subnet, and transactions are signed by threshold
-          signatures. With this design, canisters can securely receive, hold,
-          and transfer Bitcoin directly on the Bitcoin network.
+         Threshold ECDSA is a cryptographic protocol that enables canisters to securely 
+         hold and use ECDSA keys. Shares of the secret key are stored across many nodes, 
+         making the protocol resilient to attacks from malicious nodes.
+         
+         With the Bitcoin API and ECDSA API, canisters on the Internet Computer can 
+         securely receive, hold, and send bitcoins, opening the possibility for 
+         Bitcoin smart contracts.
+
+         Bringing smart contracts on the Internet Computer unlocks a number of 
+         novel applications including decentralized exchanges, using Bitcoin 
+         to participate in token sales, and chain-key-Bitcoin, an advanced form 
+         of wrapped Bitcoin without the usual drawbacks of token wrapping.
         </motion.p>
         <motion.p
           variants={transitions.item}
