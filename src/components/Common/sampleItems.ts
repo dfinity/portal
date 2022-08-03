@@ -39,6 +39,26 @@ export const sampleItems = [
   },
   {
     index: 2,
+    title: "Canister HTTP Calls",
+    image: require("../../../static/img/samples/exchangeRate.png").default,
+    domains: ["HTTP", "Exchange", "Global", "Website"],
+    languages: ["Rust", "Javascript"],
+    level: ["Intermediate"],
+    contentType: ["Documentation"],
+    highlights: ["HTTP", "Exchange", "Website", "Global", "Intermediate"],
+    body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
+    links: {
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+      },
+      docs: "docs/current/samples/http-requests-exchange-rates",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+      livePreview: "https://mfwph-oqaaa-aaaam-qafsq-cai.ic0.app/",
+    },
+  },
+  {
+    index: 3,
     title: "Hello World",
     image: require("../../../static/img/samples/helloWorld.png").default,
     domains: ["Website"],
@@ -58,7 +78,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 3,
+    index: 4,
     title: "Static Website",
     image: require("../../../static/img/samples/staticWebsite.png").default,
     domains: ["Website", "Global"],
@@ -73,7 +93,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 4,
+    index: 5,
     title: "Basic Dex",
     image: require("../../../static/img/samples/basicDex.png").default,
     domains: ["DeFi", "Website"],
@@ -94,7 +114,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 5,
+    index: 6,
     title: "NFT Minting",
     image: require("../../../static/img/samples/nftMinting.png").default,
     domains: ["NFT", "Gaming"],
@@ -109,7 +129,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 6,
+    index: 7,
     title: "Basic DAO",
     image: require("../../../static/img/samples/basicDAO.png").default,
     domains: ["Global", "DeFi"],
@@ -126,7 +146,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 7,
+    index: 8,
     title: "Encrypted note-taking",
     image: require("../../../static/img/samples/encryptedNoteTaking.png")
       .default,
@@ -145,7 +165,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 8,
+    index: 9,
     title: "Token transfer",
     image: require("../../../static/img/samples/tokenTransfer.png").default,
     domains: ["Global", "DeFi"],
@@ -161,7 +181,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 9,
+    index: 10,
     title: "Actor reference",
     image: require("../../../static/img/samples/actorReference.png").default,
     domains: ["Website"],
@@ -175,7 +195,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 10,
+    index: 11,
     title: "WebGL",
     image: require("../../../static/img/samples/webgl.png").default,
     domains: ["Gaming", "Website", "Global"],
@@ -186,26 +206,6 @@ export const sampleItems = [
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
       docs: "docs/current/samples/host-unity-webgl",
-    },
-  },
-  {
-    index: 9,
-    title: "Exchange Rate",
-    image: require("../../../static/img/samples/exchangeRate.png").default,
-    domains: ["HTTP", "Exchange", "Global", "Website"],
-    languages: ["Rust", "Javascript"],
-    level: ["Intermediate"],
-    contentType: ["Documentation"],
-    highlights: ["HTTP", "Exchange", "Website", "Global", "Intermediate"],
-    body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
-    links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
-      },
-      docs: "docs/current/samples/http-requests-exchange-rates",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
-      livePreview: "https://mfwph-oqaaa-aaaam-qafsq-cai.ic0.app/",
     },
   },
 ];
