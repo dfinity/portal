@@ -1,40 +1,6 @@
 export const sampleItems = [
   {
     index: 0,
-<<<<<<< HEAD
-    title: "Bitcoin Integration",
-    image: require("../../../static/img/samples/bitcoin.png").default,
-    domains: ["DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation"],
-    body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
-    links: {
-      motoko: "/",
-      rust: "/",
-      docs: "/",
-      //docs: "docs/current/developer-docs/functionality/bitcoin/deploying-your-first-bitcoin-dapp",
-    },
-  },
-  {
-    index: 1,
-    title: "Threshold ECDSA",
-    image: require("../../../static/img/samples/thresholdECDSA.png").default,
-    domains: ["DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation"],
-    body: "Build a threshold ECDSA test key on a subnet.",
-    links: {
-      motoko: "/",
-      rust: "/",
-      docs: "/",
-      //docs: "docs/current/developer-docs/functionality/bitcoin/t-ecdsa#code-walkthrough",
-    },
-  },
-  {
-    index: 2,
-=======
     title: "Bitcoin",
     image: require("../../../static/img/samples/bitcoin.png").default,
     domains: ["DeFi"],
