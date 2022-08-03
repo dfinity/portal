@@ -1,5 +1,10 @@
 ## Changelog {#changelog}
 
+## 0.18.5 (2022-07-08) {#0_18_5}
+* Idle consumption of resources in cycles per day can be obtain via `canister_status` method of the management canister
+* Include the HTTP Gateway Protocol in this spec
+* Clarifications in definition of cycles consumption
+
 ## 0.18.4 (2022-06-20) {#0_18_4}
 
 * Canister cycle balances are represented by 128 bits, and no system-defined upper limit exists anymore

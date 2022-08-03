@@ -1677,6 +1677,42 @@ The signatures are encoded as the concatenation of the [SEC1](https://www.secg.o
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
 
+### IC method `http_request` {#ic-http_request}
+
+This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
+
+The canister should aim to issue _idempotent_ requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
+
+The responses for all identical requests must match too. However, a web service could return slightly different responses for identical idempotent requests. For example, it may include some unique identification or a timestamp that would vary across responses.
+
+For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
+
+Currently, only the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Note that when using `POST`, the calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
+
+For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
+
+Each request can specify the maximal expected size for the response from the remote HTTP server. The upper limit on the size of a response defaults to `2MiB` if no maximal size value is specified.
+An error will be returned when the response is larger than the maximal size. 
+The `2MiB` size limit also applies to the value returned by the `transform` function.
+
+The following parameters should be supplied for the call:
+
+- `url` - the requested URL
+- `max_response_bytes` - optional, specifies the maximal size of the response in bytes. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
+- `method` - currently, only GET, HEAD, and POST are supported
+- `headers` - list of HTTP request headers and their corresponding values
+- `transform` - an optional function that transforms raw responses to sanitized responses. If provided, the calling canister itself must export this function.
+
+The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
+
+- `status` - the response status (e.g., 200, 404)
+- `headers` - list of HTTP response headers and their corresponding values
+- `body` - the response's body
+
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc.
+When the transform function was invoked due to a canister HTTP request, the caller's identity is the principal of the management canister.
+
+
 ### IC method `provisional_create_canister_with_cycles` {#ic-provisional_create_canister_with_cycles}
 
 As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister's balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`).
@@ -1993,6 +2029,143 @@ In the pruned tree, the `lookup_path` function behaves as follows:
     lookup_path(["d"],      pruned_tree) = Found "morning"
     lookup_path(["e"],      pruned_tree) = Absent
 
+
+## The HTTP Gateway protocol {#http-gateway}
+
+This section specifies the _HTTP Gateway protocol_, which allows canisters to handle conventional HTTP requests.
+
+This feature involves the help of a _HTTP Gateway_ that translates between HTTP requests and the IC protocol. Such a gateway could be a stand-alone proxy, it could be implemented in a web browsers (natively, via plugin or via a service worker) or in other ways. This document describes the interface and semantics of this protocol independent of a concrete Gateway, so that all Gateway implementations can be compatible.
+
+Conceptually, this protocol builds on top of the interface specified in the remainder of this document, and therefore is an “application-level” interface, not a feature of the core Internet Computer system described in the other sections, and could be a separate document. We nevertheless include this protocol in the Internet Computer Interface Specification because of its important role in the ecosystem and due to the importance of keeping multiple Gateway implementations in sync.
+
+### Overview
+
+A HTTP request by an HTTP client is handled by these steps:
+
+1. The Gateway resolves the Host of the request to a canister id.
+2. The Gateway Candid-encodes the HTTP request data.
+3. The Gateway invokes the canister via a query call to `http_request`.
+4. The canister handles the request and returns a HTTP response, encoded in Candid, together with additional metadata.
+5. If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
+6. If applicable, the Gateway fetches further body data via streaming query calls.
+7. If applicable, the Gateway validates the certificate of the response.
+8. The Gateway sends the response to the HTTP client.
+
+
+### Candid interface {#http-gateway-interface}
+
+The following interface description, in https://github.com/dfinity/candid/blob/master/spec/Candid.md[Candid syntax], describes the expected Canister interface. You can also link:{attachmentsdir}/http-gateway.did[download the file].
+----
+include::{example}http-gateway.did[]
+----
+
+Only canisters that use the “Upgrade to update calls” feature need to provide the `http_request_update` method.
+
+NOTE: Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
+
+
+### Canister resolution {#http-gateway-name-resolution}
+
+The Gateway needs to know the canister id of the canister to talk to, and obtains that information from the hostname as follows:
+
+1. Check that the hostname, taken from the `Host` field of the HTTP request, is of the form `<name>.raw.ic0.app` or `<name>.ic0.app`, or fail.
+
+2. If the `<name>` is in the following table, use the given canister ids:
++
+.Canister hostname resolution
+|============================================
+| Hostname     | Canister id
+| `identity`   | `rdmx6-jaaaa-aaaaa-aaadq-cai`
+| `nns`        | `qoctq-giaaa-aaaaa-aaaea-cai`
+| `dscvr`      | `h5aet-waaaa-aaaab-qaamq-cai`
+| `personhood` | `g3wsl-eqaaa-aaaan-aaaaa-cai`
+|============================================
+
+3. Else, if `<name>` is a valid textual encoding of a principal, use that principal as the canister id.
+
+4. Else fail.
+
+If the hostname was of the form `<name>.ic0.app`, it is a _safe_ hostname; if it was of the form `<name>.raw.ic0.app` it is a _raw_ hostname.
+
+### Request encoding
+
+The HTTP request is encoded into the `HttpRequest` Candid structure.
+
+* The `method` field contains the HTTP method (e.g. `HTTP`), in upper case.
+
+* The `url` field contains the URL from the HTTP request line, i.e. without protocol or hostname, and including query parameters.
+
+* The `headers` field contains the headers of the HTTP request.
+
+* The `body` field contains the body of the HTTP request (without any content encodings processed by the Gateway).
+
+### Upgrade to update calls
+
+If the canister sets `update = opt true` in the `HttpResponse` reply from `http_request`, then the Gateway ignores all other fields of the reply. The Gateway performs an _update_ call to `http_request_update`, passing the same `HttpRequest` record as the argument, and uses that response instead.
+
+The value of the `update` field returned from `http_request_update` is ignored.
+
+### Response decoding
+
+The Gateway assembles the HTTP response from the given `HttpResponse` record:
+
+* The HTTP response status code is taken from the `status_code` field.
+
+* The HTTP response headers are taken from the `headers` field.
++
+NOTE: Not all Gateway implementations may be able to pass on all forms of headers. In particular, Service Workers are unable to pass on the `Set-Cookie` header.
++
+::: note
+HTTP Gateways may add additional headers. In particular, the following headers may be set:
+  access-control-allow-origin: *
+  access-control-allow-methods: GET, POST, HEAD, OPTIONS
+  access-control-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Cookie
+  access-control-expose-headers: Content-Length,Content-Range
+  x-cache-status: MISS
+:::
+
+* The HTTP response body is initialized with the value of the `body` field, and further assembled as per the <<http-gateway-streaming,streaming protocol>>.
+
+
+### Response body streaming {#http-gateway-streaming}
+
+The HTTP Gateway protocol has provisions to transfer further chunks of the body data from the canister to the HTTP Gateway, to overcome the message limit of the Internet Computer. This streaming protocol is independent of any possible streaming of data between the HTTP Gateway and the HTTP client. The gateway may assemble the response in whole before passing it on, or pass the chunks on directly, on the TCP or HTTP level, as it sees fit. When the Gateway is <<http-gateway-certification,certifying the response>>, it must not pass on uncertified chunks.
+
+If the `streaming_strategy` field of the `HttpResponse` is set, the HTTP Gateway then uses further query calls to obtain further chunks to append to the body:
+
+1. If the function reference in the `callback` field of the `streaming_strategy` is not a method of the given canister, the Gateway fails the request.
+
+2. Else, it makes a query call to the given method, passing the `token` value given in the `streaming_strategy` as the argument.
+
+3. That query method returns a `StreamingCallbackHttpResponse`. The `body` therein is appended to the body of the HTTP response. This is repeated as long as the method returns some token in the `token` field, until that field is `null`.
+
+WARNING: The type of the `token` value is chosen by the canister; the HTTP Gateway obtains the Candid type of the encoded message from the canister, and uses it when passing the token back to the canister. This generic use of Candid is not covered by the Candid specification, and may not be possible in some cases (e.g. when using “future types”). Canister authors may have to use “simple” types.
+
+
+
+### Response certification {#http-gateway-certification}
+
+If the hostname was safe, the HTTP Gateway performs _certificate validation_:
+
+1. It searches for a response header called `Ic-Certificate` (case-insensitive).
+
+2. The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
+
+3. The `certificate` must be a valid certificate as per <<certification>>, signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister’s <<state-tree-certified-data,certified data>>.
+
+4. The `tree` must be a hash tree as per <<certification-encoding>>.
+
+5. The root hash of that `tree` must match the canister’s certified data.
+
+6. The path `["http_assets",<url>]`, where `url` is the utf8-encoded `url` from the `HttpRequest` must exist and be a leaf.  Else, if it does not exist, `["http_assets","/index.html"]` must exist and be a leaf.
+
+7. That leaf must contain the SHA-256 hash of the _decoded_ body.
++
+The decoded body is the body of the HTTP response (in particular, after assembling streaming chunks), decoded according to the `Content-Encoding` header, if present. Supported encodings for `Content-Encoding` are `gzip` and `deflate.`
+
+::: warn
+The certification protocol only covers the mapping from request URL to response body. It completely ignores the request method and headers, and does not cover the response headers and status code.
+:::
 
 ## Abstract behavior
 
@@ -2697,9 +2870,9 @@ else
       - Cycles_used
 ```          
 
-The cycle consumption of executing this message is modeled via the unspecified `Cycles_used` variable.
+Depending on whether this is a call message and a response messages, we have either set aside `MAX_CYCLES_PER_MESSAGE` or `MAX_CYCLES_PER_RESPONSE`, either in the call context creation rule or the Callback invocation rule.
 
-Depending whether this is a call message and a response messages, we have either set aside `MAX_CYCLES_PER_MESSAGE` or `MAX_CYCLES_PER_RESPONSE`, either in the call context creation rule or the Callback invocation rule.
+The cycle consumption of executing this message is modeled via the unspecified `Cycles_used` variable; the variable takes some value between 0 and `MAX_CYCLES_PER_MESSAGE`/`MAX_CYCLES_PER_RESPONSE` (for call execution and response execution, respectively).
 
 This transition detects certain behavior that will appear as a trap (and which an implementation may implement by trapping directly in a system call):
 
@@ -2711,7 +2884,7 @@ This transition detects certain behavior that will appear as a trap (and which a
 
 -   Consuming more cycles than allowed (and reserved)
 
-If message execution [*traps* (in the sense of a Wasm function)](#define-wasm-fn), the message gets dropped. No response is generated (as some other message may still fulfill this calling context). Any state mutation is discarded.
+If message execution [*traps* (in the sense of a Wasm function)](#define-wasm-fn), the message gets dropped. No response is generated (as some other message may still fulfill this calling context). Any state mutation is discarded. If the message was a call, the associated cycles are held by its associated call context and will be refunded to the caller, see <<rule-starvation>>.
 
 If message execution [*returns* (in the sense of a Wasm function)](#define-wasm-fn), the state is updated and possible outbound calls and responses are enqueued.
 
@@ -2891,6 +3064,8 @@ S with
 The controllers of a canister can obtain information about the canister.
 
 The `Memory_size` is the (in this specification underspecified) total size of storage in bytes.
+
+The `idle_cycles_burned_per_day` is the idle consumption of resources in cycles per day. Therefore, the freezing threshold in cycles can be obtained using the following formula: `freezing_threshold` (in seconds) * `idle_cycles_burned_per_day` /  (3600 * 24) (seconds).
 
 Conditions
 
@@ -3080,7 +3255,7 @@ We encode this behavior via three (types of) transitions:
 
 2.  Next, when the canister has no open call contexts (so, in particular, all outstanding responses to the canister have been processed), the status of the canister is set to `Stopped`.
 
-3.  Finally, each pending `stop_canister` call (which are encoded in the status) is responded to, to indicate that that the canister is stopped.
+3.  Finally, each pending `stop_canister` call (which are encoded in the status) is responded to, to indicate that the canister is stopped.
 
 Conditions
 
