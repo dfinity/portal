@@ -126,12 +126,24 @@ function Index() {
           />
           <p className="tw-heading-5 md:tw-heading-4 mb-12">Beta Release </p>
           <div className="flex flex-col gap-6">
-            {betaReleaseInformation.map((info) => (
+            {betaReleaseInformation.map((info, index) => (
               <div key={info.title}>
                 <p className="mb-1 tw-heading-7-caps uppercase text-black-30">
                   {info.title}
                 </p>
-                <p className="mb-0 tw-lead-sm md:tw-lead">{info.body}</p>
+
+                {/* hack: in order to have the content pieces in the 2 cards take up the exact amount of lines we render both in all cells */}
+                <p className="mb-0 tw-lead-sm md:tw-lead grid grid-cols-1">
+                  {/* real content */}
+                  <div className="col-start-1 row-start-1">{info.body}</div>
+                  {/* counterpart content in case it's longer */}
+                  <div
+                    className="col-start-1 row-start-1 invisible pointer-events-none"
+                    aria-hidden
+                  >
+                    {gaReleaseInformation[index].body}
+                  </div>
+                </p>
               </div>
             ))}
           </div>
@@ -190,12 +202,23 @@ function Index() {
           />
           <p className="tw-heading-5 md:tw-heading-4 mb-12">GA Release </p>
           <div className="flex flex-col gap-6">
-            {gaReleaseInformation.map((info) => (
+            {gaReleaseInformation.map((info, index) => (
               <div key={info.title}>
                 <p className="mb-1 tw-heading-7-caps uppercase text-white-50">
                   {info.title}
                 </p>
-                <p className="mb-0 tw-lead-sm md:tw-lead">{info.body}</p>
+                {/* hack: in order to have the content pieces in the 2 cards take up the exact amount of lines we render both in all cells */}
+                <p className="mb-0 tw-lead-sm md:tw-lead grid grid-cols-1">
+                  {/* real content */}
+                  <div className="col-start-1 row-start-1">{info.body}</div>
+                  {/* counterpart content in case it's longer */}
+                  <div
+                    className="col-start-1 row-start-1 invisible pointer-events-none"
+                    aria-hidden
+                  >
+                    {betaReleaseInformation[index].body}
+                  </div>
+                </p>
               </div>
             ))}
           </div>

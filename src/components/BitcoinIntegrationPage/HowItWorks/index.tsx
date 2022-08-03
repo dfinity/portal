@@ -4,6 +4,7 @@ import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import { motion } from "framer-motion";
 import HowItWorks from "@site/static/img/bitcoin-integration/howItWorks.png";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
+import Link from "@docusaurus/Link";
 
 function Index() {
   return (
@@ -15,7 +16,7 @@ function Index() {
         <img
           src={HowItWorks}
           alt=""
-          className="absolute pointer-events-none h-[600px] right-0 left-0 mx-auto top-[-180px]  md:top-[-250px] md:h-auto md:right-0 md:mr-1/12 md:w-4/12 md:top-[-150px] lg:top-[-280px] z-[1000]"
+          className="absolute pointer-events-none h-[600px] right-0 left-0 mx-auto top-[-180px]  md:h-auto md:right-0 md:mr-1/12 md:w-4/12 md:top-[-150px] lg:top-[-280px] z-[1000]"
         />
       </div>
       <section className="md:ml-1/12 md:w-5/12 lg:w-4/12">
@@ -26,32 +27,50 @@ function Index() {
           How It Works
         </motion.h1>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-         Two key developments make Bitcoin integration possible: 
-         direct integration with the Bitcoin network and a novel threshold ECDSA protocol.
+          Two key developments make Bitcoin integration possible: direct
+          integration with the Bitcoin network and a novel threshold ECDSA
+          protocol.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Direct Integration with Bitcoin
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Direct integration means that nodes of the Internet Computer communicate 
-          directly with the nodes of the Bitcoin network without relying on fragile bridges.
+          Direct integration means that nodes of the Internet Computer
+          communicate directly with the nodes of the Bitcoin network without
+          relying on fragile bridges.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
         </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
+          Threshold ECDSA is a cryptographic protocol that enables canisters to
+          securely hold and use ECDSA keys. Shares of the secret key are stored
+          across many nodes, making the protocol resilient to attacks from
+          malicious nodes.
+        </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-         Threshold ECDSA is a cryptographic protocol that enables canisters to securely 
-         hold and use ECDSA keys. Shares of the secret key are stored across many nodes, 
-         making the protocol resilient to attacks from malicious nodes.
-         
-         With the Bitcoin API and ECDSA API, canisters on the Internet Computer can 
-         securely receive, hold, and send bitcoins, opening the possibility for 
-         Bitcoin smart contracts.
-
-         Bringing smart contracts on the Internet Computer unlocks a number of 
-         novel applications including decentralized exchanges, using Bitcoin 
-         to participate in token sales, and chain-key-Bitcoin, an advanced form 
-         of wrapped Bitcoin without the usual drawbacks of token wrapping.
+          With the{" "}
+          <Link
+            href="https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api"
+            className="underline text-infinite hover:text-black hover:no-underline"
+          >
+            Bitcoin API
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key"
+            className="underline text-infinite hover:text-black hover:no-underline"
+          >
+            ECDSA API
+          </Link>
+          , canisters on the Internet Computer can securely receive, hold, and
+          send bitcoins, opening the possibility for Bitcoin smart contracts.
+        </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
+          Bringing smart contracts on the Internet Computer unlocks a number of
+          novel applications including decentralized exchanges, using Bitcoin to
+          participate in token sales, and chain-key-Bitcoin, an advanced form of
+          wrapped Bitcoin without the usual drawbacks of token wrapping.
         </motion.p>
         <motion.p
           variants={transitions.item}
