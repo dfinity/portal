@@ -10,4 +10,5 @@
 [submodule "submodules/internetidentity"]
 	path = submodules/internetidentity
 	url = https://github.com/dfinity/internet-identity.git
-	branch = nm-markdown-spec
+	branch = main
+
