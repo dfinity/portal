@@ -292,9 +292,9 @@ const sidebars = {
       ],
     },
     {
-      type: "link",
+      type: "doc",
       label: "dfx.json schema",
-      href: "/docs/current/references/dfx-json-schema.json"
+      href: "references/dfx-json-reference"
     },
     {
       type: "category",
