@@ -469,7 +469,6 @@ const sidebars = {
     "samples/http-requests-exchange-rates",
     "samples/hello",
     "samples/host-a-website",
-    'samples/http-requests-exchange-rates',
     "samples/dex",
     "samples/nft",
     "samples/dao",
