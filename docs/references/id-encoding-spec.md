@@ -32,7 +32,7 @@ Section [Assumptions and Requirements](#assumptions-and-requirements) presents t
 Section [Specification](#specification) provides the specification itself.
 Section [Reference Implementations](#reference-implementations) gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
 Section [Test Vectors](#test-vectors) provides test vectors.
-Section [Rationale](#rationale) explains the reasons why the specification was chosen, given the assumptions and requirements from Section 3.
+Section [Rationale](#rationale) explains the reasons why the specification was chosen, given the assumptions and requirements from Section [Assumptions and Requirements](#assumptions-and-requirements).
 
 ## Assumptions and Requirements
 
