@@ -8,6 +8,7 @@
 }
 
 .container {
+    padding-top: 192px;
     margin: 24px auto 80px auto;
     width: Min(1110px, 90%);
     position: relative;
@@ -102,6 +103,7 @@
 @media screen and (max-width: 996px) {
     .container {
         margin: 40px auto;
+        padding-top: 100px;
     }
 
     .Title {

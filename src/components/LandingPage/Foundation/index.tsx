@@ -4,13 +4,11 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import DownloadSVG from "@site/static/img/svgIcons/download.svg";
-import TeamPhotoFront from "@site/static/img/Foundation/teamPhotoFront.png";
-import TeamPhotoBack from "@site/static/img/Foundation/teamPhotoBack.png";
-import TeamPhotoMobile1 from "@site/static/img/Foundation/teamPhotoMobile1.png";
-import TeamPhotoMobile2 from "@site/static/img/Foundation/teamPhotoMobile2.png";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
+import useGlobalData from "@docusaurus/useGlobalData";
+import { useParallax } from "@site/src/utils/use-parallax-animation";
+import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
 
 const stats = [
   { title: "Team Members", value: "260+" },
@@ -24,21 +22,32 @@ const cards = [
     isMain: true,
     title: ["Roadmap"],
     body: "The DFINITY Foundation’s contributions to the IC roadmap are subject to community discussion and voting",
-    link: "https://dfinity.org/roadmap",
+    link: "https://forum.dfinity.org/c/roadmap/29",
   },
   {
     isMain: false,
     title: ["Internet Computer Infographic"],
     body: "A beautiful dream emerged in 2014. One team set itself to realizing that dream.",
-    link: "https://dfinity.org/icig.pdf",
+    link: "https://internetcomputer.org/icig.pdf",
   },
   {
     isMain: false,
     title: ["IC for Geeks", "White Paper"],
     body: "v1.3 April 19, 2022",
-    link: "https://dfinity.org/whitepaper.pdf",
+    link: "https://internetcomputer.org/whitepaper.pdf",
   },
 ];
+
+function shuffle(sourceArray) {
+  for (let i = 0; i < sourceArray.length - 1; i++) {
+    let j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+    let temp = sourceArray[j];
+    sourceArray[j] = sourceArray[i];
+    sourceArray[i] = temp;
+  }
+  return sourceArray;
+}
 
 function Card({ isMain, title, body, link }) {
   return (
@@ -64,27 +73,41 @@ function Card({ isMain, title, body, link }) {
 }
 
 function Foundation() {
-  const controls = useAnimation();
+  const globalData = useGlobalData();
+  const teamInformation = globalData["team-information"]["default"] as any;
+  const [RDMembers, setRDMembers] = useState([]);
+  const [OperationMembers, setOperationMembers] = useState([]);
+  const [LeadershipMembers, setLeadershipMembers] = useState([]);
   const divRef = useRef(null);
-  const [currentYScroll, setCurrentYScroll] = useState(400);
+  const { ref, controls } = useSpawnAnimation();
+  const { frontLayerOffset, middleLayerOffset, backLayerOffset } = useParallax(
+    divRef,
+    150
+  );
 
-  const { ref, inView } = useInView({ threshold: 0 });
+  const frontLayerMembers = [
+    ...LeadershipMembers.slice(0, 2),
+    ...OperationMembers.slice(0, 2),
+    ...RDMembers.slice(0, 1),
+  ];
+  const middleLayerMembers = [
+    ...OperationMembers.slice(2, 4),
+    ...RDMembers.slice(1, 4),
+  ];
+  const backLayerMembers = [
+    ...OperationMembers.slice(4, 6),
+    ...RDMembers.slice(4, 8),
+  ];
   useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
-  const scrollHandler = () => {
-    const { y, height } = divRef.current.getBoundingClientRect();
-    if (y <= 400 && -y <= height) {
-      setCurrentYScroll(y);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandler, true);
-    return () => {
-      window.removeEventListener("scroll", scrollHandler, true);
-    };
+    setRDMembers(
+      shuffle(teamInformation.find((t) => t.title === "R&D").members)
+    );
+    setOperationMembers(
+      shuffle(teamInformation.find((t) => t.title === "Operations").members)
+    );
+    setLeadershipMembers(
+      shuffle(teamInformation.find((t) => t.title === "Leadership").members)
+    );
   }, []);
   return (
     <motion.div
@@ -95,25 +118,43 @@ function Foundation() {
       className={styles.main}
     >
       <a className={styles.anchor} id="foundation" />
-      <motion.img
-        src={TeamPhotoFront}
-        style={{ y: currentYScroll * 0.4 }}
-        className={styles.mainPhoto}
-        alt=""
-      />
-      <motion.img
-        src={TeamPhotoBack}
-        style={{ y: currentYScroll * 0.2 }}
-        className={styles.mainPhoto}
-        alt=""
-      />
       <motion.div
         variants={transitions.item}
         ref={divRef}
         className={styles.container}
       >
+        {frontLayerMembers.map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: frontLayerOffset }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {middleLayerMembers.map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: middleLayerOffset }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
+        {backLayerMembers.map((member) => (
+          <motion.div
+            className={styles.teamPhotoContainer}
+            key={member.name}
+            style={{ y: backLayerOffset }}
+          >
+            <img src={member.photo + "?w=120"} alt={member.name} />
+          </motion.div>
+        ))}
         <img
-          src={TeamPhotoMobile1}
+          src={
+            require("../../../../static/img/Foundation/teamPhotoMobile1.png")
+              .default
+          }
           alt=""
           className={styles.teamPhotoMobile1}
         />
@@ -152,10 +193,7 @@ function Foundation() {
           vision in tech: the adoption of public blockchain as a single
           technology stack that hosts all of humanity’s systems and services.
         </motion.div>
-        <Link
-          className={styles.actionButton}
-          to="https://dfinity.org/foundation"
-        >
+        <Link className={styles.actionButton} to="https://dfinity.org/about">
           GO TO THE DFINITY FOUNDATION
         </Link>
       </motion.div>
@@ -187,7 +225,14 @@ function Foundation() {
           />
         ))}
       </motion.div>
-      <img src={TeamPhotoMobile2} alt="" className={styles.teamPhotoMobile2} />
+      <img
+        src={
+          require("../../../../static/img/Foundation/teamPhotoMobile2.png")
+            .default
+        }
+        alt=""
+        className={styles.teamPhotoMobile2}
+      />
     </motion.div>
   );
 }

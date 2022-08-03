@@ -119,15 +119,19 @@
 .motokoContainer {
     width: 100%;
 }
+
+.darkHover:hover {
+    color: white;
+    background: var(--ifm-color-primary);
+    border: 1px solid var(--ifm-color-primary);
+}
+
 .cardHover {
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 .cardHover:hover {
     padding-bottom: 32px;
-    color: white;
     text-decoration: none;
-    background: var(--ifm-color-primary);
-    border: 1px solid var(--ifm-color-primary);
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
@@ -205,7 +209,6 @@
 
 .eventContainer:hover .eventBackground {
     top: 0;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .eventBackground {
@@ -213,6 +216,7 @@
     position: absolute;
     top: 30px;
     right: 0;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
 .eventDescription {

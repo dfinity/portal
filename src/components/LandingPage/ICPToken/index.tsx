@@ -248,7 +248,6 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
       />
     </div>
   );
-
 };
 
 const chart = {
@@ -286,10 +285,7 @@ function ICPToken() {
           variants={transitions.item}
           style={{ display: "inline-flex" }}
         >
-          <Link
-            className={styles.headerCallToAction}
-            to={"https://wiki.internetcomputer.org/wiki/ICP_token"}
-          >
+          <Link className={styles.headerCallToAction} to={"/icp-tokens"}>
             LEARN MORE
           </Link>
         </motion.div>

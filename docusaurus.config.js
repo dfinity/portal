@@ -15,7 +15,9 @@ const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
+const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
@@ -35,21 +37,14 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "samples",
-        path: "samples",
-        routeBasePath: "samples",
-        sidebarPath: require.resolve("./sidebarsSample.js"),
-        remarkPlugins: [require("remark-code-import")],
-      },
-    ],
+    'docusaurus-plugin-sass',
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
+    howItWorksArticlesPlugin,
+    teamInformationPlugin,
   ],
 
   presets: [
@@ -75,7 +70,7 @@ const config = {
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
@@ -132,13 +127,18 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Internet Identity",
-                href: "https://identity.ic0.app/",
-              },
-              {
                 label: "Showcase",
                 href: "/showcase",
               },
+              {
+                label: "How it works",
+                href: "/howitworks",
+              },
+              {
+                label: "Internet Identity",
+                href: "https://identity.ic0.app/",
+              },
+
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org",
@@ -147,13 +147,10 @@ const config = {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-              {
-                label: "How it works",
-                href: "https://dfinity.org/howitworks",
-              },
+
               {
                 label: "DFINITY Foundation",
-                href: "https://dfinity.org/foundation",
+                href: "https://dfinity.org",
               },
             ],
           },
@@ -197,7 +194,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://dfinity.org/roadmap",
+                href: "https://forum.dfinity.org/c/roadmap/29",
               },
               {
                 label: "Staking & Governance",
@@ -241,6 +238,12 @@ const config = {
             position: "left",
             sidebarId: "tokenomics",
             label: "Tokenomics",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "samples",
+            label: "Samples",
           },
 
           {
