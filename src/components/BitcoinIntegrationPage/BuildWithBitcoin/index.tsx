@@ -10,12 +10,12 @@ function Index() {
       title: "BTC Integration Documentation",
       description:
         "Start building and testing Bitcoin functionality.",
-      href: "/",
+      href: "/docs/developer-docs/functionality/bitcoin",
     },
     {
       title: "Threshold ECDSA Documentation",
       description: "Learn about threshold ECDSA signing and its functions.",
-      href: "/",
+      href: "/docs/developer-docs/functionality/t-ecdsa",
     },
     {
       title: "Sample Code",
