@@ -14,18 +14,17 @@ There are two parts to the sample dapp:
 2. the backend provider canister `exchange_rate`, which does the real HTTP request calls, queues jobs, as well
 as process data slightly.
 
-Upon receiving a request from UI, the request is then passed from the frontend to the backend for queueing. 
-There is asynchronous process triggered at every few Internet Computer heartbeats, to make a Coinbase API HTTP
-request call. To save the overall number of remote HTTP calls needed, each HTTP request pulls exactly 200 data 
-points from Coinbase, which sits in the Coinbase maximum number of data points range, intervaled at 1 minute each.
+Upon receiving a request from the UI, the request is passed from the frontend to the backend for queueing. 
+An asynchronous process is triggered at every few Internet Computer heartbeats, to make a Coinbase API HTTP
+request call. To reduce the overall number of remote HTTP calls needed, each HTTP request pulls exactly 200 data 
+points from Coinbase, which sits in the Coinbase maximum number of data points range, spaced at 1 minute each.
 As a result, each HTTP request to Coinbase covers 200 minutes of data. The fetched data points are then put into
 a timestamp to rate hashmap, ready for future user requests to directly read from.
 
-If the user interested time range is longer than a couple of years, the data points to be returned
-by backend `exchange_rate` canister could potentially be out of canister response upper limit (2MB).
-As a result, we cap number number of data points to be returned by the backend `exchange_rate` canister to
-the frontend `exchange_rate_assets` canister, and increase the sample interval to cover the full spectrum of 
-interested range.
+If the time range the user is interested in is longer than a couple of years, the data points to be returned
+by the backend `exchange_rate` canister could be too large for the current response limit (2MB).
+As a result, we cap the number of data points to be returned by the backend `exchange_rate` canister to
+the frontend `exchange_rate_assets` canister, and increase the sampling interval to cover the full requested range.
 
 ## How to use the sample dapp
 
@@ -35,7 +34,7 @@ and the end time with the datetime pickers.
 The returned rates may not exactly match the users time selection. (There could be gaps in between
 data points, or there could be smaller range being returned, or if lucky enough, the returned
 dataset fully matches user's interest.) The reason for that is because, to respect rate limiting
-on the remote service, we scatter our calls to remote service once per every IC heartbeats.
+on the remote service, we scatter our calls to remote service once every few IC heartbeats.
 Consequently, the rate pulling can be a relatively-long asynchronous process. We store all the
 previously-pulled rates into memory. As the user submits their interest, the rates that are already
 available from previous pulls will be returned, while the ones that are not yet available will be
@@ -56,12 +55,11 @@ effect on cycles cost. So the goal of the canister is to:
 - Make as little remote calls as possible
 - Make each remote HTTP call as small as possible
 
-However, note that these 2 goals are conflicting each other. Consider 1 year's exchange rate
-data, that is a static amount of data needs to be downloaded. The less remote calls we make, the
-bigger amount of data each call needs to fetch. The less amount of data each call fetches, the
-more remote call the canister has to make. And we bias towards the 1st approach, which is
-maximize data fetched by each call as possible, to reduce number of calls needed. For the reason
-mentioned above, that the number of calls cost much more than call size.
+However, note that these 2 goals are conflicting with each other. Consider 1 year's exchange rate
+data, a static amount of data that needs to be downloaded. If we minimize the number of remote calls we make,
+responses will be larger. If we minimize the amount of data each call fetches, the
+the canister has to make more remote calls. As we bias towards the 1st approach, we
+maximize data fetched by each call as much as possible, to reduce the number of calls needed.
 
 On top of that, we cache data that's already fetched, to save from future user requests
 triggering remote HTTP calls again.
