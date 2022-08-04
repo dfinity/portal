@@ -37,6 +37,8 @@ $ dfx canister call counter inc '(42)'
 (43)
 ```
 
+To figure out how to create more complex Candid arguments, please refer to the [Candid Reference](../../../../references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](../../../../references/cli-reference/dfx-canister.md#dfx-canister-call).
+
 You can also omit the arguments and let `dfx` generate a random value that matches the method type. For example:
 
 ``` bash
