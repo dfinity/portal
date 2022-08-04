@@ -11,7 +11,10 @@ function BitcoinIntegration() {
   const { siteConfig } = useDocusaurusContext();
   resetNavBarStyle();
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout
+      title="Bitcoin Integration"
+      description="The Internet Computer enables direct integration with the Bitcoin network. By way of bridge-less communication with the Bitcoin network and a novel threshold ECDSA protocol, canisters on the Internet Computer can now securely receive, hold, and send bitcoins."
+    >
       <main className="text-black relative overflow-hidden">
         <Hero></Hero>
         <HowItWorks></HowItWorks>
