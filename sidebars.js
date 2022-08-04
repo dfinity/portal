@@ -379,6 +379,7 @@ const sidebars = {
     "references/ledger",
     "references/ii-spec",
     "references/ic-interface-spec",
+    "references/id-encoding-spec",
     {
       type: "category",
       label: "Quill Commands",
