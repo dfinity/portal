@@ -197,7 +197,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Bitcoin Integration',
-          link: { 
+          link: {
             type: "doc",
             id: "developer-docs/functionality/bitcoin/index"
           },
@@ -379,6 +379,7 @@ const sidebars = {
     "references/ledger",
     "references/ii-spec",
     "references/ic-interface-spec",
+    "references/id-encoding-spec",
     {
       type: "category",
       label: "Quill Commands",
