@@ -4,7 +4,11 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Hero from "../components/Basics/Hero";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import data from "../../roadmap/roadmap.json";
+import data, {
+  RoadmapItem,
+  CustomUrl,
+  RoadmapItemLink,
+} from "../../roadmap/roadmapData";
 import OpenOverlayIcon from "../../static/img/plus.svg";
 import Link from "@docusaurus/Link";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
@@ -17,11 +21,45 @@ import GithubIcon from "@site/static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 
-type ItemType = typeof data[0]["groups"]["pending"][0];
-
 const MotionLink = motion(Link);
 
-const ItemCard: React.FC<{ item: ItemType }> = ({ item }) => {
+const ItemCardLink: React.FC<{
+  link: RoadmapItemLink;
+  defaultLabel: string;
+}> = ({ link, defaultLabel }) => {
+  if (!link) return null;
+  if (Array.isArray(link)) {
+    return (
+      <>
+        {link.map((link) => (
+          <Link className="link-primary" href={link.url} key={link.text}>
+            {link.text}
+            <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
+          </Link>
+        ))}
+      </>
+    );
+  }
+  if (typeof link === "string") {
+    return (
+      <Link className="link-primary" href={link}>
+        {defaultLabel}
+        <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
+      </Link>
+    );
+  }
+  return (
+    <Link className="link-primary" href={link.url} key={link.text}>
+      {link.text}
+      <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
+    </Link>
+  );
+};
+
+const ItemCard: React.FC<{ item: RoadmapItem; deployed: boolean }> = ({
+  item,
+  deployed,
+}) => {
   return (
     <div className="border-black-20 border-solid border rounded-xl px-6 py-4 md:py-8 pb-6 flex flex-col gap-2 md:gap-3">
       <h4 className="tw-heading-6 md:tw-heading-5 mb-0 relative flex items-center gap-4">
@@ -31,24 +69,19 @@ const ItemCard: React.FC<{ item: ItemType }> = ({ item }) => {
         )}
       </h4>
       {item.description && (
-        <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
+        <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0 prose prose-a:underline prose-a:text-infinite hover:prose-a:no-underline hover:prose-a:text-black">
           {item.description}
         </p>
       )}
-      {item.proposal && (
-        <Link className="link-primary" href={item.proposal}>
-          Motion Proposal
-          <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-        </Link>
-      )}
-      {item.forum && (
-        <Link className="link-primary" href={item.forum}>
-          Forum Link
-          <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-        </Link>
-      )}
+      <ItemCardLink
+        link={item.proposal}
+        defaultLabel="Motion Proposal"
+      ></ItemCardLink>
+      <ItemCardLink link={item.forum} defaultLabel="Forum Link"></ItemCardLink>
+
       {item.eta && (
         <span className="mt-1 md:mt-2 tw-paragraph-sm md:tw-paragraph text-black-60">
+          {deployed ? "Deployed " : "Expected "}
           {item.eta}
         </span>
       )}
@@ -57,11 +90,12 @@ const ItemCard: React.FC<{ item: ItemType }> = ({ item }) => {
 };
 
 const OverlayGroup: React.FC<{
-  items: ItemType[];
+  items: RoadmapItem[];
   pillClassName: string;
   pill: React.ReactNode;
   aside?: React.ReactNode;
-}> = ({ items, pill, pillClassName, aside }) => {
+  deployed: boolean;
+}> = ({ items, pill, pillClassName, aside, deployed }) => {
   return (
     <div>
       <div className="md:hidden mb-6">{aside}</div>
@@ -75,7 +109,7 @@ const OverlayGroup: React.FC<{
       </div>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
         {items.map((item) => (
-          <ItemCard key={item.name} item={item}></ItemCard>
+          <ItemCard key={item.name} item={item} deployed={deployed}></ItemCard>
         ))}
       </div>
     </div>
@@ -147,6 +181,7 @@ const Overlay: React.FC<{
                 <div className="space-y-8 md:space-y-16">
                   {domain.groups.pending?.length && (
                     <OverlayGroup
+                      deployed={false}
                       pillClassName="bg-black-60"
                       items={domain.groups.pending}
                       pill={
@@ -175,6 +210,7 @@ const Overlay: React.FC<{
                   )}
                   {domain.groups.inProgress?.length && (
                     <OverlayGroup
+                      deployed={false}
                       pillClassName="bg-razzmatazz"
                       items={domain.groups.inProgress}
                       pill={
@@ -198,6 +234,7 @@ const Overlay: React.FC<{
                   )}
                   {domain.groups.deployed?.length && (
                     <OverlayGroup
+                      deployed={true}
                       pillClassName="bg-infinite"
                       items={domain.groups.deployed}
                       pill={
@@ -258,7 +295,7 @@ const RoadmapPage: React.FC = () => {
   // }, []);
 
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout title="Roadmap" description="">
       <main className="w-full overflow-hidden">
         <AnimateSpawn
           className="overflow-hidden bg-infinite text-white"
