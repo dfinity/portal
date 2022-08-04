@@ -10,18 +10,14 @@ export function useParallax(containerRef, offset) {
   const yFrontRange = useTransform(
     scrollY,
     [initial, final],
-    [offset, -offset]
+    [offset * 3, -offset * 3]
   );
   const yMiddleRange = useTransform(
     scrollY,
     [initial, final],
     [offset * 2, -offset * 2]
   );
-  const yBackRange = useTransform(
-    scrollY,
-    [initial, final],
-    [offset * 3, -offset * 3]
-  );
+  const yBackRange = useTransform(scrollY, [initial, final], [offset, -offset]);
   const frontLayerOffset = useSpring(yFrontRange, {
     stiffness: 400,
     damping: 90,

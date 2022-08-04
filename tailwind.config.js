@@ -23,6 +23,7 @@ module.exports = {
       },
       margin: {
         "1/12": "8.333333%",
+        "2/12": "16.666666666%",
       },
       fontWeight: {
         book: 450,
@@ -48,6 +49,7 @@ module.exports = {
       transparent: "transparent",
       black: {
         DEFAULT: "#181818",
+        30: "rgba(24, 24, 24, 0.3)",
         60: "rgba(24, 24, 24, 0.6)",
       },
       white: {
@@ -71,6 +73,7 @@ module.exports = {
       // bold
       "heading-1": ["120px", "110px"],
       "heading-2": ["75px", "85px"],
+      "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
       "heading-4": ["32px", "42px"],
       "heading-5": ["24px", "32px"],
@@ -114,12 +117,14 @@ module.exports = {
       const components = {
         ".tw-heading-1": "@apply text-heading-1 font-bold",
         ".tw-heading-2": "@apply text-heading-2 font-bold",
+        ".tw-heading-60": "@apply text-heading-60 font-bold",
         ".tw-heading-3": "@apply text-heading-3 font-bold",
         ".tw-heading-4": "@apply text-heading-4 font-bold",
         ".tw-heading-5": "@apply text-heading-5 font-bold",
         ".tw-heading-6": "@apply text-heading-6 font-bold",
         ".tw-heading-7": "@apply text-heading-7 font-bold",
         ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold",
+
         //
         ".tw-title-navigation": "@apply text-navigation font-medium",
         ".tw-title-navigation-on-page": "@apply text-navigation-on-page font-medium",
