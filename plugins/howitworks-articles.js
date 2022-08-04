@@ -62,7 +62,7 @@ const howItWorksArticlesPlugin = async function () {
       setGlobalData(content);
       content.articles.map((article) => {
         addRoute({
-          path: "/howitworks/" + article.slug,
+          path: "/how-it-works/" + article.slug,
           component: "@site/src/components/HowItWorksPage/ArticlePage/",
           exact: true,
         });

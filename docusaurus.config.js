@@ -132,7 +132,11 @@ const config = {
               },
               {
                 label: "How it works",
-                href: "/howitworks",
+                href: "/how-it-works",
+              },
+              {
+                label: "Bitcoin Integration",
+                href: "/bitcoin-integration",
               },
               {
                 label: "Internet Identity",
