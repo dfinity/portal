@@ -1,14 +1,8 @@
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Hero from "../components/Basics/Hero";
+import React, { useEffect, useRef, useState } from "react";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import data, {
-  RoadmapItem,
-  CustomUrl,
-  RoadmapItemLink,
-} from "../../roadmap/roadmapData";
+import data, { RoadmapItem, RoadmapItemLink } from "../../roadmap/roadmapData";
 import OpenOverlayIcon from "../../static/img/plus.svg";
 import Link from "@docusaurus/Link";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
@@ -99,7 +93,7 @@ const OverlayGroup: React.FC<{
   return (
     <div>
       <div className="md:hidden mb-6">{aside}</div>
-      <div className="flex flex-col items-start md:flex-row md:justify-between md:items-center mb-6 gap-6 sticky top-6">
+      <div className="flex flex-col items-start md:flex-row md:justify-between md:items-center mb-6 gap-6 sticky top-6 z-[1]">
         <span
           className={`${pillClassName} rounded-full tw-title-navigation text-white py-2 px-4 inline-flex items-center gap-2`}
         >
@@ -128,6 +122,18 @@ const Overlay: React.FC<{
         .getBoundingClientRect().top - 48;
   }, []);
 
+  useEffect(() => {
+    function onKeydown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    }
+    window.addEventListener("keydown", onKeydown);
+    return () => {
+      window.removeEventListener("keydown", onKeydown);
+    };
+  }, [onClose]);
+
   return (
     <motion.div
       className="fixed inset-0 overflow-auto bg-white-60 z-[2000]"
@@ -138,7 +144,7 @@ const Overlay: React.FC<{
       ref={overlayRef}
     >
       <div
-        className="relative container-10 px-0 md:px-6 md:py-12 "
+        className="relative container-10 !px-0 md:px-6 md:py-12 "
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-right pointer-events-none sticky top-6 pr-6 md:top-20 z-10 md:pr-8">
@@ -182,7 +188,7 @@ const Overlay: React.FC<{
                   {domain.groups.pending?.length && (
                     <OverlayGroup
                       deployed={false}
-                      pillClassName="bg-black-60"
+                      pillClassName="bg-black-60 backdrop-blur-2xl"
                       items={domain.groups.pending}
                       pill={
                         <>
@@ -267,26 +273,19 @@ const Overlay: React.FC<{
 };
 
 const RoadmapPage: React.FC = () => {
-  const { siteConfig } = useDocusaurusContext();
   resetNavBarStyle();
 
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
-  const scrollPosition = useRef(0);
-  // const [scrollPosition, setScrollPosition] = useState(false);
 
   function openOverlay(at: number) {
-    // scrollPosition.current = window.scrollY;
-    // document.body.style.position = "fixed";
-    // document.body.style.inset = "0";
-    // window.scrollY = scrollPosition.current;
+    document.body.style.overflow = "hidden";
     setOverlayOpenAt(at);
     setOverlayOpen(true);
   }
 
   function closeOverlay() {
-    // document.body.style.position = "";
-    // document.body.style.inset = "";
+    document.body.style.overflow = "";
     setOverlayOpen(false);
   }
 
