@@ -436,7 +436,7 @@ function LiveSessionsPage(): JSX.Element {
         </AnimateSpawn>
 
         {/* This must not be invisible */}
-        <div ref={formRef}></div>
+        <div ref={formRef} id="subscribe"></div>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}

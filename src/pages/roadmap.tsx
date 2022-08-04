@@ -482,7 +482,9 @@ const RoadmapPage: React.FC = () => {
                 nibh, ut fermentum massa justo sit amet risus. Aenean eu leo
                 quam.
               </p>
-              <Link className="link-external">Reserve your seat</Link>
+              <Link className="link-external" href="/live-sessions/#subscribe">
+                Reserve your seat
+              </Link>
             </motion.div>
             <motion.div
               variants={transitions.item}
