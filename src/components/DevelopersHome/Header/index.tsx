@@ -24,12 +24,10 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
-        <div className="announcementBar">
-          <AnnouncementBar
-            text={"Direct integration with the Bitcoin network"}
-            link={"/bitcoin-integration"}
-          />
-        </div>
+        <AnnouncementBar
+          text={"Direct integration with the Bitcoin network"}
+          link={"/bitcoin-integration"}
+        />
         <img className={styles.BGShape} src={BGCircle} alt="" />
         <motion.p variants={transitions.item} className={styles.Title}>
           Developer Resources
