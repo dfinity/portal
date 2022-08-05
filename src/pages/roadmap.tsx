@@ -140,7 +140,12 @@ const RoadmapPage: React.FC = () => {
                 What isn't here that you'd like to see the DFINITY Foundation
                 prioritize for the Internet Computer?
               </p>
-              <Link className="link-external">Submit your suggestions</Link>
+              <Link
+                className="link-external"
+                href="https://forum.dfinity.org/t/megathread-community-submissions-for-dfinity-foundation-s-roadmap/6175"
+              >
+                Submit your suggestions
+              </Link>
             </motion.div>
             <motion.div
               variants={transitions.item}
@@ -168,7 +173,12 @@ const RoadmapPage: React.FC = () => {
                 risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus
                 vel augue laoreet rutrum faucibus
               </p>
-              <Link className="link-external">Apply for Grants</Link>
+              <Link
+                className="link-external"
+                href="https://dfinity.org/grants/"
+              >
+                Apply for Grants
+              </Link>
             </motion.div>
           </AnimateSpawn>
         </section>
@@ -247,7 +257,10 @@ const RoadmapPage: React.FC = () => {
             className="text-center mt-12 mb-20 md:mb-30 md:mt-16"
             variants={transitions.item}
           >
-            <Link className="inline-flex gap-2 items-center  link-primary">
+            <Link
+              className="inline-flex gap-2 items-center  link-primary"
+              href="https://github.com/dfinity/ic"
+            >
               <GithubIcon className="w-6" />
               See documentation
             </Link>
