@@ -617,7 +617,7 @@ The topic codes are listed below.
 }
 ```
 
-::: note
+:::note
 
 The `followees` metadata field contains list of unique neuron identifiers assigned by the Governance canister smart contract, not the list of neuron indices chosen by the caller.
 You can obtain unique neuron identifiers of you your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
