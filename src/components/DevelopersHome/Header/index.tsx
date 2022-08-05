@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
 
 function Index() {
   const controls = useAnimation();
@@ -23,6 +24,12 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
+        <div className="announcementBar">
+          <AnnouncementBar
+            text={"Direct integration with the Bitcoin network"}
+            link={"https://dfinity.org/bitcoin-integration"}
+          />
+        </div>
         <img className={styles.BGShape} src={BGCircle} alt="" />
         <motion.p variants={transitions.item} className={styles.Title}>
           Developer Resources

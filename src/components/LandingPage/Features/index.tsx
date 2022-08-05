@@ -59,7 +59,7 @@ const cardsContent = [
   {
     title: "Bitcoin liquidity",
     body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
-    link: "/how-it-works/direct-integration-with-bitcoin/",
+    link: "/bitcoin-integration",
   },
   {
     title: "HTTPS outcalls",
