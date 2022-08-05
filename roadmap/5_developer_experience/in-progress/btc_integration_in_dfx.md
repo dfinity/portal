@@ -1,8 +1,8 @@
 ---
-title: High-replication subnets
+title: BTC Integration in dfx
 links:
   Forum Link:
   Proposal:
-eta:
+eta: August 2022
 is_community: false
 ---

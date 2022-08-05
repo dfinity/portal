@@ -1,7 +1,7 @@
 ---
 title: Bitcoin Integration to Enable Bitcoin Smart Contracts
 links:
-  Forum Post: https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147
+  Forum Link: https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147
   Proposal: https://dashboard.internetcomputer.org/proposal/20586
 eta: August 2022
 is_community: false

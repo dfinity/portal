@@ -1,7 +1,7 @@
 ---
 title: SEO and Streaming Support
 links:
-  Forum Post:
+  Forum Link:
   Proposal:
 eta: Sept 2022
 is_community: false

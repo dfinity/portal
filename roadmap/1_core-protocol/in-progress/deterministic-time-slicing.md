@@ -1,7 +1,7 @@
 ---
 title: Deterministic Time Slicing
 links:
-  Forum Post: https://forum.dfinity.org/t/deterministic-time-slicing/10635
+  Forum Link: https://forum.dfinity.org/t/deterministic-time-slicing/10635
   Proposal:
 eta:
 is_community: false

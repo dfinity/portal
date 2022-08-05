@@ -1,7 +1,7 @@
 ---
 title: Threshold ECDSA signatures
 links:
-  Forum Post: https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152
+  Forum Link: https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152
   Proposal: https://dashboard.internetcomputer.org/proposal/21340
 eta: August 2022
 is_community: false

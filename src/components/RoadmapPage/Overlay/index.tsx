@@ -132,7 +132,7 @@ const Overlay: React.FC<{
               <img
                 src={domain.image.overlay}
                 alt=""
-                className="w-full h-[200px] object-cover md:h-auto"
+                className="w-full h-[200px] object-cover md:h-[450px]"
               />
               <div className="p-6 pb-16 md:p-12">
                 <h2 className="tw-heading-4 md:tw-heading-60 mb-3 text-infinite">

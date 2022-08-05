@@ -1,7 +1,7 @@
 ---
 title: SEV-SNP protected Boundary Node VM
 links:
-  Forum Post: https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401
+  Forum Link: https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401
   Proposal: https://dashboard.internetcomputer.org/proposal/35671
 eta:
 is_community: false

@@ -1,7 +1,7 @@
 ---
 title: Custom Subdomains
 links:
-  Forum Post: https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162
+  Forum Link: https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162
   Proposal:
 eta:
 is_community: false

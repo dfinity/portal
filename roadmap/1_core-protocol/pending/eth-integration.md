@@ -1,7 +1,7 @@
 ---
 title: Direct Integration with Ethereum
 links:
-  Forum Post: https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382/6
+  Forum Link: https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382/6
   Proposal: https://dashboard.internetcomputer.org/proposal/35635
 eta:
 is_community: false

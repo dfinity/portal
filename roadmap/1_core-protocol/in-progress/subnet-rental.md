@@ -1,7 +1,7 @@
 ---
 title: Subnet rental
 links:
-  Forum Post:
+  Forum Link:
   Proposal:
 eta:
 is_community: false

@@ -1,8 +1,8 @@
 ---
-title: High-replication subnets
+title: SNS Quill
 links:
   Forum Link:
   Proposal:
-eta:
+eta: August 2022
 is_community: false
 ---

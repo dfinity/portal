@@ -1,5 +1,5 @@
 ---
-title: High-replication subnets
+title: Node Onboarding Improvements
 links:
   Forum Link:
   Proposal:

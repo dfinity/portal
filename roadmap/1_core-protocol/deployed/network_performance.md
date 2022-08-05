@@ -2,7 +2,7 @@
 title: "Network Performance with Larger Network: State Sync, Certification, and XNet"
 links:
   Proposal: https://dashboard.internetcomputer.org/proposal/35648
-  Forum Post: https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387/3
+  Forum Link: https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387/3
 eta: February 2022
 ---
 

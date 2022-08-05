@@ -1,7 +1,7 @@
 ---
 title: Nodes Can be Reassigned to a Different Subnet
 links:
-  Forum Post:
+  Forum Link:
   Proposal:
 eta: March 2022
 ---

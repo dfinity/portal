@@ -1,7 +1,7 @@
 ---
 title: Enable HTTP Requests from Canisters
 links:
-  Forum Post: https://forum.dfinity.org/t/long-term-r-d-general-integration-proposal/9383
+  Forum Link: https://forum.dfinity.org/t/long-term-r-d-general-integration-proposal/9383
   Proposal: https://dashboard.internetcomputer.org/proposal/35639
 eta:
 is_community: false
