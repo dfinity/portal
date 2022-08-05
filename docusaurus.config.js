@@ -15,6 +15,7 @@ const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const roadmapDataPlugin = require("./plugins/roadmap-data");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const teamInformationPlugin = require("./plugins/team-information");
@@ -45,6 +46,7 @@ const config = {
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
     teamInformationPlugin,
+    roadmapDataPlugin,
   ],
 
   presets: [
