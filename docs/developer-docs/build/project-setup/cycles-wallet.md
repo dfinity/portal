@@ -98,7 +98,7 @@ To check the cycles balance on the Internet Computer:
 
 3.  Display the cycle balance from the cycles wallet associated with the currently-selected identity by running the following command:
 
-        dfx wallet --network ic balance
+        dfx wallet balance --network ic
 
     The command displays output similar to the following:
 
@@ -108,7 +108,7 @@ To check the cycles balance on the Internet Computer:
 
 You can also check the cycles balance by calling the `wallet_balance` method in the cycles wallet canister directly. For example, if your principal is a controller for the `h5aet-waaaa-aaaab-qaamq-cai` cycles wallet, you can check the current cycle balance by running the following command:
 
-    dfx canister --network ic call h5aet-waaaa-aaaab-qaamq-cai wallet_balance
+    dfx canister call h5aet-waaaa-aaaab-qaamq-cai wallet_balance --network ic
 
 The command returns the balance using Candid format as a record with an amount field (represented by the hash 3\_573\_748\_184) and a balance of 6,895,656,625,450 cycles like this:
 
@@ -128,7 +128,7 @@ Use the `wallet_create_wallet` method to create a new cycles wallet canister wit
 
 For example, you can run a command similar to the following to create a new wallet and assign a principal as a controller:
 
-    dfx canister --network  call f3yw6-7qaaa-aaaab-qaabq-cai wallet_create_wallet '(record { cycles = 5000000000000 : nat64; controller = principal "vpqee-nujda-46rtu-4noo7-qnxmb-zqs7g-5gvqf-4gy7t-vuprx-u2urx-gqe"})'
+    dfx canister call f3yw6-7qaaa-aaaab-qaabq-cai wallet_create_wallet '(record { cycles = 5000000000000 : nat64; controller = principal "vpqee-nujda-46rtu-4noo7-qnxmb-zqs7g-5gvqf-4gy7t-vuprx-u2urx-gqe"})' --network ic
 
 The command returns the principal for the new wallet:
 
@@ -140,7 +140,7 @@ Use the `wallet_create_canister` method to register a new canister principal on 
 
 For example, you can run a command similar to the following to create a new wallet and assign a principal as a controller:
 
-    dfx canister --network  call f3yw6-7qaaa-aaaab-qaabq-cai wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "vpqee-nujda-46rtu-4noo7-qnxmb-zqs7g-5gvqf-4gy7t-vuprx-u2urx-gqe"})'
+    dfx canister call f3yw6-7qaaa-aaaab-qaabq-cai wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "vpqee-nujda-46rtu-4noo7-qnxmb-zqs7g-5gvqf-4gy7t-vuprx-u2urx-gqe"})' --network ic
 
 The command returns the principal for the new canister you created:
 
@@ -176,7 +176,7 @@ For example, you can use the `get_events` method to return `canister_create` and
 
 If the cycles wallet (`gastn-uqaaa-aaaae-aaafq-cai`) is deployed on the Internet Computer main network, you could run a command that looks like this to return events:
 
-    dfx canister --network ic call gastn-uqaaa-aaaae-aaafq-cai get_events '(record {from = null; to = null})'
+    dfx canister call gastn-uqaaa-aaaae-aaafq-cai get_events '(record {from = null; to = null})' --network ic
 
 The output from the command is in Candid format similar to the following:
 

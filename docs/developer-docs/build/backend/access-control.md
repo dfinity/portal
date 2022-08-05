@@ -135,7 +135,7 @@ To review your current identity and principle:
 
 3.  Check the role associated with the `default` user identity by running the following command:
 
-        dfx canister --wallet=$(dfx identity get-wallet) call access_hello my_role
+        dfx canister call access_hello my_role --wallet="$(dfx identity get-wallet)"
 
     The command displays output similar to the following:
 
@@ -160,7 +160,7 @@ To create a new user identity:
 
 3.  Call the `my_role` function to see that your new user identity has not been assigned to any role.
 
-        dfx --identity ic_admin canister call access_hello my_role
+        dfx canister call access_hello my_role --identity ic_admin
 
     The command displays output similar to the following:
 
@@ -197,7 +197,7 @@ To assign the admin role to the IC\_admin identity:
 
 2.  Assign the `ic_admin` principal the `admin` role by running a command similar to the following using Candid syntax:
 
-        dfx canister --wallet=$(dfx identity get-wallet) call access_hello assign_role '((principal "c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae"),opt variant{admin})'
+        dfx canister call --wallet="$(dfx identity get-wallet)" access_hello assign_role '((principal "c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae"),opt variant{admin})'
 
 Be sure to replace the `principal` hash with the one returned by the `dfx identity get-principal` command for the `ic_admin` identity.
 
@@ -205,7 +205,7 @@ Be sure to replace the `principal` hash with the one returned by the `dfx identi
 
 \+
 
-    dfx --identity ic_admin canister call access_hello my_role
+    dfx canister call access_hello my_role --identity ic_admin
 
 \+ The command displays output similar to the following:
 
@@ -215,7 +215,7 @@ Be sure to replace the `principal` hash with the one returned by the `dfx identi
 
 1.  Call the `greet` function using the `ic_admin` user identity that you just assigned the `admin` role by running the following command:
 
-        dfx --identity ic_admin canister call access_hello greet "Internet Computer Admin"
+        dfx canister call access_hello greet "Internet Computer Admin" --identity ic_admin
 
     The command displays output similar to the following:
 
@@ -258,11 +258,11 @@ To add a new authorized user identity:
 
 5.  Use the `ic_admin` identity to assign the `authorized` role to `alice_auth` by running the following command:
 
-        dfx --identity ic_admin canister call access_hello assign_role "(principal \"$ALICE_ID\", opt variant{authorized})"
+        dfx canister call access_hello assign_role "(principal \"$ALICE_ID\", opt variant{authorized})" --identity ic_admin
 
 6.  Call the `my_role` function to verify the role assignment.
 
-        dfx --identity alice_auth canister call access_hello my_role
+        dfx canister call access_hello my_role --identity alice_auth
 
     The command displays output similar to the following:
 
@@ -301,23 +301,23 @@ To add an unauthorized user identity:
 
 4.  Store the principal for the `bob_standard` user in an environment variable by running the following command:
 
-        BOB_ID=$(dfx --identity bob_standard identity get-principal)
+        BOB_ID=$(dfx identity get-principal --identity bob_standard)
 
 5.  Attempt to use the `bob_standard` identity to assign a role.
 
-        dfx --identity bob_standard canister call access_hello assign_role "(principal \"$BOB_ID\", opt variant{authorized})"
+        dfx canister call --identity bob_standard access_hello assign_role "(principal \"$BOB_ID\", opt variant{authorized})"
 
     This command returns an `unauthorized` error.
 
 6.  Attempt to use the `default` user identity to assign `bob_standard` the `owner` role by running the following command:
 
-        dfx --identity default canister --wallet=$(dfx --identity default identity get-wallet) call access_hello assign_role "(principal \"$BOB_ID\", opt variant{owner})"
+        dfx canister call --identity default --wallet="$(dfx identity get-wallet --identity default)" access_hello assign_role "(principal \"$BOB_ID\", opt variant{owner})"
 
     This command fails because users cannot be assigned the `owner` role.
 
 7.  Call the `greet` function using the `bob_standard` user identity by running the following command:
 
-        dfx --identity bob_standard canister call access_hello greet "Bob"
+        dfx canister call --identity bob_standard access_hello greet "Bob"
 
     The command displays output similar to the following:
 

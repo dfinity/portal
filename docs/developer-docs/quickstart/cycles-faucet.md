@@ -49,7 +49,7 @@ After a successfully running the `redeem` command, the created canister's ID is 
 
 After runninng the `redeem` command, the created canister and it's balance can be checked using the status command. Use the canister ID returned by the `redeem` command:
 
-    dfx canister --network=ic status <canister id>
+    dfx canister status <canister id> --network=ic
 
 Please note the canister ID is used in the next step, so write down the canister ID. 
 

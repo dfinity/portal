@@ -351,7 +351,7 @@ e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 Once you have transferred some ICP tokens into this account (5-10$ worth should be plenty to get going), you can see the balance using this command:
 
 ``` bash
-dfx ledger --network ic balance
+dfx ledger balance --network ic
 ```
 
 This will output something like this:
@@ -363,13 +363,13 @@ This will output something like this:
 With those ICP tokens ready, you can start creating your cycles wallet. To start, you have to create a canister which will become your wallet. The base command for this is as follows:
 
 ``` bash
-dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
+dfx ledger create-canister <your-principal-identifier> --amount <icp-tokens> --network ic
 ```
 
 The two values you have to substitute are your own principal and the amount of tokens you want to convert. To figure out your own principal, use the output of `dfx identity get-principal`. If my principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and I want to convert 2.3 ICP into cycles, the command looks like this:
 
 ``` bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3
+dfx ledger create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3 --network ic
 ```
 
 This command will take some time and output something similar to the following:
@@ -384,13 +384,13 @@ The id in this output is the address of the canister where your wallet will live
 Now that the canister is created, you can install the wallet code using this command:
 
 ``` bash
-dfx identity --network ic deploy-wallet <canister-identifer>
+dfx identity deploy-wallet <canister-identifer> --network ic
 ```
 
 Here, you have to substitute the canister identifier using the id you received in the output of the previous command. So, in the example this would look like this:
 
 ``` bash
-dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+dfx identity deploy-wallet gastn-uqaaa-aaaae-aaafq-cai --network ic
 ```
 
 And the output should look like this:
@@ -403,7 +403,7 @@ The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae
 Now your wallet should be configured and ready to go. To check if everything went right, run this to see the identifier of your configured wallet:
 
 ``` bash
-dfx identity --network ic get-wallet
+dfx identity get-wallet --network ic
 ```
 
 This should print the canister id you used in the commands earlier.
@@ -411,7 +411,7 @@ This should print the canister id you used in the commands earlier.
 You can also check the balance of your new cycles wallet:
 
 ``` bash
-dfx wallet --network ic balance
+dfx wallet balance --network ic
 ```
 
 This should print something looking like this:
@@ -430,7 +430,7 @@ npm install
 ```
 
 ``` bash
-dfx deploy --network ic --with-cycles 1000000000000
+dfx deploy --with-cycles 1000000000000 --network ic
 ```
 
 The `--network` option specifies the network alias or URL for deploying the dapp. This option is required to install on the Internet Computer blockchain mainnet. `--with-cycles` explicitly tells `dfx` how many cycles to use, otherwise it will use the default of 3 trillion.
@@ -496,12 +496,12 @@ After loading the service worker, your dapp will load:
 Since the canister has a method called `greet` (which accepts a string as a parameter), we can send it a message via `dfx`.
 
 ``` bash
-dfx canister --network ic call hello_backend greet '("everyone": text)'
+dfx canister call hello_backend greet '("everyone": text)' --network ic
 ```
 
 Note the way the message is constructed:
 
--   `dfx canister --network ic call` is the setup for calling a canister on the IC.
+-   `dfx canister call --network ic` is the setup for calling a canister on the IC.
 
 -   `hello_backend greet` means we are sending a message to a canister named `hello` and evoking its `greet` method. `dfx` knows which `hello` canister (out of the many in the IC), one refers to because a mapping of `hello` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
 
@@ -522,7 +522,7 @@ dfx identity whoami
 #### 2. Confirm the identity you are using has enough cycles on-chain
 
 ``` bash
-dfx wallet --network ic balance
+dfx wallet balance --network ic
 ```
 
 #### 3. Try proxying through your wallet
@@ -532,7 +532,7 @@ Sometimes (especially when you created the canisters with `dfx` versions before 
 If this works and you would like to add your own principal as a controller of the canister (so you don’t have to use the `--wallet` option anymore), you can run this:
 
 ``` bash
-dfx canister --wallet "$(dfx identity get-wallet)" update-settings --all --add-controller "$(dfx identity get-principal)"
+dfx canister update-settings --wallet "$(dfx identity get-wallet)" --all --add-controller "$(dfx identity get-principal)"
 ```
 
 ## Wrap-up

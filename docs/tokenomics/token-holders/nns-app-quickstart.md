@@ -127,13 +127,13 @@ To transfer ICP utility tokens controlled by your developer identity:
 4.  Check the current balance in the ledger account associated with your identity by running the following command:
 
     ``` bash
-    dfx ledger --network ic balance
+    dfx ledger balance --network ic
     ```
 
 5.  Transfer ICP utility tokens to your Main account or a linked subaccount you create by running a command similar to the following:
 
     ``` bash
-    dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --memo <numeric-memo>
+    dfx ledger transfer <destination-account-id> --icp <ICP-amount> --memo <numeric-memo> --network ic
     ```
 
     For example, assume you have the following accounts:
@@ -142,11 +142,11 @@ To transfer ICP utility tokens controlled by your developer identity:
 
     If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
 
-        dfx ledger --network ic transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
+        dfx ledger transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1 --network ic
 
     If you also want to transfer one ICP utility token to the `pubs` account, you can run the following command:
 
-        dfx ledger --network ic transfer 183a04888eb20e73766f082bae01587830bd3cd912544f63fda515e9d77a96dc --icp 1 --memo 12346
+        dfx ledger transfer 183a04888eb20e73766f082bae01587830bd3cd912544f63fda515e9d77a96dc --icp 1 --memo 12346 --network ic
 
     This example illustrates how to transfer ICP utility tokens to using a whole number with the `--icp` command-line option.
 

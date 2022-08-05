@@ -243,7 +243,7 @@ To add identities for testing:
 2.  Call the `update` function to add a profile for the new identity.
 
     ``` bash
-    dfx --identity Miles canister call rust_profile update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
+    dfx canister call --identity Miles rust_profile update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
     ```
 
 3.  Call the `getSelf` function to view the profile associated with the `default` user identity.
@@ -265,7 +265,7 @@ To add identities for testing:
 4.  Call the `getSelf` function using the `Miles` user identity by running the following command:
 
     ``` bash
-    dfx --identity Miles canister call rust_profile getSelf
+    dfx canister call --identity Miles rust_profile getSelf
     ```
 
     The command displays the profile currently associated with the Miles identity, in this example:

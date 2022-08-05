@@ -19,13 +19,13 @@ Both commands provide a flag to specify a ledger canister id (`--ledger-canister
 
 Get the ICP balance of a specific account:
 ``` bash
-dfx ledger --network ic balance <account-id>
+dfx ledger balance <account-id> --network ic
 ```
 The `<account-id>` is encoded as a hex string.
 In many cases you want to check the main account balance of a specific principal. You can use the following command for this:
 
 ``` bash
-dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principal-id>)
+dfx ledger balance "$(dfx ledger account-id --of-principal <principal-id>)" --network ic
 ```
 
 #### Transfer
@@ -33,7 +33,7 @@ dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principa
 The transfer function can be used to transfer ICP from your account to another. 
 
 ``` bash
-dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-account-id>
+dfx ledger transfer --amount <amount> --memo <memo> <receiver-account-id> --network ic
 ```
 
 

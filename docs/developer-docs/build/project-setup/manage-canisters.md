@@ -92,7 +92,7 @@ You can look up the canister identifier for any specific canister by running the
 
 To look up the canister identifier for the same canister deployed on the environment specified by the `ic` alias, you would run the following command:
 
-    dfx canister --network=ic id lookup
+    dfx canister id lookup --network=ic
 
 ## Add a Wallet for Existing Canisters
 

@@ -150,7 +150,7 @@ To look up your account in the ledger:
 
 4.  Check your account balance by running the following command:
 
-        dfx ledger --network ic balance
+        dfx ledger balance --network ic
 
     This command displays the ICP token balance from the ledger account. For example, you should see output similar to the following:
 
@@ -164,13 +164,13 @@ To transfer ICP tokens to create a cycles wallet:
 
 1.  Create a new canister with cycles by transferring ICP tokens from your ledger account by running a command similar to the following:
 
-        dfx ledger --network ic create-canister <principal-identifier> --amount <icp-tokens>
+        dfx ledger create-canister <principal-identifier> --amount <icp-tokens> --network ic
 
     This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
 
     For example, the following command converts .25 ICP tokens into cycles and specifies the principal identifier for the default identity as the controller of the new canister:
 
-        dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
+        dfx ledger create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25 --network ic
 
     If the transaction is successful, the ledger records the event and you should see output similar to the following:
 
@@ -179,11 +179,11 @@ To transfer ICP tokens to create a cycles wallet:
 
 2.  Install the cycles wallet code in the newly-created canister placeholder by running a command similar to the following:
 
-        dfx identity --network ic deploy-wallet <canister-identifer>
+        dfx identity deploy-wallet <canister-identifer> --network ic
 
     For example:
 
-        dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+        dfx identity deploy-wallet gastn-uqaaa-aaaae-aaafq-cai --network ic
 
     This command displays output similar to the following:
 
@@ -198,7 +198,7 @@ To validate your cycles wallet:
 
 1.  Verify the canister identifier for the cycles wallet you deployed by running the following command:
 
-        dfx identity --network ic get-wallet
+        dfx identity get-wallet --network ic
 
     The command displays the canister identifier for your cycles wallet with output similar to the following:
 
@@ -206,7 +206,7 @@ To validate your cycles wallet:
 
 2.  Check that your cycles wallet canister is properly configured and holds a balance of cycles by running a command similar to the following:
 
-        dfx wallet --network ic balance
+        dfx wallet balance --network ic
 
     The command returns the balance for the your cycles wallet. For example:
 
@@ -232,7 +232,7 @@ To validate your cycles wallet:
 
     For example, call the `authorize` method for the cycles wallet canister with a command similar to the following:
 
-        dfx canister --network ic call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
+        dfx canister call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")' --network ic
 
     Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the IC, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
@@ -299,7 +299,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your cycles wallet by running a command similar to the following:
 
-        dfx ledger --network ic top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
+        dfx ledger top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005 --network ic
 
     This command converts an additional `1.005` ICP tokens to cycles for the `gastn-uqaaa-aaaae-aaafq-cai` cycles wallet identifier. The command returns output similar to the following:
 
@@ -308,13 +308,11 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
 4.  Call the `hello` canister and the predefined `greet` function by running the following command:
 
-        dfx canister --network ic call hello greet '("everyone": text)'
+        dfx canister call hello greet '("everyone": text)' --network ic
 
     Let’s take a closer look at this example:
 
     -   Using the `--network ic` option indicates that the canister you want to call is deployed on the `ic`. The `ic` network alias is an internally-reserved alias for accessing the Internet Computer blockchain mainnet.
-
-    -   Note that the `--network ic` option must precede the operation subcommand, which, in this case, is the `dfx canister call` command.
 
     -   The `hello` argument specifies the name of the canister you want to call.
 
@@ -342,7 +340,7 @@ To access the dapp frontend:
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
-        dfx canister --network ic id hello_assets
+        dfx canister id hello_assets --network ic
 
     For example, the full URL should look similar to the following:
 

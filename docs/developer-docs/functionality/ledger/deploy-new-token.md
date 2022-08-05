@@ -92,7 +92,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 6.  Check that the Ledger canister is healthy. Execute the following command:
 
     ``` sh
-    dfx canister --network ${NETWORK} call ledger symbol
+    dfx canister call ledger symbol --network ${NETWORK}
     ```
 
     The output should look like the following:

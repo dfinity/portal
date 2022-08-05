@@ -30,7 +30,7 @@ The canisters, if not voluntarily made immutable, have complete control over the
 
 The simplest option is to make the canister immutable by removing its controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
-    dfx canister --network ic info ryjl3-tyaaa-aaaaa-aaaba-cai
+    dfx canister info ryjl3-tyaaa-aaaaa-aaaba-cai --network ic
 
 will return the list of controllers for the canister with principal `ryjl3-tyaaa-aaaaa-aaaba-cai` (in this example, the ledger canister).
 

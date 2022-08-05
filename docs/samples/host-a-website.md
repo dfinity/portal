@@ -135,7 +135,7 @@ You should see some output in your console, and a success message looking someth
 
 Find your new canister’s ID by running
 
-    dfx canister --network ic id website
+    dfx canister id website --network ic
 
 Take that canister ID and visit https://&lt;canister-id&gt;.ic0.app, inserting your own canister ID as the subdomain in the URL.
 
