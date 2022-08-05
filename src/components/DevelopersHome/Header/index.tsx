@@ -27,7 +27,7 @@ function Index() {
         <div className="announcementBar">
           <AnnouncementBar
             text={"Direct integration with the Bitcoin network"}
-            link={"https://dfinity.org/bitcoin-integration"}
+            link={"/bitcoin-integration"}
           />
         </div>
         <img className={styles.BGShape} src={BGCircle} alt="" />
