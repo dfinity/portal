@@ -6,7 +6,6 @@ import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import Canisters from "@site/src/components/DevelopersHome/Canisters";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
 import Contribute from "@site/src/components/DevelopersHome/Contribute";
-import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 function Developers(): JSX.Element {
