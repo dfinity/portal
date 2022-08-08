@@ -7,4 +7,4 @@ eta: August 2022
 is_community: false
 ---
 
-Today, the installation and configuration of boundary nodes requires manual intervention by the foundation’s employees. This feature establishes a fully-automated build process to facilitate improved automated testing and deployment and thereby enables NNS-driven deployment of boundary nodes. The operating system, IC OS, currently used for replica nodes, shall also be used for boundary nodes. This solution builds the basis for ongoing decentralization efforts.
+This feature enables NNS-driven deployment of boundary nodes, establishing a fully-automated installation and configuration process. The operating system, IC OS, currently used for replica nodes, will also be used for boundary nodes. This solution eliminates manual intervention by Dfinity Foundation employees and builds a basis for ongoing decentralization efforts.
