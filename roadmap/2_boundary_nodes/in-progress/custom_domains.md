@@ -7,4 +7,4 @@ eta:
 is_community: false
 ---
 
-This feature enables users on the IC to use their own custom domains (e.g., foo.com) instead of being restricted to the <canister id>.ic0.app domains. To this end, users configure the DNS entries of their domain to redirect the traffic to the boundary nodes and signal the boundary nodes to which canister the traffic should be forwarded. The boundary nodes automatically manage the required certificates for HTTPS.
+This features enables dapps on the Internet Computer use to be indexed by search engines and previewed on social media (e.g., Twitter cards). Boundary nodes redirect requests from crawlers and bots (e.g., Googlebot) to raw in order to avoid loading the service worker.
