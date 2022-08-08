@@ -7,4 +7,4 @@ eta:
 is_community: false
 ---
 
-Virtual people parties are a scalable proof of personhood, in which randomly assigned groups of users validate each other through interaction. Validation of personhood improves decentralization on the Internet Computer by providing greater voting power and thus rewards to validated users, i.e., real people as opposed to unknown entities. Users can also present the proof of personhood toward dapps, which in turn can provide the users with greater privileges and rewards.
+Virtual people parties are a scalable proof of personhood, whereby randomly assigned groups of users validate each other through interaction. Integrating this feature will improve decentralization on the Internet Computer, offering greater voting power and rewards to real validated users as opposed to unknown entities. Users can also present the proof of personhood toward dapps, which can provide greater privileges and rewards.
