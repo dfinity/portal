@@ -113,8 +113,8 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              All technical contributions to the Internet Computer Roadmap are subject to
-              community discussion and voting. Neron holders adn members of the ecosystem have the 
+              All technical contributions to the Internet Computer roadmap are subject to
+              community discussion and voting. Neuron holders adn members of the ecosystem have the 
               ability to direct the efforts of the Dfinity Fountation. 
              
             </motion.p>
@@ -154,9 +154,9 @@ const RoadmapPage: React.FC = () => {
             >
               <h3 className="tw-lead-lg md:tw-title-sm">Live Sessions</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Join live sessions with the DFINITY Foundation to get informed about the
-                upcoming technical proposals and contributions to the Internet Computer roadmap. 
-                quam.
+                Join live sessions with R&D to get informed about the upcoming technical proposals and contributions
+                to the Internet Computer roadmap. 
+              
               </p>
               <Link className="link-external" href="/live-sessions/#subscribe">
                 Reserve your seat
