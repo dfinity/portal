@@ -190,8 +190,9 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Completed
-              <br className="md:hidden" /> Roadmap Items
+               Completed Roadmap Items                             
+              <br className="md:hidden" /> 
+                                        
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-12 md:mb-16 md:w-7/10"
