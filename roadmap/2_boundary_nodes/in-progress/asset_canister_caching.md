@@ -6,5 +6,4 @@ links:
 eta: Nov 2022
 is_community: false
 ---
-
-Boundary nodes only cache queries for a very short amount of time. Assets (HTML pages, JS sources, images, etc) are not cached. The asset canister does not provide TTL information as to when the assets should expire. This feature would give the assets time-to-live information and expose it to Nginx on the boundary nodes as well as the service worker.
+This feature solves the problem of short-lived cache queries by giving assets (HTML pages, JS sources, images, etc.) time-to-live information (expiration times) and exposing them to Nginx on the boundary nodes as well as the service worker.
