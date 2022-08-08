@@ -1,5 +1,5 @@
 ---
-title: "Network Performance with Larger Network: State Sync, Certification, and XNet"
+title: "Network Scalability: State Sync, Certification, and XNet"
 links:
   Proposal: https://dashboard.internetcomputer.org/proposal/35648
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387/3
