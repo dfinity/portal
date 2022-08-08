@@ -7,4 +7,4 @@ eta:
 is_community: false
 ---
 
-This features enables dapps on the Internet Compute to be indexed by search engines and previewed on social media (e.g., Twitter cards). Boundary nodes redirect requests from crawlers and bots (e.g., Googlebot) to raw in order to avoid loading the service worker.
+This feature enables custom domains on the Internet Computer, so users will not be restricted to using the <canister id>.ic0.app domains. Users can configure the DNS entries of their domain to redirect traffic to the boundary nodes and signal the boundary nodes of the canister to which the traffic should be forwarded. Boundary nodes automatically manage the required certificates for HTTPS.
