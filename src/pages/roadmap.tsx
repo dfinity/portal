@@ -114,7 +114,7 @@ const RoadmapPage: React.FC = () => {
               variants={transitions.item}
             >
               All technical contributions to the Internet Computer roadmap are subject to
-              community discussion and voting. Neuron holders adn members of the ecosystem have the 
+              community discussion and voting. Neuron holders and members of the ecosystem have the 
               ability to direct the efforts of the Dfinity Fountation. 
              
             </motion.p>
