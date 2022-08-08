@@ -23,10 +23,10 @@ const DomainCard: React.FC<{
       ></img>
       <div className="px-6 pt-6 pb-8 md:py-0 md:px-12 flex-1">
         <h2 className="tw-heading-5 md:tw-heading-3 mb-3">{domain.name}</h2>
-        <p
+        <div
           className="tw-paragraph-sm md:tw-lead-sm text-black-60 mb-6"
           dangerouslySetInnerHTML={{ __html: domain.description }}
-        ></p>
+        ></div>
         <div className="flex gap-2 flex-col md:gap-6 md:flex-row mb-6">
           {domain.groups.pending?.length > 0 && (
             <div className="inline-flex items-center gap-2 text-black tw-title-navigation">

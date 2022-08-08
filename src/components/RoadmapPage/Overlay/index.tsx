@@ -18,10 +18,10 @@ const ItemCard: React.FC<{ item: RoadmapItem; deployed: boolean }> = ({
         )}
       </h4>
       {item.description && (
-        <p
+        <div
           className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0 prose prose-a:underline prose-a:text-infinite hover:prose-a:no-underline hover:prose-a:text-black"
           dangerouslySetInnerHTML={{ __html: item.description }}
-        ></p>
+        ></div>
       )}
       {item.links.map((link) => (
         <Link className="link-primary" href={link.url} key={link.text}>
@@ -138,10 +138,10 @@ const Overlay: React.FC<{
                 <h2 className="tw-heading-4 md:tw-heading-60 mb-3 text-infinite">
                   {domain.name}
                 </h2>
-                <p
+                <div
                   className="tw-paragraph md:tw-lead-sm text-black-60 mb-8 md:mb-16"
                   dangerouslySetInnerHTML={{ __html: domain.description }}
-                ></p>
+                ></div>
                 <div className="space-y-8 md:space-y-16">
                   {domain.groups.pending?.length > 0 && (
                     <OverlayGroup
