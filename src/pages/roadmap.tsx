@@ -56,10 +56,11 @@ const RoadmapPage: React.FC = () => {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The DFINITY Foundation’s contributions to the Internet Computer
-                roadmap are subject to community discussion and voting. Cras
-                mattis consectetur purus sit amet fermentum. Cras mattis
-                consectetur purus sit amet fermentum.
+                The DFINITY Foundation is committing R&D resources in several areas of development
+                with the intent of making the Internet Computer more efficient, faster and 
+                easier to use. This roadmap reflects the progress of each technical proposal 
+                submitted to the NNS. 
+                
               </motion.p>
             </div>
           </div>
@@ -112,10 +113,10 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              Vestibulum id ligula porta felis euismod semper. Cras mattis
-              consectetur purus sit amet fermentum. Vestibulum id ligula porta
-              felis euismod semper. Cras mattis consectetur purus sit amet
-              fermentum.
+              All technical contributions to the Internet Computer Roadmap are subject to
+              community discussion and voting. Neron holders adn members of the ecosystem have the 
+              ability to direct the efforts of the Dfinity Fountation. 
+             
             </motion.p>
             <MotionLink
               variants={transitions.item}
@@ -137,8 +138,8 @@ const RoadmapPage: React.FC = () => {
                 Community Submissions
               </h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                What isn't here that you'd like to see the DFINITY Foundation
-                prioritize for the Internet Computer?
+                What features would improve your experience on the Internet Computer?
+               
               </p>
               <Link
                 className="link-external"
@@ -153,10 +154,8 @@ const RoadmapPage: React.FC = () => {
             >
               <h3 className="tw-lead-lg md:tw-title-sm">Live Sessions</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Join live sessions with the DFINITY Foundation to discuss
-                upcoming contributions to the Internet Computer roadmap. Fusce
-                dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Aenean eu leo
+                Join live sessions with the DFINITY Foundation to get informed about the
+                upcoming technical proposals and contributions to the Internet Computer roadmap. 
                 quam.
               </p>
               <Link className="link-external" href="/live-sessions/#subscribe">
@@ -169,9 +168,9 @@ const RoadmapPage: React.FC = () => {
             >
               <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Cras mattis consectetur purus sit amet fermentum. Nullam quis
-                risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus
-                vel augue laoreet rutrum faucibus
+                Do you have innovative ideas for building on the Internet Computer and need funding to launch your project? 
+                The Dfinity Developer Grant Program aims to grow the Internet Computer ecosystem by providing support to 
+                promising developers around the globe. 
               </p>
               <Link
                 className="link-external"
@@ -198,9 +197,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-12 md:mb-16 md:w-7/10"
               variants={transitions.item}
             >
-              The DFINITY Foundation open-sourced and launched the Internet
-              Computer on May 10, 2021. List of major innovations developed by
-              the Foundation.
+              See how far the Internet Computer has come since its launch on May 10, 2021. 
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
