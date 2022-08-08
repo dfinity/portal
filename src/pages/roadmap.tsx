@@ -169,8 +169,8 @@ const RoadmapPage: React.FC = () => {
               <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Do you have innovative ideas for building on the Internet Computer and need funding to launch your project? 
-                The Dfinity Developer Grant Program aims to grow the Internet Computer ecosystem by providing support to 
-                promising developers around the globe. 
+                The Dfinity Developer Grant Program provides support to promising developers around the globe. 
+              
               </p>
               <Link
                 className="link-external"
