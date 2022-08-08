@@ -56,7 +56,7 @@ const RoadmapPage: React.FC = () => {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The DFINITY Foundation is committing R&D resources in several areas of development
+                The DFINITY Foundation is committing R&D resources in various domains of development
                 with the intent of making the Internet Computer more efficient, faster and 
                 easier to use. This roadmap reflects the progress of each technical proposal 
                 submitted to the NNS. 
