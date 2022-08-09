@@ -1,5 +1,5 @@
 ---
-title: Replica node storage upgrade
+title: Replica Node Storage Upgrade
 links:
   Forum Post:
   Proposal:
