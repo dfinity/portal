@@ -172,7 +172,7 @@ const sidebars = {
       type: "category",
       label: "Deployment & Scaling",
       link: {
-        type: 'doc', id: 'developer-docs/deploy/index',
+        type: 'doc', id: 'developer-docs/deploy/deploy',
       },
       items: [
         'developer-docs/deploy/deploy',
