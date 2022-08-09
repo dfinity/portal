@@ -48,8 +48,9 @@ const RoadmapPage: React.FC = () => {
                 The DFINITY Foundation is committing R&D resources in various
                 domains of development with the intent of making the Internet
                 Computer blockchain more efficient, faster and easier to use.
-                This roadmap is a work in progress, meant to show the status of
-                different projects across the Internet Computer stack.
+                This roadmap shows the status of many projects across the 
+                Internet Computer stack but not all. More will be added in the comming weeks. 
+                .
               </p>
             </div>
           </div>
@@ -103,10 +104,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              All technical contributions to the Internet Computer roadmap are
-              subject to community discussion and voting. Neuron holders and
-              members of the ecosystem have the ability to direct the efforts of
-              the Dfinity Fountation.
+             
             </motion.p>
             <MotionLink
               variants={transitions.item}
@@ -133,7 +131,7 @@ const RoadmapPage: React.FC = () => {
               </p>
               <Link
                 className="link-external"
-                href="https://forum.dfinity.org/t/megathread-community-submissions-for-dfinity-foundation-s-roadmap/6175"
+                href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
               >
                 Submit your suggestions
               </Link>
@@ -159,7 +157,7 @@ const RoadmapPage: React.FC = () => {
               <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Do you have innovative ideas for building on the Internet
-                Computer and need funding to launch your project? The Dfinity
+                Computer and need funding to launch your project? The DFINITY
                 Developer Grant Program provides support to promising developers
                 around the globe.
               </p>
@@ -181,7 +179,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Completed Roadmap Items
+              Major Roadmap Achievements
               <br className="md:hidden" />
             </motion.h2>
             <motion.p
@@ -251,7 +249,7 @@ const RoadmapPage: React.FC = () => {
               href="https://github.com/dfinity/ic"
             >
               <GithubIcon className="w-6" />
-              See documentation
+              See Code
             </Link>
           </AnimateSpawn>
         </section>
