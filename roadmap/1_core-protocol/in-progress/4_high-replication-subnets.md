@@ -1,5 +1,5 @@
 ---
-title: High-replication subnets
+title: High-replication Subnets
 links:
   Forum Link:
   Proposal:

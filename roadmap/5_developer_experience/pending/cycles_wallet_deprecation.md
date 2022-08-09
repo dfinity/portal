@@ -1,5 +1,5 @@
 ---
-title: Cycles wallet deprecation
+title: Cycles Wallet Deprecation
 links:
   Forum Post:
   Proposal:

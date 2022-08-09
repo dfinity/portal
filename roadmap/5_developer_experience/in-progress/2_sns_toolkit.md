@@ -1,5 +1,5 @@
 ---
-title: SNS Quill
+title: SNS Toolkit
 links:
   Forum Link:
   Proposal:

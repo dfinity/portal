@@ -1,5 +1,5 @@
 ---
-title: Mainnet logging
+title: Mainnet Logging
 links:
   Forum Post:
   Proposal:
