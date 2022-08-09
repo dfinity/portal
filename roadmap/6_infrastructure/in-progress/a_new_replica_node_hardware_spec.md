@@ -1,5 +1,5 @@
 ---
-title: New Replica Node Hardware Specification
+title: A New Replica Node Hardware Specification
 links:
   Forum Post:
   Proposal:
