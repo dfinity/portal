@@ -1,5 +1,5 @@
 ---
-title: Canister Blacklisting on Boundary Nodes
+title: Canister Denylisting on Boundary Nodes
 links:
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401
   Proposal: https://dashboard.internetcomputer.org/proposal/35671
