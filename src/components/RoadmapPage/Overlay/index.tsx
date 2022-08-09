@@ -11,10 +11,10 @@ const ItemCard: React.FC<{ item: RoadmapItem; deployed: boolean }> = ({
 }) => {
   return (
     <div className="border-black-20 border-solid border rounded-xl px-6 py-4 md:py-8 pb-6 flex flex-col gap-2 md:gap-3">
-      <h4 className="tw-heading-6 md:tw-heading-5 mb-0 relative flex items-center gap-4">
+      <h4 className="tw-heading-6 md:tw-heading-5 mb-0 relative flex items-start gap-4">
         <span className="flex-1">{item.name}</span>
         {item.is_community && (
-          <CommunityIcon className="text-infinite"></CommunityIcon>
+          <CommunityIcon className="text-infinite mt-1"></CommunityIcon>
         )}
       </h4>
       {item.description && (
@@ -165,6 +165,12 @@ const Overlay: React.FC<{
                           Deployed
                         </>
                       }
+                      aside={
+                        <span className="tw-paragraph text-black-60 flex gap-2 items-center h-6">
+                          <CommunityIcon></CommunityIcon>
+                          Community requests
+                        </span>
+                      }
                     ></OverlayGroup>
                   )}
                   {domain.groups.inProgress?.length > 0 && (
@@ -212,12 +218,6 @@ const Overlay: React.FC<{
                           </svg>
                           Pending
                         </>
-                      }
-                      aside={
-                        <span className="tw-paragraph text-black-60 flex gap-2 items-center h-6">
-                          <CommunityIcon></CommunityIcon>
-                          Community requests
-                        </span>
                       }
                     ></OverlayGroup>
                   )}

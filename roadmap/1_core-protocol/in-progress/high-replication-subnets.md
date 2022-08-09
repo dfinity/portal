@@ -4,5 +4,5 @@ links:
   Forum Link:
   Proposal:
 eta:
-is_community: false
+is_community: true
 ---
