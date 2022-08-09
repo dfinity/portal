@@ -39,42 +39,29 @@ const RoadmapPage: React.FC = () => {
   return (
     <Layout title="Roadmap" description="">
       <main className="w-full overflow-hidden">
-        <AnimateSpawn
-          className="overflow-hidden bg-infinite text-white"
-          variants={transitions.container}
-        >
+        <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <motion.h1
-                className="tw-heading-3 md:tw-heading-2 mb-6"
-                variants={transitions.item}
-              >
-                Roadmap
-              </motion.h1>
-              <motion.p
-                className="tw-lead-sm md:tw-lead mb-0"
-                variants={transitions.item}
-              >
-                The DFINITY Foundation is committing R&D resources in various domains of development
-                with the intent of making the Internet Computer blockchain more efficient, faster and 
-                easier to use. This roadmap is a work in progress, meant to show the status of different 
-                projects across the Internet Computer stack.
-               
-                
-              </motion.p>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
+              <p className="tw-lead-sm md:tw-lead mb-0">
+                The DFINITY Foundation is committing R&D resources in various
+                domains of development with the intent of making the Internet
+                Computer blockchain more efficient, faster and easier to use.
+                This roadmap is a work in progress, meant to show the status of
+                different projects across the Internet Computer stack.
+              </p>
             </div>
           </div>
           <div className="container-10 relative">
-            <motion.img
+            <img
               src="/img/whiteBlurredCircle.png"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
-              variants={transitions.item}
             />
           </div>
-        </AnimateSpawn>
+        </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 space-y-6 md:space-y-16 relative">
+        <section className="container-10 -mt-52 md:-mt-32 relative">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}
@@ -83,14 +70,16 @@ const RoadmapPage: React.FC = () => {
             className="absolute pointer-events-none max-w-none w-[600px] md:w-[1400px] -left-[300px] md:-left-[700px] top-[1680px] md:top-1/2 -translate-y-1/2 z-[-1000]"
             // variants={transitions.item}
           />
-          {data.map((domain, index) => (
-            <DomainCard
-              domain={domain}
-              index={index}
-              key={domain.name}
-              onOpen={() => openOverlay(index)}
-            ></DomainCard>
-          ))}
+          <div className="space-y-6 md:space-y-16">
+            {data.map((domain, index) => (
+              <DomainCard
+                domain={domain}
+                index={index}
+                key={domain.name}
+                onOpen={() => openOverlay(index)}
+              ></DomainCard>
+            ))}
+          </div>
         </section>
         <section className="text-white relative py-24 md:py-40">
           <AnimateSpawn
@@ -114,10 +103,10 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              All technical contributions to the Internet Computer roadmap are subject to
-              community discussion and voting. Neuron holders and members of the ecosystem have the 
-              ability to direct the efforts of the Dfinity Fountation. 
-             
+              All technical contributions to the Internet Computer roadmap are
+              subject to community discussion and voting. Neuron holders and
+              members of the ecosystem have the ability to direct the efforts of
+              the Dfinity Fountation.
             </motion.p>
             <MotionLink
               variants={transitions.item}
@@ -139,8 +128,8 @@ const RoadmapPage: React.FC = () => {
                 Community Submissions
               </h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                What features would improve your experience on the Internet Computer?
-               
+                What features would improve your experience on the Internet
+                Computer?
               </p>
               <Link
                 className="link-external"
@@ -155,9 +144,9 @@ const RoadmapPage: React.FC = () => {
             >
               <h3 className="tw-lead-lg md:tw-title-sm">Live Sessions</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Join live sessions with R&D to get informed about the upcoming technical proposals and contributions
-                to the Internet Computer roadmap. 
-              
+                Join live sessions with R&D to get informed about the upcoming
+                technical proposals and contributions to the Internet Computer
+                roadmap.
               </p>
               <Link className="link-external" href="/live-sessions/#subscribe">
                 Reserve your seat
@@ -169,9 +158,10 @@ const RoadmapPage: React.FC = () => {
             >
               <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Do you have innovative ideas for building on the Internet Computer and need funding to launch your project? 
-                The Dfinity Developer Grant Program provides support to promising developers around the globe. 
-              
+                Do you have innovative ideas for building on the Internet
+                Computer and need funding to launch your project? The Dfinity
+                Developer Grant Program provides support to promising developers
+                around the globe.
               </p>
               <Link
                 className="link-external"
@@ -191,15 +181,15 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-               Completed Roadmap Items                             
-              <br className="md:hidden" /> 
-                                        
+              Completed Roadmap Items
+              <br className="md:hidden" />
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-12 md:mb-16 md:w-7/10"
               variants={transitions.item}
             >
-              See how far the Internet Computer has come since its launch on May 10, 2021. 
+              See how far the Internet Computer has come since its launch on May
+              10, 2021.
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn

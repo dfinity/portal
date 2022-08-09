@@ -93,7 +93,7 @@ const Overlay: React.FC<{
 
   return (
     <motion.div
-      className="fixed inset-0 overflow-auto bg-white-60 z-[2000]"
+      className="fixed inset-0 overflow-auto bg-white-80 z-[2000]"
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -143,11 +143,11 @@ const Overlay: React.FC<{
                   dangerouslySetInnerHTML={{ __html: domain.description }}
                 ></div>
                 <div className="space-y-8 md:space-y-16">
-                  {domain.groups.pending?.length > 0 && (
+                  {domain.groups.deployed?.length > 0 && (
                     <OverlayGroup
-                      deployed={false}
-                      pillClassName="bg-black-60 backdrop-blur-2xl"
-                      items={domain.groups.pending}
+                      deployed={true}
+                      pillClassName="bg-infinite"
+                      items={domain.groups.deployed}
                       pill={
                         <>
                           <svg
@@ -157,18 +157,13 @@ const Overlay: React.FC<{
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <circle cx="2.5" cy="8" r="1.5" fill="white" />
-                            <circle cx="8" cy="8" r="1.5" fill="white" />
-                            <circle cx="13.5" cy="8" r="1.5" fill="white" />
+                            <path
+                              d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
+                              fill="white"
+                            />
                           </svg>
-                          Pending
+                          Deployed
                         </>
-                      }
-                      aside={
-                        <span className="tw-paragraph text-black-60 flex gap-2 items-center h-6">
-                          <CommunityIcon></CommunityIcon>
-                          Community requests
-                        </span>
                       }
                     ></OverlayGroup>
                   )}
@@ -196,11 +191,12 @@ const Overlay: React.FC<{
                       }
                     ></OverlayGroup>
                   )}
-                  {domain.groups.deployed?.length > 0 && (
+
+                  {domain.groups.pending?.length > 0 && (
                     <OverlayGroup
-                      deployed={true}
-                      pillClassName="bg-infinite"
-                      items={domain.groups.deployed}
+                      deployed={false}
+                      pillClassName="bg-black-60 backdrop-blur-2xl"
+                      items={domain.groups.pending}
                       pill={
                         <>
                           <svg
@@ -210,13 +206,18 @@ const Overlay: React.FC<{
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <path
-                              d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
-                              fill="white"
-                            />
+                            <circle cx="2.5" cy="8" r="1.5" fill="white" />
+                            <circle cx="8" cy="8" r="1.5" fill="white" />
+                            <circle cx="13.5" cy="8" r="1.5" fill="white" />
                           </svg>
-                          Deployed
+                          Pending
                         </>
+                      }
+                      aside={
+                        <span className="tw-paragraph text-black-60 flex gap-2 items-center h-6">
+                          <CommunityIcon></CommunityIcon>
+                          Community requests
+                        </span>
                       }
                     ></OverlayGroup>
                   )}
