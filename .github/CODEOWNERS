@@ -3,5 +3,6 @@
 
 docs/developer-docs/updates/release-notes/ @dfinity/dx
 docs/developer-docs/build/using-an-agent @dfinity/dx
+docs/developer-docs/functionality/rosetta @dfinity/fi
 
 # Each piece of documentation must be owned by the respective teams
