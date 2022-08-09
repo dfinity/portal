@@ -19,13 +19,6 @@ This page is an overview of the topic. For specific steps and troubleshooting in
 
 In the Internet Computer, a canister's source code cannot always be inspected, and at any point, a controller can replace the code running on the canister. Upgradeability is convenient and allows for continuous development, but it also creates risk for users who need to depend on the contract to be stable and trustworthy. Read [Trust in Canisters](../../concepts/trust-in-canisters.md) for more information on this topic.
 
-## How to deploy properly
-
-
-
 ## How to upgrade safely
 
 This is explored in depth in [Motoko upgrade compatibility](../build/languages/motoko/compatibility.md)
-
-## How to scale appropriately
-

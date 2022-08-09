@@ -32,15 +32,6 @@ When upgrading existing canisters, there are a few more things that one should k
 - *Outstanding callbacks*: If a canister is `await`ing a response from another canister, it can be upgraded in-between sending and receiving a response. If the code is installed in `upgrade` mode, the callback will be executed as if no upgrade has been made. If this should not happen, the canister should either first be stopped, or the code has to be uninstalled and then installed again.
 - *Interface compatibility*: If canisters or scripts expect the upgraded canister to have a certain interface, upgrades can break existing workflows. DFX will warn the user (if possible) that the upgrade will break certain signatures, but there are always corner cases that may be missed.
 
-### Example deployment
-
-Let's have a look at what happens during deployment with `dfx`. 
-- dfx canister create
-- dfx build
-- dfx canister install
-- dfx canister install --mode upgrade
-- dfx canister install --mode reinstall
-
 ## Things to consider
 
   * [Funding](#funding)
@@ -66,4 +57,11 @@ An NFT project or DeFi canister may be able to self-fund by using transaction fe
 
 ### Demonstrating Trust
 
-TODO
+A big topic in the blockchain space is how users can trust the smart contracts they interact with. Depending on the kind of project you want to deploy, different levels of trust can be appropriate.
+
+Here is a checklist of the things you will need to consider:
+
+- [ ] How much trust does this project require?
+- [ ] How can I demonstrate the canisters do what they are supposed to do?
+  * The sections [Trust in Canisters](../../concepts/trust-in-canisters.md) and [Reproducible Builds](../build/backend/reproducible-builds.md) contain information related to this topic.
+- [ ] How can users trust that the code will not suddenly change?

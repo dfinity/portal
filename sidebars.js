@@ -167,6 +167,7 @@ const sidebars = {
       items: [
         'developer-docs/deploy/deploy',
         'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/staging-environment',
         'developer-docs/deploy/custom-domain',
         'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
