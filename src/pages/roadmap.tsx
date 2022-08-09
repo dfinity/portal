@@ -186,7 +186,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-12 md:mb-16 md:w-7/10"
               variants={transitions.item}
             >
-              The Internet Computer has come a long way since its launch on May 10, 2021.
+              The Internet Computer has come a long way since its launch in May 2021.
               
             </motion.p>
           </AnimateSpawn>
