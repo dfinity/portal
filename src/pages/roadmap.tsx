@@ -58,7 +58,9 @@ const RoadmapPage: React.FC = () => {
               >
                 The DFINITY Foundation is committing R&D resources in various domains of development
                 with the intent of making the Internet Computer blockchain more efficient, faster and 
-                easier to use. This roadmap reflects the progress of various projects across the Internet Computer stack.
+                easier to use. This roadmap is a work in progress, meant to show the status of different 
+                projects across the Internet Computer stack.
+               
                 
               </motion.p>
             </div>
