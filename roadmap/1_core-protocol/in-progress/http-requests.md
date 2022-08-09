@@ -3,6 +3,7 @@ title: HTTP Outcalls from Canisters
 links:
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-general-integration-proposal/9383
   Proposal: https://dashboard.internetcomputer.org/proposal/35639
+  IC Wiki: https://wiki.internetcomputer.org/wiki/HTTPS_outcalls
 eta:
 is_community: true
 ---
