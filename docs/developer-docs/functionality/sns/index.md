@@ -1,4 +1,4 @@
-# How to deploy an SNS
+# How to launch an SNS
 
 We explain how to deploy an SNS that is provided as a 
 system functionality by the IC.
@@ -6,15 +6,16 @@ As explained in the [introduction](sns.md), there are also other
 ways to deploy and maintain a DAO. Many concepts explained here may be 
 relevant for you even if you deploy another kind of DAO.
 
-We introduce here an overview of different steps that you might want to 
-consider when launching an SNS and link to pages that provide
-more details for each of them. 
+We introduce here the steps to go through to launch an SNS.
+We only give an overview here and, for each of the steps, we 
+link to a page that provides more details. 
 
-### Non-technical preparation for the SNS launch
+### Step 1: Defining the goals (non-technical preparation)
 The successful launch of an SNS does not only depend on technical
 aspects. 
 In fact, it is advisable that before taking any technical steps, 
-you take some non-technical preparations steps. 
+you take some non-technical preparations steps and define what the SNS
+that you are about to launch should achieve. 
 To motivate this better, let's look at two examples of such non-technical
 considerations in the following.
 
@@ -41,25 +42,33 @@ These examples show that before diving into the technical details, you
 may want to spend some time defining non-technical goals of the SNS you
 are about to launch and the dapp that will be controlled by it.
 To provide some tips on what considerations you should not forget,
-we list a few of them on [this page](TODO).
+we list a few of them on
+[this page](../../../tokenomics/sns/not-blind/predeployment-considerations.md).
 
-### Technical pre-deployment activities
-Once you have defined 
+### Step 2: Defining the parameters
+Once you have defined what (non-technical) goals the SNS should achieve,
+you can tranlate them to parameters and configurations that can be set in
+the SNS launch. 
+To do this, it is useful to first understand on a high level how the
+SNS launch proceeds.
+We explain how the SNS launch works and how you can set the initialization
+parameters for the SNS on [this page](./predeployment.md).
 
-=====
+### Step 3: Testing the SNS
+Once you chose the parameters, you probably do not want to immediately
+go live without testing them. In fact, you may want to test different
+initial parameters and compare them with each other.
+Moreover, you might want to test the integration between the SNS canisters
+and your dapp canister. For example, it is advisable that you
+confirm that the dapp canisters can be upgraded by an SNS. 
+Also, if you integrate parts of the frontend for the SNS into you dapp,
+you probably want to test that this integration works.
 
-Once all that planned, need to understand how this translates to 
-the actual launch.
+For all these reasons, we explain on [this page](./local-testing.md), how
+the SNS can be tested.
 
-How does the SNS launch work on a high level
-
-Explain what steps to follow translate this into the initialization
-parameters
-
-[link to predeployment.md]
-
-Then, probably don’t want to immediately go live without testing.
-So once parameters set, want to test. [link to local-testing.md]
-
-Once properly tested, ready to launch, which is described in more
-details on [link to deployment.md]
+### Step 4: Launch the SNS
+Once you properly tested the SNS, you are ready to launch an SNS in
+production. 
+We describe all steps included in this process in more detail
+on [this page](./deployment.md).
