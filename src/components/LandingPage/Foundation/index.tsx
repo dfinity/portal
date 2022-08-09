@@ -22,7 +22,7 @@ const cards = [
     isMain: true,
     title: ["Roadmap"],
     body: "The DFINITY Foundation’s contributions to the IC roadmap are subject to community discussion and voting",
-    link: "https://forum.dfinity.org/c/roadmap/29",
+    link: "/roadmap",
   },
   {
     isMain: false,
