@@ -715,14 +715,6 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 
 <div class="formalpara-title">
 
-**Preconditions:**
-
-</div>
-
--   `account.address` is the ledger address of the neuron controller or hotkey.
-
-<div class="formalpara-title">
-
 **Calling `NEURON_INFO` as a controller:**
 
 </div>
@@ -738,6 +730,8 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 }
 ```
 
+- `account.address` is the ledger address of the neuron controller.
+
 <div class="formalpara-title">
 
 **Calling `NEURON_INFO` with a hotkey:**
@@ -751,13 +745,18 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
   "account": { "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8" },
   "metadata": {
     "neuron_index": 0,
+    "controller": {
       "public_key": {
         "hex_bytes": "ba5242d02642aede88a5f9fe82482a9fd0b6dc25f38c729253116c6865384a9d",
         "curve_type": "edwards25519"
       }
+    }
   }
 }
 ```
+
+- `account.address` is the ledger address of the neuron hotkey.
+- `metadata.controller.public_key` is the public key of the neuron controller.
 
 :::note
 
