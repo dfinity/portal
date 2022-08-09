@@ -49,8 +49,8 @@ const RoadmapPage: React.FC = () => {
                 domains of development with the intent of making the Internet
                 Computer blockchain more efficient, faster and easier to use.
                 This roadmap shows the status of many projects across the 
-                Internet Computer stack but not all. More will be added in the comming weeks. 
-                .
+                Internet Computer stack, but not all - more to come over the next few weeks. 
+                
               </p>
             </div>
           </div>
