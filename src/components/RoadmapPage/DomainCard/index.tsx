@@ -28,15 +28,15 @@ const DomainCard: React.FC<{
           dangerouslySetInnerHTML={{ __html: domain.description }}
         ></div>
         <div className="flex gap-2 flex-col md:gap-6 md:flex-row mb-6">
-          {domain.groups.deployed?.length > 0 && (
+          {domain.groups.pending?.length > 0 && (
             <div className="inline-flex items-center gap-2 text-black tw-title-navigation">
-              Deployed
+              Pending
               <div className="inline-flex gap-[2px]">
                 {Array.from({
-                  length: domain.groups.deployed?.length,
+                  length: domain.groups.pending?.length,
                 }).map((_, i) => (
                   <span
-                    className="w-[3px] h-4 rounded-full bg-infinite inline-block"
+                    className="w-[3px] h-4 rounded-full bg-black-30 inline-block"
                     key={i}
                   ></span>
                 ))}
@@ -58,15 +58,15 @@ const DomainCard: React.FC<{
               </div>
             </div>
           )}
-          {domain.groups.pending?.length > 0 && (
+          {domain.groups.deployed?.length > 0 && (
             <div className="inline-flex items-center gap-2 text-black tw-title-navigation">
-              Pending
+              Deployed
               <div className="inline-flex gap-[2px]">
                 {Array.from({
-                  length: domain.groups.pending?.length,
+                  length: domain.groups.deployed?.length,
                 }).map((_, i) => (
                   <span
-                    className="w-[3px] h-4 rounded-full bg-black-30 inline-block"
+                    className="w-[3px] h-4 rounded-full bg-infinite inline-block"
                     key={i}
                   ></span>
                 ))}
