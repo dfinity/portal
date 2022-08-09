@@ -23,9 +23,15 @@ module.exports = {
       },
       margin: {
         "1/12": "8.333333%",
+        "2/12": "16.666666666%",
       },
       fontWeight: {
         book: 450,
+      },
+      content: {
+        externalLink: 'url("/static/img/svgIcons/externalLink.svg")',
+        externalLinkHovered:
+          'url("/static/img/svgIcons/externalLinkHovered.svg")',
       },
     },
     screens: {
@@ -43,6 +49,7 @@ module.exports = {
       transparent: "transparent",
       black: {
         DEFAULT: "#181818",
+        30: "rgba(24, 24, 24, 0.3)",
         60: "rgba(24, 24, 24, 0.6)",
       },
       white: {
@@ -66,6 +73,7 @@ module.exports = {
       // bold
       "heading-1": ["120px", "110px"],
       "heading-2": ["75px", "85px"],
+      "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
       "heading-4": ["32px", "42px"],
       "heading-5": ["24px", "32px"],
@@ -109,12 +117,14 @@ module.exports = {
       const components = {
         ".tw-heading-1": "@apply text-heading-1 font-bold",
         ".tw-heading-2": "@apply text-heading-2 font-bold",
+        ".tw-heading-60": "@apply text-heading-60 font-bold",
         ".tw-heading-3": "@apply text-heading-3 font-bold",
         ".tw-heading-4": "@apply text-heading-4 font-bold",
         ".tw-heading-5": "@apply text-heading-5 font-bold",
         ".tw-heading-6": "@apply text-heading-6 font-bold",
         ".tw-heading-7": "@apply text-heading-7 font-bold",
         ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold",
+
         //
         ".tw-title-navigation": "@apply text-navigation font-medium",
         ".tw-title-navigation-on-page": "@apply text-navigation-on-page font-medium",
@@ -131,7 +141,8 @@ module.exports = {
         '.button-outline': '@apply inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
         '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
         '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
-        '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline'
+        '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
+        '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered'
       };
 
       addComponents(

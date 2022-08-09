@@ -8,7 +8,8 @@
 }
 
 .container {
-    margin: 24px auto 80px auto;
+    padding-top: 80px;
+    margin: 0 auto 80px auto;
     width: Min(1110px, 90%);
     position: relative;
 }
@@ -94,14 +95,15 @@
     z-index: -1000;
     position: absolute;
     color: #3B00B9;
-    top: -350px;
+    top: -150px;
     right: -720px;
     width: 1440px;
     max-width: 1440px;
 }
 @media screen and (max-width: 996px) {
     .container {
-        margin: 40px auto;
+        margin: 0 auto 40px;
+        padding-top: 80px;
     }
 
     .Title {
@@ -136,6 +138,6 @@
     .BGShape {
         width: 800px;
         right: -550px;
-        top: -150px;
+        top: 0;
     }
 }

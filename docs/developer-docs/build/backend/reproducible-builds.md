@@ -17,12 +17,12 @@ Internet Computer does not allow you to access the Wasm code of an arbitrary can
 To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [`dfx`](https://internetcomputer.org/developers/) tool from the terminal. Open your terminal, and run:
 
     $ dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
-    Controller: r7inp-6aaaa-aaaaa-aaabq-cai
-    Module hash: 0x92fc8c810afed3c9628dd20ef8d15984122e1197446281cf3035abb70ce75557
+    Controllers: r7inp-6aaaa-aaaaa-aaabq-cai
+    Module hash: 0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103
 
 If you are running an older version of `dfx`, you will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create it using `dfx new`.
 
-Here, the Internet Computer tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister (which happens to be the Internet Identity canister) is `0x92fc8c810afed3c9628dd20ef8d15984122e1197446281cf3035abb70ce75557`.
+Here, the Internet Computer tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister (which happens to be the Internet Identity canister) is `0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103`.
 
 The check above provides you the *current* hash of the canister’s Wasm module, but the *controllers* of an Internet Computer canister may change the code at any time (e.g., to upgrade a canister). However, if the list of controllers is empty or the only controller is a [black-hole](https://github.com/ninegua/ic-blackhole) canister, you know that the canister is immutable since nobody has the power to change the code.
 
@@ -64,46 +64,69 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain.
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain. Make sure to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
 
     FROM ubuntu:22.04
 
+    ENV NVM_DIR=/root/.nvm
+    ENV NVM_VERSION=v0.39.1
+    ENV NODE_VERSION=18.1.0
+
+    ENV RUSTUP_HOME=/opt/rustup
+    ENV CARGO_HOME=/opt/cargo
+    ENV RUST_VERSION=1.62.0
+    ENV IC_CDK_OPTIMIZER_VERSION=0.3.4
+
+    ENV DFX_VERSION=0.11.0
+
     # Install a basic environment needed for our build tools
-    RUN \
-        apt -yq update && \
+    RUN apt -yq update && \
         apt -yqq install --no-install-recommends curl ca-certificates \
-            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake
+            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake rsync
 
     # Install Node.js using nvm
-    # Specify the Node version
-    ENV NODE_VERSION=18.1.0
-    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
-    ENV NVM_DIR=/root/.nvm
-    RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-    RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-    RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
+    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
+    RUN . "${NVM_DIR}/nvm.sh" && nvm install ${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm use v${NODE_VERSION}
+    RUN . "${NVM_DIR}/nvm.sh" && nvm alias default v${NODE_VERSION}
 
-    # Install Rust and Cargo in /opt
-    # Specify the Rust toolchain version
-    ARG rust_version=1.60.0
-    ENV RUSTUP_HOME=/opt/rustup \
-        CARGO_HOME=/opt/cargo \
-        PATH=/opt/cargo/bin:$PATH
+    # Install Rust and Cargo
+    ENV PATH=/opt/cargo/bin:${PATH}
     RUN curl --fail https://sh.rustup.rs -sSf \
-            | sh -s -- -y --default-toolchain ${rust_version}-x86_64-unknown-linux-gnu --no-modify-path && \
-        rustup default ${rust_version}-x86_64-unknown-linux-gnu && \
+            | sh -s -- -y --default-toolchain ${RUST_VERSION}-x86_64-unknown-linux-gnu --no-modify-path && \
+        rustup default ${RUST_VERSION}-x86_64-unknown-linux-gnu && \
         rustup target add wasm32-unknown-unknown
-    RUN cargo install ic-cdk-optimizer
+    RUN cargo install --version ${IC_CDK_OPTIMIZER_VERSION} ic-cdk-optimizer
 
-    # Install dfx; the version is picked up from the DFX_VERSION environment variable
-    ENV DFX_VERSION=0.10.1
+    # Install dfx
     RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
 
     COPY . /canister
     WORKDIR /canister
 
-    RUN npm ci # if `package.json` and `package-lock.json` is available in your canister directory
+An example script to build a Rust project looks as follows:
+
+    #!/bin/bash
+    #
+    # additional setup, e.g., build frontend assets:
+    # ...
+    # Rust build:
+    export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
+    cargo build --locked --target wasm32-unknown-unknown --release
+    ic-cdk-optimizer target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm
+
+Such a build script can also be set as a custom build script in `dfx.json` as follows:
+
+    "canisters": {
+      "example_backend": {
+        "candid": "src/example_backend/example_backend.did",
+        "package": "example_backend",
+        "type": "custom",
+        "wasm": "./example_backend.wasm",
+        "build": "./build_script.sh"
+      }
+    }
 
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -117,9 +140,9 @@ To use this `Dockerfile`, get Docker [up and running](https://docs.docker.com), 
 
 This creates a Docker container image called `mycanister`, with Node.js, Rust and `dfx` installed in it, and your canister source code copied to `/canister` (recall that you should invoke `docker build` from the canister project directory). You can then enter an interactive shell inside of your container by running:
 
-    docker run -it --rm mycanister
+    $ docker run -it --rm mycanister
 
-From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile`, to allow the user to automatically reproduce your build when creating the canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
+From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh` for a build script `./build_script.sh`), to allow the user to automatically reproduce the build of your canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
 
 ### Ensuring the determinism of the build process
 
@@ -139,17 +162,17 @@ For the build process to be deterministic:
 
 ### Testing reproducibility
 
-If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To use it, you can add the following line to the `Dockerfile` in the root directory of your canister project:
+If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the Debian Reproducible Builds project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, add the following line to your `Dockerfile`:
 
-    RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt webpack
+    RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt
 
-Next, create a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer, and put it in your project directory. An example `canister_ids.json` file looks as follows:
+When using `dfx build --network ic`, you need to prebuild your frontend dependencies (e.g., by running `npm ci` before `dfx build --network ic` or by setting the custom build type in `dfx.json` and running `npm ci` in your build script) and your project directory should contain a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer. An example `canister_ids.json` file looks as follows:
 
     {
-      "greet": {
+      "example_backend": {
         "ic": "rrkah-fqaaa-aaaaa-aaaaq-cai"
       },
-      "greet_assets": {
+      "example_frontend": {
         "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
       }
     }
@@ -159,16 +182,20 @@ Now, from the root directory of your canister project, you can test the reproduc
     $ docker build -t mycanister .
     ...
     $ docker run --rm --privileged -it mycanister
-    root@6fe19d89f8f5:/canister# reprotest -vv --variations '+all,-time' "dfx build --network ic" '.dfx/ic/canisters/*/*.wasm'
+    /canister# mkdir artifacts
+    /canister# reprotest -vv --store-dir=artifacts --variations '+all,-time' 'dfx build --network ic' '.dfx/ic/canisters/*/*.wasm'
 
-The first command builds the Docker container using the `Dockerfile` provided earlier. The second one opens an interactive shell (hence the `-it` flags) in the canister. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). We exclude the `time` variation for Rust builds (we observed that Rust builds crashed upon the `time` variation and filed an [issue](https://github.com/wolfcw/libfaketime/issues/402) with `faketime`). For Motoko builds, you could omit `--variations '+all,-time'` and thereby trying out all supported variations. The `--rm` flag will destroy the canister after you close its shell. Finally, once inside of the canister, we launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory.
+The first command builds the Docker container using the `Dockerfile` provided earlier. The second one opens an interactive shell (hence the `-it` flags) in the container. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). The `--rm` flag will destroy the container after you close its shell. Finally, once inside of the container, we create a directory for the build artifacts and launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory. We omit the time variation because the Rust compiler uses `jemalloc` for dynamic memory allocation and this library is not [compatible](https://github.com/wolfcw/libfaketime/issues/130) with `faketime` used by `reprotest` to implement the time variation. Nevertheless, we encourage you to compare the artifacts produced by `reprotest` while manually changing your system time.
 
 If the comparison doesn’t find any differences, you will see an output similar to this one:
 
+    =======================
+    Reproduction successful
+    =======================
     No differences in ./.dfx/ic/canisters/*/*.wasm
-    502b1be69f7613f6e14924a1a07bc2e061fb13c0fbaa4ae6bbc887cba261103c  ./.dfx/ic/canisters/greet/greet.wasm
-    e0df779f65fe44893d8991bef0f9af442bff019b79ec756eface2b58beec236f  ./.dfx/ic/canisters/greet_assets/assetstorage.wasm
-    e0df779f65fe44893d8991bef0f9af442bff019b79ec756eface2b58beec236f  ./.dfx/ic/canisters/greet_assets/greet_assets.wasm
+    6b2a15a918219138836e88e9c95f9c5d2d7b6d465df83ae05d6fd2b0f14f8a97  ./.dfx/ic/canisters/example_backend/example_backend.wasm
+    a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/assetstorage.wasm
+    a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/example_frontend.wasm
 
 Congratulations - this is a good indicator that your build is not affected by your environment! Note that `reprotest` can’t check that your dependencies are pinned properly - use guidelines from the previous section for that. Moreover, we recommend you to run the container `reprotest` builds under several host operating systems and compare the results. If the comparison does find differences between the Wasm code produced in two builds, it will output a diff. You will then likely want to use the `--store-dir` flag of `reprotest` to store the outputs and the diff somewhere where you can analyze them. If you are struggling to achieve reproducibility, consider also using [DetTrace](https://github.com/dettrace/dettrace), which is a container abstraction that tries to make arbitrary builds deterministic.
 
@@ -176,7 +203,7 @@ Finally, even after you achieve reproducibility for your builds, there are still
 
 ### Long-term considerations
 
-Reproducibility can be more demanding if you expect your canister canister code to stay around for years, and stay reproducible. The biggest challenges are to ensure that your:
+Reproducibility can be more demanding if you expect your canister code to stay around for years, and stay reproducible. The biggest challenges are to ensure that your:
 
 1.  Build toolchain is still available in the future.
 

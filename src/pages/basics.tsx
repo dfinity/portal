@@ -1,6 +1,6 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import React, { useEffect } from "react";
+import React from "react";
 import Ecosystem from "../components/Basics/Ecosystem";
 import Ecosystem2 from "../components/Basics/Ecosystem2";
 import Hero from "../components/Basics/Hero";
@@ -8,21 +8,14 @@ import HostWeb from "../components/Basics/HostWeb";
 import InternetIdentity from "../components/Basics/InternetIdentity";
 import ItsGreen from "../components/Basics/ItsGreen";
 import TrueScaling from "../components/Basics/TrueScaling";
-import styles from "./basics.module.css";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 const BasicsPage: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
-
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--ifm-color-primary",
-      "#3b00b9"
-    );
-  }, []);
-
+  resetNavBarStyle();
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className={styles.main}>
+      <main className="w-full overflow-hidden">
         <Hero></Hero>
         <HostWeb></HostWeb>
         <Ecosystem></Ecosystem>

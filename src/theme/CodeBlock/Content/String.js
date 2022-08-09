@@ -4,7 +4,6 @@ import String from "@theme-original/CodeBlock/Content/String";
 import Container from "@theme/CodeBlock/Container";
 import styles from "./styles.module.css";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
 import { extractConfig, handleRun } from "../hljs_run.js";
 import CopyButton from "@theme/CodeBlock/CopyButton";
 import runIcon from "@site/static/img/runIcon.png";
@@ -34,7 +33,7 @@ function ImmutableCodeBlock({ id, code, language, defaultCopy }) {
   }, []);
   return (
     <Container as="div" className={styles.immutableCodeBlock}>
-      <pre id={id} class={language} ref={ref}>
+      <pre id={id} className={language} ref={ref}>
         <code>{code}</code>
       </pre>
       {/* defaultCopy is a flag for code (candid) with only copy button */}
@@ -58,20 +57,20 @@ export default function StringWrapper(props) {
         />
       );
     }
-    const [code, setCode] = useState(props.children);
+    const { useCodeJar } = require('react-codejar');
+    const [code, setCode] = useState(props.children || "");
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
-    const codejar = require("react-codejar");
     const lineNumbers = props.children.split("\n").length > 3;
 
     // syntax highlighting is done by CodeJar, creating new React components
-    const editorRef = codejar.useCodeJar({
-      code,
+    const editorRef = useCodeJar({
+      code: code.replace(/^\s+|\s+$/g, ''), // trim newlines
       onUpdate: (e) => {
         setCode(e);
       },
       highlight: hljs.highlightElement,
-      // lineNumbers,
+      lineNumbers,
     });
     return (
       <>
@@ -80,7 +79,7 @@ export default function StringWrapper(props) {
             <pre
               id={props.name}
               ref={editorRef}
-              class="language-motoko"
+              className="language-motoko"
               style={{ backgroundColor: "var(--prism-background-color)" }}
             >
               <code>{code}</code>
@@ -98,9 +97,9 @@ export default function StringWrapper(props) {
         </Container>
         {output || error ? (
           <Container as="div">
-            {error ? <pre style={{ color: "red" }}>{error}</pre> : null}
+            {error ? <pre className="motoko-code-error">{error}</pre> : null}
             {output ? (
-              <pre style={{ color: "green" }} class="language-motoko">
+              <pre className="motoko-code-output">
                 <code>{output}</code>
               </pre>
             ) : null}

@@ -1,7 +1,7 @@
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import transitions from "@site/static/transitions.json";
 
@@ -12,6 +12,7 @@ import Project from "../components/ShowcasePage/Project";
 import { useQueryParam } from "../utils/use-query-param";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
@@ -44,12 +45,7 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
   const filtersRef = useRef<HTMLDivElement>();
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--ifm-color-primary",
-      "#3b00b9"
-    );
-  }, []);
+  resetNavBarStyle();
 
   const projects = useGlobalData()["showcase-projects"]
     .default as ShowcaseProject[];
@@ -83,10 +79,10 @@ function ShowcasePage(): JSX.Element {
           <motion.img
             src={BlobBlue}
             alt=""
-            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
+            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[-1000]"
             variants={transitions.item}
           />
-          <section className="max-w-page relative px-6 pt-12 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+          <section className="max-w-page relative px-6 pt-20 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
             <div className="md:w-7/10 lg:w-6/10 md:ml-1/12" ref={filtersRef}>
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2"

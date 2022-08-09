@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Layout from "@theme/Layout";
 import ChevronRight from "../../static/img/token-holders/chevron-right.svg";
@@ -20,6 +20,7 @@ import TwitterIcon from "../../static/img/token-holders/social/twitter.svg";
 import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 const images = [
   {
@@ -138,12 +139,7 @@ const icons = [
 ];
 
 function TokenHolders(): JSX.Element {
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--ifm-color-primary",
-      "#3b00b9"
-    );
-  }, []);
+  resetNavBarStyle();
 
   const globalData = useGlobalData();
   const icpPrice = globalData["icp-price"]["default"] as number;
@@ -161,7 +157,7 @@ function TokenHolders(): JSX.Element {
           className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
           variants={transitions.item}
         />
-        <section className="max-w-page relative px-6 pt-12 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+        <section className="max-w-page relative px-6 pt-20 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
           <AnimateSpawn
             className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             variants={transitions.container}
@@ -361,7 +357,7 @@ function TokenHolders(): JSX.Element {
             src={BlobBlue}
             className="absolute pointer-events-none max-w-none w-[800px] -left-[570px] top-0 md:w-[1500px]  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"
           />
-          {/* 
+          {/*
           ---
           */}
           <AnimateSpawn
@@ -420,7 +416,7 @@ function TokenHolders(): JSX.Element {
             </motion.div>
           </AnimateSpawn>
 
-          {/* 
+          {/*
           ---
            */}
           <AnimateSpawn
@@ -575,7 +571,7 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-3">
                   <a
-                    href="https://dfinity.org/foundation/#team"
+                    href="https://dfinity.org"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="tw-heading-6 text-infinite hover:text-black hover:no-underline"

@@ -45,7 +45,7 @@ In order to simplify working with ICP ledger from JavaScript applications, you c
 
 ## Interact with ICP from a canister
 
-The [ICP transfer example](/samples/token-transfer) provides a good starting point for interacting with ICP  ledger from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
+The [ICP transfer example](/docs/current/samples/token-transfer) provides a good starting point for interacting with ICP  ledger from a canister. The example showcases the usage of `balance` and `transfer` in Motoko and Rust.
 
 ### Receiving ICP
 

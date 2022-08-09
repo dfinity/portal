@@ -165,7 +165,11 @@
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
 
+/roadmap https://forum.dfinity.org/c/roadmap/29 302!
 
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!
 /eula-storage https://association.internetcomputer.org/eula-storage 301!
+
+/howitworks /how-it-works 301
+/howitworks/* /how-it-works/:splat 301

@@ -50,7 +50,8 @@ function Index() {
           </motion.a>
           <motion.a
             variants={transitions.item}
-            href={"https://dfinity.org/ecosystem/fund"}
+            href={"https://dfn.typeform.com/to/Px1Mout9"}
+            target="_blank"
             className={clsx(
               styles.card,
               styles.cardContainer,

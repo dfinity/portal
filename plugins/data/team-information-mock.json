@@ -1,0 +1,1543 @@
+[
+  {
+    "title": "R&D",
+    "order": 2,
+    "members": [
+      {
+        "name": "Ben Lynn",
+        "bio": "Ben Lynn is the \"L\" from the \"BLS\" cryptography applied by \"Threshold Relay\" to generate randomness and achieve incredible security, speed and scale in public networks. Once a Stanford PhD under Dan Boneh, Ben joined the DFINITY team after 10 years in senior engineering roles at Google. Ben writes many [papers](https://scholar.google.com/citations?user=262Twn0AAAAJ).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://github.com/blynn",
+          "http://benlynn.blogspot.com/",
+          "https://www.linkedin.com/in/benjamin-lynn-51832a8"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/10zhjbr4RsOykKcAKQAisE/8df1cd3388bcbf5659d87e5e9321b22a/ben_lynn.jpg"
+      },
+      {
+        "name": "Andreas Rossberg",
+        "bio": "Andreas was previously a Staff Engineer at Google, where he co-designed the [WebAssembly](http://www.webassembly.org/) virtual machine, now continuing as lead editor of the [language specification](https://webassembly.github.io/spec/core/index.html), and worked on the [V8 JavaScript engine](https://developers.google.com/v8/) for Chrome. Andreas was formerly a post doctoral researcher at the [Max Planck](https://mpi-sws.org/) Institute. He has published [many papers](https://mpi-sws.org/~rossberg/).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://github.com/rossberg",
+          "https://people.mpi-sws.org/~rossberg/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/62jRglqI9Okk0Q6wQ2w2a8/dcb9b4188f6f8cf758ed77adbc407b5c/andreas.jpg"
+      },
+      {
+        "name": "Timo Hanke",
+        "bio": "Timo was once a Professor of Mathematics and Cryptography at Aachen University in Germany but got into Bitcoin. In 2013 he created [AsicBoost](http://asicboost.com/) to reduce the gate count on Bitcoin mining chips and increase the efficiency of Bitcoin mining by 20-30% that has since become a standard in large-scale mining operations.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://github.com/bcpki",
+          "https://twitter.com/timothanke",
+          "https://www.linkedin.com/in/timo-hanke-62079775"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Z0OofYXyms2c4SMae0wGC/77a83afcd7c84254d30fc998345f59b7/timo.JPG"
+      },
+      {
+        "name": "Victor Shoup",
+        "bio": "Victor is a computer scientist and mathematician. He is currently a Professor of Computer Science at NYU. He received his PhD from UW-Madison (1989). Prior to DFINITY he was a Visiting Research Scientist, IBM TJ Watson Research Center; Research Scientist, IBM Research, Zurich; and Research Scientist, Bellcore. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.shoup.net/papers/",
+          "https://www.linkedin.com/in/victor-shoup-a3405284"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2xgcOlcFLWiVm7itjK2u7S/64677104587de0481acb93b352b4476d/victorshoup.jpg"
+      },
+      {
+        "name": "Maria Dubovitskaya",
+        "bio": "Maria is a cryptographer working on designing provably secure protocols for [privacy protection](https://www.ted.com/talks/maria_dubovitskaya_take_back_control_of_your_personal_data) and bringing research into practice. Maria holds a PhD from ETH Zurich and joined DFINITY after 11 years as an engineer and researcher at IBM. Maria has published [many papers](https://scholar.google.com/citations?user=SyimU5oAAAAJ) and [promotes STEM](https://www.phaidoninternational.com/events/dr-maria-dubovitskaya-on-closing-the-diversity-gap-in-stem-715030102958382) for young women.",
+        "title": "Director of Engineering",
+        "websites": [
+          "https://www.linkedin.com/in/mariadubovitskaya/",
+          "https://twitter.com/m_dubovitskaya",
+          "https://scholar.google.com/citations?user=SyimU5oAAAAJ"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5rhWrL9QKAQeK2Wa2yo0Q4/04d5356cde51f7afe087facd452a1615/maria.jpg"
+      },
+      {
+        "name": "David Derler",
+        "bio": "Before joining DFINITY, David held a postdoc position at Graz University of Technology. He focuses on provably secure public key cryptography, and, in particular, on cryptographically addressing security and privacy issues in modern computing scenarios (e.g., cloud computing, Blockchains). This also includes work on primitives for the post-quantum era.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/david-derler-08630495/",
+          "https://twitter.com/dderler",
+          "https://david.derler.info/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4sS3jmUsDu0mIYeGA4yU6C/2ce34e1a5fa6ce82d1e08cd4d3e3c0f9/david-derler.jpg"
+      },
+      {
+        "name": "Manu Drijvers",
+        "bio": "Manu joined DFINITY after working at IBM Research as predoctoral researcher in cryptography. His research focuses on anonymous credentials, multi-signatures, and composable cryptographic protocols. He, too, has [published many papers](https://manu.drijve.rs/).\n\n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/drijvers/",
+          "https://twitter.com/manudrijvers",
+          "https://manu.drijve.rs/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3sp4IYhRaEUUSKSA0YyWGg/b382c45d9afd4893dc470ace69c242c5/manu.jpg"
+      },
+      {
+        "name": "Jens Groth",
+        "bio": "Jens is a leading cryptographer who has invented [pairing-based NIZK proofs](https://link.springer.com/chapter/10.1007%2F11761679_21), [pairing-based SNARKs](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19), and [logarithmic size proof systems](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19) underpinning Bulletproofs. He got a PhD from Aarhus University, the Chancellor's Award for Postdoctoral Research at UCLA, became Professor of Cryptology at UCL, and has published [more than 50 scientific articles](https://scholar.google.com/citations?user=5w0Y9JUAAAAJ&hl=en&oi=ao).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/jens-groth-a95672/",
+          "http://www0.cs.ucl.ac.uk/staff/j.groth/",
+          "https://scholar.google.com/citations?user=5w0Y9JUAAAAJ&hl=en&oi=ao"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/51yHhVd4VrOh8uWZnnloZh/df2bd28fd2263c6ba643014e5e8ef7d1/Jens_Groth_updated.jpg"
+      },
+      {
+        "name": "Yvonne-Anne Pignolet",
+        "bio": "Yvonne-Anne Pignolet designs and analyses algorithms for reliable and efficient networks despite failures and malicious behaviour. After her PhD at ETH Zurich in 2009 she was a postdoc at IBM Research Zurich and Ben Gurion University, Be'er Sheva. Yvonne-Anne joined DFINITY after 8 years at ABB Corporate Research as a Principal Scientist. She has published [many papers](https://scholar.google.com/citations?user=2p3vfV4AAAAJ&hl=en).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/yvonne-anne-pignolet-0773074/",
+          "https://pignolet.webnode.com/",
+          "https://scholar.google.com/citations?user=2p3vfV4AAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/13ilChBmOkaPEGfTGDwGin/b42bee32eeb1ddbf26918447bea597b7/Yvonne-Anne_updated.jpg"
+      },
+      {
+        "name": "John Plevyak",
+        "bio": "John has a PhD from UIUC under Prof. Andrew Chien in compilers and runtimes for high performance distributed actors systems. He has worked on nuclear power plant software, video editing and effects systems, virtual worlds, graph databases, network proxies and compilers at Ampex, Inktomi, Cray and Google among others. He was the architect and original core author of what is now the Apache Traffic Server and has contributed to numerous OSS projects.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://github.com/jplevyak"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/43Dn1SAAUYybfR4hbPP1RL/bf215e34377c821017955252ef908f76/JohnP.jpg"
+      },
+      {
+        "name": "Martin Stein",
+        "bio": "\nMartin grew up in Erding near Munich, studied in Regensburg and UCONN and started his first software job in a garage building a word processor while studying. Prior to DFINITY, he worked at Guidewire on insurance software and Pinger on cell phone apps. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/martinstein?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7pitid2qeSzdUDpDWX11io/d91de7a76eefe3d8cda94a5ec5c7339d/martins.jpeg"
+      },
+      {
+        "name": "Björn Tackmann",
+        "bio": "Björn previosuly worked at IBM Research where he focused on provable security of communication and blockchain protocols. Prior to IBM, he was a Postdoctoral Research Scholar at University of California in San Diego, as well as obtained a PhD in cryptography from ETH Zurich.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/bj%C3%B6rn-tackmann-448767122",
+          "https://scholar.google.com/citations?user=E37ychMAAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4vJ5dkh0CsbkNrY04nXrY6/e83be242a99818b285ff8d25e7a056c6/BjornT.jpg"
+      },
+      {
+        "name": "Johan Granström",
+        "bio": "Johan previously spent 8 years as a Senior Staff Engineer at Google, where he led the team building the infrastructure for YouTube's video and audio matching system. He received his PhD from Uppsala University under Per Martin-Löf and has published a book titled [Treatise on Intuitionistic Type Theory](https://www.springer.com/gp/book/9789400717350). Johan has also implemented a [programming language](http://intuitionistic.org/) based on intuitionistic type theory along with publishing several [papers](https://scholar.google.com/citations?user=E8emCf8AAAAJ).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/drgranstrom/",
+          "https://github.com/granstrom"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4wCuoQomROKe7V0VkZapzW/97c05223b4f6b7328b6847246eeed8ea/Johan_Georg_Granstrom_2.JPG"
+      },
+      {
+        "name": "Michel Abdalla",
+        "bio": "Michel is a cryptography researcher working on the design of efficient and provably secure cryptographic protocols. He got his PhD in computer science from UC San Diego and has published over 70 research papers in cryptography and security. Prior to joining DFINITY, he was a senior staff researcher with the French CNRS, and an adjunct professor at ENS Paris. He is the current IACR president.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.iacr.org/cryptodb/data/author.php?authorkey=35"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/GdRWp2iRJqnQ4lFdQcDUY/8b05673b407a52a5e9595eb77f1845a8/michel.jpeg"
+      },
+      {
+        "name": "Björn Assmann",
+        "bio": "Björn is an experienced quantitative risk modeler and manager with 10+ years of work experience in the financial industry. Prior to joining Dfinity, he worked at Credit Suisse focusing on models for credit risk and stress testing.  In addition, Björn is a lecturer within the Master program in Quantitative Finance at the University of Zurich and ETH. He holds a PhD in Mathematics of the University of St Andrews. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/bj%C3%B6rn-assmann-53a692213"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/527ExEDAckhq0HY0AhEHbW/32dccfee0566593395bcb4db7761dc69/bjorn_assmann.jpeg"
+      },
+      {
+        "name": "Helge Bahmann",
+        "bio": "Helge studied Math and Computer Science at TU Freiberg (Germany) finishing with a PHD on the cross-section of multimedia and compilers / program representation. Previously, he's worked at Secunet Security systems as an operating system specialist then Google, where he worked on distributed graph processing for the \"Knowledge Graph\" reconciliation system as and engineer, architect and tech lead. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/helge-bahmann-92925193"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/0193NUAQcKwJV8kzrBCAaW/cb5a47f33373bd5409bed619b1ff9253/helge.jpg"
+      },
+      {
+        "name": "Rüdiger Birkner",
+        "bio": "Rüdiger designs and builds systems to analyze computer networks and their distributed configurations. His research aims to make networks more reliable and secure. He obtained a PhD from ETH Zürich in the Networked Systems Group.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/rbirkner",
+          "https://www.rbirkner.ch/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4tzVsRpBS3mfhC4u3ZPfgk/2b31d72c38f64b6dae31e00daaf77277/rudiger.jpeg"
+      },
+      {
+        "name": "Aisling Connolly",
+        "bio": "Aisling holds degrees in math, economics, and computer science, and obtained her PhD from the ENS in Paris in 2019. She joins DFINITY from Worldline, having spent spent six years as a cryptography and privacy researcher working on next-generation payment systems. Beyond this, she also worked on scientific and technical direction, strategy, and the legal aspects of building and using privacy enhancing technologies. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/aisconnolly/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6XjgzwrnfdFWYsQ1CdlvDF/bdecc716ea46e9243cf3403a10b85266/aisling.jpeg"
+      },
+      {
+        "name": "Yotam Harchol",
+        "bio": "Yotam designs and builds networked systems with focus on performance and security. He has a PhD in Computer Science from the Hebrew University of Jerusalem, after which he was a postdoc at VMware Research and UC Berkeley. Before joining DFINITY, Yotam was a research scientist at EPFL.",
+        "title": "Technical Staff",
+        "websites": [
+          "http://www.yotamharchol.com/",
+          "https://ch.linkedin.com/in/yotamharchol"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1JBeFgcNIqMl0jyi50y7Mb/b3cb808125650ca5403b2b1c7bae9d92/yotam.jpg"
+      },
+      {
+        "name": "Stefan Kaestle",
+        "bio": "Stefan's interests lie in distributed systems, runtime systems and operating systems. He worked on the Barrelfish OS with focus on optimizing memory allocation and constructing efficient message passing trees. Prior to DFINITY, Stefan worked at Oracle Labs on fault-tolerance for distributed graph analytics. He holds a PhD from ETH Zurich.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://stefankaestle.com/",
+          "https://scholar.google.com/citations?user=QZIWG-MAAAAJ&hl=en",
+          "https://ch.linkedin.com/in/stefankaestle"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2ZWwB9ldbddSzV5922Fvx6/633b7be7ed59a16b7bcf0379af2fb79d/stefankaestle-small.jpg"
+      },
+      {
+        "name": "Rüdiger Kapitza",
+        "bio": "Rüdiger obtained his PhD from the FAU Erlangen-Nürnberg. In 2010, he was a visiting scientist at IBM Research Zurich. Since 2012, he is a professor at the Technische Universität Carolo-Wilhelmina zu Braunschweig and currently on leave. His <a href=\"https://scholar.google.com/citations?user=YRYGWv0AAAAJ&hl=en&oi=sra\"> research interests </a> can be broadly summarized as the engineering of fault-tolerant and secure distributed systems.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://scholar.google.com/citations?user=YRYGWv0AAAAJ&hl=en&oi=sra",
+          "https://de.linkedin.com/in/r%C3%BCdiger-kapitza-36149688"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7wFZqhJiEqDigj4uNcwWbS/3d8f70bcc2e5d6988e0d5859ca3f633f/rudigerk.jpeg"
+      },
+      {
+        "name": "Thomas Locher",
+        "bio": "Thomas Locher holds a PhD in computer science, with a focus on distributed computing, from ETH Zurich. After his postdoctoral studies at IBM Research in 2010-2011, he worked as an R&D Scientist at ABB Research from 2012 until 2020. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Vrk5Ryt1yOf5vnGgmzhnV/432ae2e07764a87a9eff878a8cf2190d/thomas.jpg"
+      },
+      {
+        "name": "Ognjen Maric",
+        "bio": "Ognjen is a computer science researcher with expertise in the areas of formal methods, security and distributed systems. He completed his PhD at ETH Zurich in 2017, and have since worked at Digital Asset, designing and implementing a privacy-minded distributed commit protocol.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/ognjen-maric-1039aa70"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2Dz2D3TESst5yXvDqdfswB/90b8e0cc9aeb53201155497b0a81ba7d/ognjen.jpeg"
+      },
+      {
+        "name": "Martin Raszyk",
+        "bio": "Martin is a PhD student of Computer Science at ETH Zurich. His research focuses on runtime verification, complexity theory, and formal verification. He enjoys the entire pipeline of problem solving: from the theoretical design all the way to the implementation and (formal) verification of a solution.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://scholar.google.com/citations?user=PqFPENQAAAAJ&hl=de"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4zZhETJLOXZmEcTlwmgghg/f664c8d839500662136d204f6023faad/martin.jpeg"
+      },
+      {
+        "name": "Lara Schmid",
+        "bio": "Lara studied Computer Science at ETH Zurich, where she also received a PhD in the Information Security Group. In her research, she has used formal methods to reason about the security of systems and protocols. In particular, her focus was on designing and formally verifying security protocols, taking into consideration new properties and new security relevant aspects, such as human errors and usability aspects.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/lara-schmid-a4a7b8123",
+          "https://scholar.google.de/citations?user=nMbt7J8AAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4LrmlmX3TVW9WRKsofqZs4/08de615c598af7380fe51c2f4b059def/LaraSchmid.jpg"
+      },
+      {
+        "name": "Mikhail Turilin",
+        "bio": "Mikhail joins DFINITY from Google where he launched Google Pay and Google Assistant Payments. Previously he launched a top-10 educational company in Europe and created robots that move solar panels to track the sun's position in the sky.\n",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5q5RiHsaWWz6aqijmeMzXb/a646b4e46052e9c5f57ee89795da3368/Mikhail_T.jpeg"
+      },
+      {
+        "name": "Bogdan Warinschi",
+        "bio": "Bogdan is a cryptography expert on provable security for cryptographic protocols. He has published around 80 research papers in cryptography, security, and privacy. Bogdan got his PhD from UC San Diego. Prior to joining DFINITY he was a Professor of  Computer Science at the University of Bristol. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://uk.linkedin.com/in/bogdan-warinschi-3bb5078",
+          "https://scholar.google.com/citations?user=kS0oatgAAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7AEHobgv8PLoBXKI9gA9QJ/a08d3158a10a87d3b801bee617827f42/Bogdan_Warinschi_2_square.jpg"
+      },
+      {
+        "name": "Satya Vusirikala",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/satya-vusirikala-a81422217?trk=public_profile_browsemap"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/dVbahw6sQzPUaSQ6W2ST4/6ed25b3cf43fc3904a07e953a9f1e8e9/satya.jpeg"
+      },
+      {
+        "name": "Ulan Degenbaev",
+        "bio": "Prior to DFINITY, Ulan was a Staff Engineer at Google where worked on the [V8 JavaScript engine](https://v8.dev/) that powers Chrome and Node.js. Ulan specialized in memory management and garbage collection. His major contributions to V8 such as making the garbage collector concurrent are published as [papers](https://research.google/people/UlanDegenbaev/). Ulan has a PhD from Saarland University.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://research.google/people/UlanDegenbaev/",
+          "https://github.com/ulan"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2ozOsVmxqmRhngrNzW930K/a3165da4f6aa0d004df5b09bf9597a8c/ulan.jpeg"
+      },
+      {
+        "name": "Michael Ahern",
+        "bio": "Michael is a multi-certified (UNIX, Red Hat) systems administrator with strong experience managing client, server, network, and mobile infrastructures. He has extensive knowledge and success in data-center operations across Unix, Linux, and Windows.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/mike-ahern-55948241"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6c7M1mEji5eAwOdcunzvhz/b16dcc3f23ad7957a080c14fd9e9b46d/MikeAhern__1_.jpeg"
+      },
+      {
+        "name": "Alejandro Alvarez",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1FXXqLadY0RKO7HWHwsaow/44bfdb97b596eae41bedb86082e7d07d/alejandro.jpeg"
+      },
+      {
+        "name": "David Alves",
+        "bio": "Prior to DFINITY, David was the CTO of CortexXus, and he also helped create Apache Kudu at Cloudera. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/davidralves",
+          "https://github.com/dralves",
+          "https://twitter.com/dribeiroalves?lang=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/hH8tY2SKWWis7A8z5eGzb/936f563281d386490dc2d7f56abd18e5/DavidAlves.jpeg"
+      },
+      {
+        "name": "Jeff Anderson",
+        "bio": "Jeff is a technology professional with over 13 years of experience; wearing many hats and helping companies in many industries succeed.  He has spent time in healthcare IT, logistics and parcel management, golf and managed service providers. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/jeff-anderson-rocks"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7bpp8acax7MfxmnD3dVw7c/182abab086df73c14fb7342c36912e17/jeff.jpg"
+      },
+      {
+        "name": "Jean Arnaud",
+        "bio": "Prior to DFINITY, Jean worked in several startups in various fields (genomics, information systems, wealth management) in Europe and at Amazon Web Services (EC2) in South Africa. He received a PhD in Computer Science from the Université Grenoble Alpes in 2010.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/jeanarnaud"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1WjzSYgTZs4RLkV7AhiC7u/ee729161d30b0afb247580c88dc43b91/jean2.jpeg"
+      },
+      {
+        "name": "Maksym Arutyunyan",
+        "bio": "Maksym brings 11+ years of experience programming in C/C++ including 5+ years experience in computational geometry, 5+ years of various back-end / front-end technologies at Google. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/maksym-arutyunyan-12692860"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1uVeYH2YY87FSAczmmw4Vl/d8f16c55a9d5361582b09d3675d9dd1b/Maksym_Arutyunyan.jpeg"
+      },
+      {
+        "name": "Anton Astafiev",
+        "bio": "Graduating from MIPT, Anton continued down the research path and worked at CERN and attended doctoral school at EPFL. He then spent in total 6 years at Google's privacy and security team, dealing at first with the fallout from Snowden's revelations and later building privacy and security vulnerabilities scanners. In between his work at Google he spent 1.5 years at a biomedical startup creating the whole IT story from the ground. Anton also actively played CTFs and together with the DCUA CTF team ranked [best worldwide in the year 2016].",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/astafiev/de"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5HHsTwLfXHU96vAPl6xgue/01f9512a273c1dc6c2ee6f82fd6749b1/Anton.jpg"
+      },
+      {
+        "name": "Ege Bagcioglu",
+        "bio": "Ege previously worked at Oracle for over 3 years. During her MSc studies and early tenure at Oracle, she worked on and around concurrency — concurrent data structures, a concurrent memory allocation API, and Intel's hardware transactional memory. Later, she has worked very closely with executables and assembly code, and their generation and execution on different instruction set architectures.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/egeyar",
+          "https://github.com/egeyar"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2b6IWrttgBi3TdktzyW9AH/ebeaa7fc3c63fcdabfd34390f72624ee/ege.jpg"
+      },
+      {
+        "name": "Andriy Berestovskyy",
+        "bio": "Andriy’s previous experience includes a pre-aggregation micro service and 1M endpoints network simulator for Nexthink (EPFL spin-off unicorn), SPDK-based virtualized network-attached storage, DPDK-based virtualized router for Juniper, hardware IPsec assistance support in user and kernel space for Cavium (now Marvell company), Linux kernel network stack acceleration for Annapurna Labs (now Amazon company).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/berestovskyy/",
+          "https://github.com/berestovskyy"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6x14yVx12Mc5IQKArXvXyg/fba8f666e294ad1094eebe90bc7557e0/andriy.jpeg"
+      },
+      {
+        "name": "Khushboo Bindlish",
+        "bio": "Khushboo is a Software Engineer with an interest in software security. She was born in India and holds a Master's in Computer Science from USC. Prior to joining DFINITY, she was at Intel designing and developing security features on Intel core and IoTG platforms for past 11 years.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/khushboo-bindlish-b906b18"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4bpCakITZkOoxEtc7luL4o/b5253f26ee9ad844f80e6b57b2b76437/Khushboo_Bindlish1_square.jpg"
+      },
+      {
+        "name": "Mathias Björkqvist",
+        "bio": "Mathias has a background in storage system security and distributed encryption key management. He previously spent 3 years at Thales and 12 years at IBM Research.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://nl.linkedin.com/in/mathiasbjorkqvist?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6ijFSIhFdy1ZY9wE0rsk5v/6b07a123bd1967dcb027e2a628752021/mathias_b.jpeg"
+      },
+      {
+        "name": "Ian Blenke",
+        "bio": "Ian is a Computer Engineer with a focus on hybrid cloud systems architecture. Prior to DFINITY, among various startups he built telecommunications data centers and video telephony platforms for the deaf and hard of hearing. His passion is to contribute to building OpenSource communities and profess the DevOps mantra of infrastructure as code.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/ianblenke"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7G6f8BkHtZi6DTOmgIE7la/ac5953486668ca939f74c37160fba8ed/ianblenke.jpeg"
+      },
+      {
+        "name": "Daniel Bloom",
+        "bio": "Prior to DFINITY, Daniel worked at Microsoft (SQL Azure) and Tableau, developing solutions to efficiently migrate customers between data centers.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/daniel-a-bloom?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7LNtXFLH42frPKdguTchrD/670d906b73710a66b097810bfa1a01ae/DanielBloom.jpeg"
+      },
+      {
+        "name": "Adam Bratschi-Kaye",
+        "bio": "Adam completed a Ph.D. in Number Theory at the University of Michigan before leaving academia and becoming a software engineer. He's worked on various systems at financial institutions including Goldman Sachs and Jane Street Capital and is especially enthusiastic about working languages with strong type systems.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/adam-rubin-kaye"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1ZF5ZaSdiHDzUNLvegVLdr/4c5d624ca336b2065c910ec2126d7420/adam2.jpeg"
+      },
+      {
+        "name": "Andrea Cerulli",
+        "bio": "Andrea is a researcher interested in the development and deployment of cryptographic protocols, currently working on building efficient zero-knowledge proofs and arguments. Previously, he was a [doctoral researcher](https://scholar.google.co.uk/citations?user=i5sz7Q8AAAAJ&hl=en) in the Information Security Group at UCL, and prior to that earned his M.Sc. in Mathematics for Cryptography at Univ. of London.\n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/andreacerulli/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2vA5R1OQ1m4Co4IO4EQAUe/960f3893d5ef914ec2021f327d79baef/andrea.jpg"
+      },
+      {
+        "name": "Yan Chen",
+        "bio": "Yan joins DFINITY from Google where he worked on machine learning for Ads. He is interested in typed functional programming, monadic computation, and using machine learning for language and algorithm design . Yan also holds a PhD in programming languages from Max Planck Institute for Software Systems, and has published [papers](https://scholar.google.com/citations?user=di1UiZ0AAAAJ&hl=en).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/yan-chen-89a50a7"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/gV3cNlF31WioBKCEBV0zQ/31aeeb5a79c69ee5e63f9c51ca388438/Yan_Chen_2_square.png"
+      },
+      {
+        "name": "Ryan Croote",
+        "bio": "Ryan is a full-stack software developer with over 11 years of experience. He has worked with small and medium sized companies to utilize open source technologies (Python, PHP, Node.js, .NET Core). He enjoys creating reusable code and tooling that make a developer's life easier.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/ryancroote"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5cRraETamrCgVenSOnDrWc/d2c16dd029429941d7105735fe2386a5/ryan_croote.jpg"
+      },
+      {
+        "name": "Zoran Cvetkov",
+        "bio": "Zoran is a software developer with a wide range of experiences from low level embedded systems to a specialised CAD applications, from web and mobile apps to face recognition and gaming. Has a curiosity and a strong passion for cryptocurrencies and their applications for building a better internet.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3d03TdzNtSks765WwZsWQH/d9138e99668e568c9c3419547714a8b7/zoran.jpeg"
+      },
+      {
+        "name": "Stefan Dietiker",
+        "bio": "As a Software Engineer, Stefan had the opportunity to employ his skills in different fields, from ecological research with bats, to market research in Fintech. Prior to DFINITY, he was as a full-stack Software Engineer at xorlab, an email security startup in Zurich. Stefan graduated from ETH Zurich in 2017 with a Master Degree in Computer Science. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/stefan-dietiker-a158a295"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5Ak2tXI8iuqoNeFeFeNCjc/958e88833829ba1de7ba1ca9e02b8682/0.jpeg"
+      },
+      {
+        "name": "Bas van Dijk",
+        "bio": "Bas is fascinated by functional programming and has used it in various startups from developing an e-learning platform with hundreds of thousands of users to building a bicycle detection system that is measuring thousands of parked bicycles in many cities as CTO at LumiGuide. With more than 10 years of experience as a Haskell developer, Bas is passionate about building highly reliable and maintainable software.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/vdijkbas"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4lzBX2bFZI66OjymHL1iLM/bb5614097c9a7bace28d935334e4ccb7/Bas_van_Dijk_square.png"
+      },
+      {
+        "name": "Mykola Dzham",
+        "bio": "Prior to DFINITY, Mykola worked in a wide variety of engineering teams building and managing network infrastructure and services in an Internet Service Provider, building data processing clusters from the hardware to the orchestration software in a small startup, managing various Geo services as SRE at Google, and building distributing data processing infrastructure at teralytics.ch company.\n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/levsha"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6RrHpbAJ5uvVlkU6USfyEj/cb195e88bcec359639a99aa0cccb43f2/Mykola_Dzham.jpeg"
+      },
+      {
+        "name": "Leo Eichhorn",
+        "bio": "Leo finished his master's degree in computer science at the Technical University of Munich in 2021 and continued as a research associate focusing on software engineering of distributed systems and ledgers. As part of his Bachelor's thesis, Master's thesis and three resulting research papers, he investigated several key attributes of blockchain architectures from a security and performance perspective. In particular, he conceptualized and evaluated a decentralized compute marketplace allowing IoT and edge devices to rent crowdsourced computing resources on demand within stringent latency bounds.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://de.linkedin.com/in/leo-eichhorn-282b9a217"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/W0WD5cXBLkpOJnA6GahgK/df77ae8d5083b8a3c71a93d41fc51087/leo.jpeg"
+      },
+      {
+        "name": "Islam El-Ashi",
+        "bio": "Islam is a software engineer and entrepreneur. He was an early member at TellApart where he worked on ad bidding systems and recommendation engines before being acquired by Twitter, where he joined the Twitter Ads team. Islam also co-founded Elk, a startup building a hardware development board for blockchain applications.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/ielashi"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3TUb6Hck0667ElhrrGL3CO/34be0408caef605b58ece2024eb2b3ba/Islam.jpg"
+      },
+      {
+        "name": "Eduard Galindo",
+        "bio": "Eduard started his career as an IT freelancer. Prior to DFINITY, he's worked for King and Activision Blizzard the gaming companies responsible for games like Candy Crush, Call of Duty and World of Warcraft. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1CvuMNT6g71uNgUVhQSZfJ/d4d8c30389e770a8a555f5ed366b20ac/Eduard_Galindo.jpeg"
+      },
+      {
+        "name": "Gabor Greif",
+        "bio": "While Gabor has a diploma in Mathematics, he has been attracted to computing since childhood. Prior to joining DFINITY, he worked on massive network management systems, and spent the last two decades writing software for terabit-switches at Alcatel-Lucent Enterprise, Bell Labs, and most recently, Nokia. In his daily work, Gabor strives to solve problems with formally inspired tools, including functional programming.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/gabor-greif-05438b101/",
+          "https://github.com/ggreif"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/33sdrXgrOb2SVnbR1ZJlAw/edcb27fc243b5155856712067c7abb39/Gabor_Greif_square.png"
+      },
+      {
+        "name": "Tim Gretler",
+        "bio": "Tim graduated from ETH Zurich, where he studied Electrical Engineering and Information Technology. During his final years at university, he worked on increasing database performance by using new hardware technologies. In addition to his studies, he also joined VMware as an intern, where he worked on infrastructure automation. \n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/tim-gretler"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6CbSPZRq3wJcDnxXdGRl3Q/4bacb36bd18b3520e51876d1bf196bd9/tim.jpeg"
+      },
+      {
+        "name": "Matthew Grogan",
+        "bio": "Matthew is a Software Engineer with 25 years experience across a wide range of domains generally involving web technologies. In recent years he has focused on building a microservice backend supporting a multi-tenant platform for running online travel agencies. Matt particularly values reliable and maintainable software. He holds a Masters Degree in Engineering and Computer Science from the University of Oxford. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://uk.linkedin.com/in/matt-grogan-99535121"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6v4vFIPPFbcK1BhdfAA3P3/093146b746406487cefe3669c3fe4b6f/mattgrogan.jpg"
+      },
+      {
+        "name": "Anna Galanou",
+        "bio": "Anna received her diploma in Electrical and Computer Engineering from NTUA in Greece and is currently pursuing her PhD in Computer Engineering in TU Dresden. Her research focuses on systems security and confidential computing. She joined DFINITY as an intern and aims to continue her work on encrypted VMs and their remote attestation.\n",
+        "title": "Research Intern",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5uSkUjJQ2xqf3zEkschrf6/b097ad8544539664d69d11f011d27b36/Anna_Galanou.jpeg"
+      },
+      {
+        "name": "Matthew Hammer",
+        "bio": "Prior to joining DFINITY, Matthew was an Assistant Professor at CU Boulder researching various topics programming language design and implementation. He is interested in typed functional programming, persistent data representations, and general-purpose approaches to reactive & incremental computation. He also designs PL-based abstractions that organize the creative collaboration of humans and computers. Matthew has a PhD in Computer Science.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/matthewhammer/",
+          "http://matthewhammer.org/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6Ul1ZfQaOq29N6jLB8w6Ij/2094a3bc6532b296c315070507ab3548/Matthew_Hammer_updated.jpg"
+      },
+      {
+        "name": "Angela Harp",
+        "title": "R&D Communications",
+        "websites": [
+          "https://ch.linkedin.com/in/angela-marie-harp-7b099975"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/oGC9B1GeVoyjhEsmrpZdT/e7fe07523af82c376cb05921b8479999/Angela.jpeg"
+      },
+      {
+        "name": "Tomas Hlavacek",
+        "bio": "Tomas is an Internet enthusiast and Open Source software and Open hardware supporter. He focused on routing security in the Internet during his PhD at the TU Darmstadt. Outside of academia he operated small and large networks, helped introduce new networking technologies and worked on Open Source software and Open Hardware projects.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/tomas-hlavacek-395aba9"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7ieuYHZNQOYaMfkbEMpN58/d68c11b98f47a013765e3aaa108da3cf/tomas.jpeg"
+      },
+      {
+        "name": "Samuel Howard",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/samuel-howard-1a20a31"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1dxBsGYQi00IDXn0OVdARP/5d8f28ca79ec0029db8b436ac8109b4c/SamH.jpeg"
+      },
+      {
+        "name": "Yuhui Huang",
+        "bio": "Throughout Yuhui's professional career, he has dabbled in virus analysis, red-teaming, incident response/forensic, big-data/log analytics, vulnerability management and AWS cloud security. His passion lies in defensive security for a service environment, operational security hygiene, monitoring and forensic at scale.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/FerNSVxvpN8URWzmPcAxj/8506b8a92c2a1f4bc76df925bf07a273/Yuhui.jpeg"
+      },
+      {
+        "name": "Roman Kashitsyn",
+        "bio": "Roman graduated from Nizhny Novgorod State University with degrees in Applied Mathematics and Cybernetics. For nearly 10 years, he's mainly worked on huge systems ranging from enterprise applications to telecom and distributed computing. Before joining DFINITY, Roman was a Software Engineer at Google on the Shopping Data Quality Team, designing and building a flexible architecture for human review systems and optimizing our crawling steaming pipeline processing billions of web-pages per day. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/roman-kashitsyn"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7l1nOFXjJ3YJoOT7G2OaaJ/72e6616d811071e3f2a471d9833edf50/roman.jpg"
+      },
+      {
+        "name": "Eero Kelly",
+        "bio": "Prior to DFINITY, Eero worked with Rust to build and scale the next generation of healthcare systems at Commure. He has previous experience working on embedded systems, and drivers at NVIDIA.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/eero-kelly-9967a510a"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4u0rkvdKcjgA8SON7mRvtS/1a93a91408438135cc6e46ffb329830c/eero.jpeg"
+      },
+      {
+        "name": "Raymond Khalife",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/raymondkhalife?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2tSXu9NE3f3wicrX4ovGHr/e9ce9eabf20256c29732abe47ae8d991/raykhalife.jpeg"
+      },
+      {
+        "name": "Livio Kopp",
+        "bio": "Livio is a Systems/Security Engineer. Prior to DFINITY, he's worked as a DevOps Engineer at Flynt Bank AG, building a fully automated and scalable banking platform. Most recently, he built the infrastructure for an enterprise grade digital asset storage at Crypto Storage AG, supporting 15+ blockchains. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7DSRWsxRkiO7s6UiORUqO4/25695450038566f7b4ca5b2715666273/livio.jpg"
+      },
+      {
+        "name": "Maciej Kot",
+        "bio": "Maciej graduated with a MScEng degree in Computer Science from Warsaw University of Technology, and MSc in Physics from University of Warsaw. He received a PhD degree in Computer Science from the Tokyo Institute of Technology. As a researcher he tackled problems related to physically based simulations of deformable objects and materials. As a software engineer he was involved, among others, in the development of highly scalable distributed grid storage platform, as well as an end-to-end data science automation system. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3zpreNFiEmZHVbcFNJnfCQ/a4794fa298710635bb7cdd64673a3324/MaciejKot.png"
+      },
+      {
+        "name": "Martina Kollárová",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4fn8OHbbYiSI4262Vgslgq/59b7d26f89349358c1ba7e0153085d7a/Martina_Kolla__rova__.jpeg"
+      },
+      {
+        "name": "Nikolay Komarevskiy",
+        "bio": "Nikolay is a software engineer with a scientific background in physics and electrical engineering. In 2009, he obtained his Master's degree from the physics department of the Lomonosov Moscow State University. Being passionate about science and research, he pursued a PhD at ETH Zurich in the field of computational nanophotonics. During academic years 2009-2014 as a researcher and later as an R&D engineer 2014-2017, he was working on electromagnetic problems, numerical methods, stochastic optimizations and algorithms. He published four scientific papers, filed several patents and was active as a teaching assistant. In 2017, he switched to professional software engineering and has been doing it ever since. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.researchgate.net/profile/Nikolay-Komarevskiy",
+          "https://ch.linkedin.com/in/nikolay-komarevskiy-87326998"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4n46HVWP7bOvv8M7sFXBIT/52437ca94c88c3f9f3d04e790b1b8ae3/nikolay.jpeg"
+      },
+      {
+        "name": "Marko Kosmerl",
+        "bio": "Marko earned his bachelor’s degree in Computer Science and Mathematics from University of Ljubljana. In a bit more than 10 years, he has gained experience working as a Software/System/DevOps Engineer in various international companies adding value mainly in the field of Infrastructure and DevOps practices.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2VrT2WYUrXttZZti68ABat/158e1a4823810b7c0ac6068df2489e7a/marko.jpeg"
+      },
+      {
+        "name": "Robin Künzler",
+        "bio": "Robin previously spent 5 years as a Senior Software and Security Engineer developing a major web authentication solution at Ergon. He received his PhD from ETH Zurich, where he worked on theoretical cryptography.  ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/12Pvk2qGavI0FjJaDY0NEp/1a72104c4fd3036c8049d2f41eafdb0b/Robin.png"
+      },
+      {
+        "name": "Andrew Lee",
+        "bio": "Andrew is a security engineer focusing on secure software development,\ninfrastructure security, cryptography, automated reasoning, reverse\nengineering, and privacy. Andrew has a PhD in Computational Physics from the University of Washington, Seattle.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2wageN21XdyjkS1Nsoom1v/a489862ffd18dcc5441cf7c268141e8f/175-0-2.jpg"
+      },
+      {
+        "name": "Hugo Lageneste",
+        "bio": "Hugo is an engineer who entered the tech industry at 17 years old, thanks to his open-source projects.  He previously worked in the field of machine learning, helping companies to employ artificial intelligence software.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/hugolageneste"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6luAKvcZViUezF6MUw16H0/835acb95b767a1ad16323fe77aa5ffae/hugo.jpeg"
+      },
+      {
+        "name": "Peter Lidwell",
+        "bio": "Pete is a seasoned builder of software products and services. Cutting his teeth in Web 1.0 he helped develop some of the pioneering examples of online mapping, direct to consumer publishing, and identity management. For the past 15 years, he’s been a Product Manager at Google, guiding teams building technical innovation into Search, Maps, YouTube & the Assistant. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/petelidwell"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/38kZAMa1gXVxdWcaVdCjrh/7c0fb57172dcc0425e7a4305716c1ae6/peter.jpeg"
+      },
+      {
+        "name": "Paul Liu",
+        "bio": "Paul joined DFINITY after 7 years in a Staff Research Scientist position at Intel Labs, where he architected a highly optimized [Haskell compiler](https://github.com/IntelLabs/flrc) for x86 architecture. He received his PhD from Yale University under Dr. Paul Hudak, one of the inventors of Haskell, and served as PC member of Haskell Symposium and IFL. Paul also writes many [papers](http://thev.net/PaulLiu/#publications).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/paul-liu-86b880/",
+          "https://github.com/ninegua",
+          "http://thev.net/PaulLiu"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5nkypeI6Hu8WSccAq4mceY/ef43d6734b2774a8c1ea5a708e7ecab7/paul.jpg"
+      },
+      {
+        "name": "Jack Lloyd",
+        "bio": "Jack's main professional interest is in cryptography and building high assurance systems. His work has covered both reviewing existing systems for flaws as well as developing new cryptographic software. At Signal Messenger, he wrote the Rust library which is now used by the Android and iOS clients to encrypt every message. At Fortanix he wrote post-quantum cryptography implementations and improved side channel hardening in their FIPS-validated hardware security module.\n\nHe has contributed code now included in the OpenSSL and mbedtls libraries and wrote his own cryptographic library, Botan, which has been approved by the German Federal Office for Information Security for use by German government and NATO systems.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/jacklloyd"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/29Kdzk5N27DTsU0zMtpmOj/5df42d5fbc911dd0f6032d8384d07765/jacklloyd.jpeg"
+      },
+      {
+        "name": "Benjamin Loison",
+        "bio": "Benjamin is passionate about decentralized networks. He completed an internship at INRIA on the compression of the Bitcoin blockchain. He studies at Ecole Normale Supérieure Paris-Saclay and is currently an Research intern at DFINITY. ",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1CIfbSBM5KKk5WGRYneOau/5f585ebe9d14f50801c3befc51282e83/benloison.jpeg"
+      },
+      {
+        "name": "Ivan Malison",
+        "bio": "Ivan enjoys tackling large-scale, distributed infrastructure challenges like high availability and data center failover. At Uber, he co-authored a persistent distributed timer, backed by a distributed hashring. In the past, Ivan was heavily involved with GOlang, improving the libraries and its nuanced ecosystem. He enjoys strongly-typed languages and is thrilled to start working with Haskell in a production setting.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/ivanmalison"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2E5jf39oODsE94ZvYtABKU/a6d10c1ff4524d7282d1b9e5ac4776f7/Ivan_Malison1_square.jpg"
+      },
+      {
+        "name": "Nicolas Mattia",
+        "bio": "Nicolas joins DFINITY after 3 years of working as a functional programming and distributed systems consultant at Tweag I/O. Prior to that, he designed high performance messaging systems for the Pusher platform. He holds a Master's in Microengineering and System Control from ETH.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/nicolas-mattia"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7tdNShfwZLVHX4aiRBr9RB/b7f37e2046be70410b3898b0fc79c44b/Nicolas_Mattia_.jpeg"
+      },
+      {
+        "name": "Ryan Morrison",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/ryanamorrison"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1plQLhmVybe4hUFqKLmbc8/1d173d430a98c8cdee34c4c958164050/RyanMorrison.jpg"
+      },
+      {
+        "name": "Christian Müller",
+        "bio": "Christian studied Computer Science and holds a PhD in Formal Methods from Saarland University. Since he graduated, he has gained experience as a software engineer across the whole stack of software applications, from scaling cross-platform mobile applications over microservice based backends to firmware controllers of IoT devices.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/cmllr/",
+          "https://github.com/chmllr"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1AiaCG6mQi6P3u6wB0iWTU/98c0eab462a18fafc2c463979c086e4d/Christian_Muller_square.png"
+      },
+      {
+        "name": "Max Murphy",
+        "bio": "Max has worked as a cryptographer for 15 years, including at numerous startups. He specializes in high-performance computing, embedded computing, and automatic vulnerability detection and he also helped launch Permutation Patterns into the mainstream. Previously, he earned his PhD in mathematics from St Andrews University.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7sEUE4jT23NBv1dJ7HqxBk/57fa2589f574764cfc66f3e8972525f7/Max_Murphy_square.png"
+      },
+      {
+        "name": "Jason Ibrahim",
+        "bio": "Prior to Dfinity, Jason was a key leader on the OpenText Platform Engineering team, where he helped build workflow, business mobility, and mobile-platform SDK’s and API’s. He holds a degree in Electrical Engineering and Computer Science from UC Berkeley. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2kusu1euRJmmZZSZxjeS0s/2a523800a0cbc90bc14f4a2f43f1eece/jason2.jpeg"
+      },
+      {
+        "name": "Gregory Neven",
+        "bio": "Gregory is a cryptography researcher and an expert on provable security for advanced signature and encryption schemes. He has published over [60 research papers](http://www.neven.org/papers/index.html) in cryptography, security, and privacy. Gregory has a PhD from KU Leuven and joins DFINITY after ten years as a scientist at IBM Research.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/gregory-neven-a7b3872/",
+          "https://www.neven.org/",
+          "https://twitter.com/gregoryneven"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4xFucuEifCywQue0kKysKe/299e946c947faacb74195ee5f4b2c15e/gregory.jpg"
+      },
+      {
+        "name": "Marcin Nowak-Liebiediew",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/G8v66wnew7IHlpgRCSGEw/742fb1b82a34268771befd9603a55dfb/Marcin_Nowak-Liebiediew.jpeg"
+      },
+      {
+        "name": "Joseph Orthoefer",
+        "bio": "Joseph is experienced with administration of various and sundry unix systems and IPv4 since 1992, starting with SunOS 4.1, pre-1.0 linux distributions, and FreeBSD 1.1, expanding to include Digital Unix and Solaris. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4eVcE5KhbMwKlgkmqSmVdJ/e83764b38c09782315c5f18a34f5f32c/joeo.jpeg"
+      },
+      {
+        "name": "Mario Pastorelli",
+        "bio": "Mario has a Master’s degree and a PhD in Computer Science with focus on distributed systems. He moved to the industry after receiving his PhD and since then he has been working with various companies to deliver high quality products to their clients. In addition to that, he also helped companies build and manage teams. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/mario-pastorelli-6816b423"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4x51jk7fI9RZASuRgYehFN/0a580bb88feb898c6de40a9a7df74e42/mario.jpeg"
+      },
+      {
+        "name": "George Paul",
+        "bio": "George has 15+ years of experience leading engineering and technical/IT operations teams at Rubrik, IUNU and Finxera. As an experienced, results-focused individual, he thrives in challenging environments.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/george5paul"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/16UzuLmdZEoN00zLBrkeIB/667d98d0115f3d0b61d4cf112530b5bc/georgepaul.jpg"
+      },
+      {
+        "name": "Hamish Peebles",
+        "bio": "After graduating with a degree in mathematics from Cambridge University, Hamish transitioned into the world of software engineering where he focused primarily on high throughput, low latency cloud based systems. Prior to joining DFINITY, he worked at Emirates where he quickly rose through the ranks, eventually leading the design of their new B2B hotel search engine.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://uk.linkedin.com/in/hamish-peebles-868251a9",
+          "https://github.com/hpeebles"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6h0riVia8a1V51Rae3bU1o/d26204ccc08affd89d33aa528273f772/hamish.jpg"
+      },
+      {
+        "name": "Llorenç Perello",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6ahgJVSn1ohoLugrbaJkyZ/7ea06898a582ba8ecce10c6e5c000a07/llornec.jpeg"
+      },
+      {
+        "name": "Tony Pernicano",
+        "bio": "Tony is a Software Engineer with over twelve years professional experience specializing in full-stack Python development. He has completed projects for a wide array of small- to medium-sized companies and has built multiple systems from the ground up, as well as advanced existing projects.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/pernicat"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5dcedmfYEgPQyHAfVHBcF3/9783c984f979462f121f54304b6a4924/TonyP.jpg"
+      },
+      {
+        "name": "Ali Piccioni",
+        "bio": "Ali previously worked at Google as a Senior SRE on YouTube video processing and network serving infrastructure, and has built numerous projects related to reliability, deployments, and performance. He also founded an online textbook rental service and developed iOS apps.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/ali-piccioni-1217a411"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2pwf4vX8xtWTH1iq9SLXpB/d4be589637cabdc499089076f369dbc4/ali.jpg"
+      },
+      {
+        "name": "Kyle Peacock",
+        "bio": "Kyle has joined DFINITY from Coinbase, where he worked as a frontend-focused software engineer. In his spare time, he teaches intro to programming at a community nonprofit. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/krpeacock?trk=author_mini-profile_title&original_referer=https%3A%2F%2Fwww.linkedin.com%2Ftoday%2Fauthor%2Fkrpeacock%3Ftrk%3Dauthor-info__article-link"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1P3HFH3ao1DzMnTtOdHgq1/67c9774e2eecb3be830a640091e32384/headshot.jpeg"
+      },
+      {
+        "name": "Diego Prats",
+        "bio": "Diego is a software engineer and product manager with an emphasis on platform growth. He studied Applied Math & Economics at Harvard University and is a PhD dropout in Operations Research Engineering from USC. Previously he co-founded a privacy-focused PaaS for serverless applications and was VP of Growth & Product Engineering at Overnight.\n\n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/diegoprats/",
+          "https://twitter.com/mexitlan"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3Uerqry1igoE8aE0aCSwqK/950f654d66645141a211413b233410f0/9A6D2698-B34A-420C-8A23-55A87FDB7A4E.JPG"
+      },
+      {
+        "name": "Franz-Stefan Preiss",
+        "bio": "Franz-Stefan is an expert in identity management and authentication. He was at IBM Research for 9 years, where he brought crypto research into practice when developing a privacy-preserving authentication system and implementing cryptographic protocols. He has a PhD in Computer Science from KU Leuven and a Master in Software Engineering & Internet Computing from TU Wien. Franz-Stefan joins DFINITY after being a Senior Security Software Engineer for 3 years at Ergon.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/franzstefanpreiss"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5GM6lrsENJnmO6M5wlIsrJ/4896051092e03a77a809cae104a00969/Franz_Stefan_Preiss_square.jpg"
+      },
+      {
+        "name": "Bartosz Przydatek",
+        "bio": "Bartosz joins DFINITY from Google, where he worked on the security of user data, and co-developed Think and Svalbard. He holds a PhD from ETH Zurich, and has published several papers. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1NG2mV5YyvdDBalCci2PRg/e5a62740814087c2b457da7e5f7c8485/bartosz.jpg"
+      },
+      {
+        "name": "Frederik Rothenberger",
+        "bio": "Frederik graduated from ETH Zurich with a masters degree in computer science in 2016. In the last 4.5 years, he worked for Ergon on and with the Airlock product suite with a focus on identity and access management.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/frederik-rothenberger-2552b7170"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/79SEBhOYr7fmNc78Wv3LXL/c8c79da4d767da5c27645a31c4ad06a7/fred.jpeg"
+      },
+      {
+        "name": "Rosti Rumenov",
+        "bio": "Prior to DFINITY, Rosti has been working in search infrastructure for Google Switzerland. His focus at Google was building fast, scalable, distributed systems that run reliably in production. He received his bachelor's at MIT. \n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/rostislav-rumenov-07aa10a3"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5EqZQqsnNrK8Bf8UcedRXo/11ddb618dc58ae86d0c39f5b285f45f0/rosti.jpg"
+      },
+      {
+        "name": "Claudio Russo",
+        "bio": "Claudio spent 18 years in the Programming Principles and Tools group at Microsoft Research Cambridge where he developed the Standard ML compiler, designed [Moscow ML](http://mosml.org/), and worked on several compilers including Comega, Concept C#, and F#. He has a PhD from University of Edinburgh, a post-doc from Cambridge, and has published many [papers](https://scholar.google.com/citations?user=O87XlvcAAAAJ&hl=en).",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/claudio-russo-6383a94/",
+          "https://github.com/crusso"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1RD953s5wQKGGm8UAc4mac/ef1129c94fb269360ea1f2effa094fd0/claudio.jpg"
+      },
+      {
+        "name": "Dimitris Sarlis",
+        "bio": "Before DFINITY, Dimitris worked at Facebook where he focused on building tools to manage user traffic routes to Facebook data centers. He earned his Bachelor’s Degree in Computer Science from NTUA in Greece and his Master's in Software Engineering from Carnegie Mellon University. Dimitris is interested in large scale distributed systems.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/dimitris-sarlis-0b21166a"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3dX5A6kdQYZ9czVbLRDNvB/106844134d233d52f32fce08fa019c6a/Dimitris3.jpeg"
+      },
+      {
+        "name": "Stefan Schneider",
+        "bio": "Stefan received his PhD from the University of California, San Diego, specializing in complexity theory and algorithm design. Before joining DFINITY, he worked for Microsoft on the text prediction and autocorrect engine used by SwiftKey. He is most interested in the intersection of algorithms and real world computational performance.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2cWBRKv5rl5g4Xuy6mbTnu/8f332327dfa261b729a20234c2b6c0d5/stefan.jpeg"
+      },
+      {
+        "name": "Venkkatesh Sekar",
+        "bio": "Prior to joining Dfinity, Venkkatesh spent 2 years as a security researcher at the University of Surrey working on vulnerability assessment through fuzzing techniques and as an Application Engineer at Oracle, building web applications for Oracle HCM. He holds a Master’s in Information Security from University College London. His specializations include applied cryptography, code analysis, and blockchain technologies. Over the years, he has worked on several projects outside security across full-stack development, command-line utilities, native extensions, and visualization tools.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5HA5gtgYg7ZJ7NUiHs6bdA/1f930a3128a3c2e37d5a6c852dac4832/venk.jpeg"
+      },
+      {
+        "name": "Faraz Shaikh",
+        "bio": "Faraz previously worked on building distributed storage platforms for data-center virtualization at VMware, Springpath, and Cisco. He earned his Master’s in Computational Data Science from Carnegie Mellon University. Faraz is named as an inventor on multiple US patents [(1)](https://scholar.google.com/citations?user=FngMCSkAAAAJ&hl=en \"(1)\"). ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5UJV0CISphYUWH1PUDL1bC/0461d7cc30551fd71e0225846056b59f/faraz.jpeg"
+      },
+      {
+        "name": "Linwei Shang",
+        "bio": "Prior to DFINITY, Linwei worked in NYC where he built signal system for high frequency trading. He is a Rust enthusiast who enjoys developing solid tools/frameworks to empower programmers. \n",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6iwJZkNLPw7fmTRqays7RR/576d09e2429d65fba362766ad262cd3a/linwei.jpg"
+      },
+      {
+        "name": "Severin Siffert",
+        "bio": "Severin is a Software Engineer that enjoys strong type systems. Prior to joining DFINITY, he worked at Auticon Swiss and insurando.ch while finishing his MSc in Software Systems at the University of Zurich.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/severin-siffert"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6PhArrRsO2LzaLvq7jsqcs/74039a458d1a20c9f5427f17576caebf/sev.jpeg"
+      },
+      {
+        "name": "Alin Sinpalean",
+        "bio": "Alin is a jack of all trades kind of Software Engineer. He has spent more than 10 years at Google, working on Borgmon, YouTube and AdWords. Before that he managed a mildly successful open source [project](https://sourceforge.net/projects/jtds/). He has won medals in international programming contests.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/alin-sinpalean-8451b8139"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2ylIcJpbYg0TPRVX2tPWFR/929b39ed9b34fa4da8d03ed234cbac2a/Alin.jpeg"
+      },
+      {
+        "name": "Ajay Navaratna",
+        "bio": "Ajay is a seasoned senior Agile TPM and end to end owner of complex programs, responsible for accelerated delivery of high quality features using sound Agile principles. He has rich experience in working across organizational boundaries building relationships with key stakeholders in product management, engineering, SRE and cross functional teams to deliver technological solutions in large and small enterprises.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1d76onulFH70HC8xs79WUq/6419b3317a89f1e89d253cd8e652202f/ajay.jpeg"
+      },
+      {
+        "name": "Luka Skugor",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/luka-skugor-a25b5866"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/67tireZ41NC4OHK1mYp6LF/dca3cabd7df581d9f3117e651bcf9a0c/luka.jpeg"
+      },
+      {
+        "name": "Dieter Sommer",
+        "bio": "Dieter has earned a Master's degree in computer science with a focus on computer security and a minor in Business Administration as well as a PhD in computer security. He started his professional career at IBM Research Zurich where he was working with Jan Camenisch on systems aspects of the Identity Mixer anonymous credential systems, his PhD topic. He started his 11 years stay at IBM Research as a Predoctoral Researcher and moved on to the positions of Research Staff Member and Advisory Project Manager, leading a large international R&D program. He later became Technical Project Manager in a large international R&D project. Besides his project and program management activities he was involved in engineering and architecture and has filed multiple patents, mostly in the area of computer security.\n\nBefore joining DFINITY, he was the Security Architect of Raiffeisen Schweiz, the third-largest Swiss bank, with broad company-wide responsibilities in the area of IT security.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/dieter-m-sommer-944b5743"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6dN9XFVIBwuLwuZYMuxizd/fedf76612b1396dbaa5592527c22bc85/dieter.jpeg"
+      },
+      {
+        "name": "Christian Stieger",
+        "bio": "After having graduated in Physics at ETH Zurich, Christian decided to pursue a PhD in the Department of Electrical Engineering where he worked on simulations on novel materials for future transistor technology. Doing so he rediscovered his love for programming and also gained a lot of hands-on experience in C++. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/EyYCoAL4IdQaH3PlCrhCv/3e8ea8210e07d00eaaa3b1f61e91c56c/christian.jpeg"
+      },
+      {
+        "name": "Max Summe",
+        "bio": "Max studied Biomedical Engineering before going to a Great Books program in California. After 8 years of self-employment, he joined CJ where he became a team lead for their customer-facing analytics dashboard. After that, he worked at HOVER on the mobile team, building features and improving the code deployment pipeline and testing practices. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/maximiliansumme?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5F2GAyTONueBoPzuqhfxsG/48bb2e9ac2fd2a7bd94cd3091b537203/max.jpeg"
+      },
+      {
+        "name": "Adam Spofford",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/adam-spofford-872a95174"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4YktshTJ6YFZamYZhKbjP7/4ed125f2f8770fff02b689e8cbcbb77c/adam.jpeg"
+      },
+      {
+        "name": "Ryan Stout",
+        "bio": "Ryan previously spent 6 years at Box on the Storage and Stream Processing teams, where he was responsible for developing and running large distributed systems that operated at petabyte scale. He holds a Bachelor's in Computer Science from Carnegie Mellon University.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4UoMOY3aZMPgoA9e1DLUPV/8a7798f8e1191d8870cb8054c1d255ff/Ryan_Stout.JPG"
+      },
+      {
+        "name": "Maks Strasinskis",
+        "bio": "Maks has worked in different IT areas including SCADA  systems, web, game development, mobile apps and video animation. For the last 8 years he has focused exclusively on web application development using modern web tools like Angular, React, VUE and Node. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3aBkumv9lVfgoGKl18SEgj/cd0e1c7e4ad2e1f8f092541d9991c9db/maksims.jpeg"
+      },
+      {
+        "name": "Rahul Subramaniyam",
+        "bio": "Rahul joins DFINITY as a Software Engineer with an extensive background in systems/networking domains. Previously, he's worked at Google for both the Search and Cloud Platform teams, VMWare, and Emulex Corporation. Rahul has 15+ patents in distribution networking and storage networking domains.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/41cg3NqMxvJrsFdqs9eLmh/f9db9184ebb162581a03adaa1568fb8e/Rahul.png"
+      },
+      {
+        "name": "Raghav Sundaravaradan",
+        "bio": "Raghav comes from a Software Development background but has been in the Security space for almost a decade now with companies such as Ripple, Intuit & Citrix. His primary focus has been on product security and security management. ",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1Mzu2jnwJt6hA90baYyOxR/bd85dc53c2310b461d6f9af85cd199b0/Raghav.jpeg"
+      },
+      {
+        "name": "Eric Swanson",
+        "bio": "Eric Swanson has designed APIs and developed SDKs throughout his career.  His first job involved development of a cross-platform SDK for smart card applications as well as the design of its API. One of his personal projects eventually led him into the massively multiplayer online games industry, which later brought him to a startup in the Bay Area. After 18 years working mostly with C++, and a brief but enjoyable time with ActionScript, his most recent work has taken him on a tour of some JVM languages (Scala, Java, Groovy, and Kotlin). Prior to joining DFINITY, he developed a framework at ClassPass to make it easy to test microservices with each other.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/eric-swanson-%E2%99%BE-9242111"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6zLY4MLVI9eV6e6JqnAuDF/9ebcbf747e0f65bdbb37055ceb48f469/eric.png"
+      },
+      {
+        "name": "Leon Tan",
+        "bio": "Leon is a computer scientist with a focus on safety/security. During his MSc he focused on threat modeling and hardening techniques of FIDO keys. As a Rust enthusiast, he is interested in bringing the benefits of the language to the embedded world, for security applications and beyond.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7pqrW1C9dCcoRTCEyEqVBh/a1054c9578c983af50a2e2532aba1c0d/LeonTan.jpeg"
+      },
+      {
+        "name": "Jude Taylor",
+        "bio": "Jude is a Nix enthusiast and programming hobbyist who works on internal tooling. Prior to joining DFINITY, he built debugging tools for Facebook's Search team.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Hglw5xGSN2qOXVmBV0S8s/ef32519033238898e4a7404b37544afb/Image_from_iOS.jpg"
+      },
+      {
+        "name": "Arshavir Ter-Gabrielyan",
+        "bio": "Before joining DFINITY, Arshavir was at ETH Zurich’s Programming Methodology Group, working on SMT-based formal verification for programs operating shared mutable resources. He has designed modular techniques for reasoning about graphs. He led the development of interactive tools that integrate these techniques into a coherent workflow. Before ETH, Arshavir worked at Intel, developing compiler optimizations and tools for automatic system analysis. Arshavir studied Applied Mathematics, Physics, and Computer Science at the Moscow Institute of Physics and Technology.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/arshavir",
+          "https://scholar.google.com/citations?user=9nUUrjYAAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Tgje5xM5OxaVD4w6Ak474/da896ba3df11dc1c56c04f168bc0ec30/arshavir.jpeg"
+      },
+      {
+        "name": "Daniel Thurau",
+        "bio": "Daniel studied at the University of California: Santa Cruz and obtained his B.S. in Computer Science before joining Amazon to build high throughput microservices for Alexa and Amazon Fresh. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/danielthurau"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6ZPSUeAvUODxy5Audv2JWF/8d7d9f475d8000d4fa74e7a52482a032/daniel_t.jpeg"
+      },
+      {
+        "name": "Saša Tomić",
+        "bio": "Prior to DFINITY, Saša was a Researcher at IBM and holds a PhD from Universitat Politècnica de Catalunya. He's written a lot of production-level firmware for embedded systems, as well as software for HPC and Big Data analytics. Saša's code beats at the core of IBM storage systems used by most of the world's top banks and governments. He has over [20 publications](https://scholar.google.com/citations?user=P-zmgaoAAAAJ&hl=en) and over 50 patents.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/sasatomic",
+          "https://scholar.google.com/citations?user=P-zmgaoAAAAJ&hl=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6mq35ekKcvcRBBdr26Eo2L/b27931236c0ff66c15de05de5b32db0e/sasa.jpg"
+      },
+      {
+        "name": "Shuo Wang",
+        "bio": "Prior to DFINITY, Shuo was a research staff at Stanford Center for Blockchain Research on the integration of blockchain consensus and virtual machines. He received his Master's in Computer Science jointly from USC and Tsinghua University, with his thesis work focused on blockchain consensus.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6AvfkjKqELbwh7UuPE1r0M/8b51342773de2fac08d5d44b80f2422e/Shuo_Wang.jpeg"
+      },
+      {
+        "name": "Jan Wendling",
+        "bio": "Prior to DFINITY, Jan was responsible for the integration of security systems and assisting in the development of a SIEM platform. He graduated from Offenburg University of applied Science with a Master Degree in Computer Science.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ch.linkedin.com/in/jan-wendling"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4Q4i74TSBQReRUQFNi1jYE/ec98b8d5731ca4ff8818a3855ff07950/janw.jpeg"
+      },
+      {
+        "name": "John Wiegley",
+        "bio": "John is a computer scientist and programming language researcher. He is a long-time C++ and Haskell guru, was on the C++ committee for 15 years, authored [Ledger](https://www.ledger-cli.org/), and is currently co-maintainer of the [Emacs editor](https://www.gnu.org/software/emacs/). Prior, he worked on DARPA contracts at BAE Systems applying formal methods to language and program semantics.",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/jwiegley/",
+          "https://github.com/jwiegley"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/EIyGqZHw5iSUKQCks6UK8/d8942f9fcf545a1a41799b9d3051a2c9/8D10300F-CAEE-4741-A9EA-C373E8CE8F7E.JPG"
+      },
+      {
+        "name": "Daniel Wong",
+        "bio": "Daniel received his B.S. in EECS from UC Berkeley in 2008, and minored in mathematics. Prior to DFINITY, he's worked at Amazon, Livemocha, and Google. During his time at Google, he worked on a few different teams including Ads SRE, App Engine, and Street View Vehicle.",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3tRclupXJnDbNRhn4BPWd3/975299c567dcda7bffd724d82c6fdaac/danielw.jpeg"
+      },
+      {
+        "name": "QJ Yu",
+        "bio": "QJ brings a wealth of experience in development and management. Most recently, she led a team build API Platform that delivers Service Archetype, API Gateway and Service Standards to facilitate engineering efficiency and consistency. QJ also worked at AWS, building large scale infrastructure systems. \n",
+        "title": "Technical Staff",
+        "websites": [
+          "https://www.linkedin.com/in/qijing-yu"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2KLXcRmWF50De3N9K4wN5C/f0058c0376c24375d4a7724abb602619/QJ.jpeg"
+      },
+      {
+        "name": "Valeriy Zamaraiev",
+        "bio": "Throughout his career, Valeriy worked in multiple engineering and management roles at various big and small companies, most recently at Google working on YouTube Content ID, YouTube Developer Experience and Google Assistant. Before Google, he was a big Lisp aficionado and a Python Ukraine community organizer.\n",
+        "title": "Technical Staff",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4jnXDT6LD2XdvaMbAyjREr/cfb0838757d9493d4e6d364bf61331d0/valeriy.jpeg"
+      },
+      {
+        "name": "Alexandra Zapuc",
+        "bio": "Prior to Dfinity, Alexandra worked as a Software Engineer at Microsoft in London on the core engine of Swiftkey, a cross-platform mobile keyboard, moving on to developing microservices for ad bidding systems at GetYourGuide and, later, to cloud-based services at Swisscom. Alexandra studied Computer Science at Politehnica Bucharest. ",
+        "title": "Technical Staff",
+        "websites": [
+          "https://ro.linkedin.com/in/alexandra-zapuc-03a966b8"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4soZsqXk2zQGnm7vi1NWa7/36396bdc2052921e5beffcd1e96a3776/alexandra.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Operations",
+    "order": 3,
+    "members": [
+      {
+        "name": "Chadwick Ahn",
+        "bio": "Chadwick is a creative professional with more than a decade of experience in producing support and educational content. He comes from a background in film, which has contributed to his success of helping people connect and increasing engagement through multimedia content. He holds a BA from UC Berkeley and awards for his fiction writing.",
+        "title": "Operations",
+        "websites": [
+          "https://www.linkedin.com/in/chadwicktahn"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3xKn20TAdbToxOZu8D4x0K/eb490dbaedfc7e5ba096a0b8d8601b2f/chadwick.jpeg"
+      },
+      {
+        "name": "Maurice Alloati",
+        "bio": "Maurice brings 30 years of management experience building leading finance departments and managing strategic projects. Prior to DFINITY, he was a Principal Accountant at Medtronic and Financial Controller of CM Management. ",
+        "title": "Finance",
+        "websites": [
+          "https://ch.linkedin.com/in/maurice-alloati"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5jk4T77UyFe6sanrGlJaK6/309a7b048f0a15565f086e32c65ddc0a/Maurice.jpg"
+      },
+      {
+        "name": "Dominik Ayyildiz",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/4zsQVz1LI53Pae3eu2Ds7o/305bafa5809c0cf628eff42dcb7d4a4b/dom.jpg"
+      },
+      {
+        "name": "Chrystel Brantschen",
+        "bio": "Chrystel brings 10 years of hospitality experience. Prior to DFINITY, she has worked in HR operations for global companies, such as Mondelez, RUAG Space and GetYourGuide. ",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/yAXwfQJsasgCmVHusEl8h/94d631ed657d0dc1013a301c953e75d7/chrystel.jpeg"
+      },
+      {
+        "name": "Tiffany Chau",
+        "bio": "Tiffany previously worked in marketing, as well as spent 2 years recruiting for the UC Davis campus organization. She is passionate about people relations and is dedicated to creating the best candidate experience at DFINITY. ",
+        "title": "Recruiting",
+        "websites": [
+          "https://www.linkedin.com/in/tschau"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3spBaMGScaLPF99JscJDhq/3fe5f64681b8aebd333453ef68d05181/tiffany_chau.png"
+      },
+      {
+        "name": "Juliana Che",
+        "bio": "Juliana joins DFINITY with comprehensive experience working with and for emerging growth companies. Most recently, she was at Fastly playing a key role in its legal and corporate initiatives, resulting in the company's successful IPO. She holds dual bachelor's degrees from UC Davis and an MBA from Santa Clara University.",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2Wmsd9pbc4JTC0yB37l9Mw/5cbb0e7cf17f0701ac2f0b1fae98f3bf/Juliana_Che_Square.jpeg"
+      },
+      {
+        "name": "Jad Chenaye",
+        "bio": "Jad has over 14 years of experience in the field of finance, mainly in reporting, finance change, and system implementations. Previously, he's worked at various financial institutions across Europe and the Middle East including Advisory at Deloitte.",
+        "title": "Finance",
+        "websites": [
+          "https://ch.linkedin.com/in/jad-chenaye-%E2%88%9E-92843214"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/36HWRhpgvZhi2uK15NFaZj/2e80656c6657454293da46866b3b8bae/jad.png"
+      },
+      {
+        "name": "Sharon Choe",
+        "bio": "Sharon brings over 5 years of diverse operational experience and adds a wealth of communication, process and execution capabilities to enable DFINITY to successfully scale rapidly. Prior to DFINITY, she helped scale and manage a global workspace and IT solutions company. ",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7L8bMxOaC4UWEIye6q8S4o/37c7cafe784246a3b3e43da42d5e0ca9/sharon.jpg"
+      },
+      {
+        "name": "Brandon Cohen",
+        "bio": "For 20+ years, Brandon has been helping high-growth high-tech companies scale their growth. Prior to DFINITY, he held multiple leadership roles at Google over 11 years in New York City and Europe focusing on technical talent acquisition, was the first VP of People of Schibsted Media Group's new Product and Tech organization, and the co-founder of Toolbox4HR Switzerland AG, a boutique consultancy for helping high end tech companies scale their organizations and people processes across Europe. He is American but hangs his hat in Zurich, Switzerland. You can find him on [Linkedin](https://www.linkedin.com/in/brandontalent/). ",
+        "title": "Recruiting",
+        "websites": [
+          "https://ch.linkedin.com/in/brandontalent"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1uY2dL3qbDXOx0gmHXpZ2f/5163d44ad25207fcf754ba74be134392/brandoncohen.png"
+      },
+      {
+        "name": "Riccardo Coli",
+        "bio": "Riccardo has over 15 years of experience transforming the way companies engage with their markets, their clients, and their people. His experiences are in high-tech, aerospace and defense industries, with reference to the EU and Asia market. He holds a Bachelor's degree in Sociology & Communication at IULM University, a Master of Science in Marketing Management at L. Bocconi University and an Executive Program in Blockchain for Business at SDA Bocconi. ",
+        "title": "Operations",
+        "websites": [
+          "https://ch.linkedin.com/in/riccardo-coli"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7jltpaWiUXyJyUbeI4XccN/953976b78790abd0670a500a17bd715b/Riccardo_.jpeg"
+      },
+      {
+        "name": "Andrew Csepreghy",
+        "bio": "Andrew is a former full-stack developer turned data scientist now looking to contribute to the incredible ecosystem of the Internet Computer.",
+        "title": "Growth",
+        "websites": [
+          "https://github.com/csepreghy"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/18ybKPJXxOppOfo1Pe3ZwU/d0510e9fa9e286e2638b4245ffb85132/andrew2.jpeg"
+      },
+      {
+        "name": "Shadia Damra",
+        "bio": "Shadia brings over 10 years of finance experience with strengths in strategy and planning. Prior to joining DFINITY, she helped shape and operationalize early-stage finance teams, at two high-growth tech startups, Pivotal and Fastly. Her career began in Boston, at KPMG and Fidelity Investments in asset management. Shadia attended undergrad and graduate school at the University of Illinois Urbana-Champaign.",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6JvaPNiq0oPHqagMaYvPzL/34b2ece4ca298b067da7141fcc2d1c12/shadia.jpeg"
+      },
+      {
+        "name": "Jason Dobbs",
+        "bio": "Jason has a decade of experience designing digital transformations for Fortune 500 Companies. He is an expert at creating bespoke financial operations systems, with successful projects completed at Google, Amazon, ViacomCBS, Motiva Enterpises, and Millennium Management to name a few. He is deeply passionate about blockchain technology as a solution to revolutionizing financial services. He brings to DFINITY a deep understanding of how financial service operates and is passionate about merging it with the world of blockchain.\n\nJason holds a BBA from Fordham University, MBA from Yale University and Certificates from Oxford Saïd and European School of Management and Technology, Berlin. ",
+        "title": "Partnerships",
+        "websites": [
+          "https://www.linkedin.com/in/jason-dobbs1",
+          "https://twitter.com/jmdobbs?lang=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1lIEKen3mWPX82PMBZZi9g/13d004a6702ba561afc0ff0ec899af2e/jason.jpeg"
+      },
+      {
+        "name": "Jean-Armand Figeac",
+        "bio": "Jean-Armand worked in the Finance & Advisory sectors for the past 10+ years for corporates, SMEs and Fintech companies. His background includes Senior Management positions for the largest Swiss TelCo provider, Crypto Hedge Funds and Blockchain start-ups in Switzerland and abroad.",
+        "title": "Finance",
+        "websites": [
+          "https://ch.linkedin.com/in/jeanarmandfigeac"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6hiEA36omH0pJp7MSLrWmz/689e6e315f2edcc1ac554fa009d63429/jean.jpeg"
+      },
+      {
+        "name": "Jorge Gongora",
+        "bio": "Jorge has 6+ years of experience working in Customer Operations specializing in Learning & Development. Previously, he’s worked at various tech companies, building and deploying learning and support workflows at a global scale.",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5ZmNWNBz5GLLIMGApTehp5/87aa5c09bb4166bf5530d3aaf627b887/jorge.jpeg"
+      },
+      {
+        "name": "Giulia Guizzardi",
+        "title": "Community",
+        "websites": [
+          "https://de.linkedin.com/in/giuliaguizzardi/en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1miTdodHehdMHlx79r3wbJ/711a78078e78d4fdd073c6e7b3645396/guilia.jpeg"
+      },
+      {
+        "name": "Claire Hall",
+        "bio": "Claire started her career in a leadership development program at a Fortune 100 company. She subsequently joined a subsidiary on the Talent Acquisition team and implemented processes and reporting before moving to the People Operations team to focus on using data to support a high-performance culture and enhance employee engagement.",
+        "title": "People",
+        "websites": [
+          "https://www.linkedin.com/in/claire-hall-b082364a?original_referer=https%3A%2F%2Fwww.google.com%2F"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1KXia1ggX6RzmDvjnkCVhJ/3c9695640b9e49275bdc0fd04b15eedc/Claire_Hinton_square.png"
+      },
+      {
+        "name": "Chris Harrison",
+        "bio": "Chris began his career in finance working for the Bank of New York Mellon in Manchester, in the FX settlements area of their Treasury department. After a few years he joined the Royal Bank of Scotland processing interest rate derivatives settlements. In 2012, he joined the portfolio servicing department at private equity firm Capital Dynamics in Zug, focusing on data analysis and reporting. In 2015, he joined Deloitte Switzerland in their Risk Advisory practice, focusing on process engineering and procedure improvement. ",
+        "title": "Partnerships",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/12uSgtTS8HbTNPdghPSh4h/2f556986dff75a8a5914f8e7abd67486/chris.jpeg"
+      },
+      {
+        "name": "Mamiko Inoue",
+        "bio": "Mamiko is a CPA with over 10 years of accounting experience. Most recently, she contributed to improving and stabilizing accounting processes at a hyper-growth fintech startup, Solar Mosaic, in Oakland. Prior to this, she was a part of the Private Company Services practice at PwC in San Francisco. She received a BS from University of California Riverside.",
+        "title": "Finance",
+        "websites": [
+          "https://www.linkedin.com/in/mamiko"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/66lPkx13DUvkAmkpFYkSCk/ab39ad5ca493493c22b36168f22b940a/Mamiko.jpegSquare.jpeg"
+      },
+      {
+        "name": "Carsten Jacobsen",
+        "bio": "Carsten has a background as a software engineer, and has a broad experience from working with different types of web applications, fintech, analytics, streaming, API automation etc. He is a big Open Source advocate, and has previously worked at Uber as the company's Open Source Developer Advocate - supporting both internal and external developers. His passion in tech is to get developers excited about the technologies he works with, and drive adoption through focus on the developer journey.",
+        "title": "Growth",
+        "websites": [
+          "https://www.linkedin.com/in/carstenjacobsendk"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7DcPazTo9JmNKtLyYxb96t/7ddcd6e82e8aa858c9466281fa28269a/Carsten.jpeg"
+      },
+      {
+        "name": "Andrew Kendall",
+        "bio": "Andrew has worked in finance/fintech operations and customer experience for over a decade. Prior to DFINITY, he joined Coinbase in 2017 as a Product Support Manager. He helped scale the team by 10x during the 2017 crypto boom where he helped to establish multiple global customer contact centers, launch offices and build a framework to support the customers of a burgeoning industry.  ",
+        "title": "Operations",
+        "websites": [
+          "https://www.linkedin.com/in/andrew-kendall"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Bin2fZ4cWsVCSmE2Pj1h9/1a112c626369db9d2736f21dd0a82988/andrew.jpeg"
+      },
+      {
+        "name": "Yeji Kim",
+        "bio": "YeJi brings expertise in program management for community building to DFINITY. She managed various blockchain community projects for Cardano ecosystem and organised the first government-led blockchain forum in South Korea. She holds a Master of Management of Information Systems and Digital Innovation from the London School of Economics. ",
+        "title": "Growth",
+        "websites": [
+          "https://kr.linkedin.com/in/yejikim15"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5kZgr6LlUiM6caCW84El7F/a9f621d3c3d79528fd6fb4325e839634/Yeji_Kim.jpeg"
+      },
+      {
+        "name": "Artem Korotkikh",
+        "bio": "Artem is a multi-skilled product designer with over 10 years of experience. He started his career as a web developer and switched then into the product design where he dived into the aesthetics, brand,  communication and marketing. Prior to DFINITY, he worked on a wide range of products in media, productivity and crypto space.",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/78Zt7AnotR2bTed1KvgOfV/77396692f9f64fb25f9aca4d8422a158/Artem.jpeg"
+      },
+      {
+        "name": "Marco Mahrer",
+        "bio": "Marco began his career in hospitality, but shortly after served in the Swiss Air Force before entering the craft of recruitment, this is his twelfth year; where he initially started on an agency and then moved in-house for Google, Appway, and GetYourGuide. ",
+        "title": "Recruiting",
+        "websites": [
+          "https://ch.linkedin.com/in/marcomahrer"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2vIewu96jVz2biC3imPPmX/371351180b1546d2e2ca42823e23c6f1/marco.jpeg"
+      },
+      {
+        "name": "Alyssa Manalo",
+        "title": "Operations",
+        "websites": [
+          "https://www.linkedin.com/in/alyssabmanalo"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/20mxswLjwFrSBM7y3tvO55/14cc72238850acc6c2d3da98d764930d/Alyssa_M.jpeg"
+      },
+      {
+        "name": "Ryan Newman",
+        "bio": "Ryan hails from the great state of Ohio, where he graduated from Miami University. He has over 15 years of recruiting experience, most recently as Head of Talent for Chartboost, where he scaled teams in San Francisco, Amsterdam, Barcelona, and Beijing.",
+        "title": "Recruiting",
+        "websites": [
+          "https://www.linkedin.com/in/ryannewman"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7CboNfMF6wgsiDuinuGwXN/e650d063b7a8f68fe1e2f57754e8694b/Ryan_Newman_1_square.png"
+      },
+      {
+        "name": "Emma Peretti",
+        "bio": "Emma was previously a client executive at IBM in Zurich, where she has 10 years of experience in sales and account management. She holds a Bachelor’s degree from Bocconi University and a Master’s from Rotterdam School of Economics.",
+        "title": "Operations",
+        "websites": [
+          "https://ch.linkedin.com/in/emmaperetti"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6cgpVUFrZfszzfFLozXxA6/d66ee44ae21512df6dc69aacd809dbad/EmmaP.jpg"
+      },
+      {
+        "name": "Adela Pospisil",
+        "bio": "Prior to DFINITY, Adela worked as Space Planner at Google accomplishing complex campus reshuffles or the most current RTO projects. She studied Philology and Tourism. After her studies, she worked across multiple companies in 3 different countries, mostly focusing on facility management, client facing industries and inside sales. Pospisil, Adela",
+        "title": "Operations",
+        "websites": [
+          "https://ch.linkedin.com/in/adela-halounova"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/66M3xkIiCeD5QwvqhOdg6J/a617473d34742428564a329263e1be56/Screen_Shot_2022-05-16_at_12.22.24_AM.png"
+      },
+      {
+        "name": "Nikhil Ranjan",
+        "bio": "Nikhil graduated from Indraprastha University Delhi in 2013. He has been in the blockchain space since 2017. Prior to DFINITY, he worked for Polkadot ecosystem and has contributed to many open source projects.",
+        "title": "Growth",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/gcyMvMpp2YN2AGcqoeBme/5e2a3794848187b5280c5c0eca6dd50d/nikhil.jpeg"
+      },
+      {
+        "name": "Rachel Salata",
+        "title": "Legal",
+        "websites": [
+          "https://www.linkedin.com/in/rsalata"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7dXwjbFzYWymjIeF7PkOyM/a62b1b2f74a434d6c110e2aad6d85733/rachel.jpeg"
+      },
+      {
+        "name": "Priyanka Sehrawat",
+        "bio": "Priyanka brings in 4 years of Accounting experience and is a licensed CPA. Most recently, she Managed Billing team, implemented accounting controls and contributed towards improving accounting processes for a vacation rental platform RedAwning. She received Masters in Accountancy from Golden Gate University and MBA degree from India. ",
+        "title": "Finance",
+        "websites": [
+          "https://www.linkedin.com/in/priyanka-sehrawat-cpa-780b1b117"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5SCmJGcv8VGBYtQso1XtLw/545646457a1438d79f4fc7a197dc1fd1/PriyankaS.jpg"
+      },
+      {
+        "name": "Scott Staton",
+        "bio": "Scott spent much of his early career at The New York Review of Books and The New Yorker before transitioning to digital editorial projects. He helped build and launch Vice News, oversaw editorial at the digital science network Seeker, and led content marketing at the visual tech startup VSCO. ",
+        "title": "Communications",
+        "websites": [
+          "https://www.linkedin.com/in/scottstaton"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/67FO29PvhiTRklY5dRxmbN/b3b3bcccfabf0cd1b31d11f3d85be53c/ScottS.jpg"
+      },
+      {
+        "name": "Fulco Taen",
+        "bio": "Fulco is a Dutch software engineer, who has been following DFINITY since the beginning. Three years ago, he joined the community admin program and simultaneously completed his Bachelor's degree in Artificial Intelligence. Prior to DFINITY, Fulco was a Software Engineer at BlueConic.",
+        "title": "Growth",
+        "websites": [
+          "https://nl.linkedin.com/in/fulco-taen-8a2106196"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/Xw8ErgpLIpF38fmzU7JLG/b430ee5d187553a2b9a48cfd5128a7fa/fulco.jpeg"
+      },
+      {
+        "name": "Andrew Tang",
+        "bio": "Andrew is the GM of Web3 games, and an avid gamer with a wealth of experience building ecosystems and forging developer relationships in the video games industry. Before joining DFINITY, Andrew held leadership roles at AWS Game Tech and Unity Technologies.",
+        "title": "Web3 Games",
+        "websites": [
+          "https://mobile.twitter.com/andrew_lee_tang"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/27zPxfUFut4RO10MWJNXLC/8be9311ea37c9add16e3f498d149c378/andrew_color.jpg"
+      },
+      {
+        "name": "Anthony VanVranken",
+        "title": "Operations",
+        "websites": [
+          "https://www.linkedin.com/in/avanvranken"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3i8w7jpoc50EVKdDQRqrYH/489151cf0f8b431e4b7358ceb4700d2f/anthony.png"
+      },
+      {
+        "name": "Fiona Wang",
+        "bio": "Prior to DFINITY, Fiona was a Director at TrailRunner International’s Shanghai office. Before TrailRunner, Fiona served as VP of Operations with a professional football league in China, leading strategy and execution around game operations, marketing, sponsorship and investor relations. She holds a Master’s in Management from the University of Liverpool, and speaks fluent English, Mandarin and Cantonese.",
+        "title": "Asia",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1fWPOfHGBZujvTnMyLtAV8/29db6617dd222ee0a2cdbbb271d5c0a1/Fiona_Wang.jpeg"
+      },
+      {
+        "name": "Dominic Wörner",
+        "bio": "Before joining DFINITY, Dominic was a Solutions Architect for Self-Sovereign Identity and Internet of Things technologies at Bosch Digital Solutions and an active open source contributor to the Hyperledger Indy stack. He holds a Ph.D. in Information Management from ETH Zurich with a thesis on the impact of cryptocurrencies on the Internet of Things and was a visiting researcher at MIT's Digital Currency Initiative. Prior to that, he studied physics in Heidelberg, Germany, and Uppsala, Sweden.",
+        "title": "Growth",
+        "websites": [
+          "https://ch.linkedin.com/in/domwoe",
+          "https://twitter.com/domiwoe"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1xRFqbi6lBDwInt0KbgMla/47e328dd8483cd9fb2c11ebd6af019be/dominicwo.jpeg"
+      },
+      {
+        "name": "Herbert Yang",
+        "bio": "Herbert is the Asia GM, and brings his expertise as an ecosystem builder for startups, serial entrepreneur in TMT, and an experienced leader of growth. He was Head of Startups for [AWS China](https://aws.amazon.com/startups/), onboarding thousands of startups every year. Herbert was CFO of China Mobile’s “12580” and film auteur [Zhang Yimou’s](https://en.wikipedia.org/wiki/Zhang_Yimou) “Impression Series”, a director from [Yunfeng Capital](http://www.yfc.cn/), and Deputy Secretary of [Wu Zuoren Foundation of Fine Arts](https://wuzuoren.org/). He started his career in GE and completed 10 global rotations in over 15 business units. Herbert holds BBA from the National University of Singapore and MS from the Graduate School of Business of Stanford.",
+        "title": "Asia",
+        "websites": [
+          "https://cn.linkedin.com/in/herbertyang",
+          "https://twitter.com/herbertyang?lang=en"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2K35WWR6U94848UyuRvBI4/675ff7cd63bf61a98ab809cf70946568/Herbert_Portrait.jpg"
+      },
+      {
+        "name": "Irving Yang",
+        "bio": "Irving has spent last 4 years in Trailunner International with deep experience in the Chinese finance industry to understand new trends and opportunities. He has worked with U.S. and Chinese firms and with other organizations to conceptualize, plan, and execute large-scale campaigns and events. managing online and offline messaging, communications strategy, and project logistics to deliver results that delight government stakeholders, corporates, non-profits, and consumers alike. Irving graduated from the University of Oregon’s Lundquist College of Business with a BA, Sports Business and Finance. ",
+        "title": "Asia",
+        "websites": [
+          "https://cn.linkedin.com/in/haoxin-yang-9ab9b744"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7MBer34PCBUhK32beIXnNr/fc470ad475564533c93c36a40d11905c/irving.png"
+      },
+      {
+        "name": "Vincent Zhang",
+        "bio": "Prior to DFINITY, Vincent was with Unity for 9 years where he started to work on the game engine. Before Unity, he spent more than 1 year in ARM where he got to learn GPU driver, and also more than 4 years in Autodesk where he started to work on the graphics engine.",
+        "title": "Web3 Games",
+        "websites": [
+          "https://cn.linkedin.com/in/vincent-zhang-b266495"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2EiJ0cF6jf9GqAf5YHkPux/5b4d6fabc18563e1e4f5cd899714371d/wei.jpeg"
+      },
+      {
+        "name": "Warren ",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/50stnZuo3xTNbwNNA6XMHo/58a59e2074f14939276d76821e9818b8/Warren.jpeg"
+      },
+      {
+        "name": "Anthony",
+        "title": "Operations",
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/fLHniKskTnJW6sT7JQqv7/a1b147a126b8a3729b0ae75097c8dee1/AnthonyCuthbert.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Leadership",
+    "order": 1,
+    "members": [
+      {
+        "name": "Dominic Williams",
+        "bio": "Dominic is a crypto theoretician and entrepreneur. His recent research includes [Threshold Relay and PSC chains](https://assets.ctfassets.net/ywqk17d3hsnp/3alhREtaSkgaw2c0KAoYWE/57fada4d99a208a8dc31e37efabb6257/intro-dfinity-crypto.pdf), Validation Towers and Trees, and USCIDs, and he proposes new ideas such as \"The 3 E's of Sybil Resistance\". Previously he ran a venture-backed MMO game using his own distributed systems that hosted millions of users.",
+        "title": "Founder & Chief Scientist",
+        "websites": [
+          "http://twitter.com/dominic_w",
+          "https://www.linkedin.com/in/thedwilliams",
+          "https://dominic-w.medium.com/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/2dOEwaQqHuuWKUK6WOCuka/bbf7b985a26fab616b5a68acb3f00d8c/Dominic_Williams_Headshot_01.jpg"
+      },
+      {
+        "name": "Gian Bochsler",
+        "bio": "Gian is an experienced entrepreneur, fund manager and board member. He currently serves on the DFINITY Foundation Council in Switzerland and helps oversee Swiss operations. He has deep experience in blockchain, having co-founded Bity, a leading European digital asset exchange, among many other ventures.",
+        "title": "Foundation Council Member & Swiss Operations",
+        "websites": [
+          "https://www.linkedin.com/in/gianbochsler/",
+          "https://twitter.com/gianbochsler"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6ms0RZbor47SLlC6gdRoRo/da7b9dc81d19ce61907d7838647f1f1e/Gian.JPG"
+      },
+      {
+        "name": "Josh Drake",
+        "bio": "Josh Drake is the Chief Operating Officer at DFINITY Foundation, a major contributor to the Internet Computer. Prior to joining DFINITY Josh worked at Coinbase, a digital currency wallet, and platform. Past work experiences include Veritas Technologies, Maxim Integrated, Triple Canopy, Law Enforcement, and the United States Marine Corps. Josh is also an avid investor and pilot.",
+        "title": "Chief Operating Officer",
+        "websites": [
+          "https://twitter.com/JoshHQ",
+          "https://www.linkedin.com/in/drakejl/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/6CndqztZ4R3JtDofqevjw8/dcd861de91f3936cd4ae0123eb053332/Josh_Drake_2_square.png"
+      },
+      {
+        "name": "Jan Camenisch",
+        "bio": "Jan is a leading scientist and has published over [120 widely cited papers](https://dblp.org/pers/hd/c/Camenisch:Jan \"120 widely cited papers\") in the areas of privacy and cryptography. Previously, he spent 19 years as Principal Research Staff Member at IBM, where he co-invented [Identity Mixer](https://www.zurich.ibm.com/identity_mixer/ed \"Identity Mixer\"), a unique cryptographic protocol for authentication. He is a Fellow of [IEEE](https://www.computer.org/web/awards/technical-jan-camenisch \"IEEE\") and [IACR](https://www.iacr.org/fellows/2017/camenisch.html \"IACR\") and has received many awards for his work.",
+        "title": "Chief Technology Officer",
+        "websites": [
+          "https://www.linkedin.com/in/jancamenisch/",
+          "https://dblp.org/pers/hd/c/Camenisch:Jan"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/3Z1k1v3I12iYqW4y0cWawK/c5fac8fc1c9c1f2b176248acfb98ddb3/Jan_Camenisch__1_.jpg"
+      },
+      {
+        "name": "Eva Oberholzer",
+        "bio": "Eva is a growth expert, marketer and entrepreneur with a track record in go-to-market and scaling strategies. Throughout her career, she has held leadership positions at large global companies such as Statestreet, SIX Stock Exchange, and PwC. In 2019, she transitioned full-time into the blockchain space and joined SEBA as CMO, where she was instrumental in the startup's successful evolution into the world's first licensed bank for crypto services. Prior to joining DFINITY, she served on the Board of Directors of the Cardano Foundation, where she built and transformed the PR & Communications, Brand & Marketing, Business Development, Community Management, Stakeholder Relations, and Business and Market Intelligence departments. During her tenure, the Cardano ecosystem saw community growth of 1.3 million new members and a significant increase of institutional adoption.",
+        "title": "Chief Growth Officer",
+        "websites": [
+          "https://ch.linkedin.com/in/evaoberholzer"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/rHHAJlXZUSR5dAIoiT7i2/d25f89b4ed71be3b20f257920662a363/eva.jpeg"
+      },
+      {
+        "name": "Samuel Burri",
+        "bio": "Samuel spent the last 8 years leading a global team who builds and maintains Schindler's elevator control software. Previously, he worked for IBM research where he focused on formal methods for modelling and enforcing authorization constraints in business processes.",
+        "title": "Vice President of Engineering",
+        "websites": [
+          "https://ch.linkedin.com/in/samuelburri"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/1oeXOJOOTPsttdywEKY3RH/a7e72929c694814fb694b999d025077d/Samuel.jpg"
+      },
+      {
+        "name": "Lomesh Dutta",
+        "bio": "Lomesh joins DFINITY with over 17 years of experience building and scaling startups. Most recently, he was the Head of Growth and Marketing at the crypto banking service, Abra. Before that, he served as the VP of Growth at Paytm, the largest fintech in India. He has started/sold 2 startups and is passionate about tackling innovative and unique problems.",
+        "title": "Vice President of Growth",
+        "websites": [
+          "https://www.linkedin.com/in/lomesh",
+          "https://twitter.com/lomeshdutta"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/227qKh4y0brelday3f0J1X/4e1f3b61e4ba0dc320d89245d145fb07/Lomesh.jpg"
+      },
+      {
+        "name": "Michael Lee",
+        "bio": "Michael has led global communication teams at IBM and HP, and most recently took Pivotal Software through a successful IPO. Prior, worked for Democratic National Committee (DNC) Chairman David Wilhelm to make a difference in the lives of ordinary people – clients included Hillary Clinton, Jesse Jackson Sr., and Barack Obama. Also created television properties for ABC, Comedy Central and Showtime. He holds a BA in Economics and Master's in Economic Policy from the University of Chicago, and an MBA from the Kellogg School of Management.",
+        "title": "Vice President of Communications",
+        "websites": [
+          "https://twitter.com/CashBowie",
+          "https://www.linkedin.com/in/cashbowie/"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/36hXX2stpIuIs3Nl7kBpBn/d9a7012d959d5f89e927e95055f0530d/Lee.JPG"
+      },
+      {
+        "name": "Saskia Lenkeit",
+        "bio": "Saskia was previously an HR Business Partner at Google for 7 years supporting over 900 software engineers in Zurich, Swizerland. During her last 3 years, her scope expanded to a more strategic HR role, where she supported the EMEA Cloud leadership team, as well as responsible for HR across two office locations.",
+        "title": "Head of HR",
+        "websites": [
+          "https://ch.linkedin.com/in/saskialenkeit"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/7GWXEkTVZkxoWAU6TgEjTT/2019d6f3f8f9c38bfbe734a84d5b2e94/saskia.png"
+      },
+      {
+        "name": "Paul Meeusen",
+        "bio": "Paul is an experienced entrepreneur, finance and risk manager. He co-founded the insurance blockchain firm B3i and was elected by Acord among the Top Ten InsurTech Leaders in 2018. Prior to this, he spent 25 years in finance, risk, operations and audit management roles at Swiss Re and PwC, across Europe, US and Asia. Paul holds a MS in economics from the University of Leuven (Belgium) and is a Certified Internal Auditor. ",
+        "title": "Vice President of Finance",
+        "websites": [
+          "https://ch.linkedin.com/in/paulmeeusen"
+        ],
+        "photo": "//images.ctfassets.net/ywqk17d3hsnp/5FBjpNHrYHRN2NDaHJFF7p/593666d9ec99efa6f775f4697e576e5d/Paul.jpg"
+      }
+    ]
+  }
+]
