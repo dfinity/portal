@@ -7,4 +7,4 @@ eta: July 2022
 is_community: false
 ---
 
-This feature is the first building block for Service nervous systems (SNSs), algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. Implementation includes the SNS root canister as well as the SNS governance canister, which is simpler and more configurable than the Network Nervous System (NNS).
+This feature is the first building block for service nervous systems (SNSs), algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The implementation includes the SNS root canister as well as the SNS governance canister, which is similar to the NNS governance canister but simpler and more configurable.
