@@ -96,10 +96,20 @@ An SNS is launched in the following stages.
 ## Setting the SNS parameters
 As mentioned above, the first step in launching an SNS is to choose the parameters that
 your SNS will be launched with.
-This lets you choose many settings, which can later be adjusted by SNS proposal, 
-and also lets you choose the initial token distribution.
+This lets you choose many SNS settings and also lets you choose the initial 
+token distribution.
 
-In a bit more detail, these are the categories of parameters that you can set:
+You can set all these parameters in a _yaml_ file that can then be passed as an argument
+when creating the SNS, both for testing and in production.
+There are some parameters that you have to actively set and others that are set to a
+default value but that you can also change if you like.
+To make sure that all parameters are set to valid values, that are also consistent
+with each other, you can use a tool that validates your input file. 
+
+**To create the SNS parameter yaml file and validate it, follow the steps
+[Defining the initial parameters for the SNS](TODO).**
+
+To give you an overview, these are the categories of parameters that you can set:
 1. Parameters of the _SNS governance canister_. Those are parameters of the governance
 that can later be changed by SNS proposals. They include parameters such as the
    minimum stake that a neuron must have or the cost of submitting a proposal that is not
@@ -120,7 +130,7 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
    developers who worked on the dapp).
 
 4. The _initial token distribution_. This alllows you to specify which portion 
-   of tokens are allocated to whom. In the initial design, one can distirbute tokens to
+   of tokens are allocated to whom. In the initial design, one can distribute tokens to
    the following four buckets:
    1. _developer tokens_ that are appointed to the original developers of the dapp,
    2. _airdrop tokens_ that can be given to any other predefined principals that
@@ -130,25 +140,28 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
       spent by the SNS community according to their needs, and
    4. _sale tokens_ which are owned by the SNS and sold in exchange for other tokens.
       Initially, parts of the SNS sale tokens are sold in exchange for ICP tokens
-      in an initial decentralization sale. If not all of the sale tokens are sold in
-      the initial sale, the rest of the sale toekns are reserved for future sales. 
+      in an initial decentralization sale. If the sale is successful the participants
+      will receive SNS tokens in a basked of neurons. 
+      If not all of the sale tokens are sold in the initial sale, the rest of the
+      sale toekns are reserved for future sales. 
       
 All developer and airdrop tokens are distributed to the defined principals at
-genesis in a basket of neurons called the developer neurons and the airdrop neurons,
-respectively.
+genesis in neurons called the developer neurons and the airdrop neurons,
+respectively. All developers, airdrop principals, and the sale participants receive
+their neurons as a basked of neurons with different dissolve delays.
+The neurons of all these parties have the same distribution of dissolve
+delays.
+
 If only parts of the sale tokens are sold in the initial decentralization sale,
 the developer neurons' voting power is restricted by a multiplier. This multiplier 
 is proportional to the portion of sale tokens that are sold in the initial 
 decentralization sale. As more of the sale tokens are sold in the future, the
 voting power multiplier increase until it is 1 when all sale tokens have been sold. 
 
+_Remark:_ The developer and airdrop neurons are the only neurons that already 
+exist during the decentralization sale. At this point, the dapp canister(s) are already
+controlled by the SNS.
+Therefore, **you should make sure that you define at least one developer or airdrop neuron
+as they provide the only way how to upgrade the dapp during the sale.**
 
-You can set all these parameters in a _yaml_ file that can then be passed as an argument
-when creating the SNS, both for testing and in production.
-There are some parameters that you have to actively set and others that are set to a 
-default value but that you can also change if you like.
-To make sure that all parameters are set to valid values, that are also consistent
-with each other, you can use a tool that validates your input file.
 
-To create the yaml file and validate it, follow the steps 
-[Defining the initial parameters for the SNS](TODO).
