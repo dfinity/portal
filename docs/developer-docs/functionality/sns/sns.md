@@ -6,7 +6,7 @@ Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that
 the Internet Computer blockchain (IC), service nervous systems 
 (SNSs) are algorithmic DAOs that allow developers to create decentralized, 
 token-based governance systems for their dapps.
-This means, each dapp that would like to be under decentalized control will have a 
+This means, each dapp that would like to be under decentralized control will have a 
 separate SNS.
 
 ## What is a DAO?
@@ -39,7 +39,7 @@ main actors on the IC: the dapp developers, who build dapps on the IC, and
 the end-users, who interact with and invest in dapps.
 
 ### Dapp users
-Dapps on the IC are realised as a set of canister smart contracts.
+Dapps on the IC are realized as a set of canister smart contracts.
 Canisters define a _controller_ specifying which principals can
 modify them.
 Most dapp canisters are either controlled by some developers or
@@ -112,7 +112,8 @@ the project is successful.
 
 ## How to deploy and maintain a DAO
 
-There are at least the following options how to get and maintain a DAO for your dapp.
+There are at least the following options on how to get and maintain a DAO for
+your dapp.
 
 1) **Deploy an SNS that is provided as a _system functionality_ by the IC.**
    An SNS will be realized by a set of canisters. Deploying and maintaining them is
@@ -148,7 +149,7 @@ There are at least the following options how to get and maintain a DAO for your 
    canisters, an application subnet with higher replication will soon be available.
 
 3) **Build your own DAO or use frameworks provided by others to build your DAO.**
-   While this is conceptually similar to the second option, we would like to emphasise
+   While this is conceptually similar to the second option, we would like to emphasize
    that there are of course other design than the SNS that also build a DAO.
    For most of these, the implications for the communities will be similar to the
    second option: The DAO communities will have to maintain the DAO versions, or trust
@@ -210,18 +211,18 @@ later SNS versions.
 The decentralization sale and the steps to conclude a SNS launch including this
 decentralization sale are described in more detail [here](./deployment.md).
 
-### SNS maintanance
+### SNS maintenance
 As mentioned, this SNS option is provided as a system function and the SNS canister
 versions are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS community.
 However, there are still some maintenance tasks that have to be performed by an SNS community,
 such as deciding and voting on when an SNS should be upgraded to a new blessed version, 
-adjusting the SNS parameters when needed, and making sure that the SNS cansiters do not run out
-of cycles. Regarding the last point, we emphasise that **currently, the SNS
+adjusting the SNS parameters when needed, and making sure that the SNS canisters do not run out
+of cycles. Regarding the last point, we emphasize that **currently, the SNS
 communities are responsible for individually topping up the cycles of all SNS canisters as
-well as all dapp cansiters that are controlled by the SNS. This includes archive canisters
+well as all dapp canisters that are controlled by the SNS. This includes archive canisters
 that are spawn by the ledger canister to archive all blocks.**
-In the future, this will be simplified in a new feature that allows cansiter groups, where
+In the future, this will be simplified in a new feature that allows canister groups, where
 cycles can be managed across different canisters.
 
 For more details regarding how to upgrade SNS canister, choose SNS parameters, and manage

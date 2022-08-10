@@ -8,7 +8,7 @@ will get how many SNS tokens in the beginning.
 
 To understand this better, let’s first understand here how an SNS
 with a decentralization sale is launched on a high level and which 
-parametes can be set.
+parameters can be set.
 We refer to the next pages for learning the detailed actions that are required 
 [to test the SNS launch](./local-testing.md) and to 
 [initiate an SNS launch in production](./deployment.md).
@@ -17,7 +17,7 @@ We refer to the next pages for learning the detailed actions that are required
 
 For each SNS, the decentralization sale is realized in a separate _decentralization
 sale canister_ that exists during the SNS's launch and is owned by the IC who will
-run the sale. In more details, it is controlled by the NNS root canister.
+run the sale. In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at start with a defined amount of SNS tokens to be
   distributed publicly.
@@ -41,7 +41,7 @@ participant receives SNS tokens at that price.
 An SNS is launched in the following stages.
 
 1) **Choose initial parameters**: When developers initialize a SNS to which they want to
-   hand over the control of their dapp, they need to choose the initial parmeters of the SNS.
+   hand over the control of their dapp, they need to choose the initial parameters of the SNS.
    This includes both initial parameters of the governance and ledger (e.g., token name etc)
    as well as how many tokens should be sold in the decentralization sale.
    For the sale specifically, they specify which portion of tokens is allocated to the developers,
