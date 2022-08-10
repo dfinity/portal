@@ -1,7 +1,7 @@
 ---
-title: Governance/NNS
+title: Governance
 card: /img/roadmap/governance.card.jpg
 overlay: /img/roadmap/governance.overlay.jpg
 ---
 
-Work in this domain establishes governance on the Internet Computer and subsumes Nervous System (NNS) and NNS-related services such as the Servous Nervous System (SNS), taking up around 12 percent of the Dfinity team's resources.  
+Work in this domain establishes governance on the Internet Computer and subsumes the Network Nervous System (NNS) and governance-related services such as the service nervous system (SNS), taking up around 12 percent of the DFINITY team's resources.  

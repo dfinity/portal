@@ -1,5 +1,5 @@
 ---
-title: Open Governance for Internet Services
+title: SNS Core Canisters
 links:
   Forum Link: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224
   Proposal: https://dashboard.internetcomputer.org/proposal/42626
