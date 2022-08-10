@@ -1,5 +1,5 @@
 ---
-title: Boundary Node/Asset Canister Caching
+title: Asset Canister Caching
 links:
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401
   Proposal: https://dashboard.internetcomputer.org/proposal/35671

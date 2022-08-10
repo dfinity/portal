@@ -1,5 +1,5 @@
 ---
-title: SEO and Streaming Support
+title: SEO & Streaming Support
 links:
   Forum Link:
   Proposal:
