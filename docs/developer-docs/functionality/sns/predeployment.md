@@ -19,7 +19,7 @@ For each SNS, the decentralization sale is realized in a separate _decentralizat
 sale canister_ that exists during the SNS's launch and is owned by the IC who will
 run the sale. In more detail, it is controlled by the NNS root canister.
 
-* The swap canister is set up at start with a defined amount of SNS tokens to be
+* The sale canister is set up at start with a defined amount of SNS tokens to be
   distributed publicly.
 
 * During the decentralization sale, participants can send ICP to the sale canister
@@ -28,9 +28,10 @@ run the sale. In more detail, it is controlled by the NNS root canister.
 * At the sale’s end the collected ICP are “swapped” for the SNS tokens: the
   participants get SNS tokens and the SNS gets the collected ICP. Each user will
   receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
-  number of ICP contributed. For example, if the swap canister initially held 1000 SNS
-  tokens and 500 ICP tokens were collected during the swap, then the exchange rate would
-  be 2:1 and each swap participant would get 2 SNS tokens for each ICP token they
+  number of ICP contributed. For example, if the sale canister initially held 1000 SNS
+  tokens and 500 ICP tokens were collected during the decentralization sale, then 
+  the exchange rate would
+  be 2:1 and each participant would get 2 SNS tokens for each ICP token they
   contributed.
 
 Apart from distributing the tokens to many participants, the decentralization sale
@@ -88,7 +89,8 @@ An SNS is launched in the following stages.
 
 5) **Decentralization sale**: When the sale starts, the sale canister holds the number
    of SNS tokens that were specified at initialization (see Step 1). End users can
-   participate in the decentralization sale by transferring ICP tokens to the swap canister.
+   participate in the decentralization sale by transferring ICP tokens to the 
+   sale canister.
 
 6) **SNS genesis**: When the decentralization sale ends, it is first established whether
    it was successful, e.g., enough ICP have been collected. If the sale was successful,
