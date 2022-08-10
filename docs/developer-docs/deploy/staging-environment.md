@@ -1,6 +1,6 @@
 # Staging Environment
 
-Many projects can benefit from having a staging environment available besides the usual local and live deployments. This page explains how to set up such a stagin environment.
+Many projects can benefit from having a staging environment available besides the usual local and live deployments. This page explains how to set up such a staging environment.
 
 ## Benefits of a staging environment
 
@@ -13,12 +13,12 @@ For example, the local instance only runs as a single subnet. If you want to tes
 Some more reasons for having a staging environment are:
 - Testing integration with other services.
 - Testing deployment workflows.
-- Estimating costs before letting a feature live for all users.
+- Estimating costs before setting a feature live for all users.
 - End-to-end testing.
 
 ## Setting up a staging environment
 
-This section shows how to configure a staging environment. With a set up staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` with `--network my-staging` instead.
+This section shows how to configure a staging environment. With a working staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` with `--network my-staging` instead.
 Of course, the name `my-staging` can be replaced with any other name (except the two reserved ones: `ic`, the built in live Internet Computer and `local`, the implicit default network that runs with `dfx start`).
 
 Networks (or also 'environments' in this context) are defined in two ways: assumed and explicitly configured. Dfx only contains one network as an assumed network: the `ic` network.
