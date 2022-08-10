@@ -1,16 +1,17 @@
-# Technical pre-deployment considerations
+# Defining the parameters (technical preparation)
 
-After the non-technical considerations [todo link there], it should
-be defined how the SNS should initially be configures.
-We can thus translate the defined requirements, such as who will
-have how many tokens in the beginning, to the initial parameters
-that the SNS will be launched with.
+After some 
+[non-technical preparations](../../../tokenomics/sns/not-blind/predeployment-considerations.md),
+that define the goals for the SNS, in a next step you can 
+choose the initial parameters that the SNS will be launched with, such as who 
+will get how many SNS tokens in the beginning.
 
-To understand this better, let’s first understand how an SNS
-with a decentralization sale is launched on a high level.
-The detailed actions that are required from a developer to test this
-process and follow this process in production, are respectively
-explained [here](./local-testing.md) and [here](./deployment.md).
+To understand this better, let’s first understand here how an SNS
+with a decentralization sale is launched on a high level and which 
+parametes can be set.
+We refer to the next pages for learning the detailed actions that are required 
+[to test the SNS launch](./local-testing.md) and to 
+[initiate an SNS launch in production](./deployment.md).
 
 ## Understanding the SNS Launch process
 
