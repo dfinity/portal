@@ -45,7 +45,7 @@ To provide some tips on what considerations you should not forget,
 we list a few of them on
 [this page](../../../tokenomics/sns/not-blind/predeployment-considerations.md).
 
-### Step 2: Defining the parameters
+### Step 2: Defining the parameters (technical preparation)
 Once you have defined what (non-technical) goals the SNS should achieve,
 you can tranlate them to parameters and configurations that can be set in
 the SNS launch. 
