@@ -67,7 +67,7 @@ you probably want to test that this integration works.
 For all these reasons, we explain on [this page](./local-testing.md), how
 the SNS can be tested.
 
-### Step 4: Launch the SNS
+### Step 4: Launching the SNS in production
 Once you properly tested the SNS, you are ready to launch an SNS in
 production. 
 We describe all steps included in this process in more detail
