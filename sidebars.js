@@ -172,15 +172,14 @@ const sidebars = {
       type: "category",
       label: "Deployment & Scaling",
       link: {
-        type: "doc",
-        id: "developer-docs/deploy/computation-and-storage-costs",
+        type: 'doc', id: 'developer-docs/deploy/deploy',
       },
       items: [
-        // 'developer-docs/deploy/deploy',
-        // 'developer-docs/deploy/scale',
-        "developer-docs/deploy/larger-wasm",
-        "developer-docs/deploy/custom-domain",
-        "developer-docs/deploy/computation-and-storage-costs",
+        'developer-docs/deploy/deploy',
+        'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/staging-environment',
+        'developer-docs/deploy/custom-domain',
+        'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
       ],
     },
