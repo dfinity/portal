@@ -78,6 +78,18 @@ function LiveSessionsPage(): JSX.Element {
     setInitalized(true);
   }, [liveSessions, setPast, setUpcoming]);
 
+  function scrollToForm() {
+    window.scroll({
+      top: formRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  }
+  useEffect(() => {
+    if (location.hash === "#subscribe") {
+      scrollToForm();
+    }
+  }, [initalized]);
+
   return (
     <Layout
       title="Live Sessions"
@@ -109,12 +121,7 @@ function LiveSessionsPage(): JSX.Element {
               <motion.div className="" variants={transitions.item}>
                 <button
                   className="button-primary text-center"
-                  onClick={() =>
-                    window.scroll({
-                      top: formRef.current.offsetTop,
-                      behavior: "smooth",
-                    })
-                  }
+                  onClick={scrollToForm}
                 >
                   Alerts for New Session Registrations
                 </button>
@@ -436,7 +443,7 @@ function LiveSessionsPage(): JSX.Element {
         </AnimateSpawn>
 
         {/* This must not be invisible */}
-        <div ref={formRef}></div>
+        <div ref={formRef} id="subscribe"></div>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
