@@ -9,7 +9,7 @@ This page is a step-by-step guide with some examples showing the data format to 
 
 ## Manual process
 
-The manual hotkey generation process consists in generating a PEM file then deriving some private and public keys. 
+The manual hotkey generation process consists in generating a PEM file, then deriving the corresponding private and public keys.
 
 ### Generate PEM
 
