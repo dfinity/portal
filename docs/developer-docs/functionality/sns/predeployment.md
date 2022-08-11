@@ -124,12 +124,12 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
    Another important parameter are the fallback controllers of the dapp.
    If a decentralization sale fails, for example because the targeted minimum number
    of ICP tokens could not be collected, the control of the dapp canister(s) is
-   handed back to the principals defined in this paramters. 
+   handed back to the principals defined in this parameters. 
    Normally, you will want to set this to the principals that controlled the dapp
    before the attempt to decentralize it (e.g., the principal of you and other
    developers who worked on the dapp).
 
-4. The _initial token distribution_. This alllows you to specify which portion 
+4. The _initial token distribution_. This allows you to specify which portion 
    of tokens are allocated to whom. In the initial design, one can distribute tokens to
    the following four buckets:
    1. _developer tokens_ that are appointed to the original developers of the dapp,
@@ -141,14 +141,14 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
    4. _sale tokens_ which are owned by the SNS and sold in exchange for other tokens.
       Initially, parts of the SNS sale tokens are sold in exchange for ICP tokens
       in an initial decentralization sale. If the sale is successful the participants
-      will receive SNS tokens in a basked of neurons. 
+      will receive SNS tokens in a basket of neurons. 
       If not all of the sale tokens are sold in the initial sale, the rest of the
-      sale toekns are reserved for future sales. 
+      sale tokens are reserved for future sales. 
       
 All developer and airdrop tokens are distributed to the defined principals at
 genesis in neurons called the developer neurons and the airdrop neurons,
 respectively. All developers, airdrop principals, and the sale participants receive
-their neurons as a basked of neurons with different dissolve delays.
+their neurons as a basket of neurons with different dissolve delays.
 The neurons of all these parties have the same distribution of dissolve
 delays.
 
@@ -156,12 +156,15 @@ If only parts of the sale tokens are sold in the initial decentralization sale,
 the developer neurons' voting power is restricted by a multiplier. This multiplier 
 is proportional to the portion of sale tokens that are sold in the initial 
 decentralization sale. As more of the sale tokens are sold in the future, the
-voting power multiplier increase until it is 1 when all sale tokens have been sold. 
+voting power multiplier increases until it is 1 when all sale tokens have been
+sold. 
 
 _Remark:_ The developer and airdrop neurons are the only neurons that already 
-exist during the decentralization sale. At this point, the dapp canister(s) are already
+exist during the decentralization sale. At this point, the dapp canister(s) 
+are already
 controlled by the SNS.
-Therefore, **you should make sure that you define at least one developer or airdrop neuron
-as they provide the only way how to upgrade the dapp during the sale.**
+Therefore, **you should make sure that you define at least one developer or 
+airdrop neuron as they provide the only way how to upgrade the dapp during
+the sale.**
 
 
