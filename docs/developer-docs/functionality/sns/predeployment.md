@@ -16,16 +16,16 @@ We refer to the next pages for learning the detailed actions that are required
 ## Understanding the SNS Launch process
 
 For each SNS, the decentralization sale is realized in a separate _decentralization
-sale canister_ that exists during the SNS's launch and is owned by the IC who will
+sale canister_ that exists during the SNS's launch, and is owned by the IC which will
 run the sale. In more detail, it is controlled by the NNS root canister.
 
-* The sale canister is set up at start with a defined amount of SNS tokens to be
+* The sale canister is set up at the start with a defined amount of SNS tokens to be
   distributed publicly.
 
 * During the decentralization sale, participants can send ICP to the sale canister
   to contribute to the dapp’s funding.
 
-* At the sale’s end the collected ICP are “swapped” for the SNS tokens: the
+* At the sale’s end the collected ICP are “swapped” for the SNS tokens; the
   participants get SNS tokens and the SNS gets the collected ICP. Each user will
   receive their portion of the pool of SNS tokens, pro-rated by their % of the overall
   number of ICP contributed. For example, if the sale canister initially held 1000 SNS
@@ -35,10 +35,10 @@ run the sale. In more detail, it is controlled by the NNS root canister.
   contributed.
 
 Apart from distributing the tokens to many participants, the decentralization sale
-achieves that a) a market price for the SNS token is set and b) every sale
+concludes that a) a market price for the SNS token is set and b) every sale
 participant receives SNS tokens at that price.
 
-An SNS is launched in the following stages.
+An SNS is launched in the following stages:
 
 1) **Choose the initial parameters**: For initializing an SNS for your dapp,
    you first choose the initial parameters of the SNS.
@@ -51,8 +51,8 @@ An SNS is launched in the following stages.
    call to the SNS wasm modules canister (a canister on the NNS) to deploy an SNS with 
    the specified parameters.
    At this point, the SNS ledger only has two accounts with liquid tokens, the _treasury_
-   that is owned by the SNS governance canister and can be used in the future according to the
-   SNS community's wishes and some pre-allocated tokens to be used in the initial 
+   that is owned by the SNS governance canister which can be used in the future according to the
+   SNS community's wishes, and some pre-allocated tokens to be used in the initial 
    decentralization sale.
    To ensure that no one can transfer tokens, and distribute them or start token markets
    prematurely, all remaining inital tokens are locked in neurons. 
@@ -110,9 +110,9 @@ with each other, you can use a tool that validates your input file.
 [Defining the initial parameters for the SNS](TODO).**
 
 To give you an overview, these are the categories of parameters that you can set:
-1. Parameters of the _SNS governance canister_. Those are parameters of the governance
+1. Parameters of the _SNS governance canister_. These are parameters of the governance
 that can later be changed by SNS proposals. They include parameters such as the
-   minimum stake that a neuron must have or the cost of submitting a proposal that is not
+   minimum stake that a neuron must have, or the cost of submitting a proposal that is not
    adopted in SNS tokens.
    
 2. Configurations in the _SNS ledger canister_. This includes configurations of the SNS 
@@ -121,11 +121,11 @@ ledger canister such as the token name, token symbol, and the ledger transaction
 3. Configurations of the _SNS decentralization sale_. This includes configurations such
 as the minimum number of ICP tokens that the sale must collect to be successful and the
    maximum number of ICP tokens that it will collect.
-   Another important parameter are the fallback controllers of the dapp.
+   Another important parameter is the set of fallback controllers of the dapp.
    If a decentralization sale fails, for example because the targeted minimum number
    of ICP tokens could not be collected, the control of the dapp canister(s) is
    handed back to the principals defined in this parameters. 
-   Normally, you will want to set this to the principals that controlled the dapp
+   Normally, you will want to set this to be the principals that controlled the dapp
    before the attempt to decentralize it (e.g., the principal of you and other
    developers who worked on the dapp).
 
@@ -136,7 +136,7 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
    2. _airdrop tokens_ that can be given to any other predefined principals that
       should have tokens at genesis, for example to initial investors or existing users
       of the dapp,
-   3. _treasury tokens_ that are owned by the SNS governance canister and can be
+   3. _treasury tokens_ that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs, and
    4. _sale tokens_ which are owned by the SNS and sold in exchange for other tokens.
       Initially, parts of the SNS sale tokens are sold in exchange for ICP tokens
