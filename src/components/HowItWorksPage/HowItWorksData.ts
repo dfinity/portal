@@ -15,3 +15,19 @@ export type HowItWorksArticle = {
   coverImage: string;
   slug: string;
 };
+
+export type HowItWorksCard = {
+  title: string;
+  body: string;
+  coverImage?: string;
+  abstract?: string;
+};
+
+export type HowItWorksCardGroup = {
+  title: string;
+  description?: string;
+  isFeatured?: boolean;
+  items: HowItWorksCard[];
+};
+
+export type HowItWorksPageData = HowItWorksCardGroup[];

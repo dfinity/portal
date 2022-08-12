@@ -260,6 +260,29 @@ div[class^="announcementBarContent"] {
   top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
 }
 
+.fancy-scrollbar {
+  scroll-padding: 50% 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 12px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track {
+  background: rgba(24, 24, 24, 0%);
+  margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
+  border-radius: 20px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(24, 24, 24, 20%);
+  border-radius: 20px;
+  border: 4px solid var(--ifm-background-color);
+}
+
 @import "typography.css";
 
 @tailwind base;

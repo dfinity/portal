@@ -16,7 +16,7 @@ const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
-const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
@@ -44,7 +44,7 @@ const config = {
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
-    howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
   ],
