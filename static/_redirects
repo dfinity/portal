@@ -28,6 +28,7 @@
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
 /docs/candid-guide/candid-ref.html /docs/current/references/candid-ref.html
 /docs/candid-guide/candid-types.html /docs/current/references/candid-ref.html
+/docs/current/concepts/data-centers https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding
 /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
 /docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
 /docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
