@@ -93,6 +93,6 @@ This is the public key you can use in Rosetta operations to identify your hotkey
 - Why do I get *"Algorithm ed25519 not found"* while generating the PEM file?
 
 The version of OpenSSL included in MacOS doesn't support ed25519 by default. 
-You may have to install another version of OpenSSL, or run the command from a Linux machine.
+You may have to install another version of OpenSSL (for example through *brew*), or run the command from a Linux machine.
 
 
