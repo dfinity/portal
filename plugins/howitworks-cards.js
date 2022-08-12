@@ -1,12 +1,6 @@
-const createClient = require("contentful").createClient;
-const logger = require("@docusaurus/logger");
 const marked = require("marked");
 const fs = require("fs");
 const path = require("path");
-const dotenv = require("dotenv");
-const fetch = require("node-fetch");
-const slugify = require("slugify");
-const sharp = require("sharp");
 const matter = require("gray-matter");
 
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
