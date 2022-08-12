@@ -249,6 +249,7 @@ const sidebars = {
             "developer-docs/functionality/rosetta/neuron-lifecycle",
             "developer-docs/functionality/rosetta/staking-support",
             "developer-docs/functionality/rosetta/staking-tutorial",
+            "developer-docs/functionality/rosetta/hotkeys",
           ],
         },
       ],
