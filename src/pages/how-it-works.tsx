@@ -69,7 +69,16 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
           >
             <div
               dangerouslySetInnerHTML={{ __html: card.body }}
-              className="prose prose-img:m-0 prose-h3:tw-heading-5 prose-p:m-0 prose-p:tw-paragraph prose-p:text-black-60 prose-headings:m-0 space-y-4 prose-a:link-external prose-a:no-underline prose-img:rounded-[10px]"
+              className="
+              prose 
+              prose-img:m-0 
+              prose-h3:tw-heading-5 
+              prose-p:m-0 prose-p:tw-paragraph prose-p:text-black-60 
+              prose-headings:m-0 
+              space-y-4 
+              prose-a:text-infinite prose-a:underline hover:prose-a:text-black hover:prose-a:no-underline
+              marker:prose-ol:text-black marker:prose-ol:tw-paragraph
+              "
             ></div>
           </div>
         ))}
@@ -83,8 +92,6 @@ function HowItWorks() {
     .default as HowItWorksPageData;
 
   const featuredGroup = cardGroups.find((g) => g.isFeatured)!;
-
-  console.log(cardGroups);
 
   return (
     <Layout
