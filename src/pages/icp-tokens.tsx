@@ -157,7 +157,7 @@ function TokenHolders(): JSX.Element {
           className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
           variants={transitions.item}
         />
-        <section className="max-w-page relative px-6 pt-30 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+        <section className="max-w-page relative px-6 pt-20 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
           <AnimateSpawn
             className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             variants={transitions.container}

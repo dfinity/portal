@@ -189,7 +189,11 @@ Dissolve timestamp always increases monotonically.
 
 -   If the neuron is in the `DISSOLVED` state, invoking `SET_DISSOLVE_TIMESTAMP` will move it to the `NOT_DISSOLVING` state and will set the dissolve delay accordingly.
 
-<!-- -->
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
 
 -   `account.address` is the ledger address of the neuron contoller.
 
@@ -223,9 +227,19 @@ Dissolve timestamp always increases monotonically.
 
 The `START_DISSOLVNG` operation changes the state of the neuron to `DISSOLVING`.
 
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
 -   `account.address` is the ledger address of the neuron contoller.
 
-<!-- -->
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
 
 -   The neuron is in the `DISSOLVING` state.
 
@@ -258,9 +272,19 @@ The `START_DISSOLVNG` operation changes the state of the neuron to `DISSOLVING`.
 
 The `STOP_DISSOLVNG` operation changes the state of the neuron to `NOT_DISSOLVING`.
 
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
 -   `account.address` is a ledger address of a neuron contoller.
 
-<!-- -->
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
 
 -   The neuron is in `NOT_DISSOLVING` state.
 
@@ -292,6 +316,12 @@ The `STOP_DISSOLVNG` operation changes the state of the neuron to `NOT_DISSOLVIN
 | Minimal access level | controller |
 
 The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
+
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
 
 -   `account.address` is a ledger address of a neuron controller.
 
@@ -340,6 +370,12 @@ The command has two forms: one form accepts an [IC principal](https://smartcontr
 
 The `REMOVE_HOTKEY` operation remove a previously added hotkey from the neuron.
 
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
 -   `account.address` is a ledger address of a neuron controller.
 
 -   The hotkey is linked to the neuron.
@@ -387,11 +423,21 @@ The command has two forms: one form accepts an [IC principal](https://smartcontr
 
 The `SPAWN` operation creates a new neuron from an existing neuron with enough maturity. This operation transfers all the maturity from the existing neuron to the staked amount of the newly spawned neuron.
 
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
 -   `account.address` is a ledger address of a neuron controller.
 
 -   The parent neuron has at least 1 ICP worth of maturity.
 
-<!-- -->
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
 
 -   Parent neuron maturity is set to `0`.
 
@@ -404,7 +450,9 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
   "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
   "metadata": {
     "neuron_index": 0,
-    "controller": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae",
+    "controller": {
+      "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
+    },
     "spawned_neuron_index": 1
   }
 }
@@ -428,11 +476,21 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
 
 The `MERGE_MATURITY` operation merges the existing maturity of the neuron into its stake. The percentage of maturity to merge can be specified, otherwise the entire maturity is merged.
 
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
 -   `account.address` is the ledger address of the neuron controller.
 
 -   The neuron has non-zero maturity to merge.
 
-<!-- -->
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
 
 -   Maturity decreased by the amount merged.
 
@@ -462,6 +520,111 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 
 :::
 
+### Follow neurons
+
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.5.0      |
+| Idempotent?          | yes        |
+| Minimal access level | hotkey     |
+
+
+The `FOLLOW` operation sets a follow rule for a neuron.
+The Governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
+
+The `followees` metadata field contains the list of neurons to follow.
+If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
+If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
+
+You can restrict the rule to a specific topic by specifying the `topic` metadata field.
+The topic is an integer between 0 and 10 (inclusive).
+The default value for the `topic` field is 0.
+Each topic can have at most one rule associated with it.
+The topic codes are listed below.
+
+0. Undefined (all topics).
+1. Neuron management.
+2. Exchange rate.
+3. Network economics.
+4. Governance.
+5. Node administration.
+6. Participant management.
+7. Subnet management.
+8. Network canister management.
+9. KYC.
+10. Node provider rewards.
+
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
+
+* `account.address` is the ledger address of the neuron controller or hotkey.
+* `metadata.followees` contains an array of valid neuron identifiers.
+* `metadata.topic` is a valid topic identifier.
+
+
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
+
+* Neuron votes according to specified follow rule.
+
+<div class="formalpara-title">
+
+**Calling `FOLLOW` as a controller:**
+
+</div>
+
+```json
+{
+  "operation_identifier": { "index": 0 },
+  "type": "FOLLOW",
+  "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
+  "metadata": {
+    "topic": 0,
+    "followees": [4169717477823915596, 7814871076665269296],
+    "neuron_index": 0
+  }
+}
+```
+
+<div class="formalpara-title">
+
+**Calling `FOLLOW` with a hotkey:**
+
+</div>
+
+```json
+{
+  "operation_identifier": { "index": 0 },
+  "type": "FOLLOW",
+  "account": { "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8" },
+  "metadata": {
+    "topic": 0,
+    "followees": [4169717477823915596, 7814871076665269296],
+    "neuron_index": 0,
+    "controller": {
+      "public_key": {
+        "hex_bytes": "ba5242d02642aede88a5f9fe82482a9fd0b6dc25f38c729253116c6865384a9d",
+        "curve_type": "edwards25519"
+      }
+    }
+  }
+}
+```
+
+:::note
+
+The `followees` metadata field contains list of unique neuron identifiers assigned by the Governance canister smart contract, not the list of neuron indices chosen by the caller.
+You can obtain unique neuron identifiers of you your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
+
+:::
+
+
 ## Accessing neuron attributes
 
 ### Accessing public information
@@ -472,6 +635,12 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 | Minimal access level | public |
 
 Call the `/account/balance` endpoint to access the staked amount and publicly available neuron metadata.
+
+<div class="formalpara-title">
+
+**Preconditions:**
+
+</div>
 
 -   `public_key` contains the public key of a neuron’s controller.
 
@@ -544,8 +713,6 @@ Call the `/account/balance` endpoint to access the staked amount and publicly av
 
 The `NEURON_INFO` operation retrieves the state of the neuron from the governance canister, including protected fields such as maturity. This operation does not change the state of the neuron. Either the neuron controller or a hotkey can execute this operation.
 
--   `account.address` is the ledger address of the neuron controller or hotkey.
-
 <div class="formalpara-title">
 
 **Calling `NEURON_INFO` as a controller:**
@@ -563,6 +730,8 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 }
 ```
 
+- `account.address` is the ledger address of the neuron controller.
+
 <div class="formalpara-title">
 
 **Calling `NEURON_INFO` with a hotkey:**
@@ -577,12 +746,17 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
   "metadata": {
     "neuron_index": 0,
     "controller": {
-      "hex_bytes": "ba5242d02642aede88a5f9fe82482a9fd0b6dc25f38c729253116c6865384a9d",
-      "curve_type": "edwards25519"
+      "public_key": {
+        "hex_bytes": "ba5242d02642aede88a5f9fe82482a9fd0b6dc25f38c729253116c6865384a9d",
+        "curve_type": "edwards25519"
+      }
     }
   }
 }
 ```
+
+- `account.address` is the ledger address of the neuron hotkey.
+- `metadata.controller.public_key` is the public key of the neuron controller.
 
 :::note
 
@@ -613,7 +787,9 @@ The Rosetta API returns the state of the neuron as operation metadata in the `/c
           "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8"
         },
         "metadata": {
-          "controller": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae",
+          "controller": {
+            "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
+          },
           "kyc_verified": true,
           "maturity_e8s_equivalent": 1000,
           "neuron_fees_e8s": 0,

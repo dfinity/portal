@@ -59,7 +59,7 @@ const cardsContent = [
   {
     title: "Bitcoin liquidity",
     body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
-    link: "/howitworks/direct-integration-with-bitcoin/",
+    link: "/bitcoin-integration",
   },
   {
     title: "HTTPS outcalls",
@@ -68,7 +68,7 @@ const cardsContent = [
   },
 ];
 
-const MotionLink = motion(Link);
+export const MotionLink = motion(Link);
 
 function Card({ title, body }) {
   return (
@@ -127,7 +127,7 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>
@@ -147,7 +147,7 @@ function Features() {
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>

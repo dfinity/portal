@@ -172,15 +172,14 @@ const sidebars = {
       type: "category",
       label: "Deployment & Scaling",
       link: {
-        type: "doc",
-        id: "developer-docs/deploy/computation-and-storage-costs",
+        type: 'doc', id: 'developer-docs/deploy/deploy',
       },
       items: [
-        // 'developer-docs/deploy/deploy',
-        // 'developer-docs/deploy/scale',
-        "developer-docs/deploy/larger-wasm",
-        "developer-docs/deploy/custom-domain",
-        "developer-docs/deploy/computation-and-storage-costs",
+        'developer-docs/deploy/deploy',
+        'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/staging-environment',
+        'developer-docs/deploy/custom-domain',
+        'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
       ],
     },
@@ -190,10 +189,33 @@ const sidebars = {
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
         type: "doc",
-        id: "developer-docs/functionality/internet-identity/integrate-identity",
+        id: "developer-docs/functionality/bitcoin/index",
       },
       items: [
         // 'developer-docs/functionality/index',
+        {
+          type: 'category',
+          label: 'Bitcoin Integration',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/bitcoin/index"
+          },
+          items: [
+            'developer-docs/functionality/bitcoin/bitcoin-how-it-works',
+            'developer-docs/functionality/bitcoin/local-development',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Threshold ECDSA',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/t-ecdsa/index"
+          },
+          items: [
+            'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
+          ]
+        },
         "developer-docs/functionality/internet-identity/integrate-identity",
         {
           type: "category",
@@ -208,14 +230,6 @@ const sidebars = {
             "developer-docs/functionality/ledger/deploy-new-token",
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Bitcoin Integration',
-        //   items: [
-        //     'developer-docs/functionality/bitcoin/bitcoin',
-        //     'developer-docs/functionality/bitcoin/t-ecdsa'
-        //   ]
-        // },
         // {
         //   type: 'category',
         //   label: 'Using the SNS',
@@ -235,6 +249,7 @@ const sidebars = {
             "developer-docs/functionality/rosetta/neuron-lifecycle",
             "developer-docs/functionality/rosetta/staking-support",
             "developer-docs/functionality/rosetta/staking-tutorial",
+            "developer-docs/functionality/rosetta/hotkeys",
           ],
         },
       ],
@@ -364,9 +379,10 @@ const sidebars = {
     "references/ledger",
     "references/ii-spec",
     "references/ic-interface-spec",
+    "references/id-encoding-spec",
     {
       type: "category",
-      label: "quill Commands",
+      label: "Quill Commands",
       link: {
         type: "doc",
         id: "references/quill-cli-reference/index",
@@ -449,11 +465,11 @@ const sidebars = {
   ],
   samples: [
     // 'samples/overview',
-    //"samples/bitcoin-integration",
-    //"samples/t-ecdsa-sample",
+    "samples/deploying-your-first-bitcoin-dapp",
+    "samples/t-ecdsa-sample",
+    "samples/http-requests-exchange-rates",
     "samples/hello",
     "samples/host-a-website",
-    // 'samples/http-requests-exchange-rates',
     "samples/dex",
     "samples/nft",
     "samples/dao",
