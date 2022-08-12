@@ -49,7 +49,7 @@ function Index() {
           prose-h2:tw-heading-4 prose-h2:md:tw-heading-3 prose-h2:my-8
           prose-h3:tw-heading-5 prose-h3:md:tw-heading-4 prose-h3:my-8
           prose-img:w-full
-          prose-p:m-0 prose-p:tw-paragraph 
+          prose-p:tw-paragraph 
           prose-a:text-infinite prose-a:underline hover:prose-a:text-black hover:prose-a:no-underline
           marker:prose-ol:text-black marker:prose-ol:tw-paragraph
           prose-table:tw-lead-sm
