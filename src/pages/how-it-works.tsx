@@ -138,7 +138,7 @@ function HowItWorks() {
             />
           </div>
         </section>
-        <section className="container-12 -mt-72 md:-mt-32 relative px-0">
+        <section className="container-12 -mt-72 md:-mt-32 relative !px-0">
           <div className="overflow-auto flex gap-5 fancy-scrollbar px-6 xl:px-0">
             {featuredGroup.items.map((card) => (
               <div
