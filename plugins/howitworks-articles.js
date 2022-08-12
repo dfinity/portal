@@ -3,8 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-marked.use({ renderer: null });
-
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
 
 /** @type {import('@docusaurus/types').PluginModule} */
@@ -12,6 +10,8 @@ const howItWorksArticlesPlugin = async function () {
   return {
     name: "howitworks-articles",
     async loadContent() {
+      marked.use({ renderer: null });
+
       const dirs = fs
         .readdirSync(baseDir, {
           withFileTypes: true,

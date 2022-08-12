@@ -13,13 +13,14 @@ const renderer = {
     return `<h${level}>${text}</h${level}>`;
   },
 };
-marked.use({ renderer });
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksCardsPlugin = async function () {
   return {
     name: "howitworks-cards",
     async loadContent() {
+      marked.use({ renderer });
+
       const dirs = fs
         .readdirSync(baseDir, {
           withFileTypes: true,

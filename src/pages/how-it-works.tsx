@@ -1,18 +1,17 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
-import transitions from "@site/static/transitions.json";
 import useGlobalData from "@docusaurus/useGlobalData";
 import {
   HowItWorksCardGroup,
   HowItWorksPageData,
 } from "@site/src/components/HowItWorksPage/HowItWorksData";
-import AnimateSpawn from "../components/Common/AnimateSpawn";
 import ArrowRight from "@site/static/img/arrow-right.svg";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
 import slugify from "slugify";
 import clsx from "clsx";
+import IntraPageNav from "../components/Common/IntraPageNav";
+import { css } from "../utils/dummy-css";
 
 const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
   const groupClassName = `${slugify(group.title)}-item`;
@@ -21,7 +20,6 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
 
   function onItemClick(e, index: number) {
     const target = document.querySelectorAll(`${groupSelector}`)[index];
-    console.log(target);
 
     if (target) {
       const y = target.getBoundingClientRect().top + window.pageYOffset - 115;
@@ -34,7 +32,10 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
   }
 
   return (
-    <div className="flex gap-5 flex-col md:flex-row">
+    <div
+      className="flex gap-5 flex-col md:flex-row"
+      id={slugify(group.title, { strict: true })}
+    >
       <div className="flex-1 ">
         <div className="sticky top-10">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-6 md:mb-12">
@@ -46,8 +47,10 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
                 <button
                   onClick={(e) => onItemClick(e, index)}
                   className={clsx(
-                    "tw-heading-5 border-none bg-transparent appearance-none text-left font-circular",
-                    highlight.highlightedIndex !== index ? "text-black-30" : ""
+                    "border-none bg-transparent appearance-none text-left font-circular",
+                    highlight.highlightedIndex !== index
+                      ? "text-black-30 tw-heading-6"
+                      : "tw-heading-5"
                   )}
                 >
                   {card.title}
@@ -73,11 +76,20 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
               prose 
               prose-img:m-0 
               prose-h3:tw-heading-5 
+              prose-h4:tw-heading-6
+              prose-h5:tw-heading-7
               prose-p:m-0 prose-p:tw-paragraph prose-p:text-black-60 
               prose-headings:m-0 
               space-y-4 
               prose-a:text-infinite prose-a:underline hover:prose-a:text-black hover:prose-a:no-underline
               marker:prose-ol:text-black marker:prose-ol:tw-paragraph
+
+
+              prose-h2:tw-heading-4 prose-h2:md:tw-heading-3 prose-h2:my-8
+              prose-img:w-full
+              prose-table:tw-paragraph
+              prose-td:p-2
+              prose-th:p-2
               "
             ></div>
           </div>
@@ -98,6 +110,13 @@ function HowItWorks() {
       title="How it works"
       description="Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives."
     >
+      <style>
+        {css`
+          html {
+            scroll-padding-top: 125px;
+          }
+        `}
+      </style>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
@@ -120,10 +139,10 @@ function HowItWorks() {
           </div>
         </section>
         <section className="container-12 -mt-72 md:-mt-32 relative px-0">
-          <div className="overflow-auto flex gap-5 fancy-scrollbar px-6">
+          <div className="overflow-auto flex gap-5 fancy-scrollbar px-6 xl:px-0">
             {featuredGroup.items.map((card) => (
               <div
-                className="rounded-xl overflow-hidden flex-1 bg-white min-w-[80vw] sm:min-w-[320px]  lg:min-w-0"
+                className="rounded-xl overflow-hidden flex-1 bg-white min-w-[80vw] sm:min-w-[320px]  xl:min-w-0"
                 key={card.title}
               >
                 <img
@@ -133,7 +152,7 @@ function HowItWorks() {
                 ></img>
                 <div className="p-6">
                   <h3 className="tw-heading-4 mb-3">{card.title}</h3>
-                  <div className="tw-lead-sm text-black-60 mb-3">
+                  <div className="tw-paragraph text-black-60 mb-3">
                     {card.abstract}
                   </div>
                   <button
@@ -159,6 +178,14 @@ function HowItWorks() {
             <CardGroup group={group} key={group.title}></CardGroup>
           ))}
         </section>
+
+        <IntraPageNav
+          links={cardGroups.map((g) => ({
+            text: g.title,
+            to: "#" + slugify(g.title, { strict: true }),
+          }))}
+          label="Scroll to section"
+        ></IntraPageNav>
       </main>
     </Layout>
   );

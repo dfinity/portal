@@ -45,16 +45,16 @@ function Index() {
           md:mb-40
           container-10
           prose
-          prose-h1:tw-heading-3 prose-h1:md:tw-heading-2 prose-h1:mb-12 prose-h1:md:max-w-3xl
+          prose-h1:tw-heading-3 prose-h1:md:tw-heading-2 prose-h1:my-12 prose-h1:md:max-w-3xl
+          prose-h2:tw-heading-4 prose-h2:md:tw-heading-3 prose-h2:my-8
+          prose-h3:tw-heading-5 prose-h3:md:tw-heading-4 prose-h3:my-8
           prose-img:w-full
-          prose-img:m-0 
-          prose-h3:tw-heading-5 
           prose-p:m-0 prose-p:tw-paragraph 
-          prose-headings:m-0 
-          space-y-4 
           prose-a:text-infinite prose-a:underline hover:prose-a:text-black hover:prose-a:no-underline
           marker:prose-ol:text-black marker:prose-ol:tw-paragraph
-          
+          prose-table:tw-lead-sm
+          prose-td:p-2
+          prose-th:p-2
           `}
           dangerouslySetInnerHTML={{ __html: article.content }}
         ></div>
