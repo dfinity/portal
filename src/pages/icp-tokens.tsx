@@ -479,7 +479,7 @@ function TokenHolders(): JSX.Element {
               </motion.h2>
               <motion.p className="tw-heading-6" variants={transitions.item}>
                 <a
-                  href="https://internetcomputer.org/docs/current/developer-docs/functionality/ledger/"
+                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_with_Ledger_Nano"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-white-50 hover:no-underline"
