@@ -17,15 +17,18 @@ sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
 
 #### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
-To make this call, use the command as described 'here' ().
+To make this call, use the command as described 'here'.
+
 [comment]: <> (TODO: add link)
+
 Upon receiving this call, the SNS wasm modules cansiter will deploy
 an SNS with your chosen initial parameters.
 
 
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use the command as described 'here' ().
-//TODO: add link, this should already exist somewhere, ask dfx / SDK team
+To do so, use the command as described 'here'.
+
+[comment]: <> (TODO: add this to CLI/dfx tool as need to learn SNS canisters)
 
 #### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
@@ -34,10 +37,12 @@ Then, ensure that sufficiently many initial neurons (deveoper and airdrop
 neurons) vote on the proposal so that it is adopted.
 In this way, confirm that the proposal has been upgraded. 
 
-You can learn how to make an SNS proposal 'here' and
-//TODO: SNS quill documentation to make proposal and link to it
+You can learn what command to use to make an SNS proposal 'here' and
+
+[comment]: <> (TODO: SNS quill documentation to make proposal and link to it)
 how to vote on an SNS proposal 'here'.
-// TODO: 
+
+[comment]: <> (TODO: SNS quill - link to a page & paragraph that explains how to vote on SNS proposal.)
 
 :::info
 
@@ -46,8 +51,8 @@ reach and get buy in from a majority of the inital neurons. Also, these
 neurons have to be able to vote on SNS proposals, which might require
 the to vote on a command line tool as frontends might only show SNS
 proposals after the decentralization sale.
-// TODO: make more precise the warning in the launch / choosing parameters part
-to also specify that the initial neurons might need to vote on a CLI
+
+[comment]: <> (&#40;TODO: make more precise the warning in the launch / choosing parameters part&#41; to also specify that the initial neurons might need to vote on a CLI)
 
 :::
 
@@ -57,7 +62,22 @@ the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
+To do this, you can use the command 'here' where you specify as the principal
+all existing controller principals except for the SNS root that you have
+already added.
+
+[comment]: <> (add link, should already exist in DFX)
+
 #### 5. Register the dapp to the SNS
+Next, you will register the dapp canisters that are now controlled by the SNS
+in the SNS root canister. This is to make sure that the SNS root canister
+is aware of the canisters that it officially governs. 
+This also ensures that if you request a canister summary from the
+SNS root canister, then the dapp canisters are included in this summary and 
+you can learn, for example, how many cycles they still have.
+
+Registering a dapp under and SNS is again done by an SNS proposal.
+To register a dapp under an SNS, you make again an SNS proposal
 by proposaladd dapp to sns by proposal
 
 #### 6. _(Recommended)_ Test upgrading the dapp cnaister(s) by SNS proposal.
