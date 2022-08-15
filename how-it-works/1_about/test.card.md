@@ -1,4 +1,4 @@
----
+<!-- ---
 title: Content test card
 ---
 
@@ -43,4 +43,4 @@ And a test table:
 | Header    | Title       |
 | Paragraph | Text        |
 
-[Learn more](/how-it-works/test-subpage/)
+[Learn more](/how-it-works/test-subpage/) -->
