@@ -30,7 +30,7 @@ To do so, use the command as described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
 
-#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
+#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. {#step3}
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
 a new wasm version.
 Then, ensure that sufficiently many initial neurons (deveoper and airdrop
@@ -78,9 +78,9 @@ To make such a proposal, you can use the following dfx command:
 TODO 
 ```  
 To vote on the proposal, follow the instructions from
-[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal)
+[Step 3](#step3)
 to vote on the proposal.
-As in [Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal),
+As in [Step 3](#step3),
 sufficient initial neurons have to vote to reach a majority.
 
 <!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all cansiters that you would like to register.-->
@@ -88,7 +88,7 @@ sufficient initial neurons have to vote to reach a majority.
 #### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
 you can repeat
-[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal) 
+[Step 3](#step3) 
 at this point.
 
 #### 7. Submit an NNS proposal to start the decentralisation sale.
@@ -117,7 +117,7 @@ have defined in the [initialization file](predeployment.md).
 During this time you can further upgrade your dapp canister(s), for
 example to add new features or fix bugs, by sending additional
 SNS proposals as explained in
-[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal).
+[Step 3](#step3).
 You can also add new dapp canisters under the SNS control, if required, 
 by additional SNS proposals as explained in
 [Step 5](#5-register-the-dapp-to-the-sns).
