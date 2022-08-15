@@ -75,7 +75,7 @@ you can learn how many cycles they still have and other information.
 Registering a dapp under an SNS is again done by an SNS proposal.
 To make such a proposal, you can use the following dfx command:
 ``` 
-TODO 
+TODO after NNS1-1633
 ```  
 To vote on the proposal, follow the instructions from
 [Step 3](#step3)
