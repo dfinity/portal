@@ -62,8 +62,15 @@ An SNS is launched in the following stages:
 
 3) **Dapp control handover**: Between the SNS initialization and the start of the 
    decentralization sale, you hand over the control of your dapp to the SNS.
-   As there are already initial neurons (from Step 2), the dapp can now be upgraded via
-   SNS proposals. The initial neurons cannot do other things, such as changing the SNS
+   This includes adding the SNS root canister as the controller of the dapp and removing
+   yourself (and possible other developers) from the list of controllers. Also, this 
+   includes "registering" the dapp with the SNS so that SNS root is aware that it controls
+   these canisters.
+   The registration is done by SNS proposal.
+   As there are already initial neurons (from Step 2), this proposal, as well as potential
+   proposals to upgrade the dapp can be realized by an SNS proposal and by the majority of
+   initial neurons voting in favor of this proposal.
+   The initial neurons cannot do other things, such as changing the SNS
    parameters, as the SNS governance canister is still in pre-genesis mode.
 
 4) **Ask the IC to start the decentralization sale**: The decentralization sale
@@ -159,13 +166,14 @@ decentralization sale. As more of the sale tokens are sold in the future, the
 voting power multiplier increases until it is 1 when all sale tokens have been
 sold. 
 
-:::caution 
+:::danger 
 
-The developer and airdrop neurons are the only neurons that already 
-exist during the decentralization sale. At this point, the dapp canister(s) 
-are already
-controlled by the SNS.
-Therefore, **you should make sure that you define at least one developer or 
+The developer and airdrop neurons are the only neurons that exist when the dapp's
+control is handed over to the SNS and during the decentralization sale. 
+Therefore, 
+
+At this point, the dapp canister(s) are already controlled by the SNS.
+Therefore, **you must make sure that you define at least one developer or 
 airdrop neuron as they provide the only way how to upgrade the dapp during
 the sale.**
 
