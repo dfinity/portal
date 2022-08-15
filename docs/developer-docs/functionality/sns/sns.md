@@ -23,8 +23,8 @@ we call applications that run on the IC
 _decentralized applications_ or _dapps_.
 
 A second kind of decentralized denotes who is in control of changing a dapp,
-or a smart contrat more generally.
-That is, in general dapps running on the IC or smart contracts on other
+or a smart contract more generally.
+In general, dapps running on the IC or smart contracts on other
 decentralized platforms can still be controlled by a single, central entity
 and thus still be under centralized control. 
 As we will motivate below, it is often beneficial if a dapp is also under
@@ -44,7 +44,7 @@ Canisters define a _controller_ specifying which principals can
 modify them.
 Most dapp canisters are either controlled by some developers or
 have no controller at all.
-Both situations are undesirable for a dapps' users.
+Both situations are undesirable for a dapp's users.
 In the case where a dapp is controlled by a centralized group of developers,
 users of the dapp must trust these developers not to stop the application and
 not to modify the application in an undesirable way, e.g., that favors the 
@@ -64,7 +64,7 @@ impact how the dapp is evolved.
 ### Dapp developers
 Decentralizing a dapp's control is not only an advantage for the dapp's users
 but can also be an advantage for the dapp's developers. After all, it is in the
-developer's interest to build those features that the users want.
+developer's interest to build the features users want.
 
 Apart from this, another motivation for dapp developers to adopt
 a DAO such as the SNS is that it allows to _tokenize the dapp_ which can
@@ -116,7 +116,7 @@ There are at least the following options on how to get and maintain a DAO for
 your dapp.
 
 1) **Deploy an SNS that is provided as a _system functionality_ by the IC.**
-   An SNS will be realized by a set of canisters. Deploying and maintaining them is
+   An SNS is realized by a set of canisters. Deploying and maintaining them is
    not a simple task. If one of the SNS canisters is upgraded, it has to be guaranteed
    that the new version of this canister is still compatible with the other SNS
    canisters. Moreover, not all canister versions can be upgraded to all other 
@@ -154,7 +154,7 @@ your dapp.
    For most of these, the implications for the communities will be similar to the
    second option: The DAO communities will have to maintain the DAO versions, or trust
    a third party to do so and such DAOs can be deployed on a higher-replication 
-   application subnet that will soon be available. 
+   application subnet. 
    
 
 These possibilities allow communities to choose between using DAOs that are provided
@@ -175,8 +175,8 @@ It stores which accounts own how many SNS tokens and the history of transactions
 between the principals.
 The _governance canister_ enables decentralized decision making. 
 It stores _proposals_ that are suggestions on how to
-evolve the dapp that the SNS governs and _neurons_ that define who are the governance
-participants. Neurons facilitate stake-based voting as they contain staked SNS tokens.
+evolve the dapp that the SNS governs and _neurons_ that define who the governance
+participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
 Everyone can become a government participant by staking SNS tokens in a neuron.
 The root canister is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS controls.
@@ -208,7 +208,7 @@ funding for the SNS project.
 It is conceivable that alternative ways to decentralize a dapp are added in
 later SNS versions.
 
-The decentralization sale and the steps to conclude a SNS launch including this
+The decentralization sale and the steps to conclude an SNS launch including this
 decentralization sale are described in more detail [here](./deployment.md).
 
 ### SNS maintenance
