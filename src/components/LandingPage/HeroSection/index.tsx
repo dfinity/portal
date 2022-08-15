@@ -24,10 +24,10 @@ function Index() {
         className={styles.container}
       >
         <motion.div variants={transitions.item} className={styles.Title}>
-          <h1>100% on-chain web3</h1>
+          <h1>Everything on-chain</h1>
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Chain Key crypto - advanced smart contracts process HTTP, control other chains, and scale
+          Advanced smart contracts process HTTP requests, control other chains, and scale infinitely
         </motion.p>
         <motion.div
           variants={transitions.item}
