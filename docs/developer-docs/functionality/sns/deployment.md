@@ -6,6 +6,9 @@ This describes the detailed steps for launching an SNS.
 In the following steps we assume that you have already
 [collected the developer and airdrop principals and chosen
 the initial SNS parameters in a .yaml file](predeployment.md).
+We assume that you have one developer principal that is compatible
+with both dfx and SNS quill <!-- TODO: explain what this means and link to where
+explained--> that you will use for the following steps.
 We also recommend that before following these steps and launch an
 SNS in production, you have [tested the SNS](local-testing.md).
 
@@ -70,15 +73,23 @@ SNS root canister, then the dapp canisters are included in this summary and
 you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is again done by an SNS proposal.
-You can learn how to make the proposal to register a dapp canister under 
-the SNS 'here' and follow the instructions from Step 3. to vote on the proposal.
-As in Step 3., sufficient initial neurons have to vote to reach a majority.
+To make such a proposal, you can use the following dfx command:
+``` 
+TODO 
+```  
+To vote on the proposal, follow the instructions from
+[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal)
+to vote on the proposal.
+As in [Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal),
+sufficient initial neurons have to vote to reach a majority.
 
 <!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all cansiters that you would like to register.-->
 
 #### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
-you can repeat Step 3. at this point.
+you can repeat
+[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal) 
+at this point.
 
 #### 7. Submit an NNS proposal to start the decentralisation sale.
 At this point, you have handed over the control of your dapp to the Internet
@@ -91,7 +102,7 @@ Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is set.
 
 #### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
-After Step 7, there is nothing more to do for you as the orginal dapp 
+After the last step, there is nothing more to do for you as the orginal dapp 
 developer to launch the SNS!
 The dapp has been handed over the IC and the NNS is voting on whether 
 the SNS should be launched.
