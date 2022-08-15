@@ -90,8 +90,25 @@ To do so you send submit an NNS proposal as described 'here' <!-- TODO: add link
 Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is set.
 
-As the dapp has been handed over to the Internet Computer, it is now up to
-the NNS community to make deci
+#### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
+After Step 7, there is nothing more to do for you as the orginal dapp 
+developer to launch the SNS!
+The dapp has been handed over the IC and the NNS is voting on whether 
+the SNS should be launched.
+If the proposal is adopted, the SNS decentralization sale will be 
+started with the configurations that you have defined in the
+[initialization file](predeployment.md).
+If the proposal is rejected, the dapp canisters' controllers are set
+back to the developers.
+In more details, there are set to the developer principals that you
+have defined in the [initialization file](predeployment.md).
+
+During this time you can further upgrade your dapp canister(s), for
+example to add new features or fix bugs, by sending additional
+SNS proposals as explained in Step 3. <!-- TODO:reference to step -->
+You can also add new dapp canisters under the SNS control, if required, 
+by additional SNS proposals as explained in Step 5. <!-- TODO:reference to step -->
+
 
 
 
