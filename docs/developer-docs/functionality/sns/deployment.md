@@ -62,9 +62,9 @@ the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, you can use the command 'here' where you specify as the principal
-all existing controller principals except for the SNS root that you have
-already added.
+To do this, you can use the command 'here' where you specify as the principals
+to be removed all existing controller principals except for the SNS root
+that you have already added.
 
 [comment]: <> (add link, should already exist in DFX)
 
@@ -72,32 +72,32 @@ already added.
 Next, you will register the dapp canisters that are now controlled by the SNS
 in the SNS root canister. This is to make sure that the SNS root canister
 is aware of the canisters that it officially governs. 
-This also ensures that if you request a canister summary from the
+This ensures, for example, that if you request a canister summary from the
 SNS root canister, then the dapp canisters are included in this summary and 
-you can learn, for example, how many cycles they still have.
+you can learn how many cycles they still have and other information.
 
-Registering a dapp under and SNS is again done by an SNS proposal.
-To register a dapp under an SNS, you make again an SNS proposal
-by proposaladd dapp to sns by proposal
+Registering a dapp under an SNS is again done by an SNS proposal.
+You can learn how to make the proposal to register a dapp canister under 
+the SNS 'here' and follow the instructions from Step 3. to vote on the proposal.
+As in Step 3., sufficient initial neurons have to vote to reach a majority.
 
-#### 6. _(Recommended)_ Test upgrading the dapp cnaister(s) by SNS proposal.
-Test sure you can upgrade the dapp cnaister(s) by SNS proposal.
+[comment]: <> (IN CASE THIS IS NEEDED: Repeat these steps for all cansiters that you would like to register.)
+
+#### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
+To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
+you can repeat Step 3. at this point.
 
 #### 7. Make a NNS proposal to start the decentralisation sale.
-make sale proposal
+At this point, you have handed over the control of your dapp to the Internet
+Computer. 
+To make sure that the Internet Computer starts the SNS decentralization sale,
+you can ask the NNS community to start the sale.
+To do so you send submit an NNS proposal as described 'here'
 
-info
-atm can still upgrade the dapp by SNS proposal
-atm can
+[comment]: <> (TODO: add link)
 
-
-// for readme, say you might want to try to upgrade dapp by sns before
-starting the sale. probably even before removing yourself as controller!!!
-
-// so detailed steps should include removing controller
-// nd then also adding dapp to sns,
-// which only be possible after removed
-
+Note that anyone can send such a proposal, but as the original developer
+of the dapp you probably want to make sure that such a proposal is set.
 
 
 
