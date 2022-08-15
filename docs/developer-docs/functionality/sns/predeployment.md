@@ -101,7 +101,7 @@ An SNS is launched in the following stages:
    collected ICP are refunded to the sale participants.
    
 :::note
-Hi lara - I just added an example where you can link to [Setting the SNS parameters](#setting-parameters) using a custom anchor. But you can also link to [Understanding the SNS Launch process](#Understanding-the-SNS-Launch-process) where you can assume the anchor by placing dashes between the words in the heading.
+Hi lara - I just added an example where you can link to [Setting the SNS parameters](#setting-parameters) using a custom anchor.
 :::
 
 ## Setting the SNS parameters {#setting-parameters}
