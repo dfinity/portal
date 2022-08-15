@@ -105,10 +105,17 @@ have defined in the [initialization file](predeployment.md).
 
 During this time you can further upgrade your dapp canister(s), for
 example to add new features or fix bugs, by sending additional
-SNS proposals as explained in Step 3. <!-- TODO:reference to step -->
+SNS proposals as explained in
+[Step 3](#3-_recommended_-test-upgrading-the-dapp-canisters-by-sns-proposal).
 You can also add new dapp canisters under the SNS control, if required, 
-by additional SNS proposals as explained in Step 5. <!-- TODO:reference to step -->
-
+by additional SNS proposals as explained in
+[Step 5](#5-register-the-dapp-to-the-sns).
+Finally, if there are new blessed deployments of the SNS canisters, you can
+upgrade the SNS canisters by an SNS proposal. 
+To make such a proposal, you can use the following dfx command:
+``` 
+TODO 
+```  
 
 
 
