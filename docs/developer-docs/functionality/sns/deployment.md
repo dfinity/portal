@@ -13,7 +13,7 @@ SNS in production, you have [tested the SNS](local-testing.md).
 
 You are now ready to launch your SNS. There are some steps that are needed
 for launching an SNS and some steps that we recommend as intermediate
-tests that nothing went wrong up to this point.
+sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
 
 #### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
@@ -24,9 +24,15 @@ an SNS with your chosen initial parameters.
 
 
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
+To do so, use the command as described 'here' ().
+//TODO: add link, this should already exist somewhere
 
-#### 3. _(Recommended)_ Test upgrading the dapp cnaister(s) by SNS proposal.
-
+#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
+To test this, make an SNS proposal to upgrade one of the dapp canisters to
+a new wasm version.
+Then, ensure that sufficiently many initial neurons (deveoper and airdrop
+neurons) vote on the proposal so that it is adopted.
+In this way, confirm that the proposal has been upgraded. 
 (warning that for this you require voting majority or that you can ask
 neurons to upgrade)
 
