@@ -8,47 +8,47 @@ import transitions from "@site/static/transitions.json";
 const cardsContent = [
   {
     title: "Web serving",
-    body: "Smart contracts serve web (http) enabling end-to-end blockchain",
+    body: "Smart contracts process http requests & serve interactive web direct to users",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
   },
   {
-    title: "The fastest chain",
-    body: "Update TX finalized in 1-2 secs & query TXs in milliseconds - true web speed",
+    title: "Breakthrough speed",
+    body: "Pre-finalized query requests <200ms, and update TX in <2s",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
   },
   {
-    title: "Tokens optional",
-    body: 'Smart contracts pay for computation, not their users (aka "reverse gas")',
+    title: "Interact w/o tokens",
+    body: 'Smart contracts pay for their own compute so users can just interact',
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
   },
   {
     title: "Emit less CO₂",
-    body: "Hosted smart contracts can be more efficient than traditional IT",
+    body: "100% on-chain systems and services can be more efficient than traditional IT",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
   },
   {
-    title: "Scale on-chain",
-    body: "Build mass-market web3 services 100% on-chain (no cloud or servers needed)",
+    title: "Limitless scaling",
+    body: "Scale mass-market web3 services 100% on-chain (no cloud or servers needed)",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
   },
   {
     title: "Internet Identity",
-    body: "Anonymous blockchain log-on using WebAuthn e.g. using fingerprint sensor",
+    body: "Anonymizing sign-on via WebAuthn: fingerprint sensor, Face ID, etc",
     link: "https://wiki.internetcomputer.org/wiki/What_is_Internet_Identity",
   },
   {
-    title: "Upgrades w/o forks",
-    body: "NNS DAO directly upgrades network protocol, and governs blockchain",
+    title: "Rapid evolution",
+    body: "A governance DA upgrades and configures the blockchain's nodes daily",
     link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
   },
   {
-    title: "On-chain parallelism",
-    body: 'WebAssembly "actor" smart contracts run in parallel w/o reentrancy risks',
+    title: "Parallelism",
+    body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
     link: "https://wiki.internetcomputer.org/wiki/Canisters_(dapps/smart_contracts)#Canisters_as_actors",
   },
   {
-    title: "Motoko, Rust...",
-    body: "New languages and existing languages that compile to WebAssembly",
+    title: "WebAssembly",
+    body: "Use any lang that compiles to the VM of the future: Motoko, Rust, C, etc",
     link: "/docs/current/developer-docs/build/languages/motoko/",
   },
   {
@@ -58,12 +58,12 @@ const cardsContent = [
   },
   {
     title: "Bitcoin liquidity",
-    body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
+    body: "Smart contracts process UTXOs as though hosted on Bitcoin mainnet",
     link: "/bitcoin-integration",
   },
   {
     title: "HTTPS outcalls",
-    body: "Nodes call URL for contract, contract pre-processes, consensus agrees result",
+    body: "Smart contracts can connect to outside world through http via consensus",
     link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
   },
 ];
