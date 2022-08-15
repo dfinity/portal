@@ -453,16 +453,19 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
     "controller": {
       "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
     },
-    "spawned_neuron_index": 1
+    "spawned_neuron_index": 1,
+    "percentage_to_spawn": 75
   }
 }
 ```
 
 :::note
 
--   `controller` metadata field is optional and equal to the existing neuron controller by default.
+- `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
 
--   `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
+- `controller` metadata field is optional and equal to the existing neuron controller by default.
+
+- `percentage_to_spawn` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
 
 :::
 
