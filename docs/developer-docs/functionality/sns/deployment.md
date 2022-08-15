@@ -18,14 +18,14 @@ We mark the latter by the keyword _(Recommended)_.
 
 #### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
 To make this call, use the command as described 'here' ().
-//TODO: add link
+[comment]: <> (TODO: add link)
 Upon receiving this call, the SNS wasm modules cansiter will deploy
 an SNS with your chosen initial parameters.
 
 
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
 To do so, use the command as described 'here' ().
-//TODO: add link, this should already exist somewhere
+//TODO: add link, this should already exist somewhere, ask dfx / SDK team
 
 #### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
@@ -33,11 +33,29 @@ a new wasm version.
 Then, ensure that sufficiently many initial neurons (deveoper and airdrop
 neurons) vote on the proposal so that it is adopted.
 In this way, confirm that the proposal has been upgraded. 
-(warning that for this you require voting majority or that you can ask
-neurons to upgrade)
+
+You can learn how to make an SNS proposal 'here' and
+//TODO: SNS quill documentation to make proposal and link to it
+how to vote on an SNS proposal 'here'.
+// TODO: 
+
+:::info
+
+This step is one of the reasons why you should ensure that you can
+reach and get buy in from a majority of the inital neurons. Also, these
+neurons have to be able to vote on SNS proposals, which might require
+the to vote on a command line tool as frontends might only show SNS
+proposals after the decentralization sale.
+// TODO: make more precise the warning in the launch / choosing parameters part
+to also specify that the initial neurons might need to vote on a CLI
+
+:::
 
 #### 4. Remove all other controllers from the dapp cansiter(s)
-remove self as controller and all other devs
+Once you convinced yourself that the dapp canister(s) can be upgraded by
+the SNS, you should remove yourself, as well as any other developers,
+from the list of controllers that the dapp canister(s) have.
+Note that without this, the next step will fail.
 
 #### 5. Register the dapp to the SNS
 by proposaladd dapp to sns by proposal
