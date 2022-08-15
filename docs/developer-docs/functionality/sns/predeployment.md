@@ -99,8 +99,12 @@ An SNS is launched in the following stages:
    is reverted to the state before the SNS launch, including that the dapp’s control
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
+   
+:::note
+Hi lara - I just added an example where you can link to [Setting the SNS parameters](#setting-parameters) using a custom anchor. But you can also link to [Understanding the SNS Launch process](#Understanding-the-SNS-Launch-process) where you can assume the anchor by placing dashes between the words in the heading.
+:::
 
-## Setting the SNS parameters
+## Setting the SNS parameters {#setting-parameters}
 As mentioned above, the first step in launching an SNS is to choose the parameters that
 your SNS will be launched with.
 This lets you choose many SNS settings and also lets you choose the initial 
