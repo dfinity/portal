@@ -58,7 +58,7 @@ An SNS is launched in the following stages:
    prematurely, all remaining inital tokens are locked in neurons. 
    Moreover, to ensure that these initial neurons cannot modify the SNS before
    or during the decentralization sale and cannot transfer the treasury tokens,
-   the SNS governance is deployed in a _pre-genesis mode_ with limited functionality.
+   the SNS governance is deployed in a _pre-decentralization-sale mode_ with limited functionality.
 
 3) **Dapp control handover**: Between the SNS initialization and the start of the 
    decentralization sale, you hand over the control of your dapp to the SNS.
@@ -71,7 +71,8 @@ An SNS is launched in the following stages:
    proposals to upgrade the dapp can be realized by an SNS proposal and by the majority of
    initial neurons voting in favor of this proposal.
    The initial neurons cannot do other things, such as changing the SNS
-   parameters, as the SNS governance canister is still in pre-genesis mode.
+   parameters, as the SNS governance canister is still in
+   pre-decentralization-sale mode.
 
 4) **Ask the IC to start the decentralization sale**: The decentralization sale
    is started by an NNS proposal that can be submitted by anyone and is decided on by the
@@ -94,7 +95,8 @@ An SNS is launched in the following stages:
    it was successful, e.g., enough ICP have been collected. If the sale was successful,
    the exchange rate is determined and all tokens are given to the sale participants in
    neurons. Once all neurons are created, the SNS is under decentralized control
-   and the governance canister is set to be fully functional.
+   and the pre-decentralization-sale mode is reverted. Thus, the 
+   governance canister is set to be fully functional.
    If the sale is not successful, the decentralization attempt failed and everything
    is reverted to the state before the SNS launch, including that the dapp’s control
    is handed back to you (i.e., the original developers of the dapp), and the 
@@ -120,7 +122,8 @@ with each other, you can use a tool that validates your input file.
 
 To give you an overview, these are the categories of parameters that you can set:
 1. Parameters of the _SNS governance canister_. These are parameters of the governance
-that can later be changed by SNS proposals. They include parameters such as the
+that can, in contrast to the other parameters listed here, be changed later 
+   by SNS proposals. They include parameters such as the
    minimum stake that a neuron must have, or the cost (in SNS tokens) of submitting a proposal that is not adopted.
    
 2. Configurations in the _SNS ledger canister_. This includes configurations of the SNS 
@@ -151,7 +154,10 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
       in an initial decentralization sale. If the sale is successful the participants
       will receive SNS tokens in a basket of neurons. 
       If not all of the sale tokens are sold in the initial sale, the rest of the
-      sale tokens are reserved for future sales. 
+      sale tokens are reserved for future sales (separate from the treasury). 
+      Note that future sales are not yet designed, but having the tokens reserved
+      makes SNSs forward compatible to such a future that is planned to be added in
+      the future.
       
 All developer and airdrop tokens are distributed to the defined principals at
 genesis in neurons called the developer neurons and the airdrop neurons,

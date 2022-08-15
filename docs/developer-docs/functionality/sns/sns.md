@@ -1,6 +1,6 @@
 # SNS
 
-A decentralized autonomous organization, or DAO for short, is a system that allows
+A Decentralized Autonomous Organization, or DAO for short, is a system that allows
 many parties to jointly control an entity.
 Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that controls
 the Internet Computer blockchain (IC), service nervous systems 
@@ -10,7 +10,7 @@ This means, each dapp that would like to be under decentralized control will hav
 separate SNS.
 
 ## What is a DAO?
-DAO stands for _decentralized autonomous organization_.
+DAO stands for _Decentralized Autonomous Organization_.
 
 Let's first clarify what we mean by _decentralized_ in this
 context.
@@ -124,8 +124,10 @@ your dapp.
    during state migration.
    To help them with these challenges, projects can choose an SNS that
    is automatically maintained by the IC. This means that upgrades from one deployment
-   to another deployment are provided, thoroughly tested, and _blessed_ by the IC
-   community (through NNS proposals). All the SNS communities have to do is to vote
+   to another deployment are provided, thoroughly tested, and then approved by the IC
+   community (through NNS proposals). We denote this by saying that the IC community
+   _blesses_ a new SNS deployment. 
+   All the SNS communities have to do is to vote
    to upgrade the SNS according to the blessed upgrade path. This will automatically
    fetch the right canister versions that have previously been "blessed" and
    upgrade the SNS canisters to them. 
@@ -137,16 +139,15 @@ your dapp.
    rather than possibly altered code.
    
 2) **_Self-deploy_ an SNS and manually upgrade it.**
-   Any SNS community can choose to deploy the SNS code, which is open source, on an 
+   Any SNS community can choose to deploy the SNS code, which is open source and 
+   available [here](https://github.com/dfinity/ic/tree/master/rs/sns), on an 
    application subnet. They can then choose to follow the blessed upgrade path or deviate 
    from this path, e.g., leaving out some versions, or even modify the canisters’ code 
    in a completely different way. In this option, canister upgrades require more 
    actions of the SNS community (i.e., compiling new wasms and make upgrade proposals)
    and the SNS community has to ensure that the upgrades are secure. This includes 
    ensuring that alternative canister versions are compatible and that upgrades to 
-   newer versions do not break any functionality. 
-   In order to provide better security for such SNSs and other security-sensitive
-   canisters, an application subnet with higher replication will soon be available.
+   newer versions do not break any functionality.
 
 3) **Build your own DAO or use frameworks provided by others to build your DAO.**
    While this is conceptually similar to the second option, we would like to emphasize
@@ -173,6 +174,7 @@ The _ledger canister_ implements the
 and contains SNS tokens, which are unique tokens for each SNS.
 It stores which accounts own how many SNS tokens and the history of transactions 
 between the principals.
+
 The _governance canister_ enables decentralized decision making. 
 It stores _proposals_ that are suggestions on how to
 evolve the dapp that the SNS governs and _neurons_ that define who the governance
