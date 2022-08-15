@@ -159,7 +159,9 @@ decentralization sale. As more of the sale tokens are sold in the future, the
 voting power multiplier increases until it is 1 when all sale tokens have been
 sold. 
 
-_Remark:_ The developer and airdrop neurons are the only neurons that already 
+:::caution 
+
+The developer and airdrop neurons are the only neurons that already 
 exist during the decentralization sale. At this point, the dapp canister(s) 
 are already
 controlled by the SNS.
@@ -167,4 +169,5 @@ Therefore, **you should make sure that you define at least one developer or
 airdrop neuron as they provide the only way how to upgrade the dapp during
 the sale.**
 
+:::
 
