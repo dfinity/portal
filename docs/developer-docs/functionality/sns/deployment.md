@@ -17,10 +17,11 @@ tests that nothing went wrong up to this point.
 We mark the latter by the keyword _(Recommended)_. 
 
 #### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
-To make this call, use the command as described [here](TODO).
+To make this call, use the command as described [here]().
+//TODO: add link
    Upon receiving this call, the SNS wasm modules cansiter will deploy
    an SNS with your chosen initial parameters.
-   //TODO: add link
+
    
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
 
