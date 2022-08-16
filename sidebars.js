@@ -142,7 +142,7 @@ const sidebars = {
           type: "category",
           label: "Frontend Tutorials",
           link: {
-            // type: 'doc', id: 'developer-docs/build/frontend/index',
+            // type: 'doc', id: 'developer-docs/build/frontend/index', 
             type: "doc",
             id: "developer-docs/build/frontend/webpack-config",
           },
