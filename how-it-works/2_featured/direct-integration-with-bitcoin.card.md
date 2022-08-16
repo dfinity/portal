@@ -1,5 +1,5 @@
 ---
-title: Direct Integration with Bitcoin
+title: Bitcoin Integration
 abstract: The Internet Computer protocol has been extended to add smart contracts to Bitcoin.
 coverImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
 ---
