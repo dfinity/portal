@@ -38,7 +38,7 @@ const cardsContent = [
   },
   {
     title: "Rapid evolution",
-    body: "A governance DA upgrades and configures the blockchain's nodes daily",
+    body: "A governance DAO upgrades and configures the blockchain's nodes daily",
     link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
   },
   {
