@@ -10,7 +10,7 @@ coverImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
 
 The Internet Computer protocol has been extended to add smart contracts to Bitcoin. An application of [Chain Key cryptography](/how-it-works/chain-key-technology) gives each canister their own Bitcoin public key, thus directly integrating the Internet Computer blockchain with the Bitcoin network. In particular, smart contracts on the Internet Computer will be able to hold, send and receive their own Bitcoin.
 
-1. [Learn more](/how-it-works/bitcoin-integration)
+1. [Learn more](/bitcoin-integration)
 
 2. [Internet Computer Direct Integration with Bitcoin - Proposal and Discussion](https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147)
 
@@ -18,9 +18,9 @@ The Internet Computer protocol has been extended to add smart contracts to Bitco
 
 4. [Community Conversations | Chain Key Bitcoin Ledger on the Internet Computer](https://www.youtube.com/watch?v=l8koeVGZe_Y)
 
-<!-- [Bitcoin Integration Developer Preview – internetcomputer.org](https://internetcomputer.org/docs/developers-guide/concepts/bitcoin-integration.html) -->
-
 5. [Bitcoin Developer Preview – Medium](https://medium.com/dfinity/the-internet-computers-bitcoin-developer-preview-is-now-available-85ce1df6b17d)
+
+<!-- [Bitcoin Integration Developer Preview – internetcomputer.org](https://internetcomputer.org/docs/developers-guide/concepts/bitcoin-integration.html) -->
 
 <!-- [GitHub Repo - Bitcoin Developer Preview](https://github.com/dfinity/bitcoin-developer-preview) -->
 

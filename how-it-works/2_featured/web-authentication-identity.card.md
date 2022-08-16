@@ -1,6 +1,6 @@
 ---
 title: "Internet Identity"
-abstract: The Internet Computer blockchain replaced usernames and passwords with a more advanced and secure method of cryptographic authentication
+abstract: The Internet Computer blockchain replaced usernames and passwords with a more advanced and secure method of cryptographic authentication.
 coverImage: /img/how-it-works/web-authentication-identity.600x300.jpg
 ---
 
@@ -12,12 +12,12 @@ Today, the main means of identity and authentication prevalently used online are
 
 1. [Learn more](/how-it-works/web-authentication-identity/)
 
-1. [Internet Identity App](https://identity.ic0.app/)
+2. [Internet Identity App](https://identity.ic0.app/)
+
+3. [Web Authentication and Identity on the Internet Computer](https://medium.com/dfinity/web-authentication-and-identity-on-the-internet-computer-a9bd5754c547)
+
+4. [Internet Identity: The End of Usernames and Passwords](https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7)
 
 <!-- [Open Source - Internet Identity](https://github.com/dfinity/internet-identity) -->
-
-1. [Web Authentication and Identity on the Internet Computer](https://medium.com/dfinity/web-authentication-and-identity-on-the-internet-computer-a9bd5754c547)
-
-1. [Internet Identity: The End of Usernames and Passwords](https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7)
 
 <!-- [Verifying the Internet Identity Code: A Walkthrough](https://medium.com/dfinity/verifying-the-internet-identity-code-a-walkthrough-c1dd7a53f883) -->

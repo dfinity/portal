@@ -11,20 +11,8 @@ The Network Nervous System (NNS) is the open algorithmic system governing the In
 
 1. [Learn more](/how-it-works/network-nervous-system-nns/)
 
-1. [Network Nervous System front-end dapp](https://nns.ic0.app/)
+2. [Network Nervous System front-end dapp](https://nns.ic0.app/)
 
-<!-- [NNS GitHub Repo](https://github.com/dfinity/ic/tree/master/rs/nns) -->
+3. [The Network Nervous System: Governing the Internet Computer](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a)
 
-<!-- [NNS front-end dapp open source](https://github.com/dfinity/nns-dapp) -->
-
-1. [The Network Nervous System: Governing the Internet Computer](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a)
-
-1. [Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8)
-
-<!-- [Getting Started on the Internet Computer’s Network Nervous System dapp & Wallet](https://medium.com/dfinity/getting-started-on-the-internet-computers-network-nervous-system-app-wallet-61ecf111ea11)
-
-[Community Led Governance of the Internet Computer](https://medium.com/dfinity/the-community-led-governance-of-the-internet-computer-b863cd2975ba) -->
-
-<!-- [Earn Substantial Voting Rewards by Staking in the Network Nervous System](https://medium.com/dfinity/earn-substantial-voting-rewards-by-staking-in-the-network-nervous-system-7eb5cf988182) -->
-
-<!-- [NNS Staking Guide [Beta]](https://dfinity.github.io/ic-staking-documentation/) -->
+4. [Understanding the Internet Computer’s Network Nervous System, Neurons, and ICP Utility Tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8)
