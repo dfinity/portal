@@ -1,0 +1,28 @@
+export type CustomUrl = {
+  text: string;
+  url: string;
+};
+
+export type RoadmapItemLink = string | CustomUrl | CustomUrl[];
+
+export type RoadmapItem = {
+  name: string;
+  description: string;
+  links: CustomUrl[];
+  is_community?: boolean;
+  eta?: string;
+};
+
+export type RoadmapDomain = {
+  name: string;
+  description: string;
+  image: {
+    card: string;
+    overlay: string;
+  };
+  groups: {
+    pending: RoadmapItem[];
+    inProgress: RoadmapItem[];
+    deployed: RoadmapItem[];
+  };
+};

@@ -28,6 +28,7 @@
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
 /docs/candid-guide/candid-ref.html /docs/current/references/candid-ref.html
 /docs/candid-guide/candid-types.html /docs/current/references/candid-ref.html
+/docs/current/concepts/data-centers https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding
 /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
 /docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
 /docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
@@ -164,8 +165,6 @@
 /docs/token-holders/seed-donations.html /docs/current/tokenomics/token-holders/seed-donations
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
-
-/roadmap https://forum.dfinity.org/c/roadmap/29 302!
 
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!

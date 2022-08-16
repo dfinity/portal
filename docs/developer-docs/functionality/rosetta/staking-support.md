@@ -453,16 +453,19 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
     "controller": {
       "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
     },
-    "spawned_neuron_index": 1
+    "spawned_neuron_index": 1,
+    "percentage_to_spawn": 75
   }
 }
 ```
 
 :::note
 
--   `controller` metadata field is optional and equal to the existing neuron controller by default.
+- `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
 
--   `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
+- `controller` metadata field is optional and equal to the existing neuron controller by default.
+
+- `percentage_to_spawn` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
 
 :::
 
@@ -715,14 +718,6 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 
 <div class="formalpara-title">
 
-**Preconditions:**
-
-</div>
-
--   `account.address` is the ledger address of the neuron controller or hotkey.
-
-<div class="formalpara-title">
-
 **Calling `NEURON_INFO` as a controller:**
 
 </div>
@@ -738,6 +733,8 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
 }
 ```
 
+- `account.address` is the ledger address of the neuron controller.
+
 <div class="formalpara-title">
 
 **Calling `NEURON_INFO` with a hotkey:**
@@ -751,13 +748,18 @@ The `NEURON_INFO` operation retrieves the state of the neuron from the governanc
   "account": { "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8" },
   "metadata": {
     "neuron_index": 0,
+    "controller": {
       "public_key": {
         "hex_bytes": "ba5242d02642aede88a5f9fe82482a9fd0b6dc25f38c729253116c6865384a9d",
         "curve_type": "edwards25519"
       }
+    }
   }
 }
 ```
+
+- `account.address` is the ledger address of the neuron hotkey.
+- `metadata.controller.public_key` is the public key of the neuron controller.
 
 :::note
 

@@ -77,7 +77,11 @@ what it's like to deploy a Bitcoin dapp locally.
         # For rust
         cd examples/rust/basic_bitcoin
 
-3. If you're on a Mac, install [Homebrew](https://brew.sh/) and then run the following to install additional packages.
+3. Initialize the git submodules
+
+        git submodule update --init --recursive
+
+4. If you're on a Mac, install [Homebrew](https://brew.sh/) and then run the following to install additional packages.
 
         brew install llvm binaryen cmake
 
