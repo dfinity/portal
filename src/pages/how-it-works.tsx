@@ -126,8 +126,7 @@ function HowItWorks() {
                 How the Internet Computer Works
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The DFINITY Foundation's contributions to the Internet Computer
-                roadmap are subject to community discussion and voting.
+              Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives.
               </p>
             </div>
           </div>
