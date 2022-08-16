@@ -117,8 +117,7 @@ To make sure that all parameters are set to valid values, that are also consiste
 with each other, you can use a tool that validates your input file. 
 
 **To create the SNS parameter yaml file and validate it, follow the steps
-[Defining the initial parameters for the SNS]**
-// todo : add link
+'Defining the initial parameters for the SNS'.** <!-- TODO: add link -->
 
 To give you an overview, these are the categories of parameters that you can set:
 1. Parameters of the _SNS governance canister_. These are parameters of the governance
