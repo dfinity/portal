@@ -102,13 +102,13 @@ Finally, the positive network effects that tokenomics can have are of course
 also in the interest of the investors whose tokens have an increased value if
 the project is successful.
 
-### How this fits with the Web3 vision
+<!--
+### How this fits with the Web3 vision [todo: Ais might have a go on this]
 => SNS introduced decentralization and tokenization
-[todo: Ais might have a go on this]
 * dapps are on chain end-to-end
 * dapps are user-owned
 * dapps are user-controlled
-
+-->
 
 ## How to deploy and maintain a DAO
 
