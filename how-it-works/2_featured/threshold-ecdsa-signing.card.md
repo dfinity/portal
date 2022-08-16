@@ -1,6 +1,6 @@
 ---
 title: Threshold ECDSA Signing
-abstract: This feature will enable canister smart contracts to sign with regard to an ECDSA public key while its host subnet has a threshold shared secret key.
+abstract: This feature will enable canister smart contracts to sign with regard to an ECDSA public key while their host subnet has a threshold shared secret key.
 coverImage: /img/how-it-works/threshold-ecdsa-signing.600x300.jpg
 ---
 
