@@ -11,5 +11,3 @@ In a first step, P2P ensures that it is broadcast to a sufficiently large set of
 A message is subject to several checks, and a number of conditions must be satisfied for it to make it into the Induction Pool for execution to ensure that the right parties are charged and rewarded for its processing.
 
 1. [Learn more](/how-it-works/ingress-message-lifecycle/)
-
-
