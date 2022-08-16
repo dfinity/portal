@@ -2166,7 +2166,7 @@ If the hostname was safe, the HTTP Gateway performs _certificate validation_:
 +
 The decoded body is the body of the HTTP response (in particular, after assembling streaming chunks), decoded according to the `Content-Encoding` header, if present. Supported encodings for `Content-Encoding` are `gzip` and `deflate.`
 
-::: warn
+:::warn
 The certification protocol only covers the mapping from request URL to response body. It completely ignores the request method and headers, and does not cover the response headers and status code.
 :::
 
