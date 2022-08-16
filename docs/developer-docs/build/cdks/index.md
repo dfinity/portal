@@ -14,7 +14,7 @@ This section of the docs covers the following CDKs, ordered by languages:
 
 - [Motoko by DFINITY](./motoko-dfinity/motoko.md)
 - Rust
-  - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/rust-intro.md)
+  - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/index.md)
 
 Besides those, there exist a lot of other community-supported CDKs:
 - AssemblyScript
