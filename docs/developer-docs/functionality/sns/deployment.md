@@ -35,7 +35,8 @@ To test this, make an SNS proposal to upgrade one of the dapp canisters to
 a new wasm version.
 Then, ensure that sufficiently many initial neurons (developer and airdrop
 neurons) vote on the proposal so that it is adopted.
-In this way, confirm that the proposal has been upgraded. 
+Then, confirm that the proposal has been executed by checking that the dapp has been
+upgraded. 
 
 You can learn what command to use to make an SNS proposal 'here' 
 <!-- TODO: SNS quill documentation to make proposal and link to it-->
@@ -99,7 +100,7 @@ you can ask the NNS community to start the sale.
 To do so you submit an NNS proposal as described 'here' <!-- TODO: add link -->
 
 Note that anyone can send such a proposal, but as the original developer
-of the dapp you probably want to make sure that such a proposal is set.
+of the dapp you probably want to make sure that such a proposal is submitted.
 
 #### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the orginal dapp 
