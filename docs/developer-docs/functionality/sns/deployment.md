@@ -127,12 +127,3 @@ To make such a proposal, you can use the following dfx command:
 ``` 
 TODO 
 ```  
-
-
-
-
-
-
-
-
-
