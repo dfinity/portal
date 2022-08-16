@@ -1,6 +1,6 @@
 ---
 title: Direct Integration with Bitcoin
-abstract: The Internet Computer protocol will be extended to add smart contracts to Bitcoin.
+abstract: The Internet Computer protocol has been extended to add smart contracts to Bitcoin.
 coverImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
 ---
 
@@ -8,7 +8,7 @@ coverImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
 
 # Direct Integration with Bitcoin
 
-The Internet Computer protocol will be extended to add smart contracts to Bitcoin. An application of [Chain Key cryptography](/how-it-works/chain-key-technology) will give each canister their own Bitcoin public key, thus directly integrating the Internet Computer blockchain with the Bitcoin network. In particular, smart contracts on the Internet Computer will be able to hold, send and receive their own Bitcoin.
+The Internet Computer protocol has been extended to add smart contracts to Bitcoin. An application of [Chain Key cryptography](/how-it-works/chain-key-technology) gives each canister their own Bitcoin public key, thus directly integrating the Internet Computer blockchain with the Bitcoin network. In particular, smart contracts on the Internet Computer will be able to hold, send and receive their own Bitcoin.
 
 1. [Learn more](/how-it-works/bitcoin-integration)
 

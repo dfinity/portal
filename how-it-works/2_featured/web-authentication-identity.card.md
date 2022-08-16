@@ -1,6 +1,6 @@
 ---
 title: "Internet Identity"
-abstract: The Internet Computer blockchain has replaced usernames and passwords with a more advanced and much more secure method of cryptographic authentication
+abstract: The Internet Computer blockchain replaced usernames and passwords with a more advanced and secure method of cryptographic authentication
 coverImage: /img/how-it-works/web-authentication-identity.600x300.jpg
 ---
 
