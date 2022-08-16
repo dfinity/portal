@@ -85,7 +85,7 @@ To use the Candid web interface to test the \`counter \`canister:
 
     The browser displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file.
 
-    ![candid ui select id](../../_attachments/candid-ui-select-id.png)
+    ![candid ui select id](../_attachments/candid-ui-select-id.png)
 
     If you aren’t sure which canister identifier to use, you can run the `dfx canister id` command to look up the identifier for a specific canister name.
 
