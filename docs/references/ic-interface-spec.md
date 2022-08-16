@@ -1520,7 +1520,7 @@ It is possible to use the management canister via external requests (a.k.a. ingr
 
 ### Interface overview {#ic-candid}
 
-The [interface description](_attachments/ic.did), in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality.
+The [interface description](_attachments/ic.did) below, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality.
 
 ``` candid name= ic-interface file file=_attachments/ic.did
 ```
@@ -2057,7 +2057,7 @@ A HTTP request by an HTTP client is handled by these steps:
 
 ### Candid interface {#http-gateway-interface}
 
-The following interface description, in https://github.com/dfinity/candid/blob/master/spec/Candid.md[Candid syntax], describes the expected Canister interface.
+The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the expected Canister interface.
 
 ``` candid name= ic-interface file file=_attachments/http-gateway.did
 ```
@@ -2074,15 +2074,15 @@ The Gateway needs to know the canister id of the canister to talk to, and obtain
 1. Check that the hostname, taken from the `Host` field of the HTTP request, is of the form `<name>.raw.ic0.app` or `<name>.ic0.app`, or fail.
 
 2. If the `<name>` is in the following table, use the given canister ids:
-+
-.Canister hostname resolution
-|============================================
+
+|Canister hostname resolution
+|--------------------------------------------
 | Hostname     | Canister id
 | `identity`   | `rdmx6-jaaaa-aaaaa-aaadq-cai`
 | `nns`        | `qoctq-giaaa-aaaaa-aaaea-cai`
 | `dscvr`      | `h5aet-waaaa-aaaab-qaamq-cai`
 | `personhood` | `g3wsl-eqaaa-aaaan-aaaaa-cai`
-|============================================
+|--------------------------------------------
 
 3. Else, if `<name>` is a valid textual encoding of a principal, use that principal as the canister id.
 
@@ -2154,7 +2154,7 @@ If the hostname was safe, the HTTP Gateway performs _certificate validation_:
 
 2. The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
 
-3. The `certificate` must be a valid certificate as per [certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister’s <<state-tree-certified-data,certified data>>.
+3. The `certificate` must be a valid certificate as per [certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister’s [certified data](#state-tree-certified-data).
 
 4. The `tree` must be a hash tree as per [certification encoding](#certification-encoding).
 
