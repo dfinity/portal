@@ -2057,10 +2057,10 @@ A HTTP request by an HTTP client is handled by these steps:
 
 ### Candid interface {#http-gateway-interface}
 
-The following interface description, in https://github.com/dfinity/candid/blob/master/spec/Candid.md[Candid syntax], describes the expected Canister interface. You can also link:{attachmentsdir}/http-gateway.did[download the file].
-----
-include::{example}http-gateway.did[]
-----
+The following interface description, in https://github.com/dfinity/candid/blob/master/spec/Candid.md[Candid syntax], describes the expected Canister interface.
+
+``` candid name= ic-interface file file=_attachments/http-gateway.did
+```
 
 Only canisters that use the “Upgrade to update calls” feature need to provide the `http_request_update` method.
 
@@ -2132,7 +2132,7 @@ HTTP Gateways may add additional headers. In particular, the following headers m
 
 ### Response body streaming {#http-gateway-streaming}
 
-The HTTP Gateway protocol has provisions to transfer further chunks of the body data from the canister to the HTTP Gateway, to overcome the message limit of the Internet Computer. This streaming protocol is independent of any possible streaming of data between the HTTP Gateway and the HTTP client. The gateway may assemble the response in whole before passing it on, or pass the chunks on directly, on the TCP or HTTP level, as it sees fit. When the Gateway is <<http-gateway-certification,certifying the response>>, it must not pass on uncertified chunks.
+The HTTP Gateway protocol has provisions to transfer further chunks of the body data from the canister to the HTTP Gateway, to overcome the message limit of the Internet Computer. This streaming protocol is independent of any possible streaming of data between the HTTP Gateway and the HTTP client. The gateway may assemble the response in whole before passing it on, or pass the chunks on directly, on the TCP or HTTP level, as it sees fit. When the Gateway is [certifying the response](#http-gateway-certification), it must not pass on uncertified chunks.
 
 If the `streaming_strategy` field of the `HttpResponse` is set, the HTTP Gateway then uses further query calls to obtain further chunks to append to the body:
 
