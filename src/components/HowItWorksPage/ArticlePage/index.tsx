@@ -36,7 +36,7 @@ function Index() {
             >
               <Breadcrumbs
                 links={[
-                  { text: "How it works", href: "/howitworks" },
+                  { text: "How it works", href: "/how-it-works" },
                   {
                     text: article.title,
                     href: location.pathname,

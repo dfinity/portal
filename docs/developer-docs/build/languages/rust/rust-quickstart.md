@@ -176,26 +176,32 @@ To register, build, and deploy:
 
     The `dfx deploy` command output displays information about each of the operations it performs similar to the following excerpt:
 
-        Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-        Deploying all canisters.
-        Creating canisters...
-        Creating canister "rust_hello"...
-        "rust_hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "rust_hello_assets"...
-        "rust_hello_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        Building canisters...
-        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_hello"
-            Updating crates.io index
-           Compiling unicode-xid v0.2.2
-           ...
-        Building frontend...
-        Installing canisters...
-        Creating UI canister on the local network.
-        The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister rust_hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        ...
-        Deployed canisters.
+    ``` bash
+    Creating a wallet canister on the local network.
+    The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
+    Deploying all canisters.
+    Creating canisters...
+    
+    Creating canister rust_hello_backend...
+    rust_hello_backend canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
+    
+    Creating canister rust_hello_frontend...
+    rust_hello_frontend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
+    
+    Building canisters...
+
+    ...
+
+    Deployed canisters.
+    URLs:
+
+    Frontend canister via browser
+        rust_hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+
+    Backend canister via Candid interface:
+        rust_hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+    ```
+
 
 ## Test the dapp
 
@@ -206,10 +212,10 @@ To test the deployed dapp locally:
 2.  Call the `greet` function in the dapp by running the following command:
 
     ``` bash
-    dfx canister call rust_hello greet world
+    dfx canister call rust_hello_backend greet world
     ```
 
-3.  Verify that the call to the `rust_hello` canister `greet` function returns a text message `("Hello, world!")`.
+3.  Verify that the call to the `rust_hello_backend` canister `greet` function returns a text message `("Hello, world!")`.
 
 ## Stop the local execution environment
 

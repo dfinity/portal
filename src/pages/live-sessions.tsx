@@ -78,6 +78,18 @@ function LiveSessionsPage(): JSX.Element {
     setInitalized(true);
   }, [liveSessions, setPast, setUpcoming]);
 
+  function scrollToForm() {
+    window.scroll({
+      top: formRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  }
+  useEffect(() => {
+    if (location.hash === "#subscribe") {
+      scrollToForm();
+    }
+  }, [initalized]);
+
   return (
     <Layout
       title="Live Sessions"
@@ -91,7 +103,7 @@ function LiveSessionsPage(): JSX.Element {
             className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[00px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
             variants={transitions.item}
           />
-          <section className="max-w-page relative px-6 pt-12 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-48 ">
+          <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
             <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
@@ -109,12 +121,7 @@ function LiveSessionsPage(): JSX.Element {
               <motion.div className="" variants={transitions.item}>
                 <button
                   className="button-primary text-center"
-                  onClick={() =>
-                    window.scroll({
-                      top: formRef.current.offsetTop,
-                      behavior: "smooth",
-                    })
-                  }
+                  onClick={scrollToForm}
                 >
                   Alerts for New Session Registrations
                 </button>
@@ -436,7 +443,7 @@ function LiveSessionsPage(): JSX.Element {
         </AnimateSpawn>
 
         {/* This must not be invisible */}
-        <div ref={formRef}></div>
+        <div ref={formRef} id="subscribe"></div>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}

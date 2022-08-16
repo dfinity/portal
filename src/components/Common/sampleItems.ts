@@ -1,6 +1,63 @@
 export const sampleItems = [
   {
     index: 0,
+    title: "Bitcoin",
+    image: require("../../../static/img/samples/bitcoin.png").default,
+    domains: ["DeFi"],
+    languages: ["Motoko", "Rust"],
+    level: ["Advanced"],
+    contentType: ["Code Samples", "Documentation", "Live Demos"],
+    body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
+    links: {
+      action: {
+        text: "Get code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
+      },
+      motoko: "https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
+      docs: "/docs/current/samples/deploying-your-first-bitcoin-dapp",
+    },
+  },
+  {
+    index: 1,
+    title: "Threshold ECDSA",
+    image: require("../../../static/img/samples/t-ecdsa.png").default,
+    domains: ["Global"],
+    languages: ["Motoko", "Rust"],
+    level: ["Advanced"],
+    contentType: ["Code Samples", "Documentation", "Live Demos"],
+    body: "Build a threshold ECDSA test key on a subnet.",
+    links: {
+      action: {
+        text: "Get code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
+      },
+      motoko: "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
+      docs: "/docs/current/samples/t-ecdsa-sample",
+    },
+  },
+  {
+    index: 2,
+    title: "Canister HTTP Calls",
+    image: require("../../../static/img/samples/exchangeRate.png").default,
+    domains: ["HTTP", "Exchange", "Global", "Website"],
+    languages: ["Rust", "Javascript"],
+    level: ["Intermediate"],
+    contentType: ["Documentation"],
+    highlights: ["HTTP", "Exchange", "Website", "Global", "Intermediate"],
+    body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
+    links: {
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+      },
+      docs: "docs/current/samples/http-requests-exchange-rates",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
+    },
+  },
+  {
+    index: 3,
     title: "Hello World",
     image: require("../../../static/img/samples/helloWorld.png").default,
     domains: ["Website"],
@@ -20,7 +77,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 1,
+    index: 4,
     title: "Static Website",
     image: require("../../../static/img/samples/staticWebsite.png").default,
     domains: ["Website", "Global"],
@@ -35,7 +92,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 2,
+    index: 5,
     title: "Basic Dex",
     image: require("../../../static/img/samples/basicDex.png").default,
     domains: ["DeFi", "Website"],
@@ -56,7 +113,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 3,
+    index: 6,
     title: "NFT Minting",
     image: require("../../../static/img/samples/nftMinting.png").default,
     domains: ["NFT", "Gaming"],
@@ -65,17 +122,13 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
-      action: {
-        text: "Get code",
-        to: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
-      },
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       docs: "/docs/current/samples/nft",
       youtube: "https://youtu.be/1po3udDADp4",
     },
   },
   {
-    index: 4,
+    index: 7,
     title: "Basic DAO",
     image: require("../../../static/img/samples/basicDAO.png").default,
     domains: ["Global", "DeFi"],
@@ -84,10 +137,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
       rust: "https://github.com/dfinity/examples/tree/master/rust/basic_dao",
@@ -96,7 +145,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 5,
+    index: 8,
     title: "Encrypted note-taking",
     image: require("../../../static/img/samples/encryptedNoteTaking.png")
       .default,
@@ -106,10 +155,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
       rust: "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust",
@@ -119,7 +164,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 6,
+    index: 9,
     title: "Token transfer",
     image: require("../../../static/img/samples/tokenTransfer.png").default,
     domains: ["Global", "DeFi"],
@@ -128,10 +173,6 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
@@ -139,7 +180,7 @@ export const sampleItems = [
     },
   },
   {
-    index: 7,
+    index: 10,
     title: "Actor reference",
     image: require("../../../static/img/samples/actorReference.png").default,
     domains: ["Website"],
@@ -148,16 +189,12 @@ export const sampleItems = [
     contentType: ["Code Samples", "Documentation"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
-      },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/actor_reference",
     },
   },
   {
-    index: 8,
+    index: 11,
     title: "WebGL",
     image: require("../../../static/img/samples/webgl.png").default,
     domains: ["Gaming", "Website", "Global"],
@@ -167,11 +204,7 @@ export const sampleItems = [
     highlights: ["Gaming", "Website", "Global", "Beginner"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      action: {
-        text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template",
-      },
-      docs: "/docs/current/samples/host-unity-webgl",
+      docs: "docs/current/samples/host-unity-webgl",
     },
   },
 ];

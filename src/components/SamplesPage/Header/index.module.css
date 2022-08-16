@@ -1,6 +1,6 @@
 .container {
   width: Min(1100px, 100%);
-  margin: 64px auto 64px 112px;
+  margin: 0 auto 64px 112px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -30,6 +30,6 @@
     line-height: 26px;
   }
   .container {
-    margin: 48px auto;
+    margin: 0 auto 48px;
   }
 }

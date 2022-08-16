@@ -69,7 +69,7 @@ function Samples(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
-          <section className="w-9/10 mx-auto relative lg:my-30">
+          <section className="w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">
             <img
               className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
               src={BGCircle}

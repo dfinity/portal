@@ -11,3 +11,4 @@
 	path = submodules/internetidentity
 	url = https://github.com/dfinity/internet-identity.git
 	branch = main
+
