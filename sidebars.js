@@ -151,6 +151,18 @@ const sidebars = {
             "developer-docs/build/frontend/custom-frontend",
           ],
         },
+        {
+          type: "category",
+          label: "Candid",
+          link: {
+            type: "doc",
+            id: "developer-docs/build/candid/candid-intro",
+          },
+          items: [
+            "developer-docs/build/candid/candid-concepts",
+            "developer-docs/build/candid/candid-howto",
+          ],
+        },
         "developer-docs/build/troubleshooting",
       ],
     },
