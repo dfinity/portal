@@ -1522,6 +1522,9 @@ It is possible to use the management canister via external requests (a.k.a. ingr
 
 The [interface description](_attachments/ic.did), in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the available functionality.
 
+``` candid name= ic-interface file file=_attachments/ic.did
+```
+
 The binary encoding of arguments and results are as per Candid specification.
 
 ### IC method `create_canister` {#ic-create_canister}
