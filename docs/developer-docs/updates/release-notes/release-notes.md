@@ -1760,7 +1760,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
+-   New [Candid documentation](../../build/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 

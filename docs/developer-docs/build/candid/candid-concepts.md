@@ -142,7 +142,7 @@ service address_book : {
 }
 ```
 
-This annotation indicates that the `get_address` method can be invoked as an IC **query call**. As discussed in [Query and update methods](../../../../concepts/canisters-code.md#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the IC.
+This annotation indicates that the `get_address` method can be invoked as an IC **query call**. As discussed in [Query and update methods](../../../concepts/canisters-code.md#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the IC.
 
 ## Encoding and decoding
 
