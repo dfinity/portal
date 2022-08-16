@@ -9,7 +9,7 @@ the initial SNS parameters in a .yaml file](predeployment.md).
 We assume that you have one developer principal that is compatible
 with both dfx and SNS quill <!-- TODO: explain what this means and link to where
 explained--> that you will use for the following steps.
-We also recommend that before following these steps and launch an
+We also recommend that before following these steps and launching an
 SNS in production, you have [tested the SNS](local-testing.md).
 
 :::
@@ -33,7 +33,7 @@ To do so, use the command as described 'here'.
 #### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. {#step3}
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
 a new wasm version.
-Then, ensure that sufficiently many initial neurons (deveoper and airdrop
+Then, ensure that sufficiently many initial neurons (developer and airdrop
 neurons) vote on the proposal so that it is adopted.
 In this way, confirm that the proposal has been upgraded. 
 
@@ -47,13 +47,13 @@ and how to vote on an SNS proposal 'here'.
 This step is one of the reasons why you should ensure that you can
 reach and get buy in from a majority of the inital neurons. Also, these
 neurons have to be able to vote on SNS proposals, which might require
-the to vote on a command line tool as frontends might only show SNS
+them to vote on a command line tool as frontends might only show SNS
 proposals after the decentralization sale.
 <!-- TODO: make more precise the warning in the launch / choosing parameters part; to also specify that the initial neurons might need to vote on a CLI)-->
 
 :::
 
-#### 4. Remove all other controllers from the dapp cansiter(s)
+#### 4. Remove all other controllers from the dapp canister(s)
 Once you convinced yourself that the dapp canister(s) can be upgraded by
 the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
@@ -83,7 +83,7 @@ to vote on the proposal.
 As in [Step 3](#step3),
 sufficient initial neurons have to vote to reach a majority.
 
-<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all cansiters that you would like to register.-->
+<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would like to register.-->
 
 #### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
@@ -91,12 +91,12 @@ you can repeat
 [Step 3](#step3) 
 at this point.
 
-#### 7. Submit an NNS proposal to start the decentralisation sale.
+#### 7. Submit an NNS proposal to start the decentralization sale.
 At this point, you have handed over the control of your dapp to the Internet
 Computer. 
 To make sure that the Internet Computer starts the SNS decentralization sale,
 you can ask the NNS community to start the sale.
-To do so you send submit an NNS proposal as described 'here' <!-- TODO: add link -->
+To do so you submit an NNS proposal as described 'here' <!-- TODO: add link -->
 
 Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is set.
@@ -104,14 +104,13 @@ of the dapp you probably want to make sure that such a proposal is set.
 #### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the orginal dapp 
 developer to launch the SNS!
-The dapp has been handed over the IC and the NNS is voting on whether 
+The dapp has been handed over to the IC and the NNS is voting on whether 
 the SNS should be launched.
 If the proposal is adopted, the SNS decentralization sale will be 
 started with the configurations that you have defined in the
 [initialization file](predeployment.md).
-If the proposal is rejected, the dapp canisters' controllers are set
-back to the developers.
-In more details, there are set to the developer principals that you
+If the proposal is rejected, the dapp canisters' controllers are automatically set
+back to the developer principals that you
 have defined in the [initialization file](predeployment.md).
 
 During this time you can further upgrade your dapp canister(s), for
