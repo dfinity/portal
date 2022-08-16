@@ -14,7 +14,7 @@ link to a page that provides more details.
 The successful launch of an SNS does not only depend on technical
 aspects. 
 In fact, it is advisable that before taking any technical steps, 
-you take some non-technical preparations steps and define what the SNS
+you take some non-technical preparation steps and define what the SNS
 that you are about to launch should achieve. 
 To motivate this better, let's look at two examples of such non-technical
 considerations in the following.
