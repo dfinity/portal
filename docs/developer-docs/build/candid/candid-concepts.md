@@ -260,6 +260,6 @@ When you compile this program, the Motoko compiler automatically generates a Can
 
 In other languages, like Rust or C, you can still develop your service using the types that are native to that language, for example, using native Rust types. After you develop a service in a language like Rust, however, there’s currently no way to automatically generate the service description in Candid. Therefore, if you write a program for a service in Rust or C, you need to write the Candid interface description manually following the conventions described in the [Candid specification](https://github.com/dfinity/candid).
 
-For examples of how to write Candid service descriptions for Rust programs, see the [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/rust-intro).
+For examples of how to write Candid service descriptions for Rust programs, see the [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../cdks/cdk-rs-dfinity/index.md).
 
 Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [Supported types](../../../references/candid-ref.md) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.

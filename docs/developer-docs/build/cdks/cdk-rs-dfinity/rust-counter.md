@@ -100,7 +100,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../../candid/candid-intro) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update the Candid file for this tutorial:
 

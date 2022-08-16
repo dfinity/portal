@@ -24,7 +24,7 @@ Or via the dapp in a browser, a pop-up window will appear with the message: `Hel
 
 ![Hello](_attachments/frontend-result.png)
 
-Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
+Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/cdks/motoko-dfinity), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
 
 This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl.md) installation.
 

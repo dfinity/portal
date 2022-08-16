@@ -221,6 +221,6 @@ Here are some suggestions for where to go next:
 
 -   [On-chain deployment](network-quickstart) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
--   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../build/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/cdks/motoko-dfinity/overview) to learn about the features and syntax for using Motoko.

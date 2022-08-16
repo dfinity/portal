@@ -49,7 +49,7 @@ const cardsContent = [
   {
     title: "WebAssembly",
     body: "Use any lang that compiles to the VM of the future: Motoko, Rust, C, etc",
-    link: "/docs/current/developer-docs/build/languages/motoko/",
+    link: "/docs/current/developer-docs/build/cdks/motoko-dfinity/",
   },
   {
     title: "Web3 orchestration",
