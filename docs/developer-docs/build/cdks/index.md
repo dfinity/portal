@@ -1,10 +1,28 @@
-# Develop using different languages
+# Canister Development Kits
 
-Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your applications. The two officially supported languages of the Internet Computer are [Motoko](./motoko) and [Rust](./rust/rust-intro.md). Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment. Rust is a powerful and type sound modern programming language with an active developer community. Of course, developers are not required to work in one (or both) of those languages. There are many different [community-supported languages](./other-languages/other-languages-intro.md) available as well.
+To create canisters, it is typical to use a so-called CDK, a Canister Development Kit.
+The CDK's main tasks are to expose the public interface of a canister, manage memory, allowing other canisters to be called, and to interface with the system API.
+Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
+The two officially supported languages of the Internet Computer are [Motoko](./motoko) and [Rust](./rust/rust-intro.md).
+Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
+Rust is a powerful and type sound modern programming language with an active developer community.
+Of course, developers are not required to work in one (or both) of those languages. There are many different community-supported languages available as well, as you can see below in the list of available languages.
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/candid-intro.md) language. What language works behind the candid interface, however, does not matter.
 
-## A comparison between Motoko and Rust
+This section of the docs covers the following CDKs, ordered by languages:
+
+- [Motoko by DFINITY](./motoko-dfinity/motoko.md)
+- Rust
+  - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/rust-intro.md)
+
+Besides those, there exist a lot of other community-supported CDKs:
+- AssemblyScript
+  - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
+- TypeScript
+  - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
+
+### A comparison between Motoko and Rust
 
 To help deciding between languages, here is a comparison of the two most popular languages on the Internet Computer: Motoko and Rust. As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. For a more in-depth comparison, read on.
 
