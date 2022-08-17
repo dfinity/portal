@@ -66,3 +66,10 @@ Here is a description of how a contribution should be made to the developer port
 2. a Pull Request is created from this branch to `master`. the preview is generated and the reviewers can directly check the preview website.
 3. After the Pull Request is merged into master, CI/CD will deploy the contents to the IC. The changes made will appear on the webpage under the version in the dropdown named "Current".
 4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to the IC. The webpage will default to the new "$TAG" version, visible in the versions dropdown, and allow users to view the contents pinned at that tag.
+
+## Community-created Agents and CDKs
+
+The [agents](https://internetcomputer.org/docs/current/developer-docs/build/agents) and [CDKs](https://internetcomputer.org/docs/current/developer-docs/build/cdks) sections should not only contain docs for DFINITY-created agents and CDKs.
+We therefore invite other projects to:
+- link to their own agents or CDKs on the respective index pages (the files to be edited are in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/build/cdks/index.md`)
+- add their own documentation as a folder under `Agents` or `CDKs`

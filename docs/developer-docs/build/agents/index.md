@@ -1,16 +1,29 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
 # Using an Agent
 
-If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract. You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's HTTP interface.
+In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an agent.
+An agent has a few key responsibilities, which make it convenient to work with in your language of choice. 
+If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
+You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's HTTP interface.
+
+## Available Agents
+
+This section of the docs covers the following agents, ordered by languages:
+- JavaScript
+  - [`agent` by DFINITY](./agent-dfinity.md)
+- Rust
+  - [`ic-agent` by DFINITY](./ic-agent-dfinity.md)
+- TypeScript
+  - [`agent` by DFINITY](./agent-dfinity.md)
+
+In addition to those, there are a lot of other community-supported agents:
+- .NET
+  - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
+- Go
+  - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+- Python
+  - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 
 ## Calling a Canister
-
-In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an agent. An agent has a few key responsibilities, which make it convenient to work with in your language of choice. 
-
-A list of agents is available at [other languages -> agents](./languages/other-languages/other-languages-intro#interfacing-with-canisters-agents).
 
 ### 1. Structuring Data
 

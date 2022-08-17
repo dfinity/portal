@@ -11,7 +11,7 @@ Welcome to *the Internet Computer*! We speak of "the" Internet Computer, because
 This document describes this *external* view of the Internet Computer, i.e. the low-level interfaces it provides to dapp developers and users, and what will happen when they use these interfaces.
 
 :::caution
-While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see [Using an Agent](../developer-docs/build/using-an-agent) for developer documentation.
+While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see [Agents](../developer-docs/build/agents/index.md) for developer documentation.
 
 :::
 

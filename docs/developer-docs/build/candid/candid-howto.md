@@ -1,6 +1,6 @@
 # How to
 
-As discussed in [What is Candid?](candid-concepts), Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
+As discussed in [What is Candid?](./candid-concepts.md), Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 
@@ -26,7 +26,7 @@ One of the most common ways you interact with canisters and the IC is by using t
 
 The `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the IC—and, if applicable, a method of the service provided by the smart contract.
 
-When you run the `dfx canister call` command, you can pass arguments to a method by specifying them as [Candid textual values](candid-concepts#textual-values).
+When you run the `dfx canister call` command, you can pass arguments to a method by specifying them as [Candid textual values](./candid-concepts.md#textual-values).
 
 When you pass Candid textual values on the command-line, you can specify multiple argument values separated by commas (`,`) and wrapped inside parentheses. For example, specifying `(42, true)` represents two argument values, where the first argument is the number `42` and the second argument is a boolean value of `true`.
 
@@ -37,7 +37,7 @@ $ dfx canister call counter inc '(42)'
 (43)
 ```
 
-To figure out how to create more complex Candid arguments, please refer to the [Candid Reference](../../../../references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](../../../../references/cli-reference/dfx-canister.md#dfx-canister-call).
+To figure out how to create more complex Candid arguments, please refer to the [Candid Reference](../../../references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](../../../references/cli-reference/dfx-canister.md#dfx-canister-call).
 
 You can also omit the arguments and let `dfx` generate a random value that matches the method type. For example:
 
@@ -49,7 +49,7 @@ Unspecified argument, sending the following random argument:
 (1_543_454_454)
 ```
 
-For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../../../../references/cli-reference) and [dfx canister](../../../../references/cli-reference/dfx-canister) documentation.
+For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../../../references/cli-reference/index.md) and [dfx canister](../../../references/cli-reference/dfx-canister.md) documentation.
 
 ## Interact with a service from a browser
 
@@ -85,7 +85,7 @@ To use the Candid web interface to test the \`counter \`canister:
 
     The browser displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file.
 
-    ![candid ui select id](../../_attachments/candid-ui-select-id.png)
+    ![candid ui select id](../_attachments/candid-ui-select-id.png)
 
     If you aren’t sure which canister identifier to use, you can run the `dfx canister id` command to look up the identifier for a specific canister name.
 
@@ -118,7 +118,7 @@ actor {
 }
 ```
 
-In this example, when the import dependency on the `counter` canister— the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [Supported types](../../../../references/candid-ref.md) reference section.
+In this example, when the import dependency on the `counter` canister— the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [Supported types](../../../references/candid-ref.md) reference section.
 
 The Motoko compiler and `dfx build` command also auto-generate the Candid description for the `hello` canister to allow other canisters or tools to interact with the `hello` canister seamlessly. The generated Candid description is located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
 
@@ -141,7 +141,7 @@ async fn greet() -> String {
 }
 ```
 
-When the import macro on the `counter` canister— the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [Supported types](../../../../references/candid-ref.md) reference section.
+When the import macro on the `counter` canister— the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [Supported types](../../../references/candid-ref.md) reference section.
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file:
 
@@ -153,7 +153,7 @@ service : {
 
 There is also an experimental feature to generate a Candid service description automatically, see this [test case](https://github.com/dfinity/candid/blob/master/rust/candid/tests/types.rs#L99) as an example.
 
-For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/rust-intro).
+For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../cdks/cdk-rs-dfinity/index.md).
 
 ## Interact with a service from JavaScript
 
@@ -170,7 +170,7 @@ import BigNumber from 'bignumber.js';
 })();
 ```
 
-When the import dependency of counter canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js`, by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the `inc` method natively—as if it were a JavaScript function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and JavaScript, you can consult the [Supported types](../../../../references/candid-ref.md) reference section.
+When the import dependency of counter canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js`, by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the `inc` method natively—as if it were a JavaScript function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and JavaScript, you can consult the [Supported types](../../../references/candid-ref.md) reference section.
 
 ## Create a new Candid implementation
 

@@ -1760,7 +1760,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
+-   New [Candid documentation](../../build/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 
@@ -1795,7 +1795,7 @@ The command is only applicable if you received the wallet canister identifier as
     the `WordN` types. Therefore, the wrapping arithmetic operations on
     `WordN` are deprecated and their use will print a warning. For
     information about replacing Word types, see [Word
-    types](../../build/languages/motoko/language-manual#word-types).
+    types](../../build/cdks/motoko-dfinity/language-manual.md#word-types).
 
 -   For values `x` of type `Blob`, an iterator over the elements of the
     blob `x.vals()` is introduced. It works like `x.bytes()`, but
