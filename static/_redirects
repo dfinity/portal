@@ -33,6 +33,7 @@
 /docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
 /docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
 /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat 301
+/docs/current/developer-docs/build/languages/motoko/ /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko 301
 /docs/current/developer-docs/build/languages/motoko/* /docs/current/developer-docs/build/cdks/motoko-dfinity/:splat 301
 /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents/index.md
 /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/index.md
