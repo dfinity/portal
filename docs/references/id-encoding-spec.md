@@ -152,7 +152,7 @@ The final group can consist of a single character. This occurs for the following
 Let `data` be the underlying id as a byte array. Then the encoded id is defined as:
 
 ```
-Encode(data) := Group(LowerCase(Base32(data || CRC32(data))))
+Encode(data) := Group(LowerCase(Base32(CRC32(data) || data)))
 ```
 
 The allowed length of `data` is 0-29 bytes.
