@@ -8,6 +8,4 @@ title: Canister smart contract lifecycle
 
 Here you can see how to create canister smart contracts on the Internet Computer, how to install and upgrade their software, and how to top up canisters with cycles. 
 
-1. [Learn more](/how-it-works/canister-lifecycle/)
-
-
+* [Watch on Youtube](https://www.youtube.com/watch?v=c5nv6vIG3OQ)

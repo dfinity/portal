@@ -150,7 +150,7 @@ function HowItWorks() {
                   alt=""
                 ></img>
                 <div className="p-6">
-                  <h3 className="tw-heading-4 mb-3">{card.title}</h3>
+                  <h3 className="tw-heading-5 mb-3">{card.title}</h3>
                   <div className="tw-paragraph text-black-60 mb-3">
                     {card.abstract}
                   </div>

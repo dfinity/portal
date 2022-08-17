@@ -7,7 +7,7 @@ slug: canister-lifecycle
 
 # Canister smart contract lifecycle
 
-[![Watch youtube video](https://img.youtube.com/vi/c5nv6vIG3OQ/0.jpg)](https://www.youtube.com/watch?v=c5nv6vIG3OQ)
+[![Watch youtube video](https://i.ytimg.com/vi/c5nv6vIG3OQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=c5nv6vIG3OQ)
 
 This talk covers how to create canister smart contracts on the Internet Computer, how to install and upgrade their software, and how to top up canisters with cycles. 
 

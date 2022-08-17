@@ -1,5 +1,5 @@
 ---
-title: "Network Nervous System: Internet Computer Blockchain Governance"
+title: "NNS: Internet Computer Blockchain Governance"
 ---
 
 ![](/img/how-it-works/network-nervous-system-nns.600x300.jpg)
