@@ -7,7 +7,7 @@ slug: direct-integration-with-bitcoin
 
 # Direct Integration with Bitcoin
 
-[![Watch youtube video](https://img.youtube.com/vi/TtVo3krjARI/0.jpg)](https://www.youtube.com/watch?v=TtVo3krjARI)
+[![Watch youtube video](https://i.ytimg.com/vi/TtVo3krjARI/maxresdefault.jpg)](https://www.youtube.com/watch?v=TtVo3krjARI)
 
 The Internet Computer protocol will be extended to add smart contracts to Bitcoin. An application of Chain Key cryptography will give each canister their own Bitcoin public key, thus directly integrating the Internet Computer blockchain with the Bitcoin network. In particular, smart contracts on the Internet Computer will be able to hold, send and receive their own Bitcoin.
 

@@ -7,7 +7,7 @@ slug: response-certification
 
 # Certified Variables
 
-[![Watch youtube video](https://img.youtube.com/vi/3mZHEfICi_U/0.jpg)](https://www.youtube.com/watch?v=3mZHEfICi_U)
+[![Watch youtube video](https://i.ytimg.com/vi/3mZHEfICi_U/maxresdefault.jpg)](https://www.youtube.com/watch?v=3mZHEfICi_U)
 
 Canister smart contracts can declare variables as certified.  Whenever set, these variables will automatically get a Merkle tree certificate, signed by the Internet Computer blockchain. This allows anyone to verify the authenticity of this type of data using the Internet Computer's public key.
 

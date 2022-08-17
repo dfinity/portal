@@ -5,9 +5,9 @@ shareImage: /img/how-it-works/web-authentication-identity.600.jpg
 slug: web-authentication-identity
 ---
 
-# Internet Identity: Anonymizing Blockchain Authentication System
+# Internet Identity
 
-[![Watch youtube video](https://img.youtube.com/vi/9eUTcCP_ELM/0.jpg)](https://www.youtube.com/watch?v=9eUTcCP_ELM)
+[![Watch youtube video](https://i.ytimg.com/vi/9eUTcCP_ELM/maxresdefault.jpg)](https://www.youtube.com/watch?v=9eUTcCP_ELM)
 
 Today, the main means of identity and authentication prevalently used online are usernames and passwords. The Internet Computer blockchain has replaced this model with a more advanced and much more secure method of cryptographic authentication that is more convenient, works across all of a user's devices, and helps to protect user privacy. 
 

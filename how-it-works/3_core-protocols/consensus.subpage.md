@@ -6,8 +6,8 @@ slug: consensus
 ---
 
 # Internet Computer Consensus
-
-[![Watch youtube video](https://img.youtube.com/vi/vVLRRYh3JYo/0.jpg)](https://www.youtube.com/watch?v=vVLRRYh3JYo)
+<!-- https://img.youtube.com/vi/vVLRRYh3JYo/0.jpg -->
+[![Watch youtube video](https://i.ytimg.com/vi/vVLRRYh3JYo/maxresdefault.jpg)](https://www.youtube.com/watch?v=vVLRRYh3JYo)
 
 The Internet Computer blockchain runs on a network of nodes in independent data centers located around the world. In each of its subnet blockchains, the participating nodes must process the same messages in the same order to ensure that they achieve the same state. To this end, the Internet Computer relies on a novel consensus protocol, as described in this presentation.
 
