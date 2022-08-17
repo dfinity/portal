@@ -6,9 +6,9 @@ import CodeBlock from '@theme/CodeBlock';
 <!--TODO-content: -->
 <Tabs>
   <TabItem value="FE" label='SNS Frontend'>
-Blub
+SNS Frontend Text
   </TabItem>
   <TabItem value="quill" label='SNS quill'>
-Blub2
+sns-quill Text
   </TabItem>
 </Tabs>
