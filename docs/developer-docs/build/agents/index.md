@@ -15,7 +15,7 @@ This section of the docs covers the following agents, ordered by languages:
 - TypeScript
   - [`agent` by DFINITY](./agent-dfinity.md)
 
-Besides those, there exist a lot of other community-supported agents:
+In addition to those, there are a lot of other community-supported agents:
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
 - Go
