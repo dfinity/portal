@@ -21,7 +21,7 @@ For more information on how to participate in the SNS decentralization sale, we 
 If you want to use quill, you also need to download sns-quill as explained
 [here](https://github.com/dfinity/sns-quill#download).
 
-## Getting SNS neurons {#get-neuron}
+## Getting SNS neurons {#getting-neuron}
 <!-- TODO-content:
 Before participating, you need a neuron.
 Two ways to get one
@@ -30,7 +30,7 @@ Two ways to get one
 2) (once liquid tokens) have SNS tokens and stake them.
 -->
 
-### Adding `hot keys' to neurons from the decentralization sale
+### Adding `hot keys' to neurons from the decentralization sale {#adding-hot-key}
 <!--  TODO-content:
 In the initial version, can participate in the sale on the FE and will see the neurons.
 Can add hot key (explain what that is) but cannot do much more yet.
@@ -47,15 +47,15 @@ Then explain here how to add a hot key to allow other principals to manage the n
   </TabItem>
 </Tabs>
 
-### Staking an SNS neuron
+### Staking an SNS neuron {#staking-neuron}
 <!-- TODO-content: Initially only possible on quill -->
 
 
-## Voting on SNS proposals
+## Voting on SNS proposals {#voting-on-proposal}
 <!-- TODO-content: Initially only possible on quill -->
 
 
-## How to submit an SNS proposals
+## How to submit an SNS proposals {#submitting-proposal}
 As with the NNS, this is currently only possible by using command line tools such as
 sns-quill.
 <!-- TODO-content: -->
