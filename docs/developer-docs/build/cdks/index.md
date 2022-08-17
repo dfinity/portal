@@ -1,7 +1,7 @@
 # Canister Development Kits
 
 To create canisters, it is typical to use a so-called CDK, a Canister Development Kit.
-The CDK's main tasks are to expose the public interface of a canister, manage memory, allowing other canisters to be called, and to interface with the system API.
+The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API.
 Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 The two officially supported languages of the Internet Computer are [Motoko](./motoko-dfinity/motoko.md) and [Rust](./cdk-rs-dfinity/index.md).
 Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
