@@ -37,7 +37,7 @@
 /docs/developer-docs/build/languages/other-languages/* /docs/developer-docs/build/agents/index.md
 /docs/developer-docs/build/languages/rust/* /docs/developer-docs/build/cdks/cdk-rs-dfinity/index.md
 /docs/developer-docs/build/languages/work-with-languages /docs/developer-docs/build/agents/index.md
-/docs/developer-docs/build/languages/other-languages/* docs/developer-docs/build/agents/index.md
+/docs/developer-docs/build/languages/other-languages/* /docs/developer-docs/build/agents/index.md
 /docs/developer-docs/build/using-an-agent docs/developer-docs/build/agents/index.md
 /docs/developers-guide/about-this-guide.html /docs/current/developer-docs/build/language/motoko/about-this-guide.html
 /docs/developers-guide/basic-syntax-rules.html /docs/current/developer-docs/build/language/motoko/basic-syntax-rules.html
