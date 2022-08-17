@@ -6,19 +6,15 @@ that define the goals for the SNS, in a next step you can
 choose the initial parameters that the SNS will be launched with, such as who 
 will get how many SNS tokens in the beginning.
 
-Before going into the details on how these parameters can be set, let us first
-understand how to get the right tools and generate the right principals to set the
-parameters. 
-Also, to understand how the parameters should be set, let us understand how an SNS
-with a decentralization sale is launched on a high level and which 
-parameters can be set.
+Before going into the details on how these parameters can be set, let us first 
+understand how an SNS with a decentralization sale is launched on a high level.
+Then, let us understand how to get the right tools and generate the right
+principals to set the parameters.
+Finally, we will then cover which parameters can be set and how this is done.
+
 We refer to the next pages for learning the detailed actions that are required 
 [to test the SNS launch](./local-testing.md) and to 
 [initiate an SNS launch in production](./deployment.md).
-
-## Getting the tools for launching an SNS {#tools}
-
-## Preparing the principals needed in the initial parameters {#principals}
 
 
 ## Understanding the SNS Launch process {#understand-launch}
@@ -110,6 +106,28 @@ An SNS is launched in the following stages:
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
 
+## Getting the tools for launching an SNS {#tools}
+To set the initial parameters for your SNS, but also to test and launch the SNS
+afterwards, you require some tools.
+Let us next learn which tools there are and how you can install them.
+
+First, you will need a command line tool that will help you initialize and deploy
+the SNS.
+This tool is called _SNS CLI_ and you can learn how to deploy it
+[here](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli#deployment).
+<!--TODO-CLI/dfx: adjust in case we have the dfx tool ready -->
+
+Second, you will need _sns-quill_, another command line tool that allows you to
+interact with the SNS canisters. 
+sns-quill supports cold wallets (e.g., air-gapped computers) and therefore allows for a 
+more secure interaction with the SNS canisters than other options.
+Please follow the steps [here](https://github.com/dfinity/sns-quill#download) to download
+and build the tool.
+
+## Preparing the principals needed in the initial parameters {#principals}
+There are two kinds of principals that are needed in the SNS launch.
+First, as explained more in the [next section](#inital-neurons), 
+you can define initial neurons that already exist when the SNS is  
 
 ## Setting the SNS parameters {#setting-parameters}
 As mentioned above, the first step in launching an SNS is to choose the parameters that
@@ -167,8 +185,9 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
       the future.
       
 All developer and airdrop tokens are distributed to the defined principals at
-genesis in neurons called the developer neurons and the airdrop neurons,
-respectively. All developers, airdrop principals, and the sale participants receive
+genesis in neurons. We call them _developer neurons_ and the _airdrop neurons_,
+respectively, and refer to all these neurons as the _initial neurons_.{#inital-neurons}
+All developers, airdrop principals, and the sale participants receive
 their neurons as a basket of neurons with different dissolve delays.
 The neurons of all these parties have the same distribution of dissolve
 delays.

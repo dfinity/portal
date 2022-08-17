@@ -36,7 +36,7 @@ voting rewards are distributed to users that participate in SNS
 governance and how often these rewards are distributed.
 Choosing these parameters entails non-technical considerations,
 such as deciding on a tokenomics plan that defines in what ways
-the SNS tokens will be used and what behaviors should be incentiviced.
+the SNS tokens will be used and what behaviors should be incentivised.
 
 These examples show that before diving into the technical details, you 
 may want to spend some time defining non-technical goals of the SNS you
@@ -47,16 +47,15 @@ we list a few of them on
 
 ### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
-you are ready for the more technial preparations.
+you are ready for the more technical preparations.
 A main goal of this step is to translate the previously defined high level
 goals in to parameters and configurations that can be set in
 the SNS launch.
-To specify these parameters and also in preparation for the next steps,
-you will need to get some tools and set up / collect some principals
-identities.
-Also, to set sensible parameters, it helps to first understand on a
+To specify these parameters it helps to first understand on a
 high level how the SNS launch proceeds.
-We explain all these more teachnical aspects of the preparation
+Also, you will need to get some tools and set up / collect some principals
+identities.
+We explain all these more technical aspects of the SNS launch preparation
 on [this page](./predeployment.md).
 
 ### Step 3: Testing the SNS
