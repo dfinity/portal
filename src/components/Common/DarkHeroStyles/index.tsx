@@ -1,6 +1,5 @@
+import { css } from "@site/src/utils/dummy-css";
 import React from "react";
-
-const css = (strings) => strings.join("");
 
 export default () => {
   return (
