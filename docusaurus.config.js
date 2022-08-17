@@ -16,6 +16,7 @@ const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const teamInformationPlugin = require("./plugins/team-information");
@@ -45,6 +46,7 @@ const config = {
     showcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
   ],
