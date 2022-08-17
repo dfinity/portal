@@ -74,7 +74,7 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
               dangerouslySetInnerHTML={{ __html: card.body }}
               className="
               prose 
-              prose-img:m-0 
+              prose-img:m-0 prose-img:w-full prose-img:rounded-[10px]
               prose-h3:tw-heading-5 
               prose-h4:tw-heading-6
               prose-h5:tw-heading-7
@@ -86,7 +86,6 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
 
 
               prose-h2:tw-heading-4 prose-h2:md:tw-heading-3 prose-h2:my-8
-              prose-img:w-full
               prose-table:tw-paragraph
               prose-td:p-2
               prose-th:p-2
@@ -126,7 +125,9 @@ function HowItWorks() {
                 How the Internet Computer Works
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives.
+                Learn how the Internet Computer blockchain works and explore its
+                technology, open-source repositories, in-depth video academy
+                sessions, white papers, publications, and long-form deep dives.
               </p>
             </div>
           </div>

@@ -2,16 +2,31 @@ const marked = require("marked");
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const { isLinkExternal } = require("./utils/links");
 
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
 
-const renderer = {
-  heading(text, level) {
-    // h1 needs to become h3, etc.
-    level = Math.min(6, level + 2);
-
-    return `<h${level}>${text}</h${level}>`;
-  },
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+renderer.link = (href, title, text) => {
+  let html = linkRenderer.call(renderer, href, title, text);
+  if (isLinkExternal(href)) {
+    // this is an external link, add target="_blank"
+    html = html.replace(
+      /^<a /,
+      `<a target="_blank" rel="noreferrer noopener" `
+    );
+  }
+  if (href.startsWith("https://www.youtube.com/") && text.startsWith("<img ")) {
+    // this is a youtube thumbnail, add class name
+    html = html.replace(/^<a /, `<a class="markdown-youtube-thumbnail" `);
+  }
+  return html;
+};
+renderer.heading = (text, level) => {
+  // h1 needs to become h3, etc.
+  level = Math.min(6, level + 2);
+  return `<h${level}>${text}</h${level}>`;
 };
 
 /** @type {import('@docusaurus/types').PluginModule} */
@@ -19,8 +34,6 @@ const howItWorksCardsPlugin = async function () {
   return {
     name: "howitworks-cards",
     async loadContent() {
-      marked.use({ renderer });
-
       const dirs = fs
         .readdirSync(baseDir, {
           withFileTypes: true,
@@ -58,7 +71,7 @@ const howItWorksCardsPlugin = async function () {
             );
             return {
               title: meta.data.title,
-              body: marked.parse(meta.content),
+              body: marked.parse(meta.content, { renderer }),
               abstract: meta.data.abstract,
               coverImage: meta.data.coverImage,
             };
@@ -71,15 +84,6 @@ const howItWorksCardsPlugin = async function () {
     async contentLoaded({ content, actions }) {
       const { setGlobalData } = actions;
       setGlobalData(content);
-      // console.log(JSON.stringify(content, null, 2));
-      // process.exit();
-      // content.articles.map((article) => {
-      //   addRoute({
-      //     path: "/how-it-works/" + article.slug,
-      //     component: "@site/src/components/HowItWorksPage/ArticlePage/",
-      //     exact: true,
-      //   });
-      // });
     },
   };
 };

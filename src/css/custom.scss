@@ -283,6 +283,26 @@ div[class^="announcementBarContent"] {
   border: 4px solid var(--ifm-background-color);
 }
 
+.markdown-youtube-thumbnail {
+  position: relative;
+  display: block;
+}
+.markdown-youtube-thumbnail img {
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 16 / 9;
+}
+.markdown-youtube-thumbnail:after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background-image: url(/img/youtube-play-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+
 @import "typography.css";
 
 @tailwind base;

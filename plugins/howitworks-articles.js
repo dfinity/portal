@@ -2,16 +2,32 @@ const marked = require("marked");
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
-
+const { isLinkExternal } = require("./utils/links");
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
+
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+renderer.link = (href, title, text) => {
+  let html = linkRenderer.call(renderer, href, title, text);
+  if (isLinkExternal(href)) {
+    // this is an external link, add target="_blank"
+    html = html.replace(
+      /^<a /,
+      `<a target="_blank" rel="noreferrer noopener" `
+    );
+  }
+  if (href.startsWith("https://www.youtube.com/") && text.startsWith("<img ")) {
+    // this is a youtube thumbnail, add class name
+    html = html.replace(/^<a /, `<a class="markdown-youtube-thumbnail" `);
+  }
+  return html;
+};
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksArticlesPlugin = async function () {
   return {
     name: "howitworks-articles",
     async loadContent() {
-      marked.use({ renderer: null });
-
       const dirs = fs
         .readdirSync(baseDir, {
           withFileTypes: true,
@@ -39,7 +55,7 @@ const howItWorksArticlesPlugin = async function () {
               abstract: meta.data.abstract,
               shareImage: meta.data.shareImage,
               slug: meta.data.slug,
-              content: marked.parse(meta.content),
+              content: marked.parse(meta.content, { renderer }),
             };
           })
         );
