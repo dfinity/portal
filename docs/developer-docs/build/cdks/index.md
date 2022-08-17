@@ -5,7 +5,7 @@ The CDK's main tasks are to expose the public interface of a canister, manage me
 Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 The two officially supported languages of the Internet Computer are [Motoko](./motoko-dfinity/motoko.md) and [Rust](./cdk-rs-dfinity/index.md).
 Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-Rust is a powerful and type sound modern programming language with an active developer community.
+Rust is a powerful and modern type-sound programming language with an active developer community.
 Of course, developers are not required to work in one (or both) of those languages. There are many different community-supported languages available as well, as you can see below in the list of available languages.
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](../candid/candid-intro.md) language. What language works behind the candid interface, however, does not matter.
