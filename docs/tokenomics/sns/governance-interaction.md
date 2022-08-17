@@ -19,11 +19,11 @@ TEST [reference](./../../developer-docs/functionality/sns/deployment.md/#step3)
 
 
 
-## Prerequisites
+## Prerequisites 
 If you want to use quill, you also need to download sns-quill as explained
 [here](https://github.com/dfinity/sns-quill#download).
 
-## Getting SNS neurons 
+## Getting SNS neurons {#get-neuron}
 <!-- TODO:
 Before participating, you need a neuron.
 Two ways to get one
@@ -41,11 +41,12 @@ Can add hot key (explain what that is) but cannot do much more yet.
  
   </TabItem>
   <TabItem value="quill-get-neuron" label='SNS quill'>
-TEST [reference](.)
+
   </TabItem>
 </Tabs>
 
 ### Staking an SNS neuron
+<!-- Initially only possible on quill -->
 
 ## Stake SNS tokens in a neuron
 <Tabs>
