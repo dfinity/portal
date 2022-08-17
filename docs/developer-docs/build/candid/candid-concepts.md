@@ -55,7 +55,7 @@ Candid is a strongly typed system with a set of types that canonically cover mos
 
 -   The special `null`, `reserved` and `empty` types.
 
-All types are described in detail in the [Reference](../../../references/candid-ref) section.
+All types are described in detail in the [Reference](../../../references/candid-ref.md) section.
 
 The philosophy behind this set of types is that they are sufficient to describe the *structure* of data, so that information can be encoded, passed around and decoded, but intentionally do not describe *semantic* constraints beyond what’s needed to describe the representation. For example, there’s no way to express that a number should be even, that a vector has a certain length, or that the elements of a vector are sorted.
 
@@ -180,7 +180,7 @@ Services can safely evolve in the following ways:
 
 -   Existing result types may be *changed*, but only to a *subtype* of the previous type.
 
-For information about the supertypes and subtypes of a given type, see the corresponding [reference](../../../references/candid-ref) section for that type.
+For information about the supertypes and subtypes of a given type, see the corresponding [reference](../../../references/candid-ref.md) section for that type.
 
 Let’s look at a concrete example of how a service might evolve. Consider a service with the following API:
 

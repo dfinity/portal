@@ -1,6 +1,6 @@
 # How to
 
-As discussed in [What is Candid?](candid-concepts), Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
+As discussed in [What is Candid?](./candid-concepts.md), Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the `dfx` command-line interface, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 
@@ -26,7 +26,7 @@ One of the most common ways you interact with canisters and the IC is by using t
 
 The `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the IC—and, if applicable, a method of the service provided by the smart contract.
 
-When you run the `dfx canister call` command, you can pass arguments to a method by specifying them as [Candid textual values](candid-concepts#textual-values).
+When you run the `dfx canister call` command, you can pass arguments to a method by specifying them as [Candid textual values](./candid-concepts.md#textual-values).
 
 When you pass Candid textual values on the command-line, you can specify multiple argument values separated by commas (`,`) and wrapped inside parentheses. For example, specifying `(42, true)` represents two argument values, where the first argument is the number `42` and the second argument is a boolean value of `true`.
 
@@ -49,7 +49,7 @@ Unspecified argument, sending the following random argument:
 (1_543_454_454)
 ```
 
-For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../../../references/cli-reference) and [dfx canister](../../../references/cli-reference/dfx-canister) documentation.
+For more information about using `dfx` and the `dfx canister call` command, see [Command-line reference](../../../references/cli-reference/index.md) and [dfx canister](../../../references/cli-reference/dfx-canister.md) documentation.
 
 ## Interact with a service from a browser
 

@@ -16,9 +16,9 @@ This example consists of the following:
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart.md#download-and-install).
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart.md#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment running on the local computer.
 
@@ -185,12 +185,12 @@ To stop the local canister execution environment:
 
 If you are looking for more information about working with cycles, check out the following related resources:
 
--   [Tokens and cycles (overview)](../../../concepts/tokens-cycles)
+-   [Tokens and cycles (overview)](../../../concepts/tokens-cycles.md)
 
--   [dfx identity (command reference)](../../../references/cli-reference/dfx-identity)
+-   [dfx identity (command reference)](../../../references/cli-reference/dfx-identity.md)
 
 <!-- -   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner) -->
 
--   [Managing cycles (language reference)](../cdks/motoko-dfinity/cycles)
+-   [Managing cycles (language reference)](../cdks/motoko-dfinity/cycles.md)
 
 -   [ExperimentalCycles (base module)](../../../references/motoko-ref/ExperimentalCycles.md)
