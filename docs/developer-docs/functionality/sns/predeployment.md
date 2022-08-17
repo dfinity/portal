@@ -1,4 +1,4 @@
-# Defining the parameters (technical preparation)
+# Technical preparations
 
 After some 
 [non-technical preparations](../../../tokenomics/sns/not-blind/predeployment-considerations.md)
@@ -6,14 +6,22 @@ that define the goals for the SNS, in a next step you can
 choose the initial parameters that the SNS will be launched with, such as who 
 will get how many SNS tokens in the beginning.
 
-To understand this better, let’s first understand how an SNS
+Before going into the details on how these parameters can be set, let us first
+understand how to get the right tools and generate the right principals to set the
+parameters. 
+Also, to understand how the parameters should be set, let us understand how an SNS
 with a decentralization sale is launched on a high level and which 
 parameters can be set.
 We refer to the next pages for learning the detailed actions that are required 
 [to test the SNS launch](./local-testing.md) and to 
 [initiate an SNS launch in production](./deployment.md).
 
-## Understanding the SNS Launch process
+## Getting the tools for launching an SNS {#tools}
+
+## Preparing the principals needed in the initial parameters {#principals}
+
+
+## Understanding the SNS Launch process {#understand-launch}
 
 For each SNS, the decentralization sale is realized in a separate _decentralization
 sale canister_ that exists during the SNS's launch, and is owned by the IC which will

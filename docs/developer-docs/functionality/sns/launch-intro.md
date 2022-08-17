@@ -45,14 +45,19 @@ To provide some tips on what considerations you should not forget,
 we list a few of them on
 [this page](../../../tokenomics/sns/not-blind/predeployment-considerations.md).
 
-### Step 2: Defining the parameters (technical preparation)
+### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
-you can tranlate them to parameters and configurations that can be set in
-the SNS launch. 
-To do this, it is useful to first understand on a high level how the
-SNS launch proceeds.
-We explain how the SNS launch works and how you can set the initialization
-parameters for the SNS on [this page](./predeployment.md).
+you are ready for the more technial preparations.
+A main goal of this step is to translate the previously defined high level
+goals in to parameters and configurations that can be set in
+the SNS launch.
+To specify these parameters and also in preparation for the next steps,
+you will need to get some tools and set up / collect some principals
+identities.
+Also, to set sensible parameters, it helps to first understand on a
+high level how the SNS launch proceeds.
+We explain all these more teachnical aspects of the preparation
+on [this page](./predeployment.md).
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately

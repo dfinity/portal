@@ -211,7 +211,7 @@ It is conceivable that alternative ways to decentralize a dapp are added in
 later SNS versions.
 
 The decentralization sale and the steps to conclude an SNS launch including this
-decentralization sale are described in more detail [here](./deployment.md).
+decentralization sale are described in more detail [here](./launch-intro.md).
 
 ### SNS maintenance
 As mentioned, this SNS option is provided as a system function and the SNS canister
