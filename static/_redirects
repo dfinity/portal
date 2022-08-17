@@ -32,8 +32,8 @@
 /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
 /docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
 /docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
-/docs/developer-docs/build/languages/candid/* /docs/developer-docs/build/candid
-/docs/developer-docs/build/languages/motoko/* /docs/developer-docs/build/cdks/motoko-dfinity/about-this-guide.md
+/docs/developer-docs/build/languages/candid/* /docs/developer-docs/build/candid/:splat 301
+/docs/developer-docs/build/languages/motoko/* /docs/developer-docs/build/cdks/motoko-dfinity/:splat 301
 /docs/developer-docs/build/languages/other-languages/* /docs/developer-docs/build/agents/index.md
 /docs/developer-docs/build/languages/rust/* /docs/developer-docs/build/cdks/cdk-rs-dfinity/index.md
 /docs/developer-docs/build/languages/work-with-languages /docs/developer-docs/build/agents/index.md
