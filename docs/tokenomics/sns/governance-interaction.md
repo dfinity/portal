@@ -3,20 +3,18 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 # How to interact with SNS governance
-<!-- TODO 
+<!-- TODO-content: 
 Intro
-* In general, there are two main ways to interact with an SNS: FE & sns-quill.
+* In general, there are two main ways to interact with an SNS: some FE & sns-quill.
 ** quill is more secure because ...
 ** FE might exist also in the dapp (e.g., OC). To learn more about those, refer to the 
-respective projects. Here we explain NNS FE dapp UI.
-* Note that in the very first version fo the SNS, some interactions are only possible
-on sns-quill
+respective projects (potentially refer to doc that explains OC voting.
+Here we explain NNS FE dapp UI.
+* Note that some interactions are only possible on sns-quill, especially in the first
+version of SNS
 -->
 For more information on how to participate in the SNS decentralization sale, we refer to
 [this page](sale-interaction.md).
-
-TEST [reference](./../../developer-docs/functionality/sns/deployment.md/#step3)
-
 
 
 ## Prerequisites 
@@ -24,7 +22,7 @@ If you want to use quill, you also need to download sns-quill as explained
 [here](https://github.com/dfinity/sns-quill#download).
 
 ## Getting SNS neurons {#get-neuron}
-<!-- TODO:
+<!-- TODO-content:
 Before participating, you need a neuron.
 Two ways to get one
 1) participate in the [SNS decentralization sale](sale-interaction.md)
@@ -32,12 +30,16 @@ Two ways to get one
 2) (once liquid tokens) have SNS tokens and stake them.
 -->
 
-### Getting an SNS neuron from the decentralization sale and adding `hot keys'
-<Tabs>
-  <TabItem value="FE-get-neuron" label='SNS Frontend'>
-
+### Adding `hot keys' to neurons from the decentralization sale
+<!--  TODO-content:
 In the initial version, can participate in the sale on the FE and will see the neurons.
 Can add hot key (explain what that is) but cannot do much more yet.
+For how to participate in sale, refer to [this page](sale-interaction.md). 
+Then explain here how to add a hot key to allow other principals to manage the neuron.
+-->
+
+<Tabs>
+  <TabItem value="FE-get-neuron" label='SNS Frontend'>
  
   </TabItem>
   <TabItem value="quill-get-neuron" label='SNS quill'>
@@ -46,27 +48,14 @@ Can add hot key (explain what that is) but cannot do much more yet.
 </Tabs>
 
 ### Staking an SNS neuron
-<!-- Initially only possible on quill -->
+<!-- TODO-content: Initially only possible on quill -->
 
-## Stake SNS tokens in a neuron
-<Tabs>
-  <TabItem value="FE-stake" label='SNS Frontend'>
- (Not in MVP)
-  </TabItem>
-  <TabItem value="quill-stake" label='SNS quill'>
-Blub2
-  </TabItem>
-</Tabs>
 
-## How to vote on SNS proposals
-<Tabs>
-  <TabItem value="FE" label='SNS Frontend'>
-Blub
-  </TabItem>
-  <TabItem value="quill" label='SNS quill'>
-Blub2
-  </TabItem>
-</Tabs>
+## Voting on SNS proposals
+<!-- TODO-content: Initially only possible on quill -->
+
 
 ## How to submit an SNS proposals
-This can only be done by quill
+As with the NNS, this is currently only possible by using command line tools such as
+sns-quill.
+<!-- TODO-content: -->
