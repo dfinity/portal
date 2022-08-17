@@ -35,10 +35,10 @@ Two ways to get one
 ### Getting an SNS neuron from the decentralization sale and adding `hot keys'
 <Tabs>
   <TabItem value="FE-get-neuron" label='SNS Frontend'>
-<!-- TODO:
+
 In the initial version, can participate in the sale on the FE and will see the neurons.
 Can add hot key (explain what that is) but cannot do much more yet.
---> 
+ 
   </TabItem>
   <TabItem value="quill-get-neuron" label='SNS quill'>
 TEST [reference](.)
