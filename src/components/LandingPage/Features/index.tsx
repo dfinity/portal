@@ -33,7 +33,7 @@ const cardsContent = [
   },
   {
     title: "Internet Identity",
-    body: "Anonymizing sign-on via WebAuthn: fingerprint sensor, Face ID, etc",
+    body: "Web3 sign-on via WebAuthn: fingerprint sensor, Face ID, etc",
     link: "https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7",
   },
   {
