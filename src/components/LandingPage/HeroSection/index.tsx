@@ -65,7 +65,7 @@ function Index() {
               tw-heading-7 md:tw-heading-6 text-white 
               px-6 py-3
               rounded-xl
-              bg-[url(/img/btc-integration-bg-small.jpg)] 
+              bg-[url(/img/btc-integration-bg-small.jpg)] bg-cover bg-left
               inline-flex items-center gap-6 
               transition-all
               mb-6
