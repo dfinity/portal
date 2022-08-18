@@ -186,15 +186,9 @@ Let us denote the principal that you set up for your neuron and which you contro
 
 ### Principal to launch the SNS
 
-<!--
-In launch (and test) part, then say when and how to change the principal
-(maybe just have two terminals, with teh two roles open!)
--->
-
-
 In addition to the principals above, you will need (at least) one principal to perform
 all the steps required to deploy an SNS. Let us assume you use just one and let us denote
-it by `identityDev`.
+it by `identityDevDeploy`.
 Make sure that you set up this principal such that it satisfies the following requirements:
 1. This principal needs to be compatible with `dfx`.
    We refer to
@@ -205,18 +199,6 @@ Make sure that you set up this principal such that it satisfies the following re
 Note that this means that you will have two principals, one to control your initial
 neurons and whose key can securely be kept in cold storage and a separate one
 for the deployment whose key can be kept in dfx which is more efficient.
-
-<!-- DELETE
-3. When setting the initial parameters (see more details below), you will include
-   `devIdentityCold` as controller of a dev neuron. (ref to where this is shown)
-   
-4. You will then add `devIdentityHot` as a principal to the neuron that only has the
-permission to submit proposals and vote on behalf of the neuron.
-   This allows you to use this idenity for most operations in the SNS launch and keep
-   the 
-   
-TODO ACTUALLY ADD THESE IDENTITIES TO THE PARAMETERS DESCRIPTION / LAUNCH DESCRIPTION!
-   -->
 
 
 ## Setting the SNS parameters {#setting-parameters}
@@ -233,7 +215,8 @@ To make sure that all parameters are set to valid values, that are also consiste
 with each other, you can use a tool that validates your input file. 
 
 **To create the SNS parameter yaml file and validate it, follow the steps
-'Defining the initial parameters for the SNS'.** <!-- TODO: add link -->
+'Defining the initial parameters for the SNS'.** <!--TODO-CLI/dfx-Link: -->
+<!-- QUESTION: is it important which ID is used to do this? -->
 
 To give you an overview, these are the categories of parameters that you can set:
 1. Parameters of the _SNS governance canister_. These are parameters of the governance
@@ -274,11 +257,28 @@ as the minimum number of ICP tokens that the sale must collect to be successful 
       makes SNSs forward compatible to such a future that is planned to be added in
       the future.
       
-All developer and airdrop tokens are distributed to the defined principals at
+All developer and airdrop tokens are distributed to the [defined principals](#principals) at
 genesis in neurons. We call them _developer neurons_ and the _airdrop neurons_,
 respectively, and refer to all these neurons as the _initial neurons_.
+We recommend to set up the principals as explained [here](#principals), especially
+to make sure that you set up developer neurons for a principal `identityDevNeuron` that you
+control.
+
+:::danger
+
+The developer and airdrop neurons are the only neurons that exist when the dapp's
+control is handed over to the SNS and during the decentralization sale.
+At this point, the dapp canister(s) are already controlled by the SNS.
+Therefore, **you must make sure that you define at least one developer or
+airdrop neuron as they provide the only way to upgrade the dapp during
+the sale.**
+
+:::
+
 All developers, airdrop principals, and the sale participants receive
-their neurons as a basket of neurons with different dissolve delays.
+their neurons as a _basket of neurons_.
+This means that rather than one neuron, they will get many neurons with different
+dissolve delays.  
 The neurons of all these parties have the same distribution of dissolve
 delays.
 
@@ -289,14 +289,5 @@ decentralization sale. As more of the sale tokens are sold in the future, the
 voting power multiplier increases until it is 1 when all sale tokens have been
 sold. 
 
-:::danger 
 
-The developer and airdrop neurons are the only neurons that exist when the dapp's
-control is handed over to the SNS and during the decentralization sale. 
-At this point, the dapp canister(s) are already controlled by the SNS.
-Therefore, **you must make sure that you define at least one developer or 
-airdrop neuron as they provide the only way to upgrade the dapp during
-the sale.**
-
-:::
 

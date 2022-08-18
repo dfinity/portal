@@ -4,29 +4,44 @@ This describes the detailed steps for launching an SNS.
 :::caution
 
 In the following steps we assume that you have already
-[collected the developer and airdrop principals and chosen
-the initial SNS parameters in a .yaml file](predeployment.md).
-We assume that you have one developer principal that is compatible
-with both dfx and SNS quill <!-- TODO: explain what this means and link to where
-explained--> that you will use for the following steps.
+[collected the developer and airdrop principals](predeployment.md/#principals)
+and [chosen the initial SNS parameters in a .yaml file](predeployment.md).
+We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
+Moreover, you control one principal `identityDevDeploy` that is a `dfx` identity and 
+a controller of the dapp canister(s) that you would like to hand over to the SNS.
 We also recommend that before following these steps and launching an
 SNS in production, you have [tested the SNS](local-testing.md).
 
 :::
+
 
 You are now ready to launch your SNS. There are some steps that are needed
 for launching an SNS and some steps that we recommend as intermediate
 sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
 
+#### 1. Get your two principals ready
+
+<!--
+Open terminal with dfx, ready for commands when we say "use `dfx` identity 
+`identityDevDeploy`.
+For things to do with `sns-quill` will say "use `sns-quill` principal `identityDevNeuron`"
+We recommend that message are signed on air-gapped computer and sent to IC
+on connected computer. 
+To follow this recommendation, should open one terminal on
+air-gapped computer and have another one to just forward sns-quill commands
+on the connected computer.
+-->
+
 #### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
-To make this call, use the command as described 'here'. <!-- TODO: add link -->
-Upon receiving this call, the SNS wasm modules cansiter will deploy
+To make this call, use your `dfx` identity `identityDevDeploy` and 
+the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
+Upon receiving this call, the SNS wasm modules canister will deploy
 an SNS with your chosen initial parameters.
 
-
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use the command as described 'here'.
+To do so, use your `dfx` identity `identityDevDeploy` and 
+the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
 
@@ -38,19 +53,20 @@ neurons) vote on the proposal so that it is adopted.
 Then, confirm that the proposal has been executed by checking that the dapp has been
 upgraded. 
 
-You can learn what command to use to make an SNS proposal 'here' 
-<!-- TODO: SNS quill documentation to make proposal and link to it-->
-and how to vote on an SNS proposal 'here'. 
-<!-- TODO: SNS quill - link to a page & paragraph that explains how to vote on SNS proposal.)-->
+To submit an SNS proposal, use your `sns-quill` principal `identityDevNeuron`
+and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal) 
+<!-- TODO: SNS quill documentation to make proposal and link to it-->.
+To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
+and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
 
 :::info
 
 This step is one of the reasons why you should ensure that you can
-reach and get buy in from a majority of the inital neurons. Also, these
-neurons have to be able to vote on SNS proposals, which might require
-them to vote on a command line tool as frontends might only show SNS
-proposals after the decentralization sale.
-<!-- TODO: make more precise the warning in the launch / choosing parameters part; to also specify that the initial neurons might need to vote on a CLI)-->
+reach and get buy in from a majority of the inital neurons. Also, as we 
+recommend `sns-quill` principals for initial neurons and as they have to be
+able to vote on SNS proposals even before the decentralization sales,
+this requires that initial neuron holders are comfortable
+using a command line tool for voting.
 
 :::
 
@@ -60,10 +76,10 @@ the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, you can use the command 'here' where you specify as the principals
-to be removed all existing controller principals except for the SNS root
-that you have already added.
-<!-- TODO:add link, should already exist in DFX-->
+To do this, use your `dfx` identity `identityDevDeploy` and the command 'here'
+where you specify as the principals to be removed all existing controller principals
+except for the SNS root that you have already added.
+<!--TODO-CLI/dfx-Link: should already exist in DFX -->
 
 #### 5. Register the dapp to the SNS
 Next, you will register the dapp canisters that are now controlled by the SNS
@@ -74,13 +90,8 @@ SNS root canister, then the dapp canisters are included in this summary and
 you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is again done by an SNS proposal.
-To make such a proposal, you can use the following dfx command:
-``` 
-TODO after NNS1-1633
-```  
-To vote on the proposal, follow the instructions from
-[Step 3](#step3)
-to vote on the proposal.
+To make such a proposal and vote on it, use your `sns-quill` principal
+`identityDevNeuron` and follow the instructions from [Step 3](#step3).
 As in [Step 3](#step3),
 sufficient initial neurons have to vote to reach a majority.
 
@@ -88,9 +99,7 @@ sufficient initial neurons have to vote to reach a majority.
 
 #### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
-you can repeat
-[Step 3](#step3) 
-at this point.
+you can repeat [Step 3](#step3) at this point.
 
 #### 7. Submit an NNS proposal to start the decentralization sale.
 At this point, you have handed over the control of your dapp to the Internet
@@ -106,7 +115,7 @@ Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is submitted.
 
 #### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
-After the last step, there is nothing more to do for you as the orginal dapp 
+After the last step, there is nothing more to do for you as the original dapp 
 developer to launch the SNS!
 The dapp has been handed over to the IC and the NNS is voting on whether 
 the SNS should be launched.
