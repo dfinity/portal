@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import { AnimatePresence, motion, useAnimation, useCycle } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import ArrowRight from "@site/static/img/arrow-right.svg";
+import ChevronRightIcon from "@site/static/img/chevron-right.svg";
 
 const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
   lines,
@@ -54,6 +56,32 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
+        <motion.div
+          variants={transitions.item}
+          className="flex flex-col items-start md:flex-row md:items-center mb-8"
+        >
+          <Link
+            className="
+              tw-heading-7 md:tw-heading-6 text-white 
+              px-6 py-3
+              rounded-xl
+              bg-[url(/img/btc-integration-bg-small.jpg)] 
+              inline-flex items-center gap-6 
+              transition-all
+              mb-6
+
+              md:mb-0 md:mr-10
+              hover:gap-10 hover:text-white hover:no-underline
+              md:hover:mr-6
+            "
+            href="/bitcoin-integration"
+          >
+            Build Bitcoin smart contracts <ChevronRightIcon />
+          </Link>
+          <span className="tw-heading-7 md:tw-heading-6 text-black-60 inline-flex items-center gap-2">
+            <ArrowRight></ArrowRight> Extend Ethereum (coming)
+          </span>
+        </motion.div>
         <motion.div variants={transitions.item} className={styles.Title}>
           <RotatedHeadline
             interval={3000}
