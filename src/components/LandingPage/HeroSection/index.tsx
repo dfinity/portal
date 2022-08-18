@@ -88,7 +88,7 @@ function Index() {
             lines={[
               "Everything on-chain",
               "Build in Cypherspace",
-              "(The new internet)",
+              "(the new internet)",
               "Alien tech blockchain",
             ]}
           />
