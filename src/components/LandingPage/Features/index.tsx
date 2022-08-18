@@ -13,7 +13,7 @@ const cardsContent = [
   },
   {
     title: "Breakthrough speed",
-    body: "Pre-finalized query requests <200ms, and update TX in <2s",
+    body: "Pre-finalized query TX <200ms, and update TX in <2s",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
   },
   {
