@@ -1,4 +1,4 @@
-# Using an Agent
+# Agents
 
 In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an agent.
 An agent has a few key responsibilities, which make it convenient to work with in your language of choice. 
@@ -18,12 +18,19 @@ This section of the docs covers the following agents, ordered by languages:
 In addition to those, there are a lot of other community-supported agents:
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
+- Dart
+  - [`agent_dart`] by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+  - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+- Java
+  - [`ic4j-agent` by IC4G](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python
   - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 
-## Calling a Canister
+If you're interested in building an agent in another language please reach out to us via [https://dfinity.org/grants](https://dfinity.org/grants).
+
+## What an agent does
 
 ### 1. Structuring Data
 
@@ -65,12 +72,3 @@ When encoding these identities as a `principal`, agents attach a suffix byte, in
 A self-authenticating identity using one of the above curves will have a suffix of 2.
 
 While the anonymous identity is a single byte 4. It resolves to `"2vxsx-fae"`, in its textual encoding.
-
-
-## Canister HTTP Interface
-
-In addition to the Candid interface, if a canister has a `http_request` method, the boundary nodes will forward HTTP and HTTPS calls to the `http_request` method. Using this, approach, the canister can deliver assets or custom data via the HTTP interface.
-
-If you are delivering certified responses, the HTTP endpoint can be accessed by a serviceworker at `https://<canister-id>.ic0.app`. If you are not delivering certified responses, you can use the `raw` subdomain at `https://<canister-id>.raw.ic0.app`. 
-
-> Note: the raw subdomain uses queries to a single replica. Accessing critical data over `raw.ic0.app` should not be considered safe
