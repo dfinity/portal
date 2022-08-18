@@ -27,7 +27,7 @@ function Index() {
           <h1>Everything on-chain</h1>
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Advanced smart contracts process HTTP requests, control other chains, and scale infinitely
+          Web3 smart contracts process HTTP requests, control other chains, and scale infinitely
         </motion.p>
         <motion.div
           variants={transitions.item}
