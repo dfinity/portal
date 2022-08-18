@@ -30,7 +30,7 @@ To do so, use the command as described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
 
-#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. {#step3}
+#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. _{#step3}_
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
 a new wasm version.
 Then, ensure that sufficiently many initial neurons (developer and airdrop
@@ -95,10 +95,13 @@ at this point.
 #### 7. Submit an NNS proposal to start the decentralization sale.
 At this point, you have handed over the control of your dapp to the Internet
 Computer. 
-To make sure that the Internet Computer starts the SNS decentralization sale,
-you can ask the NNS community to start the sale.
-To do so you submit an NNS proposal as described 'here' <!-- TODO: add link -->
-
+For the Internet Computer to start the SNS decentralization sale,
+anyone with an eligible NNS neuron can now submit an NNS proposal
+that asks the NNS community to do so.
+To submit an NNS proposal with dfx, they can use the following command
+```
+<!--TODO-code: --> 
+```
 Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is submitted.
 
@@ -125,5 +128,5 @@ Finally, if there are new blessed deployments of the SNS canisters, you can
 upgrade the SNS canisters by an SNS proposal. 
 To make such a proposal, you can use the following dfx command:
 ``` 
-TODO 
+<!--TODO-code: --> 
 ```  
