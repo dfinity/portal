@@ -1,9 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { AnimatePresence, motion, useAnimation, useCycle } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+
+const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
+  lines,
+  interval,
+}) => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const handle = setInterval(() => {
+      setIndex((index + 1) % lines.length);
+    }, interval);
+
+    return () => clearInterval(handle);
+  }, [index, interval]);
+
+  return (
+    <>
+      {lines.map((line, i) => (
+        <h1
+          className="transition-all col-start-1 row-start-1 duration-500"
+          key={line + "_" + i}
+          style={{
+            opacity: i === index ? 1 : 0,
+            transform: `translateY(${i === index ? 0 : 100}px)`,
+          }}
+        >
+          {line}
+        </h1>
+      ))}
+    </>
+  );
+};
 
 function Index() {
   const controls = useAnimation();
@@ -24,10 +55,19 @@ function Index() {
         className={styles.container}
       >
         <motion.div variants={transitions.item} className={styles.Title}>
-          <h1>Everything on-chain</h1>
+          <RotatedHeadline
+            interval={3000}
+            lines={[
+              "Everything on-chain",
+              "Build in Cypherspace",
+              "(The new internet)",
+              "Alien tech blockchain",
+            ]}
+          />
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Web3 smart contracts process HTTP requests, control other chains, and scale infinitely
+          Web3 smart contracts process HTTP requests, control other chains, and
+          scale infinitely
         </motion.p>
         <motion.div
           variants={transitions.item}
