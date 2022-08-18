@@ -19,7 +19,7 @@ In addition to those, there are a lot of other community-supported agents:
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
 - Dart
-  - [`agent_dart`] by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+  - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
   - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
