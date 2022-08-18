@@ -14,7 +14,7 @@
 }
 
 .container {
-    margin: 80px auto 100px auto;
+    margin: 160px auto 100px auto;
     width: Min(1110px, 90%);
 }
 
@@ -114,7 +114,7 @@
 
 @media screen and (max-width: 996px) {
     .container {
-        margin: 40px auto 80px auto;
+        margin: 80px auto 80px auto;
     }
 
     .Title h1 {

@@ -1,39 +1,95 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
-import ArrowRight from "@site/static/img/arrow-right.svg";
-import ChevronRightIcon from "@site/static/img/chevron-right.svg";
+
+function animateTextCollapse(
+  from: string,
+  to: string,
+  done: () => void,
+  el: HTMLHeadingElement
+): () => void {
+  let len = from.length;
+  let interval = 30;
+  let start = Date.now();
+  let direction = -1;
+  const handle = setInterval(() => {
+    const elapsed = Date.now() - start;
+    if (elapsed < interval) return;
+
+    start = Date.now();
+
+    if (direction < 0) {
+      // exit
+      len -= 1;
+      interval /= 1.1;
+
+      el.innerText = from.slice(0, len);
+      if (len === 0) {
+        direction = 1;
+        interval = 5;
+      }
+    } else {
+      // enter
+      len += 1;
+      el.innerText = to.slice(0, len);
+
+      interval *= 1.1;
+
+      if (interval > 30) {
+        interval = 30;
+      }
+
+      if (len === to.length) {
+        clearInterval(handle);
+        done();
+      }
+    }
+  }, 1);
+
+  return () => clearInterval(handle);
+}
 
 const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
   lines,
   interval,
 }) => {
   const [index, setIndex] = useState(0);
+  const el = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
+    let abortTextCollapse: () => void = null;
     const handle = setInterval(() => {
-      setIndex((index + 1) % lines.length);
+      if (document.hasFocus()) {
+        abortTextCollapse = animateTextCollapse(
+          lines[index],
+          lines[(index + 1) % lines.length],
+          () => setIndex((index + 1) % lines.length),
+          el.current
+        );
+      }
     }, interval);
 
-    return () => clearInterval(handle);
-  }, [index, interval]);
+    return () => {
+      clearInterval(handle);
+      abortTextCollapse();
+    };
+  }, [interval, index, setIndex]);
 
   return (
     <>
       {lines.map((line, i) => (
         <h1
-          className="transition-all col-start-1 row-start-1 duration-500"
+          className="transition-all col-start-1 row-start-1 duration-500 opacity-0"
           key={line + "_" + i}
-          style={{
-            opacity: i === index ? 1 : 0,
-            transform: `translateY(${i === index ? 0 : 100}px)`,
-          }}
         >
           {line}
         </h1>
       ))}
+      <h1 className="col-start-1 row-start-1" ref={el}>
+        {lines[0]}
+      </h1>
     </>
   );
 };
@@ -56,40 +112,14 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
-        <motion.div
-          variants={transitions.item}
-          className="flex flex-col items-start md:flex-row md:items-center mb-8"
-        >
-          <Link
-            className="
-              tw-heading-7 md:tw-heading-6 text-white 
-              px-6 py-3
-              rounded-xl
-              bg-[url(/img/btc-integration-bg-small.jpg)] bg-cover bg-left
-              inline-flex items-center gap-6 
-              transition-all
-              mb-6
-
-              md:mb-0 md:mr-10
-              hover:gap-10 hover:text-white hover:no-underline
-              md:hover:mr-6
-            "
-            href="/bitcoin-integration"
-          >
-            Build Bitcoin smart contracts <ChevronRightIcon />
-          </Link>
-          <span className="tw-heading-7 md:tw-heading-6 text-black-60 inline-flex items-center gap-2">
-            <ArrowRight></ArrowRight> Extend Ethereum (coming)
-          </span>
-        </motion.div>
         <motion.div variants={transitions.item} className={styles.Title}>
           <RotatedHeadline
-            interval={3000}
+            interval={2000}
             lines={[
-              "Everything on-chain",
               "Build in Cypherspace",
-              "(the new internet)",
               "Alien tech blockchain",
+              "Everything on-chain",
+              "(the new internet)",
             ]}
           />
         </motion.div>
