@@ -9,11 +9,11 @@ You can talk to the canister using the v2 API using an `agent` that follows the 
 
 This section of the docs covers the following agents, ordered by languages:
 - JavaScript
-  - [`agent` by DFINITY](./agent-dfinity.md)
+  - [JavaScript/TypeScript Agent by DFINITY](./agent-dfinity.md)
 - Rust
-  - [`ic-agent` by DFINITY](./ic-agent-dfinity.md)
+  - [Rust Agent by DFINITY](./ic-agent-dfinity.md)
 - TypeScript
-  - [`agent` by DFINITY](./agent-dfinity.md)
+  - [JavaScript/TypeScript Agent by DFINITY](./agent-dfinity.md)
 
 In addition to those, there are a lot of other community-supported agents:
 - .NET
@@ -24,7 +24,7 @@ In addition to those, there are a lot of other community-supported agents:
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
 - Java
-  - [`ic4j-agent` by IC4G](https://github.com/ic4j/ic4j-agent) (supports Android)
+  - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python
   - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 
