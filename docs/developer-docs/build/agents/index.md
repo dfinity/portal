@@ -24,7 +24,7 @@ In addition to those, there are a lot of other community-supported agents:
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
 - Java
-  - [`ic4j-agent` by IC4G](https://github.com/ic4j/ic4j-agent) (supports Android)
+  - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python
   - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 
