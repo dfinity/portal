@@ -9,24 +9,24 @@ You can talk to the canister using the v2 API using an `agent` that follows the 
 
 This section of the docs covers the following agents, ordered by languages:
 - JavaScript
-  - [`agent` by DFINITY](./agent-dfinity.md)
+  - [DFINITY's Javascript/Typescript Agent](./agent-dfinity.md)
 - Rust
-  - [`ic-agent` by DFINITY](./ic-agent-dfinity.md)
+  - [DFINITY's Rust Agent](./ic-agent-dfinity.md)
 - TypeScript
-  - [`agent` by DFINITY](./agent-dfinity.md)
+  - [DFINITY's Javascript/Typescript Agent](./agent-dfinity.md)
 
 In addition to those, there are a lot of other community-supported agents:
 - .NET
-  - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
+  - [Gekctek's `ICP.NET`](https://github.com/Gekctek/ICP.NET)
 - Dart
-  - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
-  - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
+  - [AstroX's `agent_dart`](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+  - [Levi Feldman's `ic_dart_tools`](https://github.com/levifeldman/ic_tools_dart)
 - Go
-  - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+  - [MixLabs' `IC-Go`](https://github.com/mix-labs/IC-Go)
 - Java
-  - [`ic4j-agent` by IC4G](https://github.com/ic4j/ic4j-agent) (supports Android)
+  - [IC4G's `ic4j-agent`](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python
-  - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
+  - [Rocklabs' `ic-py`](https://github.com/rocklabs-io/ic-py)
 
 If you're interested in building an agent in another language please reach out to us via [https://dfinity.org/grants](https://dfinity.org/grants).
 

@@ -11,16 +11,16 @@ Of course, developers are not required to work in one (or both) of those languag
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](../candid/candid-intro.md) language. What language works behind the candid interface, however, does not matter.
 
 This section of the docs covers the following CDKs, ordered by languages:
-
-- [Motoko by DFINITY](./motoko-dfinity/motoko.md)
+- Motoko
+  - [DFINITY's Motoko language](./motoko-dfinity/motoko.md)
 - Rust
-  - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/index.md)
+  - [DFINITY's `cdk-rs`](./cdk-rs-dfinity/index.md)
 
 Besides those, there exist a lot of other community-supported CDKs:
 - AssemblyScript
-  - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
+  - [Rick Porter's `cdk-as`](https://github.com/rckprtr/cdk-as)
 - TypeScript
-  - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
+  - [Demergent Labs' `Azle`](https://github.com/demergent-labs/azle)
 
 ### A comparison between Motoko and Rust
 
