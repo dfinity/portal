@@ -12,15 +12,15 @@ It is also possible to split your work between multiple languages. Different can
 
 This section of the docs covers the following CDKs, ordered by languages:
 - Motoko
-  - [DFINITY's Motoko language](./motoko-dfinity/motoko.md)
+  - [Motoko by DFINITY](./motoko-dfinity/motoko.md)
 - Rust
-  - [DFINITY's `cdk-rs`](./cdk-rs-dfinity/index.md)
+  - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/index.md)
 
 Besides those, there exist a lot of other community-supported CDKs:
 - AssemblyScript
-  - [Rick Porter's `cdk-as`](https://github.com/rckprtr/cdk-as)
+  - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
 - TypeScript
-  - [Demergent Labs' `Azle`](https://github.com/demergent-labs/azle)
+  - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
 
 ### A comparison between Motoko and Rust
 
