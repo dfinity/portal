@@ -132,3 +132,77 @@ Updates to the IC may feel slow to your users, at around 2-4 seconds. When you a
 * Try to avoid making inter-canister calls. If the backend needs to talk to other canisters, the duration can add up quickly.
 * Use `Promise.all` to make multiple calls in a batch, instead of making them one-by-one
 * If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.ic0.app` endpoint for canisters
+
+## Bundlers
+
+We recommend using a bundler to assemble your code for convenience and less troubleshooting. We provide a standard Webpack config, but you may also turn to Rollup, Vite, Parcel, or others. For this pattern, we recommend running a script to generate `.env.development` and `.env.production` environment variable files for your canister ids, which is a fairly standard approach for bundlers, and can be easily supported using [dotenv](https://www.npmjs.com/package/dotenv). Here is an example script you can run to map those files:
+
+```js
+// setupEnv.js
+const fs = require("fs");
+const path = require("path");
+
+function initCanisterEnv() {
+  let localCanisters, prodCanisters;
+  try {
+    localCanisters = require(path.resolve(
+      ".dfx",
+      "local",
+      "canister_ids.json"
+    ));
+  } catch (error) {
+    console.log("No local canister_ids.json found");
+  }
+  try {
+    prodCanisters = require(path.resolve("canister_ids.json"));
+  } catch (error) {
+    console.log("No production canister_ids.json found");
+  }
+
+  const network =
+    process.env.DFX_NETWORK ||
+    (process.env.NODE_ENV === "production" ? "ic" : "local");
+
+  const canisterConfig = network === "local" ? localCanisters : prodCanisters;
+
+  const localMap = localCanisters
+    ? Object.entries(localCanisters).reduce((prev, current) => {
+        const [canisterName, canisterDetails] = current;
+        prev[canisterName.toUpperCase() + "_CANISTER_ID"] =
+          canisterDetails[network];
+        return prev;
+      }, {})
+    : undefined;
+  const prodMap = prodCanisters
+    ? Object.entries(prodCanisters).reduce((prev, current) => {
+        const [canisterName, canisterDetails] = current;
+        prev[canisterName.toUpperCase() + "_CANISTER_ID"] =
+          canisterDetails[network];
+        return prev;
+      }, {})
+    : undefined;
+  return [localMap, prodMap];
+}
+const [localCanisters, prodCanisters] = initCanisterEnv();
+
+if (localCanisters) {
+  const localTemplate = Object.entries(localCanisters).reduce((start, next) => {
+    const [key, val] = next;
+    if (!start) return `${key}=${val}`;
+    return `${start ?? ""}
+          ${key}=${val}`;
+  }, ``);
+  fs.writeFileSync(".env.development", localTemplate);
+}
+if (prodCanisters) {
+  const prodTemplate = Object.entries(prodCanisters).reduce((start, next) => {
+    const [key, val] = next;
+    if (!start) return `${key}=${val}`;
+    return `${start ?? ""}
+        ${key}=${val}`;
+  }, ``);
+  fs.writeFileSync(".env", localTemplate);
+}
+```
+
+Then, you can add `"prestart"` and `"prebuild"` commands of `dfx generate; node setupEnv.js`. Follow documentation for your preferred bundler on how to work with environment variables.
