@@ -47,7 +47,7 @@ function animateTextCollapse(
         done();
       }
     }
-  }, 1);
+  }, 5);
 
   return () => clearInterval(handle);
 }
@@ -87,7 +87,7 @@ const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
           {line}
         </h1>
       ))}
-      <h1 className="col-start-1 row-start-1" ref={el}>
+      <h1 className="col-start-1 row-start-1 will-change-contents" ref={el}>
         {lines[0]}
       </h1>
     </>
