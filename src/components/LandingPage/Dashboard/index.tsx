@@ -151,13 +151,13 @@ function Dashboard() {
       <a className={styles.anchor} id="dashboard" />
       <div className={styles.grid}>
         <AnimatedStatistic
-          title="Block Count"
+          title="Block count"
           currentValue={stats.blockCount}
           tooltip={"The total number of blocks finalized since genesis."}
           precision={0}
         />
         <Statistic
-          title="Network Status"
+          title="Blockchain status"
           currentValue={stats.operational ? "Operational" : "Maintenance"}
           tooltip={"The current status of the Internet Computer network."}
         />
@@ -168,19 +168,19 @@ function Dashboard() {
           precision={2}
         />
         <AnimatedStatistic
-          title="Chain CPUs"
+          title="Hardware CPUs"
           currentValue={stats.cpuCores}
           tooltip={"The current number of CPUs in node machines hosting the blockchain."}
           precision={0}
         />
         <AnimatedStatistic
-          title="Canisters"
+          title="Canister smart contracts"
           currentValue={stats.canisterCount}
           tooltip={"The number of active canister smart contracts on the Internet Computer."}
           precision={0}
         />
         <Statistic
-          title="Data storage cost"
+          title="Smart contract memory"
           currentValue={`$${stats.cost} GB/month`}
           tooltip={
             "The cost of storing 1GB of data in a canister smart contract."

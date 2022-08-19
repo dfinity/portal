@@ -11,8 +11,8 @@ Of course, developers are not required to work in one (or both) of those languag
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](../candid/candid-intro.md) language. What language works behind the candid interface, however, does not matter.
 
 This section of the docs covers the following CDKs, ordered by languages:
-
-- [Motoko by DFINITY](./motoko-dfinity/motoko.md)
+- Motoko
+  - [Motoko by DFINITY](./motoko-dfinity/motoko.md)
 - Rust
   - [`cdk-rs` by DFINITY](./cdk-rs-dfinity/index.md)
 
