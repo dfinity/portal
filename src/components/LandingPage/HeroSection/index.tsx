@@ -124,7 +124,7 @@ function Index() {
           />
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Web3 smart contracts process HTTP requests, control other chains, and
+          Web3 smart contracts process HTTP requests, create TX for other chains, and
           scale infinitely
         </motion.p>
         <motion.div
