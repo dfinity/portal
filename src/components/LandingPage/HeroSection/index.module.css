@@ -19,7 +19,7 @@
 }
 
 .Title {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     overflow: hidden;
 }
