@@ -116,8 +116,8 @@ function Index() {
           <RotatedHeadline
             interval={2000}
             lines={[
-              "Internet is the stack",
-              "Alien tech blockchain",
+              "Build on the internet",
+              "2049 blockchain tech",
               "Everything on-chain",
               "(the new internet)",
             ]}
