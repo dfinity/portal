@@ -117,7 +117,7 @@ function Index() {
             interval={2000}
             lines={[
               "Build on the internet",
-              "Alien tech blockchain",
+              "2049 blockchain tech",
               "Everything on-chain",
               "(the new internet)",
             ]}
