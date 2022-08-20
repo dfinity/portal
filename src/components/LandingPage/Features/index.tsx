@@ -66,6 +66,21 @@ const cardsContent = [
     body: "Smart contracts can connect to outside world through http via consensus",
     link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
   },
+  {
+    title: "Multi-block TXs",
+    body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
+    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+  },
+  {
+    title: "Sovereign network",
+    body: 'Internet Computer nodes are dedicated "node machines", not cloud instances',
+    link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
+  },
+  {
+    title: "Daemon contracts",
+    body: "Smart contracts can be invoked by the network and run automatically",
+    link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
+  },
 ];
 
 export const MotionLink = motion(Link);
