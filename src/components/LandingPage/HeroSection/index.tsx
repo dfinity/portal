@@ -117,9 +117,9 @@ function Index() {
             interval={2000}
             lines={[
               "Build on the internet",
-              "2049 blockchain tech",
+              "2049 blockchain now",
               "Everything on-chain",
-              "(the new internet)",
+              "//the new internet",
             ]}
           />
         </motion.div>
