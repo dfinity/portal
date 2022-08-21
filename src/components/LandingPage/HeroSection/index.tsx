@@ -119,7 +119,7 @@ function Index() {
               "Build on the internet",
               "2049 blockchain now",
               "Everything on-chain",
-              "//the new internet",
+              "Bold new internet",
             ]}
           />
         </motion.div>
