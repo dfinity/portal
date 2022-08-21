@@ -133,7 +133,7 @@ function Index() {
           className={styles.actionContainer}
         >
           <Link className={styles.actionButton} to="/developers">
-            BUILD REAL WEB3
+            CODE WEB3
           </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
             Explore the Internet Computer ecosystem
