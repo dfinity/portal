@@ -48,7 +48,7 @@ WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires n
 Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
 
 ### No internet access on WSL
-If you don't have internet access on WSL, for instance you cannot ping any server successfully, probably the nameserver on WSL is set to an internal WSL proxy nameserver. You can check the `/etc/resolv.conf` file to see if it's the case. If it's true, Please follow the below steps to set to a valid nameserver:
+If you don't have internet access on WSL, for instance you cannot ping any server successfully, probably the nameserver on WSL is set to an internal WSL proxy nameserver. You can check the `/etc/resolv.conf` file to see if it's the case. If it's true, please follow the below steps to set to a valid nameserver:
 * Create the `/etc/wsl.conf` file and add the below content to it, this will prevent WSL from regenerating the `/etc/resolv.conf` file after restarting.
   ```
   [network]
