@@ -70,7 +70,7 @@ function Index() {
             ECDSA API
           </Link>
           , canisters can securely receive, hold, and send bitcoins, as though
-          they were smart contracts actually hosted by the Bitcoin network itself.
+          they were smart contracts actually hosted <i>on</i> the Bitcoin network itself.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
           This means bitcoin can be easily and securely incorporated into 
@@ -81,14 +81,14 @@ function Index() {
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">   
           For example, DEXs (decentralized exchanges) can easily provide BTC 
           trading pairs, decentralized fundraises can accept bitcoin, and 
-          a SocialFi service might allow satoshis to be sent using chat 
+          a Web3 SocialFi service might allow satoshis to be sent using chat 
           messages, say.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
-          Lightning Network-like services can also be provided by wrapping 
+          Lightning Network-like services can also be created by wrapping 
           bitcoin inside fully autonomous Internet Computer smart contracts,
           such that bitcoin can be sent between users, Web3 services
-          and DeFi contracts in only 1-2 seconds.
+          and DeFi contracts, in only 1-2 seconds.
         </motion.p>
         <motion.p
           variants={transitions.item}
