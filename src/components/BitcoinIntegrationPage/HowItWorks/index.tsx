@@ -29,26 +29,30 @@ function Index() {
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
           Two key developments make it possible for Internet Computer smart 
           contracts to create bitcoin addresses and directly send and 
-          receive bitcoin: inter-node communication with the Bitcoin network, 
-          and the incorporation of novel threshold ECDSA cryptography into its
-          network protocols.
+          receive bitcoin: inter-node communication between the Internet Computer
+          network and the Bitcoin network, and the use of novel threshold ECDSA
+          cryptography by its network protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Network Integration with Bitcoin
+          Network Integration
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          The nodes hosting the Internet Computer network directly communicate with the
-          nodes hosting the Bitcoin network, without intermediaries.
+          When the Internet Computer blockchain creates transactions for the 
+          Bitcoin blockchain, its nodes directly transmit the transaction 
+          to the Bitcoin network's nodes, without any need for intermediaries 
+          that might censor them. Internet Computer nodes also directly 
+          pull blocks from the Bitcoin network to update its current 
+          UTXO set.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          This is used by the Internet Computer to generate new bitcoin addresses
-          for smart contracts on demand, and to sign new Bitcoin transactions pertaining
-          to those addresses, while distributing the secret key material involved
-          across many of its nodes, using protocols that are resilient
-          to attacks by malicious nodes.
+          The novel cryptography allows the Internet Computer to distrubute
+          secret key material across its nodes, and have them cooperate to
+          create new bitcoin addresses, and sign Bitcoin transactions,
+          using fault tolerant network protocols that are resilient to attacks
+          by malicious nodes.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
           With the{" "}
@@ -65,24 +69,27 @@ function Index() {
           >
             ECDSA API
           </Link>
-          , canister smart contracts on the Internet Computer can securely
-          receive, hold, and send bitcoins, as though they were actually hosted
-          on the Bitcoin network and bitcoin was a native token.
+          , canisters can securely receive, hold, and send bitcoins, as though
+          they were smart contracts actually hosted by the Bitcoin network itself.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
           This means bitcoin can be easily and securely incorporated into 
           DeFi and Web3 services on the Internet Computer, without the need to
           trust a bridging service that might get hacked, or taken down, causing
           the loss of the bitcoin involved.
+        </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph">   
           For example, DEXs (decentralized exchanges) can easily provide BTC 
           trading pairs, decentralized fundraises can accept bitcoin, and 
           a SocialFi service might allow satoshis to be sent using chat 
           messages, say.
+        </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
           Lightning Network-like services can be provided by wrapping 
           bitcoin inside fully autonomous Internet Computer smart contracts,
           such that bitcoin can be sent between users, Web3 services
-          and applications, with 1-2 second finality (improving upon the Bitcoin 
-          network's finality, which is 10 minutes in expectation).
+          and DeFi contracts, with 1-2 second finality (whereas it takes 
+          10 minutes to transfter bitcoin on the Bitcoin ledger).
         </motion.p>
         <motion.p
           variants={transitions.item}
