@@ -9,7 +9,7 @@ To get started with JavaScript on the Internet Computer, we recommend you follow
     * `dfx new` starter project
     * an example from [dfinity/examples](https://github.com/dfinity/examples)
 
-If you are looking for an explanation of what an agent does, see [Using an Agent](../../using-an-agent)
+If you are looking for an explanation of what an agent does, see [Using an Agent](../../using-an-agent.md)
 
 ____
 
