@@ -65,7 +65,7 @@ const Hero = () => {
           The Internet Computer is cryptographically integrated with the Bitcoin
           network. Its canister smart contracts can create bitcoin addresses, and send and receive bitcoin,
           directly on the Bitcoin ledger. This means "wrapped bitcoin" from insecure centralized
-          "bridges" services (which have been hacked for billions of dollars) are no longer needed
+          "bridge" services (which have been hacked for billions of dollars) are no longer needed
           in DeFi and Web3. Say hello to <b>1-chain-is-many-chains</b>!
         </motion.p>
         <svg
