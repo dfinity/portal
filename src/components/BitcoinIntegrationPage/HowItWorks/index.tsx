@@ -37,7 +37,7 @@ function Index() {
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
           Direct integration means that nodes of the Internet Computer
           communicate directly with the nodes of the Bitcoin network without
-          relying on fragile bridges.
+          relying on centralized bridges.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
