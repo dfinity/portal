@@ -68,7 +68,7 @@ const Hero = () => {
           Bitcoin ledger. This means "wrapped bitcoin" from insecure and centralized
           "bridge" services — which have been hacked for billions of dollars, and can
           get shut down or perform censorship — is no longer needed in DeFi and Web3.
-          Say hello to a bright 1-chain-is-many-chains future!
+          Say hello to a bright <b>1-chain-is-many-chains</b> future!
         </motion.p>
         <svg
           viewBox="0 0 917 830"
