@@ -53,7 +53,7 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "JavaScript",
+              label: "JavaScript Agent by DFINITY",
               link: {
                 type: "doc",
                 id: "developer-docs/build/agents/javascript/javascript-intro",
