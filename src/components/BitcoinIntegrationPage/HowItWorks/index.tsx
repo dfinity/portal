@@ -31,7 +31,7 @@ function Index() {
           contracts to create bitcoin addresses and directly send and 
           receive bitcoin: inter-node communication between the Internet Computer
           network and the Bitcoin network, and the use of novel threshold ECDSA
-          cryptography by its network protocols.
+          cryptography by its protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Network Integration
@@ -41,7 +41,7 @@ function Index() {
           Bitcoin blockchain, its nodes directly transmit the transaction 
           to the Bitcoin network's nodes, without any need for intermediaries 
           that might censor them. Internet Computer nodes also directly 
-          pull blocks from the Bitcoin network to update its current 
+          pulls blocks from the Bitcoin network to maintain Bitcoin's current 
           UTXO set.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
@@ -51,7 +51,7 @@ function Index() {
           Novel "threshold cryptography" allows the Internet Computer to distrubute
           secret key material across its nodes, and have them cooperate to
           create new bitcoin addresses, and sign Bitcoin transactions,
-          using fault tolerant network protocols that are resilient to attacks
+          using fault tolerant decentralized network protocols that are resilient to attacks
           by malicious nodes.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
@@ -85,11 +85,10 @@ function Index() {
           messages, say.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
-          Lightning Network-like services can be provided by wrapping 
+          Lightning Network-like services can also be provided by wrapping 
           bitcoin inside fully autonomous Internet Computer smart contracts,
           such that bitcoin can be sent between users, Web3 services
-          and DeFi contracts, with 1-2 second finality (whereas it takes 
-          10 minutes to transfter bitcoin on the Bitcoin ledger).
+          and DeFi contracts in only 1-2 seconds.
         </motion.p>
         <motion.p
           variants={transitions.item}
