@@ -69,13 +69,13 @@ function Index() {
           >
             ECDSA API
           </Link>
-          , canisters can securely receive, hold, and send bitcoins, as though
+          , canisters can directly securely receive, hold, and send bitcoins, as though
           they were smart contracts actually hosted <i>on</i> the Bitcoin network itself.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
           This means bitcoin can be easily and securely incorporated into 
           DeFi and Web3 services on the Internet Computer, without the need to
-          trust a bridging service that might get hacked, or taken down, causing
+          trust bridging services that might get hacked, or taken down, causing
           the loss of the bitcoin involved.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">   
