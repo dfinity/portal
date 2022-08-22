@@ -48,7 +48,7 @@ function Index() {
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          The novel cryptography allows the Internet Computer to distrubute
+          Novel "threshold cryptography" allows the Internet Computer to distrubute
           secret key material across its nodes, and have them cooperate to
           create new bitcoin addresses, and sign Bitcoin transactions,
           using fault tolerant network protocols that are resilient to attacks
