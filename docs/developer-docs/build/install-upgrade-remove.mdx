@@ -55,7 +55,7 @@ To install <code>dfx</code>, run
 <h3 id="permission-denied-when-running-dfx-start-">Permission Denied when running <code>dfx start</code></h3>
 <p>Projects created from <code>dfx</code> need to be on the Linux filesystem instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd $HOME</code> in the WSL terminal will bring you to the home directory, and creating projects in there should work.</p>
 <h3 id="no-internet-access-on-wsl">No internet access on WSL</h3>
-<p>If you don’t have internet access on WSL, for instance you cannot ping any server successfully, probably the nameserver on WSL is set to an internal WSL proxy nameserver. You can check the <code>/etc/resolv.conf</code> file to see if it’s the case. If it’s true, please follow the below steps to set to a valid nameserver: <br/ >
+<p>If you don’t have internet access on WSL, for instance you cannot ping any server successfully, most likely the nameserver on WSL is set to an internal WSL proxy. You can check the <code>/etc/resolv.conf</code> file to see if it’s the case. If it’s true, please follow the below steps to set to a valid nameserver: <br/ >
 <ul>
 <li>Create the <code>/etc/wsl.conf</code> file and add the below content to it, this will prevent WSL from regenerating the <code>/etc/resolv.conf</code> file after restarting. </li>
 
