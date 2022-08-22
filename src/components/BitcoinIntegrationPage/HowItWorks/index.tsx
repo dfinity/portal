@@ -48,9 +48,9 @@ function Index() {
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Novel "threshold cryptography" allows the Internet Computer to distrubute
-          (and redistribute) secret key material across its nodes, and have them cooperate to
-          create new bitcoin addresses, and sign Bitcoin transactions,
+          Novel "threshold cryptography" allows the Internet Computer to distrubute,
+          and redistribute, secret key material among its nodes, and have them cooperate
+          to create new bitcoin addresses and sign Bitcoin transactions,
           using highly fault tolerant decentralized network protocols that
           are resilient to attacks by malicious nodes.
         </motion.p>
