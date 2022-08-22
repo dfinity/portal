@@ -27,26 +27,28 @@ function Index() {
           How It Works
         </motion.h1>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Two key developments make Bitcoin integration possible: direct
-          integration with the Bitcoin network and a novel threshold ECDSA
-          protocol.
+          Two key developments make it possible for Internet Computer smart 
+          contracts to create bitcoin addresses and directly send and 
+          receive bitcoin: inter-node communication with the Bitcoin network, 
+          and the incorporation of novel threshold ECDSA cryptography into its
+          network protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Direct Integration with Bitcoin
+          Network Integration with Bitcoin
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Direct integration means that nodes of the Internet Computer
-          communicate directly with the nodes of the Bitcoin network without
-          relying on centralized bridges.
+          The nodes hosting the Internet Computer network directly communicate with the
+          nodes hosting the Bitcoin network, without intermediaries.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Threshold ECDSA is a cryptographic protocol that enables canisters to
-          securely hold and use ECDSA keys. Shares of the secret key are stored
-          across many nodes, making the protocol resilient to attacks from
-          malicious nodes.
+          This is used by the Internet Computer to generate new bitcoin addresses
+          for smart contracts on demand, and to sign new Bitcoin transactions pertaining
+          to those addresses, while distributing the secret key material involved
+          across many of its nodes, using protocols that are resilient
+          to attacks by malicious nodes.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
           With the{" "}
@@ -63,14 +65,24 @@ function Index() {
           >
             ECDSA API
           </Link>
-          , canisters on the Internet Computer can securely receive, hold, and
-          send bitcoins, opening the possibility for Bitcoin smart contracts.
+          , canister smart contracts on the Internet Computer can securely
+          receive, hold, and send bitcoins, as though they were actually hosted
+          on the Bitcoin network and bitcoin was a native token.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Bringing smart contracts on the Internet Computer unlocks a number of
-          novel applications including decentralized exchanges, using Bitcoin to
-          participate in token sales, and chain-key-Bitcoin, an advanced form of
-          wrapped Bitcoin without the usual drawbacks of token wrapping.
+          This means bitcoin can be easily and securely incorporated into 
+          DeFi and Web3 services on the Internet Computer, without the need to
+          trust a bridging service that might get hacked, or taken down, causing
+          the loss of the bitcoin involved.
+          For example, DEXs (decentralized exchanges) can easily provide BTC 
+          trading pairs, decentralized fundraises can accept bitcoin, and 
+          a SocialFi service might allow satoshis to be sent using chat 
+          messages, say.
+          Lightning Network-like services can be provided by wrapping 
+          bitcoin inside fully autonomous Internet Computer smart contracts,
+          such that bitcoin can be sent between users, Web3 services
+          and applications, with 1-2 second finality (improving upon the Bitcoin 
+          network's finality, which is 10 minutes in expectation).
         </motion.p>
         <motion.p
           variants={transitions.item}
