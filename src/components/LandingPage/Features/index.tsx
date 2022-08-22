@@ -13,7 +13,7 @@ const cardsContent = [
   },
   {
     title: "Breakthrough speed",
-    body: "Pre-finalized query requests <200ms, and update TX in <2s",
+    body: "Pre-finalized query TX <200ms, and update TX in <2s",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
   },
   {
@@ -65,6 +65,21 @@ const cardsContent = [
     title: "HTTPS outcalls",
     body: "Smart contracts can connect to outside world through http via consensus",
     link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
+  },
+  {
+    title: "Multi-block TXs",
+    body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
+    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+  },
+  {
+    title: "Sovereign network",
+    body: 'Internet Computer nodes are dedicated "node machines", not cloud instances',
+    link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
+  },
+  {
+    title: "Daemon contracts",
+    body: "Smart contracts can be invoked by the network and run automatically",
+    link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
   },
 ];
 
