@@ -62,10 +62,16 @@ const Hero = () => {
           variants={transitions.item}
           className="tw-lead-sm md:tw-lead md:ml-1/12 md:w-7/12"
         >
-          The Internet Computer enables direct integration with the Bitcoin
-          network. By way of bridge-less communication with the Bitcoin network
-          and a novel threshold ECDSA protocol, canisters on the Internet
-          Computer can now securely receive, hold, and send bitcoins.
+          The Internet Computer is directly integrated with the Bitcoin
+          network. It hosts canister smart contracts that can create
+          bitcoin addresses, and send and receive bitcoin, directly on
+          the Bitcoin ledger, just as though they were really smart contracts
+          hosted by the Bitcoin network itself. This provides them with access to 
+          Bitcoin liquidity without the involvement of insecure DeFi "bridges,"
+          which are trusted intermediaries from which several billion
+          dollars worth of tokens have been stolen by hackers in recent times.
+          The Internet Computer's protocols incorpate novel threshold ECDSA
+          functionality to makes this possible.
         </motion.p>
         <svg
           viewBox="0 0 917 830"
