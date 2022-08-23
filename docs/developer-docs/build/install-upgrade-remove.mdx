@@ -13,7 +13,7 @@ You can download and install the latest version of the DFINITY Canister smart co
 To install <code>dfx</code>, run
 
 ```bash
-    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
 </TabItem>
@@ -45,7 +45,7 @@ To install <code>dfx</code>, run
 <p>Once you have WSL installed, you can install <code>dfx</code> by running
 
 ```bash
-    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
 </p>
@@ -54,7 +54,21 @@ To install <code>dfx</code>, run
 <p>WSL 2 has node.js <code>10.x.x</code> installed by default. But the latest <code>dfx</code> requires node.js <code>16.0.0</code> or higher.</p>
 <h3 id="permission-denied-when-running-dfx-start-">Permission Denied when running <code>dfx start</code></h3>
 <p>Projects created from <code>dfx</code> need to be on the Linux filesystem instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd $HOME</code> in the WSL terminal will bring you to the home directory, and creating projects in there should work.</p>
+<h3 id="no-internet-access-on-wsl">No internet access on WSL</h3>
+<p>If you don’t have internet access on WSL, for instance you cannot ping any server successfully, most likely the nameserver on WSL is set to an internal WSL proxy. You can check the <code>/etc/resolv.conf</code> file to see if it’s the case. If it’s true, please follow the below steps to set to a valid nameserver: <br/ >
+<ul>
+<li>Create the <code>/etc/wsl.conf</code> file and add the below content to it, this will prevent WSL from regenerating the <code>/etc/resolv.conf</code> file after restarting. </li>
 
+```
+[network]
+generateResolvConf = false
+```
+
+<li>Modify the nameserver in the <code>/etc/resolv.conf</code> file to a valid one, for example the Google nameserver <code>8.8.8.8</code>. </li>
+<li>On Windows, restart WSL to let this fix take effect. </li>
+<code>wsl.exe --shutdown</code>
+</ul>
+</p>
 </TabItem>
 </Tabs>
 
@@ -107,9 +121,26 @@ The `bootstrap` directory contains web server code that is deprecated. Beginning
 
 If a new version of the SDK is available for download after your initial installation, you should install the updated version at your earliest convenience to get the latest fixes and enhancements as soon as possible. You can use the `dfx upgrade` command to compare the version you have currently installed against the latest version available for download. If a newer version of `dfx` is available, the `dfx upgrade` command automatically downloads and installs the latest version.
 
-Note that you don’t need to uninstall the software before installing the new version. However, if you want to perform a clean installation rather than an upgrade, you can first uninstall the software as described in [Removing the software](#remove), then re-run the download and installation command.
+Note that you don't need to uninstall the software before installing the new version. However, if you want to perform a clean installation rather than an upgrade, you can first uninstall the software as described in [Removing the software](#remove), then re-run the download and installation command.
 
 For information about the features and fixes in the latest release, see the [Release notes](../updates/release-notes/sdk-release-notes.md).
+
+## Installing a specific version
+
+The install script looks for the environment variable `DFX_VERSION` to check if it is supposed to install a specific version of the SDK or to simply install the latest version.
+If you want to install e.g. version `0.11.1` specifically, you would run this:
+
+``` bash
+DFX_VERSION=0.11.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+```
+
+### Setting a default version
+
+If defined, `dfx` will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
+For example, if your `dfx.json` contains `"dfx": "0.11.1"`, any `dfx` command you run within this project's directory will be executed by `dfx` of version `0.11.1`.
+Should the defined version not be installed (e.g. because you cloned a repo that was created for a different version than you have installed locally), `dfx` will report an error.
+
+To set a _global_ default (that gets overwritten by project-specific settings from the project's `dfx.json`), run the install script with the desired version, even if it is already installed.
 
 ## Removing the software
 
@@ -124,5 +155,5 @@ For example:
 If you are uninstalling because you want to immediately reinstall a clean version of `dfx`, you can run the following command:
 
 ``` bash
-~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
+~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 ```

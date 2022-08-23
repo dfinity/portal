@@ -45,88 +45,75 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Languages",
+          label: "Agents",
           link: {
             type: "doc",
-            id: "developer-docs/build/languages/work-with-languages",
+            id: "developer-docs/build/agents/index",
           },
           items: [
-            // 'developer-docs/build/explore-templates',
+            'developer-docs/build/agents/agent-dfinity',
+            'developer-docs/build/agents/ic-agent-dfinity'
+          ],
+        }, {
+          type: "category",
+          label: "CDKs",
+          link: {
+            type: "doc",
+            id: "developer-docs/build/cdks/index",
+          },
+          items: [
             {
               type: "category",
-              label: "Rust",
+              label: "cdk-rs by DFINITY",
               link: {
                 type: "doc",
-                id: "developer-docs/build/languages/rust/rust-intro",
+                id: "developer-docs/build/cdks/cdk-rs-dfinity/index",
               },
               items: [
-                "developer-docs/build/languages/rust/rust-quickstart",
-                "developer-docs/build/languages/rust/rust-counter",
-                "developer-docs/build/languages/rust/multiply-dependency",
-                "developer-docs/build/languages/rust/rust-profile",
-                "developer-docs/build/languages/rust/rust-optimize",
+                "developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart",
+                "developer-docs/build/cdks/cdk-rs-dfinity/rust-profile",
+                "developer-docs/build/cdks/cdk-rs-dfinity/rust-counter",
+                "developer-docs/build/cdks/cdk-rs-dfinity/rust-optimize",
+                "developer-docs/build/cdks/cdk-rs-dfinity/multiply-dependency",
               ],
             },
             {
               type: "category",
-              label: "Motoko",
-              link: {
-                // type: 'doc', id: 'developer-docs/build/languages/motoko/index',
-                type: "doc",
-                id: "developer-docs/build/languages/motoko/motoko",
-              },
-              items: [
-                "developer-docs/build/languages/motoko/about-this-guide",
-                "developer-docs/build/languages/motoko/motoko-introduction",
-                "developer-docs/build/languages/motoko/basic-concepts",
-                "developer-docs/build/languages/motoko/base-intro",
-                "developer-docs/build/languages/motoko/mutable-state",
-                "developer-docs/build/languages/motoko/local-objects-classes",
-                "developer-docs/build/languages/motoko/actors-async",
-                "developer-docs/build/languages/motoko/errors",
-                "developer-docs/build/languages/motoko/pattern-matching",
-                "developer-docs/build/languages/motoko/sharing",
-                "developer-docs/build/languages/motoko/message-inspection",
-                "developer-docs/build/languages/motoko/modules-and-imports",
-                "developer-docs/build/languages/motoko/control-flow",
-                "developer-docs/build/languages/motoko/structural-equality",
-                "developer-docs/build/languages/motoko/actor-classes",
-                "developer-docs/build/languages/motoko/caller-id",
-                "developer-docs/build/languages/motoko/cycles",
-                "developer-docs/build/languages/motoko/upgrades",
-                "developer-docs/build/languages/motoko/compatibility",
-                "developer-docs/build/languages/motoko/stablememory",
-                "developer-docs/build/languages/motoko/heartbeats",
-                "developer-docs/build/languages/motoko/language-manual",
-                "developer-docs/build/languages/motoko/compiler-ref",
-                "developer-docs/build/languages/motoko/motoko-grammar",
-                "developer-docs/build/languages/motoko/overview",
-                "developer-docs/build/languages/motoko/style",
-              ],
-            },
-            {
-              type: "category",
-              label: "Candid",
+              label: "Motoko by DFINITY",
               link: {
                 type: "doc",
-                id: "developer-docs/build/languages/candid/candid-intro",
+                id: "developer-docs/build/cdks/motoko-dfinity/motoko",
               },
               items: [
-                "developer-docs/build/languages/candid/candid-concepts",
-                "developer-docs/build/languages/candid/candid-howto",
+                "developer-docs/build/cdks/motoko-dfinity/about-this-guide",
+                "developer-docs/build/cdks/motoko-dfinity/motoko-introduction",
+                "developer-docs/build/cdks/motoko-dfinity/basic-concepts",
+                "developer-docs/build/cdks/motoko-dfinity/base-intro",
+                "developer-docs/build/cdks/motoko-dfinity/mutable-state",
+                "developer-docs/build/cdks/motoko-dfinity/local-objects-classes",
+                "developer-docs/build/cdks/motoko-dfinity/actors-async",
+                "developer-docs/build/cdks/motoko-dfinity/errors",
+                "developer-docs/build/cdks/motoko-dfinity/pattern-matching",
+                "developer-docs/build/cdks/motoko-dfinity/sharing",
+                "developer-docs/build/cdks/motoko-dfinity/message-inspection",
+                "developer-docs/build/cdks/motoko-dfinity/modules-and-imports",
+                "developer-docs/build/cdks/motoko-dfinity/control-flow",
+                "developer-docs/build/cdks/motoko-dfinity/structural-equality",
+                "developer-docs/build/cdks/motoko-dfinity/actor-classes",
+                "developer-docs/build/cdks/motoko-dfinity/caller-id",
+                "developer-docs/build/cdks/motoko-dfinity/cycles",
+                "developer-docs/build/cdks/motoko-dfinity/upgrades",
+                "developer-docs/build/cdks/motoko-dfinity/compatibility",
+                "developer-docs/build/cdks/motoko-dfinity/stablememory",
+                "developer-docs/build/cdks/motoko-dfinity/heartbeats",
+                "developer-docs/build/cdks/motoko-dfinity/language-manual",
+                "developer-docs/build/cdks/motoko-dfinity/compiler-ref",
+                "developer-docs/build/cdks/motoko-dfinity/motoko-grammar",
+                "developer-docs/build/cdks/motoko-dfinity/overview",
+                "developer-docs/build/cdks/motoko-dfinity/style",
               ],
             },
-            {
-              type: "category",
-              label: "Other Languages",
-              link: {
-                type: "doc",
-                id: "developer-docs/build/languages/other-languages/other-languages-intro",
-              },
-              items: [
-                "developer-docs/build/languages/other-languages/clang-supported-languages",
-              ],
-            },
+            'developer-docs/build/cdks/clang-supported-languages'
           ],
         },
         {
@@ -155,13 +142,25 @@ const sidebars = {
           type: "category",
           label: "Frontend Tutorials",
           link: {
-            // type: 'doc', id: 'developer-docs/build/frontend/index',
+            // type: 'doc', id: 'developer-docs/build/frontend/index', 
             type: "doc",
             id: "developer-docs/build/frontend/webpack-config",
           },
           items: [
             "developer-docs/build/frontend/webpack-config",
             "developer-docs/build/frontend/custom-frontend",
+          ],
+        },
+        {
+          type: "category",
+          label: "Candid",
+          link: {
+            type: "doc",
+            id: "developer-docs/build/candid/candid-intro",
+          },
+          items: [
+            "developer-docs/build/candid/candid-concepts",
+            "developer-docs/build/candid/candid-howto",
           ],
         },
         "developer-docs/build/troubleshooting",
@@ -171,15 +170,14 @@ const sidebars = {
       type: "category",
       label: "Deployment & Scaling",
       link: {
-        type: "doc",
-        id: "developer-docs/deploy/computation-and-storage-costs",
+        type: 'doc', id: 'developer-docs/deploy/deploy',
       },
       items: [
-        // 'developer-docs/deploy/deploy',
-        // 'developer-docs/deploy/scale',
-        "developer-docs/deploy/larger-wasm",
-        "developer-docs/deploy/custom-domain",
-        "developer-docs/deploy/computation-and-storage-costs",
+        'developer-docs/deploy/deploy',
+        'developer-docs/deploy/larger-wasm',
+        'developer-docs/deploy/staging-environment',
+        'developer-docs/deploy/custom-domain',
+        'developer-docs/deploy/computation-and-storage-costs',
         // 'developer-docs/deploy/advanced-deployment'
       ],
     },
@@ -189,10 +187,33 @@ const sidebars = {
       link: {
         // type: 'doc', id: 'developer-docs/functionality/index'
         type: "doc",
-        id: "developer-docs/functionality/internet-identity/integrate-identity",
+        id: "developer-docs/functionality/bitcoin/index",
       },
       items: [
         // 'developer-docs/functionality/index',
+        {
+          type: 'category',
+          label: 'Bitcoin Integration',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/bitcoin/index"
+          },
+          items: [
+            'developer-docs/functionality/bitcoin/bitcoin-how-it-works',
+            'developer-docs/functionality/bitcoin/local-development',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Threshold ECDSA',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/t-ecdsa/index"
+          },
+          items: [
+            'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
+          ]
+        },
         "developer-docs/functionality/internet-identity/integrate-identity",
         {
           type: "category",
@@ -207,14 +228,6 @@ const sidebars = {
             "developer-docs/functionality/ledger/deploy-new-token",
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Bitcoin Integration',
-        //   items: [
-        //     'developer-docs/functionality/bitcoin/bitcoin',
-        //     'developer-docs/functionality/bitcoin/t-ecdsa'
-        //   ]
-        // },
         // {
         //   type: 'category',
         //   label: 'Using the SNS',
@@ -234,6 +247,7 @@ const sidebars = {
             "developer-docs/functionality/rosetta/neuron-lifecycle",
             "developer-docs/functionality/rosetta/staking-support",
             "developer-docs/functionality/rosetta/staking-tutorial",
+            "developer-docs/functionality/rosetta/hotkeys",
           ],
         },
       ],
@@ -289,6 +303,11 @@ const sidebars = {
         "references/cli-reference/dfx-wallet",
         "references/cli-reference/dfx-envars",
       ],
+    },
+    {
+      type: "doc",
+      label: "dfx.json schema",
+      id: "references/dfx-json-reference"
     },
     {
       type: "category",
@@ -358,9 +377,10 @@ const sidebars = {
     "references/ledger",
     "references/ii-spec",
     "references/ic-interface-spec",
+    "references/id-encoding-spec",
     {
       type: "category",
-      label: "quill Commands",
+      label: "Quill Commands",
       link: {
         type: "doc",
         id: "references/quill-cli-reference/index",
@@ -443,11 +463,11 @@ const sidebars = {
   ],
   samples: [
     // 'samples/overview',
-    //"samples/bitcoin-integration",
-    //"samples/t-ecdsa-sample",
+    "samples/deploying-your-first-bitcoin-dapp",
+    "samples/t-ecdsa-sample",
+    "samples/http-requests-exchange-rates",
     "samples/hello",
     "samples/host-a-website",
-    // 'samples/http-requests-exchange-rates',
     "samples/dex",
     "samples/nft",
     "samples/dao",

@@ -15,6 +15,8 @@ const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const roadmapDataPlugin = require("./plugins/roadmap-data");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 
 const teamInformationPlugin = require("./plugins/team-information");
@@ -37,14 +39,16 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    'docusaurus-plugin-sass',
+    "docusaurus-plugin-sass",
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
+    roadmapDataPlugin,
   ],
 
   presets: [
@@ -132,7 +136,11 @@ const config = {
               },
               {
                 label: "How it works",
-                href: "/howitworks",
+                href: "/how-it-works",
+              },
+              {
+                label: "Bitcoin Integration",
+                href: "/bitcoin-integration",
               },
               {
                 label: "Internet Identity",
@@ -194,7 +202,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://forum.dfinity.org/c/roadmap/29",
+                href: "/roadmap",
               },
               {
                 label: "Staking & Governance",

@@ -2,5 +2,8 @@
 * @dfinity/editorial
 
 docs/developer-docs/updates/release-notes/ @dfinity/dx
+docs/developer-docs/build/agents @dfinity/dx
+docs/developer-docs/build/cdks @dfinity/dx
+docs/developer-docs/functionality/rosetta @dfinity/finint
 
 # Each piece of documentation must be owned by the respective teams

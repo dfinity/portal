@@ -1,8 +1,14 @@
-# How to interact with SNS sale
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
+# How to participate in the SNS decentralization sale
+<!--TODO-content: -->
 <Tabs>
-  <TabItem value="frontend" label='SNS Frondend'>
+  <TabItem value="FE" label='SNS Frontend'>
+SNS Frontend Text
   </TabItem>
-  <TabItem value="refs" label='References'>
+  <TabItem value="quill" label='SNS quill'>
+sns-quill Text
   </TabItem>
 </Tabs>

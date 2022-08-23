@@ -7,38 +7,83 @@ import transitions from "@site/static/transitions.json";
 
 const cardsContent = [
   {
-    title: "Liquid democracy",
-    body: "Permissionless NNS DAO directly upgrades nodes, and governs network",
+    title: "Web serving",
+    body: "Smart contracts process http requests & serve interactive web direct to users",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
+  },
+  {
+    title: "Breakthrough speed",
+    body: "Pre-finalized query TX <200ms, and update TX in <2s",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
+  },
+  {
+    title: "Interact w/o tokens",
+    body: 'Smart contracts pay for their own compute so users can just interact',
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
+  },
+  {
+    title: "Emit less CO₂",
+    body: "100% on-chain systems and services can be more efficient than traditional IT",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
+  },
+  {
+    title: "Limitless scaling",
+    body: "Scale mass-market web3 services 100% on-chain (no cloud or servers needed)",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
+  },
+  {
+    title: "Internet Identity",
+    body: "Web3 sign-on via WebAuthn: fingerprint sensor, Face ID, etc",
+    link: "https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7",
+  },
+  {
+    title: "Rapid evolution",
+    body: "A governance DAO upgrades and configures the blockchain's nodes daily",
     link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
   },
   {
-    title: "Actor model",
-    body: "WebAssembly smart contracts run in parallel without reentrancy problems",
+    title: "Parallelism",
+    body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
     link: "https://wiki.internetcomputer.org/wiki/Canisters_(dapps/smart_contracts)#Canisters_as_actors",
   },
   {
-    title: "Motoko",
-    body: "Sophisticated blockchain language has unlimited precision numbers for DeFi",
-    link: "/docs/current/developer-docs/build/languages/motoko/",
+    title: "WebAssembly",
+    body: "Use any lang that compiles to the VM of the future: Motoko, Rust, C, etc",
+    link: "https://wiki.internetcomputer.org/wiki/WebAssembly",
   },
   {
     title: "Web3 orchestration",
-    body: "Chain key: smart contracts can sign TX you can directly run on other chains",
+    body: "Smart contracts sign TXs that run on other blockchains (chain key crypto)",
     link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
   },
   {
     title: "Bitcoin liquidity",
-    body: "Smart contracts process UTXOs like they are hosted on Bitcoin mainnet",
-    link: "/howitworks/direct-integration-with-bitcoin/",
+    body: "Smart contracts process UTXOs as though hosted on Bitcoin mainnet",
+    link: "/bitcoin-integration",
   },
   {
     title: "HTTPS outcalls",
-    body: "Nodes call URL for contract, contract pre-processes, consensus agrees result",
+    body: "Smart contracts can connect to outside world through http via consensus",
     link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
+  },
+  {
+    title: "Multi-block TXs",
+    body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
+    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+  },
+  {
+    title: "Sovereign network",
+    body: 'Internet Computer nodes are dedicated "node machines", not cloud instances',
+    link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
+  },
+  {
+    title: "Daemon contracts",
+    body: "Smart contracts can be invoked by the network and run automatically",
+    link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
   },
 ];
 
-const MotionLink = motion(Link);
+export const MotionLink = motion(Link);
 
 function Card({ title, body }) {
   return (
@@ -97,7 +142,7 @@ function Features() {
         className={styles.actionButtonContainerMobile}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>
@@ -117,7 +162,7 @@ function Features() {
         className={styles.actionButtonContainer}
         variants={transitions.item}
       >
-        <Link className={styles.actionButton} to="/howitworks">
+        <Link className={styles.actionButton} to="/how-it-works">
           LEARN MORE
         </Link>
       </motion.div>
