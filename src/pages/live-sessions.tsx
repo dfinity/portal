@@ -118,14 +118,14 @@ function LiveSessionsPage(): JSX.Element {
                 Join live sessions with the DFINITY Foundation to discuss
                 upcoming contributions to the Internet Computer roadmap.
               </motion.p>
-              <motion.div className="" variants={transitions.item}>
+              {/* <motion.div className="" variants={transitions.item}>
                 <button
                   className="button-primary text-center"
                   onClick={scrollToForm}
                 >
                   Alerts for New Session Registrations
                 </button>
-              </motion.div>
+              </motion.div> */}
             </div>
           </section>
         </AnimateSpawn>
@@ -286,36 +286,9 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </section>
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.item}
-          className="bg-infinite mb-20 md:mb-40"
-        >
-          <div className="max-w-page relative px-6 md:px-12.5 md:mx-auto py-16">
-            <div className="md:w-10/12 md:mx-auto text-white text-center">
-              <h3 className="tw-lead  mb-6">
-                Be the first to get notified as new sessions become available.
-              </h3>
-              <button
-                className="button-outline-white"
-                onClick={() =>
-                  window.scroll({
-                    top: formRef.current.offsetTop,
-                    behavior: "smooth",
-                  })
-                }
-              >
-                Alerts for New Session Registrations
-              </button>
-            </div>
-            <motion.img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
-              alt=""
-              variants={transitions.item}
-            />
-          </div>
-        </AnimateSpawn>
+        
+        {/* Removed a section from here with a "Be the first to get notified as new sessions become available" */}
+
         <AnimateSpawn
           variants={transitions.container}
           el={motion.section}
@@ -441,47 +414,7 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-
-        {/* This must not be invisible */}
-        <div ref={formRef} id="subscribe"></div>
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.item}
-          className="bg-infinite border-0 border-b border-white border-solid"
-        >
-          <div className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative">
-            <img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
-              alt=""
-            />
-            <div className="md:w-10/12 md:mx-auto ">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
-                Register to stay up to date on live community discussions
-              </h2>
-              <form
-                method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
-                className="md:w-4/10 space-y-6"
-              >
-                <input
-                  type="email"
-                  name="EMAIL"
-                  placeholder="Email"
-                  required
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <input
-                  type="text"
-                  name="FNAME"
-                  placeholder="First Name"
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <button className="button-outline-white">Register</button>
-              </form>
-            </div>
-          </div>
-        </AnimateSpawn>
+        {/* Removed a section with subscribe form  */}
       </main>
     </Layout>
   );
