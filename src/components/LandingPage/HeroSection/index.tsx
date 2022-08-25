@@ -134,8 +134,8 @@ function Index() {
         >
           <Link className={styles.actionButton} to="/developers">
             CODE WEB3
-          </Link>&nbsp&nbsp
-          <Link className={styles.actionButton} to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
+          </Link>
+          { \u00A0 }{ \u00A0 }
             EXTEND BTC | ETH
           </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
