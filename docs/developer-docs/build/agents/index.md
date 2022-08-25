@@ -1,21 +1,21 @@
 # Agents
 
 In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an agent.
-An agent has a few key responsibilities, which make it convenient to work with in your language of choice. 
+An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
 You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's HTTP interface.
 
 ## Available Agents
 
 This section of the docs covers the following agents, ordered by languages:
-- JavaScript
-  - [JavaScript/TypeScript Agent by DFINITY](./agent-dfinity.md)
+
+- JavaScript / TypeScript
+  - [JavaScript/TypeScript Agent by DFINITY](./javascript/javascript-intro.md)
 - Rust
   - [Rust Agent by DFINITY](./ic-agent-dfinity.md)
-- TypeScript
-  - [JavaScript/TypeScript Agent by DFINITY](./agent-dfinity.md)
 
 In addition to those, there are a lot of other community-supported agents:
+
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
 - Dart
@@ -34,14 +34,15 @@ If you're interested in building an agent in another language please reach out t
 
 ### 1. Structuring Data
 
-A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The `agent` submits a POST request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components: 
-* `request_type`
-* Authentication
-    * `sender`, `nonce`, and `ingress_expiry`
-* `canister_id`
-* `method_name`
-* `request_id` - required for `update` request type calls
-* `arg` - the rest of the payload
+A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The `agent` submits a POST request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components:
+
+- `request_type`
+- Authentication
+  - `sender`, `nonce`, and `ingress_expiry`
+- `canister_id`
+- `method_name`
+- `request_id` - required for `update` request type calls
+- `arg` - the rest of the payload
 
 By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a CBOR-encoded buffer.
 
@@ -55,19 +56,19 @@ Once the data has been returned from the IC, the `agent` takes the certificate f
 
 ### 3. Managing Authentication
 
-Calls to the Internet Computer always need to have a cryptographic identity attached. That identity will either be Anonymous or Authenticated, using a cryptographic signature. Since identities are required, canisters can use the identity attached to a call to decide how to respond to that call. This enables contracts to use those identities for other purposes. 
+Calls to the Internet Computer always need to have a cryptographic identity attached. That identity will either be Anonymous or Authenticated, using a cryptographic signature. Since identities are required, canisters can use the identity attached to a call to decide how to respond to that call. This enables contracts to use those identities for other purposes.
 
 #### Accepted Identities
 
 The IC accepts calls using the following types of signatures in identities:
 
-* Ed25519 and ECDSA signatures
-  * Plain signatures are supported for the schemes
-* Ed25519 or ECDSA on curve P-256 (also known as secp256r1)
-  * using SHA-256 as a hash function
-  * using the Koblitz curve in secp256k1.
+- Ed25519 and ECDSA signatures
+  - Plain signatures are supported for the schemes
+- Ed25519 or ECDSA on curve P-256 (also known as secp256r1)
+  - using SHA-256 as a hash function
+  - using the Koblitz curve in secp256k1.
 
-When encoding these identities as a `principal`, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous. 
+When encoding these identities as a `principal`, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous.
 
 A self-authenticating identity using one of the above curves will have a suffix of 2.
 

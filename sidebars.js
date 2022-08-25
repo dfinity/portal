@@ -51,10 +51,22 @@ const sidebars = {
             id: "developer-docs/build/agents/index",
           },
           items: [
-            'developer-docs/build/agents/agent-dfinity',
-            'developer-docs/build/agents/ic-agent-dfinity'
+            {
+              type: "category",
+              label: "JavaScript Agent by DFINITY",
+              link: {
+                type: "doc",
+                id: "developer-docs/build/agents/javascript/javascript-intro",
+              },
+              items: [
+                "developer-docs/build/agents/javascript/javascript-intro",
+                "developer-docs/build/agents/javascript/nodejs",
+              ],
+            },
+            "developer-docs/build/agents/ic-agent-dfinity",
           ],
-        }, {
+        },
+        {
           type: "category",
           label: "CDKs",
           link: {
@@ -113,7 +125,7 @@ const sidebars = {
                 "developer-docs/build/cdks/motoko-dfinity/style",
               ],
             },
-            'developer-docs/build/cdks/clang-supported-languages'
+            "developer-docs/build/cdks/clang-supported-languages",
           ],
         },
         {
@@ -142,7 +154,7 @@ const sidebars = {
           type: "category",
           label: "Frontend Tutorials",
           link: {
-            // type: 'doc', id: 'developer-docs/build/frontend/index', 
+            // type: 'doc', id: 'developer-docs/build/frontend/index',
             type: "doc",
             id: "developer-docs/build/frontend/webpack-config",
           },
@@ -170,14 +182,15 @@ const sidebars = {
       type: "category",
       label: "Deployment & Scaling",
       link: {
-        type: 'doc', id: 'developer-docs/deploy/deploy',
+        type: "doc",
+        id: "developer-docs/deploy/deploy",
       },
       items: [
-        'developer-docs/deploy/deploy',
-        'developer-docs/deploy/larger-wasm',
-        'developer-docs/deploy/staging-environment',
-        'developer-docs/deploy/custom-domain',
-        'developer-docs/deploy/computation-and-storage-costs',
+        "developer-docs/deploy/deploy",
+        "developer-docs/deploy/larger-wasm",
+        "developer-docs/deploy/staging-environment",
+        "developer-docs/deploy/custom-domain",
+        "developer-docs/deploy/computation-and-storage-costs",
         // 'developer-docs/deploy/advanced-deployment'
       ],
     },
@@ -192,27 +205,25 @@ const sidebars = {
       items: [
         // 'developer-docs/functionality/index',
         {
-          type: 'category',
-          label: 'Bitcoin Integration',
+          type: "category",
+          label: "Bitcoin Integration",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/bitcoin/index"
+            id: "developer-docs/functionality/bitcoin/index",
           },
           items: [
-            'developer-docs/functionality/bitcoin/bitcoin-how-it-works',
-            'developer-docs/functionality/bitcoin/local-development',
-          ]
+            "developer-docs/functionality/bitcoin/bitcoin-how-it-works",
+            "developer-docs/functionality/bitcoin/local-development",
+          ],
         },
         {
-          type: 'category',
-          label: 'Threshold ECDSA',
+          type: "category",
+          label: "Threshold ECDSA",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/t-ecdsa/index"
+            id: "developer-docs/functionality/t-ecdsa/index",
           },
-          items: [
-            'developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works'
-          ]
+          items: ["developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works"],
         },
         "developer-docs/functionality/internet-identity/integrate-identity",
         {
@@ -307,7 +318,7 @@ const sidebars = {
     {
       type: "doc",
       label: "dfx.json schema",
-      id: "references/dfx-json-reference"
+      id: "references/dfx-json-reference",
     },
     {
       type: "category",
