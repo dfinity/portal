@@ -15,7 +15,16 @@ const variants = {
   exit: { x: "100%", duration: 0.25 },
 };
 const languageOptions = ["Motoko", "Rust", "Javascript"];
-const domainOptions = ["Global", "Gaming", "DeFi", "Website", "NFT"];
+const domainOptions = [
+  "Global",
+  "GameFi",
+  "Asynchronous DeFi",
+  "Website",
+  "Metaverse and NFTs",
+  "Blue Sky",
+  "SocialFi",
+  "Public Good / Social Impact",
+];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
 const contentTypeOptions = [
   "Code Samples",

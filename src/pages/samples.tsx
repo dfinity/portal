@@ -5,12 +5,32 @@ import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import { sampleItems } from "@site/src/components/Common/sampleItems";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
+import communityProjects from "@site/static/supernovaProjects.json";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
+
+const CommunityProject = ({ project }) => {
+  return (
+    <Card
+      key={project.id}
+      image={
+        !project.image
+          ? require(`../../static/img/samples/default.jpeg`).default
+          : require(`../../static/img/samples/supernovaSubmissions/${project.image}`)
+              .default
+      }
+      title={project.name}
+      domain={project.category}
+      body={project.description}
+      links={{ docs: project.code }}
+    />
+  );
+};
 
 function Samples(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -20,7 +40,11 @@ function Samples(): JSX.Element {
   const [selectedContentTypes, setSelectedContentTypes] = React.useState([]);
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
+  const [filteredCommunitySamples, setFilteredCommunitySamples] =
+    React.useState(communityProjects);
   const [numberOfItems, setNumberOfItems] = React.useState(16);
+  const [numberOfCommunityItems, setNumberOfCommunityItems] =
+    React.useState(16);
   resetNavBarStyle();
 
   const sortSamples = (samples) => {
@@ -33,6 +57,17 @@ function Samples(): JSX.Element {
     }
   };
 
+  useEffect(() => {
+    let tempFilteredSamples = communityProjects;
+    if (selectedDomains.length > 0) {
+      tempFilteredSamples = tempFilteredSamples.filter(({ category }) =>
+        selectedDomains.includes(category)
+      );
+    }
+
+    sortSamples(tempFilteredSamples);
+    setFilteredCommunitySamples([...tempFilteredSamples]);
+  }, [selectedDomains]);
   useEffect(() => {
     let tempFilteredSamples = sampleItems;
     if (selectedLanguages.length > 0) {
@@ -69,7 +104,7 @@ function Samples(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
-          <section className="w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">
+          <section className="max-w-page w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">
             <img
               className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
               src={BGCircle}
@@ -78,7 +113,9 @@ function Samples(): JSX.Element {
             <Header />
             <motion.div variants={transitions.item}>
               <FilterBar
-                numberOfItems={filteredSamples.length}
+                numberOfItems={
+                  filteredSamples.length + filteredCommunitySamples.length
+                }
                 selectedLanguages={selectedLanguages}
                 setSelectedLanguages={setSelectedLanguages}
                 selectedDomains={selectedDomains}
@@ -110,6 +147,56 @@ function Samples(): JSX.Element {
               <div
                 className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
                 onClick={() => setNumberOfItems(numberOfItems + 16)}
+              >
+                <div className="inline-block mr-2 h-6">
+                  <PlusIcon />
+                </div>
+                <p className="mb-0">Load more</p>
+              </div>
+            )}
+
+            <motion.div
+              variants={transitions.item}
+              className="mt-30 flex flex-col md:flex-row items-center relative"
+            >
+              <img
+                className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
+                src={BGCircleCommunity}
+                alt=""
+              />
+              <div className="md:w-2/3 md:ml-1/12">
+                <p className="md:w-6/10 tw-heading-5">Community repositories</p>
+                <p className="md:w-6/10 tw-paragraph">
+                  The Internet Computer is home to many dapps built by the
+                  community. Check out the repos and get building!
+                </p>
+                <p className="inline-flex tw-title-navigation-on-page border-black-60 border-2 border-solid py-2 px-3 rounded-xl hover:text-white hover:bg-infinite transition-colors">
+                  Submit your Repo
+                </p>
+              </div>
+              <div className="w-full md:w-4/10 md:mr-1/12">
+                <p className="mt-6 md:mt-0 tw-paragraph-sm text-black-60">
+                  Disclamer: Please use the following sample code at your own
+                  risk and always do your own research.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              variants={transitions.item}
+              className="relative my-14 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
+            >
+              {filteredCommunitySamples
+                .slice(0, numberOfCommunityItems)
+                .map((sample) => (
+                  <CommunityProject project={sample} />
+                ))}
+            </motion.div>
+            {filteredCommunitySamples.length > numberOfCommunityItems && (
+              <div
+                className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
+                onClick={() =>
+                  setNumberOfCommunityItems(numberOfCommunityItems + 16)
+                }
               >
                 <div className="inline-block mr-2 h-6">
                   <PlusIcon />
