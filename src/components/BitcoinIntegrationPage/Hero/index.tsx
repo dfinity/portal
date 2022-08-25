@@ -56,7 +56,7 @@ const Hero = () => {
           variants={transitions.item}
           className="tw-heading-3 mb-2 w-5/6 md:tw-heading-2 md:mb-6 md:ml-1/12 md:w-6/12"
         >
-          Bitcoin Integration
+          Code Bitcoin
         </motion.h1>
         <motion.p
           variants={transitions.item}

@@ -27,7 +27,7 @@ function Index() {
           How It Works
         </motion.h1>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Two key developments make it possible for Internet Computer smart 
+          Two key technology developments make it possible for Internet Computer smart 
           contracts to create bitcoin addresses and directly send and 
           receive bitcoin: inter-node communication between the Internet Computer
           network and the Bitcoin network, and the use of novel threshold ECDSA
