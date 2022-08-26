@@ -245,7 +245,7 @@ const sidebars = {
           link: {
             type: "doc",
             id: "developer-docs/functionality/sns/index",
-          }
+          },
           items: [
             "developer-docs/functionality/sns/sns",
             "developer-docs/functionality/deployment/launch-intro",
