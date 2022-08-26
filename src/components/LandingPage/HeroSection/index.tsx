@@ -143,7 +143,7 @@ function Index() {
           </Link>
           <Link
             className={styles.actionButton}
-            to="https://wiki.internetcomputer.org/wiki/Replacing_traditional_IT"
+            to="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
           >
             DITCH CLOUD
           </Link>
