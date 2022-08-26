@@ -2,7 +2,7 @@
 
 We explain how to deploy an SNS that is provided as a 
 system functionality by the IC.
-As explained in the [introduction](../sns.md), there are also other 
+As explained in the [introduction](../sns-intro.md), there are also other 
 ways to deploy and maintain a DAO. Many concepts explained here may be 
 relevant for you even if you deploy another kind of DAO.
 

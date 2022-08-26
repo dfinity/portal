@@ -3,7 +3,7 @@
 ## Technical documentation
 
 Here you will find
-* [an intro to sns](sns.md)
+* [an intro to sns](sns-intro.md)
 
 deployment info
 * [Launch intro](deployment/launch-intro)

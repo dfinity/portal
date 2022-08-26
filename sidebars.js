@@ -198,9 +198,7 @@ const sidebars = {
       type: "category",
       label: "Integrate Functionality",
       link: {
-        // type: 'doc', id: 'developer-docs/functionality/index'
-        type: "doc",
-        id: "developer-docs/functionality/bitcoin/index",
+        type: 'doc', id: 'developer-docs/functionality/index'
       },
       items: [
         'developer-docs/functionality/index',
@@ -212,7 +210,7 @@ const sidebars = {
             id: "developer-docs/functionality/sns/index",
           },
           items: [
-            "developer-docs/functionality/sns/sns",
+            "developer-docs/functionality/sns/sns-intro",
             "developer-docs/functionality/sns/deployment/launch-intro",
             "developer-docs/functionality/sns/deployment/frontend-integration",
             "developer-docs/functionality/sns/deployment/predeployment",
