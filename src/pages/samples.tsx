@@ -21,7 +21,7 @@ const CommunityProject = ({ project }) => {
       key={project.id}
       image={
         !project.image
-          ? require(`../../static/img/samples/default.jpeg`).default
+          ? require(`../../static/img/samples/default.gif`).default
           : require(`../../static/img/samples/supernovaSubmissions/${project.image}`)
               .default
       }
