@@ -248,13 +248,15 @@ const sidebars = {
           }
           items: [
             "developer-docs/functionality/sns/sns",
-            "developer-docs/functionality/local-testing",
-            "developer-docs/functionality/launch-intro",
-            "developer-docs/functionality/predeployment",
-            "developer-docs/functionality/deployment",
-            "developer-docs/functionality/nervous-system-parameters",
-            "developer-docs/functionality/proposal-guide",
-            "developer-docs/functionality/upgradeSNS"
+            "developer-docs/functionality/deployment/launch-intro",
+            "developer-docs/functionality/deployment/frontend-integration",
+            "developer-docs/functionality/deployment/predeployment",
+            "developer-docs/functionality/deployment/local-testing",
+            "developer-docs/functionality/deployment/deployment",
+            "developer-docs/functionality/managing-sns/nervous-system-parameters",
+            "developer-docs/functionality/managing-sns/proposal-guide",
+            "developer-docs/functionality/managing-sns/cycle-usage",
+            "developer-docs/functionality/managing-sns/upgradeSNS",
           ]
         },
         {
@@ -454,6 +456,24 @@ const sidebars = {
   ],
   tokenomics: [
     "tokenomics/index",
+    {
+      type: "category",
+      label: "SNS",
+      link:{
+        type: "doc",
+        id: "tokenomics/sns/intro"
+      },
+      items: [
+        "tokenomics/sns/intro",
+        "tokenomics/sns/rewards",
+        "tokenomics/sns/community-fund",
+        "tokenomics/sns/not-blind/predeployment-considerations",
+        "tokenomics/sns/not-blind/tokenomics",
+        "tokenomics/sns/not-blind/product",
+        "tokenomics/sns/not-blind/business",
+        "tokenomics/sns/not-blind/hype"
+      ],
+    },
     {
       type: "category",
       label: "Identity & Authentication",

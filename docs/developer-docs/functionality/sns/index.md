@@ -4,12 +4,18 @@
 
 Here you will find
 * (an intro to sns)[sns.md]
-* (local testing)[local-testing]
+
+deployment info
 * (launch intro)[launch-intro]
+* (Frontend)[frontend-integration]
 * (predeployment)[predeployment]
+* (local testing)[local-testing]
 * (deployment)[deployment]
+
+management info
 * (nervous system parameters)[nervous-system-parameters]
 * (proposal guide)[proposal-guide]
+* (cycles-usage)[cycles-usage]
 * (upgrading SNS)[upgradeSNS]
 
 ## Entrepreneurial documentation
