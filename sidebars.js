@@ -257,7 +257,7 @@ const sidebars = {
             "developer-docs/functionality/managing-sns/proposal-guide",
             "developer-docs/functionality/managing-sns/cycle-usage",
             "developer-docs/functionality/managing-sns/upgradeSNS",
-          ]
+          ],
         },
         {
           type: "category",
