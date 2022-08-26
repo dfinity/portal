@@ -180,6 +180,5 @@ At this point, the dapp canister(s) are already controlled by the SNS.
 Therefore, **you must make sure that you define at least one developer or 
 airdrop neuron as they provide the only way to upgrade the dapp during
 the sale.**
-
 :::
 
