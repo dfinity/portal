@@ -10,13 +10,13 @@ deployment info
 * [frontend](deployment/frontend-integration)
 * [Predeployment](deployment/predeployment)
 * [Local testing](deployment/local-testing)
-* [deployment](deployment/deployment)
+* [deployment](deployment/deployment.md)
 
 management info
 * [Nervous system parameters](managing-sns/nervous-system-parameters)
 * [Proposal guide](managing-sns/proposal-guide)
 * [Cycles usage](managing-sns/cycles-usage)
-* [Upgrade SNS](managing-sns/upgradSNS)
+* [Upgrade SNS](managing-sns/upgradeSNS)
 
 ## Entrepreneurial documentation
 

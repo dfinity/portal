@@ -203,7 +203,27 @@ const sidebars = {
         id: "developer-docs/functionality/bitcoin/index",
       },
       items: [
-        // 'developer-docs/functionality/index',
+        'developer-docs/functionality/index',
+        {
+          type: 'category',
+          label: 'Service Nervous System (SNS)',
+          link: {
+            type: "doc",
+            id: "developer-docs/functionality/sns/index",
+          },
+          items: [
+            "developer-docs/functionality/sns/sns",
+            "developer-docs/functionality/sns/deployment/launch-intro",
+            "developer-docs/functionality/sns/deployment/frontend-integration",
+            "developer-docs/functionality/sns/deployment/predeployment",
+            "developer-docs/functionality/sns/deployment/local-testing",
+            "developer-docs/functionality/sns/deployment/deployment",
+            "developer-docs/functionality/sns/managing-sns/nervous-system-parameters",
+            "developer-docs/functionality/sns/managing-sns/proposal-guide",
+            "developer-docs/functionality/sns/managing-sns/cycles-usage",
+            "developer-docs/functionality/sns/managing-sns/upgradeSNS",
+          ],
+        },
         {
           type: "category",
           label: "Bitcoin Integration",
@@ -237,26 +257,6 @@ const sidebars = {
             "developer-docs/functionality/ledger/interact-with-ledger",
             "developer-docs/functionality/ledger/ledger-local-setup",
             "developer-docs/functionality/ledger/deploy-new-token",
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Using the SNS',
-          link: {
-            type: "doc",
-            id: "developer-docs/functionality/sns/index",
-          },
-          items: [
-            "developer-docs/functionality/sns/sns",
-            "developer-docs/functionality/sns/deployment/launch-intro",
-            "developer-docs/functionality/sns/deployment/frontend-integration",
-            "developer-docs/functionality/sns/deployment/predeployment",
-            "developer-docs/functionality/sns/deployment/local-testing",
-            "developer-docs/functionality/sns/deployment/deployment",
-            "developer-docs/functionality/sns/managing-sns/nervous-system-parameters",
-            "developer-docs/functionality/sns/managing-sns/proposal-guide",
-            "developer-docs/functionality/sns/managing-sns/cycles-usage",
-            "developer-docs/functionality/sns/managing-sns/upgradeSNS",
           ],
         },
         {
