@@ -25,9 +25,9 @@ const CommunityProject = ({ project }) => {
               .default
       }
       title={project.name}
-      domain={project.category}
+      domain={project.domains[0]}
       body={project.description}
-      links={{ docs: project.code }}
+      links={project.links}
     />
   );
 };
@@ -44,7 +44,7 @@ function Samples(): JSX.Element {
     React.useState(communityProjects);
   const [numberOfItems, setNumberOfItems] = React.useState(16);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
-    React.useState(16);
+    React.useState(40);
   resetNavBarStyle();
 
   const sortSamples = (samples) => {
@@ -57,39 +57,39 @@ function Samples(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    let tempFilteredSamples = communityProjects;
-    if (selectedDomains.length > 0) {
-      tempFilteredSamples = tempFilteredSamples.filter(({ category }) =>
-        selectedDomains.includes(category)
-      );
-    }
-
-    sortSamples(tempFilteredSamples);
-    setFilteredCommunitySamples([...tempFilteredSamples]);
-  }, [selectedDomains]);
-  useEffect(() => {
-    let tempFilteredSamples = sampleItems;
+  const filterSamples = (samples) => {
     if (selectedLanguages.length > 0) {
-      tempFilteredSamples = tempFilteredSamples.filter(({ languages }) =>
-        languages.some((item) => selectedLanguages.includes(item))
+      samples = samples.filter(({ languages }) =>
+        languages?.some((item) => selectedLanguages.includes(item))
       );
     }
     if (selectedDomains.length > 0) {
-      tempFilteredSamples = tempFilteredSamples.filter(({ domains }) =>
-        domains.some((item) => selectedDomains.includes(item))
+      samples = samples.filter(({ domains }) =>
+        domains?.some((item) => selectedDomains.includes(item))
       );
     }
     if (selectedLevels.length > 0) {
-      tempFilteredSamples = tempFilteredSamples.filter(({ level }) =>
-        level.some((item) => selectedLevels.includes(item))
-      );
+      samples = samples.filter(({ level }) => selectedLevels.includes(level));
     }
     if (selectedContentTypes.length > 0) {
-      tempFilteredSamples = tempFilteredSamples.filter(({ contentType }) =>
-        contentType.some((item) => selectedContentTypes.includes(item))
+      samples = samples.filter(({ contentType }) =>
+        contentType?.some((item) => selectedContentTypes.includes(item))
       );
     }
+    return samples;
+  };
+  useEffect(() => {
+    let tempFilteredSamples = filterSamples(communityProjects);
+    sortSamples(tempFilteredSamples);
+    setFilteredCommunitySamples([...tempFilteredSamples]);
+  }, [
+    selectedLanguages,
+    selectedDomains,
+    selectedLevels,
+    selectedContentTypes,
+  ]);
+  useEffect(() => {
+    let tempFilteredSamples = filterSamples(sampleItems);
     sortSamples(tempFilteredSamples);
     setFilteredSamples([...tempFilteredSamples]);
   }, [
@@ -111,7 +111,7 @@ function Samples(): JSX.Element {
               alt=""
             />
             <Header />
-            <motion.div variants={transitions.item}>
+            <motion.div variants={transitions.item} className="md:ml-1/12">
               <FilterBar
                 numberOfItems={
                   filteredSamples.length + filteredCommunitySamples.length
@@ -130,19 +130,33 @@ function Samples(): JSX.Element {
             </motion.div>
             <motion.div
               variants={transitions.item}
-              className="relative my-11 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
+              className="mt-12 md:ml-1/12"
             >
-              {filteredSamples.slice(0, numberOfItems).map((sample) => (
-                <Card
-                  key={sample.index}
-                  image={sample.image}
-                  title={sample.title}
-                  domain={sample.domains[0]}
-                  body={sample.body}
-                  links={sample.links}
-                />
-              ))}
+              <p className="tw-heading-6 md:tw-heading-5">Featured samples</p>
+
+              {filteredSamples.length === 0 && (
+                <p className="tw-paragraph text-black-60">
+                  No featured samples available
+                </p>
+              )}
             </motion.div>
+            {filteredSamples.length !== 0 && (
+              <motion.div
+                variants={transitions.item}
+                className="relative mt-11 mb-20 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
+              >
+                {filteredSamples.slice(0, numberOfItems).map((sample) => (
+                  <Card
+                    key={sample.index}
+                    image={sample.image}
+                    title={sample.title}
+                    domain={sample.domains[0]}
+                    body={sample.body}
+                    links={sample.links}
+                  />
+                ))}
+              </motion.div>
+            )}
             {filteredSamples.length > numberOfItems && (
               <div
                 className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
@@ -157,7 +171,7 @@ function Samples(): JSX.Element {
 
             <motion.div
               variants={transitions.item}
-              className="mt-30 flex flex-col md:flex-row items-center relative"
+              className="mt-10 flex flex-col md:flex-row items-center relative"
             >
               <img
                 className="absolute pointer-events-none max-w-none w-[800px] -right-[320px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-350px] z-[-1000]"
@@ -165,14 +179,16 @@ function Samples(): JSX.Element {
                 alt=""
               />
               <div className="md:w-2/3 md:ml-1/12">
-                <p className="md:w-6/10 tw-heading-5">Community repositories</p>
+                <p className="md:w-6/10 tw-heading-6 md:tw-heading-5">
+                  Community samples
+                </p>
                 <p className="md:w-6/10 tw-paragraph">
                   The Internet Computer is home to many dapps built by the
                   community. Check out the repos and get building!
                 </p>
-                <p className="inline-flex tw-title-navigation-on-page border-black-60 border-2 border-solid py-2 px-3 rounded-xl hover:text-white hover:bg-infinite transition-colors">
+                {/*<p className="inline-flex tw-title-navigation-on-page border-black-60 border-2 border-solid py-2 px-3 rounded-xl hover:text-white hover:bg-infinite transition-colors">
                   Submit your Repo
-                </p>
+                </p>*/}
               </div>
               <div className="w-full md:w-4/10 md:mr-1/12">
                 <p className="mt-6 md:mt-0 tw-paragraph-sm text-black-60">
@@ -195,7 +211,7 @@ function Samples(): JSX.Element {
               <div
                 className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
                 onClick={() =>
-                  setNumberOfCommunityItems(numberOfCommunityItems + 16)
+                  setNumberOfCommunityItems(numberOfCommunityItems + 40)
                 }
               >
                 <div className="inline-block mr-2 h-6">

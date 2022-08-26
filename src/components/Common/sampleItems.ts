@@ -4,9 +4,9 @@ export const sampleItems = [
     title: "Bitcoin",
     image: require("../../../static/img/samples/bitcoin.png").default,
     domains: ["Asynchronous DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation", "live demos"],
     body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
     links: {
       action: {
@@ -24,9 +24,9 @@ export const sampleItems = [
     title: "Threshold ECDSA",
     image: require("../../../static/img/samples/t-ecdsa.png").default,
     domains: ["Global"],
-    languages: ["Motoko", "Rust"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation", "live demos"],
     body: "Build a threshold ECDSA test key on a subnet.",
     links: {
       action: {
@@ -44,10 +44,9 @@ export const sampleItems = [
     title: "Canister HTTP Calls",
     image: require("../../../static/img/samples/exchangeRate.png").default,
     domains: ["HTTP", "Exchange", "Global", "Website"],
-    languages: ["Rust", "Javascript"],
-    level: ["Intermediate"],
-    contentType: ["Documentation"],
-    highlights: ["HTTP", "Exchange", "Website", "Global", "Intermediate"],
+    languages: ["rust", "javascript"],
+    level: "intermediate",
+    contentType: ["documentation"],
     body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
     links: {
       action: {
@@ -63,9 +62,9 @@ export const sampleItems = [
     title: "Hello World",
     image: require("../../../static/img/samples/helloWorld.png").default,
     domains: ["Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Code Samples", "Documentation", "Live Demos"],
+    languages: ["motoko", "rust", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "documentation", "live demos"],
     body: "Deploy a dead simple dapp using two canisters serving a web page.",
     links: {
       action: {
@@ -83,9 +82,9 @@ export const sampleItems = [
     title: "Static Website",
     image: require("../../../static/img/samples/staticWebsite.png").default,
     domains: ["Website", "Global"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Documentation", "Videos"],
+    languages: ["motoko", "rust", "javascript"],
+    level: "beginner",
+    contentType: ["documentation", "videos"],
     body: "Quickly set up a static website structure, add content and basic styling, and deploy on the IC.",
     links: {
       action: { text: "Docs", to: "/samples/host-a-website" },
@@ -98,9 +97,9 @@ export const sampleItems = [
     title: "Basic Dex",
     image: require("../../../static/img/samples/basicDex.png").default,
     domains: ["Asynchronous DeFi", "Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
+    languages: ["motoko", "rust", "javascript"],
+    level: "intermediate",
+    contentType: ["code samples", "documentation", "videos", "live demos"],
     body: "Build dapp to enable DeFi applications on the IC.",
     links: {
       action: {
@@ -119,9 +118,9 @@ export const sampleItems = [
     title: "NFT Minting",
     image: require("../../../static/img/samples/nftMinting.png").default,
     domains: ["Metaverse and NFTs", "GameFi"],
-    languages: ["Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos"],
+    languages: ["rust"],
+    level: "intermediate",
+    contentType: ["code samples", "documentation", "videos"],
     body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
@@ -134,9 +133,9 @@ export const sampleItems = [
     title: "Basic DAO",
     image: require("../../../static/img/samples/basicDAO.png").default,
     domains: ["Global", "Asynchronous DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Intermediate"],
-    contentType: ["Code Samples", "Documentation", "Videos"],
+    languages: ["motoko", "rust"],
+    level: "intermediate",
+    contentType: ["code samples", "documentation", "videos"],
     body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
     links: {
       motoko:
@@ -152,9 +151,9 @@ export const sampleItems = [
     image: require("../../../static/img/samples/encryptedNoteTaking.png")
       .default,
     domains: ["Website"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation", "Videos", "Live Demos"],
+    languages: ["motoko", "rust", "javascript"],
+    level: "advanced",
+    contentType: ["code samples", "documentation", "videos", "live demos"],
     body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
       motoko:
@@ -170,9 +169,9 @@ export const sampleItems = [
     title: "Token transfer",
     image: require("../../../static/img/samples/tokenTransfer.png").default,
     domains: ["Global", "Asynchronous DeFi"],
-    languages: ["Motoko", "Rust"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
     body: "Create a dapp that can transfer tokens to its most active users.",
     links: {
       motoko:
@@ -186,9 +185,9 @@ export const sampleItems = [
     title: "Actor reference",
     image: require("../../../static/img/samples/actorReference.png").default,
     domains: ["Website"],
-    languages: ["Motoko"],
-    level: ["Advanced"],
-    contentType: ["Code Samples", "Documentation"],
+    languages: ["motoko"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
     body: "Learn how the IC management canister functions as an actor (reference).",
     links: {
       motoko:
@@ -200,10 +199,9 @@ export const sampleItems = [
     title: "WebGL",
     image: require("../../../static/img/samples/webgl.png").default,
     domains: ["GameFi", "Website", "Global"],
-    languages: ["Motoko", "Rust", "Javascript"],
-    level: ["Beginner"],
-    contentType: ["Documentation"],
-    highlights: ["GameFi", "Website", "Global", "Beginner"],
+    languages: ["motoko", "rust", "javascript"],
+    level: "beginner",
+    contentType: ["documentation"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
       docs: "docs/current/samples/host-unity-webgl",

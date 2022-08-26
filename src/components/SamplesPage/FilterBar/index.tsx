@@ -14,7 +14,7 @@ const variants = {
   animate: { x: 0, duration: 0.25 },
   exit: { x: "100%", duration: 0.25 },
 };
-const languageOptions = ["Motoko", "Rust", "Javascript"];
+const languageOptions = ["Motoko", "Rust", "Javascript", "Other"];
 const domainOptions = [
   "Global",
   "GameFi",
@@ -31,6 +31,7 @@ const contentTypeOptions = [
   "Videos",
   "Documentation",
   "Live Demos",
+  "Community Repo",
 ];
 const sortByOptions = ["Relevance", "A to Z", "Z to A"];
 
@@ -157,9 +158,11 @@ function Index({
                         type="checkbox"
                         key={language}
                         value={language}
-                        checked={selectedLanguages.includes(language)}
+                        checked={selectedLanguages.includes(
+                          language.toLowerCase()
+                        )}
                         onChange={(e) =>
-                          updateSelectedLanguages(e.target.value)
+                          updateSelectedLanguages(e.target.value.toLowerCase())
                         }
                       />
                       {language}
@@ -221,8 +224,10 @@ function Index({
                         type="checkbox"
                         key={level}
                         value={level}
-                        checked={selectedLevels.includes(level)}
-                        onChange={(e) => updateSelectedLevels(e.target.value)}
+                        checked={selectedLevels.includes(level.toLowerCase())}
+                        onChange={(e) =>
+                          updateSelectedLevels(e.target.value.toLowerCase())
+                        }
                       />
                       {level}
                     </label>
@@ -257,9 +262,13 @@ function Index({
                         type="checkbox"
                         key={contentType}
                         value={contentType}
-                        checked={selectedContentTypes.includes(contentType)}
+                        checked={selectedContentTypes.includes(
+                          contentType.toLowerCase()
+                        )}
                         onChange={(e) =>
-                          updateSelectedContentTypes(e.target.value)
+                          updateSelectedContentTypes(
+                            e.target.value.toLowerCase()
+                          )
                         }
                       />
                       {contentType}
@@ -350,9 +359,11 @@ function Index({
                         type="checkbox"
                         key={language}
                         value={language}
-                        checked={selectedLanguages.includes(language)}
+                        checked={selectedLanguages.includes(
+                          language.toLowerCase()
+                        )}
                         onChange={(e) =>
-                          updateSelectedLanguages(e.target.value)
+                          updateSelectedLanguages(e.target.value.toLowerCase())
                         }
                       />
                       {language}
@@ -382,8 +393,10 @@ function Index({
                         type="checkbox"
                         key={level}
                         value={level}
-                        checked={selectedLevels.includes(level)}
-                        onChange={(e) => updateSelectedLevels(e.target.value)}
+                        checked={selectedLevels.includes(level.toLowerCase())}
+                        onChange={(e) =>
+                          updateSelectedLevels(e.target.value.toLowerCase())
+                        }
                       />
                       {level}
                     </label>
@@ -397,9 +410,13 @@ function Index({
                         type="checkbox"
                         key={contentType}
                         value={contentType}
-                        checked={selectedContentTypes.includes(contentType)}
+                        checked={selectedContentTypes.includes(
+                          contentType.toLowerCase()
+                        )}
                         onChange={(e) =>
-                          updateSelectedContentTypes(e.target.value)
+                          updateSelectedContentTypes(
+                            e.target.value.toLowerCase()
+                          )
                         }
                       />
                       {contentType}
