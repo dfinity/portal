@@ -459,7 +459,7 @@ function LiveSessionsPage(): JSX.Element {
             />
             <div className="md:w-10/12 md:mx-auto ">
               <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
-                Register to stay up to date on live community discussions
+                Register to stay up to date on live sessions
               </h2>
               <form
                 method="POST"
