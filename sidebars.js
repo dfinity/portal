@@ -255,7 +255,7 @@ const sidebars = {
             "developer-docs/functionality/sns/deployment/deployment",
             "developer-docs/functionality/sns/managing-sns/nervous-system-parameters",
             "developer-docs/functionality/sns/managing-sns/proposal-guide",
-            "developer-docs/functionality/sns/managing-sns/cycle-usage",
+            "developer-docs/functionality/sns/managing-sns/cycles-usage",
             "developer-docs/functionality/sns/managing-sns/upgradeSNS",
           ],
         },
