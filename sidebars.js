@@ -239,13 +239,24 @@ const sidebars = {
             "developer-docs/functionality/ledger/deploy-new-token",
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Using the SNS',
-        //   items: [
-        //     'developer-docs/functionality/sns',
-        //   ]
-        // },
+        {
+          type: 'category',
+          label: 'Using the SNS',
+          link: {
+            type: "doc"
+            id: "developer-docs/functionality/sns/index"
+          }
+          items: [
+            "developer-docs/functionality/sns/sns",
+            "developer-docs/functionality/local-testing",
+            "developer-docs/functionality/launch-intro",
+            "developer-docs/functionality/predeployment",
+            "developer-docs/functionality/deployment",
+            "developer-docs/functionality/nervous-system-parameters",
+            "developer-docs/functionality/proposal-guide",
+            "developer-docs/functionality/upgradeSNS"
+          ]
+        },
         {
           type: "category",
           label: "Rosetta",
