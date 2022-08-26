@@ -465,10 +465,11 @@ const sidebars = {
       },
       items: [
         "tokenomics/sns/intro",
-        "tokenomics/sns/rewards",
+        
         "tokenomics/sns/community-fund",
         "tokenomics/sns/not-blind/predeployment-considerations",
         "tokenomics/sns/not-blind/tokenomics",
+        "tokenomics/sns/not-blind/rewards",
         "tokenomics/sns/not-blind/product",
         "tokenomics/sns/not-blind/business",
         "tokenomics/sns/not-blind/hype"

@@ -2,7 +2,7 @@
 
 We explain how to deploy an SNS that is provided as a 
 system functionality by the IC.
-As explained in the [introduction](sns.md), there are also other 
+As explained in the [introduction](../sns.md), there are also other 
 ways to deploy and maintain a DAO. Many concepts explained here may be 
 relevant for you even if you deploy another kind of DAO.
 
@@ -52,7 +52,7 @@ the SNS launch.
 To do this, it is useful to first understand on a high level how the
 SNS launch proceeds.
 We explain how the SNS launch works and how you can set the initialization
-parameters for the SNS on [this page](./predeployment.md).
+parameters for the SNS on [this page](./deployment/predeployment.md).
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
@@ -64,11 +64,11 @@ confirm that the dapp canisters can be upgraded by an SNS.
 Also, if you integrate parts of the frontend for the SNS into you dapp,
 you probably want to test that this integration works.
 
-For all these reasons, we explain on [this page](./local-testing.md), how
+For all these reasons, we explain on [this page](./deployment/local-testing.md), how
 the SNS can be tested.
 
 ### Step 4: Launching the SNS in production
 Once you properly tested the SNS, you are ready to launch an SNS in
 production. 
 We describe all steps included in this process in more detail
-on [this page](./deployment.md).
+on [this page](./deployment/deployment.md).

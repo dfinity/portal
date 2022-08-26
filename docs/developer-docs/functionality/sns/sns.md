@@ -211,7 +211,7 @@ It is conceivable that alternative ways to decentralize a dapp are added in
 later SNS versions.
 
 The decentralization sale and the steps to conclude an SNS launch including this
-decentralization sale are described in more detail [here](./deployment.md).
+decentralization sale are described in more detail [here](./deployment/deployment.md).
 
 ### SNS maintenance
 As mentioned, this SNS option is provided as a system function and the SNS canister
@@ -228,5 +228,5 @@ In the future, this will be simplified in a new feature that allows canister gro
 cycles can be managed across different canisters.
 
 For more details regarding how to upgrade SNS canister, choose SNS parameters, and manage
-cycles, we respectively refer to [here](./upgradeSNS.md),
-[here](./nervous-system-parameters.md), and [here](./cycles-usage.md).
+cycles, we respectively refer to [here](./managing-sns/upgradeSNS.md),
+[here](./managing-sns/nervous-system-parameters.md), and [here](./managing-sns/cycles-usage.md).
