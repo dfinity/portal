@@ -243,8 +243,8 @@ const sidebars = {
           type: 'category',
           label: 'Using the SNS',
           link: {
-            type: "doc"
-            id: "developer-docs/functionality/sns/index"
+            type: "doc",
+            id: "developer-docs/functionality/sns/index",
           }
           items: [
             "developer-docs/functionality/sns/sns",
