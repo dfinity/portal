@@ -119,7 +119,7 @@ function Index() {
               "Build on the internet",
               "Use 2049 blockchain",
               "Everything on-chain",
-              "Brave new internet",
+              "Internet reinvented",
               "The future is bright",
             ]}
           />
@@ -139,8 +139,12 @@ function Index() {
           <Link className={styles.actionButton} to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
             EXTEND BTC | ETH
           </Link>
+          { '\u00A0' }{ '\u00A0' }
+          <Link className={styles.actionButton} to="https://wiki.internetcomputer.org/wiki/Replacing_traditional_IT">
+            DITCH CLOUD
+          </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
-            Explore ecosystem
+            Web3 ecosystem
           </Link>
         </motion.div>
       </motion.div>
