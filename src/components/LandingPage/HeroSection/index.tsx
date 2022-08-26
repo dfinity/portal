@@ -125,8 +125,8 @@ function Index() {
           />
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Web3 smart contracts process HTTP requests, create TX for other chains, and
-          scale infinitely
+          Web3 smart contracts process HTTP requests, create TX for other
+          chains, and scale infinitely
         </motion.p>
         <motion.div
           variants={transitions.item}
@@ -135,12 +135,16 @@ function Index() {
           <Link className={styles.actionButton} to="/developers">
             CODE WEB3
           </Link>
-          { '\u00A0' }{ '\u00A0' }
-          <Link className={styles.actionButton} to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
+          <Link
+            className={styles.actionButton}
+            to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
+          >
             EXTEND BTC | ETH
           </Link>
-          { '\u00A0' }{ '\u00A0' }
-          <Link className={styles.actionButton} to="https://wiki.internetcomputer.org/wiki/Replacing_traditional_IT">
+          <Link
+            className={styles.actionButton}
+            to="https://wiki.internetcomputer.org/wiki/Replacing_traditional_IT"
+          >
             DITCH CLOUD
           </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
