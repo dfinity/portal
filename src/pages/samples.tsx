@@ -13,6 +13,7 @@ import transitions from "@site/static/transitions.json";
 import communityProjects from "@site/static/supernovaProjects.json";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
+import clsx from "clsx";
 
 const CommunityProject = ({ project }) => {
   return (
@@ -140,23 +141,24 @@ function Samples(): JSX.Element {
                 </p>
               )}
             </motion.div>
-            {filteredSamples.length !== 0 && (
-              <motion.div
-                variants={transitions.item}
-                className="relative mt-11 mb-20 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity"
-              >
-                {filteredSamples.slice(0, numberOfItems).map((sample) => (
-                  <Card
-                    key={sample.index}
-                    image={sample.image}
-                    title={sample.title}
-                    domain={sample.domains[0]}
-                    body={sample.body}
-                    links={sample.links}
-                  />
-                ))}
-              </motion.div>
-            )}
+            <motion.div
+              variants={transitions.item}
+              className={clsx(
+                "relative mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity",
+                filteredSamples.length === 0 ? "" : "mt-11 mb-20"
+              )}
+            >
+              {filteredSamples.slice(0, numberOfItems).map((sample) => (
+                <Card
+                  key={sample.index}
+                  image={sample.image}
+                  title={sample.title}
+                  domain={sample.domains[0]}
+                  body={sample.body}
+                  links={sample.links}
+                />
+              ))}
+            </motion.div>
             {filteredSamples.length > numberOfItems && (
               <div
                 className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
