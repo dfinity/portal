@@ -24,7 +24,7 @@ const cardsContent = [
   {
     title: "Emit less CO₂",
     body: "100% on-chain systems and services can be more efficient than traditional IT",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption",
   },
   {
     title: "Limitless scaling",
