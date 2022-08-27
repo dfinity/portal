@@ -131,7 +131,7 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Showcase",
+                label: "Web3 Ecosystem",
                 href: "/showcase",
               },
               {
