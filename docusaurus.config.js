@@ -18,6 +18,7 @@ const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+const mediaVideosPlugin = require("./plugins/media-videos");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
@@ -49,6 +50,7 @@ const config = {
     howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
+    mediaVideosPlugin,
   ],
 
   presets: [
@@ -141,6 +143,10 @@ const config = {
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
+              },
+              {
+                label: "Media",
+                href: "/media",
               },
               {
                 label: "Internet Identity",
