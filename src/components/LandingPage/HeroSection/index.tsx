@@ -119,14 +119,14 @@ function Index() {
               "Build on the internet",
               "Use 2049 blockchain",
               "Everything on-chain",
-              "Brave new internet",
+              "Internet reinvented",
               "The future is bright",
             ]}
           />
         </motion.div>
         <motion.p variants={transitions.item} className={styles.Text}>
-          Web3 smart contracts process HTTP requests, create TX for other chains, and
-          scale infinitely
+          Web3 smart contracts process HTTP requests, create TX for other
+          chains, and scale infinitely
         </motion.p>
         <motion.div
           variants={transitions.item}
@@ -135,8 +135,20 @@ function Index() {
           <Link className={styles.actionButton} to="/developers">
             CODE WEB3
           </Link>
+          <Link
+            className={styles.actionButton}
+            to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
+          >
+            EXTEND BTC | ETH
+          </Link>
+          <Link
+            className={styles.actionButton}
+            to="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
+          >
+            DITCH CLOUD
+          </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
-            Explore the Internet Computer ecosystem
+            Web3 ecosystem
           </Link>
         </motion.div>
       </motion.div>

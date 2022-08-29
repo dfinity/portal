@@ -101,9 +101,9 @@ function ShowcasePage(): JSX.Element {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                    "button-outline",
                     !queryTag
-                      ? "text-white bg-infinite-60"
+                      ? "text-white bg-infinite"
                       : "text-black bg-transparent"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -113,9 +113,9 @@ function ShowcasePage(): JSX.Element {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                      "button-outline",
                       tag.toLowerCase() === queryTag?.toLowerCase()
-                        ? "text-white bg-infinite-60"
+                        ? "text-white bg-infinite"
                         : "text-black bg-transparent"
                     )}
                     key={tag}

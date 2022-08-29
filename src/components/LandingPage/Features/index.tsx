@@ -9,27 +9,27 @@ const cardsContent = [
   {
     title: "Web serving",
     body: "Smart contracts process http requests & serve interactive web direct to users",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Dapp_code_hosted_and_executed_on-chain",
+    link: "https://wiki.internetcomputer.org/wiki/Web_Serving",
   },
   {
     title: "Breakthrough speed",
     body: "Pre-finalized query TX <200ms, and update TX in <2s",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Web_speed",
+    link: "https://wiki.internetcomputer.org/wiki/Web_Speed",
   },
   {
     title: "Interact w/o tokens",
     body: 'Smart contracts pay for their own compute so users can just interact',
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Reverse_Gas_Model_.28AKA_.22canister_pays.22.29",
+    link: "https://wiki.internetcomputer.org/wiki/Users_interact_with_dapps_without_tokens",
   },
   {
     title: "Emit less CO₂",
     body: "100% on-chain systems and services can be more efficient than traditional IT",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Environment_and_cost",
+    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption",
   },
   {
     title: "Limitless scaling",
     body: "Scale mass-market web3 services 100% on-chain (no cloud or servers needed)",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_vision#Network_scales_without_limit",
+    link: "https://wiki.internetcomputer.org/wiki/Limitless_Scaling",
   },
   {
     title: "Internet Identity",
@@ -39,12 +39,12 @@ const cardsContent = [
   {
     title: "Rapid evolution",
     body: "A governance DAO upgrades and configures the blockchain's nodes daily",
-    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Neuron_following_and_liquid_democracy",
+    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
   },
   {
     title: "Parallelism",
     body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
-    link: "https://wiki.internetcomputer.org/wiki/Canisters_(dapps/smart_contracts)#Canisters_as_actors",
+    link: "https://wiki.internetcomputer.org/wiki/Parallelism",
   },
   {
     title: "WebAssembly",
