@@ -1,8 +1,8 @@
-# Canister HTTP Requests
+# Canister HTTPS Outcalls
 
 Up until now, blockchains have been isolated entities and smart contracts have not been able to communicate with external servers. The reason for this is that a blockchain is a replicated state machine where each replica needs to perform the same computations on the same state to make the same transitions in each round. Doing computations based on results from external services as input may easily lead to state divergence on the replicas if done in a naïve manner and thus requires some technical considerations to be workable.
 
-The feature of canister HTTP requests, or HTTP outcalls, on the Internet Computer allows -- for the first time in blockchain history -- smart contracts to directly make calls to HTTP servers external to the blockchain and use the response in the further processing of the smart contract s.t. the replicated state is updated depending on those inputs. So far, the only means of communication of smart contracts with external servers have been through so-called *oracles*.
+The feature of canister HTTP(S) requests, or HTTP(S) outcalls, on the Internet Computer allows -- for the first time in blockchain history -- smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract s.t. the replicated state is updated depending on those inputs. So far, the only means of communication of smart contracts with external servers have been through so-called *oracles*. Note that henceforth in this documentation we may use HTTP representative for both HTTP and HTTPS, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secure HTTPS these days.
 
 Canister HTTP requests allow for a plethora of use cases and have numerous advantages over the currently used oracle model.
 * *Stronger trust model:* Canister HTTP outcalls are based on a stronger trust model because no external intermediaries (oracles) are required for smart contracts to communicate with external servers.
