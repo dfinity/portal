@@ -35,7 +35,7 @@ To derive the estimated GB Storage per month, we assume a 30 day month.
 | Transaction                          | Description                                                                                                    | All Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------------------|
 | Canister Created                     | For creating canisters on a subnet                                                                             | $0.130194                 |
-| Compute Percent Allocated Per Second | For each percent of the reserved compute allocation (a scarce resource).                                       | $0.000000130194           |
+| Compute Percent Allocated Per Second | For each percent of the reserved compute allocation (a scarce resource).                                       | $0.0000130194           |
 | Update Message Execution             | For every update message executed                                                                              | $0.0000007681446          |
 | Ten Update Instructions Execution    | For every 10 instructions executed when executing update type messages                                         | $0.000000000005208        |
 | Xnet Call                            | For every inter-canister call performed (includes the cost for sending the request and receiving the response) | $0.0000003385044          |
