@@ -793,6 +793,13 @@ The Rosetta API returns the state of the neuron as operation metadata in the `/c
           "controller": {
             "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
           },
+          "followees": [
+            "0": [111, 222],
+            "8": [555, 666]
+          ],
+          "hotkeys": [
+            "6xpcx-hldf5-4ddrg-onbug-4e2kw-rc25g-rxknf-p2wij-hxhqj-azcii-oqe"
+          ],
           "kyc_verified": true,
           "maturity_e8s_equivalent": 1000,
           "neuron_fees_e8s": 0,
