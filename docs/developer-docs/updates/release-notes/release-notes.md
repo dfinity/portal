@@ -1,5 +1,13 @@
 # Release Notes
 
+# What's new in DFX 0.11.2
+
+### fix: disable asset canister redirection of all HTTP traffic from `.raw.ic0.app` to `.ic0.app`
+
+### fix: disable asset canister's ETag HTTP headers
+
+The feature is not yet implemented on `icx-proxy`-level, and is causing 500 HTTP response for some type of assets every second request. We'll bring this feature back in upcoming `dfx` releases.
+
 # What's new in DFX 0.11.1
 
 ## DFX
