@@ -18,7 +18,7 @@ function Index({ videoHrefProp }) {
   const currentVideo = videos.find((v) => v.cleanHref === videoHref);
   const filteredVideos = videos.filter((v) => v.cleanHref !== videoHref);
   return (
-    <Layout title={"Media Page"} description={""}>
+    <Layout title={"Media Page"} description={currentVideo?.title}>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
@@ -34,7 +34,7 @@ function Index({ videoHrefProp }) {
               <Breadcrumbs
                 links={[
                   { text: "Media", href: "/media" },
-                  { text: currentVideo.title, href: currentVideo.cleanHref },
+                  { text: currentVideo?.title, href: currentVideo.cleanHref },
                 ]}
               />
             </motion.div>
@@ -54,7 +54,7 @@ function Index({ videoHrefProp }) {
                 allowFullScreen
               />
               <p className="tw-heading-6 md:tw-heading-5 my-4 md:my-8 mx-3 md:mx-6">
-                {currentVideo.title}
+                {currentVideo?.title}
               </p>
             </motion.div>
           </section>
