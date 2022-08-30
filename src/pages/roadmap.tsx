@@ -14,6 +14,8 @@ import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-roadmap.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -38,6 +40,10 @@ const RoadmapPage: React.FC = () => {
 
   return (
     <Layout title="Roadmap" description="">
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
@@ -48,9 +54,9 @@ const RoadmapPage: React.FC = () => {
                 The DFINITY Foundation is committing R&D resources in various
                 domains of development with the intent of making the Internet
                 Computer blockchain more efficient, faster and easier to use.
-                This roadmap shows the status of many projects across the 
-                Internet Computer stack, but not all - more to come over the next few weeks. 
-                
+                This roadmap shows the status of many projects across the
+                Internet Computer stack, but not all - more to come over the
+                next few weeks.
               </p>
             </div>
           </div>
@@ -103,9 +109,7 @@ const RoadmapPage: React.FC = () => {
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
-            >
-             
-            </motion.p>
+            ></motion.p>
             <MotionLink
               variants={transitions.item}
               className="button-outline-white"
@@ -186,8 +190,8 @@ const RoadmapPage: React.FC = () => {
               className="tw-lead-sm md:tw-lead mb-12 md:mb-16 md:w-7/10"
               variants={transitions.item}
             >
-              The Internet Computer has come a long way since its launch in May 2021.
-              
+              The Internet Computer has come a long way since its launch in May
+              2021.
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
