@@ -34,7 +34,7 @@ function Index({ videoHrefProp }) {
               <Breadcrumbs
                 links={[
                   { text: "Media", href: "/media" },
-                  { text: currentVideo?.title, href: currentVideo.cleanHref },
+                  { text: currentVideo?.title, href: currentVideo?.cleanHref },
                 ]}
               />
             </motion.div>
@@ -49,7 +49,7 @@ function Index({ videoHrefProp }) {
             <motion.div variants={transitions.item} className="">
               <iframe
                 className="w-full aspect-video block"
-                src={"https://www.youtube.com/embed/" + currentVideo.href}
+                src={"https://www.youtube.com/embed/" + currentVideo?.href}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
