@@ -18,7 +18,7 @@ function Index({ videoHrefProp }) {
   const currentVideo = videos.find((v) => v.cleanHref === videoHref);
   const filteredVideos = videos.filter((v) => v.cleanHref !== videoHref);
   return (
-    <Layout title={"Media Page"} description={currentVideo.title}>
+    <Layout title={"Media Page"} description={""}>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}

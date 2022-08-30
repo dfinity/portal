@@ -14,7 +14,7 @@ function Media() {
   const currentVideo = videos.at(0);
   const filteredVideos = videos.filter((v) => v.href !== currentVideo.href);
   return (
-    <Layout title={"Media Page"} description={currentVideo.title}>
+    <Layout title={"Media Page"} description={""}>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
