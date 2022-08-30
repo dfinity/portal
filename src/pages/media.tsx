@@ -14,7 +14,7 @@ function Media() {
   const currentVideo = videos.at(0);
   const filteredVideos = videos.filter((v) => v.href !== currentVideo.href);
   return (
-    <Layout title={"Media Page"} description={""}>
+    <Layout title={"Media Page"} description={currentVideo.title}>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
@@ -52,21 +52,20 @@ function Media() {
           <section className="max-w-page relative mt-12 md:mt-28 px-6 mb-5 md:mb-40 md:px-12.5 md:mx-auto overflow-hidden">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-4 md:gap-x-5 gap-y-10 md:gap-y-16 lg:grid-cols-4 transition-opacity">
               {filteredVideos.map((video) => (
-                <div>
-                  <a
-                    className={"group items-center relative"}
-                    href={"/media/" + video.cleanHref}
-                  >
-                    <div className="bg-white group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
-                      <PlaySVG className="m-auto h-5 w-5 text-infinite group-hover:text-white transition-colors" />
+                <div key={video.cleanHref}>
+                  <a href={"/media/" + video.cleanHref}>
+                    <div className="group relative h-0 pb-16/9 mb-4">
+                      <div className="bg-white group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
+                        <PlaySVG className="m-auto h-5 w-5 text-infinite group-hover:text-white transition-colors" />
+                      </div>
+                      <img
+                        className="absolute inset-0 w-full h-full z-[-1] object-cover"
+                        src={`https://img.youtube.com/vi/${video.cleanHref}/sddefault.jpg`}
+                        alt=""
+                      />
                     </div>
-
-                    <img
-                      className="block mb-4 object-cover aspect-video"
-                      src={`https://img.youtube.com/vi/${video.cleanHref}/sddefault.jpg`}
-                      alt=""
-                    />
                   </a>
+
                   <p className="tw-heading-7 md:tw-heading-6">{video.title}</p>
                 </div>
               ))}

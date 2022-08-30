@@ -1,54 +1,67 @@
-[{
-  "title": "Talk | Primer to the Internet Computer (Dominic Williams)",
-  "href": "YWHTNr8RZHg",
-  "cleanHref": "YWHTNr8RZHg"
-},{
-  "title": "Blockchain Singularity with Dominic Williams",
-  "href": "7WvgON_5XCU",
-  "cleanHref": "7WvgON_5XCU"
-},{
-  "title": "DFINITY CEO on Web3, Moving Away From Cloud",
-  "href": "HUneMq0gzJs",
-  "cleanHref": "HUneMq0gzJs"
-},{
-  "title": "Dominic Williams of DFINITY Interview at Nasdaq",
-  "href": "DER09Hcad7M",
-  "cleanHref": "DER09Hcad7M"
-},{
-  "title": "How DFINITY Is Reinventing the Internet",
-  "href": "QUhceX6I81U",
-  "cleanHref": "QUhceX6I81U"
-},{
-  "title": "An Overview of the Internet Computer",
-  "href": "XgsOKP224Zw",
-  "cleanHref": "XgsOKP224Zw"
-},{
-  "title": "DFINITY CEO Dominic Williams interview | ICP Internet Computer",
-  "href": "JLanS3ueYV0&t=1178s",
-  "cleanHref": "JLanS3ueYV0"
-},{
-  "title": "Dominic Williams talks at BLOCKCHANCE 2021 about DFINITY (ICP)",
-  "href": "qwyOJtNeEUs",
-  "cleanHref": "qwyOJtNeEUs"
-},{
-  "title": "Dominic Williams - Truly Decentralized Internet: What Does Web3 Look Like?",
-  "href": "7jOQNYuGsBg&t=236s",
-  "cleanHref": "7jOQNYuGsBg"
-},{
-  "title": "DFINITY testnet, October 2017 (Dominic Williams gives demo)",
-  "href": "aOzxxeOYJpY",
-  "cleanHref": "aOzxxeOYJpY"
-},{
-  "title": "Dominic Williams, Ten Minute DFINITY Presentation at Nasdaq",
-  "href": "e8ZnW9J8N9s",
-  "cleanHref": "e8ZnW9J8N9s"
-},{
-  "title": "Shanghai International Blockchain Week 2021 | Development of Public Blockchain Technologies",
-  "href": "vsrA83z7Coo",
-  "cleanHref": "vsrA83z7Coo"
-},{
-  "title": "DFINITY: Building a New Internet on Blockchain",
-  "href": "EaTvCIjUs_o",
-  "cleanHref": "EaTvCIjUs_o"
-}
+[
+  {
+    "title": "Talk | Primer to the Internet Computer (Dominic Williams)",
+    "href": "YWHTNr8RZHg",
+    "cleanHref": "YWHTNr8RZHg"
+  },
+  {
+    "title": "Blockchain Singularity with Dominic Williams",
+    "href": "7WvgON_5XCU",
+    "cleanHref": "7WvgON_5XCU"
+  },
+  {
+    "title": "DFINITY CEO on Web3, Moving Away From Cloud",
+    "href": "HUneMq0gzJs",
+    "cleanHref": "HUneMq0gzJs"
+  },
+  {
+    "title": "Dominic Williams of DFINITY Interview at Nasdaq",
+    "href": "DER09Hcad7M",
+    "cleanHref": "DER09Hcad7M"
+  },
+  {
+    "title": "How DFINITY Is Reinventing the Internet",
+    "href": "QUhceX6I81U",
+    "cleanHref": "QUhceX6I81U"
+  },
+  {
+    "title": "An Overview of the Internet Computer",
+    "href": "XgsOKP224Zw",
+    "cleanHref": "XgsOKP224Zw"
+  },
+  {
+    "title": "DFINITY CEO Dominic Williams interview | ICP Internet Computer",
+    "href": "JLanS3ueYV0?start=1178",
+    "cleanHref": "JLanS3ueYV0"
+  },
+  {
+    "title": "Dominic Williams talks at BLOCKCHANCE 2021 about DFINITY (ICP)",
+    "href": "qwyOJtNeEUs",
+    "cleanHref": "qwyOJtNeEUs"
+  },
+  {
+    "title": "Dominic Williams - Truly Decentralized Internet: What Does Web3 Look Like?",
+    "href": "7jOQNYuGsBg?start=236",
+    "cleanHref": "7jOQNYuGsBg"
+  },
+  {
+    "title": "DFINITY testnet, October 2017 (Dominic Williams gives demo)",
+    "href": "aOzxxeOYJpY",
+    "cleanHref": "aOzxxeOYJpY"
+  },
+  {
+    "title": "Dominic Williams, Ten Minute DFINITY Presentation at Nasdaq",
+    "href": "e8ZnW9J8N9s",
+    "cleanHref": "e8ZnW9J8N9s"
+  },
+  {
+    "title": "Shanghai International Blockchain Week 2021 | Development of Public Blockchain Technologies",
+    "href": "vsrA83z7Coo",
+    "cleanHref": "vsrA83z7Coo"
+  },
+  {
+    "title": "DFINITY: Building a New Internet on Blockchain",
+    "href": "EaTvCIjUs_o",
+    "cleanHref": "EaTvCIjUs_o"
+  }
 ]
