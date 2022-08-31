@@ -20,3 +20,6 @@ There are many use cases for canister HTTP outcalls, see the following for some 
 * Chat services sending push notifications about incoming messages to users.
 
 We expect the majority of HTTP calls to be GET calls for reading Web 2.0 data, but POST clearly also plays a key role for the interaction with external systems in order to be able to write data to Web 2.0 servers.
+
+## Learn more
+If you want to take a deep dive into how the HTTPS outcalls feature works and is used in a canister, see [How it Works](http_requests-how-it-works.md).
