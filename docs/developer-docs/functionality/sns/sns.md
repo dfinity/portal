@@ -94,9 +94,9 @@ those who would like to invest in a dapp.
 As already mentioned above, investors too profit both from the tokenization
 and decentralization that a DAO such as the SNS can provide.
 First, tokenization allows investors to get SNS tokens and invest in a dapp.
-The fact that tokens can then be staked in neurons and thus allow for governance
-participation, ensures that investors can contribute to the decisions on how the
-dapp will be evolved.
+The fact that tokens can then be staked and then be used for governance
+participation ensures that investors can contribute to the decisions
+on how the dapp will be evolved.
 Voting rewards might further incentivize investors to participate in governance. 
 Finally, the positive network effects that tokenomics can have are of course
 also in the interest of the investors whose tokens have an increased value if
@@ -110,7 +110,7 @@ the project is successful.
 * dapps are user-controlled
 -->
 
-## How to deploy and maintain a DAO
+## How to deploy and maintain a DAO - different options
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
@@ -139,7 +139,7 @@ your dapp.
    rather than possibly altered code.
    
 2) **_Self-deploy_ an SNS and manually upgrade it.**
-   Any SNS community can choose to deploy the SNS code, which is open source and 
+   A community can choose to deploy the SNS code, which is open source and 
    available [here](https://github.com/dfinity/ic/tree/master/rs/sns), on an 
    application subnet. They can then choose to follow the blessed upgrade path or deviate 
    from this path, e.g., leaving out some versions, or even modify the canisters’ code 
@@ -151,7 +151,7 @@ your dapp.
 
 3) **Build your own DAO or use frameworks provided by others to build your DAO.**
    While this is conceptually similar to the second option, we would like to emphasize
-   that there are of course other design than the SNS that also build a DAO.
+   that there are of course other design than the SNS that also realize a DAO.
    For most of these, the implications for the communities will be similar to the
    second option: The DAO communities will have to maintain the DAO versions, or trust
    a third party to do so and such DAOs can be deployed on a higher-replication 
@@ -165,22 +165,32 @@ Options 2 and 3 are unbounded, we focus here on explaining the SNS in Option 1 i
 more detail.
 
 ## SNS canisters
-The SNS consists of a governance canister, a ledger canister, 
-a root canister, and a decentralization sale canister that is explained in the next
+The SNS consists of the following canisters: the governance canister, 
+the ledger canister and archive canisters,
+the index canister, 
+the root canister, and 
+the decentralization sale canister that is explained in the next
 section.
+
+The _governance canister_ enables decentralized decision making.
+It stores _proposals_ that are suggestions on how to
+evolve the dapp that the SNS governs and _neurons_ that define who the governance
+participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
+Everyone can become a government participant by staking SNS tokens in a neuron.
 
 The _ledger canister_ implements the 
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
 and contains SNS tokens, which are unique tokens for each SNS.
 It stores which accounts own how many SNS tokens and the history of transactions 
-between the principals.
+between the principals. 
+As we want to keep the full ledger history forever but a cansiter has limited
+memory, the ledger canister spwans _archive canisters_ that store the block history. 
+Morevoer, wallets and other frontends will need to show all transactions that are
+relevant for a given account.
+To facilitate this and ensure that not every frontend has to implement such a filter,
+the _index canister_ provides a map of which transactions are relevant for a given account.
 
-The _governance canister_ enables decentralized decision making. 
-It stores _proposals_ that are suggestions on how to
-evolve the dapp that the SNS governs and _neurons_ that define who the governance
-participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
-Everyone can become a government participant by staking SNS tokens in a neuron.
-The root canister is responsible for upgrading the other SNS canisters
+The _root canister_ is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS controls.
 
 ## SNS lifecycle 
