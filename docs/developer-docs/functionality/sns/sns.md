@@ -199,26 +199,27 @@ and the dapp canisters that the SNS controls.
 As already described above, SNS canisters are maintained and blessed by the IC community.
 In more detail, the blessed SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister_.
-Anyone can deploy an SNS. To do so, they can make a call to the SNS wasm modules
+Anyone can set up SNS canisters. To do so, they can make a call to the SNS wasm modules
 canister, who takes the latest versions of the SNS canisters, initializes them with
-the parameters given by the user, and deploys them on the SNS subnet.
-This call is not permissioned and anyone can deploy an SNS in this way if they
+the parameters given by the user, and installs them on the SNS subnet.
+This call is not permissioned and anyone can set up an SNS in this way if they
 provide sufficient cycles for the SNS canisters.
 
 A crucial part of launching an SNS is how it can be decentralized. 
 That is, the newly created tokens must be distributed to a large community to ensure
 proper decentralization of voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
-a developer can hand over the control of the dapp to a newly deployed SNS, that has
+a developer can hand over the control of the dapp to a newly installed SNS, that has
 at that stage limited capabilities as it may not be fully decentralized yet, and
-ask the Internet Computer to start a decentralization sale for this SNS.
-In this the decentralization sale, initial tokens are sold for ICP tokens.
+ask the Internet Computer to launch this SNS by starting a decentralization sale
+for it.
+In this the decentralization sale, initial SNS tokens are sold for ICP tokens.
 In the end of a successful decentralization sale, SNS tokens are owned by a large
 community and therefore the SNS governance control is decentralized.
 Moreover, the ICP that were collected in the decentralization sale provide initial
 funding for the SNS project.
-It is conceivable that alternative ways to decentralize a dapp are added in
-later SNS versions.
+It is conceivable that alternative ways to launch and decentralize a dapp are
+added in later SNS versions.
 
 The decentralization sale and the steps to conclude an SNS launch including this
 decentralization sale are described in more detail [here](./launch-intro.md).
@@ -227,16 +228,26 @@ decentralization sale are described in more detail [here](./launch-intro.md).
 As mentioned, this SNS option is provided as a system function and the SNS canister
 versions are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS community.
-However, there are still some maintenance tasks that have to be performed by an SNS community,
-such as deciding and voting on when an SNS should be upgraded to a new blessed version, 
-adjusting the SNS parameters when needed, and making sure that the SNS canisters do not run out
-of cycles. Regarding the last point, we emphasize that **currently, the SNS
-communities are responsible for individually topping up the cycles of all SNS canisters as
-well as all dapp canisters that are controlled by the SNS. This includes archive canisters
-that are spawn by the ledger canister to archive all blocks.**
-In the future, this will be simplified in a new feature that allows canister groups, where
-cycles can be managed across different canisters.
+However, there are still some maintenance tasks that have to be performed by an
+SNS community, such as deciding and voting on when an SNS should be upgraded
+to a new blessed version, adjusting the SNS parameters when needed, and making
+sure that the SNS canisters do not run out of cycles.
+We especially want to emphasise the last point: 
+:::warning
 
-For more details regarding how to upgrade SNS canister, choose SNS parameters, and manage
-cycles, we respectively refer to [here](./upgradeSNS.md),
-[here](./nervous-system-parameters.md), and [here](./cycles-usage.md).
+The SNS communities are responsible for individually topping up the cycles of
+all SNS canisters as well as all dapp canisters that are controlled by the SNS.
+Special care must be taken that cycles are also monitored for canisters that
+are automatically created. In particular, this includes the archive canisters
+that are spawn by the ledger canister.
+**If the archive canisters are not provided
+with sufficient cycles, the ledger block history may be lost.**
+
+:::
+In the future, cycles management will be simplified in a new feature that 
+allows canister groups, where cycles can be managed across different canisters.
+
+There are separate pages where you can fine more details regarding [how 
+to upgrade SNS canister](./upgradeSNS.md),
+[set SNS parameters](./nervous-system-parameters.md),
+and [manage cycles](./cycles-usage.md).
