@@ -80,6 +80,7 @@
     align-items: center;
     margin: auto;
     flex-direction: row;
+    gap: 16px;
 }
 
 .callToAction {
@@ -136,13 +137,12 @@
         border: 2px solid #3b00b9;
         background-color: #3b00b9;
         color: white;
-        margin: 32px 0;
     }
-
     .actionContainer {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        margin-top: 32px;
     }
 
     .callToAction {
