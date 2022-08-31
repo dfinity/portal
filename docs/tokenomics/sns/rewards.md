@@ -1,3 +1,5 @@
+# SNS Rewards
+
 ## Background & goal
 
 * The goal of this article is to explain the design of the service nervous system (SNS) reward scheme.
