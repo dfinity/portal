@@ -1,7 +1,7 @@
 # Defining the parameters (technical preparation)
 
 After some 
-[non-technical preparations](../../../tokenomics/sns/not-blind/predeployment-considerations.md)
+[non-technical preparations](../../../../tokenomics/sns/not-blind/predeployment-considerations.md)
 that define the goals for the SNS, in a next step you can 
 choose the initial parameters that the SNS will be launched with, such as who 
 will get how many SNS tokens in the beginning.
@@ -180,6 +180,5 @@ At this point, the dapp canister(s) are already controlled by the SNS.
 Therefore, **you must make sure that you define at least one developer or 
 airdrop neuron as they provide the only way to upgrade the dapp during
 the sale.**
-
 :::
 
