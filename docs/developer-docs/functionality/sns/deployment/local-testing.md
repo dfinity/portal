@@ -83,16 +83,15 @@ Then, vote with sufficiently many initial neurons (developer and airdrop
 neurons) vote on the proposal so that it is adopted.
 
 To submit an SNS proposal, use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal)
-<!-- TODO: SNS quill documentation to make proposal and link to it-->.
+and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
 To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
 and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
-:::info
+<!-- TODO: SNS quill documentation to make proposal and link to it-->
 
+:::info
 As explained [on the next page](deployment.md), in production this is one of the reasons
 why you must ensure that you can reach a majority of the initial neurons and that the initial
 neurons are able to vote already before the decentralization sale.
-
 :::
 
 ### 7. Test upgrading the dapp canister(s) by SNS proposal. 
@@ -108,10 +107,10 @@ upgraded.
 
 To submit an SNS proposal to upgrade a dapp canister,
 use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal)
-<!-- TODO: SNS quill documentation to make proposal and link to it-->.
+and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
 To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
 and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
+<!-- TODO: SNS quill documentation to make proposal and link to it-->
 
 
 #### 8. Submit an NNS proposal to start the decentralization sale.

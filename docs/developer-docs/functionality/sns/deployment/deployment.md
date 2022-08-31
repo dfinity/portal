@@ -58,8 +58,10 @@ Then, confirm that the proposal has been executed by checking that the dapp has 
 upgraded. 
 
 To submit an SNS proposal, use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal) 
-<!-- TODO: SNS quill documentation to make proposal and link to it-->.
+and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
+
+<!-- TODO: SNS quill documentation to make proposal and link to it -->
+
 To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
 and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
 
@@ -115,7 +117,7 @@ anyone with an eligible NNS neuron can now submit an NNS proposal
 that asks the NNS community to do so.
 To submit an NNS proposal with dfx, they can use the following command
 ```
-<!--TODO-code: --> 
+<!--TODO-code: -->
 ```
 Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is submitted.

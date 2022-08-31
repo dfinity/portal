@@ -104,16 +104,14 @@ An SNS is launched in the following stages:
    it was successful, e.g., enough ICP have been collected. If the sale was successful,
    the exchange rate is determined and all SNS tokens are given to the sale participants in
    neurons. Once all neurons are created, the SNS should be under decentralized control
-   and the pre-decentralization-sale mode is reverted.
-   <!-- QUESTION: should we add here that this is subject to checks of the community? --> 
+   and the pre-decentralization-sale mode is reverted. <!-- QUESTION: should we add here that this is subject to checks of the community?  -->
    Thus, the governance canister is set to be fully functional.
    If the sale is not successful, the decentralization attempt failed and everything
    is reverted to the state before the SNS launch, including that the dapp’s control
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
 
-## Getting the tools for launching an SNS {#tools}
-<!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
+## Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
 To set the initial parameters for your SNS, but also to test and initiate the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.
