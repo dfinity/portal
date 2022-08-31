@@ -1,7 +1,7 @@
 # Technical preparations for launch
 
 After some 
-[non-technical preparations](../../../tokenomics/sns/not-blind/predeployment-considerations.md)
+[non-technical preparations](../../../../tokenomics/sns/not-blind/predeployment-considerations.md)
 that define the goals for the SNS, in a next step you can 
 choose the initial parameters that the SNS should be set up with, 
 such as who should get how many SNS tokens in the beginning.
@@ -300,7 +300,5 @@ the developer neurons' voting power is restricted by a multiplier. This multipli
 is proportional to the portion of sale tokens that are sold in the initial 
 decentralization sale. As more of the sale tokens are sold in the future, the
 voting power multiplier increases until it is 1 when all sale tokens have been
-sold. 
-
-
+sold.
 

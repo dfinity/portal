@@ -14,6 +14,8 @@ import communityProjects from "@site/static/supernovaProjects.json";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-samples.jpeg";
 
 const CommunityProject = ({ project }) => {
   return (
@@ -103,6 +105,10 @@ function Samples(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <section className="max-w-page w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">

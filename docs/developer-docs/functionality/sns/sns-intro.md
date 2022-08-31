@@ -222,7 +222,11 @@ It is conceivable that alternative ways to launch and decentralize a dapp are
 added in later SNS versions.
 
 The decentralization sale and the steps to conclude an SNS launch including this
+<<<<<<< HEAD:docs/developer-docs/functionality/sns/sns.md
 decentralization sale are described in more detail [here](./launch-intro.md).
+=======
+decentralization sale are described in more detail [here](./deployment/deployment.md).
+>>>>>>> master:docs/developer-docs/functionality/sns/sns-intro.md
 
 ### SNS maintenance
 As mentioned, this SNS option is provided as a system function and the SNS canister
@@ -233,8 +237,8 @@ SNS community, such as deciding and voting on when an SNS should be upgraded
 to a new blessed version, adjusting the SNS parameters when needed, and making
 sure that the SNS canisters do not run out of cycles.
 We especially want to emphasise the last point: 
-:::warning
 
+:::warning
 The SNS communities are responsible for individually topping up the cycles of
 all SNS canisters as well as all dapp canisters that are controlled by the SNS.
 Special care must be taken that cycles are also monitored for canisters that
@@ -242,7 +246,6 @@ are automatically created. In particular, this includes the archive canisters
 that are spawn by the ledger canister.
 **If the archive canisters are not provided
 with sufficient cycles, the ledger block history may be lost.**
-
 :::
 In the future, cycles management will be simplified in a new feature that 
 allows canister groups, where cycles can be managed across different canisters.
