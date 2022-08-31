@@ -53,7 +53,7 @@ export const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
       },
-      docs: "docs/current/samples/http-requests-exchange-rates",
+      docs: "/docs/current/samples/http-requests-exchange-rates",
       rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
     },
   },
@@ -204,7 +204,7 @@ export const sampleItems = [
     contentType: ["documentation"],
     body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
     links: {
-      docs: "docs/current/samples/host-unity-webgl",
+      docs: "/docs/current/samples/host-unity-webgl",
     },
   },
 ];
