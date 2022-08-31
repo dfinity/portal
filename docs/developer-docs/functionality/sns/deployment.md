@@ -1,5 +1,5 @@
-# Launching the SNS in production
-This describes the detailed steps for launching an SNS.
+# Initializing an SNS launch in production
+This describes the detailed steps for initializing an SNS launch.
 
 :::caution
 
@@ -9,20 +9,20 @@ and [chosen the initial SNS parameters in a .yaml file](predeployment.md).
 We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
 Moreover, you control one principal `identityDevDeploy` that is a `dfx` identity and 
 a controller of the dapp canister(s) that you would like to hand over to the SNS.
-We also recommend that before following these steps and launching an
-SNS in production, you have [tested the SNS](local-testing.md).
+We also recommend that before following these steps and initializaing an SNS launch
+in production, you have [tested the SNS](local-testing.md).
 
 :::
 
 
-You are now ready to launch your SNS. There are some steps that are needed
-for launching an SNS and some steps that we recommend as intermediate
-sanity checks that up to this point everything works fine.
+You are now ready to initialize an SNS launch for your dapp.
+There are some steps that are needed for completing this and some steps that we
+recommend as intermediate sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
 
-#### 1. Get your two principals ready
+#### 1. Prepare your principals and tools
 
-<!--
+<!-- TODO-content & TODO-CLI/dfx: 
 Open terminal with dfx, ready for commands when we say "use `dfx` identity 
 `identityDevDeploy`.
 For things to do with `sns-quill` will say "use `sns-quill` principal `identityDevNeuron`"
@@ -33,11 +33,15 @@ air-gapped computer and have another one to just forward sns-quill commands
 on the connected computer.
 -->
 
-#### 1. Make a call to the SNS wasm modules canister on the NNS subnet.
+#### 2. Ask the SNS wasm modules canister to install an SNS.
+Make a call to the SNS wasm modules canister on the NNS subnet to requrest that an SNS 
+is installed.
 To make this call, use your `dfx` identity `identityDevDeploy` and 
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
-Upon receiving this call, the SNS wasm modules canister will deploy
+Upon receiving this call, the SNS wasm modules canister will install
 an SNS with your chosen initial parameters.
+<!--TODO-CLI/dfx-Link: once tooling is clear, make sure that here automatically the .yaml
+file is used. If this is not the case, add the information how this can be ensured.-->
 
 #### 2. Add the SNS root canister as a controller to your dapp canister(s).
 To do so, use your `dfx` identity `identityDevDeploy` and 
@@ -62,7 +66,7 @@ and use the command explained [here](https://github.com/dfinity/sns-quill#vote-o
 :::info
 
 This step is one of the reasons why you should ensure that you can
-reach and get buy in from a majority of the inital neurons. Also, as we 
+reach a majority of the initial neurons. Also, as we 
 recommend `sns-quill` principals for initial neurons and as they have to be
 able to vote on SNS proposals even before the decentralization sales,
 this requires that initial neuron holders are comfortable
@@ -70,7 +74,7 @@ using a command line tool for voting.
 
 :::
 
-#### 4. Remove all other controllers from the dapp canister(s)
+#### 4. Remove all controllers other than the SNS from the dapp canister(s)
 Once you convinced yourself that the dapp canister(s) can be upgraded by
 the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
@@ -81,21 +85,23 @@ where you specify as the principals to be removed all existing controller princi
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->
 
-#### 5. Register the dapp to the SNS
-Next, you will register the dapp canisters that are now controlled by the SNS
+#### 5. Register the dapp in the SNS
+Next, you will register the dapp canister(s) that are now controlled by the SNS
 in the SNS root canister. This is to make sure that the SNS root canister
-is aware of the canisters that it officially governs. 
+is aware of the canisters that it officially governs and accepts the responsibility
+to control them going forward. 
 This ensures, for example, that if you request a canister summary from the
 SNS root canister, then the dapp canisters are included in this summary and 
 you can learn how many cycles they still have and other information.
 
-Registering a dapp under an SNS is again done by an SNS proposal.
+Registering a dapp under an SNS is done by an SNS proposal.
 To make such a proposal and vote on it, use your `sns-quill` principal
 `identityDevNeuron` and follow the instructions from [Step 3](#step3).
 As in [Step 3](#step3),
 sufficient initial neurons have to vote to reach a majority.
 
-<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would like to register.-->
+<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would
+like to register.-->
 
 #### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
@@ -113,8 +119,9 @@ To submit an NNS proposal with dfx, they can use the following command
 ```
 Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is submitted.
+<!--TODO-update-after-change: Add here CF explanation once it is clear.-->
 
-#### 8. Wait for the NNS to approve the sale & continue evolving the dapp! 
+#### 8. Wait for the NNS to launch the SNS & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the original dapp 
 developer to launch the SNS!
 The dapp has been handed over to the IC and the NNS is voting on whether 

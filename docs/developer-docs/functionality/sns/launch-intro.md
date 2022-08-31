@@ -31,16 +31,16 @@ The SNS implementation is very flexible and allows each SNS
 community to set various parameters according to their needs.
 Choosing these parameters entails non-technical work to define
 which goals a given SNS should pursue.
-For example, you can configure parameters that determine how much
+For example, you can configure parameters that determine how
 voting rewards are distributed to users that participate in SNS 
-governance and how often these rewards are distributed.
+governance.
 Choosing these parameters entails non-technical considerations,
 such as deciding on a tokenomics plan that defines in what ways
 the SNS tokens will be used and what behaviors should be incentivised.
 
 These examples show that before diving into the technical details, you 
-may want to spend some time defining non-technical goals of the SNS you
-are about to launch and the dapp that will be controlled by it.
+may want to spend some time defining non-technical goals of the SNS
+and the dapp that will be controlled by it.
 To provide some tips on what considerations you should not forget,
 we list a few of them on
 [this page](../../../tokenomics/sns/not-blind/predeployment-considerations.md).
@@ -53,18 +53,25 @@ goals in to parameters and configurations that can be set in
 the SNS launch.
 To specify these parameters it helps to first understand on a
 high level how the SNS launch proceeds.
-Also, you will need to get some tools and set up / collect some principals
-identities.
-We explain all these more technical aspects of the SNS launch preparation
+Also, you will need to get some tools and set up or collect some
+principals' identities.
+We explain these more technical aspects of the SNS launch preparation
 on [this page](./predeployment.md).
+
+In addition to preparing the launch, you might want to start planning
+how the SNS will be integrated into you dapp.
+For example, you may want to integrate some or all of the SNS frontend
+in your dapp's frontend. `This page` provides some tips on how this can be
+done.
+<!--TODO-link: add link once have page to frontend -->
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
 go live without testing them. In fact, you may want to test different
 initial parameters and compare them with each other.
 Moreover, you might want to test the integration between the SNS canisters
-and your dapp canister. For example, it is advisable that you
-confirm that the dapp canisters can be upgraded by an SNS. 
+and your dapp canister(s). For example, it is advisable that you
+confirm that the dapp canister(s) can be upgraded by an SNS. 
 Also, if you integrate parts of the frontend for the SNS into you dapp,
 you probably want to test that this integration works.
 
@@ -72,7 +79,7 @@ For all these reasons, we explain on [this page](./local-testing.md), how
 the SNS can be tested.
 
 ### Step 4: Launching the SNS in production
-Once you properly tested the SNS, you are ready to launch an SNS in
-production. 
+Once you properly tested the SNS, you are ready to ask the IC to launch
+an SNS for you in production. 
 We describe all steps included in this process in more detail
 on [this page](./deployment.md).
