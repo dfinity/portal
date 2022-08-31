@@ -63,7 +63,7 @@ To emphasize the decentralization of the DAO from the start, developers can send
 ### Voting power and decentralization
 The voting power should be distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves.
 
-As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. On this page (TODO link) there is more information on the configuration of voting rewards. 
+As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. On this [page](../rewards.md) there is more information on the configuration of voting rewards. 
 
 The configuration of the voting power should consider the (initial) allocation of tokens, to ensure decentralization from the start. 
 For example it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
