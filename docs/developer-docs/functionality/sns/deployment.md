@@ -43,13 +43,13 @@ an SNS with your chosen initial parameters.
 <!--TODO-CLI/dfx-Link: once tooling is clear, make sure that here automatically the .yaml
 file is used. If this is not the case, add the information how this can be ensured.-->
 
-#### 2. Add the SNS root canister as a controller to your dapp canister(s).
+#### 3. Add the SNS root canister as a controller to your dapp canister(s).
 To do so, use your `dfx` identity `identityDevDeploy` and 
 the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
 
-#### 3. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. _{#step3}_
+#### 4. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal. _{#step4}_
 To test this, make an SNS proposal to upgrade one of the dapp canisters to
 a new wasm version.
 Then, ensure that sufficiently many initial neurons (developer and airdrop
@@ -74,7 +74,7 @@ using a command line tool for voting.
 
 :::
 
-#### 4. Remove all controllers other than the SNS from the dapp canister(s)
+#### 5. Remove all controllers other than the SNS from the dapp canister(s)
 Once you convinced yourself that the dapp canister(s) can be upgraded by
 the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
@@ -85,7 +85,7 @@ where you specify as the principals to be removed all existing controller princi
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->
 
-#### 5. Register the dapp in the SNS
+#### 6. Register the dapp in the SNS
 Next, you will register the dapp canister(s) that are now controlled by the SNS
 in the SNS root canister. This is to make sure that the SNS root canister
 is aware of the canisters that it officially governs and accepts the responsibility
@@ -96,18 +96,18 @@ you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is done by an SNS proposal.
 To make such a proposal and vote on it, use your `sns-quill` principal
-`identityDevNeuron` and follow the instructions from [Step 3](#step3).
-As in [Step 3](#step3),
+`identityDevNeuron` and follow the instructions from [Step 4](#step4).
+As in [Step 4](#step4),
 sufficient initial neurons have to vote to reach a majority.
 
 <!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would
 like to register.-->
 
-#### 6. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
+#### 7. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
-you can repeat [Step 3](#step3) at this point.
+you can repeat [Step 4](#step4) at this point.
 
-#### 7. Submit an NNS proposal to start the decentralization sale.
+#### 8. Submit an NNS proposal to start the decentralization sale.
 At this point, you have handed over the control of your dapp to the Internet
 Computer. 
 For the Internet Computer to start the SNS decentralization sale,
@@ -121,7 +121,7 @@ Note that anyone can send such a proposal, but as the original developer
 of the dapp you probably want to make sure that such a proposal is submitted.
 <!--TODO-update-after-change: Add here CF explanation once it is clear.-->
 
-#### 8. Wait for the NNS to launch the SNS & continue evolving the dapp! 
+#### 9. Wait for the NNS to launch the SNS & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the original dapp 
 developer to launch the SNS!
 The dapp has been handed over to the IC and the NNS is voting on whether 
@@ -136,10 +136,10 @@ have defined in the [initialization file](predeployment.md).
 During this time you can further upgrade your dapp canister(s), for
 example to add new features or fix bugs, by sending additional
 SNS proposals as explained in
-[Step 3](#step3).
+[Step 4](#step4).
 You can also add new dapp canisters under the SNS control, if required, 
 by additional SNS proposals as explained in
-[Step 5](#5-register-the-dapp-to-the-sns).
+[Step 6](#6-register-the-dapp-in-the-sns).
 Finally, if there are new blessed deployments of the SNS canisters, you can
 upgrade the SNS canisters by an SNS proposal. 
 To make such a proposal, you can use the following dfx command:
