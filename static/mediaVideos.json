@@ -1,67 +1,72 @@
 [
   {
-    "title": "Talk | Primer to the Internet Computer (Dominic Williams)",
-    "href": "YWHTNr8RZHg",
-    "cleanHref": "YWHTNr8RZHg"
+    "title": "Internet Computer: Blockchain Singularity",
+    "href": "CpOX1U8wehw",
+    "tags": ["presentations"]
   },
   {
-    "title": "Blockchain Singularity with Dominic Williams",
-    "href": "7WvgON_5XCU",
-    "cleanHref": "7WvgON_5XCU"
+    "title": "Talk | Primer to the Internet Computer (Dominic Williams)",
+    "href": "YWHTNr8RZHg",
+    "tags": ["presentations"]
   },
   {
     "title": "DFINITY CEO on Web3, Moving Away From Cloud",
     "href": "HUneMq0gzJs",
-    "cleanHref": "HUneMq0gzJs"
+    "tags": ["interviews"]
   },
   {
     "title": "Dominic Williams of DFINITY Interview at Nasdaq",
     "href": "DER09Hcad7M",
-    "cleanHref": "DER09Hcad7M"
+    "tags": ["interviews"]
   },
   {
     "title": "How DFINITY Is Reinventing the Internet",
     "href": "QUhceX6I81U",
-    "cleanHref": "QUhceX6I81U"
+    "tags": ["interviews"]
   },
   {
     "title": "An Overview of the Internet Computer",
     "href": "XgsOKP224Zw",
-    "cleanHref": "XgsOKP224Zw"
+    "tags": ["presentations"]
+  },
+  {
+    "title": "Blockchain Singularity with Dominic Williams",
+    "href": "7WvgON_5XCU",
+    "tags": ["interviews"]
   },
   {
     "title": "DFINITY CEO Dominic Williams interview | ICP Internet Computer",
-    "href": "JLanS3ueYV0?start=1178",
-    "cleanHref": "JLanS3ueYV0"
+    "href": "JLanS3ueYV0",
+    "tags": ["interviews"]
   },
   {
     "title": "Dominic Williams talks at BLOCKCHANCE 2021 about DFINITY (ICP)",
     "href": "qwyOJtNeEUs",
-    "cleanHref": "qwyOJtNeEUs"
+    "tags": ["conferences"]
   },
   {
     "title": "Dominic Williams - Truly Decentralized Internet: What Does Web3 Look Like?",
-    "href": "7jOQNYuGsBg?start=236",
-    "cleanHref": "7jOQNYuGsBg"
+    "href": "7jOQNYuGsBg",
+    "tags": ["interviews"]
   },
   {
     "title": "DFINITY testnet, October 2017 (Dominic Williams gives demo)",
     "href": "aOzxxeOYJpY",
-    "cleanHref": "aOzxxeOYJpY"
+    "tags": ["demos"]
   },
   {
     "title": "Dominic Williams, Ten Minute DFINITY Presentation at Nasdaq",
     "href": "e8ZnW9J8N9s",
-    "cleanHref": "e8ZnW9J8N9s"
+    "tags": ["conferences", "presentations"]
   },
   {
     "title": "Shanghai International Blockchain Week 2021 | Development of Public Blockchain Technologies",
     "href": "vsrA83z7Coo",
-    "cleanHref": "vsrA83z7Coo"
+    "tags": ["conferences"]
   },
   {
     "title": "DFINITY: Building a New Internet on Blockchain",
     "href": "EaTvCIjUs_o",
-    "cleanHref": "EaTvCIjUs_o"
+    "tags": ["interviews"]
   }
 ]
