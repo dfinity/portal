@@ -12,6 +12,8 @@ import slugify from "slugify";
 import clsx from "clsx";
 import IntraPageNav from "../components/Common/IntraPageNav";
 import { css } from "../utils/dummy-css";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-how-it-works.jpeg";
 
 const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
   const groupClassName = `${slugify(group.title)}-item`;
@@ -73,14 +75,14 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
             <div
               dangerouslySetInnerHTML={{ __html: card.body }}
               className="
-              prose 
+              prose
               prose-img:m-0 prose-img:w-full prose-img:rounded-[10px]
-              prose-h3:tw-heading-5 
+              prose-h3:tw-heading-5
               prose-h4:tw-heading-6
               prose-h5:tw-heading-7
-              prose-p:m-0 prose-p:tw-paragraph prose-p:text-black-60 
-              prose-headings:m-0 
-              space-y-4 
+              prose-p:m-0 prose-p:tw-paragraph prose-p:text-black-60
+              prose-headings:m-0
+              space-y-4
               prose-a:text-infinite prose-a:underline hover:prose-a:text-black hover:prose-a:no-underline
               marker:prose-ol:text-black marker:prose-ol:tw-paragraph
 
@@ -116,6 +118,10 @@ function HowItWorks() {
           }
         `}
       </style>
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>

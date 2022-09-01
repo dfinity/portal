@@ -13,6 +13,8 @@ import { getMinutes, parse, getYear } from "date-fns";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-live-sessions.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -95,6 +97,10 @@ function LiveSessionsPage(): JSX.Element {
       title="Live Sessions"
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
     >
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
@@ -125,7 +131,7 @@ function LiveSessionsPage(): JSX.Element {
                 >
                   Alerts for New Session Registrations
                 </button>
-              </motion.div> 
+              </motion.div>
             </div>
           </section>
         </AnimateSpawn>
@@ -286,7 +292,7 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </section>
-        
+
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
@@ -443,7 +449,7 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-        
+
         {/* This must not be invisible */}
         <div ref={formRef} id="subscribe"></div>
         <AnimateSpawn
@@ -484,7 +490,6 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-
       </main>
     </Layout>
   );

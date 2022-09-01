@@ -21,6 +21,8 @@ import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-icp-tokens.jpeg";
 
 const images = [
   {
@@ -149,6 +151,10 @@ function TokenHolders(): JSX.Element {
       title="ICP Tokens"
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
     >
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
           el={motion.img}
