@@ -6,7 +6,7 @@ import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import { motion } from "framer-motion";
-import Breadcrumbs from "@site/src/components/HowItWorksPage/Breadcrumbs";
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 
 function Index() {
   const location = useLocation();

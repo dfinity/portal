@@ -147,6 +147,10 @@ const config = {
                 href: "https://internetcomputer.org/whitepaper.pdf",
               },
               {
+                label: "Media",
+                href: "/media",
+              },
+              {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
@@ -181,10 +185,6 @@ const config = {
                 docId: "developer-docs/quickstart/hello10mins",
               },
               { label: "Sample Code", to: "/samples" },
-              {
-                label: "Developer Grants ",
-                href: "https://dfinity.org/grants/",
-              },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
