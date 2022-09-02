@@ -76,7 +76,7 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "cdk-rs by DFINITY",
+              label: "cdk-rs by DFINITY (Rust)",
               link: {
                 type: "doc",
                 id: "developer-docs/build/cdks/cdk-rs-dfinity/index",
@@ -126,6 +126,7 @@ const sidebars = {
               ],
             },
             "developer-docs/build/cdks/clang-supported-languages",
+            "developer-docs/build/cdks/azle-demergent-labs",
           ],
         },
         {
