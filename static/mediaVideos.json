@@ -4,10 +4,20 @@
     "href": "CpOX1U8wehw",
     "tags": ["presentations"]
   },
-  {
+   {
     "title": "Talk | Primer to the Internet Computer (Dominic Williams)",
     "href": "YWHTNr8RZHg",
     "tags": ["presentations"]
+  },
+  {
+    "title": "Global R&D - August 2022",
+    "href": "xXF95XDMosY",
+    "tags": ["presentations", "demos"]
+  },
+  {
+    "title": "Global R&D - July 2022",
+    "href": "_-MNbRpjSa0",
+    "tags": ["presentations", "demos"]
   },
   {
     "title": "DFINITY CEO on Web3, Moving Away From Cloud",
@@ -68,5 +78,10 @@
     "title": "DFINITY: Building a New Internet on Blockchain",
     "href": "EaTvCIjUs_o",
     "tags": ["interviews"]
+  },
+  {
+    "title": "Vitalik Buterin (Ethereum) discussing DFINITY at Unchained Live",
+    "href": "e-y1pLkIcFE",
+    "tags": ["interviews", "conferences"]
   }
 ]

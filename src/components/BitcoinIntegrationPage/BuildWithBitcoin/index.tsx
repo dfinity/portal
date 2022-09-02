@@ -10,12 +10,12 @@ function Index() {
       title: "BTC Integration Documentation",
       description:
         "Start building and testing Bitcoin functionality.",
-      href: "https://internetcomputer.org/docs/current/developer-docs/functionality/bitcoin",
+      href: "https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin",
     },
     {
       title: "Threshold ECDSA Documentation",
       description: "Learn about threshold ECDSA signing and its functions.",
-      href: "https://internetcomputer.org/docs/current/developer-docs/functionality/t-ecdsa",
+      href: "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa",
     },
     {
       title: "Sample Code",
