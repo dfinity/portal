@@ -196,30 +196,30 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Integrate Functionality",
+      label: "Integrations",
       link: {
-        type: 'doc', id: 'developer-docs/functionality/bitcoin/index'
+        type: 'doc', id: 'developer-docs/integrations/bitcoin/index'
       },
       items: [
-        // 'developer-docs/functionality/index',
+        // 'developer-docs/integrations/index',
         // {
         //   type: 'category',
         //   label: 'Service Nervous System (SNS)',
         //   link: {
         //     type: "doc",
-        //     id: "developer-docs/functionality/sns/index",
+        //     id: "developer-docs/integrations/sns/index",
         //   },
         //   items: [
-        //     "developer-docs/functionality/sns/sns-intro",
-        //     "developer-docs/functionality/sns/deployment/launch-intro",
-        //     "developer-docs/functionality/sns/deployment/frontend-integration",
-        //     "developer-docs/functionality/sns/deployment/predeployment",
-        //     "developer-docs/functionality/sns/deployment/local-testing",
-        //     "developer-docs/functionality/sns/deployment/deployment",
-        //     "developer-docs/functionality/sns/managing-sns/nervous-system-parameters",
-        //     "developer-docs/functionality/sns/managing-sns/proposal-guide",
-        //     "developer-docs/functionality/sns/managing-sns/cycles-usage",
-        //     "developer-docs/functionality/sns/managing-sns/upgradeSNS",
+        //     "developer-docs/integrations/sns/sns-intro",
+        //     "developer-docs/integrations/sns/deployment/launch-intro",
+        //     "developer-docs/integrations/sns/deployment/frontend-integration",
+        //     "developer-docs/integrations/sns/deployment/predeployment",
+        //     "developer-docs/integrations/sns/deployment/local-testing",
+        //     "developer-docs/integrations/sns/deployment/deployment",
+        //     "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+        //     "developer-docs/integrations/sns/managing-sns/proposal-guide",
+        //     "developer-docs/integrations/sns/managing-sns/cycles-usage",
+        //     "developer-docs/integrations/sns/managing-sns/upgradeSNS",
         //   ],
         // },
         {
@@ -227,11 +227,11 @@ const sidebars = {
           label: "Bitcoin Integration",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/bitcoin/index",
+            id: "developer-docs/integrations/bitcoin/index",
           },
           items: [
-            "developer-docs/functionality/bitcoin/bitcoin-how-it-works",
-            "developer-docs/functionality/bitcoin/local-development",
+            "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "developer-docs/integrations/bitcoin/local-development",
           ],
         },
         {
@@ -239,22 +239,22 @@ const sidebars = {
           label: "Threshold ECDSA",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/t-ecdsa/index",
+            id: "developer-docs/integrations/t-ecdsa/index",
           },
-          items: ["developer-docs/functionality/t-ecdsa/t-ecdsa-how-it-works"],
+          items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
         },
-        "developer-docs/functionality/internet-identity/integrate-identity",
+        "developer-docs/integrations/internet-identity/integrate-identity",
         {
           type: "category",
           label: "ICP Ledger",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/ledger/index",
+            id: "developer-docs/integrations/ledger/index",
           },
           items: [
-            "developer-docs/functionality/ledger/interact-with-ledger",
-            "developer-docs/functionality/ledger/ledger-local-setup",
-            "developer-docs/functionality/ledger/deploy-new-token",
+            "developer-docs/integrations/ledger/interact-with-ledger",
+            "developer-docs/integrations/ledger/ledger-local-setup",
+            "developer-docs/integrations/ledger/deploy-new-token",
           ],
         },
         {
@@ -262,14 +262,14 @@ const sidebars = {
           label: "Rosetta",
           link: {
             type: "doc",
-            id: "developer-docs/functionality/rosetta/index",
+            id: "developer-docs/integrations/rosetta/index",
           },
           items: [
-            "developer-docs/functionality/rosetta/transfers",
-            "developer-docs/functionality/rosetta/neuron-lifecycle",
-            "developer-docs/functionality/rosetta/staking-support",
-            "developer-docs/functionality/rosetta/staking-tutorial",
-            "developer-docs/functionality/rosetta/hotkeys",
+            "developer-docs/integrations/rosetta/transfers",
+            "developer-docs/integrations/rosetta/neuron-lifecycle",
+            "developer-docs/integrations/rosetta/staking-support",
+            "developer-docs/integrations/rosetta/staking-tutorial",
+            "developer-docs/integrations/rosetta/hotkeys",
           ],
         },
       ],
@@ -463,11 +463,10 @@ const sidebars = {
     //   },
     //   items: [
     //     "tokenomics/sns/intro",
-        
+    //     "tokenomics/sns/rewards",
     //     "tokenomics/sns/community-fund",
     //     "tokenomics/sns/not-blind/predeployment-considerations",
     //     "tokenomics/sns/not-blind/tokenomics",
-    //     "tokenomics/sns/not-blind/rewards",
     //     "tokenomics/sns/not-blind/product",
     //     "tokenomics/sns/not-blind/business",
     //     "tokenomics/sns/not-blind/hype"

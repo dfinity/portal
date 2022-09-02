@@ -141,7 +141,15 @@ const config = {
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
+              }, 
+              {
+                label: "Media",
+                href: "/media",
               },
+              {
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
+              },          
               {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
