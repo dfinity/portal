@@ -94,9 +94,9 @@ those who would like to invest in a dapp.
 As already mentioned above, investors too profit both from the tokenization
 and decentralization that a DAO such as the SNS can provide.
 First, tokenization allows investors to get SNS tokens and invest in a dapp.
-The fact that tokens can then be staked in neurons and thus allow for governance
-participation, ensures that investors can contribute to the decisions on how the
-dapp will be evolved.
+The fact that tokens can then be staked and then be used for governance
+participation ensures that investors can contribute to the decisions
+on how the dapp will be evolved.
 Voting rewards might further incentivize investors to participate in governance. 
 Finally, the positive network effects that tokenomics can have are of course
 also in the interest of the investors whose tokens have an increased value if
@@ -110,7 +110,7 @@ the project is successful.
 * dapps are user-controlled
 -->
 
-## How to deploy and maintain a DAO
+## How to deploy and maintain a DAO - different options
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
@@ -139,7 +139,7 @@ your dapp.
    rather than possibly altered code.
    
 2) **_Self-deploy_ an SNS and manually upgrade it.**
-   Any SNS community can choose to deploy the SNS code, which is open source and 
+   A community can choose to deploy the SNS code, which is open source and 
    available [here](https://github.com/dfinity/ic/tree/master/rs/sns), on an 
    application subnet. They can then choose to follow the blessed upgrade path or deviate 
    from this path, e.g., leaving out some versions, or even modify the canisters’ code 
@@ -151,7 +151,7 @@ your dapp.
 
 3) **Build your own DAO or use frameworks provided by others to build your DAO.**
    While this is conceptually similar to the second option, we would like to emphasize
-   that there are of course other design than the SNS that also build a DAO.
+   that there are of course other design than the SNS that also realize a DAO.
    For most of these, the implications for the communities will be similar to the
    second option: The DAO communities will have to maintain the DAO versions, or trust
    a third party to do so and such DAOs can be deployed on a higher-replication 
@@ -165,22 +165,32 @@ Options 2 and 3 are unbounded, we focus here on explaining the SNS in Option 1 i
 more detail.
 
 ## SNS canisters
-The SNS consists of a governance canister, a ledger canister, 
-a root canister, and a decentralization sale canister that is explained in the next
+The SNS consists of the following canisters: the governance canister, 
+the ledger canister and archive canisters,
+the index canister, 
+the root canister, and 
+the decentralization sale canister that is explained in the next
 section.
+
+The _governance canister_ enables decentralized decision making.
+It stores _proposals_ that are suggestions on how to
+evolve the dapp that the SNS governs and _neurons_ that define who the governance
+participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
+Everyone can become a government participant by staking SNS tokens in a neuron.
 
 The _ledger canister_ implements the 
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
 and contains SNS tokens, which are unique tokens for each SNS.
 It stores which accounts own how many SNS tokens and the history of transactions 
-between the principals.
+between the principals. 
+As we want to keep the full ledger history forever but a cansiter has limited
+memory, the ledger canister spwans _archive canisters_ that store the block history. 
+Morevoer, wallets and other frontends will need to show all transactions that are
+relevant for a given account.
+To facilitate this and ensure that not every frontend has to implement such a filter,
+the _index canister_ provides a map of which transactions are relevant for a given account.
 
-The _governance canister_ enables decentralized decision making. 
-It stores _proposals_ that are suggestions on how to
-evolve the dapp that the SNS governs and _neurons_ that define who the governance
-participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
-Everyone can become a government participant by staking SNS tokens in a neuron.
-The root canister is responsible for upgrading the other SNS canisters
+The _root canister_ is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS controls.
 
 ## SNS lifecycle 
@@ -189,44 +199,58 @@ and the dapp canisters that the SNS controls.
 As already described above, SNS canisters are maintained and blessed by the IC community.
 In more detail, the blessed SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister_.
-Anyone can deploy an SNS. To do so, they can make a call to the SNS wasm modules
+Anyone can set up SNS canisters. To do so, they can make a call to the SNS wasm modules
 canister, who takes the latest versions of the SNS canisters, initializes them with
-the parameters given by the user, and deploys them on the SNS subnet.
-This call is not permissioned and anyone can deploy an SNS in this way if they
+the parameters given by the user, and installs them on the SNS subnet.
+This call is not permissioned and anyone can set up an SNS in this way if they
 provide sufficient cycles for the SNS canisters.
 
 A crucial part of launching an SNS is how it can be decentralized. 
 That is, the newly created tokens must be distributed to a large community to ensure
 proper decentralization of voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
-a developer can hand over the control of the dapp to a newly deployed SNS, that has
+a developer can hand over the control of the dapp to a newly installed SNS, that has
 at that stage limited capabilities as it may not be fully decentralized yet, and
-ask the Internet Computer to start a decentralization sale for this SNS.
-In this the decentralization sale, initial tokens are sold for ICP tokens.
+ask the Internet Computer to launch this SNS by starting a decentralization sale
+for it.
+In this the decentralization sale, initial SNS tokens are sold for ICP tokens.
 In the end of a successful decentralization sale, SNS tokens are owned by a large
 community and therefore the SNS governance control is decentralized.
 Moreover, the ICP that were collected in the decentralization sale provide initial
 funding for the SNS project.
-It is conceivable that alternative ways to decentralize a dapp are added in
-later SNS versions.
+It is conceivable that alternative ways to launch and decentralize a dapp are
+added in later SNS versions.
 
 The decentralization sale and the steps to conclude an SNS launch including this
+<<<<<<< HEAD:docs/developer-docs/functionality/sns/sns.md
+decentralization sale are described in more detail [here](./deployment/launch-intro.md).
+=======
 decentralization sale are described in more detail [here](./deployment/deployment.md).
+>>>>>>> master:docs/developer-docs/functionality/sns/sns-intro.md
 
 ### SNS maintenance
 As mentioned, this SNS option is provided as a system function and the SNS canister
 versions are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS community.
-However, there are still some maintenance tasks that have to be performed by an SNS community,
-such as deciding and voting on when an SNS should be upgraded to a new blessed version, 
-adjusting the SNS parameters when needed, and making sure that the SNS canisters do not run out
-of cycles. Regarding the last point, we emphasize that **currently, the SNS
-communities are responsible for individually topping up the cycles of all SNS canisters as
-well as all dapp canisters that are controlled by the SNS. This includes archive canisters
-that are spawn by the ledger canister to archive all blocks.**
-In the future, this will be simplified in a new feature that allows canister groups, where
-cycles can be managed across different canisters.
+However, there are still some maintenance tasks that have to be performed by an
+SNS community, such as deciding and voting on when an SNS should be upgraded
+to a new blessed version, adjusting the SNS parameters when needed, and making
+sure that the SNS canisters do not run out of cycles.
+We especially want to emphasise the last point: 
 
-For more details regarding how to upgrade SNS canister, choose SNS parameters, and manage
-cycles, we respectively refer to [here](./managing-sns/upgradeSNS.md),
-[here](./managing-sns/nervous-system-parameters.md), and [here](./managing-sns/cycles-usage.md).
+:::warning
+The SNS communities are responsible for individually topping up the cycles of
+all SNS canisters as well as all dapp canisters that are controlled by the SNS.
+Special care must be taken that cycles are also monitored for canisters that
+are automatically created. In particular, this includes the archive canisters
+that are spawn by the ledger canister.
+**If the archive canisters are not provided
+with sufficient cycles, the ledger block history may be lost.**
+:::
+In the future, cycles management will be simplified in a new feature that 
+allows canister groups, where cycles can be managed across different canisters.
+
+There are separate pages where you can fine more details regarding [how 
+to upgrade SNS canister](./managing-sns/upgradeSNS.md),
+[set SNS parameters](./managing-sns/nervous-system-parameters.md),
+and [manage cycles](./managing-sns/cycles-usage.md).
