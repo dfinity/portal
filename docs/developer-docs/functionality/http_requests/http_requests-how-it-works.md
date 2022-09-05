@@ -1,29 +1,32 @@
-# Technology Overview -- How Canister HTTP Requests Work
+# Technology Overview — How Canister HTTP Requests Work
 
-We next give some more details on how canister HTTP requests work and important aspects to consider when using the API. We already want to note here that there are some limitations compared to regular (Web 2.0) computer programs making HTTP outcalls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this documentation to get up to speed quickly w.r.t. the feature.
+On this page we provide details on how canister HTTP requests work and important aspects to consider when using the API. We already want to note here that there are some limitations compared to regular (Web 2.0) computer programs making HTTP outcalls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature.
 
 ## Technology
 
 The HTTP requests feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations, without the risk of state divergence between the replicas of the subnet.
 
-To perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external Web server through the Internet Computer's consensus, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are removed and the same transformed responses are provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
-
-To summarize, by running the responses received by the replicas through consensus, we ensure that every replica provides the same response to the smart contract Wasm execution environment, and the optional transformation function makes sure that the response can make it through consensus by removing differences.
-
-Figure goes here
+### How an HTTPS Outcall is Made
 
 The canister HTTP requests feature is implemented as part of the replica and is exposed as an API on the management canister. We next outline how a request is processed by the system. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets.
 * A canister makes an outgoing HTTP request by calling the management canister API using the function `http_request`.
 * The request is stored temporarily in replicated state of the subnet.
 * Periodically (each round) an *adapter* at the networking layer in each replica fetches the pending HTTP outcalls from replicated state. (In fact, a 'shim' layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
 * The adapter on each replica executes the HTTP request by sending it to the target server.
-* The HTTP response from the server is received by the adapter on each replica of the subnet. The adapter limits the response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request.
-* An optional transformation function implemented as part of the canister is invoked on the response on each replica to transform it.
+* The HTTP response from the server is received by the adapter on each replica of the subnet. The adapter limits the network response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request.
+* An optional transformation function implemented as part of the canister is invoked on the response on each replica to transform the response.
 * The transformed response is handed over to consensus on each replica.
 * Consensus agrees on a response if at least $2/3$ of the replicas have the same response for the request as input. In this case, consensus provides this response back to the management canister API at the execution layer, or an error if no consensus can be reached or in case of other problems.
 * The execution layer provides the response or error back to the calling canister.
 
-As we can see, the transformation function and IC consensus play a crucial role here: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister.
+Figure goes here
+The above figure shows a high-level view of how the feature is interacted with and the communication involved in the feature with external servers.
+
+In summary, to perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external Web server through the Internet Computer's consensus, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are removed and the same transformed responses are provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
+
+As we can see, the transformation function and IC consensus play a crucial role for this feature: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister. By running the responses received by the replicas through consensus, we ensure that every replica provides the same response to the smart contract Wasm execution environment.
+
+### Trust Model and Programming Model
 
 The trust model for canister HTTP outcalls is a combination of the trust model of the called HTTP server and the IC:
 * It is assumed that the HTTP service is honest, otherwise, it can provide any responses to any of the calling replicas of the subnet. This is the case also for calls to the service from a Web 2.0 service or an oracle, thus, the situation is the same as in our scenario of a blockchain making the call to the service.
@@ -40,7 +43,7 @@ The basic architecture is that an oracle smart contract is deployed on chain. Us
 
 In the oracle architecture, a single oracle may fulfill the original request, or a decentralized network of oracles may each issue the request and then provide an agreed-upon response (including evidence) to the oracle contract and ultimately to the calling canister. As we can see, the oracle world effectively can achieve the same result as HTTP outcalls, but with a more complex architecture of requiring one or more external parties that want to be paid for their services. Thus, one can assume that HTTP outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model and with lower fees and lower request execution latency.
 
-Oracle services like ChainLink may provide additional functionality or services. One prominent example is using multiple data sources for a given information item, e.g., an asset price, and then providing a normalized response, e.g., the median price, as a result. Another example is keeping a selection of historic prices that have been retrieved available on chain for direct access by smart contracts without any oracle interaction. Both those functionalities can be built with the canister HTTP outcalls feature and do not require oracles.
+Oracle services may provide additional functionality or services. One prominent example is using multiple data sources for a given information item, e.g., an asset price, and then providing a normalized response, e.g., the median price, as a result. Another example is keeping a selection of historic prices that have been retrieved available on chain for direct access by smart contracts without any oracle interaction. Both those functionalities can be built with the canister HTTP outcalls feature and do not require oracles.
 
 Overall, the canister HTTP outcalls feature allows us to achieve what oracles or oracle networks do, but in a stronger model without requiring additional parties that are additional points of failure and want to earn fees for their services. With the canister HTTP requests feature, interactions with Web 2.0 server benefit from reduced fees and also lower latency due to the simpler architecture.
 
@@ -61,11 +64,11 @@ The current MVP has some limitations that we need to make explicit s.t. engineer
 
 ### Responses Must be &ldquo;Similar&rdquo;
 
-Responses the replicas of the subnet receive must be &ldquo;similar&rdquo; in the sense that each response can be subjected to the same transformation function and the outcome of the transformation will be equal on every replica. Thus, &ldquo;similar&rdquo; in this context means that some core information we are interested in is equal in all responses and other parts may differ, but are not relevant for the response. A common setting in the world of HTTP APIs is that the responses are structurally equivalent, but contain certain fields that differ in the responses, e.g., because of timestamps and identifiers contained in the responses.
+Responses the replicas of the subnet receive must be &ldquo;similar&rdquo; in the sense that each response can be subjected to the same transformation function and the outcome of the transformation will be equal on every replica. Thus, &ldquo;similar&rdquo; in this context means that some core information we are interested in is equal in all responses and other parts may differ, but are not relevant for the response. A common setting in the world of HTTP APIs is that the responses are structurally equivalent, but contain certain fields that differ in the responses, for example, because of timestamps and identifiers contained in the responses.
 
 ### POST Requests Must be Idempotent
 
-The way the feature is implemented implies that every HTTP request must be made by every replica of the subnet. This not only applies to `GET`, but also to `POST`, requests and for the latter creates a challenge that we do not have for `GET` requests: A `GET`, if implemented properly, i.e., according to basic HTTP principles, is idempotent, i.e., if made multiple times, yields the same result and does not change anything, but this does not apply to `POST`. I.e., without further precautions, a `POST` made from a canister could result in the request leading to an update on the called server $n$ times, with $n$ the number of replicas in the subnet. This behaviour is clearly not intended, nor would it be acceptable in most scenarios.
+The way the feature is implemented implies that every HTTP request must be made by every replica of the subnet. This not only applies to `GET`, but also to `POST`, requests and for the latter creates a challenge that we do not have for `GET` requests: A `GET`, if implemented properly according to basic HTTP principles, is idempotent. Idempotency means that, if a request is made multiple times, it yields the same result and does not change the server's state. Idempotency does not apply to `POST` requests, meaning that, without further precautions, a `POST` made from a canister could result in the request leading to an update on the called server $n$ times, with $n$ the number of replicas in the subnet. This behaviour is clearly not intended, nor would it be acceptable in most scenarios.
 
 One standard solution used in practice for such scenarios is the use of an *idempotency key* in the request. This key is a unique random string in a header sent along with all resulting requests by the different replicas. The server identifies all but one of the requests as duplicates and those are not considered for changing the state on the server, only one of them is. This results in exactly the intended behaviour of the `POST` being applied exactly once by the server. However, note that this single request being processed by the server can actually be the request made by a compromised replica and thus not be the intended request. Also, the compromised replica may change the idempotency key and thus lead to its request and the actual intended request getting processed by the server.
 
@@ -93,7 +96,7 @@ Most Web servers offering services to the general public implement some sort of 
 
 The problem is that all canisters on a subnet share the IPv6 prefixes of the replicas of this subnet and thus the quota at each server that implements rate limiting. Typical quotas of HTTP services for public (unauthenticated) users are in the order of $10$ requests per second. As every replica makes the same request, we have an amplification factor of $n$, where $n$ is the number of replicas in the subnet. Thus, the quotas can get consumed quickly and rate limits may lead to throttling or the replicas being (temporarily) blocked.
 
-Using a registered user and authorizing the requests with an API key can decouple users on the same server and give each of them their own quota, thereby solving the issue with public APIs. Note, however, that the API key is stored in every replica and may be exposed in case a replica is compromised. This needs to be considered in the security model of the smart contract and is specifically relevant for `POST` operations. See the discussion on compromised replicas for further information.
+Using a registered user and authorizing the requests with an API key can decouple users on the same server and give each of them their own quota, thereby solving the issue with public APIs. Note, however, that the API key is stored in every replica and may be exposed in case a replica is compromised. This needs to be considered in the security model of the smart contract and is specifically relevant for `POST` operations. See the [discussion on compromised replicas](#compromised-replicas) for further information.
 
 We do currently not implement any rate limiting in the IC protocol stack as we think the use of registered users may resolve many if not most or all of the issues with rate limiting of public APIs and all canisters sharing the service's quota.
 
@@ -103,11 +106,11 @@ As mentioned already further above, there are multiple possible extensions we ar
 * *IPv4 support:* IPv4 support would help canisters reach servers that are not available on IPv6, but IPv4 only.
 * *Reduced quorum:* A canister can define that a reduced quorum should be used for a request, e.g., only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests. It may also be interesting for making reads where trust does not matter, but where we want to reduce the request amplification instead, e.g., because of quotas the server has in place.
 
-## Implementing Canister HTTP Requests
+## Performing Canister HTTP Requests
 
 We next provide important information for engineers who want to use canister HTTP requests in their smart contracts. Using canister HTTP requests is somewhat harder than doing HTTP requests in a regular enterprise application as we need to consider aspects like consensus and idempotency of `POST` requests.
 
-### Recipe for Implementing a Canister HTTP Call
+### Recipe for Coding a Canister HTTP Call
 
 The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle the implementation of a new canister HTTP outcall type.
 * &ldquo;Manually,&rdquo; e.g., using the `curl` tool, make the same HTTP request of interest twice within a short time frame (1-2 seconds) to emulate what would be done by the replicas of a subnet, just with a smaller $n$.
@@ -128,7 +131,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Transformation Function
 
-The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s of different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on it as part of IC consensus. Depending on the purpose of the request, there are different approaches to writing the transformation function:
+The purpose of the transformation function is to transform each response $$r_i$$ received by a replica $i$, where the $r_i$ s of different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on it as part of IC consensus. Depending on the purpose of the request, there are different approaches to writing the transformation function:
 * Extract only the information item(s) of interest. This can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.
 * Remove all variable parts of the request individually and retain all the remaining parts. The canister then extracts the relevant information. This may be useful when the canister still needs the structure of the HTTP request and the headers.
 
