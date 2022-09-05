@@ -4,7 +4,7 @@ We next give some more details on how canister HTTP requests work and important 
 
 ## Technology
 
-The feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations, without the risk of state divergence between the replicas of the subnet. This is crucial, as it has required us to overcome some challenges which have so far prevented blockchains from implementing something like this feature.
+The HTTP requests feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations, without the risk of state divergence between the replicas of the subnet.
 
 We realize HTTP requests by each replica pushing an (optionally-transformed) instance of the received HTTP response from the external Web server through the Internet Computer's consensus, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are removed and the same transformed responses are provided to consensus on every (honest) replica. This guarantees that on every replica the exact same, or no, response is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
 
