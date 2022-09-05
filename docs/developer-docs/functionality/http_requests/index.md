@@ -16,7 +16,7 @@ Why is interfacing with the external world so important for a blockchain?
 
 There are many use cases for canister HTTP outcalls, see the following for some examples.
 * One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data for DEXs or weather data for decentralized insurance dApps.
-* IoT dApps need to obtain sensor data from traditional servers the sensors interact with. In the future, we may envision also direct interactions of sensors with the IC.
+* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, we may envision even direct interactions of sensors with the IC blockchain.
 * Chat services sending push notifications about incoming messages to users.
 
 We expect the majority of HTTP calls to be GET calls for reading Web 2.0 data, but POST clearly also plays a key role for the interaction with external systems in order to be able to write data to Web 2.0 servers.

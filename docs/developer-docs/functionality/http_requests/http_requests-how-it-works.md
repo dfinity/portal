@@ -141,12 +141,17 @@ We recommend to go with the first approach whenever possible as it has multiple 
 
 FIX: update with the new pricing model which is likely substantially cheaper
 
-As (almost) every feature of the IC, the canister HTTP request feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the fixed cost and the overhead of HTTP requests including headers, it is advantageous to make fewer larger requests to retrieve the same amount of information than with more smaller requests, if this is feasible from the application perspective. The cycles provided with the call must be sufficient for covering the cost, remaining cycles are returned to the caller.
-The current pricing is defined to be very conservative (expensive) and prices are likely to change to the cheaper with the introduction of an update of the pricing model.
+As (almost) every feature of the IC, the canister HTTP request feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the fixed cost and the overhead of HTTP requests, e.g., of headers, it is advantageous to make fewer larger requests to retrieve the same amount of information than with more smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost, remaining cycles are returned to the caller.
+The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model.
 
 ### Errors
 
-There are a number of error cases that can happen when using this feature. The most prominent ones are listed next.
-* FIX: list
+There are a number of error cases that can happen when using this feature. The most important ones are listed next.
+* *SysFatal - Url needs to specify https scheme:* The feature currently only allows for HTTPS connections and HTTP leads to an error.
+* *SysFatal - Timeout expired:* Requests are timed out if not fulfilled within the timeout period. One important instance when this happens is when there are not sufficiently many equal responses to achieve consensus.
+* *SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):* This error indicates that a TCP connection could not have been established.
+* *CanisterReject - http_request request sent with 0 cycles, but ... cycles are required:* At least the required amount of cycles need to be sent with the request in order to it getting fulfilled by the subnet.
+* *CanisterReject - max_response_bytes expected to be in the range [0..2097152], got ...:* This error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
+* *SysFatal - Transformed http response exceeds limit: 2045952:* This error indicates that the limit for the transformed response size was hit. This is currently a hard limit of the HTTPS outcalls functionality.
 
 If you are experiencing issues that are not yet described in the documentation or have other suggestions for improvement of the documentation that may help engineers use the feature effectively, please let us know about it in the [forum topic](https://forum.dfinity.org/t/enable-canisters-to-make-http-s-requests/9670) for canister HTTP requests.
