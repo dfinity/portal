@@ -6,7 +6,7 @@ On this page we provide details on how canister HTTP requests work and important
 
 The HTTP requests feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations, without the risk of state divergence between the replicas of the subnet.
 
-### How an HTTPS Outcall is Made
+### How an HTTPS Outcall is Processed by the IC
 
 The canister HTTP requests feature is implemented as part of the replica and is exposed as an API on the management canister. We next outline how a request is processed by the system. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets.
 * A canister makes an outgoing HTTP request by calling the management canister API using the function `http_request`.
@@ -131,7 +131,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Transformation Function
 
-The purpose of the transformation function is to transform each response $$r_i$$ received by a replica $i$, where the $r_i$ s of different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on it as part of IC consensus. Depending on the purpose of the request, there are different approaches to writing the transformation function:
+The purpose of the transformation function is to transform each response $$r_i$$ received by a replica $i$, where the <span class="math math-inline">r_i</span>$r_i$ s of different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on it as part of IC consensus. Depending on the purpose of the request, there are different approaches to writing the transformation function:
 * Extract only the information item(s) of interest. This can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.
 * Remove all variable parts of the request individually and retain all the remaining parts. The canister then extracts the relevant information. This may be useful when the canister still needs the structure of the HTTP request and the headers.
 
