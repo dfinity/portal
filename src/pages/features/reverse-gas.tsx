@@ -10,7 +10,7 @@ function FeaturePage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Web Speed"
+      title="Reverse Gas"
       // fill in meta description
       description=""
     >
@@ -19,15 +19,12 @@ function FeaturePage() {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Web speed</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Reverse Gas</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The Internet Computer (IC) is the only blockchain that can host
-                a full dapp; frontend, backend, and data included. This is a
-                crucial and distinguishing feature allowing dapps to run 100%
-                on-chain inheriting the security and decentralization of
-                blockchain without sacrificing speed or affordability. This is
-                possible because nodes of the IC can securely serve HTTP
-                requests and by leveraging the reverse gas model.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
+                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
+                labore, excepturi hic similique porro corporis rerum nihil modi
+                perferendis tempora, tenetur doloremque!
               </p>
             </div>
           </div>
@@ -63,61 +60,33 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Two key technology developments make it possible for Internet
-              Computer smart contracts to create bitcoin addresses and directly
-              send and receive bitcoin: inter-node communication between the
-              Internet Computer network and the Bitcoin network, and the use of
-              novel threshold ECDSA cryptography by its protocols.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
+              qui mollitia? Hic{" "}
+              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
+                ECDSA API
+              </Link>{" "}
+              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
             </p>
-            <h3>Network Integration</h3>
+            <h3>Lorem ipsum dolor sit amet!</h3>
             <p>
-              When the Internet Computer blockchain creates transactions for the
-              Bitcoin blockchain, its nodes directly transmit the transaction to
-              the Bitcoin network's nodes, without any need for intermediaries
-              that might censor them. Internet Computer nodes also directly
-              pulls blocks from the Bitcoin network to maintain Bitcoin's
-              current UTXO set.
-            </p>
-            <h3>Threshold ECDSA</h3>
-            <p>
-              Novel "threshold cryptography" allows the Internet Computer to
-              distribute, and redistribute, secret key material among its nodes,
-              and have them cooperate to create new bitcoin addresses and sign
-              Bitcoin transactions, using highly fault tolerant decentralized
-              network protocols that are resilient to attacks by malicious
-              nodes.
-            </p>
-            <p>
-              With the{" "}
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
+              ut totam ad,{" "}
               <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
                 Bitcoin API
               </Link>{" "}
-              and{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>
-              , canisters can directly securely receive, hold, and send
-              bitcoins, as though they were smart contracts actually hosted{" "}
-              <i>on</i> the Bitcoin network itself.
+              , consequatur, sequi doloribus error nulla odit perferendis culpa
+              at in quos exercitationem possimus quaerat sit fugiat. current
+              UTXO set.
             </p>
+
             <p>
-              This means bitcoin can be easily and securely incorporated into
-              DeFi and Web3 services on the Internet Computer, without the need
-              to trust bridging services that might get hacked, or taken down,
-              causing the loss of the bitcoin involved.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
+              eos libero unde, maxime minus quae natus iste corporis placeat
+              laboriosam inventore provident veritatis magni soluta nostrum
+              voluptas officiis quia!
             </p>
-            <p>
-              For example, DEXs (decentralized exchanges) can easily provide BTC
-              trading pairs, decentralized fundraises can accept bitcoin, and a
-              Web3 SocialFi service might allow satoshis to be sent using chat
-              messages, say.
-            </p>
-            <p>
-              Lightning Network-like services can also be created by wrapping
-              bitcoin inside fully autonomous Internet Computer smart contracts,
-              such that bitcoin can be sent between users, Web3 services and
-              DeFi contracts, in only 1-2 seconds.
-            </p>
+
             <p className="mb-3 mt-6">
               <Link
                 href="/docs/current/developer-docs/integrations/bitcoin/"
@@ -132,12 +101,13 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Bitcoin Integration
+            Build with Lorem Ipsum
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            The efficiency and scalability of the Internet Computer opens up a
-            whole new set of possible BTC applications: fund a DAO, create DeFi
-            dapps and more.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
+            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
+            aliquid atque exercitationem ipsa nobis. Nemo.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}

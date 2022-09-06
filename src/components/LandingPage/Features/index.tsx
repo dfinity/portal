@@ -9,27 +9,27 @@ const cardsContent = [
   {
     title: "Web serving",
     body: "Smart contracts process http requests & serve interactive web direct to users",
-    link: "https://wiki.internetcomputer.org/wiki/Web_Serving",
+    link: "/features/serve-web-content",
   },
   {
     title: "Breakthrough speed",
     body: "Pre-finalized query TX <200ms, and update TX in <2s",
-    link: "https://wiki.internetcomputer.org/wiki/Web_Speed",
+    link: "/features/web-speed",
   },
   {
     title: "Interact w/o tokens",
-    body: 'Smart contracts pay for their own compute so users can just interact',
-    link: "https://wiki.internetcomputer.org/wiki/Users_interact_with_dapps_without_tokens",
+    body: "Smart contracts pay for their own compute so users can just interact",
+    link: "/features/reverse-gas",
   },
   {
     title: "Emit less CO₂",
     body: "100% on-chain systems and services can be more efficient than traditional IT",
-    link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption",
+    link: "/features/green",
   },
   {
     title: "Limitless scaling",
     body: "Scale mass-market web3 services 100% on-chain (no cloud or servers needed)",
-    link: "https://wiki.internetcomputer.org/wiki/Limitless_Scaling",
+    link: "/features/limitless-scaling",
   },
   {
     title: "Internet Identity",
@@ -39,22 +39,22 @@ const cardsContent = [
   {
     title: "Rapid evolution",
     body: "A governance DAO upgrades and configures the blockchain's nodes daily",
-    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
+    link: "/features/governance",
   },
   {
     title: "Parallelism",
     body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
-    link: "https://wiki.internetcomputer.org/wiki/Parallelism",
+    link: "/features/actor-model",
   },
   {
     title: "WebAssembly",
     body: "Use any lang that compiles to the VM of the future: Motoko, Rust, C, etc",
-    link: "https://wiki.internetcomputer.org/wiki/WebAssembly",
+    link: "/features/webassembly",
   },
   {
     title: "Web3 orchestration",
     body: "Smart contracts sign TXs that run on other blockchains (chain key crypto)",
-    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
+    link: "/features/multi-chain-transactions",
   },
   {
     title: "Bitcoin liquidity",
@@ -69,17 +69,17 @@ const cardsContent = [
   {
     title: "Multi-block TXs",
     body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
-    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+    link: "/features/multi-block-transactions",
   },
   {
     title: "Sovereign network",
     body: 'Internet Computer nodes are dedicated "node machines", not cloud instances',
-    link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
+    link: "/features/sovereign-network",
   },
   {
     title: "Daemon contracts",
     body: "Smart contracts can be invoked by the network and run automatically",
-    link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
+    link: "/features/daemon-contracts",
   },
 ];
 
