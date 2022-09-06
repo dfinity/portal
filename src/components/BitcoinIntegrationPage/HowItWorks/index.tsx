@@ -10,7 +10,7 @@ function Index() {
   return (
     <AnimateSpawn
       variants={transitions.container}
-      className="max-w-page relative mx-auto mt-20 lg:mt-40 mb-20 px-6 md:mb-60 md:px-15"
+      className="max-w-page relative mx-auto mt-20 lg:mt-40 mb-20 px-6 md:mb-40 md:px-15"
     >
       <div className="bg-infinite">
         <img
