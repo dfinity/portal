@@ -193,12 +193,22 @@
 
 .eventContainer {
     position: relative;
-    background: url("@site/static/img/startBuilding/event_background_stars.png") no-repeat center center;
+    background: url("@site/static/img/btc-integration-bg.jpg") no-repeat center center;
+    background-size: cover;
     overflow: hidden;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
-.eventContainer:hover .eventAction, .eventContainer:hover .eventDescription {
+.eventContainer .informationIcon {
+    display: none;
+}
+
+.cardWhite p {
+    color: white;
+}
+
+.eventContainer:hover .eventAction,
+.eventContainer:hover .eventDescription {
     display: flex;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }

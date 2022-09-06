@@ -27,26 +27,32 @@ function Index() {
           How It Works
         </motion.h1>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Two key developments make Bitcoin integration possible: direct
-          integration with the Bitcoin network and a novel threshold ECDSA
-          protocol.
+          Two key technology developments make it possible for Internet Computer smart 
+          contracts to create bitcoin addresses and directly send and 
+          receive bitcoin: inter-node communication between the Internet Computer
+          network and the Bitcoin network, and the use of novel threshold ECDSA
+          cryptography by its protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Direct Integration with Bitcoin
+          Network Integration
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
-          Direct integration means that nodes of the Internet Computer
-          communicate directly with the nodes of the Bitcoin network without
-          relying on fragile bridges.
+          When the Internet Computer blockchain creates transactions for the 
+          Bitcoin blockchain, its nodes directly transmit the transaction 
+          to the Bitcoin network's nodes, without any need for intermediaries 
+          that might censor them. Internet Computer nodes also directly 
+          pulls blocks from the Bitcoin network to maintain Bitcoin's current 
+          UTXO set.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Threshold ECDSA is a cryptographic protocol that enables canisters to
-          securely hold and use ECDSA keys. Shares of the secret key are stored
-          across many nodes, making the protocol resilient to attacks from
-          malicious nodes.
+          Novel "threshold cryptography" allows the Internet Computer to distrubute,
+          and redistribute, secret key material among its nodes, and have them cooperate
+          to create new bitcoin addresses and sign Bitcoin transactions,
+          using highly fault tolerant decentralized network protocols that
+          are resilient to attacks by malicious nodes.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-4 tw-paragraph">
           With the{" "}
@@ -63,21 +69,33 @@ function Index() {
           >
             ECDSA API
           </Link>
-          , canisters on the Internet Computer can securely receive, hold, and
-          send bitcoins, opening the possibility for Bitcoin smart contracts.
+          , canisters can directly securely receive, hold, and send bitcoins, as though
+          they were smart contracts actually hosted <i>on</i> the Bitcoin network itself.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Bringing smart contracts on the Internet Computer unlocks a number of
-          novel applications including decentralized exchanges, using Bitcoin to
-          participate in token sales, and chain-key-Bitcoin, an advanced form of
-          wrapped Bitcoin without the usual drawbacks of token wrapping.
+          This means bitcoin can be easily and securely incorporated into 
+          DeFi and Web3 services on the Internet Computer, without the need to
+          trust bridging services that might get hacked, or taken down, causing
+          the loss of the bitcoin involved.
+        </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph">   
+          For example, DEXs (decentralized exchanges) can easily provide BTC 
+          trading pairs, decentralized fundraises can accept bitcoin, and 
+          a Web3 SocialFi service might allow satoshis to be sent using chat 
+          messages, say.
+        </motion.p>
+        <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
+          Lightning Network-like services can also be created by wrapping 
+          bitcoin inside fully autonomous Internet Computer smart contracts,
+          such that bitcoin can be sent between users, Web3 services
+          and DeFi contracts, in only 1-2 seconds.
         </motion.p>
         <motion.p
           variants={transitions.item}
           className="mb-3 mt-6 tw-heading-6"
         >
           <a
-            href="https://internetcomputer.org/docs/current/developer-docs/functionality/bitcoin/"
+            href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-black hover:no-underline tw-heading-6"

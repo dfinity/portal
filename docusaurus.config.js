@@ -15,7 +15,11 @@ const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const roadmapDataPlugin = require("./plugins/roadmap-data");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+const math = require('remark-math');
+const katex = require('rehype-katex');
 
 const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
@@ -44,7 +48,19 @@ const config = {
     showcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
+    roadmapDataPlugin,
+  ],
+
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 
   presets: [
@@ -65,7 +81,8 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, require("remark-code-import")],
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
           // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
@@ -127,7 +144,7 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Showcase",
+                label: "Web3 Ecosystem",
                 href: "/showcase",
               },
               {
@@ -137,7 +154,15 @@ const config = {
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
+              }, 
+              {
+                label: "Media",
+                href: "/media",
               },
+              {
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
+              },          
               {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
@@ -198,7 +223,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://forum.dfinity.org/c/roadmap/29",
+                href: "/roadmap",
               },
               {
                 label: "Staking & Governance",

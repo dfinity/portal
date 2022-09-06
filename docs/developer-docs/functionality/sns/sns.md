@@ -1,2 +1,0 @@
-# Handing over to SNS
-

@@ -15,7 +15,7 @@ const teamInformationPlugin = async function () {
         !CONTENTFUL_HOST
       ) {
         logger.warn(
-          "Warning: no env variables found for Contentful integration. Using mock showcase data."
+          "Warning: no env variables found for Contentful integration. Using mock team data."
         );
         return require("./data/team-information-mock.json");
       }

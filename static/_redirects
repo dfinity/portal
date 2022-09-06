@@ -28,14 +28,24 @@
 /docs/candid-guide/candid-intro.html /docs/current/developer-docs/build/languages/candid/candid-intro.html
 /docs/candid-guide/candid-ref.html /docs/current/references/candid-ref.html
 /docs/candid-guide/candid-types.html /docs/current/references/candid-ref.html
+/docs/current/concepts/data-centers https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding
 /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
 /docs/current/developer-docs/build/languages/motoko/motoko /docs/current/developer-docs/build/languages/motoko
 /docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
+/docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat 301
+/docs/current/developer-docs/build/languages/motoko/ /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko 301
+/docs/current/developer-docs/build/languages/motoko/* /docs/current/developer-docs/build/cdks/motoko-dfinity/:splat 301
+/docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents/index.md
+/docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/index.md
+/docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/build/agents/index.md
+/docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents/index.md
+/docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/build/agents/index.md
 /docs/developers-guide/about-this-guide.html /docs/current/developer-docs/build/language/motoko/about-this-guide.html
 /docs/developers-guide/basic-syntax-rules.html /docs/current/developer-docs/build/language/motoko/basic-syntax-rules.html
 /docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
 /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/deploy/computation-and-storage-costs.html
-/docs/developers-guide/concepts/bitcoin-integration.html /docs/current/concepts/bitcoin-integration.html
+/docs/developers-guide/concepts/bitcoin-integration.html /bitcoin-integration.html
+/docs/current/concepts/bitcoin-integration.html /bitcoin-integration.html
 /docs/developers-guide/concepts/canisters-code.html /docs/current/concepts/canisters-code.html
 /docs/developers-guide/concepts/concepts-intro.html /docs/current/concepts/concepts-intro.html
 /docs/developers-guide/concepts/data-centers.html /docs/current/concepts/data-centers.html
@@ -81,7 +91,7 @@
 /docs/ic-identity-guide/hello-guide.html /docs/current/tokenomics/identity-auth/hello-guide
 /docs/ic-identity-guide/what-is-ic-identity.html /docs/current/tokenomics/identity-auth/what-is-ic-identity
 /docs/index.html /docs/current/developer-docs/ic-overview
-/docs/integration/ledger-quick-start.html /docs/current/developer-docs/functionality/ledger/
+/docs/integration/ledger-quick-start.html /docs/current/developer-docs/integrations/ledger/
 /docs/interface-spec/index.html /docs/current/references/ic-interface-spec
 /docs/introduction/welcome.html /docs/current/developer-docs/ic-overview
 /docs/language-guide/about-this-guide.html /docs/current/developer-docs/build/languages/motoko/about-this-guide
@@ -125,13 +135,13 @@
 /docs/quickstart/network-quickstart.html /docs/current/developer-docs/quickstart/network-quickstart
 /docs/quickstart/newcomers.html /docs/current/developer-docs/ic-overview
 /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/quickstart/hello10mins
-/docs/rosetta-api/deploy-new-token.html /docs/current/developer-docs/functionality/ledger/deploy-new-token
-/docs/rosetta-api/ledger-local-setup.html /docs/current/developer-docs/functionality/ledger/ledger-local-setup
-/docs/rosetta-api/ledger.html /docs/current/developer-docs/functionality/ledger/
-/docs/rosetta-api/neuron-lifecycle.html /docs/current/developer-docs/functionality/rosetta/neuron-lifecycle
-/docs/rosetta-api/staking-support.html /docs/current/developer-docs/functionality/rosetta/staking-support
-/docs/rosetta-api/staking-tutorial.html /docs/current/developer-docs/functionality/rosetta/staking-tutorial
-/docs/rosetta-api/transfers.html /docs/current/developer-docs/functionality/rosetta/transfers
+/docs/rosetta-api/deploy-new-token.html /docs/current/developer-docs/integrations/ledger/deploy-new-token
+/docs/rosetta-api/ledger-local-setup.html /docs/current/developer-docs/integrations/ledger/ledger-local-setup
+/docs/rosetta-api/ledger.html /docs/current/developer-docs/integrations/ledger/
+/docs/rosetta-api/neuron-lifecycle.html /docs/current/developer-docs/integrations/rosetta/neuron-lifecycle
+/docs/rosetta-api/staking-support.html /docs/current/developer-docs/integrations/rosetta/staking-support
+/docs/rosetta-api/staking-tutorial.html /docs/current/developer-docs/integrations/rosetta/staking-tutorial
+/docs/rosetta-api/transfers.html /docs/current/developer-docs/integrations/rosetta/transfers
 /docs/rust-guide/multiply-dependency.html /docs/current/developer-docs/build/languages/rust/multiply-dependency
 /docs/rust-guide/rust-counter.html /docs/current/developer-docs/build/languages/rust/rust-counter
 /docs/rust-guide/rust-intro.html /docs/current/developer-docs/build/languages/rust/rust-intro
@@ -165,8 +175,9 @@
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
 
-/roadmap https://forum.dfinity.org/c/roadmap/29 302!
-
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!
 /eula-storage https://association.internetcomputer.org/eula-storage 301!
+
+/howitworks /how-it-works 301
+/howitworks/* /how-it-works/:splat 301

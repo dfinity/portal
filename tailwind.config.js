@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       maxWidth: {
         page: "1440px",
+        "page-narrow": "1214px",
       },
       spacing: {
         12.5: "50px",
@@ -24,6 +25,10 @@ module.exports = {
       margin: {
         "1/12": "8.333333%",
         "2/12": "16.666666666%",
+      },
+      padding: {
+        "2/3": "33.333333%",
+        "16/9": "56.25%",
       },
       fontWeight: {
         book: 450,
@@ -51,9 +56,13 @@ module.exports = {
         DEFAULT: "#181818",
         30: "rgba(24, 24, 24, 0.3)",
         60: "rgba(24, 24, 24, 0.6)",
+        30: "rgba(24, 24, 24, 0.3)",
+        20: "rgba(24, 24, 24, 0.2)",
       },
       white: {
         DEFAULT: "#ffffff",
+        80: "rgba(255, 255, 255, 0.8)",
+        60: "rgba(255, 255, 255, 0.6)",
         50: "rgba(255, 255, 255, 0.5)",
       },
       green: {
@@ -98,6 +107,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
@@ -141,8 +151,12 @@ module.exports = {
         '.button-outline': '@apply inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
         '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
         '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
+        '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
         '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
-        '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered'
+        '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
+        //
+        '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
+        '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
       };
 
       addComponents(

@@ -1,66 +1,72 @@
-const createClient = require("contentful").createClient;
-const logger = require("@docusaurus/logger");
+const marked = require("marked");
+const fs = require("fs");
+const path = require("path");
+const matter = require("gray-matter");
+const { isLinkExternal } = require("./utils/links");
+const baseDir = path.resolve(__dirname, "..", "how-it-works");
 
-const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_HOST } =
-  process.env;
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+renderer.link = (href, title, text) => {
+  let html = linkRenderer.call(renderer, href, title, text);
+  if (isLinkExternal(href)) {
+    // this is an external link, add target="_blank"
+    html = html.replace(
+      /^<a /,
+      `<a target="_blank" rel="noreferrer noopener" `
+    );
+  }
+  if (href.startsWith("https://www.youtube.com/") && text.startsWith("<img ")) {
+    // this is a youtube thumbnail, add class name
+    html = html.replace(/^<a /, `<a class="markdown-youtube-thumbnail" `);
+  }
+  return html;
+};
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksArticlesPlugin = async function () {
   return {
     name: "howitworks-articles",
     async loadContent() {
-      if (
-        !CONTENTFUL_SPACE_ID ||
-        !CONTENTFUL_ACCESS_TOKEN ||
-        !CONTENTFUL_HOST
-      ) {
-        logger.warn(
-          "Warning: no env variables found for Contentful integration. Using mock howitworks data."
+      const dirs = fs
+        .readdirSync(baseDir, {
+          withFileTypes: true,
+        })
+        .filter((d) => d.isDirectory());
+
+      const subpages = [];
+
+      for (const dir of dirs) {
+        const subpageFiles = fs
+          .readdirSync(path.join(baseDir, dir.name), {
+            withFileTypes: true,
+          })
+          .filter((d) => d.isFile() && d.name.endsWith(".subpage.md"));
+
+        subpages.push(
+          ...subpageFiles.map((sp) => {
+            const meta = matter(
+              fs.readFileSync(path.join(baseDir, dir.name, sp.name), {
+                encoding: "utf-8",
+              })
+            );
+            return {
+              title: meta.data.title,
+              abstract: meta.data.abstract,
+              shareImage: meta.data.shareImage,
+              slug: meta.data.slug,
+              content: marked.parse(meta.content, { renderer }),
+            };
+          })
         );
-        return require("./data/howitworks-mock.json");
       }
 
-      const client = createClient({
-        space: CONTENTFUL_SPACE_ID,
-        accessToken: CONTENTFUL_ACCESS_TOKEN,
-        host: CONTENTFUL_HOST,
-      });
-
-      const howItWorksPage = await client.getEntry("2jdlSaF3APWKTzNmBs9yad");
-
-      return {
-        metaTitle: howItWorksPage.fields.metaTitle,
-        metaDescription: howItWorksPage.fields.metaDescription,
-        heroTitle: howItWorksPage.fields.heroTitle,
-        heroBody: howItWorksPage.fields.heroBody,
-        otherSessionsTitle: howItWorksPage.fields.otherSessionsTitle,
-        featured: {
-          title: howItWorksPage.fields.featured.fields.title,
-          description: howItWorksPage.fields.featured.fields.description,
-          youtubeVideo: howItWorksPage.fields.featured.fields.youtubeVideo,
-          listOfLinks: howItWorksPage.fields.featured.fields.listOfLinks,
-          coverImage:
-            howItWorksPage.fields.featured.fields.coverImage?.fields.file?.url,
-          slug: howItWorksPage.fields.featured.fields.slug,
-        },
-        articles: howItWorksPage.fields.items
-          .filter((a) => !!a.fields.description)
-          .map((articles) => {
-            return {
-              title: articles.fields.title,
-              description: articles.fields.description,
-              youtubeVideo: articles.fields.youtubeVideo,
-              listOfLinks: articles.fields.listOfLinks,
-              coverImage: articles.fields.coverImage?.fields.file?.url,
-              slug: articles.fields.slug,
-            };
-          }),
-      };
+      return subpages;
     },
     async contentLoaded({ content, actions }) {
       const { setGlobalData, addRoute } = actions;
       setGlobalData(content);
-      content.articles.map((article) => {
+      content.map((article) => {
         addRoute({
           path: "/how-it-works/" + article.slug,
           component: "@site/src/components/HowItWorksPage/ArticlePage/",

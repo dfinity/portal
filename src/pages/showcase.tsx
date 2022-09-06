@@ -1,4 +1,5 @@
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import shareImage from "@site/static/img/shareImages/share-showcase.jpeg";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
@@ -13,6 +14,7 @@ import { useQueryParam } from "../utils/use-query-param";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
@@ -74,6 +76,10 @@ function ShowcasePage(): JSX.Element {
       title="Showcase"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
     >
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
@@ -101,9 +107,9 @@ function ShowcasePage(): JSX.Element {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                    "button-outline",
                     !queryTag
-                      ? "text-white bg-infinite-60"
+                      ? "text-white bg-infinite"
                       : "text-black bg-transparent"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -113,9 +119,9 @@ function ShowcasePage(): JSX.Element {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                      "button-outline",
                       tag.toLowerCase() === queryTag?.toLowerCase()
-                        ? "text-white bg-infinite-60"
+                        ? "text-white bg-infinite"
                         : "text-black bg-transparent"
                     )}
                     key={tag}

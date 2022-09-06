@@ -1,5 +1,13 @@
 # Release Notes
 
+# What's new in DFX 0.11.2
+
+### fix: disable asset canister redirection of all HTTP traffic from `.raw.ic0.app` to `.ic0.app`
+
+### fix: disable asset canister's ETag HTTP headers
+
+The feature is not yet implemented on `icx-proxy`-level, and is causing 500 HTTP response for some type of assets every second request. We'll bring this feature back in upcoming `dfx` releases.
+
 # What's new in DFX 0.11.1
 
 ## DFX
@@ -44,7 +52,7 @@ dfx is now capable of displaying the schema for `dfx.json`. You can see the sche
     }
 ]
 ```
-- Configuring assets works only during asset creation - any changes to `.ic-assets.json` files won't have any effect effect for assets that have already been created. We are working on follow up implementation with improvements to handle updating these properties.
+- Configuring assets works only during asset creation - any changes to `.ic-assets.json` files won't have any effect on assets that have already been created. We are working on follow up implementation with improvements to handle updating these properties.
 - `headers` from multiple applicable rules are being stacked/concatenated, unless `null` is specified, which resets/empties the headers.
 - Both `"headers": {}` and absence of `headers` field don't have any effect on end result.
 - Valid JSON format is required, i.e. the array of maps, `match` field is required. Only the following fields are accepted: `cache`, `ignore`, `headers`, `match`. The glob pattern has to be valid.
@@ -1760,7 +1768,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
+-   New [Candid documentation](../../build/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 
@@ -1795,7 +1803,7 @@ The command is only applicable if you received the wallet canister identifier as
     the `WordN` types. Therefore, the wrapping arithmetic operations on
     `WordN` are deprecated and their use will print a warning. For
     information about replacing Word types, see [Word
-    types](../../build/languages/motoko/language-manual#word-types).
+    types](../../build/cdks/motoko-dfinity/language-manual.md#word-types).
 
 -   For values `x` of type `Blob`, an iterator over the elements of the
     blob `x.vals()` is introduced. It works like `x.bytes()`, but
