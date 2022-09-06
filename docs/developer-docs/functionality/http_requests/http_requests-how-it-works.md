@@ -21,7 +21,7 @@ The canister HTTP outcalls feature is implemented as part of the replica and is 
 
 Figure goes here
 
-The above figure shows a high-level view of how a canister interacts with the feature and the communication with external servers involved in the feature.
+The above figure shows a high-level view of how a canister interacts with the feature and the communication of the subnet replicas with external servers.
 
 To summarize, to perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external Web server through the Internet Computer's consensus layer, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are eliminated and the same transformed response is provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
 
@@ -107,7 +107,7 @@ As mentioned already further above, there are multiple possible extensions we ar
 * *IPv4 support:* IPv4 support would help canisters reach servers that are not available on IPv6, but IPv4 only.
 * *Reduced quorum:* A canister can define that a reduced quorum should be used for a request, e.g., only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests. It may also be interesting for making reads where trust does not matter, but where we want to reduce the request amplification instead, e.g., because of quotas the server has in place.
 
-## Performing Canister HTTP Requests
+## Coding Canister HTTP Requests
 
 We next provide important information for engineers who want to use canister HTTP requests in their smart contracts. Using canister HTTP requests is somewhat harder than doing HTTP requests in a regular enterprise application as we need to consider aspects like consensus and idempotency of `POST` requests.
 
@@ -120,15 +120,11 @@ The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle t
 * Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably.
 * Implement the request and try it out in the local SDK environment. However, note that the behaviour of the local environment does not reflect that of the IC as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an IC subnet.
 
-:::note
-**Pro tip:** Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses to go through consensus.
+:::tip Pro tip
+
+Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses to go through consensus.
+
 :::
-
-### Debugging
-
-Developers new to the feature are likely to run into certain problems in the beginning. We list the ones we think are the most prominent ones. Note that if a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets. Problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
-* *Not reaching consensus on responses for a given request:* If the requests returned by the service are not "similar" as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas. This is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
-* *Requests consume too many cycles:* Canister HTTP requests are not a cheap feature to use, but if requests with rather small responses frequently cost large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. Always set this parameter to a value as close as possible to the actual maximum expected response size as possible, and make sure it is at least as large and not smaller. The response size comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
 
 ### Transformation Function
 
@@ -141,14 +137,7 @@ We recommend to go with the first approach whenever possible as it has multiple 
 * The transformation function is faster to compute, that is, the function (query) is executing with fewer CPU cycles. Note that queries are likely to be charged for in the future.
 * The transformation function is easier to implement, e.g., through a simple or few Json operations on the response body.
 
-### Pricing
-
-FIX: update with the new pricing model which is likely substantially cheaper
-
-As (almost) every feature of the IC, the canister HTTP request feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the fixed cost and the overhead of HTTP requests, e.g., of headers, it is advantageous to make fewer larger requests to retrieve the same amount of information than with more smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost, remaining cycles are returned to the caller.
-The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model.
-
-### Errors
+### Errors and Debugging
 
 There are a number of error cases that can happen when using this feature. The most important ones are listed next.
 * *SysFatal - Url needs to specify https scheme:* The feature currently only allows for HTTPS connections and HTTP leads to an error.
@@ -158,4 +147,16 @@ There are a number of error cases that can happen when using this feature. The m
 * *CanisterReject - max_response_bytes expected to be in the range [0..2097152], got ...:* This error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
 * *SysFatal - Transformed http response exceeds limit: 2045952:* This error indicates that the limit for the transformed response size was hit. This is currently a hard limit of the HTTPS outcalls functionality.
 
-If you are experiencing issues that are not yet described in the documentation or have other suggestions for improvement of the documentation that may help engineers use the feature effectively, please let us know about it in the [forum topic](https://forum.dfinity.org/t/enable-canisters-to-make-http-s-requests/9670) for canister HTTP requests.
+Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the errors. We list the issues we think are the most prominent when starting with this feature.
+* If a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets. Problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
+* Receiving a timeout: If the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an IC block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
+* Requests consume too many cycles: Canister HTTP requests are not a cheap feature to use in terms of cycles, but if requests with rather small responses frequently cost large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_size` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
+
+### Pricing
+
+As (almost) every feature of the IC, the canister HTTP request feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the pre-request fixed cost and the overhead of HTTP requests, e.g., because of headers, it is advantageous to make fewer larger requests to retrieve the same information than with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
+The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model.
+
+## Community Contributions
+
+If you are experiencing issues that are not yet described in the documentation or have other suggestions for improvement of the documentation that may help engineers use the feature more effectively, please let us know about it in the [forum topic](https://forum.dfinity.org/t/enable-canisters-to-make-http-s-requests/9670) for canister HTTP requests.
