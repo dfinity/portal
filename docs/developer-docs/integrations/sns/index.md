@@ -8,9 +8,9 @@ Here you will find
 Info how to get an SNS
 * [Launch intro](deployment/launch-intro)
 * [Frontend integration preparation](deployment/frontend-integration)
-* [Preparation](deployment/predeployment)
+* [Preparation](deployment/preparation)
 * [Local testing](deployment/local-testing)
-* [Getting an SNS in production](deployment/get-sns-production.md)
+* [Getting an SNS in production](deployment/get-sns-production)
 
 management info
 * [Nervous system parameters](managing-sns/nervous-system-parameters)
