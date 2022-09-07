@@ -1,5 +1,6 @@
-# Initializing an SNS launch in production
-This describes the detailed steps for initializing an SNS launch.
+# Getting an SNS in production
+This describes the detailed steps for getting an SNS on
+the Internet Computer.
 
 :::caution
 

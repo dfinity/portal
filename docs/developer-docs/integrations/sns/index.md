@@ -3,14 +3,14 @@
 ## Technical documentation
 
 Here you will find
-* [an intro to sns](sns-intro.md)
+* [An intro to sns](sns-intro.md)
 
-deployment info
+Info how to get an SNS
 * [Launch intro](deployment/launch-intro)
-* [frontend](deployment/frontend-integration)
-* [Predeployment](deployment/predeployment)
+* [Frontend integration preparation](deployment/frontend-integration)
+* [Preparation](deployment/predeployment)
 * [Local testing](deployment/local-testing)
-* [deployment](deployment/deployment.md)
+* [Getting an SNS in production](deployment/get-sns-production.md)
 
 management info
 * [Nervous system parameters](managing-sns/nervous-system-parameters)
