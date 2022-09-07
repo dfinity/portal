@@ -1,6 +1,6 @@
-# How to launch an SNS
+# How to get an SNS
 
-We explain how to deploy an SNS that is provided as a 
+We explain how to get an SNS that is provided as a 
 system functionality by the IC.
 As explained in the [introduction](../sns-intro.md), there are also other 
 ways to deploy and maintain a DAO. Many concepts explained here may be 
