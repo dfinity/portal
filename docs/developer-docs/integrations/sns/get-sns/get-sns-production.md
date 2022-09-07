@@ -8,7 +8,7 @@ In the following steps we assume that you have already
 [collected the developer and airdrop principals](predeployment.md/#principals)
 and [chosen the initial SNS parameters in a .yaml file](predeployment.md).
 We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
-Moreover, you control one principal `identityDevDeploy` that is a `dfx` identity and 
+Moreover, you control one principal `identityDevDfx` that is a `dfx` identity and 
 a controller of the dapp canister(s) that you would like to hand over to the SNS.
 We also recommend that before following these steps and initializaing an SNS launch
 in production, you have [tested the SNS](local-testing.md).
@@ -37,7 +37,7 @@ on the connected computer.
 #### 2. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the NNS subnet to requrest that an SNS 
 is installed.
-To make this call, use your `dfx` identity `identityDevDeploy` and 
+To make this call, use your `dfx` identity `identityDevDfx` and 
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 Upon receiving this call, the SNS wasm modules canister will install
 an SNS with your chosen initial parameters.
@@ -45,7 +45,7 @@ an SNS with your chosen initial parameters.
 file is used. If this is not the case, add the information how this can be ensured.-->
 
 #### 3. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use your `dfx` identity `identityDevDeploy` and 
+To do so, use your `dfx` identity `identityDevDfx` and 
 the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
@@ -83,7 +83,7 @@ the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, use your `dfx` identity `identityDevDeploy` and the command 'here'
+To do this, use your `dfx` identity `identityDevDfx` and the command 'here'
 where you specify as the principals to be removed all existing controller principals
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->

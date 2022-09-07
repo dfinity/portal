@@ -3,10 +3,10 @@
 ## Technical documentation
 
 Here you will find
-* [An intro to sns](sns-intro.md)
+* [An intro to SNS](sns-intro.md)
 
 Info how to get an SNS
-* [Launch intro](get-sns/get-sns-intro)
+* [Intro](get-sns/get-sns-intro)
 * [Frontend integration preparation](get-sns/frontend-integration)
 * [Preparation](get-sns/preparation)
 * [Local testing](get-sns/local-testing)

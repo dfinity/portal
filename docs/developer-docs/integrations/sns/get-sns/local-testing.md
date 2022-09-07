@@ -18,7 +18,7 @@ process in production.
 
 <!-- TODO-content & TODO-CLI/dfx: 
 Open terminal with dfx, ready for commands when we say "use `dfx` identity 
-`identityDevDeploy`.
+`identityDevDfx`.
 For things to do with `sns-quill` will say "use `sns-quill` principal `identityDevNeuron`"
 For production, we recommend that message are signed on air-gapped computer and
 sent to IC on connected computer. For testing this does not matter that much.
@@ -36,7 +36,7 @@ Have principal w/ NNS neuron NNS identity `identityNNS`.
 As a first step, you will bring up an NNS in your local testing environment. 
 This will allow you to test the calls to NNS that are needed to initialize an SNS
 launch.
-To do so, use your `dfx` identity `identityDevDeploy` and
+To do so, use your `dfx` identity `identityDevDfx` and
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 
 <!--TODO-CLI/dfx: After we have the dfx tool, clarify whether there are other
@@ -45,7 +45,7 @@ steps needed here! -->
 #### 3. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the local NNS 
 to request that an SNS is installed.
-To make this call, use your `dfx` identity `identityDevDeploy` and
+To make this call, use your `dfx` identity `identityDevDfx` and
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 Upon receiving this call, the SNS wasm modules canister will install
 an SNS with your chosen initial parameters.
@@ -54,7 +54,7 @@ the .yaml file is used. If this is not the case, add the information how this
 can be ensured.-->
 
 #### 4. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use your `dfx` identity `identityDevDeploy` and
+To do so, use your `dfx` identity `identityDevDfx` and
 the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
@@ -63,7 +63,7 @@ Remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, use your `dfx` identity `identityDevDeploy` and the command 'here'
+To do this, use your `dfx` identity `identityDevDfx` and the command 'here'
 where you specify as the principals to be removed all existing controller principals
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->

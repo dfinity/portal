@@ -56,7 +56,7 @@ high level how the SNS launch proceeds.
 Also, you will need to get some tools and set up or collect some
 principals' identities.
 We explain these more technical aspects of the SNS launch preparation
-on [this page](./predeployment.md).
+on [this page](./preparation.md).
 
 In addition to preparing the launch, you might want to start planning
 how the SNS will be integrated into you dapp.
@@ -82,4 +82,4 @@ the SNS can be tested.
 Once you properly tested the SNS, you are ready to ask the IC to launch
 an SNS for you in production. 
 We describe all steps included in this process in more detail
-on [this page](./deployment.md).
+on [this page](./get-sns-production.md).

@@ -1,4 +1,4 @@
-# Technical preparations for launch
+# Technical preparations for getting an SNS
 
 After some 
 [non-technical preparations](../../../../tokenomics/sns/not-blind/predeployment-considerations.md)
@@ -119,8 +119,8 @@ You will need to install two tools, `SNS CLI` which is the tool for developer ta
 and `sns-quill` which is the tool for SNS users and which you will need, for example,
 to vote.
 
-`SNS CLI` is the command line tool that will help you initialize and deploy
-the SNS. You can learn how to deploy it
+`SNS CLI` is the command line tool that will help you initialize and install
+the SNS. You can learn how to deploy the tool
 [here](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli#deployment).
 <!--TODO-CLI/dfx: adjust in case we have the dfx tool ready -->
 
@@ -193,8 +193,8 @@ Let us denote the principal that you set up for your neuron and which you contro
 ### Principal to launch the SNS
 
 In addition to the principals above, you will need (at least) one principal to perform
-all the steps required to deploy an SNS. Let us assume you use just one and let us denote
-it by `identityDevDeploy`.
+all the steps required to get an SNS. Let us assume you use just one and let us denote
+it by `identityDevDfx`.
 Make sure that you set up this principal such that it satisfies the following requirements:
 1. This principal needs to be compatible with `dfx`.
    We refer to
