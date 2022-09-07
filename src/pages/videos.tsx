@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Layout from "@theme/Layout";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
@@ -7,13 +7,13 @@ import transitions from "@site/static/transitions.json";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import mediaVideos from "@site/static/mediaVideos.json";
-import shareImage from "@site/static/img/shareImages/share-media.jpeg";
+import shareImage from "@site/static/img/shareImages/share-videos.jpeg";
 import Head from "@docusaurus/Head";
 import clsx from "clsx";
 import { useQueryParam } from "@site/src/utils/use-query-param";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
-function Media() {
+function Videos() {
   const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
   resetNavBarStyle();
   const currentVideo = mediaVideos.at(0);
@@ -35,7 +35,7 @@ function Media() {
     );
   }
   return (
-    <Layout title={"Media Page"} description={""}>
+    <Layout title={"Videos"} description={""}>
       <Head>
         <meta property="og:image" content={shareImage} />
         <meta name="twitter:image" content={shareImage} />
@@ -52,13 +52,13 @@ function Media() {
               variants={transitions.item}
               className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             >
-              <Breadcrumbs links={[{ text: "Media", href: "/media" }]} />
+              <Breadcrumbs links={[{ text: "Videos", href: "/videos" }]} />
             </motion.div>
             <motion.p
               variants={transitions.item}
               className="tw-heading-3 md:tw-heading-2 mt-16 mb-0 md:ml-1/12"
             >
-              Media
+              Videos
             </motion.p>
           </section>
           <section className="max-w-page mx-6 md:w-10/12 relative bg-white rounded-xl block mb-5 md:mb-10 md:mx-auto overflow-hidden">
@@ -139,4 +139,4 @@ function Media() {
   );
 }
 
-export default Media;
+export default Videos;
