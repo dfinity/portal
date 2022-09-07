@@ -10,13 +10,13 @@ and [chosen the initial SNS parameters in a .yaml file](preparation.md).
 We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
 Moreover, you control one principal `identityDevDfx` that is a `dfx` identity and 
 a controller of the dapp canister(s) that you would like to hand over to the SNS.
-We also recommend that before following these steps and initializaing an SNS launch
+We also recommend that before following these steps and requesting an SNS launch
 in production, you have [tested the SNS](local-testing.md).
 
 :::
 
 
-You are now ready to initialize an SNS launch for your dapp.
+You are now ready to get an SNS for your dapp.
 There are some steps that are needed for completing this and some steps that we
 recommend as intermediate sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
@@ -123,7 +123,7 @@ of the dapp you probably want to make sure that such a proposal is submitted.
 
 #### 9. Wait for the NNS to launch the SNS & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the original dapp 
-developer to launch the SNS!
+developer to finalize the SNS launch!
 The dapp has been handed over to the IC and the NNS is voting on whether 
 the SNS should be launched.
 If the proposal is adopted, the SNS decentralization sale will be 

@@ -22,7 +22,7 @@ As this is work independent of preparing the launch, we describe this topic on a
 We refer to the next pages for learning the detailed actions that are
 required 
 [to test the SNS launch](./local-testing.md) and to 
-[initiate an SNS launch in production](./get-sns-production.md).
+[get an SNS in production](./get-sns-production.md).
 
 
 ## Understanding the SNS Launch process {#understand-launch}
@@ -118,7 +118,7 @@ An SNS is launched in the following stages:
 
 ## Getting the tools for launching an SNS {#tools} 
 <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
-To set the initial parameters for your SNS, but also to test and initiate the launch
+To set the initial parameters for your SNS, but also to test and request the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.
 You will need to install two tools, `SNS CLI` which is the tool for developer tasks
@@ -150,7 +150,7 @@ likely that something happens to the key but the consequences would not be that 
 There are two kinds of principals that you need to generate or collect in preparation
 for the SNS launch: the principals that control the initial neurons and
 (at least) one principal that controls the dapp and is used to perform all the steps
-required to launch an SNS.
+required to request an SNS.
 
 ### Principals for initial neurons {#principal-initial-neurons}
 As explained more in the next section, you can define initial neurons that exist
@@ -196,7 +196,7 @@ necessary to complete all steps required during the SNS's launch.
 Let us denote the principal that you set up for your neuron and which you control
 `identityDevNeuron`. 
 
-### Principal to launch the SNS
+### Principal to request the SNS
 
 In addition to the principals above, you will need (at least) one principal to perform
 all the steps required to get an SNS. Let us assume you use just one and let us denote

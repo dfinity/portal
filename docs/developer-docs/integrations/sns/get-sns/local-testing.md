@@ -3,7 +3,7 @@
 
 After having
 [chosen the initial SNS parameters in a .yaml file](preparation.md)
-and before initializing an SNS launch in production,
+and before requesting an SNS launch in production,
 you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
 
@@ -34,7 +34,7 @@ Have principal w/ NNS neuron NNS identity `identityNNS`.
 
 #### 2. Install an NNS on your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
-This will allow you to test the calls to NNS that are needed to initialize an SNS
+This will allow you to test the calls to NNS that are needed to request an SNS
 launch.
 To do so, use your `dfx` identity `identityDevDfx` and
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
