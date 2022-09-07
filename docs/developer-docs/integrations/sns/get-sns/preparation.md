@@ -1,4 +1,4 @@
-# Technical preparations for launch
+# Technical preparations for getting an SNS
 
 After some 
 [non-technical preparations](../../../../tokenomics/sns/not-blind/predeployment-considerations.md)
@@ -14,10 +14,15 @@ the right principals in order to set the SNS parameters.
 Finally, we will cover which parameters can be set and how this
 is done.
 
+As mentioned in [the overview](get-sns-intro.md), another technical preparation
+is that you might want to integrate parts of the SNS functionality into your dapp's frontend.
+As this is work independent of preparing the launch, we describe this topic on a 
+[separate page](frontend-integration.md).
+
 We refer to the next pages for learning the detailed actions that are
 required 
 [to test the SNS launch](./local-testing.md) and to 
-[initiate an SNS launch in production](./deployment.md).
+[get an SNS in production](./get-sns-production.md).
 
 
 ## Understanding the SNS Launch process {#understand-launch}
@@ -112,15 +117,15 @@ An SNS is launched in the following stages:
    collected ICP are refunded to the sale participants.
 
 ## Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
-To set the initial parameters for your SNS, but also to test and initiate the launch
+To set the initial parameters for your SNS, but also to test and request the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.
 You will need to install two tools, `SNS CLI` which is the tool for developer tasks
 and `sns-quill` which is the tool for SNS users and which you will need, for example,
 to vote.
 
-`SNS CLI` is the command line tool that will help you initialize and deploy
-the SNS. You can learn how to deploy it
+`SNS CLI` is the command line tool that will help you initialize and install
+the SNS. You can learn how to install the SNS CLI tool
 [here](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli#deployment).
 <!--TODO-CLI/dfx: adjust in case we have the dfx tool ready -->
 
@@ -144,7 +149,7 @@ likely that something happens to the key but the consequences would not be that 
 There are two kinds of principals that you need to generate or collect in preparation
 for the SNS launch: the principals that control the initial neurons and
 (at least) one principal that controls the dapp and is used to perform all the steps
-required to launch an SNS.
+required to request an SNS.
 
 ### Principals for initial neurons {#principal-initial-neurons}
 As explained more in the next section, you can define initial neurons that exist
@@ -190,11 +195,11 @@ necessary to complete all steps required during the SNS's launch.
 Let us denote the principal that you set up for your neuron and which you control
 `identityDevNeuron`. 
 
-### Principal to launch the SNS
+### Principal to request the SNS
 
 In addition to the principals above, you will need (at least) one principal to perform
-all the steps required to deploy an SNS. Let us assume you use just one and let us denote
-it by `identityDevDeploy`.
+all the steps required to get an SNS. Let us assume you use just one and let us denote
+it by `identityDevDfx`.
 Make sure that you set up this principal such that it satisfies the following requirements:
 1. This principal needs to be compatible with `dfx`.
    We refer to
