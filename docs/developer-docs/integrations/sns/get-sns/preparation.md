@@ -14,6 +14,11 @@ the right principals in order to set the SNS parameters.
 Finally, we will cover which parameters can be set and how this
 is done.
 
+As mentioned in [the overview](get-sns-intro.md), another technical preparation
+is that you might want to integrate parts of the SNS functionality into your dapp's frontend.
+As this is work independent of preparing the launch, we describe this topic on a 
+[separate page](frontend-integration.md).
+
 We refer to the next pages for learning the detailed actions that are
 required 
 [to test the SNS launch](./local-testing.md) and to 
@@ -111,7 +116,8 @@ An SNS is launched in the following stages:
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
 
-## Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
+## Getting the tools for launching an SNS {#tools} 
+<!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
 To set the initial parameters for your SNS, but also to test and initiate the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.

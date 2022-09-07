@@ -61,9 +61,8 @@ on [this page](./preparation.md).
 In addition to preparing the launch, you might want to start planning
 how the SNS will be integrated into you dapp.
 For example, you may want to integrate some or all of the SNS frontend
-in your dapp's frontend. `This page` provides some tips on how this can be
-done.
-<!--TODO-link: add link once have page to frontend -->
+in your dapp's frontend. [This page](frontend-integration.md)
+provides some tips on how this can be done.
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately

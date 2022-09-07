@@ -120,8 +120,7 @@ For testing this, submit an NNS proposal using your NNS identity `identityNNS`
 and the following command
 ```
 <!--TODO-code: --> 
-```
-
+``` 
 #### 9. Adopt / reject the NNS proposal
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
@@ -162,14 +161,14 @@ by following the instructions in [Step](#7-test-upgrading-the-dapp-canisters-by-
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
-In particular, if you `chose to integrate some of the SNS or NNS functionality in your dapp
-frontend` <!-- TODO: add link to new page-->, you should test this user experience. 
+In particular, if you [chose to integrate some of the SNS or NNS functionality in your dapp
+frontend](frontend-integration.md), you should test this user experience. 
 You might also want to test what the interaction would look like on the NNS frontend dapp.
 <!-- TODO: Add explanation if this comes for free in the new testing env. or if you need
 to do something extra to test this.-->
 
-<!--TODO-code: Would be good to test, but I think would require a dfx call to add new wasm to SNS-W,
-otherwise this is complicated?
+<!--TODO-code: Would be good to test, but I think would require a dfx call to add new wasm
+to SNS-W, otherwise this is complicated?
 #### 10. Repeatedly test upgrading the SNS canister(s)
 Finally, if there are new blessed deployments of the SNS canisters, you can
 upgrade the SNS canisters by an SNS proposal.

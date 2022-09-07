@@ -103,9 +103,6 @@ To make such a proposal and vote on it, use your `sns-quill` principal
 As in [Step 4](#step4),
 sufficient initial neurons have to vote to reach a majority.
 
-<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would
-like to register.-->
-
 #### 7. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
 you can repeat [Step 4](#step4) at this point.
