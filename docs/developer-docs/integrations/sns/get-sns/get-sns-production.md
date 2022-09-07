@@ -146,3 +146,12 @@ To make such a proposal, you can use the following dfx command:
 ``` 
 <!--TODO-code: --> 
 ```  
+
+:::info
+
+It is recommended that the dapp canisters are upgraded once the SNS is
+fully decentralised (i.e., after the sale has finished successfully)
+as this provides a root of trust that the dapp code is, now and going forward,
+approved by the SNS community as it is.
+
+:::
