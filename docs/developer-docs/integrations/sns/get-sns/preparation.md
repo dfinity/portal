@@ -125,7 +125,7 @@ and `sns-quill` which is the tool for SNS users and which you will need, for exa
 to vote.
 
 `SNS CLI` is the command line tool that will help you initialize and install
-the SNS. You can learn how to install the tool
+the SNS. You can learn how to install the SNS CLI tool
 [here](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli#deployment).
 <!--TODO-CLI/dfx: adjust in case we have the dfx tool ready -->
 
