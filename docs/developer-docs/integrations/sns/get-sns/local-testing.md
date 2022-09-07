@@ -2,14 +2,14 @@
 
 
 After having
-[chosen the initial SNS parameters in a .yaml file](predeployment.md)
+[chosen the initial SNS parameters in a .yaml file](preparation.md)
 and before initializing an SNS launch in production,
 you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
 
 We next describe how you can test the SNS launch with your chosen parameters.
-The necessary steps are very similar to the [process of initializing an SNS launch
-in production](deployment.md).
+The necessary steps are very similar to the [process of getting an SNS
+in production](get-sns-production.md).
 The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
@@ -89,7 +89,7 @@ and use the command explained [here](https://github.com/dfinity/sns-quill#vote-o
 <!-- TODO: SNS quill documentation to make proposal and link to it-->
 
 :::info
-As explained [on the next page](deployment.md), in production this is one of the reasons
+As explained [on the next page](get-sns-production.md), in production this is one of the reasons
 why you must ensure that you can reach a majority of the initial neurons and that the initial
 neurons are able to vote already before the decentralization sale.
 :::
@@ -130,10 +130,10 @@ To do so, vote on the NNS proposal and ensure that you reach a majority for yes 
 
 If the proposal is adopted, the SNS decentralization sale will be
 started with the configurations that you have defined in the
-[initialization file](predeployment.md).
+[initialization file](preparation.md).
 If the proposal is rejected, the dapp canisters' controllers are automatically set
 back to the developer principals that you
-have defined in the [initialization file](predeployment.md).
+have defined in the [initialization file](preparation.md).
 
 #### 10. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
 You might want to repeatedly test that you can upgrade the dapp at all stages.

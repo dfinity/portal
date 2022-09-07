@@ -5,8 +5,8 @@ the Internet Computer.
 :::caution
 
 In the following steps we assume that you have already
-[collected the developer and airdrop principals](predeployment.md/#principals)
-and [chosen the initial SNS parameters in a .yaml file](predeployment.md).
+[collected the developer and airdrop principals](preparation.md/#principals)
+and [chosen the initial SNS parameters in a .yaml file](preparation.md).
 We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
 Moreover, you control one principal `identityDevDfx` that is a `dfx` identity and 
 a controller of the dapp canister(s) that you would like to hand over to the SNS.
@@ -131,10 +131,10 @@ The dapp has been handed over to the IC and the NNS is voting on whether
 the SNS should be launched.
 If the proposal is adopted, the SNS decentralization sale will be 
 started with the configurations that you have defined in the
-[initialization file](predeployment.md).
+[initialization file](preparation.md).
 If the proposal is rejected, the dapp canisters' controllers are automatically set
 back to the developer principals that you
-have defined in the [initialization file](predeployment.md).
+have defined in the [initialization file](preparation.md).
 
 During this time you can further upgrade your dapp canister(s), for
 example to add new features or fix bugs, by sending additional

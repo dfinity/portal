@@ -17,7 +17,7 @@ is done.
 We refer to the next pages for learning the detailed actions that are
 required 
 [to test the SNS launch](./local-testing.md) and to 
-[initiate an SNS launch in production](./deployment.md).
+[initiate an SNS launch in production](./get-sns-production.md).
 
 
 ## Understanding the SNS Launch process {#understand-launch}
