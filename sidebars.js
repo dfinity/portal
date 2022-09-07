@@ -34,7 +34,7 @@ const sidebars = {
           link: {
             // type: 'doc', id: 'developer-docs/build/project-setup/index',
             type: "doc",
-            id: "developer-docs/build/project-setup/design-dapps",
+            id: "developer-docs/build/project-setup/index",
           },
           items: [
             "developer-docs/build/project-setup/design-dapps",
