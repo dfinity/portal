@@ -6,18 +6,18 @@ Here you will find
 * [An intro to SNS](sns-intro.md)
 
 Info how to get an SNS
-* [Intro](get-sns/get-sns-intro)
-* [Frontend integration preparation](get-sns/frontend-integration)
-* [Preparation](get-sns/preparation)
-* [Local testing](get-sns/local-testing)
-* [Getting an SNS in production](get-sns/get-sns-production)
+* [Intro](get-sns/get-sns-intro.md)
+* [Frontend integration preparation](get-sns/frontend-integration.md)
+* [Preparation](get-sns/preparation.md)
+* [Local testing](get-sns/local-testing.md)
+* [Getting an SNS in production](get-sns/get-sns-production.md)
 
 management info
-* [Managing SNS intro](managing-sns/manage-sns-intro)
-* [Nervous system parameters](managing-sns/nervous-system-parameters)
-* [Proposal guide](managing-sns/proposal-guide)
-* [Cycles usage](managing-sns/cycles-usage)
-* [Upgrade SNS](managing-sns/upgradeSNS)
+* [Managing SNS intro](managing-sns/manage-sns-intro.md)
+* [Nervous system parameters](managing-sns/nervous-system-parameters.md)
+* [Proposal guide](managing-sns/proposal-guide.md)
+* [Cycles usage](managing-sns/cycles-usage.md)
+* [Upgrade SNS](managing-sns/upgradeSNS.md)
 
 ## Entrepreneurial documentation
 
