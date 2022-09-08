@@ -21,13 +21,12 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Web speed</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The Internet Computer (IC) is the only blockchain that can host
-                a full dapp; frontend, backend, and data included. This is a
-                crucial and distinguishing feature allowing dapps to run 100%
-                on-chain inheriting the security and decentralization of
-                blockchain without sacrificing speed or affordability. This is
-                possible because nodes of the IC can securely serve HTTP
-                requests and by leveraging the reverse gas model.
+              Users can interact with dapps on the Internet Computer (IC) with speeds indistinguishable from traditional web applications. 
+              Developers can therefore build a much broader range of fully on-chain dapps without relying on cloud services and 
+              risking single points of failure. 
+              <br />
+              <br />
+              Concretely, query (read) calls are answered in ~200 milliseconds, and update (write) calls in ~2 seconds.
               </p>
             </div>
           </div>
@@ -62,69 +61,66 @@ function FeaturePage() {
             "
           >
             <h2>How It Works</h2>
+            
+            <h3>Read vs Write calls</h3>
             <p>
-              Two key technology developments make it possible for Internet
-              Computer smart contracts to create bitcoin addresses and directly
-              send and receive bitcoin: inter-node communication between the
-              Internet Computer network and the Bitcoin network, and the use of
-              novel threshold ECDSA cryptography by its protocols.
+            common practice in computer science and databases is to separate tasks into read 
+            tasks and write tasks. As the former are less 'expensive' in terms of time, 
+            categorizing types of calls can substantially help to increase the efficiency 
+            of a program. As a blockchain partly acts as a distributed database, it is 
+            useful to consider this separation of tasks in this case too. 
+            Following this line of thinking, the Internet Computer facilitates two type of 
+            transactions, query calls (read-only) and update (write) calls.
+
+            <br />
+            <br />
+            From a blockchain POV, {" "}
+              <Link href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption">
+              performance tests
+              </Link>{" "} shows the IC latency at 200 milliseconds 
+            for query calls (reads) and 2 seconds for update calls (writes). 
+            As of May 24, 2022, The Internet Computer can handle more than 1 million queries per second 
+            and more than 20 thousand update calls per second.
             </p>
-            <h3>Network Integration</h3>
+            <h3>Chain Key Cryptography</h3>
             <p>
-              When the Internet Computer blockchain creates transactions for the
-              Bitcoin blockchain, its nodes directly transmit the transaction to
-              the Bitcoin network's nodes, without any need for intermediaries
-              that might censor them. Internet Computer nodes also directly
-              pulls blocks from the Bitcoin network to maintain Bitcoin's
-              current UTXO set.
+            The main advantage of using a blockchain or decentralized protocol is that the 
+            central point of trust is removed. This advantage comes at a cost; 
+            trust is not removed, it's decentralized which means that multiple 
+            people (or machines or nodes) need to agree on the 'truth' at a given point in 
+            time. For multiple people/nodes to agree, they each sign their version of 
+            the truth, and each verify all of the others' signatures. 
+
+            <br />
+            <br />
+            In most blockchain protocols, this is the large source of inefficiency as 
+            verifying many individual signatures can be slow. One of the key innovations 
+            of the IC is the introduction of <Link href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28">
+            Chain Key (CK) Cryptography
+            </Link> which allows IC signatures to be verified with a single public key, hence reducing friction 
+            for all types of devices (node machines, laptops, mobile phones) that want to 
+            efficiently interact with a blockchain with the same speed and security of web2, 
+            but without the centralization.
             </p>
-            <h3>Threshold ECDSA</h3>
+            
+            <h3>Scalability</h3>
             <p>
-              Novel "threshold cryptography" allows the Internet Computer to
-              distribute, and redistribute, secret key material among its nodes,
-              and have them cooperate to create new bitcoin addresses and sign
-              Bitcoin transactions, using highly fault tolerant decentralized
-              network protocols that are resilient to attacks by malicious
-              nodes.
+            Another advantage of CK Cryptography and the Internet Computer lies in the architectural 
+            design. In order to reach web speed, the IC needs to process increasingly large 
+            numbers of transactions. This requires the network to be able to scale quickly in 
+            order to process all those transactions. CK cryptography also facilitates nodes to 
+            onboard, catch up, and recover in the event of a hardware failure which all allow 
+            the IC to scale infinitely. Decentralized infinity.
             </p>
-            <p>
-              With the{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              and{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>
-              , canisters can directly securely receive, hold, and send
-              bitcoins, as though they were smart contracts actually hosted{" "}
-              <i>on</i> the Bitcoin network itself.
-            </p>
-            <p>
-              This means bitcoin can be easily and securely incorporated into
-              DeFi and Web3 services on the Internet Computer, without the need
-              to trust bridging services that might get hacked, or taken down,
-              causing the loss of the bitcoin involved.
-            </p>
-            <p>
-              For example, DEXs (decentralized exchanges) can easily provide BTC
-              trading pairs, decentralized fundraises can accept bitcoin, and a
-              Web3 SocialFi service might allow satoshis to be sent using chat
-              messages, say.
-            </p>
-            <p>
-              Lightning Network-like services can also be created by wrapping
-              bitcoin inside fully autonomous Internet Computer smart contracts,
-              such that bitcoin can be sent between users, Web3 services and
-              DeFi contracts, in only 1-2 seconds.
-            </p>
+
+            
             <p className="mb-3 mt-6">
-              <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+            <Link
+                href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                See other 100% on-chain dapps
               </Link>
             </p>
           </div>
@@ -132,35 +128,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Bitcoin Integration
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            The efficiency and scalability of the Internet Computer opens up a
-            whole new set of possible BTC applications: fund a DAO, create DeFi
-            dapps and more.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins."
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilitis from community samples."
               href="/samples"
             />
             <CardWithDescription
               title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              description="Take a deep dive into the Internet Computer."
+              href="https://wiki.internetcomputer.org"
             />
           </div>
         </section>
