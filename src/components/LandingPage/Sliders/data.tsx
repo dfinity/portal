@@ -20,7 +20,7 @@ export const slides = [
       </>
     ),
     backgroundImageUrl: "/img/home-page-sliders/bitcoin-background.jpg",
-    sideImageUrl: "/img/home-page-sliders/btc-eth.svg",
+    sideImageUrl: "/img/home-page-sliders/btc-eth.png",
   },
   {
     body: (
