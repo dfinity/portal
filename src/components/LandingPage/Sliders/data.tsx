@@ -45,7 +45,7 @@ export const slides = [
     body: (
       <>
         <h3>
-          Internet Identity is your easy and secure Web3 Authentication.
+          Internet Identity is your easy and secure Web3 Authentication
         </h3>
         <p>
           <SliderLink href="https://identity.ic0.app/">
