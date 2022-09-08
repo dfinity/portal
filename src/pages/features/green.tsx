@@ -21,10 +21,15 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Green</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              While having the security of Web3 blockchains, the performance and power consumption 
+              of the Internet Computer (IC) is comparable to Web2 and cloud technology stacks. 
+              The IC far outperforms traditional blockchain protocols in efficiency. 
+              <br />
+              <br />
+                * A single Google search is <i>four times more energy intensive</i> than a transaction on the IC.
+              <br />
+              <br />
+                * A single Ethereum transaction is <i>2 million of times more energy intensive</i> than an IC transaction.
               </p>
             </div>
           </div>
@@ -59,32 +64,15 @@ function FeaturePage() {
             "
           >
             <h2>How It Works</h2>
+       
+            <h3>Energy consumption</h3>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
-            </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            The following is an approximation of mainnet power consumption. The average power 
+            consumption of an Internet Computer node is 700 W. If we assume a power usage 
+            effectiveness (PUE) 1, 2, of 2.33 that leads to a total power consumption of 
+            1631.0 W including cooling and other data center operations costs. Given a 
+            total of 518 nodes and 11 boundary nodes in mainnet, resulting in a worst 
+            case of 862799W to operate all IC nodes for mainnet (including also system subnets). This is a worst case analysis for power consumption of nodes as we would normally expect them to throttle when not fully utilized and thereby reducing power consumption.
             </p>
 
             <p className="mb-3 mt-6">
@@ -101,36 +89,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins."
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilitis from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="Performance and Energy analysis on the IC Wiki"
+              description="Take a deep dive into the Internet Computer."
+              href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"
             />
           </div>
         </section>
