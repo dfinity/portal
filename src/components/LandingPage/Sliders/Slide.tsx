@@ -41,7 +41,7 @@ export const Slide: React.FC<{
           prose
           prose-h3:tw-heading-5 md:prose-h3:tw-heading-3
           prose-ul:list-none prose-ul:p-0 prose-li:m-0
-          prose-a:no-underline hover:prose-a:underline hover:prose-a:text-white-80
+          prose-a:no-underline hover:prose-a:no-underline hover:prose-a:text-white-80
           prose-p:mb-4 md:prose-p:mb-6 prose-p:mt-0 prose-p:flex
         "
       >

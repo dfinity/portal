@@ -7,6 +7,7 @@ import LeftArrow from "./LeftArrow.svg";
 import RightArrow from "./RightArrow.svg";
 import { Slide } from "./Slide";
 import transitions from "@site/static/transitions.json";
+import { isSafari } from "@site/src/utils/browsers";
 
 const Sliders = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +25,15 @@ const Sliders = () => {
 
   useEffect(() => {
     const nextSlideEl = ref.current.children.item(index) as HTMLDivElement;
-    ref.current.scrollLeft = nextSlideEl.offsetLeft;
+
+    if (isSafari(navigator.userAgent)) {
+      ref.current.scrollTo({ left: nextSlideEl.offsetLeft });
+    } else {
+      ref.current.scrollTo({
+        left: nextSlideEl.offsetLeft,
+        behavior: "smooth",
+      });
+    }
   }, [index]);
 
   useEffect(() => {
@@ -65,6 +74,12 @@ const Sliders = () => {
     };
   }, [dotIndex]);
 
+  useEffect(() => {
+    if (!isSafari(navigator.userAgent)) {
+      ref.current.classList.add("scroll-smooth");
+    }
+  }, []);
+
   return (
     <AnimateSpawn
       className="container-12"
@@ -73,7 +88,7 @@ const Sliders = () => {
     >
       <div className="relative" ref={inViewRef}>
         <button
-          className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-12 bg-black-60 rounded-xl p-2 border-none text-white"
+          className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-12 bg-black-60 rounded-xl p-2 border-none text-white hover:bg-infinite"
           onClick={() => {
             prev();
             setShouldAutoRotate(false);
@@ -82,7 +97,7 @@ const Sliders = () => {
           <LeftArrow></LeftArrow>
         </button>
         <button
-          className="hidden md:flex  absolute top-1/2 -translate-y-1/2 right-12 bg-black-60 rounded-xl p-2 border-none text-white"
+          className="hidden md:flex  absolute top-1/2 -translate-y-1/2 right-12 bg-black-60 rounded-xl p-2 border-none text-white hover:bg-infinite"
           onClick={() => {
             next();
             setShouldAutoRotate(false);
@@ -91,7 +106,7 @@ const Sliders = () => {
           <RightArrow></RightArrow>
         </button>
         <div
-          className="flex gap-6 overflow-auto pb-4 md:overflow-hidden scroll-smooth snap-x snap-mandatory"
+          className="flex gap-6 overflow-auto pb-4 md:overflow-hidden snap-x snap-mandatory"
           ref={ref}
         >
           {slides.map((s, index) => (
@@ -113,7 +128,7 @@ const Sliders = () => {
               setIndex(i);
               setShouldAutoRotate(false);
             }}
-            className={`bg-infinite w-3 h-3 rounded-full transition-opacity border-none ${
+            className={`bg-infinite w-3 h-3 rounded-full transition-opacity border-none p-0 ${
               i == dotIndex ? "opacity-100" : "opacity-25"
             } ${i == index ? "md:opacity-100" : "md:opacity-25"}`}
           ></button>
