@@ -2,8 +2,6 @@
 
 As you come up with ideas for dapps, you are going to make many design decisions about how to structure and organize your project. On the Internet Computer, there are a few design decisions that you should pay particular attention to as you plan the implementation for your app.
 
-This section is work-in-progress and incomplete. As best practices and design patterns evolve for building dapps that run on the Internet Computer, the information included here will also evolve and change accordingly.
-
 ## Single or multiple canister architecture
 
 One of the first decisions you might want to consider when designing your dapp is whether it should be encapsulated in a single canister or consist of multiple canisters.

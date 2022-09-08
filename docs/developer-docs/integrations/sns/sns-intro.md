@@ -110,13 +110,13 @@ the project is successful.
 * dapps are user-controlled
 -->
 
-## How to deploy and maintain a DAO - different options
+## How to get and maintain a DAO - different options
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
 
-1) **Deploy an SNS that is provided as a _system functionality_ by the IC.**
-   An SNS is realized by a set of canisters. Deploying and maintaining them is
+1) **Get an SNS that is provided as a _system functionality_ by the IC.**
+   An SNS is realized by a set of canisters. Getting and maintaining them is
    not a simple task. If one of the SNS canisters is upgraded, it has to be guaranteed
    that the new version of this canister is still compatible with the other SNS
    canisters. Moreover, not all canister versions can be upgraded to all other 
@@ -221,14 +221,10 @@ funding for the SNS project.
 It is conceivable that alternative ways to launch and decentralize a dapp are
 added in later SNS versions.
 
-The decentralization sale and the steps to conclude an SNS launch including this
-<<<<<<< HEAD:docs/developer-docs/functionality/sns/sns.md
-decentralization sale are described in more detail [here](./deployment/launch-intro.md).
-=======
-decentralization sale are described in more detail [here](./deployment/deployment.md).
->>>>>>> master:docs/developer-docs/functionality/sns/sns-intro.md
+The decentralization sale and how to get an SNS including such a sale
+are described in more detail [here](./get-sns/get-sns-intro.md).
 
-### SNS maintenance
+### SNS management
 As mentioned, this SNS option is provided as a system function and the SNS canister
 versions are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS community.
