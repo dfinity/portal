@@ -23,10 +23,12 @@ function FeaturePage() {
                 Limitless Scaling
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              The Internet Computer (IC) can scale its capacity without limit, simply by
+              adding additional nodes to fuel new subnets. Nodes are added via the 
+              Network Nervous System (NNS) which forms new subnets almost on a weekly basis 
+              since genesis. In contrast, most other blockchains have transaction limits 
+              baked into the protocol (e.g. adding more servers to Bitcoin does not 
+              increase its transaction volume) and need cumbersome layers to address scaling.
               </p>
             </div>
           </div>
@@ -62,31 +64,51 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
+            See {" "}
+              <Link href="https://dashboard.internetcomputer.org">
+              Internet Computer Dashboard
               </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            to see the scale of the IC.
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>Subnet Architecture</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+            The Internet Computer Protocol is running on standardized node hardware in independent data centers around 
+            the world. The Network Nervous System governance system, scales the network by 
+            combining nodes from different data centers to spin up new subnet blockchains.
+            <br />
+            <br />
+            The Internet Computer's partitioning into subnet blockchains is what allows the 
+            network to infinitely scale. Each subnet blockchain is capable of processing 
+            update and query calls independently from other subnets. This means that the 
+            entire network can easily be scaled by simply adding more subnets to the network. 
+            For update calls that need to be processed on every node, this method of scaling 
+            the network can ensure that more update calls are processed per second. The 
+            Internet Computer is capable of adding hundreds of new subnets via the NNS.
+            <br />
+            <br />
+            For query calls, however, scalability can simply be achieved by adding more nodes 
+            to a subnet because these calls are processed locally on one node. The network 
+            is capable of adding thousands of new nodes in its current state. The addition 
+            of more nodes and subnets to the network ensures web speed and infinite scalability.
             </p>
 
+            <h3>Finality and Consensus</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            The IC's novel consensus mechanism also plays a key role in the network's 
+            ability to scale. {" "}
+            <Link href="https://assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf">
+            Internet Computer Consensus (ICC)
+            </Link>  consists of four different 
+            layers that create candidate blocks, identify valid blocks, rank block makers, 
+            and then finalize the agreed upon blocks. The blockchain's asynchronous 
+            finalization mechanism is impressively fast, ensuring that the finality for 
+            new blocks is achieved in under two seconds on average on the NNS subnet, 
+            and 1 second on dapp subnets.
+            <br />
+            <br />
+            This contributes to the IC's resilience. Additionally, unlike legacy 
+            blockchains, the IC has no nodes hosted by cloud providers which helps
+            to ensure that the network is tamper-proof, secure, and stable.
             </p>
 
             <p className="mb-3 mt-6">
@@ -103,36 +125,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins."
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'Limitless Scaling' article on the IC Wiki"
+              description="Take a deep dive into the Internet Computer's scaling."
+              href="https://wiki.internetcomputer.org/wiki/Limitless_Scaling"
             />
           </div>
         </section>
