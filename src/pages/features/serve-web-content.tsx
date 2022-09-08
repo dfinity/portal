@@ -23,10 +23,16 @@ function FeaturePage() {
                 Serve Web Content
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              The Internet Computer (IC) is the only blockchain that can host a full dapp on-chain: frontend, backend, and data included.
+              <br />
+              <br />
+              
+              This is a disginguishing feature of the IC because most non-IC dapps are composed of a smart contract on a blockchain (say 5-10% of the code) and the rest of the code executing on centralized services (90-95% of the code).
+              The IC is the only blockchain that can host a dapp's frontend (e.g. HTML, CSS, JS) as well as application logic and store GBs of data. 
+              <br />
+              <br />
+              This means the IC is the only blockchain that can be serve dapps that are truly secure and can take advantage of blockchain properties: e.g. code immutability, tokenized governande of dapps. 
+
               </p>
             </div>
           </div>
@@ -62,40 +68,71 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+              For a the IC to host fully-on chain dapps and <Link href="https://wiki.internetcomputer.org/wiki/Web_Serving">
+                serve web content
+              </Link>, it means the following:
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>Enabling true web3</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+            Today, most dapps built on other blockchains rely on centralized cloud providers (e.g. AWS, GCP) to 
+            host their frontend, amongst other parts, which introduces a single point of failure. 
+            An example pattern in the industry is to have a smart contract performing some computation, yet, 
+            the frontend is often served from a Node server. This not only includes security risks by possible 
+            tampering with the frontend, but dapps running on centralized servers can be taken down at any point, 
+            which negates the censorship resistant nature of blockchain. Web3 requires that all parts of a dapp 
+            are realized by smart contracts. Further, Web3 functionality is only achievable by blockchain 
+            applications running fully decentralized, which includes smart contract logic, on-chain data 
+            storage and serving frontend to the user's browser.
+            <br />
+            <br />
+            Hosting dapps 100% on-chain provides the additional benefit of letting DAOs launched on the 
+            Internet Computer to completely control these applications with on-chain governance and 
+            not only the backend logic. This lets users be fully in control of these dapps realizing 
+            complete decentralization and democratization of web applications.
+            </p>
+
+            <h3>Cheap Storage</h3>
+            <p>
+            Unlike most blockchains, the efficiency and costs of the Internet Computer approaches the traditional IT 
+            stack so its is economically feasible to host dapps with lots of data and content.
+            <br />
+            <br />
+            For comparison: <i>it costs hundreds of millions of dollars to store a GB of data on Ethereum.  
+            It only costs a few dollars on the IC.</i>
+            </p>
+
+            <h3>Smart contracts that can process HTTP requests</h3>
+            <p>
+            Blockchains differ in their processing of computation from regular web servers, which makes serving web a difficult task. 
+            To overcome this, the Internet Computer introduces something called boundary nodes. 
+            These nodes act as a layer that translates HTTP requests from users to messages that can be processed by 
+            smart contracts running on the Internet Computer. This allows users to update the state of the blockchain 
+            simply by interacting with a browser.
+            </p>
+
+            <h3>Reverse gas model</h3>
+            <p>
+            In dapps built on Ethereum (as an example), users require a wallet or tokens to use it. 
+            This slows down adoption of dapps because using a dapp is not as simple as clicking on a 
+            website link; it requires users to buy tokens, install browser plugins, etc. 
+            IC dapps have he "Reverse Gas model" where users can interact with a dapp without having to pay in 
+            tokens since the canister can store a certain amount of cycles and pay for the user.
+            <br />
+            <br />
+            For example, <Link href="https://wiki.internetcomputer.org/wiki/Web_Serving">
+            the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
             </p>
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+                href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                See other 100% on-chain dapps
               </Link>
             </p>
           </div>
@@ -103,36 +140,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fully on-chain dapps
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins."
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilitis from community samples."
               href="/samples"
             />
             <CardWithDescription
               title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              description="Take a deep dive into the Internet Computer."
+              href="https://wiki.internetcomputer.org"
             />
           </div>
         </section>
