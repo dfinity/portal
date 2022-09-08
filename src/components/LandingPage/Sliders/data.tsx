@@ -8,15 +8,15 @@ export const slides = [
       <>
         <h3>Extend Bitcoin, Ethereum and other blockchains</h3>
         <p>
-          <SliderLink href="/bitcoin-integration">
-            <RightArrow></RightArrow> Learn about Bitcoin integration
+          <SliderLink href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
+            <RightArrow></RightArrow> Learn how Internet Computer does this
           </SliderLink>
         </p>
-        <p>
+        {/* <p>
           <SliderLink href="/samples">
             <RightArrow></RightArrow> Sample contracts
           </SliderLink>
-        </p>
+        </p> */}
       </>
     ),
     backgroundImageUrl: "/img/home-page-sliders/bitcoin-background.jpg",
@@ -25,15 +25,15 @@ export const slides = [
   {
     body: (
       <>
-        <h3>Replacing traditional IT with a World Computer</h3>
+        <h3>Now smart contracts can serve interactive web experiences</h3>
         <p>
-          <SliderLink href="https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a">
-            <RightArrow></RightArrow> Read about the World Computer vision
+          <SliderLink href="https://wiki.internetcomputer.org/wiki/Web_Serving">
+            <RightArrow></RightArrow> Learn about everything on-chain
           </SliderLink>
         </p>
         <p>
-          <SliderLink href="/samples">
-            <RightArrow></RightArrow> Learn more
+          <SliderLink href="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer">
+            <RightArrow></RightArrow> Learn how to ditch cloud
           </SliderLink>
         </p>
       </>
@@ -45,8 +45,7 @@ export const slides = [
     body: (
       <>
         <h3>
-          Internet Identity is your easy and secure Web3 Authentication. Your
-          digital identity.
+          Internet Identity is your easy and secure Web3 Authentication.
         </h3>
         <p>
           <SliderLink href="https://identity.ic0.app/">
@@ -54,8 +53,8 @@ export const slides = [
           </SliderLink>
         </p>
         <p>
-          <SliderLink href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity">
-            <RightArrow></RightArrow> Learn more
+          <SliderLink href="https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7">
+            <RightArrow></RightArrow> Learn how it works
           </SliderLink>
         </p>
       </>
@@ -63,4 +62,6 @@ export const slides = [
     backgroundImageUrl: "/img/home-page-sliders/II-background.jpg",
     sideImageUrl: "/img/home-page-sliders/ii.svg",
   },
+
+  
 ];
