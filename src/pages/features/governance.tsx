@@ -19,12 +19,21 @@ function FeaturePage() {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Governance</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Governance & Rapid Evolution</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              The Network Nervous System (NNS) is the decentralized autonomous organization (DAO) that governs the 
+              Internet Computer (IC). It is a fully on-chain, decentralized system and is, 
+              for instance, responsible for making protocol level upgrades to continuously 
+              improve the Internet Computer. ICP neuron holders vote on proposals that uprade the IC. Once such a proposal is accepted, it is autonomously executed across the blockchain 
+              (no human intervention).
+              <br />
+              <br />
+              While other blockchains take weeks or months to upgrade (sometimes called hard fork) 
+              and typically require substantial manual work and coordination to do so, the IC 
+              upgrades itself on a weekly basis (https://dashboard.internetcomputer.org/releases). 
+              <br />
+              <br />
+              The IC's ability to upgrade and iterate quickly is a comparative "superpower."
               </p>
             </div>
           </div>
@@ -59,25 +68,25 @@ function FeaturePage() {
             "
           >
             <h2>How It Works</h2>
+  
+            <h3>Overview</h3>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            The purpose of the NNS is to allow the IC network to be governed in an open, 
+            decentralized, and secure manner. It has complete control over all aspects of 
+            the network. For example, it can upgrade the protocol and software used by 
+            the node machines that host the network; it can create new subnet blockchains 
+            to increase network capacity; and many other things. The NNS works by 
+            accepting proposals, and deciding to adopt or reject them based on voting 
+            activity by “neurons” that network participants have created.
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+
+            <h3>Proposals</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
+              Users submit NNS proposals to the NNS to update the code of the IC: {" "}
+              <Link href="https://dashboard.internetcomputer.org/releasesi">
+                IC Releases
               </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+              . Consequently, the IC can update itself many times faster than other blockchains.
             </p>
 
             <p>
@@ -101,36 +110,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins."
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="Diver deeper into the NNS"
+              description="Take a deep dive into the Internet Computer's NNS and upgrading."
+              href="https://wiki.internetcomputer.org/wiki/Network_Nervous_Systemg"
             />
           </div>
         </section>
