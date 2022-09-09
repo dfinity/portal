@@ -15,7 +15,7 @@ What is a DAO?
 Motivation: why a DAO? 
 -->
 
-<!--## How to get and maintain a DAO - different options-->
+## How to get and maintain a DAO - different options _{#gettingDAOoptions}_
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
