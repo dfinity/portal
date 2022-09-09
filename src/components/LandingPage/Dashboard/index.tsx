@@ -11,6 +11,7 @@ import {
   getCanisterCount,
   getCpuCoreCount,
   getNodeCount,
+  getTransactionRate,
 } from "@site/src/utils/network-stats";
 
 const container = {
@@ -91,14 +92,14 @@ function Dashboard() {
     blockCount: number;
     blockRate: number;
     canisterCount: number;
-    cpuCores: number;
+    transactionRate: number;
     operational: boolean;
     cost: number;
   }>({
     blockCount: 847458088,
     blockRate: 35.1,
     canisterCount: 73577,
-    cpuCores: 29650,
+    transactionRate: 0,
     operational: true,
     cost: 0.46,
   });
@@ -111,21 +112,26 @@ function Dashboard() {
   }, [controls, inView]);
 
   const fetchData = useCallback(async () => {
-    const [blockCount, blockRate, canisterCount, cpuCores, nodeMachines] =
-      await Promise.all([
-        getBlockCount(),
-        getBlockRate(),
-        getCanisterCount(),
-        getCpuCoreCount(),
-        getNodeCount(),
-      ]);
+    const [
+      blockCount,
+      blockRate,
+      canisterCount,
+      transactionRate,
+      nodeMachines,
+    ] = await Promise.all([
+      getBlockCount(),
+      getBlockRate(),
+      getCanisterCount(),
+      getTransactionRate(),
+      getNodeCount(),
+    ]);
     const m = Number(Math.abs(blockRate * 100).toPrecision(15));
     const roundedBlockRate = (Math.round(m) / 100) * Math.sign(blockRate);
     setStats({
       blockCount,
       blockRate: roundedBlockRate,
       canisterCount,
-      cpuCores,
+      transactionRate,
       operational: nodeMachines >= 100,
       cost: 0.46,
     });
@@ -168,15 +174,17 @@ function Dashboard() {
           precision={2}
         />
         <AnimatedStatistic
-          title="Hardware CPUs"
-          currentValue={stats.cpuCores}
-          tooltip={"The current number of CPUs in node machines hosting the blockchain."}
+          title="Transactions/s"
+          currentValue={stats.transactionRate}
+          tooltip={"The number of transactions being processed each second."}
           precision={0}
         />
         <AnimatedStatistic
           title="Canister smart contracts"
           currentValue={stats.canisterCount}
-          tooltip={"The number of active canister smart contracts on the Internet Computer."}
+          tooltip={
+            "The number of active canister smart contracts on the Internet Computer."
+          }
           precision={0}
         />
         <Statistic
