@@ -7,6 +7,6 @@ Please feel free to contribute to the list!
 * SNS-W installs them
 * reserve “deploy”
 * The NNS “**launches / starts SNS**”
-* A developer “**initiates SNS launch**”
+* A developer “**initiates SNS launch**” or **asks the IC to get an SNS** 
 * launch = full process
 * A developer “**gets an SNS**” not “launches an SNS”
