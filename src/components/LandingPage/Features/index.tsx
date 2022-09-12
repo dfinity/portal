@@ -13,7 +13,7 @@ const cardsContent = [
   },
   {
     title: "Emit less CO₂",
-    body: "100% on-chain systems and services can be more efficient than traditional IT",
+    body: "Systems and services running on-chain can be more efficient than traditional IT",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption",
   },
   {
