@@ -64,7 +64,7 @@ const cardsContent = [
   },
   {
     title: "Bitcoin liquidity",
-    body: "Smart contracts process UTXOs as though hosted by Bitcoin mainnet",
+    body: "Smart contracts directly send and receive bitcoin, no bridges, just crypto",
     link: "/bitcoin-integration",
   },
   {
