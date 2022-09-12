@@ -182,7 +182,7 @@ function Dashboard() {
           className={styles.actionButton}
         >
           <DashboardIcon className={styles.dashboardIcon} />
-          <span>Go to Dashboard</span>
+          <span>See Internet Computer stats on dashboard.internetcomputer.org</span>
         </Link>
       </motion.div>
     </motion.div>
