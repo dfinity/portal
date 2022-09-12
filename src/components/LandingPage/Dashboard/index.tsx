@@ -174,7 +174,7 @@ function Dashboard() {
           currentValue={stats.transactionRate}
           tooltip={"The number of transactions being processed each second."}
           precision={0}
-        />    
+        /> /*   
         <AnimatedStatistic
           title="Canister smart contracts"
           currentValue={stats.canisterCount}
@@ -193,7 +193,7 @@ function Dashboard() {
           currentValue={stats.blockRate}
           tooltip={"The number of blocks being finalized each second."}
           precision={2}
-        />        
+        /> */       
       </div>
       <motion.div variants={item}>
         <Link
