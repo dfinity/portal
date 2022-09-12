@@ -139,7 +139,7 @@ function Index() {
             className={styles.actionButton}
             to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
           >
-            EXTEND BTC | ETH
+            BOOST BTC | ETH
           </Link>
           <Link
             className={styles.actionButton}
