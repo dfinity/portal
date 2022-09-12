@@ -147,9 +147,16 @@ function Index() {
           >
             DITCH CLOUD
           </Link>
-          <Link className={styles.callToAction} to={"/showcase"}>
+          <Link
+            className={styles.callToAction}
+            to={"/showcase"}>
             Web3 ecosystem
           </Link>
+          <Link
+            className={styles.callToAction}
+            to="https://wiki.internetcomputer.org/wiki/History">
+            History
+          </Link>          
         </motion.div>
       </motion.div>
     </div>
