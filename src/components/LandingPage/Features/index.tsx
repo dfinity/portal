@@ -58,13 +58,13 @@ const cardsContent = [
     link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
   },
   {
-    title: "Sovereign network",
-    body: 'Internet Computer nodes are dedicated "node machines", not cloud instances',
+    title: "100% sovereign",
+    body: 'Internet Computer nodes are dedicated "node machines," not cloud instances',
     link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
   },
   {
     title: "Bitcoin liquidity",
-    body: "Smart contracts process UTXOs as though hosted on Bitcoin mainnet",
+    body: "Smart contracts process UTXOs as though hosted by Bitcoin mainnet",
     link: "/bitcoin-integration",
   },
   {
