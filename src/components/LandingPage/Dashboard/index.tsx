@@ -163,22 +163,18 @@ function Dashboard() {
           precision={0}
         />
         <Statistic
-          title="Blockchain status"
-          currentValue={stats.operational ? "Operational" : "Maintenance"}
-          tooltip={"The current status of the Internet Computer network."}
-        />
-        <AnimatedStatistic
-          title="Blocks/s"
-          currentValue={stats.blockRate}
-          tooltip={"The number of blocks being finalized each second."}
-          precision={2}
-        />
+          title="Smart contract memory"
+          currentValue={`$${stats.cost} GB/month`}
+          tooltip={
+            "The cost of storing 1GB of data in a canister smart contract."
+          }
+        /> 
         <AnimatedStatistic
           title="Transactions/s"
           currentValue={stats.transactionRate}
           tooltip={"The number of transactions being processed each second."}
           precision={0}
-        />
+        />    
         <AnimatedStatistic
           title="Canister smart contracts"
           currentValue={stats.canisterCount}
@@ -186,14 +182,18 @@ function Dashboard() {
             "The number of active canister smart contracts on the Internet Computer."
           }
           precision={0}
-        />
+        />       
         <Statistic
-          title="Smart contract memory"
-          currentValue={`$${stats.cost} GB/month`}
-          tooltip={
-            "The cost of storing 1GB of data in a canister smart contract."
-          }
-        />
+          title="Blockchain status"
+          currentValue={stats.operational ? "Operational" : "Maintenance"}
+          tooltip={"The current status of the Internet Computer network."}
+        />        
+        <AnimatedStatistic
+          title="Blocks/s"
+          currentValue={stats.blockRate}
+          tooltip={"The number of blocks being finalized each second."}
+          precision={2}
+        />        
       </div>
       <motion.div variants={item}>
         <Link
