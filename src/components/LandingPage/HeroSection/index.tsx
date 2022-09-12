@@ -117,8 +117,9 @@ function Index() {
             interval={2000}
             lines={[
               "Build on the internet",
-              "Use 2049 blockchain",
+              "A World Computer...",
               "Everything on-chain",
+              "Fully decentralized",
               "Internet reinvented",
               "The future is bright",
             ]}
@@ -135,7 +136,7 @@ function Index() {
           <Link className={styles.actionButton} to="/developers">
             CODE WEB3
           </Link>
-          {/* <Link
+          <Link
             className={styles.actionButton}
             to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
           >
@@ -146,7 +147,7 @@ function Index() {
             to="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
           >
             DITCH CLOUD
-          </Link> */}
+          </Link>
           <Link className={styles.callToAction} to={"/showcase"}>
             Web3 ecosystem
           </Link>
