@@ -59,7 +59,7 @@ const cardsContent = [
   },
   {
     title: "100% sovereign",
-    body: 'Internet Computer nodes are dedicated "node machines," not cloud instances',
+    body: 'Internet Computer nodes are dedicated "node machines" (no cloud instances)',
     link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
   },
   {
