@@ -119,6 +119,7 @@ function Index() {
               "Build on the internet",
               "A World Computer...",
               "Everything on-chain",
+              "Fully decentralized",
               "Internet reinvented",
               "The future is bright",
             ]}
