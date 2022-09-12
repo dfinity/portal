@@ -123,7 +123,7 @@ function Features() {
     >
       <a className={styles.anchor} id="features" />
       <motion.p variants={transitions.item} className={styles.title}>
-        What's cool about the <br /> Internet Computer
+        World Computer<br />blockchain features:
       </motion.p>
       <motion.div
         className={styles.scrollContainer}
