@@ -12,16 +12,6 @@ const cardsContent = [
     link: "https://wiki.internetcomputer.org/wiki/Web_Serving",
   },
   {
-    title: "Breakthrough speed",
-    body: "Pre-finalized query TX <200ms, and update TX in <2s",
-    link: "https://wiki.internetcomputer.org/wiki/Web_Speed",
-  },
-  {
-    title: "Interact w/o tokens",
-    body: 'Smart contracts pay for their own compute so users can just interact',
-    link: "https://wiki.internetcomputer.org/wiki/Users_interact_with_dapps_without_tokens",
-  },
-  {
     title: "Emit less CO₂",
     body: "100% on-chain systems and services can be more efficient than traditional IT",
     link: "https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption",
@@ -30,21 +20,32 @@ const cardsContent = [
     title: "Limitless scaling",
     body: "Scale mass-market web3 services 100% on-chain (no cloud or servers needed)",
     link: "https://wiki.internetcomputer.org/wiki/Limitless_Scaling",
-  },
+  },  
   {
     title: "Internet Identity",
     body: "Web3 sign-on via WebAuthn: fingerprint sensor, Face ID, etc",
     link: "https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7",
   },
+
   {
-    title: "Rapid evolution",
-    body: "A governance DAO upgrades and configures the blockchain's nodes daily",
-    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
+    title: "Web3 orchestration",
+    body: "Smart contracts sign TXs that run on other blockchains (chain key crypto)",
+    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
+  },  
+  {
+    title: "Reverse gas model",
+    body: 'Smart contracts pay for their own compute so users can just interact',
+    link: "https://wiki.internetcomputer.org/wiki/Users_interact_with_dapps_without_tokens",
   },
   {
-    title: "Parallelism",
-    body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
-    link: "https://wiki.internetcomputer.org/wiki/Parallelism",
+    title: "HTTPS outcalls",
+    body: "Smart contracts can connect to outside world through http via consensus",
+    link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
+  },  
+  {
+    title: "Breakthrough speed",
+    body: "Pre-finalized query TX <200ms, and update TX in <2s",
+    link: "https://wiki.internetcomputer.org/wiki/Web_Speed",
   },
   {
     title: "WebAssembly",
@@ -52,24 +53,9 @@ const cardsContent = [
     link: "https://wiki.internetcomputer.org/wiki/WebAssembly",
   },
   {
-    title: "Web3 orchestration",
-    body: "Smart contracts sign TXs that run on other blockchains (chain key crypto)",
-    link: "https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC",
-  },
-  {
-    title: "Bitcoin liquidity",
-    body: "Smart contracts process UTXOs as though hosted on Bitcoin mainnet",
-    link: "/bitcoin-integration",
-  },
-  {
-    title: "HTTPS outcalls",
-    body: "Smart contracts can connect to outside world through http via consensus",
-    link: "https://wiki.internetcomputer.org/wiki/HTTPS_outcalls",
-  },
-  {
-    title: "Multi-block TXs",
-    body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
-    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+    title: "Rapid evolution",
+    body: "A governance DAO upgrades and configures the blockchain's nodes daily",
+    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
   },
   {
     title: "Sovereign network",
@@ -77,9 +63,24 @@ const cardsContent = [
     link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
   },
   {
+    title: "Bitcoin liquidity",
+    body: "Smart contracts process UTXOs as though hosted on Bitcoin mainnet",
+    link: "/bitcoin-integration",
+  },
+  {
+    title: "Multi-block TXs",
+    body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
+    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+  },
+  {
     title: "Daemon contracts",
     body: "Smart contracts can be invoked by the network and run automatically",
     link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
+  },
+  {
+    title: "Parallelism",
+    body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
+    link: "https://wiki.internetcomputer.org/wiki/Parallelism",
   },
 ];
 
