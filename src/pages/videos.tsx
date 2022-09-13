@@ -109,7 +109,7 @@ function Videos() {
                   </div>
                   <img
                     className="inset-0 w-full h-full z-[1] absolute object-cover rounded-l-xl"
-                    src={`https://img.youtube.com/vi/${currentVideo.href}/maxresdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${currentVideo.href}/sddefault.jpg`}
                     alt=""
                   />
                 </div>
