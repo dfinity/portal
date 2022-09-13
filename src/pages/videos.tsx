@@ -71,7 +71,7 @@ function Videos() {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "inline-block bg-white font-circular rounded-xl border border-infinite border-solid text-black tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                    "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                     !queryTag ? "text-white bg-infinite" : "text-black bg-white"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -81,7 +81,7 @@ function Videos() {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid text-black tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                       tag.toLowerCase() === queryTag?.toLowerCase()
                         ? "text-white bg-infinite"
                         : "text-black bg-white"
