@@ -16,10 +16,10 @@ import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 function Videos() {
   const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
   resetNavBarStyle();
-  const currentVideo = mediaVideos.at(0);
+  let currentVideo = mediaVideos.at(0);
   let filteredVideos = mediaVideos.filter((v) => v.href !== currentVideo.href);
   const tags = Object.keys(
-    filteredVideos.reduce((tags, p) => {
+    mediaVideos.reduce((tags, p) => {
       if (!p.tags) return tags;
       for (const tag of p.tags) {
         tags[tag.toLowerCase()] = true;
@@ -28,11 +28,13 @@ function Videos() {
     }, {})
   );
 
-  let tempVideos = filteredVideos;
+  let tempVideos = mediaVideos;
   if (queryTagInitialized && queryTag?.length > 0) {
-    filteredVideos = tempVideos.filter((p) =>
+    let temp = tempVideos.filter((p) =>
       p.tags.find((tag) => tag.toLowerCase() == queryTag)
     );
+    currentVideo = temp.at(0);
+    filteredVideos = temp.filter((v) => v.href !== currentVideo.href);
   }
   return (
     <Layout title={"Videos"} description={""}>
@@ -61,20 +63,7 @@ function Videos() {
               Videos
             </motion.p>
           </section>
-          <section className="max-w-page mx-6 md:w-10/12 relative bg-white rounded-xl block mb-5 md:mb-10 md:mx-auto overflow-hidden">
-            <motion.div variants={transitions.item} className="">
-              <iframe
-                className="w-full aspect-video block"
-                src={"https://www.youtube.com/embed/" + currentVideo.href}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-              <p className="tw-heading-6 md:tw-heading-5 my-4 md:my-8 mx-3 md:mx-6">
-                {currentVideo.title}
-              </p>
-            </motion.div>
-          </section>
-          <section className="max-w-page px-6 mb-12 md:mb-20 md:px-12.5 md:mx-auto">
+          <section className="max-w-page px-6 mb-10 md:px-12.5 md:mx-auto">
             <motion.div
               className="flex gap-10 md:gap-20 flex-col md:flex-row"
               variants={transitions.item}
@@ -82,22 +71,20 @@ function Videos() {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "button-outline",
-                    !queryTag
-                      ? "text-white bg-infinite"
-                      : "text-black bg-transparent"
+                    "inline-block bg-white font-circular rounded-xl border border-infinite border-solid text-black tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                    !queryTag ? "text-white bg-infinite" : "text-black bg-white"
                   )}
                   onClick={() => setQueryTag(undefined)}
                 >
-                  All
+                  All Videos
                 </button>
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "button-outline",
+                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid text-black tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                       tag.toLowerCase() === queryTag?.toLowerCase()
                         ? "text-white bg-infinite"
-                        : "text-black bg-transparent"
+                        : "text-black bg-white"
                     )}
                     key={tag}
                     onClick={() => setQueryTag(tag)}
@@ -108,27 +95,57 @@ function Videos() {
               </div>
             </motion.div>
           </section>
-          <section className="max-w-page relative mt-12 md:mt-28 px-6 mb-5 md:mb-40 md:px-12.5 md:mx-auto overflow-hidden">
+          <section className="max-w-page px-6 mb-20 md:mb-10 md:px-12.5 md:mx-auto">
+            <div className={"relative flex flex-row rounded-xl bg-white"}>
+              <a
+                href={"https://www.youtube.com/watch?v=" + currentVideo.href}
+                target="_blank"
+                key={currentVideo.href}
+                className={"w-2/3"}
+              >
+                <div className="group relative h-0 pb-16/9">
+                  <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
+                    <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
+                  </div>
+                  <img
+                    className="inset-0 w-full h-full z-[1] absolute object-cover rounded-l-xl"
+                    src={`https://img.youtube.com/vi/${currentVideo.href}/maxresdefault.jpg`}
+                    alt=""
+                  />
+                </div>
+              </a>
+              <div className={"px-12 mb-16 mt-auto bg-white w-1/3"}>
+                <p className={"tw-heading-7 text-razzmatazz mb-3"}>Featured</p>
+                <p className={"tw-heading-6 md:tw-heading-5 mb-0"}>
+                  {currentVideo.title}
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="max-w-page relative px-6 mb-5 md:mb-40 md:px-12.5 md:mx-auto overflow-hidden">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-4 md:gap-x-5 gap-y-10 md:gap-y-16 lg:grid-cols-4 transition-opacity">
               {filteredVideos.map((video) => (
-                <div key={video.href}>
+                <div key={video.href} className={"bg-white rounded-xl"}>
                   <a
                     href={"https://www.youtube.com/watch?v=" + video.href}
                     target="_blank"
                   >
-                    <div className="group relative h-0 pb-16/9 mb-4">
-                      <div className="bg-white group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-                        <PlaySVG className="m-auto h-5 w-5 text-infinite group-hover:text-white transition-colors" />
+                    <div className="group relative h-0 pb-16/9">
+                      <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
+                        <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
                       </div>
                       <img
-                        className="absolute inset-0 w-full h-full z-[-1] object-cover"
+                        className="absolute inset-0 w-full h-full z-[1] object-cover rounded-t-xl"
                         src={`https://img.youtube.com/vi/${video.href}/sddefault.jpg`}
                         alt=""
                       />
                     </div>
                   </a>
 
-                  <p className="tw-heading-7 md:tw-heading-6">{video.title}</p>
+                  <p className="tw-heading-7 md:tw-heading-6 p-6 mb-0">
+                    {video.title}
+                  </p>
                 </div>
               ))}
             </div>
