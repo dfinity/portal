@@ -323,7 +323,7 @@ such as a [principal](#principal "wikilink"), that interacts with the
 [Internet Computer](#Internet_Computer "wikilink"). For users, the
 identity is the SHA-224 hash of the DER-encoded public key of the user.
 [The Internet Computer Interface
-Specification](https://internetcomputer.org/docs/current/references/ic-interface-spec) has more
+Specification](../references/ic-interface-spec.md) has more
 detail.
 
 ##### Internet Identity
