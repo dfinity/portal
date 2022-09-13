@@ -96,25 +96,33 @@ function Videos() {
             </motion.div>
           </section>
           <section className="max-w-page px-6 mb-20 md:mb-10 md:px-12.5 md:mx-auto">
-            <div className={"relative flex flex-row rounded-xl bg-white"}>
+            <div
+              className={
+                "relative flex flex-col md:flex-row rounded-xl bg-white"
+              }
+            >
               <a
                 href={"https://www.youtube.com/watch?v=" + currentVideo.href}
                 target="_blank"
                 key={currentVideo.href}
-                className={"w-2/3"}
+                className={"md:w-2/3"}
               >
                 <div className="group relative h-0 pb-16/9">
                   <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
                     <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
                   </div>
                   <img
-                    className="inset-0 w-full h-full z-[1] absolute object-cover rounded-l-xl"
+                    className="inset-0 w-full h-full z-[1] absolute object-cover rounded-t-xl md:rounded-tr-none md:rounded-l-xl"
                     src={`https://img.youtube.com/vi/${currentVideo.href}/sddefault.jpg`}
                     alt=""
                   />
                 </div>
               </a>
-              <div className={"px-12 mb-16 mt-auto bg-white w-1/3"}>
+              <div
+                className={
+                  "px-12 py-6 md:py-0 md:mb-16 mt-auto bg-white md:w-1/3 rounded-xl md:rounded-none"
+                }
+              >
                 <p className={"tw-heading-7 text-razzmatazz mb-3"}>Featured</p>
                 <p className={"tw-heading-6 md:tw-heading-5 mb-0"}>
                   {currentVideo.title}
