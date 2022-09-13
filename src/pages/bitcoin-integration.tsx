@@ -8,6 +8,7 @@ import ReleaseTimeline from "@site/src/components/BitcoinIntegrationPage/Release
 import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
 import Head from "@docusaurus/Head";
 import shareImage from "@site/static/img/shareImages/share-bitcoin-integration.jpeg";
+import Videos from "@site/src/components/BitcoinIntegrationPage/Videos";
 
 function BitcoinIntegration() {
   const { siteConfig } = useDocusaurusContext();
@@ -25,6 +26,7 @@ function BitcoinIntegration() {
         <Hero></Hero>
         <HowItWorks></HowItWorks>
         <ReleaseTimeline></ReleaseTimeline>
+        <Videos></Videos>
         <BuildWithBitcoin></BuildWithBitcoin>
       </main>
     </Layout>
