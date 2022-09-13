@@ -89,6 +89,10 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
         },
+        gtag: {
+          trackingID: "G-P6TH612SSX",
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
