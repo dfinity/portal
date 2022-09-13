@@ -51,6 +51,13 @@ const config = {
     howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
+    [
+      "@docusaurus/plugin-google-gtag",
+      {
+        trackingID: "G-226F0LR9KE",
+        anonymizeIP: true,
+      },
+    ],
   ],
 
   stylesheets: [
@@ -88,10 +95,6 @@ const config = {
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
-        },
-        gtag: {
-          trackingID: "G-P6TH612SSX",
-          anonymizeIP: true,
         },
       }),
     ],
