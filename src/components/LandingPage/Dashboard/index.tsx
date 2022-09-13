@@ -163,37 +163,18 @@ function Dashboard() {
           precision={0}
         />
         <Statistic
-          title="Blockchain status"
-          currentValue={stats.operational ? "Operational" : "Maintenance"}
-          tooltip={"The current status of the Internet Computer network."}
-        />
-        <AnimatedStatistic
-          title="Blocks/s"
-          currentValue={stats.blockRate}
-          tooltip={"The number of blocks being finalized each second."}
-          precision={2}
-        />
-        <AnimatedStatistic
-          title="Transactions/s"
-          currentValue={stats.transactionRate}
-          tooltip={"The number of transactions being processed each second."}
-          precision={0}
-        />
-        <AnimatedStatistic
-          title="Canister smart contracts"
-          currentValue={stats.canisterCount}
-          tooltip={
-            "The number of active canister smart contracts on the Internet Computer."
-          }
-          precision={0}
-        />
-        <Statistic
           title="Smart contract memory"
           currentValue={`$${stats.cost} GB/month`}
           tooltip={
             "The cost of storing 1GB of data in a canister smart contract."
           }
-        />
+        /> 
+        <AnimatedStatistic
+          title="Transactions/s"
+          currentValue={stats.transactionRate}
+          tooltip={"The number of transactions being processed each second."}
+          precision={0}
+        />      
       </div>
       <motion.div variants={item}>
         <Link
@@ -201,7 +182,7 @@ function Dashboard() {
           className={styles.actionButton}
         >
           <DashboardIcon className={styles.dashboardIcon} />
-          <span>Go to Dashboard</span>
+          <span>See Internet Computer stats on dashboard.internetcomputer.org</span>
         </Link>
       </motion.div>
     </motion.div>
