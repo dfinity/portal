@@ -1,21 +1,22 @@
-# Initializing an SNS launch in production
-This describes the detailed steps for initializing an SNS launch.
+# Getting an SNS in production
+This describes the detailed steps for getting an SNS on
+the Internet Computer.
 
 :::caution
 
 In the following steps we assume that you have already
-[collected the developer and airdrop principals](predeployment.md/#principals)
-and [chosen the initial SNS parameters in a .yaml file](predeployment.md).
+[collected the developer and airdrop principals](preparation.md/#principals)
+and [chosen the initial SNS parameters in a .yaml file](preparation.md).
 We assume that you control one principal `identityDevNeuron` that owns a developer neuron.
-Moreover, you control one principal `identityDevDeploy` that is a `dfx` identity and 
+Moreover, you control one principal `identityDevDfx` that is a `dfx` identity and 
 a controller of the dapp canister(s) that you would like to hand over to the SNS.
-We also recommend that before following these steps and initializaing an SNS launch
+We also recommend that before following these steps and requesting an SNS launch
 in production, you have [tested the SNS](local-testing.md).
 
 :::
 
 
-You are now ready to initialize an SNS launch for your dapp.
+You are now ready to get an SNS for your dapp.
 There are some steps that are needed for completing this and some steps that we
 recommend as intermediate sanity checks that up to this point everything works fine.
 We mark the latter by the keyword _(Recommended)_.
@@ -36,7 +37,7 @@ on the connected computer.
 #### 2. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the NNS subnet to requrest that an SNS 
 is installed.
-To make this call, use your `dfx` identity `identityDevDeploy` and 
+To make this call, use your `dfx` identity `identityDevDfx` and 
 the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 Upon receiving this call, the SNS wasm modules canister will install
 an SNS with your chosen initial parameters.
@@ -44,7 +45,7 @@ an SNS with your chosen initial parameters.
 file is used. If this is not the case, add the information how this can be ensured.-->
 
 #### 3. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use your `dfx` identity `identityDevDeploy` and 
+To do so, use your `dfx` identity `identityDevDfx` and 
 the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
@@ -82,7 +83,7 @@ the SNS, you should remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, use your `dfx` identity `identityDevDeploy` and the command 'here'
+To do this, use your `dfx` identity `identityDevDfx` and the command 'here'
 where you specify as the principals to be removed all existing controller principals
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->
@@ -101,9 +102,6 @@ To make such a proposal and vote on it, use your `sns-quill` principal
 `identityDevNeuron` and follow the instructions from [Step 4](#step4).
 As in [Step 4](#step4),
 sufficient initial neurons have to vote to reach a majority.
-
-<!-- TODO:IN CASE THIS IS NEEDED: Repeat these steps for all canisters that you would
-like to register.-->
 
 #### 7. _(Recommended)_ Test upgrading the dapp canister(s) by SNS proposal.
 To make sure that you can still upgrade the dapp canister(s) by SNS proposal,
@@ -125,15 +123,15 @@ of the dapp you probably want to make sure that such a proposal is submitted.
 
 #### 9. Wait for the NNS to launch the SNS & continue evolving the dapp! 
 After the last step, there is nothing more to do for you as the original dapp 
-developer to launch the SNS!
+developer to finalize the SNS launch!
 The dapp has been handed over to the IC and the NNS is voting on whether 
 the SNS should be launched.
 If the proposal is adopted, the SNS decentralization sale will be 
 started with the configurations that you have defined in the
-[initialization file](predeployment.md).
+[initialization file](preparation.md).
 If the proposal is rejected, the dapp canisters' controllers are automatically set
 back to the developer principals that you
-have defined in the [initialization file](predeployment.md).
+have defined in the [initialization file](preparation.md).
 
 During this time you can further upgrade your dapp canister(s), for
 example to add new features or fix bugs, by sending additional
@@ -148,3 +146,12 @@ To make such a proposal, you can use the following dfx command:
 ``` 
 <!--TODO-code: --> 
 ```  
+
+:::info
+
+It is recommended that the dapp canisters are upgraded once the SNS is
+fully decentralised (i.e., after the sale has finished successfully)
+as this provides a root of trust that the dapp code is, now and going forward,
+approved by the SNS community as it is.
+
+:::

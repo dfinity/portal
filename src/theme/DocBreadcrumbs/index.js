@@ -6,8 +6,9 @@
  */
 import React from 'react';
 import {
-    ThemeClassNames, useSidebarBreadcrumbs, useHomePageRoute,
+    ThemeClassNames,
 } from '@docusaurus/theme-common';
+import {useSidebarBreadcrumbs, useHomePageRoute} from '@docusaurus/theme-common/internal';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';

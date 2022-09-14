@@ -1,12 +1,12 @@
-# How to launch an SNS
+# How to get an SNS
 
-We explain how to deploy an SNS that is provided as a 
+We explain how to get an SNS that is provided as a 
 system functionality by the IC.
 As explained in the [introduction](../sns-intro.md), there are also other 
 ways to deploy and maintain a DAO. Many concepts explained here may be 
 relevant for you even if you deploy another kind of DAO.
 
-We introduce here the steps to go through to launch an SNS.
+We introduce here the steps to go through to get an SNS.
 We only give an overview here and, for each of the steps, we 
 link to a page that provides more details. 
 
@@ -15,7 +15,7 @@ The successful launch of an SNS does not only depend on technical
 aspects. 
 In fact, it is advisable that before taking any technical steps, 
 you take some non-technical preparation steps and define what the SNS
-that you are about to launch should achieve. 
+that you are about to request from the IC should achieve. 
 To motivate this better, let's look at two examples of such non-technical
 considerations in the following.
 
@@ -49,21 +49,19 @@ we list a few of them on
 Once you have defined what (non-technical) goals the SNS should achieve,
 you are ready for the more technical preparations.
 A main goal of this step is to translate the previously defined high level
-goals in to parameters and configurations that can be set in
-the SNS launch.
+goals in to parameters and configurations that can be set for your SNS.
 To specify these parameters it helps to first understand on a
 high level how the SNS launch proceeds.
 Also, you will need to get some tools and set up or collect some
 principals' identities.
-We explain these more technical aspects of the SNS launch preparation
-on [this page](./predeployment.md).
+We explain these more technical aspects of the SNS preparations
+on [this page](./preparation.md).
 
 In addition to preparing the launch, you might want to start planning
 how the SNS will be integrated into you dapp.
 For example, you may want to integrate some or all of the SNS frontend
-in your dapp's frontend. `This page` provides some tips on how this can be
-done.
-<!--TODO-link: add link once have page to frontend -->
+in your dapp's frontend. [This page](frontend-integration.md)
+provides some tips on how this can be done.
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
@@ -78,8 +76,8 @@ you probably want to test that this integration works.
 For all these reasons, we explain on [this page](./local-testing.md), how
 the SNS can be tested.
 
-### Step 4: Launching the SNS in production
+### Step 4: Getting an SNS in production
 Once you properly tested the SNS, you are ready to ask the IC to launch
 an SNS for you in production. 
 We describe all steps included in this process in more detail
-on [this page](./deployment.md).
+on [this page](./get-sns-production.md).
