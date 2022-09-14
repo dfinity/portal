@@ -109,16 +109,13 @@ function FeaturePage() {
             the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
             </p>
 
-            <p>
-            </p>
-
             <p className="mb-3 mt-6">
               <Link
-                href="https://internetcomputer.org/showcase/"
+                href="/docs/current/developer-docs/quickstart/hello10mins"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See other 100% on-chain dapps
+                Start building
               </Link>
             </p>
           </div>

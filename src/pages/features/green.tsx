@@ -63,20 +63,28 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>Energy consumption</h2>
-       
+            <h2>Energy consumption comparison</h2>
             <p>
-            The following is an approximation of mainnet power consumption. The average power 
-            consumption of an Internet Computer node is 700 W. If we assume a power usage 
-            effectiveness (PUE) 1, 2, of 2.33 that leads to a total power consumption of 
-            1631.0 W including cooling and other data center operations costs. Given a 
-            total of 518 nodes and 11 boundary nodes in mainnet, resulting in a worst 
-            case of 862799W to operate all IC nodes for mainnet (including also system subnets). This is a worst case analysis for power consumption of nodes as we would normally expect them to throttle when not fully utilized and thereby reducing power consumption.
+
+          To better understand the impact of the efficiency of the IC, it helps to see the comparison of energy costs.
+          Even with conservative estimations, the energy consumption of the Internet Computer is substantially lower than 
+          competing blockchain projects, but also existing (highly optimized) web2 tech. See the table below to put IC performance in perspective.
+
+            <ul>
+              <li><strong>One Internet Computer transaction: 261 J</strong></li>
+              <li>One Google search: 1'080 J</li>
+              <li>One Solana transaction: 1'837 J[</li>
+              <li>One Ethereum 2 transaction: 126'000 J</li>
+              <li>One Cardano transaction: 1'972'440 J[</li>
+              <li>One Ethereum transaction: 692'820'000 J</li> 
+              <li>One Bitcoin transaction: 6'995'592'000 J</li>
+            </ul>
+
             </p>
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+                href="/docs/current/developer-docs/quickstart/hello10mins"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
