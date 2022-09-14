@@ -61,7 +61,7 @@ function FeaturePage() {
             <h2>How It Works</h2>
             <p>
            
-            The IC's muli-block transaction capabilitis is rare. Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
+            The IC's muli-block transaction capabilities is rare. Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
             In practice this means that when a smart contract function is invoked by a transaction, it must complete execution within the per-block 
             "gas limit" (gas is the equivalent of cycles on the Internet Computer).
             </p>
