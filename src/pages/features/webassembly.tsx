@@ -21,10 +21,10 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">WebAssembly</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              WebAssembly is a virtual machine (VM) designed for client, server and blockchain applications. 
+              It is used to run canister smart contracts on the Internet Computer (IC). WebAssembly runs portable byte code instructions 
+              that are created by compiling software code written in programming languages such as Rust and Motoko. Because it's faster, 
+              more efficient, and more portable than the alternatives, WebAssembly is key to building efficient applications on the internet.
               </p>
             </div>
           </div>
@@ -60,36 +60,39 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            WebAssembly has quickly established itself as the internet's favorite virtual machine. 
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>WebAssembly used in the IC</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
+            WebAssembly (or "WASM") was co-designed by Andreas Rossberg, who joined the Dfinity Foundation early in 2017 to work on its canister smart 
+            contract execution environment, and the Motoko language. The standard is maintained by the{" "}
+              <Link href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">
+              World Wide Web Consortium.
               </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            The Internet Computer uses the WebAssembly VM to run its canister smart contracts for a number of reasons, including:
             </p>
+
+            <ul>
+              <li>
+              It is formally specified, which increases its security.
+              </li>
+              <li>
+              It provides near-native performance, greatly improving smart contract efficiency.
+              </li>
+              <li>
+              It is targeted by LLVM, which means large numbers of programming languages can easily be used for smart contract creation.
+              </li>
+              <li>
+              It has been very widely adopted as the new standard for computation on the Web, and consequently a massive decentralized R&D effort constantly evolves and improves the standard, and a large variety of virtual machine implementations have been created.
+              </li>
+            </ul>
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+                href="/docs/current/developer-docs/quickstart/hello10mins"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -113,24 +116,24 @@ function FeaturePage() {
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'WebAssembly' article on the IC Wiki"
+              description="Take a deep dive into how WebAssembly is used in the IC execution layer."
+              href="https://wiki.internetcomputer.org/wiki/WebAssembly"
             />
           </div>
         </section>

@@ -45,12 +45,12 @@ const cardsContent = [
   {
     title: "Breakthrough speed",
     body: "Pre-finalized query TX <200ms, and update TX in <2s",
-    link: "https://wiki.internetcomputer.org/wiki/Web_Speed",
+    link: "features/web-speed",
   },
   {
     title: "WebAssembly",
     body: "Use any lang that compiles to the VM of the future: Motoko, Rust, C, etc",
-    link: "https://wiki.internetcomputer.org/wiki/WebAssembly",
+    link: "features/webassembly",
   },
   {
     title: "Rapid evolution",

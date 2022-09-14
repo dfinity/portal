@@ -153,8 +153,8 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="IC Wiki"
-              description="Take a deep dive into the Internet Computer."
-              href="https://wiki.internetcomputer.org"
+              description="Take a deep dive into the Internet Computer's speed"
+              href="https://wiki.internetcomputer.org/wiki/Web_Speed"
             />
           </div>
         </section>
