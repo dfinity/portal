@@ -75,7 +75,7 @@ const cardsContent = [
   {
     title: "Daemon contracts",
     body: "Smart contracts can be invoked by the network and run automatically",
-    link: "https://wiki.internetcomputer.org/wiki/Daemon_canisters",
+    link: "features/daemon-contracts",
   },
   {
     title: "Parallelism",
