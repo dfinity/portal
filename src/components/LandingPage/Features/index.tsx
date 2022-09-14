@@ -80,7 +80,7 @@ const cardsContent = [
   {
     title: "Parallelism",
     body: '"Actor" smart contracts run in parallel, unlocking scaling & solving reentrancy',
-    link: "https://wiki.internetcomputer.org/wiki/Parallelism",
+    link: "features/actor-model",
   },
 ];
 

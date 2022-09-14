@@ -21,10 +21,9 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Actor Model</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              A single canister smart contract has one thread of execution for updates, but the Internet Computer can execute a massive 
+              number of canisters in parallel. In addition, we make a distinction between requests that need to update the state of a 
+              canister, and queries, which cannot modify the state of a canister.
               </p>
             </div>
           </div>
@@ -60,31 +59,51 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            The programming model of the Internet Computer consists of memory-isolated canisters communicating by asynchronous message 
+            passing of binary data encoding Candid values. A canister processes its messages one-at-a-time, preventing race conditions. 
+            A canister uses call-backs to register what needs to be done with the result of any inter-canister messages it issues.
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>Canisters as actors</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+            The actor model is a mathematical model of concurrent computation, where, in response to a message, an actor can modify its state, 
+            send messages, and create more actors. 
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            A canister is like an actor in many respects. For example, an actor has:
+            </p>
+
+            <ul>
+              <li>a private state that can only be modified by the canister itself</li>
+              <li>a single thread of execution, so it does not need lock-based synchronization</li>
+              <li>the ability to communicate with other canisters through asynchronous messages</li>
+              <li>the ability to create new canisters</li>
+            </ul>
+
+            <p>
+            An important difference between traditional actors and canisters is that canisters on the Internet Computer have
+            bidirectional message passing. Messages are divided into requests and responses, where requests 
+            can be replied to and the Internet Computer keeps track of the callback for responses.
+            </p>
+
+            <p>
+            In actor terminology, each actor has a mailing address that is used to receive messages. A canister also has a mailing address, 
+            which happens to look similar to an IPv6 address.
+            </p>
+
+            <p>
+            While a canister's update throughput is limited by consensus of the blockchain and the single thread of execution, a 
+            canister can serve hundreds of queries concurrently, achieving throughput in the order of thousands of queries per second, 
+            and latency measured in milliseconds.
+            </p>
+
+            <p>
+            To complete this picture, it should be added that end users also participate as actors in the model. This means that browsers and mobile apps can 
+            directly perform update and query operations on canisters.
+            </p>
+
+            <p>
+            In addition, the Motoko programming language, which is tailored to the Internet Computer, is inspired by the actor model.
             </p>
 
             <p className="mb-3 mt-6">
@@ -101,36 +120,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'Parallelism' article on the IC Wiki"
+              description="Learn about how actor model on the IC can can achieve parallelism."
+              href="https://wiki.internetcomputer.org/wiki/Parallelism"
             />
           </div>
         </section>
