@@ -89,13 +89,6 @@ function FeaturePage() {
               . Consequently, the IC can update itself many times faster than other blockchains.
             </p>
 
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
-            </p>
-
             <p className="mb-3 mt-6">
               <Link
                 href="/docs/current/developer-docs/integrations/bitcoin/"
