@@ -65,7 +65,7 @@ function FeaturePage() {
             perform some action, such as recording the latest asset prices published by DEXs (decentralized exchanges), a traditional 
             off-chain system such as software running on a centralized cloud service must be configured to periodically submit transactions.
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            
             <p>
             The approach that must be used with traditional blockchains is complex, fault prone, and introduces several problems native to 
             centralization. For example, who will be responsible for running the centralized infrastructure, and would such a person become a 
