@@ -55,7 +55,7 @@ const cardsContent = [
   {
     title: "Rapid evolution",
     body: "A governance DAO upgrades and configures the blockchain's nodes daily",
-    link: "https://wiki.internetcomputer.org/wiki/Network_Nervous_System",
+    link: "features/governance",
   },
   {
     title: "100% sovereign",
