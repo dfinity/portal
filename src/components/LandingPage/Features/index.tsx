@@ -70,7 +70,7 @@ const cardsContent = [
   {
     title: "Multi-block TXs",
     body: "Smart contract calls (TXs) can be long-running and span multiple blocks",
-    link: "https://wiki.internetcomputer.org/wiki/Multi-block_TXs",
+    link: "features/multi-block-transactions",
   },
   {
     title: "Daemon contracts",
