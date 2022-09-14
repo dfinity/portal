@@ -71,17 +71,17 @@ function FeaturePage() {
             applications running fully decentralized, which includes smart contract logic, on-chain data 
             storage and serving frontend to the user's browser.
             <br />
-
+            <br />
             Hosting dapps 100% on-chain provides the additional benefit of letting DAOs launched on the 
-            Internet Computer to completely control these applications with on-chain governance and 
-            not only the backend logic. This lets users be fully in control of these dapps realizing 
+            IC to completely control these applications with on-chain governance. 
+            This lets users be fully in control of these dapps realizing 
             complete decentralization and democratization of web applications.
             </p>
 
             <h2>Cheap Storage</h2>
             <p>
-            Unlike most blockchains, the efficiency and costs of the Internet Computer approaches the traditional IT 
-            stack so its is economically feasible to host dapps with lots of data and content.
+            Unlike most blockchains, the efficiency and costs of the IC approaches the traditional IT 
+            stack so its is economically feasible to host dapps with lots of data and content (not just small smart contracts as in other blockchains).
             <br />
           
             For comparison: <i>it costs hundreds of millions of dollars to store a GB of data on Ethereum.  
@@ -91,9 +91,8 @@ function FeaturePage() {
             <h2>Smart contracts that can process HTTP requests</h2>
             <p>
             Blockchains differ in their processing of computation from regular web servers, which makes serving web a difficult task. 
-            To overcome this, the Internet Computer introduces something called boundary nodes. 
-            These nodes act as a layer that translates HTTP requests from users to messages that can be processed by 
-            smart contracts running on the Internet Computer. This allows users to update the state of the blockchain 
+            To overcome this, the IC introduces something called boundary nodes. These nodes act as a layer that translates HTTP requests from users to messages that can be processed by 
+            smart contracts running on the IC. This allows users to update the state of the blockchain 
             simply by interacting with a browser.
             </p>
 
@@ -151,9 +150,9 @@ function FeaturePage() {
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into the Internet Computer."
-              href="https://wiki.internetcomputer.org"
+              title="'Web Serving' article on the 'IC Wiki'"
+              description="Take a deep dive into the Internet Computer's abiliy to host full dapps 100% on-chain"
+              href="https://wiki.internetcomputer.org/wiki/Web_Serving"
             />
           </div>
         </section>
