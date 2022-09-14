@@ -23,10 +23,8 @@ function FeaturePage() {
                 Multi-chain transactions
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              On the Internet Computer, you can create smart contracts that directly interact with other blockchains, without trusted centralized bridges that can get hacked and do rug pulls. 
+              This has been made possible using Chain Key Cryptography.
               </p>
             </div>
           </div>
@@ -62,32 +60,53 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            At the time of writing, there are no other blockchains in existence that can create TX on other blockchains for their smart contracts. 
+            Blockchains that talk about "native integrations" are usually talking about a bridge run by the company that backs them.
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>Service Composability</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+            The web3 environment contains multiple blockchains that have different characteristics and excel in different roles. 
+            A key web3 philosophy is service composability, in which different blockchain services are composed to create new 
+            services and functionality. Tokenized assets and liquidity must also be able to move between services, whichever 
+            blockchain they are on. The Internet Computer provides a means to fully support this paradigm in a multi-chain 
+            environment without need for trusted bridges run by central controllers such as companies.
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            For example, when building a DeFi framework on the Ethereum blockchain today, a means must be found to create the 
+            user experience. Typically, this is built on centralized servers or cloud services today, creating a serious 
+            security vulnerability, and exposing the developers who pay for the servers or cloud services to legal liabilities 
+            (since regulators can argue that the service built using Ethereum is not running in the mode of a decentralized protocol). 
+            Therefore, it would be better if the user experience could be created on the Internet Computer using canister smart 
+            contracts, which are controlled by a DAO. A means has been provided to do this (please check developers docs to see 
+            what is in production at any one time).
             </p>
+
+            <h3>Threshold ECDSA</h3>
+            <p>
+            The chain key cryptography protocol engine was extended so that hosted smart contracts can maintain ECDSA public keys, and make corresponding signatures, without need to store a private key on the blockchain in a way that would allow it to be stolen. 
+            Crucially, ECDSA is the signature scheme used to sign TX on other blockchains, and allows smart contracts on the Internet Computer to create TX that other blockchains directly execute.
+            </p>
+
+            <h3>Bitcoin Integration</h3>
+            <p>
+            One application has been the provision of special Bitcoin capabilities to canister smart contracts. 
+            This allows them to create bitcoin addresses, and send and receive bitcoin directly on the Bitcoin ledger, 
+            without any need for insecure trusted intermediaries such as bridges. Essentially, smart contracts on the Internet Computer 
+            can process bitcoin almost as though they are hosted by the Bitcoin network themselves.
+            </p>
+
+            <h3>Ethereum Integration</h3>
+            <p>
+            Another application is the signing of TX designed to invoke smart contracts on other blockchains, such as Ethereum. 
+            For example, to interact with Ethereum, an Internet Computer canister smart contract would first create an ECDSA public key 
+            that functions as an Ethereum Account (before use this should be charged with some ETH to pay for gas). Thereafter, the 
+            smart contract can invoke smart contract calls on the Ethereum blockchain, by creating and signing appropriate Ethereum TX 
+            that will be executed by Ethereum network. The smart contract can then determine the results of the TX by using the HTTPS outcalls 
+            feature to interact with Ethereum local nodes.
+            </p>
+
+
 
             <p className="mb-3 mt-6">
               <Link
@@ -106,33 +125,35 @@ function FeaturePage() {
             Build with Lorem Ipsum
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+          Using the power of chain key cryptography, the Internet Computer can thus be used as an orchestration blockchain, or 
+          meta blockchain, upon which new services can be built that combine functionality and assets provided by other 
+          blockchains in the web3 universe - all without the need to trust a central party, and without the inconvenience 
+          and risk of using wrapping and bridges.
+
+
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'Trustless multi-chain web3' article on the IC Wiki"
+              description="Learn about how IC's smart contracts  directly interact with other blockchains, without trusted centralized bridges."
+              href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
             />
           </div>
         </section>
