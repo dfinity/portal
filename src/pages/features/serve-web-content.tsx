@@ -24,8 +24,8 @@ function FeaturePage() {
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
               The Internet Computer (IC) is the only blockchain that can host a full dapp; frontend, backend, and data included. 
-              This is a crucial and distinguishing feature allowing dapps to run 100% on-chain inheriting the security and decentralization of blockchain without sacrificing speed or affordability. 
-              This is possible because nodes of the IC can securely serve HTTP requests and by leveraging the reverse gas model.
+              This is a distinguishing IC feature allowing dapps to run 100% on-chain while inheriting the security and decentralization of blockchain, but without sacrificing speed or affordability. 
+      
               </p>
             </div>
           </div>
