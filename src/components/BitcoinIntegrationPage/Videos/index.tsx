@@ -16,7 +16,7 @@ function Index() {
         </p>
         <div className="md:pr-2/10">
           <p className="tw-lead-sm">
-            From concept to coding - learn all albout the Bitcoin Integration
+            From concept to coding - learn all about the Bitcoin Integration
             feature on the Internet Computer through these videos.{" "}
           </p>
           <a

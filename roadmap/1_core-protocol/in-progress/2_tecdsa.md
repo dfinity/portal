@@ -3,7 +3,7 @@ title: Threshold ECDSA Signatures
 links:
   Forum Link: https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152
   Proposal: https://dashboard.internetcomputer.org/proposal/21340
-eta: 2022, beta released in August 2022
+eta: 2022
 is_community: false
 ---
 
