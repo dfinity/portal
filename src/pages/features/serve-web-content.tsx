@@ -50,7 +50,7 @@ function FeaturePage() {
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
-              src="/img/bitcoin-integration/howItWorks.png"
+              src="/img/features/ic-generic.png"
               alt=""
               className="w-full block"
             />
