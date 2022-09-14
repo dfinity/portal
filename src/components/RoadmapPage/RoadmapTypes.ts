@@ -10,6 +10,7 @@ export type RoadmapItem = {
   description: string;
   links: CustomUrl[];
   is_community?: boolean;
+  in_beta?: boolean;
   eta?: string;
 };
 
