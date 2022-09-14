@@ -23,16 +23,9 @@ function FeaturePage() {
                 Serve Web Content
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) is the only blockchain that can host a full dapp on-chain: frontend, backend, and data included.
-              <br />
-              <br />
-              
-              This is a disginguishing feature of the IC because most non-IC dapps are composed of a smart contract on a blockchain (say 5-10% of the code) and the rest of the code executing on centralized services (90-95% of the code).
-              The IC is the only blockchain that can host a dapp's frontend (e.g. HTML, CSS, JS) as well as application logic and store GBs of data. 
-              <br />
-              <br />
-              This means the IC is the only blockchain that can be serve dapps that are truly secure and can take advantage of blockchain properties: e.g. code immutability, tokenized governande of dapps. 
-
+              The Internet Computer (IC) is the only blockchain that can host a full dapp; frontend, backend, and data included. 
+              This is a crucial and distinguishing feature allowing dapps to run 100% on-chain inheriting the security and decentralization of blockchain without sacrificing speed or affordability. 
+              This is possible because nodes of the IC can securely serve HTTP requests and by leveraging the reverse gas model.
               </p>
             </div>
           </div>
@@ -66,13 +59,7 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>How It Works</h2>
-            <p>
-              For a the IC to host fully-on chain dapps and <Link href="https://wiki.internetcomputer.org/wiki/Web_Serving">
-                serve web content
-              </Link>, it means the following:
-            </p>
-            <h3>Enabling true web3</h3>
+            <h2>Enabling true web3</h2>
             <p>
             Today, most dapps built on other blockchains rely on centralized cloud providers (e.g. AWS, GCP) to 
             host their frontend, amongst other parts, which introduces a single point of failure. 
@@ -84,24 +71,24 @@ function FeaturePage() {
             applications running fully decentralized, which includes smart contract logic, on-chain data 
             storage and serving frontend to the user's browser.
             <br />
-            <br />
+
             Hosting dapps 100% on-chain provides the additional benefit of letting DAOs launched on the 
             Internet Computer to completely control these applications with on-chain governance and 
             not only the backend logic. This lets users be fully in control of these dapps realizing 
             complete decentralization and democratization of web applications.
             </p>
 
-            <h3>Cheap Storage</h3>
+            <h2>Cheap Storage</h2>
             <p>
             Unlike most blockchains, the efficiency and costs of the Internet Computer approaches the traditional IT 
             stack so its is economically feasible to host dapps with lots of data and content.
             <br />
-            <br />
+          
             For comparison: <i>it costs hundreds of millions of dollars to store a GB of data on Ethereum.  
             It only costs a few dollars on the IC.</i>
             </p>
 
-            <h3>Smart contracts that can process HTTP requests</h3>
+            <h2>Smart contracts that can process HTTP requests</h2>
             <p>
             Blockchains differ in their processing of computation from regular web servers, which makes serving web a difficult task. 
             To overcome this, the Internet Computer introduces something called boundary nodes. 
@@ -118,7 +105,7 @@ function FeaturePage() {
             IC dapps have he "Reverse Gas model" where users can interact with a dapp without having to pay in 
             tokens since the canister can store a certain amount of cycles and pay for the user.
             <br />
-            <br />
+            
             For example, <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">
             the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
             </p>
