@@ -45,13 +45,13 @@ function FeaturePage() {
           {/* 
             delete this div if image is not needed 
           */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
+          {/* <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
               src="/img/features/ic-generic.png"
               alt=""
               className="w-full block"
             />
-          </div>
+          </div> */}
 
           <div
             className="
@@ -63,9 +63,8 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>How It Works</h2>
+            <h2>Energy consumption</h2>
        
-            <h3>Energy consumption</h3>
             <p>
             The following is an approximation of mainnet power consumption. The average power 
             consumption of an Internet Computer node is 700 W. If we assume a power usage 

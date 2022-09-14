@@ -30,7 +30,7 @@ function FeaturePage() {
               <br />
               While other blockchains take weeks or months to upgrade (sometimes called hard fork) 
               and typically require substantial manual work and coordination to do so, the IC 
-              upgrades itself on a weekly basis (https://dashboard.internetcomputer.org/releases). 
+              upgrades itself on a weekly basis. 
               <br />
               <br />
               The IC's ability to upgrade and iterate quickly is a comparative "superpower."
@@ -83,7 +83,7 @@ function FeaturePage() {
             <h3>Proposals</h3>
             <p>
               Users submit NNS proposals to the NNS to update the code of the IC: {" "}
-              <Link href="https://dashboard.internetcomputer.org/releasesi">
+              <Link href="https://dashboard.internetcomputer.org/releases">
                 IC Releases
               </Link>{" "}
               . Consequently, the IC can update itself many times faster than other blockchains.

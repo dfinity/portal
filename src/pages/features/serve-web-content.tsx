@@ -119,7 +119,7 @@ function FeaturePage() {
             tokens since the canister can store a certain amount of cycles and pay for the user.
             <br />
             <br />
-            For example, <Link href="https://wiki.internetcomputer.org/wiki/Web_Serving">
+            For example, <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">
             the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
             </p>
 

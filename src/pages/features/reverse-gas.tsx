@@ -68,9 +68,8 @@ function FeaturePage() {
             on computation.
             <br />
             <br />
-            As an example, the Motoko Playground dapp is hosted and executed entirely 
-            on-chain and it does not require visitors to pay for the computation: 
-            https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/. 
+            As an example, the  <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">Motoko Playground</Link> dapp is hosted and executed entirely 
+            on-chain and it does not require visitors to pay for the computation. 
             The Internet Identity app is also a free to use application running on the IC.
             </p>
 
