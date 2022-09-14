@@ -10,7 +10,7 @@ function FeaturePage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Sovereign Network"
+      title="Multi-chain transactions"
       // fill in meta description
       description=""
     >
@@ -20,11 +20,13 @@ function FeaturePage() {
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                Sovereign Network
+                HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer blockchain network is hosted by special node machines, which are hardware devices that are dedicated to the task 
-              (thus creating a sovereign network). This is conceptually similar to how the internet is hosted by network routing devices.
+              On the Internet Computer blockchain, canister smart contracts can make HTTP outcalls to specified URLs, 
+              either to directly obtain off-chain data, or to interact with off-chain systems, such as Web 2.0 services or 
+              enterprise IT infrastructure. The results of these calls are processed and agreed by consensus, preventing nondeterminism. 
+              This avoids the need for trusted oracles and bridges.
               </p>
             </div>
           </div>
@@ -60,36 +62,44 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            Traditional blockchains are different. Their network nodes are created using simple software, which interacts 
-            with other nodes and maintains a copy of blockchain state. Today, software programs are very easy to spin up on cloud 
-            computing "instances" using services such as Amazon Web Services. A consequence has been that the majority of their 
-            nodes are typically cloud computing instances. Because these can be spun up in an instant the investment required to 
-            create or destroy a node is minimal (notwithstanding any cryptocurrency stake that might be required to add a node to the network).
+            Often, smart contract software needs to obtain real-world data, which originates from outside the secure and unstoppable on-chain universe that the blockchain that hosts them provides. 
+            Smart contracts may also need to interact with off-chain systems that are outside this universe. 
+            Because of the way blockchains work, historically this has presented major hurdles to blockchain developers.
             </p>
-            <h3>No reliance on cloud infrastructure</h3>
+            <h3>A blockchain that has obtains real-world data without oracles</h3>
             <p>
-            A grave risk with these kinds of architectures is that control over the blockchain network is handed to a small number of giant corporations. 
-            These corporations might decide they must switch off the nodes, owing to changes in regulation, or competitive threats, or malicious 
-            insiders might use their access to the physical cloud infrastructure to steal keys, or otherwise disrupt the networks.
+            Often, smart contract software needs to obtain real-world data, which originates from outside the secure and 
+            unstoppable on-chain universe that the blockchain that hosts them provides. Smart contracts may also need to 
+            interact with off-chain systems that are outside this universe. Because of the way blockchains work, 
+            historically this has presented major hurdles to blockchain developers.
             </p>
 
             <p>
-            These issues do not exist with the Internet Computer, because it runs on a sovereign network.
+            For example, to obtain off-chain data, smart contracts have traditionally interacted with centrally-operated oracle 
+            services, such as Chainlink. These services are provided by trusted intermediaries, such as corporations, which perform 
+            the role of copying off-chain data onto the blockchain where it can be accessed by smart contracts. The problem is 
+            that these services must a) be trusted to be honest, and not get hacked, or otherwise become faulty, and b) be paid. 
+            Moreover, they cannot help when smart contracts need to interact with off-chain services, for example by calling into 
+            web-based APIs. To solve for these needs, the Internet Computer provides an "HTTPS outcall" feature.
+            </p>
+
+            <h3>HTTPS Outcalls</h3>
+            <p>
+            HTTPS outcalls allow canister smart contracts hosted on the Internet Computer to request a URL, for example to download a time series 
+            recording the recent prices of an asset published by a centralized crypto exchange such as Coinbase Pro. 
+            When this occurs, every node in the subnet blockchain hosting the smart contract requests the URL separately. 
+            Each node then locally passes the result they obtained to a special function implemented by the requesting 
+            canister smart contract using a query call, which pre-processes the result with the aim of making it consistent
+            with the results the other nodes have obtained and pre-processed (in our Coinbase example, since each node would 
+            request the time series at a slightly different moment, the results could be different).            
             </p>
 
             <p>
-            Every node in the Internet Computer network is a dedicated physical device, called a node machine, which is run by an independent node 
-            provider, typically from rack space in an independent data center. The nodes cannot therefore be switched off or tampered with by a 
-            small number of corporate cloud computing service providers.
+            If the pre-processed results obtained by query calls to the canister smart contract are sufficiently consistent across 
+            all the nodes, the result is agreed by consensus, and provided back to the smart contract that requested the URL so 
+            that it can continue trustlessly processing the original smart contract call (TX).         
             </p>
 
-
-            <p>
-            While this is an important advantage, there are other technical reasons that special node machines are required to participate in hosting 
-            the Internet Computer network. The node machines are built to standardized public hardware specifications. This means that when the network 
-            is under load, they do not fall behind other nodes inside the same subnet blockchain, which statistical deviation the network's decentralized 
-            governance DAO might notice, and sanction them for.
-            </p>
 
             <p className="mb-3 mt-6">
               <Link
@@ -105,10 +115,11 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
+            Build on the IC
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
+          Using the power of chain key cryptography, and HTTPS Outcalls, smart contracts on the IC can interact with Web2 services and Web3 blockchains.
+
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
@@ -129,9 +140,9 @@ function FeaturePage() {
               href="/samples"
             />
             <CardWithDescription
-              title="'Sovereign network' article on the IC Wiki"
-              description="Learn about how IC is a sovereign network."
-              href="https://wiki.internetcomputer.org/wiki/Sovereign_network"
+              title="'HTTPS outcalls' article on the IC Wiki"
+              description="Learn about how IC's smart contracts can interact with Web2 APIs and Web3 blockchains."
+              href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
             />
           </div>
         </section>

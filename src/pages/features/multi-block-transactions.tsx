@@ -23,10 +23,8 @@ function FeaturePage() {
                 Multi-block TXs
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              The Internet Computer blockchain can stretch the execution of a single transaction across multiple blocks. 
+              This allows very-long running smart contract computations to be initiated. 
               </p>
             </div>
           </div>
@@ -62,31 +60,25 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
-            </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+           
+            The IC's muli-block transaction capabilitis is rare. Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
+            In practice this means that when a smart contract function is invoked by a transaction, it must complete execution within the per-block 
+            "gas limit" (gas is the equivalent of cycles on the Internet Computer).
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            The Internet Computer is designed to allow any online system or service to be built using smart contracts called canisters, to support a 
+            "blockchain singularity." This means that when a transaction invokes a smart contract, the computation involved must be able to run for a 
+            very long time if required, and consume as many computational cycles as needed.
+            </p>
+
+            <p>
+            This means that on the Internet Computer, a smart contract is capable of performing complex AI calculations, or applying a graphical 
+            filter to an image, say — although there is still a "max cycles limit," it's just very high.
+            </p>
+
+            <p>
+            Multi-block TXs are made possible by a broader aspect of the Internet Computer's design, called Deterministic Time Slicing (DTS).
             </p>
 
             <p className="mb-3 mt-6">
@@ -103,36 +95,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'Multi-block TXs' article on the IC Wiki"
+              description="Learn about how IC can stretch the execution of a single transaction across multiple blocks."
+              href="https://wiki.internetcomputer.org/wiki/Multi-block_TXs"
             />
           </div>
         </section>
