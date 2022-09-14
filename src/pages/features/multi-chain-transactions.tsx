@@ -109,12 +109,12 @@ function FeaturePage() {
 
 
             <p className="mb-3 mt-6">
-              <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+            <Link
+                href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                See examples of dapps 100% on-chain
               </Link>
             </p>
           </div>

@@ -108,14 +108,13 @@ function FeaturePage() {
             For example, <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">
             the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
             </p>
-
             <p className="mb-3 mt-6">
-              <Link
-                href="/docs/current/developer-docs/quickstart/hello10mins"
+            <Link
+                href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                See examples of dapps 100% on-chain
               </Link>
             </p>
           </div>
