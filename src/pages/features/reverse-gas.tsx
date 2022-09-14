@@ -21,7 +21,7 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Reverse Gas</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              On the Internet Computer, a browser is all you need to interact with smart contracts. 
+              On the Internet Computer (IC), a browser is all you need to interact with smart contracts. 
               You do not have to overcome any hurdles such as creating a wallet, hold tokens, or pay 
               expensive gas fees. This is in contrast to other blockchains, where users need to acquire tokens to do anything.
               </p>
