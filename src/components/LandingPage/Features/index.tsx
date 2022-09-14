@@ -60,7 +60,7 @@ const cardsContent = [
   {
     title: "100% sovereign",
     body: 'Internet Computer nodes are dedicated "node machines" (no cloud instances)',
-    link: "https://wiki.internetcomputer.org/wiki/Sovereign_network",
+    link: "features/sovereign-network",
   },
   {
     title: "Bitcoin liquidity",

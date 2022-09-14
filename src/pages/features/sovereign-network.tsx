@@ -23,10 +23,8 @@ function FeaturePage() {
                 Sovereign Network
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam
-                ipsum ipsa praesentium dolore. Nostrum corrupti veniam totam
-                labore, excepturi hic similique porro corporis rerum nihil modi
-                perferendis tempora, tenetur doloremque!
+              The Internet Computer blockchain network is hosted by special node machines, which are hardware devices that are dedicated to the task 
+              (thus creating a sovereign network). This is conceptually similar to how the internet is hosted by network routing devices.
               </p>
             </div>
           </div>
@@ -62,31 +60,35 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Voluptate, incidunt! Minus vel impedit dolorem explicabo cum culpa
-              qui mollitia? Hic{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key">
-                ECDSA API
-              </Link>{" "}
-              quod itaque possimus rem. Dolorum saepe veritatis nam voluptates?
+            Traditional blockchains are different. Their network nodes are created using simple software, which interacts 
+            with other nodes and maintains a copy of blockchain state. Today, software programs are very easy to spin up on cloud 
+            computing "instances" using services such as Amazon Web Services. A consequence has been that the majority of their 
+            nodes are typically cloud computing instances. Because these can be spun up in an instant the investment required to 
+            create or destroy a node is minimal (notwithstanding any cryptocurrency stake that might be required to add a node to the network).
             </p>
-            <h3>Lorem ipsum dolor sit amet!</h3>
+            <h3>No reliance on cloud infrastructure</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam vero
-              ut totam ad,{" "}
-              <Link href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api">
-                Bitcoin API
-              </Link>{" "}
-              , consequatur, sequi doloribus error nulla odit perferendis culpa
-              at in quos exercitationem possimus quaerat sit fugiat. current
-              UTXO set.
+            A grave risk with these kinds of architectures is that control over the blockchain network is handed to a small number of giant corporations. 
+            These corporations might decide they must switch off the nodes, owing to changes in regulation, or competitive threats, or malicious 
+            insiders might use their access to the physical cloud infrastructure to steal keys, or otherwise disrupt the networks.
             </p>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ex
-              eos libero unde, maxime minus quae natus iste corporis placeat
-              laboriosam inventore provident veritatis magni soluta nostrum
-              voluptas officiis quia!
+            These issues do not exist with the Internet Computer, because it runs on a sovereign network.
+            </p>
+
+            <p>
+            Every node in the Internet Computer network is a dedicated physical device, called a node machine, which is run by an independent node 
+            provider, typically from rack space in an independent data center. The nodes cannot therefore be switched off or tampered with by a 
+            small number of corporate cloud computing service providers.
+            </p>
+
+
+            <p>
+            While this is an important advantage, there are other technical reasons that special node machines are required to participate in hosting 
+            the Internet Computer network. The node machines are built to standardized public hardware specifications. This means that when the network 
+            is under load, they do not fall behind other nodes inside the same subnet blockchain, which statistical deviation the network's decentralized 
+            governance DAO might notice, and sanction them for.
             </p>
 
             <p className="mb-3 mt-6">
@@ -103,36 +105,33 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with Lorem Ipsum
+            Build fast dapps. Quickly.
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos nobis consequuntur aspernatur quam pariatur animi quod.
-            Ullam omnis ducimus, aliquam dignissimos earum dolorum aspernatur
-            aliquid atque exercitationem ipsa nobis. Nemo.
+            Get started today.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="BTC Integration Documentation"
-              description="Start building and testing Bitcoin functionality."
-              href="/docs/current/developer-docs/integrations/bitcoin"
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription
-              title="Threshold ECDSA Documentation"
-              description="Learn about threshold ECDSA signing and its functions."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa"
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Deploy your first Bitcoin dapp and use threshold ECDSA signatures."
+              description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into how Bitcoin integration works on the Internet Computer."
-              href="https://wiki.internetcomputer.org/wiki/Bitcoin_integration"
+              title="'Sovereign network' article on the IC Wiki"
+              description="Learn about how IC is a sovereign network."
+              href="https://wiki.internetcomputer.org/wiki/Sovereign_network"
             />
           </div>
         </section>
