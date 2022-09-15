@@ -459,10 +459,10 @@ const sidebars = {
       label: "SNS",
       link:{
         type: "doc",
-        id: "tokenomics/sns/intro"
+        id: "tokenomics/sns/sns-intro-tokens"
       },
       items: [
-        "tokenomics/sns/intro",
+        "tokenomics/sns/sns-intro-tokens",
         "tokenomics/sns/predeployment-considerations",
         "tokenomics/sns/tokenomics",
         "tokenomics/sns/community-fund",
