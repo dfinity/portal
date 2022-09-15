@@ -167,6 +167,10 @@ const config = {
                 href: "/videos",
               },
               {
+                label: "HTTPS Outcalls",
+                href: "/https-outcalls",
+              },
+              {
                 label: "Whitepaper",
                 href: "https://internetcomputer.org/whitepaper.pdf",
               },

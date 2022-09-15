@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-bitcoin-integration.jpeg";
+import shareImage from "@site/static/img/shareImages/share-https-outcalls.jpeg";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
@@ -103,17 +103,17 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Feature Documentation"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="/docs/current/samples/http-requests-exchange-rates"
+              href="/"
             />
             <CardWithDescription
-              title="Medium Article"
+              title="Blog"
               description="Read all about HTTPS outcalls and why they are  important for blockchains."
               href="/"
             />
             <CardWithDescription
               title="Sample Code"
-              description="Learn about HTTPS Outcalls from community samples."
-              href="/samples"
+              description="Build a dapp with canister outgoing HTTPS outcalls."
+              href="/docs/current/samples/http-requests-exchange-rates  "
             />
             <CardWithDescription
               title="IC Wiki"
