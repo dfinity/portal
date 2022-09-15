@@ -12,7 +12,20 @@ const ItemCard: React.FC<{ item: RoadmapItem; deployed: boolean }> = ({
   return (
     <div className="border-black-20 border-solid border rounded-xl px-6 py-4 md:py-8 pb-6 flex flex-col gap-2 md:gap-3">
       <h4 className="tw-heading-6 md:tw-heading-5 mb-0 relative flex items-start gap-4">
-        <span className="flex-1">{item.name}</span>
+        <span className="flex-1">
+          <span className="mr-3"> {item.name}</span>
+          {item.in_beta && (
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(108.55deg, #3B00B9 0%, #18D0B5 149.76%)",
+              }}
+              className="inline-flex relative -top-1 text-white rounded-full font-circular tw-caption font-bold px-2 py-1"
+            >
+              Beta
+            </span>
+          )}
+        </span>
         {item.is_community && (
           <CommunityIcon className="text-infinite mt-1"></CommunityIcon>
         )}

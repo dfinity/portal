@@ -11,11 +11,11 @@ import {
   NavbarSecondaryMenuFiller,
   ThemeClassNames,
   useWindowSize,
-  useNavbarMobileSidebar,
 } from "@docusaurus/theme-common";
 import {
   useAnnouncementBar,
   useScrollPosition,
+  useNavbarMobileSidebar,
 } from "@docusaurus/theme-common/internal";
 import Logo from "@theme/Logo";
 import IconArrow from "@theme/Icon/Arrow";

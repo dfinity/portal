@@ -30,6 +30,7 @@ function getItems(baseDir) {
           url: meta.data.links[title],
         })),
       is_community: meta.data.is_community,
+      in_beta: meta.data.in_beta,
       eta: meta.data.eta,
     };
   });
