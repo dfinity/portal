@@ -83,7 +83,7 @@ function FeaturePage() {
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/integrations/bitcoin/"
+                href="/developers"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
