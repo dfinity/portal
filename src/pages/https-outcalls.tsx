@@ -113,7 +113,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Sample Code"
               description="Build a dapp with canister outgoing HTTPS outcalls."
-              href="/docs/current/samples/http-requests-exchange-rates  "
+              href="/docs/current/samples/http-requests-exchange-rates"
             />
             <CardWithDescription
               title="IC Wiki"
