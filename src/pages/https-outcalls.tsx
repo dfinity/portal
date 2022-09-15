@@ -100,7 +100,7 @@ function HTTPSOutcalls() {
             integrate with other blockchains, and more.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            <CardWithDescription
+            {/* <CardWithDescription
               title="Feature Documentation"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
               href="/"
@@ -109,6 +109,16 @@ function HTTPSOutcalls() {
               title="Blog"
               description="Read all about HTTPS outcalls and why they are  important for blockchains."
               href="/"
+            /> */}
+             <CardWithDescription
+              title="Deploy a 'Hello World' Dapp in 10 Minutes"
+              description="Get started with your first IC dapp"
+              href="/docs/current/developer-docs/quickstart/hello10mins"
+            />
+            <CardWithDescription
+              title="Build dapps with the language of your choice"
+              description="Install SDKs to build dapps."
+              href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
               title="Sample Code"
