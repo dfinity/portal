@@ -4,9 +4,12 @@ hide_table_of_contents: true
 
 # Tokenomics and Governance
 
-Starting to work with decentralized applications involves opening our minds to new ways of interacting, and controlling, the systems that we build upon. This category guides you through some of the processes and mental shifts that help to make the most of dapps and the Internet Computer. 
+When building this developer documentation we tried to include the natural guides; how to [get started](../developer-docs/quickstart/) with canister smart contract development, how to [make progress](../developer-docs/build/), how to [deploy](../developer-docs/deploy/), update and manage apps. There were some remarks about cycles and their use in computation and about [integrating various features](../developer-docs/integrations/) of the IC. Yet, somehow it still felt like something was lacking in the documentation. Building on the IC is about more than just the code. 
+
+Building decentralized applications inherently requires us to open our minds to new ways of thinking and coding, but also of interacting, controlling, funding and planning. This category of documentation aims to capture the more *entrepreneurial* considerations that will likely arise in a move towards a more open internet. This is done both via noting considerations that should be made by developers and builders, but also by end users of apps, as, after all, the line between these types of people becomes ever more blurry.
 
 ## Tokens
+
 
 ## Governance
 

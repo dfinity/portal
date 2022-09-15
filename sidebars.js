@@ -466,7 +466,7 @@ const sidebars = {
         "tokenomics/sns/predeployment-considerations",
         "tokenomics/sns/tokenomics",
         "tokenomics/sns/community-fund",
-        "tokenomics/sns/rewards"
+        "tokenomics/sns/rewards",
       ],
     },
     {
