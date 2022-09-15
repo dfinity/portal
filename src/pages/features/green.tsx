@@ -29,7 +29,7 @@ function FeaturePage() {
                 * A single Google search is <i>four times more energy intensive</i> than a transaction on the IC.
               <br />
               <br />
-                * A single Ethereum transaction is <i>2 million of times more energy intensive</i> than an IC transaction.
+                * A single Ethereum transaction is almost <i>500 times more energy intensive</i> than an IC transaction.
               </p>
             </div>
           </div>
@@ -73,10 +73,10 @@ function FeaturePage() {
             <ul>
               <li><strong>One Internet Computer transaction: 261 J</strong></li>
               <li>One Google search: 1'080 J</li>
-              <li>One Solana transaction: 1'837 J[</li>
+              <li>One Solana transaction: 1'837 J</li>
               <li>One Ethereum 2 transaction: 126'000 J</li>
-              <li>One Cardano transaction: 1'972'440 J[</li>
-              <li>One Ethereum transaction: 692'820'000 J</li> 
+              <li>One Cardano transaction: 1'972'440 J</li>
+              <li>One Ethereum (pre-merge) transaction: 692'820'000 J</li> 
               <li>One Bitcoin transaction: 6'995'592'000 J</li>
             </ul>
 
