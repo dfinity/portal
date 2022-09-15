@@ -201,7 +201,7 @@ const sidebars = {
       link: {
         type: 'doc', id: 'developer-docs/integrations/bitcoin/index'
       },
-      // items: [
+      items: [
       //   'developer-docs/integrations/index',
       //   {
       //     type: 'category',
