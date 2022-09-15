@@ -16,9 +16,10 @@
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
-    "@docusaurus/core": "2.0.0-beta.21",
-    "@docusaurus/preset-classic": "2.0.0-beta.21",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.21",
+    "@docusaurus/core": "^2.1.0",
+    "@docusaurus/plugin-google-gtag": "^2.1.0",
+    "@docusaurus/preset-classic": "^2.1.0",
+    "@docusaurus/theme-live-codeblock": "^2.1.0",
     "@mdx-js/react": "^1.6.22",
     "autoprefixer": "^10.4.7",
     "chart.js": "^3.8.0",
@@ -58,7 +59,7 @@
     "webpack": "^5.72.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.21",
+    "@docusaurus/module-type-aliases": "^2.1.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.3",
     "@tsconfig/docusaurus": "^1.0.4",

@@ -94,7 +94,7 @@ function ShowcasePage(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-2"
                 variants={transitions.item}
               >
-                Explore the Internet Computer Ecosystem
+                Stuff built on the Internet Computer
               </motion.h1>
             </div>
           </section>
@@ -133,9 +133,10 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                All of these dapps are using the novel Internet Computer
-                blockchain. Use the following projects at your own risk. As
-                always, do your own research.
+                Here we list dapps and web3 services that are built on the 
+                Internet Computer blockchain, which is a World Computer. Many services
+                run fully on-chain. You use decentralized services at your own risk.
+                Do your own research, especially where you must deposit tokens.
               </p>
             </motion.div>
           </section>
