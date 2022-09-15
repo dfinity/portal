@@ -454,24 +454,21 @@ const sidebars = {
   ],
   tokenomics: [
     "tokenomics/index",
-    // {
-    //   type: "category",
-    //   label: "SNS",
-    //   link:{
-    //     type: "doc",
-    //     id: "tokenomics/sns/intro"
-    //   },
-    //   items: [
-    //     "tokenomics/sns/intro",
-    //     "tokenomics/sns/rewards",
-    //     "tokenomics/sns/community-fund",
-    //     "tokenomics/sns/not-blind/predeployment-considerations",
-    //     "tokenomics/sns/not-blind/tokenomics",
-    //     "tokenomics/sns/not-blind/product",
-    //     "tokenomics/sns/not-blind/business",
-    //     "tokenomics/sns/not-blind/hype"
-    //   ],
-    // },
+    {
+      type: "category",
+      label: "SNS",
+      link:{
+        type: "doc",
+        id: "tokenomics/sns/intro"
+      },
+      items: [
+        "tokenomics/sns/intro",
+        "tokenomics/sns/predeployment-considerations",
+        "tokenomics/sns/tokenomics",
+        "tokenomics/sns/community-fund",
+        "tokenomics/sns/rewards"
+      ],
+    },
     {
       type: "category",
       label: "Identity & Authentication",
