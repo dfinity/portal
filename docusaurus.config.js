@@ -159,6 +159,10 @@ const config = {
                 href: "/how-it-works",
               },
               {
+                label: "Internet Computer infographic",
+                href: "/icig.pdf",
+              },
+              {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
               },
