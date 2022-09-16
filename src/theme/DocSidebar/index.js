@@ -66,15 +66,15 @@ function HideableSidebarButton({ onClick }) {
 function getPrimaryColor(section) {
   switch (section) {
     case "developer-docs":
-      return "#ED1E79";
+      return "#29abe2";
     case "concepts":
-      return "#F15A24";
+      return "#522785";
     case "references":
-      return "#29ABE2";
+      return "#ed1e79";
     case "tokenomics":
-      return "#FBB03B";
+      return "#f15a24";
     case "samples":
-      return "#3B00B9";
+      return "#fbb03b";
     default:
       return "#29ABE2";
   }
