@@ -456,7 +456,19 @@ const sidebars = {
     "tokenomics/index",
     {
       type: "category",
-      label: "SNS",
+      label: "Network Nervous System",
+      link: {
+        type: "doc",
+        id: "tokenomics/nns/nns-intro",
+      },
+      items: [
+        "tokenomics/nns/nns-intro",
+        "tokenomics/nns/nns-staking-voting-rewards"
+      ],
+    },
+    {
+      type: "category",
+      label: "Service Nervous System",
       link:{
         type: "doc",
         id: "tokenomics/sns/sns-intro-tokens"
