@@ -13,7 +13,7 @@
 
 ## Recap on NNS voting rewards
 
-The [NNS](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a#:~:text=Network%20Nervous%20System%20overview,how%20to%20update%20this%20information.) is the DAO of the IC. Within the NNS, voting rewards are paid out on a regular basis (currently daily), based on an overall reward pool for that time period. Each neuron receives a pro-rata amount of that pool according to the voting power with which the neuron voted and in how many proposals the neuron participated. More precisely, this works as follows:
+The [NNS](../nns/nns-intro.md) is the DAO of the IC. Within the NNS, voting rewards are paid out on a regular basis (currently daily), based on an overall reward pool for that time period. Each neuron receives a pro-rata amount of that pool according to the voting power with which the neuron voted and in how many proposals the neuron participated. More precisely, this works as follows:
 
 * Determination of the total reward pool
   * For a time t between G (genesis time) and G + 8y the annualized reward as a percentage of total supply is R(t) = 5% + 5% [(G + 8y – t)/8y]²
