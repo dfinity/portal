@@ -14,6 +14,7 @@ Welcome to our DAO docs. If there's anything in particular you'd like to see her
 The NNS is the open tokenized DAO that controls the IC. As we move to more and more decentralization, it is crucial to learn more about the IC components that facilitate community governance. The NNS allows users to participate the governance of the IC by staking tokens and voting (or delegating votes - liquid democracy ftw) and to earn rewards over time. 
 - A more detailed introduction to the NNS can be [found here](./nns/nns-intro.md)
 - Proposals, voting and rewards are [explained here](./nns/nns-staking-voting-rewards.md) can be explored in the [Governance section](https://dashboard.internetcomputer.org/governance) on the dashboard
+- You can read about the community fund [here](./nns/commnuity-fund.md)
 - Start participating in the NNS app by checking out the [NNS Intro](token-holders/nns-app-quickstart.md)
 
 ## Service Nervous System (SNS)
