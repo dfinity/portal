@@ -23,7 +23,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
 
 3. Initialize the git submodules
 
-	git submodule update --init --recursive
+        git submodule update --init --recursive
 
 4. Deploy the example to the Internet Computer. We're initializing the canister with `variant { Testnet }`, so that the canister connects to the Bitcoin testnet.
 

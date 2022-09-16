@@ -5,4 +5,4 @@ It serves as a Rust-based low-level backend for the DFINITY Canister Software De
 The ic-agent is a Rust crate that can connect directly to the Internet Computer through the Internet Computer protocol (ICP).
 The agent is designed to be compatible with multiple versions of the replica API, and to expose both low-level APIs for communicating with Internet Computer protocol components like the replica and to provide higher-level APIs for communicating with software applications deployed as canisters.
 
-You can find a bunch of examples that use the `ic-agent` crate [here](https://github.com/dfinity/examples/tree/master/rust).
+One example of a project that uses the `ic-agent` is dfx, which you can find [here](https://github.com/dfinity/sdk).

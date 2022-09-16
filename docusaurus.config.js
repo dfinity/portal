@@ -18,8 +18,8 @@ const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const isDeployPreview =
@@ -51,15 +51,22 @@ const config = {
     howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
+    [
+      "@docusaurus/plugin-google-gtag",
+      {
+        trackingID: "G-P6TH612SSX",
+        anonymizeIP: true,
+      },
+    ],
   ],
 
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
     },
   ],
 
@@ -152,17 +159,25 @@ const config = {
                 href: "/how-it-works",
               },
               {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
+              },
+              {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
-              }, 
+              },
               {
-                label: "Media",
-                href: "/media",
+                label: "Videos",
+                href: "/videos",
+              },
+              {
+                label: "HTTPS Outcalls",
+                href: "/https-outcalls",
               },
               {
                 label: "Whitepaper",
                 href: "https://internetcomputer.org/whitepaper.pdf",
-              },          
+              },
               {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
@@ -198,6 +213,7 @@ const config = {
                 docId: "developer-docs/quickstart/hello10mins",
               },
               { label: "Sample Code", to: "/samples" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
