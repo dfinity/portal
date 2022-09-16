@@ -3,7 +3,7 @@ title: Direct Bitcoin Integration
 links:
   Forum Link: https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147
   Proposal: https://dashboard.internetcomputer.org/proposal/20586
-eta: 2022, beta released in August 2022
+eta: 2022
 is_community: false
 in_beta: true
 ---
