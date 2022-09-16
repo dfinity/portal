@@ -1,4 +1,4 @@
-# Technology Overview — How Canister HTTP Outcalls Work
+# Technology Overview — How Canister HTTPS Outcalls Work
 
 On this page we provide details on how canister HTTP requests work and important aspects to consider when using the API. We also want to note that there are some limitations compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature.
 
@@ -122,7 +122,7 @@ The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle t
 
 :::tip Pro tip
 
-Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses to go through consensus.
+Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses from passing through consensus.
 
 :::
 
@@ -142,12 +142,12 @@ We recommend to go with the first approach whenever possible as it has multiple 
 There are a number of error cases that can happen when using this feature. The most important ones are listed next.
 * *SysFatal - Url needs to specify https scheme:* The feature currently only allows for HTTPS connections and HTTP leads to an error.
 * *SysFatal - Timeout expired:* Requests are timed out if not fulfilled within the timeout period. One important instance when this happens is when there are not sufficiently many equal responses to achieve consensus.
-* *SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):* This error indicates that a TCP connection could not have been established.
+* *SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):* This error indicates that a TCP connection could not be established with the other server.
 * *CanisterReject - http_request request sent with 0 cycles, but ... cycles are required:* At least the required amount of cycles need to be sent with the request in order to it getting fulfilled by the subnet.
 * *CanisterReject - max_response_bytes expected to be in the range [0..2097152], got ...:* This error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
 * *SysFatal - Transformed http response exceeds limit: 2045952:* This error indicates that the limit for the transformed response size was hit. This is currently a hard limit of the HTTPS outcalls functionality.
 
-Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the errors. We list the issues we think are the most prominent when starting with this feature.
+Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the following errors. We list the issues we think are the most prominent when starting with this feature.
 * If a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets. Problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
 * Receiving a timeout: If the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an IC block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
 * Requests consume too many cycles: Canister HTTPS outcalls are not a cheap feature to use in terms of cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_size` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
