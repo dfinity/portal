@@ -12,12 +12,12 @@ Welcome to our DAO docs. If there's anything in particular you'd like to see her
 
 ## Network Nervous System (NNS)
 The NNS is the open tokenized DAO that controls the IC. As we move to more and more decentralization, it is crucial to learn more about the IC components that facilitate community governance. The NNS allows users to participate the governance of the IC by staking tokens and voting (or delegating votes - liquid democracy ftw) and to earn rewards over time. 
-- A more detailed introduction to the NNS can be [found here](./nns/nns-intro.md)
+- A more detailed introduction to the NNS can be [found here](./nns/nns-intro.md).
 - Proposals, voting and rewards are [explained here](./nns/nns-staking-voting-rewards.md) can be explored in the [Governance section](https://dashboard.internetcomputer.org/governance) on the dashboard.
 - Start participating in the NNS app by checking out the [NNS Intro](token-holders/nns-app-quickstart.md).
 
 ## Service Nervous System (SNS)
-As the NNS is to the IC, an SNS is to services running on the IC. If you are a developer or founder who would like to tokenized and decentralize the governance of you dapp, this is the place to start. Governance of a service or dapp can operate in a decentralized manner by getting an SNS. 
+As the NNS is to the IC, an SNS is to services running on the IC. If you are a developer or founder who would like to tokenize and decentralize the governance of your dapp, this is the place to start. Governance of a service or dapp can operate in a decentralized manner by getting an SNS. 
 - [Dive into the SNS and DAOs](./sns/sns-intro-tokens.md)
 - See the [tokenomics of a DAO](./sns/tokenomics.md)
 - Think about the numerous [considerations](./sns/predeployment-considerations.md) that should be made if you plan to get an SNS
