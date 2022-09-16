@@ -154,7 +154,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-As (almost) every feature of the IC, the canister HTTP request feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the pre-request fixed cost and the overhead of HTTP requests, e.g., because of headers, it is advantageous to make fewer larger requests to retrieve the same information than with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
+Like most features of the IC, the canister HTTP outcalls feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the pre-request fixed cost and the overhead of HTTP requests, e.g., because of headers, it is advantageous to make fewer larger requests to retrieve the same information than with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
 The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model.
 
 ## Community Contributions
