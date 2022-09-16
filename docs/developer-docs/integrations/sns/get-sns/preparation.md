@@ -1,7 +1,7 @@
 # Technical preparations for getting an SNS
 
 After some 
-[non-technical preparations](../../../../tokenomics/sns/not-blind/predeployment-considerations.md)
+[non-technical preparations](../../../../tokenomics/sns/predeployment-considerations.md)
 that define the goals for the SNS, in a next step you can 
 choose the initial parameters that the SNS should be set up with, 
 such as who should get how many SNS tokens in the beginning.

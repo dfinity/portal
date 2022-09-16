@@ -43,7 +43,7 @@ may want to spend some time defining non-technical goals of the SNS
 and the dapp that will be controlled by it.
 To provide some tips on what considerations you should not forget,
 we list a few of them on
-[this page](../../../../tokenomics/sns/not-blind/predeployment-considerations.md).
+[this page](../../../../tokenomics/sns/predeployment-considerations.md).
 
 ### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
