@@ -40,7 +40,7 @@ const cardsContent = [
   {
     title: "HTTPS outcalls",
     body: "Smart contracts can connect to outside world through http via consensus",
-    link: "/features/https-outcalls",
+    link: "/https-outcalls",
   },  
   {
     title: "Breakthrough speed",

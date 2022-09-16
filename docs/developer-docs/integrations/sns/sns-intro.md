@@ -1,4 +1,4 @@
-# SNS
+# Service Nervous System
 
 A Decentralized Autonomous Organization, or DAO for short, is a system that allows
 many parties to jointly control an entity.
@@ -22,7 +22,7 @@ run by many nodes that are owned by independent node providers. Therefore,
 we call applications that run on the IC
 _decentralized applications_ or _dapps_.
 
-A second kind of decentralized denotes who is in control of changing a dapp,
+A further kind of decentralization revolves around the *governance* of a dapp, i.e. who is in control of changing a dapp,
 or a smart contract more generally.
 In general, dapps running on the IC or smart contracts on other
 decentralized platforms can still be controlled by a single, central entity
@@ -70,7 +70,7 @@ Apart from this, another motivation for dapp developers to adopt
 a DAO such as the SNS is that it allows to _tokenize the dapp_ which can
 help to get _initial funding_ and _initial adoption_.
 
-For a dapp that has an assigned SNS, everyone can purchase
+For a dapp that has an assigned SNS, anyone can purchase
 SNS tokens and participate in SNS governance.
 Thereby, anyone in the world can contribute to the funding of the project.
 This is fundamental for developers as this allows the SNS to decide to

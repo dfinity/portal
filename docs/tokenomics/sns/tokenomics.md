@@ -12,7 +12,7 @@ Tokenomics covers a wide range of topics, such as
 ### Supply & demand
 We define the supply of a token as the amount which token holders are willing to sell at a given price. Likewise, token demand is the amount of tokens, token buyers are willing to buy for a given price. The following graph depicts the typical relationship between the supply & demand and price for an example good, which in our case could be a token priced in USD. 
 
-![](../../_attachments/graph_supply_demand.png)
+![](../_attachments/graph_supply_demand.png)
 (Image source: epthinktank.eu)
 
 Typically supply increases with increasing prices. For example, if the price of Bitcoin increases, typically more Bitcoin holders will be willing to sell at the higher price on the market. On the other hand, demand typically decreases with increasing prices. The intersection of the two curves determines the so-called equilibrium price, called P<sub>2</sub> in the picture.
@@ -65,6 +65,6 @@ The voting power should be distributed over many, independent entities such that
 
 As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
 
-On this [page](../rewards.md) there is more information on the configuration of voting rewards. 
+On this [page](rewards.md) there is more information on the configuration of voting rewards. 
 
 
