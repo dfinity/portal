@@ -90,7 +90,6 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
           rehypePlugins: [katex],
-          // TODO: Please change this to your repo.
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
@@ -210,7 +209,7 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/quickstart/hello10mins",
+                docId: "developer-docs/ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
@@ -282,13 +281,13 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "tokenomics",
-            label: "Tokenomics",
+            label: "DAOs & Tokenomics",
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "samples",
-            label: "Samples",
+            label: "Sample Code",
           },
 
           {
