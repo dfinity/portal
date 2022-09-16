@@ -4,7 +4,7 @@ On this page we provide details on how canister HTTP requests work and important
 
 ## Technology
 
-The HTTP requests feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations of the canister, without the risk of state divergence between the replicas of the subnet.
+The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations of the canister, without the risk of state divergence between the replicas of the subnet.
 
 ### How an HTTPS Outcall is Processed by the IC
 
@@ -19,9 +19,9 @@ The canister HTTP outcalls feature is implemented as part of the replica and is 
 * IC consensus agrees on a response if at least $2/3$ of the replicas have the same response for the request as input. In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
 * The management canister API provides the response or error back to the calling canister.
 
-Figure goes here
+![HTTPS outcalls high-level architecture](../_attachments/HTTPS_outcalls_HL_architecture.jpg)
 
-The above figure shows a high-level view of how a canister interacts with the feature and the communication of the subnet replicas with external servers.
+The above figure shows a high-level view of how a canister interacts with the feature and the communication patterns of the subnet replicas with external servers.
 
 To summarize, to perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external Web server through the Internet Computer's consensus layer, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are eliminated and the same transformed response is provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
 
@@ -150,7 +150,7 @@ There are a number of error cases that can happen when using this feature. The m
 Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the errors. We list the issues we think are the most prominent when starting with this feature.
 * If a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets. Problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
 * Receiving a timeout: If the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an IC block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
-* Requests consume too many cycles: Canister HTTP requests are not a cheap feature to use in terms of cycles, but if requests with rather small responses frequently cost large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_size` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
+* Requests consume too many cycles: Canister HTTPS outcalls are not a cheap feature to use in terms of cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_size` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
 
 ### Pricing
 
