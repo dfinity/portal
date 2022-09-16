@@ -13,6 +13,7 @@ const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
+const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
@@ -51,13 +52,7 @@ const config = {
     howItWorksCardsPlugin,
     teamInformationPlugin,
     roadmapDataPlugin,
-    [
-      "@docusaurus/plugin-google-gtag",
-      {
-        trackingID: "G-P6TH612SSX",
-        anonymizeIP: true,
-      },
-    ],
+    matomoPlugin,
   ],
 
   stylesheets: [
