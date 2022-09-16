@@ -1,6 +1,7 @@
 # SNS
 
 ## Technical documentation
+Documentation in the developer docs, is, as the name suggests, aimed at developers. 
 
 Here you will find
 * [An intro to SNS](sns-intro.md)
@@ -19,7 +20,7 @@ management info
 * [Cycles usage](managing-sns/cycles-usage.md)
 * [Upgrade SNS](managing-sns/upgradeSNS.md)
 
-## Entrepreneurial documentation
+## DAOs and Tokenomics documentation
 
 In tokenomics you will find
 

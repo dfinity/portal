@@ -202,27 +202,27 @@ const sidebars = {
         type: 'doc', id: 'developer-docs/integrations/bitcoin/index'
       },
       items: [
-        // 'developer-docs/integrations/index',
-        // {
-        //   type: 'category',
-        //   label: 'Service Nervous System (SNS)',
-        //   link: {
-        //     type: "doc",
-        //     id: "developer-docs/integrations/sns/index",
-        //   },
-        //   items: [
-        //     "developer-docs/integrations/sns/sns-intro",
-        //     "developer-docs/integrations/sns/deployment/launch-intro",
-        //     "developer-docs/integrations/sns/deployment/frontend-integration",
-        //     "developer-docs/integrations/sns/deployment/predeployment",
-        //     "developer-docs/integrations/sns/deployment/local-testing",
-        //     "developer-docs/integrations/sns/deployment/deployment",
-        //     "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
-        //     "developer-docs/integrations/sns/managing-sns/proposal-guide",
-        //     "developer-docs/integrations/sns/managing-sns/cycles-usage",
-        //     "developer-docs/integrations/sns/managing-sns/upgradeSNS",
-        //   ],
-        // },
+      //   'developer-docs/integrations/index',
+      //   {
+      //     type: 'category',
+      //     label: 'Service Nervous System (SNS)',
+      //     link: {
+      //       type: "doc",
+      //       id: "developer-docs/integrations/sns/index",
+      //     },
+      //     items: [
+      //       "developer-docs/integrations/sns/sns-intro",
+      //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
+      //       "developer-docs/integrations/sns/get-sns/frontend-integration",
+      //       "developer-docs/integrations/sns/get-sns/preparation",
+      //       "developer-docs/integrations/sns/get-sns/local-testing",
+      //       "developer-docs/integrations/sns/get-sns/get-sns-production",
+      //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+      //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
+      //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
+      //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
+      //     ],
+      //   },
         {
           type: "category",
           label: "Bitcoin Integration",
@@ -454,24 +454,33 @@ const sidebars = {
   ],
   tokenomics: [
     "tokenomics/index",
-    // {
-    //   type: "category",
-    //   label: "SNS",
-    //   link:{
-    //     type: "doc",
-    //     id: "tokenomics/sns/intro"
-    //   },
-    //   items: [
-    //     "tokenomics/sns/intro",
-    //     "tokenomics/sns/rewards",
-    //     "tokenomics/sns/community-fund",
-    //     "tokenomics/sns/not-blind/predeployment-considerations",
-    //     "tokenomics/sns/not-blind/tokenomics",
-    //     "tokenomics/sns/not-blind/product",
-    //     "tokenomics/sns/not-blind/business",
-    //     "tokenomics/sns/not-blind/hype"
-    //   ],
-    // },
+    {
+      type: "category",
+      label: "Network Nervous System",
+      link: {
+        type: "doc",
+        id: "tokenomics/nns/nns-intro",
+      },
+      items: [
+        "tokenomics/nns/nns-intro",
+        "tokenomics/nns/nns-staking-voting-rewards"
+      ],
+    },
+    {
+      type: "category",
+      label: "Service Nervous System",
+      link:{
+        type: "doc",
+        id: "tokenomics/sns/sns-intro-tokens"
+      },
+      items: [
+        "tokenomics/sns/sns-intro-tokens",
+        "tokenomics/sns/predeployment-considerations",
+        "tokenomics/sns/tokenomics",
+        "tokenomics/sns/community-fund",
+        "tokenomics/sns/rewards",
+      ],
+    },
     {
       type: "category",
       label: "Identity & Authentication",
