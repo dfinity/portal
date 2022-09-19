@@ -181,6 +181,17 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Best Practices",
+      link: {
+        type: "doc",
+        id: "developer-docs/best-practices",
+      },
+      items: [
+        "developer-docs/best-practices/considerations-for-nft-devs",
+      ],
+    },
+    {
+      type: "category",
       label: "Deployment & Scaling",
       link: {
         type: "doc",
