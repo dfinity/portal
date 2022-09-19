@@ -463,7 +463,8 @@ const sidebars = {
       },
       items: [
         "tokenomics/nns/nns-intro",
-        "tokenomics/nns/nns-staking-voting-rewards"
+        "tokenomics/nns/nns-staking-voting-rewards",
+        "tokenomics/nns/community-fund",
       ],
     },
     {
@@ -477,7 +478,6 @@ const sidebars = {
         "tokenomics/sns/sns-intro-tokens",
         "tokenomics/sns/predeployment-considerations",
         "tokenomics/sns/tokenomics",
-        "tokenomics/sns/community-fund",
         "tokenomics/sns/rewards",
       ],
     },
