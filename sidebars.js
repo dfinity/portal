@@ -181,17 +181,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Best Practices",
-      link: {
-        type: "doc",
-        id: "developer-docs/best-practices",
-      },
-      items: [
-        "developer-docs/best-practices/considerations-for-nft-devs",
-      ],
-    },
-    {
-      type: "category",
       label: "Deployment & Scaling",
       link: {
         type: "doc",
@@ -284,6 +273,17 @@ const sidebars = {
             "developer-docs/integrations/rosetta/hotkeys",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Best Practices",
+      link: {
+        type: "doc",
+        id: "developer-docs/best-practices/index",
+      },
+      items: [
+        "developer-docs/best-practices/considerations-for-nft-devs",
       ],
     },
     {

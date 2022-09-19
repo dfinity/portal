@@ -1,32 +1,29 @@
-
-# Coniderations for NFT developers
+# Considerations for NFT developers
 
 ## What is an NFT?
 
-An NFT or Non-fungible Token is a record on a blockchain that is associated with a particular digital or physical asset. The unique digital representation on a blockchain allows the proving of ownership as well as trading of NFTs. 
+An NFT or Non-fungible Token is a record on a blockchain that is associated with a particular digital or physical asset. The unique digital representation on a blockchain allows the proving of ownership as well as their trading. 
 
 ## NFTs on the Internet Computer
 
-The Internet Computer (IC) brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, we can imagine dynamic NFTs that change based on IC-internal and external data via HTTPS outcalls.
+The Internet Computer (IC) brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, we can imagine dynamic NFTs that change based on IC-internal and external data via [HTTPS outcalls](/https-outcalls).
 
-Although there are many applications of NFTs, for many of them the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradability of canister smart contracts, require the NFT developer to be mindful of details that do not apply to other smart contract platforms.
+For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradability of canister smart contracts, require the NFT developer to be particularly aware.
 
 An NFT implementation on the IC typically has the following three functions:
 
-1) A registry that tracks ownership and allows transfers
-2) A ledger or transaction history
-3) The actual asset (in the case of digital assets)
+1. A registry that tracks ownership and allows transfers
+2. A ledger or transaction history
+3. The actual asset (in the case of digital assets)
 
-Depending on the architecture, all of these functions may be in one canister or spread across multiple canisters right up to an asset canister per individual NFT. The actu
+Depending on the architecture, all of these functions may be in one canister or spread across multiple canisters right up to an asset canister per individual NFT. Each of these canisters must not run out of cycles, and should be protected against arbitrary code changes. In the following, we discuss some of the mechanisms, tools, and ideas that support NFT developers and their users to achieve these goals.
 
-In the following, we discuss some best practices and topics to think about when creating or evaluating an NFT implementation.
 
 ## The Basics
 
-
 ### Top up all canisters very generously
 
-Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so don’t be stingy. To make it easy for others to top up the canisters you should add the [black hole canister](https://github.com/ninegua/ic-blackhole) as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/) to top up the canisters.
+Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so don’t be stingy. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/) to top up the canisters.
 
 
 ### Set a generous freezing threshold
@@ -37,7 +34,8 @@ The IC has a useful mechanism to save your canister from running out of cycles. 
 ### Make sure your canisters can be monitored
 
 On the IC, the cycle balance of a canister is only visible to controllers. Since an NFT (collection) might outlive its creator, you should plan for monitoring by third parties. You can do this via implementing a simple query method as included in the [DIP721](https://github.com/Psychedelic/DIP721/blob/064b04fbaf0429bf9fefdc0663d53fae033be0f9/src/main.rs#L450) and [EXT](https://github.com/Toniq-Labs/extendable-token/blob/86eabb7336ea259876be9be830fb69b03046ea14/examples/erc721.mo#L254) standards.
-Again, adding the black hole canister as a controller is a good practice in this regard, since it can act as a proxy to fetch the `canister status`. 
+
+Again, adding the black hole canister as a controller is a good practice in this regard, since it can act as a proxy to fetch the [`canister_status`](../../references/ic-interface-spec.md#c-canister_status). 
 
 You can also use a more complete monitoring solution like [Canistergeek](https://canistergeek.app/). Recently, the team behind Canistergeek added a new feature to their [NFTgeek](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/) product that allows observing the [cycles balance of popular NFT collections](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/cycles). 
 
@@ -82,7 +80,7 @@ The value proposition of most NFTs is their permanence and immutability, e.g. by
 
 Blackholing a canister has its issues as well. If there are bugs in the canister code or you’re using experimental system APIs that might get deprecated, later on, the canister might stop functioning. 
 
-More information on this topic can be found in the [Trust in Canisters](https://internetcomputer.org/docs/current/concepts/trust-in-canisters) article.
+More information on this topic can be found in the [Trust in Canisters](../../concepts/trust-in-canisters.md) article.
 
 
 ### Think about economic sustainability
@@ -90,14 +88,14 @@ More information on this topic can be found in the [Trust in Canisters](https://
 Ideally, your canisters implement mechanisms to generate fees that the canisters can use to pay for their existence indefinitely. A simple approach is to utilize (parts of) the transfer fee to fuel the canisters, but more elaborate schemes could involve staking or other advanced mechanisms. We’re unaware of any good best practices, but please share if you know of projects implementing clever mechanisms.
 
 
-## Resources
+## Links and Resources
 
 The following resources are community projects. Please do your own research and use them at your own risk.
 
 ### NFT interface specifications and implementations
 
 - [DIP 721](https://github.com/Psychedelic/DIP721): An interface similar to [ERC-721](https://eips.ethereum.org/EIPS/eip-721).
-- [Extendable Token (EXT)](https://github.com/Toniq-Labs/extendable-token): Extandable interface inspired by [ERC-1155](https://eips.ethereum.org/EIPS/eip-1155).
+- [Extendable Token (EXT)](https://github.com/Toniq-Labs/extendable-token): Extendable interface inspired by [ERC-1155](https://eips.ethereum.org/EIPS/eip-1155).
 
 ### NFT Marketplaces and Launchpads
 
