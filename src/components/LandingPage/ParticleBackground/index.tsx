@@ -16,7 +16,6 @@ export default ({
 }) => {
   let pRadius = width <= 900 ? 3 : 6;
   let cWidth = width <= 900 ? width * 2 : width;
-  const { Vector } = require("p5");
   const setup = (p5, canvasParentRef) => {
     p5.disableFriendlyErrors = true; // disables FES
     p5.createCanvas(cWidth, height).parent(canvasParentRef);
@@ -119,7 +118,7 @@ export default ({
     };
 
     this.repel = function (target) {
-      let force = Vector.sub(target.pos, this.pos);
+      let force = p5.constructor.Vector.sub(target.pos, this.pos);
       let d = force.mag();
       if (d > 0 && d < this.radius) {
         let s = p5.pow(d / this.radius, 1 / this.ramp);
