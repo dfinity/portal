@@ -52,7 +52,7 @@ const config = {
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
     teamInformationPlugin,
-    votingRewardsPlugin
+    votingRewardsPlugin,
     roadmapDataPlugin,
     matomoPlugin,
   ],
