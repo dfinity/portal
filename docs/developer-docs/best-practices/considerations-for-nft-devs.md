@@ -23,12 +23,12 @@ Depending on the architecture, all of these functions may be in one canister or 
 
 ### Top up all canisters very generously
 
-Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so don’t be stingy. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/) to top up the canisters.
+Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so this is typically not a huge investment. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) or some other immutable proxy canister as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/) to top up the canisters.
 
 
 ### Set a generous freezing threshold
 
-The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
+The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](../../references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
 
 
 ### Make sure your canisters can be monitored
@@ -50,21 +50,21 @@ There are a few foot guns that could make your canister more expensive than you�
     * Use `TrieMap` instead of `HashMap` to avoid the performance cliff of automatic resizing associated with HashMaps.
     * Use `Buffer` instead of `Array` if you need to dynamically resize the structure
     * Use `Blob` instead of `[Nat8]` for storing large binary assets
-    * Consider using `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours but `Blobs are 4x more compact and much less taxing on garbage collection (GC).
+    * Consider using `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
     * Consider storing large `Blob`s in stable memory, to reduce pressure on the GC even further, especially when the manual memory management of that Blob is simple (e.g. they are only added, never deleted).
     * Consider using the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
 * Some advice for Rust developers:
     * Be careful with extensive use of `Vec<u8>` and hence the `String` type if you need to (de-)serialize state for upgrades.
     * Read [Roman’s blog post on effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)
 
-A general article with [good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). 
+Another must-read is the general article on [good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). 
 
-To make sure you won’t get surprised, you can use the recently added [performance counter API](https://forum.dfinity.org/t/introducing-performance-counter-on-the-internet-computer/14027) to profile your canisters even before going live.
+To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://forum.dfinity.org/t/introducing-performance-counter-on-the-internet-computer/14027) to profile your canisters even before going live. Furthermore, a list of all costs on the IC can be found [here](../deploy/computation-and-storage-costs.md). 
 
 
 ### Implement mechanisms to backup and restore state
 
-The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets deallocated or there are issues with upgrading a canister.
+The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets deallocated or there are issues with upgrading a canister. [This forum post](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) describes the approach [Distrikt](https://distrikt.app) is using.
 
 
 ### Consider using a dedicated service for storing the transaction history 
@@ -76,7 +76,7 @@ Furthermore, the state of ownership could be reconstructed in case the main NFT 
 
 ### Think about governance
 
-The value proposition of most NFTs is their permanence and immutability, e.g. by setting the [blackhole canister](https://github.com/ninegua/ic-blackhole) as the only controller.  As long as NFT canisters have their developers as controllers, users depend on the trustworthiness (and operational security) of the developers. Developers should therefore make the canisters immutable or manage the canisters with a DAO. A middle ground are mechanisms like [Launchtrail](https://devpost.com/software/launch-trail) that makes changes to a canister auditable.
+The value proposition of most NFTs is their permanence and immutability, e.g. by setting the [blackhole canister](https://github.com/ninegua/ic-blackhole) as the only controller. As long as NFT canisters have their developers as controllers, users depend on the trustworthiness (and operational security) of the developers. Developers should therefore make the canisters immutable or manage the canisters with a DAO. A middle ground are mechanisms like [Launchtrail](https://devpost.com/software/launch-trail) that make changes to a canister auditable.
 
 Blackholing a canister has its issues as well. If there are bugs in the canister code or you’re using experimental system APIs that might get deprecated, later on, the canister might stop functioning. 
 
