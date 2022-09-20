@@ -99,7 +99,12 @@ function LiveSessionsPage(): JSX.Element {
     >
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

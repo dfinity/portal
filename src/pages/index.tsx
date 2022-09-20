@@ -6,7 +6,7 @@ import SectionsBar from "@site/src/components/LandingPage/SectionsBar";
 import HeroSection from "@site/src/components/LandingPage/HeroSection";
 import Dashboard from "@site/src/components/LandingPage/Dashboard";
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import ParticleBackground from "@site/src/components/LandingPage/ParticleBackground";
+import ParticleBackground from "@site/src/components/LandingPage/ParticleBackgroundVanilla";
 import ICPToken from "@site/src/components/LandingPage/ICPToken";
 import Showcase from "@site/src/components/LandingPage/Showcase";
 import StartBuilding from "@site/src/components/LandingPage/StartBuilding";
@@ -37,7 +37,6 @@ export default function Home(): JSX.Element {
               centerX={document.body.clientWidth * 0.8}
               centerY={document.body.clientHeight * 0.4}
               duration={12500}
-              pixelDensity={1}
             />
           )}
         </BrowserOnly>

@@ -42,7 +42,12 @@ const RoadmapPage: React.FC = () => {
     <Layout title="Roadmap" description="">
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+          }
+        />
       </Head>
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
