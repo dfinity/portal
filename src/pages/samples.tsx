@@ -107,7 +107,12 @@ function Samples(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-samples.jpeg"
+          }
+        />
       </Head>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

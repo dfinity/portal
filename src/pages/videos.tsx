@@ -40,7 +40,12 @@ function Videos() {
     <Layout title={"Videos"} description={""}>
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-videos.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative overflow-hidden">
         <img
