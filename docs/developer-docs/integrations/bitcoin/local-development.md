@@ -186,6 +186,10 @@ you should see something like this:
 
 These logs indicate that your local `dfx` project has ingested the block you just mined.
 
+:::note
+Syncing the first bitcoin block can take up to 30 seconds. Subsequent blocks sync nearly instantly.
+:::
+
 Now, check your BTC balance:
 
 ![Checking Bitcoin Balance](../_attachments/bitcoin-local-check-balance.png)
