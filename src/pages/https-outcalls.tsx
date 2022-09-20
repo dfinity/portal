@@ -14,7 +14,12 @@ function HTTPSOutcalls() {
     <Layout title="HTTPS Outcalls" description="">
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -110,7 +115,7 @@ function HTTPSOutcalls() {
               description="Read all about HTTPS outcalls and why they are  important for blockchains."
               href="/"
             /> */}
-             <CardWithDescription
+            <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
               href="/docs/current/developer-docs/quickstart/hello10mins"

@@ -18,7 +18,12 @@ function Developers(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-developers.jpeg"
+          }
+        />
       </Head>
       <main className="w-full overflow-hidden">
         <Header />
