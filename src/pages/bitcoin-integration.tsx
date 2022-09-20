@@ -20,7 +20,12 @@ function BitcoinIntegration() {
     >
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-bitcoin-integration.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative overflow-hidden">
         <Hero></Hero>

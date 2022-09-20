@@ -3,7 +3,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import String from "@theme-original/CodeBlock/Content/String";
 import Container from "@theme/CodeBlock/Container";
 import styles from "./styles.module.css";
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/core";
 import { extractConfig, handleRun } from "../hljs_run.js";
 import CopyButton from "@theme/CodeBlock/CopyButton";
 import runIcon from "@site/static/img/runIcon.png";
