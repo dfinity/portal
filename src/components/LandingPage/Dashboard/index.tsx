@@ -7,10 +7,6 @@ import { animate, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   getBlockCount,
-  getBlockRate,
-  getCanisterCount,
-  getCpuCoreCount,
-  getNodeCount,
   getTransactionRate,
 } from "@site/src/utils/network-stats";
 
@@ -90,17 +86,11 @@ function Statistic({ title, currentValue, tooltip }) {
 function Dashboard() {
   const [stats, setStats] = useState<{
     blockCount: number;
-    blockRate: number;
-    canisterCount: number;
     transactionRate: number;
-    operational: boolean;
     cost: number;
   }>({
     blockCount: 847458088,
-    blockRate: 35.1,
-    canisterCount: 73577,
     transactionRate: 0,
-    operational: true,
     cost: 0.46,
   });
   const controls = useAnimation();
@@ -112,27 +102,13 @@ function Dashboard() {
   }, [controls, inView]);
 
   const fetchData = useCallback(async () => {
-    const [
-      blockCount,
-      blockRate,
-      canisterCount,
-      transactionRate,
-      nodeMachines,
-    ] = await Promise.all([
+    const [blockCount, transactionRate] = await Promise.all([
       getBlockCount(),
-      getBlockRate(),
-      getCanisterCount(),
       getTransactionRate(),
-      getNodeCount(),
     ]);
-    const m = Number(Math.abs(blockRate * 100).toPrecision(15));
-    const roundedBlockRate = (Math.round(m) / 100) * Math.sign(blockRate);
     setStats({
       blockCount,
-      blockRate: roundedBlockRate,
-      canisterCount,
       transactionRate,
-      operational: nodeMachines >= 100,
       cost: 0.46,
     });
   }, []);
@@ -168,13 +144,13 @@ function Dashboard() {
           tooltip={
             "The cost of storing 1GB of data in a canister smart contract."
           }
-        /> 
+        />
         <AnimatedStatistic
           title="Transactions/s"
           currentValue={stats.transactionRate}
           tooltip={"The number of transactions being processed each second."}
           precision={0}
-        />      
+        />
       </div>
       <motion.div variants={item}>
         <Link
@@ -182,7 +158,9 @@ function Dashboard() {
           className={styles.actionButton}
         >
           <DashboardIcon className={styles.dashboardIcon} />
-          <span>See Internet Computer stats on dashboard.internetcomputer.org</span>
+          <span>
+            See Internet Computer stats on dashboard.internetcomputer.org
+          </span>
         </Link>
       </motion.div>
     </motion.div>
