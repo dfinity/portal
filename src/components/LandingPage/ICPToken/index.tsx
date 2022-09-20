@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
@@ -130,7 +130,7 @@ export const votingRewardsData = (data: VotingRewardsPluginData) => ({
   datasets: [
     {
       label: "Reward",
-      data: data.map((d) => d.reward.toFixed(1)),
+      data: data.map((d) => +d.reward.toFixed(1)),
       fill: true,
       borderColor: "rgba(62,9,185,1)",
       backgroundColor: "rgba(118,85,200,1)",
@@ -152,10 +152,15 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
     "default"
   ] as VotingRewardsPluginData;
 
+  const calculatedVotingRewardsData = useMemo(
+    () => votingRewardsData(votingRewards),
+    []
+  );
+
   return (
     <div className={clsx(styles.votingRewardsChart, className)}>
       <Line
-        data={votingRewardsData(votingRewards)}
+        data={calculatedVotingRewardsData}
         options={{
           maintainAspectRatio: true,
           aspectRatio: 1.5,
@@ -239,12 +244,14 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
                   return "Voting Reward";
                 },
                 label: (tooltipItem) => {
-                  let dataset = votingRewardsData["datasets"][0];
+                  let dataset = calculatedVotingRewardsData["datasets"][0];
                   let percent = dataset["data"][tooltipItem["dataIndex"]];
                   return (
                     percent +
                     "% after " +
-                    votingRewardsData["labels"][tooltipItem["dataIndex"]] +
+                    calculatedVotingRewardsData["labels"][
+                      tooltipItem["dataIndex"]
+                    ] +
                     " years"
                   );
                 },
@@ -285,7 +292,8 @@ function ICPToken() {
           The ICP token
         </motion.p>
         <motion.p variants={transitions.item} className={styles.headerBody}>
-          ICP enables participation in network governance, provides a source of fuel for computation, and acts as a store of value.
+          ICP enables participation in network governance, provides a source of
+          fuel for computation, and acts as a store of value.
         </motion.p>
         <motion.div
           variants={transitions.item}
