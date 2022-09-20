@@ -12,5 +12,11 @@
         "stablememory",
         "tamperproof",
         "tokentransfer"
+    ],
+    "grammarly.selectors": [
+        {
+            "language": "markdown",
+            "scheme": "file"
+        }
     ]
 }
