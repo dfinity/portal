@@ -120,7 +120,12 @@ function HowItWorks() {
       </style>
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">

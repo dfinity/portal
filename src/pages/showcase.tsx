@@ -78,7 +78,12 @@ function ShowcasePage(): JSX.Element {
     >
       <Head>
         <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
+          }
+        />
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
@@ -133,10 +138,11 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                Here we list dapps and web3 services that are built on the 
-                Internet Computer blockchain, which is a World Computer. Many services
-                run fully on-chain. You use decentralized services at your own risk.
-                Do your own research, especially where you must deposit tokens.
+                Here we list dapps and web3 services that are built on the
+                Internet Computer blockchain, which is a World Computer. Many
+                services run fully on-chain. You use decentralized services at
+                your own risk. Do your own research, especially where you must
+                deposit tokens.
               </p>
             </motion.div>
           </section>
