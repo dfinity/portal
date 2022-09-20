@@ -95,7 +95,7 @@ function FeaturePage() {
             <h3>Chain Key Cryptography</h3>
             <p>
             The key to scalability is <Link href="/how-it-works/chain-key-technology/">chain key cryptography</Link>: it allows the Internet Computer to have a single 48-byte public key.
-            This single public allows anyone to verify a response to an update call, no matter which subnet has computed it and which node has transmitted it. More importantly, the single public key allows subnets to directly communicate in a secure and reliable way. Both are essential to scale to thousands of subnets.
+            This single public key allows anyone to verify a response to an update call, no matter which subnet has computed it and which node has transmitted it. More importantly, the single public key allows subnets to directly communicate in a secure and reliable way. Both are essential to scale to thousands of subnets.
             </p>
 
             <h3>Finality and Consensus</h3>
