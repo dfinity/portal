@@ -14,12 +14,12 @@
 }
 
 .container {
-    margin: 130px auto 100px auto;
+    margin: 160px auto 100px auto;
     width: Min(1110px, 90%);
 }
 
 .Title {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     overflow: hidden;
 }
@@ -80,6 +80,7 @@
     align-items: center;
     margin: auto;
     flex-direction: row;
+    gap: 16px;
 }
 
 .callToAction {
@@ -89,7 +90,7 @@
     font-size: 18px;
     line-height: 26px;
     z-index: 1000;
-    margin-left: 32px;
+    margin-left: 24px;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
 }
 
@@ -114,7 +115,7 @@
 
 @media screen and (max-width: 996px) {
     .container {
-        margin: 100px auto 80px auto;
+        margin: 80px auto 80px auto;
     }
 
     .Title h1 {
@@ -136,13 +137,12 @@
         border: 2px solid #3b00b9;
         background-color: #3b00b9;
         color: white;
-        margin: 32px 0;
     }
-
     .actionContainer {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        margin-top: 32px;
     }
 
     .callToAction {

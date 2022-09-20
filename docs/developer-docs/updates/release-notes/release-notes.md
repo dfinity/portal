@@ -1,5 +1,110 @@
 # Release Notes
 
+# What's new in DFX 0.11.2
+
+### fix: disable asset canister redirection of all HTTP traffic from `.raw.ic0.app` to `.ic0.app`
+
+### fix: disable asset canister's ETag HTTP headers
+
+The feature is not yet implemented on `icx-proxy`-level, and is causing 500 HTTP response for some type of assets every second request. We'll bring this feature back in upcoming `dfx` releases.
+
+# What's new in DFX 0.11.1
+
+## DFX
+
+### Fixed: dfx now only adds candid:service metadata to custom canisters that have at least one build step
+
+This way, if a canister uses a premade canister wasm, dfx will use it as-is.
+
+### Fixed: "canister alias not defined" in the Motoko language server
+
+It is now possible to develop multiple-canister projects using the [Motoko VSCode extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko).
+
+### Fixed: improve browser compatibility for the JavaScript language binding
+
+Patches a JavaScript language binding compatibility issue encountered in web browsers which do not support the (?.) operator.
+
+### New feature: print dfx.json schema
+
+dfx is now capable of displaying the schema for `dfx.json`. You can see the schema by running `dfx schema` or write the schema to a file with `dfx schema --outfile path/to/file/schema.json`.
+
+### New feature: support for configuring assets in assets canister
+- The `.ic-assets.json` file should be placed inside directory with assets, or its subdirectories. Multiple config files can be used (nested in subdirectories). Example of `.ic-assets.json` file format:
+``` json
+[
+    {
+        "match": ".*",
+        "cache": {
+            "max_age": 20
+        },
+        "headers": {
+            "X-Content-Type-Options": "nosniff"
+        },
+        "ignore": false
+    },
+    {
+        "match": "**/*",
+        "headers": null
+    },
+    {
+        "match": "file.json",
+        "ignore": true
+    }
+]
+```
+- Configuring assets works only during asset creation - any changes to `.ic-assets.json` files won't have any effect on assets that have already been created. We are working on follow up implementation with improvements to handle updating these properties.
+- `headers` from multiple applicable rules are being stacked/concatenated, unless `null` is specified, which resets/empties the headers.
+- Both `"headers": {}` and absence of `headers` field don't have any effect on end result.
+- Valid JSON format is required, i.e. the array of maps, `match` field is required. Only the following fields are accepted: `cache`, `ignore`, `headers`, `match`. The glob pattern has to be valid.
+- The way matching rules work:
+    1. The most deeply nested config file takes precedence over the one in parent dir. In other words, properties from a rule matching a file in a subdirectory override properties from a rule matching a file in a parent directory
+    2. Order of rules within file matters - last rule in config file takes precedence over the first one
+
+- The way `ignore` field works:
+    1. By default, files that begin with a `.` are ignored, while all other files are included.
+    2. The `.ignore` field overrides this, if present.
+    3. If a directory is ignored, file and directories within it cannot be un-ignored.
+    4. A file can be ignored and un-ignored many times, as long as any of its parent directories haven't been ignored.
+
+
+### Fixed: Allow `dfx deploy` to not take arguments for canisters not being installed
+
+A longstanding bug with `dfx deploy` is that if an installation is skipped (usually an implicitly included dependency), it still requires arguments even if the installed canister doesn't. As of this release that bug is now fixed.
+
+### New feature: Add additional logging from bitcoin canister in replica.
+
+Configures the replica to emit additional logging from the bitcoin canister whenever the bitcoin feature is enabled. This helps show useful information to developers, such as the bitcoin height that the replica currently sees.
+
+### Fixed: make `build` field optional for custom canisters
+
+Prior to 0.11.0, a custom canister's `build` field could be left off if `dfx build` was never invoked. To aid in deploying prebuilt canisters, this behavior is now formalized; omitting `build` is equivalent to `build: []`.
+
+### New feature: Use `--locked` for Rust canisters
+
+`dfx build`, in Rust canisters, now uses the `--locked` flag when building with Cargo. To offset this, `dfx new --type rust` now runs `cargo update` on the resulting project.
+
+### New feature: Enable threshold ecdsa signature
+
+ECDSA signature signing is now enabled by default in new projects, or by running `dfx start --clean`.
+A test key id "Secp256k1:dfx_test_key" is ready to be used by locally created canisters.
+
+## Dependencies
+
+### Updated `agent-rs` to 0.20.0
+
+### Updated `candid` to 0.7.15
+
+### Replica
+
+Updated replica to elected commit 6e86169e98904047833ba6133e5413d2758d90eb.
+This incorporates the following executed proposals:
+
+* [72225](https://dashboard.internetcomputer.org/proposal/72225)
+* [71669](https://dashboard.internetcomputer.org/proposal/71669)
+* [71164](https://dashboard.internetcomputer.org/proposal/71164)
+* [70375](https://dashboard.internetcomputer.org/proposal/70375)
+* [70002](https://dashboard.internetcomputer.org/proposal/70002)
+
 # What's new in DFX 0.11.0
 
 ## Breaking changes
@@ -1663,7 +1768,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](../../build/languages/candid/candid-intro.md) for
+-   New [Candid documentation](../../build/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 
@@ -1698,7 +1803,7 @@ The command is only applicable if you received the wallet canister identifier as
     the `WordN` types. Therefore, the wrapping arithmetic operations on
     `WordN` are deprecated and their use will print a warning. For
     information about replacing Word types, see [Word
-    types](../../build/languages/motoko/language-manual#word-types).
+    types](../../build/cdks/motoko-dfinity/language-manual.md#word-types).
 
 -   For values `x` of type `Blob`, an iterator over the elements of the
     blob `x.vals()` is introduced. It works like `x.bytes()`, but

@@ -1,4 +1,5 @@
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import shareImage from "@site/static/img/shareImages/share-showcase.jpeg";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
@@ -13,6 +14,7 @@ import { useQueryParam } from "../utils/use-query-param";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
@@ -74,21 +76,25 @@ function ShowcasePage(): JSX.Element {
       title="Showcase"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
     >
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
             src={BlobBlue}
             alt=""
-            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
+            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[-1000]"
             variants={transitions.item}
           />
-          <section className="max-w-page relative px-6 pt-12 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-48 overflow-hidden">
+          <section className="max-w-page relative px-6 pt-20 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
             <div className="md:w-7/10 lg:w-6/10 md:ml-1/12" ref={filtersRef}>
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2"
                 variants={transitions.item}
               >
-                Explore the Internet Computer Ecosystem
+                Stuff built on the Internet Computer
               </motion.h1>
             </div>
           </section>
@@ -101,9 +107,9 @@ function ShowcasePage(): JSX.Element {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                    "button-outline",
                     !queryTag
-                      ? "text-white bg-infinite-60"
+                      ? "text-white bg-infinite"
                       : "text-black bg-transparent"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -113,9 +119,9 @@ function ShowcasePage(): JSX.Element {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                      "button-outline",
                       tag.toLowerCase() === queryTag?.toLowerCase()
-                        ? "text-white bg-infinite-60"
+                        ? "text-white bg-infinite"
                         : "text-black bg-transparent"
                     )}
                     key={tag}
@@ -127,9 +133,10 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                All of these dapps are using the novel Internet Computer
-                blockchain. Use the following projects at your own risk. As
-                always, do your own research.
+                Here we list dapps and web3 services that are built on the 
+                Internet Computer blockchain, which is a World Computer. Many services
+                run fully on-chain. You use decentralized services at your own risk.
+                Do your own research, especially where you must deposit tokens.
               </p>
             </motion.div>
           </section>

@@ -13,6 +13,8 @@ import { getMinutes, parse, getYear } from "date-fns";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
+import Head from "@docusaurus/Head";
+import shareImage from "@site/static/img/shareImages/share-live-sessions.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -78,11 +80,27 @@ function LiveSessionsPage(): JSX.Element {
     setInitalized(true);
   }, [liveSessions, setPast, setUpcoming]);
 
+  function scrollToForm() {
+    window.scroll({
+      top: formRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  }
+  useEffect(() => {
+    if (location.hash === "#subscribe") {
+      scrollToForm();
+    }
+  }, [initalized]);
+
   return (
     <Layout
       title="Live Sessions"
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
     >
+      <Head>
+        <meta property="og:image" content={shareImage} />
+        <meta name="twitter:image" content={shareImage} />
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
@@ -91,7 +109,7 @@ function LiveSessionsPage(): JSX.Element {
             className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[00px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
             variants={transitions.item}
           />
-          <section className="max-w-page relative px-6 pt-12 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-48 ">
+          <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
             <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
@@ -109,12 +127,7 @@ function LiveSessionsPage(): JSX.Element {
               <motion.div className="" variants={transitions.item}>
                 <button
                   className="button-primary text-center"
-                  onClick={() =>
-                    window.scroll({
-                      top: formRef.current.offsetTop,
-                      behavior: "smooth",
-                    })
-                  }
+                  onClick={scrollToForm}
                 >
                   Alerts for New Session Registrations
                 </button>
@@ -279,6 +292,7 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </section>
+
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
@@ -309,6 +323,7 @@ function LiveSessionsPage(): JSX.Element {
             />
           </div>
         </AnimateSpawn>
+
         <AnimateSpawn
           variants={transitions.container}
           el={motion.section}
@@ -436,7 +451,7 @@ function LiveSessionsPage(): JSX.Element {
         </AnimateSpawn>
 
         {/* This must not be invisible */}
-        <div ref={formRef}></div>
+        <div ref={formRef} id="subscribe"></div>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
@@ -450,7 +465,7 @@ function LiveSessionsPage(): JSX.Element {
             />
             <div className="md:w-10/12 md:mx-auto ">
               <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
-                Register to stay up to date on live community discussions
+                Register to stay up to date on live sessions
               </h2>
               <form
                 method="POST"

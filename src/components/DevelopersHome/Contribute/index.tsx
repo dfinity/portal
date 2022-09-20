@@ -28,6 +28,11 @@ const cardsContent = [
     body: "Report potential security vulnerabilities and get rewards",
     link: "https://dfinity.org/bug-bounty/",
   },
+  {
+    title: "ICDevs Bounties",
+    body: "ICDevs.org funds code bounties",
+    link: "https://icdevs.org/bounties.html",
+  },
 ];
 
 function Card({ title, body }) {

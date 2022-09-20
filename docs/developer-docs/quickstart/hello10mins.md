@@ -16,7 +16,7 @@ In this tutorial, you will learn how to:
 This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Glossary#C) (one for backend and one for frontend). The dapp accepts a text argument as input and returns a greeting. For example, if you call the `greet` method with the text argument `Everyone` on the command-line via the canister SDK (see instructions below on how to install the canister SDK), the dapp will return `Hello, Everyone!` either in your terminal:
 
 ``` bash
-$ dfx canister call hello greet Everyone
+$ dfx canister call hello_backend greet Everyone
 $ "Hello, Everyone"
 ```
 
@@ -24,7 +24,7 @@ Or via the dapp in a browser, a pop-up window will appear with the message: `Hel
 
 ![Hello](_attachments/frontend-result.png)
 
-Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/languages/motoko/), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
+Note that the "Hello World" dapp consists of backend code written in [Motoko](../build/cdks/motoko-dfinity/motoko.md), a programming language specifically designed for interacting with the IC, and a simple webpack-based frontend.
 
 This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](windows-wsl.md) installation.
 
@@ -95,7 +95,7 @@ A `dfx` project is a set of artifacts, including source code and configuration f
 dfx new hello
 ```
 
-`dfx` creates a new project directory called `hello`. The terminal output should look like this:
+`dfx` creates a new project directory called `hello`. The terminal output should look similar to this:
 
 ![dfx new](_attachments/dfx-new-hello-1.png)
 
@@ -117,8 +117,8 @@ The `hello` project directory includes the artifacts required for a "hello world
 
 The `hello` project is composed of two canisters:
 
--   `hello` canister, which contains the template backend logic
--   `hello_assets` canister, which contains the dapp assets (images, html files, etc)
+-   `hello_backend` canister, which contains the template backend logic
+-   `hello_frontend` canister, which contains the dapp assets (images, html files, etc)
 
 ![hello Dapp](_attachments/2-canisters-hello-dapp.png)
 
@@ -196,24 +196,24 @@ dfx deploy
 Your dapp is now composed of two canisters as you can see in the copy below (from terminal B):
 
 ``` bash
-Installing code for canister hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-Installing code for canister hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
+Installing code for canister hello_backend, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
+Installing code for canister hello_frontend, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
 ```
 
-1.  `hello` canister `rrkah-fqaaa-aaaaa-aaaaq-cai` which contains the backend logic.
+1.  `hello_backend` canister `rrkah-fqaaa-aaaaa-aaaaq-cai` which contains the backend logic.
 
-2.  `hello_assets` canister `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
+2.  `hello_frontend` canister `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
 ### Test the dapp locally via the command line
 
 Now that the canister is deployed to the local execution environment, you can interact with the canister by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. In terminal B, run
 
 ``` bash
-dfx canister call hello greet everyone
+dfx canister call hello_backend greet everyone
 ```
 
 -   The `dfx canister call` command requires you to specify a canister name and function to call.
--   `hello` specifies the name of the canister you call.
+-   `hello_backend` specifies the name of the canister you call.
 -   `greet` specifies the function name.
 -   `everyone` is the argument that you pass to the `greet` function.
 
@@ -280,7 +280,7 @@ You may further wonder why dapps run on cycles rather than ICP tokens. The reaso
 
 Practical notes about cycles:
 
--   There is a [free cycles faucet](cycles-faucet.md) that grants new developers 15 trillion cycles
+-   There is a [free cycles faucet](cycles-faucet.md) that grants new developers 20 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
 -   You can see a table of compute and storage costs here: [Computation and storage costs](../deploy/computation-and-storage-costs.md).
 -   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Tutorials_for_acquiring,_managing,_and_staking_ICP).
@@ -292,8 +292,8 @@ In this tutorial, we present two ways of acquiring cycles:
 
 By the end of this section, you will now have three canisters:
 
--   `hello` canister (not yet deployed to the IC)
--   `hello_assets` canister in your project (not yet deployed to the IC)
+-   `hello_backend` canister (not yet deployed to the IC)
+-   `hello_frontend` canister in your project (not yet deployed to the IC)
 -   Your cycles wallet canister that holds your cycles (deployed on the IC)
 
 ![hello dapp and cycles wallet](_attachments/3-canisters-hello-dapp.png)
@@ -328,7 +328,7 @@ Now that you have used the cycles faucet, in terminal B you can check your cycle
 dfx wallet --network ic balance
 ```
 
-You should see around 15 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min).
+You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min).
 
 If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. You should try [Option 2: Converting ICP token into cycles](#option-2-converting-icp-tokens-into-cycles-5-min).
 
@@ -423,7 +423,7 @@ This should print something looking like this:
 
 ## 5. Deploy on-chain (1 min)
 
-Now that you have your [cycles](../../concepts/tokens-cycles.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `Hello` dapp on-chain. In terminal B, run:
+Now that you have your [cycles](../../concepts/tokens-cycles.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
@@ -440,15 +440,15 @@ If successful, your terminal should look like this:
 ``` bash
 Deploying all canisters.
 Creating canisters...
-Creating canister "hello"...
-"hello" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
-Creating canister "hello_assets"...
-"hello_assets" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
+Creating canister "hello_backend"...
+"hello_backend" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
+Creating canister "hello_frontend"...
+"hello_frontend" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
 Building canisters...
 Building frontend...
 Installing canisters...
-Installing code for canister hello, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Installing code for canister hello_assets, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
+Installing code for canister hello_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
+Installing code for canister hello_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
 Authorizing our identity (default) to the asset canister...
 Uploading assets to asset canister...
   /index.html 1/1 (472 bytes)
@@ -466,18 +466,18 @@ Uploading assets to asset canister...
 Deployed canisters.
 URLs:
   Frontend:
-    hello_assets: https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/
+    hello_frontend: https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/
   Candid:
-    hello: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=5o6tz-saaaa-aaaaa-qaacq-cai
+    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=5o6tz-saaaa-aaaaa-qaacq-cai
 ```
 
 Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
 
 In the example above, we created a `hello` dapp that is composed of:
 
-1.  `hello` canister `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
+1.  `hello_backend` canister `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
 
-2.  `hello_assets` canister `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
+2.  `hello_frontend` canister `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
 ### See your dapp live on-chain via a browser
 
@@ -496,14 +496,14 @@ After loading the service worker, your dapp will load:
 Since the canister has a method called `greet` (which accepts a string as a parameter), we can send it a message via `dfx`.
 
 ``` bash
-dfx canister --network ic call hello greet '("everyone": text)'
+dfx canister --network ic call hello_backend greet '("everyone": text)'
 ```
 
 Note the way the message is constructed:
 
 -   `dfx canister --network ic call` is the setup for calling a canister on the IC.
 
--   `hello greet` means we are sending a message to a canister named `hello` and evoking its `greet` method. `dfx` knows which `hello` canister (out of the many in the IC), one refers to because a mapping of `hello` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
+-   `hello_backend greet` means we are sending a message to a canister named `hello` and evoking its `greet` method. `dfx` knows which `hello` canister (out of the many in the IC), one refers to because a mapping of `hello` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
 
 -   `'("everyone": text)'` is the parameter we are sending to `greet` (which accepts `Text` as its only input).
 

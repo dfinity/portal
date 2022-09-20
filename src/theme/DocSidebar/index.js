@@ -8,15 +8,17 @@ import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import {
   useThemeConfig,
-  useAnnouncementBar,
   NavbarSecondaryMenuFiller,
   ThemeClassNames,
-  useScrollPosition,
   useWindowSize,
-  useNavbarMobileSidebar,
 } from "@docusaurus/theme-common";
+import {
+  useAnnouncementBar,
+  useScrollPosition,
+  useNavbarMobileSidebar,
+} from "@docusaurus/theme-common/internal";
 import Logo from "@theme/Logo";
-import IconArrow from "@theme/IconArrow";
+import IconArrow from "@theme/Icon/Arrow";
 import { translate } from "@docusaurus/Translate";
 import DocSidebarItems from "@theme/DocSidebarItems";
 import styles from "./styles.module.css";
@@ -64,15 +66,15 @@ function HideableSidebarButton({ onClick }) {
 function getPrimaryColor(section) {
   switch (section) {
     case "developer-docs":
-      return "#ED1E79";
+      return "#29abe2";
     case "concepts":
-      return "#F15A24";
+      return "#522785";
     case "references":
-      return "#29ABE2";
+      return "#ed1e79";
     case "tokenomics":
-      return "#FBB03B";
+      return "#f15a24";
     case "samples":
-      return "#3B00B9";
+      return "#fbb03b";
     default:
       return "#29ABE2";
   }

@@ -19,7 +19,7 @@ The NFT canister is not very complicated since the [DIP-721](https://github.com/
 but we can still use it to explain three important concepts concerning dapp development for the Internet Computer:
 
 ### Stable Memory for Canister Upgrades
-The Internet Computer employs [Orthogonal Persistence](https://smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
+The Internet Computer employs [Orthogonal Persistence](../developer-docs/build/cdks/motoko-dfinity/motoko.md#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
 When upgrading canister code, however, it is necessary to explicitly handle canister data. The NFT canister example shows how stable memory can be handled using `pre_upgrade` and `post_upgrade`.
 
 ### Certified Data
@@ -65,7 +65,7 @@ For the response to be verified, it has to be checked that a) the served content
 The function `witness` is responsible for creating a tree with minimal content that still can be verified to fulfill a) and b).
 Once this minimal tree is constructed, certificate and minimal hash tree are sent as part of the `IC-Certificate` header.
 
-For a much more detailed explanation how certification works, see [this explanation video](https://internetcomputer.org/howitworks/response-certification).
+For a much more detailed explanation how certification works, see [this explanation video](https://internetcomputer.org/how-it-works/response-certification).
 
 ### Managing Control over Assets
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:

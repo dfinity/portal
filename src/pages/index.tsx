@@ -13,6 +13,7 @@ import StartBuilding from "@site/src/components/LandingPage/StartBuilding";
 import Foundation from "@site/src/components/LandingPage/Foundation";
 import BackgroundGradient from "@site/static/img/bgGradient.png";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Sliders from "../components/LandingPage/Sliders";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -42,6 +43,7 @@ export default function Home(): JSX.Element {
         </BrowserOnly>
         <HeroSection />
         <Dashboard />
+        <Sliders />
         <Features />
         <Showcase />
         <Foundation />

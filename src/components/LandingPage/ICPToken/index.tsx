@@ -282,11 +282,10 @@ function ICPToken() {
       <a className={styles.anchor} id="ICPToken" />
       <div className={styles.header}>
         <motion.p variants={transitions.item} className={styles.headerTitle}>
-          Internet Computer utility token
+          The ICP token
         </motion.p>
         <motion.p variants={transitions.item} className={styles.headerBody}>
-          ICP tokens allow users to participate in and govern the Internet
-          Computer blockchain network.
+          ICP enables participation in network governance, provides a source of fuel for computation, and acts as a store of value.
         </motion.p>
         <motion.div
           variants={transitions.item}

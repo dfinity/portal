@@ -13,9 +13,14 @@ const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
+const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const roadmapDataPlugin = require("./plugins/roadmap-data");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
@@ -38,15 +43,28 @@ const config = {
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
-    'docusaurus-plugin-sass',
+    "docusaurus-plugin-sass",
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
     votingRewardsPlugin
+    roadmapDataPlugin,
+    matomoPlugin,
+  ],
+
+  stylesheets: [
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
   ],
 
   presets: [
@@ -67,8 +85,8 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, require("remark-code-import")],
-          // TODO: Please change this to your repo.
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
@@ -129,12 +147,32 @@ const config = {
                 href: "/basics",
               },
               {
-                label: "Showcase",
+                label: "Web3 Ecosystem",
                 href: "/showcase",
               },
               {
                 label: "How it works",
-                href: "/howitworks",
+                href: "/how-it-works",
+              },
+              {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
+              },
+              {
+                label: "Bitcoin Integration",
+                href: "/bitcoin-integration",
+              },
+              {
+                label: "Videos",
+                href: "/videos",
+              },
+              {
+                label: "HTTPS Outcalls",
+                href: "/https-outcalls",
+              },
+              {
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
               },
               {
                 label: "Internet Identity",
@@ -168,9 +206,10 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/quickstart/hello10mins",
+                docId: "developer-docs/ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -196,7 +235,7 @@ const config = {
               },
               {
                 label: "Roadmap",
-                href: "https://forum.dfinity.org/c/roadmap/29",
+                href: "/roadmap",
               },
               {
                 label: "Staking & Governance",
@@ -239,13 +278,13 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "tokenomics",
-            label: "Tokenomics",
+            label: "DAOs & Tokenomics",
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "samples",
-            label: "Samples",
+            label: "Sample Code",
           },
 
           {
