@@ -39,6 +39,17 @@ const Search = (props) => {
         // Algolia use closest parent element id #__docusaurus when a h1 page title does not have an id
         // So, we can safely remove it. See https://github.com/facebook/docusaurus/issues/1828 for more details.
 
+        try {
+          const titleDiv = document.createElement("div");
+          titleDiv.innerHTML = suggestion.title;
+          window._paq.push([
+            "trackEvent",
+            "Search",
+            _input.getVal(),
+            titleDiv.innerText,
+          ]);
+        } catch {}
+
         history.push(url);
       },
     });
@@ -120,15 +131,7 @@ const Search = (props) => {
         onClick={loadAlgolia}
         onMouseOver={loadAlgolia}
         onFocus={toggleSearchIconClick}
-        onBlur={() => {
-          try {
-            const term = searchBarRef.current.value;
-            if (term.length > 0) {
-              window._paq.push(["trackEvent", "Search", "Term", term]);
-            }
-          } catch {}
-          toggleSearchIconClick();
-        }}
+        onBlur={toggleSearchIconClick}
         ref={searchBarRef}
         disabled={!indexReady}
       />
