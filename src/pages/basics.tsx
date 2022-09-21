@@ -10,7 +10,6 @@ import ItsGreen from "../components/Basics/ItsGreen";
 import TrueScaling from "../components/Basics/TrueScaling";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-basics.jpeg";
 
 const BasicsPage: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -18,7 +17,12 @@ const BasicsPage: React.FC = () => {
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-basics.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
