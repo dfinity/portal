@@ -23,6 +23,7 @@ const math = require("remark-math");
 const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
+const votingRewardsPlugin = require("./plugins/voting-rewards");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
@@ -51,6 +52,7 @@ const config = {
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
     teamInformationPlugin,
+    votingRewardsPlugin,
     roadmapDataPlugin,
     matomoPlugin,
   ],
