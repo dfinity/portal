@@ -9,9 +9,7 @@ import DfinityLogo from "../../static/img/dfinity_logo.svg";
 import CustodyGraphic from "../../static/img/token-holders/custody.svg";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
-
 import transitions from "@site/static/transitions.json";
-
 import YoutubeIcon from "../../static/img/token-holders/social/youtube.svg";
 import ForumIcon from "../../static/img/token-holders/social/forum.svg";
 import MediumIcon from "../../static/img/token-holders/social/medium.svg";
@@ -22,7 +20,6 @@ import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-icp-tokens.jpeg";
 
 const images = [
   {
@@ -152,13 +149,19 @@ function TokenHolders(): JSX.Element {
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
     >
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
           }
         />
+        <title>ICP Tokens</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn

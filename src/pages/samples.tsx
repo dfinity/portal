@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
@@ -15,7 +14,6 @@ import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-samples.jpeg";
 
 const CommunityProject = ({ project }) => {
   return (
@@ -36,7 +34,6 @@ const CommunityProject = ({ project }) => {
 };
 
 function Samples(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   const [selectedLanguages, setSelectedLanguages] = React.useState([]);
   const [selectedDomains, setSelectedDomains] = React.useState([]);
   const [selectedLevels, setSelectedLevels] = React.useState([]);
@@ -104,15 +101,21 @@ function Samples(): JSX.Element {
   ]);
 
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout title={"Sample Code"} description={""}>
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-samples.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-samples.jpeg"
           }
         />
+        <title>Sample Code</title>
       </Head>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

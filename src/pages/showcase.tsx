@@ -1,5 +1,4 @@
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import shareImage from "@site/static/img/shareImages/share-showcase.jpeg";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
@@ -73,17 +72,23 @@ function ShowcasePage(): JSX.Element {
 
   return (
     <Layout
-      title="Showcase"
+      title="Web3 Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
     >
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
           }
         />
+        <title>Web3 Ecosystem</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

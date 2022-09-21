@@ -7,7 +7,6 @@ import transitions from "@site/static/transitions.json";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import mediaVideos from "@site/static/mediaVideos.json";
-import shareImage from "@site/static/img/shareImages/share-videos.jpeg";
 import Head from "@docusaurus/Head";
 import clsx from "clsx";
 import { useQueryParam } from "@site/src/utils/use-query-param";
@@ -39,13 +38,19 @@ function Videos() {
   return (
     <Layout title={"Videos"} description={""}>
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-videos.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-videos.jpeg"
           }
         />
+        <title>Videos</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <img

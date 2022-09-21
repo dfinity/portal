@@ -1,4 +1,3 @@
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import React from "react";
 import Ecosystem from "../components/Basics/Ecosystem";
@@ -12,10 +11,9 @@ import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 
 const BasicsPage: React.FC = () => {
-  const { siteConfig } = useDocusaurusContext();
   resetNavBarStyle();
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout title={"Basics"} description={""}>
       <Head>
         <meta
           property="og:image"
@@ -29,6 +27,7 @@ const BasicsPage: React.FC = () => {
             "https://internetcomputer.org/img/shareImages/share-basics.jpeg"
           }
         />
+        <title>Basics</title>
       </Head>
       <main className="w-full overflow-hidden">
         <Hero></Hero>

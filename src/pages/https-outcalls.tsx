@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "@theme/Layout";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-https-outcalls.jpeg";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
@@ -13,13 +12,19 @@ function HTTPSOutcalls() {
   return (
     <Layout title="HTTPS Outcalls" description="">
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
           }
         />
+        <title>HTTPS Outcalls</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">

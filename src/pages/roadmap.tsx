@@ -15,7 +15,6 @@ import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-roadmap.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -41,13 +40,19 @@ const RoadmapPage: React.FC = () => {
   return (
     <Layout title="Roadmap" description="">
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
           }
         />
+        <title>Roadmap</title>
       </Head>
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
@@ -67,6 +72,7 @@ const RoadmapPage: React.FC = () => {
           </div>
           <div className="container-10 relative">
             <img
+              alt=""
               src="/img/whiteBlurredCircle.png"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
