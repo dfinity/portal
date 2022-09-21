@@ -12,7 +12,12 @@ function Developers(): JSX.Element {
   resetNavBarStyle();
 
   return (
-    <Layout title={"Developers Home"} description={""}>
+    <Layout
+      title={"Developers Home"}
+      description={
+        "Learn how to build infinitely scalable dapps on the Internet Computer. Explore the possibilities of web 3.0 and learn how to make it reality."
+      }
+    >
       <Head>
         <meta
           property="og:image"

@@ -101,7 +101,12 @@ function Samples(): JSX.Element {
   ]);
 
   return (
-    <Layout title={"Sample Code"} description={""}>
+    <Layout
+      title={"Sample Code"}
+      description={
+        "Learn how projects are built on the Internet Computer to be secure and efficient. Dive into official examples or into open source community projects to figure out how things work under the hood."
+      }
+    >
       <Head>
         <meta
           property="og:image"

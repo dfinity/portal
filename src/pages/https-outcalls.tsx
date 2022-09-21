@@ -10,7 +10,10 @@ import { CardWithDescription } from "@site/src/components/Common/Card";
 function HTTPSOutcalls() {
   resetNavBarStyle();
   return (
-    <Layout title="HTTPS Outcalls" description="">
+    <Layout
+      title="HTTPS Outcalls"
+      description="The HTTPS Outcalls feature allows the Internet Computer to make HTTPS requests in a distributed and secure manner, all approved by consensus. Oracles are now a thing of the past."
+    >
       <Head>
         <meta
           property="og:image"

@@ -13,7 +13,12 @@ import Head from "@docusaurus/Head";
 const BasicsPage: React.FC = () => {
   resetNavBarStyle();
   return (
-    <Layout title={"Basics"} description={""}>
+    <Layout
+      title={"Basics"}
+      description={
+        "The Internet Computer is the first truly web-speed blockchain that is able to serve web pages on its own. Thanks to novel chain-key cryptography it is able to scale to infinitely many services that live on-chain."
+      }
+    >
       <Head>
         <meta
           property="og:image"

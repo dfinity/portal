@@ -36,7 +36,12 @@ function Videos() {
     filteredVideos = temp.filter((v) => v.href !== currentVideo.href);
   }
   return (
-    <Layout title={"Videos"} description={""}>
+    <Layout
+      title={"Videos"}
+      description={
+        "Don't like reading? Learn how the Internet Computer works from feature presentations, demos, interviews, and conference talks."
+      }
+    >
       <Head>
         <meta
           property="og:image"
