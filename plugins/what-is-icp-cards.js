@@ -94,6 +94,6 @@ const whatIsIcpDataPlugin = async function () {
   };
 };
 
-module.exports = WhatIsIcpDataPlugin;
+module.exports = whatIsIcpDataPlugin;
 
 // RoadmapDataPlugin().then((x) => x.loadContent());
