@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "@theme/Layout";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-https-outcalls.jpeg";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
@@ -11,15 +10,24 @@ import { CardWithDescription } from "@site/src/components/Common/Card";
 function HTTPSOutcalls() {
   resetNavBarStyle();
   return (
-    <Layout title="HTTPS Outcalls" description="">
+    <Layout
+      title="HTTPS Outcalls"
+      description="The HTTPS Outcalls feature allows the Internet Computer to make HTTPS requests in a distributed and secure manner, all approved by consensus. Oracles are now a thing of the past."
+    >
       <Head>
-        <meta property="og:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
+          }
+        />
         <meta
           name="twitter:image"
           content={
             "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
           }
         />
+        <title>HTTPS Outcalls</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
