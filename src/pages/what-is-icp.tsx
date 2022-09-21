@@ -15,27 +15,15 @@ import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
 import Head from "@docusaurus/Head";
+import { WhatIsIcpTopic } from "../components/HowItWorksPage/WhatIsIcpData";
+import TopicCard from "../components/HowItWorksPage/TopicCard";
 
 const MotionLink = motion(Link);
 
 const RoadmapPage: React.FC = () => {
   resetNavBarStyle();
 
-  const [overlayOpen, setOverlayOpen] = useState(false);
-  const [overlayOpenAt, setOverlayOpenAt] = useState(0);
-
-  function openOverlay(at: number) {
-    document.body.style.overflow = "hidden";
-    setOverlayOpenAt(at);
-    setOverlayOpen(true);
-  }
-
-  function closeOverlay() {
-    document.body.style.overflow = "";
-    setOverlayOpen(false);
-  }
-
-  const data = useGlobalData()["roadmap-data"].default as RoadmapDomain[];
+  const data = useGlobalData()["what-is-icp-data"].default as WhatIsIcpTopic[];
 
   return (
     <Layout
@@ -64,9 +52,22 @@ const RoadmapPage: React.FC = () => {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">What is ICP</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) is a general-purpose blockchain-based platform that can host and run virtually any kind of web-based application in a decentralized manner. It is designed to provide a World Computer that can replace traditional IT and enable a new generation of Web3 services and applications that run entirely on-chain. It can also play the role of Web3 orchestrator by interacting with traditional blockchains.
-              An open internet requires decentralization, which is solved nicely by using blockchains. However, there are efficiency, scalability, usability, and security issues with blockchain protocols, a radical new design is needed to realize the vision of a world computer. 
-              The IC rebuilds the idea of a world computer from the ground up. It is more than just a blockchain. The Internet Computer Protocol (ICP) has introduced many innovations in cryptography, networking, and consensus, which we explain below.
+                The Internet Computer (IC) is a general-purpose blockchain-based
+                platform that can host and run virtually any kind of web-based
+                application in a decentralized manner. It is designed to provide
+                a World Computer that can replace traditional IT and enable a
+                new generation of Web3 services and applications that run
+                entirely on-chain. It can also play the role of Web3
+                orchestrator by interacting with traditional blockchains. An
+                open internet requires decentralization, which is solved nicely
+                by using blockchains. However, there are efficiency,
+                scalability, usability, and security issues with blockchain
+                protocols, a radical new design is needed to realize the vision
+                of a world computer. The IC rebuilds the idea of a world
+                computer from the ground up. It is more than just a blockchain.
+                The Internet Computer Protocol (ICP) has introduced many
+                innovations in cryptography, networking, and consensus, which we
+                explain below.
               </p>
             </div>
           </div>
@@ -79,150 +80,24 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 relative">
+        <section className="container-10 -mt-52 md:-mt-32 relative mb-30 md:mb-56">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}
             src={BlobPurple}
             alt=""
             className="absolute pointer-events-none max-w-none w-[600px] md:w-[1400px] -left-[300px] md:-left-[700px] top-[1680px] md:top-1/2 -translate-y-1/2 z-[-1000]"
-            // variants={transitions.item}
           />
           <div className="space-y-6 md:space-y-16">
-            {data.map((domain, index) => (
-              <DomainCard
-                domain={domain}
+            {data.map((topic, index) => (
+              <TopicCard
+                topic={topic}
                 index={index}
-                key={domain.name}
-                onOpen={() => openOverlay(index)}
-              ></DomainCard>
+                key={topic.name}
+              ></TopicCard>
             ))}
           </div>
         </section>
-        <section className="text-white relative py-24 md:py-40">
-          <AnimateSpawn
-            el={motion.img}
-            variants={transitions.fadeIn}
-            src={BlobGradient}
-            alt=""
-            className="max-w-none w-[1200px] md:w-[1200px] absolute top-[-200px] md:top-[-200px] left-1/2 -translate-x-1/2 z-[-1]"
-          />
-          <AnimateSpawn
-            className="container-12 text-center max-w-[740px] mb-16 md:mb-8"
-            variants={transitions.container}
-          >
-            <motion.h2
-              className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
-              variants={transitions.item}
-            >
-              Community Engagement
-            </motion.h2>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-8"
-              variants={transitions.item}
-            ></motion.p>
-            <MotionLink
-              variants={transitions.item}
-              className="button-outline-white"
-              href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
-            >
-              Join the conversation
-            </MotionLink>
-          </AnimateSpawn>
-          <AnimateSpawn
-            className="container-12 text-black flex flex-col gap-2 md:flex-row md:items-start md:gap-5"
-            variants={transitions.container}
-          >
-            <motion.div
-              variants={transitions.item}
-              className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1"
-            >
-              <h3 className="tw-lead-lg md:tw-title-sm">
-                Community Submissions
-              </h3>
-              <p className="tw-paragraph-sm mb-3 text-black-60">
-                What features would improve your experience on the Internet
-                Computer?
-              </p>
-              <Link
-                className="link-external"
-                href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
-              >
-                Submit your suggestions
-              </Link>
-            </motion.div>
-            <motion.div
-              variants={transitions.item}
-              className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1 md:mt-30"
-            >
-              <h3 className="tw-lead-lg md:tw-title-sm">Live Sessions</h3>
-              <p className="tw-paragraph-sm mb-3 text-black-60">
-                Join live sessions with R&D to get informed about the upcoming
-                technical proposals and contributions to the Internet Computer
-                roadmap.
-              </p>
-              <Link className="link-external" href="/live-sessions/#subscribe">
-                Reserve your seat
-              </Link>
-            </motion.div>
-            <motion.div
-              variants={transitions.item}
-              className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1 md:mt-10"
-            >
-              <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
-              <p className="tw-paragraph-sm mb-3 text-black-60">
-                Do you have innovative ideas for building on the Internet
-                Computer and need funding to launch your project? The DFINITY
-                Developer Grant Program provides support to promising developers
-                around the globe.
-              </p>
-              <Link
-                className="link-external"
-                href="https://dfinity.org/grants/"
-              >
-                Apply for Grants
-              </Link>
-            </motion.div>
-          </AnimateSpawn>
-        </section>
-        <section className="">
-          <AnimateSpawn
-            className="container-10 text-center text-black md:text-left"
-            variants={transitions.container}
-          >
-          </AnimateSpawn>
-          <AnimateSpawn
-            variants={transitions.container}
-            className="container-12 grid grid-cols-1 gap-3 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 relative"
-          >
-            <img
-              src={BlobPurple}
-              alt=""
-              className="absolute pointer-events-none max-w-none w-[600px] md:w-[1400px] -right-[300px] md:-right-[700px] top-0 -translate-y-1/2 z-[-1000]"
-            />
-          </AnimateSpawn>
-          <AnimateSpawn
-            className="text-center mt-12 mb-20 md:mb-30 md:mt-16"
-            variants={transitions.item}
-          >
-            <Link
-              className="inline-flex gap-2 items-center  link-primary"
-              href="https://github.com/dfinity/ic"
-            >
-              <GithubIcon className="w-6" />
-              See Code
-            </Link>
-          </AnimateSpawn>
-        </section>
-        <AnimatePresence>
-          {overlayOpen && (
-            <Overlay
-              onClose={closeOverlay}
-              openAt={overlayOpenAt}
-              data={data}
-            ></Overlay>
-          )}
-        </AnimatePresence>
       </main>
     </Layout>
   );

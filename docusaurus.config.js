@@ -17,6 +17,7 @@ const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
+const whatIsIcpDataPlugin = require("./plugins/what-is-icp-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
@@ -54,6 +55,7 @@ const config = {
     teamInformationPlugin,
     votingRewardsPlugin,
     roadmapDataPlugin,
+    whatIsIcpDataPlugin,
     matomoPlugin,
   ],
 
@@ -202,7 +204,7 @@ const config = {
                 label: "Internet Computer Infographic",
                 href: "https://internetcomputer.org/icig.pdf",
               },
-            ]         
+            ],
           },
           {
             type: "dropdown",
