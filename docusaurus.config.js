@@ -151,14 +151,6 @@ const config = {
                 href: "/showcase",
               },
               {
-                label: "How it works",
-                href: "/how-it-works",
-              },
-              {
-                label: "Internet Computer Infographic",
-                href: "https://internetcomputer.org/icig.pdf",
-              },
-              {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
               },
@@ -171,10 +163,6 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Whitepaper",
-                href: "https://internetcomputer.org/whitepaper.pdf",
-              },
-              {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
@@ -184,15 +172,37 @@ const config = {
                 href: "https://dashboard.internetcomputer.org",
               },
               {
-                label: "Wiki",
-                href: "https://wiki.internetcomputer.org",
-              },
-
-              {
                 label: "DFINITY Foundation",
                 href: "https://dfinity.org",
               },
             ],
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Learn",
+            items: [
+              {
+                label: "What is ICP",
+                href: "/what-is-icp",
+              },
+              {
+                label: "How it works",
+                href: "/how-it-works",
+              },
+              {
+                label: "Wiki",
+                href: "https://wiki.internetcomputer.org",
+              },
+              {
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
+              },
+              {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
+              },
+            ]         
           },
           {
             type: "dropdown",
