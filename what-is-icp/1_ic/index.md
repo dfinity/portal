@@ -4,7 +4,11 @@ title: How the IC is Built Up
 card: /img/roadmap/core-protocol.card.jpg
 overlay: /img/roadmap/core-protocol.overlay.jpg
 ---
-The IC software is run on standardized server hardware, which we call nodes. Nodes are spread around the world, hosted in numerous independent data centers in order to ensure a high degree of fault tolerance and decentralization. Nodes are grouped together into subnets, and the nodes that comprise a subnet interact to guarantee consistency with respect to the subnet state. In other words, each subnet constitutes its own blockchain that makes progress independently of the other subnets, which are connected and directed by the IC Protocol (ICP) to form the IC.
-Mechanisms are in place to roll out software updates quickly to boost performance, iron out bugs, or introduce entirely new features, making it possible for the IC to improve and evolve at a rapid pace.
-Updates are further possible at a hardware level, adding and removing nodes or subnets, allowing the IC to scale virtually without bounds as scalability is only limited by the number of nodes made available to the IC.
+The Internet Computer (IC) is a general-purpose blockchain-based platform that can host and run web applications in a decentralized manner. It is designed to provide a World Computer that can replace traditional IT and enable a new generation of Web3 services and applications that run entirely on-chain. It can also play the role of Web3 orchestrator by interacting with other blockchains.
+
+
+An open internet requires decentralization, which can be achieved with blockchains. However, there are efficiency, scalability, usability, and security issues with blockchain protocols. A radical new design is needed to realize the vision of a world computer. 
+
+
+The IC builds a world computer from the ground up. By reworking the foundations, the Internet Computer Protocol (ICP) has introduced many innovations in cryptography, networking, and consensus. The IC is more than just a blockchain.
   
