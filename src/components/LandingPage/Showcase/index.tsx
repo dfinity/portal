@@ -169,7 +169,7 @@ function Showcase() {
         variants={transitions.container}
       >
         <div className={styles.showcaseContainer}>
-          <a className={styles.anchor} id="showcase" />
+          <div className={styles.anchor} id="showcase" />
           <div className={styles.header}>
             <motion.div variants={transitions.item} className={styles.title}>
               <span>Dapps for</span>

@@ -130,7 +130,7 @@ function Dashboard() {
       variants={container}
       className={styles.main}
     >
-      <a className={styles.anchor} id="dashboard" />
+      <div className={styles.anchor} id="dashboard" />
       <div className={styles.grid}>
         <AnimatedStatistic
           title="Block count"

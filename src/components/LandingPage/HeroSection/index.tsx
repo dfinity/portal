@@ -104,7 +104,7 @@ function Index() {
   }, [controls, inView]);
   return (
     <div className={styles.section}>
-      <a className={styles.anchor} id="home" />
+      <div className={styles.anchor} id="home" />
       <motion.div
         ref={ref}
         animate={controls}

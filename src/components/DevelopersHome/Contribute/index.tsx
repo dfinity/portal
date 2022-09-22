@@ -63,7 +63,7 @@ function Index() {
       variants={transitions.container}
       className={styles.container}
     >
-      <a id="features" />
+      <div id="features" />
       <motion.p variants={transitions.item} className={styles.title}>
         Contribute to the <br /> Internet Computer
       </motion.p>

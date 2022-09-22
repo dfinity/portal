@@ -121,7 +121,7 @@ function Features() {
       variants={transitions.container}
       className={styles.container}
     >
-      <a className={styles.anchor} id="features" />
+      <div className={styles.anchor} id="features" />
       <motion.p variants={transitions.item} className={styles.title}>
         World Computer <br /> blockchain features:
       </motion.p>

@@ -286,7 +286,7 @@ function ICPToken() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a className={styles.anchor} id="ICPToken" />
+      <div className={styles.anchor} id="ICPToken" />
       <div className={styles.header}>
         <motion.p variants={transitions.item} className={styles.headerTitle}>
           The ICP token

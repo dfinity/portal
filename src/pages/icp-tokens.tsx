@@ -370,6 +370,7 @@ function TokenHolders(): JSX.Element {
             variants={transitions.item}
             src={BlobBlue}
             className="absolute pointer-events-none max-w-none w-[800px] -left-[570px] top-0 md:w-[1500px]  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"
+            alt=""
           />
           {/*
           ---

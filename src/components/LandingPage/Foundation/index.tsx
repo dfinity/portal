@@ -117,7 +117,7 @@ function Foundation() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a className={styles.anchor} id="foundation" />
+      <div className={styles.anchor} id="foundation" />
       <motion.div
         variants={transitions.item}
         ref={divRef}

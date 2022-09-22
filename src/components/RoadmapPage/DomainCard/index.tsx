@@ -20,6 +20,7 @@ const DomainCard: React.FC<{
         className={`h-[200px] object-cover md:h-auto md:w-[400px] ${
           index % 2 == 1 ? "md:order-1" : ""
         }`}
+        alt=""
       ></img>
       <div className="px-6 pt-6 pb-8 md:py-0 md:px-12 flex-1">
         <h2 className="tw-heading-5 md:tw-heading-3 mb-3">{domain.name}</h2>
