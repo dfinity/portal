@@ -154,10 +154,7 @@ const config = {
                 label: "How it works",
                 href: "/how-it-works",
               },
-              {
-                label: "Internet Computer Infographic",
-                href: "https://internetcomputer.org/icig.pdf",
-              },
+
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
@@ -169,6 +166,10 @@ const config = {
               {
                 label: "HTTPS Outcalls",
                 href: "/https-outcalls",
+              },
+              {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
               },
               {
                 label: "Whitepaper",
@@ -209,6 +210,7 @@ const config = {
                 docId: "developer-docs/ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
+              { label: "Tooling Resources", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
