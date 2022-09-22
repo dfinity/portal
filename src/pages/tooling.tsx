@@ -100,36 +100,41 @@ function Samples(): JSX.Element {
               className="max-w-page md:w-10/12 md:ml-1/12 flex gap-10 md:gap-20 flex-col md:flex-row"
               variants={transitions.item}
             >
-              <div className="flex gap-3 flex-wrap flex-1 items-center">
-                <div className="">
-                  <span className="tw-heading-6">Tools</span>
-                  <span className="tw-paragraph-sm rounded-xl bg-white px-2 py-0.5 mr-3 ml-2">
+              <div className="flex flex-col items-start">
+                <div className="flex items-center mb-5">
+                  <span className="tw-heading-5 mr-2">Tools</span>
+                  <span className="tw-paragraph rounded-xl bg-white px-2 py-0.5">
                     {totalToolsNumber}
                   </span>
                 </div>
-                <button
-                  className={clsx(
-                    "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
-                    !queryTag ? "text-white bg-infinite" : "text-black bg-white"
-                  )}
-                  onClick={() => setQueryTag(undefined)}
-                >
-                  All Tools
-                </button>
-                {tags.map((tag) => (
+
+                <div className="flex gap-2 flex-wrap flex-1 items-center">
                   <button
                     className={clsx(
                       "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
-                      tag === queryTag
+                      !queryTag
                         ? "text-white bg-infinite"
                         : "text-black bg-white"
                     )}
-                    key={tag}
-                    onClick={() => setQueryTag(tag)}
+                    onClick={() => setQueryTag(undefined)}
                   >
-                    {tag}
+                    All Tools
                   </button>
-                ))}
+                  {tags.map((tag) => (
+                    <button
+                      className={clsx(
+                        "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                        tag === queryTag
+                          ? "text-white bg-infinite"
+                          : "text-black bg-white"
+                      )}
+                      key={tag}
+                      onClick={() => setQueryTag(tag)}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
               </div>
             </motion.div>
             <motion.div
