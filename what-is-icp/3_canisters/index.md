@@ -15,4 +15,9 @@ Canisters on the IC have distinguishing properties. They can
   perform substantial amounts of computation at a low cost, and
   pay for their own computation (reverse gas model).
 
+<<<<<<< HEAD
 Engineers can implement canisters in any language that compiles to WebAssembly (Wasm). SDKs are currently available for Rust and Motoko.
+=======
+Engineers can implement canisters in any language that compiles to WebAssembly (Wasm). SDKs are currently available for [Rust](/docs/current/developer-docs/build/cdks/cdk-rs-dfinity/) and [Motoko](/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/).
+  
+>>>>>>> 01c4d70 (adding links)
