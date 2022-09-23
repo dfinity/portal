@@ -3,6 +3,25 @@ const path = require("path");
 const marked = require("marked");
 const matter = require("gray-matter");
 const logger = require("@docusaurus/logger");
+const { isLinkExternal } = require("./utils/links");
+
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+renderer.link = (href, title, text) => {
+  let html = linkRenderer.call(renderer, href, title, text);
+  if (isLinkExternal(href)) {
+    // this is an external link, add target="_blank"
+    html = html.replace(
+      /^<a /,
+      `<a target="_blank" rel="noreferrer noopener" `
+    );
+  }
+  if (href.startsWith("https://www.youtube.com/") && text.startsWith("<img ")) {
+    // this is a youtube thumbnail, add class name
+    html = html.replace(/^<a /, `<a class="markdown-youtube-thumbnail" `);
+  }
+  return html;
+};
 
 function getItems(baseDir) {
   if (!fs.existsSync(baseDir)) {
@@ -71,7 +90,7 @@ const whatIsIcpDataPlugin = async function () {
 
         domains.push({
           name: meta.data.title,
-          description: marked.parse(meta.content),
+          description: marked.parse(meta.content, { renderer }),
           cardImageFit: meta.data.cardImageFit,
           image: {
             card: meta.data.card,
