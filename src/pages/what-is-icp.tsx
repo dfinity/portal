@@ -43,7 +43,7 @@ const RoadmapPage: React.FC = () => {
             "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
           }
         />
-        <title>What is ICP</title>
+        <title>What is the Internet Computer</title>
       </Head>
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
