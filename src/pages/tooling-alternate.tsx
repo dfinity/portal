@@ -49,12 +49,24 @@ function Samples(): JSX.Element {
       filteredCommunityTools.length + filteredDfinityTools.length;
   }
 
-  function ToolCard({ title, description, tags, links }) {
+  function ToolCard({ title, image, description, tags, links }) {
     return (
       <div className="relative rounded-xl bg-white h-full" key={title}>
-        <div className="h-full py-6 px-4 flex flex-col relative">
-          <p className="tw-heading-5 mb-3 mx-2">{title}</p>
-          <div className="flex flex-row gap-1 flex-wrap mb-3">
+        <img
+          src={image}
+          className="w-full h-40 object-cover block rounded-t-xl"
+          alt=""
+        />
+        <div className="h-fit p-6 flex flex-col relative">
+          <div className="absolute flex h-8 -top-4 tw-title-navigation-on-page text-black capitalize px-3 py-1 rounded-full items-center bg-white-60 backdrop-blur-2xl">
+            <span>{tags[0]}</span>
+          </div>
+          <span className="tw-heading-6 my-2 mr-3">{title}</span>
+
+          <p className="tw-paragraph-sm h-full text-black-60 mb-0 overflow-hidden">
+            {description}
+          </p>
+          <div className="flex flex-row gap-1 flex-wrap my-3">
             {tags.map((tag) => (
               <button
                 key={tag}
@@ -65,16 +77,13 @@ function Samples(): JSX.Element {
               </button>
             ))}
           </div>
-          <p className="tw-paragraph mt-0 text-black-60 mb-auto mx-2 overflow-hidden">
-            {description}
-          </p>
-          <div className={"flex flex-row gap-2 mt-4 mx-2"}>
+          <div className={"flex flex-row gap-2 mt-3"}>
             {links.map((link) => (
               <Link
                 className="inline-flex relative border-solid border-black-30 border rounded-full p-1.5 -top-1 hover:text-white hover:border-infinite hover:bg-infinite"
                 to={link}
               >
-                <LinkIcon className="h-6 w-6" />
+                <LinkIcon className={"h-6 w-6"} />
               </Link>
             ))}
           </div>
@@ -193,6 +202,7 @@ function Samples(): JSX.Element {
               {filteredDfinityTools.slice(0, numberOfItems).map((tool) => (
                 <ToolCard
                   title={tool.title}
+                  image={tool.image}
                   description={tool.description}
                   tags={tool.tags}
                   links={tool.links}
@@ -248,6 +258,7 @@ function Samples(): JSX.Element {
                 .map((tool) => (
                   <ToolCard
                     title={tool.title}
+                    image={tool.image}
                     description={tool.description}
                     tags={tool.tags}
                     links={tool.links}
