@@ -1,6 +1,6 @@
 ---
 title: References and further information
-card: /img/what-is-icp/features.jpg
+card: /img/what-is-the-ic/features.jpg
 cardImageFit: cover
 ---
 

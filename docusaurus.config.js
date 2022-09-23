@@ -17,7 +17,7 @@ const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
-const whatIsIcpDataPlugin = require("./plugins/what-is-icp-cards");
+const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
@@ -185,8 +185,8 @@ const config = {
             label: "Learn",
             items: [
               {
-                label: "What is ICP",
-                href: "/what-is-icp",
+                label: "What is the IC",
+                href: "/what-is-the-ic",
               },
               {
                 label: "How it works",

@@ -23,7 +23,7 @@ const MotionLink = motion(Link);
 const RoadmapPage: React.FC = () => {
   resetNavBarStyle();
 
-  const data = useGlobalData()["what-is-icp-data"].default as WhatIsIcpTopic[];
+  const data = useGlobalData()["what-is-the-ic-data"].default as WhatIsIcpTopic[];
 
   return (
     <Layout
