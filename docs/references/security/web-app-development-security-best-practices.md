@@ -24,7 +24,7 @@ Currently, Internet Identity issues delegations with an expiry time. This expiry
 
 See the [OWASP Recommendations](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#session-expiration). A timeout of 30min should be set for security sensitive applications.
 
-Note: Idle timeouts might be introduced soon, see [this](https://forum.dfinity.org/t/authclient-update-idle-timeouts/10464).
+The [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) supports idle timeouts. More details available [here](https://github.com/dfinity/agent-js/tree/main/packages/auth-client#idle-management).
 
 ### Don’t use fetchRootKey in agent-js in production
 
