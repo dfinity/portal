@@ -50,7 +50,7 @@ const RoadmapPage: React.FC = () => {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">What is ICP</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">What is the Internet Computer</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 The Internet Computer (IC) is a general-purpose blockchain-based
                 platform that can host and run virtually any kind of web-based

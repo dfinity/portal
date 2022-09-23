@@ -4,7 +4,7 @@ card: /img/what-is-icp/features.jpg
 cardImageFit: cover
 ---
 
-- ["The Internet Computer for Geeks" white paper](https://internetcomputer.org/whitepaper.pdf)
-- [IC source code](https://github.com/dfinity/ic)
-- [Dashboard](https://dashboard.internetcomputer.org/)
-- [Motoko](https://github.com/dfinity/motoko)
+- A great place to get a deeper understanding of how all components of the IC work and fit together is the [white paper](https://internetcomputer.org/whitepaper.pdf)
+- All of the IC's source code is available [in the IC repo](https://github.com/dfinity/ic).
+- You can find information on the IC's subnets, nodes, node providers, canisters, NNS proposals, voting, ICP transactions and more on our [dashboard](https://dashboard.internetcomputer.org/).
+- Motoko is a novel programming language tailored to smart contracts on the IC. Check out [Motoko](https://github.com/dfinity/motoko).
