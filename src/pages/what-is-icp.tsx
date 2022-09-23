@@ -34,13 +34,13 @@ const RoadmapPage: React.FC = () => {
         <meta
           property="og:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-what-is-the-ic.jpg"
           }
         />
         <meta
           name="twitter:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-what-is-the-ic.jpg"
           }
         />
         <title>What is the Internet Computer</title>
