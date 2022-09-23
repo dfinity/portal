@@ -145,7 +145,7 @@ Canister memory is not persisted across upgrades. If data needs to be kept acros
 
         -   HashMap: <https://github.com/dfinity/stable-structures/pull/1> (currently not prod ready)
 
-    -   <https://github.com/seniorjoinu/ic-stable-memory-allocator>
+    -   <https://github.com/seniorjoinu/ic-stable-memory>
 
 -   See [Current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serialiser requiring additional wasm memory"
 
