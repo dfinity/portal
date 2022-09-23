@@ -10,10 +10,10 @@ The controller of a canister can change / update the canister whenever they like
 
 #### Recommendation
 
-- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of the IC. These SNSs will be available soon. See the link:https://dfinity.org/roadmap/[roadmap] and the link:https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224[design proposal]
+- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of the IC. These SNSs will be available soon. See the roadmap [here](https://dfinity.org/roadmap/) and the design proposal [here](https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224)
 - Another option would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
 **  Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
-- It is also possible to implement a DAO (link:https://en.wikipedia.org/wiki/Decentralized_autonomous_organization[Decentralized Autonomous Organization]) on the IC from scratch. If you decide to do this (e.g. along the lines of the link:https://smartcontracts.org/docs/samples/dao.html[basic DAO example]), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
+- It is also possible to implement a DAO [Decentralized Autonomous Organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on the IC from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
 
 ### Verify the ownership of smart contracts you depend on
 
@@ -145,7 +145,7 @@ Canister memory is not persisted across upgrades. If data needs to be kept acros
 
         -   HashMap: <https://github.com/dfinity/stable-structures/pull/1> (currently not prod ready)
 
-    -   <https://github.com/seniorjoinu/ic-stable-memory-allocator>
+    -   <https://github.com/seniorjoinu/ic-stable-memory>
 
 -   See [Current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serialiser requiring additional wasm memory"
 
