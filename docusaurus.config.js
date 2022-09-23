@@ -210,7 +210,7 @@ const config = {
                 docId: "developer-docs/ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
-              { label: "Tooling Resources", to: "/tooling" },
+              { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",

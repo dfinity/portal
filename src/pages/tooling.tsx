@@ -85,9 +85,9 @@ function Samples(): JSX.Element {
 
   return (
     <Layout
-      title={"Tooling Resources"}
+      title={"Developer Tools"}
       description={
-        "Dive into tool projects from official or from the open source community, ranging from plugins to CLIs, And use them to improve and ease your development journey."
+        "Explore developer tools by DFINITY and the community, and use them to improve and ease your development journey."
       }
     >
       <Head>
@@ -103,7 +103,7 @@ function Samples(): JSX.Element {
             "https://internetcomputer.org/img/shareImages/share-tooling.jpeg"
           }
         />
-        <title>Tooling Resources</title>
+        <title>Developer Tools</title>
       </Head>
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
@@ -118,15 +118,14 @@ function Samples(): JSX.Element {
                 variants={transitions.item}
                 className="tw-heading-3 md:tw-heading-2"
               >
-                Tooling Resources
+                Developer Tools
               </motion.p>
               <motion.p
                 variants={transitions.item}
                 className="tw-lead-sm md:tw-lead mb-0"
               >
-                Dive into tool projects from official or from the open source
-                community, ranging from plugins to CLIs, And use them to improve
-                and ease your development journey.
+                Explore developer tools by DFINITY and the community, and use
+                them to improve and ease your development journey.
               </motion.p>
             </div>
 
@@ -175,11 +174,11 @@ function Samples(): JSX.Element {
               variants={transitions.item}
               className="mt-12 md:ml-1/12"
             >
-              <p className="tw-heading-6 md:tw-heading-5">Featured tools</p>
+              <p className="tw-heading-6 md:tw-heading-5">Tools by DFINITY</p>
 
               {filteredDfinityTools.length === 0 && (
                 <p className="tw-paragraph text-black-60">
-                  No featured tools available
+                  No tools by DFINITY available
                 </p>
               )}
             </motion.div>
