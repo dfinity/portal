@@ -27,8 +27,8 @@ const RoadmapPage: React.FC = () => {
 
   return (
     <Layout
-      title="What is the IC"
-      description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
+      title="What is the Internet Computer"
+      description="The Internet Computer (IC) is the world computer of the Web 3.0 age. This page explains what the IC is and why it is a great choice to host Web 3.0 apps."
     >
       <Head>
         <meta
@@ -58,16 +58,18 @@ const RoadmapPage: React.FC = () => {
                 a World Computer that can replace traditional IT and enable a
                 new generation of Web3 services and applications that run
                 entirely on-chain. It can also play the role of Web3
-                orchestrator by interacting with traditional blockchains. An
-                open internet requires decentralization, which is solved nicely
+                orchestrator by interacting with traditional blockchains.</p>
+                 
+                <p className="tw-lead-sm md:tw-lead mb-0"> 
+                An open internet requires decentralization, which is solved nicely
                 by using blockchains. However, there are efficiency,
                 scalability, usability, and security issues with blockchain
                 protocols, a radical new design is needed to realize the vision
-                of a world computer. The IC rebuilds the idea of a world
-                computer from the ground up. It is more than just a blockchain.
-                The Internet Computer Protocol (ICP) has introduced many
-                innovations in cryptography, networking, and consensus, which we
-                explain below.
+                of a world computer. </p>
+                
+                <p className="tw-lead-sm md:tw-lead mb-0"> 
+                  The IC builds a world computer from the ground up. Since its inception, the Internet Computer Protocol (ICP) has introduced many innovations in cryptography, networking, and consensus. 
+                  The IC is more than just a blockchain.
               </p>
             </div>
           </div>
