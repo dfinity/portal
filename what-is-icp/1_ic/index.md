@@ -1,5 +1,5 @@
 ---
-title: How is the IC built up?
+title: The Architecture of the IC
 card: /img/what-is-icp/built.png
 cardImageFit: center
 ---
