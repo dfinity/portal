@@ -429,7 +429,7 @@ Unsafe Rust code is risky because it may introduce memory corruption issues.
 
 -   Avoid unsafe code whenever possible.
 
--   See the [Rust security guidelines](https://anssi-fr.github.io/rust/04_language.html#unsafe-code)
+-   See the [Rust security guidelines](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code)
 
 -   Consider the [Dfinity Rust Guidelines](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_avoid_unsafe_code).
 
