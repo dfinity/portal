@@ -50,7 +50,10 @@ const RoadmapPage: React.FC = () => {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">What is the <br/>Internet Computer?</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
+                What is the <br />
+                Internet Computer?
+              </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 The Internet Computer (IC) is a general-purpose blockchain-based
                 platform that can host and run virtually any kind of web-based
@@ -58,18 +61,22 @@ const RoadmapPage: React.FC = () => {
                 a World Computer that can replace traditional IT and enable a
                 new generation of Web3 services and applications that run
                 entirely on-chain. It can also play the role of Web3
-                orchestrator by interacting with traditional blockchains.</p>
-                 
-                <p className="tw-lead-sm md:tw-lead mb-0"> 
-                An open internet requires decentralization, which is solved nicely
-                by using blockchains. However, there are efficiency,
+                orchestrator by interacting with traditional blockchains.
+              </p>
+
+              <p className="tw-lead-sm md:tw-lead mb-0">
+                An open internet requires decentralization, which is solved
+                nicely by using blockchains. However, there are efficiency,
                 scalability, usability, and security issues with blockchain
                 protocols, a radical new design is needed to realize the vision
-                of a world computer. </p>
-                
-                <p className="tw-lead-sm md:tw-lead mb-0"> 
-                  The IC builds a world computer from the ground up. Since its inception, the Internet Computer Protocol (ICP) has introduced many innovations in cryptography, networking, and consensus. 
-                  The IC is more than just a blockchain.
+                of a world computer.{" "}
+              </p>
+
+              <p className="tw-lead-sm md:tw-lead mb-0">
+                The IC builds a world computer from the ground up. Since its
+                inception, the Internet Computer Protocol (ICP) has introduced
+                many innovations in cryptography, networking, and consensus. The
+                IC is more than just a blockchain.
               </p>
             </div>
           </div>
@@ -82,7 +89,7 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 relative mb-30 md:mb-56">
+        <section className="container-10 -mt-52 md:-mt-32 relative mb-30 md:mb-40">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}

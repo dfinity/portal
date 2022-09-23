@@ -22,10 +22,12 @@ const TopicCard: React.FC<{
           md:h-auto 
           md:w-[400px] ${index % 2 == 1 ? "md:order-1" : ""}`}
       ></img>
-      <div className="px-6 py-8 pb-8 md:px-12 flex-1">
-        <h2 className="tw-heading-5 md:tw-heading-3 mb-3">{topic.name}</h2>
+      <div className="px-6 py-8 pb-8 md:px-12 flex-1 md:py-16">
+        <h2 className="tw-heading-5 md:tw-heading-3 mb-3 md:mb-6">
+          {topic.name}
+        </h2>
         <div
-          className="tw-paragraph-sm md:tw-lead-sm text-black-60"
+          className="tw-paragraph-sm md:tw-lead-sm text-black-60 prose prose-a:underline prose-a:text-infinite hover:prose-a:no-underline hover:prose-a:text-black"
           dangerouslySetInnerHTML={{ __html: topic.description }}
         ></div>
 
