@@ -27,7 +27,7 @@ const RoadmapPage: React.FC = () => {
 
   return (
     <Layout
-      title="What is ICP"
+      title="What is the IC"
       description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
     >
       <Head>
