@@ -58,12 +58,12 @@ function getItems(baseDir) {
 /** @type {import('@docusaurus/types').PluginModule} */
 const whatIsIcpDataPlugin = async function () {
   return {
-    name: "what-is-icp-data",
+    name: "what-is-the-ic-data",
     async loadContent() {
       const domains = [];
 
       const dirs = fs
-        .readdirSync(path.resolve(__dirname, "..", "what-is-icp"), {
+        .readdirSync(path.resolve(__dirname, "..", "what-is-the-ic"), {
           withFileTypes: true,
         })
         .filter((d) => d.isDirectory());
@@ -72,21 +72,21 @@ const whatIsIcpDataPlugin = async function () {
         const indexPath = path.resolve(
           __dirname,
           "..",
-          "what-is-icp",
+          "what-is-the-ic",
           dir.name,
           "index.md"
         );
 
         if (!fs.existsSync(indexPath)) {
           logger.warn(
-            `Warning: no index.md file for what-is-icp topic "${dir.name}"`
+            `Warning: no index.md file for what-is-the-ic topic "${dir.name}"`
           );
           continue;
         }
 
         const meta = matter(fs.readFileSync(indexPath, { encoding: "utf-8" }));
 
-        const baseDir = path.resolve(__dirname, "..", "what-is-icp", dir.name);
+        const baseDir = path.resolve(__dirname, "..", "what-is-the-ic", dir.name);
 
         domains.push({
           name: meta.data.title,

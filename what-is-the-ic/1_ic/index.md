@@ -1,6 +1,6 @@
 ---
 title: The Architecture of the IC
-card: /img/what-is-icp/built.png
+card: /img/what-is-the-ic/built.png
 cardImageFit: center
 ---
 

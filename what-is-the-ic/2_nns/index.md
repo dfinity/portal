@@ -1,6 +1,6 @@
 ---
 title: The Network Nervous System governs the IC
-card: /img/what-is-icp/nns.jpg
+card: /img/what-is-the-ic/nns.jpg
 cardImageFit: cover
 ---
 
