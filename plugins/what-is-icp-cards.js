@@ -72,6 +72,7 @@ const whatIsIcpDataPlugin = async function () {
         domains.push({
           name: meta.data.title,
           description: marked.parse(meta.content),
+          cardImageFit: meta.data.cardImageFit,
           image: {
             card: meta.data.card,
             overlay: meta.data.overlay,

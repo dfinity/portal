@@ -1,9 +1,9 @@
 ---
 title: The Network Nervous System governs the IC
-
-card: /img/roadmap/core-protocol.card.jpg
-overlay: /img/roadmap/core-protocol.overlay.jpg
+card: /img/what-is-icp/nns.jpg
+cardImageFit: cover
 ---
+
 As the governance system of the IC, the Network Nervous System (NNS) provides a number of crucial functionalities.
 
 The NNS holds the ICP ledger, which tracks the accounts and transactions of the ICP utility token.

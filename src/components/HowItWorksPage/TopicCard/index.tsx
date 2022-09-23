@@ -18,7 +18,7 @@ const TopicCard: React.FC<{
       <img
         src={topic.image?.card}
         className={`h-[200px] 
-          object-cover 
+          ${topic.cardImageFit === "center" ? "object-contain" : "object-cover"}
           md:h-auto 
           md:w-[400px] ${index % 2 == 1 ? "md:order-1" : ""}`}
       ></img>
