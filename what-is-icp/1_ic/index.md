@@ -1,14 +1,7 @@
 ---
-<<<<<<< HEAD
-title: How is the IC built up?
+title: The Architecture of the IC
 card: /img/what-is-icp/built.png
 cardImageFit: center
-=======
-title: The Architecture of the IC
-
-card: /img/what-is-icp/Built.png
-overlay: /img/what-is-icp/Built.png
->>>>>>> 01c4d70 (adding links)
 ---
 
 The Internet Computer Protocol software is run on standardized server hardware, which we call nodes. Nodes are spread around the world, hosted in numerous independent data centers in order to ensure a high degree of fault tolerance and decentralization. Nodes are grouped together into subnets, where each subnet constitutes its own blockchain that makes progress independently of the other subnets. All subnets are connected and directed by the Internet Computer Protocol to form the Internet Computer.

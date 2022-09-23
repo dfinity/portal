@@ -13,8 +13,4 @@ Furthermore, the NNS maintains the entire IC structure, such as information abou
 Moreover, the NNS provides the means to power computation on the IC, by converting ICP tokens to cycles, which are consumed when running applications.
 
 The NNS is the decentralized brain governing the entirety of the IC.
-<<<<<<< HEAD
-(learn more about the NNS here)
-=======
 (learn more about the NNS [here](https://internetcomputer.org/how-it-works/network-nervous-system-nns/))
->>>>>>> 01c4d70 (adding links)

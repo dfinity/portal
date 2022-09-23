@@ -1,15 +1,9 @@
 ---
-title: What is Chain-key Cryptography
+title: Chain-key cryptography underpins the IC's security architecture
 card: /img/what-is-icp/chainkey.jpg
 cardImageFit: cover
 ---
-<<<<<<< HEAD
-
-The correct operation of subnets (and inter-subnet communication) relies on a suite of novel cryptographic protocols, collectively referred to as chain-key cryptography. Chain-key cryptography securely generates private key shares for the BLS signature scheme as part of subnet creation using a non-interactive distributed key generation (niDKG) protocol. Subnets use BLS threshold signing to authenticate, in a decentralized way,
-
-=======
 The correct operation of subnets (and inter-subnet communication) relies on a suite of novel cryptographic protocols, collectively referred to as [*chain-key cryptography*](/how-it-works/chain-key-technology/). Chain-key cryptography securely generates private key shares for the BLS signature scheme as part of subnet creation using a non-interactive distributed key generation (niDKG) protocol. Subnets use BLS threshold signing to authenticate, in a decentralized way,
->>>>>>> 01c4d70 (adding links)
 - responses to user requests,
 - the subnet state,
 - inter-subnet messages, and
