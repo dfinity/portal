@@ -17,6 +17,7 @@ const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
+const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
@@ -54,6 +55,7 @@ const config = {
     teamInformationPlugin,
     votingRewardsPlugin,
     roadmapDataPlugin,
+    whatIsIcpDataPlugin,
     matomoPlugin,
   ],
 
@@ -151,11 +153,6 @@ const config = {
                 href: "/showcase",
               },
               {
-                label: "How it works",
-                href: "/how-it-works",
-              },
-
-              {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
               },
@@ -168,14 +165,6 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Internet Computer Infographic",
-                href: "https://internetcomputer.org/icig.pdf",
-              },
-              {
-                label: "Whitepaper",
-                href: "https://internetcomputer.org/whitepaper.pdf",
-              },
-              {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
@@ -185,13 +174,35 @@ const config = {
                 href: "https://dashboard.internetcomputer.org",
               },
               {
+                label: "DFINITY Foundation",
+                href: "https://dfinity.org",
+              },
+            ],
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Learn",
+            items: [
+              {
+                label: "What is the IC",
+                href: "/what-is-the-ic",
+              },
+              {
+                label: "How it works",
+                href: "/how-it-works",
+              },
+              {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-
               {
-                label: "DFINITY Foundation",
-                href: "https://dfinity.org",
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
+              },
+              {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
               },
             ],
           },

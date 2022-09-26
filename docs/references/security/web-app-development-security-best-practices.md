@@ -24,7 +24,7 @@ Currently, Internet Identity issues delegations with an expiry time. This expiry
 
 See the [OWASP Recommendations](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#session-expiration). A timeout of 30min should be set for security sensitive applications.
 
-Note: Idle timeouts might be introduced soon, see [this](https://forum.dfinity.org/t/authclient-update-idle-timeouts/10464).
+The [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) supports idle timeouts. More details available [here](https://github.com/dfinity/agent-js/tree/main/packages/auth-client#idle-management).
 
 ### Don’t use fetchRootKey in agent-js in production
 
@@ -96,7 +96,7 @@ Storing key material in browser storage (such as [sessionStorage](https://develo
 
 #### Recommendation
 
-Use [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) to hide key material from JavaScript, by using `extractable=false` in `generateKey` , see [this](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey). An example for this can be found in the people parties project, see [here](https://github.com/dfinity/people-parties/blob/06208183a2679189d02bc5e64dcbd71c5f5dfbed/frontend/src/services/auth.ts#L111-L120). This makes it impossible to access the private key from JavaScript.
+Use [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) to hide key material from JavaScript, by using `extractable=false` in `generateKey` , see [this](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey). An example for this can be found in the encrypted notes example, see [here](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/src/frontend/src/lib/crypto.ts#L149-L159). This makes it impossible to access the private key from JavaScript.
 
 ### Use a secure web framework
 
@@ -106,7 +106,7 @@ Modern web frameworks make attacks such as XSS very difficult since they safely 
 
 #### Recommendation
 
--   Use a web framework that has a secure templating mechanism such as [Svelte](https://github.com/dfinity/nns-dapplink:https://svelte.dev/) to avoid XSS. This is used e.g. in the [NNS dApp](https://github.com/dfinity/nns-dapp) project.
+-   Use a web framework that has a secure templating mechanism such as [Svelte](https://svelte.dev/) to avoid XSS. This is used e.g. in the [NNS dApp](https://github.com/dfinity/nns-dapp) project.
 
 -   Don’t use insecure features of the framework, such as e.g. [@html in Svelte](https://svelte.dev/docs#template-syntax-html).
 
