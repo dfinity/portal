@@ -28,6 +28,9 @@ const votingRewardsPlugin = require("./plugins/voting-rewards");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
+console.log(`env.URL url: ${process.env.URL}`);
+console.log(`env.DEPLOY_PRIME_URL url: ${process.env.DEPLOY_PRIME_URL}`);
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",

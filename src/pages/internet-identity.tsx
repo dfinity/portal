@@ -9,6 +9,7 @@ import IconNoPassword from "../../static/img/basics/icon-ii-no-passwords.svg";
 import IconPrivacy from "../../static/img/basics/icon-ii-privacy.svg";
 import IconCryptography from "../../static/img/basics/icon-ii-cryptography.svg";
 import Astronaut from "../../static/img/astronaut.svg";
+import Head from "@docusaurus/Head";
 
 function FeaturePage() {
   resetNavBarStyle();
@@ -18,6 +19,20 @@ function FeaturePage() {
       // fill in meta description
       description=""
     >
+      <Head>
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-internet-identity.jpg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-internet-identity.jpg"
+          }
+        />
+      </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white pb-20">
           <DarkHeroStyles></DarkHeroStyles>
