@@ -65,20 +65,20 @@ fn update(profile: Profile) {
 #[query(manual_reply = true)]
 fn search(text: String) -> ManualReply<Option<Profile>> {
     let text = text.to_lowercase();
+    let mut result = ManualReply::one(None::<Profile>);
     PROFILE_STORE.with(|profile_store| {
         for (_, p) in profile_store.borrow().iter() {
             if p.name.to_lowercase().contains(&text) || p.description.to_lowercase().contains(&text)
             {
-                return ManualReply::one(Some(p));
+                result = ManualReply::one(Some(p));
             }
 
             for x in p.keywords.iter() {
                 if x.to_lowercase() == text {
-                    return ManualReply::one(Some(p));
+                    result = ManualReply::one(Some(p));
                 }
             }
         }
     });
-
-    ManualReply::one(None::<Profile>)
+    result
 }
