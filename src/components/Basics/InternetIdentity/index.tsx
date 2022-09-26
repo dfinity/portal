@@ -4,6 +4,20 @@ import styles from "./index.module.css";
 import { motion, useAnimation } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 
+export const Card: React.FC<{
+  icon: React.ReactNode;
+  title: React.ReactNode;
+  children: React.ReactNode;
+}> = ({ children, icon, title }) => {
+  return (
+    <motion.div variants={transitions.item} className={styles.card}>
+      {icon}
+      <h3 className="heading-3">{title}</h3>
+      <div className="paragraph">{children}</div>
+    </motion.div>
+  );
+};
+
 const InternetIdentity = () => {
   const [ref, inView, x] = useInView({ threshold: 0.35 });
   const controls = useAnimation();
@@ -78,7 +92,7 @@ const InternetIdentity = () => {
             </svg>
 
             <h3 className="heading-3">No usernames &amp; passwords</h3>
-            <p className="paragraph">
+            <p className="paragraph opacity-60">
               Fingerprint or FaceID systems on mobile or portable HSM devices as
               YubiKey or Ledger wallet, to keep the anonymity without being
               tracked across.
@@ -109,7 +123,7 @@ const InternetIdentity = () => {
             </svg>
 
             <h3 className="heading-3">No tracking</h3>
-            <p className="paragraph">
+            <p className="paragraph opacity-60">
               Using Internet Identity authentication system, users will not able
               being tracked across dapps and services.
             </p>
@@ -143,7 +157,7 @@ const InternetIdentity = () => {
             </svg>
 
             <h3 className="heading-3">Cryptographi&shy;cally secure</h3>
-            <p className="paragraph">
+            <p className="paragraph opacity-60">
               Giving access to open, decentralized network without compromising
               on speed, security, sovereignty.
             </p>
