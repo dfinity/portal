@@ -166,7 +166,7 @@ const config = {
               },
               {
                 label: "Internet Identity",
-                href: "https://identity.ic0.app/",
+                href: "/internet-identity",
               },
 
               {
