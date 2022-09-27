@@ -149,15 +149,11 @@ When the IC creates a *fresh* id, it never creates a self-authenticating id, res
 
 #### Textual representation of principals {#textual-ids}
 
-:::note
-This textual representation does not actually show up in the interface (which always deals with blobs), so it is merely a recommended convention.
-:::
-
 We specify a *canonical textual format* that is recommended whenever principals need to be printed or read in textual format, e.g. in log messages, transactions browser, command line tools, source code.
 
 The textual representation of a blob `b` is `Grouped(Base32(CRC32(b) · b))` where
 
--   `CRC32` is a four byte check sequence, calculated as defined by ISO 3309, ITU-T V.42 and [elsewhere](https://www.w3.org/TR/2003/REC-PNG-20031110/#5CRC-algorithm)
+-   `CRC32` is a four byte check sequence, calculated as defined by ISO 3309, ITU-T V.42, and [elsewhere](https://www.w3.org/TR/2003/REC-PNG-20031110/#5CRC-algorithm), and stored as big-endian, i.e., the most significant byte comes first and then the less significant bytes come in descending order of significance (MSB B2 B1 LSB).
 
 -   `Base32` is the Base32 encoding as defined in [RFC 4648](https://tools.ietf.org/html/rfc4648#section-6), with no padding character added.
 
@@ -237,13 +233,15 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `stopping`, calls to the canister are rejected by the IC, but responses to the canister are processed as normal.
 
--   In status `stopped`, calls to the canister are rejected by the IC, and there are no outstanding responses.
+-   In status `stopped`, calls to the canister are rejected by the IC, and there are no outstanding responses to call contexts that are not marked as deleted.
 
 In all cases, calls to the [management canister](#the-ic-management-canister) are processed, regardless of the state of the managed canister.
 
 The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
-NOTE: This status is orthogonal to the question of whether a canister is empty or not: an empty canister can be in status `running`. Calls to such a canister are still rejected, but because the canister is empty.
+:::note
+This status is orthogonal to the question of whether a canister is empty or not: an empty canister can be in status `running`. Calls to such a canister are still rejected, but because the canister is empty.
+:::
 
 ### Signatures
 
@@ -400,6 +398,10 @@ For each asynchronous request known to the Internet Computer, its status is in a
 
     If the status is `rejected`, then this path contains a textual diagnostic message, else it is not present.
 
+-   `/request_status/<request_id>/error_code` (text)
+
+    If the status is `rejected`, then this path might be present and contain an implementation-specific error code (see [Error codes](#error-codes)), else it is not present.
+
 :::note
 Immediately after submitting a request, the request may not show up yet as the Internet Computer is still working on accepting the request as pending.
 :::
@@ -550,7 +552,13 @@ The HTTP response to this request consists of a CBOR map with the following fiel
 
 -   `certificate` (`blob`): A certificate (see [Certification](#certification)).
 
-    If this `certificate` includes subnet delegations (possibly nested), then the `effective_canister_id` must be included in each delegation's canister id range (see [Delegation](#certification-delegation)).
+    If this `certificate` includes subnet delegations (possibly nested), then the `effective_canister_id` must be included in each delegation's canister id range (see [Delegation](#certification-delegation)), unless
+
+    -   the `effective_canister_id` is that of the Management Canister (`aaaaa-aa`),
+
+    -   all requested paths have `/time` or `/request_status/<request_id>` as prefix where the (single) original request referenced by `<request_id>` is an update call to the Management Canister (`aaaaa-aa`) and the method name is `provisional_create_canister_with_cycles`, and
+
+    -   whenever the certificate contains the path `/request_status/<request_id>/reply`, then its value is a Candid-encoded record with a `canister_id` field of type `principal` and the `canister_id` must be included in each delegation's canister id range.
 
 The returned certificate reveals all values whose path is a suffix of the list of requested paths. It also always reveals `/time`, even if not explicitly requested.
 
@@ -560,13 +568,13 @@ All requested paths must have one of the following paths as prefix:
 
 -   `/subnet`. Can be requested by anyone.
 
--   `/request_status/<request_id>`. Can only be read if `/request_id/<request_id>` is not present in the state tree, or if this `read_state` request was signed by same sender as the original request referenced by `<request_id>`, and the effective canister id of the original request matches the `<effective_canister_id>` (see [Effective canister id](#http-effective-canister-id)) in this HTTP request's path.
+-   `/request_status/<request_id>`. Can only be requested by the same sender as the original request referenced by `<request_id>` and if the effective canister id of the original request matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/module_hash`. Can be requested by anyone, if `<canister_id>` matches `<effective_canister_id>`.
+-   `/canisters/<canister_id>/module_hash`. Can be requested by anyone if `<canister_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/controllers`. Can be requested by anyone, if `<canister_id>` matches `<effective_canister_id>`. The order may vary depending on the implementation.
+-   `/canisters/<canister_id>/controllers`. Can be requested by anyone if `<canister_id>` matches `<effective_canister_id>`. The order may vary depending on the implementation.
 
--   `/canisters/<canister_id>/metadata/<name>`. Can be read by anyone if `<canister_id>` matches `<effective_canister_id>`, and `<name>` is a public custom section. If `<name>` is a private custom section, it can only be read if this `read_state` request was signed by one of the controllers of the canister.
+-   `/canisters/<canister_id>/metadata/<name>`. Can be requested by anyone if `<canister_id>` matches `<effective_canister_id>` and `<name>` is a public custom section. If `<name>` is a private custom section, it can only be requested by the controllers of the canister.
 
 Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canister themselves via the System API (see [Certified data](#system-api-certified-data)).
 
@@ -602,31 +610,33 @@ If the call resulted in a reject, the response is a CBOR map with the following 
 
 -   `reject_message` (`text`): a textual diagnostic message.
 
+-   `error_code` (text): an optional implementation-specific textual error code (see [Error codes](#error-codes)).
+
 Canister methods that do not change the canister state can be executed more efficiently. This method provides that ability, and returns the canister's response directly within the HTTP response.
 
 ### Effective canister id {#http-effective-canister-id}
 
 The `<effective_canister_id>` in the URL paths of requests is the *effective* destination of the request.
 
--   If the call is to the Management Canister (`aaaaa-aa`), and the `arg` is Candid-encoded where the first argument is a record with a `canister_id` field of type `principal`, then the effective canister id is that principal.
+-   If the request is an update call to the Management Canister (`aaaaa-aa`), then:
 
--   If the call is to the `raw_rand` method of the Management Canister (`aaaaa-aa`), then there is no effective canister id. This implies that this method cannot be called by users, only via canisters.
+    -   If the call is to the `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
 
--   If the call is to the `provisional_create_canister_with_cycles` method of the Management Canister (`aaaaa-aa`), any principal is a valid effective canister id for this call.
+    -   Otherwise, if the `arg` is a Candid-encoded record with a `canister_id` field of type `principal`, then the effective canister id must be that principal.
 
-    :::note
-    The Internet Computer blockchain mainnet does not support `provisional_create_canister_with_cycles`. This means that using an effective canister id that could be an existing canister would lead to the request being routed to a node on the corresponding subnet and produce an error response there, while using an effective canister id that cannot be an existing canister id would cause an error response from the node receiving the request --- either is fine.
+    -   Otherwise, the call is rejected by the system independently of the effective canister id.
 
-    In multi-subnet development instances of the Internet Computer Protocol (e.g. testnets), users with privileged access to `provisional_create_canister_with_cycles` (or possibly similar, internal methods) and knowledge of the mapping from canisters to subnets can use their choice of the effective canister id in the URL to steer the request to a specific subnet.
+-   If the request is an update call to a canister that is not the Management Canister (`aaaaa-aa`) or if the request is a query call, then the effective canister id must be the `canister_id` in the request.
 
-    In a local canister execution environment, the effective canister id is ignored, and thus `aaaaa-aa` can be used.
+    ::: note
+    The expectation is that user-side agent code shields users and developers from the notion of effective canister ID, in analogy to how the System API interface shields canister developers from worrying about routing.
+
+    The Internet Computer blockchain mainnet rejects all requests whose effective canister id is in no subnet's canister ranges, independently of whether the remaining conditions on the effective canister id are satisfied.
+
+    The Internet Computer blockchain mainnet does not support `provisional_create_canister_with_cycles` and thus all calls to this method are rejected independently of the effective canister id.
+
+    In development instances of the Internet Computer Protocol (e.g. testnets), the effective canister id of a request submitted to a node must be a canister id from the canister ranges of the subnet to which the node belongs, unless the request is an update call to the Management Canister (`aaaaa-aa`), the method name is `provisional_create_canister_with_cycles`, and the effective canister id is that of the Management Canister (`aaaaa-aa`).
     :::
-
--   Else, the effective canister id must be the `canister_id` in the request.
-
-:::note
-The expectation is that user-side agent code shields users and developers from this concept, in analogy to how the System API interface shields canister developers from worrying about routing.
-:::
 
 ### Authentication
 
@@ -760,6 +770,10 @@ The symbolic names of this enumeration are used throughout this specification, b
 The error message is guaranteed to be a string, i.e. not arbitrary binary data.
 
 When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: If the IC responds with a `SYS_FATAL` reject, then it really was the IC issuing this reject.
+
+### Error codes
+
+Implementations of the API can provide additional details for rejected messages in the form of a textual label identifying the error condition. API clients can use these labels to handle errors programmatically or suggest recovery paths to the user. The specification reserves error codes matching the regular expression `IC[0-9]+` (e.g., `IC502`) for the DFINITY implementation of the API.
 
 ### Status endpoint {#api-status}
 
