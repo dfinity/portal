@@ -103,8 +103,6 @@ function HowItWorks() {
   const cardGroups = useGlobalData()["howitworks-cards"]
     .default as HowItWorksPageData;
 
-  const featuredGroup = cardGroups.find((g) => g.isFeatured)!;
-
   return (
     <Layout
       title="How It Works"
@@ -135,7 +133,7 @@ function HowItWorks() {
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
-          <div className="container-10 pt-12 mb-80 md:mb-52 md:pt-36 relative">
+          <div className="container-10 pt-12 mb-80 md:mb-40 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
                 How the Internet Computer Works
@@ -153,41 +151,6 @@ function HowItWorks() {
               src="/img/whiteBlurredCircle.png"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
-          </div>
-        </section>
-        <section className="container-12 -mt-72 md:-mt-32 relative !px-0">
-          <div className="overflow-auto flex gap-5 fancy-scrollbar px-6 xl:px-0">
-            {featuredGroup.items.map((card) => (
-              <div
-                className="rounded-xl overflow-hidden flex-1 bg-white min-w-[80vw] sm:min-w-[320px]  xl:min-w-0"
-                key={card.title}
-              >
-                <img
-                  className="w-full h-[200px] object-cover"
-                  src={card.coverImage}
-                  alt=""
-                ></img>
-                <div className="p-6">
-                  <h3 className="tw-heading-5 mb-3">{card.title}</h3>
-                  <div className="tw-paragraph text-black-60 mb-3">
-                    {card.abstract}
-                  </div>
-                  <button
-                    className="link-primary border-none bg-transparent appearance-none p-0 inline-flex items-center gap-2 font-circular"
-                    onClick={() =>
-                      document
-                        .querySelector(
-                          `#${slugify(card.title, { strict: true })}`
-                        )
-                        .scrollIntoView({ behavior: "smooth" })
-                    }
-                  >
-                    Learn more
-                    <ArrowRight></ArrowRight>
-                  </button>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
         <section className="container-12 mt-32 space-y-24 md:space-y-20 relative mb-52  ">

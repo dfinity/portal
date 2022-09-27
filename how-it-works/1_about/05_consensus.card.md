@@ -1,10 +1,10 @@
 ---
-title: Internet Computer Consensus
+title: Consensus
 ---
 
 ![](/img/how-it-works/consensus.600x300.jpg)
 
-# Internet Computer Consensus
+# Consensus
 
 The Internet Computer blockchain runs on a network of nodes in independent data centers located around the world. In each of its subnet blockchains, the participating nodes must process the same messages in the same order to ensure that they achieve the same state. To this end, the Internet Computer relies on a novel consensus protocol, as described in this presentation.
 
