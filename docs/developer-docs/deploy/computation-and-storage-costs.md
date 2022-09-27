@@ -11,6 +11,7 @@ The Internet Computer is a decentralized public utility, controlled by the NNS �
 Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer and “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, Canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
 See below for details on the cost of compute and storage transactions on the Internet Computer as of August 29, 2022.
+A thorough example how the cost of running a canister is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
 
 | Transaction                          | Description                                                                                                    | All Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------------------|

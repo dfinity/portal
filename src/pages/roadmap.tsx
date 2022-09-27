@@ -15,7 +15,6 @@ import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-roadmap.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -39,10 +38,24 @@ const RoadmapPage: React.FC = () => {
   const data = useGlobalData()["roadmap-data"].default as RoadmapDomain[];
 
   return (
-    <Layout title="Roadmap" description="">
+    <Layout
+      title="Roadmap"
+      description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
+    >
       <Head>
-        <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
+          }
+        />
+        <title>Roadmap</title>
       </Head>
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
@@ -62,6 +75,7 @@ const RoadmapPage: React.FC = () => {
           </div>
           <div className="container-10 relative">
             <img
+              alt=""
               src="/img/whiteBlurredCircle.png"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />

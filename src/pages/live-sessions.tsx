@@ -14,7 +14,6 @@ import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-live-sessions.jpeg";
 
 const MotionLink = motion(Link);
 
@@ -86,6 +85,7 @@ function LiveSessionsPage(): JSX.Element {
       behavior: "smooth",
     });
   }
+
   useEffect(() => {
     if (location.hash === "#subscribe") {
       scrollToForm();
@@ -98,8 +98,19 @@ function LiveSessionsPage(): JSX.Element {
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
     >
       <Head>
-        <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
+          }
+        />
+        <title>Live Sessions</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

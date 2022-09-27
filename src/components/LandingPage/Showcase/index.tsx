@@ -126,7 +126,7 @@ function Dapp({ dappInfo }) {
 function Showcase() {
   const firstDapps = dapps.slice(0, 14);
   const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.35 });
+  const { ref, inView } = useInView({ threshold: 0.2 });
   useEffect(() => {
     if (inView) {
       controls.start("show");

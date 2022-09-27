@@ -13,7 +13,6 @@ import clsx from "clsx";
 import IntraPageNav from "../components/Common/IntraPageNav";
 import { css } from "../utils/dummy-css";
 import Head from "@docusaurus/Head";
-import shareImage from "@site/static/img/shareImages/share-how-it-works.jpeg";
 
 const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
   const groupClassName = `${slugify(group.title)}-item`;
@@ -108,7 +107,7 @@ function HowItWorks() {
 
   return (
     <Layout
-      title="How it works"
+      title="How It Works"
       description="Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives."
     >
       <style>
@@ -119,8 +118,19 @@ function HowItWorks() {
         `}
       </style>
       <Head>
-        <meta property="og:image" content={shareImage} />
-        <meta name="twitter:image" content={shareImage} />
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
+          }
+        />
+        <title>How It Works</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -139,6 +149,7 @@ function HowItWorks() {
           </div>
           <div className="container-10 relative">
             <img
+              alt=""
               src="/img/whiteBlurredCircle.png"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
