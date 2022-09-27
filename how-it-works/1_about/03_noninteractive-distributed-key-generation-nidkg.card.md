@@ -1,10 +1,10 @@
 ---
-title: Noninteractive Distributed Key Generation
+title: NIDKG
 ---
 
 ![](/img/how-it-works/noninteractive-distributed-key-generation-nidkg.600x300.jpg)
 
-# Noninteractive Distributed Key Generation
+# NIDKG
 
 NIDKG is a cryptographic protocol to distributedly generate key shares for each of the nodes participating in a subnet blockchain. It applies advanced cryptography, including encryption with forward secrecy and noninteractive zero-knowledge proofs of correct key sharing.
 

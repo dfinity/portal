@@ -1,3 +1,3 @@
 ---
-title: About the Internet Computer
+title: Internet Computer Stack
 ---
