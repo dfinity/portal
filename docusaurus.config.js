@@ -250,12 +250,12 @@ const config = {
                 href: "/roadmap",
               },
               {
-                label: "Staking & Governance",
-                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
+                label: "Network Nervous System",
+                href: "/nns",
               },
               {
-                label: "NNS Frontend dapp",
-                href: "https://nns.ic0.app/v2/",
+                label: "Staking & Governance",
+                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
               },
               {
                 label: "Node Providers",
