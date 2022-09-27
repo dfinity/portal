@@ -89,7 +89,7 @@ As we have seen, completely removing the impact that dishonest replicas can have
 
 ### IPv6-Only Support
 
-Currently, as the IC itself is an IPv6-only system, the canister HTTP outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that we do not have sufficiently many IPv4 addresses such that every replica of the IC could get its own IPv4 address and thus we would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
+Currently, as the IC itself is an IPv6-based system, the canister HTTP outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that we do not have sufficiently many IPv4 addresses such that every replica of the IC could get its own IPv4 address and thus we would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
 
 ### Rate Limiting by Servers
 
@@ -109,7 +109,7 @@ As mentioned already further above, there are multiple possible extensions we ar
 
 ## Coding HTTPS Outcalls
 
-We next provide important information for engineers who want to use canister HTTP requests in their smart contracts. Using canister HTTP requests is somewhat harder than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-method-http_request).
+We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-method-http_request).
 
 ### Recipe for Coding a Canister HTTP Call
 
@@ -132,10 +132,10 @@ The purpose of the transformation function is to transform each response $r_i$ r
 * Extract only the information item(s) of interest. This can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister, or a single asset price. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.
 * Remove all variable parts of the request individually and retain all the remaining parts. The canister then extracts the relevant information. This may be useful when the canister still needs the structure of the HTTP request and the headers.
 
-We recommend to go with the first approach whenever possible as it has multiple advantages. Calls to pricing and other APIs should mostly work with the first approach.
+We recommend to go with the first approach whenever possible as it has multiple advantages. Calls to pricing and many other APIs should mostly work with the first approach.
 * The resulting response is smaller in size.
-* The transformation function is faster to compute, that is, the function (query) is executing with fewer CPU cycles. Note that queries on the IC are likely to be charged for in the future.
-* The transformation function is easier to implement, e.g., through a simple or few Json operations on the response body.
+* The transformation function may be faster to compute, that is, the function (query) is executing with fewer CPU cycles. Note that queries on the IC are for free currently, but are likely to be charged for in the future.
+* The transformation function is often easier to implement, e.g., through a simple or few simple Json operations on the response body.
 
 ### Errors and Debugging
 
