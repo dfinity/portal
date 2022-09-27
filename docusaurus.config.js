@@ -36,7 +36,9 @@ const config = {
   title: "Internet Computer Home",
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
-  url: "https://internetcomputer.org",
+  url: isDeployPreview
+    ? process.env.DEPLOY_PRIME_URL
+    : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
