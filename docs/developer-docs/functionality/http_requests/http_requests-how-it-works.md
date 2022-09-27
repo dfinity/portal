@@ -1,6 +1,6 @@
 # Technology Overview — How Canister HTTPS Outcalls Work
 
-On this page we provide details on how canister HTTP requests work and important aspects to consider when using the API. We also want to note that there are some limitations compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature.
+On this page we provide details on how canister HTTP requests work and important aspects to consider when using the API. We also want to note that there are some limitations compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jumo right away to the [coding section](#Coding HTTPS Outcalls) to get started.
 
 ## Technology
 
@@ -8,15 +8,15 @@ The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conve
 
 ### How an HTTPS Outcall is Processed by the IC
 
-The canister HTTP outcalls feature is implemented as part of the replica and is exposed as an API on the management canister. We next outline how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
+The canister HTTP outcalls feature is implemented as part of the replica and is exposed as an API on the management canister. We next outline, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
 * A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
 * The request is stored temporarily in the replicated state of the subnet.
 * Periodically (each round) an *adapter* at the networking layer in each replica fetches the pending HTTP outcalls from replicated state. (In fact, a &lsquo;shim&rsquo; layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
 * The adapter on each replica executes the HTTP request by sending it to the target server.
-* The corresponding HTTP response from the server is received by the adapter on each replica of the subnet. The adapter limits the network response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request: The price increases with the size `max_response_bytes` and the actual response size is not considered, only the maximum.
-* An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response.
+* The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process. The adapter limits the network response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request: The price increases with the size `max_response_bytes` and the actual response size is not considered, only the maximum.
+* An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response. This is done by a component within the replica process.
 * The transformed response is handed over to consensus on each replica.
-* IC consensus agrees on a response if at least $2/3$ of the replicas have the same response for the request as input. In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
+* IC consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input. In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
 * The management canister API provides the response or error back to the calling canister.
 
 ![HTTPS outcalls high-level architecture](../_attachments/HTTPS_outcalls_HL_architecture.jpg)
@@ -107,9 +107,9 @@ As mentioned already further above, there are multiple possible extensions we ar
 * *IPv4 support:* IPv4 support would help canisters reach servers that are not available on IPv6, but IPv4 only.
 * *Reduced quorum:* A canister can define that a reduced quorum should be used for a request, e.g., only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests. It may also be interesting for making reads where trust does not matter, but where we want to reduce the request amplification instead, e.g., because of quotas the server has in place.
 
-## Coding Canister HTTP Requests
+## Coding HTTPS Outcalls
 
-We next provide important information for engineers who want to use canister HTTP requests in their smart contracts. Using canister HTTP requests is somewhat harder than doing HTTP requests in a regular enterprise application as we need to consider aspects like consensus and idempotency of `POST` requests.
+We next provide important information for engineers who want to use canister HTTP requests in their smart contracts. Using canister HTTP requests is somewhat harder than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-method-http_request)
 
 ### Recipe for Coding a Canister HTTP Call
 
