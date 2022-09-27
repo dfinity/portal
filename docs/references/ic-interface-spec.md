@@ -142,7 +142,10 @@ There are several classes of ids:
 
     This has the form `0x04`, and is used for the anonymous caller. It can be used in call and query requests without a signature.
 
-When the IC creates a *fresh* id, it never creates a self-authenticating id, an anonymous id or an id derived from what could be a canister or user.
+5. *Reserved ids*
+  These have the form of `blob · 0x7f`, `0 ≤ |blob| < 29`.
+  These ids can be useful for applications that want to re-use the <<textual-ids>> but want to indicate explicitly that the blob does not address any canisters or a user.
+When the IC creates a *fresh* id, it never creates a self-authenticating id, reserved id, an anonymous id or an id derived from what could be a canister or user.
 
 #### Textual representation of principals {#textual-ids}
 
@@ -701,7 +704,7 @@ The following encodings of field values as blobs are used
 
 ### Request ids {#request-id}
 
-When signing requests or querying the status of a request (see [Request status](#state-tree-request-status)) in the state tree, the user identifies the request using a *request id*, which is the [representation-independent hash](#hash-of-map) of the `content` map of the original request.
+When signing requests or querying the status of a request (see [Request status](#state-tree-request-status)) in the state tree, the user identifies the request using a *request id*, which is the [representation-independent hash](#hash-of-map) of the `content` map of the original request. A request id must have length of 32 bytes.
 
 :::note
 The request id is independent of the representation of the request (currently only CBOR), and does not change if the specification adds further optional fields to a request type.
@@ -1682,6 +1685,10 @@ This call requires that the ECDSA feature is enabled, the caller is a canister, 
 
 ### IC method `http_request` {#ic-http_request}
 
+:::note
+The IC http_request API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+:::
+
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
 The canister should aim to issue _idempotent_ requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
@@ -1690,7 +1697,11 @@ The responses for all identical requests must match too. However, a web service 
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
 
-Currently, only the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Note that when using `POST`, the calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
+
+It is important to note the following for the usage of the `POST` method:
+- The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
+- There are no confidentiality guarantees on the request content. There is no guarantee that all sent requests are as specified by the canister. If the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request.
 
 For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
@@ -1700,8 +1711,8 @@ The `2MiB` size limit also applies to the value returned by the `transform` func
 
 The following parameters should be supplied for the call:
 
-- `url` - the requested URL
-- `max_response_bytes` - optional, specifies the maximal size of the response in bytes. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
+- `url` - the requested URL. The URL may specify a custom port number. However, only ports 80, 443, and 20000-65535 can be used.
+- `max_response_bytes` - optional, specifies the maximal size of the response in bytes. Any value less than or equal to `2MiB` is accepted. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
 - `method` - currently, only GET, HEAD, and POST are supported
 - `headers` - list of HTTP request headers and their corresponding values
 - `transform` - an optional function that transforms raw responses to sanitized responses. If provided, the calling canister itself must export this function.
@@ -1804,7 +1815,7 @@ The Bitcoin component periodically forwards the transaction until the transactio
 
 The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.
 
-This function returns the 100 fee percentiles, measured in millisatoshi/byte (10\^3 millisatoshi = 1 satoshi), over the last 10,000 transactions in the specified network, i.e., over the transactions in the last approximately 4-10 blocks.
+This function returns the 100 fee percentiles, measured in millisatoshi/vbyte (1000 millisatoshi = 1 satoshi), over the last 10,000 transactions in the specified network, i.e., over the transactions in the last approximately 4-10 blocks.
 
 ## Certification
 
@@ -1917,6 +1928,7 @@ find_label(l, _ · Labeled l1 t · _)                | l == l1     = Found t
 find_label(l, _ · Labeled l1 _ · Labeled l2 _ · _) | l1 < l < l2 = Absent
 find_label(l,                    Labeled l2 _ · _) |      l < l2 = Absent
 find_label(l, _ · Labeled l1 _ )                   | l1 < l      = Absent
+find_label(l, [Leaf _])                                          = Absent
 find_label(l, [])                                                = Absent
 find_label(l, _)                                                 = Unknown
 ```
@@ -1930,7 +1942,7 @@ The IC will only produce well-formed state trees, and the above algorithm assume
     well_formed_forest(trees) =
       strictly_increasing([l | Label l _ ∈ trees]) ∧
       ∀ Label _ t ∈ trees. well_formed(t) ∧
-      ∀ t ∈ trees ≠ Leaf _
+      ∀ t ∈ trees. t ≠ Leaf _
 
 ### Delegation {#certification-delegation}
 
