@@ -63,7 +63,7 @@ increase the amount of data fetched by each call as much as possible to reduce t
 On top of that, we store data that's already fetched such that future user requests to this data do not trigger HTTPS outcalls ant more.
 
 
-## Building and deployinf the sample dapp locally
+## Building and deploying the sample dapp locally
 
 - `dfx start --enable-canister-http` to start a local IC instance with Canister HTTPS outcalls feature enabled
 - `dfx deploy --with-cycles 100000000000` to deploy the `exchange_rate` and `exchange_rate_assets`
