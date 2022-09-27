@@ -133,7 +133,7 @@ function HowItWorks() {
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
-          <div className="container-10 pt-12 mb-80 md:mb-40 md:pt-36 relative">
+          <div className="container-10 pt-12 mb-30 md:mb-40 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
                 How the Internet Computer Works
