@@ -1464,6 +1464,22 @@ The times observed by different canisters are unrelated, and calls from one cani
 While an implementation will likely try to keep the time returned by `ic0.time` close to the real time, this is not formally part of this specification.
 :::
 
+### Performance counter {#system-api-performance-counter}
+
+The canister can query the \"performance counter\", which is a deterministic monotonically increasing integer approximating the amount of work the canister has done since the beginning of the current execution.
+
+`ic0.performance_counter : (counter_type : i32) -> i64`
+
+The argument `type` decides which performance counter to return:
+
+-   0 : instruction counter. The number of WebAssembly instructions the system has determined that the canister has executed.
+
+In the future, we might expose more performance counters.
+
+The system resets the counter at the beginning of each [Entry points](#entry-points) invocation.
+
+The main purpose of this counter is to facilitate in-canister performance profiling.
+
 ### Certified data {#system-api-certified-data}
 
 For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters, this blob is the empty blob (`""`).
@@ -1603,7 +1619,7 @@ Only controllers of the canister can install code.
 This is atomic: If the response to this request is a `reject`, then this call had no effect.
 
 :::note
-Some canisters may not be able to make sense of callbacks after upgrades; these should be stopped first, to wait for all outstanding callbacks, or be uninstalled first, to prevent outstanding callbacks from being invoked. It is expected that the canister admin (or their tooling) does that separately.
+Some canisters may not be able to make sense of callbacks after upgrades; these should be stopped first, to wait for all outstanding callbacks that are not marked as deleted, or be uninstalled first, to prevent outstanding callbacks from being invoked (by marking the corresponding call contexts as deleted). It is expected that the canister admin (or their tooling) does that separately.
 :::
 
 The `wasm_module` field specifies the canister module to be installed. The system supports multiple encodings of the `wasm_module` field:
@@ -1644,7 +1660,7 @@ Only the controllers of the canister can request its status.
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
-Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
+Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses to call contexts that are not marked as deleted have been processed (so there are no open call contexts that are not marked as deleted), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
 
 ### IC method `start_canister` {#ic-start_canister}
 
@@ -1705,41 +1721,39 @@ The IC http_request API is considered EXPERIMENTAL. Canister developers must be 
 
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
-The canister should aim to issue _idempotent_ requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
+The canister should aim to issue *idempotent* requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
 
 The responses for all identical requests must match too. However, a web service could return slightly different responses for identical idempotent requests. For example, it may include some unique identification or a timestamp that would vary across responses.
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
 
-Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
-
-It is important to note the following for the usage of the `POST` method:
-- The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
-- There are no confidentiality guarantees on the request content. There is no guarantee that all sent requests are as specified by the canister. If the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request.
+Currently, only the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Note that when using `POST`, the calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
 
 For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
-Each request can specify the maximal expected size for the response from the remote HTTP server. The upper limit on the size of a response defaults to `2MiB` if no maximal size value is specified.
-An error will be returned when the response is larger than the maximal size. 
-The `2MiB` size limit also applies to the value returned by the `transform` function.
+Each request can specify the maximal expected size for the response from the remote HTTP server. The upper limit on the size of a response defaults to `2MiB` if no maximal size value is specified. An error will be returned when the response is larger than the maximal size. The `2MiB` size limit also applies to the value returned by the `transform` function.
 
 The following parameters should be supplied for the call:
 
-- `url` - the requested URL. The URL may specify a custom port number. However, only ports 80, 443, and 20000-65535 can be used.
-- `max_response_bytes` - optional, specifies the maximal size of the response in bytes. Any value less than or equal to `2MiB` is accepted. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
-- `method` - currently, only GET, HEAD, and POST are supported
-- `headers` - list of HTTP request headers and their corresponding values
-- `transform` - an optional function that transforms raw responses to sanitized responses. If provided, the calling canister itself must export this function.
+-   `url` - the requested URL
+
+-   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
+
+-   `method` - currently, only GET, HEAD, and POST are supported
+
+-   `headers` - list of HTTP request headers and their corresponding values
+
+-   `transform` - an optional function that transforms raw responses to sanitized responses. If provided, the calling canister itself must export this function.
 
 The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
 
-- `status` - the response status (e.g., 200, 404)
-- `headers` - list of HTTP response headers and their corresponding values
-- `body` - the response's body
+-   `status` - the response status (e.g., 200, 404)
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc.
-When the transform function was invoked due to a canister HTTP request, the caller's identity is the principal of the management canister.
+-   `headers` - list of HTTP response headers and their corresponding values
 
+-   `body` - the response's body
+
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. When the transform function was invoked due to a canister HTTP request, the caller's identity is the principal of the management canister.
 
 ### IC method `provisional_create_canister_with_cycles` {#ic-provisional_create_canister_with_cycles}
 
@@ -2061,37 +2075,43 @@ In the pruned tree, the `lookup_path` function behaves as follows:
 
 ## The HTTP Gateway protocol {#http-gateway}
 
-This section specifies the _HTTP Gateway protocol_, which allows canisters to handle conventional HTTP requests.
+This section specifies the *HTTP Gateway protocol*, which allows canisters to handle conventional HTTP requests.
 
-This feature involves the help of a _HTTP Gateway_ that translates between HTTP requests and the IC protocol. Such a gateway could be a stand-alone proxy, it could be implemented in a web browsers (natively, via plugin or via a service worker) or in other ways. This document describes the interface and semantics of this protocol independent of a concrete Gateway, so that all Gateway implementations can be compatible.
+This feature involves the help of a *HTTP Gateway* that translates between HTTP requests and the IC protocol. Such a gateway could be a stand-alone proxy, it could be implemented in a web browsers (natively, via plugin or via a service worker) or in other ways. This document describes the interface and semantics of this protocol independent of a concrete Gateway, so that all Gateway implementations can be compatible.
 
-Conceptually, this protocol builds on top of the interface specified in the remainder of this document, and therefore is an “application-level” interface, not a feature of the core Internet Computer system described in the other sections, and could be a separate document. We nevertheless include this protocol in the Internet Computer Interface Specification because of its important role in the ecosystem and due to the importance of keeping multiple Gateway implementations in sync.
+Conceptually, this protocol builds on top of the interface specified in the remainder of this document, and therefore is an "application-level" interface, not a feature of the core Internet Computer system described in the other sections, and could be a separate document. We nevertheless include this protocol in the Internet Computer Interface Specification because of its important role in the ecosystem and due to the importance of keeping multiple Gateway implementations in sync.
 
-### Overview
+### Overview {#_overview}
 
 A HTTP request by an HTTP client is handled by these steps:
 
-1. The Gateway resolves the Host of the request to a canister id.
-2. The Gateway Candid-encodes the HTTP request data.
-3. The Gateway invokes the canister via a query call to `http_request`.
-4. The canister handles the request and returns a HTTP response, encoded in Candid, together with additional metadata.
-5. If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
-6. If applicable, the Gateway fetches further body data via streaming query calls.
-7. If applicable, the Gateway validates the certificate of the response.
-8. The Gateway sends the response to the HTTP client.
+1.  The Gateway resolves the Host of the request to a canister id.
 
+2.  The Gateway Candid-encodes the HTTP request data.
+
+3.  The Gateway invokes the canister via a query call to `http_request`.
+
+4.  The canister handles the request and returns a HTTP response, encoded in Candid, together with additional metadata.
+
+5.  If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
+
+6.  If applicable, the Gateway fetches further body data via streaming query calls.
+
+7.  If applicable, the Gateway validates the certificate of the response.
+
+8.  The Gateway sends the response to the HTTP client.
 
 ### Candid interface {#http-gateway-interface}
 
-The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the expected Canister interface.
+The following interface description, in [Candid syntax](https://github.com/dfinity/candid/blob/master/spec/Candid.md), describes the expected Canister interface. You can also [download the file]({attachmentsdir}/http-gateway.did).
 
-``` candid name= ic-interface file file=_attachments/http-gateway.did
-```
+    Unresolved directive in icspecadoc.adoc - include::{example}http-gateway.did[]
 
-Only canisters that use the “Upgrade to update calls” feature need to provide the `http_request_update` method.
+Only canisters that use the "Upgrade to update calls" feature need to provide the `http_request_update` method.
 
-NOTE: Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
-
+::: note
+Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
+:::
 
 ### Canister resolution {#http-gateway-name-resolution}
 
@@ -2168,28 +2188,28 @@ If the `streaming_strategy` field of the `HttpResponse` is set, the HTTP Gateway
 
 3. That query method returns a `StreamingCallbackHttpResponse`. The `body` therein is appended to the body of the HTTP response. This is repeated as long as the method returns some token in the `token` field, until that field is `null`.
 
-WARNING: The type of the `token` value is chosen by the canister; the HTTP Gateway obtains the Candid type of the encoded message from the canister, and uses it when passing the token back to the canister. This generic use of Candid is not covered by the Candid specification, and may not be possible in some cases (e.g. when using “future types”). Canister authors may have to use “simple” types.
-
+:::warn
+The type of the `token` value is chosen by the canister; the HTTP Gateway obtains the Candid type of the encoded message from the canister, and uses it when passing the token back to the canister. This generic use of Candid is not covered by the Candid specification, and may not be possible in some cases (e.g. when using "future types"). Canister authors may have to use "simple" types.
+:::
 
 
 ### Response certification {#http-gateway-certification}
 
-If the hostname was safe, the HTTP Gateway performs _certificate validation_:
+If the hostname was safe, the HTTP Gateway performs *certificate validation*:
 
-1. It searches for a response header called `Ic-Certificate` (case-insensitive).
+1.  It searches for a response header called `Ic-Certificate` (case-insensitive).
 
-2. The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
+2.  The value of the header must be a structured header according to RFC 8941 with fields `certificate` and `tree`, both being byte sequences.
 
-3. The `certificate` must be a valid certificate as per [certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister’s [certified data](#state-tree-certified-data).
+3.  The `certificate` must be a valid certificate as per [Certification](#certification), signed by the root key. If the certificate contains a subnet delegation, the delegation must be valid for the given canister. The timestamp in `/time` must be recent. The subnet state tree in the certificate must reveal the canister's [certified data](#state-tree-certified-data).
 
-4. The `tree` must be a hash tree as per [certification encoding](#certification-encoding).
+4.  The `tree` must be a hash tree as per [Encoding of certificates](#certification-encoding).
 
-5. The root hash of that `tree` must match the canister’s certified data.
+5.  The root hash of that `tree` must match the canister's certified data.
 
-6. The path `["http_assets",<url>]`, where `url` is the utf8-encoded `url` from the `HttpRequest` must exist and be a leaf.  Else, if it does not exist, `["http_assets","/index.html"]` must exist and be a leaf.
+6.  The path `["http_assets",<url>]`, where `url` is the utf8-encoded `url` from the `HttpRequest` must exist and be a leaf. Else, if it does not exist, `["http_assets","/index.html"]` must exist and be a leaf.
 
-7. That leaf must contain the SHA-256 hash of the _decoded_ body.
-+
+7.  That leaf must contain the SHA-256 hash of the *decoded* body.
 The decoded body is the body of the HTTP response (in particular, after assembling streaming chunks), decoded according to the `Content-Encoding` header, if present. Supported encodings for `Content-Encoding` are `gzip` and `deflate.`
 
 :::warn
@@ -2277,10 +2297,8 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
         StableMemory = (abstract)
         Callback = (abstract)
 
-        Arg = {
-          data : Blob
-          caller: Principal
-        }
+        Arg = Blob;
+        CallerId = Principal;
 
         Timestamp = Nat;
         Env = {
@@ -2301,27 +2319,47 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
           callback: Callback;
         }
 
-        UpdateFunc = WasmState -> Trap | Return {
+        UpdateFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
           new_state : WasmState;
           new_calls : List MethodCall;
           new_certified_data : NoCertifiedData | Blob
           response : NoResponse | Response;
           cycles_accepted : Nat;
+          cycles_used : Nat;
         }
-        QueryFunc = WasmState -> Trap | Return Response
+        QueryFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
+          response : Response;
+          cycles_used : Nat;
+        }
+        HeartbeatFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
+          new_state : WasmState;
+          cycles_used : Nat;
+        }
 
         AvailableCycles = Nat
         RefundedCycles = Nat
 
         CanisterModule = {
-          init : (CanisterId, Arg, Env) -> Trap | Return WasmState
-          pre_upgrade : (WasmState, caller : Principal, Env) -> Trap | Return StableMemory
-          post_upgrade : (CanisterId, StableMemory, Arg, Env) -> Trap | Return WasmState
-          update_methods : MethodName ↦ ((Arg, Env, AvailableCycles) -> UpdateFunc)
-          query_methods : MethodName ↦ ((Arg, Env) -> QueryFunc)
-          heartbeat : (Env) -> WasmState -> Trap | Return WasmState
+          init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+            new_state : WasmState;
+            cycles_used : Nat;
+          }
+          pre_upgrade : (WasmState, Principal, Env) -> Trap { cycles_used : Nat; } | Return {
+            stable_memory : StableMemory;
+            cycles_used : Nat;
+          }
+          post_upgrade : (CanisterId, StableMemory, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+            new_state : WasmState;
+            cycles_used : Nat;
+          }
+          update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
+          query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
+          heartbeat : (Env) -> HeartbeatFunc
           callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
-          inspect_message : (MethodName, WasmState, Arg, Env) -> Trap | Return (Accept | Reject)
+          inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+            status : Accept | Reject;
+            cycles_used : Nat;
+          }
         }
 
 This high-level interface presents a pure, mathematical model of a canister, and hides the bookkeeping required to provide the System API as seen in Section [Canister interface (System API)](#system-api).
@@ -2330,9 +2368,11 @@ The `CanisterId` parameter of `init` and `post_upgrade` is merely passed through
 
 The `Env` parameter provides synchronous read-only access to portions of the system state and canister metadata that are always available.
 
-The parsing of a blob to a canister module is modelled via the (possibly implicitly failing) function
+The parsing of a blob to a canister module and its public and private custom sections is modelled via the (possibly implicitly failing) functions
 
     parse_wasm_mod : Blob -> CanisterModule
+    parse_public_custom_sections : Blob -> Text ↦ Blob
+    parse_private_custom_sections : Blob -> Text ↦ Blob
 
 The concrete mapping of this abstract `CanisterModule` to actual WebAssembly concepts and the System API is described separately in section [Abstract Canisters to System API](#concrete-canisters).
 
@@ -2342,13 +2382,14 @@ The Internet Computer provides certain messaging guarantees: If a user or a cani
 
 To ensure that only one response is generated, and also to detect when no response can be generated any more, the IC maintains a *call context*. The `needs_to_respond` field is set to `false` once the call has received a response. Further attempts to respond will now fail.
 
-    CallCtxt = {
-      canister : CanisterId;
-      origin : CallOrigin;
-      needs_to_respond : bool;
-      deleted : bool;
-      available_cycles : Nat;
-    }
+    Request = {
+        nonce : Blob;
+        ingress_expiry : Nat;
+        sender : UserId;
+        canister_id : CanisterId;
+        method_name : Text;
+        arg : Blob;
+      }
     CallId = (abstract)
     CallOrigin
       = FromUser {
@@ -2359,6 +2400,13 @@ To ensure that only one response is generated, and also to detect when no respon
           callback: Callback
         }
       | FromHeartbeat
+          CallCtxt = {
+      canister : CanisterId;
+      origin : CallOrigin;
+      needs_to_respond : bool;
+      deleted : bool;
+      available_cycles : Nat;
+    }
 
 #### Calls and Messages {#calls_and_messages}
 
@@ -2378,7 +2426,7 @@ Therefore, a message can have different shapes:
           caller : Principal;
           callee : CanisterId;
           method_name : Text;
-          data : Blob;
+          arg : Blob;
           transferred_cycles : Nat;
           queue : Queue;
         }
@@ -2400,33 +2448,7 @@ A reference implementation would likely maintain a separate list of `messages` f
 
 #### API requests {#api_requests}
 
-We distinguish between the *asynchronous* API requests passed to `/api/v2/…/call`, which may be present in the IC state, and the *synchronous* API requests passed to `/api/v2/…/read_state` and `/api/v2/…/query`, which are only ephemeral.
-
-    Envelope = {
-      content : Request | APIReadRequest;
-      sender_pubkey : PublicKey | NoPublicKey;
-      sender_sig : Signature | NoSignature;
-      sender_delegation: [SignedDelegation]
-    }
-
-    Request
-      = CanisterUpdateCall = {
-        nonce : Blob;
-        ingress_expiry : Nat;
-        sender : UserId;
-        canister_id : CanisterId;
-        method_name : Text;
-        data : Blob;
-      }
-
-The evolution of a `Request` goes through these states, as explained in [Overview of canister calling](#http-call-overview):
-
-    RequestStatus
-      = Received
-      | Processing
-      | Rejected (RejectCode, Text)
-      | Replied Blob
-      | Done
+We distinguish between the *asynchronous* API requests (type `Request`) passed to `/api/v2/…/call`, which may be present in the IC state, and the *synchronous* API requests passed to `/api/v2/…/read_state` and `/api/v2/…/query`, which are only ephemeral.
 
 These are the synchronous read messages:
 
@@ -2444,35 +2466,64 @@ These are the synchronous read messages:
         sender : UserId;
         canister_id : CanisterId;
         method_name : Text;
-        data : Blob;
+        arg : Blob;
       }
-
-A `Path` may refer to a request by way of a *request id*, as specified in [Request ids](#request-id):
-
-    Request = Blob
-    hash_of_map: Request -> Request
-
-For the signatures in a `Request`, we assume that the following function implements signature verification as described in [Authentication](#authentication). This function picks the corresponding signature scheme according to the DER-encoded metadata in the public key.
-
-    PublicKey = Blob
-    Signature = Blob
-    verify_signature : PublicKey -> Signature -> Blob -> Bool
 
 Signed delegations contain the (unsigned) delegation data in a nested record, next to the signature of that data.
 
+    PublicKey = Blob
+    Signature = Blob
     SignedDelegation = {
       delegation : {
         pubkey : PublicKey;
         targets : [CanisterId] | Unrestricted;
+        senders : [Principal] | Unrestricted;
         expiration : Timestamp
       };
       signature : Signature
     }
 
-#### The system state {#the_system_state}
+For the signatures in a `Request`, we assume that the following function implements signature verification as described in [Authentication](#authentication). This function picks the corresponding signature scheme according to the DER-encoded metadata in the public key.
+
+    verify_signature : PublicKey -> Signature -> Blob -> Bool
+
+    Envelope = {
+      content : Request | APIReadRequest;
+      sender_pubkey : PublicKey | NoPublicKey;
+      sender_sig : Signature | NoSignature;
+      sender_delegation: [SignedDelegation]
+    }
+
+The evolution of a `Request` goes through these states, as explained in [Overview of canister calling](#http-call-overview):
+
+    RequestStatus
+      = Received
+      | Processing
+      | Rejected (RejectCode, Text)
+      | Replied Blob
+      | Done
+
+A `Path` may refer to a request by way of a *request id*, as specified in [Request ids](#request-id):
+
+    RequestId = Blob
+    hash_of_map: Request -> RequestId
+
+#### The system state {#_the_system_state}
 
 Finally, we can describe the state of the IC as a record having the following fields:
 
+    CanState
+     = EmptyCanister | {
+      wasm_state : WasmState;
+      module : CanisterModule;
+      raw_module : Blob;
+      public_custom_sections: Text ↦ Blob;
+      private_custom_sections: Text ↦ Blob;
+    }
+    CanStatus
+      = Running
+      | Stopping (List (CallOrigin, Nat))
+      | Stopped
     S = {
       requests : Request ↦ RequestStatus;
       canisters : CanisterId ↦ CanState;
@@ -2487,18 +2538,12 @@ Finally, we can describe the state of the IC as a record having the following fi
       messages : List Message; // ordered!
       root_key : PublicKey
     }
-    CanState
-     = EmptyCanister | {
-      wasm_state : WasmState;
-      module : CanisterModule;
-      raw_module : Blob;
-      public_custom_sections: Text ↦ Blob;
-      private_custom_sections: Text ↦ Blob;
-    }
-    CanStatus
-      = Running
-      | Stopping (List (CallOrigin, Nat))
-      | Stopped
+
+To convert `CanStatus` into `status : Running | Stopping | Stopped` from `Env`, we define the following conversion function:
+
+    simple_status(Running) = Running
+    simple_status(Stopping _) = Stopping
+    simple_status(Stopped) = Stopped
 
 #### Initial state {#initial_state}
 
