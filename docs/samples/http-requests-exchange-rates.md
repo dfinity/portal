@@ -2,7 +2,7 @@
 
 ## Exchange Rate sample dapp overview
 
-The [Canister HTTP](https://wiki.internetcomputer.org/wiki/HTTPS_outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of Internet Computer in the Web 2.0 world. Our [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage of the new Canister HTTP feature.
+The [Canister HTTPS outcalls](https://wiki.internetcomputer.org/wiki/HTTPS_outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of Internet Computer in the Web 2.0 world. Our [Exchange Rate](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) sample dapp is created to demonstrate usage of the new Canister HTTP feature.
 
 The sample dapp pulls ICP/USDC exchange rate from a single resource currently – the [Coinbase Pro API](https://api.pro.coinbase.com/products/ICP-USD/candles). The number of data sources can be easily extended as  needed for stronger decentralization. For the purpose of the sample dapp, we are only using a single data source to showcase the feature. A generalization to multiple data sources can easily follow the example given.
 
