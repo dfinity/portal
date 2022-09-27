@@ -82,7 +82,7 @@ function HTTPSOutcalls() {
               to pave the way for blockchain singularity, whereby the majority
               of computations run on the blockchain. 
 
-              The Oracle Problem
+              <h3>The Oracle Problem</h3>
               Due to the way blockchains work, the interaction between smart 
               contracts and off-chain systems has historically been challenging 
               for blockchain developers. Obtaining off-chain data requires that a smart
@@ -90,7 +90,7 @@ function HTTPSOutcalls() {
               Chainlink, which are in the hands of intermediaries, vulnerable to
               hacking, and subject to service fees.
 
-              The Solution
+              <h3>The Solution</h3>
               Canisiter HTTPS outcalls on the Internet Computer blockchain
               enables direct interaction with Web 2.0 andother blockchains without 
               oracles. Canister smart contracts can make HTTPS outcalls to specified 
