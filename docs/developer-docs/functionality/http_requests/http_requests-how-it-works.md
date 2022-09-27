@@ -1,6 +1,6 @@
 # Technology Overview — How Canister HTTPS Outcalls Work
 
-On this page we provide details on how canister HTTP requests work and important aspects to consider when using the API. We also want to note that there are some limitations compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jumo right away to the [coding section](#Coding HTTPS Outcalls) to get started.
+On this page we provide details on how canister HTTPS outcalls, or canister HTTPS requests, work and important aspects to consider when using the API. We also want to note that there are some limitations and differences  compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jump right away to the [coding section](#coding-https-outcalls) to get started.
 
 ## Technology
 
@@ -8,7 +8,7 @@ The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conve
 
 ### How an HTTPS Outcall is Processed by the IC
 
-The canister HTTP outcalls feature is implemented as part of the replica and is exposed as an API on the management canister. We next outline, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
+The canister HTTP outcalls feature is implemented as part of the Internet Computer replica and is exposed as an API of the management canister. We next outline, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
 * A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
 * The request is stored temporarily in the replicated state of the subnet.
 * Periodically (each round) an *adapter* at the networking layer in each replica fetches the pending HTTP outcalls from replicated state. (In fact, a &lsquo;shim&rsquo; layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
@@ -155,7 +155,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 ### Pricing
 
 Like most features of the IC, the canister HTTP outcalls feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the pre-request fixed cost and the overhead of HTTP requests, e.g., because of headers, it is advantageous to make fewer larger requests to retrieve the same information than with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
-The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model.
+The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTP outcall with a small response only costs fractions of a USD cent, which is substantially cheaper than fees charged by oracles on most blockchains.
 
 ## Community Contributions
 
