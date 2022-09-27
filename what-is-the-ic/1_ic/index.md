@@ -4,7 +4,7 @@ card: /img/what-is-the-ic/built.png
 cardImageFit: center
 ---
 
-The Internet Computer Protocol software is run on standardized server hardware, which we call nodes. Nodes are spread around the world, hosted in numerous independent data centers in order to ensure a high degree of fault tolerance and decentralization. Nodes are grouped together into subnets, where each subnet constitutes its own blockchain that makes progress independently of the other subnets. All subnets are connected and directed by the Internet Computer Protocol to form the Internet Computer.
+The Internet Computer Protocol software is run on standardized server hardware, which we call *nodes*. Nodes are spread around the world, hosted in numerous independent data centers in order to ensure a high degree of fault tolerance and decentralization. Nodes are grouped together into *subnets*, where each subnet constitutes its own blockchain that makes progress independently of the other subnets. All subnets are connected and directed by the Internet Computer Protocol to form the Internet Computer.
 
 Mechanisms are in place to roll out software updates seamlessly to boost performance, iron out bugs, or introduce entirely new features, making it possible for the IC to improve and evolve at a rapid pace.
 

@@ -244,6 +244,15 @@ const sidebars = {
           },
           items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
         },
+        {
+          type: "category",
+          label: "HTTPS Outcalls",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/http_requests/index",
+          },
+          items: ["developer-docs/integrations/http_requests/http_requests-how-it-works"],
+        },
         "developer-docs/integrations/internet-identity/integrate-identity",
         {
           type: "category",
