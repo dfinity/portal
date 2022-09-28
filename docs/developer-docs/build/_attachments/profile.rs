@@ -1,5 +1,5 @@
 use ic_cdk::{
-    call::{self, ManualReply},
+    api::call::{self, ManualReply},
     export::{
         candid::{CandidType, Deserialize},
         Principal,

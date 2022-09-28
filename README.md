@@ -175,3 +175,9 @@ We therefore invite other projects to:
 
 - link to their own agents or CDKs on the respective index pages (the files to be edited are in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/build/cdks/index.md`)
 - add their own documentation as a folder under `Agents` or `CDKs`
+
+## Community-created Developer tools
+
+We invite developers to add their IC-focused developer tools to the [Developer Tools page](https://internetcomputer.org/tooling) by appending an entry to the `communityToolingItems` array in `src/components/Common/toolingItems.ts`.
+
+Please make sure to add appropriate tags to make the tool easy to discover for other devs. Avoid introducing new tags if possible.
