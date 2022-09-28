@@ -9,8 +9,35 @@ export const dfinityToolingItems = [
   {
     title: "Motoko VS Code",
     tags: ["plugin", "development"],
-    description: "Motoko language support for Visual Studio Code.",
-    links: ["https://github.com/dfinity/vscode-motoko"],
+    description: "Motoko language support in Visual Studio Code.",
+    links: [
+      "https://github.com/dfinity/vscode-motoko",
+      "https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko",
+    ],
+  },
+  {
+    title: "Motoko Formatter",
+    tags: ["plugin", "development"],
+    description: "A configurable Prettier plugin for Motoko.",
+    links: ["https://github.com/dfinity/prettier-plugin-motoko"],
+  },
+  {
+    title: "Motoko Playground",
+    tags: ["website"],
+    description: "An online playground environment for Motoko.",
+    links: ["https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/"],
+  },
+  {
+    title: "Motoko.js",
+    tags: ["library", "development"],
+    description: "Compile and run Motoko in Node.js and the browser.",
+    links: ["https://www.npmjs.com/package/motoko"],
+  },
+  {
+    title: "Embed Motoko",
+    tags: ["website"],
+    description: "Embed an interactive Motoko code snippet on your website.",
+    links: ["https://embed.smartcontracts.org"],
   },
   {
     title: "didc",
@@ -137,7 +164,22 @@ export const communityToolingItems = [
       "Tools to search for and explore canister interfaces and Candid.",
     links: [
       "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app",
-      "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/docs/"
+      "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/docs/",
+    ],
+  },
+  {
+    title: "motoko-library-template",
+    tags: ["library", "development", "starter"],
+    description: "A starter project for developing Motoko libraries.",
+    links: ["https://github.com/ByronBecker/motoko-library-template"],
+  },
+  {
+    title: "Blocks.",
+    tags: ["website", "development"],
+    description: "An online drag-and-drop smart contract editor for Motoko.",
+    links: [
+      "https://github.com/Blocks-Editor/blocks",
+      "https://blocks-editor.github.io/blocks/",
     ],
   },
 ];
