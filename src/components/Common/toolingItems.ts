@@ -130,4 +130,14 @@ export const communityToolingItems = [
       "Use your favourite frontend framework with the Internet Computer.",
     links: ["https://github.com/MioQuispe/create-ic-app"],
   },
+  {
+    title: "Canlista",
+    tags: ["development"],
+    description:
+      "Tools to search for and explore canister interfaces and Candid.",
+    links: [
+      "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app",
+      "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/docs/"
+    ],
+  },
 ];
