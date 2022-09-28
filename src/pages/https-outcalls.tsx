@@ -41,7 +41,7 @@ function HTTPSOutcalls() {
                 HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The power of canister HTTPS outcalls on the Internet Computer is that is allows
+                The power of canister HTTPS outcalls on the Internet Computer is that it allows
                 smart contracts to directly connect to the Web 2.0 world, opening up
                 a plethora of use cases. Retrieve market data from crypto exchanges,
                 send emails, integrate with other blockchains, and more.
