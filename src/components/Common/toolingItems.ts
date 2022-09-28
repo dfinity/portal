@@ -140,4 +140,11 @@ export const communityToolingItems = [
       "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/docs/"
     ],
   },
+  {
+    title: "icblast",
+    tags: ["development", "operations", "testing"],
+    description:
+      "Communicate with IC directly using NodeJs. Automatic service discovery.",
+    links: ["https://github.com/infu/icblast"],
+  },
 ];
