@@ -1,5 +1,5 @@
 use ic_cdk::{
-    api::call::{self, ManualReply},
+    api::call::ManualReply,
     export::{
         candid::{CandidType, Deserialize},
         Principal,
@@ -78,7 +78,6 @@ fn search(text: String) -> ManualReply<Option<Profile>> {
                 }
             }
         }
-    });
-
-    ManualReply::one(None::<Profile>)
+        ManualReply::one(None::<Profile>)
+    })
 }
