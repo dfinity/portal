@@ -140,7 +140,7 @@ export const communityToolingItems = [
     title: "Intellij Candid Plugin",
     tags: ["plugin", "development"],
     description:
-      "A Candid language plugin that provide a complete support to efficiently edit .did files.",
+      "A Candid language plugin that provides complete support for editing .did files.",
     links: ["https://github.com/Alaanor/candid-intellij-plugin"],
   },
   {
