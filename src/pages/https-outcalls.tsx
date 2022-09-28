@@ -5,7 +5,10 @@ import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
-import { CardWithDescription } from "@site/src/components/Common/Card";
+import {
+  CardWithBackground,
+  CardWithDescription,
+} from "@site/src/components/Common/Card";
 
 function HTTPSOutcalls() {
   resetNavBarStyle();
@@ -80,21 +83,23 @@ function HTTPSOutcalls() {
               useful functionality, it is crucial that this data be accessible,
               first to unfold the full potential of smart contracts, and second,
               to pave the way for blockchain singularity, whereby the majority
-              of computations run on the blockchain. 
+              of computations run on the blockchain.
             </p>
             <h3>The Oracle Problem</h3>
-              <p>Due to the way blockchains work, the interaction between smart 
-              contracts and off-chain systems has historically been challenging 
-              for blockchain developers. Obtaining off-chain data requires that a smart
-              contract interact with centralized oracle services such as
-              Chainlink, which are in the hands of intermediaries, vulnerable to
-              hacking, and subject to service fees.</p>
+              <p>A common limitation of blockchain technology is that smart contracts
+              can receive messages, but cannot send them to the outside world outside
+              blockchain. For example, typical smart contracts can recieve messages, but
+              cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
+              to other services. Historically, this has been a blocker to most software developers
+              diving into Web3. For this reason, obtaining off-chain data requires that a smart
+              contract interact with centralized oracle services, which are in the hands of intermediaries,
+              vulnerable to hacking, and subject to service fees.</p>
 
               <h3>The Solution</h3>
-              <p>Canisiter HTTPS outcalls on the Internet Computer blockchain
-              enables direct interaction with Web 2.0 andother blockchains without 
-              oracles. Canister smart contracts can make HTTPS outcalls to specified 
-              URLs to directly obtain off-chain data, or to interact with off-chain 
+              <p>Canister HTTPS outcalls on the Internet Computer blockchain
+              allow direct interaction with Web 2.0 and other blockchains without
+              oracles. Canister smart contracts can make HTTPS outcalls to specified
+              URLs to directly obtain off-chain data, or to interact with off-chain
               systems, such as Web 2.0 services or enterprise IT infrastructure.</p>
             <p className="mb-3 mt-6">
               <Link
@@ -102,7 +107,7 @@ function HTTPSOutcalls() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more to build
+                Learn more
               </Link>
             </p>
           </div>
@@ -113,21 +118,11 @@ function HTTPSOutcalls() {
             Build with HTTPS Outcalls
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-           Connect your smart contracts directly with the Web 2.0. Retrieve IoT-related data, 
-           stock exchange prices, weather data, and more - risk-free. 
+           Connect your smart contracts directly with the Web 2.0. Retrieve IoT-related data,
+           stock exchange prices, weather data, and more - risk-free.
             integrate with other blockchains, and more.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            {/* <CardWithDescription
-              title="Feature Documentation"
-              description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="/"
-            />
-            <CardWithDescription
-              title="Blog"
-              description="Read all about HTTPS outcalls and why they are important for blockchains."
-              href="/"
-            /> */}
             <CardWithDescription
               title="HTTPS Outcalls Documentation"
               description="Build a dapp with canister outgoing HTTPS oucalls."
@@ -138,10 +133,11 @@ function HTTPSOutcalls() {
               description="Read all about HTTPS outcalls and why they are important for blockchains."
               href="https://bit.ly/3BQRBqI"
             />
-            <CardWithDescription
+            <CardWithBackground
               title="Sample Code"
               description="Learn how to fetch exchange rates with the new canister HTTPS feature."
               href="https://internetcomputer.org/samples/"
+              bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription
               title="IC Wiki"
