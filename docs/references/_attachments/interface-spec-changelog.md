@@ -1,5 +1,17 @@
 ## Changelog {#changelog}
 
+## 0.18.7 (2022-09-27) {#0_18_7}
+* HTTP request API
+* Reserved principals
+
+## 0.18.6 (2022-08-09) {#0_18_6}
+* Canister access to performance metrics
+* Query calls are rejected when the canister is frozen
+* Support for implementation-specific error codes for requests
+* Deleted call contexts do not prevent canister from reaching Stopped state
+* Update effective canister id checks in certificate delegations
+* Formal model in Isabelle
+
 ## 0.18.5 (2022-07-08) {#0_18_5}
 * Idle consumption of resources in cycles per day can be obtain via `canister_status` method of the management canister
 * Include the HTTP Gateway Protocol in this spec
