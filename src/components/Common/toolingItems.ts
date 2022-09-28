@@ -123,7 +123,7 @@ export const communityToolingItems = [
     image: require("../../../static/img/tooling/Tooling-cover.jpeg").default,
     tags: ["database", "operations"],
     description:
-      "Open internet service providing transaction history & asset provenance for NFT’s & Tokens on the Internet Computer.",
+      "Open internet service providing transaction history & asset provenance for NFTs & Tokens on the Internet Computer.",
     links: ["https://cap.ooo/"],
   },
   {
