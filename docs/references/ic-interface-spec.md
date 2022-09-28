@@ -10,8 +10,8 @@ Welcome to *the Internet Computer*! We speak of "the" Internet Computer, because
 
 This document describes this *external* view of the Internet Computer, i.e. the low-level interfaces it provides to dapp developers and users, and what will happen when they use these interfaces.
 
-:::caution
-While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see [Agents](../developer-docs/build/agents/index.md) for developer documentation.
+:::note
+While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see the [developer docs](../developer-docs/ic-overview.mdx) for suitable documentation. 
 
 :::
 
@@ -144,7 +144,9 @@ There are several classes of ids:
 
 5. *Reserved ids*
   These have the form of `blob · 0x7f`, `0 ≤ |blob| < 29`.
-  These ids can be useful for applications that want to re-use the `textual-ids` but want to indicate explicitly that the blob does not address any canisters or a user.
+
+    These ids can be useful for applications that want to re-use the [Textual representation of principals](#textual-ids) but want to indicate explicitly that the blob does not address any canisters or a user.
+
 When the IC creates a *fresh* id, it never creates a self-authenticating id, reserved id, an anonymous id or an id derived from what could be a canister or user.
 
 #### Textual representation of principals {#textual-ids}
@@ -458,7 +460,7 @@ This document does not yet explain how to find the location and port of the Inte
 
 Users interact with the Internet Computer by calling canisters. By the very nature of a blockchain protocol, they cannot be acted upon immediately, but only with a delay. Moreover, the actual node that the user talks to may not be honest or, for other reasons, may fail to get the request on the way. This implies the following high-level workflow:
 
-1.  A user submits a call via the [HTTPS Interface](#https-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
@@ -1727,7 +1729,9 @@ The responses for all identical requests must match too. However, a web service 
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
 
-Currently, only the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Note that when using `POST`, the calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
+
+It is important to note the following for the usage of the `POST` method: - The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request. - There are no confidentiality guarantees on the request content. There is no guarantee that all sent requests are as specified by the canister. If the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request.
 
 For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
@@ -1737,7 +1741,7 @@ The following parameters should be supplied for the call:
 
 -   `url` - the requested URL
 
--   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
+-   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. Any value less than or equal to `2MiB` is accepted. The call will be charged based on this parameter. If not provided, the maximum of `2MiB` will be used.
 
 -   `method` - currently, only GET, HEAD, and POST are supported
 
@@ -2150,9 +2154,9 @@ The HTTP request is encoded into the `HttpRequest` Candid structure.
 
 ### Upgrade to update calls
 
-If the canister sets `update = opt true` in the `HttpResponse` reply from `http_request`, then the Gateway ignores all other fields of the reply. The Gateway performs an _update_ call to `http_request_update`, passing the same `HttpRequest` record as the argument, and uses that response instead.
+If the canister sets `upgrade = opt true` in the `HttpResponse` reply from `http_request`, then the Gateway ignores all other fields of the reply. The Gateway performs an *update* call to `http_request_update`, passing the same `HttpRequest` record as the argument, and uses that response instead.
 
-The value of the `update` field returned from `http_request_update` is ignored.
+The value of the `upgrade` field returned from `http_request_update` is ignored.
 
 ### Response decoding
 
@@ -2505,7 +2509,7 @@ The evolution of a `Request` goes through these states, as explained in [Overvie
 
 A `Path` may refer to a request by way of a *request id*, as specified in [Request ids](#request-id):
 
-    RequestId = Blob
+    RequestId = { b ∈ Blob | |b| = 32 }
     hash_of_map: Request -> RequestId
 
 #### The system state {#_the_system_state}
@@ -2662,7 +2666,7 @@ Conditions
 
 ```html
 E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
-E.content ∉ requests
+E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
 is_effective_canister_id(E.content, ECID)
 ( E.content.canister_id = ic_principal
@@ -2794,8 +2798,8 @@ This "bookkeeping transition" must be immediately followed by the corresponding 
       S.messages = Older_messages · CallMessage CM · Younger_messages
       S.canisters[CM.callee] ≠ EmptyCanister
       S.canister_status[CM.callee] = Running
-      balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
-      Ctxt_id ∉ dom S.call_contexts
+      S.balances[CM.callee] ≥ freezing_limit(S, CM.callee) + MAX_CYCLES_PER_MESSAGE
+      Ctxt_id ∉ dom(S.call_contexts)
     ```
 
     State after
@@ -2832,7 +2836,7 @@ This "bookkeeping transition" must be immediately followed by the corresponding 
     S.canisters[C] ≠ EmptyCanister
     S.canister_status[C] = Running
     balances[C] ≥ freezing_limit(S, C) + MAX_CYCLES_PER_MESSAGE
-    Ctxt_id ∉ dom S.call_contexts
+    Ctxt_id ∉ dom(S.call_contexts)
     ```
 
     State after
@@ -3120,6 +3124,8 @@ To avoid clashes with potential user ids or is derived from users or canisters, 
 -   `is_system_assigned (mk_derived_id p dn) = false` for any `p` that could be a user id or canister id.
 
 -   `is_system_assigned p = false` for `|p| > 29`.
+
+-   `is_system_assigned ic_principal = false`.
 
 #### IC Management Canister: Changing settings {#ic_management_canister_changing_settings}
 
@@ -3581,7 +3587,7 @@ State after
 
 ```html
 S with
-    balances[CanisterId] =
+    balances[A.canister_id] =
       S.balances[A.canister_id] + M.transferred_cycles
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -3617,7 +3623,7 @@ S with
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
-        response = Accepted (candid(B))
+        response = Reply (candid(B))
         refunded_cycles = M.transferred_cycles
       }
 ```
@@ -3646,6 +3652,7 @@ S with
     canisters[CanisterId] = EmptyCanister
     time[CanisterId] = CurrentTime
     controllers[CanisterId] = [M.caller]
+    freezing_threshold[CanisterId] = 2592000
     balances[CanisterId] = A.amount
     certified_data[CanisterId] = ""
     messages = Older_messages · Younger_messages ·
@@ -3695,8 +3702,8 @@ RM.origin = FromCanister {
     callback = Callback
   }
 not S.call_contexts[Ctxt_id].deleted
+S.call_contexts[Ctxt_id].canister ∈ dom(S.balances)
 ```
-
 
 State after
 
@@ -3716,7 +3723,7 @@ S with
 ```
 
 
-If the responded call context does not exist anymore, because the canister has been uninstalled since, the refundend cycles are still added to the canister balance, but no function invocation is enqueued:
+If the responded call context does not exist anymore, because the canister has been uninstalled since, the refunded cycles are still added to the canister balance, but no function invocation is enqueued:
 
 Conditions
 
@@ -3747,9 +3754,10 @@ When an ingress method call has been responded to, we can record the response in
 Conditions
 
 ```html
-S.requests[M] = Processing
+
 S.messages = Older_messages · ResponseMessage RM · Younger_messages
 RM.origin = FromUser { request = M }
+S.requests[M] = Processing
 ```
 
 
@@ -4065,6 +4073,7 @@ We can model the execution of WebAssembly functions as stateful functions that h
       response : NoResponse | Response;
       cycles_accepted : Nat;
       cycles_available : Nat;
+      cycles_used : Nat;
       balance : Funds;
       reply_params : { arg : Blob };
       pending_call : MethodCall | NoPendingCall;
@@ -4075,7 +4084,7 @@ We can model the execution of WebAssembly functions as stateful functions that h
 
 This allows us to model WebAssembly functions, including host-provided imports, as functions with implicit mutable access to an `ExecutionState`, dubbed *execution functions*. Syntactically, we express this using an implicit argument of type `ref ExecutionState` in angle brackets (e.g. `func<es>(x)` for the invocation of a WebAssembly function with type `(x : i32) -> ()`). The lifetime of the `ExecutionState` data structure is that of one such function invocation.
 
-:::note
+:::warn
 It is nonsensical to pass to an execution function a WebAssembly store `S` that comes from a different WebAssembly module than one defining the function.
 :::
 
@@ -4093,6 +4102,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
           reject_code = 0;
           reject_message = "";
           cycles_refunded = 0;
+          method_name = NoText;
         }
 
         empty_execution_state = {
@@ -4101,6 +4111,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
           response = NoResponse;
           cycles_accepted = 0;
           cycles_available = 0;
+          cycles_used = 0;
           balance = 0;
           reply_params = { arg = "" };
           pending_call = NoPendingCall;
@@ -4237,7 +4248,7 @@ Finally we can specify the abstract `CanisterModule` that models a concrete WebA
 ```html
 heartbeat = λ (sysenv) → λ wasm_state → Trap
 ```
-
+    heartbeat = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
 -   The function `callbacks` of the `CanisterModule` is defined as follows
 
