@@ -9,9 +9,8 @@ export const dfinityToolingItems = [
   {
     title: "Motoko VS Code",
     tags: ["plugin", "development"],
-    description: "Motoko language support in Visual Studio Code.",
+    description: "Motoko language support for Visual Studio Code.",
     links: [
-      "https://github.com/dfinity/vscode-motoko",
       "https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko",
     ],
   },
@@ -177,9 +176,6 @@ export const communityToolingItems = [
     title: "Blocks.",
     tags: ["website", "development"],
     description: "An online drag-and-drop smart contract editor for Motoko.",
-    links: [
-      "https://github.com/Blocks-Editor/blocks",
-      "https://blocks-editor.github.io/blocks/",
-    ],
+    links: ["https://github.com/Blocks-Editor/blocks"],
   },
 ];
