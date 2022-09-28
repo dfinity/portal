@@ -83,16 +83,18 @@ function HTTPSOutcalls() {
               of computations run on the blockchain. 
             </p>
             <h3>The Oracle Problem</h3>
-              <p>Due to the way blockchains work, the interaction between smart 
-              contracts and off-chain systems has historically been challenging 
-              for blockchain developers. Obtaining off-chain data requires that a smart
-              contract interact with centralized oracle services such as
-              Chainlink, which are in the hands of intermediaries, vulnerable to
-              hacking, and subject to service fees.</p>
+              <p>A common limitation of blockchain technology is that smart contracts
+              can receive messages, but cannot send them to the outside world outside
+              blockchain. For example, typical smart contracts can recieve messages, but
+              cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
+              to other services. Historically, this has been a blocker to most software developers
+              diving into Web3. For this reason, obtaining off-chain data requires that a smart
+              contract interact with centralized oracle services, which are in the hands of intermediaries, 
+              vulnerable to hacking, and subject to service fees.</p>
 
               <h3>The Solution</h3>
-              <p>Canisiter HTTPS outcalls on the Internet Computer blockchain
-              enables direct interaction with Web 2.0 andother blockchains without 
+              <p>Canister HTTPS outcalls on the Internet Computer blockchain
+              allow direct interaction with Web 2.0 and other blockchains without 
               oracles. Canister smart contracts can make HTTPS outcalls to specified 
               URLs to directly obtain off-chain data, or to interact with off-chain 
               systems, such as Web 2.0 services or enterprise IT infrastructure.</p>
@@ -102,7 +104,7 @@ function HTTPSOutcalls() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more to build
+                Learn more 
               </Link>
             </p>
           </div>
