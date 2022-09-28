@@ -41,7 +41,7 @@ function HTTPSOutcalls() {
                 HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The power of canister HTTPS outcalls on the Internet Computer allows
+                The power of canister HTTPS outcalls on the Internet Computer is that is allows
                 smart contracts to directly connect to the Web 2.0 world, opening up
                 a plethora of use cases. Retrieve market data from crypto exchanges,
                 send emails, integrate with other blockchains, and more.
@@ -87,7 +87,7 @@ function HTTPSOutcalls() {
             </p>
             <h3>The Oracle Problem</h3>
               <p>A common limitation of blockchain technology is that smart contracts
-              can receive messages, but cannot send them to the outside world outside
+              can receive messages, but cannot send them to the world outside the
               blockchain. For example, typical smart contracts can recieve messages, but
               cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
               to other services. Historically, this has been a blocker to most software developers
