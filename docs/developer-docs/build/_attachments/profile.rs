@@ -66,10 +66,10 @@ fn update(profile: Profile) {
 fn search(text: String) -> ManualReply<Option<Profile>> {
     let text = text.to_lowercase();
     let mut result = Some(Profile {
-      name: "".to_string(),
-      description: "".to_string(),
-      keywords: vec![],
-  });
+        name: "".to_string(),
+        description: "".to_string(),
+        keywords: vec![],
+    });
     PROFILE_STORE.with(|profile_store| {
         for (_, p) in profile_store.borrow().iter() {
             if p.name.to_lowercase().contains(&text) || p.description.to_lowercase().contains(&text)
