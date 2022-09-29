@@ -10,7 +10,6 @@ import classnames from "classnames";
 import { useHistory } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "./styles.css";
-import DocSearch from "./lib/DocSearch";
 import("./algolia.css");
 
 const Search = (props) => {
@@ -53,9 +52,12 @@ const Search = (props) => {
   };
 
   useEffect(() => {
-    initAlgolia(DocSearch);
-    setIndexReady(true);
-    initialized.current = true;
+    (async () => {
+      const DocSearch = await import("./lib/DocSearch");
+      initAlgolia(DocSearch);
+      setIndexReady(true);
+      initialized.current = true;
+    })();
   }, []);
 
   const toggleSearchIconClick = useCallback(
