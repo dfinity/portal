@@ -55,11 +55,11 @@ const RoadmapPage: React.FC = () => {
                 Internet Computer?
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) is the only general-purpose blockchain-based platform that can host and run applications at web speed in a decentralized manner.
+              The Internet Computer (IC) is the only general-purpose blockchain that runs decentralized apps at web speed.
               </p>
 
               <p className="tw-lead-sm md:tw-lead mb-0">
-              It provides a World Computer that can replace traditional IT and enable a new generation of Web3 services and applications running entirely on-chain.
+              It is the World Computer that can replace traditional IT and enable a new generation of Web3 apps and services running entirely on-chain.
               </p>
             </div>
           </div>
