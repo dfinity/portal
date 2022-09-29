@@ -10,6 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "netlify-dev": "netlify dev",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
@@ -36,7 +37,6 @@
     "hast-util-is-element": "^1.1.0",
     "highlight.js": "^11.5.1",
     "marked": "^4.0.18",
-    "netlify-cli": "^9.13.2",
     "node-fetch": "^2.6.7",
     "prism-react-renderer": "^1.2.1",
     "progress-webpack-plugin": "^1.0.16",
@@ -54,17 +54,20 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.1.0",
+    "@netlify/functions": "^1.2.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.3",
     "@tsconfig/docusaurus": "^1.0.4",
+    "autoprefixer": "^10.4.7",
+    "contentful": "^9.1.32",
     "gray-matter": "^4.0.3",
+    "lunr": "^2.3.9",
+    "netlify-cli": "^12.0.0",
     "remark-code-import": "^0.4.0",
+    "tailwindcss": "^3.1.4",
     "typescript": "^4.6.2",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2",
-    "contentful": "^9.1.32",
-    "tailwindcss": "^3.1.4",
-    "autoprefixer": "^10.4.7"
+    "webpack-cli": "^4.9.2"
   },
   "browserslist": {
     "production": [

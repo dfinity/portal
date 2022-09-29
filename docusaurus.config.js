@@ -28,12 +28,20 @@ const votingRewardsPlugin = require("./plugins/voting-rewards");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
+const isDfxBuild = !!process.env.DFX_VERSION;
+
+if (isDfxBuild) {
+  console.log(`Canister id: ${process.env.CANISTER_ID}`);
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
-  url: "https://internetcomputer.org",
+  url: isDfxBuild
+    ? `https://${process.env.CANISTER_ID}.ic0.app`
+    : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",

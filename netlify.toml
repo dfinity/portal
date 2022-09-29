@@ -1,0 +1,3 @@
+[build]
+command = "git submodule update --init && npm run build"
+publish = "build"
