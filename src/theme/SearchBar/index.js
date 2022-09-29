@@ -53,7 +53,7 @@ const Search = (props) => {
 
   useEffect(() => {
     (async () => {
-      const DocSearch = await import("./lib/DocSearch");
+      const DocSearch = (await import("./lib/DocSearch")).default;
       initAlgolia(DocSearch);
       setIndexReady(true);
       initialized.current = true;

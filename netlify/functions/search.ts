@@ -8,14 +8,20 @@ import searchDocs from "../../build/search-doc.json";
 
 const index = lunr.Index.load(lunrIndex);
 
-const handler: Handler = async (event, context) => {
+const handler: Handler = async (event) => {
   const term = event.queryStringParameters.term as string | undefined;
+
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTION",
+  };
 
   if (!term) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: "Missing search term." }),
-      headers: { "Content-Type": "application/json" },
+      headers,
     };
   }
 
@@ -36,8 +42,8 @@ const handler: Handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(searchResults, null, 2),
+    headers,
   };
 };
 
