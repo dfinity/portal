@@ -184,10 +184,10 @@ const sidebars = {
       label: "Deployment & Scaling",
       link: {
         type: "doc",
-        id: "developer-docs/deploy/deploy",
+        id: "developer-docs/deploy/index",
       },
       items: [
-        "developer-docs/deploy/deploy",
+        "developer-docs/deploy/deploying-and-upgrading",
         "developer-docs/deploy/larger-wasm",
         "developer-docs/deploy/staging-environment",
         "developer-docs/deploy/custom-domain",
@@ -199,30 +199,31 @@ const sidebars = {
       type: "category",
       label: "Integrations",
       link: {
-        type: 'doc', id: 'developer-docs/integrations/bitcoin/index'
+        type: "doc",
+        id: "developer-docs/integrations/bitcoin/index",
       },
       items: [
-      //   'developer-docs/integrations/index',
-      //   {
-      //     type: 'category',
-      //     label: 'Service Nervous System (SNS)',
-      //     link: {
-      //       type: "doc",
-      //       id: "developer-docs/integrations/sns/index",
-      //     },
-      //     items: [
-      //       "developer-docs/integrations/sns/sns-intro",
-      //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
-      //       "developer-docs/integrations/sns/get-sns/frontend-integration",
-      //       "developer-docs/integrations/sns/get-sns/preparation",
-      //       "developer-docs/integrations/sns/get-sns/local-testing",
-      //       "developer-docs/integrations/sns/get-sns/get-sns-production",
-      //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
-      //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
-      //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
-      //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
-      //     ],
-      //   },
+        //   'developer-docs/integrations/index',
+        //   {
+        //     type: 'category',
+        //     label: 'Service Nervous System (SNS)',
+        //     link: {
+        //       type: "doc",
+        //       id: "developer-docs/integrations/sns/index",
+        //     },
+        //     items: [
+        //       "developer-docs/integrations/sns/sns-intro",
+        //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
+        //       "developer-docs/integrations/sns/get-sns/frontend-integration",
+        //       "developer-docs/integrations/sns/get-sns/preparation",
+        //       "developer-docs/integrations/sns/get-sns/local-testing",
+        //       "developer-docs/integrations/sns/get-sns/get-sns-production",
+        //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+        //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
+        //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
+        //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
+        //     ],
+        //   },
         {
           type: "category",
           label: "Bitcoin Integration",
@@ -251,7 +252,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/http_requests/index",
           },
-          items: ["developer-docs/integrations/http_requests/http_requests-how-it-works"],
+          items: [
+            "developer-docs/integrations/http_requests/http_requests-how-it-works",
+          ],
         },
         "developer-docs/integrations/internet-identity/integrate-identity",
         {
@@ -291,9 +294,7 @@ const sidebars = {
         type: "doc",
         id: "developer-docs/best-practices/index",
       },
-      items: [
-        "developer-docs/best-practices/considerations-for-nft-devs",
-      ],
+      items: ["developer-docs/best-practices/considerations-for-nft-devs"],
     },
     {
       type: "category",
@@ -490,9 +491,9 @@ const sidebars = {
     {
       type: "category",
       label: "Service Nervous System",
-      link:{
+      link: {
         type: "doc",
-        id: "tokenomics/sns/sns-intro-tokens"
+        id: "tokenomics/sns/sns-intro-tokens",
       },
       items: [
         "tokenomics/sns/sns-intro-tokens",
