@@ -42,7 +42,7 @@ export const sampleItems = [
   {
     index: 2,
     title: "Canister HTTPS Outcalls",
-    image: require("../../../static/img/samples/exchangeRate.png").default,
+    image: require("../../../static/img/samples/https-outcalls.jpeg").default,
     domains: ["Global", "Website"],
     languages: ["rust", "javascript"],
     level: "intermediate",
