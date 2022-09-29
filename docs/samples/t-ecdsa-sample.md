@@ -4,7 +4,7 @@ We present a minimal example canister for showcasing the threshold ECDSA API. Th
 
 ## Getting Started
 
-Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least dfx version ?? for local development.
+Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least dfx version 0.11.0 for local development.
 
 -   Download and install the SDK if you do not already have it.
 -   Check out the examples repository.

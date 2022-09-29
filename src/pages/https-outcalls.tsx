@@ -95,7 +95,7 @@ function HTTPSOutcalls() {
               contract interact with centralized oracle services, which are in the hands of intermediaries,
               vulnerable to hacking, and subject to service fees.</p>
 
-              <h3>The Solution</h3>
+              <h3>HTTPS Outcalls Replace Oracles</h3>
               <p>Canister HTTPS outcalls on the Internet Computer blockchain
               allow direct interaction with Web 2.0 and other blockchains without
               oracles. Canister smart contracts can make HTTPS outcalls to specified
@@ -125,7 +125,7 @@ function HTTPSOutcalls() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             <CardWithDescription
               title="HTTPS Outcalls Documentation"
-              description="Build a dapp with canister outgoing HTTPS oucalls."
+              description="Build a dapp with canister outgoing HTTPS outcalls."
               href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
             />
             <CardWithDescription

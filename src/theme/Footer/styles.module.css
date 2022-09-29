@@ -22,7 +22,7 @@
     display: flex;
     width: Min(1350px, 90%);
     margin: 54px auto 48px auto;
-    align-items: start;
+    align-items: flex-start;
     z-index: 10;
 }
 

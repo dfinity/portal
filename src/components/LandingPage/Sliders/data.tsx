@@ -6,6 +6,25 @@ export const slides = [
   {
     body: (
       <>
+        <h3>HTTPS outcalls replace oracles</h3>
+        <p>
+          <SliderLink href="/https-outcalls">
+            <RightArrow></RightArrow> Learn how Internet Computer does this
+          </SliderLink>
+        </p>
+        <p>
+          <SliderLink href="/docs/current/samples/http-requests-exchange-rates">
+            <RightArrow></RightArrow> Sample code
+          </SliderLink>
+        </p>
+      </>
+    ),
+    backgroundImageUrl: "/img/home-page-sliders/https-outcalls-background.jpeg",
+    //sideImageUrl: "/img/home-page-sliders/btc-eth.png",
+  },
+  {
+    body: (
+      <>
         <h3>Extend Bitcoin, Ethereum and other blockchains</h3>
         <p>
           <SliderLink href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
@@ -44,9 +63,7 @@ export const slides = [
   {
     body: (
       <>
-        <h3>
-          Internet Identity is your easy and secure Web3 Authentication
-        </h3>
+        <h3>Internet Identity is your easy and secure Web3 Authentication</h3>
         <p>
           <SliderLink href="https://identity.ic0.app/">
             <RightArrow></RightArrow> Create Internet Identity
@@ -62,6 +79,4 @@ export const slides = [
     backgroundImageUrl: "/img/home-page-sliders/II-background.jpg",
     sideImageUrl: "/img/home-page-sliders/ii.svg",
   },
-
-  
 ];
