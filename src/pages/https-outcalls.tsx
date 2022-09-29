@@ -125,7 +125,7 @@ function HTTPSOutcalls() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             <CardWithDescription
               title="HTTPS Outcalls Documentation"
-              description="Build a dapp with canister outgoing HTTPS oucalls."
+              description="Build a dapp with canister outgoing HTTPS outcalls."
               href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
             />
             <CardWithDescription
