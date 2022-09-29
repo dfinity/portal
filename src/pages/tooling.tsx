@@ -14,8 +14,15 @@ import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
 import { useQueryParam } from "@site/src/utils/use-query-param";
-import LinkIcon from "@site/static/img/svgIcons/link.svg";
-import Link from "@docusaurus/Link";
+import {
+  DocsLink,
+  ExternalLink,
+  GitHubLink,
+  LivePreviewLink,
+  MotokoLink,
+  RustLink,
+  YoutubeLink,
+} from "@site/src/components/Common/CardIcons";
 
 function Samples(): JSX.Element {
   resetNavBarStyle();
@@ -69,14 +76,13 @@ function Samples(): JSX.Element {
             {description}
           </p>
           <div className={"flex flex-row gap-2 mt-4 mx-2"}>
-            {links.map((link) => (
-              <Link
-                className="inline-flex relative border-solid border-black-30 border rounded-full p-1.5 -top-1 hover:text-white hover:border-infinite hover:bg-infinite"
-                to={link}
-              >
-                <LinkIcon className="h-6 w-6" />
-              </Link>
-            ))}
+            {links.motoko && <MotokoLink to={links.motoko} />}
+            {links.rust && <RustLink to={links.rust} />}
+            {links.livePreview && <LivePreviewLink to={links.livePreview} />}
+            {links.docs && <DocsLink to={links.docs} />}
+            {links.youtube && <YoutubeLink to={links.youtube} />}
+            {links.github && <GitHubLink to={links.github} />}
+            {links.external && <ExternalLink to={links.external} />}
           </div>
         </div>
       </div>
