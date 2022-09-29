@@ -1,102 +1,15 @@
 import React from "react";
 import styles from "./index.module.css";
-import Link from "@docusaurus/Link";
-import MotokoIcon from "@site/static/img/svgIcons/motoko.svg";
-import RustIcon from "@site/static/img/svgIcons/rust.svg";
-import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
-import DocsIcon from "@site/static/img/svgIcons/docs.svg";
-import IC0Icon from "@site/static/img/svgIcons/ic0.svg";
-import GitHubIcon from "@site/static/img/svgIcons/github.svg";
-import LinkIcon from "@site/static/img/svgIcons/link.svg";
+import {
+  DocsLink,
+  ExternalLink,
+  GitHubLink,
+  LivePreviewLink,
+  MotokoLink,
+  RustLink,
+  YoutubeLink,
+} from "@site/src/components/Common/CardIcons";
 
-function MotokoLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>Motoko</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <MotokoIcon />
-      </Link>
-    </div>
-  );
-}
-
-function RustLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>Rust</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <RustIcon />
-      </Link>
-    </div>
-  );
-}
-
-function DocsLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>Developer Docs</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <DocsIcon />
-      </Link>
-    </div>
-  );
-}
-
-function YoutubeLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>Watch Tutorials</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <YoutubeIcon />
-      </Link>
-    </div>
-  );
-}
-
-function LivePreviewLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>See Live</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <IC0Icon />
-      </Link>
-    </div>
-  );
-}
-function GitHubLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>Source Code</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <GitHubIcon />
-      </Link>
-    </div>
-  );
-}
-function ExternalLink({ to }) {
-  return (
-    <div className={styles.content}>
-      <div className={styles.iconLinkTooltipContainer}>
-        <span className={styles.iconLinkTooltip}>More Information</span>
-      </div>
-      <Link className={styles.iconLink} to={to}>
-        <LinkIcon />
-      </Link>
-    </div>
-  );
-}
 function Index({ image, title, domain, body, links }) {
   return (
     <div className={styles.container}>
