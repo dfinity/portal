@@ -145,6 +145,6 @@ export const communityToolingItems = [
     tags: ["development", "operations", "testing"],
     description:
       "Communicate with IC directly using NodeJs. Automatic service discovery.",
-    links: ["https://github.com/infu/icblast"],
+    links: {github:"https://github.com/infu/icblast"},
   },
 ];
