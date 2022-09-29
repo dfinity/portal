@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useRef, useCallback, useState } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import classnames from "classnames";
 import { useHistory } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import useIsBrowser from "@docusaurus/useIsBrowser";
 import "./styles.css";
+import DocSearch from "./lib/DocSearch";
+import("./algolia.css");
 
 const Search = (props) => {
   const initialized = useRef(false);
@@ -19,12 +19,9 @@ const Search = (props) => {
   const [indexReady, setIndexReady] = useState(false);
   const history = useHistory();
   const { siteConfig = {} } = useDocusaurusContext();
-  const isBrowser = useIsBrowser();
   const { baseUrl } = siteConfig;
-  const initAlgolia = (searchDocs, searchIndex, DocSearch) => {
+  const initAlgolia = (DocSearch) => {
     new DocSearch({
-      searchDocs,
-      searchIndex,
       inputSelector: props.mobile
         ? ".navbar__search-input-mobile"
         : ".navbar__search-input-desktop",
@@ -55,38 +52,11 @@ const Search = (props) => {
     });
   };
 
-  const pluginData = usePluginData("docusaurus-lunr-search");
-  const getSearchDoc = () =>
-    process.env.NODE_ENV === "production"
-      ? fetch(`${baseUrl}${pluginData.fileNames.searchDoc}`).then((content) =>
-          content.json()
-        )
-      : Promise.resolve([]);
-
-  const getLunrIndex = () =>
-    process.env.NODE_ENV === "production"
-      ? fetch(`${baseUrl}${pluginData.fileNames.lunrIndex}`).then((content) =>
-          content.json()
-        )
-      : Promise.resolve([]);
-
-  const loadAlgolia = () => {
-    if (!initialized.current) {
-      Promise.all([
-        getSearchDoc(),
-        getLunrIndex(),
-        import("./lib/DocSearch"),
-        import("./algolia.css"),
-      ]).then(([searchDocs, searchIndex, { default: DocSearch }]) => {
-        if (searchDocs.length === 0) {
-          return;
-        }
-        initAlgolia(searchDocs, searchIndex, DocSearch);
-        setIndexReady(true);
-      });
-      initialized.current = true;
-    }
-  };
+  useEffect(() => {
+    initAlgolia(DocSearch);
+    setIndexReady(true);
+    initialized.current = true;
+  }, []);
 
   const toggleSearchIconClick = useCallback(
     (e) => {
@@ -99,10 +69,6 @@ const Search = (props) => {
     },
     [props.isSearchBarExpanded]
   );
-
-  if (isBrowser) {
-    loadAlgolia();
-  }
 
   return (
     <div className="navbar__search" key="search-box">
@@ -128,8 +94,6 @@ const Search = (props) => {
           { "navbar__search-input-mobile": props.mobile },
           { "navbar__search-input-desktop": !props.mobile }
         )}
-        onClick={loadAlgolia}
-        onMouseOver={loadAlgolia}
         onFocus={toggleSearchIconClick}
         onBlur={toggleSearchIconClick}
         ref={searchBarRef}
