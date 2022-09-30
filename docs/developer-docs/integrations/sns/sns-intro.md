@@ -109,12 +109,11 @@ latest versions of the SNS canisters, initializes them with
 the parameters given by the user, and installs them on the SNS subnet.
 For this to work, the user has to provide sufficient initial cycles for the SNS canisters.
 Moreover, to allow for beta testing and to ensure that the SNS subnet is not
-overloaded, in the beginning this call to SNS-W is permissioned.
+overloaded, in the beginning this call to SNS-W is authorized.
 Concretely, SNS-W will have a whitelist of principals that are allowed to set up an SNS and this
-whitelist can be updated by NNS proposals. This way, everyone can make an NNS proposal and
+list can be updated by NNS proposals. This way, everyone can make an NNS proposal and
 register their principal in the list, but the NNS community has means of controlling how many SNSs
-should be set up in the beginning.
-
+should be set up how quickly in the beginning.
 
 A crucial part of launching an SNS is how it can be decentralized. 
 That is, the newly created tokens must be distributed to a large community to ensure
