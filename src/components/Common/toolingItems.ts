@@ -184,4 +184,11 @@ export const communityToolingItems = [
     description: "An online drag-and-drop smart contract editor for Motoko.",
     links: { github: "https://github.com/Blocks-Editor/blocks" },
   },
+  {
+    title: "icblast",
+    tags: ["development", "operations", "testing"],
+    description:
+      "Communicate with IC directly using NodeJs. Automatic service discovery.",
+    links: {github:"https://github.com/infu/icblast"},
+  },
 ];
