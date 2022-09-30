@@ -88,7 +88,7 @@ function HTTPSOutcalls() {
             <h3>The Oracle Problem</h3>
               <p>A common limitation of blockchain technology is that smart contracts
               can receive messages, but cannot send them to the world outside the
-              blockchain. For example, typical smart contracts can recieve messages, but
+              blockchain. For example, typical smart contracts can receive messages, but
               cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
               to other services. Historically, this has been a blocker to most software developers
               diving into Web3. For this reason, obtaining off-chain data requires that a smart
