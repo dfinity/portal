@@ -52,7 +52,7 @@ your dapp.
    [open source](https://github.com/dfinity/ic/tree/master/rs/sns), on an 
    application subnet. They can then choose to follow the same SNS versions than
    system-provided SNSs follow or they can choose to deviate from this path.
-   In this option, the SNS community requires to be more active in 
+   In this option, the SNS community has to be more active in 
    implementing, testing and approving SNS code versions.
 
 3) **Build your own DAO or use frameworks provided by others to build your DAO.**
