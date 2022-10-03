@@ -148,7 +148,7 @@ The SNS communities are responsible for individually topping up the cycles of
 all SNS canisters as well as all dapp canisters that are controlled by the SNS.
 Special care must be taken that cycles are also monitored for canisters that
 are automatically created. In particular, this includes the archive canisters
-that are automatically spawn by the ledger canister.
+that are automatically spawned by the ledger canister.
 **If the archive canisters are not provided
 with sufficient cycles, the ledger block history may be lost.**
 :::
