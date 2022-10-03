@@ -138,8 +138,14 @@
     }
 
     .actionButton {
-        height: 48px;
-    }
+        padding: 12px 24px;
+        gap: 12px;
+      }
+      .actionButton svg {
+        width: 21px;
+        flex-shrink: 0;
+        margin: 0;
+      }
     .anchor {
         margin-top: -100px;
         padding-bottom: 100px;
