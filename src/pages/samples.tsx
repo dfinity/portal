@@ -9,21 +9,23 @@ import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import { sampleItems } from "@site/src/components/Common/sampleItems";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
-import communityProjects from "@site/static/supernovaProjects.json";
+import communityProjects, {
+  CommunityProject,
+} from "@site/community/communityProjects";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
 
-const CommunityProject = ({ project }) => {
+const CommunityProjectCard: React.FC<{ project: CommunityProject }> = ({
+  project,
+}) => {
   return (
     <Card
-      key={project.id}
       image={
         !project.image
           ? require(`../../static/img/samples/default.gif`).default
-          : require(`../../static/img/samples/supernovaSubmissions/${project.image}`)
-              .default
+          : project.image
       }
       title={project.name}
       domain={project.domains[0]}
@@ -225,7 +227,7 @@ function Samples(): JSX.Element {
               {filteredCommunitySamples
                 .slice(0, numberOfCommunityItems)
                 .map((sample) => (
-                  <CommunityProject project={sample} />
+                  <CommunityProjectCard project={sample} />
                 ))}
             </motion.div>
             {filteredCommunitySamples.length > numberOfCommunityItems && (
