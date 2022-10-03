@@ -136,7 +136,7 @@ function HTTPSOutcalls() {
             <CardWithBackground
               title="Sample Code"
               description="Learn how to fetch exchange rates with the new canister HTTPS feature."
-              href="https://internetcomputer.org/samples/"
+              href="https://github.com/dfinity/examples/tree/master/rust/exchange_rate"
               bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription
