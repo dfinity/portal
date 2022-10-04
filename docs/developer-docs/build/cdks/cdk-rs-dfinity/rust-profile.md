@@ -14,7 +14,10 @@ This program supports the following functions:
 
 This tutorial provides a simple example of how you can use the Rust CDK interfaces and macros to simplify writing dapps in Rust for the Internet Computer blockchain.
 
-This tutorial demonstrates: \* How to represent slightly more complex data—in the form of a profile as a `record` and an `array` of keywords—using the Candid interface description language. \* How to write a simple search function with partial string matching. \* How profiles are associated with a specific principal.
+This tutorial demonstrates: 
+-   How to represent slightly more complex data—in the form of a profile as a `record` and an `array` of keywords—using the Candid interface description language. 
+-   How to write a simple search function with partial string matching. 
+-   How profiles are associated with a specific principal.
 
 ## Before you begin
 
@@ -80,7 +83,7 @@ To replace the default program:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_profile/Cargo.toml` file in a text editor and add `serde` to dependencies.
+2.  Open the `src/rust_profile_backend/Cargo.toml` file in a text editor and add `serde` to dependencies.
 
     ``` toml
     [dependencies]
@@ -89,11 +92,11 @@ To replace the default program:
     serde = "1.0"
     ```
 
-3.  Open the template `src/rust_profile/lib.rs` file in a text editor and delete the existing content.
+3.  Open the template `src/rust_profile_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to add a Rust program that implements the `getSelf`, `update`, `get`, and `search` functions.
 
-4.  Copy and paste [this code](../../_attachments/profile.rs) into the `profile.rs` file.
+4.  Copy and paste [this code](../../_attachments/profile.rs) into the `lib.rs` file.
 
 5.  Save your changes and close the file to continue.
 
@@ -109,7 +112,7 @@ To update Candid file for this tutorial:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the \`src/rust_profile/rust_profile.did\`file in a text editor.
+2.  Open the `src/rust_profile_backend/rust_profile_backend.did` file in a text editor.
 
 3.  Copy and paste [these](../../_attachments/profile.did) `type` declaration and `service` definition for the `getSelf`, `update`, `get`, and `search` functions.
 
@@ -151,19 +154,19 @@ To register, build, and deploy:
         The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
         Deploying all canisters.
         Creating canisters...
-        Creating canister "rust_profile"...
-        "rust_profile" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "rust_profile_assets"...
-        "rust_profile_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister "rust_profile_backend"...
+        "rust_profile_backend" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
+        Creating canister "rust_profile_frontend"...
+        "rust_profile_frontend" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
         Building canisters...
-        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_profile"
+        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_profile_backend"
         ...
             Finished release [optimized] target(s) in 6.31s
         Building frontend...
         Installing canisters...
         Creating UI canister on the local network.
         The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister rust_profile, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister rust_profile_backend, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
         ...
         Deployed canisters.
 
@@ -184,13 +187,13 @@ To test the deployed canister:
 1.  Call the `update` function to create a profile record by running the following command:
 
     ``` bash
-    dfx canister call rust_profile update '(record {name = "Luxi"; description = "mountain dog"; keywords = vec {"scars"; "toast"}})'
+    dfx canister call rust_profile_backend update '(record {name = "Luxi"; description = "mountain dog"; keywords = vec {"scars"; "toast"}})'
     ```
 
 2.  Call the `getSelf` function to retrieve a profile record by running the following command:
 
     ``` bash
-    dfx canister call rust_profile getSelf
+    dfx canister call rust_profile_backend getSelf
     ```
 
     The command returns the profile you used the `update` function to add. For example:
@@ -205,7 +208,7 @@ To test the deployed canister:
     In its current form, the dapp only stores and returns one profile. If you run the following command to add a second profile using the `update` function, the command replaces the `Luxi` profile with the `Dupree` profile:
 
     ``` bash
-    dfx canister call rust_profile update '(record {name = "Dupree"; description = "black dog"; keywords = vec {"funny tail"; "white nose"}})'
+    dfx canister call rust_profile_backend update '(record {name = "Dupree"; description = "black dog"; keywords = vec {"funny tail"; "white nose"}})'
     ```
 
     You can use the `get`, `getSelf`, and `search` functions, but they will only return results for the `Dupree` profile.
@@ -213,7 +216,7 @@ To test the deployed canister:
 3.  Run the following command to call the `search` function:
 
     ``` bash
-    dfx canister call rust_profile search '("black")';
+    dfx canister call rust_profile_backend search '("black")';
     ```
 
     This command finds the matching profile using the `description` and returns the profile:
@@ -243,13 +246,13 @@ To add identities for testing:
 2.  Call the `update` function to add a profile for the new identity.
 
     ``` bash
-    dfx --identity Miles canister call rust_profile update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
+    dfx --identity Miles canister call rust_profile_backend update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
     ```
 
 3.  Call the `getSelf` function to view the profile associated with the `default` user identity.
 
     ``` bash
-    dfx canister call rust_profile getSelf
+    dfx canister call rust_profile_backend getSelf
     ```
 
     The command displays the profile currently associated with the default identity, in this example, the Dupree profile:
@@ -265,7 +268,7 @@ To add identities for testing:
 4.  Call the `getSelf` function using the `Miles` user identity by running the following command:
 
     ``` bash
-    dfx --identity Miles canister call rust_profile getSelf
+    dfx --identity Miles canister call rust_profile_backend getSelf
     ```
 
     The command displays the profile currently associated with the Miles identity, in this example:
@@ -283,7 +286,7 @@ To add identities for testing:
     For example, to verify the `Miles` profile is returned, you might run the following command:
 
     ``` bash
-    dfx canister call rust_profile search '("Great")'
+    dfx canister call rust_profile_backend search '("Great")'
     ```
 
     The command returns the `Miles` profile:
@@ -301,7 +304,7 @@ To add identities for testing:
     For example, to verify the `Dupree` profile is returned, you might run the following command:
 
     ``` bash
-    dfx canister call rust_profile search '("black")'
+    dfx canister call rust_profile_backend search '("black")'
     ```
 
     The command returns the `Dupree` profile:
