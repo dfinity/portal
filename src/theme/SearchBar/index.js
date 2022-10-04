@@ -16,6 +16,8 @@ const Search = (props) => {
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
   const [indexReady, setIndexReady] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const searchHandle = useRef(null);
   const history = useHistory();
   const { siteConfig = {} } = useDocusaurusContext();
   const { baseUrl } = siteConfig;
@@ -48,6 +50,22 @@ const Search = (props) => {
 
         history.push(url);
       },
+      beginSearch: () => {
+        if (searchHandle.current) {
+          clearTimeout(searchHandle.current);
+        }
+        searchHandle.current = setTimeout(() => {
+          setSearching(true);
+          searchHandle.current = null;
+        }, 300);
+      },
+      endSearch: () => {
+        setSearching(false);
+        if (searchHandle.current) {
+          clearTimeout(searchHandle.current);
+          searchHandle.current = null;
+        }
+      },
     });
   };
 
@@ -58,6 +76,11 @@ const Search = (props) => {
       setIndexReady(true);
       initialized.current = true;
     })();
+    return () => {
+      if (searchHandle.current) {
+        clearTimeout(searchHandle.current);
+      }
+    };
   }, []);
 
   const toggleSearchIconClick = useCallback(
@@ -101,6 +124,11 @@ const Search = (props) => {
         ref={searchBarRef}
         disabled={!indexReady}
       />
+      <span
+        className={classnames("navbar__search-indicator", {
+          "navbar__search-indicator--searching": searching,
+        })}
+      ></span>
     </div>
   );
 };
