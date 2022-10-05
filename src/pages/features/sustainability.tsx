@@ -10,7 +10,7 @@ function FeaturePage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Green"
+      title="Sustainability"
       // fill in meta description
       description=""
     >
