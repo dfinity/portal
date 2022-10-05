@@ -1,5 +1,36 @@
 [
   {
+    "id": "react-website-with-contentful-cms",
+    "name": "React Website with Contentful CMS",
+    "description": "This is a boilerplate for you to easily setup and deploy a React website with Contentful CMS onto the Internet Computer blockchain.",
+    "image": "react-website-with-contentful-cms.png",
+    "links": {
+      "github": "https://github.com/therealbryanho/dfinity-websitewithcms",
+      "otherLinks": []
+    },
+    "submitterFirstName": "Bryan",
+    "submitterLastName": "Ho",
+    "about": "This is a boilerplate for you to easily setup and deploy a React website with Contentful CMS onto the Internet Computer blockchain.\n\nThe boilerplate will get you setup with the structure of a blog. There are features like listing of multiple posts, viewing of an individual post, pagination and search.\n\nYou can create any kind of content in Contentful, like property listings, car listings, even eCommerce products, and then edit the code in this boilerplate to load your content through the Contentful API.",
+    "domains": [
+      "Website"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "level": "intermediate",
+    "contentType": [
+      "code samples"
+    ],
+    "search": "contentful cms#@#@#react#@#@#internetcomputer#@#@#internetcomputer#@#@#javascript#@#@#html#@#@#boilerplate to easily setup and deploy a React website with Contentful CMS",
+    "tags": [
+      "react",
+      "contentful cms",
+      "internetcomputer",
+      "javascript",
+      "html"
+    ]
+  },
+  {
     "id": "spinner-cash",
     "name": "Spinner Cash",
     "description": "Safeguard your financial privacy with zero-knowledge proofs",
