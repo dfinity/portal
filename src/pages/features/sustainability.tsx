@@ -111,7 +111,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Sustainability Policy and Proposals"
               description="Check out the summary over on Medium"
-              href=""
+              href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
             />
             <CardWithDescription
               title="Real-time Network Metrics"
