@@ -80,7 +80,7 @@ export const dfinityToolingItems = [
     title: "Stable Structures",
     tags: ["database", "development", "library"],
     description:
-      "A collection of scalable and upgrade-safe data structures.",
+      "A collection of scalable and upgrade-safe data structures for Rust.",
     links: { github: "https://github.com/dfinity/stable-structures" },
   },
   {
