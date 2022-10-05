@@ -105,8 +105,8 @@ function FeaturePage() {
 
             <CardWithDescription
               title="Internet Computer Footprint"
-              description="Read the full report"
-              href="https://assets.carboncrowd.io/reports/ICF.pdf"
+              description="Read the collaborative report from Carbon Crowd and DFINITY"
+              href="https://carboncrowd.io/"
             />
             <CardWithDescription
               title="Sustainability Policy and Proposals"
@@ -120,7 +120,7 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Performance and Energy analysis on the IC Wiki"
-              description="Take a deep dive into the Internet Computer."
+              description="Take a deep dive into the Internet Computer"
               href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"
             />
           </div>
