@@ -5110,5 +5110,40 @@
       "canister",
       "internetcomputer"
     ]
-  }
+  },
+  {
+    "id": "simple-blogsite",
+    "name": "Simple Blogsite",
+    "description": "Learn how to make your own blog supporting CRUD operations in Motoko on the Internet Computer.",
+    "image": "simpleblog.png",
+    "links": {
+      "github": "https://github.com/lukasvozda/icblog",
+      "livePreview": "https://gaqra-oqaaa-aaaah-qc4qa-cai.ic0.app",
+      "otherLinks": []
+    },
+    "submitterFirstName": "Lukas",
+    "submitterLastName": "Vozda",
+    "about": "This sample project demonstrates how to make a simple blogsite that can be deployed on the Internet Computer. It is a minimal design that allows users to authenticate with a wallet and then create, read, update and delete posts.",
+    "domains": [
+      "Website"
+    ],
+    "languages": [
+      "motoko",
+      "javascript"
+    ],
+    "level": "beginner",
+    "contentType": [
+      "code samples",
+      "community repo",
+      "live demos"
+    ],
+    "search": "blog#@#@#motoko#@#@#canister#@#@#internetcomputer#@#@#javascript#@#@#html#@#@# IC Blog is a sample blog site allowing users to create, read, update and delete posts.",
+    "tags": [
+      "motoko",
+      "svelte",
+      "internetcomputer",
+      "javascript",
+      "html"
+    ]
+  }  
 ]
