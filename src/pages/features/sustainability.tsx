@@ -45,7 +45,7 @@ function FeaturePage() {
           {/* 
             delete this div if image is not needed 
           */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
+          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10 sm:flex sm:items-center">
             <img
               src="/img/features/green.png"
               alt=""
