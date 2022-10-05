@@ -42,7 +42,7 @@ export const sampleItems = [
   {
     index: 2,
     title: "Canister HTTPS Outcalls",
-    image: require("../../../static/img/samples/exchangeRate.png").default,
+    image: require("../../../static/img/samples/https-outcalls.jpeg").default,
     domains: ["Global", "Website"],
     languages: ["rust", "javascript"],
     level: "intermediate",
@@ -53,6 +53,8 @@ export const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
       },
+      motoko:
+      "https://github.com/dfinity/examples/tree/master/motoko/exchange_rate",
       docs: "/docs/current/samples/http-requests-exchange-rates",
       rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
     },

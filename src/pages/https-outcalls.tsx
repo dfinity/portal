@@ -41,7 +41,7 @@ function HTTPSOutcalls() {
                 HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The power of canister HTTPS outcalls on the Internet Computer is that is allows
+                The power of canister HTTPS outcalls on the Internet Computer is that it allows
                 smart contracts to directly connect to the Web 2.0 world, opening up
                 a plethora of use cases. Retrieve market data from crypto exchanges,
                 send emails, integrate with other blockchains, and more.
@@ -88,14 +88,14 @@ function HTTPSOutcalls() {
             <h3>The Oracle Problem</h3>
               <p>A common limitation of blockchain technology is that smart contracts
               can receive messages, but cannot send them to the world outside the
-              blockchain. For example, typical smart contracts can recieve messages, but
+              blockchain. For example, typical smart contracts can receive messages, but
               cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
               to other services. Historically, this has been a blocker to most software developers
               diving into Web3. For this reason, obtaining off-chain data requires that a smart
               contract interact with centralized oracle services, which are in the hands of intermediaries,
               vulnerable to hacking, and subject to service fees.</p>
 
-              <h3>The Solution</h3>
+              <h3>HTTPS Outcalls Replace Oracles</h3>
               <p>Canister HTTPS outcalls on the Internet Computer blockchain
               allow direct interaction with Web 2.0 and other blockchains without
               oracles. Canister smart contracts can make HTTPS outcalls to specified
@@ -125,7 +125,7 @@ function HTTPSOutcalls() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             <CardWithDescription
               title="HTTPS Outcalls Documentation"
-              description="Build a dapp with canister outgoing HTTPS oucalls."
+              description="Build a dapp with canister outgoing HTTPS outcalls."
               href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
             />
             <CardWithDescription
@@ -136,7 +136,7 @@ function HTTPSOutcalls() {
             <CardWithBackground
               title="Sample Code"
               description="Learn how to fetch exchange rates with the new canister HTTPS feature."
-              href="https://internetcomputer.org/samples/"
+              href="/samples"
               bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription

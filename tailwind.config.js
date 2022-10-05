@@ -40,7 +40,7 @@ module.exports = {
       },
       backgroundImage: {
         "https-outcalls":
-          "url('/static/img/https-outcalls/exchange-rate-BG.jpeg')",
+          "url('/static/img/https-outcalls/sample-code-bg.jpeg')",
       },
     },
     screens: {
