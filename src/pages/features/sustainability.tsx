@@ -106,7 +106,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Internet Computer Footprint"
               description="Read the full report"
-              href=""
+              href="https://assets.carboncrowd.io/reports/ICF.pdf"
             />
             <CardWithDescription
               title="Sustainability Policy and Proposals"
