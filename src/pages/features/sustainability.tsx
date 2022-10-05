@@ -81,15 +81,15 @@ function FeaturePage() {
 
             </p>
 
-            {/* <p className="mb-3 mt-6">
+            <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/quickstart/hello10mins"
+                href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                Check the full summary of IC energy consumption
               </Link>
-            </p> */}
+            </p>
           </div>
         </section>
 
