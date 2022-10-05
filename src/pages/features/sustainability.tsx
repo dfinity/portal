@@ -19,7 +19,7 @@ function FeaturePage() {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Green</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Sustainability</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
               While having the security of Web3 blockchains, the performance and power consumption 
               of the Internet Computer (IC) is comparable to Web2 and cloud technology stacks. 
