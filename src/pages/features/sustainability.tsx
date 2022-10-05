@@ -45,13 +45,13 @@ function FeaturePage() {
           {/* 
             delete this div if image is not needed 
           */}
-          {/* <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
+          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
-              src="/img/features/ic-generic.png"
+              src="/img/features/green.png"
               alt=""
               className="w-full block"
             />
-          </div> */}
+          </div>
 
           <div
             className="
@@ -71,18 +71,17 @@ function FeaturePage() {
           competing blockchain projects, but also existing (highly optimized) web2 tech. See the table below to put IC performance in perspective.
 
             <ul>
-              <li><strong>One Internet Computer transaction: 261 J</strong></li>
-              <li>One Google search: 1'080 J</li>
-              <li>One Solana transaction: 1'837 J</li>
-              <li>One Ethereum 2 transaction: 126'000 J</li>
-              <li>One Cardano transaction: 1'972'440 J</li>
-              <li>One Ethereum (pre-merge) transaction: 692'820'000 J</li> 
-              <li>One Bitcoin transaction: 6'995'592'000 J</li>
+              <li><strong>One Internet Computer transaction: 0.006</strong></li>
+              <li>One Solana transaction: 0.116</li>
+              <li>One Avalanche transaction: 2.7</li>
+              <li>One Algorand transaction: 4.760</li>
+              <li>One Tezos transaction: 41.450</li>
+              <li>One Cardano transaction: 51.590</li>
             </ul>
 
             </p>
 
-            <p className="mb-3 mt-6">
+            {/* <p className="mb-3 mt-6">
               <Link
                 href="/docs/current/developer-docs/quickstart/hello10mins"
                 className="tw-heading-6 flex gap-2 items-center"
@@ -90,34 +89,34 @@ function FeaturePage() {
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Start building
               </Link>
-            </p>
+            </p> */}
           </div>
         </section>
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
+            Scalability and Utility with low Carbon Cost
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
+            and we're only getting started
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              title="Internet Computer Footprint"
+              description="Read the full report"
+              href=""
             />
             <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
+              title="Sustainability Policy and Proposals"
+              description="Check out the summary over on Medium"
+              href=""
             />
             <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Real-time Network Metrics"
+              description="See the IC dashboard for performance and network consumption"
+              href="https://dashboard.internetcomputer.org/"
             />
             <CardWithDescription
               title="Performance and Energy analysis on the IC Wiki"
