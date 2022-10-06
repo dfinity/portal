@@ -8,7 +8,7 @@ This documentation might help if you want to deploy a token on the IC that aims 
 You can set up a Rosetta API-compliant node to interact with the Internet Computer and exchange Internet Computer Protocol (ICP) tokens.
 To keep the instructions simple, we use a Docker image to create the integration with the Rosetta API.
 You can also build and run the binary using the source code.
-If you don’t already have Docker on your computer, download and install the latest version.
+If you don’t already have [Docker](https://docs.docker.com/get-docker/) on your computer, download and install the latest version.
 
 To set up a Rosetta node (which connects to a testnet):
 
@@ -38,7 +38,8 @@ To set up a Rosetta node (which connects to a testnet):
         Listening on 0.0.0.0:8080
         Starting Rosetta API server
 
-    By default, the software **does not** connect to the ledger canister running on the Internet Computer blockchain mainnet, it connects to a testnets.
+    By default, the software connects to a testnet.
+    It **does not** connect to the ledger canister running on the Internet Computer blockchain mainnet.
 
     If you have been assigned a test network and corresponding ledger canister identifier, you can run the command against that network by specifying an additional `canister` argument.
     For example, the following command illustrates connecting to the ledger canister on a test network by setting the `canister` argument to `2xh5f-viaaa-aaaab-aae3q-cai`.
