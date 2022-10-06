@@ -53,6 +53,8 @@ export const sampleItems = [
         text: "Get Code",
         to: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
       },
+      motoko:
+      "https://github.com/dfinity/examples/tree/master/motoko/exchange_rate",
       docs: "/docs/current/samples/http-requests-exchange-rates",
       rust: "https://github.com/dfinity/examples/tree/master/rust/exchange_rate",
     },
