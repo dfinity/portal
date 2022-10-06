@@ -23,10 +23,9 @@ function FeaturePage() {
                 Limitless Scaling
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) can scale its capacity without limit, simply by
-              adding additional nodes to fuel new subnets. Nodes are added via the 
-              Network Nervous System (NNS) which forms new subnets almost on a weekly basis 
-              since genesis. In contrast, most other blockchains have transaction limits 
+              The Internet Computer (IC) can scale its capacity simply by
+              adding additional nodes to fuel new subnets. Nodes and subnets are added via the 
+              Network Nervous System (NNS). In contrast, most other blockchains have transaction limits 
               baked into the protocol (e.g. adding more servers to Bitcoin does not 
               increase its transaction volume) and need cumbersome layers to address scaling.
               </p>
@@ -68,7 +67,7 @@ function FeaturePage() {
               <Link href="https://dashboard.internetcomputer.org">
               Internet Computer Dashboard
               </Link>{" "}
-            to see the scale of the IC.
+            for the scale of the IC.
             </p>
             <h3>Subnet Architecture</h3>
             <p>
@@ -78,7 +77,7 @@ function FeaturePage() {
             <br />
             <br />
             The Internet Computer's partitioning into subnet blockchains is what allows the 
-            network to infinitely scale. Each subnet blockchain is capable of processing 
+            network to scale. Each subnet blockchain is capable of processing 
             update and query calls independently from other subnets. This means that the 
             entire network can easily be scaled by simply adding more subnets to the network. 
             For update calls that need to be processed on every node, this method of scaling 
