@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Layout from "@theme/Layout";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
@@ -6,18 +6,24 @@ import FilterBar from "@site/src/components/SamplesPage/FilterBar";
 import BGCircle from "@site/static/img/purpleBlurredCircle.png";
 import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
-import { sampleItems } from "@site/src/components/Common/sampleItems";
+import {
+  SampleContentType,
+  SampleDomain,
+  SampleItem,
+  sampleItems,
+  SampleLanguage,
+  SampleLevel,
+} from "@site/src/components/Common/sampleItems";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
-import communityProjects, {
-  CommunityProject,
-} from "@site/community/communityProjects";
+import communityProjects from "@site/community/communityProjects";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
+import { useQueryParam } from "../utils/use-query-param";
 
-const CommunityProjectCard: React.FC<{ project: CommunityProject }> = ({
+const CommunityProjectCard: React.FC<{ project: SampleItem }> = ({
   project,
 }) => {
   return (
@@ -27,19 +33,111 @@ const CommunityProjectCard: React.FC<{ project: CommunityProject }> = ({
           ? require(`../../static/img/samples/default.gif`).default
           : project.image
       }
-      title={project.name}
+      title={project.title}
       domain={project.domains[0]}
-      body={project.description}
+      body={project.body}
       links={project.links}
     />
   );
 };
 
-function Samples(): JSX.Element {
-  const [selectedLanguages, setSelectedLanguages] = React.useState([]);
-  const [selectedDomains, setSelectedDomains] = React.useState([]);
-  const [selectedLevels, setSelectedLevels] = React.useState([]);
-  const [selectedContentTypes, setSelectedContentTypes] = React.useState([]);
+function filterSamples(
+  samples: SampleItem[],
+  selectedLanguages: SampleLanguage[],
+  selectedDomains: SampleDomain[],
+  selectedLevels: SampleLevel[],
+  selectedContentTypes: SampleContentType[],
+  searchTerm: string
+): SampleItem[] {
+  if (selectedLanguages.length > 0) {
+    samples = samples.filter(({ languages }) =>
+      languages?.some((item) => selectedLanguages.includes(item))
+    );
+  }
+  if (selectedDomains.length > 0) {
+    samples = samples.filter(({ domains }) =>
+      domains?.some((item) => selectedDomains.includes(item))
+    );
+  }
+  if (selectedLevels.length > 0) {
+    samples = samples.filter(({ level }) => selectedLevels.includes(level));
+  }
+  if (selectedContentTypes.length > 0) {
+    samples = samples.filter(({ contentType }) =>
+      contentType?.some((item) => selectedContentTypes.includes(item))
+    );
+  }
+
+  if (searchTerm.trim() !== "") {
+    const term = searchTerm.trim().toLowerCase();
+    samples = samples.filter(
+      ({ body, title }) =>
+        body.toLowerCase().includes(term) || title.toLowerCase().includes(term)
+    );
+  }
+  return samples;
+}
+
+const serializeStringList = (a: string[]) =>
+  a.length === 0 ? undefined : a.join(",");
+function deserializeStringList<T extends string>(s: string): T[] {
+  return s.trim().length > 0 ? (s.split(",") as T[]) : [];
+}
+
+function Samples(): React.ReactNode {
+  const [searchTerm, setSearchTerm, queryParamInitialized] =
+    useQueryParam<string>("term", "", {
+      serialize: (a) => (a === "" ? undefined : a),
+    });
+  const [selectedLanguages, setSelectedLanguages] = useQueryParam<
+    SampleLanguage[]
+  >("selectedLanguages", [], {
+    serialize: serializeStringList,
+    deserialize: deserializeStringList,
+  });
+  const [selectedDomains, setSelectedDomains] = useQueryParam<SampleDomain[]>(
+    "selectedDomains",
+    [],
+    {
+      serialize: serializeStringList,
+      deserialize: deserializeStringList,
+    }
+  );
+  const [selectedLevels, setSelectedLevels] = useQueryParam<SampleLevel[]>(
+    "selectedLevels",
+    [],
+    {
+      serialize: serializeStringList,
+      deserialize: deserializeStringList,
+    }
+  );
+  const [selectedContentTypes, setSelectedContentTypes] = useQueryParam<
+    SampleContentType[]
+  >("selectedContentTypes", [], {
+    serialize: serializeStringList,
+    deserialize: deserializeStringList,
+  });
+
+  const sampleStartRef = useRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (
+      queryParamInitialized &&
+      (selectedLanguages.length > 0 ||
+        selectedDomains.length > 0 ||
+        selectedLevels.length > 0 ||
+        selectedContentTypes.length > 0 ||
+        searchTerm.length > 0)
+    ) {
+      window.scrollTo({
+        top:
+          window.scrollY +
+          sampleStartRef.current.getBoundingClientRect().top -
+          50,
+      });
+    }
+  }, [queryParamInitialized]);
+
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
   const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
   const [filteredCommunitySamples, setFilteredCommunitySamples] =
@@ -59,39 +157,26 @@ function Samples(): JSX.Element {
     }
   };
 
-  const filterSamples = (samples) => {
-    if (selectedLanguages.length > 0) {
-      samples = samples.filter(({ languages }) =>
-        languages?.some((item) => selectedLanguages.includes(item))
-      );
-    }
-    if (selectedDomains.length > 0) {
-      samples = samples.filter(({ domains }) =>
-        domains?.some((item) => selectedDomains.includes(item))
-      );
-    }
-    if (selectedLevels.length > 0) {
-      samples = samples.filter(({ level }) => selectedLevels.includes(level));
-    }
-    if (selectedContentTypes.length > 0) {
-      samples = samples.filter(({ contentType }) =>
-        contentType?.some((item) => selectedContentTypes.includes(item))
-      );
-    }
-    return samples;
-  };
   useEffect(() => {
-    let tempFilteredSamples = filterSamples(communityProjects);
+    let tempFilteredSamples = filterSamples(
+      communityProjects,
+      selectedLanguages,
+      selectedDomains,
+      selectedLevels,
+      selectedContentTypes,
+      searchTerm
+    );
     sortSamples(tempFilteredSamples);
     setFilteredCommunitySamples([...tempFilteredSamples]);
-  }, [
-    selectedLanguages,
-    selectedDomains,
-    selectedLevels,
-    selectedContentTypes,
-  ]);
-  useEffect(() => {
-    let tempFilteredSamples = filterSamples(sampleItems);
+
+    tempFilteredSamples = filterSamples(
+      sampleItems,
+      selectedLanguages,
+      selectedDomains,
+      selectedLevels,
+      selectedContentTypes,
+      searchTerm
+    );
     sortSamples(tempFilteredSamples);
     setFilteredSamples([...tempFilteredSamples]);
   }, [
@@ -99,7 +184,7 @@ function Samples(): JSX.Element {
     selectedDomains,
     selectedLevels,
     selectedContentTypes,
-    selectedSortBy,
+    searchTerm,
   ]);
 
   return (
@@ -148,11 +233,14 @@ function Samples(): JSX.Element {
                 setSelectedContentTypes={setSelectedContentTypes}
                 selectedSortBy={selectedSortBy}
                 setSelectedSortBy={setSelectedSortBy}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
               />
             </motion.div>
             <motion.div
               variants={transitions.item}
               className="mt-12 md:ml-1/12"
+              ref={sampleStartRef}
             >
               <p className="tw-heading-6 md:tw-heading-5">Featured samples</p>
 
