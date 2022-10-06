@@ -14,7 +14,7 @@ const cardsContent = [
   {
     title: "Emit less CO₂",
     body: "Systems and services running on-chain can be more efficient than traditional IT",
-    link: "/features/green",
+    link: "/features/sustainability",
   },
   {
     title: "Limitless scaling",
