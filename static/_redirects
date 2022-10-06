@@ -181,3 +181,5 @@
 
 /howitworks /how-it-works 301
 /howitworks/* /how-it-works/:splat 301
+
+/features/green /features/sustainability 301
