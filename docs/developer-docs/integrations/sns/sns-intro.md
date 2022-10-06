@@ -32,20 +32,18 @@ your dapp.
    is running on the SNS subnet and infer that the underlying code has been approved
    by the NNS community.
    
-   <!-- Remove? :
-   An SNS is a DAO that is realized by a set of 
-   [canister smart contracts](../../../references/ic-interface-spec.md#overview_of_the_internet_computer).
-   In general, installing and maintaining multiple canisters that must be compatible with
-   each other is not a simple task.
-   On upgrading each of the canisters one has to be careful not to break any functionality
-   and it has to be guaranteed that a new, upgraded version of one canister is still
-   compatible with the other SNS canisters.
-   Therefore, to reduce the work for projects, projects can get an SNS that is provided and 
-   automatically maintained by the IC.
-   Concretely, upgrades from one SNS deployment to the next are provided, tested, 
-   and approved, called _blessed_, by the IC community (through NNS proposals).
-   The individual projects then simply have to trigger an upgrade of their SNS to the
-   next blessed version.-->
+<!-- An SNS is a DAO that is realized by a set of  [canister smart contracts](../../../references/ic-interface-spec.md#overview_of_the_internet_computer).
+In general, installing and maintaining multiple canisters that must be compatible with
+each other is not a simple task.
+On upgrading each of the canisters one has to be careful not to break any functionality
+and it has to be guaranteed that a new, upgraded version of one canister is still
+compatible with the other SNS canisters.
+Therefore, to reduce the work for projects, projects can get an SNS that is provided and 
+automatically maintained by the IC.
+Concretely, upgrades from one SNS deployment to the next are provided, tested, 
+and approved, called _blessed_, by the IC community (through NNS proposals).
+The individual projects then simply have to trigger an upgrade of their SNS to the
+next blessed version. -->
 
 2) **_Self-deploy_ an SNS and manually upgrade it.**
    A developer or a community can choose to deploy the SNS code, which is
