@@ -1948,6 +1948,35 @@ const communityProjects: SampleItem[] = [
     contentType: ["code samples", "community repo"],
     image: "/img/community-projects/launchtrail.png",
   },
+  {
+    index: 119,
+    title: "React Website with Contentful CMS",
+    body: "This is a boilerplate for you to easily setup and deploy a React website with Contentful CMS onto the Internet Computer blockchain.",
+    image: "/img/community-projects/react-website-with-contentful-cms.png",
+    links: {
+      github: "https://github.com/therealbryanho/dfinity-websitewithcms",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["javascript"],
+    level: "intermediate",
+    contentType: ["code samples"],
+  },
+  {
+    index: 120,
+    title: "Simple Blogsite",
+    body: "Learn how to make your own blog supporting CRUD operations in Motoko on the Internet Computer.",
+    image: "/img/community-projects/simpleblog.png",
+    links: {
+      github: "https://github.com/lukasvozda/icblog",
+      livePreview: "https://gaqra-oqaaa-aaaah-qc4qa-cai.ic0.app",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
 ];
 
 export default communityProjects;
