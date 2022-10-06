@@ -47,7 +47,7 @@ function FeaturePage() {
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10 sm:flex sm:items-center">
             <img
-              src="/img/features/green.png"
+              src="/img/features/green.svg"
               alt=""
               className="w-full block"
             />
