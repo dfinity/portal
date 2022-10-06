@@ -41,7 +41,7 @@ function FeaturePage() {
             />
           </div>
         </section>
-        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
+        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-2 md:gap-12">
           {/* 
             delete this div if image is not needed 
           */}
