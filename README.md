@@ -181,3 +181,9 @@ We therefore invite other projects to:
 We invite developers to add their IC-focused developer tools to the [Developer Tools page](https://internetcomputer.org/tooling) by appending an entry to the `communityToolingItems` array in `src/components/Common/toolingItems.ts`.
 
 Please make sure to add appropriate tags to make the tool easy to discover for other devs. Avoid introducing new tags if possible.
+
+## Adding community sample projects
+
+You can submit your sample project to be displayed on the [Samples page](https://internetcomputer.org/samples).
+
+Add your submission to [the community projects file](/community/communityProjects.ts) and open a pull request. You can use an editor with TypeScript support to make sure your submission follows [the schema](/src/components/Common/sampleItems.ts).
