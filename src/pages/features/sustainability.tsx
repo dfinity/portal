@@ -41,13 +41,13 @@ function FeaturePage() {
             />
           </div>
         </section>
-        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
+        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-2 md:gap-12">
           {/* 
             delete this div if image is not needed 
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10 sm:flex sm:items-center">
             <img
-              src="/img/features/green.png"
+              src="/img/features/green.svg"
               alt=""
               className="w-full block"
             />
