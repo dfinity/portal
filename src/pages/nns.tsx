@@ -123,7 +123,7 @@ function NnsPage() {
                 upgrade its capacity. Anyone can submit a proposal to make
                 protocol level changes. Once approved by ICP token holders,
                 these changes are automatically carried out by the NNS,
-                seemlessly upgrading the network. For participating in
+                seamlessly upgrading the network. For participating in
                 governance, ICP token holders receive voting rewards.
               </motion.p>
               <MotionLink
