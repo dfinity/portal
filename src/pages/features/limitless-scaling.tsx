@@ -86,34 +86,8 @@ function FeaturePage() {
             <br />
             <br />
             For query calls, however, scalability can simply be achieved by adding more nodes 
-            to a subnet because these calls are processed locally on one node. The network 
-            is capable of adding thousands of new nodes in its current state. The addition 
+            to a subnet because these calls are processed locally on one node. The addition 
             of more nodes and subnets to the network ensures web speed and infinite scalability.
-            </p>
-
-            <h3>Chain Key Cryptography</h3>
-            <p>
-            The key to scalability is <Link href="/how-it-works/chain-key-technology/">chain key cryptography</Link>: it gives the Internet Computer a single 48-byte public key.
-            This single public key allows anyone to verify a response to an update call, no matter which subnet has computed it and which node has transmitted it. More importantly, the single public key enables subnets to directly communicate in a secure and reliable way. Both are essential to scale to thousands of subnets.
-            </p>
-
-            <h3>Finality and Consensus</h3>
-            <p>
-            The IC's novel consensus mechanism also plays a key role in the network's 
-            ability to scale. {" "}
-            <Link href="https://assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf">
-            Internet Computer Consensus (ICC)
-            </Link>  consists of four different 
-            layers that create candidate blocks, identify valid blocks, rank block makers, 
-            and then finalize the agreed upon blocks. The blockchain's asynchronous 
-            finalization mechanism is impressively fast, ensuring that the finality for 
-            new blocks is achieved in under two seconds on average on the NNS subnet, 
-            and 1 second on dapp subnets.
-            <br />
-            <br />
-            This contributes to the IC's resilience. Additionally, unlike legacy 
-            blockchains, the IC has no nodes hosted by cloud providers which helps
-            to ensure that the network is tamper-proof, secure, and stable.
             </p>
 
             <p className="mb-3 mt-6">
