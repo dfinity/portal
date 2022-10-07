@@ -169,10 +169,6 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Network Nervous System (NNS)",
-                href: "/nns",
-              },
-              {
                 label: "Videos",
                 href: "/videos",
               },
@@ -251,10 +247,6 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "ICP tokens",
-                href: "/icp-tokens",
-              },
-              {
                 label: "Live sessions",
                 href: "/live-sessions",
               },
@@ -263,12 +255,16 @@ const config = {
                 href: "/roadmap",
               },
               {
-                label: "Staking & Governance",
-                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
+                label: "ICP tokens",
+                href: "/icp-tokens",
               },
               {
-                label: "NNS Frontend dapp",
-                href: "https://nns.ic0.app/v2/",
+                label: "Network Nervous System (NNS)",
+                href: "/nns",
+              },
+              {
+                label: "Staking & Governance",
+                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
               },
               {
                 label: "Node Providers",
