@@ -123,9 +123,9 @@ function FeaturePage() {
               href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Community Conversation 'Performance on the Internet Computer' "
+              description="Learn about performance and scalabilty on the Internet Computer."
+              href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription
               title="'Limitless Scaling' article on the IC Wiki"
