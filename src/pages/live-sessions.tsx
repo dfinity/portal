@@ -76,7 +76,9 @@ function LiveSessionsPage(): JSX.Element {
     upcomingTbd.sort((a, b) => a.tbdMonth.localeCompare(b.tbdMonth));
 
     setUpcomingTbd(upcomingTbd);
-    setInitalized(true);
+    setTimeout(() => {
+      setInitalized(true);
+    });
   }, [liveSessions, setPast, setUpcoming]);
 
   function scrollToForm() {
@@ -87,8 +89,18 @@ function LiveSessionsPage(): JSX.Element {
   }
 
   useEffect(() => {
-    if (location.hash === "#subscribe") {
-      scrollToForm();
+    if (initalized) {
+      if (location.hash === "#subscribe") {
+        scrollToForm();
+      } else if (location.hash) {
+        const el = document.querySelector(location.hash) as HTMLElement;
+        if (el) {
+          window.scroll({
+            top: window.scrollY + el.getBoundingClientRect().top - 100,
+            behavior: "smooth",
+          });
+        }
+      }
     }
   }, [initalized]);
 
