@@ -8,6 +8,9 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
     "default"
   ] as VotingRewardsPluginData;
 
+  const highestVotingReward =
+    votingRewards[votingRewards.length - 1].reward.toFixed(1) + "%";
+
   return (
     <svg
       className={className}
@@ -17,6 +20,7 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>{`Stake your ICP and earn voting rewards, ${highestVotingReward} annualized.`}</title>
       <rect
         x="43.7158"
         y="190.257"
@@ -45,7 +49,7 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
       />
       <text fill="#181818" fontSize="21.5831" fontWeight="bold">
         <tspan x="65.2988" y="231.638">
-          Add or Remove{" "}
+          Add or Remove
         </tspan>
         <tspan x="65.2988" y="259.966">
           Node Provider
@@ -116,7 +120,7 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
       />
       <text fill="#181818" fontSize="25.0376" fontWeight="bold">
         <tspan x="46.9836" y="188.72">
-          Add or Remove{" "}
+          Add or Remove
         </tspan>
         <tspan x="46.9836" y="221.581">
           Node Provider
@@ -162,7 +166,7 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
       <rect y="91" width="356.863" height="333.667" rx="21.4118" fill="white" />
       <text fill="#181818" fontSize="28.549" fontWeight="bold">
         <tspan x="28.5491" y="147.934">
-          Add or Remove{" "}
+          Add or Remove
         </tspan>
         <tspan x="28.5491" y="185.404">
           Node Provider

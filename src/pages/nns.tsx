@@ -84,7 +84,7 @@ function NnsPage() {
                   href="https://nns.ic0.app"
                   variants={transitions.item}
                 >
-                  Build real web3
+                  Go to the NNS
                 </MotionLink>
               </div>
             </div>
@@ -112,7 +112,10 @@ function NnsPage() {
           gap-16 sm:gap-0
           "
           >
-            <Card title="How it works" icon={<IconHowItWorks />}>
+            <Card
+              title="How it works"
+              icon={<IconHowItWorks aria-hidden="true" />}
+            >
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
@@ -134,7 +137,7 @@ function NnsPage() {
             </Card>
             <Card
               title="Help Govern the Internet Computer"
-              icon={<IconGovern />}
+              icon={<IconGovern aria-hidden="true" />}
             >
               <motion.p
                 className="mb-6 tw-paragraph"
@@ -162,7 +165,10 @@ function NnsPage() {
                 Go to the NNS
               </MotionLink>
             </Card>
-            <Card title="Earn staking rewards" icon={<IconStake />}>
+            <Card
+              title="Earn staking rewards"
+              icon={<IconStake aria-hidden="true" />}
+            >
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
@@ -186,7 +192,7 @@ function NnsPage() {
             </Card>
           </div>
         </section>
-        <section className="text-white relative py-52 md:py-40 ">
+        <section className="text-white relative py-52 md:py-40 container-12">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}
