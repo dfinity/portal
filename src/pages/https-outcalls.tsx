@@ -136,7 +136,7 @@ function HTTPSOutcalls() {
             <CardWithBackground
               title="Sample Code"
               description="Learn how to fetch exchange rates with the new canister HTTPS feature."
-              href="/samples"
+              href="/samples?term=https+outcalls"
               bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription
