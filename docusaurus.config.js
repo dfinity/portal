@@ -153,24 +153,28 @@ const config = {
             label: "Explore",
             items: [
               {
-                label: "Basics",
-                href: "/basics",
-              },
-              {
                 label: "Web3 Ecosystem",
                 href: "/showcase",
+              },
+              {
+                label: "Basics",
+                href: "/basics",
               },
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
               },
               {
-                label: "Videos",
-                href: "/videos",
-              },
-              {
                 label: "HTTPS Outcalls",
                 href: "/https-outcalls",
+              },
+              {
+                label: "Network Nervous System (NNS)",
+                href: "/nns",
+              },
+              {
+                label: "Videos",
+                href: "/videos",
               },
               {
                 label: "Internet Identity",
