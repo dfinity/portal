@@ -56,7 +56,6 @@ function NnsPage() {
           name="twitter:image"
           content={"https://internetcomputer.org/img/shareImages/share-nns.jpg"}
         />
-        <title>Live Sessions</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <DarkHeroStyles></DarkHeroStyles>
