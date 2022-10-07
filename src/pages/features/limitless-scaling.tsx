@@ -123,8 +123,8 @@ function FeaturePage() {
               href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
-              title="Community Conversation 'Performance on the Internet Computer' "
-              description="Learn about performance and scalabilty on the Internet Computer."
+              title="Community Conversation"
+              description="Learn about performance and scalabilty of the IC."
               href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription
