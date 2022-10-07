@@ -182,7 +182,7 @@ We invite developers to add their IC-focused developer tools to the [Developer T
 
 Please make sure to add appropriate tags to make the tool easy to discover for other devs. Avoid introducing new tags if possible.
 
-## Adding community sample projects
+## Community-created sample projects
 
 You can submit your sample project to be displayed on the [Samples page](https://internetcomputer.org/samples).
 
