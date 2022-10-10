@@ -239,6 +239,10 @@ const config = {
                 label: "Dev Forum ",
                 href: "https://forum.dfinity.org/",
               },
+              {
+                label: "Dev Discord ",
+                href: "https://discord.gg/cE92CymEmJ",
+              },
             ],
           },
           {
