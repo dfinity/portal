@@ -26,6 +26,8 @@ class DocSearch {
     transformData = false,
     queryHook = false,
     handleSelected = false,
+    beginSearch = false,
+    endSearch = false,
     enhancedSearchInput = false,
     layout = "collumns",
   }) {
@@ -70,7 +72,8 @@ class DocSearch {
 
     const customHandleSelected = handleSelected;
     this.handleSelected = customHandleSelected || this.handleSelected;
-
+    this.beginSearch = beginSearch;
+    this.endSearch = endSearch;
     // We prevent default link clicking if a custom handleSelected is defined
     if (customHandleSelected) {
       $(".algolia-autocomplete").on("click", ".ds-suggestions a", (event) => {
@@ -144,18 +147,24 @@ class DocSearch {
         // eslint-disable-next-line no-param-reassign
         query = queryHook(query) || query;
       }
-      this.client.search(query).then((hits) => {
-        if (
-          this.queryDataCallback &&
-          typeof this.queryDataCallback == "function"
-        ) {
-          this.queryDataCallback(hits);
-        }
-        if (transformData) {
-          hits = transformData(hits) || hits;
-        }
-        callback(DocSearch.formatHits(hits));
-      });
+      if (this.beginSearch) this.beginSearch();
+      this.client
+        .search(query)
+        .then((hits) => {
+          if (
+            this.queryDataCallback &&
+            typeof this.queryDataCallback == "function"
+          ) {
+            this.queryDataCallback(hits);
+          }
+          if (transformData) {
+            hits = transformData(hits) || hits;
+          }
+          callback(DocSearch.formatHits(hits));
+        })
+        .finally(() => {
+          if (this.endSearch) this.endSearch();
+        });
     };
   }
 

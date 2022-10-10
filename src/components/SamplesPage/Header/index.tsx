@@ -12,7 +12,7 @@ function Index() {
       </motion.p>
       <motion.span variants={transitions.item} className={styles.body}>
         Get inspired! The possibilities of what to build on the IC are infinite.
-        All samples and further projects can be found in the
+        Find more sample code projects in the
         <Link to={"https://github.com/dfinity/examples"}> examples repo</Link>.
       </motion.span>
     </div>

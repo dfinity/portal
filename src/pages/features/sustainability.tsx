@@ -10,7 +10,7 @@ function FeaturePage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Green"
+      title="Sustainability"
       // fill in meta description
       description=""
     >
@@ -19,7 +19,7 @@ function FeaturePage() {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Green</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Sustainability</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
               While having the security of Web3 blockchains, the performance and power consumption 
               of the Internet Computer (IC) is comparable to Web2 and cloud technology stacks. 
@@ -41,17 +41,17 @@ function FeaturePage() {
             />
           </div>
         </section>
-        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
+        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-2 md:gap-12">
           {/* 
             delete this div if image is not needed 
           */}
-          {/* <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
+          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10 sm:flex sm:items-center">
             <img
-              src="/img/features/ic-generic.png"
+              src="/img/features/green.svg"
               alt=""
               className="w-full block"
             />
-          </div> */}
+          </div>
 
           <div
             className="
@@ -68,27 +68,26 @@ function FeaturePage() {
 
           To better understand the impact of the efficiency of the IC, it helps to see the comparison of energy costs.
           Even with conservative estimations, the energy consumption of the Internet Computer is substantially lower than 
-          competing blockchain projects, but also existing (highly optimized) web2 tech. See the table below to put IC performance in perspective.
+          competing blockchain projects, but also existing (highly optimized) web2 tech. See the table to put IC performance in perspective. Performance is measured in kWh/transaction.
 
             <ul>
-              <li><strong>One Internet Computer transaction: 261 J</strong></li>
-              <li>One Google search: 1'080 J</li>
-              <li>One Solana transaction: 1'837 J</li>
-              <li>One Ethereum 2 transaction: 126'000 J</li>
-              <li>One Cardano transaction: 1'972'440 J</li>
-              <li>One Ethereum (pre-merge) transaction: 692'820'000 J</li> 
-              <li>One Bitcoin transaction: 6'995'592'000 J</li>
+              <li><strong>One Internet Computer transaction: 0.006</strong></li>
+              <li>One Solana transaction: 0.116</li>
+              <li>One Avalanche transaction: 2.7</li>
+              <li>One Algorand transaction: 4.760</li>
+              <li>One Tezos transaction: 41.450</li>
+              <li>One Cardano transaction: 51.590</li>
             </ul>
 
             </p>
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/quickstart/hello10mins"
+                href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
+                Check the full summary of IC energy consumption
               </Link>
             </p>
           </div>
@@ -96,32 +95,32 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
+            Scalability and Utility with low Carbon Cost
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
+            and we're only getting started
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              title="Internet Computer Footprint"
+              description="Read the collaborative report from Carbon Crowd and DFINITY"
+              href="https://carboncrowd.io/"
             />
             <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
+              title="Sustainability Policy and Proposals"
+              description="Check out the summary over on Medium"
+              href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
             />
             <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Real-time Network Metrics"
+              description="See the IC dashboard for performance and network consumption"
+              href="https://dashboard.internetcomputer.org/"
             />
             <CardWithDescription
               title="Performance and Energy analysis on the IC Wiki"
-              description="Take a deep dive into the Internet Computer."
+              description="Take a deep dive into the Internet Computer"
               href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"
             />
           </div>
