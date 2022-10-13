@@ -3,7 +3,7 @@ title: Improved I/O Handling in State Manager
 links:
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387
   Proposal:
-eta: December 2022
+eta: 
 is_community: false
 ---
 
