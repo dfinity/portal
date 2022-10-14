@@ -68,7 +68,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "CDKs",
+          label: "Canister Development Kits",
           link: {
             type: "doc",
             id: "developer-docs/build/cdks/index",
@@ -200,10 +200,9 @@ const sidebars = {
       label: "Integrations",
       link: {
         type: "doc",
-        id: "developer-docs/integrations/bitcoin/index",
+        id: "developer-docs/integrations/index",
       },
       items: [
-        //   'developer-docs/integrations/index',
         //   {
         //     type: 'category',
         //     label: 'Service Nervous System (SNS)',

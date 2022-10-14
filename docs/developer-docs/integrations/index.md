@@ -1,5 +1,15 @@
 # Integrating Functionality
 
-Here you can see how to integrate various functionality to your dapp. 
+While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
 
-We start by taking a look at how you can hand over control to an SNS
+## Bitcoin Integration
+
+## Threshold ECDSA
+
+## HTTPS Outcalls
+
+## Internet Identity
+
+## ICP Ledger
+
+## Rosetta
