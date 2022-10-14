@@ -68,7 +68,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "CDKs",
+          label: "Canister Development Kits",
           link: {
             type: "doc",
             id: "developer-docs/build/cdks/index",
@@ -200,9 +200,10 @@ const sidebars = {
       label: "Integrations",
       link: {
         type: "doc",
-        id: "developer-docs/integrations/bitcoin/index",
+        id: "developer-docs/integrations/index",
       },
       items: [
+<<<<<<< HEAD
           'developer-docs/integrations/index',
           {
             type: 'category',
@@ -244,6 +245,28 @@ const sidebars = {
               },
             ],
           },
+=======
+        //   {
+        //     type: 'category',
+        //     label: 'Service Nervous System (SNS)',
+        //     link: {
+        //       type: "doc",
+        //       id: "developer-docs/integrations/sns/index",
+        //     },
+        //     items: [
+        //       "developer-docs/integrations/sns/sns-intro",
+        //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
+        //       "developer-docs/integrations/sns/get-sns/frontend-integration",
+        //       "developer-docs/integrations/sns/get-sns/preparation",
+        //       "developer-docs/integrations/sns/get-sns/local-testing",
+        //       "developer-docs/integrations/sns/get-sns/get-sns-production",
+        //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+        //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
+        //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
+        //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
+        //     ],
+        //   },
+>>>>>>> master
         {
           type: "category",
           label: "Bitcoin Integration",

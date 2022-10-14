@@ -47,7 +47,7 @@ In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK m
 To install `dfx`, run:
 
 ``` bash
-sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
 To verify that `dfx` properly installed, run:
@@ -558,7 +558,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](https://smartcontracts.org/samples).
+Build DAOs, NFTs and more [here](https://internetcomputer.org/samples).
 
 ### Want to learn more?
 
