@@ -332,7 +332,7 @@ function SnsPage() {
               className="
                 w-full max-w-[500px] py-20
                 md:absolute 
-                md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[40px]"
+                md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[-30px]"
               src="/img/sns/sns.webp"
             ></img>
             <div className="md:mx-auto md:w-10/12 relative">
