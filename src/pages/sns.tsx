@@ -13,8 +13,8 @@ import IconAutonomous from "../../static/img/sns/autonomous.svg";
 import IconCommunityOwned from "../../static/img/sns/community-owned.svg";
 import IconScalable from "../../static/img/sns/scalable.svg";
 import IconTokenized from "../../static/img/sns/tokenized.svg";
-import CustodyGraphic from "../../static/img/token-holders/custody.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import ExternalLinkIcon from "@site/static/img/external-link.svg";
 
 const MotionLink = motion(Link);
 
@@ -25,7 +25,7 @@ const Card: React.FC<{
 }> = ({ title, children, icon }) => {
   return (
     <AnimateSpawn
-      className="sm:w-6/10 md:w-4/10 md:even:self-end md:-mt-10 md:first:mt-0"
+      className="sm:w-6/10 md:w-4/10 md:even:self-end md:-mt-30 lg:-mt-20 md:first:mt-0"
       variants={transitions.container}
     >
       <motion.div className="w-30 mb-4" variants={transitions.item}>
@@ -121,9 +121,6 @@ function SnsPage() {
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
               variants={transitions.item}
             >
-              <Link className="button-primary" href="">
-                Co-evolve an sns
-              </Link>
               <Link className="button-outline" href="">
                 Launch an SNS DAO
               </Link>
@@ -327,20 +324,35 @@ function SnsPage() {
         </section>
         <section className=" bg-infinite text-white overflow-hidden">
           <AnimateSpawn
-            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20 pt-[391px] md:py-24 relative  flex flex-col justify-center"
+            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20  md:py-24 relative  flex flex-col justify-center"
             variants={transitions.container}
           >
-            <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic>
-            <div className="md:mx-auto md:w-10/12">
+            {/* <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic> */}
+            <img
+              className="
+                w-full max-w-[500px] py-20
+                md:absolute 
+                md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[40px]"
+              src="/img/sns/sns.webp"
+            ></img>
+            <div className="md:mx-auto md:w-10/12 relative">
               <motion.h2
                 className="tw-heading-4 md:tw-heading-3 md:w-5/10 mb-6 md:my-8"
                 variants={transitions.item}
               >
                 Own and shape the services and applications you love.
               </motion.h2>
-              <motion.p>
-                <Link href="" className="button">
-                  co-evolve an SNS
+
+              <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
+                Announcment soon on DSCVR.
+              </motion.p>
+              <motion.p variants={transitions.item}>
+                <Link
+                  className="link-primary text-white hover:text-white-60"
+                  href="https://dscvr.one/p/internet-computer"
+                >
+                  Join the Internet Computer Portal
+                  <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                 </Link>
               </motion.p>
             </div>
@@ -352,7 +364,7 @@ function SnsPage() {
           </AnimateSpawn>
         </section>
         <AnimateSpawn
-          className="container-10 py-40"
+          className="container-10 py-24 md:py-40"
           variants={transitions.container}
         >
           <div className="relative">
@@ -372,16 +384,22 @@ function SnsPage() {
             />
           </div>
           <motion.h2 className="tw-heading-3 mb-16" variants={transitions.item}>
-            What SNS DAO is <span className="text-razzmatazz">NOT</span>
+            What an SNS DAO is <span className="text-razzmatazz">NOT</span>
           </motion.h2>
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-1/10">
             <motion.div variants={transitions.item}>
               <h3 className="tw-heading-5 mb-4">Not an ICO</h3>
               <p className="tw-paragraph">
                 No funds are handed over to developers. The creation of an SNS
-                is initiated by a decentralized entity (the NNS), and ICP raised
-                by the decentralization sale is allocated to the treasury of the
-                newly born SNS DAO.
+                is initiated by a decentralized entity (
+                <Link
+                  className="text-infinite underline hover:no-underline hover:text-black"
+                  href="https://nns.ic0.app/"
+                >
+                  the NNS
+                </Link>
+                ), and ICP raised by the decentralization sale is allocated to
+                the treasury of the newly born SNS DAO.
               </p>
             </motion.div>
             <motion.div variants={transitions.item}>

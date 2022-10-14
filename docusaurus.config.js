@@ -263,6 +263,10 @@ const config = {
                 href: "/nns",
               },
               {
+                label: "Service Nervous System (SNS)",
+                href: "/sns",
+              },
+              {
                 label: "Staking & Governance",
                 href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
               },
