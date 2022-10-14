@@ -3,7 +3,7 @@
 While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
 
 ## Service Nervous System
-* [SNS Overview](./sns/index.md)
+* [SNS Overview](./sns/sns-intro.md)
 * [Get an SNS](./sns/get-sns/get-sns-intro.md)
   * [Preparation](./sns/get-sns/preparation)
   * [Local testing](./sns/get-sns/local-testing)
