@@ -6,7 +6,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
 1.  Ensure you have the ledger image, the private ledger interface, and the public ledger interface. If you do not have them, follow the steps in [Setup Ledger locally](./ledger-local-setup).
 
-2.  Ensure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on <https://smartcontracts.org/> to install it.
+2.  Ensure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on the [build](../../build/install-upgrade-remove) section to install it.
 
 3.  Add the following canister definition to the `dfx.json` file in your project:
 
@@ -62,7 +62,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](./index.md))
 
-    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](https://smartcontracts.org/docs/developers-guide/cycles-wallet.html#_controller_and_custodian_roles) of the archive canisters
+    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](../../build/project-setup/cycles-wallet#_controller_and_custodian_roles) of the archive canisters
 
     <div class="important">
 

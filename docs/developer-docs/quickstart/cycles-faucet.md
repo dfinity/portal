@@ -3,9 +3,9 @@ Ready to deploy your first smart contract on the Internet Computer
 blockchain? You can use our Cycles Faucet to get set up with 20T free
 cycles in just a few minutes.
 
-    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
-or following the instructions at <https://smartcontracts.org>.
+or following the instructions on the [build](../../build/install-upgrade-remove) section.
 
 :::warning
 The cycles faucet is currently getting reworked. Some parts of this page are outated. Please go to <https://faucet.dfinity.org> for the current instructions. Once the rework is completed, this page will be updated.

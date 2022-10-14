@@ -134,7 +134,7 @@ every [canister](#canister "wikilink") has many public keys); signatures
 are certificates that prove that the canister has put the signed message
 at a specific place in its state tree. Details in the [The Internet
 Computer Interface
-Specification](https://smartcontracts.org/docs/interface-spec/#canister-signatures).
+Specification](./references/interface-spec/#canister-signatures).
 
 ##### canister state
 
