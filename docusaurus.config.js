@@ -173,6 +173,10 @@ const config = {
                 href: "/videos",
               },
               {
+                label: "Ecosystem Careers",
+                href: "http://careers.internetcomputer.org/",
+              },
+              {
                 label: "Internet Identity",
                 href: "https://identity.ic0.app/",
               },
