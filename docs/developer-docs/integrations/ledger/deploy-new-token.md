@@ -6,7 +6,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
 1.  Ensure you have the ledger image, the private ledger interface, and the public ledger interface. If you do not have them, follow the steps in [Setup Ledger locally](./ledger-local-setup).
 
-2.  Ensure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on the [build](../../build/install-upgrade-remove) section to install it.
+2.  Ensure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove) section to install it.
 
 3.  Add the following canister definition to the `dfx.json` file in your project:
 

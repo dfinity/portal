@@ -1,4 +1,4 @@
-# Integrating with Internet Identity
+# Internet Identity Integration
 
 This shows how to integrate and test a project with Internet Identity. This uses the development [build flavor](https://github.com/dfinity/internet-identity/blob/main/README.md#build-features-and-flavors) of Internet Identity and the [agent-js](https://github.com/dfinity/agent-js) library.
 
