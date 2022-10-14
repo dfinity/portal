@@ -2,6 +2,10 @@
 
 While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
 
+## Service Nervous System
+* [Get an SNS]
+* [Manage an SNS]
+
 ## Bitcoin Integration
 Integrate directly with the Bitcoin network allowing canisters on the IC to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network.
 
