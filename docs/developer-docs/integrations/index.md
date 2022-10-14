@@ -2,19 +2,21 @@
 
 While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
 
-## Service Nervous System
-* [SNS Overview](./sns/sns-intro.md)
-* [Get an SNS](./sns/get-sns/get-sns-intro.md)
-  * [Preparation](./sns/get-sns/preparation)
-  * [Local testing](./sns/get-sns/local-testing)
-  * [Production](sns/get-sns/get-sns-production)
-  * [Frontend integration](./sns/get-sns/frontend-integration)
-  * [Ledger integration](./sns/get-sns/ledger-integration)
-  * [Index integration](./sns/get-sns/index-integration)
-* [Manage an SNS](./sns/managing-sns/nervous-system-parameters)
-  * [Proposal Guide](./sns/managing-sns/proposal-guide)
-  * [Cycle usage](./sns/managing-sns/cycles-usage)
-  * [Upgrade](./sns/managing-sns/upgradeSNS)
+## Service Nervous System (SNS)
+Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section describes SNS for developers, how to get an SNS, and how to manage it over time.
+
+* [SNS Overview](./sns/sns-intro.md) gives an overview of SNS for developers, of SNS canisters, and the SNS lifecycle
+* [Get an SNS](./sns/get-sns/get-sns-intro.md) describes the steps needed to get an SNS
+  * [Preparation](./sns/get-sns/preparation) describes the technical preparations required when considering getting an SNS. These include understanding the launch process, getting the tools, preparing the principals and setting the SNS parameters
+  * [Local testing](./sns/get-sns/local-testing) gives a step-by-step guide to locally experiment with getting an SNS
+  * [Production](sns/get-sns/get-sns-production) describes the steps needed to get an SNS for real
+  * [Frontend integration](./sns/get-sns/frontend-integration) describes how you might integrate SNS into your own frontend
+  * [Ledger integration](./sns/get-sns/ledger-integration) outlines how you can integrate with the ICP ledger
+  * [Index integration](./sns/get-sns/index-integration) shows the steps needed for index integration
+* In [Manage an SNS](./sns/managing-sns/nervous-system-parameters) you can learn about nervous system parameters
+  * [Proposal Guide](./sns/managing-sns/proposal-guide) gives advice on proposals
+  * [Cycle usage](./sns/managing-sns/cycles-usage) gives considerations that you may need considering cycles 
+  * [Upgrade](./sns/managing-sns/upgradeSNS) describes how to securely upgrade your SNS
 
 ## Bitcoin Integration
 Integrate directly with the Bitcoin network allowing canisters on the IC to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network.

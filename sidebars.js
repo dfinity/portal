@@ -203,28 +203,45 @@ const sidebars = {
         id: "developer-docs/integrations/index",
       },
       items: [
-        //   {
-        //     type: 'category',
-        //     label: 'Service Nervous System (SNS)',
-        //     link: {
-        //       type: "doc",
-        //       id: "developer-docs/integrations/sns/index",
-        //     },
-        //     items: [
-        //       "developer-docs/integrations/sns/sns-intro",
-        //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
-        //       "developer-docs/integrations/sns/get-sns/preparation",
-        //       "developer-docs/integrations/sns/get-sns/local-testing",
-        //       "developer-docs/integrations/sns/get-sns/get-sns-production",
-        //       "developer-docs/integrations/sns/get-sns/frontend-integration",
-        //       "developer-docs/integrations/sns/get-sns/ledger-integration",
-        //       "developer-docs/integrations/sns/get-sns/index-integration",
-        //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
-        //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
-        //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
-        //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
-        //     ],
-        //   },
+          {
+            type: 'category',
+            label: 'Service Nervous System (SNS)',
+            link: {
+              type: "doc",
+              id: "developer-docs/integrations/sns/sns-intro",
+            },
+            items: [
+              {
+                type: 'category',
+                label: 'Get an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                },
+                items: [
+                  "developer-docs/integrations/sns/get-sns/preparation",
+                  "developer-docs/integrations/sns/get-sns/local-testing",
+                  "developer-docs/integrations/sns/get-sns/get-sns-production",
+                  "developer-docs/integrations/sns/get-sns/frontend-integration",
+                  "developer-docs/integrations/sns/get-sns/ledger-integration",
+                  "developer-docs/integrations/sns/get-sns/index-integration",
+                ],
+              },
+              {
+                type: 'category',
+                label: 'Manage an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+                },
+                items: [
+              "developer-docs/integrations/sns/managing-sns/proposal-guide",
+              "developer-docs/integrations/sns/managing-sns/cycles-usage",
+              "developer-docs/integrations/sns/managing-sns/upgradeSNS"
+                ]
+              }
+            ],
+          },
         {
           type: "category",
           label: "Bitcoin Integration",
