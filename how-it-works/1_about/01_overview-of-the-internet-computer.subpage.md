@@ -18,7 +18,7 @@ The Internet Computer was launched and open-sourced on May 10th 2021 by the DFIN
 3. [The Internet Computer's Source Code is Public](https://medium.com/dfinity/the-internet-computers-source-code-is-public-603a558cb6cc)
 4. [A Technical Overview of the Internet Computer](https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f)
 5. [Internet Computer Interface Specification](https://medium.com/dfinity/introducing-the-internet-computer-interface-specification-850a113a66d9)
-6. [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/interface-spec/index.html)
+6. [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
 7. [Internet Computer Rust Docs](https://docs.dfinity.org/ic/rustdocs/)
 8. [Internet Computer Haskell Utility Code](https://github.com/dfinity/ic-hs)
 9. [Internet Computer Primer - Deck](https://dfinity.org/deck/)
