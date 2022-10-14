@@ -5,10 +5,10 @@ cycles in just a few minutes.
 
     sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
-or following the instructions on the [build](../../build/install-upgrade-remove) section.
+or following the instructions on the [build](../build/install-upgrade-remove) section.
 
 :::warning
-The cycles faucet is currently getting reworked. Some parts of this page are outated. Please go to <https://faucet.dfinity.org> for the current instructions. Once the rework is completed, this page will be updated.
+The cycles faucet is currently getting reworked. Some parts of this page are outdated. Please go to <https://faucet.dfinity.org> for the current instructions. Once the rework is completed, this page will be updated.
 :::
 
 ## Claim your Cycles Wallet
