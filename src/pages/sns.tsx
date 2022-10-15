@@ -348,7 +348,7 @@ function SnsPage() {
               </motion.p>
               <motion.p variants={transitions.item}>
                 <Link
-                  className="link-primary text-white hover:text-white-60"
+                  className="link-primary-light"
                   href="https://dscvr.one/p/internet-computer"
                 >
                   Join the Internet Computer Portal
