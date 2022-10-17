@@ -10,4 +10,3 @@ The Internet Computer Protocol ensures that the canister state on any subnet is 
 * High throughput – Every consensus execution can handle payloads in the order of megabytes.
 * Cryptographic finality – IC consensus reaches cryptographically-guaranteed finality, that is, finalized state changes cannot be undone.
 * Byzantine fault tolerance (BFT) – The IC can tolerate up to (but less than) one third of arbitrarily faulty nodes, which is optimal in the considered partially synchronous communication model.
-
