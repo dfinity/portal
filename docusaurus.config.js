@@ -173,7 +173,7 @@ const config = {
                 href: "/videos",
               },
               {
-                label: "Ecosystem Careers",
+                label: "ICP Careers",
                 href: "http://careers.internetcomputer.org/",
               },
               {
@@ -360,6 +360,10 @@ const config = {
           },
           {
             items: [
+              {
+                label: "ICP Careers",
+                to: "http://careers.internetcomputer.org/",
+              },
               {
                 label: "Brand Materials",
                 to: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",
