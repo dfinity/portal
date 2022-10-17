@@ -221,10 +221,19 @@ const sidebars = {
                 items: [
                   "developer-docs/integrations/sns/get-sns/preparation",
                   "developer-docs/integrations/sns/get-sns/local-testing",
-                  "developer-docs/integrations/sns/get-sns/get-sns-production",
-                  "developer-docs/integrations/sns/get-sns/frontend-integration",
+                  "developer-docs/integrations/sns/get-sns/get-sns-production"
+                ],
+              },
+              {
+                type: 'category',
+                label: 'Integrate with an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/get-sns/frontend-integration",
+                },
+                items: [
                   "developer-docs/integrations/sns/get-sns/ledger-integration",
-                  "developer-docs/integrations/sns/get-sns/index-integration",
+                  "developer-docs/integrations/sns/get-sns/index-integration"
                 ],
               },
               {
