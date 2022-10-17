@@ -492,7 +492,7 @@ function LiveSessionsPage(): JSX.Element {
               </h2>
               <form
                 method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
+                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
                 className="md:w-4/10 space-y-6"
               >
                 <input
