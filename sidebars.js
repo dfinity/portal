@@ -213,10 +213,12 @@ const sidebars = {
         //     items: [
         //       "developer-docs/integrations/sns/sns-intro",
         //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
-        //       "developer-docs/integrations/sns/get-sns/frontend-integration",
         //       "developer-docs/integrations/sns/get-sns/preparation",
         //       "developer-docs/integrations/sns/get-sns/local-testing",
         //       "developer-docs/integrations/sns/get-sns/get-sns-production",
+        //       "developer-docs/integrations/sns/integrate-sns/frontend-integration",
+        //       "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+        //       "developer-docs/integrations/sns/integrate-sns/index-integration",
         //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
         //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
         //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
