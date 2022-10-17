@@ -188,7 +188,7 @@ function SocialMediaDappsPage() {
               have also been known to selectively suppress opinions. With the
               release of the{" "}
               <Link
-                href="/sns"
+                href=""
                 className="text-infinite underline hover:no-underline hover:text-black"
               >
                 Service Nervous System (SNS)
@@ -316,7 +316,7 @@ function SocialMediaDappsPage() {
           </AnimateSpawn>
         </section>
         <section className="container-10 mx-auto">
-          <div className="flex flex-col md:flex-row mb-12">
+          <div className="flex flex-col md:flex-row mb-12 md:mb-16">
             <h2 className="md:w-4/10 tw-heading-3 md:tw-heading-60 mb-3">
               Why Internet Computer
             </h2>
@@ -333,20 +333,20 @@ function SocialMediaDappsPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-2 md:gap-6 md:grid-cols-2">
-            <div className="p-6 md:p-12 bg-gradient-to-r from-infinite to-[#835ED3] text-white rounded-xl md:flex md:col-span-2">
-              <h3 className="tw-heading-5 mb-4 flex-1 md:tw-heading-4 md:mb-0">
+          <div className="grid grid-cols-1 gap-2 sm:gap-6 sm:grid-cols-2">
+            <div className="p-6 sm:p-12 bg-gradient-to-r from-infinite to-[#835ED3] text-white rounded-xl sm:flex sm:col-span-2">
+              <h3 className="tw-heading-5 mb-4 flex-1 sm:tw-heading-4 sm:mb-0">
                 100% on-chain
               </h3>
-              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0 flex-1 md:tw-lead-sm">
+              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0 flex-1 sm:tw-lead-sm sm:pl-6">
                 <li>Censorship resistance</li>
                 <li>DAOs are completely governed by users</li>
                 <li>No need to rely on centralized cloud providers</li>
               </ul>
             </div>
 
-            <div className="p-6 md:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
-              <h3 className="tw-heading-5 mb-4 md:mb-5 text-infinite">
+            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 No gas fees
               </h3>
               <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
@@ -358,14 +358,14 @@ function SocialMediaDappsPage() {
               </ul>
             </div>
 
-            <div className="p-6 md:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
-              <h3 className="tw-heading-5 mb-4 md:mb-5 text-infinite">
+            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 Speed and cost efficiency
               </h3>
               <ul className="list-none p-0 space-y-3 mb-0">
                 <li className="flex flex-col md:flex-row-reverse justify-between">
                   <span className="font-bold tw-paragraph">$5 / GB / year</span>
-                  <span className="tw-paragraph-sm md:tw-paragraph">
+                  <span className="tw-paragraph-sm sm:tw-paragraph">
                     On-chain data storage costs{" "}
                   </span>
                 </li>
@@ -373,7 +373,7 @@ function SocialMediaDappsPage() {
                   <span className="font-bold tw-paragraph">
                     ~200ms (web speed)
                   </span>
-                  <span className="tw-paragraph-sm md:tw-paragraph">
+                  <span className="tw-paragraph-sm sm:tw-paragraph">
                     GET Query calls
                   </span>
                 </li>
@@ -381,13 +381,13 @@ function SocialMediaDappsPage() {
                   <span className="font-bold tw-paragraph">
                     ~1-2s to reach finality
                   </span>
-                  <span className="tw-paragraph-sm md:tw-paragraph">
+                  <span className="tw-paragraph-sm sm:tw-paragraph">
                     POST Update calls
                   </span>
                 </li>
                 <li className="flex flex-col md:flex-row-reverse justify-between">
                   <span className="font-bold tw-paragraph">~2,400 txs/s</span>
-                  <span className="tw-paragraph-sm md:tw-paragraph">
+                  <span className="tw-paragraph-sm sm:tw-paragraph">
                     Internet Computer speed
                     <span className="tw-paragraph-sm text-black-60 block">
                       Not maximum network capacity
@@ -397,8 +397,8 @@ function SocialMediaDappsPage() {
               </ul>
             </div>
 
-            <div className="p-6 md:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
-              <h3 className="tw-heading-5 mb-4 md:mb-5 text-infinite">
+            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 Simple and secure Web3 Authentication
               </h3>
               <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
@@ -412,8 +412,8 @@ function SocialMediaDappsPage() {
                 </li>
               </ul>
             </div>
-            <div className="p-6 md:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
-              <h3 className="tw-heading-5 mb-4 md:mb-5 text-infinite">
+            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 HTTPS Outcalls
               </h3>
               <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
