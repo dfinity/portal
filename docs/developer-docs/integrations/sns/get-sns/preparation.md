@@ -17,7 +17,7 @@ is done.
 As mentioned in [the overview](get-sns-intro.md), another technical preparation
 is that you might want to integrate parts of the SNS functionality into your dapp's frontend.
 As this is work independent of preparing the launch, we describe this topic on a 
-[separate page](frontend-integration.md).
+[separate page](../integrate-sns/frontend-integration.md).
 
 We refer to the next pages for learning the detailed actions that are
 required 
