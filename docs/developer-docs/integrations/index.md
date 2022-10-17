@@ -10,9 +10,9 @@ Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are 
   * [Preparation](./sns/get-sns/preparation) describes the technical preparations required when considering getting an SNS. These include understanding the launch process, getting the tools, preparing the principals and setting the SNS parameters
   * [Local testing](./sns/get-sns/local-testing) gives a step-by-step guide to locally experiment with getting an SNS
   * [Production](sns/get-sns/get-sns-production) describes the steps needed to get an SNS for real
-  * [Frontend integration](./sns/get-sns/frontend-integration) describes how you might integrate SNS into your own frontend
-  * [Ledger integration](./sns/get-sns/ledger-integration) outlines how you can integrate with the ICP ledger
-  * [Index integration](./sns/get-sns/index-integration) shows the steps needed for index integration
+* [Integrate with an SNS](./sns/integrate-sns/frontend-integration) describes how you might integrate an SNS into your own frontend
+  * [Ledger integration](./sns/integrate-sns/ledger-integration) outlines how you can integrate with the ICP ledger
+  * [Index integration](./sns/integrate-sns/index-integration) shows the steps needed for index integration
 * In [Manage an SNS](./sns/managing-sns/nervous-system-parameters) you can learn about nervous system parameters
   * [Proposal Guide](./sns/managing-sns/proposal-guide) gives advice on proposals
   * [Cycle usage](./sns/managing-sns/cycles-usage) gives considerations that you may need considering cycles 
