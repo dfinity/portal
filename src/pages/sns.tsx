@@ -172,9 +172,9 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 All parts of such applications are owned and governed by an SNS
-                DAO. This is in contrasts to existing DAOs whereby governance
-                applies only to smart contract logic, which is just a small part
-                of any web3 application. No single entity owns a dapp.
+                DAO. This is in contrasts to existing DAOs where governance
+                is limited to the small part of their web3 application, which
+               is smart contract logic. No single entity owns a dapp.
               </motion.p>
               <MotionLink
                 className="link-external"
@@ -344,7 +344,7 @@ function SnsPage() {
               </motion.h2>
 
               <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
-                Announcment soon on DSCVR.
+                Particpate in the first SNS launch. Announcment soon on DSCVR.
               </motion.p>
               <motion.p variants={transitions.item}>
                 <Link
