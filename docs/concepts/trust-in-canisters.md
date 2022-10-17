@@ -36,7 +36,7 @@ will return the list of controllers for the canister with principal `ryjl3-tyaaa
 
 If the controller list is empty then the canister is immutable.
 
-A user can obtain the list of controllers of another canister via a [`read_state` request](https://smartcontracts.org/docs/interface-spec/index.html#http-read-state) to get the relevant [canister information](https://smartcontracts.org/docs/interface-spec/index.html#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
+A user can obtain the list of controllers of another canister via a [`read_state` request](../references/ic-interface-spec/#http-read-state) to get the relevant [canister information](../references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
 
 Immutability can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g. by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
 

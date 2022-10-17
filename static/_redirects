@@ -92,7 +92,7 @@
 /docs/ic-identity-guide/what-is-ic-identity.html /docs/current/tokenomics/identity-auth/what-is-ic-identity
 /docs/index.html /docs/current/developer-docs/ic-overview
 /docs/integration/ledger-quick-start.html /docs/current/developer-docs/integrations/ledger/
-/docs/interface-spec/index.html /docs/current/references/ic-interface-spec
+/docs/ic-interface-spec.md /docs/current/references/ic-interface-spec
 /docs/introduction/welcome.html /docs/current/developer-docs/ic-overview
 /docs/language-guide/about-this-guide.html /docs/current/developer-docs/build/languages/motoko/about-this-guide
 /docs/language-guide/actor-classes.html /docs/current/developer-docs/build/languages/motoko/actor-classes
