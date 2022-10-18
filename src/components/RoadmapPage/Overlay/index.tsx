@@ -211,11 +211,11 @@ const Overlay: React.FC<{
                     ></OverlayGroup>
                   )}
 
-                  {domain.groups.pending?.length > 0 && (
+                  {domain.groups.upcoming?.length > 0 && (
                     <OverlayGroup
                       deployed={false}
                       pillClassName="bg-black-60 backdrop-blur-2xl"
-                      items={domain.groups.pending}
+                      items={domain.groups.upcoming}
                       pill={
                         <>
                           <svg
@@ -229,7 +229,39 @@ const Overlay: React.FC<{
                             <circle cx="8" cy="8" r="1.5" fill="white" />
                             <circle cx="13.5" cy="8" r="1.5" fill="white" />
                           </svg>
-                          Pending
+                          Upcoming
+                        </>
+                      }
+                    ></OverlayGroup>
+                  )}
+                  {domain.groups.future?.length > 0 && (
+                    <OverlayGroup
+                      deployed={false}
+                      pillClassName="bg-blue text-white"
+                      items={domain.groups.future}
+                      pill={
+                        <>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4.33333 8L1 11.3333L2.66667 13L7.66667 8L2.66667 3L1 4.66667L4.33333 8Z"
+                              fill="white"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M10.8153 8L7.48193 11.3333L9.1486 13L14.1486 8L9.1486 3L7.48193 4.66667L10.8153 8Z"
+                              fill="white"
+                            />
+                          </svg>
+                          Future
                         </>
                       }
                     ></OverlayGroup>
