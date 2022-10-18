@@ -1,22 +1,23 @@
 {
-    "cSpell.words": [
-        "envars",
-        "Envars",
-        "hackathon",
-        "howto",
-        "intercanister",
-        "motoko",
-        "Motoko",
-        "permissioned",
-        "phonebook",
-        "stablememory",
-        "tamperproof",
-        "tokentransfer"
-    ],
-    "grammarly.selectors": [
-        {
-            "language": "markdown",
-            "scheme": "file"
-        }
-    ]
+  "cSpell.words": [
+    "envars",
+    "Envars",
+    "hackathon",
+    "howto",
+    "intercanister",
+    "motoko",
+    "Motoko",
+    "permissioned",
+    "phonebook",
+    "stablememory",
+    "tamperproof",
+    "tokentransfer"
+  ],
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ],
+  "cSpell.enabled": true
 }
