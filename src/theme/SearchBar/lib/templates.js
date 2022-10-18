@@ -1,4 +1,4 @@
-const prefix = 'algolia-docsearch';
+const prefix = "algolia-docsearch";
 const suggestionPrefix = `${prefix}-suggestion`;
 const footerPrefix = `${prefix}-footer`;
 
@@ -11,7 +11,7 @@ const templates = {
     {{#isSubCategoryHeader}}${suggestionPrefix}__secondary{{/isSubCategoryHeader}}
     "
     aria-label="Link to the result"
-    href="{{{url}}}"
+    href="/{{{url}}}"
     >
     <div class="${suggestionPrefix}--category-header">
         <span class="${suggestionPrefix}--category-header-lvl0">{{{category}}}</span>

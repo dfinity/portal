@@ -67,7 +67,11 @@ export function useQueryParam<T>(
   return [
     value,
     (value: T) => {
-      setQueryParam(name, value.toString(), location.search);
+      setQueryParam(
+        name,
+        typeof value === "undefined" ? value : value.toString(),
+        location.search
+      );
       setValue(value);
     },
     isInitialized,
