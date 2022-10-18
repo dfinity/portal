@@ -55,7 +55,7 @@ const Collapse: React.FC<{
       <button
         onClick={onClick}
         className={clsx(
-          `tw-heading-4  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-black text-black text-left`,
+          `tw-heading-4  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-black text-black text-left bg-transparent`,
           open ? "sm:text-black" : "sm:text-black-30"
         )}
       >

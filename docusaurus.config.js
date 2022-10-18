@@ -173,6 +173,10 @@ const config = {
                 href: "/videos",
               },
               {
+                label: "Social Media Dapps",
+                href: "/social-media-dapps",
+              },
+              {
                 label: "Ecosystem Careers",
                 href: "http://careers.internetcomputer.org/",
               },
