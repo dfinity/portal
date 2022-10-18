@@ -4,21 +4,20 @@ import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import { motion, useElementScroll } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
 import IconAutonomous from "../../static/img/social-media-dapps/autonomous.svg";
 import IconTokenized from "../../static/img/social-media-dapps/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import { useElementSize } from "../utils/use-element-height";
-import clsx from "clsx";
+import { CardWithDescription } from "../components/Common/Card";
+import { useElementSize } from "../utils/use-element-size";
 
 const MotionLink = motion(Link);
 
-const Card: React.FC<{
+const ColumnCard: React.FC<{
   title: React.ReactNode;
   children: React.ReactNode;
   icon: React.ReactNode;
@@ -221,7 +220,7 @@ function SocialMediaDappsPage() {
           gap-16 md:gap-0
           "
           >
-            <Card
+            <ColumnCard
               title="Incentivized Social Media"
               icon={<IconTokenized aria-hidden="true" />}
             >
@@ -242,8 +241,8 @@ function SocialMediaDappsPage() {
               >
                 Learn more
               </MotionLink> */}
-            </Card>
-            <Card
+            </ColumnCard>
+            <ColumnCard
               title="Why the Internet Computer?"
               icon={<IconAutonomous aria-hidden="true" />}
             >
@@ -264,10 +263,10 @@ function SocialMediaDappsPage() {
               >
                 See all benefits
               </MotionLink>
-            </Card>
+            </ColumnCard>
           </div>
         </section>
-        <section className="container-10 mt-30 mb-20 md:mt-40 md:mb-40">
+        <section className="container-10 mt-30  md:mt-40 relative">
           <AnimateSpawn
             className="md:w-6/10 mb-20 md:mb-40"
             variants={transitions.container}
@@ -283,44 +282,70 @@ function SocialMediaDappsPage() {
               distrikt have been running on the Internet Computer for over a
               year with increasing numbers of daily active users.
             </motion.p>
-          </AnimateSpawn>
-          <AnimateSpawn
-            variants={transitions.item}
-            className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 snap-x snap-mandatory xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
-          >
-            <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 mb-6 sm:w-5/10 md:w-4/10">
-              {projects.map((p, i) => (
-                <Collapse
-                  title={p.title}
-                  open={openProjectIndex === i}
-                  onClick={() => setOpenProjectIndex(i)}
-                >
-                  <div className="flex-1 tw-paragraph">{p.body}</div>
 
-                  <img
-                    src={projects[i].imageUrl}
-                    alt={p.title}
-                    className="sm:hidden mt-8"
-                  />
-                </Collapse>
-              ))}
-            </div>
-            {projects.map((p, i) => (
-              <div
-                className="hidden sm:block absolute -right-6 w-4/10 max-w-[600px] transition-opacity"
-                style={{ opacity: i === openProjectIndex ? 1 : 0 }}
-              >
-                <img src={p.imageUrl} alt={p.title} />
-              </div>
-            ))}
+            <img
+              src={BlobBlue}
+              className="
+                hidden
+                md:block
+                absolute right-[-800px] w-[1400px] top-[-400px]"
+            />
           </AnimateSpawn>
         </section>
+        <section className="relative  mb-20 md:mb-40">
+          <div className="container-10 xl:min-h-[600px]">
+            <AnimateSpawn
+              variants={transitions.item}
+              className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 snap-x snap-mandatory xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
+            >
+              <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 mb-6 sm:mb-0 sm:w-5/10 md:w-4/10">
+                {projects.map((p, i) => (
+                  <Collapse
+                    title={p.title}
+                    open={openProjectIndex === i}
+                    onClick={() => setOpenProjectIndex(i)}
+                  >
+                    <div className="flex-1 tw-paragraph">{p.body}</div>
+
+                    <img
+                      src={projects[i].imageUrl}
+                      alt={p.title}
+                      className="sm:hidden mt-8"
+                    />
+                  </Collapse>
+                ))}
+              </div>
+            </AnimateSpawn>
+          </div>
+          {projects.map((p, i) => (
+            <div
+              className="
+              hidden sm:flex 
+              absolute 
+              transition-opacity
+              top-0 
+              -right-6 xl:right-[calc(50%-440px)] xl:translate-x-1/2
+              w-4/10 
+              max-w-[600px]
+              "
+              style={{ opacity: i === openProjectIndex ? 1 : 0 }}
+            >
+              <img src={p.imageUrl} alt={p.title} />
+            </div>
+          ))}
+        </section>
         <section className="container-10 mx-auto">
-          <div className="flex flex-col md:flex-row mb-12 md:mb-16">
-            <h2 className="md:w-4/10 tw-heading-3 md:tw-heading-60 mb-3">
+          <AnimateSpawn
+            className="flex flex-col md:flex-row mb-12 md:mb-16"
+            variants={transitions.container}
+          >
+            <motion.h2
+              className="md:w-4/10 tw-heading-3 md:tw-heading-60 mb-3"
+              variants={transitions.item}
+            >
               Why Internet Computer
-            </h2>
-            <div className="md:w-4/10 mt-3">
+            </motion.h2>
+            <motion.div className="md:w-4/10 mt-3" variants={transitions.item}>
               <p className="tw-paragraph md:tw-lead-sm mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
                 nunc quis tellus mi dapibus sapien leo vitae. At lectus
@@ -331,10 +356,13 @@ function SocialMediaDappsPage() {
                   Explore more features
                 </Link>
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </AnimateSpawn>
           <div className="grid grid-cols-1 gap-2 sm:gap-6 sm:grid-cols-2">
-            <div className="p-6 sm:p-12 bg-gradient-to-r from-infinite to-[#835ED3] text-white rounded-xl sm:flex sm:col-span-2">
+            <AnimateSpawn
+              className="p-6 sm:p-12 bg-gradient-to-r from-infinite to-[#835ED3] text-white rounded-xl sm:flex sm:col-span-2"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 mb-4 flex-1 sm:tw-heading-4 sm:mb-0">
                 100% on-chain
               </h3>
@@ -343,9 +371,12 @@ function SocialMediaDappsPage() {
                 <li>DAOs are completely governed by users</li>
                 <li>No need to rely on centralized cloud providers</li>
               </ul>
-            </div>
+            </AnimateSpawn>
 
-            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+            <AnimateSpawn
+              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 No gas fees
               </h3>
@@ -356,9 +387,12 @@ function SocialMediaDappsPage() {
                 <li>Users pay zero gas fees when interacting with dapps</li>
                 <li>No need to hold tokens to use social media dapps</li>
               </ul>
-            </div>
+            </AnimateSpawn>
 
-            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+            <AnimateSpawn
+              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 Speed and cost efficiency
               </h3>
@@ -395,9 +429,12 @@ function SocialMediaDappsPage() {
                   </span>
                 </li>
               </ul>
-            </div>
+            </AnimateSpawn>
 
-            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+            <AnimateSpawn
+              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 Simple and secure Web3 Authentication
               </h3>
@@ -411,8 +448,11 @@ function SocialMediaDappsPage() {
                   needed
                 </li>
               </ul>
-            </div>
-            <div className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl">
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
                 HTTPS Outcalls
               </h3>
@@ -422,8 +462,41 @@ function SocialMediaDappsPage() {
                 </li>
                 <li>Smart contracts can send emails and push notifications</li>
               </ul>
-            </div>
+            </AnimateSpawn>
           </div>
+        </section>
+        <section className="container-12 my-20 md:my-40">
+          <AnimateSpawn variants={transitions.item}>
+            <h2 className="tw-heading-4 mb-3 text-center md:tw-heading-60 md:mb-4">
+              Build your own{" "}
+            </h2>
+            <p className="tw-lead-sm mb-8 text-center md:tw-lead md:w-8/12 md:mx-auto md:mb-16">
+              The following sample applications provide a starting point on how
+              social applications can be built on the Internet Applications
+            </p>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="grid gap-2 md:grid-cols-2"
+            variants={transitions.item}
+          >
+            <CardWithDescription
+              title="Blog Sample"
+              description="A simple example of a blog with multiple authentication methods"
+              href=""
+            ></CardWithDescription>
+            <CardWithDescription
+              title="Papyrus"
+              description="A full-blown blogging dApp where each user has its own canister smart contract."
+              href=""
+            ></CardWithDescription>
+            <CardWithDescription
+              title="Explore Other Samples"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rutrum velit urna nam id tellus nam."
+              href=""
+              className="md:col-span-2"
+            ></CardWithDescription>
+          </AnimateSpawn>
         </section>
       </main>
     </Layout>
