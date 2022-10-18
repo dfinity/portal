@@ -12,5 +12,5 @@ Canisters are more powerful than smart contracts on other blockchains as they ca
 * perform substantial amounts of computation at a low cost, and
 * pay for their own computation (learn more about the [reverse gas model](https://internetcomputer.org/features/reverse-gas/)).
 
-Canisters can be implemented in any language that compiles to WebAssembly. CDKs are currently available for [Rust](/docs/current/developer-docs/build/cdks/cdk-rs-dfinity/) and [Motoko](/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/).
+Canisters can be implemented in any language that compiles to WebAssembly. Popular canister development kits (CDKs) are available for [Rust](/docs/current/developer-docs/build/cdks/cdk-rs-dfinity/) and [Motoko](/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/). Other CDKs are described [here](https://internetcomputer.org/docs/current/developer-docs/build/cdks/)
   
