@@ -12,5 +12,5 @@ Canisters are more powerful than smart contracts on other blockchains as they ca
 * perform substantial amounts of computation at a low cost, and
 * pay for their own computation (learn more about the [reverse gas model](https://internetcomputer.org/features/reverse-gas/)).
 
-Canisters can be implemented in any language that compiles to WebAssembly. Popular canister development kits (CDKs) are available [here](https://internetcomputer.org/docs/current/developer-docs/build/cdks/).
+Canisters can be implemented in any language that compiles to WebAssembly. Popular canister development kits (CDKs) are described [here](https://internetcomputer.org/docs/current/developer-docs/build/cdks/).
   
