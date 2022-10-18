@@ -29,7 +29,8 @@ function Samples(): JSX.Element {
   const [numberOfItems, setNumberOfItems] = React.useState(40);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
     React.useState(40);
-  const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
+  const [queryTag, setQueryTag, queryTagInitialized] =
+    useQueryParam<string>("tag");
 
   let filteredDfinityTools = dfinityToolingItems;
   let filteredCommunityTools = communityToolingItems;
