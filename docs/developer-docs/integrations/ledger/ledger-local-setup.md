@@ -19,9 +19,9 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
 
     :::
 
-2.  Make sure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on <https://smartcontracts.org/> to install it.
+2.  Make sure you use a recent version of DFX. If you don’t have DFX installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove) section to install it.
 
-3.  If you don’t have a DFX project yet, follow these instructions to create a new DFX project: <https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-new.html>
+3.  If you don’t have a DFX project yet, follow these instructions to create a new DFX project: [dfx-new](../../../references/cli-reference/dfx-new.md)
 
 4.  Copy the file you obtained at the first step (`ledger.wasm`, `ledger.private.did`, `ledger.public.did`) into the root of your project.
 
@@ -111,7 +111,23 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
      }
     ```
 
-11. Check that the Ledger canister is healthy. Execute the following command:
+11. Update the canister definition in the `dfx.json` file to specify a remote id for the ledger. This will prevent dfx from deploying your own ledger in case you decide to deploy your project to the Internet Computer:
+
+    ```
+    "ledger": {
+      "type": "custom",
+      "candid": "ledger.public.did",
+      "wasm": "ledger.wasm",
+      "remote": {
+        "candid": "ledger.public.did",
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      }
+    }
+    ```
+
+12. Check that the Ledger canister is healthy. Execute the following command:
 
     ``` sh
     dfx canister call ledger account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$LEDGER_ACC'")]) + "}")')' })'
