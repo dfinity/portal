@@ -14,7 +14,7 @@ function Index() {
     },
     {
       title: "Chain Key ECDSA Docs",
-      description: "Learn about the engine behind the bitcoin APIs.",
+      description: "Learn about the engine behind Bitcoin APIs.",
       href: "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa",
     },
     {
@@ -39,15 +39,14 @@ function Index() {
         variants={transitions.item}
         className="tw-heading-4 md:tw-heading-60 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 md:w-8/12"
       >
-        Build with Bitcoin Integration
+        Code Bitcoin
       </motion.p>
       <motion.p
         variants={transitions.item}
         className="tw-lead-sm md:tw-lead mb-2 text-center w-5/6 mx-auto md:tw-heading-2 md:mb-6 md:w-6/12"
       >
-        The efficiency and scalability of the Internet Computer opens up a whole
-        new set of possible BTC applications: fund a DAO, create DeFi dapps and
-        more.
+        Directly process bitcoin on teh Bitcoin ledger using ICP smart contracts.
+        Add bitcoin to your ICP web3 services or create native Bitcoin DeFi.
       </motion.p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
         {links.map((card) => (
