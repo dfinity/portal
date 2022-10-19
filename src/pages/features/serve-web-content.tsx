@@ -40,6 +40,7 @@ function FeaturePage() {
             />
           </div>
         </section>
+
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
           {/* 
             delete this div if image is not needed 
@@ -75,6 +76,7 @@ function FeaturePage() {
               on-chain data storage and serving frontend to the user's browser.
               <br />
               <br />
+
               Hosting dapps 100% on-chain provides the additional benefit of
               letting DAOs launched on the IC to completely control these
               applications with on-chain governance. This lets users be fully in
@@ -84,9 +86,10 @@ function FeaturePage() {
 
             <YoutubeVideoEmbed
               videoId="jYrXk_hM4cA"
-              className="mt-10 md:mt-20"
+              className="mt-10 md:mt-10"
               altText="Community Conversations | Overview of Building a Front End on the Internet Computer"
             ></YoutubeVideoEmbed>
+          
 
             <h2>Cheap Storage</h2>
             <p>
@@ -101,6 +104,12 @@ function FeaturePage() {
                 on Ethereum. It only costs a few dollars on the IC.
               </i>
             </p>
+            <YoutubeVideoEmbed
+              videoId="JAQ1dkFvfPI"
+              className="mt-10 md:mt-10"
+              altText="Community Conversations | How to Host a Website on the Internet Computer"
+            ></YoutubeVideoEmbed>
+
 
             <h2>Smart contracts that can process HTTP requests</h2>
             <p>
@@ -133,15 +142,7 @@ function FeaturePage() {
               is hosted and executed entirely on-chain and it does not require
               visitors to pay for the computation.
             </p>
-            <p className="mb-3 mt-6">
-              <Link
-                href="https://internetcomputer.org/showcase/"
-                className="tw-heading-6 flex gap-2 items-center"
-              >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
-              </Link>
-            </p>
+
           </div>
         </section>
 

@@ -114,11 +114,6 @@ function FeaturePage() {
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
               href="/docs/current/developer-docs/build/cdks/"
@@ -128,11 +123,7 @@ function FeaturePage() {
               description="Learn about IC capabilities from community samples."
               href="/samples"
             />
-            <CardWithDescription
-              title="'Sovereign network' article on the IC Wiki"
-              description="Learn about how IC is a sovereign network."
-              href="https://wiki.internetcomputer.org/wiki/Sovereign_network"
-            />
+       
           </div>
         </section>
       </main>

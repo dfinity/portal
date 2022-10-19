@@ -110,11 +110,11 @@ function FeaturePage() {
 
             <p className="mb-3 mt-6">
             <Link
-                href="https://internetcomputer.org/showcase/"
+                href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
+                Learn more on Wiki
               </Link>
             </p>
           </div>
