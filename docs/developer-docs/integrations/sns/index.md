@@ -8,7 +8,7 @@ Here you will find
 
 Info how to get an SNS
 * [Intro](get-sns/get-sns-intro.md)
-* [Frontend integration preparation](get-sns/frontend-integration.md)
+* [Frontend integration preparation](integrate-sns/frontend-integration.md)
 * [Preparation](get-sns/preparation.md)
 * [Local testing](get-sns/local-testing.md)
 * [Getting an SNS in production](get-sns/get-sns-production.md)

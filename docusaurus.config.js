@@ -153,24 +153,28 @@ const config = {
             label: "Explore",
             items: [
               {
-                label: "Basics",
-                href: "/basics",
-              },
-              {
                 label: "Web3 Ecosystem",
                 href: "/showcase",
+              },
+              {
+                label: "Basics",
+                href: "/basics",
               },
               {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
               },
               {
+                label: "HTTPS Outcalls",
+                href: "/https-outcalls",
+              },
+              {
                 label: "Videos",
                 href: "/videos",
               },
               {
-                label: "HTTPS Outcalls",
-                href: "/https-outcalls",
+                label: "ICP Careers",
+                href: "http://careers.internetcomputer.org/",
               },
               {
                 label: "Internet Identity",
@@ -239,6 +243,10 @@ const config = {
                 label: "Dev Forum ",
                 href: "https://forum.dfinity.org/",
               },
+              {
+                label: "Dev Discord ",
+                href: "https://discord.gg/cE92CymEmJ",
+              },
             ],
           },
           {
@@ -246,10 +254,6 @@ const config = {
             position: "right",
             label: "Participate",
             items: [
-              {
-                label: "ICP tokens",
-                href: "/icp-tokens",
-              },
               {
                 label: "Live sessions",
                 href: "/live-sessions",
@@ -259,12 +263,16 @@ const config = {
                 href: "/roadmap",
               },
               {
-                label: "Staking & Governance",
-                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
+                label: "ICP tokens",
+                href: "/icp-tokens",
               },
               {
-                label: "NNS Frontend dapp",
-                href: "https://nns.ic0.app/v2/",
+                label: "Network Nervous System (NNS)",
+                href: "/nns",
+              },
+              {
+                label: "Staking & Governance",
+                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
               },
               {
                 label: "Node Providers",
@@ -352,6 +360,10 @@ const config = {
           },
           {
             items: [
+              {
+                label: "ICP Careers",
+                to: "http://careers.internetcomputer.org/",
+              },
               {
                 label: "Brand Materials",
                 to: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",

@@ -1,4 +1,47 @@
-export const sampleItems = [
+export type SampleItem = {
+  index: number;
+  title: string;
+  image?: string;
+  domains: SampleDomain[];
+  level: SampleLevel;
+  body: string;
+  languages: SampleLanguage[];
+  contentType: SampleContentType[];
+  links: {
+    [key: string]:
+      | string
+      | string[]
+      | {
+          text: string;
+          to: string;
+        };
+  };
+};
+
+export type SampleLanguage =
+  | "motoko"
+  | "rust"
+  | "javascript"
+  | "typescript"
+  | "other";
+export type SampleLevel = "beginner" | "intermediate" | "advanced";
+export type SampleDomain =
+  | "Asynchronous DeFi"
+  | "Global"
+  | "Website"
+  | "Metaverse and NFTs"
+  | "GameFi"
+  | "SocialFi"
+  | "Blue Sky"
+  | "Public Good / Social Impact";
+export type SampleContentType =
+  | "code samples"
+  | "documentation"
+  | "live demos"
+  | "videos"
+  | "community repo";
+
+export const sampleItems: SampleItem[] = [
   {
     index: 0,
     title: "Bitcoin",

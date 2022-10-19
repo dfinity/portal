@@ -76,7 +76,9 @@ function LiveSessionsPage(): JSX.Element {
     upcomingTbd.sort((a, b) => a.tbdMonth.localeCompare(b.tbdMonth));
 
     setUpcomingTbd(upcomingTbd);
-    setInitalized(true);
+    setTimeout(() => {
+      setInitalized(true);
+    });
   }, [liveSessions, setPast, setUpcoming]);
 
   function scrollToForm() {
@@ -87,8 +89,18 @@ function LiveSessionsPage(): JSX.Element {
   }
 
   useEffect(() => {
-    if (location.hash === "#subscribe") {
-      scrollToForm();
+    if (initalized) {
+      if (location.hash === "#subscribe") {
+        scrollToForm();
+      } else if (location.hash) {
+        const el = document.querySelector(location.hash) as HTMLElement;
+        if (el) {
+          window.scroll({
+            top: window.scrollY + el.getBoundingClientRect().top - 100,
+            behavior: "smooth",
+          });
+        }
+      }
     }
   }, [initalized]);
 
@@ -480,7 +492,7 @@ function LiveSessionsPage(): JSX.Element {
               </h2>
               <form
                 method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
+                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
                 className="md:w-4/10 space-y-6"
               >
                 <input
