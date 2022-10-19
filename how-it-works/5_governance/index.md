@@ -1,3 +1,3 @@
 ---
-title: Chain key cryptography
+title: Governance
 ---
