@@ -26,7 +26,7 @@ function Index() {
     {
       title: "ICP Wiki",
       description:
-        "Go deeper on the wiki.",
+        "Go deeper on the Wiki.",
       href: "https://wiki.internetcomputer.org/wiki/Bitcoin_integration",
     },
   ];
