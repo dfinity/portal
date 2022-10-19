@@ -7,26 +7,26 @@ import { CardWithDescription } from "@site/src/components/Common/Card";
 function Index() {
   const links = [
     {
-      title: "BTC Integration Documentation",
+      title: "Bitcoin APIs",
       description:
-        "Start building and testing Bitcoin functionality.",
+        "Start coding Bitcoin smart contract logic.",
       href: "https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin",
     },
     {
-      title: "Threshold ECDSA Documentation",
-      description: "Learn about threshold ECDSA signing and its functions.",
+      title: "Chain Key ECDSA Docs",
+      description: "Learn about the engine behind the bitcoin APIs.",
       href: "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa",
     },
     {
       title: "Sample Code",
       description:
-        "Deploy your first Bitcoin dapp and use threshold ECDSA signatures.",
+        "Quick start using Bitcoin and Chain Key ECDSA sample code.",
       href: "/samples",
     },
     {
-      title: "IC Wiki",
+      title: "ICP Wiki",
       description:
-        "Take a deep dive into how Bitcoin integration works on the Internet Computer.",
+        "Go deeper on the Wiki.",
       href: "https://wiki.internetcomputer.org/wiki/Bitcoin_integration",
     },
   ];
