@@ -187,3 +187,4 @@ Please make sure to add appropriate tags to make the tool easy to discover for o
 You can submit your sample project to be displayed on the [Samples page](https://internetcomputer.org/samples).
 
 Add your submission to [the community projects file](/community/communityProjects.ts) and open a pull request. You can use an editor with TypeScript support to make sure your submission follows [the schema](/src/components/Common/sampleItems.ts).
+
