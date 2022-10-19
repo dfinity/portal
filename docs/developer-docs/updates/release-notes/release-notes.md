@@ -1132,7 +1132,7 @@ You will need to upgrade your wallet with `dfx wallet upgrade`, or `dfx wallet -
 
 ### Changes to Replica
 
--   Updated to [Interface Spec 0.18.0](https://smartcontracts.org/docs/interface-spec/index.html)
+-   Updated to [Interface Spec 0.18.0](https://smartcontracts.org/docs/ic-interface-spec.md)
 
     -   A canister has a set of controllers, instead of always one
 

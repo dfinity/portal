@@ -1,4 +1,4 @@
-# Integrating with Internet Identity
+# Internet Identity Integration
 
 This shows how to integrate and test a project with Internet Identity. This uses the development [build flavor](https://github.com/dfinity/internet-identity/blob/main/README.md#build-features-and-flavors) of Internet Identity and the [agent-js](https://github.com/dfinity/agent-js) library.
 
@@ -104,4 +104,4 @@ Figuring the canister IDs, and using the `canisterId=...` query parameter is all
 - `npm run proxy`: Start a proxy that serves Internet Identity on `localhost:8086` and the webapp on `localhost:8087` for easy access.
 - `npm run test`: Start the proxy and run browser tests against the `internet_identity` canister.
 
-For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file, the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo) and the [SDK documentation](https://smartcontracts.org/docs/quickstart/quickstart-intro.html). Not bored yet? Check out the [Internet Computer Specification](https://smartcontracts.org/docs/introduction/welcome.html) and the [Internet Identity Specification](../../../references/ii-spec.md).
+For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file, the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo) and the [SDK documentation](../../build/). Not bored yet? Check out the [Internet Computer Specification](../../../references/ic-interface-spec.md) and the [Internet Identity Specification](../../../references/ii-spec.md).

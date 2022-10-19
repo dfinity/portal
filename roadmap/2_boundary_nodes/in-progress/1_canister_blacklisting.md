@@ -1,8 +1,8 @@
 ---
 title: Canister Deny-listing on Boundary Nodes
 links:
-  Forum Link: https://forum.dfinity.org/t/path-forward-on-leveraging-boundary-nodes-for-content-filtering/10911 
-  
+  Forum Link: https://forum.dfinity.org/t/path-forward-on-leveraging-boundary-nodes-for-content-filtering/10911
+
 eta:
 is_community: false
 ---
