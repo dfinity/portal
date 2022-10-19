@@ -120,43 +120,7 @@ function FeaturePage() {
           </div>
         </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
-          <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build on the IC
-          </p>
-          <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-          Using the power of chain key cryptography, the Internet Computer can thus be used as an orchestration blockchain, or 
-          meta blockchain, upon which new services can be built that combine functionality and assets provided by other 
-          blockchains in the web3 universe - all without the need to trust a central party, and without the inconvenience 
-          and risk of using wrapping and bridges.
-
-
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            {/* add or remove CardWithDescription components on demand */}
-
-            <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
-            />
-            <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
-            />
-            <CardWithDescription
-              title="'Trustless multi-chain web3' article on the IC Wiki"
-              description="Learn about how IC's smart contracts directly interact with other blockchains, without trusted centralized bridges."
-              href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
-            />
-          </div>
-        </section>
+     
       </main>
     </Layout>
   );
