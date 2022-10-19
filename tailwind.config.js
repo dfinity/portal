@@ -75,6 +75,9 @@ module.exports = {
       razzmatazz: {
         DEFAULT: "#DA3979",
       },
+      blue: {
+        DEFAULT: "#29ABE2",
+      },
     },
     leading: {
       tight: 1.13,
