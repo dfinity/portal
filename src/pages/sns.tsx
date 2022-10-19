@@ -389,11 +389,9 @@ function SnsPage() {
               w-[1000px]
               bottom-[-400px]
               right-[-600px]
-              sm:top-0
-              sm:bottom-auto
-              sm:right-auto
+              sm:bottom-[-600px]
               sm:w-[1200px]
-              sm:left-[-700px]
+              sm:right-[-500px]
             "
             />
           </div>
@@ -433,10 +431,7 @@ function SnsPage() {
                 </p>
               </div>
             </motion.div>
-            <motion.div
-              variants={transitions.item}
-              className="flex-1 max-w-[50%]"
-            >
+            <motion.div variants={transitions.item} className="flex-1">
               <motion.h2
                 className="tw-heading-5 md:tw-heading-3 mb-10 md:mb-16"
                 variants={transitions.item}
@@ -446,7 +441,7 @@ function SnsPage() {
               <div
                 className="
                   md:w-8/10
-                  prose 
+                  prose
                   prose-h3:tw-heading-6 prose-h3:md:tw-heading-5 prose-h3:mb-4
                   prose-p:tw-paragraph prose-p:mb-3
                   prose-ul:mb-4 prose-ul:list-none prose-ul:pl-0 prose-ul:tw-paragraph
