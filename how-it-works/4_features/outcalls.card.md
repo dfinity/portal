@@ -1,0 +1,11 @@
+---
+title: Https Outcalls
+---
+
+![](/img/how-it-works/canister-lifecycle.600x300.jpg)
+
+# Https Outcalls (level 1)
+
+Canister HTTPS outcalls on the Internet Computer blockchain allow direct interaction with Web 2.0 and other blockchains without oracles. Canister smart contracts can make HTTPS outcalls to specified URLs to directly obtain off-chain data, or to interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure.
+
+[Learn more](/how-it-works/outcalls/)
