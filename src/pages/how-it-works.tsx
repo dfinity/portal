@@ -140,7 +140,9 @@ function HowItWorks() {
                 World Computer
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Learn how the Internet Computer blockchain implements the vision of the World Computer. Explore its technology, open-source repositories, in-depth video academy sessions, white papers, research publications, and detailed technology articles.
+                Learn how the Internet Computer blockchain implements the vision of the World Computer.
+                Dive into its technology, open-source repositories, in-depth video academy sessions,
+                white papers, research publications, and detailed technology articles.
               </p>
             </div>
           </div>
