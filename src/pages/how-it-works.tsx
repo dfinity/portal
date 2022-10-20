@@ -105,7 +105,7 @@ function HowItWorks() {
 
   return (
     <Layout
-      title="Implementing the Vision of the World Computer"
+      title="How It Works"
       description="Learn how the Internet Computer blockchain implements the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, research publications, and detailed technology articles."
     >
       <style>
@@ -128,7 +128,7 @@ function HowItWorks() {
             "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
           }
         />
-        <title>Implementing the Vision of the World Computer</title>
+        <title>How It Works</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
