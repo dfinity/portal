@@ -106,7 +106,7 @@ function HowItWorks() {
   return (
     <Layout
       title="How It Works"
-      description="Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives."
+      description="Learn how the Internet Computer blockchain implements the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles."
     >
       <style>
         {css`
@@ -136,10 +136,10 @@ function HowItWorks() {
           <div className="container-10 pt-12 mb-30 md:mb-40 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                How the Internet Computer Implements the Vision of the World Computer
+                Implementing the Vision of the World Computer
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Learn how the Internet Computer blockchain implements the vision of the World Computer. Explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles.
+                Learn how the Internet Computer blockchain implements the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles.
               </p>
             </div>
           </div>
