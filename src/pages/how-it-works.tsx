@@ -128,7 +128,7 @@ function HowItWorks() {
             "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
           }
         />
-        <title>How It Works</title>
+        <title>Implementing the Vision of the World Computer</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -139,7 +139,7 @@ function HowItWorks() {
                 Implementing the Vision of the World Computer
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Learn how the Internet Computer blockchain implements the vision of the World Computer. Explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles.
+                Learn how the Internet Computer blockchain implements the vision of the World Computer. Explore its technology, open-source repositories, in-depth video academy sessions, white papers, research publications, and detailed technology articles.
               </p>
             </div>
           </div>
