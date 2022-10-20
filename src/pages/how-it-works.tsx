@@ -106,7 +106,7 @@ function HowItWorks() {
   return (
     <Layout
       title="How It Works"
-      description="Learn how the Internet Computer blockchain works and explore its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and long-form deep dives."
+      description="Learn how the Internet Computer blockchain implements the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, research publications, and detailed technology articles."
     >
       <style>
         {css`
