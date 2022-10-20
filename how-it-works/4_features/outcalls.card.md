@@ -2,7 +2,7 @@
 title: Https Outcalls
 ---
 
-![](/img/how-it-works/canister-lifecycle.600x300.jpg)
+![](/img/how-it-works/outcalls.jpg)
 
 # Https Outcalls (level 1)
 

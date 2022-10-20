@@ -2,7 +2,7 @@
 title: Execution Layer
 ---
 
-![](/img/how-it-works/message-routing.600x300.jpg)
+![](/img/how-it-works/overview-of-the-internet-computer.600x300.jpg)
 
 # Execution layer
 
