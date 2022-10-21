@@ -3,7 +3,7 @@ title: ECDSA key rotation and resharing
 links:
   Forum Link: https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152/245
 eta: 2022
-is_community: false
+is_community: true
 in_beta: false
 ---
 
