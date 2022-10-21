@@ -1,5 +1,5 @@
 ---
-title: Threshold Encryption for Dapps
+title: Threshold Encryption
 links:
   Forum Link:
   Proposal: 
