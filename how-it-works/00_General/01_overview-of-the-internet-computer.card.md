@@ -6,8 +6,6 @@ title: Architecture of the Internet Computer
 
 # Overview
 
-The last original Layer 1 blockchain project has launched a revolutionary public network that provides a limitless environment for smart contracts that run at web speed, serve web, scale, and reduce compute costs by a million times or more. Build everything from DeFi, to mass market tokenized social media services that run on-chain, or extend Ethereum dapps.
-
 The technology behind the Internet Computer (IC) has been reconceived from ground up, learning our lessons from earlier projects.
 The Internet Computer intends to become the World Computer, an open and secure blockchain-based network that can scale out to power humanity's computation.
 The core part of the IC's architecture is its subnet architecture: The IC consists of many subnets, where each subnet is its own blockchain that operates concurrently with all the other subnets.
