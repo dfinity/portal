@@ -2,7 +2,7 @@
 title: Architecture of the Internet Computer
 ---
 
-![](/img/how-it-works/overview-of-the-internet-computer.600x300.jpg)
+![](img/subnet_architecture.png){width=600}
 
 # Overview
 
