@@ -1,4 +1,4 @@
--
+---
 title: Canister groups
 links:
   Forum Link: https://forum.dfinity.org/t/canister-groups/16015
