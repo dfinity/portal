@@ -17,9 +17,6 @@ Each subnet hosts smart contracts, called *canister smart contracts*, or simply 
 Canisters on one subnet can send messages to canisters on the same or other subnet.
 The secure asynchronous cross-subnet (xnet) communication between canisters and the resulting loose coupling of subnets is one of the key principles that enable the scalability of the IC by means of adding new subnets.
 
-![](img/subnet_architecture.png)
-Architecuture: The IC is composed of many subnets, each of which is an blockchain making progress independently
-
 The IC is governed by a tokenized DAO, the so-called Network Nervous System (NNS).
 The NNS is implemented as a set of canister smart contracts that are deployed on a high-replication subnet.
 The NNS allows holders of the ICP governance token to make proposals and vote on those proposals.
