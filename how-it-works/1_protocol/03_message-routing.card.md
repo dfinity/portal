@@ -6,6 +6,11 @@ title: Message routing
 
 # Message routing
 
-The Internet Computer blockchain enables users to send messages to canister smart contracts and canisters to send messages between themselves. For scalability, the Internet Computer is composed of many subnet blockchains and the Internet Computer's Network Nervous System can add new subnets as required. The message routing component routes messages to and from canisters across all of the Internet Computer's subnet blockchains and ensures that new subnets can be added seamlessly.
+The message routing layer of the core IC protocol implements, as the name suggests, the routing of canister messages between subnets.
+Secure xnet messaging is a key ingredient for the loosely-coupled concurrently-operating subnets and the scalability of the IC.
+Newly added subnets are immediately available as source or target subnet of canister messages.
+The layer also implements the scheduling of messages to be executed within a subnet.
+Another major functionality group is state certification, that is, getting parts of the replicated subnet state certified by the subnet in every round and the full state in every DKG interval (hundreds of rounds).
+All of this makes message routing an integral protocol layer crucial for realizing some of the IC's unique features.
 
-- [Learn more](/how-it-works/message-routing/)
+[Learn more](/how-it-works/message-routing/)
