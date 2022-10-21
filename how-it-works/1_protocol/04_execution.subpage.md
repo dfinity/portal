@@ -5,6 +5,8 @@ shareImage: /img/how-it-works/network-nervous-system-nns.600.jpg
 slug: execution-layer
 ---
 
+# Execution
+
 The execution layer is the topmost layter of the IC core protocol stack.
 It deterministically executes the messages that consensus has agreed on, thereby changing the state of the subnet in a deterministic manner.
 On each node of the subnet, message routing invokes execution with the same sequence of messages, starting with the same state on each node in a given round.

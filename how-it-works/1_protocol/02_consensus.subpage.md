@@ -5,7 +5,7 @@ shareImage: /img/how-it-works/consensus.600.jpg
 slug: consensus
 ---
 
-# Internet Computer Consensus
+# Consensus
 
 Each subnet of the IC is its own blockchain that makes progress concurrently to the other subnets and thus runs its own instance of the IC core protocol stack including consensus. We next go deeper into the IC consensus protocol. Recall that the goal of consensus is to produce blocks agreed by the nodes of the subnet with messages to be executed. This is crucial so that the upper two layers of the protocol stack – message routing and execution – get the same input in every round.
 

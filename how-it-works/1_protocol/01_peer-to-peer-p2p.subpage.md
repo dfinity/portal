@@ -5,7 +5,7 @@ shareImage: /img/how-it-works/peer-to-peer-p2p.600.jpg
 slug: peer-to-peer-p2p
 ---
 
-# Peer-to-Peer Layer
+# Peer-to-Peer
 
 The peer-to-peer layer (P2P) of the Internet Computer realizes the reliable and secure communication of *messages*, also called *artifacts*, between the nodes of a subnet. Artifacts are the messages that are to be broadcast in the subnet, such as ingress messages submitted by users or protocol-originated messages such as signature shares computed by the consensus layer of subnet nodes. P2P realizes a peer-to-peer broadcast network that guarantees the secure eventual broadcast delivery of an artifact. It thereby is the communication fabric for the IC protocol stack and is used by the consensus layer, the next layer in the stack above it, to have messages broadcast in the subnet.
 
@@ -23,8 +23,11 @@ This duplication of delivered artifacts in the naïve approach is mitigated by n
 
 In subnets up to a certain size, it is practical that each node be connected to each other node of the subnet, i.e., having all the other nodes as peers. In very large subnets, this full connectivity is not practical as it would result in too large a number of messages being communicated for a single broadcast of an artifact.
 
-In the future, we address this challenge by implementing an overlay network that is more sparse than the fully connected subnet. Broadcasts through gossip is implemented in this overlay network instead of the fully connected subnet, thereby leading to a greatly reduced number of messages. The overlay network is randomly created with properties that ensure with high probability that nodes cannot be *eclipsed* by only being connected to adversarial nodes. The overlay network structure is recomputed periodically in order to prevent adaptive eclipse attacks where an adversary over time corrupts an increasing number of nodes.
+In the future, we address this challenge by implementing an overlay network that is more sparse than the fully connected subnet. Broadcasts through gossip is implemented in this overlay network instead of the fully connected subnet, thereby leading to a greatly reduced number of messages. The overlay network is randomly created with properties that ensure with high probability that nodes cannot be *eclipsed* by only being connected to adversarial nodes.
+The overlay network structure is recomputed periodically in order to prevent adaptive eclipse attacks where an adversary over time corrupts an increasing number of nodes.
 
-[![Watch youtube video](https://i.ytimg.com/vi/HOQb0lKIy9I/maxresdefault.jpg)](https://www.youtube.com/watch?v=HOQb0lKIy9I)
+## Go Even Deeper
 
 https://medium.com/dfinity/secure-scalability-the-internet-computers-peer-to-peer-layer-6662d451f2cc
+
+[![Watch youtube video](https://i.ytimg.com/vi/HOQb0lKIy9I/maxresdefault.jpg)](https://www.youtube.com/watch?v=HOQb0lKIy9I)
