@@ -2,7 +2,7 @@
 title: The Core IC Protocol
 ---
 
-![](img/subnet_architecture.jpg)
+![](img/subnet_architecture.jpg){width=600}
 
 The Internet Computer is powered by the Internet Computer Protocol (ICP), from which its ICP utility token derives its name.
 The core part of this protocol is a 4-layer protocol that is running on the nodes of each subnet.
