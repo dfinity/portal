@@ -4,7 +4,7 @@ title: Architecture of the Internet Computer
 
 ![](img/subnet_architecture.png)
 
-# Overview
+# Architecture of the Internet Computer
 
 The technology behind the Internet Computer (IC) has been reconceived from ground up, learning our lessons from earlier projects.
 The Internet Computer intends to become the World Computer, an open and secure blockchain-based network that can scale out to power humanity's computation.

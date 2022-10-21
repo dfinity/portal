@@ -5,7 +5,7 @@ shareImage: /img/how-it-works/overview-of-the-internet-computer.600.jpg
 slug: architecture-of-the-internet-computer
 ---
 
-# Internet Computer Blockchain Overview
+# Architecture of the Internet Computer
 
 The technology behind the Internet Computer (IC) has been reconceived from ground up, learning lessons from the weaknesses of earlier projects, e.g., the lack of scalability.
 The Internet Computer intends to become the World Computer, an open and secure blockchain-based network that can scale out to power humanity's computation.
