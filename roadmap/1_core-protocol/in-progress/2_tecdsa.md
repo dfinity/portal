@@ -3,6 +3,7 @@ title: Threshold ECDSA Signatures
 links:
   Forum Link: https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152
   Proposal: https://dashboard.internetcomputer.org/proposal/21340
+  Documentation: https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa/
 eta: 2022
 is_community: false
 in_beta: true
