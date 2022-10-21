@@ -13,4 +13,4 @@ In every round, each node of a subnet has the same starting state, which is tran
 Execution is completely deterministic, that is, makes exactly the same state changes on every node of the subnet.
 This is crucial for achieving the properties of a replicated state machine, a core property of a blockchain.
 
-[Learn more](/how-it-works/execution-layer/)
+[Go deeper](/how-it-works/execution-layer/)

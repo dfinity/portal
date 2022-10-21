@@ -13,4 +13,4 @@ The layer also implements the scheduling of messages to be executed within a sub
 Another major functionality group is state certification, that is, getting parts of the replicated subnet state certified by the subnet in every round and the full state in every DKG interval (hundreds of rounds).
 All of this makes message routing an integral protocol layer crucial for realizing some of the IC's unique features.
 
-[Learn more](/how-it-works/message-routing/)
+[Go deeper](/how-it-works/message-routing/)

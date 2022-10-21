@@ -12,4 +12,4 @@ On the IC, each subnet is a blockchain that runs the IC core protocol including 
 The purpose of the consensus protocol is to output the same block of ordered messages on each node of a subnet in a given round so that each node can make the same state transition when deterministically executing those messages.
 IC consensus uses the P2P layer to broadcast protocol artifacts to the nodes of the subnet.
 
-[Learn more](/how-it-works/consensus/)
+[Go deeper](/how-it-works/consensus/)
