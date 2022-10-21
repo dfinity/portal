@@ -9,4 +9,4 @@ title: Resumption
 
 This mechanism is key when a new node gets added to one of the Internet Computer's subnet blockchains. 
 
-* [Learn more](/how-it-works/resumption/)
+* [Go deeper](/how-it-works/resumption/)
