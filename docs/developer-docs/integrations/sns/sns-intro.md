@@ -1,4 +1,4 @@
-# Service Nervous System
+<!--# Service Nervous System (SNS)-->
 
 We assume that if you are reading this page you know what a 
 decentralized autonomous organization (DAO) is, 
