@@ -7,11 +7,20 @@ slug: peer-to-peer-p2p
 
 # Peer-to-Peer
 
-The peer-to-peer layer (P2P) of the Internet Computer realizes the reliable and secure communication of *messages*, also called *artifacts*, between the nodes of a subnet. Artifacts are the messages that are to be broadcast in the subnet, such as ingress messages submitted by users or protocol-originated messages such as signature shares computed by the consensus layer of subnet nodes. P2P realizes a peer-to-peer broadcast network that guarantees the secure eventual broadcast delivery of an artifact. It thereby is the communication fabric for the IC protocol stack and is used by the consensus layer, the next layer in the stack above it, to have messages broadcast in the subnet.
+The peer-to-peer layer (P2P) of the Internet Computer realizes the reliable and secure communication of *network messages*, also called *artifacts*, between the nodes of a subnet.
+Artifacts are the network messages that are to be broadcast in the subnet, such as ingress messages to canister smart contracts submitted by users or protocol-originating messages such as signature shares computed by the consensus layer of subnet nodes.
+P2P realizes a peer-to-peer broadcast network that guarantees the secure eventual broadcast delivery of an artifact.
+The P2P layer thereby is the communication fabric for the IC protocol stack and is used by the consensus layer, the next layer in the stack above it, to broadcast artifacts to the nodes in the subnet.
 
 ## Gossip Protocol
 
-The P2P layer builds on the principle of *gossip*, that operates along the same basic principles as gossip among people: A node in the subnet is connected with a subset of the other nodes of the subnet – we call those connected nodes the *peers* of the node. Whenever a node has received a message from a peer or created one itself as part of the protocol, it provides this message to all its peers.
+The P2P layer builds upon the basic principle of *gossip*.
+Gossip in communication networks works along the same basic principles as gossip among people: A node in the subnet is connected with a subset of the other nodes of the subnet – we call those connected nodes the *peers* of the node.
+Whenever a node receives a message from a peer or creates one itself as part of the IC protocol, it provides this message to all its peers.
+By every node in the network doing exactly this, every artifact *eventually* propagates through the whole subnet.
+It is important to note that artifacts reach all subnet nodes eventually, that is, no upper bound on when this happens can be given.
+This important property of an asynchronous communication network, which reflects the real world of networks, is crucial and the IC consensus protocol works with this assumption.
+Clearly, assuming an asynchronous network makes protocols building on top more complex than they would be when assuming a synchronous network.
 
 ## Adverts
 
