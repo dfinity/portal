@@ -3,7 +3,7 @@ title: NNS spam protection (remove financial incentive)
 links:
   Forum Link: https://forum.dfinity.org/t/reproposal-spam-prevention-convert-from-system-based-rewards-to-voter-based-rewards/15352/1
   Proposal: https://dashboard.internetcomputer.org/proposal/80970
-eta:
+eta: 2022
 is_community: true
 ---
 
