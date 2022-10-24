@@ -2,7 +2,7 @@
 title: Overview
 ---
 
-![](/img/subnet_architecture.jpg)
+![](/img/how-it-works/subnet_architecture.jpg)
 
 # Overview
 
