@@ -1,5 +1,5 @@
 ---
-title: Content test card
+title: Service Nervous System
 abstract:
 shareImage: /img/how-it-works/overview-of-the-internet-computer.600.jpg
 slug: sns
