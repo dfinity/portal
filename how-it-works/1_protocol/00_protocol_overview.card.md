@@ -2,7 +2,7 @@
 title: Overview
 ---
 
-![](/img/how-it-works/subnet_architecture.jpg)
+![](/img/how-it-works/core_protocol_layers.png)
 
 # Overview
 
