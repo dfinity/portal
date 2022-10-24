@@ -7,8 +7,8 @@ eta:
 is_community: true
 ---
 
-This change suggests a conversion from a system-based rewards model to a voter-based reward model. Voting rewards are allocated under the assumption that every neuron voted on everything. 
+In the current voting reward set-up, there is a financial incentive for spam because the overall reward pot is always handed out and by submitting governance spam propoals you can skew the voting reward allocation. 
 
-This change also includes moving the governance weight back to 20 without incentivising spam. We propose this occur as part of this proposal.
+This change removes this incentive by allocating voting rewards under the assumption that every neuron voted on everything. 
 
-A result of this proposal will be a reduction in total minted ICP due to the fact that some voters do not vote on all proposals or follow a voter for all proposals. In a follow-on proposal, the NNS can determine what to do with that “abandoned” ICP. We suggest an NNS treasury but will leave it to a future proposal to finalize that. 
+This change also includes moving the governance weight back to 20 and the tracking of allocated vs not allocated voting rewards. 
