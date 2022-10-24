@@ -11,7 +11,7 @@ slug: threshold-ecdsa-signing
 
 ECDSA signatures are widely used in the blockchain industry. This feature will enable canister smart contracts to have an ECDSA public key and to sign with regard to it. The corresponding secret key is threshold-shared among the nodes of the subnet holding the canister smart contract. This is a prerequisite for the direct integration between the Internet Computer and Bitcoin and Ethereum.
 
-[ECSDSA White Paper](https://eprint.iacr.org/2021/1330)
+[ECDSA White Paper](https://eprint.iacr.org/2021/1330)
 
 [ECDSA GitHub](https://github.com/ic-association/nns-proposals/blob/main/proposals/governance/20210920T1500Z.md)
 
