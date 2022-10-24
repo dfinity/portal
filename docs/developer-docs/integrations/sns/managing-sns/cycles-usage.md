@@ -1,63 +1,63 @@
 # SNS cycle management
 
-## Why you need to observe the SNS canister's cycles
-In first version of SNS, cycles have to be maintained 
-  1) manually = someone has to actively send cycles to the 
-     canister
-  2) for each individual SNS canister = this has to be repeated
-for each individual canister in the SNS
-3) also for dapp canistesr (But this is nothing new)
-
-If governance or ledger un out of cycles, might lose canisters and
-thus DAO.
-
+## The need to observe the canisters' cycles
 :::danger
 An SNS community must ensure that all SNS and dapp canisters
-have sufficient
-cycles by manually sending cycles when necessary to
+have sufficient cycles by manually sending cycles when necessary to
 **each individual SNS canister**.
 :::
 
+1. _Manually_ means that someone has to monitor the cycles of the
+   canisters and actively make calls to send additional cycles to them
+   when the canisters' cycles balance get low.
+   
+2. This process has to be repeated for _each indiviudal SNS canister_ 
+and also for _each dapp canister_.
+   
+At least the latter is not new to developers who built a dapp on the IC.
+Nevertheless, we want to underline the importance of this in the context
+of an SNS: If the SNS goverannce or SNS ledger canister run out of cycles
+and get deleted, this is of course catastrophic as users loose their
+liquid and staked tokens and as the dapp canisters cannot be goverend
+anymore.
 
-For most canisters, you know they exist as the SNS is already 
-initiated with them or has explicitly added them.
-One exception are archive canisters of the ledger canister.
-The purpose of archive canisters is to store blocks of ledger
-    want to keep all blocks
-    canister has limited storage
-    => do in separate canister
-This means that at some point ledger will create archive
-When this happens, the ledger takes XX cycles from its current
-cycle balance and creates the archive with these XX cycles.
-XX is set by the SNS-W when the ledger canister is first 
-initialized (TODO: verify).
-This specifically means that when an archive is created then
-1) there is a new canister whose cycle balance has to be managed
-2) the ledger cycles balance decreases by a lot at once
+### Cycles in the archive canisters
+The SNS community should be aware of most SNS and associated dapp 
+canisters as either the SNS is initiated with them or as they are
+explicitly added.
+One exception are the _archive canisters_ of the ledger canister.
+Due to limited storage, the ledger cannot keep all blocks forever and
+thus it spawns separate archive canisters to do so.
+The ledger spawning a new archive affects the cycles as follows:
+The ledger takes a predefined number _X_ of cycles from its current
+cycle balance and creates the archive with these _X_ cycles as the
+initial balance. The number _X_ is set when the SNS ledger canister is 
+first initialized.<!--(TODO: verify)-->
 
+This specifically means that SNS communities should be aware of the
+following:
 :::danger
-SNS communities should be aware that there are SNS canisters
-that are automatically created by the SNS, notably the archive
-canisters that are spawn by the ledger canister.
-The cycles balance of these canister also have to be managed.
+The SNS ledger canister automatically spawns new archive
+canisters.
+When this happens, the cycles balance of these canisters also have
+to be managed and
+the ledger cycles balance decreases by a significat amount.
 If an archive canister is spawn and runs out of cycles,
 ledger blocks might be lost.
 :::
 
-Good news is that 
-* at least SNS canisters are started with already a good number
-of cycles (namely XX)
-  
-* the SNS ledger is started with 2*XX such that when the first 
-archive is spawn, both should have enough cycles for a while
+To help SNS communities manage cycles, the SNS is initiated as follows:
+* SNS canisters are started with already a large number of cycles,
+  namely XX <!-- TODO-->
+* the SNS ledger is started with 2*XX cycles such that when the first 
+archive is spawn, both should have roughtly X cycles.
 
-In more detail to learn about current canister and their cycles
-balance, and to top the cycle up if needed, you can follow
-these steps.
 
-## How you can observe and manage the SNS canister's cycles
+## How to observe and manage the canisters' cycles
+We next describe in more detail how you acn monitor and manage the
+cycles of the SNS and dapp canisters.
 
-### 1. Find all SNS and governed dapp canisters and their cycle balance
+### 1. Find all SNS and governed dapp canisters and their cycle balance.
 SNS root knows about all the SNS canisters.
    Make a call
    I think principal does not matter (TODO: verify)
