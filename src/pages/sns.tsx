@@ -240,7 +240,7 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                Infnitely scalable. The Internet Computer is the only blockchain
+                Infinitely scalable. The Internet Computer is the only blockchain
                 that can scale without bounds - it can truly serve the world.
                 Infinite scaling is possible through advanced cryptography which
                 joins many subnets together into a singular, secure blockchain.
