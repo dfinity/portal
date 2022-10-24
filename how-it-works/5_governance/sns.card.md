@@ -8,6 +8,6 @@ coverImage: /img/how-it-works/network-nervous-system-nns.600x300.jpg
 
 # Service Nervous System (SNS)
 
-An SNS would derive from the [Network Nervous System (NNS)](/how-it-works/network-nervous-system-nns/) , the autonomous tokenized governance system that controls the Internet Computer blockchain in a completely open, permissionless, and decentralized manner.
+An SNS would derive from the [Network Nervous System (NNS)](/how-it-works/network-nervous-system-nns/), the autonomous tokenized governance system that controls the Internet Computer blockchain in a completely open, permissionless, and decentralized manner.
 
 [Go deeper](how-it-works/sns/)
