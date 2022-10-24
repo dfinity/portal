@@ -2,6 +2,7 @@
 title: Composite queries
 links:
   Forum Link: https://forum.dfinity.org/t/proposal-composite-queries/15979
+  Proposal: https://dashboard.internetcomputer.org/proposal/87599
 eta: 2022
 is_community: true
 in_beta: false
