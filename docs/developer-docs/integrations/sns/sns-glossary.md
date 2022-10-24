@@ -1,4 +1,4 @@
-<!--# SNS Glossary -->
+# SNS Glossary
 
 In building, getting, and interacting with an SNS, some terminology and actions have been introduced. These are explained below to reduce ambiguity. 
 Please feel free to contribute to the list!
