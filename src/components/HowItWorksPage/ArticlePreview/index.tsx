@@ -19,7 +19,7 @@ function Index({ title, coverImage, slug }) {
         href={"/how-it-works/" + slug}
         className="bg-transparent w-28 text-center rounded-xl border-2 border-black border-solid text-black tw-title-navigation-on-page py-2 px-3 hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors"
       >
-        Learn more
+        Go deeper
       </Link>
     </motion.div>
   );
