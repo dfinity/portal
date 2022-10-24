@@ -27,6 +27,10 @@ In addition to this DAO-based platform governance, dApps can be governed by an o
 Everyone controlling a dApp, can hand over control of their dApp to a tokenized DAO by deploying and parameterizing an instance of the SNS.
 The SNS implements advanced governance at the dApp level and can be used without implementing a governance system, which is revolutionary.
 
+Canister smart contracts are more powerful than the smart contracts on other blockchains.
+For example, a web browser can directly interact with a canister smart contract, without involving any public cloud for serving the web interface and assets.
+Also, canisters can use gigabytes of storage for a low cost.
+
 The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
 Since then, it has been growing by new nodes being added and joined to form new subnets.
 

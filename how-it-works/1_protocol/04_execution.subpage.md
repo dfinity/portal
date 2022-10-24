@@ -64,7 +64,7 @@ The difference is that the heap is cleared on updates of the canister code, whil
 ## Cycles Accounting
 
 The execution of a canister consumes resources of the Internet Computer, which are paid for with cycles that the canister must be topped up with.
-Fulling up the canister with cycles is the responsibility of the maintainer, which can be a DAO, users do not pay for using services on the IC.
+Filling up the canister with cycles is the responsibility of the maintainer, which can be a DAO, users do not pay for using services on the IC.
 The Wasm code running in a canister gets instrumented with code that counts the instructions executed when the Wasm code gets installed on the IC.
 This allows for deterministally determining the exact amount of cycles to be charged for a given message being executed.
 Also, the memory the canister users in terms of both its Wasm code and canister state, needs to be paid for with cycles.
