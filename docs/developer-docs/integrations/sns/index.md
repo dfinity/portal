@@ -1,8 +1,6 @@
-<!--# Move title here when page ready--> 
-Title: Service Nervous System (SNS) 
+<!--# Service Nervous System (SNS) -->
 
-<!--## Move title here when page ready--> 
-Title: Technical documentation
+<!--## Technical documentation-->
 Documentation in the developer docs, is, as the name suggests, aimed at developers. 
 
 Here you will find
@@ -22,12 +20,10 @@ management info
 * [Cycles usage](managing-sns/cycles-usage.md)
 * [Upgrade SNS](managing-sns/upgradeSNS.md)
 
-<!--## Move title here when page ready--> 
-Title: DAOs and Tokenomics documentation
+<!--## DAOs and Tokenomics documentation-->
 
 In tokenomics you will find
 
-<!--## Move title here when page ready -->
-Title: User Guides
+<!--## User Guides-->
 
 On the wiki you will find
