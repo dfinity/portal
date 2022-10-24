@@ -1,4 +1,4 @@
-<!--# How to get an SNS-->
+# How to get an SNS
 
 We explain how to get an SNS that is provided as a 
 system functionality by the IC.
@@ -10,7 +10,7 @@ We introduce here the steps to go through to get an SNS.
 We only give an overview here and, for each of the steps, we 
 link to a page that provides more details. 
 
-<!--### Step 1: Defining the goals (non-technical preparation)-->
+### Step 1: Defining the goals (non-technical preparation)
 The successful launch of an SNS does not only depend on technical
 aspects. 
 In fact, it is advisable that before taking any technical steps, 
@@ -45,7 +45,7 @@ To provide some tips on what considerations you should not forget,
 we list a few of them on
 [this page](../../../../tokenomics/sns/predeployment-considerations.md).
 
-<!--### Step 2: Technical preparations--> 
+### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
 you are ready for the more technical preparations.
 A main goal of this step is to translate the previously defined high level
@@ -63,7 +63,7 @@ For example, you may want to integrate some or all of the SNS frontend
 in your dapp's frontend. [This page](../integrate-sns/frontend-integration.md)
 provides some tips on how this can be done.
 
-<!--### Step 3: Testing the SNS-->
+### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
 go live without testing them. In fact, you may want to test different
 initial parameters and compare them with each other.
@@ -76,7 +76,7 @@ you probably want to test that this integration works.
 For all these reasons, we explain on [this page](./local-testing.md), how
 the SNS can be tested.
 
-<!--### Step 4: Getting an SNS in production-->
+### Step 4: Getting an SNS in production
 Once you properly tested the SNS, you are ready to ask the IC to launch
 an SNS for you in production. 
 We describe all steps included in this process in more detail
