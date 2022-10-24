@@ -1,4 +1,4 @@
-<!--# Testing SNS Locally after Choosing Parameters-->
+# Testing SNS Locally after Choosing Parameters
 
 
 After having
@@ -14,7 +14,7 @@ The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
 
-<!--#### 1. Prepare your principals and tools-->
+#### 1. Prepare your principals and tools
 
 <!-- TODO-content & TODO-CLI/dfx: 
 Open terminal with dfx, ready for commands when we say "use `dfx` identity 
@@ -32,7 +32,7 @@ Set up NNS in such a way that can vote through proposals. Maybe one huge neuron 
 Have principal w/ NNS neuron NNS identity `identityNNS`.
 -->
 
-<!--#### 2. Install an NNS on your local testing environment.-->
+#### 2. Install an NNS on your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
 This will allow you to test the calls to NNS that are needed to request an SNS
 launch.
@@ -42,7 +42,7 @@ the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 <!--TODO-CLI/dfx: After we have the dfx tool, clarify whether there are other
 steps needed here! -->
 
-<!--#### 3. Ask the SNS wasm modules canister to install an SNS.-->
+#### 3. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the local NNS 
 to request that an SNS is installed.
 To make this call, use your `dfx` identity `identityDevDfx` and
@@ -53,12 +53,12 @@ an SNS with your chosen initial parameters.
 the .yaml file is used. If this is not the case, add the information how this 
 can be ensured.-->
 
-<!--#### 4. Add the SNS root canister as a controller to your dapp canister(s).-->
+#### 4. Add the SNS root canister as a controller to your dapp canister(s).
 To do so, use your `dfx` identity `identityDevDfx` and
 the command described 'here'.
 <!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
 
-<!--#### 5. Remove all controllers other than the SNS from the dapp canister(s)-->
+#### 5. Remove all controllers other than the SNS from the dapp canister(s)
 Remove yourself, as well as any other developers,
 from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
@@ -68,7 +68,7 @@ where you specify as the principals to be removed all existing controller princi
 except for the SNS root that you have already added.
 <!--TODO-CLI/dfx-Link: should already exist in DFX -->
 
-<!--#### 6. Register the dapp in the SNS-->
+#### 6. Register the dapp in the SNS
 Next, you will register the dapp canister(s) that are now controlled by the SNS
 in the SNS root canister. This is to make sure that the SNS root canister
 is aware of the canisters that it officially governs and accepts the responsibility
@@ -94,7 +94,7 @@ why you must ensure that you can reach a majority of the initial neurons and tha
 neurons are able to vote already before the decentralization sale.
 :::
 
-<!--#### 7. Test upgrading the dapp canister(s) by SNS proposal.--> 
+#### 7. Test upgrading the dapp canister(s) by SNS proposal. 
 At this point, the dapp canister(s) are under control of the SNS.
 You might want to test that already at this stage, before the decentralization sale,
 it is still possible to upgrade the dapp.
@@ -113,7 +113,7 @@ and use the command explained [here](https://github.com/dfinity/sns-quill#vote-o
 <!-- TODO: SNS quill documentation to make proposal and link to it-->
 
 
-<!--#### 8. Submit an NNS proposal to start the decentralization sale.-->
+#### 8. Submit an NNS proposal to start the decentralization sale.
 Note that in production at this point your dapp's control is handed over to the IC and everyone
 can make the following proposal.
 For testing this, submit an NNS proposal using your NNS identity `identityNNS`
@@ -121,7 +121,7 @@ and the following command
 ```
 <!--TODO-code: --> 
 ``` 
-<!--#### 9. Adopt / reject the NNS proposal-->
+#### 9. Adopt / reject the NNS proposal
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
 To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes
@@ -134,7 +134,7 @@ If the proposal is rejected, the dapp canisters' controllers are automatically s
 back to the developer principals that you
 have defined in the [initialization file](preparation.md).
 
-<!--#### 10. Test sale participation-->
+#### 10. Test sale participation
 After the sale has been started by the NNS, test that you can participate in the sale
 as expected.
 To do so, use your `sns-quill` principal `identityDevNeuron`
@@ -144,7 +144,7 @@ To finish the sale and proceed with other testing, you can either wait for the s
 deadline to exceed or you can participate in the sale repeatedly until you hit the
 maximum ICP that the sale accepts.
 
-<!--#### 11. Repeatedly test upgrading the dapp canister(s) and adding more canisters.-->
+#### 11. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
 You might want to repeatedly test that you can upgrade the dapp at all stages.
 As already explained in [Step7](#7-test-upgrading-the-dapp-canisters-by-sns-proposal),
 you might want to test this before the decentralization sale and you might also want to test this
@@ -155,7 +155,7 @@ To do so, you can repeat the instructions from
 You can also test adding new dapp canisters under the SNS control at different stages,
 by additional SNS proposals as explained in [Step 6](#6-register-the-dapp-in-the-sns).
 
-<!--#### 12. Test launched SNS.-->
+#### 12. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
 For example, if some initial neurons were set up with dissolve delay zero, you can dissolve them.
 To do so, use your `sns-quill` principal `identityDevNeuron`
@@ -167,7 +167,7 @@ in pre-decentralization-sale mode.
 For example, you can submit and vote for a proposal to change some of the SNS parameters
 by following the instructions in [Step](#7-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
-<!--#### 13. Test user-experience.-->
+#### 13. Test user-experience.
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
