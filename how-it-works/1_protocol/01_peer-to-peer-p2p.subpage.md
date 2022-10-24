@@ -24,16 +24,46 @@ Clearly, assuming an asynchronous network makes protocols building on top more c
 
 ## Adverts
 
-Guaranteeing the eventual delivery of broadcasts to all nodes in the subnet is achieved by a node providing a received or generated message to all its connected peers. However, doing so in a naïve way by simply forwarding the message to all peers would result in nodes receiving as many copies of the same message as they have peers, which unnecessarily consumes networking bandwidth and reduces the achieveable throughput of the subnet.
+Ensuring the eventual delivery of broadcasts to all nodes in the subnet is achieved by a node providing a received or protocol-generated message to all its connected peers.
+However, doing so in a naïve way by simply forwarding the message to all peers would result in nodes receiving as many copies of the same message as they have peers, which unnecessarily consumes networking bandwidth for transmitting deplicate messages and reduces the achieveable throughput of the subnet.
 
-This duplication of delivered artifacts in the naïve approach is mitigated by nodes sending *adverts* for artifacts to their peers instead of sending the artifacts themselves. An advert specifies its corresponding artifact, but is a small message only containing the hash of the artifact to uniquely refer to it and some additional metadata. Only adverts for artifacts are sent (pushed) to peers by a node. A node then requests each artifact only once from one of its peers that have advertised the artifact through an advert. For artifacts that are larger than the advert size, this saves bandwidth on the network connections between the peers – the larger the artifacts are, the more bandwidth is saved with the advert-based approach.
+This duplication of delivered artifacts in the naïve approach is mitigated by nodes sending *adverts* for artifacts to their peers instead of sending the artifacts themselves.
+An advert specifies its corresponding artifact, but is a small message only containing the hash of the artifact to unambiguously refer to it and some additional metadata.
+Only adverts for artifacts are sent (pushed) to all its peers by a node.
+A node receiving adverts then requests each artifact only once from one of its peers that has advertised the artifact through an advert.
+For artifacts that are larger than the advert size, this saves bandwidth on the network connections between the peers – the savings grow with increasing size of the artifacts.
 
-## Overlay Network Topology
+## Prioritization of Artifacts
 
-In subnets up to a certain size, it is practical that each node be connected to each other node of the subnet, i.e., having all the other nodes as peers. In very large subnets, this full connectivity is not practical as it would result in too large a number of messages being communicated for a single broadcast of an artifact.
+The P2P layer allows the prioritization of artifacts such that the more crucial artifacts are broadcast throughout the subnet nodes more quickly than the others.
+Prioritizing some artifacts over others is important to ensure that the protocol can always make progress and not be starved of network bandwidth for "less important" traffic.
+This principle is well known from traditional networking and applies equally well to a blockchain system.
 
-In the future, we address this challenge by implementing an overlay network that is more sparse than the fully connected subnet. Broadcasts through gossip is implemented in this overlay network instead of the fully connected subnet, thereby leading to a greatly reduced number of messages. The overlay network is randomly created with properties that ensure with high probability that nodes cannot be *eclipsed* by only being connected to adversarial nodes.
-The overlay network structure is recomputed periodically in order to prevent adaptive eclipse attacks where an adversary over time corrupts an increasing number of nodes.
+## Sparse Overlay Network Topology
+
+In subnets up to a certain size, it is practical that each node be connected to each other node of the subnet in terms of the peer relationship, i.e., each node having all the other nodes as its peers.
+In large subnets, however, this full connectivity is neither practical nor desirable as it results in too large a number of messages being communicated for a single broadcast of an artifact.
+
+In the future, we will address this challenge by implementing an overlay network that is more sparse than the fully connected subnet. Broadcasts through gossip is implemented in this overlay network instead of the fully connected subnet, thereby leading to a greatly reduced number of messages.
+The overlay network is randomly created with properties that ensure, with high probability, that nodes cannot be *eclipsed* by only being connected to adversarial nodes.
+The overlay network structure can be recomputed periodically in order to prevent adaptive eclipse attacks where an adversary over time corrupts an increasing number of nodes.
+
+## Implementation Architecture
+
+The P2P layer's implementation architecture uses the concept of *artifact pools* for keeping track of received and to-be-broadcast artifacts.
+An artifact pool has a *validated* and an *unvalidated* component, containing artifacts that have been validated by the upper protocol layer of the node or that are still unvalidated, respectively.
+Whenever the P2P layer receives an artifact from another node, it becomes part of an unvalidated pool.
+P2P then requests its validation from components in a higher protocol layer, and once validated, the artifact is moved to a validated pool.
+Artifacts generated by the protocol on the node immediately are placed into a validated pool, as being generated by the protocol makes them implicitly validated.
+
+The implementation uses *adverts queues* to track received adverts, a *requested queue* to track which artifacts are currently being downloaded, and a *receive check* data structure that tracks which artifacts have been downloaded already.
+Those data structures help realize an effective advert-based gossip protocol supporting artifact priorities.
+
+Each node maintains multiple parallel open connections to each of its peers to better utilize the available network bandwidth.
+Each connection can be throttled to avoid one component at a higher layer monopolizing network bandwidth.
+
+The architecture and implementation of the P2P layer facilitates high throughput, e.g., by using parallel data streams between peers to download artifacts, bandwidth management for connections, and prioritization to favour more important artifacts over less important ones.
+High througpht is valued higher than low latency, as it is crucial for obtaining a system that will be able to rival public cloud in the future.
 
 ## Go Even Deeper
 

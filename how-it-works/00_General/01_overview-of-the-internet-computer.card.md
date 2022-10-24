@@ -14,7 +14,7 @@ Each subnet hosts smart contracts, called *canister smart contracts*, or just *c
 New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional architectures such as public clouds scale out.
 Such a scale-out architecture is unique in the blockchain space and allows for limitless scaling.
 
-A canister can send messages to canisters on the same or different subnets, thereby realizing interactions between canister smart contracts.
+A canister smart contract can send messages to canisters on the same or different subnets, thereby realizing interactions between canister smart contracts.
 The secure *asynchronous cross-subnet (xnet) communication* between canisters and the resulting loose coupling of subnets is one of the key principles that unlock the scalability of the IC by means of adding new subnets.
 The asynchronous communication between canister smart contracts is also a major difference to most other blockchains in terms of the programming model.
 
@@ -25,9 +25,9 @@ The IC protocol relies heavily on *chain-key cryptography*, a toolbox of advance
 Governance of the IC is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, the *Network Nervous System (NNS)*.
 Each individual dApp on the IC can receive its own governance similar to the NNS by deploying and customizing a *Service Nervous System (SNS)* for the dApp – without any programming.
 
-You can learn more about how the Internet Computer works in the following sections on this page.
-
 The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
 Since then, it has been growing by receiving new nodes and new subnets being created from the nodes.
+
+You can learn more about how the Internet Computer works in the following sections on this page.
 
 [Go deeper](/how-it-works/architecture-of-the-internet-computer/)
