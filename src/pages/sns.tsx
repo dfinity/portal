@@ -177,9 +177,9 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 All parts of such applications are owned and governed by an SNS
-                DAO. This is in contrasts to existing DAOs whereby governance
-                applies only to smart contract logic, which is just a small part
-                of any web3 application.{" "}
+                DAO. This contrasts to existing DAOs where governance
+                is limited to the small part of their web3 application, which
+                is smart contract logic.{" "}
                 <span className="italic">No single entity owns a dapp.</span>
               </motion.p>
             </Card>
@@ -250,7 +250,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Turn your App into a dApp with an SNS
+              Turn Your App into a dApp with an SNS
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
@@ -380,7 +380,7 @@ function SnsPage() {
                   Not an ICO
                 </h3>
                 <p className="tw-paragraph mb-10">
-                  No funds are handed over to developers. The creation of an SNS
+                  No funds are directly handed over to developers. The creation of an SNS
                   is initiated by a decentralized entity (
                   <Link
                     className="text-infinite underline hover:no-underline hover:text-black"
@@ -396,7 +396,7 @@ function SnsPage() {
                 </h3>
                 <p className="tw-paragraph">
                   This is not a liquidity exit or a public listing. It’s the
-                  start of a new journey where you as the initial creator and
+                  start of a new journey where you as the initial creator of a service and
                   your users have the opportunity to form a digital community,{" "}
                   <strong>100% on-chain</strong>, to co-evolve and grow the
                   platform or application.
@@ -420,10 +420,9 @@ function SnsPage() {
                   prose-li:bg-[url('/img/checkmark.svg')] prose-li:bg-no-repeat prose-li:bg-left-top prose-li:pl-8 prose-li:my-3 prose-li:leading-6
                   "
               >
-                <h3>Decentralization Sale</h3>
                 <p>
                   Funds are put in a treasury, a portion of which is allocated
-                  to the founders in the form of locked neurons for developing a
+                  to the founders in the form of locked tokens in voting neurons for developing a
                   service. Launching an SNS DAO requires the following:
                 </p>
                 <ul>
