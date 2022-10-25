@@ -6,11 +6,14 @@ title: Execution Layer
 
 # Execution layer
 
-The execution layer, the topmost layer of the core IC protocol stack, is responsible for executing canister messages and running queries.
-This layer implements a Web Assembly (Wasm) virtual machine to execute canister smart contracts implemented in Wasm.
-Execution of Wasm code is invoked by message routing whenever a canister message is scheduled for execution.
-In every round, each node of a subnet has the same starting state, which is transformed to the ending state of the round through the executed messages.
-Execution is completely deterministic, that is, makes exactly the same state changes on every node of the subnet.
+The execution layer, the topmost layer of the core IC protocol stack, is responsible for executing queries (the easy part) scheduling and executing canister messages (the hard part).
+It implements a Web Assembly (Wasm) virtual machine for the execution of Wasm-based canister smart contract bytecode used on the IC.
+The execution layer gets invoked by the message routing layer once the messages of the block have been inducted into the queues of the canisters on the subnet.
+Execution then deterministically executes messages, either until all messages in the canisters's queues are consumed or the cycles limit for the round has been reached, to ensure bounded round times.
+Execution of canisters is done concurrently on multiple CPU cores, which is possible due to the asynchronous messaging between canisters and each canister having its own, isolated, state.
+In every round, each node of a subnet has the same starting state, which is transformed to the ending state of the round through the execution of messages.
+Message scheduling and execution is completely deterministic, that is, makes exactly the same state changes on every node of the subnet.
 This is crucial for achieving the properties of a replicated state machine, a core property of a blockchain.
+Another powerful feature in the execution layer is the availability of an unpredictable and unbiasable random number generator, which sets apart the IC from other blockchains.
 
 [Go deeper](/how-it-works/execution-layer/)
