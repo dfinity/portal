@@ -42,7 +42,7 @@ Since there is no backend in this sample, there is not any benefit of using the 
 
 You may find generating the DFX project manuanlly is tedious and error-prone, we provide a tool named [ic-gamekit](https://github.com/dfinity/ic-gamekit) to help you on this. The tool is still in development, let us know if you have any feedback.
 
-### Deployment
+## Deployment
 The local network is started by running this command from the root of the DFX project:
 
 ```bash
