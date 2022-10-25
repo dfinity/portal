@@ -374,7 +374,7 @@ function SnsPage() {
                 <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
               </div>
             </Link>
-            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white rounded-tr-xl rounded-br-xl p-8 md:p-12">
+            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12">
               <div className="self-end">
                 <h4 className="text-razzmatazz tw-heading-7 mb-3">
                   Fully On-chain with DFINITY
