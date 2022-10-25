@@ -1,4 +1,4 @@
-# Service Nervous System
+<!--# Service Nervous System-->
 
 We assume that if you are reading this page you know what a 
 decentralized autonomous organization (DAO) is, 
@@ -15,7 +15,7 @@ What is a DAO?
 Motivation: why a DAO? 
 -->
 
-## How to get and maintain a DAO - different options
+<!--## How to get and maintain a DAO - different options-->
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
@@ -66,7 +66,7 @@ that have full flexibility of how they can evolve. Because the possibilities for
 Options 2 and 3 are unbounded, we focus on explaining the SNS in Option 1 in
 more detail.
 
-## SNS canisters
+<!--## SNS canisters-->
 The SNS consists of the following canisters: 
 the governance canister, 
 the ledger canister and archive canisters,
@@ -96,9 +96,9 @@ the _index canister_ provides a map of which transactions are relevant for a giv
 The _root canister_ is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS governs.
 
-## SNS lifecycle 
+<!--## SNS lifecycle--> 
 
-### SNS launch
+<!--### SNS launch-->
 As already described above, the SNS canister code is maintained and approved by the IC community.
 In more detail, the approved SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister (SNS-W)_.
@@ -132,7 +132,7 @@ added in later SNS versions.
 The decentralization sale and how to get an SNS including such a sale
 are described in more detail [here](./get-sns/get-sns-intro.md).
 
-### SNS management
+<!--### SNS management-->
 As mentioned, these system-provided SNSs are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS communities.
 However, there are still some maintenance tasks that have to be performed by an
