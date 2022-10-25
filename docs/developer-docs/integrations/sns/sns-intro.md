@@ -96,9 +96,8 @@ the _index canister_ provides a map of which transactions are relevant for a giv
 The _root canister_ is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS governs.
 
-<!--## SNS lifecycle--> 
-
-<!--### SNS launch-->
+<!--## SNS lifecycle
+### SNS launch-->
 As already described above, the SNS canister code is maintained and approved by the IC community.
 In more detail, the approved SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister (SNS-W)_.
