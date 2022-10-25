@@ -447,6 +447,17 @@ Integers in Rust may overflow. While such overflows lead to panics in the debug 
 
 -   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust/04_language.html#integer-overflows).
 
+### Rust: Avoid floating point arithmetic for financial information
+
+#### Security Concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to integer, this can lead to unexpected results.
+
+#### Recommendation
+
+Use fixed point numbers instead. For example, [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/). One still has to manage precision, but it is easier to reason about.
+
+
 ### For expensive calls, consider using captchas or proof of work
 
 #### Security Concern
