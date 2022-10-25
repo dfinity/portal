@@ -44,7 +44,8 @@ and the dapp that will be controlled by it.
 To provide some tips on what considerations you should not forget,
 we list a few of them on
 [this page](../../../../tokenomics/sns/predeployment-considerations.md).
-<!--### Step 2: Technical preparations--> 
+
+### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
 you are ready for the more technical preparations.
 A main goal of this step is to translate the previously defined high level
