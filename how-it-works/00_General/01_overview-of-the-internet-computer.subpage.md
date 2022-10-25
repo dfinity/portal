@@ -18,8 +18,8 @@ Each subnet hosts smart contracts, called *canister smart contracts*, or simply 
 Canisters on one subnet can send messages to canisters on the same or other subnet.
 The secure asynchronous cross-subnet (xnet) communication between canisters and the resulting loose coupling of subnets is one of the key principles that enable the scalability of the IC by means of adding new subnets.
 
-![](/img/how-it-works/subnet_architecture.png)
-Architecture: The IC is composed of subnets, each of which is an independent blockchain
+![Architecture: The IC is composed of subnets, each of which is an independent blockchain](/img/how-it-works/subnet_architecture.png "Architecture: The IC is composed of subnets, each of which is an independent blockchain"){width=300}
+*Architecture: The IC is composed of subnets, each of which is an independent blockchain*
 
 ## Canister Smart Contracts
 
