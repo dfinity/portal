@@ -9,6 +9,9 @@ slug: architecture-of-the-internet-computer
 
 The technology behind the Internet Computer (IC) has been reconceived from ground up, learning lessons from the weaknesses of earlier projects, e.g., the lack of scalability.
 The Internet Computer intends to become the World Computer, an open and secure blockchain-based network that can scale out to power humanity's computation.
+
+## Subnet Architecture
+
 The core part of the IC's architecture is its subnet architecture: The IC consists of many subnets, where each subnet is its own blockchain that operates concurrently with all the other subnets.
 New subnets can be added to scale the IC out, analogous to how public clouds scale out.
 Each subnet hosts smart contracts, called *canister smart contracts*, or simply *canisters*.
@@ -18,10 +21,34 @@ The secure asynchronous cross-subnet (xnet) communication between canisters and 
 ![](/img/how-it-works/subnet_architecture.png)
 Architecture: The IC is composed of subnets, each of which is an independent blockchain
 
+## Canister Smart Contracts
+
+Each subnet can host tens of thousands of *canister smart contracs* or simply *canisters*.
+A canister smart contract is a bundle comprising the smart contract Wasm bytecode and its storage.
+Canister smart contracts can be updated by their maintainer, which can be a single developer, a groups of developers, or a decentralized autonomous organization (DAO).
+For reasons of decentralization, it is best if a canister smart contract be maintained by a DAO in the long run.
+
+Canisters pay for the IC resources they consume in *cycles*.
+To this end, canisters need to be topped up with cycles by their maintainer or anyone else who has an interest in the canister running.
+Cycles can be acquired with the ICP token, the IC's utility token.
+One Trillion cycles can be acquired with ICP worth 1 XDR, where an XDR is a basket comprising major currencies and one XDR is roughly 1.3 USD as of Q3 2022.
+
+Canisters can hold gigabytes of memory for a low fee.
+They can serve the user interface of a dApp directly to a web browser, unlike the UI being served from public cloud as is the case in other blockchains.
+Canisters can be updated and evolve, much like regular software.
+DAO-based governance can make such upgrade process secure and decentralized.
+Using Internet Identity, canisters can authenticate users based on biometry using the WebAuthn protocol.
+
+## Governance
+
+### Platform Governance
+
 The IC is governed by a tokenized DAO, the so-called Network Nervous System (NNS).
 The NNS is implemented as a set of canister smart contracts that are deployed on a high-replication subnet.
 The NNS allows holders of the ICP governance token to make proposals and vote on those proposals.
 Accepted proposals are, depending on their type, either automatically executed by the NNS (governance proposals), or define the roadmap that the IC community is working on (motion proposals).
+
+### DApp Governance
 
 In addition to this DAO-based platform governance, dApps can be governed by an out-of-the-box deployable governance system, the Service Nervous System (SNS), which is similar to the NNS, but tailored to dApps.
 Everyone controlling a dApp, can hand over control of their dApp to a tokenized DAO by deploying and parameterizing an instance of the SNS.
@@ -33,6 +60,11 @@ Also, canisters can use gigabytes of storage for a low cost.
 
 The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
 Since then, it has been growing by new nodes being added and joined to form new subnets.
+
+## Go Even Deeper
+
+If you want to learn in more detail how the IC works and realizes the vision of a World Computer, read through the whole page and the referenced Medium articles, or watch the YouTube videos.
+If you prefer to have a single source of information, the [White Paper](https://dfinity.org/whitepaper.pdf) is highly recommended, however, note that is is a little technical at times.
 
 1. [Internet Computer Source Code](https://github.com/dfinity/ic)
 2. [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)

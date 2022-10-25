@@ -6,8 +6,8 @@ title: Execution Layer
 
 # Execution layer
 
-The execution layer, the topmost layer of the core IC protocol stack, is responsible for executing queries (the easy part) scheduling and executing canister messages (the hard part).
-It implements a Web Assembly (Wasm) virtual machine for the execution of Wasm-based canister smart contract bytecode used on the IC.
+The execution layer, the topmost layer of the core IC protocol stack, is responsible for executing queries (the easy part) and scheduling and executing canister messages (the hard part).
+The execution layer implements a Web Assembly (Wasm) virtual machine for the execution of Wasm-based canister smart contract bytecode used on the IC.
 The execution layer gets invoked by the message routing layer once the messages of the block have been inducted into the queues of the canisters on the subnet.
 Execution then deterministically executes messages, either until all messages in the canisters's queues are consumed or the cycles limit for the round has been reached, to ensure bounded round times.
 Execution of canisters is done concurrently on multiple CPU cores, which is possible due to the asynchronous messaging between canisters and each canister having its own, isolated, state.
