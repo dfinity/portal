@@ -15,6 +15,7 @@ import IconScalable from "../../static/img/sns/scalable.svg";
 import IconTokenized from "../../static/img/sns/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import ExternalLinkIcon from "@site/static/img/external-link.svg";
+import PlaySVG from "@site/static/img/svgIcons/play.svg";
 
 const MotionLink = motion(Link);
 
@@ -123,6 +124,12 @@ function SnsPage() {
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
               variants={transitions.item}
             >
+              {/* <Link
+                className="button-primary"
+                href=""
+              >
+                Join an SNS
+              </Link> */}
               <Link
                 className="button-outline"
                 href="/docs/current/tokenomics/sns/sns-intro-tokens"
@@ -177,9 +184,9 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 All parts of such applications are owned and governed by an SNS
-                DAO. This contrasts to existing DAOs where governance
-                is limited to the small part of their web3 application, which
-                is smart contract logic.{" "}
+                DAO. This contrasts to existing DAOs where governance is limited
+                to the small part of their web3 application, which is smart
+                contract logic.{" "}
                 <span className="italic">No single entity owns a dapp.</span>
               </motion.p>
             </Card>
@@ -219,14 +226,14 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                Infinitely scalable. The Internet Computer is the only blockchain
-                that can scale without bounds - it can truly serve the world.
-                Infinite scaling is possible through advanced cryptography which
-                joins many subnets together into a singular, secure blockchain.
-                This means there’s no limit to the volume of users a dapp can
-                service, and smart contracts are capable of much more than
-                simple token ledgers or financial contracts. They can serve full
-                stack web applications or dapps at web speed.{" "}
+                Infinitely scalable. The Internet Computer is the only
+                blockchain that can scale without bounds - it can truly serve
+                the world. Infinite scaling is possible through advanced
+                cryptography which joins many subnets together into a singular,
+                secure blockchain. This means there’s no limit to the volume of
+                users a dapp can service, and smart contracts are capable of
+                much more than simple token ledgers or financial contracts. They
+                can serve full stack web applications or dapps at web speed.{" "}
                 <span className="italic">
                   The Internet Computer is a world computer.
                 </span>
@@ -348,6 +355,42 @@ function SnsPage() {
           </AnimateSpawn>
         </section>
         <AnimateSpawn
+          el={motion.section}
+          variants={transitions.item}
+          className="container-10 mt-24 md:mt-30"
+        >
+          <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
+            <Link
+              className="md:w-7/10 h-full flex relative group"
+              href="https://www.youtube.com/watch?v=WxRgm6JAGpQ"
+            >
+              <img
+                src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+
+              <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
+                <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
+              </div>
+            </Link>
+            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white rounded-tr-xl rounded-br-xl p-8 md:p-12">
+              <div className="self-end">
+                <h4 className="text-razzmatazz tw-heading-7 mb-3">
+                  Fully On-chain with DFINITY
+                </h4>
+                <p className="mb-3 tw-heading-6 md:tw-heading-5">
+                  Lorem ipsum curabitur blandit tempus porttitor
+                </p>
+                <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0">
+                  Episode #2 | SNS
+                </p>
+              </div>
+            </div>
+          </div>
+        </AnimateSpawn>
+        <AnimateSpawn
+          el={motion.section}
           className="container-10 py-24 md:py-40 relative"
           variants={transitions.container}
         >
@@ -380,8 +423,8 @@ function SnsPage() {
                   Not an ICO
                 </h3>
                 <p className="tw-paragraph mb-10">
-                  No funds are directly handed over to developers. The creation of an SNS
-                  is initiated by a decentralized entity (
+                  No funds are directly handed over to developers. The creation
+                  of an SNS is initiated by a decentralized entity (
                   <Link
                     className="text-infinite underline hover:no-underline hover:text-black"
                     href="https://nns.ic0.app/"
@@ -396,10 +439,10 @@ function SnsPage() {
                 </h3>
                 <p className="tw-paragraph">
                   This is not a liquidity exit or a public listing. It’s the
-                  start of a new journey where you as the initial creator of a service and
-                  your users have the opportunity to form a digital community,{" "}
-                  <strong>100% on-chain</strong>, to co-evolve and grow the
-                  platform or application.
+                  start of a new journey where you as the initial creator of a
+                  service and your users have the opportunity to form a digital
+                  community, <strong>100% on-chain</strong>, to co-evolve and
+                  grow the platform or application.
                 </p>
               </div>
             </motion.div>
@@ -422,8 +465,9 @@ function SnsPage() {
               >
                 <p>
                   Funds are put in a treasury, a portion of which is allocated
-                  to the founders in the form of locked tokens in voting neurons for developing a
-                  service. Launching an SNS DAO requires the following:
+                  to the founders in the form of locked tokens in voting neurons
+                  for developing a service. Launching an SNS DAO requires the
+                  following:
                 </p>
                 <ul>
                   <li>An existing dapp</li>
