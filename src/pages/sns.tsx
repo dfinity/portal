@@ -182,13 +182,6 @@ function SnsPage() {
                 of any web3 application.{" "}
                 <span className="italic">No single entity owns a dapp.</span>
               </motion.p>
-              <MotionLink
-                className="link-external"
-                href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
-                variants={transitions.item}
-              >
-                Learn more
-              </MotionLink>
             </Card>
             <Card
               title="Autonomous"
@@ -206,13 +199,6 @@ function SnsPage() {
                   No single entity can stop the process.
                 </span>
               </motion.p>
-              <MotionLink
-                className="link-external"
-                href=""
-                variants={transitions.item}
-              >
-                Learn more
-              </MotionLink>
             </Card>
             <Card title="Tokenized" icon={<IconTokenized aria-hidden="true" />}>
               <motion.p
@@ -227,13 +213,6 @@ function SnsPage() {
                 promoting or participating in governance.{" "}
                 <span className="italic">No fiat required.</span>
               </motion.p>
-              <MotionLink
-                className="link-external"
-                href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
-                variants={transitions.item}
-              >
-                Learn more
-              </MotionLink>
             </Card>
             <Card title="Scalable" icon={<IconScalable aria-hidden="true" />}>
               <motion.p
@@ -252,13 +231,6 @@ function SnsPage() {
                   The Internet Computer is a world computer.
                 </span>
               </motion.p>
-              <MotionLink
-                className="link-external"
-                href="https://internetcomputer.org/features/limitless-scaling"
-                variants={transitions.item}
-              >
-                Learn more
-              </MotionLink>
             </Card>
           </div>
         </section>
