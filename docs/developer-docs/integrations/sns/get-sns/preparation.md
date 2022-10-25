@@ -116,8 +116,7 @@ An SNS is launched in the following stages:
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
 
-<!--##Getting the tools for launching an SNS {#tools}
-TODO-CLI/dfx: update wrt whether you need SNS CLI at all--> 
+<!--##Getting the tools for launching an SNS {#tools} TODO-CLI/dfx: update wrt whether you need SNS CLI at all--> 
 To set the initial parameters for your SNS, but also to test and request the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.
