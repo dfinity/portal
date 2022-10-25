@@ -175,7 +175,7 @@
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
 /docs/interface-spec/index.html /docs/current/references/ic-interface-spec
-/samples/host-unity-webgl /samples/host-a-webgame
+/docs/current/samples/host-unity-webgl /docs/current/samples/host-a-webgame
 
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!
