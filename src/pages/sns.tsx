@@ -125,7 +125,7 @@ function SnsPage() {
             >
               <Link
                 className="button-outline"
-                href="/docs/current/developer-docs/integrations/sns/sns-intro#how-to-get-and-maintain-a-dao---different-options"
+                href="/docs/current/tokenomics/sns/sns-intro-tokens"
               >
                 Launch an SNS DAO
               </Link>
