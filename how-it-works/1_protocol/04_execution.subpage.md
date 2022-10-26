@@ -74,15 +74,14 @@ The execution of a canister consumes resources of the Internet Computer, which a
 Filling up the canister with cycles is the responsibility of the maintainer, which can be a group of developers or a decentralized autonomous organization (DAO) – users do nover pay for using services on the IC.
 This resource charging model is known as *reverse gas model*.
 
-Technically, the Wasm code running in a canister gets instrumented with code that counts the executed instructions when the Wasm bytecode is installed or updated on the IC.
+Technically, the Wasm code running in a canister gets instrumented, when the Wasm bytecode is installed or updated on the IC, with code that counts the executed instructions for smart contract messageges.
 This allows for deterministically determining the exact amount of cycles to be charged for a given message being executed.
-Using Wasm as bytecode format for canister has helped greatly to reach determinism as Wasm itself is a format that is largely deterministic in its execution on a given CPU architecture.
-It is crucial that the cycles charging be deterministic so that every node charges exactly the same amount of cycles for a given operation and that the replicated state machine properties of the subnet are maintained.
+Using Wasm as bytecode format for canister has helped greatly to reach determinism as Wasm itself is a format that is largely deterministic in its execution.
+It is crucial that the cycles charging be completely deterministic so that every node charges exactly the same amount of cycles for a given operation and that the replicated state machine properties of the subnet are maintained.
 
 The memory the canister uses in terms of both its Wasm code and canister state needs to be paid for with cycles as well.
 Much like in public cloud, consumed storage is charged for per time unit.
 Compared to other blockchains, it is very inexpensive to store data on the IC.
-
 Furthermore, networking activities such as receiving ingress messages, sending xnet messages, and making HTTPS Outcalls to Web 2.0 servers are paid for in cycles by the canister.
 
 Pricing for a resource on the IC is extremely competitive.

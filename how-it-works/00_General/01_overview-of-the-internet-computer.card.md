@@ -6,13 +6,14 @@ title: Architecture of the Internet Computer
 
 # Architecture of the Internet Computer
 
-The Internet Computer implements the vision of a World Computer –  an open and secure blockchain-based network that can host all of humanity's computations in a secure and trustworthy way.
-To achieve this, the technology behind the Internet Computer (IC) had to be reconceived from ground up, learning many lessons from earlier projects that failed to create the World Computer.
+The Internet Computer implements the vision of a World Computer –  an open and secure blockchain-based network that can host all of humanity's computations in a secure and trustworthy way, witout needing to trust any single party to behave properly.
+To achieve this, the technology behind the Internet Computer (IC) had to be reconceived from ground up, learning many lessons from earlier projects that failed to create a World Computer.
 
 At a high level, the IC's architecture builds on *subnets*, or *subnetworks*: The IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets.
+A subnet is a blockchain-based *replicated state machine*, that is, a virtual machine that holds state in a secure and non-tamperable manner.
 Each subnet hosts smart contracts, called *canister smart contracts*, or just *canisters*.
-New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional architectures such as public clouds scale out.
-Such a scale-out architecture is unique in the blockchain space and allows for limitless scaling.
+New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional architectures such as public clouds scale out by adding machines.
+Such a scale-out architecture is unique in the blockchain space and allows for limitless scaling, i.e., combining the security and resiliency properties of blockchains with the scalability properties known from the public cloud.
 
 A canister smart contract can send messages to canisters on the same or different subnets, thereby realizing interactions between canister smart contracts.
 The secure *asynchronous cross-subnet (xnet) communication* between canisters and the resulting loose coupling of subnets is one of the key principles that unlock the scalability of the IC by means of adding new subnets.
@@ -23,11 +24,11 @@ Besides this core protocol, there is much more that is needed to build and run t
 The *chain-evolution* parts of the IC protocol enable the long-term operation of the system, e.g., by allowing new nodes to securely and efficiently join a subnet or faulty nodes to securely be replaced.
 The IC protocol relies heavily on *chain-key cryptography*, a toolbox of advanced cryptographic mechanisms that power the Internet Computer.
 Governance of the IC is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, the *Network Nervous System (NNS)*.
-Each individual dApp on the IC can receive its own governance similar to the NNS by deploying and customizing a *Service Nervous System (SNS)* for the dApp – without any programming.
+Each individual dApp on the IC can receive its own governance system similar to the NNS by deploying and customizing a *Service Nervous System (SNS)* for the dApp – without any programming by the dApp developers, but only SNS customization.
 
 The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
-Since then, it has been growing by receiving new nodes and new subnets being created from the nodes.
+Since then, it has been growing substantially by receiving new nodes and new subnets being created from those nodes.
 
-You can learn more about how the Internet Computer works in the following sections on this page.
+You can learn more about how the Internet Computer works and realizes the vision of a World Computer in the remainder of this page.
 
-[Go deeper](/how-it-works/architecture-of-the-internet-computer/)
+[Go deeper into the architecture](/how-it-works/architecture-of-the-internet-computer/)

@@ -13,15 +13,18 @@ Message routing is the lower of the two upper layers of the protocol stack.
 It implements multiple functionalities crucial for the operation of the IC, some of them hinted at by the layer's name.
 The functionality groups of message routing are the following:
 * Routing of inter-canister messages within an between subnets (from this functionality, the name of the layer is derived);
+* Induction of messages received in blocks from consensus;
+* Invocation of the execution layer;
 * Certification of the state of the subnet;
 * Synchronization of the state of the subnet.
 
 Note that, although the layer derives its name from the functionality of routing messages, all the functionalities in this group are equally important for the functioning of the IC.
+Particularly, the functionalities of state certification and synchronization are used for chain-evolution functionality such as resumption of nodes.
 
 ## Message Processing
 
 Whenever consensus produces a finalized block of messages, that is, a block that has been considered correct (notarized) and finalized by at least two thirds of the subnet's nodes, this block is handed over to message routing.
-This marks exactly the transition between the lower and upper half of the protocol stack: The lower two layers are responsible for agreeing among all nodes in the subnet in each round on a block of messages to be executed.
+This marks exactly the transition between the lower and upper half of the protocol stack: The lower two layers are responsible for agreeing, in each round, among all nodes in the subnet on a block of messages to be executed.
 On every node, this block, once found (i.e., proposed, notarized, and finalized), is handed over to the implementation of the message routing layer on this node.
 
 Once message routing receives a block of messages – recall that a block comprises both ingress messages submitted by users and xnet messages sent by canisters on other subnets, the messages are extracted from the block and each message is placed into the input queue of its target canister.
