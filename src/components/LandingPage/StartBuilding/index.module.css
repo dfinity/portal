@@ -1,408 +1,421 @@
 .main {
-    position: relative;
-    padding: 100px 0;
+  position: relative;
+  padding: 100px 0;
 }
 .anchor {
-    display: block;
-    position: absolute;
-    margin-top: -80px;
-    padding-bottom: 80px;
-    visibility: hidden;
+  display: block;
+  position: absolute;
+  margin-top: -80px;
+  padding-bottom: 80px;
+  visibility: hidden;
 }
 .headerContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .callToActionContainer {
-    width: Min(900px, 90%);
-    margin: auto;
-    position: relative;
-    padding: 200px 0 80px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  width: Min(900px, 90%);
+  margin: auto;
+  position: relative;
+  padding: 200px 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 .callToActionTitle {
-    width: Min(700px, 90%);
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 70px;
-    display: flex;
-    justify-content: center;
-    position: relative;
+  width: Min(700px, 90%);
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 70px;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .callToActionBody {
-    width: Min(700px, 90%);
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 34px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  width: Min(700px, 90%);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .actionButton {
-    margin: 12px auto 0 auto;
-    text-align: center;
-    padding: 16px 24px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
-    border: 2px solid white;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    position: relative;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  margin: 12px auto 0 auto;
+  text-align: center;
+  padding: 16px 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .actionButton:hover {
-    border: 2px solid white;
-    background-color: white;
-    color: #3B00B9;
-    text-decoration: none;
+  border: 2px solid white;
+  background-color: white;
+  color: #3b00b9;
+  text-decoration: none;
 }
 
 .BGGradient {
-    display: flex;
-    position: absolute;
-    max-width: 1440px;
-    height: 100%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: -1000;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
+  display: flex;
+  position: absolute;
+  max-width: 1440px;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1000;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
 }
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    gap: 8px;
-    margin: auto;
-    width: Min(1350px, 90%);
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 8px;
+  margin: auto;
+  width: Min(1350px, 90%);
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid #FFFFFF;
-    backdrop-filter: blur(5px);
-    box-sizing: border-box;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding: 0 64px;
-    margin: auto 0;
-    height: 258px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 64px;
+  margin: auto 0;
+  height: 258px;
 }
 
-.cardContainer, .eventContainer {
-    width: calc(50% - 4px);
+.cardContainer,
+.eventContainer {
+  width: calc(50% - 4px);
 }
 
 .motokoContainer {
-    width: 100%;
+  /* width: 100%; */
 }
 
 .darkHover:hover {
-    color: white;
-    background: var(--ifm-color-primary);
-    border: 1px solid var(--ifm-color-primary);
+  color: white;
+  background: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
 }
 
 .cardHover {
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 .cardHover:hover {
-    padding-bottom: 32px;
-    text-decoration: none;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  padding-bottom: 32px;
+  text-decoration: none;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .cardHover:hover .informationTitle,
 .cardHover:hover .informationIcon,
 .cardHover:hover .informationBody {
-    color: white;
-    text-decoration: none;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  color: white;
+  text-decoration: none;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .bodyContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex-grow: 1;
-    width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex-grow: 1;
+  width: 95%;
 }
 
 .informationTitle {
-    font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 2.75rem;
-    color: var(--ifm-color-primary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  color: var(--ifm-color-primary);
 }
 
 .informationBody {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: black;
-    width: 80%;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: black;
+  width: 80%;
 }
 
 .informationIcon {
-    color: var(--ifm-color-primary);
-    margin: auto;
-    width: 24px;
-    height: 24px;
+  color: var(--ifm-color-primary);
+  margin: auto;
+  width: 24px;
+  height: 24px;
 }
 
 .eventTitle {
-    font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 2.75rem;
-    color: white;
-    display: flex;
-    margin-bottom: 0;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  color: white;
+  display: flex;
+  margin-bottom: 0;
 }
 
 .eventDate {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: white;
-    display: flex;
-    margin-bottom: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  display: flex;
+  margin-bottom: 0;
 }
 
 .eventContainer {
-    position: relative;
-    background: url("@site/static/img/btc-integration-bg.jpg") no-repeat center center;
-    background-size: cover;
-    overflow: hidden;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  position: relative;
+  background: url("@site/static/img/btc-integration-bg.jpg") no-repeat center
+    center;
+  background-size: cover;
+  overflow: hidden;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .eventContainer .informationIcon {
-    display: none;
+  display: none;
 }
 
 .cardWhite p {
-    color: white;
+  color: white;
 }
 
 .eventContainer:hover .eventAction,
 .eventContainer:hover .eventDescription {
-    display: flex;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  display: flex;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .eventContainer:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .eventContainer:hover .eventBackground {
-    top: 0;
+  top: 0;
 }
 
 .eventBackground {
-    width: 45%;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  width: 45%;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .eventDescription {
-    display: none;
-    color: white;
-    margin: 8px 0;
+  display: none;
+  color: white;
+  margin: 8px 0;
 }
 .eventAction {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
-    display: none;
-    color: white;
-    margin: 4px 0 0 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  display: none;
+  color: white;
+  margin: 4px 0 0 0;
 }
 .eventAction svg {
-    min-width: 24px;
-    height: 24px;
-    display: inline-flex;
-    align-self: center;
-    margin: 0 8px auto 0;
+  min-width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-self: center;
+  margin: 0 8px auto 0;
 }
 
 .motokoContainer .informationTitle,
 .motokoContainer .informationBody {
-    width: Min(480px, 90%);
+  width: Min(480px, 90%);
 }
 
 .motokoContainer:hover .motokoBackground {
-    bottom: 10px;
-    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+  bottom: 10px;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
 }
 
 .motokoBackground {
-    height: 220px;
-    position: absolute;
-    bottom: -10px;
-    right: 15%;
+  height: 220px;
+  position: absolute;
+  bottom: -10px;
+  right: 15%;
 }
 
 .backgroundIcon {
-    position: absolute;
-    width: 162px;
-    height: 162px;
-    margin: auto;
-    color: white;
+  position: absolute;
+  width: 162px;
+  height: 162px;
+  margin: auto;
+  color: white;
 }
 
 .motokoIcon {
-    bottom: 0;
-    left: -100px;
+  bottom: 0;
+  left: -100px;
 }
 
 .dfinityIcon {
-    top: 50px;
-    left: -80px;
+  top: 50px;
+  left: -80px;
 }
 
 .gamingIcon {
-    top: -50px;
-    left: 200px;
+  top: -50px;
+  left: 200px;
 }
 
 .iotIcon {
-    top: 0;
-    right: 100px;
+  top: 0;
+  right: 100px;
 }
 
 .databaseIcon {
-    top: -100px;
-    right: -200px;
+  top: -100px;
+  right: -200px;
 }
 
 .socialIcon {
-    bottom: 150px;
-    right: -300px;
+  bottom: 150px;
+  right: -300px;
 }
 
 .growthIcon {
-    bottom: 10px;
-    right: -50px;
+  bottom: 10px;
+  right: -50px;
 }
 
 @media screen and (max-width: 996px) {
+  .cardContainer,
+  .eventContainer {
+    width: 100%;
+  }
 
+  .card,
+  .eventContainer {
+    height: 168px;
+    padding: 24px 32px;
+  }
 
-    .cardContainer, .eventContainer {
-        width: 100%;
-    }
+  .bodyContainer,
+  .eventContainer {
+    width: 100%;
+  }
 
-    .card, .eventContainer {
-        height: 168px;
-        padding: 24px 32px;
-    }
+  .informationTitle,
+  .eventTitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
 
-    .bodyContainer, .eventContainer {
-        width: 100%;
-    }
+  .informationTitle {
+    margin-bottom: 8px;
+  }
 
-    .informationTitle, .eventTitle {
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 32px;
-    }
+  .informationIcon {
+    width: 16px;
+    height: 16px;
+  }
 
-    .informationTitle {
-        margin-bottom: 8px;
-    }
+  .eventTitle {
+    margin-bottom: 0;
+  }
 
-    .informationIcon {
-        width: 16px;
-        height: 16px;
-    }
+  .informationBody,
+  .eventDate {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 0;
+    width: 95%;
+  }
 
-    .eventTitle {
-        margin-bottom: 0;
-    }
+  .eventBackground {
+    right: 10px;
+  }
 
-    .informationBody, .eventDate {
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 20px;
-        margin-bottom: 0;
-        width: 95%;
-    }
+  .eventContainer:hover .eventAction,
+  .eventContainer:hover .eventDescription {
+    display: none;
+  }
 
-    .eventBackground {
-        right: 10px;
-    }
+  .motokoBackground {
+    display: none;
+  }
 
-    .eventContainer:hover .eventAction, .eventContainer:hover .eventDescription {
-        display: none;
-    }
+  .backgroundIcon {
+    display: none;
+  }
 
-    .motokoBackground {
-        display: none;
-    }
+  .callToActionContainer {
+    padding: 24px 0 64px 0;
+  }
 
-    .backgroundIcon {
-        display: none;
-    }
+  .callToActionTitle {
+    font-size: 24px;
+    line-height: 32px;
+  }
 
-    .callToActionContainer {
-        padding: 24px 0 64px 0;
-    }
+  .callToActionBody {
+    font-size: 18px;
+    line-height: 28px;
+  }
 
-    .callToActionTitle {
-        font-size: 24px;
-        line-height: 32px;
-
-    }
-
-    .callToActionBody {
-        font-size: 18px;
-        line-height: 28px;
-    }
-
-    .actionButton {
-        font-size: 14px;
-        line-height: 22px;
-        padding: 14px 20px;
-    }
-    .anchor {
-        margin-top: -80px;
-        padding-bottom: 80px;
-    }
+  .actionButton {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 14px 20px;
+  }
+  .anchor {
+    margin-top: -80px;
+    padding-bottom: 80px;
+  }
 }
 
 @media screen and (max-width: 1150px) {
-    .BGGradient {
-        left: -250px;
-    }
+  .BGGradient {
+    left: -250px;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    .BGGradient {
-        width: 850px;
-    }
+  .BGGradient {
+    width: 850px;
+  }
 }

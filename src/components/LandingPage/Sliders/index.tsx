@@ -82,7 +82,7 @@ const Sliders = () => {
 
   return (
     <AnimateSpawn
-      className="container-12"
+      className="container-12 my-30"
       el={motion.section}
       variants={transitions.item}
     >

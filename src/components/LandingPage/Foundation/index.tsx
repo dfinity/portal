@@ -123,41 +123,6 @@ function Foundation() {
         ref={divRef}
         className={styles.container}
       >
-        {frontLayerMembers.map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: frontLayerOffset }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {middleLayerMembers.map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: middleLayerOffset }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        {backLayerMembers.map((member) => (
-          <motion.div
-            className={styles.teamPhotoContainer}
-            key={member.name}
-            style={{ y: backLayerOffset }}
-          >
-            <img src={member.photo + "?w=120"} alt={member.name} />
-          </motion.div>
-        ))}
-        <img
-          src={
-            require("../../../../static/img/Foundation/teamPhotoMobile1.png")
-              .default
-          }
-          alt=""
-          className={styles.teamPhotoMobile1}
-        />
         <motion.div variants={transitions.item} className={styles.title}>
           Blockchain’s largest R&D operation
         </motion.div>
@@ -214,7 +179,7 @@ function Foundation() {
           ))}
         </div>
       </motion.div>
-      <motion.div variants={transitions.item} className={styles.cards}>
+      {/* <motion.div variants={transitions.item} className={styles.cards}>
         {cards.map((card) => (
           <Card
             key={card.link}
@@ -232,7 +197,7 @@ function Foundation() {
         }
         alt=""
         className={styles.teamPhotoMobile2}
-      />
+      /> */}
     </motion.div>
   );
 }

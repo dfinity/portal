@@ -62,7 +62,8 @@ function MotokoPlayground({ title, body, link }) {
       to={link}
       className={clsx(
         styles.card,
-        styles.motokoContainer,
+        // styles.motokoContainer,
+        styles.cardContainer,
         styles.cardHover,
         styles.darkHover
       )}
@@ -71,7 +72,7 @@ function MotokoPlayground({ title, body, link }) {
         <p className={styles.informationTitle}>{title}</p>
         <p className={styles.informationBody}>{body}</p>
       </div>
-      <img className={styles.motokoBackground} src={motokoBG} alt="" />
+      {/* <img className={styles.motokoBackground} src={motokoBG} alt="" /> */}
       <RightArrowSVG className={styles.informationIcon} />
     </Link>
   );
@@ -146,7 +147,7 @@ function StartBuilding() {
           body="Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO."
           link={"/samples"}
         />
-        <Information
+        {/* <Information
           title="Bitcoin Integration"
           body="The Internet Computer can now securely receive, hold, and send bitcoins through direct integration with the Bitcoin network. Find out how."
           link={"/bitcoin-integration"}
@@ -156,7 +157,7 @@ function StartBuilding() {
             styles.cardHover,
             styles.cardWhite,
           ]}
-        />
+        /> */}
         <MotokoPlayground
           title="Motoko Playground"
           body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
