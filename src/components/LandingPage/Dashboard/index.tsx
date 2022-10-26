@@ -9,6 +9,8 @@ import {
   getBlockCount,
   getTransactionRate,
 } from "@site/src/utils/network-stats";
+import clsx from "clsx";
+import ExternalLinkIcon from "@site/static/img/external-link.svg";
 
 const container = {
   hidden: { opacity: 0, transition: { duration: 1 } },
@@ -153,15 +155,15 @@ function Dashboard() {
         />
       </div>
       <motion.div variants={item}>
-        <Link
-          to={"https://dashboard.internetcomputer.org/"}
-          className={styles.actionButton}
-        >
-          <DashboardIcon className={styles.dashboardIcon} />
-          <span>
-            See Internet Computer stats on dashboard.internetcomputer.org
-          </span>
-        </Link>
+        <div className={styles.actionButton}>
+          <Link
+            to={"https://dashboard.internetcomputer.org/"}
+            className={"tw-heading-6 my-1 flex gap-2 md:p-4"}
+          >
+            <span>See Internet Computer stats</span>
+            <ExternalLinkIcon />
+          </Link>
+        </div>
       </motion.div>
     </motion.div>
   );
