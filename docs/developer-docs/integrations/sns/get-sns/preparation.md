@@ -1,4 +1,4 @@
-# Technical preparations for getting an SNS
+<!--# Technical preparations for getting an SNS-->
 
 After some 
 [non-technical preparations](../../../../tokenomics/sns/predeployment-considerations.md)
@@ -25,7 +25,7 @@ required
 [get an SNS in production](./get-sns-production.md).
 
 
-## Understanding the SNS Launch process {#understand-launch}
+<!--## Understanding the SNS Launch process {#understand-launch}-->
 
 For each SNS, the decentralization sale is realized in a separate
 _decentralization sale canister_ that exists during the SNS's launch,
@@ -116,7 +116,8 @@ An SNS is launched in the following stages:
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
 
-## Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
+Title h2:Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all--> 
+
 To set the initial parameters for your SNS, but also to test and request the launch
 of an SNS afterwards, you require some tools.
 Let us next learn which tools there are and how you can install them.
@@ -145,13 +146,13 @@ likely that something happens to the key but the consequences would not be that 
 :::
 
 
-## Preparing the principals needed in the initial parameters {#principals}
+<!--## Preparing the principals needed in the initial parameters {#principals}-->
 There are two kinds of principals that you need to generate or collect in preparation
 for the SNS launch: the principals that control the initial neurons and
 (at least) one principal that controls the dapp and is used to perform all the steps
 required to request an SNS.
 
-### Principals for initial neurons {#principal-initial-neurons}
+<!--### Principals for initial neurons {#principal-initial-neurons}-->
 As explained more in the next section, you can define initial neurons that exist
 right when the SNS is deployed. This includes developer neurons that are for the
 developers as well as airdrop neurons for initial investors and users.
@@ -195,7 +196,7 @@ necessary to complete all steps required during the SNS's launch.
 Let us denote the principal that you set up for your neuron and which you control
 `identityDevNeuron`. 
 
-### Principal to request the SNS
+<!--### Principal to request the SNS-->
 
 In addition to the principals above, you will need (at least) one principal to perform
 all the steps required to get an SNS. Let us assume you use just one and let us denote
@@ -214,7 +215,7 @@ for the deployment, whose key can be kept in dfx which is more efficient.
 :::
 
 
-## Setting the SNS parameters {#setting-parameters}
+<!--## Setting the SNS parameters {#setting-parameters}-->
 As mentioned above, the first step in getting an SNS is to set the parameters that
 your SNS will be launched with.
 This lets you choose many SNS settings and also lets you choose the initial 
