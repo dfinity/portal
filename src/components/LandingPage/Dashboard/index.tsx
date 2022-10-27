@@ -125,47 +125,49 @@ function Dashboard() {
     };
   }, []);
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={container}
-      className={styles.main}
-    >
-      <a className={styles.anchor} id="dashboard" />
-      <div className={styles.grid}>
-        <AnimatedStatistic
-          title="Block count"
-          currentValue={stats.blockCount}
-          tooltip={"The total number of blocks finalized since genesis."}
-          precision={0}
-        />
-        <Statistic
-          title="Smart contract memory"
-          currentValue={`$${stats.cost} GB/month`}
-          tooltip={
-            "The cost of storing 1GB of data in a canister smart contract."
-          }
-        />
-        <AnimatedStatistic
-          title="Transactions/s"
-          currentValue={stats.transactionRate}
-          tooltip={"The number of transactions being processed each second."}
-          precision={0}
-        />
-      </div>
-      <motion.div variants={item}>
-        <div className={styles.actionButton}>
-          <Link
-            to={"https://dashboard.internetcomputer.org/"}
-            className={"tw-heading-6 my-1 flex gap-2 md:p-4"}
-          >
-            <span>See Internet Computer stats</span>
-            <ExternalLinkIcon />
-          </Link>
+    <section className="bg-[#A4497F]">
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={container}
+        className={styles.main}
+      >
+        <a className={styles.anchor} id="dashboard" />
+        <div className={styles.grid}>
+          <AnimatedStatistic
+            title="Block count"
+            currentValue={stats.blockCount}
+            tooltip={"The total number of blocks finalized since genesis."}
+            precision={0}
+          />
+          <Statistic
+            title="Smart contract memory"
+            currentValue={`$${stats.cost} GB/month`}
+            tooltip={
+              "The cost of storing 1GB of data in a canister smart contract."
+            }
+          />
+          <AnimatedStatistic
+            title="Transactions/s"
+            currentValue={stats.transactionRate}
+            tooltip={"The number of transactions being processed each second."}
+            precision={0}
+          />
         </div>
+        <motion.div variants={item}>
+          <div className={styles.actionButton}>
+            <Link
+              to={"https://dashboard.internetcomputer.org/"}
+              className={"tw-heading-6 my-1 flex gap-2 md:p-4"}
+            >
+              <span>See Internet Computer stats</span>
+              <ExternalLinkIcon />
+            </Link>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   );
 }
 
