@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Features from "@site/src/components/LandingPage/Features";
@@ -23,6 +23,37 @@ import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import ItsGreen from "../components/Basics/ItsGreen";
 import Storage from "../components/LandingPage/Storage";
 
+const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
+  lines,
+  interval,
+}) => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const handle = setInterval(() => {
+      setIndex((index + 1) % lines.length);
+    }, interval);
+    return () => clearInterval(handle);
+  }, [index, interval]);
+  return (
+    <>
+      {lines.map((line, i) => (
+        <span
+          className="transition-all col-start-1 row-start-1 duration-300"
+          key={line + "_" + i}
+          style={{
+            opacity: i === index ? 1 : 0,
+            transform: `translateY(${i === index ? 0 : 100}px)`,
+          }}
+        >
+          <span className="text-transparent bg-clip-text gradient-text">
+            {line}
+          </span>
+        </span>
+      ))}
+    </>
+  );
+};
+
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   resetNavBarStyle();
@@ -37,9 +68,22 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className="w-full overflow-hidden">
+      <main className="w-full relative overflow-hidden">
+        <BrowserOnly>
+          {() => (
+            <ParticleBackground
+              width={document.body.clientWidth}
+              height={document.body.clientHeight * 2}
+              particleCount={100}
+              frameRate={30}
+              centerX={document.body.clientWidth * 0.8}
+              centerY={document.body.clientHeight * 0.4}
+              duration={12500}
+            />
+          )}
+        </BrowserOnly>
         <section className="overflow-hidden">
-          <div className="relative xl:container-12">
+          {/* <div className="relative xl:container-12">
             <div className="absolute z-[-1] -right-14 md:right-[-200px] w-[370px] md:w-[600px] md:top-[100px]">
               <img
                 src="/img/home/world.webp"
@@ -48,8 +92,8 @@ export default function Home(): JSX.Element {
               />
             </div>
             <div className="absolute z-[-1] -right-14 md:hidden w-[370px] aspect-square bg-gradient-30 from-[#F1EEF5] to-transparent"></div>
-          </div>
-          <div className="container-10 mt-80 mb-20 md:my-30">
+          </div> */}
+          <div className="container-10 mt-10 mb-20 md:my-30">
             <h1 className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-8 text-transparent bg-clip-text gradient-text md:w-6/10">
               World Computer Blockchain
             </h1>
@@ -139,10 +183,12 @@ export default function Home(): JSX.Element {
           <div className="container-10 pt-20 md:pt-30">
             <div className="md:w-5/10">
               <h2 className="tw-heading-3 md:tw-heading-2">
-                <span className="text-transparent bg-clip-text gradient-text">
-                  DeFi
+                <span className="grid overflow-hidden">
+                  <RotatedDappsHeadline
+                    interval={2500}
+                    lines={["DeFi", "Gaming", "NFT"]}
+                  ></RotatedDappsHeadline>
                 </span>
-                <br />
                 <span>on True Web3</span>
               </h2>
               <p className="tw-lead-sm md:tw-lead text-black-60 mb-0">
