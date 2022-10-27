@@ -19,9 +19,10 @@ Canisters on one subnet can send messages to canisters on the same or other subn
 The secure asynchronous cross-subnet (xnet) communication between canisters and the resulting loose coupling of subnets is one of the key principles that enable the scalability of the IC by means of adding new subnets.
 
 <figure>
-<img src="/img/how-it-works/subnet_architecture.png" alt="Architecture: The IC is composed of subnets, each of which is an independent blockchain" title="Architecture: The IC is composed of subnets, each of which is an independent blockchain" style="width:300px">
-<figcaption>
-The IC is composed of subnets, each of which is an independent blockchain
+<img src="/img/how-it-works/subnet_architecture.png" alt="Architecture: The IC is composed of subnets, each of which is an independent blockchain" title="The IC is composed of subnets, each of which is an independent blockchain" align="center" style="width:600px">
+<figcaption align="center">
+The IC is composed of subnets, each of which is an independent blockchain.<br>
+Canisters within and across subnets communicate through asynchronous messaging.
 </figcaption>
 </figure>
 
@@ -46,16 +47,9 @@ Using Internet Identity, canisters can authenticate users based on biometry usin
 ## Core Internet Computer Protocol
 
 Each subnet of the IC is driven by the core Internet Computer protocol (core IC protocol) an implementation of which is running on every node.
-This protocol is a 4-layer stack, comprising the peer-to-peer, consensus, message routing, and execution layers.
+This protocol consists of the following four layers: (1) The peer-to-peer, (2) consensus, (3) message routing, and (4) execution layer.
 This core IC protocol stack is running on all nodes of any subnet and drives the subnet to make progress in terms of consensus and message execution.
 Each subnet of the IC thereby is its own replicated state machine that makes progress independently of the other subnets of the IC.
-
-## Ingress Messages
-
-When a user sends a message to a canister from outside the IC, this message goes through the core IC protocol stack until it gets executed.
-Successful execution can change the state of the subnet and results in the generation of a response that is stored in a certified part of replicated state.
-The response can be retrieved by the user's client and verified for authenticity.
-This allows users to obtain certified answers to canister messages almost instantly.
 
 ## Chain-Key Cryptography
 
@@ -76,6 +70,14 @@ Chain-evolution technology refers to specific mechanims that enable the IC to op
 To this end, chain-evolution technology enables new nodes to join a subnet or nodes that have been down to catch up with the remaining part of the subnet.
 All this can be done efficiently, without a node needing to replay all messages from the start of its subnet.
 
+## Ingress Messages
+
+When a user sends a message to a canister from outside the IC, this message goes through the core IC protocol stack until it gets executed.
+Successful execution can change the state of the subnet and results in the generation of a response that is stored in a certified part of replicated state.
+The response can be retrieved by the user's client and verified for authenticity.
+This allows users to obtain certified answers to canister messages almost instantly.
+Getting an alomst-instant certified response to a request is a feature that sets apart the IC from other blockchain projects.
+
 ## Governance
 
 Governance is an aspect of blockchain decentralization that gets increasing attention.
@@ -83,16 +85,17 @@ The IC offers governance at multiple levels.
 
 ### Platform Governance
 
-The IC is governed by a tokenized DAO, the so-called Network Nervous System (NNS).
+The IC is governed by a *tokenized DAO*, the so-called *Network Nervous System (NNS)*.
 The NNS is implemented as a set of canister smart contracts that are deployed on a high-replication subnet, i.e., a subnet with many nodes and the stronger security properties derived from that.
 The NNS allows holders of the ICP governance token to make proposals and vote on those proposals.
 Accepted proposals are, depending on their type, either automatically executed by the NNS (governance proposals), or define the roadmap that the IC community is working on (motion proposals).
 
 ### DApp Governance
 
-In addition to this DAO-based platform governance, dApps can be governed by an out-of-the-box deployable governance system, the Service Nervous System (SNS), which is similar to the NNS, but tailored to dApps.
+In addition to this DAO-based platform governance, dApps can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the NNS, but tailored to governing dApps.
 Everyone controlling a dApp, can hand over control of their dApp to a tokenized DAO by deploying and parameterizing an instance of the SNS.
 The SNS implements advanced governance at the dApp level and can be used without implementing a governance system, which is revolutionary.
+Handing over control of a dApp to an instance of the SNS usually includes running a decentralization sale where funds can be raised through the sale of the dApp's governance tokens.
 
 Canister smart contracts are more powerful than the smart contracts on other blockchains.
 For example, a web browser can directly interact with a canister smart contract, without involving any public cloud for serving the web interface and assets.

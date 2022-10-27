@@ -20,8 +20,13 @@ This is the core of the blockchain-based replicated state machine functionality 
 
 We want to next give a very basic intuition on those layers, as illustrated in the following figure.
 
-[](/img/how-it-works/core_protocol_layers_annotated.png)
 Layers of the IC core protocol
+<figure>
+<img src="/img/how-it-works/core_protocol_layers_annotated.png" alt="The four layers of the core IC protocol stack." title="The four layers of the core IC protocol stack." align="center" style="width:600px">
+<figcaption align="center">
+The four layers of the core IC protocol stack.
+</figcaption>
+</figure>
 
 The lower two layers – *peer-to-peer* and *consensus* – are responsible for the *selection and ordering of messages* to be executed and ensuring that each node has the same view of what those messages are in a given round.
 The output of this lower part of the protocol stack in a round is a block comprising an ordered list of messages to be executed.

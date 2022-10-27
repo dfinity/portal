@@ -71,8 +71,8 @@ This also avoids the risk of exceeding the cycles limit allowed in an upgrade op
 ## Cycles Accounting
 
 The execution of a canister consumes resources of the Internet Computer, which are paid for with *cycles* that the canister must have been topped up with.
-Filling up the canister with cycles is the responsibility of the maintainer, which can be a group of developers or a decentralized autonomous organization (DAO) – users do nover pay for using services on the IC.
-This resource charging model is known as *reverse gas model*.
+Filling up the canister with cycles is the responsibility of its maintainer, which can be a developer, a group of developers or a decentralized autonomous organization (DAO) – users do never pay for sending messages to canisters on the IC.
+This resource charging model is known as *reverse gas model* and is a facilitator for mass adoption of the IC.
 
 Technically, the Wasm code running in a canister gets instrumented, when the Wasm bytecode is installed or updated on the IC, with code that counts the executed instructions for smart contract messageges.
 This allows for deterministically determining the exact amount of cycles to be charged for a given message being executed.
@@ -90,6 +90,7 @@ Prices for a given resource, e.g., executing Wasm instructions, scale with the r
 ## Random Number Generation
 
 The IC's execution layer has access to a decentralized pseudorandom number generator, called the *random tape*.
-The random tape is built on BLS threshold signatures, much like the random beacon used in consensus to determine the block maker ranking in a round.
-The IC's random tape provides an unpredictable and unbiasable source of random numbers that can be used to seed another pseudorandom number generator.
+The random tape is built using BLS threshold signatures, much like the random beacon in consensus to determine the block maker ranking in a round.
+The IC's random tape provides an unpredictable and unbiasable source of random numbers that can be used to seed another pseudorandom number generator in each round.
 This gives canister smart contracts access to a highly-efficient and secure random number source, which is another unique feature of the Internet Computer.
+The random tape is again an example of chain-key technology used in the core IC protocol.

@@ -15,6 +15,6 @@ Execution of canister Wasm bytecode is done concurrently on multiple CPU cores, 
 In every round, each node of a subnet has the same starting state, which is transformed to the ending state of the round through the execution of messages.
 Message scheduling and execution is completely deterministic, that is, makes exactly the same state changes on every node of the subnet.
 This is crucial for achieving the properties of a replicated state machine, a core property of a blockchain.
-Another powerful feature in the execution layer is the availability of an unpredictable and unbiasable random number generator, which sets apart the IC from other blockchains.
+Another powerful feature in the execution layer is the availability of an unpredictable and unbiasable *pseudorandom number generator*, which sets apart the IC from other blockchains.
 
 [Go deeper](/how-it-works/execution-layer/)
