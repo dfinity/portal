@@ -88,7 +88,7 @@ function StartBuilding() {
   }, [controls, inView]);
 
   return (
-    <motion.div
+    <motion.section
       ref={ref}
       animate={controls}
       initial="hidden"
@@ -164,7 +164,7 @@ function StartBuilding() {
           link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}
         />
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 }
 

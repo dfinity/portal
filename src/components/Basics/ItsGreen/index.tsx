@@ -11,7 +11,7 @@ import GreenBlur from "@site/static/img/basics/greenBlur.png";
 import Link from "@docusaurus/Link";
 import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 
-const ItsGreen = () => {
+const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0 });
   useEffect(() => {
@@ -20,7 +20,7 @@ const ItsGreen = () => {
     }
   }, [controls, inView]);
   return (
-    <section className={styles.outerContainer}>
+    <section className={styles.outerContainer} id={id}>
       <img src={GreenBlur} className={styles.BGGradient} alt="" />
 
       <motion.div
