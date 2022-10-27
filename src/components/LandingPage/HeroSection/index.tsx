@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Hero(): JSX.Element {
   return (
-    <section className="overflow-hidden" id="home">
+    <section className="overflow-hidden relative z-10" id="home">
       <div className="container-10 mt-10 mb-20 md:my-30">
         <h1 className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-8 text-transparent bg-clip-text gradient-text md:w-6/10">
           World Computer Blockchain

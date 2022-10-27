@@ -1,7 +1,7 @@
 import { css } from "@site/src/utils/dummy-css";
 import React from "react";
 
-export default () => {
+export default ({ bgColor = "var(--ifm-color-primary)" }) => {
   return (
     <style>{css`
       @media (min-width: 996px) {
@@ -15,7 +15,7 @@ export default () => {
         }
 
         nav.navbar {
-          background-color: var(--ifm-color-primary);
+          background-color: ${bgColor};
           --ifm-navbar-link-color: white;
           box-shadow: none;
         }
@@ -47,6 +47,17 @@ export default () => {
 
         nav.navbar .navbar__toggle {
           color: white;
+        }
+      }
+
+      @media (max-width: 996px) {
+        nav.navbar {
+          background-color: ${bgColor};
+          --ifm-navbar-link-color: white;
+          box-shadow: none;
+        }
+        nav.navbar .navbar__logo img {
+          content: url(/img/IC_logo_horizontal_white.svg);
         }
       }
     `}</style>
