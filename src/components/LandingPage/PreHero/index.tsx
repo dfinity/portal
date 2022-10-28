@@ -62,6 +62,7 @@ export default function PreHero({
   const [particles, setParticles] = useState<Particle[]>([]);
   const [forces, setForces] = useState<Force[]>();
   const [start, setStart] = useState(false);
+  const [animate, setAnimate] = useState(true);
 
   const wasResize = useRef(true);
 
@@ -104,6 +105,7 @@ export default function PreHero({
 
     function paint() {
       handle = requestAnimationFrame(paint);
+      if (!animate) return;
 
       const now = Date.now();
       if (now - lastUpdate < (1000 / frameRate) * 0.65) {
@@ -220,21 +222,37 @@ export default function PreHero({
     return () => {
       cancelAnimationFrame(handle);
     };
-  }, [particles, forces, setForces]);
+  }, [particles, forces, setForces, animate]);
 
   const [bgDark, setBgDark] = useState(true);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    setHeaderHeight(
+      document.querySelector("nav.navbar").getBoundingClientRect().height
+    );
+  }, []);
 
   useEffect(() => {
     function onScroll() {
-      if (window.scrollY > window.innerHeight && bgDark) {
+      if (window.scrollY > window.innerHeight - headerHeight && bgDark) {
         setBgDark(false);
-      } else if (window.scrollY < window.innerHeight && !bgDark) {
+      } else if (
+        window.scrollY < window.innerHeight - headerHeight &&
+        !bgDark
+      ) {
         setBgDark(true);
+      }
+
+      if (window.scrollY > window.innerHeight && animate) {
+        setAnimate(false);
+      } else if (window.scrollY < window.innerHeight && !animate) {
+        setAnimate(true);
       }
     }
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [bgDark]);
+  }, [bgDark, animate, headerHeight]);
 
   return (
     <section className="w-screen h-screen bg-[#1B025A]">
@@ -242,7 +260,7 @@ export default function PreHero({
         {bgDark && <DarkHeroStyles bgColor="transparent" />}
 
         <canvas
-          className="w-full h-full fixed inset-0"
+          className="w-full h-full fixed inset-0 bg-[#1B025A]"
           ref={canvasRef}
         ></canvas>
       </>

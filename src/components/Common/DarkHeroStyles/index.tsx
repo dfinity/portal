@@ -59,6 +59,9 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
         nav.navbar .navbar__logo img {
           content: url(/img/IC_logo_horizontal_white.svg);
         }
+        nav .navbar__toggle {
+          color: white;
+        }
       }
     `}</style>
   );
