@@ -12,6 +12,7 @@ import BasicsSection from "../components/LandingPage/Basics";
 import FoundationSection from "../components/LandingPage/Foundation";
 import HeroSection from "../components/LandingPage/HeroSection";
 import NextGenSection from "../components/LandingPage/NextGen";
+import PreHero from "../components/LandingPage/PreHero";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import SlidersSection from "../components/LandingPage/Sliders";
 
@@ -21,8 +22,13 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
-      <main className="w-full relative overflow-hidden">
-        <BrowserOnly>
+      <PreHero debugForces={false} paintParticles={true}></PreHero>
+
+      <main
+        className="w-full relative overflow-hidden bg-[#F1EEF5] z-[0]"
+        style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
+      >
+        {/* <BrowserOnly>
           {() => (
             <ParticleBackground
               width={document.body.clientWidth}
@@ -34,7 +40,7 @@ export default function Home(): JSX.Element {
               duration={12500}
             />
           )}
-        </BrowserOnly>
+        </BrowserOnly> */}
         <HeroSection></HeroSection>
         <BasicsSection></BasicsSection>
         <Dashboard />
