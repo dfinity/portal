@@ -305,11 +305,11 @@ div[class^="announcementBarContent"] {
 @keyframes hero-scale-in {
   from {
     opacity:0;
-    scale:0;
+    transform: scale(0);
   }
   to {
     opacity:1;
-    scale:1;
+    transform: scale(1);
   }
 }
 
