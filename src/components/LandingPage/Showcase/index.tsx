@@ -102,22 +102,25 @@ export default function ShowcaseSection(): JSX.Element {
           ))}
         </AnimateSpawn>
 
-        <div className="relative -mt-96 mb-40">
+        <div className="relative -mt-96 mb-10 md:mb-40">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}
             src={BlobGradient}
             alt=""
-            className="max-w-none w-[1200px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
+            className="max-w-none w-[800px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
           />
 
-          <div className="mt-96 pt-30 text-center flex flex-col items-center gap-6">
+          <AnimateSpawn
+            className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
+            variants={transitions.item}
+          >
             <Link className="button-primary">Join the web3 movement</Link>
             <Link className="link-white  inline-flex items-center gap-2">
               <ArrowRight></ArrowRight>
               Start coding
             </Link>
-          </div>
+          </AnimateSpawn>
         </div>
       </AnimateSpawn>
     </section>

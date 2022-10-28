@@ -1,4 +1,3 @@
-import { css } from "@site/src/utils/dummy-css";
 import React, { useEffect, useRef, useState } from "react";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import { Particle } from "./particle";
@@ -277,8 +276,14 @@ export default function PreHero({
             Reinvent the Internet
           </h1>
         </div>
+        <img
+          src="/img/home/hero-blur.svg"
+          alt=""
+          className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
+        ></img>
+
         <button
-          className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px]"
+          className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
           onClick={() => {
             document.getElementById("home").scrollIntoView();
           }}
@@ -286,11 +291,32 @@ export default function PreHero({
             animationPlayState: start ? "running" : "paused",
           }}
         >
-          <img
-            src="/img/home/scroll-down.png"
-            alt=""
-            className="w-full h-full"
-          ></img>
+          <svg
+            width="24"
+            height="38"
+            viewBox="0 0 24 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
+              stroke="url(#paint0_linear_127_29571)"
+              stroke-width="1.77"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_127_29571"
+                x1="11.5784"
+                y1="35.8937"
+                x2="11.5784"
+                y2="6.09638e-09"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" />
+                <stop offset="1" stop-color="white" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
         </button>
       </div>
     </section>

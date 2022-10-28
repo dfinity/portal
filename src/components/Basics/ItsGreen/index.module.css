@@ -64,7 +64,7 @@
 }
 @media (max-width: 996px) {
   .outerContainer {
-    padding: 240px 24px 200px;
+    padding: 240px 24px 80px;
   }
 
   .outerContainer > svg {
