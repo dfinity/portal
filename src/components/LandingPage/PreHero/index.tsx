@@ -277,6 +277,21 @@ export default function PreHero({
             Reinvent the Internet
           </h1>
         </div>
+        <button
+          className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px]"
+          onClick={() => {
+            document.getElementById("home").scrollIntoView();
+          }}
+          style={{
+            animationPlayState: start ? "running" : "paused",
+          }}
+        >
+          <img
+            src="/img/home/scroll-down.png"
+            alt=""
+            className="w-full h-full"
+          ></img>
+        </button>
       </div>
     </section>
   );
