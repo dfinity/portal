@@ -3,7 +3,7 @@ title: Canister Timers
 links:
   Forum Link: https://forum.dfinity.org/t/heartbeat-improvements-timers-community-consideration/14201/
   Proposal: https://dashboard.internetcomputer.org/proposal/88293
-eta: 2023
+eta: Q1 2023
 is_community: true
 ---
 
