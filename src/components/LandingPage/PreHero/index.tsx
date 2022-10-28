@@ -61,13 +61,14 @@ export default function PreHero({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [forces, setForces] = useState<Force[]>();
+  const [start, setStart] = useState(false);
 
   const wasResize = useRef(true);
 
   useEffect(() => {
+    setStart(true);
     canvasRef.current.width = window.innerWidth;
     canvasRef.current.height = window.innerHeight;
-    console.log(window.innerWidth, window.innerHeight);
 
     const center = new Vector2D(
       canvasRef.current.width / 2,
@@ -98,8 +99,18 @@ export default function PreHero({
   useEffect(() => {
     let handle: number;
 
+    let lastUpdate = Date.now();
+    const frameRate = 60;
+
     function paint() {
       handle = requestAnimationFrame(paint);
+
+      const now = Date.now();
+      if (now - lastUpdate < (1000 / frameRate) * 0.65) {
+        return;
+      }
+      lastUpdate = now;
+
       if (wasResize.current) {
         wasResize.current = false;
         canvasRef.current.width = window.innerWidth;
@@ -120,6 +131,7 @@ export default function PreHero({
 
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d")!;
+
       ctx.fillStyle = "rgb(30,1,94)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -225,7 +237,7 @@ export default function PreHero({
   }, [bgDark]);
 
   return (
-    <section className="w-screen h-screen">
+    <section className="w-screen h-screen bg-[#1B025A]">
       <>
         {bgDark && <DarkHeroStyles bgColor="transparent" />}
 
@@ -236,7 +248,12 @@ export default function PreHero({
       </>
       <div className="fixed inset-0 flex items-center">
         <div className="container-10 text-center">
-          <h1 className="tw-heading-3 md:tw-heading-2 text-white">
+          <h1
+            className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+            style={{
+              animationPlayState: start ? "running" : "paused",
+            }}
+          >
             Empowering People to
             <br />
             Reinvent the Internet
