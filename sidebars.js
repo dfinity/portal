@@ -555,7 +555,7 @@ const sidebars = {
     "samples/dao",
     "samples/encrypted-notes",
     "samples/token-transfer",
-    "samples/host-unity-webgl",
+    "samples/host-a-webgame",
     "samples/hackathon-projects",
   ],
 };
