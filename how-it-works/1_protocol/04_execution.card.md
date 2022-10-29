@@ -12,4 +12,4 @@ canister, the execution environment updates the state of the canister, and addit
 add messages to output queues and update the ingress history (possibly with a response to
 an earlier ingress message).
 
-- [Learn more](/how-it-works/execution/)
+- [Go deeper](/how-it-works/execution/)

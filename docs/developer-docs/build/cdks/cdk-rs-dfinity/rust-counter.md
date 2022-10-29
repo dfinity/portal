@@ -86,7 +86,7 @@ To replace the default dapp:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the template `src/rust_counter/lib.rs` file in a text editor and delete the existing content.
+2.  Open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to write a Rust dapp that declares the `COUNTER` variable and implements the `increment`, `get`, and `set` functions.
 
@@ -106,7 +106,7 @@ To update the Candid file for this tutorial:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_counter/rust_counter.did` file in a text editor, then copy and paste the following `service` definition for the `increment`, `get`, and `set` functions:
+2.  Open the `src/rust_counter_backend/rust_counter_backend.did` file in a text editor, then copy and paste the following `service` definition for the `increment`, `get`, and `set` functions:
 
     ``` did
     service : {
@@ -116,7 +116,7 @@ To update the Candid file for this tutorial:
     }
     ```
 
-3.  Save your changes and close the `rust_counter.did` file to continue.
+3.  Save your changes and close the `rust_counter_backend.did` file to continue.
 
 ## Start the local canister execution environment
 
@@ -154,19 +154,21 @@ To register, build, and deploy:
         The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
         Deploying all canisters.
         Creating canisters...
-        Creating canister "rust_counter"...
-        "rust_counter" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "rust_counter_assets"...
-        "rust_counter_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister rust_counter_backend...
+        rust_counter_backend canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
+        Creating canister rust_counter_frontend...
+        rust_counter_frontend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
         Building canisters...
-        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_counter"
+        WARN: Cannot check for vulnerabilities in rust canisters because cargo-audit is not installed. Please run 'cargo install cargo-audit' so that vulnerabilities can be detected.
+        Executing: cargo build --target wasm32-unknown-unknown --release -p rust_counter_backend --locked
         ...
             Finished release [optimized] target(s) in 53.36s
         Building frontend...
         Installing canisters...
         Creating UI canister on the local network.
         The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister rust_counter, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister rust_counter_backend, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister rust_counter_frontend, with canister ID ryjl3-tyaaa-aaaaa-aaaba-cai
         ...
         Deployed canisters.
 
@@ -185,7 +187,7 @@ To test the dapp:
 1.  Call the `get` function to read the current value of the `COUNTER` variable by running the following command:
 
     ``` bash
-    dfx canister call rust_counter get
+    dfx canister call rust_counter_backend get
     ```
 
     The command returns the current value of the `COUNTER` variable as zero:
@@ -195,7 +197,7 @@ To test the dapp:
 2.  Call the `increment` function to increment the value of the `COUNTER` variable by one:
 
     ``` bash
-    dfx canister call rust_counter increment
+    dfx canister call rust_counter_backend increment
     ```
 
     This command increments the value of the variable—changing its state—but does not return the result.
@@ -203,7 +205,7 @@ To test the dapp:
 3.  Rerun the command to call the `get` function to see the current value of the `COUNTER` variable:
 
     ``` bash
-    dfx canister call rust_counter get
+    dfx canister call rust_counter_backend get
     ```
 
     The command returns the updated value of the `COUNTER` variable as one:
@@ -215,15 +217,15 @@ To test the dapp:
     For example, try commands similar to the following to set and return the counter value:
 
     ``` bash
-    dfx canister call rust_counter set '(987)'
-    dfx canister call rust_counter get
+    dfx canister call rust_counter_backend set '(987)'
+    dfx canister call rust_counter_backend get
     ```
 
     Returns the current value of 987.
 
     ``` bash
-    dfx canister call rust_counter increment
-    dfx canister call rust_counter get
+    dfx canister call rust_counter_backend increment
+    dfx canister call rust_counter_backend get
     ```
 
     Returns the incremented value of 988.
