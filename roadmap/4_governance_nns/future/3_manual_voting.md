@@ -5,6 +5,6 @@ links:
   Proposal: https://dashboard.internetcomputer.org/proposal/38985
 is_community: true
 ---
-It is suggested to enable manual voting throughout the entire voting period of governance proposals.
+This feature enables manual voting throughout the entire voting period of governance proposals.
 
 Open point: It needs to be clarified how this would interact with wait-for-quiet. 
