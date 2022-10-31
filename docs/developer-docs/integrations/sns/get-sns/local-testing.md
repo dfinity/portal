@@ -14,23 +14,48 @@ The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
 
+:::warning
+This guide is very new and many parts of the process are still getting updated. It is likely to contain some errors.
+If you run into any problems, please report them over at [portal](https://github.com/dfinity/portal/issues)
+or propose a fix directly through the `edit this page` link at the very bottom of the page.
+:::
+
 #### 1. Prepare your principals and tools
 
-<!-- TODO-content & TODO-CLI/dfx: 
-Open terminal with dfx, ready for commands when we say "use `dfx` identity 
-`identityDevDfx`.
-For things to do with `sns-quill` will say "use `sns-quill` principal `identityDevNeuron`"
-For production, we recommend that message are signed on air-gapped computer and
-sent to IC on connected computer. For testing this does not matter that much.
-But in that case, we recommend that you use a different principal for testing and
-in production (to protect the relevant key).
+To deploy and test a local SNS, you will need the following tools:
 
-Might want to set up fake principals for some testing rounds as you want to reach majority in
-voting decisions.
+- [dfx](../../../build/install-upgrade-remove.mdx)
+- [sns-quill](https://github.com/dfinity/sns-quill)
 
-Set up NNS in such a way that can vote through proposals. Maybe one huge neuron `identityMajority`?
-Have principal w/ NNS neuron NNS identity `identityNNS`.
--->
+To install an NNS locally (which is needed to obtain an SNS), you have to run your local replica as a
+node in of a `system` subnet (as opposed to `application`, which is what all other dapps run as).
+To set your local replica to subnet type `system`, add the following definition to your `networks.json`:
+
+``` json
+{
+  "local": {
+      "bind": "127.0.0.1:8080",
+      "type": "ephemeral",
+      "replica": {
+        "subnet_type": "system"
+      }
+    }
+}
+```
+If you are unsure where `networks.json` is located, `dfx info networks-json-path` will tell you.
+
+To test the whole process properly, you also need a handful of identities.
+For local testing, we recommend you use unencrypted/plaintext .pem files to make everything a little bit easier.
+To do so, use the `--disable-encryption` flag when importing/creating an identity in dfx.
+`dfx nns install` is currently hard-coded to give a certain account ICP to start.
+Because of that, make sure you also include this identity in your testing identities so you get access to those funds:
+```
+-----BEGIN EC PRIVATE KEY-----
+MHQCAQEEICJxApEbuZznKFpV+VKACRK30i6+7u5Z13/DOl18cIC+oAcGBSuBBAAK
+oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
+74ly5xXEBNSXiENyxhEuzOZrIWMCNQ==
+-----END EC PRIVATE KEY-----
+```
 
 #### 2. Install an NNS on your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
