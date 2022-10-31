@@ -5,4 +5,4 @@ links:
   Proposal: https://dashboard.internetcomputer.org/proposal/48491
 is_community: true
 ---
-Create an index or list of all neuron ID values, accessible through the Candid Interface.
+Create an index or list of all neuron ID values, accessible through a public interface. 
