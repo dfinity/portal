@@ -1,8 +1,8 @@
 ---
-Title: Periodic Confirmation of Neuron Followees
-Links: 
-Forum: https://forum.dfinity.org/t/periodic-confirmation-of-neuron-followees/12109
-Proposal: https://dashboard.internetcomputer.org/proposal/55651
+title: Periodic Confirmation of Neuron Followees
+links: 
+  Forum Link: https://forum.dfinity.org/t/periodic-confirmation-of-neuron-followees/12109
+  Proposal: https://dashboard.internetcomputer.org/proposal/55651
 is_community: true
 ---
 This roadmap item is based on the community proposal 55651.
