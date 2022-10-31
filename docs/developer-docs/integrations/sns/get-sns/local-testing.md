@@ -56,16 +56,19 @@ oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
 74ly5xXEBNSXiENyxhEuzOZrIWMCNQ==
 -----END EC PRIVATE KEY-----
 ```
+This identity will be referred to as the `nns-ledger-default-identity` for the rest of this guide.
 
 #### 2. Install an NNS on your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
 This will allow you to test the calls to NNS that are needed to request an SNS
 launch.
-To do so, use your `dfx` identity `identityDevDfx` and
-the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
 
-<!--TODO-CLI/dfx: After we have the dfx tool, clarify whether there are other
-steps needed here! -->
+1. Run `dfx start --clean --background`
+2. Run `dfx nns install`
+3. Run `dfx nns import`
+4. Check that the default identity has ICP available.
+    1. Run `dfx identity use nns-ledger-default-identity` (or substitute the identity name with whatever name you decided to use for the pem file above)
+    2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
 
 #### 3. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the local NNS 
