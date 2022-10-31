@@ -8,8 +8,7 @@ you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
 
 We next describe how you can test the SNS launch with your chosen parameters.
-The necessary steps are very similar to the [process of getting an SNS
-in production](get-sns-production.md).
+The necessary steps are very similar to the [process of getting an SNS in production](get-sns-production.md).
 The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
