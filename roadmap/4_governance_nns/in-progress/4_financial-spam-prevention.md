@@ -6,6 +6,7 @@ links:
 eta: 2022
 is_community: true
 ---
+This roadmap item is based on the community proposal 80970.
 
 In the current voting reward set-up, there is a financial incentive for spam because the overall reward pot is always handed out and by submitting governance spam propoals you can skew the voting reward allocation. 
 
