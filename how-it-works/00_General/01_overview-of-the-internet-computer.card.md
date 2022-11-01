@@ -6,12 +6,12 @@ title: Architecture of the Internet Computer
 
 # Architecture of the Internet Computer
 
-The Internet Computer implements the vision of a World Computer –  an open and secure blockchain-based network that can host programs and data in the form of smart contracts and perform computations on smart contracts in a secure and trustworthy way, while users have to trust that only at least two thirds of hosting nodes are honest.
-To achieve this, the technology behind the Internet Computer (IC) had to be reconceived from ground up, learning many lessons from earlier projects that failed to create a World Computer.
+The Internet Computer (IC) realizes the vision of a World Computer – an open and secure blockchain-based network that can host programs and data in the form of smart contracts, perform computations on smart contracts in a secure and trustworthy way, and scale indefinitely.
+To achieve this, blockchain technology – the foundation of the IC – had to be reconceived from ground up, building on many lessons learned from earlier blockchain projects.
 
 Anyone can deploy a canister smart contract, or just canister, on the Internet Computer.
 A canister bundles Wasm program code and memory pages into a single unit.
-Canister smart contracts are executed in a replicated manner on many machines and can change the state of memory of the canister.
+Canister smart contracts are executed in a replicated, fault-tolerant manner on many machines and can change the state of memory of the canister.
 
 At a high level, the IC's architecture builds on *subnets*, or *subnetworks*: The IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets.
 A subnet is a blockchain-based *replicated state machine*, that is, a virtual machine that holds state in a secure and non-tamperable manner.
