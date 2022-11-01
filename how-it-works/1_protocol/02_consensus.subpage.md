@@ -97,17 +97,18 @@ What has been implicit above is that if there are multiple fully-notarized block
 Only in the next round which has one fully-notarized block, this block can be finalized cryptographically.
 Finalization of this block implies finalization of any not-yet finalized block below it in the blockchain.
 
-## Why is this Cool?
+## What is so Special about the IC's Consensus?
 
 The IC consensus protocol is unique in that it obtains a number of highly-desirable properties for a blockchain:
 * It is *resource efficient* in that it preserves resources by only creating and endorsing a minimum number of block proposals.
 If things go wrong on the subnet due to things like network problems or attacks or compromised nodes, then the resource consumption increases gracefully, leading to a graceful degradation of throughput and increase of latency.
 Importantly, the subnet still makes progress under such adversarial conditions and does not grind to a halt.
-* The protocol has *instant cryptographic finalization* in the asynchronous communication model.
+* The protocol has *single-slot finality*, meaning *instant cryptographic finality* in the asynchronous communication model.
 This is crucial for achieving low latency of the consensus protocol under the real-world network assumption of an asynchronus communication model.
-Assuming a synchronous communication model does not work in practice for distributed systems.
-* The protocol processes both ingress messages from users and xnet messages received from other subnets.
-The further is standard for any blockchain, however, the latter enables *secure messaging between subnets*, which is a crucial feature that allows the IC to scale essentially without limits. This is very specific to the IC and enables a new class of high-performance scalble blockchains.
+* The protocol processes both ingress messages from users and XNet messages received from other subnets.
+The further is standard for any blockchain, however, the latter enables *secure messaging between subnets*, which is a crucial feature that allows the IC to scale essentially without limits.
+Xnet messages are authenticated using chain-key cryptography by the sending subnet.
+This is very specific to the IC and enables a new class of high-performance scalable blockchains.
 
 ## Go Even Deeper
 

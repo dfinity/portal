@@ -29,7 +29,7 @@ On every node, this block, once found (i.e., proposed, notarized, and finalized)
 
 Once message routing receives a block of messages – recall that a block comprises both ingress messages submitted by users and XNet messages sent by canisters on other subnets, the messages are extracted from the block and each message is placed into the input queue of its target canister.
 This process is called *induction* and all the queues are collectively referred to as *induction pool*.
-After induction, the execution layer--the topmost layer of the core IC protocol stack--is triggered to deterministically *schedule* messages in the induction pool for execution and executing them.
+After induction, the execution layer – the topmost layer of the core IC protocol stack – is triggered to deterministically *schedule* messages in the induction pool for execution and executing them.
 The actual execution of messaging happens inside a sandbox, which can be thought of as a virtual machine responsible for the execution of canister messages.
 Message routing and execution modify the subnet state in a deterministic way, i.e., the state of the node is changed in the same way on every (honest) node of the subnet, which is crucial for achieving the replicated state machine properties of a subnet.
 The execution of a message can write to memory pages of the canister the message is executed on.
@@ -93,7 +93,7 @@ This particularly enables secure and verifiable inter-subnet communication, a cr
 
 ### Per-Checkpoint Certification
 
-Wasm code changed through canister updates and written-to ("dirty") memory pages of canisters are not certified in every round, but flagged as modified by the execution layer whenever they are written, using approaches known from operating system kernels.
+Wasm code changed through canister updates and written-to ("dirty") memory pages of canisters do not get certified in every round, but get flagged as modified by the execution layer whenever they are written, using approaches known from operating system kernels.
 At every checkpointing interval, that is, every multiple hundred rounds, which corresponds to around 10 minutes, the subnet computes a so-called checkpoint at which the state of a subnet is written to disk and certified. This allows newly joining and fallen behind nodes to join in without re-executing all blocks. 
 The state certification is done incrementally by incorporating the changes since the last checkpoint certification into the so called manifest of the previous checkpoint. The manifest can abstractly be viewed as a relatively flat Merkle tree and the incremental computation can be achieved by updating the leafs that changed and propagating changes up the tree.
 Finally, the root hash of the manifest is signed with a BLS threshold signature by the subnet, thereby certifying the entire contents of the manifest.
@@ -105,7 +105,7 @@ This is crucial as a subnet can hold terabytes of state in the future and a full
 ## State Synchronization
 
 The message routing layer implements another feature quite unique to the Internet Computer.
-As described above, every checkpointing interval, i.e., around every 10 minutes, the complete subnet state is certified by the subnet through a BLS threshold signature on a Merkle-tree-like structure--the manifest--and made available as part of a catch-up package.
+As described above, every checkpointing interval, i.e., around every 10 minutes, the complete subnet state is certified by the subnet through a BLS threshold signature on a Merkle-tree-like structure – the manifest – and made available as part of a catch-up package.
 As the name already suggests, a catch-up package allows a node to catch-up if it has fallen behind, e.g., because it was down for some time. In addition, it allows new nodes to join, e.g., if the subnet is to grow in size or a node needs to be replaced because of having been destroyed in a disaster.
 Such a node can download the latest catch-up package and validate its signature with the public subnet key.
 Once verified, the new node can download the state corresponding to the checkpoint.
