@@ -40,4 +40,4 @@ By induction, as every node makes exactly the same state transition in every rou
 
 Canister smart contracts on the same or different subnets can communicate with each other by sending messages.
 The IC core protocol handles both the inter-canister messages sent locally, i.e., on the same subnet, between canisters, and such sent across subnets.
-Local inter-canister messages do not need to go through consensus, while xnet inter-canister messages do, making the further more efficient in terms of throughput and incurring less latency.
+Local inter-canister messages do not need to go through consensus, while XNet inter-canister messages do, making the further more efficient in terms of throughput and incurring less latency.

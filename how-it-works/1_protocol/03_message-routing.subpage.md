@@ -27,7 +27,7 @@ Whenever consensus produces a finalized block of messages, that is, a block that
 This marks exactly the transition between the lower and upper half of the protocol stack: The lower two layers are responsible for agreeing, in each round, among all nodes in the subnet on a block of messages to be executed.
 On every node, this block, once found (i.e., proposed, notarized, and finalized), is handed over to the implementation of the message routing layer on this node.
 
-Once message routing receives a block of messages – recall that a block comprises both ingress messages submitted by users and xnet messages sent by canisters on other subnets, the messages are extracted from the block and each message is placed into the input queue of its target canister.
+Once message routing receives a block of messages – recall that a block comprises both ingress messages submitted by users and XNet messages sent by canisters on other subnets, the messages are extracted from the block and each message is placed into the input queue of its target canister.
 This process is called *induction* and all the queues are collectively referred to as *induction pool*.
 After induction, the execution layer--the topmost layer of the core IC protocol stack--is triggered to deterministically *schedule* messages in the induction pool for execution and executing them.
 The actual execution of messaging happens inside a sandbox, which can be thought of as a virtual machine responsible for the execution of canister messages.
@@ -37,7 +37,7 @@ Changed memory pages are tracked and at every checkpoint interval certified by t
 The execution of a message can lead to the creation of new messages targeted at other canisters.
 Such a message can be either targeted at a canister on the local subnet or another subnet.
 In the former case, execution can directly place the new message into the input of the target canister.
-In the latter case, i.e., a new message that is targeted at another subnet, the message is placed into the so-called xnet streams for the target subnet where they can be picked up by block makers of the target subnets after the streams are certified.
+In the latter case, i.e., a new message that is targeted at another subnet, the message is placed into the so-called XNet streams for the target subnet where they can be picked up by block makers of the target subnets after the streams are certified.
 
 ## Inter-Canister Messaging
 
@@ -57,10 +57,10 @@ This is the standard inter-canister messaging semantics known for the Internet C
 
 Remote inter-canister messages, that is, such sent to canisters on other subnets, are handled differently.
 A remote message is placed into the outgoing *subnet stream* for the target subnet. This routing happens at the end of the deterministic execution cycle, i.e., after execution hands back control to message routing.
-The xnet messages in the stream are certified (signed) using a Merkle-tree-style data representation, at the end of the round by the subnet using BLS threshold cryptography as part of the per-round state certification.
+The XNet messages in the stream are certified (signed) using a Merkle-tree-style data representation, at the end of the round by the subnet using BLS threshold cryptography as part of the per-round state certification.
 That is, every message in the outgoing stream is certified by the originating subnet.
-Replicas on the receiving subnet obtain the xnet message during block making (part of consensus), validate the threshold signature, and include a valid xnet message in a consensus block.
-Thanks to using a Merkle-tree-like xnet stream, parts of the stream can be consumed in a round by the receiving subnets and signatures can still be validated.
+Replicas on the receiving subnet obtain the XNet message during block making (part of consensus), validate the threshold signature, and include a valid XNet message in a consensus block.
+Thanks to using a Merkle-tree-like XNet stream, parts of the stream can be consumed in a round by the receiving subnets and signatures can still be validated.
 
 ## State Certification
 

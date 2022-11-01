@@ -28,8 +28,8 @@ Changes to memory pages are tracked and corresponding pages flagged as "dirty" s
 When a message execution leads to the generation of a new canister message targeted at a canister in the local subnet, this message can be queued up directly by execution in the input queue of the target canister and scheduled in the same round or an upcoming round, without this new message needing to go through consensus.
 This is possible because the generation and enqueuing of the new message is completely deterministic and thus happens in exactly the same way on all the nodes of the subnet – thus there is no need for this new message going through consensus.
 
-New messages targeted at other subnets are placed into the target cross-subnet queue (xnet queue) and are certified by the subnet at the end of the round as part of the per-round state certification.
-The receiving subnet can verify that the xnet messages are authenticated by the subnet by validating the signature with the originating subnet's public key.
+New messages targeted at other subnets are placed into the target cross-subnet queue (XNet queue) and are certified by the subnet at the end of the round as part of the per-round state certification.
+The receiving subnet can verify that the XNet messages are authenticated by the subnet by validating the signature with the originating subnet's public key.
 
 The execution layer is designed at its core to execute multiple canisters concurrently on different CPU cores.
 This is possible because each canister has its own isolated state and canister communication is asynchronous.
@@ -82,7 +82,7 @@ It is crucial that the cycles charging be completely deterministic so that every
 The memory the canister uses in terms of both its Wasm code and canister state needs to be paid for with cycles as well.
 Much like in public cloud, consumed storage is charged for per time unit.
 Compared to other blockchains, it is very inexpensive to store data on the IC.
-Furthermore, networking activities such as receiving ingress messages, sending xnet messages, and making HTTPS Outcalls to Web 2.0 servers are paid for in cycles by the canister.
+Furthermore, networking activities such as receiving ingress messages, sending XNet messages, and making HTTPS Outcalls to Web 2.0 servers are paid for in cycles by the canister.
 
 Pricing for a resource on the IC is extremely competitive.
 Prices for a given resource, e.g., executing Wasm instructions, scale with the replication factor of the subnet, i.e., the number of nodes that power the subnet.
