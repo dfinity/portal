@@ -362,7 +362,7 @@ function SnsPage() {
           <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
             <Link
               className="md:w-7/10 h-full flex relative group"
-              href="https://www.youtube.com/watch?v=WxRgm6JAGpQ"
+              href="https://youtu.be/5mjzq3t6AuY"
             >
               <img
                 src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
@@ -380,10 +380,10 @@ function SnsPage() {
                   Fully On-chain with DFINITY
                 </h4>
                 <p className="mb-3 tw-heading-6 md:tw-heading-5">
-                  Lorem ipsum curabitur blandit tempus porttitor
+                  Next Generation DAOs
                 </p>
                 <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0">
-                  Episode #2 | SNS
+                  Episode #2
                 </p>
               </div>
             </div>
