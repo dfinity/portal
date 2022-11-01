@@ -101,7 +101,7 @@ Canister smart contracts are more powerful than the smart contracts on other blo
 For example, a web browser can directly interact with a canister smart contract, without involving any public cloud for serving the web interface and assets.
 Also, canisters can use gigabytes of storage for a low cost.
 
-The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
+The Internet Computer was launched on May 10th 2021 by the DFINITY Foundation.
 Since then, it has been growing by new nodes being added and joined to form new subnets.
 
 ## Go Even Deeper

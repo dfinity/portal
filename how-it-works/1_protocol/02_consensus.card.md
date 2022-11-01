@@ -6,7 +6,7 @@ title: Consensus
 
 # Consensus
 
-Much like every blockchain implementation, the IC needs a consensus mechanism that helps the nodes of a subnet to agree on the messages to be processed in the next round, as well as their ordering.
+Every blockchain needs a consensus mechanism that helps the nodes to agree on the messages to be processed, as well as their ordering.
 Consensus is the component of the core IC protocol that drives the subnets of the IC.
 Each subnet is a blockchain that runs the IC core protocol including consensus independently of the other subnets.
 The purpose of the consensus protocol is to output the same block of ordered messages on each node of a subnet in a given round so that each node can make the same state transition when deterministically executing those messages.
