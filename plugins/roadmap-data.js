@@ -79,7 +79,8 @@ const RoadmapDataPlugin = async function () {
           groups: {
             deployed: getItems(path.join(baseDir, "deployed")),
             inProgress: getItems(path.join(baseDir, "in-progress")),
-            pending: getItems(path.join(baseDir, "pending")),
+            upcoming: getItems(path.join(baseDir, "upcoming")),
+            future: getItems(path.join(baseDir, "future")),
           },
         });
       }

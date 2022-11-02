@@ -22,7 +22,8 @@ export type RoadmapDomain = {
     overlay: string;
   };
   groups: {
-    pending: RoadmapItem[];
+    future: RoadmapItem[];
+    upcoming: RoadmapItem[];
     inProgress: RoadmapItem[];
     deployed: RoadmapItem[];
   };

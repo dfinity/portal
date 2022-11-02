@@ -257,7 +257,18 @@ const sidebars = {
             "developer-docs/integrations/http_requests/http_requests-how-it-works",
           ],
         },
-        "developer-docs/integrations/internet-identity/integrate-identity",
+        {
+          type: "category",
+          label: "Internet Identity",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/internet-identity/integrate-identity",
+          },
+          items: [
+            "developer-docs/integrations/internet-identity/integrate-identity",
+            "developer-docs/integrations/internet-identity/alternative-origins",
+          ],
+        },
         {
           type: "category",
           label: "ICP Ledger",
@@ -544,7 +555,7 @@ const sidebars = {
     "samples/dao",
     "samples/encrypted-notes",
     "samples/token-transfer",
-    "samples/host-unity-webgl",
+    "samples/host-a-webgame",
     "samples/hackathon-projects",
   ],
 };

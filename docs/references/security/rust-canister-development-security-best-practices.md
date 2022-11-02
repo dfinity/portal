@@ -447,6 +447,17 @@ Integers in Rust may overflow. While such overflows lead to panics in the debug 
 
 -   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust/04_language.html#integer-overflows).
 
+### Rust: Avoid floating point arithmetic for financial information
+
+#### Security Concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to integer, this can lead to unexpected results. (There is no `checked_div` for floats.)
+
+#### Recommendation
+
+Use [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/) or [`num_rational::Ratio`]( https://docs.rs/num-rational/latest/num_rational/). Decimal uses a fixed-point representation with base 10 denominators, and Ratio represents rational numbers. Both implement `checked_div` to handle division by zero, which is not available for floats. Numbers in common use like 0.1 and 0.2 can be represented more intuitively with Decimal, and can be represented exactly with Ratio. Rounding oddities like `0.1 + 0.2 != 0.3`, which happen with floats in Rust, do not arise with Decimal (see https://0.30000000000000004.com/ ). With Ratio, the desired precision can be made explicit. With either Decimal or Ratio, although one still has to manage precision, the above make arithmetic easier to reason about.
+
+
 ### For expensive calls, consider using captchas or proof of work
 
 #### Security Concern
