@@ -149,8 +149,7 @@ you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is done by an SNS proposal.
 To test this, make an SNS proposal to register your dapp canister(s).
-Then, vote with sufficiently many initial neurons (developer and airdrop
-neurons) vote on the proposal so that it is adopted.
+Then, vote with the community neuron on the proposal so that it is adopted.
 
 To submit an SNS proposal, use your `sns-quill` principal `identityDevNeuron`
 and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
@@ -184,18 +183,37 @@ and use the command explained [here](https://github.com/dfinity/sns-quill#vote-o
 
 
 #### 7. Submit an NNS proposal to start the decentralization sale.
-Note that in production at this point your dapp's control is handed over to the IC and everyone
-can make the following proposal.
-For testing this, submit an NNS proposal using your NNS identity `identityNNS`
-and the following command
+Note that in production at this point your dapp's control is handed over to the IC and everyone can make the following proposal.
+
+To create the propocal template, run `$(dfx cache show)/sns dsale create`.
+This will create a file called `dsale.yml`. Edit the file with your preferred parameters.
+As with the sns config, you can perform a basic sanity check of the parameters with:
+
+``` bash
+"$(dfx cache show)/sns" dsale validate
 ```
-<!--TODO-code: --> 
-``` 
+
+Now you can propose the decentralisation sale:
+
+``` bash
+"$(dfx cache show)/sns" dsale propose
+```
+
+In the NNS Dapp UI, go to the launchpad. Thenre, you should see the proposal.
+You may need to refresh the page until it shows up.
+
 #### 8. Adopt / reject the NNS proposal
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
-To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes
-<!-- e.g., with `identityMajority` -->
+To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes.
+As you have a huge neuron - your private network is not decentralized - your vote should be enough to pass the proposal.
+If you watch the top of the proposal status, it should change to "Executed" after no more than 30 seconds.
+
+Check the state of the swap canister:
+
+``` bash
+dfx canister call sns_swap get_state '(record {})'
+```
 
 If the proposal is adopted, the SNS decentralization sale will be
 started with the configurations that you have defined in the
