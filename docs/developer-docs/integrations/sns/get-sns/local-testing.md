@@ -14,7 +14,7 @@ environment to then be able to test the process as closely as possible to the
 process in production.
 
 :::warning
-This guide is very new and many parts of the process are still getting updated. It is likely to contain some errors.
+This guide is very new and many parts of both the guide and the tools are still getting updated. It is likely to contain some errors.
 If you run into any problems, please report them over at [portal](https://github.com/dfinity/portal/issues)
 or propose a fix directly through the `edit this page` link at the very bottom of the page.
 :::
@@ -57,28 +57,73 @@ oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
 ```
 This identity will be referred to as the `nns-ledger-default-identity` for the rest of this guide.
 
-#### 2. Install an NNS on your local testing environment.
+#### 2. Set up an NNS on your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
 This will allow you to test the calls to NNS that are needed to request an SNS
 launch.
 
 1. Run `dfx start --clean --background`
 2. Run `dfx nns install`
+    1. This command will print two URLs at the end: One for local Internet Identity and one for the local NNS dapp. Open the NNS dapp one in your browser for later.
 3. Run `dfx nns import`
-4. Check that the default identity has ICP available.
+4. Run `dfx sns import`
+5. Check that the `nns-ledger-default-identity` has ICP available.
     1. Run `dfx identity use nns-ledger-default-identity` (or substitute the identity name with whatever name you decided to use for the pem file above)
     2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
+6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the community neuron.
+    1. Log in to the NNS dapp that you opened in the browser previously. You will have to create a new anchor for this. On local instances the captcha is always `a`.
+    2. Make sure that you have a large number of ICP in your main account; Recommended are at least 500_000_000 but less is fine if you are not planning to make lots of neurons. If you need more ICP, use the "Get ICP" menu entry.
+    3. Go to the neurons tab and create a neuron. Give it a lot of ICP (e.g. 500_000_000) and an 8 year dissolve delay.
+7. You will also need a small neuron to represent yourself, the developer. 5 ICP should suffice. You will also need to add your principal as a hotkey to this developer neuron.
+    1. Log into the NNS dapp with a different new anchor (a private browser window or a different browser can be used to log into two different anchors at the same time).
+    2. Make sure that you have at least 5 ICP in your main account; if not get more with the "Get ICP" menu entry.
+    3. Go to the neurons tab and create a neuron. Give it 5 ICP and an 8 year dissolve delay.
+    4. Make a note of your neuron ID. The rest of this guide will refer to it as `DEVELOPER_NEURON_ID`.
+    5. Add one of the dfx identities as a hotkey to the neuron. This dfx identity will be referred to as `developer-identity`. To get the principal of this identity, run `dfx --identity developer-identity identity get-principal`.
+
 
 #### 3. Ask the SNS wasm modules canister to install an SNS.
-Make a call to the SNS wasm modules canister on the local NNS 
-to request that an SNS is installed.
-To make this call, use your `dfx` identity `identityDevDfx` and
-the command as described 'here'. <!--TODO-CLI/dfx-Link: -->
-Upon receiving this call, the SNS wasm modules canister will install
-an SNS with your chosen initial parameters.
-<!--TODO-CLI/dfx-Link: once tooling is clear, make sure that here automatically
-the .yaml file is used. If this is not the case, add the information how this 
-can be ensured.-->
+Make a call to the SNS wasm modules canister on the local NNS to request that an SNS is installed.
+Installing the SNS has some preconditions:
+
+1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml`.
+2. Your wallet has to be added to the whitelist of principals that are allowed to create SNSes.
+3. Your wallet contains enough cycles to create an SNS.
+
+The SNS is new and may still have significant bugs.
+To prevent huge numbers of developers giving control of their dapps to SNSs before the SNS has been tested in production, 
+access to the SNS is limited. Who gets to be one of the brave first developers is decided by the community by proposal.
+Later, when the SNS has a solid track record in production, this whitelist will be dropped.
+For local development, you can add your wallet to the whitelist using the following command:
+
+``` bash
+# This command assumes that you are using an unencrypted identity and that you are using the identity you want to deploy the SNS with.
+$(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --nns-url "https://localhost:$(dfx info replica-port)" propose-to-update-sns-deploy-whitelist --added-principals "$(dfx identity get-wallet)" --proposer "$DEVELOPER_NEURON_ID" --proposal-title "Let me SNS!" --summary "I am friendly."
+```
+
+Creating an SNS currently costs 50T cycles, and your wallet needs to supply those.
+On a local deployment, you can add any number of cycles to any canister.
+To add, say, 145T cycles to your wallet, run the following command:
+
+``` bash
+dfx ledger fabricate-cycles --canister $(dfx identity get-wallet) --t 145
+```
+
+And to check the new balance, run `dfx wallet balance`.
+
+Now that everything is set up, you can deploy the sns using `dfx sns deploy`.
+This will deploy the SNS and print some canister IDs.
+Add the printed canister IDs manually to the file `.dfx/local/canister_ids.json`.
+Then make sure you can access them with:
+
+```bash
+dfx canister id sns_root
+dfx canister id sns_governance
+dfx canister id sns_ledger
+dfx canister id sns_swap
+```
+
+And to see how many cycles the deployment cost, run `dfx wallet balance` again.
 
 #### 4. Add the SNS root canister as a controller to your dapp canister(s).
 To do so, use your `dfx` identity `identityDevDfx` and
