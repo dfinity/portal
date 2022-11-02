@@ -223,14 +223,21 @@ back to the developer principals that you
 have defined in the [initialization file](preparation.md).
 
 #### 9. Test sale participation
-After the sale has been started by the NNS, test that you can participate in the sale
-as expected.
-To do so, use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use `here` <!-- TODO: SNS quill must allow sale participation.-->
+After the sale has been started by the NNS, test that you can participate in the sale as expected.
+Return to the launchpad section in the NNS dapp and hit refresh.
+You should now see the SNS move into the "Current Launches" section.
+If you click on it, you will be able to read details about the project.
 
-To finish the sale and proceed with other testing, you can either wait for the sale 
-deadline to exceed or you can participate in the sale repeatedly until you hit the
-maximum ICP that the sale accepts.
+Note the sale start time. Wait until then, then hit refresh. You should now see an interface to buy SNS tokens.
+Buy some tokens. The sale will be complete when either the maximum investment has been reached or the sale end time is reached.
+If you use the default SNS configuration you can buy all 50 ICP.
+This is convenient for testing but in a real SNS you may wish to limit the stake so that no investor has excessive influence over the project.
+
+You can then check the neurons of the SNS:
+
+``` bash
+dfx canister call sns_governance list_neurons '(record {limit= 20})'
+```
 
 #### 10. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
 You might want to repeatedly test that you can upgrade the dapp at all stages.
@@ -242,6 +249,7 @@ To do so, you can repeat the instructions from
 
 You can also test adding new dapp canisters under the SNS control at different stages,
 by additional SNS proposals as explained in [Step 6](#6-register-the-dapp-in-the-sns).
+<!-- TODO: check for vailidty -->
 
 #### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
@@ -267,9 +275,5 @@ to do something extra to test this.-->
 
 <!--TODO-code: Would be good to test, but I think would require a dfx call to add new wasm
 to SNS-W, otherwise this is complicated?
-#### 10. Repeatedly test upgrading the SNS canister(s)
-Finally, if there are new blessed deployments of the SNS canisters, you can
-upgrade the SNS canisters by an SNS proposal.
-To make such a proposal, you can use the following dfx command:
 -->
 
