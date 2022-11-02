@@ -1,8 +1,8 @@
 ---
 title: DFX Extensions
 links:
-Forum Post:
-Proposal:
+  Forum Post:
+  Proposal:
 eta:
 is_community: true
 ---

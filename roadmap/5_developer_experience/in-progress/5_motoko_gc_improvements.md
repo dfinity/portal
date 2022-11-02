@@ -1,8 +1,8 @@
 ---
 title: Motoko Incrementing Garbage Collector
 links:
-Forum Link:
-Proposal:
+  Forum Link:
+  Proposal:
 eta: Q4 23
 is_community: false
 ---
