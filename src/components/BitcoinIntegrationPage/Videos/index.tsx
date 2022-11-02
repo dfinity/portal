@@ -63,7 +63,7 @@ function Index() {
       </div>
       <div className={"flex flex-col md:flex-row gap-5 mt-5"}>
         <a
-          href={"https://www.youtube.com/watch?v=XwpAt89vtME"}
+          href={"https://www.youtube.com/watch?v=LGegOFqP5x0"}
           target="_blank"
           className={"md:w-1/2"}
         >
@@ -79,7 +79,7 @@ function Index() {
           </div>
         </a>
         <a
-          href={"https://www.youtube.com/watch?v=XwpAt89vtME"}
+          href={"https://www.youtube.com/watch?v=H6Wu9n9Qwa8"}
           target="_blank"
           className={"md:w-1/2"}
         >
