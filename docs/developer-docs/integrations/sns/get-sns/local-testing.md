@@ -265,13 +265,7 @@ by following the instructions in [Step 6](#6-test-upgrading-the-dapp-canisters-b
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
-In particular, if you [chose to integrate some of the SNS or NNS functionality in your dapp
-frontend](../integrate-sns/frontend-integration.md), you should test this user experience. 
+In particular, if you [chose to integrate some of the SNS or NNS functionality in your dappfrontend](../integrate-sns/frontend-integration.md),
+you should test this user experience. 
 You might also want to test what the interaction would look like on the NNS frontend dapp.
-<!-- TODO: Add explanation if this comes for free in the new testing env. or if you need
-to do something extra to test this.-->
-
-<!--TODO-code: Would be good to test, but I think would require a dfx call to add new wasm
-to SNS-W, otherwise this is complicated?
--->
 
