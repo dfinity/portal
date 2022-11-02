@@ -1,5 +1,5 @@
 ---
-title: Asset Canister Improvements
+title: Asset Caching
 links:
   Forum Link:
   Proposal:
