@@ -1,3 +1,5 @@
+import { MAX_SIZE, MIN_SIZE, OPACITIES } from "./config";
+import { ShapeMap } from "./shapemap";
 import { Vector2D } from "./vector";
 
 export class Particle {
@@ -9,18 +11,9 @@ export class Particle {
     this.pos = new Vector2D(x, y);
     this.v = new Vector2D(vx, vy);
     this.size = size;
-    this.opacity = Math.random() * 0.5 + 0.5;
+    this.opacity = Math.floor(Math.random() * OPACITIES.length);
   }
 
-  static random(canvasWidth: number, canvasHeight: number): Particle {
-    return new Particle(
-      Math.random() * canvasWidth,
-      Math.random() * canvasHeight,
-      Math.random() * 2 - 1,
-      Math.random() * 2 - 1,
-      Math.random() * 12 + 1
-    );
-  }
   static randomInCircle(cx: number, cy: number, radius: number): Particle {
     const mag = Math.random() * radius;
     const angle = Math.random() * 2 * Math.PI;
@@ -29,30 +22,29 @@ export class Particle {
       cy + mag * Math.sin(angle),
       Math.random() * 2 - 1,
       Math.random() * 2 - 1,
-      Math.random() * 12 + 1
+      Math.random() * (MAX_SIZE - MIN_SIZE) + MIN_SIZE
     );
   }
 
-  draw(ctx: CanvasRenderingContext2D, color: string) {
-    ctx.fillStyle = color;
-    ctx.globalAlpha = this.opacity;
-    ctx.beginPath();
+  draw(
+    ctx: CanvasRenderingContext2D,
+    colorIndex: number,
+    shapeMap: ShapeMap,
+    canvasWidth: number,
+    canvasHeight: number
+  ) {
+    const animScale = Math.min(950, Math.min(canvasHeight, canvasWidth)) / 950;
+    const particleScale =
+      Math.min(500, Math.min(canvasHeight, canvasWidth)) / 500;
 
-    const scale =
-      Math.min(950, Math.min(ctx.canvas.height, ctx.canvas.width)) / 950;
-
-    // if (ctx.canvas.width < 750) {
-    // ctx.arc(this.pos.y, this.pos.x, this.size / 2, 0, 2 * Math.PI);
-    // } else {
-    ctx.arc(
-      (this.pos.x - ctx.canvas.width / 2) * scale + ctx.canvas.width / 2,
-      (this.pos.y - ctx.canvas.height / 2) * scale + ctx.canvas.height / 2,
-      (this.size / 2) * scale,
-      0,
-      2 * Math.PI
+    ctx.drawImage(
+      shapeMap.canvas,
+      ...shapeMap.get(colorIndex, this.opacity),
+      (this.pos.x - canvasWidth / 2) * animScale + canvasWidth / 2,
+      (this.pos.y - canvasHeight / 2) * animScale + canvasHeight / 2,
+      this.size * particleScale,
+      this.size * particleScale
     );
-    // }
-    ctx.fill();
   }
 
   update(fx: number, fy: number) {

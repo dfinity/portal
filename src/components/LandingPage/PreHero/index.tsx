@@ -1,28 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
+import { COLORS, PARTICLE_COUNT } from "./config";
 import { Particle } from "./particle";
+import { ShapeMap } from "./shapemap";
 import { Vector2D } from "./vector";
-
-const gradientStops = [
-  [252, 177, 59],
-  [192, 33, 125],
-  [47, 171, 226],
-  [252, 177, 59],
-];
-const colors: string[] = [];
-
-for (let i = 0; i < 3; i++) {
-  for (let c = 0; c <= 100; c++) {
-    const r = gradientStops[i][0] * (100 - c) + gradientStops[i + 1][0] * c;
-    const g = gradientStops[i][1] * (100 - c) + gradientStops[i + 1][1] * c;
-    const b = gradientStops[i][2] * (100 - c) + gradientStops[i + 1][2] * c;
-    colors.push(
-      `rgb(${(r / 100).toFixed()},${(g / 100).toFixed()},${(
-        b / 100
-      ).toFixed()})`
-    );
-  }
-}
 
 type Force = (pos: Vector2D) => Vector2D;
 
@@ -59,9 +40,11 @@ export default function PreHero({
 }): JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [shapeMap, setShapeMap] = useState<ShapeMap>(null);
   const [forces, setForces] = useState<Force[]>();
   const [start, setStart] = useState(false);
   const [animate, setAnimate] = useState(true);
+  const frameIndexRef = useRef(0);
 
   const wasResize = useRef(true);
 
@@ -79,7 +62,7 @@ export default function PreHero({
     );
 
     setParticles(
-      Array.from({ length: 5000 }).map(() =>
+      Array.from({ length: PARTICLE_COUNT }).map(() =>
         Particle.randomInCircle(
           canvasRef.current.width / 2,
           canvasRef.current.height / 2,
@@ -87,6 +70,8 @@ export default function PreHero({
         )
       )
     );
+
+    setShapeMap(new ShapeMap());
 
     function onResize() {
       wasResize.current = true;
@@ -102,7 +87,10 @@ export default function PreHero({
     let lastUpdate = Date.now();
     const frameRate = 60;
 
+    let perfLog: number[] = [];
+
     function paint() {
+      const start = Date.now();
       handle = requestAnimationFrame(paint);
       if (!animate) return;
 
@@ -125,26 +113,30 @@ export default function PreHero({
           getForces(center, Math.min(window.innerHeight, window.innerWidth))
         );
       }
-      const center = new Vector2D(
-        canvasRef.current.width / 2,
-        canvasRef.current.height / 2
-      );
+
+      frameIndexRef.current += 1;
 
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d")!;
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+
+      const center = new Vector2D(canvasWidth / 2, canvasHeight / 2);
 
       ctx.fillStyle = "rgb(30,1,94)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1;
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-      ctx.strokeStyle = "red";
-      ctx.fillStyle = "red";
+      if (frameIndexRef.current <= frameRate) {
+        ctx.globalAlpha = frameIndexRef.current / frameRate;
+      }
 
       if (debugColors) {
-        for (let x = 0; x < canvas.width; x += 40) {
-          for (let y = 0; y < canvas.height; y += 40) {
+        for (let x = 0; x < canvasWidth; x += 40) {
+          for (let y = 0; y < canvasHeight; y += 40) {
             const p = new Vector2D(x + 20, y + 20);
             const color =
-              colors[
+              COLORS[
                 Math.floor(
                   (Math.atan2(p.y - center.y, p.x - center.x) / Math.PI) * 150 +
                     150
@@ -155,15 +147,20 @@ export default function PreHero({
           }
         }
       } else if (paintParticles) {
-        for (const p of particles) {
+        const renderedParticleCount =
+          canvasWidth < canvasHeight
+            ? Math.floor(particles.length / 3)
+            : particles.length;
+        for (let pi = 0; pi < particles.length; pi++) {
+          const p = particles[pi];
           let force = new Vector2D(0, 0);
           for (const f of forces) {
             force.add_mut(f(p.pos));
           }
           const dy =
-            canvas.width > canvas.height
-              ? Math.max(1, Math.abs(p.pos.y - canvas.height / 2))
-              : Math.max(1, Math.abs(p.pos.x - canvas.width / 2));
+            canvasWidth > canvasHeight
+              ? Math.max(1, Math.abs(p.pos.y - canvasHeight / 2))
+              : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
           // force.mult_mut(Math.min(1, dy / 1000));
           const attenn = Math.min(1, dy / 1000);
           const dist = center.sub(p.pos).mag();
@@ -174,22 +171,21 @@ export default function PreHero({
           p.update(force.x / 100, force.y / 100);
           p.update(force.x / 100, force.y / 100);
 
-          const color =
-            colors[
-              Math.floor(
-                (Math.atan2(p.pos.y - center.y, p.pos.x - center.x) / Math.PI) *
-                  150 +
-                  150
-              )
-            ];
+          if (pi < renderedParticleCount) {
+            const color = Math.floor(
+              (Math.atan2(p.pos.y - center.y, p.pos.x - center.x) / Math.PI) *
+                150 +
+                150
+            );
 
-          p.draw(ctx, color);
+            p.draw(ctx, color, shapeMap, canvasWidth, canvasHeight);
+          }
         }
       }
 
       if (debugForces) {
-        for (let x = 0; x < canvas.width; x += 40) {
-          for (let y = 0; y < canvas.height; y += 40) {
+        for (let x = 0; x < canvasWidth; x += 40) {
+          for (let y = 0; y < canvasHeight; y += 40) {
             const p = new Vector2D(x + 20, y + 20);
             let force = new Vector2D(0, 0);
             for (const f of forces) {
@@ -197,7 +193,7 @@ export default function PreHero({
             }
 
             const dist = center.sub(p).mag();
-            const dy = Math.max(1, Math.abs(p.y - canvas.height / 2));
+            const dy = Math.max(1, Math.abs(p.y - canvasHeight / 2));
             const attenn = Math.min(1, dy / 1000);
             force.mult_mut(dist > 300 ? attenn : 1);
 
@@ -214,6 +210,13 @@ export default function PreHero({
           }
         }
       }
+
+      perfLog.push(Date.now() - start);
+      if (perfLog.length === frameRate * 3) {
+        const avg = perfLog.reduce((acc, v) => v + acc, 0) / perfLog.length;
+        console.log(`avg paint: ${avg.toFixed(2)}ms`);
+        perfLog = [];
+      }
     }
 
     handle = requestAnimationFrame(paint);
@@ -221,7 +224,7 @@ export default function PreHero({
     return () => {
       cancelAnimationFrame(handle);
     };
-  }, [particles, forces, setForces, animate]);
+  }, [particles, forces, setForces, animate, shapeMap]);
 
   const [bgDark, setBgDark] = useState(true);
   const [headerHeight, setHeaderHeight] = useState(0);
