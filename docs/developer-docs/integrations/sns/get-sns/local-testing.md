@@ -241,27 +241,25 @@ dfx canister call sns_governance list_neurons '(record {limit= 20})'
 
 #### 10. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
 You might want to repeatedly test that you can upgrade the dapp at all stages.
-As already explained in [Step7](#7-test-upgrading-the-dapp-canisters-by-sns-proposal),
+As already explained in [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal),
 you might want to test this before the decentralization sale and you might also want to test this
 during and after the decentralization sale.
 To do so, you can repeat the instructions from
-[Step 7](#7-test-upgrading-the-dapp-canisters-by-sns-proposal).
+[Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
 You can also test adding new dapp canisters under the SNS control at different stages,
-by additional SNS proposals as explained in [Step 6](#6-register-the-dapp-in-the-sns).
+by additional SNS proposals as explained in [Step 5](#5-register-the-dapp-in-the-sns).
 <!-- TODO: check for vailidty -->
 
 #### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
 For example, if some initial neurons were set up with dissolve delay zero, you can dissolve them.
-To do so, use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use `here` <!-- TODO: SNS quill documentation to use this neuron mnmt
-command.-->
+You can do that in the NNS dapp.
 
 Also, you may now test other SNS proposal types that did not work while the SNS was still
 in pre-decentralization-sale mode.
 For example, you can submit and vote for a proposal to change some of the SNS parameters
-by following the instructions in [Step](#7-test-upgrading-the-dapp-canisters-by-sns-proposal).
+by following the instructions in [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
 #### 12. Test user-experience.
 In all different stages, you should also test the user experience, e.g., how the users would
