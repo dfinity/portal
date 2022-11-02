@@ -116,8 +116,7 @@ Every chunk is authenticated through the catch-up package individually through i
 The chunking protocol is not dissimilar to the approach that Bittorrent used for downloading large files from many peers.
 
 If a node is not newly added, but only had a downtime and needs to catch up, it may still have an older checkpoint.
-In this case, only the chunks different to the local checkpoint need to be downloaded, which can significantly reduce the to-be-transferred volume.
-The catch-up package allows for determining for each state chunk whether it is available in the old snapshot and can be copied over locally from there or whether it needs to be obtained from the subnet peers.
+In this case, only the chunks different to the local checkpoint need to be downloaded, which can significantly reduce the to-be-transferred volume. Efficiently computing the diff between a new state that is to be fetched and the locally available state can again make use of the Merkle-tree-like structure of the manifest. That is, one can diff the manifest to find out the chunks of the state that differ.
 
 Once the full state corresponding to the checkpoint has been authentically downloaded, the node catches up to the current block height by processing all the blocks that have been generated in the subnet since the checkpoint and "replaying" them, i.e., executing them as it would in the normal node operation to successively make state transitions of its local state to finally reach that of the subnet.
 Thanks to the downloaded checkpoint, only few (e.g., some hundred) blocks need to be replayed, not every block from the start of the blockchain as is the case in other blockchains.
