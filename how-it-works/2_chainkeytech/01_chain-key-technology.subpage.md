@@ -22,8 +22,15 @@ While signing with threshold BLS is quite straightforward, designing a secure, d
 DFINITY has designed, analyzed, and implemented [a new DKG protocol](https://eprint.iacr.org/2021/339) that works over an *asynchronous network* and is quite *robust* (it will still produce succeed if up to a third of the nodes in a subnet are crashed or corrupt) while still delivering acceptable performance. In addition to generating a new key, this protocol can also be used to reshare an existing key. This functionality is essential to enable autonomous evolution of the IC topology as subnet membership changes over time.
 
 
-[Watch youtube video](https://www.youtube.com/watch?v=vUcDRFC09J0)
-
 [Chain Key Cryptography: The Scientific Breakthrough Behind the Internet Computer](https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28)
 
 [Integrating The Internet Computer and Bitcoin Networks](https://www.youtube.com/watch?v=TtVo3krjARI)
+
+[Video on non-interactive distributed key generation](https://www.youtube.com/watch?v=gKUi-2T7tdc)
+
+[Applied Crypto: Introducing Noninteractive Distributed Key Generation](https://medium.com/dfinity/applied-crypto-one-public-key-for-the-internet-computer-ni-dkg-4af800db869d)
+
+[NIDKG White Paper](https://eprint.iacr.org/2021/339)
+
+[![Watch youtube video](https://i.ytimg.com/vi/vUcDRFC09J0/maxresdefault.jpg)](https://www.youtube.com/watch?v=vUcDRFC09J0)
+

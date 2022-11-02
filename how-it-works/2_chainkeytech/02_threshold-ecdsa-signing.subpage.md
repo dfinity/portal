@@ -13,8 +13,6 @@ As is well known, implementing a secure and efficient threshold signing protocol
 
 DFINITY has designed, analyzed, and implemented a new threshold ECDSA signing protocol that works over an *asynchronous network* and is quite *robust* (it will still produce signatures if up to a third of the nodes in a subnet are crashed or corrupt) while still delivering acceptable performance. Papers written by DFINITY's researchers [describe the protocol in detail](https://eprint.iacr.org/2022/506) and [prove the key elements of its security](https://eprint.iacr.org/2021/1330).
 
-[Watch youtube video](https://www.youtube.com/watch?v=MulbKPwv6_s)
-
 [ECDSA White Paper](https://eprint.iacr.org/2021/1330)
 
 [ECDSA GitHub](https://github.com/ic-association/nns-proposals/blob/main/proposals/governance/20210920T1500Z.md)
@@ -22,3 +20,6 @@ DFINITY has designed, analyzed, and implemented a new threshold ECDSA signing pr
 [Motion Proposal 21340](https://dashboard.internetcomputer.org/proposal/21340)
 
 [The Internet Computer Community Adopts Threshold ECDSA Signatures Motion Proposal](https://medium.com/dfinity/the-internet-computer-community-approves-threshold-ecdsa-signatures-motion-proposal-65a0a3463492?source=friends_link&sk=db265995e31dac5ea751cd91e7b0a3b0)
+
+[![Watch youtube video](https://i.ytimg.com/vi/MulbKPwv6_s/maxresdefault.jpg)](https://www.youtube.com/watch?v=MulbKPwv6_s)
+
