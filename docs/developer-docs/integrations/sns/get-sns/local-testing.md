@@ -94,7 +94,7 @@ The SNS is new and may still have significant bugs.
 To prevent huge numbers of developers giving control of their dapps to SNSs before the SNS has been tested in production, 
 access to the SNS is limited. Who gets to be one of the brave first developers is decided by the community by proposal.
 Later, when the SNS has a solid track record in production, this whitelist will be dropped.
-For local development, you can add your wallet to the whitelist using the following command:
+For local development, you can add your wallet to the whitelist using the following command and identity `developer-identity`:
 
 ``` bash
 # This command assumes that you are using an unencrypted identity and that you are using the identity you want to deploy the SNS with.
@@ -125,22 +125,20 @@ dfx canister id sns_swap
 
 And to see how many cycles the deployment cost, run `dfx wallet balance` again.
 
-#### 4. Add the SNS root canister as a controller to your dapp canister(s).
-To do so, use your `dfx` identity `identityDevDfx` and
-the command described 'here'.
-<!-- TODO: add this to CLI/dfx tool as need to learn SNS canisters -->
-
-#### 5. Remove all controllers other than the SNS from the dapp canister(s)
-Remove yourself, as well as any other developers,
-from the list of controllers that the dapp canister(s) have.
+#### 4. Remove all controllers other than the SNS from the dapp canister(s)
+Remove yourself, as well as any other developers, from the list of controllers that the dapp canister(s) have.
 Note that without this, the next step will fail.
 
-To do this, use your `dfx` identity `identityDevDfx` and the command 'here'
-where you specify as the principals to be removed all existing controller principals
-except for the SNS root that you have already added.
-<!--TODO-CLI/dfx-Link: should already exist in DFX -->
+Using the identity `developer-identity`, run this command for every canister that is part of your dapp:
 
-#### 6. Register the dapp in the SNS
+```bash
+dfx canister update-settings --set-controller $(dfx canister id sns_root) <canister name>
+```
+
+After that, your canisters' controller should only be the sns_root canister, and nothing else.
+You can check this with the command `dfx canister info <canister name>`.
+
+#### 5. Register the dapp in the SNS
 Next, you will register the dapp canister(s) that are now controlled by the SNS
 in the SNS root canister. This is to make sure that the SNS root canister
 is aware of the canisters that it officially governs and accepts the responsibility
@@ -166,7 +164,7 @@ why you must ensure that you can reach a majority of the initial neurons and tha
 neurons are able to vote already before the decentralization sale.
 :::
 
-#### 7. Test upgrading the dapp canister(s) by SNS proposal. 
+#### 6. Test upgrading the dapp canister(s) by SNS proposal. 
 At this point, the dapp canister(s) are under control of the SNS.
 You might want to test that already at this stage, before the decentralization sale,
 it is still possible to upgrade the dapp.
@@ -185,7 +183,7 @@ and use the command explained [here](https://github.com/dfinity/sns-quill#vote-o
 <!-- TODO: SNS quill documentation to make proposal and link to it-->
 
 
-#### 8. Submit an NNS proposal to start the decentralization sale.
+#### 7. Submit an NNS proposal to start the decentralization sale.
 Note that in production at this point your dapp's control is handed over to the IC and everyone
 can make the following proposal.
 For testing this, submit an NNS proposal using your NNS identity `identityNNS`
@@ -193,7 +191,7 @@ and the following command
 ```
 <!--TODO-code: --> 
 ``` 
-#### 9. Adopt / reject the NNS proposal
+#### 8. Adopt / reject the NNS proposal
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
 To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes
@@ -206,7 +204,7 @@ If the proposal is rejected, the dapp canisters' controllers are automatically s
 back to the developer principals that you
 have defined in the [initialization file](preparation.md).
 
-#### 10. Test sale participation
+#### 9. Test sale participation
 After the sale has been started by the NNS, test that you can participate in the sale
 as expected.
 To do so, use your `sns-quill` principal `identityDevNeuron`
@@ -216,7 +214,7 @@ To finish the sale and proceed with other testing, you can either wait for the s
 deadline to exceed or you can participate in the sale repeatedly until you hit the
 maximum ICP that the sale accepts.
 
-#### 11. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
+#### 10. Repeatedly test upgrading the dapp canister(s) and adding more canisters.
 You might want to repeatedly test that you can upgrade the dapp at all stages.
 As already explained in [Step7](#7-test-upgrading-the-dapp-canisters-by-sns-proposal),
 you might want to test this before the decentralization sale and you might also want to test this
@@ -227,7 +225,7 @@ To do so, you can repeat the instructions from
 You can also test adding new dapp canisters under the SNS control at different stages,
 by additional SNS proposals as explained in [Step 6](#6-register-the-dapp-in-the-sns).
 
-#### 12. Test launched SNS.
+#### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
 For example, if some initial neurons were set up with dissolve delay zero, you can dissolve them.
 To do so, use your `sns-quill` principal `identityDevNeuron`
@@ -239,7 +237,7 @@ in pre-decentralization-sale mode.
 For example, you can submit and vote for a proposal to change some of the SNS parameters
 by following the instructions in [Step](#7-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
-#### 13. Test user-experience.
+#### 12. Test user-experience.
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
