@@ -1,7 +1,7 @@
 ---
 title: Motoko Formatter & VSCode Extension
 links:
-  Forum Link:
+  Forum Link: https://forum.dfinity.org/t/we-heard-you-motoko-vs-code-extension-improvements/15933
   Proposal:
 eta: Q4 22
 is_community: true
