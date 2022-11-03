@@ -115,8 +115,13 @@ export default function ShowcaseSection(): JSX.Element {
             className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
             variants={transitions.item}
           >
-            <Link className="button-primary">Join the web3 movement</Link>
-            <Link className="link-white  inline-flex items-center gap-2">
+            <Link className="button-primary" href="/showcase">
+              Join the web3 movement
+            </Link>
+            <Link
+              className="link-white  inline-flex items-center gap-2"
+              href="/samples"
+            >
               <ArrowRight></ArrowRight>
               Start coding
             </Link>

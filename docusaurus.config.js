@@ -13,6 +13,7 @@ const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
+const networkComparisonPlugin = require("./plugins/network-comparison");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
@@ -57,6 +58,7 @@ const config = {
     keepSymlinks,
     tailwindPlugin,
     icpPricePlugin,
+    networkComparisonPlugin,
     showcaseProjectsPlugin,
     homeShowcaseProjectsPlugin,
     liveSessionsPlugin,

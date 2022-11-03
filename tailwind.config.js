@@ -91,7 +91,7 @@ module.exports = {
     },
     fontSize: {
       // bold
-      "heading-1": ["120px", "110px"],
+      "heading-1": ["100px", "110px"],
       "heading-2": ["75px", "85px"],
       "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],

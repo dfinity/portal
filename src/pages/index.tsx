@@ -28,19 +28,6 @@ export default function Home(): JSX.Element {
         className="w-full relative overflow-hidden bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
-        {/* <BrowserOnly>
-          {() => (
-            <ParticleBackground
-              width={document.body.clientWidth}
-              height={document.body.clientHeight * 2}
-              particleCount={100}
-              frameRate={30}
-              centerX={document.body.clientWidth * 0.8}
-              centerY={document.body.clientHeight * 0.4}
-              duration={12500}
-            />
-          )}
-        </BrowserOnly> */}
         <HeroSection></HeroSection>
         <BasicsSection></BasicsSection>
         <Dashboard />

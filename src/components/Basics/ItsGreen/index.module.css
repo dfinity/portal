@@ -51,11 +51,11 @@
 .BGGradient {
   display: flex;
   position: absolute;
-  width: 2500px;
-  max-width: 2500px;
-  left: calc((100vw - 2500px) / 2);
-  right: calc((100vw - 2500px) / 2);
-  top: -600px;
+  width: 3500px;
+  max-width: 3500px;
+  left: calc((100vw - 3500px) / 2);
+  right: calc((100vw - 3500px) / 2);
+  top: -800px;
   z-index: -1000;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;

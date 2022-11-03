@@ -27,14 +27,14 @@ const showcaseProjectsPlugin = async function () {
       });
 
       const projects = [
-        await client.getEntry("39jPM6xB340R9EwXQkG48c"),
         await client.getEntry("29oxwV0MC8l47DnvJq0uOp"),
-        await client.getEntry("5gygJMEwb1ChaQcPfPbSYT"),
         await client.getEntry("3uiXoygfxuDuNvWJLuZ92h"),
+        await client.getEntry("5gygJMEwb1ChaQcPfPbSYT"),
         await client.getEntry("JlK1SKZDhwS22V0WeuVku"),
-        await client.getEntry("JlK1SKZDhwS22V0WeuVku"),
-        await client.getEntry("JlK1SKZDhwS22V0WeuVku"),
-        await client.getEntry("JlK1SKZDhwS22V0WeuVku"),
+        await client.getEntry("6yLENaXAtugiLxpaUmR2su"),
+        await client.getEntry("6M5fcQgr1PdLEGKYQiDnOw"),
+        await client.getEntry("78xMBE7r2NS9h3zpd8lPeC"),
+        await client.getEntry("1FbCGq1uvM7KXi0vtmitTm"),
       ];
 
       const transformed = projects.map((project) => {

@@ -121,10 +121,10 @@ function StartBuilding() {
           <GrowthIcon
             className={clsx(styles.backgroundIcon, styles.growthIcon)}
           />
-          <p className={styles.callToActionTitle}>Start building real Web3</p>
+          <p className={styles.callToActionTitle}>Be a pioneer of Web3</p>
           <p className={styles.callToActionBody}>
             Start a DAO, create a token, build dapps and host assets with the
-            full stack entirely on chain.
+            full stack entirely on-chain.
           </p>
           <Link className={styles.actionButton} to="/developers">
             BUILD REAL WEB3
@@ -133,34 +133,24 @@ function StartBuilding() {
       </div>
       <motion.div variants={transitions.item} className={styles.cards}>
         <Information
-          title="Developer’s Home"
-          body="Engage with the IC community to shape future features, propose new ideas, and ask questions."
-          link={"/developers"}
+          title="Dev Forum"
+          body="Engage with the ICP community to shape future features, propose new ideas, and ask questions. "
+          link={"https://forum.dfinity.org"}
         />
         <Information
-          title="Documentation"
-          body="Explore concepts, the architecture and technical breakthroughs that enable the IC. Find step-by-step guides such as how to stake your tokens."
+          title="Dev Docs"
+          body="Get to know the concepts,  architecture and technical breakthroughs that enable the ICP. Plus step-by-step guides on how to stake your tokens, and more."
           link={"/docs/current/developer-docs/ic-overview"}
         />
         <Information
           title="Sample Code"
-          body="Learn how to build on the IC by exploring samples ranging from a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO."
+          body="From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer."
           link={"/samples"}
         />
-        {/* <Information
-          title="Bitcoin Integration"
-          body="The Internet Computer can now securely receive, hold, and send bitcoins through direct integration with the Bitcoin network. Find out how."
-          link={"/bitcoin-integration"}
-          classNames={[
-            styles.card,
-            styles.eventContainer,
-            styles.cardHover,
-            styles.cardWhite,
-          ]}
-        /> */}
+
         <MotokoPlayground
           title="Motoko Playground"
-          body="Explore Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK"
+          body="Play around with Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK."
           link={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}
         />
       </motion.div>

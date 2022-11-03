@@ -40,17 +40,22 @@ export default function NextGenSection(): JSX.Element {
           No legal headache.
         </motion.p>
         <motion.p
-          className="tw-heading-6 md:tw-heading-4 mb-8 md:mb-12"
+          className="tw-heading-6 md:tw-heading-4 mb-3"
           variants={transitions.item}
         >
           Only Code.
         </motion.p>
-        <motion.p className="mb-0" variants={transitions.item}>
-          <Link className="link-primary inline-flex items-center gap-2">
+        <motion.p className="mb-6" variants={transitions.item}>
+          <Link className="button-primary" href="/nns">
+            Governance on ICP
+          </Link>
+        </motion.p>
+        {/* <motion.p className="mb-0" variants={transitions.item}>
+          <Link className="link-primary inline-flex items-center gap-2" href="/sns">
             <ArrowRight></ArrowRight>
             Give it a try
           </Link>
-        </motion.p>
+        </motion.p> */}
       </div>
     </AnimateSpawn>
   );

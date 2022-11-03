@@ -11,8 +11,8 @@ export default function BasicsSection(): JSX.Element {
         className="md:container-12"
         variants={transitions.container}
       >
-        <div className="absolute h-[730px] left-0 right-0 bottom-[-200px] from-[#A4497F] to-infinite bg-gradient-to-t"></div>
-        <div className="absolute h-[730px] left-0 right-0 bottom-[-200px] from-[#F1EEF5] to-transparent bg-gradient-to-b"></div>
+        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 md:bottom-[-200px] from-[#A4497F] to-infinite bg-gradient-to-t"></div>
+        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 md:bottom-[-200px] from-[#F1EEF5] to-transparent bg-gradient-to-b"></div>
 
         <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-6 md:px-0">
           <div className="md:w-8/12 md:mx-auto text-black py-20 md:py-30">
@@ -64,12 +64,22 @@ export default function BasicsSection(): JSX.Element {
                   Internet Computer
                 </span>{" "}
                 completely flips the script and puts the control back into the
-                hand of users. Duis mollis, est non commodo luctus, nisi erat
-                porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio
-                nullam quis risus eget urna mollis.
+                hand of users. Real ownership is made possible by hosting
+                services 100% on-chain. No AWS, no tracking, no gas fees, no
+                bridges, no oracles.
+              </p>
+              <p className="mb-8">
+                <Link className="button-primary" href="/basics">
+                  Learn the basics
+                </Link>
               </p>
               <p className="mb-0">
-                <Link className="button-primary">Learn the basics</Link>
+                <Link
+                  className="link-external"
+                  href="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
+                >
+                  World Computer vision
+                </Link>
               </p>
             </AnimateSpawn>
           </div>

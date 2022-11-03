@@ -14,7 +14,8 @@ export default function Hero(): JSX.Element {
           className="tw-heading-3 md:tw-heading-1 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          World Computer Blockchain
+          A World Computer blockchain running
+          <br className="hidden md:inline" /> at webspeed
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -22,26 +23,30 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The Internet Computer provides World Computer functionality. Any
-            online system or web3 service can be built 100% on-chain, in fully
-            decentralized form, using smart contracts that serve web
-            experiences, create transactions on other blockchains, and have
-            20,000x greater efficiency. Powered by breakthrough Chain Key
-            Crypto.
+            The Internet Computer (ICP) is a World Computer that provides a
+            complete IT stack on which any online system or web3 service can be
+            built in a fully decentralized form, 100% on-chain. ICP is the only
+            blockchain with smart contracts that serve web experiences, create
+            transactions on other chains, directly integrate with web2 APIs
+            without oracles, and run 20,000x more efficiently. No centralized
+            cloud. Simply powered by breakthrough Chain-key Cryptography.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
             className="mb-6"
             variants={transitions.item}
           >
-            <Link href="" className="button-primary">
-              Create your Internet Identity
+            <Link href="/showcase" className="button-primary">
+              Try web3 apps on ICP
             </Link>
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
-            <Link className="link-primary inline-flex items-center gap-2">
+            <Link
+              className="link-primary inline-flex items-center gap-2"
+              href="/developers"
+            >
               <ArrowRight></ArrowRight>
-              Start coding
+              Build your own web3 app
             </Link>
           </AnimateSpawn>
         </div>

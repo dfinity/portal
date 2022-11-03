@@ -11,6 +11,9 @@ import {
 } from "@site/src/utils/network-stats";
 import clsx from "clsx";
 import ExternalLinkIcon from "@site/static/img/external-link.svg";
+import transitions from "@site/static/transitions.json";
+import AnimateSpawn from "../../Common/AnimateSpawn";
+import useGlobalData from "@docusaurus/useGlobalData";
 
 const container = {
   hidden: { opacity: 0, transition: { duration: 1 } },
@@ -95,6 +98,13 @@ function Dashboard() {
     transactionRate: 0,
     cost: 0.46,
   });
+
+  const globalData = useGlobalData();
+  const networkComparison = globalData["network-comparison"]["default"] as {
+    solana: { blockHeight: number };
+    icp: { blockHeight: number };
+  };
+
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.2 });
   useEffect(() => {
@@ -125,7 +135,28 @@ function Dashboard() {
     };
   }, []);
   return (
-    <section className="bg-[#A4497F]">
+    <section className="bg-[#A4497F] pt-20 md:pt-[200px]">
+      <AnimateSpawn variants={transitions.item} className="container-12">
+        <h2 className="text-white-60 tw-heading-4 md:tw-heading-60 md:w-8/12 mx-auto mb-16 md:mb-30">
+          Over{" "}
+          <span className="text-white">
+            {(
+              Math.floor(networkComparison.icp.blockHeight / 100_000_000) / 10
+            ).toFixed(1)}{" "}
+            Billion
+          </span>{" "}
+          blocks processed.{" "}
+          <span className="text-white">
+            {(
+              networkComparison.icp.blockHeight /
+              networkComparison.solana.blockHeight
+            ).toFixed(1)}
+            x
+          </span>{" "}
+          more than the nearest competitor.
+        </h2>
+      </AnimateSpawn>
+
       <motion.div
         ref={ref}
         animate={controls}

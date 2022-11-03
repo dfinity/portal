@@ -80,7 +80,7 @@ export default function FoundationSection(): JSX.Element {
               variants={transitions.item}
             >
               <Link href="https://dfinity.org" className="button-outline">
-                GO to dfinity foundation
+                Visit the dfinity foundation
               </Link>
             </AnimateSpawn>
           </div>
