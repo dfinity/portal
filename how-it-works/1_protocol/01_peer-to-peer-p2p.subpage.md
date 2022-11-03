@@ -32,8 +32,8 @@ However, doing so in a naïve way by simply forwarding the message to all peers 
 
 This duplication of delivered artifacts in the naïve approach is mitigated by nodes sending *adverts* for artifacts to their peers instead of sending the artifacts themselves.
 An advert specifies its corresponding artifact, but is a small message only containing the hash of the artifact to unambiguously refer to it and some additional metadata.
-Only adverts for artifacts are sent (pushed) to all its peers by a node.
-A node receiving adverts then requests each artifact only once from one of its peers that has advertised the artifact through an advert.
+A node only pushes adverts for artifacts to its peers.
+After receiving an advert, a node may request the corresponding artifact from one or more of its peers who sent it an advert for that artifact.
 For artifacts that are larger than the advert size, this saves bandwidth on the network connections between the peers – the savings grow with increasing size of the artifacts.
 
 ## Prioritization of Artifacts
