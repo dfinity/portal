@@ -150,12 +150,11 @@ you can learn how many cycles they still have and other information.
 Registering a dapp under an SNS is done by an SNS proposal.
 To test this, make an SNS proposal to register your dapp canister(s).
 Then, vote with the community neuron on the proposal so that it is adopted.
+To submit an SNS proposal, use your `developer-identity` identity and use the following command for each canister:
 
-To submit an SNS proposal, use your `sns-quill` principal `identityDevNeuron`
-and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
-To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
-and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
-<!-- TODO: SNS quill documentation to make proposal and link to it-->
+``` bash
+dfx canister call sns_root register_dapp_canister "(record {canister_id = opt principal \"<CANISTER ID>\" } )"
+```
 
 :::info
 As explained [on the next page](get-sns-production.md), in production this is one of the reasons
