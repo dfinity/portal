@@ -5,6 +5,8 @@ shareImage: /img/how-it-works/response-certification.600.jpg
 slug: asset-certification
 ---
 
+![](/img/how-it-works/response-certification.600x300.jpg)
+
 # Asset certification
 
 A user interacting with the Internet Computer needs to be able to confirm that the responses are actually coming from the Internet Computer and that these responses are correct.
