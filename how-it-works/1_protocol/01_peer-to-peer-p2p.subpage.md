@@ -52,7 +52,6 @@ The implementation uses *adverts queues* to track received adverts, a *requested
 Those data structures help realize an efficient advert-based gossip protocol supporting artifact priorities.
 
 Each node maintains multiple parallel open connections to each of its peers to better utilize the available network bandwidth.
-A connection can be throttled to avoid one component at a higher protocol layer monopolizing the nodes's available network bandwidth.
 
 The architecture and implementation of the P2P layer is designed for high throughput and fairness between higher-layer protocol components, e.g., by using parallel data streams between peers to download artifacts, bandwidth management for connections, and prioritization to favour more important artifacts over less important ones.
 Good throughput is valued higher than low latency, as it is crucial for obtaining a system that will be able to rival public cloud in the future.

@@ -7,7 +7,7 @@ title: Overview
 # Overview
 
 The Internet Computer is powered by the Internet Computer Protocol (ICP), from which its utility token, the ICP token, derives its name.
-The core part of the IC protocol, the *core IC protocol*, is a 4-layer protocol that is running on the nodes of each subnet.
+The core part of the IC protocol, the *core IC protocol*, is a 4-layer protocol that is running on the nodes of each subnet and power the round-to-round operation of the IC.
 By running the core IC protocol, the nodes of a subnet realize a blockchain-based replicated state machine that makes progress independently of the other subnets, each subnet's nodes running an instance of the same IC core protocol.
 This architecture of many concurrently-operating subnets enables the IC to scale practically without limits.
 Subnets process *messages*, corresponding to transactions in other blockchains, submitted by users or created by smart contracts.

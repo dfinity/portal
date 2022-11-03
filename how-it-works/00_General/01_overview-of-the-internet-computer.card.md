@@ -9,13 +9,15 @@ title: Architecture of the Internet Computer
 The Internet Computer (IC) realizes the vision of a World Computer – an open and secure blockchain-based network that can host programs and data in the form of smart contracts, perform computations on smart contracts in a secure and trustworthy way, and scale indefinitely.
 To achieve this, blockchain technology – the foundation of the IC – had to be reconceived from ground up, building on many lessons learned from earlier blockchain projects.
 
-Anyone can deploy a canister smart contract, or just canister, on the Internet Computer.
+Anyone can deploy a smart contract, called *canister smart contract* or just *canister*, on the Internet Computer.
 A canister bundles Wasm program code and memory pages into a single unit.
-Canister smart contracts are executed in a replicated, fault-tolerant manner on many machines and can change the state of memory of the canister.
+Canister smart contracts are executed in a replicated, fault-tolerant way on multiple machines and can change the state of memory of the canister.
 
-At a high level, the IC's architecture builds on *subnets*, or *subnetworks*: The IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets.
-A subnet is a blockchain-based *replicated state machine*, that is, a virtual machine that holds state in a secure and non-tamperable manner.
+At a high level, the IC's architecture uses *subnets*, or *subnetworks* as its major building block: The IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets.
 Each subnet hosts smart contracts, called *canister smart contracts*, or just *canisters*.
+A subnet is built from multiple machines, called *nodes*, that replicate the storage and computations for the smart contracts on the subnet.
+The IC's blockchain technology ensures that the nodes remain in sync, that is, hold the same state and perform the same computations in each round.
+This way, security (data integrity) and resilience can be achieved.
 New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional architectures such as public clouds scale out by adding machines.
 Such a scale-out architecture is unique in the blockchain space and allows for limitless scaling, i.e., combining the security and resiliency properties of blockchains with the scalability properties known from the public cloud.
 
