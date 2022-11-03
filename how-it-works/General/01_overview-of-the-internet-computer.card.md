@@ -10,6 +10,4 @@ The last original Layer 1 blockchain project has launched a revolutionary public
 
 The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
 
-1. [Learn more](/how-it-works/overview-of-the-internet-computer/)
-2. [Internet Computer for Geeks – White Paper](https://dfinity.org/whitepaper.pdf)
-3. [Internet Computer Canister SDK](https://github.com/dfinity/sdk)
+[Go deeper](/how-it-works/overview-of-the-internet-computer/)
