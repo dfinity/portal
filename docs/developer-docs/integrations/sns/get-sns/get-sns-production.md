@@ -15,6 +15,9 @@ in production, you have [tested the SNS](local-testing.md).
 
 :::
 
+:::warning
+This section is still very incomplete and very likely to contain errors.
+:::
 
 You are now ready to get an SNS for your dapp.
 There are some steps that are needed for completing this and some steps that we

@@ -1,8 +1,7 @@
 <!--# Testing SNS Locally after Choosing Parameters-->
 
 
-After having
-[chosen the initial SNS parameters in a .yaml file](preparation.md)
+After having [chosen the initial SNS parameters in a .yaml file](preparation.md)
 and before requesting an SNS launch in production,
 you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
@@ -41,13 +40,16 @@ To set your local replica to subnet type `system`, add the following definition 
     }
 }
 ```
+
 If you are unsure where `networks.json` is located, `dfx info networks-json-path` will tell you.
 
 To test the whole process properly, you also need a handful of identities.
 For local testing, we recommend you use unencrypted/plaintext .pem files to make everything a little bit easier.
 To do so, use the `--disable-encryption` flag when importing/creating an identity in dfx.
+
 `dfx nns install` is currently hard-coded to give a certain account ICP to start.
 Because of that, make sure you also include this identity in your testing identities so you get access to those funds:
+
 ```
 -----BEGIN EC PRIVATE KEY-----
 MHQCAQEEICJxApEbuZznKFpV+VKACRK30i6+7u5Z13/DOl18cIC+oAcGBSuBBAAK
@@ -55,6 +57,7 @@ oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
 74ly5xXEBNSXiENyxhEuzOZrIWMCNQ==
 -----END EC PRIVATE KEY-----
 ```
+
 This identity will be referred to as the `nns-ledger-default-identity` for the rest of this guide.
 
 #### 2. Set up an NNS on your local testing environment.
@@ -68,9 +71,9 @@ launch.
 3. Run `dfx nns import`
 4. Run `dfx sns import`
 5. Check that the `nns-ledger-default-identity` has ICP available.
-    1. Run `dfx identity use nns-ledger-default-identity` (or substitute the identity name with whatever name you decided to use for the pem file above)
+    1. Run `dfx identity use nns-ledger-default-identity`
     2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
-6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the community neuron.
+6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay, you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the community neuron.
     1. Log in to the NNS dapp that you opened in the browser previously. You will have to create a new anchor for this. On local instances the captcha is always `a`.
     2. Make sure that you have a large number of ICP in your main account; Recommended are at least 500_000_000 but less is fine if you are not planning to make lots of neurons. If you need more ICP, use the "Get ICP" menu entry.
     3. Go to the neurons tab and create a neuron. Give it a lot of ICP (e.g. 500_000_000) and an 8 year dissolve delay.
@@ -78,15 +81,14 @@ launch.
     1. Log into the NNS dapp with a different new anchor (a private browser window or a different browser can be used to log into two different anchors at the same time).
     2. Make sure that you have at least 5 ICP in your main account; if not get more with the "Get ICP" menu entry.
     3. Go to the neurons tab and create a neuron. Give it 5 ICP and an 8 year dissolve delay.
-    4. Make a note of your neuron ID. The rest of this guide will refer to it as `DEVELOPER_NEURON_ID`.
+    4. Make a note of your neuron ID. The rest of this guide will refer to it as `DEVELOPER_NEURON_ID`. The commands below assume you run `export DEVELOPER_NEURON_ID=<neuron id>` in your shell.
     5. Add one of the dfx identities as a hotkey to the neuron. This dfx identity will be referred to as `developer-identity`. To get the principal of this identity, run `dfx --identity developer-identity identity get-principal`.
-
 
 #### 3. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the local NNS to request that an SNS is installed.
 Installing the SNS has some preconditions:
 
-1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml`.
+1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml` and has to be placed in your project's root directory.
 2. Your wallet has to be added to the whitelist of principals that are allowed to create SNSes.
 3. Your wallet contains enough cycles to create an SNS.
 
@@ -103,7 +105,7 @@ $(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identit
 
 Creating an SNS currently costs 50T cycles, and your wallet needs to supply those.
 On a local deployment, you can add any number of cycles to any canister.
-To add, say, 145T cycles to your wallet, run the following command:
+To add 145T cycles to your wallet, run the following command:
 
 ``` bash
 dfx ledger fabricate-cycles --canister $(dfx identity get-wallet) --t 145
@@ -153,7 +155,7 @@ Then, vote with the community neuron on the proposal so that it is adopted.
 To submit an SNS proposal, use your `developer-identity` identity and use the following command for each canister:
 
 ``` bash
-dfx canister call sns_root register_dapp_canister "(record {canister_id = opt principal \"<CANISTER ID>\" } )"
+dfx canister call sns_root register_dapp_canister "(record {canister_id = opt principal \"$(dfx canister id <CANISTER NAME>)\" } )"
 ```
 
 :::info
@@ -207,14 +209,14 @@ Now you can propose the decentralisation sale:
 "$(dfx cache show)/sns" dsale propose
 ```
 
-In the NNS Dapp UI, go to the launchpad. Thenre, you should see the proposal.
+In the NNS Dapp UI, go to the launchpad. There, you should see the proposal.
 You may need to refresh the page until it shows up.
 
 #### 8. Adopt / reject the NNS proposal
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
 To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes.
-As you have a huge neuron - your private network is not decentralized - your vote should be enough to pass the proposal.
+As you have a huge neuron - your private network is not decentralized - your vote with the community neuron should be enough to pass the proposal.
 If you watch the top of the proposal status, it should change to "Executed" after no more than 30 seconds.
 
 Check the state of the swap canister:
@@ -268,11 +270,11 @@ in pre-decentralization-sale mode.
 For example, you can submit and vote for a proposal to change some of the SNS parameters
 by following the instructions in [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
-#### 12. Test user-experience.
+#### 12. Test user experience.
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
-In particular, if you [chose to integrate some of the SNS or NNS functionality in your dappfrontend](../integrate-sns/frontend-integration.md),
+In particular, if you [chose to integrate some of the SNS or NNS functionality in your dapp frontend](../integrate-sns/frontend-integration.md),
 you should test this user experience. 
 You might also want to test what the interaction would look like on the NNS frontend dapp.
 
