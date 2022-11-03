@@ -1,11 +1,13 @@
 ---
-title: Boundary Nodes
+title: Boundary nodes
 abstract:
-shareImage: /img/how-it-works/motoko.600.jpg
+shareImage: /img/how-it-works/outcalls.600x300.png
 slug: boundary-nodes
 ---
 
-# Boundary Nodes
+![](/img/how-it-works/outcalls.600x300.png)
+
+# Boundary nodes
 
 The boundary nodes form the globally distributed edge of the Internet Computer (IC), which provides access to the canister smart contracts hosted on chain. The boundary nodes route all requests to the right subnet and loadbalance these requests among the subnet’s replica nodes. In addition, the boundary nodes provide caching and other services for improved performance.
 
