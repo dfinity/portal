@@ -174,13 +174,22 @@ neurons) vote on the proposal so that it is adopted.
 Then, confirm that the proposal has been executed by checking that the dapp has been
 upgraded.
 
-To submit an SNS proposal to upgrade a dapp canister,
-use your `sns-quill` principal `identityDevNeuron`
+To submit an SNS proposal to upgrade a dapp canister, use `sns-quill` with your `developer-identity` identity.
 and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
 To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
 and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
-<!-- TODO: SNS quill documentation to make proposal and link to it-->
 
+The base command structure to make an upgrade-canister proposal looks like this:
+
+``` bash
+sns-quill --canister-ids-file <PATH-TO-CANISTER-IDS-OF-SNS> --pem-file <PATH-TO-PEM-FILE> make-upgrade-canister-proposal --summary "<SUMMARY>" --title "<TITLE>" --url "<URL>" --target-canister-id <TARGET-DAPP-CONTROLLED-BY-SNS> --wasm-path <PATH-TO-WASM-FILE> <HEX-NEURON-ID> > msg.json && sns-quill send msg.json
+```
+
+Filling in as much as possible, the command will look like this:
+
+``` bash
+sns-quill --canister-ids-file .dfx/local/canister_ids.json --pem-file ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem make-upgrade-canister-proposal --summary "<SUMMARY>" --title "<TITLE>" --url "<URL>" --target-canister-id <TARGET-DAPP-CONTROLLED-BY-SNS> --wasm-path .dfx/local/canisters/<CANISTER NAME>/<CANISTER NAME>.wasm $DEVELOPER_NEURON_ID > msg.json && sns-quill send msg.json
+```
 
 #### 7. Submit an NNS proposal to start the decentralization sale.
 Note that in production at this point your dapp's control is handed over to the IC and everyone can make the following proposal.
@@ -249,7 +258,6 @@ To do so, you can repeat the instructions from
 
 You can also test adding new dapp canisters under the SNS control at different stages,
 by additional SNS proposals as explained in [Step 5](#5-register-the-dapp-in-the-sns).
-<!-- TODO: check for vailidty -->
 
 #### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
