@@ -1,5 +1,5 @@
 ---
-title: BTC Integration in dfx
+title: Bitcoin Integration with DFX
 links:
   Forum Link:
   Proposal:

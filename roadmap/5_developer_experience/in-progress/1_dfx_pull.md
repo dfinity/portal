@@ -1,5 +1,5 @@
 ---
-title: dfx pull
+title: DFX Pull
 links:
   Forum Post:
   Proposal:
