@@ -70,10 +70,8 @@ The replicated state of a subnet comprises all the relevant information required
   * Xnet messages to be sent to other subnets
   * Canister metadata (module hashes, *certified variables*)
 * Items certified per checkpoint:
-  * All canister Wasm bytecode
-  * All canister state (heap and stable memory)
+  * The whole replicated state
 
-The message routing layer performs a certification of parts of the replicated state after each round (the first three items above) and certification of the full replicated state (including also the remaining two items above) at every checkpoint, which is typically every multiple-hundred rounds.
 Certification is always done using BLS threshold signatures computed collectively by the subnet, thus certifications are computed by the subnet as a whole in a decentralized manner. The properties of the threshold signature guarantee that such a certification can only exist if the subnet still agrees on the state.
 
 ### Per-Round Certification
@@ -85,7 +83,7 @@ A BLS threshold signature is computed to certify the part of the state tree cont
 * Canister metadata (module hashes, *certified variables*).
 
 The responses to ingress messages are referred to as ingress history.
-The certified responses can be read and validated against the subnet's public key by users as the response to their ingress messages.
+The certified responses can be read and validated against the subnet's public key by users as the response to their ingress messages. Each of the public keys of the individual subnets are, in turn, certified by the NNS using the same mechanism. This means that one can verify that certified responses indeed come from the IC only using the public key of the NNS.
 This way of validating responses to state-changing messages to a blockchain is extremely powerful when compared to other approaches seen in the field like reading the response from a transaction log.
 
 This per-round state certification ensures that any item of data relevant for interactions of users and subnets and between different subnets on the Internet Computer is authenticated.
@@ -98,7 +96,6 @@ At every checkpointing interval, that is, every multiple hundred rounds, which c
 The state certification is done incrementally by incorporating the changes since the last checkpoint certification into the so called manifest of the previous checkpoint. The manifest can abstractly be viewed as a relatively flat Merkle tree and the incremental computation can be achieved by updating the leafs that changed and propagating changes up the tree.
 Finally, the root hash of the manifest is signed with a BLS threshold signature by the subnet, thereby certifying the entire contents of the manifest.
 The signed result is called a *catch-up package* as it can be used by nodes to efficiently catch up to the point in time when the checkpoint was made. (Note that a catch-up package also contains other things required to resume, which are omitted here for the sake of simplicity).
-Technically, the overall state is partitioned into chunks and the catch-up package contained an authenticated hash of each of the chunks.
 The run time of this certification operation is linear in the number of changes and not the overall state size on the subnet.
 This is crucial as a subnet can hold terabytes of state in the future and a full recertification of multiple terabytes of replicated state would not be practical at every checkpoint interval.
 
