@@ -70,8 +70,7 @@ This also avoids the risk of exceeding the cycles limit allowed in an upgrade op
 
 ## Cycles Accounting
 
-The execution of a canister consumes resources of the Internet Computer, which are paid for with *cycles* that the canister must have been topped up with.
-Filling up the canister with cycles is the responsibility of its maintainer, which can be a developer, a group of developers or a decentralized autonomous organization (DAO) – users do never pay for sending messages to canisters on the IC.
+The execution of a canister consumes resources of the Internet Computer, which are paid for with *cycles*.  Each canister holds a local cycles account and ensuring that the account holds sufficient cycles is the responsibility of its maintainer, which can be a developer, a group of developers or a decentralized autonomous organization (DAO) – users do never pay for sending messages to canisters on the IC.
 This resource charging model is known as *reverse gas model* and is a facilitator for mass adoption of the IC.
 
 Technically, the Wasm code running in a canister gets instrumented, when the Wasm bytecode is installed or updated on the IC, with code that counts the executed instructions for smart contract messages.
