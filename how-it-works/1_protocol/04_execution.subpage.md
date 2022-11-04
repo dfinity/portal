@@ -18,7 +18,7 @@ Both the bytecode and the memory pages, i.e., the state, of the canister, are ma
 Each node in the subnet holding the same canister state and ensuring that the state transitions in the same way on every node in every round is the foundation of realizing a replicated state machine and the security and resilience properties thereof that make blockchains so unique.
 
 ## Replicated Message Execution
-
+Replicated execution proceeds in rounds.
 In one IC round, the message routing layer invokes the execution layer once for executing (a subset of) the messages in the canister input queues.
 Depending on how much effort (CPU cycles) the execution of the messages of a round requires, a round ends with all messages in the queues being executed or the cycles limit of the round being reached and parts of the messages left to future rounds for execution.
 
