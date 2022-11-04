@@ -99,12 +99,6 @@ function Dashboard() {
     cost: 0.46,
   });
 
-  const globalData = useGlobalData();
-  const networkComparison = globalData["network-comparison"]["default"] as {
-    solana: { blockHeight: number };
-    icp: { blockHeight: number };
-  };
-
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.2 });
   useEffect(() => {
@@ -140,20 +134,11 @@ function Dashboard() {
         <h2 className="text-white-60 tw-heading-4 md:tw-heading-60 md:w-8/12 mx-auto mb-16 md:mb-30">
           Over{" "}
           <span className="text-white">
-            {(
-              Math.floor(networkComparison.icp.blockHeight / 100_000_000) / 10
-            ).toFixed(1)}{" "}
+            {(Math.floor(stats.blockCount / 100_000_000) / 10).toFixed(1)}{" "}
             Billion
           </span>{" "}
-          blocks processed.{" "}
-          <span className="text-white">
-            {(
-              networkComparison.icp.blockHeight /
-              networkComparison.solana.blockHeight
-            ).toFixed(1)}
-            x
-          </span>{" "}
-          more than the nearest competitor.
+          blocks processed. <span className="text-white">10x</span> more than
+          the nearest competitor.
         </h2>
       </AnimateSpawn>
 
