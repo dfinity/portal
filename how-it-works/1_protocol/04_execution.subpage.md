@@ -37,7 +37,7 @@ This form of concurrent execution within a subnet together with the capability o
 
 ## Non-replicated Message Execution
 
-Queries are operations that are executed by a single node and return a response synchronously, much like a regular function invocation in an imperative programming language.
+Non-replicated message execution, aka queries, are operations executed by a single node and return a response synchronously, much like a regular function invocation in an imperative programming language.
 The key difference to messages, which are also called *update calls*, is that queries cannot change the replicated state of the subnet, while update calls can.
 Queries are, as the name suggests, essentially read operations performed on one replica of the subnet, with the associated trust model of a compromised replica being able to return any arbitrary result of its choice.
 
