@@ -74,7 +74,7 @@ The execution of a canister consumes resources of the Internet Computer, which a
 Filling up the canister with cycles is the responsibility of its maintainer, which can be a developer, a group of developers or a decentralized autonomous organization (DAO) – users do never pay for sending messages to canisters on the IC.
 This resource charging model is known as *reverse gas model* and is a facilitator for mass adoption of the IC.
 
-Technically, the Wasm code running in a canister gets instrumented, when the Wasm bytecode is installed or updated on the IC, with code that counts the executed instructions for smart contract messageges.
+Technically, the Wasm code running in a canister gets instrumented, when the Wasm bytecode is installed or updated on the IC, with code that counts the executed instructions for smart contract messages.
 This allows for deterministically determining the exact amount of cycles to be charged for a given message being executed.
 Using Wasm as bytecode format for canister has helped greatly to reach determinism as Wasm itself is a format that is largely deterministic in its execution.
 It is crucial that the cycles charging be completely deterministic so that every node charges exactly the same amount of cycles for a given operation and that the replicated state machine properties of the subnet are maintained.
