@@ -56,7 +56,7 @@ The replicated state that can be held by a single subnet is not bounded by the a
 Available RAM, however, impacts the performance of the subnet, particularly the access latency of memory pages.
 This depends a lot on the access patterns of the workload, however, – much like in traditional computer systems.
 
-Our node machines are equipped with tens of terabytes of high-end SSD storage and over half a terabyte of RAM to be able to hold large amounts of replicated canister state and Wasm code and achieve good performance when accessing memory.
+The node machines that comprise the IC are equipped with tens of terabytes of high-end SSD storage and over half a terabyte of RAM to be able to hold large amounts of replicated canister state and Wasm code and achieve good performance when accessing memory.
 While the execution layer maintains the memory data structures and updates them accordingly to reflect modifications to memory pages, the state management component of message routing is responsible for certifying (parts of) the state through the subnet at the end of a round or once every (much longer) checkpointing interval.
 
 Memory pages representing canister state are persisted to SSD by the execution layer, without canister programmers needing to take care of this.
