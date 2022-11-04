@@ -129,7 +129,7 @@ function Dashboard() {
     };
   }, []);
   return (
-    <section className="bg-[#A4497F] pt-20 md:pt-[200px]">
+    <section className=" pt-20 md:pt-[200px] z-20">
       <AnimateSpawn variants={transitions.item} className="container-12">
         <h2 className="text-white-60 tw-heading-4 md:tw-heading-60 md:w-8/12 mx-auto mb-16 md:mb-30">
           Over{" "}

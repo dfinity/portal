@@ -1,6 +1,6 @@
 .main {
   position: relative;
-  padding: 0 0 102px 0;
+  padding: 0 0 64px 0;
   width: Min(1340px, 90%);
   margin: auto;
 }
@@ -121,6 +121,11 @@
 }
 
 @media screen and (max-width: 996px) {
+
+  .main {
+    margin-bottom: 16px;
+  }
+
   .grid {
     grid-template-columns: repeat(1, 1fr);
   }

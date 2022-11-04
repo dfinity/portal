@@ -11,10 +11,10 @@ export default function BasicsSection(): JSX.Element {
         className="md:container-12"
         variants={transitions.container}
       >
-        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 md:bottom-[-200px] from-[#A4497F] to-infinite bg-gradient-to-t"></div>
-        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 md:bottom-[-200px] from-[#F1EEF5] to-transparent bg-gradient-to-b"></div>
+        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 from-[#A4497F] to-infinite bg-gradient-to-t z-[10]"></div>
+        <div className="absolute h-[200px] md:h-[730px] left-0 right-0 bottom-0 from-[#F1EEF5] to-transparent bg-gradient-to-b z-[10]"></div>
 
-        <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-6 md:px-0">
+        <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-6 md:px-0 z-[11] relative">
           <div className="md:w-8/12 md:mx-auto text-black py-20 md:py-30">
             <AnimateSpawn
               el={motion.h2}
