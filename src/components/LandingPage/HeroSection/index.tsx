@@ -11,7 +11,7 @@ export default function Hero(): JSX.Element {
       <div className="container-10 mt-20 mb-20 md:my-40">
         <AnimateSpawn
           el={motion.h2}
-          className="tw-heading-3 md:tw-heading-1 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
+          className="tw-heading-60 md:tw-heading-1 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
           A World Computer blockchain running

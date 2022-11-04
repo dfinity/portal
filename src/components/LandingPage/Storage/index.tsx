@@ -6,7 +6,8 @@ import {
   useMotionTemplate,
   EasingFunction,
 } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { BackgroundPanelContext } from "../BackgroundPanel";
 import styles from "./index.module.css";
 
 const projects = [
@@ -43,11 +44,13 @@ function getLevels(n: number): number[] {
   } else if (firstTwoDigits < 60) {
     return [10, 20, 30, 40, 50].map((v) => v * 10 ** (zeros - 1));
   } else if (firstTwoDigits < 100) {
-    return [20, 40, 60, 80].map((v) => v * 10 ** (zeros - 1));
+    return [20, 40, 60, 80, 100].map((v) => v * 10 ** (zeros - 1));
   }
 }
 
 const Storage: React.FC = () => {
+  const backgroundVisible = useContext(BackgroundPanelContext);
+
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -74,8 +77,8 @@ const Storage: React.FC = () => {
 
   const easedScrollYProgress = useTransform(
     scrollYProgress,
-    [0.0, 1.0],
-    [150000000, icpCost * 2.5],
+    [0.0, 0.95, 1.0],
+    [150000000, icpCost * 2.5, icpCost * 2.5],
     { ease: mirrorEasing(createExpoIn(5)) }
   );
 
@@ -143,12 +146,13 @@ const Storage: React.FC = () => {
             US$ and CO2 Emissions.
           </p>
         </div>
-        <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white">
-          <motion.div className="flex items-center justify-center">
-            {/* <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-slate-200 to-transparent z-10"></div> */}
-            <div className="border-0 border-b border-white-30 border-solid flex items-end justify-evenly md:justify-center h-[66vh]  md:gap-24 w-full relative">
+        <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white overflow-hidden">
+          <div
+            className=" flex items-center justify-center transition-opacity"
+            style={{ opacity: backgroundVisible ? 1 : 0 }}
+          >
+            <div className="border-0 border-b border-white-30 border-solid flex items-end justify-evenly md:justify-center h-[55vh] lg:h-[66vh] md:gap-24 w-full relative">
               <div className="absolute inset-0 z-[-1] overflow-hidden">
-                <div></div>
                 <motion.div
                   className="h-px w-full absolute left-0 right-0 bg-white-20"
                   style={{
@@ -274,8 +278,11 @@ const Storage: React.FC = () => {
                 </div>
               </motion.div>
             </div>
-          </motion.div>
-          <div className="lg:hidden mt-30 pt-8 border-0 border-t border-white-20 border-solid">
+          </div>
+          <div
+            className="lg:hidden mt-30 pt-8 border-0 border-t border-white-20 border-solid transition-opacity"
+            style={{ opacity: backgroundVisible ? 1 : 0 }}
+          >
             <div className="flex items-center whitespace-nowrap h-[70px] px-6 border-transparent border-solid border">
               <img
                 src="/img/basics/logos/logo-eth.svg"

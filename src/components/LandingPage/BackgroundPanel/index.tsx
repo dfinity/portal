@@ -3,6 +3,8 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 
+export const BackgroundPanelContext = React.createContext(false);
+
 const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -18,7 +20,9 @@ const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
         )}
       ></div>
       <div ref={ref} className="relative z-[13] ">
-        {children}
+        <BackgroundPanelContext.Provider value={inView}>
+          {children}
+        </BackgroundPanelContext.Provider>
       </div>
       {/* </> */}
     </div>
