@@ -73,7 +73,7 @@ launch.
 5. Check that the `nns-ledger-default-identity` has ICP available.
     1. Run `dfx identity use nns-ledger-default-identity`
     2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
-6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay, you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the community neuron.
+6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay, you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the `community neuron`.
     1. Log in to the NNS dapp that you opened in the browser previously. You will have to create a new Internet Identity anchor for this. On local instances the captcha is always `a`.
     2. Make sure that you have a large number of ICP in your main account; Recommended are at least 500_000_000 but less is fine if you are not planning to make lots of neurons. If you need more ICP, use the "Get ICP" menu entry.
     3. Go to the neurons tab and create a neuron. Give it a lot of ICP (e.g. 500_000_000) and an 8 year dissolve delay.
@@ -151,7 +151,7 @@ you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is done by an SNS proposal.
 To test this, make an SNS proposal to register your dapp canister(s).
-Then, vote with the community neuron on the proposal so that it is adopted.
+Then, vote with the `community neuron` on the proposal so that it is adopted.
 To submit an SNS proposal, use your `developer-identity` identity and use the following command for each canister:
 
 ``` bash
@@ -216,7 +216,7 @@ You may need to refresh the page until it shows up.
 You probably want to test both the case where the NNS proposal is adopted and where it is rejected
 in two different test runs. 
 To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes.
-As you have a huge neuron - your private network is not decentralized - your vote with the community neuron should be enough to pass the proposal.
+As you have a huge neuron - your private network is not decentralized - your vote with the `community neuron` should be enough to pass the proposal.
 If you watch the top of the proposal's status in the NNS dapp UI, it should change to "Executed" after no more than 30 seconds.
 
 Check the state of the swap canister:
