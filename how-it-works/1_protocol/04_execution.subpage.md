@@ -91,6 +91,6 @@ Prices for a given resource, e.g., executing Wasm instructions, scale with the r
 
 The IC's execution layer has access to a decentralized pseudorandom number generator, called the *random tape*.
 The random tape is built using BLS threshold signatures, much like the random beacon in consensus to determine the block maker ranking in a round.
-The IC's random tape provides an unpredictable and unbiasable source of random numbers that can be used to seed another pseudorandom number generator in each round.
+The IC's random tape provides an unpredictable and unbiased source of random numbers that can be used to seed another pseudorandom number generator in each round.
 This gives canister smart contracts access to a highly-efficient and secure random number source, which is another unique feature of the Internet Computer.
 The random tape is again an example of chain-key technology used in the core IC protocol and explained in a later section on this page.
