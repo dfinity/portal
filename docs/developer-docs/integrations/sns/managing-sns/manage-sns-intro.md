@@ -1,6 +1,4 @@
 # How to manage an SNS
-On the following pages, we present a few aspects that 
-are relevant for _managing_ an SNS.
 
 :::info
 **Audience**: Once an
@@ -19,18 +17,22 @@ for developers but for any member of an SNS community
 who would like to actively help managing the SNS.
 :::
 
-Managing an SNS has multiple aspects.
+On this page we will introduce a 
+few sapect that are relevant for _managing_ an SNS.
+As we complete more detailed pages for these different 
+topics, we will link to them here.
 
-As every piece of software, after an
+* As every piece of software, after an
 SNS is launched is has to be _maintained_.
 This includes ensuring that the SNS canisters are
 running the latest version and that they have enough
 cycles to continue operating.
-You can find more information on how SNS canisters can be 
+You can find more information on<!--how SNS canisters can be 
 upgraded to new versions [on this page](./upgradeSNS.md)
-and about cycle management [on this page](./cycles-usage.md).
+and about--> 
+cycle management [on this page](./cycles-usage.md).
 
-While 
+* While 
 [SNSs that are provided as a system function](../sns-intro.md#gettingDAOoptions) 
 can only be upgraded to canister versions blessed by the 
 NNS, each SNS community can configure their SNS according
@@ -38,16 +40,19 @@ to their needs.
 Most chosen configurations can also be adjusted over time,
 for example to adopt to new situations or to experiment with
 different governance and tokenomic models.
-
-Many of those configurations are defined by the SNS's
-_nervous system parameters_. We describe on
+Therefore, managing an SNS also means that the community
+should regularly consider and adjust these configurations,
+which are defined by the SNS's _nervous system parameters_.
+<!--We describe on
 [this page](./nervous-system-parameters.md)
 which parameters can be chosen and how they can be adjusted 
-by proposal.
+by proposal.-->
 
-In addition, each SNS community might need to handle different
-kinds of proposals to ensure that the SNS DAO can manage the
+<!-- * Each SNS community might need to have different
+kinds of proposals to ensure that the SNS DAO can
+manage the
 specific dapp and its operatiosn effectively.
-[This page](./proposal-guide.md) provides some guidelines regarding
+[This page](./proposal-guide.md) provides some guidelines 
+regarding
 how proposals can be used and how an SNS community can define
-their own kinds of proposals.
+their own kinds of proposals.-->
