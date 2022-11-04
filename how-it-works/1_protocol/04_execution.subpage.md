@@ -35,7 +35,7 @@ The execution layer is designed at its core to execute multiple canisters concur
 This is possible because each canister has its own isolated state and canister communication is asynchronous.
 This form of concurrent execution within a subnet together with the capability of all of the IC's subnets executing canisters concurrently makes the IC scalable like the public cloud: The IC scales out by adding more subnets.
 
-## Concurrent Query Execution
+## Non-replicated Message Execution
 
 Queries are operations that are executed by a single node and return a response synchronously, much like a regular function invocation in an imperative programming language.
 The key difference to messages, which are also called *update calls*, is that queries cannot change the replicated state of the subnet, while update calls can.
