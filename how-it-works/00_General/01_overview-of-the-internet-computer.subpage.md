@@ -7,16 +7,42 @@ slug: architecture-of-the-internet-computer
 
 # Architecture of the Internet Computer
 
-The technology behind the Internet Computer (IC) has been reconceived from ground up, learning lessons from the weaknesses of earlier projects, e.g., the lack of scalability.
-The Internet Computer intends to become the World Computer, an open and secure blockchain-based network that can scale out to power humanity's computation.
+The Internet Computer takes a revolutionary approach to a highly-scalable blockchain-based platform for securely hosting and executing smart contracts.
+The technology behind the Internet Computer (IC) has reconceived blockchain protocols from the ground up, considering many lessons learnt from earlier projects, e.g., their lack of scalability.
+The Internet Computer intends to become a *World Computer*, an open and secure public blockchain network that can scale infinitely and be used by everyone to host their smart contracts securely.
+
+## Canister Smart Contracts
+
+A smart contract on the IC is called *canister smart contract*, or just *canister*.
+A canister bundles [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) program code and data storage into a single unit.
+Anyone can deploy a canister on the Internet Computer.
+Canisters are stored and their code executed in a replicated, fault-tolerant manner on multiple machines, that is, the nodes of a subnet. 
+Unlike other blockchains, a smart contract on the IC can respect one of several possible *mutability policies*: it can be completely immutable (cannot be changed by anyone), unilaterally mutable (can be changed unilaterally by the dApp developer), or DAO mutable (it can be changed as authorized by a decentralized autonomous organization).
+
+
+Canisters pay, using *cycles*, for the IC resources they consume.
+To this end, canisters need to be “topped up” with cycles.
+Cycles can be acquired with the ICP token, the IC's utility token.
+Buying cycles with ICP removes the ICP token from the supply and creates an amount of cycles with the corresponding value.
+One Trillion cycles can be acquired with ICP worth 1 XDR, where an XDR is a basket comprising major currencies and one XDR is roughly 1.3 USD as of Q3 2022.
+
+Canister smart contracts are more powerful than the smart contracts on other blockchains:
+* Canisters paying for their resources, and not the end users, which realizes the *reverse gas* model of the IC.
+* Canisters can hold gigabytes of memory for a low fee.
+* A web browser can directly interact with a canister smart contract, without involving any public cloud for serving the web interface and assets. This is in stark contrast to the UI being served from the public cloud as is the case for other blockchains.
+* Canisters can be updated and evolve, much like regular software. DAO-based governance schemes can make this upgrade process secure and decentralized.
+* Using Internet Identity, canisters can authenticate users based on private keys contained in secure hardware modules using the [*Web Authentication (WebAuthn)* protocol](https://www.w3.org/TR/webauthn-2/). This secure authentication service, called *Internet Identity*, is implemented as a smart contract as well and provides its services to other smart contracts.
 
 ## Subnet Architecture
 
-The core part of the IC's architecture is its subnet architecture: The IC consists of many subnets, where each subnet is its own blockchain that operates concurrently with all the other subnets.
-New subnets can be added to scale the IC out, analogous to how public clouds scale out.
-Each subnet hosts smart contracts, called *canister smart contracts*, or simply *canisters*.
-Canisters on one subnet can send messages to canisters on the same or other subnet.
-The secure asynchronous cross-subnet (xnet) communication between canisters and the resulting loose coupling of subnets is one of the key principles that enable the scalability of the IC by means of adding new subnets.
+The IC is designed to be highly *scalable* and efficient in terms of hosting and executing canister smart contracts.
+The top-level building blocks of the IC are *subnetworks*, or  *subnets*: the IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets (but can communicate asynchronously with other subnets).
+Each subnet hosts canister smart contracts, up to a total of hundreds of gigabytes of replicated storage.
+A subnet consists of *node machines*, or *nodes*.
+Each node replicates all the canisters, state, and computation of the subnet using blockchain technology.
+This makes a subnet a blockchain-based *replicated state machine*, that is, a virtual machine that holds state in a secure, fault-tolerant, and non-tamperable manner: the computations of the canisters hosted on a subnet will proceed correctly and without stopping, even if some of the nodes on the subnet are faulty (either because they crash, or even worse, are hacked by a malicious party)
+New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional infrastructures such as public clouds scale out by adding machines.
+Such a scale-out architecture is rather the exception than the rule in the blockchain space and allows for limitless scaling, i.e., combining the security and resiliency properties of blockchains with the scalability properties enjoyed by the public cloud.
 
 <figure>
 <img src="/img/how-it-works/subnet_architecture.png" alt="Architecture: The IC is composed of subnets, each of which is an independent blockchain" title="The IC is composed of subnets, each of which is an independent blockchain" align="center" style="width:600px">
@@ -26,100 +52,66 @@ Canisters within and across subnets communicate through asynchronous messaging.
 </figcaption>
 </figure>
 
-## Canister Smart Contracts
+## Asynchronous Messaging
 
-Each subnet can host tens of thousands of *canister smart contracs* or simply *canisters*.
-A canister smart contract is a bundle comprising the smart contract Wasm bytecode and its storage.
-Canister smart contracts can be updated by their maintainer, which can be a single developer, a groups of developers, or a decentralized autonomous organization (DAO).
-For reasons of decentralization, it is best if a canister smart contract be maintained by a DAO in the long run.
-
-Canisters pay for the IC resources they consume in *cycles*.
-To this end, canisters need to be topped up with cycles by their maintainer or anyone else who has an interest in the canister running.
-Cycles can be acquired with the ICP token, the IC's utility token.
-One Trillion cycles can be acquired with ICP worth 1 XDR, where an XDR is a basket comprising major currencies and one XDR is roughly 1.3 USD as of Q3 2022.
-
-Canisters can hold gigabytes of memory for a low fee.
-They can serve the user interface of a dApp directly to a web browser, unlike the UI being served from public cloud as is the case in other blockchains.
-Canisters can be updated and evolve, much like regular software.
-DAO-based governance can make such upgrade process secure and decentralized.
-Using Internet Identity, canisters can authenticate users based on biometry using the WebAuthn protocol.
+As mentioned earlier, a canister bundles its code and data (state).
+This makes the canister state isolated from that of other canisters.
+Users interact with canisters by sending *ingress messages*.
+Canisters may also interact with other canisters by sending messages to other canisters on the same or different subnets.
+We collectively refer to messages sent to canisters, either by users or other canisters, as *messages* or *canister messages*.
+Each message can lead to the execution of canister smart contract code and the change of (replicated) canister state.
+Messages sent to canisters are *asynchronous*:
+when a message is sent, the sender is not blocked by this operation, but can perform other computations until the response to the message is received.
+In most other blockchains, smart contract invocation is synchronous, i.e., a call to another smart contract is blocking, and there is one global state.
+This asynchronous messaging and isolated canister state results in a "loose coupling" between different canisters and subnets.
+The secure asynchronous cross-subnet (XNet) messaging between canisters and the resulting loose coupling of subnets are key principles that unlock the scalability of the IC by means of adding new subnets:
+the state of each canister on a subnet can only be changed through asynchronous messages to the canister and thus canisters on the same or different subnets may execute concurrently.
+In terms of the programming model, asynchronous communication is a major difference between the IC and most other blockchains; however, it is the key to achieving unprecedented scalability.
 
 ## Core Internet Computer Protocol
 
-Each subnet of the IC is driven by the core Internet Computer protocol (core IC protocol) an implementation of which is running on every node.
-This protocol consists of the following four layers: (1) The peer-to-peer, (2) consensus, (3) message routing, and (4) execution layer.
+Each subnet of the IC is driven by the core Internet Computer protocol (core IC protocol), an implementation of which is running on every node.
+This protocol consists of the following four layers: (1) peer-to-peer, (2) consensus, (3) message routing, and (4) execution.
 This core IC protocol stack is running on all nodes of any subnet and drives the subnet to make progress in terms of consensus and message execution.
-Each subnet of the IC thereby is its own replicated state machine that makes progress independently of the other subnets of the IC.
+Each subnet of the IC thereby is its own replicated state machine that makes progress independently of the other subnets of the IC (but communicates with other subnets asynchronously)
 
-## Chain-Key Cryptography
+## Chain-Key and chain-evolution technology
 
-Many parts of the protocol of the IC depend on *chain-key cryptography*, also referred to as chain-key technology.
-Chain-key cryptography is the collection of cryptographic mechanisms that enable the Internet Computer Protocol.
-
-One important mechanism in this toolbox is non-interactive distributed key generation (NIDKG) for BLS signature keys.
-NIDKG is one of the most involved technical components of the IC and allows for the secure and trusteless setup of the signing key of a new subnet.
-A private key secret-shared with NIDKG is re-shared periodically so that compromised key shares become worthless and adaptive attacks become harder.
-BLS threshold signatures are another important tool in this toolbox and are used, for example, to certify the state of a subnet and to create unpredictable and unbiasable random numbers.
-
-Another new mechanism in the toolbox are threshold ECDSA signatures and their interactive distributed key generation protocol.
-Threshold ECDSA allows canister smart contracts to request signatures, which are then computed jointly by a subnet, based on a secret-shared key that no single party knows.
-
-## Chain-Evolution Technology
-
-Chain-evolution technology refers to specific mechanims that enable the IC to operate in the long term.
-To this end, chain-evolution technology enables new nodes to join a subnet or nodes that have been down to catch up with the remaining part of the subnet.
-All this can be done efficiently, without a node needing to replay all messages from the start of its subnet.
-
-## Ingress Messages
-
-When a user sends a message to a canister from outside the IC, this message goes through the core IC protocol stack until it gets executed.
-Successful execution can change the state of the subnet and results in the generation of a response that is stored in a certified part of replicated state.
-The response can be retrieved by the user's client and verified for authenticity.
-This allows users to obtain certified answers to canister messages almost instantly.
-Getting an alomst-instant certified response to a request is a feature that sets apart the IC from other blockchain projects.
+Many parts of the protocol of the IC depend on [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), also referred to as chain-key technology.
+Chain-key cryptography is the collection of cryptographic mechanisms that enable the decentralized operation of Internet Computer Protocol.
+[Chain-evolution technology](https://internetcomputer.org/how-it-works/#Chain-evolution-technology) refers to specific cryptography-based mechanisms that enable the IC to operate in the long term.
+For example, chain-evolution technology enables new nodes to efficiently join a subnet or nodes that have been down to efficiently catch up with the remaining part of the subnet.
+Both chain-key and chain-evolution technology sets the IC apart from other projects in terms of technology.
 
 ## Governance
 
-Governance is an aspect of blockchain decentralization that gets increasing attention.
-The IC offers governance at multiple levels.
+The IC offers governance at multiple levels, the platform level and the dApp level.
 
 ### Platform Governance
 
 The IC is governed by a *tokenized DAO*, the so-called *Network Nervous System (NNS)*.
-The NNS is implemented as a set of canister smart contracts that are deployed on a high-replication subnet, i.e., a subnet with many nodes and the stronger security properties derived from that.
-The NNS allows holders of the ICP governance token to make proposals and vote on those proposals.
-Accepted proposals are, depending on their type, either automatically executed by the NNS (governance proposals), or define the roadmap that the IC community is working on (motion proposals).
+The NNS DAO is implemented as a set of canister smart contracts that are deployed on a high-replication subnet, i.e., a subnet with many nodes and hence stronger security properties.
+The NNS allows holders of the staked ICP to make proposals and vote on those proposals.
 
 ### DApp Governance
 
-In addition to this DAO-based platform governance, dApps can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the NNS, but tailored to governing dApps.
-Everyone controlling a dApp, can hand over control of their dApp to a tokenized DAO by deploying and parameterizing an instance of the SNS.
-The SNS implements advanced governance at the dApp level and can be used without implementing a governance system, which is revolutionary.
-Handing over control of a dApp to an instance of the SNS usually includes running a decentralization sale where funds can be raised through the sale of the dApp's governance tokens.
-
-Canister smart contracts are more powerful than the smart contracts on other blockchains.
-For example, a web browser can directly interact with a canister smart contract, without involving any public cloud for serving the web interface and assets.
-Also, canisters can use gigabytes of storage for a low cost.
-
-The Internet Computer was launched on May 10th 2021 by the DFINITY Foundation.
-Since then, it has been growing by new nodes being added and joined to form new subnets.
+dApps on the IC can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the platform's NNS, but tailored to govern dApps.
+Everyone controlling a dApp can hand over control over their dApp to a tokenized DAO by parameterizing and deploying an instance of the SNS.
+The SNS implements tokenized governance at the dApp level and can be used without the dApp engineers implementing a governance system themselves, which is revolutionary.
+Handing over control of a dApp to an instance of the SNS usually includes running a decentralization sale as an early step where funds can be raised through the sale of the dApp's governance tokens.
 
 ## Go Even Deeper
 
-If you want to learn in more detail how the IC works and realizes the vision of a World Computer, read through the whole page and the referenced Medium articles, or watch the YouTube videos.
-If you prefer to have a single source of information, the [White Paper](https://dfinity.org/whitepaper.pdf) is highly recommended, however, note that is is a little technical at times.
+If you want to learn in more detail how the IC works and realizes the vision of a World Computer, read through the sections of the page and the referenced Medium articles, or watch the YouTube videos.
+If you prefer to have a single source of information, the [White Paper](https://dfinity.org/whitepaper.pdf) is highly recommended.
+However, note that it is a little technical at times.
 
-1. [Internet Computer Source Code](https://github.com/dfinity/ic)
-2. [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
-3. [The Internet Computer's Source Code is Public](https://medium.com/dfinity/the-internet-computers-source-code-is-public-603a558cb6cc)
-4. [A Technical Overview of the Internet Computer](https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f)
-5. [Internet Computer Interface Specification](https://medium.com/dfinity/introducing-the-internet-computer-interface-specification-850a113a66d9)
-6. [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
-7. [Internet Computer Rust Docs](https://docs.dfinity.org/ic/rustdocs/)
-8. [Internet Computer Haskell Utility Code](https://github.com/dfinity/ic-hs)
-9. [Internet Computer Primer - Deck](https://dfinity.org/deck/)
-10. [Internet Computer Canister SDK](https://github.com/dfinity/sdk)
-11. [Internet Computer Open Source Rosetta API](https://github.com/dfinity/rosetta-node)
-12. [Internet Computer for Geeks – White Paper](https://dfinity.org/whitepaper.pdf)
+[Internet Computer for Geeks – White Paper](https://dfinity.org/whitepaper.pdf)
+[Internet Computer Dashboard](https://dashboard.internetcomputer.org/)
+[Internet Computer Source Code](https://github.com/dfinity/ic)
+[Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
+[Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
+[Internet Computer Primer - Deck](https://dfinity.org/deck/)
+[Internet Computer Canister SDK](https://github.com/dfinity/sdk)
 
 [![Watch youtube video](https://i.ytimg.com/vi/YWHTNr8RZHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=YWHTNr8RZHg)

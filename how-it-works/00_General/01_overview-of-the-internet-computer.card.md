@@ -24,14 +24,14 @@ Canisters communicate via *asynchronous messages*, i.e., they don't block on sen
 This novel approach to inter-canister calls allows for scaling out the IC by simply adding more subnets.
 
 The core ICP makes heavy use of [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), a toolbox of advanced cryptographic protocols (based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem)) that enables the decentralized operation of the IC with unprecedented scalability.
-Chain-key cryptography also includes a sophisticated collection of technologies for robustly and securely maintaining the IC over time, which we call *chain-evolution technology* 
+Chain-key cryptography also includes a sophisticated collection of technologies for robustly and securely addressing operational concerns, such as how to deal with faulty nodes or protocol upgrades, which we call [*chain-evolution technology*](https://internetcomputer.org/how-it-works/#Chain-evolution-technology) 
 (for example, enabling nodes to easily join a subnet without validating every block beginning from the genesis block, as in other blockchains).
 Another building block in the chain-key crypto toolbox are [*chain-key transactions*](https://internetcomputer.org/how-it-works/#Chain-key-transactions).
 They enable a canister to interact with (write to) other blockchains using threshold cryptography.
 
 Having scalable and decentralized technology to power the operation of the network is not enough.
 In order to meet the requirements of complete decentralization, the IC needs a fully decentralized approach to governance.
-Governance of the IC platform and its R&D roadmap is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, which is called the *Network Nervous System (NNS)*.
+Governance of the IC platform and its R&D roadmap is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, which is called the [*Network Nervous System (NNS)*](https://internetcomputer.org/how-it-works/#Network-nervous-system).
 Each individual dApp on the IC can have its own governance system similar to the NNS by customizing and deploying an out-of-the-box tokenized DAO based on the *Service Nervous System (SNS)* for the dApp.
 
 Learn more about how the Internet Computer works and realizes the vision of a World Computer!
