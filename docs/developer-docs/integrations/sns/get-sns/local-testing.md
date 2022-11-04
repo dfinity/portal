@@ -258,7 +258,12 @@ To do so, you can repeat the instructions from
 [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
 You can also test adding new dapp canisters under the SNS control at different stages,
-by additional SNS proposals as explained in [Step 5](#5-register-the-dapp-in-the-sns).
+by additional SNS proposals as explained in [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
+For example, you could make a proposal to set the minimum neuron stake like this:
+
+``` bash
+$ sns-quill --pem-file ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --canister-ids-file canister_ids.json make-proposal $DEVELOPER_NEURON_ID --proposal '(record { title="Smaller minimal neuron stake limit"; url=""; summary="update minimum neuron stake limit"; action=opt variant{ NervousSystemParameters=record{neuron_minimum_stake_e8s=opt 100000 : opt nat64; } }})'
+```
 
 #### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
