@@ -1,6 +1,6 @@
 ---
 title: Internet Identity
-abstract:  The Internet Identity is an advanced and secure method of cryptographic authentication, which is convenient to use, works across all of a user's devices, and helps to protect user privacy.
+abstract:  Internet Identity is an advanced and secure method of cryptographic authentication, which is convenient to use, works across all of a user's devices, and helps to protect user privacy.
 coverImage: /img/how-it-works/web-authentication-identity.600x300.jpg
 ---
 
