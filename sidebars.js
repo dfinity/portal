@@ -12,7 +12,6 @@ const sidebars = {
         id: "developer-docs/quickstart/hello10mins",
       },
       items: [
-        "developer-docs/quickstart/hello10mins",
         // 'developer-docs/quickstart/windows-wsl',
         "developer-docs/quickstart/cycles-faucet",
         "developer-docs/quickstart/local-quickstart",
@@ -265,7 +264,6 @@ const sidebars = {
             id: "developer-docs/integrations/internet-identity/integrate-identity",
           },
           items: [
-            "developer-docs/integrations/internet-identity/integrate-identity",
             "developer-docs/integrations/internet-identity/alternative-origins",
           ],
         },
@@ -495,7 +493,6 @@ const sidebars = {
         id: "tokenomics/nns/nns-intro",
       },
       items: [
-        "tokenomics/nns/nns-intro",
         "tokenomics/nns/nns-staking-voting-rewards",
         "tokenomics/nns/community-fund",
       ],
@@ -521,7 +518,6 @@ const sidebars = {
         id: "tokenomics/identity-auth/what-is-ic-identity",
       },
       items: [
-        "tokenomics/identity-auth/what-is-ic-identity",
         "tokenomics/identity-auth/auth-how-to",
         "tokenomics/identity-auth/hello-guide",
       ],
@@ -535,7 +531,6 @@ const sidebars = {
         id: "tokenomics/token-holders/custody-options-intro",
       },
       items: [
-        "tokenomics/token-holders/custody-options-intro",
         "tokenomics/token-holders/self-custody-quickstart",
         "tokenomics/token-holders/nns-app-quickstart",
         // 'tokenomics/token-holders/seed-donations',
