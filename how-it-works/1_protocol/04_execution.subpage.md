@@ -57,7 +57,7 @@ Available RAM, however, impacts the performance of the subnet, particularly the 
 This depends a lot on the access patterns of the workload, however, – much like in traditional computer systems.
 
 The node machines that comprise the IC are equipped with tens of terabytes of high-end SSD storage and over half a terabyte of RAM to be able to hold large amounts of replicated canister state and Wasm code and achieve good performance when accessing memory.
-While the execution layer maintains the memory data structures and updates them accordingly to reflect modifications to memory pages, the state management component of message routing is responsible for certifying (parts of) the state through the subnet at the end of a round or once every (much longer) checkpointing interval.
+The states obtained while executing canisters are certified (i.e. digitally signed) by the state management component of message routing.  Certification of some parts of the states, including the ingress history and the messages that are sent to other subnetworks are certified every round.  The entire state of a subnetwork, including the state of all canisters hosted by that subnetwork is certified once every (much longer) checkpointing interval.
 
 Memory pages representing canister state are persisted to SSD by the execution layer, without canister programmers needing to take care of this.
 Having all memory pages transparently persisted enables *orthogonal persistence* and frees the smart contract programmers from reading from and writing to storage as on other blockchains or as in traditional IT systems.
