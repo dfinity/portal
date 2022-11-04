@@ -8,7 +8,7 @@ Here are some quick links to tutorials with example code for various stages of d
 
 -   Using [Candid](../../backend/hello-location.md#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
--   Using [raw HTML and JavaScript](../../backend/explore-templates#default-frontend) to display a simple HTML entry page.
+-   Using [raw HTML and JavaScript](../../backend/explore-templates.md#default-frontend) to display a simple HTML entry page.
 
 -   Using [React and compiled JavaScript](../custom-frontend.md) to embed HTML attributes and elements directly in a page.
 
