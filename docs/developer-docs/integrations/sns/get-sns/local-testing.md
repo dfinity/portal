@@ -195,7 +195,7 @@ sns-quill --canister-ids-file .dfx/local/canister_ids.json --pem-file ~/.config/
 #### 7. Submit an NNS proposal to start the decentralization sale.
 Note that in production at this point your dapp's control is handed over to the IC and everyone can make the following proposal.
 
-To create the propocal template, run `$(dfx cache show)/sns dsale create`.
+To create the proposal template, run `$(dfx cache show)/sns dsale create`.
 This will create a file called `dsale.yml`. Edit the file with your preferred parameters.
 As with the sns config, you can perform a basic sanity check of the parameters with:
 
