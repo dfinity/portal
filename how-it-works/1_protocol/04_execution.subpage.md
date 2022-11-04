@@ -80,7 +80,7 @@ Using Wasm as bytecode format for canister has helped greatly to reach determini
 It is crucial that the cycles charging be completely deterministic so that every node charges exactly the same amount of cycles for a given operation and that the replicated state machine properties of the subnet are maintained.
 
 The memory the canister uses in terms of both its Wasm code and canister state needs to be paid for with cycles as well.
-Much like in public cloud, consumed storage is charged for per time unit.
+Much like in the public cloud, consumed storage is charged for per time unit.
 Compared to other blockchains, it is very inexpensive to store data on the IC.
 Furthermore, networking activities such as receiving ingress messages, sending XNet messages, and making HTTPS Outcalls to Web 2.0 servers are paid for in cycles by the canister.
 
