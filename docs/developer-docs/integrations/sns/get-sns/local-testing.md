@@ -94,7 +94,7 @@ Installing the SNS has some preconditions:
 
 The SNS is new and may still have significant bugs.
 To prevent huge numbers of projects giving control of their dapps to SNSs before the SNS has been tested in production, 
-access to the SNS is limited. Who gets to be one of the brave first developers is decided by the community by proposal.
+access to the SNS is limited. The decision who gets to be one of the brave first projects to launch an SNS and be added to this whitelist is decided by the NNS community by proposal.
 Later, when the SNS has a solid track record in production, this whitelist will be dropped.
 For local development, you can add your wallet to the whitelist using the following command and identity `developer-identity`:
 
