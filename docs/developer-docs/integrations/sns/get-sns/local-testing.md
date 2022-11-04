@@ -217,7 +217,7 @@ You probably want to test both the case where the NNS proposal is adopted and wh
 in two different test runs. 
 To do so, vote on the NNS proposal and ensure that you reach a majority for yes or no votes.
 As you have a huge neuron - your private network is not decentralized - your vote with the community neuron should be enough to pass the proposal.
-If you watch the top of the proposal status, it should change to "Executed" after no more than 30 seconds.
+If you watch the top of the proposal's status in the NNS dapp UI, it should change to "Executed" after no more than 30 seconds.
 
 Check the state of the swap canister:
 
