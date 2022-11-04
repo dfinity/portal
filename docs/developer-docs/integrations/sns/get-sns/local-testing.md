@@ -89,8 +89,8 @@ Make a call to the SNS wasm modules canister on the local NNS to request that an
 Installing the SNS has some preconditions:
 
 1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml` and has to be placed in your project's root directory.
-2. Your wallet has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
-3. Your wallet contains enough cycles to create an SNS.
+2. Your [cycles wallet](../../../build//project-setup/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
+3. Your cycles wallet contains enough cycles to create an SNS. Currently, this cost is 50T cycles.
 
 The SNS is new and may still have significant bugs.
 To prevent huge numbers of projects giving control of their dapps to SNSs before the SNS has been tested in production, 
