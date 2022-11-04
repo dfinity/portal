@@ -276,5 +276,5 @@ interact with the SNS and NNS to complete the different steps and also how they 
 interact with the SNS after it has been successfully launched.
 In particular, if you [chose to integrate some of the SNS or NNS functionality in your dapp frontend](../integrate-sns/frontend-integration.md),
 you should test this user experience. 
-You might also want to test what the interaction would look like on the NNS frontend dapp.
+As already suggested in some steps, you might also want to test what the interaction would look like on the NNS frontend dapp.
 
