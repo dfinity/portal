@@ -15,7 +15,7 @@ This provides a high level of convenience, allowing users to authenticate to dap
 
 A user can register as many identity anchors as they want for redundancy, or different purposes. For example, a user may create an anchor for use with SocialFi or GameFi, and another for use with pure DeFi. They may only feel comfortable adding facial recognition to their SocialFi and GameFi anchor, say, and only use more secure portable HSM devices like YubiKeys and Ledger wallets with their pure DeFi anchor.
 
-Unlike most authentication methods, users are not required to set and manage passwords or provide any personal identifying information to dapps or to the Internet Identity.
+Unlike most authentication methods, users are not required to set and manage passwords or provide any personal identifying information to dapps or to Internet Identity.
 
 [Internet Identity App](https://identity.ic0.app/)
 
