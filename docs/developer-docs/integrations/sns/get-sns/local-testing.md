@@ -60,7 +60,7 @@ oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
 
 This identity will be referred to as the `nns-ledger-default-identity` for the rest of this guide.
 
-#### 2. Set up an NNS on your local testing environment.
+#### 2. Set up an NNS in your local testing environment.
 As a first step, you will bring up an NNS in your local testing environment. 
 This will allow you to test the calls to NNS that are needed to request an SNS
 launch.
