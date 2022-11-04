@@ -26,7 +26,7 @@ To deploy and test a local SNS, you will need the following tools:
 - [sns-quill](https://github.com/dfinity/sns-quill)
 
 To install an NNS locally (which is needed to obtain an SNS in the same way that you would get it in production), you have to run your local replica as a
-node in of a `system` subnet (as opposed to `application`, which is what all other dapps run as).
+node of a `system` subnet (as opposed to `application`, which is what all other dapps run on).
 To set your local replica to subnet type `system`, add the following definition to your `networks.json`:
 
 ``` json
