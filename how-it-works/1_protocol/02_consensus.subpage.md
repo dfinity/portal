@@ -18,8 +18,7 @@ The protocol guarantees that there is always a unique chain of finalized blocks 
 This chain of finalized blocks is the output of consensus.
 
 At a high level, a consensus round has the following three phases:
-* *Block making:* 
-In every round, at least one node, called a block maker, proposes a block by broadcasting it to all nodes in the subnet using P2P.
+* *Block making:* In every round, at least one node, called a block maker, proposes a block by broadcasting it to all nodes in the subnet using P2P.
 As we will see, when things go right, there is only one block maker, but sometimes there may be several.
 * *Notarization:* For a block to become *notarized*, at least two thirds of the nodes must validate the node and support its notarization.
 * *Finalization:* For a block to become *finalized*, at least two thirds of the nodes must support its finalization. As we will see, a node will support the finalization of a block only if it did not support the notarization of any other block, and this simple rule guarantees that if a block is finalized in a given round, then there can be no other notarized block in that round.
@@ -30,15 +29,15 @@ Let us next look at the different phases of a consensus round in more detail.
 
 A *block maker* is a node that proposes a block for the current round.
 As explained below, a cryptographic mechanism called a *random beacon* is used to select one node (chosen at random) as the *primary* block maker (or *leader*) for the current round.
-The primary block maker assembles a block consisting of the ingress messages (submitted directly to the node or received from other nodes in the subnet via P2P) and xnet messages (sent to this subnet from other subnets).
+The primary block maker assembles a block consisting of the ingress messages (submitted directly to the node or received from other nodes in the subnet via P2P) and XNet messages (sent to this subnet from other subnets).
 After assembling a block, the primary block maker proposes this block by broadcasting it to all nodes in the subnet using P2P.
 
 If the network is slow or the primary block maker is faulty, the block proposed by the primary block maker may not get notarized within a reasonable time.
-In this case, after some delay, and using the same random beacon mechanism, other other block makers are chosen to step in and supplant the primary block maker.
+In this case, after some delay, and using the same random beacon mechanism, other block makers are chosen to step in and supplant the primary block maker.
 The protocol logic guarantees that one block eventually gets notarized in the current round.
 
 The block makers for a round are chosen through a random permutation of the nodes of the subnet based on randomness derived from a *random beacon*.
-As discussed in [FIXME: link to chain-key], 
+As discussed in the section on [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), 
 chain-key cryptography may be used to produce unpredictable and unbiasable pseudo-random numbers. 
 Consensus uses these pseudo-random numbers to define a pseudo-random permutation on the nodes of the subnet. 
 This assigns a rank to each node in the subnet. 
@@ -47,21 +46,23 @@ As time goes by without producing a notarized block, nodes of increasing rank gr
 
 In the scenario where the primary block maker is not faulty, and protocol messages get delivered in a timely manner, only the primary block maker will propose a block, and this block will quickly become notarized and finalized.
 
-
 ## Notarization
 
 When a node receives a block proposed by a block maker for the round, it validates the block for syntactic correctness.
 If the block passes this validity check, the node supports the notarization of the block by broadcasting a *notarization share* for the block to all nodes in the subnet.
-A notarization share is a signature share computed using the BLS multi-signature scheme [FIXME: link to some description of BLS multi-sig?].
+A notarization share is a signature share computed using the [BLS multi-signature scheme](https://crypto.stanford.edu/~dabo/pubs/papers/BLSmultisig.html).
 A block becomes *notarized* when at least two thirds of the nodes in the subnet support its notarization.
 In this case, the BLS multi-signature shares may be aggregated to form a compact *notarization* for the block.
 
-In the case where the block proposed by the primary block maker gets notarized within a certain amount of time, a node will not the support the notarization of any other block in that round. 
-Otherwise, a node may eventually support the notarization of blocks proposed by other block makers of higher rank (but if it has already supported the notarization of a block proposed by block maker of some rank, it will not support the notarization of blocks proposed by block makers of higher rank).
+In the case where the block proposed by the primary block maker gets notarized within a certain amount of time, a node will not support the notarization of any other block in that round. 
+Otherwise, a node may eventually support the notarization of blocks proposed by other block makers of higher rank (but if it has already supported the notarization of a block proposed by a block maker of some rank, it will not support the notarization of blocks proposed by block makers of higher rank).
 
-
-[](/img/how-it-works/consensus_notarization.png)
+<figure>
+<img src="/img/how-it-works/consensus_notarization.png" alt="Notarization support of increasing-rank block proposals in a round" title="Notarization support of increasing-rank block proposals in a round" align="center" style="width:600px">
+<figcaption align="center">
 Notarization support of increasing-rank block proposals in a round
+</figcaption>
+</figure>
 
 ## Finalization
 
@@ -73,17 +74,15 @@ A finalization share is a signature share computed using the BLS multi-signature
 A block becomes *finalized* when at least two thirds of the nodes in the subnet support its finalization.
 In this case, the BLS multi-signature shares may be aggregated to form a compact *finalization* for the block.
 
-
 ## Go Even Deeper
 
 [Achieving Consensus on the Internet Computer](https://medium.com/dfinity/achieving-consensus-on-the-internet-computer-ee9fbfbafcbc)
 
 [Consensus White Paper](https://eprint.iacr.org/2021/632.pdf)
 
-[Protocol description in the Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/IC_consensus_layer)
-
 [Extended Abstract published at PODC'22](//assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf)
 
+[Consensus on the IC wiki](https://wiki.internetcomputer.org/wiki/IC_consensus_layer)
 <!-- https://img.youtube.com/vi/vVLRRYh3JYo/0.jpg -->
-[![Watch youtube video](https://i.ytimg.com/vi/vVLRRYh3JYo/maxresdefault.jpg)](https://www.youtube.com/watch?v=vVLRRYh3JYo)
 
+[![Watch youtube video](https://i.ytimg.com/vi/vVLRRYh3JYo/maxresdefault.jpg)](https://www.youtube.com/watch?v=vVLRRYh3JYo)
