@@ -47,7 +47,7 @@ To test the whole process properly, you also need a handful of identities.
 For local testing, we recommend you use unencrypted/plaintext .pem files to make everything a little bit easier.
 To do so, use the `--disable-encryption` flag when importing/creating an identity in dfx.
 
-`dfx nns install` is currently hard-coded to give a certain account ICP to start.
+`dfx nns install` is currently hard-coded to give a certain account ICP to test with tokens.
 Because of that, make sure you also include this identity in your testing identities so you get access to those funds:
 
 ```
