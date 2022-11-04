@@ -6,35 +6,36 @@ title: Architecture of the Internet Computer
 
 # Architecture of the Internet Computer
 
-The Internet Computer (IC) realizes the vision of a World Computer – an open and secure blockchain-based network that can host programs and data in the form of smart contracts, perform computations on smart contracts in a secure and trustworthy way, and scale indefinitely.
-To achieve this, blockchain technology – the foundation of the IC – had to be reconceived from ground up, building on many lessons learned from earlier blockchain projects.
+The Internet Computer (IC) realizes the vision of a *World Computer* – an open and secure *blockchain-based network* that can host programs and data in the form of smart contracts, perform computations on smart contracts in a secure and trustworthy way, and scale infinitely.
+To achieve this, blockchain technology – the foundation of the IC – had to be reconceived from ground up, building on many lessons learnt from earlier blockchain projects.
 
-Anyone can deploy a smart contract, called *canister smart contract* or just *canister*, on the Internet Computer.
-A canister bundles Wasm program code and memory pages into a single unit.
-Canister smart contracts are executed in a replicated, fault-tolerant way on multiple machines and can change the state of memory of the canister.
+Smart contracts on the Internet Computer are called *canister smart contracts*, or *canisters*, each consisting of a bundle of [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) bytecode and smart contract data storage.
+Each canister has its own, isolated, data storage that is only changed when the canister executes code.
 
-At a high level, the IC's architecture uses *subnets*, or *subnetworks* as its major building block: The IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets.
-Each subnet hosts smart contracts, called *canister smart contracts*, or just *canisters*.
-A subnet is built from multiple machines, called *nodes*, that replicate the storage and computations for the smart contracts on the subnet.
-The IC's blockchain technology ensures that the nodes remain in sync, that is, hold the same state and perform the same computations in each round.
-This way, security (data integrity) and resilience can be achieved.
-New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional architectures such as public clouds scale out by adding machines.
-Such a scale-out architecture is unique in the blockchain space and allows for limitless scaling, i.e., combining the security and resiliency properties of blockchains with the scalability properties known from the public cloud.
+Canisters are hosted on *subnets*, the top-level architectural building block of the IC.
+A subnet is an independent blockchain, running on *node machines*, or *nodes*, deployed in globally-distributed data centers.
+A single subnet can securely host tens of thousands of canister smart contracts, totalling in hundreds of gigabytes of memory – there are currently dozens of subnets, growing to thousands in the future.
+For each canister hosted on a subnet, its code and data is stored on every node in the subnet, and its code is executed by every node in the subnet.
+This replication of storage and computation is essential to achieve *fault tolerance*, so that canister smart contracts will continue to execute even if some nodes in the subnet are faulty (either because they crash, or even worse, are hacked by a malicious party).
+This replication is powered by the core *Internet Computer Protocol (ICP)*, which implements a high-throughput, low-latency consensus mechanism and an efficient virtual machine for WebAssembly execution, backed by a blockchain.
 
-A canister smart contract can send messages to canisters on the same or different subnets, thereby realizing interactions between canister smart contracts.
-The secure *asynchronous cross-subnet (xnet) communication* between canisters and the resulting loose coupling of subnets is one of the key principles that unlock the scalability of the IC by means of adding new subnets.
-The asynchronous communication between canister smart contracts is also a major difference to most other blockchains in terms of the programming model.
+The IC's multi-subnet architecture is much more powerful than the well-known sharding approach because it enables smart contracts on different subnets to communicate with each other seamlessly – much like services in a traditional [microservices architecture]( https://en.wikipedia.org/wiki/Microservices), but fully on chain.
+Canisters communicate via *asynchronous messages*, i.e., they don't block on sending a message, but process the response when it eventually arrives. 
+This novel approach to inter-canister calls allows for scaling out the IC by simply adding more subnets.
 
-Each subnet is powered by the *core IC protocol* executed by the nodes of the subnet.
-Besides this core protocol, there is much more that is needed to build and run the Internet Computer:
-The *chain-evolution* parts of the IC protocol enable the long-term operation of the system, e.g., by allowing new nodes to securely and efficiently join a subnet or faulty nodes to securely be replaced.
-The IC protocol relies heavily on *chain-key cryptography*, a toolbox of advanced cryptographic mechanisms that power the Internet Computer.
-Governance of the IC is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, the *Network Nervous System (NNS)*.
-Each individual dApp on the IC can receive its own governance system similar to the NNS by deploying and customizing a *Service Nervous System (SNS)* for the dApp – without any programming by the dApp developers, but only SNS customization.
+The core ICP makes heavy use of [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), a toolbox of advanced cryptographic protocols (based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem)) that enables the decentralized operation of the IC with unprecedented scalability.
+Chain-key cryptography also includes a sophisticated collection of technologies for robustly and securely maintaining the IC over time, which we call *chain-evolution technology* 
+(for example, enabling nodes to easily join a subnet without validating every block beginning from the genesis block, as in other blockchains).
+Another building block in the chain-key crypto toolbox are [*chain-key transactions*](https://internetcomputer.org/how-it-works/#Chain-key-transactions).
+They enable a canister to interact with (write to) other blockchains using threshold cryptography.
 
-The Internet Computer was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
-Since then, it has been growing substantially by receiving new nodes and new subnets being created from those nodes.
+Having scalable and decentralized technology to power the operation of the network is not enough.
+In order to meet the requirements of complete decentralization, the IC needs a fully decentralized approach to governance.
+Governance of the IC platform and its R&D roadmap is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, which is called the *Network Nervous System (NNS)*.
+Each individual dApp on the IC can have its own governance system similar to the NNS by customizing and deploying an out-of-the-box tokenized DAO based on the *Service Nervous System (SNS)* for the dApp.
 
-You can learn more about how the Internet Computer works and realizes the vision of a World Computer in the remainder of this page.
+Learn more about how the Internet Computer works and realizes the vision of a World Computer!
+
+The [Internet Computer](https://dashboard.internetcomputer.org/) was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
 
 [Go deeper into the architecture](/how-it-works/architecture-of-the-internet-computer/)
