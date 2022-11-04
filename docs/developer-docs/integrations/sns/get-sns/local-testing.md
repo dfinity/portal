@@ -209,7 +209,7 @@ Now you can propose the decentralisation sale:
 "$(dfx cache show)/sns" dsale propose
 ```
 
-In the NNS Dapp UI, go to the launchpad. There, you should see the proposal.
+In the NNS dapp UI, go to the launchpad. There, you should see the proposal.
 You may need to refresh the page until it shows up.
 
 #### 8. Adopt / reject the NNS proposal
