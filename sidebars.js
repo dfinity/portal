@@ -508,7 +508,6 @@ const sidebars = {
         id: "tokenomics/sns/sns-intro-tokens",
       },
       items: [
-        "tokenomics/sns/sns-intro-tokens",
         "tokenomics/sns/predeployment-considerations",
         "tokenomics/sns/tokenomics",
         "tokenomics/sns/rewards",
