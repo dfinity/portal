@@ -186,7 +186,7 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
               display: true,
               title: {
                 display: true,
-                text: "ICP Token Dissolve Delay (Years)",
+                text: "Time Staked (Years)",
                 color: "black",
                 font: {
                   size: 14,
@@ -212,7 +212,7 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
             },
             title: {
               display: true,
-              text: ["Latest Annualized Voting", "Reward Percentage"],
+              text: ["Latest Voting Rewards", "(Annualized)"],
               font: { size: 14, weight: "normal" },
               padding: 0,
               color: "black",
