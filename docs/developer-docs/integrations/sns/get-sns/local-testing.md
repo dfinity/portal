@@ -175,7 +175,7 @@ neurons) vote on the proposal so that it is adopted.
 Then, confirm that the proposal has been executed by checking that the dapp has been
 upgraded.
 
-To submit an SNS proposal to upgrade a dapp canister, use `sns-quill` with your `developer-identity` identity.
+To submit an SNS proposal to upgrade a dapp canister, use `sns-quill` with your `developer-identity` identity
 and learn what command to use [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
 To vote on an SNS proposal use your `sns-quill` principal `identityDevNeuron`
 and use the command explained [here](https://github.com/dfinity/sns-quill#vote-on-a-proposal).
