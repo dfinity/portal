@@ -2,7 +2,7 @@
 title: Fault tolerance
 abstract: 
 shareImage: /img/how-it-works/state-synchronization.600.jpg
-slug: fault-tolerace
+slug: fault-tolerance
 ---
 
 # Fault tolerance
