@@ -67,7 +67,7 @@ launch.
 
 1. Run `dfx start --clean --background`
 2. Run `dfx nns install`
-    1. This command will print two URLs at the end: One for local Internet Identity and one for the local NNS dapp. Open the NNS dapp one in your browser for later.
+    1. This command will print two URLs at the end: One for the local Internet Identity and one for the local NNS dapp. Open the NNS dapp URL in your browser for later.
 3. Run `dfx nns import`
 4. Run `dfx sns import`
 5. Check that the `nns-ledger-default-identity` has ICP available.
