@@ -74,7 +74,7 @@ launch.
     1. Run `dfx identity use nns-ledger-default-identity`
     2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
 6. To be able to make decisions in your local testnet you will need a neuron with hefty voting power. In the real world, neuron ownership is distributed but in the testnet, if you make yourself a neuron with 500 million ICP and an 8 year dissolve delay, you will be able to vote through proposals under almost any circumstances. Make such a large neuron. We will refer to it as the community neuron.
-    1. Log in to the NNS dapp that you opened in the browser previously. You will have to create a new anchor for this. On local instances the captcha is always `a`.
+    1. Log in to the NNS dapp that you opened in the browser previously. You will have to create a new Internet Identity anchor for this. On local instances the captcha is always `a`.
     2. Make sure that you have a large number of ICP in your main account; Recommended are at least 500_000_000 but less is fine if you are not planning to make lots of neurons. If you need more ICP, use the "Get ICP" menu entry.
     3. Go to the neurons tab and create a neuron. Give it a lot of ICP (e.g. 500_000_000) and an 8 year dissolve delay.
 7. You will also need a small neuron to represent yourself, the developer. 5 ICP should suffice. You will also need to add your principal as a hotkey to this developer neuron.
