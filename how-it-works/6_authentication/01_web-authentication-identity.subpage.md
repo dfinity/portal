@@ -7,7 +7,7 @@ slug: web-authentication-identity
 
 # Internet Identity
 
-In order to access and interact with applications running on the Internet Computer, it is often necessary for users to authenticate. One of the most commonly used methods to authenticate on the Internet Computer is via the Internet Identity.
+In order to access and interact with applications running on the Internet Computer, it is often necessary for users to authenticate. One of the most commonly used methods to authenticate on the Internet Computer is Internet Identity.
 
 The [Internet Identity](https://identity.ic0.app/) is a blockchain authentication framework supported by the Internet Computer. Users begin the process by creating identity "anchors" to which they assign compatible cryptographically enabled devices, such as the fingerprint sensor on a laptop, the face ID system on a phone, or a portable HSM, such as a YubiKey or Ledger wallet. Thereafter, they can signup and authenticate to dapps running on the Internet Computer using any of the devices they have assigned to their anchor.
 
