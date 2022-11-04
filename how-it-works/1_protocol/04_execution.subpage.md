@@ -11,7 +11,7 @@ The execution layer is the topmost layer of the IC core protocol stack.
 It deterministically schedules and executes the messages that have been agreed on by consensus and inducted into the canister queues by message routing, thereby changing the state of the subnet in a deterministic manner on all the nodes.
 The execution of the same sequence of messages on every node of the subnet guarantees that the same ending state is obtained on each node of the subnet after completion of the round. 
 
-A canister smart contract on the IC is the union of Web Assembly (Wasm) bytecode representing the smart contract program and memory pages representing its state.
+A canister smart contract on the IC consists of a Web Assembly (Wasm) bytecode representing the smart contract program and a set of memory pages representing its state.
 The Wasm bytecode can be modified by installing or updating the canister.
 The smart contract state gets modified when executing messages on the canister smart contract.
 Both the bytecode and the memory pages, i.e., the state, of the canister, are maintained by every node machine of the subnet the canister is installed on.
