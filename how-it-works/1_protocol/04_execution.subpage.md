@@ -25,8 +25,7 @@ Depending on how much effort (CPU cycles) the execution of the messages of a rou
 Each message execution can lead to memory pages of the canister's state being modified (becoming "dirty" in operating systems terminology), new messages to other canisters on the same or different subnets being created, or a response to be generated in case of an ingress message.
 Changes to memory pages are tracked and corresponding pages flagged as "dirty" so that they can be processed when certifying the state.
 
-When a message execution leads to the generation of a new canister message targeted at a canister in the local subnet, this message can be queued up directly by execution in the input queue of the target canister and scheduled in the same round or an upcoming round, without this new message needing to go through consensus.
-This is possible because the generation and enqueuing of the new message is completely deterministic and thus happens in exactly the same way on all the nodes of the subnet – thus there is no need for this new message going through consensus.
+When a message execution leads to the generation of a new canister message targeted at a canister in the local subnet, this message can be queued up directly by execution in the input queue of the target canister and scheduled in the same round or an upcoming round. This message does not need to go through consensus since the generation and enqueuing of the new message is completely deterministic and thus happens in exactly the same way on all the nodes of the subnet.
 
 New messages targeted at other subnets are placed into the target cross-subnet queue (XNet queue) and are certified by the subnet at the end of the round as part of the per-round state certification.
 The receiving subnet can verify that the XNet messages are authenticated by the subnet by validating the signature with the originating subnet's public key.
@@ -45,7 +44,7 @@ Analogous to update calls, queries are executed concurrently by multiple threads
 However, all the nodes of the subnet can concurrently execute different queries because queries are not executed in a replicated way.
 Query throughput of a subnet thus increases linearly with an increasing number of nodes in the subnet, while the update call performance decreases with an increasing number of nodes.
 
-Queries are similiar to read operations on a local or cloud Ethereum node on the Ethereum blockchain.
+Queries are similar to read operations on a local or cloud Ethereum node on the Ethereum blockchain.
 A dApp should use queries for non-critical operations only.
 Whenever an information item to be read is critical, e.g., financial data based on which decisions are made, update calls should be used to obtain such information as the response of an update call is certified by the subnet with a BLS threshold signature and verifiable with the subnet's public key.
 
@@ -88,6 +87,6 @@ Prices for a given resource, e.g., executing Wasm instructions, scale with the r
 
 ## Random Number Generation
 Many applications benefit from, or require a secure random number generator.  Yet, generating random numbers in the naïve way as part of execution trivially destroys determinism as every node would compute different randomness.
-The IC solves this problem by the execution layer having access to a decentralised pseudorandom number generator called the *random tape*. The random tape is built using [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography). Every round, the subnetwork produces a fresh BLS signature which, by its very nature, is unpredictable and uniformly distributed.  This signature can then be used as seed in a cryptographic pseudorandom generator.  This gives canister smart contracts access to a highly-efficient and secure random number source, which is another unique feature of the Internet Computer. 
+The IC solves this problem by the execution layer having access to a decentralised pseudorandom number generator called the *random tape*. The random tape is built using [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography). Every round, the subnetwork produces a fresh threshold BLS signature which, by its very nature, is unpredictable and uniformly distributed.  This signature can then be used as seed in a cryptographic pseudorandom generator.  This gives canister smart contracts access to a highly-efficient and secure random number source, which is another unique feature of the Internet Computer. 
 
 
