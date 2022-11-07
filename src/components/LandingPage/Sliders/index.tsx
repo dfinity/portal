@@ -149,10 +149,10 @@ const Sliders = () => {
               <div className="flex-1"></div>
 
               <Link
-                href="/what-is-the-ic/"
+                href="/how-it-works/"
                 className="text-center button-outline-white self-start md:self-center"
               >
-                Check out ICP features
+                Check out how it works
               </Link>
             </div>
           </SliderCard>
