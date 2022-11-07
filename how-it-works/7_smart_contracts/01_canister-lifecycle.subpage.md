@@ -40,6 +40,4 @@ Controllers can update the code that runs on canisters by submitting a new Wasm 
 Of course, a canister may ensure at all times that the data that needs to be persisted across upgrades is stored in the stable memory in which case the upgrade process is significantly simpler. 
 
 
-[![Watch youtube video](https://i.ytimg.com/vi/c5nv6vIG3OQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=c5nv6vIG3OQ)
 
-This talk covers how to create canister smart contracts on the Internet Computer, how to install and upgrade their software, and how to top up canisters with cycles. 
