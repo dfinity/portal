@@ -1,5 +1,5 @@
 ---
-title: Inifinite scalability
+title: Infinite scalability
 ---
 
 ![](/img/how-it-works/resumption.600x300.jpg)
