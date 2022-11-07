@@ -4,7 +4,7 @@ the IC allows you to host Web 3.0 frontends for your dapps, using our [JavaScrip
 
 Here are some quick links to tutorials with example code for various stages of developing your frontend dapp:
 
--   A tutorial on building a React dapp [Customize the frontend](../custom-frontend.md)
+-   A tutorial on building a React dapp [Customize the frontend](./custom-frontend.md)
 
 -   Using [Candid](../../backend/hello-location.md#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
