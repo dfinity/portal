@@ -114,7 +114,21 @@ To update Candid file for this tutorial:
 
 2.  Open the `src/rust_profile_backend/rust_profile_backend.did` file in a text editor.
 
-3.  Copy and paste [these](../../_attachments/profile.did) `type` declaration and `service` definition for the `getSelf`, `update`, `get`, and `search` functions.
+3.  Copy and paste the following `Profile` type declaration and `service` definition for the `getSelf`, `update`, `get`, and `search` functions.
+    ```did
+    type Profile = record {
+        "name": text;
+        "description": text;
+        "keywords": vec text;
+    };
+
+    service : {
+        "getSelf": () -> (Profile) query;
+        "get": (text) -> (Profile) query;
+        "update": (Profile) -> ();
+        "search": (text) -> (opt Profile) query;
+    }
+    ```
 
 4.  Save your changes and close the file to continue.
 
