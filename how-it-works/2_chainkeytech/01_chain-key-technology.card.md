@@ -21,4 +21,3 @@ In addition, these threshold signatures are used as a way to create a source of 
 2. as a mechanism for pseudo-randomly selecting the leader in the IC consensus protocol, which enhances the efficiency and fairness properties of consensus.
 
 [Go deeper](/how-it-works/chain-key-technology/)
-
