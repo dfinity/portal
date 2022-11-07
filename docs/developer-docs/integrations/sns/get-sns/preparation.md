@@ -13,10 +13,16 @@ the right principals in order to set the SNS parameters.-->
 Finally, we will cover which parameters can be set and how this
 is done.
 
-<!-- As mentioned in [the overview](get-sns-intro.md), another technical preparation
-is that you might want to integrate parts of the SNS functionality into your dapp's frontend.
-As this is work independent of preparing the launch, we describe this topic on a 
-[separate page](../integrate-sns/frontend-integration.md).-->
+As mentioned in [the overview](get-sns-intro.md), another technical
+preparation is that you might want to integrate parts of the
+interaction with the SNS decentralization sale, with SNS governance,
+or with the ledger and index canister in your dapp.
+As this is work independent of preparing the launch, find more
+information on separate pages for the 
+[ledger canister integration](../integrate-sns/ledger-integration.md)
+and the
+[index canister integration](../integrate-sns/index-integration.md)
+(sale and governance frontend integration to follow).
 
 We refer to the next page for learning the detailed actions that are
 required 
@@ -124,7 +130,7 @@ An SNS is launched in the following stages:
    it was successful, e.g., enough ICP have been collected. If the sale was successful,
    the exchange rate is determined and all SNS tokens are given to the sale participants in
    neurons. Once all neurons are created, the SNS should be under decentralized control
-   and the pre-decentralization-sale mode is reverted. <!-- QUESTION: should we add here that this is subject to checks of the community?  -->
+   and the pre-decentralization-sale mode is reverted. 
    Thus, the governance canister is set to be fully functional.
    If the sale is not successful, the decentralization attempt failed and everything
    is reverted to the state before the SNS launch attempt, including that the dapp’s control

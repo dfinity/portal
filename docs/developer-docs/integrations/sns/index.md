@@ -36,7 +36,7 @@ In this documentation you will find
     * [Steps how to get an SNS in production](get-sns/get-sns-production.md)
   
 * Tips for how to **integrate with an SNS**, which includes
-  * [Guidelines how to integrate a frontend](integrate-sns/frontend-integration.md)
+  * Guidelines how to integrate a frontend <!--[Guidelines how to integrate a frontend](integrate-sns/frontend-integration.md)-->
   * [Guidelines how to integrate with the ledger canister](integrate-sns/ledger-integration.md)
   * [Guidelines how to integrate with the index canister](integrate-sns/index-integration.md)
 
