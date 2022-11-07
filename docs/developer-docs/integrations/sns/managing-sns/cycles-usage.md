@@ -35,7 +35,7 @@ The ledger spawning a new archive affects the cycles as follows:
 The ledger takes a predefined number _X_ of cycles from its current
 cycle balance and creates the archive with these _X_ cycles as the
 initial balance. The number _X_ is set when the SNS ledger canister is 
-first initialized.<!--(TODO: verify)-->
+first initialized.
 
 This specifically means that SNS communities should be aware of the
 following:
@@ -51,10 +51,10 @@ ledger blocks might be lost.
 
 To help SNS communities manage cycles, the SNS is initiated as follows:
 * SNS canisters are started with already a large number of cycles,
-  namely 180T <!-- TODO-->
+  namely 180T
 * the SNS ledger is started with 60T (2*30T) cycles such
   that when the first archive is spawn,
-  both should have roughtly 30T cycles (as have all other SNS
+  both should have roughly 30T cycles (as have all other SNS
   canisters when they are installed).
 
 
