@@ -33,7 +33,7 @@ In this documentation you will find
       which can be found under the "DAO and Tokenomics" documentation
       targeted at a less technical audience.
     * [Steps to Test the SNS locally](get-sns/local-testing.md)
-    * [Steps how to get an SNS in production](get-sns/get-sns-production.md)
+    * Steps how to get an SNS in production <!--[Steps how to get an SNS in production](get-sns/get-sns-production.md)-->
   
 * Tips for how to **integrate with an SNS**, which includes
   * Guidelines how to integrate a frontend <!--[Guidelines how to integrate a frontend](integrate-sns/frontend-integration.md)-->
@@ -42,12 +42,13 @@ In this documentation you will find
 
 * Guidelines for how to **manage an SNS**, which includes
   * [An introduction to managing an SNS](managing-sns/manage-sns-intro.md)
-  * [Informatino on nervous system parameters that can be configured
-    in each SNS](managing-sns/nervous-system-parameters.md)
-  * [Information no how SNS are upgraded](managing-sns/upgradeSNS.md)  
-  * [A guideline for SNS proposals](managing-sns/proposal-guide.md)
   * [Tips regarding cycles management for the cansiters](managing-sns/cycles-usage.md)
-
+  * Information on nervous system parameters that can be configured
+    in each SNS <!--[Information on nervous system parameters that can be configured
+    in each SNS](managing-sns/nervous-system-parameters.md)-->
+  * Information no how SNS are upgraded <!--[Information no how SNS are upgraded](managing-sns/upgradeSNS.md)-->  
+  * A guideline for SNS proposals <!--[A guideline for SNS proposals](managing-sns/proposal-guide.md)-->
+ 
 ## DAOs and Tokenomics documentation 
 This documentation is less technical.
 It targets for example developers who want to get an SNS and
@@ -65,14 +66,9 @@ In this documentation you will find
 * [Tips on what to consider before getting an
   SNS](../../../tokenomics/sns/predeployment-considerations.md)
 
-* [A guide how to participate in an SNS decentralization
-  sale](../../../tokenomics/sns/sale-interaction.md)
-* [A guide how to interact with an SNS](../../../tokenomics/sns/governance-interaction.md)
-  
-
 
 ## User Guides
-Finally, the Wiki contains information relevant for 
+Finally, the Wiki will contain information relevant for 
 users of the SNS.
 
 You will find
