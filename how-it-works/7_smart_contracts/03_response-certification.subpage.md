@@ -2,7 +2,7 @@
 title: Certified Variables
 abstract: 
 shareImage: /img/how-it-works/response-certification.600.jpg
-slug: response-certification1
+slug: response-certification
 ---
 
 # Certified Variables
