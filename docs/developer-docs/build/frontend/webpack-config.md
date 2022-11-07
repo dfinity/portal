@@ -12,7 +12,7 @@ Here are some quick links to tutorials with example code for various stages of d
 
 -   Using [React and compiled JavaScript](../custom-frontend.md) to embed HTML attributes and elements directly in a page.
 
--   Using [React and TypeScript](../my-contacts) to import CSS properties from an external file.
+-   Using [React and TypeScript](./my-contacts.md) to import CSS properties from an external file.
 
 ## How the default templates are used
 
