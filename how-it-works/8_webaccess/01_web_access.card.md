@@ -12,4 +12,4 @@ run 100% on-chain inheriting the security and decentralization of blockchain
 without sacrificing speed or affordability. This is possible because the IC can
 securely serve HTTP requests.
 
-[Go deeper](/features/serve-web-content/)
+[Go deeper](/how-it-works/web-access/)
