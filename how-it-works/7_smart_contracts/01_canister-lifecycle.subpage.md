@@ -39,4 +39,3 @@ The most common such operations are deploying a canister smart contract to the I
 Controllers can update the code that runs on canisters by submitting a new Wasm module which should replace the older one.  By default, updating the Wasm module of a canister wipes out the Wasm memory but the content of the stable memory remains unchanged. The IC offers an upgrade mechanism where three actions are executed atomically: serializing the Wasm memory of the canister and writing it to stable memory, installing the new Wasm code and then deserializing the content of the stable memory.
 Of course, a canister may ensure at all times that the data that needs to be persisted across upgrades is stored in the stable memory in which case the upgrade process is significantly simpler. 
 
-A canister can have no controllers: such canisters are completely immutable and resemble traditional smart contracts.
