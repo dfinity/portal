@@ -35,6 +35,10 @@ const comparison = [
     value: 17.4,
   },
   {
+    logo: "/img/basics/logos/logo-eth.svg",
+    value: 30.0,
+  },
+  {
     logo: "/img/basics/logos/logo-tezos.svg",
     value: 41.45,
   },
