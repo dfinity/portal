@@ -6,6 +6,6 @@ title: Network Nervous System
 
 # Network Nervous System
 
-The Network Nervous System (NNS) is the open algorithmic system governing the Internet Computer blockchain. Its most notable innovations include its ability to upgrade the Internet Computer protocol and software running on node machines, onboard new node providers, add node machines into the blockchain network, and create new subnet blockchains to increase capacity. Anyone can participate in the NNS by staking ICP tokens into one or more neurons. Neurons can submit proposals and decide to adopt or reject them. The NNS implements liquid democracy: neurons can follow other neurons a delegate voting power.
+The Internet Computer is a *decentralized* system run by many independent machines. These machines all have to know certain facts, for example to which subnet they contribute (the topology), which protocol version they should run, and when they should upgrade to a new protocol version. On the Internet Computer these decisions are made by an open, tokenized governance system that is called the *Network Nervous System (NNS)*. The NNS is one of the largest decentralized autonomous organizations (DAOs). Anyone can become a participant of the NNS and contribute to decisions by staking ICP tokens.
 
-[Go deeper](/how-it-works/network-nervous-system-nns/)
+[Go deeper](/nns/)
