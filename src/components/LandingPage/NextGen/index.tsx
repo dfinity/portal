@@ -46,8 +46,8 @@ export default function NextGenSection(): JSX.Element {
           Only Code.
         </motion.p>
         <motion.p className="mb-6" variants={transitions.item}>
-          <Link className="button-primary" href="/nns">
-            Governance on ICP
+          <Link className="button-primary" href="/sns">
+            DAO's on ICP
           </Link>
         </motion.p>
         {/* <motion.p className="mb-0" variants={transitions.item}>
