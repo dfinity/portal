@@ -608,7 +608,7 @@ function TokenHolders(): JSX.Element {
                 </p>
               </motion.div>
               <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-10"
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
                 variants={transitions.item}
               >
                 <h1 className="tw-title-sm">Join The Conversation</h1>

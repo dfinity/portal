@@ -22,7 +22,7 @@ const Card: React.FC<{
 }> = ({ title, children, icon }) => {
   return (
     <AnimateSpawn
-      className="sm:w-4/10 sm:even:self-end sm:-mt-64 md:-mt-10 sm:first:mt-0"
+      className="sm:w-4/10 sm:even:self-end sm:-mt-40 lg:-mt-20 sm:first:mt-0"
       variants={transitions.container}
     >
       <motion.div className="w-30 mb-4" variants={transitions.item}>
