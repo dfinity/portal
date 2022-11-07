@@ -220,8 +220,8 @@ const sidebars = {
                 },
                 items: [
                   "developer-docs/integrations/sns/get-sns/preparation",
-                  "developer-docs/integrations/sns/get-sns/local-testing",
-                  "developer-docs/integrations/sns/get-sns/get-sns-production"
+                  "developer-docs/integrations/sns/get-sns/local-testing"
+//                "developer-docs/integrations/sns/get-sns/get-sns-production"
                 ],
               },
               {
@@ -229,11 +229,11 @@ const sidebars = {
                 label: 'Integrate with an SNS',
                 link: {
                   type: "doc",
-                  id: "developer-docs/integrations/sns/integrate-sns/frontend-integration",
+                  id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
                 },
                 items: [
-                  "developer-docs/integrations/sns/integrate-sns/ledger-integration",
                   "developer-docs/integrations/sns/integrate-sns/index-integration"
+//                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
                 ],
               },
               {
@@ -244,9 +244,9 @@ const sidebars = {
                   id: "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
                 },
                 items: [
-              "developer-docs/integrations/sns/managing-sns/proposal-guide",
-              "developer-docs/integrations/sns/managing-sns/cycles-usage",
-              "developer-docs/integrations/sns/managing-sns/upgradeSNS"
+              "developer-docs/integrations/sns/managing-sns/cycles-usage"
+//            "developer-docs/integrations/sns/managing-sns/proposal-guide",
+//            "developer-docs/integrations/sns/managing-sns/upgradeSNS"
                 ]
               }
             ],
