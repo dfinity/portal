@@ -37,6 +37,7 @@ while the HTTP gateways can be run by anyone in the community ensuring complianc
 with local jurisdictions.
 [For more information check our updates in the forum.](https://forum.dfinity.org/t/boundary-node-roadmap/15562)
 
-In addition to the two endpoints, the boundary nodes provide to access the IC,
-the boundary nodes also provide caching to improve the performance of the dapps
-hosted on the IC.
+In addition to the two endpoints provided by the boundary nodes to access the IC,
+the boundary nodes also caches responses to requests to improve the performance
+of the dapps hosted on the IC.
+

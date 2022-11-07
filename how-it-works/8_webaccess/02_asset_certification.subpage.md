@@ -20,16 +20,19 @@ server’s public key.
 
 On the Internet Computer, this is done very similarly using the HTTP gateway
 protocol. Whenever a canister sends back a response, it includes a certificate
-to prove its authenticity. The client can then verify the signatures before it
-processes the response.
+to prove its authenticity. However, as canisters do not just run on a single
+server, but on an entire subnet (collection of nodes), this certificate is signed by
+that subnet. The client can then verify the signature using the subnet's public
+key before it processes the response.
 
 The HTTP gateway protocol and verification of the certificate can be implemented
-in any application. Currently, it is implemented in the service worker, which is
-served with every dapp and enables users to verify the authenticity of the IC’s
-responses directly in the browser. It is also implemented in the boundary node
-such that clients that do not support the service worker can still access the IC.
-In the future, the HTTP gateway protocol can be integrated into a
-IC-native browser or a web-extension.
+in any application. One example of such an application is the service worker,
+which enables users to verify the authenticity of the IC’s responses directly in
+the browser. It is also implemented in the boundary node such that clients that
+do not support the service worker can still access the IC. In the future, the
+HTTP gateway protocol can be integrated into an IC-native browser or a
+web-extension.
 
 
-For more information on certification, check [Certified Variables](/how-it-works/response-certification/).
+To use asset certification in a dapp as explained here, developers can rely on
+[Certified Variables](/how-it-works/response-certification/).
