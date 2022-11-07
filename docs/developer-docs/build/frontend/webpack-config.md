@@ -10,7 +10,7 @@ Here are some quick links to tutorials with example code for various stages of d
 
 -   Using [raw HTML and JavaScript](../backend/explore-templates.md#default-frontend) to display a simple HTML entry page.
 
--   Using [React and compiled JavaScript](../custom-frontend.md) to embed HTML attributes and elements directly in a page.
+-   Using [React and compiled JavaScript](./custom-frontend.md) to embed HTML attributes and elements directly in a page.
 
 -   Using [React and TypeScript](./my-contacts.md) to import CSS properties from an external file.
 
