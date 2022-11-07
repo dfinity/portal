@@ -4,15 +4,15 @@ the IC allows you to host Web 3.0 frontends for your dapps, using our [JavaScrip
 
 Here are some quick links to tutorials with example code for various stages of developing your frontend dapp:
 
--   A tutorial on building a React dapp [Customize the frontend](custom-frontend)
+-   A tutorial on building a React dapp [Customize the frontend](./custom-frontend.md)
 
--   Using [Candid](../backend/hello-location#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
+-   Using [Candid](../backend/hello-location.md#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
--   Using [raw HTML and JavaScript](../backend/explore-templates#default-frontend) to display a simple HTML entry page.
+-   Using [raw HTML and JavaScript](../backend/explore-templates.md#default-frontend) to display a simple HTML entry page.
 
--   Using [React and compiled JavaScript](custom-frontend) to embed HTML attributes and elements directly in a page.
+-   Using [React and compiled JavaScript](./custom-frontend.md) to embed HTML attributes and elements directly in a page.
 
--   Using [React and TypeScript](my-contacts) to import CSS properties from an external file.
+-   Using [React and TypeScript](./my-contacts.md) to import CSS properties from an external file.
 
 ## How the default templates are used
 
