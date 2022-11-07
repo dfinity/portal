@@ -137,13 +137,12 @@ const Storage: React.FC = () => {
   return (
     <section className=" bg-[#A4497F00]">
       <div className="h-[250vh]" ref={ref}>
-        <div className="container-12 text-white md:mt-24 md:mb-40">
+        <div className="container-12 text-white md:mt-24 md:mb-10">
           <h2 className="tw-heading-4 md:tw-heading-60 md:w-6/10 md:mb-8">
             On-chain efficiency comparison
           </h2>
           <p className="tw-lead-sm md:tw-lead md:w-6/10">
-            Relative cost of storing data inside smart contracts. Compared with
-            US$ and CO2 Emissions.
+            Relative cost of storing data inside smart contracts measured in USD.
           </p>
         </div>
         <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white overflow-hidden">

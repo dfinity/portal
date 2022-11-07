@@ -149,7 +149,7 @@ const Sliders = () => {
               <div className="flex-1"></div>
 
               <Link
-                href=""
+                href="/what-is-the-ic/"
                 className="text-center button-outline-white self-start md:self-center"
               >
                 Check out ICP features
