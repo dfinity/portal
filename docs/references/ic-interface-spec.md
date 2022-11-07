@@ -630,7 +630,7 @@ The `<effective_canister_id>` in the URL paths of requests is the *effective* de
 
 -   If the request is an update call to a canister that is not the Management Canister (`aaaaa-aa`) or if the request is a query call, then the effective canister id must be the `canister_id` in the request.
 
-    ::: note
+    :::note
     The expectation is that user-side agent code shields users and developers from the notion of effective canister ID, in analogy to how the System API interface shields canister developers from worrying about routing.
 
     The Internet Computer blockchain mainnet rejects all requests whose effective canister id is in no subnet's canister ranges, independently of whether the remaining conditions on the effective canister id are satisfied.
@@ -2115,7 +2115,7 @@ The following interface description, in [Candid syntax](https://github.com/dfini
 
 Only canisters that use the "Upgrade to update calls" feature need to provide the `http_request_update` method.
 
-::: note
+:::note
 Canisters not using these features can completely leave out the `streaming_strategy` and/or `upgrade` fields in the `HttpResponse` they return, due to how Candid subtyping works. This might simplify their code.
 :::
 
@@ -2170,7 +2170,7 @@ The Gateway assembles the HTTP response from the given `HttpResponse` record:
 +
 NOTE: Not all Gateway implementations may be able to pass on all forms of headers. In particular, Service Workers are unable to pass on the `Set-Cookie` header.
 +
-::: note
+:::note
 HTTP Gateways may add additional headers. In particular, the following headers may be set:
   access-control-allow-origin: *
   access-control-allow-methods: GET, POST, HEAD, OPTIONS
