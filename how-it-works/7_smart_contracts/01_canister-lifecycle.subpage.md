@@ -9,7 +9,7 @@ slug: canister-lifecycle
 
 ## What are canisters
 On the Internet Computer smart contracts come in the form of canisters.  These are computational units which bundle together code and state. Canisters expose endpoints which can be called both by other canisters and by parties external to the IC, such as browsers or mobile apps.  There are two types of endpoints. Updates are calls that can modify the state of the canisters and queries which cannot do that. A good mental model for these is that updates are used to write to the state of a canister and queries are used to read from that state.
-The code of a canister consists of a Wasm module. The state consists of the usual heap of the Wasm module, together with stable memory, a special type of memory which plays an important role in the life-cycle of a canister.
+The code of a canister consists of a [WebAssembly](https://webassembly.org/) (Wasm) module. The state consists of the usual heap of the Wasm module, together with stable memory, a special type of memory which plays an important role in the life-cycle of a canister.
 
 ## How do canisters work
 
@@ -30,11 +30,13 @@ When canisters run out of cycles, they are uninstalled (their code and state are
 
 ## Canister management
 
-Canisters are managed by controllers which can be users or even other canisters. Controllers are in charge of deploying and maintaining the canisters to the IC and they are the only entities who are allowed to perform management operations on canisters.
+Canisters are managed by controllers which can be users or even other canisters.
+The control structure of canisters could be centralized (e.g. when the controllers include some centralized entity), descentralized (when the controller is a DAO) or even not existent, in which case the canister is an immutable smart contract.
+Controllers are in charge of deploying and maintaining the canisters to the IC and they are the only entities who are allowed to perform management operations on canisters.
 The most common such operations are deploying a canister smart contract to the IC and  starting and stopping canisters. The controller of canisters can change the canister parameters, including adding and removing controllers or changing the freezing threshold.
 
 
-Controllers can update the code that runs on canisters by submitting a new Wasm module which should replace the older one.  By default, updating the Wasm module of a canister wipes out the heap but the content of the stable memory remains unchanged. The IC offers an upgrade mechanism where three actions are executed atomically: serializing the heap of the canister and writing it to stable memory, installing the new Wasm code and then deserializing the content of the stable memory.
+Controllers can update the code that runs on canisters by submitting a new Wasm module which should replace the older one.  By default, updating the Wasm module of a canister wipes out the Wasm memory but the content of the stable memory remains unchanged. The IC offers an upgrade mechanism where three actions are executed atomically: serializing the Wasm memory of the canister and writing it to stable memory, installing the new Wasm code and then deserializing the content of the stable memory.
 Of course, a canister may ensure at all times that the data that needs to be persisted across upgrades is stored in the stable memory in which case the upgrade process is significantly simpler. 
 
 A canister can have no controllers: such canisters are completely immutable and resemble traditional smart contracts.
