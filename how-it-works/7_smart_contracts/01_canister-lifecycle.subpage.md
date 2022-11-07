@@ -31,13 +31,11 @@ When canisters run out of cycles, they are uninstalled (their code and state are
 ## Canister management
 
 Canisters are managed by controllers which can be users or even other canisters.
-The control structure of canisters could be centralized (e.g. when the controllers include some centralized entity), descentralized (when the controller is a DAO) or even not existent, in which case the canister is an immutable smart contract.
+The control structure of canisters could be centralized (e.g. when the controllers include some centralized entity), decentralized (when the controller is a DAO) or even non-existent, in which case the canister is an immutable smart contract.
 Controllers are in charge of deploying and maintaining the canisters to the IC and they are the only entities who are allowed to perform management operations on canisters.
 The most common such operations are deploying a canister smart contract to the IC and  starting and stopping canisters. The controller of canisters can change the canister parameters, including adding and removing controllers or changing the freezing threshold.
 
 
 Controllers can update the code that runs on canisters by submitting a new Wasm module which should replace the older one.  By default, updating the Wasm module of a canister wipes out the Wasm memory but the content of the stable memory remains unchanged. The IC offers an upgrade mechanism where three actions are executed atomically: serializing the Wasm memory of the canister and writing it to stable memory, installing the new Wasm code and then deserializing the content of the stable memory.
 Of course, a canister may ensure at all times that the data that needs to be persisted across upgrades is stored in the stable memory in which case the upgrade process is significantly simpler. 
-
-
 
