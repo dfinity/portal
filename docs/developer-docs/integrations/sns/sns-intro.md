@@ -153,8 +153,8 @@ In the future, cycles management will be simplified in a new feature that
 allows canister groups, where cycles can be managed across different canisters.
 
 We plan to create separate pages where you will be able to
-find more details regarding 
-[how 
-to upgrade SNS canister](./managing-sns/upgradeSNS.md),
-[set SNS parameters](./managing-sns/nervous-system-parameters.md),
+find more details regarding <!--[how 
+to upgrade SNS canisters](./managing-sns/upgradeSNS.md),
+[set SNS parameters](./managing-sns/nervous-system-parameters.md),-->
+how to upgrade SNS canisters, set SNS parameters,
 and [manage cycles](./managing-sns/cycles-usage.md).
