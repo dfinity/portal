@@ -40,7 +40,7 @@ export default function NextGenSection(): JSX.Element {
           No legal headache.
         </motion.p>
         <motion.p
-          className="tw-heading-6 md:tw-heading-4 mb-3"
+          className="tw-heading-6 md:tw-heading-4 mb-8"
           variants={transitions.item}
         >
           Only Code.
