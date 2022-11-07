@@ -31,7 +31,7 @@ When canisters run out of cycles, they are uninstalled (their code and state are
 ## Canister management
 
 Canisters are managed by controllers which can be users or even other canisters.
-The control structure of canisters could be centralized (e.g. when the controllers include some centralized entity), descentralized (when the controller is a DAO) or even not existent, in which case the canister is an immutable smart contract.
+The control structure of canisters could be centralized (e.g. when the controllers include some centralized entity), decentralized (when the controller is a DAO) or even non-existent, in which case the canister is an immutable smart contract.
 Controllers are in charge of deploying and maintaining the canisters to the IC and they are the only entities who are allowed to perform management operations on canisters.
 The most common such operations are deploying a canister smart contract to the IC and  starting and stopping canisters. The controller of canisters can change the canister parameters, including adding and removing controllers or changing the freezing threshold.
 
