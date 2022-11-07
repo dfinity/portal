@@ -362,7 +362,7 @@ function SnsPage() {
           <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
             <Link
               className="md:w-7/10 h-full flex relative group"
-              href="https://youtu.be/5mjzq3t6AuY"
+              href="https://youtu.be/nZBWx6y070Y"
             >
               <img
                 src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
