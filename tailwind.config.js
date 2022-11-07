@@ -168,8 +168,8 @@ module.exports = {
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
+                '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
-                //
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
             };
