@@ -1,6 +1,6 @@
 # Index Canister
 
-The index canister keep track of each transaction stored by the 
+The index canister keeps track of each transaction stored by the 
 [ledger canister](ledger-integration.md).
 
 At each heartbeat, the index canister will query the transactions from
@@ -16,6 +16,15 @@ of the ledger canister to index:
 type InitArgs = record {
 ledger_id : principal;
 };
+```
+
+Example with `dfx`:
+
+```shell
+dfx deploy icrc1-index --argument "(record {
+      ledger_id = principal \"rrkah-fqaaa-aaaaa-aaaaq-cai\"
+    }
+)"
 ```
 
 ## Usage
