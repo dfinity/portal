@@ -4,7 +4,7 @@ title: Boundary nodes
 
 ![](/img/how-it-works/outcalls.600x300.png)
 
-# Boundary Nodes
+# Boundary nodes
 
 The boundary nodes are the gateway to the Internet Computer and enable seamless
 access to the canister smart contracts with stock browsers. They provide an HTTP
