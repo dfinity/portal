@@ -21,10 +21,14 @@ module.exports = {
         "7/10": "70%",
         "8/10": "80%",
         "9/10": "90%",
+        "1/12": "8.333333%",
+        "2/12": "16.666666666%",
+        "3/12": "25%",
       },
       margin: {
         "1/12": "8.333333%",
         "2/12": "16.666666666%",
+        "3/12": "25%",
       },
       padding: {
         "2/3": "33.333333%",
@@ -68,6 +72,8 @@ module.exports = {
         60: "rgba(255, 255, 255, 0.6)",
         50: "rgba(255, 255, 255, 0.5)",
         30: "rgba(255, 255, 255, 0.3)",
+        20: "rgba(255, 255, 255, 0.2)",
+        15: "rgba(255, 255, 255, 0.15)",
       },
       green: {
         DEFAULT: "#18D0B5",
@@ -87,7 +93,7 @@ module.exports = {
     },
     fontSize: {
       // bold
-      "heading-1": ["120px", "110px"],
+      "heading-1": ["100px", "110px"],
       "heading-2": ["75px", "85px"],
       "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
@@ -125,6 +131,7 @@ module.exports = {
         {
           values: Object.assign(theme("bgGradientDeg", {}), {
             100: "100deg",
+            30: "30deg",
           }),
         }
       );
@@ -160,9 +167,9 @@ module.exports = {
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
+                '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
-                //
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
             };
