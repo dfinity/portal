@@ -27,8 +27,9 @@ There are many ways to implement the HTTP Gateway protocol. Currently, there are
 There are a few other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension. The chromium browser could also be modified to include HTTP Gateway as part of the browser. 
 
 ## SEO
-The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using SEO features of the Internet Computer can be found in this [blog post](https://6zvwc-sqaaa-aaaal-aalma-cai.raw.ic0.app/d/prepare-your-dapps-for-social-platform-and-seo). 
+The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33) and this [blog post](https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853). 
 
+[Serving Web Content](https://internetcomputer.org/features/serve-web-content/)
 
 [![Watch youtube video](https://i.ytimg.com/vi/JAQ1dkFvfPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
