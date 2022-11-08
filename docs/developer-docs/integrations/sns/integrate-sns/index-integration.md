@@ -1,16 +1,19 @@
-# Index Canister
+# SNS Index Canister
 
-The index canister keeps track of each transaction stored by the 
-[ledger canister](ledger-integration.md).
+Each SNS is deployed with an index canister that keeps track of each transaction stored by the [ledger canister](ledger-integration.md), sorted by ledger accounts.
+This canister is useful for applications that want to filter transactions by users and/or accounts.
 
-At each heartbeat, the index canister will query the transactions from
+Regularly (at each heartbeat), the index canister will query the transactions from
 the ledger canister, then build the index
 of known transaction per account.
 
 ## Initialisation
 
+This sections explains how to deploy an index canister in isolation.
+You can also deploy a full SNS, which will be deployed with an SNS index canister.
+
 The index canister initialisation requires the principal
-of the ledger canister to index:
+of the ICRC-1 ledger canister to index:
 
 ```
 type InitArgs = record {
