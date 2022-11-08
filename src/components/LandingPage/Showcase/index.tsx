@@ -57,8 +57,8 @@ export default function ShowcaseSection(): JSX.Element {
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">
                 <RotatedDappsHeadline
-                  interval={2500}
-                  lines={["DeFi", "Gaming", "NFT"]}
+                  interval={2000}
+                  lines={["DeFi", "SoFi" "Gaming", "NFT"]}
                 ></RotatedDappsHeadline>
               </span>
               <span>on True Web3</span>
