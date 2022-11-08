@@ -80,7 +80,7 @@ To do this, you need a wallet with sufficient cycles.
 In an SNS, can look for people who donate cycles in this way.
 Otherwise, you can make a proposal that transfers some ICP
 from the SNS treasury to an individual who is 
-trusted to converte these to cycles and make such payments.
+trusted to convert these to cycles and make such payments.
 <!--You can create such a proposal as follows TODO-->
 
 <!--## Helpful community tools
