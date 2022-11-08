@@ -34,3 +34,5 @@ Suppose a protocol upgrade of the subnet is supposed to be done at the beginning
 [Whitepaper, see Section 8](https://internetcomputer.org/whitepaper.pdf)
 
 [![Watch youtube video](https://i.ytimg.com/vi/mPjiO2bk2lI/maxresdefault.jpg)](https://www.youtube.com/watch?v=mPjiO2bk2lI)
+
+[![Watch youtube video](https://i.ytimg.com/vi/oEEPLJVX5DE/maxresdefault.jpg)](https://www.youtube.com/watch?v=oEEPLJVX5DE)

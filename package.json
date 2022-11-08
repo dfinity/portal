@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "docusaurus start --host 0.0.0.0",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
+    "serve": "docusaurus serve --host 0.0.0.0",
     "netlify-dev": "netlify dev",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
@@ -50,6 +50,7 @@
     "remark-math": "^3.0.1",
     "sass": "^1.53.0",
     "slugify": "^1.6.5",
+    "uuid": "^9.0.0",
     "webpack": "^5.72.0"
   },
   "devDependencies": {
