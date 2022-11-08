@@ -240,10 +240,11 @@ const sidebars = {
                 label: 'Manage an SNS',
                 link: {
                   type: "doc",
-                  id: "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+                  id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
                 },
                 items: [
               "developer-docs/integrations/sns/managing-sns/cycles-usage"
+//            "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
 //            "developer-docs/integrations/sns/managing-sns/proposal-guide",
 //            "developer-docs/integrations/sns/managing-sns/upgradeSNS"
                 ]
