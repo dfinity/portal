@@ -53,7 +53,7 @@ In this documentation you will find
 This documentation is less technical.
 It targets for example developers who want to get an SNS and
 have to make certain non-technical decisions too.
-It also targets interestd developers who would like to understand
+It also targets interested developers who would like to understand
 the tokenomics of an SNS better.
 
 In this documentation you will find
