@@ -44,7 +44,7 @@ The SNS ledger canister automatically spawns new archive
 canisters.
 When this happens, the cycles balance of these new canisters has
 to be managed. The ledger's cycles balance decreases by a 
-significat amount if a new archive is spawn.
+significat amount if a new archive is spawned.
 If an archive canister runs out of cycles,
 ledger blocks might be lost.
 :::
