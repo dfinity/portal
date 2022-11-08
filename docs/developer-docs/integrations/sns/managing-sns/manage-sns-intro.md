@@ -18,7 +18,7 @@ who would like to actively help managing the SNS.
 :::
 
 On this page we will introduce a 
-few sapect that are relevant for _managing_ an SNS.
+few aspects that are relevant for _managing_ an SNS.
 As we complete more detailed pages for these different 
 topics, we will link to them here.
 
