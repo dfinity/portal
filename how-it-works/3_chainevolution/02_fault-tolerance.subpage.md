@@ -8,7 +8,7 @@ slug: fault-tolerance
 # Fault tolerance
 
 
-In today’s world, softwares and networks crash surprising often. This could be because of software bugs, improper error handling, power failure, etc. The Internet Computer is designed to be fault tolerant. In other words, the network will make progress even if some nodes fail or misbehave. 
+Whether due to hardware failure, bugs, power outages, or even attacks: Individual nodes may always crash. The Internet Computer is designed to be fault tolerant, which means that the network will make progress even if some nodes fail or misbehave. 
 
 ## Handling Node Failures
 The nodes in the Internet Computer are divided into subnets. The nodes in a subnet together maintain a blockchain. In each round, a block is proposed by the consensus layer, and the messages in the block are processed later by the execution layer. The proposed block and the resulting state needs to be signed by at least 2/3rd of the nodes in the subnet in order to make progress. As long as less than 1/3rd of the nodes in a subnet fail or misbehave, the subnet will continue making progress. 
