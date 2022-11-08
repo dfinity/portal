@@ -157,7 +157,8 @@ with each other, you can use a tool that validates your input file.
 
 **To create the SNS parameter yaml file and validate it, follow the steps
 'Deployment Arguments' in the
-[SNS CLI tool](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli).**
+[SNS CLI tool](https://gitlab.com/dfinity-lab/public/ic/-/tree/master/rs/sns/cli).
+The tool is also available through the dfx cache like this: `$(dfx cache show)/sns`**
 
 To give you an overview, these are the categories of parameters that you can set:
 1. Parameters of the _SNS governance canister_. These are parameters of the governance
