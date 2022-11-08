@@ -30,10 +30,16 @@ When a subnet fails, we need manual intervention to recover the subnet. In a nut
 
 Each node runs 2 softwares — (1) Replica and (2) Orchestrator. Replica consists of the 4-layer software stack that maintains the blockchain. Orchestrator downloads and manages the replica software. The orchestrator regularly queries the NNS registry for any updates. If the orchestrator observes a new CUP in the registry, then the orchestrator restarts the replica software with the newly created CUP as input. As described earlier, the CUP at height h has information relevant to resume the consensus from height h. Once the replica starts, it will initiate a “state sync protocol” if it observes that the blockchain state hash in the CUP differs from the local state hash. Once the state is synced, it will resume processing consensus blocks. 
 
-This process of recovering a subnet is often termed as “disaster recovery” in many Internet Computer docs. 
+
+Note that this recovery process requires submitting a proposal in NNS, and therefore works only for recovering regular subnets (not NNS). This process of recovering a subnet is often termed as “disaster recovery” in many Internet Computer docs. 
+
+## Handling NNS Canister Failures
+The Internet Computer has a special subnet called the [Network Nervous System](https://internetcomputer.org/how-it-works/#Network-Nervous-System) (NNS) which hosts a lot of canisters that govern the entire Internet Computer. This includes the root canister, governance canister, ledger canister, registry canister, etc. The governance canister is used to maintain the NNS proposals and their votes. The ledger canister is used to maintain the ownership information of ICP tokens. The registry canister is used to store the configuration of each node and subnet in the Internet Computer. All these canisters are crucial for the entire Internet Computer to function properly. 
+
+Suppose a canister in the NNS fails while the NNS subnet continues to make progress. This could be due to a software bug in the canister’s code. We then need to “upgrade” the canister, i.e., restart the canister with a new Web Assembly (WASM) code. Generally speaking, each canister in the Internet Computer has a (possibly empty) list of “controllers”. The controller has the right to upgrade the canister’s WASM code by sending a request to the subnet’s management canister. The lifeline canister is assigned as a controller for the root canister. The root canister is assigned as a controller for all the other NNS canisters. The root canister has a method to upgrade other NNS canisters (via calling the management canister). Similarly, the lifeline canister has a method to upgrade the root canister (via calling the management canister). 
+
+Suppose the governance canister is working. Then we can manually submit an NNS proposal to call the root/lifeline canister’s method to upgrade the failed canister. Anyone who staked ICP can vote on the proposal. If a majority of the voters accept, then the failed canister will be upgraded. 
 
 [![Watch youtube video](https://i.ytimg.com/vi/H7HCqonSMFU/maxresdefault.jpg)](https://www.youtube.com/watch?v=H7HCqonSMFU)
 
 [![Watch youtube video](https://i.ytimg.com/vi/WaNJINjGleg/maxresdefault.jpg)](https://www.youtube.com/watch?v=WaNJINjGleg)
-
-[![Watch youtube video](https://i.ytimg.com/vi/oEEPLJVX5DE/maxresdefault.jpg)](https://www.youtube.com/watch?v=oEEPLJVX5DE)
