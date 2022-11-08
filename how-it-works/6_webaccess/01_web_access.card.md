@@ -4,7 +4,7 @@ title: Serving Web content
 
 ![](/img/how-it-works/canister-lifecycle.600x300.jpg)
 
-# Smart Contracts Web content
+# Smart Contracts Serve the Web
 
 The Internet Computer is the only blockchain that can host a full dapp – frontend,
 backend and data. This is a crucial and distinguishing feature allowing dapps to
