@@ -303,14 +303,14 @@ We're calling this the "shared local network."  `dfx start` and `dfx stop` will 
 
 We recommend that you remove the `local` network definition from dfx.json and instead use the shared local network.  As mentioned above, doing so will make dfx use port 4943 rather than port 8000.
 
-See [Local Server Configuration](docs/cli-reference/dfx-start.md#local-server-configuration) for details.
+See [Local Server Configuration](../../../references/cli-reference/cli-reference/dfx-start.md#local-server-configuration) for details.
 
 dfx now stores data and control files in one of three places, rather than directly under `.dfx/`:
 - `.dfx/network/local` (for projects in which dfx.json defines the local network)
 - `$HOME/.local/share/dfx/network/local` (for the shared local network on Linux)
 - `$HOME/Library/Application Support/org.dfinity.dfx/network/local` (for the shared local network on MacOS)
 
-There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its [schema](docs/networks-json-schema.json) is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](docs/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
+There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its schema is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](../../../references/cli-reference/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
 
 ### fix: `dfx start` and `dfx stop` will take into account dfx/replica processes from dfx <= 0.11.x
 
