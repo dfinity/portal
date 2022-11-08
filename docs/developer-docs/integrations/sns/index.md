@@ -26,7 +26,7 @@ In this documentation you will find
 
 * Information on how to **get an SNS**, which includes
     * [An introduction how to get an SNS](get-sns/get-sns-intro.md) which
-      exlains the high level stages of gettin an SNS
+      explains the high level stages of getting an SNS
     * [Technical preparations for getting an SNS](get-sns/preparation.md) which
       describes the technical steps required before getting an SNS. here
       We also link to non-technical steps that we recommend,
