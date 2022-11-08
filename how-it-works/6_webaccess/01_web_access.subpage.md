@@ -22,14 +22,18 @@ We now have a way for canisters to serve web content. However, the browser only 
 The browser sends a http request to the http gateway. The gateway first interprets the URL in the http request, extracts the corresponding canister id and queries the canister. When the canister sends back a response, the http gateway interprets the response, verifies the signatures, converts into a http response and sends it to the browser. 
 
 There are many ways to implement the HTTP Gateway protocol. Currently, there are 2 implementations. 
-* The gateway protocol is implemented as a [service worker](https://web.dev/learn/pwa/service-workers/). When the user enters a URL such as http://\<canister id\>.ic0.app, the browser calls the DNS service to resolve the query. Currently, the DNS maps the ic0.app domain to the [boundary nodes](https://internetcomputer.org/how-it-works/#boundary-nodes/) of the Internet Computer. When the browser makes a request to a boundary node, it responds with a service worker that implements HTTP Gateway protocol. The browser then installs the service worker. From then on, whenever the user makes a request to http://\<canister id\>.ic0.app, the browser passes on the request to the service worker.
+* The gateway protocol is implemented as a [service worker](https://web.dev/learn/pwa/service-workers/). When the user enters a URL such as http://\<canister id\>.ic0.app, the browser calls the DNS service to resolve the query. Currently, the DNS maps the ic0.app domain to the [boundary nodes](https://internetcomputer.org/how-it-works/boundary-nodes/) of the Internet Computer. When the browser makes a request to a boundary node, it responds with a service worker that implements HTTP Gateway protocol. The browser then installs the service worker. From then on, whenever the user makes a request to http://\<canister id\>.ic0.app, the browser passes on the request to the service worker.
 * Boundary nodes also implement the HTTP Gateway protocol. When the user enters a URL such as http://\<canister id\>.raw.ic0.app, the browser sends the http request to the boundary node, which acts as a http gateway. 
 There are a few other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension. The chromium browser could also be modified to include HTTP Gateway as part of the browser. 
 
 ## SEO
 The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33) and this [blog post](https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853). 
 
-[Serving Web Content](https://internetcomputer.org/features/serve-web-content/)
+[Serving web content](https://internetcomputer.org/features/serve-web-content/)
+[Building a front-end dapp on the IC](https://medium.com/dfinity/building-a-front-end-dapp-on-the-internet-computer-55985f0a595b)
+[Hosting a static website on the IC](https://internetcomputer.org/docs/current/samples/host-a-website/)
+[HTTP Gateway Protocol](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway)
+[Web Serving Wiki Article](https://wiki.internetcomputer.org/wiki/Web_Serving)
 
 [![Watch youtube video](https://i.ytimg.com/vi/JAQ1dkFvfPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
