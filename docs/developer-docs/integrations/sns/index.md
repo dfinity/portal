@@ -46,7 +46,7 @@ In this documentation you will find
   * Information on nervous system parameters that can be configured
     in each SNS <!--[Information on nervous system parameters that can be configured
     in each SNS](managing-sns/nervous-system-parameters.md)-->
-  * Information no how SNS are upgraded <!--[Information no how SNS are upgraded](managing-sns/upgradeSNS.md)-->  
+  * Information on how SNS are upgraded <!--[Information on how SNS are upgraded](managing-sns/upgradeSNS.md)-->  
   * A guideline for SNS proposals <!--[A guideline for SNS proposals](managing-sns/proposal-guide.md)-->
  
 ## DAOs and Tokenomics documentation 
