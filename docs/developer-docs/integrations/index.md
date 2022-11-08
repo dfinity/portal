@@ -8,8 +8,8 @@ The latter contains
 
 * [A technical introduction to the SNS](./sns/sns-intro.md)
 * [Information on how to get an SNS](./sns/get-sns/get-sns-intro.md)
-* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration) and [index canister](./sns/integrate-sns/index-integration)
-* [Information on how to manage an SNS](./sns/managing-sns/nervous-system-parameters)
+* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration.md) and [index canister](./sns/integrate-sns/index-integration.md)
+* [Information on how to manage an SNS](./sns/managing-sns/manage-sns-intro.md)
 
 ## Bitcoin Integration
 Integrate directly with the Bitcoin network allowing canisters on the IC to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network.
