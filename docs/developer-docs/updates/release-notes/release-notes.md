@@ -303,7 +303,7 @@ We're calling this the "shared local network."  `dfx start` and `dfx stop` will 
 
 We recommend that you remove the `local` network definition from dfx.json and instead use the shared local network.  As mentioned above, doing so will make dfx use port 4943 rather than port 8000.
 
-See [Local Server Configuration](../../../references/cli-reference/cli-reference/dfx-start.md#local-server-configuration) for details.
+See [Local Server Configuration](../../../references/cli-reference/dfx-start.md#local-server-configuration) for details.
 
 dfx now stores data and control files in one of three places, rather than directly under `.dfx/`:
 - `.dfx/network/local` (for projects in which dfx.json defines the local network)
