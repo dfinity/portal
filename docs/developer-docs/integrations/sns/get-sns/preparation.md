@@ -136,7 +136,6 @@ An SNS is launched in the following stages:
    is reverted to the state before the SNS launch attempt, including that the dapp’s control
    is handed back to you (i.e., the original developers of the dapp), and the 
    collected ICP are refunded to the sale participants.
-
    
 ## Setting the SNS parameters {#setting-parameters}
 As mentioned above, the first step in getting an SNS is to set the parameters that

@@ -1,10 +1,10 @@
 ---
-title: Execution Layer
+title: Execution
 ---
 
 ![](/img/how-it-works/overview-of-the-internet-computer.600x300.jpg)
 
-# Execution layer
+# Execution
 
 The execution layer, the topmost layer of the core IC protocol stack, is responsible for executing canister smart contract code.
 Code execution is done by a [*WebAssembly (Wasm)*](https://webassembly.org/) virtual machine deployed on every node.
