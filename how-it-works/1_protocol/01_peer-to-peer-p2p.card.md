@@ -1,5 +1,5 @@
 ---
-title: Peer-to-peer layer
+title: Peer-to-peer
 ---
 
 ![](/img/how-it-works/peer-to-peer-p2p.600x300.jpg)
