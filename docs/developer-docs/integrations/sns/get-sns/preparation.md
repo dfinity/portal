@@ -231,7 +231,7 @@ sold.
 As mentioned, the parameters of the decentralization sale are 
 set in the NNS proposal that starts the sale.
 
-They included configurations such as the minimum number of 
+They include configurations such as the minimum number of 
 ICP tokens that the sale must collect to be successful and the
    maximum number of ICP tokens that it will collect.
    Another important parameter is the set of fallback controllers of the dapp.
