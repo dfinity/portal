@@ -207,9 +207,10 @@ const sidebars = {
             label: 'Service Nervous System (SNS)',
             link: {
               type: "doc",
-              id: "developer-docs/integrations/sns/sns-intro",
+              id: "developer-docs/integrations/sns/index",
             },
             items: [
+              "developer-docs/integrations/sns/sns-intro",
               {
                 type: 'category',
                 label: 'Get an SNS',
@@ -223,17 +224,17 @@ const sidebars = {
 //                "developer-docs/integrations/sns/get-sns/get-sns-production"
                 ],
               },
-              {
-                type: 'category',
-                label: 'Integrate with an SNS',
-                link: {
-                  type: "doc",
-                  id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
-                },
-                items: [
-                  "developer-docs/integrations/sns/integrate-sns/index-integration"
-//                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
-                ],
+//               {
+//                 type: 'category',
+//                 label: 'Integrate with an SNS',
+//                 link: {
+//                   type: "doc",
+//                   id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+//                 },
+//                 items: [
+//                   "developer-docs/integrations/sns/integrate-sns/index-integration"
+// //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
+//                 ],
               },
               {
                 type: 'category',
