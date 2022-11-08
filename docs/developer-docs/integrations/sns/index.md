@@ -57,14 +57,10 @@ It also targets interested developers who would like to understand
 the tokenomics of an SNS better.
 
 In this documentation you will find
-* [An introduction to DAOs and
-  SNSs](../../../tokenomics/sns/sns-intro-tokens.md)
-* [An introduction to tokenomics of 
-  DAOs](../../../tokenomics/sns/tokenomics.md)
-* [An introduction to SNS 
-  rewards](../../../tokenomics/sns/rewards.md)
-* [Tips on what to consider before getting an
-  SNS](../../../tokenomics/sns/predeployment-considerations.md)
+* [An introduction to DAOs and SNSs](../../../tokenomics/sns/sns-intro-tokens.md)
+* [An introduction to tokenomics of DAOs](../../../tokenomics/sns/tokenomics.md)
+* [An introduction to SNS rewards](../../../tokenomics/sns/rewards.md)
+* [Tips on what to consider before getting an SNS](../../../tokenomics/sns/predeployment-considerations.md)
 
 
 ## User Guides
