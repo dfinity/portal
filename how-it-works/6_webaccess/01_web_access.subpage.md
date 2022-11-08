@@ -4,6 +4,7 @@ abstract:
 shareImage: /img/how-it-works/smart-contracts-serve-the-web.600.jpg
 slug: smart-contracts-serve-the-web
 ---
+# Smart Contracts Serve the Web
 
 Smart contracts are software programs that run on a blockchain. In the general design of blockchain apps, the backend is hosted as a smart contract, whereas the frontend is hosted on cloud. Blockchains are generally incapable of hosting the frontend. This is because our web browser does not know how to communicate with a blockchain and obtain the HTML, CSS and Javascript frontend pages. 
 
