@@ -247,9 +247,9 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust", "javascript"],
     level: "beginner",
     contentType: ["documentation"],
-    body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
+    body: "Demonstrates how to deploy a web game on the IC.",
     links: {
-      docs: "/docs/current/samples/host-unity-webgl",
+      docs: "/docs/current/samples/host-a-webgame",
     },
   },
 ];

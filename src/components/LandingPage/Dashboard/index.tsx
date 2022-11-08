@@ -9,6 +9,11 @@ import {
   getBlockCount,
   getTransactionRate,
 } from "@site/src/utils/network-stats";
+import clsx from "clsx";
+import ExternalLinkIcon from "@site/static/img/external-link.svg";
+import transitions from "@site/static/transitions.json";
+import AnimateSpawn from "../../Common/AnimateSpawn";
+import useGlobalData from "@docusaurus/useGlobalData";
 
 const container = {
   hidden: { opacity: 0, transition: { duration: 1 } },
@@ -93,6 +98,7 @@ function Dashboard() {
     transactionRate: 0,
     cost: 0.46,
   });
+
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.2 });
   useEffect(() => {
@@ -123,47 +129,61 @@ function Dashboard() {
     };
   }, []);
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={container}
-      className={styles.main}
-    >
-      <a className={styles.anchor} id="dashboard" />
-      <div className={styles.grid}>
-        <AnimatedStatistic
-          title="Block count"
-          currentValue={stats.blockCount}
-          tooltip={"The total number of blocks finalized since genesis."}
-          precision={0}
-        />
-        <Statistic
-          title="Smart contract memory"
-          currentValue={`$${stats.cost} GB/month`}
-          tooltip={
-            "The cost of storing 1GB of data in a canister smart contract."
-          }
-        />
-        <AnimatedStatistic
-          title="Transactions/s"
-          currentValue={stats.transactionRate}
-          tooltip={"The number of transactions being processed each second."}
-          precision={0}
-        />
-      </div>
-      <motion.div variants={item}>
-        <Link
-          to={"https://dashboard.internetcomputer.org/"}
-          className={styles.actionButton}
-        >
-          <DashboardIcon className={styles.dashboardIcon} />
-          <span>
-            See Internet Computer stats on dashboard.internetcomputer.org
-          </span>
-        </Link>
+    <section className=" pt-20 md:pt-[200px] z-20">
+      <AnimateSpawn variants={transitions.item} className="container-12">
+        <h2 className="text-white-60 tw-heading-4 md:tw-heading-60 md:w-8/12 mx-auto mb-16 md:mb-30">
+          Over{" "}
+          <span className="text-white">
+            {(Math.floor(stats.blockCount / 100_000_000) / 10).toFixed(1)}{" "}
+            Billion
+          </span>{" "}
+          blocks processed. <span className="text-white">10x</span> more than
+          the nearest competitor.
+        </h2>
+      </AnimateSpawn>
+
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={container}
+        className={styles.main}
+      >
+        <a className={styles.anchor} id="dashboard" />
+        <div className={styles.grid}>
+          <AnimatedStatistic
+            title="Block count"
+            currentValue={stats.blockCount}
+            tooltip={"The total number of blocks finalized since genesis."}
+            precision={0}
+          />
+          <Statistic
+            title="Smart contract memory"
+            currentValue={`$${stats.cost} GB/month`}
+            tooltip={
+              "The cost of storing 1GB of data in a canister smart contract."
+            }
+          />
+          <AnimatedStatistic
+            title="Transactions/s"
+            currentValue={stats.transactionRate}
+            tooltip={"The number of transactions being processed each second."}
+            precision={0}
+          />
+        </div>
+        <motion.div variants={item}>
+          <div className={styles.actionButton}>
+            <Link
+              to={"https://dashboard.internetcomputer.org/"}
+              className={"tw-heading-6 my-1 flex gap-2 md:p-4"}
+            >
+              <span>See Internet Computer stats</span>
+              <ExternalLinkIcon />
+            </Link>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   );
 }
 
