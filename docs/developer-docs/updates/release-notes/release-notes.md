@@ -310,7 +310,7 @@ dfx now stores data and control files in one of three places, rather than direct
 - `$HOME/.local/share/dfx/network/local` (for the shared local network on Linux)
 - `$HOME/Library/Application Support/org.dfinity.dfx/network/local` (for the shared local network on MacOS)
 
-There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its schema is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](../../../references/cli-reference/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
+There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its schema is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](../../../references/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
 
 ### fix: `dfx start` and `dfx stop` will take into account dfx/replica processes from dfx <= 0.11.x
 
