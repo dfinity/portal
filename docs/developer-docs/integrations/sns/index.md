@@ -28,7 +28,7 @@ In this documentation you will find
     * [An introduction how to get an SNS](get-sns/get-sns-intro.md) which
       explains the high level stages of getting an SNS
     * [Technical preparations for getting an SNS](get-sns/preparation.md) which
-      describes the technical steps required before getting an SNS. here
+      describes the technical steps required before getting an SNS.
       We also link to non-technical steps that we recommend,
       which can be found under the "DAO and Tokenomics" documentation
       targeted at a less technical audience.
