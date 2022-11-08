@@ -11,6 +11,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const showcaseProjectsPlugin = require("./plugins/showcase-projects");
+const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
@@ -57,6 +58,7 @@ const config = {
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
+    homeShowcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
@@ -330,19 +332,19 @@ const config = {
         ],
       },
 
-      announcementBar:
-        isDev || isDeployPreview
-          ? {
-              id: "local_dev",
-              content: isDeployPreview
-                ? `You are currently viewing a preview of this <a href="${
-                    process.env.PR_URL || "https://github.com/dfinity/portal"
-                  }">Pull Request</a>.`
-                : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
-              textColor: "#091E42",
-              isCloseable: false,
-            }
-          : undefined,
+      // announcementBar:
+      //   isDev || isDeployPreview
+      //     ? {
+      //         id: "local_dev",
+      //         content: isDeployPreview
+      //           ? `You are currently viewing a preview of this <a href="${
+      //               process.env.PR_URL || "https://github.com/dfinity/portal"
+      //             }">Pull Request</a>.`
+      //           : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+      //         textColor: "#091E42",
+      //         isCloseable: false,
+      //       }
+      //     : undefined,
 
       footer: {
         links: [
