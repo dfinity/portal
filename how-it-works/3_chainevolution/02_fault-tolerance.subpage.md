@@ -41,7 +41,7 @@ Suppose a canister in the NNS fails while the NNS subnet continues to make progr
 Suppose the governance canister is working. Then we can manually submit an NNS proposal to call the root/lifeline canister’s method to upgrade the failed canister. Anyone who staked ICP can vote on the proposal. If a majority of the voters accept, then the failed canister will be upgraded. 
 
 ## Handling NNS Subnet Failures
-In an extremely rare case, the entire NNS subnet could get stuck and fail to make progress. In this case, we don’t have the luxury to make NNS proposals. To recover an NNS subnet, all the node providers who contributed a node to the NNS subnet need to manually intervene, create a Catch Up Package and restart their node with the new Catch Up Package. 
+In the worst case, the entire NNS subnet could get stuck and fail to make progress. In such a case, all the node providers who contributed a node to the NNS subnet need to manually intervene, create a CUP and restart their node with the new CUP. 
 
 [![Watch youtube video](https://i.ytimg.com/vi/H7HCqonSMFU/maxresdefault.jpg)](https://www.youtube.com/watch?v=H7HCqonSMFU)
 
