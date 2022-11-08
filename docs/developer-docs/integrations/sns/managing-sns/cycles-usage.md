@@ -59,7 +59,7 @@ To help SNS communities manage cycles, the SNS is initiated as follows:
 
 
 ## How to observe and manage the canisters' cycles
-We next describe in more detail how you acn monitor and manage the
+We next describe in more detail how you can monitor and manage the
 cycles of the SNS and dapp canisters.
 
 ### 1. Find all SNS and governed dapp canisters and their cycle balance.
