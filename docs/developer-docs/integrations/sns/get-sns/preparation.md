@@ -120,7 +120,7 @@ Title h2:Getting the tools for launching an SNS {#tools} <!--TODO-CLI/dfx: updat
 
 To set the initial parameters for your SNS, but also to test and request the launch
 of an SNS afterwards, you require some tools.
-Let us next learn which tools there are and how you can install them.
+Let us next learn which tools there are and how you can install them. <!--TODO-CLI/dfx: update wrt whether you need SNS CLI at all --> 
 You will need to install two tools, `SNS CLI` which is the tool for developer tasks
 and `sns-quill` which is the tool for SNS users and which you will need, for example,
 to vote.
