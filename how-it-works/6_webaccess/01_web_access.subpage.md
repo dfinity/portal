@@ -29,3 +29,7 @@ There are a few other ways of implementing the HTTP Gateway protocol. The gatewa
 ## SEO
 The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using SEO features of the Internet Computer can be found in this [blog post](https://6zvwc-sqaaa-aaaal-aalma-cai.raw.ic0.app/d/prepare-your-dapps-for-social-platform-and-seo). 
 
+
+[![Watch youtube video](https://i.ytimg.com/vi/JAQ1dkFvfPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
+
+[![Watch youtube video](https://i.ytimg.com/vi/b_nc6yx5_DQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=b_nc6yx5_DQ)
