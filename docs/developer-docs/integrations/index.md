@@ -1,6 +1,15 @@
 # Functionality Integrations
 
-While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
+While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp. From identity to ledger integrations, to integrating with other blockchains, to communicating from the IC to the outside world, and even decentralizing control of your dapp, it's all here.
+
+## Service Nervous System (SNS)
+Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md), sorted by the target group that it aims at, and then provides the documentation aimed at developers.
+The latter contains
+
+* [A technical introduction to the SNS](./sns/sns-intro.md)
+* [Information on how to get an SNS](./sns/get-sns/get-sns-intro.md)
+* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration.md) and [index canister](./sns/integrate-sns/index-integration.md)
+* [Information on how to manage an SNS](./sns/managing-sns/manage-sns-intro.md)
 
 ## Bitcoin Integration
 Integrate directly with the Bitcoin network allowing canisters on the IC to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network.
