@@ -64,7 +64,7 @@ cycles of the SNS and dapp canisters.
 
 ### 1. Find all SNS and governed dapp canisters and their cycle balance.
 SNS root knows about all these canisters and their cycles. 
-You can get all the SNS and associated dapp cansiter's status,
+You can get all the SNS and associated dapp canisters' status,
 which includes the cycles, by using the SNS root canister's method
 `get_sns_canisters_summary`.
 <!-- dfx, dashboard?-->
