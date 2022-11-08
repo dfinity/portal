@@ -23,7 +23,7 @@ All the nodes in the subnet listen to the CUP messages broadcasted by their peer
 
 Note that while the failed/newly joined nodes are syncing the blockchain state, rest of the well-functioning nodes continue to process new blocks and make progress. The well-functioning nodes use their backup copy of the blockchain state (created at the same time as the CUP) to supply the state to syncing nodes. After the syncing node finishes syncing the blockchain state, it will request its peers for the consensus blocks generated in the meantime and process the blocks one by one. Once fully synced, the node can then process messages regularly as other nodes. 
 
-Handling Regular Subnet Failures
+## Handling Regular Subnet Failures
 In rare cases, an entire subnet could get stuck and fail to make progress. A subnet could fail due to many reasons such as software bugs and non-deterministic execution. This could also happen when more than 1/3rd of the nodes in the subnet fail at the same time. In this case, the well-functioning nodes fail to create and sign a Catch Up Package (CUP), and thereby the failed nodes cannot recover automatically. 
 
 When a subnet fails, we need manual intervention to recover the subnet. In a nutshell, as the subnet nodes fail to create and sign a Catch Up Package (CUP) automatically, someone needs to manually create a CUP. The CUP needs to be created at the maximum blockchain height where the state is certified by at least 2/3 of the nodes in the subnet. The subnet nodes naturally cannot trust a manually created CUP for security reasons. Therefore, we need a community consensus that the CUP is valid. Fortunately, the Internet Computer has a blockchain governance system called the [Network Nervous System](https://internetcomputer.org/how-it-works/#Network-Nervous-System) (NNS). We need to manually submit a proposal in the NNS to use the created CUP for the subnet. Anyone who staked their ICP can vote on the proposal. If a majority of the voters accepted the proposal, then the CUP is stored in the NNS registry. 
@@ -35,3 +35,5 @@ This process of recovering a subnet is often termed as “disaster recovery” i
 [![Watch youtube video](https://i.ytimg.com/vi/H7HCqonSMFU/maxresdefault.jpg)](https://www.youtube.com/watch?v=H7HCqonSMFU)
 
 [![Watch youtube video](https://i.ytimg.com/vi/WaNJINjGleg/maxresdefault.jpg)](https://www.youtube.com/watch?v=WaNJINjGleg)
+
+[![Watch youtube video](https://i.ytimg.com/vi/oEEPLJVX5DE/maxresdefault.jpg)](https://www.youtube.com/watch?v=oEEPLJVX5DE)
