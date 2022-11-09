@@ -6,10 +6,14 @@ slug: smart-contracts-serve-the-web
 ---
 # Smart Contracts Serve the Web
 
-The Internet Computer is the only blockchain that can host a full Dapp – frontend, backend and data. This is possible because the canisters (smart contracts) can securely serve HTTP requests. 
+The Internet Computer has the ability is the only blockchain that can host a full Dapp – frontend, backend and data. Any user can deploy their Dapp as a canister (smart contract) on the Internet Computer. Canisters are computational units that bundle together code and state. Canisters can store data, deliver HTML, CSS and Javascript pages, and answer API requests. Canisters are incredibly fast and can deliver webpages within 200ms. Canisters can store up to 32 GB of data at an incredibly low cost ($5 per GB per annum). Browsing Dapps hosted on the Internet Computer is as seemless as browsing Web2 apps hosted on cloud. All these factors enable developers to deploy even large-scale social media applications entirely on-chain without needing any cloud services. Try out a few apps deployed on the IC. 
+* [DSCVR (Decentralized Reddit)](https://h5aet-waaaa-aaaab-qaamq-cai.ic0.app)
+* [Distrikt (Decentralized Twitter)](https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/) 
+
+# Workflow
 
 <figure>
-<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:600px">
+<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:900px">
 <figcaption align="center">
 HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br>
 Boundary nodes route canister queries to appropriate subnet.
