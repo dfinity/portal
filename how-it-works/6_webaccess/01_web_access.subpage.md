@@ -10,7 +10,12 @@ The Internet Computer has the ability is the only blockchain that can host a ful
 * [DSCVR (Decentralized Reddit)](https://h5aet-waaaa-aaaab-qaamq-cai.ic0.app)
 * [Distrikt (Decentralized Twitter)](https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/) 
 
-# Workflow
+## Workflow
+We now describe how a client can access a website deployed as a canister on the Internet Computer. The architecture involves 4 key components. 
+* Client - A device owned by the user. When the user browses a website, the client device sends a HTTP request.
+* HTTP Gateway - HTTP Gateway is a software that converts HTTP requests into canister queries. When the canister sends back a response, the HTTP Gateway converts the response into a HTTP response. 
+* Boundary Node - Boundary nodes keep track of the architecture of the Internet Computer. On receiving a canister query, boundary nodes can route the request to one of the blockchain nodes running the canister.  
+* Canister - Hosts the Dapp and responds to queries. 
 
 <figure>
 <img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:900px">
