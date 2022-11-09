@@ -247,7 +247,7 @@ const config = {
               },
               {
                 label: "Dev Discord ",
-                href: "https://discord.gg/cE92CymEmJ",
+                href: "https://discord.gg/jnjVVQaE2C",
               },
             ],
           },
