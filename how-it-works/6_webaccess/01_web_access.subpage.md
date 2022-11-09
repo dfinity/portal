@@ -6,9 +6,15 @@ slug: smart-contracts-serve-the-web
 ---
 # Smart Contracts Serve the Web
 
-Smart contracts are software programs that run on a blockchain. In the general design of blockchain apps, the backend is hosted as a smart contract, whereas the frontend is hosted on cloud. Blockchains are generally incapable of hosting the frontend. This is because our web browser does not know how to communicate with a blockchain and obtain the HTML, CSS and Javascript frontend pages. 
-
 The Internet Computer is the only blockchain that can host a full Dapp – frontend, backend and data. This is possible because the canisters (smart contracts) can securely serve HTTP requests. 
+
+<figure>
+<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:600px">
+<figcaption align="center">
+HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br>
+Boundary nodes route canister queries to appropriate subnet.
+</figcaption>
+</figure>
 
 A canister hosted on the Internet Computer consists of a bunch of methods. Users can send queries to the canister. A query consists of the canister method to be executed and the inputs for the canister method. The Internet Computer receives the queries sent by the users, executes the corresponding canister method and returns the response to the user. 
 
@@ -30,9 +36,13 @@ There are a few other ways of implementing the HTTP Gateway protocol. The gatewa
 The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33) and this [blog post](https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853). 
 
 [Serving web content](https://internetcomputer.org/features/serve-web-content/)
+
 [Building a front-end dapp on the IC](https://medium.com/dfinity/building-a-front-end-dapp-on-the-internet-computer-55985f0a595b)
+
 [Hosting a static website on the IC](https://internetcomputer.org/docs/current/samples/host-a-website/)
+
 [HTTP Gateway Protocol](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway)
+
 [Web Serving Wiki Article](https://wiki.internetcomputer.org/wiki/Web_Serving)
 
 [![Watch youtube video](https://i.ytimg.com/vi/JAQ1dkFvfPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
