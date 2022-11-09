@@ -1,5 +1,5 @@
 ---
-title: Peer-to-Peer Layer
+title: Peer-to-Peer
 abstract: 
 shareImage: /img/how-it-works/peer-to-peer-p2p.600.jpg
 slug: peer-to-peer-p2p
