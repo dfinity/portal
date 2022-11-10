@@ -13,9 +13,9 @@ The Internet Computer is the only blockchain that can host a full Dapp – front
 ## Workflow
 We now describe how a client can access a website deployed as a canister on the Internet Computer. The architecture involves 4 key components. 
 * Client - A device owned by the user. When the user browses a website, the client device sends a HTTP request.
-* HTTP Gateway - A HTTP Gateway is a software that implements [HTTP Gateway protocol](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway). It converts HTTP requests into canister queries. When the canister sends back a response, the HTTP Gateway converts the response into a HTTP response. The HTTP gateway can be run either on the client, on the boundary nodes or on independent servers. 
-* Boundary Node - Boundary nodes keep track of the architecture of the Internet Computer. On receiving a canister query, boundary nodes can route the request to one of the blockchain nodes running the canister. 
-* Canister - Hosts the Dapp and responds to queries. 
+* HTTP Gateway - A HTTP Gateway is a software that implements [HTTP Gateway protocol](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway). It converts HTTP requests into a format understandable by canisters. When the canister sends back a response, the HTTP Gateway converts the response into a HTTP response. The HTTP gateway can be run either on the client, on the boundary nodes or on independent servers. 
+* Boundary Node - Boundary nodes keep track of the architecture of the Internet Computer. In particular, boundary nodes keep track of the list of subnets, list of nodes on each subnet, the canisters run by each subnet, etc. On receiving a canister query, boundary nodes can route the request to one of the blockchain nodes running the canister. 
+* Canister - Developers can host their Dapp as a canister. Canister consists of a bunch of methods. Anyone can send queries to the canister. A query consists of the canister method to be executed and the inputs for the canister method. The Internet Computer receives the queries sent by the users, executes the corresponding canister method and returns the response to the user. 
 
 <figure>
 <img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:900px">
@@ -25,7 +25,7 @@ Boundary nodes route canister queries to appropriate subnet.
 </figcaption>
 </figure>
 
-After a developer a deploys an app as a canister, he gets a canister id. Any user can then access the website for the app at a URL of the form http://\<canister id\>.ic0.app or http://\<canister id\>.raw.ic0.app.  
+After a developer a deploys an app as a canister, he gets a canister id. Any user can then access the website for the app at a URL of the form http://\<canister id\>.ic0.app or http://\<canister id\>.raw.ic0.app. When the user enters the above URL on his browser, the browser contacts DNS service, which resolves the URL to an IP address of a boundary node. 
 
 ## HTTP Gateway Protocol
 The browser only communicates with HTTP(s) protocol and doesn’t know how to query a canister. To fill the gap between the browser and Internet Computer protocols, we utilize a [HTTP Gateway](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway), which is a software that sits in between the browser and the Internet Computer. The browser sends a http request to the http gateway. The gateway first interprets the URL in the http request and extracts the corresponding canister id. It then converts the http request into a canister query and sends it to the boundary nodes. When the canister sends back a response, the http gateway interprets the response, verifies the signatures, converts into a http response and sends it to the browser. 
@@ -36,8 +36,6 @@ There are many ways to implement the HTTP Gateway protocol. Currently, there are
 There are a few other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension. The chromium browser could also be modified to include HTTP Gateway as part of the browser. 
 
 ## Deploying Web Apps on IC
-A canister hosted on the Internet Computer consists of a bunch of methods. Users can send queries to the canister. A query consists of the canister method to be executed and the inputs for the canister method. The Internet Computer receives the queries sent by the users, executes the corresponding canister method and returns the response to the user. 
-
 If a canister wishes to serve web content, it should implement a method that takes input a HTTP request (url, http method and headers) and outputs a HTTP response (status, headers and body). The canister method could return HTML, CSS and Javascript content as part of the HTTP response. Refer to [Internet Computer Interface Spec](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request) for more details.
 
 There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at http://\<canister id\>.ic0.app. A detailed tutorial can be found [here](https://www.youtube.com/watch?v=JAQ1dkFvfPI) and [here](https://internetcomputer.org/docs/current/samples/host-a-website/). 
