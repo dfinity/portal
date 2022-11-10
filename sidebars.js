@@ -12,7 +12,6 @@ const sidebars = {
         id: "developer-docs/quickstart/hello10mins",
       },
       items: [
-        "developer-docs/quickstart/hello10mins",
         // 'developer-docs/quickstart/windows-wsl',
         "developer-docs/quickstart/cycles-faucet",
         "developer-docs/quickstart/local-quickstart",
@@ -203,26 +202,55 @@ const sidebars = {
         id: "developer-docs/integrations/index",
       },
       items: [
-        //   {
-        //     type: 'category',
-        //     label: 'Service Nervous System (SNS)',
-        //     link: {
-        //       type: "doc",
-        //       id: "developer-docs/integrations/sns/index",
-        //     },
-        //     items: [
-        //       "developer-docs/integrations/sns/sns-intro",
-        //       "developer-docs/integrations/sns/get-sns/get-sns-intro",
-        //       "developer-docs/integrations/sns/get-sns/frontend-integration",
-        //       "developer-docs/integrations/sns/get-sns/preparation",
-        //       "developer-docs/integrations/sns/get-sns/local-testing",
-        //       "developer-docs/integrations/sns/get-sns/get-sns-production",
-        //       "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
-        //       "developer-docs/integrations/sns/managing-sns/proposal-guide",
-        //       "developer-docs/integrations/sns/managing-sns/cycles-usage",
-        //       "developer-docs/integrations/sns/managing-sns/upgradeSNS",
-        //     ],
-        //   },
+          {
+            type: 'category',
+            label: 'Service Nervous System (SNS)',
+            link: {
+              type: "doc",
+              id: "developer-docs/integrations/sns/sns-intro",
+            },
+            items: [
+              {
+                type: 'category',
+                label: 'Get an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                },
+                items: [
+                  "developer-docs/integrations/sns/get-sns/preparation",
+                  "developer-docs/integrations/sns/get-sns/local-testing"
+//                "developer-docs/integrations/sns/get-sns/get-sns-production"
+                ],
+              },
+              {
+                type: 'category',
+                label: 'Integrate with an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+                },
+                items: [
+                  "developer-docs/integrations/sns/integrate-sns/index-integration"
+//                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
+                ],
+              },
+              {
+                type: 'category',
+                label: 'Manage an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
+                },
+                items: [
+              "developer-docs/integrations/sns/managing-sns/cycles-usage"
+//            "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+//            "developer-docs/integrations/sns/managing-sns/proposal-guide",
+//            "developer-docs/integrations/sns/managing-sns/upgradeSNS"
+                ]
+              }
+            ],
+          },
         {
           type: "category",
           label: "Bitcoin Integration",
@@ -255,7 +283,17 @@ const sidebars = {
             "developer-docs/integrations/http_requests/http_requests-how-it-works",
           ],
         },
-        "developer-docs/integrations/internet-identity/integrate-identity",
+        {
+          type: "category",
+          label: "Internet Identity",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/internet-identity/integrate-identity",
+          },
+          items: [
+            "developer-docs/integrations/internet-identity/alternative-origins",
+          ],
+        },
         {
           type: "category",
           label: "ICP Ledger",
@@ -482,7 +520,6 @@ const sidebars = {
         id: "tokenomics/nns/nns-intro",
       },
       items: [
-        "tokenomics/nns/nns-intro",
         "tokenomics/nns/nns-staking-voting-rewards",
         "tokenomics/nns/community-fund",
       ],
@@ -495,7 +532,6 @@ const sidebars = {
         id: "tokenomics/sns/sns-intro-tokens",
       },
       items: [
-        "tokenomics/sns/sns-intro-tokens",
         "tokenomics/sns/predeployment-considerations",
         "tokenomics/sns/tokenomics",
         "tokenomics/sns/rewards",
@@ -509,7 +545,6 @@ const sidebars = {
         id: "tokenomics/identity-auth/what-is-ic-identity",
       },
       items: [
-        "tokenomics/identity-auth/what-is-ic-identity",
         "tokenomics/identity-auth/auth-how-to",
         "tokenomics/identity-auth/hello-guide",
       ],
@@ -523,7 +558,6 @@ const sidebars = {
         id: "tokenomics/token-holders/custody-options-intro",
       },
       items: [
-        "tokenomics/token-holders/custody-options-intro",
         "tokenomics/token-holders/self-custody-quickstart",
         "tokenomics/token-holders/nns-app-quickstart",
         // 'tokenomics/token-holders/seed-donations',
@@ -542,7 +576,7 @@ const sidebars = {
     "samples/dao",
     "samples/encrypted-notes",
     "samples/token-transfer",
-    "samples/host-unity-webgl",
+    "samples/host-a-webgame",
     "samples/hackathon-projects",
   ],
 };

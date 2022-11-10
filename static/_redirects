@@ -40,6 +40,7 @@
 /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/build/agents/index.md
 /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents/index.md
 /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/build/agents/index.md
+/docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
 /docs/developers-guide/about-this-guide.html /docs/current/developer-docs/build/language/motoko/about-this-guide.html
 /docs/developers-guide/basic-syntax-rules.html /docs/current/developer-docs/build/language/motoko/basic-syntax-rules.html
 /docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
@@ -174,6 +175,8 @@
 /docs/token-holders/seed-donations.html /docs/current/tokenomics/token-holders/seed-donations
 /docs/token-holders/self-custody-quickstart.html /docs/current/tokenomics/token-holders/self-custody-quickstart
 /docs/videos-tutorials.html /docs/current/developer-docs
+/docs/interface-spec/index.html /docs/current/references/ic-interface-spec
+/docs/current/samples/host-unity-webgl /docs/current/samples/host-a-webgame
 
 # ICA webiste redirects
 /eula https://association.internetcomputer.org/eula 301!

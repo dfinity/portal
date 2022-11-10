@@ -1,1 +1,0 @@
-# Considerations to Integrate with Index Canister

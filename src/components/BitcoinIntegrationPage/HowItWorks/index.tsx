@@ -48,7 +48,7 @@ function Index() {
           Threshold ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Novel "threshold cryptography" allows the Internet Computer to distrubute,
+          Novel "threshold cryptography" enables the Internet Computer to distribute,
           and redistribute, secret key material among its nodes, and have them cooperate
           to create new bitcoin addresses and sign Bitcoin transactions,
           using highly fault tolerant decentralized network protocols that
@@ -82,7 +82,7 @@ function Index() {
           For example, DEXs (decentralized exchanges) can easily provide BTC 
           trading pairs, decentralized fundraises can accept bitcoin, and 
           a Web3 SocialFi service might allow satoshis to be sent using chat 
-          messages, say.
+          messages.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
           Lightning Network-like services can also be created by wrapping 

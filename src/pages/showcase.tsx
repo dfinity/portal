@@ -44,7 +44,8 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
 }
 
 function ShowcasePage(): JSX.Element {
-  const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
+  const [queryTag, setQueryTag, queryTagInitialized] =
+    useQueryParam<string>("tag");
   const filtersRef = useRef<HTMLDivElement>();
   resetNavBarStyle();
 

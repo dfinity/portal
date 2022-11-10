@@ -6,11 +6,11 @@ import { useWindowSize } from "@docusaurus/theme-common";
 import clsx from "clsx";
 
 const SectionsLinks = [
-  { text: "Dashboard", to: "#dashboard" },
-  { text: "Features", to: "#features" },
-  { text: "Showcase", to: "/showcase" },
+  // { text: "Dashboard", to: "#dashboard" },
+  { text: "Basics", to: "#basics" },
+  { text: "Dapps", to: "#dapps" },
+  { text: "Sustainable", to: "#sustainable" },
   { text: "Foundation", to: "#foundation" },
-  { text: "ICP Token", to: "#ICPToken" },
   { text: "Start Building", to: "#startBuilding" },
 ];
 const container = {

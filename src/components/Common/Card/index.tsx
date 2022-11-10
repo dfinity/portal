@@ -1,8 +1,11 @@
 import React from "react";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import { MotionLink } from "@site/src/components/LandingPage/Features";
 import transitions from "@site/static/transitions.json";
 import clsx from "clsx";
+import { motion } from "framer-motion";
+import Link from "@docusaurus/Link";
+
+const MotionLink = motion(Link);
 
 export const CardWithSubtitle: React.FC<{
   title: string;

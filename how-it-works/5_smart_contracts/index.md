@@ -1,0 +1,3 @@
+---
+title: Smart contracts
+---
