@@ -36,4 +36,4 @@ For more information on certification, check [Certified Variables](/how-it-works
 
 [Asset Certification Wiki Article](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification)
 
-[Rust Canister Development Security Best Practices](https://internetcomputer.org/docs/current/references/security/rust-canister-development-security-best-practices#asset-certification)
+[Rust Canister Development Security Best Practices](/docs/current/references/security/rust-canister-development-security-best-practices#asset-certification)
