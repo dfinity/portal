@@ -120,7 +120,7 @@ export default function ShowcaseSection(): JSX.Element {
             </Link>
             <Link
               className="link-white  inline-flex items-center gap-2"
-              href="/samples"
+              href="/developers"
             >
               <ArrowRight></ArrowRight>
               Start coding
