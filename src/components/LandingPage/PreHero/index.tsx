@@ -274,9 +274,9 @@ export default function PreHero({
               animationPlayState: start ? "running" : "paused",
             }}
           >
-            Empowering People to
+           Reimagine Anything
             <br />
-            Reinvent the Internet
+            Using World Computer
           </h1>
         </div>
         <img
