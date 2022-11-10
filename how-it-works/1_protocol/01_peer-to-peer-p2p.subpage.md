@@ -8,7 +8,8 @@ slug: peer-to-peer-p2p
 # Peer-to-Peer
 
 The peer-to-peer layer (P2P) of the Internet Computer realizes the reliable and secure communication of network messages, also called *artifacts*, between the nodes of a subnet.
-Artifacts are the network messages that are to be broadcast in the subnet, including the input to canister smart contracts submitted by users or protocol-originating messages such as the blocks produced by the consensus layer.
+Artifacts are the network messages that are to be broadcast in the subnet,
+including the input to canister smart contracts submitted by users or protocol-originating messages such as the blocks produced by the consensus layer.
 P2P guarantees the secure eventual broadcast delivery of an artifact to all nodes which require it to make progress.
 The P2P layer thereby is the communication fabric for the IC protocol stack and is used by the consensus layer, the next layer in the stack above it, to broadcast artifacts to the nodes in the subnet.
 
