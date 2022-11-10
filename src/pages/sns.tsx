@@ -200,7 +200,7 @@ function SnsPage() {
               >
                 Liquid democracy. When a proposal is approved by the community,
                 the SNS implements changes to the code and upgrades itself
-                autonomously. This ensures permisionless and decentralized
+                autonomously. This ensures permissionless and decentralized
                 governance of an SNS DAO.{" "}
                 <span className="italic">
                   No single entity can stop the process.
