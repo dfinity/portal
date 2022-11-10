@@ -48,7 +48,7 @@ two nodes is encrypted and authenticated, by using TLS.
 
 ## Go Even Deeper
 
-[P2P on the IC Wiki](https://wiki.internetcomputer.org/wiki/IC_P2P_(peer_to_peer)_layer)
+[P2P on the IC wiki](https://wiki.internetcomputer.org/wiki/IC_P2P_(peer_to_peer)_layer)
 
 https://medium.com/dfinity/secure-scalability-the-internet-computers-peer-to-peer-layer-6662d451f2cc
 
