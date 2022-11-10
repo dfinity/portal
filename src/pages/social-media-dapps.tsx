@@ -9,7 +9,7 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
-import IconAutonomous from "../../static/img/social-media-dapps/autonomous.svg";
+import IconIC from "../../static/img/social-media-dapps/ic.svg";
 import IconTokenized from "../../static/img/social-media-dapps/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
@@ -81,19 +81,19 @@ const projects: {
   body: React.ReactNode;
 }[] = [
   {
-    title: "OpenChat",
-    body: "OpenChat is the first instant messaging application that runs 100% on the blockchain. It functions like a traditional messaging app, while taking advantage of the security and unique features that the Internet Computer provides. You can easily send ICP tokens to friends via messages, or vote on NNS proposals without having to leave the dapp. ",
-    imageUrl: "/img/social-media-dapps/OpenChat.webp",
-  },
-  {
-    title: "Distrikt",
-    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque id, aspernatur odio ex laudantium ratione, atque sapiente nobis voluptas et delectus ut consequuntur molestias illum nulla soluta corporis doloribus illo.",
+    title: "distrikt",
+    body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely on-chain. Own your data and identity, make new connections, and build a community.",
     imageUrl: "/img/social-media-dapps/Distrikt.webp",
   },
   {
     title: "DSCVR",
-    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque id, aspernatur odio ex laudantium ratione, atque sapiente nobis voluptas et delectus ut consequuntur molestias illum nulla soluta corporis doloribus illo.",
+    body: "DSCVR’s mission is to create a decentralized social content aggregation platform where users not only control the content, but also the platform itself. Communities form groups called Portals around topics of interest. Key features include NFT gating, token airdrops, tipping with crypto and more - all of which is impossible on web2.",
     imageUrl: "/img/social-media-dapps/DSCVR.webp",
+  },
+  {
+    title: "OpenChat",
+    body: "OpenChat is the first instant messaging service running 100% on the blockchain. This web3 dapp is backed by the security of chain-key cryptography. Plus users can easily send crypto to friends via messages, or vote on ICP governance proposals without leaving the dapp.",
+    imageUrl: "/img/social-media-dapps/OpenChat.webp",
   },
 ];
 
@@ -128,18 +128,17 @@ function SocialMediaDappsPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Decentralize Social Media
+                  Social Media Decentralized
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Social media dapps owned and controlled by users - running
-                  100% on the blockchain.
+                  Owned and controlled by users. Running 100% on the blockchain.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
-                  <Link href="" className="button button-white">
-                    Build your own
+                  <Link href="#web3-dapps" className="button button-white">
+                    Try icp social dapps
                   </Link>
                 </motion.p>
               </div>
@@ -174,27 +173,19 @@ function SocialMediaDappsPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 md:w-6/10"
               variants={transitions.item}
             >
-              The success of the new wave of web3 social media applications lies
-              in decentralization.
+              Annoyed by apps tracking you and selling your data?
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8 md:mb-12 md:w-6/10"
               variants={transitions.item}
             >
-              Today, it is the Boards of large for-profit corporations that
-              steer the direction of social media apps, often to extract more
-              monetary value from users to please shareholders. Centralized apps
-              have also been known to selectively suppress opinions. With the
-              release of the{" "}
-              <Link
-                href=""
-                className="text-infinite underline hover:no-underline hover:text-black"
-              >
-                Service Nervous System (SNS)
-              </Link>
-              , dapps running on the Internet Computer blockchain will flip the
-              script by forming DAOs that put the control in the hands of the
-              community.
+              The success of the new wave of web3 social media applications lies
+              in decentralization. Today, it is the boards of tech giants that
+              steer the direction of social media apps, often to exploit user
+              data for profit. Centralized apps have also been known to
+              selectively suppress opinions. Internet Computer blockchain flips
+              the script by enabling decentralized apps (dapps) to turn into
+              DAOs that put the control in the hands of the community.
             </motion.p>
           </AnimateSpawn>
           <div className="relative z-[-1]">
@@ -221,68 +212,73 @@ function SocialMediaDappsPage() {
           "
           >
             <ColumnCard
-              title="Incentivized Social Media"
+              title="Social Media Incentivized"
               icon={<IconTokenized aria-hidden="true" />}
             >
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                Another advantage of forming a DAO and tokenizing a social media
-                dapp is that users are incentivized to contribute to the success
-                of a dapp. User engagement can organically increase marketing,
+                A social media DAO incentivizes users to contribute to the
+                success of its dapp by offering rewards in the form of
+                governance tokens. As a user you get free tokens just for using
+                the service, while at the same time you have a say on what new
+                features should be added.
+              </motion.p>
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                As a developer, you benefit from the tokenization of your dapp.
+                Increased user engagement can organically fuel viral growth,
                 while user contributions can significantly reduce costs of
                 content moderation or even development and design.
               </motion.p>
-              {/* <MotionLink
-                className="link-external"
-                href=""
-                variants={transitions.item}
-              >
-                Learn more
-              </MotionLink> */}
             </ColumnCard>
             <ColumnCard
-              title="Why the Internet Computer?"
-              icon={<IconAutonomous aria-hidden="true" />}
+              title="Why switch to the Internet Computer?"
+              icon={<IconIC aria-hidden="true" />}
             >
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                The Internet Computer enables true decentralization. As canister
-                smart contracts can store data cost-effectively and be accessed
-                directly via standard web browsers, the Internet Computer
-                provides the first complete platform to build a new wave of
-                DAO-governed social media applications.
+                Transitioning from web2 to web3 has never been easier. Not only
+                does the Internet Computer enable true decentralization, it also
+                offers an enhanced web3 user experience. No gas fees,
+                non-trackable web authentication, served at web speed 100% on
+                the blockchain - no centralized cloud required.
               </motion.p>
-              <MotionLink
-                className="link-external"
-                href=""
-                variants={transitions.item}
-              >
-                See all benefits
-              </MotionLink>
             </ColumnCard>
           </div>
         </section>
-        <section className="container-10 mt-30  md:mt-40 relative">
+        <section
+          className="container-10 pt-30  md:pt-40 relative"
+          id="web3-dapps"
+        >
           <AnimateSpawn
             className="md:w-6/10 mb-20 md:mb-40"
             variants={transitions.container}
           >
             <motion.h2
-              className="tw-heading-3 md:tw-heading-60 mb-8"
+              className="tw-heading-3 md:tw-heading-60 mb-8 md:w-9/10"
               variants={transitions.item}
             >
-              Social Dapps Built on the Internet Computer
+              Top web3 social media platforms
             </motion.h2>
-            <motion.p className="tw-lead-sm mb-0" variants={transitions.item}>
-              Decentralized social media applications like OpenChat, DSCVR and
-              distrikt have been running on the Internet Computer for over a
-              year with increasing numbers of daily active users.
+            <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
+              The Internet Computer is a true world computer. It hosts the
+              largest collection of web3 social media services fully on-chain.
+              Services like OpenChat, DSCVR and distrikt are already well on
+              their way to mass adoption, with over 250,000 users combined.
             </motion.p>
-
+            <MotionLink
+              className="link-external"
+              href="/showcase?tag=social"
+              variants={transitions.item}
+            >
+              See dapp collection
+            </MotionLink>
             <img
               src={BlobBlue}
               className="
@@ -334,145 +330,158 @@ function SocialMediaDappsPage() {
             </div>
           ))}
         </section>
-        <section className="container-10 mx-auto">
+        <section className="container-10 mx-auto relative">
+          <img
+            src={BlobBlue}
+            className="
+              absolute 
+              right-[-700px] md:right-[-800px] 
+              max-w-none w-[1400px] 
+              bottom-[-300px] md:bottom-auto 
+              md:top-[-250px]
+            "
+          />
           <AnimateSpawn
-            className="flex flex-col md:flex-row mb-12 md:mb-16"
+            className="flex flex-col md:flex-row gap-12 md:gap-1/10 relative"
             variants={transitions.container}
           >
-            <motion.h2
-              className="md:w-4/10 tw-heading-3 md:tw-heading-60 mb-3"
-              variants={transitions.item}
-            >
-              Why Internet Computer
-            </motion.h2>
-            <motion.div className="md:w-4/10 mt-3" variants={transitions.item}>
-              <p className="tw-paragraph md:tw-lead-sm mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
-                nunc quis tellus mi dapibus sapien leo vitae. At lectus
-                condimentum risus sed lacus leo.{" "}
-              </p>
-              <p className="mb-0">
-                <Link className="link-external" href="">
-                  Explore more features
-                </Link>
-              </p>
-            </motion.div>
+            <div className="md:w-5/10">
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-6"
+                variants={transitions.item}
+              >
+                Build the Next Generation of Social Media Services
+              </motion.h2>
+              <motion.div className="mt-3" variants={transitions.item}>
+                <p className="tw-paragraph md:tw-lead-sm mb-4">
+                  Distrupt the world of social media by coding your own. The
+                  Internet Computer blockchain provides the first complete tech
+                  stack for developers to build a new era of DAO-governed social
+                  media sevices to replace Big Tech.
+                </p>
+
+                <div className="">
+                  <p className="tw-paragraph md:tw-lead-sm mb-4">
+                    The Internet Computer is the only blockchain that can:
+                  </p>
+                  <ul className="checklist tw-paragraph md:tw-lead-sm mb-6 space-y-3">
+                    <li className="checklist-item">Serve web</li>
+                    <li className="checklist-item">
+                      Integrate existing web2 APIs without oracles
+                    </li>
+                    <li className="checklist-item">
+                      Provides out of the box anonymous authentication system
+                    </li>
+                    <li className="checklist-item">
+                      Store large amounts of data on-chain
+                    </li>
+                    <li className="checklist-item">
+                      Store private data on-chain
+                    </li>
+                  </ul>
+                  <p>
+                    <Link className="link-external" href="/developers">
+                      Start coding
+                    </Link>
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+            <div className="md:w-4/10">
+              <motion.div variants={transitions.item}>
+                <h3 className="tw-heading-7-caps mb-3 uppercase">
+                  Cost efficiency
+                </h3>
+                <div className="bg-white-50 rounded-xl border border-white border-solid p-6">
+                  <ul className="list-none pl-0 mb-0 space-y-10">
+                    <li className="flex items-center">
+                      <img
+                        src="/img/basics/logos/logo-icp.svg"
+                        alt=""
+                        className="mr-4 w-11 h-11"
+                      />
+                      <span className="tw-heading-3">$5</span>
+                      <span className="tw-heading-6 pl-2 relative top-2">
+                        / GB per year
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src="/img/basics/logos/logo-solana.svg"
+                        alt=""
+                        className="mr-4 w-11 h-11"
+                      />
+                      <span className="tw-heading-5">$118,000</span>
+                      <span className="tw-heading-7 pl-2 relative top-[2px]">
+                        / GB per year
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src="/img/basics/logos/logo-eth.svg"
+                        alt=""
+                        className="mr-4 w-11 h-11"
+                      />
+                      <span className="tw-heading-5">$79,000,000</span>
+                      <span className="tw-heading-7 pl-2 relative top-[2px]">
+                        / GB per year
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+              <motion.div className="mt-12" variants={transitions.item}>
+                <h3 className="tw-heading-7-caps mb-3 uppercase">
+                  Speed efficiency
+                </h3>
+                <div className="bg-white-50 rounded-xl border border-white border-solid p-6">
+                  <ul className="list-none pl-0 mb-0 space-y-3">
+                    <li>
+                      <span className="tw-heading-6 block">
+                        ~200ms (web speed)
+                      </span>
+                      <span className="tw-title-navigation-on-page text-black-60 block">
+                        GET Query calls
+                      </span>
+                    </li>
+                    <li>
+                      <span className="tw-heading-6 block">
+                        ~1-2s to reach finality
+                      </span>
+                      <span className="tw-title-navigation-on-page text-black-60 block">
+                        POST Update calls
+                      </span>
+                    </li>
+                    <li>
+                      <span className="tw-heading-6 block">
+                        ~20,800 update calls/s
+                      </span>
+                      <span className="tw-title-navigation-on-page text-black-60 block">
+                        Update Call Speed
+                      </span>
+                    </li>
+                    <li>
+                      <span className="tw-heading-6 block">
+                        ~1,100,000 query calls/s
+                      </span>
+                      <span className="tw-title-navigation-on-page text-black-60 block">
+                        Query Call Speed
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
           </AnimateSpawn>
-          <div className="grid grid-cols-1 gap-2 sm:gap-6 sm:grid-cols-2">
-            <AnimateSpawn
-              className="p-6 sm:p-12 bg-gradient-to-r from-infinite to-[#835ED3] text-white rounded-xl sm:flex sm:col-span-2"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 mb-4 flex-1 sm:tw-heading-4 sm:mb-0">
-                100% on-chain
-              </h3>
-              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0 flex-1 sm:tw-lead-sm sm:pl-6">
-                <li>Censorship resistance</li>
-                <li>DAOs are completely governed by users</li>
-                <li>No need to rely on centralized cloud providers</li>
-              </ul>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
-                No gas fees
-              </h3>
-              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
-                <li>
-                  Computation and storage costs are pre-paid by developers
-                </li>
-                <li>Users pay zero gas fees when interacting with dapps</li>
-                <li>No need to hold tokens to use social media dapps</li>
-              </ul>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
-                Speed and cost efficiency
-              </h3>
-              <ul className="list-none p-0 space-y-3 mb-0">
-                <li className="flex flex-col md:flex-row-reverse justify-between">
-                  <span className="font-bold tw-paragraph">$5 / GB / year</span>
-                  <span className="tw-paragraph-sm sm:tw-paragraph">
-                    On-chain data storage costs{" "}
-                  </span>
-                </li>
-                <li className="flex flex-col md:flex-row-reverse justify-between">
-                  <span className="font-bold tw-paragraph">
-                    ~200ms (web speed)
-                  </span>
-                  <span className="tw-paragraph-sm sm:tw-paragraph">
-                    GET Query calls
-                  </span>
-                </li>
-                <li className="flex flex-col md:flex-row-reverse justify-between">
-                  <span className="font-bold tw-paragraph">
-                    ~1-2s to reach finality
-                  </span>
-                  <span className="tw-paragraph-sm sm:tw-paragraph">
-                    POST Update calls
-                  </span>
-                </li>
-                <li className="flex flex-col md:flex-row-reverse justify-between">
-                  <span className="font-bold tw-paragraph">~2,400 txs/s</span>
-                  <span className="tw-paragraph-sm sm:tw-paragraph">
-                    Internet Computer speed
-                    <span className="tw-paragraph-sm text-black-60 block">
-                      Not maximum network capacity
-                    </span>
-                  </span>
-                </li>
-              </ul>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
-                Simple and secure Web3 Authentication
-              </h3>
-              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
-                <li>
-                  Internet Identity, an easy-to-use anonymous authentication
-                  system
-                </li>
-                <li>
-                  Internet Identity uses WebAuthn, no wallets or seed phrases
-                  needed
-                </li>
-              </ul>
-            </AnimateSpawn>
-            <AnimateSpawn
-              className="p-6 sm:p-12 bg-white text-black rounded-xl backdrop-blur-xl"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 mb-4 sm:mb-5 text-infinite">
-                HTTPS Outcalls
-              </h3>
-              <ul className="list-none p-0 space-y-3 tw-paragraph mb-0">
-                <li>
-                  Smart contracts can directly integrate existing web2 services
-                </li>
-                <li>Smart contracts can send emails and push notifications</li>
-              </ul>
-            </AnimateSpawn>
-          </div>
         </section>
         <section className="container-12 my-20 md:my-40">
           <AnimateSpawn variants={transitions.item}>
             <h2 className="tw-heading-4 mb-3 text-center md:tw-heading-60 md:mb-4">
-              Build your own{" "}
+              Dev Corner
             </h2>
             <p className="tw-lead-sm mb-8 text-center md:tw-lead md:w-8/12 md:mx-auto md:mb-16">
-              The following sample applications provide a starting point on how
-              social applications can be built on the Internet Applications
+              This corner is for the pioneers. Developers who are crazy enough
+              to think they can reinvent social media are the ones who do.
             </p>
           </AnimateSpawn>
 
@@ -481,19 +490,19 @@ function SocialMediaDappsPage() {
             variants={transitions.item}
           >
             <CardWithDescription
-              title="Blog Sample"
-              description="A simple example of a blog with multiple authentication methods"
-              href=""
+              title="Sample Code"
+              description="Get inspired by existing social dapps on the Internet Computer."
+              href="/samples"
             ></CardWithDescription>
             <CardWithDescription
-              title="Papyrus"
-              description="A full-blown blogging dApp where each user has its own canister smart contract."
-              href=""
+              title="Quick Start"
+              description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
+              href="/docs/current/developer-docs/quickstart/hello10mins"
             ></CardWithDescription>
             <CardWithDescription
-              title="Explore Other Samples"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rutrum velit urna nam id tellus nam."
-              href=""
+              title="Developer Docs"
+              description="Get to know the Internet Computer and how to build on it."
+              href="/developers"
               className="md:col-span-2"
             ></CardWithDescription>
           </AnimateSpawn>

@@ -172,6 +172,9 @@ module.exports = {
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
+                '.checklist': '@apply list-none pl-0',
+                '.checklist-item': '@apply bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top pl-8 my-3 leading-6',
+
             };
 
       addComponents(
