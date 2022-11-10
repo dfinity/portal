@@ -219,4 +219,11 @@ export const communityToolingItems = [
       "An Ethereum RPC client for canisters on the Internet Computer to interact with EVM networks.",
     links: { github: "https://github.com/rocklabs-io/ic-web3" },
   },
+  {
+    title: "Internet Computer Services (ICS)",
+    tags: ["service", "development", "operations"],
+    description:
+      "DevOps platform to build, ship and manage dapps faster on IC.",
+    links: { external: "https://internetcomputerservices.com/" },
+  },
 ];
