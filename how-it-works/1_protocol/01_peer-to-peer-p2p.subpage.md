@@ -41,7 +41,7 @@ This principle is well known from traditional networking and applies equally wel
 
 ## Security
 To prevent Denial of Service (DOS) attacks, nodes will only request and accept connections with nodes in
-the same subnet. Subnet membership is managed by the [Network Nervous System (NNS)](https://internetcomputer.org/how-it-works/#Network-Nervous-System). 
+the same subnet. Subnet membership is managed by the [Network Nervous System (NNS)](/how-it-works/#Network-Nervous-System). 
 Thanks to the information stored in the NNS canisters P2P can guarantee that all the communication between
 two nodes is encrypted and authenticated, by using TLS. 
 
