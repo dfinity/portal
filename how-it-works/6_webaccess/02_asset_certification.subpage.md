@@ -33,3 +33,7 @@ IC-native browser or a web-extension.
 
 
 For more information on certification, check [Certified Variables](/how-it-works/response-certification/).
+
+[Asset Certification Wiki Article](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification)
+
+[Rust Canister Development Security Best Practices](/docs/current/references/security/rust-canister-development-security-best-practices#asset-certification)
