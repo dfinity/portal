@@ -1,0 +1,8 @@
+.bar-gradient {
+  background: linear-gradient(
+    105.94deg,
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0) 38.54%,
+    rgba(255, 255, 255, 0.136216) 100%
+  );
+}
