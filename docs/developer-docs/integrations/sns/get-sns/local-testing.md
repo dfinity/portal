@@ -47,6 +47,10 @@ To test the whole process properly, you also need a handful of identities.
 For local testing, we recommend you use unencrypted/plaintext .pem files to make everything a little bit easier.
 To do so, use the `--disable-encryption` flag when importing/creating an identity in dfx.
 
+The most important identity you will use is the identity we call `developer-identity`.
+Make sure that you can use it both with `dfx` and `sns-quill`, and that it will receive an initial developer neuron with a majority stake in the initial SNS parameters.
+If it doesn't receive a majority stake, you will not be able to test the upgrade proposals during the decentralization sale.
+
 `dfx nns install` is currently hard-coded to give a certain account ICP to test with tokens.
 Because of that, make sure you also [import](../../../../references/cli-reference/dfx-identity.md#dfx-identity-import) the following identity so you get access to those funds:
 
@@ -103,12 +107,12 @@ For local development, you can add your wallet to the whitelist using the follow
 $(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --nns-url "https://localhost:$(dfx info replica-port)" propose-to-update-sns-deploy-whitelist --added-principals "$(dfx identity get-wallet)" --proposer "$DEVELOPER_NEURON_ID" --proposal-title "Let me SNS!" --summary "I am friendly."
 ```
 
-Creating an SNS currently costs 50T cycles, and your wallet needs to supply those.
+Creating an SNS currently uses up to 250T cycles, and your wallet needs to supply those.
 On a local deployment, you can add any number of cycles to any canister.
-To add 145T cycles to your wallet, run the following command:
+To add 2345T cycles to your wallet, run the following command:
 
 ``` bash
-dfx ledger fabricate-cycles --canister $(dfx identity get-wallet) --t 145
+dfx ledger fabricate-cycles --canister $(dfx identity get-wallet) --t 2345
 ```
 
 And to check the new balance, run `dfx wallet balance`.
@@ -151,11 +155,16 @@ you can learn how many cycles they still have and other information.
 
 Registering a dapp under an SNS is done by an SNS proposal.
 To test this, make an SNS proposal to register your dapp canister(s).
-Then, vote with the `community neuron` on the proposal so that it is adopted.
 To submit an SNS proposal, use your `developer-identity` identity and use the following command for each canister:
 
 ``` bash
 dfx canister call sns_root register_dapp_canister "(record {canister_id = opt principal \"$(dfx canister id <CANISTER NAME>)\" } )"
+```
+
+After registering your canisters you can check if everything worked with the following command:
+
+``` bash
+sns-quill --canister-ids-file ./canister_ids.json --pem-file ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem status
 ```
 
 :::info
