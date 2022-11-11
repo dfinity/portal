@@ -1,6 +1,6 @@
-# Ledger canister
+# SNS Ledger Canister
 
-The ledger canister keeps track of the transactions between accounts,
+The SNS ledger canister keeps track of the transactions between accounts,
 as well as the account balances at the last block of the chain.
 A ledger canister is always deployed as part of the SNS canisters. 
 The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) specification.
@@ -10,8 +10,7 @@ The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) spec
 This sections explains how to deploy a ledger canister in isolation.
 You can also deploy a full SNS, which will be deployed with a ledger canister.
 
-The index canister initialisation requires the following 
-parameters to be initialized:
+The index canister initialisation requires the following parameters to be initialized:
 
 ```
 type InitArgs = record {

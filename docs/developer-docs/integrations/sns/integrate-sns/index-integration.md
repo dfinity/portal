@@ -1,11 +1,13 @@
 # SNS Index Canister
 
-Each SNS is deployed with an index canister that keeps track of each transaction stored by the [ledger canister](ledger-integration.md), sorted by ledger accounts.
-This canister is useful for applications that want to filter transactions by users and/or accounts.
+The index canister fetches transactions from the [ledger canister](ledger-integration.md) and indexes them by Account. 
+It allows to query the transactions of an Account in descending order and the list of Account that belongs to a Principal. 
+An index canister is always deployed as part of the SNS canisters.
+
+This canister is useful for applications that want to show the transactions of a specific account.
 
 Regularly (at each heartbeat), the index canister will query the transactions from
-the ledger canister, then build the index
-of known transaction per account.
+the ledger canister and then build the index of known transaction per account.
 
 ## Initialisation
 
