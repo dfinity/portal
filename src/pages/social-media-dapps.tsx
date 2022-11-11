@@ -104,18 +104,21 @@ function SocialMediaDappsPage() {
 
   return (
     <Layout
-      title="Decentralize Social Media"
-      // fill in meta description
-      description="Social media dapps owned and controlled by users - running 100% on the blockchain."
+      title="Social Media Decentralized"
+      description="Owned and controlled by users. Running 100% on the blockchain."
     >
       <Head>
         <meta
           property="og:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share-social-media.jpg"
+          }
         />
         <meta
           name="twitter:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share-social-media.jpg"
+          }
         />
       </Head>
       <main className="text-black relative overflow-hidden">
