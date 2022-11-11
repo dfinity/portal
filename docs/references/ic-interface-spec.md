@@ -1,1 +1,1 @@
-submodules/interface-spec/spec/md-spec/ic-interface-spec.md
+../../submodules/interface-spec/spec/md-spec/ic-interface-spec.md
