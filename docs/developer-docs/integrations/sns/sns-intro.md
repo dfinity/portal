@@ -82,7 +82,7 @@ It stores which accounts own how many SNS tokens and the history of transactions
 between them. 
 As we want to keep the full ledger history but a cansiter has limited
 memory, the ledger canister spawns _archive canisters_ that store the ledger block history. 
-Morevoer, wallets and other frontends will need to show all transactions that are
+Moreover, wallets and other frontends will need to show all transactions that are
 relevant for a given account.
 To facilitate this and ensure that not every frontend has to implement this themselves,
 the _index canister_ provides a map of which transactions are relevant for a given account.
