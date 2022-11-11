@@ -31,7 +31,7 @@ This process is called *induction* and all the queues are collectively referred 
 After induction, the execution layer – the topmost layer of the core IC protocol stack – is triggered to deterministically *schedule* messages in the induction pool for execution and executing them.
 The actual execution of messaging happens inside a sandbox, which can be thought of as a virtual machine responsible for the execution of canister messages.
 Message routing and execution modify the subnet state in a deterministic way, i.e., the state of the node is changed in the same way on every (honest) node of the subnet, which is crucial for achieving the replicated state machine properties of a subnet.
-The execution of a message can write to memory pages of the canister the message is executed on and also to changing other scheduling and execution related metadata in the state.
+The execution of a message can write to memory pages of the canister the message is executed on and change other metadata in the state.
 The execution of a message can also lead to the creation of new messages targeted at other canisters.
 Such a message can be either targeted at a canister on the local subnet or another subnet.
 In the former case, execution can directly place the new message into the input queue of the target canister.
@@ -56,7 +56,7 @@ This is the standard inter-canister messaging semantics known for the Internet C
 Remote inter-canister messages, that is, messages sent to canisters on other subnets, are handled by routing them into the respective outgoing *subnet stream* for the target subnet. This routing happens at the end of the deterministic execution cycle, i.e., after execution hands back control to message routing.
 The XNet messages in the stream are certified (signed) using a Merkle-tree-style data representation, at the end of the round by the subnet using BLS threshold cryptography as part of the per-round state certification.
 That is, every message in the outgoing stream is certified by the originating subnet.
-Replicas on the receiving subnet obtain the XNet messages during block making (part of consensus), validate the threshold signature, and include a valid XNet message in a consensus block.
+Replicas on the receiving subnet obtain the XNet messages during block making (part of consensus), validate the threshold signature, and include valid XNet messages in a consensus block.
 Thanks to using a Merkle-tree-like datastructure to encode and authenticate the XNet streams, parts of the streams can be consumed in a round by the receiving subnets and signatures can still be validated.
 
 ## State Certification
