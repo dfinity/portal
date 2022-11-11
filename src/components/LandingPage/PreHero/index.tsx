@@ -26,8 +26,8 @@ function getForces(center: Vector2D, minDim: number): Force[] {
       const dir = center.sub(p);
       const mag = dir.mag();
       return new Vector2D(
-        ((800 / factor) * dir.y) / mag / mag,
-        ((800 / factor) * -dir.x) / mag / mag
+        ((1000 / factor) * dir.y) / mag / mag,
+        ((1000 / factor) * -dir.x) / mag / mag
       );
     },
   ];
@@ -168,8 +168,8 @@ export default function PreHero({
           force.mult_mut(dist > 300 ? attenn : 1);
           force.x += Math.random() * 20 - 10;
           force.y += Math.random() * 20 - 10;
-          p.update(force.x / 100, force.y / 100);
-          p.update(force.x / 100, force.y / 100);
+          p.update(force.x / 200, force.y / 200);
+          p.update(force.x / 200, force.y / 200);
 
           if (pi < renderedParticleCount) {
             const color = Math.floor(
@@ -274,9 +274,9 @@ export default function PreHero({
               animationPlayState: start ? "running" : "paused",
             }}
           >
-            Empowering People to
+           Reimagine Anything
             <br />
-            Reinvent the Internet
+            Using World Computer
           </h1>
         </div>
         <img

@@ -47,11 +47,11 @@ function SnsPage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Service Nervous Systems (SNS)"
+      title="Next Generation DAOs"
       // fill in meta description
-      description="Put the autonomy in DAO. No centralized power, no
-      administrative overhead, no legal headache, only code and its
-      community."
+      description="The Service Nervous Systems (SNS) puts the autonomy
+      in DAO. No centralized power, no administrative overhead, no
+      legal headache, only code and its community."
     >
       <Head>
         <meta
@@ -200,7 +200,7 @@ function SnsPage() {
               >
                 Liquid democracy. When a proposal is approved by the community,
                 the SNS implements changes to the code and upgrades itself
-                autonomously. This ensures permisionless and decentralized
+                autonomously. This ensures permissionless and decentralized
                 governance of an SNS DAO.{" "}
                 <span className="italic">
                   No single entity can stop the process.
@@ -257,7 +257,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Turn Your App into a dApp with an SNS
+              Turn Your Web3 Service into an SNS DAO
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
