@@ -72,8 +72,8 @@ launch.
 1. Run `dfx start --clean --background`
 2. Run `dfx nns install`
     1. This command will print two URLs at the end: One for the local Internet Identity and one for the local NNS dapp. Open the NNS dapp URL in your browser for later.
-3. Run `dfx nns import`
-4. Run `dfx sns import`
+3. Run `dfx nns import`, which actually creates and sets up all the NNS canisters.
+4. Run `dfx sns import`, which imports the NNS canisters into your dfx.json so you can easily refer to them.
 5. Check that the `nns-ledger-default-identity` has ICP available.
     1. Run `dfx identity use nns-ledger-default-identity`
     2. Run `dfx ledger balance`. This should return a non-zero amount of ICP.
@@ -267,13 +267,8 @@ during and after the decentralization sale.
 To do so, you can repeat the instructions from
 [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
 
-You can also test adding new dapp canisters under the SNS control at different stages,
-by additional SNS proposals as explained in [here](https://github.com/dfinity/sns-quill#submit-a-proposal).
-For example, you could make a proposal to set the minimum neuron stake like this:
-
-``` bash
-$ sns-quill --pem-file ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --canister-ids-file canister_ids.json make-proposal $DEVELOPER_NEURON_ID --proposal '(record { title="Smaller minimal neuron stake limit"; url=""; summary="update minimum neuron stake limit"; action=opt variant{ NervousSystemParameters=record{neuron_minimum_stake_e8s=opt 100000 : opt nat64; } }})'
-```
+You can also test adding new dapp canisters under the SNS control at different stages
+by additional SNS proposals as explained in [Step 5](#5-register-the-dapp-in-the-sns).
 
 #### 11. Test launched SNS.
 If the sale has been successful, you can test if the SNS is now fully functional.
@@ -282,8 +277,11 @@ You can do that in the NNS dapp.
 
 Also, you may now test other SNS proposal types that did not work while the SNS was still
 in pre-decentralization-sale mode.
-For example, you can submit and vote for a proposal to change some of the SNS parameters
-by following the instructions in [Step 6](#6-test-upgrading-the-dapp-canisters-by-sns-proposal).
+For example, you could make a proposal to set the minimum neuron stake like this:
+
+``` bash
+$ sns-quill --pem-file ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --canister-ids-file canister_ids.json make-proposal $DEVELOPER_NEURON_ID --proposal '(record { title="Smaller minimal neuron stake limit"; url=""; summary="update minimum neuron stake limit"; action=opt variant{ NervousSystemParameters=record{neuron_minimum_stake_e8s=opt 100000 : opt nat64; } }})'
+```
 
 #### 12. Test user experience.
 In all different stages, you should also test the user experience, e.g., how the users would
