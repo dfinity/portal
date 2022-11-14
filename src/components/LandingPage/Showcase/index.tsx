@@ -53,17 +53,30 @@ export default function ShowcaseSection(): JSX.Element {
     <section id="dapps" className="relative z-0">
       <AnimateSpawn variants={transitions.item}>
         <div className="container-10 pt-20 md:pt-30">
-          <div className="md:w-5/10">
+          <div className="">
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">
                 <RotatedDappsHeadline
                   interval={2500}
-                  lines={["DeFi", "Gaming", "NFT"]}
+                  lines={[
+                    "DeFi",
+                    "Metaverse",
+                    "Social Media",
+                    "Social Networking",
+                    "Multi-chain dapps",
+                    "Enterprise services",
+                    "R&D infrastructure",
+                    "Fundraising",
+                    "Publishing",
+                    "Messaging ",
+                    "Gaming",
+                    "NFTs",
+                  ]}
                 ></RotatedDappsHeadline>
               </span>
               <span>on True Web3</span>
             </h2>
-            <p className="tw-lead-sm md:tw-lead text-black-60 mb-0">
+            <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
               Featuring a few web3 project teams already reinventing the
               internet on the ICP blockchain.{" "}
             </p>
