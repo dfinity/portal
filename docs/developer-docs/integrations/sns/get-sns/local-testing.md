@@ -1,4 +1,4 @@
-<!--# Testing SNS Locally after Choosing Parameters-->
+# Testing SNS Locally after Choosing Parameters
 
 
 After having [chosen the initial SNS parameters in a .yaml file](preparation.md)
@@ -7,7 +7,7 @@ you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
 
 We next describe how you can test the SNS launch with your chosen parameters.
-The necessary steps are very similar to the [process of getting an SNS in production](get-sns-production.md).
+The necessary steps are very similar to the process of getting an SNS in production.
 The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
@@ -94,7 +94,7 @@ Installing the SNS has some preconditions:
 
 1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml` and has to be placed in your project's root directory.
 2. Your [cycles wallet](../../../build//project-setup/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
-3. Your cycles wallet contains enough cycles to create an SNS. Currently, this cost is 50T cycles.
+3. Your cycles wallet contains enough cycles to create an SNS. Currently, this cost is 180T cycles.
 
 The SNS is new and may still have significant bugs.
 To prevent huge numbers of projects giving control of their dapps to SNSs before the SNS has been tested in production, 
@@ -107,7 +107,7 @@ For local development, you can add your wallet to the whitelist using the follow
 $(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --nns-url "https://localhost:$(dfx info replica-port)" propose-to-update-sns-deploy-whitelist --added-principals "$(dfx identity get-wallet)" --proposer "$DEVELOPER_NEURON_ID" --proposal-title "Let me SNS!" --summary "I am friendly."
 ```
 
-Creating an SNS currently uses up to 250T cycles, and your wallet needs to supply those.
+Creating an SNS currently uses up to 180T cycles, and your wallet needs to supply those.
 On a local deployment, you can add any number of cycles to any canister.
 To add 2345T cycles to your wallet, run the following command:
 
@@ -132,7 +132,7 @@ dfx canister id sns_swap
 And to see how many cycles the deployment cost, run `dfx wallet balance` again.
 
 #### 4. Remove all controllers other than the SNS from the dapp canister(s)
-Remove yourself, as well as any other developers, from the list of controllers that the dapp canister(s) have.
+Remove yourself, as well as any other developers, from the list of controllers that the dapp canister(s) have and add the SNS root canister as their controllers.
 Note that without this, the next step will fail.
 
 Using the identity `developer-identity`, run this command for every canister that is part of your dapp:
@@ -168,7 +168,8 @@ sns-quill --canister-ids-file ./canister_ids.json --pem-file ~/.config/dfx/ident
 ```
 
 :::info
-As explained [on the next page](get-sns-production.md), in production this is one of the reasons
+<!-- As explained [on the next page](get-sns-production.md), --> 
+In production this is one of the reasons
 why you must ensure that you can reach a majority of the initial neurons and that the initial
 neurons are able to vote already before the decentralization sale.
 :::
@@ -228,7 +229,7 @@ To do so, vote on the NNS proposal and ensure that you reach a majority for yes 
 As you have a huge neuron - your private network is not decentralized - your vote with the `community neuron` should be enough to pass the proposal.
 If you watch the top of the proposal's status in the NNS dapp UI, it should change to "Executed" after no more than 30 seconds.
 
-Check the state of the swap canister:
+Check the state of the canister that implements the decentralization sale, called the swap canister:
 
 ``` bash
 dfx canister call sns_swap get_state '(record {})'
@@ -239,7 +240,7 @@ started with the configurations that you have defined in the
 [initialization file](preparation.md).
 If the proposal is rejected, the dapp canisters' controllers are automatically set
 back to the developer principals that you
-have defined in the [initialization file](preparation.md).
+have defined in the [initialization](preparation.md).
 
 #### 9. Test sale participation
 After the sale has been started by the NNS, test that you can participate in the sale as expected.
@@ -288,7 +289,9 @@ by following the instructions in [Step 6](#6-test-upgrading-the-dapp-canisters-b
 In all different stages, you should also test the user experience, e.g., how the users would
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
-In particular, if you [chose to integrate some of the SNS or NNS functionality in your dapp frontend](../integrate-sns/frontend-integration.md),
+In particular, if you 
+<!--[chose to integrate some of the SNS or NNS functionality in your dapp frontend](../integrate-sns/frontend-integration.md),-->
+chose to integrate some of the SNS or NNS functionality in your dapp frontend,
 you should test this user experience. 
 As already suggested in some steps, you might also want to test what the interaction would look like on the NNS frontend dapp.
 
