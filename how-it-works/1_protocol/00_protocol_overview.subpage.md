@@ -14,6 +14,14 @@ Canister code execution updates the canister state.
 In order to keep the state on the subnet nodes on which a canister is hosted in sync, it must be ensured that every node executes the same messages in the same order, i.e., fully deterministically.
 This is the core of the blockchain-based replicated state machine functionality realizing the IC.
 
+The core IC protocol comprises the following four layers, from bottom to top:
+1. Peer-to-peer
+2. Consensus
+3. Message routing
+4. Execution
+
+![](/img/how-it-works/core_protocol_layers.png)
+
 The upper two layers realize *deterministic execution* of the block of messages for a round received from the lower two layers, on each node of the subnet.
 At the beginning of a round, all (honest) nodes hold the same state, representing the replicated state of the subnet (which includes the current state on all canisters hosted on that subnet.
 By executing the messages of the next block received from consensus in a completely deterministic manner, it is ensured that the state after executing the messages of the block is the same on each node due to the determinism in execution.
