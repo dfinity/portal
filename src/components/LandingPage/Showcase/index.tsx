@@ -74,7 +74,7 @@ export default function ShowcaseSection(): JSX.Element {
                   ]}
                 ></RotatedDappsHeadline>
               </span>
-              <span>on True Web3</span>
+              <span>fully on-chain</span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
               Featuring a few web3 project teams already reinventing the
