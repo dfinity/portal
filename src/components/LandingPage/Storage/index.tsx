@@ -307,8 +307,8 @@ const Storage: React.FC = () => {
                 className="w-8"
               />
 
-              <span className="tw-heading-60 pl-4">$5</span>
-              <span className="tw-heading-6 pl-1 relative top-3">
+              <span className="tw-heading-5 pl-4">$5</span>
+              <span className="tw-heading-7 pl-1">
                 / GB per year
               </span>
             </div>
