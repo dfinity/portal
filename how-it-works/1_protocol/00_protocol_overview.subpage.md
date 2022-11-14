@@ -20,7 +20,12 @@ The core IC protocol comprises the following four layers, from bottom to top:
 3. Message routing
 4. Execution
 
-![](/img/how-it-works/core_protocol_layers.png)
+<figure>
+<img src="/img/how-it-works/core_protocol_layers.png" alt="4-layer architecture of the Internet Computer" title="4-Layer Core IC Protocol" align="center" style="width:600px">
+<figcaption align="center">
+The 4-layer architecture of the Core IC Protocol
+</figcaption>
+</figure>
 
 The upper two layers realize *deterministic execution* of the block of messages for a round received from the lower two layers, on each node of the subnet.
 At the beginning of a round, all (honest) nodes hold the same state, representing the replicated state of the subnet (which includes the current state on all canisters hosted on that subnet.
