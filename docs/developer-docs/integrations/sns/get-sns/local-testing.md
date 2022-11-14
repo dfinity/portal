@@ -168,7 +168,6 @@ sns-quill --canister-ids-file ./canister_ids.json --pem-file ~/.config/dfx/ident
 ```
 
 :::info
-<!-- As explained [on the next page](get-sns-production.md), --> 
 In production this is one of the reasons
 why you must ensure that you can reach a majority of the initial neurons and that the initial
 neurons are able to vote already before the decentralization sale.
