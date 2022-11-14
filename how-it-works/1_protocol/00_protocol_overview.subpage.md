@@ -14,7 +14,7 @@ Canister code execution updates the canister state.
 In order to keep the state on the subnet nodes on which a canister is hosted in sync, it must be ensured that every node executes the same messages in the same order, i.e., fully deterministically.
 This is the core of the blockchain-based replicated state machine functionality realizing the IC.
 
-The core IC protocol comprises the following four layers, from bottom to top:
+Each node on the Internet Computer runs a replica process. The replica process is structured in a layered architecture consisting of the following 4 layers.   
 1. Peer-to-peer
 2. Consensus
 3. Message routing
@@ -26,6 +26,8 @@ The core IC protocol comprises the following four layers, from bottom to top:
 The 4-layer architecture of the Core IC Protocol
 </figcaption>
 </figure>
+
+The Peer-to-Peer layer is responsible for exchanging messages between nodes in a subnet. The consensus layer lets all the nodes on the subnet to agree on the messages to be processed, as well as their ordering. The message routing layer picks up the finalized blocks from consensus layer and routes the messages in the blocks to appropriate canisters. The execution layer determinstically executes canister code on the messages received from the messaging layer. 
 
 The upper two layers realize *deterministic execution* of the block of messages for a round received from the lower two layers, on each node of the subnet.
 At the beginning of a round, all (honest) nodes hold the same state, representing the replicated state of the subnet (which includes the current state on all canisters hosted on that subnet.
