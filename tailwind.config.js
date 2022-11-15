@@ -46,6 +46,9 @@ module.exports = {
         "https-outcalls":
           "url('/static/img/https-outcalls/sample-code-bg.jpeg')",
       },
+      backgroundSize: {
+        stretch: "100% 100%",
+      },
     },
     screens: {
       sm: "641px",
@@ -172,6 +175,21 @@ module.exports = {
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
+                '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
+                '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
+                '.blob-infinite': '@apply bg-[url("/img/features/blob-infinite.png")] aspect-[256/232]',
+                '.blob-xs': '@apply w-[500px]',
+                '.blob-sm': '@apply w-[800px]',
+                '.blob-md': '@apply w-[1000px]',
+                '.blob-lg': '@apply w-[1500px]',
+                '.blob-xl': '@apply w-[2000px]',
+                '.blob-center': '@apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+                '.blob-top-left': '@apply left-0 -translate-x-6/10 top-0 bottom-auto -translate-y-1/3',
+                '.blob-top-right': '@apply right-0 translate-x-6/10 top-0 bottom-auto -translate-y-1/3',
+                '.blob-center-left': '@apply left-0 -translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
+                '.blob-center-right': '@apply right-0 translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
+                '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
+                '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
             };
 
       addComponents(
