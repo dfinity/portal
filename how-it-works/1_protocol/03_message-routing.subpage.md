@@ -14,7 +14,7 @@ It implements functionality that is crucial for the operation of the IC.
 Its responsibilities can be roughly grouped as follows:
 * Induction of messages received in blocks from consensus;
 * Invocation of the execution layer after successful induction;
-* Routing of inter-canister messages resultin from execution within and between subnets;
+* Routing of inter-canister messages resulting from execution within and between subnets;
 * Certification of the state of the subnet;
 * Synchronization of the state of the subnet to newly joining and fallen behind nodes.
 
