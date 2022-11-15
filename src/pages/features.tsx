@@ -319,7 +319,7 @@ function FeaturesPage() {
             >
               As search engines like Google can’t index smart contracts running
               on other blockchains, developers had to use centralized cloud
-              providers to create frontends that are searchable. The Interrnet
+              providers to create frontends that are searchable. The Internet
               Computer hosts smart contracts that can directly be indexed by all
               popular search engines.
             </motion.p>
@@ -342,7 +342,7 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               The Internet Computer provides a complete tech stack for
-              developers to build on. It can hosts online services and games
+              developers to build on. It can host online services and games
               fully on-chain without ever relying on centralized cloud
               providers. This provides complete decentralization and removes
               single points of failure.
@@ -350,7 +350,7 @@ function FeaturesPage() {
             <motion.p className="mb-0" variants={transitions.item}>
               <Link href="" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more
+               
               </Link>
             </motion.p>
           </SingleCard>
@@ -376,7 +376,7 @@ function FeaturesPage() {
             <motion.p className="mb-0" variants={transitions.item}>
               <Link href="" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more
+                
               </Link>
             </motion.p>
           </SingleCard>
@@ -470,7 +470,7 @@ function FeaturesPage() {
               contracts
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn more
               </Link>
@@ -493,7 +493,6 @@ function FeaturesPage() {
               other blockchains.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn more
               </Link>
@@ -652,7 +651,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://internetcomputer.org/how-it-works#Chain-key-technology" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -668,7 +667,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/actor-model" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -684,7 +683,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/daemon-contracts" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -700,7 +699,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/multi-block-transactions" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -716,7 +715,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/webassembly" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -732,7 +731,7 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="" className="link-external">
+              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/limitless-scaling" className="link-external">
                 Learn more
               </Link>
             </p>
