@@ -166,7 +166,7 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/serve-web.png" alt="" className=""></img>
+              <img src="/img/features/serve-web.webp" alt="" className=""></img>
             }
             className="md:col-span-2"
           >
@@ -191,7 +191,7 @@ function FeaturesPage() {
             imageSide="left"
             image={
               <img
-                src="/img/features/no-oracles-image.png"
+                src="/img/features/no-oracles-image.webp"
                 alt=""
                 className=""
               ></img>
@@ -224,7 +224,7 @@ function FeaturesPage() {
           </SplitCard>
           <SingleCard className="bg-gradient-100 from-[#0E031F] to-[#281447] text-white relative pb-52">
             <img
-              src="/img/features/astronaut-image.png"
+              src="/img/features/astronaut-image.webp"
               alt=""
               className="absolute w-[194px] bottom-0 right-20 z-0"
             />
@@ -303,7 +303,7 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/seo-image.png" alt="" className=""></img>
+              <img src="/img/features/seo-image.webp" alt="" className=""></img>
             }
             className="md:col-span-2"
           >
@@ -422,12 +422,12 @@ function FeaturesPage() {
             imageSideClassName="text-center"
             image={
               <img
-                src="/img/features/btc-eth.png"
+                src="/img/features/btc-eth.webp"
                 alt=""
                 className="my-10 h-[150px] md:h-[280px]"
               ></img>
             }
-            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.jpg)] md:bg-[url(/img/features/bitcoin-bg.jpg)] bg-stretch md:bg-cover"
+            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.jpg)] md:bg-[url(/img/features/bitcoin-bg.webp)] bg-stretch md:bg-cover"
           >
             <motion.h3
               className="tw-heading-4 md:tw-heading-3 mb-4 "
@@ -536,7 +536,7 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/nns-image.png" alt="" className=""></img>
+              <img src="/img/features/nns-image.webp" alt="" className=""></img>
             }
             className="md:col-span-2"
           >
@@ -567,7 +567,7 @@ function FeaturesPage() {
             imageSideClassName="relative w-full min-h-[50vw] sm:min-h-[20vh] md:min-h-0 md:h-full overflow-hidden"
             image={
               <img
-                src="/img/features/sns-image.png"
+                src="/img/features/sns-image.webp"
                 alt=""
                 className="px-6 w-[550px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               ></img>

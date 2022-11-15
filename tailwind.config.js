@@ -177,7 +177,7 @@ module.exports = {
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
-                '.blob-infinite': '@apply bg-[url("/img/features/blob-infinite.png")] aspect-[256/232]',
+                '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
                 '.blob-xs': '@apply w-[500px]',
                 '.blob-sm': '@apply w-[800px]',
                 '.blob-md': '@apply w-[1000px]',
