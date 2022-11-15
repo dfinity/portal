@@ -14,7 +14,7 @@ Canister code execution updates the canister state.
 In order to keep the state on the subnet nodes on which a canister is hosted in sync, it must be ensured that every node executes the same messages in the same order, i.e., fully deterministically.
 This is the core of the blockchain-based replicated state machine functionality realizing the IC.
 
-Each node on the Internet Computer runs a replica process. The replica process is structured in a layered architecture consisting of the following 4 layers.   
+Each node on the Internet Computer runs a replica process. The replica process is structured in a layered architecture consisting of the following 4 layers:
 1. Peer-to-peer
 2. Consensus
 3. Message routing
