@@ -158,7 +158,7 @@ function FeaturesPage() {
             >
               The Internet Computer combines several innovations to provide web
               experiences often indistinguishable from web2 - all directly from
-              the blockchain{" "}
+              the blockchain.{" "}
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -183,7 +183,7 @@ function FeaturesPage() {
               The Internet Computer is the only blockchain with canister smart
               contracts that can serve web by processing HTTP requests. This
               allows 100% of online services to run from the blockchain, which
-              allows for full decentralization
+              allows for full decentralization.
             </motion.p>
           </SplitCard>
 
@@ -216,7 +216,7 @@ function FeaturesPage() {
               blockhain.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://internetcomputer.org/https-outcalls" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn about HTTPS outcalls
               </Link>
@@ -252,7 +252,7 @@ function FeaturesPage() {
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
-                  href=""
+                  href="https://internetcomputer.org/how-it-works/web-authentication-identity/"
                   className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
                 >
                   <RightPointer className="w-6 h-6"></RightPointer>
@@ -446,7 +446,7 @@ function FeaturesPage() {
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href=""
+                href="https://internetcomputer.org/bitcoin-integration/"
                 className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -555,9 +555,9 @@ function FeaturesPage() {
               based on the voting of ICP token holders.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://internetcomputer.org/nns" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about NNS
+                Learn about ICP governance
               </Link>
             </motion.p>
           </SplitCard>
@@ -589,9 +589,9 @@ function FeaturesPage() {
               DAO to achieve full decentralization - 100% on-chain
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://internetcomputer.org/sns" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about SNS
+                Learn about ICP DAOs
               </Link>
             </motion.p>
           </SplitCard>
@@ -758,22 +758,22 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Dive into the tech
+              Take a Tech Dive 
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-6"
               variants={transitions.item}
             >
-              Learn how the Internet Computer blockchain realizes the vision of
-              the World Computer. Dive into its technology, open-source
-              repositories, in-depth video academy sessions, white papers,
-              publications, and detailed technology articles.
+              Learn how inner workings of the Internet Computer blockchain. 
+              Detailed tech articles on the core protocol, governance, to chain-key cryptography, plus
+              open-source repositories, in-depth video academy sessions, white papers, and more. 
+       
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
               variants={transitions.item}
             >
-              <Link className="button button-white" href="">
+              <Link className="button button-white" href="https://internetcomputer.org/how-it-works">
                 Learn how ICP works
               </Link>
             </motion.p>
