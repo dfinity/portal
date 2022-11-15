@@ -21,7 +21,7 @@ Each node on the Internet Computer runs a replica process. The replica process i
 4. Execution
 
 <figure>
-<img src="/img/how-it-works/core_protocol_layers.png" alt="4-layer architecture of the Internet Computer" title="4-Layer Core IC Protocol" align="left" style="width:600px">
+<img src="/img/how-it-works/core_protocol_layers.png" alt="4-layer architecture of the Internet Computer" title="4-Layer Core IC Protocol" align="center" style="width:600px">
 <figcaption align="left">
 The 4-layer architecture of the Core IC Protocol
 </figcaption>
