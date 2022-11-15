@@ -40,3 +40,7 @@ with local jurisdictions.
 In addition to the two endpoints, the boundary nodes provide to access the IC,
 the boundary nodes also provide caching to improve the performance of the dapps
 hosted on the IC.
+
+## Go Even Deeper
+
+[Boundary Nodes on the IC Wiki](https://wiki.internetcomputer.org/wiki/Boundary_Nodes)
