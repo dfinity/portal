@@ -221,11 +221,7 @@ To test the deployed dapp locally:
 
 After testing the application, you can stop the local execution environment so that it doesn’t continue running in the background.
 
-To stop the local execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local execution environment process.
-
-2.  Stop the local execution environment running on your computer by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
