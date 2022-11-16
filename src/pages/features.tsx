@@ -327,9 +327,9 @@ function FeaturesPage() {
               popular search engines.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about HTTPS outcalls
+                Learn about SEO support 
               </Link>
             </motion.p>
           </SplitCard>
@@ -660,7 +660,7 @@ function FeaturesPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/actor-model"
+                href="/features/actor-model"
                 className="link-external"
               >
                 Learn more
@@ -676,7 +676,7 @@ function FeaturesPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/daemon-contracts"
+                href="/features/daemon-contracts"
                 className="link-external"
               >
                 Learn more
@@ -692,7 +692,7 @@ function FeaturesPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/multi-block-transactions"
+                href="/features/multi-block-transactions"
                 className="link-external"
               >
                 Learn more
@@ -708,7 +708,7 @@ function FeaturesPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/webassembly"
+                href="/features/webassembly"
                 className="link-external"
               >
                 Learn more
@@ -724,7 +724,7 @@ function FeaturesPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/limitless-scaling"
+                href="/features/limitless-scaling"
                 className="link-external"
               >
                 Learn more
