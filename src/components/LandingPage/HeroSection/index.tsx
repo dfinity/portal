@@ -27,7 +27,7 @@ export default function Hero(): JSX.Element {
             complete IT stack on which any online system or Web3 service can be
             built in a fully decentralized form, 100% on-chain. ICP is the only
             blockchain with smart contracts that serve web experiences, create
-            transactions on other chains, directly integrate with web2 APIs
+            transactions on other chains, directly integrate with Web2 APIs
             without oracles, and run 20,000x more efficiently. No centralized
             cloud. Simply powered by breakthrough Chain-key Cryptography.
           </AnimateSpawn>
