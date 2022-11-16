@@ -84,8 +84,8 @@
 
 .value {
   font-weight: 700;
-  font-size: 40px;
-  line-height: 50px;
+  font-size: 32px;
+  line-height: 44px;
 }
 
 .informationContainer {
@@ -121,7 +121,6 @@
 }
 
 @media screen and (max-width: 996px) {
-
   .main {
     margin-bottom: 16px;
   }
@@ -132,7 +131,7 @@
 
   .container {
     padding: 24px 24px 15px 24px;
-    height: 112px;
+    height: 132px;
   }
 
   .value {
