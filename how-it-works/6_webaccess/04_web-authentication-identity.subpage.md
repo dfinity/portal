@@ -14,7 +14,7 @@ In order to access and interact with applications running on the Internet Comput
 This provides a high level of convenience, allowing users to authenticate to dapps with a very low level of friction, yet, while also benefiting from a high level of security and without the need to directly manage or handle cryptographic key material themselves. The system offers some degree of privacy for users, by ensuring that whenever an anchor is used to interact with a dapp, the dapp sees a specially generated pseudonym for that dapp, which prevents the dapp from tracking users across the various dapps they use. 
 
 <figure>
-<img src="/img/how-it-works/internet-identity-authorization.png" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="width:700px">
+<img src="/img/how-it-works/internet-identity-authorization.png" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="width:400px">
 <figcaption align="left">
 Internet Identity screen prompting the user to authorize access to Openchat
 </figcaption>
