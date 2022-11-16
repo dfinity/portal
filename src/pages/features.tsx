@@ -157,7 +157,7 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               The Internet Computer combines several innovations to provide web
-              experiences often indistinguishable from web2 - all directly from
+              experiences often indistinguishable from Web2 - all directly from
               the blockchain.{" "}
             </motion.p>
           </div>
@@ -202,7 +202,7 @@ function FeaturesPage() {
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              Connect web2 and web3 without oracles
+              Connect Web2 and Web3 without oracles
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-6"
@@ -210,7 +210,7 @@ function FeaturesPage() {
             >
               Until now, blockchains had to use expensive and slow oracles to
               read from off-chain data sources. ICP smart contracts can directly
-              connect to web2 APIs, making oracles obsolete. This opens up
+              connect to Web2 APIs, making oracles obsolete. This opens up
               countless possibilities like sending emails, push notifications,
               fetching crypto prices and many more - directly from the
               blockhain.
@@ -570,7 +570,7 @@ function FeaturesPage() {
               className="tw-heading-4 md:tw-heading-3 mb-4 "
               variants={transitions.item}
             >
-              Make any web3 service into a DAO
+              Make any Web3 service into a DAO
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
@@ -720,7 +720,7 @@ function FeaturesPage() {
               Subnets / Infinite Scalability
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            The Internet Computer incorporates a novel subnet architecture that enables infinite scalability, making mass-market web3 services 100% on-chain possible. No cloud or servers are needed.
+            The Internet Computer incorporates a novel subnet architecture that enables infinite scalability, making mass-market Web3 services 100% on-chain possible. No cloud or servers are needed.
             </p>
             <p className="mb-0">
               <Link
