@@ -26,7 +26,7 @@ export default function Hero(): JSX.Element {
             The Internet Computer (ICP) is the first World Computer blockchain, 
             powered by innovations in cryptography and computer science derived from <Link href="https://wiki.internetcomputer.org/wiki/History" className="link-subtle">deep crypto research begun in 2015</Link>. 
             It is a limitless blockchain that runs with 20,000X more efficiency than the next best,
-            and hosts smart contract code that directly serves web experiences to end users, interacts with web2, 
+            and hosts smart contract code that directly serves web experiences to end users, interacts with Web2, 
             and creates signed transactions that run on other blockchains. It supports end-to-end decentralization, 
             in which traditional IT, such as Big Tech’s cloud services, can be 
             completely replaced by blockchain smart contracts…
