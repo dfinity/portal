@@ -98,7 +98,7 @@ function FeaturePage() {
             Chain Key (CK) Cryptography
             </Link> which allows IC signatures to be verified with a single public key, hence reducing friction 
             for all types of devices (node machines, laptops, mobile phones) that want to 
-            efficiently interact with a blockchain with similar speed and security of web2, 
+            efficiently interact with a blockchain with similar speed and security of Web2, 
             but without the centralization.
             </p>
             
