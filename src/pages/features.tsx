@@ -95,13 +95,13 @@ function FeaturesPage() {
         <meta
           property="og:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-features.jpg"
           }
         />
         <meta
           name="twitter:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-features.jpg"
           }
         />
       </Head>
