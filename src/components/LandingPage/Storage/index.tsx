@@ -142,7 +142,8 @@ const Storage: React.FC = () => {
             On-chain efficiency comparison
           </h2>
           <p className="tw-lead-sm md:tw-lead md:w-6/10">
-            Relative cost of storing data inside smart contracts measured in USD.
+            Relative cost of storing data inside smart contracts measured in
+            USD.
           </p>
         </div>
         <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white overflow-hidden">
@@ -217,7 +218,7 @@ const Storage: React.FC = () => {
                   height: ethereumHeightPercent,
                 }}
               >
-                <div className="absolute -bottom-6 lg:-bottom-32 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-32">
+                <div className="absolute -bottom-6 lg:-bottom-20 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-20">
                   <img
                     src="/img/basics/logos/logo-eth.svg"
                     alt=""
@@ -226,7 +227,7 @@ const Storage: React.FC = () => {
                   <span className="hidden lg:inline tw-heading-5 pl-4">
                     $79,000,000
                   </span>
-                  <span className="hidden lg:inline tw-heading-7 pl-1">
+                  <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
                     / GB per year
                   </span>
                 </div>
@@ -239,7 +240,7 @@ const Storage: React.FC = () => {
                 }
                 style={{ height: solanaHeightPercent }}
               >
-                <div className="absolute -bottom-6 lg:-bottom-32 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-32">
+                <div className="absolute -bottom-6 lg:-bottom-20 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-20">
                   <img
                     src="/img/basics/logos/logo-solana.svg"
                     alt=""
@@ -248,7 +249,7 @@ const Storage: React.FC = () => {
                   <span className="hidden lg:inline tw-heading-5 pl-4">
                     $110,000
                   </span>
-                  <span className="hidden lg:inline tw-heading-7 pl-1">
+                  <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
                     / GB per year
                   </span>
                 </div>
@@ -261,17 +262,15 @@ const Storage: React.FC = () => {
                 }
                 style={{ height: icpHeightPercent }}
               >
-                <div className="absolute -bottom-6 lg:-bottom-32 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-32 border border-white lg:border-solid rounded-xl border-b-4 px-6">
+                <div className="absolute -bottom-6 lg:-bottom-20 translate-y-full flex items-center whitespace-nowrap left-1/2 -translate-x-1/2 w-max lg:h-20">
                   <img
                     src="/img/basics/logos/logo-icp.svg"
                     alt=""
                     className="w-11"
                   />
 
-                  <span className="hidden lg:inline tw-heading-60 pl-4">
-                    $5
-                  </span>
-                  <span className="hidden lg:inline tw-heading-6 pl-1 relative top-3">
+                  <span className="hidden lg:inline tw-heading-5 pl-4">$5</span>
+                  <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
                     / GB per year
                   </span>
                 </div>
@@ -282,33 +281,37 @@ const Storage: React.FC = () => {
             className="lg:hidden mt-30 pt-8 border-0 border-t border-white-20 border-solid transition-opacity"
             style={{ opacity: backgroundVisible ? 1 : 0 }}
           >
-            <div className="flex items-center whitespace-nowrap h-[70px] px-6 border-transparent border-solid border">
+            <div className="flex items-center whitespace-nowrap h-[70px] px-2 border-transparent border-solid border">
               <img
                 src="/img/basics/logos/logo-eth.svg"
                 alt=""
                 className="w-8"
               />
               <span className="tw-heading-5 pl-4">$79,000,000</span>
-              <span className="tw-heading-7 pl-1">/ GB per year</span>
+              <span className="tw-heading-7 pl-1 relative top-1">
+                / GB per year
+              </span>
             </div>
-            <div className="flex items-center whitespace-nowrap h-[70px] px-6 border-transparent border-solid border mb-4">
+            <div className="flex items-center whitespace-nowrap h-[70px] px-2 border-transparent border-solid border">
               <img
                 src="/img/basics/logos/logo-solana.svg"
                 alt=""
                 className="w-8"
               />
               <span className="tw-heading-5 pl-4">$110,000</span>
-              <span className="tw-heading-7 pl-1">/ GB per year</span>
+              <span className="tw-heading-7 pl-1 relative top-1">
+                / GB per year
+              </span>
             </div>
-            <div className="flex items-center whitespace-nowrap h-32 border border-white border-solid rounded-xl border-b-4 px-6">
+            <div className="flex items-center whitespace-nowrap h-[70px] px-2 border-transparent border-solid border">
               <img
                 src="/img/basics/logos/logo-icp.svg"
                 alt=""
                 className="w-8"
               />
 
-              <span className="tw-heading-60 pl-4">$5</span>
-              <span className="tw-heading-6 pl-1 relative top-3">
+              <span className="tw-heading-5 pl-4">$5</span>
+              <span className="tw-heading-7 pl-1 relative top-1">
                 / GB per year
               </span>
             </div>
