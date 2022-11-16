@@ -15,6 +15,13 @@ nodes provide a public endpoint for the IC and route all incoming requests to
 the right subnet, loadbalance requests across replica nodes, and cache responses
 for improved performance.
 
+<figure>
+<img src="/img/how-it-works/boundary-nodes.png" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center" style="width:600px">
+<figcaption align="left">
+Boundary nodes are the gateway to the Internet Computer, which allow users to seamlessly access the canister smart contracts.
+</figcaption>
+</figure> 
+
 The boundary nodes provide two ways of accessing canister smart contracts hosted
 on the Internet Computer: first, one can access them using stock browsers through
 the HTTP gateway, and second, one can access them using API canister calls
