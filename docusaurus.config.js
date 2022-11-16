@@ -159,6 +159,10 @@ const config = {
                 href: "/showcase",
               },
               {
+                label: "Features",
+                href: "/features",
+              },
+              {
                 label: "Basics",
                 href: "/basics",
               },
