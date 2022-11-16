@@ -7,6 +7,8 @@ import { animate, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   getBlockCount,
+  getCanisterCount,
+  getCyclesBurnRate,
   getTransactionRate,
 } from "@site/src/utils/network-stats";
 import clsx from "clsx";
@@ -71,7 +73,12 @@ function AnimatedStatistic({ title, currentValue, tooltip, precision }) {
   );
 }
 
-function Statistic({ title, currentValue, tooltip }) {
+const Statistic: React.FC<{
+  title: string;
+  currentValue: React.ReactNode;
+  tooltip: React.ReactNode;
+  subscript?: React.ReactNode;
+}> = ({ title, currentValue, tooltip, subscript }) => {
   return (
     <motion.div variants={item} className={styles.container}>
       <div className={styles.titleContainer}>
@@ -84,19 +91,32 @@ function Statistic({ title, currentValue, tooltip }) {
         </div>
       </div>
       <span className={styles.value}>{currentValue}</span>
+      {subscript && (
+        <span className="block tw-lead-sm text-black-60">{subscript}</span>
+      )}
     </motion.div>
   );
-}
+};
+
+const formatInteger = new Intl.NumberFormat("en-US", {
+  maximumFractionDigits: 0,
+}).format;
 
 function Dashboard() {
   const [stats, setStats] = useState<{
     blockCount: number;
+    canisters: number;
+    cyclesBurnRate: number;
     transactionRate: number;
     cost: number;
+    xdrPrice: number;
   }>({
-    blockCount: 847458088,
+    blockCount: 0,
+    canisters: 0,
+    cyclesBurnRate: 0,
     transactionRate: 0,
     cost: 0.46,
+    xdrPrice: 1.31597,
   });
 
   const controls = useAnimation();
@@ -107,17 +127,27 @@ function Dashboard() {
     }
   }, [controls, inView]);
 
+  const globalData = useGlobalData();
+  const icpPrice = globalData["icp-price"]["default"] as number;
+
   const fetchData = useCallback(async () => {
-    const [blockCount, transactionRate] = await Promise.all([
-      getBlockCount(),
-      getTransactionRate(),
-    ]);
-    setStats({
+    const [blockCount, canisters, transactionRate, cyclesBurnRate] =
+      await Promise.all([
+        getBlockCount(),
+        getCanisterCount(),
+        getTransactionRate(),
+        getCyclesBurnRate(),
+      ]);
+
+    setStats((v) => ({
       blockCount,
+      canisters,
       transactionRate,
-      cost: 0.46,
-    });
-  }, []);
+      cyclesBurnRate,
+      cost: v.cost,
+      xdrPrice: v.xdrPrice,
+    }));
+  }, [setStats]);
 
   useEffect(() => {
     fetchData();
@@ -151,24 +181,30 @@ function Dashboard() {
       >
         <a className={styles.anchor} id="dashboard" />
         <div className={styles.grid}>
-          <AnimatedStatistic
-            title="Block count"
-            currentValue={stats.blockCount}
-            tooltip={"The total number of blocks finalized since genesis."}
-            precision={0}
+          <Statistic
+            title="Transaction Rate"
+            currentValue={`${formatInteger(
+              stats.transactionRate * 3400 * 24
+            )} TX/day`}
+            subscript={`${formatInteger(stats.transactionRate)} TX/sec`}
+            tooltip={"The number of transactions being processed each day."}
           />
           <Statistic
-            title="Smart contract memory"
-            currentValue={`$${stats.cost} GB/month`}
-            tooltip={
-              "The cost of storing 1GB of data in a canister smart contract."
-            }
+            title="Canisters (smart contracts/dapps)"
+            currentValue={formatInteger(stats.canisters)}
+            tooltip={"The total number of canisters running."}
           />
-          <AnimatedStatistic
-            title="Transactions/s"
-            currentValue={stats.transactionRate}
-            tooltip={"The number of transactions being processed each second."}
-            precision={0}
+          <Statistic
+            title="Cycles Burn Rate"
+            currentValue={`${formatInteger(stats.cyclesBurnRate)} cycles/s`}
+            subscript={`≈${(
+              ((stats.cyclesBurnRate / 1_000_000_000_000) *
+                stats.xdrPrice *
+                3600 *
+                24) /
+              icpPrice
+            ).toFixed(1)} ICP/day`}
+            tooltip={"The total amount of cycles burned each second."}
           />
         </div>
         <motion.div variants={item}>
