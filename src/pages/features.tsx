@@ -640,10 +640,7 @@ function FeaturesPage() {
               Chain-key Cryptography
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            The Internet Computer protocol uses a toolbox of advanced cryptographic mechanisms, collectively known as chain-key cryptography, which allows the IC to achieve functionalities and scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
               <Link
@@ -659,10 +656,7 @@ function FeaturesPage() {
               Asynchronous Execution (Parallelism)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            "Actor" smart contracts run in parallel, unlocking scaling and preventing reentrancy attacks like the infamous DAO attack, which caused a major chain to hard fork and a loss of 60 million USD.
             </p>
             <p className="mb-0">
               <Link
@@ -675,13 +669,10 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Heartbeat (deamon contracts)
+              Heartbeat (Deamon contracts)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            On traditional blockchain networks, smart contract computations can only be invoked by submitting a new transaction to their networks. The Internet Computer provides a means for canister smart contracts to be configured so that they are invoked by the blockchain itself, at some specified block interval.
             </p>
             <p className="mb-0">
               <Link
@@ -697,10 +688,7 @@ function FeaturesPage() {
               Multi-block transactions
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            Smart contract calls (TXs) can be long-running and span multiple blocks.
             </p>
             <p className="mb-0">
               <Link
@@ -716,10 +704,7 @@ function FeaturesPage() {
               WebAssembly (WASM)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            Use any language that compiles to WASM: Motoko, Rust, TypeScript, Python and more
             </p>
             <p className="mb-0">
               <Link
@@ -732,13 +717,10 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Subnets / Infinite Scalabilty
+              Subnets / Infinite Scalability
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            The Internet Computer incorporates a novel subnet architecture that enables infinite scalability, making mass-market web3 services 100% on-chain possible. No cloud or servers are needed.
             </p>
             <p className="mb-0">
               <Link
