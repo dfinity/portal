@@ -2,7 +2,7 @@
 title: Serving Web content
 ---
 
-![](/img/how-it-works/canister-lifecycle.600x300.jpg)
+![](/img/how-it-works/web-content.jpg)
 
 # Smart Contracts Serve the Web
 

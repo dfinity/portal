@@ -2,7 +2,7 @@
 title: Asset certification
 ---
 
-![](/img/how-it-works/response-certification.600x300.jpg)
+![](/img/how-it-works/asset-certification.jpg)
 
 # Asset certification
 
