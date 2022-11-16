@@ -14,8 +14,8 @@ export default function Hero(): JSX.Element {
           className="tw-heading-60 md:tw-heading-1 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          A World Computer blockchain running
-          <br className="hidden md:inline" /> at webspeed
+          Limitless, Web-serving World Computer blockchain
+          {/* <br className="hidden md:inline" /> at webspeed */}
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -23,13 +23,12 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The Internet Computer (ICP) is a World Computer that provides a
-            complete IT stack on which any online system or Web3 service can be
-            built in a fully decentralized form, 100% on-chain. ICP is the only
-            blockchain with smart contracts that serve web experiences, create
-            transactions on other chains, directly integrate with web2 APIs
-            without oracles, and run 20,000x more efficiently. No centralized
-            cloud. Simply powered by breakthrough Chain-key Cryptography.
+            The Internet Computer (ICP) is the first World Computer blockchain, powered by innovations 
+            in cryptography and computer science derived from deep crypto research begun in 2015. 
+            It is a limitless blockchain that runs with 20,000X more efficiency than the next best, 
+            and hosts smart contract code that directly serves web experiences to end users, interacts with web2, 
+            and creates signed transactions that run on other blockchains. It supports end-to-end decentralization, 
+            in which traditional IT, such as Big Tech’s cloud services, can be completely replaced by blockchain smart contracts…
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
