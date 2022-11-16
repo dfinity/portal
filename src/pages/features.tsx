@@ -327,9 +327,9 @@ function FeaturesPage() {
               popular search engines.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about HTTPS outcalls
+                Learn about SEO support 
               </Link>
             </motion.p>
           </SplitCard>
