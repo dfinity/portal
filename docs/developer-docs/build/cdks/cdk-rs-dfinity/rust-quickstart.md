@@ -20,11 +20,6 @@ Before you start your project, verify the following:
 
 -   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/hello10mins.md).
 
--   You have installed the `ic-cdk-optimizer` utility. You can install it with:
-    ``` bash
-    cargo install ic-cdk-optimizer
-    ```
-
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
     ``` bash
@@ -33,6 +28,11 @@ Before you start your project, verify the following:
 
     For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
 
+-   You have installed the `ic-cdk-optimizer` utility. You can install it with:
+    ``` bash
+    cargo install ic-cdk-optimizer
+    ```
+    
 -   You have stopped any local execution environment processes running on your computer.
 
 ## Create a new project
