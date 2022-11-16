@@ -26,7 +26,7 @@ To trigger a protocol upgrade, one has to submit a “proposal” in the NNS to 
 <figure>
 <img src="/img/how-it-works/upgrade-proposal.png" alt="Proposal to upgrade a subnet to a new replica version" title="Proposal to upgrade a subnet to a new replica version" align="center" style="width:700px">
 <figcaption align="left">
-Proposal to upgrade a subnet to a new replica version. The status of all proposals can be viewed in the [dashboard](https://dashboard.internetcomputer.org/governance).
+Proposal to upgrade a subnet to a new replica version. The status of all proposals can be viewed at https://dashboard.internetcomputer.org/governance.
 </figcaption>
 </figure> 
 We now describe how a change in registry version upgrades the Internet Computer. Protocol upgrades are done on a per-subnet basis. Each subnet is run by many nodes. Each node runs 2 processes — (1) the Replica and (2) the Orchestrator. The Replica consists of the 4-layer software stack that maintains the blockchain. The Orchestrator downloads and manages the replica software. The orchestrator regularly queries the NNS registry for any updates. If there is a new registry version, the orchestrator downloads the corresponding replica software and informs about it to the replica. 
