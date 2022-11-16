@@ -216,7 +216,10 @@ function FeaturesPage() {
               blockhain.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://internetcomputer.org/https-outcalls" className="tw-heading-6 flex gap-2 items-center">
+              <Link
+                href="/https-outcalls"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn about HTTPS outcalls
               </Link>
@@ -252,7 +255,7 @@ function FeaturesPage() {
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
-                  href="https://internetcomputer.org/how-it-works/web-authentication-identity/"
+                  href="/how-it-works/web-authentication-identity/"
                   className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
                 >
                   <RightPointer className="w-6 h-6"></RightPointer>
@@ -338,7 +341,7 @@ function FeaturesPage() {
               100% on-chain: no cloud
             </motion.h3>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm text-black-60 mb-12"
+              className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
               The Internet Computer provides a complete tech stack for
@@ -346,12 +349,6 @@ function FeaturesPage() {
               fully on-chain without ever relying on centralized cloud
               providers. This provides complete decentralization and removes
               single points of failure.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
-                <RightPointer className="w-6 h-6"></RightPointer>
-               
-              </Link>
             </motion.p>
           </SingleCard>
 
@@ -363,7 +360,7 @@ function FeaturesPage() {
               Reverse Gas Model
             </motion.h3>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm text-black-60 mb-12"
+              className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
               One of the major hurdles in the blockchain industry for end users
@@ -372,12 +369,6 @@ function FeaturesPage() {
               adoption in mind from the ground up. Developers charge their smart
               contracts with cycles (gas), so users don’t have to pay for
               computation, removing barrier of entry.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
-                <RightPointer className="w-6 h-6"></RightPointer>
-                
-              </Link>
             </motion.p>
           </SingleCard>
         </section>
@@ -446,7 +437,7 @@ function FeaturesPage() {
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="https://internetcomputer.org/bitcoin-integration/"
+                href="/bitcoin-integration/"
                 className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -470,7 +461,10 @@ function FeaturesPage() {
               contracts
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains" className="tw-heading-6 flex gap-2 items-center">
+              <Link
+                href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn more
               </Link>
@@ -484,18 +478,13 @@ function FeaturesPage() {
               Chain-key Transactions
             </motion.h3>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm text-black-60 mb-12"
+              className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
               Chain-key transactions are the innovation that powers direct
               integration with other blockchains without the use of bridges. It
               allows the Internet Computer to natively create transactions on
               other blockchains.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more
-              </Link>
             </motion.p>
           </SingleCard>
         </section>
@@ -554,7 +543,10 @@ function FeaturesPage() {
               based on the voting of ICP token holders.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://internetcomputer.org/nns" className="tw-heading-6 flex gap-2 items-center">
+              <Link
+                href="/nns"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn about ICP governance
               </Link>
@@ -588,7 +580,10 @@ function FeaturesPage() {
               DAO to achieve full decentralization - 100% on-chain
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://internetcomputer.org/sns" className="tw-heading-6 flex gap-2 items-center">
+              <Link
+                href="/sns"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn about ICP DAOs
               </Link>
@@ -651,7 +646,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://internetcomputer.org/how-it-works#Chain-key-technology" className="link-external">
+              <Link
+                href="/how-it-works#Chain-key-technology"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -667,7 +665,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/actor-model" className="link-external">
+              <Link
+                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/actor-model"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -683,7 +684,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/daemon-contracts" className="link-external">
+              <Link
+                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/daemon-contracts"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -699,7 +703,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/multi-block-transactions" className="link-external">
+              <Link
+                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/multi-block-transactions"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -715,7 +722,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/webassembly" className="link-external">
+              <Link
+                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/webassembly"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -731,7 +741,10 @@ function FeaturesPage() {
               scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
-              <Link href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/limitless-scaling" className="link-external">
+              <Link
+                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/limitless-scaling"
+                className="link-external"
+              >
                 Learn more
               </Link>
             </p>
@@ -757,22 +770,22 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Take a Tech Dive 
+              Take a Tech Dive
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-6"
               variants={transitions.item}
             >
-              Learn how inner workings of the Internet Computer blockchain. 
-              Detailed tech articles on the core protocol, governance, to chain-key cryptography, plus
-              open-source repositories, in-depth video academy sessions, white papers, and more. 
-       
+              Learn how inner workings of the Internet Computer blockchain.
+              Detailed tech articles on the core protocol, governance, to
+              chain-key cryptography, plus open-source repositories, in-depth
+              video academy sessions, white papers, and more.
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
               variants={transitions.item}
             >
-              <Link className="button button-white" href="https://internetcomputer.org/how-it-works">
+              <Link className="button button-white" href="/how-it-works">
                 Learn how ICP works
               </Link>
             </motion.p>
