@@ -209,9 +209,7 @@ function Dashboard() {
                 24) /
               icpPrice
             ).toFixed(1)} ICP/day`}
-            tooltip={
-              "The cost of storing 1GB of data in a canister smart contract."
-            }
+            tooltip={"The total amount of cycles burned each second."}
           />
         </div>
         <motion.div variants={item}>
