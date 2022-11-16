@@ -20,11 +20,6 @@ Before you start your project, verify the following:
 
 -   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Installing the SDK](../../../build/install-upgrade-remove.mdx).
 
--   You have installed the `ic-cdk-optimizer` utility. You can install it with:
-    ``` bash
-    cargo install ic-cdk-optimizer
-    ```
-
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
     ``` bash
@@ -33,6 +28,11 @@ Before you start your project, verify the following:
 
     For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
 
+-   You have installed the `ic-cdk-optimizer` utility. You can install it with:
+    ``` bash
+    cargo install ic-cdk-optimizer
+    ```
+    
 -   You have stopped any local execution environment processes running on your computer.
 
 ## Create a new project
@@ -67,51 +67,54 @@ One of the template files included in your project directory is a default `dfx.j
 
 The configuration file should look like [this](../../_attachments/rust-quickstart-dfx.json).
 
-Notice that under the `canisters` key, you have some default settings for the `rust_hello` canister.
+Notice that under the `canisters` key, you have some default settings for the `rust_hello_backend` canister.
 
-1.  `"type": "rust"` specifies that `rust_hello` is a `rust` type canister.
+1.  `"type": "rust"` specifies that `rust_hello_backend` is a `rust` type canister.
 
-2.  `"candid": "src/rust_hello/rust_hello.did"` specifies the location of the Candid interface description file to use for the canister.
+2.  `"candid": "src/rust_hello_backend/rust_hello_backend.did""` specifies the location of the Candid interface description file to use for the canister.
 
-3.  `"package": "rust_hello"` specifies the package name of the Rust crate. It should be the same as in the crate `Cargo.toml` file.
+3.  `"package": "rust_hello_backend"` specifies the package name of the Rust crate. It should be the same as in the crate `Cargo.toml` file.
 
 ### `Cargo.toml`
 
 In the root directory, there is a `Cargo.toml` file.
 
-It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here we have one member at `src/rust_hello` which is the only Rust canister.
+It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here we have one member at `src/rust_hello_backend` which is the only Rust canister.
 
 ``` toml
 [workspace]
 members = [
-    "src/rust_hello",
+    "src/rust_hello_backend",
 ]
 ```
 
-### `src/rust_hello/`
+### `src/rust_hello_backend/`
 
 Now we are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
 
-#### `src/rust_hello/Cargo.toml`
+#### `src/rust_hello_backend/Cargo.toml`
 
 ``` toml
 [package]
-name = "rust_hello"
+name = "rust_hello_backend"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-path = "lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-ic-cdk = "0.5"
-ic-cdk-macros = "0.5"
+candid = "0.8.2"
+ic-cdk = "0.6.0"
+ic-cdk-macros = "0.6.0"
+
 ```
 
-Notice the `crate-type = ["cdylib"]` line which is necessary to compile this rust program into WebAssembly module.
+Notice the `crate-type = ["cdylib"]` line which is necessary to compile this Rust program into WebAssembly module.
 
-#### `src/rust_hello/lib.rs`
+#### `src/rust_hello_backend/src/lib.rs`
 
 The default project has a simple `greet` function that uses the DFINITY Rust CDK `query` macro.
 
@@ -120,9 +123,10 @@ The default project has a simple `greet` function that uses the DFINITY Rust CDK
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }
+
 ```
 
-#### `src/rust_hello/rust_hello.did`
+#### `src/rust_hello_backend/rust_hello_backend.did`
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of a canister’s interfaces including the names, parameters, and result formats and data types for each function a canister defines.
 
@@ -134,6 +138,7 @@ To see details about the Candid interface description language syntax, see the [
 service : {
     "greet": (text) -> (text) query;
 }
+
 ```
 
 This definition specifies that the `greet` function is a `query` method which takes `text` data as input and returns `text` data.
@@ -181,31 +186,43 @@ To register, build, and deploy:
     The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
     Deploying all canisters.
     Creating canisters...
-    
     Creating canister rust_hello_backend...
     rust_hello_backend canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
-    
     Creating canister rust_hello_frontend...
     rust_hello_frontend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
-    
     Building canisters...
 
     ...
 
     Deployed canisters.
     URLs:
-
-    Frontend canister via browser
-        rust_hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
-
-    Backend canister via Candid interface:
-        rust_hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+      Frontend canister via browser
+        rust_hello_frontend: http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+      Backend canister via Candid interface:
+        rust_hello_backend: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
     ```
 
 
 ## Test the dapp
 
-To test the deployed dapp locally:
+There are several ways to interact with your canisters. Let's talk about access from the browser first. 
+
+To access the frontend canister (`rust_hello_frontend`) you can simply follow the link that was printed in the terminal in the previous step.
+```
+    Frontend canister via browser
+        rust_hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+```
+
+Frontend canisters, also called `asset canisters`, allow to access web content directly from a smart contract. This enables you to deploy your entire dapp, not just the backend, on the Internet Computer.
+
+To access the backend canister (`rust_hello_backend`) you can again open the URL printed to your terminal in the previous step.
+```
+Backend canister via Candid interface:
+        rust_hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+```
+Using this method, we open the so called [`Candid UI` canister](https://github.com/dfinity/candid/tree/master/tools/ui) that is automatically deployed to our local replica when you first run `dfx deploy`. The `Candid UI` canister fetches the interface from your backend canister and allows you to test and browse your canister's API with a visual web interface.
+
+To test the deployed `rust_hello_backend` locally from your command line using dfx, try the following:
 
 1.  Check that you are still in root directory for your project directory, if needed.
 
@@ -221,11 +238,7 @@ To test the deployed dapp locally:
 
 After testing the application, you can stop the local execution environment so that it doesn’t continue running in the background.
 
-To stop the local execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local execution environment process.
-
-2.  Stop the local execution environment running on your computer by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
