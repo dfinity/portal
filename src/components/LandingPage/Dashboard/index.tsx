@@ -109,12 +109,14 @@ function Dashboard() {
     cyclesBurnRate: number;
     transactionRate: number;
     cost: number;
+    xdrPrice: number;
   }>({
     blockCount: 0,
     canisters: 0,
     cyclesBurnRate: 0,
     transactionRate: 0,
     cost: 0.46,
+    xdrPrice: 1.31597,
   });
 
   const controls = useAnimation();
@@ -137,22 +139,15 @@ function Dashboard() {
         getCyclesBurnRate(),
       ]);
 
-    console.log({
+    setStats((v) => ({
       blockCount,
       canisters,
       transactionRate,
       cyclesBurnRate,
-      cost: 0.46,
-    });
-
-    setStats({
-      blockCount,
-      canisters,
-      transactionRate,
-      cyclesBurnRate,
-      cost: 0.46,
-    });
-  }, []);
+      cost: v.cost,
+      xdrPrice: v.xdrPrice,
+    }));
+  }, [setStats]);
 
   useEffect(() => {
     fetchData();
@@ -204,7 +199,7 @@ function Dashboard() {
             currentValue={`${formatInteger(stats.cyclesBurnRate)} cycles/s`}
             subscript={`≈${(
               ((stats.cyclesBurnRate / 1_000_000_000_000) *
-                1.31597 *
+                stats.xdrPrice *
                 3600 *
                 24) /
               icpPrice
