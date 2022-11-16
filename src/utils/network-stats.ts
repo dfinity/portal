@@ -34,6 +34,19 @@ export function getTransactionRate(): Promise<number> {
     .then((res) => +res.message_execution_rate[0][1]);
 }
 
+export function getCyclesBurnRate(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/metrics/cycle-burn-rate"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          cycle_burn_rate: [timestamp: number, rate: string][];
+        }>
+    )
+    .then((res) => +res.cycle_burn_rate[0][1]);
+}
+
 export function getBlockCount(): Promise<number> {
   return fetch("https://ic-api.internetcomputer.org/api/v3/block-heights")
     .then(
