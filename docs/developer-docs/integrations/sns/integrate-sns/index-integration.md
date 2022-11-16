@@ -1,7 +1,7 @@
 # SNS Index Canister
 
 The index canister fetches transactions from the [ledger canister](ledger-integration.md) and indexes them by Account. 
-It allows to query the transactions of an Account in descending order and the list of Account that belongs to a Principal. 
+It allows to query the transactions of an Account in descending order from the ledger chain, and the list of Account that belongs to a Principal. 
 An index canister is always deployed as part of the SNS canisters.
 
 This canister is useful for applications that want to show the transactions of a specific account.
@@ -40,6 +40,8 @@ The provided methods are:
 get_account_transactions : (GetAccountTransactionsArgs) -> (GetTransactionsResult);
 ```
 Return the transactions for a given account.
+Transactions are returned in descending id order.
+Optionally, the user can specify a starting transaction id allowing to only query for transactions before this id. If no start is specified, the last transaction is used.
 
 ```
 ledger_id : () -> (principal) query;

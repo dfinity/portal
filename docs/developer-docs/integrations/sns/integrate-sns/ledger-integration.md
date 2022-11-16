@@ -1,6 +1,6 @@
 # SNS Ledger Canister
 
-The SNS ledger canister keeps track of the transactions between accounts,
+The SNS ledger canister keeps track of the transactions between accounts in a _chain_,
 as well as the account balances at the last block of the chain.
 A ledger canister is always deployed as part of the SNS canisters. 
 The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) specification.
@@ -97,7 +97,7 @@ Returns the balance of the account given as an argument.
 ```
 icrc1_transfer : (TransferArg) -> (TransferResult);
 ```
-Transfers some tokens between two accounts. The caller pays the fees for the transfer.
+Transfers some tokens between two accounts. The transfer fees are taken from the caller's account in addition to the transferred amount.
 
 ```
 icrc1_supported_standards : () -> (vec record { name : text; url : text }) query;
