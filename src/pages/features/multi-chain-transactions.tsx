@@ -65,7 +65,7 @@ function FeaturePage() {
             </p>
             <h3>Service Composability</h3>
             <p>
-            The web3 environment contains multiple blockchains that have different characteristics and excel in different roles. 
+            The Web3 environment contains multiple blockchains that have different characteristics and excel in different roles. 
             A key web3 philosophy is service composability, in which different blockchain services are composed to create new 
             services and functionality. Tokenized assets and liquidity must also be able to move between services, whichever 
             blockchain they are on. The Internet Computer provides a means to fully support this paradigm in a multi-chain 
@@ -127,7 +127,7 @@ function FeaturePage() {
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
           Using the power of chain key cryptography, the Internet Computer can thus be used as an orchestration blockchain, or 
           meta blockchain, upon which new services can be built that combine functionality and assets provided by other 
-          blockchains in the web3 universe - all without the need to trust a central party, and without the inconvenience 
+          blockchains in the Web3 universe - all without the need to trust a central party, and without the inconvenience 
           and risk of using wrapping and bridges.
 
 
@@ -151,7 +151,7 @@ function FeaturePage() {
               href="/samples"
             />
             <CardWithDescription
-              title="'Trustless multi-chain web3' article on the IC Wiki"
+              title="'Trustless multi-chain Web3' article on the IC Wiki"
               description="Learn about how IC's smart contracts directly interact with other blockchains, without trusted centralized bridges."
               href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
             />
