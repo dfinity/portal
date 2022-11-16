@@ -5,8 +5,6 @@ shareImage: /img/how-it-works/outcalls.600x300.png
 slug: boundary-nodes
 ---
 
-![](/img/how-it-works/outcalls.600x300.png)
-
 # Boundary nodes
 
 The boundary nodes form the globally distributed edge of the Internet Computer (IC)

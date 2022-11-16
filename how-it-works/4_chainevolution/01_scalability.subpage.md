@@ -13,6 +13,13 @@ There are two types of widely-used approaches to improve the scalability of a sy
 
 The nodes in the Internet Computer are divided into subnets, each containing a few dozen nodes. The set of nodes in a subnet together maintain one blockchain. Each subnet can host a few thousand canisters and process messages received by those canisters. Each subnet has a limited capacity in terms of the number of canisters (a few thousand), amount of storage (a few TB), and bandwidth (a few hundred transactions per second). But as more subnets are added to the Internet Computer, its overall capacity increases proportionately. There is no limit on the number of subnets that can be added, resulting in unlimited scalability. 
 
+<figure>
+<img src="/img/how-it-works/add-new-subnet.png" alt="Internet Computer is divided into subnets" title="Internet Computer is divided into subnets" align="center" style="width:700px">
+<figcaption align="left">
+The Internet Computer is divided into subnets. One of the subnets hosts Network Nervous System canisters.
+</figcaption>
+</figure> 
+
 Creating a new subnet has two steps.  1) Adding new nodes to the Internet Computer,  and  2) Creating a subnet with the available nodes
 Anyone can purchase the node hardware and add it to the Internet Computer by following the [node provider onboarding process](https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding). 
 
