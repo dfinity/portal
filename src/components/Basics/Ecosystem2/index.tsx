@@ -54,7 +54,7 @@ const categories = [
   {
     title: (
       <>
-        Explore new user incentives in web3{" "}
+        Explore new user incentives in Web3{" "}
         <span style={{ color: "#DA3979" }}>Social</span> dapps
       </>
     ),

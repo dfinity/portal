@@ -95,13 +95,13 @@ function FeaturesPage() {
         <meta
           property="og:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-features.jpg"
           }
         />
         <meta
           name="twitter:image"
           content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpeg"
+            "https://internetcomputer.org/img/shareImages/share-features.jpg"
           }
         />
       </Head>
@@ -157,7 +157,7 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               The Internet Computer combines several innovations to provide web
-              experiences often indistinguishable from web2 - all directly from
+              experiences often indistinguishable from Web2 - all directly from
               the blockchain.{" "}
             </motion.p>
           </div>
@@ -202,7 +202,7 @@ function FeaturesPage() {
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              Connect web2 and web3 without oracles
+              Connect Web2 and Web3 without oracles
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-6"
@@ -210,7 +210,7 @@ function FeaturesPage() {
             >
               Until now, blockchains had to use expensive and slow oracles to
               read from off-chain data sources. ICP smart contracts can directly
-              connect to web2 APIs, making oracles obsolete. This opens up
+              connect to Web2 APIs, making oracles obsolete. This opens up
               countless possibilities like sending emails, push notifications,
               fetching crypto prices and many more - directly from the
               blockhain.
@@ -327,9 +327,9 @@ function FeaturesPage() {
               popular search engines.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="tw-heading-6 flex gap-2 items-center">
+              <Link href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853" className="tw-heading-6 flex gap-2 items-center">
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about HTTPS outcalls
+                Learn about SEO support 
               </Link>
             </motion.p>
           </SplitCard>
@@ -570,7 +570,7 @@ function FeaturesPage() {
               className="tw-heading-4 md:tw-heading-3 mb-4 "
               variants={transitions.item}
             >
-              Make any web3 service into a DAO
+              Make any Web3 service into a DAO
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
@@ -640,10 +640,7 @@ function FeaturesPage() {
               Chain-key Cryptography
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            The Internet Computer protocol uses a toolbox of advanced cryptographic mechanisms, collectively known as chain-key cryptography, which allows the IC to achieve functionalities and scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
               <Link
@@ -659,14 +656,11 @@ function FeaturesPage() {
               Asynchronous Execution (Parallelism)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            "Actor" smart contracts run in parallel, unlocking scaling and preventing reentrancy attacks like the infamous DAO attack, which caused a major chain to hard fork and a loss of 60 million USD.
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/actor-model"
+                href="/features/actor-model"
                 className="link-external"
               >
                 Learn more
@@ -675,17 +669,14 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Heartbeat (deamon contracts)
+              Heartbeat (Daemon contracts)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            On traditional blockchain networks, smart contract computations can only be invoked by submitting a new transaction to their networks. The Internet Computer provides a means for canister smart contracts to be configured so that they are invoked by the blockchain itself, at some specified block interval.
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/daemon-contracts"
+                href="/features/daemon-contracts"
                 className="link-external"
               >
                 Learn more
@@ -697,14 +688,11 @@ function FeaturesPage() {
               Multi-block transactions
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            Smart contract calls (TXs) can be long-running and span multiple blocks.
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/multi-block-transactions"
+                href="/features/multi-block-transactions"
                 className="link-external"
               >
                 Learn more
@@ -716,14 +704,11 @@ function FeaturesPage() {
               WebAssembly (WASM)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            Use any language that compiles to WASM: Motoko, Rust, TypeScript, Python and more
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/webassembly"
+                href="/features/webassembly"
                 className="link-external"
               >
                 Learn more
@@ -732,17 +717,14 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Subnets / Infinite Scalabilty
+              Subnets / Infinite Scalability
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
+            The Internet Computer incorporates a novel subnet architecture that enables infinite scalability, making mass-market Web3 services 100% on-chain possible. No cloud or servers are needed.
             </p>
             <p className="mb-0">
               <Link
-                href="https://6364e99c915aeb000d53bf3a--icportal.netlify.app/features/limitless-scaling"
+                href="/features/limitless-scaling"
                 className="link-external"
               >
                 Learn more
