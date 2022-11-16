@@ -17,12 +17,18 @@ The “protocol upgrades” feature is designed with the following goals. (1) Al
 
 Protocol upgrades are made feasible due to our blockchain governance system called Network Nervous System (NNS). In the NNS, there is a component called “registry”, which stores all the configuration of the Internet Computer. A versioning system is implemented for the configuration. Each mutation to the configuration shows up as a new version in the registry. The registry has a record for each subnet which includes a protocol version, list of nodes in the subnet, cryptographic key material to be used by the subnet, etc. Note that the registry stores the desired configuration. The subnets might actually be running one of the older configurations. 
 
-To trigger a protocol upgrade, one has to submit a “proposal” in the NNS to change the configuration of the registry. The proposal can be voted by anyone who staked their ICP tokens. If a majority of voters accept the proposal, then the registry is changed accordingly. 
-
 <figure>
 <img src="/img/how-it-works/registry-versions.png" alt="Registry implements versioning mechanism" title="Registry implements versioning mechanism" align="center" style="width:700px">
 </figure>
 
+To trigger a protocol upgrade, one has to submit a “proposal” in the NNS to change the configuration of the registry. The proposal can be voted by anyone who staked their ICP tokens. If a majority of voters accept the proposal, then the registry is changed accordingly. 
+
+<figure>
+<img src="/img/how-it-works/upgrade-proposal.png" alt="Proposal to upgrade a subnet to a new replica version" title="Proposal to upgrade a subnet to a new replica version" align="center" style="width:700px">
+<figcaption align="left">
+Proposal to upgrade a subnet to a new replica version. The status of all proposals can be viewed in the [dashboard](https://dashboard.internetcomputer.org/governance).
+</figcaption>
+</figure> 
 We now describe how a change in registry version upgrades the Internet Computer. Protocol upgrades are done on a per-subnet basis. Each subnet is run by many nodes. Each node runs 2 processes — (1) the Replica and (2) the Orchestrator. The Replica consists of the 4-layer software stack that maintains the blockchain. The Orchestrator downloads and manages the replica software. The orchestrator regularly queries the NNS registry for any updates. If there is a new registry version, the orchestrator downloads the corresponding replica software and informs about it to the replica. 
 
 In each consensus round, one of the nodes in the subnet (called the block maker) proposes a block. In every block, the block maker includes the latest registry version it downloaded from the registry. Other nodes notarize the block only when they have the referenced registry available. 
