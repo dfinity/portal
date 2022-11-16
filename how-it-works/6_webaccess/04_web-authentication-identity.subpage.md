@@ -13,6 +13,13 @@ In order to access and interact with applications running on the Internet Comput
 
 This provides a high level of convenience, allowing users to authenticate to dapps with a very low level of friction, yet, while also benefiting from a high level of security and without the need to directly manage or handle cryptographic key material themselves. The system offers some degree of privacy for users, by ensuring that whenever an anchor is used to interact with a dapp, the dapp sees a specially generated pseudonym for that dapp, which prevents the dapp from tracking users across the various dapps they use. 
 
+<figure>
+<img src="/img/how-it-works/internet-identity-authorization.png" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="width:700px">
+<figcaption align="left">
+Internet Identity screen prompting the user to authorize access to Openchat
+</figcaption>
+</figure> 
+
 A user can register as many identity anchors as they want for redundancy, or different purposes. For example, a user may create an anchor for use with SocialFi or GameFi, and another for use with pure DeFi. They may only feel comfortable adding facial recognition to their SocialFi and GameFi anchor, say, and only use more secure portable HSM devices like YubiKeys and Ledger wallets with their pure DeFi anchor.
 
 Unlike most authentication methods, users are not required to set and manage passwords or provide any personal identifying information to dapps or to Internet Identity.
