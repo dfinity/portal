@@ -185,7 +185,7 @@ function SnsPage() {
               >
                 All parts of such applications are owned and governed by an SNS
                 DAO. This contrasts to existing DAOs where governance is limited
-                to the small part of their web3 application, which is smart
+                to the small part of their Web3 application, which is smart
                 contract logic.{" "}
                 <span className="italic">No single entity owns a dapp.</span>
               </motion.p>

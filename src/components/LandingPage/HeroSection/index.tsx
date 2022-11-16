@@ -24,7 +24,7 @@ export default function Hero(): JSX.Element {
             variants={transitions.item}
           >
             The Internet Computer (ICP) is a World Computer that provides a
-            complete IT stack on which any online system or web3 service can be
+            complete IT stack on which any online system or Web3 service can be
             built in a fully decentralized form, 100% on-chain. ICP is the only
             blockchain with smart contracts that serve web experiences, create
             transactions on other chains, directly integrate with web2 APIs
@@ -37,7 +37,7 @@ export default function Hero(): JSX.Element {
             variants={transitions.item}
           >
             <Link href="/showcase" className="button-primary">
-              Try web3 apps on ICP
+              Try Web3 apps on ICP
             </Link>
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
@@ -46,7 +46,7 @@ export default function Hero(): JSX.Element {
               href="/developers"
             >
               <ArrowRight></ArrowRight>
-              Build your own web3 app
+              Build your own Web3 app
             </Link>
           </AnimateSpawn>
         </div>

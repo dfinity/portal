@@ -77,7 +77,7 @@ export default function ShowcaseSection(): JSX.Element {
               <span>fully on-chain</span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
-              Featuring a few web3 project teams already reinventing the
+              Featuring a few Web3 project teams already reinventing the
               internet on the ICP blockchain.{" "}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function ShowcaseSection(): JSX.Element {
             variants={transitions.item}
           >
             <Link className="button-primary" href="/showcase">
-              Join the web3 movement
+              Join the Web3 movement
             </Link>
             <Link
               className="link-white  inline-flex items-center gap-2"
