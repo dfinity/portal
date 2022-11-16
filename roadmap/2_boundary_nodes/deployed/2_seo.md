@@ -3,7 +3,7 @@ title: SEO
 links:
   Forum Link:
   Proposal:
-eta: Sept 2022
+eta: September 2022
 is_community: true
 ---
 
