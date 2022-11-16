@@ -144,7 +144,7 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                Here we list dapps and web3 services that are built on the
+                Here we list dapps and Web3 services that are built on the
                 Internet Computer blockchain, which is a World Computer. Many
                 services run fully on-chain. You use decentralized services at
                 your own risk. Do your own research, especially where you must

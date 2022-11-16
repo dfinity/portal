@@ -169,6 +169,7 @@ module.exports = {
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
