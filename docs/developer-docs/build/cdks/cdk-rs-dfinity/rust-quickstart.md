@@ -205,7 +205,24 @@ To register, build, and deploy:
 
 ## Test the dapp
 
-To test the deployed dapp locally:
+There are several ways to interact with your canisters. Let's talk about access from the browser first. 
+
+To access the frontend canister (`rust_hello_frontend`) you can simply follow the link that was printed in the terminal in the previous step.
+```
+    Frontend canister via browser
+        rust_hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+```
+
+Frontend canisters, also called `asset canisters`, allow to access web content directly from a smart contract. This enables you to deploy your entire dapp, not just the backend, on the Internet Computer.
+
+To access the backend canister (`rust_hello_backend`) you can again open the URL printed to your terminal in the previous step.
+```
+Backend canister via Candid interface:
+        rust_hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+```
+Using this method, we open the so called [`Candid UI` canister](https://github.com/dfinity/candid/tree/master/tools/ui) that is automatically deployed to our local replica when you first run `dfx deploy`. The `Candid UI` canister fetches the interface from your backend canister and allows you to test and browse your canister's API with a visual web interface.
+
+To test the deployed `rust_hello_backend` locally from your command line using dfx, try the following:
 
 1.  Check that you are still in root directory for your project directory, if needed.
 
