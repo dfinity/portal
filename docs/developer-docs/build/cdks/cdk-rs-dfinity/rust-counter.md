@@ -74,7 +74,7 @@ In the [Hello, World! Rust CDK Quick Start](./rust-quickstart.md), you went thro
 
 To complete this tutorial, you’ll need to complete the following steps:
 
--   [Replace the default dapp](##replace-the-default-dapp)
+-   [Replace the default dapp](#replace-the-default-dapp)
 
 -   [Update interface description file](#update-interface-description-file)
 
