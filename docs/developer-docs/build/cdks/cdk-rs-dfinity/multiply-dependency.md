@@ -125,7 +125,7 @@ To write the Motoko source code:
 2.  Create the directory for the Motoko canister.
 
     ``` bash
-    mkdir multiply_deps
+    mkdir src/multiply_deps
     ```
 
 3.  Create and open the `src/multiply_deps/main.mo` file in a text editor.
@@ -142,13 +142,13 @@ To replace the default Rust canister:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the template `src/rust_deps/lib.rs` file in a text editor and delete the existing content.
+2.  Open the template `src/rust_deps_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to write a Rust program that imports the Motoko canister and implements the `read` function.
 
 3.  Copy and paste [this code](../../_attachments/mul-deps-main.rs) into the `lib.rs` file.
 
-4.  Save your changes and close the `src/rust_deps/lib.rs` file to continue.
+4.  Save your changes and close the `src/rust_deps_backend/src/lib.rs` file to continue.
 
 ### Update interface description file
 
@@ -162,7 +162,7 @@ To update the Candid file for this tutorial:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_deps/rust_deps.did` file in a text editor.
+2.  Open the `src/rust_deps_backend/rust_deps_backend.did` file in a text editor.
 
 3.  Copy and paste the following `service` definition for the `read` function:
 
@@ -172,7 +172,7 @@ To update the Candid file for this tutorial:
     }
     ```
 
-4.  Save your changes and close the `deps.did` file to continue.
+4.  Save your changes and close the `rust_deps_backend.did` file to continue.
 
 ## Start the local canister execution environment
 
