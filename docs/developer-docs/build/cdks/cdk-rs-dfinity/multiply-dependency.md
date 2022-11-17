@@ -272,11 +272,7 @@ To test the deployed canister:
 
 After you finish experimenting with your dapp, you can stop the local canister execution environment so that it doesn’t continue running in the background.
 
-To stop the local canister execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local canister execution environment process.
-
-2.  Stop the local canister execution environment by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
