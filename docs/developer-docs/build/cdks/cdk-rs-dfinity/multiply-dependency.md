@@ -78,7 +78,7 @@ To modify the `dfx.json` configuration file:
 
 2.  Open the `dfx.json` configuration file in a text editor.
 
-3.  Insert a new section before the `canisters.rust_deps` settings with settings for building a Motoko program.
+3.  Insert a new section before the `canisters.rust_deps_backend` settings with settings for building a Motoko program.
 
     For example, in the `canisters` section, add a new `multiply_deps` key with settings like these:
 
@@ -89,22 +89,20 @@ To modify the `dfx.json` configuration file:
     }
     ```
 
-4.  Add a `dependencies` setting to the `rust_deps` .
+4.  Add a `dependencies` setting to the `rust_deps_backend` .
 
-    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this tutorial, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `+rust_deps` field will look like:
+    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this tutorial, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `rust_deps_backend` field will look like:
 
     ``` json
-    "rust_deps": {
-      "candid": "src/rust_deps/rust_deps.did",
-      "package": "rust_deps",
+    "rust_deps_backend": {
+      "candid": "src/rust_deps_backend/rust_deps_backend.did",
+      "package": "rust_deps_backend",
       "type": "rust",
       "dependencies": [
         "multiply_deps"
       ]
-    }
+    },
     ```
-
-5.  Remove all of the `rust_deps_assets` configuration settings from the file.
 
     The sample dapp for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
