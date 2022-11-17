@@ -210,21 +210,31 @@ To register, build, and deploy:
         The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
         Deploying all canisters.
         Creating canisters...
-        Creating canister "multiply_deps"...
-        "multiply_deps" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "rust_deps"...
-        "rust_deps" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister multiply_deps...
+        multiply_deps canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
+        Creating canister rust_deps_backend...
+        rust_deps_backend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
         Building canisters...
-        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_deps"
-        ...
-            Finished release [optimized] target(s) in 5.26s
-        Executing: ic-cdk-optimizer -o target/wasm32-unknown-unknown/release/rust_deps.wasm target/wasm32-unknown-unknown/release/rust_deps.wasm
+        Checking for vulnerabilities in rust canisters.
+            Fetching advisory database from `https://github.com/RustSec/advisory-db.git`
+              Loaded 469 security advisories (from /Users/moritz/.cargo/advisory-db)
+            Updating crates.io index
+            Scanning Cargo.lock for vulnerabilities (110 crate dependencies)
+        Audit found no vulnerabilities.
+        Shrink WASM module size.
+        Executing: cargo build --target wasm32-unknown-unknown --release -p rust_deps_backend --locked
+            Finished release [optimized] target(s) in 0.07s
+        Shrink WASM module size.
         Installing canisters...
         Creating UI canister on the local network.
         The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister multiply_deps, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister rust_deps, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
+        Installing code for canister multiply_deps, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister rust_deps_backend, with canister ID ryjl3-tyaaa-aaaaa-aaaba-cai
         Deployed canisters.
+        URLs:
+          Backend canister via Candid interface:
+            multiply_deps: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+            rust_deps_backend: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=ryjl3-tyaaa-aaaaa-aaaba-cai
 
 ## Call functions on the deployed canister
 
@@ -261,7 +271,7 @@ To test the deployed canister:
 3.  Call the `read` function using the `rust_deps` canister that imports functions from the `multiply_deps` canister:
 
     ``` bash
-    dfx canister call rust_deps read
+    dfx canister call rust_deps_backend read
     ```
 
     The command returns the current value of the `cell` variable:
