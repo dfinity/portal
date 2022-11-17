@@ -277,7 +277,9 @@ function FeaturesPage() {
             >
               Low latency and high throughput. The two most important metrics
               for measuring speed. The Internet Computer provides outstanding
-              performance in both.
+              performance in both. Unlike most blockchains, ICP has no
+              theoretical maximum TX/s. It scales with each new subnet while
+              keeping communication between them seamless.
             </motion.p>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2  md:gap-x-12 md:gap-y-6">
@@ -669,7 +671,7 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Heartbeat (Daemon contracts)
+              Heartbeat
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
             On traditional blockchain networks, smart contract computations can only be invoked by submitting a new transaction to their networks. The Internet Computer provides a means for canister smart contracts to be configured so that they are invoked by the blockchain itself, at some specified block interval.
