@@ -340,11 +340,7 @@ This sample dapp only stores one profile for each unique user identity. If you w
 
 After you finish experimenting with your program, you can stop the local execution environment so that it doesn’t continue running in the background.
 
-To stop the local execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local execution environment process.
-
-2.  Stop the local execution environment by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
