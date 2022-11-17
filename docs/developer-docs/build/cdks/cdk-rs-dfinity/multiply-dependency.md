@@ -78,7 +78,7 @@ To modify the `dfx.json` configuration file:
 
 2.  Open the `dfx.json` configuration file in a text editor.
 
-3.  Insert a new section before the `canisters.rust_deps` settings with settings for building a Motoko program.
+3.  Insert a new section before the `canisters.rust_deps_backend` settings with settings for building a Motoko program.
 
     For example, in the `canisters` section, add a new `multiply_deps` key with settings like these:
 
@@ -89,26 +89,25 @@ To modify the `dfx.json` configuration file:
     }
     ```
 
-4.  Add a `dependencies` setting to the `rust_deps` .
+4.  Add a `dependencies` setting to the `rust_deps_backend` .
 
-    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this tutorial, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `+rust_deps` field will look like:
+    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this tutorial, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `rust_deps_backend` field will look like:
 
     ``` json
-    "rust_deps": {
-      "candid": "src/rust_deps/rust_deps.did",
-      "package": "rust_deps",
+    "rust_deps_backend": {
+      "candid": "src/rust_deps_backend/rust_deps_backend.did",
+      "package": "rust_deps_backend",
       "type": "rust",
       "dependencies": [
         "multiply_deps"
       ]
-    }
+    },
     ```
-
-5.  Remove all of the `rust_deps_assets` configuration settings from the file.
+5.  Remove all of the `rust_deps_frontend` configuration settings from the file.
 
     The sample dapp for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
-    You can also remove the `defaults` and `dfx` version settings.
+    You can also remove the `defaults` settings.
 
     For example, your configuration file might look like [this](../../_attachments/mul-deps-dfx.json) after you modify the settings.
 
@@ -125,7 +124,7 @@ To write the Motoko source code:
 2.  Create the directory for the Motoko canister.
 
     ``` bash
-    mkdir multiply_deps
+    mkdir src/multiply_deps
     ```
 
 3.  Create and open the `src/multiply_deps/main.mo` file in a text editor.
@@ -142,13 +141,13 @@ To replace the default Rust canister:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the template `src/rust_deps/lib.rs` file in a text editor and delete the existing content.
+2.  Open the template `src/rust_deps_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to write a Rust program that imports the Motoko canister and implements the `read` function.
 
 3.  Copy and paste [this code](../../_attachments/mul-deps-main.rs) into the `lib.rs` file.
 
-4.  Save your changes and close the `src/rust_deps/lib.rs` file to continue.
+4.  Save your changes and close the `src/rust_deps_backend/src/lib.rs` file to continue.
 
 ### Update interface description file
 
@@ -162,7 +161,7 @@ To update the Candid file for this tutorial:
 
 1.  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_deps/rust_deps.did` file in a text editor.
+2.  Open the `src/rust_deps_backend/rust_deps_backend.did` file in a text editor.
 
 3.  Copy and paste the following `service` definition for the `read` function:
 
@@ -172,7 +171,7 @@ To update the Candid file for this tutorial:
     }
     ```
 
-4.  Save your changes and close the `deps.did` file to continue.
+4.  Save your changes and close the `rust_deps_backend.did` file to continue.
 
 ## Start the local canister execution environment
 
@@ -210,21 +209,31 @@ To register, build, and deploy:
         The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
         Deploying all canisters.
         Creating canisters...
-        Creating canister "multiply_deps"...
-        "multiply_deps" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "rust_deps"...
-        "rust_deps" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister multiply_deps...
+        multiply_deps canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
+        Creating canister rust_deps_backend...
+        rust_deps_backend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
         Building canisters...
-        Executing: "cargo" "build" "--target" "wasm32-unknown-unknown" "--release" "-p" "rust_deps"
-        ...
-            Finished release [optimized] target(s) in 5.26s
-        Executing: ic-cdk-optimizer -o target/wasm32-unknown-unknown/release/rust_deps.wasm target/wasm32-unknown-unknown/release/rust_deps.wasm
+        Checking for vulnerabilities in rust canisters.
+            Fetching advisory database from `https://github.com/RustSec/advisory-db.git`
+              Loaded 469 security advisories (from /Users/moritz/.cargo/advisory-db)
+            Updating crates.io index
+            Scanning Cargo.lock for vulnerabilities (110 crate dependencies)
+        Audit found no vulnerabilities.
+        Shrink WASM module size.
+        Executing: cargo build --target wasm32-unknown-unknown --release -p rust_deps_backend --locked
+            Finished release [optimized] target(s) in 0.07s
+        Shrink WASM module size.
         Installing canisters...
         Creating UI canister on the local network.
         The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister multiply_deps, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister rust_deps, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
+        Installing code for canister multiply_deps, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister rust_deps_backend, with canister ID ryjl3-tyaaa-aaaaa-aaaba-cai
         Deployed canisters.
+        URLs:
+          Backend canister via Candid interface:
+            multiply_deps: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+            rust_deps_backend: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=ryjl3-tyaaa-aaaaa-aaaba-cai
 
 ## Call functions on the deployed canister
 
@@ -261,7 +270,7 @@ To test the deployed canister:
 3.  Call the `read` function using the `rust_deps` canister that imports functions from the `multiply_deps` canister:
 
     ``` bash
-    dfx canister call rust_deps read
+    dfx canister call rust_deps_backend read
     ```
 
     The command returns the current value of the `cell` variable:
@@ -272,11 +281,7 @@ To test the deployed canister:
 
 After you finish experimenting with your dapp, you can stop the local canister execution environment so that it doesn’t continue running in the background.
 
-To stop the local canister execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local canister execution environment process.
-
-2.  Stop the local canister execution environment by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
