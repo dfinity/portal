@@ -104,11 +104,11 @@ To modify the `dfx.json` configuration file:
     }
     ```
 
-5.  Remove all of the `rust_deps_assets` configuration settings from the file.
+5.  Remove all of the `rust_deps_frontend` configuration settings from the file.
 
     The sample dapp for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
-    You can also remove the `defaults` and `dfx` version settings.
+    You can also remove the `defaults` settings.
 
     For example, your configuration file might look like [this](../../_attachments/mul-deps-dfx.json) after you modify the settings.
 
