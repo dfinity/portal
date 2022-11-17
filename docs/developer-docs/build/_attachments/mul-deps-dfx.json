@@ -1,23 +1,17 @@
 {
-    "canisters": {
-        "multiply_deps": {
-            "main": "src/multiply_deps/main.mo",
-            "type": "motoko"
-        },
-        "rust_deps": {
-            "candid": "src/rust_deps/rust_deps.did",
-            "package": "rust_deps",
-            "type": "rust",
-            "dependencies": [
-                "multiply_deps"
-            ]
-        }
+  "version": 1,
+  "canisters": {
+    "multiply_deps": {
+      "main": "src/multiply_deps/main.mo",
+      "type": "motoko"
     },
-    "networks": {
-        "local": {
-            "bind": "127.0.0.1:8000",
-            "type": "ephemeral"
-        }
-    },
-    "version": 1
+    "rust_deps_backend": {
+      "type": "rust",
+      "package": "rust_deps_backend",
+      "candid": "src/rust_deps_backend/rust_deps_backend.did",
+      "dependencies": [
+        "multiply_deps"
+      ]
+    }
+  }
 }

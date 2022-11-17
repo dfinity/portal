@@ -277,7 +277,9 @@ function FeaturesPage() {
             >
               Low latency and high throughput. The two most important metrics
               for measuring speed. The Internet Computer provides outstanding
-              performance in both.
+              performance in both. Unlike most blockchains, ICP has no
+              theoretical maximum TX/s. It scales with each new subnet while
+              keeping communication between them seamless.
             </motion.p>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2  md:gap-x-12 md:gap-y-6">

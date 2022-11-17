@@ -1,5 +1,27 @@
 # Release Notes
 
+# What's new in DFX 0.12.1
+
+## DFX
+
+### fix: no longer shrinks custom canisters by default
+
+## Dependencies
+
+### Replica
+
+Updated replica to elected commit dcbf401f27d9b48354e68389c6d8293c4233b055.
+This incorporates the following executed proposals:
+
+- [90485](https://dashboard.internetcomputer.org/proposal/90485)
+- [90008](https://dashboard.internetcomputer.org/proposal/90008)
+
+### Frontend canister
+
+- Module hash: db07e7e24f6f8ddf53c33a610713259a7c1eb71c270b819ebd311e2d223267f0
+- https://github.com/dfinity/sdk/pull/2753
+
+
 # What's new in DFX 0.12.0
 
 ## DFX
