@@ -116,7 +116,7 @@ To deploy your first dapp locally:
 
         dfx deploy
 
-    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers—one for the `hello_backend` main program and one for the `hello_frontend` frontend user interface and installation information similar to the following:
+    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers. One is for the `hello_backend` main program and the other one for the `hello_frontend` frontend user interface and installation information similar to the following:
 
         Creating a wallet canister on the local network.
         The wallet canister on the "local" network for user "mainnet" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
