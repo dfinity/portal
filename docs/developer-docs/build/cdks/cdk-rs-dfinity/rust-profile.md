@@ -87,8 +87,9 @@ To replace the default program:
 
     ``` toml
     [dependencies]
-    ic-cdk = "0.5"
-    ic-cdk-macros = "0.5"
+    candid = "0.8.2"
+    ic-cdk = "0.6.0"
+    ic-cdk-macros = "0.6.0"
     serde = "1.0"
     ```
 
