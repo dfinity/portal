@@ -46,7 +46,7 @@ function Index() {
         className="tw-lead-sm md:tw-lead mb-2 text-center w-5/6 mx-auto md:tw-heading-2 md:mb-6 md:w-6/12"
       >
         Directly process bitcoin on the Bitcoin ledger using ICP smart contracts.
-        Add bitcoin to your ICP web3 services or create native Bitcoin DeFi.
+        Add bitcoin to your ICP Web3 services or create native Bitcoin DeFi.
       </motion.p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
         {links.map((card) => (

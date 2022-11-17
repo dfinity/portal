@@ -1,4 +1,4 @@
-<!--# Service Nervous System-->
+# Service Nervous System
 
 We assume that if you are reading this page you know what a 
 decentralized autonomous organization (DAO) is, 
@@ -9,13 +9,7 @@ If this is not (yet) the case, you can learn all about DAOs and SNSs
 [here](../../../tokenomics/sns/sns-intro-tokens.md),
 including what advantages such decentralized governance systems have.
 
-<!-- What I assume to be on the other intro page
-Comparison of NNS to SNS
-What is a DAO?
-Motivation: why a DAO? 
--->
-
-<!--## How to get and maintain a DAO - different options-->
+## How to get and maintain a DAO - different options _{#gettingDAOoptions}_
 
 There are at least the following options on how to get and maintain a DAO for
 your dapp.
@@ -66,7 +60,7 @@ that have full flexibility of how they can evolve. Because the possibilities for
 Options 2 and 3 are unbounded, we focus on explaining the SNS in Option 1 in
 more detail.
 
-<!--## SNS canisters-->
+## SNS canisters
 The SNS consists of the following canisters: 
 the governance canister, 
 the ledger canister and archive canisters,
@@ -87,39 +81,44 @@ and contains SNS tokens, which are unique tokens for each SNS.
 It stores which accounts own how many SNS tokens and the history of transactions 
 between them. 
 As we want to keep the full ledger history but a cansiter has limited
-memory, the ledger canister spawns _archive canisters_ that store the block history. 
-Morevoer, wallets and other frontends will need to show all transactions that are
+memory, the ledger canister spawns _archive canisters_ that store the ledger block history. 
+Moreover, wallets and other frontends will need to show all transactions that are
 relevant for a given account.
-To facilitate this and ensure that not every frontend has to implement such a filter,
+To facilitate this and ensure that not every frontend has to implement this themselves,
 the _index canister_ provides a map of which transactions are relevant for a given account.
 
 The _root canister_ is responsible for upgrading the other SNS canisters
 and the dapp canisters that the SNS governs.
 
-<!--## SNS lifecycle
-### SNS launch-->
+## SNS lifecycle
+### SNS launch
 As already described above, the SNS canister code is maintained and approved by the IC community.
 In more detail, the approved SNS versions and upgrade paths are stored on an NNS canister
 called the _SNS wasm modules canister (SNS-W)_.
 A user can set up an SNS by making a call to the SNS wasm modules canister, who takes the
 latest versions of the SNS canisters, initializes them with
 the parameters given by the user, and installs them on the SNS subnet.
-For this to work, the user has to provide sufficient initial cycles for the SNS canisters.
+For this to work, the user has to provide sufficient initial cycles for the SNS canisters,
+namely 180T.
+
 Moreover, to allow for beta testing and to ensure that the SNS subnet is not
 overloaded, in the beginning this call to SNS-W is authorized.
-Concretely, SNS-W will have a whitelist of principals that are allowed to set up an SNS and this
+Concretely, SNS-W will have a list of principals that are allowed to set up an SNS and this
 list can be updated by NNS proposals. This way, everyone can make an NNS proposal and
 register their principal in the list, but the NNS community has means of controlling how many SNSs
 should be set up how quickly in the beginning.
+In the long term, the plan is to drop this list.
 
 A crucial part of launching an SNS is how it can be decentralized. 
-That is, the newly created tokens must be distributed to a large community to ensure
+That is, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
-a developer can hand over the control of the dapp to a newly installed SNS, that has
-at that stage limited capabilities as it may not be fully decentralized yet, and
-ask the Internet Computer to launch this SNS by starting a decentralization sale
-for it.
+a developer can hand over the control of the dapp to a newly 
+installed SNS, that is at that stage still in pre-genesis mode
+and has limited capabilities. The developer can then ask the
+Internet Computer to start a decentralization sale and thereby
+launch the SNS for them.
+
 In this decentralization sale, initial SNS tokens are sold for ICP tokens.
 In the end of a successful decentralization sale, SNS tokens are owned by a large
 community and therefore the SNS governance control is decentralized.
@@ -131,7 +130,7 @@ added in later SNS versions.
 The decentralization sale and how to get an SNS including such a sale
 are described in more detail [here](./get-sns/get-sns-intro.md).
 
-<!--### SNS management-->
+### SNS management
 As mentioned, these system-provided SNSs are maintained by the IC.
 This eliminates much of the maintenance burden from the SNS communities.
 However, there are still some maintenance tasks that have to be performed by an
@@ -149,10 +148,13 @@ that are automatically spawned by the ledger canister.
 **If the archive canisters are not provided
 with sufficient cycles, the ledger block history may be lost.**
 :::
+
 In the future, cycles management will be simplified in a new feature that 
 allows canister groups, where cycles can be managed across different canisters.
 
-There are separate pages where you can find more details regarding [how 
-to upgrade SNS canister](./managing-sns/upgradeSNS.md),
-[set SNS parameters](./managing-sns/nervous-system-parameters.md),
+We plan to create separate pages where you will be able to
+find more details regarding <!--[how 
+to upgrade SNS canisters](./managing-sns/upgradeSNS.md),
+[set SNS parameters](./managing-sns/nervous-system-parameters.md),-->
+how to upgrade SNS canisters, set SNS parameters,
 and [manage cycles](./managing-sns/cycles-usage.md).

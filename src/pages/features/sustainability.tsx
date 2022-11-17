@@ -68,7 +68,7 @@ function FeaturePage() {
 
           To better understand the impact of the efficiency of the IC, it helps to see the comparison of energy costs.
           Even with conservative estimations, the energy consumption of the Internet Computer is substantially lower than 
-          competing blockchain projects, but also existing (highly optimized) web2 tech. See the table to put IC performance in perspective. Performance is measured in kWh/transaction.
+          competing blockchain projects, but also existing (highly optimized) Web2 tech. See the table to put IC performance in perspective. Performance is measured in kWh/transaction.
 
             <ul>
               <li><strong>One Internet Computer transaction: 0.006</strong></li>

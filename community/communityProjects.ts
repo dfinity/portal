@@ -89,7 +89,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 5,
     title: "Kinic",
-    body: "A search engine for web3.",
+    body: "A search engine for Web3.",
     links: {
       github: "https://github.com/wyattbenno777/kinic",
       livePreview: "https://kinic.io/",
@@ -899,7 +899,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 53,
     title: "ICLand",
-    body: "ICLand powers tokenized communities by connecting web3 identities to social spaces & delivering key token data to communities. First tools: Discord token holder verification; sales & listings bot.",
+    body: "ICLand powers tokenized communities by connecting Web3 identities to social spaces & delivering key token data to communities. First tools: Discord token holder verification; sales & listings bot.",
     links: {
       github: "https://github.com/renartlabsicp",
       livePreview: "https://kwuck-oaaaa-aaaad-qcsja-cai.ic.fleek.co/",
@@ -1507,7 +1507,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 92,
     title: "NiftiOS",
-    body: "NiftiOS is operating system for the creators to bridge web3 to the posibilites that web3 world brings. \nEnd users don't even need a wallet untill they are ready to do so.",
+    body: "NiftiOS is operating system for the creators to bridge Web3 to the posibilites that web3 world brings. \nEnd users don't even need a wallet untill they are ready to do so.",
     links: {
       github: "https://github.com/grmkris/nft-links",
       livePreview: "https://www.niftios.xyz/",

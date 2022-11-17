@@ -130,7 +130,7 @@ Now that your `hello` project is created, the next step is to deploy it locally.
 
 For this, we recommend using two terminals:
 
--   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
+-   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a Web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
 
 -   **Terminal B** is used to interact with the canister running in the execution environment. This is analogous to sending HTTP API messages to servers running locally, e.g. Postman or Panic.
 
