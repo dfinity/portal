@@ -1,6 +1,6 @@
 # Basic dependency
 
-One common approach to dapp design is to calculate or store data in one canister – or canister for short – that you can then use in another canister. This ability to share and use functions defined in different canisters, even if the underlying smart contracts are written in different languages, is an important strategy for building dapps to run the Internet Computer blockchain. This tutorial provides a basic introduction to how you can write functions in one language—in the example, Motoko—then use the data in another—in this case, Rust.
+One common approach to dapp design is to calculate or store data in one canister smart contract – or canister for short – that you can then use in another canister. This ability to share and use functions defined in different canisters, even if the underlying smart contracts are written in different languages, is an important strategy for building dapps to run on the Internet Computer blockchain. This tutorial provides a basic introduction to how you can write functions in one language—in the example, Motoko—then use the data in another—in this case, Rust.
 
 For this tutorial, both canisters are in the same project.
 
@@ -60,13 +60,13 @@ To create a new project directory for this tutorial:
 
 To complete this tutorial, you’ll need to complete the following steps:
 
--   [Edit the default canister settings](#_edit_the_default_canister_settings)
+-   [Edit the default canister settings](#edit-the-default-canister-settings)
 
--   [Implement Motoko canister](#_implement_motoko_canister_smart_contract)
+-   [Implement Motoko canister](#implement-motoko-canister)
 
--   [Replace the default Rust canister](#_replace_the_default_rust_canister_smart_contract)
+-   [Replace the default Rust canister](#replace-the-default-rust-canister)
 
--   [Update interface description file](#_update_interface_description_file)
+-   [Update interface description file](#update-interface-description-file)
 
 ### Edit the default canister settings
 
