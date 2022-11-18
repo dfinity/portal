@@ -29,7 +29,7 @@ export default function Hero(): JSX.Element {
             and hosts smart contract code that directly serves web experiences to end users, interacts with Web2, 
             and creates signed transactions that run on other blockchains. It supports end-to-end decentralization, 
             in which traditional IT, such as Big Tech’s cloud services, can be 
-            completely replaced by blockchain smart contracts…
+            completely replaced by blockchain smart contracts.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
