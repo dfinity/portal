@@ -132,7 +132,7 @@ function SnsPage() {
               </Link> */}
               <Link
                 className="button-outline"
-                href="/docs/current/tokenomics/sns/sns-intro-tokens"
+                href="/docs/current/developer-docs/integrations/sns"
               >
                 Learn about SNS DAOs
               </Link>
@@ -266,7 +266,7 @@ function SnsPage() {
             <MotionLink
               variants={transitions.item}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/sns-intro#how-to-get-and-maintain-a-dao---different-options"
+              href="/docs/current/developer-docs/integrations/sns/get-sns/get-sns-intro/"
             >
               Learn about SNS DAOs
             </MotionLink>
@@ -335,7 +335,7 @@ function SnsPage() {
               </motion.h2>
 
               <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
-                Announcment soon on DSCVR.
+                Keep up with SNS-1 on DSCVR.
               </motion.p>
               <motion.p variants={transitions.item}>
                 <Link
