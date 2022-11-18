@@ -27,11 +27,6 @@ Before you start your project, verify the following:
     ```
 
     For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
-
--   You have installed the `ic-cdk-optimizer` utility. You can install it with:
-    ``` bash
-    cargo install ic-cdk-optimizer
-    ```
     
 -   You have stopped any local execution environment processes running on your computer.
 

@@ -249,16 +249,18 @@ In its current form, the dapp only stores one profile—the one associated with 
 
 To add identities for testing:
 
-1.  Create a new user identity by running the following command:
+1.  Create a new user identity by running the following command, enter a passphrase to secure the identity when prompted:
 
     ``` bash
     dfx identity new Miles
     ```
-
-        Creating identity: "Miles".
-        Created identity: "Miles".
-
-2.  Call the `update` function to add a profile for the new identity.
+    
+    ```
+    Your seed phrase for identity 'Miles': recycle  ...
+    This can be used to reconstruct your key in case of emergency, so write it down in a safe place.
+    Created identity: "Miles".
+    ```
+2.  Call the `update` function to add a profile for the new identity. Enter your passphrase when prompted.
 
     ``` bash
     dfx --identity Miles canister call rust_profile_backend update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
