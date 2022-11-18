@@ -335,7 +335,7 @@ function SnsPage() {
               </motion.h2>
 
               <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
-                Announcment soon on DSCVR.
+                Keep up with SNS-1 on DSCVR.
               </motion.p>
               <motion.p variants={transitions.item}>
                 <Link
