@@ -11,7 +11,7 @@ fn init() {
 }
 
 #[update]
-fn increment() -> () {
+fn increment() {
     unsafe {
         COUNTER.as_mut().unwrap().0 += 1u64;
     }
@@ -23,7 +23,7 @@ fn get() -> candid::Nat {
 }
 
 #[update]
-fn set(input: candid::Nat) -> () {
+fn set(input: candid::Nat) {
     unsafe {
         COUNTER.as_mut().unwrap().0 = input.0;
     }
