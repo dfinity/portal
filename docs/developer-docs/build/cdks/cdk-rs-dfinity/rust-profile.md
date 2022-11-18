@@ -71,9 +71,9 @@ In the [Hello, World! Rust CDK Quick Start](./rust-quickstart.md), you went thro
 
 To complete this tutorial, you’ll need to complete the following steps:
 
--   [Replace the default dapp](#_replace_the_default_dapp)
+-   [Replace the default dapp](#replace-the-default-dapp)
 
--   [Update interface description file](#_update_interface_description_file)
+-   [Update interface description file](#update-interface-description-file)
 
 ### Replace the default dapp
 
@@ -87,8 +87,9 @@ To replace the default program:
 
     ``` toml
     [dependencies]
-    ic-cdk = "0.5"
-    ic-cdk-macros = "0.5"
+    candid = "0.8.2"
+    ic-cdk = "0.6.0"
+    ic-cdk-macros = "0.6.0"
     serde = "1.0"
     ```
 
@@ -248,16 +249,18 @@ In its current form, the dapp only stores one profile—the one associated with 
 
 To add identities for testing:
 
-1.  Create a new user identity by running the following command:
+1.  Create a new user identity by running the following command, enter a passphrase to secure the identity when prompted:
 
     ``` bash
     dfx identity new Miles
     ```
-
-        Creating identity: "Miles".
-        Created identity: "Miles".
-
-2.  Call the `update` function to add a profile for the new identity.
+    
+    ```
+    Your seed phrase for identity 'Miles': recycle  ...
+    This can be used to reconstruct your key in case of emergency, so write it down in a safe place.
+    Created identity: "Miles".
+    ```
+2.  Call the `update` function to add a profile for the new identity. Enter your passphrase when prompted.
 
     ``` bash
     dfx --identity Miles canister call rust_profile_backend update '(record {name = "Miles"; description = "Great Dane"; keywords = vec {"Boston"; "mantle"; "three-legged"}})'
@@ -339,11 +342,7 @@ This sample dapp only stores one profile for each unique user identity. If you w
 
 After you finish experimenting with your program, you can stop the local execution environment so that it doesn’t continue running in the background.
 
-To stop the local execution environment:
-
-1.  In the terminal that displays network operations, press Control-C to interrupt the local execution environment process.
-
-2.  Stop the local execution environment by running the following command:
+To stop the local execution environment running on your computer, run the following command:
 
     ``` bash
     dfx stop
