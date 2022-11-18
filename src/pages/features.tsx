@@ -88,9 +88,9 @@ function FeaturesPage() {
     <Layout
       title="Game-changing Features"
       description="The Internet Computer is pushing the boundaries of what is
-                   possible in blockchain technology today. ICP is not only 23,500X
-                   more efficient than the next most efficient blockchain, it also
-                   provides unique features not seen on any other chain."
+possible in blockchain technology today. ICP is not only 23,500X more efficient
+than the next most efficient blockchain, it also provides unique features not
+seen on any other chain."
     >
       <Head>
         <meta
@@ -125,8 +125,9 @@ function FeaturesPage() {
                 variants={transitions.item}
               >
                 The Internet Computer is pushing the boundaries of what is
-                possible in blockchain technology today with its revolutionary
-                features.
+                possible in blockchain technology today. ICP is not only 23,500X
+                more efficient than the next most efficient blockchain, it also
+                boasts unique features not seen on any other chain.
               </motion.p>
             </div>
           </div>
