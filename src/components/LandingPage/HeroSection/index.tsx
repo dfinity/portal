@@ -38,7 +38,7 @@ export default function Hero(): JSX.Element {
             and creates signed transactions that run on other blockchains. It
             supports end-to-end decentralization, in which traditional IT, such
             as Big Tech’s cloud services, can be completely replaced by
-            blockchain smart contracts…
+            blockchain smart contracts.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
