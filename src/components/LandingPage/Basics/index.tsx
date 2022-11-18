@@ -76,9 +76,9 @@ export default function BasicsSection(): JSX.Element {
               <p className="mb-0">
                 <Link
                   className="link-external"
-                  href="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
+                  href="https://internetcomputer.org/features"
                 >
-                  World Computer vision
+                  Top ICP features
                 </Link>
               </p>
             </AnimateSpawn>
