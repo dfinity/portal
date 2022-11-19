@@ -1977,6 +1977,20 @@ const communityProjects: SampleItem[] = [
     level: "beginner",
     contentType: ["code samples", "community repo", "live demos"],
   },
+  {
+    index: 121,
+    title: "Sending Emails on IC",
+    body: "An example on how to use internet identity to authenticate and send emails via courier",
+    image: "/img/community-projects/emailer.png",
+    links: {
+      github: "https://github.com/ArgonStudiosXYZ/ic-emailer",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "advanced",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
 ];
 
 export default communityProjects;
