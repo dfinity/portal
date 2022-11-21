@@ -1,0 +1,7 @@
+
+#
+# this file will get appended at build time to the main _redirects file at ../static/_redirects
+#
+
+# tell netlify to route all initial requests to the service worker before it is installed
+/* / 200
