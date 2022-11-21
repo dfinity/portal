@@ -21,6 +21,13 @@ ICP follows a mix of both the approaches. The consensus protocol is divided into
 
 All the nodes in the subnet listen to the CUP messages broadcasted by their peers. Suppose a node observes that a received CUP has a valid signature (signed by at least 2/3 of the nodes in the subnet) and has a different blockchain state hash than the locally available state hash. Then the node initiates the [state sync protocol](https://www.youtube.com/watch?v=WaNJINjGleg) to sync the blockchain state at that height (the height when the CUP is published). The blockchain state is organized as a Merkle tree and could be a few hundreds of gigabytes. The syncing node might already have a majority of the blockchain state and need not download everything. Therefore, the syncing node tries to download only the subtrees of the peers’ blockchain state that differ from its local state. The syncing node first requests for the children of the root of the blockchain state. The syncing node then recursively downloads the subtrees that differ from its local state. 
 
+<figure>
+<img src="/img/how-it-works/state-sync.png" alt="Catching-up replica syncing state from up-to-date replica" title="Catching-up replica syncing state from up-to-date replica" align="center" style="width:700px">
+<figcaption align="left">
+The catching-up replica only syncs the parts of the replicated state that differs from the up-to-date replica
+</figcaption>
+</figure> 
+
 Note that while the failed/newly joined nodes are syncing the blockchain state, the well-functioning nodes continue to process new blocks and make progress. The well-functioning nodes use their backup copy of the blockchain state (created at the same time as the CUP) to supply the state to syncing nodes. After the syncing node finishes syncing the blockchain state, it will request its peers for the consensus blocks generated in the meantime and process the blocks one by one. Once fully synced, the node can then process messages regularly as other nodes. 
 
 ## Handling Regular Subnet Failures
