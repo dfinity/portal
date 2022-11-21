@@ -17,6 +17,10 @@ The smart contract state gets modified when executing messages on the canister s
 Both the bytecode and the memory pages, i.e., the state, of the canister, are maintained by every node machine of the subnet the canister is installed on.
 Each node in the subnet holding the same canister state and ensuring that the state transitions in the same way on every node in every round is the foundation of realizing a replicated state machine and the security and resilience properties thereof that make blockchains so unique.
 
+<figure>
+<img src="/img/how-it-works/canister.png" alt="Structure of a canister" title="Structure of a canister" align="center" style="width:600px">
+</figure>
+
 ## Replicated Message Execution
 Replicated execution proceeds in rounds.
 In one IC round, the message routing layer invokes the execution layer once for executing (a subset of) the messages in the canister input queues.
