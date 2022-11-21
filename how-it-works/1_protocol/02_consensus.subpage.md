@@ -11,6 +11,17 @@ Each subnet of the IC is its own blockchain that makes progress concurrently to 
 Recall that the goal of consensus is to produce blocks agreed upon by the nodes of the subnet, which yields an ordered sequence of messages to be executed.
 This is crucial so that the upper two layers of the protocol stack – message routing and execution – receive the same inputs in every round on each node.
 
+The IC’s consensus protocol is designed to meet the following requirements:
+low latency (almost instant finality);
+high throughput;
+robustness (graceful degradation of latency and throughput in the presence of node or network failures). The IC consensus protocol achieves these goals by leveraging [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography).
+
+The IC consensus protocol achieves these goals by leveraging [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography).
+The IC consensus protocol provides *cryptographically guaranteed finality*.
+The option of choosing *probabilistic finality* – similar to what is done in Bitcoin-like protocols, by considering a block final once a sufficient number of blocks have built on top of it in the blockchain –  is not acceptable for the IC for two reasons: (1) probabilistic finality is a very weak notion of finality and (2) probabilistic finality would increase the time to finality drastically.
+
+The IC consensus protocol achieves all of these goals making only minimal assumptions about the communication network. In particular, it does not assume any bounds on the time it takes for protocol messages to be delivered – that is, it only assumes an *asynchronous network* rather than a *synchronous network*. Indeed, for a decentralized network that is globally distributed, *synchrony* is simply not a realistic assumption. While it is possible to design consensus protocols that work in a purely *asynchronous* setting, these protocols generally have very poor latency. In order to achieve good latency, the IC consensus protocol requires protocol messages to be delivered in a timely manner to make progress. However, the *correctness* of the protocol is always guaranteed, regardless of message delays, so long as less than a third of the nodes in the subnet are faulty.
+
 The consensus protocol maintains a tree of *notarized* blocks (with a special origin block at the root).
 The protocol proceeds in rounds.
 In each round, at least one notarized block is added to the tree as a child of a notarized block that was added in the previous round.
