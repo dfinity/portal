@@ -21,7 +21,7 @@ export default function BasicsSection(): JSX.Element {
               className="tw-heading-3 md:tw-heading-60 mb-16 text-center md:text-left"
               variants={transitions.item}
             >
-              Enabling True Web3
+              Decentralization+
             </AnimateSpawn>
             <AnimateSpawn
               className="flex flex-col-reverse md:flex-row justify-between mb-16 gap-6 md:gep-0"
@@ -63,10 +63,14 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                completely flips the script and puts the control back into the
-                hand of users. Real ownership is made possible by hosting
-                services 100% on-chain. No AWS, no tracking, no gas fees, no
-                bridges, no oracles.
+                makes it possible to flip the script with online services,
+                by making user communities their owners. That's because
+                online services can now run 100% on blockchain, for the 
+                very first time. There is no need for centralized traditional
+                IT, such as cloud services, which form the largest part of 
+                services built "on" other blockchains. Therefore, community
+                DAOs can take control of their decentralized code and data.
+                No companies, boards of CEOs are required.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
