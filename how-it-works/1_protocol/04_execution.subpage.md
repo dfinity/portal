@@ -17,6 +17,10 @@ The smart contract state gets modified when executing messages on the canister s
 Both the bytecode and the memory pages, i.e., the state, of the canister, are maintained by every node machine of the subnet the canister is installed on.
 Each node in the subnet holding the same canister state and ensuring that the state transitions in the same way on every node in every round is the foundation of realizing a replicated state machine and the security and resilience properties thereof that make blockchains so unique.
 
+<figure>
+<img src="/img/how-it-works/canister.png" alt="Structure of a canister" title="Structure of a canister" align="center" style="width:600px">
+</figure>
+
 ## Replicated Message Execution
 Replicated execution proceeds in rounds.
 In one IC round, the message routing layer invokes the execution layer once for executing (a subset of) the messages in the canister input queues.
@@ -33,6 +37,10 @@ The receiving subnet can verify that the XNet messages are authenticated by the 
 The execution layer is designed at its core to execute multiple canisters concurrently on different CPU cores.
 This is possible because each canister has its own isolated state and canister communication is asynchronous.
 This form of concurrent execution within a subnet together with the capability of all of the IC's subnets executing canisters concurrently makes the IC scalable like the public cloud: The IC scales out by adding more subnets.
+
+<figure>
+<img src="/img/how-it-works/execution_layer.png" alt="Execution layer process consensus blocks and updates state" title="Execution layer process consensus blocks and updates state" align="center" style="width:400px">
+</figure>
 
 ## Non-replicated Message Execution
 
@@ -84,6 +92,10 @@ Furthermore, networking activities such as receiving ingress messages, sending X
 
 Pricing for a resource on the IC is extremely competitive.
 Prices for a given resource, e.g., executing Wasm instructions, scale with the replication factor of the subnet, i.e., the number of nodes that power the subnet.
+
+<figure>
+<img src="/img/how-it-works/execution_consumes_cycles.png" alt="Execution layer consumes cycles" title="Execution layer consumes cycles" align="center" style="width:600px">
+</figure>
 
 ## Random Number Generation
 Many applications benefit from, or require a secure random number generator.  Yet, generating random numbers in the naïve way as part of execution trivially destroys determinism as every node would compute different randomness.

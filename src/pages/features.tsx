@@ -86,10 +86,11 @@ function FeaturesPage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Groundbreaking Features"
+      title="Game-changing Features"
       description="The Internet Computer is pushing the boundaries of what is
-      possible in blockchain technology today with its revolutionary
-      features."
+possible in blockchain technology today. ICP is not only 23,500X more efficient
+than the next most efficient blockchain, it also provides unique features not
+seen on any other chain."
     >
       <Head>
         <meta
@@ -124,8 +125,9 @@ function FeaturesPage() {
                 variants={transitions.item}
               >
                 The Internet Computer is pushing the boundaries of what is
-                possible in blockchain technology today with its revolutionary
-                features.
+                possible in blockchain technology today. ICP is not only 23,500X
+                more efficient than the next most efficient blockchain, it also
+                boasts unique features not seen on any other chain.
               </motion.p>
             </div>
           </div>
@@ -487,6 +489,13 @@ function FeaturesPage() {
               integration with other blockchains without the use of bridges. It
               allows the Internet Computer to natively create transactions on
               other blockchains.
+            <Link
+                href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
+                className="tw-heading-6 flex gap-2 items-center"
+            >
+              <RightPointer className="w-6 h-6"></RightPointer>
+                Learn more
+              </Link>
             </motion.p>
           </SingleCard>
         </section>
