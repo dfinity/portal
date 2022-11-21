@@ -93,6 +93,10 @@ Furthermore, networking activities such as receiving ingress messages, sending X
 Pricing for a resource on the IC is extremely competitive.
 Prices for a given resource, e.g., executing Wasm instructions, scale with the replication factor of the subnet, i.e., the number of nodes that power the subnet.
 
+<figure>
+<img src="/img/how-it-works/execution_consumes_cycles.png" alt="Execution layer consumes cycles" title="Execution layer consumes cycles" align="center" style="width:600px">
+</figure>
+
 ## Random Number Generation
 Many applications benefit from, or require a secure random number generator.  Yet, generating random numbers in the naïve way as part of execution trivially destroys determinism as every node would compute different randomness.
 The IC solves this problem by the execution layer having access to a decentralised pseudorandom number generator called the *random tape*. The random tape is built using [chain-key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography). Every round, the subnetwork produces a fresh threshold BLS signature which, by its very nature, is unpredictable and uniformly distributed.  This signature can then be used as seed in a cryptographic pseudorandom generator.  This gives canister smart contracts access to a highly-efficient and secure random number source, which is another unique feature of the Internet Computer. 
