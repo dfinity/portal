@@ -15,7 +15,7 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
 
     :::note
 
-    The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last commit to the `master` branch.
+    The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases).
 
     :::
 
