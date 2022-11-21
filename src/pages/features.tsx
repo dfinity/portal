@@ -127,7 +127,7 @@ seen on any other chain."
                 The Internet Computer is pushing the boundaries of what is
                 possible in blockchain technology today. ICP is not only 23,500X
                 more efficient than the next most efficient blockchain, it also
-                boasts unique features not seen on any other chain.
+                provides unique features not seen on any other chain.
               </motion.p>
             </div>
           </div>
@@ -769,8 +769,8 @@ seen on any other chain."
               className="tw-lead-sm md:tw-lead mb-6"
               variants={transitions.item}
             >
-              Learn how inner workings of the Internet Computer blockchain.
-              Detailed tech articles on the core protocol, governance, to
+              Learn the inner workings of the Internet Computer blockchain.
+              Easy-to-read tech articles on the core protocol, governance,
               chain-key cryptography, plus open-source repositories, in-depth
               video academy sessions, white papers, and more.
             </motion.p>
