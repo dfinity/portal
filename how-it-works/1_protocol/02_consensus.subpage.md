@@ -11,6 +11,10 @@ Each subnet of the IC is its own blockchain that makes progress concurrently to 
 Recall that the goal of consensus is to produce blocks agreed upon by the nodes of the subnet, which yields an ordered sequence of messages to be executed.
 This is crucial so that the upper two layers of the protocol stack – message routing and execution – receive the same inputs in every round on each node.
 
+<figure>
+<img src="/img/how-it-works/consensus_orders_messages.png" alt="Consensus round yields an ordered sequences of messages" title="Consensus round yields an ordered sequences of messages" align="center" style="width:600px">
+</figure>
+
 The consensus protocol maintains a tree of *notarized* blocks (with a special origin block at the root).
 The protocol proceeds in rounds.
 In each round, at least one notarized block is added to the tree as a child of a notarized block that was added in the previous round.
@@ -47,6 +51,10 @@ The lowest-rank node in the subnet acts as the primary block maker.
 As time goes by without producing a notarized block, nodes of increasing rank gradually step in to supplant the (potentially faulty) nodes of lower rank as block maker.
 
 In the scenario where the primary block maker is not faulty, and protocol messages get delivered in a timely manner, only the primary block maker will propose a block, and this block will quickly become notarized and finalized.
+
+<figure>
+<img src="/img/how-it-works/block_maker.png" alt="Blockmaker constructs a new block and broadcasts it" title="Blockmaker constructs a new block and broadcasts it" align="center" style="width:600px">
+</figure>
 
 ## Notarization
 
