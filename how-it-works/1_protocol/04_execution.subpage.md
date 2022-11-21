@@ -38,6 +38,10 @@ The execution layer is designed at its core to execute multiple canisters concur
 This is possible because each canister has its own isolated state and canister communication is asynchronous.
 This form of concurrent execution within a subnet together with the capability of all of the IC's subnets executing canisters concurrently makes the IC scalable like the public cloud: The IC scales out by adding more subnets.
 
+<figure>
+<img src="/img/how-it-works/execution_layer.png" alt="Execution layer process consensus blocks and updates state" title="Execution layer process consensus blocks and updates state" align="center" style="width:400px">
+</figure>
+
 ## Non-replicated Message Execution
 
 Non-replicated message execution, aka queries, are operations executed by a single node and return a response synchronously, much like a regular function invocation in an imperative programming language.
