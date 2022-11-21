@@ -54,5 +54,12 @@
     "website": "https://entrepot.app/",
     "stats": "1,000,000+ ICP volume",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/1WQuOFrpDWO0OIY2ZzCk09/611027edce39d99e9414a9eecd6452f5/Entrepot_2.png"
+  },
+  {
+    "name": "Infinity Swap",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dApps on the Internet Computer.",
+    "website": "https://wallet.infinityswap.one/",
+    "stats": "",
+    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6cuL0E5FyxdqF7DLzjMXnu/4e5898a86ecf8b05c35e623538c2ad14/InfinitySwap.jpeg"
   }
 ]

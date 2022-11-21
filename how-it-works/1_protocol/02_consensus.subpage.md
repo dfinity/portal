@@ -22,6 +22,10 @@ The option of choosing *probabilistic finality* – similar to what is done in B
 
 The IC consensus protocol achieves all of these goals making only minimal assumptions about the communication network. In particular, it does not assume any bounds on the time it takes for protocol messages to be delivered – that is, it only assumes an *asynchronous network* rather than a *synchronous network*. Indeed, for a decentralized network that is globally distributed, *synchrony* is simply not a realistic assumption. While it is possible to design consensus protocols that work in a purely *asynchronous* setting, these protocols generally have very poor latency. In order to achieve good latency, the IC consensus protocol requires protocol messages to be delivered in a timely manner to make progress. However, the *correctness* of the protocol is always guaranteed, regardless of message delays, so long as less than a third of the nodes in the subnet are faulty.
 
+<figure>
+<img src="/img/how-it-works/consensus_orders_messages.png" alt="Consensus round yields an ordered sequences of messages" title="Consensus round yields an ordered sequences of messages" align="center" style="width:600px">
+</figure>
+
 The consensus protocol maintains a tree of *notarized* blocks (with a special origin block at the root).
 The protocol proceeds in rounds.
 In each round, at least one notarized block is added to the tree as a child of a notarized block that was added in the previous round.
@@ -58,6 +62,10 @@ The lowest-rank node in the subnet acts as the primary block maker.
 As time goes by without producing a notarized block, nodes of increasing rank gradually step in to supplant the (potentially faulty) nodes of lower rank as block maker.
 
 In the scenario where the primary block maker is not faulty, and protocol messages get delivered in a timely manner, only the primary block maker will propose a block, and this block will quickly become notarized and finalized.
+
+<figure>
+<img src="/img/how-it-works/block_maker.png" alt="Blockmaker constructs a new block and broadcasts it" title="Blockmaker constructs a new block and broadcasts it" align="center" style="width:600px">
+</figure>
 
 ## Notarization
 
