@@ -16,4 +16,5 @@ The execution layer has many unique features, which sets apart the IC from other
 1. *Deterministic time slicing (DTS)* - The execution of very large messages requiring billions of Wasm instructions to be executed can be split across multiple IC rounds. This capability of executing messages over multiple rounds is unique to the Internet Computer blockchain.
 2. *Concurrency* - Execution of canister Wasm bytecode is done *concurrently* on multiple CPU cores, which is possible due to each canister having its own isolated state. 
 3. *Pseudorandom number generator* - Execution layer has access to unpredictable and unbiasable *pseudorandom number generator*. Canisters can now execute algorithms that require randomness. 
+
 [Go deeper](/how-it-works/execution-layer/)

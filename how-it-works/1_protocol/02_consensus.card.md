@@ -13,4 +13,5 @@ The IC’s consensus protocol is designed to meet the following requirements:
 low latency (almost instant finality);
 high throughput;
 robustness (graceful degradation of latency and throughput in the presence of node or network failures). The IC consensus protocol also provides *cryptographically guaranteed finality*. This is in contrast to Bitcoin-like protocols which only provides *probabilistic finality*, where a block is considered final once a sufficient number of blocks have built on top of it in the blockchain.
+
 [Go deeper](/how-it-works/consensus/)
