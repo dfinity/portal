@@ -59,7 +59,7 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>Enabling true web3</h2>
+            <h2>Enabling true Web3</h2>
             <p>
             Today, most dapps built on other blockchains rely on centralized cloud providers (e.g. AWS, GCP) to
             host their frontend, amongst other parts, which introduces a single point of failure.

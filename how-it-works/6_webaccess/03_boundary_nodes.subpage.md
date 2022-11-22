@@ -5,8 +5,6 @@ shareImage: /img/how-it-works/outcalls.600x300.png
 slug: boundary-nodes
 ---
 
-![](/img/how-it-works/outcalls.600x300.png)
-
 # Boundary nodes
 
 The boundary nodes form the globally distributed edge of the Internet Computer (IC)
@@ -14,6 +12,13 @@ through which all the accesses to the canister smart contracts go. The boundary
 nodes provide a public endpoint for the IC and route all incoming requests to
 the right subnet, loadbalance requests across replica nodes, and cache responses
 for improved performance.
+
+<figure>
+<img src="/img/how-it-works/boundary-nodes.png" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center" style="width:600px">
+<figcaption align="left">
+Boundary nodes are the gateway to the Internet Computer, which allow users to seamlessly access the canister smart contracts.
+</figcaption>
+</figure> 
 
 The boundary nodes provide two ways of accessing canister smart contracts hosted
 on the Internet Computer: first, one can access them using stock browsers through
@@ -40,3 +45,7 @@ with local jurisdictions.
 In addition to the two endpoints, the boundary nodes provide to access the IC,
 the boundary nodes also provide caching to improve the performance of the dapps
 hosted on the IC.
+
+## Go Even Deeper
+
+[Boundary Nodes on the IC Wiki](https://wiki.internetcomputer.org/wiki/Boundary_Nodes)

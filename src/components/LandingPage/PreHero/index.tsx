@@ -274,9 +274,9 @@ export default function PreHero({
               animationPlayState: start ? "running" : "paused",
             }}
           >
-           Reimagine Anything
+            Rebuild on
             <br />
-            Using World Computer
+            World Computer
           </h1>
         </div>
         <img

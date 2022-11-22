@@ -36,7 +36,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/local-quickstart.md#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../build/install-upgrade-remove.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -74,9 +74,9 @@ In the [Hello, World! Rust CDK Quick Start](./rust-quickstart.md), you went thro
 
 To complete this tutorial, you’ll need to complete the following steps:
 
--   [Replace the default dapp](#_replace_the_default_dapp)
+-   [Replace the default dapp](#replace-the-default-dapp)
 
--   [Update interface description file](#_update_interface_description_file)
+-   [Update interface description file](#update-interface-description-file)
 
 ### Replace the default dapp
 

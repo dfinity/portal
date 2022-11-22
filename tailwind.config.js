@@ -46,6 +46,9 @@ module.exports = {
         "https-outcalls":
           "url('/static/img/https-outcalls/sample-code-bg.jpeg')",
       },
+      backgroundSize: {
+        stretch: "100% 100%",
+      },
     },
     screens: {
       sm: "641px",
@@ -166,6 +169,7 @@ module.exports = {
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
@@ -174,7 +178,21 @@ module.exports = {
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
                 '.checklist-item': '@apply bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top pl-8 my-3 leading-6',
-
+                '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
+                '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
+                '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
+                '.blob-xs': '@apply w-[500px]',
+                '.blob-sm': '@apply w-[800px]',
+                '.blob-md': '@apply w-[1000px]',
+                '.blob-lg': '@apply w-[1500px]',
+                '.blob-xl': '@apply w-[2000px]',
+                '.blob-center': '@apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+                '.blob-top-left': '@apply left-0 -translate-x-6/10 top-0 bottom-auto -translate-y-1/3',
+                '.blob-top-right': '@apply right-0 translate-x-6/10 top-0 bottom-auto -translate-y-1/3',
+                '.blob-center-left': '@apply left-0 -translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
+                '.blob-center-right': '@apply right-0 translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
+                '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
+                '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
             };
 
       addComponents(

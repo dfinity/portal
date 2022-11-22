@@ -11,11 +11,11 @@ export default function Hero(): JSX.Element {
       <div className="container-10 mt-20 mb-20 md:my-40">
         <AnimateSpawn
           el={motion.h2}
-          className="tw-heading-60 md:tw-heading-1 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
+          className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          A World Computer blockchain running
-          <br className="hidden md:inline" /> at webspeed
+          World Computer Blockchain:
+          <br className="hidden md:inline" /> A New Paradigm
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -23,13 +23,22 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The Internet Computer (ICP) is a World Computer that provides a
-            complete IT stack on which any online system or web3 service can be
-            built in a fully decentralized form, 100% on-chain. ICP is the only
-            blockchain with smart contracts that serve web experiences, create
-            transactions on other chains, directly integrate with web2 APIs
-            without oracles, and run 20,000x more efficiently. No centralized
-            cloud. Simply powered by breakthrough Chain-key Cryptography.
+            The Internet Computer (ICP) is the first World Computer blockchain,
+            powered by innovations in cryptography and computer science derived
+            from{" "}
+            <Link
+              href="https://wiki.internetcomputer.org/wiki/History"
+              className="link-subtle"
+            >
+              deep crypto research begun in 2015
+            </Link>
+            . It is a limitless blockchain that runs with 20,000X more efficiently
+            than the next best, and hosts smart contract code that directly serves
+            web experiences to end users, interacts with Web2, and creates signed
+            transactions that run on other blockchains. It supports end-to-end
+            decentralization of online systems and services, which can now be built
+            using just smart contracts, for the first time, without need for
+            centralized traditional IT and Big Tech's cloud services.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
@@ -37,7 +46,7 @@ export default function Hero(): JSX.Element {
             variants={transitions.item}
           >
             <Link href="/showcase" className="button-primary">
-              Try web3 apps on ICP
+              Try Web3 apps on ICP
             </Link>
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
@@ -46,7 +55,7 @@ export default function Hero(): JSX.Element {
               href="/developers"
             >
               <ArrowRight></ArrowRight>
-              Build your own web3 app
+              Build your own Web3 app
             </Link>
           </AnimateSpawn>
         </div>

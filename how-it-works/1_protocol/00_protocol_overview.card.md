@@ -2,7 +2,7 @@
 title: Overview
 ---
 
-![](/img/how-it-works/core_protocol_layers.png)
+![](/img/how-it-works/ic-overview.jpg)
 
 # Overview
 
