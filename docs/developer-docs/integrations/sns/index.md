@@ -68,5 +68,6 @@ Finally, the Wiki will contain information relevant for
 users of the SNS.
 
 You will find
+* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
 * A guide how to participate in the SNS decentralization sale
 * A guide how to verify the NNS proposal that starts a SNS decentralization sale
