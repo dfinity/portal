@@ -30,7 +30,7 @@ function Index() {
           Two key technology developments make it possible for Internet Computer smart 
           contracts to create bitcoin addresses and directly send and 
           receive bitcoin: inter-node communication between the Internet Computer
-          network and the Bitcoin network, and the use of novel threshold ECDSA
+          network and the Bitcoin network, and the use of novel chain key ECDSA
           cryptography by its protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
@@ -45,10 +45,10 @@ function Index() {
           UTXO set.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Threshold ECDSA
+          Chain Key ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
-          Novel "threshold cryptography" allows the Internet Computer to distrubute,
+          Novel "threshold cryptography" enables the Internet Computer to distribute,
           and redistribute, secret key material among its nodes, and have them cooperate
           to create new bitcoin addresses and sign Bitcoin transactions,
           using highly fault tolerant decentralized network protocols that
@@ -82,7 +82,7 @@ function Index() {
           For example, DEXs (decentralized exchanges) can easily provide BTC 
           trading pairs, decentralized fundraises can accept bitcoin, and 
           a Web3 SocialFi service might allow satoshis to be sent using chat 
-          messages, say.
+          messages.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph"> 
           Lightning Network-like services can also be created by wrapping 
