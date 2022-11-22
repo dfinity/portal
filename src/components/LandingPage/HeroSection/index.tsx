@@ -14,8 +14,8 @@ export default function Hero(): JSX.Element {
           className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          Limitless, Web-serving World Computer blockchain
-          {/* <br className="hidden md:inline" /> at webspeed */}
+          World Computer Blockchain:
+          <br className="hidden md:inline" /> A New Paradigm
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -32,13 +32,13 @@ export default function Hero(): JSX.Element {
             >
               deep crypto research begun in 2015
             </Link>
-            . It is a limitless blockchain that runs with 20,000X more
-            efficiency than the next best, and hosts smart contract code that
-            directly serves web experiences to end users, interacts with Web2,
-            and creates signed transactions that run on other blockchains. It
-            supports end-to-end decentralization, in which traditional IT, such
-            as Big Tech’s cloud services, can be completely replaced by
-            blockchain smart contracts.
+            . It is a limitless blockchain that runs with 20,000X more efficiently
+            than the next best, and hosts smart contract code that directly serves
+            web experiences to end users, interacts with Web2, and creates signed
+            transactions that run on other blockchains. It supports end-to-end
+            decentralization of online systems and services, which can now be built
+            using just smart contracts, for the first time, without need for
+            centralized traditional IT and Big Tech's cloud services.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
