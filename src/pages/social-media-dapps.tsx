@@ -105,7 +105,7 @@ function SocialMediaDappsPage() {
   return (
     <Layout
       title="Social Media Decentralized"
-      description="Owned and controlled by users. Running 100% on the blockchain."
+      description="Take full ownership and control over your social media plaforms."
     >
       <Head>
         <meta
@@ -137,7 +137,7 @@ function SocialMediaDappsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Owned and controlled by users. Running 100% on the blockchain.
+                  Take full ownership and control over your social media plaforms.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
                   <Link href="#web3-dapps" className="button button-white">
@@ -173,22 +173,23 @@ function SocialMediaDappsPage() {
             variants={transitions.container}
           >
             <motion.p
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 md:w-6/10"
+              className="tw-heading-4 sm:tw-heading-3 md:tw-heading-2 mb-8 md:mb-10 md:w-8/10 text-transparent bg-clip-text gradient-text"
               variants={transitions.item}
             >
-              Annoyed by apps tracking you and selling your data?
+              Reclaim Social Media
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8 md:mb-12 md:w-6/10"
               variants={transitions.item}
             >
-              The success of the new wave of web3 social media applications lies
-              in decentralization. Today, it is the boards of tech giants that
-              steer the direction of social media apps, often to exploit user
-              data for profit. Centralized apps have also been known to
-              selectively suppress opinions. Internet Computer blockchain flips
-              the script by enabling decentralized apps (dapps) to turn into
-              DAOs that put the control in the hands of the community.
+              We're entering a new era of social media. The success of the new
+              wave of Web3 social media applications lies in decentralization.
+              Today, it is the boards of tech giants that steer the direction
+              of social media apps, often to exploit users for profit.
+              Centralized apps have also been known to selectively suppress
+              opinions. Internet Computer blockchain flips the script by
+              enabling decentralized apps (dapps) to turn into DAOs that put
+              the control in the hands of the community.
             </motion.p>
           </AnimateSpawn>
           <div className="relative z-[-1]">
@@ -246,7 +247,7 @@ function SocialMediaDappsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                Transitioning from web2 to web3 has never been easier. Not only
+                Transitioning from Web2 to Web3 has never been easier. Not only
                 does the Internet Computer enable true decentralization, it also
                 offers an enhanced web3 user experience. No gas fees,
                 non-trackable web authentication, served at web speed 100% on
@@ -271,9 +272,9 @@ function SocialMediaDappsPage() {
             </motion.h2>
             <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
               The Internet Computer is a true world computer. It hosts the
-              largest collection of web3 social media services fully on-chain.
+              largest collection of Web3 social media services fully on-chain.
               Services like OpenChat, DSCVR and distrikt are already well on
-              their way to mass adoption, with over 250,000 users combined.
+              their way to mass adoption, with over 300,000 users combined.
             </motion.p>
             <MotionLink
               className="link-external"
