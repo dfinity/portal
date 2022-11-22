@@ -21,12 +21,13 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Web speed</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              Users can interact with dapps on the Internet Computer (IC) with speeds indistinguishable from traditional web applications. 
+              Users can interact with dapps on the Internet Computer
+              (IC) with speeds comparable to traditional web applications. 
               Developers can therefore build a much broader range of fully on-chain dapps without relying on cloud services and 
               risking single points of failure. 
               <br />
               <br />
-              Concretely, query (read) calls are answered in ~200 milliseconds, and update (write) calls in ~2 seconds.
+              Concretely, query (read) calls are answered in ~100 milliseconds, and update (write) calls in ~2 seconds.
               </p>
             </div>
           </div>
@@ -64,7 +65,7 @@ function FeaturePage() {
             
             <h3>Read vs Write calls</h3>
             <p>
-            common practice in computer science and databases is to separate tasks into read 
+            Common practice in computer science and databases is to separate tasks into read 
             tasks and write tasks. As the former are less 'expensive' in terms of time, 
             categorizing types of calls can substantially help to increase the efficiency 
             of a program. As a blockchain partly acts as a distributed database, it is 
@@ -74,13 +75,11 @@ function FeaturePage() {
 
             <br />
             <br />
-            From a blockchain POV, {" "}
-              <Link href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption">
-              performance tests
-              </Link>{" "} shows the IC latency at 200 milliseconds 
-            for query calls (reads) and 2 seconds for update calls (writes). 
             As of May 24, 2022, The Internet Computer can handle more than 1 million queries per second 
             and more than 20 thousand update calls per second.
+            This is shown in <Link href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption">
+              performance tests
+              </Link>{" "}
             </p>
             <h3>Chain Key Cryptography</h3>
             <p>
@@ -99,20 +98,9 @@ function FeaturePage() {
             Chain Key (CK) Cryptography
             </Link> which allows IC signatures to be verified with a single public key, hence reducing friction 
             for all types of devices (node machines, laptops, mobile phones) that want to 
-            efficiently interact with a blockchain with the same speed and security of web2, 
+            efficiently interact with a blockchain with similar speed and security of Web2, 
             but without the centralization.
             </p>
-            
-            <h3>Scalability</h3>
-            <p>
-            Another advantage of CK Cryptography and the Internet Computer lies in the architectural 
-            design. In order to reach web speed, the IC needs to process increasingly large 
-            numbers of transactions. This requires the network to be able to scale quickly in 
-            order to process all those transactions. CK cryptography also facilitates nodes to 
-            onboard, catch up, and recover in the event of a hardware failure which all allow 
-            the IC to scale infinitely. Decentralized infinity.
-            </p>
-
             
             <p className="mb-3 mt-6">
             <Link
@@ -147,14 +135,14 @@ function FeaturePage() {
               href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Community Conversation"
+              description="Learn about performance and scalabilty of the IC."
+              href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription
               title="IC Wiki"
-              description="Take a deep dive into the Internet Computer's speed"
-              href="https://wiki.internetcomputer.org/wiki/Web_Speed"
+              description="Take a deep dive into the IC's performance"
+              href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"
             />
           </div>
         </section>

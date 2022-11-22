@@ -247,9 +247,24 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust", "javascript"],
     level: "beginner",
     contentType: ["documentation"],
-    body: "Demonstrates how to deploy a Unity WebGL game on the IC.",
+    body: "Demonstrates how to deploy a web game on the IC.",
     links: {
-      docs: "/docs/current/samples/host-unity-webgl",
+      docs: "/docs/current/samples/host-a-webgame",
+    },
+  },
+  {
+    index: 12,
+    title: "NNS Integration",
+    image: require("../../../static/img/samples/nns-proposal.jpg").default,
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "intermediate",
+    contentType: ["code samples", "documentation", "live demos"],
+    body: "Learn how to connect a canister to a neuron, to make a dapp that can submit proposals to the NNS.",
+    links: {
+      motoko:
+        "https://github.com/InternetComputerOG/NNS-Proposal-Submission-Dapp",
+      livePreview: "https://uf2fn-liaaa-aaaal-abeba-cai.ic0.app/",
     },
   },
 ];

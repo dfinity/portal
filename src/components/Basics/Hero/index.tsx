@@ -39,7 +39,7 @@ const Hero = () => {
           href="/docs/current/developer-docs/ic-overview"
           target={"_blank"}
         >
-          Build real web3
+          Build real Web3
         </motion.a>
         <svg
           viewBox="0 0 917 830"

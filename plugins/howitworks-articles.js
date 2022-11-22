@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { isLinkExternal } = require("./utils/links");
+const { createKatexParagraphRenderer } = require("./utils/marked-renderers");
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
 
 const renderer = new marked.Renderer();
@@ -22,6 +23,8 @@ renderer.link = (href, title, text) => {
   }
   return html;
 };
+
+renderer.paragraph = createKatexParagraphRenderer(renderer.paragraph);
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksArticlesPlugin = async function () {

@@ -1,3 +1,0 @@
----
-title: Internet Computer Stack
----
