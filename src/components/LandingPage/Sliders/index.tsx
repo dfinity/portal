@@ -1,138 +1,162 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import AnimateSpawn from "../../Common/AnimateSpawn";
-import { slides } from "./data";
-import LeftArrow from "./LeftArrow.svg";
-import RightArrow from "./RightArrow.svg";
-import { Slide } from "./Slide";
+import Link from "@docusaurus/Link";
 import transitions from "@site/static/transitions.json";
-import { isSafari } from "@site/src/utils/browsers";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import React, { ReactNode } from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
+import RightArrow from "./RightArrow.svg";
+import DocsIcon from "./Docs.svg";
+
+const SliderCard: React.FC<{
+  bgImage: string;
+  children: React.ReactNode;
+  className?: string;
+}> = ({ bgImage, children, className }) => {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${bgImage})`,
+      }}
+      className={clsx(
+        `
+    min-w-full
+    bg-right md:bg-center bg-cover 
+    
+    pt-12 px-10 md:px-12
+    rounded-xl
+    overflow-hidden
+    text-white
+    `,
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
+const SliderLink: React.FC<{
+  children: React.ReactNode;
+  href: string;
+  icon?: ReactNode;
+}> = ({
+  children,
+  href,
+  icon = <RightArrow className="min-w-[24px]"></RightArrow>,
+}) => {
+  return (
+    <Link
+      href={href}
+      className="text-white inline-flex items-start gap-2 tw-heading-7 md:tw-heading-6
+      no-underline
+      hover:text-white-80 hover:no-underline
+      "
+    >
+      {icon} {children}
+    </Link>
+  );
+};
 
 const Sliders = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
-  const [dotIndex, setDotIndex] = useState(0);
-  const [shouldAutoRotate, setShouldAutoRotate] = useState(true);
-  const [inViewRef, inView] = useInView({ threshold: 1, triggerOnce: true });
-
-  function next() {
-    setIndex((index + 1) % slides.length);
-  }
-  function prev() {
-    setIndex(index === 0 ? slides.length - 1 : index - 1);
-  }
-
-  useEffect(() => {
-    const nextSlideEl = ref.current.children.item(index) as HTMLDivElement;
-
-    if (isSafari(navigator.userAgent)) {
-      ref.current.scrollTo({ left: nextSlideEl.offsetLeft });
-    } else {
-      ref.current.scrollTo({
-        left: nextSlideEl.offsetLeft,
-        behavior: "smooth",
-      });
-    }
-  }, [index]);
-
-  useEffect(() => {
-    if (inView && shouldAutoRotate) {
-      const handle = setInterval(next, 3000);
-      return () => clearInterval(handle);
-    }
-  }, [inView, shouldAutoRotate, index]);
-
-  useEffect(() => {
-    function onTouchMove() {
-      setShouldAutoRotate(false);
-    }
-
-    function onScroll() {
-      let currentChildIndex = null,
-        currentChildDist = Number.MAX_VALUE;
-      for (let i = 0; i < ref.current.children.length; i++) {
-        const child = ref.current.children.item(i) as HTMLDivElement;
-        const dist = Math.abs(child.offsetLeft - ref.current.scrollLeft);
-        if (dist < currentChildDist) {
-          currentChildDist = dist;
-          currentChildIndex = i;
-        }
-      }
-
-      if (dotIndex != currentChildIndex) {
-        setDotIndex(currentChildIndex);
-      }
-    }
-
-    ref.current.addEventListener("touchmove", onTouchMove);
-    ref.current.addEventListener("scroll", onScroll);
-
-    return () => {
-      ref.current.removeEventListener("touchmove", onTouchMove);
-      ref.current.removeEventListener("scroll", onScroll);
-    };
-  }, [dotIndex]);
-
-  useEffect(() => {
-    if (!isSafari(navigator.userAgent)) {
-      ref.current.classList.add("scroll-smooth");
-    }
-  }, []);
-
   return (
     <AnimateSpawn
-      className="container-12"
+      className="container-12 mt-20 md:my-30"
       el={motion.section}
       variants={transitions.item}
     >
-      <div className="relative" ref={inViewRef}>
-        <button
-          className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-12 bg-black-60 rounded-xl p-2 border-none text-white hover:bg-infinite"
-          onClick={() => {
-            prev();
-            setShouldAutoRotate(false);
-          }}
-        >
-          <LeftArrow></LeftArrow>
-        </button>
-        <button
-          className="hidden md:flex  absolute top-1/2 -translate-y-1/2 right-12 bg-black-60 rounded-xl p-2 border-none text-white hover:bg-infinite"
-          onClick={() => {
-            next();
-            setShouldAutoRotate(false);
-          }}
-        >
-          <RightArrow></RightArrow>
-        </button>
-        <div
-          className="flex gap-6 overflow-auto pb-4 md:overflow-hidden snap-x snap-mandatory"
-          ref={ref}
-        >
-          {slides.map((s, index) => (
-            <Slide
-              backgroundImageUrl={s.backgroundImageUrl}
-              sideImageUrl={s.sideImageUrl}
-              key={index}
-            >
-              {s.body}
-            </Slide>
-          ))}
+      <div className="relative">
+        <div className="grid gap-5 pb-4 grid-cols-1 md:grid-cols-3">
+          <SliderCard
+            bgImage="/img/home-page-sliders/bitcoin-background.webp"
+            className="md:col-span-3 flex items-start md:items-center justify-between min-h-[374px] lg:min-h-[420px] md:pt-0"
+          >
+            <div className="md:w-6/12 md:ml-1/12">
+              <h3 className="tw-heading-5 mb-6 md:tw-heading-3">
+                Extend Bitcoin, Ethereum and other blockchains
+              </h3>
+              <p className="mb-4 flex">
+                <SliderLink href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains">
+                  Learn about Bitcoin integration
+                </SliderLink>
+              </p>
+              <p className="mb-0 flex gap-4 md:gap-7 flex-col md:flex-row">
+                <SliderLink href="/samples">Sample contracts</SliderLink>
+                <SliderLink
+                  href="/docs/current/developer-docs/integrations/bitcoin/"
+                  icon={<DocsIcon className="min-w-[24px]"></DocsIcon>}
+                >
+                  Developer Docs
+                </SliderLink>
+              </p>
+            </div>
+            <div className="hidden md:block w-4/12 mr-1/12 text-right">
+              <img src="/img/home-page-sliders/btc-eth.png" alt="" />
+            </div>
+          </SliderCard>
+          <SliderCard
+            bgImage="/img/home-page-sliders/https-outcalls-background.webp"
+            className="min-h-[374px] md:min-h-[550px] md:pt-16"
+          >
+            <div className="">
+              <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                HTTPS outcalls replace oracles
+              </h3>
+              <p className="mb-4 flex">
+                <SliderLink href="/https-outcalls">
+                  Learn how ICP does this
+                </SliderLink>
+              </p>
+              <p className="mb-0 flex">
+                <SliderLink href="/docs/current/samples/http-requests-exchange-rates">
+                  Sample code
+                </SliderLink>
+              </p>
+            </div>
+          </SliderCard>
+          <SliderCard
+            bgImage="/img/home-page-sliders/II-background.webp"
+            className="min-h-[374px] md:min-h-[550px] relative  md:pt-16"
+          >
+            <div className=" ">
+              <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                Internet Identity is your digital identity.
+              </h3>
+              <p className="mb-4 flex">
+                <SliderLink href="https://identity.ic0.app/">
+                  Create Internet Identity
+                </SliderLink>
+              </p>
+              <p className="mb-0 flex">
+                <SliderLink href="https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7">
+                  Learn more
+                </SliderLink>
+              </p>
+            </div>
+            <img
+              src="/img/home-page-sliders/ii.svg"
+              alt=""
+              className="hidden md:inline absolute bottom-0 right-0 rotate-[15deg]"
+            />
+          </SliderCard>
+          <SliderCard
+            bgImage="/img/home-page-sliders/features-background.webp"
+            className="min-h-[374px] md:min-h-[550px]  md:pt-16"
+          >
+            <div className="flex flex-col h-full pb-12">
+              <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                Super features of the Internet Computer
+              </h3>
+              <div className="flex-1"></div>
+
+              <Link
+                href="/features"
+                className="text-center button-outline-white self-start md:self-center"
+              >
+                CHeck out ICP tech features
+              </Link>
+            </div>
+          </SliderCard>
         </div>
-      </div>
-      <div className="flex justify-center gap-2 mt-4 md:mt-8 ">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              setIndex(i);
-              setShouldAutoRotate(false);
-            }}
-            className={`bg-infinite w-3 h-3 rounded-full transition-opacity border-none p-0 ${
-              i == dotIndex ? "opacity-100" : "opacity-25"
-            } ${i == index ? "md:opacity-100" : "md:opacity-25"}`}
-          ></button>
-        ))}
       </div>
     </AnimateSpawn>
   );

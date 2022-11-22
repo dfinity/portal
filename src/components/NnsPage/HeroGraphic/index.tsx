@@ -220,7 +220,7 @@ const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
         />
         <text fill="white" fontSize="14.2745" fontWeight="450">
           <tspan x="289.091" y="48.864">
-            Annualized Voting Reward
+            Current Annualized Voting Reward
           </tspan>
         </text>
         <text fill="white" fontSize="53.5294" fontWeight="bold">

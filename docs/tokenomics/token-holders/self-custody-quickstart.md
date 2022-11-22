@@ -41,7 +41,7 @@ To get started, verify the following:
 -   You have downloaded and installed the SDK by running the following command in a terminal on your local computer:
 
     ``` bash
-    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
     ```
 
 -   You have created a backup copy of the public/private key for the identity you are using for self-custody.
