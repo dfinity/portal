@@ -325,7 +325,7 @@ For the purposes of this tutorial, you can acquire free cycles for your `Hello` 
 Now that you have used the cycles faucet, in terminal B you can check your cycles balance:
 
 ``` bash
-dfx wallet --network ic balance
+dfx wallet balance --network ic
 ```
 
 You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min).

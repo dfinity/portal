@@ -86,7 +86,7 @@ launch.
     2. Make sure that you have at least 5 ICP in your main account; if not get more with the "Get ICP" menu entry.
     3. Go to the neurons tab and create a neuron. Give it 5 ICP and an 8 year dissolve delay.
     4. Make a note of your neuron ID. The rest of this guide will refer to it as `DEVELOPER_NEURON_ID`. The commands below assume you run `export DEVELOPER_NEURON_ID=<neuron id>` in your shell.
-    5. Add one of the dfx identities as a hotkey to the neuron. This dfx identity will be referred to as `developer-identity`. To get the principal of this identity, run `dfx --identity developer-identity identity get-principal`.
+    5. Add one of the dfx identities as a hotkey to the neuron. This dfx identity will be referred to as `developer-identity`. To get the principal of this identity, run `dfx identity get-principal --identity developer-identity`.
 
 #### 3. Ask the SNS wasm modules canister to install an SNS.
 Make a call to the SNS wasm modules canister on the local NNS to request that an SNS is installed.
