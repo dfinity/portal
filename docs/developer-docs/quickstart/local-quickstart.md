@@ -26,7 +26,7 @@ To download and install:
 
 2.  Download and install the SDK package by running the following command:
 
-        sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+        sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
@@ -58,7 +58,7 @@ To verify the SDK is ready to use:
 
 Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../build/backend/explore-templates) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../build/backend/explore-templates.md) tutorial.
 
 To create a new project for your first application:
 
@@ -110,64 +110,72 @@ To deploy your first dapp locally:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](../build/frontend/webpack-config#troubleshoot-node).
+    For more information about this step, see [Ensuring node is available in a project](../build/frontend/webpack-config.md#troubleshoot-node).
 
 3.  Register, build, and deploy your first dapp by running the following command:
 
         dfx deploy
 
-    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` frontend user interface—and installation information similar to the following:
+    The `dfx deploy` command output displays information about the operations it performs. For example, this step registers two identifiers. One is for the `hello_backend` main program and the other one for the `hello_frontend` frontend user interface and installation information similar to the following:
 
         Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
+        The wallet canister on the "local" network for user "mainnet" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
         Deploying all canisters.
         Creating canisters...
-        Creating canister "hello"...
-        "hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "hello_assets"...
-        "hello_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister hello_backend...
+        hello_backend canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
+        Creating canister hello_frontend...
+        hello_frontend canister created with canister id: ryjl3-tyaaa-aaaaa-aaaba-cai
         Building canisters...
         Building frontend...
         Installing canisters...
         Creating UI canister on the local network.
         The UI canister on the "local" network is "r7inp-6aaaa-aaaaa-aaabq-cai"
-        Installing code for canister hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
-        Authorizing our identity (default) to the asset canister...
+        Installing code for canister hello_backend, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+        Installing code for canister hello_frontend, with canister ID ryjl3-tyaaa-aaaaa-aaaba-cai
         Uploading assets to asset canister...
-          /index.html 1/1 (573 bytes)
-          /index.html (gzip) 1/1 (342 bytes)
-          /index.js 1/1 (605692 bytes)
-          /index.js (gzip) 1/1 (143882 bytes)
-          /main.css 1/1 (484 bytes)
-          /main.css (gzip) 1/1 (263 bytes)
+        Starting batch.
+        Staging contents of new and changed assets:
           /sample-asset.txt 1/1 (24 bytes)
-          /logo.png 1/1 (25397 bytes)
-          /index.js.map 1/1 (649485 bytes)
-          /index.js.map (gzip) 1/1 (149014 bytes)
+          /logo2.svg 1/1 (15139 bytes)
+          /index.js.map 1/1 (681670 bytes)
+          /index.js.map (gzip) 1/1 (156940 bytes)
+          /favicon.ico 1/1 (15406 bytes)
+          /main.css 1/1 (537 bytes)
+          /main.css (gzip) 1/1 (297 bytes)
+          /index.html 1/1 (690 bytes)
+          /index.html (gzip) 1/1 (386 bytes)
+          /index.js (gzip) 1/1 (152884 bytes)
+          /index.js 1/1 (637230 bytes)
+        Committing batch.
         Deployed canisters.
+        URLs:
+          Frontend canister via browser
+            hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+          Backend canister via Candid interface:
+            hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
 
-    If you created a project with a different name, however, your canister names will match your project name instead of `hello` and `hello_assets`.
+    If you created a project with a different name, however, your canister names will match your project name instead of `hello_backend` and `hello_frontend`.
 
-    You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](../../concepts/tokens-cycles) to other canisters.
+    You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](../../concepts/tokens-cycles.md) to other canisters.
 
     **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later, but for now, just note that these are created for you automatically.
 
-4.  Call the `hello` canister and the predefined `greet` function by running the following command:
+4.  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
-        dfx canister call hello greet everyone
+        dfx canister call hello_backend greet everyone
 
     Let’s take a closer look at this example command:
 
     -   The `dfx canister call` command requires you to specify a canister name and a method—or function—to call.
 
-    -   `hello` specifies the name of the **canister** you want to call.
+    -   `hello_backend` specifies the name of the **canister** you want to call.
 
     -   `greet` specifies the name of the **function** you want to call in the `hello` canister.
 
     -   `everyone` is the text data type argument that you want to pass to the `greet` function.
 
-    Remember, however, that if you created a project with a different name, the canister name will match your project name and you’ll need to modify the command line to match the name you used instead of `hello`.
+    Remember, however, that if you created a project with a different name, the canister name will match your project name and you’ll need to modify the command line to match the name you used instead of `hello_backend`. If you were to choose `test` as the projects name, your backend canister would be called `test_backend` and the frontend canister `test_frontend`.
 
 5.  Verify the command displays the return value of the `greet` function.
 
@@ -179,11 +187,9 @@ To deploy your first dapp locally:
 
 Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
-1.  Start the development server with `npm start`
+1.  Open a browser.
 
-2.  Open a browser.
-
-3.  Navigate to <http://localhost:8080/>
+2.  Navigate to the URL output by the `dfx deploy` command in the previous step. It's the one after `Frontend canister via browser`, in our case that's <http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai>.
 
 Navigating to this URL displays a simple HTML page with a sample asset image file, an input field, and a button. For example:
 
@@ -217,10 +223,10 @@ Here are some suggestions for where to go next:
 
 -   [Building on the IC](../build/) to explore building simple dapps using a local canister execution environment.
 
--   [Convert ICP tokens to cycles](network-quickstart#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
+-   [Convert ICP tokens to cycles](./network-quickstart.md#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
--   [On-chain deployment](network-quickstart) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
+-   [On-chain deployment](./network-quickstart.md) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
--   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../build/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/cdks/motoko-dfinity/overview.md) to learn about the features and syntax for using Motoko.

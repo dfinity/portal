@@ -1,236 +1,146 @@
-import React, { useEffect, useState } from "react";
-import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import { useAnimation, motion, useCycle, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import ColorThief from "colorthief";
+import useGlobalData from "@docusaurus/useGlobalData";
+import ArrowRight from "@site/static/img/arrow-right.svg";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
-import dapps from "@site/static/showcase.json";
-import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
-import { hslToRgb, rgbToHsl } from "@site/src/utils/colors";
-import { colorRegistry } from "@site/src/components/ShowcasePage/ShowcaseProject";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 
-const backgroundDisplay = {
-  show: { display: "block", transition: { duration: 0.5 } },
-  hidden: { display: "none", transition: { delay: 0.65 } },
-};
-const backgroundOpacity = {
-  show: { opacity: 1, transition: { duration: 0.5 } },
-  hidden: { opacity: 0, transition: { duration: 0.65 } },
-};
-const textCycling = {
-  enter: { y: 30, opacity: 0 },
-  center: { y: 0, opacity: 1 },
-  exit: { y: -30, opacity: 0 },
-};
+const MotionLink = motion(Link);
 
-const colorThief = new ColorThief();
-function getDominantColorOnLoad(img): [number, number, number] | false {
-  try {
-    let rgb = colorThief.getPalette(
-      img,
-      2,
-      Math.min(10, Math.ceil(img.width / 10))
-    )[0] as [number, number, number];
-    let hsl = rgbToHsl(...rgb);
-    if (hsl[2] < 0.5) {
-      // dark dominant color
-      hsl[2] = 0.8;
-      hsl[1] = Math.max(hsl[1], 0.7);
-      rgb = hslToRgb(...hsl);
-    } else {
-      // light dominant color
-      hsl[2] = Math.max(hsl[1], 0.8);
-      hsl[1] = 0.5;
-      rgb = hslToRgb(...hsl);
-    }
-    return rgb;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
-}
-
-function Dapp({ dappInfo }) {
-  function cleanWebsiteURL(url) {
-    let tempURL = url.endsWith("/") ? url.slice(0, -1) : url;
-    return tempURL.replace(/^https?:\/\//, "");
-  }
-
-  const [backgroundColor, setBackgroundColor] = useState(
-    colorRegistry[dappInfo.logo]
-  );
-
-  return (
-    <a
-      target={"_blank"}
-      href={dappInfo.website}
-      className={styles.dappContainer}
-    >
-      <div className={styles.dappHeader}>
-        <div className={styles.dappIcon}>
-          <img
-            onLoad={(e) => {
-              if (!(dappInfo.logo in colorRegistry)) {
-                const rgb = getDominantColorOnLoad(e.target);
-
-                if (rgb === false) {
-                  colorRegistry[dappInfo.logo] = colorRegistry.default;
-                  setBackgroundColor(colorRegistry.default);
-                } else {
-                  const color = `rgb(${rgb.join(",")})`;
-                  colorRegistry[dappInfo.logo] = color;
-                  setBackgroundColor(color);
-                }
-              } else {
-                setBackgroundColor(colorRegistry[dappInfo.logo]);
-              }
-            }}
-            crossOrigin={"anonymous"}
-            style={{ maxHeight: "49px", maxWidth: "70px" }}
-            src={dappInfo.logo + "?w=340&q=50&fm=png"}
-            alt=""
-          />
-        </div>
-        <div className={styles.dappInformation}>
-          <div className={styles.dappName}>{dappInfo.name}</div>
-          <div className={styles.dappStats}>{dappInfo.stats}</div>
-          <p className={styles.dappWebsite}>
-            {cleanWebsiteURL(dappInfo.website)}
-          </p>
-        </div>
-      </div>
-      <div className={styles.dappMedia} style={{ background: backgroundColor }}>
-        {dappInfo.video ? (
-          <video
-            className={styles.dappVideo}
-            src={dappInfo.video}
-            playsInline
-            autoPlay
-            muted
-            loop
-          ></video>
-        ) : (
-          <img
-            className={styles.dappScreenshot}
-            src={dappInfo.screenshots[0] + "?w=340&q=50&fm=png"}
-            alt=""
-          />
-        )}
-      </div>
-      <div className={styles.dappBody}>{dappInfo.description}</div>
-    </a>
-  );
-}
-
-function Showcase() {
-  const firstDapps = dapps.slice(0, 14);
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.35 });
+const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
+  lines,
+  interval,
+}) => {
+  const [index, setIndex] = useState(0);
   useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
-  useEffect(() => {
-    setInterval(() => {
-      cycleTitle();
-    }, 2500);
-  }, []);
-  const [title, cycleTitle] = useCycle("DeFi", "NFT", "Gaming");
+    const handle = setInterval(() => {
+      setIndex((index + 1) % lines.length);
+    }, interval);
+    return () => clearInterval(handle);
+  }, [index, interval]);
   return (
-    <div className={styles.container}>
-      <motion.div
-        animate={controls}
-        initial="hidden"
-        variants={backgroundDisplay}
-      >
-        <motion.div
-          animate={controls}
-          initial="hidden"
-          variants={backgroundOpacity}
+    <>
+      {lines.map((line, i) => (
+        <span
+          className="transition-all col-start-1 row-start-1 duration-300"
+          key={line + "_" + i}
+          style={{
+            opacity: i === index ? 1 : 0,
+            transform: `translateY(${i === index ? 0 : 100}px)`,
+          }}
         >
-          <svg
-            className={styles.BGShape}
-            viewBox="0 0 100 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="100" height="200" fill="#3b00b9" />
-          </svg>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={transitions.container}
-      >
-        <div className={styles.showcaseContainer}>
-          <a className={styles.anchor} id="showcase" />
-          <div className={styles.header}>
-            <motion.div variants={transitions.item} className={styles.title}>
-              <span>Dapps for</span>
-              <div>
-                <AnimatePresence>
-                  <motion.span
-                    className={styles.textCycling}
-                    variants={textCycling}
-                    key={title}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      y: {
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 20,
-                        duration: 0.2,
-                      },
-                      opacity: { duration: 0.1 },
-                    }}
-                  >
-                    {title}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={transitions.item}
-              className={styles.headerBody}
-            >
-              <p className={styles.body}>
-                The Internet Computer ecosystem continues to skyrocket with new
-                developer and entrepreneurial activity. Get inspired by the
-                existing dapps.
-              </p>
-              <Link className={styles.callToAction} to={"/showcase"}>
-                <RightPointer />
-                <p> Explore the Internet Computer ecosystem</p>
-              </Link>
-            </motion.div>
-          </div>
-          <motion.div
-            variants={transitions.item}
-            className={styles.cardContainer}
-          >
-            {firstDapps.map((dapp) => (
-              <div key={dapp.name} className={styles.cardWrapper}>
-                <Dapp dappInfo={dapp} />
-              </div>
-            ))}
-          </motion.div>
-          <div className={styles.actionButtonContainer}>
-            <Link className={styles.actionButton} to="/samples">
-              BUILD YOUR OWN
-            </Link>
+          <span className="text-transparent bg-clip-text gradient-text">
+            {line}
+          </span>
+        </span>
+      ))}
+    </>
+  );
+};
+
+export default function ShowcaseSection(): JSX.Element {
+  const projects = useGlobalData()["home-showcase"].default as {
+    name: string;
+    oneLiner: string;
+    website: string;
+    stats: string;
+    logo: string;
+  }[];
+
+  return (
+    <section id="dapps" className="relative z-0">
+      <AnimateSpawn variants={transitions.item}>
+        <div className="container-10 pt-20 md:pt-30">
+          <div className="">
+            <h2 className="tw-heading-3 md:tw-heading-2">
+              <span className="grid overflow-hidden">
+                <RotatedDappsHeadline
+                  interval={2500}
+                  lines={[
+                    "DeFi",
+                    "Metaverse",
+                    "Social Media",
+                    "Social Networking",
+                    "Multi-chain dapps",
+                    "Enterprise services",
+                    "R&D infrastructure",
+                    "Fundraising",
+                    "Publishing",
+                    "Messaging ",
+                    "Gaming",
+                    "NFTs",
+                  ]}
+                ></RotatedDappsHeadline>
+              </span>
+              <span>fully on-chain</span>
+            </h2>
+            <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
+              Featuring a few Web3 project teams already reinventing the
+              internet on the ICP blockchain.{" "}
+            </p>
           </div>
         </div>
-      </motion.div>
-    </div>
+        <AnimateSpawn
+          className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12"
+          variants={transitions.container}
+        >
+          {projects.map((p, i) => (
+            <MotionLink
+              variants={transitions.item}
+              href={p.website}
+              key={p.name + i}
+              className="rounded-xl border relative border-white border-solid backdrop-blur-2xl bg-white-60 p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black"
+            >
+              <img
+                src={p.logo}
+                alt={p.name}
+                className="w-16 sm:w-20 mb-3 h-16 sm:h-20 object-contain absolute left-6 top-6 sm:static"
+              />
+              <div className="ml-[86px] sm:ml-0">
+                <h4 className="tw-heading-6 sm:tw-heading-5 mb-1 sm:mb-2">
+                  {p.name}
+                </h4>
+                <p className="tw-paragraph-sm sm:tw-lead-sm mb-3 sm:mb-4 text-black-60">
+                  {p.oneLiner}
+                </p>
+                <p className="mb-0">
+                  <span className="rounded-full py-2 px-5 bg-[#F1EEF5] tw-paragraph-sm sm:tw-lead-sm">
+                    {p.stats}
+                  </span>
+                </p>
+              </div>
+            </MotionLink>
+          ))}
+        </AnimateSpawn>
+
+        <div className="relative -mt-96 mb-10 md:mb-40">
+          <AnimateSpawn
+            el={motion.img}
+            variants={transitions.fadeIn}
+            src={BlobGradient}
+            alt=""
+            className="max-w-none w-[800px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
+          />
+
+          <AnimateSpawn
+            className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
+            variants={transitions.item}
+          >
+            <Link className="button-primary" href="/showcase">
+              Join the Web3 movement
+            </Link>
+            <Link
+              className="link-white  inline-flex items-center gap-2"
+              href="/developers"
+            >
+              <ArrowRight></ArrowRight>
+              Start coding
+            </Link>
+          </AnimateSpawn>
+        </div>
+      </AnimateSpawn>
+    </section>
   );
 }
-
-export default Showcase;

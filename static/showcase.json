@@ -195,18 +195,6 @@
     ]
   },
   {
-    "name": "Agryo",
-    "website": "https://www.agryo.com/",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "Agryo is the global risk intelligence provider that enables financial institutions to assess and manage financial risks in the crop field level for underwriting agriculture insurance, loans, and trade finance globally; as well as meet sustainability goals.",
-    "logo": "//images.ctfassets.net/ywqk17d3hsnp/6Tmfke6DkchW1impD1XXDS/bb2649585e3c89703578dfe64b6f899c/Agryo.png",
-    "screenshots": [
-      "//images.ctfassets.net/ywqk17d3hsnp/7GCDSE6jCBAKTwzsGWYxxF/737f0290324e4c9d76245703201f5579/Screen_Shot_2021-09-24_at_10.32.49_AM.png"
-    ]
-  },
-  {
     "name": "Sudograph",
     "website": "https://i67uk-hiaaa-aaaae-qaaka-cai.raw.ic0.app/",
     "tags": [
@@ -366,22 +354,6 @@
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/6upWtrpRvT2XGOFQfoKZC8/7a5cc3dee28ef9c6383019aa591faee7/Screen_Shot_2021-09-24_at_9.34.57_AM.png",
       "//images.ctfassets.net/ywqk17d3hsnp/4lVnKUpRrjHrcqUV3oBgiY/489338b18cca8e3aec8f3e1b4f972037/Screen_Shot_2021-09-24_at_9.36.08_AM.png"
-    ]
-  },
-  {
-    "name": "DeckDeckGo",
-    "website": "https://deckdeckgo.com",
-    "tags": [
-      "Dapp",
-      "Work"
-    ],
-    "description": "An open source web editor for presentations built completely on-chain. This dapp is like a decentralized version of Google Slides built on the Internet Computer. ",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4mCGISHjbn0HMza9qpUYKM/0650998b5f3c9556c92dfc351174f105/deckdeckgo.png",
-    "screenshots": [
-      "//images.ctfassets.net/ywqk17d3hsnp/13nxFKTL1r2XQSwDZj5Yov/8f3f9d08a54e76ccd23fd0b3626e4694/Screen_Shot_2021-09-24_at_9.39.57_AM.png",
-      "//images.ctfassets.net/ywqk17d3hsnp/5jLVfNd7x5A6mhNy99a9nc/f9a5ee0530bc6e76916e642ba8cd06a7/Screen_Shot_2021-09-24_at_9.38.04_AM.png"
     ]
   },
   {

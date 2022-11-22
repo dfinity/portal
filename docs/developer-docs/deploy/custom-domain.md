@@ -1,10 +1,10 @@
 # Custom Domains
 
-All smart contracts, including Web3 dapps, on the Internet Computer blockchain are secured by the root key. End-to-end security is provided by a service-worker, a proxy embedded in the browser, which verifies the integrity of data downloaded from the Internet Computer blockchain.
+All smart contracts, including Web3 dapps, on the Internet Computer blockchain are secured by the root key. End-to-end security is provided by a service worker, a proxy embedded in the browser, which verifies the integrity of data downloaded from the Internet Computer blockchain.
 
-This guide shows how to build a custom service worker which enables a custom domain with end-to-end security for a specific canister. The service worker can be served as static assets from any internet connected device and after the service worker is loaded, all data is transferred directly between the client and the Internet Computer blockchain.
+This guide shows how to build a custom service worker which enables a custom domain with end-to-end security for a specific canister. The service worker can be served as static assets from any internet-connected device and after the service worker is loaded, all data is transferred directly between the client and the Internet Computer blockchain.
 
-Ultimately the security of any site using standard web technology depends on DNS since control of DNS allows the site to be redirected and enables control of TLS certificates. Consequently, for a standard web site trust must be placed at least in the DNS registrar. If the registrar provides static hosting, deployment of a custom service worker can provided end-to-end security for standard Web3 dapps on the Internet Computer blockchain without increasing the number of entities that must be trusted.
+Ultimately the security of any site using standard web technology depends on DNS since control of DNS allows the site to be redirected and enables control of TLS certificates. Consequently, for a standard website trust must be placed at least in the DNS registrar. If the registrar provides static hosting, deployment of a custom service worker can provide end-to-end security for standard Web3 dapps on the Internet Computer blockchain without increasing the number of entities that must be trusted.
 
 ## Creating the custom Service Worker
 
@@ -19,5 +19,5 @@ Ultimately the security of any site using standard web technology depends on DNS
 1. Test.
 
 :::caution
-For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users normally through the normal canister URL and want to switch over to a custom domain, users will not have the same identifiers anymore.
+For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../references/ii-spec.md#alternative-frontend-origins).
 :::

@@ -1,27 +1,40 @@
 .docs {
-    color: #ED1E79;
+    color: #29abe2;
   }
   .docs[aria-selected='true'] {
-    border-bottom-color: #ED1E79;
+    border-bottom-color: #29abe2;
   }
   
   .refs {
-    color: #29ABE2;
+    color: #522785;
   }
   .refs[aria-selected='true'] {
-    border-bottom-color: #29ABE2;
+    border-bottom-color: #522785;
   }
   
   .concepts {
-    color: #F15A24;
+    color: #ed1e79;
   }
   .concepts[aria-selected='true'] {
-    border-bottom-color: #F15A24;
+    border-bottom-color: #ed1e79;
   }
 
   .tokens {
-    color: #FBB03B;
+    color: #f15a24;
   }
   .tokens[aria-selected='true'] {
+    border-bottom-color: #f15a24;
+  }
+
+  .samples {
+    color: #FBB03B;
+  }
+  .samples[aria-selected='true'] {
     border-bottom-color: #FBB03B;
   }
+
+  /* #29abe2 10.78%,
+  #522785 22.2%,
+  #ed1e79 42.46%,
+  #f15a24 59.41%,
+  #fbb03b 77.09% */

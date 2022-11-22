@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
@@ -22,6 +22,8 @@ import { Doughnut, Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import clsx from "clsx";
+import { VotingRewardsPluginData } from "./VotingRewardsPluginData";
+import useGlobalData from "@docusaurus/useGlobalData";
 
 ChartJS.register(
   ArcElement,
@@ -123,12 +125,12 @@ function OwnershipChart() {
   );
 }
 
-export const votingRewardsData = {
-  labels: ["0.5", "1", "2", "3", "4", "5", "6", "7", "8"],
+export const votingRewardsData = (data: VotingRewardsPluginData) => ({
+  labels: data.map((d) => d.dissolveDelay.toString()),
   datasets: [
     {
       label: "Reward",
-      data: [11.1, 11.7, 13.0, 14.3, 15.6, 16.9, 18.2, 19.5, 20.8],
+      data: data.map((d) => +d.reward.toFixed(1)),
       fill: true,
       borderColor: "rgba(62,9,185,1)",
       backgroundColor: "rgba(118,85,200,1)",
@@ -140,15 +142,25 @@ export const votingRewardsData = {
       hoverPointRadius: 6,
     },
   ],
-};
+});
 
 export const VotingRewardsChart: React.FC<{ className?: string }> = ({
   className,
 }) => {
+  const globalData = useGlobalData();
+  const votingRewards = globalData["voting-rewards"][
+    "default"
+  ] as VotingRewardsPluginData;
+
+  const calculatedVotingRewardsData = useMemo(
+    () => votingRewardsData(votingRewards),
+    []
+  );
+
   return (
     <div className={clsx(styles.votingRewardsChart, className)}>
       <Line
-        data={votingRewardsData}
+        data={calculatedVotingRewardsData}
         options={{
           maintainAspectRatio: true,
           aspectRatio: 1.5,
@@ -174,7 +186,7 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
               display: true,
               title: {
                 display: true,
-                text: "ICP Token Dissolve Delay (Years)",
+                text: "Time Staked (Years)",
                 color: "black",
                 font: {
                   size: 14,
@@ -200,7 +212,7 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
             },
             title: {
               display: true,
-              text: ["Latest Annualized Voting", "Reward Percentage"],
+              text: ["Latest Voting Rewards", "(Annualized)"],
               font: { size: 14, weight: "normal" },
               padding: 0,
               color: "black",
@@ -232,12 +244,14 @@ export const VotingRewardsChart: React.FC<{ className?: string }> = ({
                   return "Voting Reward";
                 },
                 label: (tooltipItem) => {
-                  let dataset = votingRewardsData["datasets"][0];
+                  let dataset = calculatedVotingRewardsData["datasets"][0];
                   let percent = dataset["data"][tooltipItem["dataIndex"]];
                   return (
                     percent +
                     "% after " +
-                    votingRewardsData["labels"][tooltipItem["dataIndex"]] +
+                    calculatedVotingRewardsData["labels"][
+                      tooltipItem["dataIndex"]
+                    ] +
                     " years"
                   );
                 },
@@ -275,11 +289,11 @@ function ICPToken() {
       <a className={styles.anchor} id="ICPToken" />
       <div className={styles.header}>
         <motion.p variants={transitions.item} className={styles.headerTitle}>
-          Internet Computer utility token
+          The ICP token
         </motion.p>
         <motion.p variants={transitions.item} className={styles.headerBody}>
-          ICP tokens allow users to participate in and govern the Internet
-          Computer blockchain network.
+          ICP enables participation in network governance, provides a source of
+          fuel for computation, and acts as a store of value.
         </motion.p>
         <motion.div
           variants={transitions.item}

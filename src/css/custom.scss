@@ -260,6 +260,81 @@ div[class^="announcementBarContent"] {
   top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
 }
 
+.fancy-scrollbar {
+  scroll-padding: 50% 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 12px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track {
+  background: rgba(24, 24, 24, 0%);
+  margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
+  border-radius: 20px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(24, 24, 24, 20%);
+  border-radius: 20px;
+  border: 4px solid var(--ifm-background-color);
+}
+
+.markdown-youtube-thumbnail {
+  position: relative;
+  display: block;
+}
+.markdown-youtube-thumbnail img {
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 16 / 9;
+}
+.markdown-youtube-thumbnail:after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background-image: url(/img/youtube-play-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+@keyframes hero-scale-in {
+  from {
+    opacity:0;
+    transform: scale(0);
+  }
+  to {
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+.animate-scale-in {
+  animation: hero-scale-in 1400ms ease-out;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+}
+.animate-fade-in {
+  animation: fade-in 400ms ease-out;
+  animation-delay: 2500ms;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+}
+
 @import "typography.css";
 
 @tailwind base;

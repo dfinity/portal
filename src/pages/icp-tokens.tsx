@@ -9,9 +9,7 @@ import DfinityLogo from "../../static/img/dfinity_logo.svg";
 import CustodyGraphic from "../../static/img/token-holders/custody.svg";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
-
 import transitions from "@site/static/transitions.json";
-
 import YoutubeIcon from "../../static/img/token-holders/social/youtube.svg";
 import ForumIcon from "../../static/img/token-holders/social/forum.svg";
 import MediumIcon from "../../static/img/token-holders/social/medium.svg";
@@ -21,6 +19,7 @@ import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
 
 const images = [
   {
@@ -149,6 +148,21 @@ function TokenHolders(): JSX.Element {
       title="ICP Tokens"
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
     >
+      <Head>
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
+          }
+        />
+        <title>ICP Tokens</title>
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
           el={motion.img}
@@ -479,7 +493,7 @@ function TokenHolders(): JSX.Element {
               </motion.h2>
               <motion.p className="tw-heading-6" variants={transitions.item}>
                 <a
-                  href="https://internetcomputer.org/docs/current/developer-docs/functionality/ledger/"
+                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_with_Ledger_Nano"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-white-50 hover:no-underline"
@@ -594,7 +608,7 @@ function TokenHolders(): JSX.Element {
                 </p>
               </motion.div>
               <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-10"
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
                 variants={transitions.item}
               >
                 <h1 className="tw-title-sm">Join The Conversation</h1>

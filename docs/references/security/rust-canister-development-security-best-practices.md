@@ -10,10 +10,10 @@ The controller of a canister can change / update the canister whenever they like
 
 #### Recommendation
 
-- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of the IC. These SNSs will be available soon. See the link:https://dfinity.org/roadmap/[roadmap] and the link:https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224[design proposal]
+- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of the IC. These SNSs will be available soon. See the roadmap [here](https://dfinity.org/roadmap/) and the design proposal [here](https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224)
 - Another option would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
 **  Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
-- It is also possible to implement a DAO (link:https://en.wikipedia.org/wiki/Decentralized_autonomous_organization[Decentralized Autonomous Organization]) on the IC from scratch. If you decide to do this (e.g. along the lines of the link:https://smartcontracts.org/docs/samples/dao.html[basic DAO example]), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
+- It is also possible to implement a DAO [Decentralized Autonomous Organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on the IC from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
 
 ### Verify the ownership of smart contracts you depend on
 
@@ -145,7 +145,7 @@ Canister memory is not persisted across upgrades. If data needs to be kept acros
 
         -   HashMap: <https://github.com/dfinity/stable-structures/pull/1> (currently not prod ready)
 
-    -   <https://github.com/seniorjoinu/ic-stable-memory-allocator>
+    -   <https://github.com/seniorjoinu/ic-stable-memory>
 
 -   See [Current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serialiser requiring additional wasm memory"
 
@@ -429,7 +429,7 @@ Unsafe Rust code is risky because it may introduce memory corruption issues.
 
 -   Avoid unsafe code whenever possible.
 
--   See the [Rust security guidelines](https://anssi-fr.github.io/rust/04_language.html#unsafe-code)
+-   See the [Rust security guidelines](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code)
 
 -   Consider the [Dfinity Rust Guidelines](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_avoid_unsafe_code).
 
@@ -446,6 +446,17 @@ Integers in Rust may overflow. While such overflows lead to panics in the debug 
 -   Use the `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
 
 -   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust/04_language.html#integer-overflows).
+
+### Rust: Avoid floating point arithmetic for financial information
+
+#### Security Concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to integer, this can lead to unexpected results. (There is no `checked_div` for floats.)
+
+#### Recommendation
+
+Use [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/) or [`num_rational::Ratio`]( https://docs.rs/num-rational/latest/num_rational/). Decimal uses a fixed-point representation with base 10 denominators, and Ratio represents rational numbers. Both implement `checked_div` to handle division by zero, which is not available for floats. Numbers in common use like 0.1 and 0.2 can be represented more intuitively with Decimal, and can be represented exactly with Ratio. Rounding oddities like `0.1 + 0.2 != 0.3`, which happen with floats in Rust, do not arise with Decimal (see https://0.30000000000000004.com/ ). With Ratio, the desired precision can be made explicit. With either Decimal or Ratio, although one still has to manage precision, the above make arithmetic easier to reason about.
+
 
 ### For expensive calls, consider using captchas or proof of work
 

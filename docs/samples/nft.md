@@ -19,7 +19,7 @@ The NFT canister is not very complicated since the [DIP-721](https://github.com/
 but we can still use it to explain three important concepts concerning dapp development for the Internet Computer:
 
 ### Stable Memory for Canister Upgrades
-The Internet Computer employs [Orthogonal Persistence](https://smartcontracts.org/docs/current/developer-docs/build/languages/motoko#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
+The Internet Computer employs [Orthogonal Persistence](../developer-docs/build/cdks/motoko-dfinity/motoko.md#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
 When upgrading canister code, however, it is necessary to explicitly handle canister data. The NFT canister example shows how stable memory can be handled using `pre_upgrade` and `post_upgrade`.
 
 ### Certified Data
@@ -69,7 +69,7 @@ For a much more detailed explanation how certification works, see [this explanat
 
 ### Managing Control over Assets
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
-- Owner: This person owns an NFT. They can transfer the NFT, add/reomve operators, or burn the NFT.
+- Owner: This person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
 - Operator: Sort of a delegated owner. The operator does not own the NFT, but can do the same actions an owner can do.
 - Custodian: Creator of the NFT collection/canister. They can do anything (transfer, add/remove operators, burn, and even un-burn) to NFTs, but also mint new ones or change the symbol or description of the collection.
 

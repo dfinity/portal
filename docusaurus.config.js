@@ -11,22 +11,38 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const showcaseProjectsPlugin = require("./plugins/showcase-projects");
+const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
+const matomoPlugin = require("./plugins/matomo");
 const keepSymlinks = require("./plugins/keep-symlinks");
 const liveSessionsPlugin = require("./plugins/live-sessions");
+const roadmapDataPlugin = require("./plugins/roadmap-data");
+const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
+const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
+const votingRewardsPlugin = require("./plugins/voting-rewards");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
+
+const isDfxBuild = !!process.env.DFX_VERSION;
+
+if (isDfxBuild) {
+  console.log(`Canister id: ${process.env.CANISTER_ID}`);
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
-  url: "https://internetcomputer.org",
+  url: isDfxBuild
+    ? `https://${process.env.CANISTER_ID}.ic0.app`
+    : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
@@ -42,9 +58,25 @@ const config = {
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,
+    homeShowcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
+    howItWorksCardsPlugin,
     teamInformationPlugin,
+    votingRewardsPlugin,
+    roadmapDataPlugin,
+    whatIsIcpDataPlugin,
+    matomoPlugin,
+  ],
+
+  stylesheets: [
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
   ],
 
   presets: [
@@ -65,8 +97,8 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [simplePlantUML, require("remark-code-import")],
-          // TODO: Please change this to your repo.
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         theme: {
@@ -123,20 +155,36 @@ const config = {
             label: "Explore",
             items: [
               {
+                label: "Web3 Ecosystem",
+                href: "/showcase",
+              },
+              {
+                label: "Features",
+                href: "/features",
+              },
+              {
                 label: "Basics",
                 href: "/basics",
               },
               {
-                label: "Showcase",
-                href: "/showcase",
-              },
-              {
-                label: "How it works",
-                href: "/how-it-works",
-              },
-              {
                 label: "Bitcoin Integration",
                 href: "/bitcoin-integration",
+              },
+              {
+                label: "HTTPS Outcalls",
+                href: "/https-outcalls",
+              },
+              {
+                label: "Videos",
+                href: "/videos",
+              },
+              {
+                label: "Social Media Dapps",
+                href: "/social-media-dapps",
+              },
+              {
+                label: "ICP Careers",
+                href: "http://careers.internetcomputer.org/",
               },
               {
                 label: "Internet Identity",
@@ -148,13 +196,35 @@ const config = {
                 href: "https://dashboard.internetcomputer.org",
               },
               {
+                label: "DFINITY Foundation",
+                href: "https://dfinity.org",
+              },
+            ],
+          },
+          {
+            type: "dropdown",
+            position: "right",
+            label: "Learn",
+            items: [
+              {
+                label: "What is the IC",
+                href: "/what-is-the-ic",
+              },
+              {
+                label: "How it works",
+                href: "/how-it-works",
+              },
+              {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org",
               },
-
               {
-                label: "DFINITY Foundation",
-                href: "https://dfinity.org",
+                label: "Whitepaper",
+                href: "https://internetcomputer.org/whitepaper.pdf",
+              },
+              {
+                label: "Internet Computer Infographic",
+                href: "https://internetcomputer.org/icig.pdf",
               },
             ],
           },
@@ -170,9 +240,11 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/quickstart/hello10mins",
+                docId: "developer-docs/ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
+              { label: "Developer Tools", to: "/tooling" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -180,6 +252,10 @@ const config = {
               {
                 label: "Dev Forum ",
                 href: "https://forum.dfinity.org/",
+              },
+              {
+                label: "Dev Discord ",
+                href: "https://discord.gg/jnjVVQaE2C",
               },
             ],
           },
@@ -189,24 +265,28 @@ const config = {
             label: "Participate",
             items: [
               {
-                label: "ICP tokens",
-                href: "/icp-tokens",
-              },
-              {
                 label: "Live sessions",
                 href: "/live-sessions",
               },
               {
                 label: "Roadmap",
-                href: "https://forum.dfinity.org/c/roadmap/29",
+                href: "/roadmap",
+              },
+              {
+                label: "ICP tokens",
+                href: "/icp-tokens",
+              },
+              {
+                label: "Network Nervous System (NNS)",
+                href: "/nns",
+              },
+              {
+                label: "Service Nervous System (SNS)",
+                href: "/sns",
               },
               {
                 label: "Staking & Governance",
                 href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
-              },
-              {
-                label: "NNS Frontend dapp",
-                href: "https://nns.ic0.app/v2/",
               },
               {
                 label: "Node Providers",
@@ -241,13 +321,13 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "tokenomics",
-            label: "Tokenomics",
+            label: "DAOs & Tokenomics",
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "samples",
-            label: "Samples",
+            label: "Sample Code",
           },
 
           {
@@ -260,19 +340,19 @@ const config = {
         ],
       },
 
-      announcementBar:
-        isDev || isDeployPreview
-          ? {
-              id: "local_dev",
-              content: isDeployPreview
-                ? `You are currently viewing a preview of this <a href="${
-                    process.env.PR_URL || "https://github.com/dfinity/portal"
-                  }">Pull Request</a>.`
-                : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
-              textColor: "#091E42",
-              isCloseable: false,
-            }
-          : undefined,
+      // announcementBar:
+      //   isDev || isDeployPreview
+      //     ? {
+      //         id: "local_dev",
+      //         content: isDeployPreview
+      //           ? `You are currently viewing a preview of this <a href="${
+      //               process.env.PR_URL || "https://github.com/dfinity/portal"
+      //             }">Pull Request</a>.`
+      //           : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
+      //         textColor: "#091E42",
+      //         isCloseable: false,
+      //       }
+      //     : undefined,
 
       footer: {
         links: [
@@ -295,6 +375,10 @@ const config = {
           {
             items: [
               {
+                label: "ICP Careers",
+                to: "http://careers.internetcomputer.org/",
+              },
+              {
                 label: "Brand Materials",
                 to: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",
               },
@@ -307,6 +391,11 @@ const config = {
           {
             title: "SocialMedia",
             items: [
+              {
+                label: "DSCVR",
+                to: "https://dscvr.one/",
+                icon: "data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4579_44749)'%3E%3Cpath d='M15.5569 1.39645C14.4968 1.02636 13.3839 0.817527 12.2604 0.783161C12.1388 0.780518 12.0172 0.780518 11.8983 0.780518C11.1766 0.780518 10.4576 0.859822 9.75439 1.01579C9.74144 1.02293 9.72901 1.03006 9.71606 1.0372C9.72796 1.03006 9.73959 1.02293 9.75175 1.01579C6.75138 1.69252 4.52555 3.79675 3.4285 6.9055C2.38961 10.1438 3.2276 13.694 5.6041 16.1287C8.60183 19.1978 13.6403 20.0675 16.8654 16.8398C16.8659 16.8382 16.8667 16.8366 16.8673 16.835C19.6041 14.0934 19.6025 9.65051 16.8628 6.90815C14.1558 4.2012 11.0444 4.41004 7.84314 6.06751L7.64488 6.17061L7.81142 11.2831C7.82305 11.2485 7.83548 11.2157 7.84843 11.184C7.8368 11.217 7.82517 11.2498 7.81406 11.2831L7.91452 14.3787L8.01761 14.4765C8.8556 15.288 9.75439 15.563 10.5897 15.7427L10.4681 8.04485C10.4465 8.05542 10.4253 8.06653 10.4039 8.07763C10.425 8.0652 10.4465 8.05331 10.4681 8.04221C12.2974 7.44742 14.2087 7.82808 15.4115 9.43533C15.4136 9.43691 15.4154 9.4385 15.4176 9.44009C16.4295 10.7957 16.5736 12.6144 15.7869 14.1117C14.1214 17.2997 9.34201 17.1226 7.02101 14.7488C5.8896 13.5909 5.18114 12.0815 5.0146 10.4689C4.69209 7.41305 6.34164 4.48934 9.12524 3.18874L9.53234 3.06979C10.3042 2.86095 11.0999 2.75785 11.8983 2.75785C16.9341 2.75521 21.0157 6.83413 21.021 11.8673C21.021 13.3794 20.6456 14.8677 19.9292 16.1974C19.9168 16.222 19.9041 16.246 19.8917 16.2706C19.4777 17.0243 18.9577 17.7134 18.3484 18.3228C15.4009 21.2676 10.8329 21.7699 7.18227 19.8798C2.66982 17.5456 0.938326 12.285 2.46891 7.55845C2.56672 7.25709 2.41604 6.93194 2.12261 6.81034L2.03538 6.77333L1.89263 7.07469C1.73402 7.40777 1.58863 7.74878 1.46438 8.09772C-0.621338 13.8685 2.36582 20.234 8.13657 22.3197C8.17094 22.333 8.2053 22.3435 8.24231 22.3567C8.34303 22.3758 8.44348 22.3935 8.54393 22.4107C8.44216 22.3938 8.33986 22.376 8.23702 22.3567C14.0263 24.3764 20.3548 21.3231 22.3771 15.5365C24.3967 9.74726 21.3435 3.41873 15.5569 1.39645Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4579_44749'%3E%3Crect width='22.2001' height='22.199' fill='white' transform='translate(0.799805 0.780518)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
+              },
               {
                 label: "Youtube",
                 to: "https://www.youtube.com/dfinity",

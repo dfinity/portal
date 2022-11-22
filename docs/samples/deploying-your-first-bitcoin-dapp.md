@@ -21,7 +21,11 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         # For rust
         cd examples/rust/basic_bitcoin
 
-3. Deploy the example to the Internet Computer. We're initializing the canister with `variant { Testnet }`, so that the canister connects to the Bitcoin testnet.
+3. Initialize the git submodules
+
+        git submodule update --init --recursive
+
+4. Deploy the example to the Internet Computer. We're initializing the canister with `variant { Testnet }`, so that the canister connects to the Bitcoin testnet.
 
         dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
 

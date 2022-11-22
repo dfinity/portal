@@ -100,7 +100,7 @@ You should communicate all of these to your user in the instructions. Ideally, d
     RUN cargo install --version ${IC_CDK_OPTIMIZER_VERSION} ic-cdk-optimizer
 
     # Install dfx
-    RUN sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    RUN sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
     COPY . /canister
     WORKDIR /canister

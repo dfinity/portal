@@ -13,6 +13,7 @@ import { useQueryParam } from "../utils/use-query-param";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
@@ -43,7 +44,8 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
 }
 
 function ShowcasePage(): JSX.Element {
-  const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
+  const [queryTag, setQueryTag, queryTagInitialized] =
+    useQueryParam<string>("tag");
   const filtersRef = useRef<HTMLDivElement>();
   resetNavBarStyle();
 
@@ -71,9 +73,24 @@ function ShowcasePage(): JSX.Element {
 
   return (
     <Layout
-      title="Showcase"
+      title="Web3 Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
     >
+      <Head>
+        <meta
+          property="og:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
+          }
+        />
+        <title>Web3 Ecosystem</title>
+      </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
@@ -88,7 +105,7 @@ function ShowcasePage(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-2"
                 variants={transitions.item}
               >
-                Explore the Internet Computer Ecosystem
+                Stuff built on the Internet Computer
               </motion.h1>
             </div>
           </section>
@@ -101,9 +118,9 @@ function ShowcasePage(): JSX.Element {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                    "button-outline",
                     !queryTag
-                      ? "text-white bg-infinite-60"
+                      ? "text-white bg-infinite"
                       : "text-black bg-transparent"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -113,9 +130,9 @@ function ShowcasePage(): JSX.Element {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "capitalize font-circular text-navigation cursor-pointer border-infinite-60 border border-solid py-2 px-4 rounded-xl hover:text-white hover:bg-infinite-60 transition-colors",
+                      "button-outline",
                       tag.toLowerCase() === queryTag?.toLowerCase()
-                        ? "text-white bg-infinite-60"
+                        ? "text-white bg-infinite"
                         : "text-black bg-transparent"
                     )}
                     key={tag}
@@ -127,9 +144,11 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                All of these dapps are using the novel Internet Computer
-                blockchain. Use the following projects at your own risk. As
-                always, do your own research.
+                Here we list dapps and Web3 services that are built on the
+                Internet Computer blockchain, which is a World Computer. Many
+                services run fully on-chain. You use decentralized services at
+                your own risk. Do your own research, especially where you must
+                deposit tokens.
               </p>
             </motion.div>
           </section>

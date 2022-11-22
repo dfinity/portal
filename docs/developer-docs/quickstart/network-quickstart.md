@@ -34,7 +34,7 @@ To download and install:
 
 2.  Download and install the SDK package by running the following command:
 
-        sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+        sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
@@ -362,6 +362,6 @@ Here are some suggestions for where to go next:
 
 -   [Build on the IC](../build/) to explore building frontend and backend dapps in a local development environment.
 
--   [What is Candid?](../build/languages/candid/candid-concepts) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../build/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](../build/languages/motoko/overview) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../build/cdks/motoko-dfinity/overview.md) to learn about the features and syntax for using Motoko.
