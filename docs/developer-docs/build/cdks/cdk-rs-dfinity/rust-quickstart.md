@@ -235,6 +235,6 @@ After testing the application, you can stop the local execution environment so t
 
 To stop the local execution environment running on your computer, run the following command:
 
-    ``` bash
-    dfx stop
-    ```
+```bash
+dfx stop
+```
