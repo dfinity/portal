@@ -30,7 +30,7 @@ function Index() {
           Two key technology developments make it possible for Internet Computer smart 
           contracts to create bitcoin addresses and directly send and 
           receive bitcoin: inter-node communication between the Internet Computer
-          network and the Bitcoin network, and the use of novel threshold ECDSA
+          network and the Bitcoin network, and the use of novel chain key ECDSA
           cryptography by its protocols.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
@@ -45,7 +45,7 @@ function Index() {
           UTXO set.
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-heading-7">
-          Threshold ECDSA
+          Chain Key ECDSA
         </motion.p>
         <motion.p variants={transitions.item} className="mb-2 tw-paragraph">
           Novel "threshold cryptography" enables the Internet Computer to distribute,
