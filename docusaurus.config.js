@@ -179,6 +179,10 @@ const config = {
                 href: "/videos",
               },
               {
+                label: "Social Media Dapps",
+                href: "/social-media-dapps",
+              },
+              {
                 label: "ICP Careers",
                 href: "http://careers.internetcomputer.org/",
               },
