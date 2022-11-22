@@ -1991,6 +1991,20 @@ const communityProjects: SampleItem[] = [
     level: "advanced",
     contentType: ["code samples", "community repo", "live demos"],
   },
+  {
+    index: 122,
+    title: "ERC-721 NFT with metadata on IC",
+    body: "Learn how to mint an ERC-721 NFT on Ethereum/Polygon with canister-served metadata.",
+    image: "/img/community-projects/122_erc721_tutorial.jpg",
+    links: {
+      github: "https://github.com/domwoe/erc-721-ic-assets",
+      otherLinks: [],
+    },
+    domains: ["Metaverse and NFTs"],
+    languages: ["motoko", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "tutorial"],
+  },
 ];
 
 export default communityProjects;
