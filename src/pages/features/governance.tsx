@@ -1,6 +1,7 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
@@ -49,17 +50,9 @@ function FeaturePage() {
           {/* 
             delete this div if image is not needed 
           */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
-            <img
-              src="/img/features/ic-generic.png"
-              alt=""
-              className="w-full block"
-            />
-          </div>
-
+          
           <div
             className="
-            sm:flex-1 
             prose 
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
@@ -68,8 +61,6 @@ function FeaturePage() {
             "
           >
             <h2>How It Works</h2>
-  
-            <h3>Overview</h3>
             <p>
             The purpose of the NNS is to allow the IC network to be governed in an open, 
             decentralized, and secure manner. It has complete control over all aspects of 
@@ -80,6 +71,12 @@ function FeaturePage() {
             activity by “neurons” that network participants have created.
             </p>
 
+            <YoutubeVideoEmbed
+              videoId="mPjiO2bk2lI"
+              className="mt-10 md:mt-10"
+              altText="Inside the Internet Computer | Upgrades"
+            ></YoutubeVideoEmbed>
+
             <h3>Proposals</h3>
             <p>
               Users submit NNS proposals to the NNS to update the code of the IC: {" "}
@@ -89,47 +86,26 @@ function FeaturePage() {
               . Consequently, the IC can update itself many times faster than other blockchains.
             </p>
 
-            <p className="mb-3 mt-6">
-              <Link
-                href="/docs/current/developer-docs/quickstart/hello10mins"
-                className="tw-heading-6 flex gap-2 items-center"
-              >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Start building
-              </Link>
-            </p>
           </div>
         </section>
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
+            Learn more
           </p>
-          <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
-          </p>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
-            />
-            <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Upgrading the Internet Computer Protocol"
+              description="Medium blog post"
+              href="https://medium.com/dfinity/upgrading-the-internet-computer-protocol-45bf6424b268"
             />
             <CardWithDescription
               title="Diver deeper into the NNS"
               description="Take a deep dive into the Internet Computer's NNS and upgrading."
-              href="https://wiki.internetcomputer.org/wiki/Network_Nervous_Systemg"
+              href="https://wiki.internetcomputer.org/wiki/NNS_Canisters"
             />
           </div>
         </section>
