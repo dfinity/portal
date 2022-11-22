@@ -137,7 +137,7 @@ function SocialMediaDappsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Take full ownership and control over your social media plaforms.
+                  Take full ownership and control over your social media platforms.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
                   <Link href="#web3-dapps" className="button button-white">
