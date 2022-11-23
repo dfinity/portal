@@ -227,7 +227,7 @@ const config = {
                 href: "https://internetcomputer.org/icig.pdf",
               },
               {
-                label: "IC Support Resources",
+                label: "ICP Support Resources",
                 href: "https://support.dfinity.org/hc/en-us ",
               },
             ],
