@@ -1,6 +1,6 @@
 # Hosting a Static Website on the Internet Computer
 
-Before you begin, make sure you are set up with our SDK (DFX) and a Cycles Wallet, either from the [Faucet Quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](https://smartcontracts.org/docs/current/developer-docs/quickstart/network-quickstart) guide.
+Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [Faucet Quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](https://smartcontracts.org/docs/current/developer-docs/quickstart/network-quickstart) guide.
 
 ## Set up your project
 
@@ -83,9 +83,9 @@ And then add some styles to style.css.
        color: #ED1E79;
     }
 
-## Configure DFX to deploy
+## Configure dfx to deploy
 
-To host and run this website live on the IC, you will need to configure DFX to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
+To host and run this website live on the IC, you will need to configure `dfx` to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
 
 **dfx.json**
 
@@ -98,7 +98,7 @@ To host and run this website live on the IC, you will need to configure DFX to u
        }
     }
 
-This tells DFX that you want to create an asset canister, and that it should upload the contents of the asset folder. If you want to upload additional static assets, you can add them to the asset folder or add additional folders to the source configuration.
+This tells `dfx` that you want to create an asset canister, and that it should upload the contents of the asset folder. If you want to upload additional static assets, you can add them to the asset folder or add additional folders to the source configuration.
 
 Now, your directory should look something like this:
 

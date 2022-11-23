@@ -1,4 +1,4 @@
-# Installing DFX on Windows
+# Installing dfx on Windows
 
 There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run `dfx` also on a Windows system as described below.
 
@@ -35,7 +35,7 @@ After you have WSL installed, you can launch the Linux distributions by name.
 
 For example `Ubuntu.exe` is the command to start the `Ubuntu` distribution from the command line.
 
-## Installing DFX
+## Installing dfx
 
 Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](../build/install-upgrade-remove).
 
