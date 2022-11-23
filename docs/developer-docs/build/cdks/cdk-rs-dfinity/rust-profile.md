@@ -344,6 +344,6 @@ After you finish experimenting with your program, you can stop the local executi
 
 To stop the local execution environment running on your computer, run the following command:
 
-    ``` bash
-    dfx stop
-    ```
+``` bash
+dfx stop
+```

@@ -4,7 +4,7 @@
 
 ## Interact with ICP ledger from the command line
 
-Dfx provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger/) or just enter the following command into your console:
+`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger/) or just enter the following command into your console:
 
 ``` bash
 dfx ledger --help
@@ -12,7 +12,7 @@ dfx ledger --help
 
 It's worth checking out the `--help` flag of the subcommands as well.
 
-Currently, dfx exposes only a subset of the ICP ledger functionality, namely `balance` and `transfer`.
+Currently, `dfx` exposes only a subset of the ICP ledger functionality, namely `balance` and `transfer`.
 Both commands provide a flag to specify a ledger canister id (`--ledger-canister-id`). This simplifies interacting with a local ledger deployment or other tokens that provide the same interface.
 
 #### Balance

@@ -26,6 +26,10 @@ const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
+const {
+  getRedirects,
+  getSplatRedirects,
+} = require("./plugins/utils/redirects");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
@@ -67,6 +71,13 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: getRedirects(),
+        createRedirects: (existingPath) => getSplatRedirects(existingPath),
+      },
+    ],
   ],
 
   stylesheets: [
@@ -334,13 +345,13 @@ const config = {
             label: "Sample Code",
           },
 
-          {
-            html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
-            position: "right",
+          // {
+          //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
+          //   position: "right",
 
-            href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
-            className: "ic0-item",
-          },
+          //   href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
+          //   className: "ic0-item",
+          // },
         ],
       },
 

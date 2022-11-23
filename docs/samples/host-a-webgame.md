@@ -1,8 +1,8 @@
 # Hosting a web game on the Internet Computer
 
-This sample project demonstrates how to deploy a web game on the [Internet Computer](https://github.com/dfinity/ic) through [Unity](https://unity.com/) and [Godot](https://godotengine.org/) game engines. The sample DFX projects are available at the [examples](https://github.com/dfinity/examples/tree/master/hosting) repository.
+This sample project demonstrates how to deploy a web game on the [Internet Computer](https://github.com/dfinity/ic) through [Unity](https://unity.com/) and [Godot](https://godotengine.org/) game engines. The sample `dfx` projects are available at the [examples](https://github.com/dfinity/examples/tree/master/hosting) repository.
 
-Before you begin, make sure you have [DFX SDK](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install) installed.
+Before you begin, make sure you have [dfx SDK](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install) installed.
 
 ## Create a Web Game
 
@@ -23,7 +23,7 @@ Make sure you have [Godot](https://godotengine.org/download) installed.
 - Switch to `HTML5` preset in the `Export` window
 - Export the project by `Export Project` button.
 
-## Create a DFX project
+## Create a dfx project
 Since there is no backend in this sample, there is not any benefit of using the `dfx new project_name` command to set up a template. The `dfx.json` file is all that is needed.
 
 ### Unity

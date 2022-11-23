@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.1.0",
+    "@docusaurus/plugin-client-redirects": "^2.1.0",
     "@netlify/functions": "^1.2.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.3",
