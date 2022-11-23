@@ -184,6 +184,8 @@ In addition to the Candid implementations for Motoko, Rust, and JavaScript, ther
 
 -   [AssemblyScript](https://github.com/rckprtr/cdk-as/tree/master/packages/cdk/assembly/candid)
 
+-   [Java](https://github.com/ic4j/ic4j-candid)
+
 If you want to create a Candid implementation to support a language or tool for which an implementation is not currently available, you should consult the [Candid specification](https://github.com/dfinity/candid/blob/master/spec/Candid.md).
 
 If you add a Candid implementation for a new language or tool, you can use the official [Candid test data](https://github.com/dfinity/candid/tree/master/test) to test and verify that your implementation is compatible with Candid, even in slightly more obscure corner cases.
