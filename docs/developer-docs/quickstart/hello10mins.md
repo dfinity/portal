@@ -40,7 +40,7 @@ This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [
 
 To build and deploy the `Hello` dapp, you need to install the following tools.
 
-### DFX
+### dfx
 
 In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
