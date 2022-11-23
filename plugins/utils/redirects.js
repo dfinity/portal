@@ -171,8 +171,7 @@ exports.getRedirects = function () {
     .filter((r) => !isSplat(r))
     .map((r) => {
       const from = r[0].replace(/(.+)\/$/, "$1");
-      const to = r[1]; //.replace(/(.+)\/$/, "$1");
-      // console.log(`REDIRECT: '${from}' => '${to}'`);
+      const to = r[1];
       return {
         from,
         to,
@@ -191,9 +190,6 @@ exports.getSplatRedirects = function (existingUrl) {
           trimmedDestination,
           trimmedSource
         );
-        // console.log(
-        //   `SPLAT REDIRECT: '${completeSourceUrl}' => '${existingUrl}'`
-        // );
         return completeSourceUrl;
       }
     } else {
