@@ -26,6 +26,10 @@ const katex = require("rehype-katex");
 
 const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
+const {
+  getRedirects,
+  getSplatRedirects,
+} = require("./plugins/utils/redirects");
 const isDeployPreview =
   !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
 
@@ -67,6 +71,13 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: getRedirects(),
+        createRedirects: (existingPath) => getSplatRedirects(existingPath),
+      },
+    ],
   ],
 
   stylesheets: [
