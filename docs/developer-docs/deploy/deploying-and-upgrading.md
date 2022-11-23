@@ -30,7 +30,7 @@ Every function call on the Internet Computer has a limit to how many instruction
 
 When upgrading existing canisters, there are a few more things that one should keep in mind:
 - *Outstanding callbacks*: If a canister is `await`ing a response from another canister, it can be upgraded in-between sending and receiving a response. If the code is installed in `upgrade` mode, the callback will be executed as if no upgrade has been made. If this should not happen, the canister should either first be stopped, or the code has to be uninstalled and then installed again.
-- *Interface compatibility*: If canisters or scripts expect the upgraded canister to have a certain interface, upgrades can break existing workflows. DFX will warn the user (if possible) that the upgrade will break certain signatures, but there are always corner cases that may be missed.
+- *Interface compatibility*: If canisters or scripts expect the upgraded canister to have a certain interface, upgrades can break existing workflows. `dfx` will warn the user (if possible) that the upgrade will break certain signatures, but there are always corner cases that may be missed.
 
 ## Things to consider
 
