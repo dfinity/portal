@@ -283,6 +283,6 @@ After you finish experimenting with your dapp, you can stop the local canister e
 
 To stop the local execution environment running on your computer, run the following command:
 
-    ``` bash
-    dfx stop
-    ```
+``` bash
+dfx stop
+```

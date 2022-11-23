@@ -1,6 +1,7 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
@@ -23,6 +24,7 @@ function FeaturePage() {
                 Serve Web Content
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
+
               The Internet Computer (IC) is the only blockchain that can host a full dapp; frontend, backend, and data included.
               This is a distinguishing IC feature allowing dapps to run 100% on-chain while inheriting the security and decentralization of blockchain, but without sacrificing speed or affordability.
 
@@ -37,17 +39,14 @@ function FeaturePage() {
             />
           </div>
         </section>
+
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
           {/*
             delete this div if image is not needed
           */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
-            <img
-              src="/img/features/ic-generic.png"
-              alt=""
-              className="w-full block"
-            />
-          </div>
+          {/* <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10"> */}
+          {/* <YoutubeVideoEmbed videoId="jYrXk_hM4cA"></YoutubeVideoEmbed> */}
+          {/* </div> */}
 
           <div
             className="
@@ -61,6 +60,7 @@ function FeaturePage() {
           >
             <h2>Enabling true Web3</h2>
             <p>
+
             Today, most dapps built on other blockchains rely on centralized cloud providers (e.g. AWS, GCP) to
             host their frontend, amongst other parts, which introduces a single point of failure.
             An example pattern in the industry is to have a smart contract performing some computation, yet,
@@ -78,8 +78,16 @@ function FeaturePage() {
             complete decentralization and democratization of web applications.
             </p>
 
+            <YoutubeVideoEmbed
+              videoId="jYrXk_hM4cA"
+              className="mt-10 md:mt-10"
+              altText="Community Conversations | Overview of Building a Front End on the Internet Computer"
+            ></YoutubeVideoEmbed>
+          
+
             <h2>Cheap Storage</h2>
             <p>
+
             Unlike most blockchains, the efficiency and costs of the IC approaches the traditional IT
             stack so its is economically feasible to host dapps with lots of data and content (not just small smart contracts as in other blockchains).
             <br />
@@ -87,9 +95,16 @@ function FeaturePage() {
             For comparison: <i>it costs hundreds of millions of dollars to store a GB of data on Ethereum.
             It only costs a few dollars on the IC.</i>
             </p>
+            <YoutubeVideoEmbed
+              videoId="JAQ1dkFvfPI"
+              className="mt-10 md:mt-10"
+              altText="Community Conversations | How to Host a Website on the Internet Computer"
+            ></YoutubeVideoEmbed>
+
 
             <h2>Smart contracts that can process HTTP requests</h2>
             <p>
+
             Blockchains differ in their processing of computation from regular web servers, which makes serving web a difficult task.
             To overcome this, the IC introduces something called boundary nodes. These nodes act as a layer that translates HTTP requests from users to messages that can be processed by
             smart contracts running on the IC. This allows users to update the state of the blockchain
@@ -103,6 +118,7 @@ function FeaturePage() {
 
             <h3>Reverse gas model</h3>
             <p>
+
             In dapps built on Ethereum (as an example), users require a wallet or tokens to use it.
             This slows down adoption of dapps because using a dapp is not as simple as clicking on a
             website link; it requires users to buy tokens, install browser plugins, etc.
@@ -118,10 +134,12 @@ function FeaturePage() {
                 href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
-              </Link>
+                the Motoko Playground dapp
+              </Link>{" "}
+              is hosted and executed entirely on-chain and it does not require
+              visitors to pay for the computation.
             </p>
+
           </div>
         </section>
 

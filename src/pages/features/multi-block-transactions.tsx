@@ -58,10 +58,10 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>How It Works</h2>
+            <h2>The IC's muli-block transaction capabilities is rare</h2>
             <p>
            
-            The IC's muli-block transaction capabilities is rare. Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
+            Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
             In practice this means that when a smart contract function is invoked by a transaction, it must complete execution within the per-block 
             "gas limit" (gas is the equivalent of cycles on the Internet Computer).
             </p>
@@ -95,34 +95,24 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
-          </p>
-          <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
+            Get started today
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
-
-            <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
-            />
+       
             <CardWithDescription
               title="Sample Code"
               description="Learn about IC capabilities from community samples."
               href="/samples"
             />
             <CardWithDescription
-              title="'Multi-block TXs' article on the IC Wiki"
-              description="Learn about how IC can stretch the execution of a single transaction across multiple blocks."
-              href="https://wiki.internetcomputer.org/wiki/Multi-block_TXs"
+              title="Deterministic Time Slicing Discussion"
+              description="Join the forum dicussion"
+              href="https://forum.dfinity.org/t/deterministic-time-slicing/10635"
             />
+
+
+          
           </div>
         </section>
       </main>
