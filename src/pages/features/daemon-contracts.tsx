@@ -76,50 +76,10 @@ function FeaturePage() {
             The Internet Computer provides a means to avoid such problems, by allowing canister smart contracts to be configured so that they aer invoked by the blockchain itself, at some specified block interval.
             </p>
 
-            <p className="mb-3 mt-6">
-            <Link
-                href="https://internetcomputer.org/showcase/"
-                className="tw-heading-6 flex gap-2 items-center"
-              >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
-              </Link>
-            </p>
           </div>
         </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
-          <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fast dapps. Quickly.
-          </p>
-          <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Get started today.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            {/* add or remove CardWithDescription components on demand */}
-
-            <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
-            />
-            <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
-            />
-            <CardWithDescription
-              title="'Daemon canisters' article on the IC Wiki"
-              description="Learn about how IC can create canister smart contracts that run like daemon processes."
-              href="https://wiki.internetcomputer.org/wiki/Daemon_canisters"
-            />
-          </div>
-        </section>
+    
       </main>
     </Layout>
   );
