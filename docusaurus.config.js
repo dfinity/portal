@@ -341,13 +341,13 @@ const config = {
             label: "Sample Code",
           },
 
-          {
-            html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
-            position: "right",
+          // {
+          //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
+          //   position: "right",
 
-            href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
-            className: "ic0-item",
-          },
+          //   href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
+          //   className: "ic0-item",
+          // },
         ],
       },
 
