@@ -226,6 +226,10 @@ const config = {
                 label: "Internet Computer Infographic",
                 href: "https://internetcomputer.org/icig.pdf",
               },
+              {
+                label: "IC Support Resources",
+                href: "https://support.dfinity.org/hc/en-us ",
+              },
             ],
           },
           {
