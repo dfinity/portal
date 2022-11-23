@@ -29,6 +29,8 @@ function isExcludedUrl(urlString: string): boolean {
     '/sodium-license-agreement.txt',
     '/eula',
     '/eula-storage',
+    '/docs/current/concepts/data-centers',
+    '/docs/current/tokenomics/token-holders/seed-donations',
   ].some((path) => url.pathname.startsWith(path));
 }
 
