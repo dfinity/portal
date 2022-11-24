@@ -7,6 +7,9 @@ on:
   push:
     branches: [master]
 
+  repository_dispatch:
+    types: redeploy
+
 jobs:
   deploy-ic:
     name: "Deploy to IC"
@@ -62,21 +65,8 @@ jobs:
       - name: Check Canister Status
         run: dfx canister --network ic status portal
 
-      - name: Start deamon
-        run: dfx start --background
-
       - name: Install Dependencies
         run: npm install
-
-      - name: Create canister
-        run: dfx canister create portal
-
-      - name: Build canister
-        run: dfx build portal
-        env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
 
       - name: Deploy to Mainnet
         run: dfx deploy --network=ic --no-wallet portal
