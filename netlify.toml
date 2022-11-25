@@ -19,6 +19,14 @@ command = """\
 # publish the service worker directory
 publish = "service-worker/dist-prod"
 
+[context."akos/fix-seo"]
+# build the website, then build the service worker
+command = """\
+  git submodule update --init && npm run build && \
+  cd service-worker && npm install && npm run build"""
+# publish the service worker directory
+publish = "service-worker/dist-prod"
+
 [[edge_functions]]
 function = "redirects"
 path = "/*"

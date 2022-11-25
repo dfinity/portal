@@ -16,6 +16,7 @@ import { streamContent } from './streaming';
 
 const hostnameCanisterIdMap: Record<string, [string, string]> = {
   'internetcomputer.org': ['hwvjt-wqaaa-aaaam-qadra-cai', 'ic0.app'],
+  'deploy-preview-856--icportal.netlify.app': ['hwvjt-wqaaa-aaaam-qadra-cai', 'ic0.app'],
 };
 
 function isExcludedUrl(urlString: string): boolean {

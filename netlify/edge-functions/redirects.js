@@ -44,7 +44,10 @@ export default async (request, context) => {
     }
   }
 
-  if (url.hostname === "internetcomputer.org") {
+  if (
+    url.hostname === "internetcomputer.org" ||
+    url.hostname === "deploy-preview-856--icportal.netlify.app"
+  ) {
     // production hostname, this has service worker deployed
 
     // check if it's bot user => proxy content from .raw as response
