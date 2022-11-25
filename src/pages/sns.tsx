@@ -476,7 +476,7 @@ function SnsPage() {
                     sale.
                   </li>
                   <li>NNS approval of the decentralization sale.</li>
-                  <li>ICP investments to meet minumum funding requirements.</li>
+                  <li>ICP investments to meet minimum funding requirements.</li>
                 </ul>
                 <p>
                   Once these steps are completed, newly minted SNS governance
