@@ -1,10 +1,10 @@
 import isbot from "https://esm.sh/isbot@3.6.5";
 import { Context } from "https://edge.netlify.com/";
 
-type RedirectRule = [from: string, to: string, status: number];
+export type RedirectRule = [from: string, to: string, status: number];
 
 // prettier-ignore
-const redirects: RedirectRule[] = [
+export const redirects: RedirectRule[] = [
   [`/install.sh`, `https://download.dfinity.systems/sdk/install.sh`, 302],
   [`/manifest.json`, `https://download.dfinity.systems/sdk/manifest.json`, 302],
   [`/sdk-license-agreement.txt`, `https://download.dfinity.systems/sdk/sdk-license-agreement.txt`, 302],
@@ -46,7 +46,11 @@ export function matchRedirect(
   return false;
 }
 
-export default async (request: Request, context: Context) => {
+export async function checkRequest(
+  request: Request,
+  redirects: RedirectRule[],
+  rawHostName: string
+): Promise<Response | null> {
   const url = new URL(request.url);
 
   // check if request needs to be redirected
@@ -68,10 +72,7 @@ export default async (request: Request, context: Context) => {
 
     if (userAgent !== null && isbot(userAgent)) {
       const newRequest = new Request(
-        request.url.replace(
-          url.hostname,
-          "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
-        ),
+        request.url.replace(url.hostname, rawHostName),
         request
       );
 
@@ -89,9 +90,20 @@ export default async (request: Request, context: Context) => {
     //
   }
 
+  return null;
+}
+
+export default async (request: Request, context: Context) => {
+  const maybeResponse = await checkRequest(
+    request,
+    redirects,
+    "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
+  );
+
+  if (maybeResponse) {
+    return maybeResponse;
+  }
+
   console.log("No redirect", request.url);
-
-  const response = await context.next();
-
-  return response;
+  return await context.next();
 };

@@ -1,5 +1,12 @@
-import { assertEquals } from "https://deno.land/std@0.166.0/testing/asserts.ts";
-import { matchRedirect } from "../edge-functions/redirects.ts";
+import {
+  assertEquals,
+  assert,
+} from "https://deno.land/std@0.166.0/testing/asserts.ts";
+import {
+  matchRedirect,
+  checkRequest,
+  RedirectRule,
+} from "../edge-functions/redirects.ts";
 
 Deno.test("matchRedirect tests", () => {
   // bulk to single URL
@@ -64,5 +71,95 @@ Deno.test("matchRedirect tests", () => {
       "/eula-storage/123"
     ),
     false
+  );
+});
+
+Deno.test("Request handler", async () => {
+  globalThis.fetch = (url: string | URL | Request) => {
+    const response = new Response("mock_fetch", { status: 200 });
+
+    if (url instanceof Request) {
+      Object.defineProperty(response, "url", { value: url.url });
+    } else if (url instanceof URL) {
+      Object.defineProperty(response, "url", { value: url.href });
+    } else {
+      Object.defineProperty(response, "url", { value: url });
+    }
+
+    return Promise.resolve(response);
+  };
+
+  const redirects: RedirectRule[] = [
+    [`/install.sh`, `https://download.dfinity.systems/sdk/install.sh`, 302],
+    [`/downloads/*`, `https://download.dfinity.systems/sdk/:splat`, 302],
+    [`/eula`, `https://association.internetcomputer.org/eula`, 301],
+  ];
+
+  const assertRedirect = (r: Response | null, status: number, url: string) => {
+    assert(r);
+    assertEquals(r.status, status);
+    assert(r.headers.has("location"));
+    assertEquals(r.headers.get("location"), url);
+  };
+
+  const assertProxiedResponse = async (r: Response | null, url: string) => {
+    assert(r);
+    assertEquals(r.status, 200);
+    assertEquals(r.url, url);
+    assertEquals(await r.text(), "mock_fetch");
+  };
+
+  // regular requests aren't modified
+  assertEquals(
+    await checkRequest(new Request("https://internetcomputer.org/"), [], ""),
+    null
+  );
+
+  // slackbot can reach the asset canister
+  await assertProxiedResponse(
+    await checkRequest(
+      new Request("https://internetcomputer.org/features", {
+        headers: { "user-agent": "Slackbot" },
+      }),
+      [],
+      "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
+    ),
+    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/features"
+  );
+
+  // curl can reach the asset canister
+  await assertProxiedResponse(
+    await checkRequest(
+      new Request("https://internetcomputer.org/features", {
+        headers: { "user-agent": "curl/7.79.1" },
+      }),
+      [],
+      "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
+    ),
+    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/features"
+  );
+
+  // install script redirect works
+  assertRedirect(
+    await checkRequest(
+      new Request("https://internetcomputer.org/install.sh"),
+      redirects,
+      "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
+    ),
+    302,
+    "https://download.dfinity.systems/sdk/install.sh"
+  );
+
+  // redirect rules apply before bot check
+  assertRedirect(
+    await checkRequest(
+      new Request("https://internetcomputer.org/install.sh", {
+        headers: { "user-agent": "curl/7.79.1" },
+      }),
+      redirects,
+      "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
+    ),
+    302,
+    "https://download.dfinity.systems/sdk/install.sh"
   );
 });
