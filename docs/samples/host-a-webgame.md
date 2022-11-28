@@ -2,7 +2,7 @@
 
 This sample project demonstrates how to deploy a web game on the [Internet Computer](https://internetcomputer.org/) through [Unity](https://unity.com/) and [Godot](https://godotengine.org/) game engines.
 
-Before you begin, make sure you have [dfx SDK](../developer-docs/build/install-upgrade-remove.md) installed.
+Before you begin, make sure you have [dfx SDK](../developer-docs/build/install-upgrade-remove.mdx) installed.
 
 ## Create a Web Game
 
