@@ -127,14 +127,15 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
         className={styles.container}
       >
         <motion.h2 variants={transitions.item} className={styles.heading}>
-          Scalability &amp; utility at low carbon cost
+          Blockchain compute that's climate friendly
         </motion.h2>
         <motion.p variants={transitions.item} className="paragraph-large mb-8">
-          Massive cost savings, environmental protection and high performance.
-          The Internet Computer’s advanced architecture and cryptography runs
-          smart contract software with breakthrough levels of efficiency. Even
-          with conservative estimations, energy consumption is still
-          substantially lower than competing blockchains.
+          The unique architecture and novel cryptography of the Internet Computer blockchain allow 
+          it to host smart contract software, data and computation, with levels of efficiency 
+          competitive with normal software that runs on Big Tech's cloud services. 
+          Meanwhile, it is currently tens of thousands of times more efficient than the next most 
+          efficient blockchain. Web3 projects that incorporate Internet Computer smart contracts 
+          can consequently dramatically lower their carbon footprints, and reduce climate change.
         </motion.p>
         <motion.p
           variants={transitions.item}
