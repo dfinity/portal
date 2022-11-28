@@ -71,10 +71,8 @@ export async function checkRequest(
     const userAgent = request.headers.get("user-agent");
 
     if (userAgent !== null && isbot(userAgent)) {
-      const newRequest = new Request(
-        request.url.replace(url.hostname, rawHostName),
-        request
-      );
+      url.hostname = rawHostName;
+      const newRequest = new Request(url, request);
 
       console.log("Redirect bot to", newRequest.url);
       return await fetch(newRequest);
