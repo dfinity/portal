@@ -1,7 +1,10 @@
-import isbot from "https://esm.sh/isbot";
+import isbot from "https://esm.sh/isbot@3.6.5";
+import { Context } from "https://edge.netlify.com/";
+
+type RedirectRule = [from: string, to: string, status: number];
 
 // prettier-ignore
-const redirects = [
+const redirects: RedirectRule[] = [
   [`/install.sh`, `https://download.dfinity.systems/sdk/install.sh`, 302],
   [`/manifest.json`, `https://download.dfinity.systems/sdk/manifest.json`, 302],
   [`/sdk-license-agreement.txt`, `https://download.dfinity.systems/sdk/sdk-license-agreement.txt`, 302],
@@ -14,47 +17,56 @@ const redirects = [
   [`/eula-storage`,`https://association.internetcomputer.org/eula-storage`, 301],
 ];
 
-export default async (request, context) => {
+export function matchRedirect(
+  redirect: RedirectRule,
+  pathName: string
+): string | false {
+  if (redirect[0].endsWith("/*")) {
+    // mass redirect
+    if (pathName.startsWith(redirect[0].slice(0, -1))) {
+      if (redirect[1].endsWith(":splat")) {
+        // splat
+        const destRoot = redirect[1].slice(0, -6);
+        const dest = destRoot + pathName.replace(redirect[0].slice(0, -1), "");
+        console.log(`Splat redirect '${pathName}'=>'${dest}'`);
+        return dest;
+      } else {
+        // redirect to single URL
+        console.log(`Mass redirect '${pathName}'=>'${redirect[1]}'`);
+        return redirect[1];
+      }
+    }
+  } else {
+    // single redirect
+    if (redirect[0] === pathName) {
+      console.log(`Single redirect '${pathName}'=>'${redirect[1]}'`);
+      return redirect[1];
+    }
+  }
+  return false;
+}
+
+export default async (request: Request, context: Context) => {
   const url = new URL(request.url);
 
   // check if request needs to be redirected
   for (const redirect of redirects) {
-    if (redirect[0].endsWith("/*")) {
-      // mass redirect
-      if (url.pathname.startsWith(redirect[0].slice(0, -1))) {
-        if (redirect[1].endsWith(":splat")) {
-          // splat
-          const destRoot = redirect[1].slice(0, -6);
-          const dest =
-            destRoot + url.pathname.replace(redirect[0].slice(0, -1), "");
-          console.log(`Splat redirect '${url.pathname}'=>'${dest}'`);
-          return Response.redirect(dest, redirect[2]);
-        } else {
-          // redirect to single URL
-          console.log(`Mass redirect '${url.pathname}'=>'${redirect[1]}'`);
-          return Response.redirect(redirect[1], redirect[2]);
-        }
-      }
-    } else {
-      // single redirect
-      if (redirect[0] === url.pathname) {
-        console.log(`Single redirect '${url.pathname}'=>'${redirect[1]}'`);
-        return Response.redirect(redirect[1], redirect[2]);
-      }
+    const maybeDesitinationUrl = matchRedirect(redirect, url.pathname);
+    if (maybeDesitinationUrl !== false) {
+      return Response.redirect(maybeDesitinationUrl, redirect[2]);
     }
   }
 
   if (
     url.hostname === "internetcomputer.org" ||
-    url.hostname === "deploy-preview-856--icportal.netlify.app"
+    url.hostname === "deploy-preview-856--icportal.netlify.app" // add this for testing, TODO: remove
   ) {
     // production hostname, this has service worker deployed
 
     // check if it's bot user => proxy content from .raw as response
-    const requestHeaders = Object.fromEntries(request.headers);
-    const isBotRequest = isbot(requestHeaders["user-agent"]);
+    const userAgent = request.headers.get("user-agent");
 
-    if (isBotRequest) {
+    if (userAgent !== null && isbot(userAgent)) {
       const newRequest = new Request(
         request.url.replace(
           url.hostname,
