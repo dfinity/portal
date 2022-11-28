@@ -53,19 +53,19 @@ export async function checkRequest(
 ): Promise<Response | null> {
   const url = new URL(request.url);
 
-  // check if request needs to be redirected
-  for (const redirect of redirects) {
-    const maybeDesitinationUrl = matchRedirect(redirect, url.pathname);
-    if (maybeDesitinationUrl !== false) {
-      return Response.redirect(maybeDesitinationUrl, redirect[2]);
-    }
-  }
-
   if (
     url.hostname === "internetcomputer.org" ||
     url.hostname === "deploy-preview-856--icportal.netlify.app" // add this for testing, TODO: remove
   ) {
     // production hostname, this has service worker deployed
+
+    // check if request needs to be redirected
+    for (const redirect of redirects) {
+      const maybeDesitinationUrl = matchRedirect(redirect, url.pathname);
+      if (maybeDesitinationUrl !== false) {
+        return Response.redirect(maybeDesitinationUrl, redirect[2]);
+      }
+    }
 
     // check if it's bot user => proxy content from .raw as response
     const userAgent = request.headers.get("user-agent");
