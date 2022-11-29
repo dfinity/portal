@@ -61,9 +61,9 @@ export async function checkRequest(
 
     // check if request needs to be redirected
     for (const redirect of redirects) {
-      const maybeDesitinationUrl = matchRedirect(redirect, url.pathname);
-      if (maybeDesitinationUrl !== false) {
-        return Response.redirect(maybeDesitinationUrl, redirect[2]);
+      const maybeDestinationUrl = matchRedirect(redirect, url.pathname);
+      if (maybeDestinationUrl !== false) {
+        return Response.redirect(maybeDestinationUrl, redirect[2]);
       }
     }
 
