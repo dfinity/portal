@@ -53,10 +53,7 @@ export async function checkRequest(
 ): Promise<Response | null> {
   const url = new URL(request.url);
 
-  if (
-    url.hostname === "internetcomputer.org" ||
-    url.hostname === "deploy-preview-856--icportal.netlify.app" // add this for testing, TODO: remove
-  ) {
+  if (url.hostname === "internetcomputer.org") {
     // production hostname, this has service worker deployed
 
     // check if request needs to be redirected
