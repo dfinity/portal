@@ -10,11 +10,11 @@ The Internet Computer is a decentralized public utility, controlled by the NNS �
 
 Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer and “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, Canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
-In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor of 34, different sizes may be available in the future. The pricing is determined by linearly scaling the prices for 13-node subnets to the new subnet size. The below tables provide pricing in cycles and USD for the new 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
+In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor in the order of 34, different sizes may be available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The below tables provide pricing in cycles and USD for the new 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
 
 *Price on n-node subnet = (13_node_price * n) DIV 13*
 
-See below for details on the cost of compute and storage transactions on the Internet Computer as of November 29, 2022.
+See below for details on the cost of compute and storage transactions as well as system calls for new features on the Internet Computer as of November 29, 2022.
 A thorough example how the cost of running a canister is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
@@ -28,6 +28,22 @@ A thorough example how the cost of running a canister is computed can be found [
 | Ingress Message Reception            | For every ingress message received                                                                             | 1,200,000                   | 3,138,461                   |
 | Ingress Byte Reception               | For every byte received in an ingress message                                                                  | 2,000                       | 5,230                       |
 | GB Storage Per Second                | For storing a GB of data per second                                                                            | 127,000                     | 332,153                     |
+| GB Storage Per Second                | For storing a GB of data per second                                                                            | 127,000                     | 332,153                     |
+|                                      |                                                                                                                |                             |                             |
+| *Chain-key signatures*               |                                                                                                                |                             |                             |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | 10,000,000,000              | 26,153,846,153              |
+|                                      |                                                                                                                |                             |                             |
+| *Coding Bitcoin*                     |                                                                                                                |                             |                             |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |               |               |
+| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |               |               |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |               |               |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        | 5,000,000,000               | 13,076,923,076              |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    | 20,000,000                  | 52,307,692                  |
+|                                      |                                                                                                                |                             |                             |
+| *HTTPS outcalls*                     |                                                                                                                |                             |                             |
+| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (http_request)                            | 400,000,000                 | 1,046,153,846               |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per payload byte (http_request)                       | 100,000                     | 261,538                     |
+
 
 Note: System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
 
