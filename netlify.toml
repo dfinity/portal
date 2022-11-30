@@ -15,7 +15,15 @@ publish = "build"
 # build the website, then build the service worker
 command = """\
   git submodule update --init && npm run build && \
-  cd service-worker && npm install && npm run build && \
-  cp ../static/_redirects ./dist-prod/ && cat _redirects.extra >> ./dist-prod/_redirects"""
+  cd service-worker && npm install && npm run build"""
 # publish the service worker directory
 publish = "service-worker/dist-prod"
+
+[context.deploy-preview]
+# don't use the edge function in deployment previews
+command = "git submodule update --init && npm run build && rm -rf netlify/edge-functions"
+publish = "build"
+
+[[edge_functions]]
+function = "redirects"
+path = "/*"

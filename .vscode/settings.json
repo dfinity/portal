@@ -19,5 +19,6 @@
       "scheme": "file"
     }
   ],
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "deno.enablePaths": ["./netlify/edge-functions", "./netlify/test"]
 }

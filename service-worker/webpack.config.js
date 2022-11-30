@@ -72,7 +72,7 @@ module.exports = (env) => {
         VERSION: package.version,
       }),
       new CopyPlugin({
-        patterns: ['_headers'],
+        patterns: ['_headers', '_redirects'],
       }),
     ],
   };
