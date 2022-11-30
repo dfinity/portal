@@ -38,7 +38,7 @@ const TrueScaling = () => {
         subnets,
       });
     })();
-  });
+  }, []);
 
   return (
     <motion.section
