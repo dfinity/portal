@@ -71,14 +71,14 @@ The fees for the ECDSA signing API are as follows. We give the fees for a 13-nod
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | *Chain-key signatures*               |                                                                                                                |                             |                             |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | 10,000,000,000              | 26,153,846,153              |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | 26,153,846,153              |
 
-Cost per Transaction in $USD (as of November 23, 2022):
+Cost per API call in USD (as of the USD/XDR exchange rate of November 23, 2022):
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | *Chain-key signatures*               |                                                                                                                |                             |                             |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | $0.0130886                  | $0.0342317                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | $0.0130886                  | $0.0342317                  |
 
 If a canister is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
 

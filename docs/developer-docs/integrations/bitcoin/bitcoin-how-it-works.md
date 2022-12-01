@@ -99,22 +99,22 @@ The fees for using the Bitcoin API can be found on the [page on computation and 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |                             | 50,000,000 + 1 cycle/Wasm instr. |
-| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |                             | 10,000,000                  |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |                             | 10,000,000                  |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        |                             | 5,000,000,000               |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    |                             | 20,000,000                  |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 100,000,000                 | 50,000,000 + 1 cycle per Wasm instruction |
+| Bitcoin fee percentiles              | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 100,000,000                 | 10,000,000                  |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 100,000,000                 | 10,000,000                  |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5,000,000,000               | 5,000,000,000               |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20,000,000                  | 20,000,000                  |
 
-Cycles Cost per Transaction (as of November 23, 2022):
+Cost per API call in USD (as of the USD/XDR exchange rate of November 23, 2022):
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |                             | $0.00006544300 + Wasm instr. cost |
-| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |                             | $0.00001308860              |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |                             | $0.00001308860              |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        |                             | $0.00654430000              |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    |                             | $0.00002617720              |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | $0.00013088600              | $0.00006544300 + Wasm instruction cost |
+| Bitcoin fee percentiles              | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | $0.00013088600              | $0.00001308860              |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | $0.00013088600              | $0.00001308860              |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | $0.00654430000              | $0.00654430000              |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | $0.00002617720              | $0.00002617720              |
 
 Some Bitcoin API calls must have at least the following amount of cylces attached to be future proof. Cycles not consumed by the call are returned. This figure does not depend on the replication factor of the subnet, but is intended to allow for the replication factor to grow over time without canisters to be adapted. The call for submitting a Bitcoin transaction to the Bitcoin network does not require to attach extra cycles as the charged cost is independent of the replication factor of the subnet.
 
