@@ -34,11 +34,11 @@ A thorough example how the cost of running a canister is computed can be found [
 | Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | 10,000,000,000              | 26,153,846,153              |
 |                                      |                                                                                                                |                             |                             |
 | *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |               |               |
-| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |               |               |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |               |               |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        | 5,000,000,000               | 13,076,923,076              |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    | 20,000,000                  | 52,307,692                  |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |                             | 50,000,000 + 1 cycle/Wasm instr. |
+| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |                             | 10,000,000                  |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |                             | 10,000,000                  |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        |                             | 5,000,000,000               |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    |                             | 20,000,000                  |
 |                                      |                                                                                                                |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (http_request)                            | 400,000,000                 | 1,046,153,846               |
@@ -64,6 +64,20 @@ To derive the estimated GB Storage per month, we assume a 30 day month.
 | Ingress Message Reception            | For every ingress message received                                                                             | $0.000001570632             | $0.000004107806             |
 | Ingress Byte Reception               | For every byte received in an ingress message                                                                  | $0.00000000261772           | $0.00000000684534           |
 | GB Storage Per Second                | For storing a GB of data per second                                                                            | $0.00000016622522           | $0.00000043474178           |
+|                                      |                                                                                                                |                             |                             |
+| *Chain-key signatures*               |                                                                                                                |                             |                             |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | $0.0130886                  | $0.0342317                  |
+|                                      |                                                                                                                |                             |                             |
+| *Coding Bitcoin*                     |                                                                                                                |                             |                             |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (bitcoin_get_utxos)                                          |                             | $0.00006544300 + Wasm instr. cost |
+| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (bitcoin_get_current_fee_percentiles)         |                             | $0.00001308860              |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (bitcoin_get_utxos)                                      |                             | $0.00001308860              |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (bitcoin_send_transaction)        |                             | $0.00654430000              |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (bitcoin_send_transaction)    |                             | $0.00002617720              |
+|                                      |                                                                                                                |                             |                             |
+| *HTTPS outcalls*                     |                                                                                                                |                             |                             |
+| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (http_request)                            | $0.0005235440               | $0.0013692689               |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per payload byte (http_request)                       | $0.0000001308860            | $0.0000003423166            |
 
 Cost per Transaction in $USD (as of November 23, 2022)
 
