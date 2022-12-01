@@ -10,7 +10,7 @@ The Internet Computer is a decentralized public utility, controlled by the NNS �
 
 Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer and “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, Canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
-In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor in the order of 34, different sizes may be available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The below tables provide pricing in cycles and USD for the new 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
+In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor of order 30, different sizes may be available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The below tables provide pricing in cycles and USD for the 13-node baseline and the example of 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
 
 *Price on n-node subnet = (13_node_price * n) DIV 13*
 
@@ -45,7 +45,9 @@ A thorough example how the cost of running a canister is computed can be found [
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per payload byte (http_request)                       | 100,000                     | 261,538                     |
 
 
-Note: System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
+Notes:
+* System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
+* The Bitcoin feature for Bitcoin Mainnet is launched initially on a subnet with slightly less than 34 nodes that will be grown over time, but the 34-node price as advertised above is charged to avoid frequent price changes.
 
 Cycles Cost per Transaction (as of November 23, 2022)
 
