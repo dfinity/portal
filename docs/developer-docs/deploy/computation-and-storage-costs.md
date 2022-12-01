@@ -12,12 +12,12 @@ Canister smart contract computations running on the Internet Computer blockchain
 
 In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor in the order of 30, different sizes may be available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The Bitcoin API is an exception to linear scaling, see the note below. The following tables provide pricing in cycles and USD for the 13-node baseline and the example of 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
 
-*Price on n-node subnet = (13_node_price * n) DIV 13*
+*Price on n-node subnet = (13_node_price \* n) DIV 13*
 
 If you intend to deploy canisters on high-replication subnets, your canister should be prepared for an increase in cycles prices with an increase in the subnet's replication factor when the subnet grows over time. For this reason it is recommended to attach more cycles to a call than the current price would suggest.
 
 See below for details on the cost of compute and storage transactions as well as system calls for new features on the Internet Computer as of November 29, 2022.
-A thorough example how the cost of running a canister is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
+A thorough example how the cost of running a canister on a 13-node app subnet is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
@@ -46,16 +46,16 @@ A thorough example how the cost of running a canister is computed can be found [
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | 400,000,000                 | 1,046,153,846               |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | 100,000                     | 261,538                     |
 
-Notes:
+**Notes:**
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
 * Bitcoin testnet prices remain currently as is to not break existing canisters, and thus are an exception to the linear scaling of pricing.
 * The Bitcoin feature for Bitcoin Mainnet is launched initially on a subnet with slightly less than 34 nodes that will be grown over time, but the 34-node price as advertised above is charged to avoid frequent price changes. **The Bitcoin API on high-replication subnets requires to send more cycles as specified for future-proofness.** Bitcoin pricing charges the actually required Wasm instructions of the Bitcoin canister to achieve fair charging. See the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further details regarding the specifics of Bitcoin pricing.
 
 Cycles Cost per Transaction (as of November 23, 2022)
 
-The $USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of August 29, 2022, the exchange rate for 1 XDR = $1.308860. The exchange rate for USD/XDR may vary and it will impact the conversion rate. For XDR exchange rates please visit: <https://www.imf.org/external/np/fin/data/rms_sdrv.aspx>
+The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November, 2022, the exchange rate for 1 XDR = $1.308860. The exchange rate for USD/XDR may vary and it will impact the conversion rate. For XDR exchange rates please visit: <https://www.imf.org/external/np/fin/data/rms_sdrv.aspx>
 
-To derive the estimated GB Storage per month, we assume a 30 day month.
+To derive the estimated cost for a GB Storage per month, we assume a 30 day month.
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
@@ -83,7 +83,7 @@ To derive the estimated GB Storage per month, we assume a 30 day month.
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | $0.0005235440               | $0.0013692689               |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | $0.0000001308860            | $0.0000003423166            |
 
-Cost per Transaction in $USD (as of November 23, 2022)
+Cost per Transaction in $USD (as of November 23, 2022):
 
 Assuming a 30 day month — 
 
