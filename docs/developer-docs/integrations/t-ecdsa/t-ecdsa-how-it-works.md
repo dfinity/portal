@@ -62,9 +62,23 @@ This call requires that the ECDSA feature is enabled, and the `canister_id` meet
 The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
+Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the caniste may want to back off and retry the request later.
+
 ## API Fees
 
-The fees for the ECDSA signing API are as follows. We give the fees for a 13-node subnet and a 34-node subnet. Note that the high-replication is initially in the order of around 30 nodes and the price scales accordingly.
+The fees for the ECDSA signing API are as follows. We give the fees for a 13-node subnet and a 34-node subnet as example for a high-replication subnet. Note that the high-replication is initially in the order of around 30 nodes and the price scales accordingly to the exact number of nodes of the subnet.
+
+| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
+| *Chain-key signatures*               |                                                                                                                |                             |                             |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | 10,000,000,000              | 26,153,846,153              |
+
+Cost per Transaction in $USD (as of November 23, 2022):
+
+| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
+| *Chain-key signatures*               |                                                                                                                |                             |                             |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | $0.0130886                  | $0.0342317                  |
 
 If a canister is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
 
@@ -82,6 +96,6 @@ For the technically interested readers we want to note that the SDK uses the exa
 
 ### Internet Computer
 
-Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the     management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dApps using Bitcoin testnet.
+Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dApps using Bitcoin testnet.
 
 As part of the General Availability (GA) release of the feature, a production ECDSA key on the `secp256k1` elliptic curve has been deployed to be used for integration with Bitcoin Mainnet and other use cases of interest.
