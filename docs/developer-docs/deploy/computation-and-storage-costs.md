@@ -14,6 +14,8 @@ In late November 2022, high-replication application subnets have been made avail
 
 *Price on n-node subnet = (13_node_price * n) DIV 13*
 
+If you intend to deploy canisters on high-replication subnets, your canister should be prepared for an increase in cycles prices with an increase in the subnet's replication factor when the subnet grows over time. For this reason it is recommended to attach more cycles to a call than the current price would suggest.
+
 See below for details on the cost of compute and storage transactions as well as system calls for new features on the Internet Computer as of November 29, 2022.
 A thorough example how the cost of running a canister is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
 
@@ -34,7 +36,7 @@ A thorough example how the cost of running a canister is computed can be found [
 | Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | 26,153,846,153              |
 |                                      |                                                                                                                |                             |                             |
 | *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 100,000,000                 | 50,000,000 + 1 cycle/Wasm instr. |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 100,000,000                 | 50,000,000 + 1 cycle per Wasm instruction |
 | Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 100,000,000                 | 10,000,000                  |
 | Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 100,000,000                 | 10,000,000                  |
 | Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5,000,000,000               | 5,000,000,000               |
@@ -42,7 +44,7 @@ A thorough example how the cost of running a canister is computed can be found [
 |                                      |                                                                                                                |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | 400,000,000                 | 1,046,153,846               |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per payload byte (`http_request`)                     | 100,000                     | 261,538                     |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | 100,000                     | 261,538                     |
 
 Notes:
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
@@ -71,15 +73,15 @@ To derive the estimated GB Storage per month, we assume a 30 day month.
 | Threshold ECDSA signing              | For computing one threshold ECDSA signature (sign_with_ecdsa)                                                  | $0.0130886                  | $0.0342317                  |
 |                                      |                                                                                                                |                             |                             |
 | *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 0.00013088600               | $0.00006544300 + Wasm instr. cost |
-| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 0.00013088600               | $0.00001308860              |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 0.00013088600               | $0.00001308860              |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 0.00654430000               | $0.00654430000              |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 0.00002617720               | $0.00002617720              |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | $0.00013088600              | $0.00006544300 + Wasm instruction cost |
+| Obtaining the fee percentiles        | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | $0.00013088600              | $0.00001308860              |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | $0.00013088600              | $0.00001308860              |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | $0.00654430000              | $0.00654430000              |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | $0.00002617720              | $0.00002617720              |
 |                                      |                                                                                                                |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | $0.0005235440               | $0.0013692689               |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per payload byte (`http_request`)                     | $0.0000001308860            | $0.0000003423166            |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | $0.0000001308860            | $0.0000003423166            |
 
 Cost per Transaction in $USD (as of November 23, 2022)
 
