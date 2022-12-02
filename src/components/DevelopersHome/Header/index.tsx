@@ -48,7 +48,7 @@ function Index() {
           </Link>
           <Link
             className={styles.callToAction}
-            to={"/docs/current/developer-docs/quickstart/hello10mins"}
+            to={"/docs/current/developer-docs/quickstart/create_first_dapp"}
           >
             Start coding
           </Link>

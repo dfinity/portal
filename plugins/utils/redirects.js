@@ -1,5 +1,5 @@
 const redirects = `
-  /developers-guide/quickstart /docs/current/developer-docs/quickstart/hello10mins
+  /developers-guide/quickstart /docs/current/developer-docs/quickstart/create_first_dapp
   /docs/base-libraries/* /docs/current/references/motoko-ref/:splat
   /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
@@ -8,7 +8,7 @@ const redirects = `
   /docs/candid-guide/candid-intro /docs/current/developer-docs/build/candid/candid-intro
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
-  /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
+  /docs/current/developer-docs /docs/current/developer-docs/quickstart/create_first_dapp
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/developer-docs/build/cdks/motoko-dfinity/:splat
@@ -102,17 +102,17 @@ const redirects = `
   /docs/language-guide/upgrades /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades
   /docs/languages/languages-overview /docs/current/developer-docs/build/cdks/
   /docs/operators-guide/ops-guide /docs/current/developer-docs/ic-overview
-  /docs/quickstart/1-quickstart /docs/current/developer-docs/quickstart/hello10mins
-  /docs/quickstart/2-quickstart /docs/current/developer-docs/quickstart/hello10mins
-  /docs/quickstart/3-quickstart /docs/current/developer-docs/quickstart/hello10mins
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/developer-docs/quickstart/hello10mins
-  /docs/quickstart/4-quickstart /docs/current/developer-docs/quickstart/hello10mins
-  /docs/quickstart/5-quickstart /docs/current/developer-docs/quickstart/hello10mins
+  /docs/quickstart/1-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/2-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/3-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/4-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/5-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/quickstart/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/developer-docs/quickstart/local-quickstart
   /docs/quickstart/network-quickstart /docs/current/developer-docs/quickstart/network-quickstart
   /docs/quickstart/newcomers /docs/current/developer-docs/ic-overview
-  /docs/quickstart/quickstart-intro /docs/current/developer-docs/quickstart/hello10mins
+  /docs/quickstart/quickstart-intro /docs/current/developer-docs/quickstart/create_first_dapp
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
