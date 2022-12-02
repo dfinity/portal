@@ -20,7 +20,7 @@ Before you download and install this release of the SDK, verify the following:
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developer-docs/build/project-setup/cycles-wallet).
 
 ## Download and install
 
@@ -54,7 +54,7 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../updates/release-notes/release-notes.md).
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../developer-docs/updates/release-notes/release-notes.md).
 
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
@@ -66,7 +66,7 @@ To verify the SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../build/backend/explore-templates) tutorial.
+For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](../developer-docs/build/backend/explore-templates) tutorial.
 
 To create a new project for your first dapp:
 
@@ -244,7 +244,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../build/project-setup/cycles-wallet).
+    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](../developer-docs/build/project-setup/cycles-wallet).
 
 ## Register, build, and deploy the application
 
@@ -362,8 +362,8 @@ You can find more detailed examples and tutorials to help you learn about how to
 
 Here are some suggestions for where to go next:
 
--   [Build on the IC](../build/) to explore building frontend and backend dapps in a local development environment.
+-   [Build on the IC](../developer-docs/build/) to explore building frontend and backend dapps in a local development environment.
 
--   [What is Candid?](../build/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](../developer-docs/build/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](../build/cdks/motoko-dfinity/overview.md) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../developer-docs/build/cdks/motoko-dfinity/overview.md) to learn about the features and syntax for using Motoko.

@@ -8,7 +8,7 @@ This tutorial illustrates how to pass arguments on the command-line in a termina
 
 Before you start this tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
 
 -   You have stopped any canister execution environments running on the local computer.
 

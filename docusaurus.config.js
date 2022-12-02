@@ -157,7 +157,7 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            label: "Explore",
+            label: "Tutorials",
             items: [
               {
                 label: "Web3 Ecosystem",
@@ -311,8 +311,20 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
+            sidebarId: "concepts",
+            label: "How it works",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "tutorials",
+            label: "Tutorials",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
             sidebarId: "developer-docs",
-            label: "Developer Docs",
+            label: "Guides",
           },
           {
             type: "docSidebar",
@@ -323,14 +335,8 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "concepts",
-            label: "Concepts",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "tokenomics",
-            label: "DAOs & Tokenomics",
+            sidebarId: "motoko",
+            label: "Motoko",
           },
           {
             type: "docSidebar",

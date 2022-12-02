@@ -1,6 +1,6 @@
 # Tutorials
 
-The [Quick start](../../quickstart/hello10mins.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Quick start](../../../tutorials/hello10mins.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 

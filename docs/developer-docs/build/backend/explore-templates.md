@@ -1,6 +1,6 @@
 # Explore the default project
 
-If you started your tour of the SDK with the [Quick start](../../quickstart/hello10mins.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+If you started your tour of the SDK with the [Quick start](../../../tutorials/hello10mins.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
@@ -14,9 +14,9 @@ Before you start this tutorial, verify the following:
 
 -   You have `node.js` installed if you want to include the default template files for frontend development in your project.
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../../tutorials/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment processes running on the local computer.
 
@@ -24,7 +24,7 @@ This tutorial takes approximately 20 minutes to complete.
 
 ## Create a new project
 
-As discussed in the [Quick start](../../quickstart/hello10mins.md), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
+As discussed in the [Quick start](../../../tutorials/hello10mins.md), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
 
 To take a closer look at the files and folders that are included in a project by default, let’s create a new project to work with.
 
@@ -179,7 +179,7 @@ To start the local canister execution environment:
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [Quick start](../../quickstart/hello10mins.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
+In the [Quick start](../../../tutorials/hello10mins.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network:
 

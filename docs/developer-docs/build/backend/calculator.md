@@ -22,7 +22,7 @@ The `div` function also includes code to prevent the program from attempting to 
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
 
 -   You have stopped any canister execution environment running on the local computer.
 

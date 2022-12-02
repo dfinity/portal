@@ -2,22 +2,16 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
+  tutorials: [
+
+        "tutorials/hello10mins",
+        "tutorials/cycles-faucet",
+        "tutorials/local-quickstart",
+        "tutorials/network-quickstart",
+  ],
   "developer-docs": [
     "developer-docs/ic-overview",
-    {
-      type: "category",
-      label: "Quick start",
-      link: {
-        type: "doc",
-        id: "developer-docs/quickstart/hello10mins",
-      },
-      items: [
-        // 'developer-docs/quickstart/windows-wsl',
-        "developer-docs/quickstart/cycles-faucet",
-        "developer-docs/quickstart/local-quickstart",
-        "developer-docs/quickstart/network-quickstart",
-      ],
-    },
+
     {
       type: "category",
       label: "Building on the IC",
@@ -503,6 +497,16 @@ const sidebars = {
     },
   ],
   concepts: [
+    "concepts/index",
+    "concepts/what-is-IC",
+    "concepts/nodes-subnets",
+    "concepts/data-centers",
+    "concepts/canisters-code",
+    "concepts/trust-in-canisters",
+    "concepts/tokens-cycles",
+    "concepts/governance",
+  ],
+  motoko: [
     "concepts/index",
     "concepts/what-is-IC",
     "concepts/nodes-subnets",

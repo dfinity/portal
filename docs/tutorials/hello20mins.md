@@ -69,7 +69,7 @@ To verify that `dfx` is properly installed, run:
 
     $ dfx --version
 
-The terminal should show you the most recent version ([See SDK release notes](../updates/release-notes/release-notes.md)).
+The terminal should show you the most recent version ([See SDK release notes](../developer-docs/updates/release-notes/release-notes.md)).
 
 ## Create a project (2 min)
 

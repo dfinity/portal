@@ -56,7 +56,7 @@ Authorizing a principal as a custodian does not automatically grant the principa
 
 If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
 
-If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](../../quickstart/network-quickstart.md#creating-a-cycles-wallet) shows how to do this.
+If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](../../../tutorials/network-quickstart.md#creating-a-cycles-wallet) shows how to do this.
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 

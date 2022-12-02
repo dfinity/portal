@@ -54,4 +54,4 @@ Or, combining the two into a one-liner:
 dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network my-staging
 ```
 
-If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quickstart](../quickstart/network-quickstart.md).
+If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quickstart](../../tutorials/network-quickstart.md).

@@ -22,11 +22,11 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 Before starting the tutorial, verify the following:
 
-- You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+- You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
 
 - You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 
-- You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
+- You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../../tutorials/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
 - You have stopped any local canister execution environment processes running on your computer.
 
