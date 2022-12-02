@@ -1,4 +1,4 @@
-# Create a Dapp
+# Getting Started
 
 ## Setup
 
@@ -44,15 +44,16 @@ cd hello
 ```
 
 From here, we’ll deploy to the Internet Computer by using the Playground, which will allow you to deploy your app free
-of charge for a short period of time.
+of charge for up to one hour, after which it will automatically be deleted.
 
 ```bash
 dfx deploy --playground
 ```
 
 :::note
-The Playground is not meant to host production dapps - it is made available to learn how to use the Internet Computer.
-The Playground will periodically remove existing canisters to make space for new deployments.
+The Playground is not meant to host production dapps - it is made available to learn how to use the Internet
+Computer. The Playground will periodically remove canisters from its pool in order to make space for new
+deployments.
 :::
 
 Your dapp is now live on the Internet Computer! It doesn’t do much yet, but follow along to the next tutorial, and we’ll
