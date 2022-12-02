@@ -1,6 +1,6 @@
 # Query using an actor
 
-In the [Quick start](../../quickstart/hello10mins.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
+In the [Quick start](../../quickstart/create_first_dapp.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
 
 ## Before you begin
 

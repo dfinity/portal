@@ -16,7 +16,7 @@ Before you optimize your program, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/hello10mins.md).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../../quickstart/create_first_dapp.md).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 

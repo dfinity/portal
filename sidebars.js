@@ -9,7 +9,7 @@ const sidebars = {
       label: "Quick start",
       link: {
         type: "doc",
-        id: "developer-docs/quickstart/hello10mins",
+        id: "developer-docs/quickstart/create_first_dapp",
       },
       items: [
         // 'developer-docs/quickstart/windows-wsl',
