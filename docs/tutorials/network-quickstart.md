@@ -366,4 +366,4 @@ Here are some suggestions for where to go next:
 
 -   [What is Candid?](../developer-docs/build/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](../developer-docs/build/cdks/motoko-dfinity/overview.md) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../motoko/overview.md) to learn about the features and syntax for using Motoko.

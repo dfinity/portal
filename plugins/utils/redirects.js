@@ -10,16 +10,16 @@ const redirects = `
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
   /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat
-  /docs/current/developer-docs/build/languages/motoko/ /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko
-  /docs/current/developer-docs/build/languages/motoko/* /docs/current/developer-docs/build/cdks/motoko-dfinity/:splat
+  /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/motoko
+  /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/:splat
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/build/cdks/cdk-rs-dfinity
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
-  /docs/developers-guide/about-this-guide /docs/current/developer-docs/build/cdks/motoko-dfinity/about-this-guide
-  /docs/developers-guide/basic-syntax-rules /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual
+  /docs/developers-guide/about-this-guide /docs/current/motoko/about-this-guide
+  /docs/developers-guide/basic-syntax-rules /docs/current/motoko/language-manual
   /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/deploy/computation-and-storage-costs
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
@@ -73,33 +73,33 @@ const redirects = `
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/introduction/welcome /docs/current/developer-docs/ic-overview
-  /docs/language-guide/about-this-guide /docs/current/developer-docs/build/cdks/motoko-dfinity/about-this-guide
-  /docs/language-guide/actor-classes /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes
-  /docs/language-guide/actors-async /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async
-  /docs/language-guide/advanced-discussion /docs/current/developer-docs/build/cdks/motoko-dfinity/advanced-discussion
-  /docs/language-guide/basic-concepts /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts
-  /docs/language-guide/caller-id /docs/current/developer-docs/build/cdks/motoko-dfinity/caller-id
-  /docs/language-guide/compatibility /docs/current/developer-docs/build/cdks/motoko-dfinity/compatibility
-  /docs/language-guide/compiler-ref /docs/current/developer-docs/build/cdks/motoko-dfinity/compiler-ref
-  /docs/language-guide/control-flow /docs/current/developer-docs/build/cdks/motoko-dfinity/control-flow
-  /docs/language-guide/cycles /docs/current/developer-docs/build/cdks/motoko-dfinity/cycles
-  /docs/language-guide/errors /docs/current/developer-docs/build/cdks/motoko-dfinity/errors
-  /docs/language-guide/extrastuff /docs/current/developer-docs/build/cdks/motoko-dfinity/extrastuff
-  /docs/language-guide/heartbeats /docs/current/developer-docs/build/cdks/motoko-dfinity/heartbeats
-  /docs/language-guide/language-manual /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual
-  /docs/language-guide/local-objects-classes /docs/current/developer-docs/build/cdks/motoko-dfinity/local-objects-classes
-  /docs/language-guide/modules-and-imports /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports
-  /docs/language-guide/motoko-grammar /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko-grammar
-  /docs/language-guide/motoko-introduction /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko-introduction
-  /docs/language-guide/motoko /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko
-  /docs/language-guide/mutable-state /docs/current/developer-docs/build/cdks/motoko-dfinity/mutable-state
-  /docs/language-guide/overview /docs/current/developer-docs/build/cdks/motoko-dfinity/overview
-  /docs/language-guide/pattern-matching /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching
-  /docs/language-guide/sharing /docs/current/developer-docs/build/cdks/motoko-dfinity/sharing
-  /docs/language-guide/stablememory /docs/current/developer-docs/build/cdks/motoko-dfinity/stablememory
-  /docs/language-guide/structural-equality /docs/current/developer-docs/build/cdks/motoko-dfinity/structural-equality
-  /docs/language-guide/style /docs/current/developer-docs/build/cdks/motoko-dfinity/style
-  /docs/language-guide/upgrades /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades
+  /docs/language-guide/about-this-guide /docs/current/motoko/about-this-guide
+  /docs/language-guide/actor-classes /docs/current/motoko/actor-classes
+  /docs/language-guide/actors-async /docs/current/motoko/actors-async
+  /docs/language-guide/advanced-discussion /docs/current/motoko/advanced-discussion
+  /docs/language-guide/basic-concepts /docs/current/motoko/basic-concepts
+  /docs/language-guide/caller-id /docs/current/motoko/caller-id
+  /docs/language-guide/compatibility /docs/current/motoko/compatibility
+  /docs/language-guide/compiler-ref /docs/current/motoko/compiler-ref
+  /docs/language-guide/control-flow /docs/current/motoko/control-flow
+  /docs/language-guide/cycles /docs/current/motoko/cycles
+  /docs/language-guide/errors /docs/current/motoko/errors
+  /docs/language-guide/extrastuff /docs/current/motoko/extrastuff
+  /docs/language-guide/heartbeats /docs/current/motoko/heartbeats
+  /docs/language-guide/language-manual /docs/current/motoko/language-manual
+  /docs/language-guide/local-objects-classes /docs/current/motoko/local-objects-classes
+  /docs/language-guide/modules-and-imports /docs/current/motoko/modules-and-imports
+  /docs/language-guide/motoko-grammar /docs/current/motoko/motoko-grammar
+  /docs/language-guide/motoko-introduction /docs/current/motoko/motoko-introduction
+  /docs/language-guide/motoko /docs/current/motoko/motoko
+  /docs/language-guide/mutable-state /docs/current/motoko/mutable-state
+  /docs/language-guide/overview /docs/current/motoko/overview
+  /docs/language-guide/pattern-matching /docs/current/motoko/pattern-matching
+  /docs/language-guide/sharing /docs/current/motoko/sharing
+  /docs/language-guide/stablememory /docs/current/motoko/stablememory
+  /docs/language-guide/structural-equality /docs/current/motoko/structural-equality
+  /docs/language-guide/style /docs/current/motoko/style
+  /docs/language-guide/upgrades /docs/current/motoko/upgrades
   /docs/languages/languages-overview /docs/current/developer-docs/build/cdks/
   /docs/operators-guide/ops-guide /docs/current/developer-docs/ic-overview
   /docs/quickstart/1-quickstart /docs/current/developer-docs/quickstart/hello10mins
