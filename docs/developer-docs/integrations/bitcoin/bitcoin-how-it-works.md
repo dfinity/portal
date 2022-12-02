@@ -126,7 +126,7 @@ Some Bitcoin API calls must have at least the following amount of cylces attache
 
 The `bitcoin_get_utxos` call is charged through a baseline fee that amortizes part of the Bitcoin block processing and the cycles cost of the actually-consumed Wasm instructions. This is the fairest way of charging because a flat fee would be less fair for requests returning a small number of UTXOs, while a fee scaling with the number of UTXOs is hard to define in a clean way. A few informal test measurement have yielded Wasm execution fees anywhere in the range from less than 200K to more than 1,000K cycles per returned UTXO and in addition 30M-50M cycles for processing of the unstable blocks. This wide variance per UTXO was the reason to not use a charging approach based on the number of UTXOs returned, but it should give you, as a potential canister developer, a rough indication of what to expect to pay in terms of fees. For queries with a small number of UTXOs, you can expect around 100M cycles as fee to be deducted from the provided cycles on the call for a majority of calls.
 
-Pricing for Bitcoin Testnet will change to the above model in the future and scale-down the prices that are eligible to scaling.
+Pricing for Bitcoin Testnet remains as is for now in order to not break existing canisters.
 
 ## Working with the Feature
 
