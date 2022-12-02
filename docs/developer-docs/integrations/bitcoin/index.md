@@ -5,7 +5,7 @@ The Internet Computer integrates directly with the Bitcoin network. This allows 
 This integration allows for a plethora of novel use cases:
 
 -   *Bitcoin smart contracts:* A canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dApps.
--   *Trading Bitcoin* on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
+-   *Trading Bitcoin* directly on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
 -   Using Bitcoin to buy tokens in a *decentralization sale* when an SNS-powered DAO decentralizes a service on the IC.
 -   *Chain Key Bitcoin (ckBTC)*, an advanced variant of wrapped Bitcoin, that will be available on the IC with the Bitcoin mainnet release of the Bitcoin feature. ckBTC will be the easiest way to handle Bitcoin on the IC and might be the right choice for many people interested in Bitcoin on the IC. Note that ckBTC will only be available with the general availability (GA) release of Bitcoin in the upcoming months together with Bitcoin mainnet launch on the IC.
 
@@ -16,7 +16,7 @@ After the Bitcoin mainnet release (general availability release) of the Bitcoin 
 -   *Faster and cheaper transfers:* ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers can be done with lightning speed and low cost directly on the IC.
 
 ## Learn more
-If you want to take a deep dive into how Bitcoin integration works, see [How it Works](bitcoin-how-it-works.md) page to get an overview of our novel threshold ECDSA implementation, the API, and more. 
+If you want to dive deeper into how Bitcoin integration works, see the [How it Works](bitcoin-how-it-works.md) page to get an overview of the protocol-level Bitcoin integration, our novel chain-key ECDSA implementation based on a threshold ECDSA protocol, the API, and more. If you want to go even deeper, have a look at the [chain-key ECDSA documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa) and the [Bitcoin integration Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
 
 ## Build more
 If you're interested in experimenting with Bitcoin integration locally, see the [local development guide](local-development.md). 
