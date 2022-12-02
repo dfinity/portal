@@ -28,11 +28,11 @@ Threshold ECDSA master keys are always referred to through *key identifiers* in 
 There are currently two master keys deployed, a test and a production key.
 
 - `(secp256k1, test_key_1)`: The test key deployed on a single 13-node subnet.
-- `(secp256k1, Secp256k1:key_1)` The production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key.
+- `(secp256k1, key_1)` The production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
 
 ## Deployment
 
-We next outline the deployment for the Chromium (Beta) release that has been made available earlier and the GA release.
+We next outline the deployments for the Chromium (Beta) release and the general availability release.
 
 ### Chromium Release — Beta
 
@@ -40,7 +40,7 @@ As part of the Chromium release, only a test key for curve `secp256k1` has been 
 
 ### General Availability Release
 
-A single threshold ECDSA production key for the `secp256k1` elliptic curve has been deployed with the GA release. The key with id `(secp256k1, Secp256k1:key_1)` will be maintained in secret-shared form on two different subnets with high replication factor (around 30 nodes initially). The key will be initially generated on a high-replication subnet and kept there and re-shared to a new high-replication subnet using the re-sharing protocol. The latter subnet will be activated to act as the active signing subnet for this key. The further will hold the key in secret-shared form for backup purposes for achieving better key availability, but will not respond to signing requests. In case of the unlikely event of one of the subnets getting destroyed beyond recoverability, the approach of key replication improves key availability by allowing for the key to be re-shared to a different subnet, should this be ever required in case of a disaster.
+A single threshold ECDSA production key for the `secp256k1` elliptic curve has been deployed with the GA release. The key with id `(secp256k1, key_1)` will be maintained in secret-shared form on two different subnets with high replication factor (around 30 nodes initially). The key will be initially generated on a high-replication subnet and kept there and re-shared to a new high-replication subnet using the re-sharing protocol. The latter subnet will be activated to act as the active signing subnet for this key. The further will hold the key in secret-shared form for backup purposes for achieving better key availability, but will not respond to signing requests. In case of the unlikely event of one of the subnets getting destroyed beyond recoverability, the approach of key replication improves key availability by allowing for the key to be re-shared to a different subnet, should this be ever required in case of a disaster.
 
 ### Further Aspects
 
