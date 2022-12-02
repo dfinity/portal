@@ -1,5 +1,6 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import transitions from "@site/static/transitions.json";
@@ -8,6 +9,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import ShareMeta from "../components/Common/ShareMeta/ShareMeta";
 
 const SplitCard: React.FC<{
   children: React.ReactNode;
@@ -92,20 +94,8 @@ possible in blockchain technology today. ICP is not only 23,500X more efficient
 than the next most efficient blockchain, it also provides unique features not
 seen on any other chain."
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-features.jpg"
-          }
-        />
-      </Head>
+      <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
+
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
           variants={transitions.container}
@@ -331,9 +321,12 @@ seen on any other chain."
               popular search engines.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853" className="tw-heading-6 flex gap-2 items-center">
+              <Link
+                href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about SEO support 
+                Learn about SEO support
               </Link>
             </motion.p>
           </SplitCard>
@@ -489,11 +482,11 @@ seen on any other chain."
               integration with other blockchains without the use of bridges. It
               allows the Internet Computer to natively create transactions on
               other blockchains.
-            <Link
+              <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
                 className="tw-heading-6 flex gap-2 items-center"
-            >
-              <RightPointer className="w-6 h-6"></RightPointer>
+              >
+                <RightPointer className="w-6 h-6"></RightPointer>
                 Learn more
               </Link>
             </motion.p>
@@ -651,7 +644,10 @@ seen on any other chain."
               Chain-key Cryptography
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            The Internet Computer protocol uses a toolbox of advanced cryptographic mechanisms, collectively known as chain-key cryptography, which allows the IC to achieve functionalities and scalability that are impossible on other blockchains.
+              The Internet Computer protocol uses a toolbox of advanced
+              cryptographic mechanisms, collectively known as chain-key
+              cryptography, which allows the IC to achieve functionalities and
+              scalability that are impossible on other blockchains.
             </p>
             <p className="mb-0">
               <Link
@@ -667,29 +663,27 @@ seen on any other chain."
               Asynchronous Execution (Parallelism)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            "Actor" smart contracts run in parallel, unlocking scaling and preventing reentrancy attacks like the infamous DAO attack, which caused a major chain to hard fork and a loss of 60 million USD.
+              "Actor" smart contracts run in parallel, unlocking scaling and
+              preventing reentrancy attacks like the infamous DAO attack, which
+              caused a major chain to hard fork and a loss of 60 million USD.
             </p>
             <p className="mb-0">
-              <Link
-                href="/features/actor-model"
-                className="link-external"
-              >
+              <Link href="/features/actor-model" className="link-external">
                 Learn more
               </Link>
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Heartbeat
-            </h4>
+            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeat</h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            On traditional blockchain networks, smart contract computations can only be invoked by submitting a new transaction to their networks. The Internet Computer provides a means for canister smart contracts to be configured so that they are invoked by the blockchain itself, at some specified block interval.
+              On traditional blockchain networks, smart contract computations
+              can only be invoked by submitting a new transaction to their
+              networks. The Internet Computer provides a means for canister
+              smart contracts to be configured so that they are invoked by the
+              blockchain itself, at some specified block interval.
             </p>
             <p className="mb-0">
-              <Link
-                href="/features/daemon-contracts"
-                className="link-external"
-              >
+              <Link href="/features/daemon-contracts" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -699,7 +693,8 @@ seen on any other chain."
               Multi-block transactions
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            Smart contract calls (TXs) can be long-running and span multiple blocks.
+              Smart contract calls (TXs) can be long-running and span multiple
+              blocks.
             </p>
             <p className="mb-0">
               <Link
@@ -715,13 +710,11 @@ seen on any other chain."
               WebAssembly (WASM)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            Use any language that compiles to WASM: Motoko, Rust, TypeScript, Python and more
+              Use any language that compiles to WASM: Motoko, Rust, TypeScript,
+              Python and more
             </p>
             <p className="mb-0">
-              <Link
-                href="/features/webassembly"
-                className="link-external"
-              >
+              <Link href="/features/webassembly" className="link-external">
                 Learn more
               </Link>
             </p>
@@ -731,7 +724,9 @@ seen on any other chain."
               Subnets / Infinite Scalability
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-            The Internet Computer incorporates a novel subnet architecture that enables infinite scalability, making mass-market Web3 services 100% on-chain possible. No cloud or servers are needed.
+              The Internet Computer incorporates a novel subnet architecture
+              that enables infinite scalability, making mass-market Web3
+              services 100% on-chain possible. No cloud or servers are needed.
             </p>
             <p className="mb-0">
               <Link

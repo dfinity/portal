@@ -66,11 +66,9 @@ export default function BasicsSection(): JSX.Element {
                 makes it possible to flip the script with online services,
                 by making user communities their owners. That's because
                 online services can now run 100% on blockchain, for the 
-                very first time. There is no need for centralized traditional
-                IT, such as cloud services, which form the largest part of 
-                services built "on" other blockchains. Therefore, community
-                DAOs can take control of their decentralized code and data.
-                No companies, boards of CEOs are required.
+                very first time. There is no need for centralized traditional IT, such as cloud services, 
+                which otherwise have to be used in Web3. Since all code and data is fully decentralized, 
+                community DAOs can take control. No companies, boards or CEOs are required.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">

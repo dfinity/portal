@@ -70,6 +70,13 @@ export const dfinityToolingItems = [
     links: { github: "https://github.com/dfinity/ic-js" },
   },
   {
+    title: "idl2json",
+    tags: ["development", "CLI"],
+    description:
+      "Command line tool for converting IDL/Candid to JSON",
+    links: { github: "https://github.com/dfinity/idl2json" },
+  },
+  {
     title: "Vessel Package Manager",
     tags: ["development", "CLI"],
     description:

@@ -1,29 +1,7 @@
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/install.sh https://download.dfinity.systems/sdk/install.sh 302
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/manifest.json https://download.dfinity.systems/sdk/manifest.json 302
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/sdk-license-agreement.txt https://download.dfinity.systems/sdk/sdk-license-agreement.txt 302
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/tungsten-license-agreement.txt https://download.dfinity.systems/sdk/tungsten-license-agreement.txt 302
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/sodium-license-agreement.txt https://download.dfinity.systems/sdk/sodium-license-agreement.txt 302
-
-# Rewrite to download.dfinity.systems for fetchings artifacts
-/downloads/* https://download.dfinity.systems/sdk/:splat 302
-
-/docs/current/concepts/data-centers https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding
-/docs/current/tokenomics/token-holders/seed-donations https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
-
-# ICA webiste redirects
-/eula https://association.internetcomputer.org/eula 301!
-/eula-storage https://association.internetcomputer.org/eula-storage 301!
-
+# Redirects have been reworked. Do not add redirects to this file.
 #
-# Add route aliases to `/plugins/utils/redirects.js`
+#
+# Add internal route aliases to `/plugins/utils/redirects.js`
+#
+# External route redirects must now go to `/netlify/edge-functions/redirects.js`
 #

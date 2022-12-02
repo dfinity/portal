@@ -6,11 +6,11 @@ To illustrate how to create and switch between user identities, this tutorial cr
 
 In this example, there are three named roles—`owner`, `admin`, and `authorized`.
 
--   Users who are assigned an `admin` role see a greeting that displays `You have a role with administrative privileges`.
+- Users who are assigned an `admin` role see a greeting that displays `You have a role with administrative privileges`.
 
--   Users who are assigned an `authorized` role see a greeting that displays `Would you like to play a game?`.
+- Users who are assigned an `authorized` role see a greeting that displays `Would you like to play a game?`.
 
--   Users who are not assigned one of these roles see a greeting that displays `Nice to meet you!`.
+- Users who are not assigned one of these roles see a greeting that displays `Nice to meet you!`.
 
 In addition, only the user identity that initialized the canister is assigned the `owner` role and only the `owner` and `admin` roles can assign roles to other users.
 
@@ -22,13 +22,13 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
+- You have downloaded and installed the SDK package as described in [Download and install](../../quickstart/local-quickstart#download-and-install).
 
--   You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
+- You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
+- You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](../../quickstart/local-quickstart#install-vscode) if you are using Visual Studio Code as your IDE.
 
--   You have stopped any local canister execution environment processes running on your computer.
+- You have stopped any local canister execution environment processes running on your computer.
 
 ## Create a new project
 
@@ -58,17 +58,17 @@ To modify the default dapp:
 
     Let's take a look at a few key elements of this dapp:
 
-    -   You might notice that the `greet` function is a variation on the `greet` function you have seen in previous tutorials.
+    - You might notice that the `greet` function is a variation on the `greet` function you have seen in previous tutorials.
 
-        In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
+      In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
 
-    -   The dapp defines two custom types—one for `Roles` and one for `Permissions`.
+    - The dapp defines two custom types—one for `Roles` and one for `Permissions`.
 
-    -   The `assign_roles` function enables the message caller to assign a role to the principal associated with an identity.
+    - The `assign_roles` function enables the message caller to assign a role to the principal associated with an identity.
 
-    -   The `callerPrincipal` function enables you to return the principal associated with an identity.
+    - The `callerPrincipal` function enables you to return the principal associated with an identity.
 
-    -   The `my_role` function enables you to return the role that is associated with an identity.
+    - The `my_role` function enables you to return the role that is associated with an identity.
 
 3.  Save your changes and close the `main.mo` file to continue.
 
@@ -135,7 +135,7 @@ To review your current identity and principle:
 
 3.  Check the role associated with the `default` user identity by running the following command:
 
-        dfx canister --wallet=$(dfx identity get-wallet) call access_hello my_role
+        dfx canister call access_hello my_role
 
     The command displays output similar to the following:
 
@@ -189,7 +189,7 @@ To create a new user identity:
 
 ## Assign a role to an identity
 
-To assign the admin role to the IC\_admin identity:
+To assign the admin role to the IC_admin identity:
 
 1.  Switch your currently-active identity context to use the `default` user identity by running the following command:
 
@@ -197,7 +197,7 @@ To assign the admin role to the IC\_admin identity:
 
 2.  Assign the `ic_admin` principal the `admin` role by running a command similar to the following using Candid syntax:
 
-        dfx canister --wallet=$(dfx identity get-wallet) call access_hello assign_role '((principal "c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae"),opt variant{admin})'
+        dfx canister call access_hello assign_role '((principal "c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae"),opt variant{admin})'
 
 Be sure to replace the `principal` hash with the one returned by the `dfx identity get-principal` command for the `ic_admin` identity.
 
@@ -311,7 +311,7 @@ To add an unauthorized user identity:
 
 6.  Attempt to use the `default` user identity to assign `bob_standard` the `owner` role by running the following command:
 
-        dfx --identity default canister --wallet=$(dfx --identity default identity get-wallet) call access_hello assign_role "(principal \"$BOB_ID\", opt variant{owner})"
+        dfx --identity default canister call access_hello assign_role "(principal \"$BOB_ID\", opt variant{owner})"
 
     This command fails because users cannot be assigned the `owner` role.
 
@@ -372,6 +372,6 @@ To stop the local canister execution environment:
 
 If you are looking for more information about identity and authentication, check out the following related resources:
 
--   [dfx identity (command reference)](../../../references/cli-reference/dfx-identity)
+- [dfx identity (command reference)](../../../references/cli-reference/dfx-identity)
 
 <!-- -   [Set an identity to own a canister (how-to)](../../working-with-canisters#set-owner) -->
