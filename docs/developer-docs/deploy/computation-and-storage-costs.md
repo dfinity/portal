@@ -81,7 +81,7 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | $0.0005235440               | $0.0013692689               |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | $0.0000001308860            | $0.0000003423166            |
 
-Cost per Transaction in $USD (as of November 23, 2022):
+Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
 Assuming a 30 day month — 
 
