@@ -1,6 +1,6 @@
 const redirects = `
   /developers-guide/quickstart /docs/current/developer-docs/quickstart/hello10mins
-  /docs/base-libraries/* /docs/current/references/motoko-ref/:splat
+  /docs/base-libraries/* /docs/current/motoko/motoko-ref/:splat
   /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/build/candid/candid-concepts

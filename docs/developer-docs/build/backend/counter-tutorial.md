@@ -86,7 +86,7 @@ To modify the default template source code:
 
     -   The program includes two public update methods—the `increment` and `set` functions—and one a query method-the `get` function.
 
-    For more information about stable and flexible variables, see [Stable variables and upgrade methods](../cdks/motoko-dfinity/upgrades.md) in the [*Motoko Programming Language Guide*](../cdks/motoko-dfinity/about-this-guide.md).
+    For more information about stable and flexible variables, see [Stable variables and upgrade methods](../../../motoko/upgrades.md) in the [*Motoko Programming Language Guide*](../../../motoko/about-this-guide.md).
 
     For more information about the differences between a query and an update, see [Query and update methods](../../../concepts/canisters-code.md#query-update) in [Canisters include both program and state](../../../concepts/canisters-code.md#canister-state).
 

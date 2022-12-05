@@ -4,13 +4,13 @@
 const sidebars = {
   tutorials: [
 
-        "tutorials/hello10mins",
-        "tutorials/cycles-faucet",
-        "tutorials/local-quickstart",
-        "tutorials/network-quickstart",
+    "tutorials/hello10mins",
+    "tutorials/cycles-faucet",
+    "tutorials/local-quickstart",
+    "tutorials/network-quickstart",
   ],
   "developer-docs": [
-    "developer-docs/ic-overview",
+    // "developer-docs/ic-overview",
 
     {
       type: "category",
@@ -154,63 +154,63 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Integrations",
+      label: "Advanced Features",
       link: {
         type: "doc",
         id: "developer-docs/integrations/index",
       },
       items: [
-          {
-            type: 'category',
-            label: 'Service Nervous System (SNS)',
-            link: {
-              type: "doc",
-              id: "developer-docs/integrations/sns/index",
-            },
-            items: [
-              "developer-docs/integrations/sns/sns-intro",
-              {
-                type: 'category',
-                label: 'Get an SNS',
-                link: {
-                  type: "doc",
-                  id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
-                },
-                items: [
-                  "developer-docs/integrations/sns/get-sns/preparation",
-                  "developer-docs/integrations/sns/get-sns/local-testing"
-//                "developer-docs/integrations/sns/get-sns/get-sns-production"
-                ],
-              },
-               {
-                 type: 'category',
-                 label: 'Integrate with an SNS',
-                 link: {
-                   type: "doc",
-                   id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
-                 },
-                 items: [
-                   "developer-docs/integrations/sns/integrate-sns/index-integration",
-                   "developer-docs/integrations/sns/integrate-sns/ledger-integration"
- //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
-                 ],
-              },
-              {
-                type: 'category',
-                label: 'Manage an SNS',
-                link: {
-                  type: "doc",
-                  id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
-                },
-                items: [
-              "developer-docs/integrations/sns/managing-sns/cycles-usage"
-//            "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
-//            "developer-docs/integrations/sns/managing-sns/proposal-guide",
-//            "developer-docs/integrations/sns/managing-sns/upgradeSNS"
-                ]
-              }
-            ],
+        {
+          type: 'category',
+          label: 'Service Nervous System (SNS)',
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/sns/index",
           },
+          items: [
+            "developer-docs/integrations/sns/sns-intro",
+            {
+              type: 'category',
+              label: 'Get an SNS',
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+              },
+              items: [
+                "developer-docs/integrations/sns/get-sns/preparation",
+                "developer-docs/integrations/sns/get-sns/local-testing"
+                //                "developer-docs/integrations/sns/get-sns/get-sns-production"
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Integrate with an SNS',
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+              },
+              items: [
+                "developer-docs/integrations/sns/integrate-sns/index-integration",
+                "developer-docs/integrations/sns/integrate-sns/ledger-integration"
+                //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Manage an SNS',
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
+              },
+              items: [
+                "developer-docs/integrations/sns/managing-sns/cycles-usage"
+                //            "developer-docs/integrations/sns/managing-sns/nervous-system-parameters",
+                //            "developer-docs/integrations/sns/managing-sns/proposal-guide",
+                //            "developer-docs/integrations/sns/managing-sns/upgradeSNS"
+              ]
+            }
+          ],
+        },
         {
           type: "category",
           label: "Bitcoin Integration",
@@ -291,173 +291,161 @@ const sidebars = {
         type: "doc",
         id: "developer-docs/best-practices/index",
       },
-      items: ["developer-docs/best-practices/considerations-for-nft-devs"],
-    },
-    {
-      type: "category",
-      label: "Updates & Releases",
-      link: {
-        // type: 'doc', id: 'developer-docs/updates/index'
-        type: "doc",
-        id: "developer-docs/updates/release-notes/sdk-release-notes",
-      },
       items: [
+        "developer-docs/best-practices/considerations-for-nft-devs",
+
         {
           type: "category",
-          label: "SDK Release Notes",
+          label: "Security Best Practices",
           link: {
             type: "doc",
-            id: "developer-docs/updates/release-notes/sdk-release-notes",
+            id: "developer-docs/best-practices/security/index",
           },
-          items: ["developer-docs/updates/release-notes/release-notes"],
+          items: [
+            "developer-docs/best-practices/security/general-security-best-practices",
+            "developer-docs/best-practices/security/web-app-development-security-best-practices",
+            "developer-docs/best-practices/security/rust-canister-development-security-best-practices",
+          ],
         },
-      ],
+
+      ]
     },
+    // {
+    //   type: "category",
+    //   label: "Updates & Releases",
+    //   link: {
+    //     // type: 'doc', id: 'developer-docs/updates/index'
+    //     type: "doc",
+    //     id: "developer-docs/updates/release-notes/sdk-release-notes",
+    //   },
+    //   items: [
+    //     {
+    //       type: "category",
+    //       label: "SDK Release Notes",
+    //       link: {
+    //         type: "doc",
+    //         id: "developer-docs/updates/release-notes/sdk-release-notes",
+    //       },
+    //       items: ["developer-docs/updates/release-notes/release-notes"],
+    //     },
+    //   ],
+    // },
   ],
   references: [
     "references/index",
     {
       type: "category",
-      label: "DFX Commands & Envars",
-      link: {
-        type: "doc",
-        id: "references/cli-reference/index",
-      },
+      label: "Internet Computer Spec",
       items: [
-        "references/cli-reference/dfx-parent",
-        "references/cli-reference/dfx-bootstrap",
-        "references/cli-reference/dfx-build",
-        "references/cli-reference/dfx-cache",
-        "references/cli-reference/dfx-canister",
-        "references/cli-reference/dfx-deploy",
-        "references/cli-reference/dfx-generate",
-        "references/cli-reference/dfx-help",
-        "references/cli-reference/dfx-identity",
-        "references/cli-reference/dfx-ledger",
-        "references/cli-reference/dfx-new",
-        "references/cli-reference/dfx-ping",
-        "references/cli-reference/dfx-replica",
-        "references/cli-reference/dfx-start",
-        "references/cli-reference/dfx-stop",
-        "references/cli-reference/dfx-upgrade",
-        "references/cli-reference/dfx-wallet",
-        "references/cli-reference/dfx-envars",
-      ],
-    },
-    {
-      type: "doc",
-      label: "dfx.json schema",
-      id: "references/dfx-json-reference",
+        "references/ic-interface-spec",
+        "references/id-encoding-spec",
+      ]
     },
     {
       type: "category",
-      label: "Motoko References",
-      link: {
-        type: "doc",
-        id: "references/motoko-ref/index",
-      },
+      label: "Internet Computer SDK",
       items: [
-        "references/motoko-ref/Array",
-        "references/motoko-ref/AssocList",
-        "references/motoko-ref/Blob",
-        "references/motoko-ref/Bool",
-        "references/motoko-ref/Buffer",
-        "references/motoko-ref/CertifiedData",
-        "references/motoko-ref/Char",
-        "references/motoko-ref/Debug",
-        "references/motoko-ref/Deque",
-        "references/motoko-ref/Error",
-        "references/motoko-ref/ExperimentalCycles",
-        "references/motoko-ref/ExperimentalInternetComputer",
-        "references/motoko-ref/ExperimentalStableMemory",
-        "references/motoko-ref/Float",
-        "references/motoko-ref/Func",
-        "references/motoko-ref/Hash",
-        "references/motoko-ref/HashMap",
-        "references/motoko-ref/Heap",
-        "references/motoko-ref/Int",
-        "references/motoko-ref/Int8",
-        "references/motoko-ref/Int16",
-        "references/motoko-ref/Int32",
-        "references/motoko-ref/Int64",
-        "references/motoko-ref/Iter",
-        "references/motoko-ref/IterType",
-        "references/motoko-ref/List",
-        "references/motoko-ref/Nat",
-        "references/motoko-ref/Nat8",
-        "references/motoko-ref/Nat16",
-        "references/motoko-ref/Nat32",
-        "references/motoko-ref/Nat64",
-        "references/motoko-ref/Option",
-        "references/motoko-ref/Order",
-        "references/motoko-ref/Prelude",
-        "references/motoko-ref/Principal",
-        "references/motoko-ref/Random",
-        "references/motoko-ref/RBTree",
-        "references/motoko-ref/Result",
-        "references/motoko-ref/Stack",
-        "references/motoko-ref/Text",
-        "references/motoko-ref/Time",
-        "references/motoko-ref/Trie",
-        "references/motoko-ref/TrieMap",
-        "references/motoko-ref/TrieSet",
-      ],
+        {
+          type: "category",
+          label: "dfx command line tool",
+          link: {
+            type: "doc",
+            id: "references/cli-reference/index",
+          },
+          items: [
+            "references/cli-reference/dfx-parent",
+            "references/cli-reference/dfx-bootstrap",
+            "references/cli-reference/dfx-build",
+            "references/cli-reference/dfx-cache",
+            "references/cli-reference/dfx-canister",
+            "references/cli-reference/dfx-deploy",
+            "references/cli-reference/dfx-generate",
+            "references/cli-reference/dfx-help",
+            "references/cli-reference/dfx-identity",
+            "references/cli-reference/dfx-ledger",
+            "references/cli-reference/dfx-new",
+            "references/cli-reference/dfx-ping",
+            "references/cli-reference/dfx-replica",
+            "references/cli-reference/dfx-start",
+            "references/cli-reference/dfx-stop",
+            "references/cli-reference/dfx-upgrade",
+            "references/cli-reference/dfx-wallet",
+            "references/cli-reference/dfx-envars",
+          ],
+        },
+        {
+          type: "category",
+          label: "quill command line tool",
+          link: {
+            type: "doc",
+            id: "references/quill-cli-reference/index",
+          },
+          items: [
+            "references/quill-cli-reference/quill-parent",
+            "references/quill-cli-reference/quill-account-balance",
+            "references/quill-cli-reference/quill-claim-neurons",
+            "references/quill-cli-reference/quill-generate",
+            "references/quill-cli-reference/quill-get-neuron-info",
+            "references/quill-cli-reference/quill-get-proposal-info",
+            "references/quill-cli-reference/quill-list-neurons",
+            "references/quill-cli-reference/quill-list-proposals",
+            "references/quill-cli-reference/quill-neuron-manage",
+            "references/quill-cli-reference/quill-neuron-stake",
+            "references/quill-cli-reference/quill-public-ids",
+            "references/quill-cli-reference/quill-qr-code",
+            "references/quill-cli-reference/quill-replace-node-provider-id",
+            "references/quill-cli-reference/quill-scanner-qr-code",
+            "references/quill-cli-reference/quill-send",
+            "references/quill-cli-reference/quill-transfer",
+            "references/quill-cli-reference/quill-update-node-provider",
+          ],
+        },
+        {
+          type: "doc",
+          label: "dfx.json schema",
+          id: "references/dfx-json-reference",
+        },
+      ]
     },
     {
-      type: "link",
-      label: "Rust CDK References",
-      href: "https://docs.rs/ic-cdk/",
+      type: "category",
+      label: "Languages",
+      items: [
+        {
+          type: "link",
+          label: "Motoko Base Library",
+          href: "/docs/current/motoko/base/",
+        },
+        {
+          type: "link",
+          label: "Rust CDK References",
+          href: "https://docs.rs/ic-cdk/",
+        },
+        "references/candid-ref",
+      ]
     },
     // {
-      //   type: 'link',
-      //   label: 'SNS References',
-      //   href: 'https://docs.rs/ic-sns/',
-      // },
-      "references/candid-ref",
-      "references/ledger",
-      "references/ii-spec",
-      "references/ic-interface-spec",
-      "references/id-encoding-spec",
-      {
-        type: "category",
-        label: "Quill Commands",
-        link: {
-          type: "doc",
-          id: "references/quill-cli-reference/index",
-        },
-        items: [
-          "references/quill-cli-reference/quill-parent",
-          "references/quill-cli-reference/quill-account-balance",
-          "references/quill-cli-reference/quill-claim-neurons",
-          "references/quill-cli-reference/quill-generate",
-        "references/quill-cli-reference/quill-get-neuron-info",
-        "references/quill-cli-reference/quill-get-proposal-info",
-        "references/quill-cli-reference/quill-list-neurons",
-        "references/quill-cli-reference/quill-list-proposals",
-        "references/quill-cli-reference/quill-neuron-manage",
-        "references/quill-cli-reference/quill-neuron-stake",
-        "references/quill-cli-reference/quill-public-ids",
-        "references/quill-cli-reference/quill-qr-code",
-        "references/quill-cli-reference/quill-replace-node-provider-id",
-        "references/quill-cli-reference/quill-scanner-qr-code",
-        "references/quill-cli-reference/quill-send",
-        "references/quill-cli-reference/quill-transfer",
-        "references/quill-cli-reference/quill-update-node-provider",
-      ],
-    },
+    //   type: 'link',
+    //   label: 'SNS References',
+    //   href: 'https://docs.rs/ic-sns/',
+    // },
     {
       type: "category",
-      label: "Security Best Practices",
-      link: {
-        type: "doc",
-        id: "references/security/index",
-      },
+      label: "Core Services",
       items: [
-        "references/security/general-security-best-practices",
-        "references/security/web-app-development-security-best-practices",
-        "references/security/rust-canister-development-security-best-practices",
-      ],
+        {
+          type: "doc",
+          label: "Ledger canister",
+          id: "references/ledger",
+        },
+        {
+          type: "doc",
+          label: "Internet Identity",
+          id: "references/ii-spec",
+        },
+      ]
     },
+
     "references/glossary",
 
   ],
@@ -472,32 +460,96 @@ const sidebars = {
     "concepts/governance",
   ],
   motoko: [
-    "motoko/about-this-guide",
-    "motoko/motoko-introduction",
-    "motoko/basic-concepts",
-    "motoko/base-intro",
-    "motoko/mutable-state",
-    "motoko/local-objects-classes",
-    "motoko/actors-async",
-    "motoko/errors",
-    "motoko/pattern-matching",
-    "motoko/sharing",
-    "motoko/message-inspection",
-    "motoko/modules-and-imports",
-    "motoko/control-flow",
-    "motoko/structural-equality",
-    "motoko/actor-classes",
-    "motoko/caller-id",
-    "motoko/cycles",
-    "motoko/upgrades",
-    "motoko/compatibility",
-    "motoko/stablememory",
-    "motoko/heartbeats",
-    "motoko/language-manual",
-    "motoko/compiler-ref",
-    "motoko/motoko-grammar",
-    "motoko/overview",
-    "motoko/style",
+    {
+      type: "category",
+      label: "Motoko Developer Guide",
+      link: {
+        type: "doc",
+        id: "motoko/about-this-guide",
+      },
+      items: [
+        // "motoko/about-this-guide",
+        "motoko/motoko-introduction",
+        "motoko/basic-concepts",
+        "motoko/base-intro",
+        "motoko/mutable-state",
+        "motoko/local-objects-classes",
+        "motoko/actors-async",
+        "motoko/errors",
+        "motoko/pattern-matching",
+        "motoko/sharing",
+        "motoko/message-inspection",
+        "motoko/modules-and-imports",
+        "motoko/control-flow",
+        "motoko/structural-equality",
+        "motoko/actor-classes",
+        "motoko/caller-id",
+        "motoko/cycles",
+        "motoko/upgrades",
+        "motoko/compatibility",
+        "motoko/stablememory",
+        "motoko/heartbeats",
+        "motoko/language-manual",
+        "motoko/compiler-ref",
+        "motoko/motoko-grammar",
+        "motoko/overview",
+        "motoko/style",
+      ]
+    },
+    {
+      type: "category",
+      label: "Motoko Base Library Reference",
+      link: {
+        type: "doc",
+        id: "motoko/base/index",
+      },
+      items: [
+        "motoko/base/Array",
+        "motoko/base/AssocList",
+        "motoko/base/Blob",
+        "motoko/base/Bool",
+        "motoko/base/Buffer",
+        "motoko/base/CertifiedData",
+        "motoko/base/Char",
+        "motoko/base/Debug",
+        "motoko/base/Deque",
+        "motoko/base/Error",
+        "motoko/base/ExperimentalCycles",
+        "motoko/base/ExperimentalInternetComputer",
+        "motoko/base/ExperimentalStableMemory",
+        "motoko/base/Float",
+        "motoko/base/Func",
+        "motoko/base/Hash",
+        "motoko/base/HashMap",
+        "motoko/base/Heap",
+        "motoko/base/Int",
+        "motoko/base/Int8",
+        "motoko/base/Int16",
+        "motoko/base/Int32",
+        "motoko/base/Int64",
+        "motoko/base/Iter",
+        "motoko/base/IterType",
+        "motoko/base/List",
+        "motoko/base/Nat",
+        "motoko/base/Nat8",
+        "motoko/base/Nat16",
+        "motoko/base/Nat32",
+        "motoko/base/Nat64",
+        "motoko/base/Option",
+        "motoko/base/Order",
+        "motoko/base/Prelude",
+        "motoko/base/Principal",
+        "motoko/base/Random",
+        "motoko/base/RBTree",
+        "motoko/base/Result",
+        "motoko/base/Stack",
+        "motoko/base/Text",
+        "motoko/base/Time",
+        "motoko/base/Trie",
+        "motoko/base/TrieMap",
+        "motoko/base/TrieSet",
+      ],
+    },
   ],
   tokenomics: [
     "tokenomics/index",
@@ -553,6 +605,7 @@ const sidebars = {
       ],
     },
   ],
+
   samples: [
     // 'samples/overview',
     "samples/deploying-your-first-bitcoin-dapp",

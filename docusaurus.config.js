@@ -157,7 +157,7 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            label: "Tutorials",
+            label: "Explore",
             items: [
               {
                 label: "Web3 Ecosystem",
@@ -249,7 +249,7 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/ic-overview",
+                docId: "concepts/index",
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
@@ -324,7 +324,7 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "developer-docs",
-            label: "Guides",
+            label: "Developer Guides",
           },
           {
             type: "docSidebar",
@@ -341,8 +341,14 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
+            sidebarId: "tokenomics",
+            label: "User Guides (migrate)",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
             sidebarId: "samples",
-            label: "Sample Code",
+            label: "Sample Code (migrate)",
           },
 
           // {
