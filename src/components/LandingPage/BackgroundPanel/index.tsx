@@ -19,7 +19,7 @@ const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
           inView ? "opacity-100" : "opacity-0"
         )}
       ></div>
-      <div ref={ref} className="relative z-[13] ">
+      <div ref={ref} className="relative z-[13] " id="comparison">
         <BackgroundPanelContext.Provider value={inView}>
           {children}
         </BackgroundPanelContext.Provider>

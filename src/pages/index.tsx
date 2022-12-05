@@ -44,9 +44,9 @@ export default function Home(): JSX.Element {
           <FoundationSection></FoundationSection>
           <SlidersSection />
           <StartBuildingSection />
-          {/* <SectionsBar /> */}
         </div>
       </main>
+      <SectionsBar />
     </Layout>
   );
 }
