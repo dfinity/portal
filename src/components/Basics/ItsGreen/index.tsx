@@ -15,34 +15,43 @@ import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
 
 const comparison = [
   {
+    projectName: "ICP",
     logo: "/img/basics/logos/logo-icp.svg",
     value: 0.008,
   },
   {
+    projectName: "Solana",
     logo: "/img/basics/logos/logo-solana.svg",
     value: 0.166,
   },
   {
+    projectName: "Algorand",
+
     logo: "/img/basics/logos/logo-algorand.svg",
     value: 2.7,
   },
   {
+    projectName: "Avalanche",
     logo: "/img/basics/logos/logo-avalanche.svg",
     value: 4.76,
   },
   {
+    projectName: "Polkadot",
     logo: "/img/basics/logos/logo-polkadot.svg",
     value: 17.4,
   },
   {
+    projectName: "Ethereum",
     logo: "/img/basics/logos/logo-eth.svg",
     value: 30.0,
   },
   {
+    projectName: "Tezos",
     logo: "/img/basics/logos/logo-tezos.svg",
     value: 41.45,
   },
   {
+    projectName: "Cardano",
     logo: "/img/basics/logos/logo-cardano.svg",
     value: 51.59,
   },
@@ -56,13 +65,14 @@ const ComparedProject: React.FC<{
 }> = ({ project, isFirst }) => {
   const labelRef = useRef<HTMLSpanElement>();
   return (
-    <motion.div
+    <motion.figure
       key={project.logo}
       className="flex gap-6 items-center"
       variants={{
         hidden: { opacity: 0 },
         show: { opacity: 1 },
       }}
+      aria-label={`${project.projectName} consumes ${project.value} Wh/tx`}
     >
       <img
         src={project.logo}
@@ -107,7 +117,7 @@ const ComparedProject: React.FC<{
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </motion.figure>
   );
 };
 
@@ -130,12 +140,14 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           Blockchain compute that's climate friendly
         </motion.h2>
         <motion.p variants={transitions.item} className="paragraph-large mb-8">
-          The unique architecture and novel cryptography of the Internet Computer blockchain allow 
-          it to host smart contract software, data and computation, with levels of efficiency 
-          competitive with normal software that runs on Big Tech's cloud services. 
-          Meanwhile, it is currently tens of thousands of times more efficient than the next most 
-          efficient blockchain. Web3 projects that incorporate Internet Computer smart contracts 
-          can consequently dramatically lower their carbon footprints, and reduce climate change.
+          The unique architecture and novel cryptography of the Internet
+          Computer blockchain allow it to host smart contract software, data and
+          computation, with levels of efficiency competitive with normal
+          software that runs on Big Tech's cloud services. Meanwhile, it is
+          currently tens of thousands of times more efficient than the next most
+          efficient blockchain. Web3 projects that incorporate Internet Computer
+          smart contracts can consequently dramatically lower their carbon
+          footprints, and reduce climate change.
         </motion.p>
         <motion.p
           variants={transitions.item}
@@ -155,11 +167,11 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
             <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
           </Link>
         </motion.p>
-        <Icon1></Icon1>
-        <Icon2></Icon2>
-        <Icon3></Icon3>
+        <Icon1 aria-hidden></Icon1>
+        <Icon2 aria-hidden></Icon2>
+        <Icon3 aria-hidden></Icon3>
 
-        <motion.div
+        <motion.figure
           className="space-y-3"
           variants={{
             hidden: { opacity: 0 },
@@ -182,7 +194,7 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
               isFirst={i === 0}
             ></ComparedProject>
           ))}
-          <motion.p
+          <motion.figcaption
             variants={{
               hidden: { opacity: 0 },
               show: { opacity: 1 },
@@ -191,8 +203,8 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           >
             A comparison of the energy consumption per transaction between
             blockchains
-          </motion.p>
-        </motion.div>
+          </motion.figcaption>
+        </motion.figure>
       </motion.div>
     </section>
   );
