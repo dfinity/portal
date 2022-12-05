@@ -257,7 +257,7 @@ export default function PreHero({
   }, [bgDark, animate, headerHeight]);
 
   return (
-    <section className="w-screen h-screen bg-[#1B025A]">
+    <section className="w-screen h-screen bg-[#1B025A]" id="home">
       <>
         {bgDark && <DarkHeroStyles bgColor="transparent" />}
 
@@ -293,6 +293,7 @@ export default function PreHero({
           style={{
             animationPlayState: start ? "running" : "paused",
           }}
+          aria-label="Scroll down"
         >
           <svg
             width="24"
