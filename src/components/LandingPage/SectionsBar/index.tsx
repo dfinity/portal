@@ -12,6 +12,7 @@ const SectionsLinks = [
   { text: "Dapps", to: "#dapps" },
   { text: "Sustainable", to: "#sustainable" },
   { text: "Foundation", to: "#foundation" },
+  { text: "Features", to: "#features" },
   { text: "Start Building", to: "#startBuilding" },
 ];
 const container = {
