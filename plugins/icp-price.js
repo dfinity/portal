@@ -9,6 +9,8 @@ const icpPricePlugin = async function (context, options) {
         "https://api.binance.com/api/v3/ticker/24hr?symbol=ICPUSDT"
       ).then((res) => res.json());
 
+      console.log(JSON.stringify(ticker, null, 2));
+
       return +ticker.lastPrice;
     },
     async contentLoaded({ content, actions }) {
