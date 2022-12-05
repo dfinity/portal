@@ -1,0 +1,38 @@
+name: PR cleanup
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  release_preview_canister:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: |
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          pip install ic-py
+          python3 .github/workflows/scripts/release-canister.py $pull_number
+        env:
+          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              repo: context.repo.repo,
+              owner: context.repo.owner,
+            });
+            const maybeExistingComment = comments.data.find(c=>c.user.login === 'github-actions[bot]' && c.user.type === 'Bot');
+            if (maybeExistingComment) {
+              await github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: maybeExistingComment.id
+              })
+            }
