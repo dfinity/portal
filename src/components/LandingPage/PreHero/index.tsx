@@ -288,7 +288,7 @@ export default function PreHero({
         <button
           className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
           onClick={() => {
-            document.getElementById("home").scrollIntoView();
+            document.getElementById("introduction").scrollIntoView();
           }}
           style={{
             animationPlayState: start ? "running" : "paused",
