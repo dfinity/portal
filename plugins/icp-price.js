@@ -6,12 +6,10 @@ const icpPricePlugin = async function (context, options) {
     name: "icp-price",
     async loadContent() {
       const ticker = await fetch(
-        "https://api.binance.com/api/v3/ticker/24hr?symbol=ICPUSDT"
+        "https://api.coinbase.com/v2/prices/ICP-USD/buy"
       ).then((res) => res.json());
 
-      console.log(JSON.stringify(ticker, null, 2));
-
-      return +ticker.lastPrice;
+      return +ticker.data.amount;
     },
     async contentLoaded({ content, actions }) {
       const { setGlobalData } = actions;
