@@ -1,6 +1,6 @@
 ---
 id: create_first_dapp
-title: Create Your First App
+title: Tutorial 1 - Create Your First App
 tags:
 - Getting started
 ---

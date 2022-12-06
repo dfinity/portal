@@ -338,18 +338,18 @@ const config = {
             sidebarId: "motoko",
             label: "Motoko",
           },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "tokenomics",
-            label: "User Guides (migrate)",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "samples",
-            label: "Sample Code (migrate)",
-          },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "tokenomics",
+          //   label: "User Guides (migrate)",
+          // },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "samples",
+          //   label: "Sample Code (migrate)",
+          // },
 
           // {
           //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',

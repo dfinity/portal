@@ -1,3 +1,10 @@
+---
+id: cycles-faucet
+title: Tutorial 2 - Use Cycles Faucet
+tags:
+- Getting started
+---
+
 # Cycles Faucet
 Ready to deploy your first smart contract on the Internet Computer
 blockchain? You can use our Cycles Faucet to get set up with 20T free
