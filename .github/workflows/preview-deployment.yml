@@ -44,7 +44,7 @@ jobs:
           git submodule update --init
           npm install
 
-          dfx deploy --network=ic portal
+          dfx deploy --network=ic --no-wallet portal
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
