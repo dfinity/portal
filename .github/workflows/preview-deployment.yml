@@ -6,6 +6,9 @@ on:
 jobs:
   request_preview_canister:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
 
     steps:
       - uses: actions/github-script@v6
