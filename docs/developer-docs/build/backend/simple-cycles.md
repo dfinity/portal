@@ -191,6 +191,6 @@ If you are looking for more information about working with cycles, check out the
 
 <!-- -   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner) -->
 
--   [Managing cycles (language reference)](../../../motoko/cycles.md)
+-   [Managing cycles (language reference)](../../../motoko/official/cycles.md)
 
--   [ExperimentalCycles (base module)](../../../motoko/base/ExperimentalCycles.md)
+-   [ExperimentalCycles (base module)](../../../motoko/official/base/ExperimentalCycles.md)
