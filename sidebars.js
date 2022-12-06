@@ -3,8 +3,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorials: [
-
-    "tutorials/hello10mins",
+    "tutorials/create_first_dapp",
     "tutorials/cycles-faucet",
     "tutorials/local-quickstart",
     "tutorials/network-quickstart",

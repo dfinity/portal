@@ -1,6 +1,6 @@
 # At a glance
 
-The [Quick start](../../../tutorials/hello10mins.md) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual tutorials in this section walk through specific scenarios, pointing out details about what you’re doing in each step.
+The [Quick start](../../../tutorials/create_first_dapp.md) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual tutorials in this section walk through specific scenarios, pointing out details about what you’re doing in each step.
 
 If the quick start and tutorials aren’t quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
