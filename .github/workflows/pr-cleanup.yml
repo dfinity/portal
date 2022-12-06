@@ -23,16 +23,8 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const comments = await github.rest.issues.listComments({
-              issue_number: context.issue.number,
-              repo: context.repo.repo,
-              owner: context.repo.owner,
-            });
-            const maybeExistingComment = comments.data.find(c=>c.user.login === 'github-actions[bot]' && c.user.type === 'Bot');
-            if (maybeExistingComment) {
-              await github.rest.issues.deleteComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: maybeExistingComment.id
-              })
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.delete(context, github, maybeComment.id);
             }

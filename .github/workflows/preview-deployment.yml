@@ -4,43 +4,29 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  request_preview_canister:
+  build_and_deploy:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}
       cancel-in-progress: true
 
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/github-script@v6
         with:
           script: |
-            const comments = await github.rest.issues.listComments({
-              issue_number: context.issue.number,
-              repo: context.repo.repo,
-              owner: context.repo.owner,
-            });
-
-            const maybeExistingComment = comments.data.find(c=>c.user.login === 'github-actions[bot]' && c.user.type === 'Bot');
-            if (!maybeExistingComment) {
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `🤖 Your PR preview is being built...`
-              })
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Your PR preview is being built...`);
             } else {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: maybeExistingComment.id,
-                body: `🤖 Your PR preview is being built...`
-              })
+              await comments.create(context, github, `🤖 Your PR preview is being built...`);
             }
-      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      - run: |
+      - name: "Build & Deploy"
+        run: |
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           pip install ic-py
           canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
@@ -67,30 +53,26 @@ jobs:
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
 
+      - name: Report build error
+        uses: actions/github-script@v6
+        if: ${{ failure() }}
+        with:
+          script: |
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Preview build failed.`);
+            } else {
+              await comments.create(context, github, `🤖 Preview build failed.`);
+            }
+
       - uses: actions/github-script@v6
         with:
           script: |
-            const comments = await github.rest.issues.listComments({
-              issue_number: context.issue.number,
-              repo: context.repo.repo,
-              owner: context.repo.owner,
-            });
-
-            const maybeExistingComment = comments.data.find(c=>c.user.login === 'github-actions[bot]' && c.user.type === 'Bot');
-            if (!maybeExistingComment) {
-              console.log('No preview comment, creating one...')
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
-              })
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
             } else {
-              console.log('Updating existing comment...')
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: maybeExistingComment.id,
-                body: `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
-              })
+              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
             }
