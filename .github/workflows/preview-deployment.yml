@@ -1,0 +1,78 @@
+name: PR Preview Deployment
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Your PR preview is being built...`);
+            } else {
+              await comments.create(context, github, `🤖 Your PR preview is being built...`);
+            }
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: "Build & Deploy"
+        run: |
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          pip install ic-py
+          canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
+          echo "{\"portal\":{\"ic\":\"$canister_id\"}}" > canister_ids.json
+          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+
+          echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
+
+          mkdir ~/.config/dfx
+          mkdir ~/.config/dfx/identity
+          mkdir ~/.config/dfx/identity/default
+          echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
+          sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
+
+          git submodule update --init
+          npm install
+
+          dfx deploy --network=ic --no-wallet portal
+
+        env:
+          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+
+      - name: Report build error
+        uses: actions/github-script@v6
+        if: ${{ failure() }}
+        with:
+          script: |
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Preview build failed.`);
+            } else {
+              await comments.create(context, github, `🤖 Preview build failed.`);
+            }
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+            } else {
+              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+            }
