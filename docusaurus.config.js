@@ -15,7 +15,7 @@ const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
-const keepSymlinks = require("./plugins/keep-symlinks");
+const customWebpack = require("./plugins/custom-webpack");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
@@ -52,7 +52,7 @@ const config = {
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
-    keepSymlinks,
+    customWebpack,
     tailwindPlugin,
     icpPricePlugin,
     showcaseProjectsPlugin,

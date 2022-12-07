@@ -12,6 +12,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import styles from "./styles.module.css";
 import IconExternalLink from "@theme/IconExternalLink";
+import { EditIcon } from "./EditIcon";
 
 function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   const toUrl = useBaseUrl(to);
@@ -46,7 +47,7 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   );
 }
 
-function Footer() {
+function Footer({ editPath }) {
   const { footer } = useThemeConfig();
   const { copyright, links = [] } = footer || {};
 
@@ -65,6 +66,17 @@ function Footer() {
           "footer--dark": footer.style === "dark",
         })}
       >
+        <div className={styles.editButtonContainer}>
+          {editPath && (
+            <Link
+              className="absolute -top-8 right-0 text-white hover:text-white-80 hover:no-underline tw-title-navigation-on-page rounded-full py-1 px-4 bg-[#260F59] -translate-y-1/2 inline-flex items-center gap-1"
+              href={`https://github.com/dfinity/portal/edit/master/${editPath}`}
+            >
+              <EditIcon></EditIcon>
+              Edit this page
+            </Link>
+          )}
+        </div>
         <div className={styles.footerLinksContainer}>
           {nonMediaLinks.map((linkItem, i) => (
             <div key={i} className={styles.footerLinkCol}>

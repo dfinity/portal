@@ -1,9 +1,12 @@
 /** @type {import('@docusaurus/types').PluginModule} */
-const keepSymlinks = (context, options) => {
+const customWebpack = () => {
   return {
     name: `portal-docusaurus-plugin`,
-    configureWebpack(config, isServer, utils) {
+    configureWebpack() {
       return {
+        node: {
+          __filename: true,
+        },
         resolve: {
           symlinks: false,
         },
@@ -12,4 +15,4 @@ const keepSymlinks = (context, options) => {
   };
 };
 
-module.exports = keepSymlinks;
+module.exports = customWebpack;

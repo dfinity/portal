@@ -23,7 +23,11 @@ export default function Home(): JSX.Element {
   resetNavBarStyle();
 
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout
+      title={siteConfig.title}
+      description={siteConfig.tagline}
+      editPath={__filename}
+    >
       <PreHero debugForces={false} paintParticles={true}></PreHero>
 
       <main
