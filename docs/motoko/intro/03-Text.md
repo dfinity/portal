@@ -1,4 +1,4 @@
-# 03 - Text and strings
+# 03 - Strings
 
 In Motoko strings (type name is [`Text`](../official/base/Text.md)) can be written as text surrounded by double quotes.
 
