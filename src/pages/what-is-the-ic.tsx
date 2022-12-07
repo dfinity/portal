@@ -1,29 +1,21 @@
+import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import useGlobalData from "@docusaurus/useGlobalData";
-import completedRoadmapItems from "@site/roadmap/completed";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
-import GithubIcon from "@site/static/img/token-holders/social/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import DomainCard from "../components/RoadmapPage/DomainCard";
-import Overlay from "../components/RoadmapPage/Overlay";
-import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
-import Head from "@docusaurus/Head";
-import { WhatIsIcpTopic } from "../components/HowItWorksPage/WhatIsIcpData";
 import TopicCard from "../components/HowItWorksPage/TopicCard";
+import { WhatIsIcpTopic } from "../components/HowItWorksPage/WhatIsIcpData";
 
 const MotionLink = motion(Link);
 
 const RoadmapPage: React.FC = () => {
-  resetNavBarStyle();
-
-  const data = useGlobalData()["what-is-the-ic-data"].default as WhatIsIcpTopic[];
+  const data = useGlobalData()["what-is-the-ic-data"]
+    .default as WhatIsIcpTopic[];
 
   return (
     <Layout
@@ -55,11 +47,14 @@ const RoadmapPage: React.FC = () => {
                 Internet Computer?
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) is the only general-purpose blockchain that runs decentralized apps at web speed.
+                The Internet Computer (IC) is the only general-purpose
+                blockchain that runs decentralized apps at web speed.
               </p>
 
               <p className="tw-lead-sm md:tw-lead mb-0">
-              It is the World Computer that can replace traditional IT and enable a new generation of Web3 apps and services running entirely on-chain.
+                It is the World Computer that can replace traditional IT and
+                enable a new generation of Web3 apps and services running
+                entirely on-chain.
               </p>
             </div>
           </div>

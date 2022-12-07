@@ -1,13 +1,9 @@
 import Link from "@docusaurus/Link";
-import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="WebAssembly"
@@ -21,10 +17,14 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">WebAssembly</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              WebAssembly is a virtual machine (VM) designed for client, server and blockchain applications. 
-              It is used to run canister smart contracts on the Internet Computer (IC). WebAssembly runs portable byte code instructions 
-              that are created by compiling software code written in programming languages such as Rust and Motoko. Because it's faster, 
-              more efficient, and more portable than the alternatives, WebAssembly is key to building efficient applications on the internet.
+                WebAssembly is a virtual machine (VM) designed for client,
+                server and blockchain applications. It is used to run canister
+                smart contracts on the Internet Computer (IC). WebAssembly runs
+                portable byte code instructions that are created by compiling
+                software code written in programming languages such as Rust and
+                Motoko. Because it's faster, more efficient, and more portable
+                than the alternatives, WebAssembly is key to building efficient
+                applications on the internet.
               </p>
             </div>
           </div>
@@ -58,40 +58,47 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>WebAssembly has quickly established itself as the internet's favorite virtual machine. </h2>
-            
+            <h2>
+              WebAssembly has quickly established itself as the internet's
+              favorite virtual machine.{" "}
+            </h2>
+
             <h3>WebAssembly used in the IC</h3>
             <p>
-            WebAssembly (or "WASM") was co-designed by Andreas Rossberg, who joined the Dfinity Foundation early in 2017 to work on its canister smart 
-            contract execution environment, and the Motoko language. The standard is maintained by the{" "}
+              WebAssembly (or "WASM") was co-designed by Andreas Rossberg, who
+              joined the Dfinity Foundation early in 2017 to work on its
+              canister smart contract execution environment, and the Motoko
+              language. The standard is maintained by the{" "}
               <Link href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">
-              World Wide Web Consortium.
+                World Wide Web Consortium.
               </Link>{" "}
             </p>
 
             <p>
-            The Internet Computer uses the WebAssembly VM to run its canister smart contracts for a number of reasons, including:
+              The Internet Computer uses the WebAssembly VM to run its canister
+              smart contracts for a number of reasons, including:
             </p>
 
             <ul>
+              <li>It is formally specified, which increases its security.</li>
               <li>
-              It is formally specified, which increases its security.
+                It provides near-native performance, greatly improving smart
+                contract efficiency.
               </li>
               <li>
-              It provides near-native performance, greatly improving smart contract efficiency.
+                It is targeted by LLVM, which means large numbers of programming
+                languages can easily be used for smart contract creation.
               </li>
               <li>
-              It is targeted by LLVM, which means large numbers of programming languages can easily be used for smart contract creation.
-              </li>
-              <li>
-              It has been very widely adopted as the new standard for computation on the Web, and consequently a massive decentralized R&D effort constantly evolves and improves the standard, and a large variety of virtual machine implementations have been created.
+                It has been very widely adopted as the new standard for
+                computation on the Web, and consequently a massive decentralized
+                R&D effort constantly evolves and improves the standard, and a
+                large variety of virtual machine implementations have been
+                created.
               </li>
             </ul>
-
           </div>
         </section>
-
-
       </main>
     </Layout>
   );

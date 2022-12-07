@@ -1,13 +1,11 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Actor Model"
@@ -21,9 +19,11 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Actor Model</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              A single canister smart contract has one thread of execution for updates, but the Internet Computer can execute a massive 
-              number of canisters in parallel. In addition, we make a distinction between requests that need to update the state of a 
-              canister, and queries, which cannot modify the state of a canister.
+                A single canister smart contract has one thread of execution for
+                updates, but the Internet Computer can execute a massive number
+                of canisters in parallel. In addition, we make a distinction
+                between requests that need to update the state of a canister,
+                and queries, which cannot modify the state of a canister.
               </p>
             </div>
           </div>
@@ -59,55 +59,76 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            The programming model of the Internet Computer consists of memory-isolated canisters communicating by asynchronous message 
-            passing of binary data encoding Candid values. A canister processes its messages one-at-a-time, preventing race conditions. 
-            A canister uses call-backs to register what needs to be done with the result of any inter-canister messages it issues.
+              The programming model of the Internet Computer consists of
+              memory-isolated canisters communicating by asynchronous message
+              passing of binary data encoding Candid values. A canister
+              processes its messages one-at-a-time, preventing race conditions.
+              A canister uses call-backs to register what needs to be done with
+              the result of any inter-canister messages it issues.
             </p>
             <h3>Canisters as actors</h3>
             <p>
-            The actor model is a mathematical model of concurrent computation, where, in response to a message, an actor can modify its state, 
-            send messages, and create more actors. 
+              The actor model is a mathematical model of concurrent computation,
+              where, in response to a message, an actor can modify its state,
+              send messages, and create more actors.
             </p>
 
             <p>
-            A canister is like an actor in many respects. For example, an actor has:
+              A canister is like an actor in many respects. For example, an
+              actor has:
             </p>
 
             <ul>
-              <li>a private state that can only be modified by the canister itself</li>
-              <li>a single thread of execution, so it does not need lock-based synchronization</li>
-              <li>the ability to communicate with other canisters through asynchronous messages</li>
+              <li>
+                a private state that can only be modified by the canister itself
+              </li>
+              <li>
+                a single thread of execution, so it does not need lock-based
+                synchronization
+              </li>
+              <li>
+                the ability to communicate with other canisters through
+                asynchronous messages
+              </li>
               <li>the ability to create new canisters</li>
             </ul>
 
             <p>
-            An important difference between traditional actors and canisters is that canisters on the Internet Computer have
-            bidirectional message passing. Messages are divided into requests and responses, where requests 
-            can be replied to and the Internet Computer keeps track of the callback for responses.
+              An important difference between traditional actors and canisters
+              is that canisters on the Internet Computer have bidirectional
+              message passing. Messages are divided into requests and responses,
+              where requests can be replied to and the Internet Computer keeps
+              track of the callback for responses.
             </p>
 
             <p>
-            In actor terminology, each actor has a mailing address that is used to receive messages. A canister also has a mailing address, 
-            which happens to look similar to an IPv6 address.
+              In actor terminology, each actor has a mailing address that is
+              used to receive messages. A canister also has a mailing address,
+              which happens to look similar to an IPv6 address.
             </p>
 
             <p>
-            While a canister's update throughput is limited by consensus of the blockchain and the single thread of execution, a 
-            canister can serve hundreds of queries concurrently, achieving throughput in the order of thousands of queries per second, 
-            and latency measured in milliseconds.
+              While a canister's update throughput is limited by consensus of
+              the blockchain and the single thread of execution, a canister can
+              serve hundreds of queries concurrently, achieving throughput in
+              the order of thousands of queries per second, and latency measured
+              in milliseconds.
             </p>
 
             <p>
-            To complete this picture, it should be added that end users also participate as actors in the model. This means that browsers and mobile apps can 
-            directly perform update and query operations on canisters.
+              To complete this picture, it should be added that end users also
+              participate as actors in the model. This means that browsers and
+              mobile apps can directly perform update and query operations on
+              canisters.
             </p>
 
             <p>
-            In addition, the Motoko programming language, which is tailored to the Internet Computer, is inspired by the actor model.
+              In addition, the Motoko programming language, which is tailored to
+              the Internet Computer, is inspired by the actor model.
             </p>
 
             <p className="mb-3 mt-6">
-            <Link
+              <Link
                 href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >

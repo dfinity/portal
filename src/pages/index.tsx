@@ -1,10 +1,6 @@
-import BrowserOnly from "@docusaurus/BrowserOnly";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Dashboard from "@site/src/components/LandingPage/Dashboard";
-import ParticleBackground from "@site/src/components/LandingPage/ParticleBackgroundVanilla";
-import SectionsBar from "@site/src/components/LandingPage/SectionsBar";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Layout from "@theme/Layout";
 import React from "react";
 import ItsGreenSection from "../components/Basics/ItsGreen";
@@ -20,7 +16,6 @@ import Storage from "../components/LandingPage/Storage";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  resetNavBarStyle();
 
   return (
     <Layout title={siteConfig.title} description={siteConfig.tagline}>

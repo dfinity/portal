@@ -1,13 +1,11 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Sustainability"
@@ -19,17 +17,21 @@ function FeaturePage() {
           <DarkHeroStyles></DarkHeroStyles>
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Sustainability</h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
+                Sustainability
+              </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              While having the security of Web3 blockchains, the performance and power consumption 
-              of the Internet Computer (IC) is comparable to Web2 and cloud technology stacks. 
-              The IC far outperforms traditional blockchain protocols in efficiency. 
-              <br />
-              <br />
-                * A single Google search is <i>four times more energy intensive</i> than a transaction on the IC.
-              <br />
-              <br />
-                * A single Ethereum transaction is almost <i>500 times more energy intensive</i> than an IC transaction.
+                While having the security of Web3 blockchains, the performance
+                and power consumption of the Internet Computer (IC) is
+                comparable to Web2 and cloud technology stacks. The IC far
+                outperforms traditional blockchain protocols in efficiency.
+                <br />
+                <br />* A single Google search is{" "}
+                <i>four times more energy intensive</i> than a transaction on
+                the IC.
+                <br />
+                <br />* A single Ethereum transaction is almost{" "}
+                <i>500 times more energy intensive</i> than an IC transaction.
               </p>
             </div>
           </div>
@@ -65,20 +67,23 @@ function FeaturePage() {
           >
             <h2>Energy consumption comparison</h2>
             <p>
-
-          To better understand the impact of the efficiency of the IC, it helps to see the comparison of energy costs.
-          Even with conservative estimations, the energy consumption of the Internet Computer is substantially lower than 
-          competing blockchain projects, but also existing (highly optimized) Web2 tech. See the table to put IC performance in perspective. Performance is measured in kWh/transaction.
-
-            <ul>
-              <li><strong>One Internet Computer transaction: 0.006</strong></li>
-              <li>One Solana transaction: 0.116</li>
-              <li>One Avalanche transaction: 2.7</li>
-              <li>One Algorand transaction: 4.760</li>
-              <li>One Tezos transaction: 41.450</li>
-              <li>One Cardano transaction: 51.590</li>
-            </ul>
-
+              To better understand the impact of the efficiency of the IC, it
+              helps to see the comparison of energy costs. Even with
+              conservative estimations, the energy consumption of the Internet
+              Computer is substantially lower than competing blockchain
+              projects, but also existing (highly optimized) Web2 tech. See the
+              table to put IC performance in perspective. Performance is
+              measured in kWh/transaction.
+              <ul>
+                <li>
+                  <strong>One Internet Computer transaction: 0.006</strong>
+                </li>
+                <li>One Solana transaction: 0.116</li>
+                <li>One Avalanche transaction: 2.7</li>
+                <li>One Algorand transaction: 4.760</li>
+                <li>One Tezos transaction: 41.450</li>
+                <li>One Cardano transaction: 51.590</li>
+              </ul>
             </p>
 
             <p className="mb-3 mt-6">

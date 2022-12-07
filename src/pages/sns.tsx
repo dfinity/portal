@@ -1,7 +1,6 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
@@ -44,7 +43,6 @@ const Card: React.FC<{
 };
 
 function SnsPage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Next Generation DAOs"

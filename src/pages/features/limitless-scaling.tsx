@@ -1,13 +1,11 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Limitless Scaling"
@@ -23,11 +21,13 @@ function FeaturePage() {
                 Limitless Scaling
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) can scale its capacity simply by
-              adding additional nodes to fuel new subnets. Nodes and subnets are added via the 
-              Network Nervous System (NNS). In contrast, most other blockchains have transaction limits 
-              baked into the protocol (e.g. adding more servers to Bitcoin does not 
-              increase its transaction volume) and need cumbersome layers to address scaling.
+                The Internet Computer (IC) can scale its capacity simply by
+                adding additional nodes to fuel new subnets. Nodes and subnets
+                are added via the Network Nervous System (NNS). In contrast,
+                most other blockchains have transaction limits baked into the
+                protocol (e.g. adding more servers to Bitcoin does not increase
+                its transaction volume) and need cumbersome layers to address
+                scaling.
               </p>
             </div>
           </div>
@@ -63,31 +63,36 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            See {" "}
+              See{" "}
               <Link href="https://dashboard.internetcomputer.org">
-              Internet Computer Dashboard
+                Internet Computer Dashboard
               </Link>{" "}
-            for the scale of the IC.
+              for the scale of the IC.
             </p>
             <h3>Subnet Architecture</h3>
             <p>
-            The Internet Computer Protocol is running on standardized node hardware in independent data centers around 
-            the world. The Network Nervous System governance system, scales the network by 
-            combining nodes from different data centers to spin up new subnet blockchains.
-            <br />
-            <br />
-            The Internet Computer's partitioning into subnet blockchains is what allows the 
-            network to scale. Each subnet blockchain is capable of processing 
-            update and query calls independently from other subnets. This means that the 
-            entire network can easily be scaled by simply adding more subnets to the network. 
-            For update calls that need to be processed on every node, this method of scaling 
-            the network can ensure that more update calls are processed per second. The 
-            Internet Computer is capable of adding hundreds of new subnets via the NNS.
-            <br />
-            <br />
-            For query calls, however, scalability can simply be achieved by adding more nodes 
-            to a subnet because these calls are processed locally on one node. The addition 
-            of more nodes and subnets to the network ensures web speed and infinite scalability.
+              The Internet Computer Protocol is running on standardized node
+              hardware in independent data centers around the world. The Network
+              Nervous System governance system, scales the network by combining
+              nodes from different data centers to spin up new subnet
+              blockchains.
+              <br />
+              <br />
+              The Internet Computer's partitioning into subnet blockchains is
+              what allows the network to scale. Each subnet blockchain is
+              capable of processing update and query calls independently from
+              other subnets. This means that the entire network can easily be
+              scaled by simply adding more subnets to the network. For update
+              calls that need to be processed on every node, this method of
+              scaling the network can ensure that more update calls are
+              processed per second. The Internet Computer is capable of adding
+              hundreds of new subnets via the NNS.
+              <br />
+              <br />
+              For query calls, however, scalability can simply be achieved by
+              adding more nodes to a subnet because these calls are processed
+              locally on one node. The addition of more nodes and subnets to the
+              network ensures web speed and infinite scalability.
             </p>
 
             <p className="mb-3 mt-6">

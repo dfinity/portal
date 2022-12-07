@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
@@ -11,7 +10,6 @@ import {
 } from "@site/src/components/Common/Card";
 
 function HTTPSOutcalls() {
-  resetNavBarStyle();
   return (
     <Layout
       title="HTTPS Outcalls"
@@ -41,10 +39,11 @@ function HTTPSOutcalls() {
                 HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The power of canister HTTPS outcalls on the Internet Computer is that it allows
-                smart contracts to directly connect to the Web 2.0 world, opening up
-                a plethora of use cases. Retrieve market data from crypto exchanges,
-                send emails, integrate with other blockchains, and more.
+                The power of canister HTTPS outcalls on the Internet Computer is
+                that it allows smart contracts to directly connect to the Web
+                2.0 world, opening up a plethora of use cases. Retrieve market
+                data from crypto exchanges, send emails, integrate with other
+                blockchains, and more.
               </p>
             </div>
           </div>
@@ -86,21 +85,28 @@ function HTTPSOutcalls() {
               of computations run on the blockchain.
             </p>
             <h3>The Oracle Problem</h3>
-              <p>A common limitation of blockchain technology is that smart contracts
-              can receive messages, but cannot send them to the world outside the
-              blockchain. For example, typical smart contracts can receive messages, but
-              cannot send emails and SMS's, nor can they query wikipedia or send HTTP requests
-              to other services. Historically, this has been a blocker to most software developers
-              diving into Web3. For this reason, obtaining off-chain data requires that a smart
-              contract interact with centralized oracle services, which are in the hands of intermediaries,
-              vulnerable to hacking, and subject to service fees.</p>
+            <p>
+              A common limitation of blockchain technology is that smart
+              contracts can receive messages, but cannot send them to the world
+              outside the blockchain. For example, typical smart contracts can
+              receive messages, but cannot send emails and SMS's, nor can they
+              query wikipedia or send HTTP requests to other services.
+              Historically, this has been a blocker to most software developers
+              diving into Web3. For this reason, obtaining off-chain data
+              requires that a smart contract interact with centralized oracle
+              services, which are in the hands of intermediaries, vulnerable to
+              hacking, and subject to service fees.
+            </p>
 
-              <h3>HTTPS Outcalls Replace Oracles</h3>
-              <p>Canister HTTPS outcalls on the Internet Computer blockchain
-              allow direct interaction with Web 2.0 and other blockchains without
-              oracles. Canister smart contracts can make HTTPS outcalls to specified
-              URLs to directly obtain off-chain data, or to interact with off-chain
-              systems, such as Web 2.0 services or enterprise IT infrastructure.</p>
+            <h3>HTTPS Outcalls Replace Oracles</h3>
+            <p>
+              Canister HTTPS outcalls on the Internet Computer blockchain allow
+              direct interaction with Web 2.0 and other blockchains without
+              oracles. Canister smart contracts can make HTTPS outcalls to
+              specified URLs to directly obtain off-chain data, or to interact
+              with off-chain systems, such as Web 2.0 services or enterprise IT
+              infrastructure.
+            </p>
             <p className="mb-3 mt-6">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
@@ -118,9 +124,9 @@ function HTTPSOutcalls() {
             Build with HTTPS Outcalls
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-           Connect your smart contracts directly with the Web 2.0. Retrieve IoT-related data,
-           stock exchange prices, weather data, and more - risk-free.
-            integrate with other blockchains, and more.
+            Connect your smart contracts directly with the Web 2.0. Retrieve
+            IoT-related data, stock exchange prices, weather data, and more -
+            risk-free. integrate with other blockchains, and more.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             <CardWithDescription

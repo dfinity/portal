@@ -1,6 +1,5 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Layout from "@theme/Layout";
 import React from "react";
 import HeroGraphic from "../components/NnsPage/HeroGraphic";
@@ -40,7 +39,6 @@ const Card: React.FC<{
 };
 
 function NnsPage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Network Nervous System (NNS)"

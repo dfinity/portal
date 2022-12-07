@@ -1,13 +1,11 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Multi-block TXs"
@@ -23,8 +21,9 @@ function FeaturePage() {
                 Multi-block TXs
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer blockchain can stretch the execution of a single transaction across multiple blocks. 
-              This allows very-long running smart contract computations to be initiated. 
+                The Internet Computer blockchain can stretch the execution of a
+                single transaction across multiple blocks. This allows very-long
+                running smart contract computations to be initiated.
               </p>
             </div>
           </div>
@@ -60,25 +59,33 @@ function FeaturePage() {
           >
             <h2>The IC's muli-block transaction capabilities is rare</h2>
             <p>
-           
-            Traditional blockchains that host smart contracts, always need to finish processing a transaction within a single block. 
-            In practice this means that when a smart contract function is invoked by a transaction, it must complete execution within the per-block 
-            "gas limit" (gas is the equivalent of cycles on the Internet Computer).
+              Traditional blockchains that host smart contracts, always need to
+              finish processing a transaction within a single block. In practice
+              this means that when a smart contract function is invoked by a
+              transaction, it must complete execution within the per-block "gas
+              limit" (gas is the equivalent of cycles on the Internet Computer).
             </p>
 
             <p>
-            The Internet Computer is designed to allow any online system or service to be built using smart contracts called canisters, to support a 
-            "blockchain singularity." This means that when a transaction invokes a smart contract, the computation involved must be able to run for a 
-            very long time if required, and consume as many computational cycles as needed.
+              The Internet Computer is designed to allow any online system or
+              service to be built using smart contracts called canisters, to
+              support a "blockchain singularity." This means that when a
+              transaction invokes a smart contract, the computation involved
+              must be able to run for a very long time if required, and consume
+              as many computational cycles as needed.
             </p>
 
             <p>
-            This means that on the Internet Computer, a smart contract is capable of performing complex AI calculations, or applying a graphical 
-            filter to an image, say — although there is still a "max cycles limit," it's just very high.
+              This means that on the Internet Computer, a smart contract is
+              capable of performing complex AI calculations, or applying a
+              graphical filter to an image, say — although there is still a "max
+              cycles limit," it's just very high.
             </p>
 
             <p>
-            Multi-block TXs are made possible by a broader aspect of the Internet Computer's design, called Deterministic Time Slicing (DTS).
+              Multi-block TXs are made possible by a broader aspect of the
+              Internet Computer's design, called Deterministic Time Slicing
+              (DTS).
             </p>
 
             <p className="mb-3 mt-6">
@@ -99,7 +106,7 @@ function FeaturePage() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
-       
+
             <CardWithDescription
               title="Sample Code"
               description="Learn about IC capabilities from community samples."
@@ -110,9 +117,6 @@ function FeaturePage() {
               description="Join the forum dicussion"
               href="https://forum.dfinity.org/t/deterministic-time-slicing/10635"
             />
-
-
-          
           </div>
         </section>
       </main>

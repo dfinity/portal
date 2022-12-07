@@ -1,7 +1,5 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
@@ -85,7 +83,6 @@ const SmallCard: React.FC<{
 };
 
 function FeaturesPage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Game-changing Features"
