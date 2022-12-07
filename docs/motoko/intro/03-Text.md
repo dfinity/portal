@@ -1,6 +1,6 @@
 # 03 - Strings
 
-In Motoko strings (type name is [`Text`](../official/base/Text.md)) can be written as text surrounded by double quotes.
+In Motoko strings (type name is [`Text`](../main/base/Text.md)) can be written as text surrounded by double quotes.
 
 ```motoko
 "Hello, Motoko!"

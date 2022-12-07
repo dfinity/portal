@@ -1,6 +1,6 @@
 const redirects = `
-  /developers-guide/quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/base-libraries/* /docs/current/motoko/motoko-ref/:splat
+  /developers-guide/quickstart /docs/current/tutorials/create_first_dapp
+  /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/build/candid/candid-concepts
@@ -8,18 +8,18 @@ const redirects = `
   /docs/candid-guide/candid-intro /docs/current/developer-docs/build/candid/candid-intro
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
-  /docs/current/developer-docs /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/current/developer-docs /docs/current/tutorials/create_first_dapp
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat
-  /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/motoko
-  /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/:splat
+  /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
+  /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/build/cdks/cdk-rs-dfinity
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/build/agents
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
-  /docs/developers-guide/about-this-guide /docs/current/motoko/about-this-guide
-  /docs/developers-guide/basic-syntax-rules /docs/current/motoko/language-manual
+  /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
+  /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/deploy/computation-and-storage-costs
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
@@ -35,7 +35,7 @@ const redirects = `
   /docs/developers-guide/default-wallet /docs/current/developer-docs/build/project-setup/cycles-wallet
   /docs/current/developer-docs/build/project-setup/default-wallet /docs/current/developer-docs/build/project-setup/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/build/project-setup/design-dapps
-  /docs/developers-guide/glossary /docs/current/developer-docs/glossary
+  /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/build/install-upgrade-remove
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/build/lang-service-ide
   /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/build/install-upgrade-remove
@@ -73,46 +73,46 @@ const redirects = `
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/introduction/welcome /docs/current/developer-docs/ic-overview
-  /docs/language-guide/about-this-guide /docs/current/motoko/about-this-guide
-  /docs/language-guide/actor-classes /docs/current/motoko/actor-classes
-  /docs/language-guide/actors-async /docs/current/motoko/actors-async
-  /docs/language-guide/advanced-discussion /docs/current/motoko/advanced-discussion
-  /docs/language-guide/basic-concepts /docs/current/motoko/basic-concepts
-  /docs/language-guide/caller-id /docs/current/motoko/caller-id
-  /docs/language-guide/compatibility /docs/current/motoko/compatibility
-  /docs/language-guide/compiler-ref /docs/current/motoko/compiler-ref
-  /docs/language-guide/control-flow /docs/current/motoko/control-flow
-  /docs/language-guide/cycles /docs/current/motoko/cycles
-  /docs/language-guide/errors /docs/current/motoko/errors
-  /docs/language-guide/extrastuff /docs/current/motoko/extrastuff
-  /docs/language-guide/heartbeats /docs/current/motoko/heartbeats
-  /docs/language-guide/language-manual /docs/current/motoko/language-manual
-  /docs/language-guide/local-objects-classes /docs/current/motoko/local-objects-classes
-  /docs/language-guide/modules-and-imports /docs/current/motoko/modules-and-imports
-  /docs/language-guide/motoko-grammar /docs/current/motoko/motoko-grammar
-  /docs/language-guide/motoko-introduction /docs/current/motoko/motoko-introduction
-  /docs/language-guide/motoko /docs/current/motoko/motoko
-  /docs/language-guide/mutable-state /docs/current/motoko/mutable-state
-  /docs/language-guide/overview /docs/current/motoko/overview
-  /docs/language-guide/pattern-matching /docs/current/motoko/pattern-matching
-  /docs/language-guide/sharing /docs/current/motoko/sharing
-  /docs/language-guide/stablememory /docs/current/motoko/stablememory
-  /docs/language-guide/structural-equality /docs/current/motoko/structural-equality
-  /docs/language-guide/style /docs/current/motoko/style
-  /docs/language-guide/upgrades /docs/current/motoko/upgrades
+  /docs/language-guide/about-this-guide /docs/current/motoko/main/about-this-guide
+  /docs/language-guide/actor-classes /docs/current/motoko/main/actor-classes
+  /docs/language-guide/actors-async /docs/current/motoko/main/actors-async
+  /docs/language-guide/advanced-discussion /docs/current/motoko/main/advanced-discussion
+  /docs/language-guide/basic-concepts /docs/current/motoko/main/basic-concepts
+  /docs/language-guide/caller-id /docs/current/motoko/main/caller-id
+  /docs/language-guide/compatibility /docs/current/motoko/main/compatibility
+  /docs/language-guide/compiler-ref /docs/current/motoko/main/compiler-ref
+  /docs/language-guide/control-flow /docs/current/motoko/main/control-flow
+  /docs/language-guide/cycles /docs/current/motoko/main/cycles
+  /docs/language-guide/errors /docs/current/motoko/main/errors
+  /docs/language-guide/extrastuff /docs/current/motoko/main/extrastuff
+  /docs/language-guide/heartbeats /docs/current/motoko/main/heartbeats
+  /docs/language-guide/language-manual /docs/current/motoko/main/language-manual
+  /docs/language-guide/local-objects-classes /docs/current/motoko/main/local-objects-classes
+  /docs/language-guide/modules-and-imports /docs/current/motoko/main/modules-and-imports
+  /docs/language-guide/motoko-grammar /docs/current/motoko/main/motoko-grammar
+  /docs/language-guide/motoko-introduction /docs/current/motoko/main/motoko-introduction
+  /docs/language-guide/motoko /docs/current/motoko/main/motoko
+  /docs/language-guide/mutable-state /docs/current/motoko/main/mutable-state
+  /docs/language-guide/overview /docs/current/motoko/main/overview
+  /docs/language-guide/pattern-matching /docs/current/motoko/main/pattern-matching
+  /docs/language-guide/sharing /docs/current/motoko/main/sharing
+  /docs/language-guide/stablememory /docs/current/motoko/main/stablememory
+  /docs/language-guide/structural-equality /docs/current/motoko/main/structural-equality
+  /docs/language-guide/style /docs/current/motoko/main/style
+  /docs/language-guide/upgrades /docs/current/motoko/main/upgrades
   /docs/languages/languages-overview /docs/current/developer-docs/build/cdks/
   /docs/operators-guide/ops-guide /docs/current/developer-docs/ic-overview
-  /docs/quickstart/1-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/2-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/3-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/4-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/5-quickstart /docs/current/developer-docs/quickstart/create_first_dapp
-  /docs/quickstart/cycles-faucet /docs/current/developer-docs/quickstart/cycles-faucet
-  /docs/quickstart/local-quickstart /docs/current/developer-docs/quickstart/local-quickstart
-  /docs/quickstart/network-quickstart /docs/current/developer-docs/quickstart/network-quickstart
+  /docs/quickstart/1-quickstart /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/2-quickstart /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/3-quickstart /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/4-quickstart /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/5-quickstart /docs/current/tutorials/create_first_dapp
+  /docs/quickstart/cycles-faucet /docs/current/tutorials/cycles-faucet
+  /docs/quickstart/local-quickstart /docs/current/tutorials/local-quickstart
+  /docs/quickstart/network-quickstart /docs/current/tutorials/network-quickstart
   /docs/quickstart/newcomers /docs/current/developer-docs/ic-overview
-  /docs/quickstart/quickstart-intro /docs/current/developer-docs/quickstart/create_first_dapp
+  /docs/quickstart/quickstart-intro /docs/current/tutorials/create_first_dapp
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
@@ -143,10 +143,10 @@ const redirects = `
   /docs/samples/tokentransfer /docs/current/samples/token-transfer
   /docs/samples/token-transfer /docs/current/samples/token-transfer
   /docs/search /developers
-  /docs/security-best-practices/general-security-best-practices /docs/current/references/security/general-security-best-practices
-  /docs/security-best-practices/introduction /docs/current/references/security/
-  /docs/security-best-practices/rust-canister-development-security-best-practices /docs/current/references/security/rust-canister-development-security-best-practices
-  /docs/security-best-practices/web-app-development-security-best-practices /docs/current/references/security/web-app-development-security-best-practices
+  /docs/security-best-practices/general-security-best-practices /docs/current/developer-docs/best-practices/security/general-security-best-practices
+  /docs/security-best-practices/introduction /docs/current/developer-docs/best-practices/security/
+  /docs/security-best-practices/rust-canister-development-security-best-practices /docs/current/developer-docs/best-practices/security/rust-canister-development-security-best-practices
+  /docs/security-best-practices/web-app-development-security-best-practices /docs/current/developer-docs/best-practices/security/web-app-development-security-best-practices
   /docs/support /docs/current/developer-docs/ic-overview
   /docs/token-holders/custody-options-intro /docs/current/tokenomics/token-holders/custody-options-intro
   /docs/token-holders/nns-app-quickstart /docs/current/tokenomics/token-holders/nns-app-quickstart

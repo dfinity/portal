@@ -21,4 +21,4 @@ In the Internet Computer, a canister's source code cannot always be inspected, a
 
 ## How to upgrade safely
 
-This is explored in depth in [Motoko upgrade compatibility](../../motoko/official/compatibility.md)
+This is explored in depth in [Motoko upgrade compatibility](../../motoko/main/compatibility.md)

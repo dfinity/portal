@@ -1,6 +1,6 @@
 # 04 - Booleans
 
-A [Bool](../official/base/Bool.md) can be either `true` or `false`.
+A [Bool](../main/base/Bool.md) can be either `true` or `false`.
 
 Motoko defines a handful of operators that work with Bools.
 
@@ -54,7 +54,7 @@ hand side if they don't have to.
 `or` evaluates the right hand side if the left hand side is `false`.
 
 ## Bool variables
-You need to use type [Bool](../official/base/Bool.md) to declare bollean variables:
+You need to use type [Bool](../main/base/Bool.md) to declare bollean variables:
 ```motoko
 let amILying : Bool = true;
 let canIBeTrusted = false;
