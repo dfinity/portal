@@ -105,3 +105,19 @@ if (A == X) {
     Debug.print("A and X are different!")
 };
 ```
+
+## Converting other types to `Text`
+Most of the types can be converted to `Text` using `toText()` function from the type's module.
+
+```motoko
+import Nat "mo:base/Nat";
+let natVal : Nat = 32;
+Nat.toText(natVal)
+```
+
+
+```motoko
+import Int "mo:base/Int";
+let intVal : Int = -32;
+Int.toText(intVal)
+```

@@ -32,7 +32,7 @@ true or false  // => true
 true or true   // => true
 ```
 
-### Logical operator `not`
+## Logical operator `not`
 Motoko supports negation of Bools either the `not` operator.
 
 ```motoko
@@ -44,7 +44,7 @@ not false // => true
 ```
 
 
-### Evaluation strategy
+## Evaluation strategy
 
 `and` and `or` are _short circuiting_, meaning they don't evaluate the right
 hand side if they don't have to.
@@ -52,3 +52,14 @@ hand side if they don't have to.
 `and` evaluates the right hand side if the left hand side is `true`.
 
 `or` evaluates the right hand side if the left hand side is `false`.
+
+## Bool variables
+You need to use type [Bool](../official/base/Bool.md) to declare bollean variables:
+```motoko
+let amILying : Bool = true;
+let canIBeTrusted = false;
+
+let shouldYouHireMe = not amILying and canIBeTrusted;
+shouldYouHireMe
+
+```
