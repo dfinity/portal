@@ -65,13 +65,13 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: getRedirects(),
-        createRedirects: (existingPath) => getSplatRedirects(existingPath),
-      },
-    ],
+    // [
+    //   "@docusaurus/plugin-client-redirects",
+    //   {
+    //     redirects: getRedirects(),
+    //     createRedirects: (existingPath) => getSplatRedirects(existingPath),
+    //   },
+    // ],
   ],
 
   stylesheets: [
@@ -337,6 +337,27 @@ const config = {
             position: "left",
             sidebarId: "motoko",
             label: "Motoko",
+          },
+          {
+            type: "dropdown",
+            position: "left",
+            label: "Other",
+            items: [
+              {
+                label: "Developers Home",
+                to: "/developers",
+              },
+              {
+                label: "Developer Docs",
+                type: "doc",
+                docId: "concepts/index",
+              },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              {
+                label: "Motoko Playground",
+                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              },
+            ],
           },
           // {
           //   type: "docSidebar",

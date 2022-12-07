@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Hero from "@site/src/components/BitcoinIntegrationPage/Hero";
 import HowItWorks from "@site/src/components/BitcoinIntegrationPage/HowItWorks";
 import ReleaseTimeline from "@site/src/components/BitcoinIntegrationPage/ReleaseTimeline";
@@ -9,7 +8,6 @@ import Head from "@docusaurus/Head";
 import Videos from "@site/src/components/BitcoinIntegrationPage/Videos";
 
 function BitcoinIntegration() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Bitcoin Integration"

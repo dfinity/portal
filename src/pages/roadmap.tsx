@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import useGlobalData from "@docusaurus/useGlobalData";
 import completedRoadmapItems from "@site/roadmap/completed";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import GithubIcon from "@site/static/img/token-holders/social/github.svg";
@@ -19,8 +18,6 @@ import Head from "@docusaurus/Head";
 const MotionLink = motion(Link);
 
 const RoadmapPage: React.FC = () => {
-  resetNavBarStyle();
-
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
 

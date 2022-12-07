@@ -12,7 +12,6 @@ import Project from "../components/ShowcasePage/Project";
 import { useQueryParam } from "../utils/use-query-param";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
@@ -47,7 +46,6 @@ function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
   const filtersRef = useRef<HTMLDivElement>();
-  resetNavBarStyle();
 
   const projects = useGlobalData()["showcase-projects"]
     .default as ShowcaseProject[];
