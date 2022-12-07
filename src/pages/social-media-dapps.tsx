@@ -106,6 +106,7 @@ function SocialMediaDappsPage() {
     <Layout
       title="Social Media Decentralized"
       description="Take full ownership and control over your social media plaforms."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -137,7 +138,8 @@ function SocialMediaDappsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Take full ownership and control over your social media platforms.
+                  Take full ownership and control over your social media
+                  platforms.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
                   <Link href="#web3-dapps" className="button button-white">
@@ -184,12 +186,12 @@ function SocialMediaDappsPage() {
             >
               We're entering a new era of social media. The success of the new
               wave of Web3 social media applications lies in decentralization.
-              Today, it is the boards of tech giants that steer the direction
-              of social media apps, often to exploit users for profit.
-              Centralized apps have also been known to selectively suppress
-              opinions. Internet Computer blockchain flips the script by
-              enabling decentralized apps (dapps) to turn into DAOs that put
-              the control in the hands of the community.
+              Today, it is the boards of tech giants that steer the direction of
+              social media apps, often to exploit users for profit. Centralized
+              apps have also been known to selectively suppress opinions.
+              Internet Computer blockchain flips the script by enabling
+              decentralized apps (dapps) to turn into DAOs that put the control
+              in the hands of the community.
             </motion.p>
           </AnimateSpawn>
           <div className="relative z-[-1]">

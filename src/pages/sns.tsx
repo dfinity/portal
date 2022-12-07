@@ -52,6 +52,7 @@ function SnsPage() {
       description="The Service Nervous Systems (SNS) puts the autonomy
       in DAO. No centralized power, no administrative overhead, no
       legal headache, only code and its community."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

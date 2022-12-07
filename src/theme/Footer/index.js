@@ -70,7 +70,7 @@ function Footer({ editPath }) {
           {editPath && (
             <Link
               className="absolute -top-8 right-0 text-white hover:text-white-80 hover:no-underline tw-title-navigation-on-page rounded-full py-1 px-4 bg-[#260F59] -translate-y-1/2 inline-flex items-center gap-1"
-              href={`https://github.com/dfinity/portal/edit/master/${editPath}`}
+              href={editPath}
             >
               <EditIcon></EditIcon>
               Edit this page

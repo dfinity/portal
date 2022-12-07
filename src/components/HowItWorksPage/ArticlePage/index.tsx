@@ -16,7 +16,11 @@ function Index() {
   const article = articles.find((a) => a.slug === articleSlug);
 
   return (
-    <Layout title={article.title} description={article.abstract || ""}>
+    <Layout
+      title={article.title}
+      description={article.abstract || ""}
+      editPath={`https://github.com/dfinity/portal/edit/master/${article.fileName}`}
+    >
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}

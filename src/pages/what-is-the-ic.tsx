@@ -23,12 +23,14 @@ const MotionLink = motion(Link);
 const RoadmapPage: React.FC = () => {
   resetNavBarStyle();
 
-  const data = useGlobalData()["what-is-the-ic-data"].default as WhatIsIcpTopic[];
+  const data = useGlobalData()["what-is-the-ic-data"]
+    .default as WhatIsIcpTopic[];
 
   return (
     <Layout
       title="What is the Internet Computer"
       description="The Internet Computer (IC) is the world computer of the Web 3.0 age. This page explains what the IC is and why it is a great choice to host Web 3.0 apps."
+      editPath="https://github.com/dfinity/portal/tree/master/what-is-the-ic"
     >
       <Head>
         <meta
@@ -55,11 +57,14 @@ const RoadmapPage: React.FC = () => {
                 Internet Computer?
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) is the only general-purpose blockchain that runs decentralized apps at web speed.
+                The Internet Computer (IC) is the only general-purpose
+                blockchain that runs decentralized apps at web speed.
               </p>
 
               <p className="tw-lead-sm md:tw-lead mb-0">
-              It is the World Computer that can replace traditional IT and enable a new generation of Web3 apps and services running entirely on-chain.
+                It is the World Computer that can replace traditional IT and
+                enable a new generation of Web3 apps and services running
+                entirely on-chain.
               </p>
             </div>
           </div>

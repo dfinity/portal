@@ -42,6 +42,7 @@ function Videos() {
       description={
         "Don't like reading? Learn how the Internet Computer works from feature presentations, demos, interviews, and conference talks."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

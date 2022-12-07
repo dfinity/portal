@@ -46,6 +46,7 @@ function NnsPage() {
       title="Network Nervous System (NNS)"
       // fill in meta description
       description="The NNS is one of the world's largest DAOs that governs the Internet Computer."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

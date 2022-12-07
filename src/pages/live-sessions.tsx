@@ -116,6 +116,7 @@ function LiveSessionsPage(): JSX.Element {
     <Layout
       title="Live Sessions"
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

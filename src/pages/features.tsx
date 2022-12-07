@@ -93,6 +93,7 @@ function FeaturesPage() {
 possible in blockchain technology today. ICP is not only 23,500X more efficient
 than the next most efficient blockchain, it also provides unique features not
 seen on any other chain."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
 
