@@ -68,6 +68,13 @@ Some versions of the SDK prompted you to install Xcode when creating a new proje
 
 You can check whether you have the developer tools installed by running `xcode-select -p`. You can install the developer tools by running `xcode-select --install`.
 
+## Apple ARM Silicon
+If you are using a Mac with Apple silicon and are having issues (such as `bad CPU type in executable: dfx`), you may need to install Rosetta.
+
+```shell
+softwareupdate --install-rosetta 
+```
+
 ## Failed build when using VMs
 
 If you are running `dfx` using a virtual machine image on Ubuntu or CentOS, you might see an error message that looks like this when you attempt to run the `dfx build` command:
