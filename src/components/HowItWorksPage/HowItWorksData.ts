@@ -6,6 +6,7 @@ export type HowItWorksArticle = {
   coverImage: string;
   slug: string;
   content: string;
+  fileName: string;
 };
 
 export type HowItWorksCard = {

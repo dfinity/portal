@@ -14,6 +14,7 @@ function FeaturePage() {
       title="Reverse Gas"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -22,9 +23,11 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Reverse Gas</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              On the Internet Computer (IC), a browser is all you need to interact with smart contracts. 
-              You do not have to overcome any hurdles such as creating a wallet, hold tokens, or pay 
-              expensive gas fees. This is in contrast to other blockchains, where users need to acquire tokens to do anything.
+                On the Internet Computer (IC), a browser is all you need to
+                interact with smart contracts. You do not have to overcome any
+                hurdles such as creating a wallet, hold tokens, or pay expensive
+                gas fees. This is in contrast to other blockchains, where users
+                need to acquire tokens to do anything.
               </p>
             </div>
           </div>
@@ -50,19 +53,25 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-        
             <h2>Reverse Gas Model (AKA "canister pays")</h2>
             <p>
-            In the "Reverse Gas model" developers pre-pay costs by loading canisters with 
-            computation cycles. So users can interact with a dapp without having to pay in 
-            tokens. Cycles are stable in cost are obtained by converting ICP tokens. 
-            This allows developers to know in advance how much they will need to spend 
-            on computation.
-            <br />
-            <br />
-            As an example, the  <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">Motoko Playground</Link> dapp is hosted and executed entirely 
-            on-chain and it does not require visitors to pay for the computation. 
-            The Internet Identity app is an application running on the IC that is free to use.
+              In the "Reverse Gas model" developers pre-pay costs by loading
+              canisters with computation cycles. So users can interact with a
+              dapp without having to pay in tokens. Cycles are stable in cost
+              are obtained by converting ICP tokens. This allows developers to
+              know in advance how much they will need to spend on computation.
+              <br />
+              <br />
+              As an example, the{" "}
+              <Link
+                href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"
+                target="_blank"
+              >
+                Motoko Playground
+              </Link>{" "}
+              dapp is hosted and executed entirely on-chain and it does not
+              require visitors to pay for the computation. The Internet Identity
+              app is an application running on the IC that is free to use.
             </p>
 
             <YoutubeVideoEmbed
@@ -70,10 +79,6 @@ function FeaturePage() {
               className="mt-10 md:mt-10"
               altText="Community Conversations | Charging Canister Cycles"
             ></YoutubeVideoEmbed>
-
-
-
-
           </div>
         </section>
 
@@ -87,18 +92,17 @@ function FeaturePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             {/* add or remove CardWithDescription components on demand */}
 
-           
             <CardWithDescription
               title="Cycles Wallet"
               description="Learn what a cycles wallet is"
               href="https://support.dfinity.org/hc/en-us/articles/5946641657108-Cycles-Wallet"
             />
-             <CardWithDescription
+            <CardWithDescription
               title="Cycles"
               description="Learn what cycles are"
               href="https://wiki.internetcomputer.org"
             />
-            
+
             <CardWithDescription
               title="DFINITY Cycles Faucet"
               description="Learn how to access free cycles to pay for IC hosting resources."
@@ -110,7 +114,6 @@ function FeaturePage() {
               description="Learn about IC capabilities from community samples."
               href="/samples"
             />
-           
           </div>
         </section>
       </main>

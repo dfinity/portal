@@ -13,6 +13,7 @@ function FeaturePage() {
       title="Daemon Contracts"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -23,8 +24,10 @@ function FeaturePage() {
                 Daemon Contracts
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              On the Internet Computer blockchain, you can create canister smart contracts that run like daemon processes — 
-              that is, you can configure them so that they are automatically activated by the network itself at specified block intervals.
+                On the Internet Computer blockchain, you can create canister
+                smart contracts that run like daemon processes — that is, you
+                can configure them so that they are automatically activated by
+                the network itself at specified block intervals.
               </p>
             </div>
           </div>
@@ -60,26 +63,33 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            When smart contracts are hosted on traditional blockchain networks, computations can be only be invoked by submitting a new 
-            transaction to their networks. This means that if, say, a DeFi (decentralized finance) smart contract needs to periodically 
-            perform some action, such as recording the latest asset prices published by DEXs (decentralized exchanges), a traditional 
-            off-chain system such as software running on a centralized cloud service must be configured to periodically submit transactions.
-            </p>
-            
-            <p>
-            The approach that must be used with traditional blockchains is complex, fault prone, and introduces several problems native to 
-            centralization. For example, who will be responsible for running the centralized infrastructure, and would such a person become a 
-            de facto "controller" or "owner" of an otherwise decentralized financial system in the eyes of financial regulator?
+              When smart contracts are hosted on traditional blockchain
+              networks, computations can be only be invoked by submitting a new
+              transaction to their networks. This means that if, say, a DeFi
+              (decentralized finance) smart contract needs to periodically
+              perform some action, such as recording the latest asset prices
+              published by DEXs (decentralized exchanges), a traditional
+              off-chain system such as software running on a centralized cloud
+              service must be configured to periodically submit transactions.
             </p>
 
             <p>
-            The Internet Computer provides a means to avoid such problems, by allowing canister smart contracts to be configured so that they aer invoked by the blockchain itself, at some specified block interval.
+              The approach that must be used with traditional blockchains is
+              complex, fault prone, and introduces several problems native to
+              centralization. For example, who will be responsible for running
+              the centralized infrastructure, and would such a person become a
+              de facto "controller" or "owner" of an otherwise decentralized
+              financial system in the eyes of financial regulator?
             </p>
 
+            <p>
+              The Internet Computer provides a means to avoid such problems, by
+              allowing canister smart contracts to be configured so that they
+              aer invoked by the blockchain itself, at some specified block
+              interval.
+            </p>
           </div>
         </section>
-
-    
       </main>
     </Layout>
   );

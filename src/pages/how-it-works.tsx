@@ -107,6 +107,7 @@ function HowItWorks() {
     <Layout
       title="How It Works"
       description="Learn how the Internet Computer blockchain realizes the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles."
+      editPath={`https://github.com/dfinity/portal/tree/master/how-it-works`}
     >
       <style>
         {css`
@@ -139,7 +140,10 @@ function HowItWorks() {
                 Realizing the Vision of the World Computer
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                Learn how the Internet Computer blockchain realizes the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles.
+                Learn how the Internet Computer blockchain realizes the vision
+                of the World Computer. Dive into its technology, open-source
+                repositories, in-depth video academy sessions, white papers,
+                publications, and detailed technology articles.
               </p>
             </div>
           </div>

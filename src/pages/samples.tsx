@@ -193,6 +193,7 @@ function Samples(): React.ReactNode {
       description={
         "Learn how projects are built on the Internet Computer to be secure and efficient. Dive into official examples or into open source community projects to figure out how things work under the hood."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

@@ -96,6 +96,7 @@ function Samples(): JSX.Element {
       description={
         "Explore developer tools by DFINITY and the community, and use them to improve and ease your development journey."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

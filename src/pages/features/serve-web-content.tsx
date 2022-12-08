@@ -14,6 +14,7 @@ function FeaturePage() {
       title="Serve Web Content"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -24,10 +25,11 @@ function FeaturePage() {
                 Serve Web Content
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-
-              The Internet Computer (IC) is the only blockchain that can host a full dapp; frontend, backend, and data included.
-              This is a distinguishing IC feature allowing dapps to run 100% on-chain while inheriting the security and decentralization of blockchain, but without sacrificing speed or affordability.
-
+                The Internet Computer (IC) is the only blockchain that can host
+                a full dapp; frontend, backend, and data included. This is a
+                distinguishing IC feature allowing dapps to run 100% on-chain
+                while inheriting the security and decentralization of
+                blockchain, but without sacrificing speed or affordability.
               </p>
             </div>
           </div>
@@ -60,22 +62,26 @@ function FeaturePage() {
           >
             <h2>Enabling true Web3</h2>
             <p>
-
-            Today, most dapps built on other blockchains rely on centralized cloud providers (e.g. AWS, GCP) to
-            host their frontend, amongst other parts, which introduces a single point of failure.
-            An example pattern in the industry is to have a smart contract performing some computation, yet,
-            the frontend is often served from a Node server. This not only includes security risks by possible
-            tampering with the frontend, but dapps running on centralized servers can be taken down at any point,
-            which negates the censorship resistant nature of blockchain. Web3 requires that all parts of a dapp
-            are realized by smart contracts. Further, Web3 functionality is only achievable by blockchain
-            applications running fully decentralized, which includes smart contract logic, on-chain data
-            storage and serving frontend to the user's browser.
-            <br />
-            <br />
-            Hosting dapps 100% on-chain provides the additional benefit of letting DAOs launched on the
-            IC to completely control these applications with on-chain governance.
-            This lets users be fully in control of these dapps realizing
-            complete decentralization and democratization of web applications.
+              Today, most dapps built on other blockchains rely on centralized
+              cloud providers (e.g. AWS, GCP) to host their frontend, amongst
+              other parts, which introduces a single point of failure. An
+              example pattern in the industry is to have a smart contract
+              performing some computation, yet, the frontend is often served
+              from a Node server. This not only includes security risks by
+              possible tampering with the frontend, but dapps running on
+              centralized servers can be taken down at any point, which negates
+              the censorship resistant nature of blockchain. Web3 requires that
+              all parts of a dapp are realized by smart contracts. Further, Web3
+              functionality is only achievable by blockchain applications
+              running fully decentralized, which includes smart contract logic,
+              on-chain data storage and serving frontend to the user's browser.
+              <br />
+              <br />
+              Hosting dapps 100% on-chain provides the additional benefit of
+              letting DAOs launched on the IC to completely control these
+              applications with on-chain governance. This lets users be fully in
+              control of these dapps realizing complete decentralization and
+              democratization of web applications.
             </p>
 
             <YoutubeVideoEmbed
@@ -83,17 +89,19 @@ function FeaturePage() {
               className="mt-10 md:mt-10"
               altText="Community Conversations | Overview of Building a Front End on the Internet Computer"
             ></YoutubeVideoEmbed>
-          
 
             <h2>Cheap Storage</h2>
             <p>
-
-            Unlike most blockchains, the efficiency and costs of the IC approaches the traditional IT
-            stack so its is economically feasible to host dapps with lots of data and content (not just small smart contracts as in other blockchains).
-            <br />
-
-            For comparison: <i>it costs hundreds of millions of dollars to store a GB of data on Ethereum.
-            It only costs a few dollars on the IC.</i>
+              Unlike most blockchains, the efficiency and costs of the IC
+              approaches the traditional IT stack so its is economically
+              feasible to host dapps with lots of data and content (not just
+              small smart contracts as in other blockchains).
+              <br />
+              For comparison:{" "}
+              <i>
+                it costs hundreds of millions of dollars to store a GB of data
+                on Ethereum. It only costs a few dollars on the IC.
+              </i>
             </p>
             <YoutubeVideoEmbed
               videoId="JAQ1dkFvfPI"
@@ -101,36 +109,48 @@ function FeaturePage() {
               altText="Community Conversations | How to Host a Website on the Internet Computer"
             ></YoutubeVideoEmbed>
 
-
             <h2>Smart contracts that can process HTTP requests</h2>
             <p>
-
-            Blockchains differ in their processing of computation from regular web servers, which makes serving web a difficult task.
-            To overcome this, the IC introduces something called boundary nodes. These nodes act as a layer that translates HTTP requests from users to messages that can be processed by
-            smart contracts running on the IC. This allows users to update the state of the blockchain
-            simply by interacting with a browser.
+              Blockchains differ in their processing of computation from regular
+              web servers, which makes serving web a difficult task. To overcome
+              this, the IC introduces something called boundary nodes. These
+              nodes act as a layer that translates HTTP requests from users to
+              messages that can be processed by smart contracts running on the
+              IC. This allows users to update the state of the blockchain simply
+              by interacting with a browser.
             </p>
 
             <h3>SEO</h3>
             <p>
-            The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms.
+              The dapps running on the Internet Computer seamlessly integrate
+              into the Web 2.0 world as crawlers are able to access them
+              directly on-chain. This allows dapps to be indexed by search
+              engines and for their metadata to be read in order to generate
+              previews and cards on social platforms.
             </p>
 
             <h3>Reverse gas model</h3>
             <p>
-
-            In dapps built on Ethereum (as an example), users require a wallet or tokens to use it.
-            This slows down adoption of dapps because using a dapp is not as simple as clicking on a
-            website link; it requires users to buy tokens, install browser plugins, etc.
-            IC dapps have he "Reverse Gas model" where users can interact with a dapp without having to pay in
-            tokens since the canister can store a certain amount of cycles and pay for the user.
-            <br />
-
-            For example, <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">
-            the Motoko Playground dapp</Link> is hosted and executed entirely on-chain and it does not require visitors to pay for the computation.
+              In dapps built on Ethereum (as an example), users require a wallet
+              or tokens to use it. This slows down adoption of dapps because
+              using a dapp is not as simple as clicking on a website link; it
+              requires users to buy tokens, install browser plugins, etc. IC
+              dapps have he "Reverse Gas model" where users can interact with a
+              dapp without having to pay in tokens since the canister can store
+              a certain amount of cycles and pay for the user.
+              <br />
+              For example,{" "}
+              <Link
+                href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"
+                target="_blank"
+              >
+                the Motoko Playground dapp
+              </Link>{" "}
+              is hosted and executed entirely on-chain and it does not require
+              visitors to pay for the computation.
             </p>
             <p className="mb-3 mt-6">
-            <Link
+              <Link
                 href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
@@ -139,7 +159,6 @@ function FeaturePage() {
               is hosted and executed entirely on-chain and it does not require
               visitors to pay for the computation.
             </p>
-
           </div>
         </section>
 
