@@ -42,8 +42,8 @@ const config = {
     ? process.env.DEPLOY_PRIME_URL
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
