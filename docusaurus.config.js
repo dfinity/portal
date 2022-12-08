@@ -313,12 +313,7 @@ const config = {
             docId: "ic-overview",
             label: "Home",
           },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "concepts",
-            label: "Introduction",
-          },
+
           {
             type: "docSidebar",
             position: "left",
@@ -329,7 +324,7 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "developer-docs",
-            label: "Developer Guides",
+            label: "Guides",
           },
           {
             type: "docSidebar",
