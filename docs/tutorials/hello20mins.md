@@ -69,7 +69,7 @@ To verify that `dfx` is properly installed, run:
 
     $ dfx --version
 
-The terminal should show you the most recent version ([See SDK release notes](../developer-docs/updates/release-notes/release-notes.md)).
+The terminal should show you the most recent version ([See SDK release notes](https://github.com/dfinity/sdk/releases)).
 
 ## Create a project (2 min)
 
@@ -223,9 +223,7 @@ Few notes about cycles:
 
 -   It takes 4 trillion cycles to deploy a canister.
 
--   You can see a table of compute and storage costs here: [Computation
-    and storage
-    costs](../deploy/computation-and-storage-costs).
+-   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/deploy/computation-and-storage-costs).
 
 ### Check the connection to the Internet Computer blockchain mainnet (Terminal B)
 

@@ -27,7 +27,9 @@ Before you download and install this release of the SDK, verify the following:
 
     You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](../concepts/tokens-cycles#get-cycles). For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart). For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developer-docs/build/project-setup/cycles-wallet).
+    For information about how to get ICP tokens, see [How you can get ICP tokens](../concepts/tokens-cycles#get-cycles). 
+    <!-- For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart).  -->
+    For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](../developer-docs/build/project-setup/cycles-wallet).
 
 ## Download and install
 
@@ -61,7 +63,7 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../developer-docs/updates/release-notes/release-notes.md).
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](https://github.com/dfinity/sdk/releases).
 
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
@@ -113,7 +115,7 @@ To check your connection to the IC:
 
 ## Confirm your developer identity and ledger account
 
-All ICP token transactions are recorded in a [ledger canister](../glossary#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
+All ICP token transactions are recorded in a [ledger canister](../references/glossary#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
@@ -229,7 +231,7 @@ To validate your cycles wallet:
 
 4.  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
 
-    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../../tokenomics/identity-auth/auth-how-to).
+    <!-- For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../../tokenomics/identity-auth/auth-how-to). -->
 
 5.  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -265,7 +267,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](../build/frontend/webpack-config#troubleshoot-node).
+    For more information about this step, see [Ensuring node is available in a project](../developer-docs/build/frontend/webpack-config#troubleshoot-node).
 
 3.  Register, build, and deploy your first application by running the following command:
 

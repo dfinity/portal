@@ -1,7 +1,7 @@
 const redirects = `
   /developers-guide/quickstart /docs/current/tutorials/create_first_dapp
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
-  /docs/release-notes/* /docs/current/developer-docs/updates/release-notes/:splat
+  /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/build/candid/candid-concepts
   /docs/candid-guide/candid-howto /docs/current/developer-docs/build/candid/candid-howto

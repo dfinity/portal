@@ -4,7 +4,7 @@
 
 ### Security Concern
 
-The responses to [query calls](../ic-interface-spec#https-interface) (as opposed to update calls) are not threshold-signed by the canister/subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls depend on the response to query calls.
+The responses to [query calls](../../../references/ic-interface-spec#https-interface) (as opposed to update calls) are not threshold-signed by the canister/subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls depend on the response to query calls.
 
 ### Recommendation
 

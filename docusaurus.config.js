@@ -93,7 +93,7 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: true,
+          breadcrumbs: false,
           versions: {
             current: {
               label: "Current 🚧",
@@ -307,12 +307,17 @@ const config = {
               },
             ],
           },
-
+          {
+            type: "doc",
+            position: "left",
+            docId: "ic-overview",
+            label: "Home",
+          },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "concepts",
-            label: "How it works",
+            label: "Introduction",
           },
           {
             type: "docSidebar",
@@ -348,9 +353,9 @@ const config = {
                 to: "/developers",
               },
               {
-                label: "Developer Docs",
+                label: "SDK Release Notes",
                 type: "doc",
-                docId: "concepts/index",
+                docId: "other/updates/release-notes/release-notes",
               },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {

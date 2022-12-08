@@ -50,6 +50,7 @@
 
   .menu {
     flex-grow: 1;
+    margin-top: 30px;
   }
 
   .menuWithAnnouncementBar {

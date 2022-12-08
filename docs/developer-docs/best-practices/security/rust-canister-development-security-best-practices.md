@@ -205,7 +205,7 @@ This may e.g. lead to the following issues:
 
 -   See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
--   For context: [IC interface spec on message execution](../ic-interface-spec#message-execution)
+-   For context: [IC interface spec on message execution](../../../references/ic-interface-spec#message-execution)
 
 ### Be aware that state may change during inter-canister calls
 
@@ -363,7 +363,7 @@ It should be possible to verify that a canister does what it claims to do. the I
 
 #### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../../developer-docs/build/backend/reproducible-builds).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also [Developer docs on this](../../build/backend/reproducible-builds).
 
 ### Expose metrics from your canister
 
@@ -403,7 +403,7 @@ The best practices in this section are very general and not specific to the Inte
 
 #### Security Concern
 
-The data sent in [query and update calls](../ic-interface-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
+The data sent in [query and update calls](../../../references/ic-interface-spec#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
 
 -   If unvalidated data is rendered in web UIs or displayed in other systems, this can lead to injection attacks (e.g. XSS).
 

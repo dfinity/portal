@@ -53,7 +53,7 @@ To verify the SDK is ready to use:
 
         dfx --version
 
-    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](../developer-docs/updates/release-notes/release-notes.md).
+    The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](https://github.com/dfinity/sdk/releases).
     
 3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
