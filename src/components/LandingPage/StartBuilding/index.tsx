@@ -140,7 +140,7 @@ function StartBuilding() {
         <Information
           title="Dev Docs"
           body="Get to know the concepts,  architecture and technical breakthroughs that enable the ICP. Plus step-by-step guides on how to stake your tokens, and more."
-          link={"/docs/current/developer-docs/ic-overview"}
+          link={"/docs/current/ic-overview"}
         />
         <Information
           title="Sample Code"

@@ -1,6 +1,10 @@
 ---
-title: Hello World
+title: Tutorial 5 - Hello 20
+position: 1
+tags:
+- Getting started
 ---
+
 
 # How to Deploy a "Hello World" Smart Contract in 20 Minutes
 

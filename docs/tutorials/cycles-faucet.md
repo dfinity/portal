@@ -1,6 +1,7 @@
 ---
 id: cycles-faucet
-title: Tutorial 2 - Use Cycles Faucet
+title: Tutorial 3 - Use Cycles Faucet
+position: 3
 tags:
 - Getting started
 ---

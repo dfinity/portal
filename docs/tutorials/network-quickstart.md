@@ -1,6 +1,6 @@
 ---
 id: network-quickstart
-title: Tutorial 4 - Deploying to MainNet
+title: Tutorial 4b - Deploying to MainNet
 tags:
 - Getting started
 ---

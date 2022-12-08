@@ -1,6 +1,6 @@
 ---
-id: create_first_dapp
-title: Tutorial 1 - Create Your First App
+title: Tutorial 1 - Deploy a sample app
+sidebar_position: 1
 tags:
 - Getting started
 ---

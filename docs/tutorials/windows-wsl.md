@@ -1,4 +1,4 @@
-# Installing dfx on Windows
+# Tutorial 6 - Installing dfx on Windows
 
 There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run `dfx` also on a Windows system as described below.
 

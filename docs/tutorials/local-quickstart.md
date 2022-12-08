@@ -1,6 +1,6 @@
 ---
 id: local-quickstart
-title: Tutorial 3 - Deploying locally
+title: Tutorial 4a - Deploying locally
 tags:
 - Getting started
 ---

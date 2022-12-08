@@ -36,7 +36,7 @@ const Hero = () => {
         <motion.a
           variants={transitions.item}
           className="button button-white"
-          href="/docs/current/developer-docs/ic-overview"
+          href="/docs/current/ic-overview"
           target={"_blank"}
         >
           Build real Web3
