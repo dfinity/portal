@@ -27,7 +27,8 @@ jobs:
           python-version: "3.10"
       - name: "Build & Deploy"
         run: |
-          # obtain identity
+          # install dfx and configure identity
+          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
           mkdir ~/.config/dfx
           mkdir ~/.config/dfx/identity
           mkdir ~/.config/dfx/identity/default
@@ -49,7 +50,6 @@ jobs:
 
           # overwrite canister id in dfx.json
           echo "{\"portal\":{\"ic\":\"$canister_id\"}}" > canister_ids.json
-          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
           echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
 
