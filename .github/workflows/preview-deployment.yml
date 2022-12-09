@@ -37,8 +37,9 @@ jobs:
 
           # check pool canister balance and send notification if it's under 50TC
           balance=$(dfx canister --network ic status $POOL_CANISTER_ID 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
+          echo "Pool balance: $balance_formatted"
           if [ "50000000000000" -gt "$balance" ]; then
-            balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
             template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel Preview pool canister \`$POOL_CANISTER_ID\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $POOL_CANISTER_ID --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
             curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
           fi
@@ -65,6 +66,7 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
       - name: Report build error
         uses: actions/github-script@v6
