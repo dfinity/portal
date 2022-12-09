@@ -156,6 +156,7 @@ const redirects = `
   /howitworks /how-it-works
   /howitworks/* /how-it-works/:splat
   /features/green /features/sustainability
+  /docs/ic-identity-guide/what-is-ic-identity /docs/current/tokenomics/identity-auth/what-is-ic-identity
 `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())
