@@ -37,6 +37,7 @@ jobs:
 
           # check pool canister balance and send notification if it's under 50TC
           balance=$(dfx canister --network ic status $POOL_CANISTER_ID 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          LANG=en_US.UTF-8
           balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
           echo "Pool balance: $balance_formatted"
           if [ "50000000000000" -gt "$balance" ]; then
