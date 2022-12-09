@@ -35,12 +35,23 @@ jobs:
           echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
 
-          # check pool canister balance and send notification if it's under 50TC
+          # temp: check main canister balance
+          balance=$(dfx canister --network ic status portal 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          LANG=en_US.UTF-8
+          balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
+          echo "Canister balance: $balance_formatted"
+          if [ "50000000000000" -gt "$balance" ]; then
+            canister_id=$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic')
+            template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel internetcomputer.org canister \`$canister_id\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $canister_id --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
+            curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
+          fi
+
+          # check pool canister balance and send notification if it's under 5TC
           balance=$(dfx canister --network ic status $POOL_CANISTER_ID 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
           LANG=en_US.UTF-8
           balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
           echo "Pool balance: $balance_formatted"
-          if [ "50000000000000" -gt "$balance" ]; then
+          if [ "5000000000000" -gt "$balance" ]; then
             template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel Preview pool canister \`$POOL_CANISTER_ID\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $POOL_CANISTER_ID --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
             curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
           fi
