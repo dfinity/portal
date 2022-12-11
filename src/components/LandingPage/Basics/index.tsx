@@ -21,7 +21,7 @@ export default function BasicsSection(): JSX.Element {
               className="tw-heading-3 md:tw-heading-60 mb-16 text-center md:text-left"
               variants={transitions.item}
             >
-              Decentralization+
+              Decentralization++
             </AnimateSpawn>
             <AnimateSpawn
               className="flex flex-col-reverse md:flex-row justify-between mb-16 gap-6 md:gep-0"
@@ -63,12 +63,12 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                makes it possible to flip the script with online services,
-                by making user communities their owners. That's because
-                online services can now run 100% on blockchain, for the 
+                makes it possible to escape the web2 dilemma of users being monetized by the services they use.
+                Instead, with IC dapps, users become the owners of the services and decide on how their services should evolve.
+                This is made possible through a new form of on-chain governance for online services that are running 100% on chain, for the 
                 very first time. There is no need for centralized traditional IT, such as cloud services, 
                 which otherwise have to be used in Web3. Since all code and data is fully decentralized, 
-                community DAOs can take control. No companies, boards or CEOs are required.
+                community DAOs can control services in a completely decentralized way. No companies, boards of directors, or CEOs required.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
@@ -80,7 +80,7 @@ export default function BasicsSection(): JSX.Element {
                   className="link-external"
                   href="https://internetcomputer.org/features"
                 >
-                  Top ICP features
+                  Cool ICP features
                 </Link>
               </p>
             </AnimateSpawn>

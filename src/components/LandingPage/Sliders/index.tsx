@@ -119,7 +119,7 @@ const Sliders = () => {
             >
               <div className=" ">
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Internet Identity is your digital identity.
+                  Internet Identity is your digital identity
                 </h3>
                 <p className="mb-4 flex">
                   <SliderLink href="https://identity.ic0.app/">
@@ -144,7 +144,7 @@ const Sliders = () => {
             >
               <div className="flex flex-col h-full pb-12">
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Super features of the Internet Computer
+                  Cool features of the Internet Computer
                 </h3>
                 <div className="flex-1"></div>
 
