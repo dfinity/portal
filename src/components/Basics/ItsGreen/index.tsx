@@ -144,8 +144,8 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           Computer blockchain, it can host smart contract software, data, and
           computation, with levels of efficiency competitive with traditional
           software that runs on Big Tech's cloud services. Meanwhile, it is
-          currently tens of thousands of times more efficient than the next most
-          efficient blockchain. Web3 projects that incorporate Internet Computer
+          currently twenty times more efficient than the next most
+          efficient blockchain and multiple orders of magnitude more efficient than leading blockchains. Web3 projects that incorporate Internet Computer
           smart contracts can consequently dramatically lower their carbon
           footprint, and help reduce climate change.
         </motion.p>
