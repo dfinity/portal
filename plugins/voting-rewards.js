@@ -6,7 +6,7 @@ const votingRewardsPlugin = async function () {
     name: "voting-rewards",
     async loadContent() {
       const response = await fetch(
-        "https://ic-api.internetcomputer.org/api/nns/metrics"
+        "https://ic-api.internetcomputer.org/api/nns/metrics", { method: "GET", retry: 10 }
       ).then((res) => res.json());
 
       const lastRewardEventE8s = response.metrics.find((metric) => {
