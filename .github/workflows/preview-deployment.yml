@@ -27,20 +27,35 @@ jobs:
           python-version: "3.10"
       - name: "Build & Deploy"
         run: |
-          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pip install ic-py
-          canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
-          echo "{\"portal\":{\"ic\":\"$canister_id\"}}" > canister_ids.json
+          # install dfx and configure identity
           sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-
-          echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
-
           mkdir ~/.config/dfx
           mkdir ~/.config/dfx/identity
           mkdir ~/.config/dfx/identity/default
           echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
 
+          # check pool canister balance and send notification if it's under 5TC
+          balance=$(dfx canister --network ic status $POOL_CANISTER_ID 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          LANG=en_US.UTF-8
+          balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
+          echo "Pool balance: $balance_formatted"
+          if [ "5000000000000" -gt "$balance" ]; then
+            template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel Preview pool canister \`$POOL_CANISTER_ID\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $POOL_CANISTER_ID --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
+            curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage -o /dev/null
+          fi
+
+          # request preview canister from the pool
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          pip install ic-py
+          canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
+
+          # overwrite canister id in dfx.json
+          echo "{\"portal\":{\"ic\":\"$canister_id\"}}" > canister_ids.json
+
+          echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
+
+          # install and deploy
           git submodule update --init
           npm install
 
@@ -52,6 +67,7 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
       - name: Report build error
         uses: actions/github-script@v6
