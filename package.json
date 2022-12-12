@@ -38,6 +38,7 @@
     "highlight.js": "^11.5.1",
     "marked": "^4.0.18",
     "node-fetch": "^2.6.7",
+    "node-fetch-retry": "^2.0.1",
     "prism-react-renderer": "^1.2.1",
     "progress-webpack-plugin": "^1.0.16",
     "react": "^16.14.0",
