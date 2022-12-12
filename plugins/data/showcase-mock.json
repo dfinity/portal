@@ -27,7 +27,7 @@
       "Infrastructure",
       "Tools"
     ],
-    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
+    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web 3.0",
     "usesInternetIdentity": false,
     "stats": "1 000+ websites",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/5O8OfpiGvkacspgYva3RMx/5273789d46839aae640b84d7527fa416/Fleek.png",
@@ -281,7 +281,7 @@
       "Games",
       "Dapp"
     ],
-    "description": "Reversi is one of the first canister smart contracts deployed to the Internet Computer and is a completely decentralized multiplayer game. Play against a friend (or foe) in real-time, from any browser, anywhere in the world. ",
+    "description": "Reversi is one of the first canister smart contracts deployed to the Internet Computer and is a completely decentralized multiplayer game. Play against a friend (or foe) in real time, from any browser, anywhere in the world. ",
     "github": "https://github.com/ninegua/reversi",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/4BVKI2TWzuutACosmBq83E/456b24a51f31ff5ff647cbf0ee28ecd4/download.png",
     "screenshots": [
@@ -394,7 +394,7 @@
       "Social",
       "Infrastructure"
     ],
-    "description": "Portal is the world’s first end-to-end decentralized streaming service. Built and hosted on-chain on the Internet Computer, Portal aims to reinvent streaming to benefit creators. Similar to Twitch but on the Internet Computer, Portal boasts the ability for content creators to be rewarded for streaming directly through the dapp, supporting sustainable financial independence for streamers.",
+    "description": "Portal is the world’s first end-to-end decentralized streaming service. Built and hosted on chain on the Internet Computer, Portal aims to reinvent streaming to benefit creators. Similar to Twitch but on the Internet Computer, Portal boasts the ability for content creators to be rewarded for streaming directly through the dapp, supporting sustainable financial independence for streamers.",
     "stats": "On-Chain Streaming",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/3AMfnGvWE7tTWKumJmz2kD/b3ad5098e3ee0010417ccec654b269ac/Portal.png",
     "screenshots": [
@@ -483,7 +483,7 @@
       "Social",
       "Work"
     ],
-    "description": "Content Fly is a Web3 Job Management Tool & Marketplace. It allows content buyers & creators to work together with the security of an escrow payment and DAO based dispute resolution. IP is protected and transferred as an NFT.",
+    "description": "Content Fly is a Web3 Job Management Tool & Marketplace. It allows content buyers & creators to work together with the security of an escrow payment and DAO-based dispute resolution. IP is protected and transferred as an NFT.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/7fpdJT3JyDahLNuKjdSfJu/f9ac0c4d2746d6c5f44c6c0a2b23f29d/Content_Fly_Logo_200x200_-_Transparent.png",
@@ -514,7 +514,7 @@
       "Work",
       "NFT"
     ],
-    "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world’s first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
+    "description": "Nuance is a Web3 blogging platform that is hosted end-to-end on chain, on the Internet Computer. Developed by Aikin Dapps, the alpha of the world’s first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/16Sevl8ZPGDzkVJGt1Ps2l/bad690f013454629b03b41d140c292ad/nu_logo-full_trans_1500.png",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/7MHQFDOwrMa4eRLv6zEXyy/cb3db7a58d8805323e3832fb4265a820/Screen_Shot_2021-09-24_at_10.02.19_AM.png"
@@ -676,7 +676,7 @@
       "Wallet",
       "Swap"
     ],
-    "description": "Sonic is a \"swap\" built end-to-end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer’s AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem. ",
+    "description": "Sonic is a \"swap\" built end to end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer’s AMM. Sonic takes advantage of the ICP blockchain's low fees, high scalability, and reverse gas model to deliver a seamless Web3 experience. Sonic is launching the new DIP20 token standard that will serve as the backbone of their swap ecosystem. ",
     "github": "https://github.com/psychedelic",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/41j2Cj6Y0wVjWtywzE6myv/88283538f9d86599e4b85427368d1964/Sonic_Logo.png",
@@ -691,7 +691,7 @@
       "Dapp",
       "Games"
     ],
-    "description": "Lo-Fi Player is a dapp hosted on the Internet Computer that lets users listen to relaxing beats delivered by blockchain. The back-end is using machine learning to build and develop the AI produced tunes, and users can interact within the player to change the sound to their liking. ",
+    "description": "Lo-Fi Player is a dapp hosted on the Internet Computer that lets users listen to relaxing beats delivered by blockchain. The back end is using machine learning to build and develop the AI produced tunes, and users can interact within the player to change the sound to their liking. ",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/6TkvQAqmPAeKNMDcKA2qV4/25964a3447970d7a3ae94e25bd08b169/Screen_Shot_2021-09-24_at_10.19.10_AM.png",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/41u3MOIHq0EyS5qFX0WEnm/987910fe89eef82bbcccacc039627cf3/Lo-Fi_Player.png"
@@ -748,7 +748,7 @@
       "Dapp",
       "Swap"
     ],
-    "description": "ICPSwap is decentralized exchange (DEX) built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
+    "description": "ICPSwap is decentralized exchange (DEX) built completely end-to-end on chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/6EMh76PrVja8lqrGF9XEp6/c673e58d561ac6b1804ce63ad164f38b/ICPSwaplogo.jpeg",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/6YO9rO89g6dj1ioUyJNxrE/e744ce464b7b7584e27caeef063d7140/Screen_Shot_2021-10-14_at_3.39.11_PM.png"
@@ -772,7 +772,7 @@
     ]
   },
   {
-    "name": "SushiSwap Front-End",
+    "name": "SushiSwap Front End",
     "website": "https://aufz7-4qaaa-aaaaf-qae3a-cai.raw.ic0.app/swap",
     "tags": [
       "ETH",
@@ -780,9 +780,9 @@
       "Dapp",
       "Swap"
     ],
-    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more. This is a front-end for Sushi Swap hosted 100% on-chain, completely decentralized, using the Internet Computer in order to have a complete Web3 stack. This was a result of a community bounty -- inspect the code below. ",
+    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token standard are decentralized, but the front end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more. This is a front end for Sushi Swap hosted 100% on chain, completely decentralized, using the Internet Computer in order to have a complete Web3 stack. This was a result of a community bounty — inspect the code below. ",
     "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
-    "stats": "Front-End Hosted On-Chain",
+    "stats": "Front End Hosted On Chain",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/5DutrYe0BlGf0N4WV0LNDB/e2c8dfbe264d32de145623b7de19c277/Sushiswap_logo.png",
     "screenshots": [
@@ -797,7 +797,7 @@
       "Dapp",
       "Games"
     ],
-    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" — Ethereum.org P.S. there is a hidden game in the demo. ",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/TDmepIycaof00Se2Cr0wb/d9ad25913a1c2e19af9d5f7e8041fafd/Screen_Shot_2021-12-22_at_12.10.18_PM.png",
     "screenshots": [
@@ -869,7 +869,7 @@
       "NNS",
       "Swap"
     ],
-    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer’s Network Nervous System in order to support staking with voting rewards. ",
+    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in the future swap ICP right within Klever.io. Klever has integrated with the Internet Computer’s Network Nervous System in order to support staking with voting rewards. ",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/7L08jbmQNA8y4NnBgMc5CD/132d3f10b44ed550f5ccdd66756f927a/Klever.io_Logo_2.jpeg",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/1NkXeBfGsS8I9pqpJtpPff/bee46822179059f6e66595c9c39476b7/Screen_Shot_2021-12-23_at_2.32.52_PM.png"
@@ -884,7 +884,7 @@
       "ETH",
       "Swap"
     ],
-    "description": "Osmosis is an \"Interchain Automated Market Maker (AMM)\". As a Web3 solution, now by having the front-end of their swap solution hosted on the Internet Computer blockchain, the full-stack is truly decentralized. This minimizes risks of centralization which include wrongful takedowns, censorship, and more. ",
+    "description": "Osmosis is an \"Interchain Automated Market Maker (AMM)\". As a Web3 solution, now by having the front end of their swap solution hosted on the Internet Computer blockchain, the full stack is truly decentralized. This minimizes risks of centralization which include wrongful takedowns, censorship, and more. ",
     "stats": "AMM Decentralized Front-End",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/CSsdoO1NOgKa6547KJwgE/b545457006b87b3a9e897bfd931f9034/Osmosis_Logo.jpeg",
@@ -917,7 +917,7 @@
       "NFT",
       "Social"
     ],
-    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets – there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
+    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets — there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
     "github": "https://github.com/dmailofficial",
     "stats": "Hackathon Winner - $10M Valuation",
     "display": "Normal",
@@ -934,7 +934,7 @@
       "Social",
       "Dapp"
     ],
-    "description": "DSocial is a decentralized version of YouTube -- enabling content creators to be fairly rewarded for their work, and engagement. This Web3 media platform is hosted end-to-end on the Internet Computer interoperating with Arweave for decentralized video content.",
+    "description": "DSocial is a decentralized version of YouTube — enabling content creators to be rewarded in a fair way for their work, and engagement. This Web3 media platform is hosted end to end on the Internet Computer interoperating with Arweave for decentralized video content.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/6Of2yHgFhvs3rV6YaU81Sv/cbc482893f280894a6fab7c42c84734e/DSocial_Logo.jpeg",
@@ -962,7 +962,7 @@
       "Infrastructure",
       "DeFi"
     ],
-    "description": "ICNaming is a testnet that is enabling the Internet Computer ecosystem to register domain names on the Internet Computer Name Service. Similar to the Ethereum Name Servce (ENS), ICNaming aims to offer a decentralized name service for users to pseudonomize their wallet addresses on ICP, as well as domain names, and canister smart contract IDs. ",
+    "description": "ICNaming is a testnet that is enabling the Internet Computer ecosystem to register domain names on the Internet Computer Name Service. Similar to the Ethereum Name Service (ENS), ICNaming aims to offer a decentralized name service for users to pseudonomize their wallet addresses on ICP, as well as domain names, and canister smart contract IDs. ",
     "github": "https://github.com/IC-Naming",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -992,7 +992,7 @@
       "Tools",
       "Infrastructure"
     ],
-    "description": "This Python Agent built for the Internet Computer opens the door for Python developers to more easily become Web3 builders. Featuring basic modules to interact with canisters on the Internet Computer, this Agent, still under development, was a prize winner at the Warpspeed Internet Computer ecosystem hackathon in China.",
+    "description": "This Python Agent built for the Internet Computer opens the door for Python developers to more easily become Web3 builders. Featuring basic modules to interact with canisters on the Internet Computer, this agent, still under development, was a prize winner at the Warpspeed Internet Computer ecosystem hackathon in China.",
     "github": "https://github.com/rocklabs-io/ic-py",
     "stats": "Warp Speed Hackathon Award",
     "display": "Normal",
@@ -1009,7 +1009,7 @@
       "Tools",
       "Infrastructure"
     ],
-    "description": "SLY, developed by PsychedelicDAO, is a seamless Command Line Interface (CLI) for the Internet Computer. SLY is an open-source, and collaborative CLI – providing abstractions, templates, and tools to kick-start and speed-up Internet Computer development.",
+    "description": "SLY, developed by PsychedelicDAO, is a seamless Command Line Interface (CLI) for the Internet Computer. SLY is an open-source, and collaborative CLI — providing abstractions, templates, and tools to kick-start and speed up Internet Computer development.",
     "github": "https://github.com/psychedelic/sly",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/11La7PAkMJbEHd0NcbCqFJ/de0793c5eb4dfc5f004ac2da75a618c3/sly_Logo.svg",
@@ -1026,7 +1026,7 @@
       "DeFi",
       "Metaverse"
     ],
-    "description": "NFT Studio launches their first marketplace featuring 3D NFTs (not .GIF recordings, but actual 3D code as the NFT), purchasable with ICP. Additional innovations include interactive NFTs, as well as entire games as NFTs playable from the marketplace or from within your wallet. These NFTs are all made possible due to the Internet Computer blockchain's scalability, low-costs, and innovations in smart contract technology. ",
+    "description": "NFT Studio launches their first marketplace featuring 3D NFTs (not .GIF recordings, but actual 3D code as the NFT), purchasable with ICP. Additional innovations include interactive NFTs, as well as entire games as NFTs playable from the marketplace or from within your wallet. These NFTs are all made possible due to the Internet Computer blockchain's scalability, low fees, and innovations in smart contract technology. ",
     "stats": "1st 3D NFTs + Games",
     "display": "Large",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/1UgSbYhl4H8tdfsiaNYKOY/2f3ae21a59f972e1bbf3d37c6f7a4008/NFT_Studio_Logo.jpeg",
@@ -1042,7 +1042,7 @@
       "Dapp",
       "Games"
     ],
-    "description": "NFT Studio launches their public minting engine for 3D NFTs, hosted completely on the Internet Computer. Connect your Plug wallet to automatically mint your NFT without any need for coding – all for less than .05 ICP. NFT Studio enables the previously impossible, possible, using the unique scalability, storage, and \"code as smart contracts\" capabilities of the Internet Computer blockchain. ",
+    "description": "NFT Studio launches their public minting engine for 3D NFTs, hosted completely on the Internet Computer. Connect your Plug wallet to automatically mint your NFT without any need for coding — all for less than .05 ICP. NFT Studio enables the previously impossible, made possible through the unique scalability, storage, and \"code as smart contracts\" capabilities of the Internet Computer blockchain. ",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/1UgSbYhl4H8tdfsiaNYKOY/2f3ae21a59f972e1bbf3d37c6f7a4008/NFT_Studio_Logo.jpeg",
     "screenshots": [
@@ -1102,7 +1102,7 @@
     "tags": [
       "NFT"
     ],
-    "description": "The ICKitties NFTs are a set of 10,000 unique NFTs, minted and hosted completely on-chain on the Internet Computer. The NFTs feature unique items that help define their rarity, in addition to identifying their \"Kingdom\". There is not only a lore behind the the NFT, but also future applications such as GameFi, and collaborations with other NFT kingdoms such as ICPuppies. ",
+    "description": "The ICKitties NFTs are a set of 10,000 unique NFTs, minted and hosted completely on chain on the Internet Computer. The NFTs feature unique items that help define their rarity, in addition to identifying their \"Kingdom\". There is not only a lore behind the NFTs, but also future applications such as GameFi, and collaborations with other NFT kingdoms such as ICPuppies. ",
     "stats": "Sold Out In Under 6 minutes",
     "display": "Normal",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/NLc28yAjA68kdD34aFRWn/305a6e9cf8ab4c722add28d1939fe38a/Screen_Shot_2021-12-29_at_3.17.49_PM.png",
@@ -1118,7 +1118,7 @@
       "NFT"
     ],
     "description": "PokedStudio Bots are a collection of 10,000 unique bots designed by acclaimed digital artist, Jonathan Ball. The Ultimate Master” Bot which sold for 3,000 ICP (~$172,140), marks the largest single NFT purchase on the Internet Computer, and is one of the largest across all blockchain projects to date. The Bots collection generated nearly $1M in NFT marketplace trading volume in less than 36 hours from public launch. The NFT Bots are all unique and possess differing rarities and attributes that will transfer into a future metaverse gaming experience in beautiful technicolor.",
-    "stats": "Record Highest Selling NFT",
+    "stats": "Record Highest-Selling NFT",
     "display": "Large",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/66DQGH3PYHfmoWJ7DvFH3l/eea03d1fa41516c34b1e71f9229d250a/pokedstudio-logo.png",
     "video": "//videos.ctfassets.net/ywqk17d3hsnp/5OHiBy0R29XeKOqOORsMxe/5ee7b175cb4517d6a49503426fd714e1/My_Movie.mp4",
