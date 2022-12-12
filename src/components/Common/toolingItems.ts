@@ -233,4 +233,10 @@ export const communityToolingItems = [
       "DevOps platform to build, ship and manage dapps faster on IC.",
     links: { external: "https://internetcomputerservices.com/" },
   },
+  {
+    title: "MOPS",
+    tags: ["CLI", "website", "development"],
+    description: "An on-chain package manager for Motoko.",
+    links: ["https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/"],
+  },
 ];
