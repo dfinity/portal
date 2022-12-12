@@ -24,9 +24,9 @@ function FeaturePage() {
                 Multi-block TXs
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The Internet Computer blockchain can stretch the execution of a
-                single transaction across multiple blocks. This allows very-long
-                running smart contract computations to be initiated.
+                The Internet Computer blockchain can extend the execution of a
+                single transaction across multiple block execution time slots. This allows
+                long-running smart contract computations to be executed on the IC.
               </p>
             </div>
           </div>
@@ -60,35 +60,33 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>The IC's muli-block transaction capabilities is rare</h2>
+            <h2>The IC is the only blockchain that can handle long-running transactions</h2>
             <p>
-              Traditional blockchains that host smart contracts, always need to
-              finish processing a transaction within a single block. In practice
-              this means that when a smart contract function is invoked by a
-              transaction, it must complete execution within the per-block "gas
-              limit" (gas is the equivalent of cycles on the Internet Computer).
+              Traditional blockchains that host smart contracts always need to
+              finish processing a transaction within a single block. Concretely, a transaction on those chains
+              must complete execution within the per-block "gas
+              limit." Going beyond this hard (and relatively small) limit is not possible.
             </p>
 
             <p>
               The Internet Computer is designed to allow any online system or
-              service to be built using smart contracts called canisters, to
-              support a "blockchain singularity." This means that when a
-              transaction invokes a smart contract, the computation involved
-              must be able to run for a very long time if required, and consume
-              as many computational cycles as needed.
+              service to be rebuilt using canister smart contracts. This means that when a
+              smart contract is invoked, the computation involved
+              must be able to run for a long time if required by a use case, and consume
+              as many computational cycles as needed. This removes the gas limitation that
+              severely constrains the power of smart contracts and the programming model on other blockchains.
             </p>
 
             <p>
-              This means that on the Internet Computer, a smart contract is
-              capable of performing complex AI calculations, or applying a
-              graphical filter to an image, say — although there is still a "max
-              cycles limit," it's just very high.
+              Thanks to this, a smart contract on the Internet Computer is, for example,
+              capable of performing complex AI computations, applying a
+              graphical filter to an image, or transcode a video. Although there is still a "max
+              cycles limit," it is very high.
             </p>
 
             <p>
-              Multi-block TXs are made possible by a broader aspect of the
-              Internet Computer's design, called Deterministic Time Slicing
-              (DTS).
+              Multi-block TXs are made possible by a feature called Deterministic Time Slicing
+              (DTS), which is implemented as part of the Wasm execution virtual machine of the ICP.
             </p>
 
             <p className="mb-3 mt-6">
@@ -117,7 +115,7 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Deterministic Time Slicing Discussion"
-              description="Join the forum dicussion"
+              description="Join the forum dicussion!"
               href="https://forum.dfinity.org/t/deterministic-time-slicing/10635"
             />
           </div>

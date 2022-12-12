@@ -24,10 +24,10 @@ function FeaturePage() {
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Reverse Gas</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 On the Internet Computer (IC), a browser is all you need to
-                interact with smart contracts. You do not have to overcome any
+                interact with canister smart contracts. You do not have to overcome any
                 hurdles such as creating a wallet, hold tokens, or pay expensive
                 gas fees. This is in contrast to other blockchains, where users
-                need to acquire tokens to do anything.
+                need to acquire tokens first to do anything.
               </p>
             </div>
           </div>
@@ -53,12 +53,12 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>Reverse Gas Model (AKA "canister pays")</h2>
+            <h2>Reverse gas model (aka "canister pays" model)</h2>
             <p>
-              In the "Reverse Gas model" developers pre-pay costs by loading
-              canisters with computation cycles. So users can interact with a
-              dapp without having to pay in tokens. Cycles are stable in cost
-              are obtained by converting ICP tokens. This allows developers to
+              In the "reverse gas model" developers pre-pay costs by charging
+              canisters with cycles. Then users can interact with a
+              dapp without needing tokens to pay for the computations. Cycles are stable in cost — around 1.3 USD or 1 XDR per one trillion (10^12) cycles — 
+              and are obtained through converting ICP tokens to cycles. This allows developers to
               know in advance how much they will need to spend on computation.
               <br />
               <br />
@@ -69,9 +69,8 @@ function FeaturePage() {
               >
                 Motoko Playground
               </Link>{" "}
-              dapp is hosted and executed entirely on-chain and it does not
-              require visitors to pay for the computation. The Internet Identity
-              app is an application running on the IC that is free to use.
+              dapp is hosted and executed entirely on chain and it does not
+              require its users to pay when using it.
             </p>
 
             <YoutubeVideoEmbed

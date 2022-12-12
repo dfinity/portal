@@ -51,7 +51,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "advanced",
     contentType: ["code samples", "documentation", "live demos", "tutorial"],
-    body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin.",
+      body: "Deploy a canister on the Internet Computer that can send and receive Bitcoin — natively on the Bitcoin network, without wrapping.",
     links: {
       action: {
         text: "Get code",
@@ -71,7 +71,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "advanced",
     contentType: ["code samples", "documentation", "live demos", "tutorial"],
-    body: "Build a threshold ECDSA test key on a subnet.",
+    body: "Use a test key for chain-key ECDSA, an advanced form of threshold ECDSA, to sign messages in a decentralized way. Chain-key ECDSA is like an on-chain HSM.",
     links: {
       action: {
         text: "Get code",
@@ -91,7 +91,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["rust", "javascript"],
     level: "intermediate",
     contentType: ["code samples", "documentation"],
-    body: "Demonstrates how to build a dapp with canister outgoing HTTP calls.",
+    body: "Demonstrates how to build a dapp with canister outgoing HTTPS calls. Follow this blueprint for you own dapp to connect to Web2 services without oracles.",
     links: {
       action: {
         text: "Get Code",
@@ -146,7 +146,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust", "javascript"],
     level: "intermediate",
     contentType: ["code samples", "documentation", "videos", "live demos", "tutorial"],
-    body: "Build dapp to enable DeFi applications on the IC.",
+    body: "Shows how to build a simple DEX — use as a blueprint for building you own asynchronous DeFi dapps on the IC!",
     links: {
       action: {
         text: "Get Code",
@@ -167,7 +167,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["rust"],
     level: "intermediate",
     contentType: ["code samples", "documentation", "tutorial", "videos"],
-    body: "Create a user generated NFT and share it. This dapp uses the DIP721 NFT standard.",
+    body: "Create a user-generated NFT and share it. This dapp uses the DIP721 NFT standard.",
     links: {
       rust: "https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container",
       docs: "/docs/current/samples/nft",
@@ -182,7 +182,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "intermediate",
     contentType: ["code samples", "documentation", "tutorial", "videos"],
-    body: "Dapp initializes a set of accounts and corresponding tokens as well as enables  proposals for communal votes.",
+    body: "This sample dapp realizes a simple DAO: it initializes a set of accounts and corresponding tokens and realizes proposals for voting by the token holder community.",
     links: {
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/basic_dao",
@@ -193,14 +193,14 @@ export const sampleItems: SampleItem[] = [
   },
   {
     index: 8,
-    title: "Encrypted note-taking",
+    title: "Encrypted note taking",
     image: require("../../../static/img/samples/encryptedNoteTaking.png")
       .default,
     domains: ["Website"],
     languages: ["motoko", "rust", "javascript"],
     level: "advanced",
     contentType: ["code samples", "documentation", "videos", "live demos", "tutorial"],
-    body: "Create, access and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
+    body: "Create, access, and modify confidential notes from multiple devices using Internet Identity and end-to-end encryption.",
     links: {
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko",
@@ -248,7 +248,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust", "javascript"],
     level: "beginner",
     contentType: ["documentation"],
-    body: "Demonstrates how to deploy a web game on the IC.",
+    body: "Demonstrates how to deploy a WebGL-based web game on the IC.",
     links: {
       docs: "/docs/current/samples/host-a-webgame",
     },

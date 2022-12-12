@@ -22,11 +22,10 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Actor Model</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                A single canister smart contract has one thread of execution for
-                updates, but the Internet Computer can execute a massive number
-                of canisters in parallel. In addition, we make a distinction
-                between requests that need to update the state of a canister,
-                and queries, which cannot modify the state of a canister.
+                A single canister smart contract has one thread of execution for executing
+                state-changing update calls. The Internet Computer can execute a massive number
+                of canisters concurrently — many per subnet, and scaling with the number of subnets. In addition,
+                a canister can execute many so-called queries — calls that can not change the canister state — concurrently.
               </p>
             </div>
           </div>
@@ -63,15 +62,15 @@ function FeaturePage() {
             <h2>How It Works</h2>
             <p>
               The programming model of the Internet Computer consists of
-              memory-isolated canisters communicating by asynchronous message
-              passing of binary data encoding Candid values. A canister
+              memory-isolated canisters communicating through asynchronous message
+              passing of binary data. Data is encoded usind Candid for interoperability. A canister
               processes its messages one-at-a-time, preventing race conditions.
               A canister uses call-backs to register what needs to be done with
               the result of any inter-canister messages it issues.
             </p>
             <h3>Canisters as actors</h3>
             <p>
-              The actor model is a mathematical model of concurrent computation,
+              The actor model is a model of concurrent computation,
               where, in response to a message, an actor can modify its state,
               send messages, and create more actors.
             </p>
@@ -154,7 +153,7 @@ function FeaturePage() {
 
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
+              description="Get started with your first IC dapp."
               href="/docs/current/developer-docs/quickstart/hello10mins"
             />
             <CardWithDescription

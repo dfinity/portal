@@ -90,8 +90,9 @@ function FeaturesPage() {
     <Layout
       title="Game-changing Features"
       description="The Internet Computer is pushing the boundaries of what is
-possible in blockchain technology today. ICP is not only 23,500X more efficient
-than the next most efficient blockchain, it also provides unique features not
+possible in blockchain technology today. ICP is not only 20x more power efficient
+than the next most efficient blockchain and multiple orders of magnitude more efficient than major smart contract chains,
+it also provides unique features not
 seen on any other chain."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -116,9 +117,10 @@ seen on any other chain."
                 variants={transitions.item}
               >
                 The Internet Computer is pushing the boundaries of what is
-                possible in blockchain technology today. ICP is not only 23,500x
-                more efficient than the next most efficient blockchain, it also
-                provides unique features not seen on any other chain.
+                possible in blockchain technology today. ICP is not only 20x more power efficient
+                than the next most efficient blockchain and multiple orders of magnitude
+                more efficient than major smart contract chains,
+                it also provides unique features not seen on any other chain.
               </motion.p>
             </div>
           </div>
@@ -175,8 +177,8 @@ seen on any other chain."
             >
               The Internet Computer is the only blockchain with canister smart
               contracts that can serve web by processing HTTP requests. This
-              allows 100% of online services to run from the blockchain, which
-              allows for full decentralization.
+              allows online services to run 100% from the blockchain, which
+              enables full decentralization.
             </motion.p>
           </SplitCard>
 
@@ -336,7 +338,7 @@ seen on any other chain."
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              100% on-chain: no cloud
+              100% on chain: no cloud
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
@@ -355,7 +357,7 @@ seen on any other chain."
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              Reverse Gas Model
+              Reverse gas model
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
@@ -545,7 +547,7 @@ seen on any other chain."
               variants={transitions.item}
             >
               The Internet Computer is governed by a fully on-chain
-              permissionless system that regularly upgrades the protocol
+              permissionless system, the NNS, that regularly upgrades the protocol
               following the intentions of ICP token holders expressed through
               their votes.
             </motion.p>
