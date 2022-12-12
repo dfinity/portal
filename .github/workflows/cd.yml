@@ -73,6 +73,8 @@ jobs:
             template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel internetcomputer.org canister \`$canister_id\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $canister_id --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
             curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
           fi
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
       - name: Install Dependencies
         run: npm install
