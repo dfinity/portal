@@ -30,7 +30,7 @@ function Index() {
           </motion.p>
           <motion.p variants={transitions.item} className={styles.Text}>
             The IC is composed of canisters that require cycles to perform
-            computation. Explore Concepts to see how this and other foundational
+            computation. Explore the basic concepts to see how this and other foundational
             aspects power the IC.
           </motion.p>
           <motion.div

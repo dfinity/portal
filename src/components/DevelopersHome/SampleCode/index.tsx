@@ -62,7 +62,7 @@ function Index() {
               <p className={styles.informationTitle}>SDK Installation</p>
               <p className={styles.informationBody}>
                 Download and install the latest version of our DFINITY Canister
-                smart contract SDK and start now.
+                smart contract SDK and start coding.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
@@ -76,7 +76,7 @@ function Index() {
               <p className={styles.informationTitle}>Motoko Playground</p>
               <p className={styles.informationBody}>
                 Explore Motoko, the native language of the Internet Computer,
-                right in the browser without having to download the SDK
+                right in the browser. No SDK download or local setup required. Start coding immdiately!
               </p>
             </div>
             <img className={styles.motokoBackground} src={motokoBG} alt="" />
