@@ -237,6 +237,9 @@ export const communityToolingItems = [
     title: "MOPS",
     tags: ["CLI", "website", "development"],
     description: "An on-chain package manager for Motoko.",
-    links: ["https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/"],
+    links: {
+      external: "https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/",
+      github: "https://github.com/ZenVoich/mops"
+    },
   },
 ];
