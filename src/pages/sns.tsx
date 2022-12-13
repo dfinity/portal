@@ -259,7 +259,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Let an SNS Transform Your Web3 App into a True Dapp
+              Have an SNS Transform Your Web3 App into a True Dapp
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
