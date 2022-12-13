@@ -119,8 +119,6 @@ function SnsPage() {
               Developers can now hand over their Web3 service to an SNS. The user community
               can buy governance tokens to take ownership and control through the SNS DAO
               and shape the dapp’s future.
-              <br className="hidden md:inline" />
-              Be unstoppable with an SNS.
             </motion.p>
             <motion.p
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
