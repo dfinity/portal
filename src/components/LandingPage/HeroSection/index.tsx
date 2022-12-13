@@ -32,14 +32,14 @@ export default function Hero(): JSX.Element {
             >
               deep crypto research begun in 2015
             </Link>
-            . It is a limitless blockchain that hosts and runs smart contracts
+            . It is a blockchain that is scalable without limits and can host and run smart contracts
             with efficiency comparable to traditional centralized IT
-            infrastructure. Smart contracts gain superpowers, and they can now
-            serve web experiences, securely interact with Web2, and create
-            signed transactions that run on other blockchains. As a World
+            infrastructure. Internet Computer smart contracts can even
+            serve web experiences, securely interact with Web2, and create and
+            sign transactions for other blockchains. As a World
             Computer blockchain, it supports the full end-to-end
             decentralization of online systems and services, which can now be
-            built entirely on-chain exclusively from smart contracts, without
+            built entirely on chain exclusively from smart contracts, without
             the need for centralized traditional IT and Big Tech's cloud
             services.
           </AnimateSpawn>

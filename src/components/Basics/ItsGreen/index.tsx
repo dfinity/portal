@@ -137,17 +137,17 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
         className={styles.container}
       >
         <motion.h2 variants={transitions.item} className={styles.heading}>
-          Blockchain compute that's climate friendly
+          Blockchain operation that's climate friendly
         </motion.h2>
         <motion.p variants={transitions.item} className="paragraph-large mb-8">
-          The unique architecture and novel cryptography of the Internet
-          Computer blockchain allow it to host smart contract software, data and
-          computation, with levels of efficiency competitive with normal
+          Thanks to the unique architecture and novel cryptography of the Internet
+          Computer blockchain, it can host smart contract software, data, and
+          computation, with levels of efficiency competitive with traditional
           software that runs on Big Tech's cloud services. Meanwhile, it is
           currently tens of thousands of times more efficient than the next most
           efficient blockchain. Web3 projects that incorporate Internet Computer
           smart contracts can consequently dramatically lower their carbon
-          footprints, and reduce climate change.
+          footprint, and help reduce climate change.
         </motion.p>
         <motion.p
           variants={transitions.item}

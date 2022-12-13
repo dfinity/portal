@@ -49,9 +49,9 @@ function SnsPage() {
     <Layout
       title="Next Generation DAOs"
       // fill in meta description
-      description="The Service Nervous Systems (SNS) puts the autonomy
-      in DAO. No centralized power, no administrative overhead, no
-      legal headache, only code and its community."
+      description="An SNS is an advanced form of a DAO. A digital democracy
+      that can run any dapp such as a social network in a fully decentralized
+      way, fully on  chain. No corporation, no board of directors, no CEO required."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -80,9 +80,9 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Put the autonomy in DAO. No centralized power, no
-                  administrative overhead, no legal headache, only code and its
-                  community.
+                  An SNS is an advanced form of a DAO. A digital democracy
+                  that can run any dapp such as a social network in a fully decentralized
+                  way, fully on  chain. No corporation, no board of directors, no CEO required.
                 </motion.p>
               </div>
             </div>
@@ -116,10 +116,9 @@ function SnsPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-12 md:w-8/10"
               variants={transitions.item}
             >
-              Tired of being the product? Tired of being deplatformed by
-              corporate terms of service?
-              <br className="hidden md:inline" />
-              Be unstoppable with an SNS.
+              Developers can now hand over their Web3 service to an SNS. The user community
+              can buy governance tokens to take ownership and control through the SNS DAO
+              and shape the dapp’s future.
             </motion.p>
             <motion.p
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
@@ -258,7 +257,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Turn Your Web3 Service into an SNS DAO
+              Have an SNS Transform Your Web3 App into a True Dapp
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
