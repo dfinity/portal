@@ -25,29 +25,27 @@ export default function NextGenSection(): JSX.Element {
           className="-mt-16 md:mt-0 text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
           variants={transitions.item}
         >
-          The next Gen
-          <br />
-          of DAOs
+          The Next-Gen DAOs
         </motion.h2>
         <motion.p
           className="tw-lead-sm md:tw-lead-lg mb-3"
           variants={transitions.item}
         >
-          No centralized power.
+          Service Nervous Systems.
           <br />
-          No administrative overhead.
+          100% on-chain governance.
           <br />
-          No legal headache.
+          True decentralization.
         </motion.p>
         <motion.p
           className="tw-heading-6 md:tw-heading-4 mb-8"
           variants={transitions.item}
         >
-          Only Code.
+          A new form of digital democracy.
         </motion.p>
         <motion.p className="mb-6" variants={transitions.item}>
           <Link className="button-primary" href="/sns">
-            DAO's on ICP
+            DAOs on ICP
           </Link>
         </motion.p>
         {/* <motion.p className="mb-0" variants={transitions.item}>

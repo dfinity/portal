@@ -228,7 +228,7 @@ const Storage: React.FC = () => {
                     $79,000,000
                   </span>
                   <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
-                    / GB per year
+                    / GB
                   </span>
                 </div>
               </motion.div>
@@ -250,7 +250,7 @@ const Storage: React.FC = () => {
                     $110,000
                   </span>
                   <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
-                    / GB per year
+                    / GB
                   </span>
                 </div>
               </motion.div>
