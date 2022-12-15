@@ -12,4 +12,4 @@ On top of these basic types, there are also specialized types of subnets that of
 might be useful to dapps. The first such specialized type is "Fiduciary" which is essentially a larger version of an
 application subnet. Having more nodes provides better security guarantees to dapps running on a "Fiduciary" subnet at
 the expense of being more expensive in terms of cycles cost (costs scale linearly to number of nodes, for more details
-see [here](https://internetcomputer.org/docs/current/developer-docs/deploy/computation-and-storage-costs/)).
+see [here](deploy/computation-and-storage-costs/)).
