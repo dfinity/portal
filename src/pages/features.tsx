@@ -777,7 +777,7 @@ seen on any other chain."
               className="tw-lead-sm md:tw-lead mb-0"
               variants={transitions.item}
             >
-              <Link className="button button-white" href="/how-it-works">
+              <Link className="button-white" href="/how-it-works">
                 Learn how ICP works
               </Link>
             </motion.p>

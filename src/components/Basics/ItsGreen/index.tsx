@@ -139,7 +139,11 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
         <motion.h2 variants={transitions.item} className={styles.heading}>
           Blockchain operation that's climate friendly
         </motion.h2>
-        <motion.p variants={transitions.item} className="paragraph-large mb-8">
+
+        <motion.p
+          variants={transitions.item}
+          className="tw-paragraph md:tw-lead mb-8"
+        >
           Thanks to the unique architecture and novel cryptography of the Internet
           Computer blockchain, it can host smart contract software, data, and
           computation, with levels of efficiency competitive with traditional
