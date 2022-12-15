@@ -24,10 +24,16 @@ const Hero = () => {
         className={styles.hero}
       >
         {/* <Breadcrumbs></Breadcrumbs> */}
-        <motion.h1 variants={transitions.item} className="heading-1">
+        <motion.h1
+          variants={transitions.item}
+          className="tw-heading-3 md:tw-heading-2 m-0"
+        >
           Internet Computer Basics
         </motion.h1>
-        <motion.p variants={transitions.item} className="paragraph-large">
+        <motion.p
+          variants={transitions.item}
+          className="tw-paragraph md:tw-lead m-0"
+        >
           Take a dive down the rabbit hole and see how to engage with the
           ecosystem, how you can share the success of the apps that you use, and
           how to own your data.
@@ -35,9 +41,9 @@ const Hero = () => {
 
         <motion.a
           variants={transitions.item}
-          className="button button-white"
+          className="button-white"
           href="/docs/current/developer-docs/ic-overview"
-          target={"_blank"}
+          target="_blank"
         >
           Build real Web3
         </motion.a>
