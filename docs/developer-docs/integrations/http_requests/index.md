@@ -27,4 +27,4 @@ If you want to take a deep dive into how the HTTPS outcalls feature works and ho
 
 ## Build more
 
-In the [Examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) which you can use as starting point for building your own dApp.
+In the [Examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) which you can use as starting point for building your own dApp. See the [sample code](https://internetcomputer.org/docs/current/samples/http-requests-exchange-rates) for more details.
