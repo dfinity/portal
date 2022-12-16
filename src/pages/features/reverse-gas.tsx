@@ -26,8 +26,7 @@ function FeaturePage() {
                 On the Internet Computer (IC), a browser is all you need to
                 interact with canister smart contracts. You do not have to overcome any
                 hurdles such as creating a wallet, hold tokens, or pay expensive
-                gas fees. This is in contrast to other blockchains, where users
-                need to acquire tokens first to do anything.
+                gas fees. This is in contrast to other blockchains, where tokens are required to interact with the chain.
               </p>
             </div>
           </div>
