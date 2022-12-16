@@ -111,7 +111,7 @@
     "description": "Internet Identity ensures that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web pseudonymously and securely. ",
     "github": "https://github.com/dfinity/internet-identity",
     "usesInternetIdentity": true,
-    "stats": "1 000 000+ identities",
+    "stats": "2'000'000+ identities",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/65ZprSZjb5AEpZMOkuwdoI/6dbfba54d96d5e567ea834016c12ac5c/loader.webp",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/3MnxKJHc9WAF6JOdrzJVmV/295d12ed68f4c6a47ba9e4bf91b7250a/final_6114388c822e3700f9b2160a_833666.gif"
