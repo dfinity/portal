@@ -63,7 +63,7 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                makes it possible to escape the web2 dilemma of users being monetized by the services they use.
+                makes it possible to escape the Web2 dilemma of users being monetized by the services they use.
                 Instead, with IC dapps, users become the owners of the services and decide on how their services should evolve.
                 This is made possible through a new form of on-chain governance for online services that are running 100% on chain, for the 
                 very first time. There is no need for centralized traditional IT, such as cloud services, 
