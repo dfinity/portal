@@ -469,7 +469,7 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
 
 :::
 
-### Merge neuron maturity
+### Stake neuron maturity
 
 |                      |            |
 |----------------------|------------|
@@ -477,7 +477,9 @@ The `SPAWN` operation creates a new neuron from an existing neuron with enough m
 | Idempotent?          | no         |
 | Minimal access level | controller |
 
-The `MERGE_MATURITY` operation merges the existing maturity of the neuron into its stake. The percentage of maturity to merge can be specified, otherwise the entire maturity is merged.
+The `STAKE_MATURITY` operation stakes maturity of the neuron which locks the maturity until the neuron is dissolved. Once a neuron is dissolved, staked maturity is unlocked and becomes normal maturity. Staked maturity contributes to the voting power of the neuron. 
+
+The percentage of maturity to stake can be specified, otherwise the entire maturity is staked.
 
 <div class="formalpara-title">
 
@@ -487,7 +489,7 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 
 -   `account.address` is the ledger address of the neuron controller.
 
--   The neuron has non-zero maturity to merge.
+-   The neuron has non-zero maturity to stake.
 
 <div class="formalpara-title">
 
@@ -495,9 +497,9 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 
 </div>
 
--   Maturity decreased by the amount merged.
+-   Maturity decreased by the amount to be staked.
 
--   Neuron stake increased by the amount merged.
+-   Staked maturity increased by the amount to be staked.
 
 <div class="formalpara-title">
 
@@ -508,7 +510,7 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 ``` json
 {
   "operation_identifier": { "index": 0 },
-  "type": "MERGE_MATURITY",
+  "type": "STAKE_MATURITY",
   "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
   "metadata": {
     "neuron_index": 0,
@@ -519,7 +521,7 @@ The `MERGE_MATURITY` operation merges the existing maturity of the neuron into i
 
 :::note
 
-`percentage_to_merge` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
+`percentage_to_stake` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
 
 :::
 
