@@ -107,9 +107,7 @@ npm install --save \
 @dfinity/agent \
 @dfinity/principal \
 @dfinity/candid \
-@dfinity/identity \
-hdkey \
-bip39 \
+@dfinity/identity-secp256k1 \
 @slide-computer/assets \
 isomorphic-fetch \
 image-thumbnail \
@@ -130,23 +128,13 @@ Since we are running the code using the `--es-module-specifier-resolution=node` 
 
 ```js
 // identity.js
-import { Secp256k1KeyIdentity } from "@dfinity/identity";
-import hdkey from "hdkey";
-import bip39 from "bip39";
+import { Secp256k1KeyIdentity } from "@dfinity/identity-secp256k1";
 
 // Completely insecure seed phrase. Do not use for any purpose other than testing.
 // Resolves to "rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae"
 const seed = "test test test test test test test test test test test test";
 
-export const identityFromSeed = async (phrase) => {
-  const seed = await bip39.mnemonicToSeed(phrase);
-  const root = hdkey.fromMasterSeed(seed);
-  const addrnode = root.derive("m/44'/223'/0'/0/0");
-
-  return Secp256k1KeyIdentity.fromSecretKey(addrnode.privateKey);
-};
-
-export const identity = identityFromSeed(seed);
+export const identity = await Secp256k1KeyIdentity.fromSeed(seed);
 ```
 
 As you can see, the seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to the IC, you should change the seed out for something private.
