@@ -172,8 +172,7 @@ function Dashboard() {
             {(Math.floor(stats.blockCount / 100_000_000) / 10).toFixed(1)}{" "}
             Billion
           </span>{" "}
-          blocks processed. <span className="text-white">10x</span> more than
-          the nearest competitor.
+          blocks processed. Everything is a transaction. 
         </h2>
       </AnimateSpawn>
 
