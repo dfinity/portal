@@ -7,7 +7,7 @@ import transitions from "@site/static/transitions.json";
 
 export default function Hero(): JSX.Element {
   return (
-    <section className="overflow-hidden relative z-10" id="home">
+    <section className="overflow-hidden relative z-10" id="introduction">
       <div className="container-10 mt-20 mb-20 md:my-40">
         <AnimateSpawn
           el={motion.h2}
@@ -33,13 +33,15 @@ export default function Hero(): JSX.Element {
               deep crypto research begun in 2015
             </Link>
             . It is a limitless blockchain that hosts and runs smart contracts
-            with efficiency comparable to traditional centralized IT infrastructure.
-            Smart contracts gain superpowers, and they can now serve web experiences,
-            securely interact with Web2, and create signed transactions that run on 
-            other blockchains. As a World Computer blockchain, it supports the full 
-            end-to-end decentralization of online systems and services, which can 
-            now be built entirely on-chain exclusively from smart contracts, without 
-            the need for centralized traditional IT and Big Tech's cloud services.
+            with efficiency comparable to traditional centralized IT
+            infrastructure. Smart contracts gain superpowers, and they can now
+            serve web experiences, securely interact with Web2, and create
+            signed transactions that run on other blockchains. As a World
+            Computer blockchain, it supports the full end-to-end
+            decentralization of online systems and services, which can now be
+            built entirely on-chain exclusively from smart contracts, without
+            the need for centralized traditional IT and Big Tech's cloud
+            services.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}

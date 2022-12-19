@@ -223,7 +223,7 @@ To validate your cycles wallet:
 
     You can also access your default cycles wallet in a web browser by using a URL similar to the following:
 
-        https://<WALLET-CANISTER-ID>.raw.ic0.app
+        https://<WALLET-CANISTER-ID>.ic0.app
 
     The first time you access the application, you see a notice that you are using an Anonymous Device and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
 
@@ -277,19 +277,19 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     The `dfx deploy` command output displays information about the operations it performs.
 
-    For example, this step registers two identifiers—one for the `hello` main program and one for the `hello_assets` frontend user interface—and installation information similar to the following:
+    For example, this step registers two identifiers—one for the `hello_backend` main program and one for the `hello_frontend` frontend user interface—and installation information similar to the following:
 
         Deploying all canisters.
         Creating canisters...
-        Creating canister "hello"...
+        Creating canister "hello_backend"...
         "hello" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
-        Creating canister "hello_assets"...
+        Creating canister "hello_frontend"...
         "hello_assets" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
         Building canisters...
         Building frontend...
         Installing canisters...
-        Installing code for canister hello, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-        Installing code for canister hello_assets, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
+        Installing code for canister hello_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
+        Installing code for canister hello_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
         Authorizing our identity (default) to the asset canister...
         Uploading assets to asset canister...
           /index.html 1/1 (472 bytes)
@@ -315,9 +315,9 @@ To deploy your first application on the Internet Computer blockchain mainnet:
         Transfer sent at BlockHeight: 81520
         Canister was topped up!
 
-4.  Call the `hello` canister and the predefined `greet` function by running the following command:
+4.  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
-        dfx canister --network ic call hello greet '("everyone": text)'
+        dfx canister --network ic call hello_backend greet '("everyone": text)'
 
     Let’s take a closer look at this example:
 
@@ -325,7 +325,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     -   Note that the `--network ic` option must precede the operation subcommand, which, in this case, is the `dfx canister call` command.
 
-    -   The `hello` argument specifies the name of the canister you want to call.
+    -   The `hello_backend` argument specifies the name of the canister you want to call.
 
     -   The `greet` argument specifies the name of the function you want to call in the `hello` canister.
 
@@ -347,7 +347,7 @@ To access the dapp frontend:
 
 1.  Open a browser.
 
-2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_assets` identifier and the `boundary.ic0.app` suffix.
+2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_frontend` identifier and the `boundary.ic0.app` suffix.
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
@@ -355,7 +355,7 @@ To access the dapp frontend:
 
     For example, the full URL should look similar to the following:
 
-        https://gsueu-yaaaa-aaaae-aaagq-cai.raw.ic0.app
+        https://gsueu-yaaaa-aaaae-aaagq-cai.ic0.app
 
     Navigating to this URL displays the HTML entry page for the template application. For example:
 

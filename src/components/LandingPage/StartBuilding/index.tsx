@@ -95,7 +95,7 @@ function StartBuilding() {
       variants={transitions.container}
       className={styles.main}
     >
-      <a className={styles.anchor} id="startBuilding" />
+      <div className={styles.anchor} id="startBuilding" />
       <div className={styles.headerContainer}>
         <img src={BackgroundGradient} className={styles.BGGradient} alt="" />
         <motion.div

@@ -184,7 +184,7 @@ function Dashboard() {
         variants={container}
         className={styles.main}
       >
-        <a className={styles.anchor} id="dashboard" />
+        <div className={styles.anchor} id="dashboard" />
         <div className={styles.grid}>
           <Statistic
             title="Transaction Rate"
