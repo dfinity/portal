@@ -15,7 +15,7 @@ SDK will create an project from a template in a folder "poll":
 After your app is created you can examine the folder structure:
 
 ```
-poll                   <-- App main folder
+PROJECT ROOT           <-- App main folder
 ├── README.md
 ├── dfx.json           <-- configuration of your Internet Computer app
 ├── package-lock.json  <-- node.js packages config
