@@ -10,6 +10,7 @@ import FoundationSection from "../components/LandingPage/Foundation";
 import HeroSection from "../components/LandingPage/HeroSection";
 import NextGenSection from "../components/LandingPage/NextGen";
 import PreHero from "../components/LandingPage/PreHero";
+import SectionsBar from "../components/LandingPage/SectionsBar";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import SlidersSection from "../components/LandingPage/Sliders";
 import Storage from "../components/LandingPage/Storage";

@@ -1,15 +1,19 @@
-const fetch = require("node-fetch").default;
+const { default: axios } = require("axios");
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const icpPricePlugin = async function (context, options) {
   return {
     name: "icp-price",
     async loadContent() {
-      const ticker = await fetch(
-        "https://api.coinbase.com/v2/prices/ICP-USD/buy"
-      ).then((res) => res.json());
+      // const {
+      //   data: { data },
+      // } = await axios.get("https://api.coinbase.com/v2/prices/ICP-USD/buy");
 
-      return +ticker.data.amount;
+      // .then((res) => res.json());
+      // console.log(data);
+      const data = { base: "ICP", currency: "USD", amount: "3.62" };
+
+      return +data.amount;
     },
     async contentLoaded({ content, actions }) {
       const { setGlobalData } = actions;
