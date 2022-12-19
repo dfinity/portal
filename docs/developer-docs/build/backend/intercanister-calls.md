@@ -20,7 +20,7 @@ The LinkedUp sample dapp is implemented using the following canisters:
 
 Before building the sample dapp, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/build/install-upgrade-remove.mdx).
 
 -   You have stopped the local canister execution environment provided by `dfx`.
 

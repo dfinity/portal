@@ -27,7 +27,7 @@ At this point, the replica (for all practical matters, a local version of the In
       };
   };
   ```
-  On the IC, a principal is the identifier of someone performing a request or "call" (hence "caller"). Every call must have a valid principal. There is also a special principal for anonymous calls. When using Internet Identity you are using [self-authenticating principals](../../../references/ic-interface-spec.md#principals), which is a very fancy way of saying that you have a private key on your laptop (hidden behind TouchID, Windows Hello, etc) that your browser uses to sign and prove that you are indeed the person issuing the calls to the IC.
+  On the IC, a principal is the identifier of someone performing a request or "call" (hence "caller"). Every call must have a valid principal. There is also a special principal for anonymous calls. When using Internet Identity you are using [self-authenticating principals](/references/ic-interface-spec.md#principals), which is a very fancy way of saying that you have a private key on your laptop (hidden behind TouchID, Windows Hello, etc) that your browser uses to sign and prove that you are indeed the person issuing the calls to the IC.
 
 If the IC actually lets the call (request) through to the `whoami` canister, it means that everything checked out, and the `whoami` canister just responds with the information the IC adds to requests, namely your identity (principal).
 
@@ -104,4 +104,4 @@ Figuring the canister IDs, and using the `canisterId=...` query parameter is all
 - `npm run proxy`: Start a proxy that serves Internet Identity on `localhost:8086` and the webapp on `localhost:8087` for easy access.
 - `npm run test`: Start the proxy and run browser tests against the `internet_identity` canister.
 
-For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file, the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo) and the [SDK documentation](../../build/). Not bored yet? Check out the [Internet Computer Specification](../../../references/ic-interface-spec.md) and the [Internet Identity Specification](../../../references/ii-spec.md).
+For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file, the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo) and the [SDK documentation](../../build/). Not bored yet? Check out the [Internet Computer Specification](/references/ic-interface-spec.md) and the [Internet Identity Specification](/references/ii-spec.md).

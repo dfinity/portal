@@ -132,7 +132,7 @@ variables](#certified_variables). Public “keys” include a
 [canister id](#canister_identifier) plus a seed (so that
 every [canister](#canister) has many public keys); signatures
 are certificates that prove that the canister has put the signed message
-at a specific place in its state tree. Details in the [The Internet Computer Interface Specification](../references/ic-interface-spec/#canister-signatures).
+at a specific place in its state tree. Details in the [The Internet Computer Interface Specification]/references/ic-interface-spec.md#canister-signatures).
 
 #### canister state
 
@@ -321,7 +321,7 @@ such as a [principal](#principal), that interacts with the
 [Internet Computer](#Internet_Computer). For users, the
 identity is the SHA-224 hash of the DER-encoded public key of the user.
 [The Internet Computer Interface
-Specification](../references/ic-interface-spec.md) has more
+Specification](/references/ic-interface-spec.md) has more
 detail.
 
 #### Internet Identity

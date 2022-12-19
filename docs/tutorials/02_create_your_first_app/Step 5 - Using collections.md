@@ -5,7 +5,7 @@ In this step we will add new variable `options` to the actor that will hold a li
 
 ## Creating a "map"
 
-Each option is a string, what describes what the users are voting for. However, since we have multiple options in the poll we will need to store them in some data structure. We will use a collection called [`RBTree`](../../motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages.
+Each option is a string, what describes what the users are voting for. However, since we have multiple options in the poll we will need to store them in some data structure. We will use a collection called [`RBTree`](/motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages.
 
 The collection will "map" option identifier (an natural number) to the option value (text). For example, we may have this list of options if we want to vote for our favorite programming language:
 
@@ -17,7 +17,7 @@ The collection will "map" option identifier (an natural number) to the option va
 | 4   | F#     |
 
 
-To use RBTree we need to import it. In addition, we will need to import the standard type [`Nat`](../../motoko/main/base/Nat.md) to use some of the module's functions. So first let's add an import statement to the beginning of our file `main.mo`:
+To use RBTree we need to import it. In addition, we will need to import the standard type [`Nat`](/motoko/main/base/Nat.md) to use some of the module's functions. So first let's add an import statement to the beginning of our file `main.mo`:
 ```motoko
 import RBTree "mo:base/RBTree";
 import Nat "mo:base/Nat";

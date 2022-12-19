@@ -24,11 +24,11 @@ For example, you might set up the backend logic for your dapp to consist of the 
 
 ## Using query calls
 
-As discussed in [Query and update methods](../../../concepts/canisters-code#query-update), queries return results faster than update calls. Therefore, explicitly marking a function as a `query` is an effective strategy for improving application performance. In the planning and design phase, you should consider how best to use query calls instead of functions that can perform queries or updates.
+As discussed in [Query and update methods](/concepts/canisters-code.md#query-update), queries return results faster than update calls. Therefore, explicitly marking a function as a `query` is an effective strategy for improving application performance. In the planning and design phase, you should consider how best to use query calls instead of functions that can perform queries or updates.
 
 That is a good general rule to follow and can be applied broadly to most categories of dapps. However, you should also consider the security and performance trade-off that queries don’t go through consensus and do not appear on the blockchain. For some dapps, that trade-off might be appropriate. For example, if you are developing a blogging platform, queries that retrieve articles matching a tag probably don’t warrant going through consensus to ensure that a majority of nodes agree on the results. However, if your dapp is retrieving sensitive information—like financial data—you might want more assurance about your results than a basic query provides.
 
-As an alternative to basic queries, the Internet Computer also supports **certified queries**. Certified queries enable you to receive **authenticated responses** that end users can trust. Using certified queries is an advanced technique that is not covered in the tutorials or other developer-focused documentation, but you can learn about how the authentication works and what you need to do to configure your program to return certified data in response to queries in the [Interface specification](../../../references/ic-interface-spec.md).
+As an alternative to basic queries, the Internet Computer also supports **certified queries**. Certified queries enable you to receive **authenticated responses** that end users can trust. Using certified queries is an advanced technique that is not covered in the tutorials or other developer-focused documentation, but you can learn about how the authentication works and what you need to do to configure your program to return certified data in response to queries in the [Interface specification](/references/ic-interface-spec.md).
 
 ## Data storage and retrieval
 

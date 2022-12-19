@@ -37,12 +37,12 @@ For example `Ubuntu.exe` is the command to start the `Ubuntu` distribution from 
 
 ## Installing dfx
 
-Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](../developer-docs/build/install-upgrade-remove).
+Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](/developer-docs/build/install-upgrade-remove.mdx).
 
 ## Troubleshooting
 
 ### Node.js is not properly installed
-WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](create_first_dapp#nodejs) for more information.
+WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](deploy_sample_app#nodejs) for more information.
 
 ### Permission Denied when running `dfx start`
 Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.

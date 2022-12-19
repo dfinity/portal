@@ -158,7 +158,7 @@ To transfer ICP utility tokens controlled by your developer identity:
 
     If you transfer the ICP utility tokens to an account in the [Network Nervous System dapp](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-    For more information about using the `dfx ledger` command-line options, see [dfx ledger](../../references/cli-reference/dfx-ledger).
+    For more information about using the `dfx ledger` command-line options, see [dfx ledger](/references/cli-reference/dfx-ledger.md).
 
 ## Stake ICP utility tokens in a neuron
 
@@ -394,7 +394,7 @@ If you want to start submitting proposals right away, however, you can access a 
 
 ## Deploy a canister with cycles
 
-You must have **cycles** available to create and manage [canisters](../../references/glossary.md#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
+You must have **cycles** available to create and manage [canisters](/references/glossary.md#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
 
 To create a new canister:
 

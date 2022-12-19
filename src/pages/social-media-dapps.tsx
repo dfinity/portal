@@ -499,7 +499,7 @@ function SocialMediaDappsPage() {
             <CardWithDescription
               title="Quick Start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
-              href="/docs/current/tutorials/create_first_dapp"
+              href="/docs/current/tutorials/deploy_sample_app"
             ></CardWithDescription>
             <CardWithDescription
               title="Developer Docs"

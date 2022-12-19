@@ -19,5 +19,5 @@ Ultimately the security of any site using standard web technology depends on DNS
 1. Test.
 
 :::caution
-For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../references/ii-spec.md#alternative-frontend-origins).
+For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](/references/ii-spec.md#alternative-frontend-origins).
 :::

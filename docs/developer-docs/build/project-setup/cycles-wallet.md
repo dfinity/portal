@@ -1,6 +1,6 @@
 # Cycles Wallet
 
-As discussed in [Tokens and cycles](../../../concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [Tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not user or developer principals. Because only canisters require and consume cycles—to perform operations and to pay for the resources they use—users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. Because the cycles wallet holds the cycles required to perform operations such as creating new canisters, these operations are executed using the canister principal for the cycles wallet instead of your user principal.
 
@@ -56,7 +56,7 @@ Authorizing a principal as a custodian does not automatically grant the principa
 
 If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
 
-If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](../../../tutorials/network-quickstart.md#creating-a-cycles-wallet) shows how to do this.
+If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](/tutorials/network-quickstart.md#creating-a-cycles-wallet) shows how to do this.
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
@@ -116,7 +116,7 @@ The command returns the balance using Candid format as a record with an amount f
 
 ## Other dfx-supported Wallet Functions
 
-The cycles wallet supports a lot more functions through dfx. For a full list of supported operations, see the [dfx wallet reference](../../../references/cli-reference/dfx-wallet.md).
+The cycles wallet supports a lot more functions through dfx. For a full list of supported operations, see the [dfx wallet reference](/references/cli-reference/dfx-wallet.md).
 
 ## Additional Methods in the Default Cycles Wallet
 

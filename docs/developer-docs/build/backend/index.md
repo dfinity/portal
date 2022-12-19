@@ -1,6 +1,6 @@
 # Tutorials
 
-The [Quick start](../../../tutorials/create_first_dapp.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Quick start](/tutorials/01_deploy_sample_app.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 
@@ -34,4 +34,4 @@ The following tutorials introduce the basics for writing dapps that run on the I
 
 -   [Accept cycles from a wallet](./simple-cycles.md) illustrates how to accept cycles sent from the default wallet canister.
 
-Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*Motoko Programming Language Guide*](../../../motoko/main/about-this-guide.md).
+Additional tutorials covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).

@@ -28,14 +28,14 @@ Make sure that all canisters have enough cycles to sustain a few years to begin 
 
 ### Set a generous freezing threshold
 
-The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](../../references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
+The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](/references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
 
 
 ### Make sure your canisters can be monitored
 
 On the IC, the cycle balance of a canister is only visible to controllers. Since an NFT (collection) might outlive its creator, you should plan for monitoring by third parties. You can do this via implementing a simple query method as included in the [DIP721](https://github.com/Psychedelic/DIP721/blob/064b04fbaf0429bf9fefdc0663d53fae033be0f9/src/main.rs#L450) and [EXT](https://github.com/Toniq-Labs/extendable-token/blob/86eabb7336ea259876be9be830fb69b03046ea14/examples/erc721.mo#L254) standards.
 
-Again, adding the black hole canister as a controller is a good practice in this regard, since it can act as a proxy to fetch the [`canister_status`](../../references/ic-interface-spec.md#c-canister_status). 
+Again, adding the black hole canister as a controller is a good practice in this regard, since it can act as a proxy to fetch the [`canister_status`](/references/ic-interface-spec.md#c-canister_status). 
 
 You can also use a more complete monitoring solution like [Canistergeek](https://canistergeek.app/). Recently, the team behind Canistergeek added a new feature to their [NFTgeek](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/) product that allows observing the [cycles balance of popular NFT collections](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/cycles). 
 
@@ -80,7 +80,7 @@ The value proposition of most NFTs is their permanence and immutability, e.g. by
 
 Blackholing a canister has its issues as well. If there are bugs in the canister code or you’re using experimental system APIs that might get deprecated, later on, the canister might stop functioning. 
 
-More information on this topic can be found in the [Trust in Canisters](../../concepts/trust-in-canisters.md) article.
+More information on this topic can be found in the [Trust in Canisters](/concepts/trust-in-canisters.md) article.
 
 
 ### Think about economic sustainability

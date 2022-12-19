@@ -13,7 +13,7 @@ First, let’s make sure that your development environment is ready.
 
 * You’ll be using your own text editor and terminal app for this tutorial.
 * If you don’t have the Internet Computer SDK installed, install it
-  from [here](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove), or keep following
+  from [here](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove.mdx), or keep following
   along below.
 
 ### Install the Internet Computer SDK

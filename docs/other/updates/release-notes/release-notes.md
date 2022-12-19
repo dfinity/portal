@@ -325,14 +325,14 @@ We're calling this the "shared local network."  `dfx start` and `dfx stop` will 
 
 We recommend that you remove the `local` network definition from dfx.json and instead use the shared local network.  As mentioned above, doing so will make dfx use port 4943 rather than port 8000.
 
-See [Local Server Configuration](../../../references/cli-reference/dfx-start.md#local-server-configuration) for details.
+See [Local Server Configuration](/references/cli-reference/dfx-start.md#local-server-configuration) for details.
 
 dfx now stores data and control files in one of three places, rather than directly under `.dfx/`:
 - `.dfx/network/local` (for projects in which dfx.json defines the local network)
 - `$HOME/.local/share/dfx/network/local` (for the shared local network on Linux)
 - `$HOME/Library/Application Support/org.dfinity.dfx/network/local` (for the shared local network on MacOS)
 
-There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its schema is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](../../../references/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
+There is also a new configuration file: `$HOME/.config/dfx/networks.json`.  Its schema is the same as the `networks` element in dfx.json.  Any networks you define here will be available from any project, unless a project's dfx.json defines a network with the same name.  See [The Shared Local Network](/references/cli-reference/dfx-start.md#the-shared-local-network) for the default definitions that dfx provides if this file does not exist or does not define a `local` network.
 
 ### fix: `dfx start` and `dfx stop` will take into account dfx/replica processes from dfx <= 0.11.x
 
@@ -1089,11 +1089,11 @@ Previously, `dfx canister call --with-cycles 1` would silently ignore the `--wit
 
 #### New feature: Configure subnet type of local replica
 
-The local replica sets its parameters according to the [subnet type](../../../concepts/nodes-subnets.md#subnet-blockchains) defined in defaults.replica.subnet_type, defaulting to 'application' when none is specified.
+The local replica sets its parameters according to the [subnet type](/concepts/nodes-subnets.md#subnet-blockchains) defined in defaults.replica.subnet_type, defaulting to 'application' when none is specified.
 This makes it less likely to accidentally hit the `cycles limit exceeded` error in production. Since the previous default was `system`, you may see these types of errors in development instead.
 Possible values for defaults.replica.subnet_type are: "application", "verifiedapplication", "system"
 
-Example how to specify the [subnet type](../../../concepts/nodes-subnets.md#subnet-blockchains):
+Example how to specify the [subnet type](/concepts/nodes-subnets.md#subnet-blockchains):
 ```
 {
   "defaults": {
@@ -2020,7 +2020,7 @@ The most significant new features and capabilities are updates to the following:
 
 -   Addition of ledger subcommands
 
-    `dfx` now supports a dedicated `dfx ledger` subcommand. This allows you to interact with the ledger canister installed on the Internet Computer. Example commands include `dfx ledger account-id` which prints the Account Identifier associated with your selected identity, `dfx ledger transfer` which allows you to transfer ICP from your ledger account to another, and `dfx ledger create-canister` which allows you to create a canister from ICP. For more information on `dfx ledger` subcommands, see [dfx ledger](../../../references/cli-reference/dfx-ledger).
+    `dfx` now supports a dedicated `dfx ledger` subcommand. This allows you to interact with the ledger canister installed on the Internet Computer. Example commands include `dfx ledger account-id` which prints the Account Identifier associated with your selected identity, `dfx ledger transfer` which allows you to transfer ICP from your ledger account to another, and `dfx ledger create-canister` which allows you to create a canister from ICP. For more information on `dfx ledger` subcommands, see [dfx ledger](/references/cli-reference/dfx-ledger.md).
 
 -   Addition of wallet subcommands
 
@@ -2034,7 +2034,7 @@ The most significant new features and capabilities are updates to the following:
 
         You can use `dfx wallet send <destination> <amount>` to send cycles to another wallet.
 
-        For more information on `dfx wallet` see [dfx wallet](../../../references/cli-reference/dfx-wallet).
+        For more information on `dfx wallet` see [dfx wallet](/references/cli-reference/dfx-wallet.md).
 
 -   Add an output type to the `request-status` subcommand.
 
@@ -2148,7 +2148,7 @@ The 0.6.26 release primarily consists of changes to support new features that ar
 
 ### New features and capabilities
 
-The most significant new feature included in this release is the publication of the [*Internet Computer Interface Specification*](../../../references/ic-interface-spec.md).
+The most significant new feature included in this release is the publication of the [*Internet Computer Interface Specification*](/references/ic-interface-spec.md).
 
 The *Internet Computer Interface Specification* details many technical properties that describe the lower-level interfaces for interacting with the Internet Computer. For example, the *Internet Computer Interface Specification* describes the HTTPS endpoints that are exposed to handle incoming requests and how low-level bindings enable canisters to interact with system components.
 
@@ -2182,7 +2182,7 @@ This section covers any known issues or limitations that might affect how you wo
 
 The introduction of the cycles wallet canister changes the default principal used to perform key canister management tasks, such as registering a new canister identifier and deploying a new canister on the Internet Computer. This change introduces some inconsistencies in the identity used to perform certain tasks and can result in potential access control issues.
 
-You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](../../build/backend/access-control) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](../../build/backend/) tutorial, you should install the SDK version 0.6.23 (or older).
+You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](/developer-docs/build/backend/access-control.md) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](/developer-docs/build/backend/index.md) tutorial, you should install the SDK version 0.6.23 (or older).
 
 #### Incompatibility when using the JavaScript agent directly in a project
 
@@ -2202,7 +2202,7 @@ The most significant new features and capabilities include the following updates
 
     You can now use the `CANISTER_ID_{canister.name}` and `CANISTER_CANDID_PATH_{canister.name}` environment variables to reference canister identifiers and the path to the canister Candid description (`.did` file) during the build process. These environment variables enable you to construct the JavaScript for frontend assets using the correct canister identifiers.
 
-    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](../../build/frontend/webpack-config) which is being deprecated and will be removed in a future release.
+    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](/developer-docs/build/frontend/webpack-config.md) which is being deprecated and will be removed in a future release.
 
 -   A new `dfx identity import` subcommand enables you to import a security certificate to create an identity.
 
@@ -2383,7 +2383,7 @@ The command is only applicable if you received the wallet canister identifier as
     the `WordN` types. Therefore, the wrapping arithmetic operations on
     `WordN` are deprecated and their use will print a warning. For
     information about replacing Word types, see [Word
-    types](../../../motoko/main/language-manual.md#word-types).
+    types](/motoko/main/language-manual.md#word-types).
 
 -   For values `x` of type `Blob`, an iterator over the elements of the
     blob `x.vals()` is introduced. It works like `x.bytes()`, but

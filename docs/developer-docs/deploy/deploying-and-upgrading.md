@@ -22,7 +22,7 @@ To install code in a canister, the `install_code` function of the Internet Compu
 - The `install` mode is the one every canister starts with: it is only callable for canisters without any installed code and populates the canister with the supplied WASM module. Once installation is complete, the aforementioned function `canister_init` (usually exposed as `init` in CDKs) is called if it exists. This allows the code to perform any required setup before any calls arrive.
 - The `reinstall` mode works almost the same as `install`, but if the canister already contains running code, its state is discarded and the running code is deleted. After that, the procedure from mode `install` is followed.
 - The `upgrade` mode is the one used most often. This mode allows canister code to be changed without losing all of its state. In this mode, the canister first has the chance to save any state to stable memory in the `canister_pre_upgrade` (exposed as `pre_upgrade` in CDKs) function. After that, the new code is installed and instead of calling the init function, the `canister_post_upgrade` function (exposed as `post_ugrade` in CDKs) is run so that data can be loaded from stable memory.
-All three `install_code` modes are atomic. If _anything_ goes wrong in one of the described steps, the canister state is reverted to its state before the `install_code` function was called. And in case anything is not clear enough from these explanations, the [IC Specification for `install_code`](../../references/ic-interface-spec.md#ic-install_code) is the official source of truth.
+All three `install_code` modes are atomic. If _anything_ goes wrong in one of the described steps, the canister state is reverted to its state before the `install_code` function was called. And in case anything is not clear enough from these explanations, the [IC Specification for `install_code`](/references/ic-interface-spec.md#ic-install_code) is the official source of truth.
 
 :::caution
 Every function call on the Internet Computer has a limit to how many instructions can be executed. If your `pre_upgrade` function exceeds this limit, it will be canceled and the upgrade fails. This can make a canister un-upgradeable. The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
@@ -63,5 +63,5 @@ Here is a checklist of the things you will need to consider:
 
 - [ ] How much trust does this project require?
 - [ ] How can I demonstrate that the canisters do what they are supposed to do?
-  * The sections [Trust in Canisters](../../concepts/trust-in-canisters.md) and [Reproducible Builds](../build/backend/reproducible-builds.md) contain information related to this topic.
+  * The sections [Trust in Canisters](/concepts/trust-in-canisters.md) and [Reproducible Builds](../build/backend/reproducible-builds.md) contain information related to this topic.
 - [ ] How can users trust that the code will not suddenly change?

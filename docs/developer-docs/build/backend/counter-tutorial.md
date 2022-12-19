@@ -16,7 +16,7 @@ This tutorial provides a simple example of how you can increment a counter by ca
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](../../../tutorials/local-quickstart#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/build/install-upgrade-remove.mdx).
 
 -   You have stopped any local canister execution environments running on the computer.
 
@@ -86,9 +86,9 @@ To modify the default template source code:
 
     -   The program includes two public update methods—the `increment` and `set` functions—and one a query method-the `get` function.
 
-    For more information about stable and flexible variables, see [Stable variables and upgrade methods](../../../motoko/main/upgrades.md) in the [*Motoko Programming Language Guide*](../../../motoko/main/about-this-guide.md).
+    For more information about stable and flexible variables, see [Stable variables and upgrade methods](/motoko/main/upgrades.md) in the [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).
 
-    For more information about the differences between a query and an update, see [Query and update methods](../../../concepts/canisters-code.md#query-update) in [Canisters include both program and state](../../../concepts/canisters-code.md#canister-state).
+    For more information about the differences between a query and an update, see [Query and update methods](/concepts/canisters-code.md#query-update) in [Canisters include both program and state](/concepts/canisters-code.md#canister-state).
 
 4.  Save your changes and close the file to continue.
 

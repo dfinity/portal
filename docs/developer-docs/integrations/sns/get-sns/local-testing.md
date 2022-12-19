@@ -52,7 +52,7 @@ Make sure that you can use it both with `dfx` and `sns-quill`, and that it will 
 If it doesn't receive a majority stake, you will not be able to test the upgrade proposals during the decentralization sale.
 
 `dfx nns install` is currently hard-coded to give a certain account ICP to test with tokens.
-Because of that, make sure you also [import](../../../../references/cli-reference/dfx-identity.md#dfx-identity-import) the following identity so you get access to those funds:
+Because of that, make sure you also [import](/references/cli-reference/dfx-identity.md#dfx-identity-import) the following identity so you get access to those funds:
 
 ```
 -----BEGIN EC PRIVATE KEY-----
