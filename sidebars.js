@@ -191,6 +191,7 @@ const sidebars = {
         "developer-docs/deploy/staging-environment",
         "developer-docs/deploy/custom-domain",
         "developer-docs/deploy/computation-and-storage-costs",
+        "developer-docs/deploy/subnet-types",
         // 'developer-docs/deploy/advanced-deployment'
       ],
     },
