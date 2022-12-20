@@ -132,8 +132,10 @@ div[class^="announcementBarContent"] {
 }
 
 @media (max-width: 996px) {
+  :root {
+    --ifm-navbar-height: 72px;
+  }
   .navbar {
-    height: 72px;
     padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
   }
 }

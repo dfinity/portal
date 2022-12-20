@@ -1,4 +1,4 @@
-const fetch = require("node-fetch").default;
+const fetch = require("node-fetch-retry");
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const votingRewardsPlugin = async function () {
@@ -6,7 +6,8 @@ const votingRewardsPlugin = async function () {
     name: "voting-rewards",
     async loadContent() {
       const response = await fetch(
-        "https://ic-api.internetcomputer.org/api/nns/metrics", { method: "GET", retry: 10 }
+        "https://ic-api.internetcomputer.org/api/nns/metrics",
+        { method: "GET", retry: 10, pause: 500 }
       ).then((res) => res.json());
 
       const lastRewardEventE8s = response.metrics.find((metric) => {
