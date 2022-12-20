@@ -5,10 +5,11 @@ const icpPricePlugin = async function (context, options) {
   return {
     name: "icp-price",
     async loadContent() {
-      const ticker = await fetch(
-        "https://api.coinbase.com/v2/prices/ICP-USD/buy",
-        { retry: 10, pause: 500 }
-      ).then((res) => res.json());
+      // const ticker = await fetch(
+      //   "https://api.coinbase.com/v2/prices/ICP-USD/buy",
+      //   { retry: 10, pause: 500 }
+      // ).then((res) => res.json());
+      const ticker = { data: { base: "ICP", currency: "USD", amount: "3.67" } };
 
       return +ticker.data.amount;
     },
