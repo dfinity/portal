@@ -14,6 +14,7 @@ function HTTPSOutcalls() {
     <Layout
       title="HTTPS Outcalls"
       description="The HTTPS Outcalls feature allows the Internet Computer to make HTTPS requests in a distributed and secure manner, all approved by consensus. Oracles are now a thing of the past."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

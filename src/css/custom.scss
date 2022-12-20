@@ -347,7 +347,10 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   animation-play-state: paused;
 }
 
-@import "typography.css";
+.gradient-text {
+  background-image: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
+}
+
 
 @tailwind base;
 @tailwind components;

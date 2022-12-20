@@ -19,7 +19,11 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout
+      title={siteConfig.title}
+      description={siteConfig.tagline}
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+    >
       <PreHero debugForces={false} paintParticles={true}></PreHero>
 
       <main

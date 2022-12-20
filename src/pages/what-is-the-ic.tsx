@@ -21,6 +21,7 @@ const RoadmapPage: React.FC = () => {
     <Layout
       title="What is the Internet Computer"
       description="The Internet Computer (IC) is the world computer of the Web 3.0 age. This page explains what the IC is and why it is a great choice to host Web 3.0 apps."
+      editPath="https://github.com/dfinity/portal/tree/master/what-is-the-ic"
     >
       <Head>
         <meta

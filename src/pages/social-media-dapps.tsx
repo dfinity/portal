@@ -103,6 +103,7 @@ function SocialMediaDappsPage() {
     <Layout
       title="Social Media Decentralized"
       description="Take full ownership and control over your social media plaforms."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -138,7 +139,7 @@ function SocialMediaDappsPage() {
                   platforms.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
-                  <Link href="#web3-dapps" className="button button-white">
+                  <Link href="#web3-dapps" className="button-white">
                     Try icp social dapps
                   </Link>
                 </motion.p>

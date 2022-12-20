@@ -4,8 +4,8 @@ A Decentralized Autonomous Organization, or DAO for short, is a system that allo
 many parties to jointly control an entity.
 Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that controls
 the Internet Computer blockchain (IC), service nervous systems 
-(SNSs) are algorithmic DAOs that allow developers to create decentralized, 
-token-based governance systems for their dapps.
+(SNSs) are algorithmic DAOs that allow developers to hand over their dapps to decentralized, 
+token-based governance systems.
 This means, each dapp that would like to be under decentralized control will have a 
 separate SNS.
 

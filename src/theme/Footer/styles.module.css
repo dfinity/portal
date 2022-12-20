@@ -18,6 +18,12 @@
     margin-bottom: 10vh;
 }
 
+.editButtonContainer {
+    margin: 0 auto;
+    width: Min(1350px, 90%);
+    position: relative;
+}
+
 .footerLinksContainer {
     display: flex;
     width: Min(1350px, 90%);
@@ -91,7 +97,6 @@
 .container {
     background-color: white;
     position: relative;
-    overflow: hidden;
 }
 
 @media screen and (max-width: 996px) {

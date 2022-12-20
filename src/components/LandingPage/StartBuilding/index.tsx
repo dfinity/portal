@@ -124,7 +124,7 @@ function StartBuilding() {
           <p className={styles.callToActionTitle}>Be a pioneer of Web3</p>
           <p className={styles.callToActionBody}>
             Start a DAO, create a token, build dapps and host assets with the
-            full stack entirely on-chain.
+            full tech stack entirely on chain.
           </p>
           <Link className={styles.actionButton} to="/developers">
             BUILD REAL WEB3

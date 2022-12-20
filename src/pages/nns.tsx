@@ -44,6 +44,7 @@ function NnsPage() {
       title="Network Nervous System (NNS)"
       // fill in meta description
       description="The NNS is one of the world's largest DAOs that governs the Internet Computer."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -77,7 +78,7 @@ function NnsPage() {
                   on the voting of ICP token holders.
                 </motion.p>
                 <MotionLink
-                  className="button button-white"
+                  className="button-white"
                   href="https://nns.ic0.app"
                   variants={transitions.item}
                 >
@@ -155,7 +156,7 @@ function NnsPage() {
                 collects
               </motion.p>
               <MotionLink
-                className="button button-primary"
+                className="button-primary"
                 href="https://nns.ic0.app"
                 variants={transitions.item}
               >
@@ -213,7 +214,7 @@ function NnsPage() {
             ></motion.p>
             <MotionLink
               variants={transitions.item}
-              className="button button-white"
+              className="button-white"
               href="https://nns.ic0.app"
             >
               Go to the NNS

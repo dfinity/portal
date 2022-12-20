@@ -59,6 +59,7 @@ const howItWorksArticlesPlugin = async function () {
               shareImage: meta.data.shareImage,
               slug: meta.data.slug,
               content: marked.parse(meta.content, { renderer }),
+              fileName: path.join("./how-it-works/", dir.name, sp.name),
             };
           })
         );

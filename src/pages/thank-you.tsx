@@ -13,6 +13,7 @@ function ThankYouPage(): JSX.Element {
       title="Thank you"
       description={siteConfig.tagline}
       wrapperClassName="overflow-hidden"
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative min-h-[400px]">
         <AnimateSpawn variants={transitions.container}>

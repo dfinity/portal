@@ -6,7 +6,7 @@ title: Infinite scalability
 
 # Infinite scalability
 
-The Internet Computer scales its capacity horizontally by creating new subnets that host additional canisters - just like traditional cloud infrastructure scales by adding new machines.
+The Internet Computer scales its capacity horizontally by creating new subnets that host additional canisters — just like traditional cloud infrastructure scales by adding new machines.
 Once the IC's Network Nervous System (NNS) decided to create a new subnet, it selects a group of spare nodes that have joined the IC but have not yet been allocated to any subnet and creates the initial configuration of the new subnet.
 The selected group of nodes then begins to form a new subnet blockchain.
 
