@@ -44,7 +44,7 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 |                                      |                                                                                                                |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | 400,000,000                 | 1,046,153,846               |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | 100,000                     | 261,538                     |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`)         | 100,000                     | 261,538                     |
 
 **Notes:**
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
@@ -79,7 +79,7 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 |                                      |                                                                                                                |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                          | $0.0005235440               | $0.0013692689               |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and payload byte (`http_request`)         | $0.0000001308860            | $0.0000003423166            |
+| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`)         | $0.0000001308860            | $0.0000003423166            |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
