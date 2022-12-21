@@ -103,7 +103,7 @@ const TranslatedLayout: React.FC<{
   );
   return reverse ? (
     <div className="flex flex-col md:flex-row">
-      <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-end">
+      <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
@@ -118,7 +118,7 @@ const TranslatedLayout: React.FC<{
       <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
         <div className="md:mx-auto md:w-[71.4%]">{children}</div>
       </div>
-      <div className="flex-1 text-center order-1 md:order-2 relative md:-mr-[50px] md:flex md:justify-end">
+      <div className="flex-1 text-center order-1 md:order-2 relative md:-mr-[50px] md:flex md:justify-end md:items-center">
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
@@ -430,7 +430,7 @@ function NftPage() {
             </TranslatedLayout>
           </div>
         </section>
-        <section className="mb-30">
+        <section className="mb-30 md:mb-60">
           <div className="container-10 mb-12 md:mb-20">
             <div className="md:w-6/10">
               <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
