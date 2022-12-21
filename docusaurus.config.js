@@ -47,7 +47,10 @@ const config = {
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
-
+  customFields: {
+    marketingLogoUrl: "/",
+    docsLogoUrl: "/docs/current/motoko/intro/Language%20Tour",
+  },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
