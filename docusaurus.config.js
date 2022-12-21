@@ -249,7 +249,7 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "concepts/index",
+                docId: "ic-overview",
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
