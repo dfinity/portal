@@ -63,12 +63,11 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                makes it possible to escape the web2 dilemma of users being monetized by the services they use.
-                Instead, with ICP dapps, users become the owners of the services and decide on how their services should evolve.
-                This is made possible through a new form of on-chain governance for online services that are running 100% on chain, for the 
-                very first time. There is no need for centralized traditional IT, such as cloud services, 
-                which otherwise have to be used in Web3. Since all code and data is fully decentralized, 
-                community DAOs can control services in a completely decentralized way. No companies, boards of directors, or CEOs required.
+                enables a Web3 future where "open internet services," such as social networks, run autonomously on a blockchain, 
+                under the complete control of community DAOs. Developers can design rich tokenized experiences in which users 
+                become owners, and become part of an industrious virtual team that helps them grow. DAOs transparently update 
+                the tamperproof and unstoppable code that powers services, and can crowdfund from the decentralized ecosystem, 
+                enabling communities of developers and users to be successful from anywhere the world, democratizing Tech.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
