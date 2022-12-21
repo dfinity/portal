@@ -150,7 +150,7 @@ module.exports = {
                 ".tw-heading-5": "@apply text-heading-5 font-bold",
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
-                ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold",
+                ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
 
                 //
                 ".tw-title-navigation": "@apply text-navigation font-medium",
@@ -195,6 +195,7 @@ module.exports = {
                 '.blob-center-right': '@apply right-0 translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
                 '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
+                '.text-gradient': '@apply text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
             };
 
       addComponents(

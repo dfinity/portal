@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
 const MotionLink = motion(Link);
 
@@ -106,32 +106,35 @@ const TranslatedLayout: React.FC<{
       src={imageUrl}
       alt={alt}
       className={clsx(
-        "w-full sm:w-auto sm:h-[400px] md:h-[480px] lg:h-[600px]",
-        imageClassName
+        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl",
+        imageClassName,
+        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
       )}
     />
   );
-  return !reverse ? (
-    <div className="flex flex-col md:flex-row md:translate-x-1/12">
-      <div className="flex flex-col justify-center md:w-5/12 order-2 md:order-1">
-        {children}
-      </div>
-      <div className="flex-1 text-center md:text-right order-1 md:order-2 relative">
+  return reverse ? (
+    <div className="flex flex-col md:flex-row">
+      <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-end">
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
         {imgEl}
+      </div>
+      <div className="flex flex-col justify-center md:w-7/12">
+        <div className="md:mx-auto md:w-[71.4%]">{children}</div>
       </div>
     </div>
   ) : (
-    <div className="flex flex-col md:flex-row md:-translate-x-1/12 md:mb-40">
-      <div className="flex-1 text-center md:text-left relative ">
+    <div className="flex flex-col md:flex-row">
+      <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
+        <div className="md:mx-auto md:w-[71.4%]">{children}</div>
+      </div>
+      <div className="flex-1 text-center order-1 md:order-2 relative md:-mr-[50px] md:flex md:justify-end">
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
         {imgEl}
       </div>
-      <div className="flex flex-col justify-center md:w-5/12 ">{children}</div>
     </div>
   );
 };
@@ -222,7 +225,7 @@ function NftPage() {
         <section className="container-12 mt-16 mb-20 md:mt-24 md:mb-48">
           <div className="border border-solid border-white bg-white-80 px-8 py-12 rounded-xl flex flex-col md:flex-row gap-12 md:gap-8 text-center">
             <div className="flex flex-col flex-1 gap-2">
-              <span className="tw-heading-3 md:tw-heading-60 text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]">
+              <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 $33,000,000
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
@@ -230,13 +233,13 @@ function NftPage() {
               </span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
-              <span className="tw-heading-3 md:tw-heading-60 text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]">
+              <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 2.6M+
               </span>
               <span className="tw-paragraph md:tw-lead-sm">Total NFTs</span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
-              <span className="tw-heading-3 md:tw-heading-60 text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]">
+              <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 415
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
@@ -260,24 +263,24 @@ function NftPage() {
           </div>
         </section>
 
-        <section className="mb-20 md:mb-40 container-12">
+        <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40">
           <TranslatedLayout
             reverse={true}
             imageUrl="/img/nft/creator.png"
             imageWithBlob={true}
-            imageClassName="md:translate-x-10 relative"
+            imageClassName="relative"
           >
-            <h2 className="md:tw-heading-60 md:mb-6">
+            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
               Make the most out of NFTs
             </h2>
-            <p className="md:tw-lead-sm md:mb-6">
+            <p className="tw-lead-sm md:mb-6">
               The Internet Computer allows NFTs incredible versatility. Because
               all data can be stored on-chain NFTs on the Internet Computer can
               be anything. Storing data on-chain is not only 23,500X more
               efficient on ICP compared to the next best, it is practically
               impossible to store assets like images on Solana or Ethereum.
             </p>
-            <p>
+            <p className="mb-0">
               <Link href="" className="button-outline">
                 Become a Creator
               </Link>
@@ -296,19 +299,225 @@ function NftPage() {
           </TranslatedLayout>
         </section>
         {/* <BackgroundPanel> */}
-        <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] md:py-48">
+        <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] py-20 md:py-48 text-white">
           <div className="container-12">
-            <h2 className="tw-heading-60 md:mb-20 text-white-60 md:w-8/12 md:mx-auto">
+            <h2 className="tw-heading-4 md:tw-heading-60  text-white-60 md:w-8/12 md:mx-auto mb-10 md:mb-20">
               Cost of storing <span className="text-white">100MB</span> of NFT
               collections on-chain
             </h2>
 
-            <div className="">
-              <div className=""></div>
+            <div className="flex flex-col md:flex-row gap-4 mb-16 md:mb-24">
+              <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center panel-gradient">
+                <h3 className="tw-heading-7-caps mb-0">Internet computer</h3>
+                <img src="/img/nft/ic-logo.png" alt="" className="w-20" />
+                <div>
+                  <span className="tw-heading-3">$0.04</span>{" "}
+                  <span className="tw-heading-5">/ year</span>
+                </div>
+              </div>
+
+              <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center">
+                <h3 className="tw-heading-7-caps mb-0">Solana</h3>
+                <img src="/img/nft/solana-logo.png" alt="" className="w-20" />
+                <div>
+                  <span className="tw-heading-3">$826</span>{" "}
+                  <span className="tw-heading-5">/ year</span>
+                </div>
+              </div>
+              <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center">
+                <h3 className="tw-heading-7-caps mb-0">Ethereum</h3>
+                <img src="/img/nft/ethereum-logo.png" alt="" className="w-20" />
+                <div>
+                  <span className="tw-heading-3">$533,000</span>{" "}
+                  <span className="tw-heading-5">/ year</span>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
+              Donec sed odio dui. Integer posuere erat a ante venenatis dapibus
+              posuere velit aliquet. Maecenas sed diam eget risus varius blandit
+              sit amet non magna. Donec sed odio dui. Donec sed odio dui.
+              Integer posuere erat a ante venenatis dapibus posuere velit
+              aliquet. Maecenas sed diam eget risus varius blandit sit amet non
+              magna. Donec sed odio dui.
+            </h2>
+
+            <div className="panel-gradient border border-solid border-white-30 rounded-xl py-12 px-8 flex flex-col gap-6 text-center md:flex-row">
+              <div className="flex flex-col items-center gap-2 md:flex-1">
+                <div>
+                  <span className="tw-heading-3 md:tw-heading-60">$32.5</span>{" "}
+                  <span className="tw-heading-6">/ week</span>
+                </div>
+                <p className="tw-paragraph md:tw-lead-sm mb-0">
+                  Total cost of storing all NFTs
+                </p>
+              </div>
+              <hr className="w-20 bg-white-20 self-center m-0 md:w-px md:h-20" />
+              <div className="flex flex-col items-center gap-2  md:flex-1">
+                <span className="tw-heading-3 md:tw-heading-60">306,000+</span>
+                <p className="tw-paragraph md:tw-lead-sm mb-0">
+                  Total transactions
+                </p>
+              </div>
+              <hr className="w-20 bg-white-20 self-center m-0 md:w-px md:h-20" />
+              <div className="flex flex-col items-center gap-2  md:flex-1">
+                <span className="tw-heading-3 md:tw-heading-60">&lt; $500</span>{" "}
+                <p className="tw-paragraph md:tw-lead-sm mb-0">
+                  Total transaction costs for all
+                  <br />
+                  transactions
+                </p>
+              </div>
             </div>
           </div>
         </section>
-        {/* </BackgroundPanel> */}
+        <section className="container-12 py-30 md:py-48">
+          <h2 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-16 md:mb-30">
+            Your NFT could be anything
+          </h2>
+          <div className="flex flex-col gap-16 md:gap-40">
+            <TranslatedLayout imageUrl="/img/nft/cubetopia.png" reverse={true}>
+              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
+                Cubetopia
+              </div>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Each island (world) is a mutable NFT
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Cubetopia is a Minecraft-like Web3 game where players can build
+                anything on unique voxel islands also called “worlds”. Each
+                world is a mutable NFT stored on the Internet Computer
+                blockchain. Anyone can visit these islands on-chain, while the
+                owner of the NFT can update it by building. Try it yourself!
+              </p>
+              <Link className="link-primary link-with-icon" href="">
+                <LinkArrowRight /> Create your own island
+              </Link>
+            </TranslatedLayout>
+            <TranslatedLayout imageUrl="/img/nft/portal.png" reverse={false}>
+              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
+                Portal
+              </div>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Videos as NFTs where owners receive royalties
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Portal is a Web3 video sharing platform that allows users to
+                mint their videos as NFTs. The owners of these NFTs receive
+                tokens as royalties coming based on viewers.
+              </p>
+              <Link className="link-primary link-with-icon" href="">
+                <LinkArrowRight /> Watch videos on Portal
+              </Link>
+            </TranslatedLayout>
+            <TranslatedLayout imageUrl="/img/nft/social.png" reverse={true}>
+              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
+                DSCVR
+              </div>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                NFT gated communities
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                DSCVR is one of the largest decentralized Web3 social media
+                platforms in the world. It allows users to form communities
+                called Portals around different interests. These communities can
+                be NFT gated, making certain features like voting only available
+                to people who hold a specific NFT. Besides this gating
+                functionality, Portals themselves are NFTs owned by the person
+                who created them.
+              </p>
+              <Link className="link-primary link-with-icon" href="">
+                <LinkArrowRight /> Check out the Internet Computer Portal
+              </Link>
+            </TranslatedLayout>
+          </div>
+        </section>
+        <section className="mb-30">
+          <div className="container-10 mb-12 md:mb-20">
+            <div className="md:w-6/10">
+              <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
+                Trade NFTs with
+                <br />
+                <span className="text-gradient">Zero gas fees</span>
+              </h2>
+              <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
+                Featuring a few web3 project teams already reinventing the
+                internet on the ICP blockchain.
+              </p>
+            </div>
+          </div>
+          <div className="container-12 relative">
+            <div className="hidden md:block blob blob-purple blob-center blob-lg z-[-1]"></div>
+            <div className="flex flex-col md:flex-row gap-3">
+              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+                <img
+                  src="/img/nft/entrepot.png"
+                  alt=""
+                  className="w-16 md:w-20"
+                />
+                <div className="flex-1">
+                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                    Entrepot
+                  </h4>
+                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
+                    Entrepot is the first and largest NFT marketplace on the
+                    Internet Computer. They have launched 100s of collections
+                    with their no-code minting tool and have over 1TB of assets
+                    stored fully on-chain.
+                  </p>
+                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
+                    36M+ US$ in trading
+                  </span>
+                </div>
+              </div>
+              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+                <img src="/img/nft/ccc.png" alt="" className="w-16 md:w-20" />
+                <div className="flex-1">
+                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                    CCC
+                  </h4>
+                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
+                    Aenean lacinia bibendum nulla sed consectetur. Maecenas
+                    faucibus mollis interdum. Aenean lacinia bibendum nulla sed
+                    consectetur. Aenean lacinia bibendum nulla sed consectetur.
+                  </p>
+                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
+                    110,000+ users
+                  </span>
+                </div>
+              </div>
+              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+                <img src="/img/nft/yumi.png" alt="" className="w-16 md:w-20" />
+                <div className="flex-1">
+                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                    Yumi
+                  </h4>
+                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
+                    Entrepot is the first and largest NFT marketplace on the
+                    Internet Computer. They have launched 100s of collections
+                    with their no-code minting tool and have over 1TB of assets
+                    stored fully on-chain.
+                  </p>
+                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
+                    110,000+ users
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
+              <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
+
+              <Link className="button-primary" href="">
+                Join the web3 movement
+              </Link>
+              <Link className="link-white link-with-icon" href="">
+                <LinkArrowRight /> Build your own
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
