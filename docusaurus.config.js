@@ -50,6 +50,7 @@ const config = {
   customFields: {
     marketingLogoUrl: "/",
     docsLogoUrl: "/docs/current/ic-overview",
+    docsLogoSrc: "/img/IC_logo_docs.svg",
   },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
