@@ -188,6 +188,10 @@ const config = {
                 href: "/social-media-dapps",
               },
               {
+                label: "NFTs",
+                href: "/nft",
+              },
+              {
                 label: "ICP Careers",
                 href: "http://careers.internetcomputer.org/",
               },
