@@ -38,9 +38,15 @@ export default function Logo(props) {
   const { imageClassName, titleClassName, ...propsRest } = props;
   const location = useLocation();
 
-  const logoHref = location.pathname.startsWith("/docs/")
+  const isDocsPage = location.pathname.startsWith("/docs/");
+
+  const logoHref = isDocsPage
     ? customFields.docsLogoUrl
     : customFields.marketingLogoUrl;
+
+  if (isDocsPage) {
+    logo.src = customFields.docsLogoSrc;
+  }
 
   const logoLink = useBaseUrl(logoHref);
   // If visible title is shown, fallback alt text should be

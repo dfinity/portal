@@ -194,9 +194,6 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   display: none;
 }
 
-html.plugin-docs nav.navbar .navbar__logo img {
-  content: url(/img/IC_logo_docs.svg);
-}
 
 /* First dropdown menu is too easy to hide accidentally */
 .navbar__inner .navbar__items--right>.dropdown:nth-child(2) {
