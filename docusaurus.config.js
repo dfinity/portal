@@ -345,22 +345,28 @@ const config = {
           {
             type: "dropdown",
             position: "left",
-            label: "Other",
+            label: "Links",
             items: [
-              {
-                label: "Developers Home",
-                to: "/developers",
-              },
+              { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",
                 type: "doc",
                 docId: "other/updates/release-notes/release-notes",
               },
+              { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
               },
+              {
+                label: "Dev Forum ",
+                href: "https://forum.dfinity.org/",
+              },
+              {
+                label: "Dev Discord ",
+                href: "https://discord.gg/jnjVVQaE2C",
+              },              
             ],
           },
           // {
