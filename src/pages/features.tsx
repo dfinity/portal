@@ -88,11 +88,10 @@ function FeaturesPage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Game-changing Features"
-      description="The Internet Computer is pushing the boundaries of what is
-possible in blockchain technology today. ICP is not only 23,500X more efficient
-than the next most efficient blockchain, it also provides unique features not
-seen on any other chain."
+      title="World Computer Capabilities"
+      description="The Internet Computer is "alien tech" crypto. It extends the
+tinternet by smashing through historical limitations, unlocking new capabilities
+sfor Web3 and the world..."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
