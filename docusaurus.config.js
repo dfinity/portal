@@ -49,7 +49,7 @@ const config = {
   projectName: "portal",
   customFields: {
     marketingLogoUrl: "/",
-    docsLogoUrl: "/docs/current/motoko/intro/Language%20Tour",
+    docsLogoUrl: "/docs/current/ic-overview",
   },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
