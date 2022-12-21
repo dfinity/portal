@@ -183,13 +183,19 @@ html.docs-doc-page {
 }
 
 /* Don't display docSidebar items in the top navbar on marketing pages*/
-html.plugin-pages .navbar__inner .navbar__items:first-child .navbar__item {
-  display: none;
+html.plugin-pages, html:not(.plugin-pages):not(.plugin-docs) {
+  .navbar__inner .navbar__items:first-child .navbar__item {
+    display: none;
+  }
 }
 
 /* Don't display main nav items in the top navbar on docs pages*/
 html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__item{
   display: none;
+}
+
+html.plugin-docs nav.navbar .navbar__logo img {
+  content: url(/img/IC_logo_docs.svg);
 }
 
 /* First dropdown menu is too easy to hide accidentally */
