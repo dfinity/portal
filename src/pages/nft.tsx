@@ -13,45 +13,34 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 const MotionLink = motion(Link);
 
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
+  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/cosmic-birth.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/cubetopia-1.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/cubetopia-2.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icflowers.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
 ];
 
 const smallNfts: { url: string; title: string; imageUrl: string }[] = [
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
-  { imageUrl: "/img/nft/tmp.png", title: "", url: "" },
+  { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
+
+  { imageUrl: "/img/nft/icpets.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icpunks.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icpuppies.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/moonwalker.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/motoko.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/motomoji.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/nautscc.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/pineapplepunks.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/pockedbot.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/pod.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/spaceapes.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
 ];
 
 const NftShowcase = React.memo(() => {
@@ -59,27 +48,27 @@ const NftShowcase = React.memo(() => {
     <section className="-mt-24 overflow-hidden relative h-[280px] md:h-[560px]">
       <div className="flex gap-1 md:gap-3 absolute left-1/2 -translate-x-1/2 min-w-max">
         {largeNfts.map((nft) => (
-          <a href={nft.url} title={nft.title} className="flex">
-            <img
-              key={nft.imageUrl}
-              src={nft.imageUrl}
-              alt=""
-              className="w-40 md:w-80 rounded-xl"
-            />
-          </a>
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-40 md:w-80 rounded-xl"
+          />
+          // </a>
         ))}
       </div>
 
       <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 -translate-x-1/2 min-w-max">
         {smallNfts.map((nft) => (
-          <a href={nft.url} title={nft.title} className="flex">
-            <img
-              key={nft.imageUrl}
-              src={nft.imageUrl}
-              alt=""
-              className="w-24 md:w-52 rounded-xl"
-            />
-          </a>
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-24 md:w-52 rounded-xl"
+          />
+          // </a>
         ))}
       </div>
     </section>
@@ -173,17 +162,21 @@ function NftPage() {
   return (
     <Layout
       title="NFTs"
-      description=""
+      description={`The Internet Computer is the only blockchain that stores 100% of the NFT on the blockchain, including all assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
           property="og:image"
-          content={"https://internetcomputer.org/img/shareImages/share-nft.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share-nfts.jpg"
+          }
         />
         <meta
           name="twitter:image"
-          content={"https://internetcomputer.org/img/shareImages/share-nft.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share-nfts.jpg"
+          }
         />
       </Head>
       <main
@@ -202,7 +195,7 @@ function NftPage() {
               <div className="blob blob-purple blob-md md:blob-xl top-[-150px] left-full -translate-x-1/2 opacity-50"></div>
               <div className="md:w-7/10 relative">
                 <motion.h1
-                  className="tw-heading-3 md:tw-heading-2 mb-2"
+                  className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
                   Next Generation NFTs
@@ -266,7 +259,7 @@ function NftPage() {
         <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40">
           <TranslatedLayout
             reverse={true}
-            imageUrl="/img/nft/creator.png"
+            imageUrl="/img/nft/creator.webp"
             imageWithBlob={true}
             imageClassName="relative"
           >
@@ -286,7 +279,7 @@ function NftPage() {
               </Link>
             </p>
           </TranslatedLayout>
-          <TranslatedLayout imageUrl="/img/nft/btc-flower.png">
+          <TranslatedLayout imageUrl="/img/nft/btc-flower.webp">
             <h2 className="md:tw-heading-60 md:mb-6">Dynamic NFTs</h2>
             <p className="md:tw-lead-sm mb-0">
               Making use of a unique feature of the Internet Computer, NFTs can
@@ -309,7 +302,7 @@ function NftPage() {
             <div className="flex flex-col md:flex-row gap-4 mb-16 md:mb-24">
               <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center panel-gradient">
                 <h3 className="tw-heading-7-caps mb-0">Internet computer</h3>
-                <img src="/img/nft/ic-logo.png" alt="" className="w-20" />
+                <img src="/img/nft/ic-logo.webp" alt="" className="w-20" />
                 <div>
                   <span className="tw-heading-3">$0.04</span>{" "}
                   <span className="tw-heading-5">/ year</span>
@@ -318,7 +311,7 @@ function NftPage() {
 
               <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center">
                 <h3 className="tw-heading-7-caps mb-0">Solana</h3>
-                <img src="/img/nft/solana-logo.png" alt="" className="w-20" />
+                <img src="/img/nft/solana-logo.webp" alt="" className="w-20" />
                 <div>
                   <span className="tw-heading-3">$826</span>{" "}
                   <span className="tw-heading-5">/ year</span>
@@ -326,7 +319,11 @@ function NftPage() {
               </div>
               <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center">
                 <h3 className="tw-heading-7-caps mb-0">Ethereum</h3>
-                <img src="/img/nft/ethereum-logo.png" alt="" className="w-20" />
+                <img
+                  src="/img/nft/ethereum-logo.webp"
+                  alt=""
+                  className="w-20"
+                />
                 <div>
                   <span className="tw-heading-3">$533,000</span>{" "}
                   <span className="tw-heading-5">/ year</span>
@@ -377,7 +374,7 @@ function NftPage() {
             Your NFT could be anything
           </h2>
           <div className="flex flex-col gap-16 md:gap-40">
-            <TranslatedLayout imageUrl="/img/nft/cubetopia.png" reverse={true}>
+            <TranslatedLayout imageUrl="/img/nft/cubetopia.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Cubetopia
               </div>
@@ -395,7 +392,7 @@ function NftPage() {
                 <LinkArrowRight /> Create your own island
               </Link>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/nft/portal.png" reverse={false}>
+            <TranslatedLayout imageUrl="/img/nft/portal.webp" reverse={false}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Portal
               </div>
@@ -411,7 +408,7 @@ function NftPage() {
                 <LinkArrowRight /> Watch videos on Portal
               </Link>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/nft/social.png" reverse={true}>
+            <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 DSCVR
               </div>
@@ -452,7 +449,7 @@ function NftPage() {
             <div className="flex flex-col md:flex-row gap-3">
               <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
                 <img
-                  src="/img/nft/entrepot.png"
+                  src="/img/nft/entrepot.webp"
                   alt=""
                   className="w-16 md:w-20"
                 />
@@ -472,7 +469,7 @@ function NftPage() {
                 </div>
               </div>
               <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
-                <img src="/img/nft/ccc.png" alt="" className="w-16 md:w-20" />
+                <img src="/img/nft/ccc.webp" alt="" className="w-16 md:w-20" />
                 <div className="flex-1">
                   <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
                     CCC
@@ -488,7 +485,7 @@ function NftPage() {
                 </div>
               </div>
               <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
-                <img src="/img/nft/yumi.png" alt="" className="w-16 md:w-20" />
+                <img src="/img/nft/yumi.webp" alt="" className="w-16 md:w-20" />
                 <div className="flex-1">
                   <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
                     Yumi
