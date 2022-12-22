@@ -34,7 +34,7 @@ function Developers(): JSX.Element {
       <main className="w-full overflow-hidden">
         <Header />
         <SampleCode />
-        <Canisters />
+        {/* <Canisters /> */}
         <DappStart />
         <Contribute />
       </main>

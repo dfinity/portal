@@ -251,6 +251,10 @@ const config = {
                 type: "doc",
                 docId: "ic-overview",
               },
+              {
+                label: "Developer Resources",
+                to: "/developers",
+              },              
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
@@ -343,6 +347,10 @@ const config = {
             position: "left",
             label: "Links",
             items: [
+              {
+                label: "Developer Resources",
+                to: "/developers",
+              },      
               { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",
