@@ -1,0 +1,43 @@
+.container {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 24px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    gap: 24px;
+    color: white;
+    background: linear-gradient(100.6deg, #3B00B9 57.83%, #DA3979 85.02%);
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.text {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 16px;
+    height: 16px;
+    transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+}
+
+.container:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.container:hover .arrow {
+    margin-left: 8px;
+}
+
+@media screen and (max-width: 996px) {
+    .text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
