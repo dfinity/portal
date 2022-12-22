@@ -52,7 +52,7 @@ function Index() {
             ))}
           </div>
         </motion.div>
-        {/* <div className={styles.cards}>
+        <div className={styles.cards}>
           <motion.a
             variants={transitions.item}
             href={"/docs/current/developer-docs/quickstart/local-quickstart"}
@@ -82,7 +82,7 @@ function Index() {
             <img className={styles.motokoBackground} src={motokoBG} alt="" />
             <RightArrowSVG className={styles.informationIcon} />
           </motion.a>
-        </div> */}
+        </div>
       </motion.div>
     </div>
   );
