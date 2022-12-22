@@ -89,7 +89,7 @@ function FeaturesPage() {
   return (
     <Layout
       title="World Computer Capabilities"
-      description="The Internet Computer is "alien tech" crypto. It extends the
+      description="The Internet Computer is \"alien tech\" crypto. It extends the
 tinternet by smashing through historical limitations, unlocking new capabilities
 sfor Web3 and the world..."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
