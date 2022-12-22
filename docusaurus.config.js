@@ -247,10 +247,6 @@ const config = {
             label: "Develop",
             items: [
               {
-                label: "Developers Home",
-                to: "/developers",
-              },
-              {
                 label: "Developer Docs",
                 type: "doc",
                 docId: "ic-overview",
