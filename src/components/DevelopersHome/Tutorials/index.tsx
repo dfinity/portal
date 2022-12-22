@@ -29,60 +29,40 @@ function Index() {
         className={styles.container}
       >
         <motion.div variants={transitions.item} className={styles.header}>
-          <p>Sample code</p>
-          <Link className={styles.callToAction} to={"/samples"}>
-            Explore all sample code
+          <p>Tutorials</p>
+          <Link className={styles.callToAction} to={"/docs/current/tutorials/deploy_sample_app"}>
+            See all tutorials
           </Link>
         </motion.div>
-        <motion.div
-          className={styles.scrollContainer}
-          variants={transitions.item}
-        >
-          <div className={styles.samplesContainer}>
-            {sampleItems.map((sample) => (
-              <div className={styles.cardWrapper} key={sample.title}>
-                <Card
-                  image={sample.image}
-                  title={sample.title}
-                  domain={sample.domains[0]}
-                  body={sample.body}
-                  links={sample.links}
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-        {/* <div className={styles.cards}>
+        <div className={styles.cards}>
           <motion.a
             variants={transitions.item}
-            href={"/docs/current/developer-docs/quickstart/local-quickstart"}
+            href={"/docs/current/tutorials/deploy_sample_app"}
             className={clsx(styles.card, styles.cardHover)}
           >
             <div className={styles.bodyContainer}>
-              <p className={styles.informationTitle}>SDK Installation</p>
+              <p className={styles.informationTitle}>Deploy your first dapp</p>
               <p className={styles.informationBody}>
-                Download and install the latest version of our DFINITY Canister
-                smart contract SDK and start now.
+                Install SDK, create a sample app, and deploy it to the production with three simple steps.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />
           </motion.a>
           <motion.a
             variants={transitions.item}
-            href={"https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"}
+            href={"/docs/current/tutorials/create_your_first_app/"}
             className={clsx(styles.card, styles.cardHover)}
           >
             <div className={styles.bodyContainer}>
-              <p className={styles.informationTitle}>Motoko Playground</p>
+              <p className={styles.informationTitle}>Create your first app</p>
               <p className={styles.informationBody}>
-                Explore Motoko, the native language of the Internet Computer,
-                right in the browser without having to download the SDK
+                Create your the first app with Motoko programming language and build the app frontend with Vue.js
               </p>
             </div>
-            <img className={styles.motokoBackground} src={motokoBG} alt="" />
+            {/* <img className={styles.motokoBackground} src={motokoBG} alt="" /> */}
             <RightArrowSVG className={styles.informationIcon} />
           </motion.a>
-        </div> */}
+        </div>
       </motion.div>
     </div>
   );

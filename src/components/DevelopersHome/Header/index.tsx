@@ -24,13 +24,13 @@ function Index() {
         variants={transitions.container}
         className={styles.container}
       >
-        <AnnouncementBar
+        {/* <AnnouncementBar
           text={"Direct integration with the Bitcoin network"}
           link={"/bitcoin-integration"}
-        />
+        /> */}
         <img className={styles.BGShape} src={BGCircle} alt="" />
         <motion.p variants={transitions.item} className={styles.Title}>
-          Developer Resources
+          Developer Docs
         </motion.p>
         <motion.p variants={transitions.item} className={styles.Text}>
           As the IC ecosystem grows so do our resources. This is the home of
@@ -42,7 +42,7 @@ function Index() {
         >
           <Link
             className={styles.actionButton}
-            to="/docs/current/tutorials/deploy_sample_app"
+            to="/docs/current/developer-docs/setup/"
           >
             READ DOCS
           </Link>
