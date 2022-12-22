@@ -22,19 +22,17 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The Internet Computer (or "ICP") <b>is the first World Computer</b>,
-            and is unlike anything else in existence today. The network can host
-            tamperproof and unstoppable smart contract code that runs with
-            efficiency comparable to traditional software hosted by centralized
-            IT platforms, such as cloud services. Smart contract technology has
-            also gained essential missing capabilities, and can now securely
-            serve web experiences into the web browsers of end users, interact
-            with Web 2.0 infrastructure, and create signed transactions that run
-            on other blockchains, enabling trustless multi-chain. The end-to-end
-            decentralization of almost all online systems and services is now
-            possible. The fully decentralized on-chain future of all compute has
-            begun, and Web3 is already booming, on limitless and climate-friendly
-            World Computer blockchain. Join the movement.
+            The <span class="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is the first <b>World Computer</b>, and is unlike 
+            anything else in existence today. The network hosts tamperproof and 
+            unstoppable code at unlimited scale that runs with efficiency 
+            comparable to traditional software hosted on centralized IT platforms, 
+            such as cloud services. This "blockchain code" has gained essential new 
+            capabilities, and can securely serve web experiences directly into web 
+            browsers, process and store vast amounts of data, interact with Web 2.0 
+            infrastructure, and run transactions on other blockchains, enabling 
+            trustless multi-chain. Almost all online systems and services can now be 
+            built fully on-chain. The end-to-end decentralized future of <i>all</i> compute 
+            has begun, and Web3 is booming, on limitless and climate-friendly World Computer blockchain. Join the movement.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
@@ -51,7 +49,7 @@ export default function Hero(): JSX.Element {
               href="/developers"
             >
               <ArrowRight></ArrowRight>
-              Build your own Web3 app
+              Try building on World Computer
             </Link>
           </AnimateSpawn>
         </div>
