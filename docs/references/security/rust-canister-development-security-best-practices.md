@@ -183,43 +183,157 @@ A canister could be rendered unusable so it could never be upgraded again e.g. d
 
 ## Inter-Canister Calls and Rollbacks
 
-### Don’t panic after await and don’t lock shared resources across await boundaries
+### Message Execution Basics
+
+To understand the issues around async inter-canister calls, one needs to understand a few properties about message execution. This is also explained in the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s). A _message_ is a set of consecutive instructions that a subnet executes for a canister. The following properties are essential: 
+
+**Property 1**: Only a single message is processed at a time. So message execution is sequential, and never parallel.
+
+**Property 2**: Each call (query / update) triggers a message. When an inter-canister call is made, the code after the call (the callback) is executed as a separate message. 
+
+For example, consider the following code in Motoko: 
+
+
+![example_highlighted_code](_attachments/example_highlighted_code.png)
+
+The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message are lines 3-5: when the inter-canister call returns (blue box). We call this part the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially. 
+
+**Property 3**: Messages from interleaving calls have no reliable execution ordering.
+
+Let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, we see another possible message scheduling, where the first message of each call are executed first. 
+
+![example_orderings](_attachments/example_orderings.png)
+
+**Property 4**: On a trap / panic, modifications to the canister state for the current message are not applied.
+
+For example, if a trap in the second message (blue box) of the above example occurs, any canister state changes for that message, even earlier in the blue box, are not applied. 
+
+### Avoid traps after await
 
 #### Security Concern
 
-Panics and traps roll back the canister state. So any state change followed by a trap or panic is of concern. This is also an important concern when inter-canister calls are made. If a panic/trap occurs after an `await` to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call callback invocation (and not before the entire call!).
+Traps / panics roll back the canister state, as described in Property 4 above. So any state change followed by a trap or panic can be risky. This is also an important concern when inter-canister calls are made. If a panic/trap occurs after an `await` to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call callback invocation, and not before the entire call!.
 
 This may e.g. lead to the following issues:
 
--   If state changes before an inter-canister call leave the state inconsistent and there is a panic after the inter-canister call, this results in inconsistent canister state.
+- If state changes before an inter-canister call leave the state inconsistent and there is a panic after the inter-canister call, this results in inconsistent canister state.
 
--   In particular, if allocated resources (e.g. locks or memory) from before an inter-canister call are not released this can e.g. lead to a canister being locked forever.
+- In particular, if e.g. part of the canister state is locked before an inter-canister call and released in the callback, the lock may never be released if the callback traps. 
 
--   Generally, there can be bugs when data is not persisted when the developer expected it to be.
+- Generally, there can be bugs when data is not persisted when the developer expected it to be.
+
+Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope on panic. This prevents some of the issues above. 
 
 #### Recommendation
 
--   [Don’t panic after `await`](https://mmapped.blog/posts/01-effective-rust-canisters.html#panic-await) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html))
+- Watch the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) which shows a concrete example of an issue as described here.
 
--   [Don’t lock shared resources across await boundaries](https://mmapped.blog/posts/01-effective-rust-canisters.html#dont-lock) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html))
+- [Don’t lock shared resources across await boundaries](https://mmapped.blog/posts/01-effective-rust-canisters.html#dont-lock) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html))
 
--   See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
+- [Don’t panic after `await`](https://mmapped.blog/posts/01-effective-rust-canisters.html#panic-await) (from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html))
 
--   For context: [IC interface spec on message execution](../ic-interface-spec#message-execution)
+- See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
-### Be aware that state may change during inter-canister calls
+- For context: [IC interface spec on message execution](../ic-interface-spec#message-execution)
+
+### Be aware that there is no reliable message ordering
 
 #### Security Concern
 
-Messages (but not entire calls) are processed atomically. This can lead to security issues, such as:
+As described in the Message Execution Basics above, messages (but not entire calls) are processed atomically. This can lead to a variety of severe security issues such as:
 
--   Time-of-check time-of-use: checking some condition on global state before an inter-canister call and wrongly assuming it to still hold when the call returned.
+* _Time-of-check time-of-use issues._ These occur when some condition on global state is checked before an inter-canister call is made, and then wrongly assuming the condition to still hold when the call returns. For example, one might check if there is sufficient balance on some account, then issue two inter-canister calls (e.g. making transfers). When the second inter-canister call starts, it is possible that the condition checked initially no longer holds, because other ledger transfers may have happened before the callback of the first call is executed (see also Property 3 above). 
+
+* _Double-Spending issues._ Such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose we check if a caller is eligible for a refund and if so, transfer some refund amount to them. When the refund ledger call returns successfully, we set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).   
 
 #### Recommendation
 
--   Be aware that state may change during an inter-canister call. Carefully review your code so that this kind of bugs do not occur.
+See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
--   See also: "Inter-canister calls" section in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
+To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above. 
+
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [Avoid Traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. This pattern can be extended e.g. to work for the following use cases:
+
+* A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`. 
+* A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`. 
+* A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
+
+Finally, note that the same guard can be used in several methods to restrict parallel execution of them. 
+
+    pub struct State {
+        pending_requests: BTreeSet<Principal>,
+    }
+    
+    thread_local! {
+        static STATE: RefCell<State> = RefCell::new(State{pending_requests: BTreeSet::new()});
+    }
+    
+    pub struct CallerGuard {
+        principal: Principal,
+    }
+    
+    impl CallerGuard {
+        pub fn new(principal: Principal) -> Result<Self, String> {
+            STATE.with(|state| {
+                let pending_requests = &mut state.borrow_mut().pending_requests;
+                if pending_requests.contains(&principal){
+                    return Err(format!("Already processing a request for principal {:?}", &principal));
+                }
+                pending_requests.insert(principal);
+                Ok(Self { principal })
+            })
+        }
+    }
+    
+    impl Drop for CallerGuard {
+        fn drop(&mut self) {
+            STATE.with(|state| {
+                state.borrow_mut().pending_requests.remove(&self.principal);
+            })
+        }
+    }
+    
+    #[update]
+    #[candid_method(update)]
+    async fn example_call_with_locking_per_caller() -> Result<(), String> {
+        let caller = ic_cdk::caller();
+        // using `?`, we return an error immediately if there is already a call in progress for `caller`.
+        let _ = CallerGuard::new(caller)?;
+        // do anything, call other canisters
+        Ok(())
+    } // here the guard goes out of scope and is dropped
+    
+    mod test {
+        use super::*;
+    
+        #[test]
+        fn should_obtain_guard_for_different_principals() {
+            let principal_1 = Principal::anonymous();
+            let principal_2 = Principal::management_canister();
+            let caller_guard = CallerGuard::new(principal_1);
+            assert!(caller_guard.is_ok());
+            assert!(CallerGuard::new(principal_2).is_ok());
+        }
+    
+        #[test]
+        fn should_not_obtain_guard_twice_for_same_principal() {
+            let principal = Principal::anonymous();
+            let caller_guard = CallerGuard::new(principal);
+            assert!(caller_guard.is_ok());
+            assert!(CallerGuard::new(principal).is_err());
+        }
+    
+        #[test]
+        fn should_release_guard_on_drop() {
+            let principal = Principal::anonymous();
+            {
+                let caller_guard = CallerGuard::new(principal);
+                assert!(caller_guard.is_ok());
+            } // drop caller_guard as it goes out of scope here
+            // it is possible to get a guard again:
+            assert!(CallerGuard::new(principal).is_ok());
+        }
+    }
 
 ### Only make inter-canister calls to trustworthy canisters
 
