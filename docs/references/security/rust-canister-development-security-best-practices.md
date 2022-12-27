@@ -185,28 +185,32 @@ A canister could be rendered unusable so it could never be upgraded again e.g. d
 
 ### Message Execution Basics
 
-To understand the issues around async inter-canister calls, one needs to understand a few properties about message execution. This is also explained in the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s). A _message_ is a set of consecutive instructions that a subnet executes for a canister. The following properties are essential: 
+To understand the issues around async inter-canister calls, one needs to understand a few properties about message execution. This is also explained in the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s). 
 
-**Property 1**: Only a single message is processed at a time. So message execution is sequential, and never parallel.
+We fist provide a few definitions. A _call_ is a canister's implementation of either an [update](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-call) or [query call](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-query) that it exposes. For example, if the Rust CDK is used, these are usually annotated with `#[query]` or `#[update]`, respectively. A _message_ is a set of consecutive instructions that a subnet executes for a canister. We'll see in the following that a call can be split into several messages if inter-canister calls are made. The following properties are essential: 
 
-**Property 2**: Each call (query / update) triggers a message. When an inter-canister call is made, the code after the call (the callback) is executed as a separate message. 
+**Property 1**: Only a single message is processed at a time in a subnet. So message execution is sequential, and never parallel.
 
-For example, consider the following code in Motoko: 
+**Property 2**: Each call (query / update) triggers a message. When an inter-canister call is made, the code after the call (the callback, highlighted in blue) is executed as a separate message. 
+
+For example, consider the following Motoko code: 
 
 
 ![example_highlighted_code](_attachments/example_highlighted_code.png)
 
-The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message are lines 3-5: when the inter-canister call returns (blue box). We call this part the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially. 
+The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). We call this part the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially. 
 
 **Property 3**: Messages from interleaving calls have no reliable execution ordering.
 
-Let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, we see another possible message scheduling, where the first message of each call are executed first. 
+Let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, we see another possible message scheduling, where the first messages of each call are executed first. Your code should result in a correct state regardless of the message ordering.
 
 ![example_orderings](_attachments/example_orderings.png)
 
 **Property 4**: On a trap / panic, modifications to the canister state for the current message are not applied.
 
-For example, if a trap in the second message (blue box) of the above example occurs, any canister state changes for that message, even earlier in the blue box, are not applied. 
+For example, if a trap in the second message (blue box) of the above example occurs, canister state changes resulting from that message, even earlier in the blue box, are discarded. However, note that any state changes from earlier messages and in particular the first message (orange box) have been applied, as that message executed successfully. 
+
+For more details, refer to the Interface Specification [section on ordering guarantees](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ordering_guarantees) and the section on [abstract behaviour](https://internetcomputer.org/docs/current/references/ic-interface-spec/#abstract-behavior) which defines message execution in more detail. 
 
 ### Avoid traps after await
 
@@ -216,13 +220,13 @@ Traps / panics roll back the canister state, as described in Property 4 above. S
 
 This may e.g. lead to the following issues:
 
-- If state changes before an inter-canister call leave the state inconsistent and there is a panic after the inter-canister call, this results in inconsistent canister state.
+- Suppose some state changes are applied and then an inter-canister call is issued. Also, assume that these state changes leave the canister in an inconsistent state, and that state is only made consistent again in the callback. Now if there is a trap in the callback, this leaves the canister in an inconsistent state. 
 
 - In particular, if e.g. part of the canister state is locked before an inter-canister call and released in the callback, the lock may never be released if the callback traps. 
 
-- Generally, there can be bugs when data is not persisted when the developer expected it to be.
+- Generally, there can be bugs where data is not persisted when the developer expected it to be.
 
-Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope on panic. This prevents some of the issues above. 
+Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope on trap. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering)
 
 #### Recommendation
 
@@ -240,11 +244,13 @@ Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out
 
 #### Security Concern
 
-As described in the Message Execution Basics above, messages (but not entire calls) are processed atomically. This can lead to a variety of severe security issues such as:
+As described in the [Message Execution Basics](#message-execution-basics) above, messages (but not entire calls) are processed atomically. These issues are generally called 'Reentrancy bugs' (see e.g. the [Ethereum Best Practices on Reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note however that the messaging guarantees (and thus the bugs) on the Internet Computer are different from Ethereum. 
 
-* _Time-of-check time-of-use issues._ These occur when some condition on global state is checked before an inter-canister call is made, and then wrongly assuming the condition to still hold when the call returns. For example, one might check if there is sufficient balance on some account, then issue two inter-canister calls (e.g. making transfers). When the second inter-canister call starts, it is possible that the condition checked initially no longer holds, because other ledger transfers may have happened before the callback of the first call is executed (see also Property 3 above). 
+We provide two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
 
-* _Double-Spending issues._ Such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose we check if a caller is eligible for a refund and if so, transfer some refund amount to them. When the refund ledger call returns successfully, we set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).   
+* _Time-of-check time-of-use issues._ These occur when some condition on global state is checked before an inter-canister call, and then wrongly assuming the condition still holds when the call returns. For example, one might check if there is sufficient balance on some account, then issue an inter-canister call and finally make a transfer as part of the callback message. When the second inter-canister call starts, it is possible that the condition which was checked initially no longer holds, because other ledger transfers may have happened before the callback of the first call is executed (see also Property 3 above).
+
+* _Double-Spending issues._ Such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose we check if a caller is eligible for a refund and if so, transfer some refund amount to them. When the refund ledger call returns successfully, we set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [Community Conversation on Security Best Practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).   
 
 #### Recommendation
 
@@ -254,13 +260,7 @@ See also: "Inter-canister calls" section in [How to audit an Internet Computer c
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above. 
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [Avoid Traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. This pattern can be extended e.g. to work for the following use cases:
-
-* A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`. 
-* A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`. 
-* A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
-
-Finally, note that the same guard can be used in several methods to restrict parallel execution of them. 
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [Avoid Traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. 
 
     pub struct State {
         pending_requests: BTreeSet<Principal>,
@@ -336,6 +336,26 @@ Finally, note that the same guard can be used in several methods to restrict par
             assert!(CallerGuard::new(principal).is_ok());
         }
     }
+
+This pattern can be extended e.g. to work for the following use cases:
+
+* A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`.
+* A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
+* A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
+
+Finally, note that the same guard can be used in several methods to restrict parallel execution of them.
+
+### Be aware that there is no reliable messaging
+
+#### Security Concern
+
+If an inter-canister call is successful, it returns _reply_ (in case of success). However, inter-canister calls can fail in which case they result in a _reject_. See [reject codes](https://internetcomputer.org/docs/current/references/ic-interface-spec/#reject-codes) for more detail. The caller must correctly deal with the reject cases, as they can happen in normal operation, e.g. because of insufficient cycles on the sender or receiver side, or because some data structures (like message queues) are full.
+
+Not handling the error cases correctly is risky: for example, if a ledger transfer results in an error, the callback dealing with that error must interpret it correctly (the transfer did _not_ happen).  
+
+#### Recommendation
+
+When making inter-canister calls, always handle the error cases (rejects) correctly. These errors imply that the message has not been successfully executed. 
 
 ### Only make inter-canister calls to trustworthy canisters
 
