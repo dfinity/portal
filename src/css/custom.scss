@@ -302,8 +302,43 @@ div[class^="announcementBarContent"] {
   cursor: pointer;
 }
 
+@keyframes hero-scale-in {
+  from {
+    opacity:0;
+    transform: scale(0);
+  }
+  to {
+    opacity:1;
+    transform: scale(1);
+  }
+}
 
-@import "typography.css";
+
+@keyframes fade-in {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+.animate-scale-in {
+  animation: hero-scale-in 1400ms ease-out;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+}
+.animate-fade-in {
+  animation: fade-in 400ms ease-out;
+  animation-delay: 2500ms;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+}
+
+.gradient-text {
+  background-image: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
+}
+
 
 @tailwind base;
 @tailwind components;

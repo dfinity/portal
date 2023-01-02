@@ -1,5 +1,5 @@
 ---
-id: deployment-scaling
+id: index
 title: Deployment and Scaling Overview
 description: When you are ready to deploy your project, this guide will help you have the most seamless possible launch or upgrade.
 ---
@@ -10,7 +10,7 @@ When you are ready to deploy your project, this guide will help you have the mos
 
 This page is an overview of the topic. For specific steps and troubleshooting information, please refer to the following pages:
 
-* [Deploying & Upgrading Canisters](./deploy.md)
+* [Deploying & Upgrading Canisters](./deploying-and-upgrading.md)
 * [Large web assembly modules](./larger-wasm.md)
 * [Custom Domains](./custom-domain.md)
 * [Computation and Storage cost](./computation-and-storage-costs.md)

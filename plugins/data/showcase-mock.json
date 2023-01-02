@@ -108,10 +108,10 @@
       "Dapp",
       "Infrastructure"
     ],
-    "description": "Internet Identity guarantees that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
+    "description": "Internet Identity ensures that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web pseudonymously and securely. ",
     "github": "https://github.com/dfinity/internet-identity",
     "usesInternetIdentity": true,
-    "stats": "1 000 000+ ",
+    "stats": "1 000 000+ identities",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/65ZprSZjb5AEpZMOkuwdoI/6dbfba54d96d5e567ea834016c12ac5c/loader.webp",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/3MnxKJHc9WAF6JOdrzJVmV/295d12ed68f4c6a47ba9e4bf91b7250a/final_6114388c822e3700f9b2160a_833666.gif"
@@ -126,7 +126,7 @@
       "Infrastructure",
       "Tools"
     ],
-    "description": "The Motoko Playground is an IDE for developers to learn Motoko – the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
+    "description": "The Motoko Playground is an IDE for developers to learn Motoko — the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "github": "https://github.com/dfinity/motoko-playground",
     "usesInternetIdentity": false,
     "display": "Large",
@@ -356,22 +356,6 @@
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/6upWtrpRvT2XGOFQfoKZC8/7a5cc3dee28ef9c6383019aa591faee7/Screen_Shot_2021-09-24_at_9.34.57_AM.png",
       "//images.ctfassets.net/ywqk17d3hsnp/4lVnKUpRrjHrcqUV3oBgiY/489338b18cca8e3aec8f3e1b4f972037/Screen_Shot_2021-09-24_at_9.36.08_AM.png"
-    ]
-  },
-  {
-    "name": "DeckDeckGo",
-    "website": "https://deckdeckgo.com",
-    "tags": [
-      "Dapp",
-      "Work"
-    ],
-    "description": "An open source web editor for presentations built completely on-chain. This dapp is like a decentralized version of Google Slides built on the Internet Computer. ",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4mCGISHjbn0HMza9qpUYKM/0650998b5f3c9556c92dfc351174f105/deckdeckgo.png",
-    "screenshots": [
-      "//images.ctfassets.net/ywqk17d3hsnp/13nxFKTL1r2XQSwDZj5Yov/8f3f9d08a54e76ccd23fd0b3626e4694/Screen_Shot_2021-09-24_at_9.39.57_AM.png",
-      "//images.ctfassets.net/ywqk17d3hsnp/5jLVfNd7x5A6mhNy99a9nc/f9a5ee0530bc6e76916e642ba8cd06a7/Screen_Shot_2021-09-24_at_9.38.04_AM.png"
     ]
   },
   {

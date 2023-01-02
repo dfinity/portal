@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const OutgoingLink = () => (
   <svg
@@ -54,7 +55,7 @@ const categories = [
   {
     title: (
       <>
-        Explore new user incentives in web3{" "}
+        Explore new user incentives in Web3{" "}
         <span style={{ color: "#DA3979" }}>Social</span> dapps
       </>
     ),
@@ -147,28 +148,10 @@ const Ecosystem2 = () => {
           variants={transitions.item}
           className={styles.headingContainer}
         >
-          <h2 className="heading-2">Ecosystem</h2>
-          <Link href="/showcase" className="cta-link">
+          <h2 className="tw-heading-3 md:tw-heading-2 m-0">Ecosystem</h2>
+          <Link href="/showcase" className="link-primary link-with-icon">
             Go to Ecosystem showcase
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_1926_30447)">
-                <path
-                  d="M11.2429 8.34285L3.65709 8.34285L3.65709 6.34315H14.6568V17.3429L12.6571 17.3429L12.6571 9.75706L4.05024 18.364L2.63603 16.9498L11.2429 8.34285Z"
-                  fill="currentColor"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_1926_30447">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <LinkArrowUpRight />
           </Link>
         </motion.div>
         <div className={styles.categoriesContainer}>

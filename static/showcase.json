@@ -27,7 +27,7 @@
       "Infrastructure",
       "Tools"
     ],
-    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
+    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0.",
     "usesInternetIdentity": false,
     "stats": "1 000+ websites",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/5O8OfpiGvkacspgYva3RMx/5273789d46839aae640b84d7527fa416/Fleek.png",
@@ -61,7 +61,7 @@
       "Social",
       "Dapp"
     ],
-    "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
+    "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity, today. ",
     "usesInternetIdentity": true,
     "stats": "70 000 users",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/7nY1TwB3EaNkqo6ssNOkXm/4bebb500bca2b7aed2a22df3e7d15ce7/Distrikt_white.png",
@@ -108,10 +108,10 @@
       "Dapp",
       "Infrastructure"
     ],
-    "description": "Internet Identity guarantees that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
+    "description": "Internet Identity ensures that your data isn’t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web pseudonymously and securely. ",
     "github": "https://github.com/dfinity/internet-identity",
     "usesInternetIdentity": true,
-    "stats": "1 000 000+ ",
+    "stats": "1 000 000+ identities",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/65ZprSZjb5AEpZMOkuwdoI/6dbfba54d96d5e567ea834016c12ac5c/loader.webp",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/3MnxKJHc9WAF6JOdrzJVmV/295d12ed68f4c6a47ba9e4bf91b7250a/final_6114388c822e3700f9b2160a_833666.gif"
@@ -126,7 +126,7 @@
       "Infrastructure",
       "Tools"
     ],
-    "description": "The Motoko Playground is an IDE for developers to learn Motoko – the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
+    "description": "The Motoko Playground is an IDE for developers to learn Motoko — the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "github": "https://github.com/dfinity/motoko-playground",
     "usesInternetIdentity": false,
     "display": "Large",
@@ -357,22 +357,6 @@
     ]
   },
   {
-    "name": "DeckDeckGo",
-    "website": "https://deckdeckgo.com",
-    "tags": [
-      "Dapp",
-      "Work"
-    ],
-    "description": "An open source web editor for presentations built completely on-chain. This dapp is like a decentralized version of Google Slides built on the Internet Computer. ",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "logo": "//images.ctfassets.net/ywqk17d3hsnp/4mCGISHjbn0HMza9qpUYKM/0650998b5f3c9556c92dfc351174f105/deckdeckgo.png",
-    "screenshots": [
-      "//images.ctfassets.net/ywqk17d3hsnp/13nxFKTL1r2XQSwDZj5Yov/8f3f9d08a54e76ccd23fd0b3626e4694/Screen_Shot_2021-09-24_at_9.39.57_AM.png",
-      "//images.ctfassets.net/ywqk17d3hsnp/5jLVfNd7x5A6mhNy99a9nc/f9a5ee0530bc6e76916e642ba8cd06a7/Screen_Shot_2021-09-24_at_9.38.04_AM.png"
-    ]
-  },
-  {
     "name": "Aedile",
     "website": "https://eemeo-taaaa-aaaad-qakjq-cai.ic.fleek.co/",
     "tags": [
@@ -406,7 +390,7 @@
       "Games",
       "Dapp"
     ],
-    "description": "Prize winner of the DSCVR hackathon for the Internet Computer – this game brings digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
+    "description": "Prize winner of the DSCVR hackathon for the Internet Computer — this game brings the digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/5A7UGkEOjFS5o6yyY6b1Fl/9aabe1b1ee90a1afa59843b8f0e555ca/Alex_alone_48x48.png",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/5NyILcsQYsNRgbN2i9hXBU/f5ad38fa0ef0ec03e8af3af9e5312a90/Screen_Shot_2021-09-24_at_10.47.39_AM.png"
@@ -728,8 +712,8 @@
       "Wallet",
       "Swap"
     ],
-    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) –– InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
-    "stats": "$1.5M Invested PolyChain Capital + a16z",
+    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) — InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
+    "stats": "$1.5M Invested by PolyChain Capital + a16z",
     "logo": "//images.ctfassets.net/ywqk17d3hsnp/6cuL0E5FyxdqF7DLzjMXnu/4e5898a86ecf8b05c35e623538c2ad14/InfinitySwap.jpeg",
     "screenshots": [
       "//images.ctfassets.net/ywqk17d3hsnp/4E84Z3x0oUurs4JBNFW2RK/15d1d2c4e2feb8a0fcf5203afad6c5ed/Screen_Shot_2021-12-22_at_12.26.46_PM.png"

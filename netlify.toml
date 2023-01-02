@@ -1,0 +1,29 @@
+[build]
+command = "git submodule update --init && npm run build"
+publish = "build"
+
+
+#
+# Hosting on the IC with custom domain.
+#
+# In production deploy the service worker directory instead of the website. 
+# The website assets are hosted on the IC, this deployment just hosts the service worker.
+#
+# To fall back to Netlify hosting comment out the rules below.
+#
+[context.production]
+# build the website, then build the service worker
+command = """\
+  git submodule update --init && npm run build && \
+  cd service-worker && npm install && npm run build"""
+# publish the service worker directory
+publish = "service-worker/dist-prod"
+
+[context.deploy-preview]
+# don't use the edge function in deployment previews
+command = "git submodule update --init && npm run build && rm -rf netlify/edge-functions"
+publish = "build"
+
+[[edge_functions]]
+function = "redirects"
+path = "/*"

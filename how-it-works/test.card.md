@@ -43,4 +43,4 @@ And a test table:
 | Header    | Title       |
 | Paragraph | Text        |
 
-[Learn more](/how-it-works/test-subpage/)
+[Go deeper](/how-it-works/test-subpage/)

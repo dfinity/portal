@@ -13,6 +13,7 @@ function FeaturePage() {
       title="Limitless Scaling"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -23,12 +24,13 @@ function FeaturePage() {
                 Limitless Scaling
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer (IC) can scale its capacity without limit, simply by
-              adding additional nodes to fuel new subnets. Nodes are added via the 
-              Network Nervous System (NNS) which forms new subnets almost on a weekly basis 
-              since genesis. In contrast, most other blockchains have transaction limits 
-              baked into the protocol (e.g. adding more servers to Bitcoin does not 
-              increase its transaction volume) and need cumbersome layers to address scaling.
+                The Internet Computer (IC) can scale its capacity simply by
+                adding additional nodes to fuel new subnets. Nodes and subnets
+                are added via the Network Nervous System (NNS). In contrast,
+                most other blockchains have transaction limits baked into the
+                protocol (e.g. adding more servers to Bitcoin does not increase
+                its transaction volume) and need cumbersome layers to address
+                scaling.
               </p>
             </div>
           </div>
@@ -64,57 +66,36 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            See {" "}
+              See{" "}
               <Link href="https://dashboard.internetcomputer.org">
-              Internet Computer Dashboard
+                Internet Computer Dashboard
               </Link>{" "}
-            to see the scale of the IC.
+              for the scale of the IC.
             </p>
             <h3>Subnet Architecture</h3>
             <p>
-            The Internet Computer Protocol is running on standardized node hardware in independent data centers around 
-            the world. The Network Nervous System governance system, scales the network by 
-            combining nodes from different data centers to spin up new subnet blockchains.
-            <br />
-            <br />
-            The Internet Computer's partitioning into subnet blockchains is what allows the 
-            network to infinitely scale. Each subnet blockchain is capable of processing 
-            update and query calls independently from other subnets. This means that the 
-            entire network can easily be scaled by simply adding more subnets to the network. 
-            For update calls that need to be processed on every node, this method of scaling 
-            the network can ensure that more update calls are processed per second. The 
-            Internet Computer is capable of adding hundreds of new subnets via the NNS.
-            <br />
-            <br />
-            For query calls, however, scalability can simply be achieved by adding more nodes 
-            to a subnet because these calls are processed locally on one node. The network 
-            is capable of adding thousands of new nodes in its current state. The addition 
-            of more nodes and subnets to the network ensures web speed and infinite scalability.
-            </p>
-
-            <h3>Chain Key Cryptography</h3>
-            <p>
-            The key to scalability is <Link href="/how-it-works/chain-key-technology/">chain key cryptography</Link>: it gives the Internet Computer a single 48-byte public key.
-            This single public key allows anyone to verify a response to an update call, no matter which subnet has computed it and which node has transmitted it. More importantly, the single public key enables subnets to directly communicate in a secure and reliable way. Both are essential to scale to thousands of subnets.
-            </p>
-
-            <h3>Finality and Consensus</h3>
-            <p>
-            The IC's novel consensus mechanism also plays a key role in the network's 
-            ability to scale. {" "}
-            <Link href="https://assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf">
-            Internet Computer Consensus (ICC)
-            </Link>  consists of four different 
-            layers that create candidate blocks, identify valid blocks, rank block makers, 
-            and then finalize the agreed upon blocks. The blockchain's asynchronous 
-            finalization mechanism is impressively fast, ensuring that the finality for 
-            new blocks is achieved in under two seconds on average on the NNS subnet, 
-            and 1 second on dapp subnets.
-            <br />
-            <br />
-            This contributes to the IC's resilience. Additionally, unlike legacy 
-            blockchains, the IC has no nodes hosted by cloud providers which helps
-            to ensure that the network is tamper-proof, secure, and stable.
+              The Internet Computer Protocol is running on standardized node
+              hardware in independent data centers around the world. The Network
+              Nervous System governance system, scales the network by combining
+              nodes from different data centers to spin up new subnet
+              blockchains.
+              <br />
+              <br />
+              The Internet Computer's partitioning into subnet blockchains is
+              what allows the network to scale. Each subnet blockchain is
+              capable of processing update and query calls independently from
+              other subnets. This means that the entire network can easily be
+              scaled by simply adding more subnets to the network. For update
+              calls that need to be processed on every node, this method of
+              scaling the network can ensure that more update calls are
+              processed per second. The Internet Computer is capable of adding
+              hundreds of new subnets via the NNS.
+              <br />
+              <br />
+              For query calls, however, scalability can simply be achieved by
+              adding more nodes to a subnet because these calls are processed
+              locally on one node. The addition of more nodes and subnets to the
+              network ensures web speed and infinite scalability.
             </p>
 
             <p className="mb-3 mt-6">
@@ -150,9 +131,9 @@ function FeaturePage() {
               href="/docs/current/developer-docs/build/cdks/"
             />
             <CardWithDescription
-              title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              title="Community Conversation"
+              description="Learn about performance and scalabilty of the IC."
+              href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription
               title="'Limitless Scaling' article on the IC Wiki"

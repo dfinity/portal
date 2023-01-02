@@ -28,12 +28,27 @@ const DomainCard: React.FC<{
           dangerouslySetInnerHTML={{ __html: domain.description }}
         ></div>
         <div className="flex gap-2 flex-col md:gap-6 md:flex-row mb-6">
-          {domain.groups.pending?.length > 0 && (
+          {domain.groups.future?.length > 0 && (
             <div className="inline-flex items-center gap-2 text-black tw-title-navigation">
-              Pending
+              Future
               <div className="inline-flex gap-[2px]">
                 {Array.from({
-                  length: domain.groups.pending?.length,
+                  length: domain.groups.future?.length,
+                }).map((_, i) => (
+                  <span
+                    className="w-[3px] h-4 rounded-full bg-blue inline-block"
+                    key={i}
+                  ></span>
+                ))}
+              </div>
+            </div>
+          )}
+          {domain.groups.upcoming?.length > 0 && (
+            <div className="inline-flex items-center gap-2 text-black tw-title-navigation">
+              Upcoming
+              <div className="inline-flex gap-[2px]">
+                {Array.from({
+                  length: domain.groups.upcoming?.length,
                 }).map((_, i) => (
                   <span
                     className="w-[3px] h-4 rounded-full bg-black-30 inline-block"

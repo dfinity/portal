@@ -49,16 +49,22 @@ const InternetIdentity = () => {
           variants={transitions.container}
           className={styles.container}
         >
-          <motion.h2 variants={transitions.item} className="heading-2">
+          <motion.h2
+            variants={transitions.item}
+            className="tw-heading-3 md:tw-heading-2 m-0"
+          >
             Internet Identity
           </motion.h2>
-          <motion.p variants={transitions.item} className="paragraph">
+          <motion.p
+            variants={transitions.item}
+            className="tw-paragraph md:tw-lead-sm mb-0"
+          >
             The main innovation behind the Internet Computer, which includes
             numerous scientific breakthroughs and countless advances in
             cryptoengineering.
           </motion.p>
           <motion.a
-            className="button"
+            className="button-outline-white"
             target={"_blank"}
             variants={transitions.item}
             href="https://identity.ic0.app/"
@@ -91,8 +97,10 @@ const InternetIdentity = () => {
               />
             </svg>
 
-            <h3 className="heading-3">No usernames &amp; passwords</h3>
-            <p className="paragraph opacity-60">
+            <h3 className="tw-heading-5 md:tw-heading-3 m-0">
+              No usernames &amp; passwords
+            </h3>
+            <p className="tw-paragraph md:tw-lead-sm mb-0">
               Fingerprint or FaceID systems on mobile or portable HSM devices as
               YubiKey or Ledger wallet, to keep the anonymity without being
               tracked across.
@@ -122,8 +130,8 @@ const InternetIdentity = () => {
               />
             </svg>
 
-            <h3 className="heading-3">No tracking</h3>
-            <p className="paragraph opacity-60">
+            <h3 className="tw-heading-5 md:tw-heading-3 m-0">No tracking</h3>
+            <p className="tw-paragraph md:tw-lead-sm mb-0">
               Using Internet Identity authentication system, users will not able
               being tracked across dapps and services.
             </p>
@@ -156,8 +164,10 @@ const InternetIdentity = () => {
               />
             </svg>
 
-            <h3 className="heading-3">Cryptographi&shy;cally secure</h3>
-            <p className="paragraph opacity-60">
+            <h3 className="tw-heading-5 md:tw-heading-3 m-0">
+              Cryptographi&shy;cally secure
+            </h3>
+            <p className="tw-paragraph md:tw-lead-sm mb-0">
               Giving access to open, decentralized network without compromising
               on speed, security, sovereignty.
             </p>

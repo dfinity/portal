@@ -17,6 +17,14 @@ import Head from "@docusaurus/Head";
 
 const MotionLink = motion(Link);
 
+function idFromTitle(title: string) {
+  const slug = slugify(title, { strict: true });
+  if (slug.match(/^\d/)) {
+    return "session-" + slug;
+  }
+  return slug;
+}
+
 function LiveSessionsPage(): JSX.Element {
   const formRef = useRef<HTMLDivElement>();
 
@@ -76,7 +84,9 @@ function LiveSessionsPage(): JSX.Element {
     upcomingTbd.sort((a, b) => a.tbdMonth.localeCompare(b.tbdMonth));
 
     setUpcomingTbd(upcomingTbd);
-    setInitalized(true);
+    setTimeout(() => {
+      setInitalized(true);
+    });
   }, [liveSessions, setPast, setUpcoming]);
 
   function scrollToForm() {
@@ -87,8 +97,18 @@ function LiveSessionsPage(): JSX.Element {
   }
 
   useEffect(() => {
-    if (location.hash === "#subscribe") {
-      scrollToForm();
+    if (initalized) {
+      if (location.hash === "#subscribe") {
+        scrollToForm();
+      } else if (location.hash) {
+        const el = document.querySelector(location.hash) as HTMLElement;
+        if (el) {
+          window.scroll({
+            top: window.scrollY + el.getBoundingClientRect().top - 100,
+            behavior: "smooth",
+          });
+        }
+      }
     }
   }, [initalized]);
 
@@ -96,6 +116,7 @@ function LiveSessionsPage(): JSX.Element {
     <Layout
       title="Live Sessions"
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -173,7 +194,7 @@ function LiveSessionsPage(): JSX.Element {
                     variants={transitions.container}
                     key={session.title + session.startTimeUtc}
                     className="flex flex-col md:flex-row"
-                    id={slugify(session.title)}
+                    id={idFromTitle(session.title)}
                   >
                     <motion.div
                       variants={transitions.item}
@@ -198,7 +219,7 @@ function LiveSessionsPage(): JSX.Element {
                         {session.title}
                         <a
                           className="text-infinite absolute -left-6 md:-left-8 top-0 hidden group-hover:inline-block hover:text-infinite-60 hover:no-underline md:pr-3"
-                          href={`#${slugify(session.title)}`}
+                          href={`#${idFromTitle(session.title)}`}
                         >
                           #
                         </a>
@@ -269,13 +290,13 @@ function LiveSessionsPage(): JSX.Element {
                         <article
                           className="flex-1 flex flex-col gap-4"
                           key={session.title + session.tbdMonth}
-                          id={slugify(session.title)}
+                          id={idFromTitle(session.title)}
                         >
                           <h3 className="relative tw-heading-4 md:tw-heading-3 mb-0 group">
                             {session.title}
                             <a
                               className="text-infinite absolute -left-6 md:-left-8 top-0 hidden group-hover:inline-block hover:text-infinite-60 hover:no-underline pr-3"
-                              href={`#${slugify(session.title)}`}
+                              href={`#${idFromTitle(session.title)}`}
                             >
                               #
                             </a>
@@ -367,7 +388,7 @@ function LiveSessionsPage(): JSX.Element {
                     variants={transitions.container}
                     key={session.title + session.startTimeUtc}
                     className="flex flex-col md:flex-row"
-                    id={slugify(session.title)}
+                    id={idFromTitle(session.title)}
                   >
                     <motion.div
                       className="mb-6 md:mb-0 md:w-3/10 flex flex-col gap-1 md:gap-2"
@@ -394,7 +415,7 @@ function LiveSessionsPage(): JSX.Element {
                         {session.title}
                         <a
                           className="text-infinite absolute -left-6 md:-left-8 top-0 hidden group-hover:inline-block hover:text-infinite-60 hover:no-underline md:pr-3"
-                          href={`#${slugify(session.title)}`}
+                          href={`#${idFromTitle(session.title)}`}
                         >
                           #
                         </a>
@@ -480,7 +501,7 @@ function LiveSessionsPage(): JSX.Element {
               </h2>
               <form
                 method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=53824794a4"
+                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
                 className="md:w-4/10 space-y-6"
               >
                 <input

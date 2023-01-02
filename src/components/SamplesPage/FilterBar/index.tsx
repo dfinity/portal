@@ -8,12 +8,8 @@ import Close from "@site/static/img/svgIcons/close.svg";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { SampleContentType } from "../../Common/sampleItems";
 
-const variants = {
-  initial: { x: "100%", duration: 0.25 },
-  animate: { x: 0, duration: 0.25 },
-  exit: { x: "100%", duration: 0.25 },
-};
 const languageOptions = ["Motoko", "Rust", "Javascript", "Other"];
 const domainOptions = [
   "Global",
@@ -26,12 +22,13 @@ const domainOptions = [
   "Public Good / Social Impact",
 ];
 const levelOptions = ["Beginner", "Intermediate", "Advanced"];
-const contentTypeOptions = [
-  "Code Samples",
-  "Videos",
-  "Documentation",
-  "Live Demos",
-  "Community Repo",
+const contentTypeOptions: SampleContentType[] = [
+  "code samples",
+  "videos",
+  "documentation",
+  "tutorial",
+  "live demos",
+  "community repo",
 ];
 const sortByOptions = ["Relevance", "A to Z", "Z to A"];
 
@@ -47,6 +44,8 @@ function Index({
   setSelectedContentTypes,
   selectedSortBy,
   setSelectedSortBy,
+  searchTerm,
+  setSearchTerm,
 }) {
   const [currentSelection, setCurrentSelection] = React.useState(null);
   const [displayMobileFilters, setDisplayMobileFilters] = React.useState(false);
@@ -64,6 +63,7 @@ function Index({
     setSelectedContentTypes([]);
     setSelectedSortBy("Relevance");
     setCurrentSelection(null);
+    setSearchTerm("");
   };
   const updateSelectedLanguages = (language) => {
     if (selectedLanguages.includes(language)) {
@@ -124,6 +124,21 @@ function Index({
         <div className={styles.filterBarHeader}>
           <span className={styles.title}>Sample codes</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
+          {(selectedLanguages.length > 0 ||
+            selectedDomains.length > 0 ||
+            selectedLevels.length > 0 ||
+            selectedContentTypes.length > 0 ||
+            searchTerm.length > 0) && (
+            <button
+              onClick={() => clearFilters()}
+              className={styles.clearFilters}
+            >
+              <p style={{ marginBottom: 0, marginRight: "6px" }}>
+                Delete all filters
+              </p>
+              <Delete />
+            </button>
+          )}
         </div>
         <div
           className={styles.mobileFilterBarHeader}
@@ -137,7 +152,7 @@ function Index({
         </div>
         <div ref={selectBoxesRef} className={styles.selectBoxes}>
           <div className={styles.selectBoxContainer}>
-            <div
+            <button
               className={styles.selectBox}
               style={{
                 color: selectedLanguages.length > 0 ? "#3B00B9" : "black",
@@ -148,7 +163,7 @@ function Index({
               <div className={styles.selectionArrow}>
                 {currentSelection === "language" ? <ArrowUp /> : <ArrowDown />}
               </div>
-            </div>
+            </button>
             {currentSelection === "language" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
@@ -156,6 +171,7 @@ function Index({
                     <label key={language} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={language}
                         value={language}
                         checked={selectedLanguages.includes(
@@ -173,7 +189,7 @@ function Index({
             )}
           </div>
           <div className={styles.selectBoxContainer}>
-            <div
+            <button
               className={styles.selectBox}
               style={{
                 color: selectedDomains.length > 0 ? "#3B00B9" : "black",
@@ -184,7 +200,7 @@ function Index({
               <div className={styles.selectionArrow}>
                 {currentSelection === "domain" ? <ArrowUp /> : <ArrowDown />}
               </div>
-            </div>
+            </button>
             {currentSelection === "domain" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
@@ -192,6 +208,7 @@ function Index({
                     <label key={domain} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={domain}
                         value={domain}
                         checked={selectedDomains.includes(domain)}
@@ -205,7 +222,7 @@ function Index({
             )}
           </div>
           <div className={styles.selectBoxContainer}>
-            <div
+            <button
               className={styles.selectBox}
               style={{ color: selectedLevels.length > 0 ? "#3B00B9" : "black" }}
               onClick={() => updateCurrentSelection("level")}
@@ -214,7 +231,7 @@ function Index({
               <div className={styles.selectionArrow}>
                 {currentSelection === "level" ? <ArrowUp /> : <ArrowDown />}
               </div>
-            </div>
+            </button>
             {currentSelection === "level" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
@@ -222,6 +239,7 @@ function Index({
                     <label key={level} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={level}
                         value={level}
                         checked={selectedLevels.includes(level.toLowerCase())}
@@ -237,7 +255,7 @@ function Index({
             )}
           </div>
           <div className={styles.selectBoxContainer}>
-            <div
+            <button
               className={styles.selectBox}
               style={{
                 color: selectedContentTypes.length > 0 ? "#3B00B9" : "black",
@@ -252,7 +270,7 @@ function Index({
                   <ArrowDown />
                 )}
               </div>
-            </div>
+            </button>
             {currentSelection === "contentType" && (
               <div className={styles.selectOptionsContainer}>
                 <div className={styles.selectOptions}>
@@ -260,6 +278,7 @@ function Index({
                     <label key={contentType} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={contentType}
                         value={contentType}
                         checked={selectedContentTypes.includes(
@@ -278,17 +297,15 @@ function Index({
               </div>
             )}
           </div>
-          {(selectedLanguages.length > 0 ||
-            selectedDomains.length > 0 ||
-            selectedLevels.length > 0 ||
-            selectedContentTypes.length > 0) && (
-            <div onClick={() => clearFilters()} className={styles.clearFilters}>
-              <p style={{ marginBottom: 0, marginRight: "6px" }}>
-                Delete all filters
-              </p>
-              <Delete />
-            </div>
-          )}
+          <div className={styles.selectBoxContainer}>
+            <input
+              type="text"
+              placeholder="Search samples..."
+              className={clsx(styles.inputBox)}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
+            ></input>
+          </div>
         </div>
         {/*<div className={styles.sortByContainer}>
           <div
@@ -357,6 +374,7 @@ function Index({
                     <label key={language} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={language}
                         value={language}
                         checked={selectedLanguages.includes(
@@ -376,6 +394,7 @@ function Index({
                     <label key={domain} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={domain}
                         value={domain}
                         checked={selectedDomains.includes(domain)}
@@ -391,6 +410,7 @@ function Index({
                     <label key={level} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={level}
                         value={level}
                         checked={selectedLevels.includes(level.toLowerCase())}
@@ -403,11 +423,13 @@ function Index({
                   ))}
                 </div>
                 <p>Content Type</p>
+
                 <div className={styles.mobileFilterOptions}>
                   {contentTypeOptions.map((contentType) => (
                     <label key={contentType} className={styles.selectOption}>
                       <input
                         type="checkbox"
+                        className={styles.checkbox}
                         key={contentType}
                         value={contentType}
                         checked={selectedContentTypes.includes(
@@ -423,7 +445,16 @@ function Index({
                     </label>
                   ))}
                 </div>
-
+                <p>Search samples</p>
+                <div className={styles.mobileFilterOptions}>
+                  <input
+                    type="text"
+                    placeholder="Search samples..."
+                    className={clsx(styles.inputBox)}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    value={searchTerm}
+                  ></input>
+                </div>
                 <Link
                   to={"#start"}
                   className={styles.mobileFilterButton}

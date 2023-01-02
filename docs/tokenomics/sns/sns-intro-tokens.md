@@ -4,8 +4,8 @@ A Decentralized Autonomous Organization, or DAO for short, is a system that allo
 many parties to jointly control an entity.
 Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that controls
 the Internet Computer blockchain (IC), service nervous systems 
-(SNSs) are algorithmic DAOs that allow developers to create decentralized, 
-token-based governance systems for their dapps.
+(SNSs) are algorithmic DAOs that allow developers to hand over their dapps to decentralized, 
+token-based governance systems.
 This means, each dapp that would like to be under decentralized control will have a 
 separate SNS.
 
@@ -103,4 +103,4 @@ also in the interest of the investors whose tokens have an increased value if
 the project is successful.
 
 ## DAO to build Web3
-One of the main motivations for building on blockchain or decentralized platforms is to remove a central point of trust. Over the past decade we've seen a number of important steps forward towards the open internet. We've seen native tokens built into blockchains, solving a decades old payments problem (at least technically). With the advent of smart contracts, we've seen the decentralization of code execution, giving further integrity to the computation we perform. Yet while these innovations have given us some liberation, DAOs are the final tool needed to build web3 applications. Having decentralizing communication, computation, and now ownership and governance gives a strong foundation for open and tokenized applications. 
+One of the main motivations for building on blockchain or decentralized platforms is to remove a central point of trust. Over the past decade we've seen a number of important steps forward towards the open internet. We've seen native tokens built into blockchains, solving a decades old payments problem (at least technically). With the advent of smart contracts, we've seen the decentralization of code execution, giving further integrity to the computation we perform. Yet while these innovations have given us some liberation, DAOs are the final tool needed to build Web3 applications. Having decentralizing communication, computation, and now ownership and governance gives a strong foundation for open and tokenized applications. 

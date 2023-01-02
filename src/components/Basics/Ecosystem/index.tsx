@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 
 const cards = [
   {
@@ -62,22 +63,15 @@ const Ecosystem = () => {
         className={styles.container}
       >
         <motion.div variants={transitions.item} className={styles.content}>
-          <h3 className="heading-3">Users don’t need tokens and wallets</h3>
-          <p className="paragraph-large">
+          <h3 className="tw-heading-5 md:tw-heading-3 m-0">
+            Users don’t need tokens and wallets
+          </h3>
+          <p className="tw-paragraph md:tw-lead m-0">
             The reverse gas model enables free-to-use, truly user-friendly
             dapps, ready for mass adoption.
           </p>
-          <Link href="/showcase" className="cta-link">
-            <svg
-              width="24"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
-                fill="currentColor"
-              />
-            </svg>
+          <Link href="/showcase" className="link-primary link-with-icon">
+            <LinkArrowRight />
             Explore Internet Computer Ecosystem
           </Link>
         </motion.div>

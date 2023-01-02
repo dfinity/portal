@@ -1,4 +1,4 @@
-# Rust Canister Development Security Best Practices
+# Canister Development Security Best Practices
 
 ## Smart Contracts Canister Control
 
@@ -59,11 +59,11 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Security Concern
 
-`ic0::api::caller` may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired (and could have security implications) since this would behave like a shared account for anyone that does unauthenticated calls.
+The caller from the system API (e.g. `ic0::api::caller` in Rust) may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired (and could have security implications) since this would behave like a shared account for anyone that does unauthenticated calls.
 
 #### Recommendation
 
-In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method such as:
+In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method. In Rust it could e.g. look as follows:
 
     fn caller() -> Result<Principal, String> {
         let caller = ic0::api::caller();
@@ -97,7 +97,7 @@ If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary
 
 ## Canister Storage
 
-### Use `thread_local!` with `Cell/RefCell` for state variables and put all your globals in one basket.
+### Rust: Use `thread_local!` with `Cell/RefCell` for state variables and put all your globals in one basket.
 
 #### Security Concern
 
@@ -446,6 +446,17 @@ Integers in Rust may overflow. While such overflows lead to panics in the debug 
 -   Use the `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
 
 -   See also the [Rust security guidelines on integer overflows](https://anssi-fr.github.io/rust/04_language.html#integer-overflows).
+
+### Rust: Avoid floating point arithmetic for financial information
+
+#### Security Concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to integer, this can lead to unexpected results. (There is no `checked_div` for floats.)
+
+#### Recommendation
+
+Use [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/) or [`num_rational::Ratio`]( https://docs.rs/num-rational/latest/num_rational/). Decimal uses a fixed-point representation with base 10 denominators, and Ratio represents rational numbers. Both implement `checked_div` to handle division by zero, which is not available for floats. Numbers in common use like 0.1 and 0.2 can be represented more intuitively with Decimal, and can be represented exactly with Ratio. Rounding oddities like `0.1 + 0.2 != 0.3`, which happen with floats in Rust, do not arise with Decimal (see https://0.30000000000000004.com/ ). With Ratio, the desired precision can be made explicit. With either Decimal or Ratio, although one still has to manage precision, the above make arithmetic easier to reason about.
+
 
 ### For expensive calls, consider using captchas or proof of work
 

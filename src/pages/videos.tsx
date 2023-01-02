@@ -13,7 +13,8 @@ import { useQueryParam } from "@site/src/utils/use-query-param";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 
 function Videos() {
-  const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
+  const [queryTag, setQueryTag, queryTagInitialized] =
+    useQueryParam<string>("tag");
   resetNavBarStyle();
   let currentVideo = mediaVideos.at(0);
   let filteredVideos = mediaVideos.filter((v) => v.href !== currentVideo.href);
@@ -41,6 +42,7 @@ function Videos() {
       description={
         "Don't like reading? Learn how the Internet Computer works from feature presentations, demos, interviews, and conference talks."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

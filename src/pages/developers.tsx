@@ -17,6 +17,7 @@ function Developers(): JSX.Element {
       description={
         "Learn how to build infinitely scalable dapps on the Internet Computer. Explore the possibilities of web 3.0 and learn how to make it reality."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta

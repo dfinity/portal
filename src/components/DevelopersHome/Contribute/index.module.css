@@ -4,7 +4,6 @@
     position: relative;
     padding: 120px 0 200px 0;
     --swiper-theme-color: var(--ifm-color-primary);
-    z-index: 1;
 }
 
 .title {
@@ -107,13 +106,13 @@
 .leftContainer {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .rightContainer {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     margin: 0 auto auto auto;
 }

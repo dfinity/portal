@@ -8,13 +8,13 @@ This *Self-Custody Quick Start* scenario assumes:
 
 -   You want to understand what you can do with your ICP tokens.
 
--   You want to know how to convert, transfer, or lock your ICP tokens using the SDK command-line interface DFX.
+-   You want to know how to convert, transfer, or lock your ICP tokens using the SDK command-line interface `dfx`.
 
 If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an exchange or receive a token grant before you can take custody. For an overview of how to get ICP tokens and custody options, see [How you can get ICP tokens](../../concepts/tokens-cycles#get-cycles) and [Choosing self-custody for digital assets](custody-options-intro).
 
 If you are using another application—such as the [Network Nervous System (NNS) application](https://nns.ic0.app) or the user interface provided by a hardware wallet—to interact with your ICP tokens, you should refer to the documentation for that application.
 
-This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens using the SDK command-line interface DFX.
+This *Self-Custody Quick Start* focuses solely on interacting with ICP tokens using the SDK command-line interface `dfx`.
 
 ## How you can use ICP tokens
 
@@ -41,7 +41,7 @@ To get started, verify the following:
 -   You have downloaded and installed the SDK by running the following command in a terminal on your local computer:
 
     ``` bash
-    sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
     ```
 
 -   You have created a backup copy of the public/private key for the identity you are using for self-custody.

@@ -13,6 +13,7 @@ function FeaturePage() {
       title="Sovereign Network"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -23,8 +24,11 @@ function FeaturePage() {
                 Sovereign Network
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              The Internet Computer blockchain network is hosted by special node machines, which are hardware devices that are dedicated to the task 
-              (thus creating a sovereign network). This is conceptually similar to how the internet is hosted by network routing devices.
+                The Internet Computer blockchain network is hosted by special
+                node machines, which are hardware devices that are dedicated to
+                the task (thus creating a sovereign network). This is
+                conceptually similar to how the internet is hosted by network
+                routing devices.
               </p>
             </div>
           </div>
@@ -60,39 +64,54 @@ function FeaturePage() {
           >
             <h2>How It Works</h2>
             <p>
-            Traditional blockchains are different. Their network nodes are created using simple software, which interacts 
-            with other nodes and maintains a copy of blockchain state. Today, software programs are very easy to spin up on cloud 
-            computing "instances" using services such as Amazon Web Services. A consequence has been that the majority of their 
-            nodes are typically cloud computing instances. Because these can be spun up in an instant the investment required to 
-            create or destroy a node is minimal (notwithstanding any cryptocurrency stake that might be required to add a node to the network).
+              Traditional blockchains are different. Their network nodes are
+              created using simple software, which interacts with other nodes
+              and maintains a copy of blockchain state. Today, software programs
+              are very easy to spin up on cloud computing "instances" using
+              services such as Amazon Web Services. A consequence has been that
+              the majority of their nodes are typically cloud computing
+              instances. Because these can be spun up in an instant the
+              investment required to create or destroy a node is minimal
+              (notwithstanding any cryptocurrency stake that might be required
+              to add a node to the network).
             </p>
             <h3>No reliance on cloud infrastructure</h3>
             <p>
-            A grave risk with these kinds of architectures is that control over the blockchain network is handed to a small number of giant corporations. 
-            These corporations might decide they must switch off the nodes, owing to changes in regulation, or competitive threats, or malicious 
-            insiders might use their access to the physical cloud infrastructure to steal keys, or otherwise disrupt the networks.
+              A grave risk with these kinds of architectures is that control
+              over the blockchain network is handed to a small number of giant
+              corporations. These corporations might decide they must switch off
+              the nodes, owing to changes in regulation, or competitive threats,
+              or malicious insiders might use their access to the physical cloud
+              infrastructure to steal keys, or otherwise disrupt the networks.
             </p>
 
             <p>
-            These issues do not exist with the Internet Computer, because it runs on a sovereign network.
+              These issues do not exist with the Internet Computer, because it
+              runs on a sovereign network.
             </p>
 
             <p>
-            Every node in the Internet Computer network is a dedicated physical device, called a node machine, which is run by an independent node 
-            provider, typically from rack space in an independent data center. The nodes cannot therefore be switched off or tampered with by a 
-            small number of corporate cloud computing service providers.
+              Every node in the Internet Computer network is a dedicated
+              physical device, called a node machine, which is run by an
+              independent node provider, typically from rack space in an
+              independent data center. The nodes cannot therefore be switched
+              off or tampered with by a small number of corporate cloud
+              computing service providers.
             </p>
 
-
             <p>
-            While this is an important advantage, there are other technical reasons that special node machines are required to participate in hosting 
-            the Internet Computer network. The node machines are built to standardized public hardware specifications. This means that when the network 
-            is under load, they do not fall behind other nodes inside the same subnet blockchain, which statistical deviation the network's decentralized 
-            governance DAO might notice, and sanction them for.
+              While this is an important advantage, there are other technical
+              reasons that special node machines are required to participate in
+              hosting the Internet Computer network. The node machines are built
+              to standardized public hardware specifications. This means that
+              when the network is under load, they do not fall behind other
+              nodes inside the same subnet blockchain, which statistical
+              deviation the network's decentralized governance DAO might notice,
+              and sanction them for.
             </p>
 
             <p className="mb-3 mt-6">
-            <Link
+              <Link
                 href="https://internetcomputer.org/showcase/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
@@ -114,11 +133,6 @@ function FeaturePage() {
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
-            />
-            <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
               href="/docs/current/developer-docs/build/cdks/"
@@ -127,11 +141,6 @@ function FeaturePage() {
               title="Sample Code"
               description="Learn about IC capabilities from community samples."
               href="/samples"
-            />
-            <CardWithDescription
-              title="'Sovereign network' article on the IC Wiki"
-              description="Learn about how IC is a sovereign network."
-              href="https://wiki.internetcomputer.org/wiki/Sovereign_network"
             />
           </div>
         </section>

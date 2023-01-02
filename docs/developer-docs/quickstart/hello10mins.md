@@ -40,14 +40,14 @@ This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [
 
 To build and deploy the `Hello` dapp, you need to install the following tools.
 
-### DFX
+### dfx
 
 In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
 To install `dfx`, run:
 
 ``` bash
-sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
 To verify that `dfx` properly installed, run:
@@ -130,7 +130,7 @@ Now that your `hello` project is created, the next step is to deploy it locally.
 
 For this, we recommend using two terminals:
 
--   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
+-   **Terminal A** shows the output of the execution environment. This is analogous to starting a local server in a Web2 project, e.g. node.js’s Express, python’s Django, or Ruby’s Rails.
 
 -   **Terminal B** is used to interact with the canister running in the execution environment. This is analogous to sending HTTP API messages to servers running locally, e.g. Postman or Panic.
 
@@ -558,7 +558,7 @@ If you get stuck or run into problems search for solutions or post questions in 
 
 ### Ready for the next challenge?
 
-Build DAOs, NFTs and more [here](https://smartcontracts.org/samples).
+Build DAOs, NFTs and more [here](https://internetcomputer.org/samples).
 
 ### Want to learn more?
 

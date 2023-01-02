@@ -96,7 +96,7 @@ Storing key material in browser storage (such as [sessionStorage](https://develo
 
 #### Recommendation
 
-Use [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) to hide key material from JavaScript, by using `extractable=false` in `generateKey` , see [this](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey). An example for this can be found in the people parties project, see [here](https://github.com/dfinity/people-parties/blob/06208183a2679189d02bc5e64dcbd71c5f5dfbed/frontend/src/services/auth.ts#L111-L120). This makes it impossible to access the private key from JavaScript.
+Use [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) to hide key material from JavaScript, by using `extractable=false` in `generateKey` , see [this](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey). An example for this can be found in the encrypted notes example, see [here](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/src/frontend/src/lib/crypto.ts#L149-L159). This makes it impossible to access the private key from JavaScript.
 
 ### Use a secure web framework
 

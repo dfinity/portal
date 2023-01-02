@@ -44,7 +44,8 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
 }
 
 function ShowcasePage(): JSX.Element {
-  const [queryTag, setQueryTag, queryTagInitialized] = useQueryParam("tag");
+  const [queryTag, setQueryTag, queryTagInitialized] =
+    useQueryParam<string>("tag");
   const filtersRef = useRef<HTMLDivElement>();
   resetNavBarStyle();
 
@@ -74,6 +75,7 @@ function ShowcasePage(): JSX.Element {
     <Layout
       title="Web3 Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -143,7 +145,7 @@ function ShowcasePage(): JSX.Element {
               </div>
               <p className="text-black-60 tw-paragraph-sm md:w-3/12">
                 <strong className="text-black ">Do your own research:</strong>{" "}
-                Here we list dapps and web3 services that are built on the
+                Here we list dapps and Web3 services that are built on the
                 Internet Computer blockchain, which is a World Computer. Many
                 services run fully on-chain. You use decentralized services at
                 your own risk. Do your own research, especially where you must

@@ -1,5 +1,5 @@
 use ic_cdk::{
-    call::{self, ManualReply},
+    api::call::ManualReply,
     export::{
         candid::{CandidType, Deserialize},
         Principal,
@@ -31,8 +31,7 @@ fn get_self() -> Profile {
         profile_store
             .borrow()
             .get(&id)
-            .cloned()
-            .unwrap_or_else(|| Profile::default())
+            .cloned().unwrap_or_default()
     })
 }
 
@@ -43,8 +42,7 @@ fn get(name: String) -> Profile {
             id_store
                 .borrow()
                 .get(&name)
-                .and_then(|id| profile_store.borrow().get(id).cloned())
-                .unwrap_or_else(|| Profile::default())
+                .and_then(|id| profile_store.borrow().get(id).cloned()).unwrap_or_default()
         })
     })
 }
@@ -78,7 +76,6 @@ fn search(text: String) -> ManualReply<Option<Profile>> {
                 }
             }
         }
-    });
-
-    ManualReply::one(None::<Profile>)
+        ManualReply::one(None::<Profile>)
+    })
 }

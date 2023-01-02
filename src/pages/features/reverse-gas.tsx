@@ -1,6 +1,7 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
@@ -13,6 +14,7 @@ function FeaturePage() {
       title="Reverse Gas"
       // fill in meta description
       description=""
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -21,9 +23,11 @@ function FeaturePage() {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Reverse Gas</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-              On the Internet Computer (IC), a browser is all you need to interact with smart contracts. 
-              You do not have to overcome any hurdles such as creating a wallet, hold tokens, or pay 
-              expensive gas fees. This is in contrast to other blockchains, where users need to acquire tokens to do anything.
+                On the Internet Computer (IC), a browser is all you need to
+                interact with smart contracts. You do not have to overcome any
+                hurdles such as creating a wallet, hold tokens, or pay expensive
+                gas fees. This is in contrast to other blockchains, where users
+                need to acquire tokens to do anything.
               </p>
             </div>
           </div>
@@ -39,14 +43,6 @@ function FeaturePage() {
           {/* 
             delete this div if image is not needed 
           */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
-            <img
-              src="/img/features/ic-generic.png"
-              alt=""
-              className="w-full block"
-            />
-          </div>
-
           <div
             className="
             sm:flex-1 
@@ -57,31 +53,32 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>How It Works</h2>
-      
-            <h3>Reverse Gas Model (AKA "canister pays")</h3>
+            <h2>Reverse Gas Model (AKA "canister pays")</h2>
             <p>
-            In the "Reverse Gas model" developers pre-pay costs by loading canisters with 
-            computation cycles. So users can interact with a dapp without having to pay in 
-            tokens. Cycles are stable in cost are obtained by converting ICP tokens. 
-            This allows developers to know in advance how much they will need to spend 
-            on computation.
-            <br />
-            <br />
-            As an example, the  <Link href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/" target="_blank">Motoko Playground</Link> dapp is hosted and executed entirely 
-            on-chain and it does not require visitors to pay for the computation. 
-            The Internet Identity app is an application running on the IC that is free to use.
+              In the "Reverse Gas model" developers pre-pay costs by loading
+              canisters with computation cycles. So users can interact with a
+              dapp without having to pay in tokens. Cycles are stable in cost
+              are obtained by converting ICP tokens. This allows developers to
+              know in advance how much they will need to spend on computation.
+              <br />
+              <br />
+              As an example, the{" "}
+              <Link
+                href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"
+                target="_blank"
+              >
+                Motoko Playground
+              </Link>{" "}
+              dapp is hosted and executed entirely on-chain and it does not
+              require visitors to pay for the computation. The Internet Identity
+              app is an application running on the IC that is free to use.
             </p>
 
-            <p className="mb-3 mt-6">
-            <Link
-                href="https://internetcomputer.org/showcase/"
-                className="tw-heading-6 flex gap-2 items-center"
-              >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
-              </Link>
-            </p>
+            <YoutubeVideoEmbed
+              videoId="YL4R4jQ78u0"
+              className="mt-10 md:mt-10"
+              altText="Community Conversations | Charging Canister Cycles"
+            ></YoutubeVideoEmbed>
           </div>
         </section>
 
@@ -96,24 +93,26 @@ function FeaturePage() {
             {/* add or remove CardWithDescription components on demand */}
 
             <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              title="Cycles Wallet"
+              description="Learn what a cycles wallet is"
+              href="https://support.dfinity.org/hc/en-us/articles/5946641657108-Cycles-Wallet"
             />
             <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
+              title="Cycles"
+              description="Learn what cycles are"
+              href="https://wiki.internetcomputer.org"
             />
+
+            <CardWithDescription
+              title="DFINITY Cycles Faucet"
+              description="Learn how to access free cycles to pay for IC hosting resources."
+              href="https://medium.com/dfinity/internet-computer-basics-part-2-how-to-get-free-cycles-to-deploy-your-first-dapp-24f6bc5a718b"
+            />
+
             <CardWithDescription
               title="Sample Code"
               description="Learn about IC capabilities from community samples."
               href="/samples"
-            />
-            <CardWithDescription
-              title="IC Wiki"
-              description="Take a deep dive into the Internet Computer."
-              href="https://wiki.internetcomputer.org"
             />
           </div>
         </section>

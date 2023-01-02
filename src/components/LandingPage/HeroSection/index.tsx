@@ -1,166 +1,59 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import ArrowRight from "@site/static/img/arrow-right.svg";
+import { motion } from "framer-motion";
+import React from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 
-function animateTextCollapse(
-  from: string,
-  to: string,
-  done: () => void,
-  el: HTMLHeadingElement
-): () => void {
-  let len = from.length;
-  let interval = 30;
-  let start = Date.now();
-  let direction = -1;
-  const handle = setInterval(() => {
-    const elapsed = Date.now() - start;
-    if (elapsed < interval) return;
-
-    start = Date.now();
-
-    if (direction < 0) {
-      // exit
-      len -= 1;
-      interval /= 1.1;
-
-      el.innerText = from.slice(0, len);
-      if (len === 0) {
-        direction = 1;
-        interval = 5;
-      }
-    } else {
-      // enter
-      len += 1;
-      el.innerText = to.slice(0, len);
-
-      interval *= 1.1;
-
-      if (interval > 30) {
-        interval = 30;
-      }
-
-      if (len === to.length) {
-        clearInterval(handle);
-        done();
-      }
-    }
-  }, 5);
-
-  return () => clearInterval(handle);
-}
-
-const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
-  lines,
-  interval,
-}) => {
-  const [index, setIndex] = useState(0);
-  const el = useRef<HTMLHeadingElement>(null);
-  useEffect(() => {
-    let abortTextCollapse: () => void = null;
-    const handle = setInterval(() => {
-      if (document.hasFocus()) {
-        abortTextCollapse = animateTextCollapse(
-          lines[index],
-          lines[(index + 1) % lines.length],
-          () => setIndex((index + 1) % lines.length),
-          el.current
-        );
-      }
-    }, interval);
-
-    return () => {
-      clearInterval(handle);
-      abortTextCollapse();
-    };
-  }, [interval, index, setIndex]);
-
+export default function Hero(): JSX.Element {
   return (
-    <>
-      {lines.map((line, i) => (
-        <h1
-          className="transition-all col-start-1 row-start-1 duration-500 opacity-0"
-          key={line + "_" + i}
-        >
-          {line}
-        </h1>
-      ))}
-      <h1 className="col-start-1 row-start-1 will-change-contents" ref={el}>
-        {lines[0]}
-      </h1>
-    </>
-  );
-};
-
-function Index() {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.2 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
-  return (
-    <div className={styles.section}>
-      <a className={styles.anchor} id="home" />
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={transitions.container}
-        className={styles.container}
-      >
-        <motion.div variants={transitions.item} className={styles.Title}>
-          <RotatedHeadline
-            interval={2000}
-            lines={[
-              "Build on the internet",
-              "A World Computer...",
-              "Everything on-chain",
-              "Fully decentralized",
-              "Internet reinvented",
-              "The future is bright",
-            ]}
-          />
-        </motion.div>
-        <motion.p variants={transitions.item} className={styles.Text}>
-          World Computer smart contracts process HTTP, create TX on other chains, scale infinitely...
-        </motion.p>
-        <motion.div
+    <section className="overflow-hidden relative z-10" id="introduction">
+      <div className="container-10 mt-20 mb-20 md:my-40">
+        <AnimateSpawn
+          el={motion.h2}
+          className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
-          className={styles.actionContainer}
         >
-          <Link className={styles.actionButton} to="/developers">
-            CODE WEB3
-          </Link>
-          <Link
-            className={styles.actionButton}
-            to="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
+          World Computer: No limits
+        </AnimateSpawn>
+        <div className="md:ml-3/10">
+          <AnimateSpawn
+            el={motion.p}
+            className="tw-lead-sm md:tw-lead mb-8"
+            variants={transitions.item}
           >
-            BOOST BTC | ETH
-          </Link>
-          <Link
-            className={styles.actionButton}
-            to="https://wiki.internetcomputer.org/wiki/Replace_traditional_IT_with_a_World_Computer"
+            The <b>Internet Computer</b> is the first <b>World Computer</b>, and is unlike 
+            anything else in existence today. The network hosts tamperproof and 
+            unstoppable code at unlimited scale that runs with efficiency 
+            comparable to traditional software hosted on centralized IT platforms, 
+            such as cloud services. This "blockchain code" has gained essential new 
+            capabilities, and can securely serve web experiences directly into web 
+            browsers, process and store vast amounts of data, interact with Web 2.0 
+            infrastructure, and run transactions on other blockchains, enabling 
+            trustless multi-chain. Almost all online systems and services can now be 
+            built fully on-chain. The end-to-end decentralized future of <i>all</i> compute 
+            has begun, and Web3 is booming, on limitless and climate-friendly World Computer blockchain. Join the movement.
+          </AnimateSpawn>
+          <AnimateSpawn
+            el={motion.p}
+            className="mb-6"
+            variants={transitions.item}
           >
-            DITCH CLOUD
-          </Link>
-          <Link
-            className={styles.callToAction}
-            to={"/showcase"}>
-            Web3 ecosystem
-          </Link>
-          <Link
-            className={styles.callToAction}
-            to="https://wiki.internetcomputer.org/wiki/History">
-            History
-          </Link>          
-        </motion.div>
-      </motion.div>
-    </div>
+            <Link href="/showcase" className="button-primary">
+              Try Web3 apps on ICP
+            </Link>
+          </AnimateSpawn>
+          <AnimateSpawn el={motion.p} variants={transitions.item}>
+            <Link
+              className="link-primary inline-flex items-center gap-2"
+              href="/developers"
+            >
+              <ArrowRight></ArrowRight>
+              Try building on World Computer
+            </Link>
+          </AnimateSpawn>
+        </div>
+      </div>
+    </section>
   );
 }
-
-export default Index;

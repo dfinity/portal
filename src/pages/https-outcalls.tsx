@@ -5,7 +5,10 @@ import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
-import { CardWithDescription } from "@site/src/components/Common/Card";
+import {
+  CardWithBackground,
+  CardWithDescription,
+} from "@site/src/components/Common/Card";
 
 function HTTPSOutcalls() {
   resetNavBarStyle();
@@ -13,6 +16,7 @@ function HTTPSOutcalls() {
     <Layout
       title="HTTPS Outcalls"
       description="The HTTPS Outcalls feature allows the Internet Computer to make HTTPS requests in a distributed and secure manner, all approved by consensus. Oracles are now a thing of the past."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -38,12 +42,11 @@ function HTTPSOutcalls() {
                 HTTPS Outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                HTTPS outcalls is a novel feature of the Internet Computer
-                blockchain that enables direct interaction with Web 2.0 and
-                other blockchains without oracles. Canister smart contracts can
-                make HTTPS outcalls to specified URLs to directly obtain
-                off-chain data, or to interact with off-chain systems, such as
-                Web 2.0 services or enterprise IT infrastructure.
+                The power of canister HTTPS outcalls on the Internet Computer is
+                that it allows smart contracts to directly connect to the Web
+                2.0 world, opening up a plethora of use cases. Retrieve market
+                data from crypto exchanges, send emails, integrate with other
+                blockchains, and more.
               </p>
             </div>
           </div>
@@ -82,13 +85,30 @@ function HTTPSOutcalls() {
               useful functionality, it is crucial that this data be accessible,
               first to unfold the full potential of smart contracts, and second,
               to pave the way for blockchain singularity, whereby the majority
-              of computations run on the blockchain. Due to the way blockchains
-              work, the interaction between smart contracts and off-chain
-              systems has historically been challenging for blockchain
-              developers. Obtaining off-chain data requires that a smart
-              contract interact with centralized oracle services such as
-              Chainlink, which are in the hands of intermediaries, vulnerable to
+              of computations run on the blockchain.
+            </p>
+            <h3>The Oracle Problem</h3>
+            <p>
+              A common limitation of blockchain technology is that smart
+              contracts can receive messages, but cannot send them to the world
+              outside the blockchain. For example, typical smart contracts can
+              receive messages, but cannot send emails and SMS's, nor can they
+              query wikipedia or send HTTP requests to other services.
+              Historically, this has been a blocker to most software developers
+              diving into Web3. For this reason, obtaining off-chain data
+              requires that a smart contract interact with centralized oracle
+              services, which are in the hands of intermediaries, vulnerable to
               hacking, and subject to service fees.
+            </p>
+
+            <h3>HTTPS Outcalls Replace Oracles</h3>
+            <p>
+              Canister HTTPS outcalls on the Internet Computer blockchain allow
+              direct interaction with Web 2.0 and other blockchains without
+              oracles. Canister smart contracts can make HTTPS outcalls to
+              specified URLs to directly obtain off-chain data, or to interact
+              with off-chain systems, such as Web 2.0 services or enterprise IT
+              infrastructure.
             </p>
             <p className="mb-3 mt-6">
               <Link
@@ -96,7 +116,7 @@ function HTTPSOutcalls() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more to build
+                Learn more
               </Link>
             </p>
           </div>
@@ -107,40 +127,30 @@ function HTTPSOutcalls() {
             Build with HTTPS Outcalls
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            The power of canister HTTPS outcalls on the Internet Computer allows
-            smart contracts to directly connect to the Web 2.0 world, opening up
-            a plethora of use cases: Retrieve market data from crypto exchanges,
-            integrate with other blockchains, and more.
+            Connect your smart contracts directly with the Web 2.0. Retrieve
+            IoT-related data, stock exchange prices, weather data, and more -
+            risk-free. integrate with other blockchains, and more.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            {/* <CardWithDescription
-              title="Feature Documentation"
-              description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="/"
+            <CardWithDescription
+              title="HTTPS Outcalls Documentation"
+              description="Build a dapp with canister outgoing HTTPS outcalls."
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
             />
             <CardWithDescription
               title="Blog"
-              description="Read all about HTTPS outcalls and why they are  important for blockchains."
-              href="/"
-            /> */}
-            <CardWithDescription
-              title="Deploy a 'Hello World' Dapp in 10 Minutes"
-              description="Get started with your first IC dapp"
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              description="Read all about HTTPS outcalls and why they are important for blockchains."
+              href="https://bit.ly/3BQRBqI"
             />
-            <CardWithDescription
-              title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
-            />
-            <CardWithDescription
+            <CardWithBackground
               title="Sample Code"
-              description="Build a dapp with canister outgoing HTTPS outcalls."
-              href="/docs/current/samples/http-requests-exchange-rates"
+              description="Learn how to fetch exchange rates with the new canister HTTPS feature."
+              href="/samples?term=https+outcalls"
+              bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription
               title="IC Wiki"
-              description="Get a high-level overview of how HTTPS oucalls work on the Internet Computer."
+              description="Learn how HTTPS outcalls work on the Internet Computer."
               href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
             />
           </div>

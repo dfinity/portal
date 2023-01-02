@@ -56,17 +56,24 @@ Many of the bugs you might encounter can be addressed by uninstalling and reinst
 
 If you only have one version of `dfx` installed in your development environment, you can usually run the following command to uninstall and reinstall the latest version of `dfx`:
 
-    ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
+    ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
 If you have modified the location of the `dfx` binary, you might want run the following command to uninstall the version of `dfx` that is in your PATH, then reinstall the latest version of `dfx`:
 
-    rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
+    rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
 ## Xcode prerequisite
 
 Some versions of the SDK prompted you to install Xcode when creating a new project on a macOS computer. The prompt has been removed and the `dfx new` command does not require you to install any macOS developer tools. However, you should have Developer Command Line Tools installed if you want to create a Git repository for your project.
 
 You can check whether you have the developer tools installed by running `xcode-select -p`. You can install the developer tools by running `xcode-select --install`.
+
+## Apple ARM Silicon
+If you are using a Mac with Apple silicon and are having issues (such as `bad CPU type in executable: dfx`), you may need to install Rosetta.
+
+```shell
+softwareupdate --install-rosetta 
+```
 
 ## Failed build when using VMs
 
@@ -118,4 +125,4 @@ Fixing memory leaks is an ongoing process. If you encounter any error messages r
 
 Alternatively, you can remove the `.cache/dfinity` directory and re-install the latest `dfx` binary. For example:
 
-    rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://smartcontracts.org/install.sh)"
+    rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"

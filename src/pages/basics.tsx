@@ -18,6 +18,7 @@ const BasicsPage: React.FC = () => {
       description={
         "The Internet Computer is the first truly web-speed blockchain that is able to serve web pages on its own. Thanks to novel chain-key cryptography it is able to scale to infinitely many services that live on-chain."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
