@@ -50,8 +50,7 @@ function InternetIdentityPage() {
   return (
     <Layout
       title="Internet Identity"
-      // fill in meta description
-      description=""
+      description="A Web3 authentication framework providing a Web2 login experience with blockchain security."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.jpg"></ShareMeta>
 
