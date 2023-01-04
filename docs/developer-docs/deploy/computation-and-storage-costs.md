@@ -48,7 +48,7 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 
 **Notes:**
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
-* The Bitcoin canister for Bitcoin mainnet is launched initially on a 13-node subnet but the 34-node price as advertised above is charged to avoid frequent price changes. *The Bitcoin API on high-replication subnets requires to send more cycles as specified for future-proofness.* Bitcoin pricing charges the actually required Wasm instructions of the Bitcoin canister to achieve fair charging. See the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further details regarding the specifics of Bitcoin pricing.
+* The Bitcoin canister for Bitcoin mainnet is launched initially on a 13-node subnet but the 34-node price as advertised above is charged to avoid frequent price changes. *The Bitcoin API requires to send more cycles as specified for future-proofness.* See the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further details regarding the specifics of Bitcoin pricing.
 * Prices for Bitcoin testnet are 40% of the prices for Bitcoin mainnet.
 
 The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. For XDR exchange rates please visit: <https://www.imf.org/external/np/fin/data/rms_sdrv.aspx>
@@ -80,6 +80,7 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0005235440               | $0.0013692689               |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`) | $0.0000001308860            | $0.0000003423166            |
+
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
