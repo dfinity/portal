@@ -32,6 +32,8 @@ const {
 } = require("./plugins/utils/redirects");
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
+console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",
