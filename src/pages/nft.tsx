@@ -162,7 +162,7 @@ function NftPage() {
   return (
     <Layout
       title="NFTs"
-      description={`The Internet Computer is the only blockchain that stores 100% of the NFTs on the blockchain, including all assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
+      description={`The Internet Computer is the only blockchain that stores 100% of NFTs on the blockchain, including all assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
