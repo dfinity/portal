@@ -232,9 +232,9 @@ function InternetIdentityPage() {
               </h2>
               <p className="tw-lead-sm md:tw-lead text-white-60 mb-0">
                 By integrating Internet Identity in dapps, websites cannot
-                collect and share user information or online activity. Users own
-                their data, connections are private, and access to Web3 services
-                at their fingertips.
+                track online user activity coming from other websites. Users
+                have full control over their identity, connections are
+                private, and access to Web3 services at their fingertips.
               </p>
             </motion.div>
           </div>
