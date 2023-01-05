@@ -14,8 +14,7 @@ export default function Hero(): JSX.Element {
           className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          World Computer Blockchain:
-          <br className="hidden md:inline" /> A New Paradigm
+          World Computer: No limits
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -23,25 +22,17 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The Internet Computer (ICP) is the first World Computer blockchain,
-            powered by innovations in cryptography and computer science derived
-            from{" "}
-            <Link
-              href="https://wiki.internetcomputer.org/wiki/History"
-              className="link-subtle"
-            >
-              deep crypto research begun in 2015
-            </Link>
-            . It is a blockchain that is scalable without limits and can host and run smart contracts
-            with efficiency comparable to traditional centralized IT
-            infrastructure. Internet Computer smart contracts can even
-            serve web experiences, securely interact with Web2, and create and
-            sign transactions for other blockchains. As a World
-            Computer blockchain, it supports the full end-to-end
-            decentralization of online systems and services, which can now be
-            built entirely on chain exclusively from smart contracts, without
-            the need for centralized traditional IT and Big Tech's cloud
-            services.
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is the first <b>World Computer</b>, and is unlike 
+            anything else in existence today. The network hosts tamperproof and 
+            unstoppable code at unlimited scale that runs with efficiency 
+            comparable to traditional software hosted on centralized IT platforms, 
+            such as cloud services. This "blockchain code" has gained essential new 
+            capabilities, and can securely serve web experiences directly into web 
+            browsers, process and store vast amounts of data, interact with Web 2.0 
+            infrastructure, and run transactions on other blockchains, enabling 
+            trustless multi-chain. Almost all online systems and services can now be 
+            built fully on-chain. The end-to-end decentralized future of <i>all</i> compute 
+            has begun, and Web3 is booming, on limitless and climate-friendly World Computer blockchain. Join the movement.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
@@ -58,7 +49,7 @@ export default function Hero(): JSX.Element {
               href="/developers"
             >
               <ArrowRight></ArrowRight>
-              Build your own Web3 app
+              Try building on World Computer
             </Link>
           </AnimateSpawn>
         </div>
