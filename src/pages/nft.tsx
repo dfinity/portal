@@ -268,10 +268,11 @@ function NftPage() {
             </h2>
             <p className="tw-lead-sm md:mb-6">
               The Internet Computer allows NFTs incredible versatility. Because
-              all data can be stored on-chain NFTs on the Internet Computer can
-              be anything. Storing data on-chain is not only 23,500X more
-              efficient on ICP compared to the next best, it is practically
-              impossible to store assets like images on Solana or Ethereum.
+              NFTs can be data and code, stored all on-chain, on the Internet
+              Computer NFTs can be anything. Storing data on-chain costs 20,000
+              times more on Solana and 15,800,000 times more on Ethereum compared
+              to ICP. This forces all other blockchains to use external storage
+              solutions like AWS or IPFS.
             </p>
             <p className="mb-0">
               <Link href="" className="button-outline">
