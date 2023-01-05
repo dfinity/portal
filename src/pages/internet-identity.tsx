@@ -188,7 +188,7 @@ function InternetIdentityPage() {
                   and passwords, recovering forgotten accounts over text or
                   email, unwittingly permitting companies to profit from our
                   data at the cost of our personal privacy, all the while
-                  falling victim threats of identity theft and fraud.
+                  falling victim to threats of identity theft and fraud.
                 </p>
                 <p className="mb-0 tw-paragraph">
                   On the Internet Computer blockchain, users can securely
@@ -367,7 +367,7 @@ function InternetIdentityPage() {
               className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
               variants={transitions.item}
             >
-              Learn how to build a user-friendly identity products on the
+              Learn how to build a user-friendly identity services on the
               Internet Computer using our core identity component, Internet
               Identity.
             </motion.p>
