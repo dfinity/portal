@@ -162,7 +162,7 @@ function NftPage() {
   return (
     <Layout
       title="NFTs"
-      description={`The Internet Computer is the only blockchain that stores 100% of the NFT on the blockchain, including all assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
+      description={`The Internet Computer is the only blockchain that stores 100% of the NFTs on the blockchain, including all assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -247,11 +247,11 @@ function NftPage() {
             <h2 className="tw-heading-3 md:tw-heading-2 mb-6">Own your NFT</h2>
             <p className="tw-lead-sm md:tw-lead mb-0">
               When you buy an NFT on other chains, you are only buying a link
-              that points to an off-chain off-chain asset stored using AWS or
-              IPFS. That off-chain asset can be changed or even removed by the
-              central entity that created it. As the Internet Computer can store
-              the entire NFT directly on the blockchain, it offers full
-              decentralization - you own 100% of the NFT.
+              that points to an asset stored using AWS or IPFS. That off-chain
+              asset can be changed or even removed by the developer that created
+              it. As the Internet Computer can store the entire NFT directly on
+              the blockchain, it eliminates the risk of your NFT being tampered
+              with - you own 100% of the NFT.
             </p>
           </div>
         </section>
