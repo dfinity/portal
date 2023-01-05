@@ -283,12 +283,13 @@ function NftPage() {
           <TranslatedLayout imageUrl="/img/nft/btc-flower.webp">
             <h2 className="md:tw-heading-60 md:mb-6">Dynamic NFTs</h2>
             <p className="md:tw-lead-sm mb-0">
-              Making use of a unique feature of the Internet Computer, NFTs can
-              efficiently communicate with the Web2 world without using oracles.
-              HTTPS outcalls allow NFTs on ICP to query Web2 APIs and change
-              appearance or behave differently depending on the response. For
-              example BTC Flowers change the color of their paddles based on the
-              last 24 hours of the Bitcoin’s price action
+              A distinguishing feature of the Internet Computer is that it can
+              communicate with the Web2 world without oracles through
+              traditional APIs, using HTTPS outcalls. This allows NFTs to be
+              a lot more than simple static assets - they can evolve over time
+              based on events in the world. For example BTC Flowers change the
+              color of their paddles based on the last 24 hours of Bitcoin’s
+              price action.
             </p>
           </TranslatedLayout>
         </section>
@@ -296,16 +297,16 @@ function NftPage() {
         <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] py-20 md:py-48 text-white">
           <div className="container-12">
             <h2 className="tw-heading-4 md:tw-heading-60  text-white-60 md:w-8/12 md:mx-auto mb-10 md:mb-20">
-              Cost of storing <span className="text-white">100MB</span> of NFT
+              Cost of storing <span className="text-white">1GB</span> of NFT
               collections on-chain
             </h2>
 
             <div className="flex flex-col md:flex-row gap-4 mb-16 md:mb-24">
               <div className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center panel-gradient">
-                <h3 className="tw-heading-7-caps mb-0">Internet computer</h3>
+                <h3 className="tw-heading-7-caps mb-0">Internet Computer</h3>
                 <img src="/img/nft/ic-logo.webp" alt="" className="w-20" />
                 <div>
-                  <span className="tw-heading-3">$0.04</span>{" "}
+                  <span className="tw-heading-3">$5</span>{" "}
                   <span className="tw-heading-5">/ year</span>
                 </div>
               </div>
@@ -314,7 +315,7 @@ function NftPage() {
                 <h3 className="tw-heading-7-caps mb-0">Solana</h3>
                 <img src="/img/nft/solana-logo.webp" alt="" className="w-20" />
                 <div>
-                  <span className="tw-heading-3">$826</span>{" "}
+                  <span className="tw-heading-3">$110,000</span>{" "}
                   <span className="tw-heading-5">/ year</span>
                 </div>
               </div>
@@ -326,19 +327,18 @@ function NftPage() {
                   className="w-20"
                 />
                 <div>
-                  <span className="tw-heading-3">$533,000</span>{" "}
+                  <span className="tw-heading-3">$79,000,000</span>{" "}
                   <span className="tw-heading-5">/ year</span>
                 </div>
               </div>
             </div>
 
             <h2 className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
-              Donec sed odio dui. Integer posuere erat a ante venenatis dapibus
-              posuere velit aliquet. Maecenas sed diam eget risus varius blandit
-              sit amet non magna. Donec sed odio dui. Donec sed odio dui.
-              Integer posuere erat a ante venenatis dapibus posuere velit
-              aliquet. Maecenas sed diam eget risus varius blandit sit amet non
-              magna. Donec sed odio dui.
+              The Internet Computer offers unparralleled efficiency that leaves other
+              blockchains orders of magnitudes behind with regards to many metrics, 
+              making it the ideal chain to launch complex NFT collections and games.
+              ICP uses the reverse gas model, which means end users can mint and trade
+              NFTs with 0 gas fees.
             </h2>
 
             <div className="panel-gradient border border-solid border-white-30 rounded-xl py-12 px-8 flex flex-col gap-6 text-center md:flex-row">
