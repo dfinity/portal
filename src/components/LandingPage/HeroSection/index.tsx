@@ -22,7 +22,7 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The <b>Internet Computer</b> is the first <b>World Computer</b>, and is unlike 
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is the first <b>World Computer</b>, and is unlike 
             anything else in existence today. The network hosts tamperproof and 
             unstoppable code at unlimited scale that runs with efficiency 
             comparable to traditional software hosted on centralized IT platforms, 
