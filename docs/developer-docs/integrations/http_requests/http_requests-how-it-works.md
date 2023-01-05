@@ -1,4 +1,4 @@
- # Technology Overview — How Canister HTTPS Outcalls Work
+# Technology Overview — How Canister HTTPS Outcalls Work
 
 On this page we provide details on how canister HTTPS outcalls, or canister HTTPS requests, work and important aspects to consider when using the API. We also want to note that there are some limitations and differences  compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jump right away to the [coding section](#coding-https-outcalls) to get started.
 
