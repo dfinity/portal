@@ -154,7 +154,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-The cycles cost for a http outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a http outcall. Whereas the variable part charges for the resources consumed during the requests. As other calls the cost is scaled to account for larger subnets. 
+The cycles cost for a http outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a http outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. 
 
 **Formula:** 
 ```
