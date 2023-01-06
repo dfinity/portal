@@ -21,7 +21,7 @@ export default function BasicsSection(): JSX.Element {
               className="tw-heading-3 md:tw-heading-60 mb-16 text-center md:text-left"
               variants={transitions.item}
             >
-              Decentralization++
+              Democratize and succeed
             </AnimateSpawn>
             <AnimateSpawn
               className="flex flex-col-reverse md:flex-row justify-between mb-16 gap-6 md:gep-0"
@@ -63,11 +63,14 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                enables a Web3 future where "open internet services," such as social networks, run autonomously on a blockchain, 
-                under the complete control of community DAOs. Developers can design rich tokenized experiences in which users 
-                become owners, and become part of an industrious virtual team that helps them grow. DAOs transparently update 
-                the tamperproof and unstoppable code that powers services, and can crowdfund from the decentralized ecosystem, 
-                enabling communities of developers and users to be successful from anywhere the world, democratizing Tech.
+                powers a Web3 universe where "open internet services", such as social networks
+                run fully on-chain under the exclusive control of community DAOs. Their end-users
+                acquire governance tokens and become owners, and become part of industrious
+                virtual teams that drive success. True ownership is possible because the advanced
+                DAOs can manage, configure and update the code that runs services. DAOs
+                can also crowdfund from the decentralized ecosystem when taking over a service,
+                enabling developer and user communities to be successful from anywhere in the world,
+                democratizing access to the Tech economy.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
