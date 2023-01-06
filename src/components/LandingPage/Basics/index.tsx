@@ -69,7 +69,7 @@ export default function BasicsSection(): JSX.Element {
                 virtual teams that drive success. True ownership is possible because the advanced
                 DAOs can manage, configure and update the code that runs services. DAOs
                 can also crowdfund from the decentralized ecosystem when taking over a service,
-                enabling developer and user communities to be successful from anywhere the world,
+                enabling developer and user communities to be successful from anywhere in the world,
                 democratizing access to the Tech economy.
               </p>
               <p className="mb-8">
