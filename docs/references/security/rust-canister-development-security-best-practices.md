@@ -189,7 +189,7 @@ To understand the issues around async inter-canister calls, one needs to underst
 
 We fist provide a few definitions. A _call_ is a canister's implementation of either an [update](../ic-interface-spec.md#http-call) or [query call](../ic-interface-spec.md#http-query) that it exposes. For example, if the Rust CDK is used, these are usually annotated with `#[query]` or `#[update]`, respectively. A _message_ is a set of consecutive instructions that a subnet executes for a canister. We'll see in the following that a call can be split into several messages if inter-canister calls are made. The following properties are essential: 
 
-**Property 1**: Only a single message is processed at a time in a subnet. So message execution is sequential, and never parallel.
+**Property 1**: Only a single message is processed at a time in a subnet. This implies that only a single message is processed at a time per canister. So message execution is sequential, and never parallel.
 
 **Property 2**: Each call (query / update) triggers a message. When an inter-canister call is made using `await`, the code after the call (the callback, highlighted in blue) is executed as a separate message. 
 
