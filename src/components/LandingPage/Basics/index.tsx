@@ -74,7 +74,7 @@ export default function BasicsSection(): JSX.Element {
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
-                  Learn the basics
+                  Quick Internet Computer Basics
                 </Link>
               </p>
               <p className="mb-0">
