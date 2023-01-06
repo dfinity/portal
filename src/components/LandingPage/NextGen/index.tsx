@@ -38,7 +38,7 @@ export default function NextGenSection(): JSX.Element {
           className="tw-heading-6 md:tw-heading-4 mb-8"
           variants={transitions.item}
         >
-          A new form of digital democracy.
+          Algo Democracy Unleashed
         </motion.p>
         <motion.p className="mb-6" variants={transitions.item}>
           <Link className="button-primary" href="/sns">
