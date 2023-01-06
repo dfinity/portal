@@ -14,6 +14,7 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
+import showcaseData from "../../showcase.json";
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
@@ -49,8 +50,7 @@ function ShowcasePage(): JSX.Element {
   const filtersRef = useRef<HTMLDivElement>();
   resetNavBarStyle();
 
-  const projects = useGlobalData()["showcase-projects"]
-    .default as ShowcaseProject[];
+  const projects = showcaseData as ShowcaseProject[];
 
   const tags = Object.keys(
     projects.reduce((tags, p) => {

@@ -10,7 +10,6 @@ const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-const showcaseProjectsPlugin = require("./plugins/showcase-projects");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
 const tailwindPlugin = require("./plugins/tailwind");
@@ -55,7 +54,6 @@ const config = {
     customWebpack,
     tailwindPlugin,
     icpPricePlugin,
-    showcaseProjectsPlugin,
     homeShowcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
