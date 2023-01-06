@@ -67,7 +67,7 @@ export default function BasicsSection(): JSX.Element {
                 run fully on-chain under the exclusive control of community DAOs. Their end-users
                 acquire governance tokens and become owners, and become part of industrious
                 virtual teams that drive success. True ownership is possible because the advanced
-                DAOs involved can manage, configure and update the code that runs services. DAOs
+                DAOs can manage, configure and update the code that runs services. DAOs
                 can also crowdfund from the decentralized ecosystem when taking over a service,
                 enabling developer and user communities to be successful from anywhere the world,
                 democratizing access to the Tech economy.
