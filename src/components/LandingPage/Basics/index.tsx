@@ -66,15 +66,15 @@ export default function BasicsSection(): JSX.Element {
                 powers a Web3 universe where "open internet services", such as social networks
                 run fully on-chain under the exclusive control of community DAOs. Their end-users
                 acquire governance tokens and become owners, and become part of industrious
-                virtual teams that drive success. True ownership is possible because the advanced
-                DAOs can manage, configure and update the code that runs services. DAOs
-                can also crowdfund from the decentralized ecosystem when taking over a service,
-                enabling developer and user communities to be successful from anywhere in the world,
+                virtual teams that drive success. True ownership is possible because advanced
+                DAOs can manage, configure and update the code that runs services. DAOs can also
+                crowdfund from the decentralized ecosystem when taking over a service, enabling
+                developer and user communities to be successful from anywhere in the world,
                 democratizing access to the Tech economy.
               </p>
               <p className="mb-8">
                 <Link className="button-primary" href="/basics">
-                  Learn the basics
+                  Quick Internet Computer Basics
                 </Link>
               </p>
               <p className="mb-0">
