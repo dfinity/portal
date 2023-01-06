@@ -90,8 +90,8 @@ function FeaturesPage() {
     <Layout
       title="World Computer Capabilities"
       description="The Internet Computer is 'alien tech' crypto. It extends the
-tinternet by smashing through historical limitations, unlocking new capabilities
-sfor Web3 and the world..."
+    internet by smashing through historical limitations, unlocking new capabilities
+    for Web3 and the world..."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
@@ -108,16 +108,15 @@ sfor Web3 and the world..."
                 className="tw-heading-3 md:tw-heading-2 mb-6"
                 variants={transitions.item}
               >
-                Game-Changing Features
+                World Computer Capabilities
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The Internet Computer is pushing the boundaries of what is
-                possible in blockchain technology today. ICP is not only 23,500x
-                more efficient than the next most efficient blockchain, it also
-                provides unique features not seen on any other chain.
+                The Internet Computer is 'alien tech' crypto. It extends the
+                internet by smashing through historical limitations, unlocking new capabilities 
+                for Web3 and the world...
               </motion.p>
             </div>
           </div>

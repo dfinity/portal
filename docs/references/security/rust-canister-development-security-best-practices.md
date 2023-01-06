@@ -1,4 +1,4 @@
-# Rust Canister Development Security Best Practices
+# Canister Development Security Best Practices
 
 ## Smart Contracts Canister Control
 
@@ -59,11 +59,11 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Security Concern
 
-`ic0::api::caller` may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired (and could have security implications) since this would behave like a shared account for anyone that does unauthenticated calls.
+The caller from the system API (e.g. `ic0::api::caller` in Rust) may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired (and could have security implications) since this would behave like a shared account for anyone that does unauthenticated calls.
 
 #### Recommendation
 
-In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method such as:
+In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method. In Rust it could e.g. look as follows:
 
     fn caller() -> Result<Principal, String> {
         let caller = ic0::api::caller();
@@ -97,7 +97,7 @@ If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary
 
 ## Canister Storage
 
-### Use `thread_local!` with `Cell/RefCell` for state variables and put all your globals in one basket.
+### Rust: Use `thread_local!` with `Cell/RefCell` for state variables and put all your globals in one basket.
 
 #### Security Concern
 
