@@ -477,9 +477,11 @@ function NftPage() {
                     CCC
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Aenean lacinia bibendum nulla sed consectetur. Maecenas
-                    faucibus mollis interdum. Aenean lacinia bibendum nulla sed
-                    consectetur. Aenean lacinia bibendum nulla sed consectetur.
+                    CCC or Crowd Created Collectibles is A Native Web3 Co-Creation
+                    NFT Platfrom. It offers uploading of NFT collections as well
+                    as a fully on-chain NFT painting tool and material library.
+                    You can also create NFTs together with the community or friends
+                    using the Group Collection feature.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
@@ -493,10 +495,9 @@ function NftPage() {
                     Yumi
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Entrepot is the first and largest NFT marketplace on the
-                    Internet Computer. They have launched 100s of collections
-                    with their no-code minting tool and have over 1TB of assets
-                    stored fully on-chain.
+                    Yumi is the first fully-decentralized NFT and digital goods marketplace
+                    where users can create and trade NFTs. They will be rewarded Yumi credits
+                    which can be seamlessly integrated with Shiku Metaverse.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
