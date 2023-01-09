@@ -30,8 +30,9 @@ const {
   getRedirects,
   getSplatRedirects,
 } = require("./plugins/utils/redirects");
-const isDeployPreview =
-  !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
+const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
+
+console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -39,7 +40,7 @@ const config = {
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
   url: isDeployPreview
-    ? process.env.DEPLOY_PRIME_URL
+    ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -197,7 +198,7 @@ const config = {
               },
               {
                 label: "Internet Identity",
-                href: "https://identity.ic0.app/",
+                href: "/internet-identity",
               },
 
               {

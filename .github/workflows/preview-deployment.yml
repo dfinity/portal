@@ -81,6 +81,8 @@ jobs:
           git submodule update --init
           npm install
 
+          export PREVIEW_CANISTER_ID=$canister_id
+
           dfx deploy --network=ic --no-wallet portal
 
         env:
