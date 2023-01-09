@@ -154,7 +154,18 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-Like most features of the IC, the canister HTTP outcalls feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the per-request fixed cost and the overhead of HTTP requests, e.g., due to headers, it is advantageous from a cost perspective to make fewer requests with larger responses to retrieve the same information as with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
+The cycles cost for a http outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a http outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. 
+
+**Formula:** 
+```
+header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
+request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
+http_outcall_cost = 400M + 100k * (request_size + max_response_size)
+scaling_factor = subnet_size / 13 
+total_cost = scaling_factor * http_outcall_cost
+```
+
+The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
 
 The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTP outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.
 
