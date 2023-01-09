@@ -131,13 +131,13 @@ function InternetIdentityPage() {
           >
             <div className="hidden md:block blob blob-infinite blob-bottom-right blob-lg z-[-1]"></div>
             <CardWithIcon
-              title="Biometric login"
+              title="Biometric authorization"
               icon={<IconNoPassword className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Authenticate via FaceID, fingerprint sensor or a YubiKey. This
-                provides the most security, as the cryptographic key never
-                leaves your device.
+                Unlock authentication with your device via FaceID, fingerprint
+                sensor or use a YubiKey. This provides the most security, as
+                the cryptographic key never leaves your device.
               </p>
             </CardWithIcon>
 
