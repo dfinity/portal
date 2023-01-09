@@ -249,9 +249,8 @@ function NftPage() {
               When you buy an NFT on other chains, you are only buying a link
               that points to an asset stored using AWS or IPFS. That off-chain
               asset can be changed or even removed by the developer that created
-              it. As the Internet Computer can store the entire NFT directly on
-              the blockchain, it eliminates the risk of your NFT being tampered
-              with - you own 100% of the NFT.
+              it. As the Internet Computer can store the entire NFT inside a
+              smart contract - you own and control 100% of the NFT.
             </p>
           </div>
         </section>
@@ -267,12 +266,14 @@ function NftPage() {
               Make the most out of NFTs
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows NFTs incredible versatility. Because
-              NFTs can be data and code, stored all on-chain, on the Internet
-              Computer NFTs can be anything. Storing data on-chain costs 20,000
-              times more on Solana and 15,800,000 times more on Ethereum compared
-              to ICP. This forces all other blockchains to use external storage
-              solutions like AWS or IPFS.
+              The Internet Computer allows NFTs of incredible versatility. Because
+              NFTs can be data and code, i.e. a canister smart contract, on the
+              Internet Computer NFTs can be anything. In ICP, storing data on-chain
+              costs 20,000 times less than on Solana and 15,800,000 times less than
+              on Ethereum. This forces all other blockchains to use external storage
+              solutions like AWS or IPFS. NFT projects on these chains could consider
+              storing their assets on ICP, so they don't have to compromise on
+              decentralization or price.
             </p>
             <p className="mb-0">
               <Link href="" className="button-outline">
@@ -283,13 +284,13 @@ function NftPage() {
           <TranslatedLayout imageUrl="/img/nft/btc-flower.webp">
             <h2 className="md:tw-heading-60 md:mb-6">Dynamic NFTs</h2>
             <p className="md:tw-lead-sm mb-0">
-              A distinguishing feature of the Internet Computer is that it can
-              communicate with the Web2 world without oracles through
-              traditional APIs, using HTTPS outcalls. This allows NFTs to be
-              a lot more than simple static assets - they can evolve over time
-              based on events in the world. For example BTC Flowers change the
-              color of their paddles based on the last 24 hours of Bitcoin’s
-              price action.
+              A distinguishing feature of the Internet Computer is that its
+              smart contracts can communicate with the Web2 world without
+              oracles but through the existing Web2 APIs, using HTTPS outcalls.
+              This allows NFTs to be a lot more than simple static assets - 
+              they can evolve over time based on events in the world. For
+              example BTC Flowers change the color of their paddles based on
+              the last 24 hours of Bitcoin’s price action.
             </p>
           </TranslatedLayout>
         </section>
