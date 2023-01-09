@@ -31,8 +31,11 @@ export default function NextGenSection(): JSX.Element {
           className="tw-lead-sm md:tw-lead-lg mb-3"
           variants={transitions.item}
         >
-          Communities gain full control via DAOs that manage,
-          configure & update Web3 and DeFi code.
+          Communities gain full control via
+          <br />
+          DAOs that manage, configure &
+          <br />
+          update Web3 and DeFi code.
         </motion.p>
         <motion.p
           className="tw-heading-6 md:tw-heading-4 mb-8"

@@ -25,10 +25,32 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+
+      - name: Cache dfx binary
+        id: cache-dfx-bin
+        uses: actions/cache@v3
+        with:
+          path: sdk/target/debug/dfx
+          key: dfxbin-19e18d1560aafedb3ab9764932755fd649be920a
+          restore-keys: |
+            - dfxbin-
+
+      - name: Install DFX
+        if: steps.cache-dfx-bin.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/dfinity/sdk.git --single-branch
+          cd sdk
+          git checkout 19e18d1560aafedb3ab9764932755fd649be920a
+          cargo build
+
+      - name: Add DFX to path
+        run: |
+          echo "`pwd`/sdk/target/debug/" >> $GITHUB_PATH
+
       - name: "Build & Deploy"
         run: |
           # install dfx and configure identity
-          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+          # sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
           mkdir ~/.config/dfx
           mkdir ~/.config/dfx/identity
           mkdir ~/.config/dfx/identity/default
@@ -58,6 +80,8 @@ jobs:
           # install and deploy
           git submodule update --init
           npm install
+
+          export PREVIEW_CANISTER_ID=$canister_id
 
           dfx deploy --network=ic --no-wallet portal
 
