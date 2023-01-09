@@ -75,7 +75,7 @@
       "Wallet"
     ],
     "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) \u2013\u2013\u00a0InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
-    "stats": "$1.5M Invested PolyChain Capital + a16z",
+    "stats": "$1.5M Invested",
     "logo": "/img/showcase/infinityswap_logo.webp",
     "screenshots": [
       "/img/showcase/infinityswap_screenshot_0.webp"
@@ -181,7 +181,7 @@
       "DeFi"
     ],
     "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
-    "stats": "Front-End On-Chain",
+    "oneLiner": "Front-End On-Chain",
     "display": "Large",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
     "video": "/img/showcase/uniswapfrontendontheic_video.mp4",
@@ -1445,3 +1445,4 @@
     ]
   }
 ]
+
