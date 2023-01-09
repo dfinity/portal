@@ -7,7 +7,6 @@ title: Architecture of the Internet Computer
 # Architecture of the Internet Computer
 
 The Internet Computer (IC) realizes the vision of a *World Computer* – an open and secure *blockchain-based network* that can host programs and data in the form of smart contracts, perform computations on smart contracts in a secure and trustworthy way, and scale infinitely.
-To achieve this, blockchain technology – the foundation of the IC – had to be reconceived from ground up, building on many lessons learnt from earlier blockchain projects.
 
 Smart contracts on the Internet Computer are called *canister smart contracts*, or *canisters*, each consisting of a bundle of [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) bytecode and smart contract data storage.
 Each canister has its own, isolated, data storage that is only changed when the canister executes code.
@@ -31,11 +30,9 @@ They enable a canister to interact with (write to) other blockchains using thres
 
 Having scalable and decentralized technology to power the operation of the network is not enough.
 In order to meet the requirements of complete decentralization, the IC needs a fully decentralized approach to governance.
-Governance of the IC platform and its R&D roadmap is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, which is called the [*Network Nervous System (NNS)*](https://internetcomputer.org/how-it-works/#Network-nervous-system).
-Each individual dApp on the IC can have its own governance system similar to the NNS by customizing and deploying an out-of-the-box tokenized DAO based on the *Service Nervous System (SNS)* for the dApp.
+Governance of the IC platform is accomplished through a *tokenized Decentralized Autonomous Organization (DAO)*, which is called the [*Network Nervous System (NNS)*](https://internetcomputer.org/how-it-works/#Network-nervous-system).
+Each individual dapp on the IC can have its own governance system similar to the NNS by customizing and deploying an out-of-the-box tokenized DAO based on the *Service Nervous System (SNS)* for the dapp.
 
-Learn more about how the Internet Computer works and realizes the vision of a World Computer!
+The [Internet Computer](https://dashboard.internetcomputer.org/) was launched and open-sourced on May 10th 2021 by the DFINITY Foundation. The Internet Computer is now an independent network controlled by ICP token holders but DFINITY continues supporting its evolution.
 
-The [Internet Computer](https://dashboard.internetcomputer.org/) was launched and open-sourced on May 10th 2021 by the DFINITY Foundation.
-
-[Go deeper into the architecture](/how-it-works/architecture-of-the-internet-computer/)
+[Go deeper](/how-it-works/architecture-of-the-internet-computer/)
