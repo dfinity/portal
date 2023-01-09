@@ -87,6 +87,22 @@ function Footer({ editPath }) {
               ))}
             </div>
           ))}
+          <form className="text-white md:max-w-[40%] md:ml-auto mt-10 md:mt-0">
+            <p className="tw-lead-sm mb-3 md:mb-5">
+              Sign up for email updates to keep up to date with advancements on
+              the Internet Computer
+            </p>
+            <div className="flex gap-3 flex-col md:flex-row items-start">
+              <input
+                type="email"
+                placeholder="Email"
+                className="input-text input-text-white flex-1 w-full md:w-auto"
+              />
+              <button type="submit" className="button-white">
+                Get Updates!
+              </button>
+            </div>
+          </form>
         </div>
         <div className={styles.footerBottom}>
           <div className={styles.legalContainer}>

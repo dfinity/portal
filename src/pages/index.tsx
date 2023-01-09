@@ -12,6 +12,7 @@ import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import BasicsSection from "../components/LandingPage/Basics";
 import FoundationSection from "../components/LandingPage/Foundation";
 import HeroSection from "../components/LandingPage/HeroSection";
+import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import NextGenSection from "../components/LandingPage/NextGen";
 import PreHero from "../components/LandingPage/PreHero";
 import ShowcaseSection from "../components/LandingPage/Showcase";
@@ -42,12 +43,12 @@ export default function Home(): JSX.Element {
         </BackgroundPanel>
         <div className="overflow-hidden">
           <ShowcaseSection></ShowcaseSection>
-
           <NextGenSection></NextGenSection>
           <ItsGreenSection id="sustainable" />
           <FoundationSection></FoundationSection>
           <SlidersSection />
           <StartBuildingSection />
+          <NewsletterSection />
         </div>
       </main>
       <SectionsBar />

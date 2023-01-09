@@ -195,6 +195,8 @@ module.exports = {
                 '.blob-center-right': '@apply right-0 translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
                 '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
+                '.input-text': '@apply w-auto block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
+                '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
             };
 
       addComponents(
