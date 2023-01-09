@@ -12,6 +12,11 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ledger.did"
     curl -o ledger.public.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ledger_canister/ledger.did"
     ```
+    If you plan to work with Ledger archives, also download the `ledger_archive.did` file:
+    
+    ``` sh
+    curl -o ledger_archive.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger_archive.did"
+    ```
 
     :::note
 
