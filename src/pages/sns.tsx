@@ -47,7 +47,7 @@ function SnsPage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="Next Generation DAOs"
+      title="DAO crypto evolved"
       // fill in meta description
       description="An SNS is an advanced form of a DAO. A digital democracy
       that can run any dapp such as a social network in a fully decentralized
@@ -74,13 +74,13 @@ function SnsPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Service Nervous Systems (SNS)
+                  DAO crypto evolved
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  An SNS is an advanced form of a DAO. A digital democracy
+                  A Service Nervous Systems (SNS) is an advanced form of a DAO. A digital democracy
                   that can run any dapp such as a social network in a fully decentralized
                   way, fully on  chain. No corporation, no board of directors, no CEO required.
                 </motion.p>
