@@ -507,7 +507,7 @@ function NftPage() {
             <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
               <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
 
-              <Link className="button-primary" href="">
+              <Link className="button-primary" href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs">
                 Build your own
               </Link>
             </div>
