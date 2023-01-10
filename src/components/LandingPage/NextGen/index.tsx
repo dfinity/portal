@@ -31,21 +31,21 @@ export default function NextGenSection(): JSX.Element {
           className="tw-lead-sm md:tw-lead-lg mb-3"
           variants={transitions.item}
         >
-          Communities gain full control via
+          Community DAOs that can own
           <br />
-          DAOs that manage, configure &
+          and manage a social network
           <br />
-          update Web3 and DeFi code.
+          can now democratize tech
         </motion.p>
         <motion.p
           className="tw-heading-6 md:tw-heading-4 mb-8"
           variants={transitions.item}
         >
-          Algo Democracy Unleashed
+          Corporation &rarr; algo democracy
         </motion.p>
         <motion.p className="mb-6" variants={transitions.item}>
           <Link className="button-primary" href="/sns">
-            Service Nervous System Tech
+            Service Nervous System Basics
           </Link>
         </motion.p>
         {/* <motion.p className="mb-0" variants={transitions.item}>
