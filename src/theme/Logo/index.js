@@ -33,12 +33,14 @@ export default function Logo(props) {
     siteConfig: { title, customFields },
   } = useDocusaurusContext();
   const {
-    navbar: { title: navbarTitle, logo },
+    navbar: { title: navbarTitle, logo: originalLogo },
   } = useThemeConfig();
   const { imageClassName, titleClassName, ...propsRest } = props;
   const location = useLocation();
 
   const isDocsPage = location.pathname.startsWith("/docs/");
+
+  const logo = { ...originalLogo };
 
   const logoHref = isDocsPage
     ? customFields.docsLogoUrl
