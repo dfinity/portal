@@ -515,7 +515,7 @@ function SnsPage() {
                 <h3>Decentralization Sale</h3>
                 <p>Launching an SNS DAO requires the following:</p>
                 <ul>
-                  <li>An existing Web3 app to be decentralized.</li>
+                  <li>An existing Web3 dapp to be decentralized.</li>
                   <li>
                     Submission of an NNS proposal requesting a decentralization
                     sale.
