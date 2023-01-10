@@ -51,7 +51,7 @@ function SnsPage() {
     <Layout
       title="Service Nervous Systems"
       // fill in meta description
-      description="An SNS is an advanced form of a DAO. A digital democracy that can run any dapp such as a social network in a fully decentralized way, fully on  chain. No corporation, no board of directors, no CEO required."
+      description="An SNS is an advanced form of a DAO. A digital democracy that can run any dapp such as a social network in a fully decentralized way, fully on chain. No corporation, no board of directors, no CEO required."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -169,7 +169,7 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                When you, as a dapp developer, decide to hand over your Web3 app
+                When you, as a dapp developer, decide to hand over your Web3 dapp
                 to an SNS, you decide on the SNS parameters and submit a
                 proposal to the NNS, the IC’s DAO. When the proposal is
                 accepted, the NNS launches the new SNS and assigns it full
