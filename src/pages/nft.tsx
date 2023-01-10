@@ -266,14 +266,15 @@ function NftPage() {
               Make the most out of NFTs
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows NFTs of incredible versatility. Because
-              NFTs can be data and code, i.e. a canister smart contract, on the
-              Internet Computer NFTs can be anything. In ICP, storing data on-chain
-              costs 20,000 times less than on Solana and 15,800,000 times less than
-              on Ethereum. This forces all other blockchains to use external storage
-              solutions like AWS or IPFS. NFT projects on these chains could consider
-              storing their assets on ICP, so they don't have to compromise on
-              decentralization or price.
+              The Internet Computer allows NFTs of incredible versatility.
+              Because NFTs can be data and code, i.e. a canister smart contract,
+              on the Internet Computer NFTs can be anything. In ICP, storing
+              data on-chain costs 20,000 times less than on Solana and
+              15,800,000 times less than on Ethereum. This forces all other
+              blockchains to use external storage solutions like AWS or IPFS.
+              NFT projects on these chains could consider storing their assets
+              on ICP, so they don't have to compromise on decentralization or
+              price.
             </p>
             <p className="mb-0">
               <Link href="" className="button-outline">
@@ -287,10 +288,10 @@ function NftPage() {
               A distinguishing feature of the Internet Computer is that its
               smart contracts can communicate with the Web2 world without
               oracles but through the existing Web2 APIs, using HTTPS outcalls.
-              This allows NFTs to be a lot more than simple static assets - 
-              they can evolve over time based on events in the world. For
-              example BTC Flowers change the color of their paddles based on
-              the last 24 hours of Bitcoin’s price action.
+              This allows NFTs to be a lot more than simple static assets - they
+              can evolve over time based on events in the world. For example BTC
+              Flowers change the color of their paddles based on the last 24
+              hours of Bitcoin’s price action.
             </p>
           </TranslatedLayout>
         </section>
@@ -335,11 +336,11 @@ function NftPage() {
             </div>
 
             <h2 className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
-              The Internet Computer offers unparralleled efficiency that leaves other
-              blockchains orders of magnitudes behind with regards to many metrics, 
-              making it the ideal chain to launch complex NFT collections and games.
-              ICP uses the reverse gas model, which means end users can mint and trade
-              NFTs with 0 gas fees.
+              The Internet Computer offers unparralleled efficiency that leaves
+              other blockchains orders of magnitudes behind with regards to many
+              metrics, making it the ideal chain to launch complex NFT
+              collections and games. ICP uses the reverse gas model, which means
+              end users can mint and trade NFTs with 0 gas fees.
             </h2>
 
             <div className="panel-gradient border border-solid border-white-30 rounded-xl py-12 px-8 flex flex-col gap-6 text-center md:flex-row">
@@ -449,7 +450,10 @@ function NftPage() {
           <div className="container-12 relative">
             <div className="hidden md:block blob blob-purple blob-center blob-lg z-[-1]"></div>
             <div className="flex flex-col md:flex-row gap-3">
-              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+              <Link
+                href="https://entrepot.app"
+                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+              >
                 <img
                   src="/img/nft/entrepot.webp"
                   alt=""
@@ -469,41 +473,48 @@ function NftPage() {
                     36M+ US$ in trading
                   </span>
                 </div>
-              </div>
-              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+              </Link>
+              <Link
+                href="https://skeh5-daaaa-aaaai-aar4q-cai.raw.ic0.app/#/all"
+                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+              >
                 <img src="/img/nft/ccc.webp" alt="" className="w-16 md:w-20" />
                 <div className="flex-1">
                   <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
                     CCC
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    CCC or Crowd Created Collectibles is A Native Web3 Co-Creation
-                    NFT Platfrom. It offers uploading of NFT collections as well
-                    as a fully on-chain NFT painting tool and material library.
-                    You can also create NFTs together with the community or friends
-                    using the Group Collection feature.
+                    CCC or Crowd Created Collectibles is A Native Web3
+                    Co-Creation NFT Platfrom. It offers uploading of NFT
+                    collections as well as a fully on-chain NFT painting tool
+                    and material library. You can also create NFTs together with
+                    the community or friends using the Group Collection feature.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
                   </span>
                 </div>
-              </div>
-              <div className="border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9">
+              </Link>
+              <Link
+                href="https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/"
+                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+              >
                 <img src="/img/nft/yumi.webp" alt="" className="w-16 md:w-20" />
                 <div className="flex-1">
                   <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
                     Yumi
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Yumi is the first fully-decentralized NFT and digital goods marketplace
-                    where users can create and trade NFTs. They will be rewarded Yumi credits
-                    which can be seamlessly integrated with Shiku Metaverse.
+                    Yumi is the first fully-decentralized NFT and digital goods
+                    marketplace where users can create and trade NFTs. They will
+                    be rewarded Yumi credits which can be seamlessly integrated
+                    with Shiku Metaverse.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
                   </span>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
