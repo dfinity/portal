@@ -272,7 +272,6 @@ function NftPage() {
               on Ethereum. At those prices other blockchains are forced to use external storage
               solutions like AWS or IPFS. NFT projects on these chains could essentially
               store their assets on ICP without compromising on decentralization or price.
-              
             </p>
             <p className="mb-0">
               <Link href="" className="button-outline">
@@ -465,7 +464,7 @@ function NftPage() {
                     stored fully on-chain.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
-                    36M+ US$ in trading
+                    $36M+ in trading
                   </span>
                 </div>
               </div>
@@ -509,10 +508,7 @@ function NftPage() {
               <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
 
               <Link className="button-primary" href="">
-                Join the web3 movement
-              </Link>
-              <Link className="link-white link-with-icon" href="">
-                <LinkArrowRight /> Build your own
+                Build your own
               </Link>
             </div>
           </div>
