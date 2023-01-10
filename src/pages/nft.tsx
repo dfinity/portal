@@ -470,7 +470,7 @@ function NftPage() {
                     stored fully on-chain.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
-                    36M+ US$ in trading
+                    $36M+ in trading
                   </span>
                 </div>
               </Link>
