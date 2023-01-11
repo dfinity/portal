@@ -108,15 +108,15 @@ function FeaturesPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-6"
                 variants={transitions.item}
               >
-                World Computer Capabilities
+                Internet Computer Capabilities
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The Internet Computer is 'alien tech' crypto. It extends the
-                internet by smashing through historical limitations, unlocking new capabilities 
-                for Web3 and the world...
+                The Internet Computer provides numerous unique capabilities that enable it to 
+                play the role of World Computer, provide a foundation for transforming the 
+                internet, and deliver opportunity to builders and users.
               </motion.p>
             </div>
           </div>

@@ -59,10 +59,10 @@ export default function ShowcaseSection(): JSX.Element {
                 <RotatedDappsHeadline
                   interval={2500}
                   lines={[
-                    "DeFi",
+                    "Defi",
                     "Metaverse",
-                    "Social Media",
-                    "Social Networking",
+                    "Social media",
+                    "Social networking",
                     "Multi-chain dapps",
                     "Enterprise services",
                     "R&D infrastructure",
@@ -77,8 +77,7 @@ export default function ShowcaseSection(): JSX.Element {
               <span>fully on-chain</span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
-              Featuring a few Web3 project teams already reinventing the
-              internet on the ICP blockchain.{" "}
+              There are hundreds of projects like these...{" "}
             </p>
           </div>
         </div>
@@ -129,7 +128,7 @@ export default function ShowcaseSection(): JSX.Element {
             variants={transitions.item}
           >
             <Link className="button-primary" href="/showcase">
-              Join the Web3 movement
+              View the ecosystem gallery
             </Link>
             <Link
               className="link-white  inline-flex items-center gap-2"
