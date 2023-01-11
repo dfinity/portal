@@ -42,8 +42,8 @@ const config = {
     ? process.env.DEPLOY_PRIME_URL
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
@@ -69,13 +69,13 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
-    // [
-    //   "@docusaurus/plugin-client-redirects",
-    //   {
-    //     redirects: getRedirects(),
-    //     createRedirects: (existingPath) => getSplatRedirects(existingPath),
-    //   },
-    // ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: getRedirects(),
+        createRedirects: (existingPath) => getSplatRedirects(existingPath),
+      },
+    ],
   ],
 
   stylesheets: [
@@ -254,7 +254,7 @@ const config = {
               {
                 label: "Developer Resources",
                 to: "/developers",
-              },              
+              },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
@@ -350,7 +350,7 @@ const config = {
               {
                 label: "Developer Resources",
                 to: "/developers",
-              },      
+              },
               { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",
@@ -370,7 +370,7 @@ const config = {
               {
                 label: "Dev Discord ",
                 href: "https://discord.gg/jnjVVQaE2C",
-              },              
+              },
             ],
           },
           // {
