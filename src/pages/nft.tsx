@@ -162,7 +162,7 @@ function NftPage() {
   return (
     <Layout
       title="NFTs"
-      description={`The Internet Computer is the only blockchain that stores all components of NFTs on the blockchain, including assets. This opens up capabilities for ICP NFTs that go way beyond than just "overpriced links to JPGs".`}
+      description={`The Internet Computer is the only blockchain storing all components of an NFT on the blockchain, including assets. This opens up capabilities for ICP NFTs that go way beyond "overpriced links to JPGs".`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -204,10 +204,9 @@ function NftPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  The Internet Computer is the only blockchain that stores all
-                  components of NFTs on the blockchain, including assets. This
-                  opens up capabilities for ICP NFTs that go way beyond than
-                  just “overpriced links to JPGs”.
+                  The Internet Computer is the only blockchain storing all
+                  components of an NFT on the blockchain, including assets. This
+                  opens up capabilities for ICP NFTs that go way beyond “overpriced links to JPGs”.
                 </motion.p>
               </div>
             </div>
@@ -246,11 +245,11 @@ function NftPage() {
           <div className="md:w-6/10">
             <h2 className="tw-heading-3 md:tw-heading-2 mb-6">Own your NFT</h2>
             <p className="tw-lead-sm md:tw-lead mb-0">
-              When you buy an NFT on other chains, you are only buying a link
-              that points to an asset stored using AWS or IPFS. That off-chain
-              asset can be changed or even removed by the developer that created
+              Purchasing an NFT on other chains, only buys you a link
+              that points to an asset stored on AWS or IPFS. As such, that off-chain
+              asset can be changed or even removed by the whoever created
               it. As the Internet Computer can store the entire NFT inside a
-              smart contract - you own and control 100% of the NFT.
+              smart contract, you truly own and control 100% of your purchased NFT.
             </p>
           </div>
         </section>
@@ -266,15 +265,13 @@ function NftPage() {
               Make the most out of NFTs
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows NFTs of incredible versatility.
-              Because NFTs can be data and code, i.e. a canister smart contract,
-              on the Internet Computer NFTs can be anything. In ICP, storing
-              data on-chain costs 20,000 times less than on Solana and
-              15,800,000 times less than on Ethereum. This forces all other
-              blockchains to use external storage solutions like AWS or IPFS.
-              NFT projects on these chains could consider storing their assets
-              on ICP, so they don't have to compromise on decentralization or
-              price.
+              The Internet Computer allows NFTs of incredible versatility. As
+              NFTs can be data and code, i.e. a canister smart contract, NFTs can be 
+              anything on the Internet Computer. Plus, storing data on-chain
+              costs 20,000 times less than on Solana and 15,800,000 times less than
+              on Ethereum. At those prices other blockchains are forced to use external storage
+              solutions like AWS or IPFS. NFT projects on these chains could essentially
+              store their assets on ICP without compromising on decentralization or price.
             </p>
             <p className="mb-0">
               <Link href="" className="button-outline">
@@ -287,11 +284,11 @@ function NftPage() {
             <p className="md:tw-lead-sm mb-0">
               A distinguishing feature of the Internet Computer is that its
               smart contracts can communicate with the Web2 world without
-              oracles but through the existing Web2 APIs, using HTTPS outcalls.
-              This allows NFTs to be a lot more than simple static assets - they
-              can evolve over time based on events in the world. For example BTC
-              Flowers change the color of their paddles based on the last 24
-              hours of Bitcoin’s price action.
+              oracles, but rather through existing Web2 APIs using HTTPS outcalls.
+              This allows NFTs to be a lot more than simple static assets, meaning 
+              they can evolve over time based on events in the world. For
+              example, the petals of BTC Flowers change color based on
+              the last 24 hours of Bitcoin’s price action.
             </p>
           </TranslatedLayout>
         </section>
@@ -405,7 +402,7 @@ function NftPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 Portal is a Web3 video sharing platform that allows users to
                 mint their videos as NFTs. The owners of these NFTs receive
-                tokens as royalties coming based on viewers.
+                tokens as royalties based on the number of viewers.
               </p>
               <Link className="link-primary link-with-icon" href="">
                 <LinkArrowRight /> Watch videos on Portal
@@ -424,7 +421,7 @@ function NftPage() {
                 called Portals around different interests. These communities can
                 be NFT gated, making certain features like voting only available
                 to people who hold a specific NFT. Besides this gating
-                functionality, Portals themselves are NFTs owned by the person
+                functionality, Portals themselves are NFTs owned by those
                 who created them.
               </p>
               <Link className="link-primary link-with-icon" href="">
@@ -465,12 +462,12 @@ function NftPage() {
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
                     Entrepot is the first and largest NFT marketplace on the
-                    Internet Computer. They have launched 100s of collections
+                    Internet Computer. They have launched hundreds of collections
                     with their no-code minting tool and have over 1TB of assets
                     stored fully on-chain.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
-                    36M+ US$ in trading
+                    $36M+ in trading
                   </span>
                 </div>
               </Link>
@@ -505,10 +502,9 @@ function NftPage() {
                     Yumi
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Yumi is the first fully-decentralized NFT and digital goods
-                    marketplace where users can create and trade NFTs. They will
-                    be rewarded Yumi credits which can be seamlessly integrated
-                    with Shiku Metaverse.
+                    Yumi is the first fully-decentralized NFT and digital goods marketplace
+                    where users can create and trade NFTs. Users are rewarded Yumi credits,
+                    which can be seamlessly integrated with Shiku Metaverse.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
@@ -520,11 +516,8 @@ function NftPage() {
             <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
               <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
 
-              <Link className="button-primary" href="">
-                Join the web3 movement
-              </Link>
-              <Link className="link-white link-with-icon" href="">
-                <LinkArrowRight /> Build your own
+              <Link className="button-primary" href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs">
+                Build your own
               </Link>
             </div>
           </div>
