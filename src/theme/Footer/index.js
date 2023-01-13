@@ -99,6 +99,7 @@ function Footer({ editPath }) {
             <div className="flex gap-3 flex-col md:flex-row items-start">
               <input
                 type="email"
+                name="EMAIL"
                 placeholder="Email"
                 className="input-text input-text-white flex-1 w-full md:w-auto"
                 required
