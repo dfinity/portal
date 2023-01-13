@@ -6,8 +6,9 @@ import clsx from "clsx";
 export type Field = {
   name: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   required?: boolean;
+  value?: string;
 };
 
 const Newsletter: React.FC<{
@@ -44,6 +45,7 @@ const Newsletter: React.FC<{
                   type={field.type}
                   className="input-text input-text-white w-full"
                   required={!!field.required}
+                  value={field.value}
                 />
               ))}
               <button type="submit" className="button-white">
