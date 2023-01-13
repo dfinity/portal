@@ -1,12 +1,49 @@
 # Custom Domains
 
-All smart contracts, including Web3 dapps, on the Internet Computer blockchain are secured by the root key. End-to-end security is provided by a service worker, a proxy embedded in the browser, which verifies the integrity of data downloaded from the Internet Computer blockchain.
+By default all canisters on the Internet Computer are accessible through `ic0.app`
+and their canister ID. In addition to the default domain, one can also host a
+canister under a custom domain.
 
-This guide shows how to build a custom service worker which enables a custom domain with end-to-end security for a specific canister. The service worker can be served as static assets from any internet-connected device and after the service worker is loaded, all data is transferred directly between the client and the Internet Computer blockchain.
+There are two ways to host a canister und a custom domain:
 
-Ultimately the security of any site using standard web technology depends on DNS since control of DNS allows the site to be redirected and enables control of TLS certificates. Consequently, for a standard website trust must be placed at least in the DNS registrar. If the registrar provides static hosting, deployment of a custom service worker can provide end-to-end security for standard Web3 dapps on the Internet Computer blockchain without increasing the number of entities that must be trusted.
+1. Register the domain with the boundary nodes;
+1. Serve the service worker from your own infrastructure.
 
-## Creating the custom Service Worker
+In both cases, you will need to acquire a domain through your trusted registrar.
+
+## Custom Domains on the Boundary Nodes
+
+1. Configure the DNS record of your domain (e.g., `foo.com`)
+    * Add a `CNAME` entry for your domain (e.g., `foo.com`) pointing to `APPLICATION DOMAIN` such that all the traffic destined to your domain is redirected to the boundary nodes;
+    * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.foo.com`);
+    * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.foo.com`) pointing to `DELEGATION DOMAIN` in order for the boundary nodes to acquire the certificate.
+1. In your canister, create a file named `custom-domains` under `.well-known` containing the custom domain (e.g., `foo.com`).
+1. Register the domain with the boundary nodes by issuing the following command and replacing `{{ custom domain }}` with your custom domain (e.g., `foo.com`).
+    ```sh
+    curl -sLv -X POST \
+        -H 'Content-Type: application/json' \
+        APPLICATION DOMAIN/registrations \
+        --data @- <<EOF
+    {
+        "name": "{{ custom domain }}"
+    }
+    EOF
+    ```
+    If the call was successful, you will get a request ID with which you can query the status of your registration request.
+    In case the calls failed, you will get an error message explaining why.
+1. Check the status of your registration request.
+    ```
+    curl -sLv -X GET \
+        APPLICATION DOMAIN/registrations/{{ request ID }}
+    ```
+    The status will be one of the following:
+    * `pendingOrder`: The registration request has been submitted and is waiting to be picked up.
+    * `pendingChallengeResponse`: The certificate has been ordered.
+    * `pendingAcmeApproval`: The challenge has been completed.
+    * `available`: The registration request has been successfully processed.
+    * `failed`: The registration request failed.
+
+## Custom Domains using your Own Infrastructure
 
 1. Deploy your canister to the IC and note the canister id.
 1. Clone the [official IC repo](https://github.com/dfinity/ic) and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
