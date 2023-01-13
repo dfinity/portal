@@ -162,7 +162,7 @@ const config = {
             items: [
               {
                 label: "Web3 Ecosystem",
-                href: "/showcase",
+                href: "/ecosystem",
               },
               {
                 label: "Features",

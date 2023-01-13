@@ -38,7 +38,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-nft.png").default,
     link: (
-      <a href="/showcase?tag=nft" className={styles.link}>
+      <a href="/ecosystem?tag=nft" className={styles.link}>
         Explore more NFT projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -61,7 +61,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-social.png").default,
     link: (
-      <a href="/showcase?tag=social" className={styles.link}>
+      <a href="/ecosystem?tag=social" className={styles.link}>
         Explore more SocialFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -84,7 +84,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-defi.png").default,
     link: (
-      <a href="/showcase?tag=defi" className={styles.link}>
+      <a href="/ecosystem?tag=defi" className={styles.link}>
         Explore more DeFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -108,7 +108,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-metaverse.png")
       .default,
     link: (
-      <a href="/showcase?tag=metaverse" className={styles.link}>
+      <a href="/ecosystem?tag=metaverse" className={styles.link}>
         Explore more Metaverse projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -149,7 +149,7 @@ const Ecosystem2 = () => {
           className={styles.headingContainer}
         >
           <h2 className="tw-heading-3 md:tw-heading-2 m-0">Ecosystem</h2>
-          <Link href="/showcase" className="link-primary link-with-icon">
+          <Link href="/ecosystem" className="link-primary link-with-icon">
             Go to Ecosystem showcase
             <LinkArrowUpRight />
           </Link>
