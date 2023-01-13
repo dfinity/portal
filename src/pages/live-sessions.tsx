@@ -494,14 +494,13 @@ function LiveSessionsPage(): JSX.Element {
               required: true,
             },
             {
-              name: "FNAME",
-              placeholder: "First Name",
-              type: "text",
-              required: true,
+              name: "tags",
+              type: "hidden",
+              value: "124,1045",
             },
           ]}
           ctaLabel="Get updates!"
-          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=7e9469a315&f_id=00bac2e1f0"
           decoration={<img src="/img/newsletter/email-image-1.webp" />}
           className="mb-20"
         >
