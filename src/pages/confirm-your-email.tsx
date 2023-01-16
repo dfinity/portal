@@ -13,9 +13,8 @@ function ConfirmYourEmailPage(): JSX.Element {
       title="Confirm your email"
       description={siteConfig.tagline}
       wrapperClassName="overflow-hidden"
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <main className="text-black relative min-h-[400px]">
+      <main className="text-black relative">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
             src={BlobBlue}
@@ -24,7 +23,7 @@ function ConfirmYourEmailPage(): JSX.Element {
             variants={transitions.item}
           />
           <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
-            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
+            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001] pb-20 md:pb-30">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
                 variants={transitions.item}
