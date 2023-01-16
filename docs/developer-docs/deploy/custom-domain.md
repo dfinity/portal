@@ -1,15 +1,24 @@
 # Custom Domains
 
 By default all canisters on the Internet Computer are accessible through `ic0.app`
-and their canister ID. In addition to the default domain, one can also host a
-canister under a custom domain.
+and their canister ID. In addition to that default domain, one can also host a
+canister under a custom domain. This guide explains how to do that.
 
-There are two ways to host a canister und a custom domain:
+There are, essentially, two approaches to host a canister under a custom domain.
 
 1. Register the domain with the boundary nodes;
-1. Serve the service worker from your own infrastructure.
+1. Hosting the domain on your own infrastructure.
 
-In both cases, you will need to acquire a domain through your trusted registrar.
+For both approaches, you need to acquire a domain through your favorite registrar.
+
+The two approaches differ in the ease of use and the configurability. When registering
+the domain with the boundary nodes, you simply has to configure the DNS records of
+the custom domain and the boundary nodes take care of obtaining a certificate,
+renewing the certificate before its expiration, SEO and serving the service worker.
+When hosting the domain on your own infrastructure, you need to obtain and renew
+the certificates, and to provide your own infrastructure that serves the service worker.
+However, you are also more flexible in how you configure your domain (e.g., you
+can serve a custom service worker).
 
 ## Custom Domains on the Boundary Nodes
 
@@ -42,12 +51,13 @@ In both cases, you will need to acquire a domain through your trusted registrar.
     * `pendingAcmeApproval`: The challenge has been completed.
     * `available`: The registration request has been successfully processed.
     * `failed`: The registration request failed.
+1. Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. After that, you should be able to access your canister using the custom domain.
 
 ## Custom Domains using your Own Infrastructure
 
 1. Deploy your canister to the IC and note the canister id.
 1. Clone the [official IC repo](https://github.com/dfinity/ic) and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
-1. Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file `service-worker/src/sw/http_request.ts`.
+1. Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file [`service-worker/src/sw/domains/static.ts`](https://github.com/dfinity/ic/blob/master/typescript/service-worker/src/sw/domains/static.ts).
 1. Build the service worker according to the instructions in `service-worker/README.md`. The output should be:
     - an `index.html`,
     - a minified `.js` file, and
