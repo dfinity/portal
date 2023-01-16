@@ -139,8 +139,10 @@ html.docs-doc-page {
 }
 
 @media (max-width: 996px) {
+  :root {
+    --ifm-navbar-height: 72px;
+  }
   .navbar {
-    height: 72px;
     padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
   }
 }
@@ -352,6 +354,10 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
 
 .gradient-text {
   background-image: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
+}
+
+.panel-gradient {
+  background: linear-gradient(105.94deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 38.54%, rgba(255, 255, 255, 0.136216) 100%);
 }
 
 

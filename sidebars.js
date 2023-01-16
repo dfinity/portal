@@ -628,6 +628,7 @@ const sidebars = {
     "samples/token-transfer",
     "samples/host-a-webgame",
     "samples/hackathon-projects",
+    "samples/ios-integration",
   ],
 };
 

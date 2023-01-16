@@ -274,9 +274,9 @@ export default function PreHero({
               animationPlayState: start ? "running" : "paused",
             }}
           >
-            Rebuild on
-            <br />
             World Computer
+            <br />
+            is our future
           </h1>
         </div>
         <img

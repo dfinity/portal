@@ -37,8 +37,8 @@ export default function Home(): JSX.Element {
           <Storage></Storage>
         </BackgroundPanel>
         <div className="overflow-hidden">
+          
           <ShowcaseSection></ShowcaseSection>
-
           <NextGenSection></NextGenSection>
           <ItsGreenSection id="sustainable" />
           <FoundationSection></FoundationSection>

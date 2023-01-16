@@ -21,12 +21,12 @@ Run the command `wsl –list –verbose (wsl -l -v)` to check the Linux distribu
 
 To learn more about the `wsl` command, check the [command reference for WSL](https://docs.microsoft.com/en-us/windows/wsl/basic-commands).
 
-
 ### Upgrade to WSL 2
 
-If you have WSL 1 installed, follow the [upgrade instructions](https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2) to upgrade to WSL 2. Basically you need to: 
-* Install the [WSL 2 Linux kernel update package](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package).
-* Run the following command to set your Linux distributions to version 2.  
+If you have WSL 1 installed, follow the [upgrade instructions](https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2) to upgrade to WSL 2. Basically you need to:
+
+- Install the [WSL 2 Linux kernel update package](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package).
+- Run the following command to set your Linux distributions to version 2.  
   `wsl --set-version <distribution name> 2`
 
 ## Running Linux
@@ -42,18 +42,22 @@ Once you have WSL installed, you can install `dfx` within your WSL Linux termina
 ## Troubleshooting
 
 ### Node.js is not properly installed
+
 WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](deploy_sample_app#nodejs) for more information.
 
 ### Permission Denied when running `dfx start`
+
 Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
 
 ### No internet access on WSL
+
 If you don't have internet access on WSL, for instance you cannot ping any server successfully, probably the nameserver on WSL is set to an internal WSL proxy nameserver. You can check the `/etc/resolv.conf` file to see if it's the case. If it's true, please follow the below steps to set to a valid nameserver:
-* Create the `/etc/wsl.conf` file and add the below content to it, this will prevent WSL from regenerating the `/etc/resolv.conf` file after restarting.
+
+- Create the `/etc/wsl.conf` file and add the below content to it, this will prevent WSL from regenerating the `/etc/resolv.conf` file after restarting.
   ```
   [network]
   generateResolvConf = false
   ```
-* Modify the nameserver in the `/etc/resolv.conf` file to a valid one, for example the google nameserver `8.8.8.8`.
-* On Windows, restart WSL to let this fix take effect.  
+- Modify the nameserver in the `/etc/resolv.conf` file to a valid one, for example the google nameserver `8.8.8.8`.
+- On Windows, restart WSL to let this fix take effect.  
    `wsl.exe --shutdown`

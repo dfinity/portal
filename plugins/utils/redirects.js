@@ -135,6 +135,7 @@ const redirects = `
   /docs/samples/dao /docs/current/samples/dao
   /docs/samples/dex /docs/current/samples/dex
   /docs/samples/encrypted-notes /docs/current/samples/encrypted-notes
+  /docs/samples/ios-integration /docs/current/samples/ios-integration
   /docs/samples/hackathon-projects /docs/current/samples/hackathon-projects
   /docs/samples/hello /docs/current/samples/hello
   /docs/samples/host-a-website /docs/current/samples/host-a-website
@@ -158,7 +159,8 @@ const redirects = `
   /features/green /features/sustainability
   /docs/ic-identity-guide/what-is-ic-identity /docs/current/tokenomics/identity-auth/what-is-ic-identity
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
-`
+  /showcase /ecosystem
+  `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())
   .filter((l) => l.length > 0)
