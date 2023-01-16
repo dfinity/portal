@@ -1,5 +1,6 @@
 import Link from "@docusaurus/Link";
 import transitions from "@site/static/transitions.json";
+import ArrowRight from "@site/static/img/arrow-right.svg";
 import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
@@ -21,7 +22,7 @@ export default function BasicsSection(): JSX.Element {
               className="tw-heading-3 md:tw-heading-60 mb-16 text-center md:text-left"
               variants={transitions.item}
             >
-              Decentralization++
+              Web3 is about democracy
             </AnimateSpawn>
             <AnimateSpawn
               className="flex flex-col-reverse md:flex-row justify-between mb-16 gap-6 md:gep-0"
@@ -57,31 +58,35 @@ export default function BasicsSection(): JSX.Element {
                 <span className="tw-heading-3">Read</span>
               </motion.div>
             </AnimateSpawn>
-            <AnimateSpawn className="md:w-7/10" variants={transitions.item}>
+            <AnimateSpawn className="md:w-8/10" variants={transitions.item}>
               <p className="mb-6 tw-lead-sm md:tw-lead text-black-60">
                 The{" "}
                 <span className="tw-heading-6 md:tw-heading-5 text-infinite">
                   Internet Computer
                 </span>{" "}
-                enables a Web3 future where "open internet services," such as social networks, run autonomously on a blockchain, 
-                under the complete control of community DAOs. Developers can design rich tokenized experiences in which users 
-                become owners, and become part of an industrious virtual team that helps them grow. DAOs transparently update 
-                the tamperproof and unstoppable code that powers services, and can crowdfund from the decentralized ecosystem, 
-                enabling communities of developers and users to be successful from anywhere the world, democratizing Tech.
-              </p>
-              <p className="mb-8">
-                <Link className="button-primary" href="/basics">
-                  Learn the basics
-                </Link>
-              </p>
-              <p className="mb-0">
-                <Link
-                  className="link-external"
-                  href="https://internetcomputer.org/features"
-                >
-                  Cool ICP features
-                </Link>
-              </p>
+                can run open internet services,
+                such as social networks, that run fully 
+                on-chain under the control of community DAOs. End-users can acquire governance 
+                tokens and become owners, and become part of industrious virtual teams that 
+                drive success. Each open internet service is
+                configured and updated by its own advanced DAO, called a "Service Nervous System,"
+                providing full ownership to a community. This can also fundraise from the 
+                decentralized ecosystem, enabling communities of developers and users to be 
+                successful from anywhere, democratizing access to the tech economy.
+              </p>            
+            </AnimateSpawn>
+            <AnimateSpawn className="mb-6" variants={transitions.item}>
+              <Link className="button-primary" href="/sns">
+                Service Nervous System Basics
+              </Link>   
+            </AnimateSpawn>
+
+            <AnimateSpawn variants={transitions.item}>
+              <Link className="link-external"
+                    href="https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a"
+              >
+                Learn about open internet services from the "20 Year Roadmap" post
+              </Link>
             </AnimateSpawn>
           </div>
         </div>
