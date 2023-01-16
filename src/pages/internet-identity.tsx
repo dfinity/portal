@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -48,8 +47,6 @@ const CardWithIcon: React.FC<{
 };
 
 function InternetIdentityPage() {
-  resetNavBarStyle();
-
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
 
@@ -136,8 +133,8 @@ function InternetIdentityPage() {
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
                 Unlock authentication with your device via FaceID, fingerprint
-                sensor or use a YubiKey. This provides the most security, as
-                the cryptographic key never leaves your device.
+                sensor or use a YubiKey. This provides the most security, as the
+                cryptographic key never leaves your device.
               </p>
             </CardWithIcon>
 
@@ -231,10 +228,10 @@ function InternetIdentityPage() {
                 privacy & security
               </h2>
               <p className="tw-lead-sm md:tw-lead text-white-60 mb-0">
-                By integrating Internet Identity in dapps, websites cannot
-                track online user activity coming from other websites. Users
-                have full control over their identity, connections are
-                private, and access to Web3 services at their fingertips.
+                By integrating Internet Identity in dapps, websites cannot track
+                online user activity coming from other websites. Users have full
+                control over their identity, connections are private, and access
+                to Web3 services at their fingertips.
               </p>
             </motion.div>
           </div>
