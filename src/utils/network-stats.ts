@@ -36,7 +36,7 @@ export function getTransactionRate(): Promise<number> {
 
 export function getCyclesBurnRate(): Promise<number> {
   return fetch(
-    "https://ic-api.internetcomputer.org/api/metrics/cycle-burn-rate"
+    "https://ic-api.internetcomputer.org/api/v3/metrics/cycle-burn-rate"
   )
     .then(
       (res) =>
