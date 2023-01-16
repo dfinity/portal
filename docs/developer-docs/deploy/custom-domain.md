@@ -23,15 +23,15 @@ can serve a custom service worker).
 ## Custom Domains on the Boundary Nodes
 
 1. Configure the DNS record of your domain (e.g., `foo.com`)
-    * Add a `CNAME` entry for your domain (e.g., `foo.com`) pointing to `APPLICATION DOMAIN` such that all the traffic destined to your domain is redirected to the boundary nodes;
+    * Add a `CNAME` entry for your domain (e.g., `foo.com`) pointing to `APPLICATION_DOMAIN` such that all the traffic destined to your domain is redirected to the boundary nodes;
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.foo.com`);
-    * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.foo.com`) pointing to `DELEGATION DOMAIN` in order for the boundary nodes to acquire the certificate.
-1. In your canister, create a file named `custom-domains` under `.well-known` containing the custom domain (e.g., `foo.com`).
+    * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.foo.com`) pointing to `DELEGATION_DOMAIN` in order for the boundary nodes to acquire the certificate.
+1. Create a file named `custom-domains` in your canister under `.well-known` containing the custom domain (e.g., `foo.com`).
 1. Register the domain with the boundary nodes by issuing the following command and replacing `{{ custom domain }}` with your custom domain (e.g., `foo.com`).
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        APPLICATION DOMAIN/registrations \
+        APPLICATION_DOMAIN/registrations \
         --data @- <<EOF
     {
         "name": "{{ custom domain }}"
@@ -40,10 +40,10 @@ can serve a custom service worker).
     ```
     If the call was successful, you will get a request ID with which you can query the status of your registration request.
     In case the calls failed, you will get an error message explaining why.
-1. Check the status of your registration request.
+1. Check the status of your registration request by issuing the following command and replacing `{{ request ID }}` with the ID you received in the previous step.
     ```
     curl -sLv -X GET \
-        APPLICATION DOMAIN/registrations/{{ request ID }}
+        APPLICATION_DOMAIN/registrations/{{ request ID }}
     ```
     The status will be one of the following:
     * `pendingOrder`: The registration request has been submitted and is waiting to be picked up.
