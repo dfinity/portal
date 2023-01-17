@@ -230,7 +230,7 @@ const sidebars = {
                  label: 'Integrate with an SNS',
                  link: {
                    type: "doc",
-                   id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+                   id: "developer-docs/integrations/sns/integrate-sns/integrate-sns-intro",
                  },
                  items: [
                    "developer-docs/integrations/sns/integrate-sns/index-integration",
