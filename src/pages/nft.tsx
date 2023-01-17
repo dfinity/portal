@@ -245,9 +245,9 @@ function NftPage() {
           <div className="md:w-6/10">
             <h2 className="tw-heading-3 md:tw-heading-2 mb-6">Own your NFT</h2>
             <p className="tw-lead-sm md:tw-lead mb-0">
-              Purchasing an NFT on other chains, only buys you a link
-              that points to an asset stored on AWS or IPFS. As such, that off-chain
-              asset can be changed or even removed by the whoever created
+              Purchasing an NFT on other chains only buys you a link
+              that points to an asset stored off chain, e.g., on AWS or IPFS. As such, that off-chain
+              asset can be changed or even removed by whoever created
               it. As the Internet Computer can store the entire NFT inside a
               smart contract, you truly own and control 100% of your purchased NFT.
             </p>
@@ -267,7 +267,7 @@ function NftPage() {
             <p className="tw-lead-sm md:mb-6">
               The Internet Computer allows NFTs of incredible versatility. As
               NFTs can be data and code, i.e. a canister smart contract, NFTs can be 
-              anything on the Internet Computer. Plus, storing data on-chain
+              anything on the Internet Computer. Plus, storing data on chain
               costs 20,000 times less than on Solana and 15,800,000 times less than
               on Ethereum. At those prices other blockchains are forced to use external storage
               solutions like AWS or IPFS. NFT projects on these chains could essentially
@@ -284,7 +284,7 @@ function NftPage() {
             <p className="md:tw-lead-sm mb-0">
               A distinguishing feature of the Internet Computer is that its
               smart contracts can communicate with the Web2 world without
-              oracles, but rather through existing Web2 APIs using HTTPS outcalls.
+              oracles, but rather through existing Web2 APIs using a functionality called HTTPS outcalls.
               This allows NFTs to be a lot more than simple static assets, meaning 
               they can evolve over time based on events in the world. For
               example, the petals of BTC Flowers change color based on
@@ -385,7 +385,7 @@ function NftPage() {
                 Cubetopia is a Minecraft-like Web3 game where players can build
                 anything on unique voxel islands also called “worlds”. Each
                 world is a mutable NFT stored on the Internet Computer
-                blockchain. Anyone can visit these islands on-chain, while the
+                blockchain. Anyone can visit these islands on chain, while the
                 owner of the NFT can update it by building. Try it yourself!
               </p>
               <Link className="link-primary link-with-icon" href="">
