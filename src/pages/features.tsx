@@ -334,7 +334,7 @@ function FeaturesPage() {
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              100% on-chain: no cloud
+              100% on chain: no cloud
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
@@ -342,7 +342,7 @@ function FeaturesPage() {
             >
               The Internet Computer provides a complete tech stack for
               developers to build on. It can host online services and games
-              fully on-chain without ever relying on centralized cloud
+              fully on chain without ever relying on centralized cloud
               providers. This provides complete decentralization and removes
               single points of failure.
             </motion.p>
@@ -363,7 +363,7 @@ function FeaturesPage() {
               is having to buy and hold tokens to interact with the blockchain
               to pay for gas fees. The Internet Computer has been designed with mass
               adoption in mind from the ground up. Developers charge up their smart
-              contracts with cycles (gas), so users don’t have to pay when interacting with the
+              contracts with cycles (the IC analogon to gas), so users don’t have to pay when interacting with the
               smart contracts. This removes a major barrier of entry for end users.
             </motion.p>
           </SingleCard>
