@@ -39,7 +39,7 @@ function ConfirmYourEmailPage(): JSX.Element {
                 className="tw-lead-sm md:tw-lead mb-10"
                 variants={transitions.item}
               >
-                Check your inbox & click the link to verify your email address.
+                Check your inbox and click the link to verify your email address.
               </motion.p>
             </div>
           </section>
