@@ -142,7 +142,7 @@ function SocialMediaDappsPage() {
                   platforms.
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
-                  <Link href="#web3-dapps" className="button button-white">
+                  <Link href="#web3-dapps" className="button-white">
                     Try icp social dapps
                   </Link>
                 </motion.p>
@@ -280,7 +280,7 @@ function SocialMediaDappsPage() {
             </motion.p>
             <MotionLink
               className="link-external"
-              href="/showcase?tag=social"
+              href="/ecosystem?tag=social"
               variants={transitions.item}
             >
               See dapp collection

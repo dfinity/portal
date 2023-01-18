@@ -167,13 +167,13 @@ function Dashboard() {
     <section className=" pt-20 md:pt-[200px] z-20">
       <AnimateSpawn variants={transitions.item} className="container-12">
         <h2 className="text-white-60 tw-heading-4 md:tw-heading-60 md:w-8/12 mx-auto mb-16 md:mb-30">
+          Transactions are computations.
           Over{" "}
           <span className="text-white">
             {(Math.floor(stats.blockCount / 100_000_000) / 10).toFixed(1)}{" "}
             Billion
           </span>{" "}
-          blocks processed. <span className="text-white">10x</span> more than
-          the nearest competitor.
+          blocks processed.
         </h2>
       </AnimateSpawn>
 

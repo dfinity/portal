@@ -24,23 +24,20 @@ const Hero = () => {
         className={styles.hero}
       >
         {/* <Breadcrumbs></Breadcrumbs> */}
-        <motion.h1 variants={transitions.item} className="heading-1">
+        <motion.h1
+          variants={transitions.item}
+          className="tw-heading-3 md:tw-heading-2 m-0"
+        >
           Internet Computer Basics
         </motion.h1>
-        <motion.p variants={transitions.item} className="paragraph-large">
-          Take a dive down the rabbit hole and see how to engage with the
-          ecosystem, how you can share the success of the apps that you use, and
-          how to own your data.
-        </motion.p>
-
-        <motion.a
+        <motion.p
           variants={transitions.item}
-          className="button button-white"
-          href="/docs/current/developer-docs/ic-overview"
-          target={"_blank"}
+          className="tw-paragraph md:tw-lead m-0"
         >
-          Build real Web3
-        </motion.a>
+          Web3 services that live fully on-chain depend on special capabilities. That's because 
+          normally, only tokens and small clips of data live on-chain, and the user experience, and 
+          most data and processing, lives on the corporate cloud...
+        </motion.p>
         <svg
           viewBox="0 0 917 830"
           fill="none"

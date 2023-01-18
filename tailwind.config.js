@@ -21,9 +21,17 @@ module.exports = {
         "7/10": "70%",
         "8/10": "80%",
         "9/10": "90%",
-        "1/12": "8.333333%",
-        "2/12": "16.666666666%",
+        "1/12": "8.333%",
+        "2/12": "16.666%",
         "3/12": "25%",
+        "4/12": "33.333%",
+        "5/12": "41.666%",
+        "6/12": "50%",
+        "7/12": "58.333%",
+        "8/12": "66.666%",
+        "9/12": "75%",
+        "10/12": "83.333%",
+        "11/12": "91.666%",
       },
       margin: {
         "1/12": "8.333333%",
@@ -150,7 +158,7 @@ module.exports = {
                 ".tw-heading-5": "@apply text-heading-5 font-bold",
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
-                ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold",
+                ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
 
                 //
                 ".tw-title-navigation": "@apply text-navigation font-medium",
@@ -165,6 +173,7 @@ module.exports = {
                 ".tw-paragraph-sm": "@apply text-paragraph-sm font-book",
                 ".tw-caption": "@apply text-caption font-book",
                 '.button-primary': '@apply inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
+                '.button-white': '@apply inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
                 '.button-outline': '@apply inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
@@ -174,6 +183,7 @@ module.exports = {
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
+                '.link-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
@@ -181,6 +191,7 @@ module.exports = {
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
+                '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.png")] aspect-[256/251]',
                 '.blob-xs': '@apply w-[500px]',
                 '.blob-sm': '@apply w-[800px]',
                 '.blob-md': '@apply w-[1000px]',
@@ -193,6 +204,8 @@ module.exports = {
                 '.blob-center-right': '@apply right-0 translate-x-6/10 top-1/2 bottom-auto -translate-y-1/2',
                 '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
+                '.blob-bottom-center': '@apply left-1/2 -translate-x-1/2 top-auto bottom-0 translate-y-1/3',
+                '.text-gradient': '@apply text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
             };
 
       addComponents(

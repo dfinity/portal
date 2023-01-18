@@ -139,11 +139,10 @@ const Storage: React.FC = () => {
       <div className="h-[250vh]" ref={ref}>
         <div className="container-12 text-white md:mt-24 md:mb-10">
           <h2 className="tw-heading-4 md:tw-heading-60 md:w-6/10 md:mb-8">
-            On-chain efficiency comparison
+            Save money storing data in ICP smart contracts
           </h2>
           <p className="tw-lead-sm md:tw-lead md:w-6/10">
-            Relative cost of storing data inside smart contracts measured in
-            USD.
+            The cost of storing data inside a smart contract (USD)
           </p>
         </div>
         <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white overflow-hidden">
@@ -228,7 +227,7 @@ const Storage: React.FC = () => {
                     $79,000,000
                   </span>
                   <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
-                    / GB per year
+                    / GB
                   </span>
                 </div>
               </motion.div>
@@ -250,7 +249,7 @@ const Storage: React.FC = () => {
                     $110,000
                   </span>
                   <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
-                    / GB per year
+                    / GB (yearly)
                   </span>
                 </div>
               </motion.div>
@@ -271,7 +270,7 @@ const Storage: React.FC = () => {
 
                   <span className="hidden lg:inline tw-heading-5 pl-4">$5</span>
                   <span className="hidden lg:inline tw-heading-7 pl-1 relative top-1">
-                    / GB per year
+                    / GB (yearly)
                   </span>
                 </div>
               </motion.div>
