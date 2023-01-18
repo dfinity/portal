@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import contribute from "@site/static/img/developers/contribute.png";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 
 const cardsContent = [
   {
@@ -56,88 +57,92 @@ function Index() {
     }
   }, [controls, inView]);
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={transitions.container}
-      className={styles.container}
-    >
-      <a id="features" />
-      <motion.p variants={transitions.item} className={styles.title}>
-        Contribute to the <br /> Internet Computer
-      </motion.p>
-      <motion.p variants={transitions.item} className={styles.subtitle}>
-        Take a deeper dive into further resources in the developer ecosystem.
-      </motion.p>
-      <motion.div
-        className={styles.scrollContainer}
-        variants={transitions.item}
+    <>
+      <div id="features" />
+
+      <AnimateSpawn
+        variants={transitions.container}
+        className={styles.container}
       >
-        <div className={styles.mobileCardsContainer}>
+        <motion.p variants={transitions.item} className={styles.title}>
+          Contribute to the <br /> Internet Computer
+        </motion.p>
+        <motion.p variants={transitions.item} className={styles.subtitle}>
+          Take a deeper dive into further resources in the developer ecosystem.
+        </motion.p>
+        <motion.div
+          className={styles.scrollContainer}
+          variants={transitions.item}
+        >
+          <div className={styles.mobileCardsContainer}>
+            {cardsContent.map((card) => (
+              <div className={styles.cardWrapper} key={card.title}>
+                <a href={card.link} className={styles.card}>
+                  <Card key={card.title} title={card.title} body={card.body} />
+                </a>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+        <div className={styles.cards}>
           {cardsContent.map((card) => (
-            <div className={styles.cardWrapper} key={card.title}>
-              <a href={card.link} className={styles.card}>
-                <Card key={card.title} title={card.title} body={card.body} />
-              </a>
-            </div>
+            <motion.a
+              variants={transitions.item}
+              href={card.link}
+              className={styles.card}
+              key={card.title}
+            >
+              <Card title={card.title} body={card.body} />
+            </motion.a>
           ))}
         </div>
-      </motion.div>
-      <div className={styles.cards}>
-        {cardsContent.map((card) => (
-          <motion.a
-            variants={transitions.item}
-            href={card.link}
-            className={styles.card}
-            key={card.title}
-          >
-            <Card title={card.title} body={card.body} />
-          </motion.a>
-        ))}
-      </div>
-      <div className={styles.contributionContainer}>
-        <div className={styles.leftContainer}>
-          <motion.p
-            variants={transitions.item}
-            className={styles.callToActionTitle}
-          >
-            Help us make the docs better
-          </motion.p>
-          <motion.p
-            variants={transitions.item}
-            className={styles.callToActionText}
-          >
-            These docs are a community effort. Create a PR if you see mistakes,
-            room for improvement, or new opportunities to help IC developers.
-          </motion.p>
+        <div className={styles.contributionContainer}>
+          <div className={styles.leftContainer}>
+            <motion.p
+              variants={transitions.item}
+              className={styles.callToActionTitle}
+            >
+              Help us make the docs better
+            </motion.p>
+            <motion.p
+              variants={transitions.item}
+              className={styles.callToActionText}
+            >
+              These docs are a community effort. Create a PR if you see
+              mistakes, room for improvement, or new opportunities to help IC
+              developers.
+            </motion.p>
+            <motion.div
+              variants={transitions.item}
+              className={styles.actionContainer}
+            >
+              <Link
+                className={styles.actionButton}
+                to="https://github.com/dfinity/portal"
+              >
+                CONTRIBUTE
+              </Link>
+            </motion.div>
+          </div>
           <motion.div
             variants={transitions.item}
-            className={styles.actionContainer}
+            className={styles.rightContainer}
           >
-            <Link
-              className={styles.actionButton}
-              to="https://github.com/dfinity/portal"
-            >
-              CONTRIBUTE
-            </Link>
+            <img className={styles.contributeGraphic} src={contribute} alt="" />
           </motion.div>
         </div>
         <motion.div
           variants={transitions.item}
-          className={styles.rightContainer}
+          className={styles.mobileGraphic}
         >
-          <img className={styles.contributeGraphic} src={contribute} alt="" />
+          <img
+            className={styles.mobileContributeGraphic}
+            src={contribute}
+            alt=""
+          />
         </motion.div>
-      </div>
-      <motion.div variants={transitions.item} className={styles.mobileGraphic}>
-        <img
-          className={styles.mobileContributeGraphic}
-          src={contribute}
-          alt=""
-        />
-      </motion.div>
-    </motion.div>
+      </AnimateSpawn>
+    </>
   );
 }
 
