@@ -14,7 +14,6 @@ const sidebars = {
     // "tutorials/network-quickstart",
   ],
   "developer-docs": [
-    // "developer-docs/ic-overview",
 
     {
       type: "category",

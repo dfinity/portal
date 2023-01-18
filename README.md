@@ -49,7 +49,7 @@ Here is an example of a docs sub-directory:
 ```
 developer-docs/
     developer-docs/
-        ic-overview.md
+        home.mdx
         quickstart/
             ...
     references/

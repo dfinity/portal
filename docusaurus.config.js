@@ -50,7 +50,7 @@ const config = {
   projectName: "portal",
   customFields: {
     marketingLogoUrl: "/",
-    docsLogoUrl: "/docs/current/ic-overview",
+    docsLogoUrl: "/docs/current/home",
     docsLogoSrc: "/img/IC_logo_docs.svg",
   },
   plugins: [
@@ -254,7 +254,7 @@ const config = {
               {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "ic-overview",
+                docId: "home",
               },
               {
                 label: "Developer Resources",
@@ -319,7 +319,7 @@ const config = {
           {
             type: "doc",
             position: "left",
-            docId: "ic-overview",
+            docId: "home",
             label: "Home",
           },
 

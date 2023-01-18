@@ -63,16 +63,17 @@ const redirects = `
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/build/agents
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/build/project-setup/manage-canisters
   /docs/download /docs/current/developer-docs/build/install-upgrade-remove
-  /docs/http-middleware /docs/current/ic-overview
+  /docs/http-middleware /docs/current/home
   /docs/ic-identity-guide/auth-how-to /docs/current/tokenomics/identity-auth/auth-how-to
   /docs/ic-identity-guide/hello-guide /docs/current/tokenomics/identity-auth/hello-guide
   /docs/ic-identity-guide/what-is-ic-identity /docs/current/tokenomics/identity-auth/what-is-ic-identity
-  /docs /docs/current/ic-overview
+  /docs/current/ic-overview  /docs/current/home
+  /docs /docs/current/home
   /docs/integration/ledger-quick-start /docs/current/developer-docs/integrations/ledger/
   /docs/ic-interface-spec.md /docs/current/references/ic-interface-spec
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
-  /docs/introduction/welcome /docs/current/ic-overview
+  /docs/introduction/welcome /docs/current/home
   /docs/language-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/language-guide/actor-classes /docs/current/motoko/main/actor-classes
   /docs/language-guide/actors-async /docs/current/motoko/main/actors-async
@@ -101,7 +102,7 @@ const redirects = `
   /docs/language-guide/style /docs/current/motoko/main/style
   /docs/language-guide/upgrades /docs/current/motoko/main/upgrades
   /docs/languages/languages-overview /docs/current/developer-docs/build/cdks/
-  /docs/operators-guide/ops-guide /docs/current/ic-overview
+  /docs/operators-guide/ops-guide /docs/current/home
   /docs/quickstart/1-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/2-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/3-quickstart /docs/current/tutorials/deploy_sample_app
@@ -111,7 +112,7 @@ const redirects = `
   /docs/quickstart/cycles-faucet /docs/current/tutorials/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/tutorials/local-quickstart
   /docs/quickstart/network-quickstart /docs/current/tutorials/network-quickstart
-  /docs/quickstart/newcomers /docs/current/ic-overview
+  /docs/quickstart/newcomers /docs/current/home
   /docs/quickstart/quickstart-intro /docs/current/tutorials/deploy_sample_app
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
@@ -148,7 +149,7 @@ const redirects = `
   /docs/security-best-practices/introduction /docs/current/developer-docs/best-practices/security/
   /docs/security-best-practices/rust-canister-development-security-best-practices /docs/current/developer-docs/best-practices/security/rust-canister-development-security-best-practices
   /docs/security-best-practices/web-app-development-security-best-practices /docs/current/developer-docs/best-practices/security/web-app-development-security-best-practices
-  /docs/support /docs/current/ic-overview
+  /docs/support /docs/current/home
   /docs/token-holders/custody-options-intro /docs/current/tokenomics/token-holders/custody-options-intro
   /docs/token-holders/nns-app-quickstart /docs/current/tokenomics/token-holders/nns-app-quickstart
   /docs/token-holders/self-custody-quickstart /docs/current/tokenomics/token-holders/self-custody-quickstart
