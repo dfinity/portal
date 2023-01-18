@@ -135,10 +135,13 @@ function InternetIdentityPage() {
               icon={<IconNoPassword className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Unlock authentication with your device via FaceID, fingerprint
+                Unlock authentication to dapps with your device via FaceID, fingerprint
                 sensor or use a YubiKey. This provides strong security, as
-                the cryptographic key never leaves your device. No passwords are used
-                to authenticate on the IC.
+                the cryptographic keys used for authentication are hardware
+                protected. Weak authenticating using passwords is a thing of
+                the past.
+                
+                include Passkey
               </p>
             </CardWithIcon>
 
@@ -147,9 +150,10 @@ function InternetIdentityPage() {
               icon={<IconCryptography className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Remain pseudonymous using the Internet Identity authentication
-                framework, which prevents user tracking across dapps and
-                services.
+                Internet Identity generates a different pseudonymous id
+                for each dapp a user authenticates with. This prevents
+                users to be tracked across Web3 services running on the
+                Internet Comptuer.
               </p>
             </CardWithIcon>
 
@@ -161,6 +165,8 @@ function InternetIdentityPage() {
                 Internet Identity integrates the widely used secure web2
                 authentication framework known as WebAuthn for maximum
                 compatibility.
+                
+                Include FIDO here
               </p>
             </CardWithIcon>
           </AnimateSpawn>
@@ -184,20 +190,15 @@ function InternetIdentityPage() {
                 Web3 security, Web2 convenience
               </motion.h2>
               <motion.div variants={transitions.item}>
-                <p className="mb-3 tw-paragraph">
-                  We've all grown accustomed to managing hundreds of usernames
-                  and passwords, recovering forgotten accounts over text or
-                  email, unwittingly permitting companies to profit from our
-                  data at the cost of our personal privacy, all while
-                  falling victim to threats of identity theft and fraud.
-                </p>
                 <p className="mb-0 tw-paragraph">
                   On the Internet Computer blockchain, users can securely
-                  authenticate themselves without ever needing an email,
+                  authenticate themselves to dapps without ever needing an email,
                   username, or password. Using any WebAuthn-enabled device,
                   users can login conveniently without their information being
                   monetized by tech companies. Internet Identity is designed to prevent
                   Web3 services to track your activity across dapps.
+                  
+                  Add multiple devices
                 </p>
                 <Link
                   className="link-primary link-with-icon mt-6"
