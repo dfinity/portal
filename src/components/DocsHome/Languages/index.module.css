@@ -108,10 +108,16 @@
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
 }
-.cardHover:hover .motokoBackground {
-  bottom: 0;
+.cardHover:hover .motokoBackground,
+.cardHover:hover .rustBackground {
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
+}
+.cardHover:hover .motokoBackground {
+  bottom: 0;
+}
+.cardHover:hover .rustBackground {
+  bottom: 20px;
 }
 
 .bodyContainer {
@@ -252,7 +258,8 @@
     width: 95%;
   }
 
-  .motokoBackground, .rustBackground {
+  .motokoBackground,
+  .rustBackground {
     display: none;
   }
 

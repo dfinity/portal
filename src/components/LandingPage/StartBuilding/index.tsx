@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "@site/src/components/LandingPage/StartBuilding/index.module.css";
-import motokoBG from "@site/static/img/motokoPlayground.png";
+import motokoBG from "@site/static/img/motoko.webp";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import BackgroundGradient from "@site/static/img/startBuilding/bgGradient.png";
 import GamingIcon from "@site/static/img/startBuilding/gaming.svg";
