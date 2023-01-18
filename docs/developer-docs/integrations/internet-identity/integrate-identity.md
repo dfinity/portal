@@ -65,7 +65,7 @@ const webapp = Actor.createActor(webapp_idl, {
 const principal = await webapp.whoami();
 ```
 See [`index.js`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.js) for the full working example.
-A detailed description of what happens behind the scenes is available in the [client auth protocol specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#client-auth-protocol).
+A detailed description of what happens behind the scenes is available in the [client auth protocol specification](https://github.com/dfinity/internet-identity/blob/main/docs/ii-spec.md#client-authentication-protocol).
 
 ### Getting the Canister IDs
 
