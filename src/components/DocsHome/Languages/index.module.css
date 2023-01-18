@@ -252,7 +252,7 @@
     width: 95%;
   }
 
-  .motokoBackground {
+  .motokoBackground, .rustBackground {
     display: none;
   }
 
