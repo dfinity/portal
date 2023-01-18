@@ -8,7 +8,7 @@ const redirects = `
   /docs/candid-guide/candid-intro /docs/current/developer-docs/build/candid/candid-intro
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
-  /docs/candid-guide/candid-types.html /docs/current/references/candid-ref
+  /docs/candid-guide/candid-types.html/ /docs/current/references/candid-ref
   /docs/current/developer-docs /docs/current/developer-docs/quickstart/hello10mins
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko
