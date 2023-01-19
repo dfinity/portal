@@ -23,7 +23,7 @@ const sidebars = {
         id: "developer-docs/setup/index",
       },
       items: [
-        "developer-docs/setup/vs-code-plugin",
+        "developer-docs/setup/vscode",
       ]},
     {
       type: "category",

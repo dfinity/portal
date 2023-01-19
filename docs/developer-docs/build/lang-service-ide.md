@@ -14,7 +14,7 @@ For example, if you use Visual Studio Code (VSCode) or Emacs as your development
 
 <div class="note">
 
-Only the Visual Studio Code (VSCode) plugin extension is currently available for Motoko. For information about installing the plugin, see [Install the language editor plug-in](/developer-docs/setup/vs-code-plugin.md).
+Only the Visual Studio Code (VS Code) plugin extension is currently available for Motoko. For information about installing the plugin, see [VS Code extensions for IC development](/developer-docs/setup/vs-code.md).
 
 </div>
 
