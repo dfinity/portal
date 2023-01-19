@@ -14,6 +14,10 @@ Install the extension through the [VS Marketplace](https://marketplace.visualstu
 
 [VSCodium](https://vscodium.com/) users can download the extension from [Open VSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko) or the [GitHub releases](https://github.com/dfinity/vscode-motoko/releases) page.
 
+Alternatively, try out the extension online in this full-stack [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) starter project:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
+
 ### Keyboard Shortcuts
 
 Below are the default key bindings for commonly used features supported in the extension:
@@ -26,7 +30,7 @@ Below are the default key bindings for commonly used features supported in the e
 
 ### Other Features
 
-- The Motoko VS Code extension provides schema validation and autocompletion for `dfx.json` files.
+- The Motoko VS Code extension also provides schema validation and autocompletion for `dfx.json` files.
 - Hover over almost anything to view type information and/or explanations from `///` doc comments.
 - The extension automatically detects Motoko packages from [MOPS](https://mops.one/) and [Vessel](https://github.com/dfinity/vessel) config files. 
 - In case you're hoping to learn Motoko without downloading `dfx`, the Motoko VS Code extension works on all major operating systems (including Windows). 
