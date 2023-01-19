@@ -49,14 +49,56 @@ export const CardWithDescription: React.FC<{
     >
       <div className="flex flex-row transition-colors items-center lg:px-16 w-full mx-0 px-8 py-6  md:min-h-[258px] md:px-16 md:py-12 bg-white/50 border border-solid border-white box-border backdrop-blur-md rounded-xl group  hover:bg-infinite hover:border-infinite">
         <div className="w-9/10 group-hover:-translate-y-3 transition-transform">
-          <p className="tw-heading-5 md:tw-heading-4 lg:tw-heading-3 mb-2 text-infinite group-hover:text-white  transition-colors">
+          <h4 className="tw-heading-5 md:tw-heading-4 lg:tw-heading-3 mb-2 text-infinite group-hover:text-white  transition-colors">
             {title}
-          </p>
+          </h4>
           <p className="tw-paragraph-sm md:tw-paragraph mb-0 text-black group-hover:text-white transition-colors">
             {description}
           </p>
         </div>
         <RightArrowIcon className="text-infinite m-auto h-6 w-6 group-hover:text-white  transition-colors" />
+      </div>
+    </MotionLink>
+  );
+};
+
+export const SmallCardWithDescription: React.FC<{
+  title: string;
+  href: string;
+  children?: React.ReactNode;
+  className?: string;
+}> = ({ title, children, href, className }) => {
+  return (
+    <MotionLink
+      variants={transitions.item}
+      href={href}
+      className={clsx(
+        "hover:no-underline flex flex-row items-stretch",
+        className
+      )}
+    >
+      <div
+        className="
+        flex flex-row items-center gap-2 md:gap-6
+        transition-colors bg-white/50 border border-solid border-white box-border backdrop-blur-md rounded-xl group hover:bg-infinite hover:border-infinite
+        w-full md:min-h-[200px]
+        mx-0 
+        
+        py-6 md:pt-10 md:pb-12
+        px-8 md:px-12
+
+
+        "
+      >
+        <div className="group-hover:-translate-y-2 transition-transform flex-1">
+          <h4 className="tw-heading-5 mb-2 text-infinite group-hover:text-white  transition-colors">
+            {title}
+          </h4>
+          <p className="tw-paragraph-sm md:tw-paragraph mb-0 text-black group-hover:text-white transition-colors">
+            {children}
+          </p>
+        </div>
+        <RightArrowIcon className="text-infinite h-4 w-4 md:h-6 md:w-6 group-hover:text-white  transition-colors" />
       </div>
     </MotionLink>
   );
