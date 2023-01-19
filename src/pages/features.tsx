@@ -597,7 +597,7 @@ function FeaturesPage() {
         </section>
 
         <AnimateSpawn
-          className="container-10  relative mb-6 mt-30 md:mt-40"
+          className="container-10  relative mb-6 md:mb-10 mt-30 md:mt-40"
           el={motion.section}
           variants={transitions.container}
         >
@@ -613,7 +613,7 @@ function FeaturesPage() {
           ></motion.div>
           <div className="md:w-5/10">
             <motion.h2
-              className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-6"
+              className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-8"
               variants={transitions.item}
             >
               Cool Protocol Stuff

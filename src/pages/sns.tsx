@@ -377,7 +377,7 @@ function SnsPage() {
                 SNS-1: The First of its Kind
               </motion.h2>
 
-              <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
+              <motion.p variants={transitions.item} className="tw-lead-sm mb-3 md:w-1/2">
                 SNS-1 was a dress rehearsal that DFINITY ran together with the
                 ICP community to test an SNS decentralization sale on the
                 mainnet. After a successful SNS launch, SNS-1 is now controlled
