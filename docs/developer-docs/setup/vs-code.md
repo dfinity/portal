@@ -1,12 +1,12 @@
-# VS Code extensions for Internet Computer developers
+# Visual Studio Code
 
 Visual Studio (VS) Code is a [widely used](https://survey.stackoverflow.co/2022/#section-worked-with-vs-want-to-work-with-integrated-development-environment) open-source IDE which supports canister development in [Motoko](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/) and [Rust](https://www.rust-lang.org/).
 
 ## Motoko
 
-[![Showcase](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/intro.webp)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
-
 The [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko) provides type checking, formatting, autocompletion, go-to-definition, code snippets, and more for Motoko canister development.
+
+[![Showcase](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/intro.webp)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
 
 ### Getting Started
 
