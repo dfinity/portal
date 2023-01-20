@@ -14,6 +14,8 @@ Try the extension in your browser with a full-stack [Vite + React + Motoko](http
 
 ### Getting Started
 
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/dfinity-foundation.vscode-motoko?color=brightgreen&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
+
 Install the extension through the [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko), or alternatively the [Extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace) in your VS Code project. 
 
 [VSCodium](https://vscodium.com/) users can download the extension from [Open VSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko) or the [GitHub releases](https://github.com/dfinity/vscode-motoko/releases) page.
@@ -30,11 +32,17 @@ Below are the default key bindings for commonly used features supported in the e
 
 ### Other Features
 
-- Quickly convert between Motoko types using code snippets such as `array-2-buffer` or `principal-2-text`.
 - View type information and documentation by hovering over function names, imports, and other expressions.
+- Quickly convert between Motoko types using code snippets such as `array-2-buffer` or `principal-2-text`.
 - In case you're hoping to learn Motoko without installing `dfx`, the Motoko VS Code extension works standalone on all major operating systems (including Windows). 
 - This extension also provides schema validation and autocompletion for `dfx.json` config files.
 - [Vessel](https://github.com/dfinity/vessel) and [MOPS](https://mops.one/) (the two most popular Motoko package managers) are supported out-of-the-box in this extension. 
+
+### Contributing
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github)](https://github.com/dfinity/prettier-plugin-motoko)
+
+The Motoko VS Code extension is completely open-source and [available on GitHub](https://github.com/dfinity/vscode-motoko). 
 
 ## Rust
 
