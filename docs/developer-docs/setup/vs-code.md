@@ -8,7 +8,7 @@ The [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko) provide
 
 [![Showcase](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/intro.webp)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
 
-Try the extension online with a full-stack [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) starter project:
+Try the extension in your browser with a full-stack [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) starter project:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
 
@@ -30,10 +30,11 @@ Below are the default key bindings for commonly used features supported in the e
 
 ### Other Features
 
-- The Motoko VS Code extension also provides schema validation and autocompletion for `dfx.json` files.
-- Hover over almost anything to view type information and/or explanations from `///` doc comments.
-- The extension automatically detects Motoko packages from [MOPS](https://mops.one/) and [Vessel](https://github.com/dfinity/vessel) config files. 
-- In case you're hoping to learn Motoko without downloading `dfx`, the Motoko VS Code extension works on all major operating systems (including Windows). 
+- Quickly convert between Motoko types using code snippets such as `array-2-buffer` or `principal-2-text`.
+- View type information and documentation by hovering over function names, imports, and other expressions.
+- In case you're hoping to learn Motoko without installing `dfx`, the Motoko VS Code extension works standalone on all major operating systems (including Windows). 
+- This extension also provides schema validation and autocompletion for `dfx.json` config files.
+- [Vessel](https://github.com/dfinity/vessel) and [MOPS](https://mops.one/) (the two most popular Motoko package managers) are supported out-of-the-box in this extension. 
 
 ## Rust
 
