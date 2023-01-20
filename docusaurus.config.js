@@ -193,6 +193,10 @@ const config = {
                 href: "/nft",
               },
               {
+                label: "SNS DAOs",
+                href: "/sns",
+              },
+              {
                 label: "ICP Careers",
                 href: "http://careers.internetcomputer.org/",
               },
