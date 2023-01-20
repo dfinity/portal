@@ -22,11 +22,11 @@ Install the extension through the [VS Marketplace](https://marketplace.visualstu
 
 Below are the default key bindings for commonly used features supported in the extension:
 
-- **Code formatter**: Press `Shift` + `Alt` + `F` to format a Motoko file using [prettier-plugin-motoko](https://github.com/dfinity/prettier-plugin-motoko).
-- **Organize imports**: Press `Shift` + `Alt` + `O` to group and sort imports at the top of your Motoko file.
-- **Import code action**: Press `Ctrl` / `Cmd` + `.` while hovering over an unresolved variable to show quick-import options. 
-- **Go to definition**: Press `F12` to jump to the definition of a local or imported identifier.
-- **IntelliSense**: Press `Ctrl` + `Space` in a Motoko file to view all available autocompletions and code snippets. 
+- **Code formatter** (`Shift` + `Alt` + `F`): format a Motoko file using [prettier-plugin-motoko](https://github.com/dfinity/prettier-plugin-motoko).
+- **Organize imports** (`Shift` + `Alt` + `O`): group and sort imports at the top of your Motoko file.
+- **Import code action** (`Ctrl/Cmd` + `.` while hovering over an unresolved variable): show import quick-fix options. 
+- **Go to definition** (`F12`): jump to the definition of a local or imported identifier.
+- **IntelliSense** (`Ctrl` + `Space`): view all available autocompletions and code snippets. 
 
 ### Other Features
 
