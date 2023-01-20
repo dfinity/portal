@@ -166,8 +166,7 @@ function SnsFaqPage() {
                 <li>
                   The design of SNS is similar to that of the{" "}
                   <Link href="https://nns.ic0.app">
-                    <strong>N</strong>etwork <strong>N</strong>ervous{" "}
-                    <strong>S</strong>ystem (NNS)
+                    Network Nervous{" "}System (NNS)
                   </Link>
                   , which is the on-chain DAO that governs the whole ICP.
                 </li>
@@ -205,6 +204,7 @@ function SnsFaqPage() {
                 aspect of a dapp, since everything is on-chain.{" "}
               </p>
             </Faq>
+
             <Faq title="What are the advantages of SNS DAOs? ">
               <p>
                 SNS DAOs facilitate a healthy exchange between developers,
@@ -227,6 +227,7 @@ function SnsFaqPage() {
                 </li>
               </ul>
             </Faq>
+
             <Faq title="What is SNS-1?">
               SNS-1 is the first SNS DAO that DFINITY launched on the mainnet to
               test an SNS decentralization sale with involvement of the ICP
@@ -242,6 +243,7 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
+
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat has already publicly
@@ -249,6 +251,7 @@ function SnsFaqPage() {
               2023. Dapps such as distrikt, Catalyze, Canistore and Nuance are considering
               creating their own SNSs.
             </Faq>
+
           </FaqSection>
           <FaqSection
             id="participate"
@@ -311,6 +314,7 @@ function SnsFaqPage() {
                 </li>
               </ul>
             </Faq>
+
             <Faq title="What is the Community Fund?">
               The Community Fund is a way for people to who stake ICP in the NNS to
               use their maturity to fund future SNSs. You can find out more about
@@ -320,6 +324,7 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
+
           </FaqSection>
           <FaqSection
             id="decentralization-sale"
