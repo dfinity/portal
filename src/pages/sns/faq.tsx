@@ -513,8 +513,14 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How do I create a proposal for an SNS DAO?">
               <p>
-                Creating an SNS proposal requires one to be familiar with dfx
-                and quill.
+                Creating an SNS proposal requires one to be familiar with the command line tools{" "} 
+                <Link href="https://github.com/dfinity/sdk">
+                  dfx
+                </Link>
+                {" "}and{" "}
+                <Link href="https://github.com/dfinity/sns-quill">
+                  quill
+                </Link>.
               </p>
               <p className="not-prose">
                 <Link
