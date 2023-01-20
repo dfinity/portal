@@ -131,8 +131,7 @@ function SnsFaqPage() {
           >
             <Faq title="What is a DAO?">
               <p>
-                DAO stands for <strong>D</strong>ecentralized <strong>A</strong>
-                utonomous <strong>O</strong>rganization. Simply put, a DAO is an
+                DAO stands for Decentralized Autonomous Organization. Simply put, a DAO is an
                 organization formed by smart contracts where the members
                 (typically token holders) collectively decide how the
                 organization or the product evolves. Example scenarios:
