@@ -22,7 +22,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         cd examples/rust/basic_bitcoin
 
    :::note
-   If you choose Rust, you'll need to install [Homebrew](https://brew.sh/) and run `brew install llvm` to be able to compile the example.
+   If you choose Rust and are using MacOS, you'll need to install [Homebrew](https://brew.sh/) and run `brew install llvm` to be able to compile the example.
    :::
 
 3. Initialize the git submodules
