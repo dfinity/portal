@@ -139,7 +139,7 @@ function SnsFaqPage() {
               </p>
               <ul>
                 <li>
-                  10,000 token holders each deposit crypto into a smart contract
+                  10'000 token holders each deposit crypto into a smart contract
                   and vote on what to purchase with the total.
                 </li>
                 <li>
@@ -158,11 +158,10 @@ function SnsFaqPage() {
 
             <Faq title="What is an SNS?">
               <p>
-                SNS stands for <strong>S</strong>ervice <strong>N</strong>
-                ervous
-                <strong>S</strong>ystem. An SNS is an advanced form of DAO that
-                allows communities to govern decentralized apps (dapps) on the
-                Internet Computer (ICP). Main things to note about SNS:
+                SNS stands for Service Nervous System. An SNS is an advanced
+                form of DAO that allows communities to govern decentralized
+                apps (dapps) on the Internet Computer (ICP). Main things to
+                note about SNS:
               </p>
               <ul>
                 <li>
@@ -174,10 +173,10 @@ function SnsFaqPage() {
                   , which is the on-chain DAO that governs the whole ICP.
                 </li>
                 <li>
-                  SNS dapps are controlled by the members of its DAO submitting
-                  and voting on on-chain proposals. No one developer or group of
-                  people controls the dapp, rather the dapp is controlled by
-                  voting via tokens.
+                  An SNS dapp is controlled by an SNS DAO, which is governed by
+                  SNS token holders submitting and voting on on-chain proposals.
+                  No one developer or group of people controls the dapp, rather
+                  the dapp is controlled by voting via tokens.
                 </li>
                 <li>
                   There can be many SNSs on ICP. A developer can turn any dapp
@@ -193,19 +192,17 @@ function SnsFaqPage() {
                 online services that are owned and governed by their
                 communities.{" "}
               </p>
-              <p>Where this fits in broader Web3: </p>
+              <p>Where this fits in the broader context of Web3: </p>
               <p>
-                DAOs are growing form of organization for accomplishing goals.
+                DAOs are a growing form of organization for accomplishing goals.
                 For example, in the ETH ecosystem, Uniswap and MakerDAO are
-                popular DAOs with billions of locked in their respective smart
+                popular DAOs with billions of dollars locked in their respective smart
                 contracts. However,{" "}
                 <strong>
-                  <em>
                     ICP is unique in that it can host fully-on chain dapps
-                  </em>
                 </strong>{" "}
-                (frontend, backend application logic, and state), so DAOs in in
-                ICP are unique in that they can fully control (via voting) every
+                (frontend, backend application logic, and data), so SNS DAOs
+                are unique in that they can fully control (via voting) every
                 aspect of a dapp, since everything is on-chain.{" "}
               </p>
             </Faq>
@@ -236,10 +233,10 @@ function SnsFaqPage() {
               community. The SNS-1 test exposed areas of improvement, which are
               currently being addressed. The SNS-1 dapp is now controlled by the
               community of token holders who will collectively determine its
-              future. Since SNS-1 is a test, it is unusual among SNS that it was
-              launched as a blank canvas without a product or developer team.
-              Future SNSs will likely be derived from established ICP dapps.
-              SNS-1 tokens are available on{" "}
+              future. Since SNS-1 was meant as a test, it is unusual among SNSs
+              in that it was launched as a blank canvas without a product or
+              developer team. Future SNSs will likely be derived from established
+              ICP dapps. SNS-1 tokens are available on{" "}
               <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex/SNS1/ICP">
                 ICDex
               </Link>
@@ -247,9 +244,9 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
-              the launch of the SNS. OpenChat has already publicly announced
-              their plans to turn their dapp into an SNS DAO in Q1 of 2023.
-              Dapps like distrikt, Catalyze, Canistore, Nuance are considering
+              the launch of the SNS technology. OpenChat has already publicly
+              announced their plans to turn their dapp into an SNS DAO in Q1 of
+              2023. Dapps such as distrikt, Catalyze, Canistore and Nuance are considering
               creating their own SNSs.
             </Faq>
           </FaqSection>
@@ -270,13 +267,6 @@ function SnsFaqPage() {
               proposals to improve the dapp controlled by the DAO.
             </Faq>
 
-            <Faq title="What is the Community Fund?">
-              You can find out more about the community fund{" "}
-              <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
-                here
-              </Link>
-              .
-            </Faq>
             <Faq
               title="How do you get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
@@ -312,15 +302,23 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   <strong>Airdrops:</strong> Besides buying SNS tokens, you can
-                  obtain SNS tokens by receiving airdrops or by actively
-                  engaging in the SNS DAO’s community and thereby earning tokens
-                  as reward. In this scenario, tokens are used to create active
-                  engagement with a dApp and help grow the active user base.
-                  Finally, if you already have tokens and participate in
-                  governance, you can earn tokens as governance rewards like in
-                  the NNS.
+                  obtain them by receiving airdrops or by engaging with the dapp
+                  and thereby earning tokens as reward. In this scenario, tokens
+                  are used as an incentive to encourage active engagement with
+                  the dapp which helps grow the active user base. Finally, if you
+                  already have tokens and participate in governance, you can earn
+                  tokens as voting rewards as you would in the NNS.
                 </li>
               </ul>
+            </Faq>
+            <Faq title="What is the Community Fund?">
+              The Community Fund is a way for people to who stake ICP in the NNS to
+              use their maturity to fund future SNSs. You can find out more about
+              the community fund{" "}
+              <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
+                here
+              </Link>
+              .
             </Faq>
           </FaqSection>
           <FaqSection
@@ -335,7 +333,7 @@ function SnsFaqPage() {
             <Faq title="What is a decentralization sale?">
               A decentralization sale is the process by which an SNS DAO is
               created and where users can purchase SNS tokens by participating.
-              After the sale each participant receives a basket of neurons
+              After the sale, each participant receives a basket of neurons
               holding SNS tokens. It is one of{" "}
               <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> one
               can get SNS tokens for a particular SNS DAO.
@@ -348,21 +346,22 @@ function SnsFaqPage() {
                 Through this approach, every aspect of the sale, from its
                 initiation to execution, is completely decentralized and not
                 controlled by any centralized entity. Even the decision to
-                create the SNS and its token is made by the NNS and not the
-                developer in order to avoid undesirable legal implications for
-                the developer who wants to decentralized their app.
+                create the SNS and its token is made by the NNS (a DAO) and not
+                the developer in order to avoid undesirable legal implications
+                for the developer who wants to decentralized their app.
               </p>
               <p>
-                A decentralization sale uses a list of configured parameters:
+                A decentralization sale follows a list of configurable parameters:
               </p>
               <ul>
                 <li>Minimum and maximum amount of SNS tokens to be sold</li>
                 <li>
-                  The amount of ICP a decentralization sale must earn to be
+                  The amount of ICP a decentralization sale must receive to be
                   successful. If the goal is not reached, participants get their
                   ICP refunded and the sale fails.
                 </li>
                 <li>Minimum and maximum commitment of ICP per participant</li>
+                <li></li>
               </ul>
             </Faq>
 
