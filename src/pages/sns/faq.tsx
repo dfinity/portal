@@ -164,33 +164,27 @@ function SnsFaqPage() {
               </p>
               <ul>
                 <li>
-                  The design of SNS is similar to that of the{" "}
+                  The design of SNSs is similar to that of the{" "}
                   <Link href="https://nns.ic0.app">
                     Network Nervous{" "}System (NNS)
                   </Link>
                   , which is the on-chain DAO that governs the whole ICP.
                 </li>
                 <li>
-                  An SNS dapp is controlled by an SNS DAO, which is governed by
+                  A dapp controlled by an SNS DAO is governed by
                   SNS token holders submitting and voting on on-chain proposals.
                   No one developer or group of people controls the dapp, rather
                   the dapp is controlled by voting via tokens.
                 </li>
                 <li>
                   There can be many SNSs on ICP. A developer can turn their
-                  dapp into a DAO by handing the control of their dapp over
+                  dapp into a SNS by handing the control of their dapp over
                   to an SNS DAO.
                 </li>
               </ul>
             </Faq>
 
-            <Faq title="What does an SNS DAO solve?">
-              <p>
-                SNS DAOs serve as a vehicle to deliver fully decentralized
-                online services that are owned and governed by their
-                communities.{" "}
-              </p>
-              <p>Where this fits in the broader context of Web3: </p>
+            <Faq title="How unique are SNS DAOs in Web3?">
               <p>
                 DAOs are a growing form of organization for accomplishing goals.
                 For example, in the ETH ecosystem, Uniswap and MakerDAO are
@@ -202,6 +196,12 @@ function SnsFaqPage() {
                 (frontend, backend application logic, and data), so SNS DAOs
                 are unique in that they can fully control (via voting) every
                 aspect of a dapp, since everything is on-chain.{" "}
+
+                <p>
+                Therefore, SNS DAOs serve as a vehicle to deliver fully decentralized
+                online services that are owned and governed by their
+                communities.{" "}
+              </p>
               </p>
             </Faq>
 
