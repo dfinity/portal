@@ -8,15 +8,15 @@ The [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko) provide
 
 [![Showcase](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/intro.webp)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
 
+Try the extension online with a full-stack [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) starter project:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
+
 ### Getting Started
 
 Install the extension through the [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko), or alternatively the [Extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace) in your VS Code project. 
 
 [VSCodium](https://vscodium.com/) users can download the extension from [Open VSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko) or the [GitHub releases](https://github.com/dfinity/vscode-motoko/releases) page.
-
-Alternatively, try out the extension online in this full-stack [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) starter project:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
 
 ### Keyboard Shortcuts
 
