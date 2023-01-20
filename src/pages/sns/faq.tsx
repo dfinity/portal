@@ -179,9 +179,9 @@ function SnsFaqPage() {
                   the dapp is controlled by voting via tokens.
                 </li>
                 <li>
-                  There can be many SNSs on ICP. A developer can turn any dapp
-                  they control on ICP into an SNS by handing the control of
-                  their dapp entirely over to an SNS DAO.
+                  There can be many SNSs on ICP. A developer can turn their
+                  dapp into a DAO by handing the control of their dapp over
+                  to an SNS DAO.
                 </li>
               </ul>
             </Faq>
@@ -209,16 +209,17 @@ function SnsFaqPage() {
             <Faq title="What are the advantages of SNS DAOs? ">
               <p>
                 SNS DAOs facilitate a healthy exchange between developers,
-                entrepreneurs, end users and VC’s. Some advantages include:{" "}
+                entrepreneurs, end users and VC’s. Some advantages of turning
+                your dapp into a DAO include:{" "}
               </p>
               <ul>
                 <li>
-                  <strong>Community Engagement:</strong> as co-creators of the
+                  <strong>Community Engagement:</strong> as co-owners of the
                   product, users become core contributors, developers deliver on
                   value proposition.{" "}
                 </li>
                 <li>
-                  <strong>Speedy User Adoption:</strong> As co-creators, users
+                  <strong>Speedy User Adoption:</strong> As co-owners, users
                   become the biggest advocates of the product.
                 </li>
                 <li>
@@ -280,8 +281,8 @@ function SnsFaqPage() {
               <ul>
                 <li>
                   <strong>Participate in a decentralization sale:</strong> When
-                  an SNS launches, it has to go through a decentralization sale
-                  that takes place on the NNS frontend dapp under the{" "}
+                  an SNS launches, it has to go through a decentralization sale.
+                  You can participate on the NNS frontend dapp under the{" "}
                   <Link href="https://nns.ic0.app/launchpad/">
                     Launch Pad tab
                   </Link>
@@ -291,12 +292,12 @@ function SnsFaqPage() {
                   <strong>
                     Purchase tokens on a decentralized exchange (DEX):
                   </strong>{" "}
-                  After a sale has concluded, liquid tokens will typically be
-                  listed on multiple DEXs, where you can buy them using the ICP
-                  utility token or other tokens, depending on what token pairs
-                  the DEX lists, e.g., also Bitcoin or Ethereum. An SNS token in
-                  high demand may have a higher price on a DEX than in its
-                  decentralization sale.{" "}
+                  After a decentralization sale has concluded, liquid tokens
+                  will typically be listed on multiple DEXs, where you can buy
+                  them using the ICP utility token or other tokens, depending on
+                  what token pairs the DEX lists, e.g., also Bitcoin or Ethereum.
+                  An SNS token in high demand may have a higher price on a DEX
+                  than in its decentralization sale.{" "}
                   <Link href="http://icdex.io/">ICDex</Link> already supports
                   SNS tokens.
                 </li>
@@ -331,8 +332,8 @@ function SnsFaqPage() {
           >
             <div className="blob blob-purple blob-md blob-top-right z-[-1]"></div>
             <Faq title="What is a decentralization sale?">
-              A decentralization sale is the process by which an SNS DAO is
-              created and where users can purchase SNS tokens by participating.
+              A decentralization sale is the process by which an SNS DAO becomes
+              decentralized and where users can purchase SNS tokens by participating.
               After the sale, each participant receives a basket of neurons
               holding SNS tokens. It is one of{" "}
               <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> one
@@ -342,19 +343,18 @@ function SnsFaqPage() {
             <Faq title="Where does a decentralization sale take place?">
               <p>
                 A decentralization sale is run entirely on chain. The sale is
-                initiated by the SNS soon after the NNS has launched the SNS.
-                Through this approach, every aspect of the sale, from its
-                initiation to execution, is completely decentralized and not
-                controlled by any centralized entity. Even the decision to
-                create the SNS and its token is made by the NNS (a DAO) and not
-                the developer in order to avoid undesirable legal implications
-                for the developer who wants to decentralized their app.
+                initiated by the NNS. Through this approach, every aspect of the
+                sale, from its initiation to execution, is completely
+                decentralized and not controlled by any centralized entity. Even
+                the decision to create the SNS and its token is made by the NNS
+                (a DAO) and not the developer in order to avoid undesirable legal
+                implications for the developer who wants to decentralized their app.
               </p>
               <p>
                 A decentralization sale follows a list of configurable parameters:
               </p>
               <ul>
-                <li>Minimum and maximum amount of SNS tokens to be sold</li>
+                <li>The amount of SNS tokens to be sold</li>
                 <li>
                   The amount of ICP a decentralization sale must receive to be
                   successful. If the goal is not reached, participants get their
@@ -386,8 +386,8 @@ function SnsFaqPage() {
 
             <Faq title="How do I participate in a sale?">
               <p>
-                Participation takes place on the{" "}
-                <Link href="https://nns.ic0.app/">NNS Frontend Dapp</Link> and
+                You can participate in the decentralization sale in the {" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> and
                 requires ICP utility tokens, which can be exchanged for the SNS
                 tokens during the decentralization sale. If you don’t have ICP,
                 you can buy some from any of the exchanges listed{" "}
@@ -401,13 +401,13 @@ function SnsFaqPage() {
               </p>
               <p>
                 <strong>
-                  1. Go to the NNS Frontend Dapp and click on the “Launch Pad”
+                  1. Go to the NNS frontend dapp and click on the “Launch Pad”
                   in the sidebar to see all ongoing SNS decentralization sales.
                 </strong>
               </p>
               <p>
                 <strong>
-                  2. Select the SNS Sale you’re interested under“Current
+                  2. Select the SNS Sale you’re interested in under “Current
                   Launches” and click on the box.
                 </strong>
                 <img
@@ -466,7 +466,8 @@ function SnsFaqPage() {
                 participants will be refunded. The duration of a sale
                 is configurable and thus, depends on the configuration of each
                 individual SNS. A sale can only start after a 4 to 8-day NNS
-                voting period on the original proposal that initiates the launch
+                voting period (unless 51% majority is reached sooner) on the
+                original proposal that initiates the launch
                 the SNS.
               </p>
               <p className="not-prose">
@@ -491,10 +492,9 @@ function SnsFaqPage() {
           >
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
-                Voting and the creation of SNS proposals takes place in the dapp
-                controled by the SNS DAO, and soon in the NNS dapp. Proposals
-                are listed within the dapps themselves as in this example of
-                OpenChat:
+                Voting and the creation of SNS proposals can take place in the dapp
+                controled by the SNS DAO, and soon in the NNS dapp. Proposals are
+                listed within the dapps themselves as in this example of OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
               <p className="not-prose">
@@ -526,8 +526,8 @@ function SnsFaqPage() {
             <Faq title="Is it possible to transfer SNS tokens to another person?">
               <p>
                 Yes. SNS tokens are ICRC-1 tokens and can be transferred between
-                any ICP-based wallets that support ICRC-1, including your NNS
-                wallet. Note that each SNS has its own ICRC-1-compliant
+                any Internet Computer-based wallets that support ICRC-1, including
+                your NNS wallet. Note that each SNS has its own ICRC-1-compliant
                 ledger for keeping track of its tokens.
               </p>
               <p>
