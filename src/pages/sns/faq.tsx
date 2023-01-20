@@ -372,8 +372,8 @@ function SnsFaqPage() {
             <Faq title="What do I get from a sale?">
               <p>
                 If the decentralization sale is successful, you will receive a
-                basket of 
-                <Link href="https://dscvr.one/post/6958037/neurons-101">
+                basket of{" "} 
+                <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                   neurons
                 </Link> that hold your SNS tokens. The basket may
                 contain multiple neurons with different dissolve delays,
