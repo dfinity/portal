@@ -10,49 +10,78 @@ import React, { ReactNode } from "react";
 import slugify from "slugify";
 import transitions from "@site/static/transitions.json";
 import { SmallCardWithDescription } from "@site/src/components/Common/Card";
+import IntraPageNav from "@site/src/components/Common/IntraPageNav";
+import ShareMeta from "@site/src/components/Common/ShareMeta";
 
-const MotionLink = motion(Link);
+function idFromTitle(title: string) {
+  const slug = slugify(title, { strict: true, lower: true });
+  if (slug.match(/^\d/)) {
+    return "sns-faq-" + slug;
+  }
+  return slug;
+}
 
 const Faq: React.FC<{ title: string; children: ReactNode; id?: string }> = ({
   children,
   title,
   id,
 }) => {
-  console.log(children);
-
   return (
     <article
-      className=""
       id={id || slugify(title, { lower: true, strict: true })}
+      className="scroll-m-[110px]"
     >
-      <h2 className="tw-heading-5 md:tw-heading-3 mb-6">{title}</h2>
-      <div
-        className="
+      <AnimateSpawn variants={transitions.item}>
+        <motion.h2
+          className="tw-heading-5 md:tw-heading-3 mb-6 relative group"
+          variants={transitions.item}
+        >
+          {title}
+          <a
+            className="text-infinite absolute -left-6 md:-left-8 top-0 hidden group-hover:inline-block hover:text-infinite-60 hover:no-underline md:pr-3"
+            href={`#${idFromTitle(title)}`}
+          >
+            #
+          </a>
+        </motion.h2>
+        <motion.div
+          variants={transitions.item}
+          className="
           tw-paragraph md:tw-lead-sm
           prose
           max-w-none
           prose-h3:tw-heading-6 prose-h3:md:tw-heading-5 prose-h3:mb-4
           prose-p:tw-paragraph md:prose-p:tw-lead-sm prose-p:mb-3
-          prose-img:mb-0 prose-img:mt-2
+          prose-img:mb-0 prose-img:mt-2 prose-img:w-full prose-img:aspect-video prose-img:object-contain prose-img:object-center
           prose-a:font-normal hover:prose-a:text-infinite hover:prose-a:no-underline
           prose-ul:mb-4 prose-ul:list-none prose-ul:pl-0 prose-ul:tw-paragraph md:prose-ul:tw-lead-sm
           prose-li:bg-[url('/img/checkmark.svg')] prose-li:bg-no-repeat prose-li:bg-left-top prose-li:pl-8 prose-li:my-3 prose-li:tw-paragraph prose-li:md:tw-lead-sm
       "
-      >
-        {children}
-      </div>
+        >
+          {children}
+        </motion.div>
+      </AnimateSpawn>
     </article>
   );
 };
 
-const FaqSection: React.FC<{ title: ReactNode; children: ReactNode }> = ({
-  children,
-  title,
-}) => {
+const FaqSection: React.FC<{
+  title: ReactNode;
+  children: ReactNode;
+  id?: string;
+}> = ({ children, title, id }) => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-1/12">
+    <div
+      className="flex flex-col md:flex-row md:gap-1/12 scroll-m-[110px]"
+      id={id}
+    >
       <div className="md:w-4/12 flex-shrink-0">
-        <div className="md:sticky md:top-10">{title}</div>
+        <AnimateSpawn
+          variants={transitions.item}
+          className="md:sticky md:top-10"
+        >
+          {title}
+        </AnimateSpawn>
       </div>
       <div className="flex flex-col gap-12 md:gap-20 relative">{children}</div>
     </div>
@@ -63,21 +92,13 @@ function SnsFaqPage() {
   resetNavBarStyle();
   return (
     <Layout
-      title="DAO crypto evolved"
-      description="An SNS is an advanced form of a DAO. A digital democracy that can run any dapp such as a social network in a fully decentralized way, fully on chain. No corporation, no board of directors, no CEO required."
+      title="SNS DAO FAQ"
+      description="All you need to know about DAOs on the Internet Computer and how to participate in them."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
-        />
-        <meta
-          name="twitter:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
-        />
-      </Head>
-      <main className="text-black relative" style={{ contain: "paint" }}>
+      <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
+
+      <main className="text-black relative overflow-hidden">
         <section className="container-10 mb-16 md:mb-30 md:pt-8">
           <Breadcrumbs
             links={[
@@ -96,10 +117,15 @@ function SnsFaqPage() {
         </section>
         <section className="container-12 flex flex-col gap-30 ">
           <FaqSection
+            id="introduction"
             title={
               <div className="relative mb-20">
                 <div className="blob blob-sm md:blob-md blob-bottom-left -bottom-20 blob-infinite z-[-1] opacity-90"></div>
-                <img src="/img/sns/faq-1.svg" className="w-full pr-2/12"></img>
+                <img
+                  src="/img/sns/faq-1.svg"
+                  className="w-full pr-2/12"
+                  loading="lazy"
+                ></img>
               </div>
             }
           >
@@ -228,6 +254,7 @@ function SnsFaqPage() {
             </Faq>
           </FaqSection>
           <FaqSection
+            id="participate"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
                 How to Participate in an SNS DAO
@@ -297,6 +324,7 @@ function SnsFaqPage() {
             </Faq>
           </FaqSection>
           <FaqSection
+            id="decentralization-sale"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
                 De&shy;cen&shy;tral&shy;iza&shy;tion Sale
@@ -380,18 +408,30 @@ function SnsFaqPage() {
                   2. Select the SNS Sale you’re interested under“Current
                   Launches” and click on the box.
                 </strong>
-                <img src="/img/sns/SNS-FAQ-participate-1.webp" alt="" />
+                <img
+                  src="/img/sns/SNS-FAQ-participate-1.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>3. Click on “Participate”.</strong>
-                <img src="/img/sns/SNS-FAQ-participate-2.webp" alt="" />
+                <img
+                  src="/img/sns/SNS-FAQ-participate-2.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>
                   4. Type in the amount of ICP you want to participate with or
                   click “max”, then click “Execute”.
                 </strong>
-                <img src="/img/sns/SNS-FAQ-participate-3.webp" alt="" />
+                <img
+                  src="/img/sns/SNS-FAQ-participate-3.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>
@@ -399,7 +439,11 @@ function SnsFaqPage() {
                   see the correct amount of ICP, select the checkbox and click
                   “Execute”.
                 </strong>
-                <img src="/img/sns/SNS-FAQ-participate-4.webp" alt="" />
+                <img
+                  src="/img/sns/SNS-FAQ-participate-4.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>
@@ -435,6 +479,7 @@ function SnsFaqPage() {
           </FaqSection>
 
           <FaqSection
+            id="governance"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
                 Governance
@@ -447,7 +492,7 @@ function SnsFaqPage() {
                 controled by the SNS DAO, and soon in the NNS dapp. Proposals
                 are listed within the dapps themselves as in this example of
                 OpenChat:
-                <img src="/img/sns/openchat-1.webp" alt="" />
+                <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
               <p className="not-prose">
                 <Link
@@ -506,30 +551,31 @@ function SnsFaqPage() {
             </Faq>
           </FaqSection>
         </section>
-        <AnimateSpawn
-          className="container-10 text-white relative mt-30 md:mt-60"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <motion.div
-            variants={transitions.fadeIn}
-            className="z-[-1] blob blob-purple  blob-md md:blob-lg blob-center opacity-90"
-          ></motion.div>
-          <div className="md:w-6/10 mx-auto text-center">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
-              variants={transitions.item}
-            >
-              Resource Center
-            </motion.h2>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-6"
-              variants={transitions.item}
-            >
-              Everything you need to become an SNS DAO ninja.
-            </motion.p>
-          </div>
-        </AnimateSpawn>
+        <section id="resource-center">
+          <AnimateSpawn
+            className="container-10 text-white relative mt-30 md:mt-60"
+            variants={transitions.container}
+          >
+            <motion.div
+              variants={transitions.fadeIn}
+              className="z-[-1] blob blob-purple  blob-md md:blob-lg blob-center opacity-90"
+            ></motion.div>
+            <div className="md:w-6/10 mx-auto text-center">
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
+                variants={transitions.item}
+              >
+                Resource Center
+              </motion.h2>
+              <motion.p
+                className="tw-lead-sm md:tw-lead mb-6"
+                variants={transitions.item}
+              >
+                Everything you need to become an SNS DAO ninja.
+              </motion.p>
+            </div>
+          </AnimateSpawn>
+        </section>
         <AnimateSpawn
           variants={transitions.container}
           className="container-12 mt-8 md:mt-20 mb-20 md:mb-30 grid grid-cols-1 md:grid-cols-3 gap-2"
@@ -567,6 +613,31 @@ function SnsFaqPage() {
           </SmallCardWithDescription>
         </AnimateSpawn>
       </main>
+      <IntraPageNav
+        hasHome={false}
+        links={[
+          {
+            text: "Introduction",
+            to: "#introduction",
+          },
+          {
+            to: "#participate",
+            text: "Participate",
+          },
+          {
+            to: "#decentralization-sale",
+            text: "Decentralization Sale",
+          },
+          {
+            to: "#governance",
+            text: "Governance",
+          },
+          {
+            to: "#resource-center",
+            text: "Resource Center",
+          },
+        ]}
+      ></IntraPageNav>
     </Layout>
   );
 }
