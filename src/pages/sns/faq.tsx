@@ -586,32 +586,33 @@ function SnsFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href=""
-            title="Service Nervous System (SNS)"
+            href="https://internetcomputer.org/sns"
+            title="SNS DAO Basics"
           >
-            Donec ullamcorper nulla.
-          </SmallCardWithDescription>
-          <SmallCardWithDescription href="" title="SNS Documentation">
-            Donec ullamcorper nulla.
-          </SmallCardWithDescription>
-          <SmallCardWithDescription href="" title="SNS Wiki">
-            Donec ullamcorper nulla.
           </SmallCardWithDescription>
           <SmallCardWithDescription
-            href=""
-            title="How the SNS Will Bring Tokenized Governance to On-Chain Dapps"
-          >
-            Donec ullamcorper nulla.
+            href="https://youtu.be/nZBWx6y070Y"
+            title="Video: Next Generation DAOs">
           </SmallCardWithDescription>
           <SmallCardWithDescription
-            href=""
-            title="Fully On-chain with DFINITY – E02 | Next Generation DAOs"
+            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c"
+            title="SNS Blog">
+          </SmallCardWithDescription>
+          <SmallCardWithDescription
+            href="https://internetcomputer.org/how-it-works"
+            title="Technical overview of ICP"
           >
             Donec ullamcorper nulla.
           </SmallCardWithDescription>
           <SmallCardWithDescription
-            href=""
-            title="Community Conversations | SNS Initial Token Swap"
+            href="https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)"
+            title="SNS Wiki"
+          >
+            Donec ullamcorper nulla.
+          </SmallCardWithDescription>
+          <SmallCardWithDescription
+            href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
+            title="SNS Docs"
           >
             Donec ullamcorper nulla.
           </SmallCardWithDescription>
