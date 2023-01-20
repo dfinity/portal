@@ -368,14 +368,17 @@ function SnsFaqPage() {
             <Faq title="What do I get from a sale?">
               <p>
                 If the decentralization sale is successful, you will receive a
-                basket of neurons that hold your SNS tokens. The basket may
+                basket of 
+                <Link href="https://dscvr.one/post/6958037/neurons-101">
+                  neurons
+                </Link> that hold your SNS tokens. The basket may
                 contain multiple neurons with different dissolve delays,
                 depending on the SNS configuration. You can use your tokens to
                 participate in governance or, once neurons have dissolved, sell
                 the liquid tokens on an exchange.
               </p>
               <p>
-                The number of SNS tokens you receive and the price paid for each
+                The number of SNS tokens you receive, and the price paid for each
                 token, depends on the amount of ICP raised during the sale. The
                 more ICP raised, the fewer SNS tokens you receive.
               </p>
@@ -453,17 +456,18 @@ function SnsFaqPage() {
               </p>
               <p>
                 Once the sale ends and is successful, you receive SNS tokens.
-                The number of SNS tokens you receive and the price paid for each
-                token, depends on the amount of ICP raised during the sale and
-                the amount of ICP spent. The more ICP raised, the fewer SNS
+                The number of SNS tokens you receive, and the price paid for each
+                token, depends on the amount of ICP raised during the sale as well
+                as the amount of ICP spent. The more ICP raised, the fewer SNS
                 tokens you receive.
               </p>
               <p>
-                If the set goals of the decentralization sale is not reached,
-                participants will get their ICP refunded. The duration of a sale
+                If the set goals of the decentralization sale are not reached,
+                participants will be refunded. The duration of a sale
                 is configurable and thus, depends on the configuration of each
                 individual SNS. A sale can only start after a 4 to 8-day NNS
-                voting period on the original proposal to launch the SNS.
+                voting period on the original proposal that initiates the launch
+                the SNS.
               </p>
               <p className="not-prose">
                 <Link
@@ -522,29 +526,30 @@ function SnsFaqPage() {
             <Faq title="Is it possible to transfer SNS tokens to another person?">
               <p>
                 Yes. SNS tokens are ICRC-1 tokens and can be transferred between
-                any ICP-based wallets that support ICRC-1. including your NNS
-                wallet. Recall, that each SNS has its own ICRC-1-compliant
+                any ICP-based wallets that support ICRC-1, including your NNS
+                wallet. Note that each SNS has its own ICRC-1-compliant
                 ledger for keeping track of its tokens.
               </p>
               <p>
-                However, note that when receiving your SNS tokens in the form of
-                neurons, the neurons may have dissolve delays defined so that
-                your tokens may not be liquid, i.e., transferable, immediately,
-                but only in weeks, months, or years’ time, depending on the
-                dissolve delay of the respective neuron.
+                When receiving your SNS tokens in the form of neurons, the
+                neurons may have dissolve delays, meaning your tokens
+                may not be liquid, i.e. transferable immediately. Rather
+                these tokens become liquid (transferable) in weeks,
+                months, or years’ time, depending on the dissolve delay
+                of the respective neuron.
               </p>
             </Faq>
             <Faq title="Is it possible to sell SNS tokens to another person?">
               <p>
                 Yes. Because tokens can be sent to other people, they can
                 likewise be sent to exchanges and thus swapped for other tokens.
-                The easiest way of selling SNS tokens is through a decentralized
-                exchange (DEX) that lists the token. You can exchange the SNS
-                token to other tokens, depending on the token pair(s) for the
-                SNS token that the DEX lists.
+                The easiest way to sell SNS tokens is through a decentralized
+                exchange (DEX) that lists the token. You can exchange SNS
+                tokens for other tokens, depending on the token pairs available
+                on any DEX.
               </p>
               <p>
-                Likewise you can acquire SNS tokens on a DEX in exchange for
+                Likewise, you can acquire SNS tokens on a DEX in exchange for
                 other tokens.
               </p>
             </Faq>
