@@ -602,19 +602,16 @@ function SnsFaqPage() {
             href="https://internetcomputer.org/how-it-works"
             title="Technical overview of ICP"
           >
-            Donec ullamcorper nulla.
           </SmallCardWithDescription>
           <SmallCardWithDescription
             href="https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)"
             title="SNS Wiki"
           >
-            Donec ullamcorper nulla.
           </SmallCardWithDescription>
           <SmallCardWithDescription
             href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
             title="SNS Docs"
           >
-            Donec ullamcorper nulla.
           </SmallCardWithDescription>
         </AnimateSpawn>
       </main>
