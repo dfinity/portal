@@ -353,6 +353,10 @@ const config = {
             label: "Links",
             items: [
               {
+                label: "Internet Computer Home",
+                to: "/",
+              },      
+              {
                 label: "Developer Resources",
                 to: "/developers",
               },
