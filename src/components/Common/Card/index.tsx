@@ -49,9 +49,9 @@ export const CardWithDescription: React.FC<{
     >
       <div className="flex flex-row transition-colors items-center lg:px-16 w-full mx-0 px-8 py-6  md:min-h-[258px] md:px-16 md:py-12 bg-white/50 border border-solid border-white box-border backdrop-blur-md rounded-xl group  hover:bg-infinite hover:border-infinite">
         <div className="w-9/10 group-hover:-translate-y-3 transition-transform">
-          <h4 className="tw-heading-5 md:tw-heading-4 lg:tw-heading-3 mb-2 text-infinite group-hover:text-white  transition-colors">
+          <h3 className="tw-heading-5 md:tw-heading-4 lg:tw-heading-3 mb-2 text-infinite group-hover:text-white  transition-colors">
             {title}
-          </h4>
+          </h3>
           <p className="tw-paragraph-sm md:tw-paragraph mb-0 text-black group-hover:text-white transition-colors">
             {description}
           </p>
@@ -91,14 +91,14 @@ export const SmallCardWithDescription: React.FC<{
         )}
       >
         <div className="group-hover:-translate-y-2 transition-transform flex-1">
-          <h4
+          <h3
             className={clsx(
               "tw-heading-5 text-infinite group-hover:text-white  transition-colors",
               !!children ? "mb-2" : "mb-0"
             )}
           >
             {title}
-          </h4>
+          </h3>
           {children && (
             <p className="tw-paragraph-sm md:tw-paragraph mb-0 text-black group-hover:text-white transition-colors">
               {children}

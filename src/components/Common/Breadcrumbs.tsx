@@ -20,7 +20,11 @@ const Breadcrumbs: React.FC<{ links: [...LinkType[], LabelType] }> = ({
 }) => {
   return (
     <div className="flex flex-row gap-2 items-center tw-title-navigation-on-page whitespace-nowrap max-w-full overflow-hidden">
-      <Link to={"/"} className="flex text-infinite hover:text-black">
+      <Link
+        to={"/"}
+        className="flex text-infinite hover:text-black"
+        aria-label="Go to home page"
+      >
         <HomeIcon className="w-6 h-6 flex-shrink-0" />
       </Link>
       {links.map((link) =>

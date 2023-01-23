@@ -129,6 +129,7 @@ function SnsFaqPage() {
                   src="/img/sns/faq-1.svg"
                   className="w-full pr-2/12"
                   loading="lazy"
+                  alt=""
                 ></img>
               </div>
             }
