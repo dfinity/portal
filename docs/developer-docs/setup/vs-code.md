@@ -20,7 +20,7 @@ Install the extension through the [VS Marketplace](https://marketplace.visualstu
 
 [VSCodium](https://vscodium.com/) users can download the extension from [Open VSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko) or the [GitHub releases](https://github.com/dfinity/vscode-motoko/releases) page.
 
-### Keyboard Shortcuts
+## Keyboard Shortcuts
 
 Below are the default key bindings for commonly used features supported in the extension:
 
@@ -30,13 +30,17 @@ Below are the default key bindings for commonly used features supported in the e
 - **Go to definition** (`F12`): jump to the definition of a local or imported identifier.
 - **IntelliSense** (`Ctrl` + `Space`): view all available autocompletions and code snippets. 
 
-### Other Features
+[![Snippets](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/snippets.png)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
 
-- View type information and documentation by hovering over function names, imports, and other expressions.
+## Other Features
+
+- [Vessel](https://github.com/dfinity/vessel) and [MOPS](https://mops.one/) (the two most popular Motoko package managers) are supported out-of-the-box in this extension. 
 - Quickly convert between Motoko types using code snippets such as `array-2-buffer` or `principal-2-text`.
 - In case you're hoping to learn Motoko without installing `dfx`, the Motoko VS Code extension works standalone on all major operating systems (including Windows). 
 - This extension also provides schema validation and autocompletion for `dfx.json` config files.
-- [Vessel](https://github.com/dfinity/vessel) and [MOPS](https://mops.one/) (the two most popular Motoko package managers) are supported out-of-the-box in this extension. 
+- View type information and documentation by hovering over function names, imports, and other expressions.
+
+[![Tooltips](https://github.com/dfinity/vscode-motoko/raw/master/guide/assets/tooltips.png)](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko)
 
 ### Contributing
 
