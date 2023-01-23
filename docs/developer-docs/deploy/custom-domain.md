@@ -83,7 +83,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
     _Note:_ Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` for the first `CNAME` instead of `foo.bar.com`.
-2. `.well-known/custom-domains`
+2. `.well-known/custom-domains`:
     * Create the `custom-domains` file with the following content in the `.well-known` directory:
         ```
         foo.bar.com
