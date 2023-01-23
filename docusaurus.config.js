@@ -181,7 +181,7 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Videos",
+                label: "Video Library",
                 href: "/videos",
               },
               {

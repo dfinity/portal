@@ -1,16 +1,16 @@
-import React from "react";
-import Layout from "@theme/Layout";
+import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import { useQueryParam } from "@site/src/utils/use-query-param";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
-import { motion } from "framer-motion";
-import transitions from "@site/static/transitions.json";
-import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
-import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import mediaVideos from "@site/static/mediaVideos.json";
-import Head from "@docusaurus/Head";
+import transitions from "@site/static/transitions.json";
+import Layout from "@theme/Layout";
 import clsx from "clsx";
-import { useQueryParam } from "@site/src/utils/use-query-param";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import { motion } from "framer-motion";
+import React from "react";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function Videos() {
   const [queryTag, setQueryTag, queryTagInitialized] =
@@ -38,27 +38,14 @@ function Videos() {
   }
   return (
     <Layout
-      title={"Videos"}
+      title={"Video Library"}
       description={
         "Don't like reading? Learn how the Internet Computer works from feature presentations, demos, interviews, and conference talks."
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-videos.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-videos.jpeg"
-          }
-        />
-        <title>Videos</title>
-      </Head>
+      <ShareMeta image="https://internetcomputer.org/img/shareImages/share-videos.jpeg"></ShareMeta>
+
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
@@ -71,13 +58,13 @@ function Videos() {
               variants={transitions.item}
               className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             >
-              <Breadcrumbs links={[{ text: "Videos" }]} />
+              <Breadcrumbs links={[{ text: "Video Library" }]} />
             </motion.div>
             <motion.p
               variants={transitions.item}
               className="tw-heading-3 md:tw-heading-2 mt-16 mb-0 md:ml-1/12"
             >
-              Videos
+              Video Library
             </motion.p>
           </section>
           <section className="max-w-page px-6 mb-10 md:px-12.5 md:mx-auto">
@@ -88,7 +75,7 @@ function Videos() {
               <div className="flex gap-3 flex-wrap flex-1">
                 <button
                   className={clsx(
-                    "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                    "inline-block font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                     !queryTag ? "text-white bg-infinite" : "text-black bg-white"
                   )}
                   onClick={() => setQueryTag(undefined)}
@@ -98,7 +85,7 @@ function Videos() {
                 {tags.map((tag) => (
                   <button
                     className={clsx(
-                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                      "inline-block  font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                       tag.toLowerCase() === queryTag?.toLowerCase()
                         ? "text-white bg-infinite"
                         : "text-black bg-white"
