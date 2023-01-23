@@ -326,10 +326,11 @@ function SnsFaqPage() {
               </p>
               <p>
                 From a user's vantage point, the Community Fund is a way for
-                people to who stake ICP in the NNS to use their maturity to fund
-                future SNSs. This is particularly helpful for people who want to
-                leverage the broader community's "wisdom of crowds" to decide
-                which SNS tokens to acquire.
+                people who stake ICP in the NNS to use their maturity to fund
+                future SNSs, which results in higher diversification. As the NNS
+                decides how the Community Fund is distributed, those participating
+                in it can leverage the broader community's "wisdom of crowds"
+                to decide which SNS tokens to acquire.
               </p>
               You can find out more about the community fund{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
@@ -528,7 +529,7 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How do I create a proposal for an SNS DAO?">
               <p>
-                Creating an SNS proposal requires one to be familiar with the
+                Creating an SNS proposal requires knowledge of the
                 command line tools{" "}
                 <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
                 <Link href="https://github.com/dfinity/sns-quill">quill</Link>.
