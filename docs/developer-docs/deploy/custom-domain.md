@@ -22,28 +22,45 @@ can serve a custom service worker).
 
 ## Custom Domains on the Boundary Nodes
 
-1. Configure the DNS record of your domain (e.g., `foo.com`)
-    * Add a `CNAME` entry for your domain (e.g., `foo.com`) pointing to `APPLICATION_DOMAIN` such that all the traffic destined to your domain is redirected to the boundary nodes;
-    * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.foo.com`);
-    * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.foo.com`) pointing to `DELEGATION_DOMAIN` in order for the boundary nodes to acquire the certificate.
-1. Create a file named `custom-domains` in your canister under `.well-known` containing the custom domain (e.g., `foo.com`).
-1. Register the domain with the boundary nodes by issuing the following command and replacing `{{ custom domain }}` with your custom domain (e.g., `foo.com`).
+In the following, we first provide list all the steps necessary to register your
+custom domain with the boundary nodes. Then, we illustrate these instructions on
+a concrete example.
+
+### Step-by-Step Instructions
+
+1. Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
+    * Add a `CNAME` entry for your domain pointing to `ic0.app` such that all the traffic destined to your domain is redirected to the boundary nodes;
+    * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
+    * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
+1. Create a file named `custom-domains` in your canister under `.well-known` containing the custom domain.
+    * By default, `dfx` excludes all files and directories, whose names starts with a `.`, from the asset canister. Hence, to include the `custom-domains`-file, you need to create an additional file, called `.ic-assets.json`.
+    * Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`..
+    * Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json`-file:
+        ```
+        [
+            {
+                "match": ".well-known",
+                "ignore": false
+            }
+        ]
+        ```
+1. Register the domain with the boundary nodes by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        APPLICATION_DOMAIN/registrations \
+        ic0.app/registrations \
         --data @- <<EOF
     {
-        "name": "{{ custom domain }}"
+        "name": "CUSTOM_DOMAIN"
     }
     EOF
     ```
     If the call was successful, you will get a request ID with which you can query the status of your registration request.
     In case the calls failed, you will get an error message explaining why.
-1. Check the status of your registration request by issuing the following command and replacing `{{ request ID }}` with the ID you received in the previous step.
+1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
     ```
     curl -sLv -X GET \
-        APPLICATION_DOMAIN/registrations/{{ request ID }}
+        ic0.app/registrations/REQUEST_ID
     ```
     The status will be one of the following:
     * `pendingOrder`: The registration request has been submitted and is waiting to be picked up.
@@ -52,6 +69,44 @@ can serve a custom service worker).
     * `available`: The registration request has been successfully processed.
     * `failed`: The registration request failed.
 1. Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. After that, you should be able to access your canister using the custom domain.
+
+### Concrete Example
+
+Imagine you wanted to register your domain `foo.bar.com` for your canister with the canister ID `hwvjt-wqaaa-aaaam-qadra-cai`.
+
+1. DNS Configuration:
+    | Record Type   | Host                        | Value                               |
+    |---------------|-----------------------------|-------------------------------------|
+    | `CNAME`       | foo.bar.com                 | ic0.app                             |
+    | `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
+    | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
+
+    Note: Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` for the first `CNAME` instead of `foo.bar.com`.
+2. `.well-known/custom-domains`
+    * Create the `custom-domains` file with the following content in the `.well-known` directory:
+        ```
+        foo.bar.com
+        ```
+    * Create the `.ic-assets.json` file at the root of the canister source:
+        ```
+        [
+            {
+                "match": ".well-known",
+                "ignore": false
+            }
+        ]
+        ```
+3. Start the registration process:
+    ```sh
+    curl -sLv -X POST \
+        -H 'Content-Type: application/json' \
+        ic0.app/registrations \
+        --data @- <<EOF
+    {
+        "name": "foo.bar.com"
+    }
+    EOF
+    ```
 
 ## Custom Domains using your Own Infrastructure
 
