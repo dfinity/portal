@@ -96,6 +96,15 @@ so in `dfx.json` you can add the following configuration in the `defaults` secti
         "nodes": ["127.0.0.1:18444"]
     }
 
+Make sure you also add the following entry for the networks configuration (change the port if you don't run your replica on the default port):
+```
+    "networks": {
+        "local": {
+            "bind": "127.0.0.1:4943"
+        }
+    }
+```
+
 The example code already includes this in its `dfx.json`.
 
 ### Deploying in `regtest` Mode

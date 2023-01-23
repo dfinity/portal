@@ -23,6 +23,7 @@ import {
   RustLink,
   YoutubeLink,
 } from "@site/src/components/Common/CardIcons";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function Samples(): JSX.Element {
   resetNavBarStyle();
@@ -98,21 +99,8 @@ function Samples(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-tooling.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-tooling.jpeg"
-          }
-        />
-        <title>Developer Tools</title>
-      </Head>
+      <ShareMeta image="https://internetcomputer.org/img/shareImages/share-tooling.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <section className="max-w-page w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">
@@ -152,7 +140,7 @@ function Samples(): JSX.Element {
                 <div className="flex gap-2 flex-wrap flex-1 items-center">
                   <button
                     className={clsx(
-                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                      "inline-block font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                       !queryTag
                         ? "text-white bg-infinite"
                         : "text-black bg-white"
@@ -164,7 +152,7 @@ function Samples(): JSX.Element {
                   {tags.map((tag) => (
                     <button
                       className={clsx(
-                        "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                        "inline-block font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                         tag === queryTag
                           ? "text-white bg-infinite"
                           : "text-black bg-white"

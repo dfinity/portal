@@ -263,6 +263,7 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "samples/deploying-your-first-bitcoin-dapp",
             "developer-docs/integrations/bitcoin/local-development",
           ],
         },
