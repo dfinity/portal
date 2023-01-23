@@ -44,6 +44,7 @@ a concrete example.
             }
         ]
         ```
+    * Deploy the updated canister.
 1. Register the domain with the boundary nodes by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
     ```sh
     curl -sLv -X POST \
@@ -96,6 +97,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
             }
         ]
         ```
+    * Deploy the updated canister.
 3. Start the registration process:
     ```sh
     curl -sLv -X POST \
