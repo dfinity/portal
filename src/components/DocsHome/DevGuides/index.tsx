@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
+import SmallCard from "../Cards/SmallCard";
 
 function Index() {
   return (
@@ -20,37 +21,20 @@ function Index() {
         </Link>
       </motion.div>
       <div className={styles.cards}>
-        <motion.a
-          variants={transitions.item}
-          href={"/docs/current/developer-docs/setup/"}
-          className={clsx(styles.card, styles.cardHover)}
+        <SmallCard
+          href="/docs/current/tutorials/deploy_sample_app"
+          title="Set up development environment"
         >
-          <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>
-              Set up development environment
-            </p>
-            <p className={styles.informationBody}>
-              Install SDK, understand the project structure, acquire cycles, and
-              deploy to production.
-            </p>
-          </div>
-          <RightArrowSVG className={styles.informationIcon} />
-        </motion.a>
-        <motion.a
-          variants={transitions.item}
-          href={"/docs/current/developer-docs/build/backend/"}
-          className={clsx(styles.card, styles.cardHover)}
+          Install SDK, understand the project structure, acquire cycles, and
+          deploy to production.
+        </SmallCard>
+        <SmallCard
+          href="/docs/current/developer-docs/build/backend/"
+          title="Build dapp backend"
         >
-          <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>Build dapp backend</p>
-            <p className={styles.informationBody}>
-              Learn how to create Internet Computer Canisters using Motoko and
-              Rust programming languages
-            </p>
-          </div>
-          {/* <img className={styles.motokoBackground} src={motokoBG} alt="" /> */}
-          <RightArrowSVG className={styles.informationIcon} />
-        </motion.a>
+          Learn how to create Internet Computer Canisters using Motoko and Rust
+          programming languages
+        </SmallCard>
       </div>
     </AnimateSpawn>
   );

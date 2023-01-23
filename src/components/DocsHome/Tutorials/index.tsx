@@ -1,11 +1,10 @@
 import Link from "@docusaurus/Link";
 import styles from "@site/src/components/DevelopersHome/SampleCode/index.module.css";
-import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import transitions from "@site/static/transitions.json";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
+import SmallCard from "../Cards/SmallCard";
 
 function Index() {
   return (
@@ -21,35 +20,21 @@ function Index() {
         </Link>
       </motion.div>
       <div className={styles.cards}>
-        <motion.a
-          variants={transitions.item}
-          href={"/docs/current/tutorials/deploy_sample_app"}
-          className={clsx(styles.card, styles.cardHover)}
+        <SmallCard
+          href="/docs/current/tutorials/deploy_sample_app"
+          title="Deploy your first dapp"
         >
-          <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>Deploy your first dapp</p>
-            <p className={styles.informationBody}>
-              Install SDK, create a sample app, and deploy it to the production
-              with three simple steps.
-            </p>
-          </div>
-          <RightArrowSVG className={styles.informationIcon} />
-        </motion.a>
-        <motion.a
-          variants={transitions.item}
-          href={"/docs/current/tutorials/create_your_first_app/"}
-          className={clsx(styles.card, styles.cardHover)}
+          Install SDK, create a sample app, and deploy it to the production with
+          three simple steps.
+        </SmallCard>
+
+        <SmallCard
+          href="/docs/current/tutorials/create_your_first_app"
+          title="Create your first app"
         >
-          <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>Create your first app</p>
-            <p className={styles.informationBody}>
-              Create your the first app with Motoko programming language and
-              build the app frontend with Vue.js
-            </p>
-          </div>
-          {/* <img className={styles.motokoBackground} src={motokoBG} alt="" /> */}
-          <RightArrowSVG className={styles.informationIcon} />
-        </motion.a>
+          Create your the first app with Motoko programming language and build
+          the app frontend with Vue.js
+        </SmallCard>
       </div>
     </AnimateSpawn>
   );
