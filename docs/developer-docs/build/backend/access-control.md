@@ -26,7 +26,7 @@ Before starting the tutorial, verify the following:
 
 - You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 
-- You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](/developer-docs/setup/vs-code-plugin.md) if you are using Visual Studio Code as your IDE.
+- You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
 - You have stopped any local canister execution environment processes running on your computer.
 
