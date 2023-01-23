@@ -22,10 +22,11 @@ const container = {
     transition: { duration: 0.6, y: { duration: 0.3 } },
   },
 };
-const IntraPageNav: React.FC<{ links: SectionLink[]; label: string }> = ({
-  links,
-  label,
-}) => {
+const IntraPageNav: React.FC<{
+  links: SectionLink[];
+  label?: string;
+  hasHome?: boolean;
+}> = ({ links, label = "Scroll To Section", hasHome = true }) => {
   const [display, setDisplay] = useState(false);
   const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -99,7 +100,7 @@ const IntraPageNav: React.FC<{ links: SectionLink[]; label: string }> = ({
             >
               <div className={styles.desktopContainer}>
                 <div className={styles.grid}>
-                  <Link to={"/"} className={styles.dfinityLink} />
+                  {hasHome && <Link to={"/"} className={styles.dfinityLink} />}
                   {links.map(({ text, to }) => (
                     <Link key={to} to={to}>
                       <span>{text}</span>

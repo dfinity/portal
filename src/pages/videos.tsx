@@ -71,7 +71,7 @@ function Videos() {
               variants={transitions.item}
               className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             >
-              <Breadcrumbs links={[{ text: "Videos", href: "/videos" }]} />
+              <Breadcrumbs links={[{ text: "Videos" }]} />
             </motion.div>
             <motion.p
               variants={transitions.item}
