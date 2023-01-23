@@ -37,7 +37,6 @@ function Index() {
                 { text: "How it works", href: "/how-it-works" },
                 {
                   text: article.title,
-                  href: location.pathname,
                 },
               ]}
             />
