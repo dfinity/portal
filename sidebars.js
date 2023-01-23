@@ -230,10 +230,10 @@ const sidebars = {
                  label: 'Integrate with an SNS',
                  link: {
                    type: "doc",
-                   id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+                   id: "developer-docs/integrations/sns/integrate-sns/index-integration",
                  },
                  items: [
-                   "developer-docs/integrations/sns/integrate-sns/index-integration",
+                   { type: "ref", id: "developer-docs/integrations/sns/integrate-sns/index-integration" },
                    "developer-docs/integrations/sns/integrate-sns/ledger-integration"
  //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
                  ],
@@ -263,6 +263,7 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "samples/deploying-your-first-bitcoin-dapp",
             "developer-docs/integrations/bitcoin/local-development",
           ],
         },
@@ -581,6 +582,7 @@ const sidebars = {
     "samples/token-transfer",
     "samples/host-a-webgame",
     "samples/hackathon-projects",
+    "samples/ios-integration",
   ],
 };
 

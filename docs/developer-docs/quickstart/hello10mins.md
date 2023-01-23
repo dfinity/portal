@@ -503,7 +503,7 @@ Note the way the message is constructed:
 
 -   `dfx canister --network ic call` is the setup for calling a canister on the IC.
 
--   `hello_backend greet` means we are sending a message to a canister named `hello` and evoking its `greet` method. `dfx` knows which `hello` canister (out of the many in the IC), one refers to because a mapping of `hello` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
+-   `hello_backend greet` means we are sending a message to a canister named `hello_backend` and evoking its `greet` method. `dfx` knows which `hello_backend` canister (out of the many in the IC), one refers to because a mapping of `hello_backend` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
 
 -   `'("everyone": text)'` is the parameter we are sending to `greet` (which accepts `Text` as its only input).
 

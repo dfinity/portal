@@ -135,6 +135,7 @@ const redirects = `
   /docs/samples/dao /docs/current/samples/dao
   /docs/samples/dex /docs/current/samples/dex
   /docs/samples/encrypted-notes /docs/current/samples/encrypted-notes
+  /docs/samples/ios-integration /docs/current/samples/ios-integration
   /docs/samples/hackathon-projects /docs/current/samples/hackathon-projects
   /docs/samples/hello /docs/current/samples/hello
   /docs/samples/host-a-website /docs/current/samples/host-a-website

@@ -36,7 +36,7 @@ const cardsContent = [
   },
 ];
 
-function Card({ title, body }) {
+export function Card({ title, body }) {
   return (
     <>
       <div className={styles.cardContainer}>
