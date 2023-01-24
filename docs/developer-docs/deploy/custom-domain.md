@@ -71,6 +71,10 @@ a concrete example.
     * `failed`: The registration request failed.
 1. Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. After that, you should be able to access your canister using the custom domain.
 
+:::note
+In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `ic0.app`.
+:::
+
 ### Concrete Example
 
 Imagine you wanted to register your domain `foo.bar.com` for your canister with the canister ID `hwvjt-wqaaa-aaaam-qadra-cai`.
