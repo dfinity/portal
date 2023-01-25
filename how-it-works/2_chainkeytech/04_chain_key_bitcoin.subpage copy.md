@@ -2,7 +2,7 @@
 title: Chain-key Tokens
 abstract:
 shareImage: /img/how-it-works/direct-integration-with-bitcoin.600.jpg
-slug: chain_key_tokens
+slug: chain-key-tokens
 ---
 
 # Chain-key Tokens
