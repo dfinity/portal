@@ -24,13 +24,13 @@ For more information about approaches to cold storage and best practices for sec
 
 The most common types of cold storage include the following:
 
--   [Hardware wallets](#_hardware_wallets)
+-   Hardware wallets
 
--   [Air-gapped computers](#_air_gapped_computers)
+-   Air-gapped computers
 
--   [Paper wallets](#_paper_wallets)
+-   Paper wallets
 
-### Hardware wallets (#_hardware_wallets)
+### Hardware wallets
 
 A **hardware wallet** is a physical device that holds your digital assets. Private keys are stored in a secure part of the device that does not come into contact with the internet. The partitioned storage on the physical device reduces the risks that are associated with devices connected to the internet. Because you are relying on a physical device, however, losing the device also means losing access to your digital assets.
 
@@ -38,7 +38,7 @@ In most cases, you can recover from the loss of a hardware wallet because the as
 
 For more information, see [Crypto Wallets, Explained](https://cointelegraph.com/explained/crypto-wallets-explained).
 
-### Air-gapped computers (#_air_gapped_computers)
+### Air-gapped computers
 
 An **air-gapped computer** is isolated from insecure networks that interact with the internet or unsecured local area networks in your home.
 
@@ -46,7 +46,7 @@ Converting a standard personal computer or similar device into an air-gapped com
 
 Depending on how secure you want your air-gapped computer to be, one option is to use a bootable image that provides a minimal operating system to collect your digital assets then remove any artifacts from that process and reboot the computer normally after completing any transaction. For more information, see [Extreme Security Measures for the Extra Paranoid](https://www.wired.com/story/extreme-security-measures/) and [The Ultimate Defense: What Is an Air Gapped Computer?](https://www.howtogeek.com/687792the-ultimate-defense-what-is-an-air-gapped-computer/).
 
-### Paper wallets (#_paper_wallets)
+### Paper wallets
 
 A **paper wallet** is a piece of printed paper that contains your important key information (in some cases, even a QR code) and is used for facilitating digital asset transactions. Paper wallets are often not recommended because they are susceptible to degradation and could be insecure or lost or stolen easily.
 
