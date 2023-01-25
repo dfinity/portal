@@ -1,8 +1,8 @@
 ---
-title: Chain-key Bitcoin
+title: Chain-key Tokens
 abstract:
 shareImage: /img/how-it-works/direct-integration-with-bitcoin.600.jpg
-slug: chain_key_bitcoin
+slug: chain_key_tokens
 ---
 
 # Chain-key Tokens
