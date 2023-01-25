@@ -173,7 +173,7 @@ Here is a description of how a contribution should be made to the developer port
 The [agents](https://internetcomputer.org/docs/current/developer-docs/build/agents) and [CDKs](https://internetcomputer.org/docs/current/developer-docs/build/cdks) sections should not only contain docs for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
-- link to their own agents or CDKs on the respective index pages (the files to be edited are in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/build/cdks/index.md`)
+- link to their own agents or CDKs on the respective index pages (the files to be edited are in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/backend/choosing-language.md`)
 - add their own documentation as a folder under `Agents` or `CDKs`
 
 ## Community-created Developer tools

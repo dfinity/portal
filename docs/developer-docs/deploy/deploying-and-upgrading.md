@@ -16,7 +16,7 @@ Once a canister is at the end of its lifecycle, it can be deleted. Before doing 
 
 ### Deploying code
 
-While canisters can run arbitrary WebAssembly (WASM) modules, the Internet Computer has a few conventions that make it easier to get the most out of its capabilities. For example, the function `canister_init` is the first function that gets called after the code is installed for the first time. To facilitate adhering to those conventions, Canister Development Kits (CDKs) exist for [many different languages](../build/cdks/index.md).
+While canisters can run arbitrary WebAssembly (WASM) modules, the Internet Computer has a few conventions that make it easier to get the most out of its capabilities. For example, the function `canister_init` is the first function that gets called after the code is installed for the first time. To facilitate adhering to those conventions, Canister Development Kits (CDKs) exist for [many different languages](../backend/choosing-language.md).
 
 To install code in a canister, the `install_code` function of the Internet Computer is used in one of three modes:
 - The `install` mode is the one every canister starts with: it is only callable for canisters without any installed code and populates the canister with the supplied WASM module. Once installation is complete, the aforementioned function `canister_init` (usually exposed as `init` in CDKs) is called if it exists. This allows the code to perform any required setup before any calls arrive.
@@ -63,5 +63,5 @@ Here is a checklist of the things you will need to consider:
 
 - [ ] How much trust does this project require?
 - [ ] How can I demonstrate that the canisters do what they are supposed to do?
-  * The sections [Trust in Canisters](/concepts/trust-in-canisters.md) and [Reproducible Builds](../build/backend/reproducible-builds.md) contain information related to this topic.
+  * The sections [Trust in Canisters](/concepts/trust-in-canisters.md) and [Reproducible Builds](../backend/reproducible-builds.md) contain information related to this topic.
 - [ ] How can users trust that the code will not suddenly change?

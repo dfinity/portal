@@ -1,6 +1,6 @@
-# Visual Studio Code
+# Using Visual Studio Code
 
-Visual Studio (VS) Code is a [widely used](https://survey.stackoverflow.co/2022/#section-worked-with-vs-want-to-work-with-integrated-development-environment) open-source IDE which supports canister development in [Motoko](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/) and [Rust](https://www.rust-lang.org/).
+Visual Studio (VS) Code is a [widely used](https://survey.stackoverflow.co/2022/#section-worked-with-vs-want-to-work-with-integrated-development-environment) open-source IDE which supports canister development in [Motoko](https://internetcomputer.org/docs/current/developer-docs/backend/cdks/motoko-dfinity/motoko/) and [Rust](https://www.rust-lang.org/).
 
 ## Motoko
 

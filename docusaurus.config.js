@@ -256,10 +256,6 @@ const config = {
                 type: "doc",
                 docId: "home",
               },
-              {
-                label: "Developer Resources",
-                to: "/developers",
-              },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
@@ -356,10 +352,6 @@ const config = {
                 label: "Internet Computer Home",
                 to: "/",
               },      
-              {
-                label: "Developer Resources",
-                to: "/developers",
-              },
               { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",

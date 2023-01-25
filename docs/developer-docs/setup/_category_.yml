@@ -1,9 +1,9 @@
 label: 'Setting up development environment'
-position: 1
+position: 2
 collapsible: true # make the category collapsible
-collapsed: false # keep the category open by default
-link:
-  type: generated-index
-  title: Setting up development environment
+collapsed: true # keep the category open by default
+# link: 
+#   type: doc
+#   id: index
 customProps:
   description: This description can be used in the swizzled DocCard

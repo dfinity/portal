@@ -1,4 +1,7 @@
-# Service Nervous System
+---
+sidebar_position: 1
+---
+# SNS Introduction
 
 We assume that if you are reading this page you know what a 
 decentralized autonomous organization (DAO) is, 
@@ -6,7 +9,7 @@ you know that a service nervous system (SNS) is a kind of DAO that is
 provided on the IC, and that you want to learn how you can get a DAO
 for your dapp. 
 If this is not (yet) the case, you can learn all about DAOs and SNSs
-[here](../../../tokenomics/sns/sns-intro-tokens.md),
+[here](./tokenomics/sns-intro-tokens.md),
 including what advantages such decentralized governance systems have.
 
 ## How to get and maintain a DAO - different options _{#gettingDAOoptions}_
@@ -26,7 +29,7 @@ your dapp.
    is running on the SNS subnet and infer that the underlying code has been approved
    by the NNS community.
    
-<!-- An SNS is a DAO that is realized by a set of  [canister smart contracts](/references/ic-interface-spec.md#overview_of_the_internet_computer).
+<!-- An SNS is a DAO that is realized by a set of  canister smart contracts(/references/ic-interface-spec.md#overview_of_the_internet_computer).
 In general, installing and maintaining multiple canisters that must be compatible with
 each other is not a simple task.
 On upgrading each of the canisters one has to be careful not to break any functionality
@@ -153,8 +156,6 @@ In the future, cycles management will be simplified in a new feature that
 allows canister groups, where cycles can be managed across different canisters.
 
 We plan to create separate pages where you will be able to
-find more details regarding <!--[how 
-to upgrade SNS canisters](./managing-sns/upgradeSNS.md),
-[set SNS parameters](./managing-sns/nervous-system-parameters.md),-->
+find more details regarding <!--how to upgrade SNS canisters(./managing-sns/upgradeSNS.md), set SNS parameters(./managing-sns/nervous-system-parameters.md),-->
 how to upgrade SNS canisters, set SNS parameters,
 and [manage cycles](./managing-sns/cycles-usage.md).

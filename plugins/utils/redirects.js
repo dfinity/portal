@@ -3,20 +3,20 @@ const redirects = `
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
-  /docs/candid-guide/candid-concepts /docs/current/developer-docs/build/candid/candid-concepts
-  /docs/candid-guide/candid-howto /docs/current/developer-docs/build/candid/candid-howto
-  /docs/candid-guide/candid-intro /docs/current/developer-docs/build/candid/candid-intro
+  /docs/candid-guide/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
+  /docs/candid-guide/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
+  /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/candid-intro
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
   /docs/current/developer-docs /docs/current/tutorials/deploy_sample_app
-  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/build/candid/:splat
+  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
-  /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/build/cdks/cdk-rs-dfinity
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/build/agents
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/build/agents
-  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/build/agents
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
@@ -31,38 +31,38 @@ const redirects = `
   /docs/developers-guide/concepts/tokens-cycles /docs/current/concepts/tokens-cycles
   /docs/developers-guide/concepts/trust-in-canisters /docs/current/concepts/trust-in-canisters
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
-  /docs/developers-guide/customize-projects /docs/current/developer-docs/build/project-setup/manage-projects
-  /docs/developers-guide/default-wallet /docs/current/developer-docs/build/project-setup/cycles-wallet
-  /docs/current/developer-docs/build/project-setup/default-wallet /docs/current/developer-docs/build/project-setup/cycles-wallet
-  /docs/developers-guide/design-apps /docs/current/developer-docs/build/project-setup/design-dapps
+  /docs/developers-guide/customize-projects /docs/current/developer-docs/setup/manage-projects
+  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles-wallet
+  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles-wallet
+  /docs/developers-guide/design-apps /docs/current/developer-docs/best-practices/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
-  /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/build/install-upgrade-remove
-  /docs/developers-guide/lang-service-ide /docs/current/developer-docs/build/lang-service-ide
-  /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/build/install-upgrade-remove
+  /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/developers-guide/lang-service-ide /docs/current/developer-docs/setup/vs-code
+  /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/setup/install-upgrade-remove
   /docs/developers-guide/sample-apps /samples/
-  /docs/developers-guide/sdk-guide /docs/current/developer-docs/build/install-upgrade-remove
-  /docs/developers-guide/troubleshooting /docs/current/developer-docs/build/troubleshooting
-  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/build/backend/
-  /docs/developers-guide/tutorials/access-control /docs/current/developer-docs/build/backend/access-control
-  /docs/developers-guide/tutorials/at-a-glance /docs/current/developer-docs/build/backend/at-a-glance
-  /docs/developers-guide/tutorials/calculator /docs/current/developer-docs/build/backend/calculator
-  /docs/developers-guide/tutorials/counter-tutorial /docs/current/developer-docs/build/backend/counter-tutorial
-  /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/build/frontend/custom-frontend
-  /docs/developers-guide/tutorials/define-an-actor /docs/current/developer-docs/build/backend/define-an-actor
-  /docs/developers-guide/tutorials/explore-templates /docs/current/developer-docs/build/backend/explore-templates
-  /docs/developers-guide/tutorials/hello-location /docs/current/developer-docs/build/backend/hello-location
-  /docs/developers-guide/tutorials/intercanister-calls /docs/current/developer-docs/build/backend/intercanister-calls
-  /docs/developers-guide/tutorials/multiple-actors /docs/current/developer-docs/build/backend/multiple-actors
-  /docs/developers-guide/tutorials/multiple-factorial-actors /docs/current/developer-docs/build/backend/multiple-factorial-actors
-  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/build/frontend/my-contacts
-  /docs/developers-guide/tutorials/phonebook /docs/current/developer-docs/build/backend/phonebook
-  /docs/developers-guide/tutorials/reproducible-builds /docs/current/developer-docs/build/backend/reproducible-builds
-  /docs/developers-guide/tutorials/scalability-cancan /docs/current/developer-docs/build/backend/scalability-cancan
-  /docs/developers-guide/tutorials/simple-cycles /docs/current/developer-docs/build/backend/simple-cycles
-  /docs/developers-guide/webpack-config /docs/current/developer-docs/build/frontend/webpack-config
-  /docs/developers-guide/work-with-languages /docs/current/developer-docs/build/agents
-  /docs/developers-guide/working-with-canisters /docs/current/developer-docs/build/project-setup/manage-canisters
-  /docs/download /docs/current/developer-docs/build/install-upgrade-remove
+  /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/developers-guide/troubleshooting /docs/current/developer-docs/backend/troubleshooting
+  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/backend-tutorials/
+  /docs/developers-guide/tutorials/access-control /docs/current/developer-docs/backend/backend-tutorials/access-control
+  /docs/developers-guide/tutorials/at-a-glance /docs/current/developer-docs/backend/backend-tutorials/at-a-glance
+  /docs/developers-guide/tutorials/calculator /docs/current/developer-docs/backend/backend-tutorials/calculator
+  /docs/developers-guide/tutorials/counter-tutorial /docs/current/developer-docs/backend/backend-tutorials/counter-tutorial
+  /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
+  /docs/developers-guide/tutorials/define-an-actor /docs/current/developer-docs/backend/backend-tutorials/define-an-actor
+  /docs/developers-guide/tutorials/explore-templates /docs/current/developer-docs/backend/backend-tutorials/explore-templates
+  /docs/developers-guide/tutorials/hello-location /docs/current/developer-docs/backend/backend-tutorials/hello-location
+  /docs/developers-guide/tutorials/intercanister-calls /docs/current/developer-docs/backend/backend-tutorials/intercanister-calls
+  /docs/developers-guide/tutorials/multiple-actors /docs/current/developer-docs/backend/backend-tutorials/multiple-actors
+  /docs/developers-guide/tutorials/multiple-factorial-actors /docs/current/developer-docs/backend/backend-tutorials/multiple-factorial-actors
+  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/my-contacts
+  /docs/developers-guide/tutorials/phonebook /docs/current/developer-docs/backend/backend-tutorials/phonebook
+  /docs/developers-guide/tutorials/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
+  /docs/developers-guide/tutorials/scalability-cancan /docs/current/developer-docs/backend/backend-tutorials/scalability-cancan
+  /docs/developers-guide/tutorials/simple-cycles /docs/current/developer-docs/backend/backend-tutorials/simple-cycles
+  /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/webpack-config
+  /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
+  /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
+  /docs/download /docs/current/developer-docs/setup/install-upgrade-remove
   /docs/http-middleware /docs/current/home
   /docs/ic-identity-guide/auth-how-to /docs/current/tokenomics/identity-auth/auth-how-to
   /docs/ic-identity-guide/hello-guide /docs/current/tokenomics/identity-auth/hello-guide
@@ -101,7 +101,7 @@ const redirects = `
   /docs/language-guide/structural-equality /docs/current/motoko/main/structural-equality
   /docs/language-guide/style /docs/current/motoko/main/style
   /docs/language-guide/upgrades /docs/current/motoko/main/upgrades
-  /docs/languages/languages-overview /docs/current/developer-docs/build/cdks/
+  /docs/languages/languages-overview /docs/current/developer-docs/backend/choosing-language
   /docs/operators-guide/ops-guide /docs/current/home
   /docs/quickstart/1-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/2-quickstart /docs/current/tutorials/deploy_sample_app
@@ -121,12 +121,12 @@ const redirects = `
   /docs/rosetta-api/staking-support /docs/current/developer-docs/integrations/rosetta/staking-support
   /docs/rosetta-api/staking-tutorial /docs/current/developer-docs/integrations/rosetta/staking-tutorial
   /docs/rosetta-api/transfers /docs/current/developer-docs/integrations/rosetta/transfers
-  /docs/rust-guide/multiply-dependency /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/multiply-dependency
-  /docs/rust-guide/rust-counter /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-counter
-  /docs/rust-guide/rust-intro /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/
-  /docs/rust-guide/rust-optimize /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-optimize
-  /docs/rust-guide/rust-profile /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-profile
-  /docs/rust-guide/rust-quickstart /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart
+  /docs/rust-guide/multiply-dependency /docs/current/developer-docs/backend/rust/multiply-dependency
+  /docs/rust-guide/rust-counter /docs/current/developer-docs/backend/rust/rust-counter
+  /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
+  /docs/rust-guide/rust-optimize /docs/current/developer-docs/backend/rust/rust-optimize
+  /docs/rust-guide/rust-profile /docs/current/developer-docs/backend/rust/rust-profile
+  /docs/rust-guide/rust-quickstart /docs/current/developer-docs/backend/rust/rust-quickstart
   /docs/samples/codelabs /samples/
   /docs/samples/codelabs/data-persistence /samples/
   /docs/samples/codelabs/minimalistic-motoko-dapp /samples/
@@ -158,7 +158,6 @@ const redirects = `
   /howitworks /how-it-works
   /howitworks/* /how-it-works/:splat
   /features/green /features/sustainability
-  /docs/ic-identity-guide/what-is-ic-identity /docs/current/tokenomics/identity-auth/what-is-ic-identity
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   /showcase /ecosystem
   `

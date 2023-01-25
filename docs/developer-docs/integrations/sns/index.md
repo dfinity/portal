@@ -33,10 +33,10 @@ In this documentation you will find
       which can be found under the "DAO and Tokenomics" documentation
       targeted at a less technical audience.
     * [Steps to Test the SNS locally](get-sns/local-testing.md)
-    * Steps how to get an SNS in production <!--[Steps how to get an SNS in production](get-sns/get-sns-production.md)-->
+    * Steps how to get an SNS in production <!--Steps how to get an SNS in production-->
   
 * Tips for how to **integrate with an SNS**, which includes
-  * Guidelines how to integrate a frontend <!--[Guidelines how to integrate a frontend](integrate-sns/frontend-integration.md)-->
+  * Guidelines how to integrate a frontend <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
   * [Guidelines how to integrate with the ledger canister](integrate-sns/ledger-integration.md)
   * [Guidelines how to integrate with the index canister](integrate-sns/index-integration.md)
 
@@ -44,10 +44,9 @@ In this documentation you will find
   * [An introduction to managing an SNS](managing-sns/manage-sns-intro.md)
   * [Tips regarding cycles management for the cansiters](managing-sns/cycles-usage.md)
   * Information on nervous system parameters that can be configured
-    in each SNS <!--[Information on nervous system parameters that can be configured
-    in each SNS](managing-sns/nervous-system-parameters.md)-->
-  * Information on how SNS are upgraded <!--[Information on how SNS are upgraded](managing-sns/upgradeSNS.md)-->  
-  * A guideline for SNS proposals <!--[A guideline for SNS proposals](managing-sns/proposal-guide.md)-->
+    in each SNS <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md)-->
+  * Information on how SNS are upgraded <!--Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->  
+  * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
  
 ## DAOs and Tokenomics documentation 
 This documentation is less technical.
@@ -57,10 +56,10 @@ It also targets interested developers who would like to understand
 the tokenomics of an SNS better.
 
 In this documentation you will find
-* [An introduction to DAOs and SNSs](../../../tokenomics/sns/sns-intro-tokens.md)
-* [An introduction to tokenomics of DAOs](../../../tokenomics/sns/tokenomics.md)
-* [An introduction to SNS rewards](../../../tokenomics/sns/rewards.md)
-* [Tips on what to consider before getting an SNS](../../../tokenomics/sns/predeployment-considerations.md)
+* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
+* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
+* [An introduction to SNS rewards](./tokenomics/rewards.md)
+* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
 
 ## User Guides

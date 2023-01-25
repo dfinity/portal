@@ -158,7 +158,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
+              href="/docs/current/developer-docs/backend/cdks/"
             />
             <CardWithDescription
               title="Sample Code"

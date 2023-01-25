@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Considerations for NFT developers
 
 ## What is an NFT?

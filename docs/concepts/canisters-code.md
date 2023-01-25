@@ -76,7 +76,7 @@ As a modern, high-level programming language, Motoko provides some key features 
 
 For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).
 
-For information about Canister Development Kits (CDKs) supporting other programming languages, see this [*Overview*](../developer-docs/build/cdks/index.md).
+For information about Canister Development Kits (CDKs) supporting other programming languages, see this [*Overview*](../developer-docs/backend/choosing-language.md).
 
 The following diagram provides a simplified drill-down view of the development environment as part of the Internet Computer ecosystem.
 

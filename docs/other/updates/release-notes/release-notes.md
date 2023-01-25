@@ -2182,7 +2182,7 @@ This section covers any known issues or limitations that might affect how you wo
 
 The introduction of the cycles wallet canister changes the default principal used to perform key canister management tasks, such as registering a new canister identifier and deploying a new canister on the Internet Computer. This change introduces some inconsistencies in the identity used to perform certain tasks and can result in potential access control issues.
 
-You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](/developer-docs/build/backend/access-control.md) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](/developer-docs/build/backend/index.md) tutorial, you should install the SDK version 0.6.23 (or older).
+You should note that none of the tutorials have been updated to reflect this specific change in behavior yet and the current version of the [Add access control with identities](/developer-docs/backend/backend-tutorials/access-control.md) tutorial is known to be invalid for this release. If you want to experiment with access control using the [Add access control with identities](/developer-docs/backend/backend-tutorials/index.md) tutorial, you should install the SDK version 0.6.23 (or older).
 
 #### Incompatibility when using the JavaScript agent directly in a project
 
@@ -2202,7 +2202,7 @@ The most significant new features and capabilities include the following updates
 
     You can now use the `CANISTER_ID_{canister.name}` and `CANISTER_CANDID_PATH_{canister.name}` environment variables to reference canister identifiers and the path to the canister Candid description (`.did` file) during the build process. These environment variables enable you to construct the JavaScript for frontend assets using the correct canister identifiers.
 
-    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](/developer-docs/build/frontend/webpack-config.md) which is being deprecated and will be removed in a future release.
+    The environment variables are intended to replace the `import` syntax for dependent canisters described in [Entry and output configuration](/developer-docs/frontend/webpack-config.md) which is being deprecated and will be removed in a future release.
 
 -   A new `dfx identity import` subcommand enables you to import a security certificate to create an identity.
 
@@ -2348,7 +2348,7 @@ The command is only applicable if you received the wallet canister identifier as
 ### Candid 
 
 
--   New [Candid documentation](/developer-docs/build/candid/candid-intro.md) for
+-   New [Candid documentation](/developer-docs/backend/candid/candid-intro.md) for
     developers provides type mapping information for Rust and
     JavaScript.
 

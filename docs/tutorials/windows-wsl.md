@@ -37,7 +37,7 @@ For example `Ubuntu.exe` is the command to start the `Ubuntu` distribution from 
 
 ## Installing dfx
 
-Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](/developer-docs/build/install-upgrade-remove.mdx).
+Once you have WSL installed, you can install `dfx` within your WSL Linux terminal as described in [Installing the SDK](/developer-docs/setup/install-upgrade-remove.mdx).
 
 ## Troubleshooting
 

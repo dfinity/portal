@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Testing SNS Locally after Choosing Parameters
 
 
@@ -22,7 +25,7 @@ or propose a fix directly through the `edit this page` link at the very bottom o
 
 To deploy and test a local SNS, you will need the following tools:
 
-- [dfx](../../../build/install-upgrade-remove.mdx)
+- [dfx](../../../setup/install-upgrade-remove.mdx)
 - [sns-quill](https://github.com/dfinity/sns-quill)
 
 To install an NNS locally (which is needed to obtain an SNS in the same way that you would get it in production), you have to run your local replica as a
@@ -93,7 +96,7 @@ Make a call to the SNS wasm modules canister on the local NNS to request that an
 Installing the SNS has some preconditions:
 
 1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml` and has to be placed in your project's root directory.
-2. Your [cycles wallet](../../../build//project-setup/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
+2. Your [cycles wallet](../../../setup/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
 3. Your cycles wallet contains enough cycles to create an SNS. Currently, this cost is 180T cycles.
 
 The SNS is new and may still have significant bugs.
@@ -287,7 +290,6 @@ In all different stages, you should also test the user experience, e.g., how the
 interact with the SNS and NNS to complete the different steps and also how they can
 interact with the SNS after it has been successfully launched.
 In particular, if you 
-<!--[chose to integrate some of the SNS or NNS functionality in your dapp frontend](../integrate-sns/frontend-integration.md),-->
 chose to integrate some of the SNS or NNS functionality in your dapp frontend,
 you should test this user experience. 
 As already suggested in some steps, you might also want to test what the interaction would look like on the NNS frontend dapp.

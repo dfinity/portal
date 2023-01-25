@@ -29,7 +29,7 @@ function Index() {
           deploy to production.
         </SmallCard>
         <SmallCard
-          href="/docs/current/developer-docs/build/backend/"
+          href="/docs/current/developer-docs/backend/"
           title="Build dapp backend"
         >
           Learn how to create Internet Computer Canisters using Motoko and Rust

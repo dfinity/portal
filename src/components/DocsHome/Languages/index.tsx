@@ -19,7 +19,7 @@ function Index() {
         <p>Programming languages</p>
         <Link
           className={styles.callToAction}
-          to={"/docs/current/developer-docs/build/cdks/"}
+          to={"/docs/current/developer-docs/backend/cdks/"}
         >
           See all languages
         </Link>
@@ -42,7 +42,7 @@ function Index() {
         </motion.a>
         <motion.a
           variants={transitions.item}
-          href={"/docs/current/developer-docs/build/cdks/cdk-rs-dfinity/"}
+          href={"/docs/current/developer-docs/backend/cdks/cdk-rs-dfinity/"}
           className={clsx(styles.card, styles.cardHover)}
         >
           <div className={styles.bodyContainer}>

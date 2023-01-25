@@ -1,0 +1,6 @@
+label: 'Manage an SNS'
+position: 5
+collapsed: true
+link:
+  type: doc
+  id: manage-sns-intro
