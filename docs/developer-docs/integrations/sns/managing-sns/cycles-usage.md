@@ -96,7 +96,7 @@ might be added in the future. Some examples are:
 
 1) Canister groups: Canister groups would allow to manage
    the cycles for groups of canisters rather than for
-   individual cansiters. If all SNS and SNS-governed dapp
+   individual canisters. If all SNS and SNS-governed dapp
    canister could be in the same group, this might considerably
    simplify SNS cycles management.  
    
