@@ -592,7 +592,7 @@ function SnsFaqPage() {
                 <li>
                   An SNS DAO can be set up to mint voting rewards for people
                   who participate in governance (similar to ICP).
-                <li>
+                </li>
                 <li>
                   An SNS DAO can mint tokens if voted on by SNS token holders.
                   For example: a game mints 2% of total supply each year and
@@ -603,7 +603,7 @@ function SnsFaqPage() {
                 Deflationary:
               </p>
               <ul>
-                <li>SNS tokens are burnt for every transaction.<li>
+                <li>SNS tokens are burnt for every transaction.</li>
                 <li>
                   Locking SNS tokens into neurons removes them from circulation.
                   While not technically deflation, it acts as a deflationary pressure.
