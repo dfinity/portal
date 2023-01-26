@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-# Considerations for NFT developers
+# NFT developement
 
 ## What is an NFT?
 

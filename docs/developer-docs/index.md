@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Developer guides
+# Introduction
 
 The Internet Computer blockchain is poised to help you start a revolution with a new way to design, build, and release dapps.
 

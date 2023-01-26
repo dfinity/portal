@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: From JavaScript Frontend
+sidebar_label: From JavaScript
 ---
 # Calling IC from JavaScript Frontend
 
