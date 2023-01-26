@@ -232,18 +232,18 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
               },
-              items: [
-                "developer-docs/integrations/sns/integrate-sns/index-integration",
-                "developer-docs/integrations/sns/integrate-sns/ledger-integration"
-                //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Manage an SNS',
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
+             {
+               type: 'category',
+               label: 'Integrate with an SNS',
+               link: {
+                 type: "doc",
+                 id: "developer-docs/integrations/sns/integrate-sns/index-integration",
+               },
+               items: [
+                 { type: "ref", id: "developer-docs/integrations/sns/integrate-sns/index-integration" },
+                 "developer-docs/integrations/sns/integrate-sns/ledger-integration"
+//                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
+               ],
               },
               items: [
                 "developer-docs/integrations/sns/managing-sns/cycles-usage"
