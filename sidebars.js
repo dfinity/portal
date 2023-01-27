@@ -203,40 +203,40 @@ const sidebars = {
         id: "developer-docs/integrations/index",
       },
       items: [
-        {
-          type: 'category',
-          label: 'Service Nervous System (SNS)',
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/index",
+          {
+            type: 'category',
+            label: 'Service Nervous System (SNS)',
+            link: {
+              type: "doc",
+              id: "developer-docs/integrations/sns/index",
           },
-          items: [
-            "developer-docs/integrations/sns/sns-intro",
-            {
-              type: 'category',
-              label: 'Get an SNS',
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
-              },
-              items: [
-                "developer-docs/integrations/sns/get-sns/preparation",
-                "developer-docs/integrations/sns/get-sns/local-testing"
-                //                "developer-docs/integrations/sns/get-sns/get-sns-production"
-              ],
+            items: [
+              "developer-docs/integrations/sns/sns-intro",
+              {
+                type: 'category',
+                label: 'Get an SNS',
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                },
+                items: [
+                  "developer-docs/integrations/sns/get-sns/preparation",
+                  "developer-docs/integrations/sns/get-sns/local-testing"
+//                "developer-docs/integrations/sns/get-sns/get-sns-production"
+                ],
             },
-            {
-              type: 'category',
-              label: 'Integrate with an SNS',
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
-              },
-             {
-               type: 'category',
-               label: 'Integrate with an SNS',
-               link: {
-                 type: "doc",
+               {
+                 type: 'category',
+                 label: 'Integrate with an SNS',
+                 link: {
+                   type: "doc",
+                   id: "developer-docs/integrations/sns/integrate-sns/index-integration",
+                 },
+                 items: [
+                   { type: "ref", id: "developer-docs/integrations/sns/integrate-sns/index-integration" },
+                   "developer-docs/integrations/sns/integrate-sns/ledger-integration"
+ //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
+                 ],
                  id: "developer-docs/integrations/sns/integrate-sns/index-integration",
                },
                items: [
