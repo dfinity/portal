@@ -220,7 +220,7 @@ The minting account is also the receiver of the fees burnt in regular transfers.
 ## Textual representation of accounts
 
 We specify a _canonical textual format_ that all applications should use to display ICRC-1 accounts.
-This format relies on the textual encoding of principals specified in the [Internet Computer Interface Specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#textual-ids), referred to as `Principal.toText` and `Principal.fromText` below.
+This format relies on the textual encoding of principals specified in the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md#textual-ids), referred to as `Principal.toText` and `Principal.fromText` below.
 The format has the following desirable properties:
 
 1. A textual encoding of any non-reserved principal is a valid textual encoding of the default account of that principal on the ledger.
