@@ -1,4 +1,4 @@
-# Chain-key Bitcoin
+# Chain-Key Bitcoin
 
 Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that
 is backed 1:1 by bitcoin held 100% on chain.
