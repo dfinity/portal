@@ -162,10 +162,10 @@ function SnsFaqPage() {
 
             <Faq title="What is an SNS?">
               <p>
-                SNS stands for Service Nervous System. An SNS is an advanced
+                SNS stands for Service Nervous System. An SNS is a powerful
                 form of DAO that allows communities to govern smart contracts
-                and decentralized apps (dapps) on the Internet Computer (ICP).
-                Main things to note about SNS:
+                and decentralized apps (dapps) running on the Internet Computer
+                (ICP) completely on chain. Main things to note about SNS:
               </p>
               <ul>
                 <li>
@@ -183,7 +183,7 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   There can be many SNSs on ICP. A developer can turn their dapp
-                  into a SNS by handing the control of their dapp over to an SNS
+                  into a DAO by handing the control of their dapp over to an SNS
                   DAO.
                 </li>
               </ul>
@@ -200,7 +200,12 @@ function SnsFaqPage() {
                 </strong>{" "}
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
-                of a dapp, since everything is on-chain.{" "}
+                of a dapp, since everything is on-chain. Having fully on-chain DAOs
+                is important because it enables all decisions to execute on the
+                blockchain. This is in contrast to existing DAOs on other
+                blockchains where voting takes place on-chain but the execution of
+                the results are often carried out by developers off-chain. This
+                facilitates true decentralization.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -366,7 +371,7 @@ function SnsFaqPage() {
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
                 (a DAO) and not the developer in order to avoid undesirable
-                legal implications for the developer who wants to decentralized
+                legal implications for the developer who wants to decentralize
                 their app.
               </p>
               <p>
@@ -408,8 +413,8 @@ function SnsFaqPage() {
             <Faq title="How do I participate in a sale?">
               <p>
                 You can participate in the decentralization sale in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> and
-                requires ICP utility tokens, which can be exchanged for the SNS
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>, which
+                requires ICP utility tokens. ICP tokens can be exchanged for the SNS
                 tokens during the decentralization sale. If you don’t have ICP,
                 you can buy some from any of the exchanges listed{" "}
                 <Link href="https://support.dfinity.org/hc/en-us/articles/6646999699860-How-do-I-stake-ICP-utility-tokens-">
@@ -574,6 +579,36 @@ function SnsFaqPage() {
                 Likewise, you can acquire SNS tokens on a DEX in exchange for
                 other tokens.
               </p>
+            </Faq>
+            <Faq title="Are SNS tokens inflationary or deflationary?">
+              <p>
+                This depends on the specific SNS configuration. An SNS DAO can
+                have both inflationary and deflationary pressures.
+              </p>
+              <p>
+                Inflationary:
+              </p>
+              <ul>
+                <li>
+                  An SNS DAO can be set up to mint voting rewards for people
+                  who participate in governance (similar to ICP).
+                </li>
+                <li>
+                  An SNS DAO can mint tokens if voted on by SNS token holders.
+                  For example: a game mints 2% of total supply each year and
+                  distributes it among players.
+                </li>
+              </ul>
+              <p>
+                Deflationary:
+              </p>
+              <ul>
+                <li>SNS tokens are burnt for every transaction.</li>
+                <li>
+                  Locking SNS tokens into neurons removes them from circulation.
+                  While not technically deflation, it acts as a deflationary pressure.
+                </li>
+              </ul>
             </Faq>
           </FaqSection>
         </section>
