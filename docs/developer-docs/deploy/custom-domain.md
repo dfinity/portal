@@ -32,8 +32,8 @@ a concrete example.
     * Add a `CNAME` entry for your domain pointing to `ic0.app` such that all the traffic destined to your domain is redirected to the boundary nodes;
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
     * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
-1. Create a file named `custom-domains` in your canister under `.well-known` containing the custom domain.
-    * By default, `dfx` excludes all files and directories, whose names starts with a `.`, from the asset canister. Hence, to include the `custom-domains`-file, you need to create an additional file, called `.ic-assets.json`.
+1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
+    * By default, `dfx` excludes all files and directories, whose names starts with a `.`, from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
     * Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`..
     * Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json`-file:
         ```
@@ -87,8 +87,8 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
     _Note:_ Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` for the first `CNAME` instead of `foo.bar.com`.
-2. `.well-known/custom-domains`:
-    * Create the `custom-domains` file with the following content in the `.well-known` directory:
+2. `.well-known/ic-domains`:
+    * Create the `ic-domains` file with the following content in the `.well-known` directory:
         ```
         foo.bar.com
         ```
