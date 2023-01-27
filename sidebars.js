@@ -117,6 +117,7 @@ const sidebars = {
                 "developer-docs/build/cdks/motoko-dfinity/compatibility",
                 "developer-docs/build/cdks/motoko-dfinity/stablememory",
                 "developer-docs/build/cdks/motoko-dfinity/heartbeats",
+                "developer-docs/build/cdks/motoko-dfinity/timers",
                 "developer-docs/build/cdks/motoko-dfinity/language-manual",
                 "developer-docs/build/cdks/motoko-dfinity/compiler-ref",
                 "developer-docs/build/cdks/motoko-dfinity/motoko-grammar",
