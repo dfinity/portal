@@ -237,7 +237,7 @@ const sidebars = {
                    "developer-docs/integrations/sns/integrate-sns/ledger-integration"
  //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
                  ],
-                 id: "developer-docs/integrations/sns/integrate-sns/index-integration",
+                 },
               {
                 type: 'category',
                 label: 'Manage an SNS',
