@@ -5,7 +5,7 @@ shareImage: /img/how-it-works/direct-integration-with-bitcoin.600.jpg
 slug: chain-key-tokens
 ---
 
-# Chain-key Tokens
+# Chain-Key Tokens
 
 A main way how different blockchains can cooperate is by bringing tokens from one blockchain to another one, e.g., bringing Bitcoin to the Ethereum chain. In traditional blockchain architectures, this is mostly accomplished through wrapping. More decentralized (and secure) alternatives to wrapping exist and can replace it: Meet *chain-key cryptography* and *chain-key tokens* explained further below.
 
@@ -13,7 +13,7 @@ A wrapped token represents an underlying asset, which is typically native on a d
 
 The best alternative to wrapping tokens is to use advanced threshold cryptography to obtain chain-key tokens. Chain-key Bitcoin, the first major chain-key token on ICP is designed to use an analogue of Bitcoin on ICP with low transaction fees and latency and high transaction throughput. Chain-key token ledgers are compatible with ICP's ICRC-1 token standard that is supported by every service that needs to integrate with token ledgers, e.g., wallets and DEXs. This makes chain-key tokens on ICP readily integratable with a wide range of services.
 
-## Traditional wrapped tokens
+## Traditional Wrapped Tokens
 
 In traditional blockchain architectures, token wrapping involves an off-chain trusted intermediary, a so-called *bridge*, and a token ledger smart contract. A user who wants to have tokens of a specific type, say Bitcoin, wrapped, sends some of those tokens to the intermediary. The intermediary, once it has been able to confirm the transfer of the underlying token on its native (origin) blockchain, keeps the received tokens in custody and instructs the token ledger to create, or *mint*, the same amount of wrapped tokens that it has received of the underlying token. Minting increases the supply of the wrapped token. The newly minted wrapped tokens can then be used on the blockchain with the token ledger keeping track of its balances.
 
@@ -25,7 +25,7 @@ This traditional off-chain approach of wrapping works well from a functional per
 
 Another potential risk comes into play with those wrapping architectures: Ideally, a wrapped token is always 1:1 backed with the underlying token, but in practice, the intermediary can use the tokens held in custody to create profit, e.g., by using them for risky investments. In the worst case, this can, if things go wrong, lead to the loss of tokens and a depegging of the wrapped token.
 
-## Chain-key tokens
+## Chain-key Tokens
 
 Chain-key tokens, e.g., chain-key Bitcoin, are an advanced cryptography-based replacement for wrapped tokens offering stronger security: With chain-key tokens, all operations are performed completely on chain by smart contracts, not at all involving an off-chain intermediary. This eliminates the risks of traditional wrapping architectures of the intermediary being compromised or tokens being misappropriated by the intermediary, which can result in the total loss of the underlying assets for a wrapped token in the worst case. Replacing wrapping with on-chain operations only becomes possible through the native integrations between blockchain networks and the use of advanced cryptography — *chain-key signatures*. Chain-key Bitcoin, or ckBTC in short, is the first chain-key token available on ICP. It is an analogue of real Bitcoin available on the ICP blockchain and is realized without any intermediary.
 
@@ -38,19 +38,19 @@ The architecture of any chain-key token on ICP is using the following building b
 Those two building blocks comprise the native integration with a particular blockchain. ICP has already been integrated with the Bitcoin network using this approach, an integration with Ethereum is planned. Based on this foundation, chain-key token implementations can be built. For a specific underlying token, e.g., Bitcoin, this requires a *chain-key token ledger* on ICP, for which the ICRC-1 token standard should be used. The same open source ledger code base can be used and parameterized for any chain-key token to be deployed. In addition to the token ledger, a chain-key token smart contract is required. This canister essentially replaces the off-chain intermediary of the traditional wrapping architecture with on-chain functionality for the chain-key token architecture. This canister is also called *minter* as it is responsible for creating (and removing) supply of the chain-key token based on in- and outflowing underlying tokens. It keeps any underlying tokens it receives in on-chain custody as long as corresponding chain-key tokens are in circulation, thus always ensuring a 1:1 backing of the chain-key token with the underlying asset. The 1:1 backing of the chain-key token by its underlying token can be verified by anyone by inspecting that the Bitcoin UTXOs the minter claims to hold indeed are held by addresses controlled by the minter and associated with respective ICP principals, thereby further enhancing trust.
 
 <figure>
-<img src="/img/how-it-works/chain_key_token_arch.png" alt="Architecture for chain-key tokens" title="Architecture for chain-key tokens" align="center" style="width:600px">
+<img src="/img/how-it-works/chain_key_token_arch.png" alt="Architecture for chain-key tokens" title="Architecture for chain-key tokens" align="center" style="width:1000px">
 <figcaption>Architecture for chain-key tokens on ICP</figcaption>
 </figure>
 
 Note that the token ledger and minting functionalities can also be integrated into a single smart contract — this is a question of software architecture. However, splitting the functionality into two canisters is a preferable approach for the reason of modularity as the same ledger canister code can be reused for any chain-key token and only the minter needs to be adapted to the mechanics of the token of the underlying chain, particularly to account for differences between UTXO- and account-based underlying chains, like Bitcoin and Ethereum, respectively.
 
-### Creating chain-key tokens from native tokens
+### Creating Chain-key Tokens from Native Tokens
 
 When a user wants to have chain-key tokens for some underlying tokens, e.g., bitcoin, they send the underlying tokens to an address owned by the chain-key token smart contract (minter), instead of to an intermediary as when wrapping. The chain-key token smart contract has an address on the underlying blockchain, which is made possible through chain-key cryptography, hence the name of chain-key tokens, or chain-key Bitcoin as a concrete example: In the Bitcoin example, using chain-key ECDSA signing technology — concretely, an advanced form of threshold ECDSA, the chain-key Bitcoin smart contract can have and use ECDSA key pairs, much like any user of the Bitcoin network, but fully on chain. That means the smart contract can obtain ECDSA public keys and from the public keys it derives addresses on the Bitcoin network, to which bitcoin can be sent on the Bitcoin network by anyone. Once this chain-key token smart contract has received Bitcoin from a user and the transaction has received a sufficient number of confirmations on the Bitcoin network, the canister instructs the token ledger for the chain-key token to create, or mint, an amount of chain-key Bitcoin tokens corresponding to the received amount of bitcoin.
 
 Allowing the chain-key token smart contract to know about the balances of the addresses in the underlying chain it controls requires an integration between ICP and the Bitcoin network — the blockchain hosting the native asset to be issued a chain-key token for: ICP nodes connect to nodes of the Bitcoin network and pull in and validate Bitcoin blocks, extract the UTXOs and maintain the Bitcoin UTXO set on chain. Any smart contract can then query the balance and UTXOs of a Bitcoin address. This is what is described as (1) in the section on architecture above.
 
-### Redeemding chain-key tokens for native tokens
+### Redeeming Chain-key Tokens for Native Tokens
 
 A chain-key token can circulate on the ICP as long as needed. There is no need to frequently bring in and redeem underlying tokens and normally there is no need for users to do this themselves. However, a user may want to redeem chain-key tokens they hold for the underlying asset at some point to receive the underlying asset. In this case, they send the amount of chain-key tokens to redeem, e.g., ckBTC in our example, to the chain-key token canister for the token with a request to redeem them. The canister first removes the received chain-key tokens from their supply on the chain-key token's ledger. Next, it creates a transaction on the blockchain of the underlying token, the Bitcoin network in this example, to transfer the same amount of underlying tokens (modulo fees) that it has received of chain-key tokens to a user-provided address on the Bitcoin network. This step involves chain-key signing — concretely an advanced form of threshold ECDSA signing — to authorize the transaction on the underlying blockchain (foundation (2) above). The chain-key-signed transaction is then sent out via inter-chain communication from ICP nodes to Bitcoin nodes, another crucial functionality of the native blockchain integration (1).
 
@@ -58,6 +58,6 @@ A chain-key token can circulate on the ICP as long as needed. There is no need t
 
 Due to Bitcoin using the UTXO model for tracking account balances, the wrapping contract needs to implement proper handling of UTXOs, which is far from trivial. This involves, for example, an good heuristic selection of UTXOs to consume when transferring bitcoin back to users, as well as handling error cases, e.g., when transactions do not get mined on the Bitcoin network due to too low fees. Implementing this properly and considering all edge cases is not trivial and requires well-thought-out algorithms in the implementation of the wrapping contract.
 
-### The future: Chain-key ERC-20
+### The future: Chain-key ERC-20 Tokens
 
 When ICP will integrate with further blockchains in the future, more chain-key tokens will become available on ICP. The token ledger of a new chain-key token can use the same ICRC-1 ledger code base, parameterized for the respective chain-key token. The chain-key token, or minter, smart contract canister needs to be re-written for different blockchains or tokens. The next major blockchain integration being planned is ICP <> ETH, bringing Ethereum's ERC-20 tokens to the IC as chain-key tokens.
