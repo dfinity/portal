@@ -75,7 +75,7 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 
     -   the `MINTER_PRINCIPAL` is the Principal responsible for minting and burning tokens.
 
-    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](../../build/project-setup/cycles-wallet#controller-and-custodian-roles) of the archive canisters
+    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](../../build/project-setup/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters
 
     <div class="important">
 
