@@ -19,7 +19,7 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 
     :::
 
-2.  Ensure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove) section to install it.
+2.  Ensure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove.md) section to install it.
 
 3.  Add the following canister definition to the `dfx.json` file in your project:
 
