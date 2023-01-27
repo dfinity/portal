@@ -278,13 +278,3 @@ expand(bytes) = if Blob.size(bytes) < 32
                 then expand(0x00 :: bytes)
                 else bytes
 ```
-
-<!--
-```candid ICRC-1.did +=
-<<<Type definitions>>>
-
-service : {
-  <<<Methods>>>
-}
-```
--->
