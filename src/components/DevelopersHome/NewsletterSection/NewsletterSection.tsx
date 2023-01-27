@@ -15,11 +15,11 @@ const NewsletterSection: React.FC = () => {
           {
             name: "tags",
             type: "hidden",
-            value: "1033",
+            value: "1065",
           },
         ]}
         ctaLabel="Get updates!"
-        postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+        postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
         decoration={<img src="/img/newsletter/email-image-3.webp" />}
         className="my-20 md:my-52"
       >
