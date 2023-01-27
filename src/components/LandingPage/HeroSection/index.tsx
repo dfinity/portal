@@ -22,14 +22,16 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
+            <b>At last, blockchain is the <i>everything computer</i>.</b><br/><br/>
             The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is
-            a <b>World Computer blockchain</b> that can host a social network, or large enterprise
-            system &#8212; removing the need for centralized IT. At last, advanced blockchain code
-            that is tamperproof and unstoppable 
-             can truly scale, and runs with incredible efficiency, as though on
-            a centralized platform, while serving web experiences to end-users,
-            interacting with Web2, and trustlessly creating transactions on other chains. The
-              decentralized future of all compute has begun. <br/><b>Join the movement.</b>
+            a <b>World Computer</b> blockchain that can host and run a mass market social network, online game,
+            video streaming service, or enterprise system, entirely on the blockchain itself &#8212; 
+            eliminating the need for centralized IT and cloud services. Hosted smart contract code, which is
+            tamperproof and unstoppable, can scale to process any volume of data and computation, and
+            runs with vastly increased efficiency and speed, while serving web experiences directly
+            to end-users, interacting with Web2 end-points, and trustlessly directing other major blockchains. The
+            decentralized future of compute has begun, and momentum is growing fast.<br/>
+            <b>Join the movement.</b>
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
             
@@ -71,10 +73,11 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> scales
-            efficiently, but is not Proof-of-Stake, and has no validator nodes running on the centralized 
-            cloud. It is hosted by a sovereign network of dedicated "node machines." To participate 
-            successfully, nodes must produce the same number of blocks as other machines in their cohort,
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> blockchain is
+            vastly more efficient, but is not a Proof-of-Stake network created by validator nodes running on
+            Big Tech's cloud services. Rather, it is formed by a <i>sovereign network</i> of "node machines" 
+            &#8212; continuing Satoshi's tradition of combining dedicated hardware owned by independent parties.
+            To participate successfully, nodes must produce the same number of blocks as other machines in their cohort,
             without deviation. In a scheme of Proof-of-Useful-Work (PoUW), useful smart contract computation
             is their work. Nodes form into subnet blockchains, and then into a unified limitless 
             blockchain, using game-changing Chain Key Crypto.
@@ -120,13 +123,16 @@ export default function Hero(): JSX.Element {
             className="mb-6"
             variants={transitions.item}
           >
+            <Link href="/nns" className="button-primary">
+              How Network Nervous System Works
+            </Link> 
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
             <Link
               className="link-external"
               href="https://nns.ic0.app"
             >
-              Visit the Network Nervous System
+              Try the Network Nervous System
             </Link>
           </AnimateSpawn>
         </div>
