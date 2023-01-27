@@ -265,6 +265,7 @@ const sidebars = {
             "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
             "samples/deploying-your-first-bitcoin-dapp",
             "developer-docs/integrations/bitcoin/local-development",
+            "developer-docs/integrations/bitcoin/ckbtc",
           ],
         },
         {
