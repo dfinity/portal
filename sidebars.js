@@ -444,7 +444,7 @@ const sidebars = {
         "references/motoko-ref/Result",
         "references/motoko-ref/Stack",
         "references/motoko-ref/Text",
-        "references/motoko-ref/Time",
+        "transient/Timer", // FIXME
         "references/motoko-ref/Trie",
         "references/motoko-ref/TrieMap",
         "references/motoko-ref/TrieSet",
