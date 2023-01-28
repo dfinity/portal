@@ -242,4 +242,14 @@ export const communityToolingItems = [
       github: "https://github.com/ZenVoich/mops"
     },
   },
+  {
+    title: "ICPipeline",
+    tags: [ "development", "service", "testing", "CLI", "website", "starter"],
+    description: "Development catalyst for Internet Computer developers and teams.",
+    links: {
+      external: "https://www.icpipeline.com/",
+      github: "https://github.com/icpipeline-framework",
+      docs: "https://icpipeline.com/documentation"
+    },
+  },
 ];
