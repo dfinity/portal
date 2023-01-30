@@ -7,19 +7,19 @@ import React, { useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { trackEvent } from "../utils/matomo";
 
-function ThankYouPage(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
+function ConfirmYourEmailPage(): JSX.Element {
   useEffect(() => {
-    trackEvent("Email capture", "Thank you");
+    trackEvent("Email capture", "Confirm your email");
   }, []);
+
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title="Thank you"
+      title="Confirm your email"
       description={siteConfig.tagline}
       wrapperClassName="overflow-hidden"
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <main className="text-black relative min-h-[400px]">
+      <main className="text-black relative">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
             src={BlobBlue}
@@ -28,18 +28,18 @@ function ThankYouPage(): JSX.Element {
             variants={transitions.item}
           />
           <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
-            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
+            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001] pb-20 md:pb-30">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
                 variants={transitions.item}
               >
-                Thank you!
+                Almost there...
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-10"
                 variants={transitions.item}
               >
-                Thank you for your interest, we’ll keep you updated!
+                Check your inbox and click the link to verify your email address.
               </motion.p>
             </div>
           </section>
@@ -49,4 +49,4 @@ function ThankYouPage(): JSX.Element {
   );
 }
 
-export default ThankYouPage;
+export default ConfirmYourEmailPage;
