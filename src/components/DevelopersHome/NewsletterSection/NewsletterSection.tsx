@@ -3,7 +3,7 @@ import Newsletter from "../../Common/Newsletter/Newsletter";
 
 const NewsletterSection: React.FC = () => {
   return (
-    <section className="">
+    <section className="" id="subscribe">
       <Newsletter
         fields={[
           {
