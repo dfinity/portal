@@ -24,8 +24,8 @@ export default function Hero(): JSX.Element {
           >
             <b>ICP makes blockchain the <i>everything computer</i>.</b><br/><br/>
 
-            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> (#ICP), is
-            the first World Computer blockchain. In a great leap forward, everything from a simple dapp,
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> (#ICP) is
+            the first World Computer blockchain. In a seismic advance, everything from a simple dapp,
             to billion-user social network, a
             massively multiplayer online game, a mass market video streaming service, or large mission-critical enterprise
             system, can now run on public blockchain.
