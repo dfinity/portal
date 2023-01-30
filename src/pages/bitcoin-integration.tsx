@@ -1,15 +1,20 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Head from "@docusaurus/Head";
+import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
 import Hero from "@site/src/components/BitcoinIntegrationPage/Hero";
 import HowItWorks from "@site/src/components/BitcoinIntegrationPage/HowItWorks";
-import ReleaseTimeline from "@site/src/components/BitcoinIntegrationPage/ReleaseTimeline";
-import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
-import Head from "@docusaurus/Head";
 import Videos from "@site/src/components/BitcoinIntegrationPage/Videos";
+import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+import Layout from "@theme/Layout";
+import React, { useRef } from "react";
+import Content from "../components/BitcoinIntegrationPage/Content";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 function BitcoinIntegration() {
   resetNavBarStyle();
+  const ref = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(ref);
+
   return (
     <Layout
       title="Bitcoin Integration"
@@ -31,10 +36,17 @@ function BitcoinIntegration() {
         />
         <title>Bitcoin Integration</title>
       </Head>
-      <main className="text-black relative overflow-hidden">
-        <Hero></Hero>
+      <main
+        className="text-black relative overflow-hidden"
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        <Hero ref={ref}></Hero>
         <HowItWorks></HowItWorks>
-        <ReleaseTimeline></ReleaseTimeline>
+        <Content></Content>
+        {/* <ReleaseTimeline></ReleaseTimeline> */}
         <Videos></Videos>
         <BuildWithBitcoin></BuildWithBitcoin>
       </main>
