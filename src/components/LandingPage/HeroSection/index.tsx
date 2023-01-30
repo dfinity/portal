@@ -28,11 +28,11 @@ export default function Hero(): JSX.Element {
             the first World Computer blockchain. In a great leap forward, everything from a simple dapp,
             to billion-user social network, a
             massively multiplayer online game, a mass market video streaming service, or large mission-critical enterprise
-            system, can run on a public blockchain network.
+            system, can now run on public blockchain.
             Web3 services, enterprise systems, and just about anything else, can now be constructed entirely from
-            ultra-efficient, web-serving, multi-chain, tamperproof and unstoppable, blockchain smart contract code, eliminating
-            the need for centralized IT, such as cloud services.
-            The decentralized future of compute is in motion, and thousands are already building a new internet.
+            third-generation smart contract code, which can serve web experiences,
+            and run multi-chain, eliminating the need for centralized IT such as cloud services.
+            The decentralized future of compute has begun, and thousands are building a new internet.
             <br/>
             <b>Join the movement.</b>
           </AnimateSpawn>
