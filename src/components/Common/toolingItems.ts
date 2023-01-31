@@ -245,7 +245,7 @@ export const communityToolingItems = [
   {
     title: "ICPipeline",
     tags: [ "development", "service", "testing", "CLI", "website", "starter"],
-    description: "Development catalyst for Internet Computer developers and teams.",
+    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
     links: {
       external: "https://www.icpipeline.com/",
       github: "https://github.com/icpipeline-framework",
