@@ -17,6 +17,7 @@ Integrate directly with the Bitcoin network allowing canisters on the IC to rece
 * [Bitcoin Integration](./bitcoin/index.md) gives a longer overview
 * [How it works](./bitcoin/bitcoin-how-it-works.md) dives further into the details
 * [local development](./bitcoin/local-development.md) contains a tutorial showing how to experiment locally
+* [Chain-key Bitcoin](./bitcoin/ckbtc.md) provides an overview of chain-key Bitcoin (ckBTC)
 
 ## Threshold ECDSA
 A threshold ECDSA implementation on a blockchain can be viewed as the on-chain pendant to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those. It is particularly important to facilitate direct integration with (ECDSA-based) blockchains.
@@ -34,7 +35,7 @@ Internet Identity allows users to create sessions with Web3 services and dapps, 
 * [Internet Identity](./internet-identity/integrate-identity.md) gives an overview of how to use internet identity in your app
 
 ## ICP Ledger
-The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions. 
+The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions.
 
 * [Ledger overview](./ledger/index.md) to get a view of the ICP ledger basics
 * [Interact](./ledger/interact-with-ledger.md) shows the commands and protocol flows to interact with the ICP ledger

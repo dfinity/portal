@@ -26,12 +26,12 @@ First, fork and clone the repo.
 git clone git@github.com:<username>/DIP721.git
 ```
 
-Then, `cd` into `dip721`. The project has all of the canister logic already added, so there is only a little more we need to add.
+Then, `cd` into `DIP721`. The project has all of the canister logic already added, so there is only a little more we need to add.
 
 Add a `package.json` file by running `npm init -y`. To the `src` directory, add a new directory, `"node"`, with a new file `index.js`. To `index.js`, add a simple
 
 ```js
-// node/index.js
+// src/node/index.js
 console.log("hello world");
 ```
 
@@ -46,6 +46,7 @@ Inside of `package.json`, update your `"scripts"` to include `"start": "node --e
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "",
     "start": "node --es-module-specifier-resolution=node src/node/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -55,7 +56,7 @@ Inside of `package.json`, update your `"scripts"` to include `"start": "node --e
 }
 ```
 
-To make sure everything is set up correctly, inside of `examples/rust/dip721-nft-container` run
+To make sure everything is set up correctly, run
 
 ```
 npm start
@@ -65,7 +66,11 @@ And see your `hello world` printed in the console.
 
 ## Generating types
 
-Next, open up your `dfx.json` file. To `dip721_nft_container`, add a new configuration for `declarations -> node_compatibility`. This will optimize the auto-generated JavaScript interface for `node.js` projects.
+Next, open up your `dfx.json` file. To `nft`, add a new configuration for `declarations -> node_compatibility`. This will optimize the auto-generated JavaScript interface for `node.js` projects.
+
+Additionally, we will add a new canister, `assets`, which will be used to host the frontend assets for our nft's.
+
+Finally, remove the `dfx` setting as well as the `defaults` and `networks` settings. They will lock the project to a specific and outdated version of `dfx`, and we want to use `dfx` 12 or later.
 
 It should look like this:
 
@@ -74,13 +79,25 @@ It should look like this:
 {
   "version": 1,
   "canisters": {
-    "dip721_nft_container": {
+    "nft": {
+      "package": "nft",
+      "candid": "nft.did",
       "type": "rust",
-      "candid": "dip721-nft-container.did",
-      "package": "dip721_nft_container",
       "declarations": {
         "node_compatibility": true
       }
+    },
+    "assets": {
+      "type": "assets",
+      "source": ["dist"],
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "cap-router": {
+      "type": "custom",
+      "wasm": "cap/wasm/cap_router.wasm",
+      "candid": "cap/candid/router.did"
     }
   }
 }
@@ -89,6 +106,8 @@ It should look like this:
 Now, you can start up your project. We will use an example principal, derived from a seed phrase of the word `"test"` 12 times. This principal will be `rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae`
 
 > It should go without saying, but this is a testing seed phrase, and any real seed phrase used to deploy or manage a canister should be kept a secret.
+
+You can either run these commands in the terminal, or add them to a `setup.sh` file.
 
 ```shell
 # setup.sh
@@ -107,8 +126,9 @@ npm install --save \
 @dfinity/agent \
 @dfinity/principal \
 @dfinity/candid \
+@dfinity/identity \
 @dfinity/identity-secp256k1 \
-@slide-computer/assets \
+@dfinity/assets \
 isomorphic-fetch \
 image-thumbnail \
 mmmagic \
@@ -134,7 +154,7 @@ import { Secp256k1KeyIdentity } from "@dfinity/identity-secp256k1";
 // Resolves to "rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae"
 const seed = "test test test test test test test test test test test test";
 
-export const identity = await Secp256k1KeyIdentity.fromSeed(seed);
+export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 ```
 
 As you can see, the seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to the IC, you should change the seed out for something private.
@@ -152,6 +172,7 @@ So to import the canister ID and set up our actor, it will look something like t
 ```js
 // src/node/index.js
 import fetch from "isomorphic-fetch";
+import { HttpAgent } from "@dfinity/agent";
 import { createRequire } from "node:module";
 import { canisterId, createActor } from "../declarations/nft/index.js";
 import { identity } from "./identity.js";
@@ -166,7 +187,7 @@ const effectiveCanisterId =
 
 const agent = new HttpAgent({
   identity: await identity,
-  host: "http://127.0.0.1:8000",
+  host: "http://127.0.0.1:4943",
   fetch,
 });
 
@@ -175,7 +196,9 @@ const actor = createActor(effectiveCanisterId, {
 });
 ```
 
-At the end here, the actor is fully set up and ready to make calls to the local canister and the agent we have set up. Since we are focusing on local, the `host` is pointing to the local replica at `http://127.0.0.1:8000`. If we want to talk to the IC mainnet, the `host` should point to `https://ic0.app`.
+At the end here, the actor is fully set up and ready to make calls to the local canister and the agent we have set up. Since we are focusing on local, the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If we want to talk to the IC mainnet, the `host` should point to `https://ic0.app`.
+
+> Note: the port `4943` is the default port for the local replica. If you have changed the port, or you are using an older version of `dfx`, you will need to update it here and in the other instances in the code.
 
 ### Minting Logic
 
@@ -196,12 +219,10 @@ This is pretty simple - we'll just store the configs in a JSON file, using an ar
 [
   {
     "asset": "example_nft_0.png",
-    "metadata": [
-      {
-        "collection": "examples",
-        "sampleKey": "value"
-      }
-    ]
+    "metadata": {
+      "collection": "examples",
+      "sampleKey": "value"
+    }
   }
   //...
 ]
@@ -211,6 +232,8 @@ Then, we can load that in the script.
 
 ```js
 // index.js
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 const nftConfig = require("./nfts.json");
 ```
 
@@ -222,34 +245,38 @@ First, let's load the image, using the `"asset"` path from JSON.
 import path from "path";
 import fs from "fs";
 import mmm from "mmmagic";
+import { fileURLToPath } from "url";
+import sha256File from "sha256-file";
 // ...
 
-nftConfig.reduce(async (prev, nft, idx) => {
-  await prev;
-  // Parse metadata, if present
-  const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
-    return [key, { TextContent: value }];
-  });
+async function main() {
+  nftConfig.forEach(async (nft, idx) => {
+    // Parse metadata, if present
+    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
+      return [key, { TextContent: value }];
+    });
 
-  const filePath = path.join(
-    fileURLToPath(import.meta.url),
-    "..",
-    "assets",
-    nft.asset
-  );
+    const filePath = path.join(
+      fileURLToPath(import.meta.url),
+      "..",
+      "assets",
+      nft.asset
+    );
 
-  const file = fs.readFileSync(filePath); // Blob of file
-  const sha = sha256File(filePath); // SHA of file
+    const file = fs.readFileSync(filePath); // Blob of file
+    const sha = sha256File(filePath); // SHA of file
 
-  // Detect filetype
-  const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
-  const contentType = await new Promise((resolve, reject) => {
-    magic.detectFile(filePath, (err, result) => {
-      if (err) reject(err);
-      resolve(result);
+    // Detect filetype
+    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
+    const contentType = await new Promise((resolve, reject) => {
+      magic.detectFile(filePath, (err, result) => {
+        if (err) reject(err);
+        resolve(result);
+      });
     });
   });
-});
+}
+main();
 ```
 
 #### Prepare thumbnail
@@ -262,6 +289,7 @@ import imageThumbnail from "image-thumbnail";
 const options = {
   width: 256,
   height: 256,
+  responseType: "buffer",
   jpegOptions: { force: true, quality: 90 },
 };
 const thumbnail = await imageThumbnail(filePath, options);
@@ -274,7 +302,7 @@ We can use a community library to simplify uploading to our asset canister. We'l
 ```js
 import { Blob } from "buffer";
 global.Blob = Blob;
-import { AssetManager } from "@slide-computer/assets";
+import { AssetManager } from "@dfinity/assets";
 // ...
 
 const assetCanisterId = localCanisterIds.asset.local;
@@ -286,14 +314,14 @@ const assetManager = new AssetManager({
   maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
 });
 
-nftConfig.reduce(async (prev, nft, idx) => {
+async function main() {
   // ...
   const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
   const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
 
-  await assetManager.insert(file, { fileName: uploadedFilePath });
-  await assetManager.insert(thumbnail, { fileName: uploadedThumbnailPath });
-});
+  await assetManager.store(file, { fileName: uploadedFilePath });
+  await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
+}
 ```
 
 #### Assemble the data and mint
@@ -301,23 +329,23 @@ nftConfig.reduce(async (prev, nft, idx) => {
 Then, all we have left to do is assemble the metadata pointing to our uploaded assets, and to mint the NFT.
 
 ```js
-nftConfig.reduce(async (prev, nft, idx) => {
+async function main() {
   // ...
   const data = [
     [
       "location",
       {
-        TextContent: `http://${assetCanisterId}.localhost:8000/${uploadedFilePath}`,
+        TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
       },
     ],
     [
       "thumbnail",
       {
-        TextContent: `http://${assetCanisterId}.localhost:8000/${uploadedThumbnailPath}`,
+        TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
       },
     ],
     ["contentType", { TextContent: contentType }],
-    ["contentHash", { BlobContent: [...encoder.encode(sha)] }],
+    ["contentHash", { BlobContent: encoder.encode(sha) }],
     ...metadata,
   ];
 
@@ -327,42 +355,41 @@ nftConfig.reduce(async (prev, nft, idx) => {
 
   // Verify token is minted
   const metaResult = await actor.tokenMetadata(0n);
-});
+}
 ```
 
 Here is the full script, with some console logs added to show process.
 
 ```js
-import { Blob } from "buffer";
-global.Blob = Blob;
-import { AssetManager } from "@slide-computer/assets";
-import { fileURLToPath } from "url";
-import { HttpAgent } from "@dfinity/agent";
 import fetch from "isomorphic-fetch";
-import fs from "fs";
-import imageThumbnail from "image-thumbnail";
-import mmm from "mmmagic";
-import { createRequire } from "node:module";
-import path from "path";
-import prettier from "prettier";
-import sha256File from "sha256-file";
-
+import { HttpAgent } from "@dfinity/agent";
 import { canisterId, createActor } from "../declarations/nft/index.js";
 import { identity } from "./identity.js";
+import { createRequire } from "node:module";
+import path from "path";
+import fs from "fs";
+import mmm from "mmmagic";
+import { fileURLToPath } from "url";
+import sha256File from "sha256-file";
+import { Blob } from "buffer";
+import { AssetManager } from "@dfinity/assets";
+import imageThumbnail from "image-thumbnail";
+import prettier from "prettier";
 
 const require = createRequire(import.meta.url);
-const localCanisterIds = require("../../.dfx/local/canister_ids.json");
 const nftConfig = require("./nfts.json");
+const localCanisterIds = require("../../.dfx/local/canister_ids.json");
+
 const encoder = new TextEncoder();
 
 const agent = new HttpAgent({
   identity: await identity,
-  host: "http://127.0.0.1:8000",
+  host: "http://127.0.0.1:4943",
   fetch,
 });
 const effectiveCanisterId =
   canisterId?.toString() ?? localCanisterIds.nft.local;
-const assetCanisterId = localCanisterIds.asset.local;
+const assetCanisterId = localCanisterIds.assets.local;
 const actor = createActor(effectiveCanisterId, {
   agent,
 });
@@ -373,93 +400,97 @@ const assetManager = new AssetManager({
   maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
   maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
 });
-nftConfig.reduce(async (prev, nft, idx) => {
-  await prev;
-  console.log("starting upload for " + nft.asset);
 
-  // Parse metadata, if present
-  const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
-    return [key, { TextContent: value }];
-  });
+async function main() {
+  nftConfig.forEach(async (nft, idx) => {
+    console.log("starting upload for " + nft.asset);
 
-  const filePath = path.join(
-    fileURLToPath(import.meta.url),
-    "..",
-    "assets",
-    nft.asset
-  );
-
-  const file = fs.readFileSync(filePath);
-
-  const sha = sha256File(filePath);
-  const options = {
-    width: 256,
-    height: 256,
-    jpegOptions: { force: true, quality: 90 },
-  };
-  console.log("generating thumbnail");
-  const thumbnail = await imageThumbnail(filePath, options);
-
-  const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
-  const contentType = await new Promise((resolve, reject) => {
-    magic.detectFile(filePath, (err, result) => {
-      if (err) reject(err);
-      resolve(result);
+    // Parse metadata, if present
+    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
+      return [key, { TextContent: value }];
     });
+
+    const filePath = path.join(
+      fileURLToPath(import.meta.url),
+      "..",
+      "assets",
+      nft.asset
+    );
+
+    const file = fs.readFileSync(filePath);
+
+    const sha = sha256File(filePath);
+    const options = {
+      width: 256,
+      height: 256,
+      responseType: "buffer",
+      jpegOptions: { force: true, quality: 90 },
+    };
+    console.log("generating thumbnail");
+    const thumbnail = await imageThumbnail(filePath, options);
+
+    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
+    const contentType = await new Promise((resolve, reject) => {
+      magic.detectFile(filePath, (err, result) => {
+        if (err) reject(err);
+        resolve(result);
+      });
+    });
+    console.log("detected contenttype of ", contentType);
+
+    /**
+     * For asset in nfts.json
+     *
+     * Take asset
+     * Check extenstion / mimetype
+     * Sha content
+     * Generate thumbnail
+     * Upload both to asset canister -> file paths
+     * Generate metadata from key / value
+     * Mint ^
+     */
+
+    const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
+    const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
+
+    console.log("uploading asset to ", uploadedFilePath);
+    await assetManager.store(file, { fileName: uploadedFilePath });
+    console.log("uploading thumbnail to ", uploadedThumbnailPath);
+    await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
+
+    const principal = await (await identity).getPrincipal();
+
+    const data = [
+      [
+        "location",
+        {
+          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
+        },
+      ],
+      [
+        "thumbnail",
+        {
+          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
+        },
+      ],
+      ["contentType", { TextContent: contentType }],
+      ["contentHash", { BlobContent: encoder.encode(sha) }],
+      ...metadata,
+    ];
+    const mintResult = await actor.dip721_mint(principal, BigInt(idx), data);
+    console.log("result: ", mintResult);
+    const metaResult = await actor.tokenMetadata(0n);
+    console.log("new token info: ", metaResult);
+    console.log(
+      "token metadata: ",
+      prettier.format(
+        JSON.stringify(metaResult, (key, value) =>
+          typeof value === "bigint" ? value.toString() : value
+        ),
+        { parser: "json" }
+      )
+    );
   });
-  console.log("detected contenttype of ", contentType);
-
-  /**
-   * For asset in nfts.json
-   *
-   * Take asset
-   * Check extenstion / mimetype
-   * Sha content
-   * Generate thumbnail
-   * Upload both to asset canister -> file paths
-   * Generate metadata from key / value
-   * Mint ^
-   */
-
-  const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
-  const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
-
-  console.log("uploading asset to ", uploadedFilePath);
-  await assetManager.insert(file, { fileName: uploadedFilePath });
-  console.log("uploading thumbnail to ", uploadedThumbnailPath);
-  await assetManager.insert(thumbnail, { fileName: uploadedThumbnailPath });
-
-  const principal = await (await identity).getPrincipal();
-
-  const data = [
-    [
-      "location",
-      {
-        TextContent: `http://${assetCanisterId}.localhost:8000/${uploadedFilePath}`,
-      },
-    ],
-    [
-      "thumbnail",
-      {
-        TextContent: `http://${assetCanisterId}.localhost:8000/${uploadedThumbnailPath}`,
-      },
-    ],
-    ["contentType", { TextContent: contentType }],
-    ["contentHash", { BlobContent: [...encoder.encode(sha)] }],
-    ...metadata,
-  ];
-  const mintResult = await actor.mint(principal, BigInt(idx), data);
-  console.log("result: ", mintResult);
-  const metaResult = await actor.tokenMetadata(0n);
-  console.log("new token info: ", metaResult);
-  console.log(
-    "token metadata: ",
-    prettier.format(
-      JSON.stringify(metaResult, (key, value) =>
-        typeof value === "bigint" ? value.toString() : value
-      ),
-      { parser: "json" }
-    )
-  );
-});
+}
+main();
 ```
