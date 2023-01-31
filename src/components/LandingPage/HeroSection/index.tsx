@@ -26,15 +26,12 @@ export default function Hero(): JSX.Element {
 
             The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> (#ICP) is
             the first World Computer blockchain. In a seismic advance, everything from a simple dapp,
-            to billion-user social network, a
-            massively multiplayer online game, a mass market video streaming service, or large mission-critical enterprise
-            system, can now run on public blockchain.
-            Web3 services, enterprise systems, and just about anything else, can now be constructed entirely from
-            third-generation smart contract code, which can serve web experiences,
-            and run multi-chain, eliminating the need for centralized IT such as cloud services.
-            The decentralized future of compute has begun, and thousands are building a new internet.
-            <br/>
-            <b>Join the movement.</b>
+            to a billion-user social network, massively multiplayer online game, mass market video streaming service,
+            decentralized financial exchange, or large mission-critical enterprise system, can now run on public blockchain.
+            Web3 services, and just about anything else, can now be constructed entirely from
+            hyper-efficient third-generation smart contracts, which serve web experiences, and
+            can drive other blockchains, eliminating the need for centralized IT such as cloud services.
+            The decentralized future of compute has begun &#8212; join thousands building a new internet.
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
             
