@@ -3,7 +3,7 @@
 
 Now let's start adding some code to our backend!
 
-We will use Motoko programming language. You can get a quick overview of Motoko at the [Motoko Language Tour](/motoko/intro/01-Language%20Tour.md).
+We will use Motoko programming language. You can get a quick overview of Motoko at the [Motoko Language Tour](/motoko/intro/index.md).
 
 We will edit file `src/poll_backend/main.mo`.
 

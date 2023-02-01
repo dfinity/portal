@@ -5,10 +5,9 @@ const redirects = `
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
-  /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/candid-intro
+  /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
-  /docs/current/developer-docs /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
@@ -20,7 +19,7 @@ const redirects = `
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
-  /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/deploy/computation-and-storage-costs
+  /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/canisters-code /docs/current/concepts/canisters-code
@@ -32,15 +31,15 @@ const redirects = `
   /docs/developers-guide/concepts/trust-in-canisters /docs/current/concepts/trust-in-canisters
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
   /docs/developers-guide/customize-projects /docs/current/developer-docs/setup/manage-projects
-  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles-wallet
-  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles-wallet
-  /docs/developers-guide/design-apps /docs/current/developer-docs/best-practices/design-dapps
+  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
-  /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/setup/install/
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/setup/vs-code
-  /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/setup/install/
   /docs/developers-guide/sample-apps /samples/
-  /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/backend-tutorials/
   /docs/developers-guide/tutorials/access-control /docs/current/developer-docs/backend/backend-tutorials/access-control
@@ -59,10 +58,10 @@ const redirects = `
   /docs/developers-guide/tutorials/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
   /docs/developers-guide/tutorials/scalability-cancan /docs/current/developer-docs/backend/backend-tutorials/scalability-cancan
   /docs/developers-guide/tutorials/simple-cycles /docs/current/developer-docs/backend/backend-tutorials/simple-cycles
-  /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/webpack-config
+  /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
-  /docs/download /docs/current/developer-docs/setup/install-upgrade-remove
+  /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
   /docs/ic-identity-guide/auth-how-to /docs/current/tokenomics/identity-auth/auth-how-to
   /docs/ic-identity-guide/hello-guide /docs/current/tokenomics/identity-auth/hello-guide
@@ -109,9 +108,9 @@ const redirects = `
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/4-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/5-quickstart /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/cycles-faucet /docs/current/tutorials/cycles-faucet
-  /docs/quickstart/local-quickstart /docs/current/tutorials/local-quickstart
-  /docs/quickstart/network-quickstart /docs/current/tutorials/network-quickstart
+  /docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
+  /docs/quickstart/local-quickstart /docs/current/developer-docs/setup/deploy-locally
+  /docs/quickstart/network-quickstart /docs/current/developer-docs/setup/deploy-mainnet
   /docs/quickstart/newcomers /docs/current/home
   /docs/quickstart/quickstart-intro /docs/current/tutorials/deploy_sample_app
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
@@ -145,10 +144,10 @@ const redirects = `
   /docs/samples/tokentransfer /docs/current/samples/token-transfer
   /docs/samples/token-transfer /docs/current/samples/token-transfer
   /docs/search /developers
-  /docs/security-best-practices/general-security-best-practices /docs/current/developer-docs/best-practices/security/general-security-best-practices
-  /docs/security-best-practices/introduction /docs/current/developer-docs/best-practices/security/
-  /docs/security-best-practices/rust-canister-development-security-best-practices /docs/current/developer-docs/best-practices/security/rust-canister-development-security-best-practices
-  /docs/security-best-practices/web-app-development-security-best-practices /docs/current/developer-docs/best-practices/security/web-app-development-security-best-practices
+  /docs/security-best-practices/general-security-best-practices /docs/current/developer-docs/security/general-security-best-practices
+  /docs/security-best-practices/introduction /docs/current/developer-docs/security/
+  /docs/security-best-practices/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
+  /docs/security-best-practices/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
   /docs/support /docs/current/home
   /docs/token-holders/custody-options-intro /docs/current/tokenomics/token-holders/custody-options-intro
   /docs/token-holders/nns-app-quickstart /docs/current/tokenomics/token-holders/nns-app-quickstart

@@ -5,6 +5,10 @@ sidebar_label: "From Node.js"
 
 # Calling IC from Node.js
 
+:::note
+This article covers connecting to the IC from Node.js in the server environment. For more information about calling IC from JavaScript in a web browser, please, refer to [this guide](javascript-intro.md).
+:::
+
 Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to the IC, or to introduce a websocket layer to your application.
 
 In this example, we will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.

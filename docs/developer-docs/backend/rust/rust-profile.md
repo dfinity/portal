@@ -33,7 +33,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](/tutorials/01_deploy_sample_app.md).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Install SDK](/developer-docs/setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -97,7 +97,91 @@ To replace the default program:
 
     The next step is to add a Rust program that implements the `getSelf`, `update`, `get`, and `search` functions.
 
-4.  Copy and paste [this code](./_attachments/profile.rs) into the `lib.rs` file.
+4.  Copy and paste this code into the `lib.rs` file.
+
+    ```rust
+    use ic_cdk::{
+        api::call::ManualReply,
+        export::{
+            candid::{CandidType, Deserialize},
+            Principal,
+        },
+    };
+    use ic_cdk_macros::*;
+    use std::cell::RefCell;
+    use std::collections::BTreeMap;
+
+    type IdStore = BTreeMap<String, Principal>;
+    type ProfileStore = BTreeMap<Principal, Profile>;
+
+    #[derive(Clone, Debug, Default, CandidType, Deserialize)]
+    struct Profile {
+        pub name: String,
+        pub description: String,
+        pub keywords: Vec<String>,
+    }
+
+    thread_local! {
+        static PROFILE_STORE: RefCell<ProfileStore> = RefCell::default();
+        static ID_STORE: RefCell<IdStore> = RefCell::default();
+    }
+
+    #[query(name = "getSelf")]
+    fn get_self() -> Profile {
+        let id = ic_cdk::api::caller();
+        PROFILE_STORE.with(|profile_store| {
+            profile_store
+                .borrow()
+                .get(&id)
+                .cloned().unwrap_or_default()
+        })
+    }
+
+    #[query]
+    fn get(name: String) -> Profile {
+        ID_STORE.with(|id_store| {
+            PROFILE_STORE.with(|profile_store| {
+                id_store
+                    .borrow()
+                    .get(&name)
+                    .and_then(|id| profile_store.borrow().get(id).cloned()).unwrap_or_default()
+            })
+        })
+    }
+
+    #[update]
+    fn update(profile: Profile) {
+        let principal_id = ic_cdk::api::caller();
+        ID_STORE.with(|id_store| {
+            id_store
+                .borrow_mut()
+                .insert(profile.name.clone(), principal_id);
+        });
+        PROFILE_STORE.with(|profile_store| {
+            profile_store.borrow_mut().insert(principal_id, profile);
+        });
+    }
+
+    #[query(manual_reply = true)]
+    fn search(text: String) -> ManualReply<Option<Profile>> {
+        let text = text.to_lowercase();
+        PROFILE_STORE.with(|profile_store| {
+            for (_, p) in profile_store.borrow().iter() {
+                if p.name.to_lowercase().contains(&text) || p.description.to_lowercase().contains(&text)
+                {
+                    return ManualReply::one(Some(p));
+                }
+
+                for x in p.keywords.iter() {
+                    if x.to_lowercase() == text {
+                        return ManualReply::one(Some(p));
+                    }
+                }
+            }
+            ManualReply::one(None::<Profile>)
+        })
+    }
+    ```
 
 5.  Save your changes and close the file to continue.
 
@@ -107,7 +191,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/candid-intro.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update Candid file for this tutorial:
 

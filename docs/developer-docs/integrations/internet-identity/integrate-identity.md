@@ -104,4 +104,4 @@ Figuring the canister IDs, and using the `canisterId=...` query parameter is all
 - `npm run proxy`: Start a proxy that serves Internet Identity on `localhost:8086` and the webapp on `localhost:8087` for easy access.
 - `npm run test`: Start the proxy and run browser tests against the `internet_identity` canister.
 
-For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file, the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo) and the [SDK documentation](../../build/). Not bored yet? Check out the [Internet Computer Specification](/references/ic-interface-spec.md) and the [Internet Identity Specification](/references/ii-spec.md).
+For more information, check the [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json) file and the [Genesis talk on Internet Identity](https://youtu.be/oxEr8UzGeBo).

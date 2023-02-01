@@ -8,7 +8,7 @@ For this tutorial, you are going to create separate program files for three acto
 
 -   The `assistant` actor provides functions to add and show tasks in a to-do list.
 
-    For simplicity, the code sample for this tutorial only includes the functions to add to-do items and to show the current list of to-do items that have been added. A more complete version of this program-with additional functions for marking items as complete and removing items from the list—is included in [Sample code, applications, and microservices](../sample-apps).
+    For simplicity, the code sample for this tutorial only includes the functions to add to-do items and to show the current list of to-do items that have been added. A more complete version of this program-with additional functions for marking items as complete and removing items from the list—is included in [Sample code, applications, and microservices](./sample-apps.md).
 
 -   The `factorial` actor provides a function for determining the factorial for a specified number.
 
@@ -20,7 +20,7 @@ For this tutorial, you are going to create separate program files for three acto
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK as described in [the Quick Start](/tutorials/01_deploy_sample_app.md).
+-   You have downloaded and installed the SDK as described in [the Quick Start](/tutorials/deploy_sample_app.md).
 
 -   You have stopped any network replica processes running on the local computer.
 

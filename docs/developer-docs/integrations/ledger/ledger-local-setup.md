@@ -19,7 +19,7 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
 
     :::
 
-2.  Make sure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove) section to install it.
+2.  Make sure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](/developer-docs/setup/install/index.mdx) section to install it.
 
 3.  If you don’t have a `dfx` project yet, follow these instructions to create a new `dfx` project: [dfx-new](/references/cli-reference/dfx-new.md)
 

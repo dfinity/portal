@@ -22,7 +22,7 @@ The `div` function also includes code to prevent the program from attempting to 
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 -   You have stopped any canister execution environment running on the local computer.
 

@@ -22,7 +22,7 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 Before starting the tutorial, verify the following:
 
-- You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+- You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 - You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 

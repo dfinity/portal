@@ -36,7 +36,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -90,7 +90,40 @@ To replace the default dapp:
 
     The next step is to write a Rust dapp that declares the `COUNTER` variable and implements the `increment`, `get`, and `set` functions.
 
-3.  Copy and paste [this code](./_attachments/counter.rs) into the `lib.rs` file.
+3.  Copy and paste this code into the `lib.rs` file.
+    ```rust
+    use ic_cdk::export::candid;
+    use ic_cdk_macros::*;
+
+    static mut COUNTER: Option<candid::Nat> = None;
+
+    #[init]
+    fn init() {
+        unsafe {
+            COUNTER = Some(candid::Nat::from(0));
+        }
+    }
+
+    #[update]
+    fn increment() {
+        unsafe {
+            COUNTER.as_mut().unwrap().0 += 1u64;
+        }
+    }
+
+    #[query]
+    fn get() -> candid::Nat {
+        unsafe { COUNTER.as_mut().unwrap().clone() }
+    }
+
+    #[update]
+    fn set(input: candid::Nat) {
+        unsafe {
+            COUNTER.as_mut().unwrap().0 = input.0;
+        }
+    }
+
+    ```
 
 4.  Save your changes and close the `lib.rs` file to continue.
 
@@ -100,7 +133,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/candid-intro.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update the Candid file for this tutorial:
 

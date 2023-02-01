@@ -1,6 +1,6 @@
 # Tutorials
 
-The [Quick start](/tutorials/01_deploy_sample_app.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Quick start](/tutorials/deploy_sample_app.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
 

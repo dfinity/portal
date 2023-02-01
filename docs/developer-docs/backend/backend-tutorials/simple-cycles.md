@@ -16,9 +16,9 @@ This example consists of the following:
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/tutorials/local-quickstart.md#download-and-install).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/deploy-locally.md#download-and-install).
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](/tutorials/local-quickstart.md#install-vscode) if you are using Visual Studio Code as your IDE.
+-   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
 
 -   You have stopped any local canister execution environment running on the local computer.
 

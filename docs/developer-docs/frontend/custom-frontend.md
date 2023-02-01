@@ -12,7 +12,7 @@ Before starting the tutorial, verify the following:
 
 -   You have `node.js` installed for frontend development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 -   You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
@@ -121,7 +121,7 @@ To review the default frontend files:
 
     This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_assets/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
-    This is the same default frontend you saw in [Viewing the default frontend](../backend/explore-templates#default-frontend).
+    This is the same default frontend you saw in [Viewing the default frontend](/developer-docs/backend/backend-tutorials/explore-templates.md#default-frontend).
 
 2.  Open the `src/custom_greeting_assets/src/index.js` file in a text editor.
 

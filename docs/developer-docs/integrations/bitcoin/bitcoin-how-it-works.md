@@ -94,7 +94,7 @@ The final stage of development of a Bitcoin smart contract is its deployment on 
 
 ## API Fees
 
-The fees for using the Bitcoin API can be found on the [page on computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/deploy/computation-and-storage-costs). It is important to note that the cost is scaled with the replication factor of the subnet the Bitcoin canister resides on. In order for the API to be future proof, some of the methods require to send more cycles along with an API call than actually required and any cycles exceeding the actually-charged cost are refunded.
+The fees for using the Bitcoin API can be found on the [page on computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/production/computation-and-storage-costs). It is important to note that the cost is scaled with the replication factor of the subnet the Bitcoin canister resides on. In order for the API to be future proof, some of the methods require to send more cycles along with an API call than actually required and any cycles exceeding the actually-charged cost are refunded.
 
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |

@@ -1,12 +1,12 @@
 # Query using an actor
 
-In the [Quick start](/tutorials/01_deploy_sample_app.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
+In the [Quick start](/tutorials/deploy_sample_app.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
 
 ## Before you begin
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 -   You have stopped any local canister execution environment processes
 

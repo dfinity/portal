@@ -8,7 +8,7 @@ This tutorial illustrates how to pass arguments on the command-line in a termina
 
 Before you start this tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 -   You have stopped any canister execution environments running on the local computer.
 
@@ -180,7 +180,7 @@ To experiment with modifying the source code for this tutorial:
 
         dfx canister call favorite_cities location '(vec {"San Francisco";"Paris";"Rome"})'
 
-    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../candid/candid-intro.md) language guide.
+    The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../candid/index.md) language guide.
 
     This command displays output similar to the following:
 

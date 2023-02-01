@@ -11,7 +11,7 @@ Motoko is specifically designed to support the unique features of the Internet C
 Rust is a powerful and modern type-sound programming language with an active developer community.
 Of course, developers are not required to work in one (or both) of those languages. There are many different community-supported languages available as well, as you can see below in the list of available languages.
 
-It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/candid-intro.md) language. What language works behind the candid interface, however, does not matter.
+It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language. What language works behind the candid interface, however, does not matter.
 
 This section of the docs covers the following CDKs, ordered by languages:
 - Motoko

@@ -14,7 +14,7 @@ This dapp supports the following function calls:
 
 Before starting the tutorial, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
 
 -   You have stopped the local canister execution environment provided by `dfx`.
 

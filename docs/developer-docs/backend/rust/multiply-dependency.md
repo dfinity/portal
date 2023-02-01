@@ -24,7 +24,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](/tutorials/local-quickstart.md#download-and-install).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](/developer-docs/setup/deploy-locally.md#download-and-install).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -114,7 +114,27 @@ To modify the `dfx.json` configuration file:
 
     You can also remove the `defaults` settings.
 
-    For example, your configuration file might look like [this](../../_attachments/mul-deps-dfx.json) after you modify the settings.
+    For example, your configuration file might look like this after you modify the settings.
+
+```json
+{
+  "version": 1,
+  "canisters": {
+    "multiply_deps": {
+      "main": "src/multiply_deps/main.mo",
+      "type": "motoko"
+    },
+    "rust_deps_backend": {
+      "type": "rust",
+      "package": "rust_deps_backend",
+      "candid": "src/rust_deps_backend/rust_deps_backend.did",
+      "dependencies": [
+        "multiply_deps"
+      ]
+    }
+  }
+}
+```
 
 6.  Save your change and close the `dfx.json` file to continue.
 
@@ -134,7 +154,20 @@ To write the Motoko source code:
 
 3.  Create and open the `src/multiply_deps/main.mo` file in a text editor.
 
-4.  Copy and paste [this code](../../_attachments/mul-deps.mo) into the `main.mo` file.
+4.  Copy and paste this code into the `main.mo` file.
+
+```motoko
+actor Multiply {
+
+    var cell : Nat = 1;
+
+    public func mul(n : Nat) : async Nat { cell *= n * 3; cell };
+
+    public query func read() : async Nat {
+        cell;
+    };
+};
+```
 
 5.  Save your changes and close the file to continue.
 
@@ -150,7 +183,20 @@ To replace the default Rust canister:
 
     The next step is to write a Rust program that imports the Motoko canister and implements the `read` function.
 
-3.  Copy and paste [this code](_attachments/mul-deps-main.rs) into the `lib.rs` file.
+3.  Copy and paste this code into the `lib.rs` file.
+
+    ```rust
+    use ic_cdk_macros::*;
+    use ic_cdk::export::candid;
+
+    #[import(canister = "multiply_deps")]
+    struct CounterCanister;
+
+    #[update]
+    async fn read() -> candid::Nat {
+        CounterCanister::read().await.0
+    }
+    ```
 
 4.  Save your changes and close the `src/rust_deps_backend/src/lib.rs` file to continue.
 
@@ -160,7 +206,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/candid-intro.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
 To update the Candid file for this tutorial:
 

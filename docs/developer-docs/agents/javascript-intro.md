@@ -4,6 +4,10 @@ sidebar_label: From JavaScript
 ---
 # Calling IC from JavaScript Frontend
 
+:::note
+This article covers connecting to the IC from JavaScript in a web browser. For more information about calling IC from Node.js, please, refer to [this guide](nodejs.md).
+:::
+
 To get started with JavaScript on the Internet Computer, we recommend you follow our quickstart guide in order to get set up with the basics of your development environment. This includes:
 
 * Dfinity's development SDK, `dfx`
@@ -14,6 +18,7 @@ To get started with JavaScript on the Internet Computer, we recommend you follow
     * an example from [dfinity/examples](https://github.com/dfinity/examples)
 
 If you are looking for an explanation of what an agent does, see [Agent Overview](../index.md).
+
 
 ____
 
@@ -34,7 +39,7 @@ service : {
 }
 ```
 
-This is a Candid interface. It defines no new special types, and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
+This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
 In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](https://smartcontracts.org/docs/candid-guide/candid-types.html) reference.
 

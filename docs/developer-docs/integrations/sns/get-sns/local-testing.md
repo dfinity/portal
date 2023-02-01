@@ -25,7 +25,7 @@ or propose a fix directly through the `edit this page` link at the very bottom o
 
 To deploy and test a local SNS, you will need the following tools:
 
-- [dfx](../../../setup/install-upgrade-remove.mdx)
+- [dfx](../../../setup/install/index.mdx)
 - [sns-quill](https://github.com/dfinity/sns-quill)
 
 To install an NNS locally (which is needed to obtain an SNS in the same way that you would get it in production), you have to run your local replica as a
@@ -96,7 +96,7 @@ Make a call to the SNS wasm modules canister on the local NNS to request that an
 Installing the SNS has some preconditions:
 
 1. The SNS configuration (created in the [previous step](./preparation.md)) has to be named `sns.yml` and has to be placed in your project's root directory.
-2. Your [cycles wallet](../../../setup/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
+2. Your [cycles wallet](../../../setup/cycles/cycles-wallet.md) has to be added to the whitelist of principals that are allowed to create SNSes. This is a temporary measure to make sure that no one launches an SNS before the code is ready. In the long-term, this condition will be removed. 
 3. Your cycles wallet contains enough cycles to create an SNS. Currently, this cost is 180T cycles.
 
 The SNS is new and may still have significant bugs.

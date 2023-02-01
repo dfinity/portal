@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # At a glance
 
-The [Quick start](/tutorials/01_deploy_sample_app.md) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual tutorials in this section walk through specific scenarios, pointing out details about what you’re doing in each step.
+The [Quick start](/tutorials/deploy_sample_app.md) provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual tutorials in this section walk through specific scenarios, pointing out details about what you’re doing in each step.
 
 If the quick start and tutorials aren’t quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 

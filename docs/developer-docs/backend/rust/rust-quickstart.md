@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Hello, World! Rust CDK Quick Start
+# Rust quick start
 
 The DFINITY Canister Development Kit (CDK) for Rust provides tools, sample code, and documentation to help you create dapps to run on the decentralized Internet Computer blockchain mainnet. This *Hello, World! Rust CDK Quick Start* assumes that you are installing the DFINITY Rust CDK for the first time.
 
@@ -21,7 +21,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Installing the SDK](./../../setup/install-upgrade-remove.mdx).
+-   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Installing the SDK](./../../setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -63,7 +63,39 @@ The project is ready to be compiled and deployed to the Internet Computer blockc
 
 One of the template files included in your project directory is a default `dfx.json` configuration file. This file contains settings required to build a project for the Internet Computer blockchain much like the `Cargo.toml` file provides build and package management configuration details for Rust programs.
 
-The configuration file should look like [this](../../_attachments/rust-quickstart-dfx.json).
+The configuration file should look like this:
+
+```json
+{
+  "canisters": {
+    "rust_hello_backend": {
+      "candid": "src/rust_hello_backend/rust_hello_backend.did",
+      "package": "rust_hello_backend",
+      "type": "rust"
+    },
+    "rust_hello_frontend": {
+      "dependencies": [
+        "rust_hello_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/rust_hello_frontend/src/index.html"
+      },
+      "source": [
+        "src/rust_hello_frontend/assets",
+        "dist/rust_hello_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
+```
 
 Notice that under the `canisters` key, you have some default settings for the `rust_hello_backend` canister.
 
@@ -130,7 +162,7 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/candid-intro.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
 ``` did
 service : {
