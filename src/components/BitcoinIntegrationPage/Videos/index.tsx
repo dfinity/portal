@@ -5,7 +5,6 @@ import ExternalLinkIcon from "@site/static/img/external-link.svg";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import BTCInterviewThumb from "@site/static/img/bitcoin-integration/BTCInterviewThumb.webp";
 
-// "LGegOFqP5x0", "H6Wu9n9Qwa8", "H6Wu9n9Qwa8"
 const videos = [
   {
     id: "LGegOFqP5x0",
@@ -15,10 +14,10 @@ const videos = [
     id: "H6Wu9n9Qwa8",
     title: "Code Native Bitcoin II",
   },
-  {
-    id: "H6Wu9n9Qwa8",
-    title: "Code ckBTC",
-  },
+  // {
+  //   id: "H6Wu9n9Qwa8",
+  //   title: "Code ckBTC",
+  // },
 ];
 
 function Index() {

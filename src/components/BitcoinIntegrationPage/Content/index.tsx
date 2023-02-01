@@ -102,11 +102,17 @@ const Content: React.FC = () => {
           </p>
         </div>
         <div className="md:w-8/10 md:mx-auto flex my-6 md:my-8">
-          <img
-            src="https://place-hold.it/886x434/#888"
-            alt=""
-            className="w-full"
-          />
+          <picture className="w-full max-w-md mx-auto md:max-w-none">
+            <source
+              media="(min-width: 997px)"
+              srcSet="/img/bitcoin-integration/ckBTC-img-1.webp"
+            />
+            <source
+              media="(max-width: 996px)"
+              srcSet="/img/bitcoin-integration/ckBTC-img-1-mobile.webp"
+            />
+            <img src="/img/bitcoin-integration/ckBTC-img-1.webp" alt="" />
+          </picture>
         </div>
         <div className="md:w-6/10 md:mx-auto">
           <p className="tw-paragraph mb-3">
@@ -150,9 +156,16 @@ const Content: React.FC = () => {
         el={motion.section}
       >
         <motion.div className="flex-[5] md:order-2" variants={transitions.item}>
-          <h2 className="tw-heading-5 md:tw-heading-3 mb-3">
+          <h2 className="tw-heading-5 md:tw-heading-3 mb-8 md:mb-3">
             What ckBTC is <span className="text-razzmatazz">NOT</span>
           </h2>
+          <p className="mb-8 md:hidden max-w-md mx-auto md:max-w-none">
+            <img
+              src="/img/bitcoin-integration/ckBTC-img-2.webp"
+              alt=""
+              className="w-full "
+            />
+          </p>
           <p className="tw-paragraph mb-0 font-bold">Not a Bridged Token</p>
           <p className="tw-paragraph mb-3">
             Most blockchains rely on so-called bridges to wrap and unwrap
@@ -184,13 +197,13 @@ const Content: React.FC = () => {
           </p>
         </motion.div>
         <motion.div
-          className="flex-[4] md:order-1 flex items-start"
+          className="flex-[4] md:order-1 items-start hidden md:flex"
           variants={transitions.item}
         >
           <img
-            src="https://place-hold.it/434x434/#888"
+            src="/img/bitcoin-integration/ckBTC-img-2.webp"
             alt=""
-            className="w-full"
+            className="w-full max-w-md mx-auto md:max-w-none"
           />
         </motion.div>
       </AnimateSpawn>
