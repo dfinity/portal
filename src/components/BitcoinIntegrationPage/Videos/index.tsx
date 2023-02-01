@@ -26,7 +26,7 @@ function Index() {
       variants={transitions.container}
       className="max-w-page-narrow relative mx-auto mb-20 px-6 md:mb-40 md:px-15"
     >
-      <div className="flex flex-col md:flex-row mb-24">
+      <div className="flex flex-col md:flex-row mb-12 md:mb-24">
         <h2 className="tw-heading-4 md:tw-heading-60 md:mr-5 md:w-4/10 flex-none">
           Watch & Learn
         </h2>

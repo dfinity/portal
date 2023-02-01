@@ -137,15 +137,13 @@ const Content: React.FC = () => {
             standard on ICP, and can be integrated easily by any service, e.g.,
             wallets or DEXs.
           </p>
-          <p className="mb-3 mt-8">
+          <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
+            <Link className="button-outline" href="">
+              Code ckBTC
+            </Link>
             <Link className="link-primary link-with-icon" href="">
               <LinkArrowRight></LinkArrowRight>
               Learn more
-            </Link>
-          </p>
-          <p className="mb-0 mt-6">
-            <Link className="button-outline" href="">
-              Code ckBTC
             </Link>
           </p>
         </div>
