@@ -155,9 +155,9 @@ To deploy your first dapp locally:
         Deployed canisters.
         URLs:
           Frontend canister via browser
-            hello_frontend: http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
+            hello_frontend: http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai
           Backend canister via Candid interface:
-            hello_backend: http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
+            hello_backend: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
 
     If you created a project with a different name, however, your canister names will match your project name instead of `hello_backend` and `hello_frontend`.
 
@@ -193,7 +193,7 @@ Now that you have verified that your dapp has been deployed and tested its opera
 
 1.  Open a browser.
 
-2.  Navigate to the URL output by the `dfx deploy` command in the previous step. It's the one after `Frontend canister via browser`, in our case that's <http://127.0.0.1:8000/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai>.
+2.  Navigate to the URL output by the `dfx deploy` command in the previous step. It's the one after `Frontend canister via browser`, in our case that's <http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai>.
 
 Navigating to this URL displays a simple HTML page with a sample asset image file, an input field, and a button. For example:
 

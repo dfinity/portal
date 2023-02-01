@@ -6,6 +6,8 @@ title: Network Nervous System
 
 # Network Nervous System
 
-The Internet Computer is a *decentralized* system run by many independent machines. These machines all have to know certain facts, for example to which subnet they contribute (the topology), which protocol version they should run, and when they should upgrade to a new protocol version. On the Internet Computer these decisions are made by an open, tokenized governance system that is called the *Network Nervous System (NNS)*. The NNS is one of the largest decentralized autonomous organizations (DAOs). Anyone can become a participant of the NNS and contribute to decisions by staking ICP tokens.
+The Internet Computer is a *decentralized* system run by many independent nodes. The *Network Nervous System (NNS)* coordinates their effort by determining which subnet a node belongs to (the topology), which protocol version they should run, and when they should upgrade to a new protocol version.
+
+NNS decision making is done via an open tokenized governance system. The NNS is one of the largest decentralized autonomous organizations (DAOs). Anyone can become a participant of the NNS by staking ICP tokens and contribute to decisions.
 
 [Go deeper](/nns/)

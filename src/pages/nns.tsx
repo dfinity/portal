@@ -121,7 +121,7 @@ function NnsPage() {
                 The Internet Computer doesn’t require complicated forks to
                 upgrade its capacity. Anyone can submit a proposal to make
                 protocol level changes. Once approved by ICP token holders,
-                these changes are automatically carried out by the NNS,
+                these changes are automatically deployed by the NNS,
                 seamlessly upgrading the network. For participating in
                 governance, ICP token holders receive voting rewards.
               </motion.p>
@@ -151,7 +151,7 @@ function NnsPage() {
                 variants={transitions.item}
               >
                 Once locked, neurons can vote on proposals manually or follow
-                the vote of other neurons - what we call liquid democracy. The
+                the vote of other neurons — this is called liquid democracy. The
                 longer a neuron is locked for, the more voting rewards it
                 collects
               </motion.p>
@@ -177,8 +177,8 @@ function NnsPage() {
                 neurons as maturity. This maturity is unrealized ICP that can
                 either be merged or spawned. Merging maturity will mint ICP and
                 add it to the neuron’s stake, while spawning mints it into a
-                neuron that becomes liquid after a week and can also be used
-                outside of the NNS.
+                neuron that becomes liquid after a week so that the ICP contained
+                in the neuron can also be used outside of the NNS.
               </motion.p>
               <MotionLink
                 className="link-external"
@@ -206,7 +206,7 @@ function NnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Explore the open and autonomous governance running 100% on-chain
+              Check out the open and autonomous governance system running 100% on chain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"

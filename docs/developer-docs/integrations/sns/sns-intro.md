@@ -83,7 +83,7 @@ The _ledger canister_ implements the
 and contains SNS tokens, which are unique tokens for each SNS.
 It stores which accounts own how many SNS tokens and the history of transactions 
 between them. 
-As we want to keep the full ledger history but a cansiter has limited
+As we want to keep the full ledger history but a canister has limited
 memory, the ledger canister spawns _archive canisters_ that store the ledger block history. 
 Moreover, wallets and other frontends will need to show all transactions that are
 relevant for a given account.

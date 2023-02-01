@@ -15,6 +15,7 @@ import IconTokenized from "../../static/img/sns/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import ExternalLinkIcon from "@site/static/img/external-link.svg";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
 const MotionLink = motion(Link);
 
@@ -77,9 +78,10 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  A Service Nervous Systems (SNS) is an advanced form of a DAO. A digital democracy
-                  that can run any dapp such as a social network in a fully decentralized
-                  way, fully on  chain. No corporation, no board of directors, no CEO required.
+                  A Service Nervous Systems (SNS) is an advanced form of a DAO.
+                  A digital democracy that can run any dapp such as a social
+                  network in a fully decentralized way, fully on chain. No
+                  corporation, no board of directors, no CEO required.
                 </motion.p>
               </div>
             </div>
@@ -121,17 +123,14 @@ function SnsPage() {
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
               variants={transitions.item}
             >
-              {/* <Link
-                className="button-primary"
-                href=""
-              >
-                Join an SNS
-              </Link> */}
               <Link
-                className="button-outline"
+                className="button-primary"
                 href="/docs/current/developer-docs/integrations/sns"
               >
                 Launch an SNS DAO
+              </Link>
+              <Link className="button-outline" href="/sns/faq">
+                How to participate (FAQ)
               </Link>
             </motion.p>
           </AnimateSpawn>
@@ -165,8 +164,8 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                When you, as a dapp developer, decide to hand over your Web3 dapp
-                to an SNS, you decide on the SNS parameters and submit a
+                When you, as a dapp developer, decide to hand over your Web3
+                dapp to an SNS, you decide on the SNS parameters and submit a
                 proposal to the NNS, the IC’s DAO. When the proposal is
                 accepted, the NNS launches the new SNS and assigns it full
                 control over the app.
@@ -291,7 +290,7 @@ function SnsPage() {
             className="max-w-none w-[1200px] md:w-[1600px] absolute top-[-200px] md:top-[-200px] left-1/2 -translate-x-1/2 z-[-1]"
           />
           <AnimateSpawn
-            className="mx-auto text-center sm:w-6/12 mb-16 md:mb-8"
+            className="mx-auto text-center sm:w-6/12 "
             variants={transitions.container}
           >
             <motion.h2
@@ -304,12 +303,25 @@ function SnsPage() {
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             ></motion.p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="flex flex-col items-center md:flex-row gap-6 md:gap-8 justify-center mb-16 md:mb-8"
+            variants={transitions.container}
+          >
             <MotionLink
-              variants={transitions.item}
+              variants={transitions.fadeIn}
               className="button-outline-white"
               href="/docs/current/developer-docs/integrations/sns/get-sns/get-sns-intro/"
             >
               Launch an SNS DAO
+            </MotionLink>
+            <MotionLink
+              className="link-white link-with-icon"
+              href="/sns/faq"
+              variants={transitions.fadeIn}
+            >
+              <LinkArrowRight></LinkArrowRight>
+              How to participate (FAQ)
             </MotionLink>
           </AnimateSpawn>
           <AnimateSpawn
@@ -375,7 +387,7 @@ function SnsPage() {
                 SNS-1: The First of its Kind
               </motion.h2>
 
-              <motion.p variants={transitions.item} className="tw-lead-sm mb-3">
+              <motion.p variants={transitions.item} className="tw-lead-sm mb-3 md:w-1/2">
                 SNS-1 was a dress rehearsal that DFINITY ran together with the
                 ICP community to test an SNS decentralization sale on the
                 mainnet. After a successful SNS launch, SNS-1 is now controlled

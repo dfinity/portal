@@ -9,9 +9,13 @@ Ultimately the security of any site using standard web technology depends on DNS
 ## Creating the custom Service Worker
 
 1. Deploy your canister to the IC and note the canister id.
+1. Install [NodeJS](https://nodejs.org/).
 1. Clone the [official IC repo](https://github.com/dfinity/ic) and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
-1. Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file `service-worker/src/sw/http_request.ts`.
-1. Build the service worker according to the instructions in `service-worker/README.md`. The output should be:
+1. Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file `service-worker/src/sw/domains/static.ts`.
+1. Build the service worker with:
+    1. `npm i`
+    1. `npm run build`
+1. The output should be:
     - an `index.html`,
     - a minified `.js` file, and
     - a `.map` file.
