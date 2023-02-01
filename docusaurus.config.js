@@ -137,7 +137,7 @@ const config = {
           // ios safari zooms in when an input field is focused
           // maximum-scale=1 solves the issue
           name: "viewport",
-          content: "width=device-width, initial-scale=1, maximum-scale=1",
+          content: "width=device-width, initial-scale=1, maximum-scale=5",
         },
       ],
       navbar: {
@@ -179,7 +179,7 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Videos",
+                label: "Video Library",
                 href: "/videos",
               },
               {
@@ -189,6 +189,10 @@ const config = {
               {
                 label: "NFTs",
                 href: "/nft",
+              },
+              {
+                label: "SNS DAOs",
+                href: "/sns",
               },
               {
                 label: "ICP Careers",
