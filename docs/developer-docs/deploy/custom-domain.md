@@ -22,11 +22,11 @@ can serve a custom service worker).
 
 ## Custom Domains on the Boundary Nodes
 
-In the following, we first provide list all the steps necessary to register your
+In the following, we first list all the steps necessary to register your
 custom domain with the boundary nodes. Then, we illustrate these instructions on
-a concrete example.
+a concrete example. Finally, we explain how one can update and remove a registration.
 
-### Step-by-Step Instructions
+### First Registration
 
 1. Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
     * Add a `CNAME` entry for your domain pointing to `ic0.app` such that all the traffic destined to your domain is redirected to the boundary nodes;
@@ -59,7 +59,7 @@ a concrete example.
     If the call was successful, you will get a request ID with which you can query the status of your registration request.
     In case the calls failed, you will get an error message explaining why.
 1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
-    ```
+    ```sh
     curl -sLv -X GET \
         ic0.app/registrations/REQUEST_ID
     ```
@@ -113,6 +113,40 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     }
     EOF
     ```
+
+### Updating a Custom Domain
+
+In case you want to update the domain to point to a different canister, you first
+need to update the DNS record of your domain and then notify a boundary node:
+
+1. Update the `TXT` entry to contain the new canister ID for the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`).
+1. Notify a boundary node of the change using a PUT request and the ID of your registration (`REQUEST_ID`).
+    ```sh
+    curl -sLv -X PUT \
+        ic0.app/registrations/REQUEST_ID
+    ```
+
+:::note
+In case you forgot the ID of your registration, you can just submit another registration
+request for your domain and the boundary node will return the corresponding ID.
+:::
+
+### Removing a Custom Domain
+
+In case you want to remove your domain, you just need to remove the DNS records
+and notify a boundary node:
+
+1. Remove the `TXT` entry containing the canister ID for `_canister-id`-subdomain (e.g., `_canister-id.CUSTOM_DOMAIN`) and the `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`).
+1. Notify a boundary node of the removal using a DELETE request.
+    ```sh
+    curl -sLv -X DELETE \
+        ic0.app/registrations/REQUEST_ID
+    ```
+
+:::note
+In case you forgot the ID of your registration, you can just submit another registration
+request for your domain and the boundary node will return the corresponding ID.
+:::
 
 ## Custom Domains using your Own Infrastructure
 
