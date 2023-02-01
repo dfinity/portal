@@ -130,7 +130,8 @@ const Content: React.FC = () => {
             native Bitcoin integration. When the ckBTC canister receives
             bitcoin, it issues ckBTC backed 1:1 by real bitcoin. The data served
             by the ckBTC canister is transparent, so anyone can verify if their
-            ckBTC is backed 1:1 with bitcoin.
+            ckBTC is backed 1:1 with bitcoin. Users can also redeem their ckBTC 
+            for real Bitcoin at any time.
           </p>
           <p className="tw-paragraph mb-3">
             The ckBTC token is compliant with ICRC-1, the fungible token
@@ -178,20 +179,20 @@ const Content: React.FC = () => {
             with real bitcoin — no bridge or custodian, and verifiable by
             anyone.
           </p>
-          <p className="tw-paragraph mb-0 font-bold">Not a Wrapped Asset</p>
+          <p className="tw-paragraph mb-0 font-bold">Not a Lightning Network</p>
           <p className="tw-paragraph mb-3">
-            While token wrapping has many advantages, such as faster
-            transactions and lower fees, wrapping exposes the assets to a high
-            risk of being lost. ckBTC brings layer 2 functionality to the
-            Bitcoin network without the risk, but with the same advantages as
-            wrapping: fast transactions, low fees and high throughput.
+            While a lightning network has many advantages, such as faster
+            transactions and lower fees, transactions go through many channels
+            that run on centralized cloud systems. ckBTC brings layer 2 functionality 
+            to the Bitcoin network — fast, low-fee payments — without the risk or
+            limitations of a lightning network in that all transactions are held on
+            the ckBTC ledger and never go through centralized channels.
           </p>
 
           <p className="tw-paragraph mb-0">
-            ckBTC is not a wrapped asset because it never goes through a
-            custodian, as ICP supports cross-chain interoperability via
-            inter-chain communication with the Bitcoin network and chain-key
-            ECDSA signatures.
+            True decentralized transactions on the Internet Computer are made  
+            possible via inter-chain communication with the Bitcoin network and 
+            chain-key ECDSA signatures.
           </p>
         </motion.div>
         <motion.div
