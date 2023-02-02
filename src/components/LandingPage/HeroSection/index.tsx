@@ -22,16 +22,16 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            <b>ICP makes blockchain the <i>everything computer</i>.</b><br/><br/>
-
-            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> (#ICP) is
-            the first World Computer blockchain. In a seismic advance, everything from a simple dapp,
-            to a billion-user social network, massively multiplayer online game, mass market video streaming service,
-            decentralized financial exchange, or large mission-critical enterprise system, can now run on public blockchain.
-            Web3 services, and just about anything else, can now be constructed entirely from
-            hyper-efficient third-generation smart contracts, which serve web experiences, and
-            can drive other blockchains, eliminating the need for centralized IT such as cloud services.
-            The decentralized future of compute has begun &#8212; join thousands building a new internet.
+            Today, Web3 runs on Big Tech's cloud, and blockchain just hosts tokens, tiny clips 
+            of data, and limited computation 
+            <br/><br/>
+            Tomorrow, blockchain will host most of humanity's data and computation,
+            as well as its tokens &mdash; it will host everything from simple dApps, to billion-user social networks,
+            MMO games, video streaming services, DeFi orderbook exchanges and enterprise systems
+            <br/><br/>            
+            The first true World Computer is here: <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
+            <br/><br/>
+            <b>Join the movement.</b>
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
             
@@ -52,11 +52,7 @@ export default function Hero(): JSX.Element {
             </Link> 
 
           </AnimateSpawn>
-          <AnimateSpawn el={motion.p} variants={transitions.item}>
-          <Link className="button-primary" href="/developers">
-                Build Something
-              </Link> 
-          </AnimateSpawn>           
+          
         </div>
       </div>     
       <div className="container-10 mt-20 mb-20 md:my-40">
@@ -102,7 +98,7 @@ export default function Hero(): JSX.Element {
           className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          Network Nervous System
+          The blockchain brain
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -112,11 +108,11 @@ export default function Hero(): JSX.Element {
           >
             Traditional blockchains get updated, and evolve, through a painful and cumbersome process. A protocol
             "hard fork" is developed, and a central group of insiders, working at a foundation, or a
-            corporation, then helps coordinate those running nodes upgrade their network software.
+            corporation, then helps coordinate those running nodes, or validators, upgrade their network software.
             The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span>,
-            by contrast, is controlled by an advanced DAO, which is integrated into its protocols, and 
-            completely automates and decentralizes node machine protocol upgrades. The network protocol
-            constantly evolves and adapts, without backroom machinations.
+            by contrast, is controlled by an advanced DAO, called the Network Nervous System, which 
+            acts as the brain of the blockchain, completely decentralizing and automating protocol upgrades.
+            The network, and its protocols, evolves fast and adapts, without backroom machinations.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
