@@ -36,6 +36,8 @@ const Content: React.FC = () => {
             Combining these building blocks, ICP canisters can directly and
             securely hold, receive, and send bitcoin seamlessly as if the
             Internet Computer and the Bitcoin network were one blockchain.
+            Another way of looking at it, is that the Bitcoin integration is 
+            the same as running a Bitcoin node on chain. 
           </p>
           <p className="mb-0 mt-8">
             <Link
