@@ -49,4 +49,4 @@ To use the Candid web interface to test canister functions:
     For example, if a function takes an array, you might need to specify the number of items in the array before entering values.
 
 
-![Calculator functions](../_attachments/candid-calc.png)
+![Calculator functions](_attachments/candid-calc.png)
