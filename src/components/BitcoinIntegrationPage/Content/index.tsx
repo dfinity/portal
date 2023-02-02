@@ -96,7 +96,7 @@ const Content: React.FC = () => {
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
             Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It is
-            issued and redeemed via canister smart contracts and verifiably
+            issued and redeemed via canister smart contracts and cryptographically
             backed 1:1 with real bitcoin. It’s fast, low-tx-fee bitcoin on ICP
             with no intermediary.
           </p>
@@ -118,7 +118,7 @@ const Content: React.FC = () => {
           <p className="tw-paragraph mb-3">
             While the Bitcoin network integration on the Internet Computer (ICP)
             is extremely powerful in terms of security and interoperability,
-            every transaction suffers the low throughput, high latency, and high
+            every bitcoin transaction suffers the low throughput, high latency, and high
             fees native to the Bitcoin network. Chain-key Bitcoin (ckBTC), a
             bitcoin ‘twin’ on ICP, has been introduced to bring layer 2
             functionality fuelled by ICP properties like speed, scalability and
@@ -128,7 +128,7 @@ const Content: React.FC = () => {
             The ckBTC token eliminates the need for intermediaries as it is
             issued and redeemed through canister smart contracts built upon the
             native Bitcoin integration. When the ckBTC canister receives
-            bitcoin, it issues ckBTC backed 1:1 by real bitcoin. The data served
+            real bitcoin, it issues ckBTC backed 1:1 by that bitcoin. The data served
             by the ckBTC canister is transparent, so anyone can verify if their
             ckBTC is backed 1:1 with bitcoin. Users can also redeem their ckBTC 
             for real Bitcoin at any time.
