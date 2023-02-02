@@ -4,7 +4,7 @@ The Internet Computer implements a novel threshold ECDSA protocol as part of its
 
 Each canister on any subnet of the Internet Computer has control over a unique ECDSA key pair and can request signatures with the corresponding private key to be computed. A signature is only issued to the eligible canister, i.e., the legitimate holder of the ECDSA key. Each canister can obtain signatures only for its ECDSA keys. Note that canisters do not hold any private ECDSA keys or key shares themselves, but delegate this to specific threshold-ECDSA-enabled subnets of the IC. Threshold cryptography can help enable functionality in the trust model of a blockchain that would be impossible to achieve with conventional cryptography alone.
 
-A threshold ECDSA implementation on a blockchain can be viewed as the on-chain pendant to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those.
+A threshold ECDSA implementation on a blockchain can be viewed as the on-chain counterpart to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those.
 
 The availability of threshold ECDSA allows for a multitude of important use cases, as for example:
 -   Canisters natively holding Bitcoin;

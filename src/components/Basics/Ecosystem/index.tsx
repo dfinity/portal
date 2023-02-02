@@ -70,7 +70,7 @@ const Ecosystem = () => {
             The reverse gas model enables free-to-use, truly user-friendly
             dapps, ready for mass adoption.
           </p>
-          <Link href="/showcase" className="link-primary link-with-icon">
+          <Link href="/ecosystem" className="link-primary link-with-icon">
             <LinkArrowRight />
             Explore Internet Computer Ecosystem
           </Link>
