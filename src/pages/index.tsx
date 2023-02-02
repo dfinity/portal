@@ -32,8 +32,8 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
+        <HeroSection></HeroSection>
         <div className="overflow-hidden">
-          <HeroSection></HeroSection>
           <ShowcaseSection></ShowcaseSection>
           <BasicsSection></BasicsSection>
         </div>
