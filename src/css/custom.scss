@@ -345,6 +345,18 @@ div[class^="announcementBarContent"] {
   background: linear-gradient(105.94deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 38.54%, rgba(255, 255, 255, 0.136216) 100%);
 }
 
+.hero-stat-red {
+  background: linear-gradient(141.63deg, #FFFFFF 19.8%, rgba(236, 0, 140, 0.5) 112.99%);
+}
+
+.hero-stat-blue {
+  background: linear-gradient(141.63deg, #FFFFFF 19.8%, rgba(59, 0, 185, 0.5) 112.99%);
+}
+
+.hero-stat-green {
+  background: linear-gradient(141.63deg, #FFFFFF 19.8%, rgba(24, 208, 181, 0.5) 112.99%);
+}
+
 
 @tailwind base;
 @tailwind components;

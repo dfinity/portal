@@ -33,7 +33,7 @@
     "docusaurus-plugin-sass": "^0.2.2",
     "docusaurus2-dotenv": "^1.4.0",
     "dotenv": "^16.0.1",
-    "framer-motion": "^6.3.3",
+    "framer-motion": "^6.5.1",
     "hast-util-is-element": "^1.1.0",
     "highlight.js": "^11.5.1",
     "marked": "^4.0.18",

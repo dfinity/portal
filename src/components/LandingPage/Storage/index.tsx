@@ -137,7 +137,7 @@ const Storage: React.FC = () => {
   return (
     <section className=" bg-[#A4497F00]">
       <div className="h-[250vh]" ref={ref}>
-        <div className="container-12 text-white md:mt-24 md:mb-10">
+        <div className="container-12 text-white pt-30 md:pt-60 md:mb-10">
           <h2 className="tw-heading-4 md:tw-heading-60 md:w-6/10 md:mb-8">
             Save money storing data in ICP smart contracts
           </h2>

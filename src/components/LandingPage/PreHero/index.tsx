@@ -1,9 +1,17 @@
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import { COLORS, PARTICLE_COUNT } from "./config";
 import { Particle } from "./particle";
 import { ShapeMap } from "./shapemap";
 import { Vector2D } from "./vector";
+import transitions from "@site/static/transitions.json";
 
 type Force = (pos: Vector2D) => Vector2D;
 
@@ -246,82 +254,228 @@ export default function PreHero({
         setBgDark(true);
       }
 
-      if (window.scrollY > window.innerHeight && animate) {
-        setAnimate(false);
-      } else if (window.scrollY < window.innerHeight && !animate) {
-        setAnimate(true);
-      }
+      // if (window.scrollY > window.innerHeight && animate) {
+      //   setAnimate(false);
+      // } else if (window.scrollY < window.innerHeight && !animate) {
+      //   setAnimate(true);
+      // }
     }
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [bgDark, animate, headerHeight]);
 
-  return (
-    <section className="w-screen h-screen bg-[#1B025A]" id="home">
-      <>
-        {bgDark && <DarkHeroStyles bgColor="transparent" />}
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
 
-        <canvas
-          className="w-full h-full fixed inset-0 bg-[#1B025A]"
-          ref={canvasRef}
-        ></canvas>
-      </>
-      <div className="fixed inset-0 flex items-center">
-        <div className="container-10 text-center">
-          <h1
-            className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+  const { scrollYProgress } = useScroll({
+    target: headlineRef,
+    offset: ["end end", "end start"],
+  });
+
+  const { scrollYProgress: completeScrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start end", "end start"],
+  });
+
+  const animationStop = useTransform(completeScrollYProgress, [0, 1.0], [0, 1]);
+
+  const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
+  const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const blur = useMotionTemplate`blur(${blurSize}px)`;
+
+  useEffect(() => {
+    const unsub = animationStop.onChange((latest) => {
+      if (latest === 1.0 && animate) {
+        setAnimate(false);
+      } else if (latest < 1.0 && !animate) {
+        setAnimate(true);
+      }
+    });
+    return unsub;
+  });
+
+  return (
+    <section className=" bg-[#1B025A]" id="home">
+      {bgDark && <DarkHeroStyles bgColor="transparent" />}
+      <motion.canvas
+        className="w-full h-screen fixed inset-0 bg-[#1B025A]"
+        ref={canvasRef}
+        style={{
+          filter: blur,
+        }}
+      ></motion.canvas>
+      <div
+        className="overflow-hidden relative"
+        style={{
+          top: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        <div
+          className="relative w-screen h-screen flex items-center"
+          ref={headlineRef}
+        >
+          <motion.img
+            src="/img/home/hero-blur.svg"
+            alt=""
+            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
+            style={{
+              opacity: blobOpacity,
+            }}
+          ></motion.img>
+          <div className="container-10 text-center">
+            <motion.h1
+              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+              style={{
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              World Computer
+              <br />
+              is our future
+            </motion.h1>
+          </div>
+
+          <motion.button
+            className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
+            onClick={() => {
+              document.getElementById("introduction").scrollIntoView();
+            }}
             style={{
               animationPlayState: start ? "running" : "paused",
+              opacity: blobOpacity,
             }}
+            aria-label="Scroll down"
           >
-            World Computer
-            <br />
-            is our future
-          </h1>
+            <svg
+              width="24"
+              height="38"
+              viewBox="0 0 24 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
+                stroke="url(#paint0_linear_127_29571)"
+                stroke-width="1.77"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_127_29571"
+                  x1="11.5784"
+                  y1="35.8937"
+                  x2="11.5784"
+                  y2="6.09638e-09"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </motion.button>
         </div>
-        <img
-          src="/img/home/hero-blur.svg"
-          alt=""
-          className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
-        ></img>
-
-        <button
-          className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
-          onClick={() => {
-            document.getElementById("introduction").scrollIntoView();
-          }}
-          style={{
-            animationPlayState: start ? "running" : "paused",
-          }}
-          aria-label="Scroll down"
+        <div
+          className="tw-heading-5 text-white relative py-20 md:py-40 container-10"
+          ref={heroRef}
         >
-          <svg
-            width="24"
-            height="38"
-            viewBox="0 0 24 38"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <AnimateSpawn
+            el={motion.h2}
+            className="tw-heading-3 md:tw-heading-60 mb-20 md:w-6/10 md:mx-auto text-center"
+            variants={transitions.item}
           >
-            <path
-              d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
-              stroke="url(#paint0_linear_127_29571)"
-              stroke-width="1.77"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_127_29571"
-                x1="11.5784"
-                y1="35.8937"
-                x2="11.5784"
-                y2="6.09638e-09"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="white" />
-                <stop offset="1" stop-color="white" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </button>
+            The world's largest public blockchain
+          </AnimateSpawn>
+          <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
+            <AnimateSpawn
+              className="text-center"
+              variants={transitions.container}
+            >
+              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-red">
+                1.6 Billion+
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-0">
+                Total Blocks processed
+              </p>
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="text-center"
+              variants={transitions.container}
+            >
+              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-blue">
+                1.7 Billion+
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-0">
+                New accounts per year
+              </p>
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="text-center md:col-span-2"
+              variants={transitions.container}
+            >
+              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-green">
+                $0.0000015
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-0">
+                fixed costs per Transaction
+                <br />
+                (no fluctuation)
+              </p>
+            </AnimateSpawn>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2/10 gap-y-16 md:gap-y-30">
+            <AnimateSpawn variants={transitions.container}>
+              <h3 className="tw-heading-4 mb-2">Superfast</h3>
+              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
+                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
+                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
+                ultricies vehicula ut id elit.
+              </p>
+              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
+              <p className="tw-paragraph mb-0 text-white-60">
+                Lorem ipsum dolor
+              </p>
+            </AnimateSpawn>
+            <AnimateSpawn variants={transitions.container}>
+              <h3 className="tw-heading-4 mb-2">Infinitely Scalable</h3>
+              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
+                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
+                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
+                ultricies vehicula ut id elit.
+              </p>
+              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
+              <p className="tw-paragraph mb-0 text-white-60">
+                Lorem ipsum dolor
+              </p>
+            </AnimateSpawn>
+            <AnimateSpawn variants={transitions.container}>
+              <h3 className="tw-heading-4 mb-2">Sustainable</h3>
+              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
+                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
+                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
+                ultricies vehicula ut id elit.
+              </p>
+              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
+              <p className="tw-paragraph mb-0 text-white-60">
+                Lorem ipsum dolor
+              </p>
+            </AnimateSpawn>
+            <AnimateSpawn variants={transitions.container}>
+              <h3 className="tw-heading-4 mb-2">Cost-efficient</h3>
+              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
+                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
+                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
+                ultricies vehicula ut id elit.
+              </p>
+              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
+              <p className="tw-paragraph mb-0 text-white-60">
+                Lorem ipsum dolor
+              </p>
+            </AnimateSpawn>
+          </div>
+        </div>
       </div>
     </section>
   );

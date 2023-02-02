@@ -1,7 +1,4 @@
-import BrowserOnly from "@docusaurus/BrowserOnly";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Dashboard from "@site/src/components/LandingPage/Dashboard";
-import ParticleBackground from "@site/src/components/LandingPage/ParticleBackgroundVanilla";
 import SectionsBar from "@site/src/components/LandingPage/SectionsBar";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
@@ -35,15 +32,15 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
-        <HeroSection></HeroSection>
-        <BasicsSection></BasicsSection>
+        <div className="overflow-hidden">
+          <HeroSection></HeroSection>
+          <ShowcaseSection></ShowcaseSection>
+          <BasicsSection></BasicsSection>
+        </div>
         <BackgroundPanel>
-          <Dashboard />
           <Storage></Storage>
         </BackgroundPanel>
         <div className="overflow-hidden">
-          
-          <ShowcaseSection></ShowcaseSection>
           <NextGenSection></NextGenSection>
           <ItsGreenSection id="sustainable" />
           <FoundationSection></FoundationSection>
