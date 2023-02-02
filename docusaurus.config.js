@@ -30,8 +30,9 @@ const {
   getRedirects,
   getSplatRedirects,
 } = require("./plugins/utils/redirects");
-const isDeployPreview =
-  !!process.env.NETLIFY && process.env.CONTEXT === "deploy-preview";
+const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
+
+console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -39,7 +40,7 @@ const config = {
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
   url: isDeployPreview
-    ? process.env.DEPLOY_PRIME_URL
+    ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -138,7 +139,7 @@ const config = {
           // ios safari zooms in when an input field is focused
           // maximum-scale=1 solves the issue
           name: "viewport",
-          content: "width=device-width, initial-scale=1, maximum-scale=1",
+          content: "width=device-width, initial-scale=1, maximum-scale=5",
         },
       ],
       navbar: {
@@ -161,7 +162,7 @@ const config = {
             items: [
               {
                 label: "Web3 Ecosystem",
-                href: "/showcase",
+                href: "/ecosystem",
               },
               {
                 label: "Features",
@@ -180,7 +181,7 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Videos",
+                label: "Video Library",
                 href: "/videos",
               },
               {
@@ -188,12 +189,20 @@ const config = {
                 href: "/social-media-dapps",
               },
               {
+                label: "NFTs",
+                href: "/nft",
+              },
+              {
+                label: "SNS DAOs",
+                href: "/sns",
+              },
+              {
                 label: "ICP Careers",
                 href: "http://careers.internetcomputer.org/",
               },
               {
                 label: "Internet Identity",
-                href: "https://identity.ic0.app/",
+                href: "/internet-identity",
               },
 
               {

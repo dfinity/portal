@@ -38,8 +38,8 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
     export TOKEN_SYMBOL=XMTK
 
     dfx deploy --network ${NETWORK} custom-ledger --argument '(record {
-      name = "'${TOKEN_NAME}'";
-      symbol = "'${TOKEN_SYMBOL}'";
+      token_name = opt "'${TOKEN_NAME}'";
+      token_symbol = opt "'${TOKEN_SYMBOL}'";
       minting_account = "'${MINT_ACC}'";
       initial_values = vec {};
       send_whitelist = vec {};
@@ -47,7 +47,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
         trigger_threshold = 2000;
         num_blocks_to_archive = 1000;
         controller_id = principal "'${ARCHIVE_CONTROLLER}'";
-        cycles_for_archive_creation = opt 10_000_000_000_000
+        cycles_for_archive_creation = opt 10_000_000_000_000;
       }
     })'
     ```
@@ -58,7 +58,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     -   the `TOKEN_NAME` is the human-readable name of your new token
 
-    -   the `TOKEN_SYMBOL` is the symbol of your new token
+    -   the `TOKEN_SYMBOL` is the ticker symbol of your new token
 
     -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](./index.md))
 
@@ -79,7 +79,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
     ``` diff
      {
        "canisters": {
-         "ledger": {
+         "custom-ledger": {
            "type": "custom",
            "wasm": "ledger.wasm",
     -       "candid": "ledger.private.did"
@@ -92,7 +92,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 6.  Check that the Ledger canister is healthy. Execute the following command:
 
     ``` sh
-    dfx canister --network ${NETWORK} call ledger symbol
+    dfx canister --network ${NETWORK} call custom-ledger symbol
     ```
 
     The output should look like the following:

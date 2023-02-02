@@ -1,17 +1,17 @@
 ---
-title: Chain-Key Transactions
+title: Chain-key signatures
 abstract: 
 shareImage: /img/how-it-works/threshold-ecdsa-signing.600.jpg
 slug: threshold-ecdsa-signing
 ---
 
-# Chain-Key Transactions
+# Chain-Key Signatures
 
-*Chain-key transactions* extends chain-key technology to allow transactions targeted at other blockchains to be computed fully on-chain using the Internet Computer Protocol.
-Using chain-key transactions, the IC can integrate with other blockchains in a completely trustless manner.
-Indeed, using chain-key transactions is the strongest, most decentralized way of integrating blockchains as no additional trust assumptions besides that of the two blockchains are required, particularly no additional parties that manage signature keys or their shares.
+*Chain-key signatures* extend chain-key technology to allow transactions targeted at other blockchains to be computed fully on-chain using the Internet Computer Protocol.
+Using chain-key signatures, the IC can integrate with other blockchains in a completely trustless manner.
+Indeed, using chain-key signatures is the strongest, most decentralized way of integrating blockchains as no additional trust assumptions besides that of the two blockchains are required, particularly no additional parties that manage signature keys or their shares.
 
-Just like chain-key technology, a key component of chain-key transactions is threshold signatures.
+Just like chain-key technology, a key component of chain-key signatures is threshold cryptography.
 For the reasons outlined [here](/how-it-works/chain-key-technology/), the threshold signature scheme used to implement chain-key cryptography is based on BLS signatures. While BLS signatures have distinct advantages, they are simply not compatible with other blockchains.
 In order to work with other blockchains, the IC must use threshold signatures that are compatible with the digital signature schemes of those other blockchains.
 By far, the most commonly used signature scheme used on other blockchains (including Bitcoin and Ethereum) is the [ECDSA signature scheme](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm).

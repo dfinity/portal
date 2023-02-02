@@ -18,9 +18,9 @@ export default function FoundationSection(): JSX.Element {
               className="tw-heading-4 md:tw-heading-2 mb-6 md:mb-16 text-center"
               variants={transitions.item}
             >
-              Blockchain's largest
+              The blockchain industry's
               <br />
-              R&D operation
+              Skunk Works
             </AnimateSpawn>
             <AnimateSpawn
               className="grid grid-cols-2 md:grid-cols-4 mb-6 md:mb-16 gap-y-8"
