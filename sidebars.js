@@ -117,6 +117,7 @@ const sidebars = {
                 "developer-docs/build/cdks/motoko-dfinity/compatibility",
                 "developer-docs/build/cdks/motoko-dfinity/stablememory",
                 "developer-docs/build/cdks/motoko-dfinity/heartbeats",
+                "developer-docs/build/cdks/motoko-dfinity/timers",
                 "developer-docs/build/cdks/motoko-dfinity/language-manual",
                 "developer-docs/build/cdks/motoko-dfinity/compiler-ref",
                 "developer-docs/build/cdks/motoko-dfinity/motoko-grammar",
@@ -314,6 +315,17 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "ICRC-1",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/icrc-1/index",
+          },
+          items: [
+            "developer-docs/integrations/icrc-1/deploy-new-token",
+          ],
+        },
+        {
+          type: "category",
           label: "Rosetta",
           link: {
             type: "doc",
@@ -443,7 +455,6 @@ const sidebars = {
         "references/motoko-ref/Result",
         "references/motoko-ref/Stack",
         "references/motoko-ref/Text",
-        "references/motoko-ref/Time",
         "references/motoko-ref/Trie",
         "references/motoko-ref/TrieMap",
         "references/motoko-ref/TrieSet",
