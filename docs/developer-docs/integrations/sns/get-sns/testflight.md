@@ -165,7 +165,7 @@ sns-quill --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 sns-quill send execute-generic-functions.json
 ```
 The generic functions to be executed are specified by their numeric identifier defined in their registration proposal.
-The payload is a blob that is literally passed as `Vec<u8>` to both generic functions.
+The payload is a blob that is passed to both generic functions.
 The above sample payload `blob \"DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00\"` was obtained via
 ```
 $ didc encode '(record {major=2:nat32; minor=3:nat32;})' --format blob
