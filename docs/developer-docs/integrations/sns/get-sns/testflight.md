@@ -171,8 +171,19 @@ The above sample payload `blob \"DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00
 $ didc encode '(record {major=2:nat32; minor=3:nat32;})' --format blob
 blob "DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00"
 ```
-and can be decoded as Candid payload (a record with two fields) in the canister code
-of the generic functions, e.g., using `Decode!`.
+and can be decoded as Candid payload (a record with two fields) in the canister Rust code
+```
+#[derive(CandidType, Debug, Deserialize)]
+struct Version {
+  major: u32,
+  minor: u32,
+}
+
+#[ic_cdk_macros::update]
+fn validate(x: Version) -> Result<String, String> {
+  // ...
+}
+```
 
 #### 8. Check the proposals of the testflight SNS.
 
