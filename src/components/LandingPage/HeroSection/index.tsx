@@ -22,8 +22,8 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            Today, Web3 really runs on Big Tech's cloud, and blockchain just hosts tokens, 
-            and tiny amounts of data and compute
+            Today, Web3 really runs on Big Tech's cloud. Blockchains host tokens, but only
+            tiny amounts of the data and compute
             <br/><br/>
             Tomorrow, everything will run 100% from blockchain, and decentralize, from simple dApps, to billion-user social networks,
             MMO games, video streaming services, DeFi orderbook exchanges, and enterprise systems
@@ -49,10 +49,13 @@ export default function Hero(): JSX.Element {
             >
               <ArrowRight></ArrowRight>
               Internet Computer capabilties
-            </Link> 
-
+            </Link>
           </AnimateSpawn>
-          
+          <Link
+              className="link-external"
+              href="https://wiki.internetcomputer.org/wiki/History">
+              Wiki history of the Internet Computer
+            </Link>
         </div>
       </div>     
       <div className="container-10 mt-20 mb-20 md:my-40">
@@ -69,18 +72,17 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is
-            not a Proof of Stake (PoS) blockchain created by "validator nodes" running on Big Tech's
-            corporate cloud.
-            It is formed by a <i>sovereign network</i> of special "node machine" devices operated by independent parties.
-            To participate successfully, nodes must produce the same number of blocks as other machines in their cohort,
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is <i>not</i> a
+            Proof of Stake (PoS) blockchain created by "validator nodes" running on Big Tech's cloud.
+            It is formed by a <i>sovereign network</i> of standardized "node machines," which hardware is operated by independent parties.
+            To participate, nodes must produce the same number of blocks as others in their cohort,
             without deviation. In a scheme of Proof-of-Useful-Work (PoUW), replicated smart contract computation
             is their work, driving optimal efficiency. Nodes form into subnet blockchains, and then into a unified limitless 
             blockchain, using game-changing Chain Key Crypto.
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} className="mb-6" variants={transitions.item}>
             <Link href="/how-it-works" className="button-primary">
-              How the Internet Computer works
+              Review ICP Technology
             </Link>            
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
@@ -98,7 +100,7 @@ export default function Hero(): JSX.Element {
           className="tw-heading-3 md:tw-heading-2 mb-6 md:mb-16 text-transparent bg-clip-text gradient-text"
           variants={transitions.item}
         >
-          The blockchain brain
+          Intelligent Blockchain
         </AnimateSpawn>
         <div className="md:ml-3/10">
           <AnimateSpawn
@@ -106,13 +108,14 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            Traditional blockchains get updated, and evolve, through a painful and cumbersome process. A protocol
+            Traditional blockchains evolve and adapt through a painful and cumbersome process. A protocol
             "hard fork" is developed, and a central group of insiders, working at a foundation, or a
-            corporation, then helps coordinate those running nodes, or validators, upgrade their network software.
-            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span>,
-            by contrast, is controlled by an advanced DAO, called the Network Nervous System, which 
-            acts as the brain of the blockchain, completely decentralizing and automating protocol upgrades.
-            The network, and its protocols, evolves fast and adapts, without backroom machinations.
+            corporation, then coordinates those running nodes, or validators, upgrade their network software.
+            The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> network,
+            by contrast, runs under the control of an advanced DAO, called the Network Nervous System (or NNS), which 
+            acts as the brain of the blockchain, and completely automates and decentralizes processes such as
+            protocol upgrades &mdash; removing the need for backroom machinations by insiders, and powering
+            fast and seamless evolution.
           </AnimateSpawn>
           <AnimateSpawn
             el={motion.p}
@@ -120,7 +123,7 @@ export default function Hero(): JSX.Element {
             variants={transitions.item}
           >
             <Link href="/nns" className="button-primary">
-              How Network Nervous System Works
+              Review the NNS
             </Link> 
           </AnimateSpawn>
           <AnimateSpawn el={motion.p} variants={transitions.item}>
