@@ -101,7 +101,7 @@ when obtaining the dapp's canister IDs.
 You can also register multiple canisters via a single SNS proposals by adjusting `RegisterDappCanisters`
 in the `--proposal` argument above to, e.g.,
 ```
-RegisterDappCanisters = record {canister_ids=vec {principal\"$CID1\"; principal\"$CID2\"}}
+RegisterDappCanisters = record {canister_ids=vec {principal\"$CID1\"; principal\"$CID2\";}}
 ```
 
 Once the SNS proposal is executed, you should see all the registered dapp's canisters listed as dapps in
