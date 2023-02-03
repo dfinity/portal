@@ -1,4 +1,4 @@
-label: 'Building smart contract backend'
+label: 'Building a smart contract backend'
 position: 3
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default

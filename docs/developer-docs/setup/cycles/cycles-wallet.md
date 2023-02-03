@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-# Using Cycles Wallet
+# Using a Wallet
 
 As discussed in [Tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 

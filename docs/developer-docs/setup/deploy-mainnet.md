@@ -1,12 +1,12 @@
 ---
-title: Deploying to MainNet
+title: Mainnet deployment
 ---
 
-# Deploying to Internet Computer MainNet
+# Deploying to Internet Computer
 
 This *Quick Start* scenario assumes that you are installing the SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
 
-If you are only deploying projects in a local development environment, see the [Local development](./deploy-locally.md) scenario.
+If you are only deploying projects in a local development environment, see the [local development](./deploy-locally.md) scenario.
 
 To get started, let’s build and deploy a simple Hello dapp that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the dapp using the command-line or in an HTML page if you access the dapp in a browser.
 

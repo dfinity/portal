@@ -1,4 +1,4 @@
-# Tutorial 2 - Create first app
+# Tutorial 2 - Create your first app
 
 ## About this tutorial
 

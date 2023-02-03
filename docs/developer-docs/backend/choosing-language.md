@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Choosing programming language
+# Choosing a programming language
 
 To create canisters, it is typical to use a so-called CDK, a Canister Development Kit.
 The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API.

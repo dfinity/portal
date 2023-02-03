@@ -77,7 +77,7 @@ function Index() {
           <div className={styles.mobileCardsContainer}>
             {cardsContent.map((card) => (
               <div className={styles.cardWrapper} key={card.title}>
-                <a href={card.link} className={styles.card}>
+                <a href={card.link} className={styles.card} >
                   <Card key={card.title} title={card.title} body={card.body} />
                 </a>
               </div>
@@ -91,6 +91,8 @@ function Index() {
               href={card.link}
               className={styles.card}
               key={card.title}
+              target={"_blank"}
+              rel={"noreferrer"}
             >
               <Card title={card.title} body={card.body} />
             </motion.a>

@@ -23,17 +23,16 @@ function Index() {
       <div className={styles.cards}>
         <SmallCard
           href="/docs/current/tutorials/deploy_sample_app"
-          title="Set up development environment"
+          title="Set up your development environment"
         >
           Install SDK, understand the project structure, acquire cycles, and
           deploy to production.
         </SmallCard>
         <SmallCard
-          href="/docs/current/developer-docs/backend/"
-          title="Build dapp backend"
+          href="/docs/current/developer-docs/backend/choosing-language"
+          title="Build a Smart Contract backend"
         >
           Learn how to create Internet Computer Canisters using Motoko and Rust
-          programming languages
         </SmallCard>
       </div>
     </AnimateSpawn>

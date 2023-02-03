@@ -14,7 +14,7 @@ function Index() {
         <p>Tutorials</p>
         <Link
           className={styles.callToAction}
-          to={"/docs/current/tutorials/deploy_sample_app"}
+          to={"/docs/current/tutorials"}
         >
           See all tutorials
         </Link>
@@ -22,18 +22,16 @@ function Index() {
       <div className={styles.cards}>
         <SmallCard
           href="/docs/current/tutorials/deploy_sample_app"
-          title="Deploy your first dapp"
+          title="Deploy a sample app"
         >
-          Install SDK, create a sample app, and deploy it to the production with
-          three simple steps.
+          Install the Internet Computer SDK, create a sample app, and deploy it to production in a few simple steps.
         </SmallCard>
 
         <SmallCard
           href="/docs/current/tutorials/create_your_first_app"
           title="Create your first app"
         >
-          Create your the first app with Motoko programming language and build
-          the app frontend with Vue.js
+          Create your first app using the Motoko programming language and Vue.js
         </SmallCard>
       </div>
     </AnimateSpawn>

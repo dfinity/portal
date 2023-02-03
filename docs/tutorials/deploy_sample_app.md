@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
+title: Deploy sample code
 ---
-# Tutorial 1 - Deploy a sample app to the MainNet
+# Tutorial 1 - Deploy sample code
 
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 <!-- Code editing knowledge is not necessary. -->

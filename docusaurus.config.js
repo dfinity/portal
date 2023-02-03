@@ -322,7 +322,6 @@ const config = {
             docId: "home",
             label: "Home",
           },
-
           {
             type: "docSidebar",
             position: "left",
@@ -332,7 +331,7 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "developer-docs",
+            sidebarId: "guides",
             label: "Guides",
           },
           {
@@ -369,11 +368,11 @@ const config = {
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
               },
               {
-                label: "Dev Forum ",
+                label: "Dev Forum",
                 href: "https://forum.dfinity.org/",
               },
               {
-                label: "Dev Discord ",
+                label: "Dev Discord",
                 href: "https://discord.gg/jnjVVQaE2C",
               },
             ],
@@ -437,7 +436,7 @@ const config = {
             items: [
               {
                 label: "ICP Careers",
-                to: "http://careers.internetcomputer.org/",
+                to: "https://careers.internetcomputer.org/",
               },
               {
                 label: "Brand Materials",

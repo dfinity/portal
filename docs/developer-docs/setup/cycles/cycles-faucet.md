@@ -2,7 +2,7 @@
 position: 4
 ---
 
-# Getting free cycles from DFINITY Cycles Faucet
+# Getting Started with Free Cycles
 
 This guide explains how to use Cycles Faucet to acquire your first amount of 20T free cycles that could be used to deploy your dapps on the MainNet.
 

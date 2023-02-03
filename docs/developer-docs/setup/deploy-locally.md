@@ -1,8 +1,8 @@
 ---
-title: Deploying locally
+title: Local deployment
 ---
 
-# Deploying the app locally
+# Local Deployment
 
 This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
