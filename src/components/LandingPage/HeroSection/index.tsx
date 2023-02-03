@@ -48,7 +48,7 @@ export default function Hero(): JSX.Element {
               href="/features"
             >
               <ArrowRight></ArrowRight>
-              Internet Computer capabilties
+              Internet Computer capabilities
             </Link>
           </AnimateSpawn>
           <Link
