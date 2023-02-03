@@ -141,10 +141,10 @@ const Content: React.FC = () => {
             wallets or DEXs.
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
-            <Link className="button-outline" href="">
+            <Link className="button-outline" href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc">
               Code ckBTC
             </Link>
-            <Link className="https://2ssjc-jiaaa-aaaam-abcca-cai.ic0.app/docs/current/developer-docs/integrations/bitcoin/ckbtc" href="">
+            <Link href="https://internetcomputer.org/how-it-works#Chain-key-technology">
               <LinkArrowRight></LinkArrowRight>
               Learn more
             </Link>
