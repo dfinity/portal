@@ -3,11 +3,15 @@ import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import { trackEvent } from "../utils/matomo";
 
 function ThankYouPage(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  useEffect(() => {
+    trackEvent("Email capture", "Thank you");
+  }, []);
   return (
     <Layout
       title="Thank you"
