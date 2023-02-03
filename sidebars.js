@@ -117,6 +117,7 @@ const sidebars = {
                 "developer-docs/build/cdks/motoko-dfinity/compatibility",
                 "developer-docs/build/cdks/motoko-dfinity/stablememory",
                 "developer-docs/build/cdks/motoko-dfinity/heartbeats",
+                "developer-docs/build/cdks/motoko-dfinity/timers",
                 "developer-docs/build/cdks/motoko-dfinity/language-manual",
                 "developer-docs/build/cdks/motoko-dfinity/compiler-ref",
                 "developer-docs/build/cdks/motoko-dfinity/motoko-grammar",
@@ -230,10 +231,10 @@ const sidebars = {
                  label: 'Integrate with an SNS',
                  link: {
                    type: "doc",
-                   id: "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+                   id: "developer-docs/integrations/sns/integrate-sns/index-integration",
                  },
                  items: [
-                   "developer-docs/integrations/sns/integrate-sns/index-integration",
+                   { type: "ref", id: "developer-docs/integrations/sns/integrate-sns/index-integration" },
                    "developer-docs/integrations/sns/integrate-sns/ledger-integration"
  //                "developer-docs/integrations/sns/integrate-sns/frontend-integration"
                  ],
@@ -263,7 +264,9 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "samples/deploying-your-first-bitcoin-dapp",
             "developer-docs/integrations/bitcoin/local-development",
+            "developer-docs/integrations/bitcoin/ckbtc",
           ],
         },
         {
@@ -308,6 +311,17 @@ const sidebars = {
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
             "developer-docs/integrations/ledger/deploy-new-token",
+          ],
+        },
+        {
+          type: "category",
+          label: "ICRC-1",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/icrc-1/index",
+          },
+          items: [
+            "developer-docs/integrations/icrc-1/deploy-new-token",
           ],
         },
         {
@@ -441,7 +455,6 @@ const sidebars = {
         "references/motoko-ref/Result",
         "references/motoko-ref/Stack",
         "references/motoko-ref/Text",
-        "references/motoko-ref/Time",
         "references/motoko-ref/Trie",
         "references/motoko-ref/TrieMap",
         "references/motoko-ref/TrieSet",
@@ -581,6 +594,7 @@ const sidebars = {
     "samples/token-transfer",
     "samples/host-a-webgame",
     "samples/hackathon-projects",
+    "samples/ios-integration",
   ],
 };
 

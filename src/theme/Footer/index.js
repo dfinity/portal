@@ -87,6 +87,28 @@ function Footer({ editPath }) {
               ))}
             </div>
           ))}
+          <form
+            className="text-white md:max-w-[40%] md:ml-auto mt-10 md:mt-0"
+            method="post"
+            action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
+          >
+            <p className="tw-lead-sm mb-3 md:mb-5">
+              Sign up for email updates to keep up to date with advancements on
+              the Internet Computer
+            </p>
+            <div className="flex gap-3 flex-col md:flex-row items-start">
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="Email"
+                className="input-text input-text-white flex-1 w-full md:w-auto"
+                required
+              />
+              <button type="submit" className="button-white">
+                Get Updates!
+              </button>
+            </div>
+          </form>
         </div>
         <div className={styles.footerBottom}>
           <div className={styles.legalContainer}>
@@ -123,7 +145,7 @@ function Footer({ editPath }) {
           <div className={styles.mediaLinksContainer}>
             {mediaLinks.map((item) => (
               <div key={item.href || item.to} className={styles.mediaLinks}>
-                <Link to={item.to}>
+                <Link to={item.to} aria-label={`Go to ${item.label}`}>
                   <img src={item.icon} alt="" />
                 </Link>
               </div>
