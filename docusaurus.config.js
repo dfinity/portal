@@ -44,7 +44,7 @@ const config = {
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
@@ -354,7 +354,7 @@ const config = {
               {
                 label: "Internet Computer Home",
                 to: "/",
-              },      
+              },
               { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",

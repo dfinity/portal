@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: "Build & Deploy"
+      - name: "Build website"
         run: |
           git submodule update --init
           npm install
