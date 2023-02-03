@@ -8,7 +8,7 @@ We next describe how you can test SNS proposals by deploying testflight SNS
 and submitting SNS proposals to it.
 The main differences to production SNS deployment are summarized here:
 - testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved;
-- no decentralization sale is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight
+- no decentralization sale is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight;
 - the developer can also keep direct control over the dapp's canisters registered with testflight SNS;
 - when deployed on the mainnet, testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
