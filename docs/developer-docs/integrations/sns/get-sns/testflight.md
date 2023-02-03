@@ -37,8 +37,8 @@ This tutorial has been tested at the following commits of the tools' repositorie
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
 ```
-DFX_IC_COMMIT=49c10c3f671fc6996208c7f742cb306956d6ab1b dfx sns import
-DFX_IC_COMMIT=49c10c3f671fc6996208c7f742cb306956d6ab1b dfx sns download
+DFX_IC_COMMIT=ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08 dfx sns import
+DFX_IC_COMMIT=ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08 dfx sns download
 ```
 in the root directory of your project.
 
