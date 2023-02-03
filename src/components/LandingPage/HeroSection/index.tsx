@@ -22,11 +22,11 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            Today, Web3 really runs on Big Tech's cloud. Blockchains can host tokens, but only
-            tiny amounts of data and compute.
+            Today, Web3 really runs on Big Tech's cloud. Blockchains can host tokens, but only tiny amounts of data and compute,
+            and no web.
             <br/><br/>
-            Tomorrow, blockchains will host that too, and fully decentralize everything from simple dApps, to billion-user social networks,
-            games, video streaming, orderbook DEXs, and enterprise systems.
+            Tomorrow, blockchains will do it all, and fully decentralize everything from simple dApps, to billion-user social networks,
+            media streaming, games, orderbook exchanges, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
             <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
@@ -74,7 +74,7 @@ export default function Hero(): JSX.Element {
           >
             The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> is <i>not</i> a
             Proof of Stake (PoS) blockchain created by "validator nodes" running on Big Tech's cloud.
-            It is formed by a <i>sovereign network</i> of standardized "node machines," which hardware is operated by independent parties.
+            It is formed by a <i>sovereign network</i> of standardized "node machine" hardware operated by independent parties.
             To participate, nodes must produce the same number of blocks as others in their cohort,
             without deviation. In a scheme of Proof-of-Useful-Work (PoUW), replicated smart contract computation
             is their work, driving optimal efficiency. Nodes form into subnet blockchains, and then into a unified limitless 
