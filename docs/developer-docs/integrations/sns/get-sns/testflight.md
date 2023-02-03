@@ -135,16 +135,13 @@ functions (refered to as *generic* functions in the following):
 - a validation function to validate and render the proposal payload;
 - an execution function to perform an action given the proposal payload.
 
-The validation function must take `Vec<u8>` as its single argument
-(corresponds to the binary proposal payload)
-and return `Result<String, String>`.
+The validation function must take return `Result<String, String>`.
 If the validation function returns `Ok(rendering)`, then
 the proposal is submitted and the `rendering` string is included
 into the proposal.
 Otherwise, the proposal submission fails.
 
-The execution function must take `Vec<u8>` as its single argument
-(corresponds to the same binary payload as passed to the validation function)
+The execution function gets the same binary payload as passed to the validation function
 and its code gets executed if the proposal is accepted.
 It should not return any value because this return value is ignored.
 
