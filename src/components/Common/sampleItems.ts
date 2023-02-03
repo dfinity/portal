@@ -268,4 +268,23 @@ export const sampleItems: SampleItem[] = [
       livePreview: "https://uf2fn-liaaa-aaaal-abeba-cai.ic0.app/",
     },
   },
+  {
+    index: 13,
+    title: "IOS Integration",
+    image: require("../../../static/img/samples/default.gif").default,
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "intermediate",
+    contentType: ["code samples", "documentation"],
+    body: "Integrate with a native ios application enabling push notifications and authentication.",
+    links: {
+      action: {
+        text: "Get Code",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/ios-notifications",
+      },
+      motoko:
+      "https://github.com/dfinity/examples/tree/master/motoko/ios-notifications",
+      docs: "/docs/current/samples/ios-integration",
+    },
+  },
 ];

@@ -43,17 +43,17 @@ export default function NextGenSection(): JSX.Element {
         >
           Corporation &rarr; algo democracy
         </motion.p>
-        <motion.p className="mb-6" variants={transitions.item}>
+        <motion.p
+          className="mb-6 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
+          variants={transitions.item}
+        >
           <Link className="button-primary" href="/sns">
-            Service Nervous System Basics
+            DAO BASICS
+          </Link>
+          <Link className="button-outline" href="/sns/faq">
+            How to participate (FAQ)
           </Link>
         </motion.p>
-        {/* <motion.p className="mb-0" variants={transitions.item}>
-          <Link className="link-primary inline-flex items-center gap-2" href="/sns">
-            <ArrowRight></ArrowRight>
-            Give it a try
-          </Link>
-        </motion.p> */}
       </div>
     </AnimateSpawn>
   );

@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import contribute from "@site/static/img/developers/contribute.png";
+import NewsletterSection from "../NewsletterSection/NewsletterSection";
 
 const cardsContent = [
   {
@@ -35,7 +36,7 @@ const cardsContent = [
   },
 ];
 
-function Card({ title, body }) {
+export function Card({ title, body }) {
   return (
     <>
       <div className={styles.cardContainer}>
@@ -96,6 +97,7 @@ function Index() {
           </motion.a>
         ))}
       </div>
+      <NewsletterSection></NewsletterSection>
       <div className={styles.contributionContainer}>
         <div className={styles.leftContainer}>
           <motion.p
