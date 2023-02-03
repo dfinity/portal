@@ -315,6 +315,17 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "ICRC-1",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/icrc-1/index",
+          },
+          items: [
+            "developer-docs/integrations/icrc-1/deploy-new-token",
+          ],
+        },
+        {
+          type: "category",
           label: "Rosetta",
           link: {
             type: "doc",

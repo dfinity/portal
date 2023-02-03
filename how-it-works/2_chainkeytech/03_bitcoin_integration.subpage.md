@@ -12,7 +12,7 @@ create Bitcoin smart contracts, that is, smart contracts in the form of canister
 Internet Computer that make use of real bitcoin.
 This integration is made possible through two key components.
 
- The first component is [chain-key transactions](/how-it-works/threshold-ecdsa-signing/),
+ The first component is [chain-key signatures](/how-it-works/threshold-ecdsa-signing/),
  which enables every canister to obtain ECDSA public keys and get signatures with respect to
  these keys in a secure manner.
  Since Bitcoin addresses are tied to ECDSA public keys, having ECDSA public keys

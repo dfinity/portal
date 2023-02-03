@@ -25,7 +25,7 @@ This novel approach to inter-canister calls allows for scaling out the IC by sim
 The core ICP makes heavy use of [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), a toolbox of advanced cryptographic protocols (based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem)) that enables the decentralized operation of the IC with unprecedented scalability.
 Chain-key cryptography also includes a sophisticated collection of technologies for robustly and securely addressing operational concerns, such as how to deal with faulty nodes or protocol upgrades, which we call [*chain-evolution technology*](https://internetcomputer.org/how-it-works/#Chain-evolution-technology) 
 (for example, enabling nodes to easily join a subnet without validating every block beginning from the genesis block, as in other blockchains).
-Another building block in the chain-key crypto toolbox are [*chain-key transactions*](https://internetcomputer.org/how-it-works/#Chain-key-transactions).
+Another building block in the chain-key crypto toolbox are [*chain-key signatures*](https://internetcomputer.org/how-it-works/#Chain-key-transactions).
 They enable a canister to interact with (write to) other blockchains using threshold cryptography.
 
 Having scalable and decentralized technology to power the operation of the network is not enough.
