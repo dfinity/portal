@@ -22,11 +22,11 @@ export default function Hero(): JSX.Element {
             className="tw-lead-sm md:tw-lead mb-8"
             variants={transitions.item}
           >
-            Today, Web3 really runs on Big Tech's cloud. Blockchains host tokens, but only
-            tiny amounts of the data and compute
+            Today, Web3 really runs on Big Tech's cloud. Blockchains can host tokens, but only
+            tiny amounts of data and compute.
             <br/><br/>
-            Tomorrow, everything will run 100% from blockchain, and decentralize, from simple dApps, to billion-user social networks,
-            MMO games, video streaming services, DeFi orderbook exchanges, and enterprise systems
+            Tomorrow, blockchains will host that too, and decentralize everything from simple dApps, to billion-user social networks,
+            MMO games, video streaming services, DeFi orderbook exchanges, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
             <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
