@@ -144,7 +144,7 @@ const Content: React.FC = () => {
             <Link className="button-outline" href="">
               Code ckBTC
             </Link>
-            <Link className="link-primary link-with-icon" href="">
+            <Link className="https://2ssjc-jiaaa-aaaam-abcca-cai.ic0.app/docs/current/developer-docs/integrations/bitcoin/ckbtc" href="">
               <LinkArrowRight></LinkArrowRight>
               Learn more
             </Link>
