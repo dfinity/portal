@@ -25,8 +25,8 @@ export default function Hero(): JSX.Element {
             Today, Web3 really runs on Big Tech's cloud. Blockchains can host tokens, but only
             tiny amounts of data and compute.
             <br/><br/>
-            Tomorrow, blockchains will host that too, and decentralize everything from simple dApps, to billion-user social networks,
-            games, video streaming, DeFi orderbook exchanges, and enterprise systems.
+            Tomorrow, blockchains will host that too, and fully decentralize everything from simple dApps, to billion-user social networks,
+            games, video streaming, orderbook DEXs, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
             <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
@@ -110,7 +110,7 @@ export default function Hero(): JSX.Element {
           >
             Traditional blockchains evolve and adapt through a painful and cumbersome process. A protocol
             "hard fork" is developed, and a central group of insiders, working at a foundation, or a
-            corporation, then coordinates those running nodes, or validators, upgrade their network software.
+            corporation, then coordinates those running nodes, or validators, in upgrading their network software.
             The <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer</span> network,
             by contrast, runs under the control of an advanced DAO, called the Network Nervous System (or NNS), which 
             acts as the brain of the blockchain, and completely automates and decentralizes processes such as
