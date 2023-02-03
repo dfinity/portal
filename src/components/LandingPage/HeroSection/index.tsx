@@ -26,7 +26,7 @@ export default function Hero(): JSX.Element {
             and no web.
             <br/><br/>
             Tomorrow, blockchains will do it all, and fully decentralize everything from simple dApps, to billion-user social networks,
-            media streaming, games, orderbook exchanges, and enterprise systems.
+            the metaverse, streaming, games, orderbook exchanges, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
             <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
