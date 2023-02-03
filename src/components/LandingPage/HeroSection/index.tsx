@@ -26,7 +26,7 @@ export default function Hero(): JSX.Element {
             tiny amounts of data and compute.
             <br/><br/>
             Tomorrow, blockchains will host that too, and decentralize everything from simple dApps, to billion-user social networks,
-            MMO games, video streaming services, DeFi orderbook exchanges, and enterprise systems.
+            games, video streaming, DeFi orderbook exchanges, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
             <span className="tw-heading-6 md:tw-heading-5 text-infinite">Internet Computer #ICP</span>
