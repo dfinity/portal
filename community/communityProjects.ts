@@ -2005,6 +2005,23 @@ const communityProjects: SampleItem[] = [
     level: "beginner",
     contentType: ["code samples", "community repo", "tutorial"],
   },
+  {
+    index: 123,
+    title: "No Key Wallet",
+    body: "Sign transactions for EVM-compatible blockchains on the Internet Computer.",
+    image: "/img/community-projects/no_key_wallet.png",
+    links: {
+      github: "https://github.com/nikolas-con/ic-evm-sign-starter",
+      livePreview: "https://vqbpb-giaaa-aaaap-qaxda-cai.ic0.app",
+      external: "https://www.tzionis.com/projects/ic-evm-sign",
+      docs: "https://github.com/nikolas-con/ic-evm-sign",
+      otherLinks: [],
+    },
+    domains: ["Asynchronous DeFi"],
+    languages: ["rust", "javascript"],
+    level: "intermediate",
+    contentType: ["code samples", "community repo", "tutorial"],
+  },
 ];
 
 export default communityProjects;

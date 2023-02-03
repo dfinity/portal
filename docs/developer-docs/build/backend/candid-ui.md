@@ -23,14 +23,14 @@ To use the Candid web interface to test canister functions:
     dfx start --background
     ```
 
-- Open a browser and navigate to the address and port number specified in the `dfx.json` configuration file. By default, the local canister execution environment binds to the `127.0.0.1:8000` address and port number.
+- Open a browser and navigate to the address and port number specified in the `dfx.json` configuration file. By default, the local canister execution environment binds to the `127.0.0.1:4943` address and port number.
 - Add the required `canisterId` parameter and the Candid UI canister identifier returned by the `dfx canister id __Candid_UI` command to the URL. For example, the full URL should look similar to the following but with the `CANDID-UI-CANISTER-IDENTIFIER` that was returned by the `dfx canister id __Candid_UI` command:
     ```
-    http://127.0.0.1:8000/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
+    http://127.0.0.1:4943/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
     ```
     For instance, with the example canister identifier for the Candid UI as shown above, this could look as follows:
     ```
-    http://127.0.0.1:8000/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai
+    http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai
     ```
 
     The browser then displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file. 

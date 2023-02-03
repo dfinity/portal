@@ -60,7 +60,7 @@ responses will be larger. If we minimize the amount of data each call fetches, t
 the canister has to make more calls. As we lean towards the first approach, we
 increase the amount of data fetched by each call as much as possible to reduce the number of calls needed and the resulting per-call overhead.
 
-On top of that, we store data that's already fetched such that future user requests to this data do not trigger HTTPS outcalls ant more.
+On top of that, we store data that's already fetched such that future user requests to this data do not trigger HTTPS outcalls any more.
 
 
 ## Building and deploying the sample dapp locally

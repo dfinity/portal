@@ -112,7 +112,7 @@ function InternetIdentityPage() {
               className="tw-heading-4 text-gradient mb-6 md:tw-heading-60 md:mb-8"
               variants={transitions.item}
             >
-              Internet Identity is an anonymous gateway to applications on the
+              Internet Identity is a privacy-enhancing authentication framework to applications on the
               Internet Computer
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
@@ -136,8 +136,9 @@ function InternetIdentityPage() {
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
                 Unlock authentication with your device via FaceID, fingerprint
-                sensor or use a YubiKey. This provides the most security, as
-                the cryptographic key never leaves your device.
+                sensor or use a YubiKey. This provides strong security, as
+                the cryptographic key never leaves your device. No passwords are used
+                to authenticate on the IC.
               </p>
             </CardWithIcon>
 
@@ -146,7 +147,7 @@ function InternetIdentityPage() {
               icon={<IconCryptography className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Remain anonymous using the Internet Identity authentication
+                Remain pseudonymous using the Internet Identity authentication
                 framework, which prevents user tracking across dapps and
                 services.
               </p>
@@ -187,17 +188,16 @@ function InternetIdentityPage() {
                   We've all grown accustomed to managing hundreds of usernames
                   and passwords, recovering forgotten accounts over text or
                   email, unwittingly permitting companies to profit from our
-                  data at the cost of our personal privacy, all the while
+                  data at the cost of our personal privacy, all while
                   falling victim to threats of identity theft and fraud.
                 </p>
                 <p className="mb-0 tw-paragraph">
                   On the Internet Computer blockchain, users can securely
                   authenticate themselves without ever needing an email,
-                  username, or password. Using any WebAuthn enabled device,
+                  username, or password. Using any WebAuthn-enabled device,
                   users can login conveniently without their information being
-                  monetized by tech companies. Internet Identity makes it
-                  cryptographically impossible for Web3 services to track your
-                  activity across dapps.
+                  monetized by tech companies. Internet Identity is designed to prevent
+                  Web3 services to track your activity across dapps.
                 </p>
                 <Link
                   className="link-primary link-with-icon mt-6"
@@ -231,10 +231,10 @@ function InternetIdentityPage() {
                 privacy & security
               </h2>
               <p className="tw-lead-sm md:tw-lead text-white-60 mb-0">
-                By integrating Internet Identity in dapps, websites cannot
+                By integrating dapps with Internet Identity, websites cannot
                 track online user activity coming from other websites. Users
-                have full control over their identity, connections are
-                private, and access to Web3 services at their fingertips.
+                have full control over their identities and access to Web3
+                services at their fingertips, while connections are private.
               </p>
             </motion.div>
           </div>
@@ -272,8 +272,8 @@ function InternetIdentityPage() {
               align="center"
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-3">
-                Internet Identity is an out of the box authentication framework
-                for any web3 developer to integrate with, or build their own
+                Internet Identity is an out-of-the-box authentication framework
+                for any Web3 developer to integrate with, or build their own
                 web3 identity solution on top of.
               </p>
               <p className="mb-0">
@@ -367,9 +367,8 @@ function InternetIdentityPage() {
               className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
               variants={transitions.item}
             >
-              Learn how to build a user-friendly identity services on the
-              Internet Computer using our core identity component, Internet
-              Identity.
+              Learn how to build a user-friendly dApp on the
+              Internet Computer using Internet Identity, our core identity component.
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -388,7 +387,7 @@ function InternetIdentityPage() {
             />
             <CardWithDescription
               title="Tech Dive"
-              description="Resources to learn all about II, the blockchain authentication framework supported by the Internet Computer."
+              description="Resources to learn all about Internet Identity, the blockchain authentication framework supported by the Internet Computer."
               href="/how-it-works/web-authentication-identity/"
             />
             <CardWithDescription

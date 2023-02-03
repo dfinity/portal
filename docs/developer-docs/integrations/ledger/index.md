@@ -41,7 +41,7 @@ There are three operations that can change the internal state of the ledger cani
 
 All operations are recorded as transactions in the ledger canister.
 
-The ledger maintains the transactions as a hashed blockchain, i.e., a blockchain running inside a cansiter smart contract (the ledger canister), which in turn is running on the NNS subnet blockchain.
+The ledger maintains the transactions as a hashed blockchain, i.e., a blockchain running inside a canister smart contract (the ledger canister), which in turn is running on the NNS subnet blockchain.
 
 As state changes are recorded, each new transaction is placed in a block and assigned a unique index. The entire chain is regularly authenticated by signing the latest chain link. The signature used to authenticate the chain can be verified by any third party who has access to the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ledger.
 
