@@ -127,7 +127,7 @@ export default function ShowcaseSection(): JSX.Element {
             className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
             variants={transitions.item}
           >
-            <Link className="button-primary" href="/showcase">
+            <Link className="button-primary" href="/ecosystem">
               View the ecosystem gallery
             </Link>
             <Link
