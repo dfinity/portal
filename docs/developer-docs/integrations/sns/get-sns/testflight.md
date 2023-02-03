@@ -21,7 +21,11 @@ To perform SNS testflight, you will need the following tools:
 - [sns-quill](https://github.com/dfinity/sns-quill)
 - [didc](https://github.com/dfinity/candid) (for advanced tests)
 
-Instead of building sns-cli locally, you can download pre-compiled binaries for [linux](https://download.dfinity.systems/ic/ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08/openssl-static-binaries/x86_64-darwin/sns.gz).
+Instead of building sns-cli locally, you can download pre-compiled binaries for [linux](https://download.dfinity.systems/ic/ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/ce3c2cfbfaf24d2ed6b783a4799eecb38a1a5f08/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running
+```
+./gitlab-ci/src/artifacts/newest_sha_with_disk_image.sh origin/master
+```
+from the root directory of the [IC monorepo](https://github.com/dfinity/ic).
 
 You can download pre-compiled binaries for sns-quill [here](https://github.com/dfinity/sns-quill/releases).
 
