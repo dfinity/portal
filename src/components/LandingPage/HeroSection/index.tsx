@@ -25,7 +25,7 @@ export default function Hero(): JSX.Element {
             Today, Web3 really runs on Big Tech's cloud. Blockchains can host tokens, but only tiny amounts of data and compute,
             and no web.
             <br/><br/>
-            Tomorrow, blockchains will do it all, and fully decentralize everything from simple dApps, to billion-user social networks,
+            Tomorrow, blockchains will host it all, and fully decentralize everything, from simple dApps, to billion-user social networks,
             the metaverse, streaming, games, orderbook exchanges, and enterprise systems.
             <br/><br/>
             It's already happening at scale on the first true World Computer:<br/>
