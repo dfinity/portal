@@ -42,7 +42,7 @@ In this documentation you will find
 
 * Guidelines for how to **manage an SNS**, which includes
   * [An introduction to managing an SNS](managing-sns/manage-sns-intro.md)
-  * [Tips regarding cycles management for the cansiters](managing-sns/cycles-usage.md)
+  * [Tips regarding cycles management for the canisters](managing-sns/cycles-usage.md)
   * Information on nervous system parameters that can be configured
     in each SNS <!--[Information on nervous system parameters that can be configured
     in each SNS](managing-sns/nervous-system-parameters.md)-->

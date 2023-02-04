@@ -242,4 +242,14 @@ export const communityToolingItems = [
       github: "https://github.com/ZenVoich/mops"
     },
   },
+  {
+    title: "ICPipeline",
+    tags: [ "development", "service", "testing", "CLI", "website", "starter"],
+    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
+    links: {
+      external: "https://www.icpipeline.com/",
+      github: "https://github.com/icpipeline-framework",
+      docs: "https://icpipeline.com/documentation"
+    },
+  },
 ];
