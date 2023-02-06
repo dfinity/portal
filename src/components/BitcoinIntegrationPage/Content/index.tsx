@@ -36,8 +36,8 @@ const Content: React.FC = () => {
             Combining these building blocks, ICP canisters can directly and
             securely hold, receive, and send bitcoin seamlessly as if the
             Internet Computer and the Bitcoin network were one blockchain.
-            Another way of looking at it, is that the Bitcoin integration is 
-            the same as running a Bitcoin node on chain. 
+            Another way of looking at it, is that the Bitcoin integration is the
+            same as running a Bitcoin node on chain.
           </p>
           <p className="mb-0 mt-8">
             <Link
@@ -98,9 +98,9 @@ const Content: React.FC = () => {
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
             Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It is
-            issued and redeemed via canister smart contracts and cryptographically
-            backed 1:1 with real bitcoin. It’s fast, low-tx-fee bitcoin on ICP
-            with no intermediary.
+            issued and redeemed via canister smart contracts and
+            cryptographically backed 1:1 with real bitcoin. It’s fast,
+            low-tx-fee bitcoin on ICP with no intermediary.
           </p>
         </div>
         <div className="md:w-8/10 md:mx-auto flex my-6 md:my-8">
@@ -120,19 +120,19 @@ const Content: React.FC = () => {
           <p className="tw-paragraph mb-3">
             While the Bitcoin network integration on the Internet Computer (ICP)
             is extremely powerful in terms of security and interoperability,
-            every bitcoin transaction suffers the low throughput, high latency, and high
-            fees native to the Bitcoin network. Chain-key Bitcoin (ckBTC), a
-            bitcoin ‘twin’ on ICP, has been introduced to bring layer 2
-            functionality fuelled by ICP properties like speed, scalability and
-            low transaction fees to bitcoin.
+            every bitcoin transaction suffers the low throughput, high latency,
+            and high fees native to the Bitcoin network. Chain-key Bitcoin
+            (ckBTC), a bitcoin ‘twin’ on ICP, has been introduced to bring layer
+            2 functionality fuelled by ICP properties like speed, scalability
+            and low transaction fees to bitcoin.
           </p>
           <p className="tw-paragraph mb-3">
             The ckBTC token eliminates the need for intermediaries as it is
             issued and redeemed through canister smart contracts built upon the
-            native Bitcoin integration. When the ckBTC canister receives
-            real bitcoin, it issues ckBTC backed 1:1 by that bitcoin. The data served
+            native Bitcoin integration. When the ckBTC canister receives real
+            bitcoin, it issues ckBTC backed 1:1 by that bitcoin. The data served
             by the ckBTC canister is transparent, so anyone can verify if their
-            ckBTC is backed 1:1 with bitcoin. Users can also redeem their ckBTC 
+            ckBTC is backed 1:1 with bitcoin. Users can also redeem their ckBTC
             for real Bitcoin at any time.
           </p>
           <p className="tw-paragraph mb-3">
@@ -141,10 +141,16 @@ const Content: React.FC = () => {
             wallets or DEXs.
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
-            <Link className="button-outline" href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc">
+            <Link
+              className="button-outline"
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+            >
               Code ckBTC
             </Link>
-            <Link href="https://internetcomputer.org/how-it-works#Chain-key-technology">
+            <Link
+              href="https://internetcomputer.org/how-it-works#Chain-key-technology"
+              className="link-primary link-with-icon"
+            >
               <LinkArrowRight></LinkArrowRight>
               Learn more
             </Link>
@@ -185,15 +191,16 @@ const Content: React.FC = () => {
           <p className="tw-paragraph mb-3">
             While a lightning network has many advantages, such as faster
             transactions and lower fees, transactions go through many channels
-            that run on centralized cloud systems. ckBTC brings layer 2 functionality 
-            to the Bitcoin network — fast, low-fee payments — without the risk or
-            limitations of a lightning network in that all transactions are held on
-            the ckBTC ledger and never go through centralized channels.
+            that run on centralized cloud systems. ckBTC brings layer 2
+            functionality to the Bitcoin network — fast, low-fee payments —
+            without the risk or limitations of a lightning network in that all
+            transactions are held on the ckBTC ledger and never go through
+            centralized channels.
           </p>
 
           <p className="tw-paragraph mb-0">
-            True decentralized transactions on the Internet Computer are made  
-            possible via inter-chain communication with the Bitcoin network and 
+            True decentralized transactions on the Internet Computer are made
+            possible via inter-chain communication with the Bitcoin network and
             chain-key ECDSA signatures.
           </p>
         </motion.div>
