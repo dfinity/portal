@@ -14,7 +14,7 @@ function FeaturePage() {
       title="Serve Web Content"
       // fill in meta description
       description=""
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">

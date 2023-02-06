@@ -52,7 +52,7 @@ function SnsPage() {
     <Layout
       title="DAO crypto evolved"
       description="An SNS is an advanced form of a DAO. A digital democracy that can run any dapp such as a social network in a fully decentralized way, fully on chain. No corporation, no board of directors, no CEO required."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <Head>
         <meta
@@ -389,7 +389,10 @@ function SnsPage() {
                 SNS-1: The First of its Kind
               </motion.h2>
 
-              <motion.p variants={transitions.item} className="tw-lead-sm mb-3 md:w-1/2">
+              <motion.p
+                variants={transitions.item}
+                className="tw-lead-sm mb-3 md:w-1/2"
+              >
                 SNS-1 was a dress rehearsal that DFINITY ran together with the
                 ICP community to test an SNS decentralization sale on the
                 mainnet. After a successful SNS launch, SNS-1 is now controlled

@@ -10,6 +10,7 @@ import Footer from "@theme/Footer";
 import LayoutProvider from "@theme/Layout/Provider";
 import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function Layout(props) {
   const {
@@ -22,6 +23,9 @@ export default function Layout(props) {
     editPath,
   } = props;
   useKeyboardNavigation();
+
+  const { siteConfig } = useDocusaurusContext();
+  const editUrl = `https://github.com/${siteConfig.customFields.githubRepository}/edit/${siteConfig.customFields.branch}/${editPath}`;
 
   return (
     <LayoutProvider>
@@ -45,7 +49,7 @@ export default function Layout(props) {
         </ErrorBoundary>
       </div>
 
-      {!noFooter && <Footer editPath={editPath} />}
+      {!noFooter && <Footer editUrl={editUrl} />}
     </LayoutProvider>
   );
 }

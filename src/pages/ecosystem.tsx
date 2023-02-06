@@ -75,7 +75,7 @@ function ShowcasePage(): JSX.Element {
     <Layout
       title="Web3 Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <Head>
         <meta

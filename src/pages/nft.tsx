@@ -163,7 +163,7 @@ function NftPage() {
     <Layout
       title="NFTs"
       description={`The Internet Computer is the only blockchain storing all components of an NFT on the blockchain, including assets. This opens up capabilities for ICP NFTs that go way beyond "overpriced links to JPGs".`}
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <Head>
         <meta
@@ -277,7 +277,10 @@ function NftPage() {
               ICP without compromising on decentralization or price.
             </p>
             <p className="mb-0">
-              <Link href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs#nfts-on-the-internet-computer" className="button-outline">
+              <Link
+                href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs#nfts-on-the-internet-computer"
+                className="button-outline"
+              >
                 Become a Creator
               </Link>
             </p>
@@ -392,7 +395,10 @@ function NftPage() {
                 blockchain. Anyone can visit these islands on chain, while the
                 owner of the NFT can update it by building. Try it yourself!
               </p>
-              <Link className="link-primary link-with-icon" href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/"
+              >
                 <LinkArrowRight /> Create your own island
               </Link>
             </TranslatedLayout>
@@ -408,7 +414,10 @@ function NftPage() {
                 mint their videos as NFTs. The owners of these NFTs receive
                 tokens as royalties based on the number of viewers.
               </p>
-              <Link className="link-primary link-with-icon" href="https://app.portal.one/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://app.portal.one/"
+              >
                 <LinkArrowRight /> Watch videos on Portal
               </Link>
             </TranslatedLayout>
@@ -428,7 +437,10 @@ function NftPage() {
                 functionality, Portals themselves are NFTs owned by those who
                 created them.
               </p>
-              <Link className="link-primary link-with-icon" href="https://dscvr.one/p/internet-computer">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://dscvr.one/p/internet-computer"
+              >
                 <LinkArrowRight /> Check out the Internet Computer Portal
               </Link>
             </TranslatedLayout>

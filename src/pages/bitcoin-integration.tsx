@@ -22,7 +22,7 @@ function BitcoinIntegration() {
       description="The Internet Computer (ICP) cryptographically integrates with the
       Bitcoin network, unleashing a plethora of opportunities to securely
       execute bitcoin transactions 100% on chain."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpeg"></ShareMeta>
 

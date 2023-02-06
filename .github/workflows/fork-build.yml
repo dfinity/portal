@@ -1,12 +1,12 @@
 name: Build check
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+
+on: [push, pull_request]
 
 jobs:
   build:
     # only run in forks
-    if: github.event.pull_request.head.repo.full_name != github.repository
+    if: github.repository != 'dfinity/portal'
+
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}

@@ -46,7 +46,7 @@ function NnsPage() {
       title="Network Nervous System (NNS)"
       // fill in meta description
       description="The NNS is one of the world's largest DAOs that governs the Internet Computer."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <Head>
         <meta
@@ -123,9 +123,9 @@ function NnsPage() {
                 The Internet Computer doesn’t require complicated forks to
                 upgrade its capacity. Anyone can submit a proposal to make
                 protocol level changes. Once approved by ICP token holders,
-                these changes are automatically deployed by the NNS,
-                seamlessly upgrading the network. For participating in
-                governance, ICP token holders receive voting rewards.
+                these changes are automatically deployed by the NNS, seamlessly
+                upgrading the network. For participating in governance, ICP
+                token holders receive voting rewards.
               </motion.p>
               <MotionLink
                 className="link-external"
@@ -179,8 +179,8 @@ function NnsPage() {
                 neurons as maturity. This maturity is unrealized ICP that can
                 either be merged or spawned. Merging maturity will mint ICP and
                 add it to the neuron’s stake, while spawning mints it into a
-                neuron that becomes liquid after a week so that the ICP contained
-                in the neuron can also be used outside of the NNS.
+                neuron that becomes liquid after a week so that the ICP
+                contained in the neuron can also be used outside of the NNS.
               </motion.p>
               <MotionLink
                 className="link-external"
@@ -208,7 +208,8 @@ function NnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Check out the open and autonomous governance system running 100% on chain
+              Check out the open and autonomous governance system running 100%
+              on chain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"

@@ -94,7 +94,7 @@ function SnsFaqPage() {
     <Layout
       title="SNS DAO FAQ"
       description="All you need to know about DAOs on the Internet Computer and how to participate in them."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
 
@@ -162,9 +162,9 @@ function SnsFaqPage() {
 
             <Faq title="What is an SNS?">
               <p>
-                SNS stands for Service Nervous System. An SNS is a powerful
-                form of DAO that allows communities to govern smart contracts
-                and decentralized apps (dapps) running on the Internet Computer
+                SNS stands for Service Nervous System. An SNS is a powerful form
+                of DAO that allows communities to govern smart contracts and
+                decentralized apps (dapps) running on the Internet Computer
                 (ICP) completely on chain. Main things to note about SNS:
               </p>
               <ul>
@@ -200,12 +200,12 @@ function SnsFaqPage() {
                 </strong>{" "}
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
-                of a dapp, since everything is on-chain. Having fully on-chain DAOs
-                is important because it enables all decisions to execute on the
-                blockchain. This is in contrast to existing DAOs on other
-                blockchains where voting takes place on-chain but the execution of
-                the results are often carried out by developers off-chain. This
-                facilitates true decentralization.{" "}
+                of a dapp, since everything is on-chain. Having fully on-chain
+                DAOs is important because it enables all decisions to execute on
+                the blockchain. This is in contrast to existing DAOs on other
+                blockchains where voting takes place on-chain but the execution
+                of the results are often carried out by developers off-chain.
+                This facilitates true decentralization.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -334,9 +334,9 @@ function SnsFaqPage() {
                 From a user's vantage point, the Community Fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
                 future SNSs, which results in higher diversification. As the NNS
-                decides how the Community Fund is distributed, those participating
-                in it can leverage the broader community's "wisdom of crowds"
-                to decide which SNS tokens to acquire.
+                decides how the Community Fund is distributed, those
+                participating in it can leverage the broader community's "wisdom
+                of crowds" to decide which SNS tokens to acquire.
               </p>
               You can find out more about the community fund{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
@@ -413,10 +413,11 @@ function SnsFaqPage() {
             <Faq title="How do I participate in a sale?">
               <p>
                 You can participate in the decentralization sale in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>, which
-                requires ICP utility tokens. ICP tokens can be exchanged for the SNS
-                tokens during the decentralization sale. If you don’t have ICP,
-                you can buy some from any of the exchanges listed{" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
+                which requires ICP utility tokens. ICP tokens can be exchanged
+                for the SNS tokens during the decentralization sale. If you
+                don’t have ICP, you can buy some from any of the exchanges
+                listed{" "}
                 <Link href="https://support.dfinity.org/hc/en-us/articles/6646999699860-How-do-I-stake-ICP-utility-tokens-">
                   here
                 </Link>
@@ -535,9 +536,8 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How do I create a proposal for an SNS DAO?">
               <p>
-                Creating an SNS proposal requires knowledge of the
-                command line tools{" "}
-                <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
+                Creating an SNS proposal requires knowledge of the command line
+                tools <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
                 <Link href="https://github.com/dfinity/sns-quill">quill</Link>.
               </p>
               <p className="not-prose">
@@ -585,13 +585,11 @@ function SnsFaqPage() {
                 This depends on the specific SNS configuration. An SNS DAO can
                 have both inflationary and deflationary pressures.
               </p>
-              <p>
-                Inflationary:
-              </p>
+              <p>Inflationary:</p>
               <ul>
                 <li>
-                  An SNS DAO can be set up to mint voting rewards for people
-                  who participate in governance (similar to ICP).
+                  An SNS DAO can be set up to mint voting rewards for people who
+                  participate in governance (similar to ICP).
                 </li>
                 <li>
                   An SNS DAO can mint tokens if voted on by SNS token holders.
@@ -599,14 +597,13 @@ function SnsFaqPage() {
                   distributes it among players.
                 </li>
               </ul>
-              <p>
-                Deflationary:
-              </p>
+              <p>Deflationary:</p>
               <ul>
                 <li>SNS tokens are burnt for every transaction.</li>
                 <li>
                   Locking SNS tokens into neurons removes them from circulation.
-                  While not technically deflation, it acts as a deflationary pressure.
+                  While not technically deflation, it acts as a deflationary
+                  pressure.
                 </li>
               </ul>
             </Faq>

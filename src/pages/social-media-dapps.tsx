@@ -106,7 +106,7 @@ function SocialMediaDappsPage() {
     <Layout
       title="Social Media Decentralized"
       description="Take full ownership and control over your social media plaforms."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <Head>
         <meta

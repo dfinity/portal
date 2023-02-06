@@ -19,7 +19,7 @@ function Index() {
     <Layout
       title={article.title}
       description={article.abstract || ""}
-      editPath={`https://github.com/dfinity/portal/edit/master/${article.fileName}`}
+      editPath={article.fileName}
     >
       <main className="text-black relative overflow-hidden">
         <img

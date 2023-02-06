@@ -34,6 +34,12 @@ const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 
+const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY || "dfinity/portal";
+const BRANCH = process.env.GITHUB_REF_NAME || "master";
+
+console.log("GITHUB_REPOSITORY:", GITHUB_REPOSITORY);
+console.log("BRANCH:", BRANCH);
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Internet Computer Home",
@@ -48,7 +54,10 @@ const config = {
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
-
+  customFields: {
+    githubRepository: GITHUB_REPOSITORY,
+    branch: BRANCH,
+  },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],

@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
     <Layout
       title={siteConfig.title}
       description={siteConfig.tagline}
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <PreHero debugForces={false} paintParticles={true}></PreHero>
 

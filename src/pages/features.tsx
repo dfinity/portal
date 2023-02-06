@@ -92,7 +92,7 @@ function FeaturesPage() {
       description="The Internet Computer is 'alien tech' crypto. It extends the
     internet by smashing through historical limitations, unlocking new capabilities
     for Web3 and the world..."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      editPath={__filename}
     >
       <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
 
@@ -114,9 +114,10 @@ function FeaturesPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The Internet Computer provides numerous unique capabilities that enable it to 
-                play the role of World Computer, provide a foundation for transforming the 
-                internet, and deliver opportunity to builders and users.
+                The Internet Computer provides numerous unique capabilities that
+                enable it to play the role of World Computer, provide a
+                foundation for transforming the internet, and deliver
+                opportunity to builders and users.
               </motion.p>
             </div>
           </div>
@@ -199,12 +200,12 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-6"
               variants={transitions.item}
             >
-              Until now, blockchains had to rely on expensive and slow oracles to
-              read from off-chain data sources. ICP smart contracts can directly
-              connect to Web2 APIs, making oracles obsolete. This opens up
-              countless possibilities like sending emails, push notifications,
-              fetching digital asset or fiat prices and many more — directly from the
-              blockhain.
+              Until now, blockchains had to rely on expensive and slow oracles
+              to read from off-chain data sources. ICP smart contracts can
+              directly connect to Web2 APIs, making oracles obsolete. This opens
+              up countless possibilities like sending emails, push
+              notifications, fetching digital asset or fiat prices and many more
+              — directly from the blockhain.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -241,9 +242,9 @@ function FeaturesPage() {
                 The Internet Computer blockchain has replaced the username and
                 password model with a more advanced and much more secure method
                 of cryptographic authentication that is more convenient, works
-                across all of a user's devices, and helps protect user
-                privacy. Based on W3C's Web Authentication (WebAuthn) Web standard.
-                Using hardware-based user key protection.
+                across all of a user's devices, and helps protect user privacy.
+                Based on W3C's Web Authentication (WebAuthn) Web standard. Using
+                hardware-based user key protection.
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
@@ -268,9 +269,13 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               Low latency and high throughput. The two most important metrics
-              for measuring performance. The Internet Computer excels in both. Unlike most blockchains, ICP has no
-              theoretical maximum TX/s. Throughput scales horizontally with each added subnet, analougous to how cloud computing scales out with added machines.
-              Smart contracts on different subnets can always communicate with each other, without getting bottlenecked with a growing number of subnets.
+              for measuring performance. The Internet Computer excels in both.
+              Unlike most blockchains, ICP has no theoretical maximum TX/s.
+              Throughput scales horizontally with each added subnet, analougous
+              to how cloud computing scales out with added machines. Smart
+              contracts on different subnets can always communicate with each
+              other, without getting bottlenecked with a growing number of
+              subnets.
             </motion.p>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2  md:gap-x-12 md:gap-y-6">
@@ -313,11 +318,13 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
               variants={transitions.item}
             >
-              Search engines like Google can’t index smart contracts running
-              on other blockchains. As developers have to use centralized cloud
-              providers to store the frontends, at least those become searchable. A compromise. The Internet
-              Computer hosts smart contracts that can directly be indexed by all
-              popular search engines. No frontends on public cloud required. This is how true Web3 works.
+              Search engines like Google can’t index smart contracts running on
+              other blockchains. As developers have to use centralized cloud
+              providers to store the frontends, at least those become
+              searchable. A compromise. The Internet Computer hosts smart
+              contracts that can directly be indexed by all popular search
+              engines. No frontends on public cloud required. This is how true
+              Web3 works.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -359,12 +366,13 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
-              One of the major hurdles to blockchain adoption for end users
-              is having to buy and hold tokens to interact with the blockchain
-              to pay for gas fees. The Internet Computer has been designed with mass
-              adoption in mind from the ground up. Developers charge up their smart
-              contracts with cycles (the IC analogon to gas), so users don’t have to pay when interacting with the
-              smart contracts. This removes a major barrier of entry for end users.
+              One of the major hurdles to blockchain adoption for end users is
+              having to buy and hold tokens to interact with the blockchain to
+              pay for gas fees. The Internet Computer has been designed with
+              mass adoption in mind from the ground up. Developers charge up
+              their smart contracts with cycles (the IC analogon to gas), so
+              users don’t have to pay when interacting with the smart contracts.
+              This removes a major barrier of entry for end users.
             </motion.p>
           </SingleCard>
         </section>
@@ -426,10 +434,12 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm mb-6 "
               variants={transitions.item}
             >
-              The Internet Computer is integrated with the
-              Bitcoin network at the protocol level. Using chain-key ECDSA signatures (an advanced form of threshold ECDSA) and a protocol-level integration, a canister smart contract can create
-              Bitcoin addresses, and send and receive bitcoin, all directly on the
-              Bitcoin ledger, much like a regular Bitcoin user.
+              The Internet Computer is integrated with the Bitcoin network at
+              the protocol level. Using chain-key ECDSA signatures (an advanced
+              form of threshold ECDSA) and a protocol-level integration, a
+              canister smart contract can create Bitcoin addresses, and send and
+              receive bitcoin, all directly on the Bitcoin ledger, much like a
+              regular Bitcoin user.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -452,9 +462,12 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-12"
               variants={transitions.item}
             >
-              Using chain-key ECSDA signatures (advanced threshold ECDSA), the Internet Computer will
-              integrate with Ethereum. Internet Computer smart contracts can access and use all digital assets like ERC-20 and ERC-721 tokens from Ethereum, 
-              and smart contracts on Ethereum can use the power of IC smart contracts, e.g., low-cost storage and computation.
+              Using chain-key ECSDA signatures (advanced threshold ECDSA), the
+              Internet Computer will integrate with Ethereum. Internet Computer
+              smart contracts can access and use all digital assets like ERC-20
+              and ERC-721 tokens from Ethereum, and smart contracts on Ethereum
+              can use the power of IC smart contracts, e.g., low-cost storage
+              and computation.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -481,7 +494,8 @@ function FeaturesPage() {
               integration with other blockchains without the use of bridges. It
               allows the Internet Computer to natively create transactions on
               other blockchains like Bitcoin and Ethereum. Currently, the ECDSA
-              signature scheme, and with it most other blockchains, are supported.
+              signature scheme, and with it most other blockchains, are
+              supported.
               <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
                 className="tw-heading-6 flex gap-2 items-center"
@@ -664,7 +678,8 @@ function FeaturesPage() {
               Concurrent Execution
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              Enabled by the IC's asynchronous communication, "actor" smart contracts run in parallel, unlocking horizontal scaling and
+              Enabled by the IC's asynchronous communication, "actor" smart
+              contracts run in parallel, unlocking horizontal scaling and
               preventing reentrancy attacks like the infamous DAO attack, which
               caused a major chain to hard fork and a loss of 60 million USD.
             </p>
@@ -677,11 +692,11 @@ function FeaturesPage() {
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              On other blockchain networks, smart contract computations
-              can only be invoked by submitting a new transaction to their
-              networks. The Internet Computer provides a means for canister
-              smart contracts to be configured so that they are invoked by the
-              blockchain itself, at some specified block interval.
+              On other blockchain networks, smart contract computations can only
+              be invoked by submitting a new transaction to their networks. The
+              Internet Computer provides a means for canister smart contracts to
+              be configured so that they are invoked by the blockchain itself,
+              at some specified block interval.
             </p>
             <p className="mb-0">
               <Link href="/features/daemon-contracts" className="link-external">
@@ -694,9 +709,10 @@ function FeaturesPage() {
               Multi-block transactions
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              Smart contract calls (TXs) can be long-running and can span multiple
-              blocks. This removes the tedious "round gas limit" most blockchains have,
-              simplifies smart contract programming, and unlocks new use cases.
+              Smart contract calls (TXs) can be long-running and can span
+              multiple blocks. This removes the tedious "round gas limit" most
+              blockchains have, simplifies smart contract programming, and
+              unlocks new use cases.
             </p>
             <p className="mb-0">
               <Link
@@ -712,8 +728,10 @@ function FeaturesPage() {
               WebAssembly (Wasm)
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
-              Use any language that compiles to Wasm to write canister smart contracts. SDKs are available for Motoko, Rust, TypeScript,
-              and Python. Any other language that compiles to Wasm can be used as well, for example C.
+              Use any language that compiles to Wasm to write canister smart
+              contracts. SDKs are available for Motoko, Rust, TypeScript, and
+              Python. Any other language that compiles to Wasm can be used as
+              well, for example C.
             </p>
             <p className="mb-0">
               <Link href="/features/webassembly" className="link-external">
@@ -727,8 +745,8 @@ function FeaturesPage() {
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               The Internet Computer incorporates a novel subnet architecture
-              that enables infinite scalability, making 100% on-chain mass-market Web3
-              services possible. No cloud servers needed.
+              that enables infinite scalability, making 100% on-chain
+              mass-market Web3 services possible. No cloud servers needed.
             </p>
             <p className="mb-0">
               <Link
@@ -768,8 +786,9 @@ function FeaturesPage() {
             >
               Learn the inner workings of the Internet Computer blockchain.
               Easy-to-read tech articles on the core protocol, governance,
-              chain-key cryptography, chain-key signatures, plus open-source repositories, in-depth
-              video academy sessions, white papers, and more.
+              chain-key cryptography, chain-key signatures, plus open-source
+              repositories, in-depth video academy sessions, white papers, and
+              more.
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"

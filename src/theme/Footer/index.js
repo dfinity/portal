@@ -47,7 +47,7 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   );
 }
 
-function Footer({ editPath }) {
+function Footer({ editUrl }) {
   const { footer } = useThemeConfig();
   const { copyright, links = [] } = footer || {};
 
@@ -67,10 +67,10 @@ function Footer({ editPath }) {
         })}
       >
         <div className={styles.editButtonContainer}>
-          {editPath && (
+          {editUrl && (
             <Link
               className="absolute -top-8 right-0 text-white hover:text-white-60 hover:no-underline tw-title-navigation-on-page rounded-full py-1 px-3 bg-black-60 backdrop-blur-2xl -translate-y-1/2 inline-flex items-center gap-1"
-              href={editPath}
+              href={editUrl}
             >
               <EditIcon></EditIcon>
               Edit this page
