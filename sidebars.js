@@ -222,6 +222,7 @@ const sidebars = {
                 },
                 items: [
                   "developer-docs/integrations/sns/get-sns/preparation",
+                  "developer-docs/integrations/sns/get-sns/testflight",
                   "developer-docs/integrations/sns/get-sns/local-testing"
 //                "developer-docs/integrations/sns/get-sns/get-sns-production"
                 ],
@@ -311,6 +312,17 @@ const sidebars = {
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
             "developer-docs/integrations/ledger/deploy-new-token",
+          ],
+        },
+        {
+          type: "category",
+          label: "ICRC-1",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/icrc-1/index",
+          },
+          items: [
+            "developer-docs/integrations/icrc-1/deploy-new-token",
           ],
         },
         {

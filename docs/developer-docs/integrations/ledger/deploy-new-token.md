@@ -47,7 +47,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
         trigger_threshold = 2000;
         num_blocks_to_archive = 1000;
         controller_id = principal "'${ARCHIVE_CONTROLLER}'";
-        cycles_for_archive_creation = opt 10_000_000_000_000
+        cycles_for_archive_creation = opt 10_000_000_000_000;
       }
     })'
     ```
@@ -58,7 +58,7 @@ This tutorial will guide you step-by-step to deploy your own token to the IC and
 
     -   the `TOKEN_NAME` is the human-readable name of your new token
 
-    -   the `TOKEN_SYMBOL` is the symbol of your new token
+    -   the `TOKEN_SYMBOL` is the ticker symbol of your new token
 
     -   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [Ledger documentation](./index.md))
 
