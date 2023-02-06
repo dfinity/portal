@@ -139,7 +139,8 @@ functions (refered to as *generic* functions in the following):
 - a validation function to validate and render the proposal payload;
 - an execution function to perform an action given the proposal payload.
 
-The validation function must return `Result<String, String>`.
+The validation function must return a value of the Candid type
+`variant { Ok: text; Err: text; }`, e.g., `Result<String, String>` in Rust.
 If the validation function returns `Ok(rendering)`, then
 the proposal is submitted and the `rendering` string is included
 into the proposal.
