@@ -17,9 +17,10 @@ jobs:
 
       - name: "Build & Deploy"
         run: |
+          echo Github: ${{ github }}
           echo Full name: ${{ github.event.pull_request.head.repo.full_name }}
           echo Repository: ${{ github.repository }}
           echo Branch: ${{ github.ref }}
-          git submodule update --init
-          npm install
-          npm run build
+          # git submodule update --init
+          # npm install
+          # npm run build
