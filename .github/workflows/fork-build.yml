@@ -14,10 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v1
       - name: "Build & Deploy"
         run: |
-          echo Github: ${{ github }}
+          # echo Github: ${{ github }}
           echo Full name: ${{ github.event.pull_request.head.repo.full_name }}
           echo Repository: ${{ github.repository }}
           echo Branch: ${{ github.ref }}
