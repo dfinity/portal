@@ -1,38 +1,39 @@
-import React from "react";
+import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
+import React, { useRef } from "react";
 import Layout from "@theme/Layout";
 import Hero from "@site/src/components/BitcoinIntegrationPage/Hero";
 import HowItWorks from "@site/src/components/BitcoinIntegrationPage/HowItWorks";
-import ReleaseTimeline from "@site/src/components/BitcoinIntegrationPage/ReleaseTimeline";
-import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
-import Head from "@docusaurus/Head";
 import Videos from "@site/src/components/BitcoinIntegrationPage/Videos";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import ShareMeta from "../components/Common/ShareMeta";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import Content from "../components/BitcoinIntegrationPage/Content";
 
 function BitcoinIntegration() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(ref);
+
   return (
     <Layout
-      title="Bitcoin Integration"
-      description="The Internet Computer enables direct integration with the Bitcoin network. By way of bridge-less communication with the Bitcoin network and a novel threshold ECDSA protocol, canisters on the Internet Computer can now securely receive, hold, and send bitcoins."
+      title="Bitcoin on ICP"
+      description="The Internet Computer (ICP) cryptographically integrates with the
+      Bitcoin network, unleashing a plethora of opportunities to securely
+      execute bitcoin transactions 100% on chain."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-bitcoin-integration.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-bitcoin-integration.jpeg"
-          }
-        />
-        <title>Bitcoin Integration</title>
-      </Head>
-      <main className="text-black relative overflow-hidden">
-        <Hero></Hero>
+      <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpeg"></ShareMeta>
+
+      <main
+        className="text-black relative overflow-hidden"
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        <Hero ref={ref}></Hero>
         <HowItWorks></HowItWorks>
-        <ReleaseTimeline></ReleaseTimeline>
+        <Content></Content>
+        {/* <ReleaseTimeline></ReleaseTimeline> */}
         <Videos></Videos>
         <BuildWithBitcoin></BuildWithBitcoin>
       </main>

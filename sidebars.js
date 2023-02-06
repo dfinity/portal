@@ -249,7 +249,6 @@ const sidebars = {
       dirName: "developer-docs",
     }
   ],
-
   samples: [
     "samples/deploying-your-first-bitcoin-dapp",
     "samples/t-ecdsa-sample",

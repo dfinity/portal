@@ -505,7 +505,7 @@ Subtypes of a variant type are variant types with some tags removed, and the typ
 If you want to be able to *add* new tags in variants in a method result, you can do so if the variant is itself wrapped in `opt …`. This requires planning ahead! When you design an interface, instead of writing:
 
 ``` candid
-service {
+service: {
   get_member_status (member_id : nat) -> (variant {active; expired});
 }
 ```
@@ -513,7 +513,7 @@ service {
 it is better to use this:
 
 ``` candid
-service {
+service: {
   get_member_status (member_id : nat) -> (opt variant {active; expired});
 }
 ```
@@ -630,7 +630,7 @@ Corresponding Rust type
 Corresponding JavaScript values  
 `[Principal.fromText("aaaaa-aa"), "create_canister"]`
 
-## Type service {…}
+## Type service: {…}
 
 Services may want to pass around references to not just individual functions (using the [`func` type](#type-func)), but references to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
 
@@ -638,7 +638,7 @@ See [Candid service descriptions](/developer-docs/backend/candid/candid-concepts
 
 Type syntax  
 ``` candid
-service {
+service: {
   add : (nat) -> ();
   subtract : (nat) -> ();
   get : () -> (int) query;
@@ -648,9 +648,9 @@ service {
 
 Textual syntax  
 ``` candid
-service "w7x7r-cok77-xa"
-service "zwigo-aiaaa-aaaaa-qaa3a-cai"
-service "aaaaa-aa"
+service: "w7x7r-cok77-xa"
+service: "zwigo-aiaaa-aaaaa-qaa3a-cai"
+service: "aaaaa-aa"
 ```
 
 Subtypes  
@@ -709,7 +709,7 @@ The `reserved` type is a type with one (uninformative) value `reserved`, and is 
 The `reserved` type can be used to remove method arguments. Consider a method with the following signature:
 
 ``` candid
-service {
+service: {
   foo : (first_name : text, middle_name : text, last_name : text) -> ()
 }
 ```
@@ -717,7 +717,7 @@ service {
 and assume you no longer care about the `middle_name`. Although Candid will not prevent you from changing the signature to this:
 
 ``` candid
-service {
+service: {
   foo : (first_name : text, last_name : text) -> ()
 }
 ```
@@ -727,7 +727,7 @@ it would be disastrous: If a client talks to you using the old interface, you wi
 Instead, you can use:
 
 ``` candid
-service {
+service: {
   foo : (first_name : text, middle_name : reserved, last_name : text) -> ()
 }
 ```
@@ -737,7 +737,7 @@ to indicate that `foo` used to take a second argument, but you no longer care ab
 You can avoid this pitfall by adopting the pattern any function that is anticipated to have changing arguments, or whose arguments can only be distinguished by position, not type, is declared to take a single record. For example:
 
 ``` candid
-service {
+service: {
   foo : (record { first_name : text; middle_name : text; last_name : text}) -> ()
 }
 ```
@@ -745,7 +745,7 @@ service {
 Now, changing the signature to this:
 
 ``` candid
-service {
+service: {
   foo : (record { first_name : text; last_name : text}) -> ()
 }
 ```
@@ -783,7 +783,7 @@ The `empty` type is the type without values, and is the subtype of any other typ
 Practical use cases for the `empty` type are relatively rare. It could be used to mark a method as “never returns successfully”. For example:
 
 ``` candid
-service : {
+service: {
   always_fails () -> (empty)
 }
 ```
