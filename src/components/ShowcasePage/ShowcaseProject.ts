@@ -1,6 +1,5 @@
 export type ShowcaseProject = {
   description: string;
-  github: string;
   logo: string;
   display: "Large" | "Normal";
   name: string;
@@ -10,10 +9,10 @@ export type ShowcaseProject = {
   tags: string[];
   video?: string;
   videoContentType?: string;
-  website: string;
   usesInternetIdentity: boolean;
-};
-
-export const colorRegistry: Record<string, string> = {
-  default: "rgb(233, 243, 252)",
+  website: string;
+  github?: string;
+  twitter?: string;
+  youtube?: string;
+  submittableId?: string;
 };

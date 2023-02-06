@@ -190,6 +190,8 @@ Add your submission to [the community projects file](/community/communityProject
 
 ## Showcase submission guidelines
 
+_Disclaimer: You should have a working canister for your product to be showcased. Our team will review the PR and get back to you for any further questions. In the meantime, please contact devcomms@dfinity.org if you have any questions._
+
 Add your project to the end of [`showcase.json`](/showcase.json). Refer to the object schema below for the required fields.
 
 Make up a unique project id. For example, if your project is called `Awesome ICP Project!`, your project id could be `awesome-icp-project`.
@@ -233,10 +235,14 @@ The list of tags is not final, and will be updated as the project evolves. For n
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
 
     github?: string, // full URL to github repo, if available
+    youtube?: string, // full URL to a YouTube video or channel, if available
+    twitter?: string, // full URL to a twitter account, if available
 
     screenshots?: string[], // optional array of urls to screenshot files
 
     video?: string, // optional url to video file, eg. /img/showcase/awesome-icp-project_video.webm
     videoContentType?: 'video/webm' | 'video/mp4', // to feed into the type attribute of the video/source element
+
+    submittableId?: string, // optional id of the submittable form
   },
 ```

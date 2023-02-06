@@ -159,7 +159,7 @@ const config = {
             label: "Explore",
             items: [
               {
-                label: "Web3 Ecosystem",
+                label: "ICP Ecosystem",
                 href: "/ecosystem",
               },
               {
