@@ -1,4 +1,4 @@
-label: 'Running dapps in the production'
+label: 'Running in production'
 position: 6
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
