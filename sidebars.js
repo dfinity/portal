@@ -222,6 +222,7 @@ const sidebars = {
                 },
                 items: [
                   "developer-docs/integrations/sns/get-sns/preparation",
+                  "developer-docs/integrations/sns/get-sns/testflight",
                   "developer-docs/integrations/sns/get-sns/local-testing"
 //                "developer-docs/integrations/sns/get-sns/get-sns-production"
                 ],
