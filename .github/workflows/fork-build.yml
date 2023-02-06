@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     # only run in forks
-    if: github.repository != 'dfinity/portal'
+    # if: github.repository != 'dfinity/portal'
 
     runs-on: ubuntu-latest
     concurrency:
@@ -17,6 +17,9 @@ jobs:
 
       - name: "Build & Deploy"
         run: |
+          echo Full name: ${{ github.event.pull_request.head.repo.full_name }}
+          echo Repository: ${{ github.repository }}
+          echo Branch: ${{ github.ref }}
           git submodule update --init
           npm install
           npm run build
