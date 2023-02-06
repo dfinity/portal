@@ -114,6 +114,11 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     EOF
     ```
 
+:::note
+In the [following document](custom-domain/dns-setup.md), we provide detailed instructions to configure DNS
+records on the example of two popular domain registrars.
+:::
+
 ### Updating a Custom Domain
 
 In case you want to update the domain to point to a different canister, you first
