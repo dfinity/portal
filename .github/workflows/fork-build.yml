@@ -5,8 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     # only run in forks
-    # if: github.repository != 'dfinity/portal'
-
+    if: github.repository != 'dfinity/portal'
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}
@@ -18,10 +17,11 @@ jobs:
         uses: crazy-max/ghaction-dump-context@v1
       - name: "Build & Deploy"
         run: |
-          # echo Github: ${{ github }}
           echo Full name: ${{ github.event.pull_request.head.repo.full_name }}
           echo Repository: ${{ github.repository }}
-          echo Branch: ${{ github.ref }}
+          echo Branch: ${{ github.ref_name }}
+          echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
+          echo GITHUB_REF_NAME: $GITHUB_REF_NAME
           # git submodule update --init
           # npm install
           # npm run build
