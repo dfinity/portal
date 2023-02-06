@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     # only run in forks
-    if: github.repository != 'dfinity/portal'
+    # if: github.repository != 'dfinity/portal'
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}
