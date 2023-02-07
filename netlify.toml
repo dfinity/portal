@@ -11,13 +11,13 @@ publish = "build"
 #
 # To fall back to Netlify hosting comment out the rules below.
 #
-# [context.production]
-# # build the website, then build the service worker
-# command = """\
-#   git submodule update --init && npm run build && \
-#   cd service-worker && npm install && npm run build"""
-# # publish the service worker directory
-# publish = "service-worker/dist-prod"
+[context.production]
+# build the website, then build the service worker
+command = """\
+  git submodule update --init && npm run build && \
+  cd service-worker && npm install && npm run build"""
+# publish the service worker directory
+publish = "service-worker/dist-prod"
 
 [context.deploy-preview]
 # don't use the edge function in deployment previews
