@@ -17,7 +17,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
-  /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/setup/install
+  /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/setup/install/
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
