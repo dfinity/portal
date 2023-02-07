@@ -1,0 +1,9 @@
+label: 'Building a smart contract backend'
+position: 3
+collapsible: true # make the category collapsible
+collapsed: true # keep the category open by default
+# link: 
+#   type: doc
+#   id: index
+customProps:
+  description: This description can be used in the swizzled DocCard

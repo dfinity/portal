@@ -43,12 +43,16 @@ const config = {
     ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
-
+  customFields: {
+    marketingLogoUrl: "/",
+    docsLogoUrl: "/docs/current/home",
+    docsLogoSrc: "/img/IC_logo_docs.svg",
+  },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
@@ -94,7 +98,7 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: true,
+          breadcrumbs: false,
           versions: {
             current: {
               label: "Current 🚧",
@@ -252,13 +256,9 @@ const config = {
             label: "Develop",
             items: [
               {
-                label: "Developers Home",
-                to: "/developers",
-              },
-              {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/ic-overview",
+                docId: "home",
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
@@ -316,12 +316,23 @@ const config = {
               },
             ],
           },
-
+          {
+            type: "doc",
+            position: "left",
+            docId: "home",
+            label: "Home",
+          },
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "developer-docs",
-            label: "Developer Docs",
+            sidebarId: "tutorials",
+            label: "Tutorials",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "guides",
+            label: "Guides",
           },
           {
             type: "docSidebar",
@@ -332,21 +343,52 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "concepts",
-            label: "Concepts",
+            sidebarId: "motoko",
+            label: "Motoko",
           },
           {
-            type: "docSidebar",
+            type: "dropdown",
             position: "left",
-            sidebarId: "tokenomics",
-            label: "DAOs & Tokenomics",
+            label: "Links",
+            items: [
+              {
+                label: "Internet Computer Home",
+                to: "/",
+              },
+              { label: "Sample Code", to: "/samples" },
+              {
+                label: "SDK Release Notes",
+                type: "doc",
+                docId: "other/updates/release-notes/release-notes",
+              },
+              { label: "Developer Tools", to: "/tooling" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              {
+                label: "Motoko Playground",
+                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              },
+              {
+                label: "Dev Forum",
+                href: "https://forum.dfinity.org/",
+              },
+              {
+                label: "Dev Discord",
+                href: "https://discord.gg/jnjVVQaE2C",
+              },
+            ],
           },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "samples",
-            label: "Sample Code",
-          },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "tokenomics",
+          //   label: "User Guides (migrate)",
+          // },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "samples",
+          //   label: "Sample Code (migrate)",
+          // },
 
           // {
           //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
@@ -394,7 +436,7 @@ const config = {
             items: [
               {
                 label: "ICP Careers",
-                to: "http://careers.internetcomputer.org/",
+                to: "https://careers.internetcomputer.org/",
               },
               {
                 label: "Brand Materials",

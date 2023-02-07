@@ -33,6 +33,9 @@
   --ifm-transition-custom-curve: cubic-bezier(0, 0, 0.19, 1);
   --ic0-color: #3b00b9;
   scroll-behavior: smooth;
+
+  --ifm-navbar-link-hover-color: #da3979;
+  --ifm-navbar-link-active-color: #da3979;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -111,7 +114,7 @@ div[class^="announcementBarContent"] {
   flex: 0 0 auto;
   height: 1.925rem;
   width: 100%;
-  margin-right: 0.5rem;
+  margin-right: 2rem;
 }
 
 .navbar__mobile__logo {
@@ -122,6 +125,10 @@ div[class^="announcementBarContent"] {
   flex: 0 0 auto;
   width: 15rem;
   margin: auto 0.5rem;
+}
+
+html.docs-doc-page {
+  --ifm-navbar-x-padding: 16px;
 }
 
 .navbar {
@@ -177,10 +184,18 @@ div[class^="announcementBarContent"] {
   margin-right: auto;
 }
 
-/* Don't display docSidebar items in the top navbar */
-.navbar__inner .navbar__items:first-child .navbar__item.navbar__link {
+/* Don't display docSidebar items in the top navbar on marketing pages*/
+html.plugin-pages, html:not(.plugin-pages):not(.plugin-docs) {
+  .navbar__inner .navbar__items:first-child .navbar__item {
+    display: none;
+  }
+}
+
+/* Don't display main nav items in the top navbar on docs pages*/
+html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__item{
   display: none;
 }
+
 
 /* First dropdown menu is too easy to hide accidentally */
 .navbar__inner .navbar__items--right>.dropdown:nth-child(2) {
@@ -198,13 +213,13 @@ div[class^="announcementBarContent"] {
   }
 }
 
-.navbar__inner .navbar__item.dropdown .navbar__link {
+.navbar__inner .navbar__item.dropdown, .navbar__inner .navbar__item.dropdown .navbar__link , .navbar__inner .navbar__item.navbar__link {
   font-weight: 500;
 }
 
 /* top menu hover color */
 .navbar__inner .navbar__item:hover.dropdown .navbar__link {
-  color: #da3979;
+  color: var(--ifm-navbar-link-hover-color);
 }
 
 /* update top menu chevron icon */

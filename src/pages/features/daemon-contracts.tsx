@@ -1,13 +1,8 @@
-import Link from "@docusaurus/Link";
-import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Daemon Contracts"

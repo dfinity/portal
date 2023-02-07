@@ -1,7 +1,6 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -129,8 +128,6 @@ const TranslatedLayout: React.FC<{
 };
 
 function NftPage() {
-  resetNavBarStyle();
-
   const [bgDark, setBgDark] = useState(true);
   const [headerHeight, setHeaderHeight] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);

@@ -109,7 +109,7 @@ As mentioned already further above, there are multiple possible extensions we ar
 
 ## Coding HTTPS Outcalls
 
-We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](../../../references/ic-interface-spec/#ic-http_request).
+We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification]/references/ic-interface-spec.md#ic-http_request).
 
 ### Recipe for Coding a Canister HTTP Call
 

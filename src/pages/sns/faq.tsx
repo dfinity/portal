@@ -3,7 +3,6 @@ import Link from "@docusaurus/Link";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
@@ -89,7 +88,6 @@ const FaqSection: React.FC<{
 };
 
 function SnsFaqPage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="SNS DAO FAQ"
