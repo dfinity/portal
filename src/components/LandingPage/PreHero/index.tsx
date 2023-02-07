@@ -17,6 +17,9 @@ import {
   getTransactionRate,
 } from "@site/src/utils/network-stats";
 import { ContinuousCounter } from "./ContinuousCounter";
+import useGlobalData from "@docusaurus/useGlobalData";
+import Link from "@docusaurus/Link";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 
 function formatNumber(x: number) {
   return x
@@ -50,10 +53,13 @@ const Numbers = () => {
     refetchInterval: 10000,
   });
 
+  const globalData = useGlobalData();
+  const xdrPrice = globalData["xdr-price"]["default"] as number;
+
   return (
     <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
       <AnimateSpawn className="text-left" variants={transitions.container}>
-        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+        <h3 className="tw-title-sm md:tw-title-lg mb-2">
           {blockRateQuery.isFetched ? (
             <ContinuousCounter
               target={blockRateQuery.data}
@@ -66,19 +72,19 @@ const Numbers = () => {
             <>&nbsp;</>
           )}
         </h3>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
-          <p className="text-white-60 tw-lead-sm mb-0">
+          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP scales by adding subnets, while still cryptographically
             remaining a single blockchain. Fast, infinitely parallel, block
             capacity.{" "}
           </p>
-          <div className="tw-lead-sm flex items-center gap-2">
-            <span className="text-[35px] leading-[30px]">74</span> MB/s block
-            throughput capacity
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">74</span>{" "}
+            MB/s block throughput capacity
           </div>
-          <div className="tw-lead-sm flex items-center gap-2">
-            <span className="text-[35px] leading-[30px]">
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
               {subnetCountQuery.isFetched ? (
                 subnetCountQuery.data
               ) : (
@@ -90,7 +96,7 @@ const Numbers = () => {
         </div>
       </AnimateSpawn>
       <AnimateSpawn className="text-left" variants={transitions.container}>
-        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+        <h3 className="tw-title-sm md:tw-title-lg mb-2">
           {transactionRateQuery.isFetched ? (
             <ContinuousCounter
               target={transactionRateQuery.data}
@@ -104,19 +110,24 @@ const Numbers = () => {
             <>&nbsp;</>
           )}
         </h3>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
-          <p className="text-white-60 tw-lead-sm mb-0">
+          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             More real transactions processed per second than any other chain.
             With gas fees which are light on your wallet & light on the planet
             too.
           </p>
-          <div className="tw-lead-sm flex items-center gap-2">
-            <span className="text-[35px] leading-[30px]">$0.0000022</span> av.
-            cost/Tx
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
+              $0.0000022
+            </span>{" "}
+            av. cost/Tx
           </div>
-          <div className="tw-lead-sm flex items-center gap-2">
-            <span className="text-[35px] leading-[30px]">0.008</span> av. Wh/Tx
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
+              0.008
+            </span>{" "}
+            av. Wh/Tx
           </div>
         </div>
       </AnimateSpawn>
@@ -124,7 +135,7 @@ const Numbers = () => {
         className="text-left md:col-span-2 md:w-4/10 md:mx-auto"
         variants={transitions.container}
       >
-        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+        <h3 className="tw-title-sm md:tw-title-lg mb-2">
           {stateSizeQuery.isFetched ? (
             <ContinuousCounter
               target={stateSizeQuery.data}
@@ -138,17 +149,24 @@ const Numbers = () => {
             <>&nbsp;</>
           )}
         </h3>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">
             Actual blockchain state
           </p>
-          <p className="text-white-60 tw-lead-sm mb-0">
+          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP smart contracts each have access to up to 52GB of native, low
             cost, on-chain storage. Enabling you to build entirely new types of
             Web3 experiences.
           </p>
-          <div className="tw-lead-sm flex items-center gap-2">
-            <span className="text-[35px] leading-[30px]">$0.46</span> /GB/month
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
+              $
+              {(
+                (xdrPrice * 127000 * 3600 * 24 * 30) /
+                1_000_000_000_000
+              ).toFixed(2)}
+            </span>{" "}
+            /GB/month
           </div>
         </div>
       </AnimateSpawn>
@@ -298,7 +316,7 @@ export default function PreHero({}): JSX.Element {
         >
           <AnimateSpawn
             el={motion.h2}
-            className="tw-heading-3 md:tw-heading-60 mb-20 md:mb-30 text-center"
+            className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-30 text-center"
             variants={transitions.item}
           >
             Made possible by ICP
@@ -306,6 +324,27 @@ export default function PreHero({}): JSX.Element {
             The ∞ scalable blockchain protocol
           </AnimateSpawn>
           <Numbers></Numbers>
+          <AnimateSpawn
+            variants={transitions.container}
+            className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
+          >
+            <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
+              <Link
+                className="button-outline-white"
+                href="https://dashboard.internetcomputer.org"
+              >
+                Dig into data on ICP DASHBOARD
+              </Link>
+              <Link href="" className="link-primary-light link-with-icon">
+                <LinkArrowRight />
+                Stack it up against other L1 chains
+              </Link>
+            </div>
+            <img
+              src="/img/home/dashboard.svg"
+              className="absolute right-0 bottom-0"
+            ></img>
+          </AnimateSpawn>
         </div>
       </div>
     </section>
