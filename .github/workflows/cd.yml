@@ -12,7 +12,6 @@ on:
 
 jobs:
   deploy-ic:
-    if: github.repository == "dfinity/portal"
     name: "Deploy to IC"
     runs-on: ubuntu-latest
 
