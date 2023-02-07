@@ -17,8 +17,8 @@ const sections = [
     id: "proof-of-useful-work",
   },
   {
-    title: "Network Nervous System",
-    id: "network-nervous-system",
+    title: "Intelligent Blockchain",
+    id: "intelligent-blockchain",
   },
 ];
 
@@ -69,27 +69,27 @@ export default function Hero(): JSX.Element {
             <h2 className="tw-heading-3 md:hidden text-gradient mb-8">
               Blockchain Singularity
             </h2>
-            <p className="text-lead-sm md:text-lead mb-8 font-bold">
-              ICP makes blockchain the <i>everything computer</i>.
+
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              Today, Web3 really runs on Big Tech's cloud. Blockchains can host
+              tokens, but only tiny amounts of data and compute, and no web.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              The{" "}
-              <span className="tw-heading-6 md:tw-heading-5 text-infinite">
-                Internet Computer
-              </span>{" "}
-              (#ICP) is the first World Computer blockchain. In a seismic
-              advance, everything from a simple dapp, to a billion-user social
-              network, massively multiplayer online game, mass market video
-              streaming service, decentralized financial exchange, or large
-              mission-critical enterprise system, can now run on public
-              blockchain. Web3 services, and just about anything else, can now
-              be constructed entirely from hyper-efficient third-generation
-              smart contracts, which serve web experiences, and can drive other
-              blockchains, eliminating the need for centralized IT such as cloud
-              services. The decentralized future of compute has begun &#8212;
-              join thousands building a new internet.
+              Tomorrow, blockchains will host it all, and fully decentralize
+              everything, from simple dApps, to billion-user social networks,
+              the metaverse, streaming, games, orderbook exchanges, and
+              enterprise systems.
             </p>
-            <p className="flex flex-col gap-4 items-start">
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              It's already happening at scale on the first true World Computer:{" "}
+              <span className="font-bold text-infinite">
+                Internet Computer #ICP
+              </span>
+            </p>
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              <strong>Join the movement.</strong>
+            </p>
+            <p className="flex flex-col gap-2 items-start">
               <Link className="link-primary link-with-icon" href="/basics">
                 <LinkArrowRight />
                 Internet Computer basics
@@ -102,12 +102,15 @@ export default function Hero(): JSX.Element {
                 Internet Computer capabilties
               </Link>
 
-              <Link className="button-primary" href="/developers">
-                Build Something
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/History"
+              >
+                Wiki history of the Internet Computer
+                <LinkArrowUpRight></LinkArrowUpRight>
               </Link>
             </p>
           </AnimateSpawn>
-
           <AnimateSpawn
             variants={transitions.item}
             className="hero-section-body"
@@ -116,32 +119,29 @@ export default function Hero(): JSX.Element {
               Proof of Useful Work
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              The{" "}
-              <span className="tw-heading-6 md:tw-heading-5 text-infinite">
-                Internet Computer
-              </span>{" "}
-              is not a Proof of Stake (PoS) blockchain created by "validator
-              nodes" running on Big Tech's corporate cloud. It is formed by a{" "}
-              <i>sovereign network</i> of special "node machine" devices
-              operated by independent parties. To participate successfully,
-              nodes must produce the same number of blocks as other machines in
-              their cohort, without deviation. In a scheme of
-              Proof-of-Useful-Work (PoUW), replicated smart contract computation
-              is their work, driving optimal efficiency. Nodes form into subnet
-              blockchains, and then into a unified limitless blockchain, using
-              game-changing Chain Key Crypto.
+              The <strong className="text-infinite">Internet Computer</strong>{" "}
+              is <em>not</em> a Proof of Stake (PoS) blockchain created by
+              "validator nodes" running on Big Tech's cloud. It is formed by a{" "}
+              <em>sovereign network</em> of standardized "node machine" hardware
+              operated by independent parties. To participate, nodes must
+              produce the same number of blocks as others in their cohort,
+              without deviation. In a scheme of Proof-of-Useful-Work (PoUW),
+              replicated smart contract computation is their work, driving
+              optimal efficiency. Nodes form into subnet blockchains, and then
+              into a unified limitless blockchain, using game-changing Chain Key
+              Crypto.
             </p>
             <p className="flex flex-col gap-4 items-start">
+              <Link href="/how-it-works" className="button-primary mb-3">
+                REVIEW ICP TECHNOLOGY
+              </Link>
+
               <Link
-                className="link-primary link-with-icon mb-3"
+                className="link-primary link-with-icon"
                 href="https://wiki.internetcomputer.org/wiki/Proof_of_Useful_Work"
               >
                 Learn more about Proof-of-Useful-Work
                 <LinkArrowUpRight />
-              </Link>
-
-              <Link href="/how-it-works" className="button-primary">
-                How the Internet Computer works
               </Link>
             </p>
           </AnimateSpawn>
@@ -150,32 +150,32 @@ export default function Hero(): JSX.Element {
             className="hero-section-body"
           >
             <h2 className="tw-heading-3 md:hidden text-gradient mb-8">
-              Network Nervous System
+              Intelligent Blockchain
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              Traditional blockchains get updated, and evolve, through a painful
-              and cumbersome process. A protocol "hard fork" is developed, and a
+              Traditional blockchains evolve and adapt through a painful and
+              cumbersome process. A protocol "hard fork" is developed, and a
               central group of insiders, working at a foundation, or a
-              corporation, then helps coordinate those running nodes upgrade
-              their network software. The{" "}
-              <span className="tw-heading-6 md:tw-heading-5 text-infinite">
-                Internet Computer
-              </span>
-              , by contrast, is controlled by an advanced DAO, which is
-              integrated into its protocols, and completely automates and
-              decentralizes node machine protocol upgrades. The network protocol
-              constantly evolves and adapts, without backroom machinations.
+              corporation, then coordinates those running nodes, or validators,
+              in upgrading their network software. The{" "}
+              <strong className="text-infinite">Internet Computer</strong>{" "}
+              network, by contrast, runs under the control of an advanced DAO,
+              called the Network Nervous System (or NNS), which acts as the
+              brain of the blockchain, and completely automates and
+              decentralizes processes such as protocol upgrades — removing the
+              need for backroom machinations by insiders, and powering fast and
+              seamless evolution.
             </p>
             <p className="flex flex-col gap-4 items-start">
+              <Link href="/nns" className="button-primary mb-3">
+                REVIEW THE NNS
+              </Link>
               <Link
-                className="link-primary link-with-icon mb-3"
+                className="link-primary link-with-icon"
                 href="https://nns.ic0.app"
               >
                 Try the Network Nervous System
                 <LinkArrowUpRight />
-              </Link>
-              <Link href="/nns" className="button-primary">
-                How Network Nervous System Works
               </Link>
             </p>
           </AnimateSpawn>

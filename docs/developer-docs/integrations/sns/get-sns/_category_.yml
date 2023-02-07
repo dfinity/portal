@@ -1,0 +1,6 @@
+label: 'Get an SNS'
+position: 3
+collapsed: true
+link:
+  type: doc
+  id: get-sns-intro

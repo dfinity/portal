@@ -1,7 +1,6 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
@@ -98,8 +97,6 @@ const projects: {
 ];
 
 function SocialMediaDappsPage() {
-  resetNavBarStyle();
-
   const [openProjectIndex, setOpenProjectIndex] = useState(0);
 
   return (
@@ -503,7 +500,7 @@ function SocialMediaDappsPage() {
             <CardWithDescription
               title="Quick Start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              href="/docs/current/tutorials/deploy_sample_app"
             ></CardWithDescription>
             <CardWithDescription
               title="Developer Docs"
