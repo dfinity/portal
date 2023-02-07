@@ -15,15 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v1
       - name: "Build & Deploy"
         run: |
-          echo Full name: ${{ github.event.pull_request.head.repo.full_name }}
-          echo Repository: ${{ github.repository }}
-          echo Branch: ${{ github.ref_name }}
-          echo GITHUB_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
-          echo GITHUB_REF_NAME: $GITHUB_REF_NAME
-          # git submodule update --init
-          # npm install
-          # npm run build
+          export EDIT_REPOSITORY=${{ github.event.pull_request.head.repo.full_name }}
+          export EDIT_BRANCH=${{ github.event.pull_request.head.ref }}
+          git submodule update --init
+          npm install
+          npm run build
