@@ -8,6 +8,8 @@ const redirects = `
   /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/motoko-introduction
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
