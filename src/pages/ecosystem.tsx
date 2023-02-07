@@ -137,8 +137,8 @@ const ProjectInfo: React.FC<{
     <div className="flex flex-col gap-4 h-full max-w-full">
       <div className="flex gap-2 items-center">
         <img src={project.logo} className="w-14"></img>
-        <div className="flex flex-col justify-center">
-          <h3 className="tw-heading-5 mb-0 break-words">
+        <div className="flex flex-col justify-center flex-1">
+          <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
             {project.name}
 
             {project.usesInternetIdentity && (
@@ -218,15 +218,15 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
   // const media = project.video || project.screenshots[0]
 
   return (
-    <div className="md:col-span-4 rounded-xl overflow-hidden bg-white-80 flex flex-col md:flex-row">
-      <div className="md:w-9/12 flex-shrink-0">
+    <div className="md:col-span-2 lg:col-span-4 rounded-xl overflow-hidden bg-white-80 flex flex-col md:flex-row">
+      <div className="md:w-6/12 lg:w-9/12 flex-shrink-0">
         {project.video ? (
           <LargeProjectMedia project={project}></LargeProjectMedia>
         ) : (
           <img src={project.screenshots[0]}></img>
         )}
       </div>
-      <div className="md:w-3/12  flex-shrink-0 flex flex-col py-8 px-6 md:pl-5 md:pr-8">
+      <div className="md:w-6/12 lg:w-3/12 flex-shrink-0 flex flex-col py-8 px-6 md:pl-5 md:pr-8">
         <ProjectInfo project={project}></ProjectInfo>
       </div>
     </div>
@@ -271,7 +271,7 @@ function ShowcasePage(): JSX.Element {
     >
       <ShareMeta image="/img/shareImages/share-showcase.jpeg"></ShareMeta>
 
-      <section className="container-10 py-20 md:py-30">
+      <section className="container-10 pt-20 md:pt-30 pb-12 md:pb-20">
         <h1 className="md:tw-heading-2 mb-8 md:mb-10">
           {projects.length} projects featured
         </h1>
@@ -286,7 +286,11 @@ function ShowcasePage(): JSX.Element {
             </PillSecondaryLabel>
           </Pill>
           {tags.map(([tag, count]) => (
-            <Pill isActive={tag === queryTag} onClick={() => setQueryTag(tag)}>
+            <Pill
+              isActive={tag === queryTag}
+              onClick={() => setQueryTag(tag)}
+              key={tag}
+            >
               {tag}
               <PillSecondaryLabel isActive={tag === queryTag}>
                 {count}
@@ -296,13 +300,13 @@ function ShowcasePage(): JSX.Element {
         </div>
       </section>
 
-      <section className="container-12 grid md:grid-cols-4 gap-5 relative">
+      <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
         <div className="blob blob-infinite blob-top-right blob-md z-[-1]"></div>
         {filteredProjects.map((project) =>
           project.display === "Large" ? (
-            <LargeCard project={project} />
+            <LargeCard project={project} key={project.website} />
           ) : (
-            <SmallCard project={project} />
+            <SmallCard project={project} key={project.website} />
           )
         )}
       </section>
