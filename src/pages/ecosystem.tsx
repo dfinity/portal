@@ -265,11 +265,11 @@ function ShowcasePage(): JSX.Element {
 
   return (
     <Layout
-      title="Web3 Ecosystem"
+      title="ICP Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-showcase.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-showcase.jpg"></ShareMeta>
 
       <section className="container-10 pt-20 md:pt-30 pb-12 md:pb-20">
         <h1 className="md:tw-heading-2 mb-8 md:mb-10">
