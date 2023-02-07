@@ -21,7 +21,7 @@ To perform SNS testflight, you will need the following tools:
 - [sns-quill](https://github.com/dfinity/sns-quill)
 - [didc](https://github.com/dfinity/candid) (for advanced tests)
 
-Instead of building sns-cli locally, you can download pre-compiled binaries for [linux](https://download.dfinity.systems/ic/0595152897bc9af95edf0590cc2ebebbaebbfe88/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/0595152897bc9af95edf0590cc2ebebbaebbfe88/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running
+Instead of building sns-cli locally, you can download pre-compiled binaries for [linux](https://download.dfinity.systems/ic/8263cd8bfdb44b90437dd9220d166bb6a8c0fadf/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/8263cd8bfdb44b90437dd9220d166bb6a8c0fadf/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running
 ```
 ./gitlab-ci/src/artifacts/newest_sha_with_disk_image.sh origin/master
 ```
@@ -32,8 +32,8 @@ You can download pre-compiled binaries for sns-quill [here](https://github.com/d
 You can download pre-compiled binaries for didc [here](https://github.com/dfinity/candid/releases).
 
 This tutorial has been tested with the following version of the tools:
-- dfx: 0.13.0-beta.3
-- sns-cli: 0595152897bc9af95edf0590cc2ebebbaebbfe88
+- dfx: 0.13.0
+- sns-cli: 8263cd8bfdb44b90437dd9220d166bb6a8c0fadf
 - sns-quill: v0.4.2-beta.1
 - didc: 0.3.0 (2022-11-17)
 
@@ -41,8 +41,8 @@ This tutorial has been tested with the following version of the tools:
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
 ```
-DFX_IC_COMMIT=0595152897bc9af95edf0590cc2ebebbaebbfe88 dfx sns import
-DFX_IC_COMMIT=0595152897bc9af95edf0590cc2ebebbaebbfe88 dfx sns download
+DFX_IC_COMMIT=8263cd8bfdb44b90437dd9220d166bb6a8c0fadf dfx sns import
+DFX_IC_COMMIT=8263cd8bfdb44b90437dd9220d166bb6a8c0fadf dfx sns download
 ```
 in the root directory of your project.
 
