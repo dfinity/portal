@@ -1,3 +1,4 @@
+import transitions from "@site/static/transitions.json";
 import {
   motion,
   useMotionTemplate,
@@ -7,237 +8,163 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
-import { COLORS, PARTICLE_COUNT } from "./config";
-import { Particle } from "./particle";
-import { ShapeMap } from "./shapemap";
-import { Vector2D } from "./vector";
-import transitions from "@site/static/transitions.json";
+import ParticleAnimation from "./ParticleAnimation";
+import { useQuery } from "react-query";
+import {
+  getBlockCount,
+  getBytesStored,
+  getSubnetCount,
+  getTransactionRate,
+} from "@site/src/utils/network-stats";
+import { ContinuousCounter } from "./ContinuousCounter";
 
-type Force = (pos: Vector2D) => Vector2D;
-
-function getForces(center: Vector2D, minDim: number): Force[] {
-  const factor = 1; //950 / minDim;
-
-  return [
-    (p) => {
-      const dir = p.sub(center);
-      const mag = dir.mag();
-      dir.mult_mut(7000 / factor / mag / mag);
-      return dir;
-    },
-    (p) => {
-      const dir = center.sub(p);
-      dir.mult_mut(20 / factor / dir.mag());
-      return dir;
-    },
-    (p) => {
-      const dir = center.sub(p);
-      const mag = dir.mag();
-      return new Vector2D(
-        ((1000 / factor) * dir.y) / mag / mag,
-        ((1000 / factor) * -dir.x) / mag / mag
-      );
-    },
-  ];
+function formatNumber(x: number) {
+  return x
+    .toLocaleString("en-US", {
+      maximumFractionDigits: 0,
+    })
+    .replace(/,/g, "\u2019");
 }
 
-export default function PreHero({
-  debugForces = false,
-  debugColors = false,
-  paintParticles = true,
-}): JSX.Element {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const [shapeMap, setShapeMap] = useState<ShapeMap>(null);
-  const [forces, setForces] = useState<Force[]>();
+function formatStateSize(x: number) {
+  return (
+    (x / 1000000000000).toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+    }) + " TB"
+  );
+}
+
+const Numbers = () => {
+  const blockRateQuery = useQuery(["blockRate"], getBlockCount, {
+    refetchInterval: 1000,
+  });
+  const subnetCountQuery = useQuery(["subnetCount"], getSubnetCount);
+  const transactionRateQuery = useQuery(
+    ["transactionRate"],
+    getTransactionRate,
+    {
+      refetchInterval: 1000,
+    }
+  );
+  const stateSizeQuery = useQuery(["stateSize"], getBytesStored, {
+    refetchInterval: 10000,
+  });
+
+  return (
+    <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
+      <AnimateSpawn className="text-left" variants={transitions.container}>
+        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+          {blockRateQuery.isFetched ? (
+            <ContinuousCounter
+              target={blockRateQuery.data}
+              initialTarget={blockRateQuery.data}
+              initialValue={blockRateQuery.data - 30}
+              format={formatNumber}
+              className="text-transparent bg-clip-text hero-stat-red"
+            ></ContinuousCounter>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </h3>
+        <div className="flex flex-col gap-4">
+          <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
+          <p className="text-white-60 tw-lead-sm mb-0">
+            ICP scales by adding subnets, while still cryptographically
+            remaining a single blockchain. Fast, infinitely parallel, block
+            capacity.{" "}
+          </p>
+          <div className="tw-lead-sm flex items-center gap-2">
+            <span className="text-[35px] leading-[30px]">74</span> MB/s block
+            throughput capacity
+          </div>
+          <div className="tw-lead-sm flex items-center gap-2">
+            <span className="text-[35px] leading-[30px]">
+              {subnetCountQuery.isFetched ? (
+                subnetCountQuery.data
+              ) : (
+                <>&nbsp;&nbsp;</>
+              )}
+            </span>{" "}
+            parallel subnets
+          </div>
+        </div>
+      </AnimateSpawn>
+      <AnimateSpawn className="text-left" variants={transitions.container}>
+        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+          {transactionRateQuery.isFetched ? (
+            <ContinuousCounter
+              target={transactionRateQuery.data}
+              initialTarget={transactionRateQuery.data}
+              initialValue={0}
+              format={formatNumber}
+              className="text-transparent bg-clip-text hero-stat-blue"
+              springConfig={[3, 1, 1]}
+            ></ContinuousCounter>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </h3>
+        <div className="flex flex-col gap-4">
+          <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
+          <p className="text-white-60 tw-lead-sm mb-0">
+            More real transactions processed per second than any other chain.
+            With gas fees which are light on your wallet & light on the planet
+            too.
+          </p>
+          <div className="tw-lead-sm flex items-center gap-2">
+            <span className="text-[35px] leading-[30px]">$0.0000022</span> av.
+            cost/Tx
+          </div>
+          <div className="tw-lead-sm flex items-center gap-2">
+            <span className="text-[35px] leading-[30px]">0.008</span> av. Wh/Tx
+          </div>
+        </div>
+      </AnimateSpawn>
+      <AnimateSpawn
+        className="text-left md:col-span-2 md:w-4/10 md:mx-auto"
+        variants={transitions.container}
+      >
+        <h3 className="tw-title-lg md:tw-title-lg mb-0">
+          {stateSizeQuery.isFetched ? (
+            <ContinuousCounter
+              target={stateSizeQuery.data}
+              initialTarget={stateSizeQuery.data}
+              initialValue={0}
+              format={formatStateSize}
+              className="text-transparent bg-clip-text hero-stat-green"
+              springConfig={[3, 1, 3]}
+            ></ContinuousCounter>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </h3>
+        <div className="flex flex-col gap-4">
+          <p className="tw-paragraph md:tw-heading-5 mb-0">
+            Actual blockchain state
+          </p>
+          <p className="text-white-60 tw-lead-sm mb-0">
+            ICP smart contracts each have access to up to 52GB of native, low
+            cost, on-chain storage. Enabling you to build entirely new types of
+            Web3 experiences.
+          </p>
+          <div className="tw-lead-sm flex items-center gap-2">
+            <span className="text-[35px] leading-[30px]">$0.46</span> /GB/month
+          </div>
+        </div>
+      </AnimateSpawn>
+    </div>
+  );
+};
+
+export default function PreHero({}): JSX.Element {
   const [start, setStart] = useState(false);
   const [animate, setAnimate] = useState(true);
-  const frameIndexRef = useRef(0);
-
-  const wasResize = useRef(true);
-
-  useEffect(() => {
-    setStart(true);
-    canvasRef.current.width = window.innerWidth;
-    canvasRef.current.height = window.innerHeight;
-
-    const center = new Vector2D(
-      canvasRef.current.width / 2,
-      canvasRef.current.height / 2
-    );
-    setForces(
-      getForces(center, Math.min(window.innerHeight, window.innerWidth))
-    );
-
-    setParticles(
-      Array.from({ length: PARTICLE_COUNT }).map(() =>
-        Particle.randomInCircle(
-          canvasRef.current.width / 2,
-          canvasRef.current.height / 2,
-          Math.min(window.innerHeight, window.innerWidth) / 6
-        )
-      )
-    );
-
-    setShapeMap(new ShapeMap());
-
-    function onResize() {
-      wasResize.current = true;
-    }
-
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
-    let handle: number;
-
-    let lastUpdate = Date.now();
-    const frameRate = 60;
-
-    let perfLog: number[] = [];
-
-    function paint() {
-      const start = Date.now();
-      handle = requestAnimationFrame(paint);
-      if (!animate) return;
-
-      const now = Date.now();
-      if (now - lastUpdate < (1000 / frameRate) * 0.65) {
-        return;
-      }
-      lastUpdate = now;
-
-      if (wasResize.current) {
-        wasResize.current = false;
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-
-        const center = new Vector2D(
-          canvasRef.current.width / 2,
-          canvasRef.current.height / 2
-        );
-        setForces(
-          getForces(center, Math.min(window.innerHeight, window.innerWidth))
-        );
-      }
-
-      frameIndexRef.current += 1;
-
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d")!;
-      const canvasWidth = canvas.width;
-      const canvasHeight = canvas.height;
-
-      const center = new Vector2D(canvasWidth / 2, canvasHeight / 2);
-
-      ctx.fillStyle = "rgb(30,1,94)";
-      ctx.globalAlpha = 1;
-      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-
-      if (frameIndexRef.current <= frameRate) {
-        ctx.globalAlpha = frameIndexRef.current / frameRate;
-      }
-
-      if (debugColors) {
-        for (let x = 0; x < canvasWidth; x += 40) {
-          for (let y = 0; y < canvasHeight; y += 40) {
-            const p = new Vector2D(x + 20, y + 20);
-            const color =
-              COLORS[
-                Math.floor(
-                  (Math.atan2(p.y - center.y, p.x - center.x) / Math.PI) * 150 +
-                    150
-                )
-              ];
-            ctx.fillStyle = color;
-            ctx.fillRect(p.x - 20, p.y - 20, p.x + 20, p.y + 20);
-          }
-        }
-      } else if (paintParticles) {
-        const renderedParticleCount =
-          canvasWidth < canvasHeight
-            ? Math.floor(particles.length / 3)
-            : particles.length;
-        for (let pi = 0; pi < particles.length; pi++) {
-          const p = particles[pi];
-          let force = new Vector2D(0, 0);
-          for (const f of forces) {
-            force.add_mut(f(p.pos));
-          }
-          const dy =
-            canvasWidth > canvasHeight
-              ? Math.max(1, Math.abs(p.pos.y - canvasHeight / 2))
-              : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
-          // force.mult_mut(Math.min(1, dy / 1000));
-          const attenn = Math.min(1, dy / 1000);
-          const dist = center.sub(p.pos).mag();
-
-          force.mult_mut(dist > 300 ? attenn : 1);
-          force.x += Math.random() * 20 - 10;
-          force.y += Math.random() * 20 - 10;
-          p.update(force.x / 200, force.y / 200);
-          p.update(force.x / 200, force.y / 200);
-
-          if (pi < renderedParticleCount) {
-            const color = Math.floor(
-              (Math.atan2(p.pos.y - center.y, p.pos.x - center.x) / Math.PI) *
-                150 +
-                150
-            );
-
-            p.draw(ctx, color, shapeMap, canvasWidth, canvasHeight);
-          }
-        }
-      }
-
-      if (debugForces) {
-        for (let x = 0; x < canvasWidth; x += 40) {
-          for (let y = 0; y < canvasHeight; y += 40) {
-            const p = new Vector2D(x + 20, y + 20);
-            let force = new Vector2D(0, 0);
-            for (const f of forces) {
-              force.add_mut(f(p));
-            }
-
-            const dist = center.sub(p).mag();
-            const dy = Math.max(1, Math.abs(p.y - canvasHeight / 2));
-            const attenn = Math.min(1, dy / 1000);
-            force.mult_mut(dist > 300 ? attenn : 1);
-
-            //   if (Math.abs(force) < 0.2) {
-
-            //   }
-            // force.mult_mut(100);
-            ctx.beginPath();
-            ctx.moveTo(p.x - force.x * 2, p.y - force.y * 2);
-            ctx.lineTo(p.x + force.x * 2, p.y + force.y * 2);
-            ctx.stroke();
-            ctx.fillRect(p.x + force.x - 1, p.y + force.y - 1, 2, 2);
-            // ctx.fill();
-          }
-        }
-      }
-
-      perfLog.push(Date.now() - start);
-      if (perfLog.length === frameRate * 3) {
-        const avg = perfLog.reduce((acc, v) => v + acc, 0) / perfLog.length;
-        console.log(`avg paint: ${avg.toFixed(2)}ms`);
-        perfLog = [];
-      }
-    }
-
-    handle = requestAnimationFrame(paint);
-
-    return () => {
-      cancelAnimationFrame(handle);
-    };
-  }, [particles, forces, setForces, animate, shapeMap]);
 
   const [bgDark, setBgDark] = useState(true);
   const [headerHeight, setHeaderHeight] = useState(0);
 
   useEffect(() => {
+    setStart(true);
     setHeaderHeight(
       document.querySelector("nav.navbar").getBoundingClientRect().height
     );
@@ -253,12 +180,6 @@ export default function PreHero({
       ) {
         setBgDark(true);
       }
-
-      // if (window.scrollY > window.innerHeight && animate) {
-      //   setAnimate(false);
-      // } else if (window.scrollY < window.innerHeight && !animate) {
-      //   setAnimate(true);
-      // }
     }
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -298,13 +219,8 @@ export default function PreHero({
   return (
     <section className=" bg-[#1B025A]" id="home">
       {bgDark && <DarkHeroStyles bgColor="transparent" />}
-      <motion.canvas
-        className="w-full h-screen fixed inset-0 bg-[#1B025A]"
-        ref={canvasRef}
-        style={{
-          filter: blur,
-        }}
-      ></motion.canvas>
+      <ParticleAnimation animate={animate} blur={blur}></ParticleAnimation>
+
       <div
         className="overflow-hidden relative"
         style={{
@@ -382,99 +298,14 @@ export default function PreHero({
         >
           <AnimateSpawn
             el={motion.h2}
-            className="tw-heading-3 md:tw-heading-60 mb-20 md:w-6/10 md:mx-auto text-center"
+            className="tw-heading-3 md:tw-heading-60 mb-20 md:mb-30 text-center"
             variants={transitions.item}
           >
-            The world's largest public blockchain
+            Made possible by ICP
+            <br />
+            The ∞ scalable blockchain protocol
           </AnimateSpawn>
-          <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
-            <AnimateSpawn
-              className="text-center"
-              variants={transitions.container}
-            >
-              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-red">
-                1.6 Billion+
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                Total Blocks processed
-              </p>
-            </AnimateSpawn>
-            <AnimateSpawn
-              className="text-center"
-              variants={transitions.container}
-            >
-              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-blue">
-                1.7 Billion+
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                New accounts per year
-              </p>
-            </AnimateSpawn>
-            <AnimateSpawn
-              className="text-center md:col-span-2"
-              variants={transitions.container}
-            >
-              <h3 className="tw-heading-3 md:tw-heading-2 font-book md:font-book mb-0 text-transparent bg-clip-text hero-stat-green">
-                $0.0000015
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                fixed costs per Transaction
-                <br />
-                (no fluctuation)
-              </p>
-            </AnimateSpawn>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2/10 gap-y-16 md:gap-y-30">
-            <AnimateSpawn variants={transitions.container}>
-              <h3 className="tw-heading-4 mb-2">Superfast</h3>
-              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
-                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
-                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
-                ultricies vehicula ut id elit.
-              </p>
-              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
-              <p className="tw-paragraph mb-0 text-white-60">
-                Lorem ipsum dolor
-              </p>
-            </AnimateSpawn>
-            <AnimateSpawn variants={transitions.container}>
-              <h3 className="tw-heading-4 mb-2">Infinitely Scalable</h3>
-              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
-                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
-                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
-                ultricies vehicula ut id elit.
-              </p>
-              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
-              <p className="tw-paragraph mb-0 text-white-60">
-                Lorem ipsum dolor
-              </p>
-            </AnimateSpawn>
-            <AnimateSpawn variants={transitions.container}>
-              <h3 className="tw-heading-4 mb-2">Sustainable</h3>
-              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
-                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
-                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
-                ultricies vehicula ut id elit.
-              </p>
-              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
-              <p className="tw-paragraph mb-0 text-white-60">
-                Lorem ipsum dolor
-              </p>
-            </AnimateSpawn>
-            <AnimateSpawn variants={transitions.container}>
-              <h3 className="tw-heading-4 mb-2">Cost-efficient</h3>
-              <p className="tw-paragraph md:tw-lead-sm text-white-60 mb-8">
-                Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula
-                ut id elit. Donec sed odio dui. Nullam id dolor id nibh
-                ultricies vehicula ut id elit.
-              </p>
-              <h4 className="text-green tw-lead-lg mb-2">1,658,841,253</h4>
-              <p className="tw-paragraph mb-0 text-white-60">
-                Lorem ipsum dolor
-              </p>
-            </AnimateSpawn>
-          </div>
+          <Numbers></Numbers>
         </div>
       </div>
     </section>

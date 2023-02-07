@@ -1,5 +1,7 @@
 export function getBytesStored(): Promise<number> {
-  return fetch("https://ic-api.internetcomputer.org/api/v3/metrics/memory")
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/ic-memory-usage"
+  )
     .then(
       (res) =>
         res.json() as Promise<{
