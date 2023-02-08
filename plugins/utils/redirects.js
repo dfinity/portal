@@ -7,9 +7,11 @@ const redirects = `
   /docs/candid-guide/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
-  /docs/candid-guide/candid-types /docs/current/references/candid-ref  
+  /docs/candid-guide/candid-types /docs/current/references/candid-ref
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/* /docs/current/motoko/main/:splat
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/intro
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
