@@ -9,10 +9,11 @@
     ],
     "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
     "usesInternetIdentity": true,
+    "display": "Large",
     "stats": "110,000+ users",
     "logo": "/img/showcase/distrikt_logo.webp",
     "screenshots": [
-      "/img/showcase/distrikt_screenshot_0.webp"
+      "/img/showcase/distrikt_screenshot.webp"
     ]
   },
   {
@@ -62,9 +63,11 @@
     ],
     "description": "The world\u2019s first web3 search engine",
     "stats": "3,000,000+ searches",
-    "display": "Normal",
+    "display": "Large",
     "logo": "/img/showcase/kinic_logo.webp",
-    "screenshots": []
+    "screenshots": [
+      "/img/showcase/kinic_screenshot.webp"
+    ]
   },
   {
     "id": "infinityswap",
@@ -89,12 +92,11 @@
     "tags": [
       "Wallet"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens \u2013 as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication. Download it [here](https://chrome.google.com/webstore/detail/bitfinity-wallet/jnldfbidonfeldmalbflbmlebbipcnle).",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens \u2013 as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
-    "video": "/img/showcase/bitfinitywallet_video.mp4",
     "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
   },
   {
     "id": "dscvr",
@@ -123,7 +125,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a Svelte web app hosted entirely on the IC. Check out the code or submit pull requests here: https://github.com/dfinity/portal",
+    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a Svelte web app hosted entirely on the IC.",
     "display": "Normal",
     "logo": "/img/showcase/internetcomputerorgwebsite_logo.webp",
     "screenshots": [
@@ -140,9 +142,11 @@
     ],
     "description": "Decentralized alternative to Minecraft with NFT worlds",
     "stats": "13,200+ ICP volume",
-    "display": "Normal",
+    "display": "Large",
     "logo": "/img/showcase/cubetopia_logo.webp",
-    "screenshots": []
+    "screenshots": [
+      "/img/showcase/cubetopia_screenshot.webp"
+    ]
   },
   {
     "id": "yumi",
@@ -157,7 +161,7 @@
     "display": "Large",
     "logo": "/img/showcase/yumi_logo.webp",
     "screenshots": [
-      "/img/showcase/yumi_screenshot_0.webp"
+      "/img/showcase/yumi-screenshot.webp"
     ]
   },
   {
@@ -228,30 +232,9 @@
     ],
     "description": "MetaSports Basketball is an open basketball metaverse, built on the Ethereum & Internet Computer blockchains, where NFT players of all shapes, species, and origin can compete to become basketball superstars on teams owned and managed by the players. Developed by Psychedelic, and Featured in Yahoo and many major media publications, the game allows users to create and mint characters, as well as bring in NFTs from their collection to play on their MBA team. ",
     "oneLiner": "ETH NFT Game Built on ICP",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/metasportsbasketball_logo.webp",
-    "video": "/img/showcase/metasportsbasketball_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": []
-  },
-  {
-    "id": "dfinance",
-    "name": "DFinance",
-    "website": "https://dfinance.ai/",
-    "tags": [
-      "DeFi",
-      "Wallet"
-    ],
-    "description": "DFinance is building open financial infrastructure on the Internet Computer. With DeFi products, swaps, unified token standards, token issuance, and token management DFinance is one of the first open and decentralized financial solutions on the Internet Computer.",
-    "github": "https://github.com/dfinance-tech",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "logo": "/img/showcase/dfinance_logo.webp",
-    "video": "/img/showcase/dfinance_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": [
-      "/img/showcase/dfinance_screenshot_0.webp"
-    ]
   },
   {
     "id": "crowdgovorg",
@@ -259,7 +242,7 @@
     "oneLiner": "The simplified, one stop shop for IC Governance.",
     "website": "https://crowdgov.org",
     "tags": [
-      "Tools / Infrastructures"
+      "Tools / Infrastructure"
     ],
     "description": "The crowdgov.org website is dedicated to simplified governance for the internet computer. You will find information about how to participate in governance and how to maximize voting rewards. A variety of research tools are provided to help you learn more about NNS ecosystem participants and the current state of decentralization.",
     "usesInternetIdentity": true,
@@ -347,10 +330,11 @@
     ],
     "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
     "usesInternetIdentity": true,
+    "display": "Large",
     "stats": "40,000+ users",
     "logo": "/img/showcase/openchat_logo.webp",
     "screenshots": [
-      "/img/showcase/openchat_screenshot_0.webp"
+      "/img/showcase/openchat-screenshot.webp"
     ]
   },
   {
@@ -533,7 +517,7 @@
     ],
     "description": "Have your fortune told on the Internet Computer. Saga Tarot gives you a tarot reading in one click. The user-friendly dapp is built completely on the Internet Computer, accessible from any browser. What will the future hold for you?",
     "usesInternetIdentity": true,
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/sagatarot_logo.webp",
     "video": "/img/showcase/sagatarot_video.mp4",
     "videoContentType": "video/mp4",
@@ -653,9 +637,9 @@
     "oneLiner": "WEB3 LAUNCHPAD GAMING WORLD",
     "display": "Large",
     "logo": "/img/showcase/plethora_logo.webp",
-    "video": "/img/showcase/plethora_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": [
+      "/img/showcase/plethora_screenshot.webp"
+    ]
   },
   {
     "id": "entrepot",
@@ -670,10 +654,8 @@
     "stats": "1,000,000+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/entrepot_logo.webp",
-    "video": "/img/showcase/entrepot_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/entrepot_screenshot_0.webp"
+      "/img/showcase/entrepot_screenshot.webp"
     ]
   },
   {
@@ -688,7 +670,7 @@
     "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis. These NFTs can be won in weekly challenges, purchased, or traded via marketplace and brought into the decentralized game with their unique attributes. Play now for free!",
     "usesInternetIdentity": true,
     "oneLiner": "Winner DSCVR Hackathon",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icmojiorigins_logo.webp",
     "video": "/img/showcase/icmojiorigins_video.mp4",
     "videoContentType": "video/mp4",
@@ -740,7 +722,7 @@
   {
     "id": "departurelabs",
     "name": "Departure Labs",
-    "website": "https://github.com/DepartureLabsIC/non-fungible-token",
+    "website": "https://uhmvd-qqaaa-aaaam-aavna-cai.ic0.app/",
     "tags": [
       "NFT",
       "Tools / Infrastructure"
@@ -787,7 +769,7 @@
     "id": "astrox",
     "name": "AstroX",
     "oneLiner": "Web3.0 developer tools",
-    "website": "https://github.com/AstroxNetwork",
+    "website": "https://astrox.me/#/",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1025,10 +1007,8 @@
     "description": "ICNaming is a testnet that is enabling the Internet Computer ecosystem to register domain names on the Internet Computer Name Service. Similar to the Ethereum Name Servce (ENS), ICNaming aims to offer a decentralized name service for users to pseudonomize their wallet addresses on ICP, as well as domain names, and canister smart contract IDs. ",
     "github": "https://github.com/IC-Naming",
     "usesInternetIdentity": true,
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icnaming_logo.webp",
-    "video": "/img/showcase/icnaming_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": []
   },
   {
@@ -1044,22 +1024,6 @@
     "logo": "/img/showcase/javaagent_logo.webp",
     "screenshots": [
       "/img/showcase/javaagent_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "ices",
-    "name": "ICES",
-    "website": "https://ices.one/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "a storage and analysis service for canister's event logs on IC.\n",
-    "github": "https://github.com/icpfans-xyz/ices",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/ices_logo.webp",
-    "screenshots": [
-      "/img/showcase/ices_screenshot_0.webp"
     ]
   },
   {
@@ -1101,10 +1065,8 @@
     ],
     "description": "The Internet Computer Association maintains a public dashboard where anyone can track the latest statistics for the Internet Computer blockchain. Tracking everything from blocks per second, to NNS proposals and their information and voting record, as well the latest state of the network, and transaction data. ",
     "oneLiner": "ICA Official Dashboard",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icadashboard_logo.webp",
-    "video": "/img/showcase/icadashboard_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": []
   },
   {
@@ -1131,7 +1093,7 @@
       "NFT",
       "Tools / Infrastructure"
     ],
-    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens \u2013 as well as log into Internet Computer dapps with one click. Download it here. ",
+    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens \u2013 as well as log into Internet Computer dapps with one click.",
     "github": "https://github.com/Psychedelic/plug",
     "stats": "100 000 users",
     "display": "Normal",
