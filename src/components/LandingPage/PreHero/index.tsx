@@ -335,7 +335,7 @@ export default function PreHero({}): JSX.Element {
               >
                 Dig into data on ICP DASHBOARD
               </Link>
-              <Link href="" className="link-primary-light link-with-icon">
+              <Link href="https://wiki.internetcomputer.org/wiki/L1_comparison" className="link-primary-light link-with-icon">
                 <LinkArrowRight />
                 Stack it up against other L1 chains
               </Link>
