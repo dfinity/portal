@@ -8,9 +8,6 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
-import { LazyAutoplayVideo } from "../components/Common/LazyVideo/LazyAutoplayVideo";
-
-const MotionLink = motion(Link);
 
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
@@ -32,6 +29,7 @@ const smallNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/icpunks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icpuppies.webp", title: "", url: "" },
   { imageUrl: "/img/nft/moonwalker.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/eimolad.webp", title: "", url: "" },
   { imageUrl: "/img/nft/motoko.webp", title: "", url: "" },
   { imageUrl: "/img/nft/motomoji.webp", title: "", url: "" },
   { imageUrl: "/img/nft/nautscc.webp", title: "", url: "" },
@@ -107,14 +105,18 @@ const TranslatedLayout: React.FC<{
       )}
     />
   ) : (
-    <LazyAutoplayVideo
-      videoContentType="video/mp4"
-      videoUrl="/img/nft/nft.webm"
+    <video
+      loop
+      autoPlay
+      muted
+      playsInline
       className={clsx(
         "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
         reverse ? "md:rounded-l-none" : "md:rounded-r-none"
       )}
-    ></LazyAutoplayVideo>
+    >
+      <source src={video.videoUrl} type={video.videoContentType} />
+    </video>
   );
   return reverse ? (
     <div className="flex flex-col md:flex-row">
@@ -313,8 +315,8 @@ function NftPage() {
           </TranslatedLayout>
           <TranslatedLayout
             video={{
-              videoUrl: "/img/nft/nft.webm",
-              videoContentType: "video/webm",
+              videoUrl: "/img/nft/nft.mp4",
+              videoContentType: "video/mp4",
             }}
             reverse={true}
           >
