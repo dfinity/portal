@@ -82,26 +82,31 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
 
 const LargeProjectMedia: React.FC<{
   project: ShowcaseProject;
-  className?: string;
-}> = ({ project, className }) => {
+}> = ({ project }) => {
   const { ref, inView } = useInView({ threshold: 0 });
+  const [shown, setShown] = React.useState(false);
   const videoRef = useRef<HTMLVideoElement>();
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    if (inView && !shown) {
+      setShown(true);
+    }
+  }, [inView]);
 
+  useEffect(() => {
+    if (!videoRef.current) return;
     // start playing the video when it comes in view
-    if (inView) {
+    if (shown && inView) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
     }
-  }, [inView]);
+  }, [shown, inView]);
 
   return (
     <div ref={ref} className="flex min-h-full">
       {project.video ? (
-        inView && (
+        shown && (
           <video
             loop
             muted
