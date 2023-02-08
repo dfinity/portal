@@ -275,63 +275,64 @@ function ShowcasePage(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-showcase.jpg"></ShareMeta>
-
-      <section className="container-10 pt-20 md:pt-30 pb-12 md:pb-20">
-        <h1 className="md:tw-heading-2 mb-8 md:mb-10">
-          {projects.length} projects featured
-        </h1>
-        <div className="flex flex-wrap gap-3">
-          {/* <button className="rounded-full px-3 appearance-none border-solid border border-[#d2d2d2] hover:text-white  hover:bg-infinite  hover:border-transparent flex items-center">
+      <main className="overflow-hidden">
+        <section className="container-10 pt-20 md:pt-30 pb-12 md:pb-20">
+          <h1 className="md:tw-heading-2 mb-8 md:mb-10">
+            {projects.length} projects featured
+          </h1>
+          <div className="flex flex-wrap gap-3">
+            {/* <button className="rounded-full px-3 appearance-none border-solid border border-[#d2d2d2] hover:text-white  hover:bg-infinite  hover:border-transparent flex items-center">
             <SearchIcon />
           </button> */}
-          <Pill isActive={!queryTag} onClick={() => setQueryTag(undefined)}>
-            All projects
-            <PillSecondaryLabel isActive={!queryTag}>
-              {projects.length}
-            </PillSecondaryLabel>
-          </Pill>
-          {tags.map(([tag, count]) => (
-            <Pill
-              isActive={tag === queryTag}
-              onClick={() => setQueryTag(tag)}
-              key={tag}
-            >
-              {tag}
-              <PillSecondaryLabel isActive={tag === queryTag}>
-                {count}
+            <Pill isActive={!queryTag} onClick={() => setQueryTag(undefined)}>
+              All projects
+              <PillSecondaryLabel isActive={!queryTag}>
+                {projects.length}
               </PillSecondaryLabel>
             </Pill>
-          ))}
-        </div>
-      </section>
+            {tags.map(([tag, count]) => (
+              <Pill
+                isActive={tag === queryTag}
+                onClick={() => setQueryTag(tag)}
+                key={tag}
+              >
+                {tag}
+                <PillSecondaryLabel isActive={tag === queryTag}>
+                  {count}
+                </PillSecondaryLabel>
+              </Pill>
+            ))}
+          </div>
+        </section>
 
-      <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-        <div className="blob blob-infinite blob-top-right blob-md z-[-1]"></div>
-        {filteredProjects.map((project) =>
-          project.display === "Large" ? (
-            <LargeCard project={project} key={project.website} />
-          ) : (
-            <SmallCard project={project} key={project.website} />
-          )
-        )}
-      </section>
+        <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+          <div className="blob blob-infinite blob-top-right blob-md z-[-1]"></div>
+          {filteredProjects.map((project) =>
+            project.display === "Large" ? (
+              <LargeCard project={project} key={project.website} />
+            ) : (
+              <SmallCard project={project} key={project.website} />
+            )
+          )}
+        </section>
 
-      <section className="container-10 py-20 md:pt-20 md:pb-30">
-        <h2 className="tw-heading-6 mb-3">Submit your project</h2>
-        <p className="tw-paragraph mb-4">
-          See a project missing? All community members are invited to submit
-          their projects to this page.
-        </p>
-        <p className="mb-0">
-          <Link
-            href="https://github.com/dfinity/portal/tree/akos/showcase-to-github#showcase-submission-guidelines"
-            className="link-primary link-with-icon"
-          >
-            Submit your project
-            <LinkArrowUpRight />
-          </Link>
-        </p>
-      </section>
+        <section className="container-10 py-20 md:pt-20 md:pb-30">
+          <h2 className="tw-heading-6 mb-3">Submit your project</h2>
+          <p className="tw-paragraph mb-4">
+            See a project missing? All community members are invited to submit
+            their projects to this page.
+          </p>
+          <p className="mb-0">
+            <Link
+              href="https://github.com/dfinity/portal/tree/akos/showcase-to-github#showcase-submission-guidelines"
+              className="link-primary link-with-icon"
+            >
+              Submit your project
+              <LinkArrowUpRight />
+            </Link>
+          </p>
+        </section>
+      </main>
     </Layout>
   );
 }
