@@ -30,13 +30,13 @@ Hexadecimal numbers begin with `0x`:
 ```
 
 ## Ints
-Integers represent whoe numbers that could be either positive or negative.
+Integers represent whole numbers that could be either positive or negative.
 
 ```motoko
 -3 // -3 : Int
 ```
 
-Every positive number literal is treated as `Nat`. However, it doesn't cause a problem in arithmeric operations since `Nat` is **subtype** of `Int`.
+Every positive number literal is treated as `Nat`. However, it doesn't cause a problem in arithmetic operations since `Nat` is **subtype** of `Int`.
 
 ## Arithmetic operations
 Motoko has several operators that work with integers.
