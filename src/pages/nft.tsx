@@ -44,7 +44,17 @@ const smallNfts: { url: string; title: string; imageUrl: string }[] = [
 const NftShowcase = React.memo(() => {
   return (
     <section className="-mt-24 overflow-hidden relative h-[280px] md:h-[560px]">
-      <div className="flex gap-1 md:gap-3 absolute left-1/2 -translate-x-1/2 min-w-max">
+      <div className="flex gap-1 md:gap-3 absolute left-1/2 min-w-max nft-marquee-right">
+        {largeNfts.map((nft) => (
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-40 md:w-80 rounded-xl"
+          />
+          // </a>
+        ))}
         {largeNfts.map((nft) => (
           // <a href={nft.url} title={nft.title} className="flex">
           <img
@@ -57,7 +67,17 @@ const NftShowcase = React.memo(() => {
         ))}
       </div>
 
-      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 -translate-x-1/2 min-w-max">
+      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 min-w-max nft-marquee-left">
+        {smallNfts.map((nft) => (
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-24 md:w-52 rounded-xl"
+          />
+          // </a>
+        ))}
         {smallNfts.map((nft) => (
           // <a href={nft.url} title={nft.title} className="flex">
           <img
