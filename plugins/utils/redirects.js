@@ -3,10 +3,9 @@ const redirects = `
   /docs /docs/current/home
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/base-libraries/Debug.html /docs/current/motoko/main/base/Debug
-  /docs/base-libraries/random /docs/current/motoko/main/base/Random
   /docs/base-libraries/stdlib-intro.html /docs/current/motoko/main/about-this-guide
   /docs/base-libraries/Time.html /docs/current/motoko/main/base/Time
-  /docs/candid-guide /docs/current/developer-docs/backend/candid
+  /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-concepts.html /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
@@ -19,14 +18,14 @@ const redirects = `
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/use-cases/considerations-for-nft-devs
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs/ /docs/current/developer-docs/use-cases/considerations-for-nft-devs
   /docs/current/developer-docs/build/ /docs/current/developer-docs/backend/choosing-language
-  /docs/current/developer-docs/build/backend/candid-ui /docs/current/developer-docs/backend/candid
+  /docs/current/developer-docs/build/backend/candid-ui /docs/current/developer-docs/backend/candid/
   /docs/current/developer-docs/build/backend/intercanister-calls /docs/current/developer-docs/backend/backend-tutorials/intercanister-calls
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   /docs/current/developer-docs/build/cdks/motoko-dfinity/about-this-guide /docs/current/motoko/main/about-this-guide
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base /docs/current/motoko/main/base
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base /docs/current/motoko/main/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array /docs/current/motoko/main/base/Array
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/developer-docs/backend/backend-tutorials
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/developer-docs/backend/backend-tutorials/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko /docs/current/motoko/intro
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko-grammar/ /docs/current/motoko/main/motoko-grammar
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/motoko-introduction
@@ -42,7 +41,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
-  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/setup/cycles/cycles-walle
+  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/setup/manage-canisters
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
@@ -67,7 +66,7 @@ const redirects = `
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
-  /docs/developers-guide/cli-reference.html /docs/current/references/cli-reference
+  /docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
