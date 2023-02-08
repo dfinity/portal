@@ -105,31 +105,16 @@ const LargeProjectMedia: React.FC<{
 
   return (
     <div ref={ref} className="flex min-h-full">
-      {project.video ? (
-        shown && (
-          <video
-            loop
-            muted
-            playsInline
-            className={clsx(
-              "w-full object-cover object-center",
-              project.display === "Large" ? " w-full" : "h-48"
-            )}
-            ref={videoRef}
-          >
-            <source src={project.video} type={project.videoContentType} />
-          </video>
-        )
-      ) : (
-        <img
-          loading="lazy"
-          src={project.screenshots[0]}
-          alt=""
-          className={clsx(
-            "w-full object-cover object-center",
-            project.display === "Large" ? " w-full" : "h-48"
-          )}
-        />
+      {shown && (
+        <video
+          loop
+          muted
+          playsInline
+          className={clsx("w-full object-cover object-center")}
+          ref={videoRef}
+        >
+          <source src={project.video} type={project.videoContentType} />
+        </video>
       )}
     </div>
   );
@@ -228,7 +213,14 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
         {project.video ? (
           <LargeProjectMedia project={project}></LargeProjectMedia>
         ) : (
-          <img src={project.screenshots[0]}></img>
+          <div className="flex w-full h-full">
+            <img
+              loading="lazy"
+              alt=""
+              src={project.screenshots[0]}
+              className="object-cover object-center"
+            ></img>
+          </div>
         )}
       </div>
       <div className="md:w-6/12 lg:w-3/12 flex-shrink-0 flex flex-col py-8 px-6 md:pl-5 md:pr-8">
