@@ -54,7 +54,7 @@ hand side if they don't have to.
 `or` evaluates the right hand side if the left hand side is `false`.
 
 ## Bool variables
-You need to use type [Bool](/motoko/main/base/Bool.md) to declare bollean variables:
+You need to use type [Bool](/motoko/main/base/Bool.md) to declare boolean variables:
 ```motoko
 let amILying : Bool = true;
 let canIBeTrusted = false;
