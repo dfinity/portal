@@ -119,7 +119,7 @@
   },
   {
     "id": "internetcomputerorgwebsite",
-    "name": "internetcomputer.org website",
+    "name": "ICP website",
     "oneLiner": "Educational website for the Internet Computer",
     "website": "https://internetcomputer.org",
     "github": "https://github.com/dfinity/portal",
