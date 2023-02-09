@@ -308,21 +308,29 @@ function ShowcasePage(): JSX.Element {
           )}
         </section>
 
-        <section className="container-10 py-20 md:pt-20 md:pb-30">
-          <h2 className="tw-heading-6 mb-3">Submit your project</h2>
-          <p className="tw-paragraph mb-4">
-            See a project missing? All community members are invited to submit
-            their projects to this page.
-          </p>
-          <p className="mb-0">
-            <Link
-              href="https://github.com/dfinity/portal/tree/akos/showcase-to-github#showcase-submission-guidelines"
-              className="link-primary link-with-icon"
-            >
-              Submit your project
-              <LinkArrowUpRight />
-            </Link>
-          </p>
+        <section className="container-10 py-20 md:pt-20 md:pb-30 flex flex-col gap-12 md:gap-0 md:flex-row md:justify-between">
+          <div className="md:w-4/10">
+            <h2 className="tw-heading-6 mb-3">Submit your project</h2>
+            <p className="tw-paragraph mb-4">
+              See a project missing? All community members are invited to submit
+              their projects to this page.
+            </p>
+            <p className="mb-0">
+              <Link
+                href="https://github.com/dfinity/portal/tree/akos/showcase-to-github#showcase-submission-guidelines"
+                className="link-primary link-with-icon"
+              >
+                Submit your project
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+          </div>
+          <div className="tw-paragraph-sm text-black-60 md:w-3/10">
+            <span className="text-black">Do your own research:</span> All of
+            these dapps are using the novel Internet Computer blockchain. Use
+            the following projects at your own risk. As always, do your own
+            research.
+          </div>
         </section>
       </main>
     </Layout>
