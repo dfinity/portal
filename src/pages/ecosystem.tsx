@@ -195,7 +195,7 @@ const ProjectInfo: React.FC<{
 
 const SmallCard = ({ project }: { project: ShowcaseProject }) => {
   return (
-    <div className="rounded-xl overflow-hidden bg-white-80 flex px-6 py-8">
+    <div className="rounded-xl bg-white-80 flex px-6 py-8">
       <div className="flex flex-col gap-2">
         <ProjectInfo project={project}></ProjectInfo>
       </div>
@@ -207,8 +207,8 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
   // const media = project.video || project.screenshots[0]
 
   return (
-    <div className="md:col-span-2 lg:col-span-4 rounded-xl overflow-hidden bg-white-80 flex flex-col md:flex-row">
-      <div className="md:w-6/12 lg:w-9/12 flex-shrink-0">
+    <div className="md:col-span-2 lg:col-span-4 rounded-xl  bg-white-80 flex flex-col md:flex-row">
+      <div className="md:w-6/12 lg:w-9/12 flex-shrink-0 rounded-t-xl md:rounded-l-xl md:rounded-tr-none overflow-hidden">
         {project.video ? (
           <LargeProjectMedia project={project}></LargeProjectMedia>
         ) : (
