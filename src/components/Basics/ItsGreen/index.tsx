@@ -67,7 +67,7 @@ const ComparedProject: React.FC<{
   return (
     <motion.figure
       key={project.logo}
-      className="flex gap-6 items-center"
+      className="flex gap-6 items-center mx-0"
       variants={{
         hidden: { opacity: 0 },
         show: { opacity: 1 },
@@ -144,14 +144,15 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           variants={transitions.item}
           className="tw-paragraph md:tw-lead mb-8"
         >
-          Thanks to the unique architecture and novel cryptography of the Internet
-          Computer blockchain, it can host smart contract software, data, and
-          computation, with levels of efficiency competitive with traditional
-          software that runs on Big Tech's cloud services. Meanwhile, it is
-          currently tens of thousands of times more efficient than the next most
-          efficient blockchain. Web3 projects that incorporate Internet Computer
-          smart contracts can consequently dramatically lower their carbon
-          footprint, and help reduce climate change.
+          Thanks to the unique architecture and novel cryptography of the
+          Internet Computer blockchain, it can host smart contract software,
+          data, and computation, with levels of efficiency competitive with
+          traditional software that runs on Big Tech's cloud services.
+          Meanwhile, it is currently tens of thousands of times more efficient
+          than the next most efficient blockchain. Web3 projects that
+          incorporate Internet Computer smart contracts can consequently
+          dramatically lower their carbon footprint, and help reduce climate
+          change.
         </motion.p>
         <motion.p
           variants={transitions.item}
@@ -176,14 +177,14 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
         <Icon3 aria-hidden></Icon3>
 
         <motion.figure
-          className="space-y-3"
+          className="space-y-3 mx-0"
           variants={{
             hidden: { opacity: 0 },
             show: {
               opacity: 1,
               transition: {
                 delayChildren: 0,
-                staggerChildren: 0.2,
+                staggerChildren: 0.1,
               },
             },
           }}

@@ -1,7 +1,7 @@
 import { Spring } from "@site/src/utils/sprint";
 import React, { useRef, useEffect } from "react";
 
-export const ContinuousCounter: React.FC<{
+export const SpringCounter: React.FC<{
   target: number;
   initialValue: number;
   initialTarget: number;
@@ -64,5 +64,45 @@ export const ContinuousCounter: React.FC<{
     >
       {" "}
     </span>
+  );
+};
+
+export const ConstantRateCounter: React.FC<{
+  start: number;
+  ratePerSec: number;
+  format: (x: number) => string;
+  className?: string;
+}> = ({ start, ratePerSec, format, className }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    let lastHandle = -1;
+    let lastValue = "";
+    const startAt = Date.now();
+    function paint() {
+      const t = (Date.now() - startAt) / 1000;
+
+      const nextValue = format(Math.round(start + ratePerSec * t));
+      if (lastValue !== nextValue) {
+        ref.current.innerText = nextValue;
+        lastValue = nextValue;
+      }
+      lastHandle = requestAnimationFrame(paint);
+    }
+
+    paint();
+
+    return () => {
+      lastHandle >= 0 && cancelAnimationFrame(lastHandle);
+    };
+  }, []);
+
+  return (
+    <span
+      ref={ref}
+      className={
+        "inline-block will-change-contents " + className ? className : ""
+      }
+    ></span>
   );
 };

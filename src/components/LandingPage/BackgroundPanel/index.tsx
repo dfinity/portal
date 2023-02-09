@@ -8,7 +8,7 @@ export const BackgroundPanelContext = React.createContext(false);
 const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.25 });
 
   return (
     <div className="from-[#A4497F] via-[#A4497F] to-transparent bg-gradient-to-b">

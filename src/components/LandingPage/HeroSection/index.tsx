@@ -42,8 +42,7 @@ export default function Hero(): JSX.Element {
     <section className="relative z-10" id="introduction">
       <div className="container-10 py-20 pb-10 md:py-40 flex gap-1/10">
         <div className="hidden md:block md:w-80">
-          <div className="sticky top-10 space-y-10">
-            {/* top-[calc(var(--ifm-navbar-height)/2)] */}
+          <div className="sticky top-[var(--ifm-navbar-height)] space-y-10">
             {sections.map((section, index) => (
               <button
                 key={section.title}

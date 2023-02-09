@@ -12,11 +12,13 @@ import ParticleAnimation from "./ParticleAnimation";
 import { useQuery } from "react-query";
 import {
   getBlockCount,
+  getBlockRate,
   getBytesStored,
+  getFinalizationRate,
   getSubnetCount,
   getTransactionRate,
 } from "@site/src/utils/network-stats";
-import { ContinuousCounter } from "./ContinuousCounter";
+import { ConstantRateCounter, SpringCounter } from "./Counters";
 import useGlobalData from "@docusaurus/useGlobalData";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
@@ -37,14 +39,26 @@ function formatStateSize(x: number) {
   );
 }
 
-const Numbers = () => {
-  const blockRateQuery = useQuery(["blockRate"], getBlockCount, {
-    refetchInterval: 1000,
+let lastRate = 0;
+function transactionRateWithJitter(): Promise<number> {
+  return getTransactionRate().then((rate) => {
+    if (lastRate === rate) {
+      return Math.max(0, rate + Math.random() * 50 - 25);
+    }
+    lastRate = rate;
+    return rate;
   });
+}
+
+const Numbers = () => {
+  const blockInfoQuery = useQuery(["blockRate"], () =>
+    Promise.all([getBlockCount(), getBlockRate()])
+  );
+  const finalizationRate = useQuery(["getFinalizationRate"], getBlockRate);
   const subnetCountQuery = useQuery(["subnetCount"], getSubnetCount);
   const transactionRateQuery = useQuery(
     ["transactionRate"],
-    getTransactionRate,
+    transactionRateWithJitter,
     {
       refetchInterval: 1000,
     }
@@ -60,14 +74,13 @@ const Numbers = () => {
     <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {blockRateQuery.isFetched ? (
-            <ContinuousCounter
-              target={blockRateQuery.data}
-              initialTarget={blockRateQuery.data}
-              initialValue={blockRateQuery.data - 30}
+          {blockInfoQuery.isFetched ? (
+            <ConstantRateCounter
+              start={blockInfoQuery.data[0]}
+              ratePerSec={blockInfoQuery.data[1]}
               format={formatNumber}
               className="text-transparent bg-clip-text hero-stat-red"
-            ></ContinuousCounter>
+            ></ConstantRateCounter>
           ) : (
             <>&nbsp;</>
           )}
@@ -80,7 +93,13 @@ const Numbers = () => {
             capacity.{" "}
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">74</span>{" "}
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
+              {finalizationRate.isFetched ? (
+                (finalizationRate.data * 2).toFixed(1)
+              ) : (
+                <>&nbsp;&nbsp;</>
+              )}
+            </span>{" "}
             MB/s block throughput capacity
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
@@ -98,14 +117,14 @@ const Numbers = () => {
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
           {transactionRateQuery.isFetched ? (
-            <ContinuousCounter
+            <SpringCounter
               target={transactionRateQuery.data}
               initialTarget={transactionRateQuery.data}
               initialValue={0}
               format={formatNumber}
               className="text-transparent bg-clip-text hero-stat-blue"
               springConfig={[3, 1, 1]}
-            ></ContinuousCounter>
+            ></SpringCounter>
           ) : (
             <>&nbsp;</>
           )}
@@ -137,14 +156,14 @@ const Numbers = () => {
       >
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
           {stateSizeQuery.isFetched ? (
-            <ContinuousCounter
+            <SpringCounter
               target={stateSizeQuery.data}
               initialTarget={stateSizeQuery.data}
               initialValue={0}
               format={formatStateSize}
               className="text-transparent bg-clip-text hero-stat-green"
               springConfig={[3, 1, 3]}
-            ></ContinuousCounter>
+            ></SpringCounter>
           ) : (
             <>&nbsp;</>
           )}
@@ -292,7 +311,7 @@ export default function PreHero({}): JSX.Element {
               <path
                 d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
                 stroke="url(#paint0_linear_127_29571)"
-                stroke-width="1.77"
+                strokeWidth="1.77"
               />
               <defs>
                 <linearGradient
@@ -303,8 +322,8 @@ export default function PreHero({}): JSX.Element {
                   y2="6.09638e-09"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="white" />
-                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                  <stop stopColor="white" />
+                  <stop offset="1" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
             </svg>
@@ -313,6 +332,7 @@ export default function PreHero({}): JSX.Element {
         <div
           className="tw-heading-5 text-white relative py-20 md:py-40 container-10"
           ref={heroRef}
+          id="stats"
         >
           <AnimateSpawn
             el={motion.h2}
@@ -330,12 +350,15 @@ export default function PreHero({}): JSX.Element {
           >
             <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
               <Link
-                className="button-outline-white"
+                className="button-outline-white text-center sm:text-left"
                 href="https://dashboard.internetcomputer.org"
               >
                 Dig into data on ICP DASHBOARD
               </Link>
-              <Link href="https://wiki.internetcomputer.org/wiki/L1_comparison" className="link-primary-light link-with-icon">
+              <Link
+                href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                className="link-primary-light link-with-icon"
+              >
                 <LinkArrowRight />
                 Stack it up against other L1 chains
               </Link>
