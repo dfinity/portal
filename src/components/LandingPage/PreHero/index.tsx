@@ -339,9 +339,7 @@ export default function PreHero({}): JSX.Element {
             className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-30 text-center"
             variants={transitions.item}
           >
-            Made possible by ICP
-            <br />
-            The ∞ scalable blockchain protocol
+            Transactions Compute
           </AnimateSpawn>
           <Numbers></Numbers>
           <AnimateSpawn
