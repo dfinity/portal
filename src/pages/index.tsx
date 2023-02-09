@@ -38,7 +38,6 @@ export default function Home(): JSX.Element {
         <HeroSection></HeroSection>
         <div className="overflow-hidden">
           <ShowcaseSection></ShowcaseSection>
-          {/* <BasicsSection></BasicsSection> */}
         </div>
         <BackgroundPanel>
           <Storage></Storage>

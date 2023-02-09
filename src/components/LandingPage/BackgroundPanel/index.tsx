@@ -8,10 +8,10 @@ export const BackgroundPanelContext = React.createContext(false);
 const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [ref, inView] = useInView({ threshold: 0.25 });
+  const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
-    <div className="from-[#A4497F] via-[#A4497F] to-transparent bg-gradient-to-b">
+    <div>
       {inView && <DarkHeroStyles bgColor="transparent" />}
       <div
         className={clsx(
@@ -24,7 +24,6 @@ const BackgroundPanel: React.FC<{ children: React.ReactNode }> = ({
           {children}
         </BackgroundPanelContext.Provider>
       </div>
-      {/* </> */}
     </div>
   );
 };

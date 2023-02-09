@@ -50,7 +50,7 @@ export default function ShowcaseSection(): JSX.Element {
   }[];
 
   return (
-    <section id="dapps" className="relative z-0">
+    <section id="dapps" className="relative z-0 pb-[320px]">
       <AnimateSpawn variants={transitions.item}>
         <div className="container-10 pt-20 md:pt-30">
           <div className="">
