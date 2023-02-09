@@ -17,7 +17,7 @@ import {
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import communityProjects from "@site/community/communityProjects";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
@@ -145,7 +145,6 @@ function Samples(): React.ReactNode {
   const [numberOfItems, setNumberOfItems] = React.useState(16);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
     React.useState(40);
-  resetNavBarStyle();
 
   const sortSamples = (samples) => {
     if (selectedSortBy === "Relevance") {

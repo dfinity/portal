@@ -2,7 +2,6 @@ import Layout from "@theme/Layout";
 import React, { useEffect, useRef } from "react";
 
 import Link from "@docusaurus/Link";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
 import showcaseData from "../../showcase.json";
@@ -245,8 +244,6 @@ function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
   const [filteredProjects, setFilteredProjects] = React.useState(projects);
-  // const filtersRef = useRef<HTMLDivElement>();
-  resetNavBarStyle();
 
   useEffect(() => {
     let filteredProjects = projects;

@@ -8,7 +8,7 @@ You can play around with the [dapp deployed on the IC](https://cvhrw-2yaaa-aaaaj
 
 We wanted to build an example of a simple (but not too simple) dapp running purely on the IC. This example relies upon the *web-serving* and *storage capabilities* of the IC. We focused on the following two key features for our example dapp: (1) client-side, *end-to-end encryption* and (2) *multi-user* and *multi-device* support.
 
-To demonstrate the potential of the IC as a platform for developing such dapps, we implemented this example using two distinct Canister Development Kits (CDKs). The Motoko CDK allows developers to implement actor-based dapps using the [Motoko](../developer-docs/build/cdks/motoko-dfinity/motoko) language. The Rust CDK allows implementing dapps in [Rust](../developer-docs/build/cdks/cdk-rs-dfinity/). In both cases, canisters are compiled into WebAssembly files that are then deployed onto the IC.
+To demonstrate the potential of the IC as a platform for developing such dapps, we implemented this example using two distinct Canister Development Kits (CDKs). The Motoko CDK allows developers to implement actor-based dapps using the [Motoko](/motoko/main/motoko.md) language. The Rust CDK allows implementing dapps in [Rust](/developer-docs/backend/rust/index.md). In both cases, canisters are compiled into WebAssembly files that are then deployed onto the IC.
 
 ## Approach
 

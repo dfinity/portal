@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -48,8 +47,6 @@ const CardWithIcon: React.FC<{
 };
 
 function InternetIdentityPage() {
-  resetNavBarStyle();
-
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
 

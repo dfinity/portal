@@ -1,18 +1,15 @@
-import Head from "@docusaurus/Head";
 import BuildWithBitcoin from "@site/src/components/BitcoinIntegrationPage/BuildWithBitcoin";
+import React, { useRef } from "react";
+import Layout from "@theme/Layout";
 import Hero from "@site/src/components/BitcoinIntegrationPage/Hero";
 import HowItWorks from "@site/src/components/BitcoinIntegrationPage/HowItWorks";
 import Videos from "@site/src/components/BitcoinIntegrationPage/Videos";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import Layout from "@theme/Layout";
-import React, { useRef } from "react";
-import Content from "../components/BitcoinIntegrationPage/Content";
-import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import ShareMeta from "../components/Common/ShareMeta";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import ShareMeta from "../components/Common/ShareMeta";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import Content from "../components/BitcoinIntegrationPage/Content";
 
 function BitcoinIntegration() {
-  resetNavBarStyle();
   const ref = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(ref);
 

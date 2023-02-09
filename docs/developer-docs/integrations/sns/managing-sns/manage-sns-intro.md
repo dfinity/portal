@@ -27,8 +27,7 @@ SNS is launched is has to be _maintained_.
 This includes ensuring that the SNS canisters are
 running the latest version and that they have enough
 cycles to continue operating.
-You can find more information on<!--how SNS canisters can be 
-upgraded to new versions [on this page](./upgradeSNS.md)
+You can find more information on<!--how SNS canisters can be  upgraded to new versions on this page (./upgradeSNS.md)
 and about--> 
 cycle management [on this page](./cycles-usage.md).
 
@@ -44,7 +43,7 @@ Therefore, managing an SNS also means that the community
 should regularly consider and adjust these configurations,
 which are defined by the SNS's _nervous system parameters_.
 <!--We describe on
-[this page](./nervous-system-parameters.md)
+this page(./nervous-system-parameters.md)
 which parameters can be chosen and how they can be adjusted 
 by proposal.-->
 
@@ -52,7 +51,7 @@ by proposal.-->
 kinds of proposals to ensure that the SNS DAO can
 manage the
 specific dapp and its operatiosn effectively.
-[This page](./proposal-guide.md) provides some guidelines 
+This page(./proposal-guide.md) provides some guidelines 
 regarding
 how proposals can be used and how an SNS community can define
 their own kinds of proposals.-->

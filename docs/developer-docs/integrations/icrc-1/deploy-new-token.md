@@ -19,7 +19,7 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 
     :::
 
-2.  Ensure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](../../build/install-upgrade-remove.mdx) section to install it.
+2.  Ensure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](../../setup/install/index.mdx) section to install it.
 
 3.  Add the following canister definition to the `dfx.json` file in your project:
 
@@ -75,7 +75,7 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 
     -   the `MINTER_PRINCIPAL` is the Principal responsible for minting and burning tokens.
 
-    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](../../build/project-setup/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters
+    -   the `ARCHIVE_CONTROLLER` is the [controller Principal](../../setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters
 
     <div class="important">
 

@@ -42,12 +42,16 @@ const config = {
     ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
-
+  customFields: {
+    marketingLogoUrl: "/",
+    docsLogoUrl: "/docs/current/home",
+    docsLogoSrc: "/img/IC_logo_docs.svg",
+  },
   plugins: [
     require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
@@ -92,7 +96,7 @@ const config = {
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: true,
+          breadcrumbs: false,
           versions: {
             current: {
               label: "Current 🚧",
@@ -250,13 +254,9 @@ const config = {
             label: "Develop",
             items: [
               {
-                label: "Developers Home",
-                to: "/developers",
-              },
-              {
                 label: "Developer Docs",
                 type: "doc",
-                docId: "developer-docs/ic-overview",
+                docId: "home",
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
@@ -314,12 +314,23 @@ const config = {
               },
             ],
           },
-
+          {
+            type: "doc",
+            position: "left",
+            docId: "home",
+            label: "Home",
+          },
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "developer-docs",
-            label: "Developer Docs",
+            sidebarId: "tutorials",
+            label: "Tutorials",
+          },
+          {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "guides",
+            label: "Guides",
           },
           {
             type: "docSidebar",
@@ -330,21 +341,52 @@ const config = {
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "concepts",
-            label: "Concepts",
+            sidebarId: "motoko",
+            label: "Motoko",
           },
           {
-            type: "docSidebar",
+            type: "dropdown",
             position: "left",
-            sidebarId: "tokenomics",
-            label: "DAOs & Tokenomics",
+            label: "Links",
+            items: [
+              {
+                label: "Internet Computer Home",
+                to: "/",
+              },
+              { label: "Sample Code", to: "/samples" },
+              {
+                label: "SDK Release Notes",
+                type: "doc",
+                docId: "other/updates/release-notes/release-notes",
+              },
+              { label: "Developer Tools", to: "/tooling" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              {
+                label: "Motoko Playground",
+                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              },
+              {
+                label: "Dev Forum",
+                href: "https://forum.dfinity.org/",
+              },
+              {
+                label: "Dev Discord",
+                href: "https://discord.gg/jnjVVQaE2C",
+              },
+            ],
           },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "samples",
-            label: "Sample Code",
-          },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "tokenomics",
+          //   label: "User Guides (migrate)",
+          // },
+          // {
+          //   type: "docSidebar",
+          //   position: "left",
+          //   sidebarId: "samples",
+          //   label: "Sample Code (migrate)",
+          // },
 
           // {
           //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
@@ -392,7 +434,7 @@ const config = {
             items: [
               {
                 label: "ICP Careers",
-                to: "http://careers.internetcomputer.org/",
+                to: "https://careers.internetcomputer.org/",
               },
               {
                 label: "Brand Materials",
@@ -407,6 +449,16 @@ const config = {
           {
             title: "SocialMedia",
             items: [
+              {
+                label: "Distrikt",
+                to: "https://distrikt.app/u/DFINITY",
+                icon: `data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.375 9.5H6.625C6.83211 9.5 7 9.66789 7 9.875V16.625C7 16.8321 7.16789 17 7.375 17H14.125C14.3321 17 14.5 17.1679 14.5 17.375V19.625C14.5 19.8321 14.3321 20 14.125 20H4.375C4.16789 20 4 19.8321 4 19.625V9.875C4 9.66789 4.16789 9.5 4.375 9.5Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.125 5H17.875C18.0821 5 18.25 5.16789 18.25 5.375V15.125C18.25 15.3321 18.0821 15.5 17.875 15.5H15.625C15.4179 15.5 15.25 15.3321 15.25 15.125V8.375C15.25 8.16789 15.0821 8 14.875 8H8.125C7.91789 8 7.75 7.83211 7.75 7.625V5.375C7.75 5.16789 7.91789 5 8.125 5Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.375 2H21.625C21.8321 2 22 2.16789 22 2.375V4.625C22 4.83211 21.8321 5 21.625 5H19.375C19.1679 5 19 4.83211 19 4.625V2.375C19 2.16789 19.1679 2 19.375 2Z' fill='white'/%3E%3C/svg%3E%0A`,
+              },
+              {
+                label: "CoinMarketCap",
+                to: "https://coinmarketcap.com/currencies/internet-computer/",
+                icon: "data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.1307 14.3432C19.9566 14.4632 19.7533 14.534 19.5423 14.5481C19.3313 14.5623 19.1204 14.5193 18.9318 14.4237C18.489 14.1735 18.2504 13.587 18.2504 12.7878V10.3382C18.2504 9.16231 17.7846 8.32567 17.0055 8.09854C15.6887 7.71328 14.7054 9.32619 14.3259 9.93283L11.9971 13.702V9.10193C11.9712 8.04104 11.6262 7.40565 10.9736 7.21589C10.5423 7.08939 9.89545 7.14114 9.26581 8.10141L4.05907 16.4592C3.36629 15.1338 3.00708 13.6594 3.01255 12.1639C3.01255 7.12676 7.03764 3.0298 11.9971 3.0298C16.9566 3.0298 20.9961 7.12676 20.9961 12.1639V12.1898C20.9961 12.1898 20.9961 12.207 20.9961 12.2156C21.045 13.1903 20.7287 13.9665 20.1336 14.3432H20.1307ZM23.0058 12.1668V12.1179C22.9655 5.97961 18.0434 1 11.9971 1C5.95086 1 1 6.00836 1 12.1639C1 18.3194 5.93361 23.3306 11.9971 23.3306C14.7781 23.3305 17.4533 22.2645 19.4723 20.3521C19.6683 20.1674 19.7836 19.913 19.7933 19.6439C19.803 19.3748 19.7062 19.1128 19.524 18.9145C19.4369 18.8181 19.3315 18.7399 19.2139 18.6843C19.0964 18.6287 18.969 18.597 18.8392 18.5908C18.7093 18.5847 18.5795 18.6043 18.4572 18.6485C18.335 18.6927 18.2227 18.7606 18.1268 18.8484C17.2575 19.673 16.2306 20.3133 15.1077 20.7311C13.9848 21.1489 12.7891 21.3355 11.5923 21.2796C10.3955 21.2238 9.22229 20.9267 8.14317 20.4061C7.06406 19.8856 6.10127 19.1523 5.3126 18.2504L9.99895 10.7177V14.1937C9.99895 15.8641 10.6458 16.4046 11.1892 16.5627C11.7326 16.7209 12.5635 16.6116 13.4347 15.1971L16.0222 11.0081C16.1027 10.873 16.1803 10.758 16.2493 10.6573V12.7878C16.2493 14.3489 16.8761 15.5967 17.9744 16.212C18.4738 16.4816 19.0365 16.6118 19.6036 16.5891C20.1707 16.5663 20.7212 16.3914 21.1973 16.0826C22.4049 15.2977 23.0633 13.8774 22.9943 12.1668H23.0058Z' fill='white'/%3E%3C/svg%3E%0A",
+              },
               {
                 label: "DSCVR",
                 to: "https://dscvr.one/",

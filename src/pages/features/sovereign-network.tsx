@@ -1,13 +1,11 @@
 import Link from "@docusaurus/Link";
 import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import Layout from "@theme/Layout";
 import React from "react";
 
 function FeaturePage() {
-  resetNavBarStyle();
   return (
     <Layout
       title="Sovereign Network"
@@ -135,7 +133,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/build/cdks/"
+              href="/docs/current/developer-docs/backend/choosing-language"
             />
             <CardWithDescription
               title="Sample Code"

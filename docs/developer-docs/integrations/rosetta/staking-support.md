@@ -327,7 +327,7 @@ The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister 
 
 -   The neuron has less than 10 hotkeys.
 
-The command has two forms: one form accepts an [IC principal](../../../references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [IC principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Add a principal as a hotkey
 
@@ -380,7 +380,7 @@ The `REMOVE_HOTKEY` operation remove a previously added hotkey from the neuron.
 
 -   The hotkey is linked to the neuron.
 
-The command has two forms: one form accepts an [IC principal](../../../references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [IC principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Remove a principal as a hotkey
 
