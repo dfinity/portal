@@ -9,8 +9,6 @@ import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
-const MotionLink = motion(Link);
-
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
   { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
@@ -31,6 +29,7 @@ const smallNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/icpunks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icpuppies.webp", title: "", url: "" },
   { imageUrl: "/img/nft/moonwalker.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/eimolad.webp", title: "", url: "" },
   { imageUrl: "/img/nft/motoko.webp", title: "", url: "" },
   { imageUrl: "/img/nft/motomoji.webp", title: "", url: "" },
   { imageUrl: "/img/nft/nautscc.webp", title: "", url: "" },
@@ -45,7 +44,17 @@ const smallNfts: { url: string; title: string; imageUrl: string }[] = [
 const NftShowcase = React.memo(() => {
   return (
     <section className="-mt-24 overflow-hidden relative h-[280px] md:h-[560px]">
-      <div className="flex gap-1 md:gap-3 absolute left-1/2 -translate-x-1/2 min-w-max">
+      <div className="flex gap-1 md:gap-3 absolute left-1/2 min-w-max nft-marquee-right">
+        {largeNfts.map((nft) => (
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-40 md:w-80 rounded-xl"
+          />
+          // </a>
+        ))}
         {largeNfts.map((nft) => (
           // <a href={nft.url} title={nft.title} className="flex">
           <img
@@ -58,7 +67,17 @@ const NftShowcase = React.memo(() => {
         ))}
       </div>
 
-      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 -translate-x-1/2 min-w-max">
+      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 min-w-max nft-marquee-left">
+        {smallNfts.map((nft) => (
+          // <a href={nft.url} title={nft.title} className="flex">
+          <img
+            key={nft.imageUrl}
+            src={nft.imageUrl}
+            alt=""
+            className="w-24 md:w-52 rounded-xl"
+          />
+          // </a>
+        ))}
         {smallNfts.map((nft) => (
           // <a href={nft.url} title={nft.title} className="flex">
           <img
@@ -77,7 +96,8 @@ const NftShowcase = React.memo(() => {
 const TranslatedLayout: React.FC<{
   children: React.ReactNode;
   reverse?: boolean;
-  imageUrl: string;
+  imageUrl?: string;
+  video?: { videoUrl: string; videoContentType: string };
   alt?: string;
   imageClassName?: string;
   imageWithBlob?: boolean;
@@ -86,10 +106,15 @@ const TranslatedLayout: React.FC<{
   reverse = false,
   alt = "",
   imageUrl,
+  video,
   imageWithBlob = false,
   imageClassName,
 }) => {
-  const imgEl = (
+  if (!imageUrl && !video) {
+    throw new Error("imageUrl or videoUrl must be provided");
+  }
+
+  const mediaEl = imageUrl ? (
     <img
       src={imageUrl}
       alt={alt}
@@ -99,6 +124,19 @@ const TranslatedLayout: React.FC<{
         reverse ? "md:rounded-l-none" : "md:rounded-r-none"
       )}
     />
+  ) : (
+    <video
+      loop
+      autoPlay
+      muted
+      playsInline
+      className={clsx(
+        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
+        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
+      )}
+    >
+      <source src={video.videoUrl} type={video.videoContentType} />
+    </video>
   );
   return reverse ? (
     <div className="flex flex-col md:flex-row">
@@ -106,7 +144,7 @@ const TranslatedLayout: React.FC<{
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
-        {imgEl}
+        {mediaEl}
       </div>
       <div className="flex flex-col justify-center md:w-7/12">
         <div className="md:mx-auto md:w-[71.4%]">{children}</div>
@@ -121,7 +159,7 @@ const TranslatedLayout: React.FC<{
         {imageWithBlob && (
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
-        {imgEl}
+        {mediaEl}
       </div>
     </div>
   );
@@ -274,7 +312,10 @@ function NftPage() {
               ICP without compromising on decentralization or price.
             </p>
             <p className="mb-0">
-              <Link href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs#nfts-on-the-internet-computer" className="button-outline">
+              <Link
+                href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs#nfts-on-the-internet-computer"
+                className="button-outline"
+              >
                 Become a Creator
               </Link>
             </p>
@@ -290,6 +331,28 @@ function NftPage() {
               based on events in the world. For example, the petals of BTC
               Flowers change color based on the last 24 hours of Bitcoin’s price
               action.
+            </p>
+          </TranslatedLayout>
+          <TranslatedLayout
+            video={{
+              videoUrl: "/img/nft/nft.mp4",
+              videoContentType: "video/mp4",
+            }}
+            reverse={true}
+          >
+            <h2 className="md:tw-heading-60 md:mb-6">
+              Turning TXs into generative NFT art
+            </h2>
+            <p className="md:tw-lead-sm mb-0">
+              Anything can be an NFT on the Internet Computer, even
+              transactions. The Genesis II NFT shows off how diverse and complex
+              NFTs can be on the Internet Computer. It consists of different
+              dynamic elements each of which fetches realtime data using HTTPS
+              outcalls every 15 mins, showing ICP whale purchases, price change
+              over the last 24 hours, current block rate, number of nodes and
+              more. The most impressive element is an HTML canvas displaying
+              dynamically animating ICP transaction flows. All this is part of
+              the NFT and not something stored and accessed off-chain.
             </p>
           </TranslatedLayout>
         </section>
@@ -389,7 +452,10 @@ function NftPage() {
                 blockchain. Anyone can visit these islands on chain, while the
                 owner of the NFT can update it by building. Try it yourself!
               </p>
-              <Link className="link-primary link-with-icon" href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/"
+              >
                 <LinkArrowRight /> Create your own island
               </Link>
             </TranslatedLayout>
@@ -405,7 +471,10 @@ function NftPage() {
                 mint their videos as NFTs. The owners of these NFTs receive
                 tokens as royalties based on the number of viewers.
               </p>
-              <Link className="link-primary link-with-icon" href="https://app.portal.one/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://app.portal.one/"
+              >
                 <LinkArrowRight /> Watch videos on Portal
               </Link>
             </TranslatedLayout>
@@ -425,7 +494,10 @@ function NftPage() {
                 functionality, Portals themselves are NFTs owned by those who
                 created them.
               </p>
-              <Link className="link-primary link-with-icon" href="https://dscvr.one/p/internet-computer">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://dscvr.one/p/internet-computer"
+              >
                 <LinkArrowRight /> Check out the Internet Computer Portal
               </Link>
             </TranslatedLayout>

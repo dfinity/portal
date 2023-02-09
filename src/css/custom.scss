@@ -360,6 +360,32 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   background: linear-gradient(105.94deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 38.54%, rgba(255, 255, 255, 0.136216) 100%);
 }
 
+@keyframes nft-marquee-left {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(-75%);
+  }
+}
+
+@keyframes nft-marquee-right {
+  from {
+    transform: translateX(-75%);
+  }
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.nft-marquee-left {
+  animation: nft-marquee-left 50s linear infinite;
+}
+
+.nft-marquee-right {
+  animation: nft-marquee-right 50s linear infinite;
+}
+
 
 @tailwind base;
 @tailwind components;
