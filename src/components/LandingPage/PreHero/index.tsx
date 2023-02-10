@@ -355,7 +355,7 @@ export default function PreHero({}): JSX.Element {
             </div>
             <img
               src="/img/home/dashboard.svg"
-              className="absolute right-0 bottom-0"
+              className="absolute right-0 bottom-0 pointer-events-none"
             ></img>
           </AnimateSpawn>
         </div>
