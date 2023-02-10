@@ -88,9 +88,9 @@ const Numbers = () => {
         <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP scales by adding subnets, while still cryptographically
-            remaining a single blockchain. Fast, infinitely parallel, block
-            capacity.{" "}
+            ICP scales horizontally by transparently combining subnet
+            blockchains into one unified blockchain. Subnets process blocks in
+            parallel.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -132,9 +132,8 @@ const Numbers = () => {
         <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            More real transactions processed per second than any other chain.
-            With gas fees which are light on your wallet & light on the planet
-            too.
+            Transactions invoke computations by "actor" smart contracts. Subnets
+            run transactions concurrently, but deterministically
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -170,12 +169,12 @@ const Numbers = () => {
         </h3>
         <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">
-            Actual blockchain state
+            Smart contract memory
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP smart contracts each have access to up to 52GB of native, low
-            cost, on-chain storage. Enabling you to build entirely new types of
-            Web3 experiences.
+            ICP smart contracts combine WebAssembly bytecode with persistent
+            on-chain memory, with gigabytes available – supporting the creation
+            of truly decentralized systems and services that are 100% on-chain
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -334,13 +333,6 @@ export default function PreHero({}): JSX.Element {
           ref={heroRef}
           id="stats"
         >
-          <AnimateSpawn
-            el={motion.h2}
-            className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-30 text-center"
-            variants={transitions.item}
-          >
-            Transactions Compute
-          </AnimateSpawn>
           <Numbers></Numbers>
           <AnimateSpawn
             variants={transitions.container}
@@ -351,14 +343,14 @@ export default function PreHero({}): JSX.Element {
                 className="button-outline-white text-center sm:text-left"
                 href="https://dashboard.internetcomputer.org"
               >
-                Dig into data on ICP DASHBOARD
+                INTERNET COMPUTER | ICP DASHBOARD
               </Link>
               <Link
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
                 <LinkArrowRight />
-                Stack it up against other L1 chains
+                See the stats
               </Link>
             </div>
             <img
