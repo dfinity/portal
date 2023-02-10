@@ -119,7 +119,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     ```
 
 :::note
-In the [following document](custom-domain/dns-setup.md), we provide detailed instructions to configure DNS
+In the [following document](dns-setup.md), we provide detailed instructions to configure DNS
 records on the example of two popular domain registrars.
 :::
 
@@ -170,5 +170,5 @@ request for your domain and the boundary node will return the corresponding ID.
 1. Test.
 
 :::caution
-For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../references/ii-spec.md#alternative-frontend-origins).
+For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../integrations/internet-identity/alternative-origins.md).
 :::

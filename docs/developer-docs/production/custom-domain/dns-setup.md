@@ -36,7 +36,7 @@ by clicking on "Add new record":
   ![DNS Configuration for `example.ic-domain.live` on Namecheap](namecheap-subdomain.png)
 
 * Now, you are all set to register your custom domain with the boundary nodes and
-you can continue with step 2 of the [general custom domains instructions](../custom-domain.md#custom-domains-on-the-boundary-nodes).
+you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
 
 ## GoDaddy
 
@@ -138,4 +138,4 @@ by clicking on "Add new record":
   ![DNS Configuration for `example.ic-domain.online` on GoDaddy](godaddy-subdomain.png)
 
 * Now, you are all set to register your custom domain with the boundary nodes and
-you can continue with step 2 of the [general custom domains instructions](../custom-domain.md#custom-domains-on-the-boundary-nodes).
+you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
