@@ -6,17 +6,17 @@ canister under a custom domain. This guide explains how to do that.
 
 There are, essentially, two approaches to host a canister under a custom domain.
 
-1. Register the domain with the boundary nodes;
-1. Hosting the domain on your own infrastructure.
+1. [Register the domain with the boundary nodes](#custom-domains-on-the-boundary-nodes);
+1. [Hosting the domain on your own infrastructure](#custom-domains-using-your-own-infrastructure).
 
 For both approaches, you need to acquire a domain through your favorite registrar.
 
 The two approaches differ in the ease of use and the configurability. When registering
-the domain with the boundary nodes, you simply has to configure the DNS records of
+the domain with the boundary nodes, you simply have to configure the DNS records of
 the custom domain and the boundary nodes take care of obtaining a certificate,
 renewing the certificate before its expiration, SEO and serving the service worker.
 When hosting the domain on your own infrastructure, you need to obtain and renew
-the certificates, and to provide your own infrastructure that serves the service worker.
+the certificates, and provide your own infrastructure that serves the service worker.
 However, you are also more flexible in how you configure your domain (e.g., you
 can serve a custom service worker).
 
@@ -33,7 +33,7 @@ a concrete example. Finally, we explain how one can update and remove a registra
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
     * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
-    * By default, `dfx` excludes all files and directories, whose names starts with a `.`, from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
+    * By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
     * Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`..
     * Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json`-file:
         ```
@@ -56,8 +56,11 @@ a concrete example. Finally, we explain how one can update and remove a registra
     }
     EOF
     ```
-    If the call was successful, you will get a request ID with which you can query the status of your registration request.
-    In case the calls failed, you will get an error message explaining why.
+    If the call was successful, you will get a JSON response that contains the request ID in the body, which you can use to query the status of your registration request:
+    ```
+    {"id":"REQUEST_ID"}
+    ```
+    In case the call failed, you will get an error message explaining why.
 1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
     ```sh
     curl -sLv -X GET \
@@ -80,6 +83,7 @@ In many cases, it is not possible to set a `CNAME` record for the top of a domai
 Imagine you wanted to register your domain `foo.bar.com` for your canister with the canister ID `hwvjt-wqaaa-aaaam-qadra-cai`.
 
 1. DNS Configuration:
+
     | Record Type   | Host                        | Value                               |
     |---------------|-----------------------------|-------------------------------------|
     | `CNAME`       | foo.bar.com                 | ic0.app                             |
