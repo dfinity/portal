@@ -40,6 +40,7 @@ const Newsletter: React.FC<{
             >
               {fields.map((field) => (
                 <input
+                  key={field.name}
                   placeholder={field.placeholder}
                   name={field.name}
                   type={field.type}

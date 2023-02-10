@@ -135,9 +135,12 @@ const Storage: React.FC = () => {
   const ethereumHeightPercent = useMotionTemplate`${ethereumHeight}%`;
 
   return (
-    <section className=" bg-[#A4497F00]">
+    <section
+      className=" bg-[#A4497F00] mt-[-400px] -mb-20 transition-opacity"
+      style={{ opacity: backgroundVisible ? 1 : 0 }}
+    >
       <div className="h-[250vh]" ref={ref}>
-        <div className="container-12 text-white md:mt-24 md:mb-10">
+        <div className="container-12 text-white pt-30 md:pt-30 md:mb-10">
           <h2 className="tw-heading-4 md:tw-heading-60 md:w-6/10 md:mb-8">
             Save money storing data in ICP smart contracts
           </h2>
@@ -146,10 +149,7 @@ const Storage: React.FC = () => {
           </p>
         </div>
         <div className="sticky top-0 lg:h-screen container-12 flex flex-col text-white overflow-hidden">
-          <div
-            className=" flex items-center justify-center transition-opacity"
-            style={{ opacity: backgroundVisible ? 1 : 0 }}
-          >
+          <div className=" flex items-center justify-center transition-opacity">
             <div className="border-0 border-b border-white-30 border-solid flex items-end justify-evenly md:justify-center h-[55vh] lg:h-[66vh] md:gap-24 w-full relative">
               <div className="absolute inset-0 z-[-1] overflow-hidden">
                 <motion.div

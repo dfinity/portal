@@ -89,6 +89,9 @@ module.exports = {
       green: {
         DEFAULT: "#18D0B5",
       },
+      red: {
+        DEFAULT: "#EC008C",
+      },
       razzmatazz: {
         DEFAULT: "#DA3979",
       },
@@ -141,6 +144,7 @@ module.exports = {
         },
         {
           values: Object.assign(theme("bgGradientDeg", {}), {
+            141: "141deg",
             100: "100deg",
             30: "30deg",
           }),
