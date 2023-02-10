@@ -6,7 +6,7 @@ sidebar_position: 1
 
 The Internet Computer allows you to host frontends built with standard web technologies for your dApps, using
 our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) as a communication layer. By using
-the [asset canister](https://github.com/dfinity/certified-assets) provided by `dfx` to upload static files to the IC,
+the [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provided by `dfx` to upload static files to the IC,
 you will be able to run your entire application on decentralized technology. This section takes a closer look at the
 default frontend template that is provided by `dfx new`, frontend configuration options, and using other frameworks to
 build the user interface for your projects.
@@ -212,11 +212,11 @@ To take advantage of the `webpack-dev-server`:
 
        npm start
 
-4. Open a web browser and navigate to the asset canister for your application using port 8080.
+4. Open a web browser and navigate to the asset canister for your application using port 4943.
 
    For example:
 
-       http://localhost:8080
+       http://localhost:4943
 
 5. Open a new terminal window or tab and navigate to your project directory.
 
