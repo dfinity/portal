@@ -136,7 +136,7 @@ const Storage: React.FC = () => {
 
   return (
     <section
-      className=" bg-[#A4497F00] mt-[-400px] -mb-20"
+      className=" bg-[#A4497F00] mt-[-400px] -mb-20 transition-opacity"
       style={{ opacity: backgroundVisible ? 1 : 0 }}
     >
       <div className="h-[250vh]" ref={ref}>
