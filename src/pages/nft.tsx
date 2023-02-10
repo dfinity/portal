@@ -313,7 +313,7 @@ function NftPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs#nfts-on-the-internet-computer"
+                href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"
                 className="button-outline"
               >
                 Become a Creator
@@ -571,7 +571,7 @@ function NftPage() {
 
               <Link
                 className="button-primary"
-                href="https://internetcomputer.org/docs/current/developer-docs/best-practices/considerations-for-nft-devs"
+                href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs"
               >
                 Build your own
               </Link>
