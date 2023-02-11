@@ -43,7 +43,7 @@ Integers represent whole numbers that could be either positive or negative.
 Every positive number literal is treated as `Nat`. However, it doesn't cause a problem in arithmetic operations since `Nat` is **subtype** of `Int`.
 
 ## Arithmetic operations
-Motoko has several operators that work with numeric values.
+Motoko has several operators that work with `Nat` and `Int` values.
 
 ```motoko
 1 + 1 // => 2 : Nat
