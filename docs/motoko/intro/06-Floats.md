@@ -14,7 +14,7 @@ You can also create Float literals by specifying the type directly:
 2 : Float // 2 : Float
 ```
 
-Floats are stores in special format that save the data with a certain precision. So, the value of the literal could be different from the input value.
+Floats are stored in special format that save the data with a certain precision. So, the value of the literal could be different from the input value.
 ```motoko
 -0.1 // -0.100_000_000_000_000_01 : Float 
      // The value is VERY close to -0.1 
