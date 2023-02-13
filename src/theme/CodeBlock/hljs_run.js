@@ -1,5 +1,5 @@
 import hljs from "highlight.js/lib/core";
-import { configure } from "motoko/contrib/hljs";
+import defineMotoko from "highlightjs-motoko";
 
 registerMotoko();
 hljs.configure({
@@ -48,5 +48,5 @@ export function handleRun({ code, setOutput, setError, config }) {
 }
 
 export function registerMotoko() {
-  configure(hljs);
+  defineMotoko(hljs);
 }
