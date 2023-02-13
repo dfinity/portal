@@ -314,7 +314,7 @@ function ShowcasePage(): JSX.Element {
             </p>
             <p className="mb-0">
               <Link
-                href="https://github.com/dfinity/portal/tree/akos/showcase-to-github#showcase-submission-guidelines"
+                href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
                 className="link-primary link-with-icon"
               >
                 Submit your project
