@@ -653,7 +653,6 @@
     ],
     "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis.",
     "usesInternetIdentity": true,
-    "oneLiner": "Winner DSCVR Hackathon",
     "display": "Normal",
     "logo": "/img/showcase/icmojiorigins_logo.webp",
     "video": "/img/showcase/icmojiorigins_video.mp4",
@@ -804,7 +803,7 @@
       "Wallet",
       "DeFi"
     ],
-    "description": "Earth Wallet is the self-proclaimed ”Key to Web3.0" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
+    "description": "Earth Wallet is the self-proclaimed Key to Web3.0 The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
     "github": "https://github.com/earth-association",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/earthwallet_logo.webp",
@@ -928,7 +927,6 @@
     ],
     "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
     "github": "https://github.com/dmailofficial",
-    "oneLiner": "Hackathon Winner - $10M Valuation",
     "display": "Normal",
     "logo": "/img/showcase/dmail_logo.webp",
     "screenshots": [
