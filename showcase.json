@@ -804,7 +804,7 @@
       "Wallet",
       "DeFi"
     ],
-    "description": "Earth Wallet is the self-proclaimed \”Key to Web3.0.\" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
+    "description": "Earth Wallet is the self-proclaimed ”Key to Web3.0" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
     "github": "https://github.com/earth-association",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/earthwallet_logo.webp",
