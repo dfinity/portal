@@ -1,5 +1,25 @@
 [
   {
+    "id": "dscvr",
+    "name": "DSCVR",
+    "oneLiner": "Web3 alternative to Reddit with user governed Portals",
+    "website": "https://dscvr.one/",
+    "tags": ["SocialFi"
+    ],
+    "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
+    "description": "DSCVR is a decentralized version of Reddit, where users are the owners. Decentralized end-to-end, built on the Internet Computer, and accessible from any browser. Try it out yourself. ",
+    "usesInternetIdentity": true,
+    "stats": "175,000+ users",
+    "display": "Large",
+    "logo": "/img/showcase/dscvr_logo.webp",
+    "video": "/img/showcase/dscvr_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": [
+      "/img/showcase/dscvr_screenshot_0.webp"
+    ]
+  },
+ 
+ {
     "id": "distrikt",
     "name": "Distrikt",
     "oneLiner": "100% on-chain microblogging social media platform",
@@ -7,6 +27,7 @@
     "tags": [
       "SocialFi"
     ],
+    "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
     "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -25,7 +46,8 @@
       "SocialFi",
       "NFT"
     ],
-    "description": "Kontribute is a web3 creators platform that brings story writing and digital art collectibles together. Features include: decentralised story storage, likes, tipping, polls, NFT marketplace and NFT minting.",
+    "twitter": "https://twitter.com/TeamBonsai_ICP",
+    "description": "Kontribute is a web3 creators platform that brings story writing and digital art collectibles together. Features include: decentralized story storage, likes, tipping, polls, NFT marketplace and NFT minting.",
     "github": "https://github.com/teambonsai/bonsai_dapp",
     "usesInternetIdentity": true,
     "stats": "1000+ users",
@@ -35,33 +57,17 @@
       "/img/showcase/kontribute_screenshot_0.webp"
     ]
   },
-  {
-    "id": "unfoldvr",
-    "name": "UnfoldVR",
-    "oneLiner": "Decentralizing asset Creation and Discovery for the Metaverse",
-    "website": "https://jmorc-qiaaa-aaaam-aaeda-cai.ic0.app/",
-    "tags": [
-      "Metaverse",
-      "NFT",
-      "Tools / Infrastructure"
-    ],
-    "description": "UnfoldVR empowers creators to author 3D NFTs using easy-to-use tools both on the Web and in Virtual Reality. ",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/unfoldvr_logo.webp",
-    "video": "/img/showcase/unfoldvr_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
-  },
+
   {
     "id": "kinic",
     "name": "Kinic",
-    "oneLiner": "The world\u2019s first web3 search engine",
+    "oneLiner": "The world's first web3 search engine",
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "The world\u2019s first web3 search engine",
+    "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
+    "description": "The world’s first web3 search engine",
     "stats": "3,000,000+ searches",
     "display": "Large",
     "logo": "/img/showcase/kinic_logo.webp",
@@ -77,11 +83,67 @@
       "DeFi",
       "Wallet"
     ],
-    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) \u2013\u2013\u00a0InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
+    "twitter": "https://twitter.com/infinity_swap",
+    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) - InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
     "stats": "$1.5M Invested PolyChain Capital + a16z",
     "logo": "/img/showcase/infinityswap_logo.webp",
     "screenshots": [
       "/img/showcase/infinityswap_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "unfoldvr",
+    "name": "UnfoldVR",
+    "oneLiner": "Decentralizing asset Creation and Discovery for the Metaverse",
+    "website": "https://jmorc-qiaaa-aaaam-aaeda-cai.ic0.app/",
+    "tags": [
+      "Metaverse",
+      "NFT",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/unfold_vr",
+    "description": "UnfoldVR empowers creators to author 3D NFTs using easy-to-use tools both on the Web and in Virtual Reality. ",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/unfoldvr_logo.webp",
+    "video": "/img/showcase/unfoldvr_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": []
+  },
+ {
+    "id": "plethora",
+    "name": "Plethora",
+    "website": "https://plethora.game/",
+    "tags": [
+      "Metaverse",
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/PlethoraGame",
+    "description": "Plethora is all about abundance and making you feel fulfilled. We empower NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
+    "oneLiner": "WEB3 LAUNCHPAD GAMING WORLD",
+    "display": "Large",
+    "logo": "/img/showcase/plethora_logo.webp",
+    "screenshots": [
+      "/img/showcase/plethora_screenshot.webp"
+    ]
+  },
+  {
+    "id": "entrepot",
+    "name": "Entrepot",
+    "oneLiner": "ICP's most popular NFT marketplace",
+    "website": "https://entrepot.app/",
+    "tags": [
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/toniqlabs",
+    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot (through Exponent) provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
+    "usesInternetIdentity": true,
+    "stats": "1,000,000+ ICP volume",
+    "display": "Large",
+    "logo": "/img/showcase/entrepot_logo.webp",
+    "screenshots": [
+      "/img/showcase/entrepot_screenshot.webp"
     ]
   },
   {
@@ -92,29 +154,43 @@
     "tags": [
       "Wallet"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens \u2013 as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "videoContentType": "video/mp4",
     "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
   },
   {
-    "id": "dscvr",
-    "name": "DSCVR",
-    "oneLiner": "Web3 alternative to Reddit with user governed Portals",
-    "website": "https://dscvr.one/",
+    "id": "origyn",
+    "name": "Origyn",
+    "oneLiner": "NFT-Based Authentication for Luxury Goods ",
+    "website": "https://www.origyn.ch/",
+    "tags": [
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/ORIGYNTech",
+    "description": "The Origyn Foundation is blending luxury goods with NFTs by providing digital verifications for physical objects. Only possible on the Internet Computer. ",
+    "github": "https://github.com/origyn-sa",
+    "logo": "/img/showcase/origyn_logo.webp",
+    "screenshots": [
+      "/img/showcase/origyn_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "openchat",
+    "name": "OpenChat",
+    "oneLiner": "Decentralized alternative to WhatsApp",
+    "website": "https://oc.app/",
     "tags": [
       "SocialFi"
     ],
-    "description": "DSCVR is a decentralized version of Reddit, where users are the owners. Decentralized end-to-end, built on the Internet Computer, and accessible from any browser. Try it out yourself. ",
+    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
     "usesInternetIdentity": true,
-    "stats": "175,000+ users",
     "display": "Large",
-    "logo": "/img/showcase/dscvr_logo.webp",
-    "video": "/img/showcase/dscvr_video.mp4",
-    "videoContentType": "video/mp4",
+    "stats": "40,000+ users",
+    "logo": "/img/showcase/openchat_logo.webp",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot_0.webp"
+      "/img/showcase/openchat-screenshot.webp"
     ]
   },
   {
@@ -141,7 +217,8 @@
     "tags": [
       "Games"
     ],
-    "description": "Decentralized alternative to Minecraft with NFT worlds",
+    "twitter": "https://twitter.com/TheCubetopia",
+    "description": "Decentralized alternative to Minecraft with NFT worlds. Own a unique island on the blockchain, Create whatever you desire,Play with friends",
     "stats": "13,200+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/cubetopia_logo.webp",
@@ -152,11 +229,12 @@
   {
     "id": "yumi",
     "name": "Yumi",
-    "oneLiner": "Yumi is an ultra-fast, low-cost, and 100% decentralized NFT marketplace on ICP",
+    "oneLiner": "Yumi is an ultra-fast, low-cost, and 100% decentralized NFT marketplace on ICP.",
     "website": "https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/",
     "tags": [
       "NFT"
     ],
+    "twitter": "https://twitter.com/YumiMarketplace",
     "description": "Yumi is a high-speed, low-cost, and fully decentralized NFT marketplace built on Internet Computer (IC). All digital collectibles available on Yumi are hosted fully on-chain. The minting of NFTs is completely free for creators (no gas fees).",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -165,19 +243,7 @@
       "/img/showcase/yumi-screenshot.webp"
     ]
   },
-  {
-    "id": "windowsic",
-    "name": "Windows IC",
-    "website": "https://3ix2y-naaaa-aaaad-qap6a-cai.raw.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Windows IC is a React Dapp built on the Internet Computer. Mimicking what a chromebook can do, but for a mimic of the Windows Operating System, this decentralized desktop allows anyone to access some of their favorite programs from any browser. ",
-    "logo": "/img/showcase/windowsic_logo.webp",
-    "screenshots": [
-      "/img/showcase/windowsic_screenshot_0.webp"
-    ]
-  },
+
   {
     "id": "uniswapfrontendontheic",
     "name": "Uniswap Front End on the IC",
@@ -201,7 +267,8 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "SLY, developed by PsychedelicDAO, is a seamless Command Line Interface (CLI) for the Internet Computer. SLY is an open-source, and collaborative CLI \u2013 providing abstractions, templates, and tools to kick-start and speed-up Internet Computer development.",
+    "twitter": "https://twitter.com/psychedelicDAO",
+    "description": "SLY, developed by PsychedelicDAO, is a seamless Command Line Interface (CLI) for the Internet Computer. SLY is an open-source, and collaborative CLI - providing abstractions, templates, and tools to kick-start and speed-up Internet Computer development.",
     "github": "https://github.com/psychedelic/sly",
     "display": "Normal",
     "logo": "/img/showcase/sly_logo.svg",
@@ -223,135 +290,6 @@
     "screenshots": []
   },
   {
-    "id": "metasportsbasketball",
-    "name": "MetaSports Basketball",
-    "website": "https://metasportsbball.xyz/",
-    "tags": [
-      "Metaverse",
-      "Games",
-      "NFT"
-    ],
-    "description": "MetaSports Basketball is an open basketball metaverse, built on the Ethereum & Internet Computer blockchains, where NFT players of all shapes, species, and origin can compete to become basketball superstars on teams owned and managed by the players. Developed by Psychedelic, and Featured in Yahoo and many major media publications, the game allows users to create and mint characters, as well as bring in NFTs from their collection to play on their MBA team. ",
-    "oneLiner": "ETH NFT Game Built on ICP",
-    "display": "Normal",
-    "logo": "/img/showcase/metasportsbasketball_logo.webp",
-    "screenshots": []
-  },
-  {
-    "id": "crowdgovorg",
-    "name": "CrowdGov.org",
-    "oneLiner": "The simplified, one stop shop for IC Governance.",
-    "website": "https://crowdgov.org",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "The crowdgov.org website is dedicated to simplified governance for the internet computer. You will find information about how to participate in governance and how to maximize voting rewards. A variety of research tools are provided to help you learn more about NNS ecosystem participants and the current state of decentralization.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/crowdgovorg_logo.webp",
-    "screenshots": [
-      "/img/showcase/crowdgovorg_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "difibase",
-    "name": "Difibase",
-    "oneLiner": "Difibase - NoSQL database management system on the Internet Computer",
-    "website": "https://7wwjw-5iaaa-aaaan-qbguq-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Difibase is a database provider (NoSQL). You can use the system's database or integrate your own!",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/difibase_logo.webp",
-    "screenshots": [
-      "/img/showcase/difibase_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "origyn",
-    "name": "Origyn",
-    "oneLiner": "NFT-Based Authentication for Luxury Goods ",
-    "website": "https://www.origyn.ch/",
-    "tags": [
-      "NFT"
-    ],
-    "description": "The Origyn Foundation is blending luxury goods, with NFTs by providing digital verifications for physical objects. Only possible on the Internet Computer. ",
-    "github": "https://github.com/origyn-sa",
-    "logo": "/img/showcase/origyn_logo.webp",
-    "screenshots": [
-      "/img/showcase/origyn_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "openchat",
-    "name": "OpenChat",
-    "oneLiner": "Decentralized alternative to WhatsApp",
-    "website": "https://oc.app/",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "stats": "40,000+ users",
-    "logo": "/img/showcase/openchat_logo.webp",
-    "screenshots": [
-      "/img/showcase/openchat-screenshot.webp"
-    ]
-  },
-  {
-    "id": "internetidentity",
-    "name": "Internet Identity",
-    "oneLiner": "Decentralized Anonymous Blockchain Authentication",
-    "website": "https://identity.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Internet Identity guarantees that your data isn\u2019t visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
-    "github": "https://github.com/dfinity/internet-identity",
-    "usesInternetIdentity": true,
-    "stats": "1 000 000+ ",
-    "logo": "/img/showcase/internetidentity_logo.webp",
-    "screenshots": [
-      "/img/showcase/internetidentity_screenshot_0.gif"
-    ]
-  },
-  {
-    "id": "motokoplayground",
-    "name": "Motoko Playground",
-    "oneLiner": "Free IDE to Learn Motoko",
-    "website": "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "The Motoko Playground is an IDE for developers to learn Motoko \u2013 the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
-    "github": "https://github.com/dfinity/motoko-playground",
-    "usesInternetIdentity": false,
-    "display": "Large",
-    "logo": "/img/showcase/motokoplayground_logo.webp",
-    "video": "/img/showcase/motokoplayground_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
-  },
-  {
-    "id": "nnsfront-enddapp",
-    "name": "NNS Front-End Dapp",
-    "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
-    "website": "https://nns.ic0.app",
-    "tags": [
-      "Wallet",
-      "Tools / Infrastructure"
-    ],
-    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn rewards.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo.webp",
-    "screenshots": [
-      "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "dank",
     "name": "Dank",
     "oneLiner": "Decentralized Cycles Bank",
@@ -360,6 +298,7 @@
       "DeFi",
       "Tools / Infrastructure"
     ],
+    "twitter": "https://twitter.com/psychedelicDAO",
     "description": "Dank is the first Decentralized Bank built on the Internet Computer, developed by Fleek. Through a collection of Open Internet Services for users and developers, Dank makes cycles management seamless.",
     "logo": "/img/showcase/dank_logo.webp",
     "screenshots": [
@@ -389,7 +328,8 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Fully on-chain and fully autonomous SocialFi network",
+    "twitter": "https://twitter.com/TaggrNetwork",
+    "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/taggr_logo.webp",
@@ -433,7 +373,7 @@
     "tags": [
       "Games"
     ],
-    "description": "Mission is Possible \u2013 3rd place winner of the DSCVR Hackathon Season 2 \u2013 is a PVP third person shooter hosted on the Internet Computer blockchain. The John Wick inspired game is built using the Unity 3D Game Engine, and hosted on the IC enabling decentralized login with Internet Identity. ",
+    "description": "Mission is Possible - 3rd place winner of the DSCVR Hackathon Season 2 - is a PVP third person shooter hosted on the Internet Computer blockchain. The John Wick inspired game is built using the Unity 3D Game Engine, and hosted on the IC enabling decentralized login with Internet Identity. ",
     "usesInternetIdentity": true,
     "oneLiner": "3rd Place DSCVR Hackathon",
     "display": "Normal",
@@ -503,13 +443,125 @@
     ]
   },
   {
+    "id": "metasportsbasketball",
+    "name": "MetaSports Basketball",
+    "website": "https://metasportsbball.xyz/",
+    "tags": [
+      "Metaverse",
+      "Games",
+      "NFT"
+    ],
+    "description": "MetaSports Basketball is an open basketball metaverse, built on the Ethereum & Internet Computer blockchains, where NFT players of all shapes, species, and origin can compete to become basketball superstars on teams owned and managed by the players.",
+    "oneLiner": "ETH NFT Game Built on ICP",
+    "display": "Normal",
+    "logo": "/img/showcase/metasportsbasketball_logo.webp",
+    "screenshots": []
+  },
+  {
+    "id": "crowdgovorg",
+    "name": "CrowdGov.org",
+    "oneLiner": "The simplified, one stop shop for IC Governance.",
+    "website": "https://crowdgov.org",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "The crowdgov.org website is dedicated to simplified governance for the internet computer. You will find information about how to participate in governance and how to maximize voting rewards. A variety of research tools are provided to help you learn more about NNS ecosystem participants and the current state of decentralization.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/crowdgovorg_logo.webp",
+    "screenshots": [
+      "/img/showcase/crowdgovorg_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "difibase",
+    "name": "Difibase",
+    "oneLiner": "Difibase - NoSQL database management system on the Internet Computer",
+    "website": "https://7wwjw-5iaaa-aaaan-qbguq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Difibase is a database provider (NoSQL). You can use the system's database or integrate your own!",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/difibase_logo.webp",
+    "screenshots": [
+      "/img/showcase/difibase_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "internetidentity",
+    "name": "Internet Identity",
+    "oneLiner": "Decentralized Anonymous Blockchain Authentication",
+    "website": "https://identity.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Internet Identity guarantees that your data isn't visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
+    "github": "https://github.com/dfinity/internet-identity",
+    "usesInternetIdentity": true,
+    "stats": "1 000 000+ ",
+    "logo": "/img/showcase/internetidentity_logo.webp",
+    "screenshots": [
+      "/img/showcase/internetidentity_screenshot_0.gif"
+    ]
+  },
+  {
+    "id": "motokoplayground",
+    "name": "Motoko Playground",
+    "oneLiner": "Free IDE to Learn Motoko",
+    "website": "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "The Motoko Playground is an IDE for developers to learn Motoko - the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
+    "github": "https://github.com/dfinity/motoko-playground",
+    "usesInternetIdentity": false,
+    "display": "Large",
+    "logo": "/img/showcase/motokoplayground_logo.webp",
+    "video": "/img/showcase/motokoplayground_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": []
+  },
+  {
+    "id": "windowsic",
+    "name": "Windows IC",
+    "website": "https://3ix2y-naaaa-aaaad-qap6a-cai.raw.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Windows IC is a React Dapp built on the Internet Computer. Mimicking what a chromebook can do, but for a mimic of the Windows Operating System, this decentralized desktop allows anyone to access some of their favorite programs from any browser. ",
+    "logo": "/img/showcase/windowsic_logo.webp",
+    "screenshots": [
+      "/img/showcase/windowsic_screenshot_0.webp"
+    ]
+  },  
+{
+    "id": "nnsfront-enddapp",
+    "name": "NNS Front-End Dapp",
+    "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
+    "website": "https://nns.ic0.app",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn rewards.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/nnsfront-enddapp_logo.webp",
+    "screenshots": [
+      "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
+    ]
+  },
+
+  {
     "id": "tipjar",
     "name": "Tipjar",
     "website": "https://tipjar.rocks",
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "A tool to donate cycles to canisters as well as keep them monitored.\n",
+    "description": "A tool to donate cycles to canisters as well as keep them monitored.",
     "github": "https://github.com/ninegua/tipjar",
     "usesInternetIdentity": true,
     "display": "Normal",
@@ -525,7 +577,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Build scallable DApps on internet computer with ease.",
+    "description": "Build scalable DApps on internet computer with ease. Build, manage and ship dApps with just a few clicks",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/ics_logo.webp",
@@ -540,7 +592,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Aedile brings your team\u2019s work together in one shared space, completely built on-chain. Manage your boards, columns & cards to transform your projects, serving web experiences directly from the Internet Computer blockchain. ",
+    "description": "Aedile brings your team's work together in one shared space, completely built on-chain. Manage your boards, columns & cards to transform your projects, serving web experiences directly from the Internet Computer blockchain. ",
     "logo": "/img/showcase/aedile_logo.webp",
     "screenshots": [
       "/img/showcase/aedile_screenshot_0.webp"
@@ -583,45 +635,13 @@
     "tags": [
       "Games"
     ],
-    "description": "Prize winner of the DSCVR hackathon for the Internet Computer \u2013 this game brings digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
+    "description": "Prize winner of the DSCVR hackathon for the Internet Computer - this game brings digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
     "logo": "/img/showcase/welcomeintothemetaverse_logo.webp",
     "screenshots": [
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
     ]
   },
-  {
-    "id": "plethora",
-    "name": "Plethora",
-    "website": "https://plethora.game/",
-    "tags": [
-      "Metaverse",
-      "NFT"
-    ],
-    "description": "Plethora is all about abundance and making you feel fulfilled. We empower NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
-    "oneLiner": "WEB3 LAUNCHPAD GAMING WORLD",
-    "display": "Large",
-    "logo": "/img/showcase/plethora_logo.webp",
-    "screenshots": [
-      "/img/showcase/plethora_screenshot.webp"
-    ]
-  },
-  {
-    "id": "entrepot",
-    "name": "Entrepot",
-    "oneLiner": "ICP\u2019s most popular NFT marketplace",
-    "website": "https://entrepot.app/",
-    "tags": [
-      "NFT"
-    ],
-    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot (through Exponent) provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
-    "usesInternetIdentity": true,
-    "stats": "1,000,000+ ICP volume",
-    "display": "Large",
-    "logo": "/img/showcase/entrepot_logo.webp",
-    "screenshots": [
-      "/img/showcase/entrepot_screenshot.webp"
-    ]
-  },
+ 
   {
     "id": "icmojiorigins",
     "name": "ICMoji Origins",
@@ -631,7 +651,7 @@
       "Games",
       "NFT"
     ],
-    "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis. These NFTs can be won in weekly challenges, purchased, or traded via marketplace and brought into the decentralized game with their unique attributes. Play now for free!",
+    "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis.",
     "usesInternetIdentity": true,
     "oneLiner": "Winner DSCVR Hackathon",
     "display": "Normal",
@@ -662,7 +682,7 @@
     "tags": [
       "NFT"
     ],
-    "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world\u2019s first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
+    "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
     "logo": "/img/showcase/nuance_logo.webp",
     "screenshots": [
       "/img/showcase/nuance_screenshot_0.webp"
@@ -681,21 +701,6 @@
     "logo": "/img/showcase/thewall_logo.webp",
     "screenshots": [
       "/img/showcase/thewall_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "departurelabs",
-    "name": "Departure Labs",
-    "website": "https://uhmvd-qqaaa-aaaam-aavna-cai.ic0.app/",
-    "tags": [
-      "NFT",
-      "Tools / Infrastructure"
-    ],
-    "description": "Departure Labs is exploring on-chain media, web native NFTs, and developing productized open internet services for developers and consumers. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.\n",
-    "github": "https://github.com/DepartureLabsIC/non-fungible-token",
-    "logo": "/img/showcase/departurelabs_logo.webp",
-    "screenshots": [
-      "/img/showcase/departurelabs_screenshot_0.webp"
     ]
   },
   {
@@ -720,7 +725,7 @@
       "Metaverse",
       "Games"
     ],
-    "description": "NFTAnvil is a wallet, mint & marketplace in the Anvil ecosystem. It's built from scratch and has an alternative & genuine approach to NFTs. It uses Anvil's auto-scaling multi-canister token architecture.\n",
+    "description": "NFTAnvil is a wallet, mint & marketplace in the Anvil ecosystem. It's built from scratch and has an alternative & genuine approach to NFTs. It uses Anvil's auto-scaling multi-canister token architecture.",
     "github": "https://github.com/infu/nftanvil",
     "usesInternetIdentity": true,
     "display": "Normal",
@@ -769,7 +774,7 @@
       "DeFi",
       "Wallet"
     ],
-    "description": "Sonic is a \"swap\" built end-to-end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer\u2019s AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem. ",
+    "description": "Sonic is a \"swap\" built end-to-end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem. ",
     "github": "https://github.com/psychedelic",
     "stats": "$360,000+ TVL",
     "display": "Normal",
@@ -799,7 +804,7 @@
       "Wallet",
       "DeFi"
     ],
-    "description": "Earth Wallet is the self-proclaimed \u201cKey to Web3.0.\" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
+    "description": "Earth Wallet is the self-proclaimed \”Key to Web3.0.\" The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
     "github": "https://github.com/earth-association",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/earthwallet_logo.webp",
@@ -828,7 +833,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more. This is a front-end for Sushi Swap hosted 100% on-chain, completely decentralized, using the Internet Computer in order to have a complete Web3 stack. This was a result of a community bounty -- inspect the code below. ",
+    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more.",
     "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
     "oneLiner": "Front-End Hosted On-Chain",
     "display": "Normal",
@@ -875,7 +880,7 @@
       "Wallet",
       "DeFi"
     ],
-    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer\u2019s Network Nervous System in order to support staking with voting rewards. ",
+    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer's Network Nervous System in order to support staking with voting rewards. ",
     "logo": "/img/showcase/kleverio_logo.webp",
     "screenshots": [
       "/img/showcase/kleverio_screenshot_0.webp"
@@ -889,7 +894,7 @@
       "Metaverse",
       "NFT"
     ],
-    "description": "PokedStudio Bots are a collection of 10,000 unique bots designed by acclaimed digital artist, Jonathan Ball. The Ultimate Master\u201d Bot which sold for 3,000 ICP (~$172,140), marks the largest single NFT purchase on the Internet Computer, and is one of the largest across all blockchain projects to date. The Bots collection generated nearly $1M in NFT marketplace trading volume in less than 36 hours from public launch. The NFT Bots are all unique and possess differing rarities and attributes that will transfer into a future metaverse gaming experience in beautiful technicolor.",
+    "description": "PokedStudio Bots are a collection of 10,000 unique bots designed by acclaimed digital artist, Jonathan Ball. The Ultimate Master Bot which sold for 3,000 ICP (~$172,140), marks the largest single NFT purchase on the Internet Computer, and is one of the largest across all blockchain projects to date. The NFT Bots are all unique and possess differing rarities and attributes that will transfer into a future metaverse gaming experience in beautiful technicolor.",
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
@@ -921,7 +926,7 @@
       "NFT",
       "SocialFi"
     ],
-    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets \u2013 there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
+    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
     "github": "https://github.com/dmailofficial",
     "oneLiner": "Hackathon Winner - $10M Valuation",
     "display": "Normal",
@@ -1032,6 +1037,22 @@
     ]
   },
   {
+    "id": "departurelabs",
+    "name": "Departure Labs",
+    "website": "https://uhmvd-qqaaa-aaaam-aavna-cai.ic0.app/",
+    "tags": [
+      "NFT",
+      "Tools / Infrastructure"
+    ],
+    "description": "Departure Labs is exploring on-chain media, web native NFTs, and developing productized open internet services for developers and consumers. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.\n",
+    "github": "https://github.com/DepartureLabsIC/non-fungible-token",
+    "logo": "/img/showcase/departurelabs_logo.webp",
+    "screenshots": [
+      "/img/showcase/departurelabs_screenshot_0.webp"
+    ]
+  },
+
+  {
     "id": "plug",
     "name": "Plug",
     "oneLiner": "Decentralized Wallet for the Internet Computer",
@@ -1041,7 +1062,7 @@
       "NFT",
       "Tools / Infrastructure"
     ],
-    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens \u2013 as well as log into Internet Computer dapps with one click.",
+    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
     "github": "https://github.com/Psychedelic/plug",
     "stats": "100 000 users",
     "display": "Normal",
@@ -1069,3 +1090,4 @@
     ]
   }
 ]
+
