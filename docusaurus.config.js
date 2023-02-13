@@ -12,6 +12,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
+const xdrPricePlugin = require("./plugins/xdr-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
@@ -59,6 +60,7 @@ const config = {
     customWebpack,
     tailwindPlugin,
     icpPricePlugin,
+    xdrPricePlugin,
     homeShowcaseProjectsPlugin,
     liveSessionsPlugin,
     howItWorksArticlesPlugin,

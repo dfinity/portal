@@ -1,5 +1,7 @@
 export function getBytesStored(): Promise<number> {
-  return fetch("https://ic-api.internetcomputer.org/api/v3/metrics/memory")
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/ic-memory-usage"
+  )
     .then(
       (res) =>
         res.json() as Promise<{
@@ -80,6 +82,23 @@ export function getBlockRate(): Promise<number> {
           block_rate: [[timestamp: number, block_rate: string]];
         }>
     )
+    .then((res) => +res.block_rate[0][1]);
+}
+
+export function getFinalizationRate(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/metrics/finalization-rate"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          block_rate: [[timestamp: number, block_rate: string]];
+        }>
+    )
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
     .then((res) => +res.block_rate[0][1]);
 }
 

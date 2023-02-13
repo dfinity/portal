@@ -152,7 +152,7 @@ const Sliders = () => {
                   href="/features"
                   className="text-center button-outline-white self-start md:self-center"
                 >
-                  CHeck out ICP tech features
+                  CHECK OUT ICP CAPABILITIES
                 </Link>
               </div>
             </SliderCard>
