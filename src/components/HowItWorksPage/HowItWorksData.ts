@@ -3,7 +3,7 @@ export type HowItWorksData = HowItWorksArticle[];
 export type HowItWorksArticle = {
   title: string;
   abstract?: string;
-  coverImage: string;
+  shareImage: string;
   slug: string;
   content: string;
   fileName: string;
