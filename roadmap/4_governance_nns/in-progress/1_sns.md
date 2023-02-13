@@ -5,7 +5,7 @@ links:
   Deployment & Upgrades: https://forum.dfinity.org/t/sns-deployment-and-upgrades-design-proposal/10816
   Rewards: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36
   Decentralization sale: https://forum.dfinity.org/t/sns-initial-token-swap/13591
-eta: February 2022
+eta: February 2023
 is_community: false
 ---
 
