@@ -1,11 +1,12 @@
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
 import ArrowRight from "@site/static/img/arrow-right.svg";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
+import _showcaseProjects from "@site/showcase.json";
+import { useShowcaseProjects } from "@site/src/utils/use-showcase-projects";
 
 const MotionLink = motion(Link);
 
@@ -45,14 +46,9 @@ const ShowcaseSection: React.FC<{
   interval?: number;
   linePostfix: React.ReactNode;
   subheading: React.ReactNode;
-}> = ({ lines, interval = 2500, linePostfix, subheading }) => {
-  const projects = useGlobalData()["home-showcase"].default as {
-    name: string;
-    oneLiner: string;
-    website: string;
-    stats: string;
-    logo: string;
-  }[];
+  projectIds: string[];
+}> = ({ lines, interval = 2500, linePostfix, subheading, projectIds }) => {
+  const projects = useShowcaseProjects(projectIds);
 
   return (
     <section id="dapps" className="relative z-0 pb-[320px]">

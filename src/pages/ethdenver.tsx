@@ -5,10 +5,12 @@ import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
+import InternetIdentity from "../components/Basics/InternetIdentity";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
+import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
@@ -399,7 +401,20 @@ function EthDenverPage() {
             </>
           }
           subheading="Featuring a few web3 project teams already reinventing the internet on the ICP blockchain."
+          projectIds={[
+            "icdex",
+            "distrikt",
+            "openchat",
+            "dscvr",
+            "yumi",
+            "plethora",
+            "funded",
+            "kinic",
+          ]}
         ></ShowcaseSection>
+
+        <InternetIdentity></InternetIdentity>
+        <NewsletterSection />
       </main>
     </Layout>
   );
