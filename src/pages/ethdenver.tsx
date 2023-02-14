@@ -10,6 +10,7 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
+import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
@@ -41,12 +42,12 @@ function EthDenverPage() {
             }}
             ref={heroRef}
           >
-            <div className="container-12 pt-20 mb-40 md:mb-30 md:pt-36 relative flex flex-col md:flex-row">
+            <div className="container-12 pt-20 mb-20 md:mb-30 md:pt-36 relative flex flex-col md:flex-row">
               <div className="absolute -top-3/10 -right-2/10 w-[768px] aspect-square rounded-full opacity-40 bg-[#CB7EF1] mix-blend-color-dodge blur-[346px]"></div>
 
               <div className="md:w-5/12 md:ml-1/12 relative">
                 <motion.h1
-                  className="tw-heading-3 md:tw-heading-1 mb-2 md:mb-6 text-transparent bg-clip-text"
+                  className="tw-heading-60 md:tw-heading-1 mb-6 text-transparent bg-clip-text"
                   style={{
                     backgroundImage:
                       "linear-gradient(90deg, #6A85F1 22.19%, #C572EF 79.9%)",
@@ -56,7 +57,7 @@ function EthDenverPage() {
                   Build the Future
                 </motion.h1>
                 <motion.p
-                  className="tw-lead-sm md:tw-title-sm mb-8"
+                  className="tw-lead md:tw-title-sm mb-12 md:mb-8"
                   variants={transitions.item}
                 >
                   Visit us at the ICP Booth
@@ -64,9 +65,26 @@ function EthDenverPage() {
                   <br />
                   March 2nd - 5th, 2023
                 </motion.p>
-
+                <motion.img
+                  src="/img/ethdenver/astronaut.webp"
+                  alt=""
+                  className="ethdenver-astronaut md:hidden"
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      animationPlayState: "paused",
+                    },
+                    show: {
+                      opacity: 1,
+                      animationPlayState: "running",
+                      transition: {
+                        duration: 0.5,
+                      },
+                    },
+                  }}
+                ></motion.img>
                 <motion.p
-                  className="tw-lead-sm md:tw-lead mb-8"
+                  className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                   variants={transitions.item}
                 >
                   Unleash the full potential of Web3 with Dapps that run
@@ -84,7 +102,7 @@ function EthDenverPage() {
                   </Link>
                 </motion.p>
               </div>
-              <div className="flex-1 relative z-10">
+              <div className="flex-1 relative z-10 hidden md:block">
                 <motion.img
                   src="/img/ethdenver/astronaut.webp"
                   alt=""
@@ -152,7 +170,9 @@ function EthDenverPage() {
                   alt=""
                   className="h-32 mb-3"
                 />
-                <h3 className="tw-title-sm mb-3">DFINITY Foundation</h3>
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  DFINITY Foundation
+                </h3>
                 <p className="tw-paragraph-sm text-black-60">
                   The DFINITY Foundation is a major contributor to the Internet
                   Computer blockchain.
@@ -176,7 +196,7 @@ function EthDenverPage() {
                   alt=""
                   className="h-32 mb-3"
                 />
-                <h3 className="tw-title-sm">
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
                   Internet Identity: decentralized auth using fingerprint, fob,
                   sso
                 </h3>
@@ -205,7 +225,9 @@ function EthDenverPage() {
                   alt=""
                   className="h-30 mb-3"
                 />
-                <h3 className="tw-title-sm">All about ckBTC</h3>
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  All about ckBTC
+                </h3>
                 <p className="tw-paragraph-sm text-black-60">
                   Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It
                   is issued and redeemed via canister smart contracts and
@@ -227,7 +249,7 @@ function EthDenverPage() {
         </section>
 
         <section className="bg-infinite text-white py-20 md:pt-30 md:pb-40">
-          <div className="container-10 relative md:mb-20">
+          <div className="container-10 relative mb-16 md:mb-20">
             <div className="blob blob-md blob-white blob-top-right"></div>
 
             <div className="md:w-5/10">
@@ -251,16 +273,16 @@ function EthDenverPage() {
             </div>
           </div>
 
-          <div className="container-10 text-black  md:space-y-16">
-            <article className="rounded-xl overflow-hidden flex">
-              <div className="w-[400px] flex-shrink-0 h-full flex">
+          <div className="container-10 text-black space-y-12 md:space-y-16">
+            <article className="rounded-xl overflow-hidden flex flex-col md:flex-row">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
                 <img
                   src="/img/ethdenver/card-1.webp"
                   alt=""
                   className="object-center object-cover"
                 />
               </div>
-              <div className="flex-1 bg-white flex flex-col justify-center items-start px-12 py-8">
+              <div className="flex-1 bg-white flex flex-col justify-center items-start p-8 md:px-12 md:py-8">
                 <h3 className="md:tw-heading-4 mb-3">#BUIDLWeek Co-Working</h3>
                 <div className="tw-title-navigation mb-3">
                   Feb 24 - Mar 1, 2023 / 9:00am - 11:45pm MST each day
@@ -281,8 +303,8 @@ function EthDenverPage() {
               </div>
             </article>
 
-            <article className="rounded-xl overflow-hidden flex">
-              <div className="flex-1 bg-white flex flex-col justify-center items-start px-12 py-8">
+            <article className="rounded-xl overflow-hidden flex flex-col md:flex-row">
+              <div className="flex-1 bg-white flex flex-col justify-center items-start p-8 md:px-12 md:py-8 order-2 md:order-1">
                 <h3 className="md:tw-heading-4 mb-3">
                   Deploying Dapps on the Internet Computer: A Hands-On Workshop
                 </h3>
@@ -303,7 +325,7 @@ function EthDenverPage() {
                   </Link>
                 </p>
               </div>
-              <div className="w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
                 <img
                   src="/img/ethdenver/card-2.webp"
                   alt=""
@@ -312,15 +334,15 @@ function EthDenverPage() {
               </div>
             </article>
 
-            <article className="rounded-xl overflow-hidden flex">
-              <div className="w-[400px] flex-shrink-0 h-full flex">
+            <article className="rounded-xl overflow-hidden flex flex-col md:flex-row">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
                 <img
                   src="/img/ethdenver/card-3.webp"
                   alt=""
                   className="object-center object-cover"
                 />
               </div>
-              <div className="flex-1 bg-white flex flex-col justify-center items-start px-12 py-8">
+              <div className="flex-1 bg-white flex flex-col justify-center items-start p-8 md:px-12 md:py-8">
                 <h3 className="md:tw-heading-4 mb-3">
                   Internet Computer blockchain for Builders – Keynote with Jan
                   Camenisch
@@ -344,8 +366,8 @@ function EthDenverPage() {
               </div>
             </article>
 
-            <article className="rounded-xl overflow-hidden flex">
-              <div className="flex-1 bg-white flex flex-col justify-center items-start px-12 py-8">
+            <article className="rounded-xl overflow-hidden flex flex-col md:flex-row">
+              <div className="flex-1 bg-white flex flex-col justify-center items-start p-8 md:px-12 md:py-8 order-2 md:order-1">
                 <h3 className="md:tw-heading-4 mb-3">
                   Get in conversation with us – Booth A26
                 </h3>
@@ -367,7 +389,7 @@ function EthDenverPage() {
                   </Link>
                 </p>
               </div>
-              <div className="w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
                 <img
                   src="/img/ethdenver/card-4.webp"
                   alt=""
@@ -411,9 +433,16 @@ function EthDenverPage() {
             "funded",
             "kinic",
           ]}
+          className="md:mb-40"
         ></ShowcaseSection>
 
-        <InternetIdentity></InternetIdentity>
+        <BackgroundPanel
+          panelClassName="bg-infinite"
+          outerClassName="pt-10 md:pt-20 md:pb-30"
+          threshold={0.25}
+        >
+          <InternetIdentity></InternetIdentity>
+        </BackgroundPanel>
         <NewsletterSection />
       </main>
     </Layout>
