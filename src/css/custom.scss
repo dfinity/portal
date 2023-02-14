@@ -399,6 +399,19 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   animation: nft-marquee-right 50s linear infinite;
 }
 
+@keyframes ethdenver-astronaut {
+  from {
+    transform: translate(-40px, 100px);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
+}
+
+.ethdenver-astronaut {
+  animation: ethdenver-astronaut 3s cubic-bezier(0, 0.51, 0.37, 0.94) forwards;
+}
+
 
 @tailwind base;
 @tailwind components;

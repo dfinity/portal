@@ -40,7 +40,12 @@ const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
   );
 };
 
-export default function ShowcaseSection(): JSX.Element {
+const ShowcaseSection: React.FC<{
+  lines: string[];
+  interval?: number;
+  linePostfix: React.ReactNode;
+  subheading: React.ReactNode;
+}> = ({ lines, interval = 2500, linePostfix, subheading }) => {
   const projects = useGlobalData()["home-showcase"].default as {
     name: string;
     oneLiner: string;
@@ -57,27 +62,14 @@ export default function ShowcaseSection(): JSX.Element {
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">
                 <RotatedDappsHeadline
-                  interval={2500}
-                  lines={[
-                    "Defi",
-                    "Metaverse",
-                    "Social media",
-                    "Social networking",
-                    "Multi-chain dapps",
-                    "Enterprise services",
-                    "R&D infrastructure",
-                    "Fundraising",
-                    "Publishing",
-                    "Messaging ",
-                    "Gaming",
-                    "NFTs",
-                  ]}
+                  interval={interval}
+                  lines={lines}
                 ></RotatedDappsHeadline>
               </span>
-              <span>fully on-chain</span>
+              <span>{linePostfix}</span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
-              There are hundreds of projects like these...{" "}
+              {subheading}
             </p>
           </div>
         </div>
@@ -142,4 +134,6 @@ export default function ShowcaseSection(): JSX.Element {
       </AnimateSpawn>
     </section>
   );
-}
+};
+
+export default ShowcaseSection;

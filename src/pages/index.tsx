@@ -37,7 +37,24 @@ export default function Home(): JSX.Element {
       >
         <HeroSection></HeroSection>
         <div className="overflow-hidden">
-          <ShowcaseSection></ShowcaseSection>
+          <ShowcaseSection
+            lines={[
+              "Defi",
+              "Metaverse",
+              "Social media",
+              "Social networking",
+              "Multi-chain dapps",
+              "Enterprise services",
+              "R&D infrastructure",
+              "Fundraising",
+              "Publishing",
+              "Messaging ",
+              "Gaming",
+              "NFTs",
+            ]}
+            subheading="There are hundreds of projects like these..."
+            linePostfix="fully on-chain"
+          ></ShowcaseSection>
         </div>
         <BackgroundPanel>
           <Storage></Storage>
