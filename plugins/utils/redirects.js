@@ -5,11 +5,15 @@ const redirects = `
   /docs/base-libraries/Debug.html /docs/current/motoko/main/base/Debug
   /docs/base-libraries/stdlib-intro.html /docs/current/motoko/main/about-this-guide
   /docs/base-libraries/Time.html /docs/current/motoko/main/base/Time
+  /docs/base-libraries/HashMap.html /docs/current/motoko/main/base/HashMap
+  /docs/base-libraries/Option.html /docs/current/motoko/main/base/Option
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-concepts.html /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/
+  /docs/candid-guide/candid-intro.html /docs/current/developer-docs/backend/candid/
+  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref  
   /docs/candid-guide/candid-types.html /docs/current/references/candid-ref
@@ -32,6 +36,16 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/overview /docs/current/motoko/intro
   /docs/current/developer-docs/build/cdks/motoko-dfinity/timers /docs/current/motoko/main/base/Timer
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts /docs/current/motoko/main/basic-concepts
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/current/motoko/main/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/control-flow /docs/current/motoko/main/control-flow
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/current/motoko/main/upgrades
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/caller-id /docs/current/motoko/main/caller-id
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/cycles /docs/current/motoko/main/cycles
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports /docs/current/motoko/main/modules-and-imports
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/style /docs/current/motoko/main/style
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/rust-quickstart
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
@@ -47,19 +61,29 @@ const redirects = `
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/deploy/deploying-and-upgrading /docs/current/developer-docs/production/deploying-and-upgrading
   /docs/current/developer-docs/deploy/deploying-and-upgrading/ /docs/current/developer-docs/production/deploying-and-upgrading
+  /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
+  /docs/current/developer-docs/deploy/custom-domain /docs/current/developer-docs/production/custom-domain
+  /docs/current/developer-docs/deploy/larger-wasm /docs/current/developer-docs/production/larger-wasm
+  /docs/current/developer-docs/deploy/computation-and-storage-costs/ /docs/current/developer-docs/production/computation-and-storage-costs
   /docs/current/developer-docs/functionality/ledger/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
+  /docs/current/developer-docs/functionality/ledger/ /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/hello10mins /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/network-quickstart /docs/current/tutorials/deploy_sample_app
+  /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
+  /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro  /docs/current/developer-docs/agents/javascript-intro
+  /docs/current/developer-docs/build/backend/ /docs/current/developer-docs/backend/choosing-language
   /docs/current/ic-overview  /docs/current/home
   /docs/current/references/security/general-security-best-practices /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
+  /docs/current/references/security/ /docs/current/developer-docs/security/
   /docs/current/samples/host-unity-webgl /docs/current/samples/host-a-webgame
   /docs/current/tokenomics/sns/rewards /docs/current/developer-docs/integrations/sns/tokenomics/rewards
   /docs/current/tokenomics/sns/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens
@@ -69,6 +93,7 @@ const redirects = `
   /docs/developers-guide/cli-reference.html /docs/current/references/cli-reference/
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
+  /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/production/computation-and-storage-costs
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/canisters-code /docs/current/concepts/canisters-code
   /docs/developers-guide/concepts/canisters-code.html /docs/current/developer-docs
@@ -108,9 +133,12 @@ const redirects = `
   /docs/developers-guide/tutorials/scalability-cancan /docs/current/developer-docs/backend/backend-tutorials/scalability-cancan
   /docs/developers-guide/tutorials/simple-cycles /docs/current/developer-docs/backend/backend-tutorials/simple-cycles
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
+  /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/frontend/#modifying-the-webpack-configuration
+  /docs/developers-guide/webpack-config.html /docs/current/developer-docs/frontend/#modifying-the-webpack-configuration
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
   /docs/download /docs/current/developer-docs/setup/install/
+  /docs/download.html /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
   /docs/ic-identity-guide/auth-how-to /docs/current/tokenomics/identity-auth/auth-how-to
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity
@@ -124,6 +152,7 @@ const redirects = `
   /docs/introduction/welcome.html /docs/current/home
   /docs/language-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/language-guide/actor-classes /docs/current/motoko/main/actor-classes
+  /docs/language-guide/actor-classes.html /docs/current/motoko/main/actor-classes
   /docs/language-guide/actors-async /docs/current/motoko/main/actors-async
   /docs/language-guide/advanced-discussion /docs/current/motoko/main/advanced-discussion
   /docs/language-guide/basic-concepts /docs/current/motoko/main/basic-concepts
@@ -136,6 +165,7 @@ const redirects = `
   /docs/language-guide/extrastuff /docs/current/motoko/main/extrastuff
   /docs/language-guide/heartbeats /docs/current/motoko/main/heartbeats
   /docs/language-guide/language-manual /docs/current/motoko/main/language-manual
+  /docs/language-guide/language-manual.html /docs/current/motoko/main/language-manual
   /docs/language-guide/local-objects-classes /docs/current/motoko/main/local-objects-classes
   /docs/language-guide/modules-and-imports /docs/current/motoko/main/modules-and-imports
   /docs/language-guide/motoko /docs/current/motoko/main/motoko
@@ -162,9 +192,12 @@ const redirects = `
   /docs/quickstart/5-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/developer-docs/setup/deploy-locally
+  /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/deploy-locally
   /docs/quickstart/network-quickstart /docs/current/developer-docs/setup/deploy-mainnet
   /docs/quickstart/newcomers /docs/current/home
   /docs/quickstart/quickstart-intro /docs/current/tutorials/deploy_sample_app
+  /docs/quickstart/quickstart-intro.html /docs/current/tutorials/deploy_sample_app
+  /docs/quickstart/quickstart.html /docs/current/tutorials/deploy_sample_app
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
@@ -205,6 +238,8 @@ const redirects = `
   /docs/token-holders/custody-options-intro /docs/current/tokenomics/token-holders/custody-options-intro
   /docs/token-holders/nns-app-quickstart /docs/current/tokenomics/token-holders/nns-app-quickstart
   /docs/token-holders/self-custody-quickstart /docs/current/tokenomics/token-holders/self-custody-quickstart
+  /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
+  /docs/token-holders/seed-donations.html /docs/current/tokenomics
   /docs/videos-tutorials /developers
   /features/green /features/sustainability
   /howitworks /how-it-works
