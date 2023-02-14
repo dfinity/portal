@@ -444,21 +444,6 @@
     ]
   },
   {
-    "id": "metasportsbasketball",
-    "name": "MetaSports Basketball",
-    "website": "https://metasportsbball.xyz/",
-    "tags": [
-      "Metaverse",
-      "Games",
-      "NFT"
-    ],
-    "description": "MetaSports Basketball is an open basketball metaverse, built on the Ethereum & Internet Computer blockchains, where NFT players of all shapes, species, and origin can compete to become basketball superstars on teams owned and managed by the players.",
-    "oneLiner": "ETH NFT Game Built on ICP",
-    "display": "Normal",
-    "logo": "/img/showcase/metasportsbasketball_logo.webp",
-    "screenshots": []
-  },
-  {
     "id": "crowdgovorg",
     "name": "CrowdGov.org",
     "oneLiner": "The simplified, one stop shop for IC Governance.",
