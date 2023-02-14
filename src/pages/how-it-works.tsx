@@ -1,18 +1,17 @@
-import React from "react";
-import Layout from "@theme/Layout";
 import useGlobalData from "@docusaurus/useGlobalData";
 import {
   HowItWorksCardGroup,
   HowItWorksPageData,
 } from "@site/src/components/HowItWorksPage/HowItWorksData";
-import ArrowRight from "@site/static/img/arrow-right.svg";
-import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
-import slugify from "slugify";
+import Layout from "@theme/Layout";
 import clsx from "clsx";
+import React from "react";
+import slugify from "slugify";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import IntraPageNav from "../components/Common/IntraPageNav";
+import ShareMeta from "../components/Common/ShareMeta";
 import { css } from "../utils/dummy-css";
-import Head from "@docusaurus/Head";
+import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
 
 const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
   const groupClassName = `${slugify(group.title)}-item`;
@@ -116,21 +115,7 @@ function HowItWorks() {
           }
         `}
       </style>
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-how-it-works.jpeg"
-          }
-        />
-        <title>How It Works</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-how-it-works.jpeg"></ShareMeta>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
