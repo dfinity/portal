@@ -1,34 +1,71 @@
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
 import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
-import transitions from "@site/static/transitions.json";
-
-import AnimateSpawn from "../components/Common/AnimateSpawn";
-import useGlobalData from "@docusaurus/useGlobalData";
-import { ShowcaseProject } from "../components/ShowcasePage/ShowcaseProject";
-import Project from "../components/ShowcasePage/Project";
-import { useQueryParam } from "../utils/use-query-param";
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import Head from "@docusaurus/Head";
+import clsx from "clsx";
+import { useInView } from "react-intersection-observer";
+import showcaseData from "../../showcase.json";
+import ShareMeta from "../components/Common/ShareMeta";
+import Tooltip from "../components/Common/Tooltip";
+import { ShowcaseProject } from "../components/ShowcasePage/ShowcaseProject";
+import { useQueryParam } from "../utils/use-query-param";
+
+import GithubIcon from "@site/static/img/svgIcons/github.svg";
+import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
+import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+
+const Pill: React.FC<{
+  children: React.ReactNode;
+  isActive: boolean;
+  onClick: () => void;
+}> = ({ children, isActive, onClick }) => {
+  return (
+    <button
+      className={clsx(
+        "rounded-xl inline-flex group gap-2 px-4 py-2 appearance-none border-solid border tw-title-navigation font-circular hover:text-white  hover:bg-infinite  hover:border-transparent",
+        isActive
+          ? "text-white bg-infinite border-transparent"
+          : "text-black bg-transparent border-black"
+      )}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
+
+const PillSecondaryLabel: React.FC<{
+  children: React.ReactNode;
+  isActive: boolean;
+}> = ({ children, isActive }) => {
+  return (
+    <span
+      className={
+        isActive ? "text-white-50" : "text-black-30 group-hover:text-white-50"
+      }
+    >
+      {children}
+    </span>
+  );
+};
 
 function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   const small = projects.filter((p) => p.display !== "Large");
   const large = projects.filter((p) => p.display === "Large");
   const sorted: ShowcaseProject[] = [];
+  const columns = 4;
 
   while (true) {
     const isLastLarge = sorted[sorted.length - 1]?.display === "Large";
 
     if (isLastLarge) {
-      if (small.length >= 3) {
-        sorted.push(...small.splice(0, 3));
-      } else if (small.length < 3 && large.length > 0) {
+      if (small.length >= columns) {
+        sorted.push(...small.splice(0, columns));
+      } else if (small.length < columns && large.length > 0) {
         sorted.push(...large.splice(0, large.length));
       } else {
-        sorted.push(...small.splice(0, 3));
+        sorted.push(...small.splice(0, columns));
       }
     } else if (large.length > 0) {
       sorted.push(...large.splice(0, 1));
@@ -42,161 +79,254 @@ function sortDesktopProjects(projects: ShowcaseProject[]): ShowcaseProject[] {
   return sorted;
 }
 
+const LargeProjectMedia: React.FC<{
+  project: ShowcaseProject;
+}> = ({ project }) => {
+  const { ref, inView } = useInView({ threshold: 0 });
+  const [shown, setShown] = React.useState(false);
+  const videoRef = useRef<HTMLVideoElement>();
+
+  useEffect(() => {
+    if (inView && !shown) {
+      setShown(true);
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    // start playing the video when it comes in view
+    if (shown && inView) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [shown, inView]);
+
+  return (
+    <div ref={ref} className="flex min-h-full">
+      {shown && (
+        <video
+          loop
+          muted
+          playsInline
+          className={clsx("w-full object-cover object-center")}
+          ref={videoRef}
+        >
+          <source src={project.video} type={project.videoContentType} />
+        </video>
+      )}
+    </div>
+  );
+};
+
+const ProjectInfo: React.FC<{
+  project: ShowcaseProject;
+}> = ({ project }) => {
+  return (
+    <div className="flex flex-col gap-4 h-full max-w-full">
+      <div className="flex gap-2 items-center">
+        <img src={project.logo} className="w-14 max-h-14"></img>
+        <div className="flex flex-col justify-center flex-1">
+          <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
+            {project.name}
+
+            {project.usesInternetIdentity && (
+              <Tooltip
+                tooltip="Uses Internet Identity"
+                className="left-10 -translate-x-full md:left-1/2 md:-translate-x-1/2"
+              >
+                <img
+                  className="relative bottom-2 left-1 cursor-pointer"
+                  src="/img/showcase/ii-badge.svg"
+                  alt="The project uses Internet Identity"
+                ></img>
+              </Tooltip>
+            )}
+          </h3>
+          {project.stats && (
+            <p className="tw-paragraph-sm text-black-60 mb-0">
+              {project.stats}
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="flex-1 tw-paragraph text-black-60 break-words">
+        {project.description}
+      </div>
+      <div className="flex gap-3">
+        <Link
+          className="button-round"
+          href={project.website}
+          aria-label={`Visit project ${project.name} website at ${project.website}`}
+        >
+          Try it
+        </Link>
+        {project.github && (
+          <Link
+            className="button-round-icon"
+            href={project.github}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <GithubIcon></GithubIcon>
+          </Link>
+        )}
+        {project.youtube && (
+          <Link
+            className="button-round-icon"
+            href={project.youtube}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <YoutubeIcon></YoutubeIcon>
+          </Link>
+        )}
+        {project.twitter && (
+          <Link
+            className="button-round-icon"
+            href={project.twitter}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <TwitterIcon></TwitterIcon>
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const SmallCard = ({ project }: { project: ShowcaseProject }) => {
+  return (
+    <div className="rounded-xl bg-white-80 flex px-6 py-8">
+      <div className="flex flex-col gap-2">
+        <ProjectInfo project={project}></ProjectInfo>
+      </div>
+    </div>
+  );
+};
+
+const LargeCard = ({ project }: { project: ShowcaseProject }) => {
+  // const media = project.video || project.screenshots[0]
+
+  return (
+    <div className="md:col-span-2 lg:col-span-4 rounded-xl  bg-white-80 flex flex-col md:flex-row">
+      <div className="md:w-6/12 lg:w-9/12 flex-shrink-0 rounded-t-xl md:rounded-l-xl md:rounded-tr-none overflow-hidden">
+        {project.video ? (
+          <LargeProjectMedia project={project}></LargeProjectMedia>
+        ) : (
+          <div className="flex w-full h-full">
+            <img
+              loading="lazy"
+              alt=""
+              src={project.screenshots[0]}
+              className="object-cover object-center"
+            ></img>
+          </div>
+        )}
+      </div>
+      <div className="md:w-6/12 lg:w-3/12 flex-shrink-0 flex flex-col py-8 px-6 md:pl-5 md:pr-8">
+        <ProjectInfo project={project}></ProjectInfo>
+      </div>
+    </div>
+  );
+};
+
+const projects = showcaseData as ShowcaseProject[];
+const tags = Object.entries(
+  projects.reduce((tags, p) => {
+    if (!p.tags) return tags;
+    for (const tag of p.tags) {
+      tags[tag] = (tags[tag] || 0) + 1;
+    }
+    return tags;
+  }, {} as Record<string, number>)
+);
+
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
-  const filtersRef = useRef<HTMLDivElement>();
+  const [filteredProjects, setFilteredProjects] = React.useState(projects);
 
-  const projects = useGlobalData()["showcase-projects"]
-    .default as ShowcaseProject[];
+  useEffect(() => {
+    let filteredProjects = projects;
+    if (queryTagInitialized && queryTag?.length > 0) {
+      filteredProjects = filteredProjects.filter((p) =>
+        p.tags.find((tag) => tag == queryTag)
+      );
+    }
+    setFilteredProjects(sortDesktopProjects(filteredProjects));
+  }, [queryTagInitialized, queryTag]);
 
-  const tags = Object.keys(
-    projects.reduce((tags, p) => {
-      if (!p.tags) return tags;
-      for (const tag of p.tags) {
-        tags[tag.toLowerCase()] = true;
-      }
-      return tags;
-    }, {})
-  );
-
-  let filteredProjects = projects;
-  if (queryTagInitialized && queryTag?.length > 0) {
-    filteredProjects = filteredProjects.filter((p) =>
-      p.tags.find((tag) => tag.toLowerCase() == queryTag)
-    );
-  }
-
-  let sortedProjects = sortDesktopProjects(filteredProjects);
+  // let sortedProjects = sortDesktopProjects(filteredProjects);
 
   return (
     <Layout
-      title="Web3 Ecosystem"
+      title="ICP Ecosystem"
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-showcase.jpeg"
-          }
-        />
-        <title>Web3 Ecosystem</title>
-      </Head>
-      <main className="text-black relative overflow-hidden">
-        <AnimateSpawn variants={transitions.container}>
-          <motion.img
-            src={BlobBlue}
-            alt=""
-            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[-1000]"
-            variants={transitions.item}
-          />
-          <section className="max-w-page relative px-6 pt-20 mb-10 md:mb-20 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
-            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12" ref={filtersRef}>
-              <motion.h1
-                className="tw-heading-3 md:tw-heading-2"
-                variants={transitions.item}
+      <ShareMeta image="/img/shareImages/share-showcase.jpg"></ShareMeta>
+      <main className="overflow-hidden">
+        <section className="container-10 pt-20 md:pt-30 pb-12 md:pb-20">
+          <h1 className="md:tw-heading-2 mb-8 md:mb-10">
+            {projects.length} projects featured
+          </h1>
+          <div className="flex flex-wrap gap-3">
+            {/* <button className="rounded-full px-3 appearance-none border-solid border border-[#d2d2d2] hover:text-white  hover:bg-infinite  hover:border-transparent flex items-center">
+            <SearchIcon />
+          </button> */}
+            <Pill isActive={!queryTag} onClick={() => setQueryTag(undefined)}>
+              All projects
+              <PillSecondaryLabel isActive={!queryTag}>
+                {projects.length}
+              </PillSecondaryLabel>
+            </Pill>
+            {tags.map(([tag, count]) => (
+              <Pill
+                isActive={tag === queryTag}
+                onClick={() => setQueryTag(tag)}
+                key={tag}
               >
-                Stuff built on the Internet Computer
-              </motion.h1>
-            </div>
-          </section>
-
-          <section className="max-w-page px-6 mb-12 md:mb-20 md:px-12.5 md:mx-auto">
-            <motion.div
-              className="flex gap-10 md:gap-20 flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="flex gap-3 flex-wrap flex-1">
-                <button
-                  className={clsx(
-                    "button-outline",
-                    !queryTag
-                      ? "text-white bg-infinite"
-                      : "text-black bg-transparent"
-                  )}
-                  onClick={() => setQueryTag(undefined)}
-                >
-                  All projects
-                </button>
-                {tags.map((tag) => (
-                  <button
-                    className={clsx(
-                      "button-outline",
-                      tag.toLowerCase() === queryTag?.toLowerCase()
-                        ? "text-white bg-infinite"
-                        : "text-black bg-transparent"
-                    )}
-                    key={tag}
-                    onClick={() => setQueryTag(tag)}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-              <p className="text-black-60 tw-paragraph-sm md:w-3/12">
-                <strong className="text-black ">Do your own research:</strong>{" "}
-                Here we list dapps and Web3 services that are built on the
-                Internet Computer blockchain, which is a World Computer. Many
-                services run fully on-chain. You use decentralized services at
-                your own risk. Do your own research, especially where you must
-                deposit tokens.
-              </p>
-            </motion.div>
-          </section>
-        </AnimateSpawn>
-
-        <section className="max-w-page px-6 md:px-12.5 md:mx-auto">
-          <AnimateSpawn
-            el={motion.span}
-            className="tw-heading-4 mb-4 block"
-            variants={transitions.item}
-          >
-            {sortedProjects.length} project
-            {sortedProjects.length > 1 ? "s " : " "}
-            {!queryTag ? (
-              `featured`
-            ) : (
-              <>
-                in <span className="capitalize">{queryTag}</span>
-              </>
-            )}
-          </AnimateSpawn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 lg:grid-cols-3 transition-opacity">
-            {sortedProjects.map((project) => (
-              <Project
-                large={project.display === "Large"}
-                project={project}
-                key={project.website}
-                onTagClick={(tag) => {
-                  filtersRef.current.scrollIntoView({ behavior: "smooth" });
-                  setQueryTag(tag.toLowerCase());
-                }}
-              ></Project>
+                {tag}
+                <PillSecondaryLabel isActive={tag === queryTag}>
+                  {count}
+                </PillSecondaryLabel>
+              </Pill>
             ))}
           </div>
         </section>
-        <section className="max-w-page relative px-6 pt-12 md:px-12.5 md:mx-auto py-20 md:py-40 overflow-hidden">
-          <motion.h2
-            className="tw-heading-3 md:tw-heading-2 md:w-8/12 mb-10"
-            variants={transitions.item}
-          >
-            Start Building On The Internet Computer?
-          </motion.h2>
-          <div className="flex gap-3 sm:gap-8 flex-col sm:flex-row items-start">
-            <Link to="/developers" className="button-primary">
-              Start Coding
-            </Link>
-            <Link href="https://dfinity.org/grants" className="button-outline">
-              Developer Grants
-            </Link>
+
+        <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+          <div className="blob blob-infinite blob-top-right blob-md z-[-1]"></div>
+          {filteredProjects.map((project) =>
+            project.display === "Large" ? (
+              <LargeCard project={project} key={project.website} />
+            ) : (
+              <SmallCard project={project} key={project.website} />
+            )
+          )}
+        </section>
+
+        <section className="container-10 py-20 md:pt-20 md:pb-30 flex flex-col gap-12 md:gap-0 md:flex-row md:justify-between">
+          <div className="md:w-4/10">
+            <h2 className="tw-heading-6 mb-3">Submit your project</h2>
+            <p className="tw-paragraph mb-4">
+              See a project missing? All community members are invited to submit
+              their projects to this page.
+            </p>
+            <p className="mb-0">
+              <Link
+                href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                className="link-primary link-with-icon"
+              >
+                Submit your project
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+          </div>
+          <div className="tw-paragraph-sm text-black-60 md:w-3/10">
+            <span className="text-black">Do your own research:</span> All of
+            these dapps are using the novel Internet Computer blockchain. Use
+            the following projects at your own risk. As always, do your own
+            research.
           </div>
         </section>
       </main>
