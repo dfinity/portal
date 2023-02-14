@@ -38,6 +38,7 @@ export default function Home(): JSX.Element {
         <HeroSection></HeroSection>
         <div className="overflow-hidden">
           <ShowcaseSection
+            className="pb-[320px]"
             lines={[
               "Defi",
               "Metaverse",

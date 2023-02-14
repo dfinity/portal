@@ -108,13 +108,13 @@ function EthDenverPage() {
           </section>
         </AnimateSpawn>
 
-        <section className="max-w-page md:mx-auto px-6 md:px-12.5 mt-20 md:mt-40">
+        <section className="container-12 mt-20 md:mt-40">
           <AnimateSpawn
             className="md:w-8/12 md:mx-auto text-center"
             variants={transitions.container}
           >
             <motion.h2
-              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-12"
+              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-8"
               variants={transitions.item}
             >
               Meet the team
@@ -130,7 +130,7 @@ function EthDenverPage() {
               </span>
             </motion.h2>
             <motion.p
-              className="tw-paragraph md:tw-lead mb-8 md:mb-16"
+              className="tw-paragraph md:tw-lead mb-8 md:mb-8"
               variants={transitions.item}
             >
               Step into the exciting world of ICP Blockchain with us as your
@@ -138,7 +138,7 @@ function EthDenverPage() {
               insider's look into this cutting-edge technology.
             </motion.p>
           </AnimateSpawn>
-          <div className="mt-12 md:mt-20 mb-20 md:mb-40">
+          <div className="mt-12 md:mt-0 mb-20 md:mb-30">
             <AnimateSpawn
               className="flex gap-5 items-start flex-col md:flex-row"
               variants={transitions.container}
@@ -150,14 +150,14 @@ function EthDenverPage() {
                 <img
                   src="/img/ethdenver/dfinity-logo.webp"
                   alt=""
-                  className="h-32"
+                  className="h-32 mb-3"
                 />
                 <h3 className="tw-title-sm mb-3">DFINITY Foundation</h3>
                 <p className="tw-paragraph-sm text-black-60">
                   The DFINITY Foundation is a major contributor to the Internet
                   Computer blockchain.
                 </p>
-                <p className="mb-3">
+                <p className="mb-0">
                   <Link
                     href="https://dfinity.org"
                     className="link-primary link-with-icon"
@@ -174,7 +174,7 @@ function EthDenverPage() {
                 <img
                   src="/img/ethdenver/astronaut-small.webp"
                   alt=""
-                  className="h-32"
+                  className="h-32 mb-3"
                 />
                 <h3 className="tw-title-sm">
                   Internet Identity: decentralized auth using fingerprint, fob,
@@ -186,7 +186,7 @@ function EthDenverPage() {
                   ridiculus mus. Nullam quis risus eget urna mollis ornare vel
                   eu leo.
                 </p>
-                <p className="mb-3">
+                <p className="mb-0">
                   <Link
                     href="https://identity.ic0.app/"
                     className="link-primary link-with-icon"
@@ -203,7 +203,7 @@ function EthDenverPage() {
                 <img
                   src="/img/ethdenver/ckBTC-token-1.webp"
                   alt=""
-                  className="h-30"
+                  className="h-30 mb-3"
                 />
                 <h3 className="tw-title-sm">All about ckBTC</h3>
                 <p className="tw-paragraph-sm text-black-60">
@@ -212,7 +212,7 @@ function EthDenverPage() {
                   verifiably backed 1:1 with real bitcoin. It’s fast, low-tx-fee
                   bitcoin on ICP with no intermediary.
                 </p>
-                <p className=" mb-3">
+                <p className=" mb-0">
                   <Link
                     href="/bitcoin-integration"
                     className="link-primary link-with-icon"
@@ -226,7 +226,7 @@ function EthDenverPage() {
           </div>
         </section>
 
-        <section className="bg-infinite text-white py-20 md:py-30">
+        <section className="bg-infinite text-white py-20 md:pt-30 md:pb-40">
           <div className="container-10 relative md:mb-20">
             <div className="blob blob-md blob-white blob-top-right"></div>
 

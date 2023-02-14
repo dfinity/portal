@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import _showcaseProjects from "@site/showcase.json";
 import { useShowcaseProjects } from "@site/src/utils/use-showcase-projects";
+import clsx from "clsx";
 
 const MotionLink = motion(Link);
 
@@ -47,11 +48,19 @@ const ShowcaseSection: React.FC<{
   linePostfix: React.ReactNode;
   subheading: React.ReactNode;
   projectIds: string[];
-}> = ({ lines, interval = 2500, linePostfix, subheading, projectIds }) => {
+  className?: string;
+}> = ({
+  lines,
+  interval = 2500,
+  linePostfix,
+  subheading,
+  projectIds,
+  className,
+}) => {
   const projects = useShowcaseProjects(projectIds);
 
   return (
-    <section id="dapps" className="relative z-0 pb-[320px]">
+    <section id="dapps" className={clsx("relative z-0", className)}>
       <AnimateSpawn variants={transitions.item}>
         <div className="container-10 pt-20 md:pt-30">
           <div className="">
