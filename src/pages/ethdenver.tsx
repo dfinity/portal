@@ -21,11 +21,11 @@ function EthDenverPage() {
 
   return (
     <Layout
-      title="NFTs"
-      description={`The Internet Computer is the only blockchain storing all components of an NFT on the blockchain, including assets. This opens up capabilities for ICP NFTs that go way beyond "overpriced links to JPGs".`}
+      title="ETHDenver"
+      description={`Visit us at the ICP Booth March 2nd - 5th, 2023`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-nfts.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ethdenver.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
