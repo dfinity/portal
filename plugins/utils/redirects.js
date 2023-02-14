@@ -45,7 +45,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports /docs/current/motoko/main/modules-and-imports
   /docs/current/developer-docs/build/cdks/motoko-dfinity/style /docs/current/motoko/main/style
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/rust-quickstart
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/current/developer-docs/backend/rust
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
@@ -79,11 +79,11 @@ const redirects = `
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents
   /docs/current/developer-docs/build/agents/javascript/javascript-intro  /docs/current/developer-docs/agents/javascript-intro
-  /docs/current/developer-docs/build/backend/ /docs/current/developer-docs/backend/
+  /docs/current/developer-docs/build/backend/ /docs/current/developer-docs/backend/choosing-language
   /docs/current/ic-overview  /docs/current/home
   /docs/current/references/security/general-security-best-practices /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
-  /docs/current/references/security/ /docs/current/developer-docs/security
+  /docs/current/references/security/ /docs/current/developer-docs/security/
   /docs/current/samples/host-unity-webgl /docs/current/samples/host-a-webgame
   /docs/current/tokenomics/sns/rewards /docs/current/developer-docs/integrations/sns/tokenomics/rewards
   /docs/current/tokenomics/sns/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens
