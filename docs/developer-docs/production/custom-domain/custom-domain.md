@@ -49,7 +49,7 @@ a concrete example. Finally, we explain how one can update and remove a registra
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        ic0.app/registrations \
+        https://ic0.app/registrations \
         --data @- <<EOF
     {
         "name": "CUSTOM_DOMAIN"
@@ -64,7 +64,7 @@ a concrete example. Finally, we explain how one can update and remove a registra
 1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
     ```sh
     curl -sLv -X GET \
-        ic0.app/registrations/REQUEST_ID
+        https://ic0.app/registrations/REQUEST_ID
     ```
     The status will be one of the following:
     * `pendingOrder`: The registration request has been submitted and is waiting to be picked up.
@@ -110,7 +110,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        ic0.app/registrations \
+        https://ic0.app/registrations \
         --data @- <<EOF
     {
         "name": "foo.bar.com"
@@ -132,7 +132,7 @@ need to update the DNS record of your domain and then notify a boundary node:
 1. Notify a boundary node of the change using a PUT request and the ID of your registration (`REQUEST_ID`).
     ```sh
     curl -sLv -X PUT \
-        ic0.app/registrations/REQUEST_ID
+        https://ic0.app/registrations/REQUEST_ID
     ```
 
 :::note
@@ -149,7 +149,7 @@ and notify a boundary node:
 1. Notify a boundary node of the removal using a DELETE request.
     ```sh
     curl -sLv -X DELETE \
-        ic0.app/registrations/REQUEST_ID
+        https://ic0.app/registrations/REQUEST_ID
     ```
 
 :::note
