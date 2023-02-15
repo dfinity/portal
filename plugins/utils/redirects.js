@@ -44,6 +44,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/cycles /docs/current/motoko/main/cycles
   /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports /docs/current/motoko/main/modules-and-imports
   /docs/current/developer-docs/build/cdks/motoko-dfinity/style /docs/current/motoko/main/style
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/local-objects-classes /docs/current/motoko/main/local-objects-classes
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/rust-quickstart
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
