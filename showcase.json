@@ -290,6 +290,35 @@
     "logo": "/img/showcase/seers_logo.webp",
     "screenshots": []
   },
+    {
+    "id": "funded",
+    "name": "Funded",
+    "website": "https://crowdfund-nft.com/",
+    "tags": [
+      "SocialFi", 
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/funded_app",
+    "description": "Web-3 crowdfunding! Using smart contract technology to build a safer, cheaper and global crowdfunding service.",
+    "stats": "39.000+ ICP funded",
+    "display": "Normal",
+    "logo": "/img/showcase/funded_logo.webp",
+    "screenshots": []
+  },
+    {
+    "id": "icdex",
+    "name": "ICDex",
+    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "ICDex is flagship product by ICLighthouse, it is an orderbook DEX that runs 100% on-chain, a world-first.",
+    "stats": "Supports ckBTC",
+    "twitter": "https://twitter.com/ICLighthouse",
+    "display": "Normal",
+    "logo": "/img/showcase/icdex_logo.webp",
+    "screenshots": []
+  },
   {
     "id": "dank",
     "name": "Dank",
