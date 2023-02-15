@@ -118,25 +118,25 @@ Deno.test("Request handler", async () => {
   // slackbot can reach the asset canister
   await assertProxiedResponse(
     await checkRequest(
-      new Request("https://internetcomputer.org/features", {
+      new Request("https://internetcomputer.org/capabilities", {
         headers: { "user-agent": "Slackbot" },
       }),
       [],
       "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
     ),
-    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/features"
+    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/capabilities"
   );
 
   // curl can reach the asset canister
   await assertProxiedResponse(
     await checkRequest(
-      new Request("https://internetcomputer.org/features", {
+      new Request("https://internetcomputer.org/capabilities", {
         headers: { "user-agent": "curl/7.79.1" },
       }),
       [],
       "hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app"
     ),
-    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/features"
+    "https://hwvjt-wqaaa-aaaam-qadra-cai.raw.ic0.app/capabilities"
   );
 
   // install script redirect works
