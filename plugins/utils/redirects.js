@@ -241,7 +241,9 @@ const redirects = `
   /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
   /docs/token-holders/seed-donations.html /docs/current/tokenomics
   /docs/videos-tutorials /developers
-  /features/green /features/sustainability
+  /features/green /capabilities/sustainability
+  /features/* /capabilities/:splat
+  /features /capabilities
   /howitworks /how-it-works
   /howitworks/* /how-it-works/:splat
   /showcase /ecosystem
