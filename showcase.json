@@ -1101,6 +1101,28 @@
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
     ]
+  },
+  {
+    "id": "omnic",
+    "name": "Omnic",
+    "oneLiner": "Crosschain Messaging Protocol & Token Bridge Between the Internet Computer and EVM Chains",
+    "website": "https://omnic.network",
+    "tags": [
+      "Tools / Infrastructure",
+	  "DeFi"
+    ],
+    "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/omnic_logo.png",
+    "screenshots": [
+      "/img/showcase/omnic_screenshot_0.png",
+      "/img/showcase/omnic_screenshot_1.png",
+      "/img/showcase/omnic_screenshot_2.png",
+      "/img/showcase/omnic_screenshot_3.png",
+      "/img/showcase/omnic_screenshot_4.png"
+    ],
+	"videoContentType": "video/mp4",
+	"video": "/img/showcase/omnic_video.mp4"
   }
 ]
 
