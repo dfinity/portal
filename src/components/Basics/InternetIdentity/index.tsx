@@ -59,9 +59,9 @@ const InternetIdentity = () => {
             variants={transitions.item}
             className="tw-paragraph md:tw-lead-sm mb-0"
           >
-            The easy-to-use authentication framework that allows anyone with a smartphone
-            to anonymously authenticate with Web3 services running on the Internet Computer
-            using the WebAuthn standard.
+            The easy-to-use authentication framework that allows anyone with a WebAuthn
+            enabled device to anonymously authenticate with Web3 services running on the
+            Internet Computer using the WebAuthn standard.
           </motion.p>
           <motion.a
             className="button-outline-white"
