@@ -98,12 +98,13 @@ const InternetIdentity = () => {
             </svg>
 
             <h3 className="tw-heading-5 md:tw-heading-3 m-0">
-              No usernames &amp; passwords
+              Biometric authorization
             </h3>
             <p className="tw-paragraph md:tw-lead-sm mb-0">
-              Fingerprint or FaceID systems on mobile or portable HSM devices as
-              YubiKey or Ledger wallet, to keep the anonymity without being
-              tracked across.
+              Unlock authentication with your device via FaceID, fingerprint sensor
+              or use a YubiKey. This provides strong security, as the cryptographic
+              key never leaves your device. No passwords are used to authenticate
+              on ICP.
             </p>
           </motion.div>
           <motion.div variants={transitions.item} className={styles.card}>
@@ -132,8 +133,8 @@ const InternetIdentity = () => {
 
             <h3 className="tw-heading-5 md:tw-heading-3 m-0">No tracking</h3>
             <p className="tw-paragraph md:tw-lead-sm mb-0">
-              Using Internet Identity authentication system, users will not able
-              being tracked across dapps and services.
+              Remain pseudonymous using the Internet Identity authentication
+              framework, which prevents user tracking across dapps and services.
             </p>
           </motion.div>
           <motion.div variants={transitions.item} className={styles.card}>
@@ -165,11 +166,11 @@ const InternetIdentity = () => {
             </svg>
 
             <h3 className="tw-heading-5 md:tw-heading-3 m-0">
-              Cryptographi&shy;cally secure
+              WebAuthn
             </h3>
             <p className="tw-paragraph md:tw-lead-sm mb-0">
-              Giving access to open, decentralized network without compromising
-              on speed, security, sovereignty.
+              Internet Identity integrates the widely used secure web2 authentication
+              framework known as WebAuthn for maximum compatibility.
             </p>
           </motion.div>
         </motion.div>
