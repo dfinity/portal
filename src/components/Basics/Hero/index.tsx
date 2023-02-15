@@ -34,10 +34,10 @@ const Hero = () => {
           variants={transitions.item}
           className="tw-paragraph md:tw-lead m-0"
         >
-          Web3 services that live fully on-chain depend on special capabilities.
-          That's because normally, only tokens and small clips of data live
-          on-chain, and the user experience, and most data and processing, lives
-          on the corporate cloud...
+          The Internet Computer (ICP) allows Web3 services to run 100% on-chain, providing
+          the only platform where developers can build and users can enjoy fully
+          decentralized applications. ICP ditches corporate cloud, insecure bridges and
+          expensive oracles.
         </motion.p>
 
         <svg
