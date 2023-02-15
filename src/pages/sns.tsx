@@ -1,8 +1,8 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import ExternalLinkIcon from "@site/static/img/external-link.svg";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
@@ -13,11 +13,26 @@ import IconCommunityOwned from "../../static/img/sns/community-owned.svg";
 import IconScalable from "../../static/img/sns/scalable.svg";
 import IconTokenized from "../../static/img/sns/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
-import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import { CardWithDescription } from "../components/Common/Card";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import ShareMeta from "../components/Common/ShareMeta";
 
 const MotionLink = motion(Link);
+
+const RoadmapLabel: React.FC<{
+  variant: "white" | "blue";
+  children: React.ReactNode;
+}> = ({ variant, children }) => {
+  return (
+    <span
+      className={`absolute top-0 -translate-y-1/2 tw-lead-sm inline-block rounded-full px-3 py-1 ${
+        variant === "white" ? "bg-white text-black" : "bg-infinite text-white"
+      }`}
+    >
+      {children}
+    </span>
+  );
+};
 
 const Card: React.FC<{
   title: React.ReactNode;
@@ -48,20 +63,15 @@ const Card: React.FC<{
 function SnsPage() {
   return (
     <Layout
-      title="DAO crypto evolved"
-      description="An SNS is an advanced form of a DAO. A digital democracy that can run any dapp such as a social network in a fully decentralized way, fully on chain. No corporation, no board of directors, no CEO required."
+      title="SNS: Next Gen DAOs"
+      description="The Service Nervous System (SNS), an advanced Web3 DAO
+      framework, promotes true digital democracy. Run any dapp, such
+      as a social network, in a fully decentralized way, 100% on
+      chain — no corporations, no board of directors, no CEO
+      required."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
-        />
-        <meta
-          name="twitter:image"
-          content={"https://internetcomputer.org/img/shareImages/share-sns.jpg"}
-        />
-      </Head>
+      <ShareMeta image="/img/shareImages/share-sns.jpg"></ShareMeta>
       <main className="text-black relative overflow-hidden">
         <DarkHeroStyles></DarkHeroStyles>
         <AnimateSpawn variants={transitions.container}>
@@ -72,16 +82,17 @@ function SnsPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  DAO crypto evolved
+                  SNS: Next Gen DAOs
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  A Service Nervous Systems (SNS) is an advanced form of a DAO.
-                  A digital democracy that can run any dapp such as a social
-                  network in a fully decentralized way, fully on chain. No
-                  corporation, no board of directors, no CEO required.
+                  The Service Nervous System (SNS), an advanced Web3 DAO
+                  framework, promotes true digital democracy. Run any dapp, such
+                  as a social network, in a fully decentralized way, 100% on
+                  chain — no corporations, no board of directors, no CEO
+                  required.
                 </motion.p>
               </div>
             </div>
@@ -115,9 +126,9 @@ function SnsPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-12 md:w-8/10"
               variants={transitions.item}
             >
-              Developers can now hand over their Web3 service to an SNS. The
-              community can buy governance tokens to take ownership and control
-              through the SNS DAO and shape the dapp’s future.
+              Developers can hand over their Web3 app to an SNS DAO, while the
+              community can buy governance tokens to take ownership through this
+              SNS DAO to shape the dapp’s future.
             </motion.p>
             <motion.p
               className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
@@ -130,7 +141,7 @@ function SnsPage() {
                 Launch an SNS DAO
               </Link>
               <Link className="button-outline" href="/sns/faq">
-                How to participate (FAQ)
+                What you need to know (FAQ)
               </Link>
             </motion.p>
           </AnimateSpawn>
@@ -164,30 +175,30 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                When you, as a dapp developer, decide to hand over your Web3
-                dapp to an SNS, you decide on the SNS parameters and submit a
-                proposal to the NNS, the IC’s DAO. When the proposal is
-                accepted, the NNS launches the new SNS and assigns it full
-                control over the app.
+                When a developer decides to hand over a Web3 app to an SNS, they
+                initiate the process by making a proposal to the NNS — the
+                Internet Computer’s DAO. When the proposal is accepted via
+                community votes, the NNS creates a new SNS and assigns it full
+                control over the dapp.
               </motion.p>
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                The newly-created SNS tokenizes the dapp through an initial
-                decentralization sale: Part of the dapp’s governance tokens
-                (utility tokens) are bought by the community, providing funding
-                the DAO. Part of the dapp’s utility tokens are allocated to the
-                original developer(s) as a reward for their initial efforts, a
-                part remains in a treasury the SNS DAO controls. The proceeds of
-                the token sale are kept in the treasury as well. The treasury is
-                used to to fund the future development of the dapp.
+                The dapp is tokenized through an initial decentralization sale.
+                Part of the dapp’s governance tokens (utility tokens) are bought
+                by the community, providing funds to the DAO; another part of
+                the dapp’s governance tokens are allocated to the original
+                developer(s) as a reward for their initial efforts; the rest
+                remains in a treasury the SNS DAO controls. The proceeds of the
+                token sale are kept in the treasury as well. The treasury is
+                used to fund the future development of the dapp.
               </motion.p>
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
               >
-                Your dapp is now fully decentralized!
+                The dapp is now fully decentralized!
               </motion.p>
             </Card>
             <Card
@@ -198,17 +209,23 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                The dapps that people love and engage with on a daily basis,
-                like social media platforms, games, or online news media
-                outlets, can now be owned and governed by the people themselves
-                — the users and developers of those dapps. This comes with
-                substantial benefits: The users own the service, instead of the
-                service monetizing the users. The users can shape how “their”
-                service should evolve in the future. No centralized entity, like
-                a corporation, can unilaterally make decisions negatively
+                The dapps that people love and engage with on a daily basis —
+                social media platforms, games, or online news media outlets —
+                can now be owned and governed by the users and developers of
+                those dapps. This comes with many crucial benefits: Users own
+                the service, instead of the service monetizing the users’ data.
+                Users can shape how a service should evolve in the future, based
+                on their requirements. No centralized entity, like a
+                corporation, can unilaterally make decisions negatively
                 affecting the users and their personal data. This greatly
                 reduces the platform risk for entrepreneurs who build services
                 on top of decentralized apps.
+              </motion.p>
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                Applications are co-owned by their users.
               </motion.p>
             </Card>
             <Card
@@ -219,21 +236,27 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                After an SNS DAO has taken control of a dapp, it is governed by
-                the token holders in a completely decentralized way through its
-                SNS DAO. In contrast to existing DAOs, in which governance
-                applies only to smart contract logic, i.e., just a small part of
-                a Web3 application, an SNS DAO controls every aspect of a dapp.
+                A dapp is governed by the token holders in a completely
+                decentralized way after an SNS DAO has taken control of it. In
+                traditional DAOs, only smart contract logic can be governed
+                natively on chain by the DAO, but not the frontend. An SNS DAO
+                controls every aspect of a dapp natively on chain, particularly
+                also the on-chain frontend and assets.
+              </motion.p>
+              <motion.p
+                className="mb-6 tw-paragraph"
+                variants={transitions.item}
+              >
+                Token holders submit and vote on proposals, for example, code
+                updates, to govern how the dapp should evolve. When a proposal
+                is approved by the community, the SNS DAO executes these updates
+                autonomously and fully on chain.
               </motion.p>
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
               >
-                Token holders submit and vote on proposals to govern how the
-                dapp should evolve, e.g., to decide on code updates. When a
-                proposal is approved by the community, the SNS executes it
-                autonomously, e.g., to update the code of the dapp. No single
-                entity can stop the process.
+                No single entity can interfere with the process.
               </motion.p>
             </Card>
             <Card title="Tokenized" icon={<IconTokenized aria-hidden="true" />}>
@@ -241,20 +264,27 @@ function SnsPage() {
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
               >
-                People participating in the dapp’s governance earn voting
-                rewards, much like in the IC’s NNS DAO. Liquid democracy allows
-                token holders to delegate certain decisions to those they deem
-                more appropriate to take them, resulting in better decisions of
-                the DAO.
+                People participating in the dapp’s governance can, depending on
+                the SNS’s configuration, earn voting rewards like in the IC’s
+                NNS DAO. Liquid democracy allows token holders to delegate
+                certain decisions to those they deem most appropriate to take
+                them, resulting in better decisions of the DAO overall.
               </motion.p>
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
               >
                 The dapp’s utility token not only enables this advanced form of
-                governance, but the tokenization of the dapp can help drive
-                adoption and user engagement, e.g., through airdrops or tokens
-                earned by contributing users.
+                fully-on-chain governance, but the tokenization of the dapp can
+                help drive adoption and user engagement: think of airdrops to or
+                tokens earned by contributing users, such as content moderators
+                in a social media platform.
+              </motion.p>
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                Tokenization enables fully-on-chain dapp governance.
               </motion.p>
             </Card>
             <Card
@@ -262,26 +292,40 @@ function SnsPage() {
               icon={<IconScalable aria-hidden="true" />}
             >
               <motion.p
+                className="mb-6 tw-paragraph"
+                variants={transitions.item}
+              >
+                Decentralizing dapps through SNSs brings decentralization to the
+                application layer. This makes the Internet Computer (ICP) and
+                dapps running on it decentralized from ground up, with multiple
+                layers of decentralization. First layer: Platform. The ICP
+                blockchain runs on decentralized node machines distributed
+                throughout the world, operated by independent entities, and
+                hosted in independent data centers. Second layer: Platform
+                governance. The Network Nervous System (NNS) is a decentralized
+                governance system for the ICP blockchain. Third layer:
+                Applications. Dapps assigned to SNS DAOs are decentrally
+                governed and running on the decentralized ICP platform.
+              </motion.p>
+              <motion.p
+                className="mb-6 tw-paragraph"
+                variants={transitions.item}
+              >
+                Full-stack decentralization — the ICP blockchain itself, the
+                blockchain platform governance, and the governance of the
+                individual dapps running on the SNS platform — enables truly
+                decentralized apps.
+              </motion.p>
+              <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
               >
-                Decentralizing dapps through SNSs is the third level of
-                decentralization on the IC. The first level is the IC blockchain
-                that runs on decentralized node machines distributed throughout
-                the world, operated by independent entities, and hosted in
-                independent data centers. The second level is the Network
-                Nervous System (NNS) that governs the decentralized IC
-                blockchain. The third level is the SNS-based decentralization of
-                dapps running on the decentrally-governed decentralized
-                platform. Only such decentralization on every level — the
-                platform itself, the platform's governance, and the governance
-                of the individual dapps running on this platform — enables truly
-                decentralized apps. Only possible on the IC.
+                This is only possible on the Internet Computer.
               </motion.p>
             </Card>
           </div>
         </section>
-        <section className="text-white relative pt-52 pb-20 md:pb-40 md:pt-80 container-12">
+        <section className="text-white relative pt-52 md:pt-80 container-12">
           <AnimateSpawn
             el={motion.img}
             variants={transitions.fadeIn}
@@ -297,7 +341,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Have an SNS Transform Your Web3 App into a True Dapp
+              Decentralize Your Web3 App with SNS
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
@@ -310,18 +354,17 @@ function SnsPage() {
           >
             <MotionLink
               variants={transitions.fadeIn}
-              className="button-outline-white"
+              className="button-white"
               href="/docs/current/developer-docs/integrations/sns/get-sns/get-sns-intro/"
             >
               Launch an SNS DAO
             </MotionLink>
             <MotionLink
-              className="link-white link-with-icon"
+              className="button-outline-white text-center md:text-left"
               href="/sns/faq"
               variants={transitions.fadeIn}
             >
-              <LinkArrowRight></LinkArrowRight>
-              How to participate (FAQ)
+              WHat you need to know (FAQ)
             </MotionLink>
           </AnimateSpawn>
           <AnimateSpawn
@@ -366,6 +409,122 @@ function SnsPage() {
             </motion.div>
           </AnimateSpawn>
         </section>
+
+        <section className="relative pt-20 pb-20 md:pb-40 md:pt-40 container-12">
+          <AnimateSpawn
+            className="mx-auto text-center sm:w-6/12 "
+            variants={transitions.container}
+          >
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-8"
+              variants={transitions.item}
+            >
+              <span className="text-gradient">Roadmap</span>
+            </motion.h2>
+            <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
+              Based on the findings of a first test run, the following roadmap
+              was created to resolve blockers, make tech improvements, and
+              introduce new features to each stage of an SNS DAO, so that your
+              dapps can successfully thrive.
+            </motion.p>
+            <motion.p className="mb-0">
+              <Link href="" className="button-outline">
+                Get more details on the roadmap
+              </Link>
+            </motion.p>
+          </AnimateSpawn>
+
+          <div className="flex flex-col md:flex-row gap-12 mt-24 md:gap-5">
+            <div className="flex-1 bg-white rounded-xl p-12 relative py-12 px-8">
+              <RoadmapLabel variant="blue">Q1 - 2023</RoadmapLabel>
+
+              <h3 className="tw-heading-4 mb-8">P0</h3>
+              <h4 className="tw-heading-7-caps text-black-60 mb-1">
+                SNS Pre-launch Prep
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Tokenomics Configuration</li>
+                <li>Developer Tooling (on-chain SNS testflight)</li>
+              </ul>
+
+              <h4 className="tw-heading-7-caps text-black-60 mb-1 mt-8">
+                SNS Launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Scalability of Decentralization Sale</li>
+                <li>Sale Payment Flow (ticketing)</li>
+                <li>Sale Payment Flow (retries)</li>
+                <li>Community Fund</li>
+                <li>
+                  Time Gap between NNS proposal adoption & start of
+                  decentralization sale
+                </li>
+              </ul>
+              <h4 className="tw-heading-7-caps text-black-60 mb-1 mt-8">
+                SNS Post-launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>SNS-1 Bug Fixes</li>
+              </ul>
+            </div>
+            <div className="flex-1 bg-infinite text-white rounded-xl p-12 relative py-12 px-8">
+              <RoadmapLabel variant="white">Current</RoadmapLabel>
+
+              <h3 className="tw-heading-4 mb-8">P1</h3>
+              <h3 className="tw-heading-4 mb-8">Improvements</h3>
+              <h4 className="tw-heading-7-caps text-white-60 mb-1">
+                SNS Pre-launch prep
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Reduction of off-chain dependencies</li>
+              </ul>
+              <h4 className="tw-heading-7-caps text-white-60 mb-1 mt-8">
+                SNS Launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Bot mitigation </li>
+                <li>User Participation Documentation</li>
+              </ul>
+              <h4 className="tw-heading-7-caps text-white-60 mb-1 mt-8">
+                SNS Post-launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>
+                  SNS neuron commands and token wallet on the NNS Frontend
+                </li>
+                <li>SNS Dashboard</li>
+              </ul>
+            </div>
+            <div className="flex-1 bg-white rounded-xl p-12 relative py-12 px-8">
+              <RoadmapLabel variant="blue">Q3 - 2023</RoadmapLabel>
+
+              <h3 className="tw-heading-4 mb-8">P2</h3>
+              <h4 className="tw-heading-7-caps text-black-60 mb-1">
+                SNS Pre-launch Prep
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Developer Tooling (local SNS testing)</li>
+              </ul>
+
+              <h4 className="tw-heading-7-caps text-black-60 mb-1 mt-8">
+                SNS Launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Sale Payment Flow with ICRC-2</li>
+                <li>One Proposal SNS Initiation</li>
+                <li>User-friendly Airdrop Flow </li>
+              </ul>
+              <h4 className="tw-heading-7-caps text-black-60 mb-1 mt-8">
+                SNS Post-launch
+              </h4>
+              <ul className="list-none p-0 tw-lead-sm mb-0">
+                <li>Automated Cycle Support</li>
+                <li>SNS Voting on NNS Frontend </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section className=" bg-infinite text-white overflow-hidden">
           <AnimateSpawn
             className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20  md:py-24 relative  flex flex-col justify-center"
@@ -387,11 +546,14 @@ function SnsPage() {
                 SNS-1: The First of its Kind
               </motion.h2>
 
-              <motion.p variants={transitions.item} className="tw-lead-sm mb-3 md:w-1/2">
+              <motion.p
+                variants={transitions.item}
+                className="tw-lead-sm mb-3 md:w-1/2"
+              >
                 SNS-1 was a dress rehearsal that DFINITY ran together with the
-                ICP community to test an SNS decentralization sale on the
-                mainnet. After a successful SNS launch, SNS-1 is now controlled
-                by the community.
+                ICP community to test an SNS decentralization sale on mainnet.
+                After a successful SNS launch, SNS-1 is now controlled by the
+                community.
               </motion.p>
               <motion.p variants={transitions.item}>
                 <Link
@@ -413,8 +575,28 @@ function SnsPage() {
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
-          className="container-10 mt-24 md:mt-30"
+          className="container-10 mt-24 md:mt-40"
         >
+          <div className="flex flex-col md:flex-row gap-6 md:gap-5 mb-16">
+            <h2 className="tw-heading-3 md:tw-heading-60 text-gradient md:w-4/10 mb-0">
+              Get to Know
+              <br />
+              SNS DAOs
+            </h2>
+            <div className="md:w-4/10 flex flex-col justify-center">
+              <p className="mb-4 tw-lead-sm">
+                Lorem ipsum dolor sit amet consectetur. Porttitor dapibus mattis
+                ullamcorper ut nunc venenatis eros.
+              </p>
+              <p className="mb-0">
+                <Link className="link-primary link-with-icon">
+                  Explore more videos
+                  <LinkArrowUpRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+
           <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
             <Link
               className="md:w-7/10 h-full flex relative group"
@@ -445,101 +627,47 @@ function SnsPage() {
             </div>
           </div>
         </AnimateSpawn>
+
         <AnimateSpawn
           el={motion.section}
-          className="container-10 py-24 md:py-40 relative"
           variants={transitions.container}
+          className="container-12 mb-20 px-6 md:mb-40 mt-20 md:mt-40"
         >
-          <div className="">
-            <AnimateSpawn
-              el={motion.img}
-              variants={transitions.item}
-              src={BlobBlue}
-              className="absolute pointer-events-none
-              max-w-none
-              w-[1000px]
-              bottom-[-400px]
-              right-[-600px]
-              sm:bottom-[-600px]
-              sm:w-[1200px]
-              sm:right-[-500px]
-            "
+          <motion.p
+            variants={transitions.item}
+            className="tw-heading-4 md:tw-heading-60 text-center mb-2 w-full mx-auto md:mb-6 md:w-8/12"
+          >
+            Explore Further
+          </motion.p>
+          <motion.p
+            variants={transitions.item}
+            className="tw-lead-sm md:tw-lead mb-2 text-center w-5/6 mx-auto md:mb-6 md:w-6/12"
+          >
+            Lorem ipsum dolor sit amet consectetur. At morbi augue sem vel vitae
+            imperdiet vitae eleifend sit. Vel ac leo in augue in penatibus. In
+            aliquet tincidunt massa leo bibendum. In.
+          </motion.p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
+            <CardWithDescription
+              title="SNS FAQ"
+              description=""
+              href="/sns/faq"
             />
-          </div>
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-1/10">
-            <motion.div variants={transitions.item} className="flex-1">
-              <motion.h2
-                className="tw-heading-5 md:tw-heading-3 mb-10 md:mb-16"
-                variants={transitions.item}
-              >
-                What an SNS DAO is <span className="text-razzmatazz">NOT</span>
-              </motion.h2>
-              <div className="md:w-8/10">
-                <h3 className="tw-heading-6 md:tw-heading-5 mb-4">
-                  Not an ICO
-                </h3>
-                <p className="tw-paragraph mb-10">
-                  No funds are directly handed over to developers. The creation
-                  of an SNS is initiated by a decentralized entity (
-                  <Link
-                    className="text-infinite underline hover:no-underline hover:text-black"
-                    href="https://nns.ic0.app/"
-                  >
-                    the NNS
-                  </Link>
-                  ), and ICP raised by the decentralization sale is allocated to
-                  the treasury of the newly born SNS DAO. The founders receive a
-                  portion of the NNS DAO tokens in the form of locked neurons.
-                </p>
-                <h3 className="tw-heading-6 md:tw-heading-5 mb-4">
-                  Not an IPO
-                </h3>
-                <p className="tw-paragraph">
-                  This is not a liquidity exit or a public listing. It’s the
-                  start of a new journey where you as the initial creator and
-                  your users have the opportunity to form a digital community,{" "}
-                  <strong>100% on-chain</strong>, to co-evolve and grow the
-                  platform or application.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div variants={transitions.item} className="flex-1">
-              <motion.h2
-                className="tw-heading-5 md:tw-heading-3 mb-10 md:mb-16"
-                variants={transitions.item}
-              >
-                What an SNS DAO <span className="text-blue">IS</span>
-              </motion.h2>
-              <div
-                className="
-                  md:w-8/10
-                  prose
-                  prose-h3:tw-heading-6 prose-h3:md:tw-heading-5 prose-h3:mb-4
-                  prose-p:tw-paragraph prose-p:mb-3
-                  prose-ul:mb-4 prose-ul:list-none prose-ul:pl-0 prose-ul:tw-paragraph
-                  prose-li:bg-[url('/img/checkmark.svg')] prose-li:bg-no-repeat prose-li:bg-left-top prose-li:pl-8 prose-li:my-3 prose-li:leading-6
-                  "
-              >
-                <h3>Decentralization Sale</h3>
-                <p>Launching an SNS DAO requires the following:</p>
-                <ul>
-                  <li>An existing Web3 dapp to be decentralized.</li>
-                  <li>
-                    Submission of an NNS proposal requesting a decentralization
-                    sale.
-                  </li>
-                  <li>NNS approval of the decentralization sale.</li>
-                  <li>ICP investments to meet minimum funding requirements.</li>
-                </ul>
-                <p>
-                  Once these steps are completed, newly minted SNS governance
-                  tokens are distributed among participants of the sale and the
-                  developers who now control the SNS DAO. Proceeds from this
-                  initial decentralization sale are put in a treasury used for
-                  funding the future development of the dapp.
-                </p>
-              </div>
-            </motion.div>
+            <CardWithDescription
+              title="SNS Docs"
+              description=""
+              href="/docs/current/developer-docs/integrations/sns"
+            />
+            <CardWithDescription
+              title="SNS Blog"
+              description=""
+              href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c"
+            />
+            <CardWithDescription
+              title="SNS Wiki"
+              description=""
+              href="https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)"
+            />
           </div>
         </AnimateSpawn>
       </main>
