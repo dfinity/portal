@@ -91,8 +91,160 @@
       "/img/showcase/infinityswap_screenshot_0.webp"
     ]
   },
-
+ {
+    "id": "openchat",
+    "name": "OpenChat",
+    "oneLiner": "Decentralized alternative to WhatsApp",
+    "website": "https://oc.app/",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "stats": "40,000+ users",
+    "logo": "/img/showcase/openchat_logo.webp",
+    "screenshots": [
+      "/img/showcase/openchat-screenshot.webp"
+    ]
+  },
   {
+    "id": "internetcomputerorgwebsite",
+    "name": "ICP website",
+    "oneLiner": "Educational website for the Internet Computer",
+    "website": "https://internetcomputer.org",
+    "github": "https://github.com/dfinity/portal",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a React web app hosted entirely on the IC.",
+    "display": "Normal",
+    "logo": "/img/showcase/internetcomputerorgwebsite_logo.webp",
+    "screenshots": [
+      "/img/showcase/internetcomputerorgwebsite_screenshot_0.webp"
+    ]
+  },
+ 
+  {
+    "id": "bitfinitywallet",
+    "name": "Bitfinity Wallet",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dApps on the Internet Computer.",
+    "website": "https://wallet.infinityswap.one/",
+    "tags": [
+      "Wallet"
+    ],
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
+    "display": "Large",
+    "logo": "/img/showcase/bitfinitywallet_logo.webp",
+    "videoContentType": "video/mp4",
+    "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
+  },
+    {
+    "id": "uniswapfrontendontheic",
+    "name": "Uniswap Front End on the IC",
+    "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
+    "oneLiner": "Front-End On-Chain",
+    "display": "Normal",
+    "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
+    "video": "/img/showcase/uniswapfrontendontheic_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": []
+  },
+  {
+    "id": "seers",
+    "name": "Seers",
+    "website": "https://seers.social/",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Decentralized and 100% on-chain. Web3 alternative to Twitter with DeFi, NFTs, DAOs and prediction markets all in one place.",
+    "stats": "5,000 users + TVL",
+    "display": "Normal",
+    "logo": "/img/showcase/seers_logo.webp",
+    "screenshots": []
+  },
+   {
+    "id": "papyrs",
+    "name": "Papyrs",
+    "website": "https://app.papy.rs",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "An open-source, privacy-first, decentralized blogging platform that lives 100% on chain. Your voice is unstoppable, your data are your own.",
+    "github": "https://github.com/papyrs/papyrs",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/papyrs_logo.webp",
+    "screenshots": [
+      "/img/showcase/papyrs_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "taggr",
+    "name": "Taggr",
+    "website": "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app/#/",
+    "tags": [
+      "SocialFi"
+    ],
+    "twitter": "https://twitter.com/TaggrNetwork",
+    "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/taggr_logo.webp",
+    "screenshots": [
+      "/img/showcase/taggr_screenshot_0.webp"
+    ]
+  },
+    {
+    "id": "funded",
+    "name": "Funded",
+    "website": "https://crowdfund-nft.com/",
+    "tags": [
+      "SocialFi", 
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/funded_app",
+    "description": "Web-3 crowdfunding! Using smart contract technology to build a safer, cheaper and global crowdfunding service.",
+    "stats": "39.000+ ICP funded",
+    "display": "Normal",
+    "logo": "/img/showcase/funded_logo.webp",
+    "screenshots": []
+  },
+    {
+    "id": "icdex",
+    "name": "ICDex",
+    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "ICDex is flagship product by ICLighthouse, it is an orderbook DEX that runs 100% on-chain, a world-first.",
+    "stats": "Supports ckBTC",
+    "twitter": "https://twitter.com/ICLighthouse",
+    "display": "Normal",
+    "logo": "/img/showcase/icdex_logo.webp",
+    "screenshots": []
+  },
+  {
+    "id": "dank",
+    "name": "Dank",
+    "oneLiner": "Decentralized Cycles Bank",
+    "website": "https://dank.ooo/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/psychedelicDAO",
+    "description": "Dank is the first Decentralized Bank built on the Internet Computer, developed by Fleek. Through a collection of Open Internet Services for users and developers, Dank makes cycles management seamless.",
+    "logo": "/img/showcase/dank_logo.webp",
+    "screenshots": [
+      "/img/showcase/dank_screenshot_0.webp"
+    ]
+  },
+   {
     "id": "unfoldvr",
     "name": "UnfoldVR",
     "oneLiner": "Decentralizing asset Creation and Discovery for the Metaverse",
@@ -148,20 +300,6 @@
     ]
   },
   {
-    "id": "bitfinitywallet",
-    "name": "Bitfinity Wallet",
-    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dApps on the Internet Computer.",
-    "website": "https://wallet.infinityswap.one/",
-    "tags": [
-      "Wallet"
-    ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
-    "display": "Large",
-    "logo": "/img/showcase/bitfinitywallet_logo.webp",
-    "videoContentType": "video/mp4",
-    "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
-  },
-  {
     "id": "origyn",
     "name": "Origyn",
     "oneLiner": "NFT-Based Authentication for Luxury Goods ",
@@ -177,39 +315,7 @@
       "/img/showcase/origyn_screenshot_0.webp"
     ]
   },
-  {
-    "id": "openchat",
-    "name": "OpenChat",
-    "oneLiner": "Decentralized alternative to WhatsApp",
-    "website": "https://oc.app/",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
-    "usesInternetIdentity": true,
-    "display": "Large",
-    "stats": "40,000+ users",
-    "logo": "/img/showcase/openchat_logo.webp",
-    "screenshots": [
-      "/img/showcase/openchat-screenshot.webp"
-    ]
-  },
-  {
-    "id": "internetcomputerorgwebsite",
-    "name": "ICP website",
-    "oneLiner": "Educational website for the Internet Computer",
-    "website": "https://internetcomputer.org",
-    "github": "https://github.com/dfinity/portal",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a React web app hosted entirely on the IC.",
-    "display": "Normal",
-    "logo": "/img/showcase/internetcomputerorgwebsite_logo.webp",
-    "screenshots": [
-      "/img/showcase/internetcomputerorgwebsite_screenshot_0.webp"
-    ]
-  },
+ 
   {
     "id": "cubetopia",
     "name": "Cubetopia",
@@ -245,21 +351,7 @@
     ]
   },
 
-  {
-    "id": "uniswapfrontendontheic",
-    "name": "Uniswap Front End on the IC",
-    "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
-    "oneLiner": "Front-End On-Chain",
-    "display": "Normal",
-    "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
-    "video": "/img/showcase/uniswapfrontendontheic_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
-  },
+
   {
     "id": "sly",
     "name": "SLY",
@@ -277,96 +369,8 @@
       "/img/showcase/sly_screenshot_0.webp"
     ]
   },
-  {
-    "id": "seers",
-    "name": "Seers",
-    "website": "https://seers.social/",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "Decentralized and 100% on-chain. Web3 alternative to Twitter with DeFi, NFTs, DAOs and prediction markets all in one place.",
-    "stats": "5,000 users + TVL",
-    "display": "Normal",
-    "logo": "/img/showcase/seers_logo.webp",
-    "screenshots": []
-  },
-    {
-    "id": "funded",
-    "name": "Funded",
-    "website": "https://crowdfund-nft.com/",
-    "tags": [
-      "SocialFi", 
-      "DeFi"
-    ],
-    "twitter": "https://twitter.com/funded_app",
-    "description": "Web-3 crowdfunding! Using smart contract technology to build a safer, cheaper and global crowdfunding service.",
-    "stats": "39.000+ ICP funded",
-    "display": "Normal",
-    "logo": "/img/showcase/funded_logo.webp",
-    "screenshots": []
-  },
-    {
-    "id": "icdex",
-    "name": "ICDex",
-    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "ICDex is flagship product by ICLighthouse, it is an orderbook DEX that runs 100% on-chain, a world-first.",
-    "stats": "Supports ckBTC",
-    "twitter": "https://twitter.com/ICLighthouse",
-    "display": "Normal",
-    "logo": "/img/showcase/icdex_logo.webp",
-    "screenshots": []
-  },
-  {
-    "id": "dank",
-    "name": "Dank",
-    "oneLiner": "Decentralized Cycles Bank",
-    "website": "https://dank.ooo/",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure"
-    ],
-    "twitter": "https://twitter.com/psychedelicDAO",
-    "description": "Dank is the first Decentralized Bank built on the Internet Computer, developed by Fleek. Through a collection of Open Internet Services for users and developers, Dank makes cycles management seamless.",
-    "logo": "/img/showcase/dank_logo.webp",
-    "screenshots": [
-      "/img/showcase/dank_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "papyrs",
-    "name": "Papyrs",
-    "website": "https://app.papy.rs",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "An open-source, privacy-first, decentralized blogging platform that lives 100% on chain. Your voice is unstoppable, your data are your own.",
-    "github": "https://github.com/papyrs/papyrs",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/papyrs_logo.webp",
-    "screenshots": [
-      "/img/showcase/papyrs_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "taggr",
-    "name": "Taggr",
-    "website": "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app/#/",
-    "tags": [
-      "SocialFi"
-    ],
-    "twitter": "https://twitter.com/TaggrNetwork",
-    "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/taggr_logo.webp",
-    "screenshots": [
-      "/img/showcase/taggr_screenshot_0.webp"
-    ]
-  },
+  
+ 
   {
     "id": "sudograph",
     "name": "Sudograph",
