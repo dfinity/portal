@@ -95,18 +95,23 @@ function EthDenverPage() {
                   className="tw-lead-sm md:tw-lead mb-10 md:mb-16"
                   variants={transitions.item}
                 >
-                  <Link className="link-white link-with-icon" href="">
+                  <Link
+                    className="link-white link-with-icon"
+                    href="https://twitter.com/dfinity"
+                  >
                     <TwitterIcon />
                     Follow us on Twitter for updates
                   </Link>
                 </motion.p>
 
-                <motion.img
-                  variants={transitions.item}
-                  src="/img/ethdenver/logo.webp"
-                  alt=""
-                  className="md:w-80"
-                />
+                <Link href="https://www.ethdenver.com/">
+                  <motion.img
+                    variants={transitions.item}
+                    src="/img/ethdenver/logo.webp"
+                    alt=""
+                    className="md:w-80"
+                  />
+                </Link>
               </div>
               <div className="flex-1 relative z-10 hidden md:block">
                 <motion.img
@@ -164,7 +169,7 @@ function EthDenverPage() {
           </AnimateSpawn>
           <div className="mt-12 md:mt-0 mb-20 md:mb-30">
             <AnimateSpawn
-              className="flex gap-5 items-start flex-col md:flex-row"
+              className="flex gap-5 items-stretch md:items-start flex-col md:flex-row"
               variants={transitions.container}
             >
               <motion.div
@@ -258,8 +263,8 @@ function EthDenverPage() {
           <div className="container-10 relative mb-16 md:mb-20">
             <div className="blob blob-md blob-white blob-top-right"></div>
 
-            <div className="md:w-5/10">
-              <h2 className="md:tw-heading-60 md:mb-8">
+            <div className="md:w-8/10">
+              <h2 className="tw-heading-4 md:tw-heading-2 md:mb-8">
                 #ICP Events
                 <br />@ ETHDenver 2023
               </h2>
