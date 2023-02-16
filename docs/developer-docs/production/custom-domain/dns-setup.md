@@ -17,7 +17,7 @@ domain in the Namecheap dashboard.
 
 * _Apex_ - To configure the apex of the domain (e.g., `ic-domain.live`), add the following records by
 clicking on "Add new record":
-  * Create an `ALIAS` Record for which you set the host field to `@` and the target field to `ic0.app`;
+  * Create an `ALIAS` Record for which you set the host field to `@` and the target field to `icp1.io`;
   * Create a `CNAME` Record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`;
   * Create a `TXT` Record for which you set the host field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -27,7 +27,7 @@ clicking on "Add new record":
 
 * _Subdomain_ - To configure a subdomain (e.g., `example.ic-domain.live`), add the following records
 by clicking on "Add new record":
-  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `ic0.app`;
+  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
   * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.live.icp2.io`;
   * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -99,7 +99,7 @@ to make use of a workaround.
 
     * Add the following records to configure your domain:
       * Create a `CNAME` record for which you set the name field to `@` and the
-      target field to `ic0.app`;
+      target field to `icp1.io`;
       * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.online.icp2.io`;
       * Create a `TXT` record for which you set the name field to `_canister-id` and the content field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -129,7 +129,7 @@ to make use of a workaround.
 
 * _Subdomain_ - To configure a subdomain (e.g., `example.ic-domain.live`), add the following records
 by clicking on "Add new record":
-  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `ic0.app`;
+  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
   * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.online.icp2.io`;
   * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 

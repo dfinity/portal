@@ -29,7 +29,7 @@ a concrete example. Finally, we explain how one can update and remove a registra
 ### First Registration
 
 1. Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
-    * Add a `CNAME` entry for your domain pointing to `ic0.app` such that all the traffic destined to your domain is redirected to the boundary nodes;
+    * Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
     * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
@@ -86,7 +86,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
     | Record Type   | Host                        | Value                               |
     |---------------|-----------------------------|-------------------------------------|
-    | `CNAME`       | foo.bar.com                 | ic0.app                             |
+    | `CNAME`       | foo.bar.com                 | icp1.io                             |
     | `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
     | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
