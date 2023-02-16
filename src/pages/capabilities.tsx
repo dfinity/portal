@@ -105,7 +105,7 @@ function FeaturesPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-6"
                 variants={transitions.item}
               >
-                Internet Computer Capabilities
+                World Computer Capabilities
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
