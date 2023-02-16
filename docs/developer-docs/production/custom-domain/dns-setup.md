@@ -66,11 +66,11 @@ to make use of a workaround.
 
   __Directly configure the IP addresses__
 
-  * First, you need to look up the IP addresses of the boundary nodes. To this
+  * First, you need to look up the IP addresses of the boundary nodes (`icp1.io`). To this
   end, use an online DNS lookup service (e.g., [nslookup.io](https://nsloopup.io))
   and take a note of the IPv4- and IPv6-addresses, the `A` and `AAAA` records, respectively.
 
-    ![Resulting `A` and `AAAA` records from querying `ic0.app` on nslookup.io](nslookup-results.png)
+    ![Resulting `A` and `AAAA` records from querying `icp1.io` on nslookup.io](nslookup-results.png)
 
   * In the "DNS Management" pane in your GoDaddy account, add the following DNS records:
 
