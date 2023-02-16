@@ -71,6 +71,10 @@ module.exports = {
         60: "#6E52AA",
       },
       transparent: "transparent",
+      grey: {
+        300: "#dfdfdf",
+        500: "#b6b6b6",
+      },
       black: {
         DEFAULT: "#181818",
         60: "rgba(24, 24, 24, 0.6)",
@@ -88,6 +92,9 @@ module.exports = {
       },
       green: {
         DEFAULT: "#18D0B5",
+      },
+      red: {
+        DEFAULT: "#EC008C",
       },
       razzmatazz: {
         DEFAULT: "#DA3979",
@@ -141,6 +148,7 @@ module.exports = {
         },
         {
           values: Object.assign(theme("bgGradientDeg", {}), {
+            141: "141deg",
             100: "100deg",
             30: "30deg",
           }),
@@ -178,6 +186,9 @@ module.exports = {
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
