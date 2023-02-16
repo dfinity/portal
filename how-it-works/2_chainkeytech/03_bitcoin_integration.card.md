@@ -1,10 +1,10 @@
 ---
 title: Bitcoin integration
 abstract: This feature enables canisters to hold and transfer bitcoin, making it possible to build Bitcoin smart contracts.
-coverImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
+coverImage: /img/how-it-works/btc-content.1200x600.jpg
 ---
 
-![](/img/how-it-works/direct-integration-with-bitcoin.600x300.jpg)
+![](/img/how-it-works/btc-content.600x300.webp)
 
 # Bitcoin integration
 

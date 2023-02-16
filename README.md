@@ -187,3 +187,62 @@ Please make sure to add appropriate tags to make the tool easy to discover for o
 You can submit your sample project to be displayed on the [Samples page](https://internetcomputer.org/samples).
 
 Add your submission to [the community projects file](/community/communityProjects.ts) and open a pull request. You can use an editor with TypeScript support to make sure your submission follows [the schema](/src/components/Common/sampleItems.ts).
+
+## Showcase submission guidelines
+
+_Disclaimer: You should have a working canister for your product to be showcased. Our team will review the PR and get back to you for any further questions. In the meantime, please contact devcomms@dfinity.org if you have any questions._
+
+Add your project to the end of [`showcase.json`](/showcase.json). Refer to the object schema below for the required fields.
+
+Make up a unique project id. For example, if your project is called `Awesome ICP Project!`, your project id could be `awesome-icp-project`.
+
+Your logo/video/screenshots files should be prefixed with your project id, and placed in the `/static/img/showcase` folder. For example, if your project id is `awesome-icp-project`, your logo file should be named `awesome-icp-project_logo.webp` and placed in the `/static/img/showcase` folder.
+
+### Asset guidelines
+
+| Asset       |          | Requirements | Format       | Notes                                                                             |
+| ----------- | -------- | ------------ | ------------ | --------------------------------------------------------------------------------- |
+| logo        | required | 112x112px    | webp/svg/png | Currently displayed 56x56px                                                       |
+| screenshots | optional | 1024x576px   | webp/jpg     | The schema supports multiple files, but only the first one will be displayed      |
+| video       | optional | max 10MB     | webm/mp4     | If there is a video file specified, it will be displayed instead of a screenshot. |
+
+### Tags
+
+The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
+
+- `Wallet`
+- `NFT`
+- `SocialFi`
+- `DeFi`
+- `Games`
+- `DAO`
+- `Metaverse`
+- `Tools / Infrastructure`
+
+### Object schema
+
+```
+  {
+    id: string,
+    name: string,
+    oneLiner: string, // short description of the project
+    website: string, // URL starting with `https://`
+
+    tags: ('Wallet' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
+    description: string, // description of the project
+    usesInternetIdentity: boolean,
+    stats: string, // eg. "10,000 users"
+    logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
+
+    github?: string, // full URL to github repo, if available
+    youtube?: string, // full URL to a YouTube video or channel, if available
+    twitter?: string, // full URL to a twitter account, if available
+
+    screenshots?: string[], // optional array of urls to screenshot files
+
+    video?: string, // optional url to video file, eg. /img/showcase/awesome-icp-project_video.webm
+    videoContentType?: 'video/webm' | 'video/mp4', // to feed into the type attribute of the video/source element
+
+    submittableId?: string, // optional id of the submittable form
+  },
+```
