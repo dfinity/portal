@@ -186,6 +186,6 @@ If you have set up a recovery phrase or recovery security key for an Identity An
 1. Visit https://identity.internetcomputer.org with your browser.
 2. Select "Manage existing" or "More options".
 3. Select "Lost Access?"
-Make sure you have a recovery phrase, and if you already have one, be sure that you can use it. Click “More Options” -> “Lost Access?” on the landing page to use the recovery phrase.
-Important: Recovery devices (External Hardware) will not work on identity.internetcomputer.org.
+
+:::caution Recovery devices (External Hardware) will not work on identity.internetcomputer.org.
 
