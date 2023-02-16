@@ -173,7 +173,7 @@ If you have set up a recovery phrase or recovery security key for an Identity An
 
 ## How to connect your anchor to identity.internetcomputer.org using a trusted device
 
-:::note This flow requires that https://identity.ic0.app is still accessible. If you cannot connect to https://identity.ic0.app you will need to [use your recovery phrase](#migrate-recovery-phrase).
+:::note This flow requires that you can access https://identity.ic0.app. If you cannot connect to https://identity.ic0.app you will need to [use your recovery phrase](#migrate-recovery-phrase).
 
 1. Visit https://identity.internetcomputer.org with your browser.
 2. Select "Manage existing" or "More options".
