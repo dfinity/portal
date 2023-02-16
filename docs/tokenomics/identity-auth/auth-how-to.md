@@ -186,6 +186,10 @@ If you have set up a recovery phrase or recovery security key for an Identity An
 1. Visit https://identity.internetcomputer.org with your browser.
 2. Select "Manage existing" or "More options".
 3. Select "Lost Access?"
+4. Enter your recovery phrase
+5. Add the current device to your anchor by selecting
+  1. Add new device
+  2. Hardware
 
 :::caution Recovery devices (External Hardware) added on https://identity.ic0.app will not work on https://identity.internetcomputer.org!
 
