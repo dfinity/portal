@@ -95,7 +95,7 @@ export default function Hero(): JSX.Element {
               </Link>
               <Link
                 className="link-primary link-with-icon mb-3"
-                href="/features"
+                href="/capabilities"
               >
                 <LinkArrowRight />
                 Internet Computer capabilties

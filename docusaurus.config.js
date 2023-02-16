@@ -169,8 +169,8 @@ const config = {
                 href: "/ecosystem",
               },
               {
-                label: "Features",
-                href: "/features",
+                label: "Capabilities",
+                href: "/capabilities",
               },
               {
                 label: "Basics",
