@@ -187,5 +187,5 @@ If you have set up a recovery phrase or recovery security key for an Identity An
 2. Select "Manage existing" or "More options".
 3. Select "Lost Access?"
 
-:::caution Recovery devices (External Hardware) will not work on identity.internetcomputer.org.
+:::caution Recovery devices (External Hardware) added on https://identity.ic0.app will not work on https://identity.internetcomputer.org!
 
