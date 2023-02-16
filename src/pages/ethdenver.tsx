@@ -21,8 +21,8 @@ function EthDenverPage() {
 
   return (
     <Layout
-      title="ETHDenver"
-      description={`Visit us at the ICP Booth March 2nd - 5th, 2023`}
+      title="Internet Computer blockchain @ ETHDenver 2023"
+      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain Dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethdenver.jpg"></ShareMeta>
@@ -42,7 +42,7 @@ function EthDenverPage() {
             }}
             ref={heroRef}
           >
-            <div className="container-12 pt-20 mb-20 md:mb-30 md:pt-36 relative flex flex-col md:flex-row">
+            <div className="container-12 pt-20 mb-20 md:mb-20 md:pt-36 relative flex flex-col md:flex-row">
               <div className="absolute -top-3/10 -right-2/10 w-[768px] aspect-square rounded-full opacity-40 bg-[#CB7EF1] mix-blend-color-dodge blur-[346px]"></div>
 
               <div className="md:w-5/12 md:ml-1/12 relative">
@@ -60,10 +60,9 @@ function EthDenverPage() {
                   className="tw-lead md:tw-title-sm mb-12 md:mb-8"
                   variants={transitions.item}
                 >
-                  Visit us at the ICP Booth
-                  <br />@ ETHDenver 2023
+                  Visit us @ ETHDenver 2023
                   <br />
-                  March 2nd - 5th, 2023
+                  February 24 - March 5, 2023
                 </motion.p>
                 <motion.img
                   src="/img/ethdenver/astronaut.webp"
@@ -87,20 +86,27 @@ function EthDenverPage() {
                   className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                   variants={transitions.item}
                 >
-                  Unleash the full potential of Web3 with Dapps that run
-                  lightning fast on the Internet Computer blockchain. The future
-                  of the internet in a fully decentralized ecosystem.
+                  Lightning fast and fully on-chain Dapps running on the
+                  Internet Computer blockchain, the only true World Computer
+                  that enables a fully decentralized ecosystem.
                 </motion.p>
 
                 <motion.p
-                  className="tw-lead-sm md:tw-lead mb-0"
+                  className="tw-lead-sm md:tw-lead mb-10 md:mb-16"
                   variants={transitions.item}
                 >
                   <Link className="link-white link-with-icon" href="">
-                    <LinkArrowRight />
-                    Stay tuned for the event
+                    <TwitterIcon />
+                    Follow us on Twitter for updates
                   </Link>
                 </motion.p>
+
+                <motion.img
+                  variants={transitions.item}
+                  src="/img/ethdenver/logo.webp"
+                  alt=""
+                  className="md:w-80"
+                />
               </div>
               <div className="flex-1 relative z-10 hidden md:block">
                 <motion.img
