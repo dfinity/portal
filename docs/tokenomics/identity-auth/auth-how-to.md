@@ -170,3 +170,22 @@ If you have set up a recovery phrase or recovery security key for an Identity An
 **3. Input your seed phrase**
 
 ![your seed phrase](../_attachments/your-seed-phrase.png)
+
+## How to connect your anchor to identity.internetcomputer.org using a trusted device
+
+:::note This flow requires that https://identity.ic0.app is still accessible. If you cannot connect to https://identity.ic0.app you will need to [use your recovery phrase](#migrate-recovery-phrase).
+
+1. Visit https://identity.internetcomputer.org with your browser.
+2. Select "Manage existing" or "More options".
+3. Select “Add a new device?” and follow the instructions shown on the screen on any device where you have access to https://identity.ic0.app. It can also be the same device.
+
+## How to recover your anchor on identity.internetcomputer.org using a recovery phrase {#migrate-recovery-phrase}
+
+:::note This flow requires a recovery phrase. If you have not done so already, go to https://identity.ic0.app and add one by authenticating and selecting "Add recovery method" on the anchor management page.
+
+1. Visit https://identity.internetcomputer.org with your browser.
+2. Select "Manage existing" or "More options".
+3. Select "Lost Access?"
+Make sure you have a recovery phrase, and if you already have one, be sure that you can use it. Click “More Options” -> “Lost Access?” on the landing page to use the recovery phrase.
+Important: Recovery devices (External Hardware) will not work on identity.internetcomputer.org.
+
