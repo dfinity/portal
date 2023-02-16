@@ -67,11 +67,11 @@ a concrete example. Finally, we explain how one can update and remove a registra
         https://ic0.app/registrations/REQUEST_ID
     ```
     The status will be one of the following:
-    * `pendingOrder`: The registration request has been submitted and is waiting to be picked up.
-    * `pendingChallengeResponse`: The certificate has been ordered.
-    * `pendingAcmeApproval`: The challenge has been completed.
-    * `available`: The registration request has been successfully processed.
-    * `failed`: The registration request failed.
+    * `PendingOrder`: The registration request has been submitted and is waiting to be picked up.
+    * `PendingChallengeResponse`: The certificate has been ordered.
+    * `PendingAcmeApproval`: The challenge has been completed.
+    * `Available`: The registration request has been successfully processed.
+    * `Failed`: The registration request failed.
 1. Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. After that, you should be able to access your canister using the custom domain.
 
 :::note
