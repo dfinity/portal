@@ -104,7 +104,7 @@ const LargeProjectMedia: React.FC<{
 
   return (
     <div ref={ref} className="flex min-h-full relative">
-      <div className="z-[-1] animate-pulse absolute inset-0 bg-black mr-px"></div>
+      <div className="z-[-1] animate-pulse absolute inset-0 bg-blue mr-px"></div>
       {shown ? (
         <video
           loop
@@ -216,7 +216,7 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
           <LargeProjectMedia project={project}></LargeProjectMedia>
         ) : (
           <div className="flex w-full h-full relative">
-            <div className="z-[-1] animate-pulse absolute inset-0 bg-black mr-px"></div>
+            <div className="z-[-1] animate-pulse absolute inset-0 bg-blue mr-px"></div>
             <img
               loading="lazy"
               alt=""
