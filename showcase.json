@@ -12,10 +12,8 @@
     "stats": "175,000+ users",
     "display": "Large",
     "logo": "/img/showcase/dscvr_logo.webp",
-    "video": "/img/showcase/dscvr_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot_0.webp"
+      "/img/showcase/dscvr_screenshot.webp"
     ]
   },
  
@@ -533,7 +531,7 @@
     "description": "The Motoko Playground is an IDE for developers to learn Motoko - the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "github": "https://github.com/dfinity/motoko-playground",
     "usesInternetIdentity": false,
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/motokoplayground_logo.webp",
     "video": "/img/showcase/motokoplayground_video.mp4",
     "videoContentType": "video/mp4",
@@ -750,17 +748,18 @@
   },
   {
     "id": "astrox",
-    "name": "AstroX",
-    "oneLiner": "Web3.0 developer tools",
+    "name": "AstroX ME",
+    "oneLiner": "A powerful multichain wallet",
     "website": "https://astrox.me/#/",
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "AstroX is a blockchain development group focused on building tools for the Web3.0 ecosystem. AstroX has developed a Dart agent and other tools to help support mobile application development on the Internet Computer blockchain.",
+    "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
-    "logo": "/img/showcase/astrox_logo.webp",
+    "logo": "/img/showcase/astroxme_logo.webp",
+    "display": "Large",
     "screenshots": [
-      "/img/showcase/astrox_screenshot_0.webp"
+      "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
   {
@@ -880,7 +879,7 @@
       "Tools / Infrastructure"
     ],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/nftstudio_logo.webp",
     "video": "/img/showcase/nftstudio_video.mp4",
     "videoContentType": "video/mp4",
@@ -912,9 +911,9 @@
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
-    "video": "/img/showcase/pokedstudiobots_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": [
+      "/img/showcase/pokedstudio-bots.webp"
+    ]
   },
   {
     "id": "dstar",
