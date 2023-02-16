@@ -121,7 +121,7 @@ to make use of a workaround.
     * Confirm in the dialog that you indeed intend to change the nameservers.
     The resulting configuration should look similar to the following screenshot:
 
-        ![Alternative nameserver configuration on GoDaddy](godaddy-ns-configured.png)
+    ![Alternative nameserver configuration on GoDaddy](godaddy-ns-configured.png)
 
     * Back in the Cloudflare management portal, click on "Done, check nameservers".
     This step can take several hours and you will be notified by email once it
