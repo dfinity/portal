@@ -585,11 +585,12 @@ function SnsPage() {
             </h2>
             <div className="md:w-4/10 flex flex-col justify-center">
               <p className="mb-4 tw-lead-sm">
-                Lorem ipsum dolor sit amet consectetur. Porttitor dapibus mattis
-                ullamcorper ut nunc venenatis eros.
+                Learn more about the technology of the Internet Computer
+                or watch Dominic Williams talk about the vision of a
+                World Computer
               </p>
               <p className="mb-0">
-                <Link className="link-primary link-with-icon">
+                <Link href="/videos" className="link-primary link-with-icon">
                   Explore more videos
                   <LinkArrowUpRight />
                 </Link>
@@ -643,9 +644,8 @@ function SnsPage() {
             variants={transitions.item}
             className="tw-lead-sm md:tw-lead mb-2 text-center w-5/6 mx-auto md:mb-6 md:w-6/12"
           >
-            Lorem ipsum dolor sit amet consectetur. At morbi augue sem vel vitae
-            imperdiet vitae eleifend sit. Vel ac leo in augue in penatibus. In
-            aliquet tincidunt massa leo bibendum. In.
+            Learn more about SNS DAOs, whether you are a developer and want to launch
+            your own, or a tech savvy user, the SNS has a lot to offer.
           </motion.p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
             <CardWithDescription
