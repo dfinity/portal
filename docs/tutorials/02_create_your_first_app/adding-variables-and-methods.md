@@ -1,5 +1,9 @@
-# Step 3 - Adding variables and methods
+---
+sidebar_position: 3
+title: Step 3 - Adding variables and methods
+---
 
+# Step 3 - Adding variables and methods
 
 Now let's start adding some code to our backend!
 

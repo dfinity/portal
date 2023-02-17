@@ -129,6 +129,7 @@ const redirects = `
   /docs/developers-guide/tutorials/multiple-actors /docs/current/developer-docs/backend/backend-tutorials/multiple-actors
   /docs/developers-guide/tutorials/multiple-factorial-actors /docs/current/developer-docs/backend/backend-tutorials/multiple-factorial-actors
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/my-contacts
+  /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/developers-guide/tutorials/phonebook /docs/current/developer-docs/backend/backend-tutorials/phonebook
   /docs/developers-guide/tutorials/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
   /docs/developers-guide/tutorials/scalability-cancan /docs/current/developer-docs/backend/backend-tutorials/scalability-cancan
