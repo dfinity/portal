@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import contribute from "@site/static/img/developers/contribute.png";
-import NewsletterSection from "../NewsletterSection/NewsletterSection";
+import contribute from "@site/static/img/developers/contribute.webp";
 
 const cardsContent = [
   {
@@ -97,7 +96,6 @@ function Index() {
           </motion.a>
         ))}
       </div>
-      <NewsletterSection></NewsletterSection>
       <div className={styles.contributionContainer}>
         <div className={styles.leftContainer}>
           <motion.p

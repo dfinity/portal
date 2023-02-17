@@ -1,7 +1,10 @@
+---
+sidebar_position: 1
+---
 # Technical preparations for getting an SNS
 
 After some 
-[non-technical preparations](../../../../tokenomics/sns/predeployment-considerations.md)
+[non-technical preparations](../tokenomics/predeployment-considerations.md)
 that define the goals for the SNS, in a next step you can 
 choose the initial parameters that the SNS should be set up with, 
 such as who should get how many SNS tokens in the beginning.
@@ -26,8 +29,7 @@ and the
 
 We refer to the next page for learning the detailed actions that are
 required 
-[to test the SNS launch](./local-testing.md). <!-- and to 
-[get an SNS in production](./get-sns-production.md).-->
+[to test the SNS launch](./local-testing.md). 
 
 
 ## Understanding the SNS Launch process {#understand-launch}

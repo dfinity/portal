@@ -79,10 +79,12 @@ const Content: React.FC = () => {
               This is what enables ICP nodes to cooperatively create new Bitcoin
               addresses and sign Bitcoin transactions, using highly
               fault-tolerant, decentralized network protocols that are resilient
-              to attacks by malicious nodes. Secret key material is securely
-              created, distributed, and periodically redistributed among ICP
-              nodes for the strongest security. Chain-key ECDSA signing is
-              accessed by canisters through the ECDSA API.
+              to attacks by malicious nodes. The secret key is never stored in
+              one place, instead it is broken down into key shares held by ICP
+              nodes that are re-shared every 5-10 mins. When requested,
+              nodes sign BTC transactions using the key shares without recreating
+              the original secret key. Building on tECDSA, this protocol assumes
+              a threshold of nodes to be honest. The process is called ckECDSA signing.
             </p>
           </div>
         </motion.div>

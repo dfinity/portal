@@ -10,6 +10,7 @@ import classnames from "classnames";
 import { useHistory } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "./styles.css";
+import { trackEvent } from "@site/src/utils/matomo";
 import("./algolia.css");
 
 const Search = (props) => {
@@ -40,12 +41,7 @@ const Search = (props) => {
         try {
           const titleDiv = document.createElement("div");
           titleDiv.innerHTML = suggestion.title;
-          window._paq.push([
-            "trackEvent",
-            "Search",
-            _input.getVal(),
-            titleDiv.innerText,
-          ]);
+          trackEvent("Search", _input.getVal(), titleDiv.innerText);
         } catch {}
 
         history.push(url);

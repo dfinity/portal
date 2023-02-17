@@ -149,10 +149,10 @@ const Sliders = () => {
                 <div className="flex-1"></div>
 
                 <Link
-                  href="/features"
+                  href="/capabilities"
                   className="text-center button-outline-white self-start md:self-center"
                 >
-                  CHeck out ICP tech features
+                  CHECK OUT ICP CAPABILITIES
                 </Link>
               </div>
             </SliderCard>

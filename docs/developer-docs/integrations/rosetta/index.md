@@ -155,7 +155,7 @@ $ curl -s -q -H 'Content-Type: application/json' -d '{"network_identifier": {"bl
 
 - Generate an ED25519 keypair.
 - The secret key is used for signing transactions.
-- The public key is used for generating a self-authenticating Principal ID. For more information, see [Section Principals in the Interface Specification](../../../references/ic-interface-spec.md#principals).
+- The public key is used for generating a self-authenticating Principal ID. For more information, see [Section Principals in the Interface Specification](/references/ic-interface-spec.md#principals).
 - The Principal ID is hashed to generate the account address.
 
 #### How to use the public key to generate its account address?

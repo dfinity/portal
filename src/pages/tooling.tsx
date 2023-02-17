@@ -9,7 +9,6 @@ import {
 } from "@site/src/components/Common/toolingItems";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
@@ -26,7 +25,6 @@ import {
 import ShareMeta from "../components/Common/ShareMeta";
 
 function Samples(): JSX.Element {
-  resetNavBarStyle();
   const [numberOfItems, setNumberOfItems] = React.useState(40);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
     React.useState(40);

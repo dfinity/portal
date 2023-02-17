@@ -1,6 +1,5 @@
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import { useQueryParam } from "@site/src/utils/use-query-param";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
@@ -15,7 +14,6 @@ import ShareMeta from "../components/Common/ShareMeta";
 function Videos() {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
-  resetNavBarStyle();
   let currentVideo = mediaVideos.at(0);
   let filteredVideos = mediaVideos.filter((v) => v.href !== currentVideo.href);
   const tags = Object.keys(

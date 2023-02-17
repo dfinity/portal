@@ -5,6 +5,8 @@ on:
 
 jobs:
   build_and_deploy:
+    # do not run in forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}

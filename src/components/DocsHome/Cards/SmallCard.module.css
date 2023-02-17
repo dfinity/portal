@@ -1,0 +1,76 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  padding: 30px 48px 32px;
+  flex: 1 1 30%;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
+}
+
+.card:hover {
+  padding-top: 32px;
+  background: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.card:hover,
+.card:hover .cardTitle,
+.card:hover .cardBody,
+.card:hover .informationIcon {
+  color: white;
+  text-decoration: none;
+  transition: all var(--ifm-transition-custom-speed)
+    var(--ifm-transition-custom-curve);
+}
+
+.cardContainer {
+  width: 90%;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--ifm-color-primary);
+  margin-bottom: 8px;
+}
+
+.cardBody {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 0;
+  color: black;
+}
+
+.informationIcon {
+  color: var(--ifm-color-primary);
+  margin: auto;
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 996px) {
+  .informationIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .cardBody {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

@@ -7,11 +7,9 @@ import HostWeb from "../components/Basics/HostWeb";
 import InternetIdentity from "../components/Basics/InternetIdentity";
 import ItsGreen from "../components/Basics/ItsGreen";
 import TrueScaling from "../components/Basics/TrueScaling";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 
 const BasicsPage: React.FC = () => {
-  resetNavBarStyle();
   return (
     <Layout
       title={"Basics"}
