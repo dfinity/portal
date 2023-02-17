@@ -40,7 +40,7 @@ For example:
 :::caution
 The asset canister can host roughly 1GB in static files. It is recommended that you distribute your files
 across multiple canisters if the total size of all your assets begins to exceed this amount. Once you exceed this
-figure, your canister may fail during the upgrade process.  
+figure, your canister may fail to upgrade.  
 :::
 
 <br/>
@@ -205,7 +205,7 @@ Here are some common resolutions for issues encountered with the Asset canister.
 ### Asset canister fails to upgrade
 
 It is likely that the total size of all the static files stored in your Asset canister exceed the
-recommended 1GB limit. The resolution is to uninstall your canister code, followed by redeploying.
+recommended 1GB limit. The resolution is to uninstall and redeploy your canister code.
 
 ```bash
 dfx canister uninstall-code <CANISTER NAME or ID>
@@ -217,6 +217,6 @@ dfx deploy --upgrade-unchanged <CANISTER NAME>
 
 :::caution
 This will incur downtime. This first uninstalls the WASM module from your canister. During this period, your canister
-will not be reachable. The second command redeploy with fresh state, after which point, your canister will be available
+will not be reachable. The second command redeploys with fresh state, after which point, your canister will be available
 to serve assets again.
 :::
