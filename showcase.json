@@ -7,7 +7,7 @@
     "tags": ["SocialFi"
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
-    "description": "DSCVR is a decentralized version of Reddit, where users are the owners. Decentralized end-to-end, built on the Internet Computer, and accessible from any browser. Try it out yourself. ",
+    "description": "DSCVR is an end-to-end decentralized Web3 that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer",
     "usesInternetIdentity": true,
     "stats": "175,000+ users",
     "display": "Large",
@@ -28,7 +28,7 @@
       "SocialFi"
     ],
     "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
-    "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
+    "description": "Distrikt is a completely decentralized, community-owned Web3 social media platform. Users of the platform will soon be able vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today.",
     "usesInternetIdentity": true,
     "display": "Large",
     "stats": "110,000+ users",
@@ -67,7 +67,7 @@
       "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
-    "description": "The world’s first web3 search engine",
+    "description": "The world’s first Web3 search engine",
     "stats": "3,000,000+ searches",
     "display": "Large",
     "logo": "/img/showcase/kinic_logo.webp",
