@@ -123,6 +123,11 @@ const sidebars = {
           label: "Internet Identity",
           id: "references/ii-spec",
         },
+        {
+          type: "doc",
+          label: "Asset canister",
+          id: "references/asset-canister",
+        },
       ]
     },
 
