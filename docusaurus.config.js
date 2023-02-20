@@ -73,6 +73,7 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
+        fromExtensions: ['html', 'md'],
         redirects: getRedirects(),
         createRedirects: (existingPath) => getSplatRedirects(existingPath),
       },

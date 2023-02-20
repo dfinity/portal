@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Step 2 - Creating a project
+---
+
 # Step 2 - Creating a project
 
 ## Creating a project from a template
@@ -8,7 +13,7 @@ $ dfx new poll
 ```
 
 SDK will create an project from a template in a folder "poll":
-![dfx new poll terminal image](__attachments/dfx%20new.png)
+![dfx new poll terminal image](./__attachments/dfx%20new.png)
 
 ## Understanding the project structure
 
