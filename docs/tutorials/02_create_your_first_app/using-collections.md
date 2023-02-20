@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+title: Step 5 - Using collections
+---
+
 # Step 5 - Using collections
 
 In this step we will add new variable `options` to the actor that will hold a list of the choices that users can vote for in the poll.
@@ -153,7 +158,7 @@ $ dfx deploy
 ```
 
 After the deployment process is completed, click on the link in the "Backend canister" section of the deploy command output:
-![dfx deploy output with a link](__attachments/dfx%20deploy%20with%20link.png)
+![dfx deploy output with a link](./__attachments/dfx%20deploy%20with%20link.png)
 
 After that you can open Candid UI and explore the new methods:
-![collections candid ui animation](__attachments/collections%20candid%20ui%20animation.gif)
+![collections candid ui animation](./__attachments/collections%20candid%20ui%20animation.gif)
