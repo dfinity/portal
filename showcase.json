@@ -99,7 +99,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
+    "description": "What if you could own a piece of WhatsApp and vote on what features get added? OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and soon to own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
     "display": "Large",
     "stats": "80,000+ users",
@@ -117,7 +117,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a React web app hosted entirely on the IC.",
+    "description": "The website you're scrolling now, internetcomputer.org is itself a dapp hosted 100% on the Internet Computer - including images and videos.",
     "display": "Normal",
     "logo": "/img/showcase/internetcomputerorgwebsite_logo.webp",
     "screenshots": [
@@ -128,12 +128,12 @@
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
-    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dApps on the Internet Computer.",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
     "website": "https://wallet.infinityswap.one/",
     "tags": [
       "Wallet"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "videoContentType": "video/mp4",
@@ -146,7 +146,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
+    "description": "Uniswap's frontend hosted on the Internet Computer through Fleek. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
     "oneLiner": "Front-End On-Chain",
     "display": "Normal",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
