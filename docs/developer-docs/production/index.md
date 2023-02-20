@@ -12,7 +12,7 @@ This page is an overview of the topic. For specific steps and troubleshooting in
 
 * [Deploying & Upgrading Canisters](./deploying-and-upgrading.md)
 * [Large web assembly modules](./larger-wasm.md)
-* [Custom Domains](./custom-domain.md)
+* [Custom Domains](custom-domain/custom-domain.md)
 * [Computation and Storage cost](./computation-and-storage-costs.md)
 * [Instruction Limits](./instruction-limits.md)
 

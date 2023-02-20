@@ -4,7 +4,7 @@ abstract: This feature brings a Bitcoin ‘twin’ token to ICP that is backed 1
 coverImage: /img/how-it-works/ckbtc-content.1200x600.jpg
 ---
 
-![](/img/how-it-works/ckbtc-content.600x300.webp)
+![](/img/how-it-works/ck-tokens-content.600x300.webp)
 
 # Chain-key tokens
 
