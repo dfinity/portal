@@ -13,9 +13,9 @@ import ShareMeta from "../components/Common/ShareMeta";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
-import BiometricIcon from "@site/src/components/Basics/internetIdentity/biometric.svg";
-import NoTrackingIcon from "@site/src/components/Basics/internetIdentity/privacy.svg";
-import WebAuthnIcon from "@site/src/components/Basics/internetIdentity/webauthn.svg";
+import BiometricIcon from "@site/src/components/Basics/InternetIdentity/biometric.svg";
+import NoTrackingIcon from "@site/src/components/Basics/InternetIdentity/privacy.svg";
+import WebAuthnIcon from "@site/src/components/Basics/InternetIdentity/webauthn.svg";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import { OnChainBadge } from "../components/Common/OnChainBadge/OnChainBadge";
 import IntraPageNav from "../components/Common/IntraPageNav";
