@@ -7,6 +7,7 @@ import Layout from "@theme/Layout";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import { motion } from "framer-motion";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
+import ShareMeta from "../../Common/ShareMeta";
 
 function Index() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function Index() {
       description={article.abstract || ""}
       editPath={`https://github.com/dfinity/portal/edit/master/${article.fileName}`}
     >
+      <ShareMeta image={article.shareImage}></ShareMeta>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
