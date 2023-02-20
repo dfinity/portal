@@ -4,6 +4,8 @@ sidebar_label: "Canister development"
 ---
 # Canister development security best practices
 
+This is a test edit
+
 This document contains canister development best practices for both Motoko and Rust. 
 
 ## Smart Contracts Canister Control
