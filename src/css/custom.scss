@@ -412,6 +412,19 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   animation: ethdenver-astronaut 3s cubic-bezier(0, 0.51, 0.37, 0.94) forwards;
 }
 
+@keyframes badge-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-spin {
+  animation: badge-spin 10s linear infinite;
+}
+
 
 @tailwind base;
 @tailwind components;

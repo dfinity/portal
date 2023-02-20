@@ -218,6 +218,7 @@ module.exports = {
                 '.blob-bottom-center': '@apply left-1/2 -translate-x-1/2 top-auto bottom-0 translate-y-1/3',
                 '.text-gradient-base': '@apply text-transparent bg-clip-text',
                 '.text-gradient': '@apply text-gradient-base bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
+                '.text-gradient-denver': '@apply text-gradient-base bg-[linear-gradient(90deg,#6A85F1_22.19%,#C572EF_79.9%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
             };
