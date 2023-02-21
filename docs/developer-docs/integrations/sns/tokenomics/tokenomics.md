@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Tokenomics of a DAO
 ## Background and key concepts
 ### What is tokenomics?
@@ -66,5 +69,8 @@ The voting power should be distributed over many, independent entities such that
 As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
 
 On this [page](rewards.md) there is more information on the configuration of voting rewards. 
+
+### Tokenomics training material
+On this [page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) you will find further material enabling teams to choose a tokenomics set-up for their SNS DAO. It provides documentation links to SNS tokenomics key concepts as well as a SNS tokenomics tool.
 
 

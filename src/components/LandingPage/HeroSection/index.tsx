@@ -98,7 +98,7 @@ export default function Hero(): JSX.Element {
                 href="/capabilities"
               >
                 <LinkArrowRight />
-                Internet Computer capabilties
+                Internet Computer capabilities
               </Link>
 
               <Link

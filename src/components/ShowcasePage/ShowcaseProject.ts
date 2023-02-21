@@ -1,4 +1,5 @@
 export type ShowcaseProject = {
+  id: string;
   description: string;
   logo: string;
   display: "Large" | "Normal";
