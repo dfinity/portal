@@ -406,11 +406,10 @@ function EthDenverPage() {
                   Bounties explained by Dominic Wörner
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 20, 2023</li>
-                  <li>9:00 - 10:30am MST</li>
+                  <li>Feb 24 - Mar 5, 2023</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
-                    Twitch (online)
+                    BUIDLathon
                   </li>
                 </ul>
 
@@ -426,7 +425,7 @@ function EthDenverPage() {
                     href="https://youtu.be/awjhuGUdENI"
                     className="link-primary link-with-icon"
                   >
-                    Watch replay on ETHDenver YouTube 
+                    Watch bounty explainer video 
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -586,8 +585,7 @@ function EthDenverPage() {
                     <LocationIcon />
                     Find us as DAO Town
                   </li>
-                  <li>Mar 2, 2023</li>
-                  <li>2:00-4:00pm MST</li>
+                  <li>Community demos by ecosystem</li>
                 </ul>
 
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
@@ -601,7 +599,7 @@ function EthDenverPage() {
                     href="https://www.ethdenver.com/map"
                     className="link-primary link-with-icon"
                   >
-                    See floor plan
+                    See map
                     <LinkArrowUpRight />
                   </Link>
                 </p>
