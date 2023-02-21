@@ -158,7 +158,7 @@ $ dfx deploy
 ```
 
 After the deployment process is completed, click on the link in the "Backend canister" section of the deploy command output:
-![dfx deploy output with a link](./__attachments/dfx%20deploy%20with%20link.png)
+![dfx deploy output with a link](_attachments/dfx%20deploy%20with%20link.png)
 
 After that you can open Candid UI and explore the new methods:
-![collections candid ui animation](./__attachments/collections%20candid%20ui%20animation.gif)
+![collections candid ui animation](_attachments/collections%20candid%20ui%20animation.gif)

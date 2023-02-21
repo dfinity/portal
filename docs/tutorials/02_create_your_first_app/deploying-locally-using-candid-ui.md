@@ -15,7 +15,7 @@ dfx start --background
 ```
 
 You will a result in the console similar to this:
-![dfx start screenshot](./__attachments/dfx%20start.png)
+![dfx start screenshot](_attachments/dfx%20start.png)
 
 
 ## Deploying your app
@@ -25,7 +25,7 @@ To deploy your app you need to:
 2. Type `dfx deploy` in the command line
 
 Example output in the console:
-![dfx deploy screenshot](./__attachments/dfx%20deploy.png)
+![dfx deploy screenshot](_attachments/dfx%20deploy.png)
 
 ## Opening Candid UI
 
@@ -40,14 +40,14 @@ URLs:
 ```
 
 You will need the second URL (for `poll2_backend`) to access candid UI. Open this URL to your web browser to open the Candid UI web page. You should we something like this:
-![Candid UI screenshot](./__attachments/candid%20ui%20question%20only.png)
+![Candid UI screenshot](_attachments/candid%20ui%20question%20only.png)
 
 ## Using Candid UI to access the data
 
 As you can see, Candid UI allows you to access the methods of the actor that we coded at the previosus step.
 
 You can play with your implementation by calling methods and see that the question is stored and retrieved correctly:
-![candid ui demo animation](./__attachments/candid%20ui%20demo%20animation.gif)
+![candid ui demo animation](_attachments/candid%20ui%20demo%20animation.gif)
 
 
 ## Summary
