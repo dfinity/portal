@@ -33,13 +33,13 @@ const projects: {
     logo: "/img/ethdenver/astrox.webp",
     description:
       "Multichain wallet securing your assets without seed phrase across any devices.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Hot or Not",
     logo: "/img/ethdenver/hotornot.webp",
     description: "Monetise Time on Social Media. Video platform in ICP.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Toniq Labs",
@@ -52,13 +52,13 @@ const projects: {
     name: "DSCVR",
     logo: "/img/ethdenver/dscvr.webp",
     description: "Web3 social media platform with user governed NFT gated Portals",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Finterest",
     logo: "/img/ethdenver/finterest.webp",
     description: "The first truly decentralized price feed.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "IC Drive",
@@ -71,14 +71,14 @@ const projects: {
     name: "SCINET",
     logo: "/img/ethdenver/scinet.webp",
     description: "Decentralized life sciences ecosystem on ICP.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
 
   {
     name: "Modclub",
     logo: "/img/ethdenver/modclub.webp",
     description: "Decentralized Moderation and Proof of Humanity",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
 ];
 
