@@ -401,7 +401,7 @@ function EthDenverPage() {
               className="rounded-xl overflow-hidden flex flex-col md:flex-row"
               variants={transitions.item}
             >
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8">
+              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8  order-2 md:order-1">
                 <h3 className="md:tw-heading-4 mb-3">
                   Bounties explained by Dominic Wörner
                 </h3>
@@ -427,7 +427,7 @@ function EthDenverPage() {
                   </Link>
                 </p>
               </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex  order-1 md:order-2">
                 <img
                   src="/img/ethdenver/card-0.webp"
                   alt=""
