@@ -11,17 +11,26 @@ Some of the SNS documentation is still being worked on and will be
 edited or added as later SNS features are added, so please bare with
 us if it is not yet complete or a few parts do not work yet.
 
+## SNS Introduction
+Here you'll find an overview of the stages of an SNS.
+* [A technical introduction to the SNS](sns-intro.md)
+
+## DAOs and Tokenomics documentation 
+The DAO Docs introduce the ideas and tools needed when considering to form a DAO. It targets developers or entrepreneurs who want to get an SNS, understand tokenomics of an SNS, and introduces predeployment, product-based, considerations like roadmapping.
+
+In this documentation you will find
+* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
+* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
+* [An introduction to SNS rewards](./tokenomics/rewards.md)
+* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
+
 ## Technical documentation
-This documentation is, as the name suggests, tecnical documentation aimed at
-developers.
+This documentation is, as the name suggests, tecnical documentation aimed at developers.
 Most of the documentation targets developers that have
 a dapp that they would like to decentralize with an SNS. 
 However, this documentation also targets developers that
 want to build services that integrate with SNSs, such as wallet dapps
-or decentralized exchanges.  
-
-In this documentation you will find
-* [A technical introduction to the SNS](sns-intro.md)
+or decentralized exchanges.
 
 * Information on how to **get an SNS**, which includes
     * [An introduction how to get an SNS](get-sns/get-sns-intro.md) which
@@ -46,23 +55,10 @@ In this documentation you will find
     in each SNS <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md)-->
   * Information on how SNS are upgraded <!--Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->  
   * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
- 
-## DAOs and Tokenomics documentation 
-This documentation is less technical and targets developers or entrepreneurs who want to get an SNS and
-have to make certain non-technical decisions too.
-It also targets interested developers who would like to understand
-the tokenomics of an SNS better.
-
-In this documentation you will find
-* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
-* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
-* [An introduction to SNS rewards](./tokenomics/rewards.md)
-* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
 
 ## User Guides
-Finally, the Wiki will contain information relevant for 
-users of the SNS.
+Finally, the website and wiki contain information relevant for users of the SNS.
 
 You will find
 * [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
