@@ -243,7 +243,7 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/bounties"
+                  href="https://www.ethdenver.com/"
                   className="button-primary"
                 >
                   Register Now
@@ -406,11 +406,11 @@ function EthDenverPage() {
                   Bounties explained by Dominic Wörner
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 20, 2023</li>
-                  <li>09:00 - 10:30am MST</li>
+                  <li>Feb 24 - Mar 5, 2023</li>
+            
                   <li className="flex items-center gap-1">
                     <LocationIcon />
-                    Twitch (online)
+                    BUIDLathon
                   </li>
                 </ul>
 
@@ -422,7 +422,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link className="link-primary link-with-icon">
-                    Join ETHDenver Twitch channel
+                    Watch bounty explainer video
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -574,11 +574,11 @@ function EthDenverPage() {
                     Find us as DAO Town
                   </li>
                   <li>
-                    Community Demo by{" "}
-                    <Link href="https://astrox.me">AstroX</Link>
+                    Community Demo by ecosystem parners
+                  
                   </li>
-                  <li>Mar 2, 2023</li>
-                  <li>2:00-4:00pm MST</li>
+                
+                 
                 </ul>
 
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
@@ -589,7 +589,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link className="link-primary link-with-icon">
-                    See floor plan
+                   See the map
                     <LinkArrowUpRight />
                   </Link>
                 </p>
