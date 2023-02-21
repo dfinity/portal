@@ -22,6 +22,8 @@ This section of the docs covers the following CDKs, ordered by languages:
 Besides those, there exist a lot of other community-supported CDKs:
 - AssemblyScript
   - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
+- Python
+  - [`Kybra` by Demergent Labs](https://github.com/demergent-labs/kybra)
 - TypeScript
   - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
 
