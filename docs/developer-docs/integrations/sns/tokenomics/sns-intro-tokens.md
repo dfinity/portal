@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 # Service Nervous System
 
 A Decentralized Autonomous Organization, or DAO for short, is a system that allows
