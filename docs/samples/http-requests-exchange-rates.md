@@ -65,7 +65,7 @@ On top of that, we store data that's already fetched such that future user reque
 
 ## Building and deploying the sample dapp locally
 
-- `dfx start --enable-canister-http` to start a local IC instance with the Canster HTTPS outcalls feature enabled
+- `dfx start` to start a local IC instance with the Canster HTTPS outcalls feature enabled
 - `dfx deploy --with-cycles 100000000000` to deploy the `exchange_rate` and `exchange_rate_assets`
   canisters to local IC
 - `dfx canister status exchange_rate` to check the status of the canister
