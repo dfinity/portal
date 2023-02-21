@@ -243,7 +243,7 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
+                  href="https://www.ethdenver.com/buidl/preparation-guide"
                   className="button-primary"
                 >
                   Learn More
