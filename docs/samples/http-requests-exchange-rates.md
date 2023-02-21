@@ -64,6 +64,6 @@ On top of that, we store data that's already fetched such that future user reque
 
 
 ## Building and deploying the sample dapp locally
-Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the README.md file in each
+Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the `README.md` file in each
 directory for instrutions on building and local deployment.
 
