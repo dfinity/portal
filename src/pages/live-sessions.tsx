@@ -14,6 +14,7 @@ import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
 import Head from "@docusaurus/Head";
+import Newsletter from "../components/Common/Newsletter/Newsletter";
 
 const MotionLink = motion(Link);
 
@@ -484,44 +485,33 @@ function LiveSessionsPage(): JSX.Element {
 
         {/* This must not be invisible */}
         <div ref={formRef} id="subscribe"></div>
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.item}
-          className="bg-infinite border-0 border-b border-white border-solid"
+        <Newsletter
+          fields={[
+            {
+              name: "EMAIL",
+              placeholder: "Email",
+              type: "email",
+              required: true,
+            },
+            {
+              name: "tags",
+              type: "hidden",
+              value: "1061",
+            },
+          ]}
+          ctaLabel="Get updates!"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
+          decoration={<img src="/img/newsletter/email-image-1.webp" />}
+          className="mb-20"
         >
-          <div className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative">
-            <img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
-              alt=""
-            />
-            <div className="md:w-10/12 md:mx-auto ">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
-                Register to stay up to date on live sessions
-              </h2>
-              <form
-                method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
-                className="md:w-4/10 space-y-6"
-              >
-                <input
-                  type="email"
-                  name="EMAIL"
-                  placeholder="Email"
-                  required
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <input
-                  type="text"
-                  name="FNAME"
-                  placeholder="First Name"
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <button className="button-outline-white">Register</button>
-              </form>
-            </div>
-          </div>
-        </AnimateSpawn>
+          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
+            Want to meet ICP enthusiasts IRL?
+            <br />
+            <span className="text-white-60">
+              Sign up for event updates to stay connected
+            </span>
+          </h2>
+        </Newsletter>
       </main>
     </Layout>
   );

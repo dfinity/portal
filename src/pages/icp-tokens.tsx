@@ -18,7 +18,6 @@ import TwitterIcon from "../../static/img/token-holders/social/twitter.svg";
 import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 
 const images = [
@@ -138,8 +137,6 @@ const icons = [
 ];
 
 function TokenHolders(): JSX.Element {
-  resetNavBarStyle();
-
   const globalData = useGlobalData();
   const icpPrice = globalData["icp-price"]["default"] as number;
 

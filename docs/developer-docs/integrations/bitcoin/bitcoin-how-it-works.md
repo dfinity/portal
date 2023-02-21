@@ -57,7 +57,7 @@ Threshold ECDSA requests will equally be answered by a single active signing sub
 
 ## API
 
-The Bitcoin integration makes the following management canister APIs available to canisters (the ECDSA chain-key signatures API is explained in [its documentation page](../t-ecdsa/t-ecdsa-how-it-works.md) and the [interface specification](../../../references/ic-interface-spec.md)). Each Bitcoin-related method needs to specify whether it uses Bitcoin `mainnet` or `testnet`.
+The Bitcoin integration makes the following management canister APIs available to canisters (the ECDSA chain-key signatures API is explained in [its documentation page](../t-ecdsa/t-ecdsa-how-it-works.md) and the [interface specification](/references/ic-interface-spec.md)). Each Bitcoin-related method needs to specify whether it uses Bitcoin `mainnet` or `testnet`.
 
 -   `bitcoin_get_utxos`: Given a `get_utxos_request`, which must specify a Bitcoin address and a Bitcoin network (mainnet or testnet), the function returns all unspent transaction outputs (UTXOs) associated with the provided address in the specified Bitcoin network based on the current view of the Bitcoin blockchain available to the Bitcoin component. The UTXOs are returned sorted by block height in descending order.<br/>
 The optional filter parameter can be used to restrict the set of returned UTXOs, either providing a minimum number of confirmations or a page reference when pagination is used for addresses with many UTXOs. In the first case, only UTXOs with at least the provided number of confirmations are returned, i.e. transactions with fewer than this number of confirmations are not considered. In other words, if the number of confirmations is c, an output is returned if it occurred in a transaction with at least c confirmations and there is no transaction that spends the same output with at least c confirmations.<br/>
@@ -67,7 +67,7 @@ A `get_utxos_request` without the optional filter results in a request that cons
 -   `bitcoin_get_current_fee_percentiles`: The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.<br/>
 This function returns the 100 fee percentiles, measured in millisatoshi/byte (10<sup>3</sup> millisatoshi = 1 satoshi), over the last 10,000 transactions, i.e., over the transactions in the last approximately 4-10 blocks. Please note that this usually gives a solid indication of the fees to be paid, but we do not consider the Bitcoin mempool in the computation of the fee percentiles.
 
-We refer to the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md) for the details of the Bitcoin integration API.
+We refer to the [Internet Computer Interface Specification](/references/ic-interface-spec.md) for the details of the Bitcoin integration API.
 
 ## Development, Pre-Production, and Production Environment
 
@@ -94,7 +94,7 @@ The final stage of development of a Bitcoin smart contract is its deployment on 
 
 ## API Fees
 
-The fees for using the Bitcoin API can be found on the [page on computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/deploy/computation-and-storage-costs). It is important to note that the cost is scaled with the replication factor of the subnet the Bitcoin canister resides on. In order for the API to be future proof, some of the methods require to send more cycles along with an API call than actually required and any cycles exceeding the actually-charged cost are refunded.
+The fees for using the Bitcoin API can be found on the [page on computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/production/computation-and-storage-costs). It is important to note that the cost is scaled with the replication factor of the subnet the Bitcoin canister resides on. In order for the API to be future proof, some of the methods require to send more cycles along with an API call than actually required and any cycles exceeding the actually-charged cost are refunded.
 
 
 | Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |

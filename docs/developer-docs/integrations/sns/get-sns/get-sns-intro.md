@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # How to get an SNS
 
 We explain how to get an SNS that is provided as a 
@@ -51,7 +54,7 @@ may want to spend some time defining non-technical goals of the SNS
 and the dapp that will be controlled by it.
 To provide some tips on what considerations you should not forget,
 we list a few of them on
-[this page](../../../../tokenomics/sns/predeployment-considerations.md).
+[this page](../tokenomics/predeployment-considerations.md).
 
 ### Step 2: Technical preparations 
 Once you have defined what (non-technical) goals the SNS should achieve,
@@ -69,8 +72,12 @@ In addition to preparing the launch, you might want to start planning
 how the SNS will be integrated into you dapp.
 For example, you may want to integrate some or all of the SNS frontend
 in your dapp's frontend.
-<!--[This page](../integrate-sns/frontend-integration.md)
-provides some tips on how this can be done.-->
+
+We also encourage the developers to run [SNS testflight](./testflight.md)
+as part of the technical preparation to make sure that their dapp
+can be operated via SNS proposals.
+In particular, the developers are strongly encouraged to perform
+SNS testflight on mainnet, too.
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
@@ -92,6 +99,3 @@ Note that the SNS feature is not yet generally available, but we
 will add more detailed instructions here as soon as it is.
 As the above steps may take a considerable amount of time, it
 can still make sense to already start with the preparations.
-
-<!-- We describe all steps included in this process in more detail
-on [this page](./get-sns-production.md).-->

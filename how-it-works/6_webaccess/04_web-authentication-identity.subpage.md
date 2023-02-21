@@ -38,7 +38,7 @@ Unlike most authentication methods, users are not required to set and manage pas
 
 [Verifying the Internet Identity Code: A Walkthrough](https://medium.com/dfinity/verifying-the-internet-identity-code-a-walkthrough-c1dd7a53f883)
 
-[IC internals: Internet Identity storage](https://pr-17--infallible-khorana-f0cacc.netlify.app/posts/11-ii-stable-memory.html)
+[IC internals: Internet Identity storage](https://mmapped.blog/posts/11-ii-stable-memory.html)
 
 [![Watch youtube video](https://i.ytimg.com/vi/9eUTcCP_ELM/maxresdefault.jpg)](https://www.youtube.com/watch?v=9eUTcCP_ELM)
 

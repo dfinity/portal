@@ -6,7 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
-import motokoBG from "@site/static/img/motokoPlayground.png";
+import motokoBG from "@site/static/img/motoko.webp";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import { sampleItems } from "@site/src/components/Common/sampleItems";
 

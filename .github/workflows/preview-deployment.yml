@@ -5,6 +5,8 @@ on:
 
 jobs:
   build_and_deploy:
+    # do not run in forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}
@@ -12,6 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - uses: actions/github-script@v6
         with:
           script: |

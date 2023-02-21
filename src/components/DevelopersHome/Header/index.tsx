@@ -42,15 +42,9 @@ function Index() {
         >
           <Link
             className={styles.actionButton}
-            to="/docs/current/developer-docs/ic-overview"
+            to="/docs/current/tutorials/deploy_sample_app"
           >
             READ DOCS
-          </Link>
-          <Link
-            className={styles.callToAction}
-            to={"/docs/current/developer-docs/quickstart/hello10mins"}
-          >
-            Start coding
           </Link>
         </motion.div>
       </motion.div>

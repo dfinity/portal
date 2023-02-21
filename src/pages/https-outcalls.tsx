@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
@@ -11,7 +10,6 @@ import {
 } from "@site/src/components/Common/Card";
 
 function HTTPSOutcalls() {
-  resetNavBarStyle();
   return (
     <Layout
       title="HTTPS Outcalls"

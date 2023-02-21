@@ -34,7 +34,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
 
    :::tip
-   Deploying to the Internet Computer requires `Cycles`. You can read more about cycles [here](../concepts/tokens-cycles.md). You can also get some free cycles from the [Cycles Faucet](../developer-docs/quickstart/cycles-faucet.md).
+   Deploying to the Internet Computer requires `Cycles`. You can read more about cycles [here](/concepts/tokens-cycles.md). You can also get some free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
    :::
 
     If successful, you should see an output that looks like this:

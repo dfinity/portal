@@ -6,10 +6,10 @@ import { useWindowSize } from "@docusaurus/theme-common";
 import clsx from "clsx";
 
 const SectionsLinks = [
+  { text: "Stats", to: "#stats" },
   { text: "Introduction", to: "#introduction" },
-  { text: "Basics", to: "#basics" },
-  { text: "Comparison", to: "#comparison" },
   { text: "Dapps", to: "#dapps" },
+  { text: "Comparison", to: "#comparison" },
   { text: "Sustainable", to: "#sustainable" },
   { text: "Foundation", to: "#foundation" },
   { text: "Features", to: "#features" },
