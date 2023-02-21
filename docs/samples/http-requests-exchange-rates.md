@@ -1,4 +1,4 @@
-# Making HTTPS Outcalls to Fetch Exchange Rates
+# Using HTTPS Outcalls to Fetch Exchange Rates
 
 ## Exchange Rate sample dapp overview
 
