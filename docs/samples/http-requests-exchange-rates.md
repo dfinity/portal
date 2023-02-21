@@ -64,8 +64,6 @@ On top of that, we store data that's already fetched such that future user reque
 
 
 ## Building and deploying the sample dapp locally
+Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the README.md files in each
+directory for instrutions on building and local deployment.
 
-- `dfx start` to start a local IC instance, the HTTPS outcalls feature is enabled by default
-- `dfx deploy --with-cycles 100000000000` to deploy the `exchange_rate` and `exchange_rate_assets`
-  canisters to local IC
-- `dfx canister status exchange_rate` to check the status of the canister
