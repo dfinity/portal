@@ -475,7 +475,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/27a7c34d-77fe-4b97-a6a5-3db0017be344/41578190-44a0-4618-8ecf-ddfae4649196"
+                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/dc39b164-1896-405b-8ee1-3ea5343337cd/44e5155f-8ba2-4fa2-acb2-8515469a1073"
                     className="link-primary link-with-icon"
                   >
                     See full info
@@ -510,7 +510,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/3cf0f6c1-0247-4e8a-96f9-4740d28b969d/9911a8a4-fdbd-46f7-9946-ef47e0904c07"
+                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/fcea70a2-372f-41b7-962d-007ac212dbd9/93aa96fc-3c89-437a-8503-f62bf082d16e"
                     className="link-primary link-with-icon"
                   >
                     See full info
