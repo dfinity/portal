@@ -11,7 +11,7 @@ Some of the SNS documentation is still being worked on and will be
 edited or added as later SNS features are added, so please bare with
 us if it is not yet complete or a few parts do not work yet.
 
-## SNS Introduction
+## SNS introduction
 Here you'll find an overview of the stages of an SNS.
 * [A technical introduction to the SNS](sns-intro.md)
 
