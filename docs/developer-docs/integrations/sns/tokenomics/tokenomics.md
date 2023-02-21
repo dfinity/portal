@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Tokenomics of a DAO
 ## Background and key concepts
 ### What is tokenomics?
