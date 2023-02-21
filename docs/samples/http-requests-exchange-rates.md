@@ -2,7 +2,7 @@
 
 ## Exchange Rate sample dapp overview
 
-The [HTTPS outcalls](https://wiki.internetcomputer.org/wiki/HTTPS_outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of the Internet Computer in the Web 2.0 world. This Exchange Rate sample dapp is created to demonstrate simple usage HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
+The [HTTPS outcalls](https://internetcomputer.org/https-outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of the Internet Computer in the Web 2.0 world. This Exchange Rate sample dapp is created to demonstrate simple usage HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
 The sample dapp pulls ICP/USDC exchange rates from a single provider currently – the [Coinbase Pro API](https://api.pro.coinbase.com/products/ICP-USD/candles). The number of data sources can be easily extended as needed for stronger decentralization. For the sample dapp, we are only using a single data source to showcase the feature. A generalization to multiple data sources can easily follow the example given.
 
