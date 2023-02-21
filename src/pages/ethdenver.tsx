@@ -51,7 +51,7 @@ const projects: {
   {
     name: "DSCVR",
     logo: "/img/ethdenver/dscvr.webp",
-    description: "Web3 alternative to Reddit with user governed Portals",
+    description: "Web3 social media platform with user governed NFT gated Portals",
     agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
   },
   {
@@ -422,7 +422,10 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://youtu.be/awjhuGUdENI"
+                    className="link-primary link-with-icon"
+                  >
                     Join ETHDenver Twitch channel
                     <LinkArrowUpRight />
                   </Link>
@@ -471,7 +474,10 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/27a7c34d-77fe-4b97-a6a5-3db0017be344/41578190-44a0-4618-8ecf-ddfae4649196"
+                    className="link-primary link-with-icon"
+                  >
                     See full info
                     <LinkArrowUpRight />
                   </Link>
@@ -503,7 +509,10 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/3cf0f6c1-0247-4e8a-96f9-4740d28b969d/9911a8a4-fdbd-46f7-9946-ef47e0904c07"
+                    className="link-primary link-with-icon"
+                  >
                     See full info
                     <LinkArrowUpRight />
                   </Link>
@@ -551,7 +560,10 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://jan.camenisch.org/"
+                    className="link-primary link-with-icon"
+                  >
                     See Jan’s profile
                     <LinkArrowUpRight />
                   </Link>
@@ -589,7 +601,10 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://www.ethdenver.com/map"
+                    className="link-primary link-with-icon"
+                  >
                     See floor plan
                     <LinkArrowUpRight />
                   </Link>
@@ -635,8 +650,9 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/27a7c34d-77fe-4b97-a6a5-3db0017be344/41578190-44a0-4618-8ecf-ddfae4649196"
-                    className="link-primary link-with-icon">
+                    href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
+                    className="link-primary link-with-icon"
+                  >
                     See full info
                     <LinkArrowUpRight />
                   </Link>
