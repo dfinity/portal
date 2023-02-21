@@ -243,14 +243,14 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/bounties"
+                  href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
                   className="button-primary"
                 >
-                  Register Now
+                  Learn More
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
+                  href="https://twitter.com/DFINITYDev"
                 >
                   <TwitterIcon />
                   Follow for Developer related updates
@@ -644,7 +644,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
+                    href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
                     className="link-primary link-with-icon"
                   >
                     See full info
