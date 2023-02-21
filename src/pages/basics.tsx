@@ -8,6 +8,7 @@ import InternetIdentity from "../components/Basics/InternetIdentity";
 import ItsGreen from "../components/Basics/ItsGreen";
 import TrueScaling from "../components/Basics/TrueScaling";
 import Head from "@docusaurus/Head";
+import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 
 const BasicsPage: React.FC = () => {
   return (
@@ -38,7 +39,13 @@ const BasicsPage: React.FC = () => {
         <HostWeb></HostWeb>
         <Ecosystem></Ecosystem>
         <TrueScaling></TrueScaling>
-        <InternetIdentity></InternetIdentity>
+        <BackgroundPanel
+          panelClassName="bg-infinite"
+          outerClassName="pt-0 md:pt-20 md:pb-30"
+          threshold={0.35}
+        >
+          <InternetIdentity></InternetIdentity>
+        </BackgroundPanel>
         <Ecosystem2></Ecosystem2>
         <ItsGreen></ItsGreen>
       </main>
