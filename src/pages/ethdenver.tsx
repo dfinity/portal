@@ -250,7 +250,7 @@ function EthDenverPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://twitter.com/DFINITYDev"
+                  href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
                 >
                   <TwitterIcon />
                   Follow for Developer related updates
@@ -418,7 +418,7 @@ function EthDenverPage() {
                   Join Dominic Wörner, Developer Relations Engineer at DFINITY, 
                   jumps on Twitch to highlight the advantages of building on the 
                   Internet Computer and to give you an overview of the 5 bounty 
-                  categories. BUIDlers, make sure to tune in for details. 
+                  categories. BUIDLers, make sure to tune in for details. 
                 </p>
 
                 <p className="mb-0">
@@ -426,7 +426,7 @@ function EthDenverPage() {
                     href="https://youtu.be/awjhuGUdENI"
                     className="link-primary link-with-icon"
                   >
-                    Join ETHDenver Twitch channel
+                    Watch replay on ETHDenver YouTube 
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -469,7 +469,7 @@ function EthDenverPage() {
                   throughout the week.
                 </p>
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Sponsored by DFINTY, a major contributor to the Internet
+                  Sponsored by DFINTY, a contributor to the Internet
                   Computer.
                 </p>
 
@@ -581,14 +581,10 @@ function EthDenverPage() {
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
                   <li>Mar 2-5, 2023</li>
-                  <li>09:00am - 6:30pm MST</li>
+                  <li>9:00am - 6:30pm MST</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
                     Find us as DAO Town
-                  </li>
-                  <li>
-                    Community Demo by{" "}
-                    <Link href="https://astrox.me">AstroX</Link>
                   </li>
                   <li>Mar 2, 2023</li>
                   <li>2:00-4:00pm MST</li>
