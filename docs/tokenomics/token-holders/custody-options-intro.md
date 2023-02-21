@@ -24,11 +24,11 @@ For more information about approaches to cold storage and best practices for sec
 
 The most common types of cold storage include the following:
 
--   [Hardware wallets](#_hardware_wallets)
+-   Hardware wallets
 
--   [Air-gapped computers](#_air_gapped_computers)
+-   Air-gapped computers
 
--   [Paper wallets](#_paper_wallets)
+-   Paper wallets
 
 ### Hardware wallets
 
