@@ -407,7 +407,7 @@ function EthDenverPage() {
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
                   <li>Feb 20, 2023</li>
-                  <li>09:00 - 10:30am MST</li>
+                  <li>9:00 - 10:30am MST</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
                     Twitch (online)
@@ -415,9 +415,10 @@ function EthDenverPage() {
                 </ul>
 
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Join Dominic Wörner for an exciting workshop on decentralized
-                  hosting with HTTPS, smart contract backends with 2-second
-                  writes and DID principals with 123123 number of users.
+                  Join Dominic Wörner, Developer Relations Engineer at DFINITY, 
+                  jumps on Twitch to highlight the advantages of building on the 
+                  Internet Computer and to give you an overview of the 5 bounty 
+                  categories. BUIDlers, make sure to tune in for details. 
                 </p>
 
                 <p className="mb-0">
@@ -488,7 +489,7 @@ function EthDenverPage() {
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
                   <li>Feb 27, 2023</li>
-                  <li>09:00 - 10:30am MST</li>
+                  <li>9:00 - 10:30am MST</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
                     Vib Hotel
@@ -534,11 +535,11 @@ function EthDenverPage() {
                   Jan Camenisch
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Mar, 2023</li>
-                  <li>(Details coming soon) MST</li>
+                  <li>Mar 4, 2023</li>
+                  <li>9:00am MST</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
-                    TBD
+                    DeFi Stage
                   </li>
                 </ul>
 
@@ -633,7 +634,9 @@ function EthDenverPage() {
                 </p>
 
                 <p className="mb-0">
-                  <Link className="link-primary link-with-icon">
+                  <Link
+                    href="https://events.ethdenver.com/event-hosts/attendease/networking/experience/27a7c34d-77fe-4b97-a6a5-3db0017be344/41578190-44a0-4618-8ecf-ddfae4649196"
+                    className="link-primary link-with-icon">
                     See full info
                     <LinkArrowUpRight />
                   </Link>
