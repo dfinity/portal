@@ -1,19 +1,18 @@
 # Service Nervous System (SNS)
 
-We anticipate that different target groups are interested
-in different aspects of the Service Nervous System (SNS)
-and thus in different kinds of documentations.
+This section introduces ideas and instructions needed when considering handing control of an application to a Service Nervous System (SNS). If this is the first time you hear SNS, we recommend to take a look at the high level [SNS](/sns) and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
+We anticipate that different types of readers are interested
+in different aspects of the SNS and in different kinds of documentation.
 We thus try to split the SNS documentation accordingly.
 
 This page provides an overview of the SNS documentation and 
 provides links to the parts that already exist.
 Some of the SNS documentation is still being worked on and will be 
-edited or added as the last SNS features are added, so please bare with
-us if it is not yet complete or a few parts do not yet work.
-
+edited or added as later SNS features are added, so please bare with
+us if it is not yet complete or a few parts do not work yet.
 
 ## Technical documentation
-This documentation is, as the name suggests, aimed at
+This documentation is, as the name suggests, tecnical documentation aimed at
 developers.
 Most of the documentation targets developers that have
 a dapp that they would like to decentralize with an SNS. 
@@ -49,8 +48,7 @@ In this documentation you will find
   * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
  
 ## DAOs and Tokenomics documentation 
-This documentation is less technical.
-It targets for example developers who want to get an SNS and
+This documentation is less technical and targets developers or entrepreneurs who want to get an SNS and
 have to make certain non-technical decisions too.
 It also targets interested developers who would like to understand
 the tokenomics of an SNS better.
@@ -68,5 +66,5 @@ users of the SNS.
 
 You will find
 * [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
-* A guide how to participate in the SNS decentralization sale
-* A guide how to verify the NNS proposal that starts a SNS decentralization sale
+* [A guide how to participate in the SNS decentralization sale](/sns/faq#participate)
+* [A guide how to verify the NNS proposal that starts a SNS decentralization sale](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal)
