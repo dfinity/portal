@@ -67,4 +67,7 @@ As mentioned above, participation in governance typically requires the staking o
 
 On this [page](rewards.md) there is more information on the configuration of voting rewards. 
 
+### Tokenomics training material
+On this [page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) you will find further material enabling teams to choose a tokenomics set-up for their SNS DAO. It provides documentation links to SNS tokenomics key concepts as well as a SNS tokenomics tool.
+
 
