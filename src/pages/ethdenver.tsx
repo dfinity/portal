@@ -866,8 +866,10 @@ function EthDenverPage() {
                 >
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
-                  But not the Internet Computer blockchain. This machine runs it
-                  all on-chain, fully decentralized — from
+                  But not the Internet Computer blockchain. This platform runs it
+                  all on-chain, fully decentralized — from simple dapps, to high
+                  user-volume social networks and games, to oderbook exchanges and 
+                  enterprise systems, without the need for traditional IT. 
                 </motion.p>
               </div>
               <div className="md:w-6/10">
