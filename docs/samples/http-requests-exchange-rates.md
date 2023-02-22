@@ -2,15 +2,15 @@
 
 ## Exchange Rate sample dapp overview
 
-The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
+The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
-The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase via the Pro API](https://api.pro.coinbase.com/products/ICP-USD/candles).  For the sample dapp, we are only using a single data source to showcase the feature. For better fault tolerance, the number of data sources can be easily extended.
+The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles).  For the sample dapp, we are only using a single data source to showcase the feature. For better fault tolerance, the number of data sources can be easily extended.
 
 ## What does the sample dapp do
 
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
-2. the backend provider canister `exchange_rate`, which performs the HTTPS outcalls, queues jobs, and processes data.
+2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
 Upon receiving a request from the user, the request is passed from the frontend to the backend canister for queueing. 
 An asynchronous process is triggered at every few Internet Computer heartbeats, to make a Coinbase API request.
