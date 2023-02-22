@@ -92,7 +92,7 @@ function EthDenverPage() {
       description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain Dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-ethdenver.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ethdenver-2.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
