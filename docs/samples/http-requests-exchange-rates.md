@@ -30,8 +30,7 @@ Users should be able to interact only with the frontend UI canister by selecting
 and the end time with the datetime pickers.
 
 The returned rates may not exactly match the user's time selection. (There could be gaps between
-data points, or there could be a smaller range being returned, or the returned
-dataset precisely matches the user's request.) The reason is that to respect rate limiting
+data points, or there could be a smaller range being returned). The reason is that to respect rate limiting
 on the remote service, we execute our calls to the remote service once every few IC heartbeats.
 Consequently, pulling the rates can be a relatively long asynchronous process. We store all the
 previously-pulled rates in memory. As the user submits their requests, the rates that are already
