@@ -12,10 +12,8 @@
     "stats": "175,000+ users",
     "display": "Large",
     "logo": "/img/showcase/dscvr_logo.webp",
-    "video": "/img/showcase/dscvr_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot_0.webp"
+      "/img/showcase/dscvr_screenshot.webp"
     ]
   },
  
@@ -202,7 +200,7 @@
     {
     "id": "funded",
     "name": "Funded",
-    "website": "https://crowdfund-nft.com/",
+    "website": "https://funded.app/",
     "tags": [
       "SocialFi", 
       "DeFi"
@@ -774,17 +772,20 @@
   },
   {
     "id": "astrox",
-    "name": "AstroX",
-    "oneLiner": "Web3.0 developer tools",
+    "name": "AstroX ME",
+    "oneLiner": "A powerful multichain wallet",
     "website": "https://astrox.me/#/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Wallet"
     ],
-    "description": "AstroX is a blockchain development group focused on building tools for the Web3 ecosystem. AstroX has developed a Dart agent and other tools to help support mobile application development on the Internet Computer blockchain.",
+    "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
-    "logo": "/img/showcase/astrox_logo.webp",
+    "twitter": "https://twitter.com/astrox_network",
+    "logo": "/img/showcase/astroxme_logo.webp",
+    "display": "Large",
     "screenshots": [
-      "/img/showcase/astrox_screenshot_0.webp"
+      "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
   {
@@ -904,7 +905,7 @@
       "Tools / Infrastructure"
     ],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/nftstudio_logo.webp",
     "video": "/img/showcase/nftstudio_video.mp4",
     "videoContentType": "video/mp4",
@@ -936,9 +937,9 @@
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
-    "video": "/img/showcase/pokedstudiobots_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": [
+       "/img/showcase/pokedstudio-bots.webp"
+    ]
   },
   {
     "id": "dstar",
