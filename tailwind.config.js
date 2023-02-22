@@ -71,6 +71,10 @@ module.exports = {
         60: "#6E52AA",
       },
       transparent: "transparent",
+      grey: {
+        300: "#dfdfdf",
+        500: "#b6b6b6",
+      },
       black: {
         DEFAULT: "#181818",
         60: "rgba(24, 24, 24, 0.6)",
@@ -182,6 +186,9 @@ module.exports = {
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
@@ -209,7 +216,9 @@ module.exports = {
                 '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-center': '@apply left-1/2 -translate-x-1/2 top-auto bottom-0 translate-y-1/3',
-                '.text-gradient': '@apply text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
+                '.text-gradient-base': '@apply text-transparent bg-clip-text',
+                '.text-gradient': '@apply text-gradient-base bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
+                '.text-gradient-denver': '@apply text-gradient-base bg-[linear-gradient(90deg,#6A85F1_22.19%,#C572EF_79.9%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
             };

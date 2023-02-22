@@ -23,7 +23,7 @@ Here are some quick links to tutorials with example code for various stages of d
 
 - Using [React and compiled JavaScript](./custom-frontend.md) to embed HTML attributes and elements directly in a page.
 
-- Using [React and TypeScript](./my-contacts.md) to import CSS properties from an external file.
+- Using [React and TypeScript](./add-stylesheet.md) to import CSS properties from an external file.
 
 ## How the default templates are used
 
@@ -131,7 +131,7 @@ plug-ins, modules, and other custom configuration to suit your needs. The specif
 the `webpack.config.js` configuration largely depend on the other tools and frameworks you want to use.
 
 For example, if you have experimented with the [Customize the frontend](custom-frontend)
-or [Add a stylesheet](my-contacts) frontend tutorials, you might have modified the following section to work with React
+or [Add a stylesheet](add-stylesheet) frontend tutorials, you might have modified the following section to work with React
 JavaScript:
 
         module: {
