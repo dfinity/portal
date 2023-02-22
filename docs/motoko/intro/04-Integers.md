@@ -63,7 +63,7 @@ Integer division produces integer results:
 5 / 2 // => 2 : Nat
 ```
 
-`%` operator performs [modular divsion](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic):
+`%` operator performs [modular division](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic):
 
 ```motoko
 5 % 2 // => 1 : Nat
