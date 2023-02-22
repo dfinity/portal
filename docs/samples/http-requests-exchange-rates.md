@@ -8,16 +8,16 @@ The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinba
 
 ## What does the sample dapp do
 
+**TL'DR' the sample dapp is just an unbounded time series cache.**
+
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
 2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
-Upon receiving a request from the user, the request is passed from the frontend to the backend canister for queueing. 
-An asynchronous process is triggered at every few Internet Computer heartbeats, to make a Coinbase API request.
-To reduce the overall number of remote HTTPS calls needed, each HTTPS request pulls 200 data 
-points from Coinbase, which is in the range of the maximum number of data points that Coinbase returns in a single call, spaced at 1 minute each.
-As a result, each HTTP request to Coinbase covers 200 minutes of data. The fetched data points are then put into
-a timestamp-to-rate hashmap, ready for future user requests to directly read from.
+Request from users, are queued in the backend canister. Asynchronously at every few Internet Computer heartbeats, the backend canister
+makes a Coinbase API request. To bound the size of the each response, each request pulls at most 200 data points from Coinbase, 
+which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+Coinbase covers up to 200 minutes of data. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user is interested in is longer than a couple of years, the data points to be returned
 by the backend `exchange_rate` canister could be too large for the current response limit (2MB).
