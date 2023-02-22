@@ -1126,6 +1126,21 @@
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
     ]
+  },
+  {
+    "id": "finterest",
+    "name": "Finterest",
+    "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
+    "tags": [
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/finterestICP",
+    "description": "Lend and borrow against your crypto without bridging it across chains. Yes, even Bitcoin",
+    "stats": "$1.5M+ Raised",
+    "logo": "/img/showcase/finterest_logo.webp",
+    "screenshots": [
+      "/img/showcase/finterest_screenshot_0.webp"
+    ]
   }
 ]
 
