@@ -51,7 +51,8 @@ const projects: {
   {
     name: "DSCVR",
     logo: "/img/ethdenver/dscvr.webp",
-    description: "Web3 social media platform with user governed NFT gated Portals",
+    description:
+      "Web3 social media platform with user governed NFT gated Portals",
     agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
   },
   {
@@ -415,10 +416,10 @@ function EthDenverPage() {
                 </ul>
 
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Join Dominic Wörner, Developer Relations Engineer at DFINITY, 
-                  jumps on Twitch to highlight the advantages of building on the 
-                  Internet Computer and to give you an overview of the 5 bounty 
-                  categories. BUIDLers, make sure to tune in for details. 
+                  Join Dominic Wörner, Developer Relations Engineer at DFINITY,
+                  jumps on Twitch to highlight the advantages of building on the
+                  Internet Computer and to give you an overview of the 5 bounty
+                  categories. BUIDLers, make sure to tune in for details.
                 </p>
 
                 <p className="mb-0">
@@ -426,12 +427,12 @@ function EthDenverPage() {
                     href="https://youtu.be/awjhuGUdENI"
                     className="link-primary link-with-icon"
                   >
-                    Watch replay on ETHDenver YouTube 
+                    Watch replay on ETHDenver YouTube
                     <LinkArrowUpRight />
                   </Link>
                 </p>
               </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex  order-1 md:order-2">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
                 <img
                   src="/img/ethdenver/card-0.webp"
                   alt=""
@@ -444,7 +445,7 @@ function EthDenverPage() {
               className="rounded-xl overflow-hidden flex flex-col md:flex-row"
               variants={transitions.item}
             >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
                 <img
                   src="/img/ethdenver/card-1.webp"
                   alt=""
@@ -469,8 +470,7 @@ function EthDenverPage() {
                   throughout the week.
                 </p>
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Sponsored by DFINTY, a contributor to the Internet
-                  Computer.
+                  Sponsored by DFINTY, a contributor to the Internet Computer.
                 </p>
 
                 <p className="mb-0">
@@ -518,7 +518,7 @@ function EthDenverPage() {
                   </Link>
                 </p>
               </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex order-1 md:order-2">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
                 <img
                   src="/img/ethdenver/card-2.webp"
                   alt=""
@@ -531,7 +531,7 @@ function EthDenverPage() {
               className="rounded-xl overflow-hidden flex flex-col md:flex-row"
               variants={transitions.item}
             >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
                 <img
                   src="/img/ethdenver/card-3.webp"
                   alt=""
@@ -584,7 +584,7 @@ function EthDenverPage() {
                   <li>9:00am - 6:30pm MST</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
-                    Find us as DAO Town
+                    Find us at DAO Town
                   </li>
                   <li>Mar 2, 2023</li>
                   <li>2:00-4:00pm MST</li>
@@ -606,7 +606,7 @@ function EthDenverPage() {
                   </Link>
                 </p>
               </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex order-1 md:order-2">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
                 <img
                   src="/img/ethdenver/card-4.webp"
                   alt=""
@@ -619,7 +619,7 @@ function EthDenverPage() {
               className="rounded-xl overflow-hidden flex flex-col md:flex-row"
               variants={transitions.item}
             >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 h-full flex">
+              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
                 <img
                   src="/img/ethdenver/card-5.webp"
                   alt=""
@@ -778,7 +778,7 @@ function EthDenverPage() {
                   href="https://identity.ic0.app/"
                   variants={transitions.item}
                 >
-                  Set one one up now!
+                  Set one up now!
                 </MotionLink>
               </div>
             </AnimateSpawn>
@@ -866,10 +866,11 @@ function EthDenverPage() {
                 >
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
-                  But not the Internet Computer blockchain. This platform runs it
-                  all on-chain, fully decentralized — from simple dapps, to high
-                  user-volume social networks and games, to oderbook exchanges and 
-                  enterprise systems, without the need for traditional IT. 
+                  But not the Internet Computer blockchain. This platform runs
+                  it all on-chain, fully decentralized — from simple dapps, to
+                  high user-volume social networks and games, to oderbook
+                  exchanges and enterprise systems, without the need for
+                  traditional IT.
                 </motion.p>
               </div>
               <div className="md:w-6/10">
