@@ -285,14 +285,36 @@ function SnsFaqPage() {
                   neurons that vote.
                 </li>
                 <li>
+                  <strong>Create an upgrade proposal</strong>
+                  Upgrade proposals update the code of the dapp that
+                  the SNS DAO controls. This allows anyone to contribute
+                  code to an SNS DAO.
+                </li>
+                <li>
+                  <strong>Create a motion proposals</strong> Motion
+                  proposals don't upgrade the code of the dapp, instead
+                  they are steering the direction of the DAO. 
+                </li>
+                <li>
                   <strong>Create SNS parameter update proposals:</strong>
                   The DAO can upgrade many of its own parameters such as
                   maximum staking period, voting rewards and many more.
                   See more {" "}
-                  //TODO: add link
-                  <Link href="https://nns.ic0.app/launchpad/">
+                  <Link href="https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L759">
                     here
                   </Link>
+                </li>
+              </ul>
+              Some off-chain examples of contributing are:
+              <ul>
+                <li>
+                  <strong>Content moderation</strong>
+                </li>
+                <li>
+                  <strong>UI / UX design work</strong>
+                </li>
+                <li>
+                  <strong>Off-chain marketing / inviting friends</strong>
                 </li>
               </ul>
             </Faq> 
