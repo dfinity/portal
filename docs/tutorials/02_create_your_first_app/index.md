@@ -5,7 +5,7 @@
 This tutorial will guide you through creating a fully functioning app called "Poll" that allows you to host a poll of multiple choices and share it with other people.
 
 You application will look similar to this:
-![picture 1](__attachments/Screenshot%202022-12-08%20at%2008.43.30@2x.png)  
+![picture 1](./_attachments/poll_app_screenshot.webp)  
 
 ## Requirements
 It's good to define what you are building in advance.

@@ -33,13 +33,13 @@ const projects: {
     logo: "/img/ethdenver/astrox.webp",
     description:
       "Multichain wallet securing your assets without seed phrase across any devices.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Hot or Not",
     logo: "/img/ethdenver/hotornot.webp",
     description: "Monetise Time on Social Media. Video platform in ICP.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Toniq Labs",
@@ -51,15 +51,14 @@ const projects: {
   {
     name: "DSCVR",
     logo: "/img/ethdenver/dscvr.webp",
-    description:
-      "Web3 social media platform with user governed NFT gated Portals",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    description: "Web3 social media platform with user governed NFT gated Portals",
+    agenda: ["agenda coming soon"],
   },
   {
     name: "Finterest",
     logo: "/img/ethdenver/finterest.webp",
     description: "The first truly decentralized price feed.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
   {
     name: "IC Drive",
@@ -72,14 +71,14 @@ const projects: {
     name: "SCINET",
     logo: "/img/ethdenver/scinet.webp",
     description: "Decentralized life sciences ecosystem on ICP.",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
 
   {
     name: "Modclub",
     logo: "/img/ethdenver/modclub.webp",
     description: "Decentralized Moderation and Proof of Humanity",
-    agenda: ["Mar 2 / 3, 2023", "10:00am - 2:30pm MST"],
+    agenda: ["agenda coming soon"],
   },
 ];
 
@@ -244,14 +243,14 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/bounties"
+                  href="https://www.ethdenver.com/buidl/preparation-guide"
                   className="button-primary"
                 >
-                  Register Now
+                  Learn More
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
+                  href="https://twitter.com/DFINITYDev"
                 >
                   <TwitterIcon />
                   Follow for Developer related updates
@@ -407,11 +406,10 @@ function EthDenverPage() {
                   Bounties explained by Dominic Wörner
                 </h3>
                 <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 20, 2023</li>
-                  <li>9:00 - 10:30am MST</li>
+                  <li>Feb 24 - Mar 5, 2023</li>
                   <li className="flex items-center gap-1">
                     <LocationIcon />
-                    Twitch (online)
+                    BUIDLathon
                   </li>
                 </ul>
 
@@ -427,7 +425,7 @@ function EthDenverPage() {
                     href="https://youtu.be/awjhuGUdENI"
                     className="link-primary link-with-icon"
                   >
-                    Watch replay on ETHDenver YouTube
+                    Watch bounty explainer video 
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -586,8 +584,7 @@ function EthDenverPage() {
                     <LocationIcon />
                     Find us at DAO Town
                   </li>
-                  <li>Mar 2, 2023</li>
-                  <li>2:00-4:00pm MST</li>
+                  <li>Community demos by ecosystem</li>
                 </ul>
 
                 <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
@@ -601,7 +598,7 @@ function EthDenverPage() {
                     href="https://www.ethdenver.com/map"
                     className="link-primary link-with-icon"
                   >
-                    See floor plan
+                    See map
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -646,7 +643,7 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://ethdenver.typeform.com/to/FFN8e1Cz?typeform-source=23edeneth.webflow.io"
+                    href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
                     className="link-primary link-with-icon"
                   >
                     See full info

@@ -7,15 +7,13 @@
     "tags": ["SocialFi"
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
-    "description": "DSCVR is a decentralized version of Reddit, where users are the owners. Decentralized end-to-end, built on the Internet Computer, and accessible from any browser. Try it out yourself. ",
+    "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
     "usesInternetIdentity": true,
     "stats": "175,000+ users",
     "display": "Large",
     "logo": "/img/showcase/dscvr_logo.webp",
-    "video": "/img/showcase/dscvr_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot_0.webp"
+      "/img/showcase/dscvr_screenshot.webp"
     ]
   },
  
@@ -28,7 +26,7 @@
       "SocialFi"
     ],
     "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
-    "description": "Distrikt is a completely decentralized, community-owned professional network. Users of the platform will vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today. ",
+    "description": "Distrikt is a completely decentralized, community-owned Web3 social media platform. Users of the platform will soon be able vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today.",
     "usesInternetIdentity": true,
     "display": "Large",
     "stats": "110,000+ users",
@@ -67,7 +65,7 @@
       "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
-    "description": "The world’s first web3 search engine",
+    "description": "The world’s first Web3 search engine",
     "stats": "3,000,000+ searches",
     "display": "Large",
     "logo": "/img/showcase/kinic_logo.webp",
@@ -99,7 +97,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Decentralized messaging has been a pipe-dream for decades. With the advent of the Internet Computer, real-time messaging is now possible on a blockchain. ",
+    "description": "What if you could own a piece of WhatsApp and vote on what features get added? OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and soon to own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
     "display": "Large",
     "stats": "80,000+ users",
@@ -117,7 +115,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "The Internetcomputer.org website (this very website!) is a dapp providing information about the Internet Computer. \n\nIt is a React web app hosted entirely on the IC.",
+    "description": "The website you're scrolling now, internetcomputer.org is itself a dapp hosted 100% on the Internet Computer - including images and videos.",
     "display": "Normal",
     "logo": "/img/showcase/internetcomputerorgwebsite_logo.webp",
     "screenshots": [
@@ -128,12 +126,12 @@
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
-    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dApps on the Internet Computer.",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
     "website": "https://wallet.infinityswap.one/",
     "tags": [
       "Wallet"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to access your BTC, ICP, ICRC-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also has support for Internet Identity, enabling you to ditch passwords and rely on full biometric authentication.",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "videoContentType": "video/mp4",
@@ -146,7 +144,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "Uniswap front end hosted on the Internet Computer through Fleek. Showing how traditional DeFi solutions can now be hosted completely on-chain by using the Internet Computer blockchain. Another use case of completely decentralizing a service which currently has a centralized front end.",
+    "description": "Uniswap's frontend hosted on the Internet Computer through Fleek. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
     "oneLiner": "Front-End On-Chain",
     "display": "Normal",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
@@ -161,8 +159,8 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Decentralized and 100% on-chain. Web3 alternative to Twitter with DeFi, NFTs, DAOs and prediction markets all in one place.",
-    "stats": "5,000 users + TVL",
+    "description": "What if there was decentralized Twitter that included prediction markets? Seers is Web3 social media platform hosted 100% on-chain combining social media features with prediction markets.",
+    "stats": "10,000 users + TVL",
     "display": "Normal",
     "logo": "/img/showcase/seers_logo.webp",
     "screenshots": []
@@ -174,7 +172,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "An open-source, privacy-first, decentralized blogging platform that lives 100% on chain. Your voice is unstoppable, your data are your own.",
+    "description": "An open-source, privacy-first, decentralized blogging platform that lives 100% on chain. Have an unstoppable voice and full control over your data.",
     "github": "https://github.com/papyrs/papyrs",
     "usesInternetIdentity": true,
     "display": "Normal",
@@ -191,7 +189,7 @@
       "SocialFi"
     ],
     "twitter": "https://twitter.com/TaggrNetwork",
-    "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure.",
+    "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure. No Ponzinomics - TAGGR has a sustainable tokenomics model that rewards quality posts and removes incentive to spam.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/taggr_logo.webp",
@@ -208,8 +206,8 @@
       "DeFi"
     ],
     "twitter": "https://twitter.com/funded_app",
-    "description": "Web-3 crowdfunding! Using smart contract technology to build a safer, cheaper and global crowdfunding service.",
-    "stats": "39.000+ ICP funded",
+    "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
+    "stats": "75,000+ ICP funded",
     "display": "Normal",
     "logo": "/img/showcase/funded_logo.webp",
     "screenshots": []
@@ -237,7 +235,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "ICDex is flagship product by ICLighthouse, it is an orderbook DEX that runs 100% on-chain, a world-first.",
+    "description": "ICDex is flagship product by ICLighthouse, an orderbook based DEX that runs 100% on-chain. The world's first orderbook DEX - made possible by advanced ICP smart contracts",
     "stats": "Supports ckBTC",
     "twitter": "https://twitter.com/ICLighthouse",
     "display": "Normal",
@@ -260,7 +258,7 @@
       "/img/showcase/dank_screenshot_0.webp"
     ]
   },
-	{
+  {
     "id": "omnic",
     "name": "Omnic",
     "oneLiner": "Crosschain Messaging Protocol & Token Bridge Between the Internet Computer and EVM Chains",
@@ -282,7 +280,7 @@
 	"videoContentType": "video/mp4",
 	"video": "/img/showcase/omnic_video.mp4"
   },
-   {
+  {
     "id": "unfoldvr",
     "name": "UnfoldVR",
     "oneLiner": "Decentralizing asset Creation and Discovery for the Metaverse",
@@ -293,7 +291,7 @@
       "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/unfold_vr",
-    "description": "UnfoldVR empowers creators to author 3D NFTs using easy-to-use tools both on the Web and in Virtual Reality. ",
+    "description": "UnfoldVR empowers creators to author 3D NFTs using easy-to-use tools both on the Web and in Virtual Reality.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/unfoldvr_logo.webp",
@@ -301,7 +299,7 @@
     "videoContentType": "video/mp4",
     "screenshots": []
   },
- {
+  {
     "id": "plethora",
     "name": "Plethora",
     "website": "https://plethora.game/",
@@ -310,7 +308,7 @@
       "NFT"
     ],
     "twitter": "https://twitter.com/PlethoraGame",
-    "description": "Plethora is all about abundance and making you feel fulfilled. We empower NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
+    "description": "Plethora is all about abundance and making you feel fulfilled. Plethora empowers NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
     "oneLiner": "Web3 gaming infrastructure platform",
     "display": "Large",
     "stats": "Thriving community",
@@ -328,7 +326,7 @@
       "NFT"
     ],
     "twitter": "https://twitter.com/toniqlabs",
-    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot (through Exponent) provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
+    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
     "usesInternetIdentity": true,
     "stats": "1,000,000+ ICP volume",
     "display": "Large",
@@ -353,7 +351,6 @@
       "/img/showcase/origyn_screenshot_0.webp"
     ]
   },
- 
   {
     "id": "cubetopia",
     "name": "Cubetopia",
@@ -363,8 +360,8 @@
       "Games"
     ],
     "twitter": "https://twitter.com/TheCubetopia",
-    "description": "Decentralized alternative to Minecraft with NFT worlds. Own a unique island on the blockchain, Create whatever you desire,Play with friends",
-    "stats": "13,200+ ICP volume",
+    "description": "Cubetopia is a Minecraft-like Web3 game where players can build anything on unique voxel islands also called “worlds”. Each world is a mutable NFT stored on the Internet Computer blockchain. Anyone can visit these islands on chain, while the owner of the NFT can update it by building.",
+    "stats": "27,000+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/cubetopia_logo.webp",
     "screenshots": [
@@ -380,7 +377,7 @@
       "NFT"
     ],
     "twitter": "https://twitter.com/YumiMarketplace",
-    "description": "Yumi is a high-speed, low-cost, and fully decentralized NFT marketplace built on Internet Computer (IC). All digital collectibles available on Yumi are hosted fully on-chain. The minting of NFTs is completely free for creators (no gas fees).",
+    "description": "Yumi is a high-speed, low-cost, and fully decentralized NFT marketplace built on the Internet Computer. All digital collectibles available on Yumi are hosted fully on-chain. The minting of NFTs is completely free for creators (no gas fees).",
     "usesInternetIdentity": true,
     "display": "Large",
     "logo": "/img/showcase/yumi_logo.webp",
@@ -407,8 +404,6 @@
       "/img/showcase/sly_screenshot_0.webp"
     ]
   },
-  
- 
   {
     "id": "sudograph",
     "name": "Sudograph",
@@ -555,7 +550,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Internet Identity guarantees that your data isn't visible, tracked, or mined. The blockchain authentication system enables users to sign in to dapps on the Internet Computer and sites across the web anonymously and securely. ",
+    "description": "Internet Identity is a privacy-enhancing authentication framework for applications on the Internet Computer. It provides users with a easy-to-use and secure anonymizing login to Web3 services running on ICP without being tracked across dapps.",
     "github": "https://github.com/dfinity/internet-identity",
     "usesInternetIdentity": true,
     "stats": "1 000 000+ ",
@@ -588,7 +583,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Windows IC is a React Dapp built on the Internet Computer. Mimicking what a chromebook can do, but for a mimic of the Windows Operating System, this decentralized desktop allows anyone to access some of their favorite programs from any browser. ",
+    "description": "Windows IC is a React Dapp built on the Internet Computer. Mimicking what a chromebook can do, but for a mimic of the Windows Operating System, this decentralized desktop allows anyone to access some of their favorite programs from any browser.",
     "logo": "/img/showcase/windowsic_logo.webp",
     "screenshots": [
       "/img/showcase/windowsic_screenshot_0.webp"
@@ -603,7 +598,7 @@
       "Wallet",
       "Tools / Infrastructure"
     ],
-    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn rewards.",
+    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/nnsfront-enddapp_logo.webp",
     "screenshots": [
@@ -701,14 +696,14 @@
  
   {
     "id": "icmojiorigins",
-    "name": "ICMoji Origins",
+    "name": "ICmoji Origins",
     "oneLiner": "NFT Based Multiplayer Game On-Chain",
     "website": "https://icmojis.com/",
     "tags": [
       "Games",
       "NFT"
     ],
-    "description": "ICMoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis.",
+    "description": "ICmoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/icmojiorigins_logo.webp",
@@ -746,12 +741,12 @@
   },
   {
     "id": "modclub",
-    "name": "ModClub",
+    "name": "MODCLUB",
     "website": "https://ljyte-qiaaa-aaaah-qaiva-cai.raw.ic0.app/",
     "tags": [
       "SocialFi"
     ],
-    "description": "ModClub is a decentralized moderation rewarding tool based completely on-chain. Built on the Internet Computer, ModClub rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities. ",
+    "description": "MODCLUB is a decentralized moderation tool based hosted fully on-chain. Built on the Internet Computer, MODCLUB rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities.",
     "logo": "/img/showcase/modclub_logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
@@ -777,17 +772,20 @@
   },
   {
     "id": "astrox",
-    "name": "AstroX",
-    "oneLiner": "Web3.0 developer tools",
+    "name": "AstroX ME",
+    "oneLiner": "A powerful multichain wallet",
     "website": "https://astrox.me/#/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Wallet"
     ],
-    "description": "AstroX is a blockchain development group focused on building tools for the Web3.0 ecosystem. AstroX has developed a Dart agent and other tools to help support mobile application development on the Internet Computer blockchain.",
+    "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
-    "logo": "/img/showcase/astrox_logo.webp",
+    "twitter": "https://twitter.com/astrox_network",
+    "logo": "/img/showcase/astroxme_logo.webp",
+    "display": "Large",
     "screenshots": [
-      "/img/showcase/astrox_screenshot_0.webp"
+      "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
   {
@@ -815,7 +813,7 @@
       "DeFi",
       "Wallet"
     ],
-    "description": "Sonic is a \"swap\" built end-to-end on the Internet Computer. Sonic, built by PsychedelicDAO (formerly, Fleek) enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem. ",
+    "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem.",
     "github": "https://github.com/psychedelic",
     "stats": "$360,000+ TVL",
     "display": "Normal",
@@ -845,7 +843,7 @@
       "Wallet",
       "DeFi"
     ],
-    "description": "Earth Wallet is the self-proclaimed Key to Web3.0 The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
+    "description": "Earth Wallet is the self-proclaimed Key to Web3 The open-source wallet allows users to participate in DeFi, Governance, and Treasury (DAO) protocols with negligible fees and faster transaction settlement than legacy wallets. Now supporting the Internet Computer. ",
     "github": "https://github.com/earth-association",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/earthwallet_logo.webp",
@@ -861,7 +859,7 @@
       "DeFi",
       "Wallet"
     ],
-    "description": "ICPSwap is decentralized exchange (DEX) built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
+    "description": "ICPSwap is DEX built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": [
       "/img/showcase/icpswap_screenshot_0.webp"
@@ -874,7 +872,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "Sushi Swap is a Decentralized Exchange, which enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more.",
+    "description": "Sushi Swap is a DEX that enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more.",
     "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
     "oneLiner": "Front-End Hosted On-Chain",
     "display": "Normal",
@@ -907,7 +905,7 @@
       "Tools / Infrastructure"
     ],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/nftstudio_logo.webp",
     "video": "/img/showcase/nftstudio_video.mp4",
     "videoContentType": "video/mp4",
@@ -939,9 +937,9 @@
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
-    "video": "/img/showcase/pokedstudiobots_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": [
+       "/img/showcase/pokedstudio-bots.webp"
+    ]
   },
   {
     "id": "dstar",
