@@ -39,7 +39,7 @@ available from previous requests will be returned, while the ones that are not y
 pulled concurrently. If the user spots gaps between requested rates and returned rates, the user
 needs to wait for some time and retry the request, and likely the full set of rates will be available then.
 
-## Exchange Rate architecture
+## Exchange Rate sample dapp architecture
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
 ## Cost analysis of the `exchange_rate` canister
