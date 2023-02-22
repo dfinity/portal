@@ -267,15 +267,45 @@ function SnsFaqPage() {
               </h2>
             }
           >
-            <Faq title="In what ways can you participate in an SNS DAO?">
-              Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. Depending on the SNS
-              configuration, users who vote may be rewarded with additional
-              tokens for participating in governance. If you want to get more
-              deeply involved, you can also suggest feature updates through
-              proposals to improve the dapp controlled by the DAO.
+            <Faq title="What do I do once I am an SNS DAO member?">
+              The most important thing you can do as an SNS DAO member is to
+              participate in governance. On-chain governance is what
+              differentiates DAOs from traditional web applications, as members 
+              play a key role in the DAOs success. DAO members can contribute
+              in many ways, from pushing code, to designing a logo or a UI,
+              to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
-
+            <Faq title="In what ways can you participate in an SNS DAO?">
+              There are many ways members can participate in an SNS DAO, both
+              on-chain and off-chain. Some examples include:
+              <ul>
+                <li>
+                  <strong>Vote on SNS proposals:</strong> You can vote on
+                  different types of proposals manually or follow other
+                  neurons that vote.
+                </li>
+                <li>
+                  <strong>Create SNS parameter update proposals:</strong>
+                  The DAO can upgrade many of its own parameters such as
+                  maximum staking period, voting rewards and many more.
+                  See more {" "}
+                  //TODO: add link
+                  <Link href="https://nns.ic0.app/launchpad/">
+                    here
+                  </Link>
+                </li>
+              </ul>
+            </Faq> 
+            <Faq title="How does voting in an SNS DAO work?">  
+              Once you have acquired SNS tokens, you can lock them into SNS
+              neurons and create a proposal or vote on one. If a proposal
+              gets adopted, the code of the SNS DAO or the dapp it controls
+              is upgraded. Depending on the SNS configuration, users who vote
+              may be rewarded with additional tokens for participating in
+              governance. If you want to get more deeply involved, you can
+              also suggest feature updates through proposals to improve the
+              dapp controlled by the DAO.
+            </Faq>
             <Faq
               title="How do you get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
