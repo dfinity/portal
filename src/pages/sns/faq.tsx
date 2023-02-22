@@ -320,6 +320,15 @@ function SnsFaqPage() {
                 </li>
               </ul>
             </Faq>
+            
+            <Faq title="Do you get rewards for participating in governance?">
+              SNS works very similar to the NNS, however each SNS DAO can
+              configure their parameters differently. Once you have locked
+              your SNS governance tokens into SNS neurons for the at least
+              the minimum required time, you can participate in voting.
+              Depending on the configuration voting may reward participants
+              with SNS governance tokens.
+            </Faq>
 
             <Faq title="What is the Community Fund?">
               <p>
