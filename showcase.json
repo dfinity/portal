@@ -1126,6 +1126,37 @@
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
     ]
+  },
+  {
+    "id": "azle",
+    "name": "Azle",
+    "oneLiner": "TypeScript CDK for the Internet Computer",
+    "website": "https://demergent-labs.github.io/azle/azle.html",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Azle is a TypeScript Canister Development Kit (CDK) for the Internet Computer. In other words, it's a TypeScript/JavaScript runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/azle_logo.svg",
+    "github": "https://github.com/demergent-labs/azle",
+    "screenshots": [
+      "/img/showcase/azle_screenshot_0.jpg"
+    ]
+  },
+  {
+    "id": "kybra",
+    "name": "Kybra",
+    "oneLiner": "Python CDK for the Internet Computer",
+    "website": "https://github.com/demergent-labs/kybra",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Kybra is a Python Canister Development Kit (CDK) for the Internet Computer. In other words, it's a Python runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/kybra_logo.svg",
+    "screenshots": [
+      "/img/showcase/kybra_screenshot_0.jpg"
+    ]
   }
 ]
 
