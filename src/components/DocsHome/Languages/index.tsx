@@ -62,7 +62,7 @@ function Index() {
           className={clsx(styles.card, styles.cardHover)}
         >
           <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>Azle</p>
+            <p className={styles.informationTitle}>TypeScript</p>
             <p className={styles.informationBody}>
               Azle allows you to build Internet Computer apps using TypeScript and JavaScript, the languages of the web
             </p>
@@ -77,7 +77,7 @@ function Index() {
           className={clsx(styles.card, styles.cardHover)}
         >
           <div className={styles.bodyContainer}>
-            <p className={styles.informationTitle}>Kybra</p>
+            <p className={styles.informationTitle}>Python</p>
             <p className={styles.informationBody}>
               Kybra allows you to build Internet Computer apps using Python, one of the most popular languages in the world
             </p>
