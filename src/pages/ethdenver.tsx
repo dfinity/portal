@@ -559,10 +559,10 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://jan.camenisch.org/"
+                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/e645c2d5-e178-471c-ab3a-f2ba6c296f20/66a0d48e-8617-463f-b454-a6ee5e6b39fd"
                     className="link-primary link-with-icon"
                   >
-                    See Jan’s profile
+                    See full info
                     <LinkArrowUpRight />
                   </Link>
                 </p>
