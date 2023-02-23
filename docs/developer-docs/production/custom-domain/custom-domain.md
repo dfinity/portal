@@ -134,7 +134,7 @@ When you are running into issues trying to register your custom domains, make th
 following checks:
 
 1. Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). To check, for example, the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
-1. Check that there are no `TXT` records for the `_acme-challenge`-subdomain (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left-over from previous ACME-challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL certificate offerings from your domain provider to remove these records.
+1. Check that there are no `TXT` records for the `_acme-challenge`-subdomain (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left-over from previous ACME-challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
 1. Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser).
 
 ### Updating a Custom Domain
