@@ -21,7 +21,7 @@ In this documentation you will find
 * [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
 ## Technical documentation
-This documentation is, as the name suggests, tecnical documentation aimed at developers.
+This documentation is, as the name suggests, technical documentation aimed at developers.
 Most of the documentation targets developers that have
 a dapp that they would like to decentralize with an SNS. 
 However, this documentation also targets developers that
