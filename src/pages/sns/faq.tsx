@@ -575,22 +575,34 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How can I verify the SNS decentralization sale proposal?">
               <p>
-                There are multiple levels of verification one can do depending
-                on one's level of technical understanding. Namely you can verify:
+                There are multiple levels of verification you can do depending
+                on your level of technical understanding. SNS canisters can be
+                verified at any time, even before the decentralization sale, but
+                after they have been installed on the SNS subnet.
+                Here are some ways to verify:
               </p>
               <ul>
                 <li>
-                  sale parameters in the Launch Pad on the NNS frontend once the
-                  sale proposal has been created or in the decentralization sale
-                  NNS proposal.
+                  <strong>Sale parameters:</strong> You can verify what the
+                  parameters of the decentralization sale are in the Launch
+                  Pad or in the decentralization sale NNS proposal.
                 </li>
-                  SNS root canister that knows about and controls all the other
-                  SNS canisters and the dapp canisters
                 <li>
-                  Dapp canisters that are controlled by the SNS DAO
+                  <strong>SNS root canister: </strong> An SNS DAO is comprised
+                  of several SNS canisters that have different functions.
+                  The root canister is the canister that controls the other
+                  SNS canisters within a given SNS DAO. You should verify that
+                  the SNS root canister is the only canister controlling other
+                  SNS canisters within that SNS DAO, and that it accepts requests
+                  from the dapp it controls. Verification is important for
+                  making sure there no backdoors built in.
+                </li>  
+                <li>
+                  <strong>The dapp canister: </strong> You can verify that the
+                  canister id of the dapp controlled by the SNS DAO is the same
+                  as the one you're interacting with.
                 </li>
-                You can find more information about how exactly to do these
-                verifications yourself {" "}
+                Learn more about verification here: {" "}
                 <Link
                   href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal"
                 >
