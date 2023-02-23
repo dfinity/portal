@@ -36,7 +36,7 @@ console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Internet Computer Home",
+  title: "Internet Computer",
   tagline:
     "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
   url: isDeployPreview

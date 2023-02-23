@@ -399,6 +399,32 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   animation: nft-marquee-right 50s linear infinite;
 }
 
+@keyframes ethdenver-astronaut {
+  from {
+    transform: translate(-40px, 100px);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
+}
+
+.ethdenver-astronaut {
+  animation: ethdenver-astronaut 3s cubic-bezier(0, 0.51, 0.37, 0.94) forwards;
+}
+
+@keyframes badge-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-spin {
+  animation: badge-spin 10s linear infinite;
+}
+
 
 @tailwind base;
 @tailwind components;

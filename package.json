@@ -36,6 +36,7 @@
     "framer-motion": "^6.5.1",
     "hast-util-is-element": "^1.1.0",
     "highlight.js": "^11.5.1",
+    "highlightjs-motoko": "^1.0.0",
     "marked": "^4.0.18",
     "node-fetch": "^2.6.7",
     "node-fetch-retry": "^2.0.1",
