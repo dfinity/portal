@@ -267,15 +267,84 @@ function SnsFaqPage() {
               </h2>
             }
           >
-            <Faq title="In what ways can you participate in an SNS DAO?">
-              Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. Depending on the SNS
-              configuration, users who vote may be rewarded with additional
-              tokens for participating in governance. If you want to get more
-              deeply involved, you can also suggest feature updates through
-              proposals to improve the dapp controlled by the DAO.
+            <Faq title="What do I do once I am an SNS DAO member?">
+              The most important thing you can do as an SNS DAO member is to
+              participate in governance. On-chain governance is what
+              differentiates DAOs from traditional web applications, as members 
+              play a key role in the DAOs success. DAO members can contribute
+              in many ways, from pushing code, to designing a logo or a UI,
+              to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
-
+            <Faq title="In what ways can you participate in an SNS DAO?">
+              There are many ways members can participate in an SNS DAO, both
+              on-chain and off-chain. Creating proposals requires coding skills.
+              Some examples include:
+              <ul>
+                <li>
+                  <strong>Vote on SNS proposals:</strong> You can vote on
+                  different types of proposals manually or follow other
+                  neurons that vote.
+                </li>
+                <li>
+                  <strong>Create upgrade proposals: </strong>
+                  Submit an upgrade proposal to update the code of the
+                  dapp that the SNS DAO controls. This allows anyone to
+                  contribute code to an SNS DAO.
+                </li>
+                <li>
+                  <strong>Upgrade the asset canister: </strong>
+                  Currently upgrades to asset canisters don't go through
+                  proposals. However, you can still make changes to the frontend
+                  by upgrading the asset canister controlled by an SNS DAO.
+                  To do so, you have to first create a proposal to add your
+                  principal ID to the list of controllers who can make updates.
+                </li>
+                <li>
+                  <strong>Create motion proposals:</strong> Motion
+                  proposals don't upgrade the code of the dapp, instead
+                  they steer the direction of the DAO in terms of new
+                  features and dapp development.
+                </li>
+                <li>
+                  <strong>Create SNS parameter update proposals: </strong>
+                  You can propose upgrades for many of the DAO's parameters
+                  such as maximum staking period, voting rewards and many more.
+                  See all of them {" "}
+                  <Link href="https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L759">
+                    here
+                  </Link>
+                </li>
+              </ul>
+              Non-governance related examples of contributing are:
+              <ul>
+                <li>
+                  <strong>Content moderation: </strong> Many social media
+                  dapps may incorporate content moderation as they scale to
+                  millions of users. Moderators review and approve content
+                  based on the content policies of the DAO.
+                </li>
+                <li>
+                  <strong>UI / UX design work: </strong> Users can contribute
+                  not only by coding, but designing different aspects of the 
+                  dapp.
+                </li>
+                <li>
+                  <strong>Off-chain marketing / inviting friends: </strong>
+                  Members of the DAO can be advocates of the dapp and promote
+                  it in different ways.
+                </li>
+              </ul>
+            </Faq> 
+            <Faq title="How does voting in an SNS DAO work?">  
+              Once you have acquired SNS tokens, you can lock them into SNS
+              neurons and create a proposal or vote on one. If a proposal
+              gets adopted, the code of the SNS DAO or the dapp it controls
+              is upgraded. Depending on the SNS configuration, users who vote
+              may be rewarded with additional tokens for participating in
+              governance. If you want to get more deeply involved, you can
+              also suggest feature updates through proposals to improve the
+              dapp controlled by the DAO.
+            </Faq>
             <Faq
               title="How do you get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
@@ -319,6 +388,15 @@ function SnsFaqPage() {
                   earn tokens as voting rewards as you would in the NNS.
                 </li>
               </ul>
+            </Faq>
+            
+            <Faq title="Do you get rewards for participating in governance?">
+              SNS works very similar to the NNS, however each SNS DAO can
+              configure their parameters differently. Once you have locked
+              your SNS governance tokens into SNS neurons for the at least
+              the minimum required time, you can participate in voting.
+              Depending on the configuration voting may reward participants
+              with SNS governance tokens.
             </Faq>
 
             <Faq title="What is the Community Fund?">
@@ -502,6 +580,43 @@ function SnsFaqPage() {
                   Go to the Launch Pad
                 </Link>
               </p>
+            </Faq>
+            <Faq title="How can I verify the SNS decentralization sale proposal?">
+              <p>
+                There are multiple levels of verification you can do depending
+                on your level of technical understanding. SNS canisters can be
+                verified at any time, even before the decentralization sale, but
+                after they have been installed on the SNS subnet.
+                Here are some ways to verify:
+              </p>
+              <ul>
+                <li>
+                  <strong>Sale parameters:</strong> You can verify what the
+                  parameters of the decentralization sale are in the Launch
+                  Pad or in the decentralization sale NNS proposal.
+                </li>
+                <li>
+                  <strong>SNS root canister: </strong> An SNS DAO is comprised
+                  of several SNS canisters that have different functions.
+                  The root canister is the canister that controls the other
+                  SNS canisters within a given SNS DAO. You should verify that
+                  the SNS root canister is the only canister controlling other
+                  SNS canisters within that SNS DAO, and that it accepts requests
+                  from the dapp it controls. Verification is important for
+                  making sure there no backdoors built in.
+                </li>  
+                <li>
+                  <strong>The dapp canister: </strong> You can verify that the
+                  canister id of the dapp controlled by the SNS DAO is the same
+                  as the one you're interacting with.
+                </li>
+                Learn more about verification here: {" "}
+                <Link
+                  href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal"
+                >
+                  here
+                </Link>
+              </ul>
             </Faq>
           </FaqSection>
 
