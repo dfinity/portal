@@ -193,9 +193,11 @@ const Content: React.FC = () => {
             compromise.
           </p>
           <p className="tw-paragraph mb-8">
-            ckBTC is issued and redeemed via canister smart contracts backed 1:1
+            ckBTC is issued and redeemed via a canister smart contract backed 1:1
             with real bitcoin — no bridge or custodian, and verifiable by
-            anyone.
+            anyone. The ckBTC canister is controlled by the NNS DAO, which
+            means no single entity can initiate malicious activities without
+            the approval of ICP governance token holders.
           </p>
           <p className="tw-paragraph mb-0 font-bold">Not a Lightning Network</p>
           <p className="tw-paragraph mb-3">
