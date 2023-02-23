@@ -292,6 +292,14 @@ function SnsFaqPage() {
                   contribute code to an SNS DAO.
                 </li>
                 <li>
+                  <strong>Upgrade the asset canister: </strong>
+                  Currently not all upgrades to asset canisters go through
+                  proposals. If you want to upgrade an asset canister
+                  controlled by the SNS DAO, you will have to create a
+                  proposal to add your principal id to the list of
+                  controllers who can make updates.
+                </li>
+                <li>
                   <strong>Create motion proposals:</strong> Motion
                   proposals don't upgrade the code of the dapp, instead
                   they steer the direction of the DAO in terms of new
