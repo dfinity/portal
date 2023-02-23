@@ -293,11 +293,11 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   <strong>Upgrade the asset canister: </strong>
-                  Currently not all upgrades to asset canisters go through
-                  proposals. If you want to upgrade an asset canister
-                  controlled by the SNS DAO, you will have to create a
-                  proposal to add your principal id to the list of
-                  controllers who can make updates.
+                  Currently upgrades to asset canisters don't go through
+                  proposals. However, you can still make changes to the frontend
+                  by upgrading the asset canister controlled by an SNS DAO.
+                  To do so, you have to first create a proposal to add your
+                  principal ID to the list of controllers who can make updates.
                 </li>
                 <li>
                   <strong>Create motion proposals:</strong> Motion
