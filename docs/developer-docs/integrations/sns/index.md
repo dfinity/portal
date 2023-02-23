@@ -11,16 +11,12 @@ Some of the SNS documentation is still being worked on and will be
 edited or added as later SNS features are added, so please bare with
 us if it is not yet complete or a few parts do not work yet.
 
-## SNS introduction
-Here you'll find an overview of the stages of an SNS.
-* [A technical introduction to the SNS](sns-intro.md)
-
-## DAOs and Tokenomics documentation 
+## SNS and DAOs primer
 The DAO Docs introduce the ideas and tools needed when considering to form a DAO. It targets developers or entrepreneurs who want to get an SNS, understand tokenomics of an SNS, and introduces predeployment, product-based, considerations like roadmapping.
 
 In this documentation you will find
-* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
-* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
+* [An introduction to DAOs and SNSs](./tokenomics/index.md)
+* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics-intro.md)
 * [An introduction to SNS rewards](./tokenomics/rewards.md)
 * [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
@@ -31,6 +27,9 @@ a dapp that they would like to decentralize with an SNS.
 However, this documentation also targets developers that
 want to build services that integrate with SNSs, such as wallet dapps
 or decentralized exchanges.
+
+Here you'll find an overview of the stages of an SNS.
+* [A technical introduction to the SNS](sns-intro.md)
 
 * Information on how to **get an SNS**, which includes
     * [An introduction how to get an SNS](get-sns/get-sns-intro.md) which
