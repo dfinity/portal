@@ -1174,6 +1174,24 @@
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
     ]
+  },
+  {
+    "id": "sandbless",
+    "name": "Sand Bless",
+    "oneLiner": "Sandblasting and serigraphy artworks",
+    "website": "https://qob3k-7yaaa-aaaao-aahdq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
+    "github": "https://github.com/branciard/SandBlessCanisters",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/sandbless_logo.png",
+    "screenshots": [
+      "/img/showcase/sandbless_screenshot_0.jpg",
+      "/img/showcase/sandbless_screenshot_1.jpg",
+      "/img/showcase/sandbless_screenshot_2.jpg"
+    ]
   }
 ]
 
