@@ -277,7 +277,8 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="In what ways can you participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
-              on-chain and off-chain. Some examples include:
+              on-chain and off-chain. Creating proposals requires coding skills.
+              Some examples include:
               <ul>
                 <li>
                   <strong>Vote on SNS proposals:</strong> You can vote on
@@ -285,36 +286,44 @@ function SnsFaqPage() {
                   neurons that vote.
                 </li>
                 <li>
-                  <strong>Create an upgrade proposal</strong>
-                  Upgrade proposals update the code of the dapp that
-                  the SNS DAO controls. This allows anyone to contribute
-                  code to an SNS DAO.
+                  <strong>Create upgrade proposals: </strong>
+                  Submit an upgrade proposal to update the code of the
+                  dapp that the SNS DAO controls. This allows anyone to
+                  contribute code to an SNS DAO.
                 </li>
                 <li>
-                  <strong>Create a motion proposals</strong> Motion
+                  <strong>Create motion proposals:</strong> Motion
                   proposals don't upgrade the code of the dapp, instead
-                  they are steering the direction of the DAO. 
+                  they steer the direction of the DAO in terms of new
+                  features and dapp development.
                 </li>
                 <li>
-                  <strong>Create SNS parameter update proposals:</strong>
-                  The DAO can upgrade many of its own parameters such as
-                  maximum staking period, voting rewards and many more.
-                  See more {" "}
+                  <strong>Create SNS parameter update proposals: </strong>
+                  You can propose upgrades for many of the DAO's parameters
+                  such as maximum staking period, voting rewards and many more.
+                  See all of them {" "}
                   <Link href="https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L759">
                     here
                   </Link>
                 </li>
               </ul>
-              Some off-chain examples of contributing are:
+              Non-governance related examples of contributing are:
               <ul>
                 <li>
-                  <strong>Content moderation</strong>
+                  <strong>Content moderation: </strong> Many social media
+                  dapps may incorporate content moderation as they scale to
+                  millions of users. Moderators review and approve content
+                  based on the content policies of the DAO.
                 </li>
                 <li>
-                  <strong>UI / UX design work</strong>
+                  <strong>UI / UX design work: </strong> Users can contribute
+                  not only by coding, but designing different aspects of the 
+                  dapp.
                 </li>
                 <li>
-                  <strong>Off-chain marketing / inviting friends</strong>
+                  <strong>Off-chain marketing / inviting friends: </strong>
+                  Members of the DAO can be advocates of the dapp and promote
+                  it in different ways.
                 </li>
               </ul>
             </Faq> 
