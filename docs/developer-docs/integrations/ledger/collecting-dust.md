@@ -3,7 +3,7 @@
 Even if the ledger can index a large number of accounts, it has a finite capacity.
 To avoid saturation and maintain good performance,
 some accounts are trimmed if the ledger capacity is reaching a threshold.
-This mechanism prevent dust (i.e. accounts with balance too small to be spent) to accumulate in the ledger.
+This mechanism prevents dust (i.e. accounts with balance too small to be spent) from accumulating in the ledger.
 
 ## Trimming mechanism
 
