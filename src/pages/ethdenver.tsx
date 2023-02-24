@@ -243,10 +243,10 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/buidl/preparation-guide"
+                  href="https://app.buidlbox.io/guidl/dfinity"
                   className="button-primary"
                 >
-                  Learn More
+                  Sign Up
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
