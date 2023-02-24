@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 # SNS Introduction
 
@@ -8,7 +8,7 @@ decentralized autonomous organization (DAO) is,
 you know that a service nervous system (SNS) is a kind of DAO that is
 provided on the IC, and that you want to learn how you can get a DAO
 for your dapp. 
-If this is not (yet) the case, you can learn all about DAOs and SNSs
+If this is not (yet) the case, you can learn more about DAOs and SNSs
 [here](./tokenomics/sns-intro-tokens.md),
 including what advantages such decentralized governance systems have.
 
@@ -65,11 +65,11 @@ more detail.
 
 ## SNS canisters
 The SNS consists of the following canisters: 
-the governance canister, 
-the ledger canister and archive canisters,
-the index canister, 
-the root canister, and 
-the decentralization sale canister that is explained in the next
+* the governance canister, 
+* the ledger canister and archive canisters,
+* the index canister, 
+* the root canister, and 
+* the decentralization sale canister that is explained in the next
 section.
 
 The _governance canister_ enables decentralized decision making.
@@ -159,3 +159,5 @@ We plan to create separate pages where you will be able to
 find more details regarding <!--how to upgrade SNS canisters(./managing-sns/upgradeSNS.md), set SNS parameters(./managing-sns/nervous-system-parameters.md),-->
 how to upgrade SNS canisters, set SNS parameters,
 and [manage cycles](./managing-sns/cycles-usage.md).
+
+

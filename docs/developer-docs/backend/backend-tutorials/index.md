@@ -24,7 +24,7 @@ The following tutorials introduce the basics for writing dapps that run on the I
 
 -   [Customize the frontend](../../frontend/custom-frontend.md) illustrates using a simple React framework to create a new frontend for the default sample canister and guides you through some basic modifications to customize the interface displayed. If you already know how to use CSS, HTML, JavaScript, and React or other frameworks to build your user interface, you can skip this tutorial.
 
--   [Add a stylesheet](../../frontend/my-contacts.md) illustrates how to add a stylesheet when you use React to create a new frontend for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
+-   [Add a stylesheet](../../frontend/add-stylesheet.md) illustrates how to add a stylesheet when you use React to create a new frontend for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
 
 -   [Make inter-canister calls](./intercanister-calls.md) illustrates how to make simple calls to functions defined in one canister from another canister in the same project.
 

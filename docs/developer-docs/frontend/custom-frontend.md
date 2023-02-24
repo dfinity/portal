@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Customize the frontend
 
 Now that you have a basic understanding of how to create, build, and deploy a simple dapp and are familiar with the default project files and sample frontend, you might want to start experimenting with different ways to customize the frontend user experience for your project.
