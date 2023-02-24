@@ -8,7 +8,7 @@ The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinba
 
 ## What does the sample dapp do
 
-**TL'DR' the sample dapp is just an unbounded time series cache.**
+**TL;DR the sample dapp is just an unbounded time series cache.**
 
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
