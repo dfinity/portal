@@ -108,14 +108,10 @@ class LunrSearchAdapter {
     return this.getHit(doc, null, preview);
   }
   async search(input) {
-    const origin =
-      window.location.origin.endsWith(".ic0.app") ||
-      window.location.origin.includes("localhost:3000")
-        ? "https://internetcomputer.org"
-        : window.location.origin;
-
     const results = await fetch(
-      `${origin}/.netlify/functions/search?term=${encodeURIComponent(input)}`
+      `https://internetcomputer-search.netlify.app/.netlify/functions/search?term=${encodeURIComponent(
+        input
+      )}`
     ).then((res) => res.json());
 
     //   const results = this.getLunrResult(input);
