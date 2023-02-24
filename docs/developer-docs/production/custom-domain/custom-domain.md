@@ -23,10 +23,15 @@ can serve a custom service worker).
 ## Custom Domains on the Boundary Nodes
 
 In the following, we first list all the steps necessary to register your
-custom domain with the boundary nodes. Then, we illustrate these instructions on
-a concrete example. Finally, we explain how one can update and remove a registration.
+custom domain with the boundary nodes. Then, we explain how one can update and
+remove a registration.
 
 ### First Registration
+
+By following the steps below, you can host your canister under your custom domain
+using the boundary nodes. We first explain the necessary steps. Then, we provide
+a [concrete example to illustrate these steps](#concrete-example), followed by some
+instructions on [troubleshooting](#troubleshooting).
 
 1. Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
     * Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
@@ -78,7 +83,7 @@ a concrete example. Finally, we explain how one can update and remove a registra
 In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
 :::
 
-### Concrete Example
+#### Concrete Example
 
 Imagine you wanted to register your domain `foo.bar.com` for your canister with the canister ID `hwvjt-wqaaa-aaaam-qadra-cai`.
 
@@ -122,6 +127,15 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 In the [following document](dns-setup.md), we provide detailed instructions to configure DNS
 records on the example of two popular domain registrars.
 :::
+
+#### Troubleshooting
+
+When you are running into issues trying to register your custom domains, make the
+following checks:
+
+1. Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). To check, for example, the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
+1. Check that there are no `TXT` records for the `_acme-challenge`-subdomain (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left-over from previous ACME-challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
+1. Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser).
 
 ### Updating a Custom Domain
 
