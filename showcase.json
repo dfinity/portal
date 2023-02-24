@@ -152,6 +152,34 @@
     "videoContentType": "video/mp4",
     "screenshots": []
   },
+
+  {
+    "id": "ntagle",
+    "name": "ntagle",
+    "oneLiner": "Proof of Physical Ownership Platform",
+    "website": "https://twitter.com/ntagled",
+    "tags": [
+      "Wallet",
+      "NFT",
+      "SocialFi",
+      "DeFi",
+      "Games",
+      "DAO",
+      "Metaverse",
+      "Tools / Infrastructure"
+    ],
+    "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
+    "usesInternetIdentity": false,
+    "stats": "Working MVP",
+    "logo": "/img/showcase/ntagle_icon.png",
+    "github": [
+      "https://github.com/InternetComputerOG/ntagle-core"
+    ],
+    "twitter": [
+      "https://twitter.com/ntagled"
+    ]
+  },
+  
   {
     "id": "seers",
     "name": "Seers",
@@ -446,6 +474,25 @@
     "logo": "/img/showcase/canlista_logo.webp",
     "screenshots": [
       "/img/showcase/canlista_screenshot_0.webp"
+    ]
+  },
+
+   {
+    "id": "sandbless",
+    "name": "Sand Bless",
+    "oneLiner": "Sandblasting and serigraphy artworks",
+    "website": "https://qob3k-7yaaa-aaaao-aahdq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
+    "github": "https://github.com/branciard/SandBlessCanisters",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/sandbless_logo.png",
+    "screenshots": [
+      "/img/showcase/sandbless_screenshot_0.jpg",
+      "/img/showcase/sandbless_screenshot_1.jpg",
+      "/img/showcase/sandbless_screenshot_2.jpg"
     ]
   },
   {
@@ -1176,4 +1223,3 @@
     ]
   }
 ]
-
