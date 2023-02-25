@@ -168,7 +168,7 @@ function SnsFaqPage() {
               <ul>
                 <li>
                   The design of SNSs is similar to that of the{" "}
-                  <Link href="https://nns.ic0.app">
+                  <Link href="/nns">
                     Network Nervous System (NNS)
                   </Link>
                   , which is the on-chain DAO that governs the whole ICP.
@@ -180,9 +180,9 @@ function SnsFaqPage() {
                   dapp is controlled by voting via tokens.
                 </li>
                 <li>
-                  There can be many SNSs on ICP. A developer can turn their dapp
-                  into a DAO by handing the control of their dapp over to an SNS
-                  DAO.
+                  There can be many SNSs on ICP. Any developer can hand over the
+                  control of their dapp to an SNS DAO. Doing so gives control to
+                  DAO token holders.
                 </li>
               </ul>
             </Faq>
@@ -199,7 +199,7 @@ function SnsFaqPage() {
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
                 of a dapp, since everything is on-chain. Having fully on-chain DAOs
-                is important because it enables all decisions to execute on the
+                is important because it enables all decisions to be executed on the
                 blockchain. This is in contrast to existing DAOs on other
                 blockchains where voting takes place on-chain but the execution of
                 the results are often carried out by developers off-chain. This
@@ -216,7 +216,7 @@ function SnsFaqPage() {
               <p>
                 SNS DAOs facilitate a healthy exchange between developers,
                 entrepreneurs, end users and VC’s. Some advantages of turning
-                your dapp into a DAO include:{" "}
+                the control of your dapp over to a DAO include:{" "}
               </p>
               <ul>
                 <li>
@@ -255,8 +255,20 @@ function SnsFaqPage() {
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat has already publicly
               announced their plans to turn their dapp into an SNS DAO in Q1 of
-              2023. Dapps such as distrikt, Catalyze, Canistore and Nuance are
-              considering creating their own SNSs.
+              2023. Dapps such as {" "}
+              <Link href="https://distrikt.app/">
+                distrikt
+              </Link>, {" "}
+              <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
+                Catalyze
+              </Link>, {" "}
+              <Link href="https://canistore.io/">
+                Canistore
+              </Link> and {" "}
+              <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
+                Nuance
+              </Link>
+              are considering creating their own SNSs.
             </Faq>
           </FaqSection>
           <FaqSection
