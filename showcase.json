@@ -200,7 +200,7 @@
     {
     "id": "funded",
     "name": "Funded",
-    "website": "https://crowdfund-nft.com/",
+    "website": "https://funded.app/",
     "tags": [
       "SocialFi", 
       "DeFi"
@@ -419,6 +419,21 @@
     ]
   },
   {
+    "id": "finterest",
+    "name": "Finterest",
+    "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
+    "tags": [
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/finterestICP",
+    "description": "Lend and borrow against your crypto without bridging it across chains. Yes, even Bitcoin",
+    "stats": "$1.5M+ Raised",
+    "logo": "/img/showcase/finterest_logo.webp",
+    "screenshots": [
+      "/img/showcase/finterest_screenshot_0.webp"
+    ]
+  },
+  {
     "id": "canlista",
     "name": "Canlista",
     "oneLiner": "Internet Computer Canister Registry",
@@ -559,6 +574,39 @@
       "/img/showcase/internetidentity_screenshot_0.gif"
     ]
   },
+  
+  {
+    "id": "azle",
+    "name": "Azle",
+    "oneLiner": "TypeScript CDK for the Internet Computer",
+    "website": "https://demergent-labs.github.io/azle/azle.html",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Azle is a TypeScript Canister Development Kit (CDK) for the Internet Computer. In other words, it's a TypeScript/JavaScript runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/azle_logo.svg",
+    "github": "https://github.com/demergent-labs/azle",
+    "screenshots": [
+      "/img/showcase/azle_screenshot_0.jpg"
+    ]
+  },
+  {
+    "id": "kybra",
+    "name": "Kybra",
+    "oneLiner": "Python CDK for the Internet Computer",
+    "website": "https://github.com/demergent-labs/kybra",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Kybra is a Python Canister Development Kit (CDK) for the Internet Computer. In other words, it's a Python runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/kybra_logo.svg",
+    "screenshots": [
+      "/img/showcase/kybra_screenshot_0.jpg"
+    ]
+  },
+
   {
     "id": "motokoplayground",
     "name": "Motoko Playground",
@@ -1128,5 +1176,4 @@
     ]
   }
 ]
-
 

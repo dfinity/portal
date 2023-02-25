@@ -2,22 +2,22 @@
 
 ## Exchange Rate sample dapp overview
 
-The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with applications and data that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
+The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
-The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase via the Pro API](https://api.pro.coinbase.com/products/ICP-USD/candles).  For the sample dapp, we are only using a single data source to showcase the feature. For better fault tolerance, the number of data sources can be easily extended.
+The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles).  For the sample dapp, we are only using a single data source to showcase the feature. For better fault tolerance, the number of data sources can be easily extended.
 
 ## What does the sample dapp do
 
+**TL;DR the sample dapp is just an unbounded time series cache.**
+
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
-2. the backend provider canister `exchange_rate`, which performs the HTTPS outcalls, queues jobs, and processes data.
+2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
-Upon receiving a request from the user, the request is passed from the frontend to the backend canister for queueing. 
-An asynchronous process is triggered at every few Internet Computer heartbeats, to make a Coinbase API request.
-To reduce the overall number of remote HTTPS calls needed, each HTTPS request pulls 200 data 
-points from Coinbase, which is in the range of the maximum number of data points that Coinbase returns in a single call, spaced at 1 minute each.
-As a result, each HTTP request to Coinbase covers 200 minutes of data. The fetched data points are then put into
-a timestamp-to-rate hashmap, ready for future user requests to directly read from.
+Request from users, are queued in the backend canister. Asynchronously at every few Internet Computer heartbeats, the backend canister
+makes a Coinbase API request. To bound the size of the each response, each request pulls at most 200 data points from Coinbase, 
+which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+Coinbase covers up to 200 minutes of data. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user is interested in is longer than a couple of years, the data points to be returned
 by the backend `exchange_rate` canister could be too large for the current response limit (2MB).
@@ -30,8 +30,7 @@ Users should be able to interact only with the frontend UI canister by selecting
 and the end time with the datetime pickers.
 
 The returned rates may not exactly match the user's time selection. (There could be gaps between
-data points, or there could be a smaller range being returned, or the returned
-dataset precisely matches the user's request.) The reason is that to respect rate limiting
+data points, or there could be a smaller range being returned). The reason is that to respect rate limiting
 on the remote service, we execute our calls to the remote service once every few IC heartbeats.
 Consequently, pulling the rates can be a relatively long asynchronous process. We store all the
 previously-pulled rates in memory. As the user submits their requests, the rates that are already
@@ -39,7 +38,7 @@ available from previous requests will be returned, while the ones that are not y
 pulled concurrently. If the user spots gaps between requested rates and returned rates, the user
 needs to wait for some time and retry the request, and likely the full set of rates will be available then.
 
-## Exchange Rate architecture
+## Exchange Rate sample dapp architecture
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
 ## Cost analysis of the `exchange_rate` canister
