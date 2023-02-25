@@ -608,7 +608,8 @@ function SnsFaqPage() {
                 </strong>
               </p>
               <p>
-                Once the sale ends and is successful, you receive SNS tokens.
+                After the sale ends and is successful, you receive SNS tokens.
+                Note, that this may take a few hours after the sale has concluded.
                 The number of SNS tokens you receive, and the price paid for
                 each token, depends on the amount of ICP raised during the sale
                 as well as the amount of ICP spent. The more ICP raised, the
@@ -632,6 +633,11 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
+            <Faq title="Who starts the decentralization sale?">
+              The developer team first creates an NNS proposal for the
+              decentralization sale. The sale itself starts automatically
+              once the NNS proposal is adopted.
+            </Faq>
             <Faq title="How can I verify the SNS decentralization sale proposal?">
               <p>
                 There are multiple levels of verification you can do depending
@@ -652,8 +658,7 @@ function SnsFaqPage() {
                   The root canister is the canister that controls the other
                   SNS canisters within a given SNS DAO. You should verify that
                   the SNS root canister is the only canister controlling other
-                  SNS canisters within that SNS DAO, and that it accepts requests
-                  from the dapp it controls. Verification is important for
+                  SNS canisters within that SNS DAO. Verification is important for
                   making sure there no backdoors built in.
                 </li>  
                 <li>
@@ -682,7 +687,10 @@ function SnsFaqPage() {
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
                 Voting and the creation of SNS proposals can take place in the
-                dapp controled by the SNS DAO, and soon in the NNS dapp.
+                dapp controlled by the SNS DAO, and soon in the{" "}
+                <Link href="https://nns.ic0.app/">
+                  NNS frontend dapp
+                </Link>,
                 Proposals are listed within the dapps themselves as in this
                 example of OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
@@ -807,7 +815,7 @@ function SnsFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="https://internetcomputer.org/sns"
+            href="/sns"
             title="SNS DAO Basics"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -819,7 +827,7 @@ function SnsFaqPage() {
             title="SNS Blog"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://internetcomputer.org/how-it-works"
+            href="/how-it-works"
             title="Technical overview of ICP"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -827,7 +835,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
+            href="/docs/current/developer-docs/integrations/sns/"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>
