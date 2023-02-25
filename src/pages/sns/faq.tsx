@@ -283,7 +283,7 @@ function SnsFaqPage() {
               The most important thing you can do as an SNS DAO member is to
               participate in governance. On-chain governance is what
               differentiates DAOs from traditional web applications, as members 
-              play a key role in the DAOs success. DAO members can contribute
+              play a key role in the DAO's success. DAO members can contribute
               in many ways, from pushing code, to designing a logo or a UI,
               to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
@@ -305,7 +305,7 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   <strong>Upgrade the asset canister: </strong>
-                  Currently upgrades to asset canisters don't go through
+                  Currently updates to asset canisters don't go through
                   proposals. However, you can still make changes to the frontend
                   by upgrading the asset canister controlled by an SNS DAO.
                   To do so, you have to first create a proposal to add your
@@ -322,7 +322,7 @@ function SnsFaqPage() {
                   You can propose upgrades for many of the DAO's parameters
                   such as maximum staking period, voting rewards and many more.
                   See all of them {" "}
-                  <Link href="https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L759">
+                  <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
                     here
                   </Link>
                 </li>
@@ -446,8 +446,9 @@ function SnsFaqPage() {
               A decentralization sale is the process by which an SNS DAO becomes
               decentralized and where users can purchase SNS tokens by
               participating. After the sale, each participant receives a basket
-              of neurons holding SNS tokens. It is one of{" "}
-              <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> one
+              of neurons. These neurons hold SNS tokens and therefore a share of
+              the DAO's voting power. It is one of{" "}
+              <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> you
               can get SNS tokens for a particular SNS DAO.
             </Faq>
 
@@ -473,6 +474,14 @@ function SnsFaqPage() {
                   successful. If the goal is not reached, participants get their
                   ICP refunded and the sale fails.
                 </li>
+                <li>
+                  The maximum amount of ICP a decentralization sale can receive
+                  before it concludes. If the maximum ICP is reached, the sale is
+                  over and the control of the dapp is turned over to the token
+                  holders. As the number of tokens to be sold is fixed, it is
+                  amount of ICP raised that determines the initial price of
+                  the SNS tokens.
+                </li>
                 <li>Minimum and maximum commitment of ICP per participant</li>
                 <li></li>
               </ul>
@@ -485,17 +494,47 @@ function SnsFaqPage() {
                 <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                   neurons
                 </Link>{" "}
-                that hold your SNS tokens. The basket may contain multiple
-                neurons with different dissolve delays, depending on the SNS
-                configuration. You can use your tokens to participate in
+                that hold your SNS tokens. Depending on the SNS configuration,
+                the basket may contain multiple neurons, each with a different
+                dissolve delay. You can use your tokens to participate in
                 governance or, once neurons have dissolved, sell the liquid
                 tokens on an exchange.
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
                 each token, depends on the amount of ICP raised during the sale.
-                The more ICP raised, the fewer SNS tokens you receive.
+                The more ICP raised, the fewer SNS tokens you receive, however
+                their price will be higher.
+            </Faq>
+            
+            <Faq title="How is the price of SNS tokens calculated?">
+              <p>
+                SNS tokens can be purchased for ICP during the decentralization
+                sale. There is a fixed number of tokens being sold during the
+                sale, which means their price is determined by the amount of
+                ICP raised. You can calculate the token price by dividing the
+                amount of ICP raised with the number of tokens sold.
+                Price = ICP raised / number of tokens being sold. A few examples:
               </p>
+              <ul>
+                <li>
+                  The decentralization sale raised 1000 ICP by selling 5000 tokens.
+                  You contributed with 10 ICP. This means you will have 50 SNS
+                  tokens, each worth 0.2 ICP.
+                </li>
+                <li>
+                  The decentralization sale raised 500,000 ICP by selling 1 million tokens.
+                  You contributed with 200 ICP. This means you will have 400 SNS
+                  tokens, each worth 0.5 ICP.
+                </li>
+                <li>
+                  The decentralization sale raised 10,000 ICP by selling 100 tokens.
+                  You contributed with 5 ICP. This means you will have 0.05 SNS
+                  tokens, where a full token would be worth 100 ICP.
+                </li>  
+              </ul>
+              </p>
+              
             </Faq>
 
             <Faq title="How do I participate in a sale?">
