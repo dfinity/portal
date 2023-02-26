@@ -532,9 +532,7 @@ function SnsFaqPage() {
                   You contributed with 5 ICP. This means you will have 0.05 SNS
                   tokens, where a full token would be worth 100 ICP.
                 </li>  
-              </ul>
-              </p>
-              
+              </ul>              
             </Faq>
 
             <Faq title="How do I participate in a sale?">
