@@ -505,6 +505,7 @@ function SnsFaqPage() {
                 each token, depends on the amount of ICP raised during the sale.
                 The more ICP raised, the fewer SNS tokens you receive, however
                 their price will be higher.
+              </p>
             </Faq>
             
             <Faq title="How is the price of SNS tokens calculated?">
