@@ -100,8 +100,8 @@ const Content: React.FC = () => {
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
             Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It is
-            issued and redeemed via canister smart contracts and
-            cryptographically backed 1:1 with real bitcoin. It’s fast,
+            issued and redeemed via canister smart contracts controlled by the
+            NNS and cryptographically backed 1:1 with real bitcoin. It’s fast,
             low-tx-fee bitcoin on ICP with no intermediary.
           </p>
         </div>
