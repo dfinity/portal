@@ -244,10 +244,10 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/buidl/preparation-guide"
+                  href="https://app.buidlbox.io/guidl/dfinity"
                   className="button-primary"
                 >
-                  Learn More
+                  Sign Up
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
@@ -639,7 +639,12 @@ function EthDenverPage() {
                   The DFINITY Foundation is giving out bounties in various
                   categories to hackers with talent during the BUIDLathon. For
                   questions and assistance, find our dev reps at the co-working
-                  space. Don’t miss this chance to be a pioneer of Web3.
+                  space. Don’t miss this chance to be a pioneer of Web3. You can 
+                  also join {" "} 
+                  <Link href="https://discord.gg/sporkdao"> 
+                    Discord
+                  </Link> {" "}
+                  to ask questions and get support. 
                 </p>
 
                 <p className="mb-0">
