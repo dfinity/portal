@@ -1,5 +1,185 @@
 # Release Notes
 
+# What's new in DFX 0.13.1
+
+## DFX
+
+### feat(frontend-canister)!: add `allow_raw_access` config option
+
+By default, the frontend canister will now restrict the access of traffic to the `<canister-id>.raw.ic0.app` domain, and will automatically redirect all requests to the certified domain (`<canister-id>.ic0.app`), unless configured explicitly. Below is an example configuration to allow access to the `robots.txt` file from the "raw" domain:
+```json
+[
+  {
+    "match": "robots.txt",
+    "allow_raw_access": true
+  }
+]
+```
+
+**Important**: Note that any assets already uploaded to an asset canister will be protected by this redirection, because at present the asset synchronization process does not update the `allow_raw_access` property, or any other properties, after creating an asset.  This also applies to assets that are deployed without any configuration, and later configured to allow raw access.
+At the present time, there are two ways to reconfigure an existing asset:
+1. re-create the asset
+1. delete the asset in your project's directory
+1. execute `dfx deploy`
+1. re-create the asset in your project's directory
+1. modify `.ic-assets.json` acordingly
+1. execute `dfx deploy`
+2. via manual candid call
+    ```
+    dfx canister call PROJECT_NAME_frontend set_asset_properties '( record { key="/robots.txt"; allow_raw_access=opt(opt(true)) })'
+    ```
+
+### feat(frontend-canister)!: default secure configuration for assets in frontend project template
+
+- Secure HTTP headers, preventing several typical security vulnerabilities (e.g. XSS, clickjacking, and many more). For more details, see comments in `headers` section in [default `.ic-assets.json5`](https://raw.githubusercontent.com/dfinity/sdk/master/src/dfx/assets/new_project_node_files/src/__project_name___frontend/src/.ic-assets.json5).
+- Configures `allow_raw_access` option in starter `.ic-assets.json5` config files, with the value set to its default value (which is `false`). We are showing that configuration in the default starter projects for the sake of easier discoverability, even though its value is set to the default.
+
+### feat: use OS-native keyring for pem file storage
+
+If keyring integration is available, PEM files (except for the default identity) are now by default stored in the OS-provided keyring.
+If it is not available, it will fall back on the already existing password-encrypted PEM files.
+Plaintext PEM files are still available (e.g. for use in non-interactive situations like CI), but not recommended for use since they put the keys at risk.
+
+To force the use of one specific storage mode, use the `--storage-mode` flag with either `--storage-mode password-protected` or `--storage-mode plaintext`.
+This works for both `dfx identity new` and `dfx identity import`.
+
+The flag `--disable-encryption` is deprecated in favour of `--storage-mode plaintext`. It has the same behavior.
+
+### fix: give more cycles margin when deleting canisters
+
+There have been a few reports of people not being able to delete canisters.
+The error happens if the temporary wallet tries to transfer out too many cycles.
+The number of cycles left in the canister is bumped a little bit so that people can again reliably delete their canisters.
+
+### fix: add retry logic to `dfx canister delete`
+
+`dfx canister delete` tries to withdraw as many cycles as possible from a canister before deleting it.
+To do so, dfx has to manually send all cycles in the canister, minus some margin.
+The margin was previously hard-coded, meaning that withdrawals can fail if the margin is not generous enough.
+Now, upon failure with some margin, dfx will retry withdrawing cycles with a continuously larger margin until withdrawing succeeds or the margin becomes larger than the cycles balance.
+
+### fix: creating an identity with `--force` no longer switches to the newly created identity
+
+### feat(frontend-canister)!: reworked to use permissions-based access control
+
+The permissions are as follows:
+- ManagePermissions: Can grant and revoke permissions to any principal.  Controllers implicitly have this permission.
+- Prepare: Can call create_batch and create_chunk
+- Commit: Can call commit_batch and methods that manipulate assets directly, as well as any method permitted by Prepare.
+
+For upgraded frontend canisters, all authorized principals will be granted the Commit permission.
+For newly deployed frontend canisters, the initializer (first deployer of the canister) will be granted the Commit permission.
+
+Added three new methods:
+- list_permitted: lists principals with a given permission.
+  - Callable by anyone.
+- grant_permission: grants a single permission to a principal
+  - Callable by Controllers and principals with the ManagePermissions permission.
+- revoke_permission: removes a single permission from a principal
+  - Any principal can revoke its own permissions.
+  - Only Controllers and principals with the ManagePermissions permission can revoke the permissions of other principals.
+
+Altered the behavior of the existing authorization-related methods to operate only on the "Commit" permission.  In this way, they are backwards-compatible.
+- authorize(principal): same as grant_permission(principal, Commit)
+- deauthorize(principal): same as revoke_permission(permission, Commit)
+- list_authorized(): same as list_permitted(Commit)
+
+### feat(frontend-canister): Added validation methods per SNS requirements.
+
+Added the following methods:
+- validate_grant_permission()
+- validate_revoke_permission()
+
+### fix(frontend-canister)!: removed ability of some types of authorized principals to manage the ACL
+
+It used to be the case that any authorized principal could authorize and deauthorize any other principal.
+This is no longer the case.  See rules above for grant_permission and revoke_permission.
+
+### feat(frontend-canister): pretty print asset properties when deploying assets to the canister
+
+### feat(frontend-canister): add take_ownership() method
+
+Callable only by a controller.  Clears list of authorized principals and adds the caller (controller) as the only authorized principal.
+
+### feat(ic-ref):
+- `effective_canister_id` used for `provisional_create_canister_with_cycles` is passed as an command-line argument (defaults to `rwlgt-iiaaa-aaaaa-aaaaa-cai` if not provided or upon parse failure)
+
+### feat(frontend-canister): add `get_asset_properties` and `set_asset_properties` to frontend canister
+
+As part of creating the support for future work, it's now possible to get and set AssetProperties for assets in frontend canister.
+
+### feat: write canister metadata sections for dfx pull
+
+### feat: add `--argument-file` argument to the `dfx canister sign` command
+
+Similar to how this argument works in `dfx canister call`, this argument allows providing arguments for the request from a file.
+
+### feat: Add support for a default network key
+
+A remote canister ID can now be specified for the `__default` network.  If specified, `dfx` will assume that the canister is remote at the specified canister ID for all networks that don't have a dedicated entry.
+
+### feat: dfx pull
+
+- write canister metadata for dfx pull.
+- `dfx pull` can fetch `dfx:deps` metadata and resolve dependencies recursively.
+
+### feat(frontend-canister): better control and overview for asset canister authorized principals
+
+The asset canister now has two new functions:
+- Query function `list_authorized` displays a list of all principals that are currently authorized to change assets and the list of authorized principals.
+- Update function `deauthorize` that removes a principal from the list of authorized principals. It can be called by authorized principals and cotrollers of the canister.
+
+In addition, the update function `authorize` has new behavior:
+Now, controllers of the asset canister are always allowed to authorize new principals (including themselves).
+
+### fix: dfx deploy --mode reinstall for a single Motoko canister fails to compile
+
+The Motoko compiler expects all imported canisters' .did files to be in one folder when it compiles a canister.
+`dfx` failed to organize the .did files correctly when running `dfx deploy <single Motoko canister>` in combintaion with the `--mode reinstall` flag.
+
+### feat: Add dfx sns download
+
+This allows users to download SNS canister WASMs.
+
+### fix: fixed error text
+- `dfx nns install` had the wrong instructions for setting up the local replica type
+
+## Dependencies
+
+Updated candid to 0.8.4
+- Bug fix in TS bindings
+- Pretty print numbers
+
+### Frontend canister
+
+- Module hash: 98863747bb8b1366ae5e3c5721bfe08ce6b7480fe4c3864d4fec3d9827255480
+- https://github.com/dfinity/sdk/pull/2958
+
+### ic-ref
+
+Updated ic-ref to master commit `3cc51be5`
+
+### Motoko
+
+Updated Motoko to 0.7.6
+
+### Replica
+
+Updated replica to elected commit b5a1a8c0e005216f2d945f538fc27163bafc3bf7.
+This incorporates the following executed proposals:
+
+- [100821](https://dashboard.internetcomputer.org/proposal/100821)
+- [97472](https://dashboard.internetcomputer.org/proposal/97472)
+- [96114](https://dashboard.internetcomputer.org/proposal/96114)
+- [94953](https://dashboard.internetcomputer.org/proposal/94953)
+- [94852](https://dashboard.internetcomputer.org/proposal/94852)
+- [93761](https://dashboard.internetcomputer.org/proposal/93761)
+- [93507](https://dashboard.internetcomputer.org/proposal/93507)
+- [92573](https://dashboard.internetcomputer.org/proposal/92573)
+- [92338](https://dashboard.internetcomputer.org/proposal/92338)
+- [91732](https://dashboard.internetcomputer.org/proposal/91732)
+- [91257](https://dashboard.internetcomputer.org/proposal/91257)
+
 # What's new in DFX 0.12.1
 
 ## DFX
