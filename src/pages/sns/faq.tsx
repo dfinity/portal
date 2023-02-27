@@ -505,6 +505,7 @@ function SnsFaqPage() {
                 each token, depends on the amount of ICP raised during the sale.
                 The more ICP raised, the fewer SNS tokens you receive, however
                 their price will be higher.
+              </p>
             </Faq>
             
             <Faq title="How is the price of SNS tokens calculated?">
@@ -532,9 +533,7 @@ function SnsFaqPage() {
                   You contributed with 5 ICP. This means you will have 0.05 SNS
                   tokens, where a full token would be worth 100 ICP.
                 </li>  
-              </ul>
-              </p>
-              
+              </ul>              
             </Faq>
 
             <Faq title="How do I participate in a sale?">
