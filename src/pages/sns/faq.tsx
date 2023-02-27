@@ -511,11 +511,16 @@ function SnsFaqPage() {
             <Faq title="How is the price of SNS tokens calculated?">
               <p>
                 SNS tokens can be purchased for ICP during the decentralization
-                sale. There is a fixed number of tokens sold during the
-                sale, which means their price is determined by the amount of
-                ICP raised. You can calculate the token price by dividing the
-                amount of ICP raised with the number of tokens sold.
-                Price = ICP raised / number of tokens sold. A few examples:
+                sale. There is a fixed number of tokens sold during the sale,
+                which means their price is determined by the amount of ICP raised.
+                You can calculate the token price by dividing the amount of ICP
+                raised with the number of tokens sold. Price = ICP raised / number
+                of tokens sold. Note that the final price of SNS tokens isn't
+                known at the time of purchase during the decentralization sale as
+                it is dependent on the total amount of ICP raised in the sale.
+                However you can calculate the minimum and maximum price based on
+                the minimum and maximum ICP that the sale accepts, which you can
+                verify in the sale proposal. A few examples:
               </p>
               <ul>
                 <li>
