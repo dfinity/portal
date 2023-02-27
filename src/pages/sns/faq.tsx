@@ -642,6 +642,25 @@ function SnsFaqPage() {
               decentralization sale. The sale itself starts automatically
               once the NNS proposal is adopted.
             </Faq>
+            <Faq title="As a participant in the SNS decentralization sale, what do I need to trust?">
+              <p>
+                Before participating in an SNS decentralization sale to get a
+                share of the SNS DAO’s voting power, it is highly recommended
+                that you do your due diligence on the dapp in question to make
+                sure the SNS DAO is trustworthy. Dapp developers are responsible
+                for providing all the necessary information that allows you to
+                verify the dapp and its SNS configurations. Note that in
+                participating without doing due your diligence, you are
+                implicitly trusting the NNS community and the developers
+                decentralizing the dapp. In any case, it is crucial that you
+                trust the developers will not change the dapp during the SNS
+                launch. Learn what you could verify and what to look out for{" "}
+                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust">
+                  here.
+                </Link>
+              </p>
+            </Faq>
+              
             <Faq title="How can I verify the SNS decentralization sale proposal?">
               <p>
                 There are multiple levels of verification you can do depending
