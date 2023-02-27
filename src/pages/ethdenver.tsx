@@ -637,7 +637,7 @@ function EthDenverPage() {
                   also join {" "} 
                   <Link href="https://discord.gg/sporkdao"> 
                     Discord
-                  </Link>
+                  </Link> {" "}
                   to ask questions and get support. 
                 </p>
 
