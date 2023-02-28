@@ -1,5 +1,9 @@
 # Release Notes
 
+# What's new in DFX 0.13.1
+
+We have moved release notes to github releases.  Please see [dfx 0.13.1 release notes](https://github.com/dfinity/sdk/releases/tag/0.13.1) there.
+
 # What's new in DFX 0.12.1
 
 ## DFX
