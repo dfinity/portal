@@ -48,6 +48,12 @@ const projects: {
     agenda: ["Mar 2 - 5, 2023"],
   },
   {
+    name: "Toniq Labs",
+    logo: "/img/ethdenver/toniq.webp",
+    description: "We help you build, launch, and grow NFT-based businesses.",
+    agenda: ["Mar 2 - 5, 2023"],
+  },
+  {
     name: "ORIGYN",
     logo: "/img/ethdenver/origyn.webp",
     description: "Digital verifications for physical objects through NFTs.",
