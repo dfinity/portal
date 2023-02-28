@@ -425,15 +425,17 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 - See [Current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), section "Bugs in `pre_upgrade` hooks"
 
-### Reinstantiate global timers during upgrades
+### Reinstantiate timers during upgrades
 
 #### Security Concern
 
-Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#timer) states this as follows:
+Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](../references/ic-interface-spec#timer) states this as follows:
 
-> The global timer is also deactivated upon changes to the canister's Wasm module (calling install_code, uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set).
+> The timer is also deactivated upon changes to the canister's Wasm module (calling install_code, uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set).
 
-Upgrade is a mode of `install_code` and hence the global timers are deactivated during an upgrade.
+Upgrade is a mode of `install_code` and hence the timers are deactivated during an upgrade.
+
+This could result in a vulnerability in certain cases where security controls or other critical features rely on these timers to function. For example, a DEX which relies on timers to update the exchange rates of currencies could be vulnerable to arbitraging opportunities if the rates are no longer updated.
 
 Since global timers are used internally by the Motoko `Timer` mechanism, the same holds true for Motoko Timer. As explained in the [pull request](https://github.com/dfinity/motoko/pull/3542) under "The upgrade story", the global timer gets jettisoned on upgrade, and the timers need to be set up in the post-upgrade hook.
 
@@ -444,8 +446,8 @@ Using the rust CDK, the reccuring timer is also lost on upgrade as explained in 
 #### Recommendation
 
 - Keep track of global timers in the `pre_upgrade` hook. Store any state in stable variables.
-- Set global timers in the `post_upgrade` hook.
-- See the Motoko documentation on [recurringTimer](https://internetcomputer.org/docs/current/references/motoko-ref/Timer#function-recurringtimer)
+- Set timers in the `post_upgrade` hook.
+- See the Motoko documentation on [recurringTimer](../references/motoko-ref/Timer#function-recurringtimer)
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html)
 
 ## Miscellaneous
