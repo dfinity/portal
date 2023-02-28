@@ -1195,4 +1195,22 @@
       "/img/showcase/fleek_screenshot_0.webp"
     ]
   }
+  {
+    "id": "icpulse",
+    "name": "ICPulse",
+    "oneLiner": "Visual metrics for IC's software activity data",
+    "website": "https://icpulse.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": " ICPulse increases the transparency in the IC’s developer ecosystem by aggregating the activity data from GitHub and displaying visual metrics in an effective dashboard.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/icpulse_logo.svg",
+    "github": "https://github.com/CrossChainLabs-ICP",
+    "twitter": "https://twitter.com/CrossChain_Labs/status/1626495037734285312?s=20",
+    "screenshots": [
+      "static/img/showcase/ICPulse_screenshot.jpg"
+    ],
+    "submittableId": "32418389"
+  }
 ]
