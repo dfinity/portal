@@ -185,6 +185,7 @@ const sidebars = {
         "motoko/main/upgrades",
         "motoko/main/compatibility",
         "motoko/main/stablememory",
+        "motoko/main/timers",
         "motoko/main/heartbeats",
         "motoko/main/language-manual",
         "motoko/main/compiler-ref",

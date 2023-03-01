@@ -31,7 +31,7 @@ Make sure that all canisters have enough cycles to sustain a few years to begin 
 
 ### Set a generous freezing threshold
 
-The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](/references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
+The IC has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](/references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The IC dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat and timer, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
 
 
 ### Make sure your canisters can be monitored
@@ -48,7 +48,7 @@ You can also use a more complete monitoring solution like [Canistergeek](https:/
 
 There are a few foot guns that could make your canister more expensive than you’d expect. Here are a few examples that you might encounter when implementing NFT canisters.
 
-* Use of the heartbeat: A plain heartbeat without doing anything will cost ~0.055 T cycles/day. There are discussions about [implementing alternatives that allow for cheaper scheduling](https://forum.dfinity.org/t/heartbeat-improvements-timers-community-consideration/14201).
+* Use of the heartbeat: A plain heartbeat without doing anything will cost ~0.055 T cycles/day. Instead, use [canister timers](/developer-docs/backend/periodic-tasks.md) &mdash; one-shot or periodic canister calls with specified minimum timeout or interval.
 * Some advice for Motoko developers: 
     * Use `TrieMap` instead of `HashMap` to avoid the performance cliff of automatic resizing associated with HashMaps.
     * Use `Buffer` instead of `Array` if you need to dynamically resize the structure
