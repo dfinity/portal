@@ -4,7 +4,7 @@
 
 The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
-The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles).  For the sample dapp, we are only using a single data source to showcase the feature. For better fault tolerance, the number of data sources can be easily extended.
+The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The purpose of the sample dapp is to provide an example of using  the [HTTPS outcalls API](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request). 
 
 ## What does the sample dapp do
 
@@ -24,42 +24,23 @@ by the backend `exchange_rate` canister could be too large for the current respo
 As a result, we cap the number of data points to be returned by the backend `exchange_rate` canister to
 the frontend `exchange_rate_assets` canister, and increase the sampling interval to cover the full requested range.
 
+## Exchange Rate sample dapp architecture
+![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
+
 ## How to use the sample dapp
 
 Users should be able to interact only with the frontend UI canister by selecting the start time 
 and the end time with the datetime pickers.
 
 The returned rates may not exactly match the user's time selection. (There could be gaps between
-data points, or there could be a smaller range being returned). The reason is that to respect rate limiting
-on the remote service, we execute our calls to the remote service once every few IC heartbeats.
-Consequently, pulling the rates can be a relatively long asynchronous process. We store all the
-previously-pulled rates in memory. As the user submits their requests, the rates that are already
-available from previous requests will be returned, while the ones that are not yet available will be
-pulled concurrently. If the user spots gaps between requested rates and returned rates, the user
-needs to wait for some time and retry the request, and likely the full set of rates will be available then.
+data points or there could be a smaller range being returned). The reason is that to respect rate limiting
+on the remote service, we fetch data from the remote service once every few IC heartbeats.
+Consequently, pulling all requested rates can be a relatively long asynchronous operation. 
 
-## Exchange Rate sample dapp architecture
-![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
-
-## Cost analysis of the `exchange_rate` canister
-
-This `exchange_rate` canister is designed to be as cost-effective as possible. There are 2 major factors
-affecting cycle usage when it comes to the Canister HTTPS outcalls feature:
-- The number of requests being made
-- The size of each request and response
-
-And between these 2 factors, the first one (number of remote requests made) has a strong
-effect on cycles cost. Thus, the goal of the canister is to:
-- Make as few HTTP outcalls as possible
-- Make each remote HTTP outcall as small as possible
-
-However, note that these 2 goals are conflicting with each other. Consider 1 year of exchange rate
-data, a static amount of data that needs to be downloaded. If we minimize the number of remote calls we make,
-responses will be larger. If we minimize the amount of data each call fetches, the
-canister has to make more calls. As we lean towards the first approach, we
-increase the amount of data fetched by each call as much as possible to reduce the number of calls needed and the resulting per-call overhead.
-
-On top of that, we store data that's already fetched such that future user requests to this data do not trigger HTTPS outcalls anymore.
+All the previously-pulled rates are stored in memory. As the user submits their requests, the rates that are
+already available will be returned, while the ones that are not yet available will be fetched eventually.
+If the user spots gaps between requested rates and returned rates, the user needs to wait for some time and
+retry the request, and likely the full set of rates will be available then.
 
 
 ## Building and deploying the sample dapp locally
