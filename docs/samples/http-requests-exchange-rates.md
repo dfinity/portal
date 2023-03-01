@@ -38,7 +38,7 @@ on the remote service, we fetch data from the remote service once every few IC h
 Consequently, pulling all requested rates can be a relatively long asynchronous operation. 
 
 All the previously-pulled rates are stored in memory. As the user submits their requests, the rates that are
-already available will be returned, while the ones that are not yet available will be fetched eventually.
+already available are returned, while the ones that are not yet available will be fetched eventually.
 If the user spots gaps between requested rates and returned rates, the user needs to wait for some time and
 retry the request, and likely the full set of rates will be available then.
 
