@@ -243,6 +243,7 @@ const sidebars = {
         "motoko/main/base/Stack",
         "motoko/main/base/Text",
         "motoko/main/base/Time",
+        "motoko/main/base/Timer",
         "motoko/main/base/Trie",
         "motoko/main/base/TrieMap",
         "motoko/main/base/TrieSet",
