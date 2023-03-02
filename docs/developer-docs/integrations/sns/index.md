@@ -56,10 +56,26 @@ Here you'll find an overview of the stages of an SNS.
   * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
 
 
-## User Guides
-Finally, the website and wiki contain information relevant for users of the SNS.
+## Explanations and Guides for Users
+Finally, the website and Wiki contain information relevant for users of the SNS.
 
-You will find
-* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
-* [A guide how to participate in the SNS decentralization sale](/sns/faq#participate)
-* [A guide how to verify the NNS proposal that starts a SNS decentralization sale](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal)
+On the **website**, you will find **explanations on**
+* [SNS overview page](https://internetcomputer.org/sns)
+* [SNS FAQ](https://internetcomputer.org/sns/faq) including, for example 
+  * [A guide how to participate in the SNS decentralization sale](/sns/faq#participate)
+    
+The **Wiki** contains more information about
+* [DAO](https://wiki.internetcomputer.org/wiki/DAO)
+* [Service Nervous System (SNS)](https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS))
+* [Community Fund](https://wiki.internetcomputer.org/wiki/Community_Fund)
+* [SNS Rewards](https://wiki.internetcomputer.org/wiki/SNS_Rewards)
+* [SNS Tokenization Considerations](https://wiki.internetcomputer.org/wiki/SNS_Tokenization_Considerations)
+* [SNS decentralization sale trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust)
+
+The Wiki also contains guides for the following topics:
+* [How to get a DAO on the IC](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on the IC, but this is largely subsumed by the developer documentation here.
+* [How-To: SNS tokenomics configuration](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) providing material enabling teams to choose a tokenomics set-up for their SNS DAO.
+* [How-to: Verify SNS decentralization sale proposal](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal) which is a guide how to verify the NNS proposal that starts a SNS decentralization sale.
+* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters) which is a guide on how to interact with SNS canisters.
+* [How-To: Participate in the SNS decentralization sale via quill](https://wiki.internetcomputer.org/wiki/How-To:_Participate_in_the_SNS_decentralization_sale_via_quill), which is a command line tool for interacting with canisters.
+* [How-To: Join the Community fund via quill](https://wiki.internetcomputer.org/wiki/How-To:_Join_the_Community_fund_via_quill), which is a command line tool for interacting with canisters.
