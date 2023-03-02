@@ -34,6 +34,11 @@ const cardsContent = [
     body: "ICDevs.org funds code bounties",
     link: "https://icdevs.org/bounties.html",
   },
+  {
+    title: "Dev Discord Office Hours",
+    body: "Join to ask question about grants and building on ICP",
+    link: "https://discord.gg/rGrFrGgp?event=1078030749829169152",
+  },
 ];
 
 function Card({ title, body }) {

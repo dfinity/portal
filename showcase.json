@@ -4,7 +4,8 @@
     "name": "DSCVR",
     "oneLiner": "Web3 alternative to Reddit with user governed Portals",
     "website": "https://dscvr.one/",
-    "tags": ["SocialFi"
+    "tags": [
+      "SocialFi"
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
     "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
@@ -16,8 +17,7 @@
       "/img/showcase/dscvr_screenshot.webp"
     ]
   },
- 
- {
+  {
     "id": "distrikt",
     "name": "Distrikt",
     "oneLiner": "100% on-chain microblogging social media platform",
@@ -55,7 +55,6 @@
       "/img/showcase/kontribute_screenshot_0.webp"
     ]
   },
-
   {
     "id": "kinic",
     "name": "Kinic",
@@ -89,7 +88,7 @@
       "/img/showcase/infinityswap_screenshot_0.webp"
     ]
   },
- {
+  {
     "id": "openchat",
     "name": "OpenChat",
     "oneLiner": "Decentralized alternative to WhatsApp",
@@ -122,7 +121,6 @@
       "/img/showcase/internetcomputerorgwebsite_screenshot_0.webp"
     ]
   },
- 
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
@@ -135,9 +133,11 @@
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "videoContentType": "video/mp4",
-    "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
+    "screenshots": [
+      "/img/showcase/bitfinitywallet_screenshot.webp"
+    ]
   },
-    {
+  {
     "id": "uniswapfrontendontheic",
     "name": "Uniswap Front End on the IC",
     "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
@@ -153,6 +153,23 @@
     "screenshots": []
   },
   {
+    "id": "ntagle",
+    "name": "ntagle",
+    "oneLiner": "Proof of Physical Ownership Platform",
+    "tags": [
+      "NFT",
+      "Wallet"
+    ],
+    "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
+    "usesInternetIdentity": false,
+    "stats": "Working MVP",
+    "logo": "/img/showcase/ntagle_icon.webp",
+    "github": "https://github.com/InternetComputerOG/ntagle-core",
+    "twitter": "https://twitter.com/ntagled",
+    "website": "https://github.com/InternetComputerOG/ntagle-core",
+    "screenshots": []
+  },
+  {
     "id": "seers",
     "name": "Seers",
     "website": "https://seers.social/",
@@ -165,7 +182,7 @@
     "logo": "/img/showcase/seers_logo.webp",
     "screenshots": []
   },
-   {
+  {
     "id": "papyrs",
     "name": "Papyrs",
     "website": "https://app.papy.rs",
@@ -197,12 +214,12 @@
       "/img/showcase/taggr_screenshot_0.webp"
     ]
   },
-    {
+  {
     "id": "funded",
     "name": "Funded",
     "website": "https://funded.app/",
     "tags": [
-      "SocialFi", 
+      "SocialFi",
       "DeFi"
     ],
     "twitter": "https://twitter.com/funded_app",
@@ -227,8 +244,7 @@
       "/img/showcase/contentfly_screenshot_0.webp"
     ]
   },
-
-    {
+  {
     "id": "icdex",
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
@@ -265,20 +281,16 @@
     "website": "https://omnic.network",
     "tags": [
       "Tools / Infrastructure",
-	  "DeFi"
+      "DeFi"
     ],
     "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/omnic_logo.png",
+    "logo": "/img/showcase/omnic_logo.webp",
     "screenshots": [
-      "/img/showcase/omnic_screenshot_0.png",
-      "/img/showcase/omnic_screenshot_1.png",
-      "/img/showcase/omnic_screenshot_2.png",
-      "/img/showcase/omnic_screenshot_3.png",
-      "/img/showcase/omnic_screenshot_4.png"
+      "/img/showcase/omnic_screenshot_0.webp"
     ],
-	"videoContentType": "video/mp4",
-	"video": "/img/showcase/omnic_video.mp4"
+    "videoContentType": "video/mp4",
+    "video": "/img/showcase/omnic_video.mp4"
   },
   {
     "id": "unfoldvr",
@@ -385,8 +397,6 @@
       "/img/showcase/yumi-screenshot.webp"
     ]
   },
-
-
   {
     "id": "sly",
     "name": "SLY",
@@ -446,6 +456,22 @@
     "logo": "/img/showcase/canlista_logo.webp",
     "screenshots": [
       "/img/showcase/canlista_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "sandbless",
+    "name": "Sand Bless",
+    "oneLiner": "Sandblasting and serigraphy artworks",
+    "website": "https://qob3k-7yaaa-aaaao-aahdq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
+    "github": "https://github.com/branciard/SandBlessCanisters",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/sandbless_logo.webp",
+    "screenshots": [
+      "/img/showcase/sandbless_screenshot_0.webp"
     ]
   },
   {
@@ -556,7 +582,6 @@
       "/img/showcase/difibase_screenshot_0.webp"
     ]
   },
-
   {
     "id": "internetidentity",
     "name": "Internet Identity",
@@ -574,7 +599,6 @@
       "/img/showcase/internetidentity_screenshot_0.gif"
     ]
   },
-  
   {
     "id": "azle",
     "name": "Azle",
@@ -606,7 +630,6 @@
       "/img/showcase/kybra_screenshot_0.jpg"
     ]
   },
-
   {
     "id": "motokoplayground",
     "name": "Motoko Playground",
@@ -636,8 +659,8 @@
     "screenshots": [
       "/img/showcase/windowsic_screenshot_0.webp"
     ]
-  },  
-{
+  },
+  {
     "id": "nnsfront-enddapp",
     "name": "NNS Front-End Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
@@ -653,7 +676,6 @@
       "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
     ]
   },
-
   {
     "id": "tipjar",
     "name": "Tipjar",
@@ -741,7 +763,6 @@
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
     ]
   },
- 
   {
     "id": "icmojiorigins",
     "name": "ICmoji Origins",
@@ -986,7 +1007,7 @@
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
     "screenshots": [
-       "/img/showcase/pokedstudio-bots.webp"
+      "/img/showcase/pokedstudio-bots.webp"
     ]
   },
   {
@@ -1137,7 +1158,6 @@
       "/img/showcase/departurelabs_screenshot_0.webp"
     ]
   },
-
   {
     "id": "plug",
     "name": "Plug",
@@ -1176,4 +1196,3 @@
     ]
   }
 ]
-

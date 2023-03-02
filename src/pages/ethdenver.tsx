@@ -48,6 +48,12 @@ const projects: {
     agenda: ["Mar 2 - 5, 2023"],
   },
   {
+    name: "Toniq Labs",
+    logo: "/img/ethdenver/toniq.webp",
+    description: "We help you build, launch, and grow NFT-based businesses.",
+    agenda: ["Mar 2 - 5, 2023"],
+  },
+  {
     name: "ORIGYN",
     logo: "/img/ethdenver/origyn.webp",
     description: "Digital verifications for physical objects through NFTs.",
@@ -633,7 +639,12 @@ function EthDenverPage() {
                   The DFINITY Foundation is giving out bounties in various
                   categories to hackers with talent during the BUIDLathon. For
                   questions and assistance, find our dev reps at the co-working
-                  space. Don’t miss this chance to be a pioneer of Web3.
+                  space. Don’t miss this chance to be a pioneer of Web3. You can 
+                  also join {" "} 
+                  <Link href="https://discord.gg/sporkdao"> 
+                    Discord
+                  </Link> {" "}
+                  to ask questions and get support. 
                 </p>
 
                 <p className="mb-0">
