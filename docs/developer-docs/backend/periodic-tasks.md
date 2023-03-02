@@ -16,7 +16,7 @@ Timers
 
 Timers are implemented on two layers:
 
-1. **The protocol level implementation.** The Internet Computer Protocol supports minimalistic single on-shot timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer Interface Specification](/references/ic-interface-spec.md#global-timer)).
+1. **The protocol level implementation.** The Internet Computer Protocol supports minimalistic single on-shot timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer Interface Specification](/references/ic-interface-spec.md#timer)).
 2. **The CDK timers library level.** The library wraps the minimalistic protocol implementation, implementing multiple and periodic timers. Canister developers can enjoy the familiar timers functionality using the CDK timers library for [Rust](https://crates.io/crates/ic-cdk-timers) or [Motoko](/motoko/main/timers.md).
 
 Internally the CDK timers library does the following:
