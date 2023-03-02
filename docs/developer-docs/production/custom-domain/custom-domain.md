@@ -37,7 +37,13 @@ instructions on [troubleshooting](#troubleshooting).
     * Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
     * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
-1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
+1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain. To use multiple custom domains with a single canister, simply list each domain on a newline in the `ic-domains`-file:
+    ```sh
+    custom-domain1.com
+    custom-domain2.com
+    custom-domain3.com
+    custom-domain4.com
+    ```
     * By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
     * Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`..
     * Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json`-file:

@@ -14,7 +14,6 @@ import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
 import Head from "@docusaurus/Head";
-import Newsletter from "../components/Common/Newsletter/Newsletter";
 
 const MotionLink = motion(Link);
 
@@ -99,9 +98,7 @@ function LiveSessionsPage(): JSX.Element {
 
   useEffect(() => {
     if (initalized) {
-      if (location.hash === "#subscribe") {
-        scrollToForm();
-      } else if (location.hash) {
+      if (location.hash) {
         const el = document.querySelector(location.hash) as HTMLElement;
         if (el) {
           window.scroll({
@@ -482,36 +479,6 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-
-        {/* This must not be invisible */}
-        <div ref={formRef} id="subscribe"></div>
-        <Newsletter
-          fields={[
-            {
-              name: "EMAIL",
-              placeholder: "Email",
-              type: "email",
-              required: true,
-            },
-            {
-              name: "tags",
-              type: "hidden",
-              value: "1061",
-            },
-          ]}
-          ctaLabel="Get updates!"
-          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
-          decoration={<img src="/img/newsletter/email-image-1.webp" />}
-          className="mb-20"
-        >
-          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
-            Want to meet ICP enthusiasts IRL?
-            <br />
-            <span className="text-white-60">
-              Sign up for event updates to stay connected
-            </span>
-          </h2>
-        </Newsletter>
       </main>
     </Layout>
   );
