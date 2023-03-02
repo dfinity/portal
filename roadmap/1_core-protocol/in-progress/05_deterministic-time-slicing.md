@@ -3,7 +3,7 @@ title: Deterministic Time Slicing
 links:
   Forum Link: https://forum.dfinity.org/t/deterministic-time-slicing/10635
   Proposal:
-eta: 2023
+eta: March 2023
 is_community: false
 in_beta: true
 ---
