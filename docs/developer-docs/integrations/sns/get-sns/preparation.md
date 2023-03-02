@@ -27,9 +27,9 @@ and the
 [index canister integration](../integrate-sns/index-integration.md)
 (sale and governance frontend integration to follow).
 
-We refer to the next page for learning the detailed actions that are
-required 
-[to test the SNS launch](./local-testing.md). 
+We refer to the following pages for learning the detailed actions that are
+required [to test the SNS launch locally](./local-testing.md) and to use the 
+[SNS testflight to test the DAO operations in production](./testflight.md).
 
 
 ## Understanding the SNS Launch process {#understand-launch}
