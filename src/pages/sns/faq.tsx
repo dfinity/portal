@@ -432,7 +432,7 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
-            <Faq title="I received a message from OpenChat to send ICP to an address, what should I do?">
+            <Faq title="If I am asked to send ICP to an address to participate in a decentralization sale, what should I do?">
               <p>
                 If you want to participate in the sale, do not send ICP directly
                 to addresses! An SNS sale will never initiate contact with you,
