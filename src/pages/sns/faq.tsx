@@ -287,7 +287,7 @@ function SnsFaqPage() {
               in many ways, from pushing code, to designing a logo or a UI,
               to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
-            <Faq title="In what ways can you participate in an SNS DAO?">
+            <Faq title="In what ways can I participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
               on-chain and off-chain. Creating proposals requires coding skills.
               Some examples include:
@@ -358,7 +358,7 @@ function SnsFaqPage() {
               dapp controlled by the DAO.
             </Faq>
             <Faq
-              title="How do you get SNS Tokens?"
+              title="How can I get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
             >
               <p>
@@ -402,7 +402,7 @@ function SnsFaqPage() {
               </ul>
             </Faq>
             
-            <Faq title="Do you get rewards for participating in governance?">
+            <Faq title="Do I get rewards for participating in governance?">
               SNS works very similar to the NNS, however each SNS DAO can
               configure their parameters differently. Once you have locked
               your SNS governance tokens into SNS neurons for the at least
