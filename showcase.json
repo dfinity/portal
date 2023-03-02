@@ -1211,5 +1211,20 @@
     "videoContentType": "video/mp4",
     "display": "Large",
     "screenshots": ["/img/showcase/itoka_screanshot.svg"]
+  },
+  {
+    "id": "glue",
+    "name": "glue",
+    "oneLiner": "collab.land on the Internet Computer",
+    "website": "https://r53d5-wyaaa-aaaae-qacxa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "For Ethereum NFT communities it is the most common thing in the world to verify the holder status of members via \"collab.land\". \"collab.land\" is an integral part of the infrastructure and enables many interesting use-cases like token gated communities or token gated raffles. On the Internet Computer, there are so far only specialized solutions that work exclusively with the respective projects and were developed specifically for this purpose. Not every project can and not every project should develop its own solution. So what has been missing so far is glue - an easy to use solution for community leaders and members to perform holder verification.",
+    "usesInternetIdentity": false,
+    "stats": "3,000 unique users",
+    "logo": "/img/showcase/glue_logo.png",
+    "github": "https://github.com/glue-org",
+    "twitter": "https://twitter.com/glue_org"
   }
 ]
