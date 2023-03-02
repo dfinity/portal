@@ -49,6 +49,7 @@ There are 2 major factors affecting the [pricing](https://internetcomputer.org/d
 * The number of requests 
 * The size of each request and response
 
+If we need to fetch a longer period of rates then the number of external HTTPS outcalls is inversely proportional to the body size of each request.
 This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 
 
 ## Building and deploying the sample dapp locally
