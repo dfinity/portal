@@ -42,6 +42,14 @@ already available are returned, while the ones that are not yet available will b
 If the user spots gaps between requested rates and returned rates, the user needs to wait for some time and
 retry the request, and likely the full set of rates will be available then.
 
+## Cost analysis of the `exchange_rate` canister
+
+There are 2 major factors affecting the [pricing](https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
+
+* The number of requests 
+* The size of each request and response
+
+This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 
 
 ## Building and deploying the sample dapp locally
 Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the `README.md` file in each
