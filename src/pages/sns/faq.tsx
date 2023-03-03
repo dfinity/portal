@@ -432,6 +432,26 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
+            <Faq title="If I am asked to send ICP to an address to participate in a decentralization sale, what should I do?">
+              <p>
+                If you want to participate in the sale, do not send ICP directly
+                to addresses! An SNS sale will never initiate contact with you,
+                e.g. via chat or email. You will never be asked to manually enter
+                an ICP address to participate in a decentralization sale. If you
+                find yourself entering an ICP address to participate in an SNS
+                sale, then STOP. Your sale address is specific to your identity,
+                and you should only interact with that address when participating
+                in a sale through the{" "}
+                <Link href="https://nns.ic0.app/launchpad/">
+                  NNS
+                </Link>{" "}
+                or other ICP based dapps that support the sale like{" "}
+                <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
+                  ICLighthouse
+                </Link>
+                .
+              </p>
+            </Faq>
           </FaqSection>
           <FaqSection
             id="decentralization-sale"
