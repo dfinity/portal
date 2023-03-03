@@ -41,7 +41,7 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
           border-color: white transparent white transparent;
         }
 
-        nav.navbar .navbar__search-input::placeholder {
+        nav.navbar .navbar__search-input {
           color: rgb(255 255 255 / 0.6);
         }
 
