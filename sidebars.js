@@ -196,7 +196,7 @@ const sidebars = {
         "motoko/main/compiler-ref",
         "motoko/main/motoko-grammar",
         "motoko/main/overview",
-        "motoko/main/style",
+        "motoko/main/style"
       ]
     },
     {
@@ -248,7 +248,7 @@ const sidebars = {
         "motoko/main/base/Stack",
         "motoko/main/base/Text",
         "motoko/main/base/Time",
-        "motoko/main/base/Timer",
+        "motoko/temp/Timer", // FIXME (once main/base/Timer exists)
         "motoko/main/base/Trie",
         "motoko/main/base/TrieMap",
         "motoko/main/base/TrieSet",
