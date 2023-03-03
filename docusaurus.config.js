@@ -362,6 +362,11 @@ const config = {
                 type: "doc",
                 docId: "other/updates/release-notes/release-notes",
               },
+              {
+                label: "Dev Blog",
+                type: "docSidebar",
+                sidebarId: "blog",
+              },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {

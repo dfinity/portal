@@ -287,7 +287,7 @@ function SnsFaqPage() {
               in many ways, from pushing code, to designing a logo or a UI,
               to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
-            <Faq title="In what ways can you participate in an SNS DAO?">
+            <Faq title="In what ways can I participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
               on-chain and off-chain. Creating proposals requires coding skills.
               Some examples include:
@@ -358,7 +358,7 @@ function SnsFaqPage() {
               dapp controlled by the DAO.
             </Faq>
             <Faq
-              title="How do you get SNS Tokens?"
+              title="How can I get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
             >
               <p>
@@ -402,7 +402,7 @@ function SnsFaqPage() {
               </ul>
             </Faq>
             
-            <Faq title="Do you get rewards for participating in governance?">
+            <Faq title="Do I get rewards for participating in governance?">
               SNS works very similar to the NNS, however each SNS DAO can
               configure their parameters differently. Once you have locked
               your SNS governance tokens into SNS neurons for the at least
@@ -431,6 +431,26 @@ function SnsFaqPage() {
                 here
               </Link>
               .
+            </Faq>
+            <Faq title="If I am asked to send ICP to an address to participate in a decentralization sale, what should I do?">
+              <p>
+                If you want to participate in the sale, do not send ICP directly
+                to addresses! An SNS sale will never initiate contact with you,
+                e.g. via chat or email. You will never be asked to manually enter
+                an ICP address to participate in a decentralization sale. If you
+                find yourself entering an ICP address to participate in an SNS
+                sale, then STOP. Your sale address is specific to your identity,
+                and you should only interact with that address when participating
+                in a sale through the{" "}
+                <Link href="https://nns.ic0.app/launchpad/">
+                  NNS
+                </Link>{" "}
+                or other ICP based dapps that support the sale like{" "}
+                <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
+                  ICLighthouse
+                </Link>
+                .
+              </p>
             </Faq>
           </FaqSection>
           <FaqSection
@@ -505,16 +525,22 @@ function SnsFaqPage() {
                 each token, depends on the amount of ICP raised during the sale.
                 The more ICP raised, the fewer SNS tokens you receive, however
                 their price will be higher.
+              </p>
             </Faq>
             
             <Faq title="How is the price of SNS tokens calculated?">
               <p>
                 SNS tokens can be purchased for ICP during the decentralization
-                sale. There is a fixed number of tokens sold during the
-                sale, which means their price is determined by the amount of
-                ICP raised. You can calculate the token price by dividing the
-                amount of ICP raised with the number of tokens sold.
-                Price = ICP raised / number of tokens sold. A few examples:
+                sale. There is a fixed number of tokens sold during the sale,
+                which means their price is determined by the amount of ICP raised.
+                You can calculate the token price by dividing the amount of ICP
+                raised with the number of tokens sold. Price = ICP raised / number
+                of tokens sold. Note that the final price of SNS tokens isn't
+                known at the time of purchase during the decentralization sale as
+                it is dependent on the total amount of ICP raised in the sale.
+                However you can calculate the minimum and maximum price based on
+                the minimum and maximum ICP that the sale accepts, which you can
+                verify in the sale proposal. A few examples:
               </p>
               <ul>
                 <li>
@@ -532,9 +558,7 @@ function SnsFaqPage() {
                   You contributed with 5 ICP. This means you will have 0.05 SNS
                   tokens, where a full token would be worth 100 ICP.
                 </li>  
-              </ul>
-              </p>
-              
+              </ul>              
             </Faq>
 
             <Faq title="How do I participate in a sale?">
@@ -638,6 +662,25 @@ function SnsFaqPage() {
               decentralization sale. The sale itself starts automatically
               once the NNS proposal is adopted.
             </Faq>
+            <Faq title="As a participant in the SNS decentralization sale, what do I need to trust?">
+              <p>
+                Before participating in an SNS decentralization sale to get a
+                share of the SNS DAO’s voting power, it is highly recommended
+                that you do your due diligence on the dapp in question to make
+                sure the SNS DAO is trustworthy. Dapp developers are responsible
+                for providing all the necessary information that allows you to
+                verify the dapp and its SNS configurations. Note that in
+                participating without doing due your diligence, you are
+                implicitly trusting the NNS community and the developers
+                decentralizing the dapp. In any case, it is crucial that you
+                trust the developers will not change the dapp during the SNS
+                launch. Learn what you could verify and what to look out for{" "}
+                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust">
+                  here.
+                </Link>
+              </p>
+            </Faq>
+              
             <Faq title="How can I verify the SNS decentralization sale proposal?">
               <p>
                 There are multiple levels of verification you can do depending
