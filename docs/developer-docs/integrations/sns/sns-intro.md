@@ -1,6 +1,5 @@
----
-sidebar_position: 2
----
+
+
 # SNS Introduction
 
 We assume that if you are reading this page you know what a 
