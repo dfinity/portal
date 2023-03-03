@@ -171,6 +171,7 @@ const sidebars = {
         id: "motoko/main/about-this-guide",
       },
       items: [
+        "motoko/version",
         "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
