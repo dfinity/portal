@@ -11,61 +11,60 @@ This guide explains how to use Cycles Faucet to acquire your first amount of 20T
 You will need to install Internet Computer SDK following [this guide](/developer-docs/setup/install/index.mdx).
 
 
-### Step 1: Authenticate
+### Step 1: Get Coupon
 
 First, you will need to navigate to <https://faucet.dfinity.org>. You
-will need to connect an active Twitter account to continue.
+will need to put in a request for cycles on the DFINITY DEV OFFICIAL Discord server. You can click on REQUEST CYCLES to join the discord server.
 
-![Connecting to Twitter](_attachments/faucet_step_1.png)
+![Getting Coupon](_attachments/faucet_step_1.png)
 
-If the Twitter account has not been used before, you are eligible to claim the 20T cycles.
+You must complete a survey sent to you by domwoe as a Direct Message. Once completed domwoe will send you a coupon.
 
-![Eligible account](_attachments/faucet_step_2.png)
+![Survey](_attachments/faucet_step_2.png)
 
-Click NEXT to continue.
+Click NEXT STEP to continue.
 
-### Step 2: Setup SDK
+### Step 2: Redeem Coupon
 
-Once your eligibility has been confirmed, open up a terminal window.
+Once you get the coupon code, enter your coupon code.
 
-If you already have created a project, go to the root of the project in the terminal, where the `dfx.json` file is located. If you haven't created a project yet, run these commands in the terminal:
+![Enter Coupon](_attachments/faucet_step_3.png)
 
-    mkdir my_project && cd my_project
-    echo '{}' > dfx.json
+Click NEXT STEP to continue.
+
+### Step 3: Setup SDK
+
+You need to make sure your computer has dfx installed.
+
+Also, run this command to check the version of dfx on your computer:
+
+    dfx --version
+
+If your dfx version is below 0.12.0, please run this command:
+
+    sudo dfx upgrade
 
 ![Setup SDK](_attachments/faucet_step_4.png)
 
-Click NEXT to continue.
+Click NEXT STEP to continue.
 
-### Step 3: Create Canister and Claim Cycles
+### Step 4: Claim Cycles
 
-The `redeem` command shown on the screen contains a unique coupon code, which with this command will be used to create a canister and load it with 20T cycles. 
+You will need to claim your free cycles by running this command:
 
-![Create Canister and Claim Cycles](_attachments/faucet_step_5.png)
+![Claim Cycles](_attachments/faucet_step_5.png)
 
-After a successfully running the `redeem` command, the created canister's ID is returned. 
+The next step is to link the cycles wallet canister with your Principal Identifier. Run this command in your terminal:
 
-After runninng the `redeem` command, the created canister and it's balance can be checked using the status command. Use the canister ID returned by the `redeem` command:
+    dfx identify --network=ic set-wallet <canister id>
 
-    dfx canister --network=ic status <canister id>
-
-Please note the canister ID is used in the next step, so write down the canister ID. 
-
-Click NEXT to continue.
-
-### Step 4: Set Wallet
-
-The canister can now be linked to your principal ID as your wallet canister. The wallet is linked by calling a `dfx identity` command:
-
-![Set Wallet](_attachments/faucet_step_6.png)
-
-Click NEXT to continue.
+Click NEXT STEP to continue.
 
 ### Step 5: Verify Wallet Canister
 
 The last step is to verify the wallet is setup correctly, by checking its balance using the `dfx wallet` command:
 
-![Verify Wallet Canister](_attachments/faucet_step_7.png)
+![Verify Wallet Canister](_attachments/faucet_step_6.png)
 
 ### Setup Completed
 
