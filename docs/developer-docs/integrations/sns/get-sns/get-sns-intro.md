@@ -73,11 +73,6 @@ how the SNS will be integrated into you dapp.
 For example, you may want to integrate some or all of the SNS frontend
 in your dapp's frontend.
 
-We also encourage the developers to run [SNS testflight](./testflight.md)
-as part of the technical preparation to make sure that their dapp
-can be operated via SNS proposals.
-In particular, the developers are strongly encouraged to perform
-SNS testflight on mainnet, too.
 
 ### Step 3: Testing the SNS
 Once you chose the parameters, you probably do not want to immediately
@@ -90,12 +85,15 @@ Also, if you integrate parts of the frontend for the SNS into you dapp,
 you probably want to test that this integration works.
 
 For all these reasons, we explain on [this page](./local-testing.md), how
-the SNS can be tested.
+the SNS can be tested locally.
+
+We also encourage the developers to run [SNS testflight](./testflight.md)
+as part of the technical preparation to make sure that their dapp
+can be operated via SNS proposals.
+In particular, the developers are strongly encouraged to perform
+SNS testflight on mainnet, too.
 
 ### Step 4: Getting an SNS in production
 Once you properly tested the SNS, you are ready to ask the IC 
 to launch an SNS for you in production!
-Note that the SNS feature is not yet generally available, but we
-will add more detailed instructions here as soon as it is.
-As the above steps may take a considerable amount of time, it
-can still make sense to already start with the preparations.
+We will add more detailed instructions here soon.
