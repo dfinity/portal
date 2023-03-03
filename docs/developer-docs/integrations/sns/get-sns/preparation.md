@@ -27,9 +27,9 @@ and the
 [index canister integration](../integrate-sns/index-integration.md)
 (sale and governance frontend integration to follow).
 
-We refer to the next page for learning the detailed actions that are
-required 
-[to test the SNS launch](./local-testing.md). 
+We refer to the following pages for learning the detailed actions that are
+required [to test the SNS launch locally](./local-testing.md) and to use the 
+[SNS testflight to test the DAO operations in production](./testflight.md).
 
 
 ## Understanding the SNS Launch process {#understand-launch}
@@ -64,10 +64,19 @@ An SNS is launched in the following stages:
    This includes both initial parameters of the governance 
    and ledger (e.g., token name). 
    
-2) **Ask the SNS-W to install the SNS canisters**:
-   When all parameters are specified, you make a call to the SNS wasm modules canister
-   (a canister on the NNS) to install an SNS with the specified parameters.
-   At this point, the SNS canisters exist but are not yet
+2) **A NNS proposal approves the creation of the SNS and a principal 
+   executes this by calling SNS-W**:
+   When all parameters are specified, the SNS canisters can be created by a manual
+   call to the SNS wasm modules canister _SNS-W_ (a canister on the NNS).
+   To ensure that malicious parties cannot simply perform this step and fill the SNS
+   subnet with non-approved SNS canisters, SNS-W contains a list of principals
+   that are allowed to install an SNS. A principal can only be added to this list by
+   an NNS proposal, which will allow the principal to install exactly one SNS. Thus as part 
+   of this step there is an NNS proposal which expresses that the NNS community gives their OK
+   that the SNS launch process is started. 
+   
+3) **Pre-decentralization-sale mode:**
+   After the SNS canister creation, the canisters exist but are not yet
    fully functional - the SNS is in _pre-decentralization-sale mode_.
    At this point, the SNS ledger only has two accounts with
    liquid tokens, the _treasury_
@@ -79,11 +88,11 @@ An SNS is launched in the following stages:
    them or start token markets
    prematurely, all remaining inital tokens are locked in neurons. 
    Moreover, in pre-decentralization-sale mode, 
-   these initial neurons cannot modify the SNS or 
+   the initial neurons cannot modify the SNS or 
    transfer the treasury tokens.
-
+  
 3) **Dapp control handover**: Before the decentralization sale,
-   you hand over the control of your dapp to the SNS.
+   the developers hand over the control of the dapp to the SNS.
    This includes adding the SNS root canister as the controller of the dapp and removing
    yourself (and possibly other developers) from the list of
    controllers. Also, this 
@@ -97,24 +106,24 @@ An SNS is launched in the following stages:
    majority of
    initial neurons voting in favor of them.
    The initial neurons cannot do other things, such as changing
-   the SNS
-   parameters, as the SNS governance canister is still in
+   the SNS  parameters, as the SNS governance canister is still in
    pre-decentralization-sale mode.
 
-4) **Ask the IC to start the decentralization sale**: The 
+4) **A NNS proposal starts the decentralization sale**: The 
    decentralization sale
    is started by an NNS proposal that can be submitted by 
    anyone and is decided on by the
    IC community. This means that effectively you hand over 
    the control of your dapp
-   to the IC and ask the IC to decentralize and launch SNS by
+   to the IC and ask the IC to decentralize and launch the SNS by
    starting a decentralization sale.
    The NNS proposal defines the conditions for the
    decentralization sale, for example
    how many ICP tokens should at least and at most be collected.
    When voting on the proposal, the NNS neurons can check
    the sale parameters and whether the dapp’s control has been
-   handed over to the SNS.
+   handed over to the SNS. The voters can also check all parameters that have been
+   set up in step 1. and with which the canisters have be initialized in Step 2.
    The NNS proposal thus also serves as a safeguard where 
    the wisdom of the crowd can
    detect potentially malicious SNSs before they trick 
@@ -148,13 +157,13 @@ token distribution.
 ### Initial parameters
 Aparat from the decentralization sale parameters
 (see next section), 
-You can set all SNS parameters in a _.yaml_ file that can 
+all SNS parameters are set in a _.yaml_ file that can 
 then be passed as an argument
 when installing the SNS, both for testing and in production.
-There are some parameters that you have to actively set and others that are set to a
-default value but that you can also change if you like.
+There are some parameters that have to be set and others that are set to a
+default value but that can also be changed.
 To make sure that all parameters are set to valid values, that are also consistent
-with each other, you can use a tool that validates your input file. 
+with each other, there is a tool to validate this input file. 
 
 **To create the SNS parameter yaml file and validate it, follow the steps
 'Deployment Arguments' in the
@@ -166,39 +175,33 @@ To give you an overview, these are the categories of parameters that you can set
 that can, in contrast to the other parameters listed here, be changed later 
    by SNS proposals. They include parameters such as the
    minimum stake that a neuron must have, or the cost (in SNS tokens) of submitting
-   a proposal that is not adopted.
+   a proposal that is rejected.
    
 2. Configurations in the _SNS ledger canister_. This includes configurations of the SNS 
 ledger canister such as the token name, token symbol, and the ledger transaction fee.
 
-3. The _initial token distribution_. This allows you to specify which portion 
+3. The _initial token distribution_. This allows specifying which portion 
    of tokens are allocated to whom. In the initial design, one can distribute tokens to
    the following four buckets:
-   1. _developer tokens_ that are appointed to the original developers of the dapp,
+   1. _developer tokens_ that are appointed to the original developers of the dapp and 
+      seed investors,
    2. _airdrop tokens_ that can be given to any other predefined principals that
-      should have tokens at genesis, for example to initial investors or existing users
+      should have tokens at genesis, for example to existing users
       of the dapp,
    3. _treasury tokens_ that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs, and
-   4. _sale tokens_ which are owned by the SNS and sold in exchange for other tokens.
+   4. _sale tokens_ which are owned by the SNS and sold in exchange for ICP tokens.
       Initially, parts of the SNS sale tokens are sold in exchange for ICP tokens
       in an initial decentralization sale. If the sale is successful, the participants
       will receive SNS tokens in a basket of neurons. 
       If not all of the sale tokens are sold in the initial sale, the rest of the
       sale tokens are reserved for future sales (separate from the treasury). 
       Note that future sales are not yet designed, but having the tokens reserved
-      makes SNSs forward compatible to such a feature that is planned to be added in
-      the future.
-
-<!-- All developer and airdrop tokens are distributed to the 
-[defined principals](#principals) at genesis in neurons.-->
+      makes SNSs forward compatible to such a feature if it is added in the future.
+      
 All developer and airdrop tokens are distributed to neurons.
-We call them _developer neurons_ and the _airdrop neurons_,
+We call them _developer neurons_ and _airdrop neurons_,
 respectively, and refer to all these neurons as the _initial neurons_.
-<!--We recommend to set up the principals as explained
-[here](#principals), especially to make sure that you set up 
-developer neurons for a principal `identityDevNeuron` that you
-control.-->
 
 :::danger
 
@@ -218,7 +221,7 @@ to upgrade the dapp during the sale.**
 All developers, airdrop principals, and the sale participants receive
 their neurons as a _basket of neurons_.
 This means that rather than one neuron, they can get many neurons 
-with different dissolve delays. The details of these neurons can also
+with different dissolve delays. The details of these neurons can
 be set in the initialization.
 
 If only parts of the sale tokens are sold in the initial decentralization sale,
@@ -239,6 +242,5 @@ ICP tokens that the sale must collect to be successful and the
    If a decentralization sale fails, for example because the targeted minimum number
    of ICP tokens could not be collected, the control of the dapp canister(s) is
    handed back to the principals defined in these parameters.
-   Normally, you will want to set this to be the principals that controlled the dapp
-   before the attempt to decentralize it (e.g., the principal of you and other
-   developers who worked on the dapp).
+   Normally, this will be set to principals owned by the developers that controlled the dapp
+   before the attempt to decentralize it.
