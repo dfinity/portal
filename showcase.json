@@ -1196,6 +1196,23 @@
     ]
   },
   {
+    "id": "itoka",
+    "name": "ITOKA",
+    "oneLiner": "A Leading Infrastructure for Music3.0",
+    "website": "https://www.itoka.xyz/",
+    "tags": ["NFT", "SocialFi", "Tools / Infrastructure"],
+    "description": "The ITOKA project seeks to disrupt the centralized music industry by offering a complete infrastructure solution for the web3 music industry. This includes creation tools, data storage, and music streaming services. The goal of ITOKA is to transform the music industry into a decentralized ecosystem, empowering creators with greater control over their content and a fairer share of revenue.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Itoka-DAO",
+    "twitter": "https://twitter.com/itokamusic",
+    "stats": "3M+ minutes on-chain streaming",
+    "logo": "/img/showcase/itoka_logo.svg",
+    "video": "/img/showcase/itoka_video.mp4",
+    "videoContentType": "video/mp4",
+    "display": "Large",
+    "screenshots": ["/img/showcase/itoka_screanshot.svg"]
+  },
+  {
     "id": "glue",
     "name": "glue",
     "oneLiner": "collab.land on the Internet Computer",
