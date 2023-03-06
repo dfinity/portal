@@ -173,7 +173,6 @@ const sidebars = {
       items: [
         "motoko/version",
         "motoko/motoko",
-        "motoko/main/motoko-introduction", // is this redundant?
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
         "motoko/main/mutable-state",
