@@ -152,6 +152,15 @@ const sidebars = {
   motoko: [
     {
       type: "category",
+      label: "Introduction",
+      link: {
+        type: "doc",
+        id: "motoko/index",
+      },
+      items: [],
+    },
+    {
+      type: "category",
       label: "Motoko Language Tour",
       link: {
         type: "doc",
@@ -172,7 +181,6 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
         "motoko/main/mutable-state",
