@@ -23,13 +23,13 @@ const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-
 const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
   getSplatRedirects,
 } = require("./plugins/utils/redirects");
+const menuDivider = require("./plugins/utils/menu-divider");
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
@@ -73,7 +73,7 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        fromExtensions: ['html', 'md'],
+        fromExtensions: ["html", "md"],
         redirects: getRedirects(),
         createRedirects: (existingPath) => getSplatRedirects(existingPath),
       },
@@ -162,20 +162,39 @@ const config = {
           },
           {
             type: "dropdown",
+            className: "dropdown--custom dropdown--rows-7",
             position: "right",
-            label: "Explore",
+            label: "Intro",
             items: [
+              menuDivider("Jump in"),
               {
                 label: "ICP Ecosystem",
                 href: "/ecosystem",
               },
               {
-                label: "Capabilities",
-                href: "/capabilities",
-              },
-              {
                 label: "Basics",
                 href: "/basics",
+              },
+              {
+                label: "Dashboard",
+                href: "https://dashboard.internetcomputer.org",
+              },
+              {
+                label: "Video Library",
+                href: "/videos",
+              },
+              {
+                label: "ICP Careers",
+                href: "http://careers.internetcomputer.org/",
+              },
+              {
+                label: "DFINITY Foundation",
+                href: "https://dfinity.org",
+              },
+              menuDivider("Capabilities & Use cases"),
+              {
+                label: "Capabilities",
+                href: "/capabilities",
               },
               {
                 label: "Bitcoin Integration",
@@ -186,10 +205,6 @@ const config = {
                 href: "/https-outcalls",
               },
               {
-                label: "Video Library",
-                href: "/videos",
-              },
-              {
                 label: "Social Media Dapps",
                 href: "/social-media-dapps",
               },
@@ -198,33 +213,24 @@ const config = {
                 href: "/nft",
               },
               {
-                label: "SNS DAOs",
-                href: "/sns",
-              },
-              {
-                label: "ICP Careers",
-                href: "http://careers.internetcomputer.org/",
-              },
-              {
-                label: "Internet Identity",
+                label: "Identity on ICP",
                 href: "/internet-identity",
               },
 
-              {
-                label: "Dashboard",
-                href: "https://dashboard.internetcomputer.org",
-              },
-              {
-                label: "DFINITY Foundation",
-                href: "https://dfinity.org",
-              },
+              // NOTE:
+              // when adding new items, make sure you update the
+              // dropdown--rows--x class, otherwise the dropdown
+              // will have too many columns
             ],
           },
+
           {
             type: "dropdown",
             position: "right",
             label: "Learn",
             items: [
+              menuDivider("Get to know more"),
+
               {
                 label: "What is the IC",
                 href: "/what-is-the-ic",
@@ -234,28 +240,24 @@ const config = {
                 href: "/how-it-works",
               },
               {
-                label: "Wiki",
-                href: "https://wiki.internetcomputer.org",
-              },
-              {
                 label: "Whitepaper",
                 href: "https://internetcomputer.org/whitepaper.pdf",
               },
+
               {
-                label: "Internet Computer Infographic",
-                href: "https://internetcomputer.org/icig.pdf",
-              },
-              {
-                label: "ICP Support Resources",
+                label: "Help & Support",
                 href: "https://support.dfinity.org/hc/en-us ",
               },
             ],
           },
           {
             type: "dropdown",
+            className: "dropdown--custom dropdown--rows-8",
             position: "right",
             label: "Develop",
             items: [
+              menuDivider("Start coding"),
+
               {
                 label: "Developer Docs",
                 type: "doc",
@@ -263,18 +265,36 @@ const config = {
               },
               { label: "Sample Code", to: "/samples" },
               { label: "Developer Tools", to: "/tooling" },
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              {
+                type: "html",
+                className: "navbar__link--divider",
+                value: "<span>Languages</span>",
+              },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
               },
               {
-                label: "Dev Forum ",
+                label: "Motoko Docs",
+                href: "/docs/current/motoko/intro/",
+              },
+              {
+                label: "Rust Docs",
+                href: "/docs/current/rust/intro/",
+              },
+              menuDivider("Join the discussion"),
+
+              {
+                html: `<span class="dropdown__link--with-icon">Dev Forum <img src='/img/navigation/forum.svg' /></span>`,
                 href: "https://forum.dfinity.org/",
               },
               {
-                label: "Dev Discord ",
+                html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' /></span>`,
                 href: "https://discord.gg/jnjVVQaE2C",
+              },
+              {
+                html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' /></span>`,
+                href: "https://twitter.com/dfinitydev",
               },
             ],
           },
@@ -283,6 +303,7 @@ const config = {
             position: "right",
             label: "Participate",
             items: [
+              menuDivider("Join the movement"),
               {
                 label: "Live sessions",
                 href: "/live-sessions",
@@ -296,24 +317,12 @@ const config = {
                 href: "/icp-tokens",
               },
               {
-                label: "Network Nervous System (NNS)",
+                label: "Staking & Governance (NNS)",
                 href: "/nns",
               },
               {
-                label: "Service Nervous System (SNS)",
+                label: "SNS DAOs",
                 href: "/sns",
-              },
-              {
-                label: "Staking & Governance",
-                href: "https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart/",
-              },
-              {
-                label: "Node Providers",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers",
-              },
-              {
-                label: "ICA",
-                href: "https://association.internetcomputer.org/",
               },
             ],
           },
@@ -361,6 +370,11 @@ const config = {
                 label: "SDK Release Notes",
                 type: "doc",
                 docId: "other/updates/release-notes/release-notes",
+              },
+              {
+                label: "Dev Blog",
+                type: "docSidebar",
+                sidebarId: "blog",
               },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
@@ -421,15 +435,19 @@ const config = {
             items: [
               {
                 label: "Internet Computer Association",
-                to: "https://association.internetcomputer.org/",
+                href: "https://association.internetcomputer.org/",
               },
               {
                 label: "Wiki",
-                to: "https://wiki.internetcomputer.org/",
+                href: "https://wiki.internetcomputer.org/",
+              },
+              {
+                label: "Node Providers",
+                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers",
               },
               {
                 label: "Dashboard",
-                to: "https://dashboard.internetcomputer.org/",
+                href: "https://dashboard.internetcomputer.org/",
               },
             ],
           },
@@ -437,15 +455,16 @@ const config = {
             items: [
               {
                 label: "ICP Careers",
-                to: "https://careers.internetcomputer.org/",
+                href: "https://careers.internetcomputer.org/",
+              },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              {
+                label: "Support & Feedback",
+                href: "https://support.dfinity.org/hc/en-us",
               },
               {
                 label: "Brand Materials",
-                to: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",
-              },
-              {
-                label: "Support & Feedback",
-                to: "https://support.dfinity.org/hc/en-us",
+                href: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges",
               },
             ],
           },

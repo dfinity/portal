@@ -4,25 +4,15 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-import {
-  useThemeConfig,
-  NavbarSecondaryMenuFiller,
-  ThemeClassNames,
-  useWindowSize,
-} from "@docusaurus/theme-common";
-import {
-  useAnnouncementBar,
-  useScrollPosition,
-  useNavbarMobileSidebar,
-} from "@docusaurus/theme-common/internal";
+import { NavbarSecondaryMenuFiller, ThemeClassNames, useThemeConfig, useWindowSize, } from "@docusaurus/theme-common";
+import { useAnnouncementBar, useNavbarMobileSidebar, useScrollPosition, } from "@docusaurus/theme-common/internal";
 import Logo from "@theme/Logo";
 import IconArrow from "@theme/Icon/Arrow";
 import { translate } from "@docusaurus/Translate";
 import DocSidebarItems from "@theme/DocSidebarItems";
 import styles from "./styles.module.css";
-import NavbarItem from "@theme/NavbarItem";
 
 function useShowAnnouncementBar() {
   const { isActive } = useAnnouncementBar();
