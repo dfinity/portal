@@ -23,13 +23,13 @@ const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-
 const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
   getSplatRedirects,
 } = require("./plugins/utils/redirects");
+const menuDivider = require("./plugins/utils/menu-divider");
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
@@ -162,10 +162,11 @@ const config = {
           },
           {
             type: "dropdown",
-            className: "dropdown--custom dropdown--rows-6",
+            className: "dropdown--custom dropdown--rows-7",
             position: "right",
-            label: "Explore",
+            label: "Intro",
             items: [
+              menuDivider("Jump in"),
               {
                 label: "ICP Ecosystem",
                 href: "/ecosystem",
@@ -190,6 +191,7 @@ const config = {
                 label: "DFINITY Foundation",
                 href: "https://dfinity.org",
               },
+              menuDivider("Capabilities & Use cases"),
               {
                 label: "Capabilities",
                 href: "/capabilities",
@@ -219,12 +221,6 @@ const config = {
               // when adding new items, make sure you update the
               // dropdown--rows--x class, otherwise the dropdown
               // will have too many columns
-
-              // {
-              //   type: "html",
-              //   className: "navbar__link--divider",
-              //   value: "<span>Motoko</span>",
-              // },
             ],
           },
 
@@ -233,6 +229,8 @@ const config = {
             position: "right",
             label: "Learn",
             items: [
+              menuDivider("Get to know more"),
+
               {
                 label: "What is the IC",
                 href: "/what-is-the-ic",
@@ -241,10 +239,6 @@ const config = {
                 label: "How it works",
                 href: "/how-it-works",
               },
-              // {
-              //   label: "Wiki",
-              //   href: "https://wiki.internetcomputer.org",
-              // },
               {
                 label: "Whitepaper",
                 href: "https://internetcomputer.org/whitepaper.pdf",
@@ -258,10 +252,12 @@ const config = {
           },
           {
             type: "dropdown",
-            className: "dropdown--custom dropdown--rows-7",
+            className: "dropdown--custom dropdown--rows-8",
             position: "right",
             label: "Develop",
             items: [
+              menuDivider("Start coding"),
+
               {
                 label: "Developer Docs",
                 type: "doc",
@@ -274,7 +270,6 @@ const config = {
                 className: "navbar__link--divider",
                 value: "<span>Languages</span>",
               },
-              // { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -287,6 +282,8 @@ const config = {
                 label: "Rust Docs",
                 href: "/docs/current/rust/intro/",
               },
+              menuDivider("Join the discussion"),
+
               {
                 html: `<span class="dropdown__link--with-icon">Dev Forum <img src='/img/navigation/forum.svg' /></span>`,
                 href: "https://forum.dfinity.org/",

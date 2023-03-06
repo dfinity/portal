@@ -449,7 +449,7 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
     padding: 12px 24px;
     border-radius: 0;
     margin:0;
-    min-width: 200px;
+    min-width: 240px;
     font-size: 16px;
     line-height: 22px;
     font-weight: 450px;
@@ -525,6 +525,19 @@ html.plugin-docs .navbar__inner .navbar__items.navbar__items--right .navbar__ite
   }
   .navbar__link.dropdown--custom.dropdown--rows-8 + .dropdown__menu {
     grid-template-rows: repeat(8, auto);
+
+    li {
+      &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+        border-right: 1px solid rgba(59, 0, 185, 0.1);
+      }
+      &:nth-child(8) {
+        padding-bottom:12px;
+      }
+      &:nth-child(9) {
+        padding-top:12px;
+      }
+      
+    }
   }
 
   .navbar__link--divider {
