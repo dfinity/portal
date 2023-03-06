@@ -8,7 +8,7 @@ This tutorial takes about 10 minutes to complete.
 Prerequisites
 -------------
 
-1. Make sure the [Canister SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/) (`dfx`) is installed.
+1. Make sure the [Canister SDK](../../setup/install/) (`dfx`) is installed.
 2. There is a macOS or Linux terminal with internet connection.
 3. The [Rust language](https://www.rust-lang.org/tools/install) and a code editor are installed. The [VS Code IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
 
@@ -135,7 +135,7 @@ Where:
 Step 6. Implementing canister upgrade
 -------------------------------------
 
-Note, as described in [Periodic Tasks and Timers](/developer-docs/backend/periodic-tasks.md), the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+Note, as described in [Periodic Tasks and Timers](../periodic-tasks.md), the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
@@ -225,7 +225,7 @@ The libraries are added, the canister interface is described and the code is com
 More to Explore
 ---------------
 
-1. Learn more about periodic tasks and timers in the [Internet Computer Developer Guide.](/developer-docs/backend/periodic-tasks.md)
+1. Learn more about periodic tasks and timers in the [Internet Computer Developer Guide.](../periodic-tasks.md)
 2. Have a look at the locally running dashboard. The URL is at the end of the `dfx start` command: `Dashboard: http://localhost/...`
 3. Check out `my_timers_backend` canister Candid User Interface. The URLs are at the end of the `dfx deploy` command: `my_timers_backend: http://127.0.0.1/...`
 
