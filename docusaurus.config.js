@@ -303,6 +303,7 @@ const config = {
             position: "right",
             label: "Participate",
             items: [
+              menuDivider("Join the movement"),
               {
                 label: "Live sessions",
                 href: "/live-sessions",
