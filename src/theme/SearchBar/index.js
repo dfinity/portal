@@ -1,7 +1,7 @@
-import classnames from "classnames";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./styles.css";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
+import clsx from "clsx";
 
 const Search = (props) => {
   const searchBarRef = useRef(null);
@@ -20,6 +20,20 @@ const Search = (props) => {
     } else {
       setMetaKey(null);
     }
+
+    function onKeydown(e) {
+      if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsOverlayOpen(true);
+      }
+    }
+
+    window.addEventListener("keydown", onKeydown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeydown);
+    };
   }, []);
 
   const toggleSearchIconClick = useCallback(
@@ -40,7 +54,7 @@ const Search = (props) => {
         <span
           aria-label="expand searchbar"
           role="button"
-          className={classnames("search-icon", {
+          className={clsx("search-icon", {
             "search-icon-hidden": props.isSearchBarExpanded,
           })}
           onClick={() => setIsOverlayOpen(true)}
@@ -49,7 +63,7 @@ const Search = (props) => {
         <button
           id="search_input_react"
           aria-label="Search"
-          className={classnames(
+          className={clsx(
             "navbar__search-input",
             { "search-bar-expanded": props.isSearchBarExpanded },
             { "search-bar": !props.isSearchBarExpanded },

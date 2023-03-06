@@ -1,0 +1,22 @@
+{
+  "canisters": {
+    "search": {
+      "candid": "src/search_canister/candid.did",
+      "package": "search_canister",
+      "type": "rust"
+    },
+    "frontend": {
+      "type": "assets",
+      "source": [
+        "src/search-mvp-frontend/dist/"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}

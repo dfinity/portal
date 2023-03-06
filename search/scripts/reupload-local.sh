@@ -1,0 +1,1 @@
+cargo run --release --bin search-cli -- upload output.json stopwords.txt rrkah-fqaaa-aaaaa-aaaaq-cai "http://localhost:54801"

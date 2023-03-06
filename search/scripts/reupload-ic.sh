@@ -1,0 +1,1 @@
+cargo run --release --bin search-cli -- upload output.json stopwords.txt wavpu-oiaaa-aaaam-aabuq-cai

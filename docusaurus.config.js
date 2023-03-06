@@ -52,9 +52,9 @@ const config = {
     marketingLogoUrl: "/",
     docsLogoUrl: "/docs/current/home",
     docsLogoSrc: "/img/IC_logo_docs.svg",
+    searchCanisterId: "wavpu-oiaaa-aaaam-aabuq-cai",
   },
   plugins: [
-    require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,
@@ -73,7 +73,7 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        fromExtensions: ['html', 'md'],
+        fromExtensions: ["html", "md"],
         redirects: getRedirects(),
         createRedirects: (existingPath) => getSplatRedirects(existingPath),
       },
