@@ -280,7 +280,7 @@ const config = {
               },
               {
                 label: "Rust Docs",
-                href: "/docs/current/rust/intro/",
+                href: "/docs/current/developer-docs/backend/rust/",
               },
               menuDivider("Join the discussion"),
 
