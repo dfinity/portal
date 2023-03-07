@@ -15,23 +15,23 @@ An HTTP request by an HTTP client is handled by these steps:
 3. Invoke the canister via a query call to the `http_request` interface
 4. The canister handles the request and returns an HTTP response, encoded in Candid, together with additional metadata
 5. If requested by the canister, send the request again via an update call to `http_request_update`.
-6. If applicable, the Gateway fetches further body data via streaming query calls.
-7. If applicable, the Gateway validates the certificate of the response.
-8. The Gateway sends the response to the HTTP client.
+6. If applicable, fetch further body data via streaming query calls.
+7. If applicable, validate the certificate of the response.
+8. Send the response to the HTTP client.
 
 ## Canister ID Resolution
 
-The Gateway needs to know the canister id of the canister to talk to, and obtains that information from the hostname as follows:
+The Gateway needs to know the canister ID of the canister to talk to, and obtains that information from the hostname as follows:
 
 1. If the hostname is in the following table, use the given canister ids:
 
-| Hostname             | Canister id                   |
-| -------------------- | ----------------------------- |
-| `identity.ic0.app`   | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
-| `nns.ic0.app`        | `qoctq-giaaa-aaaaa-aaaea-cai` |
-| `dscvr.one`          | `h5aet-waaaa-aaaab-qaamq-cai` |
-| `dscvr.ic0.app`      | `h5aet-waaaa-aaaab-qaamq-cai` |
-| `personhood.ic0.app` | `g3wsl-eqaaa-aaaan-aaaaa-cai` |
+    | Hostname             | Canister id                   |
+    | -------------------- | ----------------------------- |
+    | `identity.ic0.app`   | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+    | `nns.ic0.app`        | `qoctq-giaaa-aaaaa-aaaea-cai` |
+    | `dscvr.one`          | `h5aet-waaaa-aaaab-qaamq-cai` |
+    | `dscvr.ic0.app`      | `h5aet-waaaa-aaaab-qaamq-cai` |
+    | `personhood.ic0.app` | `g3wsl-eqaaa-aaaan-aaaaa-cai` |
 
 2. Check whether the hostname is _raw_ (e.g., `<name>.raw.ic0.app`). If it is the case, fail and handle the request as a Web2 request, otherwise, continue.
 
@@ -39,9 +39,9 @@ The Gateway needs to know the canister id of the canister to talk to, and obtain
 
 4. Check whether the canister is hosted on the IC using a custom domain. There are two options:
 
-- Check whether there is a TXT record containing a canister ID at the `_canister-id`-subdomain (e.g., to see whether `foo.com` is hosted on the IC, make a DNS lookup for the TXT record of `_canister-id.foo.com`);
+    - Check whether there is a TXT record containing a canister ID at the `_canister-id`-subdomain (e.g., to see whether `foo.com` is hosted on the IC, make a DNS lookup for the TXT record of `_canister-id.foo.com`) and use the specified canister ID;
 
-- Make a `HEAD` request to the hostname. If the response contains an `x-ic-canister-id` and `x-ic-gateway` header, use the canister ID with the gateway specified in the headers.
+    - Make a `HEAD` request to the hostname. If the response contains an `x-ic-canister-id` and `x-ic-gateway` header, use the canister ID with the gateway specified in the headers.
 
 5. Else fail and handle the request as a Web2 request.
 
@@ -76,7 +76,7 @@ The `certificate_version` field indicates the maximum supported version of [resp
 
 The encoded HTTP request is sent as a query call according to the [HTTPS Interface](https://internetcomputer.org/docs/current/references/ic-interface-spec#http-query).
 
-## Response Decoding
+## HTTP Response Decoding
 
 An HTTP response is decoded from the result of the [query call](#query-calls) using the following [Candid](https://github.com/dfinity/candid/blob/master/spec/Candid.md) interface:
 
@@ -112,7 +112,7 @@ Notes:
 
 The HTTP Gateway will primarily be used to load static assets needed to run frontend canister code, so both low latency and security are essential for providing a good experience to end users. [Query calls](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-query) are more performant but less secure than [Update calls](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-call).
 
-Response verification fills the security gap left by query calls. It is a versioned subprotocol that allows for an HTTP Gateway to verify a certified response received as a result of performing a query call to the Internet Computer. Two versions are currently supported, the older version 1 only supports verification of the response body, whereas the newer version 2 supports verifying the full response, including headers and status code, and optionally the full request.
+Response verification fills the security gap left by query calls. It is a versioned subprotocol that allows for an HTTP Gateway to verify a certified response received as a result of performing a query call to the Internet Computer. Two versions are currently supported, the older version 1 only supports verification of the response body, whereas the newer version 2 supports verifying the full response, including headers, status code, and optionally the full request.
 
 Response verification comes in two flavors, the current version is covered in this section and the legacy version is covered in [another section](#legacy-response-verification). The legacy version of response verification only includes a mapping of the request URL to the response body so it is quite limiting in what it can verify. The current version builds on the legacy version by optionally including the following extra parameters in the certification process:
 
@@ -130,7 +130,7 @@ Response verification comes in two flavors, the current version is covered in th
 1. Parse the `certificate`, `tree`, and `expr_path` fields from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
 1. Case-insensitive search for the `IC-CertificationExpression` header.
    - If no such header is found, verification fails.
-   - If the header value is not structured as per [the certificate expression header](#the certificate-expression-header), verification fails.
+   - If the header value is not structured as per [the certificate expression header](#the-certificate-expression-header), verification fails.
 1. Perform [certificate validation](#certificate-validation).
 1. Parse the `version` field from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
    - If the `version` field is missing or equal to `1` then proceed with [legacy response verification](#legacy-response-verification).
@@ -164,7 +164,7 @@ The following additional fields are mandatory for response verification version 
 
 ### Certificate Validation
 
-Certificate validation is performed as part of [response verification](#response-verification) as per [Canister Signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec/#canister-signatures) and [Certification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#certificate). It is expanded on here concerning [response verification](#response-verification)](#response-verification) for completeness:
+Certificate validation is performed as part of [response verification](#response-verification) as per [Canister Signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec/#canister-signatures) and [Certification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#certificate). It is expanded on here concerning [response verification](#response-verification) for completeness:
 
 1. Case-insensitive search for a response header called `IC-Certificate`.
 2. The value of the header corresponds to the format described in [the certificate header](#the-certificate-header) section.
@@ -184,7 +184,7 @@ The `IC-CertificateExpression` header carries additional information instructing
 - Include specific request URL query parameters
 - Include or exclude specific response headers
 
-The format of the IC-CertificateExpression header is as follows:
+The format of the `IC-CertificateExpression` header is as follows:
 
 ```
 IC-CertificateExpression: default_certification(ValidationArgs{<literal field values>})
