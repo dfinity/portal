@@ -291,7 +291,7 @@ The response hash is calculated as follows:
 1. Let `response_headers_hash` be the [representation-independent hash](https://internetcomputer.org/docs/current/references/ic-interface-spec#hash-of-map) of the response headers:
    - The `IC-Certificate` header is always excluded.
    - The `IC-CertificateExpression` header is always included.
-   - ## If the `certified_response_headers` field of [the certificate expression header](#the-certificate-expression-header) is present:
+   - If the `certified_response_headers` field of [the certificate expression header](#the-certificate-expression-header) is present:
    -
    - Headers can be repeated and each repetition should be included.
 2. Let `response_body_hash` be the sha256 of the response body.
