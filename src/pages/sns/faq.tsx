@@ -168,7 +168,7 @@ function SnsFaqPage() {
               <ul>
                 <li>
                   The design of SNSs is similar to that of the{" "}
-                  <Link href="https://nns.ic0.app">
+                  <Link href="/nns">
                     Network Nervous System (NNS)
                   </Link>
                   , which is the on-chain DAO that governs the whole ICP.
@@ -180,9 +180,9 @@ function SnsFaqPage() {
                   dapp is controlled by voting via tokens.
                 </li>
                 <li>
-                  There can be many SNSs on ICP. A developer can turn their dapp
-                  into a DAO by handing the control of their dapp over to an SNS
-                  DAO.
+                  There can be many SNSs on ICP. Any developer can hand over the
+                  control of their dapp to an SNS DAO. Doing so gives control to
+                  DAO token holders.
                 </li>
               </ul>
             </Faq>
@@ -199,7 +199,7 @@ function SnsFaqPage() {
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
                 of a dapp, since everything is on-chain. Having fully on-chain DAOs
-                is important because it enables all decisions to execute on the
+                is important because it enables all decisions to be executed on the
                 blockchain. This is in contrast to existing DAOs on other
                 blockchains where voting takes place on-chain but the execution of
                 the results are often carried out by developers off-chain. This
@@ -216,7 +216,7 @@ function SnsFaqPage() {
               <p>
                 SNS DAOs facilitate a healthy exchange between developers,
                 entrepreneurs, end users and VC’s. Some advantages of turning
-                your dapp into a DAO include:{" "}
+                the control of your dapp over to a DAO include:{" "}
               </p>
               <ul>
                 <li>
@@ -255,8 +255,20 @@ function SnsFaqPage() {
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat has already publicly
               announced their plans to turn their dapp into an SNS DAO in Q1 of
-              2023. Dapps such as distrikt, Catalyze, Canistore and Nuance are
-              considering creating their own SNSs.
+              2023. Dapps such as {" "}
+              <Link href="https://distrikt.app/">
+                distrikt
+              </Link>, {" "}
+              <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
+                Catalyze
+              </Link>, {" "}
+              <Link href="https://canistore.io/">
+                Canistore
+              </Link> and {" "}
+              <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
+                Nuance
+              </Link>
+              are considering creating their own SNSs.
             </Faq>
           </FaqSection>
           <FaqSection
@@ -267,17 +279,86 @@ function SnsFaqPage() {
               </h2>
             }
           >
-            <Faq title="In what ways can you participate in an SNS DAO?">
-              Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. Depending on the SNS
-              configuration, users who vote may be rewarded with additional
-              tokens for participating in governance. If you want to get more
-              deeply involved, you can also suggest feature updates through
-              proposals to improve the dapp controlled by the DAO.
+            <Faq title="What do I do once I am an SNS DAO member?">
+              The most important thing you can do as an SNS DAO member is to
+              participate in governance. On-chain governance is what
+              differentiates DAOs from traditional web applications, as members 
+              play a key role in the DAO's success. DAO members can contribute
+              in many ways, from pushing code, to designing a logo or a UI,
+              to simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
-
+            <Faq title="In what ways can I participate in an SNS DAO?">
+              There are many ways members can participate in an SNS DAO, both
+              on-chain and off-chain. Creating proposals requires coding skills.
+              Some examples include:
+              <ul>
+                <li>
+                  <strong>Vote on SNS proposals:</strong> You can vote on
+                  different types of proposals manually or follow other
+                  neurons that vote.
+                </li>
+                <li>
+                  <strong>Create upgrade proposals: </strong>
+                  Submit an upgrade proposal to update the code of the
+                  dapp that the SNS DAO controls. This allows anyone to
+                  contribute code to an SNS DAO.
+                </li>
+                <li>
+                  <strong>Upgrade the asset canister: </strong>
+                  Currently updates to asset canisters don't go through
+                  proposals. However, you can still make changes to the frontend
+                  by upgrading the asset canister controlled by an SNS DAO.
+                  To do so, you have to first create a proposal to add your
+                  principal ID to the list of controllers who can make updates.
+                </li>
+                <li>
+                  <strong>Create motion proposals:</strong> Motion
+                  proposals don't upgrade the code of the dapp, instead
+                  they steer the direction of the DAO in terms of new
+                  features and dapp development.
+                </li>
+                <li>
+                  <strong>Create SNS parameter update proposals: </strong>
+                  You can propose upgrades for many of the DAO's parameters
+                  such as maximum staking period, voting rewards and many more.
+                  See all of them {" "}
+                  <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
+                    here
+                  </Link>
+                </li>
+              </ul>
+              Non-governance related examples of contributing are:
+              <ul>
+                <li>
+                  <strong>Content moderation: </strong> Many social media
+                  dapps may incorporate content moderation as they scale to
+                  millions of users. Moderators review and approve content
+                  based on the content policies of the DAO.
+                </li>
+                <li>
+                  <strong>UI / UX design work: </strong> Users can contribute
+                  not only by coding, but designing different aspects of the 
+                  dapp.
+                </li>
+                <li>
+                  <strong>Off-chain marketing / inviting friends: </strong>
+                  Members of the DAO can be advocates of the dapp and promote
+                  it in different ways.
+                </li>
+              </ul>
+            </Faq> 
+            <Faq title="How does voting in an SNS DAO work?">  
+              Once you have acquired SNS tokens, you can lock them into SNS
+              neurons and create a proposal or vote on one. If a proposal
+              gets adopted, the code of the SNS DAO or the dapp it controls
+              is upgraded. Depending on the SNS configuration, users who vote
+              may be rewarded with additional tokens for participating in
+              governance. If you want to get more deeply involved, you can
+              also suggest feature updates through proposals to improve the
+              dapp controlled by the DAO.
+            </Faq>
             <Faq
-              title="How do you get SNS Tokens?"
+              title="How can I get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
             >
               <p>
@@ -320,6 +401,15 @@ function SnsFaqPage() {
                 </li>
               </ul>
             </Faq>
+            
+            <Faq title="Do I get rewards for participating in governance?">
+              SNS works very similar to the NNS, however each SNS DAO can
+              configure their parameters differently. Once you have locked
+              your SNS governance tokens into SNS neurons for the at least
+              the minimum required time, you can participate in voting.
+              Depending on the configuration voting may reward participants
+              with SNS governance tokens.
+            </Faq>
 
             <Faq title="What is the Community Fund?">
               <p>
@@ -342,6 +432,26 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
+            <Faq title="If I am asked to send ICP to an address to participate in a decentralization sale, what should I do?">
+              <p>
+                If you want to participate in the sale, do not send ICP directly
+                to addresses! An SNS sale will never initiate contact with you,
+                e.g. via chat or email. You will never be asked to manually enter
+                an ICP address to participate in a decentralization sale. If you
+                find yourself entering an ICP address to participate in an SNS
+                sale, then STOP. Your sale address is specific to your identity,
+                and you should only interact with that address when participating
+                in a sale through the{" "}
+                <Link href="https://nns.ic0.app/launchpad/">
+                  NNS
+                </Link>{" "}
+                or other ICP based dapps that support the sale like{" "}
+                <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
+                  ICLighthouse
+                </Link>
+                .
+              </p>
+            </Faq>
           </FaqSection>
           <FaqSection
             id="decentralization-sale"
@@ -356,8 +466,9 @@ function SnsFaqPage() {
               A decentralization sale is the process by which an SNS DAO becomes
               decentralized and where users can purchase SNS tokens by
               participating. After the sale, each participant receives a basket
-              of neurons holding SNS tokens. It is one of{" "}
-              <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> one
+              of neurons. These neurons hold SNS tokens and therefore a share of
+              the DAO's voting power. It is one of{" "}
+              <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> you
               can get SNS tokens for a particular SNS DAO.
             </Faq>
 
@@ -383,6 +494,14 @@ function SnsFaqPage() {
                   successful. If the goal is not reached, participants get their
                   ICP refunded and the sale fails.
                 </li>
+                <li>
+                  The maximum amount of ICP a decentralization sale can receive
+                  before it concludes. If the maximum ICP is reached, the sale is
+                  over and the control of the dapp is turned over to the token
+                  holders. As the number of tokens to be sold is fixed, it is
+                  amount of ICP raised that determines the initial price of
+                  the SNS tokens.
+                </li>
                 <li>Minimum and maximum commitment of ICP per participant</li>
                 <li></li>
               </ul>
@@ -395,17 +514,51 @@ function SnsFaqPage() {
                 <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                   neurons
                 </Link>{" "}
-                that hold your SNS tokens. The basket may contain multiple
-                neurons with different dissolve delays, depending on the SNS
-                configuration. You can use your tokens to participate in
+                that hold your SNS tokens. Depending on the SNS configuration,
+                the basket may contain multiple neurons, each with a different
+                dissolve delay. You can use your tokens to participate in
                 governance or, once neurons have dissolved, sell the liquid
                 tokens on an exchange.
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
                 each token, depends on the amount of ICP raised during the sale.
-                The more ICP raised, the fewer SNS tokens you receive.
+                The more ICP raised, the fewer SNS tokens you receive, however
+                their price will be higher.
               </p>
+            </Faq>
+            
+            <Faq title="How is the price of SNS tokens calculated?">
+              <p>
+                SNS tokens can be purchased for ICP during the decentralization
+                sale. There is a fixed number of tokens sold during the sale,
+                which means their price is determined by the amount of ICP raised.
+                You can calculate the token price by dividing the amount of ICP
+                raised with the number of tokens sold. Price = ICP raised / number
+                of tokens sold. Note that the final price of SNS tokens isn't
+                known at the time of purchase during the decentralization sale as
+                it is dependent on the total amount of ICP raised in the sale.
+                However you can calculate the minimum and maximum price based on
+                the minimum and maximum ICP that the sale accepts, which you can
+                verify in the sale proposal. A few examples:
+              </p>
+              <ul>
+                <li>
+                  The decentralization sale raised 1000 ICP by selling 5000 tokens.
+                  You contributed with 10 ICP. This means you will have 50 SNS
+                  tokens, each worth 0.2 ICP.
+                </li>
+                <li>
+                  The decentralization sale raised 500,000 ICP by selling 1 million tokens.
+                  You contributed with 200 ICP. This means you will have 400 SNS
+                  tokens, each worth 0.5 ICP.
+                </li>
+                <li>
+                  The decentralization sale raised 10,000 ICP by selling 100 tokens.
+                  You contributed with 5 ICP. This means you will have 0.05 SNS
+                  tokens, where a full token would be worth 100 ICP.
+                </li>  
+              </ul>              
             </Faq>
 
             <Faq title="How do I participate in a sale?">
@@ -479,7 +632,8 @@ function SnsFaqPage() {
                 </strong>
               </p>
               <p>
-                Once the sale ends and is successful, you receive SNS tokens.
+                After the sale ends and is successful, you receive SNS tokens.
+                Note, that this may take a few hours after the sale has concluded.
                 The number of SNS tokens you receive, and the price paid for
                 each token, depends on the amount of ICP raised during the sale
                 as well as the amount of ICP spent. The more ICP raised, the
@@ -503,6 +657,66 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
+            <Faq title="Who starts the decentralization sale?">
+              The developer team first creates an NNS proposal for the
+              decentralization sale. The sale itself starts automatically
+              once the NNS proposal is adopted.
+            </Faq>
+            <Faq title="As a participant in the SNS decentralization sale, what do I need to trust?">
+              <p>
+                Before participating in an SNS decentralization sale to get a
+                share of the SNS DAO’s voting power, it is highly recommended
+                that you do your due diligence on the dapp in question to make
+                sure the SNS DAO is trustworthy. Dapp developers are responsible
+                for providing all the necessary information that allows you to
+                verify the dapp and its SNS configurations. Note that in
+                participating without doing due your diligence, you are
+                implicitly trusting the NNS community and the developers
+                decentralizing the dapp. In any case, it is crucial that you
+                trust the developers will not change the dapp during the SNS
+                launch. Learn what you could verify and what to look out for{" "}
+                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust">
+                  here.
+                </Link>
+              </p>
+            </Faq>
+              
+            <Faq title="How can I verify the SNS decentralization sale proposal?">
+              <p>
+                There are multiple levels of verification you can do depending
+                on your level of technical understanding. SNS canisters can be
+                verified at any time, even before the decentralization sale, but
+                after they have been installed on the SNS subnet.
+                Here are some ways to verify:
+              </p>
+              <ul>
+                <li>
+                  <strong>Sale parameters:</strong> You can verify what the
+                  parameters of the decentralization sale are in the Launch
+                  Pad or in the decentralization sale NNS proposal.
+                </li>
+                <li>
+                  <strong>SNS root canister: </strong> An SNS DAO is comprised
+                  of several SNS canisters that have different functions.
+                  The root canister is the canister that controls the other
+                  SNS canisters within a given SNS DAO. You should verify that
+                  the SNS root canister is the only canister controlling other
+                  SNS canisters within that SNS DAO. Verification is important for
+                  making sure there no backdoors built in.
+                </li>  
+                <li>
+                  <strong>The dapp canister: </strong> You can verify that the
+                  canister id of the dapp controlled by the SNS DAO is the same
+                  as the one you're interacting with.
+                </li>
+                Learn more about verification here: {" "}
+                <Link
+                  href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal"
+                >
+                  here
+                </Link>
+              </ul>
+            </Faq>
           </FaqSection>
 
           <FaqSection
@@ -516,7 +730,10 @@ function SnsFaqPage() {
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
                 Voting and the creation of SNS proposals can take place in the
-                dapp controled by the SNS DAO, and soon in the NNS dapp.
+                dapp controlled by the SNS DAO, and soon in the{" "}
+                <Link href="https://nns.ic0.app/">
+                  NNS frontend dapp
+                </Link>,
                 Proposals are listed within the dapps themselves as in this
                 example of OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
@@ -641,7 +858,7 @@ function SnsFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="https://internetcomputer.org/sns"
+            href="/sns"
             title="SNS DAO Basics"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -653,7 +870,7 @@ function SnsFaqPage() {
             title="SNS Blog"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://internetcomputer.org/how-it-works"
+            href="/how-it-works"
             title="Technical overview of ICP"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -661,7 +878,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://internetcomputer.org/docs/current/tokenomics/sns/sns-intro-tokens"
+            href="/docs/current/developer-docs/integrations/sns/"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

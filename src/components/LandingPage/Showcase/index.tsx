@@ -1,11 +1,13 @@
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
 import ArrowRight from "@site/static/img/arrow-right.svg";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
+import _showcaseProjects from "@site/showcase.json";
+import { useShowcaseProjects } from "@site/src/utils/use-showcase-projects";
+import clsx from "clsx";
 
 const MotionLink = motion(Link);
 
@@ -40,44 +42,39 @@ const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
   );
 };
 
-export default function ShowcaseSection(): JSX.Element {
-  const projects = useGlobalData()["home-showcase"].default as {
-    name: string;
-    oneLiner: string;
-    website: string;
-    stats: string;
-    logo: string;
-  }[];
+const ShowcaseSection: React.FC<{
+  lines: string[];
+  interval?: number;
+  linePostfix: React.ReactNode;
+  subheading: React.ReactNode;
+  projectIds: string[];
+  className?: string;
+}> = ({
+  lines,
+  interval = 2500,
+  linePostfix,
+  subheading,
+  projectIds,
+  className,
+}) => {
+  const projects = useShowcaseProjects(projectIds);
 
   return (
-    <section id="dapps" className="relative z-0 pb-[320px]">
+    <section id="dapps" className={clsx("relative z-0", className)}>
       <AnimateSpawn variants={transitions.item}>
         <div className="container-10 pt-20 md:pt-30">
           <div className="">
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">
                 <RotatedDappsHeadline
-                  interval={2500}
-                  lines={[
-                    "Defi",
-                    "Metaverse",
-                    "Social media",
-                    "Social networking",
-                    "Multi-chain dapps",
-                    "Enterprise services",
-                    "R&D infrastructure",
-                    "Fundraising",
-                    "Publishing",
-                    "Messaging ",
-                    "Gaming",
-                    "NFTs",
-                  ]}
+                  interval={interval}
+                  lines={lines}
                 ></RotatedDappsHeadline>
               </span>
-              <span>fully on-chain</span>
+              <span>{linePostfix}</span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-5/10">
-              There are hundreds of projects like these...{" "}
+              {subheading}
             </p>
           </div>
         </div>
@@ -142,4 +139,6 @@ export default function ShowcaseSection(): JSX.Element {
       </AnimateSpawn>
     </section>
   );
-}
+};
+
+export default ShowcaseSection;

@@ -5,6 +5,7 @@ In Motoko strings (type name is [`Text`](/motoko/main/base/Text.md)) can be writ
 ```motoko
 "Hello, Motoko!"
 ```
+
 <!-- 
 It can span multiple lines.
 
@@ -36,7 +37,7 @@ let x = "Joe";
 Motoko supports common string escape sequences. Here's all of them:
 
 | Sequence | Result          |
-| -------- | --------------- |
+|----------|-----------------|
 | `\n`     | Newline         |
 | `\r`     | Carriage Return |
 | `\t`     | Tab             |
@@ -69,12 +70,14 @@ Debug.print("/\\/\\/\\/\\");
 Strings are represented by the class Text that has a few useful methods.
 
 You can get the size of the string by calling method `size()`:
+
 ```motoko
 let myString : Text = "Hello, Motoko!";
 myString.size()
 ```
 
 `Text.chars()` returns an iterator that you can use to loop over the string's characters:
+
 ```motoko
 import Debug "mo:base/Debug";
 import Char "mo:base/Char";
@@ -86,6 +89,7 @@ for (char in myString.chars()) {
 ```
 
 String could be compared to each other using `==` operator:
+
 ```motoko
 import Debug "mo:base/Debug";
 
@@ -107,6 +111,7 @@ if (A == X) {
 ```
 
 ## Converting other types to `Text`
+
 Most of the types can be converted to `Text` using `toText()` function from the type's module.
 
 ```motoko
@@ -114,7 +119,6 @@ import Nat "mo:base/Nat";
 let natVal : Nat = 32;
 Nat.toText(natVal)
 ```
-
 
 ```motoko
 import Int "mo:base/Int";

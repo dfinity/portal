@@ -252,4 +252,13 @@ export const communityToolingItems = [
       docs: "https://icpipeline.com/documentation"
     },
   },
+  {
+    title: "ic-stable-memory",
+    tags: [ "database", "development", "library" ],
+    description: "A Rust library that allows you to use stable memory as main memory",
+    links: {
+      github: "https://github.com/seniorjoinu/ic-stable-memory",
+      docs: "https://docs.rs/ic-stable-memory/latest/ic_stable_memory/",
+    },
+  }
 ];

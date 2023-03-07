@@ -4,7 +4,8 @@
     "name": "DSCVR",
     "oneLiner": "Web3 alternative to Reddit with user governed Portals",
     "website": "https://dscvr.one/",
-    "tags": ["SocialFi"
+    "tags": [
+      "SocialFi"
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
     "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
@@ -12,14 +13,11 @@
     "stats": "175,000+ users",
     "display": "Large",
     "logo": "/img/showcase/dscvr_logo.webp",
-    "video": "/img/showcase/dscvr_video.mp4",
-    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot_0.webp"
+      "/img/showcase/dscvr_screenshot.webp"
     ]
   },
- 
- {
+  {
     "id": "distrikt",
     "name": "Distrikt",
     "oneLiner": "100% on-chain microblogging social media platform",
@@ -57,7 +55,6 @@
       "/img/showcase/kontribute_screenshot_0.webp"
     ]
   },
-
   {
     "id": "kinic",
     "name": "Kinic",
@@ -91,7 +88,7 @@
       "/img/showcase/infinityswap_screenshot_0.webp"
     ]
   },
- {
+  {
     "id": "openchat",
     "name": "OpenChat",
     "oneLiner": "Decentralized alternative to WhatsApp",
@@ -124,7 +121,6 @@
       "/img/showcase/internetcomputerorgwebsite_screenshot_0.webp"
     ]
   },
- 
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
@@ -137,9 +133,11 @@
     "display": "Large",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "videoContentType": "video/mp4",
-    "screenshots": ["/img/showcase/bitfinitywallet_screenshot.webp"]
+    "screenshots": [
+      "/img/showcase/bitfinitywallet_screenshot.webp"
+    ]
   },
-    {
+  {
     "id": "uniswapfrontendontheic",
     "name": "Uniswap Front End on the IC",
     "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
@@ -155,6 +153,23 @@
     "screenshots": []
   },
   {
+    "id": "ntagle",
+    "name": "ntagle",
+    "oneLiner": "Proof of Physical Ownership Platform",
+    "tags": [
+      "NFT",
+      "Wallet"
+    ],
+    "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
+    "usesInternetIdentity": false,
+    "stats": "Working MVP",
+    "logo": "/img/showcase/ntagle_icon.webp",
+    "github": "https://github.com/InternetComputerOG/ntagle-core",
+    "twitter": "https://twitter.com/ntagled",
+    "website": "https://github.com/InternetComputerOG/ntagle-core",
+    "screenshots": []
+  },
+  {
     "id": "seers",
     "name": "Seers",
     "website": "https://seers.social/",
@@ -167,7 +182,7 @@
     "logo": "/img/showcase/seers_logo.webp",
     "screenshots": []
   },
-   {
+  {
     "id": "papyrs",
     "name": "Papyrs",
     "website": "https://app.papy.rs",
@@ -199,12 +214,12 @@
       "/img/showcase/taggr_screenshot_0.webp"
     ]
   },
-    {
+  {
     "id": "funded",
     "name": "Funded",
-    "website": "https://crowdfund-nft.com/",
+    "website": "https://funded.app/",
     "tags": [
-      "SocialFi", 
+      "SocialFi",
       "DeFi"
     ],
     "twitter": "https://twitter.com/funded_app",
@@ -229,8 +244,7 @@
       "/img/showcase/contentfly_screenshot_0.webp"
     ]
   },
-
-    {
+  {
     "id": "icdex",
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
@@ -267,20 +281,16 @@
     "website": "https://omnic.network",
     "tags": [
       "Tools / Infrastructure",
-	  "DeFi"
+      "DeFi"
     ],
     "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/omnic_logo.png",
+    "logo": "/img/showcase/omnic_logo.webp",
     "screenshots": [
-      "/img/showcase/omnic_screenshot_0.png",
-      "/img/showcase/omnic_screenshot_1.png",
-      "/img/showcase/omnic_screenshot_2.png",
-      "/img/showcase/omnic_screenshot_3.png",
-      "/img/showcase/omnic_screenshot_4.png"
+      "/img/showcase/omnic_screenshot_0.webp"
     ],
-	"videoContentType": "video/mp4",
-	"video": "/img/showcase/omnic_video.mp4"
+    "videoContentType": "video/mp4",
+    "video": "/img/showcase/omnic_video.mp4"
   },
   {
     "id": "unfoldvr",
@@ -387,8 +397,6 @@
       "/img/showcase/yumi-screenshot.webp"
     ]
   },
-
-
   {
     "id": "sly",
     "name": "SLY",
@@ -421,6 +429,21 @@
     ]
   },
   {
+    "id": "finterest",
+    "name": "Finterest",
+    "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
+    "tags": [
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/finterestICP",
+    "description": "Lend and borrow against your crypto without bridging it across chains. Yes, even Bitcoin",
+    "stats": "$1.5M+ Raised",
+    "logo": "/img/showcase/finterest_logo.webp",
+    "screenshots": [
+      "/img/showcase/finterest_screenshot_0.webp"
+    ]
+  },
+  {
     "id": "canlista",
     "name": "Canlista",
     "oneLiner": "Internet Computer Canister Registry",
@@ -433,6 +456,22 @@
     "logo": "/img/showcase/canlista_logo.webp",
     "screenshots": [
       "/img/showcase/canlista_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "sandbless",
+    "name": "Sand Bless",
+    "oneLiner": "Sandblasting and serigraphy artworks",
+    "website": "https://qob3k-7yaaa-aaaao-aahdq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
+    "github": "https://github.com/branciard/SandBlessCanisters",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/sandbless_logo.webp",
+    "screenshots": [
+      "/img/showcase/sandbless_screenshot_0.webp"
     ]
   },
   {
@@ -543,7 +582,6 @@
       "/img/showcase/difibase_screenshot_0.webp"
     ]
   },
-
   {
     "id": "internetidentity",
     "name": "Internet Identity",
@@ -559,6 +597,37 @@
     "logo": "/img/showcase/internetidentity_logo.webp",
     "screenshots": [
       "/img/showcase/internetidentity_screenshot_0.gif"
+    ]
+  },
+  {
+    "id": "azle",
+    "name": "Azle",
+    "oneLiner": "TypeScript CDK for the Internet Computer",
+    "website": "https://demergent-labs.github.io/azle/azle.html",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Azle is a TypeScript Canister Development Kit (CDK) for the Internet Computer. In other words, it's a TypeScript/JavaScript runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/azle_logo.svg",
+    "github": "https://github.com/demergent-labs/azle",
+    "screenshots": [
+      "/img/showcase/azle_screenshot_0.jpg"
+    ]
+  },
+  {
+    "id": "kybra",
+    "name": "Kybra",
+    "oneLiner": "Python CDK for the Internet Computer",
+    "website": "https://github.com/demergent-labs/kybra",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Kybra is a Python Canister Development Kit (CDK) for the Internet Computer. In other words, it's a Python runtime for building applications on the IC.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/kybra_logo.svg",
+    "screenshots": [
+      "/img/showcase/kybra_screenshot_0.jpg"
     ]
   },
   {
@@ -590,8 +659,8 @@
     "screenshots": [
       "/img/showcase/windowsic_screenshot_0.webp"
     ]
-  },  
-{
+  },
+  {
     "id": "nnsfront-enddapp",
     "name": "NNS Front-End Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
@@ -607,7 +676,6 @@
       "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
     ]
   },
-
   {
     "id": "tipjar",
     "name": "Tipjar",
@@ -695,7 +763,6 @@
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
     ]
   },
- 
   {
     "id": "icmojiorigins",
     "name": "ICmoji Origins",
@@ -774,17 +841,20 @@
   },
   {
     "id": "astrox",
-    "name": "AstroX",
-    "oneLiner": "Web3.0 developer tools",
+    "name": "AstroX ME",
+    "oneLiner": "A powerful multichain wallet",
     "website": "https://astrox.me/#/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Wallet"
     ],
-    "description": "AstroX is a blockchain development group focused on building tools for the Web3 ecosystem. AstroX has developed a Dart agent and other tools to help support mobile application development on the Internet Computer blockchain.",
+    "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
-    "logo": "/img/showcase/astrox_logo.webp",
+    "twitter": "https://twitter.com/astrox_network",
+    "logo": "/img/showcase/astroxme_logo.webp",
+    "display": "Large",
     "screenshots": [
-      "/img/showcase/astrox_screenshot_0.webp"
+      "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
   {
@@ -904,7 +974,7 @@
       "Tools / Infrastructure"
     ],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/nftstudio_logo.webp",
     "video": "/img/showcase/nftstudio_video.mp4",
     "videoContentType": "video/mp4",
@@ -936,9 +1006,9 @@
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
     "logo": "/img/showcase/pokedstudiobots_logo.webp",
-    "video": "/img/showcase/pokedstudiobots_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "screenshots": [
+      "/img/showcase/pokedstudio-bots.webp"
+    ]
   },
   {
     "id": "dstar",
@@ -1088,7 +1158,6 @@
       "/img/showcase/departurelabs_screenshot_0.webp"
     ]
   },
-
   {
     "id": "plug",
     "name": "Plug",
@@ -1125,7 +1194,37 @@
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
     ]
+  },
+  {
+    "id": "itoka",
+    "name": "ITOKA",
+    "oneLiner": "A Leading Infrastructure for Music3.0",
+    "website": "https://www.itoka.xyz/",
+    "tags": ["NFT", "SocialFi", "Tools / Infrastructure"],
+    "description": "The ITOKA project seeks to disrupt the centralized music industry by offering a complete infrastructure solution for the web3 music industry. This includes creation tools, data storage, and music streaming services. The goal of ITOKA is to transform the music industry into a decentralized ecosystem, empowering creators with greater control over their content and a fairer share of revenue.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Itoka-DAO",
+    "twitter": "https://twitter.com/itokamusic",
+    "stats": "3M+ minutes on-chain streaming",
+    "logo": "/img/showcase/itoka_logo.svg",
+    "video": "/img/showcase/itoka_video.mp4",
+    "videoContentType": "video/mp4",
+    "display": "Large",
+    "screenshots": ["/img/showcase/itoka_screanshot.svg"]
+  },
+  {
+    "id": "glue",
+    "name": "glue",
+    "oneLiner": "collab.land on the Internet Computer",
+    "website": "https://r53d5-wyaaa-aaaae-qacxa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "For Ethereum NFT communities it is the most common thing in the world to verify the holder status of members via \"collab.land\". \"collab.land\" is an integral part of the infrastructure and enables many interesting use-cases like token gated communities or token gated raffles. On the Internet Computer, there are so far only specialized solutions that work exclusively with the respective projects and were developed specifically for this purpose. Not every project can and not every project should develop its own solution. So what has been missing so far is glue - an easy to use solution for community leaders and members to perform holder verification.",
+    "usesInternetIdentity": false,
+    "stats": "3,000 unique users",
+    "logo": "/img/showcase/glue_logo.png",
+    "github": "https://github.com/glue-org",
+    "twitter": "https://twitter.com/glue_org"
   }
 ]
-
-

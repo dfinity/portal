@@ -25,7 +25,9 @@ const redirects = `
   /docs/samples/* /samples
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
-  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens
+  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/languages/languages-overview /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
