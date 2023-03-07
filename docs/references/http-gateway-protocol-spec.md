@@ -200,7 +200,7 @@ The properties supplied to this function are as follows:
   - Mutually exclusive with the `no_request_certification` property.
 - `certified_response_headers` - a list of response header names to include.
   - Must not include `IC-Certificate` or `IC-CertificateExpression`.
-  - Mutually exclusive with the `response_header_exlusions` property.
+  - Mutually exclusive with the `response_header_exclusions` property.
 - `response_header_exclusions` - a list of response header names to exclude. All other headers are included.
   - Must not include `IC-Certificate` or `IC-CertificateExpression`.
   - Mutually exclusive with the `certified_response_headers` property.
