@@ -11,7 +11,7 @@ Such a Gateway could be a stand-alone proxy, it could be implemented in web brow
 An HTTP request by an HTTP client is handled by these steps:
 
 1. Resolve the canister ID that the request is intended for
-2. Candid-encodes the HTTP request
+2. Candid-encode the HTTP request
 3. Invoke the canister via a query call to the `http_request` interface
 4. The canister handles the request and returns an HTTP response, encoded in Candid, together with additional metadata
 5. If requested by the canister, the Gateway sends the request again via an update call to `http_request_update`.
