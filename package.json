@@ -20,6 +20,7 @@
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
     "@dfinity/agent": "^0.15.4",
     "@dfinity/candid": "^0.15.4",
+    "@dfinity/principal": "^0.15.4",
     "@docusaurus/core": "^2.2.0",
     "@docusaurus/preset-classic": "^2.2.0",
     "@docusaurus/theme-live-codeblock": "^2.2.0",
