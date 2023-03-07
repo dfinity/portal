@@ -24,7 +24,7 @@ const sidebars = {
       items: [
         "references/ic-interface-spec",
         "references/id-encoding-spec",
-        "reference/http-gateway-protocol-spec",
+        "references/http-gateway-protocol-spec",
       ]
     },
     {
