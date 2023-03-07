@@ -2,6 +2,17 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./styles.css";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
 import clsx from "clsx";
+import ReactDom from "react-dom";
+
+const Portal = ({ children }) => {
+  const [portalRef, setPortalRef] = useState(null);
+
+  useEffect(() => {
+    setPortalRef(document.querySelector("#search-overlay-portal"));
+  }, []);
+
+  return portalRef && ReactDom.createPortal(children, portalRef);
+};
 
 const Search = (props) => {
   const searchBarRef = useRef(null);
@@ -78,7 +89,9 @@ const Search = (props) => {
         <span className="navbar__search-indicator"></span>
       </div>
       {isOverlayOpen && (
-        <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
+        <Portal>
+          <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
+        </Portal>
       )}
     </>
   );

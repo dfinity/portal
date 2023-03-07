@@ -14,9 +14,11 @@
   cursor: pointer;
 }
 
-#search_input_react span {
-  letter-spacing: -1px;
-  font: sans-serif;
+/* touch media */
+@media (hover: none) {
+  #search_input_react span {
+    display: none;
+  }
 }
 
 @media (max-width: 996px) {
