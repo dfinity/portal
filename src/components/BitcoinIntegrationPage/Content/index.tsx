@@ -36,8 +36,8 @@ const Content: React.FC = () => {
             Combining these building blocks, ICP canisters can directly and
             securely hold, receive, and send bitcoin seamlessly as if the
             Internet Computer and the Bitcoin network were one blockchain.
-            Another way of looking at it, is that the Bitcoin integration is the
-            same as running a Bitcoin node on chain.
+            Another way of looking at it, is that the Bitcoin integration
+            is the same as running a Bitcoin node on chain.
           </p>
           <p className="mb-0 mt-8">
             <Link
@@ -84,7 +84,8 @@ const Content: React.FC = () => {
               nodes that are re-shared every 5-10 mins. When requested,
               nodes sign BTC transactions using the key shares without recreating
               the original secret key. Building on tECDSA, this protocol assumes
-              a threshold of nodes to be honest. The process is called ckECDSA signing.
+              a threshold of nodes to be honest. The process is called ckECDSA
+              signing.
             </p>
           </div>
         </motion.div>
@@ -189,8 +190,8 @@ const Content: React.FC = () => {
           </p>
           <p className="tw-paragraph mb-8">
             ckBTC is issued and redeemed via a canister smart contract — 
-            no bridge or custodian, and verifiable byanyone. The ckBTC 
-            canister is controlled by the NNS DAO, whichmeans no single 
+            no bridge or custodian, and verifiable by anyone. The ckBTC 
+            canister is controlled by the NNS DAO, which means no single 
             entity can initiate malicious activities without the approval 
             of ICP governance token holders.
           </p>
