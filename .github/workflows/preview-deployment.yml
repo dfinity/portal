@@ -94,7 +94,7 @@ jobs:
           # update search index
           cd search/src/doc_generator
           pip install -r requirements.txt
-          cd ../..
+          cd ../../..
           python search/src/doc_generator/generate-docs.py "./build/**.html"
           cd search
           cargo build --release
