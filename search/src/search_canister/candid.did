@@ -29,6 +29,7 @@ type SearchResult = record {
 };
 service : {
   commit_upload : () -> ();
+  get_admins : () -> (vec principal) query;
   "query" : (text) -> (vec PageSearchResult) query;
   set_stop_words : (vec text) -> ();
   start_upload : () -> ();

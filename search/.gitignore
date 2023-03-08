@@ -6,3 +6,5 @@ output.json
 node_modules
 .venv
 __pycache__
+*.pem
+output.json

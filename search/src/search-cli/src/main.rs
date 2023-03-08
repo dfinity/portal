@@ -1,6 +1,7 @@
 use candid::{CandidType, Encode};
 use clap::{Parser, Subcommand};
 use ic_agent::agent::http_transport::ReqwestHttpReplicaV2Transport;
+use ic_agent::identity::BasicIdentity;
 use ic_agent::{export::Principal, Agent};
 use indicatif::ProgressBar;
 use print_results::print_results;
@@ -55,6 +56,9 @@ enum Commands {
 
         /// target canister id
         canister: String,
+
+        /// path to identity .pem file
+        identity: PathBuf,
 
         /// target replica URL
         #[arg(default_value = "https://icp-api.io")]
@@ -153,15 +157,21 @@ async fn main() {
             stop_words,
             canister,
             url,
+            identity,
         } => {
             let index = fs::read_to_string(index).expect("Could not read index file");
             let index: search::Index = serde_json::from_str(&index).expect("Invalid index file");
+
+            let pem_file = fs::read_to_string(identity).expect("Could not read identity file");
+            let identity =
+                BasicIdentity::from_pem(pem_file.as_bytes()).expect("Failed to load identity");
 
             let agent = Agent::builder()
                 .with_transport(
                     ReqwestHttpReplicaV2Transport::create(url.clone())
                         .expect("Could not create transport"),
                 )
+                .with_identity(identity)
                 .build()
                 .expect("Could not create agent");
 

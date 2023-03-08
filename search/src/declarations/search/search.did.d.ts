@@ -32,6 +32,7 @@ export interface SearchResult {
 }
 export interface _SERVICE {
   'commit_upload' : ActorMethod<[], undefined>,
+  'get_admins' : ActorMethod<[], Array<Principal>>,
   'query' : ActorMethod<[string], Array<PageSearchResult>>,
   'set_stop_words' : ActorMethod<[Array<string>], undefined>,
   'start_upload' : ActorMethod<[], undefined>,

@@ -30,6 +30,7 @@ export const idlFactory = ({ IDL }) => {
   });
   return IDL.Service({
     'commit_upload' : IDL.Func([], [], []),
+    'get_admins' : IDL.Func([], [IDL.Vec(IDL.Principal)], ['query']),
     'query' : IDL.Func([IDL.Text], [IDL.Vec(PageSearchResult)], ['query']),
     'set_stop_words' : IDL.Func([IDL.Vec(IDL.Text)], [], []),
     'start_upload' : IDL.Func([], [], []),
