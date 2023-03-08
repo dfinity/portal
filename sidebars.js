@@ -172,7 +172,7 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/motoko-introduction",
+        "motoko/main/motoko",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
         "motoko/main/mutable-state",
