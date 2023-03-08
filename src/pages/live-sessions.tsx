@@ -14,6 +14,7 @@ import ExternalLinkIcon from "../../static/img/external-link.svg";
 import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
 import Head from "@docusaurus/Head";
+import Newsletter from "../components/Common/Newsletter/Newsletter";
 
 const MotionLink = motion(Link);
 
@@ -479,6 +480,30 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
+        {/* This must not be invisible */}
+        <div ref={formRef} id="subscribe"></div>
+        <Newsletter
+          fields={[
+            {
+              name: "EMAIL",
+              placeholder: "Email",
+              type: "email",
+              required: true,
+            },
+          ]}
+          ctaLabel="Get updates!"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+          decoration={<img src="/img/newsletter/email-image-1.webp" />}
+          className="mb-20"
+        >
+          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
+            Want to meet ICP enthusiasts IRL?
+            <br />
+            <span className="text-white-60">
+              Sign up for event updates to stay connected
+            </span>
+          </h2>
+        </Newsletter>
       </main>
     </Layout>
   );
