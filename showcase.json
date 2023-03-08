@@ -1226,5 +1226,26 @@
     "logo": "/img/showcase/glue_logo.png",
     "github": "https://github.com/glue-org",
     "twitter": "https://twitter.com/glue_org"
+  },
+  {
+    "id": "factland",
+    "name": "Factland DAO",
+    "oneLiner": "A Web3 community building decentralized trust in the age of misinformation",
+    "website": "https://factland.org",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "description": "Factland is a Web3 DAO with a mission to slow the spread of misinformation online. Factland makes it easy for anyone to flag untrustworthy claims and have them promptly adjudicated by a decentralized community of fact checkers rewarded in crypto.",
+    "usesInternetIdentity": true,
+    "stats": "50+ claims adjudicated",
+    "logo": "/img/showcase/factland_logo.png",
+    "github": "https://github.com/Factland",
+    "youtube": "https://www.youtube.com/channel/UCriPbgLAQ6x5C2Hugfho37Q",
+    "twitter": "https://twitter.com/factlanddao",
+    "screenshots": [],
+    "video": "/img/showcase/factland_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": 32780428
   }
 ]
