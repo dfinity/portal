@@ -52,7 +52,7 @@ const config = {
     marketingLogoUrl: "/",
     docsLogoUrl: "/docs/current/home",
     docsLogoSrc: "/img/IC_logo_docs.svg",
-    searchCanisterId: "wavpu-oiaaa-aaaam-aabuq-cai",
+    searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
   },
   plugins: [
     ["docusaurus2-dotenv", { systemvars: true }],

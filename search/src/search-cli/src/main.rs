@@ -1,7 +1,7 @@
 use candid::{CandidType, Encode};
 use clap::{Parser, Subcommand};
 use ic_agent::agent::http_transport::ReqwestHttpReplicaV2Transport;
-use ic_agent::identity::BasicIdentity;
+use ic_agent::identity::Secp256k1Identity;
 use ic_agent::{export::Principal, Agent};
 use indicatif::ProgressBar;
 use print_results::print_results;
@@ -162,9 +162,8 @@ async fn main() {
             let index = fs::read_to_string(index).expect("Could not read index file");
             let index: search::Index = serde_json::from_str(&index).expect("Invalid index file");
 
-            let pem_file = fs::read_to_string(identity).expect("Could not read identity file");
             let identity =
-                BasicIdentity::from_pem(pem_file.as_bytes()).expect("Failed to load identity");
+                Secp256k1Identity::from_pem_file(identity).expect("Failed to load identity");
 
             let agent = Agent::builder()
                 .with_transport(
