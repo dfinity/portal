@@ -3,11 +3,13 @@ use clap::{Parser, Subcommand};
 use ic_agent::agent::http_transport::ReqwestHttpReplicaV2Transport;
 use ic_agent::{export::Principal, Agent};
 use indicatif::ProgressBar;
+use print_results::print_results;
 use search::{Doc, IndexEntry};
-use search_utils::print_results;
 use serde::Deserialize;
 use std::fs;
 use std::path::PathBuf;
+
+mod print_results;
 
 /// CLI for search engine
 #[derive(Debug, Parser)]

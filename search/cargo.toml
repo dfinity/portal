@@ -1,7 +1,2 @@
 [workspace]
-members = [
-  "src/search",
-  "src/search-cli",
-  "src/search-utils",
-  "src/search_canister",
-]
+members = ["src/search", "src/search-cli", "src/search_canister"]

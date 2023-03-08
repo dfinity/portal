@@ -1695,18 +1695,9 @@ dependencies = [
  "ic-utils",
  "indicatif",
  "search",
- "search-utils",
  "serde",
  "serde_json",
  "tokio",
-]
-
-[[package]]
-name = "search-utils"
-version = "0.1.0"
-dependencies = [
- "colored",
- "search",
 ]
 
 [[package]]

@@ -1,4 +1,3 @@
-// use colored::*;
 use search::PageSearchResult;
 
 pub fn print_results(results: &[PageSearchResult]) {
