@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
         <PreHero></PreHero>
       </QueryClientProvider>
 
-      {/* <main
+      <main
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
@@ -109,7 +109,7 @@ export default function Home(): JSX.Element {
           />
           <NewsletterSection />
         </div>
-      </main> */}
+      </main>
       <SectionsBar />
     </Layout>
   );
