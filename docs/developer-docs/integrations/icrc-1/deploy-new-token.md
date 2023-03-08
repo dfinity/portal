@@ -54,11 +54,11 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
          record {
            token_name = "'${TOKEN_NAME}'";
            token_symbol = "'${TOKEN_SYMBOL}'";
-           minting_account = record { owner = "'${MINTER_PRINCIPAL}'";};
+           minting_account = record { owner = principal "'${MINTER_PRINCIPAL}'";};
            initial_balances = vec {};
            metadata = vec {};
            transfer_fee = 10;
-           archive_options = opt record {
+           archive_options = record {
              trigger_threshold = 2000;
              num_blocks_to_archive = 1000;
              controller_id = principal "'${ARCHIVE_CONTROLLER}'";
