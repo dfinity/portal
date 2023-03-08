@@ -159,7 +159,7 @@ Here is a sample:
       //   in https://csp.withgoogle.com/docs/faq.html in section “What if my site is static and I can't add nonces to scripts?”.
       //   See for example the II CSP (https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/http.rs).
       // - It is recommended to tighten the connect-src directive. With the current CSP configuration the browser can
-      //   make requests to https://*.ic0.app, hence being able to call any canister via https://ic0.app/api/v2/canister/{canister-ID}.
+      //   make requests to https://*.icp0.io, hence being able to call any canister via https://ic0.app/api/v2/canister/{canister-ID}.
       //   This could potentially be used in combination with another vulnerability (e.g. XSS) to exfiltrate private data.
       //   The developer can configure this policy to only allow requests to their specific canisters,
       //   e.g: connect-src 'self' https://ic0.app/api/v2/canister/{my-canister-ID}, where {my-canister-ID} has the following format: aaaaa-aaaaa-aaaaa-aaaaa-aaa

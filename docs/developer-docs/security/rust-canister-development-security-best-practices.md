@@ -85,17 +85,17 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 ## Asset Certification
 
-### Use HTTP asset certification and avoid serving your dApp through `raw.ic0.app`
+### Use HTTP asset certification and avoid serving your dApp through `raw.icp0.io`
 
 #### Security Concern
 
-Dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+Dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.icp0.io` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
-If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary may trick users (phishing) into using the insecure raw.ic0.app.
+If an app is served through `raw.icp0.io` in addition to `icp0.io`, an adversary may trick users (phishing) into using the insecure raw.icp0.io.
 
 #### Recommendation
 
-- Only serve assets through `<canister-id>.ic0.app` where the service worker verifies asset certification. Do not serve through `<canister-id>.raw.ic0.app`.
+- Only serve assets through `<canister-id>.icp0.io` where the service worker verifies asset certification. Do not serve through `<canister-id>.raw.icp0.io`.
 
 - Serve assets using the asset canister (which creates asset certification automatically), or add the `ic-certificate` header including the asset certification as e.g. done in the [NNS dApp](https://github.com/dfinity/nns-dapp) or [Internet Identity](https://github.com/dfinity/internet-identity).
 
