@@ -26,7 +26,7 @@ const cardsContent = [
   {
     title: "DFINITY Developer Grants and Bounties",
     body: "Kickstart your idea or get paid to build on ICP",
-    link: "https://icdevs.org/bounties.html",
+    link: "https://dfinity.org/grants/",
   },
   {
     title: "Bug bounty program",
