@@ -146,7 +146,7 @@ Response verification comes in two flavors, the current version is covered in th
    - Let `response_hash` be the response hash calculated according to [Response Hash Calculation](#response-hash-calculation)
    - If `no_request_certification` is set
      - If the `expr_hash` label node has an empty leaf node at the subpath `[response_hash]`, verification succeeds.
-     - Otherwise, the certification is invalid.
+     - Otherwise, verification fails.
    - Let `request_hash` be the request hash calculated according to [Request Hash Calculation](#request-hash-calculation)
      - If there is not an empty leaf node at the subpath `[request_hash, response_hash]`, verification fails.
 
