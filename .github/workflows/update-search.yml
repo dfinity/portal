@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-
 jobs:
   update-search:
     runs-on: ubuntu-latest
@@ -21,7 +20,7 @@ jobs:
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
 
-      -name: Build website
+      - name: Build website
         run: |
           npm install
           npm run build
