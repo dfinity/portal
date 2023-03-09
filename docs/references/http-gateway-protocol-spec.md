@@ -295,7 +295,7 @@ The response hash is calculated as follows:
    -
    - Headers can be repeated and each repetition should be included.
 2. Let `response_body_hash` be the sha256 of the response body.
-3. Concatenate `response_headers_haash` and `response_body_hash` and calculate the sha256 of that concatenation.
+3. Concatenate `response_headers_hash` and `response_body_hash` and calculate the sha256 of that concatenation.
 
 ## Response Body Streaming
 
