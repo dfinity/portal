@@ -276,7 +276,7 @@ const config = {
               },
               {
                 label: "Motoko Docs",
-                href: "/docs/current/motoko/intro/",
+                href: "/docs/current/motoko/main/motoko",
               },
               {
                 label: "Rust Docs",

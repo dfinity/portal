@@ -38,7 +38,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-nft.png").default,
     link: (
-      <a href="/ecosystem?tag=nft" className={styles.link}>
+      <a href="/ecosystem?tag=NFT" className={styles.link}>
         Explore more NFT projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -61,7 +61,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-social.png").default,
     link: (
-      <a href="/ecosystem?tag=social" className={styles.link}>
+      <a href="/ecosystem?tag=SocialFi" className={styles.link}>
         Explore more SocialFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -84,7 +84,7 @@ const categories = [
     ),
     image: require("../../../../static/img/basics/export-defi.png").default,
     link: (
-      <a href="/ecosystem?tag=defi" className={styles.link}>
+      <a href="/ecosystem?tag=DeFi" className={styles.link}>
         Explore more DeFi projects <OutgoingLink></OutgoingLink>
       </a>
     ),
@@ -108,7 +108,7 @@ const categories = [
     image: require("../../../../static/img/basics/export-metaverse.png")
       .default,
     link: (
-      <a href="/ecosystem?tag=metaverse" className={styles.link}>
+      <a href="/ecosystem?tag=Metaverse" className={styles.link}>
         Explore more Metaverse projects <OutgoingLink></OutgoingLink>
       </a>
     ),
