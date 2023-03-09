@@ -10,14 +10,16 @@ Such a Gateway could be a stand-alone proxy, it could be implemented in web brow
 
 An HTTP request by an HTTP client is handled by these steps:
 
-1. Resolve the canister ID that the request is intended for
-2. Candid-encode the HTTP request
-3. Invoke the canister via a query call to the `http_request` interface
-4. The canister handles the request and returns an HTTP response, encoded in Candid, together with additional metadata
-5. If requested by the canister, send the request again via an update call to `http_request_update`.
-6. If applicable, fetch further body data via streaming query calls.
-7. If applicable, validate the certificate of the response.
-8. Send the response to the HTTP client.
+1. An HTTP client makes a request
+2. The HTTP Gateway intercepts the request
+3. The HTTP Gateway resolves the canister ID that the request is intended for
+4. The HTTP Gateway Candid encodes the HTTP request
+5. The HTTP Gateway invokes the canister via a query call to the `http_request` interface
+6. The canister handles the request and returns an HTTP response, encoded in Candid, together with additional metadata
+7. If requested by the canister, the HTTP Gateway sends the request again via an update call to `http_request_update`.
+8. If applicable, the HTTP Gateway fetches further body data via streaming query calls.
+9. If applicable, the HTTP Gateway validates the certificate of the response.
+10. The HTTP Gateway Candid decodes the response and returns it to the HTTP client.
 
 ## Canister ID Resolution
 
@@ -25,13 +27,13 @@ The Gateway needs to know the canister ID of the canister to talk to, and obtain
 
 1. If the hostname is in the following table, use the given canister ids:
 
-    | Hostname             | Canister id                   |
-    | -------------------- | ----------------------------- |
-    | `identity.ic0.app`   | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
-    | `nns.ic0.app`        | `qoctq-giaaa-aaaaa-aaaea-cai` |
-    | `dscvr.one`          | `h5aet-waaaa-aaaab-qaamq-cai` |
-    | `dscvr.ic0.app`      | `h5aet-waaaa-aaaab-qaamq-cai` |
-    | `personhood.ic0.app` | `g3wsl-eqaaa-aaaan-aaaaa-cai` |
+   | Hostname             | Canister id                   |
+   | -------------------- | ----------------------------- |
+   | `identity.ic0.app`   | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+   | `nns.ic0.app`        | `qoctq-giaaa-aaaaa-aaaea-cai` |
+   | `dscvr.one`          | `h5aet-waaaa-aaaab-qaamq-cai` |
+   | `dscvr.ic0.app`      | `h5aet-waaaa-aaaab-qaamq-cai` |
+   | `personhood.ic0.app` | `g3wsl-eqaaa-aaaan-aaaaa-cai` |
 
 2. Check whether the hostname is _raw_ (e.g., `<name>.raw.ic0.app`). If it is the case, fail and handle the request as a Web2 request, otherwise, continue.
 
@@ -39,9 +41,9 @@ The Gateway needs to know the canister ID of the canister to talk to, and obtain
 
 4. Check whether the canister is hosted on the IC using a custom domain. There are two options:
 
-    - Check whether there is a TXT record containing a canister ID at the `_canister-id`-subdomain (e.g., to see whether `foo.com` is hosted on the IC, make a DNS lookup for the TXT record of `_canister-id.foo.com`) and use the specified canister ID;
+   - Check whether there is a TXT record containing a canister ID at the `_canister-id`-subdomain (e.g., to see whether `foo.com` is hosted on the IC, make a DNS lookup for the TXT record of `_canister-id.foo.com`) and use the specified canister ID;
 
-    - Make a `HEAD` request to the hostname. If the response contains an `x-ic-canister-id` and `x-ic-gateway` header, use the canister ID with the gateway specified in the headers.
+   - Make a `HEAD` request to the hostname. If the response contains an `x-ic-canister-id` and `x-ic-gateway` header, use the canister ID with the gateway specified in the headers.
 
 5. Else fail and handle the request as a Web2 request.
 
@@ -127,27 +129,28 @@ Response verification comes in two flavors, the current version is covered in th
 1. Case-insensitive search for the `IC-Certificate` response header.
    - If no such header is found, verification fails.
    - If the header value is not structured as per [the certificate header](#the-certificate-header), verification fails.
-1. Parse the `certificate`, `tree`, and `expr_path` fields from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
-1. Case-insensitive search for the `IC-CertificationExpression` header.
-   - If no such header is found, verification fails.
-   - If the header value is not structured as per [the certificate expression header](#the-certificate-expression-header), verification fails.
-1. Perform [certificate validation](#certificate-validation).
-1. Parse the `version` field from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
+2. Parse the `certificate` and `tree` fields from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
+3. Perform [certificate validation](#certificate-validation).
+4. Parse the `version` field from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
    - If the `version` field is missing or equal to `1` then proceed with [legacy response verification](#legacy-response-verification).
    - If the `version` field is equal to `2` then continue.
    - Otherwise, verification fails.
-1. Validate that `expr_path` is the most specific expression path in the tree for the given request URL path.
+5. Parse the `expr_path` fields from the `IC-Certificate` header value as per [the certificate header](#the-certificate-header).
+6. Case-insensitive search for the `IC-CertificationExpression` header.
+   - If no such header is found, verification fails.
+   - If the header value is not structured as per [the certificate expression header](#the-certificate-expression-header), verification fails.
+7. Validate that `expr_path` is the most specific expression path in the tree for the given request URL path.
    - If the absence of a more specific path cannot be proven (a lookup of more specific paths must return `Absent`) as per [lookup](https://internetcomputer.org/docs/current/references/ic-interface-spec/#lookup), verification fails.
-1. Let `expr_hash` be the label of the node in the tree at path `expr_path`.
+8. Let `expr_hash` be the label of the node in the tree at path `expr_path`.
    - If no such label exists, verification fails.
    - If this node has sibling nodes, verification fails.
    - If `expr_hash` does not match the sha256 hash of the `IC-CertificateExpression` header value, verification fails.
    - If `no_certification` is set, verification succeeds.
    - Let `response_hash` be the response hash calculated according to [Response Hash Calculation](#response-hash-calculation)
-   - If `no_request_certification` is set
+   - If `no_request_certification` is set:
      - If the `expr_hash` label node has an empty leaf node at the subpath `[response_hash]`, verification succeeds.
      - Otherwise, verification fails.
-   - Let `request_hash` be the request hash calculated according to [Request Hash Calculation](#request-hash-calculation)
+   - Let `request_hash` be the request hash calculated according to [Request Hash Calculation](#request-hash-calculation).
      - If there is not an empty leaf node at the subpath `[request_hash, response_hash]`, verification fails.
 
 ### The Certificate Header
@@ -159,8 +162,8 @@ The `IC-Certificate` header is a structured header according to [RFC 8941](https
 
 The following additional fields are mandatory for response verification version 2 and upwards:
 
-- `version`
-- `expr_path`
+- `version`: String representation of an integer that represents the version of response verification that was used to build the `tree`.
+- `expr_path`: [Base64 encoded](https://www.rfc-editor.org/rfc/rfc4648#section-4) string of self-describing, [CBOR-encoded](https://www.rfc-editor.org/rfc/rfc8949.html) bytes that decodes into an array of strings, where each string is a segment of a path in the `tree` corresponding to the current request URL.
 
 ### Certificate Validation
 
@@ -179,10 +182,10 @@ Certificate validation is performed as part of [response verification](#response
 
 The `IC-CertificateExpression` header carries additional information instructing the HTTP Gateway how to reconstruct the certification, it can instruct the HTTP Gateway to:
 
-- Exclude the complete request/response pair or the request only
-- Include specific request headers
-- Include specific request URL query parameters
-- Include or exclude specific response headers
+- Exclude the complete request/response pair or the request only.
+- Include specific request headers.
+- Include specific request URL query parameters.
+- Include or exclude specific response headers.
 
 The format of the `IC-CertificateExpression` header is as follows:
 
@@ -190,7 +193,7 @@ The format of the `IC-CertificateExpression` header is as follows:
 IC-CertificateExpression: default_certification(ValidationArgs{<literal field values>})
 ```
 
-The value of this header must have valid CEL syntax, such that `default_certification` could be implemented as a function provided by the HTTP Gateway to validate the certification.
+The value of this header must have valid [CEL syntax](https://github.com/google/cel-spec), such that `default_certification` could be implemented as a function provided by the HTTP Gateway to validate the certification.
 
 The properties supplied to this function are as follows:
 
@@ -291,8 +294,14 @@ The response hash is calculated as follows:
 1. Let `response_headers_hash` be the [representation-independent hash](https://internetcomputer.org/docs/current/references/ic-interface-spec#hash-of-map) of the response headers:
    - The `IC-Certificate` header is always excluded.
    - The `IC-CertificateExpression` header is always included.
+   - If the `no_certification` field of [the certificate expression header](#the-certificate-expression-header) is present:
+     - This request/response pair is exempt from certification and the response hash calculation can be skipped altogether
    - If the `certified_response_headers` field of [the certificate expression header](#the-certificate-expression-header) is present:
-   -
+     - All headers listed by certified_response_headers are included (except for the `IC-Certificate` header)
+     - All others are excluded (except for the `IC-CertificateExpression` header)
+   - If the `response_header_exclusions` field of [the certificate expression header](#the-certificate-expression-header) is present:
+     - All headers listed (except for the `IC-CertificateExpression` header) are excluded from the certification
+     - All other headers (except for the IC-Certificate header) are included in the certification
    - Headers can be repeated and each repetition should be included.
 2. Let `response_body_hash` be the sha256 of the response body.
 3. Concatenate `response_headers_hash` and `response_body_hash` and calculate the sha256 of that concatenation.
@@ -321,7 +330,6 @@ The value of the `upgrade` field returned from `http_request_update` is ignored.
 
 Version 1 response verification only supports verifying a request path and response body pair with only one response per request path. This is quite restrictive in the number of scenarios it can support. For example, redirection or client-side caching is not safe since the status code and headers required to verify responses of that nature are not included in the certification. Upon a query call to a canister’s `http_request` method, a single malicious node or boundary node can modify these parts of the HTTP response, leading to the following issues:
 
-- For any dApp, a single malicious node on the subnet can maliciously redirect the user anywhere they like.
 - dApps cannot load the service worker when embedded within iFrames.
 - The use of redirects and cookies is unsafe as they can be manipulated by malicious nodes.
 - This is unexpected for developers and will lead to vulnerabilities in dApps sooner or later.
