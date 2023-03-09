@@ -174,6 +174,9 @@ const sidebars = {
         "motoko/version",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
+        "motoko/main/language-manual",
+        "motoko/main/overview",
+        "motoko/main/style",
         "motoko/main/mutable-state",
         "motoko/main/local-objects-classes",
         "motoko/main/actors-async",
@@ -192,11 +195,8 @@ const sidebars = {
         "motoko/main/stablememory",
         "motoko/main/timers",
         "motoko/main/heartbeats",
-        "motoko/main/language-manual",
         "motoko/main/compiler-ref",
         "motoko/main/motoko-grammar",
-        "motoko/main/overview",
-        "motoko/main/style",
       ]
     },
     {
