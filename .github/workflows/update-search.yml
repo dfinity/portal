@@ -4,10 +4,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-  # todo: remove in prod
-  pull_request:
-    types: [opened, synchronize, reopened]
-
 jobs:
   update-search:
     runs-on: ubuntu-latest
