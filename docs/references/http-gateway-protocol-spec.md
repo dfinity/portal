@@ -258,7 +258,7 @@ REQUEST-CERTIFICATION = 'RequestCertification{certified_request_headers:', STRIN
 
 RESPONSE-CERTIFICATION = 'ResponseCertification{', ('response_header_exclusions:' | 'certified_response_headers:'), RESPONSE-HEADER-LIST, '}'
 
-CERTIFICATION = 'Certification{('no_request_certification: Empty{}' | 'request_certification:', REQUEST-CERTIFICATION), ',response_certification:', RESPONSE-CERTIFICATION, '}'
+CERTIFICATION = 'Certification{', ('no_request_certification: Empty{}' | 'request_certification:', REQUEST-CERTIFICATION), ',response_certification:', RESPONSE-CERTIFICATION, '}'
 
 VALIDATION-ARGS = 'ValidationArgs{', ('no_certification: Empty{}' | 'certification:', CERTIFICATION), '}'
 
