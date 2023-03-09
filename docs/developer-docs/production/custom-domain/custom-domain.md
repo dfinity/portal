@@ -1,6 +1,6 @@
 # Custom Domains
 
-By default all canisters on the Internet Computer are accessible through `ic0.app`
+By default all canisters on the Internet Computer are accessible through `icp0.io`
 and their canister ID. In addition to that default domain, one can also host a
 canister under a custom domain. This guide explains how to do that.
 
@@ -60,7 +60,7 @@ instructions on [troubleshooting](#troubleshooting).
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        https://ic0.app/registrations \
+        https://icp0.io/registrations \
         --data @- <<EOF
     {
         "name": "CUSTOM_DOMAIN"
@@ -75,7 +75,7 @@ instructions on [troubleshooting](#troubleshooting).
 1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
     ```sh
     curl -sLv -X GET \
-        https://ic0.app/registrations/REQUEST_ID
+        https://icp0.io/registrations/REQUEST_ID
     ```
     The status will be one of the following:
     * `PendingOrder`: The registration request has been submitted and is waiting to be picked up.
@@ -121,7 +121,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     ```sh
     curl -sLv -X POST \
         -H 'Content-Type: application/json' \
-        https://ic0.app/registrations \
+        https://icp0.io/registrations \
         --data @- <<EOF
     {
         "name": "foo.bar.com"
@@ -152,7 +152,7 @@ need to update the DNS record of your domain and then notify a boundary node:
 1. Notify a boundary node of the change using a PUT request and the ID of your registration (`REQUEST_ID`).
     ```sh
     curl -sLv -X PUT \
-        https://ic0.app/registrations/REQUEST_ID
+        https://icp0.io/registrations/REQUEST_ID
     ```
 
 :::note
@@ -169,7 +169,7 @@ and notify a boundary node:
 1. Notify a boundary node of the removal using a DELETE request.
     ```sh
     curl -sLv -X DELETE \
-        https://ic0.app/registrations/REQUEST_ID
+        https://icp0.io/registrations/REQUEST_ID
     ```
 
 :::note

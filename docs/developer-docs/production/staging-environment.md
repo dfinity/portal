@@ -33,7 +33,7 @@ To add a staging network named `my-staging` to `dfx.json`, add this under `"netw
 ``` json
 "my-staging": {
     "providers": [
-        "https://ic0.app"
+        "https://icp0.io"
     ],
     "type": "persistent"
 }

@@ -121,13 +121,13 @@ export type Token = { type: <T>() => IDL.Type<T> };
 1. Set the `hostnameCanisterIdMap` value in the `http_request.ts` file (make sure to revert this before commiting):
       ```shell
       const hostnameCanisterIdMap: Record<string, [string, string]> = {
-            'identity.ic0.local': ['rdmx6-jaaaa-aaaaa-aaadq-cai', 'ic0.app'],
-            'nns.ic0.local': ['qoctq-giaaa-aaaaa-aaaea-cai', 'ic0.app'],
-            'dscvr.ic0.local': ['h5aet-waaaa-aaaab-qaamq-cai', 'ic0.app'],
-            'distrikt.ic0.local': ['az5sd-cqaaa-aaaae-aaarq-cai', 'ic0.app'],
-            'distrikt-staging.ic0.local': ['am2do-dyaaa-aaaae-aaasa-cai', 'ic0.app'],
-            'nuance.ic0.local': ['exwqn-uaaaa-aaaaf-qaeaa-cai', 'ic0.app'],
-            'oc.ic0.local': ['6hsbt-vqaaa-aaaaf-aaafq-cai', 'ic0.app'],
+            'identity.ic0.local': ['rdmx6-jaaaa-aaaaa-aaadq-cai', 'icp0.io'],
+            'nns.ic0.local': ['qoctq-giaaa-aaaaa-aaaea-cai', 'icp0.io'],
+            'dscvr.ic0.local': ['h5aet-waaaa-aaaab-qaamq-cai', 'icp0.io'],
+            'distrikt.ic0.local': ['az5sd-cqaaa-aaaae-aaarq-cai', 'icp0.io'],
+            'distrikt-staging.ic0.local': ['am2do-dyaaa-aaaae-aaasa-cai', 'icp0.io'],
+            'nuance.ic0.local': ['exwqn-uaaaa-aaaaf-qaeaa-cai', 'icp0.io'],
+            'oc.ic0.local': ['6hsbt-vqaaa-aaaaf-aaafq-cai', 'icp0.io'],
       };
       ```
 1. Build and watch the service worker:
