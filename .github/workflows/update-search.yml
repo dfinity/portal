@@ -1,3 +1,4 @@
+name: Update search index
 on:
   # run every 24 hours
   schedule:
