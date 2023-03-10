@@ -72,7 +72,7 @@ interact using [ chain key cryptography](#chain_key).
 act as HTTP routers through which the network’s
 [subnet](#subnet) blockchain nodes can be reached. The
 boundary nodes have several purposes: they aid in discover-ability (the
-ic0.app domain name points to a set of boundary nodes), they are
+icp0.io domain name points to a set of boundary nodes), they are
 geo-aware and can route incoming requests to the nearest subnet
 [node](#node) that hosts the [canister](#canister)
 involved, they can help load balance query

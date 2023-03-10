@@ -26,7 +26,7 @@ Depending on the architecture, all of these functions may be in one canister or 
 
 ### Top up all canisters very generously
 
-Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so this is typically not a huge investment. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) or some other immutable proxy canister as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/) to top up the canisters.
+Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so this is typically not a huge investment. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) or some other immutable proxy canister as a controller to the NFT canisters. This allows users to use the [Tip Jar service](https://k25co-pqaaa-aaaab-aaakq-cai.icp0.io/) to top up the canisters.
 
 
 ### Set a generous freezing threshold
@@ -40,7 +40,7 @@ On the IC, the cycle balance of a canister is only visible to controllers. Since
 
 Again, adding the black hole canister as a controller is a good practice in this regard, since it can act as a proxy to fetch the [`canister_status`](/references/ic-interface-spec.md#c-canister_status). 
 
-You can also use a more complete monitoring solution like [Canistergeek](https://canistergeek.app/). Recently, the team behind Canistergeek added a new feature to their [NFTgeek](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/) product that allows observing the [cycles balance of popular NFT collections](https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/cycles). 
+You can also use a more complete monitoring solution like [Canistergeek](https://canistergeek.app/). Recently, the team behind Canistergeek added a new feature to their [NFTgeek](https://t5t44-naaaa-aaaah-qcutq-cai.raw.icp0.io/) product that allows observing the [cycles balance of popular NFT collections](https://t5t44-naaaa-aaaah-qcutq-cai.raw.icp0.io/cycles). 
 
 
 
@@ -104,7 +104,7 @@ The following resources are community projects. Please do your own research and 
 
 - [Entrepot](https://entrepot.app/)
 - [Jelly](https://jelly.xyz/)
-- [Yumi](https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/)
+- [Yumi](https://tppkg-ziaaa-aaaal-qatrq-cai.raw.icp0.io/)
 - [NFT Anvil](https://nftanvil.com/)
 
 
