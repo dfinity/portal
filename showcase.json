@@ -1228,5 +1228,19 @@
     "logo": "/img/showcase/glue_logo.png",
     "github": "https://github.com/glue-org",
     "twitter": "https://twitter.com/glue_org"
+  },
+  {
+    "id": "hot-or-not",
+    "name": "Hot or Not",
+    "oneLiner": "Web3's answer to TikTok with speculation on short video content",
+    "website": "https://hotornot.wtf/",
+    "tags": ["SocialFi"],
+    "description": "Hot or Not is a decentralized short-video social media (like TikTok) which integrates prediction markets for content. In addition to creating and sharing short videos on the platform, the users can also speculate on the short videos uploaded by other users on the platform. The users can vote whether a video would be 'Hot' or 'Not' and stake blockchain tokens to substantiate their vote. The results are declared every hour and the winners are rewarded with 2x tokens. With Decentralized governance and content moderation, Hot or Not would put the users at the center of the ecosystem",
+    "usesInternetIdentity": true,
+    "stats": "50 000+ users | 10 000+ videos",
+    "logo": "/img/showcase/hot_or_not_logo.svg",
+    "screenshots": ["/img/showcase/hot_or_not_screenshot_0.jpg"],
+    "videoContentType": "video/mp4",
+    "video": "/img/showcase/hot_or_not_video.mp4"
   }
 ]
