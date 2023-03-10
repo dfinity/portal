@@ -12,11 +12,11 @@ There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
 2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
-The backend canister receives an update request corresponding to time range specified by the users at the frontent.
+The backend canister receives an update request corresponding to the time range specified by the user at the frontent.
 Asynchronously at every few Internet Computer heartbeats, the backend canister makes a Coinbase API request.
-To bound the size of the each response, each request pulls at most 200 data points from Coinbase, which is less than the
+Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the
 limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
-Coinbase covers up to 200 minutes of data. The fetched data points are then put into a global timestamp-to-rate hashmap.
+Coinbase covers a time bucket of 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user requested is longer than a couple of years, the size of data to be returned by the backend `exchange_rate`
 canister could exceed the existing limits of the system.
