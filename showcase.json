@@ -140,11 +140,12 @@
   {
     "id": "uniswapfrontendontheic",
     "name": "Uniswap Front End on the IC",
-    "website": "https://lqku6-wqaaa-aaaad-qalmq-cai.ic.fleek.co/#/swap",
+    "website": "https://uniswap-on-ic.xyz/#/swap",
+    "github": "https://github.com/domwoe/uniswap_ui_on_ic",
     "tags": [
       "DeFi"
     ],
-    "description": "Uniswap's frontend hosted on the Internet Computer through Fleek. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
+    "description": "Uniswap's frontend hosted on the Internet Computer with canister-based wallet integration. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
     "oneLiner": "Front-End On-Chain",
     "display": "Normal",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
@@ -316,6 +317,7 @@
     "name": "Plethora",
     "website": "https://plethora.game/",
     "tags": [
+      "Games",
       "Metaverse",
       "NFT"
     ],
