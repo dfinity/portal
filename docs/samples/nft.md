@@ -7,7 +7,7 @@ NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs
 The canister is a basic implementation of the standard, with support for the minting, burning, and notification interface extensions.
 
 The sample code is available in the [samples repository](https://github.com/dfinity/examples) in [Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container) and Motoko is coming soon!
-A running instance of the Rust canister for demonstration purposes is available as [t5l7c-7yaaa-aaaab-qaehq-cai](https://t5l7c-7yaaa-aaaab-qaehq-cai.ic0.app).
+A running instance of the Rust canister for demonstration purposes is available as [t5l7c-7yaaa-aaaab-qaehq-cai](https://t5l7c-7yaaa-aaaab-qaehq-cai.icp0.io).
 The interface is meant to be programmatic, but the Rust version additionally contains HTTP functionality so you can view a metadata file at `<canister URL>/<NFT ID>/<file ID>`.
 It contains six NFTs, so you can look at items from `<canister URL>/0/0` to `<canister URL>/5/0`.
 
@@ -51,7 +51,7 @@ Luckily, both `RbTree` and `Vec` implement functions that allow converting to/fr
 After conversion, a separate `StableState` object is used to store data during the upgrade.
 
 ### Certified Data
-To serve assets via http over `<canister-id>.ic0.app` instead of `<canister-id>.raw.ic0.app`, responses have to
+To serve assets via http over `<canister-id>.icp0.io` instead of `<canister-id>.raw.icp0.io`, responses have to
 [contain a certificate](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to validate their content.
 Obtaining such a certificate can not happen during a query call since it has to go through consensus, so it has to be created during an update call.
 

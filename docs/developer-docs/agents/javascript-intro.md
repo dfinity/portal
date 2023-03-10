@@ -22,7 +22,7 @@ If you are looking for an explanation of what an agent does, see [Agent Overview
 
 ____
 
-The Internet Computer blockchain is accessible via an API that is available at [https://ic0.app/api/v2](https://ic0.app/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
+The Internet Computer blockchain is accessible via an API that is available at [https://icp-api.io/api/v2](https://icp-api.io/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 
 The IC supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
 
@@ -129,7 +129,7 @@ This `Actor` instance is now set up to call all of the service methods as method
 
 ## Browser
 
-The browser context is the easiest to account for. The `fetch` API is available, and most apps will have an easy time determining whether they need to talk to `https://ic0.app` or a local replica, depending on their URL. 
+The browser context is the easiest to account for. The `fetch` API is available, and most apps will have an easy time determining whether they need to talk to `https://icp0.io` or a local replica, depending on their URL. 
 
 When you are building apps that run in the browser, here are some things to consider:
 
@@ -140,7 +140,7 @@ Updates to the IC may feel slow to your users, at around 2-4 seconds. When you a
 * Avoid blocking UI interactions while you wait for the result of your update. Instead, allow users to continuing to make other updates and interactions, and inform your users of success asyncronously. 
 * Try to avoid making inter-canister calls. If the backend needs to talk to other canisters, the duration can add up quickly.
 * Use `Promise.all` to make multiple calls in a batch, instead of making them one-by-one
-* If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.ic0.app` endpoint for canisters
+* If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.icp0.io` endpoint for canisters
 
 ## Bundlers
 
