@@ -155,7 +155,7 @@ const sidebars = {
       label: "Motoko Language Tour",
       link: {
         type: "doc",
-        id: "motoko/intro/index",
+        id: "motoko/main/motoko",
       },
       items: [
         {
@@ -172,7 +172,6 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
         "motoko/main/mutable-state",

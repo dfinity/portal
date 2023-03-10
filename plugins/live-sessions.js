@@ -44,7 +44,7 @@ const liveSessionsPlugin = async function () {
             title: conv.fields.title,
             speaker: conv.fields.speaker,
             speakerTitle: conv.fields.speakerTitle,
-            description: marked.parse(conv.fields.description),
+            description: marked.parse(conv.fields.description || ""),
             startTimeUtc: isValid(parsedEventTime)
               ? parsedEventTime.getTime()
               : null,

@@ -205,7 +205,7 @@ const actor = createActor(effectiveCanisterId, {
 });
 ```
 
-At the end here, the actor is fully set up and ready to make calls to the local canister and the agent we have set up. Since we are focusing on local, the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If we want to talk to the IC mainnet, the `host` should point to `https://ic0.app`.
+At the end here, the actor is fully set up and ready to make calls to the local canister and the agent we have set up. Since we are focusing on local, the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If we want to talk to the IC mainnet, the `host` should point to `https://icp0.io`.
 
 > Note: the port `4943` is the default port for the local replica. If you have changed the port, or you are using an older version of `dfx`, you will need to update it here and in the other instances in the code.
 
