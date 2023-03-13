@@ -64,6 +64,8 @@ Step 3. Declaring canister interface
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of canister interfaces.
 
+To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
+
 In the code editor, open the `my_timers_backend.did` file and replace its content with the following:
 
 ```candid
@@ -82,7 +84,7 @@ The interface definition is complete, save the changes.
 Step 4. Implementing the `counter` query
 ----------------------------------------
 
-In the Step 3 above, the `counter` query was declared: `"counter": () -> (nat64) query` This step implements it.
+In the Step 3 above, the `counter` query is declared as `"counter": () -> (nat64) query`. This step implements it.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and replace its content with the following:
 
@@ -100,14 +102,14 @@ fn counter() -> u64 {
 Where:
 
 * `static COUNTER: AtomicU64 = ...` &mdash; defines a new global variable called `COUNTER`.
-* `#[ic_cdk_macros::query]` &mdash; marks the following `counter` function as a `query` entry point.
+* `#[ic_cdk_macros::query]` &mdash; marks the following `counter` function as a `query` entry point, so the function will be exported as `canister_query counter`.
 * `fn counter() -> u64 {...}` &mdash; defines the query. Just like in the `.did` definition, it takes no arguments and returns `u64`.
-* `COUNTER.load(...)` &mdash; load and return the global `COUNTER` value.
+* `COUNTER.load(...)` &mdash; loads and returns the global `COUNTER` value.
 
 Step 5. Implementing canister initialization
 --------------------------------------------
 
-In the Step 3 above, the service declaration has a single integer argument: `service : (nat64) -> {...}` This step implements the canister initialization with the argument.
+In the Step 3 above, the service is declared as `service : (nat64) -> {...}`. This step implements the canister initialization with an argument.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
@@ -126,16 +128,18 @@ fn init(timer_interval_secs: u64) {
 
 Where:
 
-* `#[ic_cdk_macros::init]` &mdash; marks the following `init` function as a canister initialization method.
+* `#[ic_cdk_macros::init]` &mdash; marks the following `init` function as a canister initialization method, so the function will be exported as `canister_init`.
 * `fn init(interval: u64) {...}` &mdash; defines the initialization method. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
 * `ic_cdk::println!(...)` &mdash; prints the debug log message on the local `dfx` console.
 * `ic_cdk_timers::set_timer_interval(...)` &mdash; creates a new periodic timer with the specified interval and a closure to call.
-* `COUNTER.fetch_add(1, ...)` &mdash; every time the periodic task is triggered, the global `COUNTER` is increased.
+* `COUNTER.fetch_add(1, ...)` &mdash; increases the global `COUNTER` every time the periodic task is triggered.
 
 Step 6. Implementing canister upgrade
 -------------------------------------
 
 Note, as described in [Periodic Tasks and Timers](../periodic-tasks.md), the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+
+For the sake of simplicity, in this tutorial the `canister_post_upgrade` method just calls `canister_init` to reinitialize the timer.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
@@ -150,8 +154,8 @@ fn post_upgrade(timer_interval_secs: u64) {
 
 Where:
 
-* `#[ic_cdk_macros::post_upgrade]` &mdash; marks the following `post_upgrade` function as a canister post-upgrade handler.
-* `fn post_upgrade(interval: u64) {...}` &mdash; defines the post-upgrade logic. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
+* `#[ic_cdk_macros::post_upgrade]` &mdash; marks the following `post_upgrade` function as a canister post-upgrade handler, so the function will be exported as `canister_post_upgrade`.
+* `fn post_upgrade(interval: u64) {...}` &mdash; defines the post-upgrade method. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
 * `init(timer_interval_secs)` &mdash; for the sake of simplicity, the post-upgrade just calls the `init` function, i.e. does exactly the same as the canister initialization.
 
 The code is complete. Save the changes.

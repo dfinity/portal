@@ -159,10 +159,10 @@ Here is a sample:
       //   in https://csp.withgoogle.com/docs/faq.html in section “What if my site is static and I can't add nonces to scripts?”.
       //   See for example the II CSP (https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/http.rs).
       // - It is recommended to tighten the connect-src directive. With the current CSP configuration the browser can
-      //   make requests to https://*.ic0.app, hence being able to call any canister via https://ic0.app/api/v2/canister/{canister-ID}.
+      //   make requests to https://*.icp0.io, hence being able to call any canister via https://icp0.io/api/v2/canister/{canister-ID}.
       //   This could potentially be used in combination with another vulnerability (e.g. XSS) to exfiltrate private data.
       //   The developer can configure this policy to only allow requests to their specific canisters,
-      //   e.g: connect-src 'self' https://ic0.app/api/v2/canister/{my-canister-ID}, where {my-canister-ID} has the following format: aaaaa-aaaaa-aaaaa-aaaaa-aaa
+      //   e.g: connect-src 'self' https://icp0.io/api/v2/canister/{my-canister-ID}, where {my-canister-ID} has the following format: aaaaa-aaaaa-aaaaa-aaaaa-aaa
       // - It is recommended to configure style-src, style-src-elem and font-src directives with the resources your canister is going to use
       //   instead of using the wild card (*) option. Normally this will include 'self' but also other third party styles or fonts resources (e.g: https://fonts.googleapis.com or other CDNs)
 
@@ -172,7 +172,7 @@ Here is a sample:
       //   See: https://github.com/WebAssembly/content-security-policy/blob/main/proposals/CSP.md.
       // - We added img-src data: because data: images are used often.
       // - frame-ancestors: none mitigates clickjacking attacks. See https://owasp.org/www-community/attacks/Clickjacking.
-      "Content-Security-Policy": "default-src 'self';script-src 'self' 'unsafe-eval';connect-src 'self' https://ic0.app https://*.ic0.app;img-src 'self' data:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src *;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;",
+      "Content-Security-Policy": "default-src 'self';script-src 'self' 'unsafe-eval';connect-src 'self' https://icp0.io https://*.icp0.io;img-src 'self' data:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src *;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;",
       // Security: The permissions policy disables all features for security reasons. If your site needs such permissions, activate them.
       // To configure permissions go here https://www.permissionspolicy.com/
       "Permissions-Policy": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), speaker-selection=(), conversion-measurement=(), focus-without-user-activation=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), sync-script=(), trust-token-redemption=(), window-placement=(), vertical-scroll=()",
@@ -192,7 +192,7 @@ Here is a sample:
       // See: https://owasp.org/www-community/attacks/xss/
       "X-XSS-Protection": "1; mode=block"
     },
-    // redirect all requests from .raw.ic0.app to .ic0.app (this redirection is the default)
+    // redirect all requests from .raw.icp0.io to .icp0.io (this redirection is the default)
     "allow_raw_access": false
   }
 ]

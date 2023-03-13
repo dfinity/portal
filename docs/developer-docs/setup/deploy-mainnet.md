@@ -220,7 +220,7 @@ To validate your cycles wallet:
 
     You can also access your default cycles wallet in a web browser by using a URL similar to the following:
 
-        https://<WALLET-CANISTER-ID>.ic0.app
+        https://<WALLET-CANISTER-ID>.icp0.io
 
     The first time you access the application, you see a notice that you are using an Anonymous Device and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
 
@@ -344,7 +344,7 @@ To access the dapp frontend:
 
 1.  Open a browser.
 
-2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_frontend` identifier and the `boundary.ic0.app` suffix.
+2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_frontend` identifier and the `boundary.icp0.io` suffix.
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
@@ -352,7 +352,7 @@ To access the dapp frontend:
 
     For example, the full URL should look similar to the following:
 
-        https://gsueu-yaaaa-aaaae-aaagq-cai.ic0.app
+        https://gsueu-yaaaa-aaaae-aaagq-cai.icp0.io
 
     Navigating to this URL displays the HTML entry page for the template application. For example:
 

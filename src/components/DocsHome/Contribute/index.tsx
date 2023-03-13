@@ -25,19 +25,19 @@ const cardsContent = [
     link: "https://forum.dfinity.org/",
   },
   {
+    title: "Dev Discord Office Hours",
+    body: "Every Wednesday at 9am CET and 7pm CET",
+    link: "https://discord.gg/jnjVVQaE2C",
+  },
+  {
+    title: "DFINITY Developer Grants and Bounties",
+    body: "Kickstart your idea or get paid to build on ICP",
+    link: "https://dfinity.org/grants/",
+  },
+  {
     title: "Bug bounty program",
     body: "Report potential security vulnerabilities and get rewards",
     link: "https://dfinity.org/bug-bounty/",
-  },
-  {
-    title: "ICDevs Bounties",
-    body: "ICDevs.org funds code bounties",
-    link: "https://icdevs.org/bounties.html",
-  },
-  {
-    title: "Dev Discord Office Hours",
-    body: "Join to ask question about grants and building on ICP",
-    link: "https://discord.gg/rGrFrGgp?event=1078030749829169152",
   },
 ];
 
