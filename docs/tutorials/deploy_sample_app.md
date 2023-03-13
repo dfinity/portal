@@ -7,7 +7,7 @@ title: Deploy sample code
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 <!-- Code editing knowledge is not necessary. -->
 
-Before starting, take a look at a version of this dapp running on-chain: <https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/>
+Before starting, take a look at a version of this dapp running on-chain: <https://6lqbm-ryaaa-aaaai-qibsa-cai.icp0.io/>
 
 In this tutorial, you will learn how to:
 
@@ -470,12 +470,12 @@ Uploading assets to asset canister...
 Deployed canisters.
 URLs:
   Frontend:
-    hello_frontend: https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/
+    hello_frontend: https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/
   Candid:
-    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=5o6tz-saaaa-aaaaa-qaacq-cai
+    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=5o6tz-saaaa-aaaaa-qaacq-cai
 ```
 
-Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
+Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
 
 In the example above, we created a `hello` dapp that is composed of:
 
@@ -485,7 +485,7 @@ In the example above, we created a `hello` dapp that is composed of:
 
 ### See your dapp live on-chain via a browser
 
-Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.ic0.app/>
+Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
 
 Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the IC and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 
