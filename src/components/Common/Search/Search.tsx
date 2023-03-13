@@ -80,10 +80,16 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
     };
   }, [term]);
 
+  function handleResultClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (!e.metaKey && !e.ctrlKey) {
+      onClose();
+    }
+  }
+
   return (
     <>
       <motion.div
-        className="fixed inset-0 overflow-auto bg-white-80 z-[3000]"
+        className="fixed inset-0 backdrop-blur-lg z-[3001] overflow-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -91,12 +97,15 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
         ref={dialogRef}
         aria-modal="true"
       >
-        <div className="md:container-10" aria-label="Search the website">
+        <div
+          className="md:container-10 backdrop-blur-0"
+          aria-label="Search the website"
+        >
           <div
             className="bg-white md:rounded-xl md:mt-10 md:drop-shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex pr-4 gap-2 md:gap-4 sticky md:static top-0 bg-white drop-shadow-lg md:bg-transparent">
+            <div className="flex pr-4 gap-2 md:gap-4 sticky md:static top-0 bg-white md:bg-transparent">
               <div className="relative flex-1">
                 <img
                   src="/img/search.svg"
@@ -145,17 +154,17 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
             </div>
 
             {results && results.length > 0 && (
-              <ol className="flex flex-col px-4 pt-6 pb-14 md:shadow-[inset_0px_4px_4px_rgba(51,51,51,0.07)]">
+              <ol className="flex flex-col p-0 md:shadow-[inset_0px_4px_4px_rgba(51,51,51,0.07)]">
                 {results.map((result) => (
                   <li
                     key={result.url}
-                    className="md:px-10 list-none pb-6 mb-6 border-0 border-b border-solid border-grey-300 last:border-none last:pb-0 last:mb-0"
+                    className="px-4 md:px-14 py-6 md:py-10 list-none even:bg-[#F1EEF5]"
                   >
-                    <h2 className="mb-3">
+                    <h2 className="mb-4">
                       <Link
-                        className="tw-heading-5 mb-3 hover:text-black hover:no-underline"
+                        className="tw-heading-5 mb-4 hover:text-black hover:no-underline"
                         href={result.url}
-                        onClick={onClose}
+                        onClick={handleResultClick}
                       >
                         {result.title}
                       </Link>
@@ -170,9 +179,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                       ).map((result) => (
                         <div className="" key={result.doc.id.toString()}>
                           <Link
-                            className="tw-heading-7 underline text-black"
+                            className="tw-heading-7 text-infinite hover:no-underline hover:text-black"
                             href={result.doc.url}
-                            onClick={onClose}
+                            onClick={handleResultClick}
                           >
                             {result.doc.title}
                           </Link>
@@ -186,7 +195,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                         <div className="">
                           {!loadMoreExpanded[result.url] && (
                             <button
-                              className="font-circular tw-title-navigation bg-transparent border-none text-infinite hover:text-black p-0 inline-flex items-center gap-2"
+                              className="font-circular tw-heading-7 bg-transparent border-none text-infinite hover:text-black p-0 inline-flex items-center gap-2"
                               onClick={() =>
                                 setLoadMoreExpanded((v) => ({
                                   ...v,
@@ -194,27 +203,6 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                                 }))
                               }
                             >
-                              <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <circle
-                                  cx="2.5"
-                                  cy="8"
-                                  r="1.5"
-                                  fill="#181818"
-                                />
-                                <circle cx="8" cy="8" r="1.5" fill="#181818" />
-                                <circle
-                                  cx="13.5"
-                                  cy="8"
-                                  r="1.5"
-                                  fill="#181818"
-                                />
-                              </svg>
                               {result.results.length - 3} more results
                             </button>
                           )}
