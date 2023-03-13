@@ -19,8 +19,8 @@ The NNS is the open tokenized DAO that controls the IC. As we move to more and m
 
 ## Service Nervous System (SNS)
 As the NNS is to the IC, an SNS is to services running on the IC. If you are a developer or founder who would like to tokenize and decentralize the governance of your dapp, this is the place to start. Governance of a service or dapp can operate in a decentralized manner by getting an SNS. 
-- [Dive into the SNS and DAOs](/developer-docs/integrations/sns/tokenomics/sns-intro-tokens.md)
-- See the [tokenomics of a DAO](/developer-docs/integrations/sns/tokenomics/tokenomics.md)
+- [Dive into the SNS and DAOs](/developer-docs/integrations/sns/tokenomics/index.md)
+- See the [tokenomics of a DAO](/developer-docs/integrations/sns/tokenomics/tokenomics-intro.md)
 - Think about the numerous [considerations](/developer-docs/integrations/sns/tokenomics//predeployment-considerations.md) that should be made if you plan to get an SNS
 
 
