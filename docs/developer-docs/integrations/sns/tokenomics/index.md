@@ -77,7 +77,7 @@ This is fundamental for developers as this allows the SNS to decide to
 spend some of these funds, for example to pay for the dapp’s cycles or to
 pay developers.
 
-The SNS can also decide to use different [tokenomics](./tokenomics.md) models to create new
+The SNS can also decide to use different [tokenomics](./tokenomics-intro.md) models to create new
 incentive systems.
 For example, the SNS can decide to introduce voting rewards to motivate active
 governance participation.

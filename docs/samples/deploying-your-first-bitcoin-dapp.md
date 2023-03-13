@@ -45,7 +45,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         Deployed canisters.
         URLs:
         Candid:
-            basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=<YOUR-CANISTER-ID>
+            basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>
 
    Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
 

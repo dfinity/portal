@@ -8,7 +8,7 @@ you know that a service nervous system (SNS) is a kind of DAO that is
 provided on the IC, and that you want to learn how you can get a DAO
 for your dapp. 
 If this is not (yet) the case, you can learn more about DAOs and SNSs
-[here](./tokenomics/sns-intro-tokens.md),
+[here](./tokenomics/index.md),
 including what advantages such decentralized governance systems have.
 
 ## How to get and maintain a DAO - different options _{#gettingDAOoptions}_

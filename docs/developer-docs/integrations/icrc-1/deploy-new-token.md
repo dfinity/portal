@@ -7,15 +7,15 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 1.  First, you need to download the icrc-1 ledger image (.wasm file) and the icrc-1 ledger interface (.did file). 
 
      ``` sh
-    export IC_VERSION=8b674edbb228acfc19923d5c914807166edcd909
-    curl -o ic-icrc1-ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
-    gunzip ic-icrc1-ledger.wasm.gz
-    curl -o icrc1.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
+     export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
+     curl -o icrc1-ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
+     curl -o icrc1-ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
+     gunzip icrc1-ledger.wasm.gz
     ```
 
     :::note
 
-    The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases).
+    The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases). For newer releases, the deploy arguments for the ICRC1 ledger might change. To make sure that this guide works, please use the same `IC_VERSION` as specified in the above example.
 
     :::
 
@@ -28,8 +28,8 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
       "canisters": {
         "icrc1-ledger": {
           "type": "custom",
-          "wasm": "ic-icrc1-ledger.wasm",
-          "candid": "icrc1.did"
+          "wasm": "icrc1-ledger.wasm",
+          "candid": "icrc1-ledger.did"
         }
       }
     }
@@ -41,8 +41,8 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
     # Change the variable to "ic" to deploy the ledger on the mainnet.
     export NETWORK=local
 
-    # Change the variable to the account that can mint and burn tokens.
-    export MINTER_PRINCIPAL=$(dfx ledger account-id)
+    # Change the variable to the principal that can mint and burn tokens.
+    export MINTER_PRINCIPAL=$(dfx identity get-principal)
 
     # Change the variable to the principal that controls archive canisters.
     export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
@@ -50,19 +50,20 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
     export TOKEN_NAME="My Token"
     export TOKEN_SYMBOL=XMTK
 
-    dfx deploy --network ${NETWORK} custom-ledger --argument '(record {
-      token_name = "'${TOKEN_NAME}'";
-      token_symbol = "'${TOKEN_SYMBOL}'";
-      minting_account = record { owner = "'${MINTER_PRINCIPAL}'";};
-      initial_balances = vec {};
-      metadata = vec {};
-      transfer_fee = 10;
-      archive_options = opt record {
-        trigger_threshold = 2000;
-        num_blocks_to_archive = 1000;
-        controller_id = principal "'${ARCHIVE_CONTROLLER}'";
-      }
-    })'
+    dfx deploy --network ${NETWORK} icrc1-ledger --argument '(variant { Init = 
+         record {
+           token_name = "'${TOKEN_NAME}'";
+           token_symbol = "'${TOKEN_SYMBOL}'";
+           minting_account = record { owner = principal "'${MINTER_PRINCIPAL}'";};
+           initial_balances = vec {};
+           metadata = vec {};
+           transfer_fee = 10;
+           archive_options = record {
+             trigger_threshold = 2000;
+             num_blocks_to_archive = 1000;
+             controller_id = principal "'${ARCHIVE_CONTROLLER}'";
+           }
+    }})'
     ```
 
     where
