@@ -44,8 +44,8 @@ export default function Layout(props) {
           {children}
         </ErrorBoundary>
       </div>
-
       {!noFooter && <Footer editPath={editPath} />}
+      <div id="search-overlay-portal"></div>
     </LayoutProvider>
   );
 }

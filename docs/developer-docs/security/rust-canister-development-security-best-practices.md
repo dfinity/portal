@@ -41,7 +41,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Recommendation
 
-- By design, for every canister call the caller can be identified. The calling [principal](/references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](/references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](/references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
+- By design, for every canister call the caller can be identified. The calling [principal](../../references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](../../references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
 
 <!-- -->
 
@@ -429,7 +429,7 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 #### Security Concern
 
-Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](../references/ic-interface-spec#timer) states this as follows:
+Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](../../references/ic-interface-spec#timer) states this as follows:
 
 > The timer is also deactivated upon changes to the canister's Wasm module (calling install_code, uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set).
 
@@ -447,7 +447,7 @@ Using the rust CDK, the reccuring timer is also lost on upgrade as explained in 
 
 - Keep track of global timers in the `pre_upgrade` hook. Store any state in stable variables.
 - Set timers in the `post_upgrade` hook.
-- See the Motoko documentation on [recurringTimer](../references/motoko-ref/Timer#function-recurringtimer)
+- See the Motoko documentation on [recurringTimer](../../motoko/main/base/Timer.md#function-recurringtimer)
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html)
 
 ## Miscellaneous
