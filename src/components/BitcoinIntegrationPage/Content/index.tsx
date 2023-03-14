@@ -36,8 +36,8 @@ const Content: React.FC = () => {
             Combining these building blocks, ICP canisters can directly and
             securely hold, receive, and send bitcoin seamlessly as if the
             Internet Computer and the Bitcoin network were one blockchain.
-            Another way of looking at it, is that the Bitcoin integration is the
-            same as running a Bitcoin node on chain.
+            Another way of looking at it, is that the Bitcoin integration
+            is the same as running a Bitcoin node on chain.
           </p>
           <p className="mb-0 mt-8">
             <Link
@@ -84,7 +84,8 @@ const Content: React.FC = () => {
               nodes that are re-shared every 5-10 mins. When requested,
               nodes sign BTC transactions using the key shares without recreating
               the original secret key. Building on tECDSA, this protocol assumes
-              a threshold of nodes to be honest. The process is called ckECDSA signing.
+              a threshold of nodes to be honest. The process is called ckECDSA
+              signing.
             </p>
           </div>
         </motion.div>
@@ -100,8 +101,8 @@ const Content: React.FC = () => {
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
             Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It is
-            issued and redeemed via canister smart contracts and
-            cryptographically backed 1:1 with real bitcoin. It’s fast,
+            issued and redeemed via canister smart contracts controlled by the
+            NNS and cryptographically secured 1:1 with real bitcoin. It’s fast,
             low-tx-fee bitcoin on ICP with no intermediary.
           </p>
         </div>
@@ -120,25 +121,28 @@ const Content: React.FC = () => {
         </div>
         <div className="md:w-6/10 md:mx-auto">
           <p className="tw-paragraph mb-3">
-            While the Bitcoin network integration on the Internet Computer (ICP)
-            is extremely powerful in terms of security and interoperability,
-            every bitcoin transaction suffers the low throughput, high latency,
-            and high fees native to the Bitcoin network. Chain-key Bitcoin
-            (ckBTC), a bitcoin ‘twin’ on ICP, has been introduced to bring layer
-            2 functionality fuelled by ICP properties like speed, scalability
-            and low transaction fees to bitcoin.
+            In 2021, El Salvador became the first country in the world to use
+            Bitcoin as legal tender. However, as bitcoin transactions are slow
+            and have high fees, they are not practical for daily economic
+            activities such as buying groceries or getting a coffee.
+          </p>  
+          <p className="tw-paragraph mb-3">
+            The Bitcoin network integration on the Internet Computer (ICP) is
+            extremely powerful in terms of security and interoperability, but
+            every bitcoin transaction still suffers the same low throughput,
+            high latency, and high fees native to the Bitcoin network.
+            Transaction fees alone can be higher than the cost of an espresso
+            in El Salvador. Chain-key Bitcoin (ckBTC), a bitcoin ‘twin’ on ICP
+            introduces layer 2 functionality fuelled by ICP properties like
+            speed, scalability and low transaction fees to bitcoin. ckBTC makes
+            using bitcoin practical for everyday transactions.
           </p>
           <p className="tw-paragraph mb-3">
-            The ckBTC token eliminates the need for intermediaries as it is
-            issued and redeemed through canister smart contracts built upon the
-            native Bitcoin integration. When the ckBTC canister receives real
-            bitcoin, it issues ckBTC backed 1:1 by that bitcoin. The data served
-            by the ckBTC canister is transparent, so anyone can verify if their
-            ckBTC is backed 1:1 with bitcoin. Users can also redeem their ckBTC
-            for real Bitcoin at any time.
+            End-users can seemlessly transfer bitcoin
+            any time between blockchains without any third-party bridges or custodians.
           </p>
           <p className="tw-paragraph mb-3">
-            The ckBTC token is compliant with ICRC-1, the fungible token
+            ckBTC is compliant with ICRC-1, the fungible token
             standard on ICP, and can be integrated easily by any service, e.g.,
             wallets or DEXs.
           </p>
@@ -185,9 +189,11 @@ const Content: React.FC = () => {
             compromise.
           </p>
           <p className="tw-paragraph mb-8">
-            ckBTC is issued and redeemed via canister smart contracts backed 1:1
-            with real bitcoin — no bridge or custodian, and verifiable by
-            anyone.
+            ckBTC is issued and redeemed via a canister smart contract — 
+            no bridge or custodian, and verifiable by anyone. The ckBTC 
+            canister is controlled by the NNS DAO, which means no single 
+            entity can initiate malicious activities without the approval 
+            of ICP governance token holders.
           </p>
           <p className="tw-paragraph mb-0 font-bold">Not a Lightning Network</p>
           <p className="tw-paragraph mb-3">

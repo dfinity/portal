@@ -1,4 +1,5 @@
 const redirects = `
+  /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
   /features /capabilities
   /howitworks /how-it-works
@@ -25,7 +26,9 @@ const redirects = `
   /docs/samples/* /samples
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
-  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens
+  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/languages/languages-overview /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
@@ -35,10 +38,8 @@ const redirects = `
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
-  /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/candid-guide/candid-intro /docs/current/developer-docs/backend/candid/
-  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
   /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/backend/candid/
@@ -131,7 +132,6 @@ const redirects = `
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
-
   `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())

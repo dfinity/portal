@@ -33,52 +33,53 @@ const projects: {
     logo: "/img/ethdenver/astrox.webp",
     description:
       "Multichain wallet securing your assets without seed phrase across any devices.",
-    agenda: ["agenda coming soon"],
+    agenda: ["Mar 2 - 5, 2023"],
   },
   {
     name: "Hot or Not",
     logo: "/img/ethdenver/hotornot.webp",
     description: "Monetise Time on Social Media. Video platform in ICP.",
-    agenda: ["agenda coming soon"],
-  },
-  {
-    name: "Toniq Labs",
-    logo: "/img/ethdenver/toniq.webp",
-    description:
-      "We help you build, launch, and grow NFT-based businesses. agenda coming soon",
-    agenda: ["agenda coming soon"],
-  },
-  {
-    name: "DSCVR",
-    logo: "/img/ethdenver/dscvr.webp",
-    description: "Web3 social media platform with user governed NFT gated Portals",
-    agenda: ["agenda coming soon"],
+    agenda: ["Mar 2 - 5, 2023"],
   },
   {
     name: "Finterest",
     logo: "/img/ethdenver/finterest.webp",
     description: "The first truly decentralized price feed.",
-    agenda: ["agenda coming soon"],
+    agenda: ["Mar 2 - 5, 2023"],
   },
   {
-    name: "IC Drive",
-    logo: "/img/ethdenver/icdrive.webp",
-    description:
-      "A decentralized private storage dapp. Store and securely share.",
-    agenda: ["agenda coming soon"],
+    name: "Toniq Labs",
+    logo: "/img/ethdenver/toniq.webp",
+    description: "We help you build, launch, and grow NFT-based businesses.",
+    agenda: ["Mar 2 - 5, 2023"],
   },
   {
-    name: "SCINET",
-    logo: "/img/ethdenver/scinet.webp",
-    description: "Decentralized life sciences ecosystem on ICP.",
-    agenda: ["agenda coming soon"],
+    name: "ORIGYN",
+    logo: "/img/ethdenver/origyn.webp",
+    description: "Digital verifications for physical objects through NFTs.",
+    agenda: ["Mar 3 / 4, 2023"],
   },
 
   {
-    name: "Modclub",
-    logo: "/img/ethdenver/modclub.webp",
-    description: "Decentralized Moderation and Proof of Humanity",
-    agenda: ["agenda coming soon"],
+    name: "Demergent Labs",
+    logo: "/img/ethdenver/demergent-labs.webp",
+    description:
+      "Accelerating the adoption of Web3 and the Internet Computer.",
+    agenda: ["Mar 3 / 4, 2023"],
+  },
+  {
+    name: "Itoka",
+    logo: "/img/ethdenver/itoka-logo.webp",
+    description: "Become a musician smooth and simple with AI and Web3 technology. Only on ICP.",
+    agenda: ["Mar 3 / 4, 2023", "5:00pm - 6:00pm MST"],
+    
+  },
+
+  {
+    name: "ntagle",
+    logo: "/img/ethdenver/ntagle-logo.webp",
+    description: "Scalable and cost-effective way to trustlessly bind physical objects to canisters",
+    agenda: ["Mar 4, 2023", "8:00am - 10:00am MST"],
   },
 ];
 
@@ -243,10 +244,10 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <Link
-                  href="https://www.ethdenver.com/buidl/preparation-guide"
+                  href="https://app.buidlbox.io/guidl/dfinity"
                   className="button-primary"
                 >
-                  Learn More
+                  Sign Up
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
@@ -559,10 +560,10 @@ function EthDenverPage() {
 
                 <p className="mb-0">
                   <Link
-                    href="https://jan.camenisch.org/"
+                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/e645c2d5-e178-471c-ab3a-f2ba6c296f20/66a0d48e-8617-463f-b454-a6ee5e6b39fd"
                     className="link-primary link-with-icon"
                   >
-                    See Jan’s profile
+                    See full info
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -638,7 +639,12 @@ function EthDenverPage() {
                   The DFINITY Foundation is giving out bounties in various
                   categories to hackers with talent during the BUIDLathon. For
                   questions and assistance, find our dev reps at the co-working
-                  space. Don’t miss this chance to be a pioneer of Web3.
+                  space. Don’t miss this chance to be a pioneer of Web3. You can 
+                  also join {" "} 
+                  <Link href="https://discord.gg/sporkdao"> 
+                    Discord
+                  </Link> {" "}
+                  to ask questions and get support. 
                 </p>
 
                 <p className="mb-0">
@@ -665,12 +671,17 @@ function EthDenverPage() {
                     @ ICP Booth
                   </span>
                 </h2>
-                <p className="tw-lead-sm md:tw-lead text-black-60 mb-0 md:w-6/10">
+                <p className="tw-lead-sm md:tw-lead text-black-60 mb-6 md:w-6/10">
                   Step into the exciting world of ICP with us as your guide!
                   Take a look at the Web3 projects currently reinventing the
                   internet on the Internet Computer blockchain.
                 </p>
+              
               </div>
+              <Link className="link-primary link-with-icon" href="https://docs.google.com/spreadsheets/d/1izcKFRYuZTM2yeDS3tj63Ph1rYFuXl-7WA9pB-4DVyk/edit?usp=sharing">
+                  <LinkArrowRight />
+                  See Community Agenda in detail
+                </Link>
             </div>
             <AnimateSpawn
               className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12"

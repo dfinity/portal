@@ -99,9 +99,7 @@ function LiveSessionsPage(): JSX.Element {
 
   useEffect(() => {
     if (initalized) {
-      if (location.hash === "#subscribe") {
-        scrollToForm();
-      } else if (location.hash) {
+      if (location.hash) {
         const el = document.querySelector(location.hash) as HTMLElement;
         if (el) {
           window.scroll({
@@ -482,7 +480,6 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-
         {/* This must not be invisible */}
         <div ref={formRef} id="subscribe"></div>
         <Newsletter
@@ -493,14 +490,9 @@ function LiveSessionsPage(): JSX.Element {
               type: "email",
               required: true,
             },
-            {
-              name: "tags",
-              type: "hidden",
-              value: "1061",
-            },
           ]}
           ctaLabel="Get updates!"
-          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
           decoration={<img src="/img/newsletter/email-image-1.webp" />}
           className="mb-20"
         >

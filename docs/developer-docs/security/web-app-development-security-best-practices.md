@@ -60,7 +60,7 @@ Missing input validation of data from untrusted sources (e.g. users) can lead to
 
 #### Security Concern
 
-Loading untrusted JavaScript from domains other than `<canister-id>.ic0.app` means you completely trust that domain. Also, assets loaded from these domains (incl. `<canister-id>.raw.ic0.app`) will not use asset certification.
+Loading untrusted JavaScript from domains other than `<canister-id>.icp0.io` means you completely trust that domain. Also, assets loaded from these domains (incl. `<canister-id>.raw.icp0.io`) will not use asset certification.
 
 If they deliver malicious JavaScript they can take over the web app/account by e.g. reading the private key managed by agent-js from LocalStorage.
 
