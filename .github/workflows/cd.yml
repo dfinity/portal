@@ -14,6 +14,9 @@ jobs:
   deploy-ic:
     name: "Deploy to IC"
     runs-on: ubuntu-latest
+    concurrency:
+      group: "website update"
+      cancel-in-progress: true
 
     environment:
       name: "Internet Computer Mainnet"
@@ -22,7 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git submodule update --init
-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       # - name: Install DFX
       #   run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 

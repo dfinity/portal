@@ -3,7 +3,7 @@ import Newsletter from "../../Common/Newsletter/Newsletter";
 
 const NewsletterSection: React.FC = () => {
   return (
-    <section className="md:mt-30 " id="subscribe">
+    <section className="md:my-30 " id="subscribe">
       <Newsletter
         fields={[
           {
@@ -14,7 +14,7 @@ const NewsletterSection: React.FC = () => {
           },
         ]}
         ctaLabel="Get updates!"
-        postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
+        postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
         decoration={<img src="/img/newsletter/email-image-2.webp" />}
         className="mb-20 relative"
       >

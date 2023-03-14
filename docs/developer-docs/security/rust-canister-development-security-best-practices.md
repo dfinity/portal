@@ -1,8 +1,10 @@
 ---
 sidebar_position: 2
-sidebar_label: "Canister development in Rust"
+sidebar_label: "Canister development"
 ---
-# Canister development in Rust security best practices
+# Canister development security best practices
+
+This document contains canister development best practices for both Motoko and Rust. 
 
 ## Smart Contracts Canister Control
 
@@ -39,7 +41,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 #### Recommendation
 
-- By design, for every canister call the caller can be identified. The calling [principal](/references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](/references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](/references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
+- By design, for every canister call the caller can be identified. The calling [principal](../../references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](../../references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
 
 <!-- -->
 
@@ -83,17 +85,17 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 ## Asset Certification
 
-### Use HTTP asset certification and avoid serving your dApp through `raw.ic0.app`
+### Use HTTP asset certification and avoid serving your dApp through `raw.icp0.io`
 
 #### Security Concern
 
-Dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.ic0.app` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+Dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.icp0.io` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
-If an app is served through `raw.ic0.app` in addition to `ic0.app`, an adversary may trick users (phishing) into using the insecure raw.ic0.app.
+If an app is served through `raw.icp0.io` in addition to `icp0.io`, an adversary may trick users (phishing) into using the insecure raw.icp0.io.
 
 #### Recommendation
 
-- Only serve assets through `<canister-id>.ic0.app` where the service worker verifies asset certification. Do not serve through `<canister-id>.raw.ic0.app`.
+- Only serve assets through `<canister-id>.icp0.io` where the service worker verifies asset certification. Do not serve through `<canister-id>.raw.icp0.io`.
 
 - Serve assets using the asset canister (which creates asset certification automatically), or add the `ic-certificate` header including the asset certification as e.g. done in the [NNS dApp](https://github.com/dfinity/nns-dapp) or [Internet Identity](https://github.com/dfinity/internet-identity).
 
@@ -422,6 +424,31 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 - See also the section on upgrades in [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (though focused on Motoko)
 
 - See [Current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), section "Bugs in `pre_upgrade` hooks"
+
+### Reinstantiate timers during upgrades
+
+#### Security Concern
+
+Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](../../references/ic-interface-spec#timer) states this as follows:
+
+> The timer is also deactivated upon changes to the canister's Wasm module (calling install_code, uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set).
+
+Upgrade is a mode of `install_code` and hence the timers are deactivated during an upgrade.
+
+This could result in a vulnerability in certain cases where security controls or other critical features rely on these timers to function. For example, a DEX which relies on timers to update the exchange rates of currencies could be vulnerable to arbitraging opportunities if the rates are no longer updated.
+
+Since global timers are used internally by the Motoko `Timer` mechanism, the same holds true for Motoko Timer. As explained in the [pull request](https://github.com/dfinity/motoko/pull/3542) under "The upgrade story", the global timer gets jettisoned on upgrade, and the timers need to be set up in the post-upgrade hook.
+
+As explained in [this pull request](https://github.com/dfinity/motoko/pull/3542) under "Opting out", the behavior is different when using Motoko and implementing `system func timer`. The `timer` function will be called after an upgrade. In case your canister was using timers for recurring tasks, the `timer` function would likely set the global timer again for a later time. However, the time between invocations of `timer` would not be consistent as the upgrade triggered an "unexpected" call to `timer`.
+
+Using the rust CDK, the reccuring timer is also lost on upgrade as explained in the API documentation of [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).
+
+#### Recommendation
+
+- Keep track of global timers in the `pre_upgrade` hook. Store any state in stable variables.
+- Set timers in the `post_upgrade` hook.
+- See the Motoko documentation on [recurringTimer](../../motoko/main/base/Timer.md#function-recurringtimer)
+- See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html)
 
 ## Miscellaneous
 

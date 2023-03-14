@@ -1,27 +1,34 @@
 # Service Nervous System (SNS)
 
-We anticipate that different target groups are interested
-in different aspects of the Service Nervous System (SNS)
-and thus in different kinds of documentations.
+This section introduces ideas and instructions needed when considering handing control of an application to a Service Nervous System (SNS). If this is the first time you hear SNS, we recommend to take a look at the high level [SNS](/sns) and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
+We anticipate that different types of readers are interested
+in different aspects of the SNS and in different kinds of documentation.
 We thus try to split the SNS documentation accordingly.
 
 This page provides an overview of the SNS documentation and 
 provides links to the parts that already exist.
 Some of the SNS documentation is still being worked on and will be 
-edited or added as the last SNS features are added, so please bare with
-us if it is not yet complete or a few parts do not yet work.
+edited or added as later SNS features are added, so please bare with
+us if it is not yet complete or a few parts do not work yet.
 
+## SNS and DAOs primer
+The DAO Docs introduce the ideas and tools needed when considering to form a DAO. It targets developers or entrepreneurs who want to get an SNS, understand tokenomics of an SNS, and introduces predeployment, product-based, considerations like roadmapping.
+
+In this documentation you will find
+* [An introduction to DAOs and SNSs](./tokenomics/index.md)
+* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics-intro.md)
+* [An introduction to SNS rewards](./tokenomics/rewards.md)
+* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
 ## Technical documentation
-This documentation is, as the name suggests, aimed at
-developers.
+This documentation is, as the name suggests, technical documentation aimed at developers.
 Most of the documentation targets developers that have
 a dapp that they would like to decentralize with an SNS. 
 However, this documentation also targets developers that
 want to build services that integrate with SNSs, such as wallet dapps
-or decentralized exchanges.  
+or decentralized exchanges.
 
-In this documentation you will find
+Here you'll find an overview of the stages of an SNS.
 * [A technical introduction to the SNS](sns-intro.md)
 
 * Information on how to **get an SNS**, which includes
@@ -47,26 +54,28 @@ In this documentation you will find
     in each SNS <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md)-->
   * Information on how SNS are upgraded <!--Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->  
   * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
- 
-## DAOs and Tokenomics documentation 
-This documentation is less technical.
-It targets for example developers who want to get an SNS and
-have to make certain non-technical decisions too.
-It also targets interested developers who would like to understand
-the tokenomics of an SNS better.
-
-In this documentation you will find
-* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
-* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
-* [An introduction to SNS rewards](./tokenomics/rewards.md)
-* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
 
 
-## User Guides
-Finally, the Wiki will contain information relevant for 
-users of the SNS.
+## Explanations and Guides for Users
+Finally, the website and Wiki contain information relevant for users of the SNS.
 
-You will find
-* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
-* A guide how to participate in the SNS decentralization sale
-* A guide how to verify the NNS proposal that starts a SNS decentralization sale
+On the **website**, you will find **explanations on**
+* [SNS overview page](https://internetcomputer.org/sns)
+* [SNS FAQ](https://internetcomputer.org/sns/faq) including, for example 
+  * [A guide how to participate in the SNS decentralization sale](/sns/faq#participate)
+    
+The **Wiki** contains more information about
+* [DAO](https://wiki.internetcomputer.org/wiki/DAO)
+* [Service Nervous System (SNS)](https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS))
+* [Community Fund](https://wiki.internetcomputer.org/wiki/Community_Fund)
+* [SNS Rewards](https://wiki.internetcomputer.org/wiki/SNS_Rewards)
+* [SNS Tokenization Considerations](https://wiki.internetcomputer.org/wiki/SNS_Tokenization_Considerations)
+* [SNS decentralization sale trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust)
+
+The Wiki also contains guides for the following topics:
+* [How to get a DAO on the IC](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on the IC, but this is largely subsumed by the developer documentation here.
+* [How-To: SNS tokenomics configuration](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) providing material enabling teams to choose a tokenomics set-up for their SNS DAO.
+* [How-to: Verify SNS decentralization sale proposal](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal) which is a guide how to verify the NNS proposal that starts a SNS decentralization sale.
+* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters) which is a guide on how to interact with SNS canisters.
+* [How-To: Participate in the SNS decentralization sale via quill](https://wiki.internetcomputer.org/wiki/How-To:_Participate_in_the_SNS_decentralization_sale_via_quill), which is a command line tool for interacting with canisters.
+* [How-To: Join the Community fund via quill](https://wiki.internetcomputer.org/wiki/How-To:_Join_the_Community_fund_via_quill), which is a command line tool for interacting with canisters.

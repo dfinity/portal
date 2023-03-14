@@ -14,6 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - uses: actions/github-script@v6
         with:
           script: |
@@ -85,6 +88,7 @@ jobs:
 
           export PREVIEW_CANISTER_ID=$canister_id
 
+          npm run build
           dfx deploy --network=ic --no-wallet portal
 
         env:
