@@ -112,6 +112,16 @@ const sidebars = {
           href: "https://docs.rs/ic-cdk/",
         },
         "references/candid-ref",
+        {
+          type: "link",
+          label: "The Azle Book (TypeScript)",
+          href: "https://demergent-labs.github.io/azle/",
+        },
+        {
+          type: "link",
+          label: "The Kybra Book (Python)",
+          href: "https://demergent-labs.github.io/kybra/",
+        },
       ]
     },
     {
