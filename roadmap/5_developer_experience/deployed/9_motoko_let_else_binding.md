@@ -1,9 +1,8 @@
 ---
 title: Motoko let-else Binding
 links:
-Forum
-Link: https://forum.dfinity.org/t/solution-in-moc-0-8-3-let-else-match-and-take-in-motoko-do-for-variants-was-when/13427/6
-Proposal:
+  Forum Link: https://forum.dfinity.org/t/solution-in-moc-0-8-3-let-else-match-and-take-in-motoko-do-for-variants-was-when/13427/6
+  Proposal:
 eta: Q1 23
 is_community: true
 ---
