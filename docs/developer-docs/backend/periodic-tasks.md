@@ -56,13 +56,13 @@ Despite its superiority over the heartbeats, the CDK timers library has a few kn
 Frequently Asked Questions
 --------------------------
 
-Q: Do timers support Deterministic Time Slicing (DTS)? \
+Q: Do timers support Deterministic Time Slicing (DTS)?  
 A: Yes, as the CDK timers library initiates a self canister call to execute each task, normal [Update Message instruction limit](../production/instruction-limits.md) apply with DTS enabled.
 
-Q: What happens if a timer handler awaits for a call? \
+Q: What happens if a timer handler awaits for a call?  
 A: Normal await point rules apply: any new execution can start at the await point: a new message, another timer handler or a heartbeat. Once that new execution is finished or reached its await point, the execution of the current timer handler might be resumed.
 
-Q: What happens if a 1s periodic timer is executing for 2s? \
+Q: What happens if a 1s periodic timer is executing for 2s?  
 A: If there are no await points in the timer handler, the periodic timer will be rescheduled at the end of the execution. If there are await points, it's implementation-defined when the periodic timer is rescheduled.
 
 Tutorials and Examples
