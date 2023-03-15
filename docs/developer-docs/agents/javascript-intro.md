@@ -43,7 +43,7 @@ This is a Candid interface. It defines no new special types and defines a `servi
 
 In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](../../references/candid-ref.md) reference.
 
-Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, by going to the [releases](https://github.com/dfinity/candid/releases) tab of the dfinity/candid repository.
+Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
 
 In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
 
@@ -60,7 +60,7 @@ For our Hello World example, that looks like this:
 	...
 }
 ```
-Then when we run `dfx generate`, dfx will automatically write the following to your src/declarations directory inside your project.
+Then when we run `dfx generate`, dfx will automatically write the following to your `src/declarations` directory inside your project.
 
 ```
 |── src
@@ -85,7 +85,7 @@ import type { ActorMethod } from '@dfinity/agent';
 export interface _SERVICE { 'greet' : ActorMethod<[string], string> };
 ```
 
-The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.host/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
+The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.xyz/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
 
 Next, let's look at `hello.did.js`.
 
