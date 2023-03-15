@@ -41,7 +41,7 @@ service : {
 
 This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
-In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](https://smartcontracts.org/docs/candid-guide/candid-types.html) reference.
+In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](../../references/candid-ref.md) reference.
 
 Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, by going to the [releases](https://github.com/dfinity/candid/releases) tab of the dfinity/candid repository.
 
