@@ -43,8 +43,8 @@ const config = {
     ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
@@ -52,9 +52,9 @@ const config = {
     marketingLogoUrl: "/",
     docsLogoUrl: "/docs/current/home",
     docsLogoSrc: "/img/IC_logo_docs.svg",
+    searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
   },
   plugins: [
-    require.resolve("docusaurus-lunr-search"),
     ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,

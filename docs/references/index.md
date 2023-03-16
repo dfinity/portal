@@ -11,7 +11,7 @@ The DFINITY command-line execution environment (dfx) is the primary tool for cre
 Explore `dfx` and its subcommands in the [dfx Commands and Envars](cli-reference/index.md) section and check our beloved [dfx.json](dfx-json-reference.md) schema. 
   
 ### Language References
-Motoko and Rust are two of the better supported languages for building on the IC. You can quickly access all their functionality by exploring the [Motoko references](motoko-ref/index.md) and [Rust references](https://docs.rs/ic-cdk/latest/ic_cdk/). 
+Motoko and Rust are two of the better supported languages for building on the IC. You can quickly access all their functionality by exploring the [Motoko references](../motoko/main/base//index.md) and [Rust references](https://docs.rs/ic-cdk/latest/ic_cdk/). 
 A major ingredient in allowing data exchange across the IC is a language independent description of the canister interfaces called Candid. You can see the functional description by exploring the [Candid references](candid-ref.md)
 
 ### Functionality References

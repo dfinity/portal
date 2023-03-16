@@ -493,6 +493,22 @@
     ]
   },
   {
+    "id": "catalyze",
+    "name": "Catalyze",
+    "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Catalyze is a decentralized social and community-building platform designed to host engaged and thriving Web3 communities. With a unique and customized engagement economy, Catalyze communities and their members will be rewarded for their participation and contribution. Main features include: direct communication, event & task management, integrated Web3 wallets, NFT Gating, NFT airdrop & sales management.",
+    "usesInternetIdentity": true,
+    "oneLiner": "Web3 social media platform for communities",
+    "display": "Large",
+    "logo": "/img/showcase/catalyze_logo.webp",
+    "screenshots": [
+      "/img/showcase/catalyze_screenshot_0.webp"
+    ]
+  },
+  {
     "id": "icpexplorer",
     "name": "ICP Explorer",
     "website": "https://www.icpexplorer.org/#/datacenters",
@@ -643,7 +659,7 @@
     "description": "The Motoko Playground is an IDE for developers to learn Motoko - the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "github": "https://github.com/dfinity/motoko-playground",
     "usesInternetIdentity": false,
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/motokoplayground_logo.webp",
     "video": "/img/showcase/motokoplayground_video.mp4",
     "videoContentType": "video/mp4",
@@ -1228,6 +1244,27 @@
     "logo": "/img/showcase/glue_logo.png",
     "github": "https://github.com/glue-org",
     "twitter": "https://twitter.com/glue_org"
+  },
+  {
+    "id": "factland",
+    "name": "Factland DAO",
+    "oneLiner": "A Web3 community building decentralized trust in the age of misinformation",
+    "website": "https://factland.org",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "description": "Factland is a Web3 DAO with a mission to slow the spread of misinformation online. Factland makes it easy for anyone to flag untrustworthy claims and have them promptly adjudicated by a decentralized community of fact checkers rewarded in crypto.",
+    "usesInternetIdentity": true,
+    "stats": "50+ claims adjudicated",
+    "logo": "/img/showcase/factland_logo.png",
+    "github": "https://github.com/Factland",
+    "youtube": "https://www.youtube.com/channel/UCriPbgLAQ6x5C2Hugfho37Q",
+    "twitter": "https://twitter.com/factlanddao",
+    "screenshots": [],
+    "video": "/img/showcase/factland_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": 32780428
   },
   {
     "id": "hot-or-not",
