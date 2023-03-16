@@ -230,14 +230,14 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   <strong>Funding:</strong> projects are funded through a
-                  community-driven decentralization sale.
+                  community-driven decentralization swap.
                 </li>
               </ul>
             </Faq>
 
             <Faq title="What is SNS-1?">
               SNS-1 is the first SNS DAO that DFINITY launched on the mainnet to
-              test an SNS decentralization sale with involvement of the ICP
+              test an SNS decentralization swap with involvement of the ICP
               community. The SNS-1 test exposed areas of improvement, which are
               currently being addressed. The SNS-1 dapp is now controlled by the
               community of token holders who will collectively determine its
@@ -369,24 +369,24 @@ function SnsFaqPage() {
               <p>There are three main ways of acquiring SNS tokens:</p>
               <ul>
                 <li>
-                  <strong>Participate in a decentralization sale:</strong> When
-                  an SNS launches, it has to go through a decentralization sale.
+                  <strong>Participate in a decentralization swap:</strong> When
+                  an SNS launches, it has to go through a decentralization swap.
                   You can participate on the NNS frontend dapp under the{" "}
                   <Link href="https://nns.ic0.app/launchpad/">
                     Launch Pad tab
                   </Link>
-                  . During the sale you can buy SNS tokens with ICP.
+                  . During the swap you can buy SNS tokens with ICP.
                 </li>
                 <li>
                   <strong>
                     Purchase tokens on a decentralized exchange (DEX):
                   </strong>{" "}
-                  After a decentralization sale has concluded, liquid tokens
+                  After a decentralization swap has concluded, liquid tokens
                   will typically be listed on multiple DEXs, where you can buy
                   them using the ICP utility token or other tokens, depending on
                   what token pairs the DEX lists, e.g., also Bitcoin or
                   Ethereum. An SNS token in high demand may have a higher price
-                  on a DEX than in its decentralization sale.{" "}
+                  on a DEX than in its decentralization swap.{" "}
                   <Link href="http://icdex.io/">ICDex</Link> already supports
                   SNS tokens.
                 </li>
@@ -432,20 +432,20 @@ function SnsFaqPage() {
               </Link>
               .
             </Faq>
-            <Faq title="If I am asked to send ICP to an address to participate in a decentralization sale, what should I do?">
+            <Faq title="If I am asked to send ICP to an address to participate in a decentralization swap, what should I do?">
               <p>
-                If you want to participate in the sale, do not send ICP directly
-                to addresses! An SNS sale will never initiate contact with you,
+                If you want to participate in the swap, do not send ICP directly
+                to addresses! An SNS swap will never initiate contact with you,
                 e.g. via chat or email. You will never be asked to manually enter
-                an ICP address to participate in a decentralization sale. If you
+                an ICP address to participate in a decentralization swap. If you
                 find yourself entering an ICP address to participate in an SNS
-                sale, then STOP. Your sale address is specific to your identity,
+                swap, then STOP. Your swap address is specific to your identity,
                 and you should only interact with that address when participating
-                in a sale through the{" "}
+                in a swap through the{" "}
                 <Link href="https://nns.ic0.app/launchpad/">
                   NNS
                 </Link>{" "}
-                or other ICP based dapps that support the sale like{" "}
+                or other ICP based dapps that support the swap like{" "}
                 <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
                   ICLighthouse
                 </Link>
@@ -454,29 +454,29 @@ function SnsFaqPage() {
             </Faq>
           </FaqSection>
           <FaqSection
-            id="decentralization-sale"
+            id="decentralization-swap"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                De&shy;cen&shy;tral&shy;iza&shy;tion Sale
+                De&shy;cen&shy;tral&shy;iza&shy;tion Swap
               </h2>
             }
           >
             <div className="blob blob-purple blob-md blob-top-right z-[-1]"></div>
-            <Faq title="What is a decentralization sale?">
-              A decentralization sale is the process by which an SNS DAO becomes
+            <Faq title="What is a decentralization swap?">
+              A decentralization swap is the process by which an SNS DAO becomes
               decentralized and where users can purchase SNS tokens by
-              participating. After the sale, each participant receives a basket
+              participating. After the swap, each participant receives a basket
               of neurons. These neurons hold SNS tokens and therefore a share of
               the DAO's voting power. It is one of{" "}
               <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> you
               can get SNS tokens for a particular SNS DAO.
             </Faq>
 
-            <Faq title="Where does a decentralization sale take place?">
+            <Faq title="Where does a decentralization swap take place?">
               <p>
-                A decentralization sale is run entirely on chain. The sale is
+                A decentralization swap is run entirely on chain. The swap is
                 initiated by the NNS. Through this approach, every aspect of the
-                sale, from its initiation to execution, is completely
+                swap, from its initiation to execution, is completely
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
                 (a DAO) and not the developer in order to avoid undesirable
@@ -484,19 +484,19 @@ function SnsFaqPage() {
                 their app.
               </p>
               <p>
-                A decentralization sale follows a list of configurable
+                A decentralization swap follows a list of configurable
                 parameters:
               </p>
               <ul>
                 <li>The amount of SNS tokens to be sold</li>
                 <li>
-                  The amount of ICP a decentralization sale must receive to be
+                  The amount of ICP a decentralization swap must receive to be
                   successful. If the goal is not reached, participants get their
-                  ICP refunded and the sale fails.
+                  ICP refunded and the swap fails.
                 </li>
                 <li>
-                  The maximum amount of ICP a decentralization sale can receive
-                  before it concludes. If the maximum ICP is reached, the sale is
+                  The maximum amount of ICP a decentralization swap can receive
+                  before it concludes. If the maximum ICP is reached, the swap is
                   over and the control of the dapp is turned over to the token
                   holders. As the number of tokens to be sold is fixed, it is
                   amount of ICP raised that determines the initial price of
@@ -507,9 +507,9 @@ function SnsFaqPage() {
               </ul>
             </Faq>
 
-            <Faq title="What do I get from a sale?">
+            <Faq title="What do I get from a swap?">
               <p>
-                If the decentralization sale is successful, you will receive a
+                If the decentralization swap is successful, you will receive a
                 basket of{" "}
                 <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                   neurons
@@ -522,7 +522,7 @@ function SnsFaqPage() {
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
-                each token, depends on the amount of ICP raised during the sale.
+                each token, depends on the amount of ICP raised during the swap.
                 The more ICP raised, the fewer SNS tokens you receive, however
                 their price will be higher.
               </p>
@@ -530,43 +530,43 @@ function SnsFaqPage() {
             
             <Faq title="How is the price of SNS tokens calculated?">
               <p>
-                SNS tokens can be purchased for ICP during the decentralization
-                sale. There is a fixed number of tokens sold during the sale,
+                SNS tokens can be exchanged for ICP during the decentralization
+                swap. There is a fixed number of tokens distributed during the swap,
                 which means their price is determined by the amount of ICP raised.
                 You can calculate the token price by dividing the amount of ICP
                 raised with the number of tokens sold. Price = ICP raised / number
                 of tokens sold. Note that the final price of SNS tokens isn't
-                known at the time of purchase during the decentralization sale as
-                it is dependent on the total amount of ICP raised in the sale.
-                However you can calculate the minimum and maximum price based on
-                the minimum and maximum ICP that the sale accepts, which you can
-                verify in the sale proposal. A few examples:
+                known at the time of the decentralization swap, as it is dependent 
+                on the total amount of ICP raised in the swap. However, you can 
+                calculate the minimum and maximum price based on the minimum and 
+                maximum ICP that the swap accepts, which you can verify in the 
+                swap proposal. A few examples:
               </p>
               <ul>
                 <li>
-                  The decentralization sale raised 1000 ICP by selling 5000 tokens.
+                  The decentralization swap raised 1000 ICP by selling 5000 tokens.
                   You contributed with 10 ICP. This means you will have 50 SNS
                   tokens, each worth 0.2 ICP.
                 </li>
                 <li>
-                  The decentralization sale raised 500,000 ICP by selling 1 million tokens.
+                  The decentralization swap raised 500,000 ICP by selling 1 million tokens.
                   You contributed with 200 ICP. This means you will have 400 SNS
                   tokens, each worth 0.5 ICP.
                 </li>
                 <li>
-                  The decentralization sale raised 10,000 ICP by selling 100 tokens.
+                  The decentralization swap raised 10,000 ICP by selling 100 tokens.
                   You contributed with 5 ICP. This means you will have 0.05 SNS
                   tokens, where a full token would be worth 100 ICP.
                 </li>  
               </ul>              
             </Faq>
 
-            <Faq title="How do I participate in a sale?">
+            <Faq title="How do I participate in a swap?">
               <p>
-                You can participate in the decentralization sale in the{" "}
+                You can participate in the decentralization swap in the{" "}
                 <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>, which
-                requires ICP utility tokens. ICP tokens can be exchanged for the SNS
-                tokens during the decentralization sale. If you don’t have ICP,
+                requires ICP utility tokens. ICP tokens can be exchanged for SNS
+                tokens during the decentralization swap. If you don’t have ICP,
                 you can buy some from any of the exchanges listed{" "}
                 <Link href="https://support.dfinity.org/hc/en-us/articles/6646999699860-How-do-I-stake-ICP-utility-tokens-">
                   here
@@ -574,17 +574,17 @@ function SnsFaqPage() {
                 .
               </p>
               <p>
-                Follow these steps to participate in a decentralization sale:
+                Follow these steps to participate in a decentralization swap:
               </p>
               <p>
                 <strong>
                   1. Go to the NNS frontend dapp and click on the “Launch Pad”
-                  in the sidebar to see all ongoing SNS decentralization sales.
+                  in the sidebar to see all ongoing SNS decentralization swap.
                 </strong>
               </p>
               <p>
                 <strong>
-                  2. Select the SNS Sale you’re interested in under “Current
+                  2. Select the SNS Swap you’re interested in under “Current
                   Launches” and click on the box.
                 </strong>
                 <img
@@ -632,18 +632,18 @@ function SnsFaqPage() {
                 </strong>
               </p>
               <p>
-                After the sale ends and is successful, you receive SNS tokens.
-                Note, that this may take a few hours after the sale has concluded.
+                After the swap ends and is successful, you receive SNS tokens.
+                Note, that this may take a few hours after the swap has concluded.
                 The number of SNS tokens you receive, and the price paid for
-                each token, depends on the amount of ICP raised during the sale
+                each token, depends on the amount of ICP raised during the swap
                 as well as the amount of ICP spent. The more ICP raised, the
                 fewer SNS tokens you receive.
               </p>
               <p>
-                If the set goals of the decentralization sale are not reached,
-                participants will be refunded. The duration of a sale is
+                If the set goals of the decentralization swap are not reached,
+                participants will be refunded. The duration of a swap is
                 configurable and thus, depends on the configuration of each
-                individual SNS. A sale can only start after a 4 to 8-day NNS
+                individual SNS. A swap can only start after a 4 to 8-day NNS
                 voting period (unless 51% majority is reached sooner) on the
                 original proposal that initiates the launch the SNS.
               </p>
@@ -657,14 +657,14 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
-            <Faq title="Who starts the decentralization sale?">
+            <Faq title="Who starts the decentralization swap?">
               The developer team first creates an NNS proposal for the
-              decentralization sale. The sale itself starts automatically
+              decentralization swap. The swap itself starts automatically
               once the NNS proposal is adopted.
             </Faq>
-            <Faq title="As a participant in the SNS decentralization sale, what do I need to trust?">
+            <Faq title="As a participant in the SNS decentralization swap, what do I need to trust?">
               <p>
-                Before participating in an SNS decentralization sale to get a
+                Before participating in an SNS decentralization swap to get a
                 share of the SNS DAO’s voting power, it is highly recommended
                 that you do your due diligence on the dapp in question to make
                 sure the SNS DAO is trustworthy. Dapp developers are responsible
@@ -681,19 +681,19 @@ function SnsFaqPage() {
               </p>
             </Faq>
               
-            <Faq title="How can I verify the SNS decentralization sale proposal?">
+            <Faq title="How can I verify the SNS decentralization swap proposal?">
               <p>
                 There are multiple levels of verification you can do depending
                 on your level of technical understanding. SNS canisters can be
-                verified at any time, even before the decentralization sale, but
+                verified at any time, even before the decentralization swap, but
                 after they have been installed on the SNS subnet.
                 Here are some ways to verify:
               </p>
               <ul>
                 <li>
-                  <strong>Sale parameters:</strong> You can verify what the
-                  parameters of the decentralization sale are in the Launch
-                  Pad or in the decentralization sale NNS proposal.
+                  <strong>Swap parameters:</strong> You can verify what the
+                  parameters of the decentralization swap are in the Launch
+                  Pad or in the decentralization swap NNS proposal.
                 </li>
                 <li>
                   <strong>SNS root canister: </strong> An SNS DAO is comprised
@@ -784,7 +784,7 @@ function SnsFaqPage() {
             <Faq title="Is it possible to sell SNS tokens to another person?">
               <p>
                 Yes. Because tokens can be sent to other people, they can
-                likewise be sent to exchanges and thus swapped for other tokens.
+                likewise be sent to exchanges and thus, swapped for other tokens.
                 The easiest way to sell SNS tokens is through a decentralized
                 exchange (DEX) that lists the token. You can exchange SNS tokens
                 for other tokens, depending on the token pairs available on any
@@ -895,8 +895,8 @@ function SnsFaqPage() {
             text: "Participate",
           },
           {
-            to: "#decentralization-sale",
-            text: "Decentralization Sale",
+            to: "#decentralization-swap",
+            text: "Decentralization Swap",
           },
           {
             to: "#governance",
