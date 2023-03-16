@@ -166,7 +166,7 @@ function SnsPage() {
               >
                 When you, as a dapp developer, decide to hand over your Web3
                 dapp to an SNS, you decide on the SNS parameters and submit a
-                proposal to the NNS, the IC’s DAO. When the proposal is
+                proposal to the NNS, the Internet Computer’s DAO. When the proposal is
                 accepted, the NNS launches the new SNS and assigns it full
                 control over the app.
               </motion.p>
@@ -175,13 +175,12 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 The newly-created SNS tokenizes the dapp through an initial
-                decentralization sale: Part of the dapp’s governance tokens
+                decentralization swap: Part of the dapp’s governance tokens
                 (utility tokens) are bought by the community, providing funding
                 the DAO. Part of the dapp’s utility tokens are allocated to the
-                original developer(s) as a reward for their initial efforts, a
-                part remains in a treasury the SNS DAO controls. The proceeds of
-                the token sale are kept in the treasury as well. The treasury is
-                used to to fund the future development of the dapp.
+                original developer(s) as a reward for their initial efforts. The 
+                rest remains in a treasury the SNS DAO controls, and is used to
+                fund the future development of the dapp.
               </motion.p>
               <motion.p
                 className="mb-0 tw-paragraph"
@@ -242,10 +241,10 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 People participating in the dapp’s governance earn voting
-                rewards, much like in the IC’s NNS DAO. Liquid democracy allows
-                token holders to delegate certain decisions to those they deem
-                more appropriate to take them, resulting in better decisions of
-                the DAO.
+                rewards, much like in the Internet Computer’s NNS DAO. 
+                Liquid democracy allows token holders to delegate certain 
+                decisions to those they deem more appropriate to make them, 
+                resulting in better overall decisions on the progress of the DAO.
               </motion.p>
               <motion.p
                 className="mb-0 tw-paragraph"
@@ -266,17 +265,17 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 Decentralizing dapps through SNSs is the third level of
-                decentralization on the IC. The first level is the IC blockchain
-                that runs on decentralized node machines distributed throughout
-                the world, operated by independent entities, and hosted in
-                independent data centers. The second level is the Network
-                Nervous System (NNS) that governs the decentralized IC
-                blockchain. The third level is the SNS-based decentralization of
-                dapps running on the decentrally-governed decentralized
-                platform. Only such decentralization on every level — the
-                platform itself, the platform's governance, and the governance
+                decentralization on the Internet Computer. The first level is 
+                the ICP blockchain that runs on decentralized node machines 
+                distributed throughout the world, operated by independent 
+                entities, and hosted in independent data centers. The second 
+                level is the Network Nervous System (NNS) that governs the 
+                decentralized ICP blockchain. The third level is the SNS-based 
+                decentralization of dapps running on the decentrally-governed 
+                decentralized platform. Only such decentralization on every level
+                — the platform itself, the platform's governance, and the governance
                 of the individual dapps running on this platform — enables truly
-                decentralized apps. Only possible on the IC.
+                decentralized apps. Only possible on the Internet Computer.
               </motion.p>
             </Card>
           </div>
@@ -361,7 +360,7 @@ function SnsPage() {
               </h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Users become your biggests supporters. Get your dapp funded
-                through a community-driven decentralization sale.
+                through a community-driven decentralization swap.
               </p>
             </motion.div>
           </AnimateSpawn>
@@ -389,7 +388,7 @@ function SnsPage() {
 
               <motion.p variants={transitions.item} className="tw-lead-sm mb-3 md:w-1/2">
                 SNS-1 was a dress rehearsal that DFINITY ran together with the
-                ICP community to test an SNS decentralization sale on the
+                ICP community to test an SNS decentralization swap on the
                 mainnet. After a successful SNS launch, SNS-1 is now controlled
                 by the community.
               </motion.p>
@@ -487,7 +486,7 @@ function SnsPage() {
                   >
                     the NNS
                   </Link>
-                  ), and ICP raised by the decentralization sale is allocated to
+                  ), and ICP raised by the decentralization swap is allocated to
                   the treasury of the newly born SNS DAO. The founders receive a
                   portion of the NNS DAO tokens in the form of locked neurons.
                 </p>
@@ -520,22 +519,22 @@ function SnsPage() {
                   prose-li:bg-[url('/img/checkmark.svg')] prose-li:bg-no-repeat prose-li:bg-left-top prose-li:pl-8 prose-li:my-3 prose-li:leading-6
                   "
               >
-                <h3>Decentralization Sale</h3>
+                <h3>Decentralization Swap</h3>
                 <p>Launching an SNS DAO requires the following:</p>
                 <ul>
                   <li>An existing Web3 dapp to be decentralized.</li>
                   <li>
                     Submission of an NNS proposal requesting a decentralization
-                    sale.
+                    swap.
                   </li>
-                  <li>NNS approval of the decentralization sale.</li>
+                  <li>NNS approval of the decentralization swap.</li>
                   <li>ICP investments to meet minimum funding requirements.</li>
                 </ul>
                 <p>
                   Once these steps are completed, newly minted SNS governance
-                  tokens are distributed among participants of the sale and the
-                  developers who now control the SNS DAO. Proceeds from this
-                  initial decentralization sale are put in a treasury used for
+                  tokens are distributed among participants of the swap and the
+                  developers who now control the SNS DAO. What remains from the 
+                  decentralization swap is put in a treasury that is used for
                   funding the future development of the dapp.
                 </p>
               </div>
