@@ -25,7 +25,7 @@ information on separate pages for the
 [ledger canister integration](../integrate-sns/ledger-integration.md)
 and the
 [index canister integration](../integrate-sns/index-integration.md)
-(sale and governance frontend integration to follow).
+(swap and governance frontend integration to follow).
 
 We refer to the following pages for learning the detailed actions that are
 required [to test the SNS launch locally](./local-testing.md) and to use the 
@@ -36,17 +36,17 @@ required [to test the SNS launch locally](./local-testing.md) and to use the
 
 For each SNS, the decentralization swap is realized in a separate
 _decentralization swap canister_ that exists during the SNS's launch,
-and is owned by the IC which will run the sale. In more detail, 
+and is owned by the IC which will run the swap. In more detail, 
 it is controlled by the NNS root canister.
 
-* The sale canister is set up at the start with a defined amount of SNS tokens to be
+* The swap canister is set up at the start with a defined amount of SNS tokens to be
   distributed publicly.
 
-* During the decentralization swap, participants can send ICP to the sale canister
+* During the decentralization swap, participants can send ICP to the swap canister
   to contribute to the dapp’s funding.
 
-* At the sale’s end the collected ICP are “swapped” for the SNS tokens; the
-  participants get SNS tokens and the SNS gets the collected ICP. Each sale 
+* At the swap's end the collected ICP are “swapped” for the SNS tokens; the
+  participants get SNS tokens and the SNS gets the collected ICP. Each swap 
   participant will receive their portion of the pool of SNS tokens, pro-rated
   by their share of the overall number of ICP contributed. For example, if the
   sale canister initially held 1000 SNS tokens and 500 ICP tokens were collected
@@ -54,7 +54,7 @@ it is controlled by the NNS root canister.
   participant would get 2 SNS tokens for each ICP token they contributed.
 
 Apart from distributing the tokens to many participants, the decentralization swap 
-sets a market price for the SNS token and every sale participant receives SNS 
+sets a market price for the SNS token and every swap participant receives SNS 
 tokens at that price.
 
 An SNS is launched in the following stages:
@@ -121,32 +121,32 @@ An SNS is launched in the following stages:
    decentralization swap, for example
    how many ICP tokens should at least and at most be collected.
    When voting on the proposal, the NNS neurons can check
-   the sale parameters and whether the dapp’s control has been
+   the swap parameters and whether the dapp’s control has been
    handed over to the SNS. The voters can also check all parameters that have been
    set up in step 1. and with which the canisters have be initialized in Step 2.
    The NNS proposal thus also serves as a safeguard where 
    the wisdom of the crowd can
    detect potentially malicious SNSs before they trick 
    users into investing in them.
-   If the NNS proposal is adopted, the sale is started. If the NNS proposal is rejected,
+   If the NNS proposal is adopted, the swap is started. If the NNS proposal is rejected,
    the SNS launch is aborted and the dapp’s control is handed back to you, i.e., to the 
    original developers of the dapp.
    
-5) **decentralization swap**: When the sale starts, the sale canister holds the number
+5) **decentralization swap**: When the swap starts, the swap canister holds the number
    of SNS tokens that were specified. End users can
    participate in the decentralization swap by transferring ICP tokens to the 
-   sale canister.
+   swap canister.
 
 6) **SNS genesis**: When the decentralization swap ends, it is first established whether
-   it was successful, e.g., enough ICP have been collected. If the sale was successful,
-   the exchange rate is determined and all SNS tokens are given to the sale participants in
+   it was successful, e.g., enough ICP have been collected. If the swap was successful,
+   the exchange rate is determined and all SNS tokens are given to the swap participants in
    neurons. Once all neurons are created, the SNS should be under decentralized control
    and the pre-decentralization-sale mode is reverted. 
    Thus, the governance canister is set to be fully functional.
-   If the sale is not successful, the decentralization attempt failed and everything
+   If the swap is not successful, the decentralization attempt failed and everything
    is reverted to the state before the SNS launch attempt, including that the dapp’s control
    is handed back to you (i.e., the original developers of the dapp), and the 
-   collected ICP are refunded to the sale participants.
+   collected ICP are refunded to the swap participants.
    
 ## Setting the SNS parameters {#setting-parameters}
 As mentioned above, the first step in getting an SNS is to set the parameters that
@@ -191,12 +191,12 @@ ledger canister such as the token name, token symbol, and the ledger transaction
    3. _treasury tokens_ that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs, and
    4. _sale tokens_ which are owned by the SNS and sold in exchange for ICP tokens.
-      Initially, parts of the SNS sale tokens are sold in exchange for ICP tokens
-      in an initial decentralization swap. If the sale is successful, the participants
+      Initially, parts of the SNS swap tokens are sold in exchange for ICP tokens
+      in an initial decentralization swap. If the swap is successful, the participants
       will receive SNS tokens in a basket of neurons. 
-      If not all of the sale tokens are sold in the initial sale, the rest of the
-      sale tokens are reserved for future sales (separate from the treasury). 
-      Note that future sales are not yet designed, but having the tokens reserved
+      If not all of the swap tokens are sold in the initial swap, the rest of the
+      swap tokens are reserved for future swaps (separate from the treasury). 
+      Note that future swap are not yet designed, but having the tokens reserved
       makes SNSs forward compatible to such a feature if it is added in the future.
       
 All developer and airdrop tokens are distributed to neurons.
@@ -214,29 +214,29 @@ at any time,
 you must make sure that you, or someone you trust, owns at least
 one developer or airdrop neuron as they provide the only way to 
 submit a proposal
-to upgrade the dapp during the sale.**
+to upgrade the dapp during the swap.**
 
 :::
 
-All developers, airdrop principals, and the sale participants receive
+All developers, airdrop principals, and the swap participants receive
 their neurons as a _basket of neurons_.
 This means that rather than one neuron, they can get many neurons 
 with different dissolve delays. The details of these neurons can
 be set in the initialization.
 
-If only parts of the sale tokens are sold in the initial decentralization swap,
+If only parts of the swap tokens are sold in the initial decentralization swap,
 the developer neurons' voting power is restricted by a multiplier. This multiplier 
-is proportional to the portion of sale tokens that are sold in the initial 
-decentralization swap. As more of the sale tokens are sold in the future, the
-voting power multiplier increases until it is 1 when all sale tokens have been
+is proportional to the portion of swap tokens that are sold in the initial 
+decentralization swap. As more of the swap tokens are sold in the future, the
+voting power multiplier increases until it is 1 when all swap tokens have been
 sold.
 
 ### SNS decentralization swap parameters
 As mentioned, the parameters of the decentralization swap are 
-set in the NNS proposal that starts the sale.
+set in the NNS proposal that starts the swap.
 
 They include configurations such as the minimum number of 
-ICP tokens that the sale must collect to be successful and the
+ICP tokens that the swap must collect to be successful and the
    maximum number of ICP tokens that it will collect.
    Another important parameter is the set of fallback controllers of the dapp.
    If a decentralization swap fails, for example because the targeted minimum number
