@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 
 function DefiPage() {
@@ -43,23 +44,13 @@ function DefiPage() {
   return (
     <Layout
       title="DeFi"
-      description={`The Internet Computer is the only blockchain storing all components of an NFT on the blockchain, including assets. This opens up capabilities for ICP NFTs that go way beyond "overpriced links to JPGs".`}
+      description={` From fully on-chain order book DEXs, to bridgeless cross-chain
+      swaps, the Internet Computer provides an unmatched tech stack
+      for DEXs to thrive on and DeFi to flourish.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-nfts.jpg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-nfts.jpg"
-          }
-        />
-      </Head>
+      <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
+
       <main
         className="text-black relative overflow-hidden"
         style={{
