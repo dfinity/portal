@@ -2,9 +2,7 @@
 
 ## Exchange Rate sample dapp overview
 
-The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp is created to demonstrate simple usage of the HTTPS outcalls feature. Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
-
-The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The purpose of the sample dapp is to provide an example of using  the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request). 
+The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The sample dapp provides an example of using the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) implemented in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
 ## What does the sample dapp do
 
@@ -12,17 +10,16 @@ The sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinba
 
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
-2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
+2. the backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
-Request from users, are queued in the backend canister. Asynchronously at every few Internet Computer heartbeats, the backend canister
-makes a Coinbase API request. To bound the size of the each response, each request pulls at most 200 data points from Coinbase, 
-which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
-Coinbase covers up to 200 minutes of data. The fetched data points are then put into a global timestamp-to-rate hashmap.
+The backend canister receives an update request corresponding to the time range specified by the user at the frontend. The time range
+is converted into time buckets and the buckets are queued for retrival. Asynchronously at every few Internet Computer heartbeats,
+the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+Coinbase covers a time bucket of at most 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
-If the time range the user is interested in is longer than a couple of years, the data points to be returned
-by the backend `exchange_rate` canister could be too large for the current response limit (2MB).
-As a result, we cap the number of data points to be returned by the backend `exchange_rate` canister to
-the frontend `exchange_rate_assets` canister, and increase the sampling interval to cover the full requested range.
+If the time range the user requested is longer than a couple of years, the size of data to be returned by the backend `exchange_rate`
+canister could exceed the existing limits of the system. As a result, the `exchange_rate` canister may return data points with increased granularity in order to fit into the limits and
+cover the full requested range.
 
 ## Exchange Rate sample dapp architecture
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
@@ -49,7 +46,7 @@ There are 2 major factors affecting the [pricing](/docs/current/developer-docs/i
 * The number of requests 
 * The size of each request and response
 
-If we need to fetch a longer period of rates then the number of external HTTPS outcalls is inversely proportional to the body size of each request.
+If we need to fetch a longer period of rates then the number of external HTTPS outcalls is inversely proportional to the body size of each response.
 This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 
 
 ## Building and deploying the sample dapp locally

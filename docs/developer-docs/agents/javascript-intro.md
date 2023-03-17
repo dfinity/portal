@@ -22,7 +22,7 @@ If you are looking for an explanation of what an agent does, see [Agent Overview
 
 ____
 
-The Internet Computer blockchain is accessible via an API that is available at [https://ic0.app/api/v2](https://ic0.app/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
+The Internet Computer blockchain is accessible via an API that is available at [https://icp-api.io/api/v2](https://icp-api.io/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 
 The IC supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
 
@@ -41,9 +41,9 @@ service : {
 
 This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
-In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](https://smartcontracts.org/docs/candid-guide/candid-types.html) reference.
+In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](../../references/candid-ref.md) reference.
 
-Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, by going to the [releases](https://github.com/dfinity/candid/releases) tab of the dfinity/candid repository.
+Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
 
 In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
 
@@ -60,7 +60,7 @@ For our Hello World example, that looks like this:
 	...
 }
 ```
-Then when we run `dfx generate`, dfx will automatically write the following to your src/declarations directory inside your project.
+Then when we run `dfx generate`, dfx will automatically write the following to your `src/declarations` directory inside your project.
 
 ```
 |── src
@@ -85,7 +85,7 @@ import type { ActorMethod } from '@dfinity/agent';
 export interface _SERVICE { 'greet' : ActorMethod<[string], string> };
 ```
 
-The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.host/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
+The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.xyz/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
 
 Next, let's look at `hello.did.js`.
 
@@ -129,7 +129,7 @@ This `Actor` instance is now set up to call all of the service methods as method
 
 ## Browser
 
-The browser context is the easiest to account for. The `fetch` API is available, and most apps will have an easy time determining whether they need to talk to `https://ic0.app` or a local replica, depending on their URL. 
+The browser context is the easiest to account for. The `fetch` API is available, and most apps will have an easy time determining whether they need to talk to `https://icp0.io` or a local replica, depending on their URL. 
 
 When you are building apps that run in the browser, here are some things to consider:
 
@@ -140,7 +140,7 @@ Updates to the IC may feel slow to your users, at around 2-4 seconds. When you a
 * Avoid blocking UI interactions while you wait for the result of your update. Instead, allow users to continuing to make other updates and interactions, and inform your users of success asyncronously. 
 * Try to avoid making inter-canister calls. If the backend needs to talk to other canisters, the duration can add up quickly.
 * Use `Promise.all` to make multiple calls in a batch, instead of making them one-by-one
-* If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.ic0.app` endpoint for canisters
+* If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.icp0.io` endpoint for canisters
 
 ## Bundlers
 

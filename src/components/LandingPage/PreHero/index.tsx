@@ -22,6 +22,7 @@ import { ConstantRateCounter, SpringCounter } from "./Counters";
 import useGlobalData from "@docusaurus/useGlobalData";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 function formatNumber(x: number) {
   return x
@@ -343,15 +344,15 @@ export default function PreHero({}): JSX.Element {
                 className="button-outline-white text-center sm:text-left"
                 href="https://dashboard.internetcomputer.org"
               >
-                INTERNET COMPUTER | ICP DASHBOARD
+                INTERNET COMPUTER DASHBOARD
               </Link>
               <Link
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
-                <LinkArrowRight />
-                See the stats
+                See L1 comparison <LinkArrowUpRight/>
               </Link>
+
             </div>
             <img
               src="/img/home/dashboard.svg"

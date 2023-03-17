@@ -26,7 +26,7 @@ function Index() {
       <div className={styles.cards}>
         <motion.a
           variants={transitions.item}
-          href={"/docs/current/motoko/intro/"}
+          href={"/docs/current/motoko/main/motoko"}
           className={clsx(styles.card, styles.cardHover)}
         >
           <div className={styles.bodyContainer}>
