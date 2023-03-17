@@ -14,11 +14,11 @@ You will need to install Internet Computer SDK following [this guide](/developer
 ### Step 1: Get Coupon
 
 First, you will need to navigate to <https://faucet.dfinity.org>. You
-will need to put in a request for cycles on the DFINITY DEV OFFICIAL Discord server. You can click on REQUEST CYCLES to join the discord server.
+will need to put in a request for cycles on the DFINITY DEV OFFICIAL Discord server. You can click on REQUEST CYCLES to join the Discord server.
 
 ![Getting Coupon](_attachments/faucet_step_1.png)
 
-You must complete a survey sent to you by domwoe as a Direct Message. Once completed domwoe will send you a coupon.
+You must complete a survey sent to you by someone from the DFINTIY team as a Direct Message. Once completed, they will send you a coupon.
 
 ![Survey](_attachments/faucet_step_2.png)
 
@@ -54,9 +54,7 @@ You will need to claim your free cycles by running this command:
 
 ![Claim Cycles](_attachments/faucet_step_5.png)
 
-The next step is to link the cycles wallet canister with your Principal Identifier. Run this command in your terminal:
 
-    dfx identify --network=ic set-wallet <canister id>
 
 Click NEXT STEP to continue.
 
