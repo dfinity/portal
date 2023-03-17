@@ -29,7 +29,7 @@ const {
   getRedirects,
   getSplatRedirects,
 } = require("./plugins/utils/redirects");
-const menuDivider = require("./plugins/utils/menu-divider");
+const { menuDivider, intoColumns } = require("./plugins/utils/menu");
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
@@ -162,66 +162,71 @@ const config = {
           },
           {
             type: "dropdown",
-            className: "dropdown--custom dropdown--rows-7",
+            className: "dropdown--custom dropdown--columns-2",
             position: "right",
             label: "Intro",
-            items: [
-              menuDivider("Jump in"),
-              {
-                label: "ICP Ecosystem",
-                href: "/ecosystem",
-              },
-              {
-                label: "Basics",
-                href: "/basics",
-              },
-              {
-                label: "Dashboard",
-                href: "https://dashboard.internetcomputer.org",
-              },
-              {
-                label: "Video Library",
-                href: "/videos",
-              },
-              {
-                label: "ICP Careers",
-                href: "http://careers.internetcomputer.org/",
-              },
-              {
-                label: "DFINITY Foundation",
-                href: "https://dfinity.org",
-              },
-              menuDivider("Capabilities & Use cases"),
-              {
-                label: "Capabilities",
-                href: "/capabilities",
-              },
-              {
-                label: "Bitcoin Integration",
-                href: "/bitcoin-integration",
-              },
-              {
-                label: "HTTPS Outcalls",
-                href: "/https-outcalls",
-              },
-              {
-                label: "Social Media Dapps",
-                href: "/social-media-dapps",
-              },
-              {
-                label: "NFTs",
-                href: "/nft",
-              },
-              {
-                label: "Identity on ICP",
-                href: "/internet-identity",
-              },
-
-              // NOTE:
-              // when adding new items, make sure you update the
-              // dropdown--rows--x class, otherwise the dropdown
-              // will have too many columns
-            ],
+            items: intoColumns([
+              [
+                // column 1
+                menuDivider("Jump in"),
+                {
+                  label: "ICP Ecosystem",
+                  href: "/ecosystem",
+                },
+                {
+                  label: "Basics",
+                  href: "/basics",
+                },
+                {
+                  label: "Dashboard",
+                  href: "https://dashboard.internetcomputer.org",
+                },
+                {
+                  label: "Video Library",
+                  href: "/videos",
+                },
+                {
+                  label: "ICP Careers",
+                  href: "http://careers.internetcomputer.org/",
+                },
+                {
+                  label: "DFINITY Foundation",
+                  href: "https://dfinity.org",
+                },
+              ],
+              [
+                // column 2
+                menuDivider("Capabilities & Use cases"),
+                {
+                  label: "Capabilities",
+                  href: "/capabilities",
+                },
+                {
+                  label: "Bitcoin Integration",
+                  href: "/bitcoin-integration",
+                },
+                {
+                  label: "HTTPS Outcalls",
+                  href: "/https-outcalls",
+                },
+                {
+                  label: "Social Media Dapps",
+                  href: "/social-media-dapps",
+                },
+                {
+                  label: "DeFi",
+                  href: "/defi",
+                },
+                {
+                  label: "NFTs",
+                  href: "/nft",
+                },
+                {
+                  label: "Identity on ICP",
+                  href: "/internet-identity",
+                },
+              ],
+            ]),
           },
 
           {
@@ -252,51 +257,57 @@ const config = {
           },
           {
             type: "dropdown",
-            className: "dropdown--custom dropdown--rows-8",
+            className: "dropdown--custom dropdown--columns-2",
             position: "right",
             label: "Develop",
-            items: [
-              menuDivider("Start coding"),
+            items: intoColumns([
+              [
+                // column 1
+                menuDivider("Start coding"),
 
-              {
-                label: "Developer Docs",
-                type: "doc",
-                docId: "home",
-              },
-              { label: "Sample Code", to: "/samples" },
-              { label: "Developer Tools", to: "/tooling" },
-              {
-                type: "html",
-                className: "navbar__link--divider",
-                value: "<span>Languages</span>",
-              },
-              {
-                label: "Motoko Playground",
-                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              },
-              {
-                label: "Motoko Docs",
-                href: "/docs/current/motoko/main/motoko",
-              },
-              {
-                label: "Rust Docs",
-                href: "/docs/current/developer-docs/backend/rust/",
-              },
-              menuDivider("Join the discussion"),
+                {
+                  label: "Developer Docs",
+                  type: "doc",
+                  docId: "home",
+                },
+                { label: "Sample Code", to: "/samples" },
+                { label: "Developer Tools", to: "/tooling" },
+                {
+                  type: "html",
+                  className: "navbar__link--divider",
+                  value: "<span>Languages</span>",
+                },
+                {
+                  label: "Motoko Playground",
+                  href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+                },
+                {
+                  label: "Motoko Docs",
+                  href: "/docs/current/motoko/main/motoko",
+                },
+                {
+                  label: "Rust Docs",
+                  href: "/docs/current/developer-docs/backend/rust/",
+                },
+              ],
+              [
+                // column 2
+                menuDivider("Join the discussion"),
 
-              {
-                html: `<span class="dropdown__link--with-icon">Dev Forum <img src='/img/navigation/forum.svg' /></span>`,
-                href: "https://forum.dfinity.org/",
-              },
-              {
-                html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' /></span>`,
-                href: "https://discord.gg/jnjVVQaE2C",
-              },
-              {
-                html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' /></span>`,
-                href: "https://twitter.com/dfinitydev",
-              },
-            ],
+                {
+                  html: `<span class="dropdown__link--with-icon">Dev Forum <img src='/img/navigation/forum.svg' /></span>`,
+                  href: "https://forum.dfinity.org/",
+                },
+                {
+                  html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' /></span>`,
+                  href: "https://discord.gg/jnjVVQaE2C",
+                },
+                {
+                  html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' /></span>`,
+                  href: "https://twitter.com/dfinitydev",
+                },
+              ],
+            ]),
           },
           {
             type: "dropdown",

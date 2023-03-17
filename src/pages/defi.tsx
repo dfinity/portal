@@ -72,7 +72,7 @@ function DefiPage() {
             className="overflow-hidden bg-infinite text-white pt-20"
             ref={heroRef}
           >
-            <div className="container-10 pt-20 mb-20 md:mb-52 md:pt-36 relative">
+            <div className="container-10 pt-20 mb-40 md:mb-52 md:pt-36 relative">
               <div className="blob blob-purple blob-xl md:blob-xl top-[-150px] left-full -translate-x-2/3 opacity-80"></div>
               <div className="md:w-7/10 relative">
                 <motion.h1
@@ -99,7 +99,7 @@ function DefiPage() {
           el={motion.section}
           variants={transitions.fadeIn}
         >
-          <div className="md:w-6/12 md:absolute top-10 md:-translate-y-1/2 right-0">
+          <div className="md:w-6/12 md:absolute top-10 md:-translate-y-1/2 right-0 -mt-30 md:mt-0">
             <img src="/img/defi/defi-hero.webp" alt="" className="w-full" />
           </div>
         </AnimateSpawn>
