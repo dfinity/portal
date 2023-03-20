@@ -75,22 +75,22 @@ To review the default `dfx.json` configuration file:
 
 1.  Open the `dfx.json` configuration file in a text editor.
 
-2.  Notice that the `canisters` key includes settings for a `custom_greeting_assets` canister.
+2.  Notice that the `canisters` key includes settings for a `custom_greeting_frontend` canister.
 
         {
           "canisters": {
             ...
 
-            "custom_greeting_assets": {
+            "custom_greeting_frontend": {
               "dependencies": [
                 "custom_greeting"
               ],
               "frontend": {
-                "entrypoint": "src/custom_greeting_assets/src/index.html"
+                "entrypoint": "src/custom_greeting_frontend/src/index.html"
               },
               "source": [
-                "src/custom_greeting_assets/assets",
-                "dist/custom_greeting_assets/"
+                "src/custom_greeting_frontend/assets",
+                "dist/custom_greeting_frontend/"
               ],
               "type": "assets"
             }
@@ -99,7 +99,7 @@ To review the default `dfx.json` configuration file:
 
     Let’s take a look at the settings in this section.
 
-    -   Frontend assets for your project are compiled into their own canister, in this case, a canister named `custom_greeting_assets`.
+    -   Frontend assets for your project are compiled into their own canister, in this case, a canister named `custom_greeting_frontend`.
 
     -   The assets canister has a default dependency on the main canister for the project.
 
@@ -107,7 +107,7 @@ To review the default `dfx.json` configuration file:
 
     -   The `source` settings specify the path to your `src` and `dist` directories. The `src` setting specifies the directory to use for static assets that will be included in your assets canister when you build your project. If you have custom cascading stylesheet (CSS) or JavaScript files, you would include them in the folder specified by this path. After building the project, the project assets are served from the directory specified by the `dist` setting.
 
-    -   The `type` setting specifies that the `custom_greeting_assets` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
+    -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
 
     For this tutorial, we are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
@@ -119,7 +119,7 @@ For this tutorial, you are going to make calls to the default `main.mo` canister
 
 To review the default frontend files:
 
-1.  Open the `src/custom_greeting_assets/src/index.html` file in a text editor.
+1.  Open the `src/custom_greeting_frontend/src/index.html` file in a text editor.
 
     This template file is the default frontend entry point for the dapp as specified by the `frontend.entrypoint` setting in the `dfx.json` file.
 
@@ -127,19 +127,19 @@ To review the default frontend files:
 
     This is the same default frontend you saw in [Viewing the default frontend](/developer-docs/backend/backend-tutorials/explore-templates.md#default-frontend).
 
-2.  Open the `src/custom_greeting_assets/src/index.js` file in a text editor.
+2.  Open the `src/custom_greeting_frontend/src/index.js` file in a text editor.
 
-        import { custom_greeting } from "../../declarations/custom_greeting";
+        import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
 
         document.getElementById("clickMeBtn").addEventListener("click", async () => {
           const name = document.getElementById("name").value.toString();
-          // Interact with custom_greeting actor, calling the greet method
-          const greeting = await custom_greeting.greet(name);
+          // Interact with custom_greeting_backend actor, calling the greet method
+          const greeting = await custom_greeting_backend.greet(name);
 
           document.getElementById("greeting").innerText = greeting;
         });
 
-    -   The `import` statement points to an actor that will allow us to make calls to our `custom_greeting` canister from `"../declarations"`
+    -   The `import` statement points to an actor that will allow us to make calls to our `custom_greeting_backend` canister from `"../declarations"`
 
     -   The declarations haven’t been created yet, but we will come back to that.
 
@@ -177,15 +177,15 @@ To prepare the frontend files:
 
 6.  Save your changes and close the `tsconfig.json` file to continue.
 
-7.  Open the default `src/custom_greeting_assets/src/index.js` file in a text editor and delete lines 2 to 9.
+7.  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete lines 2 to 9.
 
 8.  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file.
 
 9.  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
-        mv src/custom_greeting_assets/src/index.js src/custom_greeting_assets/src/index.jsx
+        mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
 
-10. Open the default `src/custom_greeting_assets/src/index.html` file in a text editor, then replace the body contents with `<div id="app"></div>`.
+10. Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with `<div id="app"></div>`.
 
     For example:
 
@@ -243,7 +243,7 @@ To view the custom frontend:
 
         npm start
 
-2.  Open a browser and navigate to <http://localhost:8080>.
+2.  Open a browser and navigate to <http://localhost:4943>.
 
 3.  Verify that you are prompted to type a greeting.
 
