@@ -44,7 +44,7 @@ let lastTxRate = 0;
 function transactionRateWithJitter(): Promise<number> {
   return getTransactionRate().then((rate) => {
     if (lastTxRate === rate) {
-      return Math.max(0, rate + Math.random() * 50 - 25);
+      return Math.max(0, rate + Math.random() * 40 - 20);
     }
     lastTxRate = rate;
     return rate;
@@ -55,7 +55,7 @@ let lastUpdateTxRate = 0;
 function updateRateWithJitter(): Promise<number> {
   return getTransactionRateV3("update").then((rate) => {
     if (lastUpdateTxRate === rate) {
-      return Math.max(0, rate + Math.random() * 120 - 6);
+      return Math.max(0, rate + Math.random() * 4 - 2);
     }
     lastUpdateTxRate = rate;
     return rate;
