@@ -738,18 +738,7 @@
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": ["/img/showcase/icpswap_screenshot_0.webp"]
   },
-  {
-    "id": "sushiswapfront-end",
-    "name": "SushiSwap Front-End",
-    "website": "https://aufz7-4qaaa-aaaaf-qae3a-cai.raw.ic0.app/swap",
-    "tags": ["DeFi"],
-    "description": "Sushi Swap is a DEX that enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more.",
-    "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
-    "oneLiner": "Front-End Hosted On-Chain",
-    "display": "Normal",
-    "logo": "/img/showcase/sushiswapfront-end_logo.webp",
-    "screenshots": ["/img/showcase/sushiswapfront-end_screenshot_0.webp"]
-  },
+  
   {
     "id": "evmonicp",
     "name": "EVM on ICP",
