@@ -104,6 +104,7 @@ const redirects = `
   /developers-guide/quickstart /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/deploy_sample_app
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
