@@ -44,7 +44,7 @@ function DefiPage() {
   return (
     <Layout
       title="DeFi"
-      description={` From fully on-chain order book DEXs, to bridgeless cross-chain
+      description={`From fully on-chain order book DEXs, to bridgeless cross-chain
       swaps, the Internet Computer provides an unmatched tech stack
       for DEXs to thrive on and DeFi to flourish.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
