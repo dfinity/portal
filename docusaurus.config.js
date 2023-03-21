@@ -224,6 +224,10 @@ const config = {
                   label: "Wallets",
                   href: "/ecosystem?tag=Wallet",
                 },
+                {
+                  label: "GitHub",
+                  href: "https://github.com/dfinity/ic",
+                },
               ],
             ]),
           },
@@ -264,6 +268,10 @@ const config = {
                 {
                   label: "SNS DAOs",
                   href: "/sns",
+                },
+                {
+                  label: "Help & Support",
+                  href: "https://support.dfinity.org/hc/en-us ",
                 },
               ],
             ]),
@@ -358,10 +366,6 @@ const config = {
                 {
                   label: "DFINITY Foundation",
                   href: "https://dfinity.org",
-                },
-                {
-                  label: "Help & Support",
-                  href: "https://support.dfinity.org/hc/en-us ",
                 },
               ],
             ]),
