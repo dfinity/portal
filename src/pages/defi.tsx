@@ -220,8 +220,8 @@ function DefiPage() {
               Blockchains today have to rely on oracles if they want to access
               price data from Web2 APIs. Using HTTPS outcalls, the Internet
               Computer can query up-to-date prices from any traditional Web2 API
-              without oracles, which reduces costs and increases speed. Making
-              calls to the{" "}
+              without oracles, which reduces trust assumption as well as costs, 
+              and increases speed. Making calls to the{" "}
               <Link
                 href="https://wiki.internetcomputer.org/wiki/Exchange_rate_canister"
               > 
