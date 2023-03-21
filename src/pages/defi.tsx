@@ -175,10 +175,10 @@ function DefiPage() {
               Native BTC DeFi
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Using Chain-Key Signatures, the Internet Computer can sign native
-              transactions on other blockchains without using bridges. This
-              means you can swap BTC with ETH or even Dogecoin without ever
-              having to use insecure wrapped tokens.
+              Via chain-key signatures, the Internet Computer is capable of signing 
+              native transactions on other blockchains without using bridges. This
+              means it's possible to swap BTC with ETH or even Dogecoin without ever
+              having to use insecure wrapped tokens. 
             </p>
             <p className="mb-0">
               <Link
@@ -195,11 +195,12 @@ function DefiPage() {
               Bringing ERC-20 tokens to ICP
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Building on Chain-Key Signatures and HTTPS outcalls, DEXs can
+              Building on chain-key signatures and HTTPS outcalls, DEXs can
               already natively support a plethora of ERC-20 tokens. Plugging
-              into services such as Infura, ICP smart contracts can sign
+              into Ethereum RPC API providers, ICP smart contracts can sign
               transactions for any ERC-20 token without relying on insecure
-              bridges.
+              bridges. Soon the Internet Computer will be integrated with the
+              Ethereum network at a protocol level. 
             </p>
             <p className="mb-0">
               <Link
