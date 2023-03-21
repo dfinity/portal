@@ -130,9 +130,9 @@ To reinstall a canister:
 
 3.  Verify you have canister identifiers for all of the canisters you want to re-deploy.
 
-4.  Re-deploy all of the canisters by running the following command:
+4.  Re-deploy all of the canisters by running the following command for every canister:
 
-        dfx canister install --all --mode reinstall
+        dfx canister install <canister id or name> --mode reinstall
 
 Note that you can use the `reinstall` mode to replace any canister, regardless of whether the canister has code or state associated with it.
 

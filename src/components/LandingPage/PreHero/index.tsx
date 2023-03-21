@@ -1,3 +1,13 @@
+import Link from "@docusaurus/Link";
+import useGlobalData from "@docusaurus/useGlobalData";
+import {
+  getBlockCount,
+  getBlockRate,
+  getBytesStored,
+  getSubnetCount,
+  getTransactionRate,
+  getTransactionRateV3,
+} from "@site/src/utils/network-stats";
 import transitions from "@site/static/transitions.json";
 import {
   motion,
@@ -6,22 +16,13 @@ import {
   useTransform,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { useQuery } from "react-query";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
-import ParticleAnimation from "./ParticleAnimation";
-import { useQuery } from "react-query";
-import {
-  getBlockCount,
-  getBlockRate,
-  getBytesStored,
-  getFinalizationRate,
-  getSubnetCount,
-  getTransactionRate,
-} from "@site/src/utils/network-stats";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import { ConstantRateCounter, SpringCounter } from "./Counters";
-import useGlobalData from "@docusaurus/useGlobalData";
-import Link from "@docusaurus/Link";
-import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import InfoIcon from "./InfoIcon";
+import ParticleAnimation from "./ParticleAnimation";
 
 function formatNumber(x: number) {
   return x
@@ -39,15 +40,34 @@ function formatStateSize(x: number) {
   );
 }
 
-let lastRate = 0;
+let lastTxRate = 0;
 function transactionRateWithJitter(): Promise<number> {
   return getTransactionRate().then((rate) => {
-    if (lastRate === rate) {
-      return Math.max(0, rate + Math.random() * 50 - 25);
+    if (lastTxRate === rate) {
+      return Math.max(0, rate + Math.random() * 40 - 20);
     }
-    lastRate = rate;
+    lastTxRate = rate;
     return rate;
   });
+}
+
+let lastUpdateTxRate = 0;
+function updateRateWithJitter(): Promise<number> {
+  return getTransactionRateV3("update").then((rate) => {
+    if (lastUpdateTxRate === rate) {
+      return Math.max(0, rate + Math.random() * 4 - 2);
+    }
+    lastUpdateTxRate = rate;
+    return rate;
+  });
+}
+
+function getEthEquivalentFigureSpacer(value) {
+  const valueDigitCount = value.toString().length;
+  const valueDigitCountWithApostrophes =
+    valueDigitCount + Math.floor((valueDigitCount - 1) / 3);
+  const scheme = `999'999'999'999'999`;
+  return scheme.slice(scheme.length - valueDigitCountWithApostrophes);
 }
 
 const Numbers = () => {
@@ -55,6 +75,9 @@ const Numbers = () => {
     Promise.all([getBlockCount(), getBlockRate()])
   );
   const finalizationRate = useQuery(["getFinalizationRate"], getBlockRate);
+  const updateTxRate = useQuery(["getUpdateTxRate"], updateRateWithJitter, {
+    refetchInterval: 1000,
+  });
   const subnetCountQuery = useQuery(["subnetCount"], getSubnetCount);
   const transactionRateQuery = useQuery(
     ["transactionRate"],
@@ -141,11 +164,38 @@ const Numbers = () => {
             </span>{" "}
             av. cost/Tx
           </div>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              0.008
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
+            <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
+              {updateTxRate.isFetched ? (
+                <>
+                  <SpringCounter
+                    target={updateTxRate.data * 80}
+                    initialTarget={updateTxRate.data * 80}
+                    initialValue={updateTxRate.data * 80}
+                    format={formatNumber}
+                    springConfig={[3, 1, 1]}
+                    className="col-start-1 row-start-1"
+                  ></SpringCounter>
+                  <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                    {getEthEquivalentFigureSpacer(
+                      Math.floor(updateTxRate.data * 80)
+                    )}
+                  </span>
+                </>
+              ) : (
+                <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                  {getEthEquivalentFigureSpacer(Math.floor(5000 * 80))}
+                </span>
+              )}
             </span>{" "}
-            av. Wh/Tx
+            ETH equivalent Tx/s{" "}
+            <Link
+              href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
+              title="Read more: Not all transactions are equal"
+              className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
+            >
+              <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
+            </Link>
           </div>
         </div>
       </AnimateSpawn>
@@ -343,14 +393,13 @@ export default function PreHero({}): JSX.Element {
                 className="button-outline-white text-center sm:text-left"
                 href="https://dashboard.internetcomputer.org"
               >
-                INTERNET COMPUTER | ICP DASHBOARD
+                INTERNET COMPUTER DASHBOARD
               </Link>
               <Link
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
-                <LinkArrowRight />
-                See the stats
+                See L1 comparison <LinkArrowUpRight />
               </Link>
             </div>
             <img
