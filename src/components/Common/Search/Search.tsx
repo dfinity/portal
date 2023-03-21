@@ -5,6 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { PageSearchResult } from "@site/search/src/declarations/search/search.did";
 import { createFocusTrap } from "focus-trap";
 import Link from "@docusaurus/Link";
+import { trackEvent } from "@site/src/utils/matomo";
 
 let initialTerm = "";
 let initialResults: PageSearchResult[] | null = null;
@@ -80,10 +81,18 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
     };
   }, [term]);
 
-  function handleResultClick(e: React.MouseEvent<HTMLAnchorElement>) {
+  function handleResultClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    term: string,
+    title: string
+  ) {
     if (!e.metaKey && !e.ctrlKey) {
       onClose();
     }
+
+    try {
+      trackEvent("Search", term, title);
+    } catch {}
   }
 
   return (
@@ -164,7 +173,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                       <Link
                         className="tw-heading-5 mb-4 hover:text-black hover:no-underline"
                         href={result.url}
-                        onClick={handleResultClick}
+                        onClick={(e) =>
+                          handleResultClick(e, term, result.title)
+                        }
                       >
                         {result.title}
                       </Link>
@@ -176,17 +187,23 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                             result.results.length > 4 ? 3 : 4
                           )
                         : result.results
-                      ).map((result) => (
-                        <div className="" key={result.doc.id.toString()}>
+                      ).map((pageSection) => (
+                        <div className="" key={pageSection.doc.id.toString()}>
                           <Link
                             className="tw-heading-7 text-infinite hover:no-underline hover:text-black"
-                            href={result.doc.url}
-                            onClick={handleResultClick}
+                            href={pageSection.doc.url}
+                            onClick={(e) =>
+                              handleResultClick(
+                                e,
+                                term,
+                                result.title + " / " + pageSection.doc.title
+                              )
+                            }
                           >
-                            {result.doc.title}
+                            {pageSection.doc.title}
                           </Link>
                           <p className="tw-paragraph text-black-60 whitespace-nowrap text-ellipsis overflow-hidden mb-0">
-                            {result.doc.excerpt}
+                            {pageSection.doc.excerpt}
                           </p>
                         </div>
                       ))}

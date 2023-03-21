@@ -10,7 +10,10 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     curl -o ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ledger-canister_notify-method.wasm.gz"
     gunzip ledger.wasm.gz
     curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ledger.did"
-    curl -o ledger.public.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger.did"
+    # on Linux: 
+    dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack '()' --query | sed -i 's/\\n/\n/g'
+    # on MacOS:
+    dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack '()' --query | sed 's/\\n/\n/g'
     ```
 
     :::note
