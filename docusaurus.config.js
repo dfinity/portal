@@ -164,6 +164,7 @@ const config = {
             type: "dropdown",
             className: "dropdown--custom dropdown--columns-2",
             position: "right",
+
             label: "Learn",
             items: intoColumns([
               [
@@ -256,6 +257,10 @@ const config = {
                 {
                   label: "NFTs",
                   href: "/nft",
+                },
+                {
+                  label: "DeFi",
+                  href: "/defi",
                 },
                 {
                   label: "Create an Internet Identity",
@@ -362,7 +367,6 @@ const config = {
                   label: "Roadmap",
                   href: "/roadmap",
                 },
-
                 {
                   label: "DFINITY Foundation",
                   href: "https://dfinity.org",
