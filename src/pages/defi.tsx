@@ -221,8 +221,13 @@ function DefiPage() {
               price data from Web2 APIs. Using HTTPS outcalls, the Internet
               Computer can query up-to-date prices from any traditional Web2 API
               without oracles, which reduces costs and increases speed. Making
-              calls to the Exchange Rate Canister, you can already query price
-              data.
+              calls to the{" "}
+              <Link
+                href="https://wiki.internetcomputer.org/wiki/Exchange_rate_canister"
+              > 
+                Exchange Rate Canister
+              </Link>
+              , you can already query price data.
             </p>
             <p className="mb-0">
               <Link
