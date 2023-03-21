@@ -370,7 +370,10 @@ function DefiPage() {
                 the Internet Computer built to support native Bitcoin borrowing
                 and lending.
               </p>
-              <Link className="link-primary link-with-icon" href="">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://finterest.ooo/"
+              >
                 <LinkArrowRight /> Check out Finterest
               </Link>
             </TranslatedLayout>
