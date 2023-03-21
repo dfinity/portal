@@ -141,6 +141,14 @@ html.docs-doc-page {
   margin: 0 0;
 }
 
+.dropdown--hoverable .dropdown__menu {
+  transform: translateX(-50%) translateY(-0.625rem);
+}
+
+.dropdown--hoverable:hover .dropdown__menu {
+  transform: translateX(-50%) translateY(-1px);
+}
+
 @media (max-width: 996px) {
   :root {
     --ifm-navbar-height: 72px;
@@ -179,11 +187,6 @@ html.plugin-docs
   .navbar__items.navbar__items--right
   .navbar__item {
   display: none;
-}
-
-/* First dropdown menu is too easy to hide accidentally */
-.navbar__inner .navbar__items--right > .dropdown:nth-child(2) {
-  // padding-left: 4rem;
 }
 
 /* on mobile hide the search bar in the top navbar */
@@ -499,12 +502,14 @@ html.plugin-docs
 @media screen and (min-width: 996px) {
   .navbar__link--dummy {
     display: block;
+    line-height: 46px;
   }
 
   .dropdown--right .dropdown__menu {
-    left: 0;
+    left: 50%;
     right: inherit;
     padding: 0 0;
+    width: max-content;
     --ifm-dropdown-link-color: var(--ifm-color-primary);
     --ifm-dropdown-hover-background-color: rgba(59, 0, 185, 0.1);
   }
@@ -513,7 +518,7 @@ html.plugin-docs
     padding: 12px 24px;
     border-radius: 0;
     margin: 0;
-    min-width: 240px;
+    min-width: max-content;
     font-size: 16px;
     line-height: 22px;
     font-weight: 450px;
@@ -526,6 +531,12 @@ html.plugin-docs
   .dropdown__menu .dropdown__link--with-icon {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
+
+    // img {
+    //   max-width: 0;
+    //   width: 30px;
+    // }
   }
 
   .dropdown__menu li:first-child {
@@ -540,7 +551,7 @@ html.plugin-docs
   }
 
   .navbar__link.dropdown--custom.dropdown--columns-2 + .dropdown__menu {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: minmax(240px, 1fr) minmax(min-content, 1fr);
     li:nth-child(odd) {
       border-right: 1px solid rgba(59, 0, 185, 0.1);
     }

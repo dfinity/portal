@@ -164,39 +164,40 @@ const config = {
             type: "dropdown",
             className: "dropdown--custom dropdown--columns-2",
             position: "right",
-            label: "Intro",
+
+            label: "Learn",
             items: intoColumns([
               [
                 // column 1
-                menuDivider("Jump in"),
+                menuDivider("Dig in"),
                 {
-                  label: "ICP Ecosystem",
-                  href: "/ecosystem",
-                },
-                {
-                  label: "Basics",
+                  label: "The Basics",
                   href: "/basics",
                 },
                 {
-                  label: "Dashboard",
-                  href: "https://dashboard.internetcomputer.org",
+                  label: "What is the IC",
+                  href: "/what-is-the-ic",
+                },
+                {
+                  label: "The Technology",
+                  href: "/how-it-works",
+                },
+                {
+                  label: "Whitepaper",
+                  href: "https://internetcomputer.org/whitepaper.pdf",
+                },
+                {
+                  label: "IC Wiki",
+                  href: "https://wiki.internetcomputer.org",
                 },
                 {
                   label: "Video Library",
                   href: "/videos",
                 },
-                {
-                  label: "ICP Careers",
-                  href: "http://careers.internetcomputer.org/",
-                },
-                {
-                  label: "DFINITY Foundation",
-                  href: "https://dfinity.org",
-                },
               ],
               [
                 // column 2
-                menuDivider("Capabilities & Use cases"),
+                menuDivider("Capabilities"),
                 {
                   label: "Capabilities",
                   href: "/capabilities",
@@ -210,20 +211,23 @@ const config = {
                   href: "/https-outcalls",
                 },
                 {
-                  label: "Social Media Dapps",
-                  href: "/social-media-dapps",
-                },
-                {
-                  label: "DeFi",
-                  href: "/defi",
-                },
-                {
-                  label: "NFTs",
-                  href: "/nft",
-                },
-                {
                   label: "Identity on ICP",
                   href: "/internet-identity",
+                },
+
+                menuDivider("Tools"),
+                {
+                  label: "Dashboard",
+                  href: "https://dashboard.internetcomputer.org",
+                },
+
+                {
+                  label: "Wallets",
+                  href: "/ecosystem?tag=Wallet",
+                },
+                {
+                  label: "GitHub",
+                  href: "https://github.com/dfinity/ic",
                 },
               ],
             ]),
@@ -232,28 +236,50 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            label: "Learn",
-            items: [
-              menuDivider("Get to know more"),
+            className: "dropdown--custom",
+            label: "Use",
+            items: intoColumns([
+              [
+                menuDivider("Step into Web3"),
+                {
+                  label: "ICP Ecosystem",
+                  href: "/ecosystem",
+                },
 
-              {
-                label: "What is the IC",
-                href: "/what-is-the-ic",
-              },
-              {
-                label: "How it works",
-                href: "/how-it-works",
-              },
-              {
-                label: "Whitepaper",
-                href: "https://internetcomputer.org/whitepaper.pdf",
-              },
-
-              {
-                label: "Help & Support",
-                href: "https://support.dfinity.org/hc/en-us ",
-              },
-            ],
+                {
+                  label: "ICP token",
+                  href: "/icp-tokens",
+                },
+                {
+                  label: "Social Media Dapps",
+                  href: "/social-media-dapps",
+                },
+                {
+                  label: "NFTs",
+                  href: "/nft",
+                },
+                {
+                  label: "DeFi",
+                  href: "/defi",
+                },
+                {
+                  label: "Create an Internet Identity",
+                  href: "https://identity.ic0.app/",
+                },
+                {
+                  label: "Staking & Governance (NNS)",
+                  href: "/nns",
+                },
+                {
+                  label: "SNS DAOs",
+                  href: "/sns",
+                },
+                {
+                  label: "Help & Support",
+                  href: "https://support.dfinity.org/hc/en-us ",
+                },
+              ],
+            ]),
           },
           {
             type: "dropdown",
@@ -271,16 +297,6 @@ const config = {
                   docId: "home",
                 },
                 { label: "Sample Code", to: "/samples" },
-                { label: "Developer Tools", to: "/tooling" },
-                {
-                  type: "html",
-                  className: "navbar__link--divider",
-                  value: "<span>Languages</span>",
-                },
-                {
-                  label: "Motoko Playground",
-                  href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-                },
                 {
                   label: "Motoko Docs",
                   href: "/docs/current/motoko/main/motoko",
@@ -289,13 +305,19 @@ const config = {
                   label: "Rust Docs",
                   href: "/docs/current/developer-docs/backend/rust/",
                 },
+                menuDivider("Tools"),
+
+                { label: "Developer Tools", to: "/tooling" },
+                {
+                  label: "Motoko Playground",
+                  href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+                },
               ],
               [
                 // column 2
-                menuDivider("Join the discussion"),
-
+                menuDivider("Need Support"),
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev Forum <img src='/img/navigation/forum.svg' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
                 {
@@ -312,30 +334,45 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            label: "Participate",
-            items: [
-              menuDivider("Join the movement"),
-              {
-                label: "Live sessions",
-                href: "/live-sessions",
-              },
-              {
-                label: "Roadmap",
-                href: "/roadmap",
-              },
-              {
-                label: "ICP tokens",
-                href: "/icp-tokens",
-              },
-              {
-                label: "Staking & Governance (NNS)",
-                href: "/nns",
-              },
-              {
-                label: "SNS DAOs",
-                href: "/sns",
-              },
-            ],
+            label: "Community",
+            className: "dropdown--custom",
+            items: intoColumns([
+              [
+                menuDivider("Get Involved"),
+                {
+                  label: "Live sessions",
+                  href: "/live-sessions",
+                },
+                {
+                  label: "Community Blog",
+                  href: "https://medium.com/dfinity",
+                },
+                {
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
+                  href: "https://forum.dfinity.org/",
+                },
+                {
+                  label: "Developer Grants",
+                  href: "https://dfinity.org/grants",
+                },
+                {
+                  label: "Community Grants",
+                  href: "https://dfinity.org/community-grants",
+                },
+                {
+                  label: "ICP Careers",
+                  href: "http://careers.internetcomputer.org/",
+                },
+                {
+                  label: "Roadmap",
+                  href: "/roadmap",
+                },
+                {
+                  label: "DFINITY Foundation",
+                  href: "https://dfinity.org",
+                },
+              ],
+            ]),
           },
           {
             type: "doc",

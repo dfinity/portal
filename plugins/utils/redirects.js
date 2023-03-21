@@ -49,7 +49,6 @@ const redirects = `
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
-  /docs/current/developer-docs/build/backend /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
@@ -105,6 +104,7 @@ const redirects = `
   /developers-guide/quickstart /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/deploy_sample_app
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
@@ -119,7 +119,6 @@ const redirects = `
   /docs/current/references/security/* /docs/current/developer-docs/security/:splat
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
-  /docs/developers-guide/* /docs/current/developer-docs/production/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
   /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/backend-tutorials/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
@@ -156,6 +155,8 @@ exports.getRedirects = function () {
 };
 
 exports.getSplatRedirects = function (existingUrl) {
+  const urls = [];
+
   for (const redirect of redirects.filter(isSplat)) {
     const trimmedSource = redirect[0].replace("/*", "/");
 
@@ -166,8 +167,10 @@ exports.getSplatRedirects = function (existingUrl) {
           trimmedDestination,
           trimmedSource
         );
-        return completeSourceUrl;
+        urls.push(completeSourceUrl);
       }
     }
   }
+
+  return urls;
 };
