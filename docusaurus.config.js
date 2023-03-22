@@ -247,7 +247,7 @@ const config = {
                 },
 
                 {
-                  label: "ICP token",
+                  label: "ICP Token",
                   href: "/icp-tokens",
                 },
                 {
