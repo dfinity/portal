@@ -13,8 +13,7 @@ Here we explain NNS FE dapp UI.
 * Note that some interactions are only possible on sns-quill, especially in the first
 version of SNS
 -->
-<!-- For more information on how to participate in the SNS decentralization swap, we refer to
-[this page](swap-interaction.md). -->
+
 
 
 ## Prerequisites 
