@@ -551,9 +551,7 @@ html.plugin-docs
   }
 
   .navbar__link.dropdown--custom.dropdown--columns-2 + .dropdown__menu {
-    // grid-template-columns: repeat(2, 1fr);
     grid-template-columns: minmax(240px, 1fr) minmax(min-content, 1fr);
-    // grid-auto-flow: row;
     li:nth-child(odd) {
       border-right: 1px solid rgba(59, 0, 185, 0.1);
     }
