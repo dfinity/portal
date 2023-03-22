@@ -4,7 +4,7 @@ links:
   Proposal: https://dashboard.internetcomputer.org/proposal/65132
   Deployment & Upgrades: https://forum.dfinity.org/t/sns-deployment-and-upgrades-design-proposal/10816
   Rewards: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36
-  decentralization swap: https://forum.dfinity.org/t/sns-initial-token-swap/13591
+  Decentralization Swap: https://forum.dfinity.org/t/sns-initial-token-swap/13591
 eta: February 2023
 is_community: false
 ---
