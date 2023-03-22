@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
+import React, { useEffect, useState } from "react";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
@@ -71,7 +71,6 @@ const Search = () => {
           </span>
         )}
       </button>
-
       {isOverlayOpen && (
         <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
       )}
