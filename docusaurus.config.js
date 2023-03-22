@@ -23,7 +23,6 @@ const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
@@ -65,7 +64,6 @@ const config = {
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
-    teamInformationPlugin,
     votingRewardsPlugin,
     roadmapDataPlugin,
     whatIsIcpDataPlugin,

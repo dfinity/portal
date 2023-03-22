@@ -84,8 +84,8 @@ const howItWorksCardsPlugin = async function () {
       return groups;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("howitworks-cards.json", JSON.stringify(content));
     },
   };
 };
