@@ -56,7 +56,7 @@ The SNS consists of the following canisters:
 * the ledger canister and archive canisters,
 * the index canister, 
 * the root canister, and 
-* the decentralization sale canister that is explained in the next
+* the decentralization swap canister that is explained in the next
 section.
 
 The _governance canister_ enables decentralized decision making.
@@ -100,14 +100,14 @@ If a developer wants to get an SNS for their dapp, this proceeds in the followin
    After this one call, SNS-W automatically removes the principal from the list again,
    so this can only be done once.
 2. The dapp’s control is handed over to the SNS canisters by the dapp developers.
-3. An NNS proposal is submitted. If the proposal is adopted, a decentralization sale is
+3. An NNS proposal is submitted. If the proposal is adopted, a decentralization swap is
    started for the SNS (see next). 
    When voting on this proposal, the NNS voters can verify the parameters in the already
    existing SNS canisters as well as the sale parameters that are set in the proposal.
    If the proposal is rejected, the SNS launch fails and the dapp is handed back to the
    developers.
 
-#### SNS decentralization sale
+#### SNS decentralization swap
 A crucial part of launching an SNS is how it can be decentralized. 
 That is, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
@@ -115,15 +115,15 @@ The first SNS version provides one simple way to achieve this:
 a developer can hand over their dapp to the ICP and ask it to start a decentralization 
 sale for the newly creaed SNS.
 
-In the decentralization sale, a fixed number of newly created SNS tokens sold for ICP tokens. 
+In the decentralization swap, a fixed number of newly created SNS tokens sold for ICP tokens. 
 The sale these ICP tokens and, in the end of the sale, the conversion rate is computed
 as the ratio of ICP collected by the number of sold SNS tokens.
-After a successful decentralization sale, SNS tokens are owned by a large
+After a successful decentralization swap, SNS tokens are owned by a large
 community and therefore the SNS governance control is decentralized.
-Moreover, the ICP that were collected in the decentralization sale provide initial
+Moreover, the ICP that were collected in the decentralization swap provide initial
 funding for the SNS project in a SNS-owned treasury.
 
-The decentralization sale and how to get an SNS including such a sale
+The decentralization swap and how to get an SNS including such a sale
 are described in more detail [here](./get-sns/get-sns-intro.md).
 
 ### SNS management
