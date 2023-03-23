@@ -37,6 +37,9 @@ export default function Home(): JSX.Element {
       >
         <HeroSection></HeroSection>
         <div className="overflow-hidden">
+          {/* 
+            Update the list of showcase projects here: /plugins/home-showcase.js 
+          */}
           <ShowcaseSection
             className="pb-[320px]"
             lines={[
@@ -55,16 +58,6 @@ export default function Home(): JSX.Element {
             ]}
             subheading="There are hundreds of projects like these..."
             linePostfix="fully on-chain"
-            projectIds={[
-              "dscvr",
-              "distrikt",
-              "openchat",
-              "sonic",
-              "kinic",
-              "cubetopia",
-              "plethora",
-              "entrepot",
-            ]}
           ></ShowcaseSection>
         </div>
         <BackgroundPanel
