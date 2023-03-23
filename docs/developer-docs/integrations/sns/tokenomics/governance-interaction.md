@@ -24,8 +24,7 @@ If you want to use quill, you also need to download sns-quill as explained
 <!-- TODO-content:
 Before participating, you need a neuron.
 Two ways to get one
-1) participate in the [SNS decentralization swap](swap-interaction.md)
-    and getting SNS neurons.
+1) participate in the SNS decentralization swap and getting SNS neurons.
 2) (once liquid tokens) have SNS tokens and stake them.
 -->
 
@@ -33,7 +32,7 @@ Two ways to get one
 <!--  TODO-content:
 In the initial version, can participate in the swap on the FE and will see the neurons.
 Can add hot key (explain what that is) but cannot do much more yet.
-For how to participate in swap, refer to [this page](swap-interaction.md). 
+For how to participate in swap, refer to this page. 
 Then explain here how to add a hot key to allow other principals to manage the neuron.
 -->
 
