@@ -136,7 +136,7 @@ function DefiPage() {
                 6,500+ TX/s
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Current Network Usage
+                Typical Network Usage
               </span>
             </motion.div>
             <motion.div
@@ -176,9 +176,11 @@ function DefiPage() {
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               Via chain-key signatures, the Internet Computer is capable of signing 
-              native transactions on other blockchains without using bridges. This
-              means it's possible to swap BTC with ETH or even Dogecoin without ever
-              having to use insecure wrapped tokens. 
+              native transactions on other blockchains without using bridges. Today, 
+              you can already swap BTC with ICP without ever having to use insecure
+              wrapped tokens. In the near future, this could extent to ETH or 
+              even Dogecoin. 
+            . 
             </p>
             <p className="mb-0">
               <Link
@@ -195,12 +197,13 @@ function DefiPage() {
               Bringing ERC-20 tokens to ICP
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Building on chain-key signatures and HTTPS outcalls, DEXs can
-              already natively support a plethora of ERC-20 tokens. Plugging
-              into Ethereum RPC API providers, ICP smart contracts can sign
-              transactions for any ERC-20 token without relying on insecure
-              bridges. Soon the Internet Computer will be integrated with the
-              Ethereum network at a protocol level. 
+              Building on chain-key signatures and HTTPS outcalls, DEXs are
+              currently working on solutions to support a plethora of ERC-20 
+              tokens on ICP. Plugging into Ethereum RPC API providers, ICP 
+              smart contracts will sign transactions for any ERC-20 token 
+              without relying on insecure bridges. Plans to integrate the   
+              Internet Computer with Ethereum network at a protocol level
+              are also underway. 
             </p>
             <p className="mb-0">
               <Link
@@ -214,20 +217,16 @@ function DefiPage() {
           </TranslatedLayout>
           <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Access Web2 without Oracles
+              Chain-Key Tokens
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Blockchains today have to rely on oracles if they want to access
-              price data from Web2 APIs. Using HTTPS outcalls, the Internet
-              Computer can query up-to-date prices from any traditional Web2 API
-              without oracles, which reduces trust assumption as well as costs, 
-              and increases speed. Making calls to the{" "}
-              <Link
-                href="https://wiki.internetcomputer.org/wiki/Exchange_rate_canister"
-              > 
-                Exchange Rate Canister
-              </Link>
-              , you can already query price data.
+              Imagine being able to pay for a takeaway coffee with BTC or 
+              sending satoshis to friends on your favorite Web3 chat app. 
+              Chain-key tokens, a cryptographically secure replacement to 
+              wrapped tokens, allows end-users to seemlessly transfer tokens 
+              between blockchains with speed without relying on third-party 
+              bridges or custodians. Chain-key bitcoin (ckBTC) is the first 
+              chain-key token on ICP. 
             </p>
             <p className="mb-0">
               <Link
@@ -235,7 +234,7 @@ function DefiPage() {
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
-                More on HTTPS Outcalls
+                More on Chain-key Tokens
               </Link>
             </p>
           </TranslatedLayout>
