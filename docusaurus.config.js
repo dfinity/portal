@@ -245,7 +245,7 @@ const config = {
                 },
 
                 {
-                  label: "ICP token",
+                  label: "ICP Token",
                   href: "/icp-tokens",
                 },
                 {
@@ -389,6 +389,7 @@ const config = {
             position: "left",
             sidebarId: "guides",
             label: "Guides",
+            activeBasePath: "/docs/current/developer-docs/"
           },
           {
             type: "docSidebar",
