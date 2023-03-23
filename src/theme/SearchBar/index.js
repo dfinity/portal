@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
+import React, { useEffect, useState } from "react";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
@@ -65,13 +65,14 @@ const Search = () => {
         <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block">
           Search
         </span>
-        {metaKey && (
-          <span className="tw-paragraph-sm relative top-[2px] text-infinite/50 hidden md:block md:group-hover:text-white">
-            {metaKey}K
-          </span>
-        )}
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 md:group-hover:text-white">
+          {metaKey && (
+            <span className="tw-paragraph-sm relative top-[2px]">
+              {metaKey}K
+            </span>
+          )}
+        </span>
       </button>
-
       {isOverlayOpen && (
         <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
       )}

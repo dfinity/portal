@@ -1,8 +1,5 @@
-import useGlobalData from "@docusaurus/useGlobalData";
-import {
-  HowItWorksCardGroup,
-  HowItWorksPageData,
-} from "@site/src/components/HowItWorksPage/HowItWorksData";
+import cardGroups from "@site/.docusaurus/howitworks-cards/default/howitworks-cards.json";
+import { HowItWorksCardGroup } from "@site/src/components/HowItWorksPage/HowItWorksData";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
 import React from "react";
@@ -99,9 +96,6 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
 };
 
 function HowItWorks() {
-  const cardGroups = useGlobalData()["howitworks-cards"]
-    .default as HowItWorksPageData;
-
   return (
     <Layout
       title="How It Works"
