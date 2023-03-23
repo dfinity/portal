@@ -68,15 +68,21 @@ const howItWorksArticlesPlugin = async function () {
       return subpages;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData, addRoute } = actions;
-      setGlobalData(content);
-      content.map((article) => {
+      const { addRoute, createData } = actions;
+      for (const article of content) {
+        const module = await createData(
+          `how-it-works/${article.slug}.json`,
+          JSON.stringify(article)
+        );
         addRoute({
           path: "/how-it-works/" + article.slug,
           component: "@site/src/components/HowItWorksPage/ArticlePage/",
           exact: true,
+          modules: {
+            article: module,
+          },
         });
-      });
+      }
     },
   };
 };
