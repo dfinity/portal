@@ -223,14 +223,15 @@ function DefiPage() {
               Imagine being able to pay for a takeaway coffee with BTC or 
               sending satoshis to friends on your favorite Web3 chat app. 
               Chain-key tokens, a cryptographically secure replacement to 
-              wrapped tokens, allows end-users to seemlessly transfer tokens 
+              wrapped tokens, allow end-users to seemlessly transfer tokens 
               between blockchains with speed without relying on third-party 
               bridges or custodians. Chain-key bitcoin (ckBTC) is the first 
-              chain-key token on ICP. 
+              chain-key token on ICP, pioneering the way. Trade BTC on ICP DEXs,
+              use BTC for fundraising and much more. 
             </p>
             <p className="mb-0">
               <Link
-                href="/https-outcalls"
+                href="/how-it-works#Chain-key-technology"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -433,9 +434,9 @@ function DefiPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="More DeFi Dapps"
+              title="About HTTPS Outcalls"
               description=""
-              href="/ecosystem?tag=DeFi"
+              href="/https-outcalls"
             />
             <CardWithDescription
               title="Sample Code"
