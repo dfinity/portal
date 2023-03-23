@@ -37,18 +37,14 @@ DFINITY provides an [easy-to-use library (agent-js)](https://github.com/dfinity/
 
 These are the steps required to log in and use the obtained identity for canister calls:
 ```js
+import { AuthClient } from "@dfinity/auth-client";
+
 // First we have to create and AuthClient.
 const authClient = await AuthClient.create();
 
 // Call authClient.login(...) to login with Internet Identity. This will open a new tab
 // with the login prompt. The code has to wait for the login process to complete.
-// We can either use the callback functions directly or wrap in a promise.
-await new Promise((resolve, reject) => {
-  authClient.login({
-    onSuccess: resolve,
-    onError: reject,
-  });
-});
+await authClient.login();
 ```
 Once the user has been authenticated with Internet Identity we have access to the identity:
 ```js
