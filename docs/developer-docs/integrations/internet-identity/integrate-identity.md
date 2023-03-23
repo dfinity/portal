@@ -44,7 +44,13 @@ const authClient = await AuthClient.create();
 
 // Call authClient.login(...) to login with Internet Identity. This will open a new tab
 // with the login prompt. The code has to wait for the login process to complete.
-await authClient.login();
+// We can either use the callback functions directly or wrap in a promise.
+await new Promise((resolve, reject) => {
+  authClient.login({
+    onSuccess: resolve,
+    onError: reject,
+  });
+});
 ```
 Once the user has been authenticated with Internet Identity we have access to the identity:
 ```js
