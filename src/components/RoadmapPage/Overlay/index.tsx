@@ -141,6 +141,7 @@ const Overlay: React.FC<{
             <div
               className="bg-white flex flex-col md:rounded-xl md:overflow-hidden"
               id={`roadmap_domain_${index}`}
+              key={`roadmap_domain_${index}`}
             >
               <img
                 src={domain.image.overlay}
@@ -249,14 +250,14 @@ const Overlay: React.FC<{
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M4.33333 8L1 11.3333L2.66667 13L7.66667 8L2.66667 3L1 4.66667L4.33333 8Z"
                               fill="white"
                             />
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M10.8153 8L7.48193 11.3333L9.1486 13L14.1486 8L9.1486 3L7.48193 4.66667L10.8153 8Z"
                               fill="white"
                             />
