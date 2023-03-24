@@ -7,9 +7,7 @@ In cryptography, a ‘primitive’ is a kind of foundational building block that
 
 ## Identity based encryption (IBE)
 In 2001, Dan Boneh and Matthew Franklin introduced an IBE scheme, which we will refer to as [BF01].￼
-<p align="center">
 <img src="../_assets/BF01.png" alt = "Boneh Franklin IBE Abstract" width = 75% height = 75% />
-</p>
 The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us relying on a public key infrastructure (PKI) to manage a mapping between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
 Suppose Alice wants to encrypt a message to Bob using Bob’s ID. The typical scenario requires that there is a trusted Key Deriver (KD) and runs as follows
@@ -31,9 +29,7 @@ You can learn more about [threshold cryptography]( https://en.wikipedia.org/wiki
 ## BLS signatures
 Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the Boneh Shoup book when you want more formal details.
 BLS signatures are a particular type of digital signature introduced in by Dan Boneh, Ben Lynn, and Hovav Shacham in 2001. 
-<p align="center">
 <img src="../_assets/BLS01.png" alt = "BLS Signatures Abstract" width = 75% height = 75% />
-</p>
 The main feature of BLS signatures is that they’re very short, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
 Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Supposed nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
