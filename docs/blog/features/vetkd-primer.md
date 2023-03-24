@@ -7,10 +7,15 @@ In cryptography, a ‘primitive’ is a kind of foundational building block that
 
 ## Identity based encryption (IBE)
 In 2001, Dan Boneh and Matthew Franklin introduced an IBE scheme, which we will refer to as [BF01].￼
+
 <img src="../_assets/BF01.png" alt="Boneh Franklin IBE Abstract" width="75%" height="75%" />
-The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us relying on a public key infrastructure (PKI) to manage a mapping between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+
+The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+
 IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
+
 Suppose Alice wants to encrypt a message to Bob using Bob’s ID. The typical scenario requires that there is a trusted Key Deriver (KD) and runs as follows
+
 * KD runs the IBE key generation algorithm to generate a master (public and private) key pair.
 * Alice runs the IBE encryption algorithm to encrypt a message to Bob using Bob’s ID as the public key and KD’s master public key and sends the resulting ciphertext to Bob.
 * Bob authenticates Bob’s ID to KD and requests a corresponding decryption (private) key. 
@@ -19,17 +24,21 @@ Suppose Alice wants to encrypt a message to Bob using Bob’s ID. The typical sc
 
 There are two key points about IBE schemes that are interesting to consider.
 1. A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralise the key derivation procedure of IBE.
-2. IBE implies signatures. An observation buried in [BF01] from Moni Naor notes that an IBE scheme can be directly converted into a signature scheme. Considering a conversion of BF IBE, the resulting signature scheme happens to be BLS.
+2. IBE implies signatures. An observation buried in [BF01] from Moni Naor notes that an IBE scheme can be directly converted into a signature scheme. Considering a conversion of BF IBE specifically, the resulting signature scheme happens to be BLS.
 
 ## The threshold setting
 To deal with the first point we need to move into the distributed setting. Note that we care most about decryption here as we want to protect against one (potentially untrusted, unauthorised, or compromised) party having access to secrets. Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some threshold of them collaborate on shares of the secret key to decrypt.
+
 How do parties get shares of a secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) collaborate to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
-You can learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem) and [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the Boneh Shoup Book.
+You can learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem) and [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
 
 ## BLS signatures
-Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the Boneh Shoup book when you want more formal details.
+Digital signatures are used everywhere in cryptography, and in the blockchain world, to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the [Boneh Shoup book](http://toc.cryptobook.us/) when you want more formal details.
+
 BLS signatures are a particular type of digital signature introduced in by Dan Boneh, Ben Lynn, and Hovav Shacham in 2001. 
+
 <img src="../_assets/BLS01.png" alt="BLS Signatures Abstract" width="75%" height="75%" />
+
 The main feature of BLS signatures is that they’re very short, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
 Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Supposed nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
@@ -64,10 +73,10 @@ In a threshold system, sufficiently many key shares are required to produce a va
 This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
 
 ## References
-* [BS23](http://toc.cryptobook.us/) The Boneh Shoup Book
-* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) The IBE paper
-* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) The BLS paper
-* [VETKD Youtube](https://youtu.be/baM6jHnmMq8) The VETKD Community Conversation intro
+* [BS23](http://toc.cryptobook.us/). The Boneh Shoup Book
+* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf). The IBE paper
+* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf). The BLS paper
+* [VETKD Youtube](https://youtu.be/baM6jHnmMq8). The VETKD Community Conversation intro
 
 ## Participate
 There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest.
