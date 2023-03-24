@@ -35,7 +35,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
-  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
+  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
