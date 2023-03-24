@@ -8,7 +8,7 @@ In cryptography, a ‘primitive’ is a kind of foundational building block that
 ## Identity based encryption (IBE)
 In 2001, Dan Boneh and Matthew Franklin introduced an IBE scheme, which we will refer to as [BF01].￼
 
-<img src="../_assets/BF01.png" alt="Boneh Franklin IBE Abstract" width="75%" height="75%" />
+![BF IBE](../_assets/BF01.png)
 
 The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 
@@ -37,7 +37,7 @@ Digital signatures are used everywhere in cryptography, and in the blockchain wo
 
 BLS signatures are a particular type of digital signature introduced in by Dan Boneh, Ben Lynn, and Hovav Shacham in 2001. 
 
-<img src="../_assets/BLS01.png" alt="BLS Signatures Abstract" width="75%" height="75%" />
+![BLS Signatures Abstract](../_assets/BLS01.png)
 
 The main feature of BLS signatures is that they’re very short, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
