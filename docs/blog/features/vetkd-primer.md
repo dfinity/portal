@@ -74,7 +74,7 @@ In a threshold system, sufficiently many key shares are required to produce a va
 * Finally, a recovery algorithm Recovery enables Bob to decrypt the derived key corresponding to Bob’s ID under MSK using Bob’s TSK.
 * Bob can now decrypt.
 
-All algorithms mentioned (DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover) form the syntax that describes the VETKD primitive. To describe a primitive fully, it's needed to also note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security). For now, we leave you with the above introduction as it should serve as a basis for the paper (where you can find the rest in great detail) and the talks. Let us know if you want to go into more detail.
+All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the syntax that describes the VETKD primitive. To describe a primitive fully, it's needed to also note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security). For now, we leave you with the above introduction as it should serve as a basis for the paper (where you can find the rest in great detail) and the talks. Let us know if you want to go into more detail.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
