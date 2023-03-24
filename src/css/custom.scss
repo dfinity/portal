@@ -430,6 +430,19 @@ html.plugin-docs
   animation: badge-spin 10s linear infinite;
 }
 
+@keyframes search-loading {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.search-loading {
+  animation: search-loading 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
 .navbar__link--divider {
   display: none;
 }

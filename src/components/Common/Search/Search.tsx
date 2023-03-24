@@ -16,7 +16,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-  const actorRef = useRef<ReturnType<typeof createActor>>(null);
+  const actorRefPromise = useRef<Promise<ReturnType<typeof createActor>>>(null);
   const [term, setTerm] = useState<string>(initialTerm);
   const [results, setResults] = useState<PageSearchResult[] | null>(
     initialResults
@@ -24,13 +24,13 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   const [loadMoreExpanded, setLoadMoreExpanded] = useState<
     Record<string, true>
   >({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!actorRef.current) {
-      actorRef.current = createActor(
-        customFields["searchCanisterId"] as string
-      );
-    }
+    actorRefPromise.current = import("./actor").then(({ createActor }) => {
+      console.log("search module loaded");
+      return createActor(customFields["searchCanisterId"] as string);
+    });
 
     const trap = createFocusTrap(dialogRef.current, {
       initialFocus: inputRef.current,
@@ -56,30 +56,31 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   }, []);
 
   useEffect(() => {
+    if (!term || term.trim() == "") {
+      setResults(null);
+      initialResults = null;
+      return;
+    }
+
     let unmounted = false;
 
-    (async () => {
-      if (!term || term.trim() == "") {
-        setResults(null);
-        initialResults = null;
-        return;
+    setLoading(true);
+
+    actorRefPromise.current.then(async (actor) => {
+      initialTerm = term;
+
+      const results = await actor.query(term);
+
+      if (!unmounted) {
+        setLoading(false);
+        initialResults = results;
+        setResults(results);
       }
-
-      if (actorRef.current) {
-        initialTerm = term;
-
-        const results = await actorRef.current.query(term);
-
-        if (!unmounted) {
-          initialResults = results;
-          setResults(results);
-        }
-      }
-    })();
+    });
     return () => {
       unmounted = true;
     };
-  }, [term]);
+  }, [term, setLoading]);
 
   function handleResultClick(
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -130,6 +131,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                   onChange={(e) => setTerm(e.target.value)}
                   tabIndex={0}
                 ></input>
+                {loading && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-infinite/50 search-loading"></div>
+                )}
               </div>
               {term.trim().length > 0 && (
                 <button

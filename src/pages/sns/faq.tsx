@@ -675,7 +675,7 @@ function SnsFaqPage() {
                 decentralizing the dapp. In any case, it is crucial that you
                 trust the developers will not change the dapp during the SNS
                 launch. Learn what you could verify and what to look out for{" "}
-                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust">
+                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust">
                   here.
                 </Link>
               </p>
@@ -711,7 +711,7 @@ function SnsFaqPage() {
                 </li>
                 Learn more about verification here: {" "}
                 <Link
-                  href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal"
+                  href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_swap_proposal"
                 >
                   here
                 </Link>

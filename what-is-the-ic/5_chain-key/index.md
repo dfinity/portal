@@ -1,6 +1,6 @@
 ---
 title: Chain-key cryptography underpins the IC's security architecture
-card: /img/what-is-the-ic/chainkey.jpg
+card: /img/what-is-the-ic/chainkey.webp
 cardImageFit: cover
 ---
 

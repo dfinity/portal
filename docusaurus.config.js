@@ -23,7 +23,6 @@ const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const teamInformationPlugin = require("./plugins/team-information");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
@@ -65,7 +64,6 @@ const config = {
     liveSessionsPlugin,
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
-    teamInformationPlugin,
     votingRewardsPlugin,
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
@@ -153,7 +151,6 @@ const config = {
         logo: {
           alt: "DFINITY Logo",
           src: "img/IC_logo_horizontal.svg",
-          srcDark: "img/IC_logo_horizontal_white.svg",
         },
         items: [
           {
@@ -406,6 +403,12 @@ const config = {
             label: "Motoko",
           },
           {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "blog",
+            label: "Blog",
+          },
+          {
             type: "dropdown",
             position: "left",
             label: "Links",
@@ -419,11 +422,6 @@ const config = {
                 label: "SDK Release Notes",
                 type: "doc",
                 docId: "other/updates/release-notes/release-notes",
-              },
-              {
-                label: "Dev Blog",
-                type: "docSidebar",
-                sidebarId: "blog",
               },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },

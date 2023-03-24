@@ -10,7 +10,7 @@ slug: tokenomics
 
 ### The ICP utility token
 
-The Internet Computer (IC) makes use of a utility token called ICP. This token is used for the following functions on the platform: First, any ICP holder can participate in the governance of the IC by staking ICP in order to vote on proposals and earn voting rewards. Second, you can transform ICP into cycles, which are used as fuel for computation. Third, ICP tokens are used to pay the entities who provide compute capacity by operating node machines. Last but not least, ICP can be used in order to invest in token sales of decentralized autonomous organizations (DAOs) on the IC. We will elaborate on these four use cases in the following. In addition to the aforementioned platform use cases, ICP can also be used as a medium of exchange, i.e., to pay for goods and services like NFTs, subscriptions, etc.
+The Internet Computer (IC) makes use of a utility token called ICP. This token is used for the following functions on the platform: First, any ICP holder can participate in the governance of the IC by staking ICP in order to vote on proposals and earn voting rewards. Second, you can transform ICP into cycles, which are used as fuel for computation. Third, ICP tokens are used to pay the entities who provide compute capacity by operating node machines. Last but not least, ICP can be used in order to participate in token swaps of decentralized autonomous organizations (DAOs) on the IC. We will elaborate on these four use cases in the following. In addition to the aforementioned platform use cases, ICP can also be used as a medium of exchange, i.e., to pay for goods and services like NFTs, subscriptions, etc.
 
 ### Governance and voting rewards
 
@@ -42,11 +42,11 @@ To cover the investment & running cost of nodes, which occur in fiat currency te
 
 The IC provides a plug & play solution for developers to transfer control of their dapps over to a Decentralized Autonomous Organization (DAO) and raise funds.
 
-As part of a so-called decentralization sale, users can commit some ICP to a new DAO. In return, when the decentralization sale is complete, these users will receive tokens of the DAO with everyone paying the same price. Developers can specify a time period and minimum & maximum funding target of ICP to be collected, which determines when the sale is over.
+As part of a so-called decentralization swap, users can commit some ICP to a new DAO. In return, when the decentralization swap is complete, these users will receive tokens of the DAO with everyone paying the same price. Developers can specify a time period and minimum & maximum funding target of ICP to be collected, which determines when the sale is over.
 
-The ICP funds raised by the decentralization sale are retained within the reserves of the fully autonomous DAO, rather than being forwarded to the original developers of the dapp or service. These funds can be used to pay for future computation needs of the dapp and also to pay code bounties for future dapp enhancements.
+The ICP funds raised by the decentralization swap are retained within the reserves of the fully autonomous DAO, rather than being forwarded to the original developers of the dapp or service. These funds can be used to pay for future computation needs of the dapp and also to pay code bounties for future dapp enhancements.
 
-Investments via decentralization sales in DAOs act like rocket fuel for the IC ecosystem. It provides easy and transparent access to exciting Web3 projects and channels funds to productive usage of the platform.
+Investments via decentralization swaps in DAOs act like rocket fuel for the IC ecosystem. It provides easy and transparent access to exciting Web3 projects and channels funds to productive usage of the platform.
 
 ### Development of total supply
 
