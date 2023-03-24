@@ -68,13 +68,13 @@ Note that if we continue in this scenario, the nodes will derive a decryption ke
 
 In a threshold system, sufficiently many key shares are required to produce a valid key. In this case it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
 
-* Anyone can use an EKSVerify algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share encrypted . This explains the V requirement in VETKD.
+* Anyone can use an EKSVerify algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share encrypted. This explains the V requirement in VETKD.
 * Nodes can also combine encrypted shares to produce the full encrypted derived key EK using a Combine algorithm. 
 * An EKVerify algorithm allows anyone to verify that EK does indeed contain a legitimate derived key for Bob’s ID under MPK encrypted under Bob’s TPK. 
 * Finally, a recovery algorithm Recovery enables Bob to decrypt the derived key corresponding to Bob’s ID under MSK using Bob’s TSK.
 * Bob can now decrypt.
 
-This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
+All algorithms mentioned (DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover) form the syntax that describes the VETKD primitive. To describe a primitive fully, it's needed to also note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security). For now, we leave you with the above introduction as it should serve as a basis for the paper (where you can find the rest in great detail) and the talks. Let us know if you want to go into more detail.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
