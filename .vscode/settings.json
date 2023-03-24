@@ -1,5 +1,7 @@
 {
   "cSpell.words": [
+    "aggregatable",
+    "ciphertext",
     "envars",
     "Envars",
     "hackathon",
@@ -11,7 +13,8 @@
     "phonebook",
     "stablememory",
     "tamperproof",
-    "tokentransfer"
+    "tokentransfer",
+    "VETKD"
   ],
   "grammarly.selectors": [
     {
