@@ -403,6 +403,12 @@ const config = {
             label: "Motoko",
           },
           {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "blog",
+            label: "Blog",
+          },
+          {
             type: "dropdown",
             position: "left",
             label: "Links",
@@ -416,11 +422,6 @@ const config = {
                 label: "SDK Release Notes",
                 type: "doc",
                 docId: "other/updates/release-notes/release-notes",
-              },
-              {
-                label: "Dev Blog",
-                type: "docSidebar",
-                sidebarId: "blog",
               },
               { label: "Developer Tools", to: "/tooling" },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
