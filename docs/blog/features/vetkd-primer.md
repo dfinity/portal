@@ -61,10 +61,10 @@ In a threshold system, sufficiently many key shares are required to produce a va
 This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
 
 ## References
-[BS23](http://toc.cryptobook.us/) The Boneh Shoup Book
-[BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) The IBE paper
-[BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) The BLS paper
-[VETKD Youtube](https://youtu.be/baM6jHnmMq8) The VETKD Community Conversation intro
+* [BS23](http://toc.cryptobook.us/) The Boneh Shoup Book
+* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) The IBE paper
+* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) The BLS paper
+* [VETKD Youtube](https://youtu.be/baM6jHnmMq8) The VETKD Community Conversation intro
 
 ## Participate
 There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest.
