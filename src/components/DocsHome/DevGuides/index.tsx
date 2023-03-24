@@ -34,6 +34,12 @@ function Index() {
         >
           Learn how to create Internet Computer Canisters using Motoko and Rust
         </SmallCard>
+        <SmallCard
+          href="/docs/current/developer-docs/production/computation-and-storage-costs"
+          title="Explore gas costs"
+        >
+          Store 1 GB for 5$ per year. Pay 1 cent for 10k transactions.
+        </SmallCard>
       </div>
     </AnimateSpawn>
   );
