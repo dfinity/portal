@@ -6,7 +6,7 @@
 In cryptography, a ‘primitive’ is a kind of foundational building block that can be used solely for its given functionality, or to build other more complex cryptographic tools and protocols. Block ciphers, hash functions, signature schemes, encryption schemes… are all examples of primitives. VETKD is a new primitive that we are introducing. VETKD extends an earlier primitive called identity based encryption, which itself is an extension of public key encryption.
 
 ## Identity based encryption (IBE)
-In 2001, Dan Boneh and Matthew Franklin introduced an IBE scheme, which we will refer to as [BF01].￼
+As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from 1984 to 2001, when two were proposed, based on differnet hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
 
 ![BF IBE](../_assets/BF01.png)
 
@@ -41,21 +41,21 @@ BLS signatures are a particular type of digital signature introduced in by Dan B
 
 The main feature of BLS signatures is that they’re very short, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
-Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Supposed nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
+Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
 * Nodes in the network participate in the DKG process and obtain (private) key shares.
 * Each node computes a signature share on a message m using its share of the signing key. 
 * Nodes participate in the Combine process to combine signature shares and produce a single signature which is then sent to Alice.
 * Alice uses Verify to check whether the signature sent from the nodes verifies under the public key of the Internet Computer.
-We’ve seen IBE, and (threshold) BLS.. how does all this fit together, and why is it useful?
+We’ve seen IBE, and (threshold) BLS, how does all they fit together, and why is it useful?
 
 ## VETKD
-We noted above that IBE implies signatures. This also works the other way round - if you happen to have nice threshold signatures lying around, you can leverage them to build an IBE scheme thereby extending the functionality from just attestation to encryption and more. Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
-How to make an IBE scheme from signatures? From the original [BF01] paper the intuition is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. This is described more in the [VETKD community conversation](https://youtu.be/baM6jHnmMq8). 
+We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. This is described more in the [VETKD community conversation](https://youtu.be/baM6jHnmMq8). 
 
-It’s clear from above why we need the T for the KD process, but we haven’t mentioned yet anything about V and E. Perhaps this is best highlighted by a scenario too. 
+It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but we haven’t mentioned yet anything about **V** and **E**. Perhaps this is best highlighted by a scenario too. 
 
-Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to derive keys on demand. The scenario runs as follows: 
+Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to derive keys on demand. The scenario runs as follows:
 
 * Nodes in the network participate in the DKG protocol to obtain shares of a master secret key (MSK) and a master public key (MPK)
 * Alice encrypts a message to Bob under Bob’s ID and under MPK and sends the resulting ciphertext to Bob.
@@ -77,10 +77,10 @@ In a threshold system, sufficiently many key shares are required to produce a va
 This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
 
 ## References
-* [BS23](http://toc.cryptobook.us/). The Boneh Shoup Book
-* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf). The IBE paper
-* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf). The BLS paper
-* [VETKD Youtube](https://youtu.be/baM6jHnmMq8). The VETKD Community Conversation intro
+* [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
+* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) - The IBE paper.
+* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) - The BLS paper.
+* [VETKD Youtube](https://youtu.be/baM6jHnmMq8) - The VETKD Community Conversation intro.
 
 ## Participate
 There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest.
