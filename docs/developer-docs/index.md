@@ -25,4 +25,4 @@ Regardless of the development workflow you choose, keep in mind that when you de
 
 ## Gas cost / Pricing
 
-The Internet Computer is one of the cheapest blockchains that exist today. Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10.000 transactions. To see the full gas cost table, go [here](./production/computation-and-storage-costs.md).
+The Internet Computer is one of the cheapest blockchains that exist today. Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10.000 transactions. To see the full gas cost table, go [here](./gas-cost.md).
