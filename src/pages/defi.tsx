@@ -334,14 +334,34 @@ function DefiPage() {
           </AnimateSpawn>
         </section>
         <section className="container-12 py-30 md:py-48">
-          <AnimateSpawn
-            className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-16 md:mb-30"
-            el={motion.h2}
-            variants={transitions.item}
+        
+        <div className="text-center mb-16 md:mb-30">
+            
+        <AnimateSpawn
+            className="container-12"
+            variants={transitions.container}
           >
-            What’s already being built
+          <motion.h2
+                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-8"
+                variants={transitions.item}
+              >
+                What’s already being built
+          </motion.h2>
+          
+          <motion.div 
+            variants={transitions.container}>
+            
+            <Link className="button-outline text-center" href="/ecosystem?tag=DeFi"> 
+                See more DeFi Dapps
+            </Link>
+          </motion.div>
+
           </AnimateSpawn>
+      
+          </div>
+          
           <div className="flex flex-col gap-16 md:gap-40">
+
             <TranslatedLayout imageUrl="/img/defi/icdex.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 ICDex
@@ -433,11 +453,13 @@ function DefiPage() {
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
             variants={transitions.container}
           >
+
             <CardWithDescription
               title="About HTTPS Outcalls"
               description=""
               href="/https-outcalls"
             />
+
             <CardWithDescription
               title="Sample Code"
               description=""
