@@ -49,9 +49,12 @@ Threshold BLS signatures are used a lot on the Internet Computer, so let’s use
 We’ve seen IBE, and (threshold) BLS.. how does all this fit together, and why is it useful?
 
 ## VETKD
-We noted above that IBE implies signatures. This also works the other way round - if you happen to have nice threshold signatures lying around, you can leverage them to build an IBE scheme thereby extending the functionality from just attestation to encryption and more. Considering that blockchains are very public places where transparency is has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+We noted above that IBE implies signatures. This also works the other way round - if you happen to have nice threshold signatures lying around, you can leverage them to build an IBE scheme thereby extending the functionality from just attestation to encryption and more. Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+
 How to make an IBE scheme from signatures? From the original [BF01] paper the intuition is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. This is described more in the [VETKD community conversation](https://youtu.be/baM6jHnmMq8). 
+
 It’s clear from above why we need the T for the KD process, but we haven’t mentioned yet anything about V and E. Perhaps this is best highlighted by a scenario too. 
+
 Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to derive keys on demand. The scenario runs as follows: 
 
 * Nodes in the network participate in the DKG protocol to obtain shares of a master secret key (MSK) and a master public key (MPK)
@@ -61,7 +64,7 @@ Suppose Alice wants to send an encrypted message (across a public blockchain) to
 Note that if we continue in this scenario, the nodes will derive a decryption key and send the shares to Bob.. but, in a public network, those shares can be seen and can be combined by an observer. We require that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain Bob’s decryption key. So let’s continue.
 
 * Bob wants to decrypt and authenticates Bob’s ID to the IC. He uses a TKG algorithm to generate and send a transport public key TPK and requests to derive a decryption key.
-* If Bob’s authentication to Bob’s ID passes (likely performed in a dapp), nodes in the network use an EKeyDer algorithm derive decryption key shares using MPK and Bob’s ID and encrypt them under Bob’s TPK. Note, this is the E requirement in VETKD.
+* If Bob’s authentication to Bob’s ID passes (likely performed in a dapp), nodes in the network use an EKDerive algorithm derive decryption key shares using MPK and Bob’s ID and encrypt them under Bob’s TPK. Note, this is the E requirement in VETKD.
 
 In a threshold system, sufficiently many key shares are required to produce a valid key. In this case it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
 
@@ -70,6 +73,7 @@ In a threshold system, sufficiently many key shares are required to produce a va
 * An EKVerify algorithm allows anyone to verify that EK does indeed contain a legitimate derived key for Bob’s ID under MPK encrypted under Bob’s TPK. 
 * Finally, a recovery algorithm Recovery enables Bob to decrypt the derived key corresponding to Bob’s ID under MSK using Bob’s TSK.
 * Bob can now decrypt.
+
 This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
 
 ## References
