@@ -15,6 +15,7 @@ Suppose Alice wants to encrypt a message to Bob using Bob’s ID. The typical sc
 * Bob authenticates Bob’s ID to KD and requests a corresponding decryption (private) key. 
 * KD derives Bob’s decryption key from Bob’s ID using KD’s master secret key and then sends it to Bob.
 * Bob uses Bob’s decryption key and Bob’s ID to decrypt the ciphertext from Alice to retrieve the message.
+
 There are two key points about IBE schemes that are interesting to consider.
 1. A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralise the key derivation procedure of IBE.
 2. IBE implies signatures. An observation buried in [BF01] from Moni Naor notes that an IBE scheme can be directly converted into a signature scheme. Considering a conversion of BF IBE, the resulting signature scheme happens to be BLS.
