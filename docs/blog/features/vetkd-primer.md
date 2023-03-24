@@ -41,13 +41,18 @@ We noted above that IBE implies signatures. This also works the other way round 
 How to make an IBE scheme from signatures? From the original [BF01] paper the intuition is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. This is described more in the [VETKD community conversation](https://youtu.be/baM6jHnmMq8). 
 It’s clear from above why we need the T for the KD process, but we haven’t mentioned yet anything about V and E. Perhaps this is best highlighted by a scenario too. 
 Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to derive keys on demand. The scenario runs as follows: 
+
 * Nodes in the network participate in the DKG protocol to obtain shares of a master secret key (MSK) and a master public key (MPK)
 * Alice encrypts a message to Bob under Bob’s ID and under MPK and sends the resulting ciphertext to Bob.
 * Bob wants to decrypt and authenticates Bob’s ID to the IC and requests to derive a decryption key. Stop! 
+
 Note that if we continue in this scenario, the nodes will derive a decryption key and send the shares to Bob.. but, in a public network, those shares can be seen and can be combined by an observer. We require that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain Bob’s decryption key. So let’s continue.
+
 * Bob wants to decrypt and authenticates Bob’s ID to the IC. He uses a TKG algorithm to generate and send a transport public key TPK and requests to derive a decryption key.
 * If Bob’s authentication to Bob’s ID passes (likely performed in a dapp), nodes in the network use an EKeyDer algorithm derive decryption key shares using MPK and Bob’s ID and encrypt them under Bob’s TPK. Note, this is the E requirement in VETKD.
+
 In a threshold system, sufficiently many key shares are required to produce a valid key. In this case it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
+
 * Anyone can use an EKSVerify algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share encrypted . This explains the V requirement in VETKD.
 * Nodes can also combine encrypted shares to produce the full encrypted derived key EK using a Combine algorithm. 
 * An EKVerify algorithm allows anyone to verify that EK does indeed contain a legitimate derived key for Bob’s ID under MPK encrypted under Bob’s TPK. 
@@ -55,11 +60,11 @@ In a threshold system, sufficiently many key shares are required to produce a va
 * Bob can now decrypt.
 This gives the main gist of the scheme at a very high level, but hopefully it lays the ground a bit for when you hear the description in more detail. Sometimes it’s good to unravel things in various degrees of depth. 
 
-## References:
+## References
 [BS23](http://toc.cryptobook.us/) The Boneh Shoup Book
 [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) The IBE paper
 [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) The BLS paper
 [VETKD Youtube](https://youtu.be/baM6jHnmMq8) The VETKD Community Conversation intro
 
-## Participate please
-There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest. 
+## Participate
+There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest.
