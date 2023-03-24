@@ -7,6 +7,7 @@ In cryptography, a ‘primitive’ is a kind of foundational building block that
 
 ## Identity based encryption (IBE)
 In 2001, Dan Boneh and Matthew Franklin introduced an IBE scheme, which we will refer to as [BF01].￼
+![Boneh Franklin IBE Abstract](../_assets/BF01.png "Boneh Franklin IBE Abstract")
 The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us relying on a public key infrastructure (PKI) to manage a mapping between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that. 
 Suppose Alice wants to encrypt a message to Bob using Bob’s ID. The typical scenario requires that there is a trusted Key Deriver (KD) and runs as follows
