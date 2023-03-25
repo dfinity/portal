@@ -87,7 +87,7 @@ Threshold BLS signatures are used a lot on the Internet Computer, so let’s use
 We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. In the VETKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key, but also as a Boneh Franklin decryption key.
 
 ### Putting everything together
-VETKD is a new primitive that extends identity based encryption in a decentralized setting. The main tools needed to build VETKD are a secret sharing scheme (we use Shamir), a PKE (we use ElGamal), and threshold BLS signatures.
+VETKD is a new primitive that extends identity based encryption in a decentralized setting. The main tools needed to build VETKD are a DKG, a PKE (we use ElGamal), and threshold BLS signatures.
 A construction that gives the basic functionality works as follows: 
 
 * Master key - BLS signing key, Shamir secret shared over nodes
