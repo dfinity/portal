@@ -93,10 +93,12 @@ A construction that gives the basic functionality works as follows:
 * Master key - BLS signing key, Shamir secret shared over nodes
 * Transport keys - ElGamal key pair
 * Encrypted key share - BLS signature on the identity, encrypted under ElGamal public key
-* Combined encrypted key - Subset of t valid encrypted key shares are combined (in the blockchain scenario likely by a blockmaker) to give the encrypted derived key
+* Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a blockmaker) to give the encrypted derived key
 * Decryption key - ElGamal decryption of combined encrypted derived key
 
-
+## Remarks
+This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on the IC, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now). 
+It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
