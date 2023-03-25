@@ -32,7 +32,7 @@ Considering that blockchains are very public places where transparency has been 
 ### The threshold setting
 Note that we care most about the secret *key derivation* here as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorised, or compromised) party, and hence the **KD** in VETKD. To deal with the centralisation point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
 
-How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
+How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
 
 It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but what about **V** and **E**? Perhaps this is best highlighted by a scenario.
@@ -98,7 +98,7 @@ A construction that gives the basic functionality works as follows:
 
 ## Remarks
 This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on the IC, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now). 
-It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper.
+It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. Note that this page is hosted onchain.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
