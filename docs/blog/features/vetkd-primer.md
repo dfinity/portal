@@ -60,7 +60,7 @@ In a threshold system, sufficiently many key shares are required to produce a va
 This picture is taken directly from the paper, where you can read the full scenario.
 ![VETKD Example](../_assets/vetkdscene.png)
 
-All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the *syntax* that describes the VETKD primitive. To describe a primitive fully, it's needed also to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security).
+All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the *syntax* that describes the VETKD primitive. To describe a primitive fully, it's needed also to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security). Correctness and Security differ depending on the application (signatures, IBE, etc) so we defer to the paper to get an overview of these.
 
 ### Construction
 We see now what the aim is for VETKD, and how it can be described. The next natural question is to ask how we can build such a primitive. Which building blocks do we need? 
@@ -98,7 +98,7 @@ A construction that gives the basic functionality works as follows:
 
 ## Remarks
 This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on the IC, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now). 
-It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. Finally, note that this page is hosted onchain.
+It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. There are also extensions that could be built depending on what is needed in the community. Finally, note that this page is hosted onchain.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
