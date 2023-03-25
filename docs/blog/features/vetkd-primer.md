@@ -3,7 +3,7 @@
 **VETKD** is a feature in ongoing development on the Internet Computer. It stands for ‘verifiably encrypted threshold key derivation’ and we read it as ‘vet-kay-dee.’ One thing less discussed about the VETKD feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKD talks, paper, and future posts. Let’s start at the start. 
 
 ## Crypto primitives
-In cryptography, a ‘primitive’ is a kind of foundational building block that can be used solely for its given functionality, or to build other more complex cryptographic tools and protocols. Block ciphers, hash functions, signature schemes, encryption schemes… are all examples of primitives. VETKD is a new primitive that we are introducing. VETKD extends an earlier primitive called identity based encryption, which itself is an extension of public key encryption.
+In cryptography, a ‘primitive’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols. Block ciphers, hash functions, signature schemes, encryption schemes… are all examples of primitives. VETKD is a new primitive that we are introducing. VETKD extends an earlier primitive called identity based encryption, which itself is an extension of public key encryption.
 
 ## Identity based encryption (IBE)
 As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from 1984 to 2001, when two were proposed, based on differnet hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
@@ -14,7 +14,7 @@ The standard practice in public key cryptography is to generate a secret key, an
 
 IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
 
-Suppose Alice wants to encrypt a message to Bob using $\mathit{id_{bob}}$. The typical scenario requires that there is a trusted Key Deriver (KD) and runs as follows
+To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit{id_{bob}}$. The typical scenario requires that there is a trusted Key Deriver (KD), and runs as follows:
 
 * KD runs the IBE key generation algorithm to generate a master (public and private) key pair ($\mathit{msk, mpk}$).
 * Alice runs the IBE encryption algorithm to encrypt a message to Bob using $\mathit{id_{bob}}$ and KD’s $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
@@ -27,38 +27,40 @@ Suppose Alice wants to encrypt a message to Bob using $\mathit{id_{bob}}$. The t
 There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralise the key derivation procedure of IBE.
 
 ### The threshold setting
-To deal with this point we need to move into the distributed setting. Note that we care most about decryption here as we want to protect against one (potentially untrusted, unauthorised, or compromised) party having access to secrets. Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some threshold of them collaborate on shares of the secret key to decrypt.
+To deal with this point we need to move into the distributed setting. Note that we care most about *decryption* here as we want to protect against one (potentially untrusted, unauthorised, or compromised) party having access to secrets. Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the secret key to decrypt.
 
-How do parties get shares of a secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) collaborate to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
-You can learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem) and [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
+How do parties **get shares** of a secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
+Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
+
 ## VETKD
 Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### Syntax
 It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but we haven’t mentioned yet anything about **V** and **E**. Perhaps this is best highlighted by a scenario too. 
 
-Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to derive keys on demand. The scenario runs as follows:
+Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to *derive keys on demand*. The scenario runs as follows:
 
-* Nodes in the network participate in the $\mathsf{DKG protocol}$ to obtain shares of a master secret key ($\mathit{msk}$) and a $\mathit{mpk}$ ($\mathit{mpk}$)
-* Alice encrypts a message to Bob under $\mathit{id_{bob}}$ and under $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
+* Nodes in the network participate in the $\mathsf{DKG protocol}$ to obtain shares of a master secret key ($\mathit{msk}$) and a master public key ($\mathit{mpk}$). This results in each node $i$ holding key shares $(\mathit{msk_i, mpk_i})$.
+* Alice encrypts a message under Bob's identity $\mathit{id_{bob}}$ and the master public key $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
 * Bob wants to decrypt and authenticates $\mathit{id_{bob}}$ to the IC and requests to derive a decryption key. Stop! 
 
-Note that if we continue in this scenario, the nodes will derive a decryption key and send the shares to Bob.. but, in a public network, those shares can be seen and can be combined by an observer. We require that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain $\mathit{sk_{bob}}$. So let’s continue.
+Note that if we continue in this scenario, the nodes will derive a decryption key and send the shares to Bob.. but, in a public network, those shares can be seen and can be combined by an observer. We require that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain $\mathit{sk_{bob}}$. So, let’s continue.
 
-* Bob wants to decrypt and authenticates $\mathit{id_{bob}}$ to the IC. He uses a $\mathsf{TKG}$ algorithm to generate and send a transport public key TPK and requests to derive a decryption key.
-* If Bob’s authentication to $\mathit{id_{bob}}$ passes (likely performed in a dapp), nodes in the network use an $\mathsf{EKDerive}$ algorithm derive decryption key shares using $\mathit{mpk}$ and $\mathit{id_{bob}}$ and encrypt them under $\mathit{tpk_{bob}}$. Note, this is the E requirement in VETKD.
+* Bob wants to decrypt and authenticates $\mathit{id_{bob}}$ to the IC. He uses a transport key generation algorithm $\mathsf{TKG}$ to generate and send a transport public key $\mathit{tpk}$ and requests to derive a decryption key. By sending $\mathit{tpk}$ Bob gives the nodes a way to encrypt their responses to him.
+* If Bob’s authentication to $\mathit{id_{bob}}$ passes (likely performed by a dapp), nodes in the network use an $\mathsf{EKDerive}$ algorithm derive decryption key shares using $\mathit{msk}$ and $\mathit{id_{bob}}$ and encrypt them under $\mathit{tpk_{bob}}$. Note, this is the **E** requirement in VETKD.
 
 In a threshold system, sufficiently many key shares are required to produce a valid key. In this case it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
 
-* Anyone can use an $\mathsf{EKSVerify}$ algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share encrypted. This explains the V requirement in VETKD.
+* Anyone can use an $\mathsf{EKSVerify}$ algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share, and thus can know when 'enough' valid shares exist. This explains the **V** requirement in VETKD.
 * Nodes can also combine encrypted shares to produce the full encrypted derived key $\mathit{ek}$ using a $\mathsf{Combine}$ algorithm. 
 * An $\mathsf{EKVerify}$ algorithm allows anyone to verify that $\mathit{ek}$ does indeed contain a legitimate derived key for $\mathit{id_{bob}}$ under $\mathit{mpk}$ encrypted under $\mathit{tpk_{bob}}$. 
 * Finally, a recovery algorithm $\mathsf{Recover}$ enables Bob to decrypt the derived key corresponding to $\mathit{id_{bob}}$ under $\mathit{msk}$ using Bob’s TSK.
 * Bob can now decrypt.
 
+This picture is taken directly from the paper, where you can read the full scenario.
 ![VETKD Example](../_assets/vetkdscene.png)
 
-All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the syntax that describes the VETKD primitive. To describe a primitive fully, it's needed to also note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security).
+All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the *syntax* that describes the VETKD primitive. To describe a primitive fully, it's needed also to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security).
 
 ### Construction
 We see now what the aim is for VETKD and how it can be described. The next natural question is to ask how we can build such a primitive. Another key point about IBE schemes is that IBE implies signatures. An observation buried in [BF01] from Moni Naor notes that an IBE scheme can be directly converted into a signature scheme. Considering the key derivation of BF IBE specifically, the resulting signature scheme happens to be BLS.  
