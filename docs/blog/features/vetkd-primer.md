@@ -30,12 +30,12 @@ There is a crucial point to note about this type of IBE scheme; A central author
 Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### The threshold setting
-To deal with the centralisation point, we need to move into the distributed setting. Note that we care most about *decryption* here as we want to protect against one central (potentially untrusted, unauthorised, or compromised) party having access to secrets. Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key.
+Note that we care most about the secret *key derivation* here as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorised, or compromised) party, and hence the **KD** in VETKD. To deal with the centralisation point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
 
-How do parties **get shares** of a secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
+How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
 
-It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but we haven’t mentioned yet anything about **V** and **E**. Perhaps this is best highlighted by a scenario.
+It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but what about **V** and **E**? Perhaps this is best highlighted by a scenario.
 
 ### Syntax
 Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to *derive keys on demand*. The scenario runs as follows:
@@ -63,7 +63,11 @@ This picture is taken directly from the paper, where you can read the full scena
 All algorithms mentioned ($\mathsf{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover}$) form the *syntax* that describes the VETKD primitive. To describe a primitive fully, it's needed also to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security).
 
 ### Construction
-We see now what the aim is for VETKD and how it can be described. The next natural question is to ask how we can build such a primitive. Another key point about IBE schemes is that IBE implies signatures. An observation buried in [BF01] from Moni Naor notes that an IBE scheme can be directly converted into a signature scheme. Considering the key derivation of BF IBE specifically, the resulting signature scheme happens to be BLS.  
+We see now what the aim is for VETKD, and how it can be described. The next natural question is to ask how we can build such a primitive. Which building blocks do we need? 
+
+Well, at a first glance, we could guess that we will need a distributed key generation scheme to generate master secret key shares among the nodes. We could also guess that we'll need a public key encryption scheme to encrypt derived key shares under the transport key of the user. The main question that remains is how to derive decryption keys.  
+
+Crucially, An observation buried in [BF01] gives us the answer. Moni Naor noted that an IBE scheme can be directly converted into a signature scheme. Considering the key derivation of Boneh Franklin IBE specifically, the resulting signature scheme happens to be BLS.
 
 ### BLS signatures
 Digital signatures are used everywhere in cryptography, and in the blockchain world, to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the [Boneh Shoup book](http://toc.cryptobook.us/) when you want more formal details.
@@ -76,11 +80,11 @@ The main feature of BLS signatures is that they’re very short, fast to compute
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
 Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
 * Nodes in the network participate in the DKG process and obtain (private) key shares.
-* Each node computes a signature share on a message m using its share of the signing key. 
-* Nodes participate in the Combine process to combine signature shares and produce a single signature which is then sent to Alice.
-* Alice uses Verify to check whether the signature sent from the nodes verifies under the public key of the Internet Computer.
+* Each node computes a signature share on a message $m$ using its share of the signing key. 
+* Nodes participate in a $\mathsf{Combine}$ process to combine signature shares and produce a single signature which is then sent to Alice.
+* Alice uses a verification algorithm $\mathsf{Verify}$ to check whether the signature sent from the nodes verifies under the public key of the Internet Computer.
 
-We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. This is described more in the [VETKD community conversation](https://youtu.be/baM6jHnmMq8).
+We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. In the VETKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key, but also as a Boneh Franklin decryption key.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
