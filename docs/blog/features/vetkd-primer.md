@@ -6,7 +6,7 @@
 In cryptography, a ‘primitive’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols. Block ciphers, hash functions, signature schemes, encryption schemes… are all examples of primitives. VETKD is a new primitive that we are introducing. VETKD extends an earlier primitive called identity based encryption, which itself is an extension of public key encryption.
 
 ## Identity based encryption (IBE)
-As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from 1984 to 2001, when two were proposed, based on differnet hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
+As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from 1984 to 2001, when two were proposed, based on different hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
 
 ![BF IBE](../_assets/BF01.png)
 
@@ -24,13 +24,13 @@ To see how an IBE scheme can work, let's consider the following scenario. Suppos
 
 ![IBE Example](../_assets/ibe.png)
 
-There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralise the key derivation procedure of IBE.
+There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralize the key derivation procedure of IBE.
 
 ## VETKD
 Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### The threshold setting
-Note that we care most about the secret *key derivation* here as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorised, or compromised) party, and hence the **KD** in VETKD. To deal with the centralisation point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
+Note that we care most about the secret *key derivation* here as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
 
 How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
@@ -87,7 +87,7 @@ Threshold BLS signatures are used a lot on the Internet Computer, so let’s use
 We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. In the VETKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key, but also as a Boneh Franklin decryption key.
 
 ### Putting everything together
-VETKD is a new primitive that extends identity based encryption in a decentralised setting. The main tools needed to build VETKD are a secret sharing scheme (we use Shamir), a PKE (we use ElGamal), and threshold BLS signatures.
+VETKD is a new primitive that extends identity based encryption in a decentralized setting. The main tools needed to build VETKD are a secret sharing scheme (we use Shamir), a PKE (we use ElGamal), and threshold BLS signatures.
 A construction that gives the basic functionality works as follows: 
 
 * Master key - BLS signing key, Shamir secret shared over nodes
@@ -98,7 +98,7 @@ A construction that gives the basic functionality works as follows:
 
 ## Remarks
 This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on the IC, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now). 
-It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. Note that this page is hosted onchain.
+It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. Finally, note that this page is hosted onchain.
 
 ## References
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
