@@ -49,7 +49,9 @@ To see how an IBE scheme can work, let's consider the following scenario. Suppos
 ![IBE Example](../_assets/ibe.png)
 
 ::: caution
+
 There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralize the key derivation procedure of IBE.
+
 :::
 
 ## VETKD
