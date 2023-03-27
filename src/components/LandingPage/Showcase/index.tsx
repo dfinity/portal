@@ -60,7 +60,7 @@ const ShowcaseSection: React.FC<{
   return (
     <section id="dapps" className={clsx("relative z-0", className)}>
       <AnimateSpawn variants={transitions.item}>
-        <div className="container-10 pt-20 md:pt-30">
+        <div className="container-10 pt-20 md:pt-40">
           <div className="">
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">
