@@ -32,10 +32,15 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
       return createActor(customFields["searchCanisterId"] as string);
     });
 
-    const trap = createFocusTrap(dialogRef.current, {
-      initialFocus: inputRef.current,
-    });
+    // hack part 2 to make sure the input is focused on ios and the keyboard opens
+    const tmpInput = document.querySelector(
+      "#ios-tmp-input"
+    ) as HTMLInputElement;
+    inputRef.current.focus();
+    inputRef.current.click();
+    tmpInput.style.display = "none";
 
+    const trap = createFocusTrap(dialogRef.current, {});
     trap.activate();
 
     function onKeydown(e: KeyboardEvent) {

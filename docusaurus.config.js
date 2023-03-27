@@ -150,7 +150,7 @@ const config = {
 
         logo: {
           alt: "DFINITY Logo",
-          src: "img/IC_logo_horizontal.svg",
+          src: "/img/IC_logo_horizontal.svg",
         },
         items: [
           {
