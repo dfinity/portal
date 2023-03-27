@@ -70,7 +70,8 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  DeFi — 100% on-chain
+                  DeFi — 
+                  <br className="hidden md:block" /> 100% on-chain
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
