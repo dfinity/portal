@@ -7,7 +7,7 @@ One thing less discussed about the VETKeys feature is how we got here in terms o
 ## Crypto primitives
 In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols.
 Some examples of the core primitives include: 
-* Block ciphers (eg. [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) 
+* Block ciphers (eg. [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard))
 * Hash functions (eg. [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
 * Key exchange (eg. [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
 * Signature schemes (eg. [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
@@ -22,15 +22,15 @@ VETKeys introduces *new primitives*, and most notably **VETKD**. VETKD extends a
 
 As everyone uses PKE everyday, it's assumed that you have some intuition about what it is, be we describe it here to set the stage for what we build later. PKE allows to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob, a PKE scheme will run somewhat as follows: 
 
-* Bob uses a key generation algorithm $\mathsf{KG}$ to generate a private and public key pair $(\mathit{sk_{bob}, pk_{bob}})$
-* Bob stores his public key online (eg in a public key infrastructure (PKI))
+* Bob uses a key generation algorithm $\mathsf{KG}$ to generate a private and public key pair $(\mathit{sk_{bob}, pk_{bob}})$.
+* Bob stores his public key online (eg in a public key infrastructure (PKI)).
 * Alice retrieves Bob's public key $\mathit{pk_{bob}}$ (eg from the PKI) and uses it to encrypt a message to Bob using an encryption algorithm $\mathsf{Enc}$ and sends the resulting ciphertext to Bob.
 * When Bob wants to decrypt the ciphertext from Alice, he uses his secret key ${\mathit{sk_{bob}}}$ with a decryption algorithm $\mathsf{Dec}$ to decrypt and retrieve the message.
 
 ![PKE](../_assets/pke.png)
 
 :::info
-The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘*looks*’ and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key *looks* and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 ::: 
 
 ## Identity based encryption (IBE)
