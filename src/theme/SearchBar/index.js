@@ -1,9 +1,20 @@
 import SearchOverlay from "@site/src/components/Common/Search/Search";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const focusHelperInputRef = React.useRef(null);
+
+  function openOverlay() {
+    // must be called from an event handler to be able to auto-focus the search input on ios
+    setIsOverlayOpen(true);
+
+    // hack part 1 to focus the input on ios with keyboard shown
+    focusHelperInputRef.current.style.display = "block";
+    focusHelperInputRef.current.focus();
+    focusHelperInputRef.current.click();
+  }
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -21,7 +32,7 @@ const Search = () => {
       if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         e.stopPropagation();
-        setIsOverlayOpen(true);
+        openOverlay();
       }
     }
 
@@ -46,7 +57,7 @@ const Search = () => {
 
           md:hover:bg-infinite md:hover:text-white
           "
-        onClick={() => setIsOverlayOpen(true)}
+        onClick={openOverlay}
       >
         <svg
           viewBox="0 0 16 16"
@@ -73,6 +84,20 @@ const Search = () => {
           )}
         </span>
       </button>
+      <input
+        style={{
+          display: "none",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          opacity: 0,
+          height: "100px",
+          fontSize: "30px",
+        }}
+        id="ios-tmp-input"
+        ref={focusHelperInputRef}
+      ></input>
       {isOverlayOpen && (
         <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
       )}
