@@ -34,21 +34,21 @@ const OpenChatCard: React.FC<{
               className=" text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
               variants={transitions.item}
             >
-              OpenChat raises 1M ICP in 6 hours
+              OpenChat raised 1M ICP in 6 hours
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              OpenChat, with the launch of its first SNS DAO, marks a
-              significant milestone in the world of blockchain and social media.
-              Cras mattis consectetur purus sit amet fermentum.
+              It became the world’s first "open internet service". A new "SNS" DAO took over its code and data,
+              and swapped $ICP for its governance tokens, placing its community in control, and creating a
+              community treasury. Now it will founderize its users too.
             </motion.p>
 
             <motion.p className="mb-0" variants={transitions.item}>
               <Link className="link-primary link-with-icon" href="">
                 <LinkArrowRight />
-                See how OpenChat got DAO-swapped
+                See how OpenChat decentralized, fully on-chain
               </Link>
             </motion.p>
           </div>
