@@ -1,12 +1,23 @@
-# VETKD Primer
+# VETKeys Primer
 
-**VETKD** is a feature in ongoing development on the Internet Computer. It stands for ‘verifiably encrypted threshold key derivation’ and we read it as ‘vet-kay-dee.’ One thing less discussed about the VETKD feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKD talks, paper, and future posts. Let’s start at the start. 
+**VETKeys** is a feature in ongoing development on the Internet Computer (IC). It stands for ‘verifiably encrypted threshold keys’ and encapsulates a number of cryptographic functionalities being added to the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Disclaimer: Note that understanding these foundations of VETkeys will not be necessary to use them for building application, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start. 
 
 ## Crypto primitives
-In cryptography, a ‘primitive’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols. Block ciphers, hash functions, signature schemes, encryption schemes… are all examples of primitives. VETKD is a new primitive that we are introducing. VETKD extends an earlier primitive called identity based encryption, which itself is an extension of public key encryption.
+In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols.
+Some examples of the core primitives include: 
+* Block ciphers (eg [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) 
+* Hash functions (eg [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
+* Key exchange (eg [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
+* Signature schemes (eg [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
+* Public key encryption schemes (eg [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)),[ElGamal]https://en.wikipedia.org/wiki/ElGamal_encryption())
+
+VETKeys is work that introduces *new primitives*, most notably VETKD. VETKD extends an earlier primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
+
+## Public key encryption (PKE)
+
 
 ## Identity based encryption (IBE)
-As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from 1984 to 2001, when two were proposed, based on different hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
+As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from its introduction 1984 to 2001, when there was a breakthrough in of Number Theory which gave some new mathematical tools to build with. Two IBE schemes were proposed, based on different hard problems, here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
 
 ![BF IBE](../_assets/BF01.png)
 
@@ -92,7 +103,7 @@ VETKD is a new primitive that can be used to extend identity based encryption in
 * Master key - BLS signing key, Shamir secret shared over nodes
 * Transport keys - ElGamal key pair
 * Encrypted key share - BLS signature on the identity, encrypted under ElGamal public key
-* Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a blockmaker) to give the encrypted derived key
+* Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a block maker) to give the encrypted derived key
 * Decryption key - ElGamal decryption of combined encrypted derived key
 
 Having these keys opens a goldmine of functionality. Let's see how far they can get us. 
