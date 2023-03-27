@@ -223,7 +223,7 @@ function DefiPage() {
               Imagine being able to pay for a takeaway coffee with BTC or 
               sending satoshis to friends on your favorite Web3 chat app. 
               Chain-key tokens, a cryptographically secure replacement to 
-              wrapped tokens, allow end-users to seemlessly transfer tokens 
+              wrapped tokens, allow end-users to seamlessly transfer tokens 
               between blockchains with speed without relying on third-party 
               bridges or custodians. Chain-key bitcoin (ckBTC) is the first 
               chain-key token on ICP, pioneering the way. Trade BTC on ICP DEXs,
