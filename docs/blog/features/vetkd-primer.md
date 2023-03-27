@@ -16,12 +16,14 @@ VETKeys is work that introduces *new primitives*, most notably VETKD. VETKD exte
 ## Public key encryption (PKE)
 
 
+:::caution 
+The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+::: 
+
 ## Identity based encryption (IBE)
 As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from its introduction 1984 to 2001, when there was a breakthrough in of Number Theory which gave some new mathematical tools to build with. Two IBE schemes were proposed, based on different hard problems, here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
 
 ![BF IBE](../_assets/BF01.png)
-
-The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 
 IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
 
@@ -35,13 +37,15 @@ To see how an IBE scheme can work, let's consider the following scenario. Suppos
 
 ![IBE Example](../_assets/ibe.png)
 
+::: caution
 There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralize the key derivation procedure of IBE.
+:::
 
 ## VETKD
 Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### The threshold setting
-Note that we care most about the secret *key derivation* here as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
+Note that we care most about the secret ***key derivation*** here, as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
 
 How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh Shoup book](http://toc.cryptobook.us/).
