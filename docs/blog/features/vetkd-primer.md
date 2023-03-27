@@ -1,17 +1,19 @@
 # VETKeys Primer
 
-**VETKeys** is a feature in ongoing development on the Internet Computer (IC). It stands for ‘verifiably encrypted threshold keys’ and encapsulates a number of cryptographic functionalities being added to the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Disclaimer: Note that understanding these foundations of VETkeys will not be necessary to use them for building application, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start. 
+The **VETKeys** feature is in ongoing development on the Internet Computer (IC). It stands for ‘verifiably encrypted threshold keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. 
+
+One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Disclaimer: Note that understanding these foundations of VETkeys will not be necessary to use them for building applications, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start. 
 
 ## Crypto primitives
 In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols.
 Some examples of the core primitives include: 
-* Block ciphers (eg [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) 
-* Hash functions (eg [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
-* Key exchange (eg [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
-* Signature schemes (eg [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
-* Public key encryption schemes (eg [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)),[ElGamal]https://en.wikipedia.org/wiki/ElGamal_encryption())
+* Block ciphers (eg. [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) 
+* Hash functions (eg. [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
+* Key exchange (eg. [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
+* Signature schemes (eg. [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
+* Public key encryption schemes (eg. [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)),[ElGamal]https://en.wikipedia.org/wiki/ElGamal_encryption())
 
-VETKeys is work that introduces *new primitives*, most notably VETKD. VETKD extends an earlier primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
+VETKeys introduces *new primitives*, and most notably **VETKD**. VETKD extends an older primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
 
 ## Public key encryption (PKE)
 *"We stand today on the brink of a revolution in technology"*, possibly the greatest opening line of any crypto paper, was penned in 1976 in their New Directions paper introducing public key cryptography. 
