@@ -30,11 +30,11 @@ As everyone uses PKE everyday, it's assumed that you have some intuition about w
 ![PKE](../_assets/pke.png)
 
 :::caution 
-The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘*looks*’ and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
 ::: 
 
 ## Identity based encryption (IBE)
-As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from its introduction 1984 to 2001, when there was a breakthrough in of Number Theory which gave some new mathematical tools to build with. Two IBE schemes were proposed, based on different hard problems, here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
+As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from its introduction 1984 to 2001, when there was a breakthrough in of Number Theory which gave some new mathematical tools to build with. Two IBE schemes were proposed, based on different hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
 
 ![BF IBE](../_assets/BF01.png)
 
