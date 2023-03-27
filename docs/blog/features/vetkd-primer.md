@@ -106,7 +106,7 @@ BLS signatures are a particular type of digital signature introduced in by Dan B
 
 ![BLS Signatures Abstract](../_assets/BLS01.png)
 
-The main feature of BLS signatures is that they’re very short, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
+The main feature of BLS signatures is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
 Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
 * Nodes in the network participate in the DKG process and obtain (private) key shares.
@@ -125,7 +125,7 @@ VETKD is a new primitive that can be used to extend identity based encryption in
 * Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a block maker) to give the encrypted derived key
 * Decryption key - ElGamal decryption of combined encrypted derived key
 
-Having these keys opens a goldmine of functionality. Let's see how far they can get us. 
+Having these VETKeys opens a goldmine of functionality. There are further descriptions the VETKey family, i.e. extending VETKD to VETIBE, to VETSigs, to a VETPRF, and VETVRF. Future posts can go into details on these.
 
 ## Remarks
 This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on the IC, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now). 
@@ -135,6 +135,7 @@ It also shows one possible way of building VETKD, there are others, some with fa
 * [BS23](http://toc.cryptobook.us/) - The Boneh Shoup Book.
 * [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) - The IBE paper.
 * [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) - The BLS paper.
+* [DH76](https://ee.stanford.edu/~hellman/publications/24.pdf) - Diffie and Hellman's New Directions paper.
 * [VETKD Youtube](https://youtu.be/baM6jHnmMq8) - The VETKD Community Conversation intro.
 
 ## Participate
