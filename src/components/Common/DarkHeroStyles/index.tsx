@@ -33,7 +33,7 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
               box-shadow: none;
             }
 
-            nav.navbar .navbar__logo img {
+            nav.navbar.navbar--fixed-top .navbar__logo img {
               content: url(/img/IC_logo_horizontal_white.svg);
             }
 
@@ -69,6 +69,9 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
             }
             nav.navbar .navbar__logo img {
               content: url(/img/IC_logo_horizontal_white.svg);
+            }
+            nav.navbar .navbar-sidebar__brand .navbar__logo img {
+              content: url(/img/IC_logo_horizontal.svg);
             }
             nav .navbar__toggle {
               color: white;
