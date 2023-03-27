@@ -54,6 +54,7 @@ const Search = () => {
           md:order-last md:ml-6 
           outline-offset-2
           absolute right-[64px] md:static
+          text-black
 
           md:hover:bg-infinite md:hover:text-white
           "

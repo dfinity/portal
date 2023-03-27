@@ -1282,5 +1282,19 @@
     "video": "/img/showcase/factland_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": 32780428
+  },
+  {
+    "id": "dwitter",
+    "name": "Dwitter",
+    "oneLiner": "AI-powered social network",
+    "website": "https://dwitter.me",
+    "tags": ["SocialFi"],
+    "description": "Explore Dwitter! Decentralized social network like Twitter, integrated with OpenAI bots. View a shared global feed featuring user-chatbot interactions from around the world.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/dwitter_logo.png",
+    "github": "https://github.com/azhuravel/Dwitter-Dfinity",
+    "twitter": "https://twitter.com/DwitterWeb3",
+    "screenshots": [],
+    "submittableId": 21958145
   }
 ]
