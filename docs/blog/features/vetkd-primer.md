@@ -14,7 +14,18 @@ Some examples of the core primitives include:
 VETKeys is work that introduces *new primitives*, most notably VETKD. VETKD extends an earlier primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
 
 ## Public key encryption (PKE)
+*"We stand today on the brink of a revolution in technology"*, possibly the greatest opening line of any crypto paper, was penned in 1976 in their New Directions paper introducing public key cryptography. 
 
+![DH ND](../_assets/dh76.png)
+
+As everyone uses PKE everyday, it's assumed that you have some intuition about what it is, be we describe it here to set the stage for what we build later. PKE allows to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob, a PKE scheme will run somewhat as follows: 
+
+* Bob uses a key generation algorithm $\mathsf{KG}$ to generate a private and public key pair $(\mathit{sk_{bob}, pk_{bob}})$
+* Bob stores his public key online (eg in a public key infrastructure (PKI))
+* Alice retrieves Bob's public key $\mathit{pk_{bob}}$ (eg from the PKI) and uses it to encrypt a message to Bob using an encryption algorithm $\mathsf{Enc}$ and sends the resulting ciphertext to Bob.
+* When Bob wants to decrypt the ciphertext from Alice, he uses his secret key ${\mathit{sk_{bob}}}$ with a decryption algorithm $\mathsf{Dec}$ to decrypt and retrieve the message.
+
+![PKE](../_assets/pke.png)
 
 :::caution 
 The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key ‘looks’ and results in us needing to rely on a public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
@@ -25,7 +36,7 @@ As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Pro
 
 ![BF IBE](../_assets/BF01.png)
 
-IBE turns the problem around. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
+IBE addresses some of the usability issues with PKE. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
 
 To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit{id_{bob}}$. The typical scenario requires that there is a trusted Key Deriver (KD), and runs as follows:
 
