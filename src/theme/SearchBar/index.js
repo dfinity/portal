@@ -53,7 +53,7 @@ const Search = () => {
           flex gap-2 items-center 
           md:order-last md:ml-6 
           outline-offset-2
-          absolute right-[72px] md:static
+          absolute right-[64px] md:static
 
           md:hover:bg-infinite md:hover:text-white
           "
