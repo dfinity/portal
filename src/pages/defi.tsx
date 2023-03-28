@@ -70,15 +70,15 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  DeFi — 100% on-chain
+                  Next Generation DeFi
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  From fully on-chain order book DEXs, to bridgeless cross-chain
-                  swaps, the Internet Computer provides an unmatched tech stack
-                  for DEXs to thrive on and DeFi to flourish.
+                  Imagine a decentralized order-book exchange built exclusively using smart contracts 
+                  that directly serve a web experience like those of centralized exchanges, 
+                  that incorporates the world's digital assets without need for insecure bridges.
                 </motion.p>
               </div>
             </div>
