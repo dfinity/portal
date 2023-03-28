@@ -156,8 +156,8 @@ function SnsPage() {
               
               <p>An "open internet service" is an internet service with a difference: 
                 it runs entirely on World Computer blockchain, without centralization. 
-                OpenChat is built from canister smart contracts installed on the Internet Computer | 
-                <a class="link-subtle" href="https://twitter.com/search?q=%23ICP" target="_blank">#ICP</a>, 
+                OpenChat is built from canister smart contracts installed on the Internet Computer  
+                | <a class="link-subtle" href="https://twitter.com/search?q=%23ICP" target="_blank">#ICP</a>, 
                 which store and process all its data, and serve the user experience into web browsers. 
                 Because it runs fully on-chain, without centralization, an advanced community DAO has taken over 
                 responsibility for pushing updates to its software logic.
