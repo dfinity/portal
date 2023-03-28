@@ -1,7 +1,10 @@
 {
   "cSpell.words": [
+    "aggregatable",
+    "ciphertext",
     "envars",
     "Envars",
+    "Gamal",
     "hackathon",
     "howto",
     "intercanister",
@@ -9,9 +12,11 @@
     "Motoko",
     "permissioned",
     "phonebook",
+    "Shamir",
     "stablememory",
     "tamperproof",
-    "tokentransfer"
+    "tokentransfer",
+    "VETKD"
   ],
   "grammarly.selectors": [
     {

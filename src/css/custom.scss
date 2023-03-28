@@ -152,6 +152,7 @@ html.docs-doc-page {
 @media (max-width: 996px) {
   :root {
     --ifm-navbar-height: 72px;
+    --ifm-navbar-padding-horizontal: 24px;
   }
   .navbar {
     padding: var(--ifm-navbar-padding-vertical)
@@ -234,6 +235,7 @@ html.plugin-docs
 @media (max-width: 996px) {
   .navbar__inner .navbar__items:first-child .navbar__toggle {
     order: 2;
+    margin-right: 0;
   }
 
   .navbar__inner .navbar__items:first-child .navbar__brand {
@@ -262,6 +264,10 @@ html.plugin-docs
   --ifm-color-emphasis-600: #181818;
 }
 
+.navbar-sidebar__item {
+  padding-left: 16px;
+  padding-right: 16px;
+}
 /* dropdown is positioned too low in the original styles making it easy to hide by accident */
 .dropdown__menu {
   top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
@@ -535,10 +541,6 @@ html.plugin-docs
     font-size: 16px;
     line-height: 22px;
     font-weight: 450px;
-
-    svg {
-      display: none;
-    }
   }
 
   .dropdown__menu .dropdown__link--with-icon {

@@ -150,7 +150,7 @@ const config = {
 
         logo: {
           alt: "DFINITY Logo",
-          src: "img/IC_logo_horizontal.svg",
+          src: "/img/IC_logo_horizontal.svg",
         },
         items: [
           {
@@ -247,6 +247,12 @@ const config = {
                   label: "ICP Token",
                   href: "/icp-tokens",
                 },
+
+                {
+                  label: "OpenChat",
+                  href: "/openchat",
+                },
+
                 {
                   label: "Social Media Dapps",
                   href: "/social-media-dapps",
@@ -388,7 +394,7 @@ const config = {
             position: "left",
             sidebarId: "guides",
             label: "Guides",
-            activeBasePath: "/docs/current/developer-docs/"
+            activeBasePath: "/docs/current/developer-docs/",
           },
           {
             type: "docSidebar",
