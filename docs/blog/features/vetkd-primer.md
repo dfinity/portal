@@ -16,7 +16,7 @@ Some examples of the core primitives include:
 VETKeys introduces *new primitives*, and most notably **VETKD**. VETKD extends an older primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
 
 ## Public key encryption (PKE)
-*"We stand today on the brink of a revolution in technology"*, possibly the greatest opening line of any crypto paper, was penned by Whit Diffie and Martin Hellman in 1976 in their New Directions paper introducing public key cryptography. 
+*"We stand today on the brink of a revolution in cryptography"*, possibly the greatest opening line of any crypto paper, was penned by Whit Diffie and Martin Hellman in 1976 in their New Directions paper introducing public key cryptography. 
 
 ![DH ND](../_assets/dh76.png)
 
