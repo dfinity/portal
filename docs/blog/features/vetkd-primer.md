@@ -20,7 +20,7 @@ VETKeys introduces *new primitives*, and most notably **VETKD**. VETKD extends a
 
 ![DH ND](../_assets/dh76.png)
 
-As everyone uses PKE everyday, it's assumed that you have some intuition about what it is, be we describe it here to set the stage for what we build later. PKE allows to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob, a PKE scheme will run somewhat as follows: 
+As everyone uses PKE everyday, it's assumed that you have some intuition about what it is, but we describe it here to set the stage for what we build later. PKE allows to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob, a PKE scheme will run somewhat as follows: 
 
 * Bob uses a key generation algorithm $\mathsf{KG}$ to generate a private and public key pair $(\mathit{sk_{bob}, pk_{bob}})$.
 * Bob stores his public key online (eg in a public key infrastructure (PKI)).
@@ -119,9 +119,9 @@ We noted above that IBE implies signatures. From the [BF01] paper the intuitive 
 ### Putting everything together
 VETKD is a new primitive that can be used to extend identity based encryption in a decentralized setting. The main tools needed to build VETKD are a DKG, a PKE (we use ElGamal), and threshold BLS signatures, and are used to obtain keys as follows: 
 
-* Master key - BLS signing key, Shamir secret shared over nodes
+* Master key - DKG issued BLS signing key
 * Transport keys - ElGamal key pair
-* Encrypted key share - BLS signature on the identity, encrypted under ElGamal public key
+* Encrypted key share - BLS signature shares on the identity, encrypted under ElGamal public key
 * Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a block maker) to give the encrypted derived key
 * Decryption key - ElGamal decryption of combined encrypted derived key
 
