@@ -247,6 +247,12 @@ const config = {
                   label: "ICP Token",
                   href: "/icp-tokens",
                 },
+
+                {
+                  label: "OpenChat",
+                  href: "/openchat",
+                },
+
                 {
                   label: "Social Media Dapps",
                   href: "/social-media-dapps",
