@@ -41,7 +41,7 @@ const OpenChatCard: React.FC<{
               variants={transitions.item}
             >
               It became the world’s first "open internet service". A new "SNS" DAO took over its code and data,
-              and swapped $ICP for its governance tokens, placing its community in control, and creating a
+              and swapped ICP tokens for its governance tokens, placing its community in control, and creating a
               community treasury. Now it will founderize its users too.
             </motion.p>
 
