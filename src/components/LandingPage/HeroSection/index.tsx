@@ -80,7 +80,7 @@ export default function Hero(): JSX.Element {
               enterprise systems.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              It's already happening at scale on the first true World Computer:{" "}
+              It's already happening at scale on the first true World Computer: the {" "}
               <span className="font-bold text-infinite">
                 Internet Computer #ICP
               </span>

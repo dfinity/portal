@@ -46,7 +46,7 @@ const OpenChatCard: React.FC<{
             </motion.p>
 
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="">
+              <Link className="link-primary link-with-icon" href="/openchat">
                 <LinkArrowRight />
                 See how OpenChat decentralized, fully on-chain
               </Link>
