@@ -5,12 +5,13 @@ import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
 
@@ -38,6 +39,8 @@ const Card: React.FC<{
 };
 
 function SnsPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(heroRef);
   return (
     <Layout
       title="OpenChat"
@@ -48,10 +51,19 @@ function SnsPage() {
     >
       <ShareMeta image="/img/shareImages/share-openchat.jpg"></ShareMeta>
 
-      <main className="text-black relative overflow-hidden">
-        <DarkHeroStyles></DarkHeroStyles>
+      <main
+        className="text-black relative overflow-hidden"
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+
         <AnimateSpawn variants={transitions.container}>
-          <section className="overflow-hidden bg-infinite text-white">
+          <section
+            className="overflow-hidden bg-infinite text-white pt-20"
+            ref={heroRef}
+          >
             <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
               <div className="blob blob-white blob-xl md:blob-xl top-[-150px] left-full -translate-x-2/3 opacity-100"></div>
 
@@ -66,7 +78,9 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  OpenChat, a fully on-chain SocialFi messaging service, decentralized using an SNS DAO and became the first "open internet service".
+                  OpenChat, a fully on-chain SocialFi messaging service,
+                  decentralized using an SNS DAO and became the first "open
+                  internet service".
                 </motion.p>
               </div>
             </div>
@@ -92,9 +106,9 @@ function SnsPage() {
             className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-12"
             variants={transitions.item}
           >
-            Imagine a messaging service where your chat account is a crypto wallet, messages are TXs stored on-chain, 
-            and only the community can push updates.
-
+            Imagine a messaging service where your chat account is a crypto
+            wallet, messages are TXs stored on-chain, and only the community can
+            push updates.
           </motion.p>
           <motion.p
             className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
@@ -146,33 +160,41 @@ function SnsPage() {
           </div>
         </AnimateSpawn> */}
 
-
         <section className="container-10 mt-24 md:mt-40">
           <div className="flex flex-col gap-16 md:gap-0">
             <Card>
               <img src="/img/sns/autonomous.svg" aria-hidden="true"></img>
               {/* <img src="/img/sns/scalable.svg" aria-hidden="true"></img> */}
               <h3>Open Internet Services</h3>
-              
-              <p>An "open internet service" is an internet service with a difference: 
-                it runs entirely on World Computer blockchain, without centralization. 
-                OpenChat is built from canister smart contracts installed on the Internet Computer | 
-                <a class="link-subtle" href="https://twitter.com/search?q=%23ICP" target="_blank">#ICP</a>, 
-                which store and process all its data, and serve the user experience into web browsers. 
-                Because it runs fully on-chain, without centralization, an advanced community DAO has taken over 
+
+              <p>
+                An "open internet service" is an internet service with a
+                difference: it runs entirely on World Computer blockchain,
+                without centralization. OpenChat is built from canister smart
+                contracts installed on the Internet Computer |
+                <a
+                  class="link-subtle"
+                  href="https://twitter.com/search?q=%23ICP"
+                  target="_blank"
+                >
+                  #ICP
+                </a>
+                , which store and process all its data, and serve the user
+                experience into web browsers. Because it runs fully on-chain,
+                without centralization, an advanced community DAO has taken over
                 responsibility for pushing updates to its software logic.
               </p>
 
-              <p>OpenChat is fully controlled by its "SNS" DAO, which takes over the traditional 
-                role of a company. Now, there is no CEO, board of directors or developers in control, 
-                just thousands of community members, whose wishes are mediated through digital democracy algorithms.
+              <p>
+                OpenChat is fully controlled by its "SNS" DAO, which takes over
+                the traditional role of a company. Now, there is no CEO, board
+                of directors or developers in control, just thousands of
+                community members, whose wishes are mediated through digital
+                democracy algorithms.
               </p>
 
               <p>
-                <Link
-                  href="/sns"
-                  className="link-primary link-with-icon"
-                >
+                <Link href="/sns" className="link-primary link-with-icon">
                   Learn about SNS DAOs <LinkArrowRight />
                 </Link>
               </p>
@@ -190,15 +212,17 @@ function SnsPage() {
               <img src="/img/sns/community-owned.svg" aria-hidden="true"></img>
               <h3>Community Ownership</h3>
               <p>
-              Web1 was about users <b>reading</b> content from the internet, 
-              Web2 was about users <b>writing</b> content that other users could read, 
-              and Web3 is about <b>ownership</b>. The future of Web3 includes users 
-              owning tokens and NFTs, but also being part of communities that 
-              administer mass market internet services – in fields as diverse as 
-              social media, gaming, the metaverse, DeFi and the sharing economy. 
-              This becomes possible when an internet service runs entirely on a blockchain, 
-              and can be controlled and updated by an advanced DAO, which has distributed 
-              voting power in the form of governance tokens to community members.
+                Web1 was about users <b>reading</b> content from the internet,
+                Web2 was about users <b>writing</b> content that other users
+                could read, and Web3 is about <b>ownership</b>. The future of
+                Web3 includes users owning tokens and NFTs, but also being part
+                of communities that administer mass market internet services –
+                in fields as diverse as social media, gaming, the metaverse,
+                DeFi and the sharing economy. This becomes possible when an
+                internet service runs entirely on a blockchain, and can be
+                controlled and updated by an advanced DAO, which has distributed
+                voting power in the form of governance tokens to community
+                members.
               </p>
             </Card>
 
@@ -206,14 +230,17 @@ function SnsPage() {
               <img src="/img/sns/tokenized.svg" aria-hidden="true"></img>
               <h3>Founderizing Users</h3>
               <p>
-              During the creation of an open internet service, an initial "decentralization swap" 
-              exchanges the new SNS DAO's governance tokens for ICP, which is then held in its 
-              treasury under the decentralized control of its governance community. But they aren't 
-              the only ones who can hold governance tokens: Open internet services will often founderize 
-              their users, by granting tokens to those who help with tasks such as advocacy, creating viral content, 
-              and content moderation. This unlocks a key Web3 strategy, which is to create a giant 
-              industrious virtual team of millions, and generate huge network effects that can overcome 
-              any Web2 incumbent.
+                During the creation of an open internet service, an initial
+                "decentralization swap" exchanges the new SNS DAO's governance
+                tokens for ICP, which is then held in its treasury under the
+                decentralized control of its governance community. But they
+                aren't the only ones who can hold governance tokens: Open
+                internet services will often founderize their users, by granting
+                tokens to those who help with tasks such as advocacy, creating
+                viral content, and content moderation. This unlocks a key Web3
+                strategy, which is to create a giant industrious virtual team of
+                millions, and generate huge network effects that can overcome
+                any Web2 incumbent.
               </p>
             </Card>
           </div>
@@ -228,12 +255,13 @@ function SnsPage() {
               Join OpenChat's governance community
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
-            The governance of open internet services is transparent, and using the link below you can view the proposals 
-            that update the service. Decision making is also open and completely automated, and anyone holding governance 
-            tokens can participate.
+              The governance of open internet services is transparent, and using
+              the link below you can view the proposals that update the service.
+              Decision making is also open and completely automated, and anyone
+              holding governance tokens can participate.
             </p>
             <p className="mb-0">
-            <Link
+              <Link
                 href="https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai "
                 className="link-primary link-with-icon"
               >
@@ -242,15 +270,15 @@ function SnsPage() {
             </p>
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/openchat/image-2.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Community funding
-            </h2>
+            <h2 className="md:tw-heading-60 md:mb-6">Community funding</h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-            The "decentralization swap" process exchanges governance tokens for ICP tokens, 
-            held in the SNS DAO by a community of governance token holders. 
-            These tokens can be used to create bounties, incentivizing contributions to the service's development. 
-            This allows fully decentralized internet services to be created from anywhere, 
-            democratizing access to the tech economy and enabling anyone to build-out Web3.
+              The "decentralization swap" process exchanges governance tokens
+              for ICP tokens, held in the SNS DAO by a community of governance
+              token holders. These tokens can be used to create bounties,
+              incentivizing contributions to the service's development. This
+              allows fully decentralized internet services to be created from
+              anywhere, democratizing access to the tech economy and enabling
+              anyone to build-out Web3.
             </p>
             <p className="mb-0">
               <Link
