@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ItsGreenSection from "../components/Basics/ItsGreen";
+import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import BasicsSection from "../components/LandingPage/Basics";
 import FoundationSection from "../components/LandingPage/Foundation";
@@ -36,6 +37,7 @@ export default function Home(): JSX.Element {
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
         <HeroSection></HeroSection>
+        <OpenChatCard className="mt-16 md:mt-0" />
         <div className="overflow-hidden">
           {/* 
             Update the list of showcase projects here: /plugins/home-showcase.js 

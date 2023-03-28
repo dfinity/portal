@@ -247,6 +247,12 @@ const config = {
                   label: "ICP Token",
                   href: "/icp-tokens",
                 },
+
+                {
+                  label: "OpenChat",
+                  href: "/openchat",
+                },
+
                 {
                   label: "Create an Internet Identity",
                   href: "https://identity.ic0.app/",

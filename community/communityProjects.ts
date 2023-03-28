@@ -2032,7 +2032,7 @@ const communityProjects: SampleItem[] = [
       livePreview: "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/",
       otherLinks: [],
     },
-    domains: ["Metaverse and NFTs"],
+    domains: ["Website"],
     languages: ["rust", "javascript"],
     level: "beginner",
     contentType: ["code samples", "community repo", "live demos"],
