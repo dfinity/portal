@@ -1,6 +1,6 @@
 # VETKeys Primer
 
-The **VETKeys** feature is in ongoing development on the Internet Computer (IC). It stands for ‘verifiably encrypted threshold keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. 
+The **VETKeys** feature is in ongoing development on the Internet Computer (IC). It stands for ‘**V**erifiable **E**ncrypted **T**hreshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. 
 
 One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Note that understanding these foundations of VETkeys will *not* be necessary to use them for building applications, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start. 
 
@@ -42,7 +42,7 @@ IBE addresses some of the usability issues with PKE. It allows to take an arbitr
 
 To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit{id_{bob}}$. The typical scenario requires that there is a trusted Key Deriver (KD), and runs as follows:
 
-* KD runs the IBE key generation algorithm to generate a master (public and private) key pair ($\mathit{msk, mpk}$).
+* KD runs the IBE key generation algorithm to generate a master (private and public) key pair ($\mathit{msk, mpk}$).
 * Alice runs the IBE encryption algorithm to encrypt a message to Bob using $\mathit{id_{bob}}$ and KD’s $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
 * Bob authenticates $\mathit{id_{bob}}$ to KD and requests a corresponding decryption (private) key ($\mathit{sk_{bob}}$). 
 * KD derives $\mathit{sk_{bob}}$ from $\mathit{id_{bob}}$ using $\mathit{msk}$ and then sends it to Bob.
