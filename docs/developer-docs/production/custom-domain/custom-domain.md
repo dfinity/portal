@@ -20,6 +20,14 @@ the certificates, and provide your own infrastructure that serves the service wo
 However, you are also more flexible in how you configure your domain (e.g., you
 can serve a custom service worker).
 
+> Note: You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
+
+```ts
+// Point to icp-api for mainnet. Leaving host undefined will work for localhost
+const host = isProduction ? 'https://icp-api.io' : undefined;
+const agent = new HttpAgent({ host });
+```
+
 ## Custom Domains on the Boundary Nodes
 
 In the following, we first list all the steps necessary to register your
