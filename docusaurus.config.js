@@ -242,17 +242,10 @@ const config = {
                   label: "ICP Ecosystem",
                   href: "/ecosystem",
                 },
-
                 {
                   label: "ICP Token",
                   href: "/icp-tokens",
                 },
-
-                {
-                  label: "OpenChat",
-                  href: "/openchat",
-                },
-
                 {
                   label: "Create an Internet Identity",
                   href: "https://identity.ic0.app/",
@@ -261,10 +254,7 @@ const config = {
                   label: "Staking & Governance (NNS)",
                   href: "/nns",
                 },
-                {
-                  label: "SNS DAOs",
-                  href: "/sns",
-                },
+
                 {
                   label: "Help & Support",
                   href: "https://support.dfinity.org/hc/en-us ",
@@ -283,6 +273,14 @@ const config = {
                 {
                   label: "Social Media Dapps",
                   href: "/social-media-dapps",
+                },
+                {
+                  label: "SNS DAOs",
+                  href: "/sns",
+                },
+                {
+                  label: "OpenChat",
+                  href: "/openchat",
                 },
               ],
             ]),
