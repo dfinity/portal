@@ -70,23 +70,23 @@ export default function Hero(): JSX.Element {
             </h2>
 
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Today</b>: blockchains store tokens, and tiny clips of data, but Web3 
-              is hosted on centralized cloud services.
+              <b>Today, blockchains store tokens</b>, and tiny clips of data, but Web3 
+              is really hosted on the centralized cloud.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Tomorrow</b>: decentralized blockchain smart contracts will host Web3 services themselves in
-              the mode of a crypto cloud, securely processing all the computation and data
-              involved, and directly serving their web experiences &mdash; including for dapps, DAOs, billion-user social
+              <b>Tomorrow, blockchain smart contracts will host Web3</b> services in
+              the mode of a crypto cloud, securely processing the computation and data
+              involved on-chain, and directly serving their web experiences &mdash; including for dapps, DAOs, billion-user social
               networks, the metaverse, streaming, multi-player games, orderbook exchanges,
-              unstoppable enterprise systems, and governments. 
+              enterprise systems, and governments. 
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>It's happening at scale today</b> on the <span className="font-bold text-infinite">Internet Computer</span>. {" "}
               Join the movement, and help usher in the blockchain singularity &#9889;
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <a target="_blank" href="https://twitter.com/search?q=%23WorldComputer">#WorldComputer</a> {" "}
               <a target="_blank" href="https://twitter.com/search?q=%23ICP">#ICP</a> {" "}
+              <a target="_blank" href="https://twitter.com/search?q=%23WorldComputer">#WorldComputer</a> {" "}
               <a target="_blank" href="https://twitter.com/search?q=%23BiggerThanBlockchain">#BiggerThanBlockchain</a>
             </p>
             <p className="flex flex-col gap-2 items-start">
@@ -123,8 +123,8 @@ export default function Hero(): JSX.Element {
               by a sovereign network of special hardware, in pursuit of the Bitcoin paradigm.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Yet, it can be millions of times more efficient</b> than Proof-of-Stake (PoS)
-              blockchains, even when all their nodes are on centralized cloud services,
+              <b>This can be millions of times more efficient</b> than Proof-of-Stake (PoS)
+              blockchains, even when all their validators run on centralized clouds,
               such as Amazon Web Services, thanks to advanced computer science.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
@@ -134,9 +134,9 @@ export default function Hero(): JSX.Element {
               Smart contract computation is their work, and replication is minimized 
               using "deterministic decentralization," achieving maximum theoretical 
               efficiency.
-              Individual subnets are combined into one seamless limitless blockchain, using 
+              The subnets combine into one seamless limitless blockchain, using 
               chain key crypto, which also directly integrates external chains
-              like Bitcoin and Ethereum.
+              such as Bitcoin and Ethereum.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23ChainKey">#ChainKey</a> {" "}
@@ -172,10 +172,10 @@ export default function Hero(): JSX.Element {
               and depend cabals of insiders.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
-              <b>Instead, it leverages the "Network Nervous System,"</b> a permissionless, and protocol-integrated, advanced 
+              <b>The network leverages the "Network Nervous System,"</b> a permissionless protocol-integrated advanced 
               DAO, that acts as the brain of the blockchain, placing control in the hands 
               of decentralized governance.
-              The network's special "node machines" follow its cryptographically verified directions.
+              The network's special "node machines" follow its cryptographically verified instructions.
               It structures and configures the network, adjusts economic parameters, 
               and transparently pushes protocols upgrades without backroom machinations 
               or disruption.{" "}
