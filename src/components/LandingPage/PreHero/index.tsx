@@ -171,7 +171,7 @@ const Numbers = () => {
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
               $0.0000022
             </span>{" "}
-            av. cost/Tx
+            avg. cost/ICP Tx
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
