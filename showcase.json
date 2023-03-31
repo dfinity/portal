@@ -911,7 +911,7 @@
   {
     "id": "argonstudio",
     "name": "Argon Studio",
-    "oneLiner": "We'll be your end-to-end partner, whether managing your project from ideation to implementation, or filling gaps in your current team.",
+    "description": "We'll be your end-to-end partner, whether managing your project from ideation to implementation, or filling gaps in your current team.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -923,7 +923,7 @@
   {
     "id": "aviatelabs",
     "name": "Aviate Labs",
-    "oneLiner": "Stop worrying about system failures and slow performance. Our datacenter standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
+    "description": "Stop worrying about system failures and slow performance. Our datacenter standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -935,7 +935,7 @@
   {
     "id": "canscale",
     "name": "CanScale",
-    "oneLiner": "Worried about data being persisted or how your data structure will scale across canisters? CanScale can help you focus more on building out your vision, and spend less time thinking about how to scale out your multi canister architecture on the IC.",
+    "description": "Worried about data being persisted or how your data structure will scale across canisters? CanScale can help you focus more on building out your vision, and spend less time thinking about how to scale out your multi canister architecture on the IC.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -948,7 +948,7 @@
   {
     "id": "cipherproxy",
     "name": "cipher proxy",
-    "oneLiner": "A web3 research collective and project laboratory developing decentralized projects and protocols",
+    "description": "A web3 research collective and project laboratory developing decentralized projects and protocols",
     "tags": [
       "NFT"
     ],
@@ -960,7 +960,7 @@
   {
     "id": "codebase",
     "name": "CODEBASE",
-    "oneLiner": "Decentralized Git hosting and software collaboration, powered by permissionless protocols.",
+    "description": "Decentralized Git hosting and software collaboration, powered by permissionless protocols.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -972,7 +972,7 @@
   {
     "id": "dbox",
     "name": "Dbox",
-    "oneLiner": "The decentralized inbox built on Internet Computer",
+    "description": "The decentralized inbox built on Internet Computer",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -987,7 +987,7 @@
   {
     "id": "eimolad",
     "name": "Eimolad",
-    "oneLiner": "This is an amazing world inhabited by humans, dwarves, orcs, elves and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers and incredible adventures. ",
+    "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers and incredible adventures. ",
     "tags": [
       "Games"
     ],
@@ -1000,7 +1000,7 @@
   {
     "id": "faefolk",
     "name": "FaeFolk",
-    "oneLiner": "FaeFolk is a multiplayer, slice of life, NFT role-playing game where you use your NFTs to craft tools, equipment, and train your skills",
+    "description": "FaeFolk is a multiplayer, slice of life, NFT role-playing game where you use your NFTs to craft tools, equipment, and train your skills",
     "tags": [
       "Games",
       "NFT"
@@ -1015,7 +1015,7 @@
   {
     "id": "fishvers",
     "name": "Fishverse",
-    "oneLiner": "Fish to Earn. Ultimate NFT fishing metaverse. ",
+    "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
     "tags": [
       "Games",
       "NFT"
@@ -1030,7 +1030,7 @@
   {
     "id": "icdevs.org",
     "name": "ICDevs.org ",
-    "oneLiner": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding and scientific discovery",
+    "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding and scientific discovery",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1042,7 +1042,7 @@
   {
     "id": "iclighthouse",
     "name": "ICLightHouse",
-    "oneLiner": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
+    "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
     "tags": [
       "DeFi",
       "Tools / Infrastructure"
@@ -1055,7 +1055,7 @@
   {
     "id": "polycrypt",
     "name": "PolyCrypt",
-    "oneLiner": "We develop cryptographic decentralized offchain solutions which tackle scalability challenges enabling mass adoption of blockchains.",
+    "description": "We develop cryptographic decentralized offchain solutions which tackle scalability challenges enabling mass adoption of blockchains.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1068,7 +1068,7 @@
   {
     "id": "scinet",
     "name": "SCINET",
-    "oneLiner": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
+    "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
     "tags": [
       "SocialFi, Tools / Infrastructure"
     ],
@@ -1083,7 +1083,7 @@
   {
     "id": "spinnercash",
     "name": "Spinner.Cash",
-    "oneLiner": "Private transactions for ICP and BTC",
+    "description": "Private transactions for ICP and BTC",
     "tags": [
       "DeFi, Tools / Infrastructure"
     ],
@@ -1095,7 +1095,7 @@
   {
     "id": "canistergeek",
     "name": "Canistergeek by Usergeek",
-    "oneLiner": "Top up your canisters, monitor cycles, memory, logs and get your monthly reports in one place.",
+    "description": "Top up your canisters, monitor cycles, memory, logs and get your monthly reports in one place.",
     "tags": [
       "Tools / Infrastructure"
     ],
