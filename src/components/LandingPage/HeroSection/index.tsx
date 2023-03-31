@@ -134,7 +134,7 @@ export default function Hero(): JSX.Element {
               Smart contract computation is their work, and replication is minimized 
               using "deterministic decentralization," achieving maximum theoretical 
               efficiency.
-              Individual subnets combine into one seamless limitless blockchain, using 
+              The subnets combine into one seamless limitless blockchain, using 
               chain key crypto, which also directly integrates external chains
               such as Bitcoin and Ethereum.
             </p>
