@@ -940,7 +940,6 @@
       "Tools / Infrastructure"
     ],
     "website": "https://www.canscale.dev",
-    "github": "https://github.com/canscale/CanDB",
     "twitter": "https://twitter.com/can_scale",
     "logo": "/img/showcase/canscale_logo.webp",
      "submittableId": "34140445"
@@ -978,7 +977,6 @@
     ],
     "useInternetIdentity": true,
     "website": "https://dbox.foundation/",
-    "github": "https://github.com/dboxfoundation/dbox",
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "discord": "https://discord.gg/rEN6ygpCxK",
     "logo": "/img/showcase/dbox_logo.webp",
@@ -1013,7 +1011,7 @@
      "submittableId": "32841408"
   },
   {
-    "id": "fishvers",
+    "id": "fishverse",
     "name": "Fishverse",
     "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
     "tags": [
@@ -1074,7 +1072,6 @@
     ],
     "useInternetIdentity": true,
     "website": "https://www.scinet.one/",
-    "github": "https://github.com/SCINET-INC/dyson-sphere",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
     "logo": "/img/showcase/scinet_logo.webp",
