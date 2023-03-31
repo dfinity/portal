@@ -171,7 +171,7 @@ const Numbers = () => {
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
               $0.0000022
             </span>{" "}
-            avg. cost/ICP Tx
+            average cost/Tx
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
@@ -195,7 +195,7 @@ const Numbers = () => {
                 <>&nbsp;</>
               )}
             </span>{" "}
-            ICP Tx/s{" "}
+            Tx/s{" "}
             <Link
               href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
               title="Read more: Not all transactions are equal"
