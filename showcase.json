@@ -907,6 +907,202 @@
       "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
+ 
+  {
+    "id": "argonstudio",
+    "name": "Argon Studio",
+    "description": "We'll be your end-to-end partner, whether managing your project from ideation to implementation, or filling gaps in your current team.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://argonstudios.xyz/",
+    "twitter": "https://twitter.com/ArgonStudiosXYZ",
+    "logo": "/img/showcase/argonstudio_logo.webp",
+     "submittableId": "34524251"
+  },
+  {
+    "id": "aviatelabs",
+    "name": "Aviate Labs",
+    "description": "Stop worrying about system failures and slow performance. Our datacenter standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://www.aviatelabs.co/",
+    "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
+    "logo": "/img/showcase/aviatelabs_logo.webp",
+     "submittableId": "25140378"
+  },
+  {
+    "id": "canscale",
+    "name": "CanScale",
+    "description": "Worried about data being persisted or how your data structure will scale across canisters? CanScale can help you focus more on building out your vision, and spend less time thinking about how to scale out your multi canister architecture on the IC.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://www.canscale.dev",
+    "twitter": "https://twitter.com/can_scale",
+    "logo": "/img/showcase/canscale_logo.webp",
+     "submittableId": "34140445"
+  },
+  {
+    "id": "cipherproxy",
+    "name": "cipher proxy",
+    "description": "A web3 research collective and project laboratory developing decentralized projects and protocols",
+    "tags": [
+      "NFT"
+    ],
+    "website": "https://www.cipherproxy.com/",
+    "twitter": "https://twitter.com/CipherProxyLLC",
+    "logo": "/img/showcase/cipherproxy_logo.webp",
+     "submittableId": "21787270"
+  },
+  {
+    "id": "codebase",
+    "name": "CODEBASE",
+    "description": "Decentralized Git hosting and software collaboration, powered by permissionless protocols.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://codebase.org/",
+    "github": "https://github.com/paulyoung/icfs",
+    "twitter": "https://twitter.com/CodebaseLabs",
+    "logo": "/img/showcase/codebase_logo.webp"
+  },
+  {
+    "id": "dbox",
+    "name": "Dbox",
+    "description": "The decentralized inbox built on Internet Computer",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "useInternetIdentity": true,
+    "website": "https://dbox.foundation/",
+    "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
+    "discord": "https://discord.gg/rEN6ygpCxK",
+    "logo": "/img/showcase/dbox_logo.webp",
+     "submittableId": "22737412"
+  },
+  {
+    "id": "eimolad",
+    "name": "Eimolad",
+    "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers and incredible adventures. ",
+    "tags": [
+      "Games"
+    ],
+    "website": "https://eimolad.com/",
+    "twitter": "https://twitter.com/eimolad",
+    "discord": "https://discord.gg/qD3R5nDXDZ",
+    "logo": "/img/showcase/eimolad_logo.webp",
+     "submittableId": "28118212"
+  },
+  {
+    "id": "faefolk",
+    "name": "FaeFolk",
+    "description": "FaeFolk is a multiplayer, slice of life, NFT role-playing game where you use your NFTs to craft tools, equipment, and train your skills",
+    "tags": [
+      "Games",
+      "NFT"
+    ],
+    "website": "https://faefolk.notion.site/FaeFolk-674f752f33e14fa3a9952c2af17be181",
+    "github": "https://github.com/ICCards/faefolk",
+    "twitter": "https://twitter.com/_faefolk",
+    "discord": "https://discord.gg/Fe5qYRZrGp",
+    "logo": "/img/showcase/faefolk_logo.webp",
+     "submittableId": "32841408"
+  },
+  {
+    "id": "fishverse",
+    "name": "Fishverse",
+    "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
+    "tags": [
+      "Games",
+      "NFT"
+    ],
+    "website": "https://thefishverse.com/",
+    "github": "https://github.com/MGLabsltd/Fishverse_token",
+    "twitter": "https://twitter.com/TheFishverse",
+    "discord": "https://discord.com/invite/BmztPmDuSt",
+    "logo": "/img/showcase/fishverse_logo.webp",
+     "submittableId": "32119235"
+  },
+  {
+    "id": "icdevs.org",
+    "name": "ICDevs.org ",
+    "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding and scientific discovery",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://icdevs.org",
+    "github": "https://github.com/icdevs/Icdevs_fleeksite",
+    "logo": "/img/showcase/icdevs.org_logo.webp",
+     "submittableId": "33212854"
+  },
+  {
+    "id": "iclighthouse",
+    "name": "ICLightHouse",
+    "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "website": "https://iclight.house/",
+    "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
+    "discord": "https://discord.com/invite/FQZFGGq7zv",
+    "logo": "/img/showcase/iclighthouse_logo.webp"
+  },
+  {
+    "id": "polycrypt",
+    "name": "PolyCrypt",
+    "description": "We develop cryptographic decentralized offchain solutions which tackle scalability challenges enabling mass adoption of blockchains.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://perun.network",
+    "github": "https://github.com/perun-network/perun-icp-canister",
+    "twitter": "https://twitter.com/PolyCrypt_",
+    "logo": "/img/showcase/polycrypt_logo.webp",
+     "submittableId": "23715256"
+  },
+  {
+    "id": "scinet",
+    "name": "SCINET",
+    "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
+    "tags": [
+      "SocialFi, Tools / Infrastructure"
+    ],
+    "useInternetIdentity": true,
+    "website": "https://www.scinet.one/",
+    "twitter": "https://twitter.com/scinet_inc",
+    "discord": "https://discord.com/invite/5uH6vpJjeB",
+    "logo": "/img/showcase/scinet_logo.webp",
+     "submittableId": "33285268"
+  },
+  {
+    "id": "spinnercash",
+    "name": "Spinner.Cash",
+    "description": "Private transactions for ICP and BTC",
+    "tags": [
+      "DeFi, Tools / Infrastructure"
+    ],
+    "website": "https://spinner.cash/",
+    "github": "https://github.com/spinner-cash/launch-trail",
+    "twitter": "https://twitter.com/spnrapp",
+    "logo": "/img/showcase/spinnercash_logo.webp"
+  },
+  {
+    "id": "canistergeek",
+    "name": "Canistergeek by Usergeek",
+    "description": "Top up your canisters, monitor cycles, memory, logs and get your monthly reports in one place.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://cusyh-iyaaa-aaaah-qcpba-cai.raw.ic0.app/",
+    "github": "https://github.com/usergeek/canistergeek-demo-ui",
+    "twitter": "https://twitter.com/theUSERGEEK",
+    "discord": "https://discord.gg/6PEC6AbZER",
+    "logo": "/img/showcase/canistergeek_logo.webp",
+     "submittableId": "33310242"
+  },
   {
     "id": "icpipeline",
     "name": "ICPipeline",
