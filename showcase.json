@@ -399,7 +399,7 @@
       "/img/showcase/yumi-screenshot.webp"
     ]
   },
-   {
+  {
     "id": "icpulse",
     "name": "ICPulse",
     "oneLiner": "Visual metrics for IC's software activity data",
@@ -417,17 +417,21 @@
     ],
     "submittableId": "32418389"
   },
-   {
+  {
     "id": "hot-or-not",
     "name": "Hot or Not",
     "oneLiner": "Web3's answer to TikTok with speculation on short video content",
     "website": "https://hotornot.wtf/",
-    "tags": ["SocialFi"],
+    "tags": [
+      "SocialFi"
+    ],
     "description": "Hot or Not is a decentralized short-video social media (like TikTok) which integrates prediction markets for content. In addition to creating and sharing short videos on the platform, the users can also speculate on the short videos uploaded by other users on the platform. The users can vote whether a video would be 'Hot' or 'Not' and stake blockchain tokens to substantiate their vote. The results are declared every hour and the winners are rewarded with 2x tokens. With Decentralized governance and content moderation, Hot or Not would put the users at the center of the ecosystem",
     "usesInternetIdentity": true,
     "stats": "50 000+ users | 10 000+ videos",
     "logo": "/img/showcase/hot_or_not_logo.svg",
-    "screenshots": ["/img/showcase/hot_or_not_screenshot_0.jpg"],
+    "screenshots": [
+      "/img/showcase/hot_or_not_screenshot_0.jpg"
+    ],
     "videoContentType": "video/mp4",
     "video": "/img/showcase/hot_or_not_video.mp4"
   },
@@ -907,7 +911,6 @@
       "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
- 
   {
     "id": "argonstudio",
     "name": "Argon Studio",
@@ -918,7 +921,7 @@
     "website": "https://argonstudios.xyz/",
     "twitter": "https://twitter.com/ArgonStudiosXYZ",
     "logo": "/img/showcase/argonstudio_logo.webp",
-     "submittableId": "34524251"
+    "submittableId": "34524251"
   },
   {
     "id": "aviatelabs",
@@ -930,7 +933,7 @@
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
     "logo": "/img/showcase/aviatelabs_logo.webp",
-     "submittableId": "25140378"
+    "submittableId": "25140378"
   },
   {
     "id": "canscale",
@@ -942,7 +945,7 @@
     "website": "https://www.canscale.dev",
     "twitter": "https://twitter.com/can_scale",
     "logo": "/img/showcase/canscale_logo.webp",
-     "submittableId": "34140445"
+    "submittableId": "34140445"
   },
   {
     "id": "cipherproxy",
@@ -954,7 +957,7 @@
     "website": "https://www.cipherproxy.com/",
     "twitter": "https://twitter.com/CipherProxyLLC",
     "logo": "/img/showcase/cipherproxy_logo.webp",
-     "submittableId": "21787270"
+    "submittableId": "21787270"
   },
   {
     "id": "codebase",
@@ -980,7 +983,7 @@
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "discord": "https://discord.gg/rEN6ygpCxK",
     "logo": "/img/showcase/dbox_logo.webp",
-     "submittableId": "22737412"
+    "submittableId": "22737412"
   },
   {
     "id": "eimolad",
@@ -993,7 +996,7 @@
     "twitter": "https://twitter.com/eimolad",
     "discord": "https://discord.gg/qD3R5nDXDZ",
     "logo": "/img/showcase/eimolad_logo.webp",
-     "submittableId": "28118212"
+    "submittableId": "28118212"
   },
   {
     "id": "faefolk",
@@ -1008,7 +1011,7 @@
     "twitter": "https://twitter.com/_faefolk",
     "discord": "https://discord.gg/Fe5qYRZrGp",
     "logo": "/img/showcase/faefolk_logo.webp",
-     "submittableId": "32841408"
+    "submittableId": "32841408"
   },
   {
     "id": "fishverse",
@@ -1023,7 +1026,7 @@
     "twitter": "https://twitter.com/TheFishverse",
     "discord": "https://discord.com/invite/BmztPmDuSt",
     "logo": "/img/showcase/fishverse_logo.webp",
-     "submittableId": "32119235"
+    "submittableId": "32119235"
   },
   {
     "id": "icdevs.org",
@@ -1035,7 +1038,7 @@
     "website": "https://icdevs.org",
     "github": "https://github.com/icdevs/Icdevs_fleeksite",
     "logo": "/img/showcase/icdevs.org_logo.webp",
-     "submittableId": "33212854"
+    "submittableId": "33212854"
   },
   {
     "id": "iclighthouse",
@@ -1061,28 +1064,30 @@
     "github": "https://github.com/perun-network/perun-icp-canister",
     "twitter": "https://twitter.com/PolyCrypt_",
     "logo": "/img/showcase/polycrypt_logo.webp",
-     "submittableId": "23715256"
+    "submittableId": "23715256"
   },
   {
     "id": "scinet",
     "name": "SCINET",
     "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
     "tags": [
-      "SocialFi, Tools / Infrastructure"
+      "SocialFi",
+      "Tools / Infrastructure"
     ],
     "useInternetIdentity": true,
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
     "logo": "/img/showcase/scinet_logo.webp",
-     "submittableId": "33285268"
+    "submittableId": "33285268"
   },
   {
     "id": "spinnercash",
     "name": "Spinner.Cash",
     "description": "Private transactions for ICP and BTC",
     "tags": [
-      "DeFi, Tools / Infrastructure"
+      "DeFi",
+      "Tools / Infrastructure"
     ],
     "website": "https://spinner.cash/",
     "github": "https://github.com/spinner-cash/launch-trail",
@@ -1101,7 +1106,7 @@
     "twitter": "https://twitter.com/theUSERGEEK",
     "discord": "https://discord.gg/6PEC6AbZER",
     "logo": "/img/showcase/canistergeek_logo.webp",
-     "submittableId": "33310242"
+    "submittableId": "33310242"
   },
   {
     "id": "icpipeline",
@@ -1180,7 +1185,6 @@
       "/img/showcase/icpswap_screenshot_0.webp"
     ]
   },
-  
   {
     "id": "evmonicp",
     "name": "EVM on ICP",
@@ -1431,7 +1435,11 @@
     "name": "ITOKA",
     "oneLiner": "A Leading Infrastructure for Music3.0",
     "website": "https://www.itoka.xyz/",
-    "tags": ["NFT", "SocialFi", "Tools / Infrastructure"],
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
     "description": "The ITOKA project seeks to disrupt the centralized music industry by offering a complete infrastructure solution for the web3 music industry. This includes creation tools, data storage, and music streaming services. The goal of ITOKA is to transform the music industry into a decentralized ecosystem, empowering creators with greater control over their content and a fairer share of revenue.",
     "usesInternetIdentity": true,
     "github": "https://github.com/Itoka-DAO",
@@ -1441,7 +1449,9 @@
     "video": "/img/showcase/itoka_video.mp4",
     "videoContentType": "video/mp4",
     "display": "Large",
-    "screenshots": ["/img/showcase/itoka_screanshot.svg"]
+    "screenshots": [
+      "/img/showcase/itoka_screanshot.svg"
+    ]
   },
   {
     "id": "glue",
@@ -1484,7 +1494,9 @@
     "name": "Dwitter",
     "oneLiner": "AI-powered social network",
     "website": "https://dwitter.me",
-    "tags": ["SocialFi"],
+    "tags": [
+      "SocialFi"
+    ],
     "description": "Explore Dwitter! Decentralized social network like Twitter, integrated with OpenAI bots. View a shared global feed featuring user-chatbot interactions from around the world.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dwitter_logo.png",
