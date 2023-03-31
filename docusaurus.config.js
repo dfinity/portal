@@ -233,7 +233,7 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            className: "dropdown--custom",
+            className: "dropdown--custom dropdown--columns-2",
             label: "Use",
             items: intoColumns([
               [
@@ -242,28 +242,9 @@ const config = {
                   label: "ICP Ecosystem",
                   href: "/ecosystem",
                 },
-
                 {
                   label: "ICP Token",
                   href: "/icp-tokens",
-                },
-
-                {
-                  label: "OpenChat",
-                  href: "/openchat",
-                },
-
-                {
-                  label: "Social Media Dapps",
-                  href: "/social-media-dapps",
-                },
-                {
-                  label: "NFTs",
-                  href: "/nft",
-                },
-                {
-                  label: "DeFi",
-                  href: "/defi",
                 },
                 {
                   label: "Create an Internet Identity",
@@ -273,13 +254,33 @@ const config = {
                   label: "Staking & Governance (NNS)",
                   href: "/nns",
                 },
+
+                {
+                  label: "Help & Support",
+                  href: "https://support.dfinity.org/hc/en-us ",
+                },
+              ],
+              [
+                menuDivider("Use Cases"),
+                {
+                  label: "NFTs",
+                  href: "/nft",
+                },
+                {
+                  label: "DeFi",
+                  href: "/defi",
+                },
+                {
+                  label: "Social Media Dapps",
+                  href: "/social-media-dapps",
+                },
                 {
                   label: "SNS DAOs",
                   href: "/sns",
                 },
                 {
-                  label: "Help & Support",
-                  href: "https://support.dfinity.org/hc/en-us ",
+                  label: "OpenChat",
+                  href: "/openchat",
                 },
               ],
             ]),
