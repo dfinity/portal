@@ -75,14 +75,14 @@ export default function Hero(): JSX.Element {
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>Tomorrow,</b> blockchain will play the role of a "crypto cloud."
-            </p>           
+            </p>  
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Blockchain will eat the centralized cloud,</b> and become our future stack, 
-              hosting most systems and services, allowing Web3 to
-              decentralize the internet.
-            </p>            
+              <b>Blockchain will eat the centralized cloud,</b>{" "}and become our future stack,
+              by hosting unstoppable systems and services, 
+              and allowing Web3 to reimagine the internet ecosystem.
+            </p>                                 
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>It's happening at scale today</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
+              <b>It's already happening at scale</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
               which is pioneering a blockchain singularity &#9889;
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
