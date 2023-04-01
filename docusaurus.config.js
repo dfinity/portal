@@ -583,6 +583,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust'],
       },
       liveCodeBlock: {
         playgroundPosition: "bottom",
