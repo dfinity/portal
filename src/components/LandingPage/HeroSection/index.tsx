@@ -74,17 +74,20 @@ export default function Hero(): JSX.Element {
               
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Tomorrow,</b> blockchain will play the role of a crypto cloud.
-            </p>
+              <b>Tomorrow,</b> blockchain will play the role of a "crypto cloud."
+            </p>           
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Blockchain will eat centralized cloud,</b> and become our future stack, 
-              hosting most systems and services itself, enabling Web3 to 
-              decentralize the internet ecosystem.
+              <b>Blockchains will eat the centralized cloud,</b> and become our future stack, 
+              hosting most systems and services themselves, allowing Web3 to
+              decentralize the internet.
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>It's happening at scale today</b> on the <span className="font-bold text-infinite">Internet Computer</span>. {" "}
-              Join the movement, and welcome the blockchain singularity &#9889;
+              <b>It's happening at scale today</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
+              which is pioneering a blockchain singularity &#9889;
             </p>
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              <b>Join the movement.</b>
+            </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23ICP">#ICP</a> {" "}
               <a target="_blank" href="https://twitter.com/search?q=%23WorldComputer">#WorldComputer</a> {" "}
@@ -121,19 +124,19 @@ export default function Hero(): JSX.Element {
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
               The <strong className="text-infinite">Internet Computer</strong> is created by
-              dedicated "node machine" hardware, just as Bitcoin uses mining rigs.
+              dedicated "node machines," rather like Bitcoin uses mining rigs.
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Proof-of-Useful-Work</b> creates sovereign networks from standard-spec node machines
-              run by "node providers."
+              <b>Proof-of-Useful-Work</b> creates a sovereign network from this
+              standardized hardware, which is run by "node providers."
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>It can be millions of times more efficient than Proof-of-Stake,</b> which 
               runs on Big Tech's cloud.
               The node machines organize into subnet blockchains, where smart contract computation is
               their work. 
-              "Chain key crypto" combines the subnets into one limitless blockchain, and also 
-              directly cryptographically integrates external chains like Bitcoin and Ethereum.
+              "Chain key crypto" combines the subnets into one limitless blockchain, and 
+              cryptographically integrates external chains like Bitcoin and Ethereum.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23ChainKey">#ChainKey</a> {" "}
@@ -161,18 +164,19 @@ export default function Hero(): JSX.Element {
               Intelligent Blockchain
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
-            The <strong className="text-infinite">Internet Computer</strong> rapidly evolves and adapts,
-            using an algorithmic-DAO that runs as part of the network.
+              The <strong className="text-infinite">Internet Computer</strong> is controlled by
+              its "Network Nervous System," which functions as the network's brain.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Forks are no longer necessary to upgrade the blockchain,</b> which are
-              technically risky, slow, and centralized.
+              <b>The blockchain can be updated without "forks,"</b> which are
+              slow, technically risky, and centralized.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
-              <b>Instead, the "Network Nervous System"</b> acts as the brain of the blockchain.
-              Every "node machine" in the network exclusively follows its verifiable instructions,
-              which structures and configures the network, scaling capacity, and pushing protocol
-              upgrades onto nodes without interrupting service.
+              <b>Instead, its network evolves and adapts in relative realtime,</b>{" "}
+              thanks to its permissionless algo-DAO.
+              The network's node machines follows its instructions, which structure and configure
+              the network, create subnets to increase capacity, and push protocol upgrades
+              onto nodes, all without human intervention, or interrupting service.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23NNS">#NNS</a> {" "}
