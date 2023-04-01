@@ -173,8 +173,8 @@ export default function Hero(): JSX.Element {
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
               <b>Instead, its network evolves and adapts in relative realtime,</b>{" "}
-              thanks to this permissionless algo-DAO.
-              The network's node machines follows its instructions, which structure and configure
+              thanks to its permissionless algo-DAO.
+              The network's node machines follow its instructions, which structure and configure
               the network, create subnets to increase capacity, and push protocol upgrades
               onto nodes, all without human intervention, or interrupting service.
             </p>
