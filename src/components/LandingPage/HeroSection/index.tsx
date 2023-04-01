@@ -77,8 +77,8 @@ export default function Hero(): JSX.Element {
               <b>Tomorrow,</b> blockchain will play the role of a "crypto cloud."
             </p>           
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Blockchains will eat the centralized cloud,</b> and become our future stack, 
-              hosting most systems and services themselves, allowing Web3 to
+              <b>Blockchain will eat the centralized cloud,</b> and become our future stack, 
+              hosting most systems and services, allowing Web3 to
               decentralize the internet.
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
@@ -173,7 +173,7 @@ export default function Hero(): JSX.Element {
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
               <b>Instead, its network evolves and adapts in relative realtime,</b>{" "}
-              thanks to its permissionless algo-DAO.
+              thanks to this permissionless algo-DAO.
               The network's node machines follows its instructions, which structure and configure
               the network, create subnets to increase capacity, and push protocol upgrades
               onto nodes, all without human intervention, or interrupting service.
