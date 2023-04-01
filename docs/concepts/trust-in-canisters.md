@@ -26,7 +26,9 @@ The canisters, if not voluntarily made immutable, have complete control over the
 
 :::
 
-### Complete Immutability
+### Partial Immutability
+
+Following the adoption of NNS proposal [#115067](https://dashboard.internetcomputer.org/proposal/115067) it is no longer possible to ensure that the NNS won't change the controller relationship of canisters. Nevertheless, limited immutability can still be accomplished, notwithstanding modifications by the NNS DAO.
 
 The simplest option is to make the canister immutable by removing its controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
