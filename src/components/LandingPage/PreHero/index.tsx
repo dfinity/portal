@@ -112,8 +112,8 @@ const Numbers = () => {
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP scales horizontally by transparently combining subnet
-            blockchains into one unified blockchain. Each subnet also processes
-            transactions in parallel.
+            blockchains into one unified blockchain.
+            Blocks and transactions per second are unbounded.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -164,8 +164,8 @@ const Numbers = () => {
         <div className="flex flex-col gap-3 md:gap-4">
           <p className="tw-paragraph md:tw-heading-5 mb-0">Ethereum equivalent Tx/s</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Transactions invoke "actor" smart contract ("canister") computations.
-            Subnet blockchains run these concurrently, but deterministically.
+            Transactions invoke "actor" canister smart contract computations, 
+            which subnet blockchains can run concurrently (yet deterministically).
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -229,9 +229,9 @@ const Numbers = () => {
             Smart contract memory
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP "canister" smart contracts are bundles of WebAssembly byte code 
-            and persistent memory pages. Each contract can have many GB of 
-            persistent memory, supporting fully decentralized Web3.
+            Canister smart contracts are bundles of WebAssembly instructions 
+            and persistent memory. One smart contract can maintain gigabytes of 
+            memory pages.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
