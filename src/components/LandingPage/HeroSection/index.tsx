@@ -73,16 +73,16 @@ export default function Hero(): JSX.Element {
              <b>Today,</b>  <span className="font-bold text-infinite">blockchains only process tokens and clips of data.</span>
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-            <b>Tomorrow,</b> <span className="font-bold text-infinite">blockchain will become a crypto cloud...</span>
+            <b>Tomorrow,</b> <span className="font-bold text-infinite">blockchain will become the "crypto cloud."</span>
             </p>  
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>Blockchain will eat the centralized cloud,</b>{" "}and become the "everything stack,"
-              by hosting greatly superior unstoppable systems and services, 
-              and enabling Web3 to reimagine the internet using E2E smart contract tech.
+              which hosts unstoppable systems and services, 
+              and enables Web3 that's 100% decentralized.
             </p>                                 
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>It's already happening at scale</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
-              which is pioneering a blockchain singularity &#9889;
+              which is powering a blockchain singularity &#9889;
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>Join the movement.</b>
@@ -123,15 +123,15 @@ export default function Hero(): JSX.Element {
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
               The <strong className="text-infinite">Internet Computer</strong> is created by
-              dedicated "node machines," rather like Bitcoin uses mining rigs.
+              dedicated "node machines," rather like Bitcoin is created by mining rigs.
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Proof-of-Useful-Work</b> forms this standardized node machine hardware into a sovereign
-              blockchain network.
+              <b>Proof-of-Useful-Work</b> forms node machines, which are hardware devices, into
+              a sovereign <i>independent</i> network.
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>It can be millions of times more efficient than Proof-of-Stake,</b> even 
-              when it's run on the centralized cloud. 
+              when it uses cloud validator nodes. 
               The node machines organize into subnet blockchains, where smart contract computation is
               their work. 
               "Chain key crypto" combines the subnets into one limitless blockchain, and 
@@ -167,14 +167,14 @@ export default function Hero(): JSX.Element {
               its "Network Nervous System," which functions as the network's brain.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>The blockchain can be updated without "forks," which are
-              slow, technically risky, and centralized.</b>
+              <b>The blockchain can be updated without "forks,"</b> which are
+              slow, require central coordination, and technically risky.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
               <b>Instead, its network evolves and adapts in relative realtime,</b>{" "}
-              thanks to its permissionless algo-DAO.
+              thanks to its permissionless, algorithmic DAO.
               The network's node machines follow its instructions, which structure and configure
-              the network, create subnets to increase capacity, and push protocol upgrades
+              the network, create subnets to add new capacity, and push protocol upgrades
               onto nodes, all without human intervention, or interrupting service.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
