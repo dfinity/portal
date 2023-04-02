@@ -131,8 +131,8 @@ export default function Hero(): JSX.Element {
               standardized hardware, which is run by "node providers."
             </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>It can be millions of times more efficient than Proof-of-Stake,</b> which 
-              runs on Big Tech's cloud.
+              <b>It can be millions of times more efficient than Proof-of-Stake,</b> even 
+              when it's run on cloud services. 
               The node machines organize into subnet blockchains, where smart contract computation is
               their work. 
               "Chain key crypto" combines the subnets into one limitless blockchain, and 
