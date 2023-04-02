@@ -78,7 +78,7 @@ export default function Hero(): JSX.Element {
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>Blockchain will eat the centralized cloud,</b>{" "}and become the "everything stack,"
               which hosts unstoppable systems and services, 
-              and enables Web3 that's 100% decentralized.
+              and enables Web3 to be 100% decentralized.
             </p>                                 
             <p className="tw-lead-sm md:tw-lead mb-8">
               <b>It's already happening at scale</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
