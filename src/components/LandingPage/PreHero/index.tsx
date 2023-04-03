@@ -172,6 +172,13 @@ const Numbers = () => {
               $0.0000022
             </span>{" "}
             average cost/Tx
+            <Link
+              href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
+              title="Read more: Not all transactions are equal"
+              className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
+            >
+              <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
+            </Link>
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
@@ -195,14 +202,7 @@ const Numbers = () => {
                 <>&nbsp;</>
               )}
             </span>{" "}
-            Tx/s{" "}
-            <Link
-              href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
-              title="Read more: Not all transactions are equal"
-              className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
-            >
-              <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
-            </Link>
+            ICP Tx/s{" "}
           </div>
         </div>
       </AnimateSpawn>
