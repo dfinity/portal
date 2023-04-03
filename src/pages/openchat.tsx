@@ -79,7 +79,7 @@ function SnsPage() {
                   variants={transitions.item}
                 >
                   OpenChat, a fully on-chain SocialFi messaging service,
-                  decentralized using an SNS DAO and became the first "open
+                  decentralized using an SNS DAO and became an early "open
                   internet service".
                 </motion.p>
               </div>
