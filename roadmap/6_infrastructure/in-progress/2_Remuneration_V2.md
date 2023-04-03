@@ -1,7 +1,7 @@
 ---
 title: Remuneration V2
 links:
-  Forum Post: https://forum.dfinity.org/t/the-state-and-direction-of-decentralization-nodes-on-the-internet-computer/9170/178
+  Forum Post: https://forum.dfinity.org/t/the-state-and-direction-of-decentralization-nodes-on-the-internet-computer/9170
   Proposal:
 eta:
 is_community: true
