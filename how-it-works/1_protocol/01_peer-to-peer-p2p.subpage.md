@@ -1,7 +1,7 @@
 ---
 title: Peer-to-Peer
 abstract: 
-shareImage: /img/how-it-works/peer-to-peer-p2p.600.jpg
+shareImage: /img/how-it-works/peer-to-peer.webp
 slug: peer-to-peer-p2p
 ---
 

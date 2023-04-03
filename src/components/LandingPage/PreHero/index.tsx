@@ -112,8 +112,8 @@ const Numbers = () => {
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP scales horizontally by transparently combining subnet
-            blockchains into one unified blockchain. Subnets process blocks in
-            parallel.
+            blockchains into one unified blockchain.
+            Blocks and transactions per second are unbounded.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -139,56 +139,39 @@ const Numbers = () => {
       </AnimateSpawn>
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {transactionRateQuery.isFetched ? (
-            <SpringCounter
-              target={transactionRateQuery.data}
-              initialTarget={transactionRateQuery.data}
-              initialValue={0}
-              format={formatNumber}
-              className="text-transparent bg-clip-text hero-stat-blue"
-              springConfig={[3, 1, 1]}
-            ></SpringCounter>
+          {updateTxRate.isFetched ? (
+            <>
+              <SpringCounter
+                target={updateTxRate.data * 80}
+                initialTarget={updateTxRate.data * 80}
+                initialValue={updateTxRate.data * 80}
+                format={formatNumber}
+                springConfig={[3, 1, 1]}
+                className="text-transparent bg-clip-text hero-stat-blue"
+              ></SpringCounter>
+              <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                {getEthEquivalentFigureSpacer(
+                  Math.floor(updateTxRate.data * 1)
+                )}
+              </span>
+            </>
           ) : (
-            <>&nbsp;</>
+            <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+              {getEthEquivalentFigureSpacer(Math.floor(5000 * 1))}
+            </span>
           )}
         </h3>
         <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
+          <p className="tw-paragraph md:tw-heading-5 mb-0">Ethereum equivalent Tx/s</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Transactions invoke computations by "actor" smart contracts. Subnets
-            run transactions concurrently, but deterministically
+            Transactions invoke "actor" canister smart contract computations, 
+            which subnet blockchains can run concurrently (yet deterministically).
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
               $0.0000022
             </span>{" "}
-            av. cost/Tx
-          </div>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
-            <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
-              {updateTxRate.isFetched ? (
-                <>
-                  <SpringCounter
-                    target={updateTxRate.data * 80}
-                    initialTarget={updateTxRate.data * 80}
-                    initialValue={updateTxRate.data * 80}
-                    format={formatNumber}
-                    springConfig={[3, 1, 1]}
-                    className="col-start-1 row-start-1"
-                  ></SpringCounter>
-                  <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
-                    {getEthEquivalentFigureSpacer(
-                      Math.floor(updateTxRate.data * 80)
-                    )}
-                  </span>
-                </>
-              ) : (
-                <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
-                  {getEthEquivalentFigureSpacer(Math.floor(5000 * 80))}
-                </span>
-              )}
-            </span>{" "}
-            ETH equivalent Tx/s{" "}
+            average cost/Tx
             <Link
               href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
               title="Read more: Not all transactions are equal"
@@ -196,6 +179,30 @@ const Numbers = () => {
             >
               <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
             </Link>
+          </div>
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
+            <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
+              {transactionRateQuery.isFetched ? (
+                <>
+                  <SpringCounter
+                    target={transactionRateQuery.data}
+                    initialTarget={transactionRateQuery.data}
+                    initialValue={0}
+                    format={formatNumber}
+                    className="col-start-1 row-start-1"
+                    springConfig={[3, 1, 1]}
+                  ></SpringCounter>
+              <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                {getEthEquivalentFigureSpacer(
+                  Math.floor(updateTxRate.data * 1)
+                )}
+              </span>
+            </>                  
+              ) : (
+                <>&nbsp;</>
+              )}
+            </span>{" "}
+            ICP Tx/s{" "}
           </div>
         </div>
       </AnimateSpawn>
@@ -222,9 +229,9 @@ const Numbers = () => {
             Smart contract memory
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP smart contracts combine WebAssembly bytecode with persistent
-            on-chain memory, with gigabytes available – supporting the creation
-            of truly decentralized systems and services that are 100% on-chain
+            Canister smart contracts are bundles of WebAssembly instructions 
+            and persistent memory. One smart contract can maintain gigabytes of 
+            memory pages.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">

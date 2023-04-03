@@ -1,7 +1,7 @@
 ---
 title: Service Nervous System
 abstract:
-shareImage: /img/how-it-works/overview-of-the-internet-computer.600.jpg
+shareImage: /img/how-it-works/service-nervous-system.webp
 slug: sns
 ---
 

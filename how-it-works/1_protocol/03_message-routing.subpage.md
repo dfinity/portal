@@ -1,7 +1,7 @@
 ---
 title: Message Routing
 abstract: 
-shareImage: /img/how-it-works/message-routing.600.jpg
+shareImage: /img/how-it-works/messaging-routing.webp
 slug: message-routing
 ---
 
