@@ -1,4 +1,4 @@
-# Computation and Storage Costs
+# Gas/Cycles cost
 
 The Internet Computer requires computation operations and storage to be supported by cycles. Cycles are generated from the conversion of Internet Computer (ICP) utility tokens.
 

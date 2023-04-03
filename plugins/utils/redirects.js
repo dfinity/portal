@@ -9,6 +9,7 @@ const redirects = `
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
+  /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
   /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
@@ -34,8 +35,9 @@ const redirects = `
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
-  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
+  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
+  /docs/developers-guide/concepts/what-is-ic /what-is-the-ic
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
