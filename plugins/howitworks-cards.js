@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { isLinkExternal } = require("./utils/links");
+const { createKatexParagraphRenderer } = require("./utils/marked-renderers");
 
 const baseDir = path.resolve(__dirname, "..", "how-it-works");
 
@@ -28,6 +29,7 @@ renderer.heading = (text, level) => {
   level = Math.min(6, level + 2);
   return `<h${level}>${text}</h${level}>`;
 };
+renderer.paragraph = createKatexParagraphRenderer(renderer.paragraph);
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksCardsPlugin = async function () {
@@ -82,8 +84,8 @@ const howItWorksCardsPlugin = async function () {
       return groups;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("howitworks-cards.json", JSON.stringify(content));
     },
   };
 };

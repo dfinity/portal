@@ -17,7 +17,7 @@ function Index({ title, description, coverImage, slug }) {
           href={"/how-it-works/" + slug}
           className="bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors"
         >
-          Learn more
+          Go deeper
         </Link>
       </div>
       <div className="w-full sm:w-1/2">

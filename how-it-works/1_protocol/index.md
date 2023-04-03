@@ -1,3 +1,3 @@
 ---
-title: Protocol stack
+title: Core IC Protocol
 ---

@@ -8,6 +8,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const HostWeb = () => {
   const controls = useAnimation();
@@ -28,42 +29,25 @@ const HostWeb = () => {
       >
         <motion.h2
           variants={transitions.item}
-          className={clsx("heading-2", styles.heading)}
+          className={clsx("tw-heading-3 md:tw-heading-2 m-0", styles.heading)}
         >
           What makes the Internet Computer Unique?
         </motion.h2>
         <div className={styles.content}>
           <motion.div variants={transitions.item} className={styles.copy}>
-            <h3 className="heading-3">Smart contracts serve webpages</h3>
-            <p className="paragraph-large">
+            <h3 className="tw-heading-5 md:tw-heading-3 m-0">
+              Smart contracts serve webpages
+            </h3>
+            <p className="tw-paragraph md:tw-lead m-0">
               You can open canister smart contracts directly in your browser
               just like regular websites.
             </p>
             <Link
-              href="https://internetcomputer.org/how-it-works/canister-lifecycle"
-              className="cta-link"
-              style={{ marginTop: "32px" }}
+              href="https://internetcomputer.org/how-it-works#Web-access"
+              className="link-primary link-with-icon mt-8"
             >
               How it works
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clipPath="url(#clip0_1926_30447)">
-                  <path
-                    d="M11.2429 8.34285L3.65709 8.34285L3.65709 6.34315H14.6568V17.3429L12.6571 17.3429L12.6571 9.75706L4.05024 18.364L2.63603 16.9498L11.2429 8.34285Z"
-                    fill="currentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1926_30447">
-                    <rect width="24" height="24" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
+              <LinkArrowUpRight />
             </Link>
           </motion.div>
           <motion.div

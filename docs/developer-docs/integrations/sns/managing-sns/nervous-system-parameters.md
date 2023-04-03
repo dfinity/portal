@@ -1,1 +1,0 @@
-# Nervous System Parameters

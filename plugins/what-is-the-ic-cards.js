@@ -86,7 +86,12 @@ const whatIsIcpDataPlugin = async function () {
 
         const meta = matter(fs.readFileSync(indexPath, { encoding: "utf-8" }));
 
-        const baseDir = path.resolve(__dirname, "..", "what-is-the-ic", dir.name);
+        const baseDir = path.resolve(
+          __dirname,
+          "..",
+          "what-is-the-ic",
+          dir.name
+        );
 
         domains.push({
           name: meta.data.title,
@@ -96,20 +101,14 @@ const whatIsIcpDataPlugin = async function () {
             card: meta.data.card,
             overlay: meta.data.overlay,
           },
-          // groups: {
-          //   deployed: getItems(path.join(baseDir, "deployed")),
-          //   inProgress: getItems(path.join(baseDir, "in-progress")),
-          //   pending: getItems(path.join(baseDir, "pending")),
-          // },
         });
       }
-      // console.log(JSON.stringify(domains, null, 2));
 
       return domains;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("what-is-the-ic.json", JSON.stringify(content, null, 2));
     },
   };
 };

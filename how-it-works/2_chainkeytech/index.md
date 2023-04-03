@@ -1,3 +1,3 @@
 ---
-title: Chain key technology
+title: Chain-key technology
 ---

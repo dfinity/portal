@@ -1,0 +1,35 @@
+name: PR Cleanup
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  release_preview_canister:
+    # do not run in forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: |
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          pip install ic-py
+          python3 .github/workflows/scripts/release-canister.py $pull_number
+        env:
+          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const comments = require('./.github/workflows/scripts/comments.js');
+            const maybeComment = await comments.get(context, github);
+            if (maybeComment) {
+              await comments.delete(context, github, maybeComment.id);
+            }

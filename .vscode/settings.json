@@ -1,7 +1,10 @@
 {
   "cSpell.words": [
+    "aggregatable",
+    "ciphertext",
     "envars",
     "Envars",
+    "Gamal",
     "hackathon",
     "howto",
     "intercanister",
@@ -9,9 +12,11 @@
     "Motoko",
     "permissioned",
     "phonebook",
+    "Shamir",
     "stablememory",
     "tamperproof",
-    "tokentransfer"
+    "tokentransfer",
+    "VETKD"
   ],
   "grammarly.selectors": [
     {
@@ -19,5 +24,6 @@
       "scheme": "file"
     }
   ],
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "deno.enablePaths": ["./netlify/edge-functions", "./netlify/test"]
 }

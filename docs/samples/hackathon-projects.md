@@ -12,7 +12,7 @@ Sidekick is a dapp running on the Internet Computer that can build canisters fro
 
 -   [See code on GitHub](https://github.com/blynn/sidekick)
 
--   [Live Canister](https://ffgig-jyaaa-aaaae-aaaoa-cai.raw.ic0.app)
+-   [Live Canister](https://ffgig-jyaaa-aaaae-aaaoa-cai.raw.icp0.io)
 
 ### ICVault
 

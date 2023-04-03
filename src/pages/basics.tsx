@@ -7,17 +7,17 @@ import HostWeb from "../components/Basics/HostWeb";
 import InternetIdentity from "../components/Basics/InternetIdentity";
 import ItsGreen from "../components/Basics/ItsGreen";
 import TrueScaling from "../components/Basics/TrueScaling";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
+import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 
 const BasicsPage: React.FC = () => {
-  resetNavBarStyle();
   return (
     <Layout
       title={"Basics"}
       description={
         "The Internet Computer is the first truly web-speed blockchain that is able to serve web pages on its own. Thanks to novel chain-key cryptography it is able to scale to infinitely many services that live on-chain."
       }
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -39,7 +39,13 @@ const BasicsPage: React.FC = () => {
         <HostWeb></HostWeb>
         <Ecosystem></Ecosystem>
         <TrueScaling></TrueScaling>
-        <InternetIdentity></InternetIdentity>
+        <BackgroundPanel
+          panelClassName="bg-infinite"
+          outerClassName="pt-0 md:pt-20 md:pb-30"
+          threshold={0.35}
+        >
+          <InternetIdentity></InternetIdentity>
+        </BackgroundPanel>
         <Ecosystem2></Ecosystem2>
         <ItsGreen></ItsGreen>
       </main>

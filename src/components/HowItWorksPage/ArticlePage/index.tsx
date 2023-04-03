@@ -1,22 +1,19 @@
-import React from "react";
-import { useLocation } from "@docusaurus/router";
-import useGlobalData from "@docusaurus/useGlobalData";
-import { HowItWorksData } from "@site/src/components/HowItWorksPage/HowItWorksData";
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import { motion } from "framer-motion";
-import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
+import React from "react";
+import ShareMeta from "../../Common/ShareMeta";
 
-function Index() {
-  const location = useLocation();
-  const articles = useGlobalData()["howitworks-articles"]
-    .default as HowItWorksData;
-  const articleSlug = location.pathname.split("/").filter((s) => !!s)[1];
-  const article = articles.find((a) => a.slug === articleSlug);
-
+function Index({ article }) {
   return (
-    <Layout title={article.title} description={article.abstract || ""}>
+    <Layout
+      title={article.title}
+      description={article.abstract || ""}
+      editPath={`https://github.com/dfinity/portal/edit/master/${article.fileName}`}
+    >
+      <ShareMeta image={article.shareImage}></ShareMeta>
       <main className="text-black relative overflow-hidden">
         <img
           src={BlobPurple}
@@ -33,7 +30,6 @@ function Index() {
                 { text: "How it works", href: "/how-it-works" },
                 {
                   text: article.title,
-                  href: location.pathname,
                 },
               ]}
             />

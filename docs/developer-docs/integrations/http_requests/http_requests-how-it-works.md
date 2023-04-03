@@ -42,7 +42,7 @@ The programming model for this feature is such that the canister making an HTTP 
 
 The basic architecture is that an oracle smart contract is deployed on chain. Users make requests to this oracle contract, which stores the requests temporarily. An oracle, i.e., Web 2.0 server, obtains the stored request from the oracle smart contract through regular means of interacting with it using queries and update calls. Then the oracle executes the request in the Web 2.0 world by means of a regular HTTP call and provides back the response to the oracle smart contract, again using the normal interaction paradigm with the blockchain (update call). Then the oracle smart contract provides back the response to the calling smart contract using a standard on-chain interaction.
 
-In the oracle architecture, a single oracle may fulfill the original request, or a decentralized network of oracles may each issue the request and then provide an agreed-upon response (including evidence) to the oracle contract and ultimately to the calling canister. As we can see, the oracle world effectively can achieve the same result as HTTP outcalls, but with a more complex architecture of requiring one or more external parties that want to be paid for their services. Thus, one can assume that HTTP outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model and with lower fees and lower request execution latency.
+In the oracle architecture, a single oracle may fulfill the original request, or a decentralized network of oracles may each issue the request and then provide an agreed-upon response (including evidence) to the oracle contract and ultimately to the calling canister. As we can see, the oracle would effectively achieve the same result as HTTP outcalls, but with a more complex architecture of requiring one or more external parties that want to be paid for their services. Thus, one can assume that HTTP outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model and with lower fees and lower request execution latency.
 
 Oracle services may provide additional functionality or services. One prominent example is using multiple data sources for a given information item, e.g., an asset price, and then providing a normalized response, e.g., the median price, as a result. Another example is keeping a selection of historic prices that have been retrieved available on chain for direct access by smart contracts without any oracle interaction. Both those functionalities can be built with the canister HTTP outcalls feature and do not require oracles.
 
@@ -109,7 +109,7 @@ As mentioned already further above, there are multiple possible extensions we ar
 
 ## Coding HTTPS Outcalls
 
-We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](../../../references/ic-interface-spec/#ic-method-http_request).
+We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](/references/ic-interface-spec.md#ic-http_request).
 
 ### Recipe for Coding a Canister HTTP Call
 
@@ -142,7 +142,7 @@ We recommend to go with the first approach whenever possible as it has multiple 
 There are a number of error cases that can happen when using this feature. The most important ones are listed next.
 * *SysFatal - Url needs to specify https scheme:* The feature currently only allows for HTTPS connections and using plain HTTP leads to an error.
 * *SysFatal - Timeout expired:* Requests are timed out if not fulfilled within the timeout period. One important instance when this happens is when there are not sufficiently many equal responses to achieve consensus. This happens, for example, when the transformation function is not written accurately to account for all variable parts of responses.
-* *SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):* This error indicates that a TCP connection could not be established with the other server.
+* *SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):* This error indicates that a TCP connection could not be established with the other server. This is most likely due to the fact that the server you are calling is not supporting IPv6.
 * *CanisterReject - http_request request sent with 0 cycles, but ... cycles are required:* At least the required amount of cycles need to be sent with the request in order for it to get fulfilled by the subnet.
 * *CanisterReject - max_response_bytes expected to be in the range [0..2097152], got ...:* This error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
 * *SysFatal - Transformed http response exceeds limit: 2045952:* This error indicates that the limit for the transformed response size was reached. This is currently a hard response size limit of the HTTPS outcalls functionality. Note that the response size is computed based on response body and headers.
@@ -154,7 +154,18 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-Like most features of the IC, the canister HTTP outcalls feature is charged for when being used. The current pricing is defined to charge a base fee of $400$M cycles for an HTTP request in addition to $100$K cycles per request byte and per `max_response_bytes` byte. Because of the per-request fixed cost and the overhead of HTTP requests, e.g., due to headers, it is advantageous from a cost perspective to make fewer requests with larger responses to retrieve the same information as with a larger number of smaller requests, if this is feasible from an application perspective. The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
+The cycles cost for a http outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a http outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. 
+
+**Formula:** 
+```
+header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
+request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
+http_outcall_cost = 400M + 100k * (request_size + max_response_size)
+scaling_factor = subnet_size / 13 
+total_cost = scaling_factor * http_outcall_cost
+```
+
+The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
 
 The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTP outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.
 

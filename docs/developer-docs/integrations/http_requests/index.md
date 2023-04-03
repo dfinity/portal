@@ -1,4 +1,4 @@
-# Canister HTTPS Outcalls
+# HTTPS Outcalls
 
 Up until now, blockchains have been isolated entities and smart contracts have not been able to directly communicate with external servers or other blockchains. The reason for this is that a blockchain is a replicated state machine where each replica needs to perform the same computations on the same state to make the same transitions in each round. Doing computations based on results from external services as input may easily lead to state divergence on the replicas if done in a naïve manner and thus requires some technical considerations to be workable.
 
@@ -27,4 +27,4 @@ If you want to take a deep dive into how the HTTPS outcalls feature works and ho
 
 ## Build more
 
-In the [Examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) which you can use as starting point for building your own dApp.
+In the [Examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate) which you can use as starting point for building your own dApp.

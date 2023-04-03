@@ -41,10 +41,10 @@ Create/access/modify confidential notes from multiple devices using [Internet Id
 This sample code demonstrates how a dapp can transfer ICP to its most active users.  
 [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer) • [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer) • [Technical docs](token-transfer)
 
-## Unity WebGL
+## Web Game
 
-The example shows how to deploy a simple Unity WebGL build on the IC, sample code can be found at [Samples repo](https://github.com/dfinity/examples/tree/master/hosting/unity-webgl-template).   
-[Technical docs](host-unity-webgl)
+The example shows how to deploy a web game on the IC, sample code can be found at [Samples repo](https://github.com/dfinity/examples/tree/master/hosting).   
+[Technical docs](host-a-webgame)
 
 ## Explore further Samples in Motoko
 

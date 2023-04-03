@@ -70,6 +70,13 @@ export const dfinityToolingItems = [
     links: { github: "https://github.com/dfinity/ic-js" },
   },
   {
+    title: "idl2json",
+    tags: ["development", "CLI"],
+    description:
+      "Command line tool for converting IDL/Candid to JSON",
+    links: { github: "https://github.com/dfinity/idl2json" },
+  },
+  {
     title: "Vessel Package Manager",
     tags: ["development", "CLI"],
     description:
@@ -219,4 +226,39 @@ export const communityToolingItems = [
       "An Ethereum RPC client for canisters on the Internet Computer to interact with EVM networks.",
     links: { github: "https://github.com/rocklabs-io/ic-web3" },
   },
+  {
+    title: "Internet Computer Services (ICS)",
+    tags: ["service", "development", "operations"],
+    description:
+      "DevOps platform to build, ship and manage dapps faster on IC.",
+    links: { external: "https://internetcomputerservices.com/" },
+  },
+  {
+    title: "MOPS",
+    tags: ["CLI", "website", "development"],
+    description: "An on-chain package manager for Motoko.",
+    links: {
+      external: "https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/",
+      github: "https://github.com/ZenVoich/mops"
+    },
+  },
+  {
+    title: "ICPipeline",
+    tags: [ "development", "service", "testing", "CLI", "website", "starter"],
+    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
+    links: {
+      external: "https://www.icpipeline.com/",
+      github: "https://github.com/icpipeline-framework",
+      docs: "https://icpipeline.com/documentation"
+    },
+  },
+  {
+    title: "ic-stable-memory",
+    tags: [ "database", "development", "library" ],
+    description: "A Rust library that allows you to use stable memory as main memory",
+    links: {
+      github: "https://github.com/seniorjoinu/ic-stable-memory",
+      docs: "https://docs.rs/ic-stable-memory/latest/ic_stable_memory/",
+    },
+  }
 ];

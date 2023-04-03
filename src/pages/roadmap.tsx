@@ -1,7 +1,7 @@
+import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
+import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import GithubIcon from "@site/static/img/token-holders/social/github.svg";
@@ -13,14 +13,10 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
-import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
-import Head from "@docusaurus/Head";
 
 const MotionLink = motion(Link);
 
 const RoadmapPage: React.FC = () => {
-  resetNavBarStyle();
-
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
 
@@ -35,12 +31,11 @@ const RoadmapPage: React.FC = () => {
     setOverlayOpen(false);
   }
 
-  const data = useGlobalData()["roadmap-data"].default as RoadmapDomain[];
-
   return (
     <Layout
       title="Roadmap"
       description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
+      editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
       <Head>
         <meta

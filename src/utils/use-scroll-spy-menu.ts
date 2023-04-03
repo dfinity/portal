@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useScrollSpyMenu(selector: string) {
+export function useScrollSpyMenu(selector: string, threshold = 120) {
   const elRef = useRef<HTMLElement>();
   const [highlightedIndex, setHighlightedIndex] = useState(null);
 
@@ -14,7 +14,7 @@ export function useScrollSpyMenu(selector: string) {
           if (
             y > 0 ||
             i === headers.length - 1 ||
-            headers[i + 1].getBoundingClientRect().y > 120
+            headers[i + 1].getBoundingClientRect().y > threshold
           ) {
             return setHighlightedIndex(i);
           }

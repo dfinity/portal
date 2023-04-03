@@ -12,7 +12,7 @@ The answer to this question has two separate dimensions:
 
 ## The Canister does what it is Supposed to do
 
-The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [Reproducible canisters](../developer-docs/build/backend/reproducible-builds.md).
+The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [Reproducible canisters](/developer-docs/backend/reproducible-builds.md).
 
 ## The Behavior of the Canister cannot Unexpectedly Change
 
@@ -36,11 +36,11 @@ will return the list of controllers for the canister with principal `ryjl3-tyaaa
 
 If the controller list is empty then the canister is immutable.
 
-A user can obtain the list of controllers of another canister via a [`read_state` request](../references/ic-interface-spec/#http-read-state) to get the relevant [canister information](../references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
+A user can obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
 
 Immutability can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g. by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
 
-Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister is itself immutable (it has only itself as controller) but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://ic.rocks/principal/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole).
+Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister is itself immutable (it has only itself as controller) but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole).
 
 ### Governed Mutability
 

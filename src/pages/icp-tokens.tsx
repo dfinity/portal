@@ -18,7 +18,6 @@ import TwitterIcon from "../../static/img/token-holders/social/twitter.svg";
 import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
 import GithubIcon from "../../static/img/token-holders/social/github.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 
 const images = [
@@ -138,8 +137,6 @@ const icons = [
 ];
 
 function TokenHolders(): JSX.Element {
-  resetNavBarStyle();
-
   const globalData = useGlobalData();
   const icpPrice = globalData["icp-price"]["default"] as number;
 
@@ -147,6 +144,7 @@ function TokenHolders(): JSX.Element {
     <Layout
       title="ICP Tokens"
       description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
+      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
         <meta
@@ -608,7 +606,7 @@ function TokenHolders(): JSX.Element {
                 </p>
               </motion.div>
               <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-10"
+                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
                 variants={transitions.item}
               >
                 <h1 className="tw-title-sm">Join The Conversation</h1>

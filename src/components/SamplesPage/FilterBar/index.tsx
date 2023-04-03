@@ -26,6 +26,7 @@ const contentTypeOptions: SampleContentType[] = [
   "code samples",
   "videos",
   "documentation",
+  "tutorial",
   "live demos",
   "community repo",
 ];

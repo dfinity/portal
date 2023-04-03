@@ -24,23 +24,22 @@ const Hero = () => {
         className={styles.hero}
       >
         {/* <Breadcrumbs></Breadcrumbs> */}
-        <motion.h1 variants={transitions.item} className="heading-1">
+        <motion.h1
+          variants={transitions.item}
+          className="tw-heading-3 md:tw-heading-2 m-0"
+        >
           Internet Computer Basics
         </motion.h1>
-        <motion.p variants={transitions.item} className="paragraph-large">
-          Take a dive down the rabbit hole and see how to engage with the
-          ecosystem, how you can share the success of the apps that you use, and
-          how to own your data.
+        <motion.p
+          variants={transitions.item}
+          className="tw-paragraph md:tw-lead m-0"
+        >
+          The Internet Computer (ICP) allows Web3 services to run 100% on-chain, providing
+          the only platform where developers can build and users can enjoy fully
+          decentralized applications. ICP ditches corporate cloud, insecure bridges and
+          expensive oracles.
         </motion.p>
 
-        <motion.a
-          variants={transitions.item}
-          className="button button-white"
-          href="/docs/current/developer-docs/ic-overview"
-          target={"_blank"}
-        >
-          Build real web3
-        </motion.a>
         <svg
           viewBox="0 0 917 830"
           fill="none"

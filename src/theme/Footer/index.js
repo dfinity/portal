@@ -12,6 +12,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import styles from "./styles.module.css";
 import IconExternalLink from "@theme/IconExternalLink";
+import { EditIcon } from "./EditIcon";
 
 function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   const toUrl = useBaseUrl(to);
@@ -46,7 +47,7 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   );
 }
 
-function Footer() {
+function Footer({ editPath }) {
   const { footer } = useThemeConfig();
   const { copyright, links = [] } = footer || {};
 
@@ -65,6 +66,17 @@ function Footer() {
           "footer--dark": footer.style === "dark",
         })}
       >
+        <div className={styles.editButtonContainer}>
+          {editPath && (
+            <Link
+              className="absolute -top-8 right-0 text-white hover:text-white-60 hover:no-underline tw-title-navigation-on-page rounded-full py-1 px-3 bg-black-60 backdrop-blur-2xl -translate-y-1/2 inline-flex items-center gap-1"
+              href={editPath}
+            >
+              <EditIcon></EditIcon>
+              Edit this page
+            </Link>
+          )}
+        </div>
         <div className={styles.footerLinksContainer}>
           {nonMediaLinks.map((linkItem, i) => (
             <div key={i} className={styles.footerLinkCol}>
@@ -75,6 +87,28 @@ function Footer() {
               ))}
             </div>
           ))}
+          <form
+            className="text-white md:max-w-[40%] md:ml-auto mt-10 md:mt-0"
+            method="post"
+            action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+          >
+            <p className="tw-lead-sm mb-3 md:mb-5">
+              Sign up for email updates to keep up to date with advancements on
+              the Internet Computer
+            </p>
+            <div className="flex gap-3 flex-col md:flex-row items-start">
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="Email"
+                className="input-text input-text-white flex-1 w-full md:w-auto"
+                required
+              />
+              <button type="submit" className="button-white">
+                Get Updates!
+              </button>
+            </div>
+          </form>
         </div>
         <div className={styles.footerBottom}>
           <div className={styles.legalContainer}>
@@ -111,7 +145,7 @@ function Footer() {
           <div className={styles.mediaLinksContainer}>
             {mediaLinks.map((item) => (
               <div key={item.href || item.to} className={styles.mediaLinks}>
-                <Link to={item.to}>
+                <Link to={item.to} aria-label={`Go to ${item.label}`}>
                   <img src={item.icon} alt="" />
                 </Link>
               </div>

@@ -1,0 +1,20 @@
+[package]
+name = "search-cli"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.93"
+serde = { version = "1.0.152", features = ["derive"] }
+indicatif = "0.17.3"
+colored = "2.0.0"
+search = { path = "../search" }
+clap = { version = "4.1.7", features = ["derive"] }
+ic-agent = "0.23.0"
+ic-utils = "0.23.0"
+tokio = { version = "1.25.0", features = ["full"] }
+candid = "0.8.4"
+
+[dev-dependencies]

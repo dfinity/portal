@@ -1,6 +1,15 @@
 # Functionality Integrations
 
-While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp.
+While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp. From identity to ledger integrations, to integrating with other blockchains, to communicating from the IC to the outside world, and even decentralizing control of your dapp, it's all here.
+
+## Service Nervous System (SNS)
+Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md), sorted by the target group that it aims at, and then provides the documentation aimed at developers.
+The latter contains
+
+* [A technical introduction to the SNS](./sns/sns-intro.md)
+* [Information on how to get an SNS](./sns/get-sns/get-sns-intro.md)
+* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration.md) and [index canister](./sns/integrate-sns/index-integration.md)
+* [Information on how to manage an SNS](./sns/managing-sns/manage-sns-intro.md)
 
 ## Bitcoin Integration
 Integrate directly with the Bitcoin network allowing canisters on the IC to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. I.e., canisters can act exactly like regular users holding bitcoin on the Bitcoin network.
@@ -8,6 +17,7 @@ Integrate directly with the Bitcoin network allowing canisters on the IC to rece
 * [Bitcoin Integration](./bitcoin/index.md) gives a longer overview
 * [How it works](./bitcoin/bitcoin-how-it-works.md) dives further into the details
 * [local development](./bitcoin/local-development.md) contains a tutorial showing how to experiment locally
+* [Chain-key Bitcoin](./bitcoin/ckbtc.md) provides an overview of chain-key Bitcoin (ckBTC)
 
 ## Threshold ECDSA
 A threshold ECDSA implementation on a blockchain can be viewed as the on-chain pendant to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those. It is particularly important to facilitate direct integration with (ECDSA-based) blockchains.
@@ -25,7 +35,7 @@ Internet Identity allows users to create sessions with Web3 services and dapps, 
 * [Internet Identity](./internet-identity/integrate-identity.md) gives an overview of how to use internet identity in your app
 
 ## ICP Ledger
-The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions. 
+The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions.
 
 * [Ledger overview](./ledger/index.md) to get a view of the ICP ledger basics
 * [Interact](./ledger/interact-with-ledger.md) shows the commands and protocol flows to interact with the ICP ledger

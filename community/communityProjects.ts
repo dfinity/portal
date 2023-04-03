@@ -89,7 +89,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 5,
     title: "Kinic",
-    body: "A search engine for web3.",
+    body: "A search engine for Web3.",
     links: {
       github: "https://github.com/wyattbenno777/kinic",
       livePreview: "https://kinic.io/",
@@ -899,7 +899,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 53,
     title: "ICLand",
-    body: "ICLand powers tokenized communities by connecting web3 identities to social spaces & delivering key token data to communities. First tools: Discord token holder verification; sales & listings bot.",
+    body: "ICLand powers tokenized communities by connecting Web3 identities to social spaces & delivering key token data to communities. First tools: Discord token holder verification; sales & listings bot.",
     links: {
       github: "https://github.com/renartlabsicp",
       livePreview: "https://kwuck-oaaaa-aaaad-qcsja-cai.ic.fleek.co/",
@@ -1507,7 +1507,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 92,
     title: "NiftiOS",
-    body: "NiftiOS is operating system for the creators to bridge web3 to the posibilites that web3 world brings. \nEnd users don't even need a wallet untill they are ready to do so.",
+    body: "NiftiOS is operating system for the creators to bridge Web3 to the posibilites that web3 world brings. \nEnd users don't even need a wallet untill they are ready to do so.",
     links: {
       github: "https://github.com/grmkris/nft-links",
       livePreview: "https://www.niftios.xyz/",
@@ -1974,6 +1974,66 @@ const communityProjects: SampleItem[] = [
     },
     domains: ["Website"],
     languages: ["motoko", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
+  {
+    index: 121,
+    title: "Sending Emails on IC",
+    body: "An example on how to use internet identity to authenticate and send emails via courier",
+    image: "/img/community-projects/emailer.png",
+    links: {
+      github: "https://github.com/ArgonStudiosXYZ/ic-emailer",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "advanced",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
+  {
+    index: 122,
+    title: "ERC-721 NFT with metadata on IC",
+    body: "Learn how to mint an ERC-721 NFT on Ethereum/Polygon with canister-served metadata.",
+    image: "/img/community-projects/122_erc721_tutorial.jpg",
+    links: {
+      github: "https://github.com/domwoe/erc-721-ic-assets",
+      otherLinks: [],
+    },
+    domains: ["Metaverse and NFTs"],
+    languages: ["motoko", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "tutorial"],
+  },
+  {
+    index: 123,
+    title: "No Key Wallet",
+    body: "Sign transactions for EVM-compatible blockchains on the Internet Computer.",
+    image: "/img/community-projects/no_key_wallet.png",
+    links: {
+      github: "https://github.com/nikolas-con/ic-evm-sign-starter",
+      livePreview: "https://vqbpb-giaaa-aaaap-qaxda-cai.ic0.app",
+      external: "https://www.tzionis.com/projects/ic-evm-sign",
+      docs: "https://github.com/nikolas-con/ic-evm-sign",
+      otherLinks: [],
+    },
+    domains: ["Asynchronous DeFi"],
+    languages: ["rust", "javascript"],
+    level: "intermediate",
+    contentType: ["code samples", "community repo", "tutorial"],
+  },
+  {
+    index: 124,
+    title: "Uniswap Interface on IC",
+    body: "Demo of Uniswap Interface on the IC with canister-based signer.",
+    image: "/img/community-projects/uniswap_ui_on_ic.jpg",
+    links: {
+      github: "https://github.com/domwoe/uniswap_ui_on_ic",
+      livePreview: "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["rust", "javascript"],
     level: "beginner",
     contentType: ["code samples", "community repo", "live demos"],
   },

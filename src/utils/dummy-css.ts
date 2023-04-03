@@ -1,2 +1,2 @@
 // for editor syntax highlight only
-export const css = (strings) => strings.join("");
+export const css = String.raw;

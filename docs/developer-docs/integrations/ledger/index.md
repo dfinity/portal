@@ -9,6 +9,7 @@ This section is structured as follows:
 - [Interact with the ICP ledger](interact-with-ledger.md) provides hands on tutorials to interact with the ICP ledger from the command line, JavaScript applications and from canisters.
 - [Ledger Local Setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
 - [Deploy New Token](./deploy-new-token.md) explains how you can create your own token by deploying a custom ledger canister and make it available to exchanges via the [Rosetta API](../rosetta/).
+- [Collecting dust](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.
 
 ## The Basics
 
@@ -41,7 +42,7 @@ There are three operations that can change the internal state of the ledger cani
 
 All operations are recorded as transactions in the ledger canister.
 
-The ledger maintains the transactions as a hashed blockchain, i.e., a blockchain running inside a cansiter smart contract (the ledger canister), which in turn is running on the NNS subnet blockchain.
+The ledger maintains the transactions as a hashed blockchain, i.e., a blockchain running inside a canister smart contract (the ledger canister), which in turn is running on the NNS subnet blockchain.
 
 As state changes are recorded, each new transaction is placed in a block and assigned a unique index. The entire chain is regularly authenticated by signing the latest chain link. The signature used to authenticate the chain can be verified by any third party who has access to the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ledger.
 

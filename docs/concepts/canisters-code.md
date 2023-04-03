@@ -2,7 +2,7 @@
 
 One of the most important principles to keep in mind is that the Internet Computer is a blockchain that allows running software in a distributed, replicated way.
 
-When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**, or **canister** in short.
+When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**, or **canister** in short. Canisters can be developed in various programming languages. Besides Motoko, a programming language purposefully designed for the Internet Computer, you can also use existing programming languages like C, Rust, JavaScript/TypeScript, AssemblyScript, and Python. 
 
 Once deployed, end-users can interact with the canister by accessing the entry point functions you have defined for that canister through a frontend client such as a browser.
 
@@ -16,7 +16,7 @@ While a containerized application might include information about the state of t
 
 ## Query and update methods
 
-This concept of a canister consisting of both program and state is an important one. In particular it relates to the behavior one should expect when calling an end-point of the canister. There are only two types of calls: non-committing **query calls** (any state change is discarded) and committing **update calls** (state changes are persisted).
+This concept of a canister consisting of both program and state is an important one. In particular, it relates to the behavior one should expect when calling an end-point of the canister. There are only two types of calls: non-committing **query calls** (any state change is discarded) and committing **update calls** (state changes are persisted).
 
 <!-- <table>
 <colgroup>
@@ -74,11 +74,13 @@ As a modern, high-level programming language, Motoko provides some key features 
 
 -   Support for function abstractions, user-defined type definitions, and user-defined actors.
 
-For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](../developer-docs/build/cdks/motoko-dfinity/about-this-guide.md).
+For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).
+
+For information about Canister Development Kits (CDKs) supporting other programming languages, see this [*Overview*](../developer-docs/backend/choosing-language.md).
 
 The following diagram provides a simplified drill-down view of the development environment as part of the Internet Computer ecosystem.
 
-![Your development environment as part of the Internet Computer ecosystem](../concepts/_attachments/SDK-protocol-network.svg)
+![Your development environment as part of the Internet Computer ecosystem](_attachments/SDK-protocol-network.svg)
 
 ## Canisters, actors, and the code you produce
 
@@ -96,13 +98,13 @@ With Motoko, developers can compile to portable WebAssembly while still deliveri
 
 The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the Internet Computer and is easy to learn whether you are a new or experienced programmer.
 
-This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](../developer-docs/build/cdks/motoko-dfinity/about-this-guide.md).
+This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).
 
 ## Identities and authentication
 
 One of the main differences between a user-initiated canister operation and a canister-to-canister operation is that canisters have an explicitly registered identity on the Internet Computer.
 
-There is no central registry for user principals, but users may chose to identify themselves using one (or more) digital signing key. The user’s private key is used to sign messages, which are sent along with their public key to the Internet Computer. The Internet Computer authenticates the user and passes the principal to the canister — the canister may choose to implement whatever authorization policies it wants based on principals.
+There is no central registry for user principals, but users may choose to identify themselves using one (or more) digital signing keys. The user’s private key is used to sign messages, which are sent along with their public key to the Internet Computer. The Internet Computer authenticates the user and passes the principal to the canister — the canister may choose to implement whatever authorization policies it wants based on principals.
 
 At a high level, first-time users generate an unsigned key pair and derive their principal identifier from the public key during their first interaction with the Internet Computer. Returning users are authenticated using the private key (or keys) that have been stored securely by the user agent. Users with access to multiple canisters can manage the keys and devices used for authentication associated with each canister.
 
@@ -110,7 +112,7 @@ A single user can have multiple public-private key pairs for accessing canisters
 
 ## Resource consumption and cycles
 
-All canisters consume resources, being CPU cycles for execution, bandwidth for routing messages, and storage for persisted data. These resources are paid for using a unit of cost called **cycles**. Cycles can be obtained by converting ICP tokens and are stored by each canister in a local balance.
+All canisters consume resources, CPU cycles for execution, bandwidth for routing messages, and storage for persisted data. These resources are paid for using a unit of cost called **cycles**. Cycles can be obtained by converting ICP tokens and are stored by each canister in a local balance.
 
 -   Canisters must be able to pay for complete execution (all or nothing), but the cost associated with a unit of cycles will make efficient programs cost-effective.
 

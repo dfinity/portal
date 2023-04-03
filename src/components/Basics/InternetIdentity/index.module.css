@@ -1,30 +1,6 @@
-.container {
-  max-width: 1114px;
-  margin: 0 auto;
-  padding: 120px 24px 80px;
-  color: white;
-}
-
-.container h2 {
-  margin-bottom: 24px;
-}
-.container p {
-  margin-bottom: 16px;
-  max-width: 660px;
-}
-
 .outerContainer {
   position: relative;
   z-index: 2;
-}
-
-.cards {
-  display: flex;
-  color: white;
-  max-width: 1340px;
-  margin: 0 auto;
-  gap: 20px;
-  padding: 0 24px 140px;
 }
 
 .card {
@@ -60,9 +36,6 @@
 }
 
 @media (max-width: 996px) {
-  .cards {
-    flex-direction: column;
-  }
   .card p {
     min-height: 0;
   }
@@ -81,11 +54,5 @@
   }
   .outerContainer {
     background-color: var(--ifm-color-primary);
-  }
-  .container {
-    padding-bottom: 48px;
-  }
-  .container p {
-    margin-bottom: 32px;
   }
 }

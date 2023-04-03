@@ -85,25 +85,12 @@ what it's like to deploy a Bitcoin dapp locally.
 
         brew install llvm binaryen cmake
 
-### Configuring `dfx.json`
-
-For Bitcoin projects, you need to configure `dfx` to connect to your local Bitcoin node.
-You already configured your local Bitcoin node to accept connections on port `18444`,
-so in `dfx.json` you can add the following configuration in the `defaults` section:
-
-    "bitcoin": {
-        "enabled": true,
-        "nodes": ["127.0.0.1:18444"]
-    }
-
-The example code already includes this in its `dfx.json`.
-
 ### Deploying in `regtest` Mode
 
 Your local Bitcoin node operates in what's called "regression testing mode", or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode).
 You can now deploy your canister and configure it to connect to your local `Regtest` network.
 
-1. Run `dfx start`.
+1. Run `dfx start --enable-bitcoin`.
 
     :::tip
     If when running `dfx start` you see errors like
@@ -111,7 +98,9 @@ You can now deploy your canister and configure it to connect to your local `Regt
         Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 
     that means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
-    node is up and running, and that you're setting the correct port in `dfx.json`.
+    node is up and running, and that you're setting the correct port (default is `18444`)
+        
+        dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:<your_custom_port>
     :::
 
 2. Deploy the example canister:

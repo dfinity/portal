@@ -1,5 +1,7 @@
 export function getBytesStored(): Promise<number> {
-  return fetch("https://ic-api.internetcomputer.org/api/v3/metrics/memory")
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/ic-memory-usage"
+  )
     .then(
       (res) =>
         res.json() as Promise<{
@@ -32,6 +34,35 @@ export function getTransactionRate(): Promise<number> {
         }>
     )
     .then((res) => +res.message_execution_rate[0][1]);
+}
+
+export function getTransactionRateV3(
+  messageType: "update" | "query" | "all",
+  step: number = 7200
+): Promise<number> {
+  return fetch(
+    `https://ic-api.internetcomputer.org/api/v3/metrics/message-execution-rate?step=${step}&message_type=${messageType}`
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          message_execution_rate: [timestamp: number, rate: number][];
+        }>
+    )
+    .then((res) => res.message_execution_rate[0][1]);
+}
+
+export function getCyclesBurnRate(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/cycle-burn-rate"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          cycle_burn_rate: [timestamp: number, rate: string][];
+        }>
+    )
+    .then((res) => +res.cycle_burn_rate[0][1]);
 }
 
 export function getBlockCount(): Promise<number> {
@@ -67,6 +98,23 @@ export function getBlockRate(): Promise<number> {
           block_rate: [[timestamp: number, block_rate: string]];
         }>
     )
+    .then((res) => +res.block_rate[0][1]);
+}
+
+export function getFinalizationRate(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/metrics/finalization-rate"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          block_rate: [[timestamp: number, block_rate: string]];
+        }>
+    )
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
     .then((res) => +res.block_rate[0][1]);
 }
 

@@ -51,11 +51,11 @@
 .BGGradient {
   display: flex;
   position: absolute;
-  width:3000px;
-  max-width: 3000px;
-  left: calc((100vw - 3000px)/2);
-  right: calc((100vw - 3000px)/2);
-  top:-600px;
+  width: 3500px;
+  max-width: 3500px;
+  left: calc((100vw - 3500px) / 2);
+  right: calc((100vw - 3500px) / 2);
+  top: -800px;
   z-index: -1000;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -64,7 +64,7 @@
 }
 @media (max-width: 996px) {
   .outerContainer {
-    padding: 240px 24px 200px;
+    padding: 240px 24px 80px;
   }
 
   .outerContainer > svg {
