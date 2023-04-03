@@ -1,7 +1,7 @@
 ---
 title: Chain-Key Cryptography
 abstract: 
-shareImage: /img/how-it-works/chain-key-technology.600.jpg
+shareImage: /img/how-it-works/chain-key-cryptography.webp
 slug: chain-key-technology
 ---
 

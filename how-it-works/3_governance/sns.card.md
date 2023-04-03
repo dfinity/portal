@@ -4,7 +4,7 @@ abstract: The autonomous tokenized governance system that controls the Internet 
 coverImage: /img/how-it-works/network-nervous-system-nns.600x300.jpg
 ---
 
-![](/img/how-it-works/sns.600x300.png)
+![](/img/how-it-works/service-nervous-system.webp)
 
 # Service Nervous System (SNS)
 

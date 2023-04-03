@@ -2,7 +2,7 @@
 title: Fault tolerance
 ---
 
-![](/img/how-it-works/state-synchronization.600x300.jpg)
+![](/img/how-it-works/fault-tolerance.webp)
 
 # Fault tolerance
 
