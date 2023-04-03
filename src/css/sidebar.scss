@@ -1,0 +1,21 @@
+:root {
+  --ifm-menu-color-background-hover: #E8E4ED;
+  --ifm-menu-color-active: #791E94;
+}
+
+.menu {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.menu__link, .menu__list-item-collapsible {
+  border-radius: 8px;
+}
+
+.menu__link:hover {
+  color: var(--ifm-menu-color-active);
+}
+
+.menu__list .menu__list, .menu__list-item:not(:first-child) {
+  margin-top: 0.5rem;
+}
