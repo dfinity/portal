@@ -4,7 +4,7 @@ abstract: This feature will enable canister smart contracts to sign with regard 
 coverImage: /img/how-it-works/threshold-ecdsa-signing.600x300.jpg
 ---
 
-![](/img/how-it-works/threshold-ecdsa-signing.600x300.jpg)
+![](/img/how-it-works/chain-key-signature.webp)
 
 # Chain-key signatures
 

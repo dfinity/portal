@@ -2,7 +2,7 @@
 title: Message routing
 ---
 
-![](/img/how-it-works/message-routing.600x300.jpg)
+![](/img/how-it-works/messaging-routing.webp)
 
 # Message routing
 

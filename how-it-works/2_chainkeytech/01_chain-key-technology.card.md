@@ -2,7 +2,7 @@
 title: Chain-key cryptography
 ---
 
-![](/img/how-it-works/chain-key-technology.600x300.jpg)
+![](/img/how-it-works/chain-key-cryptography.webp)
 
 # Chain-key cryptography
 

@@ -150,7 +150,7 @@ const config = {
 
         logo: {
           alt: "DFINITY Logo",
-          src: "img/IC_logo_horizontal.svg",
+          src: "/img/IC_logo_horizontal.svg",
         },
         items: [
           {
@@ -233,7 +233,7 @@ const config = {
           {
             type: "dropdown",
             position: "right",
-            className: "dropdown--custom",
+            className: "dropdown--custom dropdown--columns-2",
             label: "Use",
             items: intoColumns([
               [
@@ -242,22 +242,9 @@ const config = {
                   label: "ICP Ecosystem",
                   href: "/ecosystem",
                 },
-
                 {
                   label: "ICP Token",
                   href: "/icp-tokens",
-                },
-                {
-                  label: "Social Media Dapps",
-                  href: "/social-media-dapps",
-                },
-                {
-                  label: "NFTs",
-                  href: "/nft",
-                },
-                {
-                  label: "DeFi",
-                  href: "/defi",
                 },
                 {
                   label: "Create an Internet Identity",
@@ -267,13 +254,33 @@ const config = {
                   label: "Staking & Governance (NNS)",
                   href: "/nns",
                 },
+
+                {
+                  label: "Help & Support",
+                  href: "https://support.dfinity.org/hc/en-us ",
+                },
+              ],
+              [
+                menuDivider("Use Cases"),
+                {
+                  label: "NFTs",
+                  href: "/nft",
+                },
+                {
+                  label: "DeFi",
+                  href: "/defi",
+                },
+                {
+                  label: "Social Media Dapps",
+                  href: "/social-media-dapps",
+                },
                 {
                   label: "SNS DAOs",
                   href: "/sns",
                 },
                 {
-                  label: "Help & Support",
-                  href: "https://support.dfinity.org/hc/en-us ",
+                  label: "OpenChat",
+                  href: "/openchat",
                 },
               ],
             ]),
@@ -368,6 +375,10 @@ const config = {
                   label: "DFINITY Foundation",
                   href: "https://dfinity.org",
                 },
+                {
+                  label: "Become a Node Provider",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                },
               ],
             ]),
           },
@@ -388,7 +399,7 @@ const config = {
             position: "left",
             sidebarId: "guides",
             label: "Guides",
-            activeBasePath: "/docs/current/developer-docs/"
+            activeBasePath: "/docs/current/developer-docs/",
           },
           {
             type: "docSidebar",
@@ -576,6 +587,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust'],
       },
       liveCodeBlock: {
         playgroundPosition: "bottom",
