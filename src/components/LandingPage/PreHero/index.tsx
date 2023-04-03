@@ -162,7 +162,7 @@ const Numbers = () => {
           )}
         </h3>
         <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">
+          <p className="tw-paragraph md:tw-heading-5 mb-0 flex items-center">
             Ethereum equivalent Tx/s
             <Link
               href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
