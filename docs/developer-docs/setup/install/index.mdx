@@ -40,12 +40,10 @@ If you are using a machine running Apple silicon, you will need to have
     <h3 id="check-your-wsl-version">Check your WSL version</h3>
     <p>Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Linux distributions installed on your
       Windows machine. Below is an example output.</p>
-
-    ```
-    NAME STATE VERSION
-    * Ubuntu Running 2
-    ```
-
+    <CodeBlock language="bash">
+{`NAME STATE VERSION
+* Ubuntu Running 2`}
+    </CodeBlock>
     <p>To learn more about the <code>wsl</code> command, check the <a
       href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands">command reference for WSL</a>.</p>
     <h3 id="upgrade-to-wsl-2">Upgrade from WSL 1</h3>
@@ -66,11 +64,9 @@ If you are using a machine running Apple silicon, you will need to have
       line.</p>
     <h2 id="installing-dfx">Installing DFX</h2>
     <p>Once you have WSL installed, you can install <code>dfx</code> by running
-
-      ```bash
-      sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-      ```
-
+      <CodeBlock language="bash">
+      {`sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"`}
+      </CodeBlock>
     </p>
     <h2 id="troubleshooting">Troubleshooting</h2>
     <h3 id="node-js-is-not-properly-installed">Node.js is not properly installed</h3>
@@ -88,12 +84,14 @@ If you are using a machine running Apple silicon, you will need to have
         <li>Create the <code>/etc/wsl.conf</code> file and add the below content to it, this will prevent WSL from
           regenerating the <code>/etc/resolv.conf</code> file after restarting.
         </li>
-
-        ```
-        [network]
-        generateResolvConf = false
-        ```
-
+      </ul>
+    </p>
+      <CodeBlock language="toml">
+{`[network]
+generateResolvConf = false`}
+      </CodeBlock>
+    <p>
+      <ul>
         <li>Modify the nameserver in the <code>/etc/resolv.conf</code> file to a valid one, for example the Google
           nameserver <code>8.8.8.8</code>. </li>
         <li>On Windows, restart WSL to let this fix take effect.</li>

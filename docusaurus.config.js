@@ -365,6 +365,10 @@ const config = {
                   label: "DFINITY Foundation",
                   href: "https://dfinity.org",
                 },
+                {
+                  label: "Become a Node Provider",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                },
               ],
             ]),
           },
@@ -573,6 +577,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust'],
       },
       liveCodeBlock: {
         playgroundPosition: "bottom",
