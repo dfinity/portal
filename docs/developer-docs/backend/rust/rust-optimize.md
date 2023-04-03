@@ -1,6 +1,6 @@
 # Optimize a Rust program
 
-Compiling Rust to WebAssembly often increases the file size significantly. The DFINITY Rust CDK includes a helper library—`ic-cdk-optimizer`—that you can use to reduce the size of Rust-based canisters before deploying them on the Internet Computer blockchain mainnet.
+Compiling Rust to WebAssembly often increases the file size significantly. The DFINITY Rust CDK includes a helper library—`ic-wasm`—that you can use to reduce the size of Rust-based canisters before deploying them on the Internet Computer blockchain mainnet.
 
 ## Before you begin
 
@@ -34,10 +34,10 @@ To optimize a canister that resulted from compiling a Rust dapp:
 
 1.  Check that you are still in root directory for your project directory, if needed.
 
-2.  Install the `ic-cdk-optimizer` crate, if you have not previously installed it, by running the following command:
+2.  Install the `ic-wasm` crate, if you have not previously installed it, by running the following command:
 
     ``` bash
-    cargo install ic-cdk-optimizer
+    cargo install wasm
     ```
 
     This package optimizes your Rust code to reduce the size of the WebAssembly output to ensure your dapp can be uploaded to the Internet Computer blockchain mainnet as a canister.
@@ -51,5 +51,5 @@ To optimize a canister that resulted from compiling a Rust dapp:
 4.  Optimize the code within the `target` directory by running a command similar to the following:
 
     ``` bash
-    ic-cdk-optimizer target/wasm32-unknown-unknown/release/_rust_canister_.wasm -o target/wasm32-unknown-unknown/release/_rust_canister_-opt.wasm
+    ic-wasm shrink target/wasm32-unknown-unknown/release/_rust_canister_.wasm -o target/wasm32-unknown-unknown/release/_rust_canister_-opt.wasm
     ```

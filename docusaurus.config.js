@@ -329,7 +329,7 @@ const config = {
             type: "dropdown",
             position: "right",
             label: "Community",
-            className: "dropdown--custom",
+            className: "dropdown--custom dropdown--columns-2",
             items: intoColumns([
               [
                 menuDivider("Get Involved"),
@@ -338,13 +338,34 @@ const config = {
                   href: "/live-sessions",
                 },
                 {
-                  label: "Community Blog",
-                  href: "https://medium.com/dfinity",
+                  label: "Roadmap",
+                  href: "/roadmap",
                 },
+                {
+                  label: "ICP Careers",
+                  href: "http://careers.internetcomputer.org/",
+                },
+                {
+                  label: "Become a Node Provider",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                },
+                {
+                  label: "DFINITY Foundation",
+                  href: "https://dfinity.org",
+                },
+              ],
+              [
+                menuDivider("Join The Discussion"),
                 {
                   html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
+                {
+                  label: "Community Blog",
+                  href: "https://medium.com/dfinity",
+                },
+
+                menuDivider("Grants"),
                 {
                   label: "Developer Grants",
                   href: "https://dfinity.org/grants",
@@ -352,22 +373,6 @@ const config = {
                 {
                   label: "Community Grants",
                   href: "https://dfinity.org/community-grants",
-                },
-                {
-                  label: "ICP Careers",
-                  href: "http://careers.internetcomputer.org/",
-                },
-                {
-                  label: "Roadmap",
-                  href: "/roadmap",
-                },
-                {
-                  label: "DFINITY Foundation",
-                  href: "https://dfinity.org",
-                },
-                {
-                  label: "Become a Node Provider",
-                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
                 },
               ],
             ]),
