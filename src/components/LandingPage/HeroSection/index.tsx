@@ -70,21 +70,23 @@ export default function Hero(): JSX.Element {
             </h2>
 
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Today, blockchains only store tokens and clips of data,</b> and Web3 
-              is really hosted on centralized clouds.
+             <b>Today,</b>  <span className="font-bold text-infinite">blockchains only process tokens and clips of data.</span>
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Tomorrow, blockchain will become a crypto cloud,</b> and host Web3 too,
-              processing the computation and data
-              involved, and directly serving interactive web experiences to users &mdash; for
-              dapps, DAOs, social networks, the metaverse, streaming,
-              multi-player games, orderbook exchanges, enterprise systems, governments and more
-              &mdash; as blockchain becomes the full stack of choice, and blockchain eats cloud.
+            <b>Tomorrow,</b> <span className="font-bold text-infinite">blockchain will become the "crypto cloud."</span>
+            </p>  
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              <b>Blockchain will eat the centralized cloud,</b>{" "}and become the "everything stack,"
+              which hosts unstoppable systems and services, 
+              and enables Web3 to be 100% decentralized.
+            </p>                                 
+            <p className="tw-lead-sm md:tw-lead mb-8">
+              <b>It's already happening at scale</b> on the <span className="font-bold text-infinite">Internet Computer,</span>{" "}
+              which is powering a blockchain singularity &#9889;
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>It's happening at scale today</b> on the <span className="font-bold text-infinite">Internet Computer</span>. {" "}
-              Join the movement, and usher in the blockchain singularity &#9889;
-            </p>
+              <b>Join the movement.</b>
+            </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23ICP">#ICP</a> {" "}
               <a target="_blank" href="https://twitter.com/search?q=%23WorldComputer">#WorldComputer</a> {" "}
@@ -120,23 +122,20 @@ export default function Hero(): JSX.Element {
               Proof of Useful Work
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              The <strong className="text-infinite">Internet Computer</strong> is created 
-              by a network of sovereign hardware, rather like mining rigs produce Bitcoin blocks.
-            </p>
+              The <strong className="text-infinite">Internet Computer</strong> is created by
+              dedicated "node machines," rather like Bitcoin is created by mining rigs.
+            </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>The network can be millions of times more efficient</b> than Proof-of-Stake (PoS)
-              blockchains thanks to advanced computer science, even though virtual "validator
-              nodes" predominantly run on Big Tech's centralized cloud infrastructure.
-            </p>
+              <b>Proof-of-Useful-Work</b> forms node machines, which are hardware devices, into
+              a sovereign <i>independent</i> network.
+            </p>            
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>In a scheme of Proof-of-Useful-Work (PoUW)</b>, the network's standardized "node machine" 
-              hardware organizes into subnet blockchains, where nodes produce similar number of blocks, 
-              and smart contract computation is their work. The replication of compute is
-              minimized using "deterministic decentralization," to obtain the maximum theoretical 
-              efficiency.
-              The subnets combine into one seamless limitless blockchain, using 
-              "chain key crypto," which also directly integrates external chains
-              such as Bitcoin and Ethereum.
+              <b>It can be millions of times more efficient than Proof-of-Stake,</b> even 
+              when it uses cloud validator nodes. 
+              The node machines organize into subnet blockchains, where smart contract computation is
+              their work. 
+              "Chain key crypto" combines the subnets into one limitless blockchain, and 
+              cryptographically integrates external chains like Bitcoin and Ethereum.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23ChainKey">#ChainKey</a> {" "}
@@ -164,19 +163,19 @@ export default function Hero(): JSX.Element {
               Intelligent Blockchain
             </h2>
             <p className="tw-lead-sm md:tw-lead mb-8">
-            The <strong className="text-infinite">Internet Computer</strong> network
-            rapidly evolves and adapts, using a permissionless, algorithmic liquid democracy.
+              The <strong className="text-infinite">Internet Computer</strong> is controlled by
+              its "Network Nervous System," which functions as the network's brain.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
-              <b>Protocol upgrades occur regularly without "forks,"</b>{" "}which are 
-              technically risky and require central coordination.
+              <b>The blockchain can be updated without "forks,"</b> which are
+              slow, require central coordination, and technically risky.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">  
-              <b>A "Network Nervous System" algo-DAO</b> is integrated into the networks's protocols,
-              which it controls, acting as the brain of the blockchain.
-              Every "node machine" in the network exclusively follows its verifiable instructions,
-              which structures and configures the network as it scales, and pushes protocol
-              upgrades onto nodes without interrupting service.
+              <b>Instead, its network evolves and adapts in relative realtime,</b>{" "}
+              thanks to its permissionless, algorithmic DAO.
+              The network's node machines follow its instructions, which structure and configure
+              the network, create subnets to add new capacity, and push protocol upgrades
+              onto nodes, all without human intervention, or interrupting service.
             </p>
             <p className="tw-lead-sm md:tw-lead mb-8">
               <a target="_blank" href="https://twitter.com/search?q=%23NNS">#NNS</a> {" "}
