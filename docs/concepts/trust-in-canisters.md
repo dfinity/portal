@@ -16,31 +16,33 @@ The correct behavior of a canister can be checked in two steps. First, inspect t
 
 ## The Behavior of the Canister cannot Unexpectedly Change
 
-Canister smart contracts are deployed and managed by controllers. Among other capabilities, the controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains and the controllers have complete control over the assets like ICP tokens or Bitcoins held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
+Canister smart contracts are deployed and managed by controllers. A controller's level of decentralization can range from being managed by a single person, or team of people up to being managed by the NNS or another kind of on-chain DAO. Among other capabilities, the controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains and the controllers have complete control over the assets like ICP tokens or Bitcoins held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
 
-For critical applications like those used in DeFI, mutability can be dangerous; the controller could change a benign canister into a canister that steals assets. Below we outline some options available to developers on how to verifiably restrict mutability.
+For critical applications like those used in DeFI, centralized mutability can be dangerous; the controller could change a benign canister into a canister that steals assets. Below we outline some options available to developers on how to verifiably decentralize the control of a canister's mutations.
 
 :::caution
 
-The canisters, if not voluntarily made immutable, have complete control over the user assets held by them, for example, any ICP Tokens or Bitcoin held by the canister on the user's behalf. The canister, if malicious, can steal all the assets. In other words, as a user, if you interact with a canister that deals with your assets, inspect the canister to know how it handles them. If you determine that the canister is storing the assets in its subaccounts, ensure that the canister is immutable or has decentralized governance.
+Canister controllers, if not voluntarily decentralized, have complete control over the user assets held by the canister, for example, any ICP Tokens or Bitcoin held by the canister on the user's behalf. The controller, if malicious, can steal all the assets. In other words, as a user, if you interact with a canister that deals with your assets, inspect the canister to know how it handles them. If you determine that the canister is storing the assets in its subaccounts, ensure that the canister controller is decentralized.
 
 :::
 
-### Complete Immutability
+### Controller Modification
 
-The simplest option is to make the canister immutable by removing its controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
+The simplest option is to remove a canister's controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
     dfx canister --network ic info ryjl3-tyaaa-aaaaa-aaaba-cai
 
 will return the list of controllers for the canister with principal `ryjl3-tyaaa-aaaaa-aaaba-cai` (in this example, the ledger canister).
 
-If the controller list is empty then the canister is immutable.
+If the controller list is empty then the canister has no direct controller.
 
 A user can obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
 
-Immutability can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g. by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
+Without a controller, the canister can no longer be updated by any single person. Any changes would need to go through an NNS vote.
 
-Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister is itself immutable (it has only itself as controller) but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole).
+A similar effect can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g. by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
+
+Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister has only itself as a controller but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole). Note that the repository linked here mentions canister immutability, but this is red herring. The NNS is still capable of making changes to a canister that is controlled by a blackholed canister, or the blackhole canister itself.
 
 ### Governed Mutability
 

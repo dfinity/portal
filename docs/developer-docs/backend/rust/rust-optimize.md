@@ -37,7 +37,7 @@ To optimize a canister that resulted from compiling a Rust dapp:
 2.  Install the `ic-wasm` crate, if you have not previously installed it, by running the following command:
 
     ``` bash
-    cargo install wasm
+    cargo install ic-wasm
     ```
 
     This package optimizes your Rust code to reduce the size of the WebAssembly output to ensure your dapp can be uploaded to the Internet Computer blockchain mainnet as a canister.
