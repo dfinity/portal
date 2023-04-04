@@ -162,7 +162,16 @@ const Numbers = () => {
           )}
         </h3>
         <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">Ethereum equivalent Tx/s</p>
+          <p className="tw-paragraph md:tw-heading-5 mb-0 flex items-center">
+            ETH equivalent Tx/s
+            <Link
+              href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
+              title="Read more: Not all transactions are equal"
+              className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
+            >
+              <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
+            </Link>
+          </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             Transactions invoke "actor" canister smart contract computations, 
             which subnet blockchains can run concurrently (yet deterministically).
@@ -172,13 +181,6 @@ const Numbers = () => {
               $0.0000022
             </span>{" "}
             average cost/Tx
-            <Link
-              href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
-              title="Read more: Not all transactions are equal"
-              className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
-            >
-              <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
-            </Link>
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
