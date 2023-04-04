@@ -14,7 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "analyze": "NODE_OPTIONS=--max_old_space_size=24000 docusaurus build --bundle-analyzer",
-    "postbuild": "sh download-redirected-files.sh"
+    "postbuild": "sh download-redirected-files.sh && node inline-bundle.mjs"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
@@ -66,7 +66,9 @@
     "@tailwindcss/typography": "^0.5.3",
     "@tsconfig/docusaurus": "^1.0.4",
     "autoprefixer": "^10.4.7",
+    "cheerio": "^1.0.0-rc.12",
     "contentful": "^9.1.32",
+    "glob": "^9.3.4",
     "gray-matter": "^4.0.3",
     "remark-code-import": "^0.4.0",
     "tailwindcss": "^3.1.4",
