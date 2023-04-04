@@ -1,11 +1,16 @@
 :root {
   --ifm-menu-color-background-hover: #E8E4ED;
-  --ifm-menu-color-active: #791E94;
+}
+
+.sidebar_src-theme-DocSidebar-styles-module {
+  border-right: var(--ic0-nav-border);
 }
 
 .menu {
   padding-left: 24px;
   padding-right: 20px;
+  flex-grow: 1;
+  padding-top: 30px;
 }
 
 .menu__link, .menu__list-item-collapsible {
@@ -15,6 +20,7 @@
 .theme-doc-sidebar-item-link-level-3 {
   &.menu__list-item {
     font-weight: 400;
+
     .menu__link--active {
       font-weight: 500;
     }

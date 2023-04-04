@@ -39,6 +39,60 @@
   --ifm-navbar-link-active-color: #da3979;
 
   --ifm-menu-color: #181818;
+
+  --ic0-nav-border: 2px solid white;
+  --ic0-article-background: #F5F5F5;
+}
+
+html.docs-doc-page {
+  --ifm-navbar-x-padding: 24px;
+  --ifm-navbar-padding-horizontal: 24px;
+  --ifm-navbar-y-padding: 0;
+  --ifm-navbar-height: 88px;
+  // TODO: update link color
+  //--ifm-color-primary: #791E94;
+
+  .navbar {
+    padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+  }
+}
+
+html.docs-doc-page:not(.docs-doc-id-home) {
+  --ifm-toc-border-color: transparent;
+  --ifm-toc-padding-horizontal: 0;
+
+  .navbar {
+    border-bottom: var(--ic0-nav-border);
+  }
+
+  // style the article body
+  .docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module {
+    background: var(--ic0-article-background);
+
+    .container {
+      padding: 0 !important;
+    }
+
+    .docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+      padding: 40px 80px;
+    }
+
+    .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-theme-TOC-styles-module {
+      top: calc(var(--ifm-navbar-height) + 40px);
+      max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
+
+      .table-of-contents {
+        padding-top: 0;
+      }
+
+      &:before {
+        // TODO: can this string be localized?
+        content: "On this page";
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
+  }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -56,14 +110,14 @@
 
 div[class^="announcementBarContent"] {
   background: linear-gradient(
-    90.1deg,
-    #fbb03b 1.35%,
-    #f57c2d 15.43%,
-    #f15a24 26.38%,
-    #ed1e79 45.16%,
-    #be217d 54.55%,
-    #5c2684 76.97%,
-    #29abe2 99.92%
+                  90.1deg,
+                  #fbb03b 1.35%,
+                  #f57c2d 15.43%,
+                  #f15a24 26.38%,
+                  #ed1e79 45.16%,
+                  #be217d 54.55%,
+                  #5c2684 76.97%,
+                  #29abe2 99.92%
   );
   color: white;
   font-weight: bold;
@@ -78,11 +132,13 @@ div[class^="announcementBarContent"] {
   position: relative;
   display: block;
 }
+
 .markdown-youtube-thumbnail img {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 16 / 9;
 }
+
 .markdown-youtube-thumbnail:after {
   position: absolute;
   inset: 0;
@@ -99,34 +155,34 @@ div[class^="announcementBarContent"] {
 
 .panel-gradient {
   background: linear-gradient(
-    105.94deg,
-    rgba(255, 255, 255, 0.24) 0%,
-    rgba(255, 255, 255, 0) 38.54%,
-    rgba(255, 255, 255, 0.136216) 100%
+                  105.94deg,
+                  rgba(255, 255, 255, 0.24) 0%,
+                  rgba(255, 255, 255, 0) 38.54%,
+                  rgba(255, 255, 255, 0.136216) 100%
   );
 }
 
 .hero-stat-red {
   background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(236, 0, 140, 0.5) 112.99%
+                  141.63deg,
+                  #ffffff 19.8%,
+                  rgba(236, 0, 140, 0.5) 112.99%
   );
 }
 
 .hero-stat-blue {
   background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(59, 0, 185, 0.5) 112.99%
+                  141.63deg,
+                  #ffffff 19.8%,
+                  rgba(59, 0, 185, 0.5) 112.99%
   );
 }
 
 .hero-stat-green {
   background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(24, 208, 181, 0.5) 112.99%
+                  141.63deg,
+                  #ffffff 19.8%,
+                  rgba(24, 208, 181, 0.5) 112.99%
   );
 }
 
