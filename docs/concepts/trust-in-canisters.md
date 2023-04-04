@@ -26,25 +26,23 @@ Canister controllers, if not voluntarily decentralized, have complete control ov
 
 :::
 
-### Controller Modification
+### Sole Control by NNS
 
-The simplest option is to remove a canister's controller. A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
+The simplest option is to remove a canister's controller. Without a controller the canister can only be mutated by the NNS via NNS proposal, assuming the integrity of the platform is maintained.
+
+A user can verify the list of controllers for a canister &lt;canister&gt; using dfx. For example:
 
     dfx canister --network ic info ryjl3-tyaaa-aaaaa-aaaba-cai
 
 will return the list of controllers for the canister with principal `ryjl3-tyaaa-aaaaa-aaaba-cai` (in this example, the ledger canister).
 
-If the controller list is empty then the canister has no direct controller.
-
-A user can obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
-
-Without a controller, the canister can no longer be updated by any single person. Any changes would need to go through an NNS vote.
+A user can also obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information) which includes the list of controllers. NB: currently a canister cannot obtain this information.
 
 A similar effect can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g. by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
 
 Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister has only itself as a controller but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is thoroughly documented [here](https://github.com/ninegua/ic-blackhole). Note that the repository linked here mentions canister immutability, but this is red herring. The NNS is still capable of making changes to a canister that is controlled by a blackholed canister, or the blackhole canister itself.
 
-### Governed Mutability
+### Sole Control by NNS and Other Governance
 
 A more complex but powerful approach is to control the canister via a distributed governance mechanism. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the (upcoming) [SNS feature](https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c) which allows developers to set the controller of their canister to some governing canister.
 
