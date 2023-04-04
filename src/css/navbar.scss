@@ -19,7 +19,7 @@
 }
 
 html.docs-doc-page {
-  --ifm-navbar-x-padding: 16px;
+  --ifm-navbar-x-padding: 24px;
 }
 
 .navbar {
@@ -252,7 +252,7 @@ html.plugin-docs
     min-width: max-content;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 450px;
+    font-weight: 400;
   }
 
   .dropdown__menu .dropdown__link--with-icon {

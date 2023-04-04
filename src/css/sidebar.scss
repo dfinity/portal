@@ -15,6 +15,9 @@
 .theme-doc-sidebar-item-link-level-3 {
   &.menu__list-item {
     font-weight: 400;
+    .menu__link--active {
+      font-weight: 500;
+    }
   }
 }
 
