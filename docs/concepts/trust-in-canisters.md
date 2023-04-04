@@ -44,6 +44,6 @@ Finally, a somewhat more useful solution is to pass control of the canister to a
 
 ### Sole Control by NNS and Other Governance
 
-A more complex but powerful approach is to control the canister via a distributed governance mechanism. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the (upcoming) [SNS feature](https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c) which allows developers to set the controller of their canister to some governing canister.
+A more complex but powerful approach is to set the sole controller of the canister to a distributed governance mechanism. In this case, the NNS still has ultimate control over the canister, even though it is not explicitly in the controller list. The advantage is that the more specific governance mechanism can be more focused on the canister. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the (upcoming) [SNS feature](https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c) which allows developers to set the controller of their canister to some governing canister.
 
 Needless to say, the trust requirements are moved to the SNS controlling the canister where all of the considerations regarding code inspection and reproducibility apply.
