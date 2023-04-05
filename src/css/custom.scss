@@ -78,12 +78,14 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   .docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module {
     background: var(--ic0-article-background);
 
-    .container {
-      padding: 0 !important;
-    }
+    @media (min-width: 996px) {
+      .container {
+        padding: 0 !important;
+      }
 
-    .docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
-      padding: 40px 80px;
+      .docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+        padding: 40px 80px;
+      }
     }
 
     .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-theme-TOC-styles-module {
