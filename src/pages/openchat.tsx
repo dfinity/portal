@@ -38,7 +38,7 @@ const Card: React.FC<{
   );
 };
 
-function SnsPage() {
+function OpenChatPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
   return (
@@ -171,9 +171,9 @@ function SnsPage() {
                 An "open internet service" is an internet service with a
                 difference: it runs entirely on World Computer blockchain,
                 without centralization. OpenChat is built from canister smart
-                contracts installed on the Internet Computer 
-                | <a
-                  class="link-subtle"
+                contracts installed on the Internet Computer |{" "}
+                <a
+                  className="link-subtle"
                   href="https://twitter.com/search?q=%23ICP"
                   target="_blank"
                 >
@@ -381,4 +381,4 @@ function SnsPage() {
   );
 }
 
-export default SnsPage;
+export default OpenChatPage;
