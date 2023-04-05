@@ -156,6 +156,9 @@ module.exports = {
         }
       );
     }),
+    plugin(function ({ addVariant }) {
+      addVariant("docs", "html.docs-doc-page &");
+    }),
     plugin(({ addComponents }) => {
       // prettier-ignore
       const components = {
