@@ -57,11 +57,29 @@ html.docs-doc-page {
   --ifm-navbar-height: 88px;
   --ifm-color-primary: #791E94;
 
+  // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
+  // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
+  // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
+  // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
 
     .navbar__link--active, .navbar__link:hover {
       color: var(--ifm-color-primary);
+    }
+
+    .navbar__item:hover {
+      &.dropdown {
+        .navbar__link {
+          color: var(--ifm-color-primary);
+
+          &:after {
+            filter: var(--ifm-color-primary-filter);
+          }
+        }
+      }
     }
   }
 }
