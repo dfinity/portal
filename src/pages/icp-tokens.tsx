@@ -415,12 +415,12 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0 tw-heading-6">
                   <a
-                    href="https://nns.ic0.app"
+                    href="https://medium.com/dfinity/how-to-stake-icp-tokens-and-earn-rewards-using-the-nns-front-end-dapp-5059130652b7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-black hover:no-underline"
                   >
-                    Start Staking
+                    How to Stake
                     <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                   </a>
                 </p>

@@ -46,7 +46,7 @@ Timers Library Limitations
 
 Despite its superiority over the heartbeats, the CDK timers library has a few known shortcomings:
 
-1. **Canister upgrades.** The library keeps a global list of multiple and periodic tasks inside the canister heap. During the canister upgrade, a fresh WebAssemble state is created, all the timers are deactivated and the list of timers is cleared. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate them in the `canister_post_upgrade` method if needed.
+1. **Canister upgrades.** The library keeps a global list of multiple and periodic tasks inside the canister heap. During the canister upgrade, a fresh WebAssembly state is created, all the timers are deactivated and the list of timers is cleared. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate them in the `canister_post_upgrade` method if needed.
 2. **Self canister calls.** To isolate the tasks from each other and from the scheduling logic, CDK timers library initiates a self canister call to execute each task. There are a few implications:
    * Normal [inter-canister call costs](../gas-cost.md) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
    * The tasks to execute are added at the end of the canister input queue. Depending on the canister and subnet load, the actual execution might be delayed.
