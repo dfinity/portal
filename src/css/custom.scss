@@ -55,8 +55,7 @@ html.docs-doc-page {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
-  // TODO: update link color
-  //--ifm-color-primary: #791E94;
+  --ifm-color-primary: #791E94;
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
