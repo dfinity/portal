@@ -44,6 +44,12 @@
   --ic0-article-background: #F5F5F5;
 }
 
+@import "./animate.scss";
+@import "./code.scss";
+@import "./navbar.scss";
+@import "./scrollbar.scss";
+@import "./sidebar.scss";
+
 html.docs-doc-page {
   --ifm-navbar-x-padding: 24px;
   --ifm-navbar-padding-horizontal: 24px;
@@ -67,11 +73,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
   .navbar {
     border-bottom: var(--ic0-nav-border);
-
-    // keep navbar affixed to top (don't autohide)
-    &.navbarHidden_node_modules-\@docusaurus-theme-classic-lib-theme-Navbar-Layout-styles-module {
-      transform: none !important;
-    }
   }
 
   // style the article body
@@ -133,11 +134,6 @@ div[class^="announcementBarContent"] {
   color: white;
   font-weight: bold;
 }
-
-@import "./sidebar.scss";
-@import "./navbar.scss";
-@import "./code.scss";
-@import "./scrollbar.scss";
 
 .markdown-youtube-thumbnail {
   position: relative;
