@@ -113,7 +113,7 @@ That is, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
 a developer can hand over their dapp to the ICP and ask it to start a decentralization 
-sale for the newly creaed SNS.
+sale for the newly created SNS.
 
 In the decentralization swap, a fixed number of newly created SNS tokens sold for ICP tokens. 
 The sale these ICP tokens and, in the end of the sale, the conversion rate is computed
