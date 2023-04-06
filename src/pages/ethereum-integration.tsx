@@ -275,7 +275,6 @@ function EthereumIntegrationPage() {
             variants={transitions.container}
           >
             <AnimatedProse className="md:w-[calc(50%-60px)]">
-              <span className="tw-heading-7-caps mb-3 block">Current</span>
               <h3 className="text-gradient inline-block">
                 Phase 1: HTTPS Outcalls 
               </h3>
@@ -300,7 +299,6 @@ function EthereumIntegrationPage() {
               </p>
             </AnimatedProse>
             <AnimatedProse className="md:w-1/2">
-              <span className="tw-heading-7-caps mb-3 block">Future</span>
               <h3 className="text-gradient inline-block">
                 Phase 2: On-chain Ethereum API
               </h3>
