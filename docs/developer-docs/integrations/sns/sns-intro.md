@@ -63,7 +63,7 @@ The _governance canister_ enables decentralized decision making.
 It stores _proposals_ that are suggestions on how to
 evolve the dapp that the SNS governs and _neurons_ that define who the governance
 participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
-Everyone can become a government participant by staking SNS tokens in a neuron.
+Anyone can be a participant in governance by staking SNS tokens in a neuron.
 
 The _ledger canister_ implements the 
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
