@@ -217,7 +217,7 @@ function EthereumIntegrationPage() {
                 and Ethereum without any additional parties or trust assumptions.
                 This will be powered by an on-chain Ethereum RPC API running on the
                 Internet Computer based on direct integration with the Ethereum network.
-                Canister smart contracts will be able to interacti with this API directly.
+                Canister smart contracts will be able to interact with this API directly.
               </p>
               <p>
                 As the implementation of an on-chain Ethereum full node API is
