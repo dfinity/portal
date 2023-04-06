@@ -2,7 +2,7 @@
   --ifm-menu-color-background-hover: #E8E4ED;
 }
 
-.sidebar_src-theme-DocSidebar-styles-module {
+div[class*="sidebar_"] {
   border-right: var(--ic0-nav-border);
 }
 

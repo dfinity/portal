@@ -89,7 +89,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   }
 
   // style the article body
-  .docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module {
+  main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
 
     @media (min-width: 996px) {
@@ -97,12 +97,12 @@ html.docs-doc-page:not(.docs-doc-id-home) {
         padding: 0 !important;
       }
 
-      .docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+      div[class*="docItemContainer_"] {
         padding: 40px 80px;
       }
     }
 
-    .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-theme-TOC-styles-module {
+    div[class*="tableOfContents"] {
       top: calc(var(--ifm-navbar-height) + 40px);
       max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
 
