@@ -184,7 +184,7 @@ function EthereumIntegrationPage() {
               <h3>Chain-Key ECDSA</h3>
               <p>
                 Like native Bitcoin on ICP, Ethereum transactions could be signed
-                using ECDSA signatures. ICP already now offers ECDSA threshold
+                using ECDSA signatures. ICP already now offers threshold ECDSA
                 signing capabilities, referred to as chain-key ECDSA signing:
               </p>
               <ul>
@@ -194,7 +194,8 @@ function EthereumIntegrationPage() {
                   address and sign transactions.
                 </li>
                 <li>
-                  A private signing key would be secret shared among many machines.
+                  A private signing key would be secret shared among many nodes and
+                  periodically reshared.
                 </li>
                 <li>
                   ECDSA signatures are computed using cryptographic multi-party
