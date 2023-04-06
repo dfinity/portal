@@ -20,7 +20,7 @@ your dapp.
    In this option, developers can get an SNS DAO for their dapp by handing over their dapp to the
    IC. The IC, or rather the NNS community, will maintain the SNS code and can
    continuously approve new improved SNS versions. The SNS community can then simply decide
-   to adopte those new versions in their SNS instance.
+   to adopt those new versions in their SNS instance.
    Individual SNSs can nevertheless be customized by choosing parameters that
    can be configured to realise different forms of voting and tokenomics.
    In this option, SNSs are hosted on an _SNS subnet_. Since this subnet exclusively hosts
