@@ -155,7 +155,7 @@ This lets you choose many SNS settings and also lets you choose the initial
 token distribution.
 
 ### Initial parameters
-Aparat from the decentralization swap parameters
+Apart from the decentralization swap parameters
 (see next section), 
 all SNS parameters are set in a _.yaml_ file that can 
 then be passed as an argument
