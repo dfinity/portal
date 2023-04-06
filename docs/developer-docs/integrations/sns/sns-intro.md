@@ -20,7 +20,7 @@ your dapp.
    In this option, developers can get an SNS DAO for their dapp by handing over their dapp to the
    IC. The IC, or rather the NNS community, will maintain the SNS code and can
    continuously approve new improved SNS versions. The SNS community can then simply decide
-   to adopte those new versions in their SNS instance.
+   to adopt those new versions in their SNS instance.
    Individual SNSs can nevertheless be customized by choosing parameters that
    can be configured to realise different forms of voting and tokenomics.
    In this option, SNSs are hosted on an _SNS subnet_. Since this subnet exclusively hosts
@@ -63,7 +63,7 @@ The _governance canister_ enables decentralized decision making.
 It stores _proposals_ that are suggestions on how to
 evolve the dapp that the SNS governs and _neurons_ that define who the governance
 participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
-Everyone can become a government participant by staking SNS tokens in a neuron.
+Anyone can be a participant in governance by staking SNS tokens in a neuron.
 
 The _ledger canister_ implements the 
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
@@ -113,7 +113,7 @@ That is, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 The first SNS version provides one simple way to achieve this:
 a developer can hand over their dapp to the ICP and ask it to start a decentralization 
-sale for the newly creaed SNS.
+sale for the newly created SNS.
 
 In the decentralization swap, a fixed number of newly created SNS tokens sold for ICP tokens. 
 The sale these ICP tokens and, in the end of the sale, the conversion rate is computed

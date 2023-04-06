@@ -267,7 +267,7 @@ function SnsFaqPage() {
               </Link> and {" "}
               <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
                 Nuance
-              </Link>
+              </Link>{" "}
               are considering creating their own SNSs.
             </Faq>
           </FaqSection>
@@ -405,7 +405,7 @@ function SnsFaqPage() {
             <Faq title="Do I get rewards for participating in governance?">
               SNS works very similar to the NNS, however each SNS DAO can
               configure their parameters differently. Once you have locked
-              your SNS governance tokens into SNS neurons for the at least
+              your SNS governance tokens into SNS neurons for at least
               the minimum required time, you can participate in voting.
               Depending on the configuration voting may reward participants
               with SNS governance tokens.
