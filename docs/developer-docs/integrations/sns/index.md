@@ -8,7 +8,7 @@ We thus try to split the SNS documentation accordingly.
 This page provides an overview of the SNS documentation and 
 provides links to the parts that already exist.
 Some of the SNS documentation is still being worked on and will be 
-edited or added as later SNS features are added, so please bare with
+edited or added as later SNS features are added, so please bear with
 us if it is not yet complete or a few parts do not work yet.
 
 ## SNS and DAOs primer
