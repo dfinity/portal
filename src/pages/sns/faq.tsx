@@ -267,7 +267,7 @@ function SnsFaqPage() {
               </Link> and {" "}
               <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
                 Nuance
-              </Link>
+              </Link>{" "}
               are considering creating their own SNSs.
             </Faq>
           </FaqSection>
