@@ -685,7 +685,7 @@ function SnsFaqPage() {
               <p>
                 There are multiple levels of verification you can do depending
                 on your level of technical understanding. SNS canisters can be
-                verified at any time, even before the decentralization swap, but
+                verified at any time, before the decentralization swap and
                 after they have been installed on the SNS subnet.
                 Here are some ways to verify:
               </p>
