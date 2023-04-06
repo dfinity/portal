@@ -2,7 +2,7 @@
 title: Consensus
 ---
 
-![](/img/how-it-works/consensus.web)
+![](/img/how-it-works/consensus.webp)
 
 # Consensus
 
