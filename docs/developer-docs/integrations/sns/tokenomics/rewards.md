@@ -24,7 +24,7 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
   * The total pool of voting rewards for a given day is calculated as ICP supply (total supply of ICP tokens on that day) * R(t) / 365.25.
 * Voting power of neurons
   * Only neurons with a dissolve delay of more than 6 months are eligible for voting. The maximum dissolve delay is 8 years.
-  * The voting power of a neuron is computed as neuron_stake * dissolve_delay_bonus * age_bonus
+  * The voting power of a neuron is computed as `neuron_stake * dissolve_delay_bonus * age_bonus`
   * In particular the dissolve delay bonus and the age bonus are cumulative.
   * The dissolve delay bonus (ddb) is a value between ddb<sub>min</sub> =1 and ddb<sub>max</sub>=2 and a linear function of the dissolve delay (capped at eight years).
   * The age bonus (ab) is a value between ab<sub>min</sub>=1 and ab<sub>max</sub>=1.25 and a linear function of the age of the neuron (capped at four years). A neuron starts aging when it enters a locked state. Aging is reset to 0 when a neuron enters a dissolving state.
