@@ -162,9 +162,9 @@ function EthereumIntegrationPage() {
               </p>
               <p>
                 X-chain smart contract calls enable a wide range of use cases
-                like swapping ERC-20 tokens, including Ether and other major
-                stable coins on DEXs, or natively holding ETH NFTs on the
-                Internet Computer.
+                like swapping ERC-20 tokens, natively holding ETH and major
+                stable coins such as USDC, or trading ETH NFTs without wrapping
+                on ICP based NFT marketplaces.
               </p>
               <p>The future of blockchain is multi-chain!</p>
 
