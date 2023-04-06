@@ -215,9 +215,9 @@ function EthereumIntegrationPage() {
                 and the Ethereum network require integration on a protocol level
                 to allow two-way calls between smart contracts on the Internet Computer 
                 and Ethereum without any additional parties or trust assumptions.
-                This will be powered by an on-chain Ethereum RPC API on the Internet
-                Computer based on direct integration with the Ethereum network, with
-                which canister smart contracts can interact.
+                This will be powered by an on-chain Ethereum RPC API running on the
+                Internet Computer based on direct integration with the Ethereum network.
+                Canister smart contracts will be able to interacti with this API directly.
               </p>
               <p>
                 As the implementation of an on-chain Ethereum full node API is
