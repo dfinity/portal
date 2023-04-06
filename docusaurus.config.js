@@ -194,6 +194,10 @@ const config = {
                   href: "/bitcoin-integration",
                 },
                 {
+                  label: "Ethereum Integration",
+                  href: "/ethereum-integration",
+                },
+                {
                   label: "HTTPS Outcalls",
                   href: "/https-outcalls",
                 },
@@ -582,7 +586,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ["rust"],
       },
       liveCodeBlock: {
         playgroundPosition: "bottom",

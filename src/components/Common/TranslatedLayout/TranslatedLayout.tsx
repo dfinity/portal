@@ -10,7 +10,7 @@ const TranslatedLayout: React.FC<{
   video?: { videoUrl: string; videoContentType: string };
   alt?: string;
   imageClassName?: string;
-  imageWithBlob?: boolean;
+  imageWithBlob?: false | string;
 }> = ({
   children,
   reverse = false,
@@ -54,9 +54,7 @@ const TranslatedLayout: React.FC<{
       variants={transitions.item}
     >
       <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
-        {imageWithBlob && (
-          <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
-        )}
+        {imageWithBlob && <div className={imageWithBlob}></div>}
         {mediaEl}
       </div>
       <div className="flex flex-col justify-center md:w-7/12">
