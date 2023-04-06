@@ -150,15 +150,15 @@ function EthereumIntegrationPage() {
                 Next on the list is kickstarting a native trustless integration
                 with the Ethereum network. An ETH &lt;&gt; ICP integration will
                 enable smart contracts on both networks to interact with each
-                other. The Internet Computer can then securely read the balance
+                other. The Internet Computer could then securely read the balance
                 of an ETH or ERC-20 account, for example, and sign and submit
                 Ethereum transactions, including ETH and ERC-20 transfers.
               </p>
               <p>
                 Reversely, the integration would also enable Ethereum smart
                 contracts to interact with ICP smart contracts. Ethereum smart
-                contracts can then, for example, offload heavy, expensive
-                computations onto the Internet Computer.
+                contracts would then be able to offload heavy, expensive
+                computations onto the Internet Computer, for example.
               </p>
               <p>
                 X-chain smart contract calls enable a wide range of use cases
@@ -183,18 +183,18 @@ function EthereumIntegrationPage() {
             <AnimatedProse className="bg-white rounded-xl p-8">
               <h3>Chain-Key ECDSA</h3>
               <p>
-                Like native Bitcoin on ICP, Ethereum transactions can be signed
+                Like native Bitcoin on ICP, Ethereum transactions could be signed
                 using ECDSA signatures. ICP already now offers ECDSA threshold
                 signing capabilities, referred to as chain-key ECDSA signing:
               </p>
               <ul>
                 <li>
-                  Every canister smart contract has an ECDSA key pair (actually,
-                  it can have many) that it can use to derive an Ethereum
+                  Every canister smart contract would have an ECDSA key pair (actually,
+                  it can have many) that it could use to derive an Ethereum
                   address and sign transactions.
                 </li>
                 <li>
-                  A private signing key is secret shared among many machines.
+                  A private signing key would be secret shared among many machines.
                 </li>
                 <li>
                   ECDSA signatures are computed using cryptographic multi-party
@@ -203,7 +203,7 @@ function EthereumIntegrationPage() {
                 </li>
               </ul>
               <p>
-                Chain-key ECDSA signing is accessed by canisters through the
+                Chain-key ECDSA signing could be accessed by canisters through the
                 ECDSA API.
               </p>
             </AnimatedProse>
@@ -212,14 +212,14 @@ function EthereumIntegrationPage() {
               <p>
                 Beyond chain-key ECDSA signing, the Internet Computer blockchain
                 and the Ethereum network require integration on a protocol level
-                to allow two-way calls between smart contracts on the IC and
-                Ethereum without any additional parties or trust assumptions.
-                This will be powered by an on-chain Ethereum RPC API on the IC,
-                based on direct integration with the Ethereum network, with
-                which canister smart contracts can interact
+                to allow two-way calls between smart contracts on the Internet Computer 
+                and Ethereum without any additional parties or trust assumptions.
+                This will be powered by an on-chain Ethereum RPC API on the Internet
+                Computer based on direct integration with the Ethereum network, with
+                which canister smart contracts can interact.
               </p>
               <p>
-                As the implementation of this on-chain Ethereum full node API is
+                As the implementation of an on-chain Ethereum full node API is
                 a sizeable project, the ETH &lt;&gt; ICP integration will be
                 built in two phases - and in close collaboration with the ICP
                 community.{" "}
@@ -258,17 +258,15 @@ function EthereumIntegrationPage() {
               className="tw-paragraph mb-0 text-center"
               variants={transitions.item}
             >
-              The Ethereum network is a main blockchain platform for building
-              DeFi. However, it has many pain points such as costly gas fees and
-              limited scalability, which delay adoption and create major
-              obstacles for developers. With its reverse gas model and ability
-              to scale and perform as high speed, the Internet Computer has the
-              ability to pioneer a multi-chain approach that will make it
-              possible for new and inexperienced users to enjoy the full utility
-              benefits of ETH. An native Ethereum integration for providing an
-              on-chain Ethereum API will unfold in two phases: 1. Implementation
-              in dapps with basic capabilities; 2. Protocol-level integration
-              with smooth migration from phase 1.
+              While the Ethereum network is currently the world's largest smart
+              contract blockchain in terms of market cap, TVL, and daily DeFi volume, 
+              it has many pain points such as costly gas fees and limited 
+              scalability, which delay adoption and create major obstacles
+              for developers. The Internet Computer, with its reverse 
+              gas model and ability to scale and perform at high speed, could 
+              offer a multi-chain environement that will make it possible for
+              new and inexperienced users to enjoy the full utility benefits 
+              of ETH. Ethereum integration will unfold in two phases:
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -278,20 +276,17 @@ function EthereumIntegrationPage() {
             <AnimatedProse className="md:w-[calc(50%-60px)]">
               <span className="tw-heading-7-caps mb-3 block">Current</span>
               <h3 className="text-gradient inline-block">
-                Phase 1: HTTPS Outcalls
+                Phase 1: HTTPS Outcalls 
               </h3>
               <p>
-                Phase 1 uses HTTPS outcalls, a feature already available on the
-                Internet Computer to connect with Web2, plus Ethereum API
-                providers to securely query the Ethereum blockchain and send
-                transactions to it. The ICP community has started building the
-                necessary functionality in the form of a readily-deployable
-                canister that offers the on-chain Ethereum full node API and
-                uses HTTPS outcalls to cloud API providers as transport
-                mechanism. ICP community members and DFINITY engineering teams
-                are currently working together to improve this solution. This
-                API will allow for a simple and smooth migration path to Phase
-                2, a full protocol integration.
+                The ICP community has started building the necessary functionality
+                in the form of a readily-deployable canister that offers
+                the on-chain Ethereum full node API and uses HTTPS outcalls to
+                cloud API providers to securely query the  Ethereum blockchain
+                and send transaction to it. ICP community members and DFINITY 
+                engineering teams are currently working together to improve this 
+                solution. Phase 1 will allow for a simple and smooth migration path 
+                to Phase 2, a full protocol integration.
               </p>
               <p>
                 <Link
@@ -312,14 +307,12 @@ function EthereumIntegrationPage() {
                 Phase 2 involves full protocol-level integration to realize an
                 on-chain Ethereum API on the Internet Computer. This API will be
                 enabled by running Ethereum full nodes next to each ICP replica
-                on a large ICP subnet, and communicating with those from the
-                replicas through ICP consensus. This approach has trust
+                on a large ICP subnet, and communicating with these subnets from 
+                the replicas through ICP consensus. This approach has trust
                 properties very similar to running an Ethereum full node on
                 chain on the Internet Computer, and is perceived as such by
-                canisters. The project has already been kicked off, but due to
-                the nature of complexity it will take quite some time to
-                complete. The API for Phase 2 is similar to that of Phase 1 to
-                enable a smooth migration path.
+                canisters. Due to the nature of complexity, Phase 2 it will 
+                take quite some time to complete. 
               </p>
               <p>
                 <Link
@@ -345,8 +338,8 @@ function EthereumIntegrationPage() {
               <h3 className="md:mb-6">Community Collab</h3>
               <p>
                 In February 2023, the ICP DeFi community convened at the DFINITY
-                headquarters in Zurich during the ICP.Lab to discuss the
-                Ethereum integration. The outcome: As a protocol-level
+                headquarters in Zurich during a DeFi focused ICP.Lab to discuss 
+                an Ethereum integration. The outcome: As a protocol-level
                 integration will take some time to complete, the community came
                 up with a short-term solution to bring liquidity from Ethereum
                 to the Internet Computer — one that enables using ETH and ERC-20
