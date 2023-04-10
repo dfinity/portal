@@ -1,8 +1,5 @@
 .github/ @dfinity/idx
-* @dfinity/SDK
-* @dfinity/R&D-Content
-* @dfinity/Research-Project-Management
-* @dfinity/Design
+* @dfinity/editorial
 
 docs/developer-docs/updates/release-notes/ @dfinity/dx
 docs/developer-docs/build/agents @dfinity/dx
