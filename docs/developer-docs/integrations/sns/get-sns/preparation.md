@@ -123,7 +123,7 @@ An SNS is launched in the following stages:
    When voting on the proposal, the NNS neurons can check
    the swap parameters and whether the dapp’s control has been
    handed over to the SNS. The voters can also check all parameters that have been
-   set up in step 1. and with which the canisters have be initialized in Step 2.
+   set up in step 1. and with which the canisters have been initialized in Step 2.
    The NNS proposal thus also serves as a safeguard where 
    the wisdom of the crowd can
    detect potentially malicious SNSs before they trick 
