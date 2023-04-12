@@ -1534,5 +1534,23 @@
     "twitter": "https://twitter.com/DwitterWeb3",
     "screenshots": [],
     "submittableId": 21958145
+  },
+  {
+    "id": "metamob",
+    "name": "Metamob",
+    "oneLiner": "Together we can change the world! One campaign at time.",
+    "description": "A decentralized web3 app, running 100% on-chain on the Internet Computer, that lets any user start mobilizations by creating campaigns of four different kinds: donations, votes, signatures and fundraising.",
+    "tags": [
+      "SocialFi"
+    ],
+    "website": "https://site.metamob.app/",
+    "github": "https://github.com/av1ctor/metamob",
+    "twitter": "https://twitter.com/metamob_app",
+    "discord": "https://discord.com/invite/8zhj7umRpD",
+    "logo": "/img/showcase/metamob_logo.webp",
+    "screenshots": [
+      "/img/showcase/metamob_screenshot_0.webp"
+    ],
+    "submittableId": 32331652
   }
 ]
