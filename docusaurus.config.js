@@ -365,6 +365,10 @@ const config = {
                 label: "Internet Computer Home",
                 to: "/",
               },
+              {
+                label: "Awesome Internet Computer",
+                href: "https://github.com/dfinity/awesome-internet-computer#readme",
+              },
               { label: "Sample Code", to: "/samples" },
               {
                 label: "SDK Release Notes",
