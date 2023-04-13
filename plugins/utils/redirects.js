@@ -64,6 +64,7 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents/
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro/
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
