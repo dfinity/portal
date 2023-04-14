@@ -1,6 +1,6 @@
 import Link from "@docusaurus/Link";
 import ArrowRight from "@site/static/img/arrow-right.svg";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -111,15 +111,15 @@ const ShowcaseSection: React.FC<{
         </AnimateSpawn>
 
         <div className="relative -mt-96 mb-10 md:mb-40">
-          <AnimateSpawn
-            el={motion.img}
+          <motion.img
             variants={transitions.fadeIn}
             src={BlobGradient}
             alt=""
             className="max-w-none w-[800px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
+            loading="lazy"
           />
 
-          <AnimateSpawn
+          <motion.div
             className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
             variants={transitions.item}
           >
@@ -133,7 +133,7 @@ const ShowcaseSection: React.FC<{
               <ArrowRight></ArrowRight>
               Start coding
             </Link>
-          </AnimateSpawn>
+          </motion.div>
         </div>
       </AnimateSpawn>
     </section>

@@ -7,7 +7,7 @@ import Icon3 from "../../../../static/img/basics/icon-db.svg";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
-import GreenBlur from "@site/static/img/basics/greenBlur.png";
+import GreenBlur from "@site/static/img/basics/greenBlur.webp";
 import Link from "@docusaurus/Link";
 import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import clsx from "clsx";

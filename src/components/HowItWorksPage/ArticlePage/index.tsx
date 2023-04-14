@@ -1,5 +1,5 @@
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
