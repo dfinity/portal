@@ -2,7 +2,7 @@
 title: Infinite scalability
 ---
 
-![](/img/how-it-works/resumption.600x300.jpg)
+![](/img/how-it-works/infinite-scalability.webp)
 
 # Infinite scalability
 

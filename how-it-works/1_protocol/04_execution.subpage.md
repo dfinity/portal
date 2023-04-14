@@ -1,7 +1,7 @@
 ---
 title: "Internet Computer Execution Layer"
 abstract: 
-shareImage: /img/how-it-works/network-nervous-system-nns.600.jpg
+shareImage: /img/how-it-works/execution.webp
 slug: execution-layer
 ---
 

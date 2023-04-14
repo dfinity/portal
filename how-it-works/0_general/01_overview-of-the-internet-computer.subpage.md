@@ -98,7 +98,7 @@ The NNS allows holders of the staked ICP to make proposals and vote on those pro
 dApps on the IC can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the platform's NNS, but tailored to govern dApps.
 Everyone controlling a dApp can hand over control over their dApp to a tokenized DAO by parameterizing and deploying an instance of the SNS.
 The SNS implements tokenized governance at the dApp level and can be used without the dApp engineers implementing a governance system themselves, which is revolutionary.
-Handing over control of a dApp to an instance of the SNS usually includes running a decentralization sale as an early step where funds can be raised through the sale of the dApp's governance tokens.
+Handing over control of a dApp to an instance of the SNS usually includes running a decentralization swap as an early step where funds can be raised through the swap of the dApp's governance tokens.
 
 ## Go Even Deeper
 

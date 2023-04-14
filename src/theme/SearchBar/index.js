@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from "react";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const focusHelperInputRef = React.useRef(null);
+
+  function openOverlay() {
+    // must be called from an event handler to be able to auto-focus the search input on ios
+    setIsOverlayOpen(true);
+
+    // hack part 1 to focus the input on ios with keyboard shown
+    focusHelperInputRef.current.style.display = "block";
+    focusHelperInputRef.current.focus();
+    focusHelperInputRef.current.click();
+  }
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -21,7 +32,7 @@ const Search = () => {
       if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         e.stopPropagation();
-        setIsOverlayOpen(true);
+        openOverlay();
       }
     }
 
@@ -42,11 +53,12 @@ const Search = () => {
           flex gap-2 items-center 
           md:order-last md:ml-6 
           outline-offset-2
-          absolute right-[72px] md:static
+          absolute right-[64px] md:static
+          text-black
 
           md:hover:bg-infinite md:hover:text-white
           "
-        onClick={() => setIsOverlayOpen(true)}
+        onClick={openOverlay}
       >
         <svg
           viewBox="0 0 16 16"
@@ -65,13 +77,28 @@ const Search = () => {
         <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block">
           Search
         </span>
-        {metaKey && (
-          <span className="tw-paragraph-sm relative top-[2px] text-infinite/50 hidden md:block md:group-hover:text-white">
-            {metaKey}K
-          </span>
-        )}
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 md:group-hover:text-white">
+          {metaKey && (
+            <span className="tw-paragraph-sm relative top-[2px]">
+              {metaKey}K
+            </span>
+          )}
+        </span>
       </button>
-
+      <input
+        style={{
+          display: "none",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          opacity: 0,
+          height: "100px",
+          fontSize: "30px",
+        }}
+        id="ios-tmp-input"
+        ref={focusHelperInputRef}
+      ></input>
       {isOverlayOpen && (
         <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
       )}

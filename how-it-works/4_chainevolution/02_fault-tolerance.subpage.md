@@ -1,7 +1,7 @@
 ---
 title: Fault tolerance
 abstract: 
-shareImage: /img/how-it-works/state-synchronization.600.jpg
+shareImage: /img/how-it-works/fault-tolerance.webp
 slug: fault-tolerance
 ---
 

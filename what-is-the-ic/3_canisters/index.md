@@ -1,6 +1,6 @@
 ---
 title: Canisters are the next evolution of smart contracts
-card: /img/what-is-the-ic/canister.jpg
+card: /img/what-is-the-ic/canister.webp
 cardImageFit: cover
 ---
 

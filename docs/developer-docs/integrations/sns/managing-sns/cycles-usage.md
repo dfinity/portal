@@ -17,7 +17,7 @@ and also for _each dapp canister_.
 At least the latter is not new to developers who built a dapp on the IC.
 Nevertheless, we want to underline the importance of this in the context
 of an SNS: If the SNS governance or SNS ledger canister run out of cycles
-and get deleted, this is of course critical as users loose their
+and get deleted, this is of course critical as users lose their
 liquid and staked tokens and as the dapp canisters cannot be governed
 anymore.
 Also, as the SNS canisters are owned by a community, some

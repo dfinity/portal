@@ -1,7 +1,7 @@
 ---
 title: Internet Computer Consensus
 abstract: 
-shareImage: /img/how-it-works/consensus.600.jpg
+shareImage: /img/how-it-works/consensus.web
 slug: consensus
 ---
 

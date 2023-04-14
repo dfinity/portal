@@ -8,12 +8,12 @@ const showcaseProjectsPlugin = async function () {
       const ids = [
         "dscvr",
         "distrikt",
-        "openchat",
-        "sonic",
         "kinic",
-        "cubetopia",
+        "openchat",
         "plethora",
         "entrepot",
+        "cubetopia",
+        "sonic",
       ];
 
       const projects = ids.map((id) =>
@@ -33,8 +33,8 @@ const showcaseProjectsPlugin = async function () {
       return transformed;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("home-showcase.json", JSON.stringify(content, null, 2));
     },
   };
 };

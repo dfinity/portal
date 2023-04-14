@@ -1,7 +1,7 @@
 ---
 title: Infinite scalability
 abstract: 
-shareImage: /img/how-it-works/resumption.600.jpg
+shareImage: /img/how-it-works/infinite-scalability.webp
 slug: scalability
 ---
 
