@@ -56,6 +56,23 @@
     ]
   },
   {
+    "id": "juno",
+    "name": "Juno",
+    "oneLiner": "Build Web3 Apps Like It's Web2",
+    "website": "https://juno.build",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/junobuild",
+    "github": "https://github.com/buildwithjuno/juno",
+    "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
+    "display": "Large",
+    "logo": "/img/showcase/juno_logo.svg",
+    "screenshots": [
+      "/img/showcase/juno_social_image.png"
+    ]
+  },
+  {
     "id": "kinic",
     "name": "Kinic",
     "oneLiner": "The world's first web3 search engine",
@@ -106,6 +123,19 @@
     ]
   },
   {
+    "id": "icpcoins",
+    "name": "ICP Coins",
+    "oneLiner": "DEX stats aggregator",
+    "website": "https://icpcoins.com",
+    "tags": ["DeFi"],
+    "description": "IC coins by market cap. Aggregates stats from all IC DEXes. Price, Volume & Liquidity score charts.",
+    "usesInternetIdentity": false,
+    "stats": "1000 users",
+    "logo": "/img/showcase/icpcoins_logo.png",
+    "github": "https://github.com/vvv-interactive/icpcoins",
+    "screenshots": ["/img/showcase/icpcoins_screenshot_0.jpg"]
+  },
+  {
     "id": "internetcomputerorgwebsite",
     "name": "ICP website",
     "oneLiner": "Educational website for the Internet Computer",
@@ -140,7 +170,7 @@
   {
     "id": "uniswapfrontendontheic",
     "name": "Uniswap Front End on the IC",
-    "website": "https://uniswap-on-ic.xyz/#/swap",
+    "website": "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/#/swap",
     "github": "https://github.com/domwoe/uniswap_ui_on_ic",
     "tags": [
       "DeFi"
@@ -400,6 +430,42 @@
     ]
   },
   {
+    "id": "icpulse",
+    "name": "ICPulse",
+    "oneLiner": "Visual metrics for IC's software activity data",
+    "website": "https://icpulse.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": " ICPulse increases the transparency in the IC’s developer ecosystem by aggregating the activity data from GitHub and displaying visual metrics in an effective dashboard.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/icpulse_logo.svg",
+    "github": "https://github.com/CrossChainLabs-ICP",
+    "twitter": "https://twitter.com/CrossChain_Labs/status/1626495037734285312?s=20",
+    "screenshots": [
+      "static/img/showcase/ICPulse_screenshot.jpg"
+    ],
+    "submittableId": "32418389"
+  },
+  {
+    "id": "hot-or-not",
+    "name": "Hot or Not",
+    "oneLiner": "Web3's answer to TikTok with speculation on short video content",
+    "website": "https://hotornot.wtf/",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Hot or Not is a decentralized short-video social media (like TikTok) which integrates prediction markets for content. In addition to creating and sharing short videos on the platform, the users can also speculate on the short videos uploaded by other users on the platform. The users can vote whether a video would be 'Hot' or 'Not' and stake blockchain tokens to substantiate their vote. The results are declared every hour and the winners are rewarded with 2x tokens. With Decentralized governance and content moderation, Hot or Not would put the users at the center of the ecosystem",
+    "usesInternetIdentity": true,
+    "stats": "50 000+ users | 10 000+ videos",
+    "logo": "/img/showcase/hot_or_not_logo.svg",
+    "screenshots": [
+      "/img/showcase/hot_or_not_screenshot_0.jpg"
+    ],
+    "videoContentType": "video/mp4",
+    "video": "/img/showcase/hot_or_not_video.mp4"
+  },
+  {
     "id": "sly",
     "name": "SLY",
     "oneLiner": "Seamless CLI for the Internet Computer",
@@ -490,6 +556,22 @@
     "logo": "/img/showcase/missionispossible_logo.webp",
     "screenshots": [
       "/img/showcase/missionispossible_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "catalyze",
+    "name": "Catalyze",
+    "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Catalyze is a decentralized social and community-building platform designed to host engaged and thriving Web3 communities. With a unique and customized engagement economy, Catalyze communities and their members will be rewarded for their participation and contribution. Main features include: direct communication, event & task management, integrated Web3 wallets, NFT Gating, NFT airdrop & sales management.",
+    "usesInternetIdentity": true,
+    "oneLiner": "Web3 social media platform for communities",
+    "display": "Large",
+    "logo": "/img/showcase/catalyze_logo.webp",
+    "screenshots": [
+      "/img/showcase/catalyze_screenshot.webp"
     ]
   },
   {
@@ -643,7 +725,7 @@
     "description": "The Motoko Playground is an IDE for developers to learn Motoko - the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "github": "https://github.com/dfinity/motoko-playground",
     "usesInternetIdentity": false,
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/motokoplayground_logo.webp",
     "video": "/img/showcase/motokoplayground_video.mp4",
     "videoContentType": "video/mp4",
@@ -860,6 +942,203 @@
     ]
   },
   {
+    "id": "argonstudio",
+    "name": "Argon Studio",
+    "description": "We'll be your end-to-end partner, whether managing your project from ideation to implementation, or filling gaps in your current team.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://argonstudios.xyz/",
+    "twitter": "https://twitter.com/ArgonStudiosXYZ",
+    "logo": "/img/showcase/argonstudio_logo.webp",
+    "submittableId": "34524251"
+  },
+  {
+    "id": "aviatelabs",
+    "name": "Aviate Labs",
+    "description": "Stop worrying about system failures and slow performance. Our datacenter standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://www.aviatelabs.co/",
+    "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
+    "logo": "/img/showcase/aviatelabs_logo.webp",
+    "submittableId": "25140378"
+  },
+  {
+    "id": "canscale",
+    "name": "CanScale",
+    "description": "Worried about data being persisted or how your data structure will scale across canisters? CanScale can help you focus more on building out your vision, and spend less time thinking about how to scale out your multi canister architecture on the IC.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://www.canscale.dev",
+    "twitter": "https://twitter.com/can_scale",
+    "logo": "/img/showcase/canscale_logo.webp",
+    "submittableId": "34140445"
+  },
+  {
+    "id": "cipherproxy",
+    "name": "cipher proxy",
+    "description": "A web3 research collective and project laboratory developing decentralized projects and protocols",
+    "tags": [
+      "NFT"
+    ],
+    "website": "https://www.cipherproxy.com/",
+    "twitter": "https://twitter.com/CipherProxyLLC",
+    "logo": "/img/showcase/cipherproxy_logo.webp",
+    "submittableId": "21787270"
+  },
+  {
+    "id": "codebase",
+    "name": "CODEBASE",
+    "description": "Decentralized Git hosting and software collaboration, powered by permissionless protocols.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://codebase.org/",
+    "github": "https://github.com/paulyoung/icfs",
+    "twitter": "https://twitter.com/CodebaseLabs",
+    "logo": "/img/showcase/codebase_logo.webp"
+  },
+  {
+    "id": "dbox",
+    "name": "Dbox",
+    "description": "The decentralized inbox built on Internet Computer",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "useInternetIdentity": true,
+    "website": "https://dbox.foundation/",
+    "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
+    "discord": "https://discord.gg/rEN6ygpCxK",
+    "logo": "/img/showcase/dbox_logo.webp",
+    "submittableId": "22737412"
+  },
+  {
+    "id": "eimolad",
+    "name": "Eimolad",
+    "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers and incredible adventures. ",
+    "tags": [
+      "Games"
+    ],
+    "website": "https://eimolad.com/",
+    "twitter": "https://twitter.com/eimolad",
+    "discord": "https://discord.gg/qD3R5nDXDZ",
+    "logo": "/img/showcase/eimolad_logo.webp",
+    "submittableId": "28118212"
+  },
+  {
+    "id": "faefolk",
+    "name": "FaeFolk",
+    "description": "FaeFolk is a multiplayer, slice of life, NFT role-playing game where you use your NFTs to craft tools, equipment, and train your skills",
+    "tags": [
+      "Games",
+      "NFT"
+    ],
+    "website": "https://medium.com/faefolk",
+    "github": "https://github.com/ICCards/faefolk",
+    "twitter": "https://twitter.com/_faefolk",
+    "discord": "https://discord.gg/Fe5qYRZrGp",
+    "logo": "/img/showcase/faefolk_logo.webp",
+    "submittableId": "32841408"
+  },
+  {
+    "id": "fishverse",
+    "name": "Fishverse",
+    "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
+    "tags": [
+      "Games",
+      "NFT"
+    ],
+    "website": "https://thefishverse.com/",
+    "github": "https://github.com/MGLabsltd/Fishverse_token",
+    "twitter": "https://twitter.com/TheFishverse",
+    "discord": "https://discord.com/invite/BmztPmDuSt",
+    "logo": "/img/showcase/fishverse_logo.webp",
+    "submittableId": "32119235"
+  },
+  {
+    "id": "icdevs.org",
+    "name": "ICDevs.org ",
+    "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding and scientific discovery",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://icdevs.org",
+    "github": "https://github.com/icdevs/Icdevs_fleeksite",
+    "logo": "/img/showcase/icdevs.org_logo.webp",
+    "submittableId": "33212854"
+  },
+  {
+    "id": "iclighthouse",
+    "name": "ICLightHouse",
+    "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "website": "https://iclight.house/",
+    "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
+    "discord": "https://discord.com/invite/FQZFGGq7zv",
+    "logo": "/img/showcase/iclighthouse_logo.webp"
+  },
+  {
+    "id": "polycrypt",
+    "name": "PolyCrypt",
+    "description": "We develop cryptographic decentralized offchain solutions which tackle scalability challenges enabling mass adoption of blockchains.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://perun.network",
+    "github": "https://github.com/perun-network/perun-icp-canister",
+    "twitter": "https://twitter.com/PolyCrypt_",
+    "logo": "/img/showcase/polycrypt_logo.webp",
+    "submittableId": "23715256"
+  },
+  {
+    "id": "scinet",
+    "name": "SCINET",
+    "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
+    "useInternetIdentity": true,
+    "website": "https://www.scinet.one/",
+    "twitter": "https://twitter.com/scinet_inc",
+    "discord": "https://discord.com/invite/5uH6vpJjeB",
+    "logo": "/img/showcase/scinet_logo.webp",
+    "submittableId": "33285268"
+  },
+  {
+    "id": "spinnercash",
+    "name": "Spinner.Cash",
+    "description": "Private transactions for ICP and BTC",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "website": "https://spinner.cash/",
+    "github": "https://github.com/spinner-cash/launch-trail",
+    "twitter": "https://twitter.com/spnrapp",
+    "logo": "/img/showcase/spinnercash_logo.webp"
+  },
+  {
+    "id": "canistergeek",
+    "name": "Canistergeek by Usergeek",
+    "description": "Top up your canisters, monitor cycles, memory, logs and get your monthly reports in one place.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://cusyh-iyaaa-aaaah-qcpba-cai.raw.ic0.app/",
+    "github": "https://github.com/usergeek/canistergeek-demo-ui",
+    "twitter": "https://twitter.com/theUSERGEEK",
+    "discord": "https://discord.gg/6PEC6AbZER",
+    "logo": "/img/showcase/canistergeek_logo.webp",
+    "submittableId": "33310242"
+  },
+  {
     "id": "icpipeline",
     "name": "ICPipeline",
     "website": "https://www.icpipeline.com",
@@ -934,22 +1213,6 @@
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": [
       "/img/showcase/icpswap_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "sushiswapfront-end",
-    "name": "SushiSwap Front-End",
-    "website": "https://aufz7-4qaaa-aaaaf-qae3a-cai.raw.ic0.app/swap",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "Sushi Swap is a DEX that enables users to \"swap\" ERC20 Ethereum tokens. The back-end logic and token-standard are decentralized, but the front-end has traditionally been hosted using Web2 services (similar to other ETH \"dapps\") and as a result has experienced outages, censorship and more.",
-    "github": "https://github.com/sushiswap/sushiswap-interface/pull/477",
-    "oneLiner": "Front-End Hosted On-Chain",
-    "display": "Normal",
-    "logo": "/img/showcase/sushiswapfront-end_logo.webp",
-    "screenshots": [
-      "/img/showcase/sushiswapfront-end_screenshot_0.webp"
     ]
   },
   {
@@ -1202,7 +1465,11 @@
     "name": "ITOKA",
     "oneLiner": "A Leading Infrastructure for Music3.0",
     "website": "https://www.itoka.xyz/",
-    "tags": ["NFT", "SocialFi", "Tools / Infrastructure"],
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
     "description": "The ITOKA project seeks to disrupt the centralized music industry by offering a complete infrastructure solution for the web3 music industry. This includes creation tools, data storage, and music streaming services. The goal of ITOKA is to transform the music industry into a decentralized ecosystem, empowering creators with greater control over their content and a fairer share of revenue.",
     "usesInternetIdentity": true,
     "github": "https://github.com/Itoka-DAO",
@@ -1212,7 +1479,9 @@
     "video": "/img/showcase/itoka_video.mp4",
     "videoContentType": "video/mp4",
     "display": "Large",
-    "screenshots": ["/img/showcase/itoka_screanshot.svg"]
+    "screenshots": [
+      "/img/showcase/itoka_screanshot.svg"
+    ]
   },
   {
     "id": "glue",
@@ -1251,17 +1520,37 @@
     "submittableId": 32780428
   },
   {
-    "id": "hot-or-not",
-    "name": "Hot or Not",
-    "oneLiner": "Web3's answer to TikTok with speculation on short video content",
-    "website": "https://hotornot.wtf/",
-    "tags": ["SocialFi"],
-    "description": "Hot or Not is a decentralized short-video social media (like TikTok) which integrates prediction markets for content. In addition to creating and sharing short videos on the platform, the users can also speculate on the short videos uploaded by other users on the platform. The users can vote whether a video would be 'Hot' or 'Not' and stake blockchain tokens to substantiate their vote. The results are declared every hour and the winners are rewarded with 2x tokens. With Decentralized governance and content moderation, Hot or Not would put the users at the center of the ecosystem",
+    "id": "dwitter",
+    "name": "Dwitter",
+    "oneLiner": "AI-powered social network",
+    "website": "https://dwitter.me",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Explore Dwitter! Decentralized social network like Twitter, integrated with OpenAI bots. View a shared global feed featuring user-chatbot interactions from around the world.",
     "usesInternetIdentity": true,
-    "stats": "50 000+ users | 10 000+ videos",
-    "logo": "/img/showcase/hot_or_not_logo.svg",
-    "screenshots": ["/img/showcase/hot_or_not_screenshot_0.jpg"],
-    "videoContentType": "video/mp4",
-    "video": "/img/showcase/hot_or_not_video.mp4"
+    "logo": "/img/showcase/dwitter_logo.png",
+    "github": "https://github.com/azhuravel/Dwitter-Dfinity",
+    "twitter": "https://twitter.com/DwitterWeb3",
+    "screenshots": [],
+    "submittableId": 21958145
+  },
+  {
+    "id": "metamob",
+    "name": "Metamob",
+    "oneLiner": "Together we can change the world! One campaign at time.",
+    "description": "A decentralized web3 app, running 100% on-chain on the Internet Computer, that lets any user start mobilizations by creating campaigns of four different kinds: donations, votes, signatures and fundraising.",
+    "tags": [
+      "SocialFi"
+    ],
+    "website": "https://site.metamob.app/",
+    "github": "https://github.com/av1ctor/metamob",
+    "twitter": "https://twitter.com/metamob_app",
+    "discord": "https://discord.com/invite/8zhj7umRpD",
+    "logo": "/img/showcase/metamob_logo.webp",
+    "screenshots": [
+      "/img/showcase/metamob_screenshot_0.webp"
+    ],
+    "submittableId": 32331652
   }
 ]

@@ -5,6 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { PageSearchResult } from "@site/search/src/declarations/search/search.did";
 import { createFocusTrap } from "focus-trap";
 import Link from "@docusaurus/Link";
+import { trackEvent } from "@site/src/utils/matomo";
 
 let initialTerm = "";
 let initialResults: PageSearchResult[] | null = null;
@@ -15,7 +16,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-  const actorRef = useRef<ReturnType<typeof createActor>>(null);
+  const actorRefPromise = useRef<Promise<ReturnType<typeof createActor>>>(null);
   const [term, setTerm] = useState<string>(initialTerm);
   const [results, setResults] = useState<PageSearchResult[] | null>(
     initialResults
@@ -23,18 +24,23 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   const [loadMoreExpanded, setLoadMoreExpanded] = useState<
     Record<string, true>
   >({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!actorRef.current) {
-      actorRef.current = createActor(
-        customFields["searchCanisterId"] as string
-      );
-    }
-
-    const trap = createFocusTrap(dialogRef.current, {
-      initialFocus: inputRef.current,
+    actorRefPromise.current = import("./actor").then(({ createActor }) => {
+      console.log("search module loaded");
+      return createActor(customFields["searchCanisterId"] as string);
     });
 
+    // hack part 2 to make sure the input is focused on ios and the keyboard opens
+    const tmpInput = document.querySelector(
+      "#ios-tmp-input"
+    ) as HTMLInputElement;
+    inputRef.current.focus();
+    inputRef.current.click();
+    tmpInput.style.display = "none";
+
+    const trap = createFocusTrap(dialogRef.current, {});
     trap.activate();
 
     function onKeydown(e: KeyboardEvent) {
@@ -55,35 +61,44 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   }, []);
 
   useEffect(() => {
+    if (!term || term.trim() == "") {
+      setResults(null);
+      initialResults = null;
+      return;
+    }
+
     let unmounted = false;
 
-    (async () => {
-      if (!term || term.trim() == "") {
-        setResults(null);
-        initialResults = null;
-        return;
+    setLoading(true);
+
+    actorRefPromise.current.then(async (actor) => {
+      initialTerm = term;
+
+      const results = await actor.query(term);
+
+      if (!unmounted) {
+        setLoading(false);
+        initialResults = results;
+        setResults(results);
       }
-
-      if (actorRef.current) {
-        initialTerm = term;
-
-        const results = await actorRef.current.query(term);
-
-        if (!unmounted) {
-          initialResults = results;
-          setResults(results);
-        }
-      }
-    })();
+    });
     return () => {
       unmounted = true;
     };
-  }, [term]);
+  }, [term, setLoading]);
 
-  function handleResultClick(e: React.MouseEvent<HTMLAnchorElement>) {
+  function handleResultClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    term: string,
+    title: string
+  ) {
     if (!e.metaKey && !e.ctrlKey) {
       onClose();
     }
+
+    try {
+      trackEvent("Search", term, title);
+    } catch {}
   }
 
   return (
@@ -121,6 +136,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                   onChange={(e) => setTerm(e.target.value)}
                   tabIndex={0}
                 ></input>
+                {loading && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-infinite/50 search-loading"></div>
+                )}
               </div>
               {term.trim().length > 0 && (
                 <button
@@ -164,7 +182,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                       <Link
                         className="tw-heading-5 mb-4 hover:text-black hover:no-underline"
                         href={result.url}
-                        onClick={handleResultClick}
+                        onClick={(e) =>
+                          handleResultClick(e, term, result.title)
+                        }
                       >
                         {result.title}
                       </Link>
@@ -176,17 +196,23 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                             result.results.length > 4 ? 3 : 4
                           )
                         : result.results
-                      ).map((result) => (
-                        <div className="" key={result.doc.id.toString()}>
+                      ).map((pageSection) => (
+                        <div className="" key={pageSection.doc.id.toString()}>
                           <Link
                             className="tw-heading-7 text-infinite hover:no-underline hover:text-black"
-                            href={result.doc.url}
-                            onClick={handleResultClick}
+                            href={pageSection.doc.url}
+                            onClick={(e) =>
+                              handleResultClick(
+                                e,
+                                term,
+                                result.title + " / " + pageSection.doc.title
+                              )
+                            }
                           >
-                            {result.doc.title}
+                            {pageSection.doc.title}
                           </Link>
                           <p className="tw-paragraph text-black-60 whitespace-nowrap text-ellipsis overflow-hidden mb-0">
-                            {result.doc.excerpt}
+                            {pageSection.doc.excerpt}
                           </p>
                         </div>
                       ))}

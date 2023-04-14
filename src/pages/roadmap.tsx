@@ -1,5 +1,6 @@
+import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
+import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
@@ -12,8 +13,6 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
-import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
-import Head from "@docusaurus/Head";
 
 const MotionLink = motion(Link);
 
@@ -31,8 +30,6 @@ const RoadmapPage: React.FC = () => {
     document.body.style.overflow = "";
     setOverlayOpen(false);
   }
-
-  const data = useGlobalData()["roadmap-data"].default as RoadmapDomain[];
 
   return (
     <Layout

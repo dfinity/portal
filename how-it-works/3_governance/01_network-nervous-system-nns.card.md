@@ -2,7 +2,7 @@
 title: Network Nervous System
 ---
 
-![](/img/how-it-works/network-nervous-system-nns.600x300.jpg)
+![](/img/how-it-works/network-nervous-system.webp)
 
 # Network Nervous System
 

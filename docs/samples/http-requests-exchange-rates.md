@@ -2,7 +2,7 @@
 
 ## Exchange Rate sample dapp overview
 
-The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The purpose of the sample dapp is to provide an example of using  the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) using [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
+The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The sample dapp provides an example of using the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) implemented in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
 
 ## What does the sample dapp do
 
@@ -10,17 +10,15 @@ The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to di
 
 There are two parts to the sample dapp:
 1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
-2. the backend provider canister `exchange_rate`, which performs HTTPS outcalls, queues jobs, transforms responses, etc.
+2. the backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
-The backend canister receives an update request corresponding to the time range specified by the user at the frontend.
-Asynchronously at every few Internet Computer heartbeats, the backend canister makes a Coinbase API request.
-Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the
-limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
-Coinbase covers a time bucket of 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
+The backend canister receives an update request corresponding to the time range specified by the user at the frontend. The time range
+is converted into time buckets and the buckets are queued for retrival. Asynchronously at every few Internet Computer heartbeats,
+the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+Coinbase covers a time bucket of at most 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user requested is longer than a couple of years, the size of data to be returned by the backend `exchange_rate`
-canister could exceed the existing limits of the system.
-As a result, the `exchange_rate` canister may return data points with increased granularity in order to fit into the limits and
+canister could exceed the existing limits of the system. As a result, the `exchange_rate` canister may return data points with increased granularity in order to fit into the limits and
 cover the full requested range.
 
 ## Exchange Rate sample dapp architecture

@@ -1,5 +1,4 @@
 import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
 import useGlobalData from "@docusaurus/useGlobalData";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
 import transitions from "@site/static/transitions.json";
@@ -9,14 +8,9 @@ import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import TopicCard from "../components/HowItWorksPage/TopicCard";
-import { WhatIsIcpTopic } from "../components/HowItWorksPage/WhatIsIcpData";
-
-const MotionLink = motion(Link);
+import data from "@site/.docusaurus/what-is-the-ic-data/default/what-is-the-ic.json";
 
 const RoadmapPage: React.FC = () => {
-  const data = useGlobalData()["what-is-the-ic-data"]
-    .default as WhatIsIcpTopic[];
-
   return (
     <Layout
       title="What is the Internet Computer"

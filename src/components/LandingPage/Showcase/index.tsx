@@ -9,6 +9,8 @@ import _showcaseProjects from "@site/showcase.json";
 import { useShowcaseProjects } from "@site/src/utils/use-showcase-projects";
 import clsx from "clsx";
 
+import projects from "@site/.docusaurus/home-showcase/default/home-showcase.json";
+
 const MotionLink = motion(Link);
 
 const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
@@ -47,22 +49,18 @@ const ShowcaseSection: React.FC<{
   interval?: number;
   linePostfix: React.ReactNode;
   subheading: React.ReactNode;
-  projectIds: string[];
   className?: string;
-}> = ({
-  lines,
-  interval = 2500,
-  linePostfix,
-  subheading,
-  projectIds,
-  className,
-}) => {
-  const projects = useShowcaseProjects(projectIds);
+}> = ({ lines, interval = 2500, linePostfix, subheading, className }) => {
+  {
+    /* 
+      Update the list of showcase projects here: /plugins/home-showcase.js 
+    */
+  }
 
   return (
     <section id="dapps" className={clsx("relative z-0", className)}>
       <AnimateSpawn variants={transitions.item}>
-        <div className="container-10 pt-20 md:pt-30">
+        <div className="container-10 pt-20 md:pt-40">
           <div className="">
             <h2 className="tw-heading-3 md:tw-heading-2">
               <span className="grid overflow-hidden">

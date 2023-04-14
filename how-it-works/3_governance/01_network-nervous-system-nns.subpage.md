@@ -1,7 +1,7 @@
 ---
 title: "Network Nervous System: Internet Computer Blockchain Governance"
 abstract: 
-shareImage: /img/how-it-works/network-nervous-system-nns.600.jpg
+shareImage: /img/how-it-works/network-nervous-system.webp
 slug: network-nervous-system-nns
 ---
 
