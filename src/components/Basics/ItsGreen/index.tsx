@@ -77,7 +77,8 @@ const ComparedProject: React.FC<{
       <img
         src={project.logo}
         alt=""
-        className={clsx(isFirst ? "" : "m-[5px]")}
+        className={clsx(isFirst ? "w-10 h-10" : "w-[30px] h-[30px] m-[5px]")}
+        loading="lazy"
       ></img>
       <div className="flex items-center flex-1 pr-[72px] box-content">
         <div

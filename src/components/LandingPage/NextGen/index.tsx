@@ -19,6 +19,7 @@ export default function NextGenSection(): JSX.Element {
             alt=""
             className="w-full relative md:right-[-50px] lg:right-[-100px]"
             variants={transitions.item}
+            loading="lazy"
           />
         </div>
         <motion.h2

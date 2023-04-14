@@ -23,6 +23,7 @@ const OpenChatCard: React.FC<{
             alt=""
             className="w-full relative"
             variants={transitions.item}
+            loading="lazy"
           />
         </div>
         <div className="flex-1 md:order-1 pb-20 md:py-30">

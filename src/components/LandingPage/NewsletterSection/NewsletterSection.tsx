@@ -15,7 +15,9 @@ const NewsletterSection: React.FC = () => {
         ]}
         ctaLabel="Get updates!"
         postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-        decoration={<img src="/img/newsletter/email-image-2.webp" />}
+        decoration={
+          <img src="/img/newsletter/email-image-2.webp" alt="" loading="lazy" />
+        }
         className="mb-20 relative"
       >
         <div className="hidden md:block blob blob-infinite blob-md blob-top-right z-[-1]"></div>

@@ -329,7 +329,7 @@ export default function PreHero({}): JSX.Element {
           ref={headlineRef}
         >
           <motion.img
-            src="/img/home/hero-blur.svg"
+            src="data:image/svg+xml,%3Csvg viewBox='0 0 2098 1533' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_f_212_28000)'%3E%3Cpath d='M400 656.944C400 454.532 859.224 400 1157.65 400C1456.08 400 1698 564.088 1698 766.5C1698 968.912 1456.08 1133 1157.65 1133C859.224 1133 400 859.356 400 656.944Z' fill='%233B00B9' /%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_f_212_28000' x='0' y='0.00012207' width='2098' height='1533' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix' /%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape' /%3E%3CfeGaussianBlur stdDeviation='200' result='effect1_foregroundBlur_212_28000' /%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E"
             alt=""
             className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
             style={{
@@ -429,6 +429,7 @@ export default function PreHero({}): JSX.Element {
             <img
               src="/img/home/dashboard.svg"
               className="absolute right-0 bottom-0 pointer-events-none"
+              loading="lazy"
             ></img>
           </AnimateSpawn>
         </div>

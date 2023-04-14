@@ -91,6 +91,7 @@ const ShowcaseSection: React.FC<{
                 src={p.logo}
                 alt={p.name}
                 className="w-16 sm:w-20 mb-3 h-16 sm:h-20 object-contain absolute left-6 top-6 sm:static"
+                loading="lazy"
               />
               <div className="ml-[86px] sm:ml-0">
                 <h4 className="tw-heading-6 sm:tw-heading-5 mb-1 sm:mb-2">

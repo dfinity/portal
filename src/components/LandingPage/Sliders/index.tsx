@@ -90,7 +90,11 @@ const Sliders = () => {
                 </p>
               </div>
               <div className="hidden md:block w-4/12 mr-1/12 text-right">
-                <img src="/img/home-page-sliders/btc-eth.png" alt="" />
+                <img
+                  src="/img/home-page-sliders/btc-eth.png"
+                  alt=""
+                  loading="lazy"
+                />
               </div>
             </SliderCard>
             <SliderCard
@@ -136,6 +140,7 @@ const Sliders = () => {
                 src="/img/home-page-sliders/ii.svg"
                 alt=""
                 className="hidden md:inline absolute bottom-0 right-0 rotate-[15deg]"
+                loading="lazy"
               />
             </SliderCard>
             <SliderCard
