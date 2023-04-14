@@ -14,14 +14,10 @@ const SliderCard: React.FC<{
 }> = ({ bgImage, children, className }) => {
   return (
     <div
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
       className={clsx(
         `
     min-w-full
-    bg-right md:bg-center bg-cover 
-    
+    relative
     pt-12 px-10 md:px-12
     rounded-xl
     overflow-hidden
@@ -30,6 +26,12 @@ const SliderCard: React.FC<{
         className
       )}
     >
+      <img
+        src={bgImage}
+        alt=""
+        className="object-right md:object-center object-cover absolute inset-0 z-[-1] h-full w-full"
+        loading="lazy"
+      ></img>
       {children}
     </div>
   );
