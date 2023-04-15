@@ -83,7 +83,7 @@ To review the default `dfx.json` configuration file:
 
             "custom_greeting_frontend": {
               "dependencies": [
-                "custom_greeting"
+                "custom_greeting_backend"
               ],
               "frontend": {
                 "entrypoint": "src/custom_greeting_frontend/src/index.html"
@@ -123,7 +123,7 @@ To review the default frontend files:
 
     This template file is the default frontend entry point for the dapp as specified by the `frontend.entrypoint` setting in the `dfx.json` file.
 
-    This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_assets/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
+    This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_frontend/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
     This is the same default frontend you saw in [Viewing the default frontend](/developer-docs/backend/backend-tutorials/explore-templates.md#default-frontend).
 
@@ -131,12 +131,22 @@ To review the default frontend files:
 
         import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
 
-        document.getElementById("clickMeBtn").addEventListener("click", async () => {
-          const name = document.getElementById("name").value.toString();
-          // Interact with custom_greeting_backend actor, calling the greet method
-          const greeting = await custom_greeting_backend.greet(name);
+        document.querySelector("form").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const button = e.target.querySelector("button");
 
-          document.getElementById("greeting").innerText = greeting;
+                const name = document.getElementById("name").value.toString();
+
+                button.setAttribute("disabled", true);
+
+                // Interact with foo actor, calling the greet method
+                const greeting = await custom_greeting_backend.greet(name);
+
+                button.removeAttribute("disabled");
+
+                document.getElementById("greeting").innerText = greeting;
+
+                return false;
         });
 
     -   The `import` statement points to an actor that will allow us to make calls to our `custom_greeting_backend` canister from `"../declarations"`
@@ -177,13 +187,35 @@ To prepare the frontend files:
 
 6.  Save your changes and close the `tsconfig.json` file to continue.
 
-7.  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete lines 2 to 9.
+7.  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete all.
 
-8.  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file.
+8.  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file and change the line 3     from:
+
+        import { custom_greeting } from "../../declarations/custom_greeting";
+ 
+    to: 
+
+        import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";`
 
 9.  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
         mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
+        
+    and change the entry point in `webpack.config.js` from:
+
+        entry: {
+          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // to replace the extension to `.js`.
+          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
+        },
+        
+    to :
+
+        entry: {
+          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // to replace the extension to `.js`.
+          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
+        },
 
 10. Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with `<div id="app"></div>`.
 
