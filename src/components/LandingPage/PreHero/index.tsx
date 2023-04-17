@@ -20,6 +20,7 @@ import { useQuery } from "react-query";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
 import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
 import ParticleAnimation from "./ParticleAnimation";
@@ -112,8 +113,8 @@ const Numbers = () => {
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP scales horizontally by transparently combining subnet
-            blockchains into one unified blockchain.
-            Blocks and transactions per second are unbounded.
+            blockchains into one unified blockchain. Blocks and transactions per
+            second are unbounded.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -173,8 +174,9 @@ const Numbers = () => {
             </Link>
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Transactions invoke "actor" canister smart contract computations, 
-            which subnet blockchains can run concurrently (yet deterministically).
+            Transactions invoke "actor" canister smart contract computations,
+            which subnet blockchains can run concurrently (yet
+            deterministically).
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -194,12 +196,12 @@ const Numbers = () => {
                     className="col-start-1 row-start-1"
                     springConfig={[3, 1, 1]}
                   ></SpringCounter>
-              <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
-                {getEthEquivalentFigureSpacer(
-                  Math.floor(updateTxRate.data * 1)
-                )}
-              </span>
-            </>                  
+                  <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                    {getEthEquivalentFigureSpacer(
+                      Math.floor(updateTxRate.data * 1)
+                    )}
+                  </span>
+                </>
               ) : (
                 <>&nbsp;</>
               )}
@@ -231,8 +233,8 @@ const Numbers = () => {
             Smart contract memory
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Canister smart contracts are bundles of WebAssembly instructions 
-            and persistent memory. One smart contract can maintain gigabytes of 
+            Canister smart contracts are bundles of WebAssembly instructions and
+            persistent memory. One smart contract can maintain gigabytes of
             memory pages.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
@@ -346,6 +348,19 @@ export default function PreHero({}): JSX.Element {
               <br />
               is our future
             </motion.h1>
+          </div>
+
+          <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
+            <motion.div
+              className="animate-fade-in"
+              style={{
+                animationDelay: "2000ms",
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              <OnChainBadge sizeClasses="w-20 h-20 md:w-32 md:h-32"></OnChainBadge>
+            </motion.div>
           </div>
 
           <motion.button

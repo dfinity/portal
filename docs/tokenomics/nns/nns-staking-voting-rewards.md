@@ -124,7 +124,7 @@ The reward pool is then allocated in proportion to the voting power of proposals
 
 For example, if on a single day the NNS has generated 1000 maturity in total
 rewards (see below for more on how this is computed), and there were 10
-proposals submitted which only two neurons voted on, and:
+proposals submitted for which only two neurons were eligible to vote on, and:
 
 * Neuron A has a voting power of 20, and voted on all 10 proposals
 * Neuron B has a voting power of 80, and voted on all 10 proposals
@@ -139,9 +139,10 @@ If either neuron had only voted for X% of those 10 proposals (weighted by the re
 it's reward would be decreased to X% of its maximum eligibility.
 
 For example, if on a single day there were 10 proposals, but a neuron only voted for five of them,
-that neuron would only receive 50% of the rewards for that day.
+that neuron would only receive 50% of its rewards for which it is eligible that day.
 If the five proposals the neuron voted on had a reward weight of two,
-it would get `(5 * 2) / (5 * 1 + 5 * 2) = 66%` of the rewards for that day.
+it would have a `weight_of_proposal_votes = 5 * 2`, while the `weight_of_all_proposals = 5 * 2 + 5 * 1`,
+therefore it would receive `(5 * 2) / (5 * 1 + 5 * 2) = 66%` of the rewards for which it is eligible that day.
 
 ### Inflationary and Deflationary Mechanisms
 
