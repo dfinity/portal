@@ -1570,5 +1570,20 @@
     ],
     "youtube": "https://www.youtube.com/watch?v=rQIGanE7WxA",
     "twitter": "https://twitter.com/Mora_App"
+  },
+  {
+    "id": "dapp-box",
+    "name": "DappBox",
+    "oneLiner": "Take control of your data and keep it anonymous with decentralized storage on the Internet Computer.",
+    "description": "DappBox provides a decentralized data storage platform that allows users to upload, download and share their data while keeping it anonymous. With this platform, users can take control of their data and securely manage it.",
+    "usesInternetIdentity": true,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://r75rx-bqaaa-aaaao-aaydq-cai.ic0.app/",
+    "github": "https://github.com/Slmii/dappbox",
+    "twitter": "https://twitter.com/ic_dappbox",
+    "logo": "/img/showcase/dappbox_logo.png",
+    "screenshots": []
   }
 ]
