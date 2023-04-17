@@ -127,17 +127,13 @@
     "name": "ICP Coins",
     "oneLiner": "DEX stats aggregator",
     "website": "https://icpcoins.com",
-    "tags": [
-      "DeFi"
-    ],
+    "tags": ["DeFi"],
     "description": "IC coins by market cap. Aggregates stats from all IC DEXes. Price, Volume & Liquidity score charts.",
     "usesInternetIdentity": false,
     "stats": "1000 users",
     "logo": "/img/showcase/icpcoins_logo.png",
     "github": "https://github.com/vvv-interactive/icpcoins",
-    "screenshots": [
-      "/img/showcase/icpcoins_screenshot_0.jpg"
-    ]
+    "screenshots": ["/img/showcase/icpcoins_screenshot_0.jpg"]
   },
   {
     "id": "internetcomputerorgwebsite",
