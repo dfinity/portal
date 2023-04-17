@@ -14,13 +14,17 @@ export default function NextGenSection(): JSX.Element {
     >
       <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-1/12 pb-20 md:py-30 relative">
         <div className="-translate-y-24 sm:-translate-y-40 md:translate-y-0 md:absolute z-[-1] md:w-[500px] lg:w-[780px] md:top-[40px] lg:top-[-130px] right-0 overflow-hidden">
-          <motion.img
-            src="/img/home/dao.svg"
-            alt=""
-            className="w-full relative md:right-[-50px] lg:right-[-100px]"
+          <motion.div
+            className="relative md:right-[-50px] lg:right-[-100px]"
             variants={transitions.item}
-            loading="lazy"
-          />
+          >
+            <img
+              src="/img/home/dao.svg"
+              alt=""
+              className="w-full"
+              loading="lazy"
+            />
+          </motion.div>
         </div>
         <motion.h2
           className="-mt-16 md:mt-0 text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
