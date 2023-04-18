@@ -620,6 +620,22 @@
     "screenshots": []
   },
   {
+    "id": "jumpymotoko",
+    "name": "Jumpy Motoko",
+    "website": "https://65t4u-siaaa-aaaal-qbx4q-cai.ic0.app/",
+    "tags": [
+      "Games"
+    ],
+    "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
+    "github":  "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/jumpymotoko_logo.webp",
+    "screenshots": [
+      "/img/showcase/jumpymotoko_screenshot.webp"
+    ]
+  },
+  {
     "id": "icdrive",
     "name": "IC Drive",
     "website": "https://rglue-kyaaa-aaaah-qakca-cai.ic0.app/#/",
@@ -1552,5 +1568,37 @@
       "/img/showcase/metamob_screenshot_0.webp"
     ],
     "submittableId": 32331652
+  },
+  {
+    "id": "dapp-box",
+    "name": "DappBox",
+    "oneLiner": "Take control of your data and keep it anonymous with decentralized storage on the Internet Computer.",
+    "description": "DappBox provides a decentralized data storage platform that allows users to upload, download and share their data while keeping it anonymous. With this platform, users can take control of their data and securely manage it.",
+    "usesInternetIdentity": true,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://r75rx-bqaaa-aaaao-aaydq-cai.ic0.app/",
+    "github": "https://github.com/Slmii/dappbox",
+    "twitter": "https://twitter.com/ic_dappbox",
+    "logo": "/img/showcase/dappbox_logo.png",
+    "screenshots": []
+  },
+  {
+    "id": "gooble",
+    "name": "Goblin Studio",
+    "description": "On-Chain Goblin Maker, Goblin Translator & Goblintown Travel Companion.",
+    "website": "https://gooble.app/",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "stats": "4,000+ goblins",
+    "logo": "/img/showcase/gooble_logo.webp",
+    "screenshots": [
+      "/img/showcase/gooble_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/vger_ic"
   }
 ]
