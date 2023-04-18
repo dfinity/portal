@@ -37,7 +37,7 @@ function SustainabilityPage() {
             }}
             ref={heroRef}
           >
-            <div className="container-10 pt-12 pb-48 md:pb-20 md:pt-36 relative">
+            <div className="container-10 pt-12 pb-32 md:pb-20 md:pt-36 relative">
               <div className="blob blob-white-dense blob-sm md:blob-md blob-x-5 blob-y-10 md:blob-x-9 opacity-90"></div>
 
               <div className="sm:w-8/10 md:w-6/10">
@@ -100,15 +100,7 @@ function SustainabilityPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="flex-1 md:-translate-x-2/10 text-center relative">
-            <img
-              src="/img/features/sustainability-globe.svg"
-              alt=""
-              className="max-w-full sm:absolute top-0 left-0 right-0"
-            />
-          </div>
-
-          <div className="flex-1">
+          <div className="flex-1 sm:order-2">
             <p className="tw-paragraph mb-10">
               The Internet Computer is not only one of the most energy efficient
               blockchains running today, it is also the first blockchain to join
@@ -124,6 +116,14 @@ function SustainabilityPage() {
                 Our commitment to sustainability
               </Link>
             </p>
+          </div>
+
+          <div className="flex-1 md:-translate-x-2/10 text-center relative sm:order-1 -mb-[66vw] md:mb-0">
+            <img
+              src="/img/features/sustainability-globe.svg"
+              alt=""
+              className="max-w-full sm:absolute top-0 left-0 right-0"
+            />
           </div>
         </AnimateSpawn>
 
