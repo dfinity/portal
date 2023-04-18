@@ -1594,13 +1594,13 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "usesInternetIdentity": yes,
+    "usesInternetIdentity": true,
     "stats": "3,000+",
     "logo": "/img/showcase/icevent_logo_112x112.png",
     "screenshots": [
       "/img/showcase/icevent_screenshot.png"
     ],
     "twitter": "https://twitter.com/vansdaynet",
-     submittableId: "22168376"
+     "submittableId": "22168376"
   }
 ]
