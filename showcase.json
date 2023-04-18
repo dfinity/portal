@@ -626,7 +626,8 @@
     "tags": [
       "Games"
     ],
-    "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too. https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
+    "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
+    "github":  "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/jumpymotoko_logo.webp",
