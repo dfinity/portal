@@ -1060,21 +1060,6 @@
     "submittableId": "32841408"
   },
   {
-    "id": "fishverse",
-    "name": "Fishverse",
-    "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
-    "tags": [
-      "Games",
-      "NFT"
-    ],
-    "website": "https://thefishverse.com/",
-    "github": "https://github.com/MGLabsltd/Fishverse_token",
-    "twitter": "https://twitter.com/TheFishverse",
-    "discord": "https://discord.com/invite/BmztPmDuSt",
-    "logo": "/img/showcase/fishverse_logo.webp",
-    "submittableId": "32119235"
-  },
-  {
     "id": "icdevs.org",
     "name": "ICDevs.org ",
     "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding and scientific discovery",
