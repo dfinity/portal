@@ -136,7 +136,7 @@ const redirects = `
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
-  /sustainability /features/sustainability
+  /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())
