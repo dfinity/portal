@@ -1585,5 +1585,22 @@
       "/img/showcase/gooble_screenshot.webp"
     ],
     "twitter": "https://twitter.com/vger_ic"
+  },
+   {
+    "id": "icevent",
+    "name": "ICEvent",
+    "description": "Decentralized Calendar Solution (ticket, appointment, itinerary, schedule)",
+    "website": "https://icevent.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": yes,
+    "stats": "3,000+",
+    "logo": "/img/showcase/icevent_logo_112x112.png",
+    "screenshots": [
+      "/img/showcase/icevent_screenshot.png"
+    ],
+    "twitter": "https://twitter.com/vansdaynet",
+     submittableId: "22168376"
   }
 ]
