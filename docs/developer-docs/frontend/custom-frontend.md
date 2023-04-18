@@ -187,15 +187,9 @@ To prepare the frontend files:
 
 6.  Save your changes and close the `tsconfig.json` file to continue.
 
-7.  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete all.
+7.  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
 
-8.  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file and change the line 3     from:
-
-        import { custom_greeting } from "../../declarations/custom_greeting";
- 
-    to: 
-
-        import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";`
+8.  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file.
 
 9.  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
