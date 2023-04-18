@@ -2,7 +2,6 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import ItsGreenSection from "../../components/Basics/ItsGreen";
@@ -10,38 +9,6 @@ import AnimateSpawn from "../../components/Common/AnimateSpawn";
 import LinkArrowRight from "../../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "../../components/Common/ShareMeta";
 import { useDarkHeaderInHero } from "../../utils/use-dark-header-in-hero";
-
-const Prose: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => {
-  return (
-    <div
-      className={clsx(
-        `prose 
-      prose-h2:tw-heading-4 prose-h2:md:tw-heading-60 prose-h2:mb-3 prose-h2:mt-0
-      prose-p:tw-paragraph 
-      prose-ul:tw-paragraph marker:prose-ul:text-black
-      prose-a:no-underline
-      prose-h3:tw-heading-5 md:prose-h3:tw-heading-4 prose-h3:mb-4 prose-h3:mt-0
-      `,
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-};
-
-const AnimatedProse: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-  variants?: any;
-}> = ({ children, className, variants = transitions.item }) => (
-  <motion.div variants={variants} className={className}>
-    <Prose>{children}</Prose>
-  </motion.div>
-);
 
 function SustainabilityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -52,7 +19,7 @@ function SustainabilityPage() {
       description="Scalability and utility with low carbon cost — the Internet Computer is committed to building green tech, not just making claims about it. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-ethereum-integration.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-sustainability.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -64,7 +31,6 @@ function SustainabilityPage() {
 
         <AnimateSpawn variants={transitions.container} el={motion.section}>
           <div
-            // className="overflow-hidden bg-infinite bg-[url(/img/features/sustainability-hero-bg.webp)] bg-[length:3500px] bg-[left_55%_top_30%] bg-no-repeat text-white pt-20"
             className="overflow-hidden  text-white pt-20"
             style={{
               background: `linear-gradient(77.94deg, #357095 -9.34%, #348B8D 21.93%, #39B392 48.29%, #4BA89C 75.1%, #348B8D 90.37%, #357195 108.5%)`,
@@ -180,7 +146,9 @@ function SustainabilityPage() {
               rewarded and regulated.{" "}
             </p>
             <p className="mb-10">
-              <Link className="button-outline">See ICP's carbon footprint</Link>
+              <Link className="button-outline" href="">
+                See ICP's carbon footprint
+              </Link>
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-10 items-center">
               <img src="/img/features/carbon-crowd.svg" alt=""></img>
@@ -193,34 +161,35 @@ function SustainabilityPage() {
           </div>
         </AnimateSpawn>
         <ItsGreenSection id="sustainable" />
-
-        <section className="bg-white">
-          <AnimateSpawn
-            className="container-10 py-20 md:py-40 relative"
-            variants={transitions.container}
-          >
-            <img
-              src="/img/features/astronaut-green.webp"
-              alt=""
-              className="left-0 top-0 w-[219px]"
-            />
-
-            <div className="md:ml-3/10 md:mr-2/10">
-              <h2 className="tw-heading-60 mb-6">
-                Keeping the Internet Computer Sustainable{" "}
-              </h2>
-              <p className="mb-10 tw-paragraph">
-                While the Internet Computer blockchain is 4x less energy
-                intensive than a single Google search and almost 500x less than
-                an Ethereum transaction, there’s still a lot of work to do.
-              </p>
-              <p className="mb-0">
-                <Link className="button-outline">Find out more</Link>
-              </p>
-            </div>
-          </AnimateSpawn>
-        </section>
       </main>
+      <section className="bg-white">
+        <AnimateSpawn
+          className="container-10 py-20 md:py-40 relative"
+          variants={transitions.container}
+        >
+          <img
+            src="/img/features/astronaut-green.webp"
+            alt=""
+            className="hidden md:block absolute left-6 -bottom-10 w-[219px] z-20"
+          />
+
+          <div className="md:ml-3/10 md:mr-2/10">
+            <h2 className="tw-heading-4 md:tw-heading-60 mb-6">
+              Keeping the Internet Computer Sustainable{" "}
+            </h2>
+            <p className="mb-10 tw-paragraph">
+              While the Internet Computer blockchain is 4x less energy intensive
+              than a single Google search and almost 500x less than an Ethereum
+              transaction, there’s still a lot of work to do.
+            </p>
+            <p className="mb-0">
+              <Link className="button-outline" href="">
+                Find out more
+              </Link>
+            </p>
+          </div>
+        </AnimateSpawn>
+      </section>
     </Layout>
   );
 }
