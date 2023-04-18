@@ -1583,5 +1583,22 @@
     "twitter": "https://twitter.com/ic_dappbox",
     "logo": "/img/showcase/dappbox_logo.png",
     "screenshots": []
+  },
+  {
+    "id": "gooble",
+    "name": "Goblin Studio",
+    "description": "On-Chain Goblin Maker, Goblin Translator & Goblintown Travel Companion.",
+    "website": "https://gooble.app/",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "stats": "4,000+ goblins",
+    "logo": "/img/showcase/gooble_logo.webp",
+    "screenshots": [
+      "/img/showcase/gooble_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/vger_ic"
   }
 ]
