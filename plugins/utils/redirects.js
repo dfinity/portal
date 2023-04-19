@@ -8,6 +8,7 @@ const redirects = `
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
+  /ckbtc /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
