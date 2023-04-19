@@ -178,9 +178,7 @@ function SustainabilityPage() {
               Keeping the Internet Computer Sustainable{" "}
             </h2>
             <p className="mb-10 tw-paragraph">
-              While the Internet Computer blockchain is 4x less energy intensive
-              than a single Google search and almost 500x less than an Ethereum
-              transaction, there’s still a lot of work to do.
+              While the Internet Computer is one of the most sustainable blockchains, taking a scientific approach to measuring and reporting energy consumption is just the first step, there’s still a lot of work to do.
             </p>
             <p className="mb-0">
               <Link className="button-outline" href="">
