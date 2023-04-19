@@ -1585,5 +1585,21 @@
       "/img/showcase/gooble_screenshot.webp"
     ],
     "twitter": "https://twitter.com/vger_ic"
+  },
+  {
+    "id": "football-god",
+    "name": "FootballGod",
+    "description": "A weekly sweepstake where players predict Premier League scores.",
+    "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "stats": "Play weekly",
+    "logo": "/img/showcase/football-god_logo.webp",
+    "screenshots": [
+      "/img/showcase/football-god_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/beadle1989"
   }
 ]
