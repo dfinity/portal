@@ -50,6 +50,7 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   
   /docs/current/developer-docs/build/ /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
