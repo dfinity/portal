@@ -1521,5 +1521,22 @@
     "twitter": "https://twitter.com/DwitterWeb3",
     "screenshots": [],
     "submittableId": 21958145
+  },
+  {
+    "id": "bitshop",
+    "name": "Bitshop",
+    "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
+    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitshop_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitshop.webp"
+    ],
+    "github": "https://github.com/lukasvozda/bitshop",
+    "twitter": "https://twitter.com/bitshopicp"
   }
 ]
