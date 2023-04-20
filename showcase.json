@@ -1586,6 +1586,7 @@
     ],
     "twitter": "https://twitter.com/vger_ic"
   },
+
    {
     "id": "icevent",
     "name": "ICEvent",
@@ -1602,5 +1603,39 @@
     ],
     "twitter": "https://twitter.com/vansdaynet",
      "submittableId": "22168376"
+},
+  {
+    "id": "football-god",
+    "name": "FootballGod",
+    "description": "A weekly sweepstake where players predict Premier League scores.",
+    "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "stats": "Play weekly",
+    "logo": "/img/showcase/football-god_logo.webp",
+    "screenshots": [
+      "/img/showcase/football-god_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/beadle1989"
+  },
+  {
+    "id": "bitshop",
+    "name": "Bitshop",
+    "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
+    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitshop_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitshop.webp"
+    ],
+    "github": "https://github.com/lukasvozda/bitshop",
+    "twitter": "https://twitter.com/bitshopicp"
+
   }
 ]
