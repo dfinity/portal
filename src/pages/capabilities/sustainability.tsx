@@ -111,7 +111,10 @@ function SustainabilityPage() {
               measuring mechanisms and scope 2 carbon emissions reporting.{" "}
             </p>
             <p className="mb-0">
-              <Link className="link-primary link-with-icon">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/Energy_Consumption_and_Sustainability"
+              >
                 <LinkArrowRight />
                 Our commitment to sustainability
               </Link>
@@ -146,7 +149,7 @@ function SustainabilityPage() {
               rewarded and regulated.{" "}
             </p>
             <p className="mb-10">
-              <Link className="button-outline" href="">
+              <Link className="button-outline" href="https://app.carboncrowd.io/">
                 See ICP's carbon footprint
               </Link>
             </p>
