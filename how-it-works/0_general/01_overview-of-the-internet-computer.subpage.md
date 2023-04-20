@@ -1,7 +1,7 @@
 ---
 title: Architecture of the Internet Computer
 abstract: 
-shareImage: /img/how-it-works/overview-of-the-internet-computer.600.jpg
+shareImage: /img/how-it-works/ic-architecture.jpg
 slug: architecture-of-the-internet-computer
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Boundary nodes
 abstract:
-shareImage: /img/how-it-works/outcalls.600x300.png
+shareImage: /img/how-it-works/boundary-nodes.webp
 slug: boundary-nodes
 ---
 
@@ -14,7 +14,7 @@ the right subnet, loadbalance requests across replica nodes, and cache responses
 for improved performance.
 
 <figure>
-<img src="/img/how-it-works/boundary-nodes.png" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center">
+<img src="/img/how-it-works/boundary-nodes.webp" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center">
 <figcaption align="left">
 Boundary nodes are the gateway to the Internet Computer, which allow users to seamlessly access the canister smart contracts.
 </figcaption>
