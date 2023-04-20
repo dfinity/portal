@@ -8,6 +8,7 @@ const redirects = `
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
+  /ckbtc /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
@@ -49,6 +50,7 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   
   /docs/current/developer-docs/build/ /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
@@ -64,6 +66,7 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents/
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
