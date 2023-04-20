@@ -33,7 +33,7 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
 * Allocation of reward pool to neurons
   * The reward pool is allocated in proportion to the voting power of proposals that are settled on this day multiplied by the reward weight of the according proposal category.
     * Determine the set of proposals that are included in this reward period (typically a day): these are the proposals that are not yet settled with respect to voting rewards, and no longer open for voting.
-    * The total voting power contributed to these proposals by neurons voting to adopt or reject is added up.
+    * The total voting power by neurons who were eligible for voting is added up.
     * Each neuron is rewarded in proportion to the voting power it contributed to these proposals multiplied by the reward weight of the according proposal category.
   * When a neuron is rewarded for voting, these rewards are recorded in an attribute of the neuron that is called maturity which is not a tradable asset. If a user wants to generate income from maturity, he/she needs to burn maturity to create new ICP via spawning a neuron which is a non-deterministic process described [here](https://wiki.internetcomputer.org/wiki/Maturity_modulation).
 
