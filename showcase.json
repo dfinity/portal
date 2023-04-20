@@ -620,6 +620,22 @@
     "screenshots": []
   },
   {
+    "id": "jumpymotoko",
+    "name": "Jumpy Motoko",
+    "website": "https://65t4u-siaaa-aaaal-qbx4q-cai.ic0.app/",
+    "tags": [
+      "Games"
+    ],
+    "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
+    "github":  "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/jumpymotoko_logo.webp",
+    "screenshots": [
+      "/img/showcase/jumpymotoko_screenshot.webp"
+    ]
+  },
+  {
     "id": "icdrive",
     "name": "IC Drive",
     "website": "https://rglue-kyaaa-aaaah-qakca-cai.ic0.app/#/",
@@ -1042,21 +1058,6 @@
     "discord": "https://discord.gg/Fe5qYRZrGp",
     "logo": "/img/showcase/faefolk_logo.webp",
     "submittableId": "32841408"
-  },
-  {
-    "id": "fishverse",
-    "name": "Fishverse",
-    "description": "Fish to Earn. Ultimate NFT fishing metaverse. ",
-    "tags": [
-      "Games",
-      "NFT"
-    ],
-    "website": "https://thefishverse.com/",
-    "github": "https://github.com/MGLabsltd/Fishverse_token",
-    "twitter": "https://twitter.com/TheFishverse",
-    "discord": "https://discord.com/invite/BmztPmDuSt",
-    "logo": "/img/showcase/fishverse_logo.webp",
-    "submittableId": "32119235"
   },
   {
     "id": "icdevs.org",
@@ -1585,5 +1586,55 @@
     "twitter": "https://twitter.com/ic_dappbox",
     "logo": "/img/showcase/dappbox_logo.png",
     "screenshots": []
+  },
+  {
+    "id": "gooble",
+    "name": "Goblin Studio",
+    "description": "On-Chain Goblin Maker, Goblin Translator & Goblintown Travel Companion.",
+    "website": "https://gooble.app/",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "stats": "4,000+ goblins",
+    "logo": "/img/showcase/gooble_logo.webp",
+    "screenshots": [
+      "/img/showcase/gooble_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/vger_ic"
+  },
+  {
+    "id": "football-god",
+    "name": "FootballGod",
+    "description": "A weekly sweepstake where players predict Premier League scores.",
+    "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "stats": "Play weekly",
+    "logo": "/img/showcase/football-god_logo.webp",
+    "screenshots": [
+      "/img/showcase/football-god_screenshot.webp"
+    ],
+    "twitter": "https://twitter.com/beadle1989"
+  },
+  {
+    "id": "bitshop",
+    "name": "Bitshop",
+    "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
+    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitshop_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitshop.webp"
+    ],
+    "github": "https://github.com/lukasvozda/bitshop",
+    "twitter": "https://twitter.com/bitshopicp"
   }
 ]

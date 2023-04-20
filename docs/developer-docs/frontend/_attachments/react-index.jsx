@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { custom_greeting } from "../../declarations/custom_greeting";
+import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
 
 const MyHello = () => {
   const [name, setName] = React.useState('');
