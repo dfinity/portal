@@ -176,8 +176,7 @@ export const Facts = () => {
   const globalData = useGlobalData();
   const xdrPrice = globalData["xdr-price"]["default"] as number;
 
-  // const gaugeRot = useTransform(ethTxValue, [0, 300000], [20, 160]);
-  const gaugeRot = useTransform(ethTxValue, [230000, 240000], [20, 160]);
+  const gaugeRot = useTransform(ethTxValue, [0, 300000], [20, 160]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-0 text-white mb-20 md:mb-30">
@@ -297,11 +296,11 @@ export const Facts = () => {
           <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
         </div>
         <div className="mt-16">
-          <h3 className="md:tw-heading-4 mb-4">Throughput</h3>
+          <h3 className="md:tw-heading-4 mb-4">Crypto Cloud Efficiency</h3>
           <p className="tw-paragraph-sm text-white/60 mb-0">
-            Capacity horizontally scales as subnet blockchains are seamlessly
-            combined into one unified blockchain. Blocks and transactions per
-            second are unbounded.
+            An average ICP transaction executes 6’660’000 instructions compared
+            to ETH’s 83’000, while each instruction is orders of magnitude less
+            expensive due to ICP’s efficiency.
           </p>
         </div>
       </div>
