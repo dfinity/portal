@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import ItsGreenSection from "../components/Basics/ItsGreen";
 import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import BasicsSection from "../components/LandingPage/Basics";
 import FoundationSection from "../components/LandingPage/Foundation";
 import HeroSection from "../components/LandingPage/HeroSection";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
@@ -36,8 +35,8 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
-        <HeroSection></HeroSection>
         <OpenChatCard className="mt-16 md:mt-0" />
+        <HeroSection></HeroSection>
         <div className="overflow-hidden">
           {/* 
             Update the list of showcase projects here: /plugins/home-showcase.js 

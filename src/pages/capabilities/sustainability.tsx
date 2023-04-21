@@ -1,139 +1,198 @@
 import Link from "@docusaurus/Link";
-import { CardWithDescription } from "@site/src/components/Common/Card";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
+import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import React from "react";
+import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import ItsGreenSection from "../../components/Basics/ItsGreen";
+import AnimateSpawn from "../../components/Common/AnimateSpawn";
+import LinkArrowRight from "../../components/Common/Icons/LinkArrowRight";
+import ShareMeta from "../../components/Common/ShareMeta";
+import { useDarkHeaderInHero } from "../../utils/use-dark-header-in-hero";
 
-function FeaturePage() {
+function SustainabilityPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(heroRef);
   return (
     <Layout
       title="Sustainability"
-      // fill in meta description
-      description=""
+      description="Scalability and utility with low carbon cost — the Internet Computer is committed to building green tech, not just making claims about it. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <main className="text-black relative">
-        <section className="overflow-hidden bg-infinite text-white">
-          <DarkHeroStyles></DarkHeroStyles>
-          <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
-            <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                Sustainability
-              </h1>
-              <p className="tw-lead-sm md:tw-lead mb-0">
-                While having the security of Web3 blockchains, the performance
-                and power consumption of the Internet Computer (IC) is
-                comparable to Web2 and cloud technology stacks. The IC far
-                outperforms traditional blockchain protocols in efficiency.
-                <br />
-                <br />* A single Google search is{" "}
-                <i>four times more energy intensive</i> than a transaction on
-                the IC.
-                <br />
-                <br />* A single Ethereum transaction is almost{" "}
-                <i>500 times more energy intensive</i> than an IC transaction.
-              </p>
+      <ShareMeta image="/img/shareImages/share-sustainability.jpg"></ShareMeta>
+
+      <main
+        className="text-black relative overflow-hidden"
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+
+        <AnimateSpawn variants={transitions.container} el={motion.section}>
+          <div
+            className="overflow-hidden  text-white pt-20"
+            style={{
+              background: `linear-gradient(77.94deg, #357095 -9.34%, #348B8D 21.93%, #39B392 48.29%, #4BA89C 75.1%, #348B8D 90.37%, #357195 108.5%)`,
+            }}
+            ref={heroRef}
+          >
+            <div className="container-10 pt-12 pb-32 md:pb-20 md:pt-36 relative">
+              <div className="blob blob-white-dense blob-sm md:blob-md blob-x-5 blob-y-10 md:blob-x-9 opacity-90"></div>
+
+              <div className="sm:w-8/10 md:w-6/10">
+                <motion.h1
+                  className="tw-heading-3 sm:tw-heading-2 mb-6"
+                  variants={transitions.item}
+                >
+                  Committed to
+                  <br />
+                  Green Tech
+                </motion.h1>
+                <motion.p
+                  className="tw-lead-sm sm:tw-lead"
+                  variants={transitions.item}
+                >
+                  Scalability and utility with low carbon cost — the Internet
+                  Computer is committed to building green tech, not just making
+                  claims about it.
+                </motion.p>
+              </div>
             </div>
           </div>
-          <div className="container-10 relative">
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-12 relative"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="md:absolute text-center md:right-0 md:top-0 -translate-y-5/12 md:-translate-y-7/12">
             <img
-              src="/img/whiteBlurredCircle.png"
+              src="/img/features/sustainability-hero.webp"
+              className="w-full sm:w-[480px] lg:w-[660px]"
               alt=""
-              className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
           </div>
-        </section>
-        <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-2 md:gap-12">
-          {/* 
-            delete this div if image is not needed 
-          */}
-          <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10 sm:flex sm:items-center">
-            <img
-              src="/img/features/green.svg"
-              alt=""
-              className="w-full block"
-            />
-          </div>
+        </AnimateSpawn>
 
-          <div
-            className="
-            sm:flex-1 
-            prose 
-            prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
-            prose-h3:tw-heading-7 prose-h3:mb-2
-            prose-p:tw-paragraph prose-p:mb-4
-            prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
-            "
-          >
-            <h2>Energy consumption comparison</h2>
-            <p>
-              To better understand the impact of the efficiency of the IC, it
-              helps to see the comparison of energy costs. Even with
-              conservative estimations, the energy consumption of the Internet
-              Computer is substantially lower than competing blockchain
-              projects, but also existing (highly optimized) Web2 tech. See the
-              table to put IC performance in perspective. Performance is
-              measured in kWh/transaction.
-              <ul>
-                <li>
-                  <strong>One Internet Computer transaction: 0.006</strong>
-                </li>
-                <li>One Solana transaction: 0.116</li>
-                <li>One Avalanche transaction: 2.7</li>
-                <li>One Algorand transaction: 4.760</li>
-                <li>One Tezos transaction: 41.450</li>
-                <li>One Cardano transaction: 51.590</li>
-              </ul>
-            </p>
-
-            <p className="mb-3 mt-6">
-              <Link
-                href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
-                className="tw-heading-6 flex gap-2 items-center"
+        <AnimateSpawn
+          className="container-10"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="relative">
+            <div className="md:w-8/10 -mt-32 md:mt-52 md:order-1">
+              <motion.p
+                className="tw-heading-4 sm:tw-heading-3 md:tw-heading-60 mb-0 text-gradient-green"
+                variants={transitions.item}
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Check the full summary of IC energy consumption
+                A key goal of the Internet Computer is to provide an energy
+                efficient compute platform that scales for the world to build
+                systems and services.
+              </motion.p>
+            </div>
+          </div>
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-10 flex mt-20 md:mt-30 flex-col sm:flex-row gap-10 md:gap-0"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="flex-1 sm:order-2">
+            <p className="tw-paragraph mb-10">
+              The Internet Computer is not only one of the most energy efficient
+              blockchains running today, it is also the first blockchain to join
+              the Proof of Green (PoG) initiative — an initiative that aims to
+              cut greenwashing. In collaboration with Carbon Crowd, the DFINITY
+              Foundation aims to set blockchain industry standards by making
+              'claims of green' transparent, verifiable and accountable through
+              measuring mechanisms and scope 2 carbon emissions reporting.{" "}
+            </p>
+            <p className="mb-0">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/Energy_Consumption_and_Sustainability"
+              >
+                <LinkArrowRight />
+                Our commitment to sustainability
               </Link>
             </p>
           </div>
-        </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
-          <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Scalability and Utility with low Carbon Cost
-          </p>
-          <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            and we're only getting started
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-20">
-            {/* add or remove CardWithDescription components on demand */}
-
-            <CardWithDescription
-              title="Internet Computer Footprint"
-              description="Read the collaborative report from Carbon Crowd and DFINITY"
-              href="https://carboncrowd.io/"
-            />
-            <CardWithDescription
-              title="Sustainability Policy and Proposals"
-              description="Check out the summary over on Medium"
-              href="https://medium.com/dfinity/internet-computer-footprint-assessing-ic-energy-consumption-and-sustainability-4a4dcf10707a"
-            />
-            <CardWithDescription
-              title="Real-time Network Metrics"
-              description="See the IC dashboard for performance and network consumption"
-              href="https://dashboard.internetcomputer.org/"
-            />
-            <CardWithDescription
-              title="Performance and Energy analysis on the IC Wiki"
-              description="Take a deep dive into the Internet Computer"
-              href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance_%26_power_consumption"
+          <div className="flex-1 md:-translate-x-2/10 text-center relative sm:order-1 -mb-[66vw] md:mb-0">
+            <img
+              src="/img/features/sustainability-globe.svg"
+              alt=""
+              className="max-w-full sm:absolute top-0 left-0 right-0"
             />
           </div>
-        </section>
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="md:container-12 mt-20 md:mt-30 relative"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="md:rounded-xl bg-white/60 backdrop-blur-md px-6 mx:px-1/12 py-20 md:py-40 text-center">
+            <h2 className="tw-heading-4 md:tw-heading-2 mb-6 md:mb-10 md:px-10">
+              ICP is{" "}
+              <span className="text-gradient-base bg-[linear-gradient(180deg,#4DEDD3_-4.77%,#31A782_33.04%,#3B00B9_166.79%)]">
+                transparent
+              </span>{" "}
+              about carbon emissions
+            </h2>
+            <p className="tw-lead-sm md:tw-lead mb-8 md:mx-1/10">
+              Making 'claims of green' transparent and verifiable to the public,
+              means environmentally friendly behavior can be recognized,
+              rewarded and regulated.{" "}
+            </p>
+            <p className="mb-10">
+              <Link className="button-outline" href="https://app.carboncrowd.io/">
+                See ICP's carbon footprint
+              </Link>
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-10 items-center">
+              <img src="/img/features/carbon-crowd.svg" alt=""></img>
+              <img
+                src="/img/features/proof-of-green-badge.webp"
+                className="h-12"
+                alt=""
+              ></img>
+            </div>
+          </div>
+        </AnimateSpawn>
+        <ItsGreenSection id="sustainable" />
       </main>
+      <section className="bg-white">
+        <AnimateSpawn
+          className="container-10 py-20 md:py-40 relative"
+          variants={transitions.container}
+        >
+          <img
+            src="/img/features/astronaut-green.webp"
+            alt=""
+            className="hidden md:block absolute left-6 -bottom-10 w-[219px] z-20"
+          />
+
+          <div className="md:ml-3/10 md:mr-2/10">
+            <h2 className="tw-heading-4 md:tw-heading-60 mb-6">
+              Keeping the Internet Computer Sustainable{" "}
+            </h2>
+            <p className="mb-10 tw-paragraph">
+              While the Internet Computer is one of the most sustainable blockchains, taking a scientific approach to measuring and reporting energy consumption is just the first step, there’s still a lot of work to do.
+            </p>
+            <p className="mb-0">
+              <Link className="button-outline" href="https://medium.com/dfinity/the-internet-computer-embraces-real-time-energy-reporting-and-the-proof-of-green-initiative-f78fc8787d31">
+                Find out more
+              </Link>
+            </p>
+          </div>
+        </AnimateSpawn>
+      </section>
     </Layout>
   );
 }
 
-export default FeaturePage;
+export default SustainabilityPage;

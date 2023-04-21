@@ -149,16 +149,16 @@ const Content: React.FC = () => {
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
               className="button-outline"
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              href="https://dashboard.internetcomputer.org/bitcoin"
             >
-              Code ckBTC
+              ckBTC on the Dashboard
             </Link>
             <Link
-              href="https://internetcomputer.org/how-it-works#Chain-key-technology"
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
               className="link-primary link-with-icon"
             >
               <LinkArrowRight></LinkArrowRight>
-              Learn more
+              Code ckBTC
             </Link>
           </p>
         </div>
