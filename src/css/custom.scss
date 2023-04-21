@@ -600,6 +600,17 @@ html.plugin-docs
   }
 }
 
+.hero-eth-tx-gauge {
+  transform-origin: calc(50vw - 14px) 4px;
+}
+
+@media (min-width: 996px) {
+  .hero-eth-tx-gauge {
+    transform-origin: 196px 16px;
+    // top: -4px;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
