@@ -35,6 +35,9 @@ instructions on [troubleshooting](#troubleshooting).
 
 1. Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
     * Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
+
+        _Note:_ In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
+
     * Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
     * Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 1. Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain. To use multiple custom domains with a single canister, simply list each domain on a newline in the `ic-domains`-file:
@@ -71,8 +74,15 @@ instructions on [troubleshooting](#troubleshooting).
     ```
     {"id":"REQUEST_ID"}
     ```
-    In case the call failed, you will get an error message explaining why.
-1. Check the status of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
+    In case the call failed, you will get an error message indicating the reason for the failure:
+    * _missing DNS CNAME record_ - the `CNAME` entry for the `_acme-challenge`-subdomain is missing.
+    * _existing DNS TXT challenge record_ - the DNS record already contains a `TXT` entry for the `_acme-challenge`-subdomain. Remove it and try again.
+    * _missing DNS TXT record_ - the `TXT` entry for the `_canister-id`-subdomain is missing.
+    * _invalid DNS TXT record_ - the content of the `TXT` entry is not a valid canister ID.
+    * _more than one DNS TXT record_ - there are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
+    * _failed to retrieve known domains_ - the `ic-domains`-file is not accessible under `.well-known/ic-domains`.
+    * _domain is missing from list of known domains_ - the custom domain is missing from the `ic-domains`-file.
+1. Processing the registration can take several minutes. Track the progress of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
     ```sh
     curl -sLv -X GET \
         https://icp0.io/registrations/REQUEST_ID
@@ -84,10 +94,6 @@ instructions on [troubleshooting](#troubleshooting).
     * `Available`: The registration request has been successfully processed.
     * `Failed`: The registration request failed.
 1. Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. After that, you should be able to access your canister using the custom domain.
-
-:::note
-In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
-:::
 
 #### Concrete Example
 
@@ -101,7 +107,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
     | `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
     | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
-    _Note:_ Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` for the first `CNAME` instead of `foo.bar.com`.
+    _Note:_ Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` instead of `foo.bar.com`, `_canister-id.foo` instead of `_canister-id.foo.bar.com`, and `_acme-challenge.foo` instead of `_acme-challenge.foo.bar.com`.
 2. `.well-known/ic-domains`:
     * Create the `ic-domains` file with the following content in the `.well-known` directory:
         ```

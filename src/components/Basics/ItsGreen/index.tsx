@@ -1,17 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import styles from "./index.module.css";
+import React, { useRef } from "react";
 
-import Icon1 from "../../../../static/img/basics/icon-plant.svg";
-import Icon2 from "../../../../static/img/basics/icon-iot.svg";
-import Icon3 from "../../../../static/img/basics/icon-db.svg";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import transitions from "@site/static/transitions.json";
-import GreenBlur from "@site/static/img/basics/greenBlur.webp";
 import Link from "@docusaurus/Link";
-import ExternalLinkIcon from "../../../../static/img/external-link.svg";
-import clsx from "clsx";
 import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
+import transitions from "@site/static/transitions.json";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import Icon3 from "../../../../static/img/basics/icon-db.svg";
+import Icon2 from "../../../../static/img/basics/icon-iot.svg";
+import Icon1 from "../../../../static/img/basics/icon-plant.svg";
+import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 
 const comparison = [
   {
@@ -127,17 +124,24 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
   const statsAnim = useSpawnAnimation();
 
   return (
-    <section className={styles.outerContainer} id={id}>
-      <img src={GreenBlur} className={styles.BGGradient} alt="" />
+    <section className="container-10 relative" id={id}>
+      <img
+        src="/img/features/blob-bg-hero.png"
+        alt=""
+        className="absolute left-1/2 -translate-x-7/12 -top-[40vmax] w-[260vmax] max-w-none md:max-w-[300vmin] z-[-1]"
+      />
 
       <motion.div
         ref={iconAnim.ref}
         animate={iconAnim.controls}
         initial="hidden"
         variants={transitions.container}
-        className={styles.container}
+        className="text-white md:w-8/10 mt-64 md:mt-64 mb-20 md:mb-40 relative"
       >
-        <motion.h2 variants={transitions.item} className={styles.heading}>
+        <motion.h2
+          variants={transitions.item}
+          className="tw-heading-4 md:tw-heading-60 mb-6"
+        >
           Blockchain operation that's climate friendly
         </motion.h2>
 
@@ -145,15 +149,13 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           variants={transitions.item}
           className="tw-paragraph md:tw-lead mb-8"
         >
-          Thanks to the unique architecture and novel cryptography of the
-          Internet Computer blockchain, it can host smart contract software,
-          data, and computation, with levels of efficiency competitive with
-          traditional software that runs on Big Tech's cloud services.
-          Meanwhile, it is currently tens of thousands of times more efficient
-          than the next most efficient blockchain. Web3 projects that
-          incorporate Internet Computer smart contracts can consequently
-          dramatically lower their carbon footprint, and help reduce climate
-          change.
+          Thanks to the unique architecture and novel cryptography, the Internet
+          Computer hosts smart contract software, data, and computation, with
+          energy consumption levels comparable with traditional software that
+          runs on Big Tech's cloud services and orders of magnitude lower than
+          competing blockchains. Web3 projects that incorporate Internet
+          Computer smart contracts can dramatically lower their carbon
+          footprint, and help reduce climate change.
         </motion.p>
         <motion.p
           variants={transitions.item}
@@ -173,9 +175,19 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
             <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
           </Link>
         </motion.p>
-        <Icon1 aria-hidden></Icon1>
-        <Icon2 aria-hidden></Icon2>
-        <Icon3 aria-hidden></Icon3>
+
+        <Icon1
+          aria-hidden
+          className="absolute w-30 md:w-40 top-[-150px] right-[130px] md:top-[-160px] md:right-[20px]"
+        ></Icon1>
+        <Icon2
+          aria-hidden
+          className="absolute w-30 md:w-40 top-[-220px] right-0 md:top-[-240px] md:right-[-240px]"
+        ></Icon2>
+        <Icon3
+          aria-hidden
+          className="absolute w-30 md:w-40 -top-30 right-[-30px] md:top-[70px] md:right-[-180px]"
+        ></Icon3>
 
         <motion.figure
           className="space-y-3 mx-0"

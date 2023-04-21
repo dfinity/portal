@@ -105,12 +105,6 @@ export default function Hero(): JSX.Element {
                 href="https://twitter.com/search?q=%23WorldComputer"
               >
                 #WorldComputer
-              </a>{" "}
-              <a
-                target="_blank"
-                href="https://twitter.com/search?q=%23BiggerThanBlockchain"
-              >
-                #BiggerThanBlockchain
               </a>
             </p>
             <p className="flex flex-col gap-2 items-start">
