@@ -40,8 +40,8 @@
 
   --ifm-menu-color: #181818;
 
-  --ic0-nav-border: 2px solid white;
-  --ic0-article-background: #F5F5F5;
+  --ic0-nav-border: 1px solid white;
+  --ic0-article-background: linear-gradient(180deg, #F5F5F5 0%, #F2EFF6 100%);
 }
 
 @import "./animate.scss";
@@ -50,6 +50,8 @@
 @import "./scrollbar.scss";
 @import "./sidebar.scss";
 
+// specifically target the dev docs namespace;
+// we don't want to apply these styles to the marketing pages
 html.docs-doc-page {
   --ifm-navbar-x-padding: 24px;
   --ifm-navbar-padding-horizontal: 24px;
@@ -63,6 +65,10 @@ html.docs-doc-page {
   // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
   // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
   --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+
+  a {
+    font-weight: 500;
+  }
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
@@ -92,13 +98,36 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
 
-    @media (min-width: 996px) {
-      .container {
-        padding: 0 !important;
-      }
+    .container {
+      padding: 0 !important;
+    }
 
+    div[class*="docItemContainer_"] {
+      padding: 40px 20px;
+
+      // mobile/tablet Table of Contents dropdown
+      div[class*="tocCollapsible_"] {
+        background: var(--ifm-menu-color-background-hover);
+
+        button[class*="tocCollapsibleButton_"] {
+          padding: 0.8rem;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    @media (min-width: 577px) {
       div[class*="docItemContainer_"] {
-        padding: 40px 80px;
+        // padding around article content
+        padding: 60px 40px;
+      }
+    }
+
+    @media (min-width: 996px) {
+      div[class*="docItemContainer_"] {
+        // padding around article content
+        padding: 40px 100px;
       }
     }
 

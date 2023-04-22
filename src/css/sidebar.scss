@@ -13,7 +13,30 @@ div[class*="sidebar_"] {
   padding-top: 30px;
 }
 
-.menu__link, .menu__list-item-collapsible {
+.navbar-sidebar {
+  background: var(--ifm-menu-color-background-hover);
+
+  .menu__link, .menu__list-item-collapsible {
+    background: var(--ifm-menu-color-background-hover);
+
+    &:hover {
+      background: #F1EEF5;
+    }
+  }
+}
+
+.navbar-sidebar__back {
+  width: 100%;
+  margin: unset;
+  background: #F1EEF5;
+
+  &:hover {
+    background: var(--ic0-color);
+    color: white;
+  }
+}
+
+.menu__link, .menu__list-item-collapsible, .navbar-sidebar__back {
   border-radius: 8px;
 }
 
