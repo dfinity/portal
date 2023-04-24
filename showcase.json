@@ -1603,6 +1603,23 @@
     "twitter": "https://twitter.com/beadle1989"
   },
   {
+    "id": "bitshop",
+    "name": "Bitshop",
+    "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
+    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitshop_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitshop.webp"
+    ],
+    "github": "https://github.com/lukasvozda/bitshop",
+    "twitter": "https://twitter.com/bitshopicp"
+  },
+  {
     "id": "EMC-Protocol",
     "name": "EMC Protocol",
     "description": "EMC (EdgeMatrix Computing blockchain) is a Layer-2 protocol on the Internet Computer Protocol (ICP) blockchain. It is an innovative decentralized computing network that is changing the way people use AI applications. EMC's vision is to eliminate the digital divide, eliminate centralized monopolies, and unlock the full potential of AI for everyone.The future of AI will be accessible to everyone, and everyone will be a part of it!",
@@ -1618,4 +1635,5 @@
     "github": "https://github.com/EMCprotocol/emc_java_sdk",
     "twitter": "https://twitter.com/EMCprotocol"
   }
+
 ]
