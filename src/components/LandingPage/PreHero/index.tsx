@@ -1,13 +1,4 @@
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
-import {
-  getBlockCount,
-  getBlockRate,
-  getBytesStored,
-  getSubnetCount,
-  getTransactionRate,
-  getTransactionRateV3,
-} from "@site/src/utils/network-stats";
 import transitions from "@site/static/transitions.json";
 import {
   motion,
@@ -16,14 +7,11 @@ import {
   useTransform,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import { useQuery } from "react-query";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
-import { ConstantRateCounter, SpringCounter } from "./Counters";
 import { Facts } from "./Facts";
-import InfoIcon from "./InfoIcon";
 import ParticleAnimation from "./ParticleAnimation";
 
 export default function PreHero({}): JSX.Element {

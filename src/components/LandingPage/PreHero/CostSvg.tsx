@@ -7,7 +7,7 @@ export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
   //0 0 16187 12624
 
   const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0 });
+  const { ref, inView } = useInView({ threshold: 1.0 });
   useEffect(() => {
     if (inView) {
       controls.start("animate");
@@ -20,7 +20,7 @@ export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
       animate={controls}
       initial="initial"
       variants={{
-        initial: { viewBox: `0 ${12624 - 14} 28 14` },
+        initial: { viewBox: `-3 ${12624 - 14} 28 14` },
         animate: {
           viewBox: [
             `-3 ${12624 - 14} 28 14`,
