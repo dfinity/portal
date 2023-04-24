@@ -37,7 +37,7 @@ As a rule of thumb in deciding between Motoko and Rust:
 
 For a more in-depth comparison, read on.
 
-Internet Computer considerations:
+### Internet Computer considerations:
 
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|
