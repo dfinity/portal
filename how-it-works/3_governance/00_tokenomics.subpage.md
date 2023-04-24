@@ -1,7 +1,7 @@
 ---
 title: "Tokenomics of the Internet Computer"
 abstract: 
-shareImage: /img/how-it-works/direct-integration-with-bitcoin.600x300.jpg
+shareImage: /img/how-it-works/tokenomics.600.jpg
 slug: tokenomics
 ---
 

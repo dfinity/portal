@@ -2,7 +2,7 @@
 title: Certified variables
 ---
 
-![](/img/how-it-works/response-certification.600x300.jpg)
+![](/img/how-it-works/certified-variables.webp)
 
 # Certified variables
 

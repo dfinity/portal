@@ -1,7 +1,7 @@
 ---
 title: "Internet Identity: Anonymizing Blockchain Authentication System"
 abstract: 
-shareImage: /img/how-it-works/web-authentication-identity.600.jpg
+shareImage: /img/how-it-works/internet-identity.webp
 slug: web-authentication-identity
 ---
 

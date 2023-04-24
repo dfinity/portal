@@ -1,7 +1,7 @@
 ---
 title: Smart Contracts Serve the Web
 abstract:
-shareImage: /img/how-it-works/smart-contracts-serve-the-web.600.jpg
+shareImage: /img/how-it-works/web-content.jpg
 slug: smart-contracts-serve-the-web
 ---
 

@@ -5,7 +5,7 @@ shareImage: /img/how-it-works/service-nervous-system.webp
 slug: sns
 ---
 
-![](/img/how-it-works/canister-lifecycle.600x300.jpg)
+![](/img/how-it-works/service-nervous-system.webp)
 
 # Service Nervous System (SNS)
 
