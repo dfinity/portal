@@ -1618,5 +1618,24 @@
     ],
     "github": "https://github.com/lukasvozda/bitshop",
     "twitter": "https://twitter.com/bitshopicp"
+  },
+  {
+    "id": "game-registry-and-stats",
+    "name": "Game Registry & Stats",
+    "oneLiner": "Host a registry of the games of the Internet computer with basic Stats.",
+    "website": "https://sxiiz-dqaaa-aaaan-qc4ea-cai.ic0.app/",
+    "tags": [
+      "Games",
+      "Tools / Infrastructure"
+    ],
+    "description": "A Game registry with Internet Computer Game basic information and basic stats. It requires games to apply the ICRC-14 standard to their canisters and apply for registration.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/game-registry-and-stats-logo.jpg",
+    "screenshots": [
+      "/img/showcase/game-registry-and-stats-screenshot-0.jpg",
+      "/img/showcase/game-registry-and-stats-screenshot-1.jpg",
+      "/img/showcase/game-registry-and-stats-screenshot-2.jpg"
+    ],
+    "twitter": "https://twitter.com/byvibrant_"
   }
 ]
