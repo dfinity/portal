@@ -6,7 +6,7 @@ sidebar_position: 1
 To create smart contract canisters, it is typical to use a so-called CDK, a Canister Development Kit.
 The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API. Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 
-In theory, any language that can be compiled into WebAssembly can be used to write smart contract canisters.
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) depoyable as ICP smart contract.
 
 In practice, the amount of CDK and library support for different anguages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
 
@@ -33,7 +33,7 @@ As a rule of thumb in deciding between Motoko and Rust:
 
 * Motoko is much easier to learn and ergonomic to use for application developers. It has syntax and rules familiar to developers with a background in the application layer (JavaScript, Ruby, Python, Solidity, etc...). Motoko is good for getting sample, demo, or smaller contracts shipped quickly, but its library ecosystem is still early so can prove challenging for larger projects.
 
-* Rust is a good place for those who already know Rust, come from a systems engingeering background (C, C++), or are starting larger or more complex prokjects where having a baked library ecosystem is helpful or important.
+* Rust is a good place for those who already know Rust, come from a systems engingeering background (C, C++), or are starting larger or more complex projects where having a baked library ecosystem is helpful or important.
 
 For a more in-depth comparison, read on.
 
