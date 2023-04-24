@@ -29,7 +29,11 @@ It is also possible to split your work between multiple languages. Different can
 
 To help developers interested in Motoko, here is a comparison of Motoko and Rust (a popular language in Web3). 
 
-As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. Motoko is good for getting sample, demo, or smaller contracts shipped quickly, while the library ecosystem for Rust is much more developed so may be betetr for long-running projects.
+As a rule of thumb in deciding between Motoko and Rust:
+
+* Motoko is much easier to learn and ergonomic to use for application developers. It has syntax and rules familiar to developers with a background in the application layer (JavaScript, Ruby, Python, Solidity, etc...). Motoko is good for getting sample, demo, or smaller contracts shipped quickly, but its library ecosystem is still early so can prove challenging for larger projects.
+
+* Rust is a good place for those who already know Rust, come from a systems engingeering background (C, C++), or are starting larger or more complex prokjects where having a baked library ecosystem is helpful or important.
 
 For a more in-depth comparison, read on.
 
