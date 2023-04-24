@@ -17,7 +17,7 @@ In this tutorial, you will learn how to:
 4.  Create a "cycles wallet" from which you can transfer cycles to any other dapps you want to power
 5.  Deploy a dapp on-chain
 
-This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract): `hello_backend` for the backend and `hello_frontend` for the frontend. The dapp accepts a text argument as input and returns a greeting. This dapp can be called from the command-line terminal or from a browser.
+The dapp accepts a text argument as input and returns a greeting. This dapp can be called from the command-line terminal or from a browser.
 
 For example, if you call the `greet` method of the `hello_backend` smart contract canister with the text argument `Everyone` on the command-line, the dapp will return `Hello, Everyone!`:
 
@@ -33,9 +33,11 @@ Or if you use the browser, a pop-up window will appear with the message: `Hello,
 ## The Components of this Hello, World Dapp 
 While this tutorial works out of the box and does not require to program, it is worth noting:
 
+This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract):
+
 a. `hello_backend` is the smart contract canister serving as the backend of this dapp. It is written in [Motoko](/motoko/main/motoko.md), a programming language specifically designed for interacting with the IC.
 
-b. `hello_frontend` is the smart contract canister serving the frontend of this dapp. The relevant parts are all HTML, JavasCript, CSS as one would expect.
+b. `hello_frontend` is the smart contract canister serving the frontend of this dapp. The relevant parts are all HTML, JavaScript, CSS as one would expect from a frontend.
 
 This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](/developer-docs/setup/install/windows-wsl.md) installation.
 
