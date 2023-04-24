@@ -1601,5 +1601,21 @@
       "/img/showcase/football-god_screenshot.webp"
     ],
     "twitter": "https://twitter.com/beadle1989"
+  },
+  {
+    "id": "EMC-Protocol",
+    "name": "EMC Protocol",
+    "description": "EMC (EdgeMatrix Computing blockchain) is a Layer-2 protocol on the Internet Computer Protocol (ICP) blockchain. It is an innovative decentralized computing network that is changing the way people use AI applications. EMC's vision is to eliminate the digital divide, eliminate centralized monopolies, and unlock the full potential of AI for everyone.The future of AI will be accessible to everyone, and everyone will be a part of it!",
+    "website": "http://edgematrix.pro/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/emc_logo.svg",
+    "screenshots": [
+      "/img/showcase/emc_screenshot.png"
+    ],
+    "github": "https://github.com/EMCprotocol/emc_java_sdk",
+    "twitter": "https://twitter.com/EMCprotocol"
   }
 ]
