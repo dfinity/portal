@@ -1,7 +1,7 @@
 ---
 title: Certified Variables
 abstract: 
-shareImage: /img/how-it-works/response-certification.600.jpg
+shareImage: /img/how-it-works/certified-variables.webp
 slug: response-certification
 ---
 

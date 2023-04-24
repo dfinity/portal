@@ -1,7 +1,7 @@
 ---
 title: Canister smart contracts
 abstract: 
-shareImage: /img/how-it-works/canister-lifecycle.600.jpg
+shareImage: /img/how-it-works/canisters.webp
 slug: canister-lifecycle
 ---
 

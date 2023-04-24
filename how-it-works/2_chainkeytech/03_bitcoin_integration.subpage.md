@@ -1,7 +1,7 @@
 ---
 title: Bitcoin Integration
 abstract:
-shareImage: /img/how-it-works/btc-content.1200x600.jpg
+shareImage: /img/how-it-works/btc-content.600x300.webp
 slug: bitcoin-integration
 ---
 
