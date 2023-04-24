@@ -156,13 +156,26 @@ function ICPTransactionRate() {
     }
   );
   return (
-    <>
+    <div className="inline-grid">
       {transactionRateQuery.isFetched ? (
-        formatNumber(transactionRateQuery.data)
+        <>
+          <SpringCounter
+            target={transactionRateQuery.data}
+            initialTarget={transactionRateQuery.data}
+            initialValue={transactionRateQuery.data}
+            format={formatNumber}
+            springConfig={[3, 1, 1]}
+            className="text-left col-start-1 row-start-1"
+          ></SpringCounter>
+          <span className="col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
+            {getFigureSpacer(Math.floor(transactionRateQuery.data))}
+          </span>
+        </>
       ) : (
+        // formatNumber(transactionRateQuery.data)
         <>&nbsp;&nbsp;</>
       )}
-    </>
+    </div>
   );
 }
 
