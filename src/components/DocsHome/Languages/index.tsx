@@ -57,7 +57,7 @@ function Index() {
         </motion.a>
         <motion.a
           variants={transitions.item}
-          href={"https://github.com/demergent-labs/azle"}
+          href={"https://demergent-labs.github.io/azle/"}
           target={"_blank"}
           className={clsx(styles.card, styles.cardHover)}
         >
@@ -72,7 +72,7 @@ function Index() {
         </motion.a>
         <motion.a
           variants={transitions.item}
-          href={"https://github.com/demergent-labs/kybra"}
+          href={"https://demergent-labs.github.io/kybra/"}
           target={"_blank"}
           className={clsx(styles.card, styles.cardHover)}
         >
