@@ -127,13 +127,17 @@
     "name": "ICP Coins",
     "oneLiner": "DEX stats aggregator",
     "website": "https://icpcoins.com",
-    "tags": ["DeFi"],
+    "tags": [
+      "DeFi"
+    ],
     "description": "IC coins by market cap. Aggregates stats from all IC DEXes. Price, Volume & Liquidity score charts.",
     "usesInternetIdentity": false,
     "stats": "1000 users",
     "logo": "/img/showcase/icpcoins_logo.png",
     "github": "https://github.com/vvv-interactive/icpcoins",
-    "screenshots": ["/img/showcase/icpcoins_screenshot_0.jpg"]
+    "screenshots": [
+      "/img/showcase/icpcoins_screenshot_0.jpg"
+    ]
   },
   {
     "id": "internetcomputerorgwebsite",
@@ -241,6 +245,7 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/taggr_logo.webp",
+    "oneLiner": "Blending forums and blogs. Users own and govern the platform",
     "screenshots": [
       "/img/showcase/taggr_screenshot_0.webp"
     ]
@@ -627,7 +632,7 @@
       "Games"
     ],
     "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
-    "github":  "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
+    "github": "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/jumpymotoko_logo.webp",

@@ -282,7 +282,7 @@ function SnsPage() {
             </Card>
           </div>
         </section>
-        <OpenChatCard className="mt-40 md:my-40" />
+        <OpenChatCard className="mt-40" />
         <section className="text-white relative pt-52 pb-20 md:pb-40 md:pt-80 container-12">
           <AnimateSpawn
             el={motion.img}

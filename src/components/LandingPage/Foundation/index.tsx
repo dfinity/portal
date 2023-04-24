@@ -8,7 +8,7 @@ export default function FoundationSection(): JSX.Element {
   return (
     <section id="foundation">
       <AnimateSpawn
-        className="md:container-12"
+        className="md:container-12 my-20 md:my-30"
         variants={transitions.container}
       >
         <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-1/12 py-20 md:py-30 relative">

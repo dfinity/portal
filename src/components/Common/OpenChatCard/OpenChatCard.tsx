@@ -28,9 +28,6 @@ const OpenChatCard: React.FC<{
         </div>
         <div className="flex-1 md:order-1 pb-20 md:py-30">
           <div className="md:ml-2/12">
-            <motion.p className="tw-heading-6 mb-2" variants={transitions.item}>
-              Community Story
-            </motion.p>
             <motion.h2
               className=" text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
               variants={transitions.item}
@@ -47,10 +44,16 @@ const OpenChatCard: React.FC<{
               a powerful community treasury.
             </motion.p>
 
-            <motion.p className="mb-0" variants={transitions.item}>
+            <motion.p className="mb-3" variants={transitions.item}>
               <Link className="link-primary link-with-icon" href="/openchat">
                 <LinkArrowRight />
                 See how OpenChat decentralized, fully on-chain
+              </Link>
+            </motion.p>
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link className="link-primary link-with-icon" href="/sns">
+                <LinkArrowRight />
+                Learn about SNS DAOs
               </Link>
             </motion.p>
           </div>

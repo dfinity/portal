@@ -58,7 +58,7 @@ const ShowcaseSection: React.FC<{
   }
 
   return (
-    <section id="dapps" className={clsx("relative z-0", className)}>
+    <section id="dapps" className={clsx("relative z-0 mb-10", className)}>
       <AnimateSpawn variants={transitions.item}>
         <div className="container-10 pt-20 md:pt-40">
           <div className="">
@@ -85,7 +85,7 @@ const ShowcaseSection: React.FC<{
               variants={transitions.item}
               href={p.website}
               key={p.name + i}
-              className="rounded-xl border relative border-white border-solid backdrop-blur-2xl bg-white-60 p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black"
+              className="rounded-xl border relative border-white border-solid backdrop-blur-2xl bg-white-80 p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black"
             >
               <img
                 src={p.logo}
@@ -108,33 +108,34 @@ const ShowcaseSection: React.FC<{
               </div>
             </MotionLink>
           ))}
-        </AnimateSpawn>
 
-        <div className="relative -mt-96 mb-10 md:mb-40">
-          <motion.img
-            variants={transitions.fadeIn}
-            src={BlobGradient}
-            alt=""
-            className="max-w-none w-[800px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
-            loading="lazy"
-          />
+          <MotionLink
+            variants={transitions.item}
+            href="/ecosystem"
+            className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]"
+          >
+            More Ecosystem Projects
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute bottom-8 right-8"
+            >
+              <path
+                d="M11.8398 30.3242L24.1631 18.001L11.8398 5.67773"
+                stroke="white"
+                strokeWidth="3"
+              />
+            </svg>
+          </MotionLink>
 
           <motion.div
-            className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
-            variants={transitions.item}
-          >
-            <Link className="button-primary" href="/ecosystem">
-              View the ecosystem gallery
-            </Link>
-            <Link
-              className="link-white  inline-flex items-center gap-2"
-              href="/developers"
-            >
-              <ArrowRight></ArrowRight>
-              Start coding
-            </Link>
-          </motion.div>
-        </div>
+            className="blob blob-purple blob-x-5 blob-y-9 md:blob-y-8 blob-sm md:blob-md z-[-1]"
+            variants={transitions.fadeIn}
+          ></motion.div>
+        </AnimateSpawn>
       </AnimateSpawn>
     </section>
   );
