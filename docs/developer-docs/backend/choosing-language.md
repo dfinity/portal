@@ -17,17 +17,21 @@ In practice, the amount of CDK and library support for different anguages varies
   - [`cdk-rs` by DFINITY](./rust/index.md)
   - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
 - Python
-  - [`Kybra` by Demergent Labs](https://demergent-labs.github.io/kybra/)
+  - [`Kybra` by Demergent Labs](https://demergent-labs.github.io/kybra)
   - Python is a readable, versatile language for web development, data analysis, and AI.
 - TypeScript
-  - [`Azle` by Demergent Labs](https://demergent-labs.github.io/azle/)
+  - [`Azle` by Demergent Labs](https://demergent-labs.github.io/azle)
   - TypeScript is a typed JavaScript superset, improving tooling and maintainability in large applications.
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
 
 ## A comparison between Motoko and Rust
 
-To help developers interested in Motoko, here is a comparison of Motoko and Rust (a popular language in Web3). As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. For a more in-depth comparison, read on.
+To help developers interested in Motoko, here is a comparison of Motoko and Rust (a popular language in Web3). 
+
+As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. Motoko is good for getting sample, demo, or smaller contracts shipped quickly, while the library ecosystem for Rust is much more developed so may be betetr for long-running projects.
+
+For a more in-depth comparison, read on.
 
 Internet Computer considerations:
 
