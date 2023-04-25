@@ -2,7 +2,7 @@
 title: Boundary nodes
 ---
 
-![](/img/how-it-works/outcalls.600x300.png)
+![](/img/how-it-works/boundary-nodes.webp)
 
 # Boundary nodes
 

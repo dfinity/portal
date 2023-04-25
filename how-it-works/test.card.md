@@ -2,7 +2,7 @@
 title: Content test card
 ---
 
-![](/img/how-it-works/canister-lifecycle.600x300.jpg)
+![](/img/how-it-works/canisters.webp)
 
 # Content test card (level 1)
 
@@ -10,7 +10,7 @@ This `card` covers all the various kinds of markdown elements. This **card** cov
 
 ## This is an other title (level 2)
 
-![](/img/how-it-works/consensus.600x300.jpg)
+![](/img/how-it-works/consensus.webp)
 
 ```
 {
