@@ -1,13 +1,20 @@
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import React from "react";
 import { css } from "../../../utils/dummy-css";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import styles from "./Vision.module.css";
+import transitions from "@site/static/transitions.json";
 
 const Vision: React.FC = () => {
   return (
-    <section className="container-10 pb-52 md:pb-[50vh] -mt-40">
+    <AnimateSpawn
+      className="container-10 pb-20 md:pb-40 -mt-40"
+      el={motion.section}
+      variants={transitions.container}
+    >
       <div className="relative">
         <p
           className={clsx(
@@ -46,17 +53,26 @@ const Vision: React.FC = () => {
           </Link>
         </p>
 
-        <div className="hidden md:block absolute right-[-170px] bottom-[400px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead-lg px-8 py-3 rounded-full text-white">
+        <motion.div
+          className="hidden md:block absolute right-[-170px] bottom-[400px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead-lg px-8 py-3 rounded-full text-white"
+          variants={transitions.item}
+        >
           #InternetComputer
-        </div>
-        <div className="hidden md:block absolute right-[180px] bottom-[270px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-title-sm px-8 py-3 rounded-full text-white">
+        </motion.div>
+        <motion.div
+          className="hidden md:block absolute right-[180px] bottom-[270px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-title-sm px-8 py-3 rounded-full text-white"
+          variants={transitions.item}
+        >
           #ICP
-        </div>
-        <div className="hidden md:block absolute right-[-40px] bottom-[150px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead px-8 py-3 rounded-full text-white">
+        </motion.div>
+        <motion.div
+          className="hidden md:block absolute right-[-40px] bottom-[150px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead px-8 py-3 rounded-full text-white"
+          variants={transitions.item}
+        >
           #WorldComputer
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </AnimateSpawn>
   );
 };
 

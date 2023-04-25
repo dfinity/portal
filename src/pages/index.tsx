@@ -17,6 +17,7 @@ import SectionsBar from "../components/LandingPage/SectionsBar";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import SlidersSection from "../components/LandingPage/Sliders";
 import Storage from "../components/LandingPage/Storage";
+import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 import Vision from "../components/LandingPage/Vision/Vision";
 
 const queryClient = new QueryClient();
@@ -67,13 +68,15 @@ export default function Home(): JSX.Element {
         <BackgroundPanel
           panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
           id="comparison"
+          threshold={0}
+          rootMargin="-50% 0px"
         >
           {/* <Storage></Storage> */}
           <Highlights />
         </BackgroundPanel>
         <div className="overflow-hidden">
           {/* <NextGenSection></NextGenSection> */}
-          <ItsGreenSection id="sustainable" />
+          <Sustainable id="sustainable"></Sustainable>
           {/* <SlidersSection /> */}
           <StartBuildingSection
             id="startBuilding"

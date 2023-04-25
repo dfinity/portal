@@ -368,17 +368,17 @@ function SocialMediaDappsPage() {
                     The Internet Computer is the only blockchain that can:
                   </p>
                   <ul className="checklist tw-paragraph md:tw-lead-sm mb-6 space-y-3">
-                    <li className="checklist-item">Serve web</li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">Serve web</li>
+                    <li className="checklist-item leading-6 pl-8">
                       Integrate existing web2 APIs without oracles
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Provides out of the box anonymous authentication system
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store large amounts of data on-chain
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store private data on-chain
                     </li>
                   </ul>

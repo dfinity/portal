@@ -74,7 +74,7 @@ function TotalBlocks() {
   );
   return (
     <div className="tw-title-sm md:tw-title-lg mb-2 inline-grid relative left-3">
-      {blockInfoQuery.isFetched ? (
+      {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
         <>
           <ConstantRateCounter
             start={blockInfoQuery.data[0]}
@@ -97,7 +97,11 @@ function ParallelSubnets(): JSX.Element {
   const subnetCountQuery = useQuery(["subnetCount"], getSubnetCount);
   return (
     <>
-      {subnetCountQuery.isFetched ? subnetCountQuery.data : <>&nbsp;&nbsp;</>}
+      {subnetCountQuery.isFetched && subnetCountQuery.isSuccess ? (
+        subnetCountQuery.data
+      ) : (
+        <>&nbsp;&nbsp;</>
+      )}
     </>
   );
 }
@@ -106,7 +110,7 @@ function BlockThroughput(): JSX.Element {
   const finalizationRate = useQuery(["getFinalizationRate"], getBlockRate);
   return (
     <>
-      {finalizationRate.isFetched ? (
+      {finalizationRate.isFetched && finalizationRate.isSuccess ? (
         finalizationRate.data.toFixed(1)
       ) : (
         <>&nbsp;&nbsp;&nbsp;&nbsp;</>
@@ -128,7 +132,7 @@ function EthEquivalentTxRate({
   });
   return (
     <div className="tw-title-sm md:tw-title-lg mb-2 inline-grid relative left-1">
-      {updateTxRate.isFetched ? (
+      {updateTxRate.isFetched && updateTxRate.isSuccess ? (
         <>
           <SpringCounter
             target={updateTxRate.data * 80}
@@ -159,7 +163,7 @@ function ICPTransactionRate() {
   );
   return (
     <div className="inline-grid">
-      {transactionRateQuery.isFetched ? (
+      {transactionRateQuery.isFetched && transactionRateQuery.isSuccess ? (
         <>
           <SpringCounter
             target={transactionRateQuery.data}
