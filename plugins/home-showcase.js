@@ -8,7 +8,7 @@ const showcaseProjectsPlugin = async function () {
       const ids = [
         "dscvr",
         "distrikt",
-        "openchat",
+        "mora",
         "funded",
         "kinic",
         "cubetopia",
