@@ -1560,6 +1560,24 @@
     "submittableId": 32331652
   },
   {
+    "id": "mora",
+    "name": "MORA",
+    "oneLiner": "Deliver the autonomy of thought,Create your web3 space",
+    "website": "https://mora.app",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Mora allows users to create a unique Web3 space where they can have independent content data, subscription relationships, financial information, and even complex algorithms. From its inception, a planet will be monitored by Launch Trail to ensure compliance with the protocol and establish trust. The Launch Trail will be controlled by the Mora Dao Canister.",
+    "usesInternetIdentity": true,
+    "stats": "500+ Planets",
+    "logo": "/img/showcase/mora_logo.png",
+    "screenshots": [
+      "/img/showcase/mora_banner.jpg"
+    ],
+    "youtube": "https://www.youtube.com/watch?v=rQIGanE7WxA",
+    "twitter": "https://twitter.com/Mora_App"
+  },
+  {
     "id": "dapp-box",
     "name": "DappBox",
     "oneLiner": "Take control of your data and keep it anonymous with decentralized storage on the Internet Computer.",
@@ -1591,6 +1609,24 @@
     ],
     "twitter": "https://twitter.com/vger_ic"
   },
+
+   {
+    "id": "icevent",
+    "name": "ICEvent",
+    "description": "Decentralized Calendar Solution (ticket, appointment, itinerary, schedule)",
+    "website": "https://icevent.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "stats": "3,000+",
+    "logo": "/img/showcase/icevent_logo_112x112.png",
+    "screenshots": [
+      "/img/showcase/icevent_screenshot.PNG"
+    ],
+    "twitter": "https://twitter.com/vansdaynet",
+     "submittableId": "22168376"
+},
   {
     "id": "football-god",
     "name": "FootballGod",
@@ -1623,5 +1659,6 @@
     ],
     "github": "https://github.com/lukasvozda/bitshop",
     "twitter": "https://twitter.com/bitshopicp"
+
   }
 ]

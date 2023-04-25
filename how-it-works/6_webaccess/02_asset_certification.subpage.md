@@ -1,7 +1,7 @@
 ---
 title: Asset certification
 abstract:
-shareImage: /img/how-it-works/response-certification.600.jpg
+shareImage: /img/how-it-works/asset-certification.jpg
 slug: asset-certification
 ---
 

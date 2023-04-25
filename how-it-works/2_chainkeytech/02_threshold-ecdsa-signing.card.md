@@ -1,7 +1,7 @@
 ---
 title: Chain-key signatures
 abstract: This feature will enable canister smart contracts to sign with regard to an ECDSA public key while their host subnet has a threshold shared secret key.
-coverImage: /img/how-it-works/threshold-ecdsa-signing.600x300.jpg
+coverImage: /img/how-it-works/chain-key-signature.webp
 ---
 
 ![](/img/how-it-works/chain-key-signature.webp)
