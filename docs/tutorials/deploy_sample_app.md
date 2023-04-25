@@ -7,11 +7,11 @@ title: Deploy sample code
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 <!-- Code editing knowledge is not necessary. -->
 
-Before starting, take a look at a version of this dapp running on-chain: <https://i5wpe-oqaaa-aaaal-qbyla-cai.icp0.io/>
+Before starting, take a look at a version of this dapp running on-chain: <https://i5wpe-oqaaa-aaaal-qbyla-cai.icp0.io>
 
 In this tutorial, you will learn how to:
 
-1.  Install the Canister SDK
+1.  Install the Canister SDK for building ICP smart contract canisters
 2.  Build and deploy a dapp locally
 3.  Collect free cycles to power your dapp
 4.  Create a "cycles wallet" from which you can transfer cycles to any other dapps you want to power
@@ -30,20 +30,9 @@ Or if you use the browser, a pop-up window will appear with the message: `Hello,
 
 ![Hello](_attachments/frontend-result.png)
 
-## The Components of this Hello, World Dapp 
-While this tutorial works out of the box and does not require to program, it is worth noting:
-
-This simple `Hello` dapp is composed of two [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract):
-
-a. `hello_backend` is the smart contract canister serving as the backend of this dapp. It is written in [Motoko](/motoko/main/motoko.md), a programming language specifically designed for interacting with the IC.
-
-b. `hello_frontend` is the smart contract canister serving the frontend of this dapp. The relevant parts are all HTML, JavaScript, CSS as one would expect from a frontend.
-
-This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](/developer-docs/setup/install/windows-wsl.md) installation.
-
 ## Topics Covered in this Tutorial
 
--   **Canisters** are the smart contracts installed on the IC. They contain the code to be run and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
+-   **[Canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract)** are the smart contracts installed on the IC. They contain the code to be run and a state, which is produced as a result of running the code. As is the case of the "Hello World" dapp, it is common for dapps to be composed of multiple canisters.
 
 -   **[Cycles](/concepts/tokens-cycles.md)** refer to a unit of measurement for resource consumption, typically for processing, memory, storage, and network bandwidth consumed on the IC. For the sake of this tutorial, cycles are analogous to Ethereum’s gas: cycles are needed to run dapps, but unlike gas they are stable and less expensive. Every canister has a cycles account from which the resources consumed by the canister are charged. The IC’s utility token (ICP) can be converted to cycles and transferred to a canister. ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) (a basket of currencies) using the convention that one trillion cycles correspond to one SDR. **Get free cycles from the cycles faucet.**
 
@@ -51,11 +40,13 @@ This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [
 
 ## 1. Installing Tools
 
+This tutorial requires Linux, macOS 12.\* Monterey or later, or Windows with a [Windows Subsystem for Linux (WSL)](/developer-docs/setup/install/windows-wsl.md) installation.
+
 To build and deploy the `Hello` dapp, you need to install the following tools.
 
 ### dfx
 
-This tutorial uses a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
+This tutorial use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
 To install `dfx`, run:
 
@@ -83,24 +74,7 @@ There are many ways of installing node.js. On Linux, we recommend using your sys
 
 This tutorial works best with a node.js version higher than `16.*.*`.
 
-<!-- Besides installing node.js, users need to also install: 
-* Node Package Manager (NPM). (This comes packaged with Node, but you may want to upgrade with `npm i -g npm`) 
-* Node Version Manager (NVM), see [installing NVM](https://github.com/nvm-sh/nvm#installing-and-updating).
-* Once you have NVM, install the latest stable build with `nvm install --lts` -->
-
 ## 2. Create a project (1 min)
-
-<!-- After the SDK is installed, create the default "Hello World" project with two canisters (backend and frontend).
-
-The SDK comes with a starter default project that has a backend in Motoko and frontend code in HTML, CSS, and JS. Developers can use this default project to start their own dapps. In this tutorial, we will build and deploy this bundled project, so there is no need to download any other dapp code. -->
-
-<!-- The `dfx new hello` command uses the template code to create a new project directory named `hello`, template files, and a new `hello` Git repository for your project. You can create many projects with many names. -->
-
-<!-- This is roughly analogous in Web2 to Rail’s `rails new`, React.js’s `create-react-app`, or Rust’s `cargo new`. -->
-
-<!-- To create a new project for your first application: -->
-
-<!-- ### 2.1 Open a Terminal and Create a new project named "hello" -->
 
 A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister. By running 
 
