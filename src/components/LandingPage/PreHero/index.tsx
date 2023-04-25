@@ -98,7 +98,7 @@ const Numbers = () => {
     <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {blockInfoQuery.isFetched ? (
+          {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
             <ConstantRateCounter
               start={blockInfoQuery.data[0]}
               ratePerSec={blockInfoQuery.data[1]}
@@ -118,7 +118,7 @@ const Numbers = () => {
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {finalizationRate.isFetched ? (
+              {finalizationRate.isFetched && finalizationRate.isSuccess ? (
                 (finalizationRate.data * 2).toFixed(1)
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -128,7 +128,7 @@ const Numbers = () => {
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {subnetCountQuery.isFetched ? (
+              {subnetCountQuery.isFetched && subnetCountQuery.isSuccess ? (
                 subnetCountQuery.data
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -140,7 +140,7 @@ const Numbers = () => {
       </AnimateSpawn>
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {updateTxRate.isFetched ? (
+          {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
                 target={updateTxRate.data * 80}
@@ -186,7 +186,8 @@ const Numbers = () => {
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
-              {transactionRateQuery.isFetched ? (
+              {transactionRateQuery.isFetched &&
+              transactionRateQuery.isSuccess ? (
                 <>
                   <SpringCounter
                     target={transactionRateQuery.data}
@@ -215,7 +216,7 @@ const Numbers = () => {
         variants={transitions.container}
       >
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {stateSizeQuery.isFetched ? (
+          {stateSizeQuery.isFetched && stateSizeQuery.isSuccess ? (
             <SpringCounter
               target={stateSizeQuery.data}
               initialTarget={stateSizeQuery.data}
