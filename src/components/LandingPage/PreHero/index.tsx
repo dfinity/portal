@@ -353,7 +353,7 @@ export default function PreHero({}): JSX.Element {
             </motion.h1>
 
             <motion.div
-              className="animate-fade-in"
+              className="animate-fade-up"
               style={{
                 animationDelay: "1500ms",
                 animationPlayState: start ? "running" : "paused",
