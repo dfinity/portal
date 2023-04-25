@@ -3,35 +3,41 @@ sidebar_position: 1
 ---
 # Choosing a programming language
 
-To create canisters, it is typical to use a so-called CDK, a Canister Development Kit.
-The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API.
-Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
-The two officially supported languages of the Internet Computer are [Motoko](/motoko/main/motoko.md) and [Rust](./rust/index.md).
-Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-Rust is a powerful and modern type-sound programming language with an active developer community.
-Of course, developers are not required to work in one (or both) of those languages. There are many different community-supported languages available as well, as you can see below in the list of available languages.
+To create smart contract canisters, it is typical to use a so-called CDK, a Canister Development Kit.
+The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API. Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 
-It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language. What language works behind the candid interface, however, does not matter.
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) depoyable as an ICP smart contract.
 
-This section of the docs covers the following CDKs, ordered by languages:
+In practice, the amount of CDK and library support for different anguages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
+
 - Motoko
   - [Motoko by DFINITY](/motoko/main/motoko.md)
+  - Motoko is [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
 - Rust
   - [`cdk-rs` by DFINITY](./rust/index.md)
-
-Besides those, there exist a lot of other community-supported CDKs:
-- AssemblyScript
-  - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
+  - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
 - Python
-  - [`Kybra` by Demergent Labs](https://github.com/demergent-labs/kybra)
+  - [`Kybra` by Demergent Labs](https://demergent-labs.github.io/kybra)
+  - Python is a readable, versatile language for web development, data analysis, and AI.
 - TypeScript
-  - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
+  - [`Azle` by Demergent Labs](https://demergent-labs.github.io/azle)
+  - TypeScript is a typed JavaScript superset, improving tooling and maintainability in large applications.
 
-### A comparison between Motoko and Rust
+It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
 
-To help deciding between languages, here is a comparison of the two most popular languages on the Internet Computer: Motoko and Rust. As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. For a more in-depth comparison, read on.
+## A comparison between Motoko and Rust
 
-Internet Computer considerations:
+To help developers interested in Motoko, here is a comparison of Motoko and Rust (a popular language in Web3). 
+
+As a rule of thumb in deciding between Motoko and Rust:
+
+* Motoko is much easier to learn and ergonomic to use for application developers. It has syntax and rules familiar to developers with a background in the application layer (JavaScript, Ruby, Python, Solidity, etc...). Motoko is good for getting sample, demo, or smaller contracts shipped quickly, but its library ecosystem is still early so can prove challenging for larger projects.
+
+* Rust is a good place for those who already know Rust, come from a systems engingeering background (C, C++), or are starting larger or more complex projects where having a baked library ecosystem is helpful or important.
+
+For a more in-depth comparison, read on.
+
+### Internet Computer considerations:
 
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|

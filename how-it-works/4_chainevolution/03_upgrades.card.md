@@ -2,7 +2,7 @@
 title: Protocol upgrade
 ---
 
-![](/img/how-it-works/upgrades.600x300.jpg)
+![](/img/how-it-works/protocol-upgrade.webp)
 
 # Protocol upgrade
 

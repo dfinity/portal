@@ -170,6 +170,10 @@ const config = {
                   href: "/how-it-works",
                 },
                 {
+                  label: "Sustainability",
+                  href: "/capabilities/sustainability",
+                },
+                {
                   label: "Whitepaper",
                   href: "https://internetcomputer.org/whitepaper.pdf",
                 },
