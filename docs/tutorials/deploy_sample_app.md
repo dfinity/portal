@@ -68,15 +68,15 @@ More installation options and instructions for uninstalling `dfx` are covered in
 
 Node.js is necessary for rendering the frontend assets and so is necessary to complete this tutorial. Note however that Node.js is not needed for canister development in general.
 
-We support all stable versions of Node.js starting with 12. You can install 12, 14, or 16. Please note that Node 17 does not support Webpack’s api proxy tool, so `npm start` may not work correctly.
+Canister SDK supports all stable versions of Node.js starting with 12. You can install 12, 14, or 16. Please note that Node 17 does not support Webpack’s api proxy tool, so `npm start` may not work correctly.
 
-There are many ways of installing node.js. On Linux, we recommend using your system's package manager. On macOS, we recommend [Homebrew](https://brew.sh). Alternatively, you find instructions on the [nodejs.org website](https://nodejs.org/en/download).
+There are many ways of installing node.js. On Linux, we recommend using your system's package manager. On macOS, we recommend [Homebrew](https://brew.sh). Alternatively, one can find instructions on the [nodejs.org website](https://nodejs.org/en/download).
 
 This tutorial works best with a node.js version higher than `16.*.*`.
 
 ## 2. Create a project (1 min)
 
-A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister. By running 
+A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister smart contract. By running 
 
 ``` bash
 dfx new hello
@@ -88,23 +88,13 @@ dfx new hello
 
 ![dfx new](_attachments/dfx-new-hello-2.png)
 
-<!-- ### 2.2 Move to your project directory
-
-``` bash
-cd hello
-```
-
-Your directory should look like this: -->
-
 The `hello` project directory includes the artifacts required for a "hello world" canister and a new `hello` Git repository. Your directory should look like this:
 
 ![cd new](_attachments/cd-hello.png)
 
-<!-- ### 2.3 Understanding your dapp project -->
+The `hello` project is composed of two canister smart contracts:
 
-The `hello` project is composed of two canisters:
-
--   `hello_backend` canister, which contains the template backend logic
+-   `hello_backend` canister, which contains the template backend logic. This particular one is written in Motoko, but it could be written in various languages, such as Rust, TypeScript, Python.
 -   `hello_frontend` canister, which contains the dapp assets (images, html files, etc)
 
 ![hello Dapp](_attachments/2-canisters-hello-dapp.png)
@@ -113,7 +103,7 @@ You may wonder "why two canisters?" Two canisters are created to help you organi
 
 ## 3. Run your dapp locally (3 min)
 
-Now that your `hello` project is created, the next step is to deploy it locally. To deploy locally, `dfx` can start a local instance of the execution environment. This environment is not a full IC replica, nor does it download any of the state of an IC replica. It is a lightweight environment designed exclusively for deploying dapps.
+Now that your `hello` project is created, the next step is to deploy it locally. To deploy locally, `dfx` can start a local instance of the execution environment. This environment is not a full IC replica, nor does it download any of the state of an IC replica. It is a lightweight environment designed exclusively for deploying and testing dapps.
 
 For this, we recommend using two terminals:
 
@@ -130,10 +120,6 @@ To distinguish the two terminals in this tutorial, terminal A has a dark blue ba
 ![terminal b ls](_attachments/terminal-b-ls.png)
 
 ### Start the execution environment
-
-<!-- Navigate to the root directory for your project, if necessary. In this tutorial, you should be in the folder `hello` because that is the name of the project created in section 2 above.
-
-Start the local canister execution environment in Terminal A: -->
 
 In terminal A, navigate to the root directory `hello` of our project and run
 
@@ -158,23 +144,10 @@ dfx start
 Since this is only a canister execution environment, this deployment has fewer steps than a deployment to mainnet, which requires [cycles](/concepts/tokens-cycles.md)).
 :::
 
-<!-- To deploy your first dapp locally:
-
-#### 3.2.1 Check that you are still in the root directory for your project, if needed.
-
-Ensure that node modules are available in your project directory, if needed, by running the following command (it does not hurt to run this many times): -->
-
 In terminal B, navigate to the root directory `hello` of our project. Install all the necessary node modules by running
 
 ``` bash
 npm install
-```
-
-![npm install](_attachments/terminal-b-npm-install.png)
-
-Register, build, and deploy the `hello` canister to the local execution environment by running
-
-``` bash
 dfx deploy
 ```
 
@@ -187,9 +160,9 @@ Installing code for canister hello_backend, with canister_id rrkah-fqaaa-aaaaa-a
 Installing code for canister hello_frontend, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
 ```
 
-1.  `hello_backend` canister `rrkah-fqaaa-aaaaa-aaaaq-cai` which contains the backend logic.
+1.  `hello_backend` canister smart contract `rrkah-fqaaa-aaaaa-aaaaq-cai` which contains the backend logic.
 
-2.  `hello_frontend` canister `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
+2.  `hello_frontend` canister smart contract `yjl3-tyaaa-aaaaa-aaaba-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
 ### Test the dapp locally via the command line
 
