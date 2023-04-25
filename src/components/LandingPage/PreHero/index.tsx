@@ -25,6 +25,8 @@ import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
 import ParticleAnimation from "./ParticleAnimation";
 
+const MotionLink = motion(Link);
+
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
@@ -339,7 +341,7 @@ export default function PreHero({}): JSX.Element {
           ></motion.img>
           <div className="container-10 text-center">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in mb-8 md:mb-10"
               style={{
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
@@ -349,6 +351,19 @@ export default function PreHero({}): JSX.Element {
               <br />
               is our future
             </motion.h1>
+
+            <motion.div
+              className="animate-fade-up"
+              style={{
+                animationDelay: "1500ms",
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              <Link href="/docs/current/home" className="button-white">
+                Start Coding
+              </Link>
+            </motion.div>
           </div>
 
           <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
@@ -370,6 +385,7 @@ export default function PreHero({}): JSX.Element {
               document.getElementById("introduction").scrollIntoView();
             }}
             style={{
+              animationDelay: "2500ms",
               animationPlayState: start ? "running" : "paused",
               opacity: blobOpacity,
             }}
