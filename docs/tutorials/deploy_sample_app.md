@@ -7,7 +7,7 @@ title: Deploy sample code
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 10 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 <!-- Code editing knowledge is not necessary. -->
 
-Before starting, take a look at a version of this dapp running on-chain: <https://6lqbm-ryaaa-aaaai-qibsa-cai.icp0.io/>
+Before starting, take a look at a version of this dapp running on-chain: <https://i5wpe-oqaaa-aaaal-qbyla-cai.icp0.io/>
 
 In this tutorial, you will learn how to:
 
@@ -55,7 +55,7 @@ To build and deploy the `Hello` dapp, you need to install the following tools.
 
 ### dfx
 
-In this tutorial, we use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
+This tutorial uses a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
 To install `dfx`, run:
 
