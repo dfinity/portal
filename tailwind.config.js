@@ -205,6 +205,7 @@ module.exports = {
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
                 '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.png")] aspect-[256/251]',
+                '.blob-white-dense': '@apply bg-[url("/img/blob-white-dense.webp")] aspect-[512/461]',
                 '.blob-xs': '@apply w-[500px]',
                 '.blob-sm': '@apply w-[800px]',
                 '.blob-md': '@apply w-[1000px]',
@@ -246,6 +247,7 @@ module.exports = {
                 '.text-gradient-base': '@apply text-transparent bg-clip-text',
                 '.text-gradient': '@apply text-gradient-base bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
                 '.text-gradient-denver': '@apply text-gradient-base bg-[linear-gradient(90deg,#6A85F1_22.19%,#C572EF_79.9%)]',
+                '.text-gradient-green': '@apply text-gradient-base bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
             };

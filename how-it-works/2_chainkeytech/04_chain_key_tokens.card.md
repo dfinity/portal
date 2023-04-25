@@ -1,7 +1,7 @@
 ---
 title: Chain-key tokens
 abstract: This feature brings a Bitcoin ‘twin’ token to ICP that is backed 1:1 with real bitcoin, but native to the Internet Computer, benefitting from its low latency, high throughput, and low fees. In the future, when the Ethereum integration is available, further chain-key tokens will come to the ICP.
-coverImage: /img/how-it-works/ckbtc-content.1200x600.jpg
+coverImage: /img/how-it-works/ck-tokens-content.600x300.webp
 ---
 
 ![](/img/how-it-works/ck-tokens-content.600x300.webp)
