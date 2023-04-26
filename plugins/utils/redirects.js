@@ -8,6 +8,7 @@ const redirects = `
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
+  /ckbtc /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
@@ -38,6 +39,7 @@ const redirects = `
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   /docs/developers-guide/concepts/what-is-ic /what-is-the-ic
+  /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
@@ -48,6 +50,7 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   
   /docs/current/developer-docs/build/ /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
@@ -63,6 +66,7 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents/
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
@@ -90,6 +94,7 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
+  /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/setup/manage-canisters
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/2-quickstart /docs/current/tutorials/deploy_sample_app
@@ -133,6 +138,7 @@ const redirects = `
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())

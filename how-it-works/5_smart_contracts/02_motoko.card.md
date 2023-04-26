@@ -2,7 +2,7 @@
 title: Motoko
 ---
 
-![](/img/how-it-works/motoko.600x300.jpg)
+![](/img/how-it-works/motoko.webp)
 
 # Motoko
 

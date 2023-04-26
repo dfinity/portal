@@ -78,16 +78,6 @@ const config = {
     ],
   ],
 
-  stylesheets: [
-    {
-      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
-      type: "text/css",
-      integrity:
-        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
-      crossorigin: "anonymous",
-    },
-  ],
-
   presets: [
     [
       "classic",
@@ -180,6 +170,10 @@ const config = {
                   href: "/how-it-works",
                 },
                 {
+                  label: "Sustainability",
+                  href: "/capabilities/sustainability",
+                },
+                {
                   label: "Whitepaper",
                   href: "https://internetcomputer.org/whitepaper.pdf",
                 },
@@ -202,6 +196,10 @@ const config = {
                 {
                   label: "Bitcoin Integration",
                   href: "/bitcoin-integration",
+                },
+                {
+                  label: "Ethereum Integration",
+                  href: "/ethereum-integration",
                 },
                 {
                   label: "HTTPS Outcalls",
@@ -339,7 +337,7 @@ const config = {
             type: "dropdown",
             position: "right",
             label: "Community",
-            className: "dropdown--custom",
+            className: "dropdown--custom dropdown--columns-2",
             items: intoColumns([
               [
                 menuDivider("Get Involved"),
@@ -348,13 +346,34 @@ const config = {
                   href: "/live-sessions",
                 },
                 {
-                  label: "Community Blog",
-                  href: "https://medium.com/dfinity",
+                  label: "Roadmap",
+                  href: "/roadmap",
                 },
+                {
+                  label: "ICP Careers",
+                  href: "http://careers.internetcomputer.org/",
+                },
+                {
+                  label: "Become a Node Provider",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                },
+                {
+                  label: "DFINITY Foundation",
+                  href: "https://dfinity.org",
+                },
+              ],
+              [
+                menuDivider("Join The Discussion"),
                 {
                   html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
+                {
+                  label: "Community Blog",
+                  href: "https://medium.com/dfinity",
+                },
+
+                menuDivider("Grants"),
                 {
                   label: "Developer Grants",
                   href: "https://dfinity.org/grants",
@@ -362,18 +381,6 @@ const config = {
                 {
                   label: "Community Grants",
                   href: "https://dfinity.org/community-grants",
-                },
-                {
-                  label: "ICP Careers",
-                  href: "http://careers.internetcomputer.org/",
-                },
-                {
-                  label: "Roadmap",
-                  href: "/roadmap",
-                },
-                {
-                  label: "DFINITY Foundation",
-                  href: "https://dfinity.org",
                 },
               ],
             ]),
@@ -423,6 +430,10 @@ const config = {
               {
                 label: "Internet Computer Home",
                 to: "/",
+              },
+              {
+                label: "Awesome Internet Computer",
+                href: "https://github.com/dfinity/awesome-internet-computer#readme",
               },
               { label: "Sample Code", to: "/samples" },
               {
@@ -583,6 +594,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ["rust"],
       },
       liveCodeBlock: {
         playgroundPosition: "bottom",

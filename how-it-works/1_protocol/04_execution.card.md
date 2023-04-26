@@ -2,7 +2,7 @@
 title: Execution
 ---
 
-![](/img/how-it-works/overview-of-the-internet-computer.600x300.jpg)
+![](/img/how-it-works/execution.webp)
 
 # Execution
 

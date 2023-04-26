@@ -20,9 +20,12 @@ import { useQuery } from "react-query";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
 import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
 import ParticleAnimation from "./ParticleAnimation";
+
+const MotionLink = motion(Link);
 
 function formatNumber(x: number) {
   return x
@@ -97,7 +100,7 @@ const Numbers = () => {
     <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {blockInfoQuery.isFetched ? (
+          {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
             <ConstantRateCounter
               start={blockInfoQuery.data[0]}
               ratePerSec={blockInfoQuery.data[1]}
@@ -112,12 +115,12 @@ const Numbers = () => {
           <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
             ICP scales horizontally by transparently combining subnet
-            blockchains into one unified blockchain. Subnets process blocks in
-            parallel.
+            blockchains into one unified blockchain. Blocks and transactions per
+            second are unbounded.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {finalizationRate.isFetched ? (
+              {finalizationRate.isFetched && finalizationRate.isSuccess ? (
                 (finalizationRate.data * 2).toFixed(1)
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -127,7 +130,7 @@ const Numbers = () => {
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {subnetCountQuery.isFetched ? (
+              {subnetCountQuery.isFetched && subnetCountQuery.isSuccess ? (
                 subnetCountQuery.data
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -139,56 +142,31 @@ const Numbers = () => {
       </AnimateSpawn>
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {transactionRateQuery.isFetched ? (
-            <SpringCounter
-              target={transactionRateQuery.data}
-              initialTarget={transactionRateQuery.data}
-              initialValue={0}
-              format={formatNumber}
-              className="text-transparent bg-clip-text hero-stat-blue"
-              springConfig={[3, 1, 1]}
-            ></SpringCounter>
+          {updateTxRate.isFetched && updateTxRate.isSuccess ? (
+            <>
+              <SpringCounter
+                target={updateTxRate.data * 80}
+                initialTarget={updateTxRate.data * 80}
+                initialValue={updateTxRate.data * 80}
+                format={formatNumber}
+                springConfig={[3, 1, 1]}
+                className="text-transparent bg-clip-text hero-stat-blue"
+              ></SpringCounter>
+              <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                {getEthEquivalentFigureSpacer(
+                  Math.floor(updateTxRate.data * 1)
+                )}
+              </span>
+            </>
           ) : (
-            <>&nbsp;</>
+            <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+              {getEthEquivalentFigureSpacer(Math.floor(5000 * 1))}
+            </span>
           )}
         </h3>
         <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
-          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Transactions invoke computations by "actor" smart contracts. Subnets
-            run transactions concurrently, but deterministically
-          </p>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              $0.0000022
-            </span>{" "}
-            av. cost/Tx
-          </div>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
-            <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
-              {updateTxRate.isFetched ? (
-                <>
-                  <SpringCounter
-                    target={updateTxRate.data * 80}
-                    initialTarget={updateTxRate.data * 80}
-                    initialValue={updateTxRate.data * 80}
-                    format={formatNumber}
-                    springConfig={[3, 1, 1]}
-                    className="col-start-1 row-start-1"
-                  ></SpringCounter>
-                  <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
-                    {getEthEquivalentFigureSpacer(
-                      Math.floor(updateTxRate.data * 80)
-                    )}
-                  </span>
-                </>
-              ) : (
-                <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
-                  {getEthEquivalentFigureSpacer(Math.floor(5000 * 80))}
-                </span>
-              )}
-            </span>{" "}
-            ETH equivalent Tx/s{" "}
+          <p className="tw-paragraph md:tw-heading-5 mb-0 flex items-center">
+            ETH equivalent Tx/s
             <Link
               href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
               title="Read more: Not all transactions are equal"
@@ -196,6 +174,42 @@ const Numbers = () => {
             >
               <InfoIcon className="w-4 h-4 md:w-6 md:h-6" />
             </Link>
+          </p>
+          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
+            Transactions invoke "actor" canister smart contract computations,
+            which subnet blockchains can run concurrently (yet
+            deterministically).
+          </p>
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
+            <span className="tw-lead md:text-[35px] md:leading-[30px]">
+              $0.0000022
+            </span>{" "}
+            average cost/Tx
+          </div>
+          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
+            <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
+              {transactionRateQuery.isFetched &&
+              transactionRateQuery.isSuccess ? (
+                <>
+                  <SpringCounter
+                    target={transactionRateQuery.data}
+                    initialTarget={transactionRateQuery.data}
+                    initialValue={0}
+                    format={formatNumber}
+                    className="col-start-1 row-start-1"
+                    springConfig={[3, 1, 1]}
+                  ></SpringCounter>
+                  <span className="col-start-1 row-start-1 invisible pointer-events-none pr-1">
+                    {getEthEquivalentFigureSpacer(
+                      Math.floor(updateTxRate.data * 1)
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>&nbsp;</>
+              )}
+            </span>{" "}
+            ICP Tx/s{" "}
           </div>
         </div>
       </AnimateSpawn>
@@ -204,7 +218,7 @@ const Numbers = () => {
         variants={transitions.container}
       >
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {stateSizeQuery.isFetched ? (
+          {stateSizeQuery.isFetched && stateSizeQuery.isSuccess ? (
             <SpringCounter
               target={stateSizeQuery.data}
               initialTarget={stateSizeQuery.data}
@@ -222,9 +236,9 @@ const Numbers = () => {
             Smart contract memory
           </p>
           <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP smart contracts combine WebAssembly bytecode with persistent
-            on-chain memory, with gigabytes available – supporting the creation
-            of truly decentralized systems and services that are 100% on-chain
+            Canister smart contracts are bundles of WebAssembly instructions and
+            persistent memory. One smart contract can maintain gigabytes of
+            memory pages.
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
@@ -320,14 +334,14 @@ export default function PreHero({}): JSX.Element {
           <motion.img
             src="/img/home/hero-blur.svg"
             alt=""
-            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
+            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto pointer-events-none"
             style={{
               opacity: blobOpacity,
             }}
           ></motion.img>
           <div className="container-10 text-center">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in mb-8 md:mb-10"
               style={{
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
@@ -337,6 +351,32 @@ export default function PreHero({}): JSX.Element {
               <br />
               is our future
             </motion.h1>
+
+            <motion.div
+              className="animate-fade-up relative"
+              style={{
+                animationDelay: "1500ms",
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              <Link href="/docs/current/home" className="button-white">
+                Start Coding
+              </Link>
+            </motion.div>
+          </div>
+
+          <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
+            <motion.div
+              className="animate-fade-in"
+              style={{
+                animationDelay: "2000ms",
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              <OnChainBadge sizeClasses="w-20 h-20 md:w-32 md:h-32"></OnChainBadge>
+            </motion.div>
           </div>
 
           <motion.button
@@ -345,6 +385,7 @@ export default function PreHero({}): JSX.Element {
               document.getElementById("introduction").scrollIntoView();
             }}
             style={{
+              animationDelay: "2500ms",
               animationPlayState: start ? "running" : "paused",
               opacity: blobOpacity,
             }}

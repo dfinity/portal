@@ -149,16 +149,16 @@ const Content: React.FC = () => {
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
               className="button-outline"
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              href="https://dashboard.internetcomputer.org/bitcoin"
             >
-              Code ckBTC
+              ckBTC on the Dashboard
             </Link>
             <Link
-              href="https://internetcomputer.org/how-it-works#Chain-key-technology"
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
               className="link-primary link-with-icon"
             >
               <LinkArrowRight></LinkArrowRight>
-              Learn more
+              Code ckBTC
             </Link>
           </p>
         </div>
@@ -260,41 +260,64 @@ const Content: React.FC = () => {
           >
             <img
               src="/img/bitcoin-integration/crowdfund.webp"
-              alt="Crowdfund NFT logo"
+              alt="Funded logo"
               className="w-16 md:w-20 aspect-square"
             />
             <div className="flex-1">
               <h3 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
-                CrowdFund NFT
+                Funded
               </h3>
               <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
-                CrowdFund NFT is an alternative to Kickstarter and other
-                traditional crowdfunding platforms. Running 100% on the Internet
-                Computer, it uses NFTs to provide ‘proof of ownership’ in the
-                projects you help crowdfund. Plus, you can now fund the projects
-                you love in ICP and BTC.
+                Funded is an alternative to Kickstarter and other traditional
+                crowdfunding platforms. Running 100% on the Internet Computer,
+                it uses NFTs to provide ‘proof of ownership’ in the projects
+                you help crowdfund. Plus, you can now fund the projects you
+                love in ICP and BTC.
               </p>
             </div>
           </Link>
           <Link
-            href="https://vault-bet.com"
+            href="https://dscvr.one/"
             className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
           >
             <img
-              src="/img/bitcoin-integration/vault.webp"
-              alt="VailtBet logo"
+              src="/img/showcase/dscvr-logo.png"
+              alt="DSCVR logo"
               className="w-16 md:w-20 aspect-square"
             />
             <div className="flex-1">
               <h3 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
-                VaultBet
+                DSCVR
               </h3>
               <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
-                VaultBet is a decentralized sports betting exchange that uses
-                smart contract technology to make sports betting peer-to-peer,
-                trustless and fun! Users are in control and markets decide the
-                odds, not bookies. Connect your Plug wallet to trade bets in ICP
-                and BTC.
+                DSCVR is an end-to-end decentralized Web3 social media platform that
+                allows communities to form into groups called Portals. These Portals
+                can be NFT gated, airdrop fungible and non-fungible tokens to their
+                members and much more. DSCVR also allows for tipping posts in a
+                growing number of cryptos, including ckBTC.
+              </p>
+            </div>
+          </Link>
+          <Link
+            href="https://oc.app/"
+            className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+          >
+            <img
+              src="/img/showcase/openchat_logo.webp"
+              alt="OpenChat logo"
+              className="w-16 md:w-20 aspect-square"
+            />
+            <div className="flex-1">
+              <h3 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                OpenChat
+              </h3>
+              <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
+                What if you could own a piece of WhatsApp and vote on what features
+                get added? OpenChat is a fully decentralized real-time messaging
+                service that is indistinguishable from Web2 chat apps, while living
+                100% on the blockchain. This allows people to send crypto to their
+                friends - including Bitcoin with TX fees at only $0.0029 and OpenChat's
+                own governance token, CHAT.
               </p>
             </div>
           </Link>

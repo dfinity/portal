@@ -1,7 +1,7 @@
 ---
 title: Chain-key signatures
 abstract: 
-shareImage: /img/how-it-works/threshold-ecdsa-signing.600.jpg
+shareImage: /img/how-it-works/chain-key-signature.webp
 slug: threshold-ecdsa-signing
 ---
 

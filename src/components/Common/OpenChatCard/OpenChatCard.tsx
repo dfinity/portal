@@ -12,7 +12,7 @@ const OpenChatCard: React.FC<{
 }> = ({ className }) => {
   return (
     <AnimateSpawn
-      className={clsx("md:container-12", className)}
+      className={clsx("md:container-12 pt-30 md:pt-40", className)}
       el={motion.section}
       variants={transitions.container}
     >
@@ -40,9 +40,10 @@ const OpenChatCard: React.FC<{
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              It became the world’s first "open internet service". A new "SNS" DAO took over its code and data,
-              and swapped $ICP for its governance tokens, placing its community in control, and creating a
-              community treasury. Now it will founderize its users too.
+              Open Chat is an early "open internet service." An SNS DAO assumed
+              control of its smart contracts, and swapped $ICP for its
+              governance tokens, placing its community in control, and creating
+              a powerful community treasury.
             </motion.p>
 
             <motion.p className="mb-0" variants={transitions.item}>

@@ -223,7 +223,7 @@ function NftPage() {
           <TranslatedLayout
             reverse={true}
             imageUrl="/img/nft/creator.webp"
-            imageWithBlob={true}
+            imageWithBlob="blob blob-infinite blob-center blob-md md:blob-lg"
             imageClassName="relative"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
