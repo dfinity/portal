@@ -223,7 +223,7 @@ URLs:
 
 Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/>
 
-### 🎉 Success, you are done! 🎉
+ **🎉 Success, you are done! 🎉**
 
 ### You have successfully deployed your dapp on-chain
 
