@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-title: Deploy sample app in 5 minutes
+title: Deploy your first dapp in 5 minutes
 ---
 # Deploy your first ICP dapp in 5 minutes
 
-## 1. Introduction: gitwhat you are deploying
+## 1. Introduction
 
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 5 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 
@@ -30,7 +30,7 @@ To verify that `dfx` properly installed, run:
 dfx --version
 ```
 
-### Requirements:
+### Requirements
 
 * Node.js - This tutorial works best with a node.js version higher than `16.*.*`.
 
@@ -129,7 +129,7 @@ Practical notes about cycles:
 
 ### Acquiring cycles via the free cycles faucet
 
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md).Please note the fauce can only be used once.
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md). Please note the fauce can only be used once.
 
 #### Check your cycles balance
 
@@ -232,12 +232,12 @@ Note the bottom of the message which returns the URL where you can see your cani
 Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 :::
 
-## Wrap-up
+## 5. Wrap-up
 
-Congratulations! You have built a dapp fully on-chain (both backend and frontend) within 10 minutes.
+You have built a dapp fully on-chain (both backend and frontend).
 
 Tutorial takeaways:
--   Dapps can be composed of multiple canisters
+-   Dapps can be composed of multiple canistersm backend and frontend
 -   Dapps can be deployed locally and on-chain
 -   Cycles are needed power dapps
 -   Get free cycles from the cycles wallet
