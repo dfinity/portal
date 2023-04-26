@@ -42,12 +42,12 @@ A `dfx` project is a set of artifacts, including source code and configuration f
 ``` bash
 dfx new hello
 cd hello
-dfx start
+dfx start --background
 ```
 
 -   The `dfx new hello` command created a new project called `hello` in your local machine
 -   `cd hello` navigates your terminal into the newly-created `hello` project
--   `dfx start` starts a local instance of the IC to test and deploy too
+-   `dfx start --background` starts a local instance of the IC to test and deploy too
 
 :::note
 
@@ -61,7 +61,7 @@ There is now a local Instance of the execution environment of the IC running on 
 
 ## 3. Deploy the dapp locally
 
-In a new terminal window, navigate to the root directory `hello` project, then run:
+Now you can deply locally. Run:
 
 ``` bash
 npm install
