@@ -1,7 +1,7 @@
 ---
-sidebar_position: 2
-title: Converting ICP tokens into cycles
+position: 4
 ---
+
 # Converting ICP tokens into cycles
 
 To convert ICP tokens into cycles, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
