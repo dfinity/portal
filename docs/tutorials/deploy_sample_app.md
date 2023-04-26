@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Deploy sample app in 1 minute
+title: Deploy sample app in 5 minutes
 ---
 # Tutorial 1 - Deploy sample code
 
@@ -30,7 +30,7 @@ To verify that `dfx` properly installed, run:
 dfx --version
 ```
 
-## 2. Create a project (1 min)
+## 2. Create a project
 
 A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister smart contract. By running 
 
@@ -105,9 +105,9 @@ You should see this:
 
 ![Hello](_attachments/hello-dapp-intro-local.png)
 
-## 4. Deploying dapp on-chain
+## 4. Deploy the dapp on-chain
 
-### Acquiring cycles to deploy on-chain (5 min)
+### Acquiring cycles to deploy on-chain
 
 In order to run on-chain, IC dapps require cycles to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
@@ -137,7 +137,7 @@ $ {
 }
 ```
 
-### Acquiring cycles via the free cycles faucet (2 min)
+### Acquiring cycles via the free cycles faucet
 
 This option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
@@ -153,7 +153,7 @@ dfx wallet --network ic balance
 
 You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min). If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. 
 
-### Deploying on-chain (1 min)
+### Deploying on-chain
 
 Now that you have your [cycles](/developer-docs/setup/cycles/index.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. In terminal B, run:
 
@@ -219,37 +219,17 @@ URLs:
 
 Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/>
 
-In the example above, we created a `hello` dapp that is composed of:
+**🎉 Success, you are done! 🎉 **
 
-1.  `hello_backend` canister smart contract `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
+**You have successfully deployed your dapp on-chain.**
 
-2.  `hello_frontend` canister smart contract `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
-
-### Testing the on-chain dapp via the command line
-
-Like testing locally, you can ping your on-chain canister via the command line. Run this:
-
-``` bash
-dfx canister --network ic call hello_backend greet '("everyone": text)'
-```
-
-Note the way the message is constructed:
-
--   `dfx canister --network ic call` is the setup for calling a canister on the IC.
-
--   `hello_backend greet` means we are sending a message to a canister named `hello_backend` and evoking its `greet` method. `dfx` knows which `hello_backend` canister (out of the many in the IC), one refers to because a mapping of `hello_backend` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
--   `'("everyone": text)'` is the parameter we are sending to `greet` (which accepts `Text` as its only input).
-
-
-### See your dapp live on-chain via a browser
-
-Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
+:::note
 
 Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 
 ![Hello](_attachments/service-worker.png)
 
-After loading the service worker, your dapp will load as expected.
+:::
 
 ## Wrap-up
 
