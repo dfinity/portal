@@ -25,6 +25,8 @@ import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
 import ParticleAnimation from "./ParticleAnimation";
 
+const MotionLink = motion(Link);
+
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
@@ -98,7 +100,7 @@ const Numbers = () => {
     <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {blockInfoQuery.isFetched ? (
+          {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
             <ConstantRateCounter
               start={blockInfoQuery.data[0]}
               ratePerSec={blockInfoQuery.data[1]}
@@ -118,7 +120,7 @@ const Numbers = () => {
           </p>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {finalizationRate.isFetched ? (
+              {finalizationRate.isFetched && finalizationRate.isSuccess ? (
                 (finalizationRate.data * 2).toFixed(1)
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -128,7 +130,7 @@ const Numbers = () => {
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
             <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {subnetCountQuery.isFetched ? (
+              {subnetCountQuery.isFetched && subnetCountQuery.isSuccess ? (
                 subnetCountQuery.data
               ) : (
                 <>&nbsp;&nbsp;</>
@@ -140,7 +142,7 @@ const Numbers = () => {
       </AnimateSpawn>
       <AnimateSpawn className="text-left" variants={transitions.container}>
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {updateTxRate.isFetched ? (
+          {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
                 target={updateTxRate.data * 80}
@@ -186,7 +188,8 @@ const Numbers = () => {
           </div>
           <div className="tw-paragraph md:tw-lead-sm flex items-center gap-1 whitespace-nowrap">
             <span className="tw-lead md:text-[35px] md:leading-[30px] inline-grid">
-              {transactionRateQuery.isFetched ? (
+              {transactionRateQuery.isFetched &&
+              transactionRateQuery.isSuccess ? (
                 <>
                   <SpringCounter
                     target={transactionRateQuery.data}
@@ -215,7 +218,7 @@ const Numbers = () => {
         variants={transitions.container}
       >
         <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {stateSizeQuery.isFetched ? (
+          {stateSizeQuery.isFetched && stateSizeQuery.isSuccess ? (
             <SpringCounter
               target={stateSizeQuery.data}
               initialTarget={stateSizeQuery.data}
@@ -338,7 +341,7 @@ export default function PreHero({}): JSX.Element {
           ></motion.img>
           <div className="container-10 text-center">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in mb-8 md:mb-10"
               style={{
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
@@ -348,6 +351,19 @@ export default function PreHero({}): JSX.Element {
               <br />
               is our future
             </motion.h1>
+
+            <motion.div
+              className="animate-fade-up"
+              style={{
+                animationDelay: "1500ms",
+                animationPlayState: start ? "running" : "paused",
+                opacity: blobOpacity,
+              }}
+            >
+              <Link href="/docs/current/home" className="button-white">
+                Start Coding
+              </Link>
+            </motion.div>
           </div>
 
           <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
@@ -369,6 +385,7 @@ export default function PreHero({}): JSX.Element {
               document.getElementById("introduction").scrollIntoView();
             }}
             style={{
+              animationDelay: "2500ms",
               animationPlayState: start ? "running" : "paused",
               opacity: blobOpacity,
             }}
