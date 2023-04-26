@@ -334,7 +334,7 @@ export default function PreHero({}): JSX.Element {
           <motion.img
             src="/img/home/hero-blur.svg"
             alt=""
-            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
+            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto pointer-events-none"
             style={{
               opacity: blobOpacity,
             }}
@@ -353,7 +353,7 @@ export default function PreHero({}): JSX.Element {
             </motion.h1>
 
             <motion.div
-              className="animate-fade-up"
+              className="animate-fade-up relative"
               style={{
                 animationDelay: "1500ms",
                 animationPlayState: start ? "running" : "paused",
