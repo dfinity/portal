@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # Choosing a programming language
 
-To create smart contract canisters, it is typical to use a so-called CDK, a Canister Development Kit.
+To create canister smart contract it is typical to use a so-called CDK, a Canister Development Kit.
 The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API. Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 
 In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) depoyable as an ICP smart contract.

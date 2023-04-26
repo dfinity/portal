@@ -76,6 +76,11 @@ URLs:
 
 -  In the sample output above, `hello_frontend` is the frontend of the dapp, it can be accessed at http://127.0.0.1:4943/?canisterId=renrk-eyaaa-aaaaa-aaada-cai. You should have a different URL when you deploy locally.
 
+**🎉 Success! 🎉 **
+
+You have deployed your first ICP dapp locally.
+
+
 ### Test the dapp locally via the command line
 
 Now that the smart contract canister is deployed to the local execution environment, you can interact with it by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. 
@@ -100,7 +105,9 @@ You should see this:
 
 ![Hello](_attachments/hello-dapp-intro-local.png)
 
-## 4. Acquiring cycles to deploy on-chain (5 min)
+## 4. Deploying dapp on-chain
+
+### Acquiring cycles to deploy on-chain (5 min)
 
 In order to run on-chain, IC dapps require cycles to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
@@ -113,24 +120,10 @@ Practical notes about cycles:
 -   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
 -   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/gas-cost.md).
--   You can learn more about acquiring and managing ICP in [Acquiring and managing ICP tokens](https://wiki.internetcomputer.org/wiki/Tutorials_for_acquiring,_managing,_and_staking_ICP).
 
-In this tutorial, we present two ways of acquiring cycles:
+### Getting started for deploying on-chain
 
--   **Option 1:** [Acquiring cycles via the free cycles faucet](#option-1-acquiring-cycles-via-the-free-cycles-faucet-2-min) shows one how to get cycles via the cycles faucet (most common for new developers).
--   **Option 2:** [Converting ICP tokens into cycles](#option-2-converting-icp-tokens-into-cycles-5-min) shows one how to get cycles via ICP tokens (most common for developers who want more cycles).
-
-By the end of this section, you will now have three canisters:
-
--   `hello_backend` canister (not yet deployed to the IC)
--   `hello_frontend` canister in your project (not yet deployed to the IC)
--   Your cycles wallet canister that holds your cycles (deployed on the IC)
-
-![hello dapp and cycles wallet](_attachments/3-canisters-hello-dapp.png)
-
-<!-- ### 4.2 Check the connection to the Internet Computer (terminal B) -->
-
-As a sanity check, it is good practice to check if your connection to the IC is stable by verifying the current status of the Internet Computer blockchain and your ability to connect to it:
+As a sanity check, it is good practice to check if your connection to the IC is stable by pinging it:
 
 ``` bash
 dfx ping ic
@@ -144,7 +137,7 @@ $ {
 }
 ```
 
-### Option 1: Acquiring cycles via the free cycles faucet (2 min)
+### Acquiring cycles via the free cycles faucet (2 min)
 
 This option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
 
@@ -152,178 +145,89 @@ For the purposes of this tutorial, you can acquire free cycles for your `Hello` 
 
 #### Check your cycles balance
 
-Now that you have used the cycles faucet, in terminal B you can check your cycles balance:
+Now that you have used the cycles faucet, you can check your cycles balance:
 
 ``` bash
 dfx wallet --network ic balance
 ```
 
-You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min).
+You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min). If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. 
 
-If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. You should try [Option 2: Converting ICP token into cycles](#option-2-converting-icp-tokens-into-cycles-5-min).
-
-### Option 2: Converting ICP tokens into cycles (5 min)
-
-This option is best for people who have already exhausted the cycles wallet or who want to set up their environment to add more cycles in the future.
-
-To convert ICP tokens into cycles, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
-
-``` bash
-dfx ledger account-id
-```
-
-This will display your account number on the ICP ledger. It looks similar to this:
-
-```
-e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
-```
-
-Once you have transferred some ICP tokens into this account (5-10$ worth should be plenty to get going), you can see the balance using this command:
-
-``` bash
-dfx ledger --network ic balance
-```
-
-This will output something like this:
-
-```
-12.49840000 ICP
-```
-
-With those ICP tokens ready, you can start creating your cycles wallet. To start, you have to create a canister which will become your wallet. The base command for this is as follows:
-
-``` bash
-dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
-```
-
-The two values you have to substitute are your own principal and the amount of tokens you want to convert. To figure out your own principal, use the output of `dfx identity get-principal`. If my principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and I want to convert 2.3 ICP into cycles, the command looks like this:
-
-``` bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3
-```
-
-This command will take some time and output something similar to the following:
-
-```
-Transfer sent at BlockHeight: 351220
-Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-The id in this output is the address of the canister where your wallet will live. In this example, it would be `gastn-uqaaa-aaaae-aaafq-cai`.
-
-Now that the canister is created, you can install the wallet code using this command:
-
-``` bash
-dfx identity --network ic deploy-wallet <canister-identifer>
-```
-
-Here, you have to substitute the canister identifier using the id you received in the output of the previous command. So, in the example this would look like this:
-
-``` bash
-dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
-```
-
-And the output should look like this:
-
-```
-Creating a wallet canister on the IC network.
-The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-Now your wallet should be configured and ready to go. To check if everything went right, run this to see the identifier of your configured wallet:
-
-``` bash
-dfx identity --network ic get-wallet
-```
-
-This should print the canister id you used in the commands earlier.
-
-You can also check the balance of your new cycles wallet:
-
-``` bash
-dfx wallet --network ic balance
-```
-
-This should print something looking like this:
-
-```
-6.951 TC (trillion cycles).
-```
-
-
-## 5. Deploy on-chain (1 min)
+### Deploying on-chain (1 min)
 
 Now that you have your [cycles](/developer-docs/setup/cycles/index.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. In terminal B, run:
 
 ``` bash
 npm install
-```
-
-``` bash
 dfx deploy --network ic --with-cycles 1000000000000
 ```
 
-The `--network` option specifies the network alias or URL for deploying the dapp. This option is required to install on the Internet Computer blockchain mainnet. `--with-cycles` explicitly tells `dfx` how many cycles to use, otherwise it will use the default of 3 trillion.
+-   The `--network` option specifies the network alias or URL for deploying the dapp.  This option is required to install on the Internet Computer blockchain mainnet.
+-   The `--with-cycles` explicitly tells `dfx` how many cycles to use, otherwise it will use the default of 3 trillion.
+
 
 If successful, your terminal should look like this:
 
 ``` bash
 Deploying all canisters.
 Creating canisters...
-Creating canister "hello_backend"...
-"hello_backend" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
-Creating canister "hello_frontend"...
-"hello_frontend" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
+Creating canister hello_backend...
+hello_backend canister created on network ic with canister id: jxzn6-maaaa-aaaal-qbyma-cai
+Creating canister hello_frontend...
+hello_frontend canister created on network ic with canister id: jqylk-byaaa-aaaal-qbymq-cai
 Building canisters...
+Shrink WASM module size.
 Building frontend...
+WARN: Building canisters before generate for Motoko
+WARN: .did file for canister 'hello_frontend' does not exist.
+Shrink WASM module size.
+Generating type declarations for canister hello_frontend:
+  src/declarations/hello_frontend/hello_frontend.did.d.ts
+  src/declarations/hello_frontend/hello_frontend.did.js
+  src/declarations/hello_frontend/hello_frontend.did
+Generating type declarations for canister hello_backend:
+  src/declarations/hello_backend/hello_backend.did.d.ts
+  src/declarations/hello_backend/hello_backend.did.js
+  src/declarations/hello_backend/hello_backend.did
+
 Installing canisters...
-Installing code for canister hello_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Installing code for canister hello_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
-Authorizing our identity (default) to the asset canister...
+Installing code for canister hello_backend, with canister ID jxzn6-maaaa-aaaal-qbyma-cai
+Installing code for canister hello_frontend, with canister ID jqylk-byaaa-aaaal-qbymq-cai
 Uploading assets to asset canister...
-  /index.html 1/1 (472 bytes)
-  /index.html (gzip) 1/1 (314 bytes)
-  /index.js 1/1 (260215 bytes)
-  /index.js (gzip) 1/1 (87776 bytes)
-  /main.css 1/1 (484 bytes)
-  /main.css (gzip) 1/1 (263 bytes)
-  /sample-asset.txt 1/1 (24 bytes)
-  /logo.png 1/1 (25397 bytes)
-  /index.js.map 1/1 (842511 bytes)
-  /index.js.map (gzip) 1/1 (228404 bytes)
-  /index.js.LICENSE.txt 1/1 (499 bytes)
-  /index.js.LICENSE.txt (gzip) 1/1 (285 bytes)
+Fetching properties for all assets in the canister.
+Starting batch.
+Staging contents of new and changed assets in batch 1:
+  /sample-asset.txt 1/1 (24 bytes) sha 2d523f5aaeb195da24dcff49b0d560a3d61b8af859cee78f4cff0428963929e6 (with 7 headers)
+  /main.css 1/1 (537 bytes) sha 75ac0c5aea719bb2b887fffbde61867be5c3a9eceab3d75619763c28735891cb (with 7 headers)
+  /index.js.LICENSE.txt 1/1 (413 bytes) sha f2dcfd36875be0296e171d0a6b1161de82510a3e60f4d54cc1b4bec0829f8b33 (with 7 headers)
+  /favicon.ico 1/1 (15406 bytes) sha 4e8d31b50ffb59695389d94e393d299c5693405a12f6ccd08c31bcf9b58db2d4 (with 7 headers)
+  /index.html (gzip) 1/1 (350 bytes) sha 16289744897bd78f5df24924dac6972c19e0bb56f5ddcf695de65656b942d769 (with 7 headers)
+  /logo2.svg 1/1 (15139 bytes) sha 037eb7ae523403daa588cf4f47a34c56a3f5de08a5a2dd2364839e45f14f4b8b (with 7 headers)
+  /index.js.LICENSE.txt (gzip) 1/1 (273 bytes) sha db89b3ccdfe399f8ef3135c0b076326a0ae9e1c96409f79f8e686031537c572c (with 7 headers)
+  /index.js (gzip) 1/1 (88325 bytes) sha 37809370db58979a0bd92a68eb403eb06f9314748862376e2b4ac2d6d171e631 (with 7 headers)
+  /main.css (gzip) 1/1 (299 bytes) sha b4879e7ba34e68b2965d626e48d772ce615e4f6b78b69cc8f2f91127ed18b850 (with 7 headers)
+  /index.html 1/1 (539 bytes) sha 053f9dc1283c64d114d43cbf03b0b0062afae08a04a5044ae58dbc68f4a1f93f (with 7 headers)
+  /index.js 1/1 (246603 bytes) sha 0de3c2e257ca0ac85423b3e4c7dc0a3aeb8906b73e3b72e47924ed6e80247406 (with 7 headers)
+Committing batch.
 Deployed canisters.
 URLs:
-  Frontend:
-    hello_frontend: https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/
-  Candid:
-    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=5o6tz-saaaa-aaaaa-qaacq-cai
+  Frontend canister via browser
+    hello_frontend: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
+  Backend canister via Candid interface:
+    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=jxzn6-maaaa-aaaal-qbyma-cai
 ```
 
-Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
+Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/>
 
 In the example above, we created a `hello` dapp that is composed of:
 
-1.  `hello_backend` canister `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
+1.  `hello_backend` canister smart contract `5o6tz-saaaa-aaaaa-qaacq-cai` which contains the backend logic.
 
-2.  `hello_frontend` canister `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
-
-### See your dapp live on-chain via a browser
-
-Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
-
-Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the IC and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
-
-![Hello](_attachments/service-worker.png)
-
-After loading the service worker, your dapp will load:
-
-![Hello](_attachments/frontend-result.png)
+2.  `hello_frontend` canister smart contract `5h5yf-eiaaa-aaaaa-qaada-cai` which contains the frontend assets (e.g. HTML, JS, CSS).
 
 ### Testing the on-chain dapp via the command line
 
-Since the canister has a method called `greet` (which accepts a string as a parameter), we can send it a message via `dfx`.
+Like testing locally, you can ping your on-chain canister via the command line. Run this:
 
 ``` bash
 dfx canister --network ic call hello_backend greet '("everyone": text)'
@@ -334,36 +238,18 @@ Note the way the message is constructed:
 -   `dfx canister --network ic call` is the setup for calling a canister on the IC.
 
 -   `hello_backend greet` means we are sending a message to a canister named `hello_backend` and evoking its `greet` method. `dfx` knows which `hello_backend` canister (out of the many in the IC), one refers to because a mapping of `hello_backend` to a canister id is stored locally in `.dfx/local/canister_ids.json`.
-
 -   `'("everyone": text)'` is the parameter we are sending to `greet` (which accepts `Text` as its only input).
 
-### Troubleshooting
 
-#### 403 Error
+### See your dapp live on-chain via a browser
 
-If you receive a 403 error, it is possible the identity you are using does not have enough cycles. You should try the following to debug:
+Navigate to and enter a name: <https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io/>
 
-#### 1. Confirm you are using the identity you assume are using
+Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 
-``` bash
-dfx identity whoami
-```
+![Hello](_attachments/service-worker.png)
 
-#### 2. Confirm the identity you are using has enough cycles on-chain
-
-``` bash
-dfx wallet --network ic balance
-```
-
-#### 3. Try proxying through your wallet
-
-Sometimes (especially when you created the canisters with `dfx` versions before 0.9.0) your wallet is set as your canister’s controller. To have your wallet be the source of the deployment instruction, add the flag `--wallet <insert-your-wallet-id-here>` to the deploy or call command.
-
-If this works and you would like to add your own principal as a controller of the canister (so you don’t have to use the `--wallet` option anymore), you can run this:
-
-``` bash
-dfx canister --wallet "$(dfx identity get-wallet)" update-settings --all --add-controller "$(dfx identity get-principal)"
-```
+After loading the service worker, your dapp will load as expected.
 
 ## Wrap-up
 
