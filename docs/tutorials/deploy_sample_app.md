@@ -109,7 +109,7 @@ You should see this:
 
 ### Acquiring cycles to deploy on-chain
 
-In order to run on-chain, IC dapps require cycles to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
+In order to run on-chain, IC dapps require [cycles](/developer-docs/setup/cycles/index.md) to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
 This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, who grow used to the first step of deploying a dapp being "go get tokens."
 
@@ -121,27 +121,10 @@ Practical notes about cycles:
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
 -   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/gas-cost.md).
 
-### Getting started for deploying on-chain
-
-As a sanity check, it is good practice to check if your connection to the IC is stable by pinging it:
-
-``` bash
-dfx ping ic
-```
-
-If successful you will see an output resembling the following:
-
-``` bash
-$ {
-  "ic_api_version": "0.18.0"  "impl_hash": "d639545e0f38e075ad240fd4ec45d4eeeb11e1f67a52cdd449cd664d825e7fec"  "impl_version": "8dc1a28b4fb9605558c03121811c9af9701a6142"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
-}
-```
 
 ### Acquiring cycles via the free cycles faucet
 
-This option is best for people who want minimal time investment and have never used cycles faucet (faucet can be used only once).
-
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md).
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md).Please note the fauce can only be used once.
 
 #### Check your cycles balance
 
@@ -155,7 +138,23 @@ You should see around 20 trillion cycles if you run this after using the cycles 
 
 ### Deploying on-chain
 
-Now that you have your [cycles](/developer-docs/setup/cycles/index.md) and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. In terminal B, run:
+Now that you have cycles and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. 
+
+As a sanity check, it is good practice to check if your connection to the ICP network is stable by pinging it:
+
+``` bash
+dfx ping ic
+```
+
+If successful you will see an output resembling the following:
+
+``` bash
+$ {
+  "ic_api_version": "0.18.0"  "impl_hash": "d639545e0f38e075ad240fd4ec45d4eeeb11e1f67a52cdd449cd664d825e7fec"  "impl_version": "8dc1a28b4fb9605558c03121811c9af9701a6142"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
+}
+```
+
+Now that you tested the connecion to the ICP network, run:
 
 ``` bash
 npm install
