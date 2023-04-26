@@ -158,9 +158,9 @@ const Highlights: React.FC = () => {
               </ul>
 
               <p className="mt-20 mb-0">
-                <Link href="" className="link-white link-with-icon">
+                <Link href="/capabilities" className="link-white link-with-icon">
                   <LinkArrowRight />
-                  Link
+                  More ICP Capabilities
                 </Link>
               </p>
             </div>
@@ -186,9 +186,13 @@ const Highlights: React.FC = () => {
                 The Internet Computer can execute code on any blockchain.
               </p>
               <p className="mb-0">
-                <Link href="" className="link-white link-with-icon">
+                <Link href="/bitcoin-integration" className="link-white link-with-icon">
                   <LinkArrowRight />
-                  Link
+                  Bitcoin on ICP
+                </Link>
+                <Link href="/ethereum-integration" className="link-white link-with-icon">
+                  <LinkArrowRight />
+                  Ethereum on ICP
                 </Link>
               </p>
             </div>
