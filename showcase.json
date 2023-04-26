@@ -810,11 +810,12 @@
   {
     "id": "aedile",
     "name": "Aedile",
-    "website": "https://eemeo-taaaa-aaaad-qakjq-cai.ic.fleek.co/",
+    "website": "https://aedile.io",
+    "twitter": "https://twitter.com/aedile_ic",
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Aedile brings your team's work together in one shared space, completely built on-chain. Manage your boards, columns & cards to transform your projects, serving web experiences directly from the Internet Computer blockchain. ",
+    "description": "Build and fund, 100% on chain aedile is the first open and decentralized service offering individuals, teams, and communities, an alternative to their favorite management tools.",
     "logo": "/img/showcase/aedile_logo.webp",
     "screenshots": [
       "/img/showcase/aedile_screenshot_0.webp"
