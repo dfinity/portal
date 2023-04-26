@@ -2,9 +2,9 @@
 sidebar_position: 1
 title: Deploy sample app in 5 minutes
 ---
-# Tutorial 1 - Deploy sample code
+# Deploy your first ICP dapp in 5 minutes
 
-## 1. Introduction - what you are deploying
+## 1. Introduction: what you are deploying
 
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 5 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 
@@ -134,7 +134,7 @@ Now that you have used the cycles faucet, you can check your cycles balance:
 dfx wallet --network ic balance
 ```
 
-You should see around 20 trillion cycles if you run this after using the cycles wallet. If so, skip to section [5. Deploying on-chain](#5deploy-on-chain-1-min). If you do not see any cycles, deploying on-chain in the rest of the tutorial will not work. 
+You should see around 20 trillion cycles if you run this after using the cycles wallet.
 
 ### Deploying on-chain
 
@@ -225,9 +225,6 @@ Note the bottom of the message which returns the URL where you can see your cani
 :::note
 
 Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
-
-![Hello](_attachments/service-worker.png)
-
 :::
 
 ## Wrap-up
