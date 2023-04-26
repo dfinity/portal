@@ -237,7 +237,7 @@ Before your dapp loads, your browser will quickly show a message that reads: Ins
 You have built a dapp fully on-chain (both backend and frontend).
 
 Tutorial takeaways:
--   Dapps can be composed of multiple canistersm backend and frontend
+-   Dapps can be composed of multiple canisters, backend and frontend
 -   Dapps can be deployed locally and on-chain
 -   Cycles are needed power dapps
 -   Get free cycles from the cycles wallet
