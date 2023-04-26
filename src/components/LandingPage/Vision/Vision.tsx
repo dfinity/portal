@@ -68,13 +68,14 @@ const Vision: React.FC = () => {
         >
           #ICP
         </motion.div>
-        <motion.div
+        <motion.a
           className="hidden md:block absolute right-[-40px] bottom-[150px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead px-8 py-3 rounded-full text-white"
           variants={transitions.item}
+          target="_blank"
           href="https://twitter.com/search?q=%23WorldComputer"
         >
           #WorldComputer
-        </motion.div>
+        </motion.a>
       </div>
     </AnimateSpawn>
   );
