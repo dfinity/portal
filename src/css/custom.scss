@@ -351,6 +351,17 @@ html.plugin-docs
   }
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .animate-scale-in {
   animation: hero-scale-in 1400ms ease-out;
   animation-fill-mode: backwards;
@@ -358,7 +369,11 @@ html.plugin-docs
 }
 .animate-fade-in {
   animation: fade-in 400ms ease-out;
-  animation-delay: 2500ms;
+  animation-fill-mode: backwards;
+  animation-play-state: paused;
+}
+.animate-fade-up {
+  animation: fade-up 400ms ease-out;
   animation-fill-mode: backwards;
   animation-play-state: paused;
 }
