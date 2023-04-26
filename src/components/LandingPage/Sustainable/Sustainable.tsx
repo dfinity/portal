@@ -5,10 +5,13 @@ import Link from "@docusaurus/Link";
 
 const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
   return (
-    <section className="container-12 py-20 md:pt-40 md:pb-30">
+    <section
+      className="md:container-12 py-20 md:pt-40 md:pb-30"
+      id="sustainable"
+    >
       <AnimateSpawn className="" variants={transitions.container}>
         <div
-          className="flex flex-col md:flex-row py-10 md:py-30 rounded-xl md:rounded-[32px] px-6 md:px-1/12 text-white"
+          className="flex flex-col md:flex-row py-20 md:py-30 md:rounded-[32px] px-6 md:px-1/12 text-white"
           style={{
             background: `linear-gradient(77.94deg, #357095 -9.34%, #348B8D 21.93%, #39B392 48.29%, #4BA89C 75.1%, #348B8D 90.37%, #357195 108.5%)`,
           }}
@@ -32,7 +35,7 @@ const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
             </p>
             <p className="mb-0">
               <Link
-                className="button-outline-white"
+                className="button-outline-white text-center"
                 href="/capabilities/sustainability"
               >
                 About ICP sustainability

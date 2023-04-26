@@ -78,14 +78,14 @@ const Drawer: React.FC<{
 
 const Highlights: React.FC = () => {
   return (
-    <section>
-      <div className="container-10 text-white mb-16">
+    <section id="technology">
+      <div className="container-10 text-white mb-16 md:pt-20">
         <h2 className="tw-heading-4 md:tw-heading-60">Disruption in Motion</h2>
       </div>
       <div className="container-12 space-y-4 md:space-y-8">
         <Drawer title="Sovereign Hardware" startingState={true}>
           <div className="flex flex-col md:flex-row">
-            <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
+            <div className="flex-1 pt-5 md:pt-20 order-2 md:order-1">
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
                 The internet runs on routing devices.{" "}
               </p>
@@ -105,7 +105,7 @@ const Highlights: React.FC = () => {
                 </Link>
               </p>
             </div>
-            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0">
+            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0 aspect-[821/750]">
               <img
                 src="/img/home/img-sovereign-hardware.webp"
                 alt=""
@@ -133,7 +133,7 @@ const Highlights: React.FC = () => {
                 </Link>
               </p>
             </div>
-            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0">
+            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0 aspect-[821/676]">
               <img
                 src="/img/home/img-intelligent-blockchain.webp"
                 alt=""
@@ -158,13 +158,16 @@ const Highlights: React.FC = () => {
               </ul>
 
               <p className="mt-20 mb-0">
-                <Link href="/capabilities" className="link-white link-with-icon">
+                <Link
+                  href="/capabilities"
+                  className="link-white link-with-icon"
+                >
                   <LinkArrowRight />
                   More ICP Capabilities
                 </Link>
               </p>
             </div>
-            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0">
+            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0 aspect-[821/676]">
               <img
                 src="/img/home/img-web2-compatible.webp"
                 alt=""
@@ -186,17 +189,23 @@ const Highlights: React.FC = () => {
                 The Internet Computer can execute code on any blockchain.
               </p>
               <p className="mb-0">
-                <Link href="/bitcoin-integration" className="link-white link-with-icon">
+                <Link
+                  href="/bitcoin-integration"
+                  className="link-white link-with-icon"
+                >
                   <LinkArrowRight />
                   Bitcoin on ICP
                 </Link>
-                <Link href="/ethereum-integration" className="link-white link-with-icon">
+                <Link
+                  href="/ethereum-integration"
+                  className="link-white link-with-icon"
+                >
                   <LinkArrowRight />
                   Ethereum on ICP
                 </Link>
               </p>
             </div>
-            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0">
+            <div className="flex-1 order-1 md:order-2 mt-10 md:mt-0 aspect-[821/676]">
               <img
                 src="/img/home/img-multi-chain.webp"
                 alt=""

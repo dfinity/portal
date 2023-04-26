@@ -28,7 +28,7 @@ const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
     <>
       {lines.map((line, i) => (
         <span
-          className="transition-all col-start-1 row-start-1 duration-300"
+          className="transition-all col-start-1 row-start-1 duration-300 flex items-end"
           key={line + "_" + i}
           style={{
             opacity: i === index ? 1 : 0,

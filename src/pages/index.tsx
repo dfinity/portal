@@ -69,15 +69,12 @@ export default function Home(): JSX.Element {
           panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
           id="comparison"
           threshold={0}
-          rootMargin="-50% 0px"
+          rootMargin="-30% 0px"
         >
-          {/* <Storage></Storage> */}
           <Highlights />
         </BackgroundPanel>
         <div className="overflow-hidden">
-          {/* <NextGenSection></NextGenSection> */}
           <Sustainable id="sustainable"></Sustainable>
-          {/* <SlidersSection /> */}
           <StartBuildingSection
             id="startBuilding"
             title="Become a Web3 pioneer"
@@ -109,7 +106,7 @@ export default function Home(): JSX.Element {
           />
           <FoundationSection></FoundationSection>
 
-          {/* <NewsletterSection /> */}
+          <NewsletterSection />
         </div>
       </main>
       <SectionsBar />

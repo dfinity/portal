@@ -7,7 +7,7 @@ export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
   //0 0 16187 12624
 
   const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 1.0 });
+  const { ref, inView } = useInView({ threshold: 1.0, triggerOnce: true });
   useEffect(() => {
     if (inView) {
       controls.start("animate");

@@ -4,7 +4,7 @@ import OpenChatCard from "../../Common/OpenChatCard/OpenChatCard";
 const CommunityStories: React.FC = ({}) => {
   return (
     <>
-      <div className="container-10 pt-20 md:pt-30">
+      <div className="container-10 pt-20 md:pt-30" id="community">
         <h2 className="tw-heading-3 md:tw-heading-60 text-gradient mb-0">
           Community Stories
         </h2>

@@ -21,6 +21,7 @@ import { CostSvg } from "./CostSvg";
 import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
 import transitions from "@site/static/transitions.json";
+import clsx from "clsx";
 
 function formatNumber(x: number) {
   return x
@@ -185,6 +186,28 @@ function ICPTransactionRate() {
   );
 }
 
+const StatSlot: React.FC<{ children: React.ReactNode; index: number }> = ({
+  children,
+  index,
+}) => {
+  return (
+    <AnimateSpawn
+      className="md:border-0 md:odd:border-r md:border-solid md:border-white/20 overflow-hidden"
+      variants={transitions.container}
+    >
+      <div className="text-center h-full flex flex-col md:pt-20 md:mx-[2px]">
+        <div className="flex-1 flex flex-col md:px-2/12">{children}</div>
+        <div
+          className={clsx(
+            "border-0 border-b border-solid border-white/20 h-20",
+            index < 2 ? "border-0 md:border-b" : "border-b md:border-0"
+          )}
+        ></div>
+      </div>
+    </AnimateSpawn>
+  );
+};
+
 export const Facts = () => {
   const ethTxValue = useMotionValue(0);
 
@@ -199,19 +222,16 @@ export const Facts = () => {
 
   return (
     <>
-      <div className="">
-        <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-40 md:w-[880px] mx-auto text-center">
+      <div className="" id="stats">
+        <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-20 md:w-[880px] mx-auto text-center">
           World’s Highest Usage Blockchain
         </h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-0 text-white mb-20 md:mb-30">
         {/***************************************************************/}
-        <AnimateSpawn
-          className="text-center flex flex-col  md:px-10"
-          variants={transitions.container}
-        >
-          <div className="flex-1">
+        <StatSlot index={0}>
+          <div className="">
             <img
               src={require("./blocks.webp").default}
               loading="lazy"
@@ -230,7 +250,7 @@ export const Facts = () => {
               <BlockThroughput></BlockThroughput> MB/s block throughput capacity
             </div>
           </div>
-          <div className="mt-16">
+          <div className="mt-8 md:mt-16">
             <h3 className="md:tw-heading-4 mb-4">Throughput</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Capacity horizontally scales as subnet blockchains are seamlessly
@@ -238,12 +258,9 @@ export const Facts = () => {
               second are unbounded.
             </p>
           </div>
-        </AnimateSpawn>
+        </StatSlot>
         {/***************************************************************/}
-        <AnimateSpawn
-          className="text-center flex flex-col md:px-10"
-          variants={transitions.container}
-        >
+        <StatSlot index={1}>
           <div className="flex-1">
             <div className="mx-auto w-full md:w-[372px] relative">
               <img
@@ -280,7 +297,7 @@ export const Facts = () => {
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-8 md:mt-16">
             <h3 className="md:tw-heading-4 mb-4">Comparing Transactions</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Transactions invoke "actor" canister smart contract computations,
@@ -288,12 +305,9 @@ export const Facts = () => {
               deterministically).
             </p>
           </div>
-        </AnimateSpawn>
+        </StatSlot>
         {/***************************************************************/}
-        <AnimateSpawn
-          className="text-center flex flex-col md:px-10 md:pt-20"
-          variants={transitions.container}
-        >
+        <StatSlot index={2}>
           <div className="flex-1">
             <CostSvg className="mb-2" />
 
@@ -302,7 +316,7 @@ export const Facts = () => {
             </div>
           </div>
 
-          <div className="mt-20">
+          <div className="mt-8 md:mt-20">
             <h3 className="md:tw-heading-4 mb-4">Smart Contract Memory</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Storing data in smart contract memory allows ICP dapps to
@@ -310,21 +324,18 @@ export const Facts = () => {
               on centralized cloud storage.
             </p>
           </div>
-        </AnimateSpawn>
+        </StatSlot>
         {/***************************************************************/}
-        <AnimateSpawn
-          className="text-center flex flex-col md:px-10 md:pt-40"
-          variants={transitions.container}
-        >
+        <StatSlot index={3}>
           <div className="flex-1">
             <img
               src={require("./instructions.webp").default}
               loading="lazy"
               alt=""
-              className="w-[89px]"
+              className="w-[89px] md:mt-20"
             ></img>
             <div className="text-center mt-4 mb-2">
-              <div className="text-transparent bg-clip-text hero-stat-red text-[30px] font-book md:tw-title-sm">
+              <div className="text-transparent bg-clip-text hero-stat-green text-[30px] font-book md:tw-title-sm">
                 $0.000000000000536
               </div>
             </div>
@@ -335,7 +346,7 @@ export const Facts = () => {
             </div>
             <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
           </div>
-          <div className="mt-16">
+          <div className="mt-8 md:mt-16">
             <h3 className="md:tw-heading-4 mb-4">Crypto Cloud Efficiency</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               An average ICP transaction executes 6’660’000 instructions
@@ -343,7 +354,7 @@ export const Facts = () => {
               magnitude less expensive due to ICP’s efficiency.
             </p>
           </div>
-        </AnimateSpawn>
+        </StatSlot>
       </div>
     </>
   );

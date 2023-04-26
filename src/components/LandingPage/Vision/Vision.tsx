@@ -14,6 +14,7 @@ const Vision: React.FC = () => {
       className="container-10 pb-20 md:pb-40 -mt-40"
       el={motion.section}
       variants={transitions.container}
+      id="vision"
     >
       <div className="relative">
         <p
@@ -42,7 +43,7 @@ const Vision: React.FC = () => {
         </p>
 
         <p className="mb-8">
-          <Link href="/capabilities" className="button-primary">
+          <Link href="/capabilities" className="button-primary text-center">
             Internet Computer capabilities
           </Link>
         </p>

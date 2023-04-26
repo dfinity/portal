@@ -3,7 +3,7 @@ import Newsletter from "../../Common/Newsletter/Newsletter";
 
 const NewsletterSection: React.FC = () => {
   return (
-    <section className="md:my-30 " id="subscribe">
+    <section className="mt-30 mb-20  md:mt-52 md:mb-30 " id="subscribe">
       <Newsletter
         fields={[
           {
@@ -20,7 +20,7 @@ const NewsletterSection: React.FC = () => {
         }
         className="mb-20 relative"
       >
-        <div className="hidden md:block blob blob-infinite blob-md blob-top-right z-[-1]"></div>
+        <div className="hidden md:block blob blob-infinite blob-lg blob-top-right z-[-1]"></div>
         <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
           Sign up for email updates{" "}
           <span className="text-white-60">
