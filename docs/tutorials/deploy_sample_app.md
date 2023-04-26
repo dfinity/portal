@@ -219,9 +219,9 @@ URLs:
 
 Note the bottom of the message which returns the URL where you can see your canister’s frontend deployed on-chain: <https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/>
 
-**🎉 Success, you are done! 🎉 **
+### 🎉 Success, you are done! 🎉
 
-**You have successfully deployed your dapp on-chain.**
+### You have successfully deployed your dapp on-chain
 
 :::note
 
@@ -241,29 +241,3 @@ Tutorial takeaways:
 -   Cycles are needed power dapps
 -   Get free cycles from the cycles wallet
 -   Free cycles can be used to power additional dapps
-
-### Starting from scratch
-
-If you wish to start from scratch, delete the SDK and associated profiles and re-install it. Follow the instructions here: [Install, upgrade, or remove software](/developer-docs/setup/install/index.mdx).
-
-**Be sure to save any identities linked to dapps or ICP.**
-
-### Getting Stuck?
-
-If you get stuck or run into problems search for solutions or post questions in the [Developer forum](https://forum.dfinity.org) or [DISCORD](https://discord.com/invite/cA7y6ezyE2).
-
-### Ready for the next challenge?
-
-Build DAOs, NFTs and more [here](https://internetcomputer.org/samples).
-
-### Want to learn more?
-
-If you are looking for more information before getting started or want to view a demonstration of how to deploy before you try it for yourself, check out the following related resources:
-
--   [How you can use ICP tokens (overview)](/concepts/tokens-cycles.md#using-tokens)
-
--   [Building on the Internet Computer: Fundamentals (video)](https://www.youtube.com/watch?v=jduSMHxdYD8)
-
--   [What is the DFINITY Canister SDK (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk)
-
--   [Deploying your first dapp (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA)
