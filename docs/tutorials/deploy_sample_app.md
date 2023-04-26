@@ -14,7 +14,7 @@ This dapp only does one thing: it accepts an text input and returns text input.
 
 ![Hello](_attachments/hello-dapp-intro.png)
 
-## 1. Install the smart contract canister SDK 
+## 1. Install the canister smart contract SDK 
 
 This tutorial use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
@@ -83,7 +83,7 @@ You have deployed your first ICP dapp locally.
 
 ### Test the dapp locally via the command line
 
-Now that the smart contract canister is deployed to the local execution environment, you can interact with it by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. 
+Now that the canister smart contract is deployed to the local execution environment, you can interact with it by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. 
 
 Run the following command:
 ``` bash

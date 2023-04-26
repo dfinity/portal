@@ -11,7 +11,7 @@ Before starting, take a look at a version of this dapp running on-chain: <https:
 
 In this tutorial, you will learn how to:
 
-1.  Install the Canister SDK for building ICP smart contract canisters
+1.  Install the Canister SDK for building ICP canister smart contracts
 2.  Build and deploy a dapp locally
 3.  Collect free cycles to power your dapp
 4.  Create a "cycles wallet" from which you can transfer cycles to any other dapps you want to power
@@ -19,7 +19,7 @@ In this tutorial, you will learn how to:
 
 The dapp accepts a text argument as input and returns a greeting. This dapp can be called from the command-line terminal or from a browser.
 
-For example, if you call the `greet` method of the `hello_backend` smart contract canister with the text argument `Everyone` on the command-line, the dapp will return `Hello, Everyone!`:
+For example, if you call the `greet` method of the `hello_backend` canister smart contracts with the text argument `Everyone` on the command-line, the dapp will return `Hello, Everyone!`:
 
 ``` bash
 $ dfx canister call hello_backend greet Everyone
