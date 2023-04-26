@@ -1,4 +1,4 @@
----
+<!-- ---
 sidebar_position: 1
 title: Deploy sample app
 ---
@@ -530,4 +530,4 @@ If you are looking for more information before getting started or want to view a
 
 -   [What is the DFINITY Canister SDK (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk)
 
--   [Deploying your first dapp (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA)
+-   [Deploying your first dapp (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA) -->

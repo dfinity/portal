@@ -4,7 +4,7 @@ title: Deploy sample app in 5 minutes
 ---
 # Deploy your first ICP dapp in 5 minutes
 
-## 1. Introduction: what you are deploying
+## 1. Introduction: gitwhat you are deploying
 
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 5 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 
@@ -29,6 +29,11 @@ To verify that `dfx` properly installed, run:
 ``` bash
 dfx --version
 ```
+
+### Requirements:
+
+* Node.js - This tutorial works best with a node.js version higher than `16.*.*`.
+
 
 ## 2. Create a project
 
