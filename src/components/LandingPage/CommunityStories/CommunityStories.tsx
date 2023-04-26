@@ -26,10 +26,14 @@ const CommunityStories: React.FC = ({}) => {
                 RELATION grows organically to 67’000 canisters
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
-                The fast-growing dapp RELATION is reconfiguring social relations
+                The fast-growing dapp Relation is reconfiguring social relations
                 of individuals across Web3 through social graphs. Extend your
                 social media reach with SBTs and membership certificates.
               </p>
+              <Link className="link-primary link-with-icon" href="https://relationlabs.ai/">
+                <LinkArrowRight />
+                Try Relation
+              </Link>
             </div>
           </div>
           <div className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl p-6 md:p-12">
@@ -48,6 +52,10 @@ const CommunityStories: React.FC = ({}) => {
                 first to list SNS-1 tokens. It now also lists CHAT and ckBTC
                 (soon ckETH). Bypass CEXs and get ICP or CHAT for your BTC.
               </p>
+              <Link className="link-primary link-with-icon" href="http://icdex.io/">
+                <LinkArrowRight />
+                Try ICDex
+              </Link>
             </div>
           </div>
         </div>
