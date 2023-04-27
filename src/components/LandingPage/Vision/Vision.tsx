@@ -34,7 +34,7 @@ const Vision: React.FC = () => {
           <br />
           Blockchain will eat the centralized cloud, and become the{" "}
           <em>everything stack</em>, which hosts unstoppable systems and
-          services, and enables Web3 to be 100% decentralized.
+          services, and rich fully-decentralized Web3 experiences.
           <br />
           <br />
           It's already happening at scale on the Internet Computer, which is
