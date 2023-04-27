@@ -25,12 +25,12 @@ const CommunityStories: React.FC = ({}) => {
             />
             <div className="md:pr-20">
               <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
-                RELATION grows organically to 67’000 canisters
+                Relation has grown organically to utilize  67'000 canister smart contracts
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
-                The fast-growing dapp Relation is reconfiguring social relations
-                of individuals across Web3 through social graphs. Extend your
-                social media reach with SBTs and membership certificates.
+                Relation is making the social relations of individuals decentralized. Every Soul can mint readable,
+                understandable, programmable SBTs to represent proofs of friendship, affiliations,
+                membership certificate qualifications, and commitments.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -50,12 +50,13 @@ const CommunityStories: React.FC = ({}) => {
             />
             <div className="md:pr-20">
               <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
-                Pioneering fully decentralized order book exchanges
+                ICDex is DeFi 3.0 in the form of a fully on-chain orderbook exchange
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
-                ICDex, an orderbook-based DEX that runs 100% on-chain, was the
-                first to list SNS-1 tokens. It now also lists CHAT and ckBTC
-                (soon ckETH). Bypass CEXs and get ICP or CHAT for your BTC.
+                Imagine a fully on-chain Coinbase! CeFi-like functionality is now provided by a
+                fully on-chain DEX &mdash; the UX, the orderbook, order-matching and AMM. 
+                It plans to list all assets using "chain key" crypto, and transition updates to
+                fully decentralized DAO automation.
               </p>
               <Link
                 className="link-primary link-with-icon"

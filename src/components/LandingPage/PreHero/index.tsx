@@ -201,7 +201,7 @@ export default function PreHero({}): JSX.Element {
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
-                See L1 comparison <LinkArrowUpRight />
+                Comparison of Layer-1 blockchain networks<LinkArrowUpRight />
               </Link>
             </div>
             <img
