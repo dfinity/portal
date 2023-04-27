@@ -50,7 +50,7 @@ function HTTPSOutcalls() {
           </div>
           <div className="container-10 relative">
             <img
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               alt=""
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />

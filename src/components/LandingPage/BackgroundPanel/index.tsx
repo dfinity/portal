@@ -10,15 +10,17 @@ const BackgroundPanel: React.FC<{
   outerClassName?: string;
   panelClassName?: string;
   threshold?: number;
+  rootMargin?: string;
   id?: string;
 }> = ({
   children,
   panelClassName: className,
   threshold = 0.2,
+  rootMargin,
   outerClassName,
   id,
 }) => {
-  const [ref, inView] = useInView({ threshold });
+  const [ref, inView] = useInView({ threshold, rootMargin });
 
   return (
     <div className={outerClassName}>

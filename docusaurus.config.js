@@ -319,15 +319,15 @@ const config = {
                 // column 2
                 menuDivider("Need Support"),
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' loading='lazy' alt='' /></span>`,
                   href: "https://discord.gg/jnjVVQaE2C",
                 },
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' loading='lazy' alt='' /></span>`,
                   href: "https://twitter.com/dfinitydev",
                 },
               ],
@@ -365,7 +365,7 @@ const config = {
               [
                 menuDivider("Join The Discussion"),
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
                 {
