@@ -312,12 +312,12 @@ export const Facts = () => {
             <CostSvg className="mb-2" />
 
             <div className="tw-lead-sm flex justify-center items-center gap-2 mt-4">
-              ICP Costs <span className="tw-lead-lg">$5</span> / GB / year
+              How much storage you get for $10?
             </div>
           </div>
 
           <div className="mt-8 md:mt-20">
-            <h3 className="md:tw-heading-4 mb-4">Smart Contract Memory</h3>
+            <h3 className="md:tw-heading-4 mb-4">ICP Costs $5 / GB / year</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Storing data in smart contract memory allows ICP dapps to
               dynamically access it without querying external sources or relying
