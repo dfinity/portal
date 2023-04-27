@@ -1,4 +1,6 @@
+import Link from "@docusaurus/Link";
 import React from "react";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import OpenChatCard from "../../Common/OpenChatCard/OpenChatCard";
 
 const CommunityStories: React.FC = ({}) => {
@@ -30,7 +32,10 @@ const CommunityStories: React.FC = ({}) => {
                 of individuals across Web3 through social graphs. Extend your
                 social media reach with SBTs and membership certificates.
               </p>
-              <Link className="link-primary link-with-icon" href="https://relationlabs.ai/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://relationlabs.ai/"
+              >
                 <LinkArrowRight />
                 Try Relation
               </Link>
@@ -52,7 +57,10 @@ const CommunityStories: React.FC = ({}) => {
                 first to list SNS-1 tokens. It now also lists CHAT and ckBTC
                 (soon ckETH). Bypass CEXs and get ICP or CHAT for your BTC.
               </p>
-              <Link className="link-primary link-with-icon" href="http://icdex.io/">
+              <Link
+                className="link-primary link-with-icon"
+                href="http://icdex.io/"
+              >
                 <LinkArrowRight />
                 Try ICDex
               </Link>

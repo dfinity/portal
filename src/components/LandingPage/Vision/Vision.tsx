@@ -8,6 +8,8 @@ import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import styles from "./Vision.module.css";
 import transitions from "@site/static/transitions.json";
 
+const MotionLink = motion(Link);
+
 const Vision: React.FC = () => {
   return (
     <AnimateSpawn
@@ -54,28 +56,27 @@ const Vision: React.FC = () => {
           </Link>
         </p>
 
-        <motion.div
+        <MotionLink
           className="hidden md:block absolute right-[-170px] bottom-[400px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead-lg px-8 py-3 rounded-full text-white"
           variants={transitions.item}
           href="https://twitter.com/search?q=%23InternetComputer"
         >
           #InternetComputer
-        </motion.div>
-        <motion.div
+        </MotionLink>
+        <MotionLink
           className="hidden md:block absolute right-[180px] bottom-[270px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-title-sm px-8 py-3 rounded-full text-white"
           variants={transitions.item}
           href="https://twitter.com/search?q=%23ICP"
         >
           #ICP
-        </motion.div>
-        <motion.a
+        </MotionLink>
+        <MotionLink
           className="hidden md:block absolute right-[-40px] bottom-[150px] bg-[linear-gradient(250.6deg,#6A85F1_-7.42%,#C572EF_92.38%)] tw-lead px-8 py-3 rounded-full text-white"
           variants={transitions.item}
-          target="_blank"
           href="https://twitter.com/search?q=%23WorldComputer"
         >
           #WorldComputer
-        </motion.a>
+        </MotionLink>
       </div>
     </AnimateSpawn>
   );
