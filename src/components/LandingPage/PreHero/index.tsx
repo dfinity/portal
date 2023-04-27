@@ -121,9 +121,6 @@ export default function PreHero({}): JSX.Element {
                 opacity: blobOpacity,
               }}
             >
-              <Link href="/docs/current/home" className="button-white">
-                Start Coding
-              </Link>
             </motion.div>
           </div>
 
