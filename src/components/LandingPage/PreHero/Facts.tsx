@@ -311,7 +311,7 @@ export const Facts = () => {
           <div className="flex-1">
             <CostSvg className="mb-2" />
 
-            <div className="tw-lead-sm flex justify-center items-center gap-2">
+            <div className="tw-lead-sm flex justify-center items-center gap-2 mt-4">
               ICP Costs <span className="tw-lead-lg">$5</span> / GB / year
             </div>
           </div>
