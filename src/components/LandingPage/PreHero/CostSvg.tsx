@@ -1,3 +1,4 @@
+import { isSafari } from "@site/src/utils/browsers";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -5,55 +6,70 @@ import { useInView } from "react-intersection-observer";
 export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 1.0, triggerOnce: true });
+
+  const [boxes, setBoxes] = React.useState<number[][]>([]);
+
   useEffect(() => {
     if (inView) {
       controls.start("animate");
     }
   }, [controls, inView]);
 
+  useEffect(() => {
+    let translateX = -6;
+    if (isSafari(navigator.userAgent)) {
+      translateX = 0;
+    }
+
+    setBoxes([
+      [translateX, 0, 22.15, 17.25],
+      // [0, 0, 934, 727],
+      [0, 0, 1879, 1462],
+      [1755 + translateX, 0, 1879, 1462],
+      [1755 + translateX, 0, 16633, height],
+    ]);
+  }, []);
+
   const width = 16371;
   const height = 12624;
 
-  const boxes = [
-    [-6, 0, 22.15, 17.25],
-    // [0, 0, 934, 727],
-    [0, 0, 1879, 1462],
-    [1755 - 6, 0, 1879, 1462],
-    [1755 - 6, 0, 16633, height],
-  ];
-
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} ref={ref}>
-      <motion.g
-        transition={{
-          duration: 12,
-          type: "spring",
-          delay: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-          repeatDelay: 1,
-        }}
-        initial="initial"
-        animate={controls}
-        variants={{
-          initial: {
-            originX: 0,
-            originY: 1,
-            transform: `scale(${
-              width / boxes[0][2]
-            }) translate(${-boxes[0][0]}px, 0px)`,
-          },
-          animate: {
-            originX: 0,
-            originY: 1,
-            transform: boxes.map(
-              (box) => `scale(${width / box[2]}) translate(${-box[0]}px, 0px)`
-            ),
-          },
-        }}
-        fill="none"
-        dangerouslySetInnerHTML={{
-          __html: `<circle cx="10071" cy="6300" r="6300" fill="url(#paint0_linear_3939_98177)" fill-opacity="0.4"/>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      ref={ref}
+      className="component-fade-in"
+    >
+      {boxes.length > 0 && (
+        <motion.g
+          transition={{
+            duration: 12,
+            type: "spring",
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse",
+            repeatDelay: 1,
+          }}
+          initial="initial"
+          animate={controls}
+          variants={{
+            initial: {
+              originX: 0,
+              originY: 1,
+              transform: `scale(${
+                width / boxes[0][2]
+              }) translate(${-boxes[0][0]}px, 0px)`,
+            },
+            animate: {
+              originX: 0,
+              originY: 1,
+              transform: boxes.map(
+                (box) => `scale(${width / box[2]}) translate(${-box[0]}px, 0px)`
+              ),
+            },
+          }}
+          fill="none"
+          dangerouslySetInnerHTML={{
+            __html: `<circle cx="10071" cy="6300" r="6300" fill="url(#paint0_linear_3939_98177)" fill-opacity="0.4"/>
           <circle cx="10071" cy="6300" r="6280" stroke="white" stroke-opacity="0.3" stroke-width="40"/>
           <path d="M10607.4 4105.75C10449.4 4105.75 10277.2 4186.7 10095.2 4346.16C10008.9 4421.71 9934.27 4502.66 9878.35 4567.43C9878.35 4567.43 9878.35 4567.43 9878.84 4567.92V4567.43C9878.84 4567.43 9967.15 4663.59 10064.8 4766.62C10117.3 4704.31 10192.8 4619.43 10279.7 4542.9C10441.6 4401.11 10547.1 4371.18 10607.4 4371.18C10834.6 4371.18 11019 4551.24 11019 4772.51C11019 4992.31 10834.1 5172.37 10607.4 5173.84C10597.1 5173.84 10583.9 5172.37 10567.2 5168.93C10633.4 5197.39 10704.6 5217.99 10772.3 5217.99C11188.3 5217.99 11269.8 4946.68 11275.2 4927.05C11287.4 4877.5 11293.8 4825.5 11293.8 4772.02C11293.8 4405.03 10985.7 4105.75 10607.4 4105.75Z" fill="url(#paint1_linear_3939_98177)"/>
           <path d="M9156.04 5440.04C9314.02 5440.04 9486.23 5359.08 9668.25 5199.63C9754.6 5124.07 9829.18 5043.12 9885.1 4978.36C9885.1 4978.36 9885.1 4978.36 9884.61 4977.87V4978.36C9884.61 4978.36 9796.31 4882.19 9698.67 4779.16C9646.17 4841.47 9570.62 4926.35 9483.78 5002.89C9321.87 5144.68 9216.39 5174.61 9156.04 5174.61C8928.88 5174.12 8744.41 4994.06 8744.41 4772.78C8744.41 4552.99 8929.37 4372.93 9156.04 4371.45C9166.34 4371.45 9179.59 4372.93 9196.27 4376.36C9130.04 4347.9 9058.9 4327.3 8991.19 4327.3C8575.14 4327.3 8494.19 4598.61 8488.3 4617.75C8476.03 4667.79 8469.66 4719.31 8469.66 4772.78C8469.66 5140.75 8777.77 5440.04 9156.04 5440.04Z" fill="url(#paint2_linear_3939_98177)"/>
@@ -165,8 +181,9 @@ export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
           <rect width="238" height="219.912" fill="white" transform="translate(1269 12060)"/>
           </clipPath>
           </defs>`,
-        }}
-      ></motion.g>
+          }}
+        ></motion.g>
+      )}
     </svg>
   );
 };

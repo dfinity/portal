@@ -415,6 +415,10 @@ html.plugin-docs
   );
 }
 
+.component-fade-in {
+  animation: fade-in 500ms ease-out backwards;
+}
+
 @keyframes nft-marquee-left {
   from {
     transform: translateX(-25%);
