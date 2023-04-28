@@ -1682,7 +1682,7 @@
     "twitter": "https://twitter.com/EMCprotocol"
 
 },
-  {
+    {
     "id": "PHASMA",
     "name": "PHASMA",
     "website": "https://toniq.io/marketplace/phasma",
@@ -1690,8 +1690,7 @@
       "Metaverse",
       "NFT"
     ],
-    "description": "curated collection of 1,500 unique NFTs on the Internet Computer."
+    "description": "curated collection of 1,500 unique NFTs on the Internet Computer.",
     "logo": "/img/showcase/phasma_logo.png",
     "twitter": "https://twitter.com/phasmafuture"
-    ]
-    },
+}
