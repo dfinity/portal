@@ -37,7 +37,7 @@ console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 const config = {
   title: "Internet Computer",
   tagline:
-    "Deploy smart contracts and build scalable dapps on the Internet Computer - the world’s fastest and most powerful open-source blockchain network",
+    "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
     : "https://internetcomputer.org",
