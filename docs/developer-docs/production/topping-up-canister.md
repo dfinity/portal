@@ -31,7 +31,7 @@ For easy of use, you can copy/paste the cycles amounts below:
 
 ### Checking the cycles balance of a canister
 
-Canister cycles balances are not exposed puboicly by default. If you are the controller of a canister. Using `jqylk-byaaa-aaaal-qbymq-cai` as an example, you can query it by calling:
+Canister cycles balances are not exposed publicly by default; you can only see them if you are the controller of a canister. Using `jqylk-byaaa-aaaal-qbymq-cai` as an example, you can query it by calling:
 
 ```bash
 dfx canister --network ic status jqylk-byaaa-aaaal-qbymq-cai
