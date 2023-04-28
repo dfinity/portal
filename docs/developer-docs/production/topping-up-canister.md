@@ -81,23 +81,19 @@ dfx canister deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
 -   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice
 
-
-I want top up canister `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000000).
-
 ### Special Case: topping up another cycles wallet
 
 Cycles wallets are canisters like any other, so you can top them up as well. If you have a cycles wallet you control via dfx, there is another option as well for sending cycles from your cycles wallet to a canister of your choice: `dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`.
 
+In this example, we assume we are sending cycles to a cycles wallet with principal `dfds-sddds-aaaal-qbsms-cai`.
+
 ```bash
 dfx wallet --network ic balance
-dfx wallet --network ic send 1000000 jqylk-byaaa-aaaal-qbymq-cai 
+dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai 
 ```
 
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
--   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice
-
-
-I want top up canister `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000000).
+-   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and send sthem to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
 ## Topping up a canister with the NNS Frontend dapp
 
