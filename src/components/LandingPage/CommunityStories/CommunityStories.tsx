@@ -32,13 +32,6 @@ const CommunityStories: React.FC = ({}) => {
                 understandable, programmable SBTs to represent proofs of friendship, affiliations,
                 membership certificate qualifications, and commitments.
               </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://relationlabs.ai/"
-              >
-                <LinkArrowRight />
-                Try Relation
-              </Link>
             </div>
           </div>
           <div className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl p-6 md:p-12">
@@ -58,13 +51,6 @@ const CommunityStories: React.FC = ({}) => {
                 It plans to list all assets using "chain key" crypto, and transition updates to
                 fully decentralized DAO automation.
               </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="http://icdex.io/"
-              >
-                <LinkArrowRight />
-                Try ICDex
-              </Link>
             </div>
           </div>
         </div>
