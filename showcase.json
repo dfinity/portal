@@ -221,6 +221,7 @@
   {
     "id": "papyrs",
     "name": "Papyrs",
+    "oneLiner": "Blog on Web3",
     "website": "https://app.papy.rs",
     "tags": [
       "SocialFi"
