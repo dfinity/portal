@@ -85,6 +85,7 @@
     "description": "The world’s first Web3 search engine",
     "stats": "3,000,000+ searches",
     "display": "Large",
+    "usesInternetIdentity": true,
     "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
       "/img/showcase/kinic_screenshot.webp"
@@ -181,6 +182,7 @@
       "DeFi"
     ],
     "description": "Uniswap's frontend hosted on the Internet Computer with canister-based wallet integration. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
+    "usesInternetIdentity": true,
     "oneLiner": "Front-End On-Chain",
     "display": "Normal",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
@@ -213,6 +215,7 @@
       "SocialFi"
     ],
     "description": "What if there was decentralized Twitter that included prediction markets? Seers is Web3 social media platform hosted 100% on-chain combining social media features with prediction markets.",
+    "usesInternetIdentity": true,
     "stats": "10,000 users + TVL",
     "display": "Normal",
     "logo": "/img/showcase/seers_logo.webp",
@@ -263,6 +266,7 @@
     ],
     "twitter": "https://twitter.com/funded_app",
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
+    "usesInternetIdentity": true,
     "stats": "83,000+ ICP funded",
     "display": "Normal",
     "logo": "/img/showcase/funded_logo.webp",
@@ -291,6 +295,7 @@
       "DeFi"
     ],
     "description": "ICDex is flagship product by ICLighthouse, an orderbook based DEX that runs 100% on-chain. The world's first orderbook DEX - made possible by advanced ICP smart contracts",
+    "usesInternetIdentity": true,
     "stats": "Supports ckBTC",
     "twitter": "https://twitter.com/ICLighthouse",
     "display": "Normal",
@@ -379,7 +384,7 @@
     ],
     "twitter": "https://twitter.com/toniqlabs",
     "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot provides users with tools and on-chain services to design, deploy, and manage NFTs and traditional tokens. ",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "stats": "1,000,000+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/entrepot_logo.webp",
@@ -545,7 +550,7 @@
     ],
     "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
     "github": "https://github.com/branciard/SandBlessCanisters",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "logo": "/img/showcase/sandbless_logo.webp",
     "screenshots": [
       "/img/showcase/sandbless_screenshot_0.webp"
@@ -638,7 +643,6 @@
     ],
     "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
     "github": "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
-    "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/jumpymotoko_logo.webp",
     "screenshots": [
@@ -685,7 +689,7 @@
       "Tools / Infrastructure"
     ],
     "description": "Difibase is a database provider (NoSQL). You can use the system's database or integrate your own!",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/difibase_logo.webp",
     "screenshots": [
@@ -885,7 +889,7 @@
       "NFT"
     ],
     "description": "ICmoji Origins is an NFT-based multiplayer game built end-to-end on-chain on the Internet Computer. The winner of the DSCVR Hackathon Season 2 features one of the first NFTs on the Internet Computer, ICMojis.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/icmojiorigins_logo.webp",
     "video": "/img/showcase/icmojiorigins_video.mp4",
@@ -900,6 +904,7 @@
       "NFT"
     ],
     "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
+    "usesInternetIdentity": true,
     "logo": "/img/showcase/nuance_logo.webp",
     "screenshots": [
       "/img/showcase/nuance_screenshot_0.webp"
@@ -914,7 +919,6 @@
     ],
     "description": "The Wall is a dapp built on the Internet Computer blockchain, which blends Ethereum's MetaMask authentication with the Internet Computer's native Internet Identity blockchain authentication system. This first example of ETH x ICP allows users to leave any message on the wall for all eternity.",
     "github": "https://github.com/kristoferlund/ic-wall",
-    "usesInternetIdentity": true,
     "logo": "/img/showcase/thewall_logo.webp",
     "screenshots": [
       "/img/showcase/thewall_screenshot_0.webp"
@@ -928,6 +932,7 @@
       "SocialFi"
     ],
     "description": "MODCLUB is a decentralized moderation tool based hosted fully on-chain. Built on the Internet Computer, MODCLUB rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities.",
+    "usesInternetIdentity": true,
     "logo": "/img/showcase/modclub_logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
@@ -1117,7 +1122,7 @@
       "SocialFi",
       "Tools / Infrastructure"
     ],
-    "useInternetIdentity": true,
+    "useInternetIdentity": false,
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
@@ -1160,7 +1165,7 @@
     ],
     "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\n",
     "github": "https://github.com/icpipeline-framework",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/icpipeline_logo.webp",
     "screenshots": [
@@ -1223,6 +1228,7 @@
       "Wallet"
     ],
     "description": "ICPSwap is DEX built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
+    "usesInternetIdentity": true,
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": [
       "/img/showcase/icpswap_screenshot_0.webp"
@@ -1313,6 +1319,7 @@
       "SocialFi"
     ],
     "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China, and saw an immediate round of funding netting a $10M valuation. ",
+    "usesInternetIdentity": true,
     "github": "https://github.com/dmailofficial",
     "display": "Normal",
     "logo": "/img/showcase/dmail_logo.webp",
@@ -1430,6 +1437,7 @@
       "Tools / Infrastructure"
     ],
     "description": "Departure Labs is exploring on-chain media, web native NFTs, and developing productized open internet services for developers and consumers. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.\n",
+    "usesInternetIdentity": true,
     "github": "https://github.com/DepartureLabsIC/non-fungible-token",
     "logo": "/img/showcase/departurelabs_logo.webp",
     "screenshots": [
@@ -1484,7 +1492,7 @@
       "Tools / Infrastructure"
     ],
     "description": "The ITOKA project seeks to disrupt the centralized music industry by offering a complete infrastructure solution for the web3 music industry. This includes creation tools, data storage, and music streaming services. The goal of ITOKA is to transform the music industry into a decentralized ecosystem, empowering creators with greater control over their content and a fairer share of revenue.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "github": "https://github.com/Itoka-DAO",
     "twitter": "https://twitter.com/itokamusic",
     "stats": "3M+ minutes on-chain streaming",
@@ -1541,7 +1549,7 @@
       "SocialFi"
     ],
     "description": "Explore Dwitter! Decentralized social network like Twitter, integrated with OpenAI bots. View a shared global feed featuring user-chatbot interactions from around the world.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "logo": "/img/showcase/dwitter_logo.png",
     "github": "https://github.com/azhuravel/Dwitter-Dfinity",
     "twitter": "https://twitter.com/DwitterWeb3",
@@ -1589,7 +1597,6 @@
     "name": "DappBox",
     "oneLiner": "Take control of your data and keep it anonymous with decentralized storage on the Internet Computer.",
     "description": "DappBox provides a decentralized data storage platform that allows users to upload, download and share their data while keeping it anonymous. With this platform, users can take control of their data and securely manage it.",
-    "usesInternetIdentity": true,
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1659,7 +1666,7 @@
       "Tools / Infrastructure"
     ],
     "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "logo": "/img/showcase/bitshop_logo.webp",
     "screenshots": [
       "/img/showcase/bitshop.webp"
