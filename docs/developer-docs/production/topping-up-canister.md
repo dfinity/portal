@@ -1,11 +1,13 @@
-# Topping up & Refilling a Canister with cycles
+# Topping up & Refilling a Canister with Cycles
 
 A common pattern for developer workflow is to refill canisters with cycles so they can continue to operate as intended.
 
 ## Basic Rules 
 
 1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller)
-2. One can top up a canister via the NNS Frontend dapp, `dfx`, or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
+2. One can top up a canister via `dfx`, [NNS Frontend dapp](https://nns.ic0.app), or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
+3. There are a few ways to top up canisters so this article goes through each one.
+
 
 ## Topping up a canister with `dfx`
 
@@ -99,7 +101,10 @@ I want top up canister `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000
 
 ## Topping up a canister with the NNS Frontend dapp
 
+You can also top up any canister via the [NNS Frontend dapp](https://nns.ic0.app):
 
-In the "My Canisters" section of the dapp, there is a feature called "Link Canister" that can be use to add any mainnet canister to the user's list of canisters. It is not necessary for the user to actually control said canister. 
-
-Once you add a canister principal, the canister will be listed and can be can topped up as any other canister, using the ICP in your NNS frontend dapp. 
+1. Navigate to the "My Canisters" section of the dapp
+2. Click "Link Canister" 
+3. Add a canister principal (It is not necessary for the user to actually control said canister)
+4. Once canister is added, click on that canister
+5. Click `add cycles` to add cycles using the ICP in your NNS frontend dapp
