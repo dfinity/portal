@@ -93,7 +93,7 @@ dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai
 ```
 
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
--   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and send sthem to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
+-   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
 ## Topping up a canister with the NNS Frontend dapp
 
