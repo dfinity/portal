@@ -222,6 +222,7 @@ const Storage: React.FC = () => {
                     src="/img/basics/logos/logo-eth.svg"
                     alt=""
                     className="w-11"
+                    loading="lazy"
                   />
                   <span className="hidden lg:inline tw-heading-5 pl-4">
                     $79,000,000
@@ -244,6 +245,7 @@ const Storage: React.FC = () => {
                     src="/img/basics/logos/logo-solana.svg"
                     alt=""
                     className="w-11"
+                    loading="lazy"
                   />
                   <span className="hidden lg:inline tw-heading-5 pl-4">
                     $110,000
@@ -266,6 +268,7 @@ const Storage: React.FC = () => {
                     src="/img/basics/logos/logo-icp.svg"
                     alt=""
                     className="w-11"
+                    loading="lazy"
                   />
 
                   <span className="hidden lg:inline tw-heading-5 pl-4">$5</span>
@@ -285,6 +288,7 @@ const Storage: React.FC = () => {
                 src="/img/basics/logos/logo-eth.svg"
                 alt=""
                 className="w-8"
+                loading="lazy"
               />
               <span className="tw-heading-5 pl-4">$79,000,000</span>
               <span className="tw-heading-7 pl-1 relative top-1">
@@ -296,6 +300,7 @@ const Storage: React.FC = () => {
                 src="/img/basics/logos/logo-solana.svg"
                 alt=""
                 className="w-8"
+                loading="lazy"
               />
               <span className="tw-heading-5 pl-4">$110,000</span>
               <span className="tw-heading-7 pl-1 relative top-1">
@@ -307,6 +312,7 @@ const Storage: React.FC = () => {
                 src="/img/basics/logos/logo-icp.svg"
                 alt=""
                 className="w-8"
+                loading="lazy"
               />
 
               <span className="tw-heading-5 pl-4">$5</span>

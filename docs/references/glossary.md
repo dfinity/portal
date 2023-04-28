@@ -365,7 +365,7 @@ scheduled for execution, messages from its input queue will be executed.
 An **inter-canister message** is a [message](#message) sent
 from one [canister](#canister) to another. Inter-canister
 messages are different from user-initiated [ingress
-messages](#ingress_message).
+messages](#ingress-message).
 
 #### Internet Computer (IC)
 

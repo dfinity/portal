@@ -1,8 +1,8 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -147,7 +147,7 @@ function SocialMediaDappsPage() {
             </div>
             <div className="container-10 relative">
               <motion.img
-                src="/img/whiteBlurredCircle.png"
+                src="/img/whiteBlurredCircle.webp"
                 alt=""
                 className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-300px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
                 variants={transitions.item}
@@ -368,17 +368,17 @@ function SocialMediaDappsPage() {
                     The Internet Computer is the only blockchain that can:
                   </p>
                   <ul className="checklist tw-paragraph md:tw-lead-sm mb-6 space-y-3">
-                    <li className="checklist-item">Serve web</li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">Serve web</li>
+                    <li className="checklist-item leading-6 pl-8">
                       Integrate existing web2 APIs without oracles
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Provides out of the box anonymous authentication system
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store large amounts of data on-chain
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store private data on-chain
                     </li>
                   </ul>

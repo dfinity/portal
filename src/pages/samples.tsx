@@ -3,7 +3,7 @@ import Layout from "@theme/Layout";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {

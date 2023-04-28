@@ -14,14 +14,10 @@ const SliderCard: React.FC<{
 }> = ({ bgImage, children, className }) => {
   return (
     <div
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
       className={clsx(
         `
     min-w-full
-    bg-right md:bg-center bg-cover 
-    
+    relative
     pt-12 px-10 md:px-12
     rounded-xl
     overflow-hidden
@@ -30,6 +26,12 @@ const SliderCard: React.FC<{
         className
       )}
     >
+      <img
+        src={bgImage}
+        alt=""
+        className="object-right md:object-center object-cover absolute inset-0 z-[-1] h-full w-full"
+        loading="lazy"
+      ></img>
       {children}
     </div>
   );
@@ -90,7 +92,11 @@ const Sliders = () => {
                 </p>
               </div>
               <div className="hidden md:block w-4/12 mr-1/12 text-right">
-                <img src="/img/home-page-sliders/btc-eth.png" alt="" />
+                <img
+                  src="/img/home-page-sliders/btc-eth.png"
+                  alt=""
+                  loading="lazy"
+                />
               </div>
             </SliderCard>
             <SliderCard
@@ -136,6 +142,7 @@ const Sliders = () => {
                 src="/img/home-page-sliders/ii.svg"
                 alt=""
                 className="hidden md:inline absolute bottom-0 right-0 rotate-[15deg]"
+                loading="lazy"
               />
             </SliderCard>
             <SliderCard

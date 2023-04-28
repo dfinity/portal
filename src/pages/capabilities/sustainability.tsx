@@ -149,7 +149,10 @@ function SustainabilityPage() {
               rewarded and regulated.{" "}
             </p>
             <p className="mb-10">
-              <Link className="button-outline" href="https://app.carboncrowd.io/">
+              <Link
+                className="button-outline"
+                href="https://app.carboncrowd.io/"
+              >
                 See ICP's carbon footprint
               </Link>
             </p>
@@ -181,10 +184,16 @@ function SustainabilityPage() {
               Keeping the Internet Computer Sustainable{" "}
             </h2>
             <p className="mb-10 tw-paragraph">
-              While the Internet Computer is one of the most sustainable blockchains, taking a scientific approach to measuring and reporting energy consumption is just the first step, there’s still a lot of work to do.
+              While the Internet Computer is one of the most sustainable
+              blockchains, taking a scientific approach to measuring and
+              reporting energy consumption is just the first step, there’s still
+              a lot of work to do.
             </p>
             <p className="mb-0">
-              <Link className="button-outline" href="https://medium.com/dfinity/the-internet-computer-embraces-real-time-energy-reporting-and-the-proof-of-green-initiative-f78fc8787d31">
+              <Link
+                className="button-outline"
+                href="https://medium.com/dfinity/the-internet-computer-embraces-real-time-energy-reporting-and-the-proof-of-green-initiative-f78fc8787d31"
+              >
                 Find out more
               </Link>
             </p>
