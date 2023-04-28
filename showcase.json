@@ -1681,6 +1681,19 @@
     "github": "https://github.com/EMCprotocol/emc_java_sdk",
     "twitter": "https://twitter.com/EMCprotocol"
 
+  },
+  {
+    "id": "oneblock",
+    "name": "One Block",
+    "description": "Public profile(links, bio, inbox...) for individual/organization",
+    "website": "https://oneblock.page/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oneblock.png",
+    "screenshots": [],
+    "github": "https://github.com/ICEvent/OneBlock",
   }
 
 ]
