@@ -87,10 +87,10 @@ const Highlights: React.FC = () => {
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 pt-5 md:pt-20 order-2 md:order-1">
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
-                The internet runs on routing devices.{" "}
+                The internet runs on routing devices{" "}
               </p>
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
-                Bitcoin runs on PoW mining rigs.{" "}
+                Bitcoin runs on PoW mining rigs{" "}
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
                 The Internet Computer runs on node machines (PoUW)
@@ -124,7 +124,7 @@ const Highlights: React.FC = () => {
                 Traditionally, blockchains are updated using protocol forks. 
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
-                The Internet Computer is updated autonomously by a DAO
+                The Internet Computer is updated by a fully automated DAO
               </p>
               <p className="mb-0">
                 <Link href="/nns" className="link-white link-with-icon">
@@ -147,13 +147,13 @@ const Highlights: React.FC = () => {
             <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
               <ul className="tw-lead-sm md:tw-lead-lg text-white list-none checklist space-y-6">
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
-                  Googleable smart contracts
+                   Web experiences served by smart contracts 
                 </li>
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
                   Web2 APIs processed through consensus
                 </li>
                 <li className="checklist-item-white pl-8 md:pl-12  bg-[length:24px] md:bg-[length:36px]">
-                  Web experiences served by smart contracts
+                  Googleable smart contracts 
                 </li>
               </ul>
 
@@ -186,7 +186,7 @@ const Highlights: React.FC = () => {
                 Ethereum hosts unstoppable smart contract code
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
-                The Internet Computer can execute code on any blockchain.
+                The Internet Computer can execute code on any blockchain and process and asset
               </p>
               <p className="mb-0">
                 <Link
