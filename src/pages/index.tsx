@@ -39,6 +39,7 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
+        <Vision />
         <CommunityStories></CommunityStories>
         <div className="overflow-hidden">
           {/* 
@@ -64,7 +65,6 @@ export default function Home(): JSX.Element {
             linePostfix="on True Web3"
           ></ShowcaseSection>
         </div>
-        <Vision />
         <BackgroundPanel
           panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
           id="comparison"

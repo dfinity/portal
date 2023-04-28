@@ -186,7 +186,7 @@ const Highlights: React.FC = () => {
                 Ethereum hosts unstoppable smart contract code
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
-                The Internet Computer can execute code on any blockchain and process and asset
+                The Internet Computer can execute code on any blockchain and process any asset
               </p>
               <p className="mb-0">
                 <Link
