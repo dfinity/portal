@@ -22,7 +22,7 @@ const NewsletterSection: React.FC = () => {
       >
         <div className="hidden md:block blob blob-infinite blob-lg blob-top-right z-[-1]"></div>
         <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-          Sign up for email updates{" "}
+          Sign up{" "}
           <span className="text-white-60">
             to stay in the loop with the Internet Computer
           </span>
