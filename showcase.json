@@ -1681,6 +1681,18 @@
     "github": "https://github.com/EMCprotocol/emc_java_sdk",
     "twitter": "https://twitter.com/EMCprotocol"
 
+  },
+  {
+    "id": "blocklist",
+    "name": "Block List",
+    "description": "Open fleet market for P2P trading by leveraging open escrow service",
+    "website": "https://vfclb-tyaaa-aaaap-aawna-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure","DeFi","NFT"
+    ],
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/blocklist.png",
+    "github": "https://github.com/ICEvent/Escrow"
   }
 
 ]
