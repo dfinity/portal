@@ -6,6 +6,12 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
     <style
       dangerouslySetInnerHTML={{
         __html: css`
+          #home h1 {
+            font-size: 110px;
+            font-weight: 500;
+            line-height: 120px;
+          }
+
           nav.navbar .navbar__search-button {
             background-color: transparent;
             color: white;
