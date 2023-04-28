@@ -15,7 +15,7 @@ In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qby
 
 
 ### Number of cycles
-For easy of use, you can copy/paste the cycles amounts below:
+For ease of use, you can copy/paste the cycles amounts below:
 
 | Cycles            | Number        |
 | -----------       | -----------   |
@@ -31,7 +31,7 @@ For easy of use, you can copy/paste the cycles amounts below:
 
 ### Checking the cycles balance of a canister
 
-Canister cycles balances are not exposed puboicly by default. If you are the controller of a canister. Using `jqylk-byaaa-aaaal-qbymq-cai` as an example, you can query it by calling:
+Canister cycles balances are not exposed publicly by default; you can only see them if you are the controller of a canister. Using `jqylk-byaaa-aaaal-qbymq-cai` as an example, you can query it by calling:
 
 ```bash
 dfx canister --network ic status jqylk-byaaa-aaaal-qbymq-cai
@@ -53,7 +53,7 @@ Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 
 ### Option 1: If you have ICP on your account
 
-If you have ICP on the `account` associated with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS top-up --amount <AMOUNT> <DESTINATION>`
+If you have ICP on the account associated with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
 
 `dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai`
 
