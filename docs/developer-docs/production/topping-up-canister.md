@@ -7,14 +7,11 @@ A common pattern for developer workflow is to refill canisters with cycles so th
 1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller)
 2. One can top up a canister via the NNS Frontend dapp, `dfx`, or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
 
-## Topping up a canister via dfx
+## Topping up a canister with `dfx`
 
-In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai` from the [first tutorial](../../tutorials/deploy_sample_app.md). These instructions can work for any canister principal.
+In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai` from the [first tutorial](../../tutorials/deploy_sample_app.md) with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
 
 
-```bash
-dfx ledger top-up jqylk-byaaa-aaaal-qbymq-cai
-```
 ### Number of cycles
 For easy of use, you can copy/paste the cycles amounts below:
 
@@ -50,11 +47,13 @@ Freezing threshold: 2_592_000
 Memory Size: Nat(2471918)
 Balance: 9_811_813_913_485 Cycles
 Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
-````
+```
 
-### If you have ICP on your account
+### Option 1: If you have ICP on your account
 
-If you have ICP on the `account` associaned with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice:
+If you have ICP on the `account` associated with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS top-up --amount <AMOUNT> <DESTINATION>`
+
+`dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai`
 
 ```bash
 dfx ledger account-id
@@ -68,9 +67,9 @@ dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
 -   `top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai` command converts 0.1 ICP into cycles and uses them to refill canister `jqylk-byaaa-aaaal-qbymq-cai`.
 
 
-### If you have cycles on your cycles wallet
+### Option 2: If you have cycles on your cycles wallet
 
-If you have a cycles wallet you control via dfx, you can pass cycles from your cycles wallet to a canister of your choice:
+If you have a cycles wallet you control via dfx, you can send cycles from your cycles wallet to a canister of your choice: `dfx canister deposit-cycles <AMOUNT> <DESTINATION>`.
 
 ```bash
 dfx wallet --network ic balance
@@ -83,13 +82,22 @@ dfx canister deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai
 
 I want top up canister `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000000).
 
-I have been given the following commands and none of them work out of the box:
+### Special Case: topping up another cycles wallet
 
-1. dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
-2. dfx wallet send 1000000 jqylk-byaaa-aaaal-qbymq-cai
-3. dfx canister deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai
+Cycles wallets are canisters like any other, so you can top them up as well. If you have a cycles wallet you control via dfx, there is another option as well for sending cycles from your cycles wallet to a canister of your choice: `dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`.
 
-## Topping up a canister via NNS Frontend dapp
+```bash
+dfx wallet --network ic balance
+dfx wallet --network ic send 1000000 jqylk-byaaa-aaaal-qbymq-cai 
+```
+
+-   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
+-   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice
+
+
+I want top up canister `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000000).
+
+## Topping up a canister with the NNS Frontend dapp
 
 
 In the "My Canisters" section of the dapp, there is a feature called "Link Canister" that can be use to add any mainnet canister to the user's list of canisters. It is not necessary for the user to actually control said canister. 
