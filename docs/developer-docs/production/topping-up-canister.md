@@ -4,7 +4,7 @@ A common pattern for developer workflow is to refill canisters with cycles so th
 
 ## Basic Rules 
 
-1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller)
+1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller).
 2. One can top up a canister via `dfx`, [NNS Frontend dapp](https://nns.ic0.app), or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
 3. There are a few ways to top up canisters so this article goes through each one.
 
@@ -63,7 +63,7 @@ dfx ledger --network ic balance
 dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
 ```
 
--   The `dfx dfx ledger account-id` returns the `account` id of the current `dfx` identity used
+-   The `dfx ledger account-id` returns the `account` id of the current `dfx` identity used
 -   `--network ic` tells `dfx` to use the mainnet IC as the network (not anything local for example)
 -   The `dfx ledger --network ic balance` command checks how much balance is on the `account` associated with the current `dfx` identity used
 -   `top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai` command converts 0.1 ICP into cycles and uses them to refill canister `jqylk-byaaa-aaaal-qbymq-cai`.
