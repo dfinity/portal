@@ -52,8 +52,8 @@ This tutorial will guide you step-by-step to deploy your own [ICRC-1](https://gi
 
     dfx deploy --network ${NETWORK} icrc1-ledger --argument '(variant { Init = 
          record {
-           token_name = "'${TOKEN_NAME}'";
-           token_symbol = "'${TOKEN_SYMBOL}'";
+           token_name = "$`{TOKEN_NAME}`";
+           token_symbol = "`${TOKEN_SYMBOL}`";
            minting_account = record { owner = principal "'${MINTER_PRINCIPAL}'";};
            initial_balances = vec {};
            metadata = vec {};
