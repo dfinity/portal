@@ -1681,9 +1681,6 @@
     "github": "https://github.com/EMCprotocol/emc_java_sdk",
     "twitter": "https://twitter.com/EMCprotocol"
 
-  }
-
-]
 },
   {
     "id": "PHASMA",
@@ -1695,5 +1692,6 @@
     ],
     "description": "curated collection of 1,500 unique NFTs on the Internet Computer."
     "logo": "/img/showcase/phasma_logo.png",
-"twitter": "https://twitter.com/phasmafuture"
+    "twitter": "https://twitter.com/phasmafuture"
     ]
+    },
