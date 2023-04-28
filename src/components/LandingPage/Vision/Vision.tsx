@@ -13,7 +13,7 @@ const MotionLink = motion(Link);
 const Vision: React.FC = () => {
   return (
     <AnimateSpawn
-      className="container-10 pb-20 md:pb-40 -mt-40 pt-40"
+      className="container-10 pt-20 md:pt-40"
       el={motion.section}
       variants={transitions.container}
       id="vision"

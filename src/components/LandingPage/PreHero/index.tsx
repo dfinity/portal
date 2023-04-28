@@ -102,7 +102,7 @@ export default function PreHero({}): JSX.Element {
           ></motion.img>
           <div className="container-10 text-center">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in mb-8 md:mb-10"
+              className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white animate-scale-in mb-0"
               style={{
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
@@ -120,8 +120,7 @@ export default function PreHero({}): JSX.Element {
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
               }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
 
           <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
@@ -198,7 +197,8 @@ export default function PreHero({}): JSX.Element {
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
-                Comparison of Layer-1 blockchain networks<LinkArrowUpRight />
+                Comparison of Layer-1 blockchain networks
+                <LinkArrowUpRight />
               </Link>
             </div>
             <img
