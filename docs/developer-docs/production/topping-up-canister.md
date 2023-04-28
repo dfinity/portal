@@ -15,7 +15,7 @@ In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qby
 
 
 ### Number of cycles
-For easy of use, you can copy/paste the cycles amounts below:
+For ease of use, you can copy/paste the cycles amounts below:
 
 | Cycles            | Number        |
 | -----------       | -----------   |
