@@ -1,9 +1,9 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
+import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -88,7 +88,7 @@ function SnsPage() {
             </div>
             <div className="container-10 relative">
               <motion.img
-                src="/img/whiteBlurredCircle.png"
+                src="/img/whiteBlurredCircle.webp"
                 alt=""
                 className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-300px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
                 variants={transitions.item}
@@ -282,7 +282,7 @@ function SnsPage() {
             </Card>
           </div>
         </section>
-        <OpenChatCard className="mt-40 md:my-40" />
+        <OpenChatCard className="mt-40" />
         <section className="text-white relative pt-52 pb-20 md:pb-40 md:pt-80 container-12">
           <AnimateSpawn
             el={motion.img}

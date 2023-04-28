@@ -1,5 +1,5 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";

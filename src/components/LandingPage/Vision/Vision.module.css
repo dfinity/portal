@@ -1,0 +1,18 @@
+.vision em {
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: 450;
+
+  /* 30% opacity of #3b00b9 */
+  text-decoration-color: rgba(59, 0, 185, 0.3);
+  text-decoration-thickness: 10px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: -3px;
+}
+
+@media screen and (max-width: 996px) {
+  .vision em {
+    text-underline-offset: -2px;
+    text-decoration-thickness: 6px;
+  }
+}

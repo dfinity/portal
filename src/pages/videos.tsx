@@ -1,7 +1,7 @@
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import { useQueryParam } from "@site/src/utils/use-query-param";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import mediaVideos from "@site/static/mediaVideos.json";
 import transitions from "@site/static/transitions.json";

@@ -415,6 +415,10 @@ html.plugin-docs
   );
 }
 
+.component-fade-in {
+  animation: fade-in 500ms ease-out backwards;
+}
+
 @keyframes nft-marquee-left {
   from {
     transform: translateX(-25%);
@@ -612,6 +616,17 @@ html.plugin-docs
     line-height: 20px;
     font-weight: bold;
     color: rgba(59, 0, 185, 0.3);
+  }
+}
+
+.hero-eth-tx-gauge {
+  transform-origin: calc(50vw - 14px) 4px;
+}
+
+@media (min-width: 996px) {
+  .hero-eth-tx-gauge {
+    transform-origin: 196px 16px;
+    // top: -4px;
   }
 }
 
