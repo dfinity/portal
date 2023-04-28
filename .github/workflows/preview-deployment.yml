@@ -72,7 +72,6 @@ jobs:
 
           export PREVIEW_CANISTER_ID=$canister_id
 
-          npm run build
           dfx deploy --network=ic --no-wallet portal --yes
 
         env:
