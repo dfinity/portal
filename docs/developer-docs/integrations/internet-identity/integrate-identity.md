@@ -64,7 +64,7 @@ const webapp = Actor.createActor(webapp_idl, {
 // Call whoami which returns the principal (user id) of the current user.
 const principal = await webapp.whoami();
 ```
-See [`index.js`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.js) for the full working example.
+See [`index.ts`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.ts) for the full working example.
 A detailed description of what happens behind the scenes is available in the [client auth protocol specification](../../../references/ii-spec.md#client-authentication-protocol).
 
 ### Getting the Canister IDs
