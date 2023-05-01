@@ -12,14 +12,14 @@ In this step we will add new variable `options` to the actor that will hold a li
 
 Each option is a string, what describes what the users are voting for. However, since we have multiple options in the poll we will need to store them in some data structure. We will use a collection called [`RBTree`](/motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages.
 
-The collection will "map" option identifier (a natural number) to the option value (text). For example, we may have this list of options if we want to vote for our favorite programming language:
+The collection will "map" option identifier (a string of type `Text`) to the option value (a natural number of type `Nat`). For example, we may have this list of options if we want to vote for our favorite programming language:
 
-| id  | option |
+| id  | Vote Count |
 | --- | ------ |
-| 1   | Motoko |
-| 2   | Rust   |
-| 3   | Swift  |
-| 4   | F#     |
+| "Motoko"   | 0 |
+| "Rust"   |   0 |
+| "TypeScript"   |  0 |
+| "Python"   | 0     |
 
 
 To use RBTree we need to import it. In addition, we will need to import the standard type [`Nat`](/motoko/main/base/Nat.md) to use some of the module's functions. So first let's add an import statement to the beginning of our file `main.mo`:
@@ -30,76 +30,36 @@ import Nat "mo:base/Nat";
 
 Next we need to declare the variable of this type inside the actor:
 ```motoko
-    var options: RBTree.RBTree<Nat, Text> = RBTree.RBTree(Nat.compare);
+    var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
 ```
 
-In this snippet we create a variable `options`, whose type is `RBTree.RBTree<Nat, Text>`.
+In this snippet we create a variable `votes`, whose type is `RBTree.RBTree<Text, Nat>`.
 
 :::note
 The current version of Motoko makes collections declarations a bit verbose and difficut to understand for beginners. We are working to create a more elegant syntax.
 :::
 
-## `addOption` method
+## `getVotes` method
 
-We need a method to create a new option. Since the data will be altered, the method should be an update.
+We need a method to query the current state of vote counts. Since the data will not be altered, the method can be a query.
 
 Here's the code with comments inline:
 
 ```motoko
-// new variable `optionCounter` to store value of the next option id
-var optionCounter = 0; 
-
-// the parameter newOption defined the string value of the new option
-// the method returns a value of the new option that was just added
-public func addOption(newOption : Text) : async Nat { 
-    optionCounter += 1;
-    
-    // we use the method RBTree.put() to add a value to the map
-    options.put(optionCounter, newOption); 
-    
-    // the last value in the function closure is the result
-    // this line could also be "return optionCounter;"
-    optionCounter
-};
+ // query the list of options and votes for each one
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public query func getVotes() : async [(Text, Nat)] {
+        Iter.toArray(votes.entries())
+    }; 
 ```
 
-## `deleteOption` and `updateOption` methods
-
-We need delete and update methods to be able to edit the list of options. Here's the code:
-```motoko
-public func deleteOption(optionId : Nat) {
-    // RBTree.delete() removes the element from the map
-    options.delete(optionId); 
-};
-
-public func updateOption(optionId : Nat, option : Text) {
-    // RBTree.put() replaces the element with a new value
-    options.put(optionId, option);
-};
-```
-
-## `getOptions`  method
-Stricly speaking, the method for listing options is not necessary because it will be superceded by `getOptionsAndVotes()` from the next chapter. However, it's a good exercise to code a simpler version first.
-
-Here's the code:
-```motoko
-// the method returns an array of tuples (Nat, Text)
-public query func getOptions() : async [(Nat, Text)] {
-    Iter.toArray(options.entries())
-};
-```
-
-Comments about the implementation:
-- The method is a query since we are not saving any data
 - The method returns an array. Array is a simple container that can hold multiple values.
-- The array element is a tuple, another container of fixed length that has a typed value on each of the position. For example, a tuple `(Nat, Text)` represents all potential values where the first elements is a antural number and the second element is a string.
+- The array element is a tuple, another container of fixed length that has a typed value on each of the position. For example, a tuple `(Text, Nat)` represents all potential values where the first elements is a antural number and the second element is a string.
 - We use a class `Iter` that represents an iterator, a pointer-like data structure that allows the developer to move over another data stucture and see values one by one in a sequential manner.
 -  The  statement `Iter.toArray(options.entries())` is executed in this sequence:
-    1. `options.entries()` method produces an iterator of tuples `(Nat, Text)` that represent the map's values
-    2. `Iter.toArray()` is a standard function that convers `Iter<(Net,Text)>` to array of `(Nat,Text)`
-
-
-
+    1. `options.entries()` method produces an iterator of tuples `(Text, Nat)` that represent the map's values
+    2. `Iter.toArray()` is a standard function that convers `Iter<(Text,Nat)>` to array of `(Text, Nat)`
 
 
 To make this method work, we also need to add a new import statement to the beginnign of the file:
@@ -107,46 +67,114 @@ To make this method work, we also need to add a new import statement to the begi
 import Iter "mo:base/Iter";
 ```
 
+## `vote` method
+
+We need a method to vote for an option. This should be an update call since it alters the state. 
+
+Here's the code:
+```motoko
+    // This methods takes an option to vote for, updates the data and returns the updated hashmap
+    // Example input: vote("Motoko")
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public func vote(option: Text) : async [(Text, Nat)] {
+
+      //since ?Nat returns an optional...
+      var current_votes_or_null : ?Nat = votes.get(option);
+      //... we need to be explicit about what to do when it is null or a number so every case is taken care of
+      let current_votes : Nat = switch current_votes_or_null {
+        case null 0;
+        case (?Nat) Nat;
+      };
+
+      //once we have the number, update the votes
+      votes.put(option, current_votes + 1);
+      Iter.toArray(votes.entries())
+    };
+```
+
+## `resetVotes`  method
+This method resets the state of the votes so every option goes back to 0. Here's the code:
+
+
+```motoko
+    //This methods reset the vote count for each option and and returns the updated hashmap
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public func resetVotes() : async [(Text, Nat)] {
+      votes.put("Motoko", 0);
+      votes.put("Rust", 0);
+      votes.put("TypeScript", 0);
+      votes.put("Python", 0);
+      Iter.toArray(votes.entries())
+    };
+```
+
+Comments about the implementation:
+- The method is a update since it updates the state
+
+
 ## Final code
 Once you completed all the changes your code should look like this:
 ```motoko
-import RBTree "mo:base/RBTree";
+import Text "mo:base/Text";
 import Nat "mo:base/Nat";
+import RBTree "mo:base/RBTree";
 import Iter "mo:base/Iter";
 
-actor {
-    var question: Text = "enter your question";
 
+actor {
+    
+    //1. DATA
+    var question: Text = "What is your favorite programming language?";
+    var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
+    votes.put("Motoko", 0);
+    votes.put("Rust", 0);
+    votes.put("TypeScript", 0);
+    votes.put("Python", 0);
+
+    //2. METHODS
+
+    //get the question for the poll
     public query func getQuestion() : async Text { 
       question 
     };
+
+    // query the list of options and votes for each one
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public query func getVotes() : async [(Text, Nat)] {
+        Iter.toArray(votes.entries())
+    }; 
+
+    // This methods takes an option to vote for, updates the data and returns the updated hashmap
+    // Example input: vote("Motoko")
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public func vote(option: Text) : async [(Text, Nat)] {
+      var current_votes_or_null : ?Nat = votes.get(option);
+      let current_votes : Nat = switch current_votes_or_null {
+        case null 0;
+        case (?Nat) Nat;
+      };
+      votes.put(option, current_votes + 1);
+      Iter.toArray(votes.entries())
+    };
+
+    //This methods reset the vote count for each option and and returns the updated hashmap
+    // Example JSON that the frontend will get using the values above
+    // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
+    public func resetVotes() : async [(Text, Nat)] {
+      votes.put("Motoko", 0);
+      votes.put("Rust", 0);
+      votes.put("TypeScript", 0);
+      votes.put("Python", 0);
+      Iter.toArray(votes.entries())
+    };
     
-    public func setQuestion(q: Text) { 
-      question := q 
-    };
-
-        // OPTIONS
-    var options: RBTree.RBTree<Nat, Text> = RBTree.RBTree(Nat.compare);
-    var optionCounter = 0;
-
-    public func addOption(newOption : Text) : async Nat {
-      optionCounter += 1;
-      options.put(optionCounter, newOption);
-      optionCounter
-    };
-
-    public func deleteOption(oid : Nat) {
-      options.delete(oid);
-    };
-
-    public func updateOption(oid : Nat, option : Text) {
-      options.put(oid, option);
-    };
-
-    public query func getOptions() : async [(Nat, Text)] {
-        Iter.toArray(options.entries())
-    };    
 }
+
+
 
 ```
 
@@ -158,7 +186,13 @@ $ dfx deploy
 ```
 
 After the deployment process is completed, click on the link in the "Backend canister" section of the deploy command output:
-![dfx deploy output with a link](./_attachments/dfx_deploy_with_link.webp)
+```shell
+URLs:
+  Frontend canister via browser
+    poll_frontend: http://127.0.0.1:4943/?canisterId=qsgjb-riaaa-aaaaa-aaaga-cai
+  Backend canister via Candid interface:
+    poll_backend: http://127.0.0.1:4943/?canisterId=qvhpv-4qaaa-aaaaa-aaagq-cai&id=qhbym-qaaaa-aaaaa-aaafq-cai
+```
 
 After that you can open Candid UI and explore the new methods:
-![collections candid ui animation](./_attachments/collections_candid_ui_animation.gif)
+![collections candid ui animation](./_attachments/simple_voting_app_candid.png)
