@@ -10,6 +10,6 @@ In first part of the tutorial we will create a backend for our application that 
 
 Backend canisters have a default user interface called Candid UI that will allow you to interact with them without
 writing any frontend code. Here's how Candid UI for our project will look like at the end of this step:
-![Candid UI screenshot (final)](./_attachments/poll_app_candid_ui.webp)
+![Candid UI screenshot (final)](./_attachments/simple_voting_app_candid.png).
 
 
