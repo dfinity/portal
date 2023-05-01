@@ -12,7 +12,7 @@ In this step we will add new variable `options` to the actor that will hold a li
 
 Each option is a string, what describes what the users are voting for. However, since we have multiple options in the poll we will need to store them in some data structure. We will use a collection called [`RBTree`](/motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages.
 
-The collection will "map" option identifier (an natural number) to the option value (text). For example, we may have this list of options if we want to vote for our favorite programming language:
+The collection will "map" option identifier (a natural number) to the option value (text). For example, we may have this list of options if we want to vote for our favorite programming language:
 
 | id  | option |
 | --- | ------ |
@@ -93,7 +93,7 @@ Comments about the implementation:
 - The method is a query since we are not saving any data
 - The method returns an array. Array is a simple container that can hold multiple values.
 - The array element is a tuple, another container of fixed length that has a typed value on each of the position. For example, a tuple `(Nat, Text)` represents all potential values where the first elements is a antural number and the second element is a string.
-- We use a class Iter that represents an iterator, a pointer-like data structure that allows the developer to move over another data stucture and see values one by one in a sequential manner.
+- We use a class `Iter` that represents an iterator, a pointer-like data structure that allows the developer to move over another data stucture and see values one by one in a sequential manner.
 -  The  statement `Iter.toArray(options.entries())` is executed in this sequence:
     1. `options.entries()` method produces an iterator of tuples `(Nat, Text)` that represent the map's values
     2. `Iter.toArray()` is a standard function that convers `Iter<(Net,Text)>` to array of `(Nat,Text)`
