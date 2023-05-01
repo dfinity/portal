@@ -6,8 +6,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import ItsGreenSection from "../components/Basics/ItsGreen";
 import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
+import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
 import FoundationSection from "../components/LandingPage/Foundation";
 import HeroSection from "../components/LandingPage/HeroSection";
+import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import NextGenSection from "../components/LandingPage/NextGen";
 import PreHero from "../components/LandingPage/PreHero";
@@ -15,6 +17,8 @@ import SectionsBar from "../components/LandingPage/SectionsBar";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import SlidersSection from "../components/LandingPage/Sliders";
 import Storage from "../components/LandingPage/Storage";
+import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
+import Vision from "../components/LandingPage/Vision/Vision";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +27,7 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout
-      title={siteConfig.title}
+      title="Home"
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -35,8 +39,8 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
-        <OpenChatCard className="mt-16 md:mt-0" />
-        <HeroSection></HeroSection>
+        <Vision />
+        <CommunityStories></CommunityStories>
         <div className="overflow-hidden">
           {/* 
             Update the list of showcase projects here: /plugins/home-showcase.js 
@@ -44,7 +48,7 @@ export default function Home(): JSX.Element {
           <ShowcaseSection
             className="pb-[320px]"
             lines={[
-              "Defi",
+              "DeFi",
               "Metaverse",
               "Social media",
               "Social networking",
@@ -57,25 +61,24 @@ export default function Home(): JSX.Element {
               "Gaming",
               "NFTs",
             ]}
-            subheading="There are hundreds of projects like these..."
-            linePostfix="fully on-chain"
+            subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
+            linePostfix="on True Web3"
           ></ShowcaseSection>
         </div>
         <BackgroundPanel
           panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
           id="comparison"
+          threshold={0}
+          rootMargin="-30% 0px"
         >
-          <Storage></Storage>
+          <Highlights />
         </BackgroundPanel>
         <div className="overflow-hidden">
-          <NextGenSection></NextGenSection>
-          <ItsGreenSection id="sustainable" />
-          <FoundationSection></FoundationSection>
-          <SlidersSection />
+          <Sustainable id="sustainable"></Sustainable>
           <StartBuildingSection
             id="startBuilding"
-            title="Start building on the Internet Computer"
-            body=" Start a DAO, create a token, build dapps and host assets with the full tech stack entirely on chain."
+            title="Become a Web3 pioneer"
+            body="Start a DAO, create a token, build dapps and host assets with the full stack entirely on-chain."
             cta="BUILD REAL WEB3"
             ctaLink="/developers"
             cards={[
@@ -101,6 +104,8 @@ export default function Home(): JSX.Element {
               },
             ]}
           />
+          <FoundationSection></FoundationSection>
+
           <NewsletterSection />
         </div>
       </main>

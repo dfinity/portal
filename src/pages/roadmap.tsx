@@ -2,8 +2,8 @@ import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import GithubIcon from "@site/static/img/token-holders/social/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
@@ -71,7 +71,7 @@ const RoadmapPage: React.FC = () => {
           <div className="container-10 relative">
             <img
               alt=""
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
           </div>

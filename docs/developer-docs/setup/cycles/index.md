@@ -15,3 +15,4 @@ Cycles are measured in very large numbers, billions and trillions. When you talk
 To further explore cycle management please see the following articles:
 - **[Using Cycles Wallet](cycles-wallet.md)**
 - **[Getting free cycles from DFINITY Cycles Faucet](cycles-faucet.md)**
+- **[Converting ICP tokens into cycles](converting_icp_tokens_into_cycles.md)**

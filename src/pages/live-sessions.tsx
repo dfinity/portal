@@ -1,8 +1,8 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import liveSessions from "@site/.docusaurus/conversations/default/conversations.json";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
+import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { getMinutes, getYear, parse } from "date-fns";
