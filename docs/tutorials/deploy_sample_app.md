@@ -37,7 +37,7 @@ dfx --version
 
 ## 2. Create a project
 
-A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a canister smart contract. By running 
+A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). By running 
 
 ``` bash
 dfx new hello
