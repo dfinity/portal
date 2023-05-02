@@ -15,7 +15,7 @@ To start a new project see [Rust Quickstart](./rust-quickstart.md).
 
 To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
-**Whle using `dfx` is the typical path for most developers,experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly. This documentation assumes one is using `dfx` to build Rust canisters.**
+**Whle using `dfx` is the typical path for most developers, experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly. This documentation assumes one is using `dfx` to build Rust canisters.**
 
 ### The Rust CDK consists of the following crates:
 
