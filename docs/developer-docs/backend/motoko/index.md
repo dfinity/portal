@@ -6,8 +6,7 @@ To get started, one should [install the `dfx` CDK](../../setup/install/index.mdx
 
 # Tutorials
 
-The [Deploy your first ICP dapp in 5 minutes
-](/tutorials/deploy_sample_app.md) Quick start provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Deploy your first ICP dapp in 5 minutes](/tutorials/deploy_sample_app.md) quick start provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on the IC.
 
