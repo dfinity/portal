@@ -29,9 +29,9 @@ Regardless of the development workflow you choose, keep in mind that when you de
 
 The Internet Computer is one of the cheapest blockchains that exist today. 
 
-On the Internet Computer, a "cycle" is the unit of measurement for resources consumed in the form of processing, memory, storage, and network bandwidth. Every canister has a cycles account to which resources consumed by the canister are charged. The Internet Computer’s utility token (ICP) can be converted to cycles and transferred to a canister. Cycles can also be transferred between canisters by attaching them to an [inter-canister] message.
+On the Internet Computer, a "cycle" is the unit of measurement for resources consumed in the form of processing, memory, storage, and network bandwidth. Every canister has a cycles account to which resources consumed by the canister are charged. The Internet Computer’s utility token (ICP) can be converted to cycles and transferred to a canister. Cycles can also be transferred between canisters by attaching them to an inter-canister message.
 
-ICP can always be converted to cycles using the current price of ICP measured in [SDR] using the convention that one trillion cycles correspond to one SDR.
+ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) using the convention that one trillion cycles correspond to one SDR.
 
 **Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10.000 transactions. **
 
