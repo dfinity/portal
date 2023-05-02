@@ -15,7 +15,7 @@ In practice, the amount of CDK and library support for different anguages varies
   - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
 - **Rust**
   - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
-  - You can use Rust via th `dfx` CDK by DFINITY.
+  - You can use Rust via the `dfx` CDK by DFINITY.
   - See [Introduction to Developing Canisters in Rust](./rust/index.md)
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
