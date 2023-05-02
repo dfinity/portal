@@ -13,9 +13,7 @@ To start a new project see [Rust Quickstart](./rust-quickstart.md).
 
 ## Under the Hood
 
-To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
-
-Experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly.
+To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). Whle using `dfx` is the typical path for most developers,experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly.
 
 The Rust CDK consists of the following crates:
 
@@ -26,5 +24,3 @@ The Rust CDK consists of the following crates:
 3. Also, the [`ic-cdk-timers`](https://crates.io/crates/ic-cdk-timers) crate provides an API to schedule multiple and periodic tasks.
 
 There are a few [examples](https://github.com/dfinity/cdk-rs/tree/main/examples) to get you started building Rust Canisters.
-
-Also, it is much easier to use `dfx` instead of setting up the project from scratch. See the [Rust Quickstart](./rust-quickstart.md) for a simple walkthrough.
