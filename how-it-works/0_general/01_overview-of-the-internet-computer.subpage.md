@@ -54,6 +54,9 @@ Canisters within and across subnets communicate through asynchronous messaging.
 </figcaption>
 </figure>
 
+See more on [subnets](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) on the IC wiki.
+
+
 ## Asynchronous Messaging
 
 As mentioned earlier, a canister bundles its code and data (state).

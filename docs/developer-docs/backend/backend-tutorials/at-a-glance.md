@@ -19,7 +19,7 @@ After you install the SDK, here’s all you need to know:
 
 4.  Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment.
 
-5.  Register, build, and deploy locally or on the network.
+5.  Register, build, and deploy locally or on the network (`--network ic`).
 
         dfx deploy --network <network>
 
