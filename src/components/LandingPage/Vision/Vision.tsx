@@ -50,7 +50,7 @@ const Vision: React.FC = () => {
           </Link>
         </p>
         <p className="mb-0">
-          <Link href="/capabilities" className="link-primary link-with-icon">
+          <Link href="https://wiki.internetcomputer.org/wiki/History" className="link-primary link-with-icon">
             Wiki history of the Internet Computer
             <LinkArrowUpRight />
           </Link>
