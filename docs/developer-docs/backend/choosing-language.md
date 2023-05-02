@@ -7,7 +7,7 @@ To create [canister smart contracts](https://internetcomputer.org/how-it-works/a
 The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API. Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 
 In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) depoyable as an ICP smart contract.
-In practice, the amount of CDK and library support for different anguages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
+In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
 
 - **Motoko**
   - [Motoko DFINITY](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
