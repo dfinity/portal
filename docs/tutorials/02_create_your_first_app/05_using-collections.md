@@ -55,7 +55,7 @@ Here's the code with comments inline:
 ```
 
 - The method returns an array. Array is a simple container that can hold multiple values.
-- The array element is a tuple, another container of fixed length that has a typed value on each of the position. For example, a tuple `(Text, Nat)` represents all potential values where the first elements is a antural number and the second element is a string.
+- The array element is a tuple, another container of fixed length that has a typed value on each of the position. For example, a tuple `(Text, Nat)` represents all potential values where the first element is a natural number and the second element is a string.
 - We use a class `Iter` that represents an iterator, a pointer-like data structure that allows the developer to move over another data stucture and see values one by one in a sequential manner.
 -  The  statement `Iter.toArray(options.entries())` is executed in this sequence:
     1. `options.entries()` method produces an iterator of tuples `(Text, Nat)` that represent the map's values
