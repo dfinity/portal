@@ -111,7 +111,7 @@ This method resets the state of the votes so every option goes back to 0. Here's
 ```
 
 Comments about the implementation:
-- The method is a update since it updates the state
+- The method is an update call since it updates the state
 
 
 ## Final code
