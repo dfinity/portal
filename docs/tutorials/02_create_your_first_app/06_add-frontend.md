@@ -5,7 +5,7 @@ title: Step 6 - Adding the frontend
 
 # Step 6 - Adding the frontend
 
-We will use vanilla JavaScript to our dapp in order to keep things as simple as possible.
+We will use vanilla JavaScript for our dapp in order to keep things as simple as possible.
 
 ## Update `index.html` in the frontend canister
 
