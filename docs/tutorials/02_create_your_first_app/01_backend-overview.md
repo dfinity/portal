@@ -5,7 +5,7 @@ title: Step 1 - Backend overview
 
 # Step 1 - Backend intro
 
-In first part of the tutorial we will create a backend for our application that will be implemented as an ICPco
+In first part of the tutorial we will create a backend for our application that will be implemented as an ICP 
 [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts).
 
 Backend canisters have a default user interface called Candid UI that will allow you to interact with them without

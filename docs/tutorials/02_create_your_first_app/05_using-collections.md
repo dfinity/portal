@@ -36,7 +36,7 @@ Next we need to declare the variable of this type inside the actor:
 In this snippet we create a variable `votes`, whose type is `RBTree.RBTree<Text, Nat>`.
 
 :::note
-The current version of Motoko makes collections declarations a bit verbose and difficut to understand for beginners. We are working to create a more elegant syntax.
+Future versions of Motoko will introduce usability enhancements in collections declarations so they are not as verbose for beginners. 
 :::
 
 ## `getVotes` method
