@@ -11,7 +11,7 @@ In practice, the amount of CDK and library support for different anguages varies
 
 - **Motoko**
   - [Motoko DFINITY](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-  - You can use Motoko via th `dfx` CDK by DFINITY
+  - You can use Motoko via the `dfx` CDK by DFINITY
   - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
 - **Rust**
   - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
