@@ -312,7 +312,7 @@ export const Facts = () => {
             <CostSvg className="mb-2" />
 
             <div className="tw-lead-sm flex justify-center items-center gap-2 mt-4">
-              How much storage you get for $10?
+              Amount of on-chain storage for $1
             </div>
           </div>
 
