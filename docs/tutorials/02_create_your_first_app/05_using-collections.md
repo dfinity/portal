@@ -62,7 +62,7 @@ Here's the code with comments inline:
     2. `Iter.toArray()` is a standard function that convers `Iter<(Text,Nat)>` to array of `(Text, Nat)`
 
 
-To make this method work, we also need to add a new import statement to the beginnign of the file:
+To make this method work, we also need to add a new import statement to the beginning of the file:
 ```motoko
 import Iter "mo:base/Iter";
 ```
