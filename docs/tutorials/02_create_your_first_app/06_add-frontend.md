@@ -150,7 +150,7 @@ These lines show how the frontend can use the `getQuestion()`, `getVotes()`, `vo
 
 ## Deploy the dapp
 
-Re-deploy the dapp locally via and you are done!
+Re-deploy the dapp locally and you are done!
 
  **🎉 Congrats! 🎉**
 
