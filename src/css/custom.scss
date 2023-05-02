@@ -134,6 +134,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     div[class*="tableOfContents"] {
       top: calc(var(--ifm-navbar-height) + 40px);
       max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
+      padding-right: 40px;
 
       .table-of-contents {
         padding-top: 0;
