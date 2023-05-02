@@ -13,9 +13,11 @@ To start a new project see [Rust Quickstart](./rust-quickstart.md).
 
 ## Under the Hood
 
-To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). Whle using `dfx` is the typical path for most developers,experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly.
+To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
-The Rust CDK consists of the following crates:
+**Whle using `dfx` is the typical path for most developers,experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly. This documentation assumes one is using `dfx` to build Rust canisters.**
+
+### The Rust CDK consists of the following crates:
 
 1. The core of Rust CDK is the [`ic-cdk`](https://crates.io/crates/ic-cdk) crate. It provides the core methods that enable Rust programs to interact with the Internet Computer blockchain system API.
 
