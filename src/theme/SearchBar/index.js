@@ -48,15 +48,16 @@ const Search = () => {
       <button
         className="
           navbar__search-button group
-          border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl bg-transparent px-2 md:px-5 py-2 
-          font-circular md:text-infinite 
+          border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl md:docs:border-black
+          bg-transparent px-2 md:px-5 py-2
+          font-circular md:text-infinite md:docs:text-black
           flex gap-2 items-center 
           md:order-last md:ml-6 
           outline-offset-2
           absolute right-[64px] md:static
           text-black
 
-          md:hover:bg-infinite md:hover:text-white
+          md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
           "
         onClick={openOverlay}
       >
@@ -74,10 +75,10 @@ const Search = () => {
           />
         </svg>
 
-        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block">
+        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block docs:text-black">
           Search
         </span>
-        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 md:group-hover:text-white">
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 docs:text-black/50 md:group-hover:text-white">
           {metaKey && (
             <span className="tw-paragraph-sm relative top-[2px]">
               {metaKey}K
