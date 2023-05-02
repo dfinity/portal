@@ -9,7 +9,7 @@ We will use vanilla JavaScript for our dapp in order to keep things as simple as
 
 ## Update `index.html` in the frontend canister
 
-Navigate to `/src/poll_frontend/src/index.html` and replace the content of `index.html` with this
+Navigate to `/src/poll_frontend/src/index.html` and replace the content of `index.html` with this:
 
 ```html
 <!DOCTYPE html>
