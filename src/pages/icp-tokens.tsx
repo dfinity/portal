@@ -20,14 +20,13 @@ const NnsTvl: React.FC = () => {
   let tvl = <>&nbsp;</>;
 
   if (stakingMetricsQuery.isFetched && stakingMetricsQuery.isSuccess) {
-    // console.log(stakingMetricsQuery.data);
+    const maybeMetric: number | undefined =
+      stakingMetricsQuery.data.metrics.find(
+        (d) => d.name === "governance_total_locked_e8s"
+      )?.samples[0]?.value;
 
-    const metric: number | undefined = stakingMetricsQuery.data.metrics.find(
-      (d) => d.name === "governance_total_locked_e8s"
-    )?.samples[0]?.value;
-
-    if (metric) {
-      tvl = <>${((metric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
+    if (maybeMetric) {
+      tvl = <>${((maybeMetric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
     }
   }
 
@@ -120,7 +119,11 @@ function TokenHolders(): JSX.Element {
             <div className="flex flex-col gap-5 md:flex-row md:w-8/10">
               <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1">
                 <h3 className="inline-flex items-center gap-3 mb-6">
-                  <img src="/img/icp-tokens/icp-token-logo.svg" alt="" />
+                  <img
+                    src="/img/icp-tokens/icp-token-logo.svg"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span className="flex-1 text-gradient tw-heading-5">
                     ICP Token Utility
                   </span>
@@ -139,7 +142,11 @@ function TokenHolders(): JSX.Element {
               </div>
               <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1">
                 <h3 className="inline-flex items-center gap-3 mb-6">
-                  <img src="/img/icp-tokens/cycles-logo.svg" alt="" />
+                  <img
+                    src="/img/icp-tokens/cycles-logo.svg"
+                    alt=""
+                    loading="lazy"
+                  />
                   <span className="flex-1 text-gradient tw-heading-5">
                     Cycles
                   </span>
@@ -306,21 +313,23 @@ function TokenHolders(): JSX.Element {
           </section>
 
           <section className="bg-infinite text-white">
-            <div className="container-10 py-20">
-              <h2 className="tw-heading-4 mb-10">
-                Forget Centralized Exchanges.
-                <br />
-                Buy ICP on a DEX with Bitcoin.
-              </h2>
-              <p className="tw-paragraph mb-0">
-                Directly fund a ckBTC wallet with BTC and swap it for ICP using
-                any of these DEXs — all without centralized exchanges. Find out
-                how native Bitcoin support on the Internet Computer makes this
-                possible.{" "}
-              </p>
+            <div className="container-10 py-20 md:pt-40 md:pb-44">
+              <div className="md:w-7/10">
+                <h2 className="tw-heading-4 md:tw-heading-3 mb-10">
+                  Forget Centralized Exchanges.
+                  <br />
+                  Buy ICP on a DEX with Bitcoin.
+                </h2>
+                <p className="tw-paragraph md:tw-lead-sm mb-0">
+                  Directly fund a ckBTC wallet with BTC and swap it for ICP
+                  using any of these DEXs — all without centralized exchanges.
+                  Find out how native Bitcoin support on the Internet Computer
+                  makes this possible.{" "}
+                </p>
+              </div>
 
-              <div className="mt-20 grid grid-cols-1 gap-5 text-black">
-                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 ">
+              <div className="mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-[3fr_3fr_5fr]">
+                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col">
                   <img
                     src="/img/showcase/icdex_logo.webp"
                     loading="lazy"
@@ -333,7 +342,7 @@ function TokenHolders(): JSX.Element {
                     CEXs and get ICP or CHAT tokens for your BTC.{" "}
                   </p>
                 </div>
-                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 ">
+                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col">
                   <img
                     src="/img/showcase/icpswap_logo.webp"
                     loading="lazy"
@@ -347,16 +356,23 @@ function TokenHolders(): JSX.Element {
                   </p>
                 </div>
 
-                <div className="-mb-24">
-                  <img src="/img/icp-tokens/ckBTC-token-1.webp" alt="" />
+                <div className="-mb-24 lg:mb-0 relative sm:text-center md:text-left sm:col-span-2 md:col-span-1">
+                  <img
+                    src="/img/icp-tokens/ckBTC-token-1.webp"
+                    alt=""
+                    loading="lazy"
+                    className="lg:absolute -top-20"
+                  />
                 </div>
               </div>
             </div>
           </section>
-          <section className="container-10 pt-20">
-            <div className="text-center">
-              <h2 className="tw-heading-3 mb-6">Wallets & Custody</h2>
-              <p className="tw-lead-sm mb-6">
+          <section className="container-12 pt-20 md:pt-40">
+            <div className="text-center md:w-8/10 md:mx-auto">
+              <h2 className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8">
+                Wallets & Custody
+              </h2>
+              <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
                 Understand the benefits and limitations of each custody option
                 so you can choose the wallet that best suits your needs.
               </p>
@@ -366,7 +382,7 @@ function TokenHolders(): JSX.Element {
                 </Link>
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-16 mt-16">
+            <div className="grid grid-cols-1 gap-16 mt-16 md:mt-24 md:grid-cols-3">
               {/* Column 1 */}
               <div className="">
                 <h3 className="tw-heading-5 mb-6">Web Wallets</h3>
@@ -518,17 +534,19 @@ function TokenHolders(): JSX.Element {
               </div>
             </div>
           </section>
-          <div className="container-12 pt-24 pb-30">
-            <div className="relative text-white text-center">
-              <div className="blob blob-purple blob-sm blob-x-5 blob-y-5 z-[-1]"></div>
+          <div className="container-12 pt-24 md:pt-40 pb-30 relative">
+            <div className=" text-white text-center">
+              <div className="blob blob-purple blob-sm blob-x-5 blob-y-2 z-[-1] md:blob-lg md:blob-y-5"></div>
               <h2 className="tw-heading-3 md:tw-heading-60 mb-0">
                 Get More Involved
               </h2>
             </div>
 
-            <div className="flex flex-col gap-5 mt-6">
-              <div className="bg-white/90 border border-white border-solid rounded-xl p-6 text-center">
-                <h3 className="tw-lead-lg mb-3">Participate in SNS DAOs</h3>
+            <div className="flex flex-col gap-5 mt-6 md:mt-20 md:flex-row md:items-start">
+              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12">
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  Participate in SNS DAOs
+                </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
                   Own a piece of your favorite dapps on the Internet Computer,
                   and shape their development by participating in governance.
@@ -540,8 +558,8 @@ function TokenHolders(): JSX.Element {
                   </Link>
                 </p>
               </div>
-              <div className="bg-white/90 border border-white border-solid rounded-xl p-6 text-center">
-                <h3 className="tw-lead-lg mb-3">
+              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:px-11 md:py-12 md:mt-30">
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
                   DeFi on the Internet Computer
                 </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
@@ -556,8 +574,10 @@ function TokenHolders(): JSX.Element {
                   </Link>
                 </p>
               </div>
-              <div className="bg-white/90 border border-white border-solid rounded-xl p-6 text-center">
-                <h3 className="tw-lead-lg mb-3">Join the ICRC Conversation</h3>
+              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12">
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  Join the ICRC Conversation
+                </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
                   Community discussions around extending the ICRC token standard
                   for all ledgers to optimize functionality is ongoing. Be vocal
