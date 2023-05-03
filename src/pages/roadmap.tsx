@@ -4,7 +4,7 @@ import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
-import GithubIcon from "@site/static/img/token-holders/social/github.svg";
+import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { AnimatePresence, motion } from "framer-motion";
