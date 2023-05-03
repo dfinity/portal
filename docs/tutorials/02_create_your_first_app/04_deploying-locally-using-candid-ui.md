@@ -26,9 +26,6 @@ To deploy your app you need to:
 1. Change your current directory to the project root
 2. Type `dfx deploy` in the command line
 
-Example output in the console:
-![dfx deploy screenshot](./_attachments/dfx_deploy.webp)
-
 ## Opening Candid UI
 
 When you deployed your canister, the system displays two lines similar to this:
@@ -36,21 +33,18 @@ When you deployed your canister, the system displays two lines similar to this:
 ```shell
 URLs:
   Frontend canister via browser
-    poll2_frontend: http://127.0.0.1:4943/?canisterId=rno2w-sqaaa-aaaaa-aaacq-cai
+    poll_frontend: http://127.0.0.1:4943/?canisterId=qsgjb-riaaa-aaaaa-aaaga-cai
   Backend canister via Candid interface:
-    poll2_backend: http://127.0.0.1:4943/?canisterId=renrk-eyaaa-aaaaa-aaada-cai&id=rkp4c-7iaaa-aaaaa-aaaca-cai
+    poll_backend: http://127.0.0.1:4943/?canisterId=qvhpv-4qaaa-aaaaa-aaagq-cai&id=qhbym-qaaaa-aaaaa-aaafq-cai
 ```
 
-You will need the second URL (for `poll2_backend`) to access candid UI. Open this URL to your web browser to open the
+You will need the second URL (for `poll_backend`) to access candid UI. Open this URL to your web browser to open the
 Candid UI web page. You should we something like this:
-![Candid UI screenshot](./_attachments/candid_ui_question_only.webp)
+![Candid UI screenshot](./_attachments/get_question_candid.png))
 
 ## Using Candid UI to access the data
 
-As you can see, Candid UI allows you to access the methods of the actor that we coded at the previosus step.
-
-You can play with your implementation by calling methods and see that the question is stored and retrieved correctly:
-![candid ui demo animation](_attachments/candid_ui_demo_animation.gif)
+Candid UI allows you to access the methods of the actor that we coded at the previosus step. Try it by clicking "Query".
 
 ## Summary
 
