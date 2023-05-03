@@ -22,27 +22,9 @@ export default function PreHero({}): JSX.Element {
   const darkRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(darkRef);
 
-  // const [bgDark, setBgDark] = useState(true);
-  // const [headerHeight, setHeaderHeight] = useState(0);
-
   useEffect(() => {
     setStart(true);
   }, []);
-
-  // useEffect(() => {
-  //   function onScroll() {
-  //     if (window.scrollY > window.innerHeight - headerHeight && bgDark) {
-  //       setBgDark(false);
-  //     } else if (
-  //       window.scrollY < window.innerHeight - headerHeight &&
-  //       !bgDark
-  //     ) {
-  //       setBgDark(true);
-  //     }
-  //   }
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, [bgDark, animate, headerHeight]);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
@@ -52,30 +34,10 @@ export default function PreHero({}): JSX.Element {
     offset: ["end end", "end start"],
   });
 
-  // const { scrollYProgress: completeScrollYProgress } = useScroll({
-  //   target: heroRef,
-  //   offset: ["start end", "end start"],
-  // });
-
-  // const animationStop = useTransform(completeScrollYProgress, [0, 1.0], [0, 1]);
-
   const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
   const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const blur = useMotionTemplate`blur(${blurSize}px)`;
-
-  // useEffect(() => {
-  //   const unsub = animationStop.onChange((latest) => {
-  //     if (latest === 1.0 && animate) {
-  //       setAnimate(false);
-  //       console.log("stop animation");
-  //     } else if (latest < 1.0 && !animate) {
-  //       setAnimate(true);
-  //       console.log("start animation");
-  //     }
-  //   });
-  //   return unsub;
-  // }, []);
 
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
@@ -101,17 +63,20 @@ export default function PreHero({}): JSX.Element {
             }}
           ></motion.img>
           <div className="container-10 text-center">
-            <motion.h1
-              className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white animate-scale-in mb-0"
+            <motion.div
+              className="animate-scale-in"
               style={{
                 animationPlayState: start ? "running" : "paused",
                 opacity: blobOpacity,
               }}
             >
-              World Computer
-              <br />
-              is our future
-            </motion.h1>
+              <h1 className="tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
+                World Computer
+              </h1>
+              <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-2 text-white mb-0">
+                Decentralize Everything
+              </p>
+            </motion.div>
 
             <motion.div
               className="animate-fade-up relative"
@@ -197,7 +162,8 @@ export default function PreHero({}): JSX.Element {
                 href="https://wiki.internetcomputer.org/wiki/L1_comparison"
                 className="link-primary-light link-with-icon"
               >
-                Comparison of Layer-1 blockchains<LinkArrowUpRight />
+                Comparison of Layer-1 blockchains
+                <LinkArrowUpRight />
               </Link>
             </div>
             <img
