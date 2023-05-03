@@ -49,7 +49,12 @@ const WalletCard: React.FC<{
       className="flex gap-6 items-start bg-white/80 rounded-xl p-4 border border-white border-solid text-black hover:text-black hover:no-underline"
       variants={transitions.item}
     >
-      <img src={icon} alt="" className="w-14" loading="lazy" />
+      <img
+        src={icon}
+        alt=""
+        className="w-14 h-14 object-contain object-center"
+        loading="lazy"
+      />
       <div className="">
         <h3 className="tw-heading-6 mb-0">{title}</h3>
         <p className="tw-paragraph-sm text-black/60 mb-0">{description}</p>
@@ -113,8 +118,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.fadeIn}
                 src="/img/icp-tokens/hero.webp"
                 alt=""
-                loading="lazy"
-                className="w-full max-w-sm md:max-w-none"
+                className="w-full max-w-sm md:max-w-none aspect-[563/492]"
               />
             </div>
             <div className="mb-12 md:w-7/10">
@@ -155,6 +159,7 @@ function TokenHolders(): JSX.Element {
                     src="/img/icp-tokens/icp-token-logo.svg"
                     alt=""
                     loading="lazy"
+                    className="w-16 h-16"
                   />
                   <span className="flex-1 text-gradient tw-heading-5">
                     ICP Token Utility
@@ -179,6 +184,7 @@ function TokenHolders(): JSX.Element {
                 <h3 className="inline-flex items-center gap-3 mb-6">
                   <img
                     src="/img/icp-tokens/cycles-logo.svg"
+                    className="w-16 h-16"
                     alt=""
                     loading="lazy"
                   />
@@ -416,7 +422,7 @@ function TokenHolders(): JSX.Element {
                     src="/img/showcase/icdex_logo.webp"
                     loading="lazy"
                     alt=""
-                    className="w-20"
+                    className="w-20 h-20"
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
@@ -432,7 +438,7 @@ function TokenHolders(): JSX.Element {
                     src="/img/showcase/icpswap_logo.webp"
                     loading="lazy"
                     alt=""
-                    className="w-20"
+                    className="w-20 h-20"
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
@@ -474,7 +480,10 @@ function TokenHolders(): JSX.Element {
                 so you can choose the wallet that best suits your needs.
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
-                <Link className="link-primary link-with-icon">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_options"
+                >
                   Learn more about custody options <LinkArrowUpRight />
                 </Link>
               </motion.p>
