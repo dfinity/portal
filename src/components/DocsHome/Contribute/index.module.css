@@ -3,7 +3,7 @@
   margin: auto;
   position: relative;
   padding: 120px 0 50px 0;
-  --swiper-theme-color: var(--ifm-color-primary);
+  --swiper-theme-color: var(--ic0-color);
 }
 
 .title {
@@ -51,8 +51,8 @@
 
 .card:hover {
   padding-top: 32px;
-  background: var(--ifm-color-primary);
-  border: 1px solid var(--ifm-color-primary);
+  background: var(--ic0-color);
+  border: 1px solid var(--ic0-color);
 }
 
 .card:hover,
@@ -73,7 +73,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  color: var(--ifm-color-primary);
+  color: var(--ic0-color);
   margin-bottom: 8px;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .informationIcon {
-  color: var(--ifm-color-primary);
+  color: var(--ic0-color);
   margin: auto;
   width: 24px;
   height: 24px;
