@@ -3,14 +3,18 @@ import useGlobalData from "@docusaurus/useGlobalData";
 import Layout from "@theme/Layout";
 import React, { useRef } from "react";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import { getStakingMetrics } from "../utils/network-stats";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import transitions from "@site/static/transitions.json";
+import { motion } from "framer-motion";
 
 const queryClient = new QueryClient();
+const MotionLink = motion(Link);
 
 const NnsTvl: React.FC = () => {
   const globalData = useGlobalData();
@@ -40,16 +44,17 @@ const WalletCard: React.FC<{
   icon: string;
 }> = ({ title, description, link, icon }) => {
   return (
-    <Link
+    <MotionLink
       to={link}
       className="flex gap-6 items-start bg-white/80 rounded-xl p-4 border border-white border-solid text-black hover:text-black hover:no-underline"
+      variants={transitions.item}
     >
       <img src={icon} alt="" className="w-14" loading="lazy" />
       <div className="">
         <h3 className="tw-heading-6 mb-0">{title}</h3>
         <p className="tw-paragraph-sm text-black/60 mb-0">{description}</p>
       </div>
-    </Link>
+    </MotionLink>
   );
 };
 
@@ -70,27 +75,42 @@ function TokenHolders(): JSX.Element {
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-icp-tokens.jpeg" />
           {isDark && <DarkHeroStyles />}
-          <section
-            ref={ref}
+          <AnimateSpawn
+            el={motion.section}
+            variants={transitions.container}
             className="bg-infinite   text-white overflow-hidden"
           >
-            <div className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative ">
+            <div
+              className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
+              ref={ref}
+            >
               <div className="blob blob-purple blob-x-5 blob-y-10 blob-md z-0 opacity-50"></div>
               <div className="md:w-7/10">
-                <h1 className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative">
+                <motion.h1
+                  className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
+                  variants={transitions.item}
+                >
                   Understanding the ICP Token{" "}
-                </h1>
-                <p className="tw-lead-sm md:tw-lead mb-0 relative">
+                </motion.h1>
+                <motion.p
+                  className="tw-lead-sm md:tw-lead mb-0 relative"
+                  variants={transitions.item}
+                >
                   One of the best ways to engage with the Internet Computer and
                   its ecosystem is through the use of its native utility token.
-                </p>
+                </motion.p>
               </div>
             </div>
-          </section>
+          </AnimateSpawn>
 
-          <section className="container-10 relative md:pt-52">
+          <AnimateSpawn
+            el={motion.section}
+            variants={transitions.container}
+            className="container-10 relative md:pt-52"
+          >
             <div className="-mt-40 md:mt-0 md:absolute md:right-0 md:-top-60 text-center">
-              <img
+              <motion.img
+                variants={transitions.fadeIn}
                 src="/img/icp-tokens/hero.webp"
                 alt=""
                 loading="lazy"
@@ -98,10 +118,16 @@ function TokenHolders(): JSX.Element {
               />
             </div>
             <div className="mb-12 md:w-7/10">
-              <h2 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient">
+              <motion.h2
+                className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
+                variants={transitions.item}
+              >
                 Power Computation, Staking, Voting, Governance & Ownership.{" "}
-              </h2>
-              <p className="tw-paragraph md:tw-lead-sm text-black/60 mb-3">
+              </motion.h2>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
+                variants={transitions.item}
+              >
                 Beyond trading, the ICP utility token plays various roles on the
                 Internet Computer. It is used to participate in governance and
                 to compensate node providers. ICP tokens can also be converted
@@ -111,13 +137,19 @@ function TokenHolders(): JSX.Element {
                 become a co-owner of SNS DAOs, and for various services on
                 registries, marketplaces and exchanges operating on the Internet
                 Computer blockchain.
-              </p>
-              <p className="tw-paragraph md:tw-lead-sm text-black/60 mb-0">
+              </motion.p>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-0"
+                variants={transitions.item}
+              >
                 The ICP token implements the ICRC-1 standard.
-              </p>
+              </motion.p>
             </div>
             <div className="flex flex-col gap-5 md:flex-row md:w-8/10">
-              <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1">
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
                 <h3 className="inline-flex items-center gap-3 mb-6">
                   <img
                     src="/img/icp-tokens/icp-token-logo.svg"
@@ -139,8 +171,11 @@ function TokenHolders(): JSX.Element {
                     Participate in decentralisation swaps
                   </li>
                 </ul>
-              </div>
-              <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1">
+              </motion.div>
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
                 <h3 className="inline-flex items-center gap-3 mb-6">
                   <img
                     src="/img/icp-tokens/cycles-logo.svg"
@@ -159,56 +194,77 @@ function TokenHolders(): JSX.Element {
                     Fuel storage, compute, & bandwidth
                   </li>
                 </ul>
-              </div>
+              </motion.div>
             </div>
-          </section>
+          </AnimateSpawn>
 
-          <section className="container-12 mt-20 md:mt-40">
+          <AnimateSpawn
+            className="container-12 mt-20 md:mt-40"
+            el={motion.section}
+            variants={transitions.container}
+          >
             <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-12 flex flex-col gap-12 md:flex-row md:justify-between md:px-20 md:py-12 md:gap-6">
-              <figure className="flex flex-col items-center m-0">
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
                   $0
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   Gas fees for end users
                 </figcaption>
-              </figure>
-              <figure className="flex flex-col items-center m-0">
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
                   ${(icpPrice * 0.0001).toFixed(5)}
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   TX Fee
                 </figcaption>
-              </figure>
-              <figure className="flex flex-col items-center m-0">
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
                   1-2s
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   Finality
                 </figcaption>
-              </figure>
-              <figure className="flex flex-col items-center m-0">
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
                   <NnsTvl />
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   NNS TVL
                 </figcaption>
-              </figure>
+              </motion.figure>
             </div>
-          </section>
+          </AnimateSpawn>
 
           <section className="mt-20 md:mt-40">
-            <div className="container-10 mb-10">
+            <AnimateSpawn
+              className="container-10 mb-10"
+              variants={transitions.item}
+            >
               <h2 className="tw-heading-3 mb-0 md:tw-heading-60">
                 Ways to Use ICP Tokens
               </h2>
-            </div>
-            {/* <div className=""> */}
+            </AnimateSpawn>
             <div className="container-12 grid grid-cols-1 gap-5 md:grid-cols-2">
-              <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 ">
+              <AnimateSpawn
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 "
+                variants={transitions.item}
+              >
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
                   Participate in Governance
                 </h3>
@@ -233,8 +289,11 @@ function TokenHolders(): JSX.Element {
                     Learn how to stake on the NNS dapp
                   </Link>
                 </p>
-              </div>
-              <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 ">
+              </AnimateSpawn>
+              <AnimateSpawn
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 "
+                variants={transitions.item}
+              >
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
                   Buy Cycles for Compute & Storage
                 </h3>
@@ -257,8 +316,9 @@ function TokenHolders(): JSX.Element {
                     More on the Reverse Gas Model
                   </Link>
                 </p>
-              </div>
-              <div
+              </AnimateSpawn>
+              <AnimateSpawn
+                variants={transitions.item}
                 className="
                 bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 md:col-span-2
                 bg-[url(/img/icp-tokens/ecosystem-mobile.webp)] sm:bg-[url(/img/icp-tokens/ecosystem.webp)] 
@@ -289,47 +349,69 @@ function TokenHolders(): JSX.Element {
                     </Link>
                   </p>
                 </div>
-              </div>
+              </AnimateSpawn>
             </div>
             {/* </div> */}
           </section>
 
-          <section className="container-10 my-30 md:my-40 text-center text-white relative">
-            <div className="blob blob-purple blob-md md:blob-lg blob-x-5 blob-y-5 z-[-1]"></div>
-            <h2 className="tw-heading-3 md:tw-heading-60 mb-8">
+          <AnimateSpawn
+            className="container-10 my-30 md:my-40 text-center text-white relative"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="blob blob-purple blob-md md:blob-lg blob-x-5 blob-y-5 z-[-1]"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-8"
+              variants={transitions.item}
+            >
               Where To Get ICP{" "}
-            </h2>
-            <p className="tw-lead mb-8">
+            </motion.h2>
+            <motion.p className="tw-lead mb-8" variants={transitions.item}>
               The ICP token is widely available on centralized exchanges.
-            </p>
-            <p className="mb-0">
+            </motion.p>
+            <motion.p className="mb-0" variants={transitions.item}>
               <Link
                 href="https://coinmarketcap.com/currencies/internet-computer/markets/"
                 className="button-outline-white"
               >
                 Complete list on CoinMarketCap
               </Link>
-            </p>
-          </section>
+            </motion.p>
+          </AnimateSpawn>
 
-          <section className="bg-infinite text-white">
+          <AnimateSpawn
+            className="bg-infinite text-white"
+            el={motion.section}
+            variants={transitions.container}
+          >
             <div className="container-10 py-20 md:pt-40 md:pb-44">
               <div className="md:w-7/10">
-                <h2 className="tw-heading-4 md:tw-heading-3 mb-10">
+                <motion.h2
+                  className="tw-heading-4 md:tw-heading-3 mb-10"
+                  variants={transitions.item}
+                >
                   Forget Centralized Exchanges.
                   <br />
                   Buy ICP on a DEX with Bitcoin.
-                </h2>
-                <p className="tw-paragraph md:tw-lead-sm mb-0">
+                </motion.h2>
+                <motion.p
+                  className="tw-paragraph md:tw-lead-sm mb-0"
+                  variants={transitions.item}
+                >
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
                   Find out how native Bitcoin support on the Internet Computer
                   makes this possible.{" "}
-                </p>
+                </motion.p>
               </div>
 
               <div className="mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-[3fr_3fr_5fr]">
-                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col">
+                <motion.div
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col"
+                  variants={transitions.item}
+                >
                   <img
                     src="/img/showcase/icdex_logo.webp"
                     loading="lazy"
@@ -341,8 +423,11 @@ function TokenHolders(): JSX.Element {
                     First orderbook-based DEX running fully on-chain. Bypass
                     CEXs and get ICP or CHAT tokens for your BTC.{" "}
                   </p>
-                </div>
-                <div className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col">
+                </motion.div>
+                <motion.div
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col"
+                  variants={transitions.item}
+                >
                   <img
                     src="/img/showcase/icpswap_logo.webp"
                     loading="lazy"
@@ -354,37 +439,52 @@ function TokenHolders(): JSX.Element {
                     Offers the largest number of tokens on the Internet
                     Computer. Trade meme coins or SNS DAO tokens.
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="-mb-24 lg:mb-0 relative sm:text-center md:text-left sm:col-span-2 md:col-span-1">
+                <motion.div
+                  className="-mb-24 lg:mb-0 relative sm:text-center md:text-left sm:col-span-2 md:col-span-1"
+                  variants={transitions.fadeIn}
+                >
                   <img
                     src="/img/icp-tokens/ckBTC-token-1.webp"
                     alt=""
                     loading="lazy"
                     className="lg:absolute -top-20"
                   />
-                </div>
+                </motion.div>
               </div>
             </div>
-          </section>
+          </AnimateSpawn>
           <section className="container-12 pt-20 md:pt-40">
-            <div className="text-center md:w-8/10 md:mx-auto">
-              <h2 className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8">
+            <AnimateSpawn
+              className="text-center md:w-8/10 md:mx-auto"
+              variants={transitions.container}
+            >
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8"
+                variants={transitions.item}
+              >
                 Wallets & Custody
-              </h2>
-              <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
+              </motion.h2>
+              <motion.p
+                className="tw-lead-sm md:tw-lead mb-6 md:mb-8"
+                variants={transitions.item}
+              >
                 Understand the benefits and limitations of each custody option
                 so you can choose the wallet that best suits your needs.
-              </p>
-              <p className="mb-0">
+              </motion.p>
+              <motion.p className="mb-0" variants={transitions.item}>
                 <Link className="link-primary link-with-icon">
                   Learn more about custody options <LinkArrowUpRight />
                 </Link>
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-16 mt-16 md:mt-24 md:grid-cols-3">
+              </motion.p>
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="grid grid-cols-1 gap-16 mt-16 md:mt-24 md:grid-cols-3"
+              variants={transitions.container}
+            >
               {/* Column 1 */}
-              <div className="">
+              <motion.div className="" variants={transitions.item}>
                 <h3 className="tw-heading-5 mb-6">Web Wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Web-based dapps that are easily accessible with the creation
@@ -429,9 +529,9 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/nfid_logo.webp"
                   />
                 </div>
-              </div>
+              </motion.div>
               {/* Column 2 */}
-              <div className="">
+              <motion.div className="" variants={transitions.item}>
                 <h3 className="tw-heading-5 mb-6">Mobile App Wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Understand the benefits and limitations of each custody option
@@ -481,9 +581,9 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/bitfinitywallet_logo.webp"
                   />
                 </div>
-              </div>
+              </motion.div>
               {/* Column 3 */}
-              <div className="">
+              <motion.div className="" variants={transitions.item}>
                 <h3 className="tw-heading-5 mb-6">Hardware Wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Maximum security. Hardware wallets hold private keys in
@@ -531,19 +631,32 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/coinbase_logo.webp"
                   />
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </AnimateSpawn>
           </section>
-          <div className="container-12 pt-24 md:pt-40 pb-30 relative">
+          <AnimateSpawn
+            className="container-12 pt-24 md:pt-40 pb-30 relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
             <div className=" text-white text-center">
-              <div className="blob blob-purple blob-sm blob-x-5 blob-y-2 z-[-1] md:blob-lg md:blob-y-5"></div>
-              <h2 className="tw-heading-3 md:tw-heading-60 mb-0">
+              <motion.div
+                className="blob blob-purple blob-sm blob-x-5 blob-y-2 z-[-1] md:blob-lg md:blob-y-5"
+                variants={transitions.fadeIn}
+              ></motion.div>
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-0"
+                variants={transitions.item}
+              >
                 Get More Involved
-              </h2>
+              </motion.h2>
             </div>
 
             <div className="flex flex-col gap-5 mt-6 md:mt-20 md:flex-row md:items-start">
-              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12">
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12"
+                variants={transitions.item}
+              >
                 <h3 className="tw-lead-lg md:tw-title-sm mb-3">
                   Participate in SNS DAOs
                 </h3>
@@ -557,8 +670,11 @@ function TokenHolders(): JSX.Element {
                     Learn more
                   </Link>
                 </p>
-              </div>
-              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:px-11 md:py-12 md:mt-30">
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:px-11 md:py-12 md:mt-30"
+                variants={transitions.item}
+              >
                 <h3 className="tw-lead-lg md:tw-title-sm mb-3">
                   DeFi on the Internet Computer
                 </h3>
@@ -573,8 +689,11 @@ function TokenHolders(): JSX.Element {
                     Learn more
                   </Link>
                 </p>
-              </div>
-              <div className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12">
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12"
+                variants={transitions.item}
+              >
                 <h3 className="tw-lead-lg md:tw-title-sm mb-3">
                   Join the ICRC Conversation
                 </h3>
@@ -592,9 +711,9 @@ function TokenHolders(): JSX.Element {
                     <LinkArrowUpRight />
                   </Link>
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </AnimateSpawn>
         </main>
       </Layout>
     </QueryClientProvider>
