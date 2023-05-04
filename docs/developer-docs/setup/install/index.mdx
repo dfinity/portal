@@ -116,16 +116,18 @@ The IC SDK installation script installs several components in default locations 
 | uninstall.sh | Script to remove the SDK and all of its components                                    | `~/.cache/dfinity/uninstall.sh`               |
 | versions     | Cache directory that contains a subdirectory for each version of the SDK you install. | `~/.cache/dfinity/versions`                   |
 
-## SDK vs CDK
+## SDK vs CDK vs `dfx`
 
-Above, one will see there is a component installed called `cdk-rs`. This is a **Canister Development Kit (CDK).**
+There are a few components above worth expanding on:
 
-A CDK is an adapter used by the IC SDK so a programming language has the features needed to create and manage canisters. 
-The IC SDK comes with a few CDKs already installed for you so you can use them in the language of yoru choice. 
+1. **IC SDK** - This is the SDK created by DFINITY for creating and managing canisters. This is just one SDK in ICP community and a common entry point for developers.
 
-That is why there is a [Rust CDK](https://github.com/dfinity/cdk-rs), [Python CDK](https://demergent-labs.github.io/kybra/), 
+2. **Canister Development Kit (CDK)** - A CDK is an adapter used by the IC SDK so a programming language has the features needed to create and manage canisters. 
+The IC SDK comes with a few CDKs already installed for you so you can use them in the language of yoru choice. That is why there is a [Rust CDK](https://github.com/dfinity/cdk-rs), [Python CDK](https://demergent-labs.github.io/kybra/), 
 [TypeScript CDK](https://demergent-labs.github.io/azle/), etc... Since CDKs are components used the SDK, some developer choose to use the CDK directly (without the IC SDK), 
 but typically are used as part of the whole IC SDK.
+
+3. **dfx** - `dfx` is the command-line interface for the IC SDK. This is why many commands for the IC SDK start with the command "`dfx ..`" such as `dfx new` or `dfx stop`.
 
 ### Core components in a versioned directory
 
