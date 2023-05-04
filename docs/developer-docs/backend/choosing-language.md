@@ -15,8 +15,7 @@ In practice, the amount of CDK and library support for different languages varie
   - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
 - **Rust**
   - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
-  - One can se Rust via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY
-  - Advanced users can also use Rust via the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY
+  - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK)
   - See [Introduction to Developing Canisters in Rust](./rust/index.md)
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
