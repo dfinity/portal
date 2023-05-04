@@ -7,13 +7,13 @@ import clsx from "clsx";
 
 const SectionsLinks = [
   { text: "Stats", to: "#stats" },
-  { text: "Introduction", to: "#introduction" },
+  { text: "Community", to: "#community" },
   { text: "Dapps", to: "#dapps" },
-  { text: "Comparison", to: "#comparison" },
+  { text: "The Vision", to: "#vision" },
+  { text: "Technology", to: "#technology" },
   { text: "Sustainable", to: "#sustainable" },
-  { text: "Foundation", to: "#foundation" },
-  { text: "Features", to: "#features" },
   { text: "Start Building", to: "#startBuilding" },
+  { text: "Foundation", to: "#foundation" },
 ];
 const container = {
   hidden: {

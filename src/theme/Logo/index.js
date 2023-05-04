@@ -42,7 +42,11 @@ export default function Logo(props) {
     >
       {logo && (
         <div className={imageClassName}>
-          <img src={logo.src} alt={alt} />
+          <img
+            src={logo.src}
+            alt={alt}
+            className="!h-[21px] !w-[183px] md:!h-[31px] md:!w-[268px]"
+          />
         </div>
       )}
       {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}

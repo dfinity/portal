@@ -12,8 +12,16 @@ export const OnChainBadge: FC<{ className?: string; sizeClasses?: string }> = ({
       className={clsx("grid grid-cols-1", sizeClasses, className)}
       aria-label="This website is 100% on-chain"
     >
-      <img src={inner} className="col-span-full row-span-full"></img>
-      <img src={outer} className="col-span-full row-span-full badge-spin"></img>
+      <img
+        src={inner}
+        className="col-span-full row-span-full"
+        alt="This website is hosted 100% on-chain"
+      ></img>
+      <img
+        src={outer}
+        className="col-span-full row-span-full badge-spin"
+        alt=""
+      ></img>
     </span>
   );
 };

@@ -29,7 +29,12 @@ jobs:
         with:
           node-version: 16
       - name: Install DFX
-        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+        run: |
+          mkdir dfx
+          cd dfx
+          wget https://github.com/dfinity/sdk/releases/download/0.14.1-beta.0/dfx-0.14.1-beta.0-x86_64-linux.tar.gz
+          tar -xf dfx-0.14.1-beta.0-x86_64-linux.tar.gz
+          echo "`pwd`" >> $GITHUB_PATH
 
       - name: Dump Identity
         run: |
