@@ -157,3 +157,22 @@ export function getCpuCoreCount(): Promise<number> {
     )
     .then((res) => +res.ic_cpu_cores[0][1]);
 }
+
+/*
+  Add new metrics here with | 
+*/
+export type StakingMetric = {
+  name: "governance_total_locked_e8s";
+  samples: {
+    timestamp: number;
+    value: number;
+  }[];
+};
+
+export type StakingMetrics = { metrics: StakingMetric[] };
+
+export function getStakingMetrics() {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/staking-metrics"
+  ).then((res) => res.json() as Promise<StakingMetrics>);
+}
