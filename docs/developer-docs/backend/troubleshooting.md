@@ -6,17 +6,17 @@ This section provides information to help you troubleshoot and resolve or work a
 
 -   creating, building, or deploying canisters
 
--   using the `dfx` command-line interface
+-   using the [IC SDK](../setup/install/index.mdx)
 
 -   running the local canister execution environment
 
 ## Migrating an existing project
 
-Currently, there is no automatic migration or backward compatibility for any projects that you might have created using previous versions of the `dfx` command-line interface. After upgrading to the latest version, you might see error or failure messages if you attempt to build or install a project created with a previous version of the `dfx` command-line interface.
+Currently, there is no automatic migration or backward compatibility for any projects that you might have created using previous versions of the IC SDK. After upgrading to the latest version, you might see error or failure messages if you attempt to build or install a project created with a previous version of the IC SDK.
 
-In many cases, however, you can continue to work with projects from a previous release by manually changing the dfx setting in the dfx.json configuration file, then rebuilding the project to be compatible with the version of the `dfx` command-line interface you have currently installed.
+In many cases, however, you can continue to work with projects from a previous release by manually changing the dfx setting in the dfx.json configuration file, then rebuilding the project to be compatible with the version of the IC SDK you have currently installed.
 
-For example, if you have a project that was created with `dfx` version `0.8.0`, open the `dfx.json` file in a text editor and change the `dfx` setting to the latest version or remove the section entirely.
+For example, if you have a project that was created with IC SDK version `0.8.0`, open the `dfx.json` file in a text editor and change the `dfx` setting to the latest version or remove the section entirely.
 
 ## Restarting the local canister execution environment
 
@@ -52,13 +52,13 @@ You can remove the `canisters` directory for a project by running the following 
 
 ## Reinstalling dfx
 
-Many of the bugs you might encounter can be addressed by uninstalling and reinstalling the `dfx` command-line interface. Here are a few ways to reinstall `dfx`.
+Many of the bugs you might encounter can be addressed by uninstalling and reinstalling the IC SDK. Here are a few ways to reinstall the IC SDK.
 
-If you only have one version of `dfx` installed in your development environment, you can usually run the following command to uninstall and reinstall the latest version of `dfx`:
+If you only have one version of the IC SDK installed in your development environment, you can usually run the following command to uninstall and reinstall the latest version of IC SDK:
 
     ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
-If you have modified the location of the `dfx` binary, you might want run the following command to uninstall the version of `dfx` that is in your PATH, then reinstall the latest version of `dfx`:
+If you have modified the location of the IC SDK binary (the binary is titled `dfx`), you might want run the following command to uninstall the version of IC SDK that is in your PATH, then reinstall the latest version of IC SDK:
 
     rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
@@ -77,7 +77,7 @@ softwareupdate --install-rosetta
 
 ## Failed build when using VMs
 
-If you are running `dfx` using a virtual machine image on Ubuntu or CentOS, you might see an error message that looks like this when you attempt to run the `dfx build` command:
+If you are running the IC SDK using a virtual machine image on Ubuntu or CentOS, you might see an error message that looks like this when you attempt to run the `dfx build` command:
 
     Building hello...
     An error occurred:
@@ -117,12 +117,12 @@ Fixing memory leaks is an ongoing process. If you encounter any error messages r
 
 1.  Run `dfx stop` to stop currently running processes.
 
-2.  Uninstall `dfx` to prevent further degradation.
+2.  Uninstall the IC SDK to prevent further degradation.
 
-3.  Re-install `dfx`
+3.  Re-install the IC SDK
 
 4.  Run `dfx start` to restart replica processes.
 
-Alternatively, you can remove the `.cache/dfinity` directory and re-install the latest `dfx` binary. For example:
+Alternatively, you can remove the `.cache/dfinity` directory and re-install the latest IC SDK `dfx` binary. For example:
 
     rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"

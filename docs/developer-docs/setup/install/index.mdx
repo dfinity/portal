@@ -177,7 +177,7 @@ DFX_VERSION=0.11.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
 ### Setting a default version
 
-If defined, `dfx` will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
+If defined, the IC SDK will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
 For example, if your `dfx.json` contains `"dfx": "0.11.1"`, any `dfx` command you run within this project's directory will be executed by `dfx` of version `0.11.1`.
 Should the defined version not be installed (e.g. because you cloned a repo that was created for a different version than you have installed locally), `dfx` will report an error.
 

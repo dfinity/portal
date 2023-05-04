@@ -10,7 +10,7 @@ This article covers connecting to the IC from JavaScript in a web browser. For m
 
 To get started with JavaScript on the Internet Computer, we recommend you follow our quickstart guide in order to get set up with the basics of your development environment. This includes:
 
-* Dfinity's development SDK, `dfx`
+* DFINITY's development SDK
 * Node JS (12, 14, or 16)
 * A canister you want to experiment with
   * Suggestions: 
@@ -18,7 +18,6 @@ To get started with JavaScript on the Internet Computer, we recommend you follow
     * an example from [dfinity/examples](https://github.com/dfinity/examples)
 
 If you are looking for an explanation of what an agent does, see [Agent Overview](../index.md).
-
 
 ____
 

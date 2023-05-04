@@ -50,7 +50,7 @@ WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires n
 
 ### Permission Denied when running `dfx start`
 
-Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
+Projects created from `dfx new` command need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
 
 ### No internet access on WSL
 

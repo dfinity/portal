@@ -14,13 +14,13 @@ The impatient reader who is familiar with the topic of reproducible builds can s
 
 Internet Computer does not allow you to access the Wasm code of an arbitrary canister. This is a design decision, as developers might want to keep some code private. However, the Internet Computer does allow you to access the SHA-256 of the Wasm code of a canister.
 
-To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [`dfx`](https://internetcomputer.org/developers/) tool from the terminal. Open your terminal, and run:
+To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [IC SDK](https://internetcomputer.org/developers/) tool from the terminal. Open your terminal, and run:
 
     $ dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
     Controllers: r7inp-6aaaa-aaaaa-aaabq-cai
     Module hash: 0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103
 
-If you are running an older version of `dfx`, you will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create it using `dfx new`.
+If you are running an older version of the IC SDK, you will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create it using `dfx new`.
 
 Here, the Internet Computer tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister (which happens to be the Internet Identity canister) is `0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103`.
 
@@ -50,7 +50,7 @@ Before building your code, you should document the build environment you are usi
 
 -   Note down the operating system and its version you are using to build your canister.
 
--   If you are using `dfx`, note the version used, as specified in `dfx.json`. You can install arbitrary versions of `dfx` using `dfx toolchain install <version>`, or by running the installation script with the `DFX_VERSION` environment variable set to the desired version.
+-   If you are using the IC SDK, note the version used, as specified in `dfx.json`. You can install arbitrary versions of the IC SDK using `dfx toolchain install <version>`, or by running the installation script with the `DFX_VERSION` environment variable set to the desired version.
 
 -   If you are building Motoko code in a way other than `dfx build`, note the version of `moc` you are using.
 
@@ -177,7 +177,7 @@ When using `dfx build --network ic`, you need to prebuild your frontend dependen
       }
     }
 
-Now, from the root directory of your canister project, you can test the reproducibility of your `dfx` builds as follows:
+Now, from the root directory of your canister project, you can test the reproducibility of your IC SDK builds as follows:
 
     $ docker build -t mycanister .
     ...
