@@ -89,7 +89,6 @@ const redirects = `
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/motoko/
-  /docs/current/developer-docs/backend/backend-tutorials/ /docs/current/developer-docs/backend/motoko/
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
