@@ -1446,43 +1446,6 @@
     ]
   },
   {
-    "id": "plug",
-    "name": "Plug",
-    "oneLiner": "Decentralized Wallet for the Internet Computer",
-    "website": "https://plugwallet.ooo/",
-    "tags": [
-      "Wallet",
-      "NFT",
-      "Tools / Infrastructure"
-    ],
-    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
-    "github": "https://github.com/Psychedelic/plug",
-    "stats": "100 000 users",
-    "display": "Normal",
-    "logo": "/img/showcase/plug_logo.webp",
-    "video": "/img/showcase/plug_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": [
-      "/img/showcase/plug_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "fleek",
-    "name": "Fleek",
-    "oneLiner": "Blockchain Version of Netlify",
-    "website": "https://fleek.co/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
-    "usesInternetIdentity": false,
-    "stats": "1 000+ websites",
-    "logo": "/img/showcase/fleek_logo.webp",
-    "screenshots": [
-      "/img/showcase/fleek_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "itoka",
     "name": "ITOKA",
     "oneLiner": "A Leading Infrastructure for Music3.0",
@@ -1624,8 +1587,7 @@
     ],
     "twitter": "https://twitter.com/vger_ic"
   },
-
-   {
+  {
     "id": "icevent",
     "name": "ICEvent",
     "description": "Decentralized Calendar Solution (ticket, appointment, itinerary, schedule)",
@@ -1640,8 +1602,8 @@
       "/img/showcase/icevent_screenshot.PNG"
     ],
     "twitter": "https://twitter.com/vansdaynet",
-     "submittableId": "22168376"
-},
+    "submittableId": "22168376"
+  },
   {
     "id": "football-god",
     "name": "FootballGod",
@@ -1674,7 +1636,6 @@
     ],
     "github": "https://github.com/lukasvozda/bitshop",
     "twitter": "https://twitter.com/bitshopicp"
-
   },
   {
     "id": "EMC-Protocol",
@@ -1691,44 +1652,114 @@
     ],
     "github": "https://github.com/EMCprotocol/emc_java_sdk",
     "twitter": "https://twitter.com/EMCprotocol"
-
-    },
-    {
-      "id": "PHASMA",
-      "name": "PHASMA",
-      "website": "https://toniq.io/marketplace/phasma",
-      "tags": [
-        "Metaverse",
-        "NFT"
-      ],
-      "description": "curated collection of 1,500 unique NFTs on the Internet Computer.",
-      "logo": "/img/showcase/phasma_logo.png",
-      "twitter": "https://twitter.com/phasmafuture"
-    },
-    {
-      "id": "oneblock",
-      "name": "One Block",
-      "description": "Public profile(links, bio, inbox...) for individual/organization",
-      "website": "https://oneblock.page/",
-      "tags": [
-        "Tools / Infrastructure"
-      ],
-      "usesInternetIdentity": true,
-      "logo": "/img/showcase/oneblock.png",
-      "screenshots": [],
-      "github": "https://github.com/ICEvent/OneBlock"
-    },
-    {
-      "id": "blocklist",
-      "name": "Block List",
-      "description": "Open fleet market for P2P trading by leveraging open escrow service",
-      "website": "https://vfclb-tyaaa-aaaap-aawna-cai.ic0.app/",
-      "tags": [
-        "Tools / Infrastructure","DeFi","NFT"
-      ],
-      "usesInternetIdentity": true,
-      "logo": "/img/showcase/blocklist.png",
-      "github": "https://github.com/ICEvent/Escrow"
-    }
-
+  },
+  {
+    "id": "PHASMA",
+    "name": "PHASMA",
+    "website": "https://toniq.io/marketplace/phasma",
+    "tags": [
+      "Metaverse",
+      "NFT"
+    ],
+    "description": "curated collection of 1,500 unique NFTs on the Internet Computer.",
+    "logo": "/img/showcase/phasma_logo.webp",
+    "twitter": "https://twitter.com/phasmafuture"
+  },
+  {
+    "id": "oneblock",
+    "name": "One Block",
+    "description": "Public profile(links, bio, inbox...) for individual/organization",
+    "website": "https://oneblock.page/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oneblock.png",
+    "screenshots": [],
+    "github": "https://github.com/ICEvent/OneBlock"
+  },
+  {
+    "id": "blocklist",
+    "name": "Block List",
+    "description": "Open fleet market for P2P trading by leveraging open escrow service",
+    "website": "https://vfclb-tyaaa-aaaap-aawna-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/blocklist.png",
+    "github": "https://github.com/ICEvent/Escrow"
+  },
+  {
+    "id": "cosmicrafts",
+    "name": "Cosmicrafts",
+    "oneLiner": "Blast through the metaverse with Cosmicrafts, where interstellar mayhem meets epic battles for the ultimate cosmic showdown!",
+    "website": "https://cosmicrafts.com/",
+    "tags": [
+      "Games",
+      "DAO",
+      "Metaverse"
+    ],
+    "twitter": "https://twitter.com/cosmicrafts",
+    "description": "Unleash your inner commander and dominate the metaverse in the action-packed universe of Cosmicrafts. Engage in thrilling interstellar battles, strategize with allies, and conquer the cosmos. Are you ready to claim your place among the stars?",
+    "usesInternetIdentity": true,
+    "stats": "10,000+ users",
+    "logo": "/img/showcase/cosmicrafts_logo.webp",
+    "video": "/img/showcase/cosmicrafts_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": [
+      "/img/showcase/cosmicrafts_screenshot1.jpg"
+    ]
+  },
+  {
+    "id": "plug",
+    "name": "Plug",
+    "oneLiner": "Decentralized Wallet for the Internet Computer",
+    "website": "https://plugwallet.ooo/",
+    "tags": [
+      "Wallet",
+      "NFT",
+      "Tools / Infrastructure"
+    ],
+    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
+    "github": "https://github.com/Psychedelic/plug",
+    "stats": "100 000 users",
+    "display": "Normal",
+    "logo": "/img/showcase/plug_logo.webp",
+    "video": "/img/showcase/plug_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": [
+      "/img/showcase/plug_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "fleek",
+    "name": "Fleek",
+    "oneLiner": "Blockchain Version of Netlify",
+    "website": "https://fleek.co/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
+    "usesInternetIdentity": false,
+    "stats": "1 000+ websites",
+    "logo": "/img/showcase/fleek_logo.webp",
+    "screenshots": [
+      "/img/showcase/fleek_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "ember-cli-dfinity",
+    "name": "ember-cli-dfinity",
+    "description": "An add-on for using the Internet Computer in your EmberJS app.",
+    "website": "https://vkx2r-zaaaa-aaaap-aa55a-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ember-cli-dfinity.png",
+    "github": "https://github.com/onehilltech/ember-cli-dfinity"
+  }
 ]
