@@ -53,7 +53,7 @@ const OpenChatCard: React.FC<{
             <motion.p className="mb-3" variants={transitions.item}>
               <Link className="link-primary link-with-icon" href="/sns">
                 <LinkArrowRight />
-                Learn about SNS DAOs
+                What is an SNS DAO
               </Link>
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
