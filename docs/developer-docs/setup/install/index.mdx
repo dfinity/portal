@@ -8,9 +8,9 @@ import CodeBlock from '@theme/CodeBlock';
 
 # Installing the SDK
 
-You can download and install the latest version of the DFINITY Canister smart contract SDK, called `dfx`, by running the command below. The topics here provide additional information about installing, upgrading, and removing the SDK.
+You can download and install the latest version of the [IC SDK](https://github.com/dfinity/sdk) for creating and managing canister smart contracts by running the command below. The topics here provide additional information about installing, upgrading, and removing the IC SDK.
 
-`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
+The **IC SDK** is natively supported on Linux or macOS 12.\* Monterey or later.
 
 <Tabs>
   <TabItem value="apple" label="Install on Mac/Linux" default>
@@ -105,15 +105,27 @@ generateResolvConf = false`}
 
 ## What gets installed
 
-The SDK installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
+The IC SDK installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
 
 | Component    | Description                                                                                        | Default location                              |
 |--------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| dfx          | DFINITY execution command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
+| dfx          | Command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
+| cdk-rs       | Rust CDK                                                       | `/usr/local/bin/dfx`                          |
 | moc          | Motoko runtime compiler                                                                            | `~/.cache/dfinity/versions/<VERSION>/moc`     |
 | replica      | Internet Computer local network binary                                                             | `~/.cache/dfinity/versions/<VERSION>/replica` |
 | uninstall.sh | Script to remove the SDK and all of its components                                    | `~/.cache/dfinity/uninstall.sh`               |
 | versions     | Cache directory that contains a subdirectory for each version of the SDK you install. | `~/.cache/dfinity/versions`                   |
+
+## SDK vs CDK
+
+Above, one will see there is a component installed called `cdk-rs`. This is a **Canister Development Kit (CDK).**
+
+A CDK is an adapter used by the IC SDK so a programming language has the features needed to create and manage canisters. 
+The IC SDK comes with a few CDKs already installed for you so you can use them in the language of yoru choice. 
+
+That is why there is a [Rust CDK](https://github.com/dfinity/cdk-rs), [Python CDK](https://demergent-labs.github.io/kybra/), 
+[TypeScript CDK](https://demergent-labs.github.io/azle/), etc... Since CDKs are components used the SDK, some developer choose to use the CDK directly (without the IC SDK), 
+but typically are used as part of the whole IC SDK.
 
 ### Core components in a versioned directory
 
