@@ -80,14 +80,13 @@ function TokenHolders(): JSX.Element {
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-icp-tokens.jpeg" />
           {isDark && <DarkHeroStyles />}
-          <AnimateSpawn
-            el={motion.section}
-            variants={transitions.container}
+          <section
             className="bg-infinite   text-white overflow-hidden"
+            ref={ref}
           >
-            <div
+            <AnimateSpawn
               className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
-              ref={ref}
+              variants={transitions.container}
             >
               <div className="blob blob-purple blob-x-5 blob-y-10 blob-md z-0 opacity-50"></div>
               <div className="md:w-7/10">
@@ -105,8 +104,8 @@ function TokenHolders(): JSX.Element {
                   its ecosystem is through the use of its native utility token.
                 </motion.p>
               </div>
-            </div>
-          </AnimateSpawn>
+            </AnimateSpawn>
+          </section>
 
           <AnimateSpawn
             el={motion.section}
