@@ -24,7 +24,7 @@ To install the IC SDK, run:
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-instaled). One of them is a command line interface (CLI). This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
+Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-installed). One of them is a command line interface (CLI). This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
 
 To verify that `dfx` properly installed, run:
 
