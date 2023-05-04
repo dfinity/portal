@@ -137,7 +137,7 @@ const redirects = `
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
-  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)
