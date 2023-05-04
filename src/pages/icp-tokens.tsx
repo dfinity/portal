@@ -74,7 +74,7 @@ function TokenHolders(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Layout
         title="ICP Tokens"
-        description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
+        description="ICP, the native utility token of the Internet Computer powers computation, staking, voting, governance and ownership."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
@@ -100,8 +100,8 @@ function TokenHolders(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  One of the best ways to engage with the Internet Computer and
-                  its ecosystem is through the use of its native utility token.
+                  Engage with the Internet Computer and its ecosystem
+                  through the use of its native utility token.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -184,7 +184,6 @@ function TokenHolders(): JSX.Element {
                   <img
                     src="/img/icp-tokens/cycles-logo.svg"
                     className="w-16 h-16"
-                    alt=""
                     loading="lazy"
                   />
                   <span className="flex-1 text-gradient tw-heading-5">
@@ -675,7 +674,7 @@ function TokenHolders(): JSX.Element {
                 <p className="mb-0">
                   <Link href="/sns" className="link-primary link-with-icon">
                     <LinkArrowRight />
-                    Learn more
+                    Learn about SNS DAOs
                   </Link>
                 </p>
               </motion.div>
@@ -694,7 +693,7 @@ function TokenHolders(): JSX.Element {
                 <p className="mb-0">
                   <Link href="/defi" className="link-primary link-with-icon">
                     <LinkArrowRight />
-                    Learn more
+                    Learn about DeFi on ICP
                   </Link>
                 </p>
               </motion.div>
@@ -707,15 +706,14 @@ function TokenHolders(): JSX.Element {
                 </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
                   Community discussions around extending the ICRC token standard
-                  for all ledgers to optimize functionality is ongoing. Be vocal
-                  about your ideas.
+                  for all ledgers to optimize functionality is ongoing. 
                 </p>
                 <p className="mb-0">
                   <Link
                     href="https://forum.dfinity.org"
                     className="link-primary link-with-icon"
                   >
-                    Join on Forum
+                    Share your ideas on the Forum
                     <LinkArrowUpRight />
                   </Link>
                 </p>
