@@ -19,7 +19,7 @@ After you [install the SDK](../../setup/install/index.mdx), here’s all you nee
 
 4.  Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment.
 
-5.  Register, build, and deploy locally or on the mainnet (for mainnet, use:`--network ic`).
+5.  Register, build, and deploy locally or on mainnet (for mainnet, use:`--network ic`).
 
         dfx deploy --network <network>
 
