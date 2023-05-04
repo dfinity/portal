@@ -58,7 +58,7 @@ If you only have one version of the IC SDK installed in your development environ
 
     ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
-If you have modified the location of the IC SDK binary (the binary is titled `dfx`), you might want run the following command to uninstall the version of IC SDK that is in your PATH, then reinstall the latest version of IC SDK:
+If you have modified the location of the IC SDK binary (the binary is titled `dfx`), you might want run the following command to uninstall the version of the IC SDK that is in your PATH, then reinstall the latest version of the IC SDK:
 
     rm -rf ~/.cache/dfinity && rm $(which dfx) && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
