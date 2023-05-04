@@ -1739,6 +1739,7 @@
         "Tools / Infrastructure"
       ],
       "usesInternetIdentity": false,
+      "logo": "/img/showcase/ember-cli-dfinity.png",
       "github": "https://github.com/onehilltech/ember-cli-dfinity"
     },
 
