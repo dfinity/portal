@@ -126,7 +126,7 @@ function TokenHolders(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Power Computation, Staking, Voting, Governance & Ownership.{" "}
+                Powers Computation, Staking, Voting, Governance & Ownership.{" "}
               </motion.h2>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
@@ -229,7 +229,7 @@ function TokenHolders(): JSX.Element {
                   ${(icpPrice * 0.0001).toFixed(5)}
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
-                  TX Fee
+                  Ledger TX Fee
                 </figcaption>
               </motion.figure>
               <motion.figure
