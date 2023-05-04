@@ -407,7 +407,10 @@ function TokenHolders(): JSX.Element {
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
                   Find out how native Bitcoin support on the Internet Computer
-                  makes this possible here.{" "}
+                  makes this possible{" "} 
+                  <a href="/bitcoin-integration">
+                    here
+                  </a>.
                 </motion.p>
               </div>
 
