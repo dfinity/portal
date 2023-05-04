@@ -1729,6 +1729,18 @@
       "usesInternetIdentity": true,
       "logo": "/img/showcase/blocklist.png",
       "github": "https://github.com/ICEvent/Escrow"
+    },
+  {
+      "id": "ember-cli-dfinity",
+      "name": "ember-cli-dfinity",
+      "description": "An add-on for using the Internet Computer in your EmberJS app.",
+      "website": "https://vkx2r-zaaaa-aaaap-aa55a-cai.icp0.io/",
+      "tags": [
+        "Tools / Infrastructure"
+      ],
+      "usesInternetIdentity": false,
+      "logo": "/img/showcase/ember-cli-dfinity.png",
+      "github": "https://github.com/onehilltech/ember-cli-dfinity"
     }
 
 ]
