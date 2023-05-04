@@ -3,7 +3,7 @@
 Rust is a powerful and type-sound modern programming language with an active developer community. Because Rust compiles to WebAssembly, it offers a rich development environment for writing dapps to run on the Internet Computer blockchain. 
 
 # Getting Started
-To help pave the way for writing dapps in Rust that can be deployed on the Internet Computer blockchain, you can use the [`dfx` CDK](../../setup/install/index.mdx). The `dfx` CDK supports the Rust as well as the Motoko programming language. To create a Rust project using `dfx`, all one needs to do is add the `--type=rust` flag while creating a new project. For example, here we create a Rust project named `hello_world`:
+To help pave the way for writing dapps in Rust that can be deployed on the Internet Computer blockchain, you can use the [IC SDK](../../setup/install/index.mdx). The IC SDK supports the Rust as well as the Motoko programming language. To create a Rust project using the IC SDK, all one needs to do is add the `--type=rust` flag while creating a new project. For example, here we create a Rust project named `hello_world`:
 
 ```bash
 dfx new --type=rust hello_world
@@ -13,9 +13,9 @@ To start a new project see [Rust Quickstart](./rust-quickstart.md).
 
 ## Under the Hood
 
-To support Rust development, the `dfx` CDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
+To support Rust development, the IC SDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
-**Whle using `dfx` is the typical path for most developers, experienced Rust developers may choose to circumvent `dfx` entirely and use the Rust CDK directly. This documentation assumes one is using `dfx` to build Rust canisters.**
+**Whle using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly. This documentation assumes one is using the IC SK to build Rust canisters.**
 
 ### The Rust CDK consists of the following crates:
 
