@@ -33,6 +33,6 @@ On the Internet Computer, a "cycle" is the unit of measurement for resources con
 
 ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) using the convention that one trillion cycles correspond to one SDR.
 
-**Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10.000 transactions. **
+**Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10_000 transactions. **
 
 To see the full cost table, go [here](./gas-cost.md).
