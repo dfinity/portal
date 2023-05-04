@@ -61,8 +61,8 @@ function Index() {
             <div className={styles.bodyContainer}>
               <p className={styles.informationTitle}>SDK Installation</p>
               <p className={styles.informationBody}>
-                Download and install the latest version of our DFINITY Canister
-                smart contract SDK and start now.
+                Download and install the latest version of the IC SDK: an SDK for canister
+                smart contracts.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />

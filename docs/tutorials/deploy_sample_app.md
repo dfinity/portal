@@ -16,9 +16,9 @@ This dapp only does one thing: it accepts an text input and returns text input.
 
 ## 1. Install the Internet Computer (IC) SDK 
 
-This tutorial uses a [IC SDK](https://github.com/dfinity/sdk), which is the default SDK for creating and managing canister smart contracts. It is maintained by the DFINITY foundation. 
+This tutorial uses a [IC SDK](https://github.com/dfinity/sdk), which is the default SDK for creating and managing [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). It is maintained by the DFINITY foundation. 
 
-To install the IC SDK, run:
+To [install the IC SDK](../developer-docs/setup/install/index.mdx), run:
 
 ``` bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -26,7 +26,7 @@ sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
 Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-installed). One of them is a command line interface (CLI). This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
 
-To verify that `dfx` properly installed, run:
+To verify that the IC SDK is properly installed, run:
 
 ``` bash
 dfx --version
@@ -39,7 +39,7 @@ dfx --version
 
 ## 2. Create a project
 
-The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to a [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). 
+The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to a canister smart contracts. 
 
 Create a new project by running: 
 
