@@ -13,7 +13,7 @@ To start a new project see [Rust Quickstart](./rust-quickstart.md).
 
 ## Under the Hood
 
-To support Rust development, the IC SDK uses cargo crates which make up the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
+To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
 **Whle using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly. This documentation assumes one is using the IC SK to build Rust canisters.**
 
