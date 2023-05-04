@@ -39,7 +39,7 @@ dfx --version
 
 ## 2. Create a project
 
-The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to a canister smart contracts. 
+The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to canister smart contracts. 
 
 Create a new project by running: 
 
