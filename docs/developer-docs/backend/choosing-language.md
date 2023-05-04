@@ -10,19 +10,20 @@ In theory, any language that can be compiled into a WebAssembly module, can prod
 In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
 
 - **Motoko**
-  - [Motoko DFINITY](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-  - You can use Motoko via the `dfx` CDK by DFINITY
+  - [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
+  - One can use Motoko via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY
   - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
 - **Rust**
   - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
-  - You can use Rust via the `dfx` CDK by DFINITY.
+  - One can se Rust via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY
+  - Advanced users can also use Rust via the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY
   - See [Introduction to Developing Canisters in Rust](./rust/index.md)
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
-  - You can use Python via the [`Kybra`](https://demergent-labs.github.io/kybra) CDK by Demergent Labs
+  - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by Demergent Labs
 - **TypeScript**
   - TypeScript is a typed JavaScript superset, improving tooling and maintainability in large applications.
-  - You can use TypeScript via the [`Azle`](https://demergent-labs.github.io/azle) CDK by Demergent Labs
+  - You can use TypeScript via the [Azle](https://demergent-labs.github.io/azle) CDK by Demergent Labs
 
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
