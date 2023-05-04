@@ -286,11 +286,11 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://wiki.internetcomputer.org/wiki/Network_Nervous_System"
+                    href="https://youtu.be/Ls_FlVERMjg"
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    Learn how to stake on the NNS dapp
+                    How to stake on the NNS dapp
                   </Link>
                 </p>
               </AnimateSpawn>
@@ -407,7 +407,7 @@ function TokenHolders(): JSX.Element {
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
                   Find out how native Bitcoin support on the Internet Computer
-                  makes this possible.{" "}
+                  makes this possible here.{" "}
                 </motion.p>
               </div>
 
@@ -674,7 +674,7 @@ function TokenHolders(): JSX.Element {
                 <p className="mb-0">
                   <Link href="/sns" className="link-primary link-with-icon">
                     <LinkArrowRight />
-                    Learn about SNS DAOs
+                    About SNS DAOs
                   </Link>
                 </p>
               </motion.div>
@@ -693,7 +693,7 @@ function TokenHolders(): JSX.Element {
                 <p className="mb-0">
                   <Link href="/defi" className="link-primary link-with-icon">
                     <LinkArrowRight />
-                    Learn about DeFi on ICP
+                    DeFi on ICP
                   </Link>
                 </p>
               </motion.div>
