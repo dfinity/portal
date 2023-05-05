@@ -1,9 +1,8 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
+import useGlobalData from "@docusaurus/useGlobalData";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
@@ -16,6 +15,8 @@ function DefiPage() {
   const [bgDark, setBgDark] = useState(true);
   const [headerHeight, setHeaderHeight] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const globalData = useGlobalData();
+  const icpPrice = globalData["icp-price"]["default"] as number;
 
   useEffect(() => {
     setHeaderHeight(
@@ -76,9 +77,10 @@ function DefiPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Imagine a decentralized order-book exchange built exclusively using smart contracts 
-                  that directly serve a web experience like those of centralized exchanges, 
-                  that incorporates the world's digital assets without need for insecure bridges.
+                  Imagine a decentralized order-book exchange built exclusively
+                  using smart contracts that directly serve a web experience
+                  like those of centralized exchanges, that incorporates the
+                  world's digital assets without need for insecure bridges.
                 </motion.p>
               </div>
             </div>
@@ -153,7 +155,7 @@ function DefiPage() {
               variants={transitions.item}
             >
               <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
-                $0.0005
+                ${(icpPrice * 0.0001).toFixed(5)}
               </span>
               <span className="tw-paragraph md:tw-lead-sm">TX fee</span>
             </motion.div>
@@ -175,12 +177,11 @@ function DefiPage() {
               Native BTC DeFi
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Via chain-key signatures, the Internet Computer is capable of signing 
-              native transactions on other blockchains without using bridges. Today, 
-              you can already swap BTC with ICP without ever having to use insecure
-              wrapped tokens. In the near future, this could extent to ETH or 
-              even Dogecoin. 
-            . 
+              Via chain-key signatures, the Internet Computer is capable of
+              signing native transactions on other blockchains without using
+              bridges. Today, you can already swap BTC with ICP without ever
+              having to use insecure wrapped tokens. In the near future, this
+              could extent to ETH or even Dogecoin. .
             </p>
             <p className="mb-0">
               <Link
@@ -198,12 +199,12 @@ function DefiPage() {
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               Building on chain-key signatures and HTTPS outcalls, DEXs are
-              currently working on solutions to support a plethora of ERC-20 
-              tokens on ICP. Plugging into Ethereum RPC API providers, ICP 
-              smart contracts will sign transactions for any ERC-20 token 
-              without relying on insecure bridges. Plans to integrate the   
-              Internet Computer with Ethereum network at a protocol level
-              are also underway. 
+              currently working on solutions to support a plethora of ERC-20
+              tokens on ICP. Plugging into Ethereum RPC API providers, ICP smart
+              contracts will sign transactions for any ERC-20 token without
+              relying on insecure bridges. Plans to integrate the Internet
+              Computer with Ethereum network at a protocol level are also
+              underway.
             </p>
             <p className="mb-0">
               <Link
@@ -220,14 +221,14 @@ function DefiPage() {
               Chain-Key Tokens
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Imagine being able to pay for a takeaway coffee with BTC or 
-              sending satoshis to friends on your favorite Web3 chat app. 
-              Chain-key tokens, a cryptographically secure replacement to 
-              wrapped tokens, allow end-users to seamlessly transfer tokens 
-              between blockchains with speed without relying on third-party 
-              bridges or custodians. Chain-key bitcoin (ckBTC) is the first 
+              Imagine being able to pay for a takeaway coffee with BTC or
+              sending satoshis to friends on your favorite Web3 chat app.
+              Chain-key tokens, a cryptographically secure replacement to
+              wrapped tokens, allow end-users to seamlessly transfer tokens
+              between blockchains with speed without relying on third-party
+              bridges or custodians. Chain-key bitcoin (ckBTC) is the first
               chain-key token on ICP, pioneering the way. Trade BTC on ICP DEXs,
-              use BTC for fundraising and much more. 
+              use BTC for fundraising and much more.
             </p>
             <p className="mb-0">
               <Link
@@ -334,34 +335,30 @@ function DefiPage() {
           </AnimateSpawn>
         </section>
         <section className="container-12 py-30 md:py-48">
-        
-        <div className="text-center mb-16 md:mb-30">
-            
-        <AnimateSpawn
-            className="container-12"
-            variants={transitions.container}
-          >
-          <motion.h2
+          <div className="text-center mb-16 md:mb-30">
+            <AnimateSpawn
+              className="container-12"
+              variants={transitions.container}
+            >
+              <motion.h2
                 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-8"
                 variants={transitions.item}
               >
                 What’s already being built
-          </motion.h2>
-          
-          <motion.div 
-            variants={transitions.container}>
-            
-            <Link className="button-outline text-center" href="/ecosystem?tag=DeFi"> 
-                See more DeFi Dapps
-            </Link>
-          </motion.div>
+              </motion.h2>
 
-          </AnimateSpawn>
-      
+              <motion.div variants={transitions.container}>
+                <Link
+                  className="button-outline text-center"
+                  href="/ecosystem?tag=DeFi"
+                >
+                  See more DeFi Dapps
+                </Link>
+              </motion.div>
+            </AnimateSpawn>
           </div>
-          
-          <div className="flex flex-col gap-16 md:gap-40">
 
+          <div className="flex flex-col gap-16 md:gap-40">
             <TranslatedLayout imageUrl="/img/defi/icdex.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 ICDex
@@ -453,7 +450,6 @@ function DefiPage() {
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
             variants={transitions.container}
           >
-
             <CardWithDescription
               title="About HTTPS Outcalls"
               description=""
