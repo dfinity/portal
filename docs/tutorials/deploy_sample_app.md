@@ -14,17 +14,19 @@ This dapp only does one thing: it accepts an text input and returns text input.
 
 ![Hello](_attachments/hello-dapp-intro.png)
 
-## 1. Install the canister smart contract SDK 
+## 1. Install the Internet Computer (IC) SDK 
 
 This tutorial use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
 
-To install `dfx`, run:
+To [install the IC SDK](../developer-docs/setup/install/index.mdx), run:
 
 ``` bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-To verify that `dfx` properly installed, run:
+Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-installed). One of them is a command line interface (CLI). This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
+
+To verify that the IC SDK is properly installed, run:
 
 ``` bash
 dfx --version
@@ -37,7 +39,9 @@ dfx --version
 
 ## 2. Create a project
 
-A `dfx` project is a set of artifacts, including source code and configuration files, that can be compiled to a [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). By running 
+The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to canister smart contracts. 
+
+Create a new project by running: 
 
 ``` bash
 dfx new hello
@@ -123,7 +127,7 @@ You may further wonder why dapps run on cycles rather than ICP tokens. The reaso
 Practical notes about cycles:
 
 -   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles
--   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, `dfx` injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
+-   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, the IC SDK injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
 -   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/gas-cost.md).
 
 
@@ -143,7 +147,7 @@ You should see around 20 trillion cycles if you run this after using the cycles 
 
 ### Deploying on-chain
 
-Now that you have cycles and your `dfx` is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. 
+Now that you have cycles and your local version of the IC SDK is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. 
 
 As a sanity check, it is good practice to check if your connection to the ICP network is stable by pinging it:
 
@@ -167,7 +171,7 @@ dfx deploy --network ic --with-cycles 1000000000000
 ```
 
 -   The `--network` option specifies the network alias or URL for deploying the dapp.  This option is required to install on the Internet Computer blockchain mainnet.
--   The `--with-cycles` explicitly tells `dfx` how many cycles to use, otherwise it will use the default of 3 trillion.
+-   The `--with-cycles` explicitly tells the IC SDK how many cycles to use, otherwise it will use the default of 3 trillion.
 
 
 If successful, your terminal should look like this:
