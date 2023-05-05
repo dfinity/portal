@@ -15,11 +15,9 @@ Here are some quick links to tutorials with example code for various stages of d
 
 - A tutorial on building a React dapp [Customize the frontend](./custom-frontend.md)
 
-- Using [Candid](../backend/backend-tutorials/hello-location.md#candid-ui) as a bare-bones interface to expose and test
-  the functions in a canister.
+- Using [Candid](../backend/motoko/hello-location.md#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
-- Using [raw HTML and JavaScript](../backend/backend-tutorials/explore-templates.md#default-frontend) to display a
-  simple HTML entry page.
+- Using [raw HTML and JavaScript](../backend/motoko/explore-templates.md#default-frontend) to display a simple HTML entry page.
 
 - Using [React and compiled JavaScript](./custom-frontend.md) to embed HTML attributes and elements directly in a page.
 

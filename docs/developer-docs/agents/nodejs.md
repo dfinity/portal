@@ -19,7 +19,7 @@ First, we need to get started with a project. Let's take the Dip721 example code
 
 ### Dependencies
 
-This project uses features introduced in dfx 0.11.2. You can install the latest version of `dfx` with
+This project uses features introduced in dfx 0.11.2. You can install the latest version of the IC SDK withgi
 
 ```
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"

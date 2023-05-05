@@ -14,7 +14,7 @@ We will edit file `src/poll_backend/main.mo`.
 
 ## Creating an actor
 
-Backend logic on the Internet Computer is implemented as  [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). In Motoko, canisters are represented as "Actors".
+Backend logic on the Internet Computer is implemented as [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). In Motoko, canisters are represented as "Actors".
 
 :::note
 [Actor](https://en.wikipedia.org/wiki/Actor_model) is a computer science concept of a component that:
