@@ -360,7 +360,7 @@ function FeaturesPage() {
               Reverse Gas Model
             </motion.h3>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
+              className="tw-paragraph md:tw-lead-sm text-black-60 mb-4"
               variants={transitions.item}
             >
               One of the major hurdles to blockchain adoption for end users is
@@ -370,6 +370,16 @@ function FeaturesPage() {
               their smart contracts with cycles (the IC analogon to gas), so
               users don’t have to pay when interacting with the smart contracts.
               This removes a major barrier of entry for end users.
+            </motion.p>
+
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link
+                href="/capabilities/reverse-gas"
+                className="tw-heading-6 flex gap-2 items-center"
+              >
+                <RightPointer className="w-6 h-6"></RightPointer>
+                More on the Reverse Gas Model
+              </Link>
             </motion.p>
           </SingleCard>
         </section>
