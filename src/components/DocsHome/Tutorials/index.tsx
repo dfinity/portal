@@ -31,7 +31,7 @@ function Index() {
           href="/docs/current/tutorials/create_your_first_app"
           title="Create your first app"
         >
-          Create your first IC dapp with frontend (vanilla JS) and backend hosted in smart contracts
+          Create your first dapp composed of both a frontend and a backend hosted 100% on-chain
         </SmallCard>
       </div>
     </AnimateSpawn>
