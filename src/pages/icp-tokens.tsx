@@ -398,7 +398,7 @@ function TokenHolders(): JSX.Element {
                 >
                   Forget Centralized Exchanges.
                   <br />
-                  Buy ICP on a DEX with Bitcoin.
+                  Get ICP on a DEX with Bitcoin.
                 </motion.h2>
                 <motion.p
                   className="tw-paragraph md:tw-lead-sm mb-0"
