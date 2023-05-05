@@ -408,9 +408,9 @@ function TokenHolders(): JSX.Element {
                   using any of these DEXs — all without centralized exchanges.
                   Find out how native Bitcoin support on the Internet Computer
                   makes this possible{" "} 
-                  <a href="/bitcoin-integration">
+                  <Link className="text-white hover:text-white underline hover:cursor-pointer" href="/bitcoin-integration">
                     here
-                  </a>.
+                  </Link>.
                 </motion.p>
               </div>
 
