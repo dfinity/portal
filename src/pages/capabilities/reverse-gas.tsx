@@ -81,8 +81,7 @@ function ReverseGasModelPage(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Scaling Web3 services to millions of users, requires removing
-                hurdles that block a smooth user experience.
+                Scaling Web3 to billions of users requires a great UX.
               </motion.h2>
               <motion.p
                 className="tw-lead-sm text-black mb-0"
