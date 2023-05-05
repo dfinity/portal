@@ -3,20 +3,14 @@ import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding
 import Layout from "@theme/Layout";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import ItsGreenSection from "../components/Basics/ItsGreen";
-import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
 import FoundationSection from "../components/LandingPage/Foundation";
-import HeroSection from "../components/LandingPage/HeroSection";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
-import NextGenSection from "../components/LandingPage/NextGen";
 import PreHero from "../components/LandingPage/PreHero";
 import SectionsBar from "../components/LandingPage/SectionsBar";
 import ShowcaseSection from "../components/LandingPage/Showcase";
-import SlidersSection from "../components/LandingPage/Sliders";
-import Storage from "../components/LandingPage/Storage";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 import Vision from "../components/LandingPage/Vision/Vision";
 
