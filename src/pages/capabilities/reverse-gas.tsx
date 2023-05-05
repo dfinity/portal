@@ -24,8 +24,8 @@ function ReverseGasModelPage(): JSX.Element {
     <Layout
       title="Reverse Gas Model"
       description="A browser is all you need to interact with smart contracts on
-      the Internet Computer. Gas is paid by developers, meaning end
-      users can interact with dapps without tokens."
+      the Internet Computer. Developers pay for gas. End users access and  
+      use dapps without tokens."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <main className="overflow-hidden">
@@ -49,8 +49,8 @@ function ReverseGasModelPage(): JSX.Element {
                 variants={transitions.item}
               >
                 A browser is all you need to interact with smart contracts on
-                the Internet Computer. Gas is paid by developers, meaning end
-                users can interact with dapps without tokens.
+                the Internet Computer. Developers pay for gas. End users access
+                 and use dapps without tokens.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -92,7 +92,7 @@ function ReverseGasModelPage(): JSX.Element {
                 must have a wallet set up with tokens to pay gas fees for every
                 on-chain interaction, even interactions as simple as liking a
                 post. Most blockchains get around this by hosting their data and
-                frontends on centralized cloud. Without jeopardizing
+                frontends on centralized cloud. Without compromising
                 decentralization, the Internet Computer removes this expensive
                 barrier to entry by allowing end users to seamlessly interact
                 with dapps on the blockchain gas-free. This “Gas Reverse Model”
@@ -123,7 +123,7 @@ function ReverseGasModelPage(): JSX.Element {
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
-                Learn more about cycles
+                Uncover more about cycles
               </Link>
             </p>
           </TranslatedLayout>
