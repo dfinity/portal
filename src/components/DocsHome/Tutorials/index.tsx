@@ -31,7 +31,7 @@ function Index() {
           href="/docs/current/tutorials/create_your_first_app"
           title="Create your first app"
         >
-          Create your first app using the Motoko programming language and Vue.js
+          Create your first IC dapp with frontend (vanilla JS) and backend hosted in smart contracts
         </SmallCard>
       </div>
     </AnimateSpawn>
