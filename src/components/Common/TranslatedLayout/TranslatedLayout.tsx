@@ -8,6 +8,7 @@ const TranslatedLayout: React.FC<{
   reverse?: boolean;
   imageUrl?: string;
   video?: { videoUrl: string; videoContentType: string };
+  customContent?: React.ReactNode;
   alt?: string;
   imageClassName?: string;
   imageWithBlob?: false | string;
@@ -19,35 +20,49 @@ const TranslatedLayout: React.FC<{
   video,
   imageWithBlob = false,
   imageClassName,
+  customContent,
 }) => {
-  if (!imageUrl && !video) {
-    throw new Error("imageUrl or videoUrl must be provided");
+  if (!imageUrl && !video && !customContent) {
+    throw new Error("imageUrl or video or customContent must be provided");
   }
 
-  const mediaEl = imageUrl ? (
-    <img
-      src={imageUrl}
-      alt={alt}
-      className={clsx(
-        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl",
-        imageClassName,
-        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
-      )}
-    />
-  ) : (
-    <video
-      loop
-      autoPlay
-      muted
-      playsInline
-      className={clsx(
-        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
-        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
-      )}
-    >
-      <source src={video.videoUrl} type={video.videoContentType} />
-    </video>
-  );
+  let mediaEl: React.ReactNode;
+
+  if (imageUrl) {
+    mediaEl = (
+      <img
+        src={imageUrl}
+        alt={alt}
+        className={clsx(
+          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl",
+          imageClassName,
+          reverse ? "md:rounded-l-none" : "md:rounded-r-none"
+        )}
+      />
+    );
+  } else if (video) {
+    mediaEl = (
+      <video
+        loop
+        autoPlay
+        muted
+        playsInline
+        className={clsx(
+          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
+          reverse ? "md:rounded-l-none" : "md:rounded-r-none"
+        )}
+      >
+        <source src={video.videoUrl} type={video.videoContentType} />
+      </video>
+    );
+  } else if (customContent) {
+    mediaEl = (
+      <div className="mb-8 md:mb-0 max-h-[600px] rounded-xl xl:rounded-xl w-full">
+        {customContent}
+      </div>
+    );
+  }
+
   return reverse ? (
     <AnimateSpawn
       className="flex flex-col md:flex-row"
