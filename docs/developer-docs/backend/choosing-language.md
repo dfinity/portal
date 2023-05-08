@@ -17,7 +17,6 @@ In practice, the amount of CDK and library support for different languages varie
   - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK)
   - See [Introduction to Developing Canisters in Rust](./rust/index.md)
 - **Python**
-- Python
   - Python is a readable, versatile language for web development, data analysis, and AI.
   - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by Demergent Labs
 - **TypeScript**
