@@ -401,8 +401,6 @@ function TokenHolders(): JSX.Element {
                   className="tw-heading-4 md:tw-heading-3 mb-10"
                   variants={transitions.item}
                 >
-                  The Internet Computer offers multi-chain DeFI.
-                  <br />
                   Swap BTC for ICP on a DEX.
                 </motion.h2>
                 <motion.p
