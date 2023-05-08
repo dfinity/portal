@@ -119,6 +119,10 @@ canister](#canister) (i.e. whose
 account is a ledger account whose fiduciary is a non-canister
 [principal](#principal).
 
+#### canister development kit (CDK)
+
+A **Canister Development Kit** is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. 
+
 #### canister identifier
 
 The **canister identifier** or **canister ID** is a globally-unique

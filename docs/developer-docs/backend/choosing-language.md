@@ -3,24 +3,26 @@ sidebar_position: 1
 ---
 # Choosing a programming language
 
-To create canister smart contracts it is typical to use a so-called CDK, a Canister Development Kit.
+To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is typical to use a so-called CDK, a Canister Development Kit.
 The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API. Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
 
-In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) depoyable as an ICP smart contract.
-In practice, the amount of CDK and library support for different anguages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
+In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. The most common languages to use are:
 
-- Motoko
-  - [Motoko by DFINITY](/motoko/main/motoko.md)
-  - Motoko is [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-- Rust
-  - [`cdk-rs` by DFINITY](./rust/index.md)
-  - Rust is a powerful and modern type-sound programming language with an active developer community, specially in Web3.
+- **Motoko**
+  - [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
+  - One can use Motoko via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY
+  - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
+- **Rust**
+  - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK)
+  - See [Introduction to Developing Canisters in Rust](./rust/index.md)
+- **Python**
 - Python
-  - [`Kybra` by Demergent Labs](https://demergent-labs.github.io/kybra)
   - Python is a readable, versatile language for web development, data analysis, and AI.
-- TypeScript
-  - [`Azle` by Demergent Labs](https://demergent-labs.github.io/azle)
-  - TypeScript is a typed JavaScript superset, improving tooling and maintainability in large applications.
+  - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by Demergent Labs
+- **TypeScript**
+   - You can use TypeScript via the [Azle](https://demergent-labs.github.io/azle) CDK by Demergent Labs
+
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
 
