@@ -32,7 +32,7 @@ function Index() {
           href="/docs/current/developer-docs/backend/choosing-language"
           title="Build a Smart Contract backend"
         >
-          Learn how to create Canister Smart Contracts
+          Learn how to create Canister Smart Contracts with your language of choice
         </SmallCard>
         <SmallCard
           href="/docs/current/developer-docs/gas-cost"
