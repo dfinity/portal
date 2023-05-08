@@ -16,7 +16,7 @@ This dapp only does one thing: it accepts an text input and returns text input.
 
 ## 1. Install the Internet Computer (IC) SDK 
 
-This tutorial use a Canister SDK called `dfx`, which is the default SDK maintained by the DFINITY foundation. 
+This tutorial uses the [IC SDK](../developer-docs/setup/install/index.mdx)), which is the default SDK maintained by the DFINITY foundation. 
 
 To [install the IC SDK](../developer-docs/setup/install/index.mdx), run:
 
