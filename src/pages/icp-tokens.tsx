@@ -131,19 +131,19 @@ function TokenHolders(): JSX.Element {
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
                 variants={transitions.item}
               >
-                The ICP token plays a number of roles on the Internet Computer. Firstly as a
-                governance token it can be staked to exercise those governance rights. As a
+                The ICP token plays a number of roles on the Internet Computer. Firstly, as a
+                governance token it can be staked to exercise governance rights. As a
                 utility token, it can be burned to obtain ‘cycles‘ which serves as gas for
-                computation and storage in canister smart contracts, and also minted to reward
+                computation and storage in canister smart contracts. It can also minted to reward
                 ‘node machine‘ providers for providing that compute and storage.
               </motion.p>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
                 variants={transitions.item}
               >
-                In addition to these core uses ICP tokens can be used to participate in
-                decentralisation swaps (becoming a co-owner of an SNS DAO), and when using many
-                smart contract services build on the Internet Computer such as registries,
+                In addition to these core uses, ICP tokens can be used to participate in
+                decentralisation swaps to become a co-owner of an SNS DAO, and when using many
+                smart contract services built on the Internet Computer such as registries,
                 marketplaces and exchanges.
               </motion.p>
               <motion.p
