@@ -1,10 +1,16 @@
+# Introduction to Developing Canisters in Motoko
+
+[Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
+
+To get started, one should [install the IC SDK](../../setup/install/index.mdx) which supports building Motoko [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts).
+
 # Tutorials
 
-The [Quick start](/tutorials/deploy_sample_app.md) provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [Deploy your first ICP dapp in 5 minutes](/tutorials/deploy_sample_app.md) quick start provided a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
-Next, we’ll explore writing a few simple programs to give you hands-on experience creating programs that run on the IC.
+Next, we’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on the IC.
 
-Most of these tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the DFINITY [examples](https://github.com/dfinity/examples) repository.
+These tutorials illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the DFINITY [examples](https://github.com/dfinity/examples) repository.
 
 The following tutorials introduce the basics for writing dapps that run on the IC:
 
