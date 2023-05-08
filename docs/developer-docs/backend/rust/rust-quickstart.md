@@ -5,7 +5,11 @@ sidebar_position: 1
 
 The [IC SDK](../../setup/install/index.mdx) provides tools, sample code, and documentation to help you create [Rust smart contracts](../choosing-language.md) and dapps to run on the decentralized ICP blockchain mainnet. This tutorial assumes that you are installing the IC SDK for the first time.
 
-To help you get started, this tutorial illustrates how to modify the traditional "Hello World" first dapp to use the DFINITY Rust CDK. This simple dapp has just one function that prints text to a terminal, but it provides a good model for understanding the workflow when writing dapps in Rust that you want to deploy on the Internet Computer blockchain.
+To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
+
+**While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly. This documentation assumes one is using the IC SDK to build Rust canisters.**
+
+To help you get started, this tutorial illustrates how to modify the traditional "Hello World" first dapp in Rust. This simple dapp has just one function that prints text to a terminal, but it provides a good model for understanding the workflow when writing dapps in Rust that you want to deploy on the ICP blockchain.
 
 ## Before you begin
 
@@ -19,7 +23,7 @@ Before you start your project, verify the following:
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
     ```
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Installing the SDK](./../../setup/install/index.mdx).
+-   You have downloaded and installed the IC SDK package as described in [Installing the SDK](./../../setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
@@ -33,7 +37,7 @@ Before you start your project, verify the following:
 
 ## Create a new project
 
-Applications for the Internet Computer blockchain start as **projects**. You can create new projects for the Internet Computer blockchain using the DFINITY Canister SDK. Because you are building this project to be deployed on the Internet Computer blockchain, this tutorial focuses on how to create, build, and deploy a Rust program by using the `dfx` parent command and its subcommands.
+Applications for the Internet Computer blockchain start as **projects**. You can create new projects for the Internet Computer blockchain using the IC SDK. Because you are building this project to be deployed on the Internet Computer blockchain, this tutorial focuses on how to create, build, and deploy a Rust program by using the `dfx` parent command and its subcommands.
 
 To create a new project using the IC SDK:
 
@@ -144,7 +148,7 @@ Notice the `crate-type = ["cdylib"]` line which is necessary to compile this Rus
 
 #### `src/rust_hello_backend/src/lib.rs`
 
-The default project has a simple `greet` function that uses the DFINITY Rust CDK `query` macro.
+The default project has a simple `greet` function that uses the Rust CDK `query` macro.
 
 ``` rust
 #[ic_cdk_macros::query]

@@ -1,6 +1,6 @@
 # Optimize a Rust program
 
-Compiling Rust to WebAssembly often increases the file size significantly. The DFINITY Rust CDK includes a helper library—`ic-wasm`—that you can use to reduce the size of Rust-based canisters before deploying them on the Internet Computer blockchain mainnet.
+Compiling Rust to WebAssembly often increases the file size significantly. The [DFINITY Rust CDK](../../../developer-docs/backend/rust/index.md) includes a helper library—`ic-wasm`—that you can use to reduce the size of Rust-based canisters before deploying them on the Internet Computer blockchain mainnet.
 
 ## Before you begin
 
