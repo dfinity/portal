@@ -22,16 +22,16 @@ function Index() {
       <div className={styles.cards}>
         <SmallCard
           href="/docs/current/tutorials/deploy_sample_app"
-          title="Deploy a sample app"
+          title="Deploy a sample dapp"
         >
-          Install the Internet Computer SDK, create a sample app, and deploy it to production in a few simple steps.
+          Install the Internet Computer SDK, create a sample dapp, and deploy it to production in a few simple steps.
         </SmallCard>
 
         <SmallCard
           href="/docs/current/tutorials/create_your_first_app"
-          title="Create your first app"
+          title="Create your first dapp"
         >
-          Create your first app using the Motoko programming language and Vue.js
+          Create your first dapp composed of both a frontend and a backend hosted 100% on-chain
         </SmallCard>
       </div>
     </AnimateSpawn>

@@ -1,20 +1,18 @@
-import React, { FC, useEffect } from "react";
-import styles from "@site/src/components/LandingPage/StartBuilding/index.module.css";
-import motokoBG from "@site/static/img/motoko.webp";
-import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import BackgroundGradient from "@site/static/img/startBuilding/bgGradient.png";
-import GamingIcon from "@site/static/img/startBuilding/gaming.svg";
-import IotIcon from "@site/static/img/startBuilding/iot.svg";
-import SocialIcon from "@site/static/img/startBuilding/social.svg";
-import GrowthIcon from "@site/static/img/startBuilding/growth.svg";
-import DatabaseIcon from "@site/static/img/startBuilding/database.svg";
-import MotokoIcon from "@site/static/img/startBuilding/motoko.svg";
-import DfinityIcon from "@site/static/img/startBuilding/dfinity.svg";
-import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import styles from "@site/src/components/LandingPage/StartBuilding/index.module.css";
+import BackgroundGradient from "@site/static/img/startBuilding/bgGradient.webp";
+import DatabaseIcon from "@site/static/img/startBuilding/database.svg";
+import DfinityIcon from "@site/static/img/startBuilding/dfinity.svg";
+import GamingIcon from "@site/static/img/startBuilding/gaming.svg";
+import GrowthIcon from "@site/static/img/startBuilding/growth.svg";
+import IotIcon from "@site/static/img/startBuilding/iot.svg";
+import MotokoIcon from "@site/static/img/startBuilding/motoko.svg";
+import SocialIcon from "@site/static/img/startBuilding/social.svg";
+import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import transitions from "@site/static/transitions.json";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import React, { FC } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 
 function Information({
@@ -96,7 +94,12 @@ const StartBuilding: FC<{
       <AnimateSpawn variants={transitions.container} className={styles.main}>
         <div className={styles.anchor} />
         <div className={styles.headerContainer}>
-          <img src={BackgroundGradient} className={styles.BGGradient} alt="" />
+          <img
+            src={BackgroundGradient}
+            className={styles.BGGradient}
+            alt=""
+            loading="lazy"
+          />
           <motion.div
             variants={transitions.item}
             className={styles.callToActionContainer}

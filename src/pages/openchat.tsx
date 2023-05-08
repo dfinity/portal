@@ -1,6 +1,6 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";

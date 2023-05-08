@@ -33,7 +33,7 @@ function Index() {
             <p className={styles.informationTitle}>Motoko</p>
             <p className={styles.informationBody}>
               Get started with high level programming language designed
-              specifically for Internet Computer
+              specifically for the Internet Computer
             </p>
           </div>
           <img className={styles.motokoBackground} src={motokoBG} alt=""/>
@@ -48,7 +48,7 @@ function Index() {
             <p className={styles.informationTitle}>Rust</p>
             <p className={styles.informationBody}>
               Use Rust - a high perfomance and safe programming language to
-              build high efficiency apps on Internet Computer
+              build high efficient dapps and smart contracts on the Internet Computer
             </p>
           </div>
           <img className={styles.rustBackground} src={rustBG} alt=""/>
@@ -64,7 +64,7 @@ function Index() {
           <div className={styles.bodyContainer}>
             <p className={styles.informationTitle}>TypeScript</p>
             <p className={styles.informationBody}>
-              Azle allows you to build Internet Computer apps using TypeScript and JavaScript, the languages of the web
+              Azle allows you to build Internet Computer dapps and smart contracts using TypeScript and JavaScript, the languages of the web
             </p>
           </div>
           <img className={styles.motokoBackground} src={azleBG} alt=""/>
@@ -79,7 +79,7 @@ function Index() {
           <div className={styles.bodyContainer}>
             <p className={styles.informationTitle}>Python</p>
             <p className={styles.informationBody}>
-              Kybra allows you to build Internet Computer apps using Python, one of the most popular languages in the world
+              Kybra allows you to build Internet Computer dapps and smart contracts using Python, one of the most popular languages in the world
             </p>
           </div>
           <img className={styles.motokoBackground} src={kybraBG} alt=""/>

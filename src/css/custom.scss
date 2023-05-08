@@ -39,6 +39,115 @@
   --ifm-navbar-link-active-color: #da3979;
 
   --ifm-menu-color: #181818;
+
+  --ic0-nav-border: 1px solid white;
+  --ic0-article-background: linear-gradient(180deg, #F5F5F5 0%, #F2EFF6 100%);
+}
+
+@import "./animate.scss";
+@import "./code.scss";
+@import "./navbar.scss";
+@import "./scrollbar.scss";
+@import "./sidebar.scss";
+
+// specifically target the dev docs namespace;
+// we don't want to apply these styles to the marketing pages
+html.docs-doc-page {
+  --ifm-navbar-x-padding: 24px;
+  --ifm-navbar-padding-horizontal: 24px;
+  --ifm-navbar-y-padding: 0;
+  --ifm-navbar-height: 88px;
+  --ifm-color-primary: #791E94;
+  --ifm-navbar-link-hover-color: #791E94;
+
+  // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
+  // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
+  // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
+  // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+
+  .navbar {
+    padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+
+    // color the dropdown caret on hover
+    .navbar__item:hover {
+      &.dropdown {
+        .navbar__link {
+          &:after {
+            filter: var(--ifm-color-primary-filter);
+          }
+        }
+      }
+    }
+  }
+}
+
+html.docs-doc-page:not(.docs-doc-id-home) {
+  --ifm-toc-border-color: transparent;
+  --ifm-toc-padding-horizontal: 0;
+
+  .navbar {
+    border-bottom: var(--ic0-nav-border);
+  }
+
+  // style the article body
+  main[class*="docMainContainer_"] {
+    background: var(--ic0-article-background);
+
+    a {
+      font-weight: 500;
+    }
+
+    .container {
+      padding: 0 !important;
+    }
+
+    div[class*="docItemContainer_"] {
+      padding: 40px 20px;
+
+      // mobile/tablet Table of Contents dropdown
+      div[class*="tocCollapsible_"] {
+        background: var(--ifm-menu-color-background-hover);
+
+        button[class*="tocCollapsibleButton_"] {
+          padding: 0.8rem;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    @media (min-width: 577px) {
+      div[class*="docItemContainer_"] {
+        // padding around article content
+        padding: 60px 40px;
+      }
+    }
+
+    @media (min-width: 996px) {
+      div[class*="docItemContainer_"] {
+        // padding around article content
+        padding: 40px 100px;
+      }
+    }
+
+    div[class*="tableOfContents"] {
+      top: calc(var(--ifm-navbar-height) + 40px);
+      max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
+      padding-right: 40px;
+
+      .table-of-contents {
+        padding-top: 0;
+      }
+
+      &:before {
+        // TODO: can this string be localized?
+        content: "On this page";
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
+  }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -52,48 +161,6 @@
   --ifm-color-primary-lighter: #e6418e;
   --ifm-color-primary-lightest: #ea65a4;
   --ifm-navbar-background-color: #242526;
-}
-
-/* fix `react-codejar` line numbers */
-.codejar-linenumbers {
-  background: none !important;
-  color: var(--ifm-secondary) !important;
-
-  & > div {
-    text-align: right;
-    transform: translateX(-5px);
-
-    [data-theme="dark"] & {
-      opacity: 0.5;
-    }
-  }
-}
-
-.motoko-code-output {
-  color: darkgreen;
-
-  [data-theme="dark"] & {
-    color: lightgreen;
-  }
-}
-
-.motoko-code-error {
-  color: darkred;
-
-  [data-theme="dark"] & {
-    color: pink;
-  }
-}
-
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-
-  [data-theme="dark"] & {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
 }
 
 div[class^="announcementBarContent"] {
@@ -111,216 +178,17 @@ div[class^="announcementBarContent"] {
   font-weight: bold;
 }
 
-.navbar__link {
-  font-weight: var(--ifm-font-weight-bold);
-}
-
-.navbar__logo {
-  flex: 0 0 auto;
-  height: 1.925rem;
-  margin-right: 2rem;
-}
-
-.navbar__mobile__logo {
-  display: flex;
-}
-
-.navbar__mobile__logo img {
-  flex: 0 0 auto;
-  width: 15rem;
-  margin: auto 0.5rem;
-}
-
-html.docs-doc-page {
-  --ifm-navbar-x-padding: 16px;
-}
-
-.navbar {
-  z-index: 1901;
-  padding: 44px var(--ifm-navbar-x-padding) 20px var(--ifm-navbar-x-padding);
-  height: var(--ifm-navbar-height);
-  margin: 0 0;
-}
-
-.dropdown--hoverable .dropdown__menu {
-  transform: translateX(-50%) translateY(-0.625rem);
-}
-
-.dropdown--hoverable:hover .dropdown__menu {
-  transform: translateX(-50%) translateY(-1px);
-}
-
-@media (max-width: 996px) {
-  :root {
-    --ifm-navbar-height: 72px;
-    --ifm-navbar-padding-horizontal: 24px;
-  }
-  .navbar {
-    padding: var(--ifm-navbar-padding-vertical)
-      var(--ifm-navbar-padding-horizontal);
-  }
-
-  .navbar__logo {
-    flex: 0 0 auto;
-    height: 21px;
-    margin-right: 2rem;
-  }
-}
-
-@media (max-width: 996px) {
-}
-
-.navbar__inner {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Don't display docSidebar items in the top navbar on marketing pages*/
-html.plugin-pages,
-html:not(.plugin-pages):not(.plugin-docs) {
-  .navbar__inner .navbar__items:first-child .navbar__item {
-    display: none;
-  }
-}
-
-/* Don't display main nav items in the top navbar on docs pages*/
-html.plugin-docs
-  .navbar__inner
-  .navbar__items.navbar__items--right
-  .navbar__item {
-  display: none;
-}
-
-/* on mobile hide the search bar in the top navbar */
-@media (max-width: 996px) {
-  .navbar__inner .navbar__search {
-    display: none;
-  }
-
-  .navbar__inner .ic0-item {
-    display: none;
-  }
-}
-
-.navbar__inner .navbar__item.dropdown,
-.navbar__inner .navbar__item.dropdown .navbar__link,
-.navbar__inner .navbar__item.navbar__link {
-  font-weight: 500;
-}
-
-/* top menu hover color */
-.navbar__inner .navbar__item:hover.dropdown .navbar__link {
-  color: var(--ifm-navbar-link-hover-color);
-}
-
-/* update top menu chevron icon */
-.navbar__inner .navbar__item.dropdown .navbar__link:after {
-  border: none;
-  width: 1rem;
-  height: 1rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 10.6669L13.1669 6.00001L14.5 7.33313L8.5 13.3331L2.5 7.33313L3.83312 6.00001L8.5 10.6669Z' fill='currentColor' fill-opacity='0.3'/%3E%3C/svg%3E%0A");
-  transform: none;
-}
-
-/* colorize the chevron icon on hover */
-.navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
-  /* https://codepen.io/sosuke/pen/Pjoqqp */
-  filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
-    brightness(90%) contrast(89%);
-}
-
-/* Swap the order of the IC logo and the hamburger icon */
-@media (max-width: 996px) {
-  .navbar__inner .navbar__items:first-child .navbar__toggle {
-    order: 2;
-    margin-right: 0;
-  }
-
-  .navbar__inner .navbar__items:first-child .navbar__brand {
-    flex: 1;
-    order: 1;
-  }
-}
-
-/* full width sidebar */
-.navbar-sidebar {
-  --ifm-navbar-sidebar-width: 100vw;
-  --ifm-navbar-background-color: white;
-}
-
-/* larger mobile menu items */
-.navbar-sidebar .navbar-sidebar__back {
-  line-height: 2.25;
-}
-
-.navbar-sidebar .menu__list-item a {
-  line-height: 2.25;
-}
-
-/* make X icon on mobile sidebar black */
-.navbar-sidebar__close {
-  --ifm-color-emphasis-600: #181818;
-}
-
-.navbar-sidebar__item {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-/* dropdown is positioned too low in the original styles making it easy to hide by accident */
-.dropdown__menu {
-  top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
-}
-
-.fancy-scrollbar {
-  scroll-padding: 50% 0;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  padding-bottom: 12px;
-}
-
-.fancy-scrollbar::-webkit-scrollbar {
-  width: 12px;
-}
-
-.fancy-scrollbar::-webkit-scrollbar-track {
-  background: rgba(24, 24, 24, 0%);
-  margin: 0 calc((100vw - Min(1100px, 90vw)) / 2);
-  border-radius: 20px;
-}
-
-.fancy-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(24, 24, 24, 20%);
-  border-radius: 20px;
-  border: 4px solid var(--ifm-background-color);
-}
-
-.ecosystem-pills-scrollbar {
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-    margin: 0 24px;
-  }
-  &::-webkit-scrollbar-thumb {
-    height: 8px;
-    background-color: rgba(255, 255, 255, 50%);
-    border-radius: 20px;
-  }
-}
-
 .markdown-youtube-thumbnail {
   position: relative;
   display: block;
 }
+
 .markdown-youtube-thumbnail img {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 16 / 9;
 }
+
 .markdown-youtube-thumbnail:after {
   position: absolute;
   inset: 0;
@@ -329,53 +197,6 @@ html.plugin-docs
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-}
-
-@keyframes hero-scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-.animate-scale-in {
-  animation: hero-scale-in 1400ms ease-out;
-  animation-fill-mode: backwards;
-  animation-play-state: paused;
-}
-.animate-fade-in {
-  animation: fade-in 400ms ease-out;
-  animation-fill-mode: backwards;
-  animation-play-state: paused;
-}
-.animate-fade-up {
-  animation: fade-up 400ms ease-out;
-  animation-fill-mode: backwards;
-  animation-play-state: paused;
 }
 
 .gradient-text {
@@ -413,6 +234,10 @@ html.plugin-docs
     #ffffff 19.8%,
     rgba(24, 208, 181, 0.5) 112.99%
   );
+}
+
+.component-fade-in {
+  animation: fade-in 500ms ease-out backwards;
 }
 
 @keyframes nft-marquee-left {
@@ -612,6 +437,17 @@ html.plugin-docs
     line-height: 20px;
     font-weight: bold;
     color: rgba(59, 0, 185, 0.3);
+  }
+}
+
+.hero-eth-tx-gauge {
+  transform-origin: calc(50vw - 14px) 4px;
+}
+
+@media (min-width: 996px) {
+  .hero-eth-tx-gauge {
+    transform-origin: 196px 16px;
+    // top: -4px;
   }
 }
 

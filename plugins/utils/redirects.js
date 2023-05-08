@@ -38,7 +38,7 @@ const redirects = `
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
-  /docs/developers-guide/concepts/what-is-ic /what-is-the-ic
+  #/docs/developers-guide/concepts/what-is-ic /what-is-the-ic
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
@@ -88,7 +88,7 @@ const redirects = `
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/backend/troubleshooting
-  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/backend-tutorials/
+  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/motoko/
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
@@ -127,7 +127,7 @@ const redirects = `
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
-  /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
@@ -137,7 +137,7 @@ const redirects = `
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
-  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)

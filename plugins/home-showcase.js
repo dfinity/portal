@@ -8,17 +8,26 @@ const showcaseProjectsPlugin = async function () {
       const ids = [
         "dscvr",
         "distrikt",
+        "mora",
+        "funded",
         "kinic",
-        "openchat",
-        "plethora",
-        "entrepot",
         "cubetopia",
-        "sonic",
+        "plethora",
+        "yumi",
+        "hot-or-not",
+        "taggr",
+        "catalyze",
       ];
 
-      const projects = ids.map((id) =>
-        showcase.find((project) => project.id === id)
-      );
+      const projects = ids
+        .map((id) => showcase.find((project) => project.id === id))
+        .filter((project, index) => {
+          if (!project) {
+            console.warn(`Project with id ${ids[index]} not found`);
+            return false;
+          }
+          return true;
+        });
 
       const transformed = projects.map((project) => {
         return {
