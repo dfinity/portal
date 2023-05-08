@@ -120,17 +120,17 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Ledger canister",
+          label: "Ledger Canister Specification",
           id: "references/ledger",
         },
         {
           type: "doc",
-          label: "Internet Identity",
+          label: "Internet Identity Specification",
           id: "references/ii-spec",
         },
         {
           type: "doc",
-          label: "Asset canister",
+          label: "Asset Canister",
           id: "references/asset-canister",
         },
       ]
@@ -255,7 +255,7 @@ const sidebars = {
       ],
     },
   ],
-  
+
   samples: [
     "samples/deploying-your-first-bitcoin-dapp",
     "samples/t-ecdsa-sample",
