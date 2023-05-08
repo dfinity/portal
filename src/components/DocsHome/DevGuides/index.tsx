@@ -22,7 +22,7 @@ function Index() {
       </motion.div>
       <div className={styles.cards}>
         <SmallCard
-          href="/docs/current/tutorials/deploy_sample_app"
+          href="/docs/current/developer-docs/setup/install"
           title="Set up your development environment"
         >
           Install the IC SDK, understand the project structure, and
