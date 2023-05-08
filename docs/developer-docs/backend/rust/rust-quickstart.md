@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # Rust quick start
 
-The DFINITY Canister Development Kit (CDK) for Rust provides tools, sample code, and documentation to help you create dapps to run on the decentralized Internet Computer blockchain mainnet. This *Hello, World! Rust CDK Quick Start* assumes that you are installing the DFINITY Rust CDK for the first time.
+The [IC SDK](../../setup/install/index.mdx) provides tools, sample code, and documentation to help you create [Rust smart contracts](../choosing-language.md) and dapps to run on the decentralized ICP blockchain mainnet. This tutorial assumes that you are installing the IC SDK for the first time.
 
 To help you get started, this tutorial illustrates how to modify the traditional "Hello World" first dapp to use the DFINITY Rust CDK. This simple dapp has just one function that prints text to a terminal, but it provides a good model for understanding the workflow when writing dapps in Rust that you want to deploy on the Internet Computer blockchain.
 
@@ -35,7 +35,7 @@ Before you start your project, verify the following:
 
 Applications for the Internet Computer blockchain start as **projects**. You can create new projects for the Internet Computer blockchain using the DFINITY Canister SDK. Because you are building this project to be deployed on the Internet Computer blockchain, this tutorial focuses on how to create, build, and deploy a Rust program by using the `dfx` parent command and its subcommands.
 
-To create a new project using the DFINITY Canister SDK:
+To create a new project using the IC SDK:
 
 1.  Open a terminal shell on your local computer, if you don’t already have one open.
 
