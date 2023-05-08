@@ -285,8 +285,8 @@ function TokenHolders(): JSX.Element {
                 an L1 blockchain. ICP token holders can participate in network governance
                 simply by staking tokens in neurons and locking them with a specified
                 dissolve delay (time to unlock). A neuron with a dissolve delay greater
-                than 6 months can vote on governance proposals and earn rewards worth up
-                to 17% annually. ICP neuron holders can also submit proposals to make
+                than 6 months can vote on governance proposals and earn rewards. ICP 
+                neuron holders can also submit proposals to make
                 changes to the protocol. This open and autonomous governance system runs
                 100% on chain, and currently holds over 250 million locked ICP.
                 </p>
@@ -401,7 +401,7 @@ function TokenHolders(): JSX.Element {
                   className="tw-heading-4 md:tw-heading-3 mb-10"
                   variants={transitions.item}
                 >
-                  Forget Centralized Exchanges.
+                  The Internet Computer offers multi-chain DeFI.
                   <br />
                   Swap BTC for ICP on a DEX.
                 </motion.h2>
