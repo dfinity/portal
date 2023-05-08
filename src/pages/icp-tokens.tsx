@@ -100,8 +100,8 @@ function TokenHolders(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  Engage with the Internet Computer and its ecosystem
-                  through the use of its native utility token.
+                  Engage with the Internet Computer and its ecosystem through
+                  the use of its native utility token.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -131,15 +131,22 @@ function TokenHolders(): JSX.Element {
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
                 variants={transitions.item}
               >
-                Beyond trading, the ICP utility token plays various roles on the
-                Internet Computer. It is used to participate in governance and
-                to compensate node providers. ICP tokens can also be converted
-                to ‘cycles’, which serves as gas for computation and storage in
-                canister smart contracts. In addition to these core usages, ICP
-                tokens can be used to participate in decentralization swaps to
-                become a co-owner of SNS DAOs, and for various services on
-                registries, marketplaces and exchanges operating on the Internet
-                Computer blockchain.
+                The ICP token plays a number of roles on the Internet Computer.
+                Firstly, as a governance token it can be staked to exercise
+                governance rights. As a utility token, it can be burned to
+                obtain ‘cycles‘ which serves as gas for computation and storage
+                in canister smart contracts. It can also minted to reward ‘node
+                machine‘ providers for providing that compute and storage.
+              </motion.p>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
+                variants={transitions.item}
+              >
+                In addition to these core uses, ICP tokens can be used to
+                participate in decentralisation swaps to become a co-owner of an
+                SNS DAO, and when using many smart contract services built on
+                the Internet Computer such as registries, marketplaces and
+                exchanges.
               </motion.p>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-0"
@@ -168,11 +175,12 @@ function TokenHolders(): JSX.Element {
                   <li className="checklist-item pl-8">
                     Participate in governance
                   </li>
-                  <li className="checklist-item pl-8">
-                    Convert ICP to cycles{" "}
-                  </li>
+                  <li className="checklist-item pl-8">Burn for cycles </li>
                   <li className="checklist-item pl-8">
                     Participate in decentralisation swaps
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Reward node machine providers
                   </li>
                 </ul>
               </motion.div>
@@ -249,7 +257,7 @@ function TokenHolders(): JSX.Element {
                   <NnsTvl />
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
-                  NNS TVL
+                  Locked in Governance
                 </figcaption>
               </motion.figure>
             </div>
@@ -273,16 +281,16 @@ function TokenHolders(): JSX.Element {
                   Participate in Governance
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
-                  The Internet Computer Protocol is run by the NNS, the second
-                  largest DAO in the blockchain space. ICP tokens holders can
+                  The Internet Computer Protocol is run by the NNS, the largest
+                  DAO managing an L1 blockchain. ICP token holders can
                   participate in network governance simply by staking tokens in
-                  neurons (digital bundles of tokens) and locking them for a
-                  specific time period. Staking for 6 months or more makes token
-                  holders eligible for voting and earning rewards of up to 17%
-                  annually. ICP token holders can also submit proposals to make
-                  changes to the Protocol. This open and autonomous governance
-                  system runs 100% on chained, and currently holds over 250
-                  million locked ICP.
+                  neurons and locking them with a specified dissolve delay (time
+                  to unlock). A neuron with a dissolve delay greater than 6
+                  months can vote on governance proposals and earn rewards. ICP
+                  neuron holders can also submit proposals to make changes to
+                  the protocol. This open and autonomous governance system runs
+                  100% on chain, and currently holds over 250 million locked
+                  ICP.
                 </p>
                 <p className="mb-0">
                   <Link
@@ -299,14 +307,14 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Buy Cycles for Compute & Storage
+                  Burn for Cycles
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                   Unlike other smart contract blockchains, the Internet Computer
                   runs on a “Reverse Gas Model”. This means computation and
                   storage costs are paid for by developers, and developers are
-                  responsible topping up smart contracts with “cycles” to fuel
-                  the compute power and storage of their dapps. The Reverse Gas
+                  responsible topping up smart contracts with cycles to fuel the
+                  compute power and storage of their dapps. The Reverse Gas
                   Model allows users to interact with dapps on the Internet
                   Computer without tokens, and as seamlessly as they would on
                   any Web2 application.
@@ -340,8 +348,7 @@ function TokenHolders(): JSX.Element {
                   <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                     Store ICP in wallets, swap it on DEXs, collect NFTs or tip
                     friends while chatting. The Internet Computer is home to a
-                    growing ecosystem of dapps, more and more of which are
-                    introducing tokenization.
+                    growing ecosystem of dapps, many of which use ICP.
                   </p>
                   <p className="pb-[100%] sm:pb-0 mb-0">
                     <Link
@@ -396,9 +403,7 @@ function TokenHolders(): JSX.Element {
                   className="tw-heading-4 md:tw-heading-3 mb-10"
                   variants={transitions.item}
                 >
-                  Forget Centralized Exchanges.
-                  <br />
-                  Get ICP on a DEX with Bitcoin.
+                  Swap BTC for ICP on a DEX.
                 </motion.h2>
                 <motion.p
                   className="tw-paragraph md:tw-lead-sm mb-0"
@@ -407,45 +412,53 @@ function TokenHolders(): JSX.Element {
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
                   Find out how native Bitcoin support on the Internet Computer
-                  makes this possible{" "} 
-                  <Link className="text-white hover:text-white underline hover:cursor-pointer" href="/bitcoin-integration">
+                  makes this possible{" "}
+                  <Link
+                    className="text-white hover:text-white underline hover:cursor-pointer"
+                    href="/bitcoin-integration"
+                  >
                     here
-                  </Link>.
+                  </Link>
+                  .
                 </motion.p>
               </div>
 
               <div className="mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-[3fr_3fr_5fr]">
-                <motion.div
-                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col"
-                  variants={transitions.item}
-                >
-                  <img
-                    src="/img/showcase/icdex_logo.webp"
-                    loading="lazy"
-                    alt=""
-                    className="w-20 h-20"
-                  ></img>
-                  <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
-                  <p className="tw-lead-sm mb-0 text-black/60">
-                    First orderbook-based DEX running fully on-chain. Bypass
-                    CEXs and get ICP or CHAT tokens for your BTC.{" "}
-                  </p>
+                <motion.div className="" variants={transitions.item}>
+                  <Link
+                    className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform"
+                    href="https://icdex.io"
+                  >
+                    <img
+                      src="/img/showcase/icdex_logo.webp"
+                      loading="lazy"
+                      alt=""
+                      className="w-20 h-20"
+                    ></img>
+                    <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
+                    <p className="tw-lead-sm mb-0 text-black/60">
+                      First orderbook-based DEX running fully on-chain. Bypass
+                      CEXs and get ICP or CHAT tokens for your BTC.{" "}
+                    </p>
+                  </Link>
                 </motion.div>
-                <motion.div
-                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col"
-                  variants={transitions.item}
-                >
-                  <img
-                    src="/img/showcase/icpswap_logo.webp"
-                    loading="lazy"
-                    alt=""
-                    className="w-20 h-20"
-                  ></img>
-                  <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
-                  <p className="tw-lead-sm mb-0 text-black/60">
-                    Offers the largest number of tokens on the Internet
-                    Computer. Trade meme coins or SNS DAO tokens.
-                  </p>
+                <motion.div className="" variants={transitions.item}>
+                  <Link
+                    className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform"
+                    href="https://icpswap.com"
+                  >
+                    <img
+                      src="/img/showcase/icpswap_logo.webp"
+                      loading="lazy"
+                      alt=""
+                      className="w-20 h-20"
+                    ></img>
+                    <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
+                    <p className="tw-lead-sm mb-0 text-black/60">
+                      Offers the largest number of tokens on the Internet
+                      Computer. Trade meme coins or SNS DAO tokens.
+                    </p>
+                  </Link>
                 </motion.div>
 
                 <motion.div
@@ -544,8 +557,8 @@ function TokenHolders(): JSX.Element {
               <motion.div className="" variants={transitions.item}>
                 <h3 className="tw-heading-5 mb-6">Mobile App Wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
-                  Understand the benefits and limitations of each custody option
-                  so you can choose the wallet that best suits your needs.
+                  Mobile apps offer easy access to crypto assets for people who
+                  use them frequently.
                 </p>
                 <div className="space-y-4">
                   <WalletCard
@@ -572,9 +585,8 @@ function TokenHolders(): JSX.Element {
                   Browser Extension Wallets
                 </h3>
                 <p className="tw-paragraph text-black/60 mb-8">
-                  A more traditional way of storing tokens and interacting with
-                  dapps. Great for users already familiar with crypto wallets
-                  from other chains.
+                  Great for users already familiar with crypto wallets from
+                  other chains.
                 </p>
 
                 <div className="space-y-4">
@@ -689,7 +701,6 @@ function TokenHolders(): JSX.Element {
                   DeFi on the Internet Computer
                 </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
-                  All other DeFi platforms suffer from centralized components.
                   Build and use DeFi apps on the Internet Computer that are
                   hosted 100% on the blockchain.
                 </p>
@@ -709,7 +720,7 @@ function TokenHolders(): JSX.Element {
                 </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
                   Community discussions around extending the ICRC token standard
-                  for all ledgers to optimize functionality is ongoing. 
+                  for all ledgers to optimize functionality is ongoing.
                 </p>
                 <p className="mb-0">
                   <Link
