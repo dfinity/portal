@@ -42,7 +42,7 @@ structures. We will change in the next section.
 
 For our poll app, we want to the poll to have the main question. For example, "What is your favorite programming language?"
 
-To add the question, include the following code inside the actor:
+To add the question, include the following code *inside* the actor:
 
 ```motoko
     var question: Text = "What is your favorite programming language?";
@@ -51,7 +51,22 @@ To add the question, include the following code inside the actor:
 The new statement does the following:
 
 - Creates a new actor's variable `question`
-- Declares the type of this variable Text, which is the standard type for strings in Motoko
+- Declares the type of this variable Text, which is the standard type for strings in Motoko. Because of this, we need to add an import statement at the top of the file to use the `Text` type: `import Text "mo:base/Text";`.
+
+After these changes, `main.mo` file should look like this:
+
+```motoko
+import Text "mo:base/Text";
+
+
+actor {
+    var question: Text = "enter your question";
+
+}
+```
+
+The code above has an actor that has no methods, but contains one fixed variable.
+
 
 ## Adding access methods
 
