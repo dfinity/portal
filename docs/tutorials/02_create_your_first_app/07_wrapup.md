@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Step 7 - Wrap up
+title: Step 7 - Conclusion
 ---
 
 # Wrap Up
@@ -13,7 +13,7 @@ You have built a dapp fully on-chain (both backend and frontend).
 
 If you would like to deploy this dapp to mainnet, you can follow the same steps in the first tutorial: [Deploy a dapp on-chain](../deploy_sample_app/#deploying-on-chain).
 
-## Tutorial takeaways:
+## Tutorial takeaways
 
 * ICP dapps can host backend and frontend logic
 * ICP canister smart contracts can host data, which can be queried and manipulated
