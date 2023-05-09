@@ -1,6 +1,6 @@
 # Encrypted Note-taking Dapp
 
-[Encrypted Notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) is an experimental dapp for authoring and storing confidential information in the form of short pieces of text. The user can access their notes via any number of automatically synchronized devices authenticated via [Internet Identity](../../docs/tokenomics/identity-auth/what-is-ic-identity.md). Thanks to the end-to-end encryption performed by the dapp’s frontend, the user does not need to trust the dapp’s backend.
+[Encrypted Notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) is an experimental dapp for authoring and storing confidential information in the form of short pieces of text. The user can access their notes via any number of automatically synchronized devices authenticated via [Internet Identity](https://internetcomputer.org/internet-identity). Thanks to the end-to-end encryption performed by the dapp’s frontend, the user does not need to trust the dapp’s backend.
 
 You can play around with the [dapp deployed on the IC](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.icp0.io/) and see a quick introduction on [YouTube](https://youtu.be/DZQmtPSxvbs).
 
@@ -14,7 +14,7 @@ To demonstrate the potential of the IC as a platform for developing such dapps, 
 
 The basic functionality of Encrypted Notes consists of two main components.
 
-First, we re-used the code of a (non-encrypted) dapp called [IC-Notes](https://github.com/pattad/ic_notes). In particular IC-Notes relies on the [Internet Identity](../../docs/tokenomics/identity-auth/auth-how-to.md) (II) canister for user authentication, an approach that is also inherited by Encrypted Notes. For development purposes, we deploy a local instance of the II canister (along with a local instance of Encrypted Notes); when deploying Encrypted Notes onto the mainnet, the real-world instance of II is used for authentication.
+First, we re-used the code of a (non-encrypted) dapp called [IC-Notes](https://github.com/pattad/ic_notes). In particular IC-Notes relies on the Internet Identity (II) canister for user authentication, an approach that is also inherited by Encrypted Notes. For development purposes, we deploy a local instance of the II canister (along with a local instance of Encrypted Notes); when deploying Encrypted Notes onto the mainnet, the real-world instance of II is used for authentication.
 
 Second, we enabled client-side, end-to-end encryption for the note contents, borrowing the solution from another existing dapp called [IC-Vault](https://github.com/timohanke/icvault). Our Encrypted Notes dapp follows the approach of IC-Vault to support managing multiple devices.
 
