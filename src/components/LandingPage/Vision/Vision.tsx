@@ -1,12 +1,11 @@
 import Link from "@docusaurus/Link";
+import transitions from "@site/static/transitions.json";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
-import { css } from "../../../utils/dummy-css";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import styles from "./Vision.module.css";
-import transitions from "@site/static/transitions.json";
 
 const HashTag: React.FC<{
   children: React.ReactNode;
@@ -23,8 +22,6 @@ const HashTag: React.FC<{
     {children}
   </Link>
 );
-
-const MotionLink = motion(Link);
 
 const Vision: React.FC = () => {
   useEffect(() => {
@@ -56,9 +53,6 @@ const Vision: React.FC = () => {
             break;
           }
           p.style.animationPlayState = "running";
-          // for (const em of Array.from(p.querySelectorAll("em"))) {
-          //   em.style.animationPlayState = "running";
-          // }
         }
       }
     }
@@ -70,6 +64,10 @@ const Vision: React.FC = () => {
     for (const p of Array.from(paragraphs)) {
       observer.observe(p);
     }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
