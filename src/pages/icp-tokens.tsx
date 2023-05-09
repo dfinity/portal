@@ -608,7 +608,7 @@ function TokenHolders(): JSX.Element {
                 <h3 className="tw-heading-5 mb-6">Hardware Wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Maximum security. Hardware wallets hold private keys in
-                  airgapped machines or ledger devices.
+                  airgapped, dedicated devices.
                 </p>
                 <div className="space-y-4">
                   <WalletCard
@@ -647,7 +647,7 @@ function TokenHolders(): JSX.Element {
                   />
                   <WalletCard
                     title="Coinbase"
-                    description="Store assets in segregated cold storage. An institutional-grade custody solution. "
+                    description="Store assets in segregated cold storage. An institutional-grade custody solution."
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
                   />
