@@ -27,8 +27,8 @@ As the NNS is to the IC, an SNS is to services running on the IC. If you are a d
 ## Identity & Authentication
 One of the advantages of building apps on the Internet Computer is that users can interact and authenticate without the need for holding tokens. This is facilitated by Internet Identity. 
 
-- [What is Internet Identity](identity-auth/what-is-ic-identity.md)
-- [How to get started with Internet Identity](identity-auth/auth-how-to.md)
+- [What is Internet Identity](https://internetcomputer.org/internet-identity)
+- [How to get started with Internet Identity](https://internetidentity.zendesk.com/hc/en-us/articles/15430677359124-How-Do-I-Create-an-Internet-Identity-on-My-Mobile-Device-)
 
 ## Token Holders
 There are multiple ways to obtain token; purchasing via an exchange, earning as a node provider, receiving from a friend, or otherwise. Learn about some options for how to hold tokens, and how you can set up self-custody. Follow the quickstart to take control of your tokens. 
