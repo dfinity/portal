@@ -8,7 +8,7 @@ This tutorial takes about 10 minutes to complete.
 Prerequisites
 -------------
 
-1. Make sure the [Canister SDK](../../setup/install/) (`dfx`) is installed.
+1. Make sure the [IC SDK](../../setup/install/) is installed.
 2. There is a macOS or Linux terminal with internet connection.
 3. The [Rust language](https://www.rust-lang.org/tools/install) and a code editor are installed. The [VS Code IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
 
