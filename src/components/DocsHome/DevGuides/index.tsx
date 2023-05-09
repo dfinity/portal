@@ -22,7 +22,7 @@ function Index() {
       </motion.div>
       <div className={styles.cards}>
         <SmallCard
-          href="/docs/current/tutorials/deploy_sample_app"
+          href="/docs/current/developer-docs/setup/install"
           title="Set up your development environment"
         >
           Install the IC SDK, understand the project structure, and
@@ -32,7 +32,7 @@ function Index() {
           href="/docs/current/developer-docs/backend/choosing-language"
           title="Build a Smart Contract backend"
         >
-          Learn how to create Canister Smart Contracts
+          Learn how to create Canister Smart Contracts with your language of choice
         </SmallCard>
         <SmallCard
           href="/docs/current/developer-docs/gas-cost"

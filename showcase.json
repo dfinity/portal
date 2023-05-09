@@ -222,23 +222,6 @@
     "screenshots": []
   },
   {
-    "id": "papyrs",
-    "name": "Papyrs",
-    "oneLiner": "Blog on Web3",
-    "website": "https://app.papy.rs",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "An open-source, privacy-first, decentralized blogging platform that lives 100% on chain. Have an unstoppable voice and full control over your data.",
-    "github": "https://github.com/papyrs/papyrs",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/papyrs_logo.webp",
-    "screenshots": [
-      "/img/showcase/papyrs_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "taggr",
     "name": "TAGGR",
     "website": "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app/#/",

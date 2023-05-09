@@ -16,7 +16,7 @@ function Index() {
           className={styles.callToAction}
           to={"/docs/current/tutorials"}
         >
-          See all tutorials
+          See Intro tutorials
         </Link>
       </motion.div>
       <div className={styles.cards}>
