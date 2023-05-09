@@ -61,6 +61,8 @@ In order for the frontend to talk to the backend and have it reflected in the HT
 const pollForm = document.getElementById('poll-form');
 const resultsDiv = document.getElementById('results');
 const resetButton = document.getElementById('reset');
+
+//Not we will use "poll_backend" in this JavaScript code a few times to call the backend
 import { poll_backend } from "../../declarations/poll_backend";
 
 //1. LOCAL DATA
@@ -148,7 +150,7 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
 
 These lines show how the frontend can use the `getQuestion()`, `getVotes()`, `vote()` methods we created in earlier sections.
 
-## Deploy the dapp
+## Deploy the dapp locally
 
 Re-deploy the dapp locally and you are done!
 
