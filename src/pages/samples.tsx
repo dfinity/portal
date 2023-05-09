@@ -3,7 +3,7 @@ import Layout from "@theme/Layout";
 import Header from "@site/src/components/SamplesPage/Header";
 import Card from "@site/src/components/SamplesPage/Card";
 import FilterBar from "@site/src/components/SamplesPage/FilterBar";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {
@@ -17,7 +17,7 @@ import {
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import communityProjects from "@site/community/communityProjects";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
+
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
@@ -145,7 +145,6 @@ function Samples(): React.ReactNode {
   const [numberOfItems, setNumberOfItems] = React.useState(16);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
     React.useState(40);
-  resetNavBarStyle();
 
   const sortSamples = (samples) => {
     if (selectedSortBy === "Relevance") {

@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
 
 function Index() {
@@ -42,15 +42,9 @@ function Index() {
         >
           <Link
             className={styles.actionButton}
-            to="/docs/current/developer-docs/ic-overview"
+            to="/docs/current/tutorials/deploy_sample_app"
           >
             READ DOCS
-          </Link>
-          <Link
-            className={styles.callToAction}
-            to={"/docs/current/developer-docs/quickstart/hello10mins"}
-          >
-            Start coding
           </Link>
         </motion.div>
       </motion.div>

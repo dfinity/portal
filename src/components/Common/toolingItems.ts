@@ -242,4 +242,47 @@ export const communityToolingItems = [
       github: "https://github.com/ZenVoich/mops"
     },
   },
+  {
+    title: "ICPipeline",
+    tags: [ "development", "service", "testing", "CLI", "website", "starter"],
+    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
+    links: {
+      external: "https://www.icpipeline.com/",
+      github: "https://github.com/icpipeline-framework",
+      docs: "https://icpipeline.com/documentation"
+    },
+  },
+  {
+    title: "ic-stable-memory",
+    tags: [ "database", "development", "library" ],
+    description: "A Rust library that allows you to use stable memory as main memory",
+    links: {
+      github: "https://github.com/seniorjoinu/ic-stable-memory",
+      docs: "https://docs.rs/ic-stable-memory/latest/ic_stable_memory/",
+    },
+  },
+{
+    title: "IC4J Internet Identity",
+    tags: [ "java", "development", "library" ],
+    description: "Providing an implementation of ICP Internet Identity Service, this Java library enables Java developers to register new users, add or remove devices, and authenticate client applications on the Internet Computer.",
+    links: {
+      github: "https://github.com/ic4j/ic4j-internetidentity",
+    },
+  },
+{
+    title: "IC4J ICP Management",
+    tags: [ "java", "development", "library","management" ],
+    description: "This Java library is an implementation of ICP Virtual Canister Management API and directly communicates with the Management Virtual Canister. Developers can utilize this library within any Java application to perform various operations, such as creating, deleting, starting, and stopping a canister, installing, uninstalling, and reinstalling WASM canister code, updating canister settings, and adding additional funds to a canister.",
+    links: {
+      github: "https://github.com/ic4j/ic4j-management",
+    },
+  },
+{
+    title: "IC4J Apache Camel ICP Component",
+    tags: [ "java", "development", "library" ],
+    description: "Apache Camel is an Open Source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data. The IC4J Camel ICP Component allows native execution of Internet Computer smart contracts from Apache Camel.",
+    links: {
+      github: "https://github.com/ic4j/ic4j-camel",
+    },
+  }, 
 ];

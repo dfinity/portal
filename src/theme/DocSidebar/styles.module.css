@@ -20,6 +20,7 @@
     padding-top: var(--ifm-navbar-height);
     width: var(--doc-sidebar-width);
     transition: opacity 50ms ease;
+    min-height: 100vh;
   }
 
   .sidebarWithHideableNavbar {
@@ -46,10 +47,6 @@
   .sidebarLogo img {
     margin-right: 0.5rem;
     height: 2rem;
-  }
-
-  .menu {
-    flex-grow: 1;
   }
 
   .menuWithAnnouncementBar {

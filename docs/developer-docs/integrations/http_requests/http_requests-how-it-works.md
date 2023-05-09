@@ -109,7 +109,7 @@ As mentioned already further above, there are multiple possible extensions we ar
 
 ## Coding HTTPS Outcalls
 
-We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](../../../references/ic-interface-spec/#ic-http_request).
+We next provide important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application as we need to consider aspects like responses going through consensus and idempotency of `POST` requests. We also refer the reader to the API definition of the feature in [The Internet Computer Interface Specification](/references/ic-interface-spec.md#ic-http_request).
 
 ### Recipe for Coding a Canister HTTP Call
 
@@ -117,12 +117,18 @@ The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle t
 * &ldquo;Manually,&rdquo; e.g., using the `curl` tool, make the same HTTP request of interest twice within a short time frame (1-2 seconds) to emulate what would be done by the replicas of a subnet, just with a smaller $n$.
 * Diff the two responses to find all the items that differ in the two requests. Both the body and the headers are important to be considered here. Alternatively, identify the core information of interest and how it can be extracted as the response.
 * Implement a *transformation function* that transforms responses such that they are equal on each replica based on the observed diff of the responses or the intended response.
-* Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably.
+* Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably. If the `max_response_bytes` parameters is not set, the default response size of 2MB is charged, which is extremely expensive.
 * Implement the request and try it out in the local SDK environment. However, note that the behaviour of the local environment does not reflect that of the IC as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an IC subnet.
 
 :::tip Pro tip
 
 Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses from passing through consensus.
+
+:::
+
+:::caution Warning
+
+If you do not set the optional `max_response_bytes` parameter, a response size of 2MB will be assumed and charged, which is *extremely expensive*. We recommend to always set the parameter to a reasonable upper bound of the expected network reponse size to reduce cycles cost of the call. If you are unsure of the response size to be expected, you can make a HEAD request upfront to determine the response size.
 
 :::
 
@@ -150,7 +156,7 @@ There are a number of error cases that can happen when using this feature. The m
 Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the following errors. We list the issues we think are the most prominent ones when starting with this feature.
 * If a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets. Problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
 * Receiving a timeout: If the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an IC block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
-* Requests consume too many cycles: Canister HTTPS outcalls are charged cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_size` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_size` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
+* Requests consume too many cycles: Canister HTTPS outcalls are charged cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_bytes` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_bytes` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
 
 ### Pricing
 

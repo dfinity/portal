@@ -97,7 +97,7 @@ export function LivePreviewLink({ to }) {
     </div>
   );
 }
-export function GitHubLink({ to }) {
+export function GitHubLink({ to, label = "Link to GitHub" }) {
   return (
     <div className="relative flex group">
       <div className="hidden group-hover:flex items-center justify-center w-40 absolute bottom-full left-1/2 -translate-x-[calc(50%+4px)]">
@@ -108,13 +108,14 @@ export function GitHubLink({ to }) {
       <Link
         className="flex items-center justify-center relative h-10 w-10 rounded-full border border-solid border-[#dfdfdf] p-2 text-infinite hover:border-infinite hover:text-white hover:bg-infinite hover:no-underline"
         to={to}
+        aria-label={label}
       >
         <GitHubIcon />
       </Link>
     </div>
   );
 }
-export function ExternalLink({ to }) {
+export function ExternalLink({ to, label = "External Link" }) {
   return (
     <div className="relative flex group">
       <div className="hidden group-hover:flex items-center justify-center w-40 absolute bottom-full left-1/2 -translate-x-[calc(50%+4px)]">
@@ -125,6 +126,7 @@ export function ExternalLink({ to }) {
       <Link
         className="flex items-center justify-center relative h-10 w-10 rounded-full border border-solid border-[#dfdfdf] p-2 text-infinite hover:border-infinite hover:text-white hover:bg-infinite hover:no-underline"
         to={to}
+        aria-label={label}
       >
         <LinkIcon />
       </Link>

@@ -1,10 +1,10 @@
+import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
+import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
-import GithubIcon from "@site/static/img/token-holders/social/github.svg";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
+import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,14 +13,10 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
-import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
-import Head from "@docusaurus/Head";
 
 const MotionLink = motion(Link);
 
 const RoadmapPage: React.FC = () => {
-  resetNavBarStyle();
-
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
 
@@ -34,8 +30,6 @@ const RoadmapPage: React.FC = () => {
     document.body.style.overflow = "";
     setOverlayOpen(false);
   }
-
-  const data = useGlobalData()["roadmap-data"].default as RoadmapDomain[];
 
   return (
     <Layout
@@ -77,7 +71,7 @@ const RoadmapPage: React.FC = () => {
           <div className="container-10 relative">
             <img
               alt=""
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
           </div>

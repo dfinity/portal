@@ -91,7 +91,7 @@
 }
 
 .mediaLinks img:hover {
-    filter: brightness(0);
+    opacity: 0.8;
 }
 
 .container {

@@ -5,7 +5,7 @@ import transitions from "@site/static/transitions.json";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 
 function Index() {
   const controls = useAnimation();

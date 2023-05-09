@@ -1,7 +1,7 @@
 ---
 title: Blockchain Protocol Upgrade
 abstract: 
-shareImage: /img/how-it-works/upgrades.600.jpg
+shareImage: /img/how-it-works/protocol-updates.webp
 slug: upgrades
 ---
 

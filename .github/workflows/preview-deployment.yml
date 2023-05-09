@@ -5,6 +5,8 @@ on:
 
 jobs:
   build_and_deploy:
+    # do not run in forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.ref }}
@@ -12,6 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - uses: actions/github-script@v6
         with:
           script: |
@@ -25,13 +30,19 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+
+      - name: Install DFX
+        run: |
+          mkdir dfx
+          cd dfx
+          wget https://github.com/dfinity/sdk/releases/download/0.14.1-beta.0/dfx-0.14.1-beta.0-x86_64-linux.tar.gz
+          tar -xf dfx-0.14.1-beta.0-x86_64-linux.tar.gz
+          echo "`pwd`" >> $GITHUB_PATH
+
       - name: "Build & Deploy"
         run: |
-          # install dfx and configure identity
-          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-          mkdir ~/.config/dfx
-          mkdir ~/.config/dfx/identity
-          mkdir ~/.config/dfx/identity/default
+          mkdir -p ~/.config/dfx/identity/default
+
           echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
 
@@ -59,7 +70,9 @@ jobs:
           git submodule update --init
           npm install
 
-          dfx deploy --network=ic --no-wallet portal
+          export PREVIEW_CANISTER_ID=$canister_id
+
+          dfx deploy --network=ic --no-wallet portal --yes
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}

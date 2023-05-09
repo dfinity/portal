@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
@@ -11,7 +10,6 @@ import {
 } from "@site/src/components/Common/Card";
 
 function HTTPSOutcalls() {
-  resetNavBarStyle();
   return (
     <Layout
       title="HTTPS Outcalls"
@@ -52,7 +50,7 @@ function HTTPSOutcalls() {
           </div>
           <div className="container-10 relative">
             <img
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               alt=""
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />

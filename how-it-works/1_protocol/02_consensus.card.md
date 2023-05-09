@@ -2,7 +2,9 @@
 title: Consensus
 ---
 
-![](/img/how-it-works/consensus.600x300.jpg)
+![](/img/how-it-works/consensus.webp)
+
+# Consensus
 
 Every blockchain needs a consensus mechanism that allows the nodes to agree on the messages to be processed, as well as their ordering.
 Consensus is the component of the core IC protocol that drives the subnets of the IC.

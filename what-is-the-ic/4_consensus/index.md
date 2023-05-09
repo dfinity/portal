@@ -1,6 +1,6 @@
 ---
 title: Low-latency high-throughput consensus
-card: /img/what-is-the-ic/consensus.jpg
+card: /img/what-is-the-ic/consensus.webp
 cardImageFit: cover
 ---
 

@@ -6,9 +6,9 @@ If your application has reached the stage where you want to change domain names,
 
 You may need this guide if you are doing any of the following:
 
-- Moving from `<canister-id>.ic0.app` to a custom domain
+- Moving from `<canister-id>.icp0.io` to a custom domain
 - Asking users to login at `/login` instead of `/`
-- Supporting users using `raw.ic0.app`
+- Supporting users using `raw.icp0.io`
 - Configuring multiple apps in your organization to use the same principals
 - And more
 
@@ -22,9 +22,9 @@ For more information, see the [Internet Identity Spec](https://github.com/dfinit
 
 ## Configuring Alternative Origins
 
-For this example, we will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.ic0.app.
+For this example, we will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
 
-In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qadra-cai.ic0.app.
+In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
 
 **B** would be the alternative origin, or https://internetcomputer.org.
 
