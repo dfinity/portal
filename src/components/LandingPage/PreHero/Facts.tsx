@@ -196,7 +196,9 @@ const StatSlot: React.FC<{ children: React.ReactNode; index: number }> = ({
       variants={transitions.container}
     >
       <div className="text-center h-full flex flex-col md:pt-20 md:mx-[2px]">
-        <div className="flex-1 flex flex-col md:px-2/12">{children}</div>
+        <div className="flex-1 flex flex-col md:px-10 lg:px-1/12 xl:px-2/12">
+          {children}
+        </div>
         <div
           className={clsx(
             "border-0 border-b border-solid border-white/20 h-20",
@@ -335,7 +337,7 @@ export const Facts = () => {
               className="w-[89px] md:mt-20"
             ></img>
             <div className="text-center mt-4 mb-2">
-              <div className="text-transparent bg-clip-text hero-stat-green text-[30px] font-book md:tw-title-sm">
+              <div className="text-transparent bg-clip-text hero-stat-green text-[29px] font-book lg:tw-title-sm">
                 $0.000000000000536
               </div>
             </div>
