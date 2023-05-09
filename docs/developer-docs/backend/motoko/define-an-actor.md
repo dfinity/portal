@@ -54,7 +54,7 @@ To modify the `dfx.json` configuration file:
 
 ## Modify the default canister
 
-In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this tutorial, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an Internet Computer canister is representeded as a Motoko actor.
+In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this tutorial, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an ICP canister is represented as a Motoko actor.
 
 To modify the default template source code:
 

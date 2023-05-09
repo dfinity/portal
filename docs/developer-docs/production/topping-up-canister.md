@@ -75,7 +75,7 @@ If you have a cycles wallet you control via dfx, you can send cycles from your c
 
 ```bash
 dfx wallet --network ic balance
-dfx canister deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai 
+dfx canister --network ic deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai 
 ```
 
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet

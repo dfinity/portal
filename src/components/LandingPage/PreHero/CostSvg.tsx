@@ -36,7 +36,7 @@ export const CostSvg: React.FC<{ className?: string }> = ({ className }) => {
           delay: 1,
           repeat: Infinity,
           repeatType: "reverse",
-          repeatDelay: 1,
+          repeatDelay: 3,
         }}
         initial="initial"
         animate={controls}
