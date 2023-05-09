@@ -17,6 +17,6 @@ If you would like to deploy this dapp to mainnet, you can follow the same steps 
 
 * ICP dapps can host backend and frontend logic
 * ICP canister smart contracts can host data, which can be queried and manipulated
-* IC SDK comes with default projects with frontend and backend canister smart contracts
+* [IC SDK](../../developer-docs/setup/install/index.mdx) comes with default projects with frontend and backend canister smart contracts
 * IC SDK comes with Candid UI so developers can interact with backend canister smart contracts
 * Motoko can be used or building backend canister smart contracts
