@@ -1744,5 +1744,16 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ember-cli-dfinity.png",
     "github": "https://github.com/onehilltech/ember-cli-dfinity"
+  },
+  {
+    "id": "bink",
+    "name": "Bink",
+    "oneLiner": "Superior alternative to Linktree",
+    "website": "https://b.ink",
+    "tags": ["SocialFi"],
+    "description": "Connect your audience, engage your community and analyse your interaction while owning your data and your identity.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bink_logo.png",
+    "twitter": "https://twitter.com/BinkDapp"
   }
 ]

@@ -121,9 +121,9 @@ dfx ledger fabricate-cycles --canister $(dfx identity get-wallet) --t 2345
 And to check the new balance, run `dfx wallet balance`.
 
 Now that everything is set up, you can deploy the sns using `dfx sns deploy`.
-This will deploy the SNS and print some canister IDs.
-Add the printed canister IDs manually to the file `.dfx/local/canister_ids.json`.
-Then make sure you can access them with:
+
+The SNS canister IDs are added to the file `.dfx/local/canister_ids.json`.
+You can check them with:
 
 ```bash
 dfx canister id sns_root
