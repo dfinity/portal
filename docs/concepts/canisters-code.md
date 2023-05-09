@@ -126,6 +126,6 @@ If you are looking for more information about canisters, check out the following
 
 -   [Introducing Canisters — An Evolution of Smart Contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ)
 
--   [What is the DFINITY Canister SDK? (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk)
+-   [What is the IC SDK? (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk)
 
 -   [Deploying your first application (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA)

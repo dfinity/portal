@@ -78,9 +78,9 @@ The Bitcoin functionality including ECDSA chain-key signatures is available in a
 
 ### Local SDK
 
-In the typical canister development workflow, canisters on the IC are compiled and run in the local environment using the Motoko or Rust canister SDK during their development. Thus, the SDK is the first stage, or environment, of the development workflow. The SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
+In the typical canister development workflow, canisters on the IC are compiled and run in the local environment using the [IC SDK](../../setup/install/index.mdx) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
 
-In contrast to the IC deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running bitcoind node in regression testing (regtest) mode. Using bitcoind in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, we integrated the SDK with bitcoind in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment with this setup.
+In contrast to the IC deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running bitcoind node in regression testing (regtest) mode. Using bitcoind in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, we integrated the IC SDK with bitcoind in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
 The Bitcoin adapter of the single replica running the local SDK environment connects to the local bitcoind node instead of multiple nodes of Bitcoin Testnet or Mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
 

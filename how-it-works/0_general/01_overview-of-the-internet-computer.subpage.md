@@ -54,6 +54,8 @@ Canisters within and across subnets communicate through asynchronous messaging.
 </figcaption>
 </figure>
 
+See more on [subnets](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) on the IC wiki.
+
 ## Asynchronous Messaging
 
 As mentioned earlier, a canister bundles its code and data (state).
@@ -114,6 +116,6 @@ However, note that it is a little technical at times.
 [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
 [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
 [Internet Computer Primer - Deck](https://dfinity.org/deck/)
-[Internet Computer Canister SDK](https://github.com/dfinity/sdk)
+[Internet Computer SDK](https://github.com/dfinity/sdk)
 
 [![Watch youtube video](https://i.ytimg.com/vi/YWHTNr8RZHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=YWHTNr8RZHg)
