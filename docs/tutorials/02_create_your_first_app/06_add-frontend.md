@@ -105,7 +105,7 @@ pollForm.addEventListener('submit', async (e) => {
 resetButton.addEventListener('click', async (e) => {
     
     //Reset the options in the backend
-    await poll2_backend.resetVotes();
+    await poll_backend.resetVotes();
     for (let key in pollResults) {
       pollResults = 0;
     }
