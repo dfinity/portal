@@ -110,6 +110,8 @@ For local development, you can add your wallet to the whitelist using the follow
 $(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --nns-url "http://localhost:$(dfx info replica-port)" propose-to-update-sns-deploy-whitelist --added-principals "$(dfx identity get-wallet)" --proposer "$DEVELOPER_NEURON_ID" --proposal-title "Let me SNS!" --summary "I am friendly."
 ```
 
+Your SNS proposal is live now. Go ahead and vote to allow it from the NNS Launchpad. Use the large neuron that you initially setup with 500_000_000 ICP.
+
 Creating an SNS currently uses up to 180T cycles, and your wallet needs to supply those.
 On a local deployment, you can add any number of cycles to any canister.
 To add 2345T cycles to your wallet, run the following command:
