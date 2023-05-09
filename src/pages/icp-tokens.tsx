@@ -614,7 +614,7 @@ function TokenHolders(): JSX.Element {
                   <WalletCard
                     title="Ledger"
                     description="Complete control of crypto assets via a Ledger hardware wallet and Ledger app."
-                    link="https://wallet.infinityswap.one/"
+                    link="https://support.ledger.com/hc/en-us/articles/4412643422481-Internet-Computer-ICP-"
                     icon="/img/showcase/ledger_logo.webp"
                   />
                   <WalletCard
