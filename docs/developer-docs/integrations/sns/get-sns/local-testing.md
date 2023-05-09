@@ -48,7 +48,7 @@ If you are unsure where `networks.json` is located, `dfx info networks-json-path
 
 To test the whole process properly, you also need a handful of identities.
 For local testing, we recommend you use unencrypted/plaintext .pem files to make everything a little bit easier.
-To do so, use the `--disable-encryption` flag when importing/creating an identity in dfx.
+To do so, use the `--storage-mode` flag with a value of `plaintext` when importing/creating an identity in dfx.
 
 The most important identity you will use is the identity we call `developer-identity`.
 Make sure that you can use it both with `dfx` and `sns-quill`, and that it will receive an initial developer neuron with a majority stake in the initial SNS parameters.
