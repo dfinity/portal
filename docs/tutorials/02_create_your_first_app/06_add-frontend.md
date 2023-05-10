@@ -107,13 +107,13 @@ resetButton.addEventListener('click', async (e) => {
     
     //Reset the options in the backend
     await poll_backend.resetVotes();
-    for (let key in pollResults) {
-      pollResults = 0;
-    }
-
+    const voteCounts = await poll_backend.getVotes();
+    updateLocalVoteCounts(voteCounts);
+    
     //re-render the results once the votes are reset in the backend
     displayResults();
 });
+
 
 //3. HELPER FUNCTIONS
 
