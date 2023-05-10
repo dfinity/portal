@@ -1,7 +1,6 @@
 import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
 import useGlobalData from "@docusaurus/useGlobalData";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -9,14 +8,9 @@ import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import TopicCard from "../components/HowItWorksPage/TopicCard";
-import { WhatIsIcpTopic } from "../components/HowItWorksPage/WhatIsIcpData";
-
-const MotionLink = motion(Link);
+import data from "@site/.docusaurus/what-is-the-ic-data/default/what-is-the-ic.json";
 
 const RoadmapPage: React.FC = () => {
-  const data = useGlobalData()["what-is-the-ic-data"]
-    .default as WhatIsIcpTopic[];
-
   return (
     <Layout
       title="What is the Internet Computer"
@@ -62,7 +56,7 @@ const RoadmapPage: React.FC = () => {
           <div className="container-10 relative">
             <img
               alt=""
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
           </div>

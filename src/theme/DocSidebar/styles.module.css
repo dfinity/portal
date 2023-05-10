@@ -49,11 +49,6 @@
     height: 2rem;
   }
 
-  .menu {
-    flex-grow: 1;
-    margin-top: 30px;
-  }
-
   .menuWithAnnouncementBar {
     margin-bottom: var(--docusaurus-announcement-bar-height);
   }

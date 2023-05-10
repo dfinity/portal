@@ -36,6 +36,22 @@ export function getTransactionRate(): Promise<number> {
     .then((res) => +res.message_execution_rate[0][1]);
 }
 
+export function getTransactionRateV3(
+  messageType: "update" | "query" | "all",
+  step: number = 7200
+): Promise<number> {
+  return fetch(
+    `https://ic-api.internetcomputer.org/api/v3/metrics/message-execution-rate?step=${step}&message_type=${messageType}`
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          message_execution_rate: [timestamp: number, rate: number][];
+        }>
+    )
+    .then((res) => res.message_execution_rate[0][1]);
+}
+
 export function getCyclesBurnRate(): Promise<number> {
   return fetch(
     "https://ic-api.internetcomputer.org/api/v3/metrics/cycle-burn-rate"
@@ -140,4 +156,23 @@ export function getCpuCoreCount(): Promise<number> {
         }>
     )
     .then((res) => +res.ic_cpu_cores[0][1]);
+}
+
+/*
+  Add new metrics here with | 
+*/
+export type StakingMetric = {
+  name: "governance_total_locked_e8s";
+  samples: {
+    timestamp: number;
+    value: number;
+  }[];
+};
+
+export type StakingMetrics = { metrics: StakingMetric[] };
+
+export function getStakingMetrics() {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/staking-metrics"
+  ).then((res) => res.json() as Promise<StakingMetrics>);
 }

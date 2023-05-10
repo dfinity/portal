@@ -1,8 +1,5 @@
-import useGlobalData from "@docusaurus/useGlobalData";
-import {
-  HowItWorksCardGroup,
-  HowItWorksPageData,
-} from "@site/src/components/HowItWorksPage/HowItWorksData";
+import cardGroups from "@site/.docusaurus/howitworks-cards/default/howitworks-cards.json";
+import { HowItWorksCardGroup } from "@site/src/components/HowItWorksPage/HowItWorksData";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
 import React from "react";
@@ -99,9 +96,6 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
 };
 
 function HowItWorks() {
-  const cardGroups = useGlobalData()["howitworks-cards"]
-    .default as HowItWorksPageData;
-
   return (
     <Layout
       title="How It Works"
@@ -135,7 +129,7 @@ function HowItWorks() {
           <div className="container-10 relative">
             <img
               alt=""
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
           </div>

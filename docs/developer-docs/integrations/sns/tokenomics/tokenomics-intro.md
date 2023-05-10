@@ -55,13 +55,13 @@ Define concisely for which use cases the token (or several tokens) of the DAO wi
 For the initial token allocation, i.e., defining which groups/accounts should receive how many tokens, you could consider the following main blocks
 
 * **DAO treasury**: These are tokens which are at the disposition of the DAO. They can be used according to predefined rules defined in the protocol of the DAO or distributed ad-hoc subject to voting. For example, they might be used for community bounties & user rewards.
-* **Decentralization sale**: Distribution to the community via an initial or subsequent decentralization sale. 
+* **decentralization swap**: Distribution to the community via an initial or subsequent decentralization swap. 
 * **Seed funders**: Distribution to funders (if you choose to have them) who invested in the project prior to the launch of the DAO.  
 * **Funding development team**: Developers who created the initial version of the DAO. 
 
 To emphasize the decentralization of the DAO from the start, developers can send a strong signal by 
 * allocating a significant part of the tokens to the DAO treasury, allowing the treasury to incentivize and reward users over time. 
-* ensure that the amount of tokens allocated to the decentralization sale is bigger than the amount allocated to seed funders and the funding development team.  
+* ensure that the amount of tokens allocated to the decentralization swap is bigger than the amount allocated to seed funders and the funding development team.  
 
 ### Voting power and decentralization
 The voting power should be distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves.

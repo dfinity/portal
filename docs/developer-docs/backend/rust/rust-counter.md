@@ -36,7 +36,7 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the DFINITY Canister Software Development Kit (SDK) package as described in [Download and install](../../setup/install/index.mdx).
+-   You have downloaded and installed the IC SDK as described in [Download and install](../../setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 

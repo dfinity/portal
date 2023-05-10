@@ -3,35 +3,45 @@ sidebar_position: 1
 ---
 # Choosing a programming language
 
-To create canisters, it is typical to use a so-called CDK, a Canister Development Kit.
-The CDK's main tasks are to expose the public interface of a canister, manage memory, allow other canisters to be called, and to interface with the system API.
-Because the Internet Computer supports dapps compiled to standard WebAssembly modules, you can use many different programming languages to create your canisters.
-The two officially supported languages of the Internet Computer are [Motoko](/motoko/main/motoko.md) and [Rust](./rust/index.md).
-Motoko is specifically designed to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
-Rust is a powerful and modern type-sound programming language with an active developer community.
-Of course, developers are not required to work in one (or both) of those languages. There are many different community-supported languages available as well, as you can see below in the list of available languages.
+To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) is a common entry point. The IC SDK supports a few programming languages out of the box.
 
-It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language. What language works behind the candid interface, however, does not matter.
+Because the ICP blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [Canister Development Kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
-This section of the docs covers the following CDKs, ordered by languages:
-- Motoko
-  - [Motoko by DFINITY](/motoko/main/motoko.md)
-- Rust
-  - [`cdk-rs` by DFINITY](./rust/index.md)
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
+In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. 
 
-Besides those, there exist a lot of other community-supported CDKs:
-- AssemblyScript
-  - [`cdk-as` by Rick Porter](https://github.com/rckprtr/cdk-as)
-- Python
-  - [`Kybra` by Demergent Labs](https://github.com/demergent-labs/kybra)
-- TypeScript
-  - [`Azle` by Demergent Labs](https://github.com/demergent-labs/azle)
+The most common languages to use are:x
 
-### A comparison between Motoko and Rust
+- **Motoko**
+  - [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
+  - One can use Motoko via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY
+  - See [Introduction to Developing Canisters in Motoko](./motoko/index.md)
+  - You can get a sense of Motoko by using the web-based [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app)
+- **Rust**
+  - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK)
+  - See [Introduction to Developing Canisters in Rust](./rust/index.md)
+- **Python**
+  - Python is a readable, versatile language for web development, data analysis, and AI.
+  - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by [Demergent Labs](https://github.com/demergent-labs)
+- **TypeScript**
+   - You can use TypeScript via the [Azle](https://demergent-labs.github.io/azle) CDK by [Demergent Labs](https://github.com/demergent-labs)
 
-To help deciding between languages, here is a comparison of the two most popular languages on the Internet Computer: Motoko and Rust. As a rule of thumb, use Rust if you already know it, but otherwise Motoko is far easier to learn quickly. For a more in-depth comparison, read on.
 
-Internet Computer considerations:
+It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
+
+## A comparison between Motoko and Rust
+
+To help developers interested in Motoko, here is a comparison of Motoko and Rust (a popular language in Web3). 
+
+As a rule of thumb in deciding between Motoko and Rust:
+
+* Motoko is much easier to learn and ergonomic to use for application developers. It has syntax and rules familiar to developers with a background in the application layer (JavaScript, Ruby, Python, Solidity, etc...). Motoko is good for getting sample, demo, or smaller contracts shipped quickly, but its library ecosystem is still early so can prove challenging for larger projects.
+
+* Rust is a good place for those who already know Rust, come from a systems engineering background (C, C++), or are starting larger or more complex projects where having a baked library ecosystem is helpful or important.
+
+For a more in-depth comparison, read on.
+
+### Internet Computer considerations:
 
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|

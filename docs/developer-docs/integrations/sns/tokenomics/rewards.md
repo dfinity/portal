@@ -24,7 +24,7 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
   * The total pool of voting rewards for a given day is calculated as ICP supply (total supply of ICP tokens on that day) * R(t) / 365.25.
 * Voting power of neurons
   * Only neurons with a dissolve delay of more than 6 months are eligible for voting. The maximum dissolve delay is 8 years.
-  * The voting power of a neuron is computed as neuron_stake * dissolve_delay_bonus * age_bonus
+  * The voting power of a neuron is computed as `neuron_stake * dissolve_delay_bonus * age_bonus`
   * In particular the dissolve delay bonus and the age bonus are cumulative.
   * The dissolve delay bonus (ddb) is a value between ddb<sub>min</sub> =1 and ddb<sub>max</sub>=2 and a linear function of the dissolve delay (capped at eight years).
   * The age bonus (ab) is a value between ab<sub>min</sub>=1 and ab<sub>max</sub>=1.25 and a linear function of the age of the neuron (capped at four years). A neuron starts aging when it enters a locked state. Aging is reset to 0 when a neuron enters a dissolving state.
@@ -33,7 +33,7 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
 * Allocation of reward pool to neurons
   * The reward pool is allocated in proportion to the voting power of proposals that are settled on this day multiplied by the reward weight of the according proposal category.
     * Determine the set of proposals that are included in this reward period (typically a day): these are the proposals that are not yet settled with respect to voting rewards, and no longer open for voting.
-    * The total voting power contributed to these proposals by neurons voting to adopt or reject is added up.
+    * The total voting power by neurons who were eligible for voting is added up.
     * Each neuron is rewarded in proportion to the voting power it contributed to these proposals multiplied by the reward weight of the according proposal category.
   * When a neuron is rewarded for voting, these rewards are recorded in an attribute of the neuron that is called maturity which is not a tradable asset. If a user wants to generate income from maturity, he/she needs to burn maturity to create new ICP via spawning a neuron which is a non-deterministic process described [here](https://wiki.internetcomputer.org/wiki/Maturity_modulation).
 

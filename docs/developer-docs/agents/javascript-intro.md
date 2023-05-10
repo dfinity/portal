@@ -10,7 +10,7 @@ This article covers connecting to the IC from JavaScript in a web browser. For m
 
 To get started with JavaScript on the Internet Computer, we recommend you follow our quickstart guide in order to get set up with the basics of your development environment. This includes:
 
-* Dfinity's development SDK, `dfx`
+* IC SDK for canister creation and management
 * Node JS (12, 14, or 16)
 * A canister you want to experiment with
   * Suggestions: 
@@ -18,7 +18,6 @@ To get started with JavaScript on the Internet Computer, we recommend you follow
     * an example from [dfinity/examples](https://github.com/dfinity/examples)
 
 If you are looking for an explanation of what an agent does, see [Agent Overview](../index.md).
-
 
 ____
 
@@ -41,9 +40,9 @@ service : {
 
 This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
-In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](https://smartcontracts.org/docs/candid-guide/candid-types.html) reference.
+In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid Types](../../references/candid-ref.md) reference.
 
-Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, by going to the [releases](https://github.com/dfinity/candid/releases) tab of the dfinity/candid repository.
+Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
 
 In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
 
@@ -60,7 +59,7 @@ For our Hello World example, that looks like this:
 	...
 }
 ```
-Then when we run `dfx generate`, dfx will automatically write the following to your src/declarations directory inside your project.
+Then when we run `dfx generate`, dfx will automatically write the following to your `src/declarations` directory inside your project.
 
 ```
 |── src
@@ -85,7 +84,7 @@ import type { ActorMethod } from '@dfinity/agent';
 export interface _SERVICE { 'greet' : ActorMethod<[string], string> };
 ```
 
-The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.host/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
+The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.xyz/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
 
 Next, let's look at `hello.did.js`.
 

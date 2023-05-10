@@ -99,7 +99,7 @@ a | b // 65 : Nat8 == binary 1000001
 // Binary XOR "^"
 let a = 64 : Nat8; // binary 1000000
 let b = 65 : Nat8; // binary 1000001
-a ^ b // 1 : Nat8  == binary 1000001
+a ^ b // 1 : Nat8  == binary 0000001
 ```
 
 ```motoko
@@ -116,8 +116,8 @@ a >> 1 // 32 : Nat8  == binary  100000
 
 ```motoko
 // Binary rotation left "<<>"
-let a = 255 : Nat8; //    binary  1000000
-a <<> 1 //  : Nat8     == binary 10000000
+let a = 255 : Nat8; //    binary 11111111
+a <<> 1 // 255 : Nat8  == binary 11111111
 ```
 
 ```motoko

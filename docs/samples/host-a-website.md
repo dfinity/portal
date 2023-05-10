@@ -137,7 +137,7 @@ Find your new canister’s ID by running
 
     dfx canister --network ic id website
 
-Take that canister ID and visit https://&lt;canister-id&gt;.ic0.app, inserting your own canister ID as the subdomain in the URL.
+Take that canister ID and visit https://&lt;canister-id&gt;.icp0.io, inserting your own canister ID as the subdomain in the URL.
 
 You should see your live, multi-page website, looking like this!
 

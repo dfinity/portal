@@ -56,7 +56,7 @@ const TrueScaling = () => {
           of dapps and allows storage of unlimited data.
         </p>
         <Link
-          href="https://internet-computer.typeform.com/to/IWl3iClx"
+          href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
           className="link-primary link-with-icon"
         >
           <LinkArrowRight />

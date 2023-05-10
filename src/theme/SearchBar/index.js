@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from "react";
 import SearchOverlay from "@site/src/components/Common/Search/Search";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const focusHelperInputRef = React.useRef(null);
+
+  function openOverlay() {
+    // must be called from an event handler to be able to auto-focus the search input on ios
+    setIsOverlayOpen(true);
+
+    // hack part 1 to focus the input on ios with keyboard shown
+    focusHelperInputRef.current.style.display = "block";
+    focusHelperInputRef.current.focus();
+    focusHelperInputRef.current.click();
+  }
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -21,7 +32,7 @@ const Search = () => {
       if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         e.stopPropagation();
-        setIsOverlayOpen(true);
+        openOverlay();
       }
     }
 
@@ -37,16 +48,18 @@ const Search = () => {
       <button
         className="
           navbar__search-button group
-          border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl bg-transparent px-2 md:px-5 py-2 
-          font-circular md:text-infinite 
+          border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl md:docs:border-black
+          bg-transparent px-2 md:px-5 py-2
+          font-circular md:text-infinite md:docs:text-black
           flex gap-2 items-center 
           md:order-last md:ml-6 
           outline-offset-2
-          absolute right-[72px] md:static
+          absolute right-[64px] md:static
+          text-black
 
-          md:hover:bg-infinite md:hover:text-white
+          md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
           "
-        onClick={() => setIsOverlayOpen(true)}
+        onClick={openOverlay}
       >
         <svg
           viewBox="0 0 16 16"
@@ -62,16 +75,31 @@ const Search = () => {
           />
         </svg>
 
-        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block">
+        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block docs:text-black">
           Search
         </span>
-        {metaKey && (
-          <span className="tw-paragraph-sm relative top-[2px] text-infinite/50 hidden md:block md:group-hover:text-white">
-            {metaKey}K
-          </span>
-        )}
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 docs:text-black/50 md:group-hover:text-white">
+          {metaKey && (
+            <span className="tw-paragraph-sm relative top-[2px]">
+              {metaKey}K
+            </span>
+          )}
+        </span>
       </button>
-
+      <input
+        style={{
+          display: "none",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          opacity: 0,
+          height: "100px",
+          fontSize: "30px",
+        }}
+        id="ios-tmp-input"
+        ref={focusHelperInputRef}
+      ></input>
       {isOverlayOpen && (
         <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
       )}

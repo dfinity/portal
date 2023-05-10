@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import AnnouncementBar from "@site/src/components/DevelopersHome/AnnouncementBar";
 
 function Index() {

@@ -30,7 +30,7 @@ function FeaturePage() {
           </div>
           <div className="container-10 relative">
             <img
-              src="/img/whiteBlurredCircle.png"
+              src="/img/whiteBlurredCircle.webp"
               alt=""
               className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-400px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
             />
@@ -58,10 +58,10 @@ function FeaturePage() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>The IC's muli-block transaction capabilities is rare</h2>
+            <h2>ICP's multi-block transaction capabilities are rare</h2>
             <p>
-              Traditional blockchains that host smart contracts, always need to
-              finish processing a transaction within a single block. In practice
+              Traditional blockchains that host smart contracts always need to
+              finish processing a transaction within a single block. In practice,
               this means that when a smart contract function is invoked by a
               transaction, it must complete execution within the per-block "gas
               limit" (gas is the equivalent of cycles on the Internet Computer).

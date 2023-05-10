@@ -6,25 +6,29 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
+# Introduction
+
+The [IC SDK](https://github.com/dfinity/sdk) is a Software Development Kit used for creating and managing canister smart contracts on the ICP blockchain. The IC SDK supports [Motoko](../../backend/choosing-language) and [Rust](../../backend/choosing-language) programming languages by default, but [developers can use other languages](../../backend/choosing-language).
+
 # Installing the SDK
 
-You can download and install the latest version of the DFINITY Canister smart contract SDK, called `dfx`, by running the command below. The topics here provide additional information about installing, upgrading, and removing the SDK.
+You can download and install the latest version of the [IC SDK](https://github.com/dfinity/sdk) for creating and managing canister smart contracts by running the command below. The topics here provide additional information about installing, upgrading, and removing the IC SDK.
 
-`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
+The **IC SDK** is natively supported on Linux or macOS 12.\* Monterey or later.
 
 <Tabs>
   <TabItem value="apple" label="Install on Mac/Linux" default>
     To install <code>dfx</code>, run
 
-    ```bash
-    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-    ```
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
 
-    :::tip
-    If you are using a machine running Apple silicon, you will need to have
-    [Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running
-    `softwareupdate --install-rosetta` in your terminal.
-    :::
+:::tip
+If you are using a machine running Apple silicon, you will need to have
+[Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running
+`softwareupdate --install-rosetta` in your terminal.
+:::
   </TabItem>
   <TabItem value="windows" label="Install on Windows">
     <p>There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for
@@ -40,12 +44,10 @@ You can download and install the latest version of the DFINITY Canister smart co
     <h3 id="check-your-wsl-version">Check your WSL version</h3>
     <p>Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Linux distributions installed on your
       Windows machine. Below is an example output.</p>
-
-    ```
-    NAME STATE VERSION
-    * Ubuntu Running 2
-    ```
-
+    <CodeBlock language="bash">
+{`NAME STATE VERSION
+* Ubuntu Running 2`}
+    </CodeBlock>
     <p>To learn more about the <code>wsl</code> command, check the <a
       href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands">command reference for WSL</a>.</p>
     <h3 id="upgrade-to-wsl-2">Upgrade from WSL 1</h3>
@@ -66,11 +68,9 @@ You can download and install the latest version of the DFINITY Canister smart co
       line.</p>
     <h2 id="installing-dfx">Installing DFX</h2>
     <p>Once you have WSL installed, you can install <code>dfx</code> by running
-
-      ```bash
-      sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-      ```
-
+      <CodeBlock language="bash">
+      {`sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"`}
+      </CodeBlock>
     </p>
     <h2 id="troubleshooting">Troubleshooting</h2>
     <h3 id="node-js-is-not-properly-installed">Node.js is not properly installed</h3>
@@ -88,12 +88,14 @@ You can download and install the latest version of the DFINITY Canister smart co
         <li>Create the <code>/etc/wsl.conf</code> file and add the below content to it, this will prevent WSL from
           regenerating the <code>/etc/resolv.conf</code> file after restarting.
         </li>
-
-        ```
-        [network]
-        generateResolvConf = false
-        ```
-
+      </ul>
+    </p>
+      <CodeBlock language="toml">
+{`[network]
+generateResolvConf = false`}
+      </CodeBlock>
+    <p>
+      <ul>
         <li>Modify the nameserver in the <code>/etc/resolv.conf</code> file to a valid one, for example the Google
           nameserver <code>8.8.8.8</code>. </li>
         <li>On Windows, restart WSL to let this fix take effect.</li>
@@ -107,15 +109,30 @@ You can download and install the latest version of the DFINITY Canister smart co
 
 ## What gets installed
 
-The SDK installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
+The IC SDK installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
 
 | Component    | Description                                                                                        | Default location                              |
 |--------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| dfx          | DFINITY execution command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
+| dfx          | Command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
 | moc          | Motoko runtime compiler                                                                            | `~/.cache/dfinity/versions/<VERSION>/moc`     |
 | replica      | Internet Computer local network binary                                                             | `~/.cache/dfinity/versions/<VERSION>/replica` |
 | uninstall.sh | Script to remove the SDK and all of its components                                    | `~/.cache/dfinity/uninstall.sh`               |
 | versions     | Cache directory that contains a subdirectory for each version of the SDK you install. | `~/.cache/dfinity/versions`                   |
+
+## SDK vs CDK vs `dfx`
+
+There are a few components worth expanding on:
+
+1. **IC SDK** - This is the SDK created by DFINITY for creating and managing canisters. This is just one SDK in the ICP community and a common entry point for developers.
+
+2. **Canister Development Kit (CDK)** - A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. 
+The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. For example, the IC SDK comes with the [Rust CDK](https://github.com/dfinity/cdk-rs) already installed. 
+CDKs that are not installed but available for developers include the [Python CDK](https://demergent-labs.github.io/kybra/) and 
+[TypeScript CDK](https://demergent-labs.github.io/azle/). Since CDKs are components used by the SDK, some developers choose to use the CDK directly (without the IC SDK), 
+but typically are used as part of the whole IC SDK.
+
+3. **dfx** - `dfx` is the command-line interface for the IC SDK. This is why many commands for the IC SDK start with the command "`dfx ..`" such as `dfx new` or `dfx stop`.
+
 
 ### Core components in a versioned directory
 
@@ -167,7 +184,7 @@ DFX_VERSION=0.11.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
 ### Setting a default version
 
-If defined, `dfx` will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
+If defined, the IC SDK will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
 For example, if your `dfx.json` contains `"dfx": "0.11.1"`, any `dfx` command you run within this project's directory will be executed by `dfx` of version `0.11.1`.
 Should the defined version not be installed (e.g. because you cloned a repo that was created for a different version than you have installed locally), `dfx` will report an error.
 

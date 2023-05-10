@@ -1,20 +1,20 @@
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
+import Head from "@docusaurus/Head";
+import Link from "@docusaurus/Link";
+import liveSessions from "@site/.docusaurus/conversations/default/conversations.json";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
+import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
+import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
+import { getMinutes, getYear, parse } from "date-fns";
+import { format, utcToZonedTime } from "date-fns-tz";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import transitions from "@site/static/transitions.json";
-import AnimateSpawn from "../components/Common/AnimateSpawn";
-import useGlobalData from "@docusaurus/useGlobalData";
-import Link from "@docusaurus/Link";
-import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
-import { format, utcToZonedTime } from "date-fns-tz";
-import { getMinutes, parse, getYear } from "date-fns";
-import ExternalLinkIcon from "../../static/img/external-link.svg";
-import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
-import Head from "@docusaurus/Head";
+import ChevronRightIcon from "../../static/img/chevron-right.svg";
+import ExternalLinkIcon from "../../static/img/external-link.svg";
+import AnimateSpawn from "../components/Common/AnimateSpawn";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
+import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
 
 const MotionLink = motion(Link);
 
@@ -28,9 +28,6 @@ function idFromTitle(title: string) {
 
 function LiveSessionsPage(): JSX.Element {
   const formRef = useRef<HTMLDivElement>();
-
-  const liveSessions = useGlobalData()["conversations"]
-    .default as LiveSession[];
 
   const [initalized, setInitalized] = useState(false);
   const [upcoming, setUpcoming] = useState<LiveSession[]>([]);

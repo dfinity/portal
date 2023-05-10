@@ -8,7 +8,9 @@ const redirects = `
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
+  /ckbtc /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
+  /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
   /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
@@ -34,8 +36,10 @@ const redirects = `
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
-  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/production/computation-and-storage-costs
+  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
+  #/docs/developers-guide/concepts/what-is-ic /what-is-the-ic
+  /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
@@ -46,10 +50,10 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/backend/candid/candid-howto
   
   /docs/current/developer-docs/build/ /docs/current/developer-docs/backend/choosing-language
+  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/backend/choosing-language
-  /docs/current/developer-docs/build/backend /docs/current/developer-docs/backend/choosing-language
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/backend/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
@@ -62,6 +66,7 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents/
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/agents/javascript-intro
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
@@ -83,12 +88,13 @@ const redirects = `
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/setup/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/backend/troubleshooting
-  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/backend-tutorials/
+  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/motoko/
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
+  /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/setup/manage-canisters
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/deploy_sample_app
   /docs/quickstart/2-quickstart /docs/current/tutorials/deploy_sample_app
@@ -105,6 +111,7 @@ const redirects = `
   /developers-guide/quickstart /docs/current/tutorials/deploy_sample_app
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/deploy_sample_app
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
@@ -119,9 +126,8 @@ const redirects = `
   /docs/current/references/security/* /docs/current/developer-docs/security/:splat
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
-  /docs/developers-guide/* /docs/current/developer-docs/production/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
-  /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
@@ -131,7 +137,8 @@ const redirects = `
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
-  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/backend-tutorials/:splat
+  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
+  /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)
   .map((line) => line.replace(/#.*$/, "").trim())
@@ -156,6 +163,8 @@ exports.getRedirects = function () {
 };
 
 exports.getSplatRedirects = function (existingUrl) {
+  const urls = [];
+
   for (const redirect of redirects.filter(isSplat)) {
     const trimmedSource = redirect[0].replace("/*", "/");
 
@@ -166,8 +175,10 @@ exports.getSplatRedirects = function (existingUrl) {
           trimmedDestination,
           trimmedSource
         );
-        return completeSourceUrl;
+        urls.push(completeSourceUrl);
       }
     }
   }
+
+  return urls;
 };

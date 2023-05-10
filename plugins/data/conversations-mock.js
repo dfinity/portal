@@ -4,7 +4,7 @@ module.exports = [
     speaker: "Yan Chen",
     speakerTitle: "Software Engineer (Languages)",
     description:
-      '<p>The Motoko Playground allows users to build and deploy canister smart contracts directly within a web browser, without needing to download the DFINITY Canister SDK or set up a wallet.</p>\n<p>Software Engineer Yan Chen, who is part of the Languages team at the DFINITY Foundation, will go over the creation and functionality of the Motoko Playground. Yan will also talk about the design of the recently launched canister profiling feature, where developers can see how many cycles a transaction costs right in the Motoko Playground. Check out the Motoko Playground here: <a href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/">https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/</a></p>\n',
+      '<p>The Motoko Playground allows users to build and deploy canister smart contracts directly within a web browser, without needing to download the IC SDK or set up a wallet.</p>\n<p>Software Engineer Yan Chen, who is part of the Languages team at the DFINITY Foundation, will go over the creation and functionality of the Motoko Playground. Yan will also talk about the design of the recently launched canister profiling feature, where developers can see how many cycles a transaction costs right in the Motoko Playground. Check out the Motoko Playground here: <a href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/">https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/</a></p>\n',
     startTimeUtc: 1629309600000,
     startTimePt: 1629277200000,
     startTimeEu: 1629309600000,
@@ -164,7 +164,7 @@ module.exports = [
     speaker: "Thomas Locher",
     speakerTitle: "Senior Researcher (Meta Network)",
     description:
-      "<p>In this talk, Senior Researcher Thomas Locher discusses the current vote to integrate Bitcoin with the Internet Computer. The integration of the Internet Computer with the Bitcoin blockchain has the following goals: (1) enabling powerful Bitcoin smart contracts, running as canisters on the IC; (2) making it possible to transmit Bitcoin transactions from Bitcoin smart contract canisters to the Bitcoin network.</p>\n",
+      "<p>In this talk, Senior Researcher Thomas Locher discusses the current vote to integrate Bitcoin with the Internet Computer. The integration of the Internet Computer with the Bitcoin blockchain has the following goals: (1) enabling powerful Bitcoin smart contracts, running as canisters on the IC; (2) making it possible to transmit Bitcoin transactions from Bitcoin canister smart contracts to the Bitcoin network.</p>\n",
     startTimeUtc: 1631808000000,
     startTimePt: 1631775600000,
     startTimeEu: 1631808000000,
@@ -372,7 +372,7 @@ module.exports = [
     speaker: "Ulan Degenbaev",
     speakerTitle: "Principal Software Engineer",
     description:
-      "<p>The rapid growth of smart contract canisters and users on the Internet Computer presents interesting engineering challenges. Recently there has been an increase in memory-intensive smart contracts, and it&#39;s been noted that the memory system has become a performance bottleneck, causing drops of the finalization rate and timeout errors under heavy load. In this Community Conversation, we will show how we optimized the memory system to fix the performance issues.</p>\n",
+      "<p>The rapid growth of canister smart contracts and users on the Internet Computer presents interesting engineering challenges. Recently there has been an increase in memory-intensive smart contracts, and it&#39;s been noted that the memory system has become a performance bottleneck, causing drops of the finalization rate and timeout errors under heavy load. In this Community Conversation, we will show how we optimized the memory system to fix the performance issues.</p>\n",
     startTimeUtc: 1636117200000,
     startTimePt: 1636088400000,
     startTimeEu: 1636117200000,

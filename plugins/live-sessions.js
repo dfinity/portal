@@ -60,9 +60,8 @@ const liveSessionsPlugin = async function () {
       return transformed;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData, createData } = actions;
-      createData("conversations", JSON.stringify(content, null, 2));
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("conversations.json", JSON.stringify(content, null, 2));
     },
   };
 };

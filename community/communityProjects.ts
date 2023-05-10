@@ -2022,6 +2022,36 @@ const communityProjects: SampleItem[] = [
     level: "intermediate",
     contentType: ["code samples", "community repo", "tutorial"],
   },
+  {
+    index: 124,
+    title: "Uniswap Interface on IC",
+    body: "Demo of Uniswap Interface on the IC with canister-based signer.",
+    image: "/img/community-projects/uniswap_ui_on_ic.jpg",
+    links: {
+      github: "https://github.com/domwoe/uniswap_ui_on_ic",
+      livePreview: "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["rust", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
+  {
+    index: 125,
+    title: "Bitshop",
+    body: "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    image: "/img/community-projects/bitshop.png",
+    links: {
+      github: "https://github.com/lukasvozda/bitshop",
+      livePreview: "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    languages: ["motoko", "javascript"],
+    level: "beginner",
+    contentType: ["code samples", "community repo", "live demos"],
+  },
 ];
 
 export default communityProjects;
