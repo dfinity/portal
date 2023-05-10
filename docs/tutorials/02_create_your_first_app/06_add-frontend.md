@@ -39,7 +39,6 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
     </form>
     <div id="results"></div>
     <button id="reset">Reset Poll</button>
-    <script src="app.js"></script>
 </body>
 </html>
 ```
