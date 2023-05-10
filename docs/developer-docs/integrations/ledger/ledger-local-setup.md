@@ -15,6 +15,11 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
     # on MacOS:
     dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack '()' --query | sed 's/\\n/\n/g'
     ```
+    If you plan to work with Ledger archives, also download the `ledger_archive.did` file:
+    
+    ``` sh
+    curl -o ledger_archive.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger_archive.did"
+    ```
 
     :::note
 
