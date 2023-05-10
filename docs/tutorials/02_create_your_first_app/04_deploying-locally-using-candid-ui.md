@@ -45,7 +45,7 @@ Candid UI web page. You should we something like this:
 
 ## Using Candid UI to access the data
 
-Candid UI allows you to access the methods of the actor that we coded at the previosus step. Try it by clicking "Query".
+Candid UI allows you to access the methods of the actor that we coded at the previous step. Try it by clicking "Query".
 
 ## Summary
 
