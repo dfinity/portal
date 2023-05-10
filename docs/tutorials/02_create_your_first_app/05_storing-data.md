@@ -176,7 +176,7 @@ actor {
 
 
 
- // This methods takes an entry to vote for, updates the data and returns the updated hashmap
+ // This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
 // Example: 
 //      * JSON that the frontend will receive using the values above: 
