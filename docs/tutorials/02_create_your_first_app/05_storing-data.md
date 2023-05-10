@@ -116,7 +116,7 @@ Here's the code:
   };
 ```
 
-- `?Nat` is an [Motoko Optional](../../motoko/main/base/Option.md) that may return a `Nat` or a `null`. 
+- `?Nat` is an [Motoko Optional](../../motoko/main/base/Option.md) that may be a `Nat` or a `null`. 
 - If an entry is queried for the `RBTree` titled `votes`, and the entry is not present, it will return `null`. That is why we use a Motoko Optional in line 11.
 
 
