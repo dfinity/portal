@@ -62,7 +62,7 @@ const pollForm = document.getElementById('poll-form');
 const resultsDiv = document.getElementById('results');
 const resetButton = document.getElementById('reset');
 
-//Not we will use "poll_backend" in this JavaScript code a few times to call the backend
+//Note we will use "poll_backend" in this JavaScript code a few times to call the backend
 import { poll_backend } from "../../declarations/poll_backend";
 
 //1. LOCAL DATA
