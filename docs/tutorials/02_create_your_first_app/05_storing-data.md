@@ -31,7 +31,7 @@ We need to import a few things in order to store and query the data:
 * We need to import the standard type [`Nat`](/motoko/main/base/Nat.md) in order to use some of `RBTree`'s functions.
 * We also import `Iter` because we will use it later in this tutorial.
 
-So we add an import statement to the beginning of our file `main.mo` (and ***outside of the actor***):
+So we add an import statement to the beginning of our file `main.mo`:
 
 ```motoko
 import RBTree "mo:base/RBTree";
@@ -42,6 +42,7 @@ import Iter "mo:base/Iter";
 ### Creating an instance of the data
 
 Next we need to declare the variable of this type ***inside the actor***:
+
 ```motoko
     var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
 ```
@@ -142,8 +143,8 @@ This method resets the state of the votes so every option goes back to 0. Here's
 
 - The method is an update call since it updates the state. All Motoko functions are update calls by default. They are only query calls when they have the `query` keyword before the `func` keyword.
 
-
 ## Final code
+
 Once you completed all the changes your code should look like this:
 
 ```motoko
@@ -209,7 +210,7 @@ actor {
       votes.put("TypeScript", 0);
       votes.put("Python", 0);
       Iter.toArray(votes.entries())
-    };
+  };
 
 };
 ```
@@ -217,11 +218,13 @@ actor {
 ## Deploying and testing
 
 You will need to deploy the updated code by typing in the terminal:
+
 ```bash
 $ dfx deploy
 ```
 
 After the deployment process is completed, click on the link in the "Backend canister" section of the deploy command output:
+
 ```shell
 URLs:
   Frontend canister via browser
