@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: Step 1 - Backend overview
+title: Step 1 - Smart Contracts as a backend
 ---
 
-# Step 1 - Backend intro
+# Step 1 - Smart Contracts as a backend
 
 First, we will create a backend for our application that will be implemented as an ICP 
 [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). You can see a preview of the dapp [here](index.md).

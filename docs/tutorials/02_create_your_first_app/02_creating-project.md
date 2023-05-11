@@ -9,8 +9,8 @@ title: Step 2 - Creating a project
 
 To create a project, open your terminal app and type:
 
-```shell
-$ dfx new poll
+```bash
+dfx new poll
 ```
 
 SDK will create an project from a template in a folder "poll":
