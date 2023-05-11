@@ -22,7 +22,7 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
 <body>
     <h1>Simple Voting Poll</h1>
     <h2 id="question">Sample Question</h2>
-    <form id="poll-form">
+    <form id="radioForm">
         <label>
             <input type="radio" name="option" value="Rust"> Rust
         </label><br>
@@ -57,7 +57,7 @@ In order for the frontend to talk to the backend and have it reflected in the HT
 
 
 ```javascript
-const pollForm = document.getElementById('poll-form');
+const pollForm = document.getElementById("radioForm");
 const resultsDiv = document.getElementById('results');
 const resetButton = document.getElementById('reset');
 
@@ -76,6 +76,8 @@ const pollResults = {
 
 //Load the Simple Poll's question from the backend when the app loads
 document.addEventListener('DOMContentLoaded', async (e) => {
+  e.preventDefault();
+ 
   // Query the question from the backend
   const question = await poll_backend.getQuestion();
   document.getElementById("question").innerText = question;
@@ -85,23 +87,26 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
   const voteCounts = await poll_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
+  displayResults();
+}, false);
 
-  return false;
-});
-
-
+//Event listener that listens for when the form is submitted.
+//When the form is submitted with an option, it calls the backend canister
+//via "await poll_backend.vote(selectedOption)"
 pollForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  //note that this is at beginning of the submit callback, this is deliberate
+  //This is so the default behavior is set BEFORE the awaits are called below
+  e.preventDefault(); 
 
-    //Get the value selected from the list
-    const selectedOptionHTML = document.querySelector('input[name="option"]:checked');
-    const selectedOption = selectedOptionHTML.value;
-    console.log(selectedOption);
+  const formData = new FormData(pollForm);
+  const checkedValue = formData.get("option");
 
-    const updatedVoteCounts = await poll_backend.vote(selectedOption);
-    updateLocalVoteCounts(updatedVoteCounts);
-    displayResults();
-});
+  const updatedVoteCounts = await poll_backend.vote(checkedValue);
+  console.log("Returning from await...")
+  console.log(updatedVoteCounts);
+  updateLocalVoteCounts(updatedVoteCounts);
+  displayResults();
+}, false);
 
 resetButton.addEventListener('click', async (e) => {
     
@@ -109,11 +114,11 @@ resetButton.addEventListener('click', async (e) => {
     await poll_backend.resetVotes();
     const voteCounts = await poll_backend.getVotes();
     updateLocalVoteCounts(voteCounts);
-    
+
     //re-render the results once the votes are reset in the backend
     displayResults();
-});
-
+    e.preventDefault();
+}, false);
 
 //3. HELPER FUNCTIONS
 
@@ -125,8 +130,9 @@ function displayResults() {
   }
   resultHTML += '</ul>';
   resultsDiv.innerHTML = resultHTML;
-}
+};
 
+//This helper updates the local JS object that teh browser holds
 // Example JSON that the frontend will get using the values above
   // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
 function updateLocalVoteCounts(arrayOfVoteArrays){
@@ -138,7 +144,7 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
     pollResults[voteOption] = voteCount;
   }
 
-}
+};
 ```
 
 - Line #4 `import { poll_backend } from "../../declarations/poll_backend";` is important. This line is what allows the frontend to import an interface for the backend canister and seamlessly send it via messages (via Candid). This line is directly related to the following lines where the frontend JS talks to the backend:
