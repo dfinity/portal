@@ -12,7 +12,6 @@ import Highlights, {
   HighlightCard,
 } from "../components/LandingPage/Highlights/Highlights";
 import Hero from "../components/LandingPage/Hero";
-import SectionsBar from "../components/LandingPage/SectionsBar";
 import ShowcaseSection from "../components/LandingPage/Showcase";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 import Vision, { HashTag } from "../components/LandingPage/Vision/Vision";
@@ -21,6 +20,7 @@ import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import projects from "@site/.docusaurus/home-showcase/default/home-showcase.json";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
+import IntraPageNav from "../components/Common/IntraPageNav";
 
 const queryClient = new QueryClient();
 
@@ -437,7 +437,21 @@ export default function Home(): JSX.Element {
           </section>
         </div>
       </main>
-      <SectionsBar />
+      <IntraPageNav
+        hasHome={true}
+        homeLink={"/"}
+        links={[
+          { text: "Stats", to: "#stats" },
+          { text: "Community", to: "#community" },
+          { text: "Dapps", to: "#dapps" },
+          { text: "The Vision", to: "#vision" },
+          { text: "Technology", to: "#technology" },
+          { text: "Sustainable", to: "#sustainable" },
+          { text: "Start Building", to: "#startBuilding" },
+          { text: "Foundation", to: "#foundation" },
+        ]}
+        label="Scroll To Section"
+      />
     </Layout>
   );
 }

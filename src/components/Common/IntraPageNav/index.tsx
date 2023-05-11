@@ -26,7 +26,13 @@ const IntraPageNav: React.FC<{
   links: SectionLink[];
   label?: string;
   hasHome?: boolean;
-}> = ({ links, label = "Scroll To Section", hasHome = true }) => {
+  homeLink?: string;
+}> = ({
+  links,
+  label = "Scroll To Section",
+  hasHome = true,
+  homeLink = "/",
+}) => {
   const [display, setDisplay] = useState(false);
   const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -100,7 +106,9 @@ const IntraPageNav: React.FC<{
             >
               <div className={styles.desktopContainer}>
                 <div className={styles.grid}>
-                  {hasHome && <Link to={"/"} className={styles.dfinityLink} />}
+                  {hasHome && (
+                    <Link to={homeLink} className={styles.dfinityLink} />
+                  )}
                   {links.map(({ text, to }) => (
                     <Link key={to} to={to}>
                       <span>{text}</span>
