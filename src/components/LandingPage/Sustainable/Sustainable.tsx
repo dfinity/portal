@@ -1,14 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
 
-const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
+const Sustainable: React.FC<{ id?: string; children: ReactNode }> = ({
+  id = "sustainable",
+  children,
+}) => {
   return (
-    <section
-      className="md:container-12 py-20 md:pt-40 md:pb-30"
-      id="sustainable"
-    >
+    <section className="md:container-12 py-20 md:pt-40 md:pb-30" id={id}>
       <AnimateSpawn className="" variants={transitions.container}>
         <div
           className="flex flex-col md:flex-row py-20 md:py-30 md:rounded-[32px] px-6 md:px-1/12 text-white"
@@ -24,24 +24,7 @@ const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
               className="w-full max-w-none"
             />
           </div>
-          <div className="flex-1 md:order-1">
-            <h2 className="tw-heading-3 md:tw-heading-60 mb-6">
-              Transparently Sustainable Blockchain
-            </h2>
-            <p className="tw-lead-sm mb-6">
-              Scalability and utility with low carbon cost — the Internet
-              Computer is committed to building green tech, not just making
-              claims about it.{" "}
-            </p>
-            <p className="mb-0">
-              <Link
-                className="button-outline-white text-center"
-                href="/capabilities/sustainability"
-              >
-                About ICP sustainability
-              </Link>
-            </p>
-          </div>
+          <div className="flex-1 md:order-1">{children}</div>
         </div>
       </AnimateSpawn>
     </section>

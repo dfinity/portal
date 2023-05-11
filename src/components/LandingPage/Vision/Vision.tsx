@@ -4,12 +4,11 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import styles from "./Vision.module.css";
 
-const HashTag: React.FC<{
+const HashTagInner: React.FC<{
   children: React.ReactNode;
-  className: string;
+  className?: string;
   href: string;
 }> = ({ children, className, href }) => (
   <Link
@@ -23,7 +22,20 @@ const HashTag: React.FC<{
   </Link>
 );
 
-const Vision: React.FC = () => {
+export const HashTag: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  href: string;
+}> = ({ children, className, href }) => (
+  <AnimateSpawn variants={transitions.item} className={className}>
+    <HashTagInner href={href}>{children}</HashTagInner>
+  </AnimateSpawn>
+);
+
+const Vision: React.FC<{
+  children: React.ReactNode;
+  hashTags: React.ReactNode[];
+}> = ({ children, hashTags }) => {
   useEffect(() => {
     const vision = document.querySelector("#vision > div");
 
@@ -81,70 +93,11 @@ const Vision: React.FC = () => {
         <div
           className={clsx("tw-lead md:tw-title-sm md:w-7/10", styles.vision)}
         >
-          <p>Today, blockchains only process tokens and clips of data.</p>
-
-          <p>
-            Tomorrow, blockchain will become a decentralized{" "}
-            <em>crypto cloud</em>.
-          </p>
-
-          <p>
-            Blockchain will eat the centralized cloud, and become the{" "}
-            <em>everything stack</em>, which hosts unstoppable systems and
-            services, and rich fully-decentralized Web3 experiences.
-          </p>
-
-          <p>
-            It's already happening at scale on the Internet Computer, which is
-            powering a <em>blockchain singularity</em>.
-          </p>
-
-          <p>Join the movement.</p>
-          <p className="pt-6 flex flex-col gap-8 items-start">
-            <Link href="/capabilities" className="button-primary text-center">
-              Internet Computer capabilities
-            </Link>
-
-            <Link
-              href="https://wiki.internetcomputer.org/wiki/History"
-              className="link-primary link-with-icon"
-            >
-              Wiki history of the Internet Computer
-              <LinkArrowUpRight />
-            </Link>
-          </p>
+          {children}
         </div>
-
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[-170px] bottom-[400px]"
-        >
-          <HashTag
-            className=""
-            href="https://twitter.com/search?q=%23InternetComputer"
-          >
-            #InternetComputer
-          </HashTag>
-        </AnimateSpawn>
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[180px] bottom-[270px]"
-        >
-          <HashTag className="" href="https://twitter.com/search?q=%23ICP">
-            #ICP
-          </HashTag>
-        </AnimateSpawn>
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[-40px] bottom-[150px]"
-        >
-          <HashTag
-            className=""
-            href="https://twitter.com/search?q=%23WorldComputer"
-          >
-            #WorldComputer
-          </HashTag>
-        </AnimateSpawn>
+        {hashTags.map((hashTag, index) => (
+          <React.Fragment key={index}>{hashTag}</React.Fragment>
+        ))}
       </div>
     </AnimateSpawn>
   );

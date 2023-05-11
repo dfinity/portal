@@ -1,15 +1,9 @@
 import Link from "@docusaurus/Link";
-import ArrowRight from "@site/static/img/arrow-right.svg";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
-import _showcaseProjects from "@site/showcase.json";
-import { useShowcaseProjects } from "@site/src/utils/use-showcase-projects";
-import clsx from "clsx";
-
-import projects from "@site/.docusaurus/home-showcase/default/home-showcase.json";
 
 const MotionLink = motion(Link);
 
@@ -44,13 +38,31 @@ const RotatedDappsHeadline: React.FC<{ lines: string[]; interval: number }> = ({
   );
 };
 
+export type ShowcaseSectionProject = {
+  name: string;
+  logo: string;
+  oneLiner: string;
+  stats: string;
+  website: string;
+};
+
 const ShowcaseSection: React.FC<{
   lines: string[];
   interval?: number;
   linePostfix: React.ReactNode;
   subheading: React.ReactNode;
+  moreCta: React.ReactNode;
   className?: string;
-}> = ({ lines, interval = 2500, linePostfix, subheading, className }) => {
+  projects: ShowcaseSectionProject[];
+}> = ({
+  lines,
+  interval = 2500,
+  linePostfix,
+  subheading,
+  className,
+  moreCta,
+  projects,
+}) => {
   {
     /* 
       Update the list of showcase projects here: /plugins/home-showcase.js 
@@ -114,7 +126,7 @@ const ShowcaseSection: React.FC<{
             href="/ecosystem"
             className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]"
           >
-            More Ecosystem Projects
+            {moreCta}
             <svg
               width="36"
               height="36"

@@ -12,10 +12,20 @@ import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
-import { Facts } from "./Facts";
+import { Facts, FactsProps } from "./Facts";
 import ParticleAnimation from "./ParticleAnimation";
 
-export default function PreHero({}): JSX.Element {
+const Hero: React.FC<{
+  headline: React.ReactNode;
+  subheading: React.ReactNode;
+  dashboard: {
+    ctaLabel: string;
+    ctaHref: string;
+    linkLabel: string;
+    linkHref: string;
+  };
+  stats: FactsProps;
+}> = ({ headline, subheading, dashboard, stats }) => {
   const [start, setStart] = useState(false);
   const [animate, setAnimate] = useState(true);
 
@@ -71,10 +81,10 @@ export default function PreHero({}): JSX.Element {
               }}
             >
               <h1 className="tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
-                World Computer
+                {headline}
               </h1>
               <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-2 text-white mb-0">
-                Decentralize Everything
+                {subheading}
               </p>
             </motion.div>
 
@@ -146,7 +156,7 @@ export default function PreHero({}): JSX.Element {
           ref={heroRef}
           id="stats"
         >
-          <Facts />
+          <Facts {...stats} />
           <AnimateSpawn
             variants={transitions.container}
             className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
@@ -154,15 +164,15 @@ export default function PreHero({}): JSX.Element {
             <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
               <Link
                 className="button-outline-white text-center sm:text-left"
-                href="https://dashboard.internetcomputer.org"
+                href={dashboard.ctaHref}
               >
-                INTERNET COMPUTER DASHBOARD
+                {dashboard.ctaLabel}
               </Link>
               <Link
-                href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                href={dashboard.linkHref}
                 className="link-primary-light link-with-icon"
               >
-                Comparison of Layer-1 blockchains
+                {dashboard.linkLabel}
                 <LinkArrowUpRight />
               </Link>
             </div>
@@ -176,4 +186,6 @@ export default function PreHero({}): JSX.Element {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

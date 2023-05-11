@@ -210,7 +210,46 @@ const StatSlot: React.FC<{ children: React.ReactNode; index: number }> = ({
   );
 };
 
-export const Facts = () => {
+export type FactsProps = {
+  title: React.ReactNode;
+  blocks: {
+    statLabel: React.ReactNode;
+    parallelSubnets: React.ReactNode;
+    blockThroughput: React.ReactNode;
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+
+  txRate: {
+    statLabel: React.ReactNode;
+    txRate: React.ReactNode;
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+
+  storageCost: {
+    figureLabel: React.ReactNode;
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+
+  instructionCost: {
+    stat: React.ReactNode;
+    statLabel: React.ReactNode;
+    costComparison: React.ReactNode;
+    ethCost: React.ReactNode;
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+};
+
+export const Facts: React.FC<FactsProps> = ({
+  title,
+  blocks,
+  instructionCost,
+  storageCost,
+  txRate,
+}) => {
   const ethTxValue = useMotionValue(0);
 
   const stateSizeQuery = useQuery(["stateSize"], getBytesStored, {
@@ -226,7 +265,7 @@ export const Facts = () => {
     <>
       <div className="" id="stats">
         <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-20 md:w-[880px] mx-auto text-center">
-          World’s Highest Usage Blockchain
+          {title}
         </h2>
       </div>
 
@@ -243,21 +282,19 @@ export const Facts = () => {
             <div className="text-center mt-4">
               <TotalBlocks></TotalBlocks>
             </div>
-            <div className="tw-heading-6">Blocks processed</div>
+            <div className="tw-heading-6">{blocks.statLabel}</div>
             <hr className="bg-white/20 w-52 mx-auto mt-4 mb-3" />
             <div className="tw-paragraph md:tw-lead-sm mb-3">
-              <ParallelSubnets /> parallel subnets
+              <ParallelSubnets /> {blocks.parallelSubnets}
             </div>
             <div className="tw-paragraph md:tw-lead-sm">
-              <BlockThroughput></BlockThroughput> MB/s block throughput capacity
+              <BlockThroughput></BlockThroughput> {blocks.blockThroughput}
             </div>
           </div>
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Throughput</h3>
+            <h3 className="md:tw-heading-4 mb-4">{blocks.title}</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
-              Capacity horizontally scales as subnet blockchains are seamlessly
-              combined into one unified blockchain. Blocks and transactions per
-              second are unbounded.
+              {blocks.description}
             </p>
           </div>
         </StatSlot>
@@ -284,7 +321,7 @@ export const Facts = () => {
               ></EthEquivalentTxRate>
             </div>
             <div className="tw-heading-6 inline-flex">
-              ETH equivalent TX/s
+              {txRate.statLabel}
               <Link
                 href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
                 title="Read more: Not all transactions are equal"
@@ -295,16 +332,14 @@ export const Facts = () => {
             </div>
             <hr className="bg-white/20 w-52 mx-auto mt-4 mb-3" />
             <div className="tw-paragraph md:tw-lead-sm">
-              <ICPTransactionRate /> Transactions/s
+              <ICPTransactionRate /> {txRate.txRate}
             </div>
           </div>
 
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Comparing Transactions</h3>
+            <h3 className="md:tw-heading-4 mb-4">{txRate.title}</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
-              Transactions invoke "actor" canister smart contract computations,
-              which subnet blockchains can run concurrently (yet
-              deterministically).
+              {txRate.description}
             </p>
           </div>
         </StatSlot>
@@ -314,16 +349,14 @@ export const Facts = () => {
             <CostSvg className="mb-2" />
 
             <div className="tw-lead-sm flex justify-center items-center gap-2 mt-4">
-              Amount of on-chain storage for $1
+              {storageCost.figureLabel}
             </div>
           </div>
 
           <div className="mt-8 md:mt-20">
-            <h3 className="md:tw-heading-4 mb-4">ICP Costs $5 / GB / year</h3>
+            <h3 className="md:tw-heading-4 mb-4">{storageCost.title}</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
-              Storing data in smart contract memory allows ICP dapps to
-              dynamically access it without querying external sources or relying
-              on centralized cloud storage.
+              {storageCost.description}
             </p>
           </div>
         </StatSlot>
@@ -338,22 +371,22 @@ export const Facts = () => {
             ></img>
             <div className="text-center mt-4 mb-2">
               <div className="text-transparent bg-clip-text hero-stat-green text-[29px] font-book lg:tw-title-sm">
-                $0.000000000000536
+                {instructionCost.stat}
               </div>
             </div>
-            <div className="tw-heading-6">Cost per instruction</div>
+            <div className="tw-heading-6">{instructionCost.statLabel}</div>
             <hr className="bg-white/20 w-52 mx-auto mt-4 mb-3" />
             <div className="tw-paragraph md:tw-lead-sm mb-3">
-              44&rsquo; 760&rsquo; 000x less expensive than ETH
+              {instructionCost.costComparison}
             </div>
-            <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
+            <div className="tw-paragraph md:tw-lead-sm">
+              {instructionCost.ethCost}
+            </div>
           </div>
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Crypto Cloud Efficiency</h3>
+            <h3 className="md:tw-heading-4 mb-4">{instructionCost.title}</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
-              An average ICP transaction executes 6’660’000 instructions
-              compared to ETH’s 83’000, while each instruction is orders of
-              magnitude less expensive due to ICP’s efficiency.
+              {instructionCost.description}
             </p>
           </div>
         </StatSlot>

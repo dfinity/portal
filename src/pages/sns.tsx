@@ -17,6 +17,7 @@ import ExternalLinkIcon from "@site/static/img/external-link.svg";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
+import { englishOpenChatCopy } from "../components/LandingPage/CommunityStories/CommunityStories";
 
 const MotionLink = motion(Link);
 
@@ -282,7 +283,7 @@ function SnsPage() {
             </Card>
           </div>
         </section>
-        <OpenChatCard className="mt-40" />
+        <OpenChatCard className="mt-40" {...englishOpenChatCopy} />
         <section className="text-white relative pt-52 pb-20 md:pb-40 md:pt-80 container-12">
           <AnimateSpawn
             el={motion.img}
