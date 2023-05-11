@@ -8,7 +8,7 @@ Unlike other blockchains, the Internet Computer can automatically execute canist
 
 There are two ways to schedule an automatic canister execution on the IC:
 
-1. **Timers** &mdash; one-shot or periodic canister calls with specified minimum timeout or interval.
+1. **Timers** &mdash; single-expiration or periodic canister calls with specified minimum timeout or interval.
 2. **Heartbeats** &mdash; legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by the IC for backward compatibility and some very special use cases. Newly developed canisters should prefer using timers over the heartbeats.
 
 Timers

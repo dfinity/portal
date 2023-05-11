@@ -33,6 +33,8 @@ Canister smart contracts are more powerful than the smart contracts on other blo
 * Canisters can be updated and evolve, much like regular software. DAO-based governance schemes can make this upgrade process secure and decentralized.
 * Using Internet Identity, canisters can authenticate users based on private keys contained in secure hardware modules using the [*Web Authentication (WebAuthn)* protocol](https://www.w3.org/TR/webauthn-2/). This secure authentication service, called *Internet Identity*, is implemented as a smart contract as well and provides its services to other smart contracts.
 
+See more on [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract) on the IC wiki.
+
 ## Subnet Architecture
 
 The IC is designed to be highly *scalable* and efficient in terms of hosting and executing canister smart contracts.
@@ -51,6 +53,8 @@ The IC is composed of subnets, each of which is an independent blockchain.<br>
 Canisters within and across subnets communicate through asynchronous messaging.
 </figcaption>
 </figure>
+
+See more on [subnets](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) on the IC wiki.
 
 ## Asynchronous Messaging
 
@@ -112,6 +116,6 @@ However, note that it is a little technical at times.
 [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
 [Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
 [Internet Computer Primer - Deck](https://dfinity.org/deck/)
-[Internet Computer Canister SDK](https://github.com/dfinity/sdk)
+[Internet Computer SDK](https://github.com/dfinity/sdk)
 
 [![Watch youtube video](https://i.ytimg.com/vi/YWHTNr8RZHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=YWHTNr8RZHg)

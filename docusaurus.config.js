@@ -13,6 +13,7 @@ const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const icpPricePlugin = require("./plugins/icp-price");
 const xdrPricePlugin = require("./plugins/xdr-price");
+const icpXdrPricePlugin = require("./plugins/icp-xdr-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
@@ -59,6 +60,7 @@ const config = {
     customWebpack,
     tailwindPlugin,
     icpPricePlugin,
+    icpXdrPricePlugin,
     xdrPricePlugin,
     homeShowcaseProjectsPlugin,
     liveSessionsPlugin,
@@ -319,15 +321,15 @@ const config = {
                 // column 2
                 menuDivider("Need Support"),
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' width='16' height='22' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' loading='lazy' alt='' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev Discord <img src='/img/navigation/discord.svg' loading='lazy' alt='' width='16' height='22' /></span>`,
                   href: "https://discord.gg/jnjVVQaE2C",
                 },
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' loading='lazy' alt='' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev Twitter <img src='/img/navigation/twitter.svg' loading='lazy' alt='' width='16' height='22' /></span>`,
                   href: "https://twitter.com/dfinitydev",
                 },
               ],
@@ -365,7 +367,7 @@ const config = {
               [
                 menuDivider("Join The Discussion"),
                 {
-                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' /></span>`,
+                  html: `<span class="dropdown__link--with-icon">Dev & Community Forum <img src='/img/navigation/forum.svg' loading='lazy' alt='' width='16' height='22' /></span>`,
                   href: "https://forum.dfinity.org/",
                 },
                 {

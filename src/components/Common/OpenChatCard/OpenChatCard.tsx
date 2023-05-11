@@ -50,10 +50,16 @@ const OpenChatCard: React.FC<{
                 See how OpenChat decentralized, fully on-chain
               </Link>
             </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
+            <motion.p className="mb-3" variants={transitions.item}>
               <Link className="link-primary link-with-icon" href="/sns">
                 <LinkArrowRight />
-                Learn about SNS DAOs
+                What is an SNS DAO
+              </Link>
+            </motion.p>
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link className="link-primary link-with-icon" href="/sns/faq#what-is-a-decentralization-swap">
+                <LinkArrowRight />
+                How to raise funding for an SNS DAO
               </Link>
             </motion.p>
           </div>

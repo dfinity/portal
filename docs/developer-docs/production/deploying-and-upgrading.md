@@ -2,7 +2,7 @@
 
 ## Mechanics of a Deployment
 
-During deployment, there are two main concerns: Canisters and code. The concern of canisters is all about where the code will end up running, and how to get it to the right place. The other concern is how code is managed to ensure there is no data loss, as little downtime as possible, and no misconfigurations. Since there are a lot of things to consider and many things that can go wrong during deployment, tools exist to make developers' lives easier. One such tool (which will be used as illustration on this page) is the DFINITY Canister Software Development Kit (SDK), whose CLI tool for managing deployments is called `dfx`.
+During deployment, there are two main concerns: Canisters and code. The concern of canisters is all about where the code will end up running, and how to get it to the right place. The other concern is how code is managed to ensure there is no data loss, as little downtime as possible, and no misconfigurations. Since there are a lot of things to consider and many things that can go wrong during deployment, tools exist to make developers' lives easier. One such tool (which will be used as illustration on this page) is the IC Software Development Kit (SDK).
 
 ### Canister lifecycle
 

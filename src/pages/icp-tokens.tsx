@@ -1,637 +1,741 @@
-import React from "react";
-import { motion } from "framer-motion";
-import Layout from "@theme/Layout";
-import ChevronRight from "../../static/img/token-holders/chevron-right.svg";
-import ExternalLinkIcon from "../../static/img/external-link.svg";
-import { VotingRewardsChart } from "../components/LandingPage/ICPToken";
+import Link from "@docusaurus/Link";
 import useGlobalData from "@docusaurus/useGlobalData";
-import DfinityLogo from "../../static/img/dfinity_logo.svg";
-import CustodyGraphic from "../../static/img/token-holders/custody.svg";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
-import transitions from "@site/static/transitions.json";
-import YoutubeIcon from "../../static/img/token-holders/social/youtube.svg";
-import ForumIcon from "../../static/img/token-holders/social/forum.svg";
-import MediumIcon from "../../static/img/token-holders/social/medium.svg";
-import DiscordIcon from "../../static/img/token-holders/social/discord.svg";
-import TwitterIcon from "../../static/img/token-holders/social/twitter.svg";
-import RedditIcon from "../../static/img/token-holders/social/reddit.svg";
-import GithubIcon from "../../static/img/token-holders/social/github.svg";
+import Layout from "@theme/Layout";
+import React, { useRef } from "react";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import Head from "@docusaurus/Head";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import ShareMeta from "../components/Common/ShareMeta";
+import { getStakingMetrics } from "../utils/network-stats";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import transitions from "@site/static/transitions.json";
+import { motion } from "framer-motion";
 
-const images = [
-  {
-    url: require("../../static/img/token-holders/logos/Img-01.png").default,
-    class:
-      "w-9 right-[-1%] bottom-[100px] md:w-15 md:right-[12px] md:top-[657px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-02.png").default,
-    class: "w-9 left-[35%] top-0 md:w-15 md:left-[234px] md:top-[43px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-03.png").default,
-    class: "hidden md:block w-9 md:w-15 md:left-[133px] md:top-[567px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-04.png").default,
-    class: "hidden md:block w-9 md:w-15 md:left-[58px] md:top-[190px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-05.png").default,
-    class: "hidden md:block w-9 md:w-15 md:right-[-10px] md:top-[250px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-06.png").default,
-    class:
-      "w-12 right-[40%] top-[239px] md:w-20 md:right-[550px] md:top-[290px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-06-1.png").default,
-    class:
-      "w-12 right-[30%] bottom-[40px] md:w-20 md:right-[370px] md:top-[1060px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-07.png").default,
-    class: "w-12 left-[30%] top-[155px] md:w-20 md:left-[610px] md:top-[80px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-08.png").default,
-    class: "w-12 left-[-1%] top-[241px] md:w-20 md:left-[194px] md:top-[371px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-09.png").default,
-    class:
-      "w-12 left-[-5%] bottom-[10px] md:w-20 md:left-[161px] md:top-[1033px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-10.png").default,
-    class: "w-12 right-[-3%] top-[67px] md:w-20 md:right-[490px] md:top-[33px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-11.png").default,
-    class:
-      "w-12 right-[5%] top-[280px] md:w-20 md:right-[110px] md:top-[442px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-12.png").default,
-    class:
-      "w-16 left-[30%] bottom-[90px] md:w-30 md:left-auto md:right-[110px] md:top-[1078px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-13.png").default,
-    class: "hidden md:block w-16 md:w-30 md:right-[30px] md:top-[0px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-14.png").default,
-    class:
-      "w-16 right-[10%] top-[152px] md:w-30 md:right-[320px] md:top-[160px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-15.png").default,
-    class: "w-16 left-[10%] top-[80px] md:w-30 md:left-[450px] md:top-[211px]",
-  },
-  {
-    url: require("../../static/img/token-holders/logos/Img-16.png").default,
-    class: "hidden md:block w-16 md:w-30 md:left-[-27px] md:top-[838px]",
-  },
-];
+const queryClient = new QueryClient();
+const MotionLink = motion(Link);
 
-const icons = [
-  {
-    tooltip: "Join our channel",
-    img: YoutubeIcon,
-    url: "https://youtube.com/dfinity",
-  },
-  {
-    tooltip: "Read our blog",
-    img: MediumIcon,
-    url: "https://medium.com/dfinity-network-blog",
-  },
-  {
-    tooltip: "Join our subreddit",
-    img: RedditIcon,
-    url: "https://www.reddit.com/r/dfinity/",
-  },
-  {
-    tooltip: "Join Discord",
-    img: DiscordIcon,
-    url: "https://discord.com/invite/cA7y6ezyE2",
-  },
-  {
-    tooltip: "Got to GitHub",
-    img: GithubIcon,
-    url: "https://github.com/dfinity",
-  },
-  {
-    tooltip: "Tweet quotes",
-    img: TwitterIcon,
-    url: "https://twitter.com/dfinity",
-  },
-  {
-    tooltip: "Join our forum",
-    img: ForumIcon,
-    url: "https://forum.dfinity.org/",
-  },
-];
+const NnsTvl: React.FC = () => {
+  const globalData = useGlobalData();
+  const icpPrice = globalData["icp-price"]["default"] as number;
+  const stakingMetricsQuery = useQuery("staking-metrics", getStakingMetrics);
+
+  let tvl = <>&nbsp;</>;
+
+  if (stakingMetricsQuery.isFetched && stakingMetricsQuery.isSuccess) {
+    const maybeMetric: number | undefined =
+      stakingMetricsQuery.data.metrics.find(
+        (d) => d.name === "governance_total_locked_e8s"
+      )?.samples[0]?.value;
+
+    if (maybeMetric) {
+      tvl = <>${((maybeMetric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
+    }
+  }
+
+  return <>{tvl}</>;
+};
+
+const WalletCard: React.FC<{
+  title: string;
+  description: string;
+  link: string;
+  icon: string;
+}> = ({ title, description, link, icon }) => {
+  return (
+    <MotionLink
+      to={link}
+      className="flex gap-6 items-start bg-white/80 rounded-xl p-4 border border-white border-solid text-black hover:text-black hover:no-underline"
+      variants={transitions.item}
+    >
+      <img
+        src={icon}
+        alt=""
+        className="w-14 h-14 object-contain object-center"
+        loading="lazy"
+      />
+      <div className="">
+        <h3 className="tw-heading-6 mb-0">{title}</h3>
+        <p className="tw-paragraph-sm text-black/60 mb-0">{description}</p>
+      </div>
+    </MotionLink>
+  );
+};
 
 function TokenHolders(): JSX.Element {
   const globalData = useGlobalData();
   const icpPrice = globalData["icp-price"]["default"] as number;
 
+  const ref = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(ref);
+
   return (
-    <Layout
-      title="ICP Tokens"
-      description="Learn about the ICP tokens, how to stake and get involved in the governance of the Internet Computer and see how ICP can be converted to the cycles which are used for computation."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
-    >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-icp-tokens.jpeg"
-          }
-        />
-        <title>ICP Tokens</title>
-      </Head>
-      <main className="text-black relative overflow-hidden">
-        <AnimateSpawn
-          el={motion.img}
-          src={BlobBlue}
-          alt=""
-          className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
-          variants={transitions.item}
-        />
-        <section className="max-w-page relative px-6 pt-20 mb-12 md:mb-36 md:px-12.5 md:mx-auto  md:pt-40 overflow-hidden">
-          <AnimateSpawn
-            className="md:w-7/10 lg:w-6/10 md:ml-1/12"
-            variants={transitions.container}
+    <QueryClientProvider client={queryClient}>
+      <Layout
+        title="ICP Tokens"
+        description="ICP, the native utility token of the Internet Computer powers computation, staking, voting, governance and ownership."
+        editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
+      >
+        <main className="overflow-hidden">
+          <ShareMeta image="/img/shareImages/share-icp-tokens.jpeg" />
+          {isDark && <DarkHeroStyles />}
+          <section
+            className="bg-infinite   text-white overflow-hidden"
+            ref={ref}
           >
-            <motion.h1
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8"
-              variants={transitions.item}
-            >
-              ICP Tokens
-            </motion.h1>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-              Learn about the ICP tokens, how to stake and get involved in the
-              governance of the Internet Computer and see how ICP can be
-              converted to the cycles which are used for computation.
-            </motion.p>
-          </AnimateSpawn>
-        </section>
-
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.container}
-          className="max-w-page pt-[354px] md:pt-[467px] px-6 relative md:mx-auto"
-        >
-          <AnimateSpawn variants={transitions.container}>
-            {images.map((img) => (
-              <motion.img
-                src={img.url}
-                className={`absolute z-0 ${img.class}`}
-                alt=""
-                key={img.url}
-                variants={transitions.item}
-              />
-            ))}
-          </AnimateSpawn>
-          <div className="md:w-6/12 mx-auto text-center mb-12 md:mb-20 relative z-10">
-            <motion.h2
-              className="tw-heading-4 md:tw-title-lg mb-2 md:mb-8"
-              variants={transitions.item}
-            >
-              Get &amp; Store tokens
-            </motion.h2>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-              One of the best ways to engage with the ecosystem is to explore
-              the world of tokens. Tokens allow users, investors and developers
-              to particpate in the network by allowing computation, staking,
-              voting, governance, and ownership.
-            </motion.p>
-          </div>
-          <div className="md:w-10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 gap-2 pb-44 md:pb-80 relative z-10">
-            <motion.a
-              className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-green border-solid hover:bg-infinite hover:border-infinite transition-all group"
-              variants={transitions.item}
-              href="https://www.dfinitycommunity.com/best-exchanges-to-buy-icp/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex-1 group-hover:-translate-y-3 transition-transform">
-                <h3 className="tw-heading-5 text-infinite group-hover:text-white">
-                  Centralized exchanges
-                </h3>
-                <p className="tw-paragraph-sm text-black mb-0 group-hover:text-white">
-                  Exchanges allow you buy ICP tokens using traditional
-                  currencies. Note that they will have custody over any ICP you
-                  buy until you send it to a wallet you control.
-                </p>
-              </div>
-              <ChevronRight className="text-infinite group-hover:text-white transition-colors"></ChevronRight>
-            </motion.a>
-            <motion.a
-              className="flex pl-8 py-6 md:py-0 md:pl-12 pr-8 gap-2 cursor-pointer relative bg-white md:h-48 items-center rounded-xl border-0 border-b-[5px] border-infinite border-solid hover:bg-infinite hover:border-infinite transition-all group"
-              variants={transitions.item}
-              href="https://www.dfinitycommunity.com/best-internet-computer-wallets-where-to-safely-store-your-icps/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex-1 group-hover:-translate-y-3 transition-transform">
-                <h3 className="tw-heading-5 text-infinite group-hover:text-white">
-                  Wallets
-                </h3>
-                <p className="tw-paragraph-sm text-black group-hover:text-white">
-                  If you want to store tokens, nfts, or connect to dapps on the
-                  IC, there are a number of wallets and self-custody options.
-                </p>
-              </div>
-              <ChevronRight className="text-infinite group-hover:text-white transition-colors"></ChevronRight>
-            </motion.a>
-          </div>
-        </AnimateSpawn>
-        <section className="max-w-page md:mx-auto px-6  md:px-12.5 pt-12 relative">
-          <AnimateSpawn
-            className="md:mx-auto md:w-8/12 text-center mb-24 md:mb-40"
-            variants={transitions.container}
-          >
-            <motion.h2
-              variants={transitions.item}
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-8 text-transparent bg-clip-text px-3 "
-              style={{
-                backgroundImage:
-                  "linear-gradient(108.55deg, #3B00B9 0%, #18D0B5 149.76%)",
-              }}
-            >
-              What can you do with the ICP token?
-            </motion.h2>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-0 max-w-2xl mx-auto"
-              variants={transitions.item}
-            >
-              ICP is a utility token that allows developers to pay for
-              computation and allows users to participate in and govern the
-              Internet Computer blockchain network.
-            </motion.p>
-          </AnimateSpawn>
-          <AnimateSpawn
-            className="md:mx-auto md:w-10/12 md:mt-40 flex gap-1/10 flex-col md:flex-row"
-            variants={transitions.container}
-          >
-            <motion.div
-              className="md:w-4/10 md:pr-5"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-4 md:tw-heading-3 mb-2">
-                Convert ICP into cycles to pay for computation
-              </h3>
-              <div className="tw-paragraph md:mb-0">
-                <p>
-                  Canister smart contracts burn cycles as they operate.
-                  Developers need to regularly top up their cycle balance in
-                  order to keep dapps running.
-                </p>
-                <p>
-                  The easiest way to obtain cycles is to exchange ICP tokens.
-                  The price of cycles is fixed to ensure your computational cost
-                  is always predictable.
-                </p>
-                <p className="mb-3 mt-8 tw-heading-6">
-                  <a
-                    href="https://faucet.dfinity.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black hover:no-underline tw-heading-6"
-                  >
-                    Get free cycles
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
-                </p>
-                <p className="mb-0 text-paragraph">
-                  <a
-                    href="https://nns.ic0.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black hover:no-underline tw-heading-6"
-                  >
-                    Check out NNS dApp
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              className="flex-1 self-center mt-15 md:mt-0"
-              variants={transitions.item}
-            >
-              <h4 className="tw-lead text-black-60 sm:text-center mb-12">
-                What is covered by $10 worth of cycles?
-              </h4>
-              <div className="flex gap-8 sm:gap-5 flex-col sm:flex-row">
-                <div className="bg-infinite p-6 rounded-xl relative">
-                  <span className="text-lead-sm absolute -top-4 left-6 bg-white py-1 px-3 rounded-full">
-                    ~10 years
-                  </span>
-                  <p className="text-white tw-lead mb-0">
-                    Hosting a 200MB static website bundle
-                  </p>
-                </div>
-                <div className="bg-infinite p-6 rounded-xl relative">
-                  <span className="text-lead-sm absolute -top-4 left-6 bg-white py-1 px-3 rounded-full">
-                    1 year
-                  </span>
-                  <p className="text-white tw-lead mb-0">
-                    Storing a full NFT collection of 10,000 NFTs
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </AnimateSpawn>
-        </section>
-        <section className="max-w-page md:mx-auto px-6 md:px-12.5 relative">
-          <AnimateSpawn
-            el={motion.img}
-            variants={transitions.item}
-            src={BlobBlue}
-            className="absolute pointer-events-none max-w-none w-[800px] -left-[570px] top-0 md:w-[1500px]  md:left-[-1000px] translate-x-[200px] md:top-[-400px]"
-          />
-          {/*
-          ---
-          */}
-          <AnimateSpawn
-            className="grid grid-cols-1 md:grid-cols-[1fr_40%] gap-x-1/10 md:mx-auto md:w-10/12 mt-24 md:mt-40 relative z-10"
-            variants={transitions.container}
-          >
-            <motion.h3
-              className="md:col-start-2 tw-heading-4 md:tw-heading-3 mb-2 text-left"
-              variants={transitions.item}
-            >
-              Earn staking rewards
-            </motion.h3>
-            <motion.div
-              className="max-w-[500px] bg-white-50 rounded-lg p-8 order-2 md:order-1 mt-12 md:mt-0"
-              variants={transitions.item}
-            >
-              <VotingRewardsChart className="!block" />
-            </motion.div>
-            <motion.div
-              className="md:flex-1 order-1 md:order-2"
-              variants={transitions.item}
-            >
-              <div className="tw-paragraph md:mb-0">
-                <p className="">
-                  Tokens can be ‘locked’ in neurons allowing users to stake
-                  tokens and vote on network proposals. Staking and voting are
-                  easily to do in the official NNS dapp.
-                </p>
-                <p className="mb-8">
-                  Staking rewards start from 11.2% APY and get as high as 21.0%
-                  APY if you stake for 8 years.
-                </p>
-                <p className="mb-3 mt-8 tw-heading-6">
-                  <a
-                    href="https://internetcomputer.org/docs/current/concepts/governance/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black hover:no-underline"
-                  >
-                    Learn more about network governance
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
-                </p>
-                <p className="mb-0 tw-heading-6">
-                  <a
-                    href="https://medium.com/dfinity/how-to-stake-icp-tokens-and-earn-rewards-using-the-nns-front-end-dapp-5059130652b7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-black hover:no-underline"
-                  >
-                    How to Stake
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
-                </p>
-              </div>
-            </motion.div>
-          </AnimateSpawn>
-
-          {/*
-          ---
-           */}
-          <AnimateSpawn
-            className="md:mx-auto md:w-10/12 md:mt-40 mt-24 md:mb-40 mb-24"
-            variants={transitions.container}
-          >
-            <motion.h3
-              className="tw-heading-4 md:tw-heading-3 mb-2 md:w-4/10 md:pr-10"
-              variants={transitions.item}
-            >
-              Efficient and cheap ICP transfers
-            </motion.h3>
-            <div className=" flex gap-2/10 flex-col md:flex-row">
-              <motion.div
-                className="flex-[4] md:pr-10"
-                variants={transitions.item}
-              >
-                <div className="tw-paragraph md:mb-0">
-                  <p className="mb-0">
-                    The fee of an ICP ledger transaction is fixed at 0.0001 ICP.
-                    It allows efficient transfers and dapp payments. Use the NNS
-                    dapp or the available wallets to send transactions.
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                className="w-[364px] max-w-full mx-auto md:w-4/10 self-center p-8 bg-white rounded-xl mt-12 md:mt-0"
-                variants={transitions.item}
-              >
-                <h4 className="text-center tw-title-navigation mb-3">
-                  Fixed transaction fee
-                </h4>
-                <div className="flex gap-2 items-center mb-3 justify-center">
-                  <DfinityLogo className="w-10 h-10"></DfinityLogo>
-                  <span className="tw-title-sm md:tw-lead-lg  lg:tw-title-lg">
-                    0.0001&nbsp;ICP
-                  </span>
-                </div>
-                <p className="text-center tw-title-navigation">
-                  ~${(0.0001 * icpPrice).toFixed(5)}
-                </p>
-              </motion.div>
-            </div>
-          </AnimateSpawn>
-        </section>
-        <section className=" bg-infinite text-white overflow-hidden">
-          <AnimateSpawn
-            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20 pt-[391px] md:py-24 relative"
-            variants={transitions.container}
-          >
-            <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic>
-            <div className="md:mx-auto md:w-10/12 ">
-              <motion.img src="/img/token-holders/key.svg" alt="" />
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-3 md:w-5/10 my-6 md:my-8"
-                variants={transitions.item}
-              >
-                A range of custody options are available, including support for
-                holding private keys in an airgapped machine or ledger device.
-              </motion.h2>
-              <motion.p className="tw-heading-6" variants={transitions.item}>
-                <a
-                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_with_Ledger_Nano"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white-50 hover:no-underline"
-                >
-                  See Ledger instructions for Internet Computer (ICP)
-                  <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                </a>
-              </motion.p>
-              <motion.p
-                className="mb-0 tw-heading-6"
-                variants={transitions.item}
-              >
-                <a
-                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_options"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white-50 hover:no-underline"
-                >
-                  Learn more about custody options
-                  <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                </a>
-              </motion.p>
-            </div>
-            <motion.img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-400px]"
-              alt=""
-            />
-          </AnimateSpawn>
-        </section>
-        <section className="max-w-page md:mx-auto px-6 md:px-12.5 mt-20 md:mt-40">
-          <AnimateSpawn
-            className="md:w-8/12 md:mx-auto text-center"
-            variants={transitions.container}
-          >
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-12"
-              variants={transitions.item}
-            >
-              Strong team &amp; community
-            </motion.h2>
-            <motion.p
-              className="tw-paragraph md:tw-lead mb-8 md:mb-16"
-              variants={transitions.item}
-            >
-              With 4 research centres, over 200 patents and over 100,000
-              citations, our team and community consist of world-class
-              cryptographers, programming language experts, formals methods
-              researchers, economists, engineers, developers, and some of the
-              best community folks you’ve seen.
-            </motion.p>
-            <div className="flex justify-center flex-wrap gap-3 md:gap-3">
-              {icons.map((icon) => {
-                const Icon = icon.img;
-
-                return (
-                  <motion.a
-                    variants={transitions.item}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={icon.url}
-                    className="w-[70px] h-[70px] relative group flex items-center justify-center bg-white-50 rounded-xl border border-white border-solid hover:text-white hover:bg-infinite hover:border-infinite"
-                  >
-                    <span className="absolute -top-11 left-1/2 -translate-x-1/2 bg-black-60 py-1 px-4 rounded-full tw-paragraph-sm whitespace-nowrap opacity-0 text-white transition-opacity pointer-events-none group-hover:opacity-100">
-                      {icon.tooltip}
-                    </span>
-                    <Icon></Icon>
-                  </motion.a>
-                );
-              })}
-            </div>
-          </AnimateSpawn>
-          <div className="mt-12 md:mt-20 mb-20 md:mb-40">
             <AnimateSpawn
-              className="flex gap-5 items-start flex-col md:flex-row"
+              className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
               variants={transitions.container}
             >
-              <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
+              <div className="blob blob-purple blob-x-5 blob-y-10 blob-md z-0 opacity-50"></div>
+              <div className="md:w-7/10">
+                <motion.h1
+                  className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
+                  variants={transitions.item}
+                >
+                  Understanding the ICP Token{" "}
+                </motion.h1>
+                <motion.p
+                  className="tw-lead-sm md:tw-lead mb-0 relative"
+                  variants={transitions.item}
+                >
+                  Engage with the Internet Computer and its ecosystem through
+                  the use of its native utility token.
+                </motion.p>
+              </div>
+            </AnimateSpawn>
+          </section>
+
+          <AnimateSpawn
+            el={motion.section}
+            variants={transitions.container}
+            className="container-10 relative md:pt-52"
+          >
+            <div className="-mt-40 md:mt-0 md:absolute md:right-0 md:-top-60 text-center">
+              <motion.img
+                variants={transitions.fadeIn}
+                src="/img/icp-tokens/hero.webp"
+                alt=""
+                className="w-full max-w-sm md:max-w-none aspect-[563/492]"
+              />
+            </div>
+            <div className="mb-12 md:w-7/10">
+              <motion.h2
+                className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                <h1 className="tw-title-sm mb-3">
-                  Blockchain's largest R&amp;D operation
-                </h1>
-                <p className="tw-paragraph-sm text-black-60">
-                  As a core contributor, DFINITY’s team of world-class
-                  researchers, cryptographers and engineers propose, design and
-                  develop improvements to the Internet Computer blockchain.
-                </p>
-                <p className="mb-3">
-                  <a
-                    href="https://dfinity.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tw-heading-6 text-infinite hover:text-black hover:no-underline"
-                  >
-                    Meet the team
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
-                </p>
+                Powers Computation, Staking, Voting, Governance & Ownership.{" "}
+              </motion.h2>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
+                variants={transitions.item}
+              >
+                The ICP token plays a number of roles on the Internet Computer. Firstly, as a
+                governance token, it can be staked to exercise those governance rights. As a
+                utility token, it can be burned to obtain ‘cycles‘ which serves as gas for
+                computation and storage in canister smart contracts. It can also be minted to reward
+                ‘node machine‘ providers for providing that compute and storage.
+              </motion.p>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
+                variants={transitions.item}
+              >
+                In addition to these core uses, ICP tokens can be used to
+                participate in decentralisation swaps to become a co-owner of an
+                SNS DAO, and when using many smart contract services built on
+                the Internet Computer such as registries, marketplaces and
+                exchanges.
+              </motion.p>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm text-black/60 mb-0"
+                variants={transitions.item}
+              >
+                The ICP token implements the ICRC-1 standard.
+              </motion.p>
+            </div>
+            <div className="flex flex-col gap-5 md:flex-row md:w-8/10">
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
+                <h3 className="inline-flex items-center gap-3 mb-6">
+                  <img
+                    src="/img/icp-tokens/icp-token-logo.svg"
+                    alt=""
+                    loading="lazy"
+                    className="w-16 h-16"
+                  />
+                  <span className="flex-1 text-gradient tw-heading-5">
+                    ICP Token Utility
+                  </span>
+                </h3>
+                <ul className="checklist space-y-3 mb-0">
+                  <li className="checklist-item pl-8">
+                    Participate in governance
+                  </li>
+                  <li className="checklist-item pl-8">Burn for cycles </li>
+                  <li className="checklist-item pl-8">
+                    Participate in decentralisation swaps
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Reward node machine providers
+                  </li>
+                </ul>
               </motion.div>
               <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12 md:mt-30"
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
                 variants={transitions.item}
               >
-                <TwitterIcon className="text-[#1D9BF0] w-12 h-12 mb-3"></TwitterIcon>
-                <h1 className="tw-title-sm">#8YearGang</h1>
-                <p className="tw-paragraph-sm text-black-60">
-                  Internet Computer community commits to long term future of the
-                  project. 50% of tokens staked, nearly 25% of all tokens are
-                  staked for over 8 years.
-                </p>
+                <h3 className="inline-flex items-center gap-3 mb-6">
+                  <img
+                    src="/img/icp-tokens/cycles-logo.svg"
+                    className="w-16 h-16"
+                    loading="lazy"
+                  />
+                  <span className="flex-1 text-gradient tw-heading-5">
+                    Cycles
+                  </span>
+                </h3>
+                <ul className="checklist space-y-3 mb-0">
+                  <li className="checklist-item pl-8">
+                    Stable cost of compute & storage
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Fuel storage, compute, & bandwidth
+                  </li>
+                </ul>
               </motion.div>
-              <motion.div
-                className="flex-1 bg-white-50 rounded-xl border text-center border-white border-solid px-8 py-12"
+            </div>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="container-12 mt-20 md:mt-40"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="bg-white/80 border border-white border-solid rounded-xl px-6 py-12 flex flex-col gap-12 md:flex-row md:justify-between md:px-20 md:py-12 md:gap-6">
+              <motion.figure
+                className="flex flex-col items-center m-0"
                 variants={transitions.item}
               >
-                <h1 className="tw-title-sm">Join The Conversation</h1>
-                <p className="tw-paragraph-sm text-black-60">
-                  Start discussing your ideas for what the DFINITY Foundation
-                  should prioritize for the Internet Computer, and collaborate
-                  on ecosystem topics with the Internet Computer community.
+                <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
+                  $0
+                </span>
+                <figcaption className="tw-paragraph md:tw-lead-sm">
+                  Gas fees for end users
+                </figcaption>
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
+                <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
+                  ${(icpPrice * 0.0001).toFixed(5)}
+                </span>
+                <figcaption className="tw-paragraph md:tw-lead-sm">
+                  Ledger TX Fee
+                </figcaption>
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
+                <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
+                  1-2s
+                </span>
+                <figcaption className="tw-paragraph md:tw-lead-sm">
+                  Finality
+                </figcaption>
+              </motion.figure>
+              <motion.figure
+                className="flex flex-col items-center m-0"
+                variants={transitions.item}
+              >
+                <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
+                  <NnsTvl />
+                </span>
+                <figcaption className="tw-paragraph md:tw-lead-sm">
+                  Locked in Governance
+                </figcaption>
+              </motion.figure>
+            </div>
+          </AnimateSpawn>
+
+          <section className="mt-20 md:mt-40">
+            <AnimateSpawn
+              className="container-10 mb-10"
+              variants={transitions.item}
+            >
+              <h2 className="tw-heading-3 mb-0 md:tw-heading-60">
+                Ways to Use ICP Tokens
+              </h2>
+            </AnimateSpawn>
+            <div className="container-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+              <AnimateSpawn
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 "
+                variants={transitions.item}
+              >
+                <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                  Participate in Governance
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
+                  The Internet Computer Protocol is run by the NNS, the largest
+                  DAO managing an L1 blockchain. ICP token holders can
+                  participate in network governance simply by staking tokens in
+                  neurons and locking them with a specified dissolve delay (time
+                  to unlock). A neuron with a dissolve delay greater than 6
+                  months can vote on governance proposals and earn rewards. ICP
+                  neuron holders can also submit proposals to make changes to
+                  the protocol. This open and autonomous governance system runs
+                  100% on chain, and currently holds over 250 million locked
+                  ICP.
                 </p>
-                <p className=" mb-3">
-                  <a
-                    href="https://forum.dfinity.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tw-heading-6 text-infinite hover:text-black hover:no-underline"
+                <p className="mb-0">
+                  <Link
+                    href="https://youtu.be/Ls_FlVERMjg"
+                    className="link-primary link-with-icon items-center"
                   >
-                    Join on Forum
-                    <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                  </a>
+                    <LinkArrowRight />
+                    How to stake on the NNS dapp
+                  </Link>
                 </p>
+              </AnimateSpawn>
+              <AnimateSpawn
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 "
+                variants={transitions.item}
+              >
+                <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                  Burn for Cycles
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
+                  Unlike other smart contract blockchains, the Internet Computer
+                  runs on a “Reverse Gas Model”. This means computation and
+                  storage costs are paid for by developers, and developers are
+                  responsible topping up smart contracts with cycles to fuel the
+                  compute power and storage of their dapps. The Reverse Gas
+                  Model allows users to interact with dapps on the Internet
+                  Computer without tokens, and as seamlessly as they would on
+                  any Web2 application.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/capabilities/reverse-gas"
+                    className="link-primary link-with-icon items-center"
+                  >
+                    <LinkArrowRight />
+                    More on the Reverse Gas Model
+                  </Link>
+                </p>
+              </AnimateSpawn>
+              <AnimateSpawn
+                variants={transitions.item}
+                className="
+                bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 md:col-span-2
+                bg-[url(/img/icp-tokens/ecosystem-mobile.webp)] sm:bg-[url(/img/icp-tokens/ecosystem.webp)] 
+                bg-[center_bottom_-20px] bg-[length:120%] bg-no-repeat 
+
+                sm:bg-[right_-200px_top_-100px] sm:bg-[length:auto_180%]
+                md:bg-[right_-160px_top_-100px] md:bg-[length:auto_160%]
+                lg:bg-[right_-160px_center] lg:bg-[length:auto_180%]
+              "
+              >
+                <div className="sm:w-6/10 lg:w-4/10">
+                  <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                    Use ICP in the Ecosystem
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
+                    Store ICP in wallets, swap it on DEXs, collect NFTs or tip
+                    friends while chatting. The Internet Computer is home to a
+                    growing ecosystem of dapps, many of which use ICP.
+                  </p>
+                  <p className="pb-[100%] sm:pb-0 mb-0">
+                    <Link
+                      href="/ecosystem"
+                      className="link-primary link-with-icon items-center"
+                    >
+                      <LinkArrowRight />
+                      Check out dapps
+                    </Link>
+                  </p>
+                </div>
+              </AnimateSpawn>
+            </div>
+            {/* </div> */}
+          </section>
+
+          <AnimateSpawn
+            className="container-10 my-30 md:my-40 text-center text-white relative"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="blob blob-purple blob-md md:blob-lg blob-x-5 blob-y-5 z-[-1]"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-8"
+              variants={transitions.item}
+            >
+              Where To Get ICP{" "}
+            </motion.h2>
+            <motion.p className="tw-lead mb-8" variants={transitions.item}>
+              The ICP token is widely available on centralized exchanges.
+            </motion.p>
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link
+                href="https://coinmarketcap.com/currencies/internet-computer/markets/"
+                className="button-outline-white"
+              >
+                Complete list on CoinMarketCap
+              </Link>
+            </motion.p>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="bg-infinite text-white"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="container-10 py-20 md:pt-40 md:pb-44">
+              <div className="md:w-7/10">
+                <motion.h2
+                  className="tw-heading-4 md:tw-heading-3 mb-10"
+                  variants={transitions.item}
+                >
+                  Swap BTC for ICP on a DEX.
+                </motion.h2>
+                <motion.p
+                  className="tw-paragraph md:tw-lead-sm mb-0"
+                  variants={transitions.item}
+                >
+                  Directly fund a ckBTC wallet with BTC and swap it for ICP
+                  using any of these DEXs — all without centralized exchanges.
+                  Find out how native Bitcoin support on the Internet Computer
+                  makes this possible{" "}
+                  <Link
+                    className="text-white hover:text-white underline hover:cursor-pointer"
+                    href="/bitcoin-integration"
+                  >
+                    here
+                  </Link>
+                  .
+                </motion.p>
+              </div>
+
+              <div className="mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-[3fr_3fr_5fr]">
+                <motion.div className="" variants={transitions.item}>
+                  <Link
+                    className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform"
+                    href="https://icdex.io"
+                  >
+                    <img
+                      src="/img/showcase/icdex_logo.webp"
+                      loading="lazy"
+                      alt=""
+                      className="w-20 h-20"
+                    ></img>
+                    <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
+                    <p className="tw-lead-sm mb-0 text-black/60">
+                      First orderbook-based DEX running fully on-chain. Bypass
+                      CEXs and get ICP or CHAT tokens for your BTC.{" "}
+                    </p>
+                  </Link>
+                </motion.div>
+                <motion.div className="" variants={transitions.item}>
+                  <Link
+                    className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform"
+                    href="https://icpswap.com"
+                  >
+                    <img
+                      src="/img/showcase/icpswap_logo.webp"
+                      loading="lazy"
+                      alt=""
+                      className="w-20 h-20"
+                    ></img>
+                    <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
+                    <p className="tw-lead-sm mb-0 text-black/60">
+                      Offers the largest number of tokens on the Internet
+                      Computer. Trade meme coins or SNS DAO tokens.
+                    </p>
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  className="-mb-24 lg:mb-0 relative sm:text-center md:text-left sm:col-span-2 md:col-span-1"
+                  variants={transitions.fadeIn}
+                >
+                  <img
+                    src="/img/icp-tokens/ckBTC-token-1.webp"
+                    alt=""
+                    loading="lazy"
+                    className="lg:absolute -top-20"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </AnimateSpawn>
+          <section className="container-12 pt-20 md:pt-40">
+            <AnimateSpawn
+              className="text-center md:w-8/10 md:mx-auto"
+              variants={transitions.container}
+            >
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8"
+                variants={transitions.item}
+              >
+                Wallets & Custody
+              </motion.h2>
+              <motion.p
+                className="tw-lead-sm md:tw-lead mb-6 md:mb-8"
+                variants={transitions.item}
+              >
+                Understand the benefits and limitations of each custody option
+                so you can choose the wallet that best suits your needs.
+              </motion.p>
+              <motion.p className="mb-0" variants={transitions.item}>
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_options"
+                >
+                  Learn more about custody options <LinkArrowUpRight />
+                </Link>
+              </motion.p>
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="grid grid-cols-1 gap-16 mt-16 md:mt-24 md:grid-cols-3"
+              variants={transitions.container}
+            >
+              {/* Column 1 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Web Wallets</h3>
+                <p className="tw-paragraph text-black/60 mb-8">
+                  Web-based dapps that are easily accessible with the creation
+                  of an Internet Identity. Great for daily use and small amount
+                  transfers.
+                </p>
+                <div className="space-y-4">
+                  <WalletCard
+                    title="NNS Dapp"
+                    description="Store and stake ICP, participate in governance."
+                    link="https://nns.ic0.app/"
+                    icon="/img/showcase/nnsfront-enddapp_logo.webp"
+                  />
+                  <WalletCard
+                    title="Stoic"
+                    description="The native wallet of ICP’s largest NFT marketplace, Entrepot."
+                    link="https://www.stoicwallet.com/"
+                    icon="/img/showcase/stoicwallet_logo.webp"
+                  />
+                  <WalletCard
+                    title="AstroX ME"
+                    description="ME wallet secures crypto assets without seed phrase across any device."
+                    link="https://astrox.me/"
+                    icon="/img/showcase/astroxme_logo.webp"
+                  />
+                  <WalletCard
+                    title="OpenChat"
+                    description="Chat accounts are crypto wallets. Send ICP, ckBTC and SNS tokens via messages."
+                    link="https://oc.app"
+                    icon="/img/showcase/openchat_logo.webp"
+                  />
+                  <WalletCard
+                    title="TAGGR"
+                    description="DAO controlled social media dapp. Every account comes with wallet out of the box."
+                    link="https://taggr.link/"
+                    icon="/img/showcase/taggr_logo.webp"
+                  />
+                  <WalletCard
+                    title="NFID"
+                    description="Web3 Identity. Every new account creates an untraceable hardware wallet."
+                    link="https://nfid.one/"
+                    icon="/img/showcase/nfid_logo.webp"
+                  />
+                </div>
+              </motion.div>
+              {/* Column 2 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Mobile App Wallets</h3>
+                <p className="tw-paragraph text-black/60 mb-8">
+                  Mobile apps offer easy access to crypto assets for people who
+                  use them frequently.
+                </p>
+                <div className="space-y-4">
+                  <WalletCard
+                    title="Plug"
+                    description="Access ICP and other tokens, cycles and dapps in one click."
+                    link="https://plugwallet.ooo/"
+                    icon="/img/showcase/plug_logo.webp"
+                  />
+                  <WalletCard
+                    title="AstroX ME"
+                    description="ME wallet secures crypto assets without seed phrase across any device."
+                    link="https://astrox.me/"
+                    icon="/img/showcase/astroxme_logo.webp"
+                  />
+                  <WalletCard
+                    title="Klever"
+                    description="Multi-chain mobile wallet integrated with the ICP ledger."
+                    link="https://klever.io/"
+                    icon="/img/showcase/kleverio_logo.webp"
+                  />
+                </div>
+
+                <h3 className="tw-heading-5 mb-6 mt-16">
+                  Browser Extension Wallets
+                </h3>
+                <p className="tw-paragraph text-black/60 mb-8">
+                  Great for users already familiar with crypto wallets from
+                  other chains.
+                </p>
+
+                <div className="space-y-4">
+                  <WalletCard
+                    title="Plug"
+                    description="Access ICP and other tokens, cycles and dapps in one click."
+                    link="https://plugwallet.ooo/"
+                    icon="/img/showcase/plug_logo.webp"
+                  />
+                  <WalletCard
+                    title="Bitfinity Wallet"
+                    description="Store and transfer BTC, ICP, SNS-1, and other tokens. One-click login to dapps."
+                    link="https://wallet.infinityswap.one/"
+                    icon="/img/showcase/bitfinitywallet_logo.webp"
+                  />
+                </div>
+              </motion.div>
+              {/* Column 3 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Hardware Wallets</h3>
+                <p className="tw-paragraph text-black/60 mb-8">
+                  Maximum security. Hardware wallets hold private keys in
+                  airgapped machines or ledger devices.
+                </p>
+                <div className="space-y-4">
+                  <WalletCard
+                    title="Ledger"
+                    description="Complete control of crypto assets via a Ledger hardware wallet and Ledger app."
+                    link="https://wallet.infinityswap.one/"
+                    icon="/img/showcase/ledger_logo.webp"
+                  />
+                  <WalletCard
+                    title="AirGap"
+                    description="Turn your old smartphone into an air gapped crypto wallet."
+                    link="https://support.airgap.it/currencies/icp/introduction/"
+                    icon="/img/showcase/airgap_logo.webp"
+                  />
+                  <WalletCard
+                    title="Quill"
+                    description="Provides a command line tool to manage ICP in an air gapped computer."
+                    link="https://github.com/dfinity/quill"
+                    icon="/img/showcase/quill_logo.webp"
+                  />
+                </div>
+                <h3 className="tw-heading-5 mb-6 mt-16">
+                  Institutional custody
+                </h3>
+                <p className="tw-paragraph text-black/60 mb-8">
+                  For anyone managing large amounts of crypto assets.
+                  Institutional custodians offer reliability and customer
+                  support.
+                </p>
+                <div className="space-y-4">
+                  <WalletCard
+                    title="Sygnum"
+                    description="World’s first digital asset bank providing institutional-grade security to ICP holders."
+                    link="https://www.sygnum.com/"
+                    icon="/img/showcase/sygnum_logo.webp"
+                  />
+                  <WalletCard
+                    title="Coinbase"
+                    description="Store assets in segregated cold storage. An institutional-grade custody solution. "
+                    link="https://www.coinbase.com/"
+                    icon="/img/showcase/coinbase_logo.webp"
+                  />
+                </div>
               </motion.div>
             </AnimateSpawn>
-          </div>
-        </section>
-      </main>
-    </Layout>
+          </section>
+          <AnimateSpawn
+            className="container-12 pt-24 md:pt-40 pb-30 relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className=" text-white text-center">
+              <motion.div
+                className="blob blob-purple blob-sm blob-x-5 blob-y-2 z-[-1] md:blob-lg md:blob-y-5"
+                variants={transitions.fadeIn}
+              ></motion.div>
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 mb-0"
+                variants={transitions.item}
+              >
+                Get More Involved
+              </motion.h2>
+            </div>
+
+            <div className="flex flex-col gap-5 mt-6 md:mt-20 md:flex-row md:items-start">
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12"
+                variants={transitions.item}
+              >
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  Participate in SNS DAOs
+                </h3>
+                <p className="tw-paragraph-sm mb-3 text-black/60">
+                  Own a piece of your favorite dapps on the Internet Computer,
+                  and shape their development by participating in governance.
+                </p>
+                <p className="mb-0">
+                  <Link href="/sns" className="link-primary link-with-icon">
+                    <LinkArrowRight />
+                    About SNS DAOs
+                  </Link>
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:px-11 md:py-12 md:mt-30"
+                variants={transitions.item}
+              >
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  DeFi on the Internet Computer
+                </h3>
+                <p className="tw-paragraph-sm mb-3 text-black/60">
+                  Build and use DeFi apps on the Internet Computer that are
+                  hosted 100% on the blockchain.
+                </p>
+                <p className="mb-0">
+                  <Link href="/defi" className="link-primary link-with-icon">
+                    <LinkArrowRight />
+                    DeFi on ICP
+                  </Link>
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex-1 bg-white/90 border border-white border-solid rounded-xl p-6 text-center md:p-12"
+                variants={transitions.item}
+              >
+                <h3 className="tw-lead-lg md:tw-title-sm mb-3">
+                  Join the ICRC Conversation
+                </h3>
+                <p className="tw-paragraph-sm mb-3 text-black/60">
+                  Community discussions around extending the ICRC token standard
+                  for all ledgers to optimize functionality is ongoing.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="https://forum.dfinity.org"
+                    className="link-primary link-with-icon"
+                  >
+                    Share your ideas on the Forum
+                    <LinkArrowUpRight />
+                  </Link>
+                </p>
+              </motion.div>
+            </div>
+          </AnimateSpawn>
+        </main>
+      </Layout>
+    </QueryClientProvider>
   );
 }
 

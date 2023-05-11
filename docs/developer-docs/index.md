@@ -3,13 +3,15 @@ sidebar_position: 1
 ---
 # Introduction
 
-The Internet Computer blockchain is poised to help you start a revolution with a new way to design, build, and release dapps.
+The [Internet Computer blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) is poised to help you start a revolution with a new way to design, build, and release dapps.
 
 ## Developing Dapps
 
-The Internet Computer is a blockchain that runs canisters, which are code units bundling together WebAssembly bytecode and the memory pages the bytecode runs in. The Internet Computer is composed of individual subnet blockchains running in parallel and connected together by the use of Chain Key cryptography. This means that canisters running on a subnet can seamlessly call canisters hosted in any other subnet of the Internet Computer blockchain. Moreover, the governance system of the Internet Computer can dynamically increase the capacity of the Internet Computer by adding new subnets, allowing dapps to scale out.
+The Internet Computer is a blockchain that runs [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts), which are code units bundling together WebAssembly bytecode and the memory pages the bytecode runs in. The Internet Computer is composed of individual [subnet blockchains](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#subnet-architecture) running in parallel and connected together by the use of [Chain Key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography). This means that canisters running on a subnet can seamlessly call canisters hosted in any other subnet of the Internet Computer blockchain. Moreover, the governance system of the Internet Computer can dynamically increase the capacity of the Internet Computer by adding new subnets, allowing dapps to scale out.
 
 Developers can thus build new dapps consisting of multiple canisters running in parallel on different subnets and possibly integrate them with existing canisters already running on the Internet Computer.
+
+See [Introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on the IC wiki.
 
 ## Developer Workflow at a Glance
 
@@ -25,4 +27,12 @@ Regardless of the development workflow you choose, keep in mind that when you de
 
 ## Gas cost / Pricing
 
-The Internet Computer is one of the cheapest blockchains that exist today. Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10.000 transactions. To see the full gas cost table, go [here](./gas-cost.md).
+The Internet Computer is one of the cheapest blockchains that exist today. 
+
+On the Internet Computer, a "cycle" is the unit of measurement for resources consumed in the form of processing, memory, storage, and network bandwidth. Every canister has a cycles account to which resources consumed by the canister are charged. The Internet Computer’s utility token (ICP) can be converted to cycles and transferred to a canister. Cycles can also be transferred between canisters by attaching them to an inter-canister message.
+
+ICP can always be converted to cycles using the current price of ICP measured in [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights) using the convention that one trillion cycles correspond to one SDR.
+
+**Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10_000 transactions. **
+
+To see the full cost table, go [here](./gas-cost.md).
