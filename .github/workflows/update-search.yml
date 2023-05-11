@@ -1,0 +1,41 @@
+name: Update search index
+on:
+  # run every 24 hours
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  update-search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Dump Identity
+        run: |
+          mkdir -p ~/.config/dfx/identity/default
+          echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
+        env:
+          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+
+      - name: Build website
+        run: |
+          npm install
+          npm run build
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+
+      - name: Update search index
+        run: |
+          cd search/src/doc_generator
+          pip install -r requirements.txt
+          cd ../../..
+          python search/src/doc_generator/generate-docs.py "./build/**/*.html"
+          cd search
+
+          cargo run --release --bin search-cli -- index ../docs.json stopwords.txt output.json
+          cargo run --release --bin search-cli -- upload output.json stopwords.txt 5qden-jqaaa-aaaam-abfpa-cai ~/.config/dfx/identity/default/identity.pem

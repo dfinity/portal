@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
-import contribute from "@site/static/img/developers/contribute.png";
+import contribute from "@site/static/img/developers/contribute.webp";
 
 const cardsContent = [
   {
@@ -24,18 +24,23 @@ const cardsContent = [
     link: "https://forum.dfinity.org/",
   },
   {
+    title: "Dev Discord Office Hours",
+    body: "Every Wednesday at 9am CET and 7pm CET",
+    link: "https://discord.gg/jnjVVQaE2C",
+  },
+  {
+    title: "DFINITY Developer Grants and Bounties",
+    body: "Kickstart your idea or get paid to build on ICP",
+    link: "https://dfinity.org/grants/",
+  },
+  {
     title: "Bug bounty program",
     body: "Report potential security vulnerabilities and get rewards",
     link: "https://dfinity.org/bug-bounty/",
   },
-  {
-    title: "ICDevs Bounties",
-    body: "ICDevs.org funds code bounties",
-    link: "https://icdevs.org/bounties.html",
-  },
 ];
 
-function Card({ title, body }) {
+export function Card({ title, body }) {
   return (
     <>
       <div className={styles.cardContainer}>

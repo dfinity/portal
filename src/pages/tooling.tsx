@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {
@@ -9,7 +9,6 @@ import {
 } from "@site/src/components/Common/toolingItems";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
@@ -23,9 +22,9 @@ import {
   RustLink,
   YoutubeLink,
 } from "@site/src/components/Common/CardIcons";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function Samples(): JSX.Element {
-  resetNavBarStyle();
   const [numberOfItems, setNumberOfItems] = React.useState(40);
   const [numberOfCommunityItems, setNumberOfCommunityItems] =
     React.useState(40);
@@ -98,21 +97,8 @@ function Samples(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-tooling.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-tooling.jpeg"
-          }
-        />
-        <title>Developer Tools</title>
-      </Head>
+      <ShareMeta image="https://internetcomputer.org/img/shareImages/share-tooling.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <section className="max-w-page w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">
@@ -152,7 +138,7 @@ function Samples(): JSX.Element {
                 <div className="flex gap-2 flex-wrap flex-1 items-center">
                   <button
                     className={clsx(
-                      "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                      "inline-block font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                       !queryTag
                         ? "text-white bg-infinite"
                         : "text-black bg-white"
@@ -164,7 +150,7 @@ function Samples(): JSX.Element {
                   {tags.map((tag) => (
                     <button
                       className={clsx(
-                        "inline-block bg-white font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
+                        "inline-block font-circular rounded-xl border border-infinite border-solid tw-title-navigation py-[10px] px-4 capitalize hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors",
                         tag === queryTag
                           ? "text-white bg-infinite"
                           : "text-black bg-white"

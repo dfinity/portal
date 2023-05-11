@@ -44,7 +44,7 @@ const liveSessionsPlugin = async function () {
             title: conv.fields.title,
             speaker: conv.fields.speaker,
             speakerTitle: conv.fields.speakerTitle,
-            description: marked.parse(conv.fields.description),
+            description: marked.parse(conv.fields.description || ""),
             startTimeUtc: isValid(parsedEventTime)
               ? parsedEventTime.getTime()
               : null,
@@ -60,9 +60,8 @@ const liveSessionsPlugin = async function () {
       return transformed;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData, createData } = actions;
-      createData("conversations", JSON.stringify(content, null, 2));
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("conversations.json", JSON.stringify(content, null, 2));
     },
   };
 };

@@ -1,19 +1,20 @@
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.png";
+import Head from "@docusaurus/Head";
+import Link from "@docusaurus/Link";
+import liveSessions from "@site/.docusaurus/conversations/default/conversations.json";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
+import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
+import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
+import { getMinutes, getYear, parse } from "date-fns";
+import { format, utcToZonedTime } from "date-fns-tz";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import transitions from "@site/static/transitions.json";
-import AnimateSpawn from "../components/Common/AnimateSpawn";
-import useGlobalData from "@docusaurus/useGlobalData";
-import Link from "@docusaurus/Link";
-import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
-import { format, utcToZonedTime } from "date-fns-tz";
-import { getMinutes, parse, getYear } from "date-fns";
-import ExternalLinkIcon from "../../static/img/external-link.svg";
-import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import slugify from "slugify";
-import Head from "@docusaurus/Head";
+import ChevronRightIcon from "../../static/img/chevron-right.svg";
+import ExternalLinkIcon from "../../static/img/external-link.svg";
+import AnimateSpawn from "../components/Common/AnimateSpawn";
+import Newsletter from "../components/Common/Newsletter/Newsletter";
+import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
 
 const MotionLink = motion(Link);
 
@@ -27,9 +28,6 @@ function idFromTitle(title: string) {
 
 function LiveSessionsPage(): JSX.Element {
   const formRef = useRef<HTMLDivElement>();
-
-  const liveSessions = useGlobalData()["conversations"]
-    .default as LiveSession[];
 
   const [initalized, setInitalized] = useState(false);
   const [upcoming, setUpcoming] = useState<LiveSession[]>([]);
@@ -98,9 +96,7 @@ function LiveSessionsPage(): JSX.Element {
 
   useEffect(() => {
     if (initalized) {
-      if (location.hash === "#subscribe") {
-        scrollToForm();
-      } else if (location.hash) {
+      if (location.hash) {
         const el = document.querySelector(location.hash) as HTMLElement;
         if (el) {
           window.scroll({
@@ -481,47 +477,30 @@ function LiveSessionsPage(): JSX.Element {
             </div>
           </div>
         </AnimateSpawn>
-
         {/* This must not be invisible */}
         <div ref={formRef} id="subscribe"></div>
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.item}
-          className="bg-infinite border-0 border-b border-white border-solid"
+        <Newsletter
+          fields={[
+            {
+              name: "EMAIL",
+              placeholder: "Email",
+              type: "email",
+              required: true,
+            },
+          ]}
+          ctaLabel="Get updates!"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+          decoration={<img src="/img/newsletter/email-image-1.webp" />}
+          className="mb-20"
         >
-          <div className="max-w-page  px-6 md:px-12.5 md:mx-auto py-20 text-white relative">
-            <img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-600px]"
-              alt=""
-            />
-            <div className="md:w-10/12 md:mx-auto ">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:w-6/10 mb-8">
-                Register to stay up to date on live sessions
-              </h2>
-              <form
-                method="POST"
-                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315"
-                className="md:w-4/10 space-y-6"
-              >
-                <input
-                  type="email"
-                  name="EMAIL"
-                  placeholder="Email"
-                  required
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <input
-                  type="text"
-                  name="FNAME"
-                  placeholder="First Name"
-                  className="w-full border border-white border-solid rounded-xl tw-paragraph bg-transparent py-3 px-4 text-white placeholder:text-white-50 outline-offset-1"
-                />
-                <button className="button-outline-white">Register</button>
-              </form>
-            </div>
-          </div>
-        </AnimateSpawn>
+          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
+            Want to meet ICP enthusiasts IRL?
+            <br />
+            <span className="text-white-60">
+              Sign up for event updates to stay connected
+            </span>
+          </h2>
+        </Newsletter>
       </main>
     </Layout>
   );

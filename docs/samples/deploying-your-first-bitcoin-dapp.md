@@ -21,6 +21,10 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         # For rust
         cd examples/rust/basic_bitcoin
 
+   :::note
+   If you choose Rust and are using MacOS, you'll need to install [Homebrew](https://brew.sh/) and run `brew install llvm` to be able to compile the example.
+   :::
+
 3. Initialize the git submodules
 
         git submodule update --init --recursive
@@ -30,7 +34,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
 
    :::tip
-   Deploying to the Internet Computer requires `Cycles`. You can read more about cycles [here](../concepts/tokens-cycles.md). You can also get some free cycles from the [Cycles Faucet](../developer-docs/quickstart/cycles-faucet.md).
+   Deploying to the Internet Computer requires `Cycles`. You can read more about cycles [here](/concepts/tokens-cycles.md). You can also get some free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
    :::
 
     If successful, you should see an output that looks like this:
@@ -41,7 +45,7 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
         Deployed canisters.
         URLs:
         Candid:
-            basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=<YOUR-CANISTER-ID>
+            basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>
 
    Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
 

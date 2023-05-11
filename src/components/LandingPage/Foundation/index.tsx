@@ -8,7 +8,7 @@ export default function FoundationSection(): JSX.Element {
   return (
     <section id="foundation">
       <AnimateSpawn
-        className="md:container-12"
+        className="md:container-12 my-20 md:my-30"
         variants={transitions.container}
       >
         <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-1/12 py-20 md:py-30 relative">
@@ -18,9 +18,9 @@ export default function FoundationSection(): JSX.Element {
               className="tw-heading-4 md:tw-heading-2 mb-6 md:mb-16 text-center"
               variants={transitions.item}
             >
-              Blockchain's largest
+              The blockchain industry's
               <br />
-              R&D operation
+              Skunk Works
             </AnimateSpawn>
             <AnimateSpawn
               className="grid grid-cols-2 md:grid-cols-4 mb-6 md:mb-16 gap-y-8"

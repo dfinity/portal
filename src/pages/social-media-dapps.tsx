@@ -1,9 +1,8 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import { resetNavBarStyle } from "@site/src/utils/reset-navbar-style";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -98,8 +97,6 @@ const projects: {
 ];
 
 function SocialMediaDappsPage() {
-  resetNavBarStyle();
-
   const [openProjectIndex, setOpenProjectIndex] = useState(0);
 
   return (
@@ -150,7 +147,7 @@ function SocialMediaDappsPage() {
             </div>
             <div className="container-10 relative">
               <motion.img
-                src="/img/whiteBlurredCircle.png"
+                src="/img/whiteBlurredCircle.webp"
                 alt=""
                 className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-300px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
                 variants={transitions.item}
@@ -280,7 +277,7 @@ function SocialMediaDappsPage() {
             </motion.p>
             <MotionLink
               className="link-external"
-              href="/showcase?tag=social"
+              href="/ecosystem?tag=SocialFi"
               variants={transitions.item}
             >
               See dapp collection
@@ -371,17 +368,17 @@ function SocialMediaDappsPage() {
                     The Internet Computer is the only blockchain that can:
                   </p>
                   <ul className="checklist tw-paragraph md:tw-lead-sm mb-6 space-y-3">
-                    <li className="checklist-item">Serve web</li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">Serve web</li>
+                    <li className="checklist-item leading-6 pl-8">
                       Integrate existing web2 APIs without oracles
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Provides out of the box anonymous authentication system
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store large amounts of data on-chain
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store private data on-chain
                     </li>
                   </ul>
@@ -430,7 +427,7 @@ function SocialMediaDappsPage() {
                       />
                       <span className="tw-heading-5">$79,000,000</span>
                       <span className="tw-heading-7 pl-2 relative top-[2px]">
-                        / GB per year
+                        / GB
                       </span>
                     </li>
                   </ul>
@@ -503,7 +500,7 @@ function SocialMediaDappsPage() {
             <CardWithDescription
               title="Quick Start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
-              href="/docs/current/developer-docs/quickstart/hello10mins"
+              href="/docs/current/tutorials/deploy_sample_app"
             ></CardWithDescription>
             <CardWithDescription
               title="Developer Docs"
