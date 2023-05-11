@@ -126,7 +126,7 @@ This method resets the state of the votes so every option goes back to 0. Here's
 
 
 ```motoko
-//This methods reset the vote count for each option and and returns the updated hashmap
+//This method resets the vote count for each option and returns the updated hashmap
 // Example JSON that the frontend will get using the values above
 // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
     
