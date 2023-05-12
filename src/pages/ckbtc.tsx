@@ -81,7 +81,9 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin.
+                  ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin,
+                  trustlessly created by chain-key cryptography and Internet Computer smart contracts that
+                  directly hold raw bitcoin.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -179,9 +181,7 @@ function CkbtcPage(): JSX.Element {
                     No centralized custodians or bridges{" "}
                   </li>
                   <li className="checklist-item pl-8">
-                    Total Supply:{" "}
-                    {totalSupply ? (totalSupply / 100_000_000).toFixed(0) : ""}{" "}
-                    BTC already upgraded
+                    Chain-key integrations with other networks like Ethereum
                   </li>
                 </ul>
               </motion.div>
@@ -227,7 +227,8 @@ function CkbtcPage(): JSX.Element {
                 on which communities form into groups called Portals. Create NFT
                 gated Portals, airdrop fungible and non-fungible tokens to
                 members and tip content creators for posts in a growing number
-                of tokens and ckBTC.
+                of tokens and ckBTC. Social media tipping with bitcoin
+                realizes a key part of Satoshi's original vision.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -235,31 +236,6 @@ function CkbtcPage(): JSX.Element {
               >
                 <LinkArrowRight />
                 Check out DSCVR
-              </Link>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/bitcoin-integration/bioniq-image.webp"
-              reverse={false}
-            >
-              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                Bioniq
-              </div>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Bitcoin Ordinals Marketplace{" "}
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                The world’s fastest Bitcoin-based non-fungible token (NFT)
-                marketplace is on the Internet Computer. Bioniq welcomes
-                Bitcoiners to sell, trade, or transfer bitcoin-based Ordinals
-                and Inscriptions. Fast, low-fee TXs without channels or any
-                compromises on security.
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://bioniq.io/collections"
-              >
-                <LinkArrowRight />
-                Start collecting Bitcoin Ordinals
               </Link>
             </TranslatedLayout>
           </section>
@@ -459,36 +435,52 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    On the Internet Computer, node machines directly talk to
-                    Bitcoin nodes, which enables canister smart contracts to not
-                    only send and receive bitcoin, but also hold it — no bridges
-                    or centralized custodians required, and UTXOs are verifiable
-                    by anyone. Essentially, ckBTC canisters smart contracts send
-                    bitcoin between the two networks as if they were one.{" "}
+                    Internet Computer nodes talk directly to Bitcoin nodes. Behind the scenes,
+                    they push signed transactions into the Bitcoin mempool, pull Bitcoin blocks,
+                    and maintain its UTXO set. In this decentralized arrangement, the Internet
+                    Computer network itself acts as private keys, signing transactions on behalf
+                    of smart contracts, using “chain-key cryptography” inside its protocols.
+                    This makes it possible for smart contracts to directly send and receive
+                    bitcoin on the Bitcoin blockchain, and for a smart contract to create ckBTC –
+                    a super fast, low cost, trustless digital twin.{" "}
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Chain-key ECDSA signing is the technology that enables
-                    Internet Computer nodes to create new Bitcoin addresses and
-                    sign Bitcoin transactions at a protocol level. The secret
-                    signature key is never stored in one place but rather broken
-                    down into several key shares held by nodes on the Internet
-                    Computer that are reshared every 5-10 minutes, making
-                    Bitcoin transactions resilient to attacks by malicious
-                    nodes. Importantly, ckBTC canisters are controlled by the
-                    NNS DAO, which means no single entity can initiate malicious
-                    activities without the approval of ICP governance token
-                    holders.
+                    ckBTC is exposed to the security of two networks (Bitcoin and the Internet
+                    Computer), but is not exposed to a blockchain bridge, which is not needed.
+                    This is important, because blockchain bridges are centralized, insecure,
+                    cumbersome and costly. The insecurity alone is a dealbreaker: between
+                    2021-2022, more than 2 billion dollars was stolen from blockchain bridges. 
                   </p>
                   <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the
-                    custodian, and Sollet the bridge for wrapping and unwrapping
-                    BTC and ETH on Solana, demonstrates how bridges and
-                    intermediaries can act as single points of failures and are
-                    highly vulnerable to hacks. Ethereum smart contracts behind
-                    a bridge make asset transfers between blockchains possible,
-                    but users must still trust a third-party centralized
-                    custodian to manage the digital assets whose code is often
-                    not publicly verifiable.
+                    The Internet Computer network is powered by chain key cryptography, which
+                    is key to how it scales. The integration of the Internet Computer and Bitcoin
+                    networks became possible when its chain key framework was adapted to also
+                    support the ECDSA cryptography scheme, which can be used to sign Bitcoin
+                    transactions – which is known as Chain-key ESCDSA. 
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    Internet Computer nodes run a protocol that generates “private key shares”
+                    in a trustless way (this involves a unique “non-interactive distributed key
+                    generation” scheme). Any threshold of nodes in combination, as directed by
+                    consensus, can then create new public keys, and create signatures on
+                    messages that validate against those keys, such as transactions. 
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    The private key shares only exist for a few minutes, and are constantly
+                    re-created and erased, while preserving the network’s ability to sign for
+                    existing public keys, using a “key-resharing” scheme. This prevents
+                    adaptive adversaries from progressively stealing key material from nodes
+                    to assemble a threshold set, while allowing nodes to come and go, which
+                    is essential as networks have dynamic membership. 
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    The recent incident where the FTX exchange acted as the custodian, and
+                    Sollet the bridge for wrapping and unwrapping BTC and ETH on Solana,
+                    demonstrates how bridges and intermediaries can act as single points of
+                    failures and are highly vulnerable to hacks. Ethereum smart contracts
+                    behind a bridge make asset transfers between blockchains possible, but
+                    users must still trust a third-party centralized custodian to manage the
+                    digital assets whose code is often not publicly verifiable.
                   </p>
                 </div>
                 <div>
@@ -498,8 +490,8 @@ function CkbtcPage(): JSX.Element {
 
                   <p className="tw-paragraph mb-3">
                     More than a token, while ckBTC implements the ICRC-1
-                    fungible token standard, the pair of Canister Smart
-                    Contracts also allow bitcoin to be freely sent between
+                    fungible token standard, the pair of canister smart
+                    contracts also allow bitcoin to be freely sent between
                     addresses either on the Bitcoin network or the Internet
                     Computer, making it the first true multi-chain asset.
                   </p>
@@ -522,15 +514,20 @@ function CkbtcPage(): JSX.Element {
                     network liquidity limitations.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Canister Smart Contracts can programmatically hold and
+                    Canister smart contracts can programmatically hold and
                     transfer ckBTC, making it possible to develop fully on-chain
-                    Layer-2 applications for Bitcoin. Simply not possible using
+                    Layer-2 applications for Bitcoin, which is not possible using
                     the Lightning Network.
                   </p>
                   <p className="tw-paragraph mb-3">
                     Another key difference is that ckBTC transaction fees are
                     fixed, and not dependent on the transaction amount, variable
                     intermediate forwarding, or unexpected channel funding fees.
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    In the future, ckBTC will be available on other networks like
+                    Ethereum – also directly, and without bridges, thanks to
+                    chain-key cryptography integrations. 
                   </p>
                   <Link
                     className="link-primary link-with-icon"
