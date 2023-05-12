@@ -1793,5 +1793,22 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/bink_logo.png",
     "twitter": "https://twitter.com/BinkDapp"
+  },
+  {
+    "id": "AirGap",
+    "name": "AirGap",
+    "oneLiner": "Protect your crypto and store your private keys offline by turning a spare phone into a Cold Wallet.",
+    "website": "https://airgap.it/",
+    "tags": ["Wallet"],
+    "description": "The AirGap solution turns a smartphone into a cold wallet using the AirGap Vault app. It handles your private key completely offline, whilst the designated companion – the AirGap Wallet, gives you a portfolio overview and initiates and broadcasts transactions for the Vault to sign offline.\nTransactions are signed seamlessly without the use of cables, thanks to verifiable QR-codes.\nTo ensure top security, AirGap has a unique approach to creating a secure key by utilizing various sources of entropy such as video, sound, gyroscope, and touch. This ensures maximum randomness and therefore results in a secure key generation.",
+    "usesInternetIdentity": false,
+    "stats": "300,000 downloads",
+    "logo": "/img/showcase/airgap_logo.webp",
+    "github": "https://github.com/airgap-it",
+    "youtube": "https://www.youtube.com/@airgap_it",
+    "twitter": "https://twitter.com/AirGap_it",
+    "screenshots": ["/img/showcase/airgap_screenshot.png"],
+    "video": "/img/showcase/airgap_video.mp4",
+    "videoContentType": "video/mp4"
   }
 ]
