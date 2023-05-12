@@ -770,7 +770,7 @@
   },
   {
     "id": "nnsfront-enddapp",
-    "name": "NNS Front-End Dapp",
+    "name": "NNS Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
     "website": "https://nns.ic0.app",
     "tags": [
@@ -780,7 +780,7 @@
     ],
     "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo.webp",
+    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp",
     "screenshots": [
       "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
     ]
@@ -1763,6 +1763,25 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ember-cli-dfinity.png",
     "github": "https://github.com/onehilltech/ember-cli-dfinity"
+  },
+  {
+    "id": "beamfi",
+    "name": "BeamFi",
+    "oneLiner": "Real Time Micro Payments solution for creators",
+    "website": "https://beamfi.app",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "BeamFi is an open source DeFi protocol, bringing Autonomous Stream Payment solution to Internet Computer, allowing users to send or receive a constant stream of ICP or XTC in BeamFi DApp or BeamFi Meeting App in Zoom while a meeting is in progress",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/beamfi_logo.webp",
+    "github": "https://github.com/BeamFi/BeamFiProtocol",
+    "youtube": "https://youtu.be/85TWP4QHHBg",
+    "twitter": "https://twitter.com/BeamFiApp",
+    "screenshots": [
+      "/img/showcase/beamfi_screenshot_0.webp"
+    ],
+    "submittableId": "33086681"
   },
   {
     "id": "bink",

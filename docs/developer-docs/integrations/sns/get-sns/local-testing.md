@@ -9,17 +9,18 @@ and before requesting an SNS launch in production,
 you might want to test the SNS launch locally.
 You might also want to do this with different SNS parameters to compare different behaviors.
 
+:::warning
+This guide is very new and many parts of both the guide and the tools are still getting updated.
+Many of the below steps are outdated.
+The most up-to-date information lives in [this repository](https://github.com/dfinity/sns-testing).
+The readme explains how to test your SNS locally.
+:::
+
 We next describe how you can test the SNS launch with your chosen parameters.
 The necessary steps are very similar to the process of getting an SNS in production.
 The main difference is that you will first bring up an NNS in your local testing
 environment to then be able to test the process as closely as possible to the
 process in production.
-
-:::warning
-This guide is very new and many parts of both the guide and the tools are still getting updated. It is likely to contain some errors.
-If you run into any problems, please report them over at [portal](https://github.com/dfinity/portal/issues)
-or propose a fix directly through the `edit this page` link at the very bottom of the page.
-:::
 
 #### 1. Prepare your principals and tools
 
@@ -109,6 +110,8 @@ For local development, you can add your wallet to the whitelist using the follow
 # This command assumes that you are using an unencrypted identity and that you are using the identity you want to deploy the SNS with.
 $(dfx cache show)/ic-admin --secret-key-pem ~/.config/dfx/identity/$(dfx identity whoami)/identity.pem --nns-url "http://localhost:$(dfx info replica-port)" propose-to-update-sns-deploy-whitelist --added-principals "$(dfx identity get-wallet)" --proposer "$DEVELOPER_NEURON_ID" --proposal-title "Let me SNS!" --summary "I am friendly."
 ```
+
+Your SNS proposal is live now. Go ahead and vote to allow it from the NNS Launchpad. Use the large neuron that you initially setup with 500_000_000 ICP.
 
 Creating an SNS currently uses up to 180T cycles, and your wallet needs to supply those.
 On a local deployment, you can add any number of cycles to any canister.

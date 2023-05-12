@@ -284,5 +284,13 @@ export const communityToolingItems = [
     links: {
       github: "https://github.com/ic4j/ic4j-camel",
     },
+  },
+{
+    title: "IC4J Apache Maven ICP Plugin",
+    tags: [ "java", "development", "management" ],
+    description: "The IC4J Maven Plugin allows for the installation and uninstallation of ICP canisters from Apache Maven scripts.",
+    links: {
+      github: "https://github.com/ic4j/ic4j-maven-plugin",
+    },
   }, 
 ];
