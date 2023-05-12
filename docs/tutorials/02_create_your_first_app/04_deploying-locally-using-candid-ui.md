@@ -21,10 +21,11 @@ You will a result in the console similar to this:
 
 ## Deploying your app
 
-To deploy your app you need to:
+To deploy your app you need to, change your current directory to the project root and enter:
 
-1. Change your current directory to the project root
-2. Type `dfx deploy` in the command line
+```bash
+dfx deploy
+```
 
 ## Opening Candid UI
 
@@ -44,7 +45,7 @@ Candid UI web page. You should we something like this:
 
 ## Using Candid UI to access the data
 
-Candid UI allows you to access the methods of the actor that we coded at the previosus step. Try it by clicking "Query".
+Candid UI allows you to access the methods of the actor that we coded at the previous step. Try it by clicking "Query".
 
 ## Summary
 
