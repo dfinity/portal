@@ -53,7 +53,7 @@ function CkbtcPage(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Layout
         title="ckBTC: Upgrade your Bitcoin"
-        description="ckBTC is a multi-chain asset that enables BTC value to be transferred at near instant finality at low fees through a pair of cryptographically secure canister smart contracts on the Internet Computer."
+        description="ckBTC is a bitcoin twin created by Canister Smart Contracts, running on the Internet Computer, that trustlessly and directly hold Bitcoin. ckBTC can be sent with 1-2 second finality and negligible fees."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
@@ -80,10 +80,9 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC is a multi-chain asset that enables BTC value to be
-                  transferred at near instant finality at low fees through a
-                  pair of cryptographically secure canister smart contracts on
-                  the Internet Computer.
+                  ckBTC is a bitcoin twin created by Canister Smart Contracts, running on the Internet
+                  Computer, that trustlessly and directly hold Bitcoin. ckBTC can be sent with 1-2
+                  second finality and negligible fees.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -107,9 +106,8 @@ function CkbtcPage(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Hold, send and transact native bitcoin as if the Internet
-                Computer and the Bitcoin network were one blockchain. No bridges
-                or off-chain intermediaries.
+                Hold, send and receive native bitcoin as if the Internet Computer and the Bitcoin
+                network were one blockchain. No bridges or off-chain intermediaries.
               </motion.h2>
             </div>
           </AnimateSpawn>
@@ -125,7 +123,7 @@ function CkbtcPage(): JSX.Element {
               >
                 <h3 className="inline-flex items-center gap-3 mb-4">
                   <span className="flex-1 text-gradient tw-heading-5">
-                    Fast TXs with low fees
+                    Fast TXs with negligible fees
                   </span>
                 </h3>
                 <p className="tw-paragraph mb-6">
@@ -158,7 +156,7 @@ function CkbtcPage(): JSX.Element {
                     Canister Smart Contracts can hold and send ckBTC
                   </li>
                   <li className="checklist-item pl-8">
-                    Web applications with BTC support. Only a browser needed
+                    Build web applications with BTC support. Users only need a browser
                   </li>
                 </ul>
               </motion.div>
@@ -177,12 +175,12 @@ function CkbtcPage(): JSX.Element {
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
+                    No centralized custodians or bridges{" "}
+                  </li>
+                  <li className="checklist-item pl-8">
                     Total Supply:{" "}
                     {totalSupply ? (totalSupply / 100_000_000).toFixed(0) : ""}{" "}
                     BTC already upgraded
-                  </li>
-                  <li className="checklist-item pl-8">
-                    No centralized custodians or bridges{" "}
                   </li>
                 </ul>
               </motion.div>
@@ -195,25 +193,24 @@ function CkbtcPage(): JSX.Element {
                 OpenChat
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Send bitcoin at the speed of a message
+                Send bitcoin at the speed of chat
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-3">
-                OpenChat is the first chat app built 100% on a blockchain. Each
-                OpenChat account is assigned to its own canister smart contract
-                capable of sending, receiving and storing messages. It also acts
-                as a wallet, which enables users to hold, send and receive
-                ckBTC. Invite friends to OpenChat to receive and send around
-                satoshis with ease, and at the speed of a chat message.
+                OpenChat is the first chat network built 100% on a blockchain. Each OpenChat
+                account is assigned to its own canister smart contract capable of sending,
+                receiving and storing messages. It also acts as a wallet, which enables users
+                to hold, send and receive ckBTC. Invite friends to OpenChat to receive and
+                send around satoshis with ease, and at the speed of a chat message.
               </p>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                OpenChat is controlled an SNS DAO. Making owners of it’s CHAT
+                OpenChat is controlled an SNS DAO, making owners of its CHAT
                 governance token the custodians of the OpenChat networks future.
               </p>
               <Link
                 className="link-primary link-with-icon"
                 href="https://oc.app/"
               >
-                <LinkArrowRight /> Get an OpenChat account
+                <LinkArrowRight /> Join the OpenChat network
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
@@ -228,7 +225,7 @@ function CkbtcPage(): JSX.Element {
                 on which communities form into groups called Portals. Create NFT
                 gated Portals, airdrop fungible and non-fungible tokens to
                 members and tip content creators for posts in a growing number
-                of cryptos, including ckBTC.
+                of tokens and ckBTC.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -458,40 +455,38 @@ function CkbtcPage(): JSX.Element {
               <div className="flex-[6] space-y-12 md:space-y-20">
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a bridge.
+                    Why it’s not a bridged token.
                   </h3>
 
-                  <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the
-                    custodian, and Sollet the bridge for wrapping and unwrapping
-                    BTC and ETH on Solana, demonstrates how bridges and
-                    intermediaries can act as single points of failures and are
-                    highly vulnerable to hacks. Ethereum smart contracts behind
-                    a bridge make asset transfers between blockchains possible,
-                    but users must still trust a third-party centralized
-                    custodian to manage the digital assets whose code is often
-                    not publicly verifiable.{" "}
-                  </p>
                   <p className="tw-paragraph mb-3">
                     On the Internet Computer, node machines directly talk to
                     Bitcoin nodes, which enables canister smart contracts to not
                     only send and receive bitcoin, but also hold it — no bridges
                     or centralized custodians required, and UTXOs are verifiable
-                    by anyone. Essentially, ckBTC canisters smart contracts send
-                    bitcoin between the two networks as if they were one.
+                    by anyone.  Essentially, ckBTC canisters smart contracts send
+                    bitcoin between the two networks as if they were one.{" "}
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Chain-key ECDSA signing is the technology that enables
-                    Internet Computer nodes to create new Bitcoin addresses and
-                    sign Bitcoin transactions at a protocol level. The secret
-                    signature key is never stored in one place but rather broken
-                    down into several key shares held by nodes on the Internet
-                    Computer that are reshared every 5-10 minutes, making
-                    Bitcoin transactions resilient to attacks by malicious
-                    nodes. Importantly, ckBTC canisters are controlled by the
-                    NNS DAO, which means no single entity can initiate malicious
-                    activities without the approval of ICP governance token
-                    holders.
+                    Chain-key ECDSA signing is the technology that enables Internet
+                    Computer nodes to create new Bitcoin addresses and sign Bitcoin
+                    transactions at a protocol level. The secret signature key is
+                    never stored in one place but rather broken down into several
+                    key shares held by nodes on the Internet Computer that are
+                    reshared every 5-10 minutes, making Bitcoin transactions
+                    resilient to attacks by malicious nodes. Importantly, ckBTC
+                    canisters are controlled by the NNS DAO, which means no single
+                    entity can initiate malicious activities without the approval
+                    of ICP governance token holders.
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    The recent incident where the FTX exchange acted as the custodian,
+                    and Sollet the bridge for wrapping and unwrapping BTC and ETH on
+                    Solana, demonstrates how bridges and intermediaries can act as
+                    single points of failures and are highly vulnerable to hacks.
+                    Ethereum smart contracts behind a bridge make asset transfers
+                    between blockchains possible, but users must still trust a
+                    third-party centralized custodian to manage the digital assets
+                    whose code is often not publicly verifiable.
                   </p>
                 </div>
                 <div>
@@ -500,11 +495,10 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    While ckBTC acts as a token and implements the ICRC-1
-                    standard (the Internet Computer’s fungible token standard),
-                    it is essentially a multi-chain asset that can be sent
-                    freely between addresses on either the Bitcoin Network or
-                    the Internet Computer. No wrapping necessary.
+                    More than a token, while ckBTC implements the ICRC-1 fungible token
+                    standard, the pair of Canister Smart Contracts also allow bitcoin to
+                    be freely sent between addresses either on the Bitcoin network or the
+                    Internet Computer, making it the first true multi-chain asset.
                   </p>
                 </div>
 
@@ -514,28 +508,24 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    The Lighting Network is a Layer-2 for Bitcoin. It acts as
-                    payment channel extending Bitcoin’s throughput with speedy
-                    transactions at lower fees. However, every transaction on
-                    the Lightning Network has to be settled on Bitcoin, which
-                    limits the network’s flexibility. This is very different
-                    from ckBTC, which expands Bitcoin’s functionality via smart
-                    contracts that send and receive bitcoin with near instant
-                    finality and negligible fees.
+                    The Lightning Network is the most well known Layer-2 for Bitcoin. Like
+                    ckBTC, it allows fast and cheap transfers of BTC value off the Bitcoin
+                    blockchain.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    While ckBTC provides Layer-2 functionality to Bitcoin, its
-                    transactions do not need to settle on Bitcoin’s ledger.
-                    Instead, ckBTC moves freely and seamlessly between the two
-                    networks, thanks to Chain-Key Signing. ckBTC smart contract
-                    functionality can also do lot more than simple payments.
+                    Unlike Lightning, ckBTC does not require peer-to-peer payment channels
+                    to be established and funded. This means that your full ckBTC balance
+                    can always be transferred — no network liquidity limitations.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Another key difference is that ckBTC transaction fees are
-                    fixed, and not dependent on network usage or transaction
-                    amount, while Lightning’s fees vary both with network
-                    congestion and transaction volume, which is becoming a
-                    problem due the popularity of BTC Ordinals.
+                    Canister Smart Contracts can programmatically hold and transfer ckBTC,
+                    making it possible to develop fully on-chain Layer-2 applications for
+                    Bitcoin. Simply not possible using the Lightning Network.
+                  </p>
+                  <p className="tw-paragraph mb-3">
+                    Another key difference is that ckBTC transaction fees are fixed, and not
+                    dependent on the transaction amount, variable intermediate forwarding,
+                    or unexpected channel funding fees.
                   </p>
                 </div>
               </div>
