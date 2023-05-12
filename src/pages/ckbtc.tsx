@@ -1,73 +1,19 @@
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
+import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
+import { motion } from "framer-motion";
 import React, { useRef } from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
-import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
-import { getStakingMetrics } from "../utils/network-stats";
-import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import transitions from "@site/static/transitions.json";
-import { motion } from "framer-motion";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const queryClient = new QueryClient();
-const MotionLink = motion(Link);
-
-const NnsTvl: React.FC = () => {
-  const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
-  const stakingMetricsQuery = useQuery("staking-metrics", getStakingMetrics);
-
-  let tvl = <>&nbsp;</>;
-
-  if (stakingMetricsQuery.isFetched && stakingMetricsQuery.isSuccess) {
-    const maybeMetric: number | undefined =
-      stakingMetricsQuery.data.metrics.find(
-        (d) => d.name === "governance_total_locked_e8s"
-      )?.samples[0]?.value;
-
-    if (maybeMetric) {
-      tvl = <>${((maybeMetric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
-    }
-  }
-
-  return <>{tvl}</>;
-};
-
-const WalletCard: React.FC<{
-  title: string;
-  description: string;
-  link: string;
-  icon: string;
-}> = ({ title, description, link, icon }) => {
-  return (
-    <MotionLink
-      to={link}
-      className="flex gap-6 items-start bg-white/80 rounded-xl p-4 border border-white border-solid text-black hover:text-black hover:no-underline"
-      variants={transitions.item}
-    >
-      <img
-        src={icon}
-        alt=""
-        className="w-14 h-14 object-contain object-center"
-        loading="lazy"
-      />
-      <div className="">
-        <h3 className="tw-heading-6 mb-0">{title}</h3>
-        <p className="tw-paragraph-sm text-black/60 mb-0">{description}</p>
-      </div>
-    </MotionLink>
-  );
-};
 
 function CkbtcPage(): JSX.Element {
-  const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
-
   const ref = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(ref);
 
@@ -103,9 +49,9 @@ function CkbtcPage(): JSX.Element {
                   variants={transitions.item}
                 >
                   ckBTC is a multi-chain asset that enables BTC value to be
-                  transferred at near instant finality at low fees through a pair of
-                  cryptographically secure canister smart contracts on the
-                  Internet Computer.
+                  transferred at near instant finality at low fees through a
+                  pair of cryptographically secure canister smart contracts on
+                  the Internet Computer.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -129,8 +75,9 @@ function CkbtcPage(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Hold, send and transact native bitcoin as if the Internet Computer and the
-                Bitcoin network were one blockchain. No bridges or off-chain intermediaries.
+                Hold, send and transact native bitcoin as if the Internet
+                Computer and the Bitcoin network were one blockchain. No bridges
+                or off-chain intermediaries.
               </motion.h2>
             </div>
           </AnimateSpawn>
@@ -220,15 +167,18 @@ function CkbtcPage(): JSX.Element {
                 OpenChat is the first chat app built 100% on a blockchain. Each
                 OpenChat account is assigned to its own canister smart contract
                 capable of sending, receiving and storing messages. It also acts
-                as a wallet, which enables users to hold, send and receive ckBTC.
-                Invite friends to OpenChat to receive and send around satoshis
-                with ease, and at the speed of a chat message.
+                as a wallet, which enables users to hold, send and receive
+                ckBTC. Invite friends to OpenChat to receive and send around
+                satoshis with ease, and at the speed of a chat message.
               </p>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 OpenChat is controlled an SNS DAO. Making owners of it’s CHAT
                 governance token the custodians of the OpenChat networks future.
               </p>
-              <Link className="link-primary link-with-icon" href="https://oc.app/">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://oc.app/"
+              >
                 <LinkArrowRight /> Get an OpenChat account
               </Link>
             </TranslatedLayout>
@@ -240,11 +190,11 @@ function CkbtcPage(): JSX.Element {
                 Tip creators with bitcoin{" "}
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                DSCVR is an end-to-end decentralized Web3 social media platform on
-                which communities form into groups called Portals. Create NFT gated
-                Portals, airdrop fungible and non-fungible tokens to members and tip
-                content creators for posts in a growing number of cryptos, including
-                ckBTC.
+                DSCVR is an end-to-end decentralized Web3 social media platform
+                on which communities form into groups called Portals. Create NFT
+                gated Portals, airdrop fungible and non-fungible tokens to
+                members and tip content creators for posts in a growing number
+                of cryptos, including ckBTC.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -254,7 +204,10 @@ function CkbtcPage(): JSX.Element {
                 Check out DSCVR
               </Link>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
+            <TranslatedLayout
+              imageUrl="/img/bitcoin-integration/bioniq-image.webp"
+              reverse={false}
+            >
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Bioniq
               </div>
@@ -262,10 +215,11 @@ function CkbtcPage(): JSX.Element {
                 Bitcoin Ordinals Marketplace{" "}
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                The world’s fastest Bitcoin-based non-fungible token (NFT) marketplace
-                is on the Internet Computer. Bioniq welcomes Bitcoiners to sell, trade,
-                or transfer bitcoin-based Ordinals and Inscriptions. Fast, low-fee TXs
-                without channels or any compromises on security.
+                The world’s fastest Bitcoin-based non-fungible token (NFT)
+                marketplace is on the Internet Computer. Bioniq welcomes
+                Bitcoiners to sell, trade, or transfer bitcoin-based Ordinals
+                and Inscriptions. Fast, low-fee TXs without channels or any
+                compromises on security.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -300,7 +254,7 @@ function CkbtcPage(): JSX.Element {
                     src="/img/showcase/icdex_logo.webp"
                     loading="lazy"
                     alt=""
-                    className="w-20 h-20"
+                    className="w-20 h-20 object-center object-contain"
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
@@ -318,7 +272,7 @@ function CkbtcPage(): JSX.Element {
                     src="/img/showcase/icpswap_logo.webp"
                     loading="lazy"
                     alt=""
-                    className="w-20 h-20"
+                    className="w-20 h-20 object-center object-contain"
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
@@ -340,8 +294,8 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">NNS</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Choose your ckBTC account on the NNS frontend dapp
-                    to send and receive from the Bitcoin network.
+                    Choose your ckBTC account on the NNS frontend dapp to send
+                    and receive from the Bitcoin network.
                   </p>
                 </Link>
               </motion.div>
@@ -354,13 +308,93 @@ function CkbtcPage(): JSX.Element {
                     src="/img/showcase/plug_logo.webp"
                     loading="lazy"
                     alt=""
-                    className="w-20 h-20"
+                    className="w-20 h-20 object-center object-contain"
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">Plug</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
                     Handle your digital assets through a simple, more
                     traditional browser extension wallet.
                   </p>
+                </Link>
+              </motion.div>
+
+              <motion.div className="" variants={transitions.item}>
+                <Link
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
+                  href="https://sonic.ooo/"
+                >
+                  <img
+                    src="/img/showcase/sonic_logo.webp"
+                    loading="lazy"
+                    alt=""
+                    className="w-20 h-20 object-center object-contain"
+                  ></img>
+                  <h3 className="tw-heading-5 mb-2 mt-8">Sonic</h3>
+                  <p className="tw-lead-sm mb-0 text-black/60">
+                    First orderbook-based DEX running fully on-chain. Bypass
+                    CEXs and get ICP or CHAT tokens for your BTC.
+                  </p>
+                </Link>
+              </motion.div>
+
+              <motion.div className="" variants={transitions.item}>
+                <Link
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
+                  href="https://astrox.me/#/"
+                >
+                  <img
+                    src="/img/showcase/astroxme_logo.webp"
+                    loading="lazy"
+                    alt=""
+                    className="w-20 h-20 object-center object-contain"
+                  ></img>
+                  <h3 className="tw-heading-5 mb-2 mt-8">AstroX</h3>
+                  <p className="tw-lead-sm mb-0 text-black/60">
+                    Offers the largest number of tokens on the Internet
+                    Computer. Trade meme coins, SNS DAO tokens and ckBTC.
+                  </p>
+                </Link>
+              </motion.div>
+
+              <motion.div className="" variants={transitions.item}>
+                <Link
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
+                  href="https://airgap.it/"
+                >
+                  <img
+                    src="/img/showcase/airgap_logo.webp"
+                    loading="lazy"
+                    alt=""
+                    className="w-20 h-20 object-center object-contain"
+                  ></img>
+                  <h3 className="tw-heading-5 mb-2 mt-8">AirGap</h3>
+                  <p className="tw-lead-sm mb-0 text-black/60">
+                    Choose your ckBTC account on the NNS frontend dapp to send
+                    and receive from the Bitcoin network.
+                  </p>
+                </Link>
+              </motion.div>
+
+              <motion.div className="" variants={transitions.item}>
+                <Link
+                  href="/ecosystem/?tag=Bitcoin"
+                  className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white hover:-translate-y-3 transition-transform text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6] h-full"
+                >
+                  See all projects with Bitcoin support
+                  <svg
+                    width="36"
+                    height="36"
+                    viewBox="0 0 36 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="absolute bottom-8 right-8"
+                  >
+                    <path
+                      d="M11.8398 30.3242L24.1631 18.001L11.8398 5.67773"
+                      stroke="white"
+                      strokeWidth="3"
+                    />
+                  </svg>
                 </Link>
               </motion.div>
             </AnimateSpawn>
@@ -382,9 +416,9 @@ function CkbtcPage(): JSX.Element {
             >
               <div className="flex-[4] relative flex items-start">
                 <img
-                  src="https://place-hold.it/600x600"
+                  src="/img/bitcoin-integration/about-ckbtc.webp"
                   alt=""
-                  className="flex-1 opacity-30"
+                  className="flex-1"
                 />
               </div>
               <div className="flex-[6] space-y-12 md:space-y-20">
@@ -394,32 +428,36 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the custodian,
-                    and Sollet the bridge for wrapping and unwrapping BTC and ETH on
-                    Solana, demonstrates how bridges and intermediaries can act as
-                    single points of failures and are highly vulnerable to hacks.
-                    Ethereum smart contracts behind a bridge make asset transfers
-                    between blockchains possible, but users must still trust a
-                    third-party centralized custodian to manage the digital assets
-                    whose code is often not publicly verifiable.{" "}
+                    The recent incident where the FTX exchange acted as the
+                    custodian, and Sollet the bridge for wrapping and unwrapping
+                    BTC and ETH on Solana, demonstrates how bridges and
+                    intermediaries can act as single points of failures and are
+                    highly vulnerable to hacks. Ethereum smart contracts behind
+                    a bridge make asset transfers between blockchains possible,
+                    but users must still trust a third-party centralized
+                    custodian to manage the digital assets whose code is often
+                    not publicly verifiable.{" "}
                   </p>
                   <p className="tw-paragraph mb-3">
-                    On the Internet Computer, node machines directly talk to Bitcoin
-                    nodes, which enables canister smart contracts to not only send and
-                    receive bitcoin, but also hold it — no bridges or centralized
-                    custodians required, and UTXOs are verifiable by anyone.  Essentially,
-                    ckBTC canisters smart contracts send bitcoin between the two networks
-                    as if they were one.
+                    On the Internet Computer, node machines directly talk to
+                    Bitcoin nodes, which enables canister smart contracts to not
+                    only send and receive bitcoin, but also hold it — no bridges
+                    or centralized custodians required, and UTXOs are verifiable
+                    by anyone. Essentially, ckBTC canisters smart contracts send
+                    bitcoin between the two networks as if they were one.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Chain-key ECDSA signing is the technology that enables Internet Computer
-                    nodes to create new Bitcoin addresses and sign Bitcoin transactions at a
-                    protocol level. The secret signature key is never stored in one place but
-                    rather broken down into several key shares held by nodes on the Internet
-                    Computer that are reshared every 5-10 minutes, making Bitcoin transactions
-                    resilient to attacks by malicious nodes. Importantly, ckBTC canisters are
-                    controlled by the NNS DAO, which means no single entity can initiate
-                    malicious activities without the approval of ICP governance token holders.
+                    Chain-key ECDSA signing is the technology that enables
+                    Internet Computer nodes to create new Bitcoin addresses and
+                    sign Bitcoin transactions at a protocol level. The secret
+                    signature key is never stored in one place but rather broken
+                    down into several key shares held by nodes on the Internet
+                    Computer that are reshared every 5-10 minutes, making
+                    Bitcoin transactions resilient to attacks by malicious
+                    nodes. Importantly, ckBTC canisters are controlled by the
+                    NNS DAO, which means no single entity can initiate malicious
+                    activities without the approval of ICP governance token
+                    holders.
                   </p>
                 </div>
                 <div>
@@ -428,9 +466,10 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    While ckBTC acts as a token and implements the ICRC-1 standard (the Internet
-                    Computer’s fungible token standard), it is essentially a multi-chain asset
-                    that can be sent freely between addresses on either the Bitcoin Network or
+                    While ckBTC acts as a token and implements the ICRC-1
+                    standard (the Internet Computer’s fungible token standard),
+                    it is essentially a multi-chain asset that can be sent
+                    freely between addresses on either the Bitcoin Network or
                     the Internet Computer. No wrapping necessary.
                   </p>
                 </div>
@@ -441,24 +480,28 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    The Lighting Network is a Layer-2 for Bitcoin. It acts as payment channel
-                    extending Bitcoin’s throughput with speedy transactions at lower fees.
-                    However, every transaction on the Lightning Network has to be settled on
-                    Bitcoin, which limits the network’s flexibility. This is very different from
-                    ckBTC, which expands Bitcoin’s functionality via smart contracts that send
-                    and receive bitcoin with near instant finality and negligible fees. 
+                    The Lighting Network is a Layer-2 for Bitcoin. It acts as
+                    payment channel extending Bitcoin’s throughput with speedy
+                    transactions at lower fees. However, every transaction on
+                    the Lightning Network has to be settled on Bitcoin, which
+                    limits the network’s flexibility. This is very different
+                    from ckBTC, which expands Bitcoin’s functionality via smart
+                    contracts that send and receive bitcoin with near instant
+                    finality and negligible fees.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    While ckBTC provides Layer-2 functionality to Bitcoin, its transactions do
-                    not need to settle on Bitcoin’s ledger. Instead, ckBTC moves freely and
-                    seamlessly between the two networks, thanks to Chain-Key Signing. ckBTC
-                    smart contract functionality can also do lot more than simple payments.
+                    While ckBTC provides Layer-2 functionality to Bitcoin, its
+                    transactions do not need to settle on Bitcoin’s ledger.
+                    Instead, ckBTC moves freely and seamlessly between the two
+                    networks, thanks to Chain-Key Signing. ckBTC smart contract
+                    functionality can also do lot more than simple payments.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    Another key difference is that ckBTC transaction fees are fixed, and not
-                    dependent on network usage or transaction amount, while Lightning’s fees
-                    vary both with network congestion and transaction volume, which is becoming
-                    a problem due the popularity of BTC Ordinals.
+                    Another key difference is that ckBTC transaction fees are
+                    fixed, and not dependent on network usage or transaction
+                    amount, while Lightning’s fees vary both with network
+                    congestion and transaction volume, which is becoming a
+                    problem due the popularity of BTC Ordinals.
                   </p>
                 </div>
               </div>
