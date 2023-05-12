@@ -2,7 +2,7 @@ import Link from "@docusaurus/Link";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
@@ -13,9 +13,41 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const queryClient = new QueryClient();
 
+async function fetchCkbtcTotalSupply(
+  abortController: AbortController
+): Promise<number> {
+  const metrics = fetch(
+    "https://mxzaz-hqaaa-aaaar-qaada-cai.raw.ic0.app/metrics",
+    { signal: abortController.signal }
+  ).then((res) => res.text());
+
+  let totalSupplyLine = (await metrics)
+    .split(/[\r\n]+/gi)
+    .map((line) => line.trim())
+    .find((line) => line.startsWith("ledger_total_supply"));
+  if (totalSupplyLine) {
+    return +totalSupplyLine.split(/\s+/)[1];
+  }
+
+  return 0;
+}
+
 function CkbtcPage(): JSX.Element {
   const ref = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(ref);
+  const [totalSupply, setTotalSupply] = useState<number>(0);
+
+  useEffect(() => {
+    const abortSignal = new AbortController();
+
+    fetchCkbtcTotalSupply(abortSignal).then((totalSupply) => {
+      setTotalSupply(totalSupply);
+    });
+
+    return () => {
+      abortSignal.abort();
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -145,7 +177,9 @@ function CkbtcPage(): JSX.Element {
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
-                    Total Supply: 72 BTC already upgraded
+                    Total Supply:{" "}
+                    {totalSupply ? (totalSupply / 100_000_000).toFixed(0) : ""}{" "}
+                    BTC already upgraded
                   </li>
                   <li className="checklist-item pl-8">
                     No centralized custodians or bridges{" "}
