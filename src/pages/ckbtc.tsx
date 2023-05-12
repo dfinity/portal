@@ -53,15 +53,15 @@ function CkbtcPage(): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <Layout
-        title="ckBTC: Upgrade your Bitcoin"
-        description="ckBTC is a bitcoin twin created by Canister Smart Contracts, running on the Internet Computer, that trustlessly and directly hold Bitcoin. ckBTC can be sent with 1-2 second finality and negligible fees."
+        title="ckBTC is bitcoin on Web3"
+        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-ckBTC.jpg" />
           {isDark && <DarkHeroStyles />}
           <section
-            className="bg-infinite   text-white overflow-hidden"
+            className="bg-infinite text-white overflow-hidden"
             ref={ref}
           >
             <AnimateSpawn
@@ -74,17 +74,14 @@ function CkbtcPage(): JSX.Element {
                   className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
                   variants={transitions.item}
                 >
-                  ckBTC: Upgrade
-                  <br /> your Bitcoin
+                  ckBTC is bitcoin
+                  <br /> on Web3
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC is a bitcoin twin created by Canister Smart Contracts,
-                  running on the Internet Computer, that trustlessly and
-                  directly hold Bitcoin. ckBTC can be sent with 1-2 second
-                  finality and negligible fees.
+                  ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin.
                 </motion.p>
               </div>
             </AnimateSpawn>
