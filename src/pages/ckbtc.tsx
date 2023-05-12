@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
@@ -534,6 +535,20 @@ function CkbtcPage(): JSX.Element {
                     fixed, and not dependent on the transaction amount, variable
                     intermediate forwarding, or unexpected channel funding fees.
                   </p>
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="/bitcoin-integration"
+                  >
+                    <LinkArrowRight />
+                    How Native Bitcoin Integration Works
+                  </Link>
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e"
+                  >
+                    <LinkArrowUpRight />
+                    Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin
+                  </Link> 
                 </div>
               </div>
               <div className="flex-[0]"></div>
