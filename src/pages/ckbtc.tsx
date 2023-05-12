@@ -334,6 +334,25 @@ function CkbtcPage(): JSX.Element {
                   </p>
                 </Link>
               </motion.div>
+              
+              <motion.div className="" variants={transitions.item}>
+                <Link
+                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
+                  href="https://sonic.ooo/"
+                >
+                  <img
+                    src="/img/showcase/sonic_logo.webp"
+                    loading="lazy"
+                    alt=""
+                    className="w-20 h-20 object-center object-contain"
+                  ></img>
+                  <h3 className="tw-heading-5 mb-2 mt-8">Sonic</h3>
+                  <p className="tw-lead-sm mb-0 text-black/60">
+                    Swap tokens, or provide liquidity on a fully on-chain DEX.
+                  </p>
+                </Link>
+              </motion.div>
+              
               <motion.div className="" variants={transitions.item}>
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
@@ -356,25 +375,6 @@ function CkbtcPage(): JSX.Element {
               <motion.div className="" variants={transitions.item}>
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
-                  href="https://sonic.ooo/"
-                >
-                  <img
-                    src="/img/showcase/sonic_logo.webp"
-                    loading="lazy"
-                    alt=""
-                    className="w-20 h-20 object-center object-contain"
-                  ></img>
-                  <h3 className="tw-heading-5 mb-2 mt-8">Sonic</h3>
-                  <p className="tw-lead-sm mb-0 text-black/60">
-                    First orderbook-based DEX running fully on-chain. Bypass
-                    CEXs and get ICP or CHAT tokens for your BTC.
-                  </p>
-                </Link>
-              </motion.div>
-
-              <motion.div className="" variants={transitions.item}>
-                <Link
-                  className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
                   href="https://astrox.me/#/"
                 >
                   <img
@@ -385,8 +385,7 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">AstroX</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Offers the largest number of tokens on the Internet
-                    Computer. Trade meme coins, SNS DAO tokens and ckBTC.
+                    Web3 Wallet Infrastructure for all your digital assets.
                   </p>
                 </Link>
               </motion.div>
@@ -404,8 +403,7 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">AirGap</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Choose your ckBTC account on the NNS frontend dapp to send
-                    and receive from the Bitcoin network.
+                    Turn your old smartphone into an air gapped wallet to secure your ckBTC.
                   </p>
                 </Link>
               </motion.div>
@@ -415,7 +413,7 @@ function CkbtcPage(): JSX.Element {
                   href="/ecosystem/?tag=Bitcoin"
                   className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white hover:-translate-y-3 transition-transform text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6] h-full"
                 >
-                  See all projects with Bitcoin support
+                  See more projects with Bitcoin support
                   <svg
                     width="36"
                     height="36"
