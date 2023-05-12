@@ -1765,6 +1765,25 @@
     "github": "https://github.com/onehilltech/ember-cli-dfinity"
   },
   {
+    "id": "beamfi",
+    "name": "BeamFi",
+    "oneLiner": "Real Time Micro Payments solution for creators",
+    "website": "https://beamfi.app",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "BeamFi is an open source DeFi protocol, bringing Autonomous Stream Payment solution to Internet Computer, allowing users to send or receive a constant stream of ICP or XTC in BeamFi DApp or BeamFi Meeting App in Zoom while a meeting is in progress",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/beamfi_logo.webp",
+    "github": "https://github.com/BeamFi/BeamFiProtocol",
+    "youtube": "https://youtu.be/85TWP4QHHBg",
+    "twitter": "https://twitter.com/BeamFiApp",
+    "screenshots": [
+      "/img/showcase/beamfi_screenshot_0.webp"
+    ],
+    "submittableId": "33086681"
+  },
+  {
     "id": "bink",
     "name": "Bink",
     "oneLiner": "Superior alternative to Linktree",
