@@ -1793,5 +1793,16 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/bink_logo.png",
     "twitter": "https://twitter.com/BinkDapp"
+  },
+  {
+    "id": "datanome",
+    "name": "Datanome Project",
+    "oneLiner": "The semantic, decentralized data marketplace",
+    "website": "https://datanome.com",
+    "tags": ["Tools / Infrastructure"],
+    "description": "Community-operated, open-source platform that enables fast, secure, cross-chain access to data.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/datanome-logo.png",
+    "twitter": "https://twitter.com/datanomeproject"
   }
 ]
