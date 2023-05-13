@@ -19,10 +19,10 @@
 }
 
 .navbar {
-  z-index: 1901;
   padding: 44px var(--ifm-navbar-x-padding) 20px var(--ifm-navbar-x-padding);
   height: var(--ifm-navbar-height);
   margin: 0 0;
+  @apply z-50;
 }
 
 .dropdown--hoverable .dropdown__menu {
@@ -40,7 +40,7 @@
   }
   .navbar {
     padding: var(--ifm-navbar-padding-vertical)
-    var(--ifm-navbar-padding-horizontal);
+      var(--ifm-navbar-padding-horizontal);
   }
 
   .navbar__logo {
@@ -56,22 +56,6 @@
 .navbar__inner {
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Don't display docSidebar items in the top navbar on marketing pages*/
-html.plugin-pages,
-html:not(.plugin-pages):not(.plugin-docs) {
-  .navbar__inner .navbar__items:first-child .navbar__item {
-    display: none;
-  }
-}
-
-/* Don't display main nav items in the top navbar on docs pages*/
-html.plugin-docs
-.navbar__inner
-.navbar__items.navbar__items--right
-.navbar__item {
-  display: none;
 }
 
 /* on mobile hide the search bar in the top navbar */
@@ -112,7 +96,7 @@ html.plugin-docs
 .navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
   /* https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
-  brightness(90%) contrast(89%);
+    brightness(90%) contrast(89%);
 }
 
 /* Swap the order of the IC logo and the hamburger icon */

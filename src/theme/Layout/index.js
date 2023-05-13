@@ -10,6 +10,7 @@ import Footer from "@theme/Footer";
 import LayoutProvider from "@theme/Layout/Provider";
 import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
+import { DevDocsSubnav } from "@site/src/theme/Subnav/DevDocsSubnav";
 
 export default function Layout(props) {
   const {
@@ -21,6 +22,9 @@ export default function Layout(props) {
     description,
     editPath,
   } = props;
+
+  const isDocsPage = location.pathname.startsWith("/docs/");
+
   useKeyboardNavigation();
 
   return (
@@ -32,6 +36,8 @@ export default function Layout(props) {
       <AnnouncementBar />
 
       <Navbar />
+
+      {isDocsPage && <DevDocsSubnav />}
 
       <div
         className={clsx(

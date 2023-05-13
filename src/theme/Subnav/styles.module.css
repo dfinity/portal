@@ -1,0 +1,29 @@
+.subnav {
+  background: #e8e4ed;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  position: sticky;
+  height: var(--ifm-subnav-height);
+  transition: top inherit linear;
+  @apply z-40;
+}
+
+.transitionInitial {
+  transition-duration: inherit;
+}
+
+.transitionMatch {
+  transition-duration: var(--ifm-transition-fast);
+}
+
+.transitionFaster {
+  transition-duration: 100ms;
+}
+
+.navbarOffset {
+  top: var(--ifm-navbar-height);
+}
+
+.navbarZero {
+  top: 0;
+}

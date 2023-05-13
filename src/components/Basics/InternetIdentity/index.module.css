@@ -1,6 +1,6 @@
 .outerContainer {
   position: relative;
-  z-index: 2;
+  @apply z-10;
 }
 
 .card {
@@ -30,8 +30,8 @@
   position: fixed;
   inset: 0;
   background-color: var(--ifm-color-primary);
-  z-index: 1;
   transition: opacity 500ms ease;
+  @apply z-10;
   /* transition-delay: 650ms; */
 }
 

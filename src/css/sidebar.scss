@@ -1,9 +1,24 @@
 :root {
-  --ifm-menu-color-background-hover: #E8E4ED;
+  --ifm-menu-color-background-hover: #e8e4ed;
 }
 
 div[class*="sidebar_"] {
   border-right: var(--ic0-nav-border);
+}
+
+// ensure the side menu also maintains consistent spacing with the nav and subnav
+// this rule adds appropriate padding when the navbar is visible
+.navbar ~ .main-wrapper {
+  .menu {
+    padding-top: calc(30px + var(--ifm-subnav-height)) !important;
+    transition: padding-top var(--ifm-transition-fast);
+  }
+}
+// this rule removes padding when the navbar is hidden so the menu and subnav continue to have
+nav[class*="navbarHidden_"] ~ .main-wrapper {
+  .menu {
+    padding-top: 0 !important;
+  }
 }
 
 .menu {
@@ -14,11 +29,12 @@ div[class*="sidebar_"] {
 .navbar-sidebar {
   background: var(--ifm-menu-color-background-hover);
 
-  .menu__link, .menu__list-item-collapsible {
+  .menu__link,
+  .menu__list-item-collapsible {
     background: var(--ifm-menu-color-background-hover);
 
     &:hover {
-      background: #F1EEF5;
+      background: #f1eef5;
     }
   }
 }
@@ -26,7 +42,7 @@ div[class*="sidebar_"] {
 .navbar-sidebar__back {
   width: 100%;
   margin: unset;
-  background: #F1EEF5;
+  background: #f1eef5;
 
   &:hover {
     background: var(--ic0-color);
@@ -34,7 +50,9 @@ div[class*="sidebar_"] {
   }
 }
 
-.menu__link, .menu__list-item-collapsible, .navbar-sidebar__back {
+.menu__link,
+.menu__list-item-collapsible,
+.navbar-sidebar__back {
   border-radius: 8px;
 }
 
@@ -48,18 +66,22 @@ div[class*="sidebar_"] {
   }
 }
 
-.menu__caret:before, .menu__link--sublist:after {
+.menu__caret:before,
+.menu__link--sublist:after {
   background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
 }
 
-.menu__link:hover, .menu__list-item-collapsible:hover {
+.menu__link:hover,
+.menu__list-item-collapsible:hover {
   color: var(--ifm-menu-color-active);
 
-  .menu__caret:before, .menu__link--sublist:after {
+  .menu__caret:before,
+  .menu__link--sublist:after {
     filter: var(--ifm-color-primary-filter);
   }
 }
 
-.menu__list .menu__list, .menu__list-item:not(:first-child) {
+.menu__list .menu__list,
+.menu__list-item:not(:first-child) {
   margin-top: 0.5rem;
 }

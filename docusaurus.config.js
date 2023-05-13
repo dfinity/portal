@@ -5,7 +5,6 @@ const dotenv = require("dotenv");
 const isDev = process.env.NODE_ENV === "development";
 dotenv.config({ path: ".env.local" });
 
-// @ts-ignore
 const versions = require("./versions.json");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
@@ -49,9 +48,6 @@ const config = {
   organizationName: "dfinity",
   projectName: "portal",
   customFields: {
-    marketingLogoUrl: "/",
-    docsLogoUrl: "/docs/current/home",
-    docsLogoSrc: "/img/IC_logo_docs.svg",
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
   },
   plugins: [
@@ -391,98 +387,6 @@ const config = {
               ],
             ]),
           },
-          {
-            type: "doc",
-            position: "left",
-            docId: "home",
-            label: "Home",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "tutorials",
-            label: "Tutorials",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "guides",
-            label: "Guides",
-            activeBasePath: "/docs/current/developer-docs/",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "references",
-            label: "References",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "motoko",
-            label: "Motoko",
-          },
-          {
-            type: "docSidebar",
-            position: "left",
-            sidebarId: "blog",
-            label: "Blog",
-          },
-          {
-            type: "dropdown",
-            position: "left",
-            label: "Links",
-            items: [
-              {
-                label: "Internet Computer Home",
-                to: "/",
-              },
-              {
-                label: "Awesome Internet Computer",
-                href: "https://github.com/dfinity/awesome-internet-computer#readme",
-              },
-              { label: "Sample Code", to: "/samples" },
-              {
-                label: "SDK Release Notes",
-                type: "doc",
-                docId: "other/updates/release-notes/release-notes",
-              },
-              { label: "Developer Tools", to: "/tooling" },
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
-              {
-                label: "Motoko Playground",
-                href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              },
-              {
-                label: "Dev Forum",
-                href: "https://forum.dfinity.org/",
-              },
-              {
-                label: "Dev Discord",
-                href: "https://discord.gg/jnjVVQaE2C",
-              },
-            ],
-          },
-          // {
-          //   type: "docSidebar",
-          //   position: "left",
-          //   sidebarId: "tokenomics",
-          //   label: "User Guides (migrate)",
-          // },
-          // {
-          //   type: "docSidebar",
-          //   position: "left",
-          //   sidebarId: "samples",
-          //   label: "Sample Code (migrate)",
-          // },
-
-          // {
-          //   html: '<img src="/img/svgIcons/ic0.svg" alt="Go to version hosted on the Internet Computer"/> <span>Switch to ic0</span>',
-          //   position: "right",
-
-          //   href: `https://${require("./canister_ids.json").portal.ic}.ic0.app`,
-          //   className: "ic0-item",
-          // },
         ],
       },
 

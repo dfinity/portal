@@ -57,6 +57,7 @@ html.docs-doc-page {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
+  --ifm-subnav-height: 54px;
   --ifm-color-primary: #791E94;
   --ifm-navbar-link-hover-color: #791E94;
 
@@ -68,6 +69,8 @@ html.docs-doc-page {
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+
+    --ifm-color-primary: #3b00b9;
 
     // color the dropdown caret on hover
     .navbar__item:hover {
@@ -86,10 +89,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   --ifm-toc-border-color: transparent;
   --ifm-toc-padding-horizontal: 0;
 
-  .navbar {
-    border-bottom: var(--ic0-nav-border);
-  }
-
   // style the article body
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
@@ -100,6 +99,10 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
     .container {
       padding: 0 !important;
+    }
+
+    .row {
+      margin: 0;
     }
 
     div[class*="docItemContainer_"] {
@@ -132,7 +135,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     }
 
     div[class*="tableOfContents"] {
-      top: calc(var(--ifm-navbar-height) + 40px);
+      top: calc(var(--ifm-navbar-height) + var(--ifm-subnav-height) + 40px);
       max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
       padding-right: 40px;
 
