@@ -20,7 +20,7 @@
   },
   {
     "id": "distrikt",
-    "name": "Distrikt",
+    "name": "distrikt",
     "oneLiner": "Censorship-resistant fully on-chain social media platform",
     "website": "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/",
     "tags": [
@@ -1363,7 +1363,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Java Agent for the Internet Computer is an open source library. This developer tool enables Java applications to connect remotely to any Canister smart contract on the Internet Computer and execute query and update calls.",
+    "description": "Java Agent for the Internet Computer is an open source library. This developer tool enables Java applications to connect remotely to any canister smart contract on the Internet Computer and execute query and update calls.",
     "github": "https://github.com/ic4j/ic4j-agent",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/javaagent_logo.webp",

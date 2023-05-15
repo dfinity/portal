@@ -158,7 +158,7 @@ const config = {
             items: intoColumns([
               [
                 // column 1
-                menuDivider("Dig in"),
+                menuDivider("Start here"),
                 {
                   label: "The Basics",
                   href: "/basics",
@@ -448,7 +448,7 @@ const config = {
                 docId: "other/updates/release-notes/release-notes",
               },
               { label: "Developer Tools", to: "/tooling" },
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              { label: "Developer grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -528,7 +528,7 @@ const config = {
                 label: "ICP Careers",
                 href: "https://careers.internetcomputer.org/",
               },
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              { label: "Developer grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
                 href: "https://support.dfinity.org/hc/en-us",

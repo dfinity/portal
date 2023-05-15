@@ -72,7 +72,7 @@ function OpenChatPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Lighting the Way to an Open Internet
+                  Lighting the way to an open internet
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
@@ -165,7 +165,7 @@ function OpenChatPage() {
             <Card>
               <img src="/img/sns/autonomous.svg" aria-hidden="true"></img>
               {/* <img src="/img/sns/scalable.svg" aria-hidden="true"></img> */}
-              <h3>Open Internet Services</h3>
+              <h3>Open internet services</h3>
 
               <p>
                 An "open internet service" is an internet service with a
@@ -210,7 +210,7 @@ function OpenChatPage() {
 
             <Card>
               <img src="/img/sns/community-owned.svg" aria-hidden="true"></img>
-              <h3>Community Ownership</h3>
+              <h3>Community ownership</h3>
               <p>
                 Web1 was about users <b>reading</b> content from the internet,
                 Web2 was about users <b>writing</b> content that other users
@@ -228,7 +228,7 @@ function OpenChatPage() {
 
             <Card>
               <img src="/img/sns/tokenized.svg" aria-hidden="true"></img>
-              <h3>Founderizing Users</h3>
+              <h3>Founderizing users</h3>
               <p>
                 During the creation of an open internet service, an initial
                 "decentralization swap" exchanges the new SNS DAO's governance
@@ -265,7 +265,7 @@ function OpenChatPage() {
                 href="https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai "
                 className="link-primary link-with-icon"
               >
-                View OpenChat Dashboard <LinkArrowUpRight />
+                View OpenChat dashboard <LinkArrowUpRight />
               </Link>
             </p>
           </TranslatedLayout>
@@ -307,7 +307,7 @@ function OpenChatPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Have an SNS Transform Your Web3 App into a True Dapp
+              Have an SNS transform your Web3 app into a true dapp
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"

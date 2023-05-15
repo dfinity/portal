@@ -160,7 +160,7 @@ function SnsPage() {
           gap-16 md:gap-0
           "
           >
-            <Card title="Easy to Get Started">
+            <Card title="Easy to get started">
               <motion.p
                 className="mb-6 tw-paragraph"
                 variants={transitions.item}
@@ -191,7 +191,7 @@ function SnsPage() {
               </motion.p>
             </Card>
             <Card
-              title="Community Owned"
+              title="Community owned"
               icon={<IconCommunityOwned aria-hidden="true" />}
             >
               <motion.p
@@ -258,7 +258,7 @@ function SnsPage() {
               </motion.p>
             </Card>
             <Card
-              title="Truly Decentralized"
+              title="Truly decentralized"
               icon={<IconScalable aria-hidden="true" />}
             >
               <motion.p
@@ -299,7 +299,7 @@ function SnsPage() {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Have an SNS Transform Your Web3 App into a True Dapp
+              Have an SNS transform your Web3 app into a true dapp
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
@@ -386,7 +386,7 @@ function SnsPage() {
                 className="tw-heading-4 md:tw-heading-3 md:w-5/10 mb-6 md:my-8"
                 variants={transitions.item}
               >
-                SNS-1: The First of its Kind
+                SNS-1: The first of its kind
               </motion.h2>
 
               <motion.p
