@@ -168,7 +168,7 @@ const config = {
                   href: "/what-is-the-ic",
                 },
                 {
-                  label: "The Technology",
+                  label: "How It Works",
                   href: "/how-it-works",
                 },
                 {

@@ -4,7 +4,7 @@ title: Serving Web content
 
 ![](/img/how-it-works/web-content.jpg)
 
-# Smart Contracts Serve the Web
+# Smart Contracts serve the web
 
 The Internet Computer is the only blockchain that can host a full dapp – frontend,
 backend and data. This is a crucial and distinguishing feature allowing dapps to
