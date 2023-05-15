@@ -158,7 +158,7 @@ const config = {
             items: intoColumns([
               [
                 // column 1
-                menuDivider("Dig in"),
+                menuDivider("Start here"),
                 {
                   label: "The Basics",
                   href: "/basics",
