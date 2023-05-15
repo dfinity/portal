@@ -1,4 +1,4 @@
-# Tutorial 2 - Create your first app
+# Tutorial 2 - Create your first app in 10 minutes
 
 ## About this tutorial
 
