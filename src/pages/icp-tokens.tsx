@@ -78,7 +78,7 @@ function TokenHolders(): JSX.Element {
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
-          <ShareMeta image="/img/shareImages/share-icp-tokens.jpeg" />
+          <ShareMeta image="/img/shareImages/share-icp-tokens.jpg" />
           {isDark && <DarkHeroStyles />}
           <section
             className="bg-infinite   text-white overflow-hidden"
