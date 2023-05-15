@@ -31,7 +31,7 @@ const HostWeb = () => {
           variants={transitions.item}
           className={clsx("tw-heading-3 md:tw-heading-2 m-0", styles.heading)}
         >
-          What makes the Internet Computer Unique?
+          What makes the Internet Computer unique?
         </motion.h2>
         <div className={styles.content}>
           <motion.div variants={transitions.item} className={styles.copy}>
