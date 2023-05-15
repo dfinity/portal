@@ -11,6 +11,7 @@ import LayoutProvider from "@theme/Layout/Provider";
 import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
 import { DevDocsSubnav } from "@site/src/theme/Subnav/DevDocsSubnav";
+import { useLocation } from "@docusaurus/router";
 
 export default function Layout(props) {
   const {
@@ -23,7 +24,8 @@ export default function Layout(props) {
     editPath,
   } = props;
 
-  const isDocsPage = location.pathname.startsWith("/docs/");
+  const location = useLocation();
+  const isDevDocs = location.pathname.startsWith("/docs/");
 
   useKeyboardNavigation();
 
@@ -37,7 +39,7 @@ export default function Layout(props) {
 
       <Navbar />
 
-      {isDocsPage && <DevDocsSubnav />}
+      {isDevDocs && <DevDocsSubnav />}
 
       <div
         className={clsx(

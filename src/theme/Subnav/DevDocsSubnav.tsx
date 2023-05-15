@@ -5,6 +5,7 @@ import clsx from "clsx";
 import DocSidebarNavbarItem from "@theme/NavbarItem/DocSidebarNavbarItem";
 import DocNavbarItem from "@theme/NavbarItem/DocNavbarItem";
 import DropdownNavbarItem from "@theme/NavbarItem/DropdownNavbarItem";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 
 export function DevDocsSubnav() {
   const items = useThemeConfig().navbar.items.filter((item) => item.isSubnav);
@@ -12,6 +13,8 @@ export function DevDocsSubnav() {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<"down" | "up">(null);
+
+  const isBrowser = useIsBrowser();
 
   const scrollHandler = useCallback(() => {
     const offset = document.body.getBoundingClientRect().top;
@@ -27,13 +30,19 @@ export function DevDocsSubnav() {
     };
   });
 
-  const navbarHeight = parseInt(
-    getComputedStyle(document.documentElement)
-      .getPropertyValue("--ifm-navbar-height")
-      .replace("px", "")
-  );
+  const navbarHeight = isBrowser
+    ? parseInt(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue("--ifm-navbar-height")
+          .replace("px", "")
+      )
+    : 0;
 
   const className = useMemo(() => {
+    if (!isBrowser) {
+      return "";
+    }
+
     const roundingError = 4;
 
     if (scrollY < navbarHeight + roundingError) {
