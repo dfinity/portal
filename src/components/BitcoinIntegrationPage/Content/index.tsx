@@ -52,7 +52,7 @@ const Content: React.FC = () => {
         <motion.div className="flex-[5] space-y-5" variants={transitions.item}>
           <div className="bg-white rounded-xl p-6 md:p-8">
             <h3 className="tw-heading-6 md:tw-heading-4 mb-4">
-              Network Integration
+              Network integration
             </h3>
             <p className="tw-paragraph mb-0">
               One key tech development allowing smart contracts on the Internet
@@ -71,7 +71,7 @@ const Content: React.FC = () => {
           </div>
           <div className="bg-white rounded-xl p-6 md:p-8">
             <h3 className="tw-heading-6 md:tw-heading-4 mb-4">
-              Chain-Key ECDSA
+              Chain-key ECDSA
             </h3>
             <p className="tw-paragraph mb-0">
               The real magic behind Bitcoin integration is chain-key ECDSA
@@ -97,7 +97,7 @@ const Content: React.FC = () => {
       >
         <div className="md:w-6/10 md:mx-auto md:text-center">
           <h2 className="tw-heading-4 md:tw-heading-2 text-gradient mb-3 md:mb-6">
-            Chain-Key Bitcoin
+            Chain-key bitcoin
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
             Chain-Key Bitcoin (ckBTC) acts as a bitcoin ‘twin’ on ICP. It is
@@ -151,7 +151,7 @@ const Content: React.FC = () => {
               className="button-outline"
               href="https://dashboard.internetcomputer.org/bitcoin"
             >
-              ckBTC on the Dashboard
+              ckBTC on the dashboard
             </Link>
             <Link
               href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
@@ -179,7 +179,7 @@ const Content: React.FC = () => {
               className="w-full "
             />
           </p>
-          <p className="tw-paragraph mb-0 font-bold">Not a Bridged Token</p>
+          <p className="tw-paragraph mb-0 font-bold">Not a bridged token</p>
           <p className="tw-paragraph mb-3">
             Most blockchains rely on so-called bridges to wrap and unwrap
             tokens, such as bitcoin. The recent incident where the FTX exchange

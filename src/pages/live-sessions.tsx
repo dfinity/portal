@@ -110,7 +110,7 @@ function LiveSessionsPage(): JSX.Element {
 
   return (
     <Layout
-      title="Live Sessions"
+      title="Live sessions"
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -127,7 +127,7 @@ function LiveSessionsPage(): JSX.Element {
             "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
           }
         />
-        <title>Live Sessions</title>
+        <title>Live sessions</title>
       </Head>
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
@@ -340,7 +340,7 @@ function LiveSessionsPage(): JSX.Element {
                   })
                 }
               >
-                Alerts for New Session Registrations
+                Alerts for new session registrations
               </button>
             </div>
             <motion.img
@@ -370,7 +370,7 @@ function LiveSessionsPage(): JSX.Element {
               variants={transitions.item}
               className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-12"
             >
-              Past Live Sessions
+              Past live sessions
             </motion.h2>
             <div className="space-y-16 md:space-y-10">
               {(showAllPast ? past : past.slice(0, 5)).map((session) => {
@@ -436,7 +436,7 @@ function LiveSessionsPage(): JSX.Element {
                             className="tw-heading-6 text-black"
                             href={session.youtubeLink}
                           >
-                            Recording Available Soon...
+                            Recording available soon...
                           </Link>
                         </div>
                       )}
@@ -446,7 +446,7 @@ function LiveSessionsPage(): JSX.Element {
                             className="link-primary"
                             href={session.youtubeLink}
                           >
-                            Watch Video Replay{" "}
+                            Watch video replay{" "}
                             <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
                           </Link>
                         </div>

@@ -85,7 +85,7 @@ const SmallCard: React.FC<{
 function FeaturesPage() {
   return (
     <Layout
-      title="World Computer Capabilities"
+      title="World Computer capabilities"
       description="The Internet Computer is 'alien tech' crypto. It extends the
     internet by smashing through historical limitations, unlocking new capabilities
     for Web3 and the world..."
@@ -105,7 +105,7 @@ function FeaturesPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-6"
                 variants={transitions.item}
               >
-                World Computer Capabilities
+                World Computer capabilities
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
@@ -139,7 +139,7 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Web Experience
+              Web experience
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -404,7 +404,7 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Integrating Chains
+              Integrating chains
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -491,7 +491,7 @@ function FeaturesPage() {
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              Chain-key Transactions
+              Chain-key transactions
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
@@ -534,7 +534,7 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Democracy on the Blockchain
+              Democracy on the blockchain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -637,7 +637,7 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-8"
               variants={transitions.item}
             >
-              Cool Protocol Stuff
+              Cool protocol stuff
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -663,7 +663,7 @@ function FeaturesPage() {
           ></motion.div>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Chain-key Cryptography
+              Chain-key cryptography
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               The Internet Computer protocol uses a toolbox of advanced
@@ -682,7 +682,7 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Concurrent Execution
+              Concurrent execution
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               Enabled by the IC's asynchronous communication, "actor" smart
@@ -751,7 +751,7 @@ function FeaturesPage() {
           </SmallCard>
           <SmallCard>
             <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Subnets &amp; Infinite Scalability
+              Subnets &amp; infinite scalability
             </h4>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               The Internet Computer incorporates a novel subnet architecture
@@ -788,7 +788,7 @@ function FeaturesPage() {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Take a Tech Dive
+              Take a tech dive
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-6"
