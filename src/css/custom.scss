@@ -92,6 +92,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   // style the article body
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
+    padding-top: var(--ifm-subnav-height);
 
     a {
       font-weight: 500;

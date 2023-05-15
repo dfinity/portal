@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useThemeConfig } from "@docusaurus/theme-common";
+import { ThemeClassNames, useThemeConfig } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 import clsx from "clsx";
+import DocSidebarNavbarItem from "@theme/NavbarItem/DocSidebarNavbarItem";
+import DocNavbarItem from "@theme/NavbarItem/DocNavbarItem";
+import DropdownNavbarItem from "@theme/NavbarItem/DropdownNavbarItem";
 
 export function DevDocsSubnav() {
-  const items = useThemeConfig().navbar.items;
-  // TODO - add the subnav menu items
-  // console.log(items);
+  const items = useThemeConfig().navbar.items.filter((item) => item.isSubnav);
 
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -33,7 +34,9 @@ export function DevDocsSubnav() {
   );
 
   const className = useMemo(() => {
-    if (scrollY < navbarHeight) {
+    const roundingError = 4;
+
+    if (scrollY < navbarHeight + roundingError) {
       // the docusaurus navbar stays visible until the
       // user scrolls past the height of the navbar - keep the subnav
       // visible as well
@@ -44,7 +47,7 @@ export function DevDocsSubnav() {
         document.body.scrollTop -
         document.body.scrollHeight +
         navbarHeight +
-        4 // error buffer
+        roundingError
     ) {
       // the docusaurus navbar stays hidden when the user hits the bottom of
       // the page until the user scrolls back up past the height of
@@ -58,5 +61,22 @@ export function DevDocsSubnav() {
     }
   }, [scrollY, scrollDirection]);
 
-  return <div className={className}>I am a subnav</div>;
+  return (
+    <nav className={className}>
+      <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, "menu__list")}>
+        {items.map((item: any) => {
+          switch (item.type) {
+            case "docSidebar":
+              return <DocSidebarNavbarItem {...item} />;
+            case "doc":
+              return <DocNavbarItem {...item} />;
+            case "dropdown":
+              return <DropdownNavbarItem {...item} />;
+            default:
+              return null;
+          }
+        })}
+      </ul>
+    </nav>
+  );
 }

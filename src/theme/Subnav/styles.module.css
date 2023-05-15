@@ -2,9 +2,14 @@
   background: #e8e4ed;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   height: var(--ifm-subnav-height);
-  transition: top inherit linear;
+  transition: top linear;
+  padding-left: calc(24px - var(--ifm-navbar-item-padding-horizontal));
+  padding-right: calc(24px - var(--ifm-navbar-item-padding-horizontal));
+  display: flex;
+  align-items: center;
   @apply z-40;
 }
 

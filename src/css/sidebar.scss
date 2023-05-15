@@ -6,24 +6,65 @@ div[class*="sidebar_"] {
   border-right: var(--ic0-nav-border);
 }
 
-// ensure the side menu also maintains consistent spacing with the nav and subnav
-// this rule adds appropriate padding when the navbar is visible
-.navbar ~ .main-wrapper {
+aside[class*="docSidebarContainer_"] {
   .menu {
-    padding-top: calc(30px + var(--ifm-subnav-height)) !important;
-    transition: padding-top var(--ifm-transition-fast);
+    padding: 32px 24px 60px 24px;
+    flex-grow: 1;
   }
-}
-// this rule removes padding when the navbar is hidden so the menu and subnav continue to have
-nav[class*="navbarHidden_"] ~ .main-wrapper {
-  .menu {
-    padding-top: 0 !important;
+
+  .menu__link,
+  .menu__list-item-collapsible,
+  .navbar-sidebar__back {
+    border-radius: 8px;
+  }
+
+  .theme-doc-sidebar-item-link-level-3 {
+    &.menu__list-item {
+      font-weight: 400;
+
+      .menu__link--active {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .menu__caret:before,
+  .menu__link--sublist:after {
+    background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
+  }
+
+  .menu__link:hover,
+  .menu__list-item-collapsible:hover {
+    color: var(--ifm-menu-color-active);
+
+    .menu__caret:before,
+    .menu__link--sublist:after {
+      filter: var(--ifm-color-primary-filter);
+    }
+  }
+
+  .menu__list .menu__list,
+  .menu__list-item:not(:first-child) {
+    margin-top: 0.5rem;
   }
 }
 
-.menu {
-  padding: 30px 24px 60px 24px;
-  flex-grow: 1;
+ // ensure the side menu also maintains consistent spacing with the nav and subnav
+ // this rule adds appropriate margin when the navbar is visible
+.navbar ~ .main-wrapper {
+  a[class*="sidebarLogo_"] {
+    visibility: hidden;
+    margin-bottom: var(--ifm-subnav-height);
+    transition: margin var(--ifm-transition-fast);
+  }
+}
+// this rule adjusts the margin when the navbar is hidden so the menu and subnav continue to have consistent spacing
+nav[class*="navbarHidden_"] ~ .main-wrapper {
+  a[class*="sidebarLogo_"] {
+    visibility: hidden;
+    transition: margin var(--ifm-transition-fast);
+    margin-bottom: calc(-1 * var(--ifm-subnav-height) + 32px);
+  }
 }
 
 .navbar-sidebar {
@@ -48,40 +89,4 @@ nav[class*="navbarHidden_"] ~ .main-wrapper {
     background: var(--ic0-color);
     color: white;
   }
-}
-
-.menu__link,
-.menu__list-item-collapsible,
-.navbar-sidebar__back {
-  border-radius: 8px;
-}
-
-.theme-doc-sidebar-item-link-level-3 {
-  &.menu__list-item {
-    font-weight: 400;
-
-    .menu__link--active {
-      font-weight: 500;
-    }
-  }
-}
-
-.menu__caret:before,
-.menu__link--sublist:after {
-  background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
-}
-
-.menu__link:hover,
-.menu__list-item-collapsible:hover {
-  color: var(--ifm-menu-color-active);
-
-  .menu__caret:before,
-  .menu__link--sublist:after {
-    filter: var(--ifm-color-primary-filter);
-  }
-}
-
-.menu__list .menu__list,
-.menu__list-item:not(:first-child) {
-  margin-top: 0.5rem;
 }
