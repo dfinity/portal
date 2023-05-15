@@ -76,6 +76,8 @@ const pollResults = {
 
 //Load the Simple Poll's question from the backend when the app loads
 document.addEventListener('DOMContentLoaded', async (e) => {
+   //note that this is at beginning of the submit callback, this is deliberate
+  //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
  
   // Query the question from the backend
@@ -88,6 +90,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const voteCounts = await poll_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
   displayResults();
+  return false;
 }, false);
 
 //Event listener that listens for when the form is submitted.
@@ -106,9 +109,12 @@ pollForm.addEventListener('submit', async (e) => {
   console.log(updatedVoteCounts);
   updateLocalVoteCounts(updatedVoteCounts);
   displayResults();
+  return false;
 }, false);
 
 resetButton.addEventListener('click', async (e) => {
+
+    e.preventDefault();
     
     //Reset the options in the backend
     await poll_backend.resetVotes();
@@ -117,7 +123,7 @@ resetButton.addEventListener('click', async (e) => {
 
     //re-render the results once the votes are reset in the backend
     displayResults();
-    e.preventDefault();
+    return false;
 }, false);
 
 //3. HELPER FUNCTIONS
