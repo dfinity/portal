@@ -125,7 +125,7 @@ function TokenHolders(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Powers Computation, Staking, Voting, Governance & Ownership.{" "}
+                Powers computation, staking, voting, governance & ownership.{" "}
               </motion.h2>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
