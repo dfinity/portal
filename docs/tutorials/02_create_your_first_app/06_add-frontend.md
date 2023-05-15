@@ -18,10 +18,86 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Poll Hosted on an ICP canister smart contract</title>
+
+
+<!-- Some basic styling for the form -->
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        
+        h1 {
+          font-size: 32px;
+          margin-bottom: 20px;
+        }
+        
+        h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+        
+        form {
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-left: none;
+          border-right: none;
+          padding: 20px;
+          border-radius: 5px;
+        }
+        
+        label {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+        
+        input[type="radio"] {
+          margin-right: 5px;
+        }
+        
+        button {
+          padding: 10px 20px;
+          background-color: #007bff;
+          border: none;
+          color: #fff;
+          font-size: 18px;
+          cursor: pointer;
+        }
+        
+        button#reset {
+          background-color: #dc3545;
+        }
+        
+        button:hover {
+          background-color: #0056b3;
+        }
+        
+        #results {
+          margin-top: 20px;
+          font-size: 18px;
+          border: 1px solid #ccc;
+          border-left: none;
+          border-right: none;
+          padding: 20px;
+          border-radius: 5px;
+        }
+    </style>
+
+
 </head>
 <body>
     <h1>Simple Voting Poll</h1>
     <h2 id="question">Sample Question</h2>
+
+    <!-- Form where users vote -->
     <form id="radioForm">
         <label>
             <input type="radio" name="option" value="Rust"> Rust
@@ -37,8 +113,11 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
         </label><br>
         <button type="submit">Vote</button>
     </form>
+
+    <!-- Poll results appear here-->
     <div id="results"></div>
     <button id="reset">Reset Poll</button>
+
 </body>
 </html>
 ```
