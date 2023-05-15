@@ -10,13 +10,13 @@ This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer
 
 Before starting, take a look at a version of this dapp running on-chain: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
 
-This dapp only does one thing: it accepts an text input and returns text input.
+This dapp only does one thing: it accepts a text input and returns text input.
 
 ![Hello](_attachments/hello-dapp-intro.png)
 
 ## 1. Install the Internet Computer (IC) SDK 
 
-This tutorial uses the [IC SDK](../developer-docs/setup/install/index.mdx)), which is the default SDK maintained by the DFINITY foundation. 
+This tutorial uses the [IC SDK](../developer-docs/setup/install/index.mdx), which is the default SDK maintained by the DFINITY foundation. 
 
 To [install the IC SDK](../developer-docs/setup/install/index.mdx), run:
 
@@ -65,7 +65,7 @@ There is now a local Instance of the execution environment of the IC running on 
 
 ## 3. Deploy the dapp locally
 
-Now you can deply locally. Run:
+Now you can deploy locally. Run:
 
 ``` bash
 npm install
