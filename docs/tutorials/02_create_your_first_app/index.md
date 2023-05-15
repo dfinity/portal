@@ -22,7 +22,7 @@ The app allow you to host only one poll and share it with other people. Some add
 To successfully complete this tutorial you will need to:
 - Have Internet Computer SDK installed. Look at Tutorial 1 for more information.
 - Learn basics of the Motoko programming language. I will explain some of Motoko constructs here. However, it would not hurt to have a general feel of the language before we start here.
-- This tutorial will use Visual Studio Code to edit code
+- This tutorial will use Visual Studio Code to edit code, but it will work with any IDE or editor
 
 
 ## Next steps
