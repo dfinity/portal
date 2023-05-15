@@ -167,7 +167,7 @@ const RoadmapPage: React.FC = () => {
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1 md:mt-10"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">Developer grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Do you have innovative ideas for building on the Internet
                 Computer and need funding to launch your project? The DFINITY

@@ -17,7 +17,7 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Poll Hosted on an ICP Canister Smart Contract</title>
+    <title>Simple Poll Hosted on an ICP canister smart contract</title>
 </head>
 <body>
     <h1>Simple Voting Poll</h1>

@@ -155,7 +155,7 @@ function CkbtcPage(): JSX.Element {
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
-                    Canister Smart Contracts can hold and send ckBTC
+                    Canister smart contracts can hold and send ckBTC
                   </li>
                   <li className="checklist-item pl-8">
                     Build web applications with BTC support. Users only need a

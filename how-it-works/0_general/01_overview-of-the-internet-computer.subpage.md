@@ -11,7 +11,7 @@ The Internet Computer takes a revolutionary approach to a highly-scalable blockc
 The technology behind the Internet Computer (IC) has reconceived blockchain protocols from the ground up, considering many lessons learnt from earlier projects, e.g., their lack of scalability.
 The Internet Computer intends to become a *World Computer*, an open and secure public blockchain network that can scale infinitely and be used by everyone to host their smart contracts securely.
 
-## Canister Smart Contracts
+## Canister smart contracts
 
 A smart contract on the IC is called *canister smart contract*, or just *canister*.
 A canister bundles [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) program code and data storage into a single unit.
@@ -35,7 +35,7 @@ Canister smart contracts are more powerful than the smart contracts on other blo
 
 See more on [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract) on the IC wiki.
 
-## Subnet Architecture
+## Subnet architecture
 
 The IC is designed to be highly *scalable* and efficient in terms of hosting and executing canister smart contracts.
 The top-level building blocks of the IC are *subnetworks*, or  *subnets*: the IC as a whole consists of many subnets, where each subnet is its own blockchain that operates concurrently with and independently of the other subnets (but can communicate asynchronously with other subnets).
@@ -56,7 +56,7 @@ Canisters within and across subnets communicate through asynchronous messaging.
 
 See more on [subnets](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) on the IC wiki.
 
-## Asynchronous Messaging
+## Asynchronous messaging
 
 As mentioned earlier, a canister bundles its code and data (state).
 This makes the canister state isolated from that of other canisters.
@@ -91,20 +91,20 @@ Both chain-key and chain-evolution technology sets the IC apart from other proje
 
 The IC offers governance at multiple levels, the platform level and the dApp level.
 
-### Platform Governance
+### Platform governance
 
 The IC is governed by a *tokenized DAO*, the so-called *Network Nervous System (NNS)*.
 The NNS DAO is implemented as a set of canister smart contracts that are deployed on a high-replication subnet, i.e., a subnet with many nodes and hence stronger security properties.
 The NNS allows holders of the staked ICP to make proposals and vote on those proposals.
 
-### DApp Governance
+### Dapp governance
 
 dApps on the IC can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the platform's NNS, but tailored to govern dApps.
 Everyone controlling a dApp can hand over control over their dApp to a tokenized DAO by parameterizing and deploying an instance of the SNS.
 The SNS implements tokenized governance at the dApp level and can be used without the dApp engineers implementing a governance system themselves, which is revolutionary.
 Handing over control of a dApp to an instance of the SNS usually includes running a decentralization swap as an early step where funds can be raised through the swap of the dApp's governance tokens.
 
-## Go Even Deeper
+## Go even deeper
 
 If you want to learn in more detail how the IC works and realizes the vision of a World Computer, read through the sections of the page and the referenced Medium articles, or watch the YouTube videos.
 If you prefer to have a single source of information, the [White Paper](https://dfinity.org/whitepaper.pdf) is highly recommended.

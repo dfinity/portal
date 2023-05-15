@@ -29,7 +29,7 @@ const cardsContent = [
     link: "https://discord.gg/jnjVVQaE2C",
   },
   {
-    title: "DFINITY Developer Grants and Bounties",
+    title: "DFINITY developer grants and bounties",
     body: "Kickstart your idea or get paid to build on ICP",
     link: "https://dfinity.org/grants/",
   },

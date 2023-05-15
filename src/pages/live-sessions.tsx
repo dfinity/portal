@@ -143,7 +143,7 @@ function LiveSessionsPage(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-2 mb-10"
                 variants={transitions.item}
               >
-                Live Sessions
+                Live sessions
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-10"

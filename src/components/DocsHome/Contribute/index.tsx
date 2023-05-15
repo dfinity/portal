@@ -25,12 +25,12 @@ const cardsContent = [
     link: "https://forum.dfinity.org/",
   },
   {
-    title: "Dev Discord Office Hours",
+    title: "Dev Discord office hours",
     body: "Every Wednesday at 9am CET and 7pm CET",
     link: "https://discord.gg/jnjVVQaE2C",
   },
   {
-    title: "DFINITY Developer Grants and Bounties",
+    title: "DFINITY developer grants and bounties",
     body: "Kickstart your idea or get paid to build on ICP",
     link: "https://dfinity.org/grants/",
   },
