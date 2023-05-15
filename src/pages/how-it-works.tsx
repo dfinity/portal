@@ -98,7 +98,7 @@ const CardGroup: React.FC<{ group: HowItWorksCardGroup }> = ({ group }) => {
 function HowItWorks() {
   return (
     <Layout
-      title="How It Works"
+      title="How it works"
       description="Learn how the Internet Computer blockchain realizes the vision of the World Computer. Dive into its technology, open-source repositories, in-depth video academy sessions, white papers, publications, and detailed technology articles."
       editPath={`https://github.com/dfinity/portal/tree/master/how-it-works`}
     >
@@ -116,7 +116,7 @@ function HowItWorks() {
           <div className="container-10 pt-12 mb-30 md:mb-40 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                Realizing the Vision of the World Computer
+                Realizing the vision of the World Computer
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 Learn how the Internet Computer blockchain realizes the vision

@@ -1,5 +1,5 @@
 ---
-title: Infrastructure & Operations
+title: Infrastructure & operations
 card: /img/roadmap/infrastructure.card.jpg
 overlay: /img/roadmap/infrastructure.overlay.jpg
 ---

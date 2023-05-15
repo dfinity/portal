@@ -26,7 +26,7 @@ const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
           </div>
           <div className="flex-1 md:order-1">
             <h2 className="tw-heading-3 md:tw-heading-60 mb-6">
-              Transparently Sustainable Blockchain
+              Transparently sustainable bsslockchain
             </h2>
             <p className="tw-lead-sm mb-6">
               Scalability and utility with low carbon cost — the Internet

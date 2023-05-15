@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
               "NFTs",
             ]}
             subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
-            linePostfix="on True Web3"
+            linePostfix="on true Web3"
           ></ShowcaseSection>
         </div>
         <BackgroundPanel

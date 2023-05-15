@@ -1,5 +1,5 @@
 ---
-title: Developer Experience
+title: Developer experience
 card: /img/roadmap/dx.card.jpg
 overlay: /img/roadmap/dx.overlay.jpg
 ---

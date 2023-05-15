@@ -275,7 +275,7 @@ function SnsFaqPage() {
             id="participate"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                How to Participate in an SNS DAO
+                How to participate in an SNS DAO
               </h2>
             }
           >
@@ -457,7 +457,7 @@ function SnsFaqPage() {
             id="decentralization-swap"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                De&shy;cen&shy;tral&shy;iza&shy;tion Swap
+                De&shy;cen&shy;tral&shy;iza&shy;tion swap
               </h2>
             }
           >
@@ -896,7 +896,7 @@ function SnsFaqPage() {
           },
           {
             to: "#decentralization-swap",
-            text: "Decentralization Swap",
+            text: "Decentralization swap",
           },
           {
             to: "#governance",
