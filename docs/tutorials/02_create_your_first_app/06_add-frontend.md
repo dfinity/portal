@@ -138,10 +138,10 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
 
 </body>
 </html>
-
 ```
+
 - The HTML above is just a simple form with options, nothing ICP or Web3 special about it
-- The <head> tag includes some basic CSS for styling
+- The `<head>` tag includes some basic CSS for styling
 
 
 :::note
