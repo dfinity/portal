@@ -6,7 +6,7 @@ const CommunityStories: React.FC = ({}) => {
     <>
       <div className="container-10 pt-20 md:pt-40" id="community">
         <h2 className="tw-heading-3 md:tw-heading-60 text-gradient mb-0">
-          Community Stories
+          Community stories
         </h2>
       </div>
 

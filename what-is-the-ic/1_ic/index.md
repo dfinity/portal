@@ -1,5 +1,5 @@
 ---
-title: The Architecture of the IC
+title: The architecture of the IC
 card: /img/what-is-the-ic/built.webp
 cardImageFit: center
 ---
