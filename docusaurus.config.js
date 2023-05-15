@@ -263,6 +263,10 @@ const config = {
               [
                 menuDivider("Use Cases"),
                 {
+                  label: "ckBTC",
+                  href: "/ckbtc",
+                },
+                {
                   label: "NFTs",
                   href: "/nft",
                 },
