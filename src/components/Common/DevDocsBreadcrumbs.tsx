@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import Link from "@docusaurus/Link";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import { useLocation } from "@docusaurus/router";
@@ -14,7 +14,7 @@ export function DevDocsBreadcrumbs({}: DevDocsMobileBreadcrumbsProps) {
   const navbarHeight = useNavbarHeight();
 
   const breadcrumbs = useMemo(() => {
-    return location.pathname
+    const parts = location.pathname
       .split("/")
       .filter((item) => item !== "docs" && item !== "current")
       .filter(Boolean)
@@ -24,8 +24,25 @@ export function DevDocsBreadcrumbs({}: DevDocsMobileBreadcrumbsProps) {
           label: part.replace(/\W|\s+/g, " "),
         };
       });
+    // only show the first and last breadcrumb for brevity
+    if (parts.length > 1) {
+      return [parts[0], parts[parts.length - 1]];
+    } else {
+      return [parts[0]];
+    }
   }, [location]);
-  console.log(breadcrumbs);
+
+  const toggleMenu = useCallback((event: React.MouseEvent) => {
+    window.scrollTo({
+      top: window.scrollY - navbarHeight - 5,
+    });
+    document
+      .getElementsByClassName("navbar__toggle")
+      .item(0)
+      ?.dispatchEvent(
+        new MouseEvent(event.nativeEvent.type, event.nativeEvent)
+      );
+  }, []);
 
   return (
     <div className="flex flex-row gap-2 items-center tw-title-navigation-on-page whitespace-nowrap max-w-full overflow-scroll">
@@ -33,17 +50,7 @@ export function DevDocsBreadcrumbs({}: DevDocsMobileBreadcrumbsProps) {
         <React.Fragment key={item.href}>
           <Link
             className={`${index < breadcrumbs.length - 1 ? "text-black" : ""}`}
-            onClick={(event) => {
-              window.scrollTo({
-                top: window.scrollY - navbarHeight - 5,
-              });
-              document
-                .getElementsByClassName("navbar__toggle")
-                .item(0)
-                ?.dispatchEvent(
-                  new MouseEvent(event.nativeEvent.type, event.nativeEvent)
-                );
-            }}
+            onClick={toggleMenu}
           >
             {item.label}
           </Link>
