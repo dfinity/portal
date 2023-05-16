@@ -6,8 +6,7 @@
   width: 100%;
   height: var(--ifm-subnav-height);
   transition: top linear;
-  padding-left: calc(24px - var(--ifm-navbar-item-padding-horizontal));
-  padding-right: calc(24px - var(--ifm-navbar-item-padding-horizontal));
+  padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
   display: flex;
   align-items: center;
   @apply z-40;

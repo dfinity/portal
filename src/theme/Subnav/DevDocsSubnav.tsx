@@ -6,6 +6,8 @@ import DocSidebarNavbarItem from "@theme/NavbarItem/DocSidebarNavbarItem";
 import DocNavbarItem from "@theme/NavbarItem/DocNavbarItem";
 import DropdownNavbarItem from "@theme/NavbarItem/DropdownNavbarItem";
 import useIsBrowser from "@docusaurus/useIsBrowser";
+import { DevDocsBreadcrumbs } from "@site/src/components/Common/DevDocsBreadcrumbs";
+import { useNavbarHeight } from "@site/src/hooks/useNavbarHeight";
 
 export function DevDocsSubnav() {
   const items = useThemeConfig().navbar.items.filter((item) => item.isSubnav);
@@ -30,13 +32,7 @@ export function DevDocsSubnav() {
     };
   });
 
-  const navbarHeight = isBrowser
-    ? parseInt(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue("--ifm-navbar-height")
-          .replace("px", "")
-      )
-    : 0;
+  const navbarHeight = useNavbarHeight();
 
   const className = useMemo(() => {
     if (!isBrowser) {
@@ -85,6 +81,10 @@ export function DevDocsSubnav() {
               return null;
           }
         })}
+      </ul>
+
+      <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, "breadcrumbs")}>
+        <DevDocsBreadcrumbs />
       </ul>
     </nav>
   );

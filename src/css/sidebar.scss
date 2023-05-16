@@ -49,8 +49,8 @@ aside[class*="docSidebarContainer_"] {
   }
 }
 
- // ensure the side menu also maintains consistent spacing with the nav and subnav
- // this rule adds appropriate margin when the navbar is visible
+// ensure the side menu also maintains consistent spacing with the nav and subnav
+// this rule adds appropriate margin when the navbar is visible
 .navbar ~ .main-wrapper {
   a[class*="sidebarLogo_"] {
     visibility: hidden;
@@ -74,6 +74,10 @@ nav[class*="navbarHidden_"] ~ .main-wrapper {
   .menu__list-item-collapsible {
     background: var(--ifm-menu-color-background-hover);
 
+    .clean-btn {
+      background: none;
+    }
+
     &:hover {
       background: #f1eef5;
     }
@@ -88,5 +92,19 @@ nav[class*="navbarHidden_"] ~ .main-wrapper {
   &:hover {
     background: var(--ic0-color);
     color: white;
+  }
+}
+
+@media(max-width: 996px) {
+  .theme-doc-sidebar-menu.breadcrumbs {
+    a {
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media(min-width: 997px) {
+  .theme-doc-sidebar-menu.breadcrumbs {
+    display: none;
   }
 }
