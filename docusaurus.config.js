@@ -361,7 +361,7 @@ const config = {
                 },
                 {
                   label: "Become a Node Provider",
-                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation",
                 },
                 {
                   label: "DFINITY Foundation",
