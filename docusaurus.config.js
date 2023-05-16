@@ -168,7 +168,7 @@ const config = {
                   href: "/what-is-the-ic",
                 },
                 {
-                  label: "How It Works",
+                  label: "How it Works",
                   href: "/how-it-works",
                 },
                 {
@@ -180,7 +180,7 @@ const config = {
                   href: "https://internetcomputer.org/whitepaper.pdf",
                 },
                 {
-                  label: "IC Wiki",
+                  label: "ICP Wiki",
                   href: "https://wiki.internetcomputer.org",
                 },
                 {
@@ -348,7 +348,7 @@ const config = {
               [
                 menuDivider("Get Involved"),
                 {
-                  label: "Live sessions",
+                  label: "Live Sessions",
                   href: "/live-sessions",
                 },
                 {
@@ -528,7 +528,7 @@ const config = {
                 label: "ICP Careers",
                 href: "https://careers.internetcomputer.org/",
               },
-              { label: "Developer grants", href: "https://dfinity.org/grants" },
+              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
                 href: "https://support.dfinity.org/hc/en-us",
