@@ -39,7 +39,7 @@ git submodule update --init --recursive
 ```
 
 :::note
-If you choose Rust and are using MacOS, you'll need to install Homebrew and run brew install llvm to be able to compile the example.
+If you choose Rust and are using MacOS, you'll need to install Homebrew and run `brew install llvm` to be able to compile the example.
 :::
 
 ### Acquire cycles to deploy
