@@ -13,7 +13,8 @@ and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interf
 
         git clone https://github.com/dfinity/examples
 
-2. Go to the `basic_bitcoin` example in the language of your choice
+2. Go to the `basic_bitcoin` example in the [language of your choice](../developer-docs/backend/choosing-language.md):
+
 
         # For motoko
         cd examples/motoko/basic_bitcoin
