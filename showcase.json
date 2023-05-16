@@ -1037,7 +1037,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "useInternetIdentity": true,
+    "usesInternetIdentity": true,
     "website": "https://dbox.foundation/",
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "discord": "https://discord.gg/rEN6ygpCxK",
@@ -1119,7 +1119,7 @@
       "SocialFi",
       "Tools / Infrastructure"
     ],
-    "useInternetIdentity": false,
+    "usesInternetIdentity": false,
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
@@ -1147,6 +1147,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
+    "usesInternetIdentity": true,
     "website": "https://cusyh-iyaaa-aaaah-qcpba-cai.raw.ic0.app/",
     "github": "https://github.com/usergeek/canistergeek-demo-ui",
     "twitter": "https://twitter.com/theUSERGEEK",
