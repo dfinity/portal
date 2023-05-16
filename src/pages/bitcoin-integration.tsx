@@ -16,9 +16,9 @@ function BitcoinIntegration() {
   return (
     <Layout
       title="Bitcoin on ICP"
-      description="The Internet Computer (ICP) cryptographically integrates with the
-      Bitcoin network, unleashing a plethora of opportunities to securely
-      execute bitcoin transactions 100% on chain."
+      description="ICP natively integrate with the Bitcoin network without intermediaries.
+                   Chain-key Bitcoin (ckBTC), introduces speed, scalability and low
+                   transaction fees to bitcoin for practical use."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpeg"></ShareMeta>

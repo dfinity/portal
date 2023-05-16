@@ -5,7 +5,8 @@
     "oneLiner": "Social portals, community airdrops, crypto tipping on chain",
     "website": "https://dscvr.one/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "Bitcoin"
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
     "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
@@ -19,11 +20,12 @@
   },
   {
     "id": "distrikt",
-    "name": "Distrikt",
+    "name": "distrikt",
     "oneLiner": "Censorship-resistant fully on-chain social media platform",
     "website": "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "Bitcoin"
     ],
     "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
     "description": "Distrikt is a completely decentralized, community-owned Web3 social media platform. Users of the platform will soon be able vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today.",
@@ -113,7 +115,8 @@
     "oneLiner": "Decentralized alternative to WhatsApp",
     "website": "https://oc.app/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "Bitcoin"
     ],
     "description": "What if you could own a piece of WhatsApp and vote on what features get added? OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and soon to own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
@@ -130,7 +133,8 @@
     "oneLiner": "DEX stats aggregator",
     "website": "https://icpcoins.com",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "Bitcoin"
     ],
     "description": "IC coins by market cap. Aggregates stats from all IC DEXes. Price, Volume & Liquidity score charts.",
     "usesInternetIdentity": false,
@@ -163,7 +167,8 @@
     "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
     "website": "https://wallet.infinityswap.one/",
     "tags": [
-      "Wallet"
+      "Wallet",
+      "Bitcoin"
     ],
     "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "display": "Large",
@@ -196,7 +201,8 @@
     "oneLiner": "Proof of Physical Ownership Platform",
     "tags": [
       "NFT",
-      "Wallet"
+      "Wallet",
+      "Bitcoin"
     ],
     "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
     "usesInternetIdentity": false,
@@ -246,7 +252,8 @@
     "website": "https://funded.app/",
     "tags": [
       "SocialFi",
-      "DeFi"
+      "DeFi",
+      "Bitcoin"
     ],
     "twitter": "https://twitter.com/funded_app",
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
@@ -276,7 +283,8 @@
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "Bitcoin"
     ],
     "description": "ICDex is flagship product by ICLighthouse, an orderbook based DEX that runs 100% on-chain. The world's first orderbook DEX - made possible by advanced ICP smart contracts",
     "usesInternetIdentity": true,
@@ -499,7 +507,8 @@
     "name": "Finterest",
     "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "Bitcoin"
     ],
     "twitter": "https://twitter.com/finterestICP",
     "description": "Lend and borrow against your crypto without bridging it across chains. Yes, even Bitcoin",
@@ -561,7 +570,8 @@
     "name": "Catalyze",
     "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "Bitcoin"
     ],
     "description": "Catalyze is a decentralized social and community-building platform designed to host engaged and thriving Web3 communities. With a unique and customized engagement economy, Catalyze communities and their members will be rewarded for their participation and contribution. Main features include: direct communication, event & task management, integrated Web3 wallets, NFT Gating, NFT airdrop & sales management.",
     "usesInternetIdentity": true,
@@ -760,16 +770,17 @@
   },
   {
     "id": "nnsfront-enddapp",
-    "name": "NNS Front-End Dapp",
+    "name": "NNS Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
     "website": "https://nns.ic0.app",
     "tags": [
       "Wallet",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo.webp",
+    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp",
     "screenshots": [
       "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
     ]
@@ -947,7 +958,8 @@
     "website": "https://astrox.me/#/",
     "tags": [
       "Tools / Infrastructure",
-      "Wallet"
+      "Wallet",
+      "Bitcoin"
     ],
     "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
@@ -1078,7 +1090,8 @@
     "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
     "tags": [
       "DeFi",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "website": "https://iclight.house/",
     "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
@@ -1119,7 +1132,8 @@
     "description": "Private transactions for ICP and BTC",
     "tags": [
       "DeFi",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "website": "https://spinner.cash/",
     "github": "https://github.com/spinner-cash/launch-trail",
@@ -1164,7 +1178,8 @@
     "website": "https://sonic.ooo/",
     "tags": [
       "DeFi",
-      "Wallet"
+      "Wallet",
+      "Bitcoin"
     ],
     "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem.",
     "github": "https://github.com/psychedelic",
@@ -1210,7 +1225,8 @@
     "website": "https://icpswap.com",
     "tags": [
       "DeFi",
-      "Wallet"
+      "Wallet",
+      "Bitcoin"
     ],
     "description": "ICPSwap is DEX built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
     "usesInternetIdentity": true,
@@ -1348,7 +1364,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Java Agent for the Internet Computer is an open source library. This developer tool enables Java applications to connect remotely to any Canister smart contract on the Internet Computer and execute query and update calls.",
+    "description": "Java Agent for the Internet Computer is an open source library. This developer tool enables Java applications to connect remotely to any canister smart contract on the Internet Computer and execute query and update calls.",
     "github": "https://github.com/ic4j/ic4j-agent",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/javaagent_logo.webp",
@@ -1391,7 +1407,8 @@
     "name": "ICA Dashboard",
     "website": "https://dashboard.internetcomputer.org/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "description": "The Internet Computer Association maintains a public dashboard where anyone can track the latest statistics for the Internet Computer blockchain. Tracking everything from blocks per second, to NNS proposals and their information and voting record, as well the latest state of the network, and transaction data. ",
     "oneLiner": "ICA Official Dashboard",
@@ -1610,7 +1627,8 @@
     "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
     "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
     "usesInternetIdentity": false,
@@ -1705,7 +1723,8 @@
     "tags": [
       "Wallet",
       "NFT",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Bitcoin"
     ],
     "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
     "github": "https://github.com/Psychedelic/plug",
@@ -1745,5 +1764,35 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ember-cli-dfinity.png",
     "github": "https://github.com/onehilltech/ember-cli-dfinity"
+  },
+  {
+    "id": "beamfi",
+    "name": "BeamFi",
+    "oneLiner": "Real Time Micro Payments solution for creators",
+    "website": "https://beamfi.app",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "BeamFi is an open source DeFi protocol, bringing Autonomous Stream Payment solution to Internet Computer, allowing users to send or receive a constant stream of ICP or XTC in BeamFi DApp or BeamFi Meeting App in Zoom while a meeting is in progress",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/beamfi_logo.webp",
+    "github": "https://github.com/BeamFi/BeamFiProtocol",
+    "youtube": "https://youtu.be/85TWP4QHHBg",
+    "twitter": "https://twitter.com/BeamFiApp",
+    "screenshots": [
+      "/img/showcase/beamfi_screenshot_0.webp"
+    ],
+    "submittableId": "33086681"
+  },
+  {
+    "id": "bink",
+    "name": "Bink",
+    "oneLiner": "Superior alternative to Linktree",
+    "website": "https://b.ink",
+    "tags": ["SocialFi"],
+    "description": "Connect your audience, engage your community and analyse your interaction while owning your data and your identity.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bink_logo.png",
+    "twitter": "https://twitter.com/BinkDapp"
   }
 ]

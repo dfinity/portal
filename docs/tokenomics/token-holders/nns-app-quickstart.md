@@ -60,7 +60,7 @@ To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
 
     :::
 
-    For more information about creating an Internet Identity, see [How to use Internet Identity](../identity-auth/auth-how-to).
+    For more information about creating an Internet Identity, see [How to use Internet Identity](https://internetidentity.zendesk.com/hc/en-us/articles/15430677359124-How-Do-I-Create-an-Internet-Identity-on-My-Mobile-Device-).
 
     After you have registered, you can click **Login** to authenticate using your anchor and the authentication method—for example, a security key or fingerprint—you have registered.
 

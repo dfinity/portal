@@ -226,7 +226,7 @@ export const Facts = () => {
     <>
       <div className="" id="stats">
         <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-20 md:w-[880px] mx-auto text-center">
-          World’s Highest Usage Blockchain
+          World’s highest usage blockchain
         </h2>
       </div>
 
@@ -344,7 +344,7 @@ export const Facts = () => {
             <div className="tw-heading-6">Cost per instruction</div>
             <hr className="bg-white/20 w-52 mx-auto mt-4 mb-3" />
             <div className="tw-paragraph md:tw-lead-sm mb-3">
-              44&rsquo; 760&rsquo; 000x more efficient than ETH
+              44&rsquo; 760&rsquo; 000x less expensive than ETH
             </div>
             <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
           </div>

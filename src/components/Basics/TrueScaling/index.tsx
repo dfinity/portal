@@ -50,13 +50,13 @@ const TrueScaling = () => {
       className={styles.container}
     >
       <motion.div variants={transitions.item} className={styles.content}>
-        <h3 className="tw-heading-5 md:tw-heading-3 m-0">True Scaling</h3>
+        <h3 className="tw-heading-5 md:tw-heading-3 m-0">True scaling</h3>
         <p className="tw-paragraph md:tw-lead m-0">
           By adding new subnets regularly, the IC scales to an unbounded number
           of dapps and allows storage of unlimited data.
         </p>
         <Link
-          href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
+          href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
           className="link-primary link-with-icon"
         >
           <LinkArrowRight />

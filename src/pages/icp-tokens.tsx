@@ -78,10 +78,10 @@ function TokenHolders(): JSX.Element {
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
-          <ShareMeta image="/img/shareImages/share-icp-tokens.jpeg" />
+          <ShareMeta image="/img/shareImages/share-icp-tokens.jpg" />
           {isDark && <DarkHeroStyles />}
           <section
-            className="bg-infinite   text-white overflow-hidden"
+            className="bg-infinite text-white overflow-hidden"
             ref={ref}
           >
             <AnimateSpawn
@@ -94,7 +94,7 @@ function TokenHolders(): JSX.Element {
                   className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
                   variants={transitions.item}
                 >
-                  Understanding the ICP Token{" "}
+                  Understanding the ICP token{" "}
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-0 relative"
@@ -125,7 +125,7 @@ function TokenHolders(): JSX.Element {
                 className="tw-heading-4 md:tw-heading-3 mb-6 text-gradient"
                 variants={transitions.item}
               >
-                Powers Computation, Staking, Voting, Governance & Ownership.{" "}
+                Powers computation, staking, voting, governance & ownership.{" "}
               </motion.h2>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
@@ -167,7 +167,7 @@ function TokenHolders(): JSX.Element {
                     className="w-16 h-16"
                   />
                   <span className="flex-1 text-gradient tw-heading-5">
-                    ICP Token Utility
+                    ICP token utility
                   </span>
                 </h3>
                 <ul className="checklist space-y-3 mb-0">
@@ -256,7 +256,7 @@ function TokenHolders(): JSX.Element {
                   <NnsTvl />
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
-                  Locked in Governance
+                  Locked in governance
                 </figcaption>
               </motion.figure>
             </div>
@@ -268,7 +268,7 @@ function TokenHolders(): JSX.Element {
               variants={transitions.item}
             >
               <h2 className="tw-heading-3 mb-0 md:tw-heading-60">
-                Ways to Use ICP Tokens
+                Ways to use ICP tokens
               </h2>
             </AnimateSpawn>
             <div className="container-12 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -277,7 +277,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Participate in Governance
+                  Participate in governance
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                   The Internet Computer Protocol is run by the NNS, the largest
@@ -306,7 +306,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Burn for Cycles
+                  Burn for cycles
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                   Unlike other smart contract blockchains, the Internet Computer
@@ -342,7 +342,7 @@ function TokenHolders(): JSX.Element {
               >
                 <div className="sm:w-6/10 lg:w-4/10">
                   <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                    Use ICP in the Ecosystem
+                    Use ICP in the ecosystem
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                     Store ICP in wallets, swap it on DEXs, collect NFTs or tip
@@ -376,7 +376,7 @@ function TokenHolders(): JSX.Element {
               className="tw-heading-3 md:tw-heading-60 mb-8"
               variants={transitions.item}
             >
-              Where To Get ICP{" "}
+              Where to get ICP{" "}
             </motion.h2>
             <motion.p className="tw-lead mb-8" variants={transitions.item}>
               The ICP token is widely available on centralized exchanges.
@@ -483,7 +483,7 @@ function TokenHolders(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8"
                 variants={transitions.item}
               >
-                Wallets & Custody
+                Wallets & custody
               </motion.h2>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-6 md:mb-8"
@@ -554,7 +554,7 @@ function TokenHolders(): JSX.Element {
               </motion.div>
               {/* Column 2 */}
               <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Mobile App Wallets</h3>
+                <h3 className="tw-heading-5 mb-6">Mobile app wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Mobile apps offer easy access to crypto assets for people who
                   use them frequently.
@@ -581,7 +581,7 @@ function TokenHolders(): JSX.Element {
                 </div>
 
                 <h3 className="tw-heading-5 mb-6 mt-16">
-                  Browser Extension Wallets
+                  Browser extension wallets
                 </h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Great for users already familiar with crypto wallets from
@@ -605,7 +605,7 @@ function TokenHolders(): JSX.Element {
               </motion.div>
               {/* Column 3 */}
               <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Hardware Wallets</h3>
+                <h3 className="tw-heading-5 mb-6">Hardware wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Maximum security. Hardware wallets hold private keys in
                   airgapped machines or ledger devices.
@@ -614,7 +614,7 @@ function TokenHolders(): JSX.Element {
                   <WalletCard
                     title="Ledger"
                     description="Complete control of crypto assets via a Ledger hardware wallet and Ledger app."
-                    link="https://wallet.infinityswap.one/"
+                    link="https://support.ledger.com/hc/en-us/articles/4412643422481-Internet-Computer-ICP-?support=true"
                     icon="/img/showcase/ledger_logo.webp"
                   />
                   <WalletCard
@@ -669,7 +669,7 @@ function TokenHolders(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-60 mb-0"
                 variants={transitions.item}
               >
-                Get More Involved
+                Get more involved
               </motion.h2>
             </div>
 
@@ -715,7 +715,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <h3 className="tw-lead-lg md:tw-title-sm mb-3">
-                  Join the ICRC Conversation
+                  Join the ICRC conversation
                 </h3>
                 <p className="tw-paragraph-sm mb-3 text-black/60">
                   Community discussions around extending the ICRC token standard

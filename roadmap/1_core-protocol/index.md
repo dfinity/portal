@@ -1,5 +1,5 @@
 ---
-title: Core Protocol
+title: Core protocol
 
 card: /img/roadmap/core-protocol.card.jpg
 overlay: /img/roadmap/core-protocol.overlay.jpg

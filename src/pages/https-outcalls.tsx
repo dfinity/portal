@@ -29,7 +29,7 @@ function HTTPSOutcalls() {
             "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
           }
         />
-        <title>HTTPS Outcalls</title>
+        <title>HTTPS outcalls</title>
       </Head>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -37,7 +37,7 @@ function HTTPSOutcalls() {
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                HTTPS Outcalls
+                HTTPS outcalls
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 The power of canister HTTPS outcalls on the Internet Computer is
@@ -73,7 +73,7 @@ function HTTPSOutcalls() {
             prose-a:underline prose-a:text-infinite hover:prose-a:text-black hover:prose-a:no-underline
             "
           >
-            <h2>How It Works</h2>
+            <h2>How it works</h2>
             <p>
               Today, the majority of the world's API-accessible data, such as
               stock prices, football scores, IoT-related data, or crypto
@@ -85,7 +85,7 @@ function HTTPSOutcalls() {
               to pave the way for blockchain singularity, whereby the majority
               of computations run on the blockchain.
             </p>
-            <h3>The Oracle Problem</h3>
+            <h3>The oracle problem</h3>
             <p>
               A common limitation of blockchain technology is that smart
               contracts can receive messages, but cannot send them to the world
@@ -99,7 +99,7 @@ function HTTPSOutcalls() {
               hacking, and subject to service fees.
             </p>
 
-            <h3>HTTPS Outcalls Replace Oracles</h3>
+            <h3>HTTPS outcalls replace oracles</h3>
             <p>
               Canister HTTPS outcalls on the Internet Computer blockchain allow
               direct interaction with Web 2.0 and other blockchains without
@@ -122,7 +122,7 @@ function HTTPSOutcalls() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build with HTTPS Outcalls
+            Build with HTTPS outcalls
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
             Connect your smart contracts directly with the Web 2.0. Retrieve

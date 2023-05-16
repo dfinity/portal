@@ -71,7 +71,7 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Next Generation DeFi
+                  Next generation DeFi
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
@@ -138,7 +138,7 @@ function DefiPage() {
                 6,500+ TX/s
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Typical Network Usage
+                Typical network usage
               </span>
             </motion.div>
             <motion.div
@@ -148,7 +148,7 @@ function DefiPage() {
               <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
                 $0
               </span>
-              <span className="tw-paragraph md:tw-lead-sm">Gas Fees</span>
+              <span className="tw-paragraph md:tw-lead-sm">Gas fees</span>
             </motion.div>
             <motion.div
               className="flex flex-col gap-2"
@@ -181,7 +181,7 @@ function DefiPage() {
               signing native transactions on other blockchains without using
               bridges. Today, you can already swap BTC with ICP without ever
               having to use insecure wrapped tokens. In the near future, this
-              could extent to ETH or even Dogecoin. .
+              could extent to ETH or even Dogecoin.
             </p>
             <p className="mb-0">
               <Link
@@ -269,9 +269,9 @@ function DefiPage() {
                 className="tw-heading-4 md:tw-heading-60 text-white mb-6 md:mb-260"
                 variants={transitions.item}
               >
-                Highest-Throughput
+                Highest-throughput
                 <br />
-                Blockchain
+                blockchain
               </motion.h2>
               <motion.p
                 className="md:tw-lead mb-6 md:mb-6"
@@ -436,7 +436,7 @@ function DefiPage() {
               className="tw-heading-5 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-8/12"
               variants={transitions.item}
             >
-              Build the Future of DeFi
+              Build the future of DeFi
             </motion.h2>
             <motion.p
               className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
@@ -451,18 +451,18 @@ function DefiPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="About HTTPS Outcalls"
+              title="About HTTPS outcalls"
               description=""
               href="/https-outcalls"
             />
 
             <CardWithDescription
-              title="Sample Code"
+              title="Sample code"
               description=""
               href="/samples?selectedDomains=Asynchronous+DeFi"
             />
             <CardWithDescription
-              title="Dev Docs"
+              title="Dev docs"
               description=""
               href="/docs/current/home"
             />
