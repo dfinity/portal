@@ -1,60 +1,86 @@
-# Deploying Your First Bitcoin Dapp
+# Deploying your first Bitcoin dapp
 
-This tutorial will walk you through how to deploy a canister to the Internet Computer
-that can send and receive Bitcoin.
+This tutorial will walk you through how to *deploy* a sample [canister smart contract](https://wiki.internetcomputer.org/wiki/Canister_smart_contract) **that can send and receive Bitcoin** on the Internet Computer.
 
 We will be relying on the "Basic Bitcoin" example in the [examples repository](https://github.com/dfinity/examples/),
 which internally leverages the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)
 and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api) of the Internet Computer.
 
-## Deployment
-
-1. Clone the `examples` repo
-
-        git clone https://github.com/dfinity/examples
-
-2. Go to the `basic_bitcoin` example in the [language of your choice](../developer-docs/backend/choosing-language.md):
+For deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin Integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 
-        # For motoko
-        cd examples/motoko/basic_bitcoin
+## 1. Building and deploying sample code
 
-        # For rust
-        cd examples/rust/basic_bitcoin
+### Requirement
 
-   :::note
-   If you choose Rust and are using MacOS, you'll need to install [Homebrew](https://brew.sh/) and run `brew install llvm` to be able to compile the example.
-   :::
+* Install the [IC SDK](../developer-docs/setup/install/index.mdx)
 
-3. Initialize the git submodules
+### Clone the smart contract
 
-        git submodule update --init --recursive
+This tutorial has the *same smart contract* written in different programming languages: in [Rust](../developer-docs/backend/rust/index.md)
+and [Motoko](../developer-docs/backend/motoko/index.md).
 
-4. Deploy the example to the Internet Computer. We're initializing the canister with `variant { Testnet }`, so that the canister connects to the Bitcoin testnet.
+You can clone and deploy either one, as they both function in the same way.
 
-        dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
+**Option 1:** clone and build the smart contract in **Motoko**
 
-   :::tip
-   Deploying to the Internet Computer requires `Cycles`. You can read more about cycles [here](/concepts/tokens-cycles.md). You can also get some free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
-   :::
+```bash
+git clone https://github.com/dfinity/examples
+cd examples/motoko/basic_bitcoin
+git submodule update --init --recursive
+```
 
-    If successful, you should see an output that looks like this:
+**Option 2:** clone and build the smart contract in **Rust** 
 
-        Deploying: basic_bitcoin
-        Building canisters...
-        ...
-        Deployed canisters.
-        URLs:
-        Candid:
-            basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>
+```bash
+git clone https://github.com/dfinity/examples
+cd examples/rust/basic_bitcoin
+git submodule update --init --recursive
+```
 
-   Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
+:::note
+If you choose Rust and are using MacOS, you'll need to install Homebrew and run `brew install llvm` to be able to compile the example.
+:::
 
-## Generating a Bitcoin Address
+### Acquire cycles to deploy
+
+Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles) (the equivalent of "gas" in other blockchains). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
+
+### Deploy the smart contract to the Internet Computer. 
+
+```bash
+dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
+```
+
+For context:
+- `dfx deploy` tells the command line interface to `deploy` the smart contract
+- `--network=ic` tells the command line to deploy the smart contract to the mainnet ICP blockchain
+- `--argument '(variant { Testnet })'` passes the argument `Testnet` to initialize the smart contract, telling it to connect to the Bitcoin testnet
+
+:::note
+We're initializing the canister with `variant { Testnet }`, so that the canister connects to the the [Bitcoin testnet](https://en.bitcoin.it/wiki/Testnet). To be specific, this connects to `Testnet3`, which is the current Bitcoin test network used by the Bitcoin community.
+:::
+
+
+If successful, you should see an output that looks like this:
+
+```bash
+Deploying: basic_bitcoin
+Building canisters...
+...
+Deployed canisters.
+URLs:
+Candid:
+    basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>
+```
+
+Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
+
+## 2. Generating a Bitcoin Address
 
 Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these
 addresses can be generated from an ECDSA public key. The example code
-showcases how your canister can generate a P2PKH address using the [ecdsa_public_key](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) API.
+showcases how your canister can generate a [P2PKH address](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash) using the [ecdsa_public_key](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) API.
 
 On the Candid UI of your canister, click the "Call" button under `get_p2pkh_address` to
 generate a P2PKH Bitcoin address:
@@ -74,21 +100,24 @@ Or, if you prefer the command line:
 used for sending/receiving Bitcoin on the Bitcoin testnet.
 :::
 
-## Receiving Bitcoin
+## 3. Receiving Bitcoin
 
 Now that the canister is deployed and you have a Bitcoin address, it's time to receive
-some testnet Bitcoin. You can use one of the Bitcoin faucets, such as [this one](https://bitcoinfaucet.uo1.net/),
+some testnet Bitcoin. You can use one of the Bitcoin faucets, such as [coinfaucet.eu](https://coinfaucet.eu),
 to receive some bitcoin.
 
-Enter your address and click on "Send testnet bitcoins". In the example below, the
-canister will be receiving 0.0001 test BTC.
+Enter your address and click on "Send testnet bitcoins". In the example below we will use bitcoin address `n31eU1K11m1r58aJMgTyxGonu7wSMoUYe7`, but you would use your own address. The canister will be receiving 0.011 test BTC on the Bitcoin Testnet.
 
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet.png)
+
+You should see something similar to this:
+![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet-received.png)
+
 
 Once the transaction has at least one confirmation, which can take a few minutes,
 you'll be able to see it in your canister's balance.
 
-## Checking Your Bitcoin Balance
+## 4. Checking Your Bitcoin Balance
 
 You can check a Bitcoin address's balance by using the `get_balance` endpoint on your canister.
 
@@ -102,7 +131,7 @@ Alternatively, make the call using the command line:
 
 Checking the balance of a Bitcoin address relies on the [bitcoin_get_balance](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin_get_balance) API.
 
-## Sending Bitcoin
+## 5. Sending Bitcoin
 
 You can send Bitcoin using the `send` endpoint on your canister.
 
@@ -128,3 +157,14 @@ The `send` endpoint returns the ID of the transaction it sent to the network.
 You can track the status of this transaction using a block explorer. Once the
 transaction has at least one confirmation, you should be able to see it
 reflected in your current balance.
+
+## 6. Conclusion
+
+In this tutorial, you were able to:
+
+* deploy a canister smart contract on the ICP blockchain that can receive & send Bitcoin
+* Use a cycles faucet to deploy the canister to ICP blockchain on mainnet for free
+* Connect the canister to the Bitcoin testnet
+* Send the canister some testnet BTC
+* Check the testnet BTC balance of the canister
+* Use the canister to send testnet BTC to another BTC address
