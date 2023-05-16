@@ -149,3 +149,14 @@ The `send` endpoint returns the ID of the transaction it sent to the network.
 You can track the status of this transaction using a block explorer. Once the
 transaction has at least one confirmation, you should be able to see it
 reflected in your current balance.
+
+## 6. Conclusion
+
+In this tutorial, you were able to:
+
+* deploy a canister smart contract on the ICP blockchain that received and sent native Bitcoin
+* Used a cycles faucet to deploy the canister to ICP blockchain on mainnet for free
+* Connected the canister to the Bitcoin testnet
+* Sent the canister some testnet BTC
+* Checked the testnet BTC balance of the canister
+* Used the canister to send testnet BTC to another BTC address
