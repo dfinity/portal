@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-# NFT developement
+# NFT development
 
 ## What is an NFT?
 
@@ -22,7 +22,7 @@ An NFT implementation on the IC typically has the following three functions:
 Depending on the architecture, all of these functions may be in one canister or spread across multiple canisters right up to an asset canister per individual NFT. Each of these canisters must not run out of cycles, and should be protected against arbitrary code changes. In the following, we discuss some of the mechanisms, tools, and ideas that support NFT developers and their users to achieve these goals.
 
 
-## The Basics
+## The basics
 
 ### Top up all canisters very generously
 
@@ -75,7 +75,7 @@ The IC itself does not yet support backup and restoration of the canister state,
 There are dedicated services on the IC to keep an audit log of transactions such as [CAP](https://cap.ooo/), which can be used by an NFT collection as a service. This allows simple integration of the provenance history in explorers and wallets. 
 Furthermore, the state of ownership could be reconstructed in case the main NFT canister gets lost. However, some drawbacks have to be considered, e.g. NFT transfers incur additional costs due to the necessary inter-canister calls. 
 
-## Advanced Topics
+## Advanced topics
 
 ### Think about governance
 
@@ -91,7 +91,7 @@ More information on this topic can be found in the [Trust in Canisters](/concept
 Ideally, your canisters implement mechanisms to generate fees that the canisters can use to pay for their existence indefinitely. A simple approach is to utilize (parts of) the transfer fee to fuel the canisters, but more elaborate schemes could involve staking or other advanced mechanisms. We’re unaware of any good best practices, but please share if you know of projects implementing clever mechanisms.
 
 
-## Links and Resources
+## Links and resources
 
 The following resources are community projects. Please do your own research and use them at your own risk.
 
