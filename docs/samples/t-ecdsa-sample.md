@@ -1,6 +1,6 @@
 # Threshold ECDSA Signing Code Walkthrough
 
-We present a minimal example canister smart contract  for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa) API. 
+We present a minimal example canister smart contract for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa) API. 
 
 The example canister is a **signing oracle that creates ECDSA signatures with keys derived from an input string.** 
 
@@ -12,6 +12,10 @@ More specifically:
 
 We give a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
 
+:::note 
+This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
+:::
+
 ## Getting Started
 
 Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
@@ -20,7 +24,7 @@ Sample code for `threshold-ecdsa` is provided in the [examples repository](https
 -   Download and [install the SDK](../developer-docs/setup/index.md) if you do not already have it.
 -   Check out the [examples repository](https://github.com/dfinity/examples).
 
-### Deploy the code locally
+### Deploy the canister locally
 
 ```bash
 cd motoko/threshold_ecdsa
@@ -31,11 +35,37 @@ dfx deploy
 - `dfx start --background` starts a local instance of the IC via the IC SDK
 - `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
 
-## Deploying it on Mainnet
+## Deploying the canister on IC mainnet
 
-The same code used in the SDK environment for local testing works on the IC mainnet. Keep in mind that the master key in the SDK environment is different to the master test key on mainnet and the future master production key.
+To deploy the sample code, the canister needs the right key for the right environment. To deploy to the right environment, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
 
-Before deploying to mainnet, you should modify the code to use the right name of the `key_id` for the key on mainnet.
+There are three options:
+
+* `dfx_test_key`: a default key that is used in deploying to a local version of IC (via IC SDK)
+* `test_key_1`: a master *test* key that is used in mainnet
+* `key_1`: a master *production* key that is used in mainnet
+
+For example, the default code in `src/ecdsa_example_motoko/main.mo` includes the lines and can be deployed locally:
+
+
+```motoko
+let { public_key } = await ic.ecdsa_public_key({
+          canister_id = null;
+          derivation_path = [ caller ];
+          key_id = { curve = #secp256k1; name = "dfx_test_key" };
+      });
+```
+
+```motoko
+      let { signature } = await ic.sign_with_ecdsa({
+          message_hash;
+          derivation_path = [ caller ];
+          key_id = { curve = #secp256k1; name = "dfx_test_key" };
+      });
+```
+
+To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
+
 
 ## Obtaining Public Keys
 
@@ -70,7 +100,7 @@ For obtaining the canister's root public key, the derivation path in the API can
 
 ## Signing
 
-Computing threshold ECDSA signatures is the core functionality of this feature. Canisters do not hold ECDSA keys themselves, but keys are derived from a master key held by dedicated subnets. A canister can request the computation of a signature through the management canister API. The request is then routed to a subnet holding the specified key and the subnet computes the requested signature using threshold cryptography. Thereby, it derives the canister root key or a key obtained through further derivation, as part of the signature protocol, from a shared secret and the requesting canister's principal identifier. Thus, a canister can only request signatures to be created for their canister root key or a key derived from it. This means, canisters "control" their private ECDSA keys in that they decide when signatures are to be created with them, but don't hold a private key themselves.
+Computing threshold ECDSA signatures is the core functionality of this feature. **Canisters do not hold ECDSA keys themselves**, but keys are derived from a master key held by dedicated subnets. A canister can request the computation of a signature through the management canister API. The request is then routed to a subnet holding the specified key and the subnet computes the requested signature using threshold cryptography. Thereby, it derives the canister root key or a key obtained through further derivation, as part of the signature protocol, from a shared secret and the requesting canister's principal identifier. Thus, a canister can only request signatures to be created for their canister root key or a key derived from it. This means, canisters "control" their private ECDSA keys in that they decide when signatures are to be created with them, but don't hold a private key themselves.
 
 ```
   public shared (msg) func sign(message_hash: Blob) : async { #Ok : { signature: Blob };  #Err : Text } {
