@@ -23,7 +23,7 @@ Before you start your project, verify the following:
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
     ```
 
--   You have downloaded and installed the IC SDK package as described in [Installing the SDK](./../../setup/install/index.mdx).
+-   You have downloaded and installed the IC SDK package as described in [Installing the IC SDK](./../../setup/install/index.mdx).
 
 -   You have `cmake` installed. For example, use Homebrew with the following command:
 
