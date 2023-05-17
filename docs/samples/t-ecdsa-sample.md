@@ -16,7 +16,7 @@ We give a complete overview of the development, starting with downloading of the
 This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
 :::
 
-## Getting Started
+## 1. Getting Started
 
 Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
 
@@ -52,7 +52,7 @@ If you go to the URL, you will see a web UI that shows the public methods the ca
  ![Candid UI](./_attachments/tecdsa-candid-ui.png)
 
 
-## Deploying the canister on IC mainnet
+## 2. Deploying the canister on IC mainnet
 
 To deploy this canister the IC mainnet, one needs to do two things:
 
@@ -113,7 +113,7 @@ URLs:
 
 In example above, `ecdsa_example_motoko` has the URL https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai and serves up the Candid web UI for this particular canister deployed on mainnet.
 
-## Obtaining Public Keys
+## 3. Obtaining Public Keys
 
 ### Using the Candid web UI
 
@@ -151,7 +151,8 @@ Open up, `main.mo` and you find the following Motoko code demonstrates how to ob
           //When `null`, it defaults to getting the public key of the canister that makes this call
           canister_id = null;
           derivation_path = [ caller ];
-          key_id = { curve = #secp256k1; name = "dfx_test_key" };
+          //this code uses the mainnet test key
+          key_id = { curve = #secp256k1; name = "test_key_1" };
       });
       
       #Ok({ public_key })
@@ -181,11 +182,11 @@ For obtaining the canister's root public key, the derivation path in the API can
 -   For obtaining a canister's public key below its root key in the BIP-32 key derivation hierarchy, a derivation path needs to be specified. As explained in the general documentation, each element in the array of the derivation path is either a 32-bit integer encoded as 4 bytes in big endian or a byte array of arbitrary length. The element is used to derive the key in the corresponding level at the derivation hierarchy.
 -   In the example code above, we use the bytes extracted from the `msg.caller` principal in the `derivation_path`, so that different callers of `public_key()` method of our canister will be able to get their own public keys.
 
-## Signing
+## 4. Signing
 
 Computing threshold ECDSA signatures is the core functionality of this feature. **Canisters do not hold ECDSA keys themselves**, but keys are derived from a master key held by dedicated subnets. A canister can request the computation of a signature through the management canister API. The request is then routed to a subnet holding the specified key and the subnet computes the requested signature using threshold cryptography. Thereby, it derives the canister root key or a key obtained through further derivation, as part of the signature protocol, from a shared secret and the requesting canister's principal identifier. Thus, a canister can only request signatures to be created for their canister root key or a key derived from it. This means, canisters "control" their private ECDSA keys in that they decide when signatures are to be created with them, but don't hold a private key themselves.
 
-```
+```motoko
   public shared (msg) func sign(message_hash: Blob) : async { #Ok : { signature: Blob };  #Err : Text } {
     assert(message_hash.size() == 32);
     let caller = Principal.toBlob(msg.caller);
@@ -203,7 +204,7 @@ Computing threshold ECDSA signatures is the core functionality of this feature. 
   };
 ```
 
-## Signature Verification
+## 5. Signature Verification
 
 For completeness of the example, we show that the created signatures can be verified with the public key corresponding to the same canister and derivation path.
 
@@ -222,3 +223,11 @@ let verified = ecdsaVerify(signature, hash, public_key)
 The call to `ecdsaVerify` function should always return `true`.
 
 Similar verifications can be done in many other languages with the help of cryptographic libraries support the `secp256k1` curve.
+
+## 6. Wrap up
+
+In this walkthrough, we deployed a sample smart contract that:
+
+* signed with private ECDSA keys even though **canisters do not hold ECDSA keys themselves**
+* requested a public key 
+* performed signature verification
