@@ -95,14 +95,14 @@ let { public_key } = await ic.ecdsa_public_key({
 To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
 
 ### Deploy to mainnet via IC SDK
-
+x
 To [deploy via mainnet](../developer-docs/setup/deploy-mainnet.md), run the following commands:
 
 ```bash
 npm install
 dfx deploy --network ic
 ```
-If successful, you should see something like this where `ecdsa_example_motoko` is https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai serves up the Candid Web UI (on mainnet) for this particular canister deployed on mainnet.
+If successful, you should see something like this:
 
 ```bash
 Deployed canisters.
@@ -111,11 +111,13 @@ URLs:
     ecdsa_example_motoko: https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai
 ```
 
+In example above, `ecdsa_example_motoko` has the URL https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai and serves up the Candid web UI for this particular canister deployed on mainnet.
+
 ## Obtaining Public Keys
 
-### Using the Candid Web UI
+### Using the Candid web UI
 
-if you deployed your canister locally or to mainnet, you should have a URL to the Candid Web UI where you can access the public methods. We call `public-key` method:
+if you deployed your canister locally or to mainnet, you should have a URL to the Candid web UI where you can access the public methods. We call `public-key` method:
 
 ![Public key method](./_attachments/tecdsa-candid-public-key.png)
 
@@ -132,15 +134,10 @@ In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a
 
 
 ### Code walk through
-The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). 
-
-
-:::info
-The [IC management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of the IC (as if it were a single canister). In the code below, we use the management canister to create an ECDSA public key.
-:::
+Open up, `main.mo` and you find the following Motoko code demonstrates how to obtain an ECDSA public key. 
 
 ```motoko
-  //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`
+  //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`. This is how we will generate an ECDSA public key 
   let ic : IC = actor("aaaaa-aa");
 
   public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
@@ -168,8 +165,12 @@ The [IC management canister](../references/ic-interface-spec/#ic-management-cani
   };
 ```
 
-- `let ic : IC = actor("aaaaa-aa")` declares the IC management canister
-- `canister_id = null` is used because when the canister_id argument is left as unspecified (null), it defaults to getting the public key of the canister that makes this call
+In the code above, the canister calls the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). 
+
+
+:::info
+The [IC management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of the IC (as if it were a single canister). In the code below, we use the management canister to create an ECDSA public key. `let ic : IC = actor("aaaaa-aa")` declares the IC management canister in the code above.
+:::
 
 ### Canister Root Public Key
 
