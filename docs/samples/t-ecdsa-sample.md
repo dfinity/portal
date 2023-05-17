@@ -24,7 +24,9 @@ Sample code for `threshold-ecdsa` is provided in the [examples repository](https
 -   Download and [install the SDK](../developer-docs/setup/index.md) if you do not already have it.
 -   Check out the [examples repository](https://github.com/dfinity/examples).
 
-### Deploy the canister locally
+### Deploy and test the canister locally 
+
+We will use the Motoko version of the canister:
 
 ```bash
 cd motoko/threshold_ecdsa
@@ -36,7 +38,6 @@ dfx deploy
 - `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
 
 If successful, you should see something like this:
-
 
 ```bash
 Deployed canisters.
@@ -51,6 +52,17 @@ If you go to the URL, you will see a web UI that shows the public methods the ca
 
 
 ## Deploying the canister on IC mainnet
+
+To deploy this canister the IC mainnet, one needs to do two things:
+
+1. Acquire cycles (equivalent of "gas" in other blockchains). This is necessary for all canisters.
+2. Update the sample source code to have the right key. This is unique to this canister.
+
+### Acquire cycles to deploy
+
+Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
+
+### Update source code with the right key
 
 To deploy the sample code, the canister needs the right key for the right environment. Specifically, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
 
