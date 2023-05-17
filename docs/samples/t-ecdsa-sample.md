@@ -31,6 +31,7 @@ We will use the Motoko version of the canister:
 ```bash
 cd motoko/threshold_ecdsa
 dfx start --background
+npm install
 dfx deploy
 ```
 
@@ -93,10 +94,46 @@ let { public_key } = await ic.ecdsa_public_key({
 
 To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
 
+### Deploy to mainnet via IC SDK
+
+To [deploy via mainnet](../developer-docs/setup/deploy-mainnet.md), run the following commands:
+
+```bash
+npm install
+dfx deploy --network ic
+```
+If successful, you should see something like this where `ecdsa_example_motoko` is https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai serves up the Candid Web UI (on mainnet) for this particular canister deployed on mainnet.
+
+```bash
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    ecdsa_example_motoko: https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai
+```
 
 ## Obtaining Public Keys
 
-The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the IC management canister (`aaaaa-aa`). When the `canister_id` argument is left as unspecified (`null`), it defaults to getting the public key of the canister that makes this call.
+### Using the Candid Web UI
+
+if you deployed your canister locally or to mainnet, you should have a URL to the Candid Web UI where you can access the public methods. We call `public-key` method:
+
+![Public key method](./_attachments/tecdsa-candid-public-key.png)
+
+In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a55540a27fc86d690fda8e688e31a` as the public key.
+
+```json
+{
+  "Ok":
+  {
+    "public_key_hex": "03c22bef676644dba524d4a24132ea8463221a55540a27fc86d690fda8e688e31a"
+  }  
+}
+```
+
+
+
+### Code walk through
+The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). When the `canister_id` argument is left as unspecified (`null`), it defaults to getting the public key of the canister that makes this call.
 
 ```
   let ic : IC = actor("aaaaa-aa");
