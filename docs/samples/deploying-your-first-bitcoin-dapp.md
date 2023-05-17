@@ -111,6 +111,7 @@ Enter your address and click on "Send testnet bitcoins". In the example below we
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet.png)
 
 You should see something similar to this:
+
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet-received.png)
 
 
