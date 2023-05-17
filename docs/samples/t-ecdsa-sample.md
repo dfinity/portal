@@ -35,6 +35,21 @@ dfx deploy
 - `dfx start --background` starts a local instance of the IC via the IC SDK
 - `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
 
+If successful, you should see something like this:
+
+
+```bash
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    ecdsa_example_motoko: http://127.0.0.1:4943/?canisterId=t6rzw-2iaaa-aaaaa-aaama-cai&id=st75y-vaaaa-aaaaa-aaalq-cai
+```
+
+If you go to the URL, you will see a web UI that shows the public methods the canister exposes. Since the canister exposes `public_key` and `sign` methods, those are rendered in the web UI:
+
+ ![Candid UI](./_attachments/tecdsa-candid-ui.png)
+
+
 ## Deploying the canister on IC mainnet
 
 To deploy the sample code, the canister needs the right key for the right environment. Specifically, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
