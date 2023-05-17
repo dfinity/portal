@@ -134,7 +134,7 @@ function NnsPage() {
               </MotionLink>
             </Card>
             <Card
-              title="Help Govern the Internet Computer"
+              title="Help govern the Internet Computer"
               icon={<IconGovern aria-hidden="true" />}
             >
               <motion.p

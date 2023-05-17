@@ -154,7 +154,7 @@ const config = {
             items: intoColumns([
               [
                 // column 1
-                menuDivider("Dig in"),
+                menuDivider("Start here"),
                 {
                   label: "The Basics",
                   href: "/basics",
@@ -164,7 +164,7 @@ const config = {
                   href: "/what-is-the-ic",
                 },
                 {
-                  label: "The Technology",
+                  label: "How it Works",
                   href: "/how-it-works",
                 },
                 {
@@ -176,7 +176,7 @@ const config = {
                   href: "https://internetcomputer.org/whitepaper.pdf",
                 },
                 {
-                  label: "IC Wiki",
+                  label: "ICP Wiki",
                   href: "https://wiki.internetcomputer.org",
                 },
                 {
@@ -344,7 +344,7 @@ const config = {
               [
                 menuDivider("Get Involved"),
                 {
-                  label: "Live sessions",
+                  label: "Live Sessions",
                   href: "/live-sessions",
                 },
                 {
@@ -352,12 +352,16 @@ const config = {
                   href: "/roadmap",
                 },
                 {
+                  label: "Hackathons",
+                  href: "https://dfinity.org/hackathons",
+                },
+                {
                   label: "ICP Careers",
                   href: "http://careers.internetcomputer.org/",
                 },
                 {
                   label: "Become a Node Provider",
-                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding",
+                  href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation",
                 },
                 {
                   label: "DFINITY Foundation",
@@ -447,7 +451,7 @@ const config = {
                 docId: "other/updates/release-notes/release-notes",
               },
               { label: "Developer Tools", to: "/tooling" },
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
+              { label: "Developer grants", href: "https://dfinity.org/grants" },
               {
                 label: "Motoko Playground",
                 href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",

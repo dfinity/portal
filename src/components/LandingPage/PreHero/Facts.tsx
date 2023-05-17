@@ -226,7 +226,7 @@ export const Facts = () => {
     <>
       <div className="" id="stats">
         <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-20 md:w-[880px] mx-auto text-center">
-          World’s Highest Usage Blockchain
+          World’s highest usage blockchain
         </h2>
       </div>
 
@@ -300,7 +300,7 @@ export const Facts = () => {
           </div>
 
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Comparing Transactions</h3>
+            <h3 className="md:tw-heading-4 mb-4">Comparing transactions</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Transactions invoke "actor" canister smart contract computations,
               which subnet blockchains can run concurrently (yet
@@ -319,7 +319,7 @@ export const Facts = () => {
           </div>
 
           <div className="mt-8 md:mt-20">
-            <h3 className="md:tw-heading-4 mb-4">ICP Costs $5 / GB / year</h3>
+            <h3 className="md:tw-heading-4 mb-4">ICP costs $5 / GB / year</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               Storing data in smart contract memory allows ICP dapps to
               dynamically access it without querying external sources or relying
@@ -349,7 +349,7 @@ export const Facts = () => {
             <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
           </div>
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Crypto Cloud Efficiency</h3>
+            <h3 className="md:tw-heading-4 mb-4">Crypto cloud efficiency</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               An average ICP transaction executes 6’660’000 instructions
               compared to ETH’s 83’000, while each instruction is orders of

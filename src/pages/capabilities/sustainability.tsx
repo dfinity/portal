@@ -47,7 +47,7 @@ function SustainabilityPage() {
                 >
                   Committed to
                   <br />
-                  Green Tech
+                  green tech
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm sm:tw-lead"

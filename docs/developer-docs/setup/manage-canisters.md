@@ -1,8 +1,8 @@
-# Managing Canisters
+# Managing canisters
 
 If you have experimented with using the SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
 
-## Obtaining a Canister Identifier
+## Obtaining a canister identifier
 
 Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a subnet before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
 
@@ -58,7 +58,7 @@ To generate a locally-defined identifier:
 
     Note that you must register unique canister identifiers to replace your locally-defined identifier before you can deploy the project on the IC blockchain.
 
-## Deploy Canisters
+## Deploy canisters
 
 After you have compiled a program, you can install the compiled code in a canister running either on a local canister execution environment or on the IC blockchain.
 
@@ -80,7 +80,7 @@ To deploy the code for the first time:
 
         dfx canister install --all
 
-## Look up a Canister ID
+## Look up a canister ID
 
 All canisters have unique identifiers. You often need to use these identifiers to interact with the canister. For example, if you want to access the frontend canister for a dapp or interact with a service using the Candid web interface, you must specify the appropriate canister identifier.
 
@@ -112,7 +112,7 @@ To add a wallet for use with an existing canister:
 
         dfx start --clean
 
-## Reinstall a Canister
+## Reinstall a canister
 
 During the development cycle, you might want to install, then replace your program as you debug and improve it.
 
@@ -136,7 +136,7 @@ To reinstall a canister:
 
 Note that you can use the `reinstall` mode to replace any canister, regardless of whether the canister has code or state associated with it.
 
-## Set an Identity to own a Canister
+## Set an identity to own a canister
 
 In most cases, a `default` user identity is created for you automatically the first time you run the `dfx canister create` command. This default identity consists of the public and private key pair generated for your local user account. Typically, this `default` identity is also the default owner of all of the projects you create and all of the canisters you deploy. You can, however, proactively create and use identities of your choice to circumvent the `default` user identity from being used.
 
@@ -176,7 +176,7 @@ To set an identity for a project:
 
         dfx canister call pubs greet '("Sam")'
 
-## Managing the Running State of a Canister
+## Managing the running state of a canister
 
 After you deploy a canister, it can begin receiving and processing requests from users and from other canisters. Canisters that are available to send requests and receive replies are considered in be in a **Running** state.
 
@@ -211,7 +211,7 @@ This command displays output similar to the following:
     Starting code for canister status_check, with canister_id 75hes-oqbaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
     Starting code for canister status_check_assets, with canister_id cxeji-wacaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
 
-## Upgrade a Canister
+## Upgrade a canister
 
 Unlike a canister reinstall that preserves the canister identifier but no state, a canister upgrade enables you to preserve the state of a deployed canister, and change the code.
 

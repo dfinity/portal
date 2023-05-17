@@ -1,4 +1,4 @@
-# Introduction to Developing Canisters in Motoko
+# Introduction to developing canisters in Motoko
 
 [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
 

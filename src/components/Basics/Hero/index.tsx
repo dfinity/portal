@@ -28,7 +28,7 @@ const Hero = () => {
           variants={transitions.item}
           className="tw-heading-3 md:tw-heading-2 m-0"
         >
-          Internet Computer Basics
+          Internet Computer basics
         </motion.h1>
         <motion.p
           variants={transitions.item}

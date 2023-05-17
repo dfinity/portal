@@ -111,7 +111,7 @@ function EthereumIntegrationPage() {
                 className="tw-heading-4 md:tw-heading-3 mb-0 text-gradient"
                 variants={transitions.item}
               >
-                Smart Contracts on the Internet Computer are the glue between
+                Smart contracts on the Internet Computer are the glue between
                 the world’s most important blockchains.
               </motion.p>
               {/* <motion.p
@@ -253,7 +253,7 @@ function EthereumIntegrationPage() {
               className="text-gradient tw-heading-4 md:tw-heading-2 md:mb-10 text-center"
               variants={transitions.item}
             >
-              Solving the Ethereum Challenge
+              Solving the Ethereum challenge
             </motion.h2>
             <motion.p
               className="tw-paragraph mb-0 text-center"
@@ -276,7 +276,7 @@ function EthereumIntegrationPage() {
           >
             <AnimatedProse className="md:w-[calc(50%-60px)]">
               <h3 className="text-gradient inline-block">
-                Phase 1: HTTPS Outcalls 
+                Phase 1: HTTPS outcalls 
               </h3>
               <p>
                 The ICP community has started building the necessary functionality
@@ -334,7 +334,7 @@ function EthereumIntegrationPage() {
             imageWithBlob="md:blob md:blob-purple blob-x-2 blob-y-5 blob-md"
           >
             <Prose>
-              <h3 className="md:mb-6">Community Collab</h3>
+              <h3 className="md:mb-6">Community collab</h3>
               <p>
                 In February 2023, the ICP DeFi community convened at the DFINITY
                 headquarters in Zurich during a DeFi focused ICP.Lab to discuss 
@@ -381,7 +381,7 @@ function EthereumIntegrationPage() {
             className="tw-heading-4 md:tw-heading-2 mb-6 text-gradient"
             variants={transitions.item}
           >
-            Chain-Key ETH & ERC-20
+            Chain-key ETH & ERC-20
           </motion.h2>
           <motion.p
             className="tw-lead-sm md:tw-lead mb-6"
@@ -419,9 +419,9 @@ function EthereumIntegrationPage() {
               className="tw-heading-4 md:tw-heading-60 mb-0"
               variants={transitions.item}
             >
-              Build Your Own Ethereum
+              Build your own Ethereum
               <br />
-              Multi-chain Solution
+              multi-chain solution
             </motion.h2>
           </div>
 
@@ -466,7 +466,7 @@ function EthereumIntegrationPage() {
               className="bg-white/90 border border-solid border-white rounded-xl flex flex-col p-6 md:p-8"
               variants={transitions.item}
             >
-              <h3 className="tw-heading-5 mb-2">Omnic Cross-Chain Messaging</h3>
+              <h3 className="tw-heading-5 mb-2">Omnic cross-chain messaging</h3>
               <p className="flex-1 tw-paragraph-sm text-black/60 mb-5">
                 Omnic cross-chain messaging is a community-built protocol
                 offering infrastructure for cross-chain message exchange between
@@ -487,7 +487,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               <h3 className="tw-heading-5 mb-2">
-                Paranic Cross-Chain Asset Bridge
+                Paranic cross-chain asset bridge
               </h3>
               <p className="flex-1 tw-paragraph-sm text-black/60 mb-5">
                 The Paranic project allows for exchanging assets between the IC
@@ -504,7 +504,7 @@ function EthereumIntegrationPage() {
               className="bg-white/90 border border-solid border-white rounded-xl flex flex-col p-6 md:p-8"
               variants={transitions.item}
             >
-              <h3 className="tw-heading-5 mb-2">ERC-721 IC Assets Tutorial</h3>
+              <h3 className="tw-heading-5 mb-2">ERC-721 IC assets tutorial</h3>
               <p className="flex-1 tw-paragraph-sm text-black/60 mb-5">
                 This tutorial explains hosting metadata for ERC-721 NFTs on the
                 Internet Computer and thus allows Ethereum NFT deployments to
@@ -522,7 +522,7 @@ function EthereumIntegrationPage() {
               className="bg-white/90 border border-solid border-white rounded-xl flex flex-col p-6 md:p-8"
               variants={transitions.item}
             >
-              <h3 className="tw-heading-5 mb-2">Uniswap User Interface</h3>
+              <h3 className="tw-heading-5 mb-2">Uniswap user interface</h3>
               <p className="flex-1 tw-paragraph-sm text-black/60 mb-5">
                 A demo that hosts a Uniswap user interface on the Internet
                 Computer to solve the shortcoming of the typical way of
@@ -542,7 +542,7 @@ function EthereumIntegrationPage() {
               className="bg-white/90 border border-solid border-white rounded-xl flex flex-col p-6 md:p-8"
               variants={transitions.item}
             >
-              <h3 className="tw-heading-5 mb-2">No Key Wallet</h3>
+              <h3 className="tw-heading-5 mb-2">No key wallet</h3>
               <p className="flex-1 tw-paragraph-sm text-black/60 mb-5">
                 This is an example project of a canister-based Ethereum wallet
                 using chain-key ECDSA signing.

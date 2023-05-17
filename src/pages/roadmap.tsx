@@ -113,7 +113,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Community Engagement
+              Community engagement
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
@@ -136,7 +136,7 @@ const RoadmapPage: React.FC = () => {
               className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1"
             >
               <h3 className="tw-lead-lg md:tw-title-sm">
-                Community Submissions
+                Community submissions
               </h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 What features would improve your experience on the Internet
@@ -167,7 +167,7 @@ const RoadmapPage: React.FC = () => {
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1 md:mt-10"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">Developer grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Do you have innovative ideas for building on the Internet
                 Computer and need funding to launch your project? The DFINITY
@@ -178,7 +178,7 @@ const RoadmapPage: React.FC = () => {
                 className="link-external"
                 href="https://dfinity.org/grants/"
               >
-                Apply for Grants
+                Apply for grants
               </Link>
             </motion.div>
           </AnimateSpawn>
@@ -192,7 +192,7 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-6"
               variants={transitions.item}
             >
-              Major Roadmap Achievements
+              Major roadmap achievements
               <br className="md:hidden" />
             </motion.h2>
             <motion.p
@@ -262,7 +262,7 @@ const RoadmapPage: React.FC = () => {
               href="https://github.com/dfinity/ic"
             >
               <GithubIcon className="w-6" />
-              See Code
+              See code
             </Link>
           </AnimateSpawn>
         </section>
