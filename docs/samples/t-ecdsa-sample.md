@@ -1,6 +1,16 @@
 # Threshold ECDSA Signing Code Walkthrough
 
-We present a minimal example canister for showcasing the threshold ECDSA API. The canister is a signing oracle that creates signatures with keys derived from an input string. That is, a request provides a message and a key derivation string and the canister hashes the message and requests a signature from the threshold ECDSA subnet using the key derivation string for the derivation path. We attempt to give a complete overview of the development, starting with downloading of the SDK, up to the deployment and trying out of the code on mainnet.
+We present a minimal example canister smart contract  for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa) API. 
+
+The example canister is a **signing oracle that creates ECDSA signatures with keys derived from an input string.** 
+
+More specifically:
+
+1. The sample canister receives a request that provides *a message* and a *key derivation string*.
+2. The sample canister hashes the *message* and uses the *key derivation string* for the derivation path. 
+3. The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
+
+We give a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
 
 ## Getting Started
 
