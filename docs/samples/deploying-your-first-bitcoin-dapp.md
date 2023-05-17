@@ -126,7 +126,7 @@ In the Candid UI, paste in your canister's address, and click on "Call":
 
 ![Checking Bitcoin Balance](_attachments/bitcoin-received-funds.png)
 
-Alternatively, make the call using the command line:
+Alternatively, make the call using the command line. Be sure to replace `mheyfRsAQ1XrjtzjfU1cCH2B6G1KmNarNL` with your own generated 2pkh address:
 
     dfx canister --network=ic call basic_bitcoin get_balance '("mheyfRsAQ1XrjtzjfU1cCH2B6G1KmNarNL")'
 
