@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# Installing the SDK on Windows
+# Installing the IC SDK on Windows
 
 There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run `dfx` also on a Windows system as described below.
 

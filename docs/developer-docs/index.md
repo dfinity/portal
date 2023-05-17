@@ -5,7 +5,7 @@ sidebar_position: 1
 
 The [Internet Computer blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) is poised to help you start a revolution with a new way to design, build, and release dapps.
 
-## Developing Dapps
+## Developing dapps
 
 The Internet Computer is a blockchain that runs [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts), which are code units bundling together WebAssembly bytecode and the memory pages the bytecode runs in. The Internet Computer is composed of individual [subnet blockchains](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#subnet-architecture) running in parallel and connected together by the use of [Chain Key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography). This means that canisters running on a subnet can seamlessly call canisters hosted in any other subnet of the Internet Computer blockchain. Moreover, the governance system of the Internet Computer can dynamically increase the capacity of the Internet Computer by adding new subnets, allowing dapps to scale out.
 
@@ -13,7 +13,7 @@ Developers can thus build new dapps consisting of multiple canisters running in 
 
 See [Introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on the IC wiki.
 
-## Developer Workflow at a Glance
+## Developer workflow at a glance
 
 At a high-level, there are two main possible workflows for developing dapps that run on the Internet Computer blockchain.
 
@@ -25,7 +25,7 @@ At a high-level, there are two main possible workflows for developing dapps that
 
 Regardless of the development workflow you choose, keep in mind that when you deploy a canister for the first time, either on a local execution environment or on the Internet Computer, a unique [principal identifier](/references/glossary.md#principal) is created for your canister. For example, if you start developing your canister locally and then deploy it to the Internet Computer, then your canister will generally have a different identifier on the local execution environment and on the Internet Computer blockchain mainnet. Note that it is also possible for you to register a principal identifier for your new canister before deploying it or even writing any line of code.
 
-## Gas cost / Pricing
+## Gas cost / pricing
 
 The Internet Computer is one of the cheapest blockchains that exist today. 
 
