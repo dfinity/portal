@@ -14,12 +14,22 @@ We give a complete overview of the development, starting with downloading of the
 
 ## Getting Started
 
-Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least dfx version 0.11.0 for local development.
+Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
 
--   Download and install the SDK if you do not already have it.
--   Check out the examples repository.
--   Change directory to `motoko/threshold_ecdsa` subdirectory.
--   Run `dfx deploy`.
+### Setup
+-   Download and [install the SDK](../developer-docs/setup/index.md) if you do not already have it.
+-   Check out the [examples repository](https://github.com/dfinity/examples).
+
+### Deploy the code locally
+
+```bash
+cd motoko/threshold_ecdsa
+dfx start --background
+dfx deploy
+```
+
+- `dfx start --background` starts a local instance of the IC via the IC SDK
+- `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
 
 ## Deploying it on Mainnet
 
@@ -29,7 +39,7 @@ Before deploying to mainnet, you should modify the code to use the right name of
 
 ## Obtaining Public Keys
 
-The following motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the IC management canister (`aaaaa-aa`). When the `canister_id` argument is left as unspecified (`null`), it defaults to getting the public key of the canister that makes this call.
+The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the IC management canister (`aaaaa-aa`). When the `canister_id` argument is left as unspecified (`null`), it defaults to getting the public key of the canister that makes this call.
 
 ```
   let ic : IC = actor("aaaaa-aa");
