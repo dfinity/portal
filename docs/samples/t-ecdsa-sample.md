@@ -37,7 +37,7 @@ dfx deploy
 
 ## Deploying the canister on IC mainnet
 
-To deploy the sample code, the canister needs the right key for the right environment. To deploy to the right environment, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
+To deploy the sample code, the canister needs the right key for the right environment. Specifically, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
 
 There are three options:
 
