@@ -3,9 +3,9 @@ title: Chain-Key Bitcoin
 links:
   Forum Link: https://forum.dfinity.org/t/chain-key-bitcoin-ckbtc-bitcoin-wrapped-by-a-smart-contract/17606/
   Proposal: https://dashboard.internetcomputer.org/proposal/50135
-eta: Q1 2023
+eta: April 2023
 is_community: false
-in_beta: true
+in_beta: false
 ---
 
 Canister smart contracts on the Internet Computer can control and hold real bitcoin on the Bitcoin network. 

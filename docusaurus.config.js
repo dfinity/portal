@@ -356,6 +356,10 @@ const config = {
                   href: "/roadmap",
                 },
                 {
+                  label: "Hackathons",
+                  href: "https://dfinity.org/hackathons",
+                },
+                {
                   label: "ICP Careers",
                   href: "http://careers.internetcomputer.org/",
                 },
