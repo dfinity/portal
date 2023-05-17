@@ -80,7 +80,7 @@ const Highlights: React.FC = () => {
   return (
     <section id="technology">
       <div className="container-10 text-white mb-16 md:pt-20">
-        <h2 className="tw-heading-4 md:tw-heading-60">Disruption in Motion</h2>
+        <h2 className="tw-heading-4 md:tw-heading-60">Disruption in motion</h2>
       </div>
       <div className="container-12 space-y-4 md:space-y-8">
         <Drawer title="Sovereign hardware" startingState={true}>

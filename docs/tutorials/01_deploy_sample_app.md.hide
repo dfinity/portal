@@ -1,11 +1,11 @@
 ---
-title: Tutorial 1 - Deploy a sample app
+title: Tutorial 1 - Deploy a sample dapp
 sidebar_position: 1
 tags:
 - Getting started
 ---
 
-# Create Your First App
+# Create your first dapp
 
 ## Setup
 
@@ -28,7 +28,7 @@ supports the UNIX-specific commands in this tutorial. You can also
 use [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 :::
 
-## Create Project
+## Create project
 
 To create an IC dapp, open your terminal, cd into the directory you’d like to create the app in, and run the following
 command:

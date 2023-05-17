@@ -18,31 +18,131 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Poll Hosted on an ICP canister smart contract</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+      }
+
+      .title-container {
+        border: 2px solid #007bff;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      form {
+        margin-bottom: 20px;
+        border: 2px solid #8bc34a;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        text-align: left;
+      }
+
+      input[type="radio"] {
+        margin-right: 5px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button#reset {
+        background-color: #dc3545;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        margin: 10px 0; /* Add margin */
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #results {
+        margin-top: 20px;
+        font-size: 18px;
+        border: 2px solid #8bc34a;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+      }
+    </style>
 </head>
 <body>
-    <h1>Simple Voting Poll</h1>
-    <h2 id="question">Sample Question</h2>
-    <form id="radioForm">
-        <label>
-            <input type="radio" name="option" value="Rust"> Rust
-        </label><br>
-        <label>
-            <input type="radio" name="option" value="Motoko"> Motoko
-        </label><br>
-        <label>
-            <input type="radio" name="option" value="TypeScript"> TypeScript
-        </label><br>
-        <label>
-            <input type="radio" name="option" value="Python"> Python
-        </label><br>
-        <button type="submit">Vote</button>
-    </form>
-    <div id="results"></div>
+    <div class="container">
+      <div class="title-container">
+        <h1>Simple Voting Poll</h1>
+      </div>
+      <h2 id="question">Sample Question</h2>
+
+      <!-- Form where users vote -->
+      <div class="form-container">
+        <form id="radioForm">
+            <label>
+                <input type="radio" name="option" value="Rust"> Rust
+            </label><br>
+            <label>
+                <input type="radio" name="option" value="Motoko"> Motoko
+            </label><br>
+            <label>
+                <input type="radio" name="option" value="TypeScript"> TypeScript
+            </label><br>
+            <label>
+                <input type="radio" name="option" value="Python"> Python
+            </label><br>
+            <button type="submit">Vote</button>
+        </form>
+      </div>
+
+      <!-- Poll results appear here-->
+      <h2 id="results-title">Results</h2>
+      <div id="results"></div>
+    </div>
     <button id="reset">Reset Poll</button>
+
+
 </body>
 </html>
 ```
+
 - The HTML above is just a simple form with options, nothing ICP or Web3 special about it
+- The `<head>` tag includes some basic CSS for styling
+- To learn more about adding a stylesheet, see: [Add a stylesheet](../../developer-docs/frontend/add-stylesheet.md).
 
 
 :::note
@@ -76,6 +176,8 @@ const pollResults = {
 
 //Load the Simple Poll's question from the backend when the app loads
 document.addEventListener('DOMContentLoaded', async (e) => {
+   //note that this is at beginning of the submit callback, this is deliberate
+  //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
  
   // Query the question from the backend
@@ -88,6 +190,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const voteCounts = await poll_backend.getVotes();
   updateLocalVoteCounts(voteCounts);
   displayResults();
+  return false;
 }, false);
 
 //Event listener that listens for when the form is submitted.
@@ -106,9 +209,12 @@ pollForm.addEventListener('submit', async (e) => {
   console.log(updatedVoteCounts);
   updateLocalVoteCounts(updatedVoteCounts);
   displayResults();
+  return false;
 }, false);
 
 resetButton.addEventListener('click', async (e) => {
+
+    e.preventDefault();
     
     //Reset the options in the backend
     await poll_backend.resetVotes();
@@ -117,7 +223,7 @@ resetButton.addEventListener('click', async (e) => {
 
     //re-render the results once the votes are reset in the backend
     displayResults();
-    e.preventDefault();
+    return false;
 }, false);
 
 //3. HELPER FUNCTIONS
@@ -126,7 +232,7 @@ resetButton.addEventListener('click', async (e) => {
 function displayResults() {
   let resultHTML = '<ul>';
   for (let key in pollResults) {
-      resultHTML += '<li>' + key + ': ' + pollResults[key] + '</li>';
+      resultHTML += '<li><strong>' + key + '</strong>: ' + pollResults[key] + '</li>';
   }
   resultHTML += '</ul>';
   resultsDiv.innerHTML = resultHTML;

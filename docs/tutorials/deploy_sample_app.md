@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Deploy your first dapp in 5 minutes
 ---
-# Deploy your first ICP dapp in 5 minutes
+# Tutorial 1 - Deploy your first dapp in 5 minutes
 
 ## 1. Introduction
 

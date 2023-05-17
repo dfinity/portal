@@ -20,7 +20,7 @@ Install the extension through the [VS Marketplace](https://marketplace.visualstu
 
 [VSCodium](https://vscodium.com/) users can download the extension from [Open VSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko) or the [GitHub releases](https://github.com/dfinity/vscode-motoko/releases) page.
 
-## Keyboard Shortcuts
+## Keyboard shortcuts
 
 Below are the default key bindings for commonly used features supported in the extension:
 
