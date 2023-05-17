@@ -131,27 +131,45 @@ In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a
 ```
 
 
-
 ### Code walk through
-The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). When the `canister_id` argument is left as unspecified (`null`), it defaults to getting the public key of the canister that makes this call.
+The following Motoko code demonstrates how to obtain a public key by calling the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). 
 
-```
+
+:::info
+The [IC management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of the IC (as if it were a single canister). In the code below, we use the management canister to create an ECDSA public key.
+:::
+
+```motoko
+  //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`
   let ic : IC = actor("aaaaa-aa");
 
   public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
     let caller = Principal.toBlob(msg.caller);
+    
     try {
+
+      //request the management canister to generate an ECDSA public key
       let { public_key } = await ic.ecdsa_public_key({
+
+          //When `null`, it defaults to getting the public key of the canister that makes this call
           canister_id = null;
           derivation_path = [ caller ];
           key_id = { curve = #secp256k1; name = "dfx_test_key" };
       });
+      
       #Ok({ public_key })
+    
     } catch (err) {
+    
       #Err(Error.message(err))
+    
     }
+
   };
 ```
+
+- `let ic : IC = actor("aaaaa-aa")` declares the IC management canister
+- `canister_id = null` is used because when the canister_id argument is left as unspecified (null), it defaults to getting the public key of the canister that makes this call
 
 ### Canister Root Public Key
 
