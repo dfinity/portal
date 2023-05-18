@@ -78,18 +78,18 @@ For example, the default code in `src/ecdsa_example_motoko/main.mo` includes the
 
 ```motoko
 let { public_key } = await ic.ecdsa_public_key({
-          canister_id = null;
-          derivation_path = [ caller ];
-          key_id = { curve = #secp256k1; name = "dfx_test_key" };
-      });
+  canister_id = null;
+  derivation_path = [ caller ];
+  key_id = { curve = #secp256k1; name = "dfx_test_key" };
+});
 ```
 
 ```motoko
-      let { signature } = await ic.sign_with_ecdsa({
-          message_hash;
-          derivation_path = [ caller ];
-          key_id = { curve = #secp256k1; name = "dfx_test_key" };
-      });
+let { signature } = await ic.sign_with_ecdsa({
+  message_hash;
+  derivation_path = [ caller ];
+  key_id = { curve = #secp256k1; name = "dfx_test_key" };
+});
 ```
 
 To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
