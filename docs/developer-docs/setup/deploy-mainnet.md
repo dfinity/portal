@@ -4,7 +4,7 @@ title: Mainnet deployment
 
 # Deploying to Internet Computer
 
-This *Quick Start* scenario assumes that you are installing the SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
+This *Quick Start* scenario assumes that you are installing the IC SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
 
 If you are only deploying projects in a local development environment, see the [local development](./deploy-locally.md) scenario.
 
