@@ -112,7 +112,7 @@ function Samples(): JSX.Element {
                 variants={transitions.item}
                 className="tw-heading-3 md:tw-heading-2"
               >
-                Developer Tools
+                Developer tools
               </motion.p>
               <motion.p
                 variants={transitions.item}

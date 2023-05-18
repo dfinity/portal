@@ -319,7 +319,7 @@ function ShowcasePage(): JSX.Element {
             <div className="blob blob-white blob-x-5 md:blob-x-9 blob-y-8 blob-md md:blob-lg"></div>
 
             <h1 className="md:tw-heading-2 mb-8 md:mb-10 relative">
-              Enter the <br className="md:hidden" /> ICP Ecosystem
+              Enter the <br className="md:hidden" /> ICP ecosystem
             </h1>
             <div className="flex overflow-auto -mx-6 px-6 pb-4 md:mx-0 md:overflow-visible md:m-0 md:p-0 md:flex-wrap gap-3 relative ecosystem-pills-scrollbar ">
               {/* <button className="rounded-full px-3 appearance-none border-solid border border-[#d2d2d2] hover:text-white  hover:bg-infinite  hover:border-transparent flex items-center">

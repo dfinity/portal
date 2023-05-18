@@ -373,17 +373,17 @@ function InternetIdentityPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="Dev Toolkits"
+              title="Dev toolkits"
               description="See the docs, get building."
               href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
             />
             <CardWithDescription
-              title="GitHub Repo"
+              title="GitHub repo"
               description="Check out the source code of Internet Identity."
               href="https://github.com/dfinity/internet-identity"
             />
             <CardWithDescription
-              title="Tech Dive"
+              title="Tech dive"
               description="Resources to learn all about Internet Identity, the blockchain authentication framework supported by the Internet Computer."
               href="/how-it-works/web-authentication-identity/"
             />

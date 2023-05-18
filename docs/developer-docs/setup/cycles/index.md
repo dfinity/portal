@@ -6,7 +6,7 @@ resource expenditures. Cycles are not currency. You can use ICP tokens to purcha
 
 When a canister needs more cycles, a developer can transfer them from the wallet to the canister. Active canisters deployed to the IC continuously burn cycles and need to be "topped-up" to keep working.
 
-Why are cycles different from ICP tokens? This decision was made to ensure that hosting pricing is not volatile while decreasing the risk that building dapps becomes economically infeasible if the ICP token price increases.
+Why are cycles different from ICP tokens? To ensure that hosting pricing is not volatile while decreasing the risk that building dapps becomes economically infeasible if the ICP token price increases.
 
 :::note
 Cycles are measured in very large numbers, billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.

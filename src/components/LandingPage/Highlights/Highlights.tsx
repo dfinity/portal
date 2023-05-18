@@ -80,10 +80,10 @@ const Highlights: React.FC = () => {
   return (
     <section id="technology">
       <div className="container-10 text-white mb-16 md:pt-20">
-        <h2 className="tw-heading-4 md:tw-heading-60">Disruption in Motion</h2>
+        <h2 className="tw-heading-4 md:tw-heading-60">Disruption in motion</h2>
       </div>
       <div className="container-12 space-y-4 md:space-y-8">
-        <Drawer title="Sovereign Hardware" startingState={true}>
+        <Drawer title="Sovereign hardware" startingState={true}>
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 pt-5 md:pt-20 order-2 md:order-1">
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
@@ -114,7 +114,7 @@ const Highlights: React.FC = () => {
             </div>
           </div>
         </Drawer>
-        <Drawer title="Intelligent Blockchain">
+        <Drawer title="Intelligent blockchain">
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
@@ -142,7 +142,7 @@ const Highlights: React.FC = () => {
             </div>
           </div>
         </Drawer>
-        <Drawer title="Web2 Compatible">
+        <Drawer title="Web2 compatible">
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
               <ul className="tw-lead-sm md:tw-lead-lg text-white list-none checklist space-y-6">
@@ -163,7 +163,7 @@ const Highlights: React.FC = () => {
                   className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  More ICP Capabilities
+                  More ICP capabilities
                 </Link>
               </p>
             </div>

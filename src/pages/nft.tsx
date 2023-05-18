@@ -161,7 +161,7 @@ function NftPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Next Generation NFTs
+                  Next generation NFTs
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
@@ -185,7 +185,7 @@ function NftPage() {
                 $33,000,000
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total Trading Volume in 2022
+                Total trading volume in 2022
               </span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
@@ -199,7 +199,7 @@ function NftPage() {
                 415
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total NFT Projects
+                Total NFT projects
               </span>
             </div>
           </div>
@@ -244,7 +244,7 @@ function NftPage() {
                 href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"
                 className="button-outline"
               >
-                Become a Creator
+                Become a creator
               </Link>
             </p>
           </TranslatedLayout>
@@ -437,7 +437,7 @@ function NftPage() {
               <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
                 Trade NFTs with
                 <br />
-                <span className="text-gradient">Zero gas fees</span>
+                <span className="text-gradient">zero gas fees</span>
               </h2>
               <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
                 Featuring a few web3 project teams already reinventing the

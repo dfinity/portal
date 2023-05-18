@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
               "NFTs",
             ]}
             subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
-            linePostfix="on True Web3"
+            linePostfix="on true Web3"
           ></ShowcaseSection>
         </div>
         <BackgroundPanel
@@ -77,22 +77,22 @@ export default function Home(): JSX.Element {
             ctaLink="/developers"
             cards={[
               {
-                title: "Dev Forum",
+                title: "Dev forum",
                 body: "Engage with the ICP community to shape future features, propose new ideas, and ask questions. ",
                 link: "https://forum.dfinity.org",
               },
               {
-                title: "Dev Docs",
+                title: "Dev docs",
                 body: "Get to know the concepts,  architecture and technical breakthroughs that enable the ICP. Plus step-by-step guides on how to stake your tokens, and more.",
                 link: "/docs/current/home",
               },
               {
-                title: "Sample Code",
+                title: "Sample code",
                 body: "From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
                 link: "/samples",
               },
               {
-                title: "Motoko Playground",
+                title: "Motoko playground",
                 body: "Play around with Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK.",
                 link: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
               },
