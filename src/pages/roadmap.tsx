@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
@@ -11,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import ShareMeta from "../components/Common/ShareMeta";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 
@@ -37,21 +37,8 @@ const RoadmapPage: React.FC = () => {
       description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
-          }
-        />
-        <title>Roadmap</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>

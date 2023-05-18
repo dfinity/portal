@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import liveSessions from "@site/.docusaurus/conversations/default/conversations.json";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
@@ -14,6 +13,7 @@ import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
+import ShareMeta from "../components/Common/ShareMeta";
 import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
 
 const MotionLink = motion(Link);
@@ -114,21 +114,8 @@ function LiveSessionsPage(): JSX.Element {
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
-          }
-        />
-        <title>Live sessions</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-live-sessions.jpeg"></ShareMeta>
+
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img

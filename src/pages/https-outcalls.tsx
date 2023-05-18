@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
@@ -8,6 +7,7 @@ import {
   CardWithBackground,
   CardWithDescription,
 } from "@site/src/components/Common/Card";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function HTTPSOutcalls() {
   return (
@@ -16,21 +16,8 @@ function HTTPSOutcalls() {
       description="The HTTPS Outcalls feature allows the Internet Computer to make HTTPS requests in a distributed and secure manner, all approved by consensus. Oracles are now a thing of the past."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
-          }
-        />
-        <title>HTTPS outcalls</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-https-outcalls.jpeg"></ShareMeta>
+
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
