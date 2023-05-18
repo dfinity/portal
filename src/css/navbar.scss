@@ -46,6 +46,7 @@ html.plugin-docs {
     --ifm-navbar-height: 72px;
     --ifm-navbar-padding-horizontal: 24px;
   }
+
   .navbar {
     padding: var(--ifm-navbar-padding-vertical)
       var(--ifm-navbar-padding-horizontal);
@@ -59,6 +60,10 @@ html.plugin-docs {
 }
 
 @media (max-width: 996px) {
+  // keep the nav in place on mobile (i.e. disable hideOnScroll)
+  nav[class*="navbarHidden_"] {
+    transform: unset;
+  }
 }
 
 .navbar__inner {

@@ -62,7 +62,7 @@ html.docs-doc-page {
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
 
-  @media(max-width: 996px) {
+  @media (max-width: 996px) {
     --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
   }
 
@@ -98,7 +98,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   // style the article body
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
-    padding-top: var(--ifm-subnav-height);
 
     a {
       font-weight: 500;

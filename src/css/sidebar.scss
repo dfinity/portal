@@ -1,5 +1,6 @@
 :root {
   --ifm-menu-color-background-hover: #e8e4ed;
+  --ic0-menu-padding-top: 32px;
 }
 
 div[class*="sidebar_"] {
@@ -8,7 +9,7 @@ div[class*="sidebar_"] {
 
 aside[class*="docSidebarContainer_"] {
   .menu {
-    padding: 32px 20px 60px
+    padding: var(--ic0-menu-padding-top) 20px 60px
       calc(
         var(--ifm-navbar-x-padding) - var(--ifm-menu-link-padding-horizontal)
       );
@@ -53,20 +54,28 @@ aside[class*="docSidebarContainer_"] {
 }
 
 // ensure the side menu also maintains consistent spacing with the nav and subnav
-// this rule adds appropriate margin when the navbar is visible
 .navbar ~ .main-wrapper {
+  // hide the sidebar logo
   a[class*="sidebarLogo_"] {
     visibility: hidden;
-    margin-bottom: var(--ifm-subnav-height);
-    transition: margin var(--ifm-transition-fast);
+  }
+
+  // move the entire sidebar down when the navbar is visible
+  .theme-doc-sidebar-container {
+    transition: transform var(--ifm-transition-fast) ease;
+    transform: translate3d(0, var(--ifm-subnav-height), 0);
   }
 }
-// this rule adjusts the margin when the navbar is hidden so the menu and subnav continue to have consistent spacing
+
 nav[class*="navbarHidden_"] ~ .main-wrapper {
-  a[class*="sidebarLogo_"] {
-    visibility: hidden;
-    margin-bottom: calc(-1 * var(--ifm-subnav-height) + 32px);
-    transition: margin var(--ifm-transition-fast);
+  // move the entire sidebar up when the navbar is hidden to keep the spacing wrt to subnav consistent
+  .theme-doc-sidebar-container {
+    transition: transform var(--ifm-transition-fast) ease;
+    transform: translate3d(
+      0,
+      calc(-1 * var(--ifm-subnav-height) + var(--ic0-menu-padding-top) - 1px),
+      0
+    );
   }
 }
 
