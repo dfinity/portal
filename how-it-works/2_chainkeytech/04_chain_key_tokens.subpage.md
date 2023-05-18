@@ -1,7 +1,7 @@
 ---
 title: Chain-key Tokens
 abstract:
-shareImage: /img/how-it-works/ck-tokens-content.600x300.webp
+shareImage: /img/how-it-works/ck-tokens-content.600x300.jpg
 slug: chain-key-tokens
 ---
 
