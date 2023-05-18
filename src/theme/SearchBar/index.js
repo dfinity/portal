@@ -60,6 +60,7 @@ const Search = () => {
           md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
           "
         onClick={openOverlay}
+        aria-label="Search"
       >
         <svg
           viewBox="0 0 16 16"
