@@ -95,7 +95,7 @@ let { public_key } = await ic.ecdsa_public_key({
 To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
 
 ### Deploy to mainnet via IC SDK
-x
+
 To [deploy via mainnet](../developer-docs/setup/deploy-mainnet.md), run the following commands:
 
 ```bash
