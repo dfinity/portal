@@ -6,7 +6,7 @@ The example canister is a **signing oracle that creates ECDSA signatures with ke
 
 More specifically:
 
-1. The sample canister receives a request that provides *a message* and a *key derivation string*.
+1. The sample canister receives a request that provides *a message*.
 2. The sample canister hashes the *message* and uses the *key derivation string* for the derivation path. 
 3. The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
 
@@ -57,21 +57,21 @@ If you go to the URL, you will see a web UI that shows the public methods the ca
 To deploy this canister the IC mainnet, one needs to do two things:
 
 1. Acquire cycles (equivalent of "gas" in other blockchains). This is necessary for all canisters.
-2. Update the sample source code to have the right key. This is unique to this canister.
+2. Update the sample source code to have the right key ID. This is unique to this canister.
 
 ### Acquire cycles to deploy
 
 Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
 
-### Update source code with the right key
+### Update source code with the right key ID
 
-To deploy the sample code, the canister needs the right key for the right environment. Specifically, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
+To deploy the sample code, the canister needs the right key ID for the right environment. Specifically, one needs to replace the value of the `key_id` in the `src/ecdsa_example_motoko/main.mo` file of the sample code. Before deploying to mainnet, one should modify the code to use the right name of the `key_id`.
 
 There are three options:
 
-* `dfx_test_key`: a default key that is used in deploying to a local version of IC (via IC SDK)
-* `test_key_1`: a master *test* key that is used in mainnet
-* `key_1`: a master *production* key that is used in mainnet
+* `dfx_test_key`: a default key ID that is used in deploying to a local version of IC (via IC SDK)
+* `test_key_1`: a master *test* key ID that is used in mainnet
+* `key_1`: a master *production* key ID that is used in mainnet
 
 For example, the default code in `src/ecdsa_example_motoko/main.mo` includes the lines and can be deployed locally:
 
@@ -137,7 +137,7 @@ In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a
 Open up, `main.mo` and you find the following Motoko code demonstrates how to obtain an ECDSA public key. 
 
 ```motoko
-  //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`. This is how we will generate an ECDSA public key 
+  //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`. This is how we will obtain an ECDSA public key 
   let ic : IC = actor("aaaaa-aa");
 
   public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
@@ -145,7 +145,7 @@ Open up, `main.mo` and you find the following Motoko code demonstrates how to ob
     
     try {
 
-      //request the management canister to generate an ECDSA public key
+      //request the management canister to compute an ECDSA public key
       let { public_key } = await ic.ecdsa_public_key({
 
           //When `null`, it defaults to getting the public key of the canister that makes this call
