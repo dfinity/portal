@@ -49,11 +49,12 @@
 @import "./navbar.scss";
 @import "./scrollbar.scss";
 @import "./sidebar.scss";
+@import "./subnav.scss";
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page {
-  --ifm-navbar-x-padding: 24px;
+  --ifm-navbar-x-padding: 50px;
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
@@ -408,7 +409,6 @@ div[class^="announcementBarContent"] {
     min-width: max-content;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 450;
   }
 
   .dropdown__menu .dropdown__link--with-icon {

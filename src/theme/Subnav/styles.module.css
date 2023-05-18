@@ -1,17 +1,3 @@
-.subnav {
-  background: #e8e4ed;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  position: fixed;
-  width: 100%;
-  height: var(--ifm-subnav-height);
-  transition: top linear;
-  padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
-  display: flex;
-  align-items: center;
-  @apply z-40;
-}
-
 .transitionInitial {
   transition-duration: inherit;
 }

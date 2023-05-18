@@ -9,6 +9,8 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import { DevDocsBreadcrumbs } from "@site/src/components/Common/DevDocsBreadcrumbs";
 import { useNavbarHeight } from "@site/src/hooks/useNavbarHeight";
 
+const BASE_CLASS_NAME = "subnav";
+
 export function DevDocsSubnav() {
   const items = useThemeConfig().navbar.items.filter((item) => item.isSubnav);
 
@@ -45,7 +47,11 @@ export function DevDocsSubnav() {
       // the docusaurus navbar stays visible until the
       // user scrolls past the height of the navbar - keep the subnav
       // visible as well
-      return clsx(styles.subnav, styles.navbarOffset, styles.transitionInitial);
+      return clsx(
+        BASE_CLASS_NAME,
+        styles.navbarOffset,
+        styles.transitionInitial
+      );
     } else if (
       -scrollY <
       document.body.clientHeight -
@@ -58,11 +64,11 @@ export function DevDocsSubnav() {
       // the page until the user scrolls back up past the height of
       // the navbar - keep the subnav fixed to the top
       // until the navbar is visible
-      return clsx(styles.subnav, styles.navbarZero, styles.transitionMatch);
+      return clsx(BASE_CLASS_NAME, styles.navbarZero, styles.transitionMatch);
     } else if (scrollDirection === "down") {
-      return clsx(styles.subnav, styles.navbarOffset, styles.transitionMatch);
+      return clsx(BASE_CLASS_NAME, styles.navbarOffset, styles.transitionMatch);
     } else {
-      return clsx(styles.subnav, styles.navbarZero, styles.transitionFaster);
+      return clsx(BASE_CLASS_NAME, styles.navbarZero, styles.transitionFaster);
     }
   }, [scrollY, scrollDirection]);
 

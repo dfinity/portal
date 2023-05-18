@@ -8,7 +8,10 @@ div[class*="sidebar_"] {
 
 aside[class*="docSidebarContainer_"] {
   .menu {
-    padding: 32px 24px 60px 24px;
+    padding: 32px 8px 60px
+      calc(
+        var(--ifm-navbar-x-padding) - var(--ifm-menu-link-padding-horizontal)
+      );
     flex-grow: 1;
   }
 
@@ -95,7 +98,7 @@ nav[class*="navbarHidden_"] ~ .main-wrapper {
   }
 }
 
-@media(max-width: 996px) {
+@media (max-width: 996px) {
   .theme-doc-sidebar-menu.breadcrumbs {
     a {
       text-transform: capitalize;
@@ -103,7 +106,7 @@ nav[class*="navbarHidden_"] ~ .main-wrapper {
   }
 }
 
-@media(min-width: 997px) {
+@media (min-width: 997px) {
   .theme-doc-sidebar-menu.breadcrumbs {
     display: none;
   }
