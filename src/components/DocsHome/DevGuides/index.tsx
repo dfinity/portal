@@ -30,7 +30,7 @@ function Index() {
         </SmallCard>
         <SmallCard
           href="/docs/current/developer-docs/backend/choosing-language"
-          title="Build a smart contract backend"
+          title="Build a smart contract"
         >
           Learn how to create canister smart contracts with your language of choice
         </SmallCard>
