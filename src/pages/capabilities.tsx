@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import transitions from "@site/static/transitions.json";
@@ -155,7 +154,13 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/serve-web.webp" alt="" className=""></img>
+              <img
+                src="/img/features/serve-web.webp"
+                alt=""
+                className="aspect-[1159/629]"
+                width="1159"
+                loading="lazy"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -182,7 +187,9 @@ function FeaturesPage() {
               <img
                 src="/img/features/no-oracles-image.webp"
                 alt=""
-                className=""
+                className="aspect-[1160/760]"
+                width="1160"
+                loading="lazy"
               ></img>
             }
             className="md:col-span-2"
@@ -219,6 +226,7 @@ function FeaturesPage() {
               src="/img/features/astronaut-image.webp"
               alt=""
               className="absolute w-[194px] bottom-0 right-20 z-0"
+              loading="lazy"
             />
             <img
               src="/img/features/astronaut-bg.svg"
@@ -301,7 +309,13 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/seo-image.webp" alt="" className=""></img>
+              <img
+                src="/img/features/seo-image.webp"
+                alt=""
+                loading="lazy"
+                className="aspect-[1159/706]"
+                width="1159"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -426,10 +440,11 @@ function FeaturesPage() {
               <img
                 src="/img/features/btc-eth.webp"
                 alt=""
-                className="my-10 h-[150px] md:h-[280px]"
+                className="my-10 h-[150px] md:h-[280px] aspect-[708/420]"
+                loading="lazy"
               ></img>
             }
-            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.jpg)] md:bg-[url(/img/features/bitcoin-bg.webp)] bg-stretch md:bg-cover"
+            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.webp)] md:bg-[url(/img/features/bitcoin-bg.webp)] bg-stretch md:bg-cover"
           >
             <motion.h3
               className="tw-heading-4 md:tw-heading-3 mb-4 "
@@ -549,7 +564,12 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/nns-image.webp" alt="" className=""></img>
+              <img
+                src="/img/features/nns-image.webp"
+                alt=""
+                className=""
+                loading="lazy"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -587,6 +607,7 @@ function FeaturesPage() {
                 src="/img/features/sns-image.webp"
                 alt=""
                 className="px-6 w-[550px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                loading="lazy"
               ></img>
             }
             className="md:col-span-2"
@@ -662,9 +683,9 @@ function FeaturesPage() {
             "
           ></motion.div>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Chain-key cryptography
-            </h4>
+            </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               The Internet Computer protocol uses a toolbox of advanced
               cryptographic mechanisms, collectively known as chain-key
@@ -681,9 +702,9 @@ function FeaturesPage() {
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Concurrent execution
-            </h4>
+            </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               Enabled by the IC's asynchronous communication, "actor" smart
               contracts run in parallel, unlocking horizontal scaling and
@@ -697,7 +718,7 @@ function FeaturesPage() {
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h4>
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               On other blockchain networks, smart contract computations can only
               be invoked by submitting a new transaction to their networks. The
@@ -715,9 +736,9 @@ function FeaturesPage() {
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Multi-block transactions
-            </h4>
+            </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               Smart contract calls (TXs) can be long-running and can span
               multiple blocks. This removes the tedious "round gas limit" most
@@ -734,9 +755,9 @@ function FeaturesPage() {
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               WebAssembly (Wasm)
-            </h4>
+            </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               Use any language that compiles to Wasm to write canister smart
               contracts. SDKs are available for Motoko, Rust, TypeScript, and
@@ -750,9 +771,9 @@ function FeaturesPage() {
             </p>
           </SmallCard>
           <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Subnets &amp; infinite scalability
-            </h4>
+            </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
               The Internet Computer incorporates a novel subnet architecture
               that enables infinite scalability, making 100% on-chain
