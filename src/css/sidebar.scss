@@ -8,7 +8,7 @@ div[class*="sidebar_"] {
 
 aside[class*="docSidebarContainer_"] {
   .menu {
-    padding: 32px 8px 60px
+    padding: 32px 20px 60px
       calc(
         var(--ifm-navbar-x-padding) - var(--ifm-menu-link-padding-horizontal)
       );
@@ -65,8 +65,8 @@ aside[class*="docSidebarContainer_"] {
 nav[class*="navbarHidden_"] ~ .main-wrapper {
   a[class*="sidebarLogo_"] {
     visibility: hidden;
-    transition: margin var(--ifm-transition-fast);
     margin-bottom: calc(-1 * var(--ifm-subnav-height) + 32px);
+    transition: margin var(--ifm-transition-fast);
   }
 }
 

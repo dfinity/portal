@@ -1,12 +1,15 @@
 .transitionInitial {
   transition-duration: inherit;
+  transition: top linear;
 }
 
 .transitionMatch {
+  transition: top ease;
   transition-duration: var(--ifm-transition-fast);
 }
 
 .transitionFaster {
+  transition: top linear;
   transition-duration: 100ms;
 }
 

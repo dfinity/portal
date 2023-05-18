@@ -9,5 +9,5 @@ export function useNavbarHeight() {
           .getPropertyValue("--ifm-navbar-height")
           .replace("px", "")
       )
-    : 0;
+    : 88;
 }

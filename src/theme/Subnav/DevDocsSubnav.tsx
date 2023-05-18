@@ -8,11 +8,12 @@ import DropdownNavbarItem from "@theme/NavbarItem/DropdownNavbarItem";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import { DevDocsBreadcrumbs } from "@site/src/components/Common/DevDocsBreadcrumbs";
 import { useNavbarHeight } from "@site/src/hooks/useNavbarHeight";
+import { LinkLikeNavbarItemProps } from "@theme/NavbarItem";
 
 const BASE_CLASS_NAME = "subnav";
 
 export function DevDocsSubnav() {
-  const items = useThemeConfig().navbar.items.filter((item) => item.isSubnav);
+  const items = useThemeConfig().subnav.items;
 
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -38,12 +39,16 @@ export function DevDocsSubnav() {
 
   const className = useMemo(() => {
     if (!isBrowser) {
-      return "";
+      return clsx(
+        BASE_CLASS_NAME,
+        styles.navbarOffset,
+        styles.transitionInitial
+      );
     }
 
     const roundingError = 4;
 
-    if (scrollY < navbarHeight + roundingError) {
+    if (scrollY < navbarHeight) {
       // the docusaurus navbar stays visible until the
       // user scrolls past the height of the navbar - keep the subnav
       // visible as well
@@ -75,14 +80,26 @@ export function DevDocsSubnav() {
   return (
     <nav className={className}>
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, "menu__list")}>
-        {items.map((item: any) => {
+        {items.map((item, index) => {
           switch (item.type) {
             case "docSidebar":
-              return <DocSidebarNavbarItem {...item} />;
+              return (
+                <DocSidebarNavbarItem
+                  key={index}
+                  sidebarId={item.sidebarId}
+                  {...item}
+                />
+              );
             case "doc":
-              return <DocNavbarItem {...item} />;
+              return <DocNavbarItem key={index} docId={item.docId} {...item} />;
             case "dropdown":
-              return <DropdownNavbarItem {...item} />;
+              return (
+                <DropdownNavbarItem
+                  key={index}
+                  {...item}
+                  items={item.items as LinkLikeNavbarItemProps[]}
+                />
+              );
             default:
               return null;
           }

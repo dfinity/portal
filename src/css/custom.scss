@@ -54,13 +54,17 @@
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page {
-  --ifm-navbar-x-padding: 50px;
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
   --ifm-subnav-height: 54px;
   --ifm-color-primary: #791e94;
   --ifm-navbar-link-hover-color: #791e94;
+  --ifm-navbar-x-padding: 50px;
+
+  @media(max-width: 996px) {
+    --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
+  }
 
   // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
   // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed

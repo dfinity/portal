@@ -391,19 +391,21 @@ const config = {
               ],
             ]),
           },
+        ],
+      },
+      subnav: {
+        items: [
           {
             type: "doc",
             position: "left",
             docId: "home",
             label: "Docs",
-            isSubnav: true,
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "tutorials",
             label: "Tutorials",
-            isSubnav: true,
           },
           {
             type: "docSidebar",
@@ -411,34 +413,29 @@ const config = {
             sidebarId: "guides",
             label: "Guides",
             activeBasePath: "/docs/current/developer-docs/",
-            isSubnav: true,
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "references",
             label: "References",
-            isSubnav: true,
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "motoko",
             label: "Motoko",
-            isSubnav: true,
           },
           {
             type: "docSidebar",
             position: "left",
             sidebarId: "blog",
             label: "Blog",
-            isSubnav: true,
           },
           {
             type: "dropdown",
             position: "left",
             label: "Additional Resources",
-            isSubnav: true,
             items: [
               {
                 label: "Awesome Internet Computer",

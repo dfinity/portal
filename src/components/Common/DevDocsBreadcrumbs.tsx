@@ -5,9 +5,7 @@ import { useLocation } from "@docusaurus/router";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { useNavbarHeight } from "@site/src/hooks/useNavbarHeight";
 
-export interface DevDocsMobileBreadcrumbsProps {}
-
-export function DevDocsBreadcrumbs({}: DevDocsMobileBreadcrumbsProps) {
+export function DevDocsBreadcrumbs() {
   const location = useLocation();
   const { withBaseUrl } = useBaseUrlUtils();
 
@@ -33,6 +31,7 @@ export function DevDocsBreadcrumbs({}: DevDocsMobileBreadcrumbsProps) {
   }, [location]);
 
   const toggleMenu = useCallback((event: React.MouseEvent) => {
+    console.log(navbarHeight);
     window.scrollTo({
       top: window.scrollY - navbarHeight - 5,
     });
