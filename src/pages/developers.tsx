@@ -4,7 +4,7 @@ import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
 import Contribute from "@site/src/components/DevelopersHome/Contribute";
-import Head from "@docusaurus/Head";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function Developers(): JSX.Element {
   return (
