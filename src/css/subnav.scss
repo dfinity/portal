@@ -21,6 +21,7 @@ nav[class*="navbarHidden_"] ~ .subnav {
   padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
   display: flex;
   align-items: center;
+  transition: transform var(--ifm-transition-fast) ease;
   @apply z-40;
 
   .theme-doc-sidebar-menu.menu__list {
