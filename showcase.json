@@ -1142,18 +1142,49 @@
   },
   {
     "id": "canistergeek",
-    "name": "Canistergeek by Usergeek",
+    "name": "Canistergeek",
+    "oneLiner": "IC canister management tool",
     "description": "Top up your canisters, monitor cycles, memory, logs and get your monthly reports in one place.",
     "tags": [
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": true,
-    "website": "https://cusyh-iyaaa-aaaah-qcpba-cai.raw.ic0.app/",
-    "github": "https://github.com/usergeek/canistergeek-demo-ui",
+    "website": "https://canistergeek.app/",
+    "github": "https://github.com/usergeek/canistergeek_ic_rust",
     "twitter": "https://twitter.com/theUSERGEEK",
-    "discord": "https://discord.gg/6PEC6AbZER",
+    "discord": "https://discord.gg/CvTpv2TeKs",
     "logo": "/img/showcase/canistergeek_logo.webp",
     "submittableId": "33310242"
+  },
+  {
+    "id": "configeek",
+    "name": "Configeek",
+    "oneLiner": "Remote configuration tool",
+    "description": "Change appearance and behaviour of your product in realtime.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "website": "https://configeek.app/",
+    "github": "https://github.com/usergeek/configeek-ic-js",
+    "twitter": "https://twitter.com/theUSERGEEK",
+    "discord": "https://discord.gg/CvTpv2TeKs",
+    "logo": "/img/showcase/configeek_logo.webp"
+  },
+  {
+    "id": "usergeek",
+    "name": "Usergeek",
+    "oneLiner": "Product analytics for IC dapps",
+    "description": "See your product main metrics, such as DAU, WAU, MAU, new users, retention and usage frequency.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "website": "https://usergeek.app/",
+    "github": "https://github.com/usergeek/usergeek-ic-js",
+    "twitter": "https://twitter.com/theUSERGEEK",
+    "discord": "https://discord.gg/CvTpv2TeKs",
+    "logo": "/img/showcase/usergeek_logo.webp"
   },
   {
     "id": "icpipeline",
@@ -1794,5 +1825,18 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/bink_logo.png",
     "twitter": "https://twitter.com/BinkDapp"
+  },
+  {
+    "id": "iknows",
+    "name": "iKnows",
+    "oneLiner": "Explore unlimited knowledge, with Q&A interaction between you and me!",
+    "website": "https://ffxwx-3yaaa-aaaah-qajua-cai.ic0.app",
+    "tags": ["SocialFi"],
+    "description": "iKnows is a decentralized application platform built on the Internet Computer (IC), based on the IC network, with knowledge as the core, and through a social approach.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/iknows_logo.png",
+    "github": "https://github.com/iKnowsDAO/rights-dao",
+    "twitter": "https://twitter.com/iKnowsDAO",
+    "submittableId": "32909645"
   }
 ]
