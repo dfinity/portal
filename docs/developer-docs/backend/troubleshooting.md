@@ -2,7 +2,7 @@
 
 This section provides information to help you troubleshoot and resolve or work around common issues that are related to the following tasks:
 
--   downloading and installing the SDK
+-   downloading and installing the IC SDK
 
 -   creating, building, or deploying canisters
 

@@ -210,11 +210,11 @@ To take advantage of the `webpack-dev-server`:
 
        npm start
 
-4. Open a web browser and navigate to the asset canister for your application using port 4943.
+4. Open a web browser and navigate to the asset canister for your application using port 8080.
 
    For example:
 
-       http://localhost:4943
+       http://localhost:8080
 
 5. Open a new terminal window or tab and navigate to your project directory.
 

@@ -32,6 +32,8 @@ To create an actor, delete everything from `main.mo` file and add the following 
 ```motoko
 actor {
 
+    //actor code goes here
+    
 }
 ```
 
