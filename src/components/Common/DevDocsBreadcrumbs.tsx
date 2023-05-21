@@ -27,6 +27,18 @@ export function DevDocsBreadcrumbs() {
     }
   }, [location]);
 
+  /**
+   * The breadcrumbs behavior is as follows:
+   * 1. the breadcrumbs are only shown on mobile or tablet devices
+   * 2. clicking on any breadcrumb item results in the mobile nav menu
+   * eppearing
+   *
+   * Docusuaurus does not seem to provide an API for the navbar through
+   * context or a hook. To trigger the menu to open, we must synthesize a
+   * click event on the `navbar__toggle` element by hijacking the click
+   * event against the breadcrum item and repurposing it for the navbar toggle
+   * element.
+   */
   const toggleMenu = useCallback((event: React.MouseEvent) => {
     document
       .getElementsByClassName("navbar__toggle")
