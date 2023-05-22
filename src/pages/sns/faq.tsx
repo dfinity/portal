@@ -259,7 +259,7 @@ function SnsFaqPage() {
               <Link href="https://www.sonic.ooo//">
                 Sonic
               </Link>, {" "}
-              <Link href="https://distrikt.app/">
+              <Link href="https://hotornot.wtf/">
                 Hot or Not
               </Link>, {" "}
               <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
