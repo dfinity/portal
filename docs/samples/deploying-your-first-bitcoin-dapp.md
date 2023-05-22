@@ -76,6 +76,14 @@ Candid:
 
 Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
 
+In the output above, to see the Candid Web UI for your bitcoin canister, you would use the URL `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>`. Here are the two methods you will see:
+
+* `public_key`
+* `sign`
+
+![Candid web UI for bitcoin canister](_attachments/candid-web-ui-bitcoin-canister.webp)
+
+
 ## 2. Generating a Bitcoin Address
 
 Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these
