@@ -50,7 +50,7 @@ const Drawer: React.FC<{
 
   return (
     <div className="bg-white/5 rounded-xl md:rounded-[32px] px-6 md:px-1/12 py-6 md:py-12 ">
-      <butto
+      <button
         className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-white"
         onClick={() => setOpen((o) => !o)}
       >
