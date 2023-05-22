@@ -78,7 +78,7 @@ export default function Home(): JSX.Element {
             cards={[
               {
                 title: "Dev forum",
-                body: "Engage with the ICP community to shape future features, propose new ideas, and ask questions. ",
+                body: "Engage with the ICP community to shape future features, propose new ideas, and ask questions.",
                 link: "https://forum.dfinity.org",
               },
               {
