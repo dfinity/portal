@@ -435,6 +435,13 @@ function SnsFaqPage() {
                 in it can leverage the broader community's "wisdom of crowds"
                 to decide which SNS tokens to acquire.
               </p>
+              <p>
+                ICP neuron holders can opt in or out of the Community Fund at any moment.
+                Neurons will only participate in the decentralization swap if they are
+                opted in at the moment when the proposal to initiate the decentralization
+                swap executes. The propsoal executes right after it gets adopted by ICP
+                neuron holders.
+              </p>
               You can find out more about the community fund{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
                 here
