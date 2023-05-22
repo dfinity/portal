@@ -57,29 +57,26 @@ html.plugin-docs {
     height: 21px;
     margin-right: 2rem;
   }
-}
 
-@media (max-width: 996px) {
-  // keep the nav in place on mobile (i.e. disable hideOnScroll)
-  nav[class*="navbarHidden_"] {
-    transform: unset;
+  html.plugin-docs {
+    // keep the nav in place on mobile (i.e. disable hideOnScroll)
+    nav[class*="navbarHidden_"] {
+      transform: unset;
+    }
+  }
+
+  /* on mobile hide the search bar in the top navbar */
+  .navbar__inner .navbar__search {
+    display: none;
+  }
+  .navbar__inner .ic0-item {
+    display: none;
   }
 }
 
 .navbar__inner {
   margin-left: auto;
   margin-right: auto;
-}
-
-/* on mobile hide the search bar in the top navbar */
-@media (max-width: 996px) {
-  .navbar__inner .navbar__search {
-    display: none;
-  }
-
-  .navbar__inner .ic0-item {
-    display: none;
-  }
 }
 
 .navbar__inner .navbar__item.dropdown,
