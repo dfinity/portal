@@ -1838,5 +1838,29 @@
     "github": "https://github.com/iKnowsDAO/rights-dao",
     "twitter": "https://twitter.com/iKnowsDAO",
     "submittableId": "32909645"
+  },
+  {
+    "id": "canister-store",
+    "name": "Canister Store",
+    "oneLiner": "Empowering Users to Easily Deploy Canisters on the Internet Computer",
+    "tags": [
+      "Tools / Infrastructure",
+      "NFT",
+      "Wallet"
+    ],
+    "description": "Canister Store is a groundbreaking platform that empowers developers/users in the Internet Computer ecosystem and beyond. With its innovative self-deploy feature, users can effortlessly access and deploy canisters, including pre-built images such as Tokens, NFTs, dApps, and various other tools.",
+    "usesInternetIdentity": true,
+    "website": "https://canister.app",
+    "github": "https://github.com/canister-app",
+    "youtube": "https://youtu.be/pFgVswCqzdk",
+    "twitter": "https://twitter.com/canister_app",
+    "display": "Large",
+    "logo": "/img/showcase/canister-store_logo.png",
+    "screenshots": [
+      "/img/showcase/canister-store_screenshot_0.png"
+    ],
+    "video": "/img/showcase/canister-store_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "35750450"
   }
 ]
