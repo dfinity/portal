@@ -100,7 +100,7 @@ const Highlights: React.FC = () => {
                   href="https://wiki.internetcomputer.org/wiki/Proof_of_Useful_Work"
                   className="link-white link-with-icon"
                 >
-                  Wiki explanation of Proof of Useful Network{" "}
+                  Wiki explanation of Proof of Useful Work{" "}
                   <LinkArrowUpRight />
                 </Link>
               </p>
