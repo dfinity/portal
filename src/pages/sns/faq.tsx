@@ -253,9 +253,18 @@ function SnsFaqPage() {
 
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
-              the launch of the SNS technology. OpenChat has already publicly
-              announced their plans to turn their dapp into an SNS DAO in Q1 of
-              2023. Dapps such as {" "}
+              the launch of the SNS technology. OpenChat was the first dapp
+              that handed control over to an SNS DAO announced their plans to
+              turn their dapp into an SNS DAO in Q1 of 2023. Dapps such as {" "}
+              <Link href="https://www.sonic.ooo//">
+                Sonic
+              </Link>, {" "}
+              <Link href="https://distrikt.app/">
+                Hot or Not
+              </Link>, {" "}
+              <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
+                Kinic
+              </Link>, {" "}
               <Link href="https://distrikt.app/">
                 distrikt
               </Link>, {" "}
