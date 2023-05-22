@@ -482,6 +482,21 @@ function CkbtcPage(): JSX.Element {
                     users must still trust a third-party centralized custodian to manage the
                     digital assets whose code is often not publicly verifiable.
                   </p>
+                  <p className="mt-10">
+                    <Link
+                      className="button-outline"
+                      href="https://dashboard.internetcomputer.org/bitcoin"
+                    >
+                      ckBTC dashboard
+                    </Link>
+                  </p>
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/threshold-ecdsa-the-key-ingredient-behind-the-internet-computers-bitcoin-and-ethereum-cf22649b98a1"
+                  >
+                    <LinkArrowRight />
+                     Chain-key ECDSA
+                  </Link>
                 </div>
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
