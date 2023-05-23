@@ -76,6 +76,14 @@ Candid:
 
 Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
 
+In the output above, to see the Candid Web UI for your bitcoin canister, you would use the URL `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>`. Here are the two methods you will see:
+
+* `public_key`
+* `sign`
+
+![Candid web UI for bitcoin canister](_attachments/candid-web-ui-bitcoin-canister.webp)
+
+
 ## 2. Generating a Bitcoin Address
 
 Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these
@@ -111,6 +119,7 @@ Enter your address and click on "Send testnet bitcoins". In the example below we
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet.png)
 
 You should see something similar to this:
+
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet-received.png)
 
 
@@ -125,7 +134,7 @@ In the Candid UI, paste in your canister's address, and click on "Call":
 
 ![Checking Bitcoin Balance](_attachments/bitcoin-received-funds.png)
 
-Alternatively, make the call using the command line:
+Alternatively, make the call using the command line. Be sure to replace `mheyfRsAQ1XrjtzjfU1cCH2B6G1KmNarNL` with your own generated P2PKH address:
 
     dfx canister --network=ic call basic_bitcoin get_balance '("mheyfRsAQ1XrjtzjfU1cCH2B6G1KmNarNL")'
 
