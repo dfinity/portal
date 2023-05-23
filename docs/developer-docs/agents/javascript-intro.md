@@ -21,7 +21,7 @@ If you are looking for an explanation of what an agent does, see [Agent Overview
 
 ____
 
-The Internet Computer blockchain is accessible via an API that is available at [https://icp-api.io/api/v2](https://icp-api.io/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
+The Internet Computer blockchain is accessible via an API that is available at [https://icp-api.io/api/v2](https://icp-api.io/api/v2). Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API. The JavaScript agent will abstract this api for you, but you can always check the unerlying interface [here](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-call-overview).
 
 The IC supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
 
