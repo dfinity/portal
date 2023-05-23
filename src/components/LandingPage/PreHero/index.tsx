@@ -170,6 +170,7 @@ export default function PreHero({}): JSX.Element {
               src="/img/home/dashboard.svg"
               className="absolute right-0 bottom-0 pointer-events-none"
               loading="lazy"
+              alt=""
             ></img>
           </AnimateSpawn>
         </div>

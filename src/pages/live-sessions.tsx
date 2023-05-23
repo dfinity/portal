@@ -419,12 +419,9 @@ function LiveSessionsPage(): JSX.Element {
                       ></div>
                       {!session.youtubeLink && !session.deck && (
                         <div>
-                          <Link
-                            className="tw-heading-6 text-black"
-                            href={session.youtubeLink}
-                          >
+                          <div className="tw-heading-6 text-black">
                             Recording available soon...
-                          </Link>
+                          </div>
                         </div>
                       )}
                       {session.youtubeLink && (
@@ -477,7 +474,13 @@ function LiveSessionsPage(): JSX.Element {
           ]}
           ctaLabel="Get updates!"
           postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-          decoration={<img src="/img/newsletter/email-image-1.webp" />}
+          decoration={
+            <img
+              src="/img/newsletter/email-image-1.webp"
+              alt=""
+              loading="lazy"
+            />
+          }
           className="mb-20"
         >
           <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">

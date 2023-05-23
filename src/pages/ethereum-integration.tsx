@@ -150,9 +150,10 @@ function EthereumIntegrationPage() {
                 Next on the list is kickstarting a native trustless integration
                 with the Ethereum network. An ETH &lt;&gt; ICP integration will
                 enable smart contracts on both networks to interact with each
-                other. The Internet Computer could then securely read the balance
-                of an ETH or ERC-20 account, for example, and sign and submit
-                Ethereum transactions, including ETH and ERC-20 transfers.
+                other. The Internet Computer could then securely read the
+                balance of an ETH or ERC-20 account, for example, and sign and
+                submit Ethereum transactions, including ETH and ERC-20
+                transfers.
               </p>
               <p>
                 Reversely, the integration would also enable Ethereum smart
@@ -183,19 +184,20 @@ function EthereumIntegrationPage() {
             <AnimatedProse className="bg-white rounded-xl p-8">
               <h3>Chain-Key ECDSA</h3>
               <p>
-                Like native Bitcoin on ICP, Ethereum transactions could be signed
-                using ECDSA signatures. ICP already now offers threshold ECDSA
-                signing capabilities, referred to as chain-key ECDSA signing:
+                Like native Bitcoin on ICP, Ethereum transactions could be
+                signed using ECDSA signatures. ICP already now offers threshold
+                ECDSA signing capabilities, referred to as chain-key ECDSA
+                signing:
               </p>
               <ul>
                 <li>
-                  Every canister smart contract would have an ECDSA key pair (actually,
-                  it can have many) that it could use to derive an Ethereum
-                  address and sign transactions.
+                  Every canister smart contract would have an ECDSA key pair
+                  (actually, it can have many) that it could use to derive an
+                  Ethereum address and sign transactions.
                 </li>
                 <li>
-                  A private signing key would be secret shared among many nodes and
-                  periodically reshared.
+                  A private signing key would be secret shared among many nodes
+                  and periodically reshared.
                 </li>
                 <li>
                   ECDSA signatures are computed using cryptographic multi-party
@@ -204,8 +206,8 @@ function EthereumIntegrationPage() {
                 </li>
               </ul>
               <p>
-                Chain-key ECDSA signing could be accessed by canisters through the
-                ECDSA API.
+                Chain-key ECDSA signing could be accessed by canisters through
+                the ECDSA API.
               </p>
             </AnimatedProse>
             <AnimatedProse className="bg-white rounded-xl p-8">
@@ -213,16 +215,17 @@ function EthereumIntegrationPage() {
               <p>
                 Beyond chain-key ECDSA signing, the Internet Computer blockchain
                 and the Ethereum network require integration on a protocol level
-                to allow two-way calls between smart contracts on the Internet Computer 
-                and Ethereum without any additional parties or trust assumptions.
-                This will be powered by an on-chain Ethereum RPC API running on the
-                Internet Computer based on direct integration with the Ethereum network.
-                Canister smart contracts will be able to interact with this API directly.
+                to allow two-way calls between smart contracts on the Internet
+                Computer and Ethereum without any additional parties or trust
+                assumptions. This will be powered by an on-chain Ethereum RPC
+                API running on the Internet Computer based on direct integration
+                with the Ethereum network. Canister smart contracts will be able
+                to interact with this API directly.
               </p>
               <p>
-                As the implementation of an on-chain Ethereum full node API is
-                a sizeable project, the ETH &lt;&gt; ICP integration will be
-                built in two phases - and in close collaboration with the ICP
+                As the implementation of an on-chain Ethereum full node API is a
+                sizeable project, the ETH &lt;&gt; ICP integration will be built
+                in two phases - and in close collaboration with the ICP
                 community.{" "}
               </p>
             </AnimatedProse>
@@ -260,14 +263,14 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               While the Ethereum network is currently the world's largest smart
-              contract blockchain in terms of market cap, TVL, and daily DeFi volume, 
-              it has many pain points such as costly gas fees and limited 
-              scalability, which delay adoption and create major obstacles
-              for developers. The Internet Computer, with its reverse 
-              gas model and ability to scale and perform at high speed, could 
+              contract blockchain in terms of market cap, TVL, and daily DeFi
+              volume, it has many pain points such as costly gas fees and
+              limited scalability, which delay adoption and create major
+              obstacles for developers. The Internet Computer, with its reverse
+              gas model and ability to scale and perform at high speed, could
               offer a multi-chain environement that will make it possible for
-              new and inexperienced users to enjoy the full utility benefits 
-              of ETH. Ethereum integration will unfold in two phases:
+              new and inexperienced users to enjoy the full utility benefits of
+              ETH. Ethereum integration will unfold in two phases:
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -276,17 +279,17 @@ function EthereumIntegrationPage() {
           >
             <AnimatedProse className="md:w-[calc(50%-60px)]">
               <h3 className="text-gradient inline-block">
-                Phase 1: HTTPS outcalls 
+                Phase 1: HTTPS outcalls
               </h3>
               <p>
-                The ICP community has started building the necessary functionality
-                in the form of a readily-deployable canister that offers
-                the on-chain Ethereum full node API and uses HTTPS outcalls to
-                cloud API providers to securely query the  Ethereum blockchain
-                and send transaction to it. ICP community members and DFINITY 
-                engineering teams are currently working together to improve this 
-                solution. Phase 1 will allow for a simple and smooth migration path 
-                to Phase 2, a full protocol integration.
+                The ICP community has started building the necessary
+                functionality in the form of a readily-deployable canister that
+                offers the on-chain Ethereum full node API and uses HTTPS
+                outcalls to cloud API providers to securely query the Ethereum
+                blockchain and send transaction to it. ICP community members and
+                DFINITY engineering teams are currently working together to
+                improve this solution. Phase 1 will allow for a simple and
+                smooth migration path to Phase 2, a full protocol integration.
               </p>
               <p>
                 <Link
@@ -306,12 +309,12 @@ function EthereumIntegrationPage() {
                 Phase 2 involves full protocol-level integration to realize an
                 on-chain Ethereum API on the Internet Computer. This API will be
                 enabled by running Ethereum full nodes next to each ICP replica
-                on a large ICP subnet, and communicating with these subnets from 
+                on a large ICP subnet, and communicating with these subnets from
                 the replicas through ICP consensus. This approach has trust
                 properties very similar to running an Ethereum full node on
                 chain on the Internet Computer, and is perceived as such by
-                canisters. Due to the nature of complexity, Phase 2 it will 
-                take quite some time to complete. 
+                canisters. Due to the nature of complexity, Phase 2 it will take
+                quite some time to complete.
               </p>
               <p>
                 <Link
@@ -337,7 +340,7 @@ function EthereumIntegrationPage() {
               <h3 className="md:mb-6">Community collab</h3>
               <p>
                 In February 2023, the ICP DeFi community convened at the DFINITY
-                headquarters in Zurich during a DeFi focused ICP.Lab to discuss 
+                headquarters in Zurich during a DeFi focused ICP.Lab to discuss
                 an Ethereum integration. The outcome: As a protocol-level
                 integration will take some time to complete, the community came
                 up with a short-term solution to bring liquidity from Ethereum
@@ -437,9 +440,7 @@ function EthereumIntegrationPage() {
                 communicate with Ethereum RPC API providers.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://github.com/rocklabs-io/ic-web3" />
-                </Link>
+                <GitHubLink to="https://github.com/rocklabs-io/ic-web3" />
               </div>
             </motion.div>
 
@@ -456,9 +457,7 @@ function EthereumIntegrationPage() {
                 with this functionality.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://github.com/icopen/evm_utils_ic" />
-                </Link>
+                <GitHubLink to="https://github.com/icopen/evm_utils_ic" />
               </div>
             </motion.div>
 
@@ -474,12 +473,10 @@ function EthereumIntegrationPage() {
                 chain-key ECDSA signing for obtaining a strong trust model.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <ExternalLink
-                    to="https://github.com/rocklabs-io/omnic"
-                    label="Link to Omnic website"
-                  />
-                </Link>
+                <ExternalLink
+                  to="https://github.com/rocklabs-io/omnic"
+                  label="Link to Omnic website"
+                />
               </div>
             </motion.div>
             <motion.div
@@ -495,9 +492,7 @@ function EthereumIntegrationPage() {
                 Omnic cross-chain messaging protocol as foundational layer.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://omnic.network" />
-                </Link>
+                <GitHubLink to="https://omnic.network" />
               </div>
             </motion.div>
             <motion.div
@@ -513,9 +508,7 @@ function EthereumIntegrationPage() {
                 more potent than today when being hosted on public cloud.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://github.com/domwoe/erc-721-ic-assets" />
-                </Link>
+                <GitHubLink to="https://github.com/domwoe/erc-721-ic-assets" />
               </div>
             </motion.div>
             <motion.div
@@ -532,9 +525,7 @@ function EthereumIntegrationPage() {
                 instead of a public cloud provider.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://github.com/domwoe/uniswap_ui_on_ic" />
-                </Link>
+                <GitHubLink to="https://github.com/domwoe/uniswap_ui_on_ic" />
               </div>
             </motion.div>
 
@@ -548,9 +539,7 @@ function EthereumIntegrationPage() {
                 using chain-key ECDSA signing.
               </p>
               <div className="flex justify-start">
-                <Link>
-                  <GitHubLink to="https://github.com/nikolas-con/ic-evm-sign-starter" />
-                </Link>
+                <GitHubLink to="https://github.com/nikolas-con/ic-evm-sign-starter" />
               </div>
             </motion.div>
           </div>
