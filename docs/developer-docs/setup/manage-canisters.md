@@ -1,6 +1,8 @@
 # Managing canisters
 
-If you have experimented with using the SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
+## Overview
+
+If you have experimented with using the IC SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
 
 ## Obtaining a canister identifier
 
@@ -8,23 +10,23 @@ Depending on your preferred development workflow, you can obtain a unique identi
 
 To obtain a unique identifier for a canister:
 
-1.  Open a new terminal window or tab on your computer.
+- #### Step 1:  Open a new terminal window or tab on your computer.
 
-2.  Create a new project for the canister you plan to create by running a command similar to the following:
+- #### Step 2:  Create a new project for the canister you plan to create by running a command similar to the following:
 
-        `dfx new YOUR-PROJECT-NAME`
+        dfx new YOUR-PROJECT-NAME
 
     Note that the name you use for the project is also used as the canister name by default.
 
-3.  Change to your new project directory.
+- #### Step 3:  Change to your new project directory.
 
-4.  Open the `dfx.json` configuration file and set the host and port for the canister execution environment you want to use (e.g. the IC blockchain).
+- #### Step 4:  Open the `dfx.json` configuration file and set the host and port for the canister execution environment you want to use (e.g. the IC blockchain).
 
     If you are using a local deployment, you can skip this step.
 
     You can also optionally change the names of your canisters or add canister settings to the configuration file if you want to create identifiers for any additional canisters you think you will need before compiling code.
 
-5.  Start the local canister execution environment, if necessary, by running the following command:
+- #### Step 5:  Start the local canister execution environment, if necessary, by running the following command:
 
         dfx start --background
 
@@ -32,13 +34,13 @@ To obtain a unique identifier for a canister:
 
     If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-6.  Register unique identifiers for the canisters defined in the `dfx.json` by running the following command:
+- #### Step 6:  Register unique identifiers for the canisters defined in the `dfx.json` by running the following command:
 
         dfx canister create --all
 
     The command creates the `.dfx/local` directory and adds the `canister_ids.json` file to that directory for the project.
 
-## Build a Canister with a Local Identifier
+## Build a canister with a local identifier
 
 After you have written source code for your project, you need to compile it into a WebAssembly module before deploying it as a canister.
 
@@ -46,13 +48,13 @@ If you are only compiling your project for local debugging, you can generate a l
 
 To generate a locally-defined identifier:
 
-1.  Create a project with the configuration settings and program logic to suit your needs.
+- #### Step 1:  Create a project with the configuration settings and program logic to suit your needs.
 
-2.  Start the local canister execution environment, if necessary.
+- #### Step 2:  Start the local canister execution environment, if necessary.
 
     If you were compiling canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-3.  Generate hard-coded local identifiers for the canisters defined in the `dfx.json` by running the following command:
+- #### Step 3:  Generate hard-coded local identifiers for the canisters defined in the `dfx.json` by running the following command:
 
         dfx build --check
 
@@ -66,17 +68,17 @@ The canister identifier that was created in advance or during the build process 
 
 To deploy the code for the first time:
 
-1.  Open a new terminal and navigate to your project directory.
+- #### Step 1:  Open a new terminal and navigate to your project directory.
 
-2.  Start the local canister execution environment, if necessary.
+- #### Step 2:  Start the local canister execution environment, if necessary.
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
     If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-3.  Verify you have canister identifiers for all of the canisters you want to deploy.
+- #### Step 3:  Verify you have canister identifiers for all of the canisters you want to deploy.
 
-4.  Deploy all of the canisters by running the following command:
+- #### Step 4:  Deploy all of the canisters by running the following command:
 
         dfx canister install --all
 
@@ -94,21 +96,21 @@ To look up the canister identifier for the same canister deployed on the environ
 
     dfx canister --network=ic id lookup
 
-## Add a Wallet for Existing Canisters
+## Add a wallet for existing canisters
 
 When you are doing local development, creating a new project automatically creates a default wallet for you to use with the canisters in that project. If you want to add a wallet for projects with canisters that you have previously created, you can force `dfx` to generate one by taking a couple of manual steps.
 
 To add a wallet for use with an existing canister:
 
-1.  Open a terminal and navigate to your project directory.
+- #### Step 1:  Open a terminal and navigate to your project directory.
 
-2.  Stop the local canister execution environment, if necessary, by running the following command:
+- #### Step 2:  Stop the local canister execution environment, if necessary, by running the following command:
 
         dfx stop
 
-3.  Delete the `.dfx` directory.
+- #### Step 3:  Delete the `.dfx` directory.
 
-4.  Start the local canister execution environment network by running the following command:
+- #### Step 4:  Start the local canister execution environment network by running the following command:
 
         dfx start --clean
 
@@ -120,17 +122,17 @@ In this scenario, you might want to keep the canister identifier you have regist
 
 To reinstall a canister:
 
-1.  Open a new terminal and navigate to your project directory.
+- #### Step 1:  Open a new terminal and navigate to your project directory.
 
-2.  Start the local canister execution environment, if necessary.
+- #### Step 2:  Start the local canister execution environment, if necessary.
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
     If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-3.  Verify you have canister identifiers for all of the canisters you want to re-deploy.
+- #### Step 3:  Verify you have canister identifiers for all of the canisters you want to re-deploy.
 
-4.  Re-deploy all of the canisters by running the following command for every canister:
+- #### Step 4:  Re-deploy all of the canisters by running the following command for every canister:
 
         dfx canister install <canister id or name> --mode reinstall
 
@@ -144,27 +146,27 @@ As an example, the following scenario illustrates creating a `registered_owner` 
 
 To set an identity for a project:
 
-1.  Create a new project by running the following command:
+- #### Step 1:  Create a new project by running the following command:
 
         dfx new pubs
 
-2.  Change to the project directory by running the following command:
+- #### Step 2:  Change to the project directory by running the following command:
 
         cd pubs
 
-3.  Start the local canister execution environment in the background by running the following command:
+- #### Step 3:  Start the local canister execution environment in the background by running the following command:
 
         dfx start --background
 
-4.  Create a new `registered_owner` identity by running the following command:
+- #### Step 4:  Create a new `registered_owner` identity by running the following command:
 
         dfx identity new registered_owner
 
-5.  Set the active user context to use the `registered_owner` identity by running the following command:
+- #### Step 5:  Set the active user context to use the `registered_owner` identity by running the following command:
 
         dfx identity use registered_owner
 
-6.  Register, build, and deploy canisters for the project by running the following commands:
+- #### Step 6:  Register, build, and deploy canisters for the project by running the following commands:
 
         dfx canister create --all
         dfx build --all
@@ -172,7 +174,7 @@ To set an identity for a project:
 
     These commands run using the `registered_owner` identity, making that user the owner of the canisters deployed.
 
-7.  Call the `greet` function to verify a successful deployment by running the following command:
+- #### Step 7:  Call the `greet` function to verify a successful deployment by running the following command:
 
         dfx canister call pubs greet '("Sam")'
 
@@ -221,25 +223,25 @@ To preserve state when you are upgrading a canister written in Motoko, be sure t
 
 To upgrade a canister:
 
-1.  Open a new terminal and navigate to your project directory.
+- #### Step 1:  Open a new terminal and navigate to your project directory.
 
-2.  Start the local canister execution environment, if necessary.
+- #### Step 2:  Start the local canister execution environment, if necessary.
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
     If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-3.  Verify you have canister identifiers for all of the canisters you want to upgrade.
+- #### Step 3:  Verify you have canister identifiers for all of the canisters you want to upgrade.
 
     Note that your program must identify the variables for which to maintain state by using the `stable` keyword in the variable declaration.
 
     For more information about declaring stable variables, see the *Motoko Programming Language Guide*.
 
-4.  Upgrade all of the canisters by running the following command:
+- #### Step 4:  Upgrade all of the canisters by running the following command:
 
         dfx canister install --all --mode upgrade
 
-## Delete a Canister
+## Delete a canister
 
 If you want to permanently delete a specific canister or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the `dfx canister delete` command.
 
@@ -247,22 +249,30 @@ Deleting a canister removes the canister identifier, code, and state. Before you
 
 To delete all canisters for a project:
 
-1.  Open a new terminal and navigate to your project directory.
+- #### Step 1:  Open a new terminal and navigate to your project directory.
 
-2.  Start the local canister execution environment, if necessary.
+- #### Step 2:  Start the local canister execution environment, if necessary.
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
     If you were deleting canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the `--network` command-line option to perform tasks on the environment specified under this parameter.
 
-3.  Check the status of the project canisters running on the local canister execution environment by running the following command:
+- #### Step 3:  Check the status of the project canisters running on the local canister execution environment by running the following command:
 
         dfx canister status --all
 
-4.  Stop all of the project canisters by running the following command:
+- #### Step 4:  Stop all of the project canisters by running the following command:
 
         dfx canister stop --all
 
-5.  Delete all of the project canisters by running the following command:
+- #### Step 5:  Delete all of the project canisters by running the following command:
 
         dfx canister delete --all
+
+## Resources
+
+-   [Building on the IC](developer-docs/samples/overview) to explore sample dapps.
+
+-   [Concepts](concepts/index) to learn about different IC concepts and services. 
+
+-   [IC Glossary](references/glossary) to learn the definitions of various terms used within the IC. 

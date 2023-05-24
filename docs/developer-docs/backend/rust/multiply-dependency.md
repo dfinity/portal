@@ -1,8 +1,10 @@
-# Basic dependency
+# 2: Deploying a basic canister
 
-One common approach to dapp design is to calculate or store data in one canister smart contract – or canister for short – that you can then use in another canister. This ability to share and use functions defined in different canisters, even if the underlying smart contracts are written in different languages, is an important strategy for building dapps to run on the Internet Computer blockchain. This tutorial provides a basic introduction to how you can write functions in one language—in the example, Motoko—then use the data in another—in this case, Rust.
+## Overview
 
-For this tutorial, both canisters are in the same project.
+One common approach to dapp design is to calculate or store data in one canister smart contract – or canister for short – that you can then use in another canister. This ability to share and use functions defined in different canisters, even if the underlying smart contracts are written in different languages, is an important strategy for building dapps to run on the Internet Computer blockchain. This guide provides a basic introduction to how you can write functions in one language—in the example, Motoko—then use the data in another—in this case, Rust.
+
+For this guide, both canisters are in the same project.
 
 -   The Motoko canister creates an actor with a `cell` variable to contain the current value that results from an operation.
 
@@ -10,47 +12,47 @@ For this tutorial, both canisters are in the same project.
 
 -   The Rust canister provides a simple `read` function that returns the current value of the `cell` variable. Notice that the function making inter-canister call should be a `update` method even though the method to be called is `query`.
 
-## Before you begin
+## Prerequisites
 
 Before you start your project, verify the following:
 
--   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
+- [x]   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
+- [x]   You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
 
     ``` bash
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
     ```
 
-    The Rust tool chain must be at version 1.46.0, or later.
+:::info
+The Rust tool chain must be at version 1.46.0, or later.
+:::
 
--   You have downloaded and installed the IC SDK package as described in [Download and install](/developer-docs/setup/deploy-locally.md#download-and-install).
+- [x]   You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/deploy-locally.md#download-and-install) page.
 
--   You have `cmake` installed. For example, use Homebrew with the following command:
+- [x]   You have `cmake` installed. For example, use Homebrew with the following command:
 
     ``` bash
     brew install cmake
     ```
 
-    For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
+    For instructions on how to install Homebrew, see the [Homebrew documentation](https://docs.brew.sh/Installation).
 
--   You have stopped any local canister execution environment processes running on your computer.
-
-This tutorial takes approximately 20 minutes to complete.
+- [x]   You have stopped any local canister execution environment processes running on your computer.
 
 ## Create a new project
 
-To create a new project directory for this tutorial:
+To create a new project directory for this guide:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Create a new project by running the following command:
+- #### Step 2:  Create a new project by running the following command:
 
     ``` bash
     dfx new --type=rust rust_deps
     ```
 
-3.  Change to your project directory by running the following command:
+- #### Step 3:  Change to your project directory by running the following command:
 
     ``` bash
     cd rust_deps
@@ -58,32 +60,17 @@ To create a new project directory for this tutorial:
 
 ## Modify the default project
 
-To complete this tutorial, you’ll need to complete the following steps:
-
-- [Basic dependency](#basic-dependency)
-  - [Before you begin](#before-you-begin)
-  - [Create a new project](#create-a-new-project)
-  - [Modify the default project](#modify-the-default-project)
-    - [Edit the default canister settings](#edit-the-default-canister-settings)
-    - [Implement Motoko canister](#implement-motoko-canister)
-    - [Replace the default Rust canister](#replace-the-default-rust-canister)
-    - [Update interface description file](#update-interface-description-file)
-  - [Start the local canister execution environment](#start-the-local-canister-execution-environment)
-  - [Register, build, and deploy your project](#register-build-and-deploy-your-project)
-  - [Call functions on the deployed canister](#call-functions-on-the-deployed-canister)
-  - [Stop the local canister execution environment](#stop-the-local-canister-execution-environment)
-
 ### Edit the default canister settings
 
 Because this sample project is going to consist of two canisters-the Motoko canister and the Rust canister—you need to modify the default `dfx.json` configuration file to include information for building both the Motoko canister and a Rust canister.
 
 To modify the `dfx.json` configuration file:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `dfx.json` configuration file in a text editor.
+- #### Step 2:  Open the `dfx.json` configuration file in a text editor.
 
-3.  Insert a new section before the `canisters.rust_deps_backend` settings with settings for building a Motoko program.
+- #### Step 3:  Insert a new section before the `canisters.rust_deps_backend` settings with settings for building a Motoko program.
 
     For example, in the `canisters` section, add a new `multiply_deps` key with settings like these:
 
@@ -94,9 +81,9 @@ To modify the `dfx.json` configuration file:
     }
     ```
 
-4.  Add a `dependencies` setting to the `rust_deps_backend` .
+- #### Step 4:  Add a `dependencies` setting to the `rust_deps_backend`.
 
-    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this tutorial, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `rust_deps_backend` field will look like:
+    The `dependencies` setting enables you to import functions from one canisters for use in another canister. For this guide, we want to import a function from the `multiply_deps` canister—written in Motoko—and use it from the `rust_deps` canister written in Rust. Then the `rust_deps_backend` field will look like:
 
     ``` json
     "rust_deps_backend": {
@@ -108,9 +95,9 @@ To modify the `dfx.json` configuration file:
       ]
     },
     ```
-5.  Remove all of the `rust_deps_frontend` configuration settings from the file.
+- #### Step 5:  Remove all of the `rust_deps_frontend` configuration settings from the file.
 
-    The sample dapp for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
+    The sample dapp for this guide doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
     You can also remove the `defaults` settings.
 
@@ -136,7 +123,7 @@ To modify the `dfx.json` configuration file:
 }
 ```
 
-6.  Save your change and close the `dfx.json` file to continue.
+- #### Step 6:  Save your change and close the `dfx.json` file to continue.
 
 ### Implement Motoko canister
 
@@ -144,17 +131,17 @@ The next step is to create a file at `src/multiply_deps/main.mo` with code that 
 
 To write the Motoko source code:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Create the directory for the Motoko canister.
+- #### Step 2:  Create the directory for the Motoko canister.
 
     ``` bash
     mkdir src/multiply_deps
     ```
 
-3.  Create and open the `src/multiply_deps/main.mo` file in a text editor.
+- #### Step 3:  Create and open the `src/multiply_deps/main.mo` file in a text editor.
 
-4.  Copy and paste this code into the `main.mo` file.
+- #### Step 4:  Copy and paste this code into the `main.mo` file.
 
 ```motoko
 actor Multiply {
@@ -169,7 +156,7 @@ actor Multiply {
 };
 ```
 
-5.  Save your changes and close the file to continue.
+- #### Step 5:  Save your changes and close the file to continue.
 
 ### Replace the default Rust canister
 
@@ -177,13 +164,13 @@ Now that we have the Motoko canister that the Rust canister depends upon, let’
 
 To replace the default Rust canister:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the template `src/rust_deps_backend/src/lib.rs` file in a text editor and delete the existing content.
+- #### Step 2:  Open the template `src/rust_deps_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to write a Rust program that imports the Motoko canister and implements the `read` function.
 
-3.  Copy and paste this code into the `lib.rs` file.
+- #### Step 3:  Copy and paste this code into the `lib.rs` file.
 
     ```rust
     use ic_cdk_macros::*;
@@ -198,7 +185,7 @@ To replace the default Rust canister:
     }
     ```
 
-4.  Save your changes and close the `src/rust_deps_backend/src/lib.rs` file to continue.
+- #### Step 4:  Save your changes and close the `src/rust_deps_backend/src/lib.rs` file to continue.
 
 ### Update interface description file
 
@@ -206,15 +193,15 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [**Candid guide**](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
-To update the Candid file for this tutorial:
+To update the Candid file for this guide:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_deps_backend/rust_deps_backend.did` file in a text editor.
+- #### Step 2:  Open the `src/rust_deps_backend/rust_deps_backend.did` file in a text editor.
 
-3.  Copy and paste the following `service` definition for the `read` function:
+- #### Step 3:  Copy and paste the following `service` definition for the `read` function:
 
     ``` did
     service : {
@@ -222,7 +209,7 @@ To update the Candid file for this tutorial:
     }
     ```
 
-4.  Save your changes and close the `rust_deps_backend.did` file to continue.
+- #### Step 4:  Save your changes and close the `rust_deps_backend.did` file to continue.
 
 ## Start the local canister execution environment
 
@@ -230,9 +217,9 @@ Before you can build the project, you need to connect to the local canister exec
 
 To start the network locally:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Start the local canister execution environment on your computer in the background by running the following command:
+- #### Step 2:  Start the local canister execution environment on your computer in the background by running the following command:
 
     ``` bash
     dfx start --clean --background
@@ -246,9 +233,9 @@ After you connect to the local canister execution environment running in your de
 
 To register, build, and deploy:
 
-1.  Check that you are still in root directory for your project directory, if needed.
+- #### Step 1:  Check that you are still in root directory for your project directory, if needed.
 
-2.  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
+- #### Step 2:  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 
     ``` bash
     dfx deploy
@@ -290,7 +277,7 @@ To register, build, and deploy:
 
 After successfully deploying the canister, you can test the canister by invoking the functions it provides.
 
-For this tutorial:
+For this guide:
 
 -   Call the `mul` function to multiply the value of the `cell` variable by three each time it is called.
 
@@ -298,7 +285,7 @@ For this tutorial:
 
 To test the deployed canister:
 
-1.  Call the `read` function from the Motoko canister, which reads the current value of the `cell` variable on the deployed canister:
+- #### Step 1:  Call the `read` function from the Motoko canister, which reads the current value of the `cell` variable on the deployed canister:
 
     ``` bash
     dfx canister call multiply_deps read
@@ -308,7 +295,7 @@ To test the deployed canister:
 
         (1 : nat)
 
-2.  Call the `mul` function to multiply the input argument by three by running the following command:
+- #### Step 2:  Call the `mul` function to multiply the input argument by three by running the following command:
 
     ``` bash
     dfx canister call multiply_deps mul '(3)'
@@ -318,7 +305,7 @@ To test the deployed canister:
 
         (9 : nat)
 
-3.  Call the `read` function using the `rust_deps` canister that imports functions from the `multiply_deps` canister:
+- #### Step 3:  Call the `read` function using the `rust_deps` canister that imports functions from the `multiply_deps` canister:
 
     ``` bash
     dfx canister call rust_deps_backend read

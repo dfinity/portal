@@ -1,8 +1,10 @@
-# Incrementing a counter
+# 3: Incrementing a counter
 
-In this tutorial, you are going to write a dapp that provides a few basic functions to increment a counter and illustrates the persistence of a value.
+## Overview
 
-For this tutorial, the dapp declares a `COUNTER` as a mutable variable to contain a natural number that represents the current value of the counter. This dapp supports the following functions:
+In this guide, you are going to write a dapp that provides a few basic functions to increment a counter and illustrates the persistence of a value.
+
+For this guide, the dapp declares a `COUNTER` as a mutable variable to contain a natural number that represents the current value of the counter. This dapp supports the following functions:
 
 -   The `increment` function updates the current value, incrementing by 1 with no return value.
 
@@ -10,9 +12,9 @@ For this tutorial, the dapp declares a `COUNTER` as a mutable variable to contai
 
 -   The `set` function updates the current value to the numeric value you specify as an argument.
 
-This tutorial provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the function to increment a value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
+This guide provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the function to increment a value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
 
-Like the other sample dapps, this tutorial demonstrates a simple, but realistic, workflow in which you perform the following steps:
+Like the other sample dapps, this guide demonstrates a simple, but realistic, workflow in which you perform the following steps:
 
 -   Create a new project.
 
@@ -22,13 +24,13 @@ Like the other sample dapps, this tutorial demonstrates a simple, but realistic,
 
 -   Invoke the canister methods to increment then read the value of a counter.
 
-## Before you begin
+## Prerequisites
 
 Before you start your project, verify the following:
 
--   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
+- [x]   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
+- [x]   You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
 
     ``` bash
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
@@ -36,33 +38,31 @@ Before you start your project, verify the following:
 
     The Rust tool chain must be at version 1.46.0, or later.
 
--   You have downloaded and installed the IC SDK as described in [Download and install](../../setup/install/index.mdx).
+- [x]   You have downloaded and installed the IC SDK as described in the [download and install](../../setup/install/index.mdx) page.
 
--   You have `cmake` installed. For example, use Homebrew with the following command:
+- [x]   You have `cmake` installed. For example, use Homebrew with the following command:
 
     ``` bash
     brew install cmake
     ```
 
-    For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
+    For instructions on how to install Homebrew, see the [Homebrew documentation](https://docs.brew.sh/Installation).
 
--   You have stopped any local canister execution environment processes running on your computer.
-
-This tutorial takes approximately 20 minutes to complete.
+- [x]   You have stopped any local canister execution environment processes running on your computer.
 
 ## Create a new project
 
-To create a new project directory for this tutorial:
+To create a new project directory for this guide:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Create a new project by running the following command:
+- #### Step 2:  Create a new project by running the following command:
 
     ``` bash
     dfx new --type=rust rust_counter
     ```
 
-3.  Change to your project directory by running the following command:
+- #### Step 3:  Change to your project directory by running the following command:
 
     ``` bash
     cd rust_counter
@@ -70,9 +70,9 @@ To create a new project directory for this tutorial:
 
 ## Modify the default project
 
-In the [Hello, World! Rust CDK Quick Start](./rust-quickstart.md), you went through the files in a default project with Rust type canister.
+In the ['Hello, world!' Rust CDK quick start](./rust-quickstart.md), you went through the files in a default project with Rust type canister.
 
-To complete this tutorial, you’ll need to complete the following steps:
+To complete this guide, you’ll need to complete the following steps:
 
 -   [Replace the default dapp](#replace-the-default-dapp)
 
@@ -84,13 +84,13 @@ Now that you have the files in place for your Rust dapp, we can replace the temp
 
 To replace the default dapp:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
+- #### Step 2:  Open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
 
     The next step is to write a Rust dapp that declares the `COUNTER` variable and implements the `increment`, `get`, and `set` functions.
 
-3.  Copy and paste this code into the `lib.rs` file.
+- #### Step 3:  Copy and paste this code into the `lib.rs` file.
     ```rust
     use ic_cdk::export::candid;
     use ic_cdk_macros::*;
@@ -125,7 +125,7 @@ To replace the default dapp:
 
     ```
 
-4.  Save your changes and close the `lib.rs` file to continue.
+- #### Step 4:  Save your changes and close the `lib.rs` file to continue.
 
 ### Update interface description file
 
@@ -133,13 +133,13 @@ Candid is an interface description language (IDL) for interacting with canisters
 
 By adding Candid files to your project, you can ensure that data is properly converted from its definition in Rust to run safely on the Internet Computer blockchain.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](./../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [**Candid guide**](./../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
-To update the Candid file for this tutorial:
+To update the Candid file for this guide:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Open the `src/rust_counter_backend/rust_counter_backend.did` file in a text editor, then copy and paste the following `service` definition for the `increment`, `get`, and `set` functions:
+- #### Step 2:  Open the `src/rust_counter_backend/rust_counter_backend.did` file in a text editor, then copy and paste the following `service` definition for the `increment`, `get`, and `set` functions:
 
     ``` did
     service : {
@@ -149,7 +149,7 @@ To update the Candid file for this tutorial:
     }
     ```
 
-3.  Save your changes and close the `rust_counter_backend.did` file to continue.
+- #### Step 3:  Save your changes and close the `rust_counter_backend.did` file to continue.
 
 ## Start the local canister execution environment
 
@@ -157,9 +157,9 @@ Before you can build the `rust_counter` project, you need to connect to the loca
 
 To start the local canister execution environment:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Start the local canister execution environment on your computer in the background by running the following command:
+- #### Step 2:  Start the local canister execution environment on your computer in the background by running the following command:
 
     ``` bash
     dfx start --background
@@ -173,9 +173,9 @@ After you connect to the local canister execution environment running in your de
 
 To register, build, and deploy:
 
-1.  Check that you are still in root directory for your project directory, if needed.
+- #### Step 1:  Check that you are still in root directory for your project directory, if needed.
 
-2.  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
+- #### Step 2:  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 
     ``` bash
     dfx deploy
@@ -207,7 +207,7 @@ To register, build, and deploy:
 
 ## Call functions and test the dapp
 
-After successfully deploying the canister, you can test the canister by invoking the functions it provides. For this tutorial:
+After successfully deploying the canister, you can test the canister by invoking the functions it provides. For this guide:
 
 -   Call the `get` function to query the value of the counter.
 
@@ -217,7 +217,7 @@ After successfully deploying the canister, you can test the canister by invoking
 
 To test the dapp:
 
-1.  Call the `get` function to read the current value of the `COUNTER` variable by running the following command:
+- #### Step 1:  Call the `get` function to read the current value of the `COUNTER` variable by running the following command:
 
     ``` bash
     dfx canister call rust_counter_backend get
@@ -227,7 +227,7 @@ To test the dapp:
 
         (0 : nat)
 
-2.  Call the `increment` function to increment the value of the `COUNTER` variable by one:
+- #### Step 2:  Call the `increment` function to increment the value of the `COUNTER` variable by one:
 
     ``` bash
     dfx canister call rust_counter_backend increment
@@ -235,7 +235,7 @@ To test the dapp:
 
     This command increments the value of the variable—changing its state—but does not return the result.
 
-3.  Rerun the command to call the `get` function to see the current value of the `COUNTER` variable:
+- #### Step 3:  Rerun the command to call the `get` function to see the current value of the `COUNTER` variable:
 
     ``` bash
     dfx canister call rust_counter_backend get
@@ -245,7 +245,7 @@ To test the dapp:
 
         (1 : nat)
 
-4.  Run additional commands to experiment with call the functions and using different values.
+- #### Step 4:  Run additional commands to experiment with call the functions and using different values.
 
     For example, try commands similar to the following to set and return the counter value:
 
@@ -269,9 +269,9 @@ After you finish experimenting with your dapp, you can stop the local Internet C
 
 To stop the local canister execution environment:
 
-1.  In the terminal that displays network operations, press Control-C to interrupt the local canister execution environment process.
+- #### Step 1:  In the terminal that displays network operations, press Control-C to interrupt the local canister execution environment process.
 
-2.  Stop the local canister execution environment by running the following command:
+- #### Step 2:  Stop the local canister execution environment by running the following command:
 
     ``` bash
     dfx stop

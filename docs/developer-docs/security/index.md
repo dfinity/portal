@@ -1,20 +1,22 @@
-# Introduction
+# Security best practices
+
+## Overview
 
 This document provides security best practices for developing canisters and web apps served by canisters on the Internet Computer. These best practices are mostly inspired by issues found in security reviews.
 
 We would like to advertise these best practices to developers so that potential issues can be addressed early during the development of new dapps, and not only in the end when (if at all) a security review is done. Ideally, this will make the development of secure dapps more efficient.
 
-Some excellent canister best practices linked here are from [Effective Rust Canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html) and [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). The relevant sections are linked in the individual best practices.
+Some excellent canister best practices linked here are from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html) and [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). The relevant sections are linked in the individual best practices.
 
 ## Best Practices Overview
 
 We provide the following security best practices in the subsequent pages:
 
--   [General Security Best Practices](./general-security-best-practices.md)
+-   [General security best practices](./general-security-best-practices.md).
 
--   [Web App Specific Security Best Practices](./web-app-development-security-best-practices.md),
+-   [Web app specific security best practices](./web-app-development-security-best-practices.md).
 
--   [Canister Development Security Best Practices](./rust-canister-development-security-best-practices.md)
+-   [Canister development security best practices](./rust-canister-development-security-best-practices.md).
 
 ## Target Audience
 

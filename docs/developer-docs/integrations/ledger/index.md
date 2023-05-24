@@ -1,5 +1,6 @@
-# The ICP Ledger
+# The ICP ledger
 
+## Overview
 
 The Internet Computer Protocol (ICP) implements management of its utility token (ticker "ICP") using a specialized canister, called the **ledger canister**. There is a single ledger canister which runs alongside other canisters on a special subnet of the Internet Computer - the NNS subnet. The ledger canister is a smart contract that holds **accounts** and **transactions**. These transactions either **mint ICP tokens** for accounts, **transfer ICP tokens** from one account to another, or **burn ICP tokens**, eliminating them from existence, e.g. while converting ICP tokens to cycles. The ledger canister maintains a traceable history of all transactions starting from its genesis state (initial state). 
 
@@ -7,11 +8,11 @@ This section is structured as follows:
 
 - This page provides an introduction to the basics of ICP and the ledger. For a more detailed explanation of the complete public interface of the ledger canister head over to the [specification](/docs/current/references/ledger) in the [references section](/docs/current/references/).
 - [Interact with the ICP ledger](interact-with-ledger.md) provides hands on tutorials to interact with the ICP ledger from the command line, JavaScript applications and from canisters.
-- [Ledger Local Setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
-- [Deploy New Token](./deploy-new-token.md) explains how you can create your own token by deploying a custom ledger canister and make it available to exchanges via the [Rosetta API](../rosetta/).
-- [Collecting dust](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.
+- [Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
+- [Deploy new token](./deploy-new-token.md) explains how you can create your own token by deploying a custom ledger canister and make it available to exchanges via the [Rosetta API](../rosetta/).
+- [Account trimming](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.
 
-## The Basics
+## Architecture
 
 ### Accounts
 
@@ -25,7 +26,7 @@ In this context, you can think of principal identifiers as a rough equivalent to
 
 The ledger canister is initialized using administrative operations that are internal to the Internet Computer. As part of the initialization process, the canister is created with the set of accounts and associated ICP token balances.
 
-:::note Why does the ledger use Account IDs and not just Principal IDs?
+:::info Why does the ledger use Account IDs and not just Principal IDs?
 
 The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by a the wallet software, this is not possible for canisters.
 :::

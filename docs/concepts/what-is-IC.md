@@ -8,7 +8,7 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 
 -   A secure cryptographic protocol (**Internet Computer Protocol**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts.
 
--   A **network of blockchains** connected using Chain Key cryptography that can scale out its capacity as required.
+-   A **network of blockchains** connected using [chain key cryptography](https://internetcomputer.org/how-it-works/#Chain-key-cryptography) that can scale out its capacity as required.
 
 ## An Open Blockchain
 

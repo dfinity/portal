@@ -1,18 +1,20 @@
-# Gas/Cycles cost
+# Gas and cycles cost
+
+## Overview
 
 The Internet Computer requires computation operations and storage to be supported by cycles. Cycles are generated from the conversion of Internet Computer (ICP) utility tokens.
 
-## The Role of the Network Nervous System (NNS) in Defining Costs
+### The role of the Network Nervous System (NNS) in defining costs
 
 The Internet Computer is a decentralized public utility, controlled by the NNS –– the network’s open, algorithmic governance system. The NNS fundamentally controls how many cycles are required for low-level computation actions for computation and storage. The number of cycles needed for individual computations will vary based on a number of factors considered by the NNS, including proposals from the community.
 
-## Details: Cost of Compute and Storage Transactions on the Internet Computer
+### Details: Cost of compute and storage transactions on the Internet Computer
 
 Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer and “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
 In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launch with a replication factor in the order of 30, different sizes may be available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The Bitcoin API is an exception to linear scaling, see the note below. The following tables provide pricing in cycles and USD for the 13-node baseline and the example of 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, *13_node_price* is the price for the transaction on the reference-size subnet with 13 nodes, and *DIV* is integer division:
 
-*Price on n-node subnet = (13_node_price \* n) DIV 13*
+***Price on n-node subnet = (13_node_price \* n) DIV 13***
 
 If you intend to deploy canisters on high-replication subnets, your canister should be prepared for an increase in cycles prices with an increase in the subnet's replication factor when the subnet grows over time. For this reason it is recommended to attach more cycles to a call than the current price for a high-replication subnet of a given size suggests.
 
@@ -46,12 +48,12 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 400M / 13                             | 400M                                  | 400M / 13 * 34                     |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`) | 100K / 13                             | 100K                                  | 100K / 13 * 34                     |
 
-**Notes:**
+### **Notes:**
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
-* The Bitcoin canister for Bitcoin mainnet is launched initially on a 13-node subnet but the 34-node price as advertised above is charged to avoid frequent price changes. *The Bitcoin API requires to send more cycles as specified for future-proofness.* See the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further details regarding the specifics of Bitcoin pricing.
+* The Bitcoin canister for Bitcoin mainnet is launched initially on a 13-node subnet but the 34-node price as advertised above is charged to avoid frequent price changes. ***The Bitcoin API requires to send more cycles as specified for future-proofness.*** See the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further details regarding the specifics of Bitcoin pricing.
 * Prices for Bitcoin testnet are 40% of the prices for Bitcoin mainnet.
 
-The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. For XDR exchange rates please visit: <https://www.imf.org/external/np/fin/data/rms_sdrv.aspx>
+The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 To derive the estimated cost for a GB Storage per month, we assume a 30 day month.
 
