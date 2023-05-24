@@ -585,7 +585,7 @@ function SnsFaqPage() {
                 requires ICP utility tokens. ICP tokens can be exchanged for SNS
                 tokens during the decentralization swap. If you don’t have ICP,
                 go to any of the exchanges listed on{" "}
-                <Link href="https://coinmarketcap.com/currencies/internet-computer/markets/">
+                <Link href="https://coinmarketcap.com/currencies/internet-computer/">
                   CoinMarketCap
                 </Link>
                 .
