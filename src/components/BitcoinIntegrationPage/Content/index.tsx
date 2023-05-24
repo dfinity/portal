@@ -30,7 +30,7 @@ const Content: React.FC = () => {
           </p>
           <p className="tw-paragraph mb-3">
             The ICP x BTC integration comprises two key building blocks (and
-            APIs): <strong>Network Integration & Chain-Key ECDSA</strong>
+            APIs): Network integration & chain-Key ECDSA
           </p>
           <p className="tw-paragraph mb-3">
             Combining these building blocks, canisters can directly and
@@ -42,10 +42,10 @@ const Content: React.FC = () => {
           <p className="mb-0 mt-8">
             <Link
               className="link-primary link-with-icon"
-              href="/how-it-works#Chain-key-technology"
+              href="/how-it-works/chain-key-technology/"
             >
               <LinkArrowRight></LinkArrowRight>
-              Learn more
+              What is chain-key cryptography
             </Link>
           </p>
         </motion.div>
