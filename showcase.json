@@ -1726,6 +1726,18 @@
     "github": "https://github.com/ICEvent/Escrow"
   },
   {
+    "id": "airgap",
+    "name": "AirGap",
+    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
+    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
+    "website": "https://airgap.it/",
+    "tags": [
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/airgap_logo.webp"
+  },
+  {
     "id": "cosmicrafts",
     "name": "Cosmicrafts",
     "oneLiner": "Blast through the metaverse with Cosmicrafts, where interstellar mayhem meets epic battles for the ultimate cosmic showdown!",
