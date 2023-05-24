@@ -1,5 +1,5 @@
 ---
-title: Canisters: next evolution smart contracts
+title: Canisters next evolution smart contracts
 card: /img/what-is-the-ic/canister.webp
 cardImageFit: cover
 ---
