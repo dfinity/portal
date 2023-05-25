@@ -230,13 +230,13 @@ This **quick start** touched on only a few key steps to introduce the basic work
 ## Resources
 Here are some suggestions for where to go next:
 
--   [Building on the IC](/docs/current/developer-docs/setup/developer-docs/samples/overview) to explore sample dapps.
+-   [Building on the IC](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](/docs/current/developer-docs/setup/concepts/index) to learn about different IC concepts and services. 
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts and services. 
 
 -   [Convert ICP tokens to cycles](./deploy-mainnet.md#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
--   [IC Glossary](/docs/current/developer-docs/setup/references/glossary) to learn the definitions of various terms used within the IC. 
+-   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
 
 -   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
 
