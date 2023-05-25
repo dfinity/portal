@@ -41,7 +41,7 @@ As an example, imagine you have a house where propane is used for a water heater
 
 -   Cycles are not a currency; in particular cycles cannot be converted back to value in the form of Internet Computer Protocol tokens, but can be transferred between canisters to enable canisters to pay for operations.
 
-For exact costs see the tables in [computation and storage costs](/developer-docs/gas-cost.md)
+For exact costs see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
 
 ## Token value and volatility
 
@@ -61,4 +61,4 @@ The Internet Computer economic model places much of the power and responsibility
 
 If you are looking for more information about tokens and cycles, check out the following related resources:
 
--   [Overview of Token Economics (video)](https://www.youtube.com/watch?v=H2p5q0PR2pc)
+-   [Overview of token economics (video)](https://www.youtube.com/watch?v=H2p5q0PR2pc).

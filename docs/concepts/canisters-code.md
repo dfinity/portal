@@ -107,8 +107,8 @@ All canisters consume resources, CPU cycles for execution, bandwidth for routing
 
 If you are looking for more information about canisters, check out the following related resources:
 
--   [Introducing Canisters — An Evolution of Smart Contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ)
+-   [Introducing canisters — an evolution of smart contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ).
 
--   [What is the IC SDK? (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk)
+-   [What is the IC SDK? (video)](https://www.youtube.com/watch?v=60uHQfoA8Dk).
 
--   [Deploying your first application (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA)
+-   [Deploying your first application (video)](https://www.youtube.com/watch?v=yqIoiyuGYNA).

@@ -11,7 +11,7 @@ The Internet Computer is a blockchain that runs [canister smart contracts](https
 
 Developers can thus build new dapps consisting of multiple canisters running in parallel on different subnets and possibly integrate them with existing canisters already running on the Internet Computer.
 
-See [Introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on the IC wiki.
+See [introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on the IC wiki.
 
 ## Developer workflow at a glance
 
@@ -21,7 +21,7 @@ At a high-level, there are two main possible workflows for developing dapps that
 
 - **Local development:** you start a local canister execution environment simulating the Internet Computer blockchain on your computer. Then you write, compile, install and iteratively update your canisters in the local execution environment. This gives you the possibility to test your canisters locally without the need to use cycles to power them.
 
-- **On-chain deployment:** once your dapp is ready you can then deploy it to the Internet Computer blockchain mainnet, making it available for the world to use it. Note that your canisters need to have cycles to be able to run on the Internet Computer blockchain mainnet, as discussed in [Tokens and cycles](/concepts/tokens-cycles.md).
+- **On-chain deployment:** once your dapp is ready you can then deploy it to the Internet Computer blockchain mainnet, making it available for the world to use it. Note that your canisters need to have cycles to be able to run on the Internet Computer blockchain mainnet, as discussed in [tokens and cycles](/concepts/tokens-cycles.md).
 
 Regardless of the development workflow you choose, keep in mind that when you deploy a canister for the first time, either on a local execution environment or on the Internet Computer, a unique [principal identifier](/references/glossary.md#principal) is created for your canister. For example, if you start developing your canister locally and then deploy it to the Internet Computer, then your canister will generally have a different identifier on the local execution environment and on the Internet Computer blockchain mainnet. Note that it is also possible for you to register a principal identifier for your new canister before deploying it or even writing any line of code.
 
@@ -33,6 +33,6 @@ On the Internet Computer, a "cycle" is the unit of measurement for resources con
 
 ICP can always be converted to cycles using the current price of ICP measured in [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights) using the convention that one trillion cycles correspond to one XDR.
 
-**Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10,000 transactions. **
+**Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10_000 transactions. **
 
 To see the full cost table, go [here](./gas-cost.md).

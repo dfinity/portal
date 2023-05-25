@@ -6,7 +6,7 @@ Internet Computer **subnet blockchains** provide physical hardware and resources
 
 The Internet Computer blockchain software components that run on each node are called a **replica** because they replicate state and computation across all of the nodes in a subnet blockchain.
 
-## Replica Architecture
+## Replica architecture
 
 The core components of a replica are organized into the following logical layers:
 
@@ -26,7 +26,7 @@ The following diagram provides a simplified overview of the Internet Computer bl
 As a developer, it isn’t necessary to know the details about how your dapps and user interactions with your dapps are routed through the Internet Computer blockchain architecture or replicated on the blockchain network. However, a general understanding of the key components can be useful because the development environment includes the replica components to provide an execution environment for deployment and a realistic sense of the workflow for a production deployment.
 :::
 
-## Subnet Blockchains
+## Subnet blockchains
 
 A so-called **subnet** is a collection of replicas that run a separate instance of the consensus mechanism in order to create their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain key](/references/glossary.md#chain-key) cryptography to delegate its authority to the various subnets.
 
@@ -37,4 +37,4 @@ Because not every canister has the same security,  size, or feature requirements
 At the time of writing, there are two main subnet types: `system` and `application`. Almost all canisters run on application subnets. In comparison with the `application` subnet, the `system` subnet has the following characteristics:
 - No cycles accounting takes place.
 - More generous per-call instruction limit.
-- More generous WASM module size limit.
+- More generous Wasm module size limit.

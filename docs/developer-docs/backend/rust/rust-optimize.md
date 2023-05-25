@@ -27,7 +27,7 @@ Before you optimize your program, verify the following:
 
     For instructions on how to install Homebrew, see the [Homebrew documentation](https://docs.brew.sh/Installation).
 
-- [x]   You have successfully compiled your dapp to a WebAssembly module (WASM) and deployed it on the local canister execution environment.
+- [x]   You have successfully compiled your dapp to a WebAssembly module (Wasm) and deployed it on the local canister execution environment.
 
 ## Install and run the optimizer
 
