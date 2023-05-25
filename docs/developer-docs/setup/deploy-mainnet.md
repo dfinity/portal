@@ -37,7 +37,7 @@ For information about using your default cycles wallet after you have created it
 You can download the latest version of the IC SDK directly from within a terminal shell on your local computer. If you have previously installed the IC SDK, you can skip this section and start with [create a new project](#net-new-project).
 
 :::caution
-These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](./install/index).
+These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](/docs/current/developer-docs/setup/install/index).
 :::
 
 To download and install:
@@ -236,7 +236,7 @@ To validate your cycles wallet:
 
 - #### Step 4:  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
 
-    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../../tokenomics/identity-auth/auth-how-to).
+    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](/docs/current/tokenomics/identity-auth/auth-how-to).
 
 - #### Step 5:  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -380,11 +380,11 @@ You can find more detailed examples and guides to help you learn about how to us
 
 Here are some suggestions for where to go next:
 
--   [Building on the IC](developer-docs/samples/overview) to explore sample dapps.
+-   [Building on the IC](/docs/current/developer-docs/setup/developer-docs/samples/overview) to explore sample dapps.
 
--   [Concepts](concepts/index) to learn about different IC concepts and services. 
+-   [Concepts](/docs/current/developer-docs/setup/concepts/index) to learn about different IC concepts and services. 
 
--   [IC Glossary](references/glossary) to learn the definitions of various terms used within the IC. 
+-   [IC Glossary](/docs/current/developer-docs/setup/references/glossary) to learn the definitions of various terms used within the IC. 
 
 -   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
 
