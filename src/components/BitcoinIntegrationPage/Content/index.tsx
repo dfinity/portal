@@ -79,13 +79,14 @@ const Content: React.FC = () => {
               </Link>{" "}
               signing — advanced threshold cryptography integrated with ICP. In short,
               chain-key ECDSA is a set of cryptographic protocols that allow Internet
-              Computer nodes to cooperatively sign Bitcoin transactions, using a highly
-              fault-tolerant, decentralized network that is resilient to attacks by
-              malicious nodes. The secret key is never stored in one place, instead
-              it is broken down into key shares held by ICP nodes that are re-shared
-              every ~10 mins. When requested, nodes use their key shares to collectively
-              sign BTC transactions without recreating the original secret key. This
-              signing protocol assumes a threshold of nodes to be honest.
+              Computer nodes to cooperatively create ECDSA signatures, which can be used
+              to sign bitcoin transactions, using a highly fault-tolerant, decentralized
+              network that is resilient to attacks by malicious nodes. The secret key is
+              never stored in one place, instead it is broken down into key shares held by
+              ICP nodes that are re-shared every ~10 mins. When requested, nodes use their
+              key shares to collectively sign BTC transactions without recreating the
+              original secret key. This signing protocol assumes a threshold of nodes to
+              be honest.
             </p>
           </div>
         </motion.div>
