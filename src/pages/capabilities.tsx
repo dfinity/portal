@@ -210,7 +210,7 @@ function FeaturesPage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about HTTPS outcalls
+                About HTTPS outcalls
               </Link>
             </motion.p>
           </SplitCard>
@@ -245,11 +245,11 @@ function FeaturesPage() {
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
-                  href="/how-it-works/web-authentication-identity/"
+                  href="https://internetcomputer.org/internet-identity?source=nav"
                   className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
                 >
                   <RightPointer className="w-6 h-6"></RightPointer>
-                  Learn more
+                  Identity on ICP
                 </Link>
               </motion.p>
             </div>
@@ -329,7 +329,7 @@ function FeaturesPage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about SEO support
+                Read the blog
               </Link>
             </motion.p>
           </SplitCard>
@@ -454,7 +454,7 @@ function FeaturesPage() {
                 className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn more about BTC integration
+                How BTC integration works
               </Link>
             </motion.p>
           </SplitCard>
@@ -574,7 +574,7 @@ function FeaturesPage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about ICP governance
+                Participate in ICP governance
               </Link>
             </motion.p>
           </SplitCard>
@@ -611,7 +611,7 @@ function FeaturesPage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                Learn about ICP DAOs
+                Overview of ICP DAOs
               </Link>
             </motion.p>
           </SplitCard>
@@ -805,7 +805,7 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               <Link className="button-white" href="/how-it-works">
-                Learn how ICP works
+                How ICP works
               </Link>
             </motion.p>
           </div>
