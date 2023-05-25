@@ -174,7 +174,7 @@ function EthereumIntegrationPage() {
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight />
-                  Learn more
+                  Overview of trustless multi-chain 
                 </Link>
               </p>
             </Prose>
@@ -294,7 +294,7 @@ function EthereumIntegrationPage() {
                   href="/https-outcalls"
                 >
                   <LinkArrowRight />
-                  Learn more
+                  What are HTTPS outcalls
                 </Link>
               </p>
             </AnimatedProse>
@@ -319,7 +319,7 @@ function EthereumIntegrationPage() {
                   href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
                 >
                   <LinkArrowRight />
-                  Learn more
+                  About extending ETH
                 </Link>
               </p>
             </AnimatedProse>
@@ -399,7 +399,7 @@ function EthereumIntegrationPage() {
               href="https://internetcomputer.org/how-it-works#Chain-key-technology"
             >
               <LinkArrowRight />
-              Learn More
+              How chain-key cryptography works
             </Link>
           </motion.p>
           <motion.img

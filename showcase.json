@@ -472,6 +472,18 @@
     "video": "/img/showcase/hot_or_not_video.mp4"
   },
   {
+    "id": "dgdg",
+    "name": "DGDG",
+    "oneLiner": "The most comprehensive browsing experience for NFTs. Sort & filter by price and rarity, expose floors, and much more.",
+    "website": "https://www.dgastonia.com/nfts/collections/",
+    "tags": [
+      "NFT"
+    ],
+    "description": "The most comprehensive browsing experience for NFTs. Brwose any NFT collection on the Internet Computer, sort & filter by price or rarity, expose floors, and much more.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/dgdg_logo.webp"
+  },
+  {
     "id": "sly",
     "name": "SLY",
     "oneLiner": "Seamless CLI for the Internet Computer",
@@ -1724,6 +1736,18 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/blocklist.png",
     "github": "https://github.com/ICEvent/Escrow"
+  },
+  {
+    "id": "airgap",
+    "name": "AirGap",
+    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
+    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
+    "website": "https://airgap.it/",
+    "tags": [
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/airgap_logo.webp"
   },
   {
     "id": "cosmicrafts",

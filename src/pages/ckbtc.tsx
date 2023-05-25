@@ -435,43 +435,35 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    Internet Computer nodes talk directly to Bitcoin nodes. Behind the scenes,
-                    they push signed transactions into the Bitcoin mempool, pull Bitcoin blocks,
-                    and maintain its UTXO set. In this decentralized arrangement, the Internet
-                    Computer network itself acts as private keys, signing transactions on behalf
-                    of smart contracts, using “chain-key cryptography” inside its protocols.
-                    This makes it possible for smart contracts to directly send and receive
-                    bitcoin on the Bitcoin blockchain, and for a smart contract to create ckBTC –
-                    a super fast, low cost, trustless digital twin.{" "}
+                    The key innovations behind ckBTC are the{" "}
+                    <Link href="/bitcoin-integration">
+                      native Bitcoin integration
+                    </Link>{" "}
+                    and{" "}
+                    <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
+                      chain-key ECDSA signing
+                    </Link>{" "}
+                    — advanced threshold cryptography integrated with ICP.
+                    In short, chain-key ECDSA is a set of cryptographic protocols that allow
+                    Internet Computer nodes to cooperatively create ECDSA signatures, which
+                    can be used to sign bitcoin transactions, using a highly fault-tolerant,
+                    decentralized network that is resilient to attacks by malicious nodes.
+                    The secret key is never stored in one place, instead it is broken down
+                    into key shares held by ICP nodes that are re-shared every ~10 mins.
+                    When requested, nodes use their key shares to collectively sign BTC
+                    transactions without recreating the original secret key.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    ckBTC is exposed to the security of two networks (Bitcoin and the Internet
-                    Computer), but is not exposed to a blockchain bridge, which is not needed.
+                    This enables a pair of canister smart contracts to trustlessly create ckBTC,
+                    a multichain bitcoin twin that can be controlled by smart contracts and
+                    sent with near instant finality for negligible fees — all without the need for
+                    bridges or centralized custodians.
+                  </p>
+                  <p className="tw-paragraph mb-3">
                     This is important, because blockchain bridges are centralized, insecure,
                     cumbersome and costly. The insecurity alone is a dealbreaker: between
-                    2021-2022, more than 2 billion dollars was stolen from blockchain bridges. 
-                  </p>
-                  <p className="tw-paragraph mb-3">
-                    The Internet Computer network is powered by chain key cryptography, which
-                    is key to how it scales. The integration of the Internet Computer and Bitcoin
-                    networks became possible when its chain key framework was adapted to also
-                    support the ECDSA cryptography scheme, which can be used to sign Bitcoin
-                    transactions – which is known as Chain-key ESCDSA. 
-                  </p>
-                  <p className="tw-paragraph mb-3">
-                    Internet Computer nodes run a protocol that generates “private key shares”
-                    in a trustless way (this involves a unique “non-interactive distributed key
-                    generation” scheme). Any threshold of nodes in combination, as directed by
-                    consensus, can then create new public keys, and create signatures on
-                    messages that validate against those keys, such as transactions. 
-                  </p>
-                  <p className="tw-paragraph mb-3">
-                    The private key shares only exist for a few minutes, and are constantly
-                    re-created and erased, while preserving the network’s ability to sign for
-                    existing public keys, using a “key-resharing” scheme. This prevents
-                    adaptive adversaries from progressively stealing key material from nodes
-                    to assemble a threshold set, while allowing nodes to come and go, which
-                    is essential as networks have dynamic membership. 
+                    2021-2022, more than 2 billion dollars was stolen by exploiting blockchain
+                    bridges. 
                   </p>
                   <p className="tw-paragraph mb-3">
                     The recent incident where the FTX exchange acted as the custodian, and
@@ -495,7 +487,7 @@ function CkbtcPage(): JSX.Element {
                     href="https://medium.com/dfinity/threshold-ecdsa-the-key-ingredient-behind-the-internet-computers-bitcoin-and-ethereum-cf22649b98a1"
                   >
                     <LinkArrowRight />
-                     Chain-key ECDSA
+                     Chain-key ECDSA blog
                   </Link>
                 </div>
                 <div>
@@ -545,7 +537,7 @@ function CkbtcPage(): JSX.Element {
                     chain-key cryptography integrations. 
                   </p>
                   <Link
-                    className="link-primary link-with-icon"
+                    className="link-primary link-with-icon mt-10"
                     href="/bitcoin-integration"
                   >
                     <LinkArrowRight />
