@@ -4,7 +4,7 @@
 
 ## Prerequisites 
 
-- [x] Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [Faucet quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
+- [x] Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [faucet quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
 
 ## Set up your project
 
@@ -149,6 +149,6 @@ You should see your live, multi-page website, looking like this:
 
 ### Resources
 
-Looking to build a full-stack dapp? Check out the [Full-stack react tutorial](https://smartcontracts.org/docs/current/developer-docs/frontend/custom-frontend).
+Looking to build a full-stack dapp? Check out the [full-stack react tutorial](https://smartcontracts.org/docs/current/developer-docs/frontend/custom-frontend).
 
-Visit our [Developer Forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.
+Visit our [developer forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.

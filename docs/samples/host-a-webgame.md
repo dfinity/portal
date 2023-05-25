@@ -32,7 +32,7 @@ Make sure you have [Godot](https://godotengine.org/download) installed.
 
 ## Create a dfx project manually
 
-**If you install the `IC GameKit` to generate the dfx project automatically in [Create a Web Game](#create-a-web-game), please skip this section and jump to the [Deployment](#deployment).**
+**If you install the `IC GameKit` to generate the dfx project automatically in [create a web game](#create-a-web-game), please skip this section and jump to the [deployment](#deployment).**
 
 Since there is no backend in this sample, there is not any benefit of using the `dfx new project_name` command to set up a template. The `dfx.json` file is all that is needed.
 
