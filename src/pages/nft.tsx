@@ -14,7 +14,7 @@ const largeNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cosmic-birth.webp", title: "", url: "" },
   { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/cubetopia-1.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icbucks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cubetopia-2.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icflowers.webp", title: "", url: "" },
   { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
