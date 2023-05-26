@@ -350,8 +350,10 @@ Other notes about language:
     - Referring to the default configuration as the 'boring default configuration'.
     - Making a joke within the document, then using parentheses to acknowledge the joke such as "(Get it? heh)".
     - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience. 
+    
     For example, avoid the following:
         - "Get it? heh."
+    
     Where as, the following are acceptable in certain contexts:
         - "Ready to get started? Let's go!"
         - "Here is a checklist of the things you will need to consider:"
