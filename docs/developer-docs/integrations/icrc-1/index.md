@@ -1,6 +1,7 @@
-# ICRC-1 Token Standard
+# ICRC-1 token standard
 
-The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for Fungible Tokens on the Internet Computer.
+## Overview
+The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer.
 
 ## Data
 
@@ -180,13 +181,13 @@ Namespace `icrc1` is reserved for keys defined in this standard.
 
 Consider the following scenario:
 
-  1. An agent sends a transaction to an ICRC-1 ledger hosted on the IC.
-  2. The ledger accepts the transaction.
-  3. The agent loses the network connection for several minutes and cannot learn about the outcome of the transaction.
+- An agent sends a transaction to an ICRC-1 ledger hosted on the IC.
+- The ledger accepts the transaction.
+- The agent loses the network connection for several minutes and cannot learn about the outcome of the transaction.
 
-An ICRC-1 ledger SHOULD implement transfer deduplication to simplify the error recovery for agents.
+An ICRC-1 ledger **should** implement transfer deduplication to simplify the error recovery for agents.
 The deduplication covers all transactions submitted within a pre-configured time window `TX_WINDOW` (for example, last 24 hours).
-The ledger MAY extend the deduplication window into the future by the `PERMITTED_DRIFT` parameter (for example, 2 minutes) to account for the time drift between the client and the Internet Computer.
+The ledger **may** extend the deduplication window into the future by the `PERMITTED_DRIFT` parameter (for example, 2 minutes) to account for the time drift between the client and the Internet Computer.
 
 The client can control the deduplication algorithm using the `created_at_time` and `memo` fields of the [`transfer`](#transfer_method) call argument:
   * The `created_at_time` field sets the transaction construction time as the number of nanoseconds from the UNIX epoch in the UTC timezone.
@@ -204,12 +205,12 @@ If the client did not set the `created_at_time` field, the ledger SHOULD NOT ded
 
 The minting account is a unique account that can create new tokens and acts as the receiver of burnt tokens.
 
-Transfers _from_ the minting account act as _mint_ transactions depositing fresh tokens on the destination account.
+Transfers **from** the minting account act as **min** transactions depositing fresh tokens on the destination account.
 Mint transactions have no fee.
 
-Transfers _to_ the minting account act as _burn_ transactions, removing tokens from the token supply.
+Transfers **to** the minting account act as **burn** transactions, removing tokens from the token supply.
 Burn transactions have no fee but might have minimal burn amount requirements.
-If the client tries to burn an amount that is too small, the ledger SHOULD reply with
+If the client tries to burn an amount that is too small, the ledger **should** reply with the following:
 
 ```
 variant { Err = variant { BadBurn = record { min_burn_amount = ... } } }
@@ -219,21 +220,21 @@ The minting account is also the receiver of the fees burnt in regular transfers.
 
 ## Textual representation of accounts
 
-We specify a _canonical textual format_ that all applications should use to display ICRC-1 accounts.
-This format relies on the textual encoding of principals specified in the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md#textual-ids), referred to as `Principal.toText` and `Principal.fromText` below.
+We specify a **canonical textual format** that all applications should use to display ICRC-1 accounts.
+This format relies on the textual encoding of principals specified in the [Internet Computer interface specification](../../../references/ic-interface-spec.md#textual-ids), referred to as `Principal.toText` and `Principal.fromText` below.
 The format has the following desirable properties:
 
-1. A textual encoding of any non-reserved principal is a valid textual encoding of the default account of that principal on the ledger.
-2. The decoding function is injective (i.e., different valid encodings correspond to different accounts).
+- A textual encoding of any non-reserved principal is a valid textual encoding of the default account of that principal on the ledger.
+- The decoding function is injective (i.e., different valid encodings correspond to different accounts).
    This property enables applications to use text representation as a key.
-3. A typo in the textual encoding invalidates it with a high probability.
+- A typo in the textual encoding invalidates it with a high probability.
 
 ### Encoding
 
-Applications SHOULD encode accounts as follows:
+Applications **should** encode accounts as follows:
 
-  1. The encoding of the default account (the subaccount is null or a blob with 32 zeros) is the encoding of the owner principal.
-  2. The encoding of accounts with a non-default subaccount is the textual principal encoding of the concatenation of the owner principal bytes, the subaccount bytes with the leading zeros omitted, the length of the subaccount without the leading zeros (a single byte), and an extra byte `7F`<sub>16</sub>.
+- The encoding of the default account (the subaccount is null or a blob with 32 zeros) is the encoding of the owner principal.
+- The encoding of accounts with a non-default subaccount is the textual principal encoding of the concatenation of the owner principal bytes, the subaccount bytes with the leading zeros omitted, the length of the subaccount without the leading zeros (a single byte), and an extra byte `7F`<sub>16</sub>.
 
 In pseudocode:
 
@@ -250,17 +251,17 @@ shrink(bytes) = case bytes of
 
 ### Decoding
 
-Applications SHOULD decode textual representation as follows:
+Applications **should** decode textual representation as follows:
 
-  1. Decode the text as if it was a principal into `raw_bytes`, ignoring the principal length check (some decoders allow the principal to be at most 29 bytes long).
-  2. If `raw_bytes` do not end with byte `7F`<sub>16</sub>, return an account with `raw_bytes` as the owner and an empty subaccount.
-  3. If `raw_bytes` end with `7F`<sub>16</sub>:
-     1. Drop the last `7F`<sub>16</sub> byte.
-     2. Read the last byte `N` and drop it. If `N > 32` or `N = 0`, raise an error.
-     3. Take the last N bytes and strip them from the input.
-        If the first byte in the stripped sequence is zero, raise an error.
-        Prepend the bytes with (32 - N) zeros on the left to get a 32-byte subaccount.
-     4. Return an account with the owner being the rest of the input sequence as the owner and the subaccount being the byte array constructed in the previous step.
+- Decode the text as if it was a principal into `raw_bytes`, ignoring the principal length check (some decoders allow the principal to be at most 29 bytes long).
+- If `raw_bytes` do not end with byte `7F`<sub>16</sub>, return an account with `raw_bytes` as the owner and an empty subaccount.
+- If `raw_bytes` end with `7F`<sub>16</sub>:
+     - **Step 1:** drop the last `7F`<sub>16</sub> byte.
+     - **Step 2:** read the last byte `N` and drop it. If `N > 32` or `N = 0`, raise an error.
+     - **Step 3:** take the last N bytes and strip them from the input.
+        - If the first byte in the stripped sequence is zero, raise an error.
+        - Prepend the bytes with (32 - N) zeros on the left to get a 32-byte subaccount.
+     - **Step 4:** return an account with the owner being the rest of the input sequence as the owner and the subaccount being the byte array constructed in the previous step.
 
 In pseudocode:
 

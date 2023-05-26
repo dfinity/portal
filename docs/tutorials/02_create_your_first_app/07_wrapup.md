@@ -1,11 +1,11 @@
 ---
 sidebar_position: 6
-title: Step 7 - Conclusion
+title: 'Conclusion'
 ---
 
-# Wrap Up
+# Conclusion
 
- **🎉 You are done! 🎉**
+#### **🎉 You are done! 🎉**
 
 You have built a dapp fully on-chain (both backend and frontend).
 
@@ -15,8 +15,8 @@ If you would like to deploy this dapp to mainnet, you can follow the same steps 
 
 ## Tutorial takeaways
 
-* ICP dapps can host backend and frontend logic
-* ICP canister smart contracts can host data, which can be queried and manipulated
-* [IC SDK](../../developer-docs/setup/install/index.mdx) comes with default projects with frontend and backend canister smart contracts
-* IC SDK comes with Candid UI so developers can interact with backend canister smart contracts
-* Motoko can be used or building backend canister smart contracts
+* ICP dapps can host backend and frontend logic.
+* ICP canister smart contracts can host data, which can be queried and manipulated.
+* [IC SDK](../../developer-docs/setup/install/index.mdx) comes with default projects with frontend and backend canister smart contracts.
+* IC SDK comes with Candid UI so developers can interact with backend canister smart contracts.
+* Motoko can be used for building backend canister smart contracts.

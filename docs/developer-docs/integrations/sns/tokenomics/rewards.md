@@ -1,28 +1,31 @@
 ---
 sidebar_position: 2
 ---
-# SNS Rewards
+# SNS rewards
 
-## Background & goal
+## Overview
 
-* The goal of this article is to explain the design of the service nervous system (SNS) reward scheme.
-* The full potential of tokenization can be unlocked by a tokenized open governance system, where tokens can be locked to participate in voting. Anyone with locked tokens, including the users that were rewarded with tokens, can submit and vote on governance proposals for the dapp.
-* By participating in governance, developers, users, and other investors can collectively decide what new features should be implemented. As their tokens are locked, they will be incentivized to vote taking into consideration the future value of the tokens and the dapp.
-* This represents the first simple scheme for SNS rewards. Based on the collected experience from developers and the community, this can be enhanced in the future.
-* We consider two categories of rewards
+The goal of this article is to explain the design of the service nervous system (SNS) reward scheme.
+
+The full potential of tokenization can be unlocked by a tokenized open governance system, where tokens can be locked to participate in voting. Anyone with locked tokens, including the users that were rewarded with tokens, can submit and vote on governance proposals for the dapp.
+
+By participating in governance, developers, users, and other investors can collectively decide what new features should be implemented. As their tokens are locked, they will be incentivized to vote taking into consideration the future value of the tokens and the dapp. This represents the first simple scheme for SNS rewards. Based on the collected experience from developers and the community, this can be enhanced in the future.
+
+We consider two categories of rewards:
   * Voting rewards to incentivize users to take part in SNS governance.
   * User rewards to incentivize users to become early adopters and active users of the decentralized application (dapp) governed by the SNS.
-* The reward scheme is based on the voting rewards used in the [Network Nervous System](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a#:~:text=Network%20Nervous%20System%20overview,how%20to%20update%20this%20information.) (NNS) , which however can be flexibly configured by each SNS.
+
+The reward scheme is based on the voting rewards used in the [Network Nervous System](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a#:~:text=Network%20Nervous%20System%20overview,how%20to%20update%20this%20information.) (NNS) , which however can be flexibly configured by each SNS.
 
 ## Recap on NNS voting rewards
 
 The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, voting rewards are paid out on a regular basis (currently daily), based on an overall reward pool for that time period. Each neuron receives a pro-rata amount of that pool according to the voting power with which the neuron voted and in how many proposals the neuron participated. More precisely, this works as follows:
 
-* Determination of the total reward pool
+* Determination of the total reward pool:
   * For a time t between G (genesis time) and G + 8y the annualized reward as a percentage of total supply is R(t) = 5% + 5% [(G + 8y – t)/8y]²
   * For a time t after G+8y, we have R(t) = 5%.
   * The total pool of voting rewards for a given day is calculated as ICP supply (total supply of ICP tokens on that day) * R(t) / 365.25.
-* Voting power of neurons
+* Voting power of neurons:
   * Only neurons with a dissolve delay of more than 6 months are eligible for voting. The maximum dissolve delay is 8 years.
   * The voting power of a neuron is computed as `neuron_stake * dissolve_delay_bonus * age_bonus`
   * In particular the dissolve delay bonus and the age bonus are cumulative.
@@ -30,7 +33,7 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
   * The age bonus (ab) is a value between ab<sub>min</sub>=1 and ab<sub>max</sub>=1.25 and a linear function of the age of the neuron (capped at four years). A neuron starts aging when it enters a locked state. Aging is reset to 0 when a neuron enters a dissolving state.
   * The voting power is calculated when the proposal is made, not when the ballot is cast.
 
-* Allocation of reward pool to neurons
+* Allocation of reward pool to neurons:
   * The reward pool is allocated in proportion to the voting power of proposals that are settled on this day multiplied by the reward weight of the according proposal category.
     * Determine the set of proposals that are included in this reward period (typically a day): these are the proposals that are not yet settled with respect to voting rewards, and no longer open for voting.
     * The total voting power by neurons who were eligible for voting is added up.
@@ -76,9 +79,9 @@ There is a flag which activates the calculation and distribution of voting rewar
 
 ### Setting voting reward parameters
 
-Voting reward parameters are defined in the SNS governance canister and can be changed by proposal. Details on the data structure *VotingRewardsParameters* used in the implementation are [here](https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L726).
+Voting reward parameters are defined in the SNS governance canister and can be changed by proposal. Details on the data structure **VotingRewardsParameters** used in the implementation are [here](https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L726).
 
-In the following table we provide an overview of all relevant parameters of *VotingRewardsParameters*, linking the notation of this article to full names used in the implementation.
+In the following table we provide an overview of all relevant parameters of **VotingRewardsParameters**, linking the notation of this article to full names used in the implementation.
 
 |Parameter|Full name in *VotingRewardsParameters*|
 | --- | --- |
@@ -87,7 +90,7 @@ In the following table we provide an overview of all relevant parameters of *Vot
 |t<sub>start</sub>|*start_timestamp_seconds*|
 |t<sub>delta</sub>|*reward_rate_transition_duration_seconds*|
 
-When VotingRewardsParameters is not populated, voting rewards are disabled.
+When **VotingRewardsParameters** is not populated, voting rewards are disabled.
 
 In the following we provide an overview of the relevant parameters for the determination of voting power.
 

@@ -1,4 +1,6 @@
-# DEX Sample
+# Decentralized exchange (DEX) sample
+
+## Overview
 
 To enable DEFI applications on the IC, canisters need to interact with token canisters and the ledger canister. This sample dapp illustrates how to facilitate these interactions. You can see a quick introduction on [YouTube](https://youtu.be/fLbaOmH24Gs).
 
@@ -46,7 +48,7 @@ Request user’s balance on exchange for a specific token.
 
 It is the responsibility of the exchange to subtract fees from the trades. This is important because the exchange must pay fees for withdrawals and internal transfers.
 
-## Token Exchange Walkthrough
+## Token exchange walkthrough
 
 This section contains a detailed walkthrough of the core exchange functionalities. Most interactions require multiple steps and are simplified by using the provided frontend. Since the exchange canister functions are public, advanced users can use `dfx` to interact with the exchange.
 
@@ -60,7 +62,7 @@ The ledger canister provides a unique interface so that interactions with ICP ne
 
 -   To notify the exchange, the user calls `deposit` with the ICP token principal. The exchange will look into the user’s subaccount and adjust the user’s balance on the exchange. In a second step, the exchange will transfer the funds from the user subaccount to its default subaccount, where the exchange keeps all of its ICP.
 
-### Depositing Tokens
+### Depositing tokens
 
 There are a number of token standards in development (e.g. IS20, DFT, and DRC20); This sample uses DIP20.
 
@@ -68,11 +70,11 @@ There are a number of token standards in development (e.g. IS20, DFT, and DRC20)
 
 -   Similar to the ICP depositing, the user calls the `deposit` function of the exchange. The exchange then transfers the approved token funds to itself and adjusts the user’s exchange balance.
 
-### Placing Orders
+### Placing orders
 
-After depositing funds to the exchange, the user can place orders. An order consists of two tuples. `from: (Token1, amount1)` and `to: (Token2, amount2)`. These orders get added to the exchange. What happens to these orders is specific to the exchange implementation. This sample provides a simple exchange that only executes exactly matching orders. Be aware this is just a toy exchange, and the exchange functionality is just for completeness. Hint: The exchange can be greedy sometimes ;)
+After depositing funds to the exchange, the user can place orders. An order consists of two tuples. `from: (Token1, amount1)` and `to: (Token2, amount2)`. These orders get added to the exchange. What happens to these orders is specific to the exchange implementation. This sample provides a simple exchange that only executes exactly matching orders. Be aware this is just a toy exchange, and the exchange functionality is just for completeness. 
 
-### Withdrawing Funds
+### Withdrawing funds
 
 Compared to depositing funds, withdrawing funds is simpler. Since the exchange has custody of the funds, the exchange will send funds back to the user on `withdraw` requests. The internal exchange balances are adjusted accordingly.
 

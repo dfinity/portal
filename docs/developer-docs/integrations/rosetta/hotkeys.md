@@ -1,5 +1,6 @@
 # Hotkeys generation
 
+## Overview
 This page will explain how to generate a hotkey for neuron management.
 The recommended way to get hotkeys is to programmatically 
 generate them using the same process used in the public `ic` repository.
@@ -88,9 +89,9 @@ This is the public key you can use in Rosetta operations to identify your hotkey
 
 ---------
 
-## FAQ
+## Frequently asked questions
 
-- Why do I get *"Algorithm ed25519 not found"* while generating the PEM file?
+- #### Why do I get "Algorithm ed25519 not found" while generating the PEM file?
 
 The version of OpenSSL included in MacOS doesn't support ed25519 by default. 
 You may have to install another version of OpenSSL (for example through *brew*), or run the command from a Linux machine.
