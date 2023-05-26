@@ -9,7 +9,7 @@ We will be relying on the "Basic Bitcoin" example in the [examples repository](h
 which internally leverages the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)
 and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api) of the Internet Computer.
 
-For deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin Integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
+For deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This tutorial has the **same smart contract** written in different programming l
 
 You can clone and deploy either one, as they both function in the same way.
 
-- **Option 1:** clone and build the smart contract in **Motoko** 
+- **Option 1:** clone and build the smart contract in **Motoko**:
 
 ```bash
 git clone https://github.com/dfinity/examples
@@ -31,7 +31,7 @@ cd examples/motoko/basic_bitcoin
 git submodule update --init --recursive
 ```
 
-- **Option 2:** clone and build the smart contract in **Rust** 
+- **Option 2:** clone and build the smart contract in **Rust**:
 
 ```bash
 git clone https://github.com/dfinity/examples
@@ -45,9 +45,9 @@ If you choose Rust and are using MacOS, you'll need to install Homebrew and run 
 
 ### Acquire cycles to deploy
 
-Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles) (the equivalent of "gas" in other blockchains). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
+Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles) (the equivalent of "gas" in other blockchains). You can get free cycles from the [cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md).
 
-### Deploy the smart contract to the Internet Computer. 
+### Deploy the smart contract to the Internet Computer
 
 ```bash
 dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
@@ -84,7 +84,7 @@ In the output above, to see the Candid Web UI for your bitcoin canister, you wou
 
 ![Candid web UI for bitcoin canister](_attachments/candid-web-ui-bitcoin-canister.webp)
 
-## Step 2: Generating a Bitcoin Address
+## Step 2: Generating a Bitcoin address
 
 Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these
 addresses can be generated from an ECDSA public key. The example code
@@ -126,7 +126,7 @@ You should see something similar to this:
 Once the transaction has at least one confirmation, which can take a few minutes,
 you'll be able to see it in your canister's balance.
 
-## Step 4: Checking Your Bitcoin Balance
+## Step 4: Checking your Bitcoin balance
 
 You can check a Bitcoin address's balance by using the `get_balance` endpoint on your canister.
 

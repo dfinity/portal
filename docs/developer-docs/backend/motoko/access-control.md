@@ -24,7 +24,7 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 Before starting the guide, verify the following:
 
-- [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+- [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 - [x] You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 

@@ -16,7 +16,7 @@ This dapp supports the following function calls:
 
 Before starting the guide, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have stopped the local canister execution environment provided by `dfx`.
 
@@ -48,7 +48,7 @@ To modify the default template:
 
     In looking at this sample dapp, you might notice the following key elements:
 
-    -   The code defines `Name` and `Phone` as custom Text types. Creating user-defined types improves the readability of the code.
+    -   The code defines `Name` and `Phone` as custom text types. Creating user-defined types improves the readability of the code.
 
     -   The `insert` function is an update call and the `lookup` function is a query call.
 

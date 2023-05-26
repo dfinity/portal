@@ -345,7 +345,7 @@ secret key corresponding to the end-user’s
 #### ingress message history
 
 The **ingress message history** records the current status of every
-[Ingress message](#ingress-message) processed by a
+[ingress message](#ingress-message) processed by a
 [replica](#replica) and keeps track of whether messages were
 successfully included in the [induction
 pool](#induction-pool) and the responses of executed
@@ -437,9 +437,9 @@ reduces this age back to zero. The dissolve delay parameter of a
 non-dissolving (aka "aging") neuron cannot be zero, because such a
 neuron would have to already be dissolved.
 
-#### network nervous system (NNS)
+#### Network Nervous System (NNS)
 
-The **network nervous system** (NNS) is a collection of [system
+The **Network Nervous System** (NNS) is a collection of [system
 canisters](#system-canister) (aka "NNS canisters") assembled
 into a system that governs all aspects of the [Internet
 Computer](#internet-computer-ic).
@@ -496,7 +496,7 @@ A **node operator** (NO) is a non-canister
 [nodes](#node) to/from the
 [IC](#internet-computer-ic-ic).
 
-[node providers](#node-provider) come in possession of
+[Node providers](#node-provider) come in possession of
 Hardware Security Modules (HSM), and register the HSMs with the
 [NNS](#network-nervous-system-(NNS)). (The HSM registration
 process consists essentially in deriving an IC principal ID from the key

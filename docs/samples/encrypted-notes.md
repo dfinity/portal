@@ -65,9 +65,9 @@ This map is used for managing user devices, as explained next. To register a dev
 
 Adding a device:
 
--   **Device registration:** If this identity is already known, a new device will remain unsynced at first; at this time, only the `alias` and `publickey` of this device will be added to the Encrypted Notes canister.
+-   **Device registration:** if this identity is already known, a new device will remain unsynced at first; at this time, only the `alias` and `publickey` of this device will be added to the Encrypted Notes canister.
 
--   **Device synchronization:** Once an unsynced device obtains the list of all unsynced devices for this II, it will encrypt the symmetric AES *secret key* under each unsynced device’s public key. Afterwards, the unsynced device obtains the encrypted symmetric AES *secret key*, decrypts it, and then uses it to decrypt the existing notes stored in the encrypted notes canister.
+-   **Device synchronization:** once an unsynced device obtains the list of all unsynced devices for this II, it will encrypt the symmetric AES *secret key* under each unsynced device’s public key. Afterwards, the unsynced device obtains the encrypted symmetric AES *secret key*, decrypts it, and then uses it to decrypt the existing notes stored in the encrypted notes canister.
 
 Once authenticated with II:
 
