@@ -314,7 +314,7 @@ Caution hint
 ## Links
 Links that are referenced within the developer docs should use the following format and structure:
 - Capitalization of link titles should follow the same format and rules as described in the previous capitalization section; only the first word and proper nouns are capitalized. For example:
-    - [Read Roman’s blog post on effective Rust canisters](link.example)
+    - [Read Roman’s blog post on effective Rust canisters](link.example).
     - [Demonstrating trust](link.example). 
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
