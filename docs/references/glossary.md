@@ -7,7 +7,7 @@
 A ledger **account** is a set of entries in the [ ledger
 canister](#ledger-canister), which is a smart contract that
 mimics the guise and behavior of a regular banking account, whose unit
-of measure is [ ICP](#icp) (Internet Computer Protocol)
+of measure is [ICP](#icp) (Internet Computer Protocol)
 utility tokens. Ledger accounts are owned by [
 principals](#principals), and their ownerships do not change
 over time. Every account on the ledger has a positive [
@@ -61,10 +61,9 @@ account (see [fiduciary](#fiduciary)).
 #### blockchain
 
 A **blockchain** is a growing list of cryptographically linked blocks,
-agreed upon by [consensus](#consensus). On the [ Internet
-Computer](#internet-computer-ic) every [
-subnet](#subnet) is a blockchain and these blockchains
-interact using [ chain key cryptography](#chain-key).
+agreed upon by [consensus](#consensus). On the [Internet
+Computer](#internet-computer-ic) every [subnet](#subnet) is a blockchain and these blockchains
+interact using [chain key cryptography](#chain-key).
 
 #### boundary nodes
 
@@ -107,7 +106,7 @@ languages.
 #### canister
 
 A **canister** is a type of smart contract that bundles **code** and
-**state**. A canister can be deployed as a [ smart
+**state**. A canister can be deployed as a [smart
 contract](#smart-contract) on the [Internet
 Computer](#internet-computer-ic) and accessed over the Internet.
 
@@ -131,7 +130,7 @@ be used to interact with it.
 
 #### canister signature
 
-A **canister signature** uses a signature scheme based on [ certified
+A **canister signature** uses a signature scheme based on [certified
 variables](#certified-variables). Public “keys” include a
 [canister id](#canister-identifier) plus a seed (so that
 every [canister](#canister) has many public keys); signatures
@@ -237,8 +236,7 @@ on the Internet Computer by a unique identifier.
 
 The **dissolve delay** is the amount of time that
 [neurons](#neuron) must spend [
-dissolving](#dissolving-state) before becoming [
-disolved](#dissolved-state).
+dissolving](#dissolving-state) before becoming [dissolved](#dissolved-state).
 
 #### dissolved state
 
@@ -256,8 +254,7 @@ zero.
 A **dissolving state** is a [neuron](#neuron) state that
 follows immediately after its owner issues a "start dissolving" command,
 and continues until a "stop dissolving" command is issued, or until the
-dissolve delay timer runs out. The [age of a dissolving
-neuron](#neuron-age) is considered to be zero.
+dissolve delay timer runs out. The [age of a dissolving neuron](#neuron-age) is considered to be zero.
 
 ## E
 
@@ -277,8 +274,7 @@ be useful to think of it as the **owner** of the account, with the caveat
 that it may or may not be the [beneficiary](#beneficiary) of
 the account. The [neuron account](#neuron-account) is a
 prominent example of an account for which the beneficiary and fiduciary
-do not coincide (the fiduciary is the [governance
-canister](#governance-canister) while the beneficiary is the
+do not coincide (the fiduciary is the [governance canister](#governance-canister) while the beneficiary is the
 neuron holder). The fiduciary of a (ledger) account does not change over
 time.
 
@@ -292,8 +288,7 @@ DeFi canister’s services.
 
 #### governance canister
 
-The **governance canister** is a [system
-canister](#system-canister) that implements the
+The **governance canister** is a [system canister](#system-canister) that implements the
 [NNS](#network-nervous-system-(NNS)) governance system, i.e.,
 among others, stores and manages [neurons](#neuron) and
 [proposals](#proposal), and implements the NNS
@@ -324,8 +319,7 @@ An **identity** is a byte string that is used to identify an entity,
 such as a [principal](#principal), that interacts with the
 [Internet Computer](#internet-computer-ic). For users, the
 identity is the SHA-224 hash of the DER-encoded public key of the user.
-[The Internet Computer interface
-specification](/references/ic-interface-spec.md) has more
+[The Internet Computer interface specification](/references/ic-interface-spec.md) has more
 detail.
 
 #### Internet Identity
@@ -461,7 +455,7 @@ To provide the stability required for responsible governance, neurons
 need to store ("stake") a certain amount of [ICP](#icp) in
 order to be able to make and vote on proposals. This
 [locks](#non-dissolving-state) the tokens for a period of
-time, after which it starts [ dissolving](#dissolving-state).
+time, after which it starts [dissolving](#dissolving-state).
 The ICP stake of a neuron is stored in a [neuron
 account](#neuron-account). The neuron owner has the right to
 propose and vote on governance issues, and is granted rewards for
@@ -484,8 +478,7 @@ The **neuron age** is a [neuron](#neuron) parameter roughly
 indicative of the time that has passed since its creation or since when
 it last entered into a [non-dissolving
 state](#non-dissolving-state). Calculation of a neuron’s age
-needs to take into account whether the neuron has spent time [
-dissolving](#dissolving-state) or
+needs to take into account whether the neuron has spent time [dissolving](#dissolving-state) or
 [dissolved](#dissolved-state), both of which reset this
 parameter.
 
@@ -686,7 +679,7 @@ another; it can be of three types:
 
 A **transfer transaction** is the process of transferring ICP from any
 regular ledger [account](#account) (i.e. any ledger account
-except the [ ICP supply account](#icp-supply-account)) to
+except the [ICP supply account](#icp-supply-account)) to
 another regular ledger account.
 
 ## U
