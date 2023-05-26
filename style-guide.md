@@ -120,7 +120,7 @@ There are 4 types of headings used throughout the IC developer docs:
 ### Heading usage
 
 | Heading size | Usage |
-
+|--------------|-------|
 | Heading 1    | Page title only; not used within the page's content.|
 | Heading 2    | Used for primary topics amongst the page; used for consistent page headings such as 'Overview', 'Prerequisites', 'Conclusion' and 'References'.|
 | Heading 3    | Used for subtopics under primary topics amongst the page or user steps within a tutorial. Note; there are some instances where using Heading 2 for a tutorial step is more fitting, such as when a step contains several different concepts or subtopics. Please refer to the writing a tutorial section below for further information.|
