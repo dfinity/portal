@@ -35,7 +35,7 @@ The ledger canister keeps track of **accounts**:
 
 So, there are two steps to obtain the account corresponding to a principal and a subaccount identifier:
 
--   First hash using SHA224 the concatenation of domain separator `\x0Aaccount-id`, the principal and the subaccount identifier. Here, the domain separator consists of a string (here \"account-id\") prepended by a single byte equal to the length of the string (here, \\x0A).
+-   First, hash using SHA224 the concatenation of domain separator `\x0Aaccount-id`, the principal and the subaccount identifier. Here, the domain separator consists of a string (here \"account-id\") prepended by a single byte equal to the length of the string (here, \\x0A).
 
 -   Then, prepend with the (big endian representation of the) CRC32 of the resulting hash value.
 
