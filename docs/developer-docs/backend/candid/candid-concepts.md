@@ -1,6 +1,7 @@
 # What is Candid?
 
-Candid is an *interface description language*. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a **canister** that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic, and allows inter-operation between services and frontends written in different programming languages, including Motoko, Rust, and JavaScript.
+## Overview
+Candid is an **interface description language**. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a **canister** that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic, and allows inter-operation between services and frontends written in different programming languages, including Motoko, Rust, and JavaScript.
 
 A typical interface description in Candid might look like this:
 
@@ -13,9 +14,15 @@ service counter : {
 }
 ```
 
-In this example, the described service—`counter`—consists of the following public methods. - The `add` and `subtract` methods change the value of a counter. - The `get` method reads the current value of a counter. - The `subscribe` method can be used to invoke another function, for example, to invoke a notification callback method each time the counter value changes.
+In this example, the described service `counter` consists of the following public methods:
 
-As this example illustrates, every method has a sequence of argument and result types. A method can also include annotations—like the `query` notation shown in this example—that are specific to the Internet Computer.
+- The `add` and `subtract` methods change the value of a counter. 
+
+- The `get` method reads the current value of a counter. 
+
+- The `subscribe` method can be used to invoke another function, for example, to invoke a notification callback method each time the counter value changes.
+
+As this example illustrates, every method has a sequence of argument and result types. A method can also include annotations, like the `query` notation shown in this example, that are specific to the Internet Computer.
 
 Given this simple interface description, it is possible for you to interact with this `counter` service directly from the command line or through a web-based frontend or programmatically from a Rust program or through another programming or scripting language.
 
@@ -55,15 +62,15 @@ Candid is a strongly typed system with a set of types that canonically cover mos
 
 -   The special `null`, `reserved` and `empty` types.
 
-All types are described in detail in the [Reference](/references/candid-ref.md) section.
+All types are described in detail in the [reference](/references/candid-ref.md) section.
 
-The philosophy behind this set of types is that they are sufficient to describe the *structure* of data, so that information can be encoded, passed around and decoded, but intentionally do not describe *semantic* constraints beyond what’s needed to describe the representation. For example, there’s no way to express that a number should be even, that a vector has a certain length, or that the elements of a vector are sorted.
+The philosophy behind this set of types is that they are sufficient to describe the **structure** of data, so that information can be encoded, passed around and decoded, but intentionally do not describe **semantic** constraints beyond what’s needed to describe the representation. For example, there’s no way to express that a number should be even, that a vector has a certain length, or that the elements of a vector are sorted.
 
 Candid supports this set of types to allow a natural mapping of data types based on reasonable, canonical choices suitable for each host language, whether you are writing your code in Motoko, Rust, JavaScript, or some other language.
 
 ## Candid service descriptions
 
-Once you are familiar with the Candid types, you can use them to describe a service. A Candid service description file—a `.DID` file—can either be written by hand or generated from a service implementation.
+Once you are familiar with the Candid types, you can use them to describe a service. A Candid service description file (a `.DID` file) can either be written by hand or generated from a service implementation.
 
 Before you explore how to generate service descriptions for a specific host language, let’s take a closer look at the structure of a sample service description and its constituent parts.
 
@@ -83,9 +90,9 @@ service : {
 
 This example describes a service that supports a single public method called `ping`. Method names can be arbitrary strings, and you can quote them (`"method with spaces"`) if they are not plain identifiers.
 
-Methods declare a *sequence* of arguments and result types. In the case of this `ping` method, no arguments are passed and no results are returned, so the empty sequence \`() \` is used for both arguments and results.
+Methods declare a **sequence** of arguments and result types. In the case of this `ping` method, no arguments are passed and no results are returned, so the empty sequence \`() \` is used for both arguments and results.
 
-Now that you’ve seen the simplest case, let’s consider a slightly more complex service description. This service consists of two methods—`reverse` and `divMod`—and each method include a sequence of argument and result types:
+Now that you’ve seen the simplest case, let’s consider a slightly more complex service description. This service consists of two methods, `reverse` and `divMod`, and each method includes a sequence of argument and result types:
 
 ``` candid
 service : {
@@ -100,7 +107,7 @@ The method `divMod` expects and returns two values, all of type `nat`.
 
 ## Naming arguments and results
 
-In the previous example, the signature for the `divMod` method includes names for the argument and result values. Naming the arguments or results for a method is purely for documentation purposes. The name you use does not change the method’s type or the values being passed. Instead, arguments and results are identified by their *position*, independent of the name.
+In the previous example, the signature for the `divMod` method includes names for the argument and result values. Naming the arguments or results for a method is purely for documentation purposes. The name you use does not change the method’s type or the values being passed. Instead, arguments and results are identified by their **position**, independent of the name.
 
 In particular, Candid does not prevent you from changing the type to:
 
@@ -110,7 +117,7 @@ In particular, Candid does not prevent you from changing the type to:
 
 or passing the above `divMod` to a service expecting a method that returns `mod` first.
 
-This is thus very different from named *record* fields, which are semantically relevant.
+This is thus very different from named **record** fields, which are semantically relevant.
 
 ## Reusing complex types
 
@@ -129,7 +136,7 @@ service address_book : {
 }
 ```
 
-These type definitions merely abbreviate an *existing* type, they do not define a new type. It does not matter whether you use `address` in the function signature, or write out the records. Also, two abbreviations with different names but equivalent definitions, describe the same type and are interchangeable. In other words, Candid uses *structural* typing.
+These type definitions merely abbreviate an **existing** type, they do not define a new type. It does not matter whether you use `address` in the function signature, or write out the records. Also, two abbreviations with different names but equivalent definitions, describe the same type and are interchangeable. In other words, Candid uses **structural** typing.
 
 ## Specifying a query method
 
@@ -142,13 +149,13 @@ service address_book : {
 }
 ```
 
-This annotation indicates that the `get_address` method can be invoked as an IC **query call**. As discussed in [Query and update methods](/concepts/canisters-code.md#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the IC.
+This annotation indicates that the `get_address` method can be invoked as an IC **query call**. As discussed in [query and update methods](/concepts/canisters-code.md#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with the IC.
 
 ## Encoding and decoding
 
 The point of Candid is to allow seamless invocation of service methods, passing arguments encoded to a binary format and transferred by an underlying transportation method (such as messages into or within the Internet Computer), and decoded on the other side.
 
-As a Candid user, you do not have to worry about the details of this binary format. If you plan to *implement* Candid yourself (for example, to support a new host language), you can consult the [Candid specification](https://github.com/dfinity/candid) for details. However, some aspects of the format are worth knowing:
+As a Candid user, you do not have to worry about the details of this binary format. If you plan to **implement** Candid yourself (for example, to support a new host language), you can consult the [Candid specification](https://github.com/dfinity/candid) for details. However, some aspects of the format are worth knowing:
 
 -   The Candid binary format starts with `DIDL…` (or, in hex, `4449444c…`). If you see this in some low-level log output, you are very likely observing a Candid-encoded value.
 
@@ -162,7 +169,7 @@ As a Candid user, you do not have to worry about the details of this binary form
 
 ## Service upgrades
 
-Services evolve over time: They gain new methods, existing methods return more data, or expect additional arguments. Usually, developers want to do that without breaking existing clients.
+Services evolve over time; they gain new methods, existing methods return more data, or expect additional arguments. Usually, developers want to do that without breaking existing clients.
 
 Candid supports such evolution by defining precise rules that indicate when the new service type will still be able to communicate with all other parties that are using the previous interface description. The underlying formalism is that of *subtyping*.
 
@@ -210,7 +217,7 @@ service counter : {
 
 The main purpose of Candid is to connect programs written in some host language—Motoko, Rust, or JavaScript, for example—with the IC. In most cases, therefore, you do not have to deal with your program data as Candid values. Instead, you work with a host language like JavaScript using familiar JavaScript values then rely on Candid to transparently transport those values to a canister written in Rust or Motoko. The canister receiving the values treats them as native Rust or Motoko values.
 
-However, there are some cases—for example, when logging, debugging, or interacting with a service on the command-line—where it is useful to see the Candid values directly in a human-readable form. In these scenarios, you can use the *textual presentation* for Candid values.
+However, there are some cases, for example, when logging, debugging, or interacting with a service on the command-line, where it is useful to see the Candid values directly in a human-readable form. In these scenarios, you can use the **textual presentation** for Candid values.
 
 The syntax is similar to that for Candid types. For example, a typical textual presentation for a Candid value might look like this:
 
@@ -225,9 +232,8 @@ The syntax is similar to that for Candid types. For example, a typical textual p
 })
 ```
 
-<div class="note">
-
-The Candid *binary* format does not include the actual field names, merely numeric *hashes*. So pretty-printing such a value without knowledge of the expected type will not include the field names of records and variants. The above value might then be printed as follows:
+:::info 
+The Candid **binary** format does not include the actual field names, merely numeric **hashes**. So pretty-printing such a value without knowledge of the expected type will not include the field names of records and variants. The above value might then be printed as follows:
 
 ``` candid
 (record {
@@ -238,11 +244,11 @@ The Candid *binary* format does not include the actual field names, merely numer
 })
 ```
 
-</div>
+:::
 
 ## Generating service descriptions
 
-In the [section above](#candid-service-descriptions), you learned how to write a Candid service description from scratch. But often, that is not even needed! Depending on the language you use to implement your service, you can get the Candid service description generated from your code.
+In the [section above](#candid-service-descriptions), you learned how to write a Candid service description from scratch. But often, that is not even needed. Depending on the language you use to implement your service, you can get the Candid service description generated from your code.
 
 For example, in Motoko, you can write a canister like this:
 
@@ -262,4 +268,4 @@ In other languages, like Rust or C, you can still develop your service using the
 
 For examples of how to write Candid service descriptions for Rust programs, see the [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/index.md).
 
-Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [Supported types](/references/candid-ref.md) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.
+Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [supported types](/references/candid-ref.md) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.

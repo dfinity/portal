@@ -1,9 +1,11 @@
 ---
 sidebar_position: 3
 ---
-# Using a Wallet
+# Using a wallet
 
-As discussed in [Tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+## Overview
+
+As discussed in [tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not user or developer principals. Because only canisters require and consume cycles—to perform operations and to pay for the resources they use—users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. Because the cycles wallet holds the cycles required to perform operations such as creating new canisters, these operations are executed using the canister principal for the cycles wallet instead of your user principal.
 
@@ -17,11 +19,11 @@ To check the identity you are currently using, run the following command:
 
     dfx identity whoami
 
-## Controller and Custodian Roles
+## Controller and custodian roles
 
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
-:::note
+:::info
 The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a wallet-internal role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
 :::
 
@@ -55,7 +57,7 @@ A principal assigned to the **custodian** role can only perform a subset of cycl
 
 Authorizing a principal as a custodian does not automatically grant the principal access to a cycles wallet. The identity assigned to the custodian role must also be assigned a cycles wallet principal. For example, if you authorize the identity `alice_custodian` as a custodian of a cycles wallet (`rwlgt-iiaaa-aaaaa-aaaaa-cai`) in a local project, that user would also need to be assigned to use that wallet with the `dfx identity set-wallet rwlgt-iiaaa-aaaaa-aaaaa-cai` command.
 
-## Create a Cycles Wallet
+## Create a cycles wallet
 
 If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
 
@@ -63,7 +65,7 @@ If you are deploying on the Internet Computer, you typically create your cycles 
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
-## Check the Cycle Balance
+## Check the cycle balance
 
 In the local canister execution environment or with a cycles wallet on the Internet Computer, you can use the `dfx wallet balance` command or the `wallet_balance` method to check the current cycle balance.
 
@@ -73,13 +75,13 @@ If you are doing local development, you can use the `dfx wallet balance` command
 
 To check the cycles balance in a local project:
 
-1.  Open a terminal and navigate to the root directory of the project.
+- #### Step 1:  Open a terminal and navigate to the root directory of the project.
 
-2.  Start the local canister execution environment by running the following command:
+- #### Step 2:  Start the local canister execution environment by running the following command:
 
         dfx start --background
 
-3.  Display the cycles balance from the cycles wallet associated with the currently-selected identity by running the following command:
+- #### Step 3:  Display the cycles balance from the cycles wallet associated with the currently-selected identity by running the following command:
 
         dfx wallet balance
 
@@ -93,13 +95,13 @@ If you have deployed a cycles wallet on the Internet Computer, you can use the `
 
 To check the cycles balance on the Internet Computer:
 
-1.  Open a terminal and navigate to a directory that contains a `dfx.json` configuration file.
+- #### Step 1:  Open a terminal and navigate to a directory that contains a `dfx.json` configuration file.
 
-2.  Check your connection to the Internet Computer by running the following command:
+- #### Step 2:  Check your connection to the Internet Computer by running the following command:
 
         dfx ping ic
 
-3.  Display the cycle balance from the cycles wallet associated with the currently-selected identity by running the following command:
+- #### Step 3:  Display the cycle balance from the cycles wallet associated with the currently-selected identity by running the following command:
 
         dfx wallet --network ic balance
 
@@ -107,7 +109,7 @@ To check the cycles balance on the Internet Computer:
 
         67.992 TC (trillion cycles).
 
-### Call the cycles wallet\_balance method
+#### Call the cycles `wallet_balance` method
 
 You can also check the cycles balance by calling the `wallet_balance` method in the cycles wallet canister directly. For example, if your principal is a controller for the `h5aet-waaaa-aaaab-qaamq-cai` cycles wallet, you can check the current cycle balance by running the following command:
 
@@ -117,11 +119,11 @@ The command returns the balance using Candid format as a record with an amount f
 
     (record { 3_573_748_184 = 6_895_656_625_450 })
 
-## Other dfx-supported Wallet Functions
+## Other dfx-supported wallet functions
 
 The cycles wallet supports a lot more functions through dfx. For a full list of supported operations, see the [dfx wallet reference](/references/cli-reference/dfx-wallet.md).
 
-## Additional Methods in the Default Cycles Wallet
+## Additional methods in the default cycles wallet
 
 The default cycles wallet canister includes additional methods that are not exposed as `dfx wallet` commands. The additional methods support more advanced cycles management tasks such as creating new canisters and managing events.
 

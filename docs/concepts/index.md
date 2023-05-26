@@ -14,6 +14,6 @@ If you want to get right to developing code, though, you can skip this introduct
 
 If you are looking for more introductory information, check out the following related resources:
 
-- [Overview of the Internet Computer (video)](https://www.youtube.com/watch?v=XgsOKP224Zw)
+- [Overview of the Internet Computer (video)](https://www.youtube.com/watch?v=XgsOKP224Zw).
 
-- [Introducing Canisters — An Evolution of Smart Contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ)
+- [Introducing canisters — an evolution of smart contracts (video)](https://www.youtube.com/watch?v=LKpGuBOXxtQ).

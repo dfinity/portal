@@ -1,6 +1,10 @@
-# Accept cycles from a wallet
+# 7: Accepting cycles from a wallet
 
-When you are doing local development, you can use the default wallet in your project to send cycles and check your cycle balance. But what about the canisters that need to receive and use those cycles, e.g. to execute their functions and provide services to users? This tutorial provides a simple example to illustrate how you might add the functions to receive cycles and check your cycle balance to the default template program.
+## Overview
+
+When you are doing local development, you can use the default wallet in your project to send cycles and check your cycle balance. But what about the canisters that need to receive and use those cycles, e.g. to execute their functions and provide services to users?
+
+This guide provides a simple example to illustrate how you might add the functions to receive cycles and check your cycle balance to the default template program.
 
 This example consists of the following:
 
@@ -12,41 +16,41 @@ This example consists of the following:
 
 -   The `owner` function returns the principal used by the message caller.
 
-## Before you begin
+## Prerequisites
 
-Before starting the tutorial, verify the following:
+Before starting the guide, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/deploy-locally.md#download-and-install).
+-   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [Install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
+-   [x] You have installed the Visual Studio Code plugin for Motoko as described in [install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
 
--   You have stopped any local canister execution environment running on the local computer.
+-   [x] You have stopped any local canister execution environment running on the local computer.
 
 ## Create a new project
 
 To create a new project directory for testing access control and switching user identities:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Change to the folder you are using for your Internet Computer projects, if you are using one.
+- #### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
 
-3.  Create a new project by running the following command:
+- #### Step 3:  Create a new project by running the following command:
 
         dfx new cycles_hello
 
-4.  Change to your project directory by running the following command:
+- #### Step 4:  Change to your project directory by running the following command:
 
         cd cycles_hello
 
 ## Modify the default program
 
-For this tutorial, you are going to modify the template source code to include new functions for accepting cycles and checking the cycle balance.
+For this guide, you are going to modify the template source code to include new functions for accepting cycles and checking the cycle balance.
 
 To modify the default program:
 
-1.  Open the `src/cycles_hello/main.mo` file in a text editor and delete the existing content.
+- #### Step 1:  Open the `src/cycles_hello/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste [this code](./_attachments/cycles-main.mo) into the file.
+- #### Step 2:  Copy and paste [this code](./_attachments/cycles-main.mo) into the file.
 
     Let’s take a look at a few key elements of this program:
 
@@ -58,7 +62,7 @@ To modify the default program:
 
     -   The `msg.caller` identifies the principal associated with the call.
 
-3.  Save your changes and close the `main.mo` file to continue.
+- #### Step 3:  Save your changes and close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
@@ -66,11 +70,11 @@ Before you can build the `access_hello` project, you need to connect to the cani
 
 To start the local canister execution environment:
 
-1.  Open a new terminal window or tab on your local computer.
+- #### Step 1: Open a new terminal window or tab on your local computer.
 
-2.  Navigate to the root directory for your project, if necessary.
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
-3.  Start the local canister execution environment on your machine by running the following command:
+- #### Step 3:  Start the local canister execution environment on your machine by running the following command:
 
         dfx start --clean --background
 
@@ -82,9 +86,9 @@ After you connect to the local canister execution environment, you can register,
 
 To deploy the dapp locally:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Register, build, and deploy your dapp by running the following command:
+- #### Step 2:  Register, build, and deploy your dapp by running the following command:
 
         dfx deploy --argument '(360000000000)'
 
@@ -117,7 +121,7 @@ After you have deployed the dapp on your local canister execution environment, y
 
 To test the dapp:
 
-1.  Check the principal for the `default` user identity by running the following command:
+- #### Step 1:  Check the principal for the `default` user identity by running the following command:
 
         dfx canister call cycles_hello owner
 
@@ -127,7 +131,7 @@ To test the dapp:
 
     If you haven’t made changes to the identity you were using to run the `dfx deploy` command, you should get the same principal by running the `dfx identity get-principal` command. This is important because you must be the owner of the wallet canister to perform certain tasks such as sending cycles or granting other **custodian** identities permission to send cycles.
 
-2.  Check the initial wallet cycle balance by running the following command:
+- #### Step 2:  Check the initial wallet cycle balance by running the following command:
 
         dfx canister call cycles_hello wallet_balance
 
@@ -135,11 +139,11 @@ To test the dapp:
 
         (0)
 
-3.  Send some cycles from your default wallet canister to the `cycles_hello` canister using the canister principal by running a command similar to the following:
+- #### Step 3:  Send some cycles from your default wallet canister to the `cycles_hello` canister using the canister principal by running a command similar to the following:
 
         dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_send '(record { canister = principal "rrkah-fqaaa-aaaaa-aaaaq-cai"; amount = (256000000000:nat64); } )'
 
-4.  Call the `wallet_balance` function to see that the `cycles_hello` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
+- #### Step 4:  Call the `wallet_balance` function to see that the `cycles_hello` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
 
         dfx canister call cycles_hello wallet_balance
 
@@ -147,7 +151,7 @@ To test the dapp:
 
         (256_000_000_000)
 
-5.  Call the `wallet_balance` function to see the number of cycles in your default wallet by running a command similar to the following:
+- #### Step 5:  Call the `wallet_balance` function to see the number of cycles in your default wallet by running a command similar to the following:
 
         dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
 
@@ -155,13 +159,13 @@ To test the dapp:
 
         (record { 3_573_748_184 = 97_738_624_621_042 })
 
-    For this simple tutorial, cycles are only consumed from the balance in the default wallet canister, not from the `cycles_hello` canister.
+    For this simple guide, cycles are only consumed from the balance in the default wallet canister, not from the `cycles_hello` canister.
 
-6.  Call the `greet` function by running a command similar to the following:
+- #### Step 6:  Call the `greet` function by running a command similar to the following:
 
         dfx canister call cycles_hello greet '("from DFINITY")'
 
-7.  Rerun the call to the `wallet_balance` function to see the number of cycles deducted from your default wallet:
+- #### Step 7:  Rerun the call to the `wallet_balance` function to see the number of cycles deducted from your default wallet:
 
         dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
 
@@ -175,22 +179,17 @@ After you finish experimenting with the program, you can stop the local canister
 
 To stop the local canister execution environment:
 
-1.  In the terminal that displays the operations, press Control-C to interrupt the process.
+- #### Step 1:  In the terminal that displays the operations, press Control-C to interrupt the process.
 
-2.  Stop the local canister execution environment by running the following command:
+- #### Step 2:  Stop the local canister execution environment by running the following command:
 
         dfx stop
 
-## Want to learn more?
+## Resources
 
 If you are looking for more information about working with cycles, check out the following related resources:
 
--   [Tokens and cycles (overview)](/concepts/tokens-cycles.md)
-
--   [dfx identity (command reference)](/references/cli-reference/dfx-identity.md)
-
-<!-- -   [Set an identity to own a canister (how-to)](../working-with-canisters#set-owner) -->
-
--   [Managing cycles (language reference)](/motoko/main/cycles.md)
-
--   [ExperimentalCycles (base module)](/motoko/main/base/ExperimentalCycles.md)
+-   [dfx identity (Command reference)](/references/cli-reference/dfx-identity.md).
+-   [ExperimentalCycles (Base module)](/motoko/main/base/ExperimentalCycles.md).
+-   [Managing cycles (Motoko language reference)](/motoko/main/cycles.md).
+-   [Tokens and cycles (Overview)](/concepts/tokens-cycles.md).
