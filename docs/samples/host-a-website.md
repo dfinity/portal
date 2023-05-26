@@ -1,28 +1,31 @@
-# Hosting a Static Website on the Internet Computer
+# Hosting a static website on the Internet Computer
 
-Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [Faucet Quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Network Deployment](https://smartcontracts.org/docs/current/developer-docs/quickstart/network-quickstart) guide.
+## Overview
+
+## Prerequisites 
+
+- [x] Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [faucet quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
 
 ## Set up your project
 
 Let’s create a simple static website, and then set it up to deploy with dfx.
 
-1.  Create a folder named static-ic-website
+### Step 1: Create a folder named `static-ic-website`.
 
-2.  In static-ic-website, create a new folder, named assets.
+### Step 2: In static-ic-website, create a new folder, named assets.
 
-3.  Inside your assets folder, create 4 files
+### Step 3: Inside your assets folder, create 4 files:
 
     -   index.html
-
     -   page-2.html
-
     -   script.js
-
     -   style.css
 
 ## Add some content
 
-Let’s start with index.html. Paste the following code into your file:
+Let’s start with index.html. 
+
+### Step 4: Paste the following code into your file:
 
 **index.html**
 
@@ -44,7 +47,7 @@ Let’s start with index.html. Paste the following code into your file:
     </body>
     </html>
 
-Next, open up page-2.html and add this content.
+### Step 5: Next, open up `page-2.html` and add this content.
 
 **page-2.html**
 
@@ -63,14 +66,14 @@ Next, open up page-2.html and add this content.
     </body>
     </html>
 
-Then, add some simple logic to script.js.
+### Step 6: Then, add some simple logic to `script.js`.
 
 **script.js**
 
     document.querySelector("#dynamic-content").innerText =
      "This paragraph is dynamically rendered using JavaScript";
 
-And then add some styles to style.css.
+### Step 7: Next,  then add some styles to `style.css`.
 
 **style.css**
 
@@ -85,7 +88,8 @@ And then add some styles to style.css.
 
 ## Configure dfx to deploy
 
-To host and run this website live on the IC, you will need to configure `dfx` to upload your files to a certified asset canister. In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
+### Step 8: To host and run this website live on the IC, you will need to configure `dfx` to upload your files to a certified asset canister. 
+In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
 
 **dfx.json**
 
@@ -111,9 +115,9 @@ Now, your directory should look something like this:
 
 ## Deploy your website
 
-To deploy your website, ensure you are in your terminal at the root of the project, and run this command:
+### Step 9: To deploy your website, ensure you are in your terminal at the root of the project, and run this command:
 
-    dfx deploy --network ic
+`dfx deploy --network ic`
 
 You should see some output in your console, and a success message looking something like this:
 
@@ -133,18 +137,18 @@ You should see some output in your console, and a success message looking someth
 
 ## See your live website
 
-Find your new canister’s ID by running
+Find your new canister’s ID by running the command:
 
     dfx canister --network ic id website
 
-Take that canister ID and visit https://&lt;canister-id&gt;.icp0.io, inserting your own canister ID as the subdomain in the URL.
+Take that canister ID and visit `https://<canister-id>.icp0.io`, inserting your own canister ID as the subdomain in the URL.
 
-You should see your live, multi-page website, looking like this!
+You should see your live, multi-page website, looking like this:
 
 ![Static Website](_attachments/static-website.png)
 
-### Next steps
+### Resources
 
-Looking to build a full-stack dapp? Check out the [Full-stack React Tutorial](https://smartcontracts.org/docs/current/developer-docs/frontend/custom-frontend)!
+Looking to build a full-stack dapp? Check out the [full-stack react tutorial](https://smartcontracts.org/docs/current/developer-docs/frontend/custom-frontend).
 
-Visit our [Developer Forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.
+Visit our [developer forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.

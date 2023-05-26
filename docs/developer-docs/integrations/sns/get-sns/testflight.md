@@ -1,5 +1,6 @@
-# SNS Testflight
+# SNS testflight
 
+## Overview
 Before requesting an SNS launch in production,
 you are encouraged to test your mainnet dapp's operation (e.g., upgrading the dapp's canisters)
 via SNS proposals.
@@ -7,21 +8,21 @@ via SNS proposals.
 We next describe how you can test SNS proposals by deploying testflight SNS
 and submitting SNS proposals to it.
 The main differences to production SNS deployment are summarized here:
-- testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved;
-- no decentralization swap is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight;
-- the developer can also keep direct control over the dapp's canisters registered with testflight SNS;
-- when deployed on the mainnet, testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
+- Testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved.
+- No decentralization swap is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight.
+- The developer can also keep direct control over the dapp's canisters registered with testflight SNS.
+- When deployed on the mainnet, testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-#### 1. Prepare the tools.
+## Prerequisites
 
 To perform SNS testflight, you will need the following tools:
 
-- [dfx](https://github.com/dfinity/sdk)
-- [sns-cli](https://github.com/dfinity/ic)
-- [quill](https://github.com/dfinity/quill)
-- [didc](https://github.com/dfinity/candid) (for advanced tests)
+- [x] [dfx](https://github.com/dfinity/sdk)
+- [x] [sns-cli](https://github.com/dfinity/ic)
+- [x] [quill](https://github.com/dfinity/quill)
+- [x] [didc](https://github.com/dfinity/candid) (for advanced tests)
 
-Instead of building sns-cli locally, you can download pre-compiled binaries for [linux](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running
+Instead of building `sns-cli` locally, you can download pre-compiled binaries for [Linux](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running the command:
 ```
 ./gitlab-ci/src/artifacts/newest_sha_with_disk_image.sh origin/master
 ```
@@ -31,13 +32,13 @@ You can download pre-compiled binaries for quill [here](https://github.com/dfini
 
 You can download pre-compiled binaries for didc [here](https://github.com/dfinity/candid/releases).
 
-This tutorial has been tested with the following version of the tools:
-- dfx: 0.13.1
-- sns-cli: 82a53257ed63af4f602afdccddadc684df3d24de
-- quill: v0.4.0
-- didc: 0.3.0 (2022-11-17)
+This guide has been tested with the following version of the tools:
+- **dfx: 0.13.1**
+- **sns-cli: 82a53257ed63af4f602afdccddadc684df3d24de**
+- **quill: v0.4.0**
+- **didc: 0.3.0 (2022-11-17)**
 
-#### 2. Import and download SNS canisters.
+## Import and download SNS canisters
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
 ```
@@ -46,7 +47,7 @@ DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns download
 ```
 in the root directory of your project.
 
-#### 3. Deploy testflight SNS and store the developer neuron ID.
+## Deploy testflight SNS and store the developer neuron ID
 
 To deploy the testflight SNS, run
 ```
@@ -64,9 +65,9 @@ Developer neuron IDs:
 594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63
 ```
 
-#### 4. Add SNS root as an additional controller of all SNS managed dapp canisters.
+## Add SNS root as an additional controller of all SNS managed dapp canisters
 
-Add the SNS root canister as an *additional* controller of all the canisters
+Add the SNS root canister as an **additional** controller of all the canisters
 that you want to manage by the testflight SNS.
 For a canister called `test`, you can do so as follows:
 ```
@@ -75,7 +76,7 @@ dfx canister update-settings --add-controller $(dfx canister id sns_root) test
 When running the testflight on mainnet, pass `--network ic` as an additional argument
 to *both* invokations of `dfx canister`.
 
-#### 5. Register dapp canisters with SNS root.
+## Register dapp canisters with SNS root
 
 Register all canisters that are supposed to be managed by the testflight SNS
 by submitting an SNS proposal via `quill`.
@@ -86,7 +87,7 @@ to point to your local IC instance, e.g.,
 export IC_URL="http://localhost:8080/"
 ```
 
-Determine the *absolute* path to the PEM file of your identity.
+Determine the **absolute** path to the PEM file of your identity.
 Typically, this file is located at
 `.config/dfx/identity/$(dfx identity whoami)/identity.pem`
 under your home directory.
@@ -115,9 +116,9 @@ dfx canister call sns_root list_sns_canisters '(record {})'
 ```
 When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
 
-#### 6. Test upgrading canisters via SNS proposals.
+## Test upgrading canisters via SNS proposals
 
-Determine the path to the new WASM binary that you want to upgrade the canister to.
+Determine the path to the new wasm binary that you want to upgrade the canister to.
 For projects build with `dfx`, this binary is typically located at
 `.dfx/<network>/canisters/<canister-name>/<canister-name>.wasm`
 under the root directory of your project,
@@ -133,11 +134,11 @@ Unless you run the testflight against mainnet, pass `--insecure-local-dev-mode` 
 
 You can omit `grep -v "^ *new_canister_wasm"` above to see the new WASM binary in the output. Note that the output then contains the entire WASM binary and can be huge!
 
-#### 7. Test executing code on SNS managed canisters via SNS proposals.
+## Test executing code on SNS managed canisters via SNS proposals
 
 To execute code on SNS managed canisters via SNS proposals,
 the canisters must expose a pair of public
-functions (refered to as *generic* functions in the following):
+functions (refered to as **generic** functions in the following):
 - a validation function to validate and render the proposal payload;
 - an execution function to perform an action given the proposal payload.
 
@@ -192,7 +193,7 @@ fn validate(x: Version) -> Result<String, String> {
 }
 ```
 
-#### 8. Check the proposals of the testflight SNS.
+## Check the proposals of the testflight SNS
 
 You can list all proposals in the testflight SNS as follows:
 ```
@@ -201,7 +202,7 @@ dfx canister call sns_governance list_proposals '(record {include_reward_status 
 When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister`.
 You can also provide a limit and thus only obtain the last few proposals.
 
-#### 9. Aborting the testflight.
+## Aborting the testflight
 
 As the developer keeps direct control over the registered dapp's canisters during the testflight,
 you can directly manage your dapp's canisters during the testflight if needed.
@@ -259,7 +260,7 @@ async fn recover() {
     ic_cdk::api::call::call::<_, ()>(Principal::from_text("aaaaa-aa").unwrap(), "update_settings", (settings,)).await.unwrap();
 }
 ```
-and invoking
+and invoking:
 ```
 dfx canister call sns_root recover '()'
 ```

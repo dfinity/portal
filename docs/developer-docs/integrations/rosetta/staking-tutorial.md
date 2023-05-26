@@ -1,40 +1,38 @@
-# Rosetta staking tutorial
-
-This document will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). We will transfer funds to the Governance canister, create a neuron, and configure the newly created neuron.
-
-## Prerequisites
-
-You’ll need the following to complete the tutorial:
-
-1.  A running Rosetta node, you can use the latest docker image from <https://hub.docker.com/r/dfinity/rosetta-api>. This tutorial assumes that the Rosetta node runs on address `localhost:8080`.
-
-2.  [curl](https://curl.se/).
-
-3.  An ed25519 key and your favorite tools to sign messages using that key.
-
-4.  At least 2 ICP on the ledger account controlled by your key (see [Compute the ledger account for staking](#_compute_the_ledger_account_for_staking) section).
+# Rosetta staking 
 
 ## Overview
 
-From the Internet Computer point of view, creating a neuron is a multi-step operation:
+This guide will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). We will transfer funds to the governance canister, create a neuron, and configure the newly created neuron.
 
-1.  Make a call to the Ledger canister to transfer tokens to the Governance canister for staking purposes.
+From the Internet Computer point of view, creating a neuron is a multi-step operation that includes the following actions:
 
-2.  Notify the Governance about the transfer. At this step, the Governance canister allocates a new neuron.
-
-3.  Configure the newly created neuron: set a dissolve delay and start dissolving.
+- Make a call to the ledger canister to transfer tokens to the governance canister for staking purposes.
+- Notify the governance about the transfer. At this step, the governance canister allocates a new neuron.
+- Configure the newly created neuron: set a dissolve delay and start dissolving.
 
 Rosetta API represents these steps as [operations](https://www.rosetta-api.org/docs/models/Operation.html) of a transaction. The execution of those operations must follow [the Construction API flow](https://www.rosetta-api.org/docs/flow.html#construction-api).
 
+## Prerequisites
+
+You’ll need the following to complete this guide:
+
+-  [x] A running Rosetta node: you can use the latest docker image from <https://hub.docker.com/r/dfinity/rosetta-api>. This guide assumes that the Rosetta node runs on address `localhost:8080`.
+
+-  [x] [curl](https://curl.se/).
+
+-  [x] An ed25519 key and your favorite tools to sign messages using that key.
+
+-  [x] At least 2 ICP on the ledger account controlled by your key (see [Compute the ledger account for staking](#_compute_the_ledger_account_for_staking) section).
+
 ## Deriving account identifiers
 
-Staking requires transferring tokens to a sub-account of the Governance canister. To complete the transfer, you need to know both your ledger account identifier (source of the transfer) and the account identifier of the Governance sub-account (destination of the transfer).
+Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
 
 Call the `/construction/derive` endpoint to get the default ledger account controlled by your public key and the account of the neuron controlled by that key.
 
 ## Compute the source ledger account
 
-:::note
+:::info
 
 replace `hex_bytes` in the request below with bytes of your public key.
 
@@ -66,7 +64,7 @@ The expected response should look like the following:
 
 ## Compute the ledger account for staking
 
-:::note
+:::info
 
 replace `hex_bytes` in the request below with bytes of your public key.
 
@@ -89,7 +87,7 @@ curl -0 -X POST http://localhost:8080/construction/derive \
 }
 ```
 
-:::note
+:::info
 
 We set `account_type` to `neuron` in the request metadata to tell the Rosetta node that we want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
 
@@ -107,7 +105,7 @@ The response should look like the following:
 
 ## Obtain payloads to sign
 
-Notes:
+Important considerations:
 
 -   Replace `address` fields below with addresses you got on the previous steps. Only the second `TRANSACTION` operation (with index 1 in the snippet below) should use the ledger address of the neuron. All other operations should use the ledger address of the controller of the neuron.
 
@@ -265,13 +263,13 @@ The response should look like the following:
 }
 ```
 
-:::note
+:::info
 
 The `payloads` field of the response contains the list of payloads that need to be signed before the transaction can be submitted.
 
 :::
 
-:::note
+:::info
 
 According to the Rosetta API specification ([Flow of Operations](https://www.rosetta-api.org/docs/construction_api_introduction.html#flow-of-operations)), the client should call `/construction/preprocess` and `/construction/metadata` before calling `/construction/payloads` because there might be some metadata that needs to be attached to the payloads request. Currently, there is no need to do it for the ICP Rosetta node implementation, so we skipped these unnecessary steps.
 
@@ -281,7 +279,7 @@ According to the Rosetta API specification ([Flow of Operations](https://www.ros
 
 Call `/construction/parse` endpoint to decode the contents of a transaction.
 
-:::note
+:::info
 
 Replace the value of the `transaction` field below with the value of the `unsigned_transaction` field that you got from the previous step. Note that the `signed` field is set to `false`.
 
@@ -528,7 +526,7 @@ The response should look like the following:
 
 Call `/construction/parse` endpoint to decode the contents of a transaction.
 
-:::note
+:::info
 
 Replace the value of the `transaction` field below with the value of the `signed_transaction` field that you got from the previous step. Note that the `signed` field is set to `true`.
 
@@ -730,7 +728,7 @@ The response should look like the following:
 }
 ```
 
-:::note
+:::info
 
 -   Neuron management operations don’t strictly adhere to the Rosetta specification. If you look up the transaction above by hash using the `/block/transaction` endpoint, it will only contain the ledger transfer. Furthermore, if the transaction only contains the neuron management operations, the returned transaction hash won’t be on the ledger chain at all. That’s why the response `metadata` field includes statuses of all the operations in the same format `/block/transaction` would return them.
 
@@ -742,7 +740,7 @@ The response should look like the following:
 
 Let us now check the status of the newly created neuron.
 
-:::note
+:::info
 
 -   Replace `address` fields below with addresses of the neuron that you got at step [Compute the ledger account for staking](#_compute_the_ledger_account_for_staking).
 

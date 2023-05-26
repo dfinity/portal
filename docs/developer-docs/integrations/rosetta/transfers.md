@@ -1,6 +1,8 @@
 # Regular token transfers
 
-This document details how to transfer ICP using the Rosetta Construction API. See [Construction API Overview](https://www.rosetta-api.org/docs/construction_api_introduction.html) for a high-level overview of the transaction flow.
+## Overview
+
+This document details how to transfer ICP using the Rosetta construction API. See [construction API overview](https://www.rosetta-api.org/docs/construction_api_introduction.html) for a high-level overview of the transaction flow.
 
 ## Transfer operations
 
@@ -16,13 +18,13 @@ The order of operations within a transaction is irrelevant.
 
 Multiple transfers within a single transaction are not allowed. The outcome of such a transaction is unspecified.
 
-Preconditions:
+## Prerequisites
 
--   Address `A` holds at least `T` + `suggested_fee` ICP.
+-   [x] Address `A` holds at least `T` + `suggested_fee` ICP.
 
--   Address `A` is a subaccount of the principal derived from the public key that you use to sign the transaction.
+-   [x] Address `A` is a subaccount of the principal derived from the public key that you use to sign the transaction.
 
--   The amount specified in the `FEE` operation is equal in absolute value to `suggested_fee`.
+-   [x] The amount specified in the `FEE` operation is equal in absolute value to `suggested_fee`.
 
 ### Optional metadata fields
 

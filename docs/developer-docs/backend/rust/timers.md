@@ -1,47 +1,46 @@
-Using Timers
-============
+# 5: Using timers
 
-This tutorial demonstrates how to create a small dapp with a periodic task. The task is triggered automatically by the Internet Computer with a specified interval.
+## Overview 
+This guide demonstrates how to create a small dapp with a periodic task. The task is triggered automatically by the Internet Computer with a specified interval.
 
-This tutorial takes about 10 minutes to complete.
+## Prerequisites
 
-Prerequisites
--------------
+-  Make sure the [IC SDK](../../setup/install/) is installed.
+-  There is a macOS or Linux terminal with internet connection.
+-  The [Rust language](https://www.rust-lang.org/tools/install) and a code editor are installed. The [VS Code IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
 
-1. Make sure the [IC SDK](../../setup/install/) is installed.
-2. There is a macOS or Linux terminal with internet connection.
-3. The [Rust language](https://www.rust-lang.org/tools/install) and a code editor are installed. The [VS Code IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
+## Step 1: Creating a new project
 
-Step 1. Creating a new project
-------------------------------
+- #### Step 1: Open a new terminal window.
 
-1. Open a new terminal window.
-
-2. Create a new Internet Computer project called `my_timers`:
+- #### Step 2: Create a new Internet Computer project called `my_timers`:
 
    ```sh
    dfx new --type=rust my_timers --no-frontend
    ```
 
-3. Enter the newly created project directory and open the code editor:
+- #### Step 3: Enter the newly created project directory and open the code editor:
 
    ```sh
    cd my_timers
    code .
    ```
 
-Note, the following steps assume the terminal is still open and the current directory is `my_timers`.
+:::info
+Note: the following steps assume the terminal is still open and the current directory is `my_timers`.
+:::
 
-Step 2. Adding Canister Development Kit (CDK) libraries
--------------------------------------------------------
+## Step 2: Adding canister development kit (CDK) libraries
 
-The following libraries are required for this tutorial:
+The following libraries are required for this guide:
 
-1. **The main CDK library, version 0.7** &mdash; contains the Internet Computer System API bindings.
-2. **The CDK macros library, version 0.6** &mdash; defines macros to declare dapp entry points.
-3. **The CDK timers library, version 0.1** &mdash; implements multiple and periodic timers.
+-  **The main CDK library, version 0.7**: contains the Internet Computer System API bindings.
+-  **The CDK macros library, version 0.6**: defines macros to declare dapp entry points.
+-  **The CDK timers library, version 0.1**: implements multiple and periodic timers.
 
-Note, the specified versions are the latest stable versions at the moment of writing. Also, this step is required for the `dfx` version `0.13.1` and earlier. For the latest `dfx` versions this step is optional.
+:::info
+Note: the specified versions are the latest stable versions at the moment of writing. Also, this step is required for the `dfx` version `0.13.1` and earlier. For the latest `dfx` versions this step is optional.
+:::
 
 Add the libraries to the project:
 
@@ -59,12 +58,11 @@ Updating crates.io index
    Adding ic-cdk-timers v0.1 to dependencies.
 ```
 
-Step 3. Declaring canister interface
-------------------------------------
+## Step 3: Declaring canister interface
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of canister interfaces.
 
-To see details about the Candid interface description language syntax, see the [*Candid Guide*](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [**Candid guide**](../candid/index.md) or the [Candid crate documentation](https://docs.rs/candid/).
 
 In the code editor, open the `my_timers_backend.did` file and replace its content with the following:
 
@@ -81,10 +79,9 @@ Where:
 
 The interface definition is complete, save the changes.
 
-Step 4. Implementing the `counter` query
-----------------------------------------
+## Step 4: Implementing the `counter` query
 
-In the Step 3 above, the `counter` query is declared as `"counter": () -> (nat64) query`. This step implements it.
+In the previous step the `counter` query is declared as `"counter": () -> (nat64) query`. This step implements it.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and replace its content with the following:
 
@@ -106,8 +103,7 @@ Where:
 * `fn counter() -> u64 {...}` &mdash; defines the query. Just like in the `.did` definition, it takes no arguments and returns `u64`.
 * `COUNTER.load(...)` &mdash; loads and returns the global `COUNTER` value.
 
-Step 5. Implementing canister initialization
---------------------------------------------
+## Step 5: Implementing canister initialization
 
 In the Step 3 above, the service is declared as `service : (nat64) -> {...}`. This step implements the canister initialization with an argument.
 
@@ -134,12 +130,13 @@ Where:
 * `ic_cdk_timers::set_timer_interval(...)` &mdash; creates a new periodic timer with the specified interval and a closure to call.
 * `COUNTER.fetch_add(1, ...)` &mdash; increases the global `COUNTER` every time the periodic task is triggered.
 
-Step 6. Implementing canister upgrade
--------------------------------------
+## Step 6: Implementing canister upgrade
 
-Note, as described in [Periodic Tasks and Timers](../periodic-tasks.md), the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+:::info
+Note: As described in the [periodic tasks and timers](../periodic-tasks.md) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+:::
 
-For the sake of simplicity, in this tutorial the `canister_post_upgrade` method just calls `canister_init` to reinitialize the timer.
+For the sake of simplicity, in this guide the `canister_post_upgrade` method just calls `canister_init` to reinitialize the timer.
 
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
@@ -160,18 +157,17 @@ Where:
 
 The code is complete. Save the changes.
 
-Step 7. Running the dapp locally
---------------------------------
+## Step 7: Running the dapp locally
 
 The libraries are added, the canister interface is described and the code is complete. Time to try it all out!
 
-1. Open a new terminal window in the project root directory:
+- #### Step 1: Open a new terminal window in the project root directory:
 
    ```sh
    cd my_timers
    ```
 
-2. Start a clean local Internet Computer replica and a web server:
+- #### Step 2: Start a clean local Internet Computer replica and a web server:
 
    ```sh
    dfx stop
@@ -188,13 +184,13 @@ The libraries are added, the canister interface is described and the code is com
    Dashboard: http://localhost:63387/_/dashboard
    ```
 
-3. Open another terminal window in the same directory:
+- #### Step 3: Open another terminal window in the same directory:
 
    ```sh
    cd my_timers
    ```
 
-4. Compile and deploy `my_timers_backend` canister, setting the interval for the periodic task to 1s:
+- #### Step 4: Compile and deploy `my_timers_backend` canister, setting the interval for the periodic task to 1s:
 
    ```sh
    dfx deploy my_timers_backend --argument 1
@@ -213,7 +209,7 @@ The libraries are added, the canister interface is described and the code is com
        my_timers_backend: http://127.0.0.1/...
    ```
 
-5. Observe the counter is actually non-zero:
+- #### Step 5: Observe the counter is actually non-zero:
 
    ```sh
    dfx canister call my_timers_backend counter
@@ -226,15 +222,7 @@ The libraries are added, the canister interface is described and the code is com
    (8 : nat64)
    ```
 
-More to Explore
----------------
-
-1. Learn more about periodic tasks and timers in the [Internet Computer Developer Guide.](../periodic-tasks.md)
-2. Have a look at the locally running dashboard. The URL is at the end of the `dfx start` command: `Dashboard: http://localhost/...`
-3. Check out `my_timers_backend` canister Candid User Interface. The URLs are at the end of the `dfx deploy` command: `my_timers_backend: http://127.0.0.1/...`
-
-The Final Result
-----------------
+## Conclusion
 
 The `src/my_timers_backend/Cargo.toml` file:
 
@@ -280,3 +268,9 @@ fn post_upgrade(timer_interval_secs: u64) {
     init(timer_interval_secs)
 }
 ```
+
+## Resources
+
+- Learn more about periodic tasks and timers in the [Internet Computer developer guide.](../periodic-tasks.md)
+-  Have a look at the locally running dashboard. The URL is at the end of the `dfx start` command: `Dashboard: http://localhost/...`
+-  Check out `my_timers_backend` canister Candid User Interface. The URLs are at the end of the `dfx deploy` command: `my_timers_backend: http://127.0.0.1/...`

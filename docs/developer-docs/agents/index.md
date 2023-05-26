@@ -1,20 +1,22 @@
-# Integrating with IC from external systems
+# Integrating external agents with the IC
 
-In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an agent.
-An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
+## Overview
+
+In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
+
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
-You can talk to the canister using the v2 API using an `agent` that follows the interface specification, or you can use the canister's HTTP interface.
+You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTP interface.
 
-## Available Agents
+## Available agents
 
 This section of the docs covers the following agents, ordered by languages:
 
 - JavaScript / TypeScript
-  - [JavaScript/TypeScript Agent by DFINITY](./javascript-intro.md)
+  - [JavaScript/TypeScript agent by DFINITY](./javascript-intro.md)
 - Rust
-  - [Rust Agent by DFINITY](./ic-agent-dfinity.md)
+  - [Rust agent by DFINITY](./ic-agent-dfinity.md)
 
-In addition to those, there are a lot of other community-supported agents:
+In addition to those, there are several other community-supported agents:
 
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
@@ -32,9 +34,9 @@ If you're interested in building an agent in another language please reach out t
 
 ## What an agent does
 
-### 1. Structuring Data
+### Structuring data
 
-A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The `agent` submits a POST request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components:
+A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The **agent** submits a POST request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components:
 
 - `request_type`
 - Authentication
@@ -44,28 +46,28 @@ A `call` to the Internet Computer can take two common forms - an `update` or a `
 - `request_id` - required for `update` request type calls
 - `arg` - the rest of the payload
 
-By knowing the Candid interface of the canister, the `agent` will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a CBOR-encoded buffer.
+By knowing the Candid interface of the canister, the **agent** will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a CBOR-encoded buffer.
 
 For update requests, the agent also hashes the rest of the fields, and passes it in as a unique `request_id`. That `request_id` is used for polling while the IC reaches consensus on the update.
 
-The `agent` takes the CBOR-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the `agent` can begin polling with `read_state` requests, until the canister response is ready.
+The **agent** takes the CBOR-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the **agent** can begin polling with `read_state` requests, until the canister response is ready.
 
-### 2. Decoding Data
+### Decoding data
 
-Once the data has been returned from the IC, the `agent` takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a CBOR-encoded buffer, which the `agent` can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
+Once the data has been returned from the IC, the **agent** takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a CBOR-encoded buffer, which the **agent** can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
 
-### 3. Managing Authentication
+### Managing authentication
 
-Calls to the Internet Computer always need to have a cryptographic identity attached. That identity will either be Anonymous or Authenticated, using a cryptographic signature. Since identities are required, canisters can use the identity attached to a call to decide how to respond to that call. This enables contracts to use those identities for other purposes.
+Calls to the Internet Computer always need to have a cryptographic identity attached. That identity will either be **anonymous** or **authenticated**, using a cryptographic signature. Since identities are required, canisters can use the identity attached to a call to decide how to respond to that call. This enables contracts to use those identities for other purposes.
 
-#### Accepted Identities
+#### Accepted identities
 
 The IC accepts calls using the following types of signatures in identities:
 
-- Ed25519 and ECDSA signatures
-  - Plain signatures are supported for the schemes
-- Ed25519 or ECDSA on curve P-256 (also known as secp256r1)
-  - using SHA-256 as a hash function
+- Ed25519 and ECDSA signatures.
+  - Plain signatures are supported for the schemes.
+- Ed25519 or ECDSA on curve P-256 (also known as secp256r1).
+  - using SHA-256 as a hash function.
   - using the Koblitz curve in secp256k1.
 
 When encoding these identities as a `principal`, agents attach a suffix byte, indicating whether the identity is self-authenticating or anonymous.
