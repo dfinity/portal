@@ -32,7 +32,7 @@ The outline of this document is as follows:
 - The [specification](#specification) section provides the specification itself.
 - The [reference implementations](#reference-implementations) section gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
 - The [test vectors](#test-vectors) section provides test vectors.
-- The [rationale](#rationale) section explains the reasons why the specification was chosen, given the assumptions and requirements from Section [Assumptions and Requirements](#assumptions-and-requirements).
+- The [rationale](#rationale) section explains the reasons why the specification was chosen, given the assumptions and requirements from the section [assumptions and requirements](#assumptions-and-requirements).
 
 ## Assumptions and requirements
 
