@@ -352,11 +352,11 @@ Other notes about language:
     - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience. 
     
     For example, avoid the following:
-        - "Get it? heh."
+    - "Get it? heh."
     
     Where as, the following are acceptable in certain contexts:
-        - "Ready to get started? Let's go!"
-        - "Here is a checklist of the things you will need to consider:"
+    - "Ready to get started? Let's go!"
+    - "Here is a checklist of the things you will need to consider:"
 
 ## FAQ sections
 
