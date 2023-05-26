@@ -5,9 +5,9 @@
 #### account
 
 A ledger **account** is a set of entries in the [ ledger
-canister](#ledger_canister), which is a smart contract that
+canister](#ledger-canister), which is a smart contract that
 mimics the guise and behavior of a regular banking account, whose unit
-of measure is [ ICP](#ICP) (Internet Computer Protocol)
+of measure is [ ICP](#icp) (Internet Computer Protocol)
 utility tokens. Ledger accounts are owned by [
 principals](#principals), and their ownerships do not change
 over time. Every account on the ledger has a positive [
@@ -21,79 +21,79 @@ In the context of [transactions](#transaction) on the ledger,
 
 #### actor
 
-An **actor** is a primitive in the [Actor
-Model](https://en.wikipedia.org/wiki/Actor_model). It is a process with
+An **actor** is a primitive in the [actor
+model](https://en.wikipedia.org/wiki/Actor-model). It is a process with
 encapsulated state that communicates with other concurrently running
 actors through asynchronous messages that are received sequentially. The
-Actor Model is relevant to the [IC](#Internet_Computer_(IC))
+actor model is relevant to the [IC](#internet-computer-ic-ic)
 because [canisters](#canister) on the IC (a type of smart
-contract) follow the Actor Model for concurrent and asynchronous
+contract) follow the actor model for concurrent and asynchronous
 computation.
 
 ## B
 
 #### balance
 
-The **balance** of an [ account](#account) on the ledger is
+The **balance** of an [account](#account) on the ledger is
 the sum of all deposits minus the sum of all withdrawals. As a
 degenerate case, it is sometimes useful to say that an account which is
 not present in the ledger has a balance of zero.
 
 The balance of a ledger account is denominated in ICP and is represented
 with eight decimals. Thus, the minimum positive balance of an account is
-0.00000001 or 10^-8 [ ICP](#ICP); this amount is sometimes
+0.00000001 or 10^-8 [ICP](#icp); this amount is sometimes
 referred to as one **e8**.
 
 #### batch
 
-A **batch** is a collection of [ messages](#messages) whose
-order is agreed upon by [ consensus](#consensus).
+A **batch** is a collection of [messages](#messages) whose
+order is agreed upon by [consensus](#consensus).
 
 #### beneficiary
 
-The **beneficiary** of an [ account](#account) is the [
+The **beneficiary** of an [account](#account) is the [
 principal](#principal) who owns the [
 balance](#balance) of the account. The beneficiary of an
 account cannot be changed. The beneficiary of an account may or may not
 be allowed to make [transactions](#transaction) on the
-account (see [ fiduciary](#fiduciary)).
+account (see [fiduciary](#fiduciary)).
 
 #### blockchain
 
 A **blockchain** is a growing list of cryptographically linked blocks,
-agreed upon by [ consensus](#consensus). On the [ Internet
-Computer](#Internet_computer) every [
+agreed upon by [consensus](#consensus). On the [ Internet
+Computer](#internet-computer-ic) every [
 subnet](#subnet) is a blockchain and these blockchains
-interact using [ chain key cryptography](#chain_key).
+interact using [ chain key cryptography](#chain-key).
 
 #### boundary nodes
 
-**boundary nodes** Nginx gateways to the internet computer. These nodes
+**Boundary nodes** are Nginx gateways to the Internet Computer. These nodes
 act as HTTP routers through which the network’s
 [subnet](#subnet) blockchain nodes can be reached. The
 boundary nodes have several purposes: they aid in discover-ability (the
-icp0.io domain name points to a set of boundary nodes), they are
+`icp0.io` domain name points to a set of boundary nodes), they are
 geo-aware and can route incoming requests to the nearest subnet
 [node](#node) that hosts the [canister](#canister)
 involved, they can help load balance query
 [transactions](#transaction), they can cache
 cryptographically verified data in the role of a content distribution
 network, they can throttle excessive interactions from an outside IP
-address, bootstrapping/Installing the service worker, and they can help
+address, bootstrapping/installing the service worker, and they can help
 protect subnets from DDoS attacks.
 
 #### burning transaction
 
 A **burning transaction** is the process of "burning" [
-ICP](#ICP), whereby a certain amount of ICP are destroyed.
-The main use case is that of purchasing [ cycles](#cycles),
+ICP](#icp), whereby a certain amount of ICP are destroyed.
+The main use case is that of purchasing [cycles](#cycles),
 through which ICP are destroyed while at the same time a corresponding
 amount of cycles is created, using the current exchange rate between ICP
-and ([ SDR](#SDR)), in such a way that one SDR corresponds to
+and ([XDR](#SDR)), in such a way that one XDR corresponds to
 one trillion (10E12) cycles. It is represented as a [
 transaction](#transaction) from the source [
 account](#account) to the [ ICP supply
-account](#ICP_supply_account).
+account](#icp-supply-account).
 
 ## C
 
@@ -102,14 +102,14 @@ account](#ICP_supply_account).
 **Candid** is an IDL crafted specifically for the Internet Computer,
 providing a common language for application interfaces to facilitate
 communication between services that are written in different programming
-languages
+languages.
 
 #### canister
 
-A **canister** is a type of smart contract that bundles *code* and
-*state*. A canister can be deployed as a [ smart
-contract](#smart_contract) on the [ Internet
-Computer](#Internet_Computer) and accessed over the Internet.
+A **canister** is a type of smart contract that bundles **code** and
+**state**. A canister can be deployed as a [ smart
+contract](#smart-contract) on the [Internet
+Computer](#internet-computer-ic) and accessed over the Internet.
 
 #### canister account
 
@@ -121,7 +121,7 @@ account is a ledger account whose fiduciary is a non-canister
 
 #### canister development kit (CDK)
 
-A **Canister Development Kit** is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. 
+A **canister development kit** is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. 
 
 #### canister identifier
 
@@ -132,20 +132,20 @@ be used to interact with it.
 #### canister signature
 
 A **canister signature** uses a signature scheme based on [ certified
-variables](#certified_variables). Public “keys” include a
-[canister id](#canister_identifier) plus a seed (so that
+variables](#certified-variables). Public “keys” include a
+[canister id](#canister-identifier) plus a seed (so that
 every [canister](#canister) has many public keys); signatures
 are certificates that prove that the canister has put the signed message
-at a specific place in its state tree. Details in the [The Internet Computer Interface Specification]/references/ic-interface-spec.md#canister-signatures).
+at a specific place in its state tree. Details can be found in the [Internet Computer interface specification](/references/ic-interface-spec.md#canister-signatures).
 
 #### canister state
 
 A **canister state** is the entire state of a
 [canister](#canister) at a given point in time. A canister’s
-state is divided into *user state* and *system state*. The user state is
+state is divided into **user state** and **system state**. The user state is
 a [WebAssembly](#WebAssembly) module instance and the system
 state is the auxiliary state maintained by the [Internet
-Computer](#Internet_Computer) on behalf of the canister, such
+Computer](#internet-computer-ic-ic) on behalf of the canister, such
 as its compute allocation, balance of [cycles](#cycles),
 input and output queues, and other metadata. A canister interacts with
 its own system state either implicitly, such as when consuming cycles,
@@ -174,7 +174,7 @@ to the user that proves that it really committed to that value.
 
 **Chain key** cryptography consists of a set of cryptographic protocols
 that orchestrate the [nodes](#node) that make up the
-[Internet Computer](#Internet_Computer). The most visible
+[Internet Computer](#internet-computer-ic). The most visible
 innovation of chain key cryptography is that the Internet Computer has a
 single public key. This is a huge advantage as it allows any device,
 including smart watches and mobile phones, to verify the authenticity of
@@ -191,7 +191,7 @@ software. The consensus layer selects [messages](#messages)
 from the peer-to-peer artifact pool and pulls messages from the
 cross-network streams of other [subnets](#subnet) and
 organizes them into a [batch](#batch), which is delivered to
-the [message routing](#message_routing) layer.
+the [message routing](#message-routing) layer.
 
 #### controller
 
@@ -204,32 +204,32 @@ the canister or delete the canister.
 
 #### cycle
 
-On the [Internet Computer](#Internet_Computer), a **cycle**
+On the [Internet Computer](#internet-computer-ic), a **cycle**
 is the unit of measurement for resources consumed in the form of
 processing, memory, storage, and network bandwidth. Every canister has a
 cycles account to which resources consumed by the canister are charged.
-The Internet Computer’s utility token ([ICP](#ICP)) can be
+The Internet Computer’s utility token ([ICP](#icp)) can be
 converted to cycles and transferred to a canister. Cycles can also be
-transferred between canisters by attaching them to an \[inter-canister\]
+transferred between canisters by attaching them to an **inter-canister**
 message.
 
 ICP can always be converted to cycles using the current price of ICP
-measured in \[SDR\] using the convention that one trillion cycles
-correspond to one SDR.
+measured in **XDR** using the convention that one trillion cycles
+correspond to one **XDR**.
 
 ## D
 
 #### dapp
 
-A **dapp**, or decentralised application is a
+A **dapp**, or decentralised application, is a
 [canister](#canister) running on the [Internet
-Computer](#Internet_Computer).
+Computer](#internet-computer-ic).
 
 #### data center
 
 A **data center** (DC) is a physical site that hosts
 [nodes](#node) which contribute to the [Internet
-Computer](#Internet_Computer). It includes the hardware and
+Computer](#internet-computer-ic). It includes the hardware and
 software infrastructure required for node deployment. A DC is identified
 on the Internet Computer by a unique identifier.
 
@@ -237,18 +237,18 @@ on the Internet Computer by a unique identifier.
 
 The **dissolve delay** is the amount of time that
 [neurons](#neuron) must spend [
-dissolving](#dissolving_state) before becoming [
-disolved](#dissolved_state).
+dissolving](#dissolving-state) before becoming [
+disolved](#dissolved-state).
 
 #### dissolved state
 
 The **dissolved state** is a [neuron](#neuron) state
-characterized by a [dissolve delay](#dissolve_delay) equal to
+characterized by a [dissolve delay](#dissolve-delay) equal to
 zero. (It is conventionally said that a neuron in this state does not
 "have" a dissolve delay.) It is in this state that a neuron can be
 "disbursed," hence its stake moved elsewhere, and its corresponding
-[neuron account](#neuron_account) closed. The
-[age](#neuron_age) of a dissolved neuron is considered to be
+[neuron account](#neuron-account) closed. The
+[age](#neuron-age) of a dissolved neuron is considered to be
 zero.
 
 #### dissolving state
@@ -257,7 +257,7 @@ A **dissolving state** is a [neuron](#neuron) state that
 follows immediately after its owner issues a "start dissolving" command,
 and continues until a "stop dissolving" command is issued, or until the
 dissolve delay timer runs out. The [age of a dissolving
-neuron](#neuron_age) is considered to be zero.
+neuron](#neuron-age) is considered to be zero.
 
 ## E
 
@@ -273,19 +273,19 @@ The **execution environment** is one of the core layers of the
 The **fiduciary** of an [account](#account) is the
 [principal](#principal) allowed to make
 [transactions](#transaction) on the account; as such, it may
-be useful to think of it as the *owner* of the account, with the caveat
+be useful to think of it as the **owner** of the account, with the caveat
 that it may or may not be the [beneficiary](#beneficiary) of
-the account. The [neuron account](#neuron_account) is a
+the account. The [neuron account](#neuron-account) is a
 prominent example of an account for which the beneficiary and fiduciary
 do not coincide (the fiduciary is the [governance
-canister](#governance_canister) while the beneficiary is the
+canister](#governance-canister) while the beneficiary is the
 neuron holder). The fiduciary of a (ledger) account does not change over
 time.
 
 The distinction between fiduciary and beneficiary is also important for
 DeFi dapps (canisters) that interact with the IC ledger: in this case,
 the fiduciary is the DeFi canister while the beneficiary is the
-individual or organisation (\[\[#principal\|principal) that uses the
+individual or organisation [principal](#principal) that uses the
 DeFi canister’s services.
 
 ## G
@@ -293,8 +293,8 @@ DeFi canister’s services.
 #### governance canister
 
 The **governance canister** is a [system
-canister](#system_canister) that implements the
-[NNS](#network_nervous_system_(NNS)) governance system, i.e.,
+canister](#system-canister) that implements the
+[NNS](#network-nervous-system-(NNS)) governance system, i.e.,
 among others, stores and manages [neurons](#neuron) and
 [proposals](#proposal), and implements the NNS
 [voting](#voting) environment.
@@ -304,7 +304,7 @@ among others, stores and manages [neurons](#neuron) and
 #### ICP
 
 The **Internet Computer Protocol** token (ticker "ICP") is the utility
-token of the [Internet Computer](#Internet_Computer). ICP
+token of the [Internet Computer](#internet-computer-ic). ICP
 allows the broader internet community to participate in the governance
 of the Internet Computer blockchain network by locking ICP in
 [neurons](#neuron). ICP can also be converted into
@@ -315,28 +315,28 @@ of the Internet Computer blockchain network by locking ICP in
 
 The **ICP supply account** is a quasi-fictitious ledger
 [account](#account) whose balance is always zero. It has a
-central role in [ICP](#ICP) [burning](#burning)
+central role in [ICP](#icp) [burning](#burning)
 and [minting](#minting) operations.
 
 #### identity
 
 An **identity** is a byte string that is used to identify an entity,
 such as a [principal](#principal), that interacts with the
-[Internet Computer](#Internet_Computer). For users, the
+[Internet Computer](#internet-computer-ic). For users, the
 identity is the SHA-224 hash of the DER-encoded public key of the user.
-[The Internet Computer Interface
-Specification](/references/ic-interface-spec.md) has more
+[The Internet Computer interface
+specification](/references/ic-interface-spec.md) has more
 detail.
 
 #### Internet Identity
 
 **Internet Identity** is an anonymizing blockchain authentication system
-running on the [Internet Computer](#Internet_Computer).
+running on the [Internet Computer](#internet-computer-ic).
 
 #### induction pool
 
 The **induction pool** of a [subnet](#subnet) blockchain is
-the collection of all [input queues](#input_queue) of all
+the collection of all [input queues](#input-queue) of all
 [canisters](#canister) residing on the subnet.
 
 #### ingress message
@@ -351,17 +351,17 @@ secret key corresponding to the end-user’s
 #### ingress message history
 
 The **ingress message history** records the current status of every
-[Ingress message](#ingress_message) processed by a
+[Ingress message](#ingress-message) processed by a
 [replica](#replica) and keeps track of whether messages were
 successfully included in the [induction
-pool](#induction_pool) and the responses of executed
+pool](#induction-pool) and the responses of executed
 messages.
 
 #### input queue
 
 The **input queue** of a [canister](#canister) contains all
 [messages](#message) bound for the canister. See also
-[induction pool](#induction_pool). When the canister is
+[induction pool](#induction-pool). When the canister is
 scheduled for execution, messages from its input queue will be executed.
 
 #### inter-canister message
@@ -376,15 +376,15 @@ messages](#ingress-message).
 The **Internet Computer** (IC) is a decentralized blockchain that
 provides scalable compute capacity for running
 [canisters](#canister) through independent [node
-providers](#node_provider) running [nodes](#node)
-in geographically distributed [data centers](#data_center).
+providers](#node-provider) running [nodes](#node)
+in geographically distributed [data centers](#data-center).
 
 ## L
 
 #### ledger canister
 
 The **ledger canister** is a [system
-canister](#system_canister) whose main role is to store
+canister](#system-canister) whose main role is to store
 [accounts](#account) and their corresponding
 [transactions](#transaction).
 
@@ -399,9 +399,9 @@ another or from a user to a canister.
 
 The **message routing** layer receives [batches](#batch) from
 the [consensus](#consensus) layer and inducts them into the
-[induction pool](#induction_pool). Message routing then
+[induction pool](#induction-pool). Message routing then
 schedules a set of [canisters](#canister) to execute messages
-from their [input queues](#input_queue).
+from their [input queues](#input-queue).
 
 After [messages](#message) have been executed, the message
 routing layer takes any messages produced in the execution round from
@@ -411,23 +411,23 @@ be consumed by canisters on other [subnets](#subnet).
 #### minting transaction
 
 A **minting transaction** is the process of "minting"
-[ICP](#ICP), whereby a certain amount of ICP comes into
+[ICP](#icp), whereby a certain amount of ICP comes into
 existence. ICP is minted in order to reward
 [neurons](#neuron) for [voting](#voting), and
-reward [node providers](#node_provider) for participating in
-the [IC](#Internet_Computer_(IC)) by providing compute
+reward [node providers](#node-provider) for participating in
+the [IC](#internet-computer-ic) by providing compute
 capacity through the running of [nodes](#node). A minting
 transaction is represented as a [transaction](#transaction)
-from the [ICP supply account](#ICP_supply_account) to a
+from the [ICP supply account](#icp-supply-account) to a
 destination [account](#account).
 
 #### Motoko
 
 **Motoko** is a programming language designed to directly support the
 programming model of the [Internet
-Computer](#Internet_Computer), making it easier to
+Computer](#internet-computer-ic), making it easier to
 efficiently build applications and take advantage of some of the more
-unusual features of this platform, including the Actor Model for smart
+unusual features of this platform, including the actor model for smart
 contracts and compilation to WebAssembly.
 
 ## N
@@ -435,8 +435,8 @@ contracts and compilation to WebAssembly.
 #### non-dissolving state
 
 A [neuron](#neuron) that is not
-[dissolved](#dissolved_state) or [
-dissolving](#dissolving_state) is said to be in a
+[dissolved](#dissolved-state) or [
+dissolving](#dissolving-state) is said to be in a
 **non-dissolving state** (or "aging"). Non-dissolving neurons thus
 accrue "age", with the caveat that beginning to dissolve at any time
 reduces this age back to zero. The dissolve delay parameter of a
@@ -446,36 +446,36 @@ neuron would have to already be dissolved.
 #### network nervous system (NNS)
 
 The **network nervous system** (NNS) is a collection of [system
-canisters](#system_canister) (aka "NNS canisters") assembled
+canisters](#system-canister) (aka "NNS canisters") assembled
 into a system that governs all aspects of the [Internet
-Computer](#Internet_Computer).
+Computer](#internet-computer-ic).
 
 #### neuron
 
-A **neuron** is an [IC](#Internet_Computer_(IC)) entity that
+A **neuron** is an [IC](#internet-computer-ic) entity that
 can make [proposals](#proposal) and vote on proposals related
 to the governance of the [Internet
-Computer](#Internet_Computer) platform.
+Computer](#internet-computer-ic) platform.
 
 To provide the stability required for responsible governance, neurons
-need to store ("stake") a certain amount of [ICP](#ICP) in
+need to store ("stake") a certain amount of [ICP](#icp) in
 order to be able to make and vote on proposals. This
-[locks](#non-dissolving_state) the tokens for a period of
-time, after which it starts [ dissolving](#dissolving_state).
+[locks](#non-dissolving-state) the tokens for a period of
+time, after which it starts [ dissolving](#dissolving-state).
 The ICP stake of a neuron is stored in a [neuron
-account](#neuron_account). The neuron owner has the right to
+account](#neuron-account). The neuron owner has the right to
 propose and vote on governance issues, and is granted rewards for
 [voting](#voting) in proportion to the amount of ICP staked,
 and the duration of the [dissolve
-period](#non-dissolving_state).
+period](#non-dissolving-state).
 
 #### neuron account
 
 A **neuron account** is a [canister
-account](#canister_account) whose
+account](#canister-account) whose
 [beneficiary](#beneficiary) is a [neuron](#neuron)
 (or the neuron’s owner). The [governance
-canister](#governance_canister) is the
+canister](#governance-canister) is the
 [fiduciary](#fiduciary) of all neuron accounts.
 
 #### neuron age
@@ -483,10 +483,10 @@ canister](#governance_canister) is the
 The **neuron age** is a [neuron](#neuron) parameter roughly
 indicative of the time that has passed since its creation or since when
 it last entered into a [non-dissolving
-state](#non-dissolving_state). Calculation of a neuron’s age
+state](#non-dissolving-state). Calculation of a neuron’s age
 needs to take into account whether the neuron has spent time [
-dissolving](#dissolving_state) or
-[dissolved](#dissolved_state), both of which reset this
+dissolving](#dissolving-state) or
+[dissolved](#dissolved-state), both of which reset this
 parameter.
 
 #### node
@@ -494,18 +494,18 @@ parameter.
 A **node** is a physical or virtual network endpoint that hosts all the
 hardware, [replica](#replica) software, and configuration
 settings required to participate in the [Internet
-Computer](#Internet_Computer).
+Computer](#internet-computer-ic).
 
 #### node operator
 
 A **node operator** (NO) is a non-canister
 [principal](#principal) who has the authority to add/remove
 [nodes](#node) to/from the
-[IC](#Internet_Computer_(IC)).
+[IC](#internet-computer-ic-ic).
 
-[node providers](#node_provider) come in possession of
+[node providers](#node-provider) come in possession of
 Hardware Security Modules (HSM), and register the HSMs with the
-[NNS](#network_nervous_system_(NNS)). (The HSM registration
+[NNS](#network-nervous-system-(NNS)). (The HSM registration
 process consists essentially in deriving an IC principal ID from the key
 stored on the HSM, and persisting that ID with the NNS.) NPs hand
 registered HSMs over to legal persons, who now gain the authority to
@@ -520,12 +520,12 @@ different times.
 
 A **node provider** (NP) is a non-canister
 [principal](#principal) that receives the rewards stemming
-from node participation to the [IC](#Internet_Computer_(IC))
+from node participation to the [IC](#internet-computer-ic)
 (aka “payout principal”). Usually, though not necessarily, a node
 provider is the owner of the [node](#node), and may also be
 involved in node operation and related tasks. A node provider may
 receive rewards from multiple nodes in multiple [data
-centers](#data_center).
+centers](#data-center).
 
 ## O
 
@@ -551,23 +551,23 @@ nodes.
 The [nodes](#node) of a [subnet](#subnet) form a
 dedicated peer-to-peer broadcast network that facilitates the secure
 **bounded-time/eventual delivery** broadcast of artifacts (such as
-[ingress messages](#ingress_message), control messages and
+[ingress messages](#ingress-message), control messages and
 their signature shares). The [consensus](#consensus) layer
 builds upon this functionality.
 
 #### principal
 
 A **principal** is an entity that can be authenticated by the [Internet
-Computer](#Internet_Computer). This is the same sense of the
+Computer](#internet-computer-ic). This is the same sense of the
 word principal as the [Wikipedia
-definition](https://en.wikipedia.org/wiki/Principal_(computer_security)).
+definition](https://en.wikipedia.org/wiki/Principal-(computer-security)).
 Principals that interact with the Internet Computer do so using a
 certain [identity](#identity).
 
 #### proposal
 
 A **proposal** is a statement describing an action to modify certain
-parameters of the [IC](#Internet_Computer_(IC)), or of any of
+parameters of the [IC](#internet-computer-ic), or of any of
 its subsystems. It is implemented as an IC entity having various
 attributes, such as an ID, a URL, a summary etc. Proposals are submitted
 by eligible [neuron](#neuron) owners for the consideration of
@@ -578,11 +578,11 @@ prominent of which groups proposals into "topics," whose adoption, in
 turn, triggers certain categories of actions, such as the creation of a
 [subnet](#subnet), the addition of a
 [nodes](#node) to a subnet, and the modification of the
-[ICP](#ICP) exchange rate.
+[ICP](#icp) exchange rate.
 
 #### proto-node
 
-A **proto-node** is an [IC](#Internet_Computer_(IC)) entity
+A **proto-node** is an [IC](#internet-computer-ic) entity
 consisting of a combination of hardware and software, that differs from
 a [node](#node) in that it has not yet been registered with
 the IC. A proto-node is, in short, a "node-in-waiting," hence has all
@@ -610,7 +610,7 @@ necessary for a [node](#node) to participate in a
 #### registry
 
 The IC **registry** manages the system meta-data maintained on the
-network nervous system ([NNS](#network_nervous_system_(NNS)))
+network nervous system ([NNS](#network-nervous-system-(NNS)))
 and accessed by all [subnet](#subnet) blockchains.
 
 ## S
@@ -621,7 +621,7 @@ A **smart contract** is a stateful computer program designed to
 automatically execute, control or document relevant events and actions
 according to the terms of a contract or an agreement. A smart contract
 can be deployed on the [Internet
-Computer](#Internet_Computer) in the form of a
+Computer](#internet-computer-ic) in the form of a
 [canister](#canister) bundling data and code.
 
 A canister can have one or more [controllers](#controller)
@@ -640,20 +640,20 @@ canister state.
 
 #### state manager
 
-The **state manager** is responsible for
+The **state manager** is responsible for:
 
-1.  maintaining (multiple versions of) the replicated state the
+- Maintaining (multiple versions of) the replicated state the
     deterministic state machine implemented by [message
-    routing](#message_routing) and the [execution
-    environment](#execution_environment) operates on,
-2.  converting back and forth between the replicated state and its
+    routing](#message-routing) and the [execution
+    environment](#execution-environment) operates on.
+- Converting back and forth between the replicated state and its
     canonical version (latter can be understood independent of the
-    concrete implementation),
-3.  obtaining certifications of parts of the canonical state, which
+    concrete implementation).
+- Obtaining certifications of parts of the canonical state, which
     allow other stakeholders such as other [subnets](#subnet)
     and/or users, to verify that some piece of state indeed originates
-    from a valid subnetwork, and
-4.  providing capabilities to sync the canonical state with other
+    from a valid subnetwork.
+- Providing capabilities to sync the canonical state with other
     [replicas](#replica) in the same subnet so that replicas
     that have fallen behind can catch up.
 
@@ -662,30 +662,31 @@ The **state manager** is responsible for
 A **subnet** (subnetwork) is a collection of [nodes](#node)
 that run their own instance of the [consensus](#consensus)
 algorithm to produce a subnet blockchain that interacts with other
-subnets of the [IC](#Internet_Computer_(IC)) using [chain
-key](#chain_key) cryptography.
+subnets of the [IC](#internet-computer-ic) using [chain
+key](#chain-key) cryptography.
 
 #### system canister
 
 A **system canister** is a pre-installed
 [canister](#canister) that performs certain tasks needed to
-maintain the [Internet Computer](#Internet_Computer).
+maintain the [Internet Computer](#internet-computer-ic).
 
 ## T
 
 #### transaction
 
 A ledger account **transaction** is the process of transferring
-[ICP](#ICP) from one [account](#account) to
-another; it can be of three types: (a) regular transfer transaction, (b)
-[burning](#burning) transaction, and (c)
-[minting](#minting) transaction.
+[ICP](#icp) from one [account](#account) to
+another; it can be of three types: 
+- Regular transfer transaction.
+- [Burning](#burning) transaction
+- [Minting](#minting) transaction.
 
 #### transfer transaction
 
 A **transfer transaction** is the process of transferring ICP from any
 regular ledger [account](#account) (i.e. any ledger account
-except the [ ICP supply account](#ICP_supply_account)) to
+except the [ ICP supply account](#icp-supply-account)) to
 another regular ledger account.
 
 ## U
@@ -693,9 +694,9 @@ another regular ledger account.
 #### user
 
 A **user** is any entity that interacts with the [Internet
-Computer](#Internet_Computer). Users include end-users that
-use dapps deployed on the [IC](#Internet_Computer_(IC)), dapp
-developers, holders of [ICP](#ICP) utility tokens, and
+Computer](#internet-computer-ic). Users include end-users that
+use dapps deployed on the [IC](#internet-computer-ic), dapp
+developers, holders of [ICP](#icp) utility tokens, and
 [neuron](#neuron) holders.
 
 ## V
@@ -703,9 +704,9 @@ developers, holders of [ICP](#ICP) utility tokens, and
 #### valid set rule
 
 The **valid set rule** is the rule that determines a valid [induction
-pool](#induction_pool). [Ingress
-messages](#ingress_message) and [inter-canister
-messages](#inter-canister_message) must pass certain checks
+pool](#induction-pool). [Ingress
+messages](#ingress-message) and [inter-canister
+messages](#inter-canister-message) must pass certain checks
 to ensure that the valid set rule is upheld before they can be added to
 the induction pool.
 
@@ -714,8 +715,10 @@ the induction pool.
 **Voting** is the process through which
 [proposals](#proposal) are selected for adoption and
 implementation. Its direct participants are the
-[neurons](#neuron), who both (a) submit proposals and (b)
-vote on proposals. The voting process is a rather intricate undertaking,
+[neurons](#neuron), who both:
+-  Submit proposals.
+-  Vote on proposals. 
+The voting process is a rather intricate undertaking,
 involving aspects such as neuron eligibility, voting power, chains of
 neuron followees etc. This has been designed with security and
 dependability in mind, and is being continuously improved in order to

@@ -1,11 +1,11 @@
 ---
 author: Timo Hanke
-title: ID Encoding Specification
+title: ID encoding specification
 published: 2020-03-15
 last-updated: 2020-08-04
 ---
 
-# ID Encoding Specification
+# ID encoding specification
 
 ## Abstract
 
@@ -19,7 +19,7 @@ This specification encodes identifiers in the Base32 format (RFC 4648) after add
 
 The specification of ids (a different document) and the specification of the textual representation of ids (this document) are separate things. The former is about the ids that are used inside the IC (it covers the internal structure of ids as byte strings). The latter is about encoding those ids for use outside of the IC (ignoring the internal structure and describing the encoding as a character string that can be handled by users).
 
-This specification works on top of the specification of ids. Therefore, we speak of the id that is used inside the IC as the _underlying id_. The encoding used outside of the IC is called _encoded id_ or simply _id_ throughout this document. Sometimes we also refer to the underlying id as the _byte string_ and to the encoded id as the _character string_.
+This specification works on top of the specification of ids. Therefore, we speak of the id that is used inside the IC as the **underlying id**. The encoding used outside of the IC is called **encoded id** or simply **id** throughout this document. Sometimes we also refer to the underlying id as the **byte string** and to the encoded id as the **character string**.
 
 As far as this specification is concerned, the underlying ids are considered as binary blobs in varying sizes (opaque). The allowed size of an underlying id is up to 29 bytes.
 
@@ -28,13 +28,13 @@ It shall be pointed out that the two specifications are not entirely orthogonal.
 The definition of a URL scheme is not in the scope of this specification. We leave a URL scheme as something to be defined on top of this specification.
 
 The outline of this document is as follows.
-Section [Assumptions and Requirements](#assumptions-and-requirements) presents the assumptions and requirements which guided the design process that led to this specification.
-Section [Specification](#specification) provides the specification itself.
-Section [Reference Implementations](#reference-implementations) gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
-Section [Test Vectors](#test-vectors) provides test vectors.
-Section [Rationale](#rationale) explains the reasons why the specification was chosen, given the assumptions and requirements from Section [Assumptions and Requirements](#assumptions-and-requirements).
+- Section [Assumptions and Requirements](#assumptions-and-requirements) presents the assumptions and requirements which guided the design process that led to this specification.
+- Section [Specification](#specification) provides the specification itself.
+- Section [Reference Implementations](#reference-implementations) gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
+- Section [Test Vectors](#test-vectors) provides test vectors.
+- Section [Rationale](#rationale) explains the reasons why the specification was chosen, given the assumptions and requirements from Section [Assumptions and Requirements](#assumptions-and-requirements).
 
-## Assumptions and Requirements
+## Assumptions and requirements
 
 The specification was designed around the following:
 
@@ -324,11 +324,11 @@ The function `Decode` normalizes the input to all-lower-case and then applies th
 
 ## Rationale
 
-**Why is the character set not Base64?**
+- #### **Why is the character set not Base64?**
 
 We need case-insensitive ids because we want to use them in the hostname (i.e. the authority part) of a URL. (see Requirement 2: URL-compatibility)
 
-**Why is the character set not hex?**
+- #### **Why is the character set not hex?**
 
 URLs limit the length of hostnames to 63 characters.
 In hex this would allow to encode a maximum of 31 bytes.
@@ -336,11 +336,11 @@ This is not enough to fit our derived ids into it.
 A change to the id specification could make it possible like this: 20 byte hash + 4 bytes freely chooseable + 4 bytes check sequence + 2 bytes version = 30 bytes.
 However, it is nice to a) have overall shorter ids and b) have more space available for future extensions. (see Requirement 2: URL-compatibility)
 
-**Why a check sequence?**
+- #### **Why a check sequence?**
 
 The purpose of the check sequence is to detect errors early, right in the user interface, before connecting to the IC, in fact, without necessity to connect to the IC at all. (see Requirement 3: User experience)
 
-**Why is the check sequence 4 bytes and not shorter?**
+- #### **Why is the check sequence 4 bytes and not shorter?**
 
 We expect that the protocol may accept unregistered (self-generated) ids.
 An accidental alteration could lead to financial loss.
@@ -348,42 +348,42 @@ To minimize the total loss incurred by all users combined it is important to red
 We think 1:10<sup>9</sup> or better is required.
 If it was only to improve user experience and financial loss was not an issue then 2 bytes would have been enough as, e.g., in onion addresses. (see Requirement 1: Security)
 
-**Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
+- #### **Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
 
 Calculating the check sequence before encoding makes the check sequence part independent of the encoding part.
 This may reduce code dependencies. 
 
-**Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
+- #### **Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
 
 Yes, but a) we do not design for ids typed by humans and b) the improvement in detection rate is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
 
-**Why is the check sequence not based on a cryptographic hash?**
+- #### **Why is the check sequence not based on a cryptographic hash?**
 
 A cryptographic hash shortened to 4 bytes is not “cryptographic” anymore, hence it is as good as our CRC function.
 
-**Why is the check sequence not based on SHA256?**
+- #### **Why is the check sequence not based on SHA256?**
 
 CRC is cheaper computation wise.
 This may pay off when canister code handles encoded ids.
 
-**Why wasn’t a better polynomial chosen for the CRC than the standard one?**
+- #### **Why wasn’t a better polynomial chosen for the CRC than the standard one?**
 
 It is true that there are polynomials with a better Hamming distance.
 At data length of up to 256 bits one can find Hamming distance 6 where our polynomial only has Hamming distance 4.
 As said before, the difference is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
 The availability of libraries for the standard polynomial used in CRC32 is more important to us. (see Requirement 4: Developer experience)
 
-**Why is the check sequence not based on a BCH code over GF(32)?**
+- #### **Why is the check sequence not based on a BCH code over GF(32)?**
 
 The advantage of a BCH code would be that the check sequence can be made character-based to detect human typos.
 We already answered above why we didn’t choose a character-based check sequence.
 
-**But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
+- #### **But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
 
 Yes, but BCH would require custom code where CRC32 is widely available in libraries.
 This is more important to us. (see Requirement 4: Developer experience)
 
-**Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
+- #### **Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
 
 Three reasons: 
   * We want a case-insensitive encoding for use in hostnames. (see Requirement 2: URL-compatibility)
