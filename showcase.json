@@ -1795,4 +1795,23 @@
     "logo": "/img/showcase/bink_logo.png",
     "twitter": "https://twitter.com/BinkDapp"
   }
+{
+    "id": "icns",
+    "name": "ICNS",
+    "oneLiner": "Internet Computer Name Service",
+    "website": "https://icns.id/",
+    "tags": [
+      "NFT", "Domain";
+    ],
+    "twitter": "https://twitter.com/icnsid",
+    "description": "ICNS is the primary naming service on the Internet Computer
+",
+    "usesInternetIdentity": false,
+    "stats": "23000+ names",
+    "display": "Large",
+    "logo": "/img/showcase/ICNS_logo.webp",
+    "screenshots": [
+      "/img/showcase/ICNS_screenshot.webp"
+    ]
+  }
 ]
