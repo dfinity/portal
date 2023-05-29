@@ -312,6 +312,10 @@ const config = {
                   label: "Rust Docs",
                   href: "/docs/current/developer-docs/backend/rust/?source=nav",
                 },
+                {
+                  label: "Solidity Docs",
+                  href: "https://bitfinity.network/ecosystem/solidity-examples",
+                },
                 menuDivider("Tools"),
 
                 { label: "Developer Tools", to: "/tooling?source=nav" },
