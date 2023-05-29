@@ -8,6 +8,7 @@ import motokoBG from "@site/static/img/motoko.webp";
 import rustBG from "@site/static/img/rust.webp";
 import azleBG from "@site/static/img/azle.webp";
 import kybraBG from "@site/static/img/kybra.webp";
+import bitfinityEvmBG from "@site/static/img/bitfinity-evm.png";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 
@@ -87,7 +88,7 @@ function Index() {
         </motion.a>
         <motion.a
           variants={transitions.item}
-          href={"https://docs.bitfinity.network/"}
+          href={"https://bitfinity.network/ecosystem/solidity-examples"}
           target={"_blank"}
           className={clsx(styles.card, styles.cardHover)}
         >
@@ -97,6 +98,7 @@ function Index() {
               The Bitfinity EVM allows you to run Solidity smart-contracts on the Internet Computer
             </p>
           </div>
+          <img className={styles.bitfinityBackground} src={bitfinityEvmBG} alt="" />
           <RightArrowSVG className={styles.informationIcon} />
         </motion.a>
       </div>

@@ -109,7 +109,8 @@
     var(--ifm-transition-custom-curve);
 }
 .cardHover:hover .motokoBackground,
-.cardHover:hover .rustBackground {
+.cardHover:hover .rustBackground,
+.cardHover:hover .bitfinityBackground {
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
 }
@@ -118,6 +119,9 @@
 }
 .cardHover:hover .rustBackground {
   bottom: 20px;
+}
+.cardHover:hover .bitfinityBackground {
+  bottom: 0;
 }
 
 .bodyContainer {
@@ -164,6 +168,13 @@
   position: absolute;
   bottom: -4px;
   right: -8px;
+}
+
+.bitfinityBackground {
+  height: 120px;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
 }
 
 .scrollContainer {
@@ -259,6 +270,7 @@
   }
 
   .motokoBackground,
+  .bitfinityBackground,
   .rustBackground {
     display: none;
   }
