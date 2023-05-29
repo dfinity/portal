@@ -257,6 +257,24 @@ function DefiPage() {
               </Link>
             </p>
           </TranslatedLayout>
+          <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
+            <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+              EVM on the IC
+            </h3>
+            <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+              The Bitfinity EVM allows you to run Solidity smart-contracts
+              at web-speed, directly on the Internet Computer. More information about Bitfinity,
+              and how you can run your Solidity smart-contracts on the Internet Computer
+              can be found on the Bitfinity EVM homepage.
+            </p>
+            <Link
+              className="link-primary link-with-icon"
+              href="https://bitfinity.network"
+            >
+              <LinkArrowRight />
+              Check out Bitfinity EVM
+            </Link>
+          </TranslatedLayout>
         </section>
         {/* <BackgroundPanel> */}
         <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] py-20 md:py-48 text-white">
@@ -418,34 +436,6 @@ function DefiPage() {
               >
                 <LinkArrowRight />
                 Check out ICP.Swap
-              </Link>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/defi/icpswap.webp" reverse={true}>
-              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                Bitfinity EVM
-              </div>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                EVM on the IC
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                The Bitfinity EVM allows you to run Solidity smart-contracts
-                at web-speed, directly on the Internet Computer.  More information about Bitfinity,
-                and how you can run your Solidity smart-contracts on the Internet Computer
-                can be found on the webpage:
-                <Link
-                  className="link-primary link-with-icon"
-                  href="https://bitfinity.network"
-                >
-                  <LinkArrowRight />
-                  Check out Bitfinity EVM
-                </Link>
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://bitfinity.network"
-              >
-                <LinkArrowRight />
-                Check out Bitfinity EVM
               </Link>
             </TranslatedLayout>
           </div>
