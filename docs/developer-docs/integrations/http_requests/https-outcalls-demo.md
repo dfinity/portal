@@ -15,11 +15,14 @@ The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP reques
 The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
 :::
 
-#### Example in Motoko
-Here is how the management canister is declared in a Motoko canister (e.g. `main.mo`):
+#### Minimal example for a GET request
+
+To get started, we present a minimal example in Motoko that uses a GET request. The structure the code will have is:
+
+Here is what `main.mo` will look like:
 
 ```motoko
-//Needed for declaring the IC management canister
+//Import some custom types
 import Types "Types";
 
 actor {
@@ -34,6 +37,15 @@ actor {
 
     //send the http request
     let response : Types.CanisterHttpResponsePayload = await ic.http_request(request);
+
+}
+```
+
+Here is what `Types.mo` will look like:
+```motoko
+module Types {
+
+    //type declaration
 
 }
 ```
