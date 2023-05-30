@@ -70,13 +70,19 @@ const SingleCard: React.FC<{
 const SmallCard: React.FC<{
   children: React.ReactNode;
   className?: string;
-}> = ({ children, className = "bg-white-50" }) => {
+  href: string;
+}> = ({ children, className = "bg-white-50", href }) => {
   return (
-    <AnimateSpawn
-      className={clsx("rounded-xl overflow-hidden p-6 md:p-8", className)}
-      variants={transitions.container}
-    >
-      {children}
+    <AnimateSpawn variants={transitions.container}>
+      <Link
+        className={clsx(
+          "rounded-xl overflow-hidden p-6 md:p-8 hover:no-underline hover:text-black translate-y-0 hover:-translate-y-3 transition-transform text-black h-full block",
+          className
+        )}
+        href={href}
+      >
+        {children}
+      </Link>
     </AnimateSpawn>
   );
 };
@@ -682,110 +688,68 @@ function FeaturesPage() {
               blob-top-right
             "
           ></motion.div>
-          <SmallCard>
+          <SmallCard href="/how-it-works#Chain-key-technology">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Chain-key cryptography
             </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               The Internet Computer protocol uses a toolbox of advanced
               cryptographic mechanisms, collectively known as chain-key
               cryptography, which allows the IC to achieve functionalities and
               scalability that are impossible on other blockchains.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-technology"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
+          <SmallCard href="/capabilities/actor-model">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Concurrent execution
             </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Enabled by the IC's asynchronous communication, "actor" smart
               contracts run in parallel, unlocking horizontal scaling and
               preventing reentrancy attacks like the infamous DAO attack, which
               caused a major chain to hard fork and a loss of 60 million USD.
             </p>
-            <p className="mb-0">
-              <Link href="/capabilities/actor-model" className="link-external">
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
+          <SmallCard href="/capabilities/daemon-contracts">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               On other blockchain networks, smart contract computations can only
               be invoked by submitting a new transaction to their networks. The
               Internet Computer provides a means for canister smart contracts to
               be configured so that they are invoked by the blockchain itself,
               at some specified block interval.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/daemon-contracts"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
+          <SmallCard href="/capabilities/multi-block-transactions">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Multi-block transactions
             </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Smart contract calls (TXs) can be long-running and can span
               multiple blocks. This removes the tedious "round gas limit" most
               blockchains have, simplifies smart contract programming, and
               unlocks new use cases.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/multi-block-transactions"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
+          <SmallCard href="/capabilities/webassembly">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               WebAssembly (Wasm)
             </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Use any language that compiles to Wasm to write canister smart
               contracts. SDKs are available for Motoko, Rust, TypeScript, and
               Python. Any other language that compiles to Wasm can be used as
               well, for example C.
             </p>
-            <p className="mb-0">
-              <Link href="/capabilities/webassembly" className="link-external">
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
+          <SmallCard href="/capabilities/limitless-scaling">
             <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Subnets &amp; infinite scalability
             </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               The Internet Computer incorporates a novel subnet architecture
               that enables infinite scalability, making 100% on-chain
               mass-market Web3 services possible. No cloud servers needed.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/limitless-scaling"
-                className="link-external"
-              >
-                Learn more
-              </Link>
             </p>
           </SmallCard>
         </section>
