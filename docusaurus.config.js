@@ -314,7 +314,7 @@ const config = {
                 },
                 {
                   label: "Solidity Docs",
-                  href: "https://bitfinity.network/ecosystem/solidity-examples",
+                  href: "https://docs.bitfinity.network/",
                 },
                 menuDivider("Tools"),
 
