@@ -19,7 +19,7 @@ This walkthrough focuses on the version of the sample canister code written in [
 :::
 
 ## Prerequisites
--   [x] Download and [install the SDK](../developer-docs/setup/index.md) if you do not already have it.
+-   [x] Download and [install the IC SDK](../developer-docs/setup/index.md) if you do not already have it.
 -   [x] Check out the [examples repository](https://github.com/dfinity/examples).
 
 ## Step 1: Getting Started
@@ -63,7 +63,7 @@ To deploy this canister the IC mainnet, one needs to do two things:
 
 ### Acquire cycles to deploy
 
-Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
+Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md).
 
 ### Update source code with the right key ID
 
@@ -115,7 +115,7 @@ URLs:
 
 In example above, `ecdsa_example_motoko` has the URL https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai and serves up the Candid web UI for this particular canister deployed on mainnet.
 
-## Step 3: Obtaining Public Keys
+## Step 3: Obtaining public keys
 
 ### Using the Candid web UI
 
@@ -206,7 +206,7 @@ Computing threshold ECDSA signatures is the core functionality of this feature. 
   };
 ```
 
-## Step 5: Signature Verification
+## Step 5: Signature verification
 
 For completeness of the example, we show that the created signatures can be verified with the public key corresponding to the same canister and derivation path.
 
