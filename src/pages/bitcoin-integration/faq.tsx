@@ -90,8 +90,8 @@ const FaqSection: React.FC<{
 function BitcoinFaqPage() {
   return (
     <Layout
-      title="SNS DAO FAQ"
-      description="All you need to know about DAOs on the Internet Computer and how to participate in them."
+      title="Bitcoin integration FAQ"
+      description="All you need to know about ckBTC and ICP's Bitcoin integration."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
@@ -105,21 +105,21 @@ function BitcoinFaqPage() {
           <Breadcrumbs
             links={[
               {
-                href: "/sns",
-                text: "SNS",
+                href: "/bitcoin-integration",
+                text: "Bitcoin integration",
               },
               {
-                text: " What you need to know about SNS DAOs",
+                text: "What you need to know about Bitcoin integration",
               },
             ]}
           ></Breadcrumbs>
           <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10">
-            What you need to know about SNS DAOs
+            What you need to know about Bitcoin integration and ckBTC
           </motion.h1>
         </AnimateSpawn>
         <section className="container-12 flex flex-col gap-30 ">
           <FaqSection
-            id="introduction"
+            id="bitcoin-integration"
             title={
               <div className="relative mb-20">
                 <div className="blob blob-sm md:blob-md blob-bottom-left -bottom-20 blob-infinite z-[-1] opacity-90"></div>
@@ -132,149 +132,66 @@ function BitcoinFaqPage() {
               </div>
             }
           >
-            <Faq title="What is a DAO?">
+            <Faq title="What is Bitcoin integration?">
               <p>
-                DAO stands for Decentralized Autonomous Organization. Simply
-                put, a DAO is an organization formed by smart contracts where
-                the members (typically token holders) collectively decide how
-                the organization or the product evolves. Example scenarios:
+                The Internet Computer (ICP) is integrated with the Bitcoin network
+                at the protocol level. The canister smart contracts it hosts can
+                create Bitcoin addresses as well as send and receive bitcoin directly
+                on the Bitcoin network. This means bitcoin can be easily and securely
+                incorporated into DeFi and Web3 services on the Internet Computer
+                blockchain, without having to trust wrapped bitcoin from centralized
+                bridging services, which are at high risk of being taken down or
+                hacked. The Internet Computer's integration with the Bitcoin network
+                is made up of two key building blocks:{" "}
+                <strong>Network integration</strong> and <strong>chain-Key ECDSA</strong>.
               </p>
-              <ul>
-                <li>
-                  10'000 token holders each deposit crypto into a smart contract
-                  and vote on what to purchase with the total.
-                </li>
-                <li>
-                  1 million token holders control a decentralized version of
-                  Twitter where token holders propose and vote on feature
-                  updates.
-                </li>
-              </ul>
-
               <p>
-                A DAO can take the role of carrying out community-driven
-                decisions on when and how to update the code that shapes the
-                organization or product.
+                Combining these building blocks, canisters can directly and
+                securely hold, receive, and send bitcoin seamlessly as if the
+                Internet Computer and the Bitcoin network were one blockchain.
+                Another way of looking at it, is that the Bitcoin integration
+                is the same as running a Bitcoin node on chain.
               </p>
             </Faq>
 
-            <Faq title="What is an SNS?">
+            <Faq title="What does it mean that the Internet Computer directly integrated with the Bitcoin network?">
               <p>
-                SNS stands for Service Nervous System. An SNS is a powerful form
-                of DAO that allows communities to govern smart contracts and
-                decentralized apps (dapps) running on the Internet Computer
-                (ICP) completely on chain. Main things to note about SNS:
-              </p>
-              <ul>
-                <li>
-                  The design of SNSs is similar to that of the{" "}
-                  <Link href="/nns">Network Nervous System (NNS)</Link>, which
-                  is the on-chain DAO that governs the whole ICP.
-                </li>
-                <li>
-                  A dapp controlled by an SNS DAO is governed by SNS token
-                  holders submitting and voting on on-chain proposals. No one
-                  developer or group of people controls the dapp, rather the
-                  dapp is controlled by voting via tokens.
-                </li>
-                <li>
-                  There can be many SNSs on ICP. Any developer can hand over the
-                  control of their dapp to an SNS DAO. Doing so gives control to
-                  DAO token holders.
-                </li>
-              </ul>
-            </Faq>
-
-            <Faq title="How unique are SNS DAOs in Web3?">
-              <p>
-                DAOs are a growing form of organization for accomplishing goals.
-                For example, in the ETH ecosystem, Uniswap and MakerDAO are
-                popular DAOs with billions of dollars locked in their respective
-                smart contracts. However,{" "}
-                <strong>
-                  ICP is unique in that it can host fully-on chain dapps
-                </strong>{" "}
-                (frontend, backend application logic, and data), so SNS DAOs are
-                unique in that they can fully control (via voting) every aspect
-                of a dapp, since everything is on-chain. Having fully on-chain
-                DAOs is important because it enables all decisions to be
-                executed on the blockchain. This is in contrast to existing DAOs
-                on other blockchains where voting takes place on-chain but the
-                execution of the results are often carried out by developers
-                off-chain. This facilitates true decentralization.{" "}
-                <p>
-                  Therefore, SNS DAOs serve as a vehicle to deliver fully
-                  decentralized online services that are owned and governed by
-                  their communities.{" "}
-                </p>
+                One key tech development allowing smart contracts on the Internet
+                Computer to obtain the balances of Bitcoin addresses as well as
+                directly send and receive bitcoin is inter-chain communication.
+                As the ICP blockchain creates transactions for the Bitcoin
+                blockchain, its nodes directly transmit the transaction to the
+                nodes of the Bitcoin network, without any need for intermediaries
+                that might censor them. ICP nodes also directly pull blocks from
+                the Bitcoin network to maintain Bitcoin's current UTXO set,
+                allowing canisters to query the balance of Bitcoin addresses
+                and their UTXOs. Creating bitcoin transactions and querying UTXO
+                sets are made available to canisters by the Bitcoin API.
               </p>
             </Faq>
 
-            <Faq title="What are the advantages of SNS DAOs? ">
+            <Faq title="What is chain-key ECDSA?">
               <p>
-                SNS DAOs facilitate a healthy exchange between developers,
-                entrepreneurs, end users and VC’s. Some advantages of turning
-                the control of your dapp over to a DAO include:{" "}
+                The real innovation behind Bitcoin integration is chain-key ECDSA
+                signing — advanced threshold cryptography integrated with ICP. In
+                short, chain-key ECDSA is a set of cryptographic protocols that
+                allow Internet Computer nodes to cooperatively create ECDSA
+                signatures, which can be used to sign bitcoin transactions, using
+                a highly fault-tolerant, decentralized network that is resilient
+                to attacks by malicious nodes. The secret key is never stored in
+                one place, instead it is broken down into key shares held by ICP
+                nodes that are re-shared periodically. When requested, nodes
+                use their key shares to collectively sign BTC transactions without
+                recreating the original secret key. This signing protocol assumes
+                a threshold of nodes to be honest.
               </p>
-              <ul>
-                <li>
-                  <strong>Community Engagement:</strong> as co-owners of the
-                  product, users become core contributors, developers deliver on
-                  value proposition.{" "}
-                </li>
-                <li>
-                  <strong>Speedy User Adoption:</strong> As co-owners, users
-                  become the biggest advocates of the product.
-                </li>
-                <li>
-                  <strong>Funding:</strong> projects are funded through a
-                  community-driven decentralization swap.
-                </li>
-              </ul>
-            </Faq>
-
-            <Faq title="What is SNS-1?">
-              SNS-1 is the first SNS DAO that DFINITY launched on the mainnet to
-              test an SNS decentralization swap with involvement of the ICP
-              community. The SNS-1 test exposed areas of improvement, which are
-              currently being addressed. The SNS-1 dapp is now controlled by the
-              community of token holders who will collectively determine its
-              future. Since SNS-1 was meant as a test, it is unusual among SNSs
-              in that it was launched as a blank canvas without a product or
-              developer team. Future SNSs will likely be derived from
-              established ICP dapps. SNS-1 tokens are available on{" "}
-              <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex/SNS1/ICP">
-                ICDex
-              </Link>
-              .
-            </Faq>
-
-            <Faq title="Are there other existing SNS DAOs?">
-              The ICP community has expressed much interest and enthusiasm for
-              the launch of the SNS technology. OpenChat was the first dapp that
-              handed control over to an SNS DAO announced their plans to turn
-              their dapp into an SNS DAO in Q1 of 2023. Dapps such as{" "}
-              <Link href="https://www.sonic.ooo//">Sonic</Link>,{" "}
-              <Link href="https://hotornot.wtf/">Hot or Not</Link>,{" "}
-              <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
-                Kinic
-              </Link>
-              , <Link href="https://distrikt.app/">distrikt</Link>,{" "}
-              <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
-                Catalyze
-              </Link>
-              , <Link href="https://canistore.io/">Canistore</Link> and{" "}
-              <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
-                Nuance
-              </Link>{" "}
-              are considering creating their own SNSs.
             </Faq>
           </FaqSection>
           <FaqSection
-            id="participate"
+            id="ckbtc"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                How to participate in an SNS DAO
+                Chain-key Bitcoin (ckBTC)
               </h2>
             }
           >

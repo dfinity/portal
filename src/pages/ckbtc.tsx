@@ -449,7 +449,7 @@ function CkbtcPage(): JSX.Element {
                     can be used to sign bitcoin transactions, using a highly fault-tolerant,
                     decentralized network that is resilient to attacks by malicious nodes.
                     The secret key is never stored in one place, instead it is broken down
-                    into key shares held by ICP nodes that are re-shared every ~10 mins.
+                    into key shares held by ICP nodes that are re-shared periodically.
                     When requested, nodes use their key shares to collectively sign BTC
                     transactions without recreating the original secret key.
                   </p>
