@@ -35,8 +35,8 @@ When upgrading existing canisters, there are a few more things that one should k
 
 ## Things to consider
 
-  * [Funding](#funding)
-  * [Demonstrating trust](#demonstrating-trust)
+  * [Funding](#funding).
+  * [Demonstrating trust](#demonstrating-trust).
 
 ### Funding
 
@@ -44,7 +44,7 @@ Internet Computer canisters are funded using a balance of cycles that will gradu
 
 Here is a checklist of the things you will need to consider:
 
-- [] **What will the canister's source of funds be?**
+- [ ] **What will the canister's source of funds be?**
   * Paid for up-front by the developer.
   * Funded by donations from the community.
   * Funded by ongoing revenue in ICP or cycles.

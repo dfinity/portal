@@ -9,7 +9,7 @@ This guide illustrates how to pass arguments on the command-line in a terminal u
 
 Before you start this guide, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have stopped any canister execution environments running on the local computer.
 
@@ -47,7 +47,7 @@ To modify settings in the `dfx.json` configuration file:
 
 ## Modify the default program
 
-In the [Explore the default project](explore-templates) guide, you saw that creating a new project creates a default `src` directory with a template `main.mo` file.
+In the [explore the default project](explore-templates) guide, you saw that creating a new project creates a default `src` directory with a template `main.mo` file.
 
 To modify the default template source code:
 
