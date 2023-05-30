@@ -1,5 +1,5 @@
 ---
-title: Smart Contracts Serve the Web
+title: Canister smart contracts serve the Web
 abstract:
 shareImage: /img/how-it-works/web-content.jpg
 slug: smart-contracts-serve-the-web
@@ -7,10 +7,7 @@ slug: smart-contracts-serve-the-web
 
 # Smart Contracts serve the web
 
-The Internet Computer is the only blockchain that can host a full dapp – frontend, backend and data. Any user can deploy their dapp as a canister (smart contract) on the Internet Computer. Canisters are computational units that bundle together code and state. Canisters can store data, deliver HTML, CSS and Javascript pages, and answer API requests. Canisters are incredibly fast and can deliver webpages within 200ms. Canisters can store up to 32 GB of data at an incredibly low cost ($5 per GB per annum). Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps hosted on cloud. All these factors enable developers to deploy even large-scale social media applications entirely on-chain without needing any cloud services. Try out a few apps deployed on the IC.
-
-- [DSCVR (Decentralized Reddit)](https://dscvr.one)
-- [Distrikt (Decentralized Twitter)](https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/)
+The Internet Computer is the only blockchain that can host a full dapp – frontend, backend and data. Any user can deploy their dapp as a canister (smart contract) on the Internet Computer. Canisters are computational units that bundle together code and state. Canisters can store data, deliver HTML, CSS and Javascript pages, and answer API requests. Canisters are incredibly fast and can deliver webpages within 200ms. Canisters can store up to 32 GB of data at an incredibly low cost ($5 per GB per annum). Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps hosted on cloud. All these factors enable developers to deploy even large-scale social media applications entirely on-chain without needing any cloud services. Try out a few [dapps deployed on the Internet Computer](https://internetcomputer.org/ecosystem/).
 
 ## Workflow
 
@@ -31,13 +28,13 @@ Boundary nodes route canister queries to appropriate subnet.
 
 <!-- After a developer deploys an app as a canister, he gets the canister id of the created canister. Any user can then access the website for the app at a URL of the form http://\<canister id\>.ic0.app or http://\<canister id\>.raw.ic0.app. When the user enters the above URL on his browser, the browser contacts DNS service, which resolves the ic0.app domain to an IP address of a boundary node. The browser then makes a HTTP request to the boundary node.  -->
 
-## Deploying Web Apps on IC
+## Deploying web apps on the Internet Computer
 
 If a canister wishes to serve web content, it should implement a method that consumes a HTTP request (url, http method and headers) and outputs a HTTP response (status, headers and body). The canister method could return HTML, CSS and Javascript content as part of the HTTP response. Refer to [Internet Computer Interface Spec](/docs/current/references/ic-interface-spec/#ic-http_request) for more details.
 
-There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at http://\<canister id\>.ic0.app and http://\<canister id\>.raw.ic0.app. A detailed tutorial can be found [here](https://www.youtube.com/watch?v=JAQ1dkFvfPI) and [here](/docs/current/samples/host-a-website/).
+There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at http://\<canister id\>.ic0.app and http://\<canister id\>.raw.ic0.app. See [tutorial](/docs/current/samples/host-a-website/) or [watch the video](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
 
-## HTTP Gateway Protocol
+## HTTP gateway protocol
 
 The browser only communicates with HTTP(s) protocol and doesn’t know how to query a canister. To fill the gap between the browser and Internet Computer protocols, we utilize a [HTTP Gateway](/docs/current/references/ic-interface-spec/#http-gateway), which is a software that sits in between the browser and the Internet Computer. The browser sends a http request to the http gateway. The gateway first interprets the URL in the http request and extracts the corresponding canister id. It then converts the http request into a canister query and sends it to the boundary nodes. When the canister sends back a response, the http gateway interprets the response, verifies the signatures, converts into a http response and sends it to the browser.
 
@@ -49,7 +46,7 @@ There are many ways to implement the HTTP Gateway protocol. Currently, there are
 
 ## SEO
 
-The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33) and this [blog post](https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853).
+The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33).
 
 [Serving web content](/capabilities/serve-web-content/)
 

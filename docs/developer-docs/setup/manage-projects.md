@@ -1,5 +1,7 @@
 # Managing projects
 
+## Overview
+
 You can modify some key settings for individual projects by modifying each project’s `dfx.json` configuration file. You can use the `dfx config` command to change these settings programmatically or manually edit the `dfx.json` file directly.
 
 ## How to change the source directory
@@ -52,3 +54,11 @@ For example, you can change the IP address for the local network by modifying th
         "type": "ephemeral"
       }
     }
+
+## Resources
+
+-   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
+
+-   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 

@@ -1,15 +1,17 @@
 ---
-title: Asset Canister
+title: Asset canister
 ---
 
-# The Asset Canister
+# Asset canister
 
-The [Asset Canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides
+## Overview
+
+The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides
 you with a mechanism to store and retrieve static assets from a canister deployed on the Internet
 Computer. It is generally used to serve HTML, JS, and CSS assets
 for [single page applications](https://en.wikipedia.org/wiki/Single-page_application), i.e. your application's frontend.
 
-DFX provides this canister by default when your canister `type` is set to `assets` in `dfx.json`.
+`dfx` provides this canister by default when your canister `type` is set to `assets` in `dfx.json`.
 
 For example:
 
@@ -45,9 +47,9 @@ figure, your canister may fail to upgrade.
 
 <br/>
 
-# Anatomy
+## Architecture
 
-The Asset Canister is written in Rust and exposes the following methods:
+The asset canister is written in Rust and exposes the following methods:
 
 ```go
 #[update]
@@ -134,9 +136,9 @@ fn set_asset_properties(arg: SetAssetPropertiesArguments)
 
 <br/>
 
-# Configuration
+## Configuration
 
-You can configure how the Asset Canister responds to requests for specific assets by defining your
+You can configure how the asset canister responds to requests for specific assets by defining your
 desired configuration in a file named `.ic-assets.json`
 
 Each entry in `.ic-assets.json` allows for specifying a glob pattern along with the headers to be returned in
@@ -198,13 +200,13 @@ Here is a sample:
 ]
 ```
 
-# Troubleshooting
+## Troubleshooting
 
-Here are some common resolutions for issues encountered with the Asset canister.
+Here are some common resolutions for issues encountered with the asset canister.
 
 ### Asset canister fails to upgrade
 
-It is likely that the total size of all the static files stored in your Asset canister exceed the
+It is likely that the total size of all the static files stored in your asset canister exceed the
 recommended 1GB limit. The resolution is to uninstall and redeploy your canister code.
 
 ```bash
@@ -216,7 +218,7 @@ dfx deploy --upgrade-unchanged <CANISTER NAME>
 ```
 
 :::caution
-This will incur downtime. This first uninstalls the WASM module from your canister. During this period, your canister
+This will incur downtime. This first uninstalls the Wasm module from your canister. During this period, your canister
 will not be reachable. The second command redeploys with fresh state, after which point, your canister will be available
 to serve assets again.
 :::

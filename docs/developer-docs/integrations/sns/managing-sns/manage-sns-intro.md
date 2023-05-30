@@ -1,13 +1,14 @@
-# How to manage an SNS
+# Manage an SNS
 
-:::info
-**Audience**: Once an
+## Overview
+
+Once an
 [SNS is launched](../get-sns/get-sns-intro.md),
 neither the dapp that the SNS controls, nor the SNS canisters
 are under the control of a singe entity such as a developer.
 This means that the dapp and to the SNS
 canisters, as well as which changes can be made to them,
-are _controlled by the SNS community_.
+are **controlled by the SNS community**.
 Anyone with an SNS neuron can make a proposal to suggest
 a change in the dapp or to modify a parameter in the SNS
 governance and, if the majority agrees, the proposal is
@@ -15,15 +16,15 @@ automatically executed on-chain.
 For this reason, the following pages are not only relevant
 for developers but for any member of an SNS community
 who would like to actively help managing the SNS.
-:::
+
 
 On this page we will introduce a 
-few aspects that are relevant for _managing_ an SNS.
+few aspects that are relevant for **managing** an SNS.
 As we complete more detailed pages for these different 
 topics, we will link to them here.
 
 * As every piece of software, after an
-SNS is launched is has to be _maintained_.
+SNS is launched is has to be **maintained**.
 This includes ensuring that the SNS canisters are
 running the latest version and that they have enough
 cycles to continue operating.
@@ -41,7 +42,9 @@ for example to adopt to new situations or to experiment with
 different governance and tokenomic models.
 Therefore, managing an SNS also means that the community
 should regularly consider and adjust these configurations,
-which are defined by the SNS's _nervous system parameters_.
+which are defined by the SNS's **nervous system parameters**.
+
+
 <!--We describe on
 this page(./nervous-system-parameters.md)
 which parameters can be chosen and how they can be adjusted 

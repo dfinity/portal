@@ -161,19 +161,19 @@ const config = {
                 menuDivider("Start here"),
                 {
                   label: "The Basics",
-                  href: "/basics",
+                  href: "/basics?source=nav",
                 },
                 {
                   label: "What is the IC",
-                  href: "/what-is-the-ic",
+                  href: "/what-is-the-ic?source=nav",
                 },
                 {
                   label: "How it Works",
-                  href: "/how-it-works",
+                  href: "/how-it-works?source=nav",
                 },
                 {
                   label: "Sustainability",
-                  href: "/capabilities/sustainability",
+                  href: "/capabilities/sustainability?source=nav",
                 },
                 {
                   label: "Whitepaper",
@@ -185,7 +185,7 @@ const config = {
                 },
                 {
                   label: "Video Library",
-                  href: "/videos",
+                  href: "/videos?source=nav",
                 },
               ],
               [
@@ -193,23 +193,23 @@ const config = {
                 menuDivider("Capabilities"),
                 {
                   label: "Capabilities",
-                  href: "/capabilities",
+                  href: "/capabilities?source=nav",
                 },
                 {
                   label: "Bitcoin Integration",
-                  href: "/bitcoin-integration",
+                  href: "/bitcoin-integration?source=nav",
                 },
                 {
                   label: "Ethereum Integration",
-                  href: "/ethereum-integration",
+                  href: "/ethereum-integration?source=nav",
                 },
                 {
                   label: "HTTPS Outcalls",
-                  href: "/https-outcalls",
+                  href: "/https-outcalls?source=nav",
                 },
                 {
                   label: "Identity on ICP",
-                  href: "/internet-identity",
+                  href: "/internet-identity?source=nav",
                 },
 
                 menuDivider("Tools"),
@@ -220,7 +220,7 @@ const config = {
 
                 {
                   label: "Wallets",
-                  href: "/ecosystem?tag=Wallet",
+                  href: "/ecosystem?tag=Wallet&source=nav",
                 },
                 {
                   label: "GitHub",
@@ -240,11 +240,11 @@ const config = {
                 menuDivider("Step into Web3"),
                 {
                   label: "ICP Ecosystem",
-                  href: "/ecosystem",
+                  href: "/ecosystem?source=nav",
                 },
                 {
                   label: "ICP Token",
-                  href: "/icp-tokens",
+                  href: "/icp-tokens?source=nav",
                 },
                 {
                   label: "Create an Internet Identity",
@@ -252,7 +252,7 @@ const config = {
                 },
                 {
                   label: "Staking & Governance (NNS)",
-                  href: "/nns",
+                  href: "/nns?source=nav",
                 },
 
                 {
@@ -264,27 +264,27 @@ const config = {
                 menuDivider("Use Cases"),
                 {
                   label: "ckBTC",
-                  href: "/ckbtc",
+                  href: "/ckbtc?source=nav",
                 },
                 {
                   label: "NFTs",
-                  href: "/nft",
+                  href: "/nft?source=nav",
                 },
                 {
                   label: "DeFi",
-                  href: "/defi",
+                  href: "/defi?source=nav",
                 },
                 {
                   label: "Social Media Dapps",
-                  href: "/social-media-dapps",
+                  href: "/social-media-dapps?source=nav",
                 },
                 {
                   label: "SNS DAOs",
-                  href: "/sns",
+                  href: "/sns?source=nav",
                 },
                 {
                   label: "OpenChat",
-                  href: "/openchat",
+                  href: "/openchat?source=nav",
                 },
               ],
             ]),
@@ -301,21 +301,20 @@ const config = {
 
                 {
                   label: "Developer Docs",
-                  type: "doc",
-                  docId: "home",
+                  to: "/docs/current/home/?source=nav",
                 },
-                { label: "Sample Code", to: "/samples" },
+                { label: "Sample Code", to: "/samples?source=nav" },
                 {
                   label: "Motoko Docs",
-                  href: "/docs/current/motoko/main/motoko",
+                  href: "/docs/current/motoko/main/motoko?source=nav",
                 },
                 {
                   label: "Rust Docs",
-                  href: "/docs/current/developer-docs/backend/rust/",
+                  href: "/docs/current/developer-docs/backend/rust/?source=nav",
                 },
                 menuDivider("Tools"),
 
-                { label: "Developer Tools", to: "/tooling" },
+                { label: "Developer Tools", to: "/tooling?source=nav" },
                 {
                   label: "Motoko Playground",
                   href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -349,11 +348,11 @@ const config = {
                 menuDivider("Get Involved"),
                 {
                   label: "Live Sessions",
-                  href: "/live-sessions",
+                  href: "/live-sessions?source=nav",
                 },
                 {
                   label: "Roadmap",
-                  href: "/roadmap",
+                  href: "/roadmap?source=nav",
                 },
                 {
                   label: "Hackathons",

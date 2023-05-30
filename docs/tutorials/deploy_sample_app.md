@@ -2,19 +2,27 @@
 sidebar_position: 1
 title: Deploy your first dapp in 5 minutes
 ---
-# Tutorial 1 - Deploy your first dapp in 5 minutes
+# Tutorial 1: Deploy your first dapp in 5 minutes
 
-## 1. Introduction
+## Overview
 
 This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 5 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
 
-Before starting, take a look at a version of this dapp running on-chain: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
+:::info 
+
+- Before starting, take a look at a version of this dapp running on-chain: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
+
+:::
 
 This dapp only does one thing: it accepts a text input and returns text input.
 
 ![Hello](_attachments/hello-dapp-intro.png)
 
-## 1. Install the Internet Computer (IC) SDK 
+## Prerequisites
+To successfully complete this tutorial you will need to:
+* [x] Node.js - This tutorial works best with a node.js version higher than `16.*.*`.
+
+### Step 1: Install the Internet Computer (IC) SDK 
 
 This tutorial uses the [IC SDK](../developer-docs/setup/install/index.mdx), which is the default SDK maintained by the DFINITY foundation. 
 
@@ -32,12 +40,8 @@ To verify that the IC SDK is properly installed, run:
 dfx --version
 ```
 
-### Requirements
 
-* Node.js - This tutorial works best with a node.js version higher than `16.*.*`.
-
-
-## 2. Create a project
+### Step 2: Create a project
 
 The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to canister smart contracts. 
 
@@ -61,9 +65,9 @@ dfx start --background
 
 **🎉 Congratulations! 🎉 **
 
-There is now a local Instance of the execution environment of the IC running on your machine! Leave this window/tab running while you continue so the tutorial can continue without issues.
+There is now a local instance of the execution environment of the IC running on your machine! Leave this window/tab running while you complete the remaining steps so the tutorial can continue without issues.
 
-## 3. Deploy the dapp locally
+### Step 3: Deploy the dapp locally
 
 Now you can deploy locally. Run:
 
@@ -83,14 +87,16 @@ URLs:
     hello_backend: http://127.0.0.1:4943/?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai&id=rno2w-sqaaa-aaaaa-aaacq-cai
 ```
 
--  In the sample output above, `hello_frontend` is the frontend of the dapp, it can be accessed at http://127.0.0.1:4943/?canisterId=renrk-eyaaa-aaaaa-aaada-cai. You should have a different URL when you deploy locally.
+:::info
+In the sample output above, `hello_frontend` is the frontend of the dapp, it can be accessed at http://127.0.0.1:4943/?canisterId=renrk-eyaaa-aaaaa-aaada-cai. You should have a different URL when you deploy locally.
+:::
 
 **🎉 Success! 🎉 **
 
 You have deployed your first ICP dapp locally.
 
 
-### Test the dapp locally via the command line
+#### Test the dapp locally via the command line
 
 Now that the canister smart contract is deployed to the local execution environment, you can interact with it by sending and receiving messages. Since the canister has a method called `greet` (which accepts a string as a parameter), we will send it a message. 
 
@@ -99,12 +105,13 @@ Run the following command:
 dfx canister call hello_backend greet everyone
 ```
 
+#### What this does
 -   The `dfx canister call` command requires you to specify a canister name and function to call.
 -   `hello_backend` specifies the name of the canister you call.
 -   `greet` specifies the function name.
 -   `everyone` is the argument that you pass to the `greet` function.
 
-### Test the dapp locally via the browser
+#### Test the dapp locally via the browser
 
 Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
@@ -114,26 +121,27 @@ You should see this:
 
 ![Hello](_attachments/hello-dapp-intro-local.png)
 
-## 4. Deploy the dapp on-chain
+### Step 4: Deploy the dapp on-chain
 
-### Acquiring cycles to deploy on-chain
+#### Acquiring cycles to deploy on-chain
 
 In order to run on-chain, IC dapps require [cycles](/developer-docs/setup/cycles/index.md) to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
 This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, who grow used to the first step of deploying a dapp being "go get tokens."
 
-You may further wonder why dapps run on cycles rather than ICP tokens. The reason is that the cost of ICP tokens fluctuate with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one SDR, regardless of the price of ICP.
+You may further wonder why dapps run on cycles rather than ICP tokens. The reason is that the cost of ICP tokens fluctuate with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one XDR, regardless of the price of ICP.
 
 Practical notes about cycles:
 
--   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles
+-   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles.
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, the IC SDK injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
--   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/gas-cost.md).
+-   You can see a table of compute and storage costs here: [computation and storage costs](../developer-docs/gas-cost.md).
 
 
-### Acquiring cycles via the free cycles faucet
+#### Acquiring cycles via the free cycles faucet
 
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md). Please note the fauce can only be used once.
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: 
+- [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md). **Please note the faucet can only be used once.**
 
 #### Check your cycles balance
 
@@ -145,7 +153,7 @@ dfx wallet --network ic balance
 
 You should see around 20 trillion cycles if you run this after using the cycles wallet.
 
-### Deploying on-chain
+#### Deploying on-chain
 
 Now that you have cycles and your local version of the IC SDK is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. 
 
@@ -155,7 +163,7 @@ As a sanity check, it is good practice to check if your connection to the ICP ne
 dfx ping ic
 ```
 
-If successful you will see an output resembling the following:
+If successful, you will see an output resembling the following:
 
 ``` bash
 $ {
@@ -229,20 +237,20 @@ Note the bottom of the message which returns the URL where you can see your cani
 
  **🎉 Success, you are done! 🎉**
 
-### You have successfully deployed your dapp on-chain
+#### You have successfully deployed your dapp on-chain
 
-:::note
+:::info
 
 Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 :::
 
-## 5. Wrap-up
+## Conclusion
 
 You have built a dapp fully on-chain (both backend and frontend).
 
 Tutorial takeaways:
--   Dapps can be composed of multiple canisters, backend and frontend
--   Dapps can be deployed locally and on-chain
--   Cycles are needed power dapps
--   Get free cycles from the cycles wallet
--   Free cycles can be used to power additional dapps
+-   Dapps can be composed of multiple canisters, backend and frontend.
+-   Dapps can be deployed locally and on-chain.
+-   Cycles are needed power dapps.
+-   Get free cycles from the cycles wallet.
+-   Free cycles can be used to power additional dapps.

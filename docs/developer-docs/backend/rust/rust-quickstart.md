@@ -1,49 +1,51 @@
 ---
 sidebar_position: 1
 ---
-# Rust quick start
+# 1: Rust quick start
 
-The [IC SDK](../../setup/install/index.mdx) provides tools, sample code, and documentation to help you create [Rust smart contracts](../choosing-language.md) and dapps to run on the decentralized ICP blockchain mainnet. This tutorial assumes that you are installing the IC SDK for the first time.
+## Overview
+
+The [IC SDK](../../setup/install/index.mdx) provides tools, sample code, and documentation to help you create [Rust smart contracts](../choosing-language.md) and dapps to run on the decentralized ICP blockchain mainnet. This guide assumes that you are installing the IC SDK for the first time.
 
 To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
 **While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly. This documentation assumes one is using the IC SDK to build Rust canisters.**
 
-To help you get started, this tutorial illustrates how to modify the traditional "Hello World" first dapp in Rust. This simple dapp has just one function that prints text to a terminal, but it provides a good model for understanding the workflow when writing dapps in Rust that you want to deploy on the ICP blockchain.
+To help you get started, this guide illustrates how to modify the traditional "Hello, world!" first dapp in Rust. This simple dapp has just one function that prints text to a terminal, but it provides a good model for understanding the workflow when writing dapps in Rust that you want to deploy on the ICP blockchain.
 
-## Before you begin
+## Prerequisites
 
 Before you start your project, verify the following:
 
--   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
+- [x]  You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
+- [x]  You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
 
     ``` bash
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
     ```
 
--   You have downloaded and installed the IC SDK package as described in [Installing the IC SDK](./../../setup/install/index.mdx).
+- [x]  You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page.
 
--   You have `cmake` installed. For example, use Homebrew with the following command:
+- [x]  You have `cmake` installed. For example, use Homebrew with the following command:
 
     ``` bash
     brew install cmake
     ```
 
-    For instructions on how to install Homebrew, see the [Homebrew Documentation](https://docs.brew.sh/Installation).
+    For instructions on how to install Homebrew, see the [Homebrew documentation](https://docs.brew.sh/Installation).
     
--   You have stopped any local execution environment processes running on your computer.
+- [x] You have stopped any local execution environment processes running on your computer.
 
 ## Create a new project
 
-Applications for the Internet Computer blockchain start as **projects**. You can create new projects for the Internet Computer blockchain using the IC SDK. Because you are building this project to be deployed on the Internet Computer blockchain, this tutorial focuses on how to create, build, and deploy a Rust program by using the `dfx` parent command and its subcommands.
+Applications for the Internet Computer blockchain start as **projects**. You can create new projects for the Internet Computer blockchain using the IC SDK. Because you are building this project to be deployed on the Internet Computer blockchain, this guide focuses on how to create, build, and deploy a Rust program by using the `dfx` parent command and its subcommands.
 
 To create a new project using the IC SDK:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Create a new project with rust canister named `rust_hello` by running the following command:
+- #### Step 2:  Create a new project with rust canister named `rust_hello` by running the following command:
 
     ``` bash
     dfx new --type=rust rust_hello
@@ -51,7 +53,7 @@ To create a new project using the IC SDK:
 
     The `dfx new --type=rust rust_hello` command creates a new `rust_hello` project directory, template files, and a new `rust_hello` Git repository for your project.
 
-3.  Change to your project directory by running the following command:
+- #### Step 3:  Change to your project directory by running the following command:
 
     ``` bash
     cd rust_hello
@@ -101,11 +103,11 @@ The configuration file should look like this:
 
 Notice that under the `canisters` key, you have some default settings for the `rust_hello_backend` canister.
 
-1.  `"type": "rust"` specifies that `rust_hello_backend` is a `rust` type canister.
+-  `"type": "rust"` specifies that `rust_hello_backend` is a `rust` type canister.
 
-2.  `"candid": "src/rust_hello_backend/rust_hello_backend.did""` specifies the location of the Candid interface description file to use for the canister.
+-  `"candid": "src/rust_hello_backend/rust_hello_backend.did""` specifies the location of the Candid interface description file to use for the canister.
 
-3.  `"package": "rust_hello_backend"` specifies the package name of the Rust crate. It should be the same as in the crate `Cargo.toml` file.
+-  `"package": "rust_hello_backend"` specifies the package name of the Rust crate. It should be the same as in the crate `Cargo.toml` file.
 
 ### `Cargo.toml`
 
@@ -143,8 +145,9 @@ ic-cdk = "0.6.0"
 ic-cdk-macros = "0.6.0"
 
 ```
-
+:::info
 Notice the `crate-type = ["cdylib"]` line which is necessary to compile this Rust program into WebAssembly module.
+:::
 
 #### `src/rust_hello_backend/src/lib.rs`
 
@@ -181,9 +184,9 @@ Before you can build your project, you need to connect to the local execution en
 
 To start the local execution environment:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Start the local execution environment on your computer in the background by running the following command:
+- #### Step 2:  Start the local execution environment on your computer in the background by running the following command:
 
     ``` bash
     dfx start --background
@@ -197,15 +200,15 @@ After you connect to the local execution environment running in your development
 
 To register, build, and deploy:
 
-1.  Check that you are still in root directory for your project directory, if needed.
+- #### Step 1:  Check that you are still in root directory for your project directory, if needed.
 
-2.  Make sure you have `wasm32-unknown-unknown` installed by running the command:
+- #### Step 2:  Make sure you have `wasm32-unknown-unknown` installed by running the command:
 
     ``` bash
     rustup target add wasm32-unknown-unknown
     ```
 
-3.  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
+- #### Step 3:  Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 
     ``` bash
     dfx deploy
@@ -256,15 +259,15 @@ Using this method, we open the so called [`Candid UI` canister](https://github.c
 
 To test the deployed `rust_hello_backend` locally from your command line using dfx, try the following:
 
-1.  Check that you are still in root directory for your project directory, if needed.
+- #### Step 1:  Check that you are still in root directory for your project directory, if needed.
 
-2.  Call the `greet` function in the dapp by running the following command:
+- #### Step 2:  Call the `greet` function in the dapp by running the following command:
 
     ``` bash
     dfx canister call rust_hello_backend greet world
     ```
 
-3.  Verify that the call to the `rust_hello_backend` canister `greet` function returns a text message `("Hello, world!")`.
+- #### Step 3:  Verify that the call to the `rust_hello_backend` canister `greet` function returns a text message `("Hello, world!")`.
 
 ## Stop the local execution environment
 
