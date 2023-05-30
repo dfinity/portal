@@ -1794,8 +1794,8 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/bink_logo.png",
     "twitter": "https://twitter.com/BinkDapp"
-  }
-{
+  },
+  {
     "id": "icns",
     "name": "ICNS",
     "oneLiner": "Internet Computer Name Service",
