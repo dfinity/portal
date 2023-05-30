@@ -27,7 +27,10 @@ The most common languages to use are:
   - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by [Demergent Labs](https://github.com/demergent-labs).
 - **TypeScript**
    - You can use TypeScript via the [Azle](https://demergent-labs.github.io/azle) CDK by [Demergent Labs](https://github.com/demergent-labs).
-
+- **Solidity**
+  - Solidity is an object-oriented programming language for writing smart contracts. It is used for implementing smart contracts on various blockchain platforms, most notably Ethereum.
+  - The Solidity support on Internet Computer is available via the [Bitfinity docs](https://docs.bitfinity.network/) by the [Bitfinity EVM team](https://bitfinity.network), providing the ability to create EVM-based smart contracts.
+  - This opens up new possibilities for developers familiar with Ethereum and Solidity to leverage the Internet Computer’s capabilities.
 
 It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
 
