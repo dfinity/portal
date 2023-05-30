@@ -211,10 +211,6 @@ const config = {
                   label: "Identity on ICP",
                   href: "/internet-identity?source=nav",
                 },
-                {
-                  label: "Bitfinity EVM",
-                  href: "https://bitfinity.network/",
-                },
 
                 menuDivider("Tools"),
                 {
