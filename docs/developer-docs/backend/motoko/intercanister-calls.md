@@ -1,5 +1,6 @@
-# Make inter-canister calls
+# 12: Making inter-canister calls
 
+## Overview
 One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister from another canister. This capability to make calls between canisters—also sometimes referred to as **inter-canister calls**—enables you to reuse and share functionality in multiple dapps.
 
 For example, you might want to create a dapp for professional networking, organizing community events, or hosting fundraising activities. Each of these dapps might have a social component that enables users to identify social relationships based on some criteria or shared interest, such as friends and family or current and former colleagues.
@@ -16,29 +17,29 @@ The LinkedUp sample dapp is implemented using the following canisters:
 
 -   The `linkedup_assets` canister stores the frontend assets—including the JavaScript, HTML, and CSS files—that define the user interface
 
-## Before you begin
+## Prerequisites
 
 Before building the sample dapp, verify the following:
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   You have stopped the local canister execution environment provided by `dfx`.
+-   [x] You have stopped the local canister execution environment provided by `dfx`.
 
 ## Download the demo
 
 To experiment with inter-canister calls using the LinkedUp sample dapp:
 
-1.  Open a terminal shell and change to the folder you are using for your Internet Computer sample projects.
+- #### Step 1:  Open a terminal shell and change to the folder you are using for your Internet Computer sample projects.
 
-2.  Clone the `linkedup` repository.
+- #### Step 2:  Clone the `linkedup` repository.
 
         git clone https://github.com/dfinity/linkedup.git
 
-3.  Change to the local working directory for the `linkedup` repository.
+- #### Step 3:  Change to the local working directory for the `linkedup` repository.
 
         cd linkedup
 
-4.  Install node modules by running the following command:
+- #### Step 4:  Install node modules by running the following command:
 
         npm install
 
@@ -46,7 +47,7 @@ To experiment with inter-canister calls using the LinkedUp sample dapp:
 
         npm audit fix
 
-5.  Open the `dfx.json` file in a text editor and verify the `dfx` setting has same the version number as the `dfx` executable you have installed.
+- #### Step 5:  Open the `dfx.json` file in a text editor and verify the `dfx` setting has same the version number as the `dfx` executable you have installed.
 
 ## Start the local canister execution environment
 
@@ -54,15 +55,15 @@ For development purposes `dfx` provides a local canister execution environment. 
 
 To start the local canister execution environment:
 
-1.  Open a new terminal window or tab on your local computer.
+- #### Step 1:  Open a new terminal window or tab on your local computer.
 
-2.  Navigate to the root directory for your project, if necessary.
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
-3.  Start the local canister execution environment by running the following command:
+- #### Step 3:  Start the local canister execution environment by running the following command:
 
         dfx start --background
 
-    After the local canister execution environment completes its startup operations, you can continue to the next step.
+After the local canister execution environment completes its startup operations, you can continue to the next step.
 
 ## Register canister identifiers
 
@@ -70,9 +71,9 @@ Once the local canister execution environment is up and running, you can generat
 
 To register canister identifiers:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  Register unique canister identifiers for the project by running the following command:
+- #### Step 2:  Register unique canister identifiers for the project by running the following command:
 
         dfx canister create --all
 
@@ -88,13 +89,13 @@ To register canister identifiers:
 
 To build and deploy the LinkUp sample dapp, take the following steps:
 
-1.  Check that you are still in your project directory by running the `pwd` command, if necessary.
+- #### Step 1:  Check that you are still in your project directory by running the `pwd` command, if necessary.
 
-2.  Build the LinkedUp canisters by running the following command:
+- #### Step 2:  Build the LinkedUp canisters by running the following command:
 
         dfx build
 
-3.  Deploy the project on the local canister execution environment by running the following command:
+- #### Step 3:  Deploy the project on the local canister execution environment by running the following command:
 
         dfx canister install --all
 
@@ -104,11 +105,11 @@ To build and deploy the LinkUp sample dapp, take the following steps:
         Installing code for canister linkedup, with canister_id cxeji-wacaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
         Installing code for canister linkedup_assets, with canister_id 7kncf-oidaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
 
-4.  Copy the `linkedup_assets` canister identifier returned by the `dfx canister install` command.
+- #### Step 4:  Copy the `linkedup_assets` canister identifier returned by the `dfx canister install` command.
 
     In this sample dapp, only the `linkedup_assets` canister includes the frontend assets used to access the dapp’s user interface. To open the dapp in a browser, therefore, you need to specify the `linkedup_assets` canister identifier.
 
-5.  Open the `linkedup_assets` canister in your web browser.
+- #### Step 5:  Open the `linkedup_assets` canister in your web browser.
 
     For example, if the local canister execution environment binds to the default localhost address and port number, the URL looks similar to this:
 
@@ -118,9 +119,9 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
 To run through a demonstration of the LinkedUp sample dapp, take the following steps:
 
-1.  Open a browser tab or window.
+- #### Step 1:  Open a browser tab or window.
 
-2.  Type the web server host name, port, and the `canisterId` keyword, then paste the `linkedup_assets` canister identifier as the URL to display.
+- #### Step 2:  Type the web server host name, port, and the `canisterId` keyword, then paste the `linkedup_assets` canister identifier as the URL to display.
 
         127.0.0.1:8000/?canisterId=<ic-identifier-for-linkedup-assets>
 
@@ -128,13 +129,13 @@ To run through a demonstration of the LinkedUp sample dapp, take the following s
 
     A public-private key pair will be automatically generated to establish your identity for accessing the canister, so there’s no need to provide a user name and password or register an account to store your identity before using the service.
 
-3.  Click **Login**.
+- #### Step 3:  Click **Login**.
 
     The browser displays an empty profile page.
 
     ![linkedup empty maya](_attachments/linkedup-empty-maya.png)
 
-4.  Click **Edit**, type profile information, copy and paste the image address for an avatar photo, then click **Submit**.
+- #### Step 4:  Click **Edit**, type profile information, copy and paste the image address for an avatar photo, then click **Submit**.
 
     ![linkedup edit maya](_attachments/linkedup-edit-maya.png)
 
@@ -152,23 +153,23 @@ At this point, there are no other profiles to search for or to add as connection
 
 -   Create a profile manually by opening a private window.
 
-For this tutorial, you will create another profile manually.
+For this guide, you will create another profile manually.
 
 To add a user profile with different identity:
 
-1.  At the top right of the browser window, click the appropriate icon to display the browser’s menu options.
+- #### Step 1:  At the top right of the browser window, click the appropriate icon to display the browser’s menu options.
 
     For example, if you are using Google Chrome, click the vertical ellipse to display the More menu.
 
-2.  Click **New Incognito Window** if you are using Google Chrome or **New Private Window** if you are using Firefox to enable you to navigate to the canister without the user identity generated in your initial browser connection to the canister.
+- #### Step 2:  Click **New Incognito Window** if you are using Google Chrome or **New Private Window** if you are using Firefox to enable you to navigate to the canister without the user identity generated in your initial browser connection to the canister.
 
-3.  Copy and paste the URL from your first browser session into the private browsing window, then click **Login**.
+- #### Step 3:  Copy and paste the URL from your first browser session into the private browsing window, then click **Login**.
 
     ![linkedup incognito](_attachments/linkedup-incognito.png)
 
     Notice that there’s no profile in the private browsing window but your original profile is still visible in your initial browser tab.
 
-4.  Click **Edit**, type profile information, copy and paste the image address for an avatar photo, then click **Submit**.
+- #### Step 4:  Click **Edit**, type profile information, copy and paste the image address for an avatar photo, then click **Submit**.
 
     ![linkedup edit dylan](_attachments/linkedup-edit-dylan.png)
 
@@ -178,7 +179,7 @@ To add a user profile with different identity:
 
     ![linkedup profile dylan](_attachments/linkedup-profile-dylan.png)
 
-5.  Type the first name or last name from the first profile you created—for example, if you created a profile for Maya Garcia, type Maya—then click **Search**.
+- #### Step 5:  Type the first name or last name from the first profile you created—for example, if you created a profile for Maya Garcia, type Maya—then click **Search**.
 
     ![linkedup search from dylan for maya](_attachments/linkedup-search-from-dylan-for-maya.png)
 
@@ -186,7 +187,7 @@ To add a user profile with different identity:
 
     ![linkedup search result](_attachments/linkedup-search-result.png)
 
-6.  Select the contact from the search results, wait for the Connect button to be displayed, then click **Connect**.
+- #### Step 6:  Select the contact from the search results, wait for the Connect button to be displayed, then click **Connect**.
 
     ![linkedup connect from dylan to maya](_attachments/linkedup-connect-from-dylan-to-maya.png)
 
@@ -194,7 +195,7 @@ To add a user profile with different identity:
 
     ![linkedup connected to maya](_attachments/linkedup-connected-to-maya.png)
 
-7.  Return to the browser tab with your original profile.
+- #### Step 7:  Return to the browser tab with your original profile.
 
     If you want to create a connection between the original profile and the profile you created in the private browsing window, you can do so by repeating the search, select, and connect steps.
 
@@ -204,13 +205,13 @@ Now that you have explored the basic features of the sample dapp, you have some 
 
 To explore the configuration file:
 
-1.  Change to the `linkedup` directory, then open the project’s `dfx.json` file.
+- #### Step 1:  Change to the `linkedup` directory, then open the project’s `dfx.json` file.
 
-2.  Note that there are two main canisters defined—`connectd` and `linkedup`—each with a `main.mo` source file.
+- #### Step 2:  Note that there are two main canisters defined—`connectd` and `linkedup`—each with a `main.mo` source file.
 
-3.  Note that the `linkedup_assets` canister specifies a frontend entry point of `main.js` and assets in the form of CSS and HTML files.
+- #### Step 3:  Note that the `linkedup_assets` canister specifies a frontend entry point of `main.js` and assets in the form of CSS and HTML files.
 
-4.  Note that the dapp is configured to use the default IP address and port number for deployment on the local canister execution environment.
+- #### Step 4:  Note that the dapp is configured to use the default IP address and port number for deployment on the local canister execution environment.
 
 ## Explore the connectd source code
 
@@ -266,7 +267,7 @@ In this sample dapp, the `linkedup` canister leverages functions defined in the 
 
 To make the public functions defined in one canister available in the another canister:
 
-1.  Add an `import` statement in the calling canister.
+- #### Step 1:  Add an `import` statement in the calling canister.
 
     In this example, the public functions are defined in the `connectd` canister and are called by the `linkedup` canister.
 
@@ -275,7 +276,7 @@ To make the public functions defined in one canister available in the another ca
         // Make the Connectd app's public methods available locally
         import Connectd "canister:connectd";
 
-2.  Use the `canister.function` syntax to call public methods in the imported canister.
+- #### Step 2:  Use the `canister.function` syntax to call public methods in the imported canister.
 
     In this example, the `linkedup` canister calls the `connect` and `getConnections` function in the imported `connectd` canister.
 
@@ -283,7 +284,6 @@ You can see the code that enables interaction between the `linkedup` canister an
 
 For example, the `src/connectd/main.mo` defines the following functions:
 
-\+
 
     actor Connectd {
       flexible var graph: Digraph.Digraph = Digraph.Digraph();
@@ -331,8 +331,8 @@ After you finish experimenting with the `linkedup` dapp, you can stop the local 
 
 To stop the local canister execution environment:
 
-1.  In the terminal that displays the output of the local canister execution environment, press Control-C to interrupt the local process.
+- #### Step 1:  In the terminal that displays the output of the local canister execution environment, press Control-C to interrupt the local process.
 
-2.  Stop the local canister execution environment by running the following command:
+- #### Step 2:  Stop the local canister execution environment by running the following command:
 
         dfx stop

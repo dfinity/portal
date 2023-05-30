@@ -2,7 +2,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
-# How to interact with SNS governance
+# SNS governance
+
+## Overview
 <!-- TODO-content: 
 Intro
 * In general, there are two main ways to interact with an SNS: some FE & sns-quill.

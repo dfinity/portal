@@ -1,5 +1,7 @@
 # Large web assembly modules
 
+## Overview
+
 The size of programs that can be installed on the IC is currently limited to 2MB.
 WebAssembly modules that are (slighly) larger than 2MB can still be installed on the IC by using gzip file compression before uploading; the IC will then decompress the file and install the contained WebAssembly module.
 

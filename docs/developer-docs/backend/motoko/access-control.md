@@ -1,8 +1,10 @@
-# Add access control with identities
+# 10: Add access control with identities
+
+## Overview
 
 Dapps often require role-based permissions to control the operations different users can perform.
 
-To illustrate how to create and switch between user identities, this tutorial creates a simple dapp that displays a different greeting for users who are assigned to different roles.
+To illustrate how to create and switch between user identities, this guide creates a simple dapp that displays a different greeting for users who are assigned to different roles.
 
 In this example, there are three named roles—`owner`, `admin`, and `authorized`.
 
@@ -18,47 +20,47 @@ At a high-level, each user has a public/private key pair. The public key combine
 
 ![principal identities](_attachments/principal-identities.svg)
 
-## Before you begin
+## Prerequisites
 
-Before starting the tutorial, verify the following:
+Before starting the guide, verify the following:
 
-- You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
+- [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
-- You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
+- [x] You have run at least one command that resulted in your `default` user identity being created. Your default user identity is stored globally for all projects in the `$HOME/.config/dfx/identity/` directory.
 
-- You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+- [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
-- You have stopped any local canister execution environment processes running on your computer.
+- [x] You have stopped any local canister execution environment processes running on your computer.
 
 ## Create a new project
 
 To create a new project directory for testing access control and switching user identities:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
+- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
 
-3.  Create a new project by running the following command:
+- #### Step 3:  Create a new project by running the following command:
 
         dfx new access_hello
 
-4.  Change to your project directory by running the following command:
+- #### Step 4:  Change to your project directory by running the following command:
 
         cd access_hello
 
 ## Modify the default dapp
 
-For this tutorial, you are going to replace the template source code file with a dapp that has functions for assigning and retrieving roles.
+For this guide, you are going to replace the template source code file with a dapp that has functions for assigning and retrieving roles.
 
 To modify the default dapp:
 
-1.  Open the `src/access_hello/main.mo` file in a text editor and delete the existing content.
+- #### Step 1:  Open the `src/access_hello/main.mo` file in a text editor and delete the existing content.
 
-2.  Copy and paste [this code](./_attachments/access-control-main.mo) into the file.
+- #### Step 2:  Copy and paste [this code](./_attachments/access-control-main.mo) into the file.
 
     Let's take a look at a few key elements of this dapp:
 
-    - You might notice that the `greet` function is a variation on the `greet` function you have seen in previous tutorials.
+    - You might notice that the `greet` function is a variation on the `greet` function you have seen in previous guides.
 
       In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
 
@@ -70,7 +72,7 @@ To modify the default dapp:
 
     - The `my_role` function enables you to return the role that is associated with an identity.
 
-3.  Save your changes and close the `main.mo` file to continue.
+- #### Step 3:  Save your changes and close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
@@ -78,11 +80,11 @@ Before you can build the `access_hello` project, you need to connect to the loca
 
 To start the local canister execution environment:
 
-1.  Open a new terminal window or tab on your local computer.
+- #### Step 1:  Open a new terminal window or tab on your local computer.
 
-2.  Navigate to the root directory for your project, if necessary.
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
-3.  Start the local canister execution environment on your computer by running the following command:
+- #### Step 3:  Start the local canister execution environment on your computer by running the following command:
 
         dfx start --background
 
@@ -94,9 +96,9 @@ After you connect to the local canister execution environment running in your de
 
 To deploy the dapp locally:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Register, build, and deploy the `access_hello` backend dapp by running the following command:
+- #### Step 2:  Register, build, and deploy the `access_hello` backend dapp by running the following command:
 
         dfx deploy access_hello
 
@@ -117,7 +119,7 @@ Before we create any additional identities, let’s review the principal identif
 
 To review your current identity and principle:
 
-1.  Verify the currently-active identity by running the following command:
+- #### Step 1:  Verify the currently-active identity by running the following command:
 
         dfx identity whoami
 
@@ -125,7 +127,7 @@ To review your current identity and principle:
 
         default
 
-2.  Check the principal for the `default` user identity by running the following command:
+- #### Step 2:  Check the principal for the `default` user identity by running the following command:
 
         dfx identity get-principal
 
@@ -133,7 +135,7 @@ To review your current identity and principle:
 
         zen7w-sjxmx-jcslx-ey4hf-rfxdq-l4soz-7ie3o-hti3o-nyoma-nrkwa-cqe
 
-3.  Check the role associated with the `default` user identity by running the following command:
+- #### Step 3:  Check the role associated with the `default` user identity by running the following command:
 
         dfx canister call access_hello my_role
 
@@ -147,9 +149,9 @@ To begin testing the access controls in our dapp, let’s create some new user i
 
 To create a new user identity:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  Create a new administrative user identity by running the following command:
+- #### Step 2:  Create a new administrative user identity by running the following command:
 
         dfx identity new ic_admin
 
@@ -158,7 +160,7 @@ To create a new user identity:
         Creating identity: "ic_admin".
         Created identity: "ic_admin".
 
-3.  Call the `my_role` function to see that your new user identity has not been assigned to any role.
+- #### Step 3:  Call the `my_role` function to see that your new user identity has not been assigned to any role.
 
         dfx --identity ic_admin canister call access_hello my_role
 
@@ -168,7 +170,7 @@ To create a new user identity:
         The wallet canister on the "local" network for user "ic_admin" is "ryjl3-tyaaa-aaaaa-aaaba-cai"
         (null)
 
-4.  Switch your currently-active identity context to use the new `ic_admin` user identity and display the principal associated with the `ic_admin` user by running the following command:
+- #### Step 4:  Switch your currently-active identity context to use the new `ic_admin` user identity and display the principal associated with the `ic_admin` user by running the following command:
 
         dfx identity use ic_admin && dfx identity get-principal
 
@@ -177,7 +179,7 @@ To create a new user identity:
         Using identity: "ic_admin".
         c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae
 
-5.  Check the principal used to call the `access_hello` canister by running the following command:
+- #### Step 5:  Check the principal used to call the `access_hello` canister by running the following command:
 
         dfx canister call access_hello callerPrincipal
 
@@ -191,29 +193,25 @@ To create a new user identity:
 
 To assign the admin role to the IC_admin identity:
 
-1.  Switch your currently-active identity context to use the `default` user identity by running the following command:
+- #### Step 1:  Switch your currently-active identity context to use the `default` user identity by running the following command:
 
         dfx identity use default
 
-2.  Assign the `ic_admin` principal the `admin` role by running a command similar to the following using Candid syntax:
+- #### Step 2:  Assign the `ic_admin` principal the `admin` role by running a command similar to the following using Candid syntax:
 
         dfx canister call access_hello assign_role '((principal "c5wa6-3irl7-tuxuo-4vtyw-xsnhw-rv2a6-vcmdz-bzkca-vejmd-327zo-wae"),opt variant{admin})'
 
 Be sure to replace the `principal` hash with the one returned by the `dfx identity get-principal` command for the `ic_admin` identity.
 
-\+ Optionally, you can rerun the command to call the `my_role` function to verify the role assignment.
-
-\+
+Optionally, you can rerun the command to call the `my_role` function to verify the role assignment.
 
     dfx --identity ic_admin canister call access_hello my_role
 
-\+ The command displays output similar to the following:
-
-\+
+The command displays output similar to the following:
 
     (opt variant { admin })
 
-1.  Call the `greet` function using the `ic_admin` user identity that you just assigned the `admin` role by running the following command:
+- #### Step 3: Call the `greet` function using the `ic_admin` user identity that you just assigned the `admin` role by running the following command:
 
         dfx --identity ic_admin canister call access_hello greet "Internet Computer Admin"
 
@@ -229,9 +227,9 @@ At this point, you have a `default` user identity with the `owner` role and an `
 
 To add a new authorized user identity:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  Create a new authorized user identity by running the following command:
+- #### Step 2:  Create a new authorized user identity by running the following command:
 
         dfx identity new alice_auth
 
@@ -240,11 +238,11 @@ To add a new authorized user identity:
         Creating identity: "alice_auth".
         Created identity: "alice_auth".
 
-3.  Switch your currently-active identity context to use the new `alice_auth` user identity by running the following command:
+- #### Step 3:  Switch your currently-active identity context to use the new `alice_auth` user identity by running the following command:
 
         dfx identity use alice_auth
 
-4.  Store the principal for the `alice_auth` user in an environment variable by running the following command:
+- #### Step 4:  Store the principal for the `alice_auth` user in an environment variable by running the following command:
 
         ALICE_ID=$(dfx identity get-principal)
 
@@ -256,11 +254,11 @@ To add a new authorized user identity:
 
         b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
 
-5.  Use the `ic_admin` identity to assign the `authorized` role to `alice_auth` by running the following command:
+- #### Step 5:  Use the `ic_admin` identity to assign the `authorized` role to `alice_auth` by running the following command:
 
         dfx --identity ic_admin canister call access_hello assign_role "(principal \"$ALICE_ID\", opt variant{authorized})"
 
-6.  Call the `my_role` function to verify the role assignment.
+- #### Step 6:  Call the `my_role` function to verify the role assignment.
 
         dfx --identity alice_auth canister call access_hello my_role
 
@@ -268,7 +266,7 @@ To add a new authorized user identity:
 
         (opt variant { authorized })
 
-7.  Call the `greet` function using the `alice_auth` user identity that you just assigned the `authorized` role by running the following command:
+- #### Step 7:  Call the `greet` function using the `alice_auth` user identity that you just assigned the `authorized` role by running the following command:
 
         dfx canister call access_hello greet "Alice"
 
@@ -284,13 +282,13 @@ You have now seen a simple example of creating users with specific roles and per
 
 To add an unauthorized user identity:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  Check your currently-active identity, if needed, by running the following command:
+- #### Step 2:  Check your currently-active identity, if needed, by running the following command:
 
         dfx identity whoami
 
-3.  Create a new user identity by running the following command:
+- #### Step 3:  Create a new user identity by running the following command:
 
         dfx identity new bob_standard
 
@@ -299,23 +297,23 @@ To add an unauthorized user identity:
         Creating identity: "bob_standard".
         Created identity: "bob_standard".
 
-4.  Store the principal for the `bob_standard` user in an environment variable by running the following command:
+- #### Step 4:  Store the principal for the `bob_standard` user in an environment variable by running the following command:
 
         BOB_ID=$(dfx --identity bob_standard identity get-principal)
 
-5.  Attempt to use the `bob_standard` identity to assign a role.
+- #### Step 5:  Attempt to use the `bob_standard` identity to assign a role.
 
         dfx --identity bob_standard canister call access_hello assign_role "(principal \"$BOB_ID\", opt variant{authorized})"
 
     This command returns an `unauthorized` error.
 
-6.  Attempt to use the `default` user identity to assign `bob_standard` the `owner` role by running the following command:
+- #### Step 6:  Attempt to use the `default` user identity to assign `bob_standard` the `owner` role by running the following command:
 
         dfx --identity default canister call access_hello assign_role "(principal \"$BOB_ID\", opt variant{owner})"
 
     This command fails because users cannot be assigned the `owner` role.
 
-7.  Call the `greet` function using the `bob_standard` user identity by running the following command:
+- #### Step 7:  Call the `greet` function using the `bob_standard` user identity by running the following command:
 
         dfx --identity bob_standard canister call access_hello greet "Bob"
 
@@ -329,9 +327,9 @@ So far, you have seen how to create and switch between user identities for indiv
 
 To run multiple commands under one user identity:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  List the user identities currently available by running the following command:
+- #### Step 2:  List the user identities currently available by running the following command:
 
         dfx identity list
 
@@ -344,11 +342,11 @@ To run multiple commands under one user identity:
 
     In this example, the `default` user identity is used unless you explicitly select a different identity.
 
-3.  Select a new user identity from the list and make it the active user context by running a command similar to the following:
+- #### Step 3:  Select a new user identity from the list and make it the active user context by running a command similar to the following:
 
         dfx identity use ic_admin
 
-    \+ The command displays output similar to the following:
+    The command displays output similar to the following:
 
         Using identity: "ic_admin".
 
@@ -362,16 +360,14 @@ After you finish experimenting with the dapp and using identities, you can stop 
 
 To stop the local canister execution environment:
 
-1.  In the terminal that displays network operations, press Control-C to interrupt the local network process.
+- #### Step 1:  In the terminal that displays network operations, press Control-C to interrupt the local network process.
 
-2.  Stop the local canister execution environment by running the following command:
+- #### Step 2:  Stop the local canister execution environment by running the following command:
 
         dfx stop
 
-## Want to learn more?
+## Resources
 
 If you are looking for more information about identity and authentication, check out the following related resources:
 
 - [dfx identity (command reference)](/references/cli-reference/dfx-identity.md)
-
-<!-- -   [Set an identity to own a canister (how-to)](../../working-with-canisters#set-owner) -->

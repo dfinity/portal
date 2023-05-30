@@ -1,16 +1,17 @@
-# Using HTTPS Outcalls to Fetch Exchange Rates
+# Using HTTPS outcalls to fetch exchange rates
 
-## Exchange Rate sample dapp overview
+## Overview
 
-The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The sample dapp provides an example of using the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) implemented in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate).
+The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The sample dapp provides an example of using the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) implemented in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate)
+ and [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate).
 
-## What does the sample dapp do
+### What does the sample dapp do?
 
 **TL;DR the sample dapp is just an unbounded time series cache.**
 
 There are two parts to the sample dapp:
-1. the frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart and
-2. the backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
+1. The frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart.
+2. The backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
 The backend canister receives an update request corresponding to the time range specified by the user at the frontend. The time range
 is converted into time buckets and the buckets are queued for retrival. Asynchronously at every few Internet Computer heartbeats,
@@ -21,7 +22,7 @@ If the time range the user requested is longer than a couple of years, the size 
 canister could exceed the existing limits of the system. As a result, the `exchange_rate` canister may return data points with increased granularity in order to fit into the limits and
 cover the full requested range.
 
-## Exchange Rate sample dapp architecture
+## Architecture
 ![Architecture overview diagram of the Exchange Rate dapp](_attachments/exchange_rate_arch.png)
 
 ## How to use the sample dapp
@@ -29,8 +30,8 @@ cover the full requested range.
 Users should be able to interact only with the frontend UI canister by selecting the start time 
 and the end time with the datetime pickers.
 
-The returned rates may not exactly match the user's time selection. (There could be gaps between
-data points or there could be a smaller range being returned). The reason is that to respect rate limiting
+The returned rates may not exactly match the user's time selection. There could be gaps between
+data points or there could be a smaller range being returned. The reason is that to respect rate limiting
 on the remote service, we fetch data from the remote service once every few IC heartbeats.
 Consequently, pulling all requested rates can be a relatively long asynchronous operation. 
 
@@ -43,8 +44,8 @@ retry the request, and likely the full set of rates will be available then.
 
 There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
 
-* The number of requests 
-* The size of each request and response
+* The number of requests.
+* The size of each request and response.
 
 If we need to fetch a longer period of rates then the number of external HTTPS outcalls is inversely proportional to the body size of each response.
 This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 

@@ -1,6 +1,7 @@
-# Service Nervous System
+# Service Nervous System (SNS) and decentralized autonomous organization (DAO) primer
 
-A Decentralized Autonomous Organization, or DAO for short, is a system that allows
+## Overview
+A **decentralized autonomous organization**, or DAO for short, is a system that allows
 many parties to jointly control an entity.
 Similarly to how the Network Nervous System (NNS) is the open tokenized DAO that controls
 the Internet Computer blockchain (IC), service nervous systems 
@@ -10,37 +11,38 @@ This means, each dapp that would like to be under decentralized control will hav
 separate SNS.
 
 ## What is a DAO?
-DAO stands for _Decentralized Autonomous Organization_.
+DAO stands for **decentralized autonomous organization**.
 
-Let's first clarify what we mean by _decentralized_ in this
+Let's first clarify what we mean by **decentralized** in this
 context.
-First, an application can run on a _decentralized platform_. This means that
+First, an application can run on a **decentralized platform**. This means that
 the platform itself is controlled by many different parties and, in particular,
 that even if some of these parties fail or turn malicious, the application
 will still keep running successfully. The IC is such a platform as it is
 run by many nodes that are owned by independent node providers. Therefore,
 we call applications that run on the IC
-_decentralized applications_ or _dapps_.
+**decentralized applications** or **dapps**.
 
-A further kind of decentralization revolves around the *governance* of a dapp, i.e. who is in control of changing a dapp,
+A further kind of decentralization revolves around the **governance** of a dapp, i.e. who is in control of changing a dapp,
 or a smart contract more generally.
 In general, dapps running on the IC or smart contracts on other
 decentralized platforms can still be controlled by a single, central entity
 and thus still be under centralized control. 
 As we will motivate below, it is often beneficial if a dapp is also under
-_decentralized control_. This means that no single party can decide how the 
+**decentralized control**. This means that no single party can decide how the 
 dapp is evolved. Instead, the dapp can only be changed according to decisions
 that many parties jointly make. 
 This decentralized control of a dapp is what a DAO achieves.
 
 ## Motivation: why a DAO? 
 We next discuss the main motivations for DAOs from the point of view of two
-main actors on the IC: the dapp developers, who build dapps on the IC, and
-the end-users, who interact with and invest in dapps.
+main actors on the IC: 
+- The dapp developers, who build dapps on the IC.
+- The end-users, who interact with and invest in dapps.
 
 ### Dapp users
 Dapps on the IC are realized as a set of canister smart contracts.
-Canisters define a _controller_ specifying which principals can
+Canisters define a **controller** specifying which principals can
 modify them.
 Most dapp canisters are either controlled by some developers or
 have no controller at all.
@@ -55,7 +57,7 @@ might also be a problem when it is necessary to fix security bugs.
 
 DAOs provide a third option, namely to hand over the control over a dapp
 to a community that can jointly decide how to evolve a dapp in an open 
-governance system, i.e., to _decentralize a dapp's control_. This protects
+governance system, i.e., to **decentralize a dapp's control**. This protects
 users as the control is now in the
 hand of a community rather than in the hand of a few parties. Moreover, 
 dapp users can join the open governance themselves and thereby directly
@@ -68,7 +70,7 @@ developer's interest to build the features users want.
 
 Apart from this, another motivation for dapp developers to adopt
 a DAO such as the SNS is that it allows to _tokenize the dapp_ which can
-help to get _initial funding_ and _initial adoption_.
+help to get **initial funding** and **initial adoption**.
 
 For a dapp that has an assigned SNS, anyone can purchase
 SNS tokens and participate in SNS governance.

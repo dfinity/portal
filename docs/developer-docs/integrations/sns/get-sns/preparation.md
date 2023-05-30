@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Technical preparations for getting an SNS
+# Technical preparations for an SNS
 
 After some 
 [non-technical preparations](../tokenomics/predeployment-considerations.md)
@@ -32,10 +32,10 @@ required [to test the SNS launch locally](./local-testing.md) and to use the
 [SNS testflight to test the DAO operations in production](./testflight.md).
 
 
-## Understanding the SNS Launch process {#understand-launch}
+## Understanding the SNS launch process {#understand-launch}
 
 For each SNS, the decentralization swap is realized in a separate
-_decentralization swap canister_ that exists during the SNS's launch,
+**decentralization swap canister** that exists during the SNS's launch,
 and is owned by the IC which will run the swap. In more detail, 
 it is controlled by the NNS root canister.
 
@@ -59,15 +59,15 @@ tokens at that price.
 
 An SNS is launched in the following stages:
 
-1) **Set the initial parameters**: For initializing an SNS for 
+- #### Step 1: **Set the initial parameters**.
+   For initializing an SNS for 
    your dapp, you first choose the initial parameters of the SNS.
    This includes both initial parameters of the governance 
    and ledger (e.g., token name). 
    
-2) **A NNS proposal approves the creation of the SNS and a principal 
-   executes this by calling SNS-W**:
+- #### Step 2: A NNS proposal approves the creation of the SNS and a principal executes this by calling SNS-W.
    When all parameters are specified, the SNS canisters can be created by a manual
-   call to the SNS wasm modules canister _SNS-W_ (a canister on the NNS).
+   call to the SNS wasm modules canister **SNS-W** (a canister on the NNS).
    To ensure that malicious parties cannot simply perform this step and fill the SNS
    subnet with non-approved SNS canisters, SNS-W contains a list of principals
    that are allowed to install an SNS. A principal can only be added to this list by
@@ -75,11 +75,11 @@ An SNS is launched in the following stages:
    of this step there is an NNS proposal which expresses that the NNS community gives their OK
    that the SNS launch process is started. 
    
-3) **Pre-decentralization-sale mode:**
+- #### Step 3: Pre-decentralization-sale mode.
    After the SNS canister creation, the canisters exist but are not yet
-   fully functional - the SNS is in _pre-decentralization-sale mode_.
+   fully functional - the SNS is in **pre-decentralization-sale mode**.
    At this point, the SNS ledger only has two accounts with
-   liquid tokens, the _treasury_
+   liquid tokens, the **treasury**
    that is owned by the SNS governance canister and which 
    can be used in the future according
    to the SNS community's wishes, and some pre-allocated tokens to be used in the initial 
@@ -91,7 +91,8 @@ An SNS is launched in the following stages:
    the initial neurons cannot modify the SNS or 
    transfer the treasury tokens.
   
-3) **Dapp control handover**: Before the decentralization swap,
+- #### Step 4: Dapp control handover. 
+   Before the decentralization swap,
    the developers hand over the control of the dapp to the SNS.
    This includes adding the SNS root canister as the controller of the dapp and removing
    yourself (and possibly other developers) from the list of
@@ -109,8 +110,8 @@ An SNS is launched in the following stages:
    the SNS  parameters, as the SNS governance canister is still in
    pre-decentralization-sale mode.
 
-4) **A NNS proposal starts the decentralization swap**: The 
-   decentralization swap
+- #### Step 5: A NNS proposal starts the decentralization swap. 
+   The decentralization swap
    is started by an NNS proposal that can be submitted by 
    anyone and is decided on by the
    IC community. This means that effectively you hand over 
@@ -132,12 +133,14 @@ An SNS is launched in the following stages:
    the SNS launch is aborted and the dapp’s control is handed back to you, i.e., to the 
    original developers of the dapp.
    
-5) **decentralization swap**: When the swap starts, the swap canister holds the number
+- #### Step 6: Decentralization swap. 
+   When the swap starts, the swap canister holds the number
    of SNS tokens that were specified. End users can
    participate in the decentralization swap by transferring ICP tokens to the 
    swap canister.
 
-6) **SNS genesis**: When the decentralization swap ends, it is first established whether
+- #### Step 7: SNS genesis.
+   When the decentralization swap ends, it is first established whether
    it was successful, e.g., enough ICP have been collected. If the swap was successful,
    the exchange rate is determined and all SNS tokens are given to the swap participants in
    neurons. Once all neurons are created, the SNS should be under decentralized control
@@ -157,7 +160,7 @@ token distribution.
 ### Initial parameters
 Apart from the decentralization swap parameters
 (see next section), 
-all SNS parameters are set in a _.yaml_ file that can 
+all SNS parameters are set in a **.yaml** file that can 
 then be passed as an argument
 when installing the SNS, both for testing and in production.
 There are some parameters that have to be set and others that are set to a
@@ -171,26 +174,26 @@ with each other, there is a tool to validate this input file.
 The tool is also available through the dfx cache like this: `$(dfx cache show)/sns`**
 
 To give you an overview, these are the categories of parameters that you can set:
-1. Parameters of the _SNS governance canister_. These are parameters of the governance
+- **Parameters of the SNS governance canister**: these are parameters of the governance
 that can, in contrast to the other parameters listed here, be changed later 
    by SNS proposals. They include parameters such as the
    minimum stake that a neuron must have, or the cost (in SNS tokens) of submitting
    a proposal that is rejected.
    
-2. Configurations in the _SNS ledger canister_. This includes configurations of the SNS 
+- **Configurations in the SNS ledger canister:** this includes configurations of the SNS 
 ledger canister such as the token name, token symbol, and the ledger transaction fee.
 
-3. The _initial token distribution_. This allows specifying which portion 
+- **The initial token distribution**: this allows specifying which portion 
    of tokens are allocated to whom. In the initial design, one can distribute tokens to
    the following four buckets:
-   1. _developer tokens_ that are appointed to the original developers of the dapp and 
+   - **Developer tokens** that are appointed to the original developers of the dapp and 
       seed investors,
-   2. _airdrop tokens_ that can be given to any other predefined principals that
+   - **Airdrop tokens** that can be given to any other predefined principals that
       should have tokens at genesis, for example to existing users
       of the dapp,
-   3. _treasury tokens_ that are owned by the SNS governance canister which can be
+   - **Treasury tokens** that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs, and
-   4. _sale tokens_ which are owned by the SNS and sold in exchange for ICP tokens.
+   - **Sale tokens** which are owned by the SNS and sold in exchange for ICP tokens.
       Initially, parts of the SNS swap tokens are sold in exchange for ICP tokens
       in an initial decentralization swap. If the swap is successful, the participants
       will receive SNS tokens in a basket of neurons. 
@@ -200,10 +203,10 @@ ledger canister such as the token name, token symbol, and the ledger transaction
       makes SNSs forward compatible to such a feature if it is added in the future.
       
 All developer and airdrop tokens are distributed to neurons.
-We call them _developer neurons_ and _airdrop neurons_,
-respectively, and refer to all these neurons as the _initial neurons_.
+We call them **developer neurons** and **airdrop neurons**,
+respectively, and refer to all these neurons as the **initial neurons**.
 
-:::danger
+:::caution
 
 The developer and airdrop neurons are the only neurons that exist when
 the dapp's control is handed over to the SNS and during the

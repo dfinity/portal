@@ -1,12 +1,15 @@
-# Hello, World!
+# Hello, world!
 
-This sample demonstrates a dead simple dapp consisting of two canisters:
+## Overview 
+This sample demonstrates a simple dapp consisting of two canisters:
 
--   a simple backend canister, `hello`, implementing the logic of the application, and
+-   A simple backend canister, `hello`, implementing the logic of the application.
 
--   a simple frontend asset canister, `hello_assets`, serving the assets of the dapp’s web user interface.
+-   A simple frontend asset canister, `hello_assets`, serving the assets of the dapp’s web user interface.
 
-It is the dapp equivalent of the ubiquitous *hello world* and can be seen running [here on the IC](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
+It is the dapp equivalent of the ubiquitous 'Hello, world!' and can be seen running [here on the IC](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
+
+## Architecture
 
 This sample is based on the default project created by running `dfx new` as described in the quickstart documents.
 

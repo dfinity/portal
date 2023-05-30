@@ -1,24 +1,24 @@
-# Alternative Frontend Origins
+# Alternative frontend origins
 
-If your application has reached the stage where you want to change domain names, and you have been authenticating with Internet Identity, you will want to make sure that your users can seamlessly keep the same Principals they have already been using. To support this functionality, you can configure your application for Alternative Frontend origins using this guide.
+## Overview
+If your application has reached the stage where you want to change domain names, and you have been authenticating with Internet Identity (II), you will want to make sure that your users can seamlessly keep the same Principals they have already been using. To support this functionality, you can configure your application for alternative frontend origins using this guide.
 
 ![End Result](../_attachments/alternative-origins.png)
 
 You may need this guide if you are doing any of the following:
 
-- Moving from `<canister-id>.icp0.io` to a custom domain
-- Asking users to login at `/login` instead of `/`
-- Supporting users using `raw.icp0.io`
-- Configuring multiple apps in your organization to use the same principals
-- And more
+- Moving from `<canister-id>.icp0.io` to a custom domain.
+- Asking users to login at `/login` instead of `/`.
+- Supporting users using `raw.icp0.io`.
+- Configuring multiple apps in your organization to use the same principals.
 
 ## Constraints
 
 Currently, a maximum of **10** alternative origins can be listed.
 
-II will only follow this specification when the origin configuring these alternatives is hosted on a canister using Certified Assets.
+II will only follow this specification when the origin configuring these alternatives is hosted on a canister using **certified assets**.
 
-For more information, see the [Internet Identity Spec](https://github.com/dfinity/internet-identity/blob/main/docs/ii-spec.md#alternative-frontend-origins).
+For more information, see the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/ii-spec.md#alternative-frontend-origins).
 
 ## Configuring Alternative Origins
 
@@ -41,10 +41,8 @@ For origin **A**, you will need to provide a file that tells Internet Identity t
 
 Inside of `src/assets`, create a `.well-known` folder, and add a file named `ii-alternative-origins.`
 
-:::note
-
+:::info
 The file needs to exactly be named `ii-alternative-origins`, with no file extension. The content inside will be formatted as JSON, but the file should not end with `.json`.
-
 :::
 
 Inside of the file, list your alternative origin for **B**. It will look something like this:
@@ -55,10 +53,8 @@ Inside of the file, list your alternative origin for **B**. It will look somethi
 }
 ```
 
-:::note
-
+:::info
 Make sure that you remove any trailing slash or query parameters from the origin
-
 :::
 
 Now, your project should look something like this:
