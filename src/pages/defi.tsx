@@ -259,13 +259,11 @@ function DefiPage() {
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
             <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-              EVM on the IC
+              EVM on the Internet Computer
             </h3>
             <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              The Bitfinity EVM allows you to run Solidity smart-contracts
-              at web-speed, directly on the Internet Computer. More information about Bitfinity,
-              and how you can run your Solidity smart-contracts on the Internet Computer
-              can be found on the Bitfinity EVM homepage.
+              The Bitfinity EVM allows developers to run Solidity smart-contracts
+              at web-speed, directly on the Internet Computer.
             </p>
             <Link
               className="link-primary link-with-icon"
