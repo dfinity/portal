@@ -155,7 +155,7 @@ actor {
 ```motoko
 module Types {
 
-    //1. Type that describes the Request arguments for an HTTPS Outcall
+    //1. Type that describes the Request arguments for an HTTPS outcall
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     public type HttpRequestArgs = {
         url : Text;
@@ -213,8 +213,16 @@ module Types {
 }
 ```
 
+- #### Step 6: Test the dapp locally
 
-- #### Step 3:  Open the `src/hello_http_backend/main.mo` file in a text editor and delete the existing content.
+Deploy the dapp and test it via the browser:
+
+```bash
+dfx start --background
+dfx deploy
+```
+
+Open the Candid web UI link that is returned and call the `get_cat_fact` method.
 
 
 
