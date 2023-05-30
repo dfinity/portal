@@ -28,7 +28,7 @@ beneficial to use a [query call instead of an update call](https://smartcontract
 But, since query calls do not go through consensus, [certified responses](https://internetcomputer.org/docs/current/developer-docs/security/general-security-best-practices)
 should be used wherever possible. The HTTP interface of the Rust implementation shows how certified data can be handled.
 
-### Delegating dontrol over assets
+### Delegating control over assets
 For a multitude of reasons, users may want to give control over their assets to other identities, or even delete (burn) an item.
 The NFT canister example contains all those cases and shows how it can be done.
 
