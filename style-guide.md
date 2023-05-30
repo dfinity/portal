@@ -8,6 +8,7 @@ This guide will outline the following:
 - Page structure.
 - Use of page headings.
 - Use of capitalization.
+- Documentation language, spelling, grammar, and word choice.
 - Use of punctuation.
 - Bulleted lists.
 - Bold text.
@@ -15,7 +16,7 @@ This guide will outline the following:
 - Hints.
 - Links and hyperlinks.
 - Code snippets and code blocks.
-- Documentation language.
+- FAQ sections.
 - The difference between a tutorial and a guide.
 - How to write a tutorial.
 - How to write a guide.
@@ -209,7 +210,9 @@ Capitalization within the developer documentation should follow these outlined s
 ### Proper nouns
 
 The following proper nouns should always be capitalized:
+- Blockchain Singularity
 - Candid
+- DFINITY Foundation
 - Internet Computer
 - Internet Computer Protocol
 - Internet Identity
@@ -219,13 +222,14 @@ The following proper nouns should always be capitalized:
 - NodeJS
 - README
 - Rust
+- Service Nervous System
 - TypeScript
 - WebAssembly (Wasm)
 - Wiki
+- World Computer
 - YouTube
 
 This is not an exhaustive list, and other proper nouns such as tool names, company names, or project names should be capitalized. Examples of these are Unity, Godot, Namecheap, GoDaddy, and GitHub. 
-
 
 ### Abbreviations and acronyms  
 The following is a list of common abbreviations that are capitalized within the developer docs:
@@ -246,6 +250,55 @@ The following is a list of common abbreviations that are capitalized within the 
 - SDK
 - SNS
 - XDR
+
+## Language
+The following language and capitalization of certain terms and phrases should be used across the IC developer documentation:
+- Big Tech
+- Bitcoin integration
+- Bitcoin network: should be used in place of "sending bitcoin". 
+- Built on the Internet Computer
+- canister
+- canister smart contract
+- dapp: should be used in place of any reference to an IC app, decentralized application, or 'dApp'. 
+- DeFi
+- Ethereum integration
+- Ethereum: should be used in place of ETH or ETH token. 
+- HTTP outcalls
+- IC SDK: should be used in place of any reference to the IC's SDK.
+- maturity
+- Motoko playground
+- neuron
+- node provider
+- open internet service
+- reverse gas model
+- Web3
+- World Wide Web
+
+### Spelling, grammar, and word choice
+The following spelling, grammar, and word choice rules should be followed:
+- Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section.)
+- Assure that the language in the document reads well for non-native English speakers, and avoid phrases or sayings that may be confusing, such as "Dig in."
+- Avoid informal, personal thoughts or otherwise unnecessary language within the developer docs. A few examples of this might be:
+    - Referring to the default configuration as the 'boring default configuration'.
+    - Making a joke within the document, then using parentheses to acknowledge the joke such as "(Get it? heh)".
+  
+    - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience. 
+    
+    For example, avoid the following:
+    - "Get it? heh."
+    - "Take a deep dive."
+    - "Go down the rabbit hole."
+    - "Dig in."
+    
+    Where as, the following are acceptable in certain contexts:
+    - "Ready to get started? Let's go!"
+    - "Here is a checklist of the things you will need to consider:"
+
+## Numbers
+Numbers should be formatted using the `'` character, and not any other character. For example:
+- 44'760'000
+- 54'000
+- 1'000
 
 ## Punctuation
 
@@ -338,24 +391,6 @@ dfx start --background
 npm install
 dfx deploy
 ```
-
-## Language
-The following language and capitalization of certain terms and phrases should be used across the IC developer documentation:
-- dapp: should be used in place of any reference to an IC app, decentralized application, or 'dApp'. 
-- IC SDK: should be used in place of any reference to the IC's SDK.
-
-Other notes about language:
-- Avoid informal, personal thoughts or otherwise unnecessary language within the developer docs. A few examples of this might be:
-    - Referring to the default configuration as the 'boring default configuration'.
-    - Making a joke within the document, then using parentheses to acknowledge the joke such as "(Get it? heh)".
-    - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience. 
-    
-    For example, avoid the following:
-    - "Get it? heh."
-    
-    Where as, the following are acceptable in certain contexts:
-    - "Ready to get started? Let's go!"
-    - "Here is a checklist of the things you will need to consider:"
 
 ## FAQ sections
 
