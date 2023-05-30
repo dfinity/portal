@@ -219,7 +219,6 @@ The following proper nouns should always be capitalized:
 - NodeJS
 - README
 - Rust
-- System Nervous System 
 - TypeScript
 - WebAssembly (Wasm)
 - Wiki
