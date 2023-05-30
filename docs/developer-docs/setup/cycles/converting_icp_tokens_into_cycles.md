@@ -1,9 +1,6 @@
----
-position: 4
----
-
 # Converting ICP tokens into cycles
 
+## Overview
 To convert ICP tokens into cycles, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
 
 ``` bash
@@ -16,7 +13,9 @@ This will display your account number on the ICP ledger. It looks similar to thi
 e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 ```
 
-Once you have transferred some ICP tokens into this account (5-10$ worth should be plenty to get going), you can see the balance using this command:
+### Checking the balance
+
+Once you have transferred some ICP tokens into this account ($5-$10 worth should be plenty to get going), you can see the balance using this command:
 
 ``` bash
 dfx ledger --network ic balance
@@ -28,6 +27,7 @@ This will output something like this:
 12.49840000 ICP
 ```
 
+## Create a cycles wallet
 With those ICP tokens ready, you can start creating your cycles wallet. To start, you have to create a canister which will become your wallet. The base command for this is as follows:
 
 ``` bash

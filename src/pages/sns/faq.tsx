@@ -253,9 +253,18 @@ function SnsFaqPage() {
 
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
-              the launch of the SNS technology. OpenChat has already publicly
-              announced their plans to turn their dapp into an SNS DAO in Q1 of
-              2023. Dapps such as {" "}
+              the launch of the SNS technology. OpenChat was the first dapp
+              that handed control over to an SNS DAO announced their plans to
+              turn their dapp into an SNS DAO in Q1 of 2023. Dapps such as {" "}
+              <Link href="https://www.sonic.ooo//">
+                Sonic
+              </Link>, {" "}
+              <Link href="https://hotornot.wtf/">
+                Hot or Not
+              </Link>, {" "}
+              <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
+                Kinic
+              </Link>, {" "}
               <Link href="https://distrikt.app/">
                 distrikt
               </Link>, {" "}
@@ -321,10 +330,11 @@ function SnsFaqPage() {
                   <strong>Create SNS parameter update proposals: </strong>
                   You can propose upgrades for many of the DAO's parameters
                   such as maximum staking period, voting rewards and many more.
-                  See all of them {" "}
+                  See {" "}
                   <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
-                    here
+                    parameters
                   </Link>
+                  .
                 </li>
               </ul>
               Non-governance related examples of contributing are:
@@ -426,9 +436,16 @@ function SnsFaqPage() {
                 in it can leverage the broader community's "wisdom of crowds"
                 to decide which SNS tokens to acquire.
               </p>
-              You can find out more about the community fund{" "}
+              <p>
+                ICP neuron holders can opt in or out of the Community Fund at any moment.
+                Neurons will only participate in the decentralization swap if they are
+                opted in at the moment when the proposal to initiate the decentralization
+                swap executes. The propsoal executes right after it gets adopted by ICP
+                neuron holders.
+              </p>
+              More about the{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
-                here
+                community fund
               </Link>
               .
             </Faq>
@@ -567,9 +584,9 @@ function SnsFaqPage() {
                 <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>, which
                 requires ICP utility tokens. ICP tokens can be exchanged for SNS
                 tokens during the decentralization swap. If you don’t have ICP,
-                you can buy some from any of the exchanges listed{" "}
-                <Link href="https://support.dfinity.org/hc/en-us/articles/6646999699860-How-do-I-stake-ICP-utility-tokens-">
-                  here
+                go to any of the exchanges listed on{" "}
+                <Link href="https://coinmarketcap.com/currencies/internet-computer/markets/">
+                  CoinMarketCap
                 </Link>
                 .
               </p>
@@ -674,9 +691,9 @@ function SnsFaqPage() {
                 implicitly trusting the NNS community and the developers
                 decentralizing the dapp. In any case, it is crucial that you
                 trust the developers will not change the dapp during the SNS
-                launch. Learn what you could verify and what to look out for{" "}
+                launch. Learn what you could verify and what to look out for on{" "}
                 <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust">
-                  here.
+                  the ICP Wiki.
                 </Link>
               </p>
             </Faq>
@@ -709,11 +726,11 @@ function SnsFaqPage() {
                   canister id of the dapp controlled by the SNS DAO is the same
                   as the one you're interacting with.
                 </li>
-                Learn more about verification here: {" "}
+                See Wiki for more info on{" "}
                 <Link
                   href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_swap_proposal"
                 >
-                  here
+                  verification
                 </Link>
               </ul>
             </Faq>

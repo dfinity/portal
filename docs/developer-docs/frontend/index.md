@@ -4,7 +4,9 @@ sidebar_position: 1
 
 # Building a web frontend
 
-The Internet Computer allows you to host frontends built with standard web technologies for your dApps, using
+## Overview
+
+The Internet Computer allows you to host frontends built with standard web technologies for your dapps, using
 our [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) as a communication layer. By using
 the [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provided by `dfx` to upload static files to the IC,
 you will be able to run your entire application on decentralized technology. This section takes a closer look at the
@@ -13,7 +15,7 @@ build the user interface for your projects.
 
 Here are some quick links to tutorials with example code for various stages of developing your frontend dapp:
 
-- A tutorial on building a React dapp [Customize the frontend](./custom-frontend.md)
+- [Customize the frontend](./custom-frontend.md): a tutorial on building a React dapp.
 
 - Using [Candid](../backend/motoko/hello-location.md#candid-ui) as a bare-bones interface to expose and test the functions in a canister.
 
@@ -128,8 +130,8 @@ In many cases, you can use the default `webpack.config.js` file as-is, without a
 plug-ins, modules, and other custom configuration to suit your needs. The specific changes you make to
 the `webpack.config.js` configuration largely depend on the other tools and frameworks you want to use.
 
-For example, if you have experimented with the [Customize the frontend](custom-frontend)
-or [Add a stylesheet](add-stylesheet) frontend tutorials, you might have modified the following section to work with React
+For example, if you have experimented with the [customizing the frontend](custom-frontend)
+or [adding a stylesheet](add-stylesheet) frontend tutorials, you might have modified the following section to work with React
 JavaScript:
 
         module: {
@@ -194,31 +196,31 @@ You could then use the module to construct a navigation component similar to the
 
 ## Iterate faster using webpack-dev-server
 
-Starting with dfx 0.7.7, we now provide you with webpack dev-server in our `dfx new` starter.
+Starting with `dfx 0.7.7`, we now provide you with webpack dev-server in our `dfx new` starter.
 
 The webpack development server—`webpack-dev-server`—provides in-memory access to the webpack assets, enabling you to
 make changes and see them reflected in the browser right away using live reloading.
 
 To take advantage of the `webpack-dev-server`:
 
-1. Create a new project and change to your project directory.
+- #### Step 1: Create a new project and change to your project directory.
 
-2. Start the IC locally, if necessary, and deploy as you normally would, for example, by running the `dfx deploy`
+- #### Step 2: Start the IC locally, if necessary, and deploy as you normally would, for example, by running the `dfx deploy`
    command.
 
-3. Start the webpack development server by running the following command:
+- #### Step 3: Start the webpack development server by running the following command:
 
        npm start
 
-4. Open a web browser and navigate to the asset canister for your application using port 4943.
+- #### Step 4: Open a web browser and navigate to the asset canister for your application using port 8080.
 
    For example:
 
-       http://localhost:4943
+       http://localhost:8080
 
-5. Open a new terminal window or tab and navigate to your project directory.
+- #### Step 5: Open a new terminal window or tab and navigate to your project directory.
 
-6. Open the `index.js` file for your project in a text editor and make changes to the content.
+- #### Step 6: Open the `index.js` file for your project in a text editor and make changes to the content.
 
    For example, you might add an element to the page using JavaScript:
 
@@ -241,9 +243,9 @@ To take advantage of the `webpack-dev-server`:
          document.body.insertBefore(newDiv, currentDiv);
        }
 
-7. Save your changes to the `index.js` file but leave the editor open to continue making changes.
+- #### Step 7: Save your changes to the `index.js` file but leave the editor open to continue making changes.
 
-8. Refresh the browser or wait for it to refresh on its own to see your change.
+- #### Step 8: Refresh the browser or wait for it to refresh on its own to see your change.
 
    When you are done working on the frontend for your project, you can stop the webpack development server by pressing
    Control-C.
@@ -253,15 +255,14 @@ To take advantage of the `webpack-dev-server`:
 You may want to use a bundler other than webpack. Per-bundler instructions are not ready yet, but if you are familiar
 with your bundler, the following steps should get you going:
 
-1. Remove the `copy:types`, `prestart`, and `prebuild` scripts from `package.json`
+- #### Step 1: Remove the `copy:types`, `prestart`, and `prebuild` scripts from `package.json`.
 
-2. Run `dfx deploy` to generate the local bindings for your canisters
+- #### Step 2: Run `dfx deploy` to generate the local bindings for your canisters.
 
-3. Copy the generated bindings to a directory where you would like to keep them
+- #### Step 3: Copy the generated bindings to a directory where you would like to keep them.
 
-4. Modify `declarations/<canister_name>/index.js` and replace `process.env.<CANISTER_NAME>_CANISTER_ID` with the
-   equivalent pattern for environment variables for your bundler
+- #### Step 4: Modify `declarations/<canister_name>/index.js` and replace `process.env.<CANISTER_NAME>_CANISTER_ID` with the equivalent pattern for environment variables for your bundler.
 
     - Alternately hardcode the canister ID if that is your preferred workflow
 
-5. Commit the declarations and import them in your codebase
+- #### Step 5: Commit the declarations and import them in your codebase.

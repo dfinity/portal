@@ -1,15 +1,15 @@
 ---
 sidebar_position: 4
-title: Step 4 - Deploying locally and using Candid UI
+title: '4: Deploying locally and using Candid UI'
 ---
 
-# Step 4 - Deploying locally and using Candid UI
+# 4: Deploying locally and using Candid UI
 
-In this article we will learn how to deploy our app locally and play with it using Candid UI.
+In this article we will learn how to deploy our dapp locally and play with it using Candid UI.
 
 ## Starting local Internet Computer server
 
-Before you can deploy your app, you need to start a local Internet Computer server to host the app code. To do so, open
+Before you can deploy your dapp, you need to start a local Internet Computer server to host the dapp code. To do so, open
 the terminal and type this command:
 
 ```bash
@@ -21,7 +21,7 @@ You will a result in the console similar to this:
 
 ## Deploying your app
 
-To deploy your app you need to, change your current directory to the project root and enter:
+To deploy your dapp you need to change your current directory to the project root and erun the command:
 
 ```bash
 dfx deploy
@@ -29,7 +29,7 @@ dfx deploy
 
 ## Opening Candid UI
 
-When you deployed your canister, the system displays two lines similar to this:
+When you deployed your canister, the system displayed two lines similar to this:
 
 ```shell
 URLs:
@@ -51,8 +51,8 @@ Candid UI allows you to access the methods of the actor that we coded at the pre
 
 During this step we learned:
 
-- How to start the local Internet Computer environment
-- How to deploy canisters to the local environment
-- How to use Candid UI to quickly test your code
+- How to start the local Internet Computer environment.
+- How to deploy canisters to the local environment.
+- How to use Candid UI to quickly test your code.
 
-In the next section we will make the app much more complex by adding voting options.
+In the next section we will make the dapp much more complex by adding voting options.

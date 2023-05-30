@@ -128,14 +128,15 @@ function InternetIdentityPage() {
           >
             <div className="hidden md:block blob blob-infinite blob-bottom-right blob-lg z-[-1]"></div>
             <CardWithIcon
-              title="Biometric authorization"
+              title="Passkeys to replace passwords"
               icon={<IconNoPassword className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Unlock authentication with your device via FaceID, fingerprint
-                sensor or use a YubiKey. This provides strong security, as
-                the cryptographic key never leaves your device. No passwords are used
-                to authenticate on the IC.
+                Based on FIDO Alliance and W3C standards, passkeys replace
+                passwords with cryptographic key pairs. These key pairs profoundly
+                improve security as private keys are never stored online. Users
+                can simply authenticate using FaceID, a fingerprint sensor or a
+                YubiKey.
               </p>
             </CardWithIcon>
 
@@ -144,9 +145,10 @@ function InternetIdentityPage() {
               icon={<IconCryptography className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Remain pseudonymous using the Internet Identity authentication
-                framework, which prevents user tracking across dapps and
-                services.
+                Users can remain pseudonymous using the Internet Identity
+                authentication framework, which prevents user tracking
+                across dapps and services by creating new principal ids
+                for each dapp a user authenticate with.
               </p>
             </CardWithIcon>
 
@@ -155,7 +157,7 @@ function InternetIdentityPage() {
               icon={<IconPrivacy className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Internet Identity integrates the widely used secure web2
+                Internet Identity integrates the widely used secure Web2
                 authentication framework known as WebAuthn for maximum
                 compatibility.
               </p>
@@ -191,10 +193,10 @@ function InternetIdentityPage() {
                 <p className="mb-0 tw-paragraph">
                   On the Internet Computer blockchain, users can securely
                   authenticate themselves without ever needing an email,
-                  username, or password. Using any WebAuthn-enabled device,
-                  users can login conveniently without their information being
-                  monetized by tech companies. Internet Identity is designed to prevent
-                  Web3 services to track your activity across dapps.
+                  username, or password. Using a passkey, users can login
+                  conveniently without their information being monetized
+                  by tech companies. Internet Identity is designed to prevent
+                  Web3 services to track user activity across dapps.
                 </p>
                 <Link
                   className="link-primary link-with-icon mt-6"

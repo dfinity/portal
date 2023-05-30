@@ -1,4 +1,6 @@
-# Create scalable apps
+# 13: Scalable app example
+
+## Overview
 
 The CanCan sample application is a simplified video-sharing service that demonstrates several features that you can use as models for your own applications. For example, here are a few things you can learn by exploring the CanCan sample application:
 
@@ -22,7 +24,7 @@ The initial attempt to build a scalable video-sharing service for the Internet C
 
 However, the scalability of the application was limited because the distributed hash table relied on a specific number of canisters that it could populate with data for storage and retrieve data from for viewing. In addition, the original implementation of the distributed hash table backend service included code to accommodate common network connectivity issues that could cause nodes to be unavailable or lose data.
 
-### Simplifying scalability
+## Simplifying scalability
 
 Because the Internet Computer protocol relies on replicated state across nodes in a subnet, it provides certain guarantees about fault tolerance and failover natively that are not generally available to applications running on other platforms or protocols.
 
@@ -58,7 +60,7 @@ Much like the LinkedUp sample application, the CanCan sample application uses th
 
 The CanCan sample application uses the React library in combination with TypeScript to implement frontend user interface.
 
-## Data model overview
+### Data model overview
 
 The application stores information about users and information about videos. To support most browsers, the videos are serialized into byte arrays with video data stored in 500kb segments of bytes that are referred to as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) objects. When a video is requested, the manifest loads the list of chunks required to play the video and concatenates the chunks before displaying the video in a standard `<video>` element.
 

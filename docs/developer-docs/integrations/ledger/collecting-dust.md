@@ -1,5 +1,6 @@
 # Account trimming
 
+## Overview
 Even if the ledger can index a large number of accounts, it has a finite capacity.
 To avoid saturation and maintain good performance,
 some accounts are trimmed if the ledger capacity is reaching a threshold.
@@ -14,7 +15,7 @@ The balance of each of these trimmed accounts will also be deleted
 
 ## Example
 
-For the SNS ledger, the threshold is currently set a 28 million accounts for the ledger, plus 100 000 for the
+For the SNS ledger, the threshold is currently set a 28 million accounts for the ledger, plus 100,000 for the
 trim quantity.
-Therefore, if adding a transaction lead to index more than 28.1 M accounts, the 100 000 accounts with the lowest
+Therefore, if adding a transaction lead to index more than 28.1 M accounts, the 100,000 accounts with the lowest
 balance will be trimmed and their balance burned.

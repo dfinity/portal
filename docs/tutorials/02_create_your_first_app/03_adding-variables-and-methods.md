@@ -1,14 +1,13 @@
 ---
 sidebar_position: 3
-title: Step 3 - Adding variables and methods
+title: '3: Adding variables and methods'
 ---
 
-# Step 3 - Adding variables and methods
+# 3: Adding variables and methods
 
 Now let's start adding some code to our backend!
 
-We will use Motoko programming language. You can get a quick overview of Motoko at
-the [Motoko Language Tour](/motoko/intro/index.md).
+We will use Motoko programming language. You can get a quick overview of Motoko at the [Motoko Language Tour](/motoko/intro/index.md).
 
 In this tutorial, we will edit file `src/poll_backend/main.mo`, but if you want to play and iterate with Motoko, the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app) is a good web-based option.
 
@@ -16,16 +15,14 @@ In this tutorial, we will edit file `src/poll_backend/main.mo`, but if you want 
 
 Backend logic on the Internet Computer is implemented as [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). In Motoko, canisters are represented as "Actors".
 
-:::note
+:::info
 [Actor](https://en.wikipedia.org/wiki/Actor_model) is a computer science concept of a component that:
 
-- Includes both code and data
-- Executes everything in a single thread, so that the developer doesn't have to deal with concurrency problems
-- Communicates with external world by sending and receiving messages
+- Includes both code and data.
+- Executes everything in a single thread, so that the developer doesn't have to deal with concurrency problems.
+- Communicates with external world by sending and receiving messages.
 
-:::note
-
-  
+:::
 
 To create an actor, delete everything from `main.mo` file and add the following code:
 
@@ -42,7 +39,7 @@ structures. We will change in the next section.
 
 ## Add the question data structure
 
-For our poll app, we want to the poll to have the main question. For example, "What is your favorite programming language?"
+For our poll dapp, we want to the poll to have the main question. For example, "What is your favorite programming language?"
 
 To add the question, include the following code *inside* the actor:
 
@@ -50,7 +47,7 @@ To add the question, include the following code *inside* the actor:
     var question: Text = "What is your favorite programming language?";
 ```
 
-The new statement does the following:
+This new statement does the following:
 
 - Creates a new actor's variable `question`
 - Declares the type of this variable Text, which is the standard type for strings in Motoko. Because of this, we need to add an import statement at the top of the file to use the `Text` type: `import Text "mo:base/Text";`.
@@ -76,10 +73,10 @@ To do any useful work, actors needs to be able to communicate with the external 
 
 For our poll actor, we want to be able to:
 
-- Get the current main question
-- Get the list of available options to vote on
-- Vote on an option and save it in the backend
-- Reset the vote counts for each option
+- Get the current main question.
+- Get the list of available options to vote on.
+- Vote on an option and save it in the backend.
+- Reset the vote counts for each option.
 
 
 To start, we will create the `getQuestion` method:
@@ -99,7 +96,9 @@ observations:
 ### Queries vs Updates
 
 **Updates** are executed on all machines of the subnet and the result will have to pass through a cryptographic
-consensus algorithm. **Queries** are executed only on one node of a subnet. Because the consensus is required to change
+consensus algorithm. 
+
+**Queries** are executed only on one node of a subnet. Because the consensus is required to change
 data, it's not possible to change data in queries.
 
 |                      | Queries                    | Updates                |
@@ -131,10 +130,10 @@ actor {
 
 During this step we learned:
 
-- Internet Computer backend code consists of actors
-- Actors are components that interact with the external world via messages
-- Actors can have data as variables
-- Query methods are fast and free, but they can't change the data
-- Update methods are slower, but they can change the data
+- Internet Computer backend code consists of actors.
+- Actors are components that interact with the external world via messages.
+- Actors can have data as variables.
+- Query methods are fast and free, but they can't change the data.
+- Update methods are slower, but they can change the data.
 
-In the next article we will see how to deploy the app locally and play with it using Candid UI.
+In the next article we will see how to deploy the dapp locally and play with it using Candid UI.

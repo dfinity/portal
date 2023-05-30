@@ -1,72 +1,72 @@
-# Query using an actor
+# 8: Querying using an actor
 
-In the [Quick start](/tutorials/deploy_sample_app.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this tutorial illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
+## Overview
 
-## Before you begin
+In the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md), you had your first look at a simple canister for the Internet Computer involving an actor object and asynchronous messaging. As the next step in learning to write canisters that take advantage of actor-based messaging, this guide illustrates how to modify a traditional `Hello, World!` canister to define an actor, then deploy and test your canister on a local canister execution environment.
 
-Before starting the tutorial, verify the following:
+## Prerequisites
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
+Before starting the guide, verify the following:
 
--   You have stopped any local canister execution environment processes
+-   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
-This tutorial takes approximately 20 minutes to complete.
+-   [x] You have stopped any local canister execution environment processes
 
 ## Create a new project
 
-To create a new project for this tutorial:
+To create a new project for this guide:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Change to the folder you are using for your Internet Computer projects, if you are using one.
+- #### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
 
-3.  Create a new project by running the following command:
+- #### Step 3:  Create a new project by running the following command:
 
         dfx new actor_hello
 
-4.  Change to your project directory by running the following command:
+- #### Step 4:  Change to your project directory by running the following command:
 
         cd actor_hello
 
 ## Modify the default configuration
 
-In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. In this tutorial, you need to modify a few of the default settings to reflect your project.
+In the [exploring the default project](explore-templates) tutorial, you saw that creating a new project adds a default `dfx.json` configuration file to your project directory. In this guide, you need to modify a few of the default settings to reflect your project.
 
 To modify the `dfx.json` configuration file:
 
-1.  Open the `dfx.json` configuration file in a text editor.
+- #### Step 1:  Open the `dfx.json` configuration file in a text editor.
 
-2.  Check the default settings for the `actor_hello` project.
+- #### Step 2:  Check the default settings for the `actor_hello` project.
 
-3.  Notice that the names and paths to source and output files all use the `actor_hello` project name.
+- #### Step 3:  Notice that the names and paths to source and output files all use the `actor_hello` project name.
 
     For example, the default canister name is `actor_hello` and the default path to the main code file is `src/actor_hello/main.mo`.
 
     You can rename any of these files or directories. If you make any changes, however, be sure that the names you use for your files and directories on the file system match the names you specify in the `dfx.json` configuration file. If you plan to use the default directory and file names, no changes are necessary.
 
-4.  Remove all of the `actor_hello_assets` configuration settings from the file.
+- #### Step 4:  Remove all of the `actor_hello_assets` configuration settings from the file.
 
-    The sample canister for this tutorial doesn’t use any frontend assets, so you can remove those settings from the configuration file.
+    The sample canister for this guide doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
     For example, the configuration file looks like [this](./_attachments/define-actor-dfx.json) after you remove the `actor_hello_assets` section.
 
-5.  Save your changes and close the file to continue.
+- #### Step 5:  Save your changes and close the file to continue.
 
 ## Modify the default canister
 
-In the [Exploring the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this tutorial, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an ICP canister is represented as a Motoko actor.
+In the [exploring the default project](explore-templates) tutorial, you saw that creating a new project creates a default `src` directory with a template `main.mo` file. In this guide, you modify the template code to create a simple "Hello, World!" canister. by defining an actor in Motoko. In Motoko, an ICP canister is represented as a Motoko actor.
 
 To modify the default template source code:
 
-1.  Change to the source code directory for your project by running the following command:
+- #### Step 1:  Change to the source code directory for your project by running the following command:
 
         cd src/actor_hello
 
-2.  Open the template `main.mo` file in a text editor and delete the existing content.
+- #### Step 2:  Open the template `main.mo` file in a text editor and delete the existing content.
 
     The next step is to write a canister that prints a statement like the traditional "Hello, World!" sample canister. To compile the canister for the Internet Computer, however, your Motoko code must define an `actor`.
 
-3.  Copy and paste [this code](./_attachments/actor_hello.mo) into the `main.mo` file.
+- #### Step 3:  Copy and paste [this code](./_attachments/actor_hello.mo) into the `main.mo` file.
 
     Let’s take a closer look at this Motoko actor defining our canister:
 
@@ -76,7 +76,7 @@ To modify the default template source code:
 
     For more information about using a query call, see [query calls](/concepts/canisters-code.md#query-update) in [Canisters include both program and state](/concepts/canisters-code.md#canister-state).
 
-4.  Save your changes and close the `main.mo` file.
+- #### Step 4:  Save your changes and close the `main.mo` file.
 
 ## Checking that the canister builds
 
@@ -86,9 +86,9 @@ However, it’s also possible to compile your program without connecting to the 
 
 To check that the canister builds:
 
-1.  Navigate back to the root of your project directory.
+- #### Step 1:  Navigate back to the root of your project directory.
 
-2.  Build the canister executable with a temporary, hard-coded identifier by running the following command:
+- #### Step 2:  Build the canister executable with a temporary, hard-coded identifier by running the following command:
 
         dfx build --check
 
@@ -105,8 +105,7 @@ To check that the canister builds:
 
     The command displays output similar to the following
 
-<!-- -->
-
+```
     .dfx/local/canisters
     ├── actor_hello
     │   ├── actor_hello.d.ts
@@ -117,6 +116,7 @@ To check that the canister builds:
     └── idl
 
     2 directories, 5 files
+```
 
 ## Deploy the project
 
@@ -132,15 +132,15 @@ Let’s consider these steps in a bit more detail. Before you can deploy this pr
 
 To deploy this project locally:
 
-1.  Open a terminal and navigate to your project directory, if needed.
+- #### Step 1:  Open a terminal and navigate to your project directory, if needed.
 
-2.  Start the local canister execution environment on your local computer by running the following command:
+- #### Step 2:  Start the local canister execution environment on your local computer by running the following command:
 
         dfx start --background
 
-    For this tutorial, you can use the `--background` option to start the local canister execution environment as background processes. With this option, you can continue to the next step without opening another terminal shell on your local computer.
+    For this guide, you can use the `--background` option to start the local canister execution environment as background processes. With this option, you can continue to the next step without opening another terminal shell on your local computer.
 
-3.  Generate a new canister identifier for your project on the local canister execution environment by running the following command:
+- #### Step 3:  Generate a new canister identifier for your project on the local canister execution environment by running the following command:
 
         dfx canister create actor_hello
 
@@ -161,7 +161,7 @@ To deploy this project locally:
           }
         }
 
-4.  Build the canister by running the following command:
+- #### Step 4:  Build the canister by running the following command:
 
         dfx build
 
@@ -169,7 +169,7 @@ To deploy this project locally:
 
         Building canisters...
 
-5.  Deploy your `actor_hello` project on the local canister execution environment by running the following command:
+- #### Step 5:  Deploy your `actor_hello` project on the local canister execution environment by running the following command:
 
         dfx canister install actor_hello
 
@@ -183,17 +183,19 @@ You now have a canister deployed on your local canister execution environment an
 
 To test the canister you have deployed on the local canister execution environment:
 
-1.  Use `dfx canister call` to call the `hello` function by running the following command:
+- #### Step 1:  Use `dfx canister call` to call the `hello` function by running the following command:
 
         dfx canister call actor_hello hello
 
-2.  Verify that the command returns the text specified for the `hello` function along with a checkpoint message in the terminal running the local canister execution environment.
+- #### Step 2:  Verify that the command returns the text specified for the `hello` function along with a checkpoint message in the terminal running the local canister execution environment.
 
     For example, the canister displays "Hello, World from DFINITY" in output similar to the following:
 
         [Canister rrkah-fqaaa-aaaaa-aaaaq-cai] Hello, World from DFINITY
 
-    Note that if you are running the Internet Computer mainnet in a separate terminal instead of in the background, the "Hello, World from DFINITY" message is displayed in the terminal that displays mainnet activity.
+:::info
+Note that if you are running the Internet Computer mainnet in a separate terminal instead of in the background, the "Hello, World from DFINITY" message is displayed in the terminal that displays mainnet activity.
+:::
 
 ## Stop the local canister execution environment
 
@@ -201,12 +203,12 @@ After you finish experimenting with your canister, you can stop the local canist
 
 To stop the local canister execution environment, you can:
 
-1.  In the terminal used to interact with your canister, issue the command `dfx stop`; or
+- #### Step 1:  In the terminal used to interact with your canister, issue the command `dfx stop`; or
 
-2.  In the terminal that displays operations from the local canister execution environment, press Control-C to interrupt that process; or
+- #### Step 2:  In the terminal that displays operations from the local canister execution environment, press Control-C to interrupt that process; or
 
-3.  Kill the `replica` process using commands or tools of your operating system.
+- #### Step 3:  Kill the `replica` process using commands or tools of your operating system.
 
-4.  Stop the local canister execution environment by running the following command:
+- #### Step 4:  Stop the local canister execution environment by running the following command:
 
         dfx stop

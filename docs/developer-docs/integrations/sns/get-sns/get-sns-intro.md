@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
 ---
-# How to get an SNS
+# Get an SNS
 
+## Overview
 We explain how to get an SNS that is provided as a 
 system functionality by the IC.
 As explained in the [introduction](../sns-intro.md), there are also other 
@@ -14,7 +15,7 @@ This page only provides a high level overview of this
 process and, for each of the steps, we will provide a link
 to a page with further details.
 
-:::warning
+:::caution
 Some of the detail pages are still being created or edited
 and might not yet be stable.
 Please bare with us as we update them along with the last
@@ -30,15 +31,13 @@ that you are about to request from the IC should achieve.
 To motivate this better, let's look at two examples of such non-technical
 considerations.
 
-**Example 1.** 
-To decentralize a dapp, the governance control has to be distributed 
+- **Example 1**: to decentralize a dapp, the governance control has to be distributed 
 among many parties. Therefore, a successful decentralization relies on
 reaching many parties and convincing them to participate in the 
 governance system. Achieving this may rely on non-technical strategies,
 such as proper advertising and marketing.
 
-**Example 2.**
-The SNS implementation is very flexible and allows each SNS
+- **Example 2**: the SNS implementation is very flexible and allows each SNS
 community to set various parameters according to their needs.
 Choosing these parameters entails non-technical work to define
 which goals a given SNS should pursue.
