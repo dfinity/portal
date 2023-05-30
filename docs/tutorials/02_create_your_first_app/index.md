@@ -1,6 +1,6 @@
 # Tutorial 2: Create your first dapp in 10 minutes
 
-## About this tutorial
+## Overview
 
 This tutorial is a follow up to the [deploy your first dapp in 5 minutes](../deploy_sample_app.md) tutorial. 
 
