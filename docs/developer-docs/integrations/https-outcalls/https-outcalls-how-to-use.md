@@ -42,7 +42,7 @@ The following parameters should be supplied for in the request:
 
 The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
 
--   `status` - the response status (e.g., 200, 404)
+-   `status`: the response status (e.g., 200, 404).
 
 -   `headers` - list of HTTP response headers and their corresponding values
 
