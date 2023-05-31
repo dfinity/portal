@@ -67,16 +67,175 @@ Adding a device:
 
 -   **Device registration:** if this identity is already known, a new device will remain unsynced at first; at this time, only the `alias` and `publickey` of this device will be added to the Encrypted Notes canister.
 
--   **Device synchronization:** once an unsynced device obtains the list of all unsynced devices for this II, it will encrypt the symmetric AES *secret key* under each unsynced device’s public key. Afterwards, the unsynced device obtains the encrypted symmetric AES *secret key*, decrypts it, and then uses it to decrypt the existing notes stored in the encrypted notes canister.
+-   **Device synchronization:** once an unsynced device obtains the list of all unsynced devices for this II, it will encrypt the symmetric AES **secret key** under each unsynced device’s public key. Afterwards, the unsynced device obtains the encrypted symmetric AES **secret key**, decrypts it, and then uses it to decrypt the existing notes stored in the encrypted notes canister.
 
 Once authenticated with II:
 
--   If this identity is not known, then the frontend generates a symmetric AES *secret key* and encrypts it with its own public key. Then the frontend calls `seed(publickey, ciphertext)`, adding that ciphertext and its associated `publickey` to the map.
+-   If this identity is not known, then the frontend generates a symmetric AES **secret key** and encrypts it with its own public key. Then the frontend calls `seed(publickey, ciphertext)`, adding that `ciphertext` and its associated `publickey` to the map.
 
 -   If a user wants to register a subsequent device, the frontend calls `register_device`, passing in the `alias` and `publickey` of that device. The frontend then calls `submit_ciphertexts([publickey, ciphertext])` for all the devices it needs to register. This allows the registered devices to pull and decrypt the AES key to encrypt and decrypt the user notes.
 
-## Sequence Diagrams
+## Sequence diagrams
 
-### Adding New Device
+### Adding a new device
 
 ![UML sequence diagram showing device registration and synchronization](_attachments/encrypted-notes-seq.png)
+
+## Encrypted note taking dapp tutorial
+
+Follow the steps below to deploy this sample project.
+
+## Prerequisites
+- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Download and install [Docker](https://docs.docker.com/get-docker/) if using the Docker option. 
+- [x] Download the GitHub repo containing this project's files: https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp. (If using Rust, use the /master/rust/encrypted-notes-dapp folder.)
+
+### Step 1. Navigate inside of the project's folder:
+
+`cd examples/motoko/encrypted-notes-dapp`
+
+or
+
+`cd examples/rust/encrypted-notes-dapp`
+
+### Step 2: Set an environmental variable reflecting which backend canister you'll be using:
+For Motoko deployment run:
+
+`export BUILD_ENV=motoko`
+
+For Rust deployment run:
+
+`export BUILD_ENV=rust`
+
+:::info
+Building the Rust canister requires either the Rust toolchain installed on your system or Docker-backed deployment (see below).
+:::
+ 
+### Step 3: Deploy locally. 
+
+### Option 1: Docker deployment
+:::info
+This option does not yet work on Apple M1; the combination of DFX and Docker do not currently support the required architecture.
+:::
+
+- #### Step 1: Install and start Docker by following the instructions.
+- #### Step 2: For Motoko build/deployment set environmental variable:
+        export BUILD_ENV=motoko
+
+- #### Step 3: Run the following Bash script that builds a Docker image, compiles the canister, and deploys this dapp (all inside the Docker instance). 
+
+Execution can take a few minutes:
+
+`sh ./deploy_locally.sh`
+
+:::caution
+If this fails with "No such container", please ensure that the Docker daemon is running on your system.
+:::
+
+- #### Step 4: To open the frontend, go to `http://localhost:3000/`.
+
+- #### Step 5: To stop the docker instance:
+   - Hit **Ctrl+C** on your keyboard to abort the running process.
+   - Run `docker ps` and find the <CONTAINER ID'\'> of encrypted_notes.
+   - Run `docker rm -f <CONTAINER ID'\'>`.
+
+### Option 2: Manual deployment
+- #### Step 1: For Motoko deployment set environmental variable:
+
+`export BUILD_ENV=motoko`
+
+- #### Step 2: To generate $BUILD_ENV-specific files (i.e., Motoko or Rust) run:
+
+`sh ./pre_deploy.sh`
+
+- #### Step 3: Install `npm` packages from the project root:
+
+`npm install`
+
+- #### Step 4: Start `dfx`:
+
+`dfx start`
+
+:::caution
+If you see an error "Failed to set socket of tcp builder to 0.0.0.0:8000", make sure that the port 8000 is not occupied, e.g., by the previously run Docker command (you might want to stop the Docker daemon whatsoever for this step).
+:::
+
+- #### Step 5: Install a local Internet Identity (II) canister.
+
+:::info
+If you have multiple dfx identities set up, ensure you are using the identity you intend to use with the `--identity` flag.
+:::
+
+To install and deploy a canister run:
+
+`dfx deploy internet_identity --argument '(null)'`
+
+- #### Step 6: To print the Internet Identity URL, run:
+
+`npm run print-dfx-ii`
+
+Visit the URL from above and create at least one local Internet Identity.
+
+- #### Step 7: Deploy the encrypted notes backend canister:
+
+`dfx deploy "encrypted_notes_$BUILD_ENV"`
+
+:::caution
+If you are deploying the Rust canister, you should first run `rustup target add wasm32-unknown-unknown`.
+:::
+
+- #### Step 8: Update the generated canister interface bindings:
+
+`dfx generate "encrypted_notes_$BUILD_ENV"`
+
+- #### Step 9: Deploy the frontend canister.
+To install and deploy the canister run:
+
+`dfx deploy www`
+
+- #### Step 10: To print the frontend canister's URL, run:
+
+`npm run print-dfx-www`
+
+Visit the URL from above in a web browser. To run the frontend with hot-reloading on `http://localhost:3000/`, run:
+
+`npm run dev`
+
+:::caution
+If you have opened this page previously, please remove all local store data for this page from your web browser, and hard-reload the page. For example in Chrome, go to Inspect → Application → Local Storage → http://localhost:3000/ → Clear All, and then reload.
+:::
+ 
+
+### Mainnet deployment
+:::info
+Prior to starting the mainnet deployment process, ensure you have your identities and wallets set up for controlling the canisters correctly. This guide assumes that this work has been done in advance.
+:::
+
+- #### Step 1: Create the canisters:
+
+```
+dfx canister --network ic create "encrypted_notes_${BUILD_ENV}"
+dfx canister --network ic create www
+```
+
+:::info
+`encrypted_notes_rust` will only work if you have the Rust toolchain installed.
+:::
+
+- #### Step 2: Build the canisters:
+
+```
+dfx build "encrypted_notes_${BUILD_ENV}" --network ic
+dfx build www --network ic
+```
+
+- #### Step 3: Deploy to mainnet:
+
+:::info
+In the commands below, --mode could also be reinstall to reset the stable memory.
+:::
+
+```
+dfx canister --network ic install "encrypted_notes_${BUILD_ENV}" --mode=upgrade
+dfx canister --network ic install www --mode=upgrade
+```
