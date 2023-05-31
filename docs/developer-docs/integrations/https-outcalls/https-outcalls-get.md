@@ -1,10 +1,12 @@
 # How to use HTTP outcalls: GET
 
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. Either example should take a few minutes at most to complete.
+A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. 
+
+This example takes less than 5 minutes to complete.
 
 ## Motoko version
 
-### Structure of the code
+### Motoko: Structure of the code
 
 Before we dive in, here is the structure the code we will touch:
 
@@ -53,7 +55,7 @@ module Types {
 }
 ```
 
-### Step by Step
+### Motoko: Step by Step
 
 To create a new project directory for testing access control and switching user identities:
 
@@ -246,7 +248,7 @@ Open the candid web UI for the backend (the `hello_http_backend` one) and call t
 
 ## Rust version
 
-### Structure of the code
+### Rust: Structure of the code
 
 Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
 
@@ -281,7 +283,7 @@ async fn foo() {
 }
 ```
 
-### Step by Step
+### Rust: Step by Step
 
 To create a new project directory for testing access control and switching user identities:
 
@@ -383,7 +385,8 @@ Open the candid web UI for the backend (the `hello_http_rust_backend` one) and c
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles , you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles , you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../referencesic-interface-spec#ic-http_request), but it is not strictly the same.
 
 :::note
 In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
