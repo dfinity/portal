@@ -283,7 +283,7 @@ async fn foo() {
 }
 ```
 
-### Rust: Step by Step
+### Rust: Step by step
 
 To create a new project directory for testing access control and switching user identities:
 
