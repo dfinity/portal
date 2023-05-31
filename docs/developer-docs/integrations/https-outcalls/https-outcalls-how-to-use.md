@@ -30,7 +30,7 @@ The following parameters should be supplied for in the request:
 
 -   `max_response_bytes`: optional; specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
--   `method` - currently, only `GET`, `HEAD`, and `POST` are supported
+-   `method`: currently, only `GET`, `HEAD`, and `POST` are supported.
 
 -   `headers`: list of HTTP request headers and their corresponding values.
 
