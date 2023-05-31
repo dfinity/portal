@@ -222,7 +222,7 @@ module Types {
 }
 ```
 
-- #### Step 6: Test the dapp locally
+- #### Step 6: Test the dapp locally.
 
 Deploy the dapp locally:
 
