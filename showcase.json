@@ -461,7 +461,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not', earning rewards.",
+    "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
     "usesInternetIdentity": true,
     "stats": "55,000+ users",
     "logo": "/img/showcase/hot_or_not_logo.svg",
