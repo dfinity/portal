@@ -1,4 +1,4 @@
-# How to use HTTP outcalls
+# How to use HTTP outcalls: Intro
 
 This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
 

@@ -20,18 +20,24 @@ actor {
 //method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
-    //declare the IC management canister
+    //1. DECLARE IC MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
-    //code that uses the management canister
+    //2. SETUP ARGUMENTS FOR HTTP GET request
     let request : Types.HttpRequestArgs = {
         //construct the request
     };
 
-    //send the http request
+    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+    //code to add cycles
+
+    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     let response : Types.HttpResponsePayload = await ic.http_request(request);
 
-    //return response
+    //5. DECODE THE RESPONSE
+    //code to decode response
+
+    //6. RETURN RESPONSE OF THE BODY
     response
   };
 };
@@ -60,11 +66,13 @@ To create a new project directory for testing access control and switching user 
 ```bash
 dfx new hello_http
 cd hello_http
+npm install
 ```
 
 - #### Step 4:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
+//imports we need to make to support the code below
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -73,11 +81,9 @@ import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
 import Text "mo:base/Text";
 
-//import the custom types we have in Types.mo
+//import the custom types we will create in the Types.mo file
 import Types "Types";
 
-
-//Actor
 actor {
 
   //Method: This method sends a GET request to a URL with a free API we can test with
@@ -85,12 +91,17 @@ actor {
   //example output: "{"fact":"A happy cat holds her tail high and steady.", "length":43 }"
   public func get_cat_fact() : async Text {
 
-    let url = "https://catfact.ninja/fact";
+    //1. DECLARE IC MANAGEMENT CANISTER
 
+    //We need this so we can use it to make the HTTP request
+    let ic : Types.IC = actor ("aaaaa-aa");
+
+
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+
+    let url = "https://catfact.ninja/fact";
     //print to the console
     Debug.print("[Backed canister] calling url: " # url);
-
-    //A minimal http request
     let http_request : Types.HttpRequestArgs = {
         url = url;
         max_response_bytes = null; //optional for request
@@ -100,8 +111,7 @@ actor {
         transform = null; //optional for request
     };
 
-    //Declare the IC Management Canister so we can use it to make the HTTP request
-    let ic : Types.IC = actor ("aaaaa-aa");
+    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
     //IC management canister will make the HTTP request so it needs cycles
@@ -111,32 +121,42 @@ actor {
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(17_000_000_000);
     
+    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
     
-    //As per the type declarations in Types.mo, the BODY in the HTTP response comes back [Nat8s] (e.g. [2, 5, 12, 11, 23])
+    //5. DECODE THE RESPONSE
+
+    //As per the type declarations in `src/Types.mo`, the BODY in the HTTP response 
+    //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
+    
     //public type HttpResponsePayload = {
     //     status : Nat;
     //     headers : [HttpHeader];
     //     body : [Nat8];
     // };
+
     //We need to decode that [Na8] array that is the body into readable text. 
     //To do this, we:
-    //1. Convert the [Nat8] into a Blob
-    //2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
-    //3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
+    //  1. Convert the [Nat8] into a Blob
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
         case (null) { "No value returned" };
         case (?y) { y };
     };
 
-    //return the decoded text of the body
+    //6. RETURN RESPONSE OF THE BODY
+
     decoded_text
   };
 
 };
 ```
+-  The `get_cat_fact` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcalls is a GET.
+-  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
+- Code above imports Types.mo to separate the custom types from the actor file (as a best practice).
 
 - #### Step 5:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
 
@@ -176,7 +196,6 @@ module Types {
     //modify headers, etc. "
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     
-
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function." 
     //In this minimal example for a GET request, we declare the type for completeness, but 
@@ -226,7 +245,61 @@ Open the candid web UI for the backend (the `hello_http_backend` one) and call t
 ![Candid web UI](../_attachments/https-get-candid-2.webp)
 
 ## Rust version
-Here is how the management canister is declared in a Rust canister (e.g. `main.rs`):
+
+### Structure of the code
+
+Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
+
+```rust
+//1. DECLARE IC MANAGEMENT CANISTER
+use ic_cdk::api::management_canister::http_request::{
+    http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
+    TransformContext,
+};
+
+//public method that uses the HTTPS outcalls management canister
+async fn foo() {
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+    let request = CanisterHttpRequestArgument {
+        //instantiate the request
+    };
+
+    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+
+
+    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    match http_request(request).await {
+        Ok((response,)) => {
+            //Ok case 
+        }
+        Err((r, m)) => {
+            //error case
+        }
+    }
+
+    //5. DECODE THE RESPONSE
+
+    //6. RETURN RESPONSE OF THE BODY
+}
+```
+
+### Step by Step
+
+To create a new project directory for testing access control and switching user identities:
+
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
+
+- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
+
+- #### Step 3:  Create a new project by running the following command:
+
+```bash
+dfx new --type=rust hello_http_rust
+cd hello_http_rust
+npm install
+```
+
+- #### Step 4:  Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //declare the HTTPS outcalls feature of the IC management canister
@@ -236,7 +309,7 @@ use ic_cdk::api::management_canister::http_request::{
 };
 
 //public method that uses the HTTPS outcalls management canister
-async fn foo() {
+async fn get_cat_fact() {
     //code that uses the management canister
     let request = CanisterHttpRequestArgument {
         //instantiate the request
@@ -253,4 +326,3 @@ async fn foo() {
     }
 }
 ```
-
