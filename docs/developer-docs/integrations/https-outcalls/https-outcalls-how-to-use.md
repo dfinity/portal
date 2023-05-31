@@ -34,7 +34,7 @@ The following parameters should be supplied for in the request:
 
 -   `headers`: list of HTTP request headers and their corresponding values.
 
--   `body` - optional, the content of the request's body
+-   `body`: optional; the content of the request's body.
 
 -   `transform`: an optional function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function.
 
