@@ -46,7 +46,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `headers` - list of HTTP response headers and their corresponding values
 
--   `body` - the response's body
+-   `body`: the response's body.
 
 ## Sample code
 
