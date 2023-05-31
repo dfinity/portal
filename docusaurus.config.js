@@ -316,6 +316,10 @@ const config = {
                   label: "Rust Docs",
                   href: "/docs/current/developer-docs/backend/rust/?source=nav",
                 },
+                {
+                  label: "Solidity Docs",
+                  href: "https://docs.bitfinity.network/",
+                },
                 menuDivider("Tools"),
 
                 { label: "Developer Tools", to: "/tooling?source=nav" },
