@@ -5,7 +5,7 @@ title: '4: Deploying locally and using Candid UI'
 
 # 4: Deploying locally and using Candid UI
 
-In this article we will learn how to deploy our dapp locally and play with it using Candid UI.
+In this step we will learn how to deploy our dapp locally and play with it using Candid UI.
 
 ## Starting local Internet Computer server
 
@@ -29,7 +29,7 @@ dfx deploy
 
 ## Opening Candid UI
 
-When you deployed your canister, the system displayed two lines similar to this:
+When you deployed your canister with the previous command, the command line output displayed two lines similar to this:
 
 ```shell
 URLs:
@@ -39,13 +39,15 @@ URLs:
     poll_backend: http://127.0.0.1:4943/?canisterId=qvhpv-4qaaa-aaaaa-aaagq-cai&id=qhbym-qaaaa-aaaaa-aaafq-cai
 ```
 
-You will need the second URL (for `poll_backend`) to access candid UI. Open this URL to your web browser to open the
-Candid UI web page. You should we something like this:
-![Candid UI screenshot](./_attachments/get_question_candid.png))
+You will need the second URL (for `poll_backend`) to access Candid UI. Open this URL to your web browser to open the
+Candid UI web page. You should see something like this:
+![Candid UI screenshot](./_attachments/get_question_candid.png)
 
 ## Using Candid UI to access the data
 
 Candid UI allows you to access the methods of the actor that we coded at the previous step. Try it by clicking "Query".
+
+![Candid UI screenshot](./_attachments/candid_ui_first.png)
 
 ## Summary
 
@@ -55,4 +57,7 @@ During this step we learned:
 - How to deploy canisters to the local environment.
 - How to use Candid UI to quickly test your code.
 
+## Next steps
+
 In the next section we will make the dapp much more complex by adding voting options.
+[5: Storing data](05_storing-data.md)
