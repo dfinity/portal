@@ -55,7 +55,7 @@ module Types {
 }
 ```
 
-### Motoko: Step by Step
+### Motoko: Step by step
 
 To create a new project directory for testing access control and switching user identities:
 
