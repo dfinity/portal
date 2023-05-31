@@ -187,7 +187,7 @@ struct Version {
   minor: u32,
 }
 
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 fn validate(x: Version) -> Result<String, String> {
   // ...
 }
@@ -240,7 +240,7 @@ pub struct UpdateSettingsArgs {
     pub sender_canister_version: Option<u64>,
 }
 
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn recover() {
     // put your developer principal here:
     let developer_principal = Principal::from_text("").unwrap();
