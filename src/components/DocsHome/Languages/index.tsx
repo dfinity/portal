@@ -95,7 +95,7 @@ function Index() {
           <div className={styles.bodyContainer}>
             <p className={styles.informationTitle}>Solidity</p>
             <p className={styles.informationBody}>
-              The Bitfinity EVM allows you to run Solidity smart-contracts on the Internet Computer
+              The Bitfinity EVM allows you to run Solidity smart contracts on the Internet Computer
             </p>
           </div>
           <img className={styles.bitfinityBackground} src={bitfinityEvmBG} alt="" />
