@@ -22,10 +22,13 @@ actor {
 }
 ```
 
-Backend canisters come with a default user interface called Candid UI that will allow you to interact with the canister methods without
+Backend canisters come with a default user interface called **Candid UI** that will allow you to interact with the canister methods without
 writing any frontend code. Here's how Candid UI for our project will look like at the end of this tutorial (once we add the `getQuestions`, `getVotes`, `resetVotes`, and `vote` methods):
 
 
 ![Candid UI screenshot (final)](./_attachments/simple_voting_app_candid.png)
 
 
+## Next steps
+
+[2: Creating a project](02_creating-project.md)

@@ -18,10 +18,10 @@ The IC SDK will create a project from a template in a folder "poll":
 
 ## Understanding the project structure
 
-After your adpp is created you can examine the folder structure:
+After your dapp is created you can examine the folder structure:
 
 ```
-PROJECT ROOT           <-- Dapp main folder
+PROJECT ROOT           <-- dapp main folder
 ├── README.md
 ├── dfx.json           <-- configuration of your Internet Computer dapp
 ├── package-lock.json  <-- node.js packages config
@@ -37,4 +37,6 @@ PROJECT ROOT           <-- Dapp main folder
 In this tutorial will be only working in one file `main.mo` that contains the code of our dapp backend in programming
 language Motoko.
 
+## Next steps
 
+[3: Adding variables and methods](03_adding-variables-and-methods.md)

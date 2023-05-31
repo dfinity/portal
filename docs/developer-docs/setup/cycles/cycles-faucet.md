@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide explains how to use Cycles Faucet to acquire your first amount of 20T free cycles that could be used to deploy your dapps on the MainNet.
+This guide explains how to use **cycles faucet** to acquire your first amount of 20T free cycles that could be used to deploy your dapps on the mainnet.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Once you get the coupon code, enter your coupon code.
 
 ![Enter Coupon](_attachments/faucet_step_3.png)
 
-Click NEXT STEP to continue.
+Click **NEXT STEP** to continue.
 
 ## Step 3: Setup the IC SDK
 
