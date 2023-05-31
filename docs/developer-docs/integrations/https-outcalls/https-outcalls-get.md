@@ -257,18 +257,20 @@ use ic_cdk::api::management_canister::http_request::{
     TransformContext,
 };
 
-//public method that uses the HTTPS outcalls management canister
+//Update method using the HTTPS outcalls feature
+#[ic_cdk::update]
 async fn foo() {
     //2. SETUP ARGUMENTS FOR HTTP GET request
     let request = CanisterHttpRequestArgument {
         //instantiate the request
     };
 
-    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
-
-
-    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
+        
+        //4. DECODE AND RETURN THE RESPONSE
         Ok((response,)) => {
             //Ok case 
         }
@@ -276,10 +278,6 @@ async fn foo() {
             //error case
         }
     }
-
-    //5. DECODE THE RESPONSE
-
-    //6. RETURN RESPONSE OF THE BODY
 }
 ```
 
@@ -297,32 +295,90 @@ To create a new project directory for testing access control and switching user 
 dfx new --type=rust hello_http_rust
 cd hello_http_rust
 npm install
+rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 4:  Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 4: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
-//declare the HTTPS outcalls feature of the IC management canister
+//1. DECLARE IC MANAGEMENT CANISTER
+//This also includes methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
 };
 
-//public method that uses the HTTPS outcalls management canister
-async fn get_cat_fact() {
-    //code that uses the management canister
+//Update method using the HTTPS outcalls feature
+#[ic_cdk::update]
+async fn get_cat_fact() -> String {
+
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+
+    let url = "https://catfact.ninja/fact";
+
+    //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
-        //instantiate the request
+        url: url.to_string(),
+        method: HttpMethod::GET,
+        body: None,
+        max_response_bytes: None,
+        transform: None,
+        headers: vec![],    
     };
 
-    //send the http request
+    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
+        
+        //4. DECODE AND RETURN THE RESPONSE
+    
+        //See: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html
         Ok((response,)) => {
-            //Ok case 
+            let str_body = String::from_utf8(response.body)
+                .expect("Transformed response is not UTF-8 encoded.");
+            str_body
         }
         Err((r, m)) => {
-            //error case
+            let message =
+                format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
+            ic_cdk::api::print(message.clone());
+            message
         }
     }
 }
 ```
+
+- #### Step 5: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+
+We update the Candid interface file so it matches the method `get_cat_fact` in `lib.rs`. 
+
+```
+service : {
+    "get_cat_fact": () -> (text);
+}
+```
+
+- #### Step 6: Test the dapp locally
+
+Deploy the dapp locally:
+
+```bash
+dfx start --background
+dfx deploy
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    hello_http_rust_frontend: http://127.0.0.1:4943/?canisterId=tfuft-aqaaa-aaaaa-aaaoq-cai
+  Backend canister via Candid interface:
+    hello_http_rust_backend: http://127.0.0.1:4943/?canisterId=tmxop-wyaaa-aaaaa-aaapa-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
+```
+
+Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `get_cat_fact` method:
+
+![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
