@@ -21,7 +21,7 @@ The IC management canister is just a facade; it does not actually exist as a can
 
 ## The API for sending HTTP outcalls
 
-As per the [Internet Computer Interface Specification](../../../references/ic-interface-spec), a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
+As per the [Internet Computer interface specification](../../../references/ic-interface-spec), a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
 
 ### The request
 The following parameters should be supplied for in the request:
