@@ -281,10 +281,11 @@ const sidebars = {
               label: "HTTP outcalls",
               link: {
                 type: "doc",
-                id: "developer-docs/integrations/http_requests/index",
+                id: "developer-docs/integrations/http-outcalls/index",
             },
                 items: [
-                  "developer-docs/integrations/http_requests/http_requests-how-it-works",
+                  "developer-docs/integrations/http-outcalls/http-outcalls-how-it-works",
+                  "developer-docs/integrations/http-outcalls/http-outcalls-demo",
               ],
             },
             {

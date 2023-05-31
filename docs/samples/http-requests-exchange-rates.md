@@ -14,8 +14,8 @@ There are two parts to the sample dapp:
 2. The backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
 The backend canister receives an update request corresponding to the time range specified by the user at the frontend. The time range
-is converted into time buckets and the buckets are queued for retrival. Asynchronously at every few Internet Computer heartbeats,
-the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+is converted into time buckets and the buckets are queued for retrieval. Asynchronously at every few Internet Computer heartbeats,
+the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses time series granularity of 60 seconds, so each HTTPS request to
 Coinbase covers a time bucket of at most 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user requested is longer than a couple of years, the size of data to be returned by the backend `exchange_rate`
@@ -42,7 +42,7 @@ retry the request, and likely the full set of rates will be available then.
 
 ## Cost analysis of the `exchange_rate` canister
 
-There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
+There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/http-outcalls/http-outcalls-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
 
 * The number of requests.
 * The size of each request and response.
@@ -52,5 +52,5 @@ This sample dapp minimizes the total number of HTTPS outcalls at the cost of big
 
 ## Building and deploying the sample dapp locally
 Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the `README.md` file in each
-directory for instrutions on building and local deployment.
+directory for instructions on building and local deployment.
 

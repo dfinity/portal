@@ -1,6 +1,6 @@
-# How to use HTTPS Outcalls
+# How to use HTTP outcalls
 
-This guide shoes how to use the [HTTPS Outcalls](../index.md) feature of the IC. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
+This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
 
 ## Key concepts
 
@@ -15,9 +15,13 @@ The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP reques
 The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
 :::
 
-## The API
+### Cycles
 
-As per the Internet Computer Interface Specification, a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
+* [Cycles](../../gas-cost.md) - Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+
+## The API for sending HTTP outcalls
+
+As per the [Internet Computer Interface Specification](../../../references/ic-interface-spec), a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
 
 ### The request
 The following parameters should be supplied for in the request:
@@ -33,10 +37,6 @@ The following parameters should be supplied for in the request:
 -   `body` - optional, the content of the request's body
 
 -   `transform` - an optional function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function.
-
-### Cycles
-
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
 ### The response
 
