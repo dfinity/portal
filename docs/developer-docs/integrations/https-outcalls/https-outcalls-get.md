@@ -1,5 +1,5 @@
 # How to use HTTP outcalls: GET
-
+## Overview
 A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. 
 
 This example takes less than 5 minutes to complete.
