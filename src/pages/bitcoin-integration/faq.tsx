@@ -195,13 +195,12 @@ function BitcoinFaqPage() {
               </h2>
             }
           >
-            <Faq title="What do I do once I am an SNS DAO member?">
-              The most important thing you can do as an SNS DAO member is to
-              participate in governance. On-chain governance is what
-              differentiates DAOs from traditional web applications, as members
-              play a key role in the DAO's success. DAO members can contribute
-              in many ways, from pushing code, to designing a logo or a UI, to
-              simply voting on SNS proposals that shape how the dapp evolves.
+            <Faq title="What is ckBTC?">
+              Chain-key Bitcoin (ckBTC) is a multi-chain bitcoin twin that can be
+              sent with 1-2 second finality and negligible fees. It is trustlessly
+              created by chain-key cryptography and a pair of canister smart
+              contracts that directly hold raw bitcoin without relying on
+              intermediaries.
             </Faq>
             <Faq title="In what ways can I participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
