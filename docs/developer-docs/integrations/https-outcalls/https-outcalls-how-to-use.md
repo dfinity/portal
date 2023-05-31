@@ -32,7 +32,7 @@ The following parameters should be supplied for in the request:
 
 -   `method` - currently, only `GET`, `HEAD`, and `POST` are supported
 
--   `headers` - list of HTTP request headers and their corresponding values
+-   `headers`: list of HTTP request headers and their corresponding values.
 
 -   `body` - optional, the content of the request's body
 
