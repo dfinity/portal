@@ -10,7 +10,7 @@ This example takes less than 5 minutes to complete.
 
 Before we dive in, here is the structure the code we will touch:
 
-Here are `src/backend_canister/main.mo` will look like:
+Here is how our main file will look like:
 
 ```motoko
 
@@ -45,7 +45,7 @@ actor {
 };
 ```
 
-Here is what `src/backend_canister/Types.mo` will look like:
+We will also create some custom types in `Types.mo`. This will look like this:
 
 ```motoko
 module Types {
