@@ -127,7 +127,7 @@ import Types "Types";
 actor {
 
   //Method: This method sends a GET request to a URL with a free API we can test with
-  //In particular, this free API rewturns a fact about cats.
+  //In particular, this free API returns a fact about cats.
   //example output: "{"fact":"A happy cat holds her tail high and steady.", "length":43 }"
   public func get_cat_fact() : async Text {
 
