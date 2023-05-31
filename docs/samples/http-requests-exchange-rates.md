@@ -42,7 +42,7 @@ retry the request, and likely the full set of rates will be available then.
 
 ## Cost analysis of the `exchange_rate` canister
 
-There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/http-outcalls/http-outcalls-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
+There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
 
 * The number of requests.
 * The size of each request and response.

@@ -30,6 +30,6 @@ We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data,
 
 ## Resources
 
-- If you want to take a deep dive into how the HTTPS outcalls feature works and how to use it when coding a canister, see the [how it works](http-outcalls-how-it-works.md) section.
+- If you want to take a deep dive into how the HTTPS outcalls feature works and how to use it when coding a canister, see the [how it works](https-outcalls-how-it-works.md) section.
 
 - In the [examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate) which you can use as starting point for building your own dApp.

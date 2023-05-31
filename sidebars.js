@@ -278,14 +278,16 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "HTTP outcalls",
+              label: "HTTPS outcalls",
               link: {
                 type: "doc",
-                id: "developer-docs/integrations/http-outcalls/index",
+                id: "developer-docs/integrations/https-outcalls/index",
             },
                 items: [
-                  "developer-docs/integrations/http-outcalls/http-outcalls-how-it-works",
-                  "developer-docs/integrations/http-outcalls/http-outcalls-demo",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-post",
               ],
             },
             {

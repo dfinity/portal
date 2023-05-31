@@ -76,7 +76,7 @@ roadmap
 │   ├── in-progress
 │   │   ├── 1_btc-integration.md
 │   │   ├── 2_tecdsa.md
-│   │   ├── 3_http-outcalls.md
+│   │   ├── 3_https-outcalls.md
 │   │   ├── 4_high-replication-subnets.md
 │   │   └── 5_deterministic-time-slicing.md
 │   ├── index.md

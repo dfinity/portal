@@ -14,7 +14,7 @@ The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conve
 
 ### How an HTTPS outcall is processed by the IC
 
-The canister HTTP outcalls feature is implemented as part of the Internet Computer replica and is exposed as an API of the management canister. We next outline, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
+The canister HTTPS outcalls feature is implemented as part of the Internet Computer replica and is exposed as an API of the management canister. We next outline, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
 
 - #### Step 1: A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
 - #### Step 2: The request is stored temporarily in the replicated state of the subnet.

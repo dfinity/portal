@@ -1,60 +1,10 @@
-# How to use HTTP outcalls
+# How to use HTTP outcalls: GET
 
-This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
+A minimal example to make a `GET` HTTPS request. The example will be in both Motoko and in Rust.
 
-## Key concepts
+## Motoko version
 
-### Methods supported
-
-The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
-
-### IC management canister
-* [The IC Management Canister](../../../references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the *IC Management Canister*. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
-
-:::note
-The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
-:::
-
-### Cycles
-
-* [Cycles](../../gas-cost.md) - Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
-
-## The API for sending HTTP outcalls
-
-As per the [Internet Computer Interface Specification](../../../references/ic-interface-spec), a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
-
-### The request
-The following parameters should be supplied for in the request:
-
--   `url` - the requested URL. The URL must be valid according to https://www.ietf.org/rfc/rfc3986.txt[RFC-3986] and its length must not exceed `8192`. The URL may specify a custom port number.
-
--   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
-
--   `method` - currently, only `GET`, `HEAD`, and `POST` are supported
-
--   `headers` - list of HTTP request headers and their corresponding values
-
--   `body` - optional, the content of the request's body
-
--   `transform` - an optional function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function.
-
-### The response
-
-The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
-
--   `status` - the response status (e.g., 200, 404)
-
--   `headers` - list of HTTP response headers and their corresponding values
-
--   `body` - the response's body
-
-
-## Minimal example for a GET request
-
-To get started, we present a minimal example to make an HTTP request. The example will be in both Motoko and in Rust.
-
-### Motoko version
-
+### Structure of the code
 
 Before we dive in, here is the structure the code we will touch:
 
@@ -66,6 +16,9 @@ Here are `src/backend_canister/main.mo` will look like:
 import Types "Types";
 
 actor {
+
+//method that uses the HTTP outcalls feature and returns a string
+  public func foo() : async Text {
 
     //declare the IC management canister
     let ic : Types.IC = actor ("aaaaa-aa");
@@ -80,7 +33,8 @@ actor {
 
     //return response
     response
-}
+  };
+};
 ```
 
 Here is what `src/backend_canister/Types.mo` will look like:
@@ -93,7 +47,7 @@ module Types {
 }
 ```
 
-## Create a new project
+### Step by Step
 
 To create a new project directory for testing access control and switching user identities:
 
@@ -249,14 +203,27 @@ module Types {
 
 - #### Step 6: Test the dapp locally
 
-Deploy the dapp and test it via the browser:
+Deploy the dapp locally:
 
 ```bash
 dfx start --background
 dfx deploy
 ```
 
-Open the Candid web UI link that is returned and call the `get_cat_fact` method.
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    hello_http_frontend: http://127.0.0.1:4943/?canisterId=tqtu6-byaaa-aaaaa-aaana-cai
+  Backend canister via Candid interface:
+    hello_http_backend: http://127.0.0.1:4943/?canisterId=txssk-maaaa-aaaaa-aaanq-cai&id=tzq7c-xqaaa-aaaaa-aaamq-cai
+```
+
+Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_cat_fact` method:
+
+![Candid web UI](../_attachments/https-get-candid-2.webp)
 
 ## Rust version
 Here is how the management canister is declared in a Rust canister (e.g. `main.rs`):
