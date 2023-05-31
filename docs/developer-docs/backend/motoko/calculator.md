@@ -23,7 +23,7 @@ The `div` function also includes code to prevent the program from attempting to 
 
 Before starting the guide, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have stopped any canister execution environment running on the local computer.
 

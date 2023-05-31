@@ -7,7 +7,7 @@ sidebar_position: 1
 
 To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) is a common entry point. The IC SDK supports a few programming languages out of the box.
 
-Because the ICP blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [Canister Development Kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
+Because the ICP blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
 In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
 In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. 
@@ -17,11 +17,11 @@ The most common languages to use are:
 - **Motoko**
   - [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
   - One can use Motoko via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY.
-  - See [Introduction to developing canisters in Motoko](./motoko/index.md).
+  - See [introduction to developing canisters in Motoko](./motoko/index.md).
   - You can get a sense of Motoko by using the web-based [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app).
 - **Rust**
   - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK).
-  - See [Introduction to developing canisters in Rust](./rust/index.md).
+  - See [introduction to developing canisters in Rust](./rust/index.md).
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
   - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by [Demergent Labs](https://github.com/demergent-labs).
@@ -51,10 +51,10 @@ For a more in-depth comparison, read on.
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|
 | Candid support | Fully automatic. Support is built into the compiler and runtime system. | Library-supported. Regularly needs manual intervention/conversion. |
-| Stable Memory support | Automatic, supported by the language. Performance is not ideal yet. Bypassing the language is possible, but error-prone. | Library-supported. Automatic in simple cases, otherwise manual implementations are needed. More predictable than Motoko. |
-| Asynchronous Data and Control Flow Support | Native | Native |
-| Actor Paradigm support (Canister = Actor) | Native | Error-prone, conflicts with deep-rooted language features (e.g. the borrow checker). |
-| IC-specific Static Analysis | Enforces various safety checks. | No static checking. Canisters may trap when violating restrictions. |
+| Stable memory support | Automatic, supported by the language. Performance is not ideal yet. Bypassing the language is possible, but error-prone. | Library-supported. Automatic in simple cases, otherwise manual implementations are needed. More predictable than Motoko. |
+| Asynchronous data and control flow support | Native | Native |
+| Actor paradigm support (canister = actor) | Native | Error-prone, conflicts with deep-rooted language features (e.g. the borrow checker). |
+| IC-specific static analysis | Enforces various safety checks. | No static checking. Canisters may trap when violating restrictions. |
 
 ### WebAssembly considerations:
 
@@ -67,8 +67,8 @@ For a more in-depth comparison, read on.
 
 |                   | Motoko          | Rust        |
 |-------------------|-----------------|-------------|
-| Language Maturity | Not mature yet, lots of work left to do. | Mature (enough). Solid library support. |
-| Build Time | Faster than Rust. | Slower than Motoko. |
-| Difficulty of Learning | Not very hard. | Quite complex, lots of details to consider. |
-| Memory Management | Automatic GC (garbage collection). | Application-specific, strong support by the compiler. |
-| Foreign Function Interface support | None yet. | Typical C FFI compatibility. |
+| Language maturity | Not mature yet, lots of work left to do. | Mature (enough). Solid library support. |
+| Build time | Faster than Rust. | Slower than Motoko. |
+| Difficulty of learning | Not very hard. | Quite complex, lots of details to consider. |
+| Memory management | Automatic GC (garbage collection). | Application-specific, strong support by the compiler. |
+| Foreign function interface support | None yet. | Typical C FFI compatibility. |

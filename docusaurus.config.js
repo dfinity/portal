@@ -187,6 +187,10 @@ const config = {
                   label: "Video Library",
                   href: "/videos?source=nav",
                 },
+                {
+                  label: "Technical Roadmap",
+                  href: "/roadmap?source=nav",
+                },
               ],
               [
                 // column 2

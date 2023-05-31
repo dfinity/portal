@@ -18,7 +18,7 @@ This guide provides a simple example of how you can increment a counter by calli
 
 Before starting the guide, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have stopped any local canister execution environments running on the computer.
 
