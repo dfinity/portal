@@ -289,7 +289,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "ICP Ledger",
+              label: "ICP ledger",
               link: {
                 type: "doc",
                 id: "developer-docs/integrations/ledger/index",

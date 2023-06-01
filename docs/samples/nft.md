@@ -69,9 +69,9 @@ For a much more detailed explanation how certification works, see [this explanat
 
 ### Managing control over assets
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
-- **Owner**: This person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
-- **Operator**: Sort of a delegated owner. The operator does not own the NFT, but can do the same actions an owner can do.
-- **Custodian**: Creator of the NFT collection/canister. They can do anything (transfer, add/remove operators, burn, and even un-burn) to NFTs, but also mint new ones or change the symbol or description of the collection.
+- **Owner**: this person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
+- **Operator**: sort of a delegated owner. The operator does not own the NFT, but can do the same actions an owner can do.
+- **Custodian**: creator of the NFT collection/canister. They can do anything (transfer, add/remove operators, burn, and even un-burn) to NFTs, but also mint new ones or change the symbol or description of the collection.
 
 The NFT example canister keeps access control in these three levels very simple: 
 - For every level of control, a separate list (or set) of principals is kept.

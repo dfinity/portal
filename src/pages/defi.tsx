@@ -257,6 +257,22 @@ function DefiPage() {
               </Link>
             </p>
           </TranslatedLayout>
+          <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
+            <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+              EVM on the Internet Computer
+            </h3>
+            <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+              The Bitfinity EVM allows developers to run Solidity smart-contracts
+              at web-speed, directly on the Internet Computer.
+            </p>
+            <Link
+              className="link-primary link-with-icon"
+              href="https://bitfinity.network"
+            >
+              <LinkArrowRight />
+              Check out Bitfinity EVM
+            </Link>
+          </TranslatedLayout>
         </section>
         {/* <BackgroundPanel> */}
         <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] py-20 md:py-48 text-white">

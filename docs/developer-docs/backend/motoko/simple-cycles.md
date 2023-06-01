@@ -20,7 +20,7 @@ This example consists of the following:
 
 Before starting the guide, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have installed the Visual Studio Code plugin for Motoko as described in [install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
 
@@ -189,7 +189,7 @@ To stop the local canister execution environment:
 
 If you are looking for more information about working with cycles, check out the following related resources:
 
--   [dfx identity (Command reference)](/references/cli-reference/dfx-identity.md).
--   [ExperimentalCycles (Base module)](/motoko/main/base/ExperimentalCycles.md).
+-   [dfx identity (command reference)](/references/cli-reference/dfx-identity.md).
+-   [ExperimentalCycles (base module)](/motoko/main/base/ExperimentalCycles.md).
 -   [Managing cycles (Motoko language reference)](/motoko/main/cycles.md).
--   [Tokens and cycles (Overview)](/concepts/tokens-cycles.md).
+-   [Tokens and cycles (overview)](/concepts/tokens-cycles.md).

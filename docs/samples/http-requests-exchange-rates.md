@@ -5,7 +5,7 @@
 The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to directly interact with web services that exist outside of the Internet Computer in the Web 2.0 world. The Exchange Rate sample dapp pulls ICP/USDC exchange rates from a single provider – [Coinbase](https://docs.cloud.coinbase.com/exchange/reference/exchangerestapi_getproductcandles). The sample dapp provides an example of using the [HTTPS outcalls API](/docs/current/references/ic-interface-spec#ic-http_request) implemented in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate)
  and [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate).
 
-### What does the sample dapp do
+### What does the sample dapp do?
 
 **TL;DR the sample dapp is just an unbounded time series cache.**
 
@@ -44,8 +44,8 @@ retry the request, and likely the full set of rates will be available then.
 
 There are 2 major factors affecting the [pricing](/docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works#pricing) when it comes to the HTTPS outcalls feature:
 
-* The number of requests 
-* The size of each request and response
+* The number of requests.
+* The size of each request and response.
 
 If we need to fetch a longer period of rates then the number of external HTTPS outcalls is inversely proportional to the body size of each response.
 This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 

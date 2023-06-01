@@ -15,6 +15,6 @@ The basic functionality of the IOS integration consists of four main components:
 
 - Third, a proxy page was added in the dapp to enable the user to securely authenticate using [Internet Identity](/docs/current/references/ii-spec) and keep the authenticated session in the webview until it expires, even when the user exits the app and re-opens it the session persists.
 
-- Fourth, the app is configurated to receive push notifications from the system and open a speficied url, this allows for notifications to be sent serving as a mechanism to deeplink into a specific section of the dapp. 
+- Fourth, the app is configured to receive push notifications from the system and open a specified URL, this allows for notifications to be sent serving as a mechanism to deep link into a specific section of the dapp. 
 
 For further details, please refer to the [README file](https://github.com/dfinity/examples/blob/master/motoko/ios-notifications/README.md).
