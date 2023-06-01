@@ -1,6 +1,6 @@
-# Neurons fund
+# Neurons' fund
 
-The Neurons fund (NF) facilitates investments by the NNS neurons in the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons fund (NF) works.
+The Neurons' fund (NF) facilitates investments by the NNS neurons in the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons' fund (NF) works.
 
 ## Background and motivation
 
@@ -10,9 +10,9 @@ The Neurons fund (NF) facilitates investments by the NNS neurons in the Internet
 * Involving the maturity of NF neurons instead of their stake in ICP minimizes the impact on the overall ICP tokenomics.
 * Please note that anyone can also directly invest ICP tokens in an SNS via the decentralization swap.
 
-## Neurons fund process
+## Neurons' fund process
 
-The Neurons fund (NF) process can be split into five phases: (1) joining the NF, (2) making an investment decision, (3) NF participating in the decentralization swap receiving SNS neurons, (4) participation in SNS governance, and (5) increasing maturity when SNS neurons dissolve. In the following we describe these five phases in more detail.
+The Neurons' fund (NF) process can be split into five phases: (1) joining the NF, (2) making an investment decision, (3) NF participating in the decentralization swap receiving SNS neurons, (4) participation in SNS governance, and (5) increasing maturity when SNS neurons dissolve. In the following we describe these five phases in more detail.
 
 ![](../_attachments/neurons_fund_flow.png)
 
