@@ -7,20 +7,20 @@ title: '3: Adding variables and methods'
 
 Now let's start adding some code to our backend!
 
-We will use Motoko programming language. You can get a quick overview of Motoko at the [Motoko Language Tour](/motoko/intro/index.md).
+We will use Motoko programming language. You can get a quick overview of Motoko at the [Motoko language tour](/motoko/intro/index.md).
 
-In this tutorial, we will edit file `src/poll_backend/main.mo`, but if you want to play and iterate with Motoko, the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app) is a good web-based option.
+In this tutorial, we will edit file `src/poll_backend/main.mo`, but if you want to play and iterate with Motoko, the [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app) is a good web-based option.
 
 ## Creating an actor
 
-Backend logic on the Internet Computer is implemented as [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). In Motoko, canisters are represented as "Actors".
+Backend logic on the Internet Computer is implemented as [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). In Motoko, canisters are represented as "actors".
 
 :::info
 [Actor](https://en.wikipedia.org/wiki/Actor_model) is a computer science concept of a component that:
 
 - Includes both code and data.
 - Executes everything in a single thread, so that the developer doesn't have to deal with concurrency problems.
-- Communicates with external world by sending and receiving messages.
+- Communicates with the external world by sending and receiving messages.
 
 :::
 
@@ -34,14 +34,14 @@ actor {
 }
 ```
 
-As you can see this actor is empty - it doesn't receive or send any messages. Also it doesn't define any data
-structures. We will change in the next section.
+As you can see this actor is empty and doesn't receive or send any messages. Also, it doesn't define any data
+structures; we will edit this next.
 
 ## Add the question data structure
 
 For our poll dapp, we want to the poll to have the main question. For example, "What is your favorite programming language?"
 
-To add the question, include the following code *inside* the actor:
+To add the question, include the following code **inside** the actor code in the `main.mo` file:
 
 ```motoko
     var question: Text = "What is your favorite programming language?";
@@ -49,7 +49,7 @@ To add the question, include the following code *inside* the actor:
 
 This new statement does the following:
 
-- Creates a new actor's variable `question`
+- Creates a new actor's variable `question`.
 - Declares the type of this variable Text, which is the standard type for strings in Motoko. Because of this, we need to add an import statement at the top of the file to use the `Text` type: `import Text "mo:base/Text";`.
 
 After these changes, `main.mo` file should look like this:
@@ -90,10 +90,10 @@ This first method `getQuestion` takes the value of the `question` variable and r
 observations:
 
 - All methods that return values on the Internet Computer have to be declared `async` to allow asynchronous execution.
-- Because the `getQuestion` method doesn't change any data, it can be declared as `query` [call](../../references/glossary#query).
+- Because the `getQuestion` method doesn't change any data, it can be declared as a `query` [call](../../references/glossary#query).
 - Since the method uses `Text` type, we will have to import it at the top of the file via `import Text "mo:base/Text"`.
 
-### Queries vs Updates
+### Queries vs updates
 
 **Updates** are executed on all machines of the subnet and the result will have to pass through a cryptographic
 consensus algorithm. 
@@ -136,4 +136,6 @@ During this step we learned:
 - Query methods are fast and free, but they can't change the data.
 - Update methods are slower, but they can change the data.
 
-In the next article we will see how to deploy the dapp locally and play with it using Candid UI.
+## Next steps
+In the next step we will see how to deploy the dapp locally and play with it using Candid UI.
+[4: Deploying locally using Candid UI](04_deploying-locally-using-candid-ui.md)

@@ -9,7 +9,7 @@ The [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutor
 
 If the quick start and tutorials are not quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
-After you [install the SDK](../../setup/install/index.mdx), here’s all you need to know:
+After you [install the IC SDK](../../setup/install/index.mdx), here’s all you need to know:
 
 ## Step 1:
 Create a new project and change to the project directory.
