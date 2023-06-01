@@ -8,6 +8,7 @@ import motokoBG from "@site/static/img/motoko.webp";
 import rustBG from "@site/static/img/rust.webp";
 import azleBG from "@site/static/img/azle.webp";
 import kybraBG from "@site/static/img/kybra.webp";
+import bitfinityEvmBG from "@site/static/img/bitfinity-evm.png";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 
@@ -36,8 +37,8 @@ function Index() {
               specifically for the Internet Computer
             </p>
           </div>
-          <img className={styles.motokoBackground} src={motokoBG} alt=""/>
-          <RightArrowSVG className={styles.informationIcon}/>
+          <img className={styles.motokoBackground} src={motokoBG} alt="" />
+          <RightArrowSVG className={styles.informationIcon} />
         </motion.a>
         <motion.a
           variants={transitions.item}
@@ -51,9 +52,9 @@ function Index() {
               build high efficient dapps and smart contracts on the Internet Computer
             </p>
           </div>
-          <img className={styles.rustBackground} src={rustBG} alt=""/>
+          <img className={styles.rustBackground} src={rustBG} alt="" />
 
-          <RightArrowSVG className={styles.informationIcon}/>
+          <RightArrowSVG className={styles.informationIcon} />
         </motion.a>
         <motion.a
           variants={transitions.item}
@@ -67,8 +68,8 @@ function Index() {
               Azle allows you to build Internet Computer dapps and smart contracts using TypeScript and JavaScript, the languages of the web
             </p>
           </div>
-          <img className={styles.motokoBackground} src={azleBG} alt=""/>
-          <RightArrowSVG className={styles.informationIcon}/>
+          <img className={styles.motokoBackground} src={azleBG} alt="" />
+          <RightArrowSVG className={styles.informationIcon} />
         </motion.a>
         <motion.a
           variants={transitions.item}
@@ -82,8 +83,23 @@ function Index() {
               Kybra allows you to build Internet Computer dapps and smart contracts using Python, one of the most popular languages in the world
             </p>
           </div>
-          <img className={styles.motokoBackground} src={kybraBG} alt=""/>
-          <RightArrowSVG className={styles.informationIcon}/>
+          <img className={styles.motokoBackground} src={kybraBG} alt="" />
+          <RightArrowSVG className={styles.informationIcon} />
+        </motion.a>
+        <motion.a
+          variants={transitions.item}
+          href={"https://bitfinity.network/ecosystem/solidity-examples"}
+          target={"_blank"}
+          className={clsx(styles.card, styles.cardHover)}
+        >
+          <div className={styles.bodyContainer}>
+            <p className={styles.informationTitle}>Solidity</p>
+            <p className={styles.informationBody}>
+              The Bitfinity EVM allows you to run Solidity smart contracts on the Internet Computer
+            </p>
+          </div>
+          <img className={styles.bitfinityBackground} src={bitfinityEvmBG} alt="" />
+          <RightArrowSVG className={styles.informationIcon} />
         </motion.a>
       </div>
     </AnimateSpawn>
