@@ -164,7 +164,7 @@ const config = {
                   href: "/basics?source=nav",
                 },
                 {
-                  label: "What is the IC",
+                  label: "What is ICP",
                   href: "/what-is-the-ic?source=nav",
                 },
                 {
@@ -361,6 +361,10 @@ const config = {
                 {
                   label: "Roadmap",
                   href: "/roadmap?source=nav",
+                },
+                  {
+                  label: "Feedback Board",
+                  href: "https://dx.internetcomputer.org/",
                 },
                 {
                   label: "Hackathons",
