@@ -362,6 +362,10 @@ const config = {
                   label: "Roadmap",
                   href: "/roadmap?source=nav",
                 },
+                  {
+                  label: "Feedback board",
+                  href: "https://dx.internetcomputer.org/",
+                },
                 {
                   label: "Hackathons",
                   href: "https://dfinity.org/hackathons",
