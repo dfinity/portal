@@ -22,13 +22,14 @@ the certificates, and provide your own infrastructure that serves the service wo
 However, you are also more flexible in how you configure your domain (e.g., you
 can serve a custom service worker).
 
-> Note: You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
+:::info You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
 
 ```ts
 // Point to icp-api for mainnet. Leaving host undefined will work for localhost
 const host = isProduction ? 'https://icp-api.io' : undefined;
 const agent = new HttpAgent({ host });
 ```
+:::
 
 ## Custom domains on the boundary nodes
 
@@ -54,20 +55,24 @@ In many cases, it is not possible to set a `CNAME` record for the top of a domai
 
 --------------------------------------
 
-- #### Step 2: Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain. 
+- #### Step 2: Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
 By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
 Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`.
 
-To use multiple custom domains with a single canister, simply list each domain on a newline in the `ic-domains`-file:
+To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains`-file:
 ```sh
 custom-domain1.com
+subdomain1.custom-domain1.com
+subdomain2.custom-domain1.com
 custom-domain2.com
-custom-domain3.com
+subdomain1.custom-domain3.com
 custom-domain4.com
 ```
 
+In the above example, `subdomain1` could, for example, stand for `www`.
+
 Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json`-file:
-    
+
 ```
 [
     {
@@ -107,7 +112,7 @@ In case the call failed, you will get an error message indicating the reason for
 * **Domain is missing from list of known domains**: the custom domain is missing from the `ic-domains`-file.
 --------------------------------------
 
-- #### Step 4: Processing the registration can take several minutes. 
+- #### Step 4: Processing the registration can take several minutes.
 Track the progress of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
 
 ```sh
@@ -124,7 +129,7 @@ The status will be one of the following:
 
 --------------------------------------
 
-- #### Step 5: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes. 
+- #### Step 5: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes.
 After that, you should be able to access your canister using the custom domain.
 
 ## Concrete example
@@ -133,11 +138,11 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
 ### DNS configuration
 
-    | Record Type   | Host                        | Value                               |
-    |---------------|-----------------------------|-------------------------------------|
-    | `CNAME`       | foo.bar.com                 | icp1.io                             |
-    | `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
-    | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
+| Record Type   | Host                        | Value                               |
+|---------------|-----------------------------|-------------------------------------|
+| `CNAME`       | foo.bar.com                 | icp1.io                             |
+| `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
+| `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
 :::info
 Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` instead of `foo.bar.com`, `_canister-id.foo` instead of `_canister-id.foo.bar.com`, and `_acme-challenge.foo` instead of `_acme-challenge.foo.bar.com`.
@@ -186,7 +191,7 @@ following checks:
 
 - Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). To check, for example, the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
 - Check that there are no `TXT` records for the `_acme-challenge`-subdomain (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left-over from previous ACME-challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
-- Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser).
+- Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser or using `curl CANISTER_ID.icp0.io/.well-known/ic-domains` in your terminal).
 
 ## Updating a custom domain
 
