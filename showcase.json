@@ -98,7 +98,8 @@
     "name": "Bitfinity EVM",
     "website": "https://bitfinity.network/",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/bitfinitynet",
     "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
