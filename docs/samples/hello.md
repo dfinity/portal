@@ -42,7 +42,6 @@ This example is based on the default project created by running `dfx new hello`.
 This example requires an installation of:
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
 - [x] Install `node.js` (to build the web frontend).
-- [x] Assure that you have stopped any local canister execution environment (i.e. replica) or other network process that would create a port conflict on 8000.
 
 - #### Step 1: Open a terminal window.
 

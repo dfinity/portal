@@ -11,15 +11,16 @@ The basic functionality of the IOS integration consists of four main components:
 
 - First, we created a dapp that is integrated with [Internet Identity](/docs/current/references/ii-spec) and has a basic routing functionality. While the user is not authenticated it can only see the login page and when authenticated can navigate between the about and home page.
 
-- Second, we created a new ios native application that serves as a wrapper for the dapp and creates a native feel for the user.
+- Second, we created a new IOS native application that serves as a wrapper for the dapp and creates a native feel for the user.
 
 - Third, a proxy page was added in the dapp to enable the user to securely authenticate using [Internet Identity](/docs/current/references/ii-spec) and keep the authenticated session in the webview until it expires, even when the user exits the app and re-opens it the session persists.
 
-- Fourth, the app is configured to receive push notifications from the system and open a specified URL, this allows for notifications to be sent serving as a mechanism to deep link into a specific section of the dapp. 
+- Fourth, the dapp is configured to receive push notifications from the system and open a specified URL, this allows for notifications to be sent serving as a mechanism to deep link into a specific section of the dapp. 
 
 ## Prerequisites
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] [nodejs](https://nodejs.org/en/download/).
+- [x] Download the following project files from GitHub: https://github.com/dfinity/examples/
+- [x] Install [Node.js](https://nodejs.org/en/download/).
 - [x] [xcode](https://apps.apple.com/us/app/xcode/id497799835).
 
 ### Step 1: Local development.
@@ -27,16 +28,27 @@ The basic functionality of the IOS integration consists of four main components:
 To get started, start a local `dfx` development environment with the following steps:
 
 ```bash
-cd dapp-demo
+cd examples/motoko/ios-notifications/dapp-demo
 dfx start --background --clean
-dfx deploy
 ```
+
+### Step 2: Install the dependency packages:
+
+`npm install`
+
+### Step 3: Deploy your canisters:
+
+`dfx deploy`
+
+### Step 4: Start the front-end:
+
+`npm start`
 
 You can now access the dapp at `http://localhost:4943/?canisterId={YOUR_LOCAL_CANISTER_ID}`.
 
 > `YOUR_LOCAL_CANISTER_ID` will be made available to you in the output of the `dfx deploy` command.
 
-### Step 2: Using Internet Identity.
+### Step 5: Using Internet Identity.
 
 The integration of this dapp with the [Internet Identity](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity) enables authentication. To support the IOS integration,  it uses the `delegation` and `key` made available in the browser IndexedDB. 
 
@@ -75,7 +87,7 @@ async handleMultiPlatformLogin(): Promise<void> {
 }
 ```
 
-### Step 3: Notifications
+### Step 6: Notifications
 
 The IOS app is prepared to receive notifications from remote APN servers. For the scope of this example we haven't setup our own notification server. Instead, you can use the [send-notification.sh](send-notification.sh) script to trigger the notification with your own apple developer keys.
 

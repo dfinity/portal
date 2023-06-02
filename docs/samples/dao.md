@@ -22,9 +22,8 @@ This example uses the following sample repo:
 This example requires an installation of:
 
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] Assure that you have stopped any local canister execution environment (i.e. replica) or other network process that would create a port conflict on 8000.
 - [x] To run the test scripts, you need to download [ic-repl](https://github.com/chenyan2002/ic-repl/releases).
-- [x] Download the following project files from GitHub: https://github.com/dfinity/examples/tree/master/motoko/basic_dao
+- [x] Download the following project files from GitHub: https://github.com/dfinity/examples
 
 Begin by opening a terminal window.
 

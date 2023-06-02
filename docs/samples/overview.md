@@ -10,6 +10,35 @@ The dapp equivalent of 'Hello, World!' with a separate backend and frontend cani
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/hello).
 - [See a running example](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
 
+## Actor classes
+
+A sample dapp that shows a dynamic actor (class) instantiation.
+- [Documentation](actor-classes).
+-   [Motoko](https://github.com/dfinity/examples/tree/master/motoko/classes).
+
+## Actor reference
+
+A simple dapp that hows the IC management canister as an actor (reference).
+- [Documentation](actor-reference).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/actor_reference).
+
+## Calculator
+
+This example demonstrates a basic calculator dapp. It uses an orthogonally persistent cell variable to store an arbitrary precision integer that represents the result of the most recent calculation.
+- [Documentation](calculator)
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/calc).
+
+## Certified variables
+
+This dapp provides a frontend and a backend that shows a simple certified variable (a single 32-bit number), with client-side certificate validation.
+- [Documentation](cert-var)
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/cert-var) 
+
+## Counter
+
+A simple dapp that shows a basic (stable) variable demo.
+- [Documentation](counter)
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/counter) 
 
 ## Basic decentralized autonomous organization (DAO)
 
@@ -40,6 +69,23 @@ Create, access, modify confidential notes from multiple devices using [Internet 
 - [See a running example](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/).
 - [YouTube tutorial](https://youtu.be/DZQmtPSxvbs).
 
+## Echo
+
+This sample dapp gives a basic query function demo.
+- [Documentation](echo).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/echo).
+
+## Factorial
+
+This sample dapp shows a basic factorial demo.
+- [Documentation](factorial).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/factorial).
+
+## Game of Life
+A dapp sample that demonstrates Conway’s [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), running in a Motoko canister. Demonstrates upgrades among three versions and state migration using stable variables.
+- [Documentation](game-of-life).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/life).
+
 
 ## Hosting a static website
 
@@ -59,6 +105,11 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer). 
 
+## Internet Identity integration
+
+- [Documentation](internet-identity-sample).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
+
 ## NFT minting
 
 This NFT minting dapp showcases how easy it can be to create a user generated NFT and share it. This dapp uses the [DIP721](https://github.com/Psychedelic/DIP721) NFT standard.  
@@ -66,6 +117,47 @@ This NFT minting dapp showcases how easy it can be to create a user generated NF
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container).
 - [YouTube tutorial](https://youtu.be/1po3udDADp4).
 
+## Phone book
+
+This simple dapp is a CRUD-like demo service for storing pieces of related information, such as names and phone numbers.
+- [Documentation](phonebook).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/phone-book).
+
+## PubSub
+
+This sample shows multiple canisters, with publisher-subscriber inter-canister calls.
+- [Documentation](pub-sub).
+- [PubSub](https://github.com/dfinity/examples/tree/master/motoko/pub-sub).
+
+## Quick sort
+
+This example shows how to sort an array, via quick sort, in Motoko.
+- [Documentation](quicksort).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/quicksort).
+
+## Random maze
+
+This sample shows how to create a simple frontend in JavaScript where the previous samples did not provide a frontend, this sample provides both a frontend and a backend. It creates a random maze generation, with IC-based randomness.
+- [Documentation](random-maze).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/random_maze).
+
+## Sending and receiving cycles
+
+This sample dapp illustrates how to receive and transfer cycles and check a balance.
+- [Documentation](sending-and-receiving-cycles).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello_cycles) .
+
+## Simple to-do
+
+This sample is a CRUD-like demo service, sans a front end; see also: phone book and superheroes.
+- [Documentation](simple-to-do).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/simple-to-do).
+
+## Superheros
+
+This example is a simple CRUD dapp. 
+- [Documentation](superheros).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/superheroes).
 
 ## Explore further samples in Motoko
 
@@ -75,40 +167,10 @@ This is a collection of repo-links to additional code samples written in Motoko.
 
 This is collection of basic getting-started Motoko samples, which demonstrate basic concepts of the IC and the Motoko language.
 
--   [Actor reference](https://github.com/dfinity/examples/tree/master/motoko/actor_reference) shows the IC management canister as an actor (reference).
-
--   [Counter](https://github.com/dfinity/examples/tree/master/motoko/counter) shows a basic (stable) variable demo.
-
--   [Echo](https://github.com/dfinity/examples/tree/master/motoko/echo) gives a basic query function demo.
-
--   [Factorial](https://github.com/dfinity/examples/tree/master/motoko/factorial) shows a basic factorial demo.
-
--   [Hello cycles](https://github.com/dfinity/examples/tree/master/motoko/hello_cycles) illustrates how to receive and transfer cycles and check a balance.
-
 -   [Whoami](https://github.com/dfinity/examples/tree/master/motoko/whoami) is a simple canister that reports the Principal of its caller.
 
 ### Intermediate
 
-The intermediate samples demonstrate how to use some of the basic concepts in common use cases. The samples show how to build simple backend functionalities in Motoko.
-
--   [Calc](https://github.com/dfinity/examples/tree/master/motoko/calc) is a more advanced version of counter demo.
-
--   [Classes](https://github.com/dfinity/examples/tree/master/motoko/classes) shows a dynamic actor (class) instantiation.
-
--   [Pub-sub](https://github.com/dfinity/examples/tree/master/motoko/pub-sub) shows multiple canisters, with publisher-subscriber inter-canister calls.
-
--   [Quick-sort](https://github.com/dfinity/examples/tree/master/motoko/quicksort) shows how to sort an array, via Quick Sort, in Motoko.
-
--   [Simple to-do](https://github.com/dfinity/examples/tree/master/motoko/simple-to-do) is a CRUD-like demo service, sans a front end; see also: phone-book and superheroes.
-
-
-### Minimal frontend
-
-These two samples show how to create simple frontends in JavaScript. Where the previous samples did not provide a frontend, these two samples provide both a frontend and a backend.
-
--   [Cert\_var](https://github.com/dfinity/examples/tree/master/motoko/cert-var) shows a simple certified variable (a single 32-bit number), with client-side certificate validation.
-
--   [Random maze](https://github.com/dfinity/examples/tree/master/motoko/random_maze) is a random maze generation, with IC-based randomness.
 
 
 ### Full stack
@@ -119,11 +181,7 @@ These samples demonstrate how to build dapps on the IC, with frontends based on 
 
 -   [IC-avatar](https://github.com/krpeacock/ic-avatar) is a full-stack Motoko + React with more advanced authentication, image uploads, and optimistic updates.
 
--   [Life](https://github.com/dfinity/examples/tree/master/motoko/life) demonstrates Conway’s [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), running in a Motoko Canister. Demonstrates upgrades among three versions and state migration using stable variables.
 
--   [Phonebook](https://github.com/dfinity/examples/tree/master/motoko/phone-book) is a CRUD-like demo service.
-
--   [Superheroes](https://github.com/dfinity/examples/tree/master/motoko/superheroes) is a simple CRUD dapp.
 
 ### Advanced
 
