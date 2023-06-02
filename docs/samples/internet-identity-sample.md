@@ -28,6 +28,7 @@ This is a Motoko example that does not currently have a Rust variant.
 
 You should have a starter project generated with the following file structure:
 
+```
 ├── README.md
 ├── dfx.json
 ├── package.json
@@ -44,7 +45,7 @@ You should have a starter project generated with the following file structure:
 │           ├── index.html
 │           └── index.js
 └── webpack.config.js
-
+```
 
 ### Step 2: Add Internet Identity to the local project.
 Add this code block to the canister section in the `dfx.json` file:
