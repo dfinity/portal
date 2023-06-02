@@ -89,7 +89,7 @@ async handleMultiPlatformLogin(): Promise<void> {
 
 ### Step 6: Notifications
 
-The IOS app is prepared to receive notifications from remote APN servers. For the scope of this example we haven't setup our own notification server. Instead, you can use the [send-notification.sh](send-notification.sh) script to trigger the notification with your own apple developer keys.
+The IOS app is prepared to receive notifications from remote APN servers. For the scope of this example we haven't setup our own notification server. Instead, you can use the `send-notification.sh` script to trigger the notification with your own apple developer keys.
 
 These are the steps to show an IOS notification:
 
@@ -97,7 +97,7 @@ These are the steps to show an IOS notification:
 2. With granted permissions a request to register for remote notifications is made.
 3. A device ID is made available with the remote call.
     - For development purposes we print this value to the xcode console.
-4. Execute the [send-notification.sh](send-notification.sh) script with the correct `env` variables and the notification will appear in your device.
+4. Execute the `send-notification.sh` script with the correct `env` variables and the notification will appear in your device.
     - A physical IOS device is required for this step since the simulator can't register remotely.
 5. By clicking the notification the dapp will open in the about page.
 
