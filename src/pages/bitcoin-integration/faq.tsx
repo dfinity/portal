@@ -202,75 +202,36 @@ function BitcoinFaqPage() {
               contracts that directly hold raw bitcoin without relying on
               intermediaries.
             </Faq>
-            <Faq title="In what ways can I participate in an SNS DAO?">
-              There are many ways members can participate in an SNS DAO, both
-              on-chain and off-chain. Creating proposals requires coding skills.
-              Some examples include:
-              <ul>
-                <li>
-                  <strong>Vote on SNS proposals:</strong> You can vote on
-                  different types of proposals manually or follow other neurons
-                  that vote.
-                </li>
-                <li>
-                  <strong>Create upgrade proposals: </strong>
-                  Submit an upgrade proposal to update the code of the dapp that
-                  the SNS DAO controls. This allows anyone to contribute code to
-                  an SNS DAO.
-                </li>
-                <li>
-                  <strong>Upgrade the asset canister: </strong>
-                  Currently updates to asset canisters don't go through
-                  proposals. However, you can still make changes to the frontend
-                  by upgrading the asset canister controlled by an SNS DAO. To
-                  do so, you have to first create a proposal to add your
-                  principal ID to the list of controllers who can make updates.
-                </li>
-                <li>
-                  <strong>Create motion proposals:</strong> Motion proposals
-                  don't upgrade the code of the dapp, instead they steer the
-                  direction of the DAO in terms of new features and dapp
-                  development.
-                </li>
-                <li>
-                  <strong>Create SNS parameter update proposals: </strong>
-                  You can propose upgrades for many of the DAO's parameters such
-                  as maximum staking period, voting rewards and many more. See
-                  all of them{" "}
-                  <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
-                    here
-                  </Link>
-                </li>
-              </ul>
-              Non-governance related examples of contributing are:
-              <ul>
-                <li>
-                  <strong>Content moderation: </strong> Many social media dapps
-                  may incorporate content moderation as they scale to millions
-                  of users. Moderators review and approve content based on the
-                  content policies of the DAO.
-                </li>
-                <li>
-                  <strong>UI / UX design work: </strong> Users can contribute
-                  not only by coding, but designing different aspects of the
-                  dapp.
-                </li>
-                <li>
-                  <strong>Off-chain marketing / inviting friends: </strong>
-                  Members of the DAO can be advocates of the dapp and promote it
-                  in different ways.
-                </li>
-              </ul>
+            <Faq title="How can I get ckBTC?">
+              <p>
+                ICDex.io
+              </p>
             </Faq>
-            <Faq title="How does voting in an SNS DAO work?">
-              Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. If a proposal gets
-              adopted, the code of the SNS DAO or the dapp it controls is
-              upgraded. Depending on the SNS configuration, users who vote may
-              be rewarded with additional tokens for participating in
-              governance. If you want to get more deeply involved, you can also
-              suggest feature updates through proposals to improve the dapp
-              controlled by the DAO.
+            <Faq title="Is ckBTC a bridged token?">
+              <p className="tw-paragraph mb-3">
+                ckBTC isn't considered a bridged token for a few important aspects that
+                differentiate it from bridged tokens. The key innovations behind ckBTC,
+                namely{" "}
+                <Link href="/bitcoin-integration">
+                  native Bitcoin integration
+                </Link>{" "}
+                and{" "}
+                <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
+                  chain-key ECDSA signing
+                </Link>{" "}
+                enable a pair of canistser smart contracts to trustlessly create ckBTC
+                without bridges or centralized custodians.
+              </p>
+            </Faq>
+            <Faq title="Is ckBTC wrapped?">
+              <p className="tw-paragraph mb-3">
+                ckBTC isn't considered a wrapped token because it doesn't involve any
+                centralized custodian or bridges to work. More than a token, while
+                ckBTC implements the ICRC-1 fungible token standard, the pair of
+                canister smart contracts also allow bitcoin to be freely sent between
+                addresses either on the Bitcoin network or the Internet Computer,
+                making it the first true multi-chain asset.
+              </p>
             </Faq>
             <Faq
               title="How can I get SNS Tokens?"
