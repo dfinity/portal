@@ -21,7 +21,7 @@ This tutorial provides an entry-level introduction to deploying a dapp on the In
 Deployment of the dapp in this tutorial only requires basic knowledge of using a terminal interface. 
 
 To successfully complete this tutorial you will need to:
-* [x] Node.js - This tutorial works best with a Node.js version higher than `16.*.*`.
+- [x] Have [Node.js](https://nodejs.org/) installed. This tutorial works best with a Node.js version higher than `16.*.*`.
 
 ## Step 1: Install the Internet Computer (IC) SDK 
 
