@@ -58,6 +58,24 @@
     ]
   },
   {
+    "id": "bitfinity-evm",
+    "name": "Bitfinity EVM",
+    "website": "https://bitfinity.network/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/bitfinitynet",
+    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
+    "usesInternetIdentity": true,
+    "stats": "1000+ TPS",
+    "display": "Large",
+    "logo": "/img/showcase/bitfinity_evm.png",
+    "screenshots": [
+      "/img/showcase/bitfinity_showcase.png"
+    ]
+  },
+  {
     "id": "juno",
     "name": "Juno",
     "oneLiner": "Build Web3 Apps Like It's Web2",
@@ -91,24 +109,6 @@
     "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
       "/img/showcase/kinic_screenshot.webp"
-    ]
-  },
-  {
-    "id": "bitfinity-evm",
-    "name": "Bitfinity EVM",
-    "website": "https://bitfinity.network/",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure"
-    ],
-    "twitter": "https://twitter.com/bitfinitynet",
-    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
-    "usesInternetIdentity": true,
-    "stats": "1000+ TPS",
-    "display": "Large",
-    "logo": "/img/showcase/bitfinity_evm.png",
-    "screenshots": [
-      "/img/showcase/bitfinity_showcase.png"
     ]
   },
   {
