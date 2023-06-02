@@ -1,14 +1,14 @@
 # Overview
 
-Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome Dfinity repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
+Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
 
-## Hello world
+## Hello, world!
 
 The dapp equivalent of 'Hello, World!' with a separate backend and frontend canister serving a web page. 
 - [Documentation](hello).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/hello).
-- [See running example](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
+- [See a running example](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
 
 
 ## Basic decentralized autonomous organization (DAO)
@@ -25,7 +25,7 @@ To enable DeFi applications on the IC, canisters need to interact with token can
 - [Documentation](dex).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/defi).
-- [See running example](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/).
+- [See a running example](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/).
 - [YouTube tutorial](https://youtu.be/fLbaOmH24Gs).
 
 ## Encrypted note-taking dapp
@@ -37,7 +37,7 @@ Create, access, modify confidential notes from multiple devices using [Internet 
 - [Documentation](encrypted-notes).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko).
 - [Rust](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust).
-- [See running example](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/).
+- [See a running example](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.ic0.app/).
 - [YouTube tutorial](https://youtu.be/DZQmtPSxvbs).
 
 
@@ -115,9 +115,9 @@ These two samples show how to create simple frontends in JavaScript. Where the p
 
 These samples demonstrate how to build dapps on the IC, with frontends based on React and TypeScript.
 
--   [Auth Client Demo](https://github.com/krpeacock/auth-client-demo) is a simple authentication with Internet Identity.
+-   [Auth client demo](https://github.com/krpeacock/auth-client-demo) is a simple authentication with Internet Identity.
 
--   [IC-Avatar](https://github.com/krpeacock/ic-avatar) is a full-stack Motoko + React with more advanced authentication, image uploads, and optimistic updates.
+-   [IC-avatar](https://github.com/krpeacock/ic-avatar) is a full-stack Motoko + React with more advanced authentication, image uploads, and optimistic updates.
 
 -   [Life](https://github.com/dfinity/examples/tree/master/motoko/life) demonstrates Conway’s [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), running in a Motoko Canister. Demonstrates upgrades among three versions and state migration using stable variables.
 
@@ -146,4 +146,4 @@ These videos from the [community conversations](https://www.youtube.com/playlist
 
 -   [Community conversations | best practices for canisters in Rust](https://www.youtube.com/watch?v=36L33S_DYHY&ab_channel=DFINITY).
 
-Additional useful video series can be found at [Coding with Kyle](https://www.youtube.com/watch?v=M2XnywvwxFM&list=PLuhDt1vhGcrfQGLWqhUo9-DFD5JaHqCh1).
+Additional useful video series can be found at [coding with Kyle](https://www.youtube.com/watch?v=M2XnywvwxFM&list=PLuhDt1vhGcrfQGLWqhUo9-DFD5JaHqCh1).

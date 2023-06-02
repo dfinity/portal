@@ -57,6 +57,10 @@ Future versions of Motoko will introduce usability enhancements in collections d
 
 ### `getVotes` method
 
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
+
 We need a method to query vote counts per entry. Since the data will not be altered, the method can be a query call.
 
 Here's the code with comments inline:
@@ -85,6 +89,10 @@ Here's the code with comments inline:
 
 
 ## `vote` method
+
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
 
 We need a method to vote for a programming language entry. This should be an update call since it alters the state. 
 
@@ -123,6 +131,11 @@ Here's the code:
 
 
 ## `resetVotes`  method
+
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
+
 This method resets the state of the votes so every option goes back to 0. Here's the code:
 
 
