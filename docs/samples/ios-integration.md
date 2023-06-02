@@ -108,9 +108,4 @@ These are the steps to show an IOS notification:
 
 ## References
 
-For specific implementation details defer to:
-
-- [Readme: dapp-demo](dapp-demo/README.md).
-- [Readme: ios-dapp-demo](ios-dapp-demo/README.md).
-
 For further details, please refer to the [README file](https://github.com/dfinity/examples/blob/master/motoko/ios-notifications/README.md).
