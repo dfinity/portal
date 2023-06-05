@@ -39,7 +39,7 @@ This function is called by the system before the upgrade happens. After the upgr
 during the `post_upgrade` function. The `post_upgrade` function is called by the system after the upgrade happened.
 In case an error occurs during any part of the upgrade (including `post_upgdrade`), the entire upgrade is reverted.
 
-The Rust CDK (Canister Development Kit) currently only supports one value in stable memory, so it is necessary to create an object that can hold everyhing you care about.
+The Rust CDK (Canister Development Kit) currently only supports one value in stable memory, so it is necessary to create an object that can hold everything you care about.
 In addition, not every data type can be stored in stable memory; only ones that implement the [CandidType trait](https://docs.rs/candid/latest/candid/types/trait.CandidType.html)
 (usually via the [CandidType derive macro](https://docs.rs/candid/latest/candid/derive.CandidType.html)) can be written to stable memory. 
 
@@ -72,7 +72,7 @@ For a much more detailed explanation how certification works, see [this explanat
 
 The NFT example canister keeps access control in these three levels very simple: 
 - For every level of control, a separate list (or set) of principals is kept.
-- Those three levels are then manually checked every single time someone attempts to do something for which they require authorisation.
+- Those three levels are then manually checked every single time someone attempts to do something for which they require authorization.
 - If a user is not authorized to call a certain function an error is returned.
 
 Burning an NFT is a special case. To burn an NFT means to either delete the NFT (not intended in DIP-721) or to set ownership to `null` (or a similar value).

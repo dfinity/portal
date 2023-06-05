@@ -73,7 +73,6 @@ This example requires an installation of:
 - [x] The Rust toolchain (e.g. cargo).
 - [x] [didc.](https://github.com/dfinity/candid/tree/master/tools/didc)
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] Assure that you have stopped any local canister execution environment (i.e. replica) or other network process that would create a port conflict on 8000.
 - [x] Download the following project files from GitHub: https://github.com/dfinity/examples/tree/master/rust/basic_dao
 
 Begin by opening a terminal window.
@@ -266,4 +265,4 @@ Output:
 ### Resources
 - [ic-cdk](https://docs.rs/ic-cdk/latest/ic_cdk/)
 - [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.ic0.app/)
+- [JavaScript API reference](https://erxue-5aaaa-aaaab-qaagq-cai.ic0.app/)

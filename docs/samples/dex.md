@@ -82,7 +82,7 @@ Compared to depositing funds, withdrawing funds is simpler. Since the exchange h
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
 - [x] Download [cmake](https://cmake.org/).
 - [x] Download [npm](https://nodejs.org/en/download/).
-- [x] If you want to deploy the rRst version, make sure you add Wasm as a target:
+- [x] If you want to deploy the Rust version, make sure you add Wasm as a target:
     `rustup target add wasm32-unknown-unknown`
 
 
@@ -99,11 +99,11 @@ The install scripts output the URL to visit the exchange frontend:
 
 ```
 ===== VISIT DEFI FRONTEND =====
-http://localhost:8000?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
+http://127.0.0.1:4943?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
 ===== VISIT DEFI FRONTEND =====
 ```
 
-or you can regenerate the URL "http://localhost:8000?canisterId=$(dfx canister id frontend)". Open this URL in a web browser.
+or you can regenerate the URL "http://127.0.0.1:4943?canisterId=$(dfx canister id frontend)". Open this URL in a web browser.
 
 ## Step 2: To interact with the exchange, you can create a local Internet Identity by clicking the login button.
 

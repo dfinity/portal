@@ -55,7 +55,8 @@ This sample dapp minimizes the total number of HTTPS outcalls at the cost of big
 ## Motoko variant
 
 ### Prerequisites
-- [x] [ic-cdk v0.6.5](https://crates.io/crates/ic-cdk/0.6.5) or above
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/index.mdx).
+- [x] [ic-cdk v0.6.5](https://crates.io/crates/ic-cdk/0.6.5) or above.
 - [x] [dfx v0.12.0](https://github.com/dfinity/sdk/releases/tag/0.12.0) or above.
 
 - #### Step 1: Clone the sample dapp's GitHub repo:

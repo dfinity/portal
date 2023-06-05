@@ -239,3 +239,222 @@ In the commands below, --mode could also be reinstall to reset the stable memory
 dfx canister --network ic install "encrypted_notes_${BUILD_ENV}" --mode=upgrade
 dfx canister --network ic install www --mode=upgrade
 ```
+
+## User interaction with "Encrypted Notes" dapp
+
+### Scenario I: basic single-device usage
+
+<p align="center">
+  <img src="./pictures/single_user.png" width="80%" height="80%"/>
+</p>
+<p align = "center">
+Fig. 2. Basic single-device scenario for a user.
+</p>
+
+1. Open the main page of the `Encrypted Notes` dapp. You will see a _login_ button.
+
+   1. If deployed locally, visit the following link: http://localhost:8000?canisterId=rkp4c-7iaaa-aaaaa-aaaca-cai
+   2. If deployed to the mainnet IC, visit the corresponding canister URL.
+
+   At this moment, only one _deviceAlias_ variable is stored in the _Local Storage_ (see Fig. 2(a)).
+
+   _Note_: see [Troubleshooting](#troubleshooting) in case of problems.
+
+2. Click the "Login" button. You will be redirected to the _Internet Identity_ canister (see Fig. 2(b)).
+
+   1. If you already have an `anchor`, you may continue with it. Click "Authenticate", then verify your identity and finally click "Proceed", see Fig. 2(c).
+   2. If you do not have an anchor yet, you should [create one](https://smartcontracts.org/docs/ic-identity-guide/auth-how-to.html). Once an `anchor` is created, please follow 2.1.
+
+3. Once logged in for the first time, your notes list should be empty. At this moment, your _Local Storage_ should be populated with additional variables (see Fig. 2(d)): **ic-identity**, **ic-delegation**. These variables are used for storing/retrieving notes from the backend canister. In addition, another two variables are generated in the _IndexedDB_: **PrivateKey**, **PublicKey**. These two variable are used for encrypting/decrypting the shared secret key.
+4. Create/edit/delete notes and observe changes in the resulting notes list (see Fig. 2(e)).
+
+### Scenario II: user is accessing notes from multiple devices
+
+In this scenario, a user accesses the dapp using the same _Internet Identity_ anchor from multiple devices. From our dapp's perspective, each web browser instance can be viewed as a separate device.
+
+<p align="center">
+  <img src="./pictures/multiple_devices.png" width="50%" height="50%"/>
+</p>
+<p align = "center">
+Fig. 3. Scenario for a user with multiple registered devices.
+</p>
+
+1. Perform steps 1-3 of Scenario I on Device A.
+2. Perform steps 1-3 of Scenario I on Device B. One subtle difference that you might observe on Device B is that the message "Synchronizing..." (Fig. 3(a)) appears for a short period of time. As Device A was the first to login, it was also the first one to generate a shared secret. Device B has to retrieve it. In order to do that, Device B first uploads its public key (pub B) to the backend canister. Device A retrieves pub B by means of periodic polling. Device A then re-encrypts the shared secret with pub B and uploads it to the backend. Afterwards, Device B can retrieve the encrypted shared secret and decrypt it with its private key.
+3. Observe that the list of notes is now empty for both devices.
+4. Create a Note, e.g. "Note from Device A" on Device A, and observe it on Device B.
+5. Analogously, create a different note, e.g. "Note from Device B" on Device B.
+6. Confirm that the notes are synchronized between the two devices.
+
+### Scenario III: device management
+
+<p align="center">
+  <img src="./pictures/registered_devices.png" width="30%" height="30%"/>
+</p>
+<p align = "center">
+Fig. 4. Scenario for a user adding/removing devices.
+</p>
+
+1. Login into the dapp with the same anchor on two or more devices.
+2. On each device, navigate to "Devices" item in the menu.
+3. Observe that the list of registered devices contains as many entries as the number of logged in devices.
+4. Assuming we are using Device A, click "remove" for some other device, say, Device B.
+5. While still on Device A, observe that Device B is deleted from the list of devices. _Note_: a device cannot remove itself. That is why you do not see a "remove" button for your current device.
+6. Switch to Device B and observe that it has been logged out.
+7. Login with Device B again and observe in "Device" tab both devices again.
+
+---
+&nbsp;
+
+## Unit testing
+
+This project also demonstrates how one can write unit tests for Motoko and Rust canisters.
+
+### Motoko Unit Tests
+
+The unit tests are implemented in `src/encrypted_notes_motoko/test/test.mo` using the [Motoko Matchers](https://kritzcreek.github.io/motoko-matchers/) library. 
+
+The easiest way to run all tests involves the following steps:
+
+1. Follow the [above instructions](#option-1-docker-deployment) for Deployment via Docker with `BUILD_ENV=motoko`.
+2. Open a new console, type `docker ps`, and copy the _`<CONTAINER ID>`_ of the `encrypted_notes` image.
+3. Run: `docker exec `_`<CONTAINER ID>`_` sh src/encrypted_notes_motoko/test/run_tests.sh`
+4. Observer `All tests passed.` at the end of the output.
+
+Alternatively, one can also run unit tests after a local deployment via:
+```sh
+src/encrypted_notes_motoko/test/run_tests.sh
+```
+However, this requires installing [`wasmtime`](https://wasmtime.dev/) and [`motoko-matchers`](https://github.com/kritzcreek/motoko-matchers):
+
+```sh
+git clone https://github.com/kritzcreek/motoko-matchers $(dfx cache show)/motoko-matchers
+chmod +x src/encrypted_notes_motoko/test/run_tests.sh
+src/encrypted_notes_motoko/test/run_tests.sh
+```
+
+Observer `All tests passed.` at the end of the output.
+
+### Rust Unit Tests
+
+The unit tests are implemented in `src/encrypted_notes_rust/src/lib.rs` at the bottom.
+
+The easiest way to run all tests involves the following steps:
+
+1. Follow the [above instructions](#option-1-docker-deployment) for Deployment via Docker with `BUILD_ENV=rust`.
+2. Open a new console, type `docker ps`, and copy the _`<CONTAINER ID>`_ of the `encrypted_notes` image.
+3. Run: `docker exec `_`<CONTAINER ID>`_` cargo test`
+4. Observer `test result: ok.` at the end of the output.
+
+Alternatively, one can also run unit tests after a local deployment via:
+```sh
+cargo test
+```
+
+---
+&nbsp;
+
+## Troubleshooting
+### Building/deployment problems
+Error `ERR_OSSL_EVP_UNSUPPORTED`.
+Version 17+ of node.js introduces changes to the way Node handles OpenSSL.
+This can cause conflicts with certain dependencies that require the old behavior.
+
+Possible Remedies:
+1. `export NODE_OPTIONS=--openssl-legacy-provider` (tested with node 17+)
+2. Regress node version to 16.13.2 LTS (untested)
+
+### Login problems
+Some errors like `Could not initialize crypto service` might occur due to browser caching issues. Redeployment of the dapp can cause such problems. In this case clear browser's _Local Storage_ and _IndexedDB_.
+
+### SSL certificate problems
+
+Some browsers may block local resources based on invalid SSL certificates. If while testing a locally deployed version of the Encrypted Notes dapp you observe certificate issues in your browser's console, please change the browser settings to _ignore certificates for resources loaded from localhost_. For example, this can be done in Google Chrome via [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost).
+
+## dfx.json file structure
+`dfx.json` is the configuration of the project when deploying to either the local replica or to the IC, it assists in the creation of the `.dfx` directory (which contains `canister_ids.json` — which merely maps canister by name to their id on both local replica and the IC). There are various configuration options here and this is not exhaustive. This will primarily discuss target types for canisters (which all exist under the `canisters` key).
+
+```sh
+{
+    "canisters": {
+        "encrypted_notes_motoko": {
+            "main": "src/encrypted_notes_motoko/main.mo",
+            "type": "motoko"
+        },
+        "encrypted_notes_rust": {
+            "type": "custom",
+            "build": "cargo build --target wasm32-unknown-unknown --package encrypted_notes_rust --release",
+            "wasm": "target/wasm32-unknown-unknown/release/encrypted_notes_rust.wasm",
+            "candid": "src/encrypted_notes_rust/src/encrypted_notes_rust.did"
+        },
+        "www": {
+            "dependencies": ["encrypted_notes_motoko"],
+            "frontend": {
+                "entrypoint": "src/frontend/public/index.html"
+            },
+            "source": ["src/frontend/public/"],
+            "type": "assets"
+        },
+        "internet_identity": {
+            "candid": "internet_identity.did",
+            "type": "custom",
+            "wasm": "internet_identity.wasm"
+        }
+    },
+    "networks": {
+        "local": {
+            "bind": "0.0.0.0:8000",
+            "type": "ephemeral"
+        }
+    },
+    "version": 1
+}
+```
+**encrypted_notes_motoko**:
+Motoko is the IC-specific language for building and deploying Canisters. Two keys are necessary:
+`main`: The directory location of the entrypoint file of your canister.
+`type`: needs to be "motoko", informing dfx of how to properly build the canister.
+
+**encrypted_notes_rust**:
+Rust natively supports WebAssembly — the binary format of the Internet Computer, and there is a crate ic_cdk which allows hooks into the IC. Unlike motoko, DFX does not yet have a native Rust target that infers as much as motoko canisters. So the keys that need to be provided are:
+`type`: custom (letting dfx know that it's going to need to do some user-defined work)
+`build`: whatever command needed to turn your project into a wasm binary. In this repo it's:
+```sh
+cargo build --package encrypted_notes_rust --target wasm32-unknown-unknown --release
+```
+`wasm`: wherever the wasm binary ends up at the end of the "build" command.
+`candid`: There is not yet Rust autogeneration for candid IDL built into dfx, so DFX needs to know where you candid file for the canister built by "build" resides.
+**www**:
+frontend www canister (an "asset" canister) is the way we describe a set of files or a static website that we are deploying to the IC. Our project frontend is built in [Svelte](https://svelte.dev/). The keys we used are as follows:
+`dependencies`: an array of whatever canisters are being used to serve your app, to ensure that dfx builds and deploys them before your app.
+`frontend: { entrypoint: ""}`: This set of keys tells dfx to build it as a frontend canister, and entrypoint is wherever your app entrypoint winds up residing at the end of an npm build
+`source`: where the rest of your app resides at the end of npm build
+`type`: "assets" for an assets or static canister.  
+
+**Binary targets**:
+You can also just deploy arbitrary binary targets as long as they're wasm binaries. For that we use the keys:
+`wasm`: a wasm file.
+`candid`: a candidfile representing all interfaces in the wasm file.
+
+_Note_: If there is a mismatch between "wasm" and "candid" interface definitions, your canister will not deploy.
+
+---
+&nbsp;
+
+## Local memory model
+
+_Note_: This dapp uses the web browser's _Local Storage_ and _IndexedDB_ for storing the following data:
+
+- device name
+- user identity info
+- a private/public key pair
+
+A symmetric key for encrypting/decrypting the notes is stored in RAM (this key is shared between multiple devices). For a better understanding of the mechanics of the dapp, please see the _Local Storage_/_IndexedDB_ windows in your web browser. In Chrome, go to: _Developer Tools→Application→Local Storage_/_IndexedDB_.
+
+---
+&nbsp;
+
+## Acknowledgments
+We thank the author of [IC Notes](https://github.com/pattad/ic_notes) whose code was the starting point for the frontend component used in this project.
+
+We thank the authors of [IC Vault](https://github.com/timohanke/icvault) whose code was the starting point for this project's backend, browser-based encryption, and device management.

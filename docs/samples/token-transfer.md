@@ -14,7 +14,6 @@ This example uses the ledger transfer project files located in the [samples Gith
 
 This example requires an installation of:
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] Assure that you have stopped any local canister execution environment (i.e. replica) or other network process that would create a port conflict on 8000.
 - [x] Download and install [git.](https://git-scm.com/downloads)
 
 ### Step 1: Create a new `dfx` project and navigate into the project's directory.
