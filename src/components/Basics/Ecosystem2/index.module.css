@@ -1,7 +1,7 @@
 .outerContainer {
   position: relative;
   overflow: hidden;
-  z-index: 0;
+  @apply z-0;
 }
 
 .container {

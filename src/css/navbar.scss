@@ -1,3 +1,11 @@
+/* Don't display docSidebar items in the top navbar */
+html.plugin-pages,
+html.plugin-docs {
+  .navbar__inner .navbar__items:first-child .navbar__item {
+    display: none;
+  }
+}
+
 .navbar__link {
   font-weight: var(--ifm-font-weight-bold);
 }
@@ -19,10 +27,10 @@
 }
 
 .navbar {
-  z-index: 1901;
   padding: 44px var(--ifm-navbar-x-padding) 20px var(--ifm-navbar-x-padding);
   height: var(--ifm-navbar-height);
   margin: 0 0;
+  @apply z-50;
 }
 
 .dropdown--hoverable .dropdown__menu {
@@ -38,9 +46,10 @@
     --ifm-navbar-height: 72px;
     --ifm-navbar-padding-horizontal: 24px;
   }
+
   .navbar {
     padding: var(--ifm-navbar-padding-vertical)
-    var(--ifm-navbar-padding-horizontal);
+      var(--ifm-navbar-padding-horizontal);
   }
 
   .navbar__logo {
@@ -48,41 +57,26 @@
     height: 21px;
     margin-right: 2rem;
   }
-}
 
-@media (max-width: 996px) {
+  html.plugin-docs {
+    // keep the nav in place on mobile (i.e. disable hideOnScroll)
+    nav[class*="navbarHidden_"] {
+      transform: unset;
+    }
+  }
+
+  /* on mobile hide the search bar in the top navbar */
+  .navbar__inner .navbar__search {
+    display: none;
+  }
+  .navbar__inner .ic0-item {
+    display: none;
+  }
 }
 
 .navbar__inner {
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Don't display docSidebar items in the top navbar on marketing pages*/
-html.plugin-pages,
-html:not(.plugin-pages):not(.plugin-docs) {
-  .navbar__inner .navbar__items:first-child .navbar__item {
-    display: none;
-  }
-}
-
-/* Don't display main nav items in the top navbar on docs pages*/
-html.plugin-docs
-.navbar__inner
-.navbar__items.navbar__items--right
-.navbar__item {
-  display: none;
-}
-
-/* on mobile hide the search bar in the top navbar */
-@media (max-width: 996px) {
-  .navbar__inner .navbar__search {
-    display: none;
-  }
-
-  .navbar__inner .ic0-item {
-    display: none;
-  }
 }
 
 .navbar__inner .navbar__item.dropdown,
@@ -112,7 +106,7 @@ html.plugin-docs
 .navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
   /* https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
-  brightness(90%) contrast(89%);
+    brightness(90%) contrast(89%);
 }
 
 /* Swap the order of the IC logo and the hamburger icon */

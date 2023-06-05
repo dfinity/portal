@@ -29,7 +29,7 @@
     width: Min(1350px, 90%);
     margin: 54px auto 48px auto;
     align-items: flex-start;
-    z-index: 10;
+    @apply z-10;
 }
 
 .footerLinkCol {
@@ -48,7 +48,7 @@
     width: Min(1350px, 90%);
     margin: auto;
     align-items: center;
-    z-index: 10;
+    @apply z-10;
 }
 
 .legalContainer {
@@ -74,7 +74,7 @@
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
-    z-index: 10;
+    @apply z-10;
 }
 
 .mediaLinks {
@@ -117,9 +117,9 @@
     }
 
     .mediaLinksContainer {
-        z-index: 10;
         margin-top: 3rem;
         justify-content: flex-start;
+        @apply z-10;
     }
 
     .legalCopyright {
