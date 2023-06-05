@@ -56,5 +56,5 @@ The output will resemble the following:
 
 ## Resources
 
-- [Actors and sync data](https://internetcomputer.org/docs/current/motoko/main/actors-async/).
-- [Basic Motoko concepts and terms](https://internetcomputer.org/docs/current/motoko/main/basic-concepts).
+- [Actors and sync data](../motoko/main/actors-async.md).
+- [Basic Motoko concepts and terms](../motoko/main/basic-concepts.md).

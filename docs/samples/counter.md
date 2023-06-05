@@ -60,8 +60,8 @@ The following output should be returned:
 ### Resources
 To learn more about these features of Motoko, see:
 
-- [Orthogonal persistence](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/#orthogonal-persistence).
-- [Declaring stable values](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades#declaring-stable-variables).
+- [Orthogonal persistence](../motoko/main/motoko#orthogonal-persistence).
+- [Declaring stable values](../motoko/main/upgrades#declaring-stable-variables).
 
 ## Rust variant
 
