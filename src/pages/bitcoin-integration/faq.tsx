@@ -203,14 +203,33 @@ function BitcoinFaqPage() {
               intermediaries.
             </Faq>
             <Faq title="How can I get ckBTC?">
-              <p>
-                ICDex.io
-              </p>
+              <p>There are two main ways of acquiring ckBTC:</p>
+              <ul>
+                <li>
+                  <strong>Swap ICP for ckBTC on DEXs:</strong> If you have ICP, you can 
+                  swap it for ckBTC on decentralized exchanges running on the Internet
+                  Computer such as{" "}
+                  <Link href="http://icdex.io/">
+                    ICDex
+                  </Link> or{" "}
+                  <Link href="https://app.icpswap.com/swap">
+                    ICPSwap
+                  </Link>.{" "}
+                </li>
+                <li>
+                  <strong>
+                    Convert ckBTC directly on the protocol:
+                  </strong>{" "}
+                  You can send BTC to the NNS, and receive ckBTC. First, go to the{" "}
+                  <Link href="https://nns.ic0.app/">NNS dapp</Link>, then on the sidebar,
+                  click "My Tokens"
+                </li>
+              </ul>
             </Faq>
             <Faq title="Is ckBTC a bridged token?">
               <p className="tw-paragraph mb-3">
-                ckBTC isn't considered a bridged token for a few important aspects that
-                differentiate it from bridged tokens. The key innovations behind ckBTC,
+                ckBTC isn't considered a bridged token because of a few important aspects
+                that differentiate it from bridged tokens. The key innovations behind ckBTC,
                 namely{" "}
                 <Link href="/bitcoin-integration">
                   native Bitcoin integration
@@ -219,8 +238,9 @@ function BitcoinFaqPage() {
                 <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
                   chain-key ECDSA signing
                 </Link>{" "}
-                enable a pair of canistser smart contracts to trustlessly create ckBTC
-                without bridges or centralized custodians.
+                enable a pair of canistser smart contracts to trustlessly create ckBTC. It 
+                does not need bridges or centralized custodians in order to function, thanks
+                to the direct integration of the Internet Computer and Bitcoin networks.
               </p>
             </Faq>
             <Faq title="Is ckBTC wrapped?">
