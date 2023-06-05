@@ -24,9 +24,12 @@ nav[class*="navbarHidden_"] ~ .subnav {
   transition: transform var(--ifm-transition-fast) ease;
   @apply z-40;
 
-  .theme-doc-sidebar-menu.menu__list {
-    overflow: hidden;
+  // allows the dropdown menu to remain visible, while allowing the breadcrumbs to scroll when overflowing
+  @media (max-width: 996px) {
+    overflow-x: scroll;
+  }
 
+  .theme-doc-sidebar-menu.menu__list {
     .navbar__link {
       &:first-child {
         padding-left: 0;
