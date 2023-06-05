@@ -8,11 +8,12 @@ When a canister needs more cycles, a developer can transfer them from the wallet
 
 Why are cycles different from ICP tokens? To ensure that hosting pricing is not volatile while decreasing the risk that building dapps becomes economically infeasible if the ICP token price increases.
 
-:::note
+:::info
 Cycles are measured in very large numbers, billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 :::
 
+## Resources
 To further explore cycle management please see the following articles:
-- **[Using Cycles Wallet](cycles-wallet.md)**
-- **[Getting free cycles from DFINITY Cycles Faucet](cycles-faucet.md)**
-- **[Converting ICP tokens into cycles](converting_icp_tokens_into_cycles.md)**
+- **[Using cycles wallet](cycles-wallet.md)**.
+- **[Getting free cycles from DFINITY cycles faucet](cycles-faucet.md)**.
+- **[Converting ICP tokens into cycles](converting_icp_tokens_into_cycles.md)**.

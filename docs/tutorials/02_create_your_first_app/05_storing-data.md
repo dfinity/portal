@@ -1,19 +1,19 @@
 ---
 sidebar_position: 5
-title: Step 5 - Storing data
+title: '5: Storing data'
 ---
 
-# Step 5 - Storing data
+# 5: Storing data
 
-In this step, we will solve a problem: our actor needs to keep a list and track of *how many votes* each programming language (e.g. "Rust") has.
+In this step, we will solve a problem: our actor needs to keep a list and track of how many votes each option within the poll has. In our example, we'll be running a poll where users can vote on their favorite programming language. 
 
 ## Creating a data structure to store the data
 
-In order to store the potential choices and how many votes each has, we need a collection. We will use a Motoko data structure called [`RBTree`](/motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages. Essentially a key-value store.
+In order to store the potential choices and how many votes each has, we need a collection. We will use a Motoko data structure called [`RBTree`](/motoko/main/base/RBTree.md) which is similar to "maps" or "dictionaries" in other languages; essentially a key-value store.
 
-`RBTree` will "map" an *entry* of type `Text` (e.g. `"Rust"`) to the a *vote count* of type `Nat` (e.g. `5`).
+`RBTree` will "map" an **entry** of type `Text` (e.g. `"Rust"`) to the a **vote count** of type `Nat` (e.g. `5`).
 
-For example, the data structure for our "favorite programming language" poll may look like this:
+For example, the data structure for our "Favorite programming language" poll may look like this:
 
 | id  | Vote Count |
 | --- | ------ |
@@ -23,7 +23,7 @@ For example, the data structure for our "favorite programming language" poll may
 | "Python"   | 0     |
 
 
-### Necessary Imports
+### Necessary imports
 
 We need to import a few things in order to store and query the data:
 
@@ -31,7 +31,7 @@ We need to import a few things in order to store and query the data:
 * We need to import the standard type [`Nat`](/motoko/main/base/Nat.md) in order to use some of `RBTree`'s functions.
 * We also import `Iter` because we will use it later in this tutorial.
 
-So we add an import statement to the beginning of our file `main.mo`:
+To import these packages, add an import statement to the beginning of the file `main.mo`:
 
 ```motoko
 import RBTree "mo:base/RBTree";
@@ -41,7 +41,7 @@ import Iter "mo:base/Iter";
 
 ### Creating an instance of the data
 
-Next we need to declare the variable of this type ***inside the actor***:
+Next, we need to declare the variable of this type inside the actor:
 
 ```motoko
     var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
@@ -49,13 +49,13 @@ Next we need to declare the variable of this type ***inside the actor***:
 
 In this snippet we create a variable `votes`, whose type is the collection `RBTree.RBTree<Text, Nat>`.
 
-:::note
+:::info
 Future versions of Motoko will introduce usability enhancements in collections declarations so they are not as verbose for beginners. 
 :::
 
 ## Accessing the data
 
-## `getVotes` method
+### `getVotes` method
 
 We need a method to query vote counts per entry. Since the data will not be altered, the method can be a query call.
 
@@ -75,17 +75,18 @@ Here's the code with comments inline:
 
 ```
 
-- The `getVotes` method returns an `Array`. [`Array`](../../motoko/main/base/Array.md) is a simple container that can hold multiple values.
-- In this particular case, the array holds elements that is a tuple. The tuples in this case are of type `(Text, Nat)`
-- We use a class `Iter` that represents an iterator, a pointer-like data structure that allows the developer to move over another data structure and see values one by one in a sequential manner.
+### What this does
+- The `getVotes` method returns an `Array`,(../../motoko/main/base/Array.md) which is a simple container that can hold multiple values.
+- In this particular case, the array holds elements that are a tuple. The tuples in this case are of type `(Text, Nat)`
+- We use a class `Iter` that represents an iterator, which is a pointer-like data structure that allows the developer to move over another data structure and see values one by one in a sequential manner.
 -  The  statement `Iter.toArray(votes.entries())` is executed in this sequence:
-    1. `votes.entries()` method produces an iterator of tuples `(Text, Nat)` that represent the `RBTree`'s values
-    2. `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)>` to *array* of `(Text, Nat)`. We do this so the frontend receives an array, instead of an iterator.
+    1. `votes.entries()` method produces an iterator of tuples `(Text, Nat)` that represent the `RBTree`'s values.
+    2. `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)>` to an **array** of `(Text, Nat)`. We do this so the frontend receives an array instead of an iterator.
 
 
 ## `vote` method
 
-We need a method to **vote** for a programming language entry. This should be an update call since it alters the state. 
+We need a method to vote for a programming language entry. This should be an update call since it alters the state. 
 
 Here's the code:
 ```motoko
@@ -116,9 +117,9 @@ Here's the code:
     Iter.toArray(votes.entries())
   };
 ```
-
-- `?Nat` is an [Motoko Optional](../../motoko/main/base/Option.md) that may be a `Nat` or a `null`. 
-- If an entry is queried for the `RBTree` titled `votes`, and the entry is not present, it will return `null`. That is why we use a Motoko Optional in line 11.
+### What this does
+- `?Nat` is an [Motoko optional](../../motoko/main/base/Option.md) that may be a `Nat` or a `null` value. 
+- If an entry is queried for the `RBTree` titled `votes`, and the entry is not present, it will return `null`. That is why we use a Motoko optional in line 11.
 
 
 ## `resetVotes`  method
@@ -141,11 +142,12 @@ This method resets the state of the votes so every option goes back to 0. Here's
     };
 ```
 
+### What this does
 - The method is an update call since it updates the state. All Motoko functions are update calls by default. They are only query calls when they have the `query` keyword before the `func` keyword.
 
 ## Final code
 
-Once you completed all the changes your code should look like this:
+Once you completed all the changes your code in the `main.mo` file should look like this:
 
 ```motoko
 import RBTree "mo:base/RBTree";
@@ -233,5 +235,8 @@ URLs:
     poll_backend: http://127.0.0.1:4943/?canisterId=qvhpv-4qaaa-aaaaa-aaagq-cai&id=qhbym-qaaaa-aaaaa-aaafq-cai
 ```
 
-After that you can open Candid UI and explore the new methods:
-![collections candid ui animation](./_attachments/simple_voting_app_candid.png)
+Now, if you open the backend Candid UI URL, you can explore the new methods: 
+![Sample voting app Candid UI](./_attachments/simple_voting_app_candid.png)
+
+## Next steps
+[6: Adding the frontend](06_add-frontend.md)

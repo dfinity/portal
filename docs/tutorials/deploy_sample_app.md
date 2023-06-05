@@ -2,19 +2,28 @@
 sidebar_position: 1
 title: Deploy your first dapp in 5 minutes
 ---
-# Tutorial 1 - Deploy your first dapp in 5 minutes
+# Tutorial 1: Deploy your first dapp in 5 minutes
 
-## 1. Introduction
+## Overview
 
-This is a quick tutorial to deploy a "Hello World" dapp to the Internet Computer (IC) in 5 minutes or less. Deployment of the dapp only requires basic knowledge of using a terminal. 
+This tutorial provides an entry-level introduction to deploying a dapp on the Internet Computer (IC) in 5 minutes or less. By completing this tutorial, developers will be introduced to the dapp deployment process and structure by creating a "Hello, world!" dapp on the IC. For simplicity, this dapp only does one thing: it accepts a text input and returns text input.
 
-Before starting, take a look at a version of this dapp running on-chain: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
+:::info 
 
-This dapp only does one thing: it accepts a text input and returns text input.
+- Before starting, take a look at a version of this dapp running on-chain: https://jqylk-byaaa-aaaal-qbymq-cai.icp0.io/
+
+:::
+
 
 ![Hello](_attachments/hello-dapp-intro.png)
 
-## 1. Install the Internet Computer (IC) SDK 
+## Prerequisites
+Deployment of the dapp in this tutorial only requires basic knowledge of using a terminal interface. 
+
+To successfully complete this tutorial you will need to:
+- [x] Have [Node.js](https://nodejs.org/) installed. This tutorial works best with a Node.js version higher than `16.*.*`.
+
+## Step 1: Install the Internet Computer (IC) SDK 
 
 This tutorial uses the [IC SDK](../developer-docs/setup/install/index.mdx), which is the default SDK maintained by the DFINITY foundation. 
 
@@ -24,7 +33,7 @@ To [install the IC SDK](../developer-docs/setup/install/index.mdx), run:
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-installed). One of them is a command line interface (CLI). This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
+Once installed, the IC SDK comes with a [few tools you will use](../developer-docs/setup/install/index.mdx#what-gets-installed). One of them is a **command line interface (CLI)**. This CLI is run via the `dfx` command you will see a few times in this tutorial and across the documentation.
 
 To verify that the IC SDK is properly installed, run:
 
@@ -32,14 +41,10 @@ To verify that the IC SDK is properly installed, run:
 dfx --version
 ```
 
-### Requirements
 
-* Node.js - This tutorial works best with a node.js version higher than `16.*.*`.
+## Step 2: Create a project
 
-
-## 2. Create a project
-
-The IC SDK can create new project templates. A project is a set of artifacts, including source code and configuration files, that can be compiled to canister smart contracts. 
+The IC SDK can create new project templates. A **project** is a set of artifacts, including source code and configuration files, that can be compiled to canister smart contracts. 
 
 Create a new project by running: 
 
@@ -49,11 +54,12 @@ cd hello
 dfx start --background
 ```
 
--   The `dfx new hello` command created a new project called `hello` in your local machine
--   `cd hello` navigates your terminal into the newly-created `hello` project
--   `dfx start --background` starts a local instance of the IC to test and deploy too
+### What this does
+-   The `dfx new hello` command created a new project called `hello` in your local machine.
+-   `cd hello` navigates your terminal into the newly-created `hello` project directory.
+-   `dfx start --background` starts a local instance of the IC to test and deploy too. You can view a dashboard of this local instance by navigating to a URL in the output of this command that will resemble `http://localhost:50325/_/dashboard` in your web browser. 
 
-:::note
+:::info
 
 -   Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click "Allow."
 
@@ -61,9 +67,9 @@ dfx start --background
 
 **🎉 Congratulations! 🎉 **
 
-There is now a local Instance of the execution environment of the IC running on your machine! Leave this window/tab running while you continue so the tutorial can continue without issues.
+There is now a local instance of the execution environment of the IC running on your machine! Leave this terminal window and browser tab running while you complete the remaining steps so the tutorial can continue without issues.
 
-## 3. Deploy the dapp locally
+## Step 3: Deploy the dapp locally
 
 Now you can deploy locally. Run:
 
@@ -73,7 +79,7 @@ dfx deploy
 npm start
 ```
 
-Output should provide a URL for where your dapp can be accessed. For example:
+Output should provide two URLs for where your dapp can be accessed. For example:
 
 ``` bash
 URLs:
@@ -83,7 +89,21 @@ URLs:
     hello_backend: http://127.0.0.1:4943/?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai&id=rno2w-sqaaa-aaaaa-aaacq-cai
 ```
 
--  In the sample output above, `hello_frontend` is the frontend of the dapp, it can be accessed at http://127.0.0.1:4943/?canisterId=renrk-eyaaa-aaaaa-aaada-cai. You should have a different URL when you deploy locally.
+:::info
+In the sample output above, `hello_frontend` is the frontend of the dapp and `hello_backend` is the backend of the dapp. You will have different URLs when you deploy these commands in your environment.
+
+Both the frontend canister URL and backend canister URL can be accessed via a web browser. 
+
+#### Frontend example:
+
+![Frontend](_attachments/hello-dapp-intro-local.png)
+
+#### Backend example:
+
+![Backend](_attachments/hello-dapp-backend.png)
+
+:::
+
 
 **🎉 Success! 🎉 **
 
@@ -99,6 +119,14 @@ Run the following command:
 dfx canister call hello_backend greet everyone
 ```
 
+You will receive output returning your greeting:
+
+```
+("Hello, everyone!")
+```
+
+
+#### What this does
 -   The `dfx canister call` command requires you to specify a canister name and function to call.
 -   `hello_backend` specifies the name of the canister you call.
 -   `greet` specifies the function name.
@@ -114,26 +142,41 @@ You should see this:
 
 ![Hello](_attachments/hello-dapp-intro-local.png)
 
-## 4. Deploy the dapp on-chain
+## Step 4: Deploy the dapp on-chain
+Before deploying  your app on-chain, you will need two things: a **wallet** and some **cycles.**
 
 ### Acquiring cycles to deploy on-chain
 
-In order to run on-chain, IC dapps require [cycles](/developer-docs/setup/cycles/index.md) to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
+In order to deploy a dapp to run on-chain, IC dapps require [cycles](/developer-docs/setup/cycles/index.md) to pay for computation and storage. This means that the developer needs to acquire cycles and fill their canister with them. Cycles are created from ICP tokens.
 
-This flow may be surprising to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something** (whether it is Ethereum’s gas or the IC’s cycles). The next steps will likely be familiar to those in crypto or blockchain, who grow used to the first step of deploying a dapp being "go get tokens."
+This flow may be new to people familiar with Web2 software where they can add a credit card to a hosting provider, deploy their apps, and get charged later. In Web3, blockchains require their smart contracts consume **something**, whether it is Ethereum’s ETH token or the IC’s cycles, in order for the smart contract to be deployed. The next steps will likely be familiar to those in crypto or blockchain, who may have grown used to the first step of deploying a dapp being obtaining tokens. 
 
-You may further wonder why dapps run on cycles rather than ICP tokens. The reason is that the cost of ICP tokens fluctuate with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one SDR, regardless of the price of ICP.
+You may further wonder why dapps run on cycles rather than ICP tokens. The reason is that the cost of ICP tokens fluctuate with the crypto market, but cycles are predictable and relatively stable tokens which are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights). One trillion cycles will always cost one XDR, regardless of the price of ICP.
 
-Practical notes about cycles:
+Important notes about cycles:
 
--   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles
+-   There is a [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles.
 -   It takes 100 billion cycles to deploy a canister, but in order to load up the canister with sufficient cycles, the IC SDK injects 3 trillion cycles for any canister created (this is a parameter that can be changed).
--   You can see a table of compute and storage costs here: [Computation and storage costs](../developer-docs/gas-cost.md).
+-   You can see a table of compute and storage costs here: [computation and storage costs](../developer-docs/gas-cost.md).
 
+### Setting up a wallet
+To set up a wallet to be used with cycles, you can use any of the following workflows:
+
+- You can obtain free cycles through the [free cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md) that grants new developers 20 trillion cycles. This guide will walk you through creating a wallet when you are prompted to redeem the faucet's free cycles coupon. **This is the option that we'll be using for this tutorial and is recommended if this is your first onboarding experience into the IC ecosystem.**
+
+- Alternatively, any of the following workflows can be used:
+  - If this is your first time using the IC mainnet and you haven't set up a wallet yet, you can use the command:
+  `dfx quickstart`
+  - You can configure a wallet for this identity/network combination with the command:
+  `dfx identity set-wallet <wallet id> --network <network name>`
+  - If you have a wallet already configured, you can use it by adding the flag `--network <network name>` to your command.
+  - If you have an identity with a wallet configured, you can configure `dfx` to use that identity with the command:
+  `dfx identity use <identity name>`
 
 ### Acquiring cycles via the free cycles faucet
 
-For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md). Please note the fauce can only be used once.
+For the purposes of this tutorial, you can acquire free cycles for your `Hello` dapp from the cycles faucet. Follow the instructions here: 
+- [Claim your free cycles](/developer-docs/setup/cycles/cycles-faucet.md). **Please note the faucet can only be used once.**
 
 #### Check your cycles balance
 
@@ -143,11 +186,11 @@ Now that you have used the cycles faucet, you can check your cycles balance:
 dfx wallet --network ic balance
 ```
 
-You should see around 20 trillion cycles if you run this after using the cycles wallet.
+You should see around 20 trillion cycles if you run this after redeeming your free cycles through the cycles faucet. 
 
 ### Deploying on-chain
 
-Now that you have cycles and your local version of the IC SDK is configured to transfer cycles, you are now ready to deploy your `hello` dapp on-chain. 
+Now that you have some cycles in a wallet, you are now ready to deploy your `hello` dapp on-chain. 
 
 As a sanity check, it is good practice to check if your connection to the ICP network is stable by pinging it:
 
@@ -155,7 +198,7 @@ As a sanity check, it is good practice to check if your connection to the ICP ne
 dfx ping ic
 ```
 
-If successful you will see an output resembling the following:
+If successful, you will see an output resembling the following:
 
 ``` bash
 $ {
@@ -163,16 +206,16 @@ $ {
 }
 ```
 
-Now that you tested the connecion to the ICP network, run:
+Now that you tested the connection to the ICP network, run:
 
 ``` bash
 npm install
 dfx deploy --network ic --with-cycles 1000000000000
 ```
 
+#### What this does
 -   The `--network` option specifies the network alias or URL for deploying the dapp.  This option is required to install on the Internet Computer blockchain mainnet.
 -   The `--with-cycles` explicitly tells the IC SDK how many cycles to use, otherwise it will use the default of 3 trillion.
-
 
 If successful, your terminal should look like this:
 
@@ -231,18 +274,20 @@ Note the bottom of the message which returns the URL where you can see your cani
 
 ### You have successfully deployed your dapp on-chain
 
-:::note
+:::info
 
-Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
+Before your dapp loads, your browser will quickly show a message that reads: Installing "Internet Computer Validating Service Worker". 
+
+This [service worker](https://developer.chrome.com/docs/workbox/service-worker-overview/) comes from the ICP network and it is used to make sure the web app the user sees is the correct, untampered frontend. Once loaded, your browser will cache the service worker and your web app will load much quicker.
 :::
 
-## 5. Wrap-up
+## Conclusion
 
 You have built a dapp fully on-chain (both backend and frontend).
 
 Tutorial takeaways:
--   Dapps can be composed of multiple canisters, backend and frontend
--   Dapps can be deployed locally and on-chain
--   Cycles are needed power dapps
--   Get free cycles from the cycles wallet
--   Free cycles can be used to power additional dapps
+-   Dapps can be composed of multiple canisters that comprise the dapp's backend and frontend.
+-   Dapps can be deployed locally and on-chain.
+-   Cycles are needed power dapps.
+-   Free cycles can be obtained from the cycles wallet faucet.
+-   Free cycles can be used to power additional dapps.

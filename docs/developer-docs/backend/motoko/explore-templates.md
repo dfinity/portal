@@ -1,40 +1,39 @@
-# Explore the default project
+# 2: Exploring the default project
 
-If you started your tour of the SDK with the [Quick start](/tutorials/deploy_sample_app.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+## Overview
+If you started your tour of the IC SDK with the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
 ![Development work flow](_attachments/dev-workflow-explore.svg)
 
-## Before you begin
+## Prerequisites
 
-Before you start this tutorial, verify the following:
+Before you start this guide, verify the following:
 
--   You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
+-   [x] You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   You have `node.js` installed if you want to include the default template files for frontend development in your project.
+-   [x] You have `node.js` installed if you want to include the default template files for frontend development in your project.
 
--   You have downloaded and installed the SDK package as described in [Download and install](/developer-docs/setup/install/index.mdx).
+-   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+-   [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
--   You have stopped any local canister execution environment processes running on the local computer.
-
-This tutorial takes approximately 20 minutes to complete.
+-   [x] You have stopped any local canister execution environment processes running on the local computer.
 
 ## Create a new project
 
-As discussed in the [Tutorials](/tutorials/index.mdx), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
+As discussed in the [tutorials](/tutorials/index.mdx), dapps for the Internet Computer start as **projects** that you create. You can create projects using the `dfx` executable command-line interface (CLI).
 
 To take a closer look at the files and folders that are included in a project by default, let’s create a new project to work with.
 
 To create a new project:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Navigate to the folder you are using for your Internet Computer projects, if you are using a separate working folder.
+- #### Step 2:  Navigate to the folder you are using for your Internet Computer projects, if you are using a separate working folder.
 
-3.  Create a new project by running the following command:
+- #### Step 3:  Create a new project by running the following command:
 
         dfx new explore_hello
 
@@ -42,7 +41,7 @@ To create a new project:
 
     To ensure that project names are valid when used in JavaScript, Motoko, and other contexts, you should only use alphanumeric characters and underscores. You cannot include dashes or any special characters.
 
-4.  View the default directory structure by running the following command:
+- #### Step 4:  View the default directory structure by running the following command:
 
         ls -l explore_hello
 
@@ -79,7 +78,7 @@ To create a new project:
 
     The default `src` directory includes a template `main.mo` file that you can modify or replace to include your core programming logic.
 
-    Because this tutorial focuses on the basics of getting started, you are only going to use the `main.mo` file. If you have `node.js` installed, your project directory includes additional files and directories that you can use to define the frontend interface for your dapp. Frontend development and the template files in the `assets` folder are discussed a little later.
+    Because this guide focuses on the basics of getting started, you are only going to use the `main.mo` file. If you have `node.js` installed, your project directory includes additional files and directories that you can use to define the frontend interface for your dapp. Frontend development and the template files in the `assets` folder are discussed a little later.
 
 ## Review the default configuration
 
@@ -87,13 +86,13 @@ By default, creating a new project adds some template files to your project dire
 
 To review the default configuration file for your project:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Change to your project directory by running the following command:
+- #### Step 2:  Change to your project directory by running the following command:
 
         cd explore_hello
 
-3.  Open the `dfx.json` configuration file in a text editor to review the default settings.
+- #### Step 3:  Open the `dfx.json` configuration file in a text editor to review the default settings.
 
     It may look like [this](./_attachments/sample-explore-dfx.json).
 
@@ -113,7 +112,7 @@ To review the default configuration file for your project:
 
     You can leave the default settings as they are.
 
-4.  Close the `dfx.json` file to continue.
+- #### Step 4:  Close the `dfx.json` file to continue.
 
 ## Review the default program code
 
@@ -123,11 +122,11 @@ Let’s take a look at the sample program in the default `main.mo` template file
 
 To review the default sample program for your project:
 
-1.  Check that you are still in your project directory by running the following command:
+- #### Step 1:  Check that you are still in your project directory by running the following command:
 
         pwd
 
-2.  Open the `src/explore_hello/main.mo` file in a text editor and review the code in the template:
+- #### Step 2:  Open the `src/explore_hello/main.mo` file in a text editor and review the code in the template:
 
         actor {
             public func greet(name : Text) : async Text {
@@ -147,25 +146,25 @@ To review the default sample program for your project:
 
     We’ll explore code that uses `actor` objects and asynchronous message handling more a little later. For now, you can continue to the next section.
 
-3.  Close the `main.mo` file to continue.
+- #### Step 3:  Close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
 Before you can deploy the default project, you need to connect to either the local canister execution environment, or to the Internet Computer blockchain mainnet.
 
-Starting the local canister execution environment requires a `dfx.json` file, so you should be sure you are in your project’s root directory. For this tutorial, you should have two separate terminal shells, so that you can start and see network operations in one terminal and manage your project in another.
+Starting the local canister execution environment requires a `dfx.json` file, so you should be sure you are in your project’s root directory. For this guide, you should have two separate terminal shells, so that you can start and see network operations in one terminal and manage your project in another.
 
 To start the local canister execution environment:
 
-1.  Open a new terminal window or a new terminal tab on your local computer.
+- #### Step 1:  Open a new terminal window or a new terminal tab on your local computer.
 
-2.  Navigate to the root directory for your project, if necessary.
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
     -   You should now have **two terminals** open.
 
     -   You should have the **project directory** as your **current working directory**.
 
-3.  Start the local canister execution environment by running the following command:
+- #### Step 3:  Start the local canister execution environment by running the following command:
 
         dfx start
 
@@ -173,19 +172,19 @@ To start the local canister execution environment:
 
     After you start the local canister execution environment, you have one terminal that displays messages about network operations and another for performing project-related tasks.
 
-4.  Leave the terminal that displays network operations open and switch your focus to the terminal where you created your new project.
+- #### Step 4:  Leave the terminal that displays network operations open and switch your focus to the terminal where you created your new project.
 
 ## Register canister identifiers
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [Quick start](/tutorials/deploy_sample_app.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This tutorial demonstrates how to perform each of the operations independently.
+In the [Deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network:
 
-1.  Check that you are still in your project directory, if needed.
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-2.  Register unique canister identifiers for the canisters in the project by running the following command:
+- #### Step 2:  Register unique canister identifiers for the canisters in the project by running the following command:
 
         dfx canister create --all
 
@@ -217,11 +216,11 @@ Now that you have explored the default configuration settings and program code a
 
 To build the program executable:
 
-1.  In the terminal shell on your local computer, navigate to your `explore_hello` project directory.
+- #### Step 1:  In the terminal shell on your local computer, navigate to your `explore_hello` project directory.
 
     You must run the `dfx build` command from within the project directory structure.
 
-2.  Build the executable canister by running the following command:
+- #### Step 2:  Build the executable canister by running the following command:
 
         dfx build
 
@@ -232,7 +231,7 @@ To build the program executable:
 
     Because you are connected to the local canister execution environment, the `dfx build` command adds the `canisters` directory under the `.dfx/local/` directory for the project.
 
-3.  Verify that the `.dfx/local/canisters/explore_hello` directory created by the `dfx build` command contains the WebAssembly and related application files by running the following command.
+- #### Step 3:  Verify that the `.dfx/local/canisters/explore_hello` directory created by the `dfx build` command contains the WebAssembly and related application files by running the following command.
 
         ls -l .dfx/local/canisters/explore_hello/
 
@@ -258,7 +257,7 @@ To build the program executable:
 
     In addition to the files in the `canisters/explore_hello` and the `canisters/explore_hello_assets` directories, the `dfx build` command creates an `idl` directory.
 
-4.  Verify that a new folder has been created, `src/declarations`.
+- #### Step 4:  Verify that a new folder has been created, `src/declarations`.
 
     This folder will include copies of the folders from `.dfx/local`, except for the wasm. They do not contain any secrets, and we recommend committing these files along with the rest of your source code.
 
@@ -268,9 +267,9 @@ You’ve seen that the `dfx build` command creates several artifacts in a `canis
 
 To deploy to the local canister execution environment:
 
-1.  In a terminal shell on your local computer, navigate to your `explore_hello` project directory.
+- #### Step 1:  In a terminal shell on your local computer, navigate to your `explore_hello` project directory.
 
-2.  Deploy your `explore_hello` project on the local network by running the following command:
+- #### Step 2:  Deploy your `explore_hello` project on the local network by running the following command:
 
         dfx canister install --all
 
@@ -288,19 +287,19 @@ To deploy to the local canister execution environment:
           /index.js.map 1/1 (964679 bytes)
           /index.js.LICENSE.txt 1/1 (499 bytes)
 
-3.  Run the `dfx canister call` command and specify the dapp and function to call by running the following command:
+- #### Step 3:  Run the `dfx canister call` command and specify the dapp and function to call by running the following command:
 
         dfx canister call explore_hello greet '("everyone": text)'
 
     This command specifies:
 
-    -   `explore_hello` as the name of the *canister* or dapp you want to call.
+    -   `explore_hello` as the name of the **canister** or dapp you want to call.
 
-    -   `greet` as the specific *method* or function you want to call.
+    -   `greet` as the specific **method** or function you want to call.
 
     -   `everyone` as the argument to pass to the `greet` function.
 
-4.  Verify the command displays the return value of the `greet` function.
+- #### Step 4:  Verify the command displays the return value of the `greet` function.
 
     For example:
 
@@ -312,9 +311,9 @@ If you have `node.js` installed in your development environment, your project in
 
 To explore the default frontend template:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open, and navigate to your `explore_hello` project directory.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open, and navigate to your `explore_hello` project directory.
 
-2.  Open the `src/explore_hello_assets/src/index.js` file in a text editor and review the code in the template script:
+- #### Step 2:  Open the `src/explore_hello_assets/src/index.js` file in a text editor and review the code in the template script:
 
         import { explore_hello } from "../../declarations/explore_hello";
 
@@ -330,9 +329,9 @@ To explore the default frontend template:
 
     This file works in conjunction with the template `index.html` file to display an HTML page with an image asset, input field, and button for the `greet` function.
 
-3.  Close the `index.js` file to continue.
+- #### Step 3:  Close the `index.js` file to continue.
 
-4.  View the frontend assets created for the project by running following command:
+- #### Step 4:  View the frontend assets created for the project by running following command:
 
         ls -l .dfx/local/canisters/explore_hello_assets/
 
@@ -349,17 +348,17 @@ To explore the default frontend template:
 
     These files were generated automatically by the `dfx build` command using node modules and the template `index.js` file.
 
-5.  Start a development server with `npm start`.
+- #### Step 5:  Start a development server with `npm start`.
 
-6.  Open a browser and navigate to the `local` network address and port number—`+127.0.0.1:8080`
+- #### Step 6:  Open a browser and navigate to the `local` network address and port number—`+127.0.0.1:8080`
 
-7.  Verify that you see the HTML page for the sample application.
+- #### Step 7:  Verify that you see the HTML page for the sample application.
 
     For example:
 
     ![Sample HTML entry page](_attachments/explore-hello.png)
 
-8.  Type a greeting, then click **Click Me** to return the greeting.
+- #### Step 8:  Type a greeting, then click **Click Me** to return the greeting.
 
     For example:
 
@@ -371,8 +370,8 @@ After you finish experimenting with your dapp, you can stop the local canister e
 
 To stop the local canister execution environment:
 
-1.  In the terminal that displays network operations, press Control-C to interrupt the local network process.
+- #### Step 1:  In the terminal that displays network operations, press Control-C to interrupt the local network process.
 
-2.  Stop the local canister execution environment by running the following command:
+- #### Step 2:  Stop the local canister execution environment by running the following command:
 
         dfx stop

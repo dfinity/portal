@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
-title: Step 6 - Adding the frontend
+title: '6: Adding the frontend'
 ---
 
-# Step 6 - Adding the frontend
+# 6: Adding the frontend
 
 We will use vanilla JavaScript for our dapp in order to keep things as simple as possible.
 
@@ -17,7 +17,7 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Poll Hosted on an ICP canister smart contract</title>
+    <title>Simple poll dapp hosted on an ICP canister smart contract</title>
 
     <style>
       body {
@@ -140,20 +140,21 @@ Navigate to `/src/poll_frontend/src/index.html` and replace the content of `inde
 </html>
 ```
 
-- The HTML above is just a simple form with options, nothing ICP or Web3 special about it
-- The `<head>` tag includes some basic CSS for styling
-- To learn more about adding a stylesheet, see: [Add a stylesheet](../../developer-docs/frontend/add-stylesheet.md).
+### What this does
+- The HTML above is just a simple form with options, nothing ICP or Web3 special about it.
+- The `<head>` tag includes some basic CSS for styling.
+- To learn more about adding a stylesheet, see: [add a stylesheet](../../developer-docs/frontend/add-stylesheet.md).
 
 
-:::note
-You may have noticed the file path above has two directories named `src`. That is because when you created the project `poll` via `dfx new poll`, the project actually created TWO canister smart contracts (that talk to each other):
-* `src/poll_backend` which is a smart contract that serves as the backend of this dapp
-* `src/poll_frontend` which is a smart contract that serves as the frontend of this dapp
+:::info
+You may have noticed the file path above has two directories named `src`. That is because when you created the project `poll` via `dfx new poll`, the project actually created **two** canister smart contracts (that talk to each other):
+* `src/poll_backend` which is a smart contract that serves as the backend of this dapp.
+* `src/poll_frontend` which is a smart contract that serves as the frontend of this dapp.
 :::
 
 ## Update `index.js` in the frontend canister
 
-In order for the frontend to talk to the backend and have it reflected in the HTML, we need to update the `index.js` file. Navigate to `/src/poll_frontend/src/index.js` and replace the content of `index.js` with this
+In order for the frontend to talk to the backend and have it reflected in the HTML, we need to update the `index.js` file. Navigate to `/src/poll_frontend/src/index.js` and replace the content of `index.js` with this:
 
 
 ```javascript
@@ -252,28 +253,37 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
 
 };
 ```
-
-- Line #4 `import { poll_backend } from "../../declarations/poll_backend";` is important. This line is what allows the frontend to import an interface for the backend canister and seamlessly send it via messages (via Candid). This line is directly related to the following lines where the frontend JS talks to the backend:
-* Line 19: `const question = await poll_backend.getQuestion();`
-* Line 25: `const voteCounts = await poll_backend.getVotes();`
-* Line 40: `const updatedVoteCounts = await poll_backend.vote(selectedOption);`
+### What this does
+- Line 4: `import { poll_backend } from "../../declarations/poll_backend";`: this is an important line that is what allows the frontend to import an interface for the backend canister and seamlessly send it via messages (using Candid). This line is directly related to the following lines where the frontend JS talks to the backend:
+  - Line 19: `const question = await poll_backend.getQuestion();`
+  - Line 25: `const voteCounts = await poll_backend.getVotes();`
+  -Line 40: `const updatedVoteCounts = await poll_backend.vote(selectedOption);`
 - `displayResults()` and `updateLocalVoteCount()` are just helper functions created for convenience.
-
-These lines show how the frontend can use the `getQuestion()`, `getVotes()`, `vote()` methods we created in earlier sections.
+- These lines collectively show how the frontend can use the `getQuestion()`, `getVotes()`, `vote()` methods we created in earlier sections.
 
 ## Deploy the dapp locally
 
-Re-deploy the dapp locally and you are done!
-
- **🎉 Congrats! 🎉**
-
+Re-deploy the dapp locally with the command:
 
 ```bash
 dfx deploy
 ```
 
-You application should look like this (with different numbers):
+Now, when the terminal's output displays the following, open the `poll_frontend` URL in a web browser:
+
+```
+  Frontend canister via browser
+    poll_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai
+  Backend canister via Candid interface:
+    poll_backend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai&id=by6od-j4aaa-aaaaa-qaadq-cai
+```
+
+**🎉 Congrats! 🎉**
+
+Your poll dapp is complete! 
 ![picture 1](./_attachments/simple_voting_app.png)  
 
 
+## Next steps
 
+[Conclusion](07_wrapup.md)

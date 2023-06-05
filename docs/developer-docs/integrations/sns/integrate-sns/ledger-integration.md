@@ -1,11 +1,13 @@
-# SNS Ledger Canister
+# SNS ledger canister
 
-The SNS ledger canister keeps track of the transactions between accounts in a _chain_,
+## Overview
+
+The SNS ledger canister keeps track of the transactions between accounts in a **chain**,
 as well as the account balances at the last block of the chain.
 A ledger canister is always deployed as part of the SNS canisters. 
 The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) specification.
 
-## Initialisation
+## Initialization
 
 This sections explains how to deploy a ledger canister in isolation.
 You can also deploy a full SNS, which will be deployed with a ledger canister.
@@ -57,52 +59,52 @@ Here are the supported methods from the ledger canister:
 ```
 icrc1_name : () -> (text) query;
 ```
-Returns the name of the token (e.g., MyToken).
+- This method returns the name of the token (e.g., MyToken).
 
 ```
 icrc1_symbol : () -> (text) query;
 ```
-Returns the symbol of the token (e.g., ICP).
+- This method returns the symbol of the token (e.g., ICP).
 
 ```
 icrc1_decimals : () -> (nat8) query;
 ```
-Returns the number of decimals the token uses (e.g., 8 means to divide the token amount by 100000000 to get its user representation).
+- This method returns the number of decimals the token uses (e.g., 8 means to divide the token amount by 100000000 to get its user representation).
 
 ```
 icrc1_metadata : () -> (vec record { text; Value }) query;
 ```
-Returns the list of metadata entries for this ledger. 
+- This method returns the list of metadata entries for this ledger. 
 
 ```
 icrc1_total_supply : () -> (Tokens) query;
 ```
-Returns the total number of tokens on all accounts except for the minting account.
+- This method returns the total number of tokens on all accounts except for the minting account.
 
 ```
 icrc1_fee : () -> (Tokens) query;
 ```
-Returns the default transfer fee.
+- This method returns the default transfer fee.
 
 ```
 icrc1_minting_account : () -> (opt Account) query;
 ```
-Returns the minting account if this ledger supports minting and burning tokens.
+- This method returns the minting account if this ledger supports minting and burning tokens.
 
 ```
 icrc1_balance_of : (Account) -> (Tokens) query;
 ```
-Returns the balance of the account given as an argument.
+- This method returns the balance of the account given as an argument.
 
 ```
 icrc1_transfer : (TransferArg) -> (TransferResult);
 ```
-Transfers some tokens between two accounts. The transfer fees are taken from the caller's account in addition to the transferred amount.
+- This method transfers some tokens between two accounts. The transfer fees are taken from the caller's account in addition to the transferred amount.
 
 ```
 icrc1_supported_standards : () -> (vec record { name : text; url : text }) query;
 ```
-Returns the list of standards this ledger implements.
+- This method returns the list of standards this ledger implements.
 
 ## Candid reference file
 

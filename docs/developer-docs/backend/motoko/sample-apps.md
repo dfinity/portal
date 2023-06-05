@@ -1,7 +1,6 @@
-# Sample code, applications, and microservices
+# 14: Sample code and applications
 
-May 2020 (Alpha) :proglang: Motoko :IC: Internet Computer :company-id: DFINITY
-
+## Overview
 Sample code, applications, and microservices that have been developed by DFINITY or contributed by the community are available from the [DFINITY public repository](https://github.com/dfinity/examples).
 
 By accessing the public repository, you can directly download, clone, fork, or share sample projects. You will also be able to contribute by suggesting updates or reporting issues for the published projects using the standard GitHub work flow.
@@ -24,7 +23,7 @@ For examples of projects written in the C programming language for the IC, see [
 
 For projects that use the Motoko programming language, see [Motoko sample projects](https://github.com/dfinity/examples/tree/master/motoko).
 
--   [Calculator - simple functions](https://github.com/dfinity/examples/tree/master/motoko/calc)
+-   [Calculator: simple functions](https://github.com/dfinity/examples/tree/master/motoko/calc)
 
 -   [Counter](https://github.com/dfinity/examples/tree/master/motoko/counter)
 
@@ -32,19 +31,19 @@ For projects that use the Motoko programming language, see [Motoko sample projec
 
 -   [Factorial](https://github.com/dfinity/examples/tree/master/motoko/factorial)
 
--   [Hello, world](https://github.com/dfinity/examples/tree/master/motoko/hello-world)
-
 -   [Hello, cycles](https://github.com/dfinity/examples/tree/master/motoko/hello_cycles)
 
--   [Game of Life - upgrades](https://github.com/dfinity/examples/tree/master/motoko/life)
+-   [Hello, world](https://github.com/dfinity/examples/tree/master/motoko/hello-world)
+
+-   [Game of Life: upgrades](https://github.com/dfinity/examples/tree/master/motoko/life)
 
 -   [Phone book](https://github.com/dfinity/examples/tree/master/motoko/phone-book)
 
--   [Publish/subscribe](https://github.com/dfinity/examples/tree/master/motoko/pub-sub)
+-   [Publish and subscribe](https://github.com/dfinity/examples/tree/master/motoko/pub-sub)
 
 -   [Quicksort](https://github.com/dfinity/examples/tree/master/motoko/quicksort)
 
--   [Random maze - cryptographic randomness](https://github.com/dfinity/examples/tree/master/motoko/random_maze)
+-   [Random maze using cryptographic randomness](https://github.com/dfinity/examples/tree/master/motoko/random_maze)
 
 -   [To-do checklist](https://github.com/dfinity/examples/tree/master/motoko/simple-to-do)
 

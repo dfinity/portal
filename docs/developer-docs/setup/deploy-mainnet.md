@@ -2,67 +2,75 @@
 title: Mainnet deployment
 ---
 
-# Deploying to Internet Computer
+# Deploying to the Internet Computer Mainnet 
 
-This *Quick Start* scenario assumes that you are installing the IC SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
+## Overview
+
+This scenario assumes that you are installing the IC SDK for the first time and deploying the default project on the Internet Computer blockchain mainnet.
 
 If you are only deploying projects in a local development environment, see the [local development](./deploy-locally.md) scenario.
 
 To get started, let’s build and deploy a simple Hello dapp that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the dapp using the command-line or in an HTML page if you access the dapp in a browser.
 
-## Before you begin
+## Prerequisites
 
-Before you download and install this release of the SDK, verify the following:
+Before you download and install this release of the IC SDK, verify the following:
 
--   You have an internet connection and access to a shell terminal on your local **macOS** or **Linux** computer.
+-   [x] You have an internet connection and access to a shell terminal on your local computer.
 
-    Currently, the SDK only runs on computers with a macOS or Linux operating system.
+-   [x] You have `node.js` installed if you want to access the default frontend for the default project.
 
--   You have `node.js` installed if you want to access the default frontend for the default project.
+-   [x] You have ICP tokens or cycles available for you to use.
 
--   You have ICP tokens or cycles available for you to use.
+:::info
+You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
 
-    You must have **cycles** available to complete this tutorial. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This tutorial assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
+For information about how to get ICP tokens, see [how you can get ICP tokens](/concepts/tokens-cycles.md#get-cycles). 
 
-    For information about how to get ICP tokens, see [How you can get ICP tokens](/concepts/tokens-cycles.md#get-cycles). 
-    <!-- For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart).  -->
-    For information about using your default cycles wallet after you have created it, see [Use the default cycles wallet](/developer-docs/setup/cycles/cycles-wallet.md).
+For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart).
+
+For information about using your default cycles wallet after you have created it, see [use the default cycles wallet](/developer-docs/setup/cycles/cycles-wallet.md).
+:::
 
 ## Download and install
 
-You can download the latest version of the SDK directly from within a terminal shell on your local computer. If you have previously installed the SDK, you can skip this section and start with [Create a new project](#net-new-project).
+You can download the latest version of the IC SDK directly from within a terminal shell on your local computer. If you have previously installed the IC SDK, you can skip this section and start with [create a new project](#net-new-project).
+
+:::caution
+These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](/docs/current/developer-docs/setup/install/index).
+:::
 
 To download and install:
 
-1.  Open a terminal shell on your local computer.
+- #### Step 1:  Open a terminal shell on your local computer.
 
-    For example, open Applications, Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
+    For example, open Applications > Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
 
-2.  Download and install the SDK package by running the following command:
+- #### Step 2:  Download and install the IC SDK package by running the following command:
 
         sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
-3.  Type `y` and press Return to continue with the installation.
+- #### Step 3:  Type `y` and press Return to continue with the installation.
 
     The command displays information about the components being installed on the local computer.
 
-## Verify the SDK is ready to use
+## Verify the IC SDK is ready to use
 
 If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
 
-To verify the SDK is ready to use:
+To verify the IC SDK is ready to use:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Check that you have the DFINITY execution command-line interface (CLI) installed and the `dfx` executable is available in your PATH by running the following command:
+- #### Step 2:  Check that you have the DFINITY execution command-line interface (CLI) installed and the `dfx` executable is available in your PATH by running the following command:
 
         dfx --version
 
     The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](https://github.com/dfinity/sdk/releases).
 
-3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
+- #### Step 3:  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
         dfx --help
 
@@ -72,13 +80,13 @@ To verify the SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](/developer-docs/backend/motoko/explore-templates.md) tutorial.
+For this guide, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](/developer-docs/backend/motoko/explore-templates.md) guide.
 
 To create a new project for your first dapp:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Create a new project named `hello` by running the following command:
+- #### Step 2:  Create a new project named `hello` by running the following command:
 
         dfx new hello
 
@@ -86,7 +94,7 @@ To create a new project for your first dapp:
 
     If you use a different project name instead of `hello`, make note of the name you used. You’ll need to use that project name in place of the `hello` project name throughout these instructions.
 
-3.  Change to your project directory by running the following command:
+- #### Step 3:  Change to your project directory by running the following command:
 
         cd hello
 
@@ -96,13 +104,13 @@ There is a reserved network alias that you can use to access the Internet Comput
 
 To check your connection to the IC:
 
-1.  Check that you are in the root directory for your project, if needed.
+- #### Step 1:  Check that you are in the root directory for your project, if needed.
 
-2.  Check the current status of the IC and your ability to connect to it by running the following command for the network alias `ic`:
+- #### Step 2:  Check the current status of the IC and your ability to connect to it by running the following command for the network alias `ic`:
 
         dfx ping ic
 
-3.  Verify that the `dfx ping ic` command returns information about the IC.
+- #### Step 3:  Verify that the `dfx ping ic` command returns information about the IC.
 
     For example, you should see output similar to the following:
 
@@ -116,29 +124,29 @@ All ICP token transactions are recorded in a [ledger canister](/references/gloss
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
-Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) frontend application, or using the SDK `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
+Depending on how you have set up custody for holding your ICP tokens, the hardware, software, and steps required to connect to the ledger and complete a transaction can vary. For example, you might connect to the ledger and start a transaction from a hardware wallet, using a hardware security module (HSM) appliance, through the Network Nervous System (NNS) frontend application, or using the IC SDK `dfx` command-line interface. Each approach presents a different interface for signing and sending messages to the ledger and representing your identity as an account holder.
 
 ### About your developer identity
 
-The first time you use the SDK, the `dfx` command-line tool creates a `default` developer identity for you. This identity is represented by a **principal** data type and a textual representation of the principal often referred to as your **principal identifier**. This representation of your identity is similar to a Bitcoin or Ethereum address.
+The first time you use the IC SDK, the `dfx` command-line tool creates a `default` developer identity for you. This identity is represented by a **principal** data type and a textual representation of the principal often referred to as your **principal identifier**. This representation of your identity is similar to a Bitcoin or Ethereum address.
 
 However, the principal associated with your developer identity is typically not the same as your **account identifier** in the ledger. The principal identifier and the account identifier are related—both provide a textual representation of your identity—but they use different formats.
 
 ### Connect to the ledger to get account information
 
-For the purposes of this tutorial—where there’s no hardware wallet or external application to connect to the ledger—we’ll use your developer identity to retrieve your ledger account identifier, then transfer ICP tokens from the ledger account identifier to a cycles wallet canister controlled by your developer identity.
+For the purposes of this guide—where there’s no hardware wallet or external application to connect to the ledger—we’ll use your developer identity to retrieve your ledger account identifier, then transfer ICP tokens from the ledger account identifier to a cycles wallet canister controlled by your developer identity.
 
 To look up your account in the ledger:
 
-1.  Confirm the developer identity you are currently using by running the following command:
+- #### Step 1:  Confirm the developer identity you are currently using by running the following command:
 
         dfx identity whoami
 
-    In most cases, you should see that you are currently using default\` developer identity. For example:
+    In most cases, you should see that you are currently using default developer identity. For example:
 
         default
 
-2.  View the textual representation of the principal for your current identity by running the following command:
+- #### Step 2:  View the textual representation of the principal for your current identity by running the following command:
 
         dfx identity get-principal
 
@@ -146,7 +154,7 @@ To look up your account in the ledger:
 
         tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
 
-3.  Get the account identifier for your developer identity by running the following command:
+- #### Step 3:  Get the account identifier for your developer identity by running the following command:
 
         dfx ledger account-id
 
@@ -154,7 +162,7 @@ To look up your account in the ledger:
 
         03e3d86f29a069c6f2c5c48e01bc084e4ea18ad02b0eec8fccadf4487183c223
 
-4.  Check your account balance by running the following command:
+- #### Step 4:  Check your account balance by running the following command:
 
         dfx ledger --network ic balance
 
@@ -162,13 +170,13 @@ To look up your account in the ledger:
 
         10.00000000 ICP
 
-## Creating a Cycles Wallet
+## Creating a cycles wallet
 
 Now that you have confirmed your account information and current ICP token balance, you can convert some of those ICP tokens to cycles and move them into a cycles wallet.
 
 To transfer ICP tokens to create a cycles wallet:
 
-1.  Create a new canister with cycles by transferring ICP tokens from your ledger account by running a command similar to the following:
+- #### Step 1:  Create a new canister with cycles by transferring ICP tokens from your ledger account by running a command similar to the following:
 
         dfx ledger --network ic create-canister <principal-identifier> --amount <icp-tokens>
 
@@ -183,7 +191,7 @@ To transfer ICP tokens to create a cycles wallet:
         Transfer sent at BlockHeight: 20
         Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
 
-2.  Install the cycles wallet code in the newly-created canister placeholder by running a command similar to the following:
+- #### Step 2:  Install the cycles wallet code in the newly-created canister placeholder by running a command similar to the following:
 
         dfx identity --network ic deploy-wallet <canister-identifer>
 
@@ -202,7 +210,7 @@ After you convert ICP tokens to cycles, you can validate the cycles wallet canis
 
 To validate your cycles wallet:
 
-1.  Verify the canister identifier for the cycles wallet you deployed by running the following command:
+- #### Step 1: Verify the canister identifier for the cycles wallet you deployed by running the following command:
 
         dfx identity --network ic get-wallet
 
@@ -210,7 +218,7 @@ To validate your cycles wallet:
 
         gastn-uqaaa-aaaae-aaafq-cai
 
-2.  Check that your cycles wallet canister is properly configured and holds a balance of cycles by running a command similar to the following:
+- #### Step 2:  Check that your cycles wallet canister is properly configured and holds a balance of cycles by running a command similar to the following:
 
         dfx wallet --network ic balance
 
@@ -224,17 +232,17 @@ To validate your cycles wallet:
 
     The first time you access the application, you see a notice that you are using an Anonymous Device and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
 
-3.  Click **Authenticate** to continue to the Internet Identity service.
+- #### Step 3:  Click **Authenticate** to continue to the Internet Identity service.
 
-4.  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
+- #### Step 4:  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
 
-    <!-- For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [How to use the Internet Identity service](../../tokenomics/identity-auth/auth-how-to). -->
+    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [how to use the Internet Identity service](../../references/ii-spec.md).
 
-5.  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
+- #### Step 5:  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
-6.  Click **Proceed** to access to the default cycles wallet application.
+- #### Step 6:  Click **Proceed** to access to the default cycles wallet application.
 
-7.  Register the device you are using for this session by copying the command displayed in the **Register Device** page and running it in a terminal.
+- #### Step 7:  Register the device you are using for this session by copying the command displayed in the **Register Device** page and running it in a terminal.
 
     For example, call the `authorize` method for the cycles wallet canister with a command similar to the following:
 
@@ -244,7 +252,7 @@ To validate your cycles wallet:
 
     When the browser refreshes after running the `authorize` command, the cycles wallet for your principal account is displayed.
 
-8.  View your cycles balance and activity in the browser.
+- #### Step 8:  View your cycles balance and activity in the browser.
 
     For example:
 
@@ -258,15 +266,15 @@ After you have validated your cycles wallet balance, you can register, build, an
 
 To deploy your first application on the Internet Computer blockchain mainnet:
 
-1.  In your terminal shell, check that you are still in the root directory for your project.
+- #### Step 1:  In your terminal shell, check that you are still in the root directory for your project.
 
-2.  Ensure that `node` modules are available in your project directory, if needed, by running the following command:
+- #### Step 2:  Ensure that `node` modules are available in your project directory, if needed, by running the following command:
 
         npm install
 
     For more information about this step, see [Ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
 
-3.  Register, build, and deploy your first application by running the following command:
+- #### Step 3:  Register, build, and deploy your first application by running the following command:
 
         dfx deploy --network ic
 
@@ -312,10 +320,12 @@ To deploy your first application on the Internet Computer blockchain mainnet:
         Transfer sent at BlockHeight: 81520
         Canister was topped up!
 
-4.  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
+- #### Step 4:  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
         dfx canister --network ic call hello_backend greet '("everyone": text)'
 
+
+### What this does
     Let’s take a closer look at this example:
 
     -   Using the `--network ic` option indicates that the canister you want to call is deployed on the `ic`. The `ic` network alias is an internally-reserved alias for accessing the Internet Computer blockchain mainnet.
@@ -328,13 +338,13 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
     -   The text string `everyone` is the argument that you want to pass to the `greet` function.
 
-5.  Verify the command displays the return value of the `greet` function.
+- #### Step 5:  Verify the command displays the return value of the `greet` function.
 
     For example:
 
         ("Hello, everyone!")
 
-6.  Rerun the `dfx wallet balance` command or refresh the browser to see your new cycle balance and recent activity.
+- #### Step 6:  Rerun the `dfx wallet balance` command or refresh the browser to see your new cycle balance and recent activity.
 
 ## Test the dapp frontend
 
@@ -342,9 +352,9 @@ Now that you have verified that your dapp has been deployed and tested its opera
 
 To access the dapp frontend:
 
-1.  Open a browser.
+- #### Step 1:  Open a browser.
 
-2.  Navigate to the frontend for the dapp using a URL that consists of the `hello_frontend` identifier and the `boundary.icp0.io` suffix.
+- #### Step 2:  Navigate to the frontend for the dapp using a URL that consists of the `hello_frontend` identifier and the `boundary.icp0.io` suffix.
 
     If you didn’t make a note of the canister identifier, you can look it up by running the following command:
 
@@ -358,18 +368,25 @@ To access the dapp frontend:
 
     ![HTML page with prompt](_attachments/net-frontend-prompt.png)
 
-3.  Type a greeting, then click **Click Me** to return the greeting.
+- #### Step 3:  Type a greeting, then click **Click Me** to return the greeting.
 
-## Next steps
+## Conclusion
 
 Now that you have seen how to deploy a dapp on the Internet Computer blockchain, you are ready to develop and deploy programs of your own.
 
-You can find more detailed examples and tutorials to help you learn about how to use Motoko and how to develop dapps for the Internet Computer blockchain throughout the documentation.
+## Resources
+
+You can find more detailed examples and guides to help you learn about how to use Motoko and how to develop dapps for the Internet Computer blockchain throughout the documentation.
 
 Here are some suggestions for where to go next:
 
--   [Build on the IC]/developer-docs/build/index.md) to explore building frontend and backend dapps in a local development environment.
+-   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
+
+-   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+
+-   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
 
 -   [What is Candid?](/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.

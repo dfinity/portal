@@ -1,28 +1,30 @@
-# Threshold ECDSA Signing Code Walkthrough
+# Threshold ECDSA signing code walkthrough
+
+## Overview
 
 We present a minimal example canister smart contract for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa) API. 
 
-The example canister is a **signing oracle that creates ECDSA signatures with keys derived from an input string.** 
+The example canister is a signing oracle that creates ECDSA signatures with keys derived from an input string. 
 
 More specifically:
 
-1. The sample canister receives a request that provides *a message*.
-2. The sample canister hashes the *message* and uses the *key derivation string* for the derivation path. 
-3. The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
+- The sample canister receives a request that provides a message.
+- The sample canister hashes the message and uses the key derivation string for the derivation path. 
+-  The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
 
 We give a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
 
-:::note 
+:::info
 This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
 :::
 
-## 1. Getting Started
+## Prerequisites
+-   [x] Download and [install the IC SDK](../developer-docs/setup/index.md) if you do not already have it.
+-   [x] Check out the [examples repository](https://github.com/dfinity/examples).
+
+## Step 1: Getting Started
 
 Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
-
-### Setup
--   Download and [install the SDK](../developer-docs/setup/index.md) if you do not already have it.
--   Check out the [examples repository](https://github.com/dfinity/examples).
 
 ### Deploy and test the canister locally 
 
@@ -52,16 +54,16 @@ If you go to the URL, you will see a web UI that shows the public methods the ca
  ![Candid UI](./_attachments/tecdsa-candid-ui.png)
 
 
-## 2. Deploying the canister on IC mainnet
+## Step 2: Deploying the canister on IC mainnet
 
 To deploy this canister the IC mainnet, one needs to do two things:
 
-1. Acquire cycles (equivalent of "gas" in other blockchains). This is necessary for all canisters.
-2. Update the sample source code to have the right key ID. This is unique to this canister.
+- Acquire cycles (equivalent of "gas" in other blockchains). This is necessary for all canisters.
+- Update the sample source code to have the right key ID. This is unique to this canister.
 
 ### Acquire cycles to deploy
 
-Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [Cycles Faucet](/developer-docs/setup/cycles/cycles-faucet.md).
+Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cycles). You can get free cycles from the [cycles faucet](/developer-docs/setup/cycles/cycles-faucet.md).
 
 ### Update source code with the right key ID
 
@@ -113,7 +115,7 @@ URLs:
 
 In example above, `ecdsa_example_motoko` has the URL https://a3gq9-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=736w4-cyaaa-aaaal-qb3wq-cai and serves up the Candid web UI for this particular canister deployed on mainnet.
 
-## 3. Obtaining Public Keys
+## Step 3: Obtaining public keys
 
 ### Using the Candid web UI
 
@@ -133,7 +135,7 @@ In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a
 ```
 
 
-### Code walk through
+### Code walkthrough
 Open up, `main.mo` and you find the following Motoko code demonstrates how to obtain an ECDSA public key. 
 
 ```motoko
@@ -173,16 +175,16 @@ In the code above, the canister calls the `ecdsa_public_key` method of the [IC m
 The [IC management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of the IC (as if it were a single canister). In the code below, we use the management canister to create an ECDSA public key. `let ic : IC = actor("aaaaa-aa")` declares the IC management canister in the code above.
 :::
 
-### Canister Root Public Key
+### Canister root public key
 
 For obtaining the canister's root public key, the derivation path in the API can be simply left empty.
 
-### Key Derivation
+### Key derivation
 
 -   For obtaining a canister's public key below its root key in the BIP-32 key derivation hierarchy, a derivation path needs to be specified. As explained in the general documentation, each element in the array of the derivation path is either a 32-bit integer encoded as 4 bytes in big endian or a byte array of arbitrary length. The element is used to derive the key in the corresponding level at the derivation hierarchy.
 -   In the example code above, we use the bytes extracted from the `msg.caller` principal in the `derivation_path`, so that different callers of `public_key()` method of our canister will be able to get their own public keys.
 
-## 4. Signing
+## Step 4: Signing
 
 Computing threshold ECDSA signatures is the core functionality of this feature. **Canisters do not hold ECDSA keys themselves**, but keys are derived from a master key held by dedicated subnets. A canister can request the computation of a signature through the management canister API. The request is then routed to a subnet holding the specified key and the subnet computes the requested signature using threshold cryptography. Thereby, it derives the canister root key or a key obtained through further derivation, as part of the signature protocol, from a shared secret and the requesting canister's principal identifier. Thus, a canister can only request signatures to be created for their canister root key or a key derived from it. This means, canisters "control" their private ECDSA keys in that they decide when signatures are to be created with them, but don't hold a private key themselves.
 
@@ -204,7 +206,7 @@ Computing threshold ECDSA signatures is the core functionality of this feature. 
   };
 ```
 
-## 5. Signature Verification
+## Step 5: Signature verification
 
 For completeness of the example, we show that the created signatures can be verified with the public key corresponding to the same canister and derivation path.
 
@@ -224,7 +226,7 @@ The call to `ecdsaVerify` function should always return `true`.
 
 Similar verifications can be done in many other languages with the help of cryptographic libraries support the `secp256k1` curve.
 
-## 6. Wrap up
+## Conclusion
 
 In this walkthrough, we deployed a sample smart contract that:
 

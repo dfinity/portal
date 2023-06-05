@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: Step 1 - Smart contracts as a backend
+title: '1: Smart contracts as a backend'
 ---
 
-# Step 1 - Smart contracts as a backend
+# 1: Smart contracts as a backend
 
 First, we will create a backend for our application that will be implemented as an ICP 
 [canister smart contract](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts). You can see a preview of the dapp [here](index.md).
@@ -22,10 +22,13 @@ actor {
 }
 ```
 
-Backend canisters come with a default user interface called Candid UI that will allow you to interact with the canister methods without
+Backend canisters come with a default user interface called **Candid UI** that will allow you to interact with the canister methods without
 writing any frontend code. Here's how Candid UI for our project will look like at the end of this tutorial (once we add the `getQuestions`, `getVotes`, `resetVotes`, and `vote` methods):
 
 
-![Candid UI screenshot (final)](./_attachments/simple_voting_app_candid.png).
+![Candid UI screenshot (final)](./_attachments/simple_voting_app_candid.png)
 
 
+## Next steps
+
+[2: Creating a project](02_creating-project.md)

@@ -58,6 +58,24 @@
     ]
   },
   {
+    "id": "bitfinity-evm",
+    "name": "Bitfinity EVM",
+    "website": "https://bitfinity.network/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/bitfinitynet",
+    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
+    "usesInternetIdentity": true,
+    "stats": "1000+ TPS",
+    "display": "Large",
+    "logo": "/img/showcase/bitfinity_evm.png",
+    "screenshots": [
+      "/img/showcase/bitfinity_showcase.png"
+    ]
+  },
+  {
     "id": "juno",
     "name": "Juno",
     "oneLiner": "Build Web3 Apps Like It's Web2",
@@ -84,7 +102,7 @@
       "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
-    "description": "The world’s first Web3 search engine",
+    "description": "The world’s first Web3 search engine indexing all Internet Computer based dapps.",
     "stats": "3,000,000+ searches",
     "display": "Large",
     "usesInternetIdentity": true,
@@ -95,14 +113,14 @@
   },
   {
     "id": "infinityswap",
-    "name": "Infinity Swap",
+    "name": "InfinitySwap",
     "website": "https://infinityswap.one/",
     "tags": [
       "DeFi",
       "Wallet"
     ],
     "twitter": "https://twitter.com/infinity_swap",
-    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) - InfinitySwap offers users the ability to swap tokens cheaply with their novel technology build on the ICP blockchain. They are also planning to release their own token standard IS20 to support these initiatives. ",
+    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) - InfinitySwap offers users the ability to swap tokens cheaply with their novel technology, built on the ICP blockchain.",
     "stats": "$1.5M Invested PolyChain Capital + a16z",
     "logo": "/img/showcase/infinityswap_logo.webp",
     "screenshots": [
@@ -118,7 +136,7 @@
       "SocialFi",
       "Bitcoin"
     ],
-    "description": "What if you could own a piece of WhatsApp and vote on what features get added? OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and soon to own a part of OpenChat through CHAT tokens.",
+    "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
     "display": "Large",
     "stats": "80,000+ users",
@@ -136,7 +154,7 @@
       "DeFi",
       "Bitcoin"
     ],
-    "description": "IC coins by market cap. Aggregates stats from all IC DEXes. Price, Volume & Liquidity score charts.",
+    "description": "IC coins by market cap. Aggregates stats from all Internet Computer based DEXes. Price, Volume & liquidity score charts.",
     "usesInternetIdentity": false,
     "stats": "1000 users",
     "logo": "/img/showcase/icpcoins_logo.png",
@@ -357,7 +375,7 @@
       "NFT"
     ],
     "twitter": "https://twitter.com/PlethoraGame",
-    "description": "Plethora is all about abundance and making you feel fulfilled. Plethora empowers NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
+    "description": "Plethora is a Web3 platformer with the goal of rewarding users both with fun gameplay and NFTs. Plethora empowers NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
     "oneLiner": "3D platformer meets Web3 with NFT rewards",
     "display": "Large",
     "stats": "10,000+ users",
@@ -409,7 +427,7 @@
       "Games"
     ],
     "twitter": "https://twitter.com/TheCubetopia",
-    "description": "Cubetopia is a Minecraft-like Web3 game where players can build anything on unique voxel islands also called “worlds”. Each world is a mutable NFT stored on the Internet Computer blockchain. Anyone can visit these islands on chain, while the owner of the NFT can update it by building.",
+    "description": "Cubetopia is a Web3 world building game where players can create anything on unique voxel islands also called “worlds”. Each world is a mutable NFT stored on the Internet Computer blockchain. Anyone can visit these islands on chain, while the owner of the NFT can update it by building.",
     "stats": "32,500+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/cubetopia_logo.webp",
@@ -443,7 +461,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": " ICPulse increases the transparency in the IC’s developer ecosystem by aggregating the activity data from GitHub and displaying visual metrics in an effective dashboard.",
+    "description": " ICPulse increases the transparency on ICP’s developer ecosystem by aggregating the activity data from GitHub and displaying visual metrics in an effective dashboard.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/icpulse_logo.svg",
     "github": "https://github.com/CrossChainLabs-ICP",
@@ -461,7 +479,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Hot or Not is a decentralized short-form video based social media platform which integrates prediction markets for content. In addition to creating and sharing short videos on Hot or Not, users can also speculate on the short videos uploaded by other users on the platform. They can vote whether a video would become 'Hot' or 'Not' and stake blockchain tokens to substantiate their vote. The results are declared every hour and the winners are rewarded with 2x tokens. With Decentralized governance and content moderation, Hot or Not would put the users at the center of the ecosystem",
+    "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
     "usesInternetIdentity": true,
     "stats": "55,000+ users",
     "logo": "/img/showcase/hot_or_not_logo.svg",
@@ -1520,9 +1538,9 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "For Ethereum NFT communities it is the most common thing in the world to verify the holder status of members via \"collab.land\". \"collab.land\" is an integral part of the infrastructure and enables many interesting use-cases like token gated communities or token gated raffles. On the Internet Computer, there are so far only specialized solutions that work exclusively with the respective projects and were developed specifically for this purpose. Not every project can and not every project should develop its own solution. So what has been missing so far is glue - an easy to use solution for community leaders and members to perform holder verification.",
+    "description": "NFT holder verification on Ethereum is commonplace, but was missing on the Internet Computer until now — glue is an easy to use solution for community leaders and members to perform NFT holder verification.",
     "usesInternetIdentity": false,
-    "stats": "3,000 unique users",
+    "stats": "3,000+ users",
     "logo": "/img/showcase/glue_logo.png",
     "github": "https://github.com/glue-org",
     "twitter": "https://twitter.com/glue_org"
