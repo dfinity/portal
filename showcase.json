@@ -30,7 +30,7 @@
     "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
     "description": "Distrikt is a completely decentralized, community-owned Web3 social media platform. Users of the platform will soon be able vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today.",
     "usesInternetIdentity": true,
-    "authUrls": ["https://distrikt.app", "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"],
+    "authOrigins": ["https://distrikt.app", "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"],
     "display": "Large",
     "stats": "110,000+ users",
     "logo": "/img/showcase/distrikt_logo.webp",
@@ -89,7 +89,7 @@
     "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
     "display": "Large",
     "usesInternetIdentity": true,
-    "authUrls": ["https://console.juno.build"],
+    "authOrigins": ["https://console.juno.build"],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
       "/img/showcase/juno_social_image.png"
@@ -257,7 +257,7 @@
     "twitter": "https://twitter.com/TaggrNetwork",
     "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure. No Ponzinomics - TAGGR has a sustainable tokenomics model that rewards quality posts and removes incentive to spam.",
     "usesInternetIdentity": true,
-    "authUrls": ["https://taggr.link", "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"],
+    "authOrigins": ["https://taggr.link", "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"],
     "display": "Normal",
     "stats": "24,000+ posts",
     "logo": "/img/showcase/taggr_logo.webp",
