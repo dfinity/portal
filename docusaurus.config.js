@@ -164,7 +164,7 @@ const config = {
                   href: "/basics?source=nav",
                 },
                 {
-                  label: "What is the IC",
+                  label: "What is ICP",
                   href: "/what-is-the-ic?source=nav",
                 },
                 {
@@ -186,6 +186,10 @@ const config = {
                 {
                   label: "Video Library",
                   href: "/videos?source=nav",
+                },
+                {
+                  label: "Technical Roadmap",
+                  href: "/roadmap?source=nav",
                 },
               ],
               [
@@ -312,6 +316,10 @@ const config = {
                   label: "Rust Docs",
                   href: "/docs/current/developer-docs/backend/rust/?source=nav",
                 },
+                {
+                  label: "Solidity Docs",
+                  href: "https://docs.bitfinity.network/",
+                },
                 menuDivider("Tools"),
 
                 { label: "Developer Tools", to: "/tooling?source=nav" },
@@ -353,6 +361,10 @@ const config = {
                 {
                   label: "Roadmap",
                   href: "/roadmap?source=nav",
+                },
+                  {
+                  label: "Feedback Board",
+                  href: "https://dx.internetcomputer.org/",
                 },
                 {
                   label: "Hackathons",
