@@ -23,7 +23,8 @@ SNS rewards. Based on the collected experience from developers and the community
 can be enhanced in the future.
 
 We consider two categories of rewards:
-  * _Voting rewards_ to incentivize users to take part in SNS governance.
+  * **Voting rewards** to incentivize users to take part in SNS governance.
+
   * _User rewards_ to incentivize dapp users to become early adopters and 
     active users of the dapp that is governed by the SNS.
 
