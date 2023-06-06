@@ -12,7 +12,7 @@ More specifically:
 - The sample canister hashes the message and uses the key derivation string for the derivation path. 
 -  The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
 
-We give a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
+This tutorial gives a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
 
 :::info
 This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
@@ -20,23 +20,24 @@ This walkthrough focuses on the version of the sample canister code written in [
 
 ## Prerequisites
 -   [x] Download and [install the IC SDK](../developer-docs/setup/index.md) if you do not already have it.
--   [x] Check out the [examples repository](https://github.com/dfinity/examples).
+-   [x] Clone the [examples repository](https://github.com/dfinity/examples).
 
-## Step 1: Getting Started
+## Step 1: Getting started
 
 Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
 
 ### Deploy and test the canister locally 
 
-We will use the Motoko version of the canister:
+This tutorial will use the Motoko version of the canister:
 
 ```bash
-cd motoko/threshold_ecdsa
+cd examples/motoko/threshold-ecdsa
 dfx start --background
 npm install
 dfx deploy
 ```
 
+#### What this does
 - `dfx start --background` starts a local instance of the IC via the IC SDK
 - `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
 
@@ -49,7 +50,7 @@ URLs:
     ecdsa_example_motoko: http://127.0.0.1:4943/?canisterId=t6rzw-2iaaa-aaaaa-aaama-cai&id=st75y-vaaaa-aaaaa-aaalq-cai
 ```
 
-If you go to the URL, you will see a web UI that shows the public methods the canister exposes. Since the canister exposes `public_key` and `sign` methods, those are rendered in the web UI:
+If you open the URL in a web browser, you will see a web UI that shows the public methods the canister exposes. Since the canister exposes `public_key` and `sign` methods, those are rendered in the web UI:
 
  ![Candid UI](./_attachments/tecdsa-candid-ui.png)
 
@@ -71,12 +72,15 @@ To deploy the sample code, the canister needs the right key ID for the right env
 
 There are three options:
 
-* `dfx_test_key`: a default key ID that is used in deploying to a local version of IC (via IC SDK)
-* `test_key_1`: a master *test* key ID that is used in mainnet
-* `key_1`: a master *production* key ID that is used in mainnet
+* `dfx_test_key`: a default key ID that is used in deploying to a local version of IC (via IC SDK).
+* `test_key_1`: a master **test** key ID that is used in mainnet.
+* `key_1`: a master **production** key ID that is used in mainnet.
 
-For example, the default code in `src/ecdsa_example_motoko/main.mo` includes the lines and can be deployed locally:
+For example, the default code in `src/ecdsa_example_motoko/main.mo` includes the following lines and can be deployed locally:
 
+:::caution
+The following example are two **code snippets** that are part of a larger code file. These snippets may return an error if run on their own.
+:::
 
 ```motoko
 let { public_key } = await ic.ecdsa_public_key({
@@ -94,7 +98,9 @@ let { signature } = await ic.sign_with_ecdsa({
 });
 ```
 
+:::caution
 To deploy to IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
+:::
 
 ### Deploy to mainnet via IC SDK
 
@@ -119,7 +125,7 @@ In example above, `ecdsa_example_motoko` has the URL https://a3gq9-oaaaa-aaaab-q
 
 ### Using the Candid web UI
 
-if you deployed your canister locally or to mainnet, you should have a URL to the Candid web UI where you can access the public methods. We call `public-key` method:
+If you deployed your canister locally or to mainnet, you should have a URL to the Candid web UI where you can access the public methods. We can call the `public-key` method:
 
 ![Public key method](./_attachments/tecdsa-candid-public-key.png)
 
@@ -136,7 +142,7 @@ In the example below, the method returns `03c22bef676644dba524d4a24132ea8463221a
 
 
 ### Code walkthrough
-Open up, `main.mo` and you find the following Motoko code demonstrates how to obtain an ECDSA public key. 
+Open the file `main.mo`, which will show the following Motoko code that demonstrates how to obtain an ECDSA public key. 
 
 ```motoko
   //declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`. This is how we will obtain an ECDSA public key 
@@ -230,6 +236,6 @@ Similar verifications can be done in many other languages with the help of crypt
 
 In this walkthrough, we deployed a sample smart contract that:
 
-* signed with private ECDSA keys even though **canisters do not hold ECDSA keys themselves**
-* requested a public key 
-* performed signature verification
+* Signed with private ECDSA keys even though **canisters do not hold ECDSA keys themselves**.
+* Requested a public key.
+* Performed signature verification.

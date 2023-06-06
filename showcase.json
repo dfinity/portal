@@ -22,7 +22,7 @@
     "id": "distrikt",
     "name": "distrikt",
     "oneLiner": "Censorship-resistant fully on-chain social media platform",
-    "website": "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/",
+    "website": "https://distrikt.app",
     "tags": [
       "SocialFi",
       "Bitcoin"
@@ -30,6 +30,7 @@
     "twitter": "https://twitter.com/DistriktApp?s=20&t=FIuSJzaUxndtjKLTpwmCEw",
     "description": "Distrikt is a completely decentralized, community-owned Web3 social media platform. Users of the platform will soon be able vote on upgrades, and no user data will ever be mined or sold. Create your account, secured by Internet Identity today.",
     "usesInternetIdentity": true,
+    "authOrigins": ["https://distrikt.app", "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/"],
     "display": "Large",
     "stats": "110,000+ users",
     "logo": "/img/showcase/distrikt_logo.webp",
@@ -88,6 +89,7 @@
     "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
     "display": "Large",
     "usesInternetIdentity": true,
+    "authOrigins": ["https://console.juno.build"],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
       "/img/showcase/juno_social_image.png"
@@ -248,13 +250,14 @@
   {
     "id": "taggr",
     "name": "TAGGR",
-    "website": "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app/#/",
+    "website": "https://taggr.link",
     "tags": [
       "SocialFi"
     ],
     "twitter": "https://twitter.com/TaggrNetwork",
     "description": "Fully on-chain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure. No Ponzinomics - TAGGR has a sustainable tokenomics model that rewards quality posts and removes incentive to spam.",
     "usesInternetIdentity": true,
+    "authOrigins": ["https://taggr.link", "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"],
     "display": "Normal",
     "stats": "24,000+ posts",
     "logo": "/img/showcase/taggr_logo.webp",
@@ -1242,7 +1245,7 @@
       "Wallet",
       "Bitcoin"
     ],
-    "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience. Sonic is launching a new token standard DIP20 that will serve as the backbone of their swap ecosystem.",
+    "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience.",
     "github": "https://github.com/psychedelic",
     "stats": "$360,000+ TVL",
     "display": "Normal",

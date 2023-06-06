@@ -1,0 +1,39 @@
+// automatically reposition the subnav in response to the navbar becoming hidden
+nav[class*="navbarHidden_"] ~ .subnav {
+  transform: translate3d(0, calc(-1 * var(--ifm-navbar-height) - 2px), 0);
+}
+
+@media (max-width: 996px) {
+  // keep the subnav in place on mobile
+  nav[class*="navbarHidden_"] ~ .subnav {
+    transform: unset;
+  }
+}
+
+.subnav {
+  background: #e8e4ed;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  width: 100%;
+  min-height: var(--ifm-subnav-height);
+  padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+  display: flex;
+  align-items: center;
+  transition: transform var(--ifm-transition-fast) ease;
+  @apply z-40;
+
+  // allows the dropdown menu to remain visible, while allowing the breadcrumbs to scroll when overflowing
+  @media (max-width: 996px) {
+    overflow-x: scroll;
+  }
+
+  .theme-doc-sidebar-menu.menu__list {
+    .navbar__link {
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}

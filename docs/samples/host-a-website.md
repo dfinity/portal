@@ -2,9 +2,19 @@
 
 ## Overview
 
+The purpose of this example is to show how to deploy a static website using an asset canister. While the website in this example is very simple, the method would be the same for a more advanced static website, such as those created by using popular static site generators.
+
+This example covers:
+
+- Building a very simple HTML website.
+- Creating a `dfx.json` file.
+- Deploying the canister smart contract.
+- Testing the frontend in a web browser.
+
 ## Prerequisites 
 
-- [x] Before you begin, make sure you are set up with our SDK (dfx) and a Cycles Wallet, either from the [faucet quickstart](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [Mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
+- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Have a cycles wallet that contains cycles, either from the [faucet quick start](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
 
 ## Set up your project
 
@@ -12,7 +22,7 @@ Let’s create a simple static website, and then set it up to deploy with dfx.
 
 ### Step 1: Create a folder named `static-ic-website`.
 
-### Step 2: In static-ic-website, create a new folder, named assets.
+### Step 2: In `static-ic-website`, create another new folder, named `assets`.
 
 ### Step 3: Inside your assets folder, create 4 files:
 
@@ -39,7 +49,7 @@ Let’s start with index.html.
        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-       <h1>My FirstICWebsite</h1>
+       <h1>My First IC Website</h1>
        <p>Styles are loaded from a stylesheet</p>
        <p id="dynamic-content"></p>
        <a href="page-2.html">Page 2</a>
@@ -89,7 +99,7 @@ Let’s start with index.html.
 ## Configure dfx to deploy
 
 ### Step 8: To host and run this website live on the IC, you will need to configure `dfx` to upload your files to a certified asset canister. 
-In the root directory of your project, static-ic-website, create a new file, dfx.json. Then, add the following content:
+In the root directory of your project, static-ic-website, create a new file, `dfx.json`. Then, add the following content:
 
 **dfx.json**
 
@@ -139,9 +149,13 @@ You should see some output in your console, and a success message looking someth
 
 Find your new canister’s ID by running the command:
 
-    dfx canister --network ic id website
+`dfx canister --network ic id website`
 
-Take that canister ID and visit `https://<canister-id>.icp0.io`, inserting your own canister ID as the subdomain in the URL.
+This command will return output that will look something like this:
+
+`cbopz-duaaa-aaaaa-qaaka-cai`
+
+This is your **canister ID**. Take this canister ID and visit `https://<canister-id>.icp0.io`, inserting your own canister ID as the subdomain in the URL.
 
 You should see your live, multi-page website, looking like this:
 
@@ -151,4 +165,4 @@ You should see your live, multi-page website, looking like this:
 
 Looking to build a full-stack dapp? Check out the [full-stack react tutorial](https://smartcontracts.org/docs/current/developer-docs/frontend/custom-frontend).
 
-Visit our [developer forum](https://forum.dfinity.org) for inspiration and support from Dfinity Foundation engineers and the developer community.
+Visit our [developer forum](https://forum.dfinity.org) for inspiration and support from DFINITY Foundation engineers and the developer community.

@@ -20,10 +20,10 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 26px;
-  z-index: 1000;
   margin-left: 24px;
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
+  @apply z-30;
 }
 
 .callToAction:hover {
