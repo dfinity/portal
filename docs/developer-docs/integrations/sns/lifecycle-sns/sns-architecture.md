@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 # SNS architecture
-
+## Overview
 The core architecture of the SNS closely resembles the architecture of the Network Nervous System
 (NNS), the DAO that governs the Internet Computer platfrom.
 It includes a governance system that enables decentralized decision making and a ledger canister
