@@ -7,7 +7,7 @@ Before launching an SNS it is advisable to thoroughly test it.
 There are two main tools for testing the SNS
 1. [SNS local testing](./local-testing.md) allows one to test the SNS locally.
    This includes 
-   * testing the SNS's launch which enables developers to 
+   * Testing the SNS's launch which enables developers to 
    try out different initial parameters. 
    * testing the integration of the SNS with a dapp, for
    example if you integrate parts of the frontend for the SNS into you dapp or
