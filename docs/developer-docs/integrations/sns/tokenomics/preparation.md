@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 # SNS initial parameters {#setting-parameters}
-
+## Overview
 Typically, one would first decide on tokenomics and other configurations, 
 for examples using the
 [SNS tokenomics training & tools](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration)
