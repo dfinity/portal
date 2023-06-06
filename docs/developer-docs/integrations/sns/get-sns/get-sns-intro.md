@@ -9,7 +9,7 @@ There are two main tools for testing the SNS
    This includes 
    * Testing the SNS's launch which enables developers to 
    try out different initial parameters. 
-   * testing the integration of the SNS with a dapp, for
+   * Testing the integration of the SNS with a dapp, for
    example if you integrate parts of the frontend for the SNS into you dapp or
    if you build a DEX that interacts with the SNS.
    * testing the integration of the SNS canisters with the dapp canister(s).
