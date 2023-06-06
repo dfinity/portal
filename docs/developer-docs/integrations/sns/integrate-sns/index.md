@@ -12,5 +12,5 @@ As these considerations are not only relevant for the SNS launch but during the
 full SNS lifecycle, we explain them in this separate section.
 You can find more information on
 * The [ledger canister integration](../integrate-sns/ledger-integration.md).
-* the [index canister integration](../integrate-sns/index-integration.md)
+* The [index canister integration](../integrate-sns/index-integration.md).
 * (swap and governance frontend integration to follow).
