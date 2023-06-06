@@ -13,4 +13,4 @@ full SNS lifecycle, we explain them in this separate section.
 You can find more information on
 * The [ledger canister integration](../integrate-sns/ledger-integration.md).
 * The [index canister integration](../integrate-sns/index-integration.md).
-* (swap and governance frontend integration to follow).
+* Swap and governance frontend integration to follow.
