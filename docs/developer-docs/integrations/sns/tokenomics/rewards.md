@@ -1,25 +1,44 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 # SNS rewards
 
-## Overview
+Each SNS can be individually configured with parameters that define, among other things,
+how and SNS uses rewards to incentivice certain behavior for the governance participants
+and the dapp users.
 
-The goal of this article is to explain the design of the service nervous system (SNS) reward scheme.
+## Rewards Overview
 
-The full potential of tokenization can be unlocked by a tokenized open governance system, where tokens can be locked to participate in voting. Anyone with locked tokens, including the users that were rewarded with tokens, can submit and vote on governance proposals for the dapp.
+The goal of this article is to explain the design of the SNS reward scheme.
 
-By participating in governance, developers, users, and other investors can collectively decide what new features should be implemented. As their tokens are locked, they will be incentivized to vote taking into consideration the future value of the tokens and the dapp. This represents the first simple scheme for SNS rewards. Based on the collected experience from developers and the community, this can be enhanced in the future.
+The full potential of tokenization can be unlocked by a tokenized open governance system,
+where tokens can be staked to participate in voting. Anyone with staked tokens 
+can submit and vote on governance proposals for the dapp.
+
+By participating in governance, developers, users, and other investors can collectively 
+decide what new features should be implemented in the dapp that is governed by the SNS.
+As their tokens are stacked, they will be incentivized to vote taking into consideration
+the future value of the tokens and the dapp. This represents the first simple scheme for
+SNS rewards. Based on the collected experience from developers and the community, this
+can be enhanced in the future.
 
 We consider two categories of rewards:
-  * Voting rewards to incentivize users to take part in SNS governance.
-  * User rewards to incentivize users to become early adopters and active users of the decentralized application (dapp) governed by the SNS.
+  * _Voting rewards_ to incentivize users to take part in SNS governance.
+  * _User rewards_ to incentivize dapp users to become early adopters and 
+    active users of the dapp that is governed by the SNS.
 
-The reward scheme is based on the voting rewards used in the [Network Nervous System](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a#:~:text=Network%20Nervous%20System%20overview,how%20to%20update%20this%20information.) (NNS) , which however can be flexibly configured by each SNS.
+The reward scheme is based on the voting rewards used in the
+[Network Nervous System (NNS)](https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a#:~:text=Network%20Nervous%20System%20overview,how%20to%20update%20this%20information.),
+which however can be flexibly configured by each SNS.
 
 ## Recap on NNS voting rewards
 
-The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, voting rewards are paid out on a regular basis (currently daily), based on an overall reward pool for that time period. Each neuron receives a pro-rata amount of that pool according to the voting power with which the neuron voted and in how many proposals the neuron participated. More precisely, this works as follows:
+The [NNS](/tokenomics/nns/nns-intro.md) is the DAO that governs the Internet Computer.
+Within the NNS, voting rewards are paid out on a regular basis (currently daily),
+based on an overall reward pool for that time period. 
+Each neuron receives a pro-rata amount of that pool according to the voting power with 
+which the neuron voted and in how many proposals the neuron participated. More precisely,
+this works as follows:
 
 * Determination of the total reward pool:
   * For a time t between G (genesis time) and G + 8y the annualized reward as a percentage of total supply is R(t) = 5% + 5% [(G + 8y – t)/8y]²
@@ -44,7 +63,11 @@ The [NNS](/tokenomics/nns/nns-intro.md) is the DAO of the IC. Within the NNS, vo
 
 ### Voting rewards
 
-As highlighted in the background section above, we leverage the NNS voting reward scheme and allow for flexibility to configure the scheme. Hence, in the following we go through the features of the NNS and describe how it is adapted and made configurable for the SNS. Unless otherwise stated, the approach and formula are the same as for the NNS. As for the NNS it is possible to change the SNS configuration by an SNS governance proposal.
+As highlighted in the background section above, the SNSs leverage the NNS voting reward scheme 
+and allow for flexibility to configure the scheme. Hence, in the following we go through the
+features of the NNS and describe how it is adapted and made configurable for the SNS. 
+Unless otherwise stated, the approach and formula are the same as for the NNS. 
+As for the NNS, it is possible to change the SNS configuration by an SNS governance proposal.
 
 #### Determination of the total reward pool
   * The impact of changing the parameters of the reward function can be simulated in this [tool](https://docs.google.com/spreadsheets/d/1cTqgjGcG5rEQ5kRGprpdLvBL7ZdTqUDCuCi0QjClbgk/edit#gid=0). 

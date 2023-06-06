@@ -1,6 +1,7 @@
+---
+sidebar_position: 3
+---
 # SNS index canister
-
-## Overview
 
 The index canister fetches transactions from the [ledger canister](ledger-integration.md) and indexes them by **account**. 
 It allows to query the transactions of an account in descending order from the ledger chain, and the list of account that belongs to a **principal**. 
