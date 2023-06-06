@@ -103,7 +103,7 @@ For more details be sure to check out the introductory comment of [clean-startup
 
 ### Step 4: Integrating the invoice canister
 
-To integrate the invoice canister in another project, review the [design doc](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/docs/DesignDoc.md), [Invoice.mo](./src/invoice/Invoice.mo) and [SupportedToken.mo](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/src/invoice/modules/supported-token/SupportedToken.mo). 
+To integrate the invoice canister in another project, review the [design doc](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/docs/DesignDoc.md), [Invoice.mo](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/src/invoice/Invoice.mo) and [SupportedToken.mo](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/src/invoice/modules/supported-token/SupportedToken.mo). 
 
 To summarize, both the `Invoice.mo` and `SupportedToken.mo` files need to be edited according to which tokens are to be supported. While this project uses four tokens, it may be easier to start from the `motoko-seller-client` example as only two tokens (one for ICP and one for ICRC1) are integrated in that project. To add support for an additional token, it can take as little as 15 minutes using this project's code as a reference to copy.
 
