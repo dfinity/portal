@@ -92,20 +92,28 @@ Follow the steps below to deploy this sample project.
 
 ### Step 1. Navigate inside of the project's folder:
 
-`cd examples/motoko/encrypted-notes-dapp`
+```
+cd examples/motoko/encrypted-notes-dapp
+```
 
 or
 
-`cd examples/rust/encrypted-notes-dapp`
+```
+cd examples/rust/encrypted-notes-dapp
+```
 
 ### Step 2: Set an environmental variable reflecting which backend canister you'll be using:
 For Motoko deployment run:
 
-`export BUILD_ENV=motoko`
+```
+export BUILD_ENV=motoko
+```
 
 For Rust deployment run:
 
-`export BUILD_ENV=rust`
+```
+export BUILD_ENV=rust
+```
 
 :::info
 Building the Rust canister requires either the Rust toolchain installed on your system or Docker-backed deployment (see below).
@@ -120,13 +128,18 @@ This option does not yet work on Apple M1; the combination of DFX and Docker do 
 
 - #### Step 1: Install and start Docker by following the instructions.
 - #### Step 2: For Motoko build/deployment set environmental variable:
-        export BUILD_ENV=motoko
+        
+```
+export BUILD_ENV=motoko
+```
 
 - #### Step 3: Run the following Bash script that builds a Docker image, compiles the canister, and deploys this dapp (all inside the Docker instance). 
 
 Execution can take a few minutes:
 
-`sh ./deploy_locally.sh`
+```
+sh ./deploy_locally.sh
+```
 
 :::caution
 If this fails with "No such container", please ensure that the Docker daemon is running on your system.
@@ -142,19 +155,27 @@ If this fails with "No such container", please ensure that the Docker daemon is 
 ### Option 2: Manual deployment
 - #### Step 1: For Motoko deployment set environmental variable:
 
-`export BUILD_ENV=motoko`
+```
+export BUILD_ENV=motoko
+```
 
 - #### Step 2: To generate $BUILD_ENV-specific files (i.e., Motoko or Rust) run:
 
-`sh ./pre_deploy.sh`
+```
+sh ./pre_deploy.sh
+```
 
 - #### Step 3: Install `npm` packages from the project root:
 
-`npm install`
+```
+npm install
+```
 
 - #### Step 4: Start `dfx`:
 
-`dfx start`
+```
+dfx start
+```
 
 :::caution
 If you see an error "Failed to set socket of tcp builder to 0.0.0.0:8000", make sure that the port 8000 is not occupied, e.g., by the previously run Docker command (you might want to stop the Docker daemon whatsoever for this step).
@@ -168,17 +189,23 @@ If you have multiple dfx identities set up, ensure you are using the identity yo
 
 To install and deploy a canister run:
 
-`dfx deploy internet_identity --argument '(null)'`
+```
+dfx deploy internet_identity --argument '(null)'
+```
 
 - #### Step 6: To print the Internet Identity URL, run:
 
-`npm run print-dfx-ii`
+```
+npm run print-dfx-ii
+```
 
 Visit the URL from above and create at least one local Internet Identity.
 
 - #### Step 7: Deploy the encrypted notes backend canister:
 
-`dfx deploy "encrypted_notes_$BUILD_ENV"`
+```
+dfx deploy "encrypted_notes_$BUILD_ENV"
+```
 
 :::caution
 If you are deploying the Rust canister, you should first run `rustup target add wasm32-unknown-unknown`.
@@ -186,20 +213,28 @@ If you are deploying the Rust canister, you should first run `rustup target add 
 
 - #### Step 8: Update the generated canister interface bindings:
 
-`dfx generate "encrypted_notes_$BUILD_ENV"`
+```
+dfx generate "encrypted_notes_$BUILD_ENV"
+```
 
 - #### Step 9: Deploy the frontend canister.
 To install and deploy the canister run:
 
-`dfx deploy www`
+```
+dfx deploy www
+```
 
 - #### Step 10: To print the frontend canister's URL, run:
 
-`npm run print-dfx-www`
+```
+npm run print-dfx-www
+```
 
 Visit the URL from above in a web browser. To run the frontend with hot-reloading on `http://localhost:3000/`, run:
 
-`npm run dev`
+```
+npm run dev
+```
 
 :::caution
 If you have opened this page previously, please remove all local store data for this page from your web browser, and hard-reload the page. For example in Chrome, go to Inspect → Application → Local Storage → http://localhost:3000/ → Clear All, and then reload.
@@ -253,7 +288,7 @@ Fig. 2. Basic single-device scenario for a user.
 
 1. Open the main page of the `Encrypted Notes` dapp. You will see a _login_ button.
 
-   1. If deployed locally, visit the following link: http://localhost:8000?canisterId=rkp4c-7iaaa-aaaaa-aaaca-cai
+   1. If deployed locally, visit the following link: http://localhost:4943?canisterId=rkp4c-7iaaa-aaaaa-aaaca-cai
    2. If deployed to the mainnet IC, visit the corresponding canister URL.
 
    At this moment, only one _deviceAlias_ variable is stored in the _Local Storage_ (see Fig. 2(a)).
@@ -310,9 +345,9 @@ Fig. 4. Scenario for a user adding/removing devices.
 
 This project also demonstrates how one can write unit tests for Motoko and Rust canisters.
 
-### Motoko Unit Tests
+### Motoko unit tests
 
-The unit tests are implemented in `src/encrypted_notes_motoko/test/test.mo` using the [Motoko Matchers](https://kritzcreek.github.io/motoko-matchers/) library. 
+The unit tests are implemented in `src/encrypted_notes_motoko/test/test.mo` using the [Motoko matchers](https://kritzcreek.github.io/motoko-matchers/) library. 
 
 The easiest way to run all tests involves the following steps:
 
@@ -335,7 +370,7 @@ src/encrypted_notes_motoko/test/run_tests.sh
 
 Observer `All tests passed.` at the end of the output.
 
-### Rust Unit Tests
+### Rust unit tests
 
 The unit tests are implemented in `src/encrypted_notes_rust/src/lib.rs` at the bottom.
 
@@ -436,23 +471,22 @@ You can also just deploy arbitrary binary targets as long as they're wasm binari
 `wasm`: a wasm file.
 `candid`: a candidfile representing all interfaces in the wasm file.
 
-_Note_: If there is a mismatch between "wasm" and "candid" interface definitions, your canister will not deploy.
+:::info
+If there is a mismatch between "wasm" and "candid" interface definitions, your canister will not deploy.
+:::
 
----
-&nbsp;
 
 ## Local memory model
 
-_Note_: This dapp uses the web browser's _Local Storage_ and _IndexedDB_ for storing the following data:
+:::info
+This dapp uses the web browser's **local storage** and **IndexedDB** for storing the following data:
 
-- device name
-- user identity info
-- a private/public key pair
+- Device name.
+- User identity info.
+- A private/public key pair.
 
-A symmetric key for encrypting/decrypting the notes is stored in RAM (this key is shared between multiple devices). For a better understanding of the mechanics of the dapp, please see the _Local Storage_/_IndexedDB_ windows in your web browser. In Chrome, go to: _Developer Tools→Application→Local Storage_/_IndexedDB_.
+A symmetric key for encrypting/decrypting the notes is stored in RAM (this key is shared between multiple devices). For a better understanding of the mechanics of the dapp, please see the local storage/IndexedDB windows in your web browser. In Chrome, go to: **Developer Tools→Application→Local Storage/IndexedDB**.
 
----
-&nbsp;
 
 ## Acknowledgments
 We thank the author of [IC Notes](https://github.com/pattad/ic_notes) whose code was the starting point for the frontend component used in this project.

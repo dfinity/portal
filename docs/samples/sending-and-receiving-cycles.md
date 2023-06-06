@@ -30,8 +30,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/hello_cycles`
-`dfx start --background`
+```
+cd examples/motoko/hello_cycles
+dfx start --background
+```
 
 ### Step 2: Deploy the canister:
 
@@ -41,7 +43,9 @@ dfx deploy
 
 ### Step 3: Check that the current cycles balance of canister hello_cycles by running the following command:
 
-`dfx canister call hello_cycles wallet_balance`
+```
+dfx canister call hello_cycles wallet_balance
+```
 
 The output should resemble the following:
 
@@ -51,7 +55,9 @@ The output should resemble the following:
 
 You can also see the cycles balance of hello_cycles (or any canister you control) by calling:
 
-`dfx canister status hello_cycles`
+```
+dfx canister status hello_cycles
+```
 
 The output of this command will be similar to:
 
@@ -85,7 +91,9 @@ Below, we'll frequently use `$(dfx identity get-wallet)` and `$(dfx canister id 
 
 ### Step 5: Attempt to send 2 trillion cycles from the default wallet to the hello_cycles canister by running the following command:
 
-`dfx canister call $(dfx identity get-wallet) wallet_send "(record { canister = principal \"$(dfx canister id hello_cycles)\"; amount = (2000000000000:nat64); } )"`
+```
+dfx canister call $(dfx identity get-wallet) wallet_send "(record { canister = principal \"$(dfx canister id hello_cycles)\"; amount = (2000000000000:nat64); } )"
+```
 
 The wallet's `wallet_send` function transfers the amount to the argument canister's `wallet_receive` function (see above), and returns a result signalling success or failure.
 
@@ -97,7 +105,9 @@ If successful, the output will look similar to:
 
 #### Step 6: Verify that the cycles balance for the hello_cycles canister has increased by 10_000_000 by running the following command:
 
-`dfx canister call hello_cycles wallet_balance`
+```
+dfx canister call hello_cycles wallet_balance
+```
 
 Output:
 
@@ -109,7 +119,9 @@ The amount is only increased by 10_000_000 because the implementation of `wallet
 
 ### Step 7: Send some cycles from the hello_cycles canister back to the wallet by running the command:
 
-`dfx canister call hello_cycles transfer "(func \"$(dfx identity get-wallet)\".\"wallet_receive\", 5000000)"`
+```
+dfx canister call hello_cycles transfer "(func \"$(dfx identity get-wallet)\".\"wallet_receive\", 5000000)"
+```
 
 Output: 
 
@@ -119,7 +131,9 @@ Output:
 
 ### Step 8: Verify that the cycles balance of hello_cycles canister has decreased with:
 
-`dfx canister call hello_cycles wallet_balance`
+```
+dfx canister call hello_cycles wallet_balance
+```
 
 Output:
 

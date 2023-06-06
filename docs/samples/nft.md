@@ -490,7 +490,9 @@ Due to size limitations on the length of a terminal command, an image- or video-
 
 To use this tool, install the minting tool with the command:
 
-`cargo install --git https://github.com/dfinity/experimental-minting-tool --locked`
+```
+cargo install --git https://github.com/dfinity/experimental-minting-tool --locked
+```
 
 As an example, to mint the default logo, you would run the following command:
 

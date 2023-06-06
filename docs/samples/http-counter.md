@@ -2,7 +2,7 @@
 
 ## Overview
 
-The example demonstrates a counter dapp and an HTTP interface. It is essentially an iteration on the [Counter canister](../Counter/README.md) which adds native HTTP interfaces.
+The example demonstrates a counter dapp and an HTTP interface. It is essentially an iteration on the counter canister which adds native HTTP interfaces.
 
 This sample dapp provides an interface that exposes the following methods:
 
@@ -29,8 +29,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/http_counter`
-`dfx start --background`
+```
+cd examples/motoko/http_counter
+dfx start --background
+```
 
 ### Step 2: Deploy the canister:
 
@@ -43,9 +45,9 @@ dfx deploy
 ```bash
 CANISTER_ID=$(dfx canister id http_counter)
 
-echo "http://localhost:8000/?canisterId=$CANISTER_ID"
+echo "http://localhost:4943/?canisterId=$CANISTER_ID"
 
-echo "http://$CANISTER_ID.localhost:8000/"
+echo "http://$CANISTER_ID.localhost:4943/"
 ```
 
 ### Step 4: All functionality of the canister can be exercised with the following commands:

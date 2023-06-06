@@ -55,14 +55,22 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files install the required packages:
 
-`cd examples/motoko/invoice-canister`
-`npm install`
+```
+cd examples/motoko/invoice-canister
+npm install
+```
 
 At this point the project is ready to be deployed to a local replica. As support for four tokens requires four token-ledger canisters, three of these are installed by the downloaded Wasm and did files provided by the [DFINITY Rosetta-API repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api). These files can be found in the `src/token-ledger-canisters` directory with an accompanying shell script for downloading them independently of this project. The ICRC1 token-ledger canister Wasm and did is deployed twice, once for each of the two ICRC1 tokens integrated. The ICP ledger wasm and did is only deployed once as the other ICP based token has its ledger canister deployed by running the `dfx nns install` command. This to demonstrate the multiple ways of integrating token-ledger canisters into your own projects.
 
 ### Step 2: Before running this project, it is necessary to check the system wide network configuration is set according to what the canisters installed by `dfx nns install` require.
 
-Run `cat "$(dfx info networks-json-path)"` to confirm it matches:
+Run 
+
+```
+cat "$(dfx info networks-json-path)"
+``` 
+
+to confirm it matches:
 
 ```json
 {
@@ -82,8 +90,10 @@ Once the system-wide `networks.json` is set as above, this project's startup scr
 
 ### Step 3: For convenience, two npm scripts have been added to initiate this script:  
 
-`npm run deployAll`  
-`npm run deployForTesting` 
+```
+npm run deployAll
+npm run deployForTesting
+```
 
 If deployed for testing, the Secp256k1 identity the `dfx nns install` command uses as one of its two initial deposit identities is added and switched to as the current user. Whether testing or not, the current identity is used as the minting account for all four token-ledger canisters. See the `clean-startup.mjs` for more details. To see an example of the console output of running this script for testing, the `./docs/clean-startup-console-output` file that can be reviewed in the docs folder. 
 
@@ -323,6 +333,6 @@ When getting ready to deploy for production, thoroughly review the guides:
 * [Security best practices](https://internetcomputer.org/docs/current/developer-docs/security/).
 * [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
 
-and proceed with enough caution and preparation. See the [Design Doc](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/docs/DesignDoc.md) for more details.
+and proceed with enough caution and preparation. See the [design doc](https://github.com/dfinity/examples/blob/master/motoko/invoice-canister/docs/DesignDoc.md) for more details.
 
 

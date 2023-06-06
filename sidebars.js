@@ -704,16 +704,6 @@ const sidebars = {
     "references/glossary",
 
   ],
-  concepts: [
-    "concepts/index",
-    "concepts/what-is-IC",
-    "concepts/canisters-code",
-    "concepts/data-centers",
-    "concepts/governance",
-    "concepts/nodes-subnets",
-    "concepts/tokens-cycles",
-    "concepts/trust-in-canisters",
-  ],
   motoko: [
     {
       type: "category",
@@ -821,22 +811,6 @@ const sidebars = {
     },
   ],
   
-  samples: [
-    "samples/overview",
-    "samples/hello",
-    "samples/dao",
-    "samples/deploying-your-first-bitcoin-dapp",
-    "samples/dex",
-    "samples/encrypted-notes",
-    "samples/http-requests-exchange-rates",
-    "samples/ios-integration",
-    "samples/host-a-webgame",
-    "samples/host-a-website",
-    "samples/nft",
-    "samples/t-ecdsa-sample",
-    "samples/token-transfer",
-    "samples/hackathon-projects",
-  ],
 };
 
 module.exports = sidebars;

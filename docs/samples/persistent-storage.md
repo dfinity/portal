@@ -3,8 +3,6 @@
 ## Overview
 The example dapp shows how to build a simple dapp in Motoko, which will have persistent storage. The dapp is a simple counter, which will increment a counter, retrieve the counter value and reset the counter value by calling backend functions. The functions are exposed through a Candid interface.
 
-![Counter Frontend](README_images/candid_ui.png)
-
 The purpose of this example dapp is to build a simple counter dapp, where the counter value will persist even after the dapp has changed and been re-deployed.
 
 This example covers:
@@ -29,8 +27,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/persistent-storage`
-`dfx start --background`
+```
+cd examples/motoko/persistent-storage
+dfx start --background
+```
 
 ### Step 2: Build and deploy the canister:
 

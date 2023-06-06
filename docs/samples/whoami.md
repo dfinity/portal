@@ -1,8 +1,5 @@
 # Who am I?
 
-![Compatibility](https://img.shields.io/badge/compatibility-0.6.25-blue)
-[![Build Status](https://github.com/dfinity/examples/workflows/motoko-whoami-example/badge.svg)](https://github.com/dfinity/examples/actions?query=workflow%3Amotoko-whoami-example)
-
 ## Overview
 
 This example demonstrates how a canister can identify its caller and itself.
@@ -18,8 +15,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/whoami`
-`dfx start --background`
+```
+cd examples/motoko/whoami
+dfx start --background
+```
 
 ### Step 2: Build and deploy the canister:
 
@@ -32,7 +31,7 @@ dfx deploy
 ### Step 3: Invoke the `whoami` method:
 
 ```
-   dfx canister call whoami whoami
+dfx canister call whoami whoami
 ```
 
 ### Step 4: Observe your principal identifier.
