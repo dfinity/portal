@@ -3,7 +3,9 @@ sidebar_position: 3
 ---
 # SNS predeployment considerations
 
-Preparting an SNS launch includes many non-technical considerations.
+## Overview
+
+Preparing an SNS launch includes many non-technical considerations.
 For example, to decentralize a dapp, the governance control has to be distributed
 among many parties. Therefore, a successful decentralization with many participating 
 parties may rely on non-technical strategies such as advertising.
