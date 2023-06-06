@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 # SNS testflight
-
+## Overview
 Before requesting an SNS launch in production,
 you are encouraged to test your mainnet dapp's operation (e.g., upgrading the dapp's canisters)
 via SNS proposals.
