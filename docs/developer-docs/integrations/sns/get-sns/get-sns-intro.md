@@ -12,7 +12,7 @@ There are two main tools for testing the SNS
    * Testing the integration of the SNS with a dapp, for
    example if you integrate parts of the frontend for the SNS into you dapp or
    if you build a DEX that interacts with the SNS.
-   * testing the integration of the SNS canisters with the dapp canister(s).
+   * Testing the integration of the SNS canisters with the dapp canister(s).
     
 2. [SNS testflight](./testflight.md) to test whether a dapp can be operated
 under SNS control. This testing can be done locally or on mainnet with a test
