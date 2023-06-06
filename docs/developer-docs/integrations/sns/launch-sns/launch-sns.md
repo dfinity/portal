@@ -1,5 +1,5 @@
 # SNS launch
-
+## Overview
 An SNS can be launched in production by following the steps explained on a 
 high level [here](/lifecycle-sns/sns-launch.md).
 Technically, these are the same steps that the
