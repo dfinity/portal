@@ -1,5 +1,5 @@
 # Preparing and SNS launch
-
+## Overview
 Launching an SNS entails many non-technical and technical preparations steps.
 
 [The SNS launch checklist](sns-checklist.md) summarizes some of the most important preparation
