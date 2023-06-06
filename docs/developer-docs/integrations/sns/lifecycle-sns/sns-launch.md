@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 # SNS launch
+## Overview
+
 A crucial purpose of an SNS launch is to decentralize the control of the SNS and thereby of
 the dapp that the SNS governs.
 Thereby, new tokens must be distributed to a large community to ensure
