@@ -51,7 +51,7 @@ ledger canister such as the token name, token symbol, and the ledger transaction
       seed investors.
    - **Airdrop tokens** that can be given to any other predefined principals that
       should have tokens at genesis, for example to existing users
-      of the dapp,
+      of the dapp.
    - **Treasury tokens** that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs.
    - **Swap tokens** which are owned by the SNS and swapped for ICP tokens.
