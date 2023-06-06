@@ -83,7 +83,7 @@ to upgrade the dapp during the swap.**
 :::
 
 All developers, airdrop principals, and the swap participants receive
-their neurons as a _basket of neurons_.
+their neurons as a *basket of neurons*.
 This means that rather than one neuron, they can get many neurons 
 with different dissolve delays. The details of these neurons can
 be set in the initialization.
