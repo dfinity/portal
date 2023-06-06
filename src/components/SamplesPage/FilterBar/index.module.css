@@ -7,12 +7,12 @@
   gap: 20px;
   align-items: flex-start;
   position: relative;
-  z-index: 10;
   overflow: visible;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @apply z-10;
 }
 
 .selectBoxes {
@@ -22,7 +22,7 @@
   align-items: center;
   gap: 16px;
   position: relative;
-  z-index: 10;
+  @apply z-10;
 }
 
 .selectBoxContainer {
@@ -229,13 +229,13 @@
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 2100;
   padding: 42px 16px calc(30px + env(safe-area-inset-bottom)) 16px;
   overscroll-behavior: contain;
   transition-property: opacity, visibility, transform;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
   overflow: scroll;
+  @apply z-20;
 }
 .mobileFilterBar__show {
 }
@@ -295,11 +295,11 @@
 .mobileFilterBarButtonContainer {
   display: none;
   position: fixed;
-  z-index: 1000;
   width: 100vw;
   bottom: 0;
   left: 0;
   margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
+  @apply z-10;
 }
 
 .mobileFilterBarButton {

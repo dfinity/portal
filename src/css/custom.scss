@@ -41,7 +41,7 @@
   --ifm-menu-color: #181818;
 
   --ic0-nav-border: 1px solid white;
-  --ic0-article-background: linear-gradient(180deg, #F5F5F5 0%, #F2EFF6 100%);
+  --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
 }
 
 @import "./animate.scss";
@@ -49,25 +49,34 @@
 @import "./navbar.scss";
 @import "./scrollbar.scss";
 @import "./sidebar.scss";
+@import "./subnav.scss";
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page {
-  --ifm-navbar-x-padding: 24px;
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
-  --ifm-color-primary: #791E94;
-  --ifm-navbar-link-hover-color: #791E94;
+  --ifm-subnav-height: 54px;
+  --ifm-color-primary: #791e94;
+  --ifm-navbar-link-hover-color: #791e94;
+  --ifm-navbar-x-padding: 50px;
+
+  @media (max-width: 996px) {
+    --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
+  }
 
   // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
   // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
   // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
   // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
-  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%)
+    sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+
+    --ifm-color-primary: #3b00b9;
 
     // color the dropdown caret on hover
     .navbar__item:hover {
@@ -86,10 +95,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   --ifm-toc-border-color: transparent;
   --ifm-toc-padding-horizontal: 0;
 
-  .navbar {
-    border-bottom: var(--ic0-nav-border);
-  }
-
   // style the article body
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
@@ -102,12 +107,24 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       padding: 0 !important;
     }
 
+    // ensure the docs content fills up the available width on mobile
+    @media (max-width: 996px) {
+      .container {
+        max-width: unset;
+      }
+    }
+
+    .row {
+      margin: 0;
+    }
+
     div[class*="docItemContainer_"] {
       padding: 40px 20px;
 
       // mobile/tablet Table of Contents dropdown
       div[class*="tocCollapsible_"] {
         background: var(--ifm-menu-color-background-hover);
+        margin-bottom: 60px;
 
         button[class*="tocCollapsibleButton_"] {
           padding: 0.8rem;
@@ -132,7 +149,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     }
 
     div[class*="tableOfContents"] {
-      top: calc(var(--ifm-navbar-height) + 40px);
+      top: calc(var(--ifm-navbar-height) + var(--ifm-subnav-height) + 40px);
       max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
       padding-right: 40px;
 
@@ -334,7 +351,6 @@ div[class^="announcementBarContent"] {
     a {
       border-radius: 0;
       font-size: 18px;
-      line-height: 24px;
       padding: 0 8px;
       line-height: 52px;
     }
@@ -396,18 +412,12 @@ div[class^="announcementBarContent"] {
     min-width: max-content;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 450px;
   }
 
   .dropdown__menu .dropdown__link--with-icon {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-
-    // img {
-    //   max-width: 0;
-    //   width: 30px;
-    // }
   }
 
   .dropdown__menu li:first-child {
