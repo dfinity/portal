@@ -48,7 +48,7 @@ ledger canister such as the token name, token symbol, and the ledger transaction
    of tokens are allocated to whom. Tokens can be distributed to 
   the following four buckets:
    - **Developer tokens** that are appointed to the original developers of the dapp and 
-      seed investors,
+      seed investors.
    - **Airdrop tokens** that can be given to any other predefined principals that
       should have tokens at genesis, for example to existing users
       of the dapp,
