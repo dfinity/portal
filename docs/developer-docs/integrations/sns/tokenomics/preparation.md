@@ -9,7 +9,7 @@ for examples using the
 as described in [this section](/tokenomics/tokenomics-intro.md).
 After deciding on these configurations, the next step is to
 translate them into 
-[_initial parameters_](/lifecycle-sns/sns-launch.md/#SNS-launch-step-preparation)
+[initial parameters](/lifecycle-sns/sns-launch.md/#SNS-launch-step-preparation)
 that the SNS will be initialized with.
 
 This section explains on a technical, but high level, how initial
