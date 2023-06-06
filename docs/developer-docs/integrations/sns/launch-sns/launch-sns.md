@@ -11,7 +11,7 @@ mainnet more accesible, they are listed below.
 
 ## Submitting an NNS proposal to approve the SNS
 After preparations and choosing the parameters
-([Step 1:Preparation](#SNS-launch-step-preparation)), 
+([Step 1: Preparation](#SNS-launch-step-preparation)), 
 an [NNS proposal approves the creation of the SNS](#SNS-launch-step-NNSapproval).
 Anyone who owns and NNS neuron with enough stake can submit such a proposal
 that lists a principal wallet in SNS-W who can then deploy the SNS canisters.
