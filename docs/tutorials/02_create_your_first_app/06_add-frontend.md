@@ -257,7 +257,7 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
 - Line 4: `import { poll_backend } from "../../declarations/poll_backend";`: this is an important line that is what allows the frontend to import an interface for the backend canister and seamlessly send it via messages (using Candid). This line is directly related to the following lines where the frontend JS talks to the backend:
   - Line 19: `const question = await poll_backend.getQuestion();`
   - Line 25: `const voteCounts = await poll_backend.getVotes();`
-  -Line 40: `const updatedVoteCounts = await poll_backend.vote(selectedOption);`
+  - Line 40: `const updatedVoteCounts = await poll_backend.vote(selectedOption);`
 - `displayResults()` and `updateLocalVoteCount()` are just helper functions created for convenience.
 - These lines collectively show how the frontend can use the `getQuestion()`, `getVotes()`, `vote()` methods we created in earlier sections.
 

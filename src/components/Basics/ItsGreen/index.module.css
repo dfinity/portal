@@ -42,11 +42,11 @@
   left: calc((100vw - 4500px) / 2);
   right: calc((100vw - 4500px) / 2);
   top: -800px;
-  z-index: -1000;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  @apply -z-10;
 }
 @media (max-width: 996px) {
   .heading {

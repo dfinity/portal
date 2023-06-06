@@ -5,7 +5,7 @@
   padding: 160px 0 160px;
   position: relative;
   max-width: 1110px;
-  z-index: 1;
+  @apply z-1;
 }
 
 .hero p {
@@ -28,7 +28,7 @@
   bottom: -680px;
   right: -750px;
   width: 1500px;
-  z-index: -1;
+  @apply -z-1;
 }
 
 @media (max-width: 996px) {

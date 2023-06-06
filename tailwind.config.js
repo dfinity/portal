@@ -4,6 +4,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      zIndex: {
+        1: "1",
+        "-1": "-1",
+        "-10": "-10"
+      },
       maxWidth: {
         page: "1440px",
         "page-10-cols": "1214px",
