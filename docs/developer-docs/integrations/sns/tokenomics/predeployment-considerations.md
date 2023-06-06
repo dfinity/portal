@@ -8,7 +8,7 @@ For example, to decentralize a dapp, the governance control has to be distribute
 among many parties. Therefore, a successful decentralization with many participating 
 parties may rely on non-technical strategies such as advertising.
 
-Morevoer, the decision to hand over a dapp to an SNS with a new utility token has many
+Moreover, the decision to hand over a dapp to an SNS with a new utility token has many
 implications for the business behind the dapp.
 Therefore, developers should deeply consider these business implications throughout
 the process of tokenizing their dapp.
