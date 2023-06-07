@@ -100,7 +100,7 @@ The testflight can be done in a local test environment or with the live dapp on 
 
 To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](../get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
 
-See the documentation for more information about the [SNS Testflight](/docs/current/developer-docs/integrations/sns/get-sns/testflight.md), including setup instructions.
+See the documentation for more information about the [SNS Testflight](../get-sns/testflight.md), including setup instructions.
 
 ## 2.5. Integrate an SNS frontend into the dapp
 Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly with the SNS Testflight or the local SNS test before the SNS launch.
