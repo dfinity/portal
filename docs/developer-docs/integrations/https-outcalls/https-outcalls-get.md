@@ -1,5 +1,5 @@
 # How to use HTTP outcalls: GET
-
+## Overview
 A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. 
 
 This example takes less than 5 minutes to complete.
@@ -55,7 +55,7 @@ module Types {
 }
 ```
 
-### Motoko: Step by Step
+### Motoko: Step by step
 
 To create a new project directory for testing access control and switching user identities:
 
@@ -222,7 +222,7 @@ module Types {
 }
 ```
 
-- #### Step 6: Test the dapp locally
+- #### Step 6: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -283,7 +283,7 @@ async fn foo() {
 }
 ```
 
-### Rust: Step by Step
+### Rust: Step by step
 
 To create a new project directory for testing access control and switching user identities:
 
@@ -352,7 +352,7 @@ async fn get_cat_fact() -> String {
 ```
 
 - `get_cat_fact() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles , you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 5: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
@@ -365,7 +365,7 @@ service : {
 }
 ```
 
-- #### Step 6: Test the dapp locally
+- #### Step 6: Test the dapp locally.
 
 Deploy the dapp locally:
 
