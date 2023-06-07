@@ -71,7 +71,7 @@ The second proposal is asking the NNS neurons for acceptance to start the decent
 Include relevant information like tokenomics (token distribution, governance, decentralization sale), details about the dapp (link to the open sourced code), whitepaper and anything else relevant to the community. See OpenChat’s [decentralization proposal](https://dashboard.internetcomputer.org/proposal/109811) for inspiration.
 
 ### 1.5.3. More information
-See the [documentation](../sns/get-sns/preparation) for details about the process. The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
+See the [documentation](./preparation.md) for details about the process. The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
 
 :::info
 Note: A 1-proposal process is planned to be rolled out early June.
@@ -93,14 +93,14 @@ Provide the build and deploy instructions with the source code. Ideally the inst
 ## 2.4. Test dapp operations under SNS on mainnet with SNS Testflight
 Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
 
-Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../../../sns/managing-sns/cycles-usage/), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
+Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](/docs/current/developer-docs/integrations/sns/managing-sns/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
 
 The developer can keep direct control over the dapp’s canisters registered with testflight SNS.
 The testflight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](../../../integrations/sns/get-sns/testflight/) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
+To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](/docs/current/developer-docs/integrations/sns/get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
 
-See the documentation for more information about the [SNS Testflight](../../../sns/get-sns/testflight/), including setup instructions.
+See the documentation for more information about the [SNS Testflight](/docs/current/developer-docs/integrations/sns/get-sns/testflight.md), including setup instructions.
 
 ## 2.5. Integrate an SNS frontend into the dapp
 Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly with the SNS Testflight or the local SNS test before the SNS launch.
@@ -128,7 +128,7 @@ The idea is to provide the community with information so they can verify what th
 ##4. SNS Launch Workflow
 
 ## 4.1. Submit canister creation proposal
-First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool 2](../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
+First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool 2](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
 
 ## 4.2. Create SNS canisters
 When the NNS neurons have voted in favor of the canister creation proposal, the SNS canisters can be installed, and prepared for the SNS launch. The SNS canisters are installed with the [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli).
