@@ -93,7 +93,7 @@ Provide the build and deploy instructions with the source code. Ideally the inst
 ## 2.4. Test dapp operations under SNS on mainnet with SNS Testflight
 Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
 
-Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](/docs/current/developer-docs/integrations/sns/managing-sns/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
+Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing-sns/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
 
 The developer can keep direct control over the dapp’s canisters registered with testflight SNS.
 The testflight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
