@@ -41,7 +41,7 @@ An important part of preparing an SNS launch, integrating with an SNS, and manag
 This section provides 
 * [An introduction to SNS testing](./get-sns/get-sns-intro.md).
 * [Guidelines how to test an SNS locally](./get-sns/local-testing.md), including the SNS lauch.
-* [Guidelines how to test the operation of the dapp under SNS control](./integrate-sns/testflight.md), including on mainnet.
+* [Guidelines how to test the operation of the dapp under SNS control](./get-sns/testflight.md), including on mainnet.
 
 ## SNS launch
 This parts explains how an [SNS is launched on mainnet](./launch-sns/launch-sns.md).

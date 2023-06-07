@@ -3,7 +3,7 @@
 An SNS can be launched in production by following the steps explained on a 
 high level [here](../lifecycle-sns/sns-launch.md).
 Technically, these are the same steps that the
-[SNS local testing repository](/get-sns/local-testing.md) guides you through,
+[SNS local testing repository](../get-sns/local-testing.md) guides you through,
 with the difference that the commands target the canisters on the mainnet.
 
 To make the most important commands and what they need to look like for 

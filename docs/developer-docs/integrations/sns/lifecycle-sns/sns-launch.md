@@ -50,7 +50,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   Technically, the first step to initialize an SNS is to choose the initial parameters of the SNS.
   As these parameters define not only the token name but also the tokenomics and how the governance
   will work, this usually requires a lot of preparation and community engagement already
-  (see [here](/tokenomics/sns-checklist.md) for more information).
+  (see [here](../tokenomics/sns-checklist.md) for more information).
 
 - #### Step 2: A NNS proposal approves the creation of the SNS{#SNS-launch-step-NNSapproval}
     To ensure that malicious parties cannot simply fill the SNS subnet with non-approved SNSs, the

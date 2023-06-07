@@ -55,7 +55,7 @@ history may be lost.**
 :::
 
 * While 
-[SNSs that are provided as a system function](../sns-intro.md#gettingDAOoptions) 
+SNSs that are provided as a system function 
 can only be upgraded to canister versions approved by the 
 NNS, each SNS community can configure their SNS according
 to their needs.
