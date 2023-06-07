@@ -409,7 +409,7 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/tokenomics/index",
                     },
                       items: [
-                        "developer-docs/integrations/sns/tokenomics/sns-checklist.md",
+                        "developer-docs/integrations/sns/tokenomics/sns-checklist",
                         "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
                         "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
                         "developer-docs/integrations/sns/tokenomics/rewards",
@@ -451,7 +451,7 @@ const sidebars = {
                       label: "Managing an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/managing-sns/managing-sns-intro",
+                        id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
                     },
                       items: [
                         "developer-docs/integrations/sns/managing-sns/sns-governance",
