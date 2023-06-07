@@ -15,8 +15,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/quicksort`
-`dfx start --background`
+```
+cd examples/motoko/quicksort
+dfx start --background
+```
 
 ### Step 2: Deploy the canister:
 

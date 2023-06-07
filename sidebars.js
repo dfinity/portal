@@ -58,12 +58,17 @@ const sidebars = {
               "samples/factorial",
               "samples/game-of-life",
               "samples/hackathon-projects",
+              "samples/http-counter",
               "samples/host-a-website",
               "samples/host-a-webgame",
               "samples/token-transfer",
               "samples/internet-identity-sample",
               "samples/ios-integration",
+              "samples/minimal-counter-dapp",
               "samples/nft",
+              "samples/nft-wallet",
+              "samples/periodic-tasks",
+              "samples/persistent-storage",
               "samples/phonebook",
               "samples/pub-sub",
               "samples/quicksort",
@@ -73,6 +78,7 @@ const sidebars = {
               "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/http-requests-exchange-rates",
+              "samples/whoami",
             ],
             },
 
@@ -698,16 +704,6 @@ const sidebars = {
     "references/glossary",
 
   ],
-  concepts: [
-    "concepts/index",
-    "concepts/what-is-IC",
-    "concepts/canisters-code",
-    "concepts/data-centers",
-    "concepts/governance",
-    "concepts/nodes-subnets",
-    "concepts/tokens-cycles",
-    "concepts/trust-in-canisters",
-  ],
   motoko: [
     {
       type: "category",
@@ -815,22 +811,6 @@ const sidebars = {
     },
   ],
   
-  samples: [
-    "samples/overview",
-    "samples/hello",
-    "samples/dao",
-    "samples/deploying-your-first-bitcoin-dapp",
-    "samples/dex",
-    "samples/encrypted-notes",
-    "samples/http-requests-exchange-rates",
-    "samples/ios-integration",
-    "samples/host-a-webgame",
-    "samples/host-a-website",
-    "samples/nft",
-    "samples/t-ecdsa-sample",
-    "samples/token-transfer",
-    "samples/hackathon-projects",
-  ],
 };
 
 module.exports = sidebars;
