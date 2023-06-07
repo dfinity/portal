@@ -444,10 +444,10 @@ const sidebars = {
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/launch-sns",
-                    },
                       items: [
                         "developer-docs/integrations/sns/launch-sns/launch-sns",
                       ],
+                    },
                     {
                       type: "category",
                       label: "Manage an SNS",
