@@ -242,6 +242,7 @@ If you have opened this page previously, please remove all local store data for 
  
 
 ### Mainnet deployment
+
 :::info
 Prior to starting the mainnet deployment process, ensure you have your identities and wallets set up for controlling the canisters correctly. This guide assumes that this work has been done in advance.
 :::

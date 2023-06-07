@@ -75,7 +75,7 @@ The previous steps use dfx to directly call the function on the hello (backend) 
 
 - #### Step 7: Determine the URL of the hello_frontend asset canister.
 
-`echo "http://localhost:8000/?canisterId=$(dfx canister id hello_frontend)"`
+`echo "http://localhost:4943/?canisterId=$(dfx canister id hello_frontend)"`
 
 - #### Step 8: Navigate to the URL in your browser.
 The browser should display a simple HTML page with a sample asset image file, an input field, and a button.

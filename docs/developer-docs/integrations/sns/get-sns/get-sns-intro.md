@@ -90,7 +90,7 @@ We also encourage the developers to run [SNS testflight](./testflight.md)
 as part of the technical preparation to make sure that their dapp
 can be operated via SNS proposals.
 In particular, the developers are strongly encouraged to perform
-SNS testflight on mainnet, too.
+SNS testflight on the mainnet, too.
 
 ### Step 4: Getting an SNS in production
 Once you properly tested the SNS, you are ready to ask the IC 

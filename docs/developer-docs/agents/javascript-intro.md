@@ -135,7 +135,7 @@ When you are building apps that run in the browser, here are some things to cons
 
 Updates to the IC may feel slow to your users, at around 2-4 seconds. When you are building your application, take that latency into consideration, and consider following some best practices:
 
-* Avoid blocking UI interactions while you wait for the result of your update. Instead, allow users to continuing to make other updates and interactions, and inform your users of success asyncronously. 
+* Avoid blocking UI interactions while you wait for the result of your update. Instead, allow users to continuing to make other updates and interactions, and inform your users of success asynchronously. 
 * Try to avoid making inter-canister calls. If the backend needs to talk to other canisters, the duration can add up quickly.
 * Use `Promise.all` to make multiple calls in a batch, instead of making them one-by-one.
 * If you need to fetch assets or data, you can make direct `fetch` calls to the `raw.icp0.io` endpoint for canisters.

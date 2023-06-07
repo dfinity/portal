@@ -265,6 +265,13 @@ The following language and capitalization of certain terms and phrases should be
 - Ethereum: should be used in place of ETH or ETH token. 
 - HTTP outcalls
 - IC SDK: should be used in place of any reference to the IC's SDK.
+- mainnet
+    - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
+    - Other contextual usage:
+        - `The Internet Computer mainnet network.`
+        - `The dapp has been deployed to the IC mainnet.`
+        - `Before deploying on to the Internet Computer mainnet...`
+    Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
 - neuron

@@ -53,7 +53,7 @@ To deploy the testflight SNS, run
 ```
 sns-cli deploy-testflight
 ```
-To deploy on mainnet, pass `--network ic` as an additional argument.
+To deploy on the mainnet, pass `--network ic` as an additional argument.
 
 After the deployment finishes, make sure to store the developer neuron ID
 which you will use to submit SNS proposals.
@@ -73,8 +73,8 @@ For a canister called `test`, you can do so as follows:
 ```
 dfx canister update-settings --add-controller $(dfx canister id sns_root) test
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument
-to *both* invokations of `dfx canister`.
+When running the testflight on the mainnet, pass `--network ic` as an additional argument
+to **both** invocations of `dfx canister`.
 
 ## Register dapp canisters with SNS root
 
@@ -100,7 +100,7 @@ export CID="$(dfx canister id test)"
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal --proposal "(record { title=\"Register dapp's canisters with SNS.\"; url=\"https://example.com/\"; summary=\"This proposal registers dapp's canisters with SNS.\"; action=opt variant {RegisterDappCanisters = record {canister_ids=vec {principal\"$CID\"}}}})" $DEVELOPER_NEURON_ID > register.json
 quill send register.json
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister`
+When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`
 when obtaining the dapp's canister IDs.
 Otherwise, pass `--insecure-local-dev-mode` as an additional argument to `quill send`.
 
@@ -114,7 +114,7 @@ Once the SNS proposal is executed, you should see all the registered dapp's cani
 ```
 dfx canister call sns_root list_sns_canisters '(record {})'
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
+When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
 
 ## Test upgrading canisters via SNS proposals
 
@@ -130,7 +130,7 @@ Now you can prepare and send the SNS proposal via `quill`:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-upgrade-canister-proposal --summary "This proposal upgrades test canister." --title "Upgrade test canister." --url "https://example.com/" --target-canister-id $CID --wasm-path "./.dfx/local/canisters/test/test.wasm" $DEVELOPER_NEURON_ID > upgrade.json
 quill send upgrade.json | grep -v "^ *new_canister_wasm"
 ```
-Unless you run the testflight against mainnet, pass `--insecure-local-dev-mode` as an additional argument to `quill send`.
+Unless you run the testflight against the mainnet, pass `--insecure-local-dev-mode` as an additional argument to `quill send`.
 
 You can omit `grep -v "^ *new_canister_wasm"` above to see the new WASM binary in the output. Note that the output then contains the entire WASM binary and can be huge!
 
@@ -138,7 +138,7 @@ You can omit `grep -v "^ *new_canister_wasm"` above to see the new WASM binary i
 
 To execute code on SNS managed canisters via SNS proposals,
 the canisters must expose a pair of public
-functions (refered to as **generic** functions in the following):
+functions (referred to as **generic** functions in the following):
 - a validation function to validate and render the proposal payload;
 - an execution function to perform an action given the proposal payload.
 
@@ -199,7 +199,7 @@ You can list all proposals in the testflight SNS as follows:
 ```
 dfx canister call sns_governance list_proposals '(record {include_reward_status = vec {}; limit = 0; exclude_type = vec {}; include_status = vec {};})'
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister`.
+When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
 You can also provide a limit and thus only obtain the last few proposals.
 
 ## Aborting the testflight
@@ -216,7 +216,7 @@ by invoking
 ```
 dfx canister status test
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister`.
+When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
 
 If this is the case, you can safely delete the SNS testflight canisters.
 Otherwise, you can restore control over your dapp's canisters by reinstalling
@@ -264,4 +264,4 @@ and invoking:
 ```
 dfx canister call sns_root recover '()'
 ```
-When running the testflight on mainnet, pass `--network ic` as an additional argument to `dfx canister`.
+When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.

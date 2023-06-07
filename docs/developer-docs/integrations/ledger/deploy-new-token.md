@@ -65,7 +65,7 @@ For each variable, replace the following values:
 
 :::info
 
-When you deploy to the mainnet:
+When you deploy on the mainnet:
 
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
 

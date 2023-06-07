@@ -176,7 +176,7 @@ reflected in your current balance.
 In this tutorial, you were able to:
 
 * Deploy a canister smart contract on the ICP blockchain that can receive & send Bitcoin.
-* Use a cycles faucet to deploy the canister to ICP blockchain on mainnet for free.
+* Use a cycles faucet to deploy the canister to ICP blockchain on the mainnet for free.
 * Connect the canister to the Bitcoin testnet.
 * Send the canister some testnet BTC.
 * Check the testnet BTC balance of the canister.
