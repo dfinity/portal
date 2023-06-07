@@ -4,16 +4,16 @@
 
 The example dapp shows how to build a very basic dapp with both backend and frontend, using Motoko for the backend functionality and plain HTML and JavaScript for the frontend. The dapp is a simple counter, which will increment a counter by clicking a button in the frontend.
 
-The purpose of this example dapp is to build a minimalistic dapp, based on the default dapp template, installed by DFX when creating a new project. The dapp is a simple website with a counter. Every time a button is pressed, a counter is incremented.
+The purpose of this example dapp is to build a minimalistic dapp, based on the default dapp template, installed by dfx when creating a new project. The dapp is a simple website with a counter. Every time a button is pressed, a counter is incremented.
 
 This example covers:
 
-- Create new canister smart contract using the IC SDK (DFX).
+- Create new canister smart contract using the IC SDK (dfx).
 - Use the default project as a template as the starting point for the new project.
 - Add backend functions for a counter (count, get count and reset count).
 - Implement backend functions in the frontend.
 - Deploy the canister smart contract locally.
-- Test backend with Candid UI and command line using DFX, and test frontend in browser.
+- Test backend with Candid UI and command line using dfx, and test frontend in browser.
 
 ## Prerequisites
 
@@ -151,7 +151,7 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
 ```
 
 #### dfx
-DFX has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `count` will increment value and return 1, `getCount` will return the current value and `reset` will set the value to 0.
+dfx has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `count` will increment value and return 1, `getCount` will return the current value and `reset` will set the value to 0.
 
 Command usage: `dfx canister call <project>  <function>`
 

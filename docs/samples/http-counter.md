@@ -56,15 +56,15 @@ echo "http://$CANISTER_ID.localhost:4943/"
 CANISTER_ID=$(dfx canister id http_counter)
 
 # Get the counter
-curl "$CANISTER_ID.localhost:8000/" --resolve "$CANISTER_ID.localhost:8000:127.0.0.1"
+curl "$CANISTER_ID.localhost:4943/" --resolve "$CANISTER_ID.localhost:4943:127.0.0.1"
 
 # Get the static gziped query content
-curl --compressed "$CANISTER_ID.localhost:8000/" --resolve "$CANISTER_ID.localhost:8000:127.0.0.1"
+curl --compressed "$CANISTER_ID.localhost:4943/" --resolve "$CANISTER_ID.localhost:4943:127.0.0.1"
 
 # Increment the counter
-curl -X POST "$CANISTER_ID.localhost:8000/" --resolve "$CANISTER_ID.localhost:8000:127.0.0.1"
+curl -X POST "$CANISTER_ID.localhost:4943/" --resolve "$CANISTER_ID.localhost:4943:127.0.0.1"
 
 # Increment the counter and get the static gziped update content
-curl --compressed -X POST "$CANISTER_ID.localhost:8000/" --resolve "$CANISTER_ID.localhost:8000:127.0.0.1"
+curl --compressed -X POST "$CANISTER_ID.localhost:4943/" --resolve "$CANISTER_ID.localhost:4943:127.0.0.1"
 ```
 

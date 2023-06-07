@@ -75,7 +75,7 @@ to confirm it matches:
 ```json
 {
   "local": {
-    "bind": "127.0.0.1:8080",
+    "bind": "127.0.0.1:4943",
     "type": "ephemeral",
     "replica": {
       "subnet_type": "system"
