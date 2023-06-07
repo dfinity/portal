@@ -20,6 +20,7 @@ The dapp allow you to host only one poll and share it with other people. Some ad
 
 ## Prerequisites
 To successfully complete this tutorial you will need to:
+- [x] Have [Node.js](https://nodejs.org/) installed. This tutorial works best with a Node.js version higher than `16.*.*`.
 - [x] Have the [IC SDK](../../developer-docs/setup/install/index.mdx) installed. You can look at [deploy your first dapp in 5 minutes](../deploy_sample_app.md) for more information.
 - [x] Learn basics of the Motoko programming language. This tutorial will explain some of Motoko constructs here, however, it would not hurt to have a general feel of the language before you get started with this tutorial.
 - [x] This tutorial will use Visual Studio Code to edit code, but it will work with any IDE or editor.

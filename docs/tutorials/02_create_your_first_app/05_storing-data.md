@@ -80,7 +80,7 @@ Here's the code with comments inline:
 ```
 
 ### What this does
-- The `getVotes` method returns an `Array`. [`An array`](../../motoko/main/base/Array.md) is a simple container that can hold multiple values.
+- The `getVotes` method returns an `Array`,(../../motoko/main/base/Array.md) which is a simple container that can hold multiple values.
 - In this particular case, the array holds elements that are a tuple. The tuples in this case are of type `(Text, Nat)`
 - We use a class `Iter` that represents an iterator, which is a pointer-like data structure that allows the developer to move over another data structure and see values one by one in a sequential manner.
 -  The  statement `Iter.toArray(votes.entries())` is executed in this sequence:
