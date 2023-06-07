@@ -385,7 +385,7 @@ const sidebars = {
                   id: "developer-docs/integrations/sns/index",
               },
                   items: [
-                  	 {
+                    {
                       type: "category",
                       label: "SNS Introduction",
                       link: {
@@ -393,7 +393,6 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/lifecycle-sns/sns-intro-highlevel",
                     },
                       items: [
-                        
                         "developer-docs/integrations/sns/lifecycle-sns/sns-intro-highlevel",
                         "developer-docs/integrations/sns/lifecycle-sns/sns-architecture",
                         "developer-docs/integrations/sns/lifecycle-sns/sns-launch",
@@ -408,7 +407,6 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/tokenomics/index",
                     },
                       items: [
-                        
                         "developer-docs/integrations/sns/tokenomics/sns-checklist",
                         "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
                         "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
@@ -440,13 +438,16 @@ const sidebars = {
                         "developer-docs/integrations/sns/get-sns/testflight",
                       ],
                     },
-                     {
+                    {
                       type: "category",
                       label: "Launching an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/launch-sns/launch-sns",
+                        id: "developer-docs/integrations/sns/launch-sns",
                     },
+                      items: [
+                        "developer-docs/integrations/sns/launch-sns/launch-sns",
+                      ],
                     {
                       type: "category",
                       label: "Manage an SNS",
