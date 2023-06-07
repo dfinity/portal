@@ -261,6 +261,8 @@ Your logo/video/screenshots files should be prefixed with your project id, and p
 folder. For example, if your project id is `awesome-icp-project`, your logo file should be
 named `awesome-icp-project_logo.webp` and placed in the `/static/img/showcase` folder.
 
+The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an on-chain tool that helps you submit your project to internetcomputer.org. It helps with image conversion, resizing, previewing the project cards used throughout the website, and it produces a valid JSON document you can use. Fill out the form and download the asset bundle in a zip file.
+
 ### Asset guidelines
 
 | Asset       |          | Requirements | Format       | Notes                                                                             |
@@ -274,6 +276,7 @@ named `awesome-icp-project_logo.webp` and placed in the `/static/img/showcase` f
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
 - `Wallet`
+- `Bitcoin`
 - `NFT`
 - `SocialFi`
 - `DeFi`
@@ -291,7 +294,7 @@ The list of tags is not final, and will be updated as the project evolves. For n
     oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
+    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
     description: string, // description of the project
     usesInternetIdentity: boolean,
     stats: string, // eg. "10,000 users"
