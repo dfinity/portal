@@ -65,7 +65,9 @@ ic-admin   \
 When the swap ends, either because its dealine is reached or because the maximum
 ICP have been collected, its finalization has to be triggered by a manual call
 to the SNS swap that can be done by anyone.
+You can find this command with more context in the SNS local testing repository
+[here](https://github.com/dfinity/sns-testing/blob/main/finalize_sns_sale.sh#L8).
 
 ```
-TODO
+dfx canister --network "${NETWORK}" call <SWAP_CANISTER_ID> finalize_swap '(record {})'
 ```
