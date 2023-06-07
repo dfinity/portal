@@ -55,19 +55,26 @@ This sample dapp minimizes the total number of HTTPS outcalls at the cost of big
 ## Motoko variant
 
 ### Prerequisites
-- [x] [ic-cdk v0.6.5](https://crates.io/crates/ic-cdk/0.6.5) or above
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/index.mdx).
+- [x] [ic-cdk v0.6.5](https://crates.io/crates/ic-cdk/0.6.5) or above.
 - [x] [dfx v0.12.0](https://github.com/dfinity/sdk/releases/tag/0.12.0) or above.
 
 - #### Step 1: Clone the sample dapp's GitHub repo:
 
-`git clone https://github.com/dfinity/examples.git`
+```
+git clone https://github.com/dfinity/examples.git
+```
 
 - #### Step 2: Navigate into the Motoko example directory for this project:
 
-`cd examples/motoko/exchange_rate`
+```
+cd examples/motoko/exchange_rate
+```
 
 - #### Step 3: Deploy the canister locally:
-`./deploy.sh local`
+```
+./deploy.sh local
+```
 
 The output of this script will resemble the following:
 
@@ -93,18 +100,26 @@ URLs:
 
 - #### Step 1: Clone the sample dapp's GitHub repo:
 
-`git clone https://github.com/dfinity/examples.git`
+```
+git clone https://github.com/dfinity/examples.git
+```
 
 - #### Step 2: Navigate into the Rust example directory for this project:
 
-`cd examples/rust/exchange_rate`
+```
+cd examples/rust/exchange_rate
+```
 
 - #### Step 3: Build the canister into Wasm:
 
-`cargo build --target wasm32-unknown-unknown --release`
+```
+cargo build --target wasm32-unknown-unknown --release
+```
 
 - #### Step 4: Deploy the canister locally:
-`./deploy.sh local`
+```
+./deploy.sh local
+```
 
 The output of this script will resemble the following:
 

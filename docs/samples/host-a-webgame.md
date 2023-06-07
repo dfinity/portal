@@ -69,11 +69,15 @@ cd examples/hosting/unity-webgl-template
 
 - #### Step 4: Start the local network by running this command:
 
-`dfx start --background`
+```
+dfx start --background
+```
 
 - #### Step 5: When the local network is up and running, run this command to deploy the canisters:
 
-`dfx deploy`
+```
+dfx deploy
+```
 
 :::caution
 If you get error code 500 after deploying to the IC mainnet, try to use raw keyword in the URL like this: https://\<canister-id\>.raw.ic0.app.
@@ -103,11 +107,15 @@ cd examples/hosting/godot-html5-template
 
 - #### Step 2: Start the local network by running this command:
 
-`dfx start --background`
+```
+dfx start --background
+```
 
 - #### Step 3: When the local network is up and running, run this command to deploy the canisters:
 
-`dfx deploy`
+```
+dfx deploy
+```
 
 :::caution
 If you get error code 500 after deploying to the IC mainnet, try to use raw keyword in the URL like this: https://\<canister-id\>.raw.ic0.app.
