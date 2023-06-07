@@ -41,7 +41,7 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 
 ## Submitting an NNS proposal to start the SNS swap
 After the SNS canisters are deployed and the dapp's control is handed over to
-the SNS, an [NNS proposal starts the swap](/lifecycle-sns/sns-launch.md/#SNS-launch-step-startSwap). 
+the SNS, an [NNS proposal starts the swap](../lifecycle-sns/sns-launch.md/#SNS-launch-step-startSwap). 
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing
