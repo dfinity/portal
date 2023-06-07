@@ -33,7 +33,7 @@ there is a shorthand where you can just provide `dfx canister -- network ic`.
 
 ## SNS canister creation calling SNS-W
 After the wallet canister is listed in SNS-W, 
-the [SNS canisters are created triggered by a manual call to SNS-W](/lifecycle-sns/sns-launch.md/#SNS-launch-step-deployment).
+the [SNS canisters are created triggered by a manual call to SNS-W](../lifecycle-sns/sns-launch.md/#SNS-launch-step-deployment).
 You can find this command in an example in the SNS local testing repository [here](https://github.com/dfinity/sns-testing/blob/main/deploy_sns.sh#L33)
 ```
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
