@@ -98,7 +98,7 @@ Make sure to test upgrading canisters through SNS proposals, test updating asset
 The developer can keep direct control over the dapp’s canisters registered with testflight SNS.
 The testflight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](/docs/current/developer-docs/integrations/sns/get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
+To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](../get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
 
 See the documentation for more information about the [SNS Testflight](/docs/current/developer-docs/integrations/sns/get-sns/testflight.md), including setup instructions.
 
