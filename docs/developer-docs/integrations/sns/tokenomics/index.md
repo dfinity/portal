@@ -24,7 +24,7 @@ that allow you to try out different configurations and assess them.
 
 
 In addition, during the preparation phase you might want to prepare the [integration of the SNS
-with your dapp](/integrate-sns/index.md).
+with your dapp](../integrate-sns/index.md).
 Moreover, you should [test](/get-sns/get-sns-intro.md) your settings and convince yourself
 that the launched SNS will work successfully with your dapp.
 Integration and testing are topics that are not only relevant during the SNS launch but also

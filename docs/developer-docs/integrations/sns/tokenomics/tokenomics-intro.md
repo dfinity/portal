@@ -6,7 +6,8 @@ sidebar_position: 4
 Each SNS can be individually configured with parameters that define, among other things,
 the tokenomics of an SNS and the dapp that it governs. 
 Therefore when launching or maintaining an SNS, it is important to understand tokenomics.
-The described concepts are also relevant for [other DAOs](/lifecycle-sns/dao-alternatives.md).
+The described concepts are also relevant for 
+[other DAOs](../lifecycle-sns/dao-alternatives.md).
 
 ## Tokenomics overview
 ### What is tokenomics?

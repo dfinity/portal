@@ -6,7 +6,7 @@ sidebar_position: 6
 Typically, one would first decide on tokenomics and other configurations, 
 for examples using the
 [SNS tokenomics training & tools](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration)
-as described in [this section](/tokenomics/tokenomics-intro.md).
+as described in [this section](./tokenomics-intro.md).
 After deciding on these configurations, the next step is to
 translate them into 
 [initial parameters](/lifecycle-sns/sns-launch.md/#SNS-launch-step-preparation)
