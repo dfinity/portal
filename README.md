@@ -296,9 +296,11 @@ The list of tags is not final, and will be updated as the project evolves. For n
 
     tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
     description: string, // description of the project
-    usesInternetIdentity: boolean,
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
+    
+    usesInternetIdentity: boolean,
+    authOrigins?: string[]; // optional additional (URL) origins that can be utilized for signing in to your dapp
 
     github?: string, // full URL to github repo, if available
     youtube?: string, // full URL to a YouTube video or channel, if available
