@@ -52,9 +52,9 @@ govern the dapp, and manage SNS canister upgrades.
 This section includes
 * [An introduction to managing an SNS](./managing-sns/manage-sns-intro.md).
 * [Tips regarding cycles management for the canisters](./managing-sns/cycles-usage.md).
- <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); 
-Information on how SNS are upgraded (managing-sns/upgradeSNS.md); 
-A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
+
+
+<!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); Information on how SNS are upgraded (managing-sns/upgradeSNS.md); A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
 
 ## Explanations and guides for users
 Finally, the website and Wiki contain information relevant for users of the SNS.
