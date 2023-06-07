@@ -4,7 +4,7 @@ sidebar_position: 2
 # SNS local testing
 
 After having
-[chosen the initial SNS parameters in a .yaml file](./tokenomics/preparation.md)
+[chosen the initial SNS parameters in a .yaml file](../tokenomics/preparation.md)
 and before requesting an SNS launch in production,
 the SNS launch should be tested locally.
 A detailed description of how to run through [all the steps included
