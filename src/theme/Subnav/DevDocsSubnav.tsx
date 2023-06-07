@@ -3,6 +3,7 @@ import { ThemeClassNames, useThemeConfig } from "@docusaurus/theme-common";
 import clsx from "clsx";
 import DocSidebarNavbarItem from "@theme/NavbarItem/DocSidebarNavbarItem";
 import DocNavbarItem from "@theme/NavbarItem/DocNavbarItem";
+import DefaultNavbarItem from "@theme/NavbarItem/DefaultNavbarItem";
 import DropdownNavbarItem from "@theme/NavbarItem/DropdownNavbarItem";
 import { DevDocsBreadcrumbs } from "@site/src/components/Common/DevDocsBreadcrumbs";
 import { LinkLikeNavbarItemProps } from "@theme/NavbarItem";
@@ -36,7 +37,13 @@ export function DevDocsSubnav() {
                 />
               );
             default:
-              return null;
+              return (
+                <DefaultNavbarItem
+                  key={index}
+                  href={item.href}
+                  {...item}
+                ></DefaultNavbarItem>
+              );
           }
         })}
       </ul>

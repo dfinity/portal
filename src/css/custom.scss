@@ -53,7 +53,7 @@
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
-html.docs-doc-page {
+html.docs-doc-page, html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
@@ -88,6 +88,12 @@ html.docs-doc-page {
         }
       }
     }
+  }
+}
+
+html.plugin-blog {
+  .container {
+    max-width: unset;
   }
 }
 
@@ -142,7 +148,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     }
 
     @media (min-width: 996px) {
-      div[class*="docItemContainer_"] {
+      div[class*="docItemContainer_"], div.blog-post-content-layout {
         // padding around article content
         padding: 40px 100px;
       }

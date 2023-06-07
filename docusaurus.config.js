@@ -331,9 +331,8 @@ const subnavItems = [
     label: "Motoko"
   },
   {
-    type: "docSidebar",
     position: "left",
-    sidebarId: "blog",
+    href: "/blog",
     label: "Blog"
   },
   {
@@ -433,6 +432,9 @@ const config = {
           remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
           rehypePlugins: [katex],
           editUrl: "https://github.com/dfinity/portal/edit/master/"
+        },
+        blog: {
+          path: 'blog',
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss")

@@ -1,10 +1,7 @@
 /* Don't display docSidebar items in the top navbar */
-html.plugin-pages,
-html.plugin-docs {
   .navbar__inner .navbar__items:first-child .navbar__item {
     display: none;
   }
-}
 
 .navbar__link {
   font-weight: var(--ifm-font-weight-bold);
