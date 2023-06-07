@@ -26,6 +26,9 @@ ic-admin  \
    --summary "This proposal whitelists developer's principal to deploy SNS"
 ``` 
 
+For the ic-admin command you could substitute `NETWORK_URL` with `https://nns.ic0.app` and for the `dfx`
+there is a shorthand where you can just provide `dfx canister -- network ic`.
+
 
 
 ## SNS canister creation calling SNS-W
