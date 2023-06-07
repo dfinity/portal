@@ -84,9 +84,9 @@
 .whiteBlur {
     display: block;
     position: absolute;
-    z-index: -1;
     width: 900px;
     top: -100px;
+    @apply -z-1;
 }
 
 @media screen and (max-width: 996px) {

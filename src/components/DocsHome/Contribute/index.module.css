@@ -173,7 +173,7 @@
   bottom: -450px;
   left: 660px;
   position: absolute;
-  z-index: -1;
+  @apply -z-1;
 }
 .mobileContributeGraphic {
   display: none;
@@ -186,12 +186,12 @@
 
 .mobileCardsContainer {
   position: relative;
-  z-index: 1000;
   display: flex;
   overflow-x: scroll;
   scroll-padding: 50% 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
+  @apply z-10;
 }
 
 .mobileCardsContainer::-webkit-scrollbar {
@@ -291,10 +291,10 @@
   .mobileContributeGraphic {
     display: block;
     object-fit: cover;
-    z-index: -100;
     top: -100px;
     width: 1000px;
     position: absolute;
+    @apply -z-10;
   }
 }
 @media screen and (max-width: 640px) {
