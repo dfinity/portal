@@ -35,10 +35,10 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 26px;
-  z-index: 1000;
   margin-left: 24px;
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
+  @apply z-30;
 }
 
 .callToAction:hover {
@@ -109,7 +109,8 @@
     var(--ifm-transition-custom-curve);
 }
 .cardHover:hover .motokoBackground,
-.cardHover:hover .rustBackground {
+.cardHover:hover .rustBackground,
+.cardHover:hover .bitfinityBackground {
   transition: all var(--ifm-transition-custom-speed)
     var(--ifm-transition-custom-curve);
 }
@@ -118,6 +119,9 @@
 }
 .cardHover:hover .rustBackground {
   bottom: 20px;
+}
+.cardHover:hover .bitfinityBackground {
+  bottom: 0;
 }
 
 .bodyContainer {
@@ -166,6 +170,13 @@
   right: -8px;
 }
 
+.bitfinityBackground {
+  height: 120px;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+}
+
 .scrollContainer {
   display: block;
   width: 100vw;
@@ -174,7 +185,6 @@
 
 .samplesContainer {
   position: relative;
-  z-index: 1000;
   display: flex;
   overflow-x: scroll;
   scroll-padding: 50% 0;
@@ -182,6 +192,7 @@
   scrollbar-width: thin;
   gap: 20px;
   margin-bottom: 120px;
+  @apply z-30;
 }
 
 .samplesContainer::-webkit-scrollbar {
@@ -259,6 +270,7 @@
   }
 
   .motokoBackground,
+  .bitfinityBackground,
   .rustBackground {
     display: none;
   }

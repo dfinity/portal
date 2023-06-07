@@ -168,9 +168,8 @@ default value but that can also be changed.
 To make sure that all parameters are set to valid values, that are also consistent
 with each other, there is a tool to validate this input file. 
 
-**To create the SNS parameter yaml file and validate it, follow the steps
-'Deployment Arguments' in the
-[SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli).
+**To create the SNS parameter yaml file and validate it, follow the [steps](https://github.com/dfinity/ic/tree/master/rs/sns/cli#creating-the-configuration-file) in the
+[SNS CLI tool documentation](https://github.com/dfinity/ic/tree/master/rs/sns/cli).
 The tool is also available through the dfx cache like this: `$(dfx cache show)/sns`**
 
 To give you an overview, these are the categories of parameters that you can set:

@@ -33,7 +33,6 @@
 
 .illustrationCTA {
     position: absolute;
-    z-index: 100;
     left: 3.5%;
     top: 23%;
     padding: 8px 24px;
@@ -44,6 +43,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
+    @apply z-10;
 }
 
 .illustrationCTA:hover {

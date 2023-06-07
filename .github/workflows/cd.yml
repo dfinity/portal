@@ -24,6 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: git submodule update --init
       - uses: actions/setup-node@v3
         with:
