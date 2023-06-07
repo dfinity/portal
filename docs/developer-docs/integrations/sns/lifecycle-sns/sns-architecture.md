@@ -31,7 +31,7 @@ Each SNS community can then simply decide to adopt these new, approved versions 
 
 ### Customizability
 Individual SNSs can nevertheless be customized by choosing parameters, 
-called [nervous system parameters](/managing-sns/nervous-system-parameters.md), that
+called nervous system parameters, that
 can be configured to realise different forms of voting and tokenomics.
 
 ## The SNS subnet
