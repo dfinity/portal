@@ -443,10 +443,8 @@ const sidebars = {
                     {
                       type: "category",
                       label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launch-sns/launch-sns",
-                    },
+                      type: "doc",
+                      id: "developer-docs/integrations/sns/launch-sns/launch-sns",
                     },
                     {
                       type: "category",
