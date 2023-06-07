@@ -33,8 +33,8 @@ want to build services that integrate with SNSs, such as wallet dapps or decentr
 
 It includes
 * [An introduction to SNS integration](./integrate-sns/index.md). <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
-* [Guidelines how to integrate with the ledger canister](integrate-sns/ledger-integration.md).
-* [Guidelines how to integrate with the index canister](integrate-sns/index-integration.md).
+* [Guidelines how to integrate with the ledger canister](./integrate-sns/ledger-integration.md).
+* [Guidelines how to integrate with the index canister](./integrate-sns/index-integration.md).
 
 ## SNS testing
 An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS, is testing.
@@ -50,8 +50,8 @@ This parts explains how an [SNS is launched on mainnet](./launch-sns/launch-sns.
 After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, 
 govern the dapp, and manage SNS canister upgrades.
 This section includes
-* [An introduction to managing an SNS](managing-sns/manage-sns-intro.md).
-* [Tips regarding cycles management for the canisters](managing-sns/cycles-usage.md).
+* [An introduction to managing an SNS](./managing-sns/manage-sns-intro.md).
+* [Tips regarding cycles management for the canisters](./managing-sns/cycles-usage.md).
  <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); 
 Information on how SNS are upgraded (managing-sns/upgradeSNS.md); 
 A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
