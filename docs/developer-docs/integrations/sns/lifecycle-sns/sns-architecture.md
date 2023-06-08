@@ -20,7 +20,7 @@ a brief description of alternative ways how to use the SNS code or how to get a 
 More concretely, this means that the NNS community approved the original SNS canisters' code
 and continuously approves new improved SNS versions.
 
-### SNS wasm modules cansiter (SNS-W){#SNS-W}
+### SNS wasm modules canister (SNS-W){#SNS-W}
 All approved SNS canister version are stored on an NNS canister,
 called the **SNS wasm modules canister (SNS-W)**.
 When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
