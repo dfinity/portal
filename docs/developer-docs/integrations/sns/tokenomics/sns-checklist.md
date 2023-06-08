@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-#SNS Preparation Checklist
+# SNS Preparation Checklist
 
 :::caution
 This guide is intended for informational purposes only and may be modified over time as 
