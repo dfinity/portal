@@ -166,12 +166,12 @@ module.exports = {
       process: require.resolve("process/browser"),
     }),
   ],
-  // proxy /api to port 8000 during development
+  // proxy /api to port 4943 during development
   devServer: {
     proxy: {
       "/api": {
 	static: './',
-        target: "http://localhost:8000",
+        target: "http://localhost:4943",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "/api",
@@ -193,8 +193,8 @@ app.get('/', function (req, res) {
   res.send('Hello World!'); // This will serve your request to '/'.
 });
 
-app.listen(8000, function () {
-  console.log('Example app listening on port 8000!');
+app.listen(4943, function () {
+  console.log('Example app listening on port 4943!');
  });
 ```
 

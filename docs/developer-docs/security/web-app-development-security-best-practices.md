@@ -41,7 +41,7 @@ The [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-cl
 
 #### Recommendation
 
-Never use `agent.fetchRootKey()` in production builds, only in test builds. Not calling this method will result in the hard coded root subnet public key of mainnet being used for signature verification, which is the desired behavior in production.
+Never use `agent.fetchRootKey()` in production builds, only in test builds. Not calling this method will result in the hard coded root subnet public key of the mainnet being used for signature verification, which is the desired behavior in production.
 
 ## Nonspecific to the Internet Computer
 

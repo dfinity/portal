@@ -82,7 +82,7 @@ Replace these variables with the following values:
 -   the `ARCHIVE_CONTROLLER` is the [controller principal](../../setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
 
 :::info
-When you deploy to the mainnet:
+When you deploy on the mainnet:
 
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new archives. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::

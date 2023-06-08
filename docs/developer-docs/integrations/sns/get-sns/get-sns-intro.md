@@ -1,10 +1,11 @@
 ---
 sidebar_position: 1
 ---
+
 # SNS testing before the launch
 Before launching an SNS it is advisable to thoroughly test it. 
 
-There are two main tools for testing the SNS
+There are two main tools for testing the SNS:
 1. [SNS local testing](./local-testing.md) allows one to test the SNS locally.
    This includes 
    * Testing the SNS's launch which enables developers to 
@@ -21,5 +22,6 @@ under SNS control. This testing can be done locally or on mainnet with a test
    by manual scrips in a centralized setting can be executed by a DAO. 
    This might require new proposals or specific privilege settings in the
    dapp canister(s). Therefore, developers are encouraged to run perform 
-   an SNS testflight on mainnet, potentially for multiple days or weeks, to
+   an SNS testflight on the mainnet, potentially for multiple days or weeks, to
    ensure that all aspects have been covered.
+
