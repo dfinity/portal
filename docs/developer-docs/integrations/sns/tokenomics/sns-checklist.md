@@ -128,7 +128,7 @@ The idea is to provide the community with information so they can verify what th
 ##4. SNS Launch Workflow
 
 ## 4.1. Submit canister creation proposal
-First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool 2](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
+First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
 
 ## 4.2. Create SNS canisters
 When the NNS neurons have voted in favor of the canister creation proposal, the SNS canisters can be installed, and prepared for the SNS launch. The SNS canisters are installed with the [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli).
