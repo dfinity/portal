@@ -23,11 +23,11 @@ For ease of use, you can copy/paste the cycles amounts below:
 | 10 million        | 10000000         |
 | 100 million       | 100000000         |
 | 1 billion         | 1000000000         |
-| 10 billion        | 1000000000         |
-| 100 billion        | 10000000000         |
-| 1 trillion         | 100000000000         |
-| 10 trillion        | 1000000000000         |
-| 100 trillion        | 10000000000000         |
+| 10 billion        | 10000000000         |
+| 100 billion       | 100000000000         |
+| 1 trillion        | 1000000000000         |
+| 10 trillion       | 10000000000000         |
+| 100 trillion      | 100000000000000         |
 
 ### Checking the cycles balance of a canister
 
