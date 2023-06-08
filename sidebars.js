@@ -393,40 +393,36 @@ const sidebars = {
                   items: [
                     {
                       type: "category",
-                      label: "SNS & DAO primer",
+                      label: "Introduction to the SNS",
+                      items: [
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-intro-highlevel",
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-architecture",
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-launch",
+                        "developer-docs/integrations/sns/lifecycle-sns/dao-alternatives",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Preparing an SNS launch",
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/tokenomics/index",
                     },
                       items: [
-                        
-                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-                        "developer-docs/integrations/sns/tokenomics/governance-interaction",
+                        "developer-docs/integrations/sns/tokenomics/sns-checklist",
                         "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
                         "developer-docs/integrations/sns/tokenomics/rewards",
+                        "developer-docs/integrations/sns/tokenomics/preparation",
                       ],
                     },
                     {
-                      type: "doc",
-                      label: "SNS introduction",
-                      id: "developer-docs/integrations/sns/sns-intro",
-                    },
-                    {
                       type: "category",
-                      label: "Get an SNS",
+                      label: "Integrating with an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                        id: "developer-docs/integrations/sns/integrate-sns/index",
                     },
-                      items: [
-                        "developer-docs/integrations/sns/get-sns/preparation",
-                        "developer-docs/integrations/sns/get-sns/local-testing",
-                        "developer-docs/integrations/sns/get-sns/testflight",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Integrate with an SNS",
                       items: [
                         "developer-docs/integrations/sns/integrate-sns/index-integration",
                         "developer-docs/integrations/sns/integrate-sns/ledger-integration",
@@ -434,12 +430,31 @@ const sidebars = {
                     },
                     {
                       type: "category",
-                      label: "Manage an SNS",
+                      label: "Testing an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                    },
+                      items: [
+                        "developer-docs/integrations/sns/get-sns/local-testing",
+                        "developer-docs/integrations/sns/get-sns/testflight",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Launching an SNS",
+                      type: "doc",
+                      id: "developer-docs/integrations/sns/launch-sns/launch-sns",
+                    },
+                    {
+                      type: "category",
+                      label: "Managing an SNS",
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
                     },
                       items: [
+                        "developer-docs/integrations/sns/managing-sns/sns-governance",
                         "developer-docs/integrations/sns/managing-sns/cycles-usage",
                       ],
                     },
