@@ -434,7 +434,9 @@ const config = {
           editUrl: "https://github.com/dfinity/portal/edit/master/"
         },
         blog: {
-          path: 'blog',
+          path: "blog",
+          blogSidebarCount: "ALL",
+          postsPerPage: "ALL"
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss")

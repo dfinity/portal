@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import {
@@ -28,11 +28,11 @@ function BlogListPageMetadata(props) {
 function BlogListPageContent(props) {
   const { metadata, items, sidebar } = props;
 
-  // to be reworked
-
   return (
     <BlogLayout sidebar={sidebar}>
-      <BlogPostItems items={items} />
+      <h1 className="tw-heading-2 !mb-10">Dev Blog</h1>
+
+      <BlogPostItems items={items} withFeatured={true} />
       <BlogListPaginator metadata={metadata} />
     </BlogLayout>
   );

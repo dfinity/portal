@@ -1,38 +1,22 @@
-import React from "react";
-import clsx from "clsx";
 import {
   HtmlClassNameProvider,
   ThemeClassNames,
-  PageMetadata,
 } from "@docusaurus/theme-common";
-import {
-  docVersionSearchTag,
-  DocsSidebarProvider,
-} from "@docusaurus/theme-common/internal";
+import { DocsSidebarProvider } from "@docusaurus/theme-common/internal";
 import DocPageLayout from "@theme/DocPage/Layout";
-import SearchMetadata from "@theme/SearchMetadata";
+import clsx from "clsx";
+import React, { createContext } from "react";
 
-export default function DocPage({ children }) {
-  const sidebarItems = [
-    {
-      label: "All",
-      href: "?",
-    },
-    {
-      label: "New Features",
-      href: "?tag=new-features",
-    },
-    {
-      label: "Devs",
-      href: "?tag=devs",
-    },
-    {
-      label: "Security",
-      href: "?tag=security",
-    },
-  ];
+export const BlogContext = createContext({ tags: [], setTags: () => {} });
 
-  console.log(children);
+export default function DocPage(props) {
+  const children = props.children;
+
+  const sidebarItems = props.sidebar.items.map(({ title, permalink }) => ({
+    label: title,
+    href: permalink,
+  }));
+
   return (
     <>
       <HtmlClassNameProvider
