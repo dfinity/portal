@@ -25,15 +25,6 @@ dfx can now use gzip on the wasm module as a final step when building canisters.
 
 If you want to specify the `.wasm.gz` file directly for custom canisters, this functionality is still supported. Metadata, optimization, or shrink options that are set in the `dfx.json` file will be applied after the custom `.wasm.gz` file is decompressed, modified, then compressed back into `wasm.gz` at the end of the canister build process. 
 
-### Feature: dfx deps subcommands
-The `dfx pull` command has been renamed and reworked into the `dfx deps` command. This command was reworked to create an intuitive, complete user experience, and includes a set of subcommands to help achieve that. These subcommands are:
-
-- `dfx deps pull`: this command pulls the dependencies directly from the mainnet and generates a `deps/pulled.json` file. The associated candid files of any direct dependencies will be put into the `deps/candid/` directory. 
-- `dfx deps init`: this command can be used to set the init arguments that should be used for the pulled dependencies. Any arguments set will be saved in the `deps/init.json` file. 
-- `dfx deps deploy`: this command deploys the pulled dependencies onto a local replica using the init arguments stored within the `deps/init.json` file.  
-
-As a note, it is encouraged that all generated files in the `deps/` directory be version controlled.
-
 ### Feature: Detailed logging for ic-asset:
 Log output for `dfx deploy -v` (or `-vv`) now includes more detailed information such as:
 - The number of chunks that have been uploaded and the total number of bytes.
@@ -44,7 +35,7 @@ Log output for `dfx deploy -v` (or `-vv`) now includes more detailed information
 ### Feature: The `.env` file now includes all created canister IDs. 
 In previous versions, the `.env` file only contained canister IDs for canisters listed as explicit dependencies during the build process. Now, the `.env` file includes all canisters and their canister IDs for the specified network. 
 
-### Feature: Users are now asked for consent when they remove themselves as the principal. 
+### Feature: Users are now asked for consent when they remove themselves as the controller. 
 If a user removes themselves, or the wallet that they use, they can lose control over a canister. To prevent this loss, `dfx canister update-settings` will now ask for confirmation when a principal or wallet is removed from the list of controllers for a canister. This check can be skipped by using either the `–yes`/`-y` argument, or passing ‘yes’ to the command with a pipe such as:
 
 ```
