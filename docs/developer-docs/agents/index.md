@@ -25,6 +25,7 @@ In addition to those, there are several other community-supported agents:
   - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+  - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
 - Java
   - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python

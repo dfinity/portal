@@ -132,7 +132,7 @@ To deploy the dapp locally:
 
         dfx deploy
 
-To deploy the dapp to the Internet Computer blockchain mainnet:
+To deploy the dapp on the Internet Computer blockchain mainnet:
 
 - #### Step 1:  Check that you are still in the root directory for your project, if needed.
 

@@ -25,7 +25,7 @@ can serve a custom service worker).
 :::info You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
 
 ```ts
-// Point to icp-api for mainnet. Leaving host undefined will work for localhost
+// Point to icp-api for the mainnet. Leaving host undefined will work for localhost
 const host = isProduction ? 'https://icp-api.io' : undefined;
 const agent = new HttpAgent({ host });
 ```

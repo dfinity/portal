@@ -53,18 +53,18 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
 - #### Step 2: A NNS proposal approves the creation of the SNS{#SNS-launch-step-NNSapproval}
-    To ensure that malicious parties cannot simply fill the SNS subnet with non-approved SNSs, the
+  To ensure that malicious parties cannot simply fill the SNS subnet with non-approved SNSs, the
   canister which is responsible for deploying SNSs, [SNS-W](sns-architecture.md#SNS-W), 
   contains a list of principals that are allowed to do so.
-The first step in launching an SNS is asking the NNS community for approval to be added to
-this list. 
-If the proposal is adopted, the defined principal is allowed to install exactly one SNS.
+  The first step in launching an SNS is asking the NNS community for approval to be added to
+  this list. 
+  If the proposal is adopted, the defined principal is allowed to install exactly one SNS.
 
 - #### Step 3: The SNS canisters are created by a manual call to SNS-W.{#SNS-launch-step-deployment} 
-When all initial parameters are specified and the NNS approved the SNS launch,
+  When all initial parameters are specified and the NNS approved the SNS launch,
   the SNS canisters can be created by a manual call to [SNS-W](sns-architecture.md#SNS-W).
-This will initiate the creation of the SNS canisters and set their initial parameters as
-chosen in [Step 1](#SNS-launch-step-preparation).
+  This will initiate the creation of the SNS canisters and set their initial parameters as
+  chosen in [Step 1](#SNS-launch-step-preparation).
 
 - #### Step 3: Pre-decentralization-swap mode.
   After the SNS canister creation, the canisters exist but are not yet

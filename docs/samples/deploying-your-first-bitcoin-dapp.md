@@ -59,7 +59,9 @@ dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
 - `--argument '(variant { Testnet })'` passes the argument `Testnet` to initialize the smart contract, telling it to connect to the Bitcoin testnet
 
 :::info
-We're initializing the canister with `variant { Testnet }`, so that the canister connects to the the [Bitcoin testnet](https://en.bitcoin.it/wiki/Testnet). To be specific, this connects to `Testnet3`, which is the current Bitcoin test network used by the Bitcoin community.
+We're initializing the canister with `variant { Testnet }`, so that the canister connects to the the [Bitcoin testnet](https://en.bitcoin.it/wiki/Testnet). To be specific, this connects to `Testnet3`, which is the current Bitcoin test network used by the Bitcoin community. 
+
+To connect to the **Bitcoin mainnet**, one should use `variant { Mainnet }`
 :::
 
 
@@ -75,9 +77,9 @@ Candid:
     basic_bitcoin: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>
 ```
 
-Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid UI, which is the link you see in the output above.
+Your canister is live and ready to use! You can interact with it using either the command line, or using the Candid web UI, which is the link you see in the output above.
 
-In the output above, to see the Candid Web UI for your bitcoin canister, you would use the URL `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>`. 
+In the output above, to see the Candid web UI for your bitcoin canister, you would use the URL `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<YOUR-CANISTER-ID>`. 
 
 ![Candid web UI for bitcoin canister](_attachments/candid-web-ui-bitcoin-canister.webp)
 
@@ -173,7 +175,7 @@ reflected in your current balance.
 In this tutorial, you were able to:
 
 * Deploy a canister smart contract on the ICP blockchain that can receive & send Bitcoin.
-* Use a cycles faucet to deploy the canister to ICP blockchain on mainnet for free.
+* Use a cycles faucet to deploy the canister to ICP blockchain on the mainnet for free.
 * Connect the canister to the Bitcoin testnet.
 * Send the canister some testnet BTC.
 * Check the testnet BTC balance of the canister.

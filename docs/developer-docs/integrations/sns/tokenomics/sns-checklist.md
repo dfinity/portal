@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-#SNS Preparation Checklist
+# SNS Preparation Checklist
 
 :::caution
 This guide is intended for informational purposes only and may be modified over time as 
@@ -32,7 +32,7 @@ It is considered to be best practice that sale participants have the majority of
 The minimum and maximum funding target must be defined for the decentralization sale. Add information about the planned usage of the funds, e.g. plans of ramping up the team.
 
 ### 1.1.5. SNS tokenomics tool
-Use the [SNS tokenomics tool 12](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl94jPt63CdOXH6ROy-WSkacW6P4qcAKMLrfBPc/edit) to analyze and document the chosen amount of tokens, initial distribution of tokens, dissolve delays etc. Both the tool and a training deck can be found in [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
+Use the [SNS tokenomics tool](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl94jPt63CdOXH6ROy-WSkacW6P4qcAKMLrfBPc/edit) to analyze and document the chosen amount of tokens, initial distribution of tokens, dissolve delays etc. Both the tool and a training deck can be found in [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
 
 ## 1.2. Technical architecture / whitepaper / project roadmap
 
@@ -55,7 +55,7 @@ The SNS is initialized using a configuration file, and the parameters in this fi
 
 For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (section 1.1.5 above) to create the YAML configuration file. The [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) is a good example of how to format the file (note: the latest version of SNS may have new/different parameters). Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
-Use the [sns cli tool 3](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally and on the mainnet before the final canisters are set up. See section 2.4 for more information about testing.
+Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally and on the mainnet before the final canisters are set up. See section 2.4 for more information about testing.
 
 ## 1.5. Create NNS proposals
 As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters.
@@ -128,7 +128,7 @@ The idea is to provide the community with information so they can verify what th
 ##4. SNS Launch Workflow
 
 ## 4.1. Submit canister creation proposal
-First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool 2](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
+First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
 
 ## 4.2. Create SNS canisters
 When the NNS neurons have voted in favor of the canister creation proposal, the SNS canisters can be installed, and prepared for the SNS launch. The SNS canisters are installed with the [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli).

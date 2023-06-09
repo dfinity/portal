@@ -106,7 +106,7 @@ To review the default configuration file for your project:
 
     -   The `dfx` setting is used to identify the version of the software used to create the project.
 
-    -   The `networks` section specifies information about the networks to which you connect. The default settings bind the local canister execution environment to the local host address `127.0.0.1` and port `8000`.
+    -   The `networks` section specifies information about the networks to which you connect. The default settings bind the local canister execution environment to the local host address `127.0.0.1` and port `4943`.
 
         If you have access to other Internet Computer network providers, the `networks` section can include network aliases and URLs for connecting to those providers.
 
