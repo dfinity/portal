@@ -74,7 +74,7 @@ export default function PreHero({}): JSX.Element {
                 World Computer
               </h1>
               <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-2 text-white mb-0">
-                Decentralize Everything
+                build on the network
               </p>
             </motion.div>
 
