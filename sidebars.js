@@ -557,6 +557,7 @@ const sidebars = {
       type: "category",
       label: "Internet Computer specification",
       items: [
+        "references/http-gateway-protocol-spec",
         "references/ic-interface-spec",
         "references/id-encoding-spec",
       ]
