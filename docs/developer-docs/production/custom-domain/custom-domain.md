@@ -22,7 +22,8 @@ the certificates, and provide your own infrastructure that serves the service wo
 However, you are also more flexible in how you configure your domain (e.g., you
 can serve a custom service worker).
 
-:::info You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
+:::info
+You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
 
 ```ts
 // Point to icp-api for the mainnet. Leaving host undefined will work for localhost
@@ -110,6 +111,7 @@ In case the call failed, you will get an error message indicating the reason for
 * **More than one DNS TXT record**: there are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
 * **Failed to retrieve known domains**: the `ic-domains`-file is not accessible under `.well-known/ic-domains`.
 * **Domain is missing from list of known domains**: the custom domain is missing from the `ic-domains`-file.
+* **Rate limit exceeded for apex domain**: too many registration requests have been submitted for the apex domain. Try again later. You can submit at most 5 registration requests per apex domain and hour.
 --------------------------------------
 
 - #### Step 4: Processing the registration can take several minutes.
