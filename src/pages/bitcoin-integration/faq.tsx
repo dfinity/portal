@@ -94,7 +94,7 @@ function BitcoinFaqPage() {
       description="All you need to know about ckBTC and ICP's Bitcoin integration."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-btc-faq.jpg"></ShareMeta>
 
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
