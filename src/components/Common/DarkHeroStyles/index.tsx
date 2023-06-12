@@ -14,7 +14,7 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
             color: white;
           }
           nav.navbar .navbar__search-button > span:nth-of-type(2) {
-            color: #ffffff80;
+            color: #ffffffb0;
           }
 
           @media (min-width: 996px) {

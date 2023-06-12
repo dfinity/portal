@@ -20,8 +20,8 @@ import communityProjects from "@site/community/communityProjects";
 
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
-import Head from "@docusaurus/Head";
 import { useQueryParam } from "../utils/use-query-param";
+import ShareMeta from "../components/Common/ShareMeta";
 
 const CommunityProjectCard: React.FC<{ project: SampleItem }> = ({
   project,
@@ -194,21 +194,8 @@ function Samples(): React.ReactNode {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-samples.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-samples.jpeg"
-          }
-        />
-        <title>Sample Code</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-samples.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <section className="max-w-page w-9/10 mx-auto relative mt-20 md:mt-40 lg:mb-30">

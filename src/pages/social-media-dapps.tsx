@@ -162,6 +162,7 @@ function SocialMediaDappsPage() {
               <img
                 src="/img/social-media-dapps/hero.webp"
                 className="w-80 sm:w-[480px] md:w-auto max-w-full"
+                alt="Social media dapps"
               />
             </div>
           </motion.section>
@@ -194,6 +195,7 @@ function SocialMediaDappsPage() {
           <div className="relative z-[-1]">
             <AnimateSpawn
               el={motion.img}
+              alt=""
               variants={transitions.item}
               src={BlobGradient}
               className="absolute pointer-events-none z-[-1]
@@ -284,6 +286,7 @@ function SocialMediaDappsPage() {
             </MotionLink>
             <img
               src={BlobBlue}
+              alt=""
               className="
                 hidden
                 md:block
@@ -336,6 +339,7 @@ function SocialMediaDappsPage() {
         <section className="container-10 mx-auto relative">
           <img
             src={BlobBlue}
+            alt=""
             className="
               absolute 
               right-[-700px] md:right-[-800px] 

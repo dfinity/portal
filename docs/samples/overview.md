@@ -91,7 +91,6 @@ The example demonstrates a counter dapp and an HTTP interface. It is essentially
 - [Documentation](http-counter).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/http_counter).
 
-
 ## Hosting a static website
 
 This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to the IC.  
@@ -114,6 +113,11 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 
 - [Documentation](internet-identity-sample).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
+
+## Invoice canister
+
+- [Documentation](invoice-canister).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/invoice-canister).
 
 ## Minimal counter dapp
 
@@ -194,7 +198,7 @@ This example is a simple CRUD dapp.
 
 This dapp is a simple canister that reports the Principal of its caller.
 - [Documentation](whoami).
--   [Motoko](https://github.com/dfinity/examples/tree/master/motoko/whoami).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/whoami).
 
 ## Explore further samples in Motoko
 

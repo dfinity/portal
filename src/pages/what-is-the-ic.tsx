@@ -1,5 +1,3 @@
-import Head from "@docusaurus/Head";
-import useGlobalData from "@docusaurus/useGlobalData";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
@@ -9,6 +7,7 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import TopicCard from "../components/HowItWorksPage/TopicCard";
 import data from "@site/.docusaurus/what-is-the-ic-data/default/what-is-the-ic.json";
+import ShareMeta from "../components/Common/ShareMeta";
 
 const RoadmapPage: React.FC = () => {
   return (
@@ -17,21 +16,8 @@ const RoadmapPage: React.FC = () => {
       description="The Internet Computer (IC) is the world computer of the Web 3.0 age. This page explains what the IC is and why it is a great choice to host Web 3.0 apps."
       editPath="https://github.com/dfinity/portal/tree/master/what-is-the-ic"
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-what-is-the-ic.jpg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-what-is-the-ic.jpg"
-          }
-        />
-        <title>What is the Internet Computer</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-what-is-the-ic.jpg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
