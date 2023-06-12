@@ -1,12 +1,14 @@
 # How to use HTTP outcalls: GET
 ## Overview
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. The main intent of this canister is informational for developers. 
+A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. 
+
+**The main intent of this canister is to show developers how to make idempotent GET requests.**
 
 This example takes less than 5 minutes to complete.
 
 ## Sample Dapp
 
-The sample canister exposes a public method, which makes an HTTPS GET request under the hood.
+The sample canister exposes a public method, which makes a GET request under the hood.
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
