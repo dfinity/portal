@@ -137,5 +137,5 @@ $ dfx canister id persistent_storage
 rrkah-fqaaa-aaaaa-aaaaq-cai
 ```
 
-**http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
+**http://<candid_canister_id>.localhost:4943/?id=<backend_canister_id>**
 

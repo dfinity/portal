@@ -1,6 +1,5 @@
 import transitions from "@site/static/transitions.json";
 import React from "react";
-import OpenOverlayIcon from "../../../../static/img/plus.svg";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import { WhatIsIcpTopic } from "../WhatIsIcpData";
 
@@ -21,6 +20,7 @@ const TopicCard: React.FC<{
           ${topic.cardImageFit === "center" ? "object-contain" : "object-cover"}
           md:h-auto 
           md:w-[400px] ${index % 2 == 1 ? "md:order-1" : ""}`}
+        alt={topic.name}
       ></img>
       <div className="px-6 py-8 pb-8 md:px-12 flex-1 md:py-16">
         <h2 className="tw-heading-5 md:tw-heading-3 mb-3 md:mb-6">

@@ -80,10 +80,7 @@ function TokenHolders(): JSX.Element {
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-icp-tokens.jpg" />
           {isDark && <DarkHeroStyles />}
-          <section
-            className="bg-infinite text-white overflow-hidden"
-            ref={ref}
-          >
+          <section className="bg-infinite text-white overflow-hidden" ref={ref}>
             <AnimateSpawn
               className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
               variants={transitions.container}
@@ -131,10 +128,11 @@ function TokenHolders(): JSX.Element {
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
                 variants={transitions.item}
               >
-                The ICP token plays a number of roles on the Internet Computer. Firstly, as a
-                governance token, it can be staked to exercise those governance rights. As a
-                utility token, it can be burned to obtain ‘cycles‘ which serves as gas for
-                computation and storage in canister smart contracts. It can also be minted to reward
+                The ICP token plays a number of roles on the Internet Computer.
+                Firstly, as a governance token, it can be staked to exercise
+                those governance rights. As a utility token, it can be burned to
+                obtain ‘cycles‘ which serves as gas for computation and storage
+                in canister smart contracts. It can also be minted to reward
                 ‘node machine‘ providers for providing that compute and storage.
               </motion.p>
               <motion.p
@@ -162,7 +160,7 @@ function TokenHolders(): JSX.Element {
                 <h3 className="inline-flex items-center gap-3 mb-6">
                   <img
                     src="/img/icp-tokens/icp-token-logo.svg"
-                    alt=""
+                    alt="ICP logo"
                     loading="lazy"
                     className="w-16 h-16"
                   />
@@ -192,6 +190,7 @@ function TokenHolders(): JSX.Element {
                     src="/img/icp-tokens/cycles-logo.svg"
                     className="w-16 h-16"
                     loading="lazy"
+                    alt="Cycles logo"
                   />
                   <span className="flex-1 text-gradient tw-heading-5">
                     Cycles

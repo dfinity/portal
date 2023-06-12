@@ -122,13 +122,13 @@ To check that the canister builds:
 
 You cannot deploy the output from the `dfx build --check` command to a local canister execution environment or the Internet Computer mainnet. If you wanted to deploy this project, you would need to do the following:
 
--   Connect to the either the local canister execution environment or Internet Computer mainnet.
+-   Connect to the either the local canister execution environment or the Internet Computer mainnet.
 
 -   Register a connection-specific canister identifier.
 
 -   Deploy the canister.
 
-Let’s consider these steps in a bit more detail. Before you can deploy this project, you must connect to either your local canister execution environment, provided by `dfx`, or to the Internet Computer blockchain mainnet. After you connect to a local canister execution environment or Internet Computer mainnet, you must also generate a unique, **connection-specific** canister identifier to replace your locally-defined identifier. To see the steps involved for yourself, let’s deploy the project locally.
+Let’s consider these steps in a bit more detail. Before you can deploy this project, you must connect to either your local canister execution environment, provided by `dfx`, or to the Internet Computer blockchain mainnet. After you connect to a local canister execution environment or the mainnet, you must also generate a unique, **connection-specific** canister identifier to replace your locally-defined identifier. To see the steps involved for yourself, let’s deploy the project locally.
 
 To deploy this project locally:
 
@@ -194,7 +194,7 @@ To test the canister you have deployed on the local canister execution environme
         [Canister rrkah-fqaaa-aaaaa-aaaaq-cai] Hello, World from DFINITY
 
 :::info
-Note that if you are running the Internet Computer mainnet in a separate terminal instead of in the background, the "Hello, World from DFINITY" message is displayed in the terminal that displays mainnet activity.
+Note that if you are running the Internet Computer mainnet in a separate terminal instead of in the background, the "Hello, World from DFINITY" message is displayed in the terminal that displays the mainnet activity.
 :::
 
 ## Stop the local canister execution environment

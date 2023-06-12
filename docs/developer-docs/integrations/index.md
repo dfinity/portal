@@ -40,11 +40,13 @@ Rosetta is an open standard introduced by Coinbase to simplify the integration o
 * [Hotkeys](./rosetta/hotkeys.md) explains how to generate a hotkey for neuron management.
 
 ## Service Nervous System (SNS)
-Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md), sorted by the target group that it aims at, and then provides the documentation aimed at developers.
+Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md) and then provides the documentation aimed at developers.
 
-* [A technical introduction to the SNS.](./sns/sns-intro.md)
-* [Information on how to get an SNS.](./sns/get-sns/get-sns-intro.md)
-* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration.md) and [index canister](./sns/integrate-sns/index-integration.md)
+* [An introduction to the SNS.](./sns/lifecycle-sns/sns-intro-highlevel.md)
+* [An introduction to how to prepare for an SNS launch.](./sns/tokenomics/index.md)
+* [SNS integration documentation.](./sns/integrate-sns/index.md)
+* [SNS testing documentation.](./sns/get-sns/get-sns-intro.md)
+* [An introduction to the SNS launch.](./sns/launch-sns/launch-sns.md)
 * [Information on how to manage an SNS.](./sns/managing-sns/manage-sns-intro.md)
 
 ## Threshold ECDSA

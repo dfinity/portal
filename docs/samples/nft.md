@@ -513,6 +513,6 @@ Minting is restricted to anyone authorized with the `custodians` parameter or th
 This Rust example comes with a demo script, `demo.sh`, which runs through an example workflow with minting and trading an NFT between a few users. This is primarily designed to be read rather than run so that you can use it to see how basic NFT operations are done. For a more in-depth explanation, read the [standard][DIP721].
 
 ## Resources
-[Rust]: https://rustup.rs
-[DIP721]: https://github.com/Psychedelic/DIP721
-[mint]: https://github.com/dfinity/experimental-minting-tool
+- [Rust](https://rustup.rs).
+- [DIP721](https://github.com/Psychedelic/DIP721).
+- [Minting tool](https://github.com/dfinity/experimental-minting-tool).
