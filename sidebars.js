@@ -63,6 +63,7 @@ const sidebars = {
               "samples/host-a-webgame",
               "samples/token-transfer",
               "samples/internet-identity-sample",
+              "samples/invoice-canister",
               "samples/ios-integration",
               "samples/minimal-counter-dapp",
               "samples/nft",
