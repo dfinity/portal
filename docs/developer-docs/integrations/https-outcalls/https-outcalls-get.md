@@ -1,6 +1,6 @@
 # How to use HTTP outcalls: GET
 ## Overview
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. 
+A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about ICP token.
 
 This example takes less than 5 minutes to complete.
 
@@ -74,40 +74,63 @@ npm install
 - #### Step 4:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
-//imports we need to make to support the code below
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
 import Error "mo:base/Error";
 import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
+import Nat64 "mo:base/Nat64";
 import Text "mo:base/Text";
 
-//import the custom types we will create in the Types.mo file
+//import the custom types we have in Types.mo
 import Types "Types";
 
+
+//Actor
 actor {
 
-  //Method: This method sends a GET request to a URL with a free API we can test with
-  //In particular, this free API returns a fact about cats.
-  //example output: "{"fact":"A happy cat holds her tail high and steady.", "length":43 }"
-  public func get_cat_fact() : async Text {
+//This method sends a GET request to a URL with a free API we can test.
+//This method returns Coinbase data on the exchange rate between BTC and ICP 
+//for a certain day. The data will look like this:
+//The API response looks like this:
+//  [
+//     [
+//         1682978460, <-- start timestamp
+//         5.714, <-- lowest price during time range 
+//         5.718, <-- highest price during range
+//         5.714, <-- price at open
+//         5.714, <-- price at close
+//         243.5678 <-- volume of ICP traded
+//     ],
+// ]
+  
+  public func get_icp_usd_exchange() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
-
     //We need this so we can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
-
     //2. SETUP ARGUMENTS FOR HTTP GET request
 
-    let url = "https://catfact.ninja/fact";
-    //print to the console
-    Debug.print("[Backed canister] calling url: " # url);
+    // 2.1 Setup the URL and its query parameters
+    let ONE_MINUTE : Nat64 = 60;
+    let start_timestamp : Types.Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
+    let end_timestamp : Types.Timestamp = 1682978520;//May 1, 2023 22:02:00 GMT
+    let host : Text = "api.pro.coinbase.com";
+    let url = "https://" # host # "/products/ICP-USD/candles?start=" # Nat64.toText(start_timestamp) # "&end=" # Nat64.toText(start_timestamp) # "&granularity=" # Nat64.toText(ONE_MINUTE);
+
+    // 2.2 prepare headers for the system http_request call
+    let request_headers = [
+        { name = "Host"; value = host # ":443" },
+        { name = "User-Agent"; value = "exchange_rate_canister" },
+    ];
+
+    // 2.3 The HTTP request
     let http_request : Types.HttpRequestArgs = {
         url = url;
         max_response_bytes = null; //optional for request
-        headers = [];
+        headers = request_headers;
         body = null; //optional for request
         method = #get;
         transform = null; //optional for request
@@ -118,6 +141,7 @@ actor {
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
     //IC management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
+    
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
@@ -150,7 +174,21 @@ actor {
     };
 
     //6. RETURN RESPONSE OF THE BODY
+    //The API response will looks like this:
 
+    // ("[[1682978460,5.714,5.718,5.714,5.714,243.5678]]")
+
+    //Which can be formatted as this
+    //  [
+    //     [
+    //         1682978460, <-- start/timestamp
+    //         5.714, <-- low
+    //         5.718, <-- high
+    //         5.714, <-- open
+    //         5.714, <-- close
+    //         243.5678 <-- volume
+    //     ],
+    // ]
     decoded_text
   };
 
@@ -244,7 +282,7 @@ URLs:
 
 Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_cat_fact` method:
 
-![Candid web UI](../_attachments/https-get-candid-2.webp)
+![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
 ## Rust version
 
