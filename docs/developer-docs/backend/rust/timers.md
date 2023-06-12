@@ -90,7 +90,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn counter() -> u64 {
     COUNTER.load(Ordering::Relaxed)
 }
@@ -99,7 +99,7 @@ fn counter() -> u64 {
 Where:
 
 * `static COUNTER: AtomicU64 = ...` &mdash; defines a new global variable called `COUNTER`.
-* `#[ic_cdk_macros::query]` &mdash; marks the following `counter` function as a `query` entry point, so the function will be exported as `canister_query counter`.
+* `#[ic_cdk::query]` &mdash; marks the following `counter` function as a `query` entry point, so the function will be exported as `canister_query counter`.
 * `fn counter() -> u64 {...}` &mdash; defines the query. Just like in the `.did` definition, it takes no arguments and returns `u64`.
 * `COUNTER.load(...)` &mdash; loads and returns the global `COUNTER` value.
 
@@ -112,7 +112,7 @@ In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append 
 ```rust
 [...]
 
-#[ic_cdk_macros::init]
+#[ic_cdk::init]
 fn init(timer_interval_secs: u64) {
     let interval = std::time::Duration::from_secs(timer_interval_secs);
     ic_cdk::println!("Starting a periodic task with interval {interval:?}");
@@ -124,7 +124,7 @@ fn init(timer_interval_secs: u64) {
 
 Where:
 
-* `#[ic_cdk_macros::init]` &mdash; marks the following `init` function as a canister initialization method, so the function will be exported as `canister_init`.
+* `#[ic_cdk::init]` &mdash; marks the following `init` function as a canister initialization method, so the function will be exported as `canister_init`.
 * `fn init(interval: u64) {...}` &mdash; defines the initialization method. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
 * `ic_cdk::println!(...)` &mdash; prints the debug log message on the local `dfx` console.
 * `ic_cdk_timers::set_timer_interval(...)` &mdash; creates a new periodic timer with the specified interval and a closure to call.
@@ -143,7 +143,7 @@ In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append 
 ```rust
 [...]
 
-#[ic_cdk_macros::post_upgrade]
+#[ic_cdk::post_upgrade]
 fn post_upgrade(timer_interval_secs: u64) {
     init(timer_interval_secs)
 }
@@ -151,7 +151,7 @@ fn post_upgrade(timer_interval_secs: u64) {
 
 Where:
 
-* `#[ic_cdk_macros::post_upgrade]` &mdash; marks the following `post_upgrade` function as a canister post-upgrade handler, so the function will be exported as `canister_post_upgrade`.
+* `#[ic_cdk::post_upgrade]` &mdash; marks the following `post_upgrade` function as a canister post-upgrade handler, so the function will be exported as `canister_post_upgrade`.
 * `fn post_upgrade(interval: u64) {...}` &mdash; defines the post-upgrade method. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
 * `init(timer_interval_secs)` &mdash; for the sake of simplicity, the post-upgrade just calls the `init` function, i.e. does exactly the same as the canister initialization.
 
@@ -249,12 +249,12 @@ use std::sync::atomic::{AtomicU64, Ordering};
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
 
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn counter() -> u64 {
     COUNTER.load(Ordering::Relaxed)
 }
 
-#[ic_cdk_macros::init]
+#[ic_cdk::init]
 fn init(timer_interval_secs: u64) {
     let interval = std::time::Duration::from_secs(timer_interval_secs);
     ic_cdk::println!("Starting a periodic task with interval {interval:?}");
@@ -263,7 +263,7 @@ fn init(timer_interval_secs: u64) {
     });
 }
 
-#[ic_cdk_macros::post_upgrade]
+#[ic_cdk::post_upgrade]
 fn post_upgrade(timer_interval_secs: u64) {
     init(timer_interval_secs)
 }

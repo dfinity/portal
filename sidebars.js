@@ -301,13 +301,16 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "HTTP outcalls",
+              label: "HTTPS outcalls",
               link: {
                 type: "doc",
-                id: "developer-docs/integrations/http_requests/index",
+                id: "developer-docs/integrations/https-outcalls/index",
             },
                 items: [
-                  "developer-docs/integrations/http_requests/http_requests-how-it-works",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                  // "developer-docs/integrations/https-outcalls/https-outcalls-post",
               ],
             },
             {

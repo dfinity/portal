@@ -3,7 +3,7 @@
 ## Overview
 Up until now, blockchains have been isolated entities and smart contracts have not been able to directly communicate with external servers or other blockchains. The reason for this is that a blockchain is a replicated state machine where each replica needs to perform the same computations on the same state to make the same transitions in each round. Doing computations based on results from external services as input may easily lead to state divergence on the replicas if done in a naïve manner and thus requires some technical considerations to be workable.
 
-The feature of**canister HTTP(S) requests**, or **HTTP(S) outcalls**, on the Internet Computer enables — for the first time in blockchain history — smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract such that the replicated state can safely be updated using those inputs. So far, the only means of communication of smart contracts with external servers has been through so-called **oracles**. 
+The feature of **canister HTTP(S) requests**, or **HTTP(S) outcalls**, on the Internet Computer enables — for the first time in blockchain history — smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract such that the replicated state can safely be updated using those inputs. So far, the only means of communication of smart contracts with external servers has been through so-called **oracles**. 
 
 :::info
 Note that in the remainder of this documentation we may use **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
@@ -30,6 +30,6 @@ We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data,
 
 ## Resources
 
-- If you want to take a deep dive into how the HTTPS outcalls feature works and how to use it when coding a canister, see the [how it works](http_requests-how-it-works.md) section.
+- If you want to take a deep dive into how the HTTPS outcalls feature works and how to use it when coding a canister, see the [how it works](https-outcalls-how-it-works.md) section.
 
 - In the [examples repository](https://github.com/dfinity/examples) you can find [sample code in Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate) which you can use as starting point for building your own dApp.

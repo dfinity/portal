@@ -18,7 +18,7 @@ fn is_admin() -> bool {
     })
 }
 
-#[ic_cdk_macros::init]
+#[ic_cdk::init]
 fn init() {
     ADMINS.with(|admins| {
         admins.borrow_mut().push(ic_cdk::caller());
@@ -26,13 +26,13 @@ fn init() {
 }
 
 #[candid_method(query)]
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn get_admins() -> Vec<Principal> {
     ADMINS.with(|admins| admins.borrow().clone())
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 fn add_admin(admin: Principal) {
     if !is_admin() {
         trap("Only admins can add admins");
@@ -47,7 +47,7 @@ fn add_admin(admin: Principal) {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 fn remove_admin(admin: Principal) {
     if !is_admin() {
         trap("Only admins can remove admins");
@@ -58,7 +58,7 @@ fn remove_admin(admin: Principal) {
 }
 
 #[candid_method(query)]
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn query(term: String) -> Vec<PageSearchResult> {
     INDEX.with(|index| {
         index
@@ -71,7 +71,7 @@ fn query(term: String) -> Vec<PageSearchResult> {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn start_upload() {
     if !is_admin() {
         trap("Only admins can start an upload");
@@ -82,7 +82,7 @@ async fn start_upload() {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn commit_upload() {
     if !is_admin() {
         trap("Only admins can commit an upload");
@@ -97,7 +97,7 @@ async fn commit_upload() {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn set_stop_words(docs: Vec<String>) {
     if !is_admin() {
         trap("Only admins can set stop words");
@@ -109,7 +109,7 @@ async fn set_stop_words(docs: Vec<String>) {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn upload_index_documents(docs: Vec<Doc>) {
     if !is_admin() {
         trap("Only admins can upload documents");
@@ -121,7 +121,7 @@ async fn upload_index_documents(docs: Vec<Doc>) {
 }
 
 #[candid_method(update)]
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 async fn upload_index_entries(entries: Vec<(String, Vec<IndexEntry>)>) {
     if !is_admin() {
         trap("Only admins can upload index entries");
@@ -132,13 +132,13 @@ async fn upload_index_entries(entries: Vec<(String, Vec<IndexEntry>)>) {
     });
 }
 
-#[ic_cdk_macros::pre_upgrade]
+#[ic_cdk::pre_upgrade]
 fn pre_upgrade() {
     let admins = ADMINS.with(|n| n.take());
     ic_cdk::storage::stable_save((admins,)).expect("Saving admins to stable store must succeed.");
 }
 
-#[ic_cdk_macros::post_upgrade]
+#[ic_cdk::post_upgrade]
 fn post_upgrade() {
     let mut admins = ic_cdk::storage::stable_restore::<(Vec<Principal>,)>()
         .expect("Failed to read admins from stable memory.")
@@ -151,7 +151,7 @@ fn post_upgrade() {
     ADMINS.with(|n| *n.borrow_mut() = admins);
 }
 
-#[ic_cdk_macros::query(name = "__get_candid_interface_tmp_hack")]
+#[ic_cdk::query(name = "__get_candid_interface_tmp_hack")]
 fn export_candid() -> String {
     export_service!();
     __export_service()
