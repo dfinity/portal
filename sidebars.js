@@ -45,18 +45,40 @@ const sidebars = {
             },
             items: [
               "samples/hello",
+              "samples/actor-classes",
+              "samples/actor-reference",
+              "samples/calculator",
+              "samples/cert-var",
+              "samples/counter",
               "samples/dao",
               "samples/dex",
               "samples/deploying-your-first-bitcoin-dapp",
+              "samples/echo",
               "samples/encrypted-notes",
+              "samples/factorial",
+              "samples/game-of-life",
               "samples/hackathon-projects",
+              "samples/http-counter",
               "samples/host-a-website",
               "samples/host-a-webgame",
               "samples/token-transfer",
+              "samples/internet-identity-sample",
               "samples/ios-integration",
+              "samples/minimal-counter-dapp",
               "samples/nft",
+              "samples/nft-wallet",
+              "samples/periodic-tasks",
+              "samples/persistent-storage",
+              "samples/phonebook",
+              "samples/pub-sub",
+              "samples/quicksort",
+              "samples/random-maze",
+              "samples/sending-and-receiving-cycles",
+              "samples/simple-to-do",
+              "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/http-requests-exchange-rates",
+              "samples/whoami",
             ],
             },
 
@@ -371,40 +393,36 @@ const sidebars = {
                   items: [
                     {
                       type: "category",
-                      label: "SNS & DAO primer",
+                      label: "Introduction to the SNS",
+                      items: [
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-intro-highlevel",
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-architecture",
+                        "developer-docs/integrations/sns/lifecycle-sns/sns-launch",
+                        "developer-docs/integrations/sns/lifecycle-sns/dao-alternatives",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Preparing an SNS launch",
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/tokenomics/index",
                     },
                       items: [
-                        
-                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-                        "developer-docs/integrations/sns/tokenomics/governance-interaction",
+                        "developer-docs/integrations/sns/tokenomics/sns-checklist",
                         "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
                         "developer-docs/integrations/sns/tokenomics/rewards",
+                        "developer-docs/integrations/sns/tokenomics/preparation",
                       ],
                     },
                     {
-                      type: "doc",
-                      label: "SNS introduction",
-                      id: "developer-docs/integrations/sns/sns-intro",
-                    },
-                    {
                       type: "category",
-                      label: "Get an SNS",
+                      label: "Integrating with an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                        id: "developer-docs/integrations/sns/integrate-sns/index",
                     },
-                      items: [
-                        "developer-docs/integrations/sns/get-sns/preparation",
-                        "developer-docs/integrations/sns/get-sns/local-testing",
-                        "developer-docs/integrations/sns/get-sns/testflight",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Integrate with an SNS",
                       items: [
                         "developer-docs/integrations/sns/integrate-sns/index-integration",
                         "developer-docs/integrations/sns/integrate-sns/ledger-integration",
@@ -412,12 +430,31 @@ const sidebars = {
                     },
                     {
                       type: "category",
-                      label: "Manage an SNS",
+                      label: "Testing an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
+                    },
+                      items: [
+                        "developer-docs/integrations/sns/get-sns/local-testing",
+                        "developer-docs/integrations/sns/get-sns/testflight",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Launching an SNS",
+                      type: "doc",
+                      id: "developer-docs/integrations/sns/launch-sns/launch-sns",
+                    },
+                    {
+                      type: "category",
+                      label: "Managing an SNS",
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
                     },
                       items: [
+                        "developer-docs/integrations/sns/managing-sns/sns-governance",
                         "developer-docs/integrations/sns/managing-sns/cycles-usage",
                       ],
                     },
@@ -520,6 +557,7 @@ const sidebars = {
       type: "category",
       label: "Internet Computer specification",
       items: [
+        "references/http-gateway-protocol-spec",
         "references/ic-interface-spec",
         "references/id-encoding-spec",
       ]
@@ -682,16 +720,6 @@ const sidebars = {
     "references/glossary",
 
   ],
-  concepts: [
-    "concepts/index",
-    "concepts/what-is-IC",
-    "concepts/canisters-code",
-    "concepts/data-centers",
-    "concepts/governance",
-    "concepts/nodes-subnets",
-    "concepts/tokens-cycles",
-    "concepts/trust-in-canisters",
-  ],
   motoko: [
     {
       type: "category",
@@ -799,22 +827,6 @@ const sidebars = {
     },
   ],
   
-  samples: [
-    "samples/overview",
-    "samples/hello",
-    "samples/dao",
-    "samples/deploying-your-first-bitcoin-dapp",
-    "samples/dex",
-    "samples/encrypted-notes",
-    "samples/http-requests-exchange-rates",
-    "samples/ios-integration",
-    "samples/host-a-webgame",
-    "samples/host-a-website",
-    "samples/nft",
-    "samples/t-ecdsa-sample",
-    "samples/token-transfer",
-    "samples/hackathon-projects",
-  ],
 };
 
 module.exports = sidebars;

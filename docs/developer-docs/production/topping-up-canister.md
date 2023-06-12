@@ -23,11 +23,11 @@ For ease of use, you can copy/paste the cycles amounts below:
 | 10 million        | 10000000         |
 | 100 million       | 100000000         |
 | 1 billion         | 1000000000         |
-| 10 billion        | 1000000000         |
-| 100 billion        | 10000000000         |
-| 1 trillion         | 100000000000         |
-| 10 trillion        | 1000000000000         |
-| 100 trillion        | 10000000000000         |
+| 10 billion        | 10000000000         |
+| 100 billion       | 100000000000         |
+| 1 trillion        | 1000000000000         |
+| 10 trillion       | 10000000000000         |
+| 100 trillion      | 100000000000000         |
 
 ### Checking the cycles balance of a canister
 
@@ -55,7 +55,9 @@ Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 
 If you have ICP on the account associated with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
 
-`dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai`
+```
+dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
+```
 
 ```bash
 dfx ledger account-id
@@ -63,9 +65,9 @@ dfx ledger --network ic balance
 dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
 ```
 
--   The `dfx ledger account-id` returns the ledger account id of the current `dfx` identity used
--   `--network ic` tells `dfx` to use the mainnet IC as the network (not anything local for example)
--   The `dfx ledger --network ic balance` command checks how much balance is on the `account` associated with the current `dfx` identity used
+-   The `dfx ledger account-id` returns the ledger account id of the current `dfx` identity used.
+-   `--network ic` tells `dfx` to use the mainnet IC as the network (not anything local for example).
+-   The `dfx ledger --network ic balance` command checks how much balance is on the `account` associated with the current `dfx` identity used.
 -   `top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai` command converts 0.1 ICP into cycles and uses them to refill canister `jqylk-byaaa-aaaal-qbymq-cai`.
 
 
@@ -78,8 +80,8 @@ dfx wallet --network ic balance
 dfx canister --network ic deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai 
 ```
 
--   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
--   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice
+-   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
+-   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice.
 
 ### Special Case: topping up another cycles wallet
 
@@ -92,15 +94,15 @@ dfx wallet --network ic balance
 dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai 
 ```
 
--   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on mainnet
+-   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
 -   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
 ## Topping up a canister with the NNS Frontend dapp
 
 You can also top up any canister via the [NNS Frontend dapp](https://nns.ic0.app):
 
-1. Navigate to the "My Canisters" section of the dapp
-2. Click "Link Canister" 
-3. Add a canister principal (It is not necessary for the user to actually control said canister)
-4. Once canister is added, click on that canister
-5. Click `add cycles` to add cycles using the ICP in your NNS frontend dapp
+1. Navigate to the **My Canisters** section of the dapp.
+2. Click **Link Canister**.
+3. Add a canister principal (it is not necessary for the user to actually control said canister).
+4. Once canister is added, click on that canister,
+5. Click `add cycles` to add cycles using the ICP in your NNS frontend dapp,

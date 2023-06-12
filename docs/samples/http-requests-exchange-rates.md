@@ -7,15 +7,15 @@ The [HTTPS outcalls](/https-outcalls) feature provides a way for canisters to di
 
 ### What does the sample dapp do?
 
-**TL;DR the sample dapp is just an unbounded time series cache.**
+**TL;DR: the sample dapp is just an unbounded time series cache.**
 
 There are two parts to the sample dapp:
 1. The frontend UI canister `exchange_rate_assets`, which includes a time range picker and a rate chart.
 2. The backend provider canister `exchange_rate` that performs HTTPS outcalls, queues jobs, transforms responses, etc.
 
 The backend canister receives an update request corresponding to the time range specified by the user at the frontend. The time range
-is converted into time buckets and the buckets are queued for retrival. Asynchronously at every few Internet Computer heartbeats,
-the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses timeseries granularity of 60 seconds, so each HTTPS request to
+is converted into time buckets and the buckets are queued for retrieval. Asynchronously at every few Internet Computer heartbeats,
+the backend canister makes a Coinbase API request for a single queued time bucket. Each request to Coinbase pulls at most 200 data points from Coinbase, which is less than the limit of 300 which Coinbase has. The dapp uses a time series granularity of 60 seconds, so each HTTPS request to
 Coinbase covers a time bucket of at most 200 minutes. The fetched data points are then put into a global timestamp-to-rate hashmap.
 
 If the time range the user requested is longer than a couple of years, the size of data to be returned by the backend `exchange_rate`
@@ -51,6 +51,84 @@ If we need to fetch a longer period of rates then the number of external HTTPS o
 This sample dapp minimizes the total number of HTTPS outcalls at the cost of bigger response bodies. 
 
 ## Building and deploying the sample dapp locally
-Here are implementations in [Rust](https://github.com/dfinity/examples/tree/master/rust/exchange_rate) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/exchange_rate). Please refer to the `README.md` file in each
-directory for instrutions on building and local deployment.
 
+## Motoko variant
+
+### Prerequisites
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/index.mdx).
+- [x] [ic-cdk v0.6.5](https://crates.io/crates/ic-cdk/0.6.5) or above.
+- [x] [dfx v0.12.0](https://github.com/dfinity/sdk/releases/tag/0.12.0) or above.
+
+- #### Step 1: Clone the sample dapp's GitHub repo:
+
+```
+git clone https://github.com/dfinity/examples.git
+```
+
+- #### Step 2: Navigate into the Motoko example directory for this project:
+
+```
+cd examples/motoko/exchange_rate
+```
+
+- #### Step 3: Deploy the canister locally:
+```
+./deploy.sh local
+```
+
+The output of this script will resemble the following:
+
+```
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    exchange_rate_assets: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+  Backend canister via Candid interface:
+    exchange_rate: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+## Rust variant
+
+### Prerequisites 
+- [x] Download and install [git.](https://git-scm.com/downloads)
+- [x] [ic-cdk v0.7.0](https://crates.io/crates/ic-cdk) or above.
+- [x] [ic-cdk-macros v0.6.8](https://crates.io/crates/ic-cdk-macros) or above.
+- [x] [candid v0.8.4](https://crates.io/crates/candid) or above.
+- [x] [dfx v0.12.0](https://github.com/dfinity/sdk/releases) or above.
+- [x] `wasm32-unknown-unknown` targets; these can be installed with `rustup target add wasm32-unknown-unknown`.
+
+- #### Step 1: Clone the sample dapp's GitHub repo:
+
+```
+git clone https://github.com/dfinity/examples.git
+```
+
+- #### Step 2: Navigate into the Rust example directory for this project:
+
+```
+cd examples/rust/exchange_rate
+```
+
+- #### Step 3: Build the canister into Wasm:
+
+```
+cargo build --target wasm32-unknown-unknown --release
+```
+
+- #### Step 4: Deploy the canister locally:
+```
+./deploy.sh local
+```
+
+The output of this script will resemble the following:
+
+```
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    exchange_rate_assets: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+  Backend canister via Candid interface:
+    exchange_rate: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```

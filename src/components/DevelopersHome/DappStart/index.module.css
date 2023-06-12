@@ -32,9 +32,9 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 26px;
-    z-index: 1000;
     margin-left: 24px;
     transition: all var(--ifm-transition-custom-speed) var(--ifm-transition-custom-curve);
+    @apply z-30;
 }
 
 .callToAction:hover {
@@ -156,13 +156,13 @@
 }
 
 .BGShape {
-    z-index: -1000;
     position: absolute;
     color: #3B00B9;
     top: -100px;
     left: -600px;
     width: 1500px;
     max-width: 1500px;
+    @apply -z-10;
 }
 
 @media screen and (max-width: 996px) {

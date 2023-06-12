@@ -26,6 +26,10 @@ Backend logic on the Internet Computer is implemented as [canister smart contrac
 
 To create an actor, delete everything from `main.mo` file and add the following code:
 
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
+
 ```motoko
 actor {
 
@@ -43,6 +47,10 @@ For our poll dapp, we want to the poll to have the main question. For example, "
 
 To add the question, include the following code **inside** the actor code in the `main.mo` file:
 
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
+
 ```motoko
     var question: Text = "What is your favorite programming language?";
 ```
@@ -53,6 +61,10 @@ This new statement does the following:
 - Declares the type of this variable Text, which is the standard type for strings in Motoko. Because of this, we need to add an import statement at the top of the file to use the `Text` type: `import Text "mo:base/Text";`.
 
 After these changes, `main.mo` file should look like this:
+
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
 
 ```motoko
 import Text "mo:base/Text";
@@ -80,6 +92,11 @@ For our poll actor, we want to be able to:
 
 
 To start, we will create the `getQuestion` method:
+
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+:::
+
 ```motoko
 public query func getQuestion() : async Text { 
     question 
@@ -109,7 +126,7 @@ data, it's not possible to change data in queries.
 | Data change         | Not allowed to change data | Allowed to change data |
 
 
-## Full code
+## Final code
 
 After all the changes, `main.mo` file should look like this:
 

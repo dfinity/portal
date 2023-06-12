@@ -4,8 +4,17 @@ sidebar_position: 3
 # SNS predeployment considerations
 
 ## Overview
-The service network systems (SNS) provide application developers a turnkey option for decentralizing their dapp through a token swap. The decision to launch a token via the SNS has many implications for the business behind the dapp and developers should deeply consider these business implications throughout the process of tokenizing their dapp.
 
+Preparing an SNS launch includes many non-technical considerations.
+For example, to decentralize a dapp, the governance control has to be distributed
+among many parties. Therefore, a successful decentralization with many participating 
+parties may rely on non-technical strategies such as advertising.
+
+Moreover, the decision to hand over a dapp to an SNS with a new utility token has many
+implications for the business behind the dapp.
+Therefore, developers should deeply consider these business implications throughout
+the process of tokenizing their dapp.
+ 
 ## Prerequisites
 
 The groundwork for a successful token launch is laid **well before** the proposal for an SNS is submitted to the NNS. A developer may want to consider doing the following in the interest of making their dapp attractive to future investors:
@@ -24,8 +33,14 @@ In addition to the above, tokenizing the dapp on the SNS will decentralize contr
 :::
 
 
-## Starting an SNS swap through NNS proposal
-The launch process for an SNS token swap includes a step of sending a proposal for approval to the NNS. The NNS proposal to add a dapp to the SNS serves many functions, including as an opportunity to pitch the dapp to the NNS community and potential SNS investors.  An NNS proposal should build trust within the NNS community that the dapp is sustainable in the long run and that the dapp is investor-ready. Therefore, a proposal should include standard information that would be presented at a venture capitalist slide deck, including:
+## Starting the launch process by an NNS proposal
+The launch process for an SNS includes two NNS proposals where the NNS community approves the
+SNS and its parameters. These proposal serve different functions,
+including as an opportunity to pitch the dapp to the NNS community and potential SNS investors.
+An NNS proposal should build trust within the NNS community that the dapp is sustainable
+in the long run and that the dapp is investor-ready.
+Therefore, a proposal should include standard information that would be presented at a venture
+capitalist slide deck, including:
 * The management **team backgrounds** and any previous **successful application launches**.
 * The [total addressable market](https://en.wikipedia.org/wiki/Total_addressable_market) of the dapp market space.
 * **Proof of product-market fit** and growth traction, including the source of the information.
@@ -38,6 +53,12 @@ The launch process for an SNS token swap includes a step of sending a proposal f
 * If applicable, information on the desired token holding audience to ensure long-term success and continued pursuit of the initial intent and vision of the dapp roadmap.
 
 ## After the launch
-After launching a token, it’s important for developers to manage their new investor stakeholders.  Even though the dapp is decentralized following the initial token swap, it’s possible that the original developers will need to continue to lead the project as the project matures into its decentralization.  
+After launching an SNS with a utility token,
+it is important for developers to manage the SNS community.
+Even though the dapp is decentralized, it is possible that the original developers will need
+to continue to lead the project as the project matures into its decentralization.  
 
-During this stage, it’s possible that developers may need to work closely with the token holding community to continue project success and direction. This may include providing data and information about ecosystem growth and financial changes. It also may include managing the product roadmap with token-holder input, feedback and buy-in.
+During this stage, it is possible that developers may need to work closely with the token
+holding community to continue project success and direction.
+This may include providing data and information about ecosystem growth and financial changes.
+It also may include managing the product roadmap with token-holder input, feedback and buy-in.
