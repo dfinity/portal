@@ -54,13 +54,13 @@ function CoverImage({ url, permalink }) {
 
 const tagColors = {
   Devs: "bg-razzmatazz-300 text-white",
-  "New features": "bg-blue text-white",
+  "New features": "bg-blue text-white"
 };
 
 export default function BlogPostItems({
   items,
   component: BlogPostItemComponent = BlogPostItem,
-  withFeatured = false,
+  withFeatured = false
 }) {
   const featuredPost = items[0];
   const restPosts = withFeatured ? items.slice(1) : items;
@@ -68,7 +68,7 @@ export default function BlogPostItems({
   return (
     <div className="">
       {withFeatured && (
-        <div className="pb-10 mb-10 border-0 border-solid border-b border-b-black/20">
+        <div className="pb-10 mb-10 border-0 border-solid border-b border-b-black/10">
           <div className="flex flex-col">
             <CoverImage
               url={featuredPost.content.frontMatter.image}
@@ -93,7 +93,7 @@ export default function BlogPostItems({
           </div>
         </div>
       )}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
         {restPosts.map(({ content: BlogPostContent }) => (
           <div className="flex flex-col">
             <CoverImage

@@ -1,7 +1,7 @@
 /* Don't display docSidebar items in the top navbar */
-  .navbar__inner .navbar__items:first-child .navbar__item {
-    display: none;
-  }
+.navbar__inner .navbar__items:first-child .navbar__item {
+  display: none;
+}
 
 .navbar__link {
   font-weight: var(--ifm-font-weight-bold);
@@ -55,7 +55,8 @@
     margin-right: 2rem;
   }
 
-  html.plugin-docs {
+  html.plugin-docs,
+  html.plugin-blog {
     // keep the nav in place on mobile (i.e. disable hideOnScroll)
     nav[class*="navbarHidden_"] {
       transform: unset;
