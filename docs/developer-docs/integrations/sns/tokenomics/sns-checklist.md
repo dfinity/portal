@@ -126,22 +126,48 @@ It is recommended to share:
 The idea is to provide the community with information so they can verify what they are supporting from a decentralization standpoint.
 
 ##4. SNS Launch Workflow
+Please find all steps included in an SNS launch [here](../lifecycle-sns/sns-launch.md) and a more detailed
+descriptions of the following steps [here](../launch-sns/launch-sns.md).
 
-## 4.1. Submit canister creation proposal
-First step in the launch is create a proposal to add a principal that can later create the SNS canisters. Use the proposal content created in section 1.4.1 and create the NNS proposal. The proposal can be created with the [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
+## 4.1. Submit SNS approval proposal
+First step in the launch is an NNS proposal that approves the SNS creation by listing a principal that can
+later create the SNS canisters. Use the proposal content created in Section 1.4.1 and create the NNS 
+proposal. The proposal can be created with the
+[quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/) as described
+[here](../launch-sns/#SNS-launch-command-NNSproposal1).
 
 ## 4.2. Create SNS canisters
-When the NNS neurons have voted in favor of the canister creation proposal, the SNS canisters can be installed, and prepared for the SNS launch. The SNS canisters are installed with the [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli).
+When the NNS neurons have adopted the proposal above, the SNS canisters can be installed, and prepared for
+the SNS launch. The SNS canisters are installed with the
+[SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) as described
+[here](../launch-sns/launch-sns.md#SNS-launch-command-SNSW)
 
 ## 4.3. Dapp control handover
-Before the decentralization sale, the SNS root canister must be set as the controller of the dapp and other developers are removed from the list of controllers. This entails “registering” the dapp with the SNS so that SNS root is aware that it controls these canisters, and this registration is done by SNS proposal.
+Before the decentralization sale, the SNS root canister must be set as the controller of the dapp and
+other developers are removed from the list of controllers. This entails “registering” the dapp with the
+SNS so that SNS root is aware that it controls these canisters, and this registration is done by SNS proposal.
 
-Consider what the impact of the handover will have for the entire dapp, since principals will change. Is it necessary to change access rights to e.g. asset canisters? All features of the dapp should be thoroughly tested before the SNS launch. See previous mention of testing with the SNS testflight.
+Consider what the impact of the handover will have for the entire dapp, since principals will change. 
+Is it necessary to change access rights to e.g. asset canisters? All features of the dapp should be thoroughly
+tested before the SNS launch. See previous mention of testing with the SNS testflight.
 
 ## 4.4. Submit decentralization proposal
-This step is similar to submitting the canister creation proposal. This proposal will initiate the decentralization and the token sale. Use the proposal content created in section 1.4.2 and create the NNS proposal. The proposal can be created with the [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/).
+This step is similar to submitting Step 4.1. This proposal will initiate the decentralization swap.
+Use the proposal content created in section 1.4.2 and create the NNS proposal. 
+The proposal can be created with the
+[quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/)
+as described [here](../launch-sns/launch-sns.md#SNS-launch-command-NNSproposal2).
 
-## 4.5 Setup custom SNS functions
-To execute code on SNS managed canisters via SNS proposals, the canisters must expose two public functions, also referred to as generic functions in the documentation. The first function is a validation function to validate and render the proposal payload, and the second function is an execution function to perform an action given the proposal payload.
+## 4.5 Finalizing the SNS swap
+After the swap ends, its finalization has to be triggered by a `dfx` call as described
+[here](../launch-sns/launch-sns.md#SNS-launch-command-finalizingswap).
 
-To use generic functions, you must first submit an SNS proposal to register these functions with SNS governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary payload.
+## 4.6 Setup custom SNS functions
+To execute code on SNS managed canisters via SNS proposals, the canisters must expose two public functions,
+also referred to as generic functions in the documentation. The first function is a validation function 
+to validate and render the proposal payload, and the second function is an execution function to perform
+an action given the proposal payload.
+
+To use generic functions, you must first submit an SNS proposal to register these functions with SNS 
+governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary 
+payload.
