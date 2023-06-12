@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# SNS Preparation Checklist
+# SNS preparation checklist
 
 :::caution
 This guide is intended for informational purposes only and may be modified over time as 
@@ -15,7 +15,7 @@ an SNS is done at your own risk.
 
 # 1. Documentation / Preparation
 
-## 1.1 Tokenomics specification
+## 1.1. Tokenomics specification
 
 ### 1.1.1. Token utility
 Define concisely for which use cases the token of the DAO will be used for participation in governance, rewarding active participation in services offered by the dapp that is governed by the DAO and rewarding contributions to the growth of the dapp and the DAO.
@@ -74,7 +74,7 @@ Include relevant information like tokenomics (token distribution, governance, de
 See the [documentation](./preparation.md) for details about the process. The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
 
 :::info
-Note: A 1-proposal process is planned to be rolled out early June.
+A 1-proposal process is planned to be rolled out early June.
 :::
 
 # 2. Technical Prep & Testing
@@ -98,7 +98,7 @@ Make sure to test upgrading canisters through SNS proposals, test updating asset
 The developer can keep direct control over the dapp’s canisters registered with testflight SNS.
 The testflight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-To use the SNS testflight on the mainnet, pass the “–network ic” parameter to the deploy command. The [documentation](../get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
+To use the SNS testflight on the mainnet, pass the `–network ic` parameter to the deploy command. The [documentation](../get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
 
 See the documentation for more information about the [SNS Testflight](../get-sns/testflight.md), including setup instructions.
 
@@ -118,14 +118,14 @@ It’s strongly recommended that developers have a discussion in the forum with 
 
 It is recommended to share:
 
-- [x] The init file and sale file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config))
+- [x] The init file and sale file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config)).
 - [x] Provide whitepaper with a full description of the decentralization and tokenomics.
 - [x] Provide a technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
 - [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
 
 The idea is to provide the community with information so they can verify what they are supporting from a decentralization standpoint.
 
-##4. SNS Launch Workflow
+## 4. SNS Launch Workflow
 Please find all steps included in an SNS launch [here](../lifecycle-sns/sns-launch.md) and a more detailed
 descriptions of the following steps [here](../launch-sns/launch-sns.md).
 
