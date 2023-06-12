@@ -93,6 +93,7 @@ function OpenChatPage() {
               <img
                 src="/img/openchat/oc-img.webp"
                 className="w-80 sm:w-[480px] md:w-auto max-w-full"
+                alt="OpenChat dapp screenshot"
               />
             </div>
           </motion.section>

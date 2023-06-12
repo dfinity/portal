@@ -226,7 +226,7 @@ export const Facts = () => {
     <>
       <div className="" id="stats">
         <h2 className="tw-heading-4 md:tw-heading-60 mb-20 md:mb-20 md:w-[880px] mx-auto text-center">
-          World’s highest usage blockchain
+          Blockchain as <br /> autonomous cloud
         </h2>
       </div>
 
@@ -349,7 +349,7 @@ export const Facts = () => {
             <div className="tw-paragraph md:tw-lead-sm">ETH - $0.00024</div>
           </div>
           <div className="mt-8 md:mt-16">
-            <h3 className="md:tw-heading-4 mb-4">Crypto cloud efficiency</h3>
+            <h3 className="md:tw-heading-4 mb-4">Cloud-rivalling efficiency</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
               An average ICP transaction executes 6’660’000 instructions
               compared to ETH’s 83’000, while each instruction is orders of

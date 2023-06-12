@@ -74,7 +74,7 @@ export default function PreHero({}): JSX.Element {
                 World Computer
               </h1>
               <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-2 text-white mb-0">
-                Decentralize Everything
+                build on the network
               </p>
             </motion.div>
 
@@ -170,6 +170,7 @@ export default function PreHero({}): JSX.Element {
               src="/img/home/dashboard.svg"
               className="absolute right-0 bottom-0 pointer-events-none"
               loading="lazy"
+              alt=""
             ></img>
           </AnimateSpawn>
         </div>

@@ -9,11 +9,11 @@ Follow the steps below to deploy your copy of the ledger canister to a local rep
 ### Step 1:  Get a pre-built ledger canister module and Candid interface files.
 
 ``` sh
-export IC_VERSION=dd3a710b03bd3ae10368a91b255571d012d1ec2f
+export IC_VERSION=5eb2810653d4c72c7afc48a0450e2ad01378dfc7
 curl -o ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ledger-canister_notify-method.wasm.gz"
 gunzip ledger.wasm.gz
-curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ledger.did"
-dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack ‘()’ --query | sed -e ‘s/\n/\n/g’ -e ‘s/^…//’ -e ‘s/…$//’ -e ‘1d;$d’> ledger.public.did
+curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger.did"
+dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack '()' --query | sed -e 's/\\n/\n/g' -e 's/^…//' -e 's/…$//' -e '1d;$d' -e 's/"//g' -e 's/,$//'> ledger.public.did
 ```
 
 If you plan to work with Ledger archives, also download the `ledger_archive.did` file:

@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
@@ -11,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import ShareMeta from "../components/Common/ShareMeta";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 
@@ -37,21 +37,8 @@ const RoadmapPage: React.FC = () => {
       description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-roadmap.jpeg"
-          }
-        />
-        <title>Roadmap</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
@@ -214,41 +201,40 @@ const RoadmapPage: React.FC = () => {
             />
             {completedRoadmapItems.map((item) => (
               <motion.div
+                className="flex"
                 variants={transitions.item}
                 key={item.title}
-                className="flex flex-col overflow-hidden rounded-xl bg-white items-start"
               >
-                <img
-                  src={item.image}
-                  alt=""
-                  className="h-[200px] w-full object-center object-cover"
-                />
-                <span className="-mt-4 h-8 bg-infinite text-white flex items-center gap-2 px-3 py-1 rounded-full ml-4 tw-title-navigation-on-page">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
-                      fill="white"
-                    />
-                  </svg>
-                  Deployed
-                </span>
-                <h3 className="tw-heading-6 md:tw-heading-5 px-6 mt-4 mb-3">
-                  {item.title}
-                </h3>
-                <p className="tw-paragraph-sm md:tw-paragraph px-6 mb-3 text-black-60 line-clamp-3">
-                  {item.description}
-                </p>
                 <Link
+                  className="flex flex-col overflow-hidden rounded-xl bg-white items-start pb-8 md:pb-10 hover:no-underline text-black hover:text-black translate-y-0 hover:-translate-y-3 transition-transform"
                   href={item.link}
-                  className="button-outline button-small mx-6 mb-8"
                 >
-                  Learn more
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="h-[200px] w-full object-center object-cover"
+                  />
+                  <span className="-mt-4 h-8 bg-infinite text-white flex items-center gap-2 px-3 py-1 rounded-full ml-4 tw-title-navigation-on-page">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
+                        fill="white"
+                      />
+                    </svg>
+                    Deployed
+                  </span>
+                  <h3 className="tw-heading-6 md:tw-heading-5 px-6 mt-4 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="tw-paragraph-sm md:tw-paragraph px-6 mb-3 text-black-60 line-clamp-3">
+                    {item.description}
+                  </p>
                 </Link>
               </motion.div>
             ))}

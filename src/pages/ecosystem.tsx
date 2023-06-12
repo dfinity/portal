@@ -145,7 +145,11 @@ const ProjectInfo: React.FC<{
   return (
     <div className="flex flex-col gap-4 h-full max-w-full">
       <div className="flex gap-2 items-center">
-        <img src={project.logo} className="w-14 max-h-14"></img>
+        <img
+          src={project.logo}
+          className="w-14 max-h-14"
+          alt={`${project.name} logo`}
+        ></img>
         <div className="flex flex-col justify-center flex-1">
           <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
             {project.name}
@@ -254,7 +258,7 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
             <div className="z-[-1] animate-pulse absolute inset-0 bg-blue mr-px"></div>
             <img
               loading="lazy"
-              alt=""
+              alt={`${project.name} screenshot`}
               src={project.screenshots[0]}
               className="object-cover object-center"
             ></img>

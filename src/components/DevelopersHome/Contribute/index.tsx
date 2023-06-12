@@ -1,8 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import Link from "@docusaurus/Link";
-import {motion, useAnimation} from "framer-motion";
-import {useInView} from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import RightArrowSVG from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import contribute from "@site/static/img/developers/contribute.webp";
@@ -68,7 +68,7 @@ function Index() {
       variants={transitions.container}
       className={styles.container}
     >
-      <a id="features" />
+      <div id="features" />
       <motion.p variants={transitions.item} className={styles.title}>
         Contribute to the <br /> Internet Computer
       </motion.p>

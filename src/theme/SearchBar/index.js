@@ -60,6 +60,7 @@ const Search = () => {
           md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
           "
         onClick={openOverlay}
+        aria-label="Search"
       >
         <svg
           viewBox="0 0 16 16"
@@ -78,7 +79,7 @@ const Search = () => {
         <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block docs:text-black">
           Search
         </span>
-        <span className="hidden md:block min-w-[53px] text-right text-infinite/50 docs:text-black/50 md:group-hover:text-white">
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/70 docs:text-black/50 md:group-hover:text-white">
           {metaKey && (
             <span className="tw-paragraph-sm relative top-[2px]">
               {metaKey}K
