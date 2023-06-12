@@ -1,8 +1,32 @@
 # How to use HTTP outcalls: GET
 ## Overview
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about ICP token.
+A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. The main intent of this canister is informational for developers. 
 
 This example takes less than 5 minutes to complete.
+
+## Sample Dapp
+
+The sample canister exposes a public method, which makes an HTTPS GET request under the hood.
+
+![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
+
+The `get_icp_usd_exchange()` method returns Coinbase data on the exchange rate between USD and ICP for a certain day. The data will look like this:
+
+The API response looks like this:
+```
+  [
+     [
+         1682978460, <-- start timestamp
+         5.714, <-- lowest price during time range 
+         5.718, <-- highest price during range
+         5.714, <-- price at open
+         5.714, <-- price at close
+         243.5678 <-- volume of ICP traded
+     ],
+]
+```
+
+
 
 ## Motoko version
 
@@ -91,8 +115,8 @@ import Types "Types";
 actor {
 
 //This method sends a GET request to a URL with a free API we can test.
-//This method returns Coinbase data on the exchange rate between BTC and ICP 
-//for a certain day. The data will look like this:
+//This method returns Coinbase data on the exchange rate between USD and ICP 
+//for a certain day.
 //The API response looks like this:
 //  [
 //     [
