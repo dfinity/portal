@@ -194,7 +194,7 @@ actor {
 
 };
 ```
-- `get_cat_fact` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcalls is a GET.
+- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcalls is a GET.
 -  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
 - Code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
@@ -280,7 +280,7 @@ URLs:
     hello_http_backend: http://127.0.0.1:4943/?canisterId=txssk-maaaa-aaaaa-aaanq-cai&id=tzq7c-xqaaa-aaaaa-aaamq-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_cat_fact` method:
+Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
@@ -350,7 +350,7 @@ use ic_cdk::api::management_canister::http_request::{
 
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
-async fn get_cat_fact() -> String {
+async fn get_icp_usd_exchange() -> String {
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
 
@@ -389,17 +389,17 @@ async fn get_cat_fact() -> String {
 }
 ```
 
-- `get_cat_fact() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
+- `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
 - The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 5: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
 
-We update the Candid interface file so it matches the method `get_cat_fact` in `lib.rs`. 
+We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
 
 ```
 service : {
-    "get_cat_fact": () -> (text);
+    "get_icp_usd_exchange()": () -> (text);
 }
 ```
 
@@ -423,7 +423,7 @@ URLs:
     hello_http_rust_backend: http://127.0.0.1:4943/?canisterId=tmxop-wyaaa-aaaaa-aaapa-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `get_cat_fact` method:
+Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
