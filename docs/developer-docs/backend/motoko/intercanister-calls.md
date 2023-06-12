@@ -21,7 +21,7 @@ The LinkedUp sample dapp is implemented using the following canisters:
 
 Before building the sample dapp, verify the following:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
 -   [x] You have stopped the local canister execution environment provided by `dfx`.
 
@@ -113,7 +113,7 @@ To build and deploy the LinkUp sample dapp, take the following steps:
 
     For example, if the local canister execution environment binds to the default localhost address and port number, the URL looks similar to this:
 
-        http://127.0.0.1:8000/?canisterId=7kncf-oidaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
+        http://127.0.0.1:4943/?canisterId=7kncf-oidaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q
 
 ## Create a profile and connections
 
@@ -123,7 +123,7 @@ To run through a demonstration of the LinkedUp sample dapp, take the following s
 
 - #### Step 2:  Type the web server host name, port, and the `canisterId` keyword, then paste the `linkedup_assets` canister identifier as the URL to display.
 
-        127.0.0.1:8000/?canisterId=<ic-identifier-for-linkedup-assets>
+        127.0.0.1:4943/?canisterId=<ic-identifier-for-linkedup-assets>
 
     The browser displays an introductory page.
 

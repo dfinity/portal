@@ -101,9 +101,9 @@ There are several scenarios in which you might encounter this issue. For example
 
 If you encounter an issue where you suspect or you receive a message that an address is already in use or that a process is already running in the background, perform the following steps:
 
-- #### Step 1:  Run the following command to see which process is listening to the 8000 port if you are using the default binding to localhost:
+- #### Step 1:  Run the following command to see which process is listening to the 4943 port if you are using the default binding to localhost:
 
-        lsof -i tcp:8000
+        lsof -i tcp:4943
 
 - #### Step 2:  Run the following command to terminate any orphan processes:
 

@@ -7,22 +7,41 @@ slug: web-authentication-identity
 
 # Internet Identity
 
-In order to access and interact with applications running on the Internet Computer, it is often necessary for users to authenticate. One of the most commonly used methods to authenticate on the Internet Computer is Internet Identity.
+[Internet Identity](https://identity.ic0.app/) is a privacy-enhancing blockchain based authentication framework to built on the Internet Computer. It integrates with the APIs of WebAuthn, a widely used, secure authentication framework supported by modern browsers and operating systems. Users can connect passkeys to their Internet Identity, and use the secure TPM chip inside these devices for authentication instead of passwords or clunky 2FAs. Alternatively, Internet Identity supports devices like YubiKeys or Ledger hardware wallets.
 
-[Internet Identity](https://identity.ic0.app/) is a blockchain authentication framework supported by the Internet Computer. Users begin the process by creating identity "anchors" to which they assign compatible cryptographically enabled devices, such as the fingerprint sensor on a laptop, the face ID system on a phone, or a portable HSM, such as a YubiKey or Ledger wallet. Thereafter, they can signup and authenticate to dapps running on the Internet Computer using any of the devices they have assigned to their anchor.
+## Privacy
 
-This provides a high level of convenience, allowing users to authenticate to dapps with a very low level of friction, yet, while also benefiting from a high level of security and without the need to directly manage or handle cryptographic key material themselves. The system offers some degree of privacy for users, by ensuring that whenever an anchor is used to interact with a dapp, the dapp sees a specially generated pseudonym for that dapp, which prevents the dapp from tracking users across the various dapps they use.
+Using chain-key cryptography, Internet Identity ensures private authentication by creating a unique principal id for each dapp the user authenticates with. This prevents the tracking of users across dapps, making each session private.
+
+## Create an Internet Identity
+
+If you don't yet have an Internet Identity, you can create one at [https://identity.ic0.app/](https://identity.ic0.app/).
 
 <figure>
-<img src="/img/how-it-works/internet-identity-authorization.png" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="width:400px">
-<figcaption align="left">
-Internet Identity screen prompting the user to authorize access to Openchat
-</figcaption>
+<img src="/img/how-it-works/ii-1.webp" alt="Internet Identity creation screen" title="Internet Identity creation screen" align="center" style="height:500px; width: auto">
+</figure> 
+
+If you click "Create Internet Identity", you are asked to create a passkey. A passkey can be any device that has a TPM chip inside it, such as a laptop with a fingerprint sensor, a smartphone with face ID. Alternatively, Internet Identity supports portable HSMs, such as YubiKeys or Ledger devices.
+
+<figure>
+<img src="/img/how-it-works/ii-2.webp" alt="Create a passkey to connect with your Internet Identity" title="Create a passkey to connect with your Internet Identity" align="center" style="height:350px; width: auto">
+</figure> 
+
+
+After the Internet Identity is created, users can already use it to securely and privately authenticate with ICP based dapps, or add more passkeys. It is generally advised to have multiple passkeys connected to your Internet Identity as well as a recovery method setup, such as a recovery phrase.
+
+<figure>
+<img src="/img/how-it-works/ii-3.webp" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="height:500px; width: auto">
 </figure>
 
-A user can register as many identity anchors as they want for redundancy, or different purposes. For example, a user may create an anchor for use with SocialFi or GameFi, and another for use with pure DeFi. They may only feel comfortable adding facial recognition to their SocialFi and GameFi anchor, say, and only use more secure portable HSM devices like YubiKeys and Ledger wallets with their pure DeFi anchor.
+Once you added a passkey, you will be assigned an Internet Identity number. You should save somewhere safe, where you can easily access it. While your browser remembers this number, it will forget it if its cache is cleared, in which case you will need to type it in manually.
 
-Unlike most authentication methods, users are not required to set and manage passwords or provide any personal identifying information to dapps or to Internet Identity.
+<figure>
+<img src="/img/how-it-works/ii-4.webp" alt="Internet Identity screen prompting the user to authorize access to Openchat" title="Internet Identity screen prompting the user to authorize access to Openchat" align="center" style="height:500px; width: auto">
+</figure>
+
+As mentioned previously, it is also important to add a recovery phrase in case your device gets lost or stolen. Your Internet Identity also allows you to login to the Network Nervous System (NNS) dapp. NNS is the DAO that governs the Internet Computer, and allows ICP token holders to participate in its governance by staking their tokens.
+
 
 [Internet Identity App](https://identity.ic0.app/)
 

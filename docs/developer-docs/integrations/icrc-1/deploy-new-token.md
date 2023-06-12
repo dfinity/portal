@@ -11,7 +11,7 @@ This guide will provide you a step-by-step walkthrough to deploy your own [ICRC-
 ``` sh
 export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
 curl -o icrc1-ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
-curl -o icrc1-ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
+curl -o icrc1-ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/ledger.did"
 gunzip icrc1-ledger.wasm.gz
 ```
 
@@ -82,7 +82,7 @@ Replace these variables with the following values:
 -   the `ARCHIVE_CONTROLLER` is the [controller principal](../../setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
 
 :::info
-When you deploy to the mainnet:
+When you deploy on the mainnet:
 
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new archives. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::

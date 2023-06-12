@@ -30,7 +30,7 @@ const Content: React.FC = () => {
           </p>
           <p className="tw-paragraph mb-3">
             The ICP x BTC integration comprises two key building blocks (and
-            APIs): Network integration & chain-Key ECDSA
+            APIs): Network integration & chain-key ECDSA
           </p>
           <p className="tw-paragraph mb-3">
             Combining these building blocks, canisters can directly and
@@ -83,7 +83,7 @@ const Content: React.FC = () => {
               to sign bitcoin transactions, using a highly fault-tolerant, decentralized
               network that is resilient to attacks by malicious nodes. The secret key is
               never stored in one place, instead it is broken down into key shares held by
-              ICP nodes that are re-shared every ~10 mins. When requested, nodes use their
+              ICP nodes that are re-shared periodically. When requested, nodes use their
               key shares to collectively sign BTC transactions without recreating the
               original secret key. This signing protocol assumes a threshold of nodes to
               be honest.

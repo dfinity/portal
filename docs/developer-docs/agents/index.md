@@ -25,10 +25,13 @@ In addition to those, there are several other community-supported agents:
   - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
 - Go
   - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+  - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
 - Java
   - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 - Python
   - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
+- C
+  - [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
 
 If you're interested in building an agent in another language please reach out to us via [https://dfinity.org/grants](https://dfinity.org/grants).
 

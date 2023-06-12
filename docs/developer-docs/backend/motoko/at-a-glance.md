@@ -9,7 +9,7 @@ The [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutor
 
 If the quick start and tutorials are not quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
-After you [install the SDK](../../setup/install/index.mdx), here’s all you need to know:
+After you [install the IC SDK](../../setup/install/index.mdx), here’s all you need to know:
 
 ## Step 1:
 Create a new project and change to the project directory.
@@ -26,7 +26,7 @@ Edit the HTML, JavaScript, and CSS that provides the frontend for your service o
 Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment.
 
 ## Step 5:
-Register, build, and deploy locally or on mainnet (for mainnet, use:`--network ic`).
+Register, build, and deploy locally or on the mainnet (for the mainnet, use:`--network ic`).
 
         dfx deploy --network <network>
 

@@ -77,13 +77,13 @@ To use the Candid web interface to test the `counter` canister:
 
 - #### Step 3:  Open a browser and navigate to the address and port number specified in the `dfx.json` configuration file.
 
-    By default, the `local` canister execution environment binds to the `127.0.0.1:8000` address and port number.
+    By default, the `local` canister execution environment binds to the `127.0.0.1:4943` address and port number.
 
 - #### Step 4:  Add the required `canisterId` parameter and the Candid UI canister identifier returned by the `dfx canister id` command.
 
     For example, the full URL should look similar to the following but with the `CANDID-UI-CANISTER-IDENTIFIER` that was returned by the `dfx canister id` command:
 
-        http://127.0.0.1:8000/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
+        http://127.0.0.1:4943/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
 
     The browser displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file.
 

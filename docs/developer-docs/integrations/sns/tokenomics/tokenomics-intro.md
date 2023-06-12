@@ -1,8 +1,15 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
-# Tokenomics of a DAO
-## Overview
+# SNS tokenomics
+
+Each SNS can be individually configured with parameters that define, among other things,
+the tokenomics of an SNS and the dapp that it governs. 
+Therefore when launching or maintaining an SNS, it is important to understand tokenomics.
+The described concepts are also relevant for 
+[other DAOs](../lifecycle-sns/dao-alternatives.md).
+
+## Tokenomics overview
 ### What is tokenomics?
 A token is a digital asset on a blockchain. Tokenomics describes the economics of a token system on a blockchain. It is a game changer for Decentralized autonomous organization (DAOs) compared to traditional apps running on a Web 2.0 infrastructure, because it enables the introduction of new incentive systems and use cases. Tokenizing a DAO allows, for instance, that anyone in the world can purchase tokens and thereby contribute to initial funding for the DAO. Moreover, tokens can be paid to early adopters and active users, which will help attract users.
 
@@ -12,7 +19,7 @@ Tokenomics covers a wide range of topics, such as
 * Allocation of tokens to participants of the DAO.
 * Incentive mechanisms, e.g., providing tokens to early adopters.   
 
-### Supply & demand
+### Supply and demand
 We define the supply of a token as the amount which token holders are willing to sell at a given price. Likewise, token demand is the amount of tokens, token buyers are willing to buy for a given price. The following graph depicts the typical relationship between the supply & demand and price for an example good, which in our case could be a token priced in USD. 
 
 ![](./_attachments/graph_supply_demand.png)
@@ -71,7 +78,11 @@ As mentioned above, participation in governance typically requires the staking o
 
 On this [page](rewards.md) there is more information on the configuration of voting rewards. 
 
-## Resources
-On this [page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) you will find further material enabling teams to choose a tokenomics set-up for their SNS DAO. It provides documentation links to SNS tokenomics key concepts as well as a SNS tokenomics tool.
+## Additional documentation and tools
+On this [page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration)
+you will find further material enabling teams to choose a tokenomics set-up for their
+SNS DAO.
+It provides documentation links to SNS tokenomics key concepts as well as a SNS
+tokenomics tool.
 
 

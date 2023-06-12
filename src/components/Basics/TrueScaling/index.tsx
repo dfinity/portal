@@ -41,8 +41,8 @@ const TrueScaling = () => {
       <motion.div variants={transitions.item} className={styles.content}>
         <h3 className="tw-heading-5 md:tw-heading-3 m-0">True scaling</h3>
         <p className="tw-paragraph md:tw-lead m-0">
-          By adding new subnets regularly, the IC scales to an unbounded number
-          of dapps and allows storage of unlimited data.
+          By adding new subnets regularly, the Internet Computer scales to an
+          unbounded number of dapps and allows storage of unlimited data.
         </p>
         <Link
           href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
@@ -73,7 +73,7 @@ const TrueScaling = () => {
                 )}
               </h5>
               <p className="tw-paragraph-sm mb-0">
-                with hundreds more waiting config in DCs
+                with hundreds more waiting to form new subnets
               </p>
             </li>
             <li>
@@ -84,7 +84,7 @@ const TrueScaling = () => {
                   <span className={styles.skeleton}>&nbsp;</span>
                 )}
               </h5>
-              <p className="tw-paragraph-sm mb-0">indie node operators</p>
+              <p className="tw-paragraph-sm mb-0">independent node operators</p>
             </li>
             <li>
               <h5 className="tw-heading-6 m-0">
