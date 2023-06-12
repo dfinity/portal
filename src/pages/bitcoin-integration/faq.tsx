@@ -212,35 +212,67 @@ function BitcoinFaqPage() {
                   <Link href="http://icdex.io/">
                     ICDex
                   </Link> or{" "}
-                  <Link href="https://app.icpswap.com/swap">
+                  <Link href="https://icpswap.com/">
                     ICPSwap
                   </Link>.{" "}
                 </li>
                 <li>
                   <strong>
-                    Convert ckBTC directly on the protocol:
+                    Convert BTC to ckBTC directly on the protocol:
                   </strong>{" "}
-                  You can send BTC to the NNS, and receive ckBTC. First, go to the{" "}
-                  <Link href="https://nns.ic0.app/">NNS dapp</Link>, then on the sidebar,
-                  click "My Tokens"
+                  You can receive ckBTC simply sending BTC to the NNS (for more details, see
+                  next question).{" "}
+                  <Link href="http://icdex.io/">
+                    ICDex
+                  </Link> and {" "}
+                  <Link href="https://icpswap.com/">
+                    ICPSwap
+                  </Link>.{" "}
+                  have similar functionality that allow you to convert your BTC to ckBTC, directly
+                  using the ckBTC canisters.
                 </li>
               </ul>
             </Faq>
-            <Faq title="Is ckBTC a bridged token?">
+            <Faq title="How do I get ckBTC using the NNS?">
               <p className="tw-paragraph mb-3">
-                ckBTC isn't considered a bridged token because of a few important aspects
-                that differentiate it from bridged tokens. The key innovations behind ckBTC,
-                namely{" "}
-                <Link href="/bitcoin-integration">
-                  native Bitcoin integration
-                </Link>{" "}
-                and{" "}
-                <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
-                  chain-key ECDSA signing
-                </Link>{" "}
-                enable a pair of canistser smart contracts to trustlessly create ckBTC. It 
-                does not need bridges or centralized custodians in order to function, thanks
-                to the direct integration of the Internet Computer and Bitcoin networks.
+                You can get ckBTC by sending BTC to your NNS wallet.
+              </p>
+              <p>
+                <strong>
+                  1. Go to the NNS frontend dapp and click on the sign in with your Internet Identity.
+                </strong> If you don't have one, you will be prompted to create one. Any device that supports
+                WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or
+                a Ledger device.
+                <img
+                  src="/img/bitcoin-integration/ckbtc-1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>
+              </p>
+              <p>
+                <strong>3. Click on "Receive" on the bottom of the screen.</strong>
+              </p>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-2.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              
+              <p>
+                <strong>
+                  4. Send BTC to your NNS BTC address.
+                </strong> Once you see this pop up window, you can copy your NNS BTC address, and send BTC there.
+                Note, that since this is a real bitcoin transaction, it will take roughly an hour, and have bitcoin's
+                transaction fees. Once you acquired ckBTC, you can take advantage of its near instant finality (1-2s) and
+                negligible transaction fees (10 satoshis).
+                <img
+                  src="/img/bitcoin-integration/ckbtc-3.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
             </Faq>
             <Faq title="Is ckBTC wrapped?">
@@ -254,470 +286,61 @@ function BitcoinFaqPage() {
               </p>
             </Faq>
             <Faq
-              title="How can I get SNS Tokens?"
+              title="How does ckBTC compare to the Lightning Network?"
               id="how-do-you-get-sns-tokens"
             >
               <p>
-                Each SNS DAO will have its own unique SNS token. For example,
-                OpenChat will have CHAT tokens when they turn their dapp into an
-                SNS DAO.{" "}
-              </p>
-              <p>There are three main ways of acquiring SNS tokens:</p>
-              <ul>
-                <li>
-                  <strong>Participate in a decentralization swap:</strong> When
-                  an SNS launches, it has to go through a decentralization swap.
-                  You can participate on the NNS frontend dapp under the{" "}
-                  <Link href="https://nns.ic0.app/launchpad/">
-                    Launch Pad tab
-                  </Link>
-                  . During the swap you can buy SNS tokens with ICP.
-                </li>
-                <li>
-                  <strong>
-                    Purchase tokens on a decentralized exchange (DEX):
-                  </strong>{" "}
-                  After a decentralization swap has concluded, liquid tokens
-                  will typically be listed on multiple DEXs, where you can buy
-                  them using the ICP utility token or other tokens, depending on
-                  what token pairs the DEX lists, e.g., also Bitcoin or
-                  Ethereum. An SNS token in high demand may have a higher price
-                  on a DEX than in its decentralization swap.{" "}
-                  <Link href="http://icdex.io/">ICDex</Link> already supports
-                  SNS tokens.
-                </li>
-                <li>
-                  <strong>Airdrops:</strong> Besides buying SNS tokens, you can
-                  obtain them by receiving airdrops or by engaging with the dapp
-                  and thereby earning tokens as reward. In this scenario, tokens
-                  are used as an incentive to encourage active engagement with
-                  the dapp which helps grow the active user base. Finally, if
-                  you already have tokens and participate in governance, you can
-                  earn tokens as voting rewards as you would in the NNS.
-                </li>
-              </ul>
-            </Faq>
-
-            <Faq title="Do I get rewards for participating in governance?">
-              SNS works very similar to the NNS, however each SNS DAO can
-              configure their parameters differently. Once you have locked your
-              SNS governance tokens into SNS neurons for at least the minimum
-              required time, you can participate in voting. Depending on the
-              configuration voting may reward participants with SNS governance
-              tokens.
-            </Faq>
-
-            <Faq title="What is the Community Fund?">
-              <p>
-                From the ICP ecosystem's vantage point, the Community Fund aids
-                in bootstrapping the SNS DAO ecosystem, and re-invests in the
-                continued growth of the ecosystem. The Community Fund itself is
-                controlled by a DAO (the NNS).
+                The Lightning Network is the most well known Layer-2 for Bitcoin.
+                Like ckBTC, it allows fast and cheap transfers of BTC value off
+                the Bitcoin blockchain.
               </p>
               <p>
-                From a user's vantage point, the Community Fund is a way for
-                people who stake ICP in the NNS to use their maturity to fund
-                future SNSs, which results in higher diversification. As the NNS
-                decides how the Community Fund is distributed, those
-                participating in it can leverage the broader community's "wisdom
-                of crowds" to decide which SNS tokens to acquire.
+                Unlike Lightning, ckBTC does not require peer-to-peer payment
+                channels to be established and funded. This means that your full
+                ckBTC balance can always be transferred — no network liquidity
+                limitations.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Community Fund at
-                any moment. Neurons will only participate in the
-                decentralization swap if they are opted in at the moment when
-                the proposal to initiate the decentralization swap executes. The
-                propsoal executes right after it gets adopted by ICP neuron
-                holders.
-              </p>
-              You can find out more about the community fund{" "}
-              <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
-                here
-              </Link>
-              .
-            </Faq>
-            <Faq title="If I am asked to send ICP to an address to participate in a decentralization swap, what should I do?">
-              <p>
-                If you want to participate in the swap, do not send ICP directly
-                to addresses! An SNS swap will never initiate contact with you,
-                e.g. via chat or email. You will never be asked to manually
-                enter an ICP address to participate in a decentralization swap.
-                If you find yourself entering an ICP address to participate in
-                an SNS swap, then STOP. Your swap address is specific to your
-                identity, and you should only interact with that address when
-                participating in a swap through the{" "}
-                <Link href="https://nns.ic0.app/launchpad/">NNS</Link> or other
-                ICP based dapps that support the swap like{" "}
-                <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
-                  ICLighthouse
-                </Link>
-                .
-              </p>
-            </Faq>
-          </FaqSection>
-          <FaqSection
-            id="decentralization-swap"
-            title={
-              <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                De&shy;cen&shy;tral&shy;iza&shy;tion swap
-              </h2>
-            }
-          >
-            <div className="blob blob-purple blob-md blob-top-right z-[-1]"></div>
-            <Faq title="What is a decentralization swap?">
-              A decentralization swap is the process by which an SNS DAO becomes
-              decentralized and where users can purchase SNS tokens by
-              participating. After the swap, each participant receives a basket
-              of neurons. These neurons hold SNS tokens and therefore a share of
-              the DAO's voting power. It is one of{" "}
-              <Link href="#how-do-you-get-sns-tokens">multiple ways</Link> you
-              can get SNS tokens for a particular SNS DAO.
-            </Faq>
-
-            <Faq title="Where does a decentralization swap take place?">
-              <p>
-                A decentralization swap is run entirely on chain. The swap is
-                initiated by the NNS. Through this approach, every aspect of the
-                swap, from its initiation to execution, is completely
-                decentralized and not controlled by any centralized entity. Even
-                the decision to create the SNS and its token is made by the NNS
-                (a DAO) and not the developer in order to avoid undesirable
-                legal implications for the developer who wants to decentralize
-                their app.
+                Canister smart contracts can programmatically hold and transfer
+                ckBTC, making it possible to develop fully on-chain Layer-2
+                applications for Bitcoin, which is not possible using the
+                Lightning Network.
               </p>
               <p>
-                A decentralization swap follows a list of configurable
-                parameters:
-              </p>
-              <ul>
-                <li>The amount of SNS tokens to be sold</li>
-                <li>
-                  The amount of ICP a decentralization swap must receive to be
-                  successful. If the goal is not reached, participants get their
-                  ICP refunded and the swap fails.
-                </li>
-                <li>
-                  The maximum amount of ICP a decentralization swap can receive
-                  before it concludes. If the maximum ICP is reached, the swap
-                  is over and the control of the dapp is turned over to the
-                  token holders. As the number of tokens to be sold is fixed, it
-                  is amount of ICP raised that determines the initial price of
-                  the SNS tokens.
-                </li>
-                <li>Minimum and maximum commitment of ICP per participant</li>
-                <li></li>
-              </ul>
-            </Faq>
-
-            <Faq title="What do I get from a swap?">
-              <p>
-                If the decentralization swap is successful, you will receive a
-                basket of{" "}
-                <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
-                  neurons
-                </Link>{" "}
-                that hold your SNS tokens. Depending on the SNS configuration,
-                the basket may contain multiple neurons, each with a different
-                dissolve delay. You can use your tokens to participate in
-                governance or, once neurons have dissolved, sell the liquid
-                tokens on an exchange.
+                Another key difference is that ckBTC transaction fees are fixed,
+                and not dependent on the transaction amount, variable intermediate
+                forwarding, or unexpected channel funding fees.
               </p>
               <p>
-                The number of SNS tokens you receive, and the price paid for
-                each token, depends on the amount of ICP raised during the swap.
-                The more ICP raised, the fewer SNS tokens you receive, however
-                their price will be higher.
+                In the future, ckBTC will be available on other networks like
+                Ethereum – also directly, and without bridges, thanks to chain-key
+                cryptography integrations.
               </p>
             </Faq>
 
-            <Faq title="How is the price of SNS tokens calculated?">
+            <Faq title="Does ckBTC incorporate KYT?">
               <p>
-                SNS tokens can be exchanged for ICP during the decentralization
-                swap. There is a fixed number of tokens distributed during the
-                swap, which means their price is determined by the amount of ICP
-                raised. You can calculate the token price by dividing the amount
-                of ICP raised with the number of tokens sold. Price = ICP raised
-                / number of tokens sold. Note that the final price of SNS tokens
-                isn't known at the time of the decentralization swap, as it is
-                dependent on the total amount of ICP raised in the swap.
-                However, you can calculate the minimum and maximum price based
-                on the minimum and maximum ICP that the swap accepts, which you
-                can verify in the swap proposal. A few examples:
-              </p>
-              <ul>
-                <li>
-                  The decentralization swap raised 1000 ICP by selling 5000
-                  tokens. You contributed with 10 ICP. This means you will have
-                  50 SNS tokens, each worth 0.2 ICP.
-                </li>
-                <li>
-                  The decentralization swap raised 500,000 ICP by selling 1
-                  million tokens. You contributed with 200 ICP. This means you
-                  will have 400 SNS tokens, each worth 0.5 ICP.
-                </li>
-                <li>
-                  The decentralization swap raised 10,000 ICP by selling 100
-                  tokens. You contributed with 5 ICP. This means you will have
-                  0.05 SNS tokens, where a full token would be worth 100 ICP.
-                </li>
-              </ul>
-            </Faq>
-
-            <Faq title="How do I participate in a swap?">
-              <p>
-                You can participate in the decentralization swap in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
-                which requires ICP utility tokens. ICP tokens can be exchanged
-                for SNS tokens during the decentralization swap. If you don’t
-                have ICP, you can buy some from any of the exchanges listed{" "}
-                <Link href="https://support.dfinity.org/hc/en-us/articles/6646999699860-How-do-I-stake-ICP-utility-tokens-">
-                  here
-                </Link>
-                .
+                Yes, when executing cross-chain transaction, it goes through a KYT
+                check. Know Your Transaction (KYT) is a process used by financial
+                institutions to monitor and track financial transactions in order
+                to detect and prevent fraudulent or criminal activity, such as money
+                laundering or terrorist financing. To comply with regulation,
+                centralized exchanges (CEXs) use KYT services to check whether crypto
+                sent to their platform has been associated with illicit activities.
               </p>
               <p>
-                Follow these steps to participate in a decentralization swap:
+                If ckBTC were to operate without a KYT implementation, there is a risk
+                that 'tainted' bitcoin could enter the Internet Computer, that an honest
+                user withdraws. This bitcoin may be rejected by CEXs, potentially having
+                honest users lose their bitcoin.
               </p>
               <p>
-                <strong>
-                  1. Go to the NNS frontend dapp and click on the “Launch Pad”
-                  in the sidebar to see all ongoing SNS decentralization swap.
-                </strong>
+                KYT is an important component of ckBTC. Read more about how ckBTC
+                implements KYT and the motivation behind it in this{" "}
+                <Link href="https://forum.dfinity.org/t/ckbtc-and-kyt-compliance/18754">
+                  forum post
+                </Link>.
               </p>
-              <p>
-                <strong>
-                  2. Select the SNS Swap you’re interested in under “Current
-                  Launches” and click on the box.
-                </strong>
-                <img
-                  src="/img/sns/SNS-FAQ-participate-1.webp"
-                  alt=""
-                  loading="lazy"
-                />
-              </p>
-              <p>
-                <strong>3. Click on “Participate”.</strong>
-                <img
-                  src="/img/sns/SNS-FAQ-participate-2.webp"
-                  alt=""
-                  loading="lazy"
-                />
-              </p>
-              <p>
-                <strong>
-                  4. Type in the amount of ICP you want to participate with or
-                  click “max”, then click “Execute”.
-                </strong>
-                <img
-                  src="/img/sns/SNS-FAQ-participate-3.webp"
-                  alt=""
-                  loading="lazy"
-                />
-              </p>
-              <p>
-                <strong>
-                  5. You will be prompted to review your participation. If you
-                  see the correct amount of ICP, select the checkbox and click
-                  “Execute”.
-                </strong>
-                <img
-                  src="/img/sns/SNS-FAQ-participate-4.webp"
-                  alt=""
-                  loading="lazy"
-                />
-              </p>
-              <p>
-                <strong>
-                  6. On the last screen, you should see the amount of ICP you
-                  entered for participation. You can repeat this process if you
-                  wish to contribute more.
-                </strong>
-              </p>
-              <p>
-                After the swap ends and is successful, you receive SNS tokens.
-                Note, that this may take a few hours after the swap has
-                concluded. The number of SNS tokens you receive, and the price
-                paid for each token, depends on the amount of ICP raised during
-                the swap as well as the amount of ICP spent. The more ICP
-                raised, the fewer SNS tokens you receive.
-              </p>
-              <p>
-                If the set goals of the decentralization swap are not reached,
-                participants will be refunded. The duration of a swap is
-                configurable and thus, depends on the configuration of each
-                individual SNS. A swap can only start after a 4 to 8-day NNS
-                voting period (unless 51% majority is reached sooner) on the
-                original proposal that initiates the launch the SNS.
-              </p>
-              <p className="not-prose">
-                <Link
-                  href="https://nns.ic0.app/launchpad/"
-                  className="link-primary link-with-icon"
-                >
-                  <LinkArrowRight></LinkArrowRight>
-                  Go to the Launch Pad
-                </Link>
-              </p>
-            </Faq>
-            <Faq title="Who starts the decentralization swap?">
-              The developer team first creates an NNS proposal for the
-              decentralization swap. The swap itself starts automatically once
-              the NNS proposal is adopted.
-            </Faq>
-            <Faq title="As a participant in the SNS decentralization swap, what do I need to trust?">
-              <p>
-                Before participating in an SNS decentralization swap to get a
-                share of the SNS DAO’s voting power, it is highly recommended
-                that you do your due diligence on the dapp in question to make
-                sure the SNS DAO is trustworthy. Dapp developers are responsible
-                for providing all the necessary information that allows you to
-                verify the dapp and its SNS configurations. Note that in
-                participating without doing due your diligence, you are
-                implicitly trusting the NNS community and the developers
-                decentralizing the dapp. In any case, it is crucial that you
-                trust the developers will not change the dapp during the SNS
-                launch. Learn what you could verify and what to look out for{" "}
-                <Link href="https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust">
-                  here.
-                </Link>
-              </p>
-            </Faq>
-
-            <Faq title="How can I verify the SNS decentralization swap proposal?">
-              <p>
-                There are multiple levels of verification you can do depending
-                on your level of technical understanding. SNS canisters can be
-                verified at any time, even before the decentralization swap, but
-                after they have been installed on the SNS subnet. Here are some
-                ways to verify:
-              </p>
-              <ul>
-                <li>
-                  <strong>Swap parameters:</strong> You can verify what the
-                  parameters of the decentralization swap are in the Launch Pad
-                  or in the decentralization swap NNS proposal.
-                </li>
-                <li>
-                  <strong>SNS root canister: </strong> An SNS DAO is comprised
-                  of several SNS canisters that have different functions. The
-                  root canister is the canister that controls the other SNS
-                  canisters within a given SNS DAO. You should verify that the
-                  SNS root canister is the only canister controlling other SNS
-                  canisters within that SNS DAO. Verification is important for
-                  making sure there no backdoors built in.
-                </li>
-                <li>
-                  <strong>The dapp canister: </strong> You can verify that the
-                  canister id of the dapp controlled by the SNS DAO is the same
-                  as the one you're interacting with.
-                </li>
-                Learn more about verification here:{" "}
-                <Link href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_swap_proposal">
-                  here
-                </Link>
-              </ul>
-            </Faq>
-          </FaqSection>
-
-          <FaqSection
-            id="governance"
-            title={
-              <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
-                Governance
-              </h2>
-            }
-          >
-            <Faq title="How do I see and vote for SNS proposals?">
-              <p>
-                Voting and the creation of SNS proposals can take place in the
-                dapp controlled by the SNS DAO, and soon in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
-                Proposals are listed within the dapps themselves as in this
-                example of OpenChat:
-                <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
-              </p>
-              <p className="not-prose">
-                <Link
-                  href="https://oc.app/#/vhn7y-siaaa-aaaaf-a7yxa-cai"
-                  className="link-primary link-with-icon"
-                >
-                  <LinkArrowRight></LinkArrowRight>
-                  See SNS-1 proposals on OpenChat
-                </Link>
-              </p>
-            </Faq>
-            <Faq title="How do I create a proposal for an SNS DAO?">
-              <p>
-                Creating an SNS proposal requires knowledge of the command line
-                tools <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
-                <Link href="https://github.com/dfinity/sns-quill">quill</Link>.
-              </p>
-              <p className="not-prose">
-                <Link
-                  href="https://github.com/dfinity/sns-quill#submit-a-proposal"
-                  className="link-primary link-with-icon"
-                >
-                  <LinkArrowRight></LinkArrowRight>
-                  See docs
-                </Link>
-              </p>
-            </Faq>
-
-            <Faq title="Is it possible to transfer SNS tokens to another person?">
-              <p>
-                Yes. SNS tokens are ICRC-1 tokens and can be transferred between
-                any Internet Computer-based wallets that support ICRC-1,
-                including your NNS wallet. Note that each SNS has its own
-                ICRC-1-compliant ledger for keeping track of its tokens.
-              </p>
-              <p>
-                When receiving your SNS tokens in the form of neurons, the
-                neurons may have dissolve delays, meaning your tokens may not be
-                liquid, i.e. transferable immediately. Rather these tokens
-                become liquid (transferable) in weeks, months, or years’ time,
-                depending on the dissolve delay of the respective neuron.
-              </p>
-            </Faq>
-            <Faq title="Is it possible to sell SNS tokens to another person?">
-              <p>
-                Yes. Because tokens can be sent to other people, they can
-                likewise be sent to exchanges and thus, swapped for other
-                tokens. The easiest way to sell SNS tokens is through a
-                decentralized exchange (DEX) that lists the token. You can
-                exchange SNS tokens for other tokens, depending on the token
-                pairs available on any DEX.
-              </p>
-              <p>
-                Likewise, you can acquire SNS tokens on a DEX in exchange for
-                other tokens.
-              </p>
-            </Faq>
-            <Faq title="Are SNS tokens inflationary or deflationary?">
-              <p>
-                This depends on the specific SNS configuration. An SNS DAO can
-                have both inflationary and deflationary pressures.
-              </p>
-              <p>Inflationary:</p>
-              <ul>
-                <li>
-                  An SNS DAO can be set up to mint voting rewards for people who
-                  participate in governance (similar to ICP).
-                </li>
-                <li>
-                  An SNS DAO can mint tokens if voted on by SNS token holders.
-                  For example: a game mints 2% of total supply each year and
-                  distributes it among players.
-                </li>
-              </ul>
-              <p>Deflationary:</p>
-              <ul>
-                <li>SNS tokens are burnt for every transaction.</li>
-                <li>
-                  Locking SNS tokens into neurons removes them from circulation.
-                  While not technically deflation, it acts as a deflationary
-                  pressure.
-                </li>
-              </ul>
             </Faq>
           </FaqSection>
         </section>
@@ -752,28 +375,28 @@ function BitcoinFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="/sns"
-            title="SNS DAO Basics"
+            href="/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works/"
+            title="Technical overview of Bitcoin integration"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://youtu.be/nZBWx6y070Y"
-            title="Video: Next Generation DAOs"
+            href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+            title="Technical overview of ckBTC"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c"
-            title="SNS Blog"
+            href="https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e"
+            title="Blog: ckBTC"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/how-it-works"
-            title="Technical overview of ICP"
+            href="/docs/current/references/ic-interface-spec/#ic-bitcoin-api"
+            title="Native bitcoin API"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)"
-            title="SNS Wiki"
+            href="/docs/current/developer-docs/integrations/bitcoin/local-development"
+            title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/developer-docs/integrations/sns/"
-            title="SNS Docs"
+            href="/samples?term=bitcoin"
+            title="Sample code"
           ></SmallCardWithDescription>
         </AnimateSpawn>
       </main>
