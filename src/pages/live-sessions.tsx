@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import liveSessions from "@site/.docusaurus/conversations/default/conversations.json";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
@@ -14,6 +13,7 @@ import ChevronRightIcon from "../../static/img/chevron-right.svg";
 import ExternalLinkIcon from "../../static/img/external-link.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
+import ShareMeta from "../components/Common/ShareMeta";
 import { LiveSession } from "../components/LiveSessionsPage/LiveSession";
 
 const MotionLink = motion(Link);
@@ -114,21 +114,8 @@ function LiveSessionsPage(): JSX.Element {
       description="Join live sessions with the DFINITY Foundation to discuss upcoming contributions to the Internet Computer roadmap."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-live-sessions.jpeg"
-          }
-        />
-        <title>Live sessions</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-live-sessions.jpeg"></ShareMeta>
+
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
           <motion.img
@@ -432,12 +419,9 @@ function LiveSessionsPage(): JSX.Element {
                       ></div>
                       {!session.youtubeLink && !session.deck && (
                         <div>
-                          <Link
-                            className="tw-heading-6 text-black"
-                            href={session.youtubeLink}
-                          >
+                          <div className="tw-heading-6 text-black">
                             Recording available soon...
-                          </Link>
+                          </div>
                         </div>
                       )}
                       {session.youtubeLink && (
@@ -490,7 +474,13 @@ function LiveSessionsPage(): JSX.Element {
           ]}
           ctaLabel="Get updates!"
           postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-          decoration={<img src="/img/newsletter/email-image-1.webp" />}
+          decoration={
+            <img
+              src="/img/newsletter/email-image-1.webp"
+              alt=""
+              loading="lazy"
+            />
+          }
           className="mb-20"
         >
           <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">

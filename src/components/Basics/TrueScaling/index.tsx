@@ -10,6 +10,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import transitions from "@site/static/transitions.json";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 // import graphic from "!../../../../static/img/basics/true-scaling.svg";
 // import graphicMobile from "../../../../static/img/basics/true-scaling.svg";
 
@@ -19,13 +20,7 @@ const TrueScaling = () => {
     subnets: number;
     nodeProviders: number;
   } | null>(null);
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
+
   useEffect(() => {
     (async () => {
       const [nodeMachines, subnets, nodeProviders] = await Promise.all([
@@ -42,13 +37,7 @@ const TrueScaling = () => {
   }, []);
 
   return (
-    <motion.section
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={transitions.container}
-      className={styles.container}
-    >
+    <AnimateSpawn variants={transitions.container} className={styles.container}>
       <motion.div variants={transitions.item} className={styles.content}>
         <h3 className="tw-heading-5 md:tw-heading-3 m-0">True scaling</h3>
         <p className="tw-paragraph md:tw-lead m-0">
@@ -67,19 +56,10 @@ const TrueScaling = () => {
         <picture>
           <source
             media="(max-width: 996px)"
-            srcSet={
-              require("!!file-loader!../../../../static/img/basics/true-scaling-mobile.svg")
-                .default
-            }
+            srcSet="/img/basics/true-scaling-mobile.svg"
           />
 
-          <img
-            src={
-              require("!!file-loader!../../../../static/img/basics/true-scaling.svg")
-                .default
-            }
-            alt=""
-          />
+          <img src="/img/basics/true-scaling.svg" alt="" loading="lazy" />
         </picture>
         <motion.h4 variants={transitions.item}>Current status</motion.h4>
         <motion.div variants={transitions.item} className={styles.statusCard}>
@@ -119,7 +99,7 @@ const TrueScaling = () => {
           </ul>
         </motion.div>
       </div>
-    </motion.section>
+    </AnimateSpawn>
   );
 };
 

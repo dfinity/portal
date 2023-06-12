@@ -103,6 +103,7 @@ function SnsPage() {
               <img
                 src="/img/sns/hero.png"
                 className="w-80 sm:w-[480px] md:w-auto max-w-full"
+                alt=""
               />
             </div>
           </motion.section>
@@ -380,6 +381,7 @@ function SnsPage() {
                 md:absolute 
                 md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[-30px]"
               src="/img/sns/sns.webp"
+              alt="SNS"
             ></img>
             <div className="md:mx-auto md:w-10/12 relative">
               <motion.h2
@@ -469,6 +471,7 @@ function SnsPage() {
               sm:w-[1200px]
               sm:right-[-500px]
             "
+              alt=""
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-1/10">

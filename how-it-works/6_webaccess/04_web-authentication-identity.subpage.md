@@ -1,7 +1,7 @@
 ---
 title: "Internet Identity: Anonymizing Blockchain Authentication System"
-abstract: 
-shareImage: /img/how-it-works/internet-identity.webp
+abstract:
+shareImage: /img/how-it-works/internet-identity.jpg
 slug: web-authentication-identity
 ---
 
@@ -26,6 +26,7 @@ If you click "Create Internet Identity", you are asked to create a passkey. A pa
 <figure>
 <img src="/img/how-it-works/ii-2.webp" alt="Create a passkey to connect with your Internet Identity" title="Create a passkey to connect with your Internet Identity" align="center" style="height:350px; width: auto">
 </figure> 
+
 
 After the Internet Identity is created, users can already use it to securely and privately authenticate with ICP based dapps, or add more passkeys. It is generally advised to have multiple passkeys connected to your Internet Identity as well as a recovery method setup, such as a recovery phrase.
 
@@ -59,4 +60,3 @@ As mentioned previously, it is also important to add a recovery phrase in case y
 [IC internals: Internet Identity storage](https://mmapped.blog/posts/11-ii-stable-memory.html)
 
 [![Watch youtube video](https://i.ytimg.com/vi/9eUTcCP_ELM/maxresdefault.jpg)](https://www.youtube.com/watch?v=9eUTcCP_ELM)
-
