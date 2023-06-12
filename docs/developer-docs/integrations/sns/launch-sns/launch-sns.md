@@ -9,9 +9,9 @@ with the difference that the commands target the canisters on the mainnet.
 To make the most important commands and what they need to look like for 
 mainnet more accesible, they are listed below.
 
-## Submitting an NNS proposal to approve the SNS
+## Submitting an NNS proposal to approve the SNS {#SNS-launch-command-NNSproposal1}
 After preparations and choosing the parameters
-([Step 1: Preparation](#SNS-launch-step-preparation)), 
+([Step 1: Preparation](../lifecycle-sns/sns-launch.md/#SNS-launch-step-preparation), 
 an [NNS proposal approves the creation of the SNS](#SNS-launch-step-NNSapproval).
 Anyone who owns and NNS neuron with enough stake can submit such a proposal
 that lists a principal wallet in SNS-W who can then deploy the SNS canisters.
@@ -31,7 +31,7 @@ there is a shorthand where you can just provide `dfx canister -- network ic`.
 
 
 
-## SNS canister creation calling SNS-W
+## SNS canister creation calling SNS-W {#SNS-launch-command-SNSW}
 After the wallet canister is listed in SNS-W, 
 the [SNS canisters are created triggered by a manual call to SNS-W](../lifecycle-sns/sns-launch.md/#SNS-launch-step-deployment).
 You can find this command in an example in the SNS local testing repository [here](https://github.com/dfinity/sns-testing/blob/main/deploy_sns.sh#L33)
@@ -39,7 +39,7 @@ You can find this command in an example in the SNS local testing repository [her
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
 ```
 
-## Submitting an NNS proposal to start the SNS swap
+## Submitting an NNS proposal to start the SNS swap {#SNS-launch-command-NNSproposal2}
 After the SNS canisters are deployed and the dapp's control is handed over to
 the SNS, an [NNS proposal starts the swap](../lifecycle-sns/sns-launch.md/#SNS-launch-step-startSwap). 
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
@@ -65,7 +65,7 @@ ic-admin   \
 ```
 
 
-## Finalizing the SNS swap
+## Finalizing the SNS swap {#SNS-launch-command-finalizingswap}
 When the swap ends, either because its dealine is reached or because the maximum
 ICP have been collected, its finalization has to be triggered by a manual call
 to the SNS swap that can be done by anyone.
