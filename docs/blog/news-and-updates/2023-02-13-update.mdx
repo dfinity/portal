@@ -1,4 +1,4 @@
-# Week of February 13, 2023
+# Developer weekly update: February 13, 2023
 
 <head>
   <meta property="og:image" content={require('../_assets/quill.png').default}/>
@@ -19,7 +19,7 @@ Previously, we had several forks of quill that served specific use cases. We hav
 commands you need in one place. Repos like sns-quill and other internal forks have now been consolidated into Quill.
 You can download quill by visiting the releases page.
 
-# Redeploying a Canister
+# Redeploying a canister
 
 ![Header image](../_assets/broken-car.png)
 
@@ -29,16 +29,21 @@ The first thing you can try is uninstalling your canister code. This will delete
 it in an empty state. Note - your canister will not be accessible by your users once the WASM has been uninstalled, so
 if you need high uptime, this approach might not be the best for you.
 
+```
 dfx canister uninstall-code [CANISTER NAME or ID]
+```
 
 Of course, use your canister’s actual name or ID when issuing this command.
 
 Once your canister code has been uninstalled, try redeploying. This will build your WASM from source and deploy it into
 your empty canister.
 
-# dfx deploy --upgrade-unchanged [CANISTER NAME or ID]
+```
+dfx deploy --upgrade-unchanged [CANISTER NAME or ID]
+```
 
-Using the --upgrade-unchanged flag will force DFX to install your canister WASM and skip checks that compare your new
+
+Using the `--upgrade-unchanged` flag will force DFX to install your canister WASM and skip checks that compare your new
 WASM to the old one.
 
 > When upgrading a canister, `dfx deploy` and `dfx canister install` skip installing the .wasm
@@ -48,7 +53,7 @@ WASM to the old one.
 
 We hope this bit of troubleshooting helps you as you build on the Internet Computer!
 
-# ChatGPT getting weird
+## ChatGPT getting weird
 
 ![Header image](../_assets/chatgpt.png)
 
