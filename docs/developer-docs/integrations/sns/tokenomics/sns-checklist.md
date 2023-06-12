@@ -134,7 +134,7 @@ First step in the launch is an NNS proposal that approves the SNS creation by li
 later create the SNS canisters. Use the proposal content created in Section 1.4.1 and create the NNS 
 proposal. The proposal can be created with the
 [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/) as described
-[here](../launch-sns/#SNS-launch-command-NNSproposal1).
+[here](../launch-sns/launch-sns.md#SNS-launch-command-NNSproposal1).
 
 ## 4.2. Create SNS canisters
 When the NNS neurons have adopted the proposal above, the SNS canisters can be installed, and prepared for
