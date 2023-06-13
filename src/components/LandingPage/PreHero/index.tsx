@@ -7,15 +7,19 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
 import { Facts } from "./Facts";
 import ParticleAnimation from "./ParticleAnimation";
+import RotatedHeadline from "./RotatedHeadline";
 
-export default function PreHero({}): JSX.Element {
+const PreHero: React.FC<{
+  headline: ReactNode;
+  straps: string[];
+}> = ({ headline, straps }) => {
   const [start, setStart] = useState(false);
   const [animate, setAnimate] = useState(true);
 
@@ -70,11 +74,11 @@ export default function PreHero({}): JSX.Element {
                 opacity: blobOpacity,
               }}
             >
-              <h1 className="tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
-                World Computer
+              <h1 className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
+                {headline}
               </h1>
-              <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-2 text-white mb-0">
-                build on the network
+              <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-60 text-white mb-0 grid">
+                <RotatedHeadline lines={straps} interval={2000} />
               </p>
             </motion.div>
 
@@ -177,4 +181,5 @@ export default function PreHero({}): JSX.Element {
       </div>
     </section>
   );
-}
+};
+export default PreHero;

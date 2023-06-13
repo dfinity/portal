@@ -26,7 +26,16 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <QueryClientProvider client={queryClient}>
-        <PreHero></PreHero>
+        <PreHero
+          headline="Internet as cloud"
+          straps={[
+            "Unstoppable code",
+            "Autonomous code",
+            "Multi-chain Web3",
+            "No security teams",
+            "No firewalls needed",
+          ]}
+        ></PreHero>
       </QueryClientProvider>
 
       <main
