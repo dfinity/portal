@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-# Using a wallet
+# Using a cycles wallet
  
 ## Overview
 
@@ -45,6 +45,10 @@ A **controller** is the most privileged role and a principal assigned to the con
 -   Rename the cycles wallet.
 
 -   Create canisters and additional cycles wallets.
+
+:::caution
+A canister can have a maximum of 10 controllers. Learn more [here](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-create_canister).
+:::
 
 ### Custodians
 
